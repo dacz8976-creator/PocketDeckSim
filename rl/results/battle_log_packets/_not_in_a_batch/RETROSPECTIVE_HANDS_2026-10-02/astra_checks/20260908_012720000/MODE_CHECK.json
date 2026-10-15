@@ -1,0 +1,56 @@
+{
+  "schema": "bounded-mode-check-v1",
+  "reviewer": "astra_mode_012720",
+  "assigned_model": "gpt-6-astra",
+  "reviewed_utc": "2026-10-02T21:13:19Z",
+  "status": "bounded_check_complete",
+  "scope": "Five retained frames only: AI opponent identification and owner Auto indicator. No outcome review or historical reclassification.",
+  "source": {
+    "filename": "20260908_012720000_iOS.MP4",
+    "sha256": "b9e76626643d8950cb7a4277487da2262b5fa96faf9e87454495ebe896d47085",
+    "bytes": 530226009,
+    "current_path": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Reviewed/20260908_012720000_iOS.MP4",
+    "identity_basis": "Sibling supplement ROOT_SOURCE_VERIFICATION.json reports verified_sha256_match, source stable, finished 2026-10-02T21:07:52.397177+00:00. No duplicate video hash or video content read by this reviewer.",
+    "metadata_note": "SOURCE_REFERENCE.json still says delivery_read_in_progress; the completed root verification receipt supplies the current verification evidence."
+  },
+  "evidence_directory": "../../20260908_012720000/turn_evidence",
+  "evidence": [
+    {"file": "t0004.40.jpg", "requested_source_seconds": 4.4, "actual_frame_seconds_if_measured": null, "observation": "VS screen explicitly labels upper Opponent with an AI badge and lower player Dacz8976. This establishes an AI opponent independently of the Auto control."},
+    {"file": "t0010.00.jpg", "requested_source_seconds": 10.0, "actual_frame_seconds_if_measured": null, "observation": "Before Active placement, right-side Auto control has a white checkmark in a teal circle on a cyan/teal pill. Enabled/selected indicator is visible."},
+    {"file": "t0041.00.jpg", "requested_source_seconds": 41.0, "actual_frame_seconds_if_measured": null, "observation": "Right-side Auto control again has a white checkmark in a teal circle, with a cyan/teal pill. Enabled/selected state remains visible at this anchor."},
+    {"file": "t0212.50.jpg", "requested_source_seconds": 212.5, "actual_frame_seconds_if_measured": null, "observation": "Right-side Auto control retains the white checkmark in a teal circle. Its pill is paler than at other anchors, but remains checked. Paler fill alone is not evidence of Auto being off."},
+    {"file": "t0259.50.jpg", "requested_source_seconds": 259.5, "actual_frame_seconds_if_measured": null, "observation": "Right-side Auto control again shows the white checkmark in teal circle and cyan/teal pill. Enabled/selected indicator is visible late in the battle."}
+  ],
+  "conclusion": {
+    "opponent_type": "AI opponent, explicitly shown",
+    "owner_auto_state": "enabled_at_all_four_checked_gameplay_anchors",
+    "recommended_mode_code": "AUTO_ENABLED_OBSERVED",
+    "recommended_mode_flag": "AUTO: enabled in the checked footage against an AI opponent; individual action authorship is not certified",
+    "short_display_label": "Auto enabled vs AI (observed anchors)",
+    "manual_owner_play_supported": false,
+    "all_decisions_exclusively_bot_certified": false,
+    "reasoning": "The control explicitly labeled Auto is visibly checked during setup and at three later anchors. This supports Auto being enabled on the owner's side and contradicts an unqualified Auto-off assertion for those sampled instants. The opponent's AI badge separately establishes opponent type. Neither still evidence nor an enabled toggle proves the absence of hidden human input or an unsampled mode change.",
+    "historical_log_classification": "unchanged",
+    "accepted_outcome": "preserved without re-review"
+  },
+  "limits": [
+    "Only the five assigned stills were inspected. No continuous coverage of the Auto indicator or toggle transitions was performed.",
+    "No touch-input record or other direct authorship evidence is present in these stills. Do not turn the mode flag into a claim that every action necessarily came from the bot.",
+    "Requested extraction timestamps are source-local targets, not independently measured presentation timestamps.",
+    "Native retained files are recorded as 1170x2532; the image tool displayed resized 946x2048 previews. The AI badge and checked Auto indicators remain clearly legible.",
+    "No exact Solo submode, difficulty, ranked status or external-log correction is established by this bounded check."
+  ],
+  "metrics": {
+    "model": "gpt-6-astra (assigned)",
+    "unique_images_inspected": 5,
+    "extra_images_inspected": 0,
+    "new_extractions": 0,
+    "new_image_files": 0,
+    "original_video_content_reads": 0,
+    "duplicate_video_hash_reads": 0,
+    "wall_seconds": null,
+    "wall_seconds_reason": "Review start was not independently timed.",
+    "tokens": null,
+    "dollars": null
+  }
+}

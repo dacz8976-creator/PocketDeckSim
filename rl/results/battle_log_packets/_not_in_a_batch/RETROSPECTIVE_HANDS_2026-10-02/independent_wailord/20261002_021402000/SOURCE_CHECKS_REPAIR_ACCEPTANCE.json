@@ -1,0 +1,82 @@
+{
+  "reviewer": "sol_verify_wailord_021402",
+  "checked_utc": "2026-10-02T21:00:20.976786+00:00",
+  "verdict": "accepted_with_recording_limits",
+  "scope": "Focused recheck of turn7 Research provenance repair only, retaining prior30-image independent acceptance findings.",
+  "initial_check_sha256": "7c28d2b454a7a5d440bca2e73933e9e716093de2610081821c085011cce04553",
+  "initial_check_preserved_status": "needs_repair",
+  "repaired_files": [
+    {
+      "file": "HAND_SUPPLEMENT.json",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\HAND_SUPPLEMENT.json",
+      "repaired_sha256": "1f7de08ee4f5a5b9c29278c373a9d44302133a09d6cab39a6beb97208340fc9a",
+      "preserved_submission_sha256": "da57ee685a8b9a87eeb0de1e69205026646d055680ffa748c4036487f3703b2e",
+      "changed_fields": [
+        "/target_rows/3/draws_and_searches/1/cards_in_reveal_order/0/basis",
+        "/target_rows/3/draws_and_searches/1/cards_in_reveal_order/0/limit_reason",
+        "/target_rows/3/draws_and_searches/1/cards_in_reveal_order/1/basis",
+        "/target_rows/3/draws_and_searches/1/cards_in_reveal_order/1/evidence_ids/length",
+        "/target_rows/3/draws_and_searches/1/cards_in_reveal_order/1/timestamp_seconds",
+        "/target_rows/3/draws_and_searches/1/limit_reason",
+        "/target_rows/3/draws_and_searches/1/reveal_order_basis"
+      ]
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\TURN_LEDGER.json",
+      "repaired_sha256": "1a6ac69b122be78d2a51c94fb5b9eee2031b442e4f583ea1de3c8d5fb3683393",
+      "preserved_submission_sha256": "50811cb868b21d40687c04dd197483d8a55e0127030247fb67adfc2d88c4d99f",
+      "changed_fields": [
+        "/turns/6/draws_and_searches/1/cards_in_reveal_order/0/basis",
+        "/turns/6/draws_and_searches/1/cards_in_reveal_order/0/limit_reason",
+        "/turns/6/draws_and_searches/1/cards_in_reveal_order/1/basis",
+        "/turns/6/draws_and_searches/1/cards_in_reveal_order/1/evidence_ids/length",
+        "/turns/6/draws_and_searches/1/cards_in_reveal_order/1/timestamp_seconds",
+        "/turns/6/draws_and_searches/1/limit_reason",
+        "/turns/6/draws_and_searches/1/reveal_order_basis"
+      ]
+    },
+    {
+      "file": "TURN_EVIDENCE.json",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\TURN_EVIDENCE.json",
+      "repaired_sha256": "258c37a4dc9a1c57723646cd0ca389155255775023e6ac4ceba0bdb42fcffe57",
+      "preserved_submission_sha256": "468cd04281f00e444eb8d77bfd4cdd21b2a1a204bb39ffc0af909ad3030610b5",
+      "changed_fields": [
+        "/frames/22/observation"
+      ]
+    },
+    {
+      "file": "REVIEW_SUPPLEMENT.md",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\REVIEW_SUPPLEMENT.md",
+      "repaired_sha256": "20aa6dae158aa98d71a2549769132af7fe0a872be33286a142092dc9c4ae31cc",
+      "preserved_submission_sha256": "cff8edf7c58694a7c9f1ba7db439f2606d9aa184e0d494838812ca59b2becddc"
+    },
+    {
+      "file": "UNCERTAINTIES.json",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\UNCERTAINTIES.json",
+      "repaired_sha256": "5ef0f7de06df877dddb9e3a4211ce20705437b06922d470b7ff0bb13a1b4a140",
+      "preserved_submission_sha256": "e24bbf0160eeafd7e4625df591c818fd0867ef9e9708a9aa6c1b841e68293bd1",
+      "changed_fields": [
+        "/independent_provenance_repair"
+      ]
+    }
+  ],
+  "repaired_research_events_identical": true,
+  "retained64_full_image_hashes_unchanged": true,
+  "registered_frame_count": 64,
+  "confirmed_observation": "native137.00 shows Indeedee already appended in fan and Copycat enlarged as current Research reveal. Indeedee identity direct; first-card order inferred from append state. Copycat direct137 plus retained fan139.",
+  "remaining_issue": null,
+  "recording_limits": [
+    "Exact frame PTS and first Indeedee reveal onset unmeasured.",
+    "Opponent fan counts turns5/7 retain7-8 overlap ranges.",
+    "Boards, accepted actions, outcome and later owner13 retain inherited/outside-target scope.",
+    "Historical deck version and intervening discard windows not newly established."
+  ],
+  "metrics": {
+    "new_visual_image_submissions": 0,
+    "new_frames": 0,
+    "original_reads": 0,
+    "token_usage": null,
+    "dollar_usage": null
+  }
+}

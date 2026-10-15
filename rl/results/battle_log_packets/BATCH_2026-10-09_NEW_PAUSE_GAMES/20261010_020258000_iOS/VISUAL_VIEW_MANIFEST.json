@@ -1,0 +1,133 @@
+{
+  "reviewer": "/root/pause_020258",
+  "source_video": "20261010_020258000_iOS.MP4",
+  "source_sha256": "c5e7732cf212bd836fbcafc107b0f0d92ff43d8a8cd2f5b9f222b4fd466e5640",
+  "read_method": "Actual view_image inspection of native source images and retained composites, not filename-only review",
+  "overview_sheets_actually_viewed": [
+    "overview/early.jpg",
+    "overview/early2.jpg",
+    "overview/early3.jpg",
+    "overview/early4.jpg",
+    "overview/early5.jpg",
+    "overview/early6.jpg",
+    "overview/early7.jpg",
+    "overview/early8.jpg",
+    "overview/early9b.jpg",
+    "overview/early10.jpg",
+    "overview/early11.jpg",
+    "overview/early12.jpg",
+    "overview/early13.jpg"
+  ],
+  "overview_coverage": "Entire0–342.526667s located on 3s midpoint overview, followed by dense event and hand windows",
+  "native_full_images_individually_viewed": [
+    "turn_evidence/t0036.50.jpg",
+    "turn_evidence/t0063.50.jpg",
+    "turn_evidence/t0086.00.jpg",
+    "turn_evidence/t0116.00.jpg",
+    "turn_evidence/t0183.00.jpg",
+    "turn_evidence/t0184.00.jpg",
+    "turn_evidence/t0186.00.jpg",
+    "turn_evidence/t0130.00.jpg",
+    "turn_evidence/t0153.00.jpg",
+    "turn_evidence/t0141.00.jpg",
+    "turn_evidence/t0143.00.jpg",
+    "turn_evidence/t0254.00.jpg",
+    "turn_evidence/t0256.00.jpg",
+    "turn_evidence/t0261.00.jpg",
+    "turn_evidence/t0137.00.jpg",
+    "turn_evidence/t0138.00.jpg",
+    "turn_evidence/t0262.50.jpg",
+    "turn_evidence/t0318.00.jpg",
+    "turn_evidence/t0219.00.jpg",
+    "turn_evidence/t0120.00.jpg",
+    "turn_evidence/t0290.00.jpg",
+    "qr_intake/t0001.00.jpg"
+  ],
+  "composite_images_actually_viewed": [
+    {
+      "path": "trainers.jpg",
+      "included_native_source_seconds": [
+        148,
+        149,
+        150,
+        151,
+        152,
+        156
+      ],
+      "method": "Full source image panels"
+    },
+    {
+      "path": "newdraws.jpg",
+      "included_native_source_seconds": [
+        233,
+        234,
+        235,
+        236,
+        255,
+        257,
+        258,
+        260,
+        263
+      ],
+      "method": "Full source image panels"
+    },
+    {
+      "path": "finalcheck.jpg",
+      "included_native_source_seconds": [
+        256.8,
+        319,
+        321.7,
+        324.7,
+        326.5,
+        327,
+        57.5,
+        80.7,
+        82.5
+      ],
+      "method": "Full source image panels"
+    },
+    {
+      "path": "handcandidates.jpg",
+      "included_native_source_seconds": [
+        65,
+        67,
+        70,
+        184.2,
+        185,
+        187,
+        190,
+        256.8,
+        258,
+        260,
+        263,
+        319,
+        321.7,
+        324.7,
+        111.5,
+        206.5,
+        273,
+        326.5
+      ],
+      "method": "Native top/bottom crops at reduced display size; native crops preserved"
+    },
+    {
+      "path": "decisioncheck.jpg",
+      "included_native_source_seconds": [
+        84,
+        84.5,
+        85,
+        86,
+        267,
+        277,
+        328,
+        330,
+        340
+      ],
+      "method": "Actual viewed full-image panels for consequential draws/no-effect/outcome"
+    }
+  ],
+  "limits": [
+    "Retained full frames are1170×2532, crops native. Overview/composites display reduced; important identities also inspected native.",
+    "Extraction alone is not visual inspection; not every extra retained native frame was individually displayed."
+  ]
+}

@@ -1,0 +1,1590 @@
+{
+  "game_id": "20260928_200654000",
+  "repaired_at_utc": "2026-10-02T23:24:11.755503+00:00",
+  "repairer": "/root/astra_entei_020916",
+  "status": "frozen_ready_for_original_Sol_recheck",
+  "source_sha256": "d4d0dd51f309c05abcdb6b1f04a75c036ca3e59b4abee3f6ce542b2d56149fd6",
+  "original_submission_sha256": "6c96fd0cf646b928c739936fc7a27f855e4723ec7b0c822a306ccf6c41849d6b",
+  "basis_files": [
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\independent_ladder\\20260928_200654000\\CHECK_RESULT.json",
+      "sha256": "b2968efeb43e44ae6ac6f92afc3e7115d5c2a5d5c58467aba7dcaa64dfd81aaf"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\astra_checks\\20260928_200654000\\ASTRA_ZONE_CHECK.json",
+      "sha256": "df943ed895cf27597f2171b1ea19def220ed3d6dcb173127b7106b25b5517783"
+    }
+  ],
+  "snapshot_directory": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\before_independent_repair",
+  "changed_submitted_files": [
+    "TURN_LEDGER.json",
+    "HAND_SUPPLEMENT.json",
+    "TURN_EVIDENCE.json",
+    "UNCERTAINTIES.json",
+    "ACTION_RECONCILIATION.json",
+    "REVIEW_SUPPLEMENT.md"
+  ],
+  "changed_fields": [
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[1].board_at_start.owner.energy_zone.attribute_basis",
+      "before_missing": true,
+      "after": {
+        "this_turn": {
+          "basis": "direct later native orb within composite phase",
+          "evidence_ids": [
+            "F0057.00"
+          ],
+          "detail": "Owner large current Darkness orb and separate small Darkness preview visible. Later than normal draw and first Poke Ball consumption."
+        },
+        "next": {
+          "basis": "Small upcoming preview directly visible at the listed later anchor; count1 identifies one preview, not a second usable Energy.",
+          "evidence_ids": [
+            "F0057.00"
+          ]
+        }
+      }
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[1].board_at_start.owner.energy_zone.basis",
+      "before": "Visible current/preview icons; an empty inactive generator does not certify unspent energy",
+      "after": "Composite generated pre-attachment phase: one large current Darkness orb directly visible at F0057.00. Earlier start-board refs may precede generation or other actions; do not attribute available=true to those earlier frames. Upcoming preview is a separate field."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[1].board_at_start.owner.energy_zone.earlier_display_observations",
+      "before_missing": true,
+      "after": [
+        {
+          "evidence_id": "F0055.00",
+          "large_current_slot_count": 0,
+          "large_current_slot_type": null,
+          "basis": "direct visible empty slot at earlier phase; not a claim that the later generated phase has zero or the whole turn lacks Energy",
+          "detail": "Owner large current slot empty; upcoming small Darkness not visible in this frame. Opponent empty current with small Metal preview."
+        }
+      ]
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[1].board_at_start.owner.energy_zone.evidence_ids",
+      "before": [
+        "R_evidence_t0048.0"
+      ],
+      "after": [
+        "R_evidence_t0048.0",
+        "F0057.00"
+      ]
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[1].board_at_start.owner.energy_zone.limit_reason",
+      "before": null,
+      "after": "This is a field-specific later generated phase, not an exact simultaneous snapshot with the earliest start-board frame. Exact generation completion and attachment input PTS are not certified. The small upcoming icon is not additional currently usable Energy."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[1].board_at_start.owner.energy_zone.phase",
+      "before_missing": true,
+      "after": "generated_pre_attachment_composite"
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[1].draws_and_searches[2].cards_in_reveal_order[0].basis",
+      "before": "direct_native_reveal",
+      "after": "native hand/bench transaction reconciliation, with reduced locator reveal timing; named identity is derived from closed visible owner-hand sequence"
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[1].draws_and_searches[2].cards_in_reveal_order[0].limit_reason",
+      "before": null,
+      "after": "No retained native search-face reveal in cited69/76;69 shows card back and76 is post-bench. Identity supported by known hand, no intervening other draw, and regular Zigzagoon bench placement."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[2].board_at_start.opponent.energy_zone.attribute_basis",
+      "before_missing": true,
+      "after": {
+        "this_turn": {
+          "basis": "direct later native orb within composite phase",
+          "evidence_ids": [
+            "R_evidence_t0120.0"
+          ],
+          "detail": "Opponent large current Metal orb plus separate small Metal preview visible during T3."
+        },
+        "next": {
+          "basis": "Small upcoming preview directly visible at the listed later anchor; count1 identifies one preview, not a second usable Energy.",
+          "evidence_ids": [
+            "R_evidence_t0120.0"
+          ]
+        }
+      }
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[2].board_at_start.opponent.energy_zone.basis",
+      "before": "Visible current/preview icons; an empty inactive generator does not certify unspent energy",
+      "after": "Composite generated pre-attachment phase: one large current Metal orb directly visible at R_evidence_t0120.0. Earlier start-board refs may precede generation or other actions; do not attribute available=true to those earlier frames. Upcoming preview is a separate field."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[2].board_at_start.opponent.energy_zone.evidence_ids",
+      "before": [
+        "R_evidence_t0096.0",
+        "R_evidence_t0108.0"
+      ],
+      "after": [
+        "R_evidence_t0096.0",
+        "R_evidence_t0108.0",
+        "R_evidence_t0120.0"
+      ]
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[2].board_at_start.opponent.energy_zone.limit_reason",
+      "before": null,
+      "after": "This is a field-specific later generated phase, not an exact simultaneous snapshot with the earliest start-board frame. Exact generation completion and attachment input PTS are not certified. The small upcoming icon is not additional currently usable Energy."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[2].board_at_start.opponent.energy_zone.phase",
+      "before_missing": true,
+      "after": "generated_pre_attachment_composite"
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[3].board_at_start.owner.energy_zone.attribute_basis",
+      "before_missing": true,
+      "after": {
+        "this_turn": {
+          "basis": "direct later native orb within composite phase",
+          "evidence_ids": [
+            "F0141.00"
+          ],
+          "detail": "Owner large current Darkness orb visible; separate Next Energy generated message shows Darkness preview in animation. Exact animation completion not measured."
+        },
+        "next": {
+          "basis": "Darkness preview visible as small upcoming icon at F0139.00 and separately in the Next Energy generated animation at F0141.00; exact settled animation time unmeasured.",
+          "evidence_ids": [
+            "F0139.00",
+            "F0141.00"
+          ]
+        }
+      }
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[3].board_at_start.owner.energy_zone.basis",
+      "before": "Visible current/preview icons; an empty inactive generator does not certify unspent energy",
+      "after": "Composite generated pre-attachment phase: one large current Darkness orb directly visible at F0141.00. Earlier start-board refs may precede generation or other actions; do not attribute available=true to those earlier frames. Upcoming preview is a separate field."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[3].board_at_start.owner.energy_zone.earlier_display_observations",
+      "before_missing": true,
+      "after": [
+        {
+          "evidence_id": "F0139.00",
+          "large_current_slot_count": 0,
+          "large_current_slot_type": null,
+          "basis": "direct visible empty slot at earlier phase; not a claim that the later generated phase has zero or the whole turn lacks Energy",
+          "detail": "Owner large current slot empty; small Darkness preview visible during Lillie reveal."
+        }
+      ]
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[3].board_at_start.owner.energy_zone.evidence_ids",
+      "before": [
+        "F0136.00",
+        "F0139.00"
+      ],
+      "after": [
+        "F0136.00",
+        "F0139.00",
+        "F0141.00"
+      ]
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[3].board_at_start.owner.energy_zone.limit_reason",
+      "before": null,
+      "after": "This is a field-specific later generated phase, not an exact simultaneous snapshot with the earliest start-board frame. Exact generation completion and attachment input PTS are not certified. The small upcoming icon is not additional currently usable Energy."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[3].board_at_start.owner.energy_zone.phase",
+      "before_missing": true,
+      "after": "generated_pre_attachment_composite"
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[4].board_at_start.opponent.energy_zone.attribute_basis",
+      "before_missing": true,
+      "after": {
+        "this_turn": {
+          "basis": "direct later native orb within composite phase",
+          "evidence_ids": [
+            "R_evidence_t0168.0"
+          ],
+          "detail": "Opponent large current Metal orb plus small Metal preview visible during Research animation in T5."
+        },
+        "next": {
+          "basis": "Small upcoming preview directly visible at the listed later anchor; count1 identifies one preview, not a second usable Energy.",
+          "evidence_ids": [
+            "R_evidence_t0168.0"
+          ]
+        }
+      }
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[4].board_at_start.opponent.energy_zone.basis",
+      "before": "Visible current/preview icons; an empty inactive generator does not certify unspent energy",
+      "after": "Composite generated pre-attachment phase: one large current Metal orb directly visible at R_evidence_t0168.0. Earlier start-board refs may precede generation or other actions; do not attribute available=true to those earlier frames. Upcoming preview is a separate field."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[4].board_at_start.opponent.energy_zone.limit_reason",
+      "before": null,
+      "after": "This is a field-specific later generated phase, not an exact simultaneous snapshot with the earliest start-board frame. Exact generation completion and attachment input PTS are not certified. The small upcoming icon is not additional currently usable Energy."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[4].board_at_start.opponent.energy_zone.phase",
+      "before_missing": true,
+      "after": "generated_pre_attachment_composite"
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[5].board_after.owner.bench_in_position_order[1].variant",
+      "before": "gold",
+      "after": "rainbow-border full art; one visible star"
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[5].board_at_start.owner.energy_zone.attribute_basis",
+      "before_missing": true,
+      "after": {
+        "this_turn": {
+          "basis": "direct later native orb within composite phase",
+          "evidence_ids": [
+            "F0201.00"
+          ],
+          "detail": "Owner large current Darkness orb visible below enlarged Hydreigon; preview/generation overlay partly obscured. Do not claim this frame independently proves every next-field component."
+        },
+        "next": {
+          "basis": "Upcoming Darkness is retained from the producer composite and neighboring owner-preview observations, not independently visible as a settled small icon in this selected generation-animation anchor. Keep next.available=false; do not claim simultaneous complete Zone observation.",
+          "evidence_ids": [
+            "R_evidence_t0198.0",
+            "F0200.00"
+          ]
+        }
+      }
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[5].board_at_start.owner.energy_zone.basis",
+      "before": "Visible current/preview icons; an empty inactive generator does not certify unspent energy",
+      "after": "Composite generated pre-attachment phase: one large current Darkness orb directly visible at F0201.00. Earlier start-board refs may precede generation or other actions; do not attribute available=true to those earlier frames. Upcoming preview is a separate field."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[5].board_at_start.owner.energy_zone.earlier_display_observations",
+      "before_missing": true,
+      "after": [
+        {
+          "evidence_id": "F0200.00",
+          "large_current_slot_count": 0,
+          "large_current_slot_type": null,
+          "basis": "direct visible empty slot at earlier phase; not a claim that the later generated phase has zero or the whole turn lacks Energy",
+          "detail": "Owner large current slot empty; small preview not visible at this instant."
+        }
+      ]
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[5].board_at_start.owner.energy_zone.evidence_ids",
+      "before": [
+        "R_evidence_t0198.0",
+        "F0200.00"
+      ],
+      "after": [
+        "R_evidence_t0198.0",
+        "F0200.00",
+        "F0201.00"
+      ]
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[5].board_at_start.owner.energy_zone.limit_reason",
+      "before": null,
+      "after": "This is a field-specific later generated phase, not an exact simultaneous snapshot with the earliest start-board frame. Exact generation completion and attachment input PTS are not certified. The small upcoming icon is not additional currently usable Energy."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[5].board_at_start.owner.energy_zone.phase",
+      "before_missing": true,
+      "after": "generated_pre_attachment_composite"
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[5].draws_and_searches[0].cards_in_reveal_order[0].variant",
+      "before": "gold",
+      "after": "rainbow-border full art; one visible star"
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[5].hand_at_start.cards_left_to_right[2].variant",
+      "before": "gold",
+      "after": "rainbow-border full art; one visible star"
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[5].owner_hand_start.cards_left_to_right[2].variant",
+      "before": "gold",
+      "after": "rainbow-border full art; one visible star"
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[6].board_after.owner.bench_in_position_order[1].variant",
+      "before": "gold",
+      "after": "rainbow-border full art; one visible star"
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[6].board_at_start.opponent.energy_zone.attribute_basis",
+      "before_missing": true,
+      "after": {
+        "this_turn": {
+          "basis": "direct later native orb within composite phase",
+          "evidence_ids": [
+            "F0250.00"
+          ],
+          "detail": "Opponent large current Metal orb plus small Metal preview visible during T7 card animation."
+        },
+        "next": {
+          "basis": "Small upcoming preview directly visible at the listed later anchor; count1 identifies one preview, not a second usable Energy.",
+          "evidence_ids": [
+            "F0250.00"
+          ]
+        }
+      }
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[6].board_at_start.opponent.energy_zone.basis",
+      "before": "Visible current/preview icons; an empty inactive generator does not certify unspent energy",
+      "after": "Composite generated pre-attachment phase: one large current Metal orb directly visible at F0250.00. Earlier start-board refs may precede generation or other actions; do not attribute available=true to those earlier frames. Upcoming preview is a separate field."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[6].board_at_start.opponent.energy_zone.evidence_ids",
+      "before": [
+        "R_evidence_t0228.0"
+      ],
+      "after": [
+        "R_evidence_t0228.0",
+        "F0250.00"
+      ]
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[6].board_at_start.opponent.energy_zone.limit_reason",
+      "before": null,
+      "after": "This is a field-specific later generated phase, not an exact simultaneous snapshot with the earliest start-board frame. Exact generation completion and attachment input PTS are not certified. The small upcoming icon is not additional currently usable Energy."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[6].board_at_start.opponent.energy_zone.phase",
+      "before_missing": true,
+      "after": "generated_pre_attachment_composite"
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[6].board_at_start.owner.bench_in_position_order[1].variant",
+      "before": "gold",
+      "after": "rainbow-border full art; one visible star"
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[7].board_after.owner.active.variant",
+      "before": "gold",
+      "after": "rainbow-border full art; one visible star"
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[7].board_at_start.owner.bench_in_position_order[1].variant",
+      "before": "gold",
+      "after": "rainbow-border full art; one visible star"
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[7].board_at_start.owner.energy_zone.attribute_basis",
+      "before_missing": true,
+      "after": {
+        "this_turn": {
+          "basis": "direct later native orb within composite phase",
+          "evidence_ids": [
+            "F0285.00"
+          ],
+          "detail": "Owner large current Darkness orb plus small Darkness preview visible during T8 hand/card transition."
+        },
+        "next": {
+          "basis": "Small upcoming preview directly visible at the listed later anchor; count1 identifies one preview, not a second usable Energy.",
+          "evidence_ids": [
+            "F0285.00"
+          ]
+        }
+      }
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[7].board_at_start.owner.energy_zone.basis",
+      "before": "Visible current/preview icons; an empty inactive generator does not certify unspent energy",
+      "after": "Composite generated pre-attachment phase: one large current Darkness orb directly visible at F0285.00. Earlier start-board refs may precede generation or other actions; do not attribute available=true to those earlier frames. Upcoming preview is a separate field."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[7].board_at_start.owner.energy_zone.limit_reason",
+      "before": null,
+      "after": "This is a field-specific later generated phase, not an exact simultaneous snapshot with the earliest start-board frame. Exact generation completion and attachment input PTS are not certified. The small upcoming icon is not additional currently usable Energy."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[7].board_at_start.owner.energy_zone.phase",
+      "before_missing": true,
+      "after": "generated_pre_attachment_composite"
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[8].board_at_start.opponent.energy_zone.attribute_basis",
+      "before_missing": true,
+      "after": {
+        "this_turn": {
+          "basis": "endpoint-derived plus independently reviewed normal attachment; no direct available-orb native anchor",
+          "evidence_ids": [
+            "F0328.00",
+            "F0373.00",
+            "F0399.50"
+          ],
+          "detail": "T8 endpoint F0328.00 has Arceus two Metal; after the recorded T9 normal attachment, F0373.00 shows Arceus three Metal, and F0399.50 shows the opponent current slot empty. Together with the independently reviewed T9 attachment sequence, these endpoints support one generated Metal before attachment. No selected native frame directly displays that available orb; no exact generation time is established."
+        },
+        "next": {
+          "basis": "Direct small Metal preview at inspected unoccluded endpoints; available=false because preview is upcoming and separate from current Energy.",
+          "evidence_ids": [
+            "F0399.50"
+          ]
+        }
+      }
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[8].board_at_start.opponent.energy_zone.basis",
+      "before": "Visible current/preview icons; an empty inactive generator does not certify unspent energy",
+      "after": "Endpoint-derived generated pre-attachment composite phase. T8 endpoint F0328.00 has Arceus two Metal; after the recorded T9 normal attachment, F0373.00 shows Arceus three Metal, and F0399.50 shows the opponent current slot empty. Together with the independently reviewed T9 attachment sequence, these endpoints support one generated Metal before attachment. No selected native frame directly displays that available orb; no exact generation time is established."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[8].board_at_start.opponent.energy_zone.evidence_ids",
+      "before": [
+        "F0328.00",
+        "R_evidence_t0336.0"
+      ],
+      "after": [
+        "F0328.00",
+        "R_evidence_t0336.0",
+        "F0373.00",
+        "F0399.50"
+      ]
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[8].board_at_start.opponent.energy_zone.limit_reason",
+      "before": null,
+      "after": "This is a field-specific later generated phase, not an exact simultaneous snapshot with the earliest start-board frame. Exact generation completion and attachment input PTS are not certified. The small upcoming icon is not additional currently usable Energy."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[8].board_at_start.opponent.energy_zone.phase",
+      "before_missing": true,
+      "after": "generated_pre_attachment_composite"
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[8].board_at_start.owner.active.variant",
+      "before": "gold",
+      "after": "rainbow-border full art; one visible star"
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[9].board_at_start.owner.energy_zone.attribute_basis",
+      "before_missing": true,
+      "after": {
+        "this_turn": {
+          "basis": "direct later native orb within composite phase",
+          "evidence_ids": [
+            "F0402.00"
+          ],
+          "detail": "Owner large current Darkness orb and small Darkness preview visible after Deino bench placement; opponent large current slot remains empty."
+        },
+        "next": {
+          "basis": "Small upcoming preview directly visible at the listed later anchor; count1 identifies one preview, not a second usable Energy.",
+          "evidence_ids": [
+            "F0402.00"
+          ]
+        }
+      }
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[9].board_at_start.owner.energy_zone.basis",
+      "before": "Visible current/preview icons; an empty inactive generator does not certify unspent energy",
+      "after": "Composite generated pre-attachment phase: one large current Darkness orb directly visible at F0402.00. Earlier start-board refs may precede generation or other actions; do not attribute available=true to those earlier frames. Upcoming preview is a separate field."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[9].board_at_start.owner.energy_zone.earlier_display_observations",
+      "before_missing": true,
+      "after": [
+        {
+          "evidence_id": "F0399.50",
+          "large_current_slot_count": 0,
+          "large_current_slot_type": null,
+          "basis": "direct visible empty slot at earlier phase; not a claim that the later generated phase has zero or the whole turn lacks Energy",
+          "detail": "Owner large current slot empty with small Darkness preview. Opponent current slot empty with small Metal preview; Arceus Active with three Metal."
+        }
+      ]
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[9].board_at_start.owner.energy_zone.evidence_ids",
+      "before": [
+        "F0373.00",
+        "R_evidence_t0396.0",
+        "F0399.50"
+      ],
+      "after": [
+        "F0373.00",
+        "R_evidence_t0396.0",
+        "F0399.50",
+        "F0402.00"
+      ]
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[9].board_at_start.owner.energy_zone.limit_reason",
+      "before": null,
+      "after": "This is a field-specific later generated phase, not an exact simultaneous snapshot with the earliest start-board frame. Exact generation completion and attachment input PTS are not certified. The small upcoming icon is not additional currently usable Energy."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[9].board_at_start.owner.energy_zone.phase",
+      "before_missing": true,
+      "after": "generated_pre_attachment_composite"
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[10].board_after.opponent.bench_in_position_order[2].attached_energy.by_type.Metal",
+      "before_missing": true,
+      "after": 1
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[10].board_after.opponent.bench_in_position_order[2].attached_energy.total",
+      "before": 0,
+      "after": 1
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[10].board_after.opponent.bench_in_position_order[2].attached_energy_basis",
+      "before_missing": true,
+      "after": {
+        "basis": "independent native endpoint check with explicit phase carry-forward",
+        "evidence_ids": [
+          "R_evidence_t0462.0",
+          "F0467.00"
+        ],
+        "detail": "One Metal after the turn11 normal attachment; zero applies only to immediate Helmet endpoint at452/456. Carry forward through turn12 and turn13 pre-attachment. Turn13 banner522 may obscure parts of the board; preceding516 provides the settled carry-forward basis."
+      }
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[10].board_after.opponent.energy_zone.basis",
+      "before": "Visible current/preview icons; an empty inactive generator does not certify unspent energy",
+      "after": "Turn11 ending composite after normal Metal attachment: current generator consumed, with empty current slot at settled F0467.00 and second Dialga increased from0 at456 to1 by462/467. The small Metal preview is separate and upcoming."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[10].board_after.opponent.energy_zone.limit_reason",
+      "before": null,
+      "after": "F0467.00 is the following owner-turn settled endpoint; the turn11 ending consumed state is composite carry-forward, not simultaneous with the earlier available-Metal456 view. Exact attachment input hidden."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[10].board_after.opponent.energy_zone.phase",
+      "before_missing": true,
+      "after": "after_turn11_normal_attachment_consumed_composite"
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[10].board_after.opponent.energy_zone.this_turn.available",
+      "before": true,
+      "after": false
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[10].board_after.opponent.energy_zone.this_turn.count",
+      "before": 1,
+      "after": 0
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[10].board_after.opponent.energy_zone.this_turn.type",
+      "before": "Metal",
+      "after": null
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[10].board_at_start.opponent.energy_zone.attribute_basis",
+      "before_missing": true,
+      "after": {
+        "this_turn": {
+          "basis": "direct later native orb within composite phase",
+          "evidence_ids": [
+            "R_evidence_t0456.0"
+          ],
+          "detail": "Opponent large current Metal orb plus small Metal preview visible during T11 after Helmet. This later phase supports generated availability, not the turn-ending consumed state."
+        },
+        "next": {
+          "basis": "Small upcoming preview directly visible at the listed later anchor; count1 identifies one preview, not a second usable Energy.",
+          "evidence_ids": [
+            "R_evidence_t0456.0"
+          ]
+        }
+      }
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[10].board_at_start.opponent.energy_zone.basis",
+      "before": "Visible current/preview icons; an empty inactive generator does not certify unspent energy",
+      "after": "Composite generated pre-attachment phase: one large current Metal orb directly visible at R_evidence_t0456.0. Earlier start-board refs may precede generation or other actions; do not attribute available=true to those earlier frames. Upcoming preview is a separate field."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[10].board_at_start.opponent.energy_zone.evidence_ids",
+      "before": [
+        "F0422.00",
+        "R_evidence_t0426.0"
+      ],
+      "after": [
+        "F0422.00",
+        "R_evidence_t0426.0",
+        "R_evidence_t0456.0"
+      ]
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[10].board_at_start.opponent.energy_zone.limit_reason",
+      "before": null,
+      "after": "This is a field-specific later generated phase, not an exact simultaneous snapshot with the earliest start-board frame. Exact generation completion and attachment input PTS are not certified. The small upcoming icon is not additional currently usable Energy."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[10].board_at_start.opponent.energy_zone.phase",
+      "before_missing": true,
+      "after": "generated_pre_attachment_composite"
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[10].plays_in_order",
+      "before": [
+        {
+          "order": 1,
+          "kind": "ability",
+          "card_name": "Fragrant Flower Garden",
+          "target": "opponent own board",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Arceus130→140; Cape Dialga90→100",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": 4,
+          "source_video": "20260928_200654000_iOS.MP4",
+          "timestamp_seconds": null,
+          "supported_interval_seconds": [
+            433,
+            436
+          ],
+          "evidence_ids": [
+            "F0452.00",
+            "R_evidence_t0456.0"
+          ],
+          "basis": "Native visible card/target/endpoints with locator timing bracket",
+          "limit_reason": null,
+          "hand_count_basis": "Visible fan endpoint and named transaction reconciliation; hidden faces remain null"
+        },
+        {
+          "order": 2,
+          "kind": "tool",
+          "card_name": "Rocky Helmet",
+          "target": "opponent bench3 second Dialga",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Helmet attached; Energy remains0",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": 3,
+          "source_video": "20260928_200654000_iOS.MP4",
+          "timestamp_seconds": null,
+          "supported_interval_seconds": [
+            451,
+            453
+          ],
+          "evidence_ids": [
+            "F0452.00",
+            "R_evidence_t0456.0"
+          ],
+          "basis": "Native visible card/target/endpoints with locator timing bracket",
+          "limit_reason": null,
+          "hand_count_basis": "Visible fan endpoint and named transaction reconciliation; hidden faces remain null"
+        },
+        {
+          "order": 3,
+          "kind": "attack",
+          "card_name": "Ultimate Force",
+          "target": "owner Active Obstagoon",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "130damage150→20",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": 3,
+          "source_video": "20260928_200654000_iOS.MP4",
+          "timestamp_seconds": null,
+          "supported_interval_seconds": [
+            460,
+            462
+          ],
+          "evidence_ids": [
+            "R_evidence_t0462.0",
+            "F0467.00"
+          ],
+          "basis": "Native visible card/target/endpoints with locator timing bracket",
+          "limit_reason": null,
+          "hand_count_basis": "Visible fan endpoint and named transaction reconciliation; hidden faces remain null"
+        }
+      ],
+      "after": [
+        {
+          "order": 1,
+          "kind": "ability",
+          "card_name": "Fragrant Flower Garden",
+          "target": "opponent own board",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Arceus130→140; Cape Dialga90→100",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": 4,
+          "source_video": "20260928_200654000_iOS.MP4",
+          "timestamp_seconds": null,
+          "supported_interval_seconds": [
+            433,
+            436
+          ],
+          "evidence_ids": [
+            "F0452.00",
+            "R_evidence_t0456.0"
+          ],
+          "basis": "Native visible card/target/endpoints with locator timing bracket",
+          "limit_reason": null,
+          "hand_count_basis": "Visible fan endpoint and named transaction reconciliation; hidden faces remain null"
+        },
+        {
+          "order": 2,
+          "kind": "tool",
+          "card_name": "Rocky Helmet",
+          "target": "opponent bench3 second Dialga",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Helmet attached; zero Metal at the immediate 452/456 endpoint, before the later normal attachment",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": 3,
+          "source_video": "20260928_200654000_iOS.MP4",
+          "timestamp_seconds": null,
+          "supported_interval_seconds": [
+            451,
+            453
+          ],
+          "evidence_ids": [
+            "F0452.00",
+            "R_evidence_t0456.0"
+          ],
+          "basis": "Native visible card/target/endpoints with locator timing bracket",
+          "limit_reason": "Zero Energy describes only the immediate Helmet endpoint, not the turn-ending board.",
+          "hand_count_basis": "Visible fan endpoint and named transaction reconciliation; hidden faces remain null"
+        },
+        {
+          "order": 3,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "opponent bench3 second Dialga",
+          "energy": {
+            "type": "Metal",
+            "count": 1,
+            "destination": "opponent bench3 second Dialga",
+            "retreat_payment_by_type": null
+          },
+          "result": "One normal Metal attached to second Dialga, increasing 0 to 1 before Ultimate Force",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": 3,
+          "source_video": "20260928_200654000_iOS.MP4",
+          "timestamp_seconds": null,
+          "supported_interval_seconds": [
+            456,
+            462
+          ],
+          "evidence_ids": [
+            "R_evidence_t0456.0",
+            "R_evidence_t0462.0",
+            "F0467.00"
+          ],
+          "basis": "Independent native before/after Energy counts and consumed Zone establish attachment after Helmet and before attack; reduced locator457-459 only narrows the transition",
+          "limit_reason": "Strictly after the zero-Metal456 endpoint and by attack462; exact input and decoded action PTS are not certified. The 457-459 locator bracket is inherited from the independent Sol check, not a new Astra locator inspection.",
+          "hand_count_basis": "Visible fan endpoint and named transaction reconciliation; hidden faces remain null"
+        },
+        {
+          "order": 4,
+          "kind": "attack",
+          "card_name": "Ultimate Force",
+          "target": "owner Active Obstagoon",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "130damage150→20",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": null,
+          "hand_count_after": 3,
+          "source_video": "20260928_200654000_iOS.MP4",
+          "timestamp_seconds": null,
+          "supported_interval_seconds": [
+            460,
+            462
+          ],
+          "evidence_ids": [
+            "R_evidence_t0462.0",
+            "F0467.00"
+          ],
+          "basis": "Native visible card/target/endpoints with locator timing bracket",
+          "limit_reason": null,
+          "hand_count_basis": "Visible fan endpoint and named transaction reconciliation; hidden faces remain null"
+        }
+      ]
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[11].board_after.opponent.bench_in_position_order[2].attached_energy.by_type.Metal",
+      "before_missing": true,
+      "after": 1
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[11].board_after.opponent.bench_in_position_order[2].attached_energy.total",
+      "before": 0,
+      "after": 1
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[11].board_after.opponent.bench_in_position_order[2].attached_energy_basis",
+      "before_missing": true,
+      "after": {
+        "basis": "independent native endpoint check with explicit phase carry-forward",
+        "evidence_ids": [
+          "R_evidence_t0516.0"
+        ],
+        "detail": "One Metal after the turn11 normal attachment; zero applies only to immediate Helmet endpoint at452/456. Carry forward through turn12 and turn13 pre-attachment. Turn13 banner522 may obscure parts of the board; preceding516 provides the settled carry-forward basis."
+      }
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[11].board_at_start.opponent.bench_in_position_order[2].attached_energy.by_type.Metal",
+      "before_missing": true,
+      "after": 1
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[11].board_at_start.opponent.bench_in_position_order[2].attached_energy.total",
+      "before": 0,
+      "after": 1
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[11].board_at_start.opponent.bench_in_position_order[2].attached_energy_basis",
+      "before_missing": true,
+      "after": {
+        "basis": "independent native endpoint check with explicit phase carry-forward",
+        "evidence_ids": [
+          "F0467.00"
+        ],
+        "detail": "One Metal after the turn11 normal attachment; zero applies only to immediate Helmet endpoint at452/456. Carry forward through turn12 and turn13 pre-attachment. Turn13 banner522 may obscure parts of the board; preceding516 provides the settled carry-forward basis."
+      }
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[11].board_at_start.owner.energy_zone.attribute_basis",
+      "before_missing": true,
+      "after": {
+        "this_turn": {
+          "basis": "direct later native orb within composite phase",
+          "evidence_ids": [
+            "F0467.00"
+          ],
+          "detail": "Owner large Darkness orb visible with generation glow during T12; exact stable-generation completion not measured. Opponent current slot empty with small Metal preview."
+        },
+        "next": {
+          "basis": "Upcoming Darkness is retained from the producer composite and neighboring owner-preview observations, not independently visible as a settled small icon in this selected generation-animation anchor. Keep next.available=false; do not claim simultaneous complete Zone observation.",
+          "evidence_ids": [
+            "F0452.00",
+            "R_evidence_t0456.0",
+            "R_evidence_t0462.0",
+            "F0467.00"
+          ]
+        }
+      }
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[11].board_at_start.owner.energy_zone.basis",
+      "before": "Visible current/preview icons; an empty inactive generator does not certify unspent energy",
+      "after": "Composite generated pre-attachment phase: one large current Darkness orb directly visible at F0467.00. Earlier start-board refs may precede generation or other actions; do not attribute available=true to those earlier frames. Upcoming preview is a separate field."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[11].board_at_start.owner.energy_zone.limit_reason",
+      "before": null,
+      "after": "This is a field-specific later generated phase, not an exact simultaneous snapshot with the earliest start-board frame. Exact generation completion and attachment input PTS are not certified. The small upcoming icon is not additional currently usable Energy."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[11].board_at_start.owner.energy_zone.phase",
+      "before_missing": true,
+      "after": "generated_pre_attachment_composite"
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[12].board_after.opponent.bench_in_position_order[2].attached_energy.by_type.Metal",
+      "before": 1,
+      "after": 2
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[12].board_after.opponent.bench_in_position_order[2].attached_energy.total",
+      "before": 1,
+      "after": 2
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[12].board_after.opponent.bench_in_position_order[2].attached_energy_basis",
+      "before_missing": true,
+      "after": {
+        "basis": "independent native endpoint check with explicit phase carry-forward",
+        "evidence_ids": [
+          "R_evidence_t0540.0",
+          "F0547.00"
+        ],
+        "detail": "Two Metal after turn13 normal attachment to second Dialga, increasing one to two; carried through turn14. The count is not a second attachment in turn13."
+      }
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[12].board_at_start.opponent.bench_in_position_order[2].attached_energy.by_type.Metal",
+      "before_missing": true,
+      "after": 1
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[12].board_at_start.opponent.bench_in_position_order[2].attached_energy.total",
+      "before": 0,
+      "after": 1
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[12].board_at_start.opponent.bench_in_position_order[2].attached_energy_basis",
+      "before_missing": true,
+      "after": {
+        "basis": "independent native endpoint check with explicit phase carry-forward",
+        "evidence_ids": [
+          "R_evidence_t0516.0",
+          "R_evidence_t0522.0"
+        ],
+        "detail": "One Metal after the turn11 normal attachment; zero applies only to immediate Helmet endpoint at452/456. Carry forward through turn12 and turn13 pre-attachment. Turn13 banner522 may obscure parts of the board; preceding516 provides the settled carry-forward basis."
+      }
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[12].board_at_start.opponent.energy_zone.attribute_basis",
+      "before_missing": true,
+      "after": {
+        "this_turn": {
+          "basis": "endpoint-derived plus independently reviewed normal attachment; no direct available-orb native anchor",
+          "evidence_ids": [
+            "R_evidence_t0522.0",
+            "F0547.00"
+          ],
+          "detail": "T13 banner R_evidence_t0522.0 shows current slot empty/pending with small Metal preview and second Dialga one Metal. F0547.00 shows that Dialga two Metal and the opponent current slot empty. Together with the independently reviewed normal attachment, this supports one generated Metal before attachment. Its available phase is derived, not directly shown by these native endpoints."
+        },
+        "next": {
+          "basis": "Direct small Metal preview at inspected unoccluded endpoints; available=false because preview is upcoming and separate from current Energy.",
+          "evidence_ids": [
+            "R_evidence_t0522.0",
+            "F0547.00"
+          ]
+        }
+      }
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[12].board_at_start.opponent.energy_zone.basis",
+      "before": "Visible current/preview icons; an empty inactive generator does not certify unspent energy",
+      "after": "Endpoint-derived generated pre-attachment composite phase. T13 banner R_evidence_t0522.0 shows current slot empty/pending with small Metal preview and second Dialga one Metal. F0547.00 shows that Dialga two Metal and the opponent current slot empty. Together with the independently reviewed normal attachment, this supports one generated Metal before attachment. Its available phase is derived, not directly shown by these native endpoints."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[12].board_at_start.opponent.energy_zone.earlier_display_observations",
+      "before_missing": true,
+      "after": [
+        {
+          "evidence_id": "R_evidence_t0522.0",
+          "large_current_slot_count": 0,
+          "large_current_slot_type": null,
+          "basis": "direct visible empty slot at earlier phase; not a claim that the later generated phase has zero or the whole turn lacks Energy",
+          "detail": "Turn13 banner. Opponent large current slot empty with small Metal preview; owner large current slot empty with small Darkness preview. Second Dialga one Metal badge is visible; banner limits other attributes."
+        }
+      ]
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[12].board_at_start.opponent.energy_zone.evidence_ids",
+      "before": [
+        "R_evidence_t0516.0",
+        "R_evidence_t0522.0"
+      ],
+      "after": [
+        "R_evidence_t0516.0",
+        "R_evidence_t0522.0",
+        "F0547.00"
+      ]
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[12].board_at_start.opponent.energy_zone.limit_reason",
+      "before": null,
+      "after": "This is a field-specific later generated phase, not an exact simultaneous snapshot with the earliest start-board frame. Exact generation completion and attachment input PTS are not certified. The small upcoming icon is not additional currently usable Energy."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[12].board_at_start.opponent.energy_zone.phase",
+      "before_missing": true,
+      "after": "generated_pre_attachment_composite"
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[12].plays_in_order[1].basis",
+      "before": "Native visible card/target/endpoints with locator timing bracket",
+      "after": "Native endpoints show second Dialga one Metal before and two after the normal attachment; timing bracket follows the independently reviewed sequence"
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[12].plays_in_order[1].evidence_ids",
+      "before": [
+        "R_evidence_t0522.0",
+        "R_evidence_t0540.0",
+        "F0547.00"
+      ],
+      "after": [
+        "R_evidence_t0516.0",
+        "R_evidence_t0522.0",
+        "R_evidence_t0540.0",
+        "F0547.00"
+      ]
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[12].plays_in_order[1].limit_reason",
+      "before": "Exact input PTS not certified; interval/target follows visible trajectory and settled endpoint",
+      "after": "Exact input PTS not certified; turn13 banner522 is qualified with settled preceding516, and later540/547 support the two-Metal endpoint."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[12].plays_in_order[1].result",
+      "before": "One normal Energy attached; endpoint count reconciled",
+      "after": "One normal Metal attached to second Dialga, increasing 1 to 2"
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[13].board_after.opponent.bench_in_position_order[2].attached_energy.by_type.Metal",
+      "before": 1,
+      "after": 2
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[13].board_after.opponent.bench_in_position_order[2].attached_energy.total",
+      "before": 1,
+      "after": 2
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[13].board_after.opponent.bench_in_position_order[2].attached_energy_basis",
+      "before_missing": true,
+      "after": {
+        "basis": "independent native endpoint check with explicit phase carry-forward",
+        "evidence_ids": [
+          "R_evidence_t0586.0"
+        ],
+        "detail": "Two Metal after turn13 normal attachment to second Dialga, increasing one to two; carried through turn14. The count is not a second attachment in turn13."
+      }
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[13].board_at_start.opponent.bench_in_position_order[2].attached_energy.by_type.Metal",
+      "before": 1,
+      "after": 2
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[13].board_at_start.opponent.bench_in_position_order[2].attached_energy.total",
+      "before": 1,
+      "after": 2
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[13].board_at_start.opponent.bench_in_position_order[2].attached_energy_basis",
+      "before_missing": true,
+      "after": {
+        "basis": "independent native endpoint check with explicit phase carry-forward",
+        "evidence_ids": [
+          "F0547.00"
+        ],
+        "detail": "Two Metal after turn13 normal attachment to second Dialga, increasing one to two; carried through turn14. The count is not a second attachment in turn13."
+      }
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[13].board_at_start.owner.energy_zone.attribute_basis",
+      "before_missing": true,
+      "after": {
+        "this_turn": {
+          "basis": "direct later native orb within composite phase",
+          "evidence_ids": [
+            "F0550.00"
+          ],
+          "detail": "Owner large current Darkness orb plus small Darkness preview visible; opponent current slot empty plus small Metal preview."
+        },
+        "next": {
+          "basis": "Small upcoming preview directly visible at the listed later anchor; count1 identifies one preview, not a second usable Energy.",
+          "evidence_ids": [
+            "F0550.00"
+          ]
+        }
+      }
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[13].board_at_start.owner.energy_zone.basis",
+      "before": "Visible current/preview icons; an empty inactive generator does not certify unspent energy",
+      "after": "Composite generated pre-attachment phase: one large current Darkness orb directly visible at F0550.00. Earlier start-board refs may precede generation or other actions; do not attribute available=true to those earlier frames. Upcoming preview is a separate field."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[13].board_at_start.owner.energy_zone.earlier_display_observations",
+      "before_missing": true,
+      "after": [
+        {
+          "evidence_id": "F0547.00",
+          "large_current_slot_count": 0,
+          "large_current_slot_type": null,
+          "basis": "direct visible empty slot at earlier phase; not a claim that the later generated phase has zero or the whole turn lacks Energy",
+          "detail": "Owner large current slot empty with small Darkness preview before T14 generation. Opponent current slot empty and small Metal preview; second Dialga now has two Metal."
+        }
+      ]
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[13].board_at_start.owner.energy_zone.evidence_ids",
+      "before": [
+        "R_evidence_t0540.0",
+        "F0547.00"
+      ],
+      "after": [
+        "R_evidence_t0540.0",
+        "F0547.00",
+        "F0550.00"
+      ]
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[13].board_at_start.owner.energy_zone.limit_reason",
+      "before": null,
+      "after": "This is a field-specific later generated phase, not an exact simultaneous snapshot with the earliest start-board frame. Exact generation completion and attachment input PTS are not certified. The small upcoming icon is not additional currently usable Energy."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[13].board_at_start.owner.energy_zone.phase",
+      "before_missing": true,
+      "after": "generated_pre_attachment_composite"
+    },
+    {
+      "file": "HAND_SUPPLEMENT.json",
+      "jsonpath": "$.target_rows[2].hand_at_start.cards_left_to_right[2].variant",
+      "before": "gold",
+      "after": "rainbow-border full art; one visible star"
+    },
+    {
+      "file": "TURN_EVIDENCE.json",
+      "jsonpath": "$.discard_snapshots[0].cards_in_view[5].variant",
+      "before": "gold",
+      "after": "rainbow-border full art; one visible star"
+    },
+    {
+      "file": "UNCERTAINTIES.json",
+      "jsonpath": "$.items",
+      "before": [
+        {
+          "field": "opponent_hidden_hand_draws_search",
+          "value": null,
+          "reason": "Opponent faces hidden by recording perspective; no deck-based guessing"
+        },
+        {
+          "field": "exact_historical20carddeck",
+          "value": null,
+          "reason": "No source-bound historical snapshot supplied; visible minimum only"
+        },
+        {
+          "field": "full_opponent_discard",
+          "value": null,
+          "reason": "No opened opponent pile located in all5951fpssamples or inspectednative windows; closed top only; subsecond panels could fall between samples"
+        },
+        {
+          "field": "complete_owner_discard",
+          "value": null,
+          "reason": "One partial owner panel472, no fullscrollcensus"
+        },
+        {
+          "field": "inputPTS_authorship",
+          "value": null,
+          "reason": "Touch input not separately instrumented; exact action timestamps bounded, framePTS separate"
+        },
+        {
+          "field": "T5IcePopcoin",
+          "value": "heads endpoint inference",
+          "reason": "Native191spinning; 1fpsresult locator+returnedcard/HPendpointreconciliation supportheads, not selectedstill alone"
+        },
+        {
+          "field": "T9secondIcePopcoin",
+          "value": "tails endpoint inference",
+          "reason": "Native360blackcoin+discard/fanendpoint; selectednative does not show fullwordTails"
+        },
+        {
+          "field": "stadium_conditions",
+          "value": "none visible",
+          "reason": "No visible Stadium or special condition icon in inspectedboardviews; sampledabsencequalified"
+        },
+        {
+          "field": "Auto",
+          "value": null,
+          "reason": "Master Ball badge is direct; queue selection is not separately established. Sampled screening does not certify absence every instant; no inspected source evidence triggers Auto-option exclusion."
+        },
+        {
+          "field": "newprose_vsaccepted",
+          "value": [
+            {
+              "topic": "Turn1namedactions",
+              "old_quote": "| 1 opponent, ~00:36–00:48 | Opponent has Arceus ex Active and passes development without visible damage. The game's turn-1 banner is at 00:36. [Turn 1](evidence/t0036.0.jpg), [board](evidence/t0048.0.jpg). |",
+              "new": "Poké Ball and Professor Research shown45/46; search/research card identities hidden",
+              "basis": [
+                "F0045.00",
+                "F0046.00",
+                "R_evidence_t0048.0"
+              ]
+            },
+            {
+              "topic": "SecondDialgaplacement",
+              "old_quote": "| 11 opponent, ~07:24–07:48 | Opponent develops the second Dialga ex and Arceus ex's Ultimate Force deals 130 to Obstagoon, leaving it at 20. [Pre-attack](evidence/t0456.0.jpg), [130 damage](evidence/t0462.0.jpg), [20 HP](evidence/t0468.0.jpg). |",
+              "new": "SecondDialga placed375–378 in turn9; turn11RockyHelmet attaches to already-benched secondDialga",
+              "basis": [
+                "F0373.00",
+                "R_evidence_t0384.0",
+                "F0399.50",
+                "F0452.00",
+                "R_evidence_t0456.0"
+              ]
+            },
+            {
+              "topic": "Turn10damage",
+              "old_quote": "| 10 owner, ~06:36–07:24 | Owner plays Lillie to heal Stage 2 Obstagoon from 100 to 150. A 10-damage event lowers Arceus ex from 140 to 130, then opponent healing restores it to 140. The sampled frame does not establish that this was Merciless Strike. [Lillie](evidence/t0414.0.jpg), [150 HP](evidence/t0420.0.jpg), [10 damage](evidence/t0426.0.jpg). |",
+              "new": "Owner ends withoutattack at1D; automaticNeedle deals10after EndTurn. Lillie actualheal50,max150.",
+              "basis": [
+                "F0422.00",
+                "R_evidence_t0426.0"
+              ]
+            },
+            {
+              "topic": "TwoTools",
+              "old_quote": "| 2 owner, ~00:48–01:48 | Owner uses Poké Ball and benches Deino and another Galarian Zigzagoon, attaches Darkness Energy and Deceptive Needle. Active Zigzagoon's Tackle deals 10, then Deceptive Needle deals another 10 to Arceus ex (140 to 120). No point is awarded. [Poké Ball](evidence/t0066.0.jpg), [Tackle damage](evidence/t0100.0.jpg), [Needle damage](evidence/t0104.0.jpg), [Arceus 120](evidence/t0108.0.jpg). |",
+              "new": "TwoNeedles attachto differentZigzagoon: regularActive, goldbench2; Researchreveals secondTool84–85",
+              "basis": [
+                "F0076.00",
+                "R_evidence_t0084.0",
+                "F0085.00",
+                "F0093.00",
+                "R_evidence_t0096.0"
+              ]
+            },
+            {
+              "topic": "DeckownerIcePopattribution",
+              "old_quote": "Deceptive Needle, Rare Candy, Lillie, Piers and Lucky Ice Pop appear in the line.",
+              "accepted_source_line": 8,
+              "new": "This old wording is ambiguous about card ownership. Source-visible Ice Pop actions are opponent; owner list cannot claim a copy from those events. This does not prove an unseen owner copy absent.",
+              "basis": [
+                "F0127.00",
+                "F0244.80",
+                "F0351.80",
+                "F0360.00"
+              ]
+            }
+          ],
+          "reason": "Exact old rows retained in INHERITED_TURNS; only separate added fields corrected"
+        }
+      ],
+      "after": [
+        {
+          "field": "opponent_hidden_hand_draws_search",
+          "value": null,
+          "reason": "Opponent faces hidden by recording perspective; no deck-based guessing"
+        },
+        {
+          "field": "exact_historical20carddeck",
+          "value": null,
+          "reason": "No source-bound historical snapshot supplied; visible minimum only"
+        },
+        {
+          "field": "full_opponent_discard",
+          "value": null,
+          "reason": "No opened opponent pile located in all5951fpssamples or inspectednative windows; closed top only; subsecond panels could fall between samples"
+        },
+        {
+          "field": "complete_owner_discard",
+          "value": null,
+          "reason": "One partial owner panel472, no fullscrollcensus"
+        },
+        {
+          "field": "inputPTS_authorship",
+          "value": null,
+          "reason": "Touch input not separately instrumented; exact action timestamps bounded, framePTS separate"
+        },
+        {
+          "field": "T5IcePopcoin",
+          "value": "heads endpoint inference",
+          "reason": "Native191spinning; 1fpsresult locator+returnedcard/HPendpointreconciliation supportheads, not selectedstill alone"
+        },
+        {
+          "field": "T9secondIcePopcoin",
+          "value": "tails endpoint inference",
+          "reason": "Native360blackcoin+discard/fanendpoint; selectednative does not show fullwordTails"
+        },
+        {
+          "field": "stadium_conditions",
+          "value": "none visible",
+          "reason": "No visible Stadium or special condition icon in inspectedboardviews; sampledabsencequalified"
+        },
+        {
+          "field": "Auto",
+          "value": null,
+          "reason": "Master Ball badge is direct; queue selection is not separately established. Sampled screening does not certify absence every instant; no inspected source evidence triggers Auto-option exclusion."
+        },
+        {
+          "field": "newprose_vsaccepted",
+          "value": [
+            {
+              "topic": "Turn1namedactions",
+              "old_quote": "| 1 opponent, ~00:36–00:48 | Opponent has Arceus ex Active and passes development without visible damage. The game's turn-1 banner is at 00:36. [Turn 1](evidence/t0036.0.jpg), [board](evidence/t0048.0.jpg). |",
+              "new": "Poké Ball and Professor Research shown45/46; search/research card identities hidden",
+              "basis": [
+                "F0045.00",
+                "F0046.00",
+                "R_evidence_t0048.0"
+              ]
+            },
+            {
+              "topic": "SecondDialgaplacement",
+              "old_quote": "| 11 opponent, ~07:24–07:48 | Opponent develops the second Dialga ex and Arceus ex's Ultimate Force deals 130 to Obstagoon, leaving it at 20. [Pre-attack](evidence/t0456.0.jpg), [130 damage](evidence/t0462.0.jpg), [20 HP](evidence/t0468.0.jpg). |",
+              "new": "Second Dialga placed375-378 in turn9. Turn11 Rocky Helmet attaches to the already-benched second Dialga; it has0Metal at immediate452/456, then normal Metal increases0 to1 before Ultimate Force by462. It carries1 through turn12 and turn13 start, then turn13 normal attachment increases1 to2.",
+              "basis": [
+                "F0373.00",
+                "R_evidence_t0384.0",
+                "F0399.50",
+                "F0452.00",
+                "R_evidence_t0456.0",
+                "R_evidence_t0462.0",
+                "F0467.00",
+                "R_evidence_t0516.0",
+                "R_evidence_t0522.0",
+                "F0547.00",
+                "R_evidence_t0586.0"
+              ]
+            },
+            {
+              "topic": "Turn10damage",
+              "old_quote": "| 10 owner, ~06:36–07:24 | Owner plays Lillie to heal Stage 2 Obstagoon from 100 to 150. A 10-damage event lowers Arceus ex from 140 to 130, then opponent healing restores it to 140. The sampled frame does not establish that this was Merciless Strike. [Lillie](evidence/t0414.0.jpg), [150 HP](evidence/t0420.0.jpg), [10 damage](evidence/t0426.0.jpg). |",
+              "new": "Owner ends withoutattack at1D; automaticNeedle deals10after EndTurn. Lillie actualheal50,max150.",
+              "basis": [
+                "F0422.00",
+                "R_evidence_t0426.0"
+              ]
+            },
+            {
+              "topic": "TwoTools",
+              "old_quote": "| 2 owner, ~00:48–01:48 | Owner uses Poké Ball and benches Deino and another Galarian Zigzagoon, attaches Darkness Energy and Deceptive Needle. Active Zigzagoon's Tackle deals 10, then Deceptive Needle deals another 10 to Arceus ex (140 to 120). No point is awarded. [Poké Ball](evidence/t0066.0.jpg), [Tackle damage](evidence/t0100.0.jpg), [Needle damage](evidence/t0104.0.jpg), [Arceus 120](evidence/t0108.0.jpg). |",
+              "new": "TwoNeedles attachto differentZigzagoon: regularActive, goldbench2; Researchreveals secondTool84–85",
+              "basis": [
+                "F0076.00",
+                "R_evidence_t0084.0",
+                "F0085.00",
+                "F0093.00",
+                "R_evidence_t0096.0"
+              ]
+            },
+            {
+              "topic": "DeckownerIcePopattribution",
+              "old_quote": "Deceptive Needle, Rare Candy, Lillie, Piers and Lucky Ice Pop appear in the line.",
+              "accepted_source_line": 8,
+              "new": "This old wording is ambiguous about card ownership. Source-visible Ice Pop actions are opponent; owner list cannot claim a copy from those events. This does not prove an unseen owner copy absent.",
+              "basis": [
+                "F0127.00",
+                "F0244.80",
+                "F0351.80",
+                "F0360.00"
+              ]
+            }
+          ],
+          "reason": "Exact old rows retained in INHERITED_TURNS; only separate added fields corrected"
+        },
+        {
+          "field": "start_energy_zone_phase",
+          "value": "generated_pre_attachment_composite",
+          "reason": "Start current Energy is a field-specific later generated phase, not direct at earlier pending/banners. Eleven fields have later native-orb refs; T9/T13 are endpoint-derived from reviewed normal attachments. Upcoming preview is separate and unavailable; T6/T12 preview completeness remains qualified."
+        },
+        {
+          "field": "Hydreigon_exact_printing",
+          "value": null,
+          "reason": "Rainbow-border full art with one visible star is supported; exact set/printing identifier is not independently certified."
+        },
+        {
+          "field": "T2_second_Poke_Ball_native_face",
+          "value": "transaction-derived Galarian Zigzagoon identity",
+          "reason": "Selected69 native is card back and76 is post-bench. Identity follows the known owner hand and closed draw/bench sequence; reduced locator supplies reveal timing."
+        }
+      ]
+    },
+    {
+      "file": "ACTION_RECONCILIATION.json",
+      "jsonpath": "$.conflicts[1].basis",
+      "before": [
+        "F0373.00",
+        "R_evidence_t0384.0",
+        "F0399.50",
+        "F0452.00",
+        "R_evidence_t0456.0"
+      ],
+      "after": [
+        "F0373.00",
+        "R_evidence_t0384.0",
+        "F0399.50",
+        "F0452.00",
+        "R_evidence_t0456.0",
+        "R_evidence_t0462.0",
+        "F0467.00",
+        "R_evidence_t0516.0",
+        "R_evidence_t0522.0",
+        "F0547.00",
+        "R_evidence_t0586.0"
+      ]
+    },
+    {
+      "file": "ACTION_RECONCILIATION.json",
+      "jsonpath": "$.conflicts[1].new",
+      "before": "SecondDialga placed375–378 in turn9; turn11RockyHelmet attaches to already-benched secondDialga",
+      "after": "Second Dialga placed375-378 in turn9. Turn11 Rocky Helmet attaches to the already-benched second Dialga; it has0Metal at immediate452/456, then normal Metal increases0 to1 before Ultimate Force by462. It carries1 through turn12 and turn13 start, then turn13 normal attachment increases1 to2."
+    },
+    {
+      "file": "REVIEW_SUPPLEMENT.md",
+      "original_line": 18,
+      "before": "| 6 | Dacz8976 | Galarian Obstagoon (full art), Lillie (full art), Hydreigon (gold) | 1. Hydreigon → owner bench3 Zweilous: Evolve150HP; 2. energy_attachment → owner bench3 Hydreigon: One normal Energy attached; endpoint count reconciled; 3. Tackle → opponent Arceus: 10damage140→130 | Galarian Obstagoon (full art), Lillie (full art) | [F0199.00](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/RETROSPECTIVE_HANDS_2026-10-02/20260928_200654000/turn_evidence/t0199.00.jpg), [F0200.00](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/RETROSPECTIVE_HANDS_2026-10-02/20260928_200654000/turn_evidence/t0200.00.jpg), [F0201.00](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/RETROSPECTIVE_HANDS_2026-10-02/20260928_200654000/turn_evidence/t0201.00.jpg) |",
+      "after": "| 6 | Dacz8976 | Galarian Obstagoon (full art), Lillie (full art), Hydreigon (rainbow-border full art; one visible star) | 1. Hydreigon → owner bench3 Zweilous: Evolve150HP; 2. energy_attachment → owner bench3 Hydreigon: One normal Energy attached; endpoint count reconciled; 3. Tackle → opponent Arceus: 10damage140→130 | Galarian Obstagoon (full art), Lillie (full art) | [F0199.00](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/RETROSPECTIVE_HANDS_2026-10-02/20260928_200654000/turn_evidence/t0199.00.jpg), [F0200.00](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/RETROSPECTIVE_HANDS_2026-10-02/20260928_200654000/turn_evidence/t0200.00.jpg), [F0201.00](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/RETROSPECTIVE_HANDS_2026-10-02/20260928_200654000/turn_evidence/t0201.00.jpg) |"
+    },
+    {
+      "file": "REVIEW_SUPPLEMENT.md",
+      "original_line": 23,
+      "before": "| 11 | plz_concede | Rare Candy (regular art) | 1. Fragrant Flower Garden → opponent own board: Arceus130→140; Cape Dialga90→100; 2. Rocky Helmet → opponent bench3 second Dialga: Helmet attached; Energy remains0; 3. Ultimate Force → owner Active Obstagoon: 130damage150→20 | Rare Candy (regular art) | [F0452.00](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/RETROSPECTIVE_HANDS_2026-10-02/20260928_200654000/turn_evidence/t0452.00.jpg), [R_evidence_t0456.0](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20260928_200654000_iOS_sol/evidence/t0456.0.jpg), [R_evidence_t0462.0](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20260928_200654000_iOS_sol/evidence/t0462.0.jpg) |",
+      "after": "| 11 | plz_concede | Rare Candy (regular art) | 1. Fragrant Flower Garden → opponent own board: Arceus130→140; Cape Dialga90→100; 2. Rocky Helmet → opponent bench3 second Dialga: Helmet attached; zero Metal only at immediate452/456; 3. energy_attachment → opponent bench3 second Dialga: Normal Metal0→1 after Helmet and before attack, bounded after456/by462; 4. Ultimate Force → owner Active Obstagoon: 130damage150→20 | Rare Candy (regular art) | [F0452.00](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/RETROSPECTIVE_HANDS_2026-10-02/20260928_200654000/turn_evidence/t0452.00.jpg), [R_evidence_t0456.0](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20260928_200654000_iOS_sol/evidence/t0456.0.jpg), [R_evidence_t0462.0](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20260928_200654000_iOS_sol/evidence/t0462.0.jpg) |"
+    },
+    {
+      "file": "REVIEW_SUPPLEMENT.md",
+      "original_line": 25,
+      "before": "| 13 | plz_concede | empty | 1. Fragrant Flower Garden → opponent own board: Arceus60→70; Cape Dialga100→110; 2. energy_attachment → opponent bench3 second Dialga: One normal Energy attached; endpoint count reconciled; 3. Ultimate Force → owner Active second Obstagoon: 130damage150→20 | empty | [R_evidence_t0540.0](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20260928_200654000_iOS_sol/evidence/t0540.0.jpg), [F0547.00](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/RETROSPECTIVE_HANDS_2026-10-02/20260928_200654000/turn_evidence/t0547.00.jpg) |",
+      "after": "| 13 | plz_concede | empty | 1. Fragrant Flower Garden → opponent own board: Arceus60→70; Cape Dialga100→110; 2. energy_attachment → opponent bench3 second Dialga: One normal Metal attached, second Dialga1→2; 3. Ultimate Force → owner Active second Obstagoon: 130damage150→20 | empty | [R_evidence_t0540.0](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20260928_200654000_iOS_sol/evidence/t0540.0.jpg), [F0547.00](C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/RETROSPECTIVE_HANDS_2026-10-02/20260928_200654000/turn_evidence/t0547.00.jpg) |"
+    },
+    {
+      "file": "REVIEW_SUPPLEMENT.md",
+      "original_line": 34,
+      "before": "Separate reconciliation retains exact accepted old rows. Second Dialga placement occurs in turn 9, with Helmet attached in turn 11. Turn 10 has one Darkness, End Turn, then automatic Needle 10 damage. Two Needles attach to different Zigzagoon. Opponent Ice Pop uses do not establish an owner deck copy. No accepted outcome was changed.",
+      "after": "Separate reconciliation retains exact accepted old rows. Second Dialga placement occurs in turn9. It receives Helmet and then one normal Metal in turn11; zero Metal applies only immediately after Helmet. It carries one Metal through turn12 and turn13 start, then gains its second Metal during turn13. Turn 10 has one Darkness, End Turn, then automatic Needle 10 damage. Two Needles attach to different Zigzagoon. Opponent Ice Pop uses do not establish an owner deck copy. No accepted outcome was changed."
+    },
+    {
+      "file": "REVIEW_SUPPLEMENT.md",
+      "appended_after_original_line": 36,
+      "after": "\nIndependent-check repair notes: the second Poké Ball on turn2 keeps its Galarian Zigzagoon result, but identity is derived from the visible hand/bench transaction sequence. Native69 shows a card back and76 shows the Pokémon already benched; the reduced locator provides reveal timing. Hydreigon is described only as rainbow-border full art with one visible star; its exact printing identifier remains unconfirmed.\n\nStart Energy Zones describe a field-specific generated pre-attachment phase within each composite board. Large current orbs and small upcoming previews are separate. Earlier draw/banner frames can show an empty current slot; that does not make later availability a direct observation at the earlier frame. The 13 exact phase qualifications and native refs are in TURN_LEDGER.json. Turns9 and13 use endpoint-derived Metal1 from the reviewed normal attachments. Turn6/12 generation frames do not independently establish every preview detail or exact generation completion. Inactive unknown availability remains null; previews remain unavailable.\n\nThese repairs await the original independent Sol reviewer's recheck. The accepted outcome, old packet and inherited quotations remain unchanged."
+    }
+  ],
+  "source_movie_reads": 0,
+  "new_captures": 0,
+  "source_hash_rereads": 0,
+  "old_accepted_packet_modified": false,
+  "shared_files_modified": false,
+  "outcome_unchanged": "owner2-3loss",
+  "independent_acceptance": false,
+  "validation_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\VALIDATION_AFTER_INDEPENDENT_REPAIR.json"
+}

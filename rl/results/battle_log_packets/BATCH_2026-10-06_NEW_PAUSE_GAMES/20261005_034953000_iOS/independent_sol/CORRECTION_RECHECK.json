@@ -1,0 +1,37 @@
+{
+  "source_sha256": "85f9e3803543f512323259794b7166808e5bfd2ff5a3854d8ce1a40686075180",
+  "accepted": true,
+  "status": "accepted_bounded_repair_recheck_R1_R3_complete",
+  "checked_utc": "2026-10-06T20:25:06.589870+00:00",
+  "required_repairs": [],
+  "remaining_repairs": [],
+  "checked_input_sha256": {
+    "SOURCE.json": "891a7a104aa72078472f090fb48a2648a37b4febb51be948116aca9cc3c2c0e7",
+    "REVIEW.md": "04e7c57d5f3ffc07ed56a3198db948162996f6dc396153858df4e3af6deae7a4",
+    "COVERAGE.md": "2493d9debc43a68d4b93d17adeada9878ddb2b17575a2d777abb6dc99ff7bac1",
+    "SUMMARY.json": "28ff37161301afbd3cee59260822714f31702ecae083b7797c8a0cc907464212",
+    "UNCERTAINTIES.json": "702bac515c45f9214dc2324514a6bc531e6dc6fa19452f23fff024cec29d9450",
+    "PAUSE_GAME.json": "4b020c79f1fbd8dac3c61ff566cfa441da6508dd154ca8ddb8783c9ec2fd8a1b",
+    "DECK_USED.json": "61b347b31eda9ce011faec763288dd12702a208ef14acc1b25015ff58503278f",
+    "TURN_LEDGER.json": "ff04e4d2e96b39c1b974d3bf2e87a3af1458cf0ffa5a67590c2ddded28d8b0e9",
+    "TURN_EVIDENCE.json": "1012fba68c6ebec51f158c5bd4b759e1f8206c740b848c4ceb7b3a00c1b8252e",
+    "RECORDING_METADATA.json": "b7466a712b2c595306841d00cd34b034f967027a3fc107efdbcb354aff7cd68f",
+    "../NEW_DECK_ENTRIES.json": "e3a946d41a06fa301b6f7da92cc173335a232c6eb24098607fb9a67f9ad49900",
+    "INDEPENDENT_CORRECTIONS.json": "8ad88cfd8888aeb939b13d728463b7b3ecca4b2a407c1ea26401142425a4b202",
+    "qr_intake/QR_DECODE_0005.00.json": "a49a4f1c8e9039c501b4ef45950c7c68f39ff68a41a97f43c5979a4d7c68c033",
+    "PROMOTION_REFERENCE_CORRECTION.json": "13363d3ebc954c66515d3f10f7903abff0c06826503c5e4130191b5533432438",
+    "independent_sol/CHECK_RESULT.json": "eaddcce7dfa6e867fc4975d312aba362e145d7cb3117f43c610f070295e93099",
+    "independent_sol/CORRECTION_RECHECK.before_promotion_dependency.json": "4fbf100a1d47fc9f75a3ac7e49d9dd658f9510fd3daea5c81f2330dea7fbe74d"
+  },
+  "scope": "Only last automatic promotion reference dependency; prior R1-R3 native recheck reused. No expanded visual pass or extraction.",
+  "verified": "261 explicitly prebound;262 animation/263 reveal/264 placement/266 settled supports automatic Melmetal promotion, matching prior independently viewed native evidence. All other prior accepted repaired inputs unchanged.",
+  "native_evidence_reused_seconds": [
+    261,
+    262,
+    263,
+    264,
+    266
+  ],
+  "initial_rejection_preserved": true,
+  "prior_failed_recheck_preserved": true
+}

@@ -1,0 +1,26 @@
+{
+  "status": "visually_inspected",
+  "source_sha256": "d4d0dd51f309c05abcdb6b1f04a75c036ca3e59b4abee3f6ce542b2d56149fd6",
+  "locator_preprocessing": "LOCATOR_PREPROCESSING.json",
+  "sampling_rate_fps": 1,
+  "inspected_nominal_seconds": [
+    0,
+    594
+  ],
+  "inspected_grids": 30,
+  "sample_count": 595,
+  "use": "Locate turn banners, public draws, controls, panels and prompts only. No reduced-grid hand identity transcription.",
+  "observed_opened_discard_intervals_seconds": [
+    [
+      469,
+      472
+    ]
+  ],
+  "warning_or_no_target_locator_intervals": [
+    [
+      371,
+      374
+    ]
+  ],
+  "limits": "Each second sampled, not continuous frame-by-frame screening. Subsecond events and obscured text can be missed; nominal sampling phase and actualPTS not certified in preprocessed grids. Native refs settle fields."
+}

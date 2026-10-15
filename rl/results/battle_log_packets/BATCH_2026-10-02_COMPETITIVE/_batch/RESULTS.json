@@ -1,0 +1,372 @@
+{
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "artifact_title": "Pause Games",
+  "totals": {
+    "games": 5,
+    "wins": 2,
+    "losses": 3,
+    "concession_wins": 2
+  },
+  "date_local": "2026-10-01",
+  "numeric_ratings": null,
+  "results": [
+    {
+      "video": "20261002_020315000_iOS.MP4",
+      "source_sha256": "52b7fa2fb75ddd5924d13f0cf22833d83c83118fc31a5e87be30b4949ca37fc7",
+      "source_bytes": 627828243,
+      "duration_seconds": 341.141667,
+      "outcome": "loss",
+      "outcome_type": "loss",
+      "opponent": "るか",
+      "opponent_core": [
+        "Frigibax",
+        "Baxcalibur",
+        "Feebas",
+        "Milotic ex",
+        "Palkia ex"
+      ],
+      "turn_order": "owner_second_opponent_first",
+      "final_score": {
+        "owner": 1,
+        "opponent": 3
+      },
+      "review": "Recording_QA/20261002_020315000_iOS_competitive_sol/REVIEW.md",
+      "coverage": "Recording_QA/20261002_020315000_iOS_competitive_sol/COVERAGE.md",
+      "decisive_evidence": [
+        {
+          "seconds": 311,
+          "path": "native/t0311.00.jpg",
+          "observation": "Cyrus revealed with switch-in-damaged-Bench text"
+        },
+        {
+          "seconds": 322.5,
+          "path": "native/t0322.50.jpg",
+          "observation": "Indeedee ex110 Active, Palkia ex150 with four Water, score1-1"
+        },
+        {
+          "seconds": 325.5,
+          "path": "native/t0325.50.jpg",
+          "observation": "150 damage to Active Indeedee ex and20 to each remaining Bench Pokemon"
+        },
+        {
+          "seconds": 331.5,
+          "path": "native/t0331.50.jpg",
+          "observation": "Opponent るか reaches three points"
+        },
+        {
+          "seconds": 334.5,
+          "path": "native/t0334.50.jpg",
+          "observation": "Defeat banner"
+        },
+        {
+          "seconds": 340.5,
+          "path": "native/t0340.50.jpg",
+          "observation": "Results screen Defeat versus るか"
+        }
+      ],
+      "storage": {
+        "logical_bytes": 627828243,
+        "allocated_bytes": 0,
+        "attributes": 5248544,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": true
+      },
+      "accepted": true,
+      "registered": true,
+      "archived_hash_verified": true,
+      "external_verified": true
+    },
+    {
+      "video": "20261002_020920000_iOS.MP4",
+      "source_sha256": "a9f4cfd8c2173a889abc99ae67320174bfd83822d2027884bcb106bf19ae8514",
+      "source_bytes": 457508292,
+      "duration_seconds": 248.285,
+      "outcome": "win",
+      "outcome_type": "win_by_concession",
+      "opponent": "おさるの上司",
+      "opponent_core": [
+        "Charmander x2,60HP,Ember30",
+        "Charmeleon,80HP,Ignition/Slash40",
+        "Entei ex,140HP,Legendary Pulse/Blazing Beatdown60+",
+        "Professor's Research",
+        "Poké Ball",
+        "May",
+        "Flame Patch x2 played"
+      ],
+      "turn_order": "second",
+      "final_score": {
+        "owner": 0,
+        "opponent": 0,
+        "basis": "No knockouts; empty point markers throughout; result statistics at247.40s",
+        "native_frame": "native/t0247.40.jpg"
+      },
+      "review": "Recording_QA/20261002_020920000_iOS_competitive_sol/REVIEW.md",
+      "coverage": "Recording_QA/20261002_020920000_iOS_competitive_sol/COVERAGE.md",
+      "decisive_evidence": [
+        {
+          "timestamp_seconds": 214,
+          "frame": "native/t0214.00.jpg",
+          "fact": "Whale Pump damage sequence:120 against140HP Entei ex with Water weakness"
+        },
+        {
+          "timestamp_seconds": 216,
+          "frame": "native/t0216.00.jpg",
+          "fact": "Opponent turn9 banner; Entei ex20HP,owner Wailord200HP/four Water;score0-0"
+        },
+        {
+          "timestamp_seconds": 238,
+          "frame": "native/t0238.00.jpg",
+          "fact": "Explicit Your opponent conceded banner"
+        },
+        {
+          "timestamp_seconds": 247.4,
+          "frame": "native/t0247.40.jpg",
+          "fact": "Victory againstおさるの上司;went second;9turns;0-0points;120damage"
+        }
+      ],
+      "storage": {
+        "logical_bytes": 457508292,
+        "allocated_bytes": 0,
+        "attributes": 5248544,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": true
+      },
+      "accepted": true,
+      "registered": true,
+      "archived_hash_verified": true,
+      "external_verified": true
+    },
+    {
+      "video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "source_bytes": 795968694,
+      "duration_seconds": 430.026667,
+      "outcome": "loss",
+      "outcome_type": "loss",
+      "opponent": "ポジビン",
+      "opponent_core": [
+        "Meloetta 70 HP Strange Singing/Psyshot",
+        "Giratina ex 150 HP Broken-Space Bellow",
+        "Ralts 60 HP Teleport",
+        "Mega Gardevoir ex 210 HP Fantasia Force110, evolved via Rare Candy",
+        "Mega Diancie ex 170 HP Brilliant Storm"
+      ],
+      "turn_order": "owner_first",
+      "final_score": {
+        "owner": 0,
+        "opponent": 3
+      },
+      "review": "Recording_QA/20261002_021402000_iOS_competitive_sol/REVIEW.md",
+      "coverage": "Recording_QA/20261002_021402000_iOS_competitive_sol/COVERAGE.md",
+      "decisive_evidence": [
+        {
+          "timestamp_seconds": 383,
+          "frame": "native/t0383.00.jpg",
+          "observed": "Mega Diancie Active, five Psychic; Wailord ex230 HP with Heavy Helmet; fourteen Psychic on opponent board"
+        },
+        {
+          "timestamp_seconds": 386,
+          "frame": "native/t0386.00.jpg",
+          "observed": "Brilliant Storm displays300 damage and KOs Wailord ex"
+        },
+        {
+          "timestamp_seconds": 392,
+          "frame": "native/t0392.00.jpg",
+          "observed": "+2 points to ポジビン"
+        },
+        {
+          "timestamp_seconds": 402,
+          "frame": "native/t0402.00.jpg",
+          "observed": "Owner non-ex Wailord has five Water and Whale Pump110 available"
+        },
+        {
+          "timestamp_seconds": 410,
+          "frame": "native/t0410.00.jpg",
+          "observed": "After owner attack Mega Diancie has stable60 HP; owner Wailord200 HP"
+        },
+        {
+          "timestamp_seconds": 416,
+          "frame": "native/t0416.00.jpg",
+          "observed": "Second Brilliant Storm displays300 on non-ex Wailord, then KO"
+        },
+        {
+          "timestamp_seconds": 422,
+          "frame": "native/t0422.00.jpg",
+          "observed": "Opponent third point"
+        },
+        {
+          "timestamp_seconds": 429.9,
+          "frame": "native/t0429.90.jpg",
+          "observed": "Defeat, went first,14 turns,0-3,damage done110"
+        }
+      ],
+      "storage": {
+        "logical_bytes": 795968694,
+        "allocated_bytes": 0,
+        "attributes": 5248544,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": true
+      },
+      "accepted": true,
+      "registered": true,
+      "archived_hash_verified": true,
+      "external_verified": true
+    },
+    {
+      "video": "20261002_022135000_iOS.MP4",
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "source_bytes": 1322829794,
+      "duration_seconds": 710.136848,
+      "outcome": "loss",
+      "outcome_type": "loss",
+      "opponent": "だんくしゅー",
+      "opponent_core": [
+        "Swablu x2",
+        "Mega Altaria ex x2",
+        "Froakie x2",
+        "Greninja x2, Water Shuriken",
+        "Chingling, Jingly Noise",
+        "Lucky Egg",
+        "Rare Candy"
+      ],
+      "turn_order": "owner_first",
+      "final_score": {
+        "owner": 1,
+        "opponent": 3,
+        "basis": "Displayed final results, three-circle cap; terminal KO awards +2 after two earlier Wailmer points."
+      },
+      "review": "Recording_QA/20261002_022135000_iOS_competitive_sol/REVIEW.md",
+      "coverage": "Recording_QA/20261002_022135000_iOS_competitive_sol/COVERAGE.md",
+      "decisive_evidence": [
+        {
+          "timestamp_seconds": 694,
+          "path": "native/t0694.00.jpg",
+          "observation": "Mega Harmony attack banner, turn 30"
+        },
+        {
+          "timestamp_seconds": 696,
+          "path": "native/t0696.00.jpg",
+          "observation": "130 damage hits the 130-HP Active Indeedee ex"
+        },
+        {
+          "timestamp_seconds": 702,
+          "path": "native/t0702.00.jpg",
+          "observation": "+2 points banner and opponent three lit circles"
+        },
+        {
+          "timestamp_seconds": 710,
+          "path": "native/t0710.00.jpg",
+          "observation": "Defeat, Went first, 30 turns, owner 1 / opponent 3, damage done 120"
+        }
+      ],
+      "storage": {
+        "logical_bytes": 1322829794,
+        "allocated_bytes": 0,
+        "attributes": 5248544,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": true
+      },
+      "accepted": true,
+      "registered": true,
+      "archived_hash_verified": true,
+      "external_verified": true
+    },
+    {
+      "video": "20261002_023418000_iOS.MP4",
+      "source_sha256": "e2cd84acd3e1ef962ad0f2bcdf3f40345e4facb41fdbd142054bf3d4a0a0e1f5",
+      "source_bytes": 688881204,
+      "duration_seconds": 371.495,
+      "outcome": "win",
+      "outcome_type": "win_by_concession",
+      "opponent": "KO歐~YOU",
+      "opponent_core": [
+        "Bonsly, 30 HP, Teary Attack",
+        "Riolu x2",
+        "Lucario non-ex, 100 HP, Fighting Coach",
+        "Mega Lucario ex, 190 HP, Fighting Pulse",
+        "Hitmonchan, 80 HP, Jab"
+      ],
+      "turn_order": "owner_first",
+      "final_score": {
+        "owner_actual_points": 0,
+        "opponent_actual_points": 1,
+        "basis": "Last visible gameplay score before concession; no knockout award manufactured for concession"
+      },
+      "review": "Recording_QA/20261002_023418000_iOS_competitive_sol/REVIEW.md",
+      "coverage": "Recording_QA/20261002_023418000_iOS_competitive_sol/COVERAGE.md",
+      "decisive_evidence": [
+        {
+          "timestamp_seconds": 210,
+          "frame": "native/t0210.00.jpg",
+          "observation": "Opponent Sabrina forces owner switch"
+        },
+        {
+          "timestamp_seconds": 217.5,
+          "frame": "native/t0217.50.jpg",
+          "observation": "Mega Lucario ex Fighting Pulse attacks Wailmer"
+        },
+        {
+          "timestamp_seconds": 223.5,
+          "frame": "overview/sheet_09.jpg",
+          "observation": "Opponent earns first actual point after Wailmer knockout"
+        },
+        {
+          "timestamp_seconds": 307,
+          "frame": "native/t0307.00.jpg",
+          "observation": "Owner's first attack, Whale Pump, deals100 to Mega Lucario ex"
+        },
+        {
+          "timestamp_seconds": 343,
+          "frame": "native/t0343.00.jpg",
+          "observation": "Turn11 starts with attacks minus30 banner and Wailord190 HP"
+        },
+        {
+          "timestamp_seconds": 356,
+          "frame": "native/t0356.00.jpg",
+          "observation": "Cyrus played with Wailord200 HP and5 Water, Mega110 benched"
+        },
+        {
+          "timestamp_seconds": 362,
+          "frame": "native/t0362.00.jpg",
+          "observation": "Your opponent conceded; Mega110 Active, Wailord reduction icon persists"
+        },
+        {
+          "timestamp_seconds": 370.5,
+          "frame": "overview/sheet_14.jpg",
+          "observation": "Victory versus same opponent; Wailord Card of the Game"
+        }
+      ],
+      "storage": {
+        "logical_bytes": 688881204,
+        "allocated_bytes": 0,
+        "attributes": 5248544,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": true
+      },
+      "accepted": true,
+      "registered": true,
+      "archived_hash_verified": true,
+      "external_verified": true
+    }
+  ]
+}

@@ -1,0 +1,65 @@
+# Full-battle visual first pass
+
+**Current status: completed full-battle review accepted by the lead; original archived unchanged in `Reviewed`. Excluded from Ladder Log.**
+
+Status: full review accepted by the lead, registered and archived. The original worker submission did not itself register completion or authorize archival.
+
+Reviewer/session: sol_auto_evening_023301000, delegated Sol visual worker. Model attribution follows the assignment and SOURCE.json: gpt-6.1-sol, high reasoning effort. Review date: September 30, 2026 America/Chicago, October 1 UTC. No external model response was used as battle evidence.
+
+Source: 20261001_023301000_iOS.MP4, 195.268333 seconds, 357636356 bytes, SHA-256 b98242244e00027cba51f9b611596ee81a83cbff54358ba7c5b9cae65fe9fa7c. SOURCE.json was supplied by the lead and preserved. The lead's bound identity and in_progress assignment were checked; the worker did not independently rehash the video.
+
+Scope: one complete battle, loading/setup through the final results screen. All ten turns and their meaningful actions were visually inspected using 65 overview samples plus targeted full-resolution frames. Overview labels are fps midpoint samples, not exact animation onsets. Timeline ranges below describe inspected source windows; they do not assert frame-exact event boundaries.
+
+Owner testimony explicitly identifies this as an Auto AI game and excludes Ladder Log entry. The intro independently shows an AI badge, Opponent, and Dacz8976. The result identifies the challenge as Mega Gengar ex & Dragalge ex Deck (Deluxe Pack: Mega). No Mega Gengar ex or Dragalge ex enters play in this battle. Auto is on for most play but visibly off during the turn 8 Legendary Drive prompt and switch. No claim is made that every action was selected by Auto.
+
+## Outcome and visible cards
+
+Dacz8976 wins 3 to 0 on turn 10. The result screen reports Went second, Turns played 10, Damage done 540, and Koraidon ex as Card of the Game. Evidence: target/t0194.80.jpg, overview/sheet_07.jpg and sheet_08.jpg.
+
+Owner in play: Zygarde ex, 170 maximum HP, Land Laser 100 per heads from two flips; Koraidon ex, 150 maximum HP, Legendary Drive and World Wrecker 110. Owner hand reveals two Donphan ex, Arena of Antiquity, Elegant Cape, Bounded Field, Lucky Ice Pop, Meditite, and Team Rocket's Master Plan at different times. Meditite is positively identified by its enlarged draw at 66 seconds and is not Phanpy. A Mega Medicham ex is visible in the owner's discard after the first World Wrecker. These are visible cards, not a reconstructed full deck.
+
+Opponent in play: Bombirdier 70, Gastly 60 evolving to Haunter 80 with Spin Turn 40, and Skrelp 60 with Razor Fin 40. The opponent plays Poké Ball on turns 1 and 9. Hidden hand and remaining deck are unknown.
+
+## Complete timeline
+
+| Phase / turn | Source window | Observed actions and state | Retained evidence |
+|---|---|---|---|
+| Loading and setup | 0-18 s | Loading is followed by AI Opponent versus Dacz8976. Owner goes second. Auto is checked by 10.5 s. Owner sets Zygarde ex Active at 170 HP with an empty Bench. Opponent sets Bombirdier Active at 70 HP. Opening owner hand includes Donphan ex, Arena of Antiquity, Elegant Cape and Bounded Field. | overview/sheet_01.jpg; target/t0011.00.jpg; target/t0024.00.jpg |
+| 1, opponent | approximately 18-25 s | Opponent plays Poké Ball, its printed random Basic search is displayed at 21 s, and the deck animation resolves. Gastly 60 is then put on the Bench. No Energy attachment or attack occurs. Both scores remain zero. The searched card is not directly revealed, so the later Gastly does not independently prove which card was searched. | overview/sheet_01.jpg; target/t0021.00.jpg; t0022.00.jpg; t0024.00.jpg |
+| 2, owner | approximately 25-32 s | Your turn 2 banner. Draws Lucky Ice Pop. Attaches one Fighting Energy to Zygarde ex. No Trainer play, Bench development, or attack. Zygarde remains 170, Bombirdier 70, Gastly 60. | overview/sheet_02.jpg; target/t0032.00.jpg |
+| 3, opponent | approximately 32-41.5 s | Evolves Gastly to Haunter 80 on the Bench. Attaches one Darkness Energy to Bombirdier. Bombirdier uses Dark Cutter for 30, reducing Zygarde from 170 to 140. Haunter has no Energy yet. Score remains 0-0. | overview/sheet_02.jpg; target/t0035.00.jpg; t0036.00.jpg; t0037.00.jpg; t0041.50.jpg |
+| 4, owner | approximately 41.5-57 s | Draws a second Donphan ex, enlarged card shows 160 HP and Gigantic Press. Attaches the second Fighting Energy to Zygarde. Uses Lucky Ice Pop, healing 20, Zygarde 140 to 160. Heads is explicitly displayed at 54.5 s and the Ice Pop returns to hand. No attack, no Bench card, no Tool or Stadium played. | overview/sheet_02.jpg and sheet_03.jpg; target/t0044.50.jpg; t0047.00.jpg; t0050.00.jpg; t0051.00.jpg; t0054.50.jpg; t0057.00.jpg |
+| 5, opponent | approximately 57-64.5 s | Attaches first Darkness Energy to benched Haunter. Bombirdier retains one Darkness and uses Dark Cutter for another 30, Zygarde 160 to 130. Owner turn 6 banner follows. No knockout. | overview/sheet_03.jpg; target/t0058.00.jpg; t0060.00.jpg; t0062.00.jpg |
+| 6, owner | approximately 64.5-94.5 s | Draws Meditite 60, Trip Over 10+, shown enlarged at 66 s, and keeps it in hand. Attaches third Fighting Energy to Zygarde. Lucky Ice Pop heals Zygarde 130 to 150. Explicit Heads at 77 s returns it to hand. Land Laser flips two coins: one heads and one tails, aggregate 1/1 at 82.5 s. Attack deals displayed 100 to Bombirdier 70, which reaches zero and is discarded. Owner receives one point, 1-0. Opponent promotes Haunter 80 with one Darkness. | overview/sheet_03.jpg and sheet_04.jpg; target/t0066.00.jpg; t0069.00.jpg; t0071.00.jpg; t0077.00.jpg; t0082.50.jpg; t0096.00.jpg |
+| 7, opponent | approximately 94.5-106.5 s | Attaches second Darkness to Haunter, puts Skrelp 60 on Bench. Haunter uses Spin Turn for 40, Zygarde 150 to 110, then switches itself to the Bench and promotes Skrelp. Haunter retains two Darkness. Skrelp has no attached Energy. Score 1-0. | overview/sheet_04.jpg; target/t0096.50.jpg; t0098.00.jpg; t0099.00.jpg; t0100.50.jpg; t0104.00.jpg; t0105.00.jpg |
+| 8, owner, decisive development | approximately 106.5-131 s | Draws Koraidon ex and puts it on Bench. Auto is visibly off at the Legendary Drive Yes/No prompt, 114.5 s, and remains off through the settled switch view at 122 s. The displayed ability permits switching the newly benched Koraidon with Active and moving all Energy in play to Koraidon. It resolves: Koraidon 150 becomes Active, Zygarde 110 goes to Bench. Three Fighting transfer to Koraidon. Transitional frame 122 still renders old Zygarde badges, but settled 128 s shows Koraidon three, Zygarde zero. Bounded Field is played around 124-127 s. Auto is on again at 128 s. The turn's generated Fighting is then attached to benched Zygarde: zero at 129, one at 131. | overview/sheet_05.jpg; target/t0111.50.jpg; t0114.50.jpg; t0116.50.jpg; t0118.00.jpg; t0119.50.jpg; t0122.00.jpg; t0126.00.jpg; t0128.00.jpg; t0129.00.jpg; t0131.00.jpg; target/bench_energy_check.jpg |
+| 8, owner, second knockout | approximately 131-144 s | Koraidon uses World Wrecker. Bounded Field text applies weakness as x2 for attacks by Pokémon that are not Mega Evolution Pokémon ex. Skrelp's Fighting weakness is shown. Damage animation shows 220, Skrelp 60 reaches zero. Owner receives one point, now 2-0. World Wrecker's displayed text says discard the top card of your deck. Owner discard shows Mega Medicham ex by 136-146 s, supporting that first top-card discard. Opponent promotes Haunter 80. Koraidon remains 150 with three Fighting. Zygarde remains 110 with one Fighting. | overview/sheet_05.jpg and sheet_06.jpg; target/t0132.00.jpg; t0134.00.jpg; t0135.00.jpg; t0136.00.jpg; t0141.50.jpg; t0144.00.jpg; t0146.00.jpg |
+| 9, opponent | approximately 144-156 s | Plays another Poké Ball around 147 s. Deck shuffle animation at 149 s; search target is hidden and no new Pokémon is put on Bench. Attaches third Darkness to Haunter. Spin Turn deals 40, Koraidon 150 to 110. A message says there are no Pokémon on the Bench; Haunter remains Active. No condition or additional damage is seen. Owner turn 10 follows. | overview/sheet_06.jpg; target/t0147.00.jpg; t0149.00.jpg; t0150.00.jpg; t0151.00.jpg; t0152.00.jpg; t0154.00.jpg; t0155.50.jpg; t0156.00.jpg |
+| 10, owner | approximately 156-189 s | Draws Team Rocket's Master Plan but does not play it. Uses Lucky Ice Pop twice: Koraidon 110 to 130 and 130 to 150. First Heads at 167.5 s, second Heads at 175.5 s, both return the Ice Pop to hand. Attaches this turn's Fighting to benched Zygarde: one at 175.5, two by 177 s. Koraidon remains three Fighting. World Wrecker deals displayed 220 to Haunter 80, which reaches zero. Owner receives the third one-point award, 3-0. No opponent Pokémon remain in play. The exact identity of any final top-deck discard is not established; the printed attack discard text is not substituted for a visible card identity. | overview/sheet_07.jpg; target/t0161.00.jpg; t0162.00.jpg; t0163.00.jpg; t0167.50.jpg; t0174.50.jpg; t0175.50.jpg; t0176.00.jpg; t0177.00.jpg; t0178.00.jpg; t0180.00.jpg |
+| Victory and results | approximately 189-195.268333 s | Victory splash, then result screen identifies the AI challenge, Koraidon ex Card of the Game, second-player order, 10 turns, owner three points, opponent zero, Damage done 540. Available footage ends on this results screen. | overview/sheet_08.jpg; target/t0194.80.jpg |
+
+## Reconciliation and interpretation
+
+Observed attack damage by owner is 100 + 220 + 220 = 540, exactly matching the result. This total includes overkill. The three targets had only 70 + 60 + 80 = 210 HP immediately before their knockouts. Each was an ordinary one-point Pokémon, so scores progress 0-0, 1-0, 2-0, 3-0 without an ex knockout.
+
+Zygarde HP sequence is 170, 140 after first Dark Cutter, 160 after Ice Pop, 130 after second Dark Cutter, 150 after Ice Pop, 110 after Spin Turn. Koraidon enters at 150, takes 40 to 110, and heals twice to 150. All four healing uses show explicit Heads and hand return. Owner receives 140 attack damage and heals 80, ending with Zygarde 110 and Koraidon 150. No Poison, Burn, Sleep, or other condition is visible.
+
+Owner Energy sequence: three ordinary Fighting attachments to Zygarde on turns 2, 4 and 6; Legendary Drive switches and transfers those three to Koraidon on turn 8; subsequent ordinary attachments rebuild benched Zygarde to one on turn 8 and two on turn 10. The transient old three badges at 122 s do not establish retained usable Energy. Settled later frames resolve the transaction without duplication. Opponent Energy sequence: Bombirdier one on turn 3, Haunter one on turn 5, two on turn 7, three on turn 9. Spin Turn switches on turn 7, but its turn 9 switch cannot occur because the Bench is empty.
+
+Interpretation: the fresh Koraidon immediately becomes a fully powered attacker while preserving Zygarde's remaining 110 HP on Bench. Bounded Field produces the observed 220 damage against the two Fighting-weak targets. Both were already within Koraidon's printed 110 damage, so the footage does not show that doubled weakness was required for either knockout. The all-heads Ice Pop sequence improves final HP but is not evidence that the policy had guaranteed healing. The win does not establish general bot quality or deck strength.
+
+The owner leaves Meditite in hand after turn 6; Donphan ex and Elegant Cape are also not developed or used. No full-deck policy judgment is made because the complete deck, hidden opponent choices and controller inputs are unavailable. Actions while Auto is off are kept separate from Auto behavior; the source establishes the disabled indicator and resolved ability, not who selected the prompt or why Auto paused.
+
+## Remaining limits
+
+- Full deck lists, exact collector/printing IDs, hidden opponent draws, and the identities of Poké Ball search targets remain unknown.
+- The exact final World Wrecker discard card is not established. The first discard visibly reveals Mega Medicham ex.
+- Auto is off during the turn 8 ability prompt/switch, but reason and input provenance are not shown. Exact toggle instants are bracketed by observed frames.
+- The source filename uses October 1 while the request/review is September 30 local; its clock basis is unverified.
+
+No unresolved detail changes the visible winner, point progression, HP sequence, Energy transfers, or ten-turn coverage. Lead acceptance and independent completion checks are complete. At worker submission, the original remained in its assigned location; the worker did not move media, write Ladder Log, or update shared logs/indexes. The lead has since registered and archived the unchanged original.
+
+
+## Lead completion
+
+Accepted as a completed full-battle review after the source checks documented in `LEAD_ACCEPTANCE.json`. The unchanged original is archived in `Reviewed`; matching before/after SHA-256 is recorded in `MOVE_RECEIPT.20261001_023301000_iOS.MP4.json`. No Ladder Log entry was created.

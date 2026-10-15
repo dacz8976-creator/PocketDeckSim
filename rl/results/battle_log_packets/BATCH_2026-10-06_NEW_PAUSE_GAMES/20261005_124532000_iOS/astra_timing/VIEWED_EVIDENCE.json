@@ -1,0 +1,151 @@
+{
+  "schema": "bounded_timing_viewed_evidence_v1",
+  "checked_utc": "2026-10-06T20:33:19.7554278Z",
+  "reviewer": "astra_124532_timing",
+  "source_video": "20261005_124532000_iOS.MP4",
+  "source_sha256": "d224f481fc02e3d5c6b3589ebbe89bfe839318a862d1883ce85554b9073cae75",
+  "source_identity_basis": "Inherited source binding in TURN_EVIDENCE.json; original media not rehashed or decoded in this adjudication",
+  "native_frames_inspected_count": 8,
+  "viewed_frames": [
+    {
+      "evidence_id": "f0053p60",
+      "requested_source_seconds": 53.6,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Requested source-local fast seek; exact decoded PTS not measured",
+      "full_frame_path": "fractions/t0053.60.jpg",
+      "absolute_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_124532000_iOS\\fractions\\t0053.60.jpg",
+      "sha256": "c2771a689e444c4355b75f792fcacac4f2c0c62458c2ec17cd034358ac217995",
+      "inspection": "Direct full-frame image view at original detail, existing asset only",
+      "visible_owner_hand_count": 4,
+      "visible_owner_hand_left_to_right": [
+        "Poison Barb",
+        "Lucky Ice Pop",
+        "Nidoking",
+        "Cyrus"
+      ],
+      "observation": "Poison Barb highlighted while retained in four-card hand; no large preview overlay in this frame."
+    },
+    {
+      "evidence_id": "f0053p80",
+      "requested_source_seconds": 53.8,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Requested source-local fast seek; exact decoded PTS not measured",
+      "full_frame_path": "final_capture/t0053.80.jpg",
+      "absolute_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_124532000_iOS\\final_capture\\t0053.80.jpg",
+      "sha256": "95d15ee06178e3d1ebefe9513199eadd6f189c8dfd9ef47c83d792bafee26a9e",
+      "inspection": "Direct full-frame image view at original detail, existing asset only",
+      "visible_owner_hand_count": 4,
+      "visible_owner_hand_left_to_right": [
+        "Poison Barb",
+        "Lucky Ice Pop",
+        "Nidoking",
+        "Cyrus"
+      ],
+      "observation": "Four-card hand remains intact with Poison Barb selected; large translucent Poison Barb preview overlays board. This is not evidence of consumption."
+    },
+    {
+      "evidence_id": "f0054p00",
+      "requested_source_seconds": 54,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Requested source-local fast seek; exact decoded PTS not measured",
+      "full_frame_path": "detail/t0054.00.jpg",
+      "absolute_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_124532000_iOS\\detail\\t0054.00.jpg",
+      "sha256": "5dada1ca59fbf23644a963d388da34a2bdcd33fdb902d745b1fc86072fc15786",
+      "inspection": "Direct full-frame image view at original detail, existing asset only",
+      "visible_owner_hand_count": 4,
+      "visible_owner_hand_left_to_right": [
+        "Poison Barb",
+        "Lucky Ice Pop",
+        "Nidoking",
+        "Cyrus"
+      ],
+      "observation": "Four-card hand remains intact with highlighted Poison Barb; large opaque Poison Barb preview overlays board."
+    },
+    {
+      "evidence_id": "f0055p00",
+      "requested_source_seconds": 55,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Requested source-local fast seek; exact decoded PTS not measured",
+      "full_frame_path": "detail/t0055.00.jpg",
+      "absolute_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_124532000_iOS\\detail\\t0055.00.jpg",
+      "sha256": "76b93098b1256954ad597e8796ffe2f1c6096d4ad7b42402b88060f19e44053a",
+      "inspection": "Direct full-frame image view at original detail, existing asset only",
+      "visible_owner_hand_count": 3,
+      "visible_owner_hand_left_to_right": [
+        "Lucky Ice Pop",
+        "Nidoking",
+        "Cyrus"
+      ],
+      "observation": "Poison Barb is detached from hand and appears over Active Nidoran in play/attachment animation; hand now contains three cards."
+    },
+    {
+      "evidence_id": "f0089p60",
+      "requested_source_seconds": 89.6,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Requested source-local fast seek; exact decoded PTS not measured",
+      "full_frame_path": "fractions/t0089.60.jpg",
+      "absolute_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_124532000_iOS\\fractions\\t0089.60.jpg",
+      "sha256": "467db9b1c379c558959b391453ab89d2449349e8e122abfe04fb0248cbe9b6c8",
+      "inspection": "Direct full-frame image view at original detail, existing asset only",
+      "visible_owner_hand_count": 4,
+      "visible_owner_hand_left_to_right": [
+        "Lucky Ice Pop",
+        "Nidoking",
+        "Cyrus",
+        "Professor's Research"
+      ],
+      "observation": "Four-card hand, with Research highlighted at right and translucent large Research preview over board."
+    },
+    {
+      "evidence_id": "f0090p00",
+      "requested_source_seconds": 90,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Requested source-local fast seek; exact decoded PTS not measured",
+      "full_frame_path": "detail/t0090.00.jpg",
+      "absolute_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_124532000_iOS\\detail\\t0090.00.jpg",
+      "sha256": "6000abb3127ef3179ee9e938f812ce2640d18ac98d32d879aa994285316443a2",
+      "inspection": "Direct full-frame image view at original detail, existing asset only",
+      "visible_owner_hand_count": 3,
+      "visible_owner_hand_left_to_right": [
+        "Lucky Ice Pop",
+        "Nidoking",
+        "Cyrus"
+      ],
+      "observation": "Research is detached above the three-card hand in a green play area. Play motion is visible; exact release/touch telemetry unavailable."
+    },
+    {
+      "evidence_id": "f0090p20",
+      "requested_source_seconds": 90.2,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Requested source-local fast seek; exact decoded PTS not measured",
+      "full_frame_path": "final_capture/t0090.20.jpg",
+      "absolute_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_124532000_iOS\\final_capture\\t0090.20.jpg",
+      "sha256": "31015fe69b196568328be0f3362e0dc97231abdf2a0b7809abcbb24ad26e623d",
+      "inspection": "Direct full-frame image view at original detail, existing asset only",
+      "visible_owner_hand_count": 3,
+      "visible_owner_hand_left_to_right": [
+        "Lucky Ice Pop",
+        "Nidoking",
+        "Cyrus"
+      ],
+      "observation": "Exactly three owner hand cards. Research is absent from hand; there is no Research highlight or preview. Existing post-play suitability label is supported."
+    },
+    {
+      "evidence_id": "f0091p00",
+      "requested_source_seconds": 91,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Requested source-local fast seek; exact decoded PTS not measured",
+      "full_frame_path": "detail/t0091.00.jpg",
+      "absolute_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_124532000_iOS\\detail\\t0091.00.jpg",
+      "sha256": "ac42708e8bdf16085d478d4ee1884925820d746ebd4934b6a339c6b5eba3b784",
+      "inspection": "Direct full-frame image view at original detail, existing asset only",
+      "visible_owner_hand_count": 3,
+      "visible_owner_hand_left_to_right": [
+        "Lucky Ice Pop",
+        "Nidoking",
+        "Cyrus"
+      ],
+      "observation": "Three owner hand cards remain while a large Research effect/reveal card overlays the board. The overlay is separate from the hand."
+    }
+  ]
+}

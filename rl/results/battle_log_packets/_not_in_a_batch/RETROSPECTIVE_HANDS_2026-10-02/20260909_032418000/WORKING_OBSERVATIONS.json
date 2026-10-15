@@ -1,0 +1,20 @@
+{
+  "status": "in_progress_not_submitted",
+  "source": "20260909_032418000_iOS.MP4",
+  "basis": "Direct retained native inspection. Times are requested capture labels, not measured PTS. These working observations await full cue screening and exact owner draw windows.",
+  "native_inspected_timeline_seconds": [30,35,40,50,70,75,80,85,90,95,100,125,130,140,145,150,155,160,185,190,205,210,215,220,225,230,235,240,245,250,255,260,270,275,280,285],
+  "locator_contacts_inspected": ["frames/OPENING_CONTACT.jpg", "frames/SPARSE_CONTACT.jpg"],
+  "observations": [
+    "Opening owner Active Rotom ex 120 HP, no Bench. Opponent initial Active regular-art Tapu Koko ex 130 HP. Owner first turn, no generated Energy. Opponent visible name ゆうちゃん, both clocks. No Auto visible in inspected board control views.",
+    "T1 normal draw appears Hitting Hammer, leaving Goo-zooka, Hammer, Gholdengo, Poke Ball, second Hammer. Poke Ball finds Gimmighoul, benched owner position 3. End hand Goo-zooka, Hammer, Gholdengo, Hammer. Requires tighter first-action capture.",
+    "T2 opponent benches alternate-art Tapu Koko ex center position 2, attaches Poison Barb to initial Active and Lightning. Plasma Hurricane 20 reduces Rotom to 100, Active reaches two Lightning. Retained 70 fan three, closed discard Poke Ball.",
+    "T3 Red Card normal draw visible at 80. Gimmighoul evolves into Gholdengo 100 HP before Red Card played at 85. Both Hitting Hammers consumed before 125, not merely one. Second observed coin sequence inherited TT then Luxury Coin reroll HT, no Energy removed. Owner attaches Lightning to Rotom, plays Goo-zooka, hand empty by 130. Opponent fan three after Red Card.",
+    "T4 opponent attaches Lightning to benched Tapu, uses Professor's Research, attaches Poison Barb to bench. Fan five after Research at 150, four after Barb at 155. Plasma Hurricane 20 reduces Rotom to 80; initial Active stays two Lightning, since manual Energy went to Bench. Both opposing Tapu have Poison Barb.",
+    "T5 Order Pad play consumes sole card, initial Tails and Luxury Coin reroll Tails in older accepted prose, needs decisive native sequence. Owner attaches Lightning to Gholdengo, retreats Rotom spending its Lightning, promotes Gholdengo. End Gholdengo100 with one Lightning; Bench3 Rotom80 no Energy. Hand empty. Opponent fan four at 205.",
+    "T6 opponent fan five, manual Lightning goes Bench Tapu to two; Plasma Hurricane 20 reduces Gholdengo100 to80 and adds Energy to initial Active, reaching three. Opponent Bench has two Lightning. 230 is owner next-turn boundary.",
+    "T7 normal draw is second Goo-zooka, played by235. Energy manually attached to benched Rotom, now one Lightning. Gholdengo80 with one Lightning remains Active. Hand empty by240. Opponent fan five.",
+    "T8 opponent normal fan six, manual Lightning to bench Tapu reaches three by250. Native255 owner opened discard: Lightning1, two Goo-zooka (different art), two Hitting Hammer, Poke Ball, Order Pad, Red Card. Native260 owner remaining deck count10 visible. Mach Bolt KO Gholdengo, inherited result awards one point. Rotom80 promoted by280 with one Lightning. No replacement turn hand yet at285; draw window requires inspection."
+  ],
+  "new_native_extractions": 0,
+  "original_reads": "Current source hash in progress once; no decoding yet"
+}

@@ -1,0 +1,618 @@
+{
+  "schema": "independent-retrospective-source-check-v1",
+  "game_id": "20260928_200654000",
+  "checked_utc": "2026-10-02T23:14:47.477257+00:00",
+  "verdict": "repair_required",
+  "acceptance": false,
+  "source_identity": "Root verified exact SHA reused, no original reread",
+  "submitted_frozen_utc": "2026-10-02T22:45:54.196432+00:00",
+  "source_hash": "d4d0dd51f309c05abcdb6b1f04a75c036ca3e59b4abee3f6ce542b2d56149fd6",
+  "required_repairs": [
+    {
+      "id": "R1",
+      "severity": "required",
+      "topic": "Missing T11 Metal attachment and downstream second-Dialga Energy",
+      "finding": "The second Dialga at opponent bench3 has zero Metal immediately after Helmet, one by the T11 attack, carries one through T12 and T13 start, then has two after the T13 attachment. The submitted ledger omits the T11 attachment and carries counts one too low.",
+      "phase_observations": [
+        {
+          "phase": "Helmet immediate endpoint",
+          "evidence_id": "R_evidence_t0456.0",
+          "attached_Metal": 0,
+          "current_zone": "one large Metal available; smaller Metal is upcoming preview"
+        },
+        {
+          "phase": "T11 attack",
+          "evidence_id": "R_evidence_t0462.0",
+          "attached_Metal": 1
+        },
+        {
+          "phase": "settled owner T12 start",
+          "evidence_id": "F0467.00",
+          "attached_Metal": 1,
+          "opponent_zone": "large current slot empty, small upcoming Metal visible; inactive availability remains null"
+        },
+        {
+          "phase": "T12 end / T13 banner",
+          "evidence_id": "R_evidence_t0522.0",
+          "attached_Metal": 1,
+          "opponent_zone": "generation pending, large current slot empty; small upcoming Metal visible",
+          "attached_energy_basis": "Carry-forward composite from preceding native T12 end516; banner/layout can obscure bench badge at522. Do not claim all attributes are freshly countable in this banner."
+        },
+        {
+          "phase": "T13 resolved attack / T14 start",
+          "evidence_id": "F0547.00",
+          "attached_Metal": 2
+        },
+        {
+          "phase": "late T14 terminal board",
+          "evidence_id": "R_evidence_t0586.0",
+          "attached_Metal": 2
+        }
+      ],
+      "field_repairs": [
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[10].board_after.opponent.bench_in_position_order[2].attached_energy",
+          "proposed": {
+            "total": 1,
+            "by_type": {
+              "Metal": 1
+            }
+          }
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[11].board_at_start.opponent.bench_in_position_order[2].attached_energy",
+          "proposed": {
+            "total": 1,
+            "by_type": {
+              "Metal": 1
+            }
+          }
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[11].board_after.opponent.bench_in_position_order[2].attached_energy",
+          "proposed": {
+            "total": 1,
+            "by_type": {
+              "Metal": 1
+            }
+          }
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[12].board_at_start.opponent.bench_in_position_order[2].attached_energy",
+          "proposed": {
+            "total": 1,
+            "by_type": {
+              "Metal": 1
+            }
+          }
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[12].board_after.opponent.bench_in_position_order[2].attached_energy",
+          "proposed": {
+            "total": 2,
+            "by_type": {
+              "Metal": 2
+            }
+          }
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[13].board_at_start.opponent.bench_in_position_order[2].attached_energy",
+          "proposed": {
+            "total": 2,
+            "by_type": {
+              "Metal": 2
+            }
+          }
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[13].board_after.opponent.bench_in_position_order[2].attached_energy",
+          "proposed": {
+            "total": 2,
+            "by_type": {
+              "Metal": 2
+            }
+          }
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[10].board_after.opponent.energy_zone.this_turn",
+          "old": {
+            "type": "Metal",
+            "count": 1,
+            "available": true
+          },
+          "proposed": {
+            "type": null,
+            "count": 0,
+            "available": false
+          },
+          "basis": "Consumed during T11; settled empty current generator and newly attached Metal. Preserve energy_zone.next Metal1 available false."
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[10].plays_in_order",
+          "proposed": "Insert normal Metal attachment to opponent bench3 second Dialga after Helmet and before Ultimate Force; renumber attack to4. Native endpoints bound input to after456 and by462; locator457-459 narrows transition but does not certify exact inputPTS."
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[10].plays_in_order[1].result",
+          "proposed": "Preserve zero Energy only as the immediate Helmet endpoint at452/456, then separately document the attachment."
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[12].plays_in_order[1].result",
+          "proposed": "One normal Metal added, second Dialga1→2; action count remains one."
+        },
+        {
+          "file": "REVIEW_SUPPLEMENT.md",
+          "path": "turn11 table row (original line23)",
+          "proposed": "Add Metal attachment0→1 between Helmet and attack; restrict zero count to immediate Helmet phase."
+        },
+        {
+          "file": "REVIEW_SUPPLEMENT.md",
+          "path": "turn13 table row (original line25)",
+          "proposed": "Clarify normal attachment1→2."
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "R_evidence_t0456.0",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0456.0.jpg",
+          "requested_source_seconds": 456.0,
+          "actual_frame_seconds_if_measured": null,
+          "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+        },
+        {
+          "evidence_id": "R_evidence_t0462.0",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0462.0.jpg",
+          "requested_source_seconds": 462.0,
+          "actual_frame_seconds_if_measured": null,
+          "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+        },
+        {
+          "evidence_id": "F0465.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0465.00.jpg",
+          "requested_source_seconds": 465.0,
+          "actual_frame_seconds_if_measured": 465.015,
+          "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+        },
+        {
+          "evidence_id": "F0467.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0467.00.jpg",
+          "requested_source_seconds": 467.0,
+          "actual_frame_seconds_if_measured": 467.015,
+          "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+        },
+        {
+          "evidence_id": "R_evidence_t0516.0",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0516.0.jpg",
+          "requested_source_seconds": 516.0,
+          "actual_frame_seconds_if_measured": null,
+          "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+        },
+        {
+          "evidence_id": "R_evidence_t0522.0",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0522.0.jpg",
+          "requested_source_seconds": 522.0,
+          "actual_frame_seconds_if_measured": null,
+          "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+        },
+        {
+          "evidence_id": "R_evidence_t0540.0",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0540.0.jpg",
+          "requested_source_seconds": 540.0,
+          "actual_frame_seconds_if_measured": null,
+          "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+        },
+        {
+          "evidence_id": "F0547.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0547.00.jpg",
+          "requested_source_seconds": 547.0,
+          "actual_frame_seconds_if_measured": 547.015,
+          "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+        },
+        {
+          "evidence_id": "F0564.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0564.00.jpg",
+          "requested_source_seconds": 564.0,
+          "actual_frame_seconds_if_measured": 564.007,
+          "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+        },
+        {
+          "evidence_id": "R_evidence_t0586.0",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0586.0.jpg",
+          "requested_source_seconds": 586.0,
+          "actual_frame_seconds_if_measured": null,
+          "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+        }
+      ],
+      "preserve": "T9 after/T10 start+after/T11 start second Dialga0Metal are correct. Do not change first Dialga Metal, HP, Tools, points, or upcoming preview. T12 and T14 inactive opponent this_turn null stays null; T13 generated current Metal1 at its pre-attachment phase and end consumed0 remain distinct."
+    },
+    {
+      "id": "R2",
+      "severity": "required",
+      "topic": "Hydreigon printing descriptor",
+      "finding": "199-second enlarged native face has rainbow border, full art and one visible star. Gold descriptor is unsupported. Exact printing/set identifier is not independently certified.",
+      "field_repairs": [
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[5].hand_at_start.cards_left_to_right[2].variant",
+          "old": "gold",
+          "proposed": "rainbow-border full art; one visible star"
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[5].owner_hand_start.cards_left_to_right[2].variant",
+          "old": "gold",
+          "proposed": "rainbow-border full art; one visible star"
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[5].draws_and_searches[0].cards_in_reveal_order[0].variant",
+          "old": "gold",
+          "proposed": "rainbow-border full art; one visible star"
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[5].board_after.owner.bench_in_position_order[1].variant",
+          "old": "gold",
+          "proposed": "rainbow-border full art; one visible star"
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[6].board_at_start.owner.bench_in_position_order[1].variant",
+          "old": "gold",
+          "proposed": "rainbow-border full art; one visible star"
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[6].board_after.owner.bench_in_position_order[1].variant",
+          "old": "gold",
+          "proposed": "rainbow-border full art; one visible star"
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[7].board_at_start.owner.bench_in_position_order[1].variant",
+          "old": "gold",
+          "proposed": "rainbow-border full art; one visible star"
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[7].board_after.owner.active.variant",
+          "old": "gold",
+          "proposed": "rainbow-border full art; one visible star"
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[8].board_at_start.owner.active.variant",
+          "old": "gold",
+          "proposed": "rainbow-border full art; one visible star"
+        },
+        {
+          "file": "HAND_SUPPLEMENT.json",
+          "path": "$.target_rows[2].hand_at_start.cards_left_to_right[2].variant",
+          "old": "gold",
+          "proposed": "rainbow-border full art; one visible star"
+        },
+        {
+          "file": "TURN_EVIDENCE.json",
+          "path": "$.discard_snapshots[0].cards_in_view[5].variant",
+          "old": "gold",
+          "proposed": "rainbow-border full art; one visible star"
+        },
+        {
+          "file": "REVIEW_SUPPLEMENT.md",
+          "path": "turn6 table row (original line18)",
+          "old": "Hydreigon (gold)",
+          "proposed": "Hydreigon (rainbow-border full art; one visible star)"
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "F0199.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0199.00.jpg",
+          "requested_source_seconds": 199.0,
+          "actual_frame_seconds_if_measured": 199.012,
+          "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+        },
+        {
+          "evidence_id": "F0201.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0201.00.jpg",
+          "requested_source_seconds": 201.0,
+          "actual_frame_seconds_if_measured": 201.013,
+          "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+        },
+        {
+          "evidence_id": "R_evidence_t0318.0",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0318.0.jpg",
+          "requested_source_seconds": 318.0,
+          "actual_frame_seconds_if_measured": null,
+          "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+        },
+        {
+          "evidence_id": "F0472.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0472.00.jpg",
+          "requested_source_seconds": 472.0,
+          "actual_frame_seconds_if_measured": 472.002,
+          "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+        }
+      ],
+      "preserve": "Names, card counts, HP, Energy, attacks and inherited old prose remain unchanged. DECK_USED and PAUSE_GAME contain no incorrect Hydreigon printing descriptor found by the canonical recursive check."
+    },
+    {
+      "id": "R3",
+      "severity": "required",
+      "topic": "Start EnergyZone provenance",
+      "finding": "Many start-board current-Zone available fields cite only prior-turn endpoints or normal-draw views where the large current slot is empty/pending. Generic composite-board wording does not identify the later generation phase for the Zone. Values can remain generated pre-attachment composite states if their later or derived basis is explicit.",
+      "field_repairs": [
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[1].board_at_start.owner.energy_zone",
+          "required": "Identify this_turn as generated pre-attachment composite phase, not a direct observation at the earliest start-board anchors. Add the later available-Zone native ref where listed; otherwise explicitly derive from subsequent normal attachment and settled consumed endpoint. Keep generation-pending snapshots distinct.",
+          "later_native_anchors": [
+            "F0057.00"
+          ]
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[2].board_at_start.opponent.energy_zone",
+          "required": "Identify this_turn as generated pre-attachment composite phase, not a direct observation at the earliest start-board anchors. Add the later available-Zone native ref where listed; otherwise explicitly derive from subsequent normal attachment and settled consumed endpoint. Keep generation-pending snapshots distinct.",
+          "later_native_anchors": [
+            "R_evidence_t0120.0"
+          ]
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[3].board_at_start.owner.energy_zone",
+          "required": "Identify this_turn as generated pre-attachment composite phase, not a direct observation at the earliest start-board anchors. Add the later available-Zone native ref where listed; otherwise explicitly derive from subsequent normal attachment and settled consumed endpoint. Keep generation-pending snapshots distinct.",
+          "later_native_anchors": [
+            "F0141.00"
+          ]
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[4].board_at_start.opponent.energy_zone",
+          "required": "Identify this_turn as generated pre-attachment composite phase, not a direct observation at the earliest start-board anchors. Add the later available-Zone native ref where listed; otherwise explicitly derive from subsequent normal attachment and settled consumed endpoint. Keep generation-pending snapshots distinct.",
+          "later_native_anchors": [
+            "R_evidence_t0168.0"
+          ]
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[5].board_at_start.owner.energy_zone",
+          "required": "Identify this_turn as generated pre-attachment composite phase, not a direct observation at the earliest start-board anchors. Add the later available-Zone native ref where listed; otherwise explicitly derive from subsequent normal attachment and settled consumed endpoint. Keep generation-pending snapshots distinct.",
+          "later_native_anchors": [
+            "F0201.00"
+          ]
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[6].board_at_start.opponent.energy_zone",
+          "required": "Identify this_turn as generated pre-attachment composite phase, not a direct observation at the earliest start-board anchors. Add the later available-Zone native ref where listed; otherwise explicitly derive from subsequent normal attachment and settled consumed endpoint. Keep generation-pending snapshots distinct.",
+          "later_native_anchors": [
+            "F0250.00"
+          ]
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[7].board_at_start.owner.energy_zone",
+          "required": "Identify this_turn as generated pre-attachment composite phase, not a direct observation at the earliest start-board anchors. Add the later available-Zone native ref where listed; otherwise explicitly derive from subsequent normal attachment and settled consumed endpoint. Keep generation-pending snapshots distinct.",
+          "later_native_anchors": [
+            "F0285.00"
+          ]
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[8].board_at_start.opponent.energy_zone",
+          "required": "Identify this_turn as generated pre-attachment composite phase, not a direct observation at the earliest start-board anchors. Add the later available-Zone native ref where listed; otherwise explicitly derive from subsequent normal attachment and settled consumed endpoint. Keep generation-pending snapshots distinct.",
+          "later_native_anchors": []
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[9].board_at_start.owner.energy_zone",
+          "required": "Identify this_turn as generated pre-attachment composite phase, not a direct observation at the earliest start-board anchors. Add the later available-Zone native ref where listed; otherwise explicitly derive from subsequent normal attachment and settled consumed endpoint. Keep generation-pending snapshots distinct.",
+          "later_native_anchors": [
+            "F0402.00"
+          ]
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[10].board_at_start.opponent.energy_zone",
+          "required": "Identify this_turn as generated pre-attachment composite phase, not a direct observation at the earliest start-board anchors. Add the later available-Zone native ref where listed; otherwise explicitly derive from subsequent normal attachment and settled consumed endpoint. Keep generation-pending snapshots distinct.",
+          "later_native_anchors": [
+            "R_evidence_t0456.0"
+          ]
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[11].board_at_start.owner.energy_zone",
+          "required": "Identify this_turn as generated pre-attachment composite phase, not a direct observation at the earliest start-board anchors. Add the later available-Zone native ref where listed; otherwise explicitly derive from subsequent normal attachment and settled consumed endpoint. Keep generation-pending snapshots distinct.",
+          "later_native_anchors": [
+            "F0467.00"
+          ]
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[12].board_at_start.opponent.energy_zone",
+          "required": "Identify this_turn as generated pre-attachment composite phase, not a direct observation at the earliest start-board anchors. Add the later available-Zone native ref where listed; otherwise explicitly derive from subsequent normal attachment and settled consumed endpoint. Keep generation-pending snapshots distinct.",
+          "later_native_anchors": []
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[13].board_at_start.owner.energy_zone",
+          "required": "Identify this_turn as generated pre-attachment composite phase, not a direct observation at the earliest start-board anchors. Add the later available-Zone native ref where listed; otherwise explicitly derive from subsequent normal attachment and settled consumed endpoint. Keep generation-pending snapshots distinct.",
+          "later_native_anchors": [
+            "F0550.00"
+          ]
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "F0055.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0055.00.jpg",
+          "requested_source_seconds": 55.0,
+          "actual_frame_seconds_if_measured": 55.01,
+          "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+        },
+        {
+          "evidence_id": "F0057.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0057.00.jpg",
+          "requested_source_seconds": 57.0,
+          "actual_frame_seconds_if_measured": 57.01,
+          "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+        },
+        {
+          "evidence_id": "F0139.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0139.00.jpg",
+          "requested_source_seconds": 139.0,
+          "actual_frame_seconds_if_measured": 139.0,
+          "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+        },
+        {
+          "evidence_id": "F0141.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0141.00.jpg",
+          "requested_source_seconds": 141.0,
+          "actual_frame_seconds_if_measured": 141.0,
+          "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+        },
+        {
+          "evidence_id": "F0200.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0200.00.jpg",
+          "requested_source_seconds": 200.0,
+          "actual_frame_seconds_if_measured": 200.012,
+          "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+        },
+        {
+          "evidence_id": "F0201.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0201.00.jpg",
+          "requested_source_seconds": 201.0,
+          "actual_frame_seconds_if_measured": 201.013,
+          "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+        },
+        {
+          "evidence_id": "F0399.50",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0399.50.jpg",
+          "requested_source_seconds": 399.5,
+          "actual_frame_seconds_if_measured": 399.51,
+          "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+        },
+        {
+          "evidence_id": "F0402.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0402.00.jpg",
+          "requested_source_seconds": 402.0,
+          "actual_frame_seconds_if_measured": 402.012,
+          "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+        },
+        {
+          "evidence_id": "R_evidence_t0522.0",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0522.0.jpg",
+          "requested_source_seconds": 522.0,
+          "actual_frame_seconds_if_measured": null,
+          "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+        },
+        {
+          "evidence_id": "F0547.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0547.00.jpg",
+          "requested_source_seconds": 547.0,
+          "actual_frame_seconds_if_measured": 547.015,
+          "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+        },
+        {
+          "evidence_id": "F0550.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0550.00.jpg",
+          "requested_source_seconds": 550.0,
+          "actual_frame_seconds_if_measured": 550.0,
+          "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+        }
+      ],
+      "examples": "T2 cited48 belongs to preceding opponent end;55 shows empty current and57 generated Darkness. T6 current empty200, generated201. T13 banner522 current empty/pending; generation appears in locator524 and attachment532, so native522 alone cannot be called an available Metal observation. T14 earlier547 pending, later550 generated Darkness.",
+      "preserve": "Upcoming small-icon preview is a separate next field. Keep its type/count and available false. No correction to inactive availability null or to numerical start Energy counts is requested if retained as explicitly derived generated phases."
+    },
+    {
+      "id": "R4",
+      "severity": "required_provenance_only",
+      "topic": "T2 second Poké Ball result basis",
+      "finding": "F0069 is the card-back transition, not the regular Zigzagoon face. F0076 shows the already-benched regular Zigzagoon. The locator69 face supports timing, while native hand/bench transactions support identity; direct_native_reveal overstates the specific native references.",
+      "field_repairs": [
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[1].draws_and_searches[2].cards_in_reveal_order[0].basis",
+          "old": "direct_native_reveal",
+          "proposed": "native hand/bench transaction reconciliation, with reduced locator reveal timing; named identity is derived from closed visible owner-hand sequence"
+        },
+        {
+          "file": "TURN_LEDGER.json",
+          "path": "$.turns[1].draws_and_searches[2].cards_in_reveal_order[0].limit_reason",
+          "proposed": "No retained native search-face reveal in cited69/76;69 shows card back and76 is post-bench. Identity supported by known hand, no intervening other draw, and regular Zigzagoon bench placement."
+        }
+      ],
+      "evidence": [
+        {
+          "evidence_id": "F0055.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0055.00.jpg",
+          "requested_source_seconds": 55.0,
+          "actual_frame_seconds_if_measured": 55.01,
+          "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+        },
+        {
+          "evidence_id": "F0060.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0060.00.jpg",
+          "requested_source_seconds": 60.0,
+          "actual_frame_seconds_if_measured": 60.01,
+          "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+        },
+        {
+          "evidence_id": "R_evidence_t0066.0",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0066.0.jpg",
+          "requested_source_seconds": 66.0,
+          "actual_frame_seconds_if_measured": null,
+          "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+        },
+        {
+          "evidence_id": "F0069.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0069.00.jpg",
+          "requested_source_seconds": 69.0,
+          "actual_frame_seconds_if_measured": 69.0133,
+          "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+        },
+        {
+          "evidence_id": "F0076.00",
+          "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0076.00.jpg",
+          "requested_source_seconds": 76.0,
+          "actual_frame_seconds_if_measured": 76.0317,
+          "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+        }
+      ],
+      "preserve": "Keep named Galarian Zigzagoon and search order as source-derived identity, not presumed deck. No new extraction required."
+    }
+  ],
+  "field_results": {
+    "opening": "supported five left-to-right cards before Active placement",
+    "owner_hands": "All seven starts/end hands and28 timing candidates inspected; T8+3/+6 follow Research and T14 later offsets follow Piers, already qualified. Hydreigon printing repair required.",
+    "normal_draws": "Zweilous,Lillie,Hydreigon,Research,Deino,Obstagoon,Piers supported; printing and native-search basis repairs required.",
+    "Research": "T2 Obstagoon then gold Needle;T8 regular Candy then gold Candy source-supported; opponent hidden identities null.",
+    "searches": "T2Deino direct60; second Zigzagoon requires transaction basis rather than native face69. T9PB no-target prompt373 supported; no cardadded.",
+    "Copycat": "No Copycat observed or claimed.",
+    "numbered_plays": "Supported except omitted T11 Metal attachment. Endpoint-derived retreat/attachment qualifications generally present; T10EndTurn is a bounded no-attack inference from transaction/endpoints, not independently visible exact touch.",
+    "both_boards": "HP/max, Tools, typed attachedEnergy and effect targets supported apart from second-Dialga counts. Composite boundary wording present; startZone available phase needs specific provenance.",
+    "tools": "Regular Needle Active Zigzagoon, gold Needle separate bench Zigzagoon; retained through evolutions. Cape first Dialga+20max; Helmet Arceus and later second Dialga distinct.",
+    "coins": "T7Heads244.8 and T9firstHeads351.8 direct label. T5Heads and T9secondTails explicitly qualified locator/endpoint observations, not spinning nativeface alone. No deck attribution from opponent IcePop.",
+    "fans": "Start fan counts checked across owner starts; hidden names null; fan counts are endpoints and transaction-based updates, not hidden-card identities.",
+    "discard": "Owner partial panel472 and native closed-top changes checked. FiveDarkness visible. Hydreigon descriptor repair required. Unopened opponent pile and full owner census remain unavailable.",
+    "mode": "No Auto option in89 inspected native views and8 independently screened grids. MasterBall badges at10 visible. ladder_presumed/excludedfalse consistent owner rule; sampled absence bounded and queue/authorship uncertain.",
+    "terminal_points": "Accepted old owner2-3loss preserved; retained terminal native supports2/3. No outcome correction."
+  },
+  "source_work_remaining": "Only narrow source-backed packet repairs listed; no source extraction or outcome rereview requested.",
+  "producer_and_old_files_modified": false,
+  "shared_files_modified": false,
+  "scope_file": "SCOPE.json",
+  "submitted_hash_validation": "SUBMITTED_HASH_VALIDATION.json",
+  "reference_validation": "REFERENCE_VALIDATION.json"
+}

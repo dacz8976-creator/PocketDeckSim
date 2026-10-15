@@ -1,0 +1,42 @@
+{
+  "accepted": true,
+  "accepted_utc": "2026-10-01T23:54:43.015443+00:00",
+  "source_video": "20261001_204634000_iOS.MP4",
+  "source_sha256": "7693308ac52a431bddecd470e405bc47da01ba484f987a3f5595c9a541ca69c2",
+  "reviewer": "/root",
+  "first_pass": "sol_rules_20261001_204634000",
+  "first_pass_model": "gpt-6.1-sol",
+  "first_pass_effort": "high",
+  "completion_status": "full_battle_review_complete",
+  "coverage_checked": true,
+  "remaining_coverage_gaps": [],
+  "unverified_material_claims": [],
+  "ladder_eligible": false,
+  "scope": "Entire 577.671667-second Solo rules-test battle, setup through all 22 turns and final Victory",
+  "outcome_description": "Victory; 4-2 actual awarded points, with owner circles capped at three; 22 turns",
+  "key_findings": [
+    "Victory Star replaced Heat Charged 0 heads/3 tails with 2 heads/1 tail. One starting Fire became three; the original coin batch did not add Energy.",
+    "Umbreon Dark Binding blocked a Basic from attacking. A new Active could attack after retreat, and evolving the affected Darumaka to Darmanitan cleared its block while preserving 40 damage.",
+    "Flame Patch supplied discarded Fire to the new Active Darumaka after the normal turn attachment had already been used.",
+    "Greedent healed from 80 to 90 with Leftovers at the end of its turn while active."
+  ],
+  "limitations": [
+    "Failed Confusion checks and Will with Victory Star were not tested here.",
+    "Bounded Field was present, but this recording did not test its numerical weakness multiplier.",
+    "Hidden cards and exact obstructed animation digits remain qualified."
+  ],
+  "lead_evidence": [
+    "LEAD_CHECK_1.jpg",
+    "LEAD_CHECK_2.jpg",
+    "LEAD_CHECK_3.jpg"
+  ],
+  "lead_checks": [
+    "Read all four first-pass documents and reconciled all 22 turns with coverage and stated limitations.",
+    "16 opening/Auto off; 148/151/157/161 Master Plan tails and both Confused; 184 separate condition check; 198 Victory Star independently inspected.",
+    "195 native 0H/3T, 204 replacement2H/1T, 205 settled Moltres3 Fire verified.",
+    "228 Moltres3 Fire, 232 Dark Binding printed Basic-only effect; 324 Darumaka20 and prohibition, 326 evolution, 350 replacementHT, 354 Darmanitan80 and Umbreon50 verified.",
+    "299/301/303 new Active Darumaka with one Fire and Flame Patch in discard; Moltres recovery-from-Confusion message verified. Held second Patch is not treated as another play.",
+    "496 active Greedent80, 504 next owner turn Greedent90 and new Moltres130 verified.",
+    "552 final Netherwing, 559 +2points with owner previously2/opponent2, 577 Solo Random Battle Advanced Victory verified."
+  ]
+}

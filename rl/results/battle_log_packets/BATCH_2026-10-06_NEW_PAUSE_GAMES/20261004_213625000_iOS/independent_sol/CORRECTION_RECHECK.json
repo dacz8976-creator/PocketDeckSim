@@ -1,0 +1,77 @@
+{
+  "schema": "bounded_correction_recheck_v1",
+  "reviewer": "/root/independent_grass_psychic",
+  "model": "gpt-6.1-sol",
+  "checked_utc": "2026-10-06T18:42:00.063045+00:00",
+  "source_video": "20261004_213625000_iOS.MP4",
+  "source_sha256": "aa7e935b335a2dfe11e43783f260698997845f7c85de8d6b1db976b7bf794225",
+  "scope": "Only G1 copied authored deck-name correction; no repeat visual pass required, all initial visual findings stand.",
+  "status": "accepted",
+  "accepted": true,
+  "lead_acceptance": false,
+  "repairs_checked": [
+    "G1"
+  ],
+  "remaining_repairs": [],
+  "checks": [
+    "Actual UTF-8 reads confirm eight copied names corrected to Poké Ball and Professor’s Research. Recursive preserved/current DECK comparison gives exactly the eight required name paths; no other data changed.",
+    "All entity identities,20 slots, count quantities and source bindings unchanged. Original QR_DECODE_RECEIPT SHA256 remains identical to frozen initial check.",
+    "Preserved pre-correction DECK bytes exactly match initial rejected input hash. Initial rejection remains frozen; current corrected inputs separately hashed here."
+  ],
+  "deck_diff": [
+    {
+      "json_path": "/filmed_qr_cards_20/0/name",
+      "before": "PokÃ© Ball",
+      "after": "Poké Ball"
+    },
+    {
+      "json_path": "/filmed_qr_cards_20/1/name",
+      "before": "PokÃ© Ball",
+      "after": "Poké Ball"
+    },
+    {
+      "json_path": "/filmed_qr_cards_20/6/name",
+      "before": "Professorâ€™s Research",
+      "after": "Professor’s Research"
+    },
+    {
+      "json_path": "/filmed_qr_cards_20/7/name",
+      "before": "Professorâ€™s Research",
+      "after": "Professor’s Research"
+    },
+    {
+      "json_path": "/filmed_qr_counts/0/name",
+      "before": "PokÃ© Ball",
+      "after": "Poké Ball"
+    },
+    {
+      "json_path": "/filmed_qr_counts/0/name_candidates/0",
+      "before": "PokÃ© Ball",
+      "after": "Poké Ball"
+    },
+    {
+      "json_path": "/filmed_qr_counts/3/name",
+      "before": "Professorâ€™s Research",
+      "after": "Professor’s Research"
+    },
+    {
+      "json_path": "/filmed_qr_counts/3/name_candidates/0",
+      "before": "Professorâ€™s Research",
+      "after": "Professor’s Research"
+    }
+  ],
+  "checked_input_sha256": {
+    "SOURCE.json": "2b7cd32cada80f86c90ba0bb25a7e611006eaec8a3e6be11190270225189aebc",
+    "DECK_USED.json": "2da664d91e5a44dde1645de410f7ed8e6ae697609850ccf9703ecc4d5792a256",
+    "QR_DECODE_RECEIPT.json": "c8627054169e61388d3bdd141304b07747484fde9d74d50a81cbefc3a7dfcfc1",
+    "TURN_LEDGER.json": "53d39cd03f77414b8888bb863105a17e171f4366283abb8854d0019acee19197",
+    "TURN_EVIDENCE.json": "94f8ae3a6934a6bdb40772a17648b4c4f90e83f3d4a0184846bee57d593b5942",
+    "REVIEW.md": "e2c5d8397695ec5c2339fe3ad8747a75b0b1e42fa571f0456c196be02621bc5e",
+    "INDEPENDENT_CORRECTIONS.json": "c391e8f2b691efd1e890bd7682ea925ad803610edff2d68a1293cd401e7fbf44",
+    "independent_sol/CHECK_RESULT.json": "5b28987ccc66b87380312c1636dac592ea7c3b06b7aabac065204d1c0cedcef5"
+  },
+  "viewed_evidence": [],
+  "visual_evidence_basis": "Initial VIEWED_EVIDENCE.json40 retained assets; G1 only text repair. No new image or media operation.",
+  "original_rejection_preserved": true,
+  "astra_escalation_required": false
+}

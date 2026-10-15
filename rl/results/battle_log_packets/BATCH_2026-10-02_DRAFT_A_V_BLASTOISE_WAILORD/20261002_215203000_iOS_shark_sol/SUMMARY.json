@@ -1,0 +1,60 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261002_215203000_iOS_shark_sol",
+  "sources": [
+    {
+      "video_basename": "20261002_215203000_iOS.MP4",
+      "sha256": "d0e031e9a27c358ad0e1590621014f2758bf80138b83c0776f9961ca34c88b7c",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "source_video": "20261002_215203000_iOS.MP4",
+  "source_sha256": "d0e031e9a27c358ad0e1590621014f2758bf80138b83c0776f9961ca34c88b7c",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "reviewer": "/root/ind_drafta_205731",
+  "classification": "computer_battle",
+  "action_authorship": "owner manual; Auto OFF throughout visible spans",
+  "category": "Step-Up Battle: Advanced",
+  "category_basis": "Separate owner screenshot receipt ADVANCED_CATEGORY_CONFIRMATION.json, inspected; not inferred from filmed deckname",
+  "owner_deck": "Draft A: Shark Tempo",
+  "opponent": "Mega Blastoise ex & Wailord ex Deck (Deluxe Pack: Mega)",
+  "source_duration_seconds": 248.263333,
+  "outcome": {
+    "owner_result": "win",
+    "opponent_result": "loss",
+    "owner_points": 3,
+    "opponent_points": 0,
+    "turns_displayed": 12,
+    "went_first": "opponent",
+    "damage_displayed": 380,
+    "card_of_game": "Alolan Ninetales ex",
+    "source_video": "20261002_215203000_iOS.MP4",
+    "timestamp_seconds": 247.015,
+    "evidence_ids": [
+      "F0232.50",
+      "F0237.00",
+      "F0239.00",
+      "F0247.00"
+    ],
+    "basis": "Native Victory shows 3–0, 12 turns, owner went second, 380 damage; Wailord ex terminal KO"
+  },
+  "full_timeline_reviewed": true,
+  "capture_status": "complete_with_recording_limits",
+  "remaining_coverage_gaps": [],
+  "unverified_material_claims": [],
+  "recording_limits": [
+    "Hidden opponent draws/search faces remain null; supplied deck is not evidence of held card names.",
+    "Both discard piles stay unopened/unscrolled; only visible top faces and separately public played/KO events, not a complete pile census.",
+    "Covered lower evolution faces are unknown directly; same source witnessed genealogy is identified explicitly.",
+    "All one-fps source locator cells inspected plus 137 native views; no claim of every unrecorded subsecond input.",
+    "Exact collector numbers not transcribed; visible art differences do not change separate supplied 20-card log snapshot.",
+    "Auto OFF plus visible manual choice screens supports owner manual decisions; touch/input telemetry is not recorded.",
+    "Composite boundary states have source_seconds null and separate measured anchor ranges; earliest anchor may precede some final attributes and does not establish an exact state instant."
+  ],
+  "online_game_entry_requested": false,
+  "human_pause_games_eligible": false,
+  "ranked_ladder_eligible": false,
+  "actual_destination": "local_review_batch_and_BATTLE_REVIEW_INDEX"
+}

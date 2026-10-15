@@ -1,0 +1,67 @@
+# Draft A: Shark Tempo, full available battle review
+
+**Current status: full battle independently accepted, registered and archived unchanged. Competitive result destination: Pause Games.**
+
+Reviewer: sol_shark_20261002_115323000. Model: gpt-6.1-sol, high. Review date: October 2, 2026. Full battle independently accepted by the lead.
+
+Source: `20261002_115323000_iOS.MP4`, 985296109 bytes, 532.31 seconds, SHA-256 `0a3c7a2dbd87adb74f2eea2d61723f5e68fd71a74f0ab80d7486a9ee1d6c6be0`. SOURCE.json and ASSIGNMENT.json were present with matching SHA before extraction. Source identity was verified by the lead, event b962b8e4-0b33-4527-8641-234986cd8b71. Source and assignment were not edited.
+
+The owner lost 2 to 3 against **草根**, after going first, in 14 turns. The terminal Head Smash knocks out Alolan Ninetales ex, awarding the opponent two points. The result screen at 530 seconds confirms defeat, scores, turn order, 14 turns and 360 damage done. Evidence: `native/t0514.00.jpg`, `native/t0522.00.jpg`, `native/t0530.00.jpg`.
+
+## Scope and method
+
+All 15 overview sheets were inspected, spanning setup through the terminal result. One overview was decoded with two threads at four-second intervals. Labels are FPS midpoint sampling labels and approximate event times, rather than exact action timestamps. Targeted native frames and denser individually sought gap frames resolve important states. All 14 turns are accounted for in COVERAGE.md. Routine waiting and animations are covered by the overview; this is not a claim of a literal frame-by-frame transcript.
+
+Online opponent search, a named opponent, opponent waiting messages and separate 20-minute clocks support PvP. No Auto label or mode change is visible. Exact ranked/casual/private queue is not established. Owner instructions place this game in Pause Games under Draft A: Shark Tempo and exclude it from Ladder Log. Neither opponent automation nor a complete deck list is inferred.
+
+## Visible card core
+
+Owner: Lapras, Surf 70 for two Water plus one Colorless, 110 HP; two Carvanha, Sharp Fang 30, 50 HP; Mega Sharpedo ex, Stage 1 directly from Carvanha, Turbo Shark 70 for one Water, 190 base HP and zero retreat; two Alolan Vulpix, Gnaw 20, 60 HP; Alolan Ninetales ex, Binding Snow 80 for two Water, 150 HP. Elegant Cape attached to Carvanha becomes a 30-HP bonus on Mega Sharpedo ex, for 220 HP. Visible Trainers include Poke Ball, two Misty, Copycat, Irida, Lucky Ice Pop and Cyrus. Card versions are identified by visible attacks/text, not an invented hidden full list.
+
+Opponent: two Snorlax, Massive Body and Mega Punch 70, 130 HP; two Skull Fossil lines into Rampardos through Rare Candy; Rampardos, Head Smash 130 for one Fighting, 150 HP, with 50 self-damage after an attack KO; Rowlet, Skill Dive, 60 HP. Visible Trainers include Order Pad, Poke Ball, Professor's Research, Arena of Antiquity, Barry, Penny and Rare Candy. No unseen evolutions or hidden cards are assumed.
+
+Native identity/text references: 58, 78, 172, 222, 234, 279, 366, 398, 478, 498 seconds. The Mega is Water-type with Lightning weakness, not a Darkness-type attacker.
+
+## Full timeline
+
+| Phase / turn | Time in seconds | Observed actions and state | Retained evidence |
+|---|---:|---|---|
+| Search and setup | 0-44 | Searches online; owner is assigned first. Owner starts Lapras 110 Active with no initial Bench. Opponent starts Snorlax 130. Opening owner hand includes Lapras, Elegant Cape, Copycat and two Misty. | overview/sheet_01.jpg; overview/sheet_02.jpg |
+| 1, owner | 44-83 | Draws and plays Poke Ball; benches Carvanha 50, equips Elegant Cape. Misty produces zero heads, ending on tails, so no Energy is gained. Ends without attack. | overview/sheet_02.jpg; native/t0058.00.jpg; native/t0078.00.jpg |
+| 2, opponent | 83-139 | Order Pad coin shows the illustrated heads face. Plays Poke Ball, benches a second Snorlax, uses Professor's Research, and attaches Fighting to the benched Snorlax. Plays Arena of Antiquity. Active Snorlax remains 130 with no Energy and does not attack. Massive Body prevents the owner playing Stadiums from hand, but does not prevent the Snorlax player playing their own Arena. | overview/sheet_03.jpg; overview/sheet_04.jpg; gaps/t0100.00.jpg; gaps/t0108.00.jpg; gaps/t0120.00.jpg; gaps/t0132.00.jpg; native/t0136.00.jpg |
+| 3, owner | 139-156 | Draws Irida. Second Misty produces one head then tails, attaching one Water to Lapras. Regular attachment adds another Water to Lapras, ending at two. Surf requires three, so no attack. | overview/sheet_05.jpg; native/t0154.00.jpg |
+| 4, opponent | 156-182 | Benches Skull Fossil 40. Attaches Fighting to Active Snorlax. Barry reduces Snorlax's attack cost by two Colorless this turn. Mega Punch deals 70, Lapras 110 to 40. No points. | overview/sheet_05.jpg; native/t0172.00.jpg; native/t0186.00.jpg |
+| 5, owner | 182-252 | Draws and benches second Carvanha. Uses Copycat to shuffle Irida into the deck and redraw to the opponent's hand count. Draws Mega Sharpedo ex, Alolan Vulpix and Cyrus; benches Vulpix and evolves the caped Carvanha to Mega Sharpedo ex 220. Pays Lapras's two-Energy retreat, leaving Lapras at zero Energy, and promotes Mega Sharpedo. Regular Water goes to the Mega. Turbo Shark hits Snorlax 130 to 60 and accelerates one Water to Alolan Vulpix. | overview/sheet_06.jpg; overview/sheet_07.jpg; gaps/t0216.00.jpg; native/t0234.00.jpg; native/t0242.00.jpg; native/t0250.00.jpg; native/t0267.00.jpg |
+| 6, opponent | 252-282 | Regular Fighting goes to benched Snorlax, now two Energy. Penny returns the damaged Active Snorlax to hand, removing its 70 damage and its attached Energy from play. Promotes the fresh two-Energy Snorlax, then rebenches the returned Snorlax at 130 HP. No attack with only two Energy; no point is awarded for the return. | overview/sheet_08.jpg; native/t0267.00.jpg; gaps/t0272.00.jpg; native/t0279.00.jpg; native/t0286.00.jpg |
+| 7, owner | 282-303 | Draws Irida but retains it. Regular Water goes to Lapras. Turbo Shark hits fresh Snorlax 130 to 60 and accelerates Water to Lapras, leaving Lapras at two Energy and Vulpix at one. | overview/sheet_09.jpg; gaps/t0292.00.jpg; gaps/t0300.00.jpg; native/t0322.00.jpg |
+| 8, opponent | 303-324 | Uses Rare Candy to evolve the first Skull Fossil directly to Rampardos 150. Third Fighting goes to Active Snorlax. Mega Punch deals 70, Mega Sharpedo 220 to 150. Rampardos is still uncharged. | overview/sheet_09.jpg; native/t0322.00.jpg |
+| 9, owner | 324-384 | Draws Lucky Ice Pop. Irida heals Mega Sharpedo 150 to 190 and Lapras 40 to 80. Lucky Ice Pop heals 20, flips heads and returns to hand; a second use heals the last 10 and flips tails, leaving Mega at 220. Freely retreats Mega into Lapras; regular Water supplies Lapras's third Energy. Surf 70 KOs Snorlax at 60. Owner gains first point, 1 to 0. | overview/sheet_10.jpg; overview/sheet_11.jpg; native/t0338.00.jpg; native/t0358.00.jpg; native/t0362.00.jpg; native/t0370.00.jpg; native/t0382.00.jpg |
+| 10, opponent | 384-410 | Promotes Rampardos, benches Rowlet 60, attaches one Fighting to Rampardos. Head Smash 130 KOs Lapras 80. Arena's extra 20 applies against ex only, so not against Lapras. Rampardos self-damages 50, 150 to 100. Opponent gains first point, 1 to 1. | overview/sheet_11.jpg; overview/sheet_12.jpg; native/t0398.00.jpg; native/t0406.00.jpg |
+| 11, owner | 410-429 | Promotes Mega Sharpedo 220. Draws and benches a second Alolan Vulpix in the vacancy left by Lapras. Regular Water goes to this new Vulpix. Turbo Shark deals 70, Rampardos 100 to 30, and supplies new Vulpix a second Water. The earlier Vulpix still has one Water. | overview/sheet_12.jpg; gaps/t0412.00.jpg; gaps/t0420.00.jpg; gaps/t0424.00.jpg; native/t0426.00.jpg; native/t0454.00.jpg |
+| 12, opponent | 429-458 | Benches second Skull Fossil 40 and attaches Fighting to it. Rampardos Head Smash deals 150 to the Mega through Arena's extra 20, 220 to 70. No KO means no Rampardos recoil; it remains at 30. Scores remain 1 to 1. | overview/sheet_13.jpg; native/t0454.00.jpg; gaps/t0456.00.jpg; native/t0458.00.jpg |
+| 13, owner | 458-494 | Draws Alolan Ninetales ex and evolves the newly benched, two-Energy Vulpix to Ninetales ex 150. Regular Water goes to the earlier Vulpix, now two. Freely retreats Mega 70 into Ninetales. Binding Snow 80 KOs Rampardos 30; owner gains second point, 2 to 1. The attack prevents Energy-Zone attachment to the opponent's next Active, but their second Skull Fossil already has one Fighting. | overview/sheet_14.jpg; native/t0470.00.jpg; native/t0478.00.jpg; gaps/t0488.00.jpg; native/t0498.00.jpg |
+| 14, opponent | 494-524 | Promotes the precharged Skull Fossil. Uses Rare Candy to evolve it to a fresh Rampardos 150, retaining its Fighting. Regular Fighting is attached to benched Rowlet, not the locked Active. Head Smash deals 150 through Arena, exactly KOs Ninetales ex 150; Rampardos self-damages 50 to 100. Opponent gains two points, 1 to 3, ending the game. | overview/sheet_15.jpg; native/t0498.00.jpg; native/t0506.00.jpg; native/t0510.00.jpg; gaps/t0512.00.jpg; native/t0514.00.jpg; native/t0522.00.jpg |
+| Terminal result | 524-532.31 | Defeat against 草根, went first, 14 turns, 2 owner points, 3 opponent points, 360 damage done. | native/t0530.00.jpg |
+
+## Observations, interpretations and tactical alternatives
+
+**Observed strength:** Turbo Shark's one-Water attack repeatedly supplied the Bench while dealing 70. Three Turbo Shark attacks delivered Energy to Vulpix, Lapras and the second Vulpix, respectively. Its free retreat let the owner switch to Lapras and Ninetales without spending the Mega's attack Energy. Irida plus Lucky Ice Pop restored the damaged Mega to full HP, and Irida also healed the charged Lapras.
+
+**Observed opposing resource play:** Penny erased the first Snorlax's damage and preserved an extra full-HP body. Barry enabled an early 70 attack with one Energy. The opponent later converted two Skull Fossil into two one-Energy Rampardos attackers. Precharging the second Fossil before Binding Snow meant the Ninetales lock could not stop the final attack.
+
+**Inference:** The low-cost, high-damage Rampardos exchange and Arena's exact 150 damage into Ninetales were more decisive than the late Energy-lock text. This match is evidence of the visible matchup and sequencing, not a population-level rating of the deck.
+
+**Conditional survival alternative, checked by Astra:** At turn 13, the caped Mega at 70 could KO Rampardos at 30 with Turbo Shark, but a follow-up Rampardos hit would KO that Mega for three points. The Ninetales route instead exposed a two-point attacker at exactly the 150-damage threshold and lost to the held Rare Candy. Keeping the two-Energy new Vulpix unevolved and using Gnaw 20 would leave Rampardos at 10, offer a single point, and potentially make its next Head Smash KO trigger fatal 50 recoil. This is not a forced win: the opponent may switch, the timing of simultaneous points needs precise rules confirmation, and their hand is hidden. Astra confirms the single-point route is plausible. Rampardos was already below its 50 self-damage threshold at 30 HP, so Gnaw does not create fatal recoil; either Vulpix could attack. This does not establish a definite tactical error. Evidence before/after: native/t0454.00.jpg, native/t0458.00.jpg, native/t0470.00.jpg, native/t0478.00.jpg, native/t0498.00.jpg, native/t0510.00.jpg. Cyrus was retained, but all opponent Benched bodies were undamaged, so the footage does not establish a legal late Cyrus gust.
+
+**Owner testimony and proposals:** Owner says the deck was fun and competitive. Wailord and Soothing Shore Stadium are untested owner proposals in this review. Neither is shown in this game, and no score or performance rating is invented.
+
+## Remaining limitations
+
+Hidden hands, exact full lists, opponent automation and exact queue remain unknown. Some very brief action animations are established through the visible before/after state plus discard card rather than a sampled popup. The Penny return is clear from damaged Snorlax disappearing, Penny entering discard and Snorlax reappearing at full HP; no healed benched Snorlax is silently invented. Order Pad shows heads, but the exact random Item it fetched is hidden, so Poke Ball is not assumed to be its fetch. Final battle and available-footage coverage are complete; the tactical counterfactual has been accepted with the stated hidden-response and point-timing limits.
+
+
+## Lead check
+
+Lead inspected ordinary early Misty and Barry resources, the middle Turbo Shark and Rare Candy development, and eight exact final-state frames through Defeat. Fourteen-turn coverage, Energy and HP changes, 360 damage and the 2-3 result reconcile. The second Fossil has Fighting before Binding Snow and retains it through Rare Candy; the final 150 hit with Arena exactly knocks out Ninetales ex for two points. Astra accepts single-point Vulpix as a conditional survival alternative; the original 30-HP Rampardos is already below its conditional 50 self-damage threshold. Hidden responses and unobserved precise simultaneous point timing prevent a forced-win claim.
+
+[Targeted Astra check](../BATCH_2026-10-02_SHARK_TEMPO/ASTRA_RAMPARDOS_CHECK.md).

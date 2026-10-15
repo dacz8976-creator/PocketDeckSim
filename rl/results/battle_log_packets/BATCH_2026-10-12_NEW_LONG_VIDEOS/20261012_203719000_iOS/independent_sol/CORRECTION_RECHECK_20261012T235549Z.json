@@ -1,0 +1,65 @@
+{
+  "accepted": false,
+  "reviewer": "/root/check_203719",
+  "checked_at_utc": "2026-10-12T23:55:49.074136+00:00",
+  "source_video": "20261012_203719000_iOS.MP4",
+  "source_sha256": "e85ac056e49ababe79fbd0388e8b132f3cc984a5deb445390a2f4df7b0137869",
+  "required_repairs": [
+    {
+      "id": "R2a",
+      "turn": 3,
+      "source_seconds": 107.5,
+      "json_path": "turns[2].board_at_start.owner.energy_zone.later_within_turn_observation.next",
+      "finding": "Current Darkness generation is visible, but the next marker is absent in t0107.50_bottom.jpg and fresh recheck_fresh_107.50.jpg. The later observation still reports next Darkness count 1.",
+      "required_change": "Set next type/count/availability null and record marker absent or obscured, or supply separately timed visible-preview evidence. Preserve the corrected empty 107.2 s start boundary."
+    },
+    {
+      "id": "R2b",
+      "turn": 9,
+      "source_seconds": 358,
+      "json_path": "turns[8].board_at_start.owner.energy_zone.next",
+      "finding": "f358_00 shows a generated current Darkness token during animation, without a visible tiny next marker. Its next Darkness count 1 is unsupported by the exact cited frame.",
+      "required_change": "Keep the current generated Darkness observation; set next type/count/availability null with visibility limit, or bind a separate actually visible preview frame."
+    },
+    {
+      "id": "R3",
+      "turn": 19,
+      "source_seconds": [
+        722,
+        723
+      ],
+      "json_path": "turns[18].plays_in_order[0].evidence_ids",
+      "finding": "The start-hand repair changed the Energy attachment action reference from f724_00 to only f722_00. The latter is the pre-play empty-slot frame and cannot establish attachment to Kingambit. The hand/start board repair itself is correct.",
+      "required_change": "Keep hand/start-board f722_00, but add a separate source-native action or resulting-board frame that shows the third Darkness on Kingambit. Preserve actual action-versus-resolution timing."
+    }
+  ],
+  "checked_input_sha256": {
+    "REVIEW.md": "8968b806f662445728b344d91466f81c25fa767ee86bb3c486772be526302d65",
+    "COVERAGE.md": "aa79c1802dacea4846d3d2373f45e53073457762565621dfd0829c47918b4a8d",
+    "SUMMARY.json": "cf474e60fd35d24e872d29a3cea2f1549db8a3b016e858c12ac4ff8f4fd2edf3",
+    "UNCERTAINTIES.json": "4b4885055fa1d1c49e1e6c02365dcac99dff516f2edd9ce74bd948ef92d2ea52",
+    "PAUSE_GAME.json": "5decf7d91946a700ce5b0993859f8481485fbfc73767b9e19fe97d23807c65f3",
+    "DECK_USED.json": "3efbcfbc95abf7850bca6fb89b84b611535ca9c2cc2605d883603cb130400091",
+    "TURN_LEDGER.json": "7b9cb08673544299e6a9aa0e5f4b8610aeb5a061359f06b730957b268d2f12dc",
+    "TURN_EVIDENCE.json": "a0009b720590cae4d1b16b23a9508667a6f94f3d5645b25f7adf4dc1c4f7a31c"
+  },
+  "packet_unchanged_during_check": true,
+  "resolved_original_findings": [
+    "R1: T13 clean hand466.9 and selection467.1/467.2 confirmed from new native evidence and independent source extraction.",
+    "R2 core: T3 current Zone empty at107.2 and Darkness visible at107.5; no preplay generated availability invented."
+  ],
+  "additional_changes_verified": [
+    "T17 clean two-Ice-Pop hand628 before play630.",
+    "T19 empty hand722; T21 empty hand786.",
+    "All 84 individual Zone observations across 42 start/end boundaries visually compared using native source crops. Two preview exceptions remain as required repairs.",
+    "All referenced evidence IDs resolve and every listed full frame/top/bottom crop exists.",
+    "Full 21-turn timeline, named owner draws/searches, board HP/Energy/Tools/points and outcome have no unintended factual changes in reviewed file diffs.",
+    "PAUSE_GAME and DECK_USED unchanged from prior audit; correct filmed-QR and missing-live-log distinction retained."
+  ],
+  "fresh_recheck_source_frames": [
+    "recheck_fresh_466.90.jpg",
+    "recheck_fresh_107.50.jpg"
+  ],
+  "prior_rejection_preserved": "CHECK_RESULT.json",
+  "scope": "Source-bound correction audit, including repaired and related additional changes, native boundary views, cross-file consistency and all eight frozen inputs."
+}

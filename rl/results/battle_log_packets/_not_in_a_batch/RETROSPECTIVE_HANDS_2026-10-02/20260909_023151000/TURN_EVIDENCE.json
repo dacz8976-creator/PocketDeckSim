@@ -1,0 +1,3998 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20260909_023151000",
+  "sources": [
+    {
+      "video_basename": "20260909_023151000_iOS.MP4",
+      "sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "source_json": "SOURCE_REFERENCE.json"
+    }
+  ],
+  "default_capture_policy": {
+    "owner_turn_offsets_after_draw_seconds": [
+      1,
+      3,
+      6
+    ],
+    "before_end_action_required": true,
+    "native_resolution_required": true,
+    "fixed_grid_is_turn_start_evidence": false
+  },
+  "frames": [
+    {
+      "evidence_id": "t0046.80",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 46.8,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0046.80.jpg",
+      "full_frame_sha256": "b106e1d0d027731da213b45a87899544db96883c482186694fb15bf4f568b897",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "observation": "Complete unzoomed lower hand; T3 automatic draw remnant separately qualified.",
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0046.80_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "77f6ac72f4459728bfaeec7950e22e75759dfc3c2a8c03a6963080b27cb4ca95",
+        "parent_sha256": "b106e1d0d027731da213b45a87899544db96883c482186694fb15bf4f568b897",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0046.80_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "7cb83cbd0a91ff22e11fef70899413476583b989790621c1e8a8aea035739bdd",
+        "parent_sha256": "b106e1d0d027731da213b45a87899544db96883c482186694fb15bf4f568b897",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "t0114.60",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 114.6,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0114.60.jpg",
+      "full_frame_sha256": "07eec3b563c78457ba40535cfca0b801294b60975eeafa7abb24591d0b5514cf",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "observation": "Complete unzoomed lower hand; T3 automatic draw remnant separately qualified.",
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0114.60_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "86e671fafbd28d25c9a14a2d3eda6133f81f0072a6ab11e64c99671214ed567e",
+        "parent_sha256": "07eec3b563c78457ba40535cfca0b801294b60975eeafa7abb24591d0b5514cf",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0114.60_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "b3ebcec6c907a00ad70cc681b0063e4bbc9ce28688dee5d271a74f8ec5c928e2",
+        "parent_sha256": "07eec3b563c78457ba40535cfca0b801294b60975eeafa7abb24591d0b5514cf",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "t0181.20",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 181.2,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0181.20.jpg",
+      "full_frame_sha256": "e1591ab25c64c527f1df6b406389c5cb7a5bca87284c69c73dc3b4cd147952e4",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "observation": "Complete unzoomed lower hand; T3 automatic draw remnant separately qualified.",
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0181.20_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "8f92defdf830f5466b4f82671e72a8fe4918a9a73c4db8c15e224d35fb48046b",
+        "parent_sha256": "e1591ab25c64c527f1df6b406389c5cb7a5bca87284c69c73dc3b4cd147952e4",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0181.20_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "d0591dffdab9e0db302dd7e3c0e8250683a67aab0e6be8b5119c6b1287b08729",
+        "parent_sha256": "e1591ab25c64c527f1df6b406389c5cb7a5bca87284c69c73dc3b4cd147952e4",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "t0234.20",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 234.2,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0234.20.jpg",
+      "full_frame_sha256": "b2c40c3bdecff4091ac0b5da56a5ed70887d0e8f5105c0630ed116f91963ae8b",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "observation": "Complete unzoomed lower hand; T3 automatic draw remnant separately qualified.",
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0234.20_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "acd0b5806ffa27392041646c2f9a615bea50c2c6102415381b5729492b62f9b5",
+        "parent_sha256": "b2c40c3bdecff4091ac0b5da56a5ed70887d0e8f5105c0630ed116f91963ae8b",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0234.20_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "4663b2e34f242dfe071fbd713d1940fcd8fca2f5869b2bb7a8204222db8753a3",
+        "parent_sha256": "b2c40c3bdecff4091ac0b5da56a5ed70887d0e8f5105c0630ed116f91963ae8b",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "t0329.40",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 329.4,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0329.40.jpg",
+      "full_frame_sha256": "9b80d8ab8b64c493d339117202d9dea323902a681b42a312bee506c20dd19d46",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "observation": "Complete unzoomed lower hand; T3 automatic draw remnant separately qualified.",
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0329.40_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "9400205cb7c2f5b08d9f7a8d440209cfe9a61613a38707d9dcb579b94820040c",
+        "parent_sha256": "9b80d8ab8b64c493d339117202d9dea323902a681b42a312bee506c20dd19d46",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0329.40_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "b5e994ffff026e99089c19e9a2c31f8d3cc7bdd1ee8a449aa7eda2748d7b4e64",
+        "parent_sha256": "9b80d8ab8b64c493d339117202d9dea323902a681b42a312bee506c20dd19d46",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "t0047.70",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 47.7,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0047.70.jpg",
+      "full_frame_sha256": "f5d7978a39aa495ecced827460cf67531876cdad2c4e077c9ab9aa1e23bcbec0",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0047.70_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "fec137fac46b245409b7de19158c2b18a08c0a5922484373be2876e9e5f2ff84",
+        "parent_sha256": "f5d7978a39aa495ecced827460cf67531876cdad2c4e077c9ab9aa1e23bcbec0",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0047.70_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "6f7418c3ffb2f5bc75f8621942b16b11125286ba096e4c39708c35376245697b",
+        "parent_sha256": "f5d7978a39aa495ecced827460cf67531876cdad2c4e077c9ab9aa1e23bcbec0",
+        "lossless": true
+      },
+      "draw_animation_end_seconds": 46.7,
+      "offset_after_draw_seconds": 1.0
+    },
+    {
+      "evidence_id": "t0049.70",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 49.7,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0049.70.jpg",
+      "full_frame_sha256": "ac90cd3f32f5d26f84b03ba4ae2416c022ca805a34020048fe47afcd6ec5aa78",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0049.70_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "33586372d973d9601aa8d04ad1f5f1ce4d505163534a6437525f92f522b913db",
+        "parent_sha256": "ac90cd3f32f5d26f84b03ba4ae2416c022ca805a34020048fe47afcd6ec5aa78",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0049.70_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "ffce30f2b3b70cbb64cc3cb00fb7b839dbd16dc7cdbddad7c53dbe3e24f23f89",
+        "parent_sha256": "ac90cd3f32f5d26f84b03ba4ae2416c022ca805a34020048fe47afcd6ec5aa78",
+        "lossless": true
+      },
+      "draw_animation_end_seconds": 46.7,
+      "offset_after_draw_seconds": 3.0
+    },
+    {
+      "evidence_id": "t0051.50",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 51.5,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0051.50.jpg",
+      "full_frame_sha256": "0bb49dd526bfa46076bf3d39da0f24aa378dc79fbc07ecdf7af285de52f2a3a9",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0051.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "007524eb7e0140c0c5009163d3ac2abcf20fbcead4c6111fda571eaeff9641cf",
+        "parent_sha256": "0bb49dd526bfa46076bf3d39da0f24aa378dc79fbc07ecdf7af285de52f2a3a9",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0051.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "fb58ca1f5ab2464efc0051e57a31786d5c10a8684164e8a7b09566dd372f1533",
+        "parent_sha256": "0bb49dd526bfa46076bf3d39da0f24aa378dc79fbc07ecdf7af285de52f2a3a9",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "cue_047",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 47,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000048.jpg",
+      "full_frame_sha256": "eedff66a62c93d8b50bc8552c57835b2471cb882b5f6fdc85034a51a3a89bea4",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "t0052.70",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 52.7,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0052.70.jpg",
+      "full_frame_sha256": "88d889e3bf220edf7af33cc591aa0caf1b0e5f7502261191f0d8e2d894cf3bea",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0052.70_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "09a38722f996cb894629c83f862c0925eab855e73a61ec6069094e5ae1dc2004",
+        "parent_sha256": "88d889e3bf220edf7af33cc591aa0caf1b0e5f7502261191f0d8e2d894cf3bea",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0052.70_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "341970cf9b204618b5b4eed479c48b07f25ea5fcdd6a652ef2b9c02fafdb50c5",
+        "parent_sha256": "88d889e3bf220edf7af33cc591aa0caf1b0e5f7502261191f0d8e2d894cf3bea",
+        "lossless": true
+      },
+      "draw_animation_end_seconds": 46.7,
+      "offset_after_draw_seconds": 6.0
+    },
+    {
+      "evidence_id": "t0059.50",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 59.5,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0059.50.jpg",
+      "full_frame_sha256": "0b34343a36d89046c3e70ef08e530b5810f28b87d7b5853eb4d8c973baaf80ca",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0059.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "3808f480fcb53a228c43f5c252d5a8785c2b70deb1605b735df016c93cc96997",
+        "parent_sha256": "0b34343a36d89046c3e70ef08e530b5810f28b87d7b5853eb4d8c973baaf80ca",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0059.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "8fcbf0d0d97d378a79c9556f40bfc8cf1b8ea57f7b51ae5214de96e68a52e219",
+        "parent_sha256": "0b34343a36d89046c3e70ef08e530b5810f28b87d7b5853eb4d8c973baaf80ca",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "cue_053",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 53,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000054.jpg",
+      "full_frame_sha256": "d98de279dd25294fec57dd0db3d3df3eda88a4cd1f8bed47e680632234bac41d",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "cue_059",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 59,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000060.jpg",
+      "full_frame_sha256": "276c8e257e0506f916eeef9e6b207ef6ada0b23b79c85a546c575c53d861cb36",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "r_t2-research-in-discard",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 85,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "inherited nominal anchor; retained approximately +/-1second tolerance, actual PTS unmeasured",
+      "time_tolerance_seconds": 1,
+      "full_frame_path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\battle-023151\\evidence\\t2-research-in-discard.jpg",
+      "full_frame_sha256": "9503deb6632b01b3512ecc2ad0f9d196d9ef14607229d88412b51142ec7f3a17",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": true,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t2-research-in-discard_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "b2280eabeb4cf72c506917b37ca50393323b93cdc976a44cda675e11afbba1a3",
+        "parent_sha256": "9503deb6632b01b3512ecc2ad0f9d196d9ef14607229d88412b51142ec7f3a17",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t2-research-in-discard_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "8f7dc62120e5047288f9a5cc18c603c3633bee89987054fc5c3e2d9db533978c",
+        "parent_sha256": "9503deb6632b01b3512ecc2ad0f9d196d9ef14607229d88412b51142ec7f3a17",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "cue_081",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 81,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000082.jpg",
+      "full_frame_sha256": "6f66831626e00ad71ae9bcac3d69e581c56b3a34e9b7ba65ec2f7cc2e412195d",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "t0095.00",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 95,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0095.00.jpg",
+      "full_frame_sha256": "3adb54f971f43867334f5bce9ff34240202ce745d226d0850bb368ceee095b8e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0095.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "7a8582bc3097bf670b2bcf8e120ec6f57ebd8a04068ad6c0dcc2aaa11c346045",
+        "parent_sha256": "3adb54f971f43867334f5bce9ff34240202ce745d226d0850bb368ceee095b8e",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0095.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "2f96f02e242eee22af429cbf4135bff73ef47917b46bbf8ce321b1db9b7f0d67",
+        "parent_sha256": "3adb54f971f43867334f5bce9ff34240202ce745d226d0850bb368ceee095b8e",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "r_t2-pokeball-entei-result",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 99,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "inherited nominal anchor; retained approximately +/-1second tolerance, actual PTS unmeasured",
+      "time_tolerance_seconds": 1,
+      "full_frame_path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\battle-023151\\evidence\\t2-pokeball-entei-result.jpg",
+      "full_frame_sha256": "b342255f89d56d7986d5bb9ec1ab5eb55fe5fd426cd2d3dc5e144ac1cb558602",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": true,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t2-pokeball-entei-result_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "a96ab93a70b2401b63ac4d9d4c226157dfe2446a19faa46f61fe1627be7cdbb9",
+        "parent_sha256": "b342255f89d56d7986d5bb9ec1ab5eb55fe5fd426cd2d3dc5e144ac1cb558602",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t2-pokeball-entei-result_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "c896abfd8fa9dff81f001d5b2fefd00853b1efeb3604731c703f30dea7f3e8e3",
+        "parent_sha256": "b342255f89d56d7986d5bb9ec1ab5eb55fe5fd426cd2d3dc5e144ac1cb558602",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "cue_091",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 91,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000092.jpg",
+      "full_frame_sha256": "6757c59336ae46174bcd83834ef71eb652f89466890ec554039467279c6d2914",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "t0111.20",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 111.2,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0111.20.jpg",
+      "full_frame_sha256": "62f907cf8abd9c8efcfb94cbe00e04dd2a2a6cd2a76d51b5e5c6c937ee71be45",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0111.20_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "ce353abd52c0d0b256c9c96af0e20e1263ec8bbd87b778df361650fc4a489b65",
+        "parent_sha256": "62f907cf8abd9c8efcfb94cbe00e04dd2a2a6cd2a76d51b5e5c6c937ee71be45",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0111.20_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "758fdb7812dc3306d7c54ad53114274bf479fe5c1960113af9cb6fb5ddd7537f",
+        "parent_sha256": "62f907cf8abd9c8efcfb94cbe00e04dd2a2a6cd2a76d51b5e5c6c937ee71be45",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "cue_098",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 98,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000099.jpg",
+      "full_frame_sha256": "2a5727e5a866ff79b5e0a3ee7fcfa209303ea35396c22f51a751afcbd28b4054",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "r_t2-torkoal-benched",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 104,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "inherited nominal anchor; retained approximately +/-1second tolerance, actual PTS unmeasured",
+      "time_tolerance_seconds": 1,
+      "full_frame_path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\battle-023151\\evidence\\t2-torkoal-benched.jpg",
+      "full_frame_sha256": "68d34895874e4f2e9bc2f6cd8e3c0dc5e05b7d58dd61d21d31c1c11e91b39f5b",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": true,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t2-torkoal-benched_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "e7b5d3439c91b6b4e517a72ec5865541f106ef4138ad3735353fccc0bafbeda1",
+        "parent_sha256": "68d34895874e4f2e9bc2f6cd8e3c0dc5e05b7d58dd61d21d31c1c11e91b39f5b",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t2-torkoal-benched_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "819c6468999b714d81c3026791c8735acba060b6470fde9786425e65c395d0fe",
+        "parent_sha256": "68d34895874e4f2e9bc2f6cd8e3c0dc5e05b7d58dd61d21d31c1c11e91b39f5b",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "cue_103",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 103,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000104.jpg",
+      "full_frame_sha256": "1a39b527b56eba6095a8c1581c086533cc155066f99bd26d4317404e54981b05",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "cue_104",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 104,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000105.jpg",
+      "full_frame_sha256": "f5d7f9c133018a0ee79aea8ea5b8aff67a5e01fc9085d4820517e90d83403552",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "t0110.00",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 110,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0110.00.jpg",
+      "full_frame_sha256": "9cf3101ff209df225379745277a4b03c670c4649ead86b20f81e5f62b2436af3",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0110.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "21cc1761968d333e12591ad2ae2794ee0e345560d4b99ea1ae864630b3341f43",
+        "parent_sha256": "9cf3101ff209df225379745277a4b03c670c4649ead86b20f81e5f62b2436af3",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0110.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "15ce9826275b133c1b04b458a61dda3c0b3683d7a6bab32bc543c6da01912df5",
+        "parent_sha256": "9cf3101ff209df225379745277a4b03c670c4649ead86b20f81e5f62b2436af3",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "cue_108",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 108,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000109.jpg",
+      "full_frame_sha256": "edde6d5df70944b5baa400d3708894ca59e156348202922adc6723b30310251b",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "t0117.00",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 117,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0117.00.jpg",
+      "full_frame_sha256": "b8a2cc916482b00bdb6e8fb267090571447eedeff3346188a6d3ffab8c5076d1",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0117.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "3dd5e0b06666179a317c0d2ef4cec489470e10c51fbafb42ad999d209c0544df",
+        "parent_sha256": "b8a2cc916482b00bdb6e8fb267090571447eedeff3346188a6d3ffab8c5076d1",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0117.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "416429c21975fa741d4b247d69d925ae7854f843c8f0812cb2e468855b840a67",
+        "parent_sha256": "b8a2cc916482b00bdb6e8fb267090571447eedeff3346188a6d3ffab8c5076d1",
+        "lossless": true
+      },
+      "draw_animation_end_seconds": 114.4,
+      "offset_after_draw_seconds": 2.6
+    },
+    {
+      "evidence_id": "t0128.50",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 128.5,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0128.50.jpg",
+      "full_frame_sha256": "64745e46b3119c30fd11f15ae58201125264476a268bbfe7598127e536e0edfa",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0128.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "62a5b1b19304223082e56c7727b95dc5b10b634a86404f38cffc8126423e7c57",
+        "parent_sha256": "64745e46b3119c30fd11f15ae58201125264476a268bbfe7598127e536e0edfa",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0128.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "0db27de745380c35b3c79ea538b14012ea6942fbd3884c7e00c25ffb1d7e0545",
+        "parent_sha256": "64745e46b3119c30fd11f15ae58201125264476a268bbfe7598127e536e0edfa",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "cue_115",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 115,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000116.jpg",
+      "full_frame_sha256": "bc1b09aba472f92c9cce90d52664ce2320f5c0cca282bbe540876c5c70a7efa0",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "t0120.00",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 120,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0120.00.jpg",
+      "full_frame_sha256": "d5edd552ed729315e839597a698a2c84e9dfb5b7dbf48521072ca72eb901efb3",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0120.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "7bacdb8d3e34500529bfc012962c7c9ddaa8b7e65add97e0c7a59be1e33ce87c",
+        "parent_sha256": "d5edd552ed729315e839597a698a2c84e9dfb5b7dbf48521072ca72eb901efb3",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0120.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "4d64f5b5605f8e15ca241c848bdc9b3762d6f1aae181933af2c95f330b77fea5",
+        "parent_sha256": "d5edd552ed729315e839597a698a2c84e9dfb5b7dbf48521072ca72eb901efb3",
+        "lossless": true
+      },
+      "draw_animation_end_seconds": 114.4,
+      "offset_after_draw_seconds": 5.6
+    },
+    {
+      "evidence_id": "cue_119",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 119,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000120.jpg",
+      "full_frame_sha256": "cee421c44ee6438b85ddcf74e2f7279410b9dd0a04b530584c79aacc5d690031",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "cue_122",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 122,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000123.jpg",
+      "full_frame_sha256": "90a6017540862cfb4ad9cb9bf975389a672ff85d20aecd9e598050cc2d547afb",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "cue_125",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 125,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000126.jpg",
+      "full_frame_sha256": "8ed73f2cf9ce9ff23529c36c95b7f186a0c8b8ef8a4df8746dac4715dfc71a28",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "cue_128",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 128.5,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000129.jpg",
+      "full_frame_sha256": "5f95f4f87667b85251232330b1a915a1583a5120d2acbb825ecff0a222622bdf",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "r_t4-combusken-two-fire",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 157,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "inherited nominal anchor; retained approximately +/-1second tolerance, actual PTS unmeasured",
+      "time_tolerance_seconds": 1,
+      "full_frame_path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\battle-023151\\evidence\\t4-combusken-two-fire.jpg",
+      "full_frame_sha256": "2e65006aa35d4cae790f9607b5dd9fa793fd5faf066115bcd905220d52f408f4",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": true,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t4-combusken-two-fire_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "2bfb4306fa72a965da16e7f867d4a073db061a6ab60be389289e839c428a228f",
+        "parent_sha256": "2e65006aa35d4cae790f9607b5dd9fa793fd5faf066115bcd905220d52f408f4",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t4-combusken-two-fire_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "a06d4dd557d4c0ecac44ea9f3dc2f9c0768d73011fcb6102af36f12b366aa2f3",
+        "parent_sha256": "2e65006aa35d4cae790f9607b5dd9fa793fd5faf066115bcd905220d52f408f4",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "cue_150",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 150,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000151.jpg",
+      "full_frame_sha256": "6c8b63dd17abd7ac83cd0c6dbe8d28ea8a359e53c34ae1e3134a2462eb8b83f7",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "cue_154",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 154,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000155.jpg",
+      "full_frame_sha256": "e83762188e9cc2cdee178232e24fa6b31479587a7df77eaa37dd54a11d387bfe",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "r_t5-owner-banner",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 178,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "inherited nominal anchor; retained approximately +/-1second tolerance, actual PTS unmeasured",
+      "time_tolerance_seconds": 1,
+      "full_frame_path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\battle-023151\\evidence\\t5-owner-banner.jpg",
+      "full_frame_sha256": "c98dcccce37927b58ce8c201d3c399d575f9dfb16c5a6a1d175c5da23fb7f3e4",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": true,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t5-owner-banner_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "89651b0a94bd9befbc8ec6d77a02e2088df2004483caca22e3300498ee6f3cef",
+        "parent_sha256": "c98dcccce37927b58ce8c201d3c399d575f9dfb16c5a6a1d175c5da23fb7f3e4",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t5-owner-banner_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "caf4d5ec3cc75443d27e65307f53c52b99ee1dd90fb7594b8b28f2168984f62e",
+        "parent_sha256": "c98dcccce37927b58ce8c201d3c399d575f9dfb16c5a6a1d175c5da23fb7f3e4",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "cue_167",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 167,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000168.jpg",
+      "full_frame_sha256": "5b9d771a2cae67c2b4daec9a447de58a0c937f2489cc1e34c0ea66fcc6241987",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "t0182.00",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 182,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0182.00.jpg",
+      "full_frame_sha256": "07a00a7da63a15660edb83fb68c789f5b232fb21f12ac8d8f83ea74be8aec684",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0182.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "385ef004973845e83dbd0e03b0a67d4284b58f45c792b3e01d95e033a0efb910",
+        "parent_sha256": "07a00a7da63a15660edb83fb68c789f5b232fb21f12ac8d8f83ea74be8aec684",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0182.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "d8f0b2ae30866f0ce2dadb82c074380c851168cc89c8d8d7b0471ac3a61084f6",
+        "parent_sha256": "07a00a7da63a15660edb83fb68c789f5b232fb21f12ac8d8f83ea74be8aec684",
+        "lossless": true
+      },
+      "draw_animation_end_seconds": 181.2,
+      "offset_after_draw_seconds": 0.8
+    },
+    {
+      "evidence_id": "t0184.00",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 184,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0184.00.jpg",
+      "full_frame_sha256": "2393f5306a7317368225fd5676eb77f6247b559b4a76a02b2280e0b510cc2c19",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0184.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "97dc124529251160546028a0c66ad62b219a4dde7fdfb0bd96e6d57a21c35a27",
+        "parent_sha256": "2393f5306a7317368225fd5676eb77f6247b559b4a76a02b2280e0b510cc2c19",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0184.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "314ee613f11b014dde60c69817ee199116a2a9939f8ab5fedba47a98284283b6",
+        "parent_sha256": "2393f5306a7317368225fd5676eb77f6247b559b4a76a02b2280e0b510cc2c19",
+        "lossless": true
+      },
+      "draw_animation_end_seconds": 181.2,
+      "offset_after_draw_seconds": 2.8
+    },
+    {
+      "evidence_id": "cue_181",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 181.5,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000182.jpg",
+      "full_frame_sha256": "5c9d226a9cb4c90fde0e2fd61aef4e32d66cb5d9afc33ba1c1b7f8bc397357bc",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "t0187.00",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 187,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0187.00.jpg",
+      "full_frame_sha256": "df1c09d26d3364320c4f12a86ffb2e111924e5ca425e6824acaa25dfac670d09",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0187.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "e80fe8427e6f3729b8fc4956f8af83a4c53d1800824a57866181b27e65f73f98",
+        "parent_sha256": "df1c09d26d3364320c4f12a86ffb2e111924e5ca425e6824acaa25dfac670d09",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0187.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "2a082c8b9ed180ac98dbd142eb4dc438ce3b290c4fa92aa47341cb524394aeb2",
+        "parent_sha256": "df1c09d26d3364320c4f12a86ffb2e111924e5ca425e6824acaa25dfac670d09",
+        "lossless": true
+      },
+      "draw_animation_end_seconds": 181.2,
+      "offset_after_draw_seconds": 5.8
+    },
+    {
+      "evidence_id": "r_t5-heliolisk-one-mega-one-energy",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 195,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "inherited nominal anchor; retained approximately +/-1second tolerance, actual PTS unmeasured",
+      "time_tolerance_seconds": 1,
+      "full_frame_path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\battle-023151\\evidence\\t5-heliolisk-one-mega-one-energy.jpg",
+      "full_frame_sha256": "88521c03669b9905a00a27ae278328fabc22a078f5127cc522d8a6fa0b28a5d6",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": true,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t5-heliolisk-one-mega-one-energy_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "d04f2f37c78bac3b42fb3157acf986a652e0327d65af04a74077a39dc79342b8",
+        "parent_sha256": "88521c03669b9905a00a27ae278328fabc22a078f5127cc522d8a6fa0b28a5d6",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t5-heliolisk-one-mega-one-energy_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "396c6a0078c1bb69e7f035171ae1a8993ffaa7bb69fe16d97f3b534823073fa6",
+        "parent_sha256": "88521c03669b9905a00a27ae278328fabc22a078f5127cc522d8a6fa0b28a5d6",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "cue_187",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 187,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000188.jpg",
+      "full_frame_sha256": "f36f4b0ea2772dabb98e1c61abb659cdbc806d1f8d4510a9272190c1f18b7f53",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "r_t5-first-spread-settled",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 203,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "inherited nominal anchor; retained approximately +/-1second tolerance, actual PTS unmeasured",
+      "time_tolerance_seconds": 1,
+      "full_frame_path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\battle-023151\\evidence\\t5-first-spread-settled.jpg",
+      "full_frame_sha256": "6a1b937a9ae8074925a075effb366cb73e90fcb5e064023cb4f27e27dd44543c",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": true,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t5-first-spread-settled_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "e207de4e1d78652cf3ef9f17dc603f694b7d1ed196dcd0184a744164aee41ae1",
+        "parent_sha256": "6a1b937a9ae8074925a075effb366cb73e90fcb5e064023cb4f27e27dd44543c",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t5-first-spread-settled_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "16c1d9d8e4da800543bef5209b6756605ca909343292f6f50815b69476c088b8",
+        "parent_sha256": "6a1b937a9ae8074925a075effb366cb73e90fcb5e064023cb4f27e27dd44543c",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "cue_191",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 191,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000192.jpg",
+      "full_frame_sha256": "2745288c2538db77de0d28a73c0a3fd252f116c176f48616de9e26dda2da4470",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "cue_194",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 194,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000195.jpg",
+      "full_frame_sha256": "7c78f49814b390fd93b08a8ddfc25c310fc7765fdefb4cf90410abf4aeeb8011",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "t0197.50",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 197.5,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0197.50.jpg",
+      "full_frame_sha256": "1b93d26af1e81420e05ee73e111d2de9fd2464c3ede6f9e6f2c49b1db601150c",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0197.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "d0d469400365f7f5d7d6c5e8f6a6bc4f0948f780f4065e69d645390c89bdb060",
+        "parent_sha256": "1b93d26af1e81420e05ee73e111d2de9fd2464c3ede6f9e6f2c49b1db601150c",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0197.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "0b10c6abb63dad99c71061e5138b7724fb862c80cf04ffd74b5a85595f6d1d4e",
+        "parent_sha256": "1b93d26af1e81420e05ee73e111d2de9fd2464c3ede6f9e6f2c49b1db601150c",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "cue_198",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 198,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000199.jpg",
+      "full_frame_sha256": "65c0120af67868061f500460edf451417af6412f9187d1b507e90f67834a2a28",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "r_t6-entei-one-fire-settled",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 223,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "inherited nominal anchor; retained approximately +/-1second tolerance, actual PTS unmeasured",
+      "time_tolerance_seconds": 1,
+      "full_frame_path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\battle-023151\\evidence\\t6-entei-one-fire-settled.jpg",
+      "full_frame_sha256": "15f0560da09d97d5d6ea192008f771b935def4dbba7522d287bd698fc6ed39f1",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": true,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t6-entei-one-fire-settled_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "76ecc22e288e1b4bce03442890d98d4c12bea4b900104f3d446c1e5af82227dc",
+        "parent_sha256": "15f0560da09d97d5d6ea192008f771b935def4dbba7522d287bd698fc6ed39f1",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t6-entei-one-fire-settled_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "43bab5f545f1f72ccb3b20fc7ab82f9152f9f2d52a18cbd5adf224991fc7aab8",
+        "parent_sha256": "15f0560da09d97d5d6ea192008f771b935def4dbba7522d287bd698fc6ed39f1",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "t0230.50",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 230.5,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0230.50.jpg",
+      "full_frame_sha256": "88f76109943dd5e87340b9490e14aa990dd21f947cc2204ed120d944b97f8a59",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0230.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "e410cdc86f31fdad736bedc03d8538701e4c446b43b606d54cd451aca266fd3c",
+        "parent_sha256": "88f76109943dd5e87340b9490e14aa990dd21f947cc2204ed120d944b97f8a59",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0230.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "20b577a5f50182f9dee191eade3a2b09d05dbec0e90e9a400c99524cc999607e",
+        "parent_sha256": "88f76109943dd5e87340b9490e14aa990dd21f947cc2204ed120d944b97f8a59",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "cue_219",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 219,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000220.jpg",
+      "full_frame_sha256": "62ff306c6b7ecdd2b1b87944f186d528905d49f8b85375c1a5fb64afcb641034",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "cue_221",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 221,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000222.jpg",
+      "full_frame_sha256": "262cc8c1b5806510f84302dcd98852f47ae58a4fd87d17ab3c3d9289b12bf94c",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "r_t6-heliolisk-twenty",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 229,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "inherited nominal anchor; retained approximately +/-1second tolerance, actual PTS unmeasured",
+      "time_tolerance_seconds": 1,
+      "full_frame_path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\battle-023151\\evidence\\t6-heliolisk-twenty.jpg",
+      "full_frame_sha256": "f18e2a81f5fb677c128bd1e527e35ec7e746d92c932cedad1f39c35c995a431a",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": true,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t6-heliolisk-twenty_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "b5b79d7cad998599608866c59548c435312f877bcdab74d5c3e076639d6761da",
+        "parent_sha256": "f18e2a81f5fb677c128bd1e527e35ec7e746d92c932cedad1f39c35c995a431a",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t6-heliolisk-twenty_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "6eb9710202e15213850e287f1a937e5afcbdfe3086ead17e2484524057f2ff95",
+        "parent_sha256": "f18e2a81f5fb677c128bd1e527e35ec7e746d92c932cedad1f39c35c995a431a",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "cue_228",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 228,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000229.jpg",
+      "full_frame_sha256": "649a42f98c32e9140017bf7e527f0edd1abffc317915dd52d4fb702b79c4fdfd",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "t0235.00",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 235,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0235.00.jpg",
+      "full_frame_sha256": "f206a8dad6578b10aae0e307cb31d627ff461c614fd5396ea85842ed659966a1",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0235.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "61b850cb2ab77237c51ebd5f1effa9079ea7b640fc71e95072707689fc9e8344",
+        "parent_sha256": "f206a8dad6578b10aae0e307cb31d627ff461c614fd5396ea85842ed659966a1",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0235.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "d081e10fdd7dfc3a388e91cedf2ce561dd81535daf7154e105f2f19b2d21b033",
+        "parent_sha256": "f206a8dad6578b10aae0e307cb31d627ff461c614fd5396ea85842ed659966a1",
+        "lossless": true
+      },
+      "draw_animation_end_seconds": 234.2,
+      "offset_after_draw_seconds": 0.8
+    },
+    {
+      "evidence_id": "t0237.00",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 237,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0237.00.jpg",
+      "full_frame_sha256": "bae186f2c07dace8b2a1e456dc3058ba7138faa3eacad782abf2d48c495efcec",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0237.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "9a388da883b58d5cbbf28e9ee4735a79fad107e4a9aea95e4759c453c85fb9cd",
+        "parent_sha256": "bae186f2c07dace8b2a1e456dc3058ba7138faa3eacad782abf2d48c495efcec",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0237.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "323cfb7fd87035a43554eacb2b56e73d1e6c471782d8dac5502d192753f73b14",
+        "parent_sha256": "bae186f2c07dace8b2a1e456dc3058ba7138faa3eacad782abf2d48c495efcec",
+        "lossless": true
+      },
+      "draw_animation_end_seconds": 234.2,
+      "offset_after_draw_seconds": 2.8
+    },
+    {
+      "evidence_id": "r_t7-helioptile-search-result",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 238,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "inherited nominal anchor; retained approximately +/-1second tolerance, actual PTS unmeasured",
+      "time_tolerance_seconds": 1,
+      "full_frame_path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\battle-023151\\evidence\\t7-helioptile-search-result.jpg",
+      "full_frame_sha256": "fda1c6616de8dfdad31c070fb9851ba0c0d1903fcd052599f1cd11eef9293d74",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": true,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t7-helioptile-search-result_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "b443f3a1f5a1c34f34a50f3409e54cf6772dc5b8fc167bbe4cdfbeac9b5a769e",
+        "parent_sha256": "fda1c6616de8dfdad31c070fb9851ba0c0d1903fcd052599f1cd11eef9293d74",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t7-helioptile-search-result_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "e4c285dcc5ab1a95bd4c8814102fdd832d58b4a11f4c5f214354ac73527e9201",
+        "parent_sha256": "fda1c6616de8dfdad31c070fb9851ba0c0d1903fcd052599f1cd11eef9293d74",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "t0240.00",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 240,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0240.00.jpg",
+      "full_frame_sha256": "b22caa29b5b12fc76df69fea8666a52a56d207ba8970bd160d877e38babe7ae2",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0240.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "412c4568757a2d471b485b65418f90edb20fb6a20e9ed31e7523b1fb8631fee0",
+        "parent_sha256": "b22caa29b5b12fc76df69fea8666a52a56d207ba8970bd160d877e38babe7ae2",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0240.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "62b408ce3b795a967577700a812f7e8d9a09afd049594b5ea11e2b1b262b4c27",
+        "parent_sha256": "b22caa29b5b12fc76df69fea8666a52a56d207ba8970bd160d877e38babe7ae2",
+        "lossless": true
+      },
+      "draw_animation_end_seconds": 234.2,
+      "offset_after_draw_seconds": 5.8
+    },
+    {
+      "evidence_id": "cue_234",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 234.5,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000235.jpg",
+      "full_frame_sha256": "8326fc413b90f8b7b4dbdfffebaf97b60c030c02c9776500730785abf3b2e433",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "r_t7-mega-two-lightning",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 241,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "inherited nominal anchor; retained approximately +/-1second tolerance, actual PTS unmeasured",
+      "time_tolerance_seconds": 1,
+      "full_frame_path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\battle-023151\\evidence\\t7-mega-two-lightning.jpg",
+      "full_frame_sha256": "1b78fbb44d563d1caa479edce80e217ae7cebc029c5cabb59fff6d7b1a72f2ee",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": true,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t7-mega-two-lightning_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "93645dccd5cd132069ecd2f81fc1fa5f2a3ffe9453b5c9a101c465161a750e8d",
+        "parent_sha256": "1b78fbb44d563d1caa479edce80e217ae7cebc029c5cabb59fff6d7b1a72f2ee",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t7-mega-two-lightning_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "512fed17c6f5080b302dc6be61ab6fc4663c039951e921c544499ea22b119be7",
+        "parent_sha256": "1b78fbb44d563d1caa479edce80e217ae7cebc029c5cabb59fff6d7b1a72f2ee",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "cue_239",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 239,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000240.jpg",
+      "full_frame_sha256": "492efce7ba9835ad2c87af0e8572f555dabbd92439888ce06c38742179023727",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "t0241.50",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 241.5,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0241.50.jpg",
+      "full_frame_sha256": "6ffa47ba5a3cdccf4974ad17707851d9384c77fa362bef2e87640dd8c19e8a33",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0241.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "26c9d9099e37f381cdf28dd256d799c88cfab491aedbb278457ddcc57cc3590b",
+        "parent_sha256": "6ffa47ba5a3cdccf4974ad17707851d9384c77fa362bef2e87640dd8c19e8a33",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0241.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "22603f0cdbfac30ca5dda641b28579cc522db7599dc3bb227c227b0875aff8a3",
+        "parent_sha256": "6ffa47ba5a3cdccf4974ad17707851d9384c77fa362bef2e87640dd8c19e8a33",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "r_t8-entei-promoted",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 272,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "inherited nominal anchor; retained approximately +/-1second tolerance, actual PTS unmeasured",
+      "time_tolerance_seconds": 1,
+      "full_frame_path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\battle-023151\\evidence\\t8-entei-promoted.jpg",
+      "full_frame_sha256": "1dcca04b1dbc078b0b43cafbe9ee8fc1b504b05eaada4a6e9ffb2aa99a9312e9",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": true,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t8-entei-promoted_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "5d65c11d8f7154c33edc3c1fbb9e6539ad1244e9ca15cb76326a0438d8749b88",
+        "parent_sha256": "1dcca04b1dbc078b0b43cafbe9ee8fc1b504b05eaada4a6e9ffb2aa99a9312e9",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t8-entei-promoted_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "2d59fa55a2bd38d9dd38f5a6154a99638cc7ab38d96fef7eab020e47209f9a22",
+        "parent_sha256": "1dcca04b1dbc078b0b43cafbe9ee8fc1b504b05eaada4a6e9ffb2aa99a9312e9",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "cue_241",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 241,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000242.jpg",
+      "full_frame_sha256": "7efe29ea6e6a972f91ae086e933fb22b7babf94c707aa807e498395f73fe13d3",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "r_t8-rare-candy-play",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 288.0,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "inherited nominal anchor; retained approximately +/-1second tolerance, actual PTS unmeasured",
+      "time_tolerance_seconds": 0.125,
+      "full_frame_path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\battle-023151\\evidence\\t8-rare-candy-play.jpg",
+      "full_frame_sha256": "9ccfe515e09b32f72b6609c90e31254b69e80ddf1d7694f94229104004fc93b9",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": true,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t8-rare-candy-play_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "1a15338d24fa08c03e1904a3c555e683489c36d0296ebb9faf0b90a86f2102ff",
+        "parent_sha256": "9ccfe515e09b32f72b6609c90e31254b69e80ddf1d7694f94229104004fc93b9",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t8-rare-candy-play_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "ab313b50a6ca3579dfb1b083a641c90592c33e42e5d781400677072c3d56d8dd",
+        "parent_sha256": "9ccfe515e09b32f72b6609c90e31254b69e80ddf1d7694f94229104004fc93b9",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "cue_287",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 287,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000288.jpg",
+      "full_frame_sha256": "9144f05a1562ce607489e28f84f80b48a64f1a210cf6ea49a692a521f6a7e4df",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "r_t8-mega-blaziken-printed-210",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 297,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "inherited nominal anchor; retained approximately +/-1second tolerance, actual PTS unmeasured",
+      "time_tolerance_seconds": 1,
+      "full_frame_path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\battle-023151\\evidence\\t8-mega-blaziken-printed-210.jpg",
+      "full_frame_sha256": "8c0bf06bf93986bfb5627ef8121f6c32bed9dbff63430a34cc3cedcfc3d19d42",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": true,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t8-mega-blaziken-printed-210_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "45dc5d91dcbe92710c6c94bc0a5519d98e09e552a6ad82e13ffb63145f8b7ac4",
+        "parent_sha256": "8c0bf06bf93986bfb5627ef8121f6c32bed9dbff63430a34cc3cedcfc3d19d42",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t8-mega-blaziken-printed-210_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "224e74b1ac0fa842a2579ac3030ac5634ce0a699fac71de0ef50763033cfc651",
+        "parent_sha256": "8c0bf06bf93986bfb5627ef8121f6c32bed9dbff63430a34cc3cedcfc3d19d42",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "r_t8-mega-blaziken-200-remaining",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 299,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "inherited nominal anchor; retained approximately +/-1second tolerance, actual PTS unmeasured",
+      "time_tolerance_seconds": 1,
+      "full_frame_path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\battle-023151\\evidence\\t8-mega-blaziken-200-remaining.jpg",
+      "full_frame_sha256": "08506fbfc55f55e51010d00448df402fe02e8e733a9d46996bc828aa8525c662",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": true,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t8-mega-blaziken-200-remaining_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "bf790b2275167d862b602b693209eef91886aa7346864aa9b634cbe6fd114308",
+        "parent_sha256": "08506fbfc55f55e51010d00448df402fe02e8e733a9d46996bc828aa8525c662",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t8-mega-blaziken-200-remaining_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "76b3ac6faf44b27b749bd36e769dd6f794100e44a8c7b9e547125a8f50536355",
+        "parent_sha256": "08506fbfc55f55e51010d00448df402fe02e8e733a9d46996bc828aa8525c662",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "cue_296",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 296,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000297.jpg",
+      "full_frame_sha256": "112c7814d878ea0addcb7995a63da02a95ed38a9c9b4d93bb724aa24718c6d89",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "r_t8-entei-two-fire",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 305,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "inherited nominal anchor; retained approximately +/-1second tolerance, actual PTS unmeasured",
+      "time_tolerance_seconds": 1,
+      "full_frame_path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\battle-023151\\evidence\\t8-entei-two-fire.jpg",
+      "full_frame_sha256": "e0fa624f5fa725f052c74125f164e3f76da9d12c260f288c03a9d6bda81413fb",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": true,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t8-entei-two-fire_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "4a7d9ea6ca5f3d9112f32f3ca587c6c098f39ce885277d39c120e9989d8be283",
+        "parent_sha256": "e0fa624f5fa725f052c74125f164e3f76da9d12c260f288c03a9d6bda81413fb",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t8-entei-two-fire_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "9245fe96de58c2ba91cc489962e5c57baeea2e672c8d096644a8a35cb5572ac2",
+        "parent_sha256": "e0fa624f5fa725f052c74125f164e3f76da9d12c260f288c03a9d6bda81413fb",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "cue_303",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 303,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000304.jpg",
+      "full_frame_sha256": "b30cb9d460630e975fdd65bc8c65adf762851ca3bdd239f1d0259e8ac4438880",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "r_t8-legendary-pulse",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 322,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "inherited nominal anchor; retained approximately +/-1second tolerance, actual PTS unmeasured",
+      "time_tolerance_seconds": 1,
+      "full_frame_path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\battle-023151\\evidence\\t8-legendary-pulse.jpg",
+      "full_frame_sha256": "5fd0ab7650674520068bb60eedc4ffa042f03369322993a340b4aa808c32d1c4",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": true,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t8-legendary-pulse_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "981eb0f1c1a80a46e76038f4e37ca03c437ca5c59a3ed82a428d0820075e3ee7",
+        "parent_sha256": "5fd0ab7650674520068bb60eedc4ffa042f03369322993a340b4aa808c32d1c4",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t8-legendary-pulse_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "c9c581e8892054662355c92e1ac847c86731df7900f7c764c540103c3ec1dc8c",
+        "parent_sha256": "5fd0ab7650674520068bb60eedc4ffa042f03369322993a340b4aa808c32d1c4",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "t0325.50",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 325.5,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0325.50.jpg",
+      "full_frame_sha256": "dd83a383dc961ac60cc7de3b40f9c6a3c4d222e194d20c92b9b753ab47a793e0",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0325.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "879c30284da2792a6cd6dc2ae3e0ee2d54581077739013fc80cf112b6446e7fe",
+        "parent_sha256": "dd83a383dc961ac60cc7de3b40f9c6a3c4d222e194d20c92b9b753ab47a793e0",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0325.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "1e5c68e8371111a64272ed86fe2c6c92dba5b610ec90ace6e7d21c23348b2a78",
+        "parent_sha256": "dd83a383dc961ac60cc7de3b40f9c6a3c4d222e194d20c92b9b753ab47a793e0",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "cue_310",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 310,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000311.jpg",
+      "full_frame_sha256": "57ef829dd9cd2a6ea64aacd6045d94fa2e2b838b2ea530bf54b86ce53091b5e5",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "t0332.00",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 332,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0332.00.jpg",
+      "full_frame_sha256": "497659d4f15635794912a4b6c7f0a6bac46f782973dcd4da4cf5c347fdcfe09c",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0332.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "6e3f8a15949deeb26f01a6f623821434266432aad7188b3d18c7d687dcc99a2f",
+        "parent_sha256": "497659d4f15635794912a4b6c7f0a6bac46f782973dcd4da4cf5c347fdcfe09c",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0332.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "34f4c7442eb3490c1137a2a86de6534766f83dd18f573f6c8b4e2a150cfda26d",
+        "parent_sha256": "497659d4f15635794912a4b6c7f0a6bac46f782973dcd4da4cf5c347fdcfe09c",
+        "lossless": true
+      },
+      "draw_animation_end_seconds": 329.4,
+      "offset_after_draw_seconds": 2.6
+    },
+    {
+      "evidence_id": "r_t9-unused-action-warning",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 332,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "inherited nominal anchor; retained approximately +/-1second tolerance, actual PTS unmeasured",
+      "time_tolerance_seconds": 1,
+      "full_frame_path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\battle-023151\\evidence\\t9-unused-action-warning.jpg",
+      "full_frame_sha256": "afa8b40245b74ff46e8fd28d9c975a4fd9e2c0eabae73dd8cf19530180e99bc0",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": true,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t9-unused-action-warning_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "e7d83542992ebac72a08d98b49e2b2d29aced8d03a204cc9f458f3ebc3572f91",
+        "parent_sha256": "afa8b40245b74ff46e8fd28d9c975a4fd9e2c0eabae73dd8cf19530180e99bc0",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_t9-unused-action-warning_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "3814c350bbb451c43bd5451f263b322131e22c127c1cbe77adc2ef63cd688c2f",
+        "parent_sha256": "afa8b40245b74ff46e8fd28d9c975a4fd9e2c0eabae73dd8cf19530180e99bc0",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "t0335.00",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 335,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0335.00.jpg",
+      "full_frame_sha256": "bd545144c22272a6d9765a45453b6e0e5db4b791b9bd5f34c60befef4f161f8c",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0335.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "6842500c064ca7102418cca3fed7456fff62d69cba6b1294a6d78492d1bd47f7",
+        "parent_sha256": "bd545144c22272a6d9765a45453b6e0e5db4b791b9bd5f34c60befef4f161f8c",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0335.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "744dcdea1fa7e429ae5f9b2a420936e907f47b2dc3a875a6550c5b058a08e5d1",
+        "parent_sha256": "bd545144c22272a6d9765a45453b6e0e5db4b791b9bd5f34c60befef4f161f8c",
+        "lossless": true
+      },
+      "draw_animation_end_seconds": 329.4,
+      "offset_after_draw_seconds": 5.6
+    },
+    {
+      "evidence_id": "r_terminal-settled-three-two",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 342,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "inherited nominal anchor; retained approximately +/-1second tolerance, actual PTS unmeasured",
+      "time_tolerance_seconds": 1,
+      "full_frame_path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\battle-023151\\evidence\\terminal-settled-three-two.jpg",
+      "full_frame_sha256": "e61beb91b070b186075a00c098e9a4405049b8d221683c4909a4923fa66b9c6b",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": true,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_terminal-settled-three-two_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "a00cb0556d29f612540d13983c19fa8f0a31421c206a8b4133bde1b77f4e8f2c",
+        "parent_sha256": "e61beb91b070b186075a00c098e9a4405049b8d221683c4909a4923fa66b9c6b",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\r_terminal-settled-three-two_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "4cb88a35578912a933889680a62c3434437452208d893bebabd8c75d19f0db60",
+        "parent_sha256": "e61beb91b070b186075a00c098e9a4405049b8d221683c4909a4923fa66b9c6b",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "t0330.00",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 330,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0330.00.jpg",
+      "full_frame_sha256": "f766cd87d893f2dddf2dbe2e1e186d4aa91b19472c6b69c220f07e0767873254",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0330.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "0ad794a04f01d4ccc3372b8d0f49eb10bcb2c59587705f105bad7ea4f278aca9",
+        "parent_sha256": "f766cd87d893f2dddf2dbe2e1e186d4aa91b19472c6b69c220f07e0767873254",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0330.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "b95dfa9d927067252949a0d339d561f3df2040633c04e49d28f6195aed29cb0c",
+        "parent_sha256": "f766cd87d893f2dddf2dbe2e1e186d4aa91b19472c6b69c220f07e0767873254",
+        "lossless": true
+      },
+      "draw_animation_end_seconds": 329.4,
+      "offset_after_draw_seconds": 0.6
+    },
+    {
+      "evidence_id": "t0331.50",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 331.5,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0331.50.jpg",
+      "full_frame_sha256": "1a5c092f63f071012d6c6be4d8871b5625566f66bf6bd42272c4f3eeffa0d488",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0331.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "1e2d2d0b336bd58bd908039af3dbd40ad421f3189c18a7994e32bd12a045c963",
+        "parent_sha256": "1a5c092f63f071012d6c6be4d8871b5625566f66bf6bd42272c4f3eeffa0d488",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0331.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "8aa277a5b0eee2729b8345a9aa9b2676e1b2fe84a7f07cedc728325ba6d83731",
+        "parent_sha256": "1a5c092f63f071012d6c6be4d8871b5625566f66bf6bd42272c4f3eeffa0d488",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "cue_330",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 330,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000331.jpg",
+      "full_frame_sha256": "e8d0f5c816ad619c121b2d824d07776f31a48d41c7b9ad620ed1e594f23c831f",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "cue_046",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 46.7,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000047.jpg",
+      "full_frame_sha256": "6713b4d19dc59c55fe3ecb252bfced9658d6d4042d709d0c43d684b3be97537b",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "cue_114",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 114.4,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000115.jpg",
+      "full_frame_sha256": "4476d44d9e31aad1807388498930e96a39cba388f4861daa5b3b861acf11f58d",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "cue_329",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 329.4,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000330.jpg",
+      "full_frame_sha256": "f4aca9d31a5a6b0828a6e7c98a282c0aad2859e3ad1f885a30fd31aed0ea344a",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "cue_062",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 62,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000063.jpg",
+      "full_frame_sha256": "7bffaeaa05724cd6368e1802346fd17b7d7237979434a341b07b687aab37c155",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "cue_131",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 131,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000132.jpg",
+      "full_frame_sha256": "79e091bd79c6dc348cf41b0be55dedc8c105cede454191c5e151bdf9acb0203c",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "cue_205",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 205,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000206.jpg",
+      "full_frame_sha256": "417bebc39c8cd99ab04441e6a3d86f4e35a07c3271cc32e0aefd07ff55915529",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "cue_274",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 274,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000275.jpg",
+      "full_frame_sha256": "69f439afac483630eff653a04212d632150abcba2f7d911257168740f7774d0c",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "cue_050",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 50,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000051.jpg",
+      "full_frame_sha256": "e174d93eee1e7ce7c887758f1346bb02babff6914bb4e0c3133fd072242d617f",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "cue_084",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 84,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000085.jpg",
+      "full_frame_sha256": "af8d46decbd363210c0dfb56223fa1a9e83be8f701fe2b63edf7a1080ecb8a09",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "cue_096",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 96,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000097.jpg",
+      "full_frame_sha256": "d9d565861b8f19a99960a6dd7edf00d59a60917c361567a5cc8f9a8a72bf2506",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "cue_238",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 238,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000239.jpg",
+      "full_frame_sha256": "a6b391e56b4319b7b2672438bb6828f1e2e5cc0cbea17234a4b0305f7723a685",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "cue_324",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 324,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000325.jpg",
+      "full_frame_sha256": "74655a39a93e0aa83f50d9bd02f0ac2b73c4f89f1b618949d1b4017610b94ece",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "cue_063",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 63,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000064.jpg",
+      "full_frame_sha256": "182b6bafdc68759c881762e38195fe89116c24f545264f52dc086b9648ed424a",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "cue_132",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 132,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000133.jpg",
+      "full_frame_sha256": "14b9c31de4cf7933a7231b723e2d57ff9a05e08ac1d42bb5d50fb0394596de82",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "t0177.50",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 177.5,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0177.50.jpg",
+      "full_frame_sha256": "66ffa5d41526465660a44a0c1d099f61597eea6ba9ae7d5efec1421ad3a1808a",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": null,
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0177.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "072f8b18ca5fc110dfcddeecdd83324602f02d5b4e38772211de3a947313f510",
+        "parent_sha256": "66ffa5d41526465660a44a0c1d099f61597eea6ba9ae7d5efec1421ad3a1808a",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0177.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "127ed58b8d7648d75c641e42f069a5c858fdc8fb52bdee918b51233f800cfbe6",
+        "parent_sha256": "66ffa5d41526465660a44a0c1d099f61597eea6ba9ae7d5efec1421ad3a1808a",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "cue_182",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 182,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000183.jpg",
+      "full_frame_sha256": "b9107456afd0b1395137df9ad51e947ec21700c4b4a5d837f97b875bd55a8715",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "cue_206",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 206,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000207.jpg",
+      "full_frame_sha256": "a39037d93850c5be95a37b4a863d7a63d71ecc8fadd90610dca581c707c47f65",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "cue_250",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 250,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000251.jpg",
+      "full_frame_sha256": "c7da5b49548d69e63a126f675e1d7939f7d4d915637cb24f304396b4227f3668",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "cue_275",
+      "role": "reduced timeline cue only",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 275,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "root nominal1fps sample label, actual PTS unmeasured",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\locator_scan\\frames\\000276.jpg",
+      "full_frame_sha256": "5c0711e366a0e91b09da02014f692cbb8ea8a0d2069f9622d0a29a08f402efde",
+      "native_dimensions": {
+        "width": 234,
+        "height": 506
+      },
+      "observation": "Transition/order/prompt locator only; native anchors prove identities.",
+      "suitability_or_limit": "One sampled view each second cannot establish exact subsecond input."
+    },
+    {
+      "evidence_id": "t0115.00",
+      "role": "draw-timed candidate",
+      "turn_number": 3,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 115,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0115.00.jpg",
+      "full_frame_sha256": "bbdc8ac13c71f73d95d786b09ee79d6e7c24e2ff4f296525ab7a0b6a35118925",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": "Five cardsstillpresent, Energygeneration beforebench",
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0115.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "659942a8a3496e398217304d1fc9d0644ecc4b2ca8e1c6b1ce263e9d0d466dd4",
+        "parent_sha256": "bbdc8ac13c71f73d95d786b09ee79d6e7c24e2ff4f296525ab7a0b6a35118925",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0115.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "125e4d67c6a45241260971f9c8e3b0e652415ecda705d58332ef16a1d5cbcc3f",
+        "parent_sha256": "bbdc8ac13c71f73d95d786b09ee79d6e7c24e2ff4f296525ab7a0b6a35118925",
+        "lossless": true
+      },
+      "draw_animation_end_seconds": 114.4,
+      "offset_after_draw_seconds": 0.6
+    },
+    {
+      "evidence_id": "t0023.50",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 23.5,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0023.50.jpg",
+      "full_frame_sha256": "9eea5df5325896835baa1b454d011fc0ec0528b756ed91deaf9205192070a864",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": "Decisive native/crop inspected directly; unused alternatives retained with phase-dependent suitability.",
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0023.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "1022a189ce4fafcabd14707b931329b1ed7085999f993518592dd28e185f911a",
+        "parent_sha256": "9eea5df5325896835baa1b454d011fc0ec0528b756ed91deaf9205192070a864",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0023.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "7bd88d38ac7831dac34749acffa602f9cb63323236b3a336cef2a20451976211",
+        "parent_sha256": "9eea5df5325896835baa1b454d011fc0ec0528b756ed91deaf9205192070a864",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "t0046.20",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 46.2,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0046.20.jpg",
+      "full_frame_sha256": "47af6f44018cf974a070cbb7b1f2fad2fbdf87f48144d01ffebf66f6720cf6d3",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": "Decisive native/crop inspected directly; unused alternatives retained with phase-dependent suitability.",
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0046.20_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "3ce1f5ffd3d38eb5509e89a3d254d59facc8e3162fe1d860663d24bc865afff5",
+        "parent_sha256": "47af6f44018cf974a070cbb7b1f2fad2fbdf87f48144d01ffebf66f6720cf6d3",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0046.20_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "71bc848931a14492918417d9335b84ec5e03bf942d3aa6d85a62e2f1a273e1a4",
+        "parent_sha256": "47af6f44018cf974a070cbb7b1f2fad2fbdf87f48144d01ffebf66f6720cf6d3",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "t0046.50",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 46.5,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0046.50.jpg",
+      "full_frame_sha256": "7d5303637d1691e130b53751d4e952c6327f72a69398865080d912576e60442f",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": "Decisive native/crop inspected directly; unused alternatives retained with phase-dependent suitability.",
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0046.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "0a4ceeae560e503a51731b32d70206ae98cfa27e11bb19043461f87ba2c7f9e4",
+        "parent_sha256": "7d5303637d1691e130b53751d4e952c6327f72a69398865080d912576e60442f",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0046.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "271c09ed0f9e3eef50c69065300f5129c966b4bbeb54bdb367a8c9bcd39a4f9e",
+        "parent_sha256": "7d5303637d1691e130b53751d4e952c6327f72a69398865080d912576e60442f",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "t0046.70",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 46.7,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0046.70.jpg",
+      "full_frame_sha256": "4b77a3189a6e7e560857cd6f32af1d1d2422d707b6ae9ef0220bb81a2a7fbb83",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": "Decisive native/crop inspected directly; unused alternatives retained with phase-dependent suitability.",
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0046.70_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "da41f36158ee47026c4186bca8a026108f128dd7cbb76f00bf2231e20d26e53b",
+        "parent_sha256": "4b77a3189a6e7e560857cd6f32af1d1d2422d707b6ae9ef0220bb81a2a7fbb83",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0046.70_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "c600dd11af2df8b3e503017c82efce87aae562bbe77627fd5c8221c190e116c1",
+        "parent_sha256": "4b77a3189a6e7e560857cd6f32af1d1d2422d707b6ae9ef0220bb81a2a7fbb83",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "t0048.50",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 48.5,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0048.50.jpg",
+      "full_frame_sha256": "79eedb31343324e75e7a339b8e927e938d9770a7dd7b663cd817f7eb259f68b9",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": "Decisive native/crop inspected directly; unused alternatives retained with phase-dependent suitability.",
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0048.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "eab23274122eaf85f1c29ddf3f1331979a8a4b4dc04bf30b16a3cce3ac55d800",
+        "parent_sha256": "79eedb31343324e75e7a339b8e927e938d9770a7dd7b663cd817f7eb259f68b9",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0048.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "ce414c62b0349f6c0a1bcd08a27cf434d287973e8d331acdd018c546565a695b",
+        "parent_sha256": "79eedb31343324e75e7a339b8e927e938d9770a7dd7b663cd817f7eb259f68b9",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "t0114.20",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 114.2,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0114.20.jpg",
+      "full_frame_sha256": "4cc9307976a594fd18e77fd4a79f9f0919b4907f7343df6fffe0d71476c85904",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": "Decisive native/crop inspected directly; unused alternatives retained with phase-dependent suitability.",
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0114.20_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "c17659e426d5e615e218dfed7c789c0ea0a2e7c6e11018f699e86c8c63006ca3",
+        "parent_sha256": "4cc9307976a594fd18e77fd4a79f9f0919b4907f7343df6fffe0d71476c85904",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0114.20_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "4a73c445f1982b9f3725e609cfeab2c4872e351317367b5e6bd5ee10e4c2a633",
+        "parent_sha256": "4cc9307976a594fd18e77fd4a79f9f0919b4907f7343df6fffe0d71476c85904",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "t0114.40",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 114.4,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0114.40.jpg",
+      "full_frame_sha256": "a19a6afbdc2ef79b06a98a7accfff55b3694e75efb84dd1da32cc264d36b6931",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": "Decisive native/crop inspected directly; unused alternatives retained with phase-dependent suitability.",
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0114.40_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "07e0f30153c73986196d85f21ef6026a136547b8c32aac79100391352f1b61b1",
+        "parent_sha256": "a19a6afbdc2ef79b06a98a7accfff55b3694e75efb84dd1da32cc264d36b6931",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0114.40_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "96b1e1f87c3ca7442d27164b1ad3106c910470504ceb9052785785f75bcebc1c",
+        "parent_sha256": "a19a6afbdc2ef79b06a98a7accfff55b3694e75efb84dd1da32cc264d36b6931",
+        "lossless": true
+      }
+    },
+    {
+      "evidence_id": "t0114.80",
+      "role": "native field evidence",
+      "turn_number": null,
+      "source_video": "20260909_023151000_iOS.MP4",
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "requested_source_seconds": 114.8,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "requested native seek; actual PTS unmeasured",
+      "time_tolerance_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\nativeframes\\t0114.80.jpg",
+      "full_frame_sha256": "c0bcd75ec5623e07cf0ad650f3ef986bbd8c4325c3c635effcc20436e682b83b",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reused_from_accepted_packet": false,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "observation": "Decisive native/crop inspected directly; unused alternatives retained with phase-dependent suitability.",
+      "suitability_or_limit": "Phase-qualified native identity and field evidence; draw-timed later views can already be after play.",
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0114.80_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "2d4ddd44b69c2644cde6a49e0acc9ecbed7203af7db7ee0f62794d3c226ef703",
+        "parent_sha256": "c0bcd75ec5623e07cf0ad650f3ef986bbd8c4325c3c635effcc20436e682b83b",
+        "lossless": true
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\hand_crops\\t0114.80_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          500
+        ],
+        "sha256": "e0b8dfa4ac6c5110feed70547b7406fe79f2f54b3e06146539024ed0aa773d1a",
+        "parent_sha256": "c0bcd75ec5623e07cf0ad650f3ef986bbd8c4325c3c635effcc20436e682b83b",
+        "lossless": true
+      }
+    }
+  ],
+  "discard_snapshots": [
+    {
+      "snapshot_id": "pile_1_owner",
+      "turn_number": 1,
+      "pile_owner": "owner",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "timestamp_seconds": 59.5,
+      "cards_in_view": [
+        "Poké Ball"
+      ],
+      "discarded_energy_by_type": null,
+      "scroll_coverage": "closed pile visible top/overlap only",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "t0059.50"
+      ],
+      "limit_reason": "Visible top/overlap names only; hidden contents, total count, chronological order and Energy totals unknown"
+    },
+    {
+      "snapshot_id": "pile_2_owner",
+      "turn_number": 2,
+      "pile_owner": "owner",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "timestamp_seconds": 111.2,
+      "cards_in_view": [
+        "Poké Ball"
+      ],
+      "discarded_energy_by_type": null,
+      "scroll_coverage": "closed pile visible top/overlap only",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "t0111.20"
+      ],
+      "limit_reason": "Visible top/overlap names only; hidden contents, total count, chronological order and Energy totals unknown"
+    },
+    {
+      "snapshot_id": "pile_2_opponent",
+      "turn_number": 2,
+      "pile_owner": "opponent",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "timestamp_seconds": 111.2,
+      "cards_in_view": [
+        "Poké Ball",
+        "Professor's Research"
+      ],
+      "discarded_energy_by_type": null,
+      "scroll_coverage": "closed pile visible top/overlap only",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "t0111.20"
+      ],
+      "limit_reason": "Visible top/overlap names only; hidden contents, total count, chronological order and Energy totals unknown"
+    },
+    {
+      "snapshot_id": "pile_3_owner",
+      "turn_number": 3,
+      "pile_owner": "owner",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "timestamp_seconds": 128.5,
+      "cards_in_view": [
+        "Poké Ball"
+      ],
+      "discarded_energy_by_type": null,
+      "scroll_coverage": "closed pile visible top/overlap only",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "t0128.50"
+      ],
+      "limit_reason": "Visible top/overlap names only; hidden contents, total count, chronological order and Energy totals unknown"
+    },
+    {
+      "snapshot_id": "pile_3_opponent",
+      "turn_number": 3,
+      "pile_owner": "opponent",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "timestamp_seconds": 128.5,
+      "cards_in_view": [
+        "Poké Ball"
+      ],
+      "discarded_energy_by_type": null,
+      "scroll_coverage": "closed pile visible top/overlap only",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "t0128.50"
+      ],
+      "limit_reason": "Visible top/overlap names only; hidden contents, total count, chronological order and Energy totals unknown"
+    },
+    {
+      "snapshot_id": "pile_4_owner",
+      "turn_number": 4,
+      "pile_owner": "owner",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "timestamp_seconds": 178,
+      "cards_in_view": [
+        "Electrike"
+      ],
+      "discarded_energy_by_type": null,
+      "scroll_coverage": "closed pile visible top/overlap only",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "r_t5-owner-banner"
+      ],
+      "limit_reason": "Visible top/overlap names only; hidden contents, total count, chronological order and Energy totals unknown"
+    },
+    {
+      "snapshot_id": "pile_4_opponent",
+      "turn_number": 4,
+      "pile_owner": "opponent",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "timestamp_seconds": 178,
+      "cards_in_view": [
+        "Poké Ball"
+      ],
+      "discarded_energy_by_type": null,
+      "scroll_coverage": "closed pile visible top/overlap only",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "r_t5-owner-banner"
+      ],
+      "limit_reason": "Visible top/overlap names only; hidden contents, total count, chronological order and Energy totals unknown"
+    },
+    {
+      "snapshot_id": "pile_5_owner",
+      "turn_number": 5,
+      "pile_owner": "owner",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "timestamp_seconds": 203,
+      "cards_in_view": [
+        "Clemont's Backpack"
+      ],
+      "discarded_energy_by_type": null,
+      "scroll_coverage": "closed pile visible top/overlap only",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "r_t5-first-spread-settled"
+      ],
+      "limit_reason": "Visible top/overlap names only; hidden contents, total count, chronological order and Energy totals unknown"
+    },
+    {
+      "snapshot_id": "pile_5_opponent",
+      "turn_number": 5,
+      "pile_owner": "opponent",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "timestamp_seconds": 203,
+      "cards_in_view": [
+        "Poké Ball"
+      ],
+      "discarded_energy_by_type": null,
+      "scroll_coverage": "closed pile visible top/overlap only",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "r_t5-first-spread-settled"
+      ],
+      "limit_reason": "Visible top/overlap names only; hidden contents, total count, chronological order and Energy totals unknown"
+    },
+    {
+      "snapshot_id": "pile_6_owner",
+      "turn_number": 6,
+      "pile_owner": "owner",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "timestamp_seconds": 230.5,
+      "cards_in_view": [
+        "Clemont's Backpack"
+      ],
+      "discarded_energy_by_type": null,
+      "scroll_coverage": "closed pile visible top/overlap only",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "t0230.50"
+      ],
+      "limit_reason": "Visible top/overlap names only; hidden contents, total count, chronological order and Energy totals unknown"
+    },
+    {
+      "snapshot_id": "pile_6_opponent",
+      "turn_number": 6,
+      "pile_owner": "opponent",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "timestamp_seconds": 230.5,
+      "cards_in_view": [
+        "Poké Ball"
+      ],
+      "discarded_energy_by_type": null,
+      "scroll_coverage": "closed pile visible top/overlap only",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "t0230.50"
+      ],
+      "limit_reason": "Visible top/overlap names only; hidden contents, total count, chronological order and Energy totals unknown"
+    },
+    {
+      "snapshot_id": "pile_7_owner",
+      "turn_number": 7,
+      "pile_owner": "owner",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "timestamp_seconds": 272,
+      "cards_in_view": [
+        "Poké Ball"
+      ],
+      "discarded_energy_by_type": null,
+      "scroll_coverage": "closed pile visible top/overlap only",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "r_t8-entei-promoted"
+      ],
+      "limit_reason": "Visible top/overlap names only; hidden contents, total count, chronological order and Energy totals unknown"
+    },
+    {
+      "snapshot_id": "pile_7_opponent",
+      "turn_number": 7,
+      "pile_owner": "opponent",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "timestamp_seconds": 272,
+      "cards_in_view": [
+        "Combusken",
+        "Torchic"
+      ],
+      "discarded_energy_by_type": null,
+      "scroll_coverage": "closed pile visible top/overlap only",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "r_t8-entei-promoted"
+      ],
+      "limit_reason": "Visible top/overlap names only; hidden contents, total count, chronological order and Energy totals unknown"
+    },
+    {
+      "snapshot_id": "pile_8_owner",
+      "turn_number": 8,
+      "pile_owner": "owner",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "timestamp_seconds": 325.5,
+      "cards_in_view": [
+        "Heliolisk"
+      ],
+      "discarded_energy_by_type": null,
+      "scroll_coverage": "closed pile visible top/overlap only",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "t0325.50"
+      ],
+      "limit_reason": "Visible top/overlap names only; hidden contents, total count, chronological order and Energy totals unknown"
+    },
+    {
+      "snapshot_id": "pile_8_opponent",
+      "turn_number": 8,
+      "pile_owner": "opponent",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "timestamp_seconds": 325.5,
+      "cards_in_view": [
+        "Rare Candy",
+        "Combusken",
+        "Torchic"
+      ],
+      "discarded_energy_by_type": null,
+      "scroll_coverage": "closed pile visible top/overlap only",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "t0325.50"
+      ],
+      "limit_reason": "Visible top/overlap names only; hidden contents, total count, chronological order and Energy totals unknown"
+    },
+    {
+      "snapshot_id": "pile_9_owner",
+      "turn_number": 9,
+      "pile_owner": "owner",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "timestamp_seconds": 342,
+      "cards_in_view": [
+        "Heliolisk"
+      ],
+      "discarded_energy_by_type": null,
+      "scroll_coverage": "closed pile visible top/overlap only",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "r_terminal-settled-three-two"
+      ],
+      "limit_reason": "Visible top/overlap names only; hidden contents, total count, chronological order and Energy totals unknown"
+    },
+    {
+      "snapshot_id": "pile_9_opponent",
+      "turn_number": 9,
+      "pile_owner": "opponent",
+      "source_video": "20260909_023151000_iOS.MP4",
+      "timestamp_seconds": 342,
+      "cards_in_view": [
+        "Entei ex",
+        "Rare Candy"
+      ],
+      "discarded_energy_by_type": null,
+      "scroll_coverage": "closed pile visible top/overlap only",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "r_terminal-settled-three-two"
+      ],
+      "limit_reason": "Visible top/overlap names only; hidden contents, total count, chronological order and Energy totals unknown"
+    }
+  ],
+  "scheduled_capture_limits": [
+    "Hidden opponent normal/Research/Legendary Pulse draws and concealed search identities remain null; subsequent bench cards do not identify a concealed search result.",
+    "Exact historical 20-card deck snapshot unavailable; nearby QR is separate unbound evidence and no full deck is reconstructed.",
+    "All344 reduced1fps samples were inspected through18 grids once. This bounds sampled cues, not every instant, input or subsecond event.",
+    "Requested native seek times and inherited nominal native times are source-local. Actual frame PTS and exact input times unmeasured; inherited anchors have their retained tolerance.",
+    "No opened full discard panel detected in bounded timeline screening. Periodic visible tops and overlapping cards are recorded; hidden contents/order and discarded Energy totals not reconstructed.",
+    "No Auto control observed in sampled controls. This is not proof of every-instant absence; any visible Auto option, even OFF, means computer battle under owner rule."
+  ]
+}

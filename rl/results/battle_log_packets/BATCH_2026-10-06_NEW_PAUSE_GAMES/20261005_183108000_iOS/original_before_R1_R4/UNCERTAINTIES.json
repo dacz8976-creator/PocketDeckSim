@@ -1,0 +1,56 @@
+{
+  "source_video": "20261005_183108000_iOS.MP4",
+  "game_id": "20261005_183108000_iOS_game_1",
+  "uncertainties": [
+    {
+      "id": "U_BUFFER_T6",
+      "severity": "consequential_order_limit",
+      "source_interval_seconds": [
+        217,
+        220
+      ],
+      "evidence_ids": [
+        "F_0217_00",
+        "F_0218_50",
+        "F_0219_00",
+        "F_0219_50",
+        "F_0220_00"
+      ],
+      "description": "Buffered opponent3-action transition; evolution/bench/attachment established only by before/after. Exact mutual order and remote inputs unavailable.",
+      "status": "bounded_native_inspection_exhausted_pending_independent_target"
+    },
+    {
+      "id": "U_HIDDEN",
+      "severity": "recording_limit",
+      "description": "All opponent draw/search identities remain unknown unless directly revealed; hidden Soul Shot T6 discard remains unknown.",
+      "status": "preserved"
+    },
+    {
+      "id": "U_DISCARD",
+      "severity": "recording_limit",
+      "description": "Neither discard pile is opened/scrollable in footage. Full composition and Last Respects hidden discarded-card identities cannot be reconstructed.",
+      "status": "preserved"
+    },
+    {
+      "id": "U_LIVE_DECK",
+      "severity": "lead_integration_pending",
+      "description": "Exact20 filmed QR and prepared definition present; live saved definition/registration still require lead verification.",
+      "status": "pending_lead"
+    },
+    {
+      "id": "U_TIMESTAMP",
+      "severity": "metadata_limit",
+      "description": "Requested seek time is source-local; actual decoded frame PTS not measured. Creation UTC/local conversion retained, filename clock timezone not assumed.",
+      "status": "preserved"
+    },
+    {
+      "id": "U_NAME",
+      "severity": "minor_literal_transcription",
+      "description": "Opponent literal transcribed ぐー、 from native16s; retain image for exact glyph verification.",
+      "evidence_ids": [
+        "F_0016_00"
+      ],
+      "status": "native_read"
+    }
+  ]
+}

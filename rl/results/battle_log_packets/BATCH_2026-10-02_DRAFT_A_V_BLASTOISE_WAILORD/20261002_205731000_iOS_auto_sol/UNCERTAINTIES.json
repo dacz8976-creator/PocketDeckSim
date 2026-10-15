@@ -1,0 +1,70 @@
+{
+  "game_id": "20261002_205731000_iOS_auto",
+  "source_video": "20261002_205731000_iOS.MP4",
+  "source_sha256": "f1ce8e51bc351fc008563c73a72aa7915f0389707375437068c998afd0190199",
+  "unresolved_consequential_ambiguities": [],
+  "recording_limits": [
+    {
+      "id": "U1",
+      "description": "Concealed opponent normal/Research/Meowth draws and Poké Ball searches have unknown identities.",
+      "impact": "Does not block visible outcome or named owner hand/actions; no hidden facts filled."
+    },
+    {
+      "id": "U2",
+      "description": "No opened discard pile; partial visible top snapshots only.",
+      "impact": "Does not block visible outcome or named owner hand/actions; no hidden facts filled."
+    },
+    {
+      "id": "U3",
+      "description": "Original encoded movie was covered using all371 retained1fps locator samples and118 targeted native captures, not an assertion of every encoded frame inspection.",
+      "impact": "Does not block visible outcome or named owner hand/actions; no hidden facts filled."
+    },
+    {
+      "id": "U4",
+      "description": "Action timestamps approximate; native selected-frame PTS remains measured.",
+      "impact": "Does not block visible outcome or named owner hand/actions; no hidden facts filled."
+    },
+    {
+      "id": "U5",
+      "description": "Source selection shows AI deck and Auto On but lacks Advanced category label; Advanced is bound to separate owner-supplied category screenshot receipt.",
+      "impact": "Does not block visible outcome or named owner hand/actions; no hidden facts filled."
+    },
+    {
+      "id": "U6",
+      "description": "No independent input telemetry; Auto checked UI and automatic sequence support authorship.",
+      "impact": "Does not block visible outcome or named owner hand/actions; no hidden facts filled."
+    }
+  ],
+  "resolved_checks": [
+    {
+      "check": "Mega Sharpedo retreat payment",
+      "resolution": "Zero, native59.5 clean retreat row and196.3 retained3Water",
+      "evidence_ids": [
+        "F0059.50",
+        "F0196.30"
+      ]
+    },
+    {
+      "check": "Turn9 regular attachment order",
+      "resolution": "Native176threeWater before Poké Ball177",
+      "evidence_ids": [
+        "F0175.00",
+        "F0176.00",
+        "F0177.00"
+      ]
+    },
+    {
+      "check": "Turn14 Research draw order",
+      "resolution": "Regular Research274.5 then regular Sharpedo275.7",
+      "evidence_ids": [
+        "F0274.50",
+        "F0275.70"
+      ]
+    },
+    {
+      "check": "Advanced category",
+      "resolution": "Owner screenshot receipt; separate from absent filmed setup label",
+      "receipt": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\ADVANCED_CATEGORY_CONFIRMATION.json"
+    }
+  ]
+}

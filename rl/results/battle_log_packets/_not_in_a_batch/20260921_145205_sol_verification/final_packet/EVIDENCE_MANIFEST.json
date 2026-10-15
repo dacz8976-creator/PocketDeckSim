@@ -1,0 +1,25 @@
+{
+  "schema": "battle-review-bounded-evidence/v1",
+  "source_sha256": "0C3899BEF60C3917A691FAAAC0273C9C21BC421D2DF238FF6E03CB1FDA37DCEF",
+  "method": "Dense sequential frame inspection at 4 or 10 frames per second, with exact-time representative full-resolution frames retained. Continuous context was inspected where required to distinguish inspection, play, resolution, and hand settlement.",
+  "scope": "Independent verification of 02:32-02:40 and 03:38-04:02, plus minimal adjacent context through 02:41.3 and 03:29-03:31.",
+  "representative_frames": [
+    {"time": "02:31.900", "file": "frames/02-31.900-darkness-energy-available.jpg"},
+    {"time": "02:34.000", "file": "frames/02-34.000-pokemon-communication-inspected.jpg"},
+    {"time": "02:35.250", "file": "frames/02-35.250-pokemon-communication-remains-in-hand.jpg"},
+    {"time": "02:36.000", "file": "frames/02-36.000-cabbie-selected.jpg"},
+    {"time": "02:38.900", "file": "frames/02-38.900-cabbie-no-target.jpg"},
+    {"time": "02:40.800", "file": "frames/02-40.800-darkness-energy-attachment.jpg"},
+    {"time": "02:41.300", "file": "frames/02-41.300-darkness-energy-attached.jpg"},
+    {"time": "03:29.500", "file": "frames/03-29.500-lucky-ice-pop-heads.jpg"},
+    {"time": "03:30.750", "file": "frames/03-30.750-same-lucky-ice-pop-replayed.jpg"},
+    {"time": "03:40.750", "file": "frames/03-40.750-first-communication-played.jpg"},
+    {"time": "03:46.750", "file": "frames/03-46.750-first-communication-mega-sharpedo-out.jpg"},
+    {"time": "03:48.000", "file": "frames/03-48.000-first-communication-gyarados-in.jpg"},
+    {"time": "03:50.250", "file": "frames/03-50.250-first-resulting-hand.jpg"},
+    {"time": "03:52.750", "file": "frames/03-52.750-second-communication-played.jpg"},
+    {"time": "03:55.500", "file": "frames/03-55.500-second-communication-gyarados-ex-out.jpg"},
+    {"time": "03:57.000", "file": "frames/03-57.000-second-communication-mega-sharpedo-in.jpg"},
+    {"time": "03:58.000", "file": "frames/03-58.000-second-resulting-hand.jpg"}
+  ]
+}

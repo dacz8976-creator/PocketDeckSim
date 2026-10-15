@@ -1,0 +1,31 @@
+{
+  "source_video": "20260930_160256000_iOS.MP4",
+  "source_sha256": "e8ddb4464a188e03fdded2dc6dc14209dfb7a8ccc82affca8fd3e5cead0f9685",
+  "unreviewed_intervals": [],
+  "consequential_unresolved_result_or_card_identity": [],
+  "bounded_observation_limits": [
+    {
+      "id": "hidden_information",
+      "observation": "Full decks and unshown AI hand draws/search results are unknown. Turn14 Poke Ball result is not visibly played. Juliana resolves into a hidden hand before Typhlosion ex is played; the searched copy is not independently identified.",
+      "impact": "No hidden-card possession or alternative tactic is asserted."
+    },
+    {
+      "id": "date_and_printing",
+      "observation": "September30 date is filename/owner-testimony based. Exact collector numbers and absolute recording clock are not verified; mechanically relevant HP/ability/attack versions are recorded.",
+      "impact": "No independent match-date or full printing claim."
+    },
+    {
+      "id": "final_award_caption",
+      "observation": "No retained exact frame shows a +2 caption; final ex knockout is governed by the visible two-point ex rule, interface fills to three-point threshold, and explicit Victory is visible320.60s.",
+      "impact": "Report the explicit win, final visible three owner circles and one opponent circle, and printed two-point ex entitlement. No retained +2 caption or internal score above three is asserted.",
+      "evidence": [
+        "targets/t0207.00.jpg",
+        "targets/t0309.00.jpg",
+        "overview/sheet_12.jpg",
+        "targets/t0320.60.jpg"
+      ]
+    }
+  ],
+  "astra_escalation_required": false,
+  "scope": "Complete setup, all15turns, knockout and explicit terminal Victory; independent lead verification complete; registered and archived."
+}

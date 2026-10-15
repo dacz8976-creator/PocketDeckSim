@@ -1,0 +1,576 @@
+{
+  "schema": "retrospective-batch-integrity-verification-v1",
+  "checked_utc": "2026-10-02T23:27:30.549908+00:00",
+  "partial_check": true,
+  "approved_limit": 19,
+  "selected_recordings": 16,
+  "accepted_registered": 14,
+  "original_accepted_files_checked": 91,
+  "original_accepted_files_unchanged": 91,
+  "movie_content_reads": 0,
+  "check_basis": "Saved independent acceptance, frozen packet hashes, additive registration, original packet preservation, lossless table exports. This integrity check does not replace visual source acceptance.",
+  "packets": [
+    {
+      "source": "20261002_132311000_iOS.MP4",
+      "accepted": true,
+      "prior_full_status_preserved": true,
+      "prior_evidence_references_preserved": true,
+      "accepted_packet_hashes_unchanged": true,
+      "independent_source_acceptance": true,
+      "registration_event_verified": true,
+      "standard_table_verified": null,
+      "source_sha256": "f3d3765ca22feb385bd540c90c916d1b039382418a0e53711bfeccbe3e240a33",
+      "excluded_from_ladder": null,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_132311000"
+    },
+    {
+      "source": "20261002_115323000_iOS.MP4",
+      "accepted": true,
+      "prior_full_status_preserved": true,
+      "prior_evidence_references_preserved": true,
+      "accepted_packet_hashes_unchanged": true,
+      "independent_source_acceptance": true,
+      "registration_event_verified": true,
+      "standard_table_verified": null,
+      "source_sha256": "0a3c7a2dbd87adb74f2eea2d61723f5e68fd71a74f0ab80d7486a9ee1d6c6be0",
+      "excluded_from_ladder": null,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_115323000"
+    },
+    {
+      "source": "20261002_143837000_iOS.MP4",
+      "accepted": true,
+      "prior_full_status_preserved": true,
+      "prior_evidence_references_preserved": true,
+      "accepted_packet_hashes_unchanged": true,
+      "independent_source_acceptance": true,
+      "registration_event_verified": true,
+      "standard_table_verified": null,
+      "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "excluded_from_ladder": null,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_143837000"
+    },
+    {
+      "source": "20261002_021402000_iOS.MP4",
+      "accepted": true,
+      "prior_full_status_preserved": true,
+      "prior_evidence_references_preserved": true,
+      "accepted_packet_hashes_unchanged": true,
+      "independent_source_acceptance": true,
+      "registration_event_verified": true,
+      "standard_table_verified": true,
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "excluded_from_ladder": null,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000"
+    },
+    {
+      "source": "20261002_022135000_iOS.MP4",
+      "accepted": true,
+      "prior_full_status_preserved": true,
+      "prior_evidence_references_preserved": true,
+      "accepted_packet_hashes_unchanged": true,
+      "independent_source_acceptance": true,
+      "registration_event_verified": true,
+      "standard_table_verified": true,
+      "source_sha256": "a019e44af2546ecce8a3efb8a46dd40e72dc2ec41355cbf2ec445e38c815fe50",
+      "excluded_from_ladder": null,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_022135000"
+    },
+    {
+      "source": "20260907_232617000_iOS.MP4",
+      "accepted": true,
+      "prior_full_status_preserved": true,
+      "prior_evidence_references_preserved": true,
+      "accepted_packet_hashes_unchanged": true,
+      "independent_source_acceptance": true,
+      "registration_event_verified": true,
+      "standard_table_verified": true,
+      "source_sha256": "0114215B1DF4E6D6DD2B21C47616B9F9486788F815BC48B978DBA06D68490166",
+      "excluded_from_ladder": null,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260907_232617000"
+    },
+    {
+      "source": "20260908_012720000_iOS.MP4",
+      "accepted": true,
+      "prior_full_status_preserved": true,
+      "prior_evidence_references_preserved": true,
+      "accepted_packet_hashes_unchanged": true,
+      "independent_source_acceptance": true,
+      "registration_event_verified": true,
+      "standard_table_verified": true,
+      "source_sha256": "b9e76626643d8950cb7a4277487da2262b5fa96faf9e87454495ebe896d47085",
+      "excluded_from_ladder": true,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000"
+    },
+    {
+      "source": "20260908_021327000_iOS.MP4",
+      "accepted": true,
+      "prior_full_status_preserved": true,
+      "prior_evidence_references_preserved": true,
+      "accepted_packet_hashes_unchanged": true,
+      "independent_source_acceptance": true,
+      "registration_event_verified": true,
+      "standard_table_verified": true,
+      "source_sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+      "excluded_from_ladder": null,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_021327000"
+    },
+    {
+      "source": "20260908_022627000_iOS.MP4",
+      "accepted": true,
+      "prior_full_status_preserved": true,
+      "prior_evidence_references_preserved": true,
+      "accepted_packet_hashes_unchanged": true,
+      "independent_source_acceptance": true,
+      "registration_event_verified": true,
+      "standard_table_verified": true,
+      "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "excluded_from_ladder": null,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000"
+    },
+    {
+      "source": "20260908_190031000_iOS.MP4",
+      "accepted": true,
+      "prior_full_status_preserved": true,
+      "prior_evidence_references_preserved": true,
+      "accepted_packet_hashes_unchanged": true,
+      "independent_source_acceptance": true,
+      "registration_event_verified": true,
+      "standard_table_verified": true,
+      "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "excluded_from_ladder": null,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190031000"
+    },
+    {
+      "source": "20260908_190933000_iOS.MP4",
+      "accepted": true,
+      "prior_full_status_preserved": true,
+      "prior_evidence_references_preserved": true,
+      "accepted_packet_hashes_unchanged": true,
+      "independent_source_acceptance": true,
+      "registration_event_verified": true,
+      "standard_table_verified": true,
+      "source_sha256": "5c49e55a0b3153581904ffcefd747d941d5a729412a90708ec1f2783649610c5",
+      "excluded_from_ladder": null,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000"
+    },
+    {
+      "source": "20260909_023151000_iOS.MP4",
+      "accepted": true,
+      "prior_full_status_preserved": true,
+      "prior_evidence_references_preserved": true,
+      "accepted_packet_hashes_unchanged": true,
+      "independent_source_acceptance": true,
+      "registration_event_verified": true,
+      "standard_table_verified": true,
+      "source_sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "excluded_from_ladder": null,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000"
+    },
+    {
+      "source": "20260909_032418000_iOS.MP4",
+      "accepted": true,
+      "prior_full_status_preserved": true,
+      "prior_evidence_references_preserved": true,
+      "accepted_packet_hashes_unchanged": true,
+      "independent_source_acceptance": true,
+      "registration_event_verified": true,
+      "standard_table_verified": true,
+      "source_sha256": "750514530d208e76a8fbd8fc968aa6900ef08b0a0c84d5c00ce48c656f1f9672",
+      "excluded_from_ladder": null,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_032418000"
+    },
+    {
+      "source": "20260928_200654000_iOS.MP4",
+      "accepted": false,
+      "prior_full_status_preserved": true,
+      "prior_evidence_references_preserved": true
+    },
+    {
+      "source": "20260929_002539000_iOS.MP4",
+      "accepted": false,
+      "prior_full_status_preserved": true,
+      "prior_evidence_references_preserved": true
+    },
+    {
+      "source": "20260929_020916000_iOS.MP4",
+      "accepted": true,
+      "prior_full_status_preserved": true,
+      "prior_evidence_references_preserved": true,
+      "accepted_packet_hashes_unchanged": true,
+      "independent_source_acceptance": true,
+      "registration_event_verified": true,
+      "standard_table_verified": true,
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "excluded_from_ladder": null,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000"
+    }
+  ],
+  "original_files": [
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_132311000_iOS_shark_sol\\REVIEW.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_132311000_iOS_shark_sol\\COVERAGE.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_132311000_iOS_shark_sol\\SOURCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_132311000_iOS_shark_sol\\LEAD_ACCEPTANCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_132311000_iOS_shark_sol\\SUMMARY.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_132311000_iOS_shark_sol\\EXTERNAL_LOG_RECEIPT.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_115323000_iOS_shark_sol\\REVIEW.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_115323000_iOS_shark_sol\\COVERAGE.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_115323000_iOS_shark_sol\\SOURCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_115323000_iOS_shark_sol\\LEAD_ACCEPTANCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_115323000_iOS_shark_sol\\SUMMARY.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_115323000_iOS_shark_sol\\EXTERNAL_LOG_RECEIPT.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_143837000_iOS_shark_sol\\REVIEW.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_143837000_iOS_shark_sol\\COVERAGE.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_143837000_iOS_shark_sol\\SOURCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_143837000_iOS_shark_sol\\LEAD_ACCEPTANCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_143837000_iOS_shark_sol\\SUMMARY.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_143837000_iOS_shark_sol\\EXTERNAL_LOG_RECEIPT.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_023418000_iOS_competitive_sol\\REVIEW.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_023418000_iOS_competitive_sol\\COVERAGE.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_023418000_iOS_competitive_sol\\SOURCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_023418000_iOS_competitive_sol\\LEAD_ACCEPTANCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_023418000_iOS_competitive_sol\\SUMMARY.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_023418000_iOS_competitive_sol\\EXTERNAL_LOG_RECEIPT.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_020920000_iOS_competitive_sol\\REVIEW.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_020920000_iOS_competitive_sol\\COVERAGE.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_020920000_iOS_competitive_sol\\SOURCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_020920000_iOS_competitive_sol\\LEAD_ACCEPTANCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_020920000_iOS_competitive_sol\\SUMMARY.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_020920000_iOS_competitive_sol\\EXTERNAL_LOG_RECEIPT.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\COVERAGE.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\SOURCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\LEAD_ACCEPTANCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\SUMMARY.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\EXTERNAL_LOG_RECEIPT.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_022135000_iOS_competitive_sol\\REVIEW.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_022135000_iOS_competitive_sol\\COVERAGE.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_022135000_iOS_competitive_sol\\SOURCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_022135000_iOS_competitive_sol\\LEAD_ACCEPTANCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_022135000_iOS_competitive_sol\\SUMMARY.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_022135000_iOS_competitive_sol\\EXTERNAL_LOG_RECEIPT.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_020315000_iOS_competitive_sol\\REVIEW.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_020315000_iOS_competitive_sol\\COVERAGE.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_020315000_iOS_competitive_sol\\SOURCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_020315000_iOS_competitive_sol\\LEAD_ACCEPTANCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_020315000_iOS_competitive_sol\\SUMMARY.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_020315000_iOS_competitive_sol\\EXTERNAL_LOG_RECEIPT.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260907_232617_v5_review\\final_packet\\REVIEW.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260907_232617_v5_review\\final_packet\\COVERAGE.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260907_232617_v5_review\\final_packet\\SOURCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260907_232617_v5_review\\final_packet\\LEAD_ACCEPTANCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_012720_v7_review\\final_packet\\REVIEW.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_012720_v7_review\\final_packet\\COVERAGE.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_012720_v7_review\\final_packet\\SOURCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_012720_v7_review\\final_packet\\LEAD_ACCEPTANCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_021327_v7_review\\final_packet\\REVIEW.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_021327_v7_review\\final_packet\\COVERAGE.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_021327_v7_review\\final_packet\\SOURCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_021327_v7_review\\final_packet\\LEAD_ACCEPTANCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\REVIEW.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\COVERAGE.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\SOURCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\LEAD_ACCEPTANCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\first-altaria\\REVIEW.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\first-altaria\\COVERAGE.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\first-altaria\\SOURCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\first-altaria\\LEAD_ACCEPTANCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\second-altaria\\REVIEW.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\second-altaria\\COVERAGE.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\second-altaria\\SOURCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\second-altaria\\LEAD_ACCEPTANCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\battle-023151\\REVIEW.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\battle-023151\\COVERAGE.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\battle-023151\\SOURCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\battle-023151\\LEAD_ACCEPTANCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\competitive-deck-study-2026-09-08\\ongoing-campaign-2026-09-08\\native-random-rotom\\REVIEW.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\competitive-deck-study-2026-09-08\\ongoing-campaign-2026-09-08\\native-random-rotom\\SOURCE_IDENTITY.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\competitive-deck-study-2026-09-08\\ongoing-campaign-2026-09-08\\native-random-rotom\\LEAD_ACCEPTANCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\REVIEW.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\COVERAGE.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\SOURCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\LEAD_ACCEPTANCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260929_002539000_iOS_sol\\REVIEW.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260929_002539000_iOS_sol\\COVERAGE.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260929_002539000_iOS_sol\\SOURCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260929_002539000_iOS_sol\\LEAD_ACCEPTANCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260929_020916000_iOS_sol\\REVIEW.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260929_020916000_iOS_sol\\COVERAGE.md",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260929_020916000_iOS_sol\\SOURCE.json",
+      "unchanged": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260929_020916000_iOS_sol\\LEAD_ACCEPTANCE.json",
+      "unchanged": true
+    }
+  ],
+  "errors": [],
+  "passed": true
+}

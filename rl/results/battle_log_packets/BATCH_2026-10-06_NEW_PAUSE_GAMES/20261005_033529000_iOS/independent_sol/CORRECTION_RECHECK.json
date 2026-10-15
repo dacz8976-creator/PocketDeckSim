@@ -1,0 +1,28 @@
+{
+  "schema": "independent_pause_games_correction_recheck/v1",
+  "checked_utc": "2026-10-06T19:29:55.217200+00:00",
+  "source_sha256": "e272b0c74f6a863c68811a235d7b9611b14994611365e58694028f323afaea3d",
+  "accepted": true,
+  "status": "accepted_after_R1_R2",
+  "required_repairs": [],
+  "checked_input_sha256": {
+    "SOURCE.json": "56d71b28e2ab32d50f49f3f9605c4ce237c1c0a84c0a0c462c5b339218a92f3c",
+    "REVIEW.md": "a8ecb0975d3e3fd83910615a4bf3a06f9c1b2f1718e99d7ee86ae186c50aa2a4",
+    "COVERAGE.md": "2e65a36d44815f75df3dbba545419b5da1d8b3d23a71fc502d6680aecfcc40f0",
+    "SUMMARY.json": "07befd117da8f9e2e636d9e547ae43db4e559af41e1d168c09e574f132f7ee38",
+    "UNCERTAINTIES.json": "793752dd3a0994d5df46c314e294846eb592b31e8b5a28db18f91913b677e141",
+    "PAUSE_GAME.json": "6d90d48cb92a81043ca11379b3c332bf97b16dde8edbcaadc509a7fde6db8ba1",
+    "DECK_USED.json": "c3ad95f578eecfcbe334bb917f11908f114fb53b0a51f4626d0dfe3b03afa58c",
+    "TURN_LEDGER.json": "b4d76af1a8528e25758b20abf18513d7cce182ce91894f56e9ad8e449542438b",
+    "TURN_EVIDENCE.json": "770b6f189ca24c9da49f550b18a66a5c42e5537041a38b572a803b6a0f11e2ff",
+    "QR_DECODE_RECEIPT.json": "5a674d1fa13643b87c6868326f860ad3a5f599614d7fc3187c5fc95886090fdd"
+  },
+  "preserved_initial_report_sha256": "fb94c6cb58b9c59a499bd10c52b8649423c2dadd275449a05f78b24a92b32561",
+  "scope": "Tiny repair-only recheck. Original bounded native inspections retained; no second full review or new extraction. Original input hashes and 120 repaired JSON fields independently checked.",
+  "checks": [
+    "Five empty current Energy boundaries retain intact hands/next types and separately bounded generation matching native evidence already independently inspected.",
+    "115 Tool/Stadium fields now explicitly state observed absence with corresponding boundary evidence. Empty Bench and attached Barrier facts remain distinct.",
+    "REVIEW/COVERAGE distinguish early absence from Arena continuity after observed Turn2 play69.",
+    "Initial rejected CHECK_RESULT remains unchanged; originals preserved and hashes verified."
+  ]
+}

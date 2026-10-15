@@ -1,0 +1,132 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "sources": [
+    {
+      "video_basename": "20261006_012927000_iOS.MP4",
+      "sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "deck_name_in_log": null,
+  "filmed_deck_name": "New deck 6",
+  "source_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "captured_at": null,
+  "log_list_version": null,
+  "expected_card_count": 20,
+  "cards_in_log_order": null,
+  "counts_by_name_and_variant": null,
+  "energy_configuration_from_log": null,
+  "actual_card_count": 20,
+  "capture_source_text_or_image": null,
+  "conflicts_with_filmed_cards": [
+    "Original game1 QR has two Terapagos ex and ordinary Meowth/Persian; game2 edited cards differ."
+  ],
+  "exact_list_status": "missing_live_log_snapshot",
+  "limits": [
+    "Worker cannot claim the current live Pause Games20-card snapshot or an external save. QR identifies semantic entity, not exact printing/artwork."
+  ],
+  "game_id": "20261006_012927000_iOS_game_02",
+  "game_version_binding_basis": "Continuous filmed New deck6 edits after game1; separate DECK_EDIT_LEDGER.json documents each bounded change and final20/20, Water-only Save/queue. Game1 QR is the initial list, not an unchanged game2 QR.",
+  "source_deck_status": "exact_semantic20_observed_edited_source_bound",
+  "source_counts_by_name_and_variant": [
+    {
+      "name": "Snorlax ex [Full-Mouth Manner / Flop-Down Punch, 160 HP]",
+      "count": 1,
+      "entity_id": null,
+      "entity_limit": "New edited semantic entities require registry mapping; no ID guessed."
+    },
+    {
+      "name": "Team Rocket’s Meowth [Scratch, 50 HP]",
+      "count": 2,
+      "entity_id": null,
+      "entity_limit": "New edited semantic entities require registry mapping; no ID guessed."
+    },
+    {
+      "name": "Team Rocket’s Persian [Dangerous Rogue, 100 HP]",
+      "count": 2,
+      "entity_id": null,
+      "entity_limit": "New edited semantic entities require registry mapping; no ID guessed."
+    },
+    {
+      "name": "Type: Null [Quick Blow, 80 HP]",
+      "count": 2,
+      "entity_id": null,
+      "entity_limit": "New edited semantic entities require registry mapping; no ID guessed."
+    },
+    {
+      "name": "Silvally [Gold Breaker, 110 HP]",
+      "count": 1,
+      "entity_id": null,
+      "entity_limit": "New edited semantic entities require registry mapping; no ID guessed."
+    },
+    {
+      "name": "Silvally [Brave Buddies, 110 HP]",
+      "count": 1,
+      "entity_id": null,
+      "entity_limit": "New edited semantic entities require registry mapping; no ID guessed."
+    },
+    {
+      "name": "Poké Ball",
+      "count": 2,
+      "entity_id": null,
+      "entity_limit": "New edited semantic entities require registry mapping; no ID guessed."
+    },
+    {
+      "name": "Lucky Ice Pop",
+      "count": 2,
+      "entity_id": null,
+      "entity_limit": "New edited semantic entities require registry mapping; no ID guessed."
+    },
+    {
+      "name": "Field Blower",
+      "count": 1,
+      "entity_id": null,
+      "entity_limit": "New edited semantic entities require registry mapping; no ID guessed."
+    },
+    {
+      "name": "Professor’s Research",
+      "count": 2,
+      "entity_id": null,
+      "entity_limit": "New edited semantic entities require registry mapping; no ID guessed."
+    },
+    {
+      "name": "Cyrus",
+      "count": 1,
+      "entity_id": null,
+      "entity_limit": "New edited semantic entities require registry mapping; no ID guessed."
+    },
+    {
+      "name": "Copycat",
+      "count": 1,
+      "entity_id": null,
+      "entity_limit": "New edited semantic entities require registry mapping; no ID guessed."
+    },
+    {
+      "name": "Soothing Shore",
+      "count": 2,
+      "entity_id": null,
+      "entity_limit": "New edited semantic entities require registry mapping; no ID guessed."
+    }
+  ],
+  "source_energy_configuration": [
+    "Water"
+  ],
+  "source_proof_files": [
+    "../DECK_EDIT_LEDGER.json"
+  ],
+  "source_proof_evidence_ids": [
+    "f0440_00",
+    "f0450_00",
+    "f0458_00",
+    "f0460_00",
+    "f0590_00",
+    "f0600_00",
+    "f0620_00",
+    "f0622_00",
+    "f0630_00"
+  ],
+  "staged_edited_deck_id": "filmed-edit-2c58f9b081c7",
+  "staged_edited_deck_file": "../../EDITED_DECK_ENTRY.json",
+  "independent_binding_acceptance": "pending"
+}

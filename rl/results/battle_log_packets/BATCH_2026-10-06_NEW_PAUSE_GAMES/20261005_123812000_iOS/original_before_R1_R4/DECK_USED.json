@@ -1,0 +1,270 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "pause-20261005-123812",
+  "sources": [
+    {
+      "video_basename": "20261005_123812000_iOS.MP4",
+      "sha256": "3fb3dc25ac96c6e742f9467ba14abdbf91aff403ef2a5bdc62c7f414e775e5a0",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "deck_name_in_log": null,
+  "filmed_deck_label": "New deck 6",
+  "prepared_deck_name": "Nidoking / Nihilego / Darkrai ex (two Darkrai)",
+  "source_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "captured_at": "2026-10-06: frozen nine-list live snapshot; this QR-defined deck not present",
+  "log_list_version": null,
+  "expected_card_count": 20,
+  "cards_in_log_order": null,
+  "cards_in_filmed_qr_order": [
+    {
+      "name": "Poké Ball",
+      "entity_id": 30,
+      "entity_kind": "trainer",
+      "variant": "printing unspecified",
+      "slot": 1
+    },
+    {
+      "name": "Poké Ball",
+      "entity_id": 30,
+      "entity_kind": "trainer",
+      "variant": "printing unspecified",
+      "slot": 2
+    },
+    {
+      "name": "Lucky Ice Pop",
+      "entity_id": 1060,
+      "entity_kind": "trainer",
+      "variant": "printing unspecified",
+      "slot": 3
+    },
+    {
+      "name": "Lucky Ice Pop",
+      "entity_id": 1060,
+      "entity_kind": "trainer",
+      "variant": "printing unspecified",
+      "slot": 4
+    },
+    {
+      "name": "Poison Barb",
+      "entity_id": 500,
+      "entity_kind": "trainer",
+      "variant": "printing unspecified",
+      "slot": 5
+    },
+    {
+      "name": "Deceptive Needle",
+      "entity_id": 1520,
+      "entity_kind": "trainer",
+      "variant": "printing unspecified",
+      "slot": 6
+    },
+    {
+      "name": "Heavy Helmet",
+      "entity_id": 930,
+      "entity_kind": "trainer",
+      "variant": "printing unspecified",
+      "slot": 7
+    },
+    {
+      "name": "Professor’s Research",
+      "entity_id": 40,
+      "entity_kind": "trainer",
+      "variant": "printing unspecified",
+      "slot": 8
+    },
+    {
+      "name": "Professor’s Research",
+      "entity_id": 40,
+      "entity_kind": "trainer",
+      "variant": "printing unspecified",
+      "slot": 9
+    },
+    {
+      "name": "Copycat",
+      "entity_id": 990,
+      "entity_kind": "trainer",
+      "variant": "printing unspecified",
+      "slot": 10
+    },
+    {
+      "name": "Wally",
+      "entity_id": 1570,
+      "entity_kind": "trainer",
+      "variant": "printing unspecified",
+      "slot": 11
+    },
+    {
+      "name": "Darkrai ex",
+      "entity_id": 3910,
+      "entity_kind": "pokemon",
+      "variant": "printing unspecified",
+      "slot": 12
+    },
+    {
+      "name": "Darkrai ex",
+      "entity_id": 3910,
+      "entity_kind": "pokemon",
+      "variant": "printing unspecified",
+      "slot": 13
+    },
+    {
+      "name": "Nidoran♂",
+      "entity_id": 1690,
+      "entity_kind": "pokemon",
+      "variant": "printing unspecified",
+      "slot": 14
+    },
+    {
+      "name": "Nidoran♂",
+      "entity_id": 1690,
+      "entity_kind": "pokemon",
+      "variant": "printing unspecified",
+      "slot": 15
+    },
+    {
+      "name": "Nidorino",
+      "entity_id": 1700,
+      "entity_kind": "pokemon",
+      "variant": "printing unspecified",
+      "slot": 16
+    },
+    {
+      "name": "Nidoking",
+      "entity_id": 1710,
+      "entity_kind": "pokemon",
+      "variant": "printing unspecified",
+      "slot": 17
+    },
+    {
+      "name": "Nidoking",
+      "entity_id": 1710,
+      "entity_kind": "pokemon",
+      "variant": "printing unspecified",
+      "slot": 18
+    },
+    {
+      "name": "Nihilego",
+      "entity_id": 7790,
+      "entity_kind": "pokemon",
+      "variant": "printing unspecified",
+      "slot": 19
+    },
+    {
+      "name": "Nihilego",
+      "entity_id": 7790,
+      "entity_kind": "pokemon",
+      "variant": "printing unspecified",
+      "slot": 20
+    }
+  ],
+  "counts_by_name_and_variant": [
+    {
+      "name": "Poké Ball",
+      "variant": "semantic entity; exact printing unspecified",
+      "entity_id": 30,
+      "entity_kind": "trainer",
+      "count": 2
+    },
+    {
+      "name": "Lucky Ice Pop",
+      "variant": "semantic entity; exact printing unspecified",
+      "entity_id": 1060,
+      "entity_kind": "trainer",
+      "count": 2
+    },
+    {
+      "name": "Poison Barb",
+      "variant": "semantic entity; exact printing unspecified",
+      "entity_id": 500,
+      "entity_kind": "trainer",
+      "count": 1
+    },
+    {
+      "name": "Deceptive Needle",
+      "variant": "semantic entity; exact printing unspecified",
+      "entity_id": 1520,
+      "entity_kind": "trainer",
+      "count": 1
+    },
+    {
+      "name": "Heavy Helmet",
+      "variant": "semantic entity; exact printing unspecified",
+      "entity_id": 930,
+      "entity_kind": "trainer",
+      "count": 1
+    },
+    {
+      "name": "Professor’s Research",
+      "variant": "semantic entity; exact printing unspecified",
+      "entity_id": 40,
+      "entity_kind": "trainer",
+      "count": 2
+    },
+    {
+      "name": "Copycat",
+      "variant": "semantic entity; exact printing unspecified",
+      "entity_id": 990,
+      "entity_kind": "trainer",
+      "count": 1
+    },
+    {
+      "name": "Wally",
+      "variant": "semantic entity; exact printing unspecified",
+      "entity_id": 1570,
+      "entity_kind": "trainer",
+      "count": 1
+    },
+    {
+      "name": "Darkrai ex",
+      "variant": "semantic entity; exact printing unspecified",
+      "entity_id": 3910,
+      "entity_kind": "pokemon",
+      "count": 2
+    },
+    {
+      "name": "Nidoran♂",
+      "variant": "semantic entity; exact printing unspecified",
+      "entity_id": 1690,
+      "entity_kind": "pokemon",
+      "count": 2
+    },
+    {
+      "name": "Nidorino",
+      "variant": "semantic entity; exact printing unspecified",
+      "entity_id": 1700,
+      "entity_kind": "pokemon",
+      "count": 1
+    },
+    {
+      "name": "Nidoking",
+      "variant": "semantic entity; exact printing unspecified",
+      "entity_id": 1710,
+      "entity_kind": "pokemon",
+      "count": 2
+    },
+    {
+      "name": "Nihilego",
+      "variant": "semantic entity; exact printing unspecified",
+      "entity_id": 7790,
+      "entity_kind": "pokemon",
+      "count": 2
+    }
+  ],
+  "energy_configuration_from_log": null,
+  "energy_configuration_from_filmed_qr": [
+    "Darkness"
+  ],
+  "actual_card_count": 20,
+  "capture_source_text_or_image": "qr_intake/QR_DECODE_0002.00.json and t0002.00.png",
+  "game_version_binding_basis": "Filmed New deck 6 opens QR at2s, returns same label by4s, searches by6s and loads Sofii game at27s. No deck edit or second game observed.",
+  "conflicts_with_filmed_cards": [],
+  "exact_list_status": "filmed_qr_exact_semantic_20; required live log snapshot pending root registration",
+  "qr_payload_sha256": "2ea1f092676ec6dfc0b79766aa8acfba0bb97363851669a090b7aec3f9c885f1",
+  "limits": [
+    "Nine frozen live lists do not match this filmed semantic20. Prepared NEW_DECK_ENTRIES does not establish a saved live list.",
+    "Distinct from later124532 one-Darkrai/Cyrus revision.",
+    "QR establishes semantic counts and Energy, not rarity, opening or hidden draws."
+  ]
+}

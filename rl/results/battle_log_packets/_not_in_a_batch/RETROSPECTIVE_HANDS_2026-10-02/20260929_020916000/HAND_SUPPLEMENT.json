@@ -1,0 +1,548 @@
+{
+  "game_id": "20260929_020916000",
+  "source": "20260929_020916000_iOS.MP4",
+  "sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+  "target_rows": 5,
+  "target_turn_numbers": [
+    1,
+    3,
+    5,
+    7,
+    9
+  ],
+  "rows": [
+    {
+      "turn_number": 1,
+      "draw_end_supported_interval_seconds": [
+        35,
+        35.5
+      ],
+      "draw_animation_end_seconds": null,
+      "selected_start_evidence_ids": [
+        "F0035.50"
+      ],
+      "untouched_post_draw_hand": {
+        "cards_left_to_right": [
+          "Rainbow Cave",
+          "Copycat",
+          "Repel",
+          "Giant Cape",
+          "Cyrus"
+        ],
+        "count": 5,
+        "basis": "direct native left-to-right fan",
+        "evidence_ids": [
+          "F0035.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "draw_timed_captures": [
+        {
+          "target_offset_seconds": 1,
+          "evidence_id": "F0036.00",
+          "requested_source_seconds": 36,
+          "actual_frame_seconds_if_measured": 36.0217,
+          "actual_offset_supported_range_seconds": [
+            0.5217,
+            1.0217
+          ],
+          "before_first_play": false,
+          "status": "inspected_native_candidate",
+          "limit_reason": "Later offset can include plays; not a substitute for separately retained untouched hand. T9 is failed draw warning offset, not successful draw."
+        },
+        {
+          "target_offset_seconds": 3,
+          "evidence_id": "F0038.00",
+          "requested_source_seconds": 38,
+          "actual_frame_seconds_if_measured": 38.005,
+          "actual_offset_supported_range_seconds": [
+            2.505,
+            3.005
+          ],
+          "before_first_play": false,
+          "status": "inspected_native_candidate",
+          "limit_reason": "Later offset can include plays; not a substitute for separately retained untouched hand. T9 is failed draw warning offset, not successful draw."
+        },
+        {
+          "target_offset_seconds": 6,
+          "evidence_id": "F0041.00",
+          "requested_source_seconds": 41,
+          "actual_frame_seconds_if_measured": 41.005,
+          "actual_offset_supported_range_seconds": [
+            5.505,
+            6.005
+          ],
+          "before_first_play": false,
+          "status": "inspected_native_candidate",
+          "limit_reason": "Later offset can include plays; not a substitute for separately retained untouched hand. T9 is failed draw warning offset, not successful draw."
+        }
+      ],
+      "before_end_hand": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Professor's Research (full art)",
+          "Lucky Ice Pop",
+          "Giant Cape"
+        ],
+        "count": 4,
+        "basis": "direct native left-to-right fan",
+        "evidence_ids": [
+          "F0056.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "before_end_evidence_ids": [
+        "F0056.50"
+      ],
+      "hand_after_end_automatic_events": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Professor's Research (full art)",
+          "Lucky Ice Pop",
+          "Giant Cape",
+          "Flame Patch"
+        ],
+        "count": 5,
+        "basis": "direct native left-to-right fan",
+        "evidence_ids": [
+          "F0062.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "capture_status": "complete_with_recording_limits"
+    },
+    {
+      "turn_number": 3,
+      "draw_end_supported_interval_seconds": [
+        138,
+        139
+      ],
+      "draw_animation_end_seconds": null,
+      "selected_start_evidence_ids": [
+        "F0139.00"
+      ],
+      "untouched_post_draw_hand": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Professor's Research (full art)",
+          "Lucky Ice Pop",
+          "Giant Cape",
+          "Flame Patch",
+          "Rainbow Cave"
+        ],
+        "count": 6,
+        "basis": "direct native left-to-right fan",
+        "evidence_ids": [
+          "F0139.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "draw_timed_captures": [
+        {
+          "target_offset_seconds": 1,
+          "evidence_id": "F0140.00",
+          "requested_source_seconds": 140,
+          "actual_frame_seconds_if_measured": 140.002,
+          "actual_offset_supported_range_seconds": [
+            1.002,
+            2.002
+          ],
+          "before_first_play": false,
+          "status": "inspected_native_candidate",
+          "limit_reason": "Later offset can include plays; not a substitute for separately retained untouched hand. T9 is failed draw warning offset, not successful draw."
+        },
+        {
+          "target_offset_seconds": 3,
+          "evidence_id": "F0142.00",
+          "requested_source_seconds": 142,
+          "actual_frame_seconds_if_measured": 142.002,
+          "actual_offset_supported_range_seconds": [
+            3.002,
+            4.002
+          ],
+          "before_first_play": false,
+          "status": "inspected_native_candidate",
+          "limit_reason": "Later offset can include plays; not a substitute for separately retained untouched hand. T9 is failed draw warning offset, not successful draw."
+        },
+        {
+          "target_offset_seconds": 6,
+          "evidence_id": "F0145.00",
+          "requested_source_seconds": 145,
+          "actual_frame_seconds_if_measured": 145.002,
+          "actual_offset_supported_range_seconds": [
+            6.002,
+            7.002
+          ],
+          "before_first_play": false,
+          "status": "inspected_native_candidate",
+          "limit_reason": "Later offset can include plays; not a substitute for separately retained untouched hand. T9 is failed draw warning offset, not successful draw."
+        }
+      ],
+      "before_end_hand": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Lucky Ice Pop",
+          "Giant Cape",
+          "Rainbow Cave",
+          "Professor's Research (regular)",
+          "Sabrina"
+        ],
+        "count": 6,
+        "basis": "direct native left-to-right fan",
+        "evidence_ids": [
+          "F0160.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "before_end_evidence_ids": [
+        "F0160.00"
+      ],
+      "hand_after_end_automatic_events": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Lucky Ice Pop",
+          "Giant Cape",
+          "Rainbow Cave",
+          "Professor's Research (regular)",
+          "Sabrina",
+          "Poké Ball"
+        ],
+        "count": 7,
+        "basis": "direct native left-to-right fan",
+        "evidence_ids": [
+          "F0170.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "capture_status": "complete_with_recording_limits"
+    },
+    {
+      "turn_number": 5,
+      "draw_end_supported_interval_seconds": [
+        208,
+        209
+      ],
+      "draw_animation_end_seconds": null,
+      "selected_start_evidence_ids": [
+        "F0209.00"
+      ],
+      "untouched_post_draw_hand": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Lucky Ice Pop",
+          "Giant Cape",
+          "Rainbow Cave",
+          "Professor's Research (regular)",
+          "Sabrina",
+          "Poké Ball",
+          "Lucky Ice Pop"
+        ],
+        "count": 8,
+        "basis": "direct native left-to-right fan",
+        "evidence_ids": [
+          "F0209.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "draw_timed_captures": [
+        {
+          "target_offset_seconds": 1,
+          "evidence_id": "F0210.00",
+          "requested_source_seconds": 210,
+          "actual_frame_seconds_if_measured": 210.0,
+          "actual_offset_supported_range_seconds": [
+            1.0,
+            2.0
+          ],
+          "before_first_play": false,
+          "status": "inspected_native_candidate",
+          "limit_reason": "Later offset can include plays; not a substitute for separately retained untouched hand. T9 is failed draw warning offset, not successful draw."
+        },
+        {
+          "target_offset_seconds": 3,
+          "evidence_id": "F0212.00",
+          "requested_source_seconds": 212,
+          "actual_frame_seconds_if_measured": 212.002,
+          "actual_offset_supported_range_seconds": [
+            3.002,
+            4.002
+          ],
+          "before_first_play": false,
+          "status": "inspected_native_candidate",
+          "limit_reason": "Later offset can include plays; not a substitute for separately retained untouched hand. T9 is failed draw warning offset, not successful draw."
+        },
+        {
+          "target_offset_seconds": 6,
+          "evidence_id": "F0215.00",
+          "requested_source_seconds": 215,
+          "actual_frame_seconds_if_measured": 215.002,
+          "actual_offset_supported_range_seconds": [
+            6.002,
+            7.002
+          ],
+          "before_first_play": false,
+          "status": "inspected_native_candidate",
+          "limit_reason": "Later offset can include plays; not a substitute for separately retained untouched hand. T9 is failed draw warning offset, not successful draw."
+        }
+      ],
+      "before_end_hand": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Rainbow Cave",
+          "Sabrina"
+        ],
+        "count": 3,
+        "basis": "direct native left-to-right fan",
+        "evidence_ids": [
+          "F0288.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "before_end_evidence_ids": [
+        "F0288.00"
+      ],
+      "hand_after_end_automatic_events": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Rainbow Cave",
+          "Sabrina",
+          "Pokémon Center Lady"
+        ],
+        "count": 4,
+        "basis": "direct native left-to-right fan",
+        "evidence_ids": [
+          "F0312.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "capture_status": "complete_with_recording_limits"
+    },
+    {
+      "turn_number": 7,
+      "draw_end_supported_interval_seconds": [
+        357,
+        358
+      ],
+      "draw_animation_end_seconds": null,
+      "selected_start_evidence_ids": [
+        "F0358.00"
+      ],
+      "untouched_post_draw_hand": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Rainbow Cave",
+          "Sabrina",
+          "Pokémon Center Lady",
+          "Cyrus"
+        ],
+        "count": 5,
+        "basis": "direct native left-to-right fan",
+        "evidence_ids": [
+          "F0358.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "draw_timed_captures": [
+        {
+          "target_offset_seconds": 1,
+          "evidence_id": "F0359.00",
+          "requested_source_seconds": 359,
+          "actual_frame_seconds_if_measured": 359.015,
+          "actual_offset_supported_range_seconds": [
+            1.015,
+            2.015
+          ],
+          "before_first_play": true,
+          "status": "inspected_native_candidate",
+          "limit_reason": null
+        },
+        {
+          "target_offset_seconds": 3,
+          "evidence_id": "F0361.00",
+          "requested_source_seconds": 361,
+          "actual_frame_seconds_if_measured": 361.015,
+          "actual_offset_supported_range_seconds": [
+            3.015,
+            4.015
+          ],
+          "before_first_play": true,
+          "status": "inspected_native_candidate",
+          "limit_reason": null
+        },
+        {
+          "target_offset_seconds": 6,
+          "evidence_id": "F0364.00",
+          "requested_source_seconds": 364,
+          "actual_frame_seconds_if_measured": 364.015,
+          "actual_offset_supported_range_seconds": [
+            6.015,
+            7.015
+          ],
+          "before_first_play": false,
+          "status": "inspected_native_candidate",
+          "limit_reason": "Later offset can include plays; not a substitute for separately retained untouched hand. T9 is failed draw warning offset, not successful draw."
+        }
+      ],
+      "before_end_hand": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Rainbow Cave",
+          "Pokémon Center Lady",
+          "Cyrus"
+        ],
+        "count": 4,
+        "basis": "direct native left-to-right fan",
+        "evidence_ids": [
+          "F0381.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "before_end_evidence_ids": [
+        "F0381.00"
+      ],
+      "hand_after_end_automatic_events": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Rainbow Cave",
+          "Pokémon Center Lady",
+          "Cyrus",
+          "Repel"
+        ],
+        "count": 5,
+        "basis": "direct native left-to-right fan",
+        "evidence_ids": [
+          "F0390.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "capture_status": "complete_with_recording_limits"
+    },
+    {
+      "turn_number": 9,
+      "draw_end_supported_interval_seconds": [
+        466,
+        467
+      ],
+      "draw_animation_end_seconds": null,
+      "selected_start_evidence_ids": [
+        "F0466.00",
+        "F0467.00"
+      ],
+      "untouched_post_draw_hand": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Rainbow Cave",
+          "Pokémon Center Lady",
+          "Cyrus",
+          "Repel"
+        ],
+        "count": 5,
+        "basis": "direct native left-to-right fan",
+        "evidence_ids": [
+          "F0466.00",
+          "F0467.00"
+        ],
+        "status": "observed",
+        "limit_reason": "Failed normal draw; five cards unchanged. No new card added."
+      },
+      "draw_timed_captures": [
+        {
+          "target_offset_seconds": 1,
+          "evidence_id": "F0467.00",
+          "requested_source_seconds": 467,
+          "actual_frame_seconds_if_measured": 467.002,
+          "actual_offset_supported_range_seconds": [
+            0.002,
+            1.002
+          ],
+          "before_first_play": true,
+          "status": "inspected_native_candidate",
+          "limit_reason": "Later offset can include plays; not a substitute for separately retained untouched hand. T9 is failed draw warning offset, not successful draw."
+        },
+        {
+          "target_offset_seconds": 3,
+          "evidence_id": "F0469.00",
+          "requested_source_seconds": 469,
+          "actual_frame_seconds_if_measured": 469.003,
+          "actual_offset_supported_range_seconds": [
+            2.003,
+            3.003
+          ],
+          "before_first_play": false,
+          "status": "inspected_native_candidate",
+          "limit_reason": "Later offset can include plays; not a substitute for separately retained untouched hand. T9 is failed draw warning offset, not successful draw."
+        },
+        {
+          "target_offset_seconds": 6,
+          "evidence_id": "F0473.00",
+          "requested_source_seconds": 473,
+          "actual_frame_seconds_if_measured": 473.005,
+          "actual_offset_supported_range_seconds": [
+            6.005,
+            7.005
+          ],
+          "before_first_play": false,
+          "status": "inspected_native_candidate",
+          "limit_reason": "Later offset can include plays; not a substitute for separately retained untouched hand. T9 is failed draw warning offset, not successful draw."
+        }
+      ],
+      "before_end_hand": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Rainbow Cave",
+          "Pokémon Center Lady",
+          "Repel"
+        ],
+        "count": 4,
+        "basis": "direct native left-to-right fan",
+        "evidence_ids": [
+          "F0477.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "before_end_evidence_ids": [
+        "F0477.00"
+      ],
+      "hand_after_end_automatic_events": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Rainbow Cave",
+          "Pokémon Center Lady",
+          "Repel"
+        ],
+        "count": 4,
+        "basis": "direct native left-to-right fan",
+        "evidence_ids": [
+          "F0482.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "capture_status": "complete_with_recording_limits"
+    }
+  ],
+  "capture_status": "complete_with_recording_limits",
+  "limits": [
+    "Opponent cards drawn face-down cannot be named; hidden cards are null, never inferred from a presumed deck.",
+    "All 490 retained 1fps reduced samples (25 grids, nominal 0 through489 seconds) screened as action/prompt/discard locators. This does not inspect every instant; subsecond prompts or inputs can fall between samples.",
+    "No opened discard panel was observed in this sampled scan or85 native views. Periodic top-of-pile views establish only the visible top card, not full pile contents.",
+    "Source-local requested times and measured selected-frame PTS are distinct. Draw-end times are bracketed by retained views, not measured exact animation boundaries.",
+    "Start/end boards are explicitly composite source-derived boundary states with field anchors. Later endpoints and inherited accepted results are not exact simultaneous native boundary snapshots.",
+    "Historical exact20-card log snapshot unavailable without version binding. Filmed visible core is separately supported; no current deck substitution.",
+    "Auto option absent in inspected native controls, with sampled/obscured-view limits. This cannot prove absence at every instant or hidden menu. Auto enabled status and action authorship remain unknown."
+  ],
+  "independent_acceptance_status": "pending"
+}

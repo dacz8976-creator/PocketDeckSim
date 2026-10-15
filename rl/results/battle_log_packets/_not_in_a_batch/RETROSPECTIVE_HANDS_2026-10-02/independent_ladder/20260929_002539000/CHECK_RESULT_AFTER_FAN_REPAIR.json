@@ -1,0 +1,149 @@
+{
+  "game_id": "20260929_002539000",
+  "checker": "sol_verify_computer_012720",
+  "producer": "sol_retro_ladder_012720",
+  "independent_of_producer": true,
+  "checked_utc": "2026-10-02T23:32:45.976965+00:00",
+  "verdict": "accepted_with_recording_limits",
+  "source_work_status": "complete_with_recording_limits",
+  "source_sha256": "a951746c8a5226b0f575405e985c72cc3af249da0a757e0712b621d82b85aa06",
+  "submission_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\SUBMISSION.json",
+  "submission_sha256": "5ff5ed564e6cb166813e0b5e14d3eedebb1528fa31fe6b2889040669643a2cf4",
+  "payload_hashes_match": true,
+  "binding_report": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\independent_ladder\\20260929_002539000\\FILE_AND_EVIDENCE_BINDING.json",
+  "required_repairs": [],
+  "other_substantive_fields": "Supported with described direct, inherited, endpoint-inferred and hidden-information qualifications",
+  "mode": {
+    "classification": "ladder_presumed",
+    "Master_Ball_Rank_observed": true,
+    "opponent": "ユアンジュナ",
+    "auto_option_seen_in_checked_controls": false,
+    "auto_enabled": null,
+    "individual_authorship": null,
+    "limit": "Sampled absence, not every-instant absence. Any visible Auto option even Off requires computer classification."
+  },
+  "accepted_outcome_changed": false,
+  "historical_exact20_known": false,
+  "scope": "Full independent field packet check. No broad outcome/rules/simulator audit. Producer and shared files untouched.",
+  "metrics_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\independent_ladder\\20260929_002539000\\METRICS.json",
+  "detail_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\independent_ladder\\20260929_002539000\\CHECK_RESULT_AFTER_FAN_REPAIR.md",
+  "independent_acceptance": true,
+  "effective_submission_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\SUBMISSION_AFTER_FAN_REPAIR.json",
+  "effective_submission_sha256": "234b9c5739b34a8f1e1bb8e2c8df5a4462e95734a5129a3219b0502b3d06ca46",
+  "effective_payload_hashes": [
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\ASSIGNMENT.json",
+      "sha256": "e3d179e604cded5bdf9245c8f7a7d489f7b44f12f3335a2324cafcebb17f0d2c",
+      "actual_sha256": "e3d179e604cded5bdf9245c8f7a7d489f7b44f12f3335a2324cafcebb17f0d2c",
+      "match": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\PAUSE_GAME.json",
+      "sha256": "00e26964326d3497735162622b61a4db2d2c405a40477175cf1f23092c131260",
+      "actual_sha256": "00e26964326d3497735162622b61a4db2d2c405a40477175cf1f23092c131260",
+      "match": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\TURN_LEDGER.json",
+      "sha256": "59f3439b8468b7684b66870c7eb2fc5f29ed33ff3c90d587a79b65ddddc909e3",
+      "actual_sha256": "59f3439b8468b7684b66870c7eb2fc5f29ed33ff3c90d587a79b65ddddc909e3",
+      "match": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\HAND_SUPPLEMENT.json",
+      "sha256": "92e1215db18d011b0b92a4b77490115ca14056b8dfc27282934401f0c9bc7bf8",
+      "actual_sha256": "92e1215db18d011b0b92a4b77490115ca14056b8dfc27282934401f0c9bc7bf8",
+      "match": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\SOURCE_REFERENCE.json",
+      "sha256": "f1a773e04e2207bd0de4015a7c44940f2038140a9f677559ea01ac93c79a5e91",
+      "actual_sha256": "f1a773e04e2207bd0de4015a7c44940f2038140a9f677559ea01ac93c79a5e91",
+      "match": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\TURN_EVIDENCE.json",
+      "sha256": "9df232ffa60c5ffeccd0f8672ed0874f2f80f3786bf945eaae171f128e85fc10",
+      "actual_sha256": "9df232ffa60c5ffeccd0f8672ed0874f2f80f3786bf945eaae171f128e85fc10",
+      "match": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\DECK_USED.json",
+      "sha256": "fefee3dce245bac82bccbbc48fed572ff2680ac6bf8b90f484081f2007ec50fe",
+      "actual_sha256": "fefee3dce245bac82bccbbc48fed572ff2680ac6bf8b90f484081f2007ec50fe",
+      "match": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\UNCERTAINTIES.json",
+      "sha256": "c97fb0cb290cf5525c960af814914abf5466054e666d52196127f4f25155eb1d",
+      "actual_sha256": "c97fb0cb290cf5525c960af814914abf5466054e666d52196127f4f25155eb1d",
+      "match": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\COVERAGE.json",
+      "sha256": "52e0daee69aeaf9f6ce34ac549a2356605bad531e1f7b5de00868dfb773c127c",
+      "actual_sha256": "52e0daee69aeaf9f6ce34ac549a2356605bad531e1f7b5de00868dfb773c127c",
+      "match": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\MODE_CHECK.json",
+      "sha256": "351ac0ce4a3d216706ecc33027c37819b519aa8c2e82efe0232bbfdfab31dcb3",
+      "actual_sha256": "351ac0ce4a3d216706ecc33027c37819b519aa8c2e82efe0232bbfdfab31dcb3",
+      "match": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\ACTION_RECONCILIATION.json",
+      "sha256": "cab2637ecafed58c525e7bbc7b3d5f246744972ef307f59419ea0599648343d1",
+      "actual_sha256": "cab2637ecafed58c525e7bbc7b3d5f246744972ef307f59419ea0599648343d1",
+      "match": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\REVIEW_SUPPLEMENT.md",
+      "sha256": "6ae1b917204e4f922592d1fcb33ab85e7c5c6617b1bfd5ad71cd06070a7ff828",
+      "actual_sha256": "6ae1b917204e4f922592d1fcb33ab85e7c5c6617b1bfd5ad71cd06070a7ff828",
+      "match": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\METRICS.json",
+      "sha256": "0979d2e80616f1a9504cfa40afd6fa4279ce2910662a3f3f3cab50287138e5e5",
+      "actual_sha256": "0979d2e80616f1a9504cfa40afd6fa4279ce2910662a3f3f3cab50287138e5e5",
+      "match": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\EXTRACTION_PLAN.json",
+      "sha256": "8a1c1c26fc5eac4c06071dd666080de1cd490a06eb6206927235d30ade6c2c7a",
+      "actual_sha256": "8a1c1c26fc5eac4c06071dd666080de1cd490a06eb6206927235d30ade6c2c7a",
+      "match": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\EXTRACTION_MANIFEST.json",
+      "sha256": "cbf4f641911c551831f6e4a68ba0f9accace3356886168256bd6512f7165d7b0",
+      "actual_sha256": "cbf4f641911c551831f6e4a68ba0f9accace3356886168256bd6512f7165d7b0",
+      "match": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\REUSED_NATIVE_MANIFEST.json",
+      "sha256": "d4fd10262d9de076035a008e5578300e6ed835188e2d3199c39002d250af0f6e",
+      "actual_sha256": "d4fd10262d9de076035a008e5578300e6ed835188e2d3199c39002d250af0f6e",
+      "match": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\INSPECTED_NATIVE.json",
+      "sha256": "9f82a091d515c7caf84559e69de9295fdbcee872d7980908162b85482c93cec4",
+      "actual_sha256": "9f82a091d515c7caf84559e69de9295fdbcee872d7980908162b85482c93cec4",
+      "match": true
+    }
+  ],
+  "resolved_repairs": [
+    "T10_OPPONENT_END_FAN"
+  ],
+  "repair_scope_verified": [
+    "TURN_LEDGER.json",
+    "REVIEW_SUPPLEMENT.md"
+  ],
+  "turn11_entire_structured_row_unchanged": true,
+  "original_full_check_preserved": true,
+  "prior_full_visual_check": "CHECK_RESULT.json/.md",
+  "post_repair_additional_native_views": 0,
+  "post_repair_new_source_reads": 0
+}

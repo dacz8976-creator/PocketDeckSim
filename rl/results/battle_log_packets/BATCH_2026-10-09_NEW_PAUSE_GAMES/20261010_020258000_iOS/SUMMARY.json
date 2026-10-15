@@ -1,0 +1,36 @@
+{
+  "source_video": "20261010_020258000_iOS.MP4",
+  "source_sha256": "c5e7732cf212bd836fbcafc107b0f0d92ff43d8a8cd2f5b9f222b4fd466e5640",
+  "reviewer": "/root/pause_020258",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "scope": "whole continuous source0–342.526667s; setup,8 turns,concession,Victory",
+  "status": "first_pass_complete_pending_independent_acceptance",
+  "capture_status": "complete_with_recording_limits",
+  "outcome": "Owner win by opponent concession, confirmed native330s; last points2–1",
+  "opponent": "Pikachu",
+  "auto_visible": false,
+  "external_log_eligible": true,
+  "match_date": "2026-10-09",
+  "turn_count": 8,
+  "consequential_evidence": [
+    "F0036.50",
+    "F0130.00",
+    "F0168.00",
+    "F0200.00",
+    "F0228.00",
+    "F0267.00",
+    "F0279.00",
+    "F0328.00",
+    "F0340.00"
+  ],
+  "limits": [
+    "Opponent hand faces and hidden searches not fully revealed.",
+    "Neither player opens a discard pile; visible discard tops cannot establish full contents.",
+    "Normal draw end located to about0.2–0.8s precision; action timestamps approximate.",
+    "T4 mobile notification obscures upper clock and part of hand fan; three backs remain countable.",
+    "Several +3/+6 candidates show action after first play; clear earlier native selection retained.",
+    "Sabrina ends through concession with no replacement or final attack.",
+    "QR/log list functional identity verified; artwork/rarity aliases in the log do not prove filmed exact printings."
+  ]
+}

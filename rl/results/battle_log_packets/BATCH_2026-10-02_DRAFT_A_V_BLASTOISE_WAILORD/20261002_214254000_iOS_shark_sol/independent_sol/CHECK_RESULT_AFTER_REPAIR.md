@@ -1,0 +1,11 @@
+# Independent Sol acceptance after repair
+
+Accepted. Source 20261002_214254000_iOS.MP4, SHA256 c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b. Reviewer /root/ind_drafta_manual1, gpt-6.1-sol, high, distinct from the producer.
+
+Effective manifest SUBMISSION_AFTER_INDEPENDENT_REPAIR.json SHA256 da50682768f9be368fd86255c00bdb8732fa6d867635580b003b088cbf928ed0 and all 20 effective file hashes independently verified. Original 19 files and original SUBMISSION remain preserved in worker_submission with their original hashes. Initial rejected CHECK_RESULT remains unchanged, SHA256 a78af30a7aae3c7e5c793e650d43dfa48a3ab4f0e40371f8b41ce78957245e8b.
+
+Read the full bounded diff in all five changed files. T18 individual Copycat reveals now use Misty427.4, Poké Ball428.4, Cyrus429.4 and Lapras430.4. Rechecked those four native images. Rechecked F0432.40 rejection, F0433.40 later Water attachment and F0434.40 four-Water corroboration. Corrected action order is Copycat, failed Ball, ordinary fourth Water, Binding Snow. The exact visible rejection text is supported and Ball remains in hand. Inventory reference is repaired. T4/T8 existing ending-hand evidence IDs are now explicit. No incidental semantic changes were found.
+
+Full review coverage, Pause capture contract and guide update checks are all true. They include all 27 whole-span locator grids, all 22 rows, all 11 owner starts, all 33 scheduled offset crops, all 11 before-end hands, all 11 opponent fans, every named Research/search/Copycat reveal, both boards and typed Energy, HP, tools and physical stack histories, all 20 owner physical copies without repeat double counting, opponent-turn choice absence and manual Auto OFF attribution. No new source decode or extraction was needed.
+
+No remaining coverage gaps or unverified material claims. Recording limits remain as detailed in the JSON: concealed opponent cards, unopened discard/under-card areas and physical set numbers are not invented. Final supported outcome is 3-0 capped Victory after Cyrus pulls the 30HP Mega Blastoise for Binding80 KO, second, 22 turns, 620 damage. Auto control is present and OFF, so this is a local-only computer review excluded from both human Pause Games and Ladder Log.

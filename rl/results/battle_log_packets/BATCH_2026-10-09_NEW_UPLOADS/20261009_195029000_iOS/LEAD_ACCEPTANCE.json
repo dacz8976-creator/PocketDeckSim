@@ -1,0 +1,47 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "accepted_at_utc": "2026-10-10T02:01:46.306033+00:00",
+  "lead": "/root",
+  "source_filename": "20261009_195029000_iOS.MP4",
+  "source_sha256": "8b069aade34fbba5615a4f500ab0aa5a150ae8c823be6aa23ca18d5f0a9ddc48",
+  "source_bytes": 345987192,
+  "duration_seconds": 190.976009,
+  "first_pass_model": "gpt-6-sol",
+  "first_pass_reasoning_effort": "high",
+  "independent_model": "gpt-6-sol",
+  "independent_reasoning_effort": "high",
+  "primary_files_read_and_checked_by_lead": [
+    "REVIEW.md",
+    "COVERAGE.md",
+    "FINDINGS.json"
+  ],
+  "independent_verification": "independent_sol/VERIFICATION.json",
+  "verified_primary_hashes": {
+    "REVIEW.md": "6c80905e8e7a4ca3cc27f9be7578495a2b365fd09196f3e4a1a585bdef7dc4fd",
+    "COVERAGE.md": "e7a3483892b98f81775500bf3f07295624843d19d28d04c86a912864bf87bf43",
+    "FINDINGS.json": "7e7d33600c13dd62397f4717450fc17b9f7d847cb18c69a62db78892ecdcd074"
+  },
+  "lead_direct_visual_checks": [
+    "independent_sol/native/t_11.jpg",
+    "independent_sol/native/t_54.5.jpg",
+    "independent_sol/native/t_58.jpg",
+    "independent_sol/native/t_150.5.jpg",
+    "independent_sol/native/t_173.jpg",
+    "independent_sol/native/t_179.jpg",
+    "independent_sol/native/t_187.jpg"
+  ],
+  "full_source_and_turn_coverage_accepted": true,
+  "classification_and_outcome_reconciled": true,
+  "source_limits_preserved": true,
+  "outcome": {
+    "classification": "computer_battle_auto_enabled",
+    "result": "defeat",
+    "opponent": "Miraidon ex Deck (Deluxe Pack: Mega)",
+    "turns": 8,
+    "owner_points": 1,
+    "opponent_points": 3
+  },
+  "external_log_routing": "Computer battle excluded from Ladder and Pause Games",
+  "archive_identity_and_registration": "Required next; acceptance alone does not claim movement"
+}

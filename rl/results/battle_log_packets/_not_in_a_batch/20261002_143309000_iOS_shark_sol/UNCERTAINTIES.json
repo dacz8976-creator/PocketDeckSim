@@ -1,0 +1,73 @@
+{
+  "video_basename": "20261002_143309000_iOS.MP4",
+  "source_sha256": "3358738fb441f5ca54931447b3c6b11fb6063255caa13f7406f1ec0e3e29c461",
+  "unreviewed_intervals": [],
+  "material_questions": [
+    {
+      "id": "binding_snow_psy_shadow",
+      "status": "resolved_from_printed_card_text_with_observation_limits",
+      "question": "Does Binding Snow's ban on taking Energy from the Energy Zone to attach to the Active Pokemon also block Gardevoir Psy Shadow, and is the opponent's zero-Energy Mewtwo promotion under repeated lock fairly characterized as a key resource problem?",
+      "observed": "Binding Snow card text bans Energy Zone attachments to Active during the next opponent turn. Gardevoir Psy Shadow card text takes Psychic from the Energy Zone and attaches to Active. Opponent promotes Mewtwo with zero Energy, then places normal Energy on the Bench. No Psy Shadow activation or failed attempt is observed. Mewtwo never gains Energy or attacks.",
+      "evidence": [
+        {
+          "seconds": 92,
+          "path": "native/t0092.00.jpg",
+          "shows": "Exact Binding Snow cost and restriction"
+        },
+        {
+          "seconds": 132,
+          "path": "native/t0132.00.jpg",
+          "shows": "Active Gardevoir Psy Shadow text before Leaf retreat"
+        },
+        {
+          "seconds": 160,
+          "path": "native/t0160.00.jpg",
+          "shows": "Mewtwo Active 150 HP zero Energy; first Gardevoir Bench 1 Psychic"
+        },
+        {
+          "seconds": 219,
+          "path": "native/t0219.00.jpg",
+          "shows": "Mewtwo 90 zero Energy; first Gardevoir 2 Psychic"
+        },
+        {
+          "seconds": 257,
+          "path": "native/t0257.00.jpg",
+          "shows": "Mewtwo 10 zero Energy; two Gardevoir with 2 and 1 Psychic"
+        }
+      ],
+      "draft_handling": "Causal interaction labeled inference; no observed blocked ability or definite opponent error asserted. Keeping Mewtwo on Bench to receive normal Energy is only a conditional tactical alternative.",
+      "resolution": "Binding Snow prohibits Energy Zone attachments to the Active Pokemon during the next opponent turn, including Psy Shadow. Normal Bench attachments remain legal; existing Energy is not removed. No rejected Psy Shadow attempt or opponent intent is observed.",
+      "resolution_report": "../BATCH_2026-10-02_SHARK_TEMPO/ASTRA_NINETALES_CHECK.md"
+    }
+  ],
+  "nonmaterial_unknowns": [
+    "Exact full deck lists and hidden hand cards",
+    "Exact matchmaking queue or ranked label; ranked exclusion and Pause Games destination are owner instructions",
+    "Opponent automation and motive",
+    "Whether other hidden switching resources would have enabled a different sequence"
+  ],
+  "resolved_by_dense_or_native_evidence": [
+    "Misty was two heads then tails, giving two Water to Lapras; normal Turn 4 attachment gave Ninetales its second Water",
+    "The HP Tool is Elegant Cape, +30 HP to attached Stage 1; no Stadium played",
+    "Turn 6 Research draws Poke Ball and Elegant Cape",
+    "Irida heals the accumulated ten damage, from 170 to 180, before the terminal attack"
+  ],
+  "lead_check_complete": true,
+  "material_claims_reconciled": true,
+  "astra_reports": [
+    "ASTRA_NINETALES_CHECK.md"
+  ],
+  "worker_status_at_submission": "complete_first_pass",
+  "status": "full_battle_review_complete",
+  "review_status": "full_battle_review_complete",
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "source_archived": true,
+  "source_modified": false,
+  "global_registration_complete": true,
+  "ranked_ladder_eligible": false,
+  "requested_log": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "external_log_saved": true,
+  "archive_receipt": "MOVE_RECEIPT.20261002_143309000_iOS.MP4.json",
+  "archive_completion_event_id": "ab2d32ee-91bb-4756-b6fd-729ba520b904"
+}

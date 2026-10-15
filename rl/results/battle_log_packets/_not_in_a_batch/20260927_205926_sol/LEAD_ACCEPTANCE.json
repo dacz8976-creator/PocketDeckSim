@@ -1,0 +1,26 @@
+{
+  "accepted": true,
+  "accepted_utc": "2026-09-27T21:35:59Z",
+  "video": "20260927_205926000_iOS.MP4",
+  "first_pass_reviewer": "/root/sep27_205926 (Sol)",
+  "independent_reviewer": "/root/sep27_long_timeline_astra (Astra)",
+  "lead_reviewer": "/root",
+  "source_sha256_verified": "0b097938b6136f0cba967555619eaed3f37c061692c1f5a3c88ee25cc1f9181c",
+  "scope": "Complete 415.56-second match from matchmaking and setup through all 13 turns and explicit opponent concession; result transition cuts off without Victory title",
+  "lead_source_checks": [
+    "t0028.jpg: separate fresh setup against Gible",
+    "t0134.jpg: player first point after Gible knockout",
+    "t0170.jpg: opponent first point",
+    "t0214.jpg: opponent second point",
+    "t0280.jpg: Garchomp at 20 HP after owner turn 9",
+    "t0370.jpg: player second point",
+    "Independent terminal source sheet: Garchomp attack at 402 seconds, Obstagoon survives at 10 HP, turn 13 banner at 406 seconds",
+    "t0408.jpg and t0410.jpg: player turn 13 board and explicit opponent concession"
+  ],
+  "point_reconciliation": "Dacz8976-opponent 0-0 to 1-0 at ~134s, 1-1 at ~170s, 1-2 at ~213-214s, 2-2 at ~371s; 2-2 at concession ~410-411s.",
+  "audio": "Decoded AAC track is effectively silent, with no speech to transcribe.",
+  "remaining_uncertainty": "The exact turn-10 switch mechanism is not established; the recording ends during result transition without a readable Victory title. The concession message establishes the outcome.",
+  "unreviewed_gameplay_intervals": false,
+  "lead_check_scope": "Targeted source-frame and terminal-sheet checks, Sol/Astra chronology reconciliation, report/evidence/source identity checks; not a third full visual pass",
+  "disposition": "full_battle_review_complete"
+}

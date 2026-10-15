@@ -1,0 +1,51 @@
+{
+  "schema": "independent-correction-recheck-v1",
+  "reviewer": "/root/independent_003547",
+  "model": "gpt-6.1-sol",
+  "source_video": "20261004_215749000_iOS.MP4",
+  "source_sha256": "2015607dfe613e8bf71f4637d5d26ed625d8a451b0541b93b3a82bf0457126af",
+  "scope": "Tiny independent verification of F1-F4 repairs only. Earlier bounded packet check and historical CHECK_RESULT preserved. No builder or second full pass.",
+  "status": "corrections_accepted",
+  "accepted": true,
+  "checks": [
+    {
+      "id": "F1",
+      "status": "pass",
+      "basis": "226 directly shows FieldBlower,Copycat,MegaBlaziken hand3 and Meltan Active.225 blurred networkoverlay remains explicitlimit. Corrected JSON cites226; exact revealonset and Trail-versus-replacement order remainunknown."
+    },
+    {
+      "id": "F2",
+      "status": "pass",
+      "basis": "Parsed corrected JSON has correctPoké Ball and apostrophes; no U+FFFD/Ã/â corruption in inspected live mandatory JSON. HikingTrail text has proper U+2019, independent of terminal rendering."
+    },
+    {
+      "id": "F3",
+      "status": "pass",
+      "basis": "ObservedabsentStadium/Tools now none with observed_absent. Null positionalBenchentries have explicit visiblyempty basis and bench_empty_positions. Actualuncertainty remainsnull."
+    },
+    {
+      "id": "F4",
+      "status": "pass",
+      "basis": "Native74 shows Currentturn2; correctedT1board_after stores2 and explains transitionphase."
+    }
+  ],
+  "viewed_evidence": [
+    "native/t0074.00.jpg",
+    "native/t0225.00.jpg",
+    "native/t0226.00.jpg"
+  ],
+  "view_method": "Labeled contact sheet derived from retained1170x2532 native frames at490pixel tile width, paired with exact corrected JSON and repair script inspection.",
+  "required_repairs_remaining": [],
+  "lead_acceptance": false,
+  "shared_writes": false,
+  "external_writes": false,
+  "media_actions": false,
+  "checked_utc": "2026-10-06T18:13:34.889484+00:00",
+  "checked_input_sha256": {
+    "SOURCE.json": "4e0235ca39ac028c578ee89fceccebe4a72115c0dda2409fb22bc30667a66071",
+    "TURN_LEDGER.json": "1fb3681aa2b31b765d5bab5beeb11b5319d7677d194f5d48e09b9f551a784b22",
+    "TURN_EVIDENCE.json": "bb3b953785a45f9f9338dc3b82467bd9778edb8e1756e480b38235daef321518",
+    "REVIEW.md": "7099606cd180c4d0d024c66500dc14936d549fb37086568b984b775cf78c3c76",
+    "DECK_USED.json": "0127bf60cfd4fa2abcd57f0ea137adc3b18986aa165d1908c87f352aaa882433"
+  }
+}

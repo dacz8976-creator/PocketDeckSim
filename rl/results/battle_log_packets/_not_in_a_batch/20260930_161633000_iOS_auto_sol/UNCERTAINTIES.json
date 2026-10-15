@@ -1,0 +1,52 @@
+{
+  "video_basename": "20260930_161633000_iOS.MP4",
+  "sha256": "0795e24efb0f71c3461d23b5860a736a30755cf2071a3047eb4b90a731193a79",
+  "uncovered_meaningful_phases": [],
+  "consequential_hard_ambiguity_requiring_astra": false,
+  "unknowns": [
+    {
+      "topic": "Initial coin",
+      "limit": "Coin animation seen; settled face not confidently read. Subsequent turn2 owner banner establishes computer first."
+    },
+    {
+      "topic": "Tool title",
+      "limit": "Cape-art attachment title not confidently legible. Stage1+30HP text and130to160remainingHP transition verified at65-69s; exact name not guessed."
+    },
+    {
+      "topic": "Hidden information",
+      "limit": "Face-down opponent cards, unrevealed deck contents and future draws unknown. Computer deck label does not prove MegaManectricex entered play."
+    },
+    {
+      "topic": "Untested held cards",
+      "limit": "LuckyIcePop and ArenaofAntiquity drawn and held. No healing/returncoin, Stadiumplacement, or actual Arena bonus is observed. Turn8ArenaKO alternative is conditional printed-text inference only."
+    },
+    {
+      "topic": "Turn9Energy",
+      "limit": "Stable preattack board confirms Bellibolt2Lightning and Raichu1Lightning. Any new generation/use hidden between samples is not asserted; observedattack is70."
+    },
+    {
+      "topic": "Engine and policy",
+      "limit": "No simulator replay or code audit. Reason for Auto card choices unknown. Video does not independently establish engine correctness or a defect."
+    },
+    {
+      "topic": "Source integrity",
+      "limit": "Reviewer used root-registered SOURCE.json integrity event. Extraction came from exact filename; reviewer did not independently rehash video."
+    },
+    {
+      "topic": "Visual sampling",
+      "limit": "All3s overview samples plus42targeted frames inspected. Transient animations are not frame-by-frame transcribed. Notifications partially cover upperUI in turns6/9; adjacent stable evidence resolves meaningful states."
+    },
+    {
+      "topic": "Audio and date",
+      "limit": "Audio not transcribed. Recordingdate follows filename and owner testimony; no independentclock verification."
+    }
+  ],
+  "resolved_checks": [
+    "ScratchDrilbur and HeadbuttBounceDrilbur are different versions; draw/search/bench/promotion are separated.",
+    "Evoshockcoin is tails at87s; no paralysis observed.",
+    "ElectricGeneratorcoin explicitly tails at93s; no effectEnergyattachment credited.",
+    "Tool adds30HP and preserves prior30damage.",
+    "Final157s temporaryHP50 is an animationcounter;157.5s settles0,160.5s givespoint3,169s saysDefeat.",
+    "OwnercardsLuckyIcePopandArenaareheldratherthanplayed."
+  ]
+}

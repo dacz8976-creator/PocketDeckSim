@@ -1,0 +1,67 @@
+{
+  "lead": "/root",
+  "sources": [
+    {
+      "source": "20261013_010003000_iOS.MP4",
+      "registered_reviewer": "/root/pause_20261013_010003000_iOS",
+      "primary_worker": "/root/remaining_010003",
+      "independent_worker": "/root/check_remaining_010003",
+      "model": "gpt-6.1-sol",
+      "effort": "high",
+      "status": "accepted_registered_archived_external_saved_online_only"
+    },
+    {
+      "source": "20261013_010837000_iOS.MP4",
+      "registered_reviewer": "/root/pause_20261013_010837000_iOS",
+      "primary_worker": "/root/remaining_010837",
+      "independent_worker": "/root/check_remaining_010837",
+      "model": "gpt-6.1-sol",
+      "effort": "high",
+      "status": "accepted_registered_archived_external_saved_online_only"
+    },
+    {
+      "source": "20261013_014423000_iOS.MP4",
+      "registered_reviewer": "/root/pause_20261013_014423000_iOS",
+      "primary_worker": "/root/remaining_014423",
+      "independent_worker": "/root/check_remaining_014423",
+      "model": "gpt-6.1-sol",
+      "effort": "high",
+      "status": "accepted_registered_archived_external_saved_online_only"
+    },
+    {
+      "source": "20261013_015011000_iOS.MP4",
+      "registered_reviewer": "/root/pause_20261013_015011000_iOS",
+      "primary_worker": "/root/remaining_015011",
+      "independent_worker": "/root/check_remaining_015011",
+      "model": "gpt-6.1-sol",
+      "effort": "high",
+      "status": "accepted_registered_archived_external_saved_online_only"
+    },
+    {
+      "source": "20261013_015659000_iOS.MP4",
+      "registered_reviewer": "/root/pause_20261013_015659000_iOS",
+      "primary_worker": "/root/remaining_015659",
+      "independent_worker": "/root/check_remaining_015659",
+      "exception_worker": "/root/astra_tool_015659",
+      "exception_model": "gpt-6-astra",
+      "exception_effort": "high",
+      "exception_scope": "Source-readable Protective Poncho identity, Bench condition and adjacent Tool-before-Energy order; authorized by the owner during this batch.",
+      "exception_receipt": "20261013_015659000_iOS/astra_exception/CHECK_RESULT.json",
+      "model": "gpt-6.1-sol",
+      "effort": "high",
+      "status": "accepted_registered_archived_external_saved_online_only"
+    },
+    {
+      "source": "20261013_020824000_iOS.MP4",
+      "registered_reviewer": "/root/pause_20261013_020824000_iOS",
+      "primary_worker": "/root/remaining_020824",
+      "independent_worker": "/root/check_remaining_020824",
+      "model": "gpt-6.1-sol",
+      "effort": "high",
+      "status": "accepted_registered_archived_external_saved_online_only"
+    }
+  ],
+  "updated_utc": "2026-10-13T16:31:20.154267+00:00",
+  "storage_updated_utc": "2026-10-13T16:45:38.897174+00:00",
+  "external_verified_utc": "2026-10-13T19:42:37.208Z"
+}

@@ -1,0 +1,27 @@
+{
+  "source_video": "20261010_015452000_iOS.MP4",
+  "sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+  "unreviewed_intervals": [],
+  "uncertainties": [
+    {
+      "kind": "source_limit",
+      "description": "Dated live-log deck absent from23-deck snapshot; filmed QR20 retained separately.",
+      "evidence": "Whole source0–174.723333s"
+    },
+    {
+      "kind": "source_limit",
+      "description": "No opened discard views; hidden opponent cards and exact printings uncertain.",
+      "evidence": "Whole source0–174.723333s"
+    },
+    {
+      "kind": "source_limit",
+      "description": "Queue subtype not shown; human matchmaking and no Auto control visible.",
+      "evidence": "Whole source0–174.723333s"
+    },
+    {
+      "kind": "timestamp_precision",
+      "description": "Seek times are source-local requested times; framePTS not measured and draw-end estimates near50.3/100.3s.",
+      "evidence": "TURN_EVIDENCE.json"
+    }
+  ]
+}

@@ -1,0 +1,32 @@
+{
+  "schema": "independent-hand-endpoint-repair-acceptance-v1",
+  "game_id": "20261002_115323000",
+  "reviewer": "sol_verify_sharpedo",
+  "checked_at_utc": "2026-10-02T20:46:11Z",
+  "initial_verdict": "needs_repair",
+  "final_verdict": "accepted_with_recording_limits",
+  "repair": "478 count and matching artwork observed; printed header obscured; Cyrus identity continuity inference from461.479/481 are after-trigger only.",
+  "updated_files_checked": [
+    "HAND_SUPPLEMENT.json",
+    "TURN_EVIDENCE.json",
+    "REVIEW_SUPPLEMENT.md",
+    "UNCERTAINTIES.json"
+  ],
+  "updated_file_hashes": {
+    "HAND_SUPPLEMENT.json": "510f555425e9c2d12ca514fc892b66617c42f8319fa95f73e8615cc3243a1124",
+    "TURN_EVIDENCE.json": "aa90a8054352248d4e2332ddcae8fbada7a924f48f38e49a644cb30051d2f3b5",
+    "REVIEW_SUPPLEMENT.md": "1a1d49ec01a669d6b3b95bd1bf25ce94b71e4166bb9e8f517786db30183fcea1",
+    "UNCERTAINTIES.json": "446a0702195dde687b071ecb1ed63d8f33f16d571c3af51b181711b928cb135e"
+  },
+  "preserved_worker_versions_match_initial_checks": {
+    "HAND_SUPPLEMENT.json": true,
+    "TURN_EVIDENCE.json": true,
+    "REVIEW_SUPPLEMENT.md": true
+  },
+  "final_scheduled_capture_limit": "Attack-selected478 frame is the before-end substitution: count1 and matching artwork observed, printed header obscured, Cyrus identity continuity inference from clear461.479/481 are after-trigger corroboration only.",
+  "additional_image_submissions": 0,
+  "source_reads": 0,
+  "new_extractions": 0,
+  "remaining_repairs": [],
+  "astra_question": null
+}

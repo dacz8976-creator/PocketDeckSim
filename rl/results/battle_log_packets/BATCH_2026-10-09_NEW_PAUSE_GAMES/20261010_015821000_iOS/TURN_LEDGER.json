@@ -1,0 +1,3990 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261010_015821000_iOS-game1",
+  "sources": [
+    {
+      "video_basename": "20261010_015821000_iOS.MP4",
+      "sha256": "8d64e896d3125e504b7186754cbf2c21c0b5fcbc61f65524f6de27a2effd2a38",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "turns": [
+    {
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261010_015821000_iOS.MP4",
+      "timing": {
+        "draw_animation_end_seconds": 42,
+        "first_voluntary_move_seconds": 44,
+        "before_end_action_seconds": 57,
+        "end_after_resolution_seconds": 58
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Professor’s Research",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0042_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0042_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0042_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Small Balloon",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0042_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Soothing Shore",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0042_50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "Visible card slots; names cross-checked with reveals",
+        "evidence_ids": [
+          "F0042_50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Professor’s Research",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0042_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0042_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0042_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Small Balloon",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0042_50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Soothing Shore",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0042_50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "Visible card slots; names cross-checked with reveals",
+        "evidence_ids": [
+          "F0042_50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 4,
+        "supported_range": [
+          4,
+          4
+        ],
+        "count_method": "Visible separate card backs in native fan",
+        "basis": "Direct visual count; arithmetic corroboration kept separate",
+        "evidence_ids": [
+          "F0042_50"
+        ],
+        "limit_reason": null,
+        "public_transaction_inference": "4 from opening5 minus Active"
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "turn start",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Soothing Shore",
+              "reveal_position": 1,
+              "source_video": "20261010_015821000_iOS.MP4",
+              "timestamp_seconds": 41,
+              "evidence_ids": [
+                "F0041_00"
+              ],
+              "basis": "Named visible reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 41,
+          "evidence_ids": [
+            "F0041_00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "supporter_draw",
+          "caused_by": "Professor’s Research",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": "Sabrina",
+              "reveal_position": 1,
+              "source_video": "20261010_015821000_iOS.MP4",
+              "timestamp_seconds": 47,
+              "evidence_ids": [
+                "F0047_00"
+              ],
+              "basis": "Named visible reveal",
+              "limit_reason": null
+            },
+            {
+              "name": "Hiking Trail",
+              "reveal_position": 2,
+              "source_video": "20261010_015821000_iOS.MP4",
+              "timestamp_seconds": 48,
+              "evidence_ids": [
+                "F0048_00"
+              ],
+              "basis": "Named visible reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 6,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 47,
+          "evidence_ids": [
+            "F0047_00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Professor’s Research",
+          "target": "owner hand",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Draw Sabrina then Hiking Trail",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 6,
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 44,
+          "evidence_ids": [
+            "F0044_00"
+          ],
+          "basis": "Visible action and resulting board/hand",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Small Balloon",
+          "target": "owner Active Koffing",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach Tool; no Energy change",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 5,
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 51,
+          "evidence_ids": [
+            "F0051_00"
+          ],
+          "basis": "Visible action and resulting board/hand",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": "turn",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "End without attack or Energy generation",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 5,
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 58,
+          "evidence_ids": [
+            "F0058_00"
+          ],
+          "basis": "Visible action and resulting board/hand",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [],
+      "board_at_start": {
+        "turn_number_displayed": 1,
+        "phase": "start after normal draw",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Team Rocket’s Koffing",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "Visible HP/card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0042_50"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact printing not established"
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Visible large current Energy if available and small next Water icon; first player turn1 has none",
+            "evidence_ids": [
+              "F0042_50"
+            ],
+            "limit_reason": "No hidden future sequence inferred"
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0042_50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Frigibax",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "Visible HP/card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0042_50"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact printing not established"
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Visible current/next Energy icons",
+            "evidence_ids": [
+              "F0042_50"
+            ],
+            "limit_reason": "No hidden future sequence inferred"
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0042_50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0042_50"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 1,
+        "phase": "after End Turn; no automatic effects",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Team Rocket’s Koffing",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "Visible HP/card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Small Balloon",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0058_00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact printing not established"
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Visible large current Energy if available and small next Water icon; first player turn1 has none",
+            "evidence_ids": [
+              "F0058_00"
+            ],
+            "limit_reason": "No hidden future sequence inferred"
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0058_00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Frigibax",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "Visible HP/card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0058_00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact printing not established"
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Visible current/next Energy icons",
+            "evidence_ids": [
+              "F0058_00"
+            ],
+            "limit_reason": "No hidden future sequence inferred"
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0058_00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0058_00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0057_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0057_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Soothing Shore",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0057_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Sabrina",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0057_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Hiking Trail",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0057_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "Visible card slots; names cross-checked with reveals",
+        "evidence_ids": [
+          "F0057_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [
+        "D1"
+      ],
+      "turn_evidence_ids": [
+        "F0042_00",
+        "F0057_00",
+        "F0057_00"
+      ],
+      "limits": [
+        "Opponent hidden cards stay unnamed",
+        "No opened full discard pile"
+      ]
+    },
+    {
+      "turn_number": 2,
+      "who_played": "opponent",
+      "source_video": "20261010_015821000_iOS.MP4",
+      "timing": {
+        "draw_animation_end_seconds": 61,
+        "first_voluntary_move_seconds": 66,
+        "before_end_action_seconds": 88,
+        "end_after_resolution_seconds": 89
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "supported_count_inference": "Start5 after normal draw; end6 from public transactions",
+        "basis": "Hidden opponent fan; public transactions separately inferred",
+        "evidence_ids": [
+          "F0061_00"
+        ],
+        "status": "hidden",
+        "limit_reason": "No identities revealed"
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0061_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0061_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Soothing Shore",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0061_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Sabrina",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0061_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Hiking Trail",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0061_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "Visible card slots; names cross-checked with reveals",
+        "evidence_ids": [
+          "F0061_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "count_method": "Visible separate card backs in native fan",
+        "basis": "Not an owner turn start",
+        "evidence_ids": [
+          "F0061_00"
+        ],
+        "limit_reason": "Field applies at owner turn starts only",
+        "public_transaction_inference": "Start5 after normal draw; end6 from public transactions"
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "turn start",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261010_015821000_iOS.MP4",
+              "timestamp_seconds": 61,
+              "evidence_ids": [
+                "F0061_00"
+              ],
+              "basis": "Hidden opponent draw/card back only",
+              "limit_reason": "Identity hidden"
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 61,
+          "evidence_ids": [
+            "F0061_00"
+          ],
+          "limit_reason": "Opponent identities not exposed; counts can be public transaction inference"
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poké Ball",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261010_015821000_iOS.MP4",
+              "timestamp_seconds": 68,
+              "evidence_ids": [
+                "F0068_00"
+              ],
+              "basis": "Hidden opponent draw/card back only",
+              "limit_reason": "Identity hidden"
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 68,
+          "evidence_ids": [
+            "F0068_00"
+          ],
+          "limit_reason": "Opponent identities not exposed; counts can be public transaction inference"
+        },
+        {
+          "kind": "supporter_draw",
+          "caused_by": "Professor’s Research",
+          "linked_play_order": 2,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261010_015821000_iOS.MP4",
+              "timestamp_seconds": 72,
+              "evidence_ids": [
+                "F0072_00"
+              ],
+              "basis": "Hidden opponent draw/card back only",
+              "limit_reason": "Identity hidden"
+            },
+            {
+              "name": null,
+              "reveal_position": 2,
+              "source_video": "20261010_015821000_iOS.MP4",
+              "timestamp_seconds": 76,
+              "evidence_ids": [
+                "F0076_00"
+              ],
+              "basis": "Hidden opponent draw/card back only",
+              "limit_reason": "Identity hidden"
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 6,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 72,
+          "evidence_ids": [
+            "F0072_00"
+          ],
+          "limit_reason": "Opponent identities not exposed; counts can be public transaction inference"
+        },
+        {
+          "kind": "ability_draw",
+          "caused_by": "Legendary Pulse",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261010_015821000_iOS.MP4",
+              "timestamp_seconds": 88,
+              "evidence_ids": [
+                "F0088_00"
+              ],
+              "basis": "Hidden opponent draw/card back only",
+              "limit_reason": "Identity hidden"
+            }
+          ],
+          "hand_count_before": 5,
+          "hand_count_after": 6,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 88,
+          "evidence_ids": [
+            "F0088_00"
+          ],
+          "limit_reason": "Opponent identities not exposed; counts can be public transaction inference"
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Poké Ball",
+          "target": "opponent deck",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Find hidden Basic; identity cannot be bound to later Suicune",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 66,
+          "evidence_ids": [
+            "F0066_00"
+          ],
+          "basis": "Visible action and resulting board/hand",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Professor’s Research",
+          "target": "opponent hand",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Draw2 hidden cards",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 70,
+          "evidence_ids": [
+            "F0070_00"
+          ],
+          "basis": "Visible action and resulting board/hand",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "card_play",
+          "card_name": "Suicune ex",
+          "target": "opponent center Bench",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Bench140HP Basic",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 78,
+          "evidence_ids": [
+            "F0078_00"
+          ],
+          "basis": "Visible action and resulting board/hand",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "opponent Active Frigibax",
+          "energy": {
+            "type": "Water",
+            "count": 1,
+            "destination": "Active Frigibax",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach1 Water",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 82,
+          "evidence_ids": [
+            "F0082_00"
+          ],
+          "basis": "Visible action and resulting board/hand",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "retreat",
+          "card_name": null,
+          "target": "Frigibax to Bench, Suicune ex Active",
+          "energy": {
+            "type": "Water",
+            "count": 1,
+            "destination": null,
+            "retreat_payment_by_type": {
+              "Water": 1
+            }
+          },
+          "result": "Pay1 Water from Frigibax; both end with0 Energy",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 84,
+          "evidence_ids": [
+            "F0084_00"
+          ],
+          "basis": "Visible action and resulting board/hand",
+          "limit_reason": null
+        },
+        {
+          "order": 6,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": "turn",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "End without attack; Legendary Pulse draws1",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 88,
+          "evidence_ids": [
+            "F0088_00"
+          ],
+          "basis": "Visible action and resulting board/hand",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "name": "Legendary Pulse",
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 88,
+          "result": "Active Suicune ex draws1 hidden card at end turn",
+          "evidence_ids": [
+            "F0088_00"
+          ]
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 2,
+        "phase": "start after normal draw",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Team Rocket’s Koffing",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "Visible HP/card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Small Balloon",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0061_00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact printing not established"
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Visible current/next Energy icons",
+            "evidence_ids": [
+              "F0061_00"
+            ],
+            "limit_reason": "No hidden future sequence inferred"
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0061_00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Frigibax",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "Visible HP/card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0061_00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact printing not established"
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Visible current/next Energy icons",
+            "evidence_ids": [
+              "F0061_00"
+            ],
+            "limit_reason": "No hidden future sequence inferred"
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0061_00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0061_00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 2,
+        "phase": "after resolution",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Team Rocket’s Koffing",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "Visible HP/card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Small Balloon",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0089_00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact printing not established"
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Visible current/next Energy icons",
+            "evidence_ids": [
+              "F0089_00"
+            ],
+            "limit_reason": "No hidden future sequence inferred"
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0089_00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Suicune ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 140,
+            "hp_max": 140,
+            "hp_max_basis": "Visible HP/card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0089_00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact printing not established"
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Frigibax",
+              "variant": null,
+              "bench_position": "center",
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible HP/card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0089_00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact printing not established"
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Visible current/next Energy icons",
+            "evidence_ids": [
+              "F0089_00"
+            ],
+            "limit_reason": "No hidden future sequence inferred"
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0089_00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0089_00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0089_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0089_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Soothing Shore",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0089_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Sabrina",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0089_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Hiking Trail",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0089_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "Visible card slots; names cross-checked with reveals",
+        "evidence_ids": [
+          "F0089_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "F0061_00",
+        "F0088_00",
+        "F0089_00"
+      ],
+      "limits": [
+        "Opponent hidden cards stay unnamed",
+        "No opened full discard pile"
+      ]
+    },
+    {
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261010_015821000_iOS.MP4",
+      "timing": {
+        "draw_animation_end_seconds": 93,
+        "first_voluntary_move_seconds": 94,
+        "before_end_action_seconds": 139,
+        "end_after_resolution_seconds": 162
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0093_30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0093_30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Soothing Shore",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0093_30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Sabrina",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0093_30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Hiking Trail",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0093_30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 6,
+            "name": "Horsea",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0093_30"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 6,
+        "basis": "Visible card slots; names cross-checked with reveals",
+        "evidence_ids": [
+          "F0093_30"
+        ],
+        "status": "observed",
+        "limit_reason": "Draw-end estimate93; Horsea lifted before bench placement"
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0093_30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0093_30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Soothing Shore",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0093_30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Sabrina",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0093_30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Hiking Trail",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0093_30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 6,
+            "name": "Horsea",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0093_30"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 6,
+        "basis": "Visible card slots; names cross-checked with reveals",
+        "evidence_ids": [
+          "F0093_30"
+        ],
+        "status": "observed",
+        "limit_reason": "Draw-end estimate93; Horsea lifted before bench placement"
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 6,
+        "supported_range": [
+          6,
+          6
+        ],
+        "count_method": "Visible separate card backs in native fan",
+        "basis": "Direct visual count; arithmetic corroboration kept separate",
+        "evidence_ids": [
+          "F0093_30"
+        ],
+        "limit_reason": null,
+        "public_transaction_inference": "6 from public draws/plays on turn2"
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "turn start",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Horsea",
+              "reveal_position": 1,
+              "source_video": "20261010_015821000_iOS.MP4",
+              "timestamp_seconds": 92,
+              "evidence_ids": [
+                "F0092_00"
+              ],
+              "basis": "Named visible reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 5,
+          "hand_count_after": 6,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 92,
+          "evidence_ids": [
+            "F0092_00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "stadium_draw",
+          "caused_by": "Hiking Trail",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Kingdra ex",
+              "reveal_position": 1,
+              "source_video": "20261010_015821000_iOS.MP4",
+              "timestamp_seconds": 148,
+              "evidence_ids": [
+                "F0148_00"
+              ],
+              "basis": "Named visible reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 2,
+          "hand_count_after": 3,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 146,
+          "evidence_ids": [
+            "F0146_00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Horsea",
+          "target": "owner center Bench",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Bench50HP Horsea",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 5,
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 94,
+          "evidence_ids": [
+            "F0094_00"
+          ],
+          "basis": "Visible action and resulting board/hand",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Sabrina",
+          "target": "opponent Active Suicune ex",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Opponent chooses Frigibax as new Active",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            {
+              "sequence": 1,
+              "event": "Opponent selects sole benched Frigibax; Suicune moves center Bench",
+              "timestamp_seconds": 112,
+              "evidence_ids": [
+                "F0112_00"
+              ]
+            }
+          ],
+          "hand_count_after": 4,
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 109,
+          "evidence_ids": [
+            "F0109_00"
+          ],
+          "basis": "Visible action and resulting board/hand",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "retreat",
+          "card_name": null,
+          "target": "Koffing to center Bench; Horsea Active",
+          "energy": {
+            "type": null,
+            "count": 0,
+            "destination": null,
+            "retreat_payment_by_type": {}
+          },
+          "result": "Small Balloon reduces basic retreat cost to0; no Energy discarded",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 4,
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 114,
+          "evidence_ids": [
+            "F0114_00"
+          ],
+          "basis": "Visible action and resulting board/hand",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "card_play",
+          "card_name": "Team Rocket’s Weezing ex",
+          "target": "owner benched Koffing",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Evolve to140HP Weezing ex; inherit Small Balloon",
+          "prompt_text": null,
+          "response": "Use Boiler Smog",
+          "nested_events_in_order": [
+            {
+              "sequence": 1,
+              "event": "Optional Boiler Smog accepted; exact prompt wording not retained",
+              "timestamp_seconds": 128,
+              "evidence_ids": [
+                "F0128_00"
+              ]
+            },
+            {
+              "sequence": 2,
+              "event": "Opponent Active Frigibax becomes Poisoned and Burned",
+              "timestamp_seconds": 132,
+              "evidence_ids": [
+                "F0132_00",
+                "F0134_00"
+              ]
+            }
+          ],
+          "hand_count_after": 3,
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 120,
+          "evidence_ids": [
+            "F0120_00"
+          ],
+          "basis": "Visible action and resulting board/hand",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "card_play",
+          "card_name": "Hiking Trail",
+          "target": "Stadium",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Hiking Trail enters; no immediate draw",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 2,
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 136,
+          "evidence_ids": [
+            "F0136_00"
+          ],
+          "basis": "Visible action and resulting board/hand",
+          "limit_reason": null
+        },
+        {
+          "order": 6,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "owner Active Horsea",
+          "energy": {
+            "type": "Water",
+            "count": 1,
+            "destination": "Active Horsea",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach1 Water from current Energy Zone",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 2,
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 139,
+          "evidence_ids": [
+            "F0139_00"
+          ],
+          "basis": "Visible action and resulting board/hand",
+          "limit_reason": null
+        },
+        {
+          "order": 7,
+          "kind": "attack",
+          "card_name": "Hook",
+          "target": "opponent Active Frigibax",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "30damage:60→30; attack ends turn",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 2,
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 141,
+          "evidence_ids": [
+            "F0141_00"
+          ],
+          "basis": "Visible action and resulting board/hand",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "name": "Hiking Trail",
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 146,
+          "result": "Hand2→3, draw Kingdra ex",
+          "evidence_ids": [
+            "F0146_00"
+          ]
+        },
+        {
+          "name": "Poison checkup",
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 149,
+          "result": "Frigibax30→20HP",
+          "evidence_ids": [
+            "F0149_00"
+          ]
+        },
+        {
+          "name": "Burn checkup",
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 150,
+          "result": "Frigibax20→0HP; coin face not needed to establish KO",
+          "evidence_ids": [
+            "F0150_00"
+          ]
+        },
+        {
+          "name": "KO and point",
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 158,
+          "result": "Frigibax removed; owner points0→1",
+          "evidence_ids": [
+            "F0158_00"
+          ]
+        },
+        {
+          "name": "Promotion",
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 162,
+          "result": "Opponent promotes Suicune ex,140HP0Energy",
+          "evidence_ids": [
+            "F0162_00"
+          ]
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 3,
+        "phase": "start after normal draw",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Team Rocket’s Koffing",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "Visible HP/card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Small Balloon",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0093_30"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact printing not established"
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Visible current/next Energy icons",
+            "evidence_ids": [
+              "F0093_30"
+            ],
+            "limit_reason": "No hidden future sequence inferred"
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0093_30"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Suicune ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 140,
+            "hp_max": 140,
+            "hp_max_basis": "Visible HP/card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0093_30"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact printing not established"
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Frigibax",
+              "variant": null,
+              "bench_position": "center",
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible HP/card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0093_30"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact printing not established"
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Visible current/next Energy icons",
+            "evidence_ids": [
+              "F0093_30"
+            ],
+            "limit_reason": "No hidden future sequence inferred"
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0093_30"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0093_30"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 3,
+        "phase": "after resolution",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "Visible HP/card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0162_00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact printing not established"
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "variant": null,
+              "bench_position": "center",
+              "hp_now": 140,
+              "hp_max": 140,
+              "hp_max_basis": "Visible HP/card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0162_00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact printing not established"
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Visible current/next Energy icons",
+            "evidence_ids": [
+              "F0162_00"
+            ],
+            "limit_reason": "No hidden future sequence inferred"
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0162_00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Suicune ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 140,
+            "hp_max": 140,
+            "hp_max_basis": "Visible HP/card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0162_00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact printing not established"
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Visible current/next Energy icons",
+            "evidence_ids": [
+              "F0162_00"
+            ],
+            "limit_reason": "No hidden future sequence inferred"
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0162_00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          {
+            "name": "Hiking Trail",
+            "source": "Hiking Trail",
+            "affected_player": "both",
+            "restriction_or_mark": "At end turn draw to3",
+            "expiry": "until replaced",
+            "evidence_ids": [
+              "F0162_00"
+            ]
+          }
+        ],
+        "evidence_ids": [
+          "F0162_00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0162_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Soothing Shore",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0162_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0162_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "Visible card slots; names cross-checked with reveals",
+        "evidence_ids": [
+          "F0162_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [
+        "D3"
+      ],
+      "turn_evidence_ids": [
+        "F0093_00",
+        "F0139_00",
+        "F0162_00"
+      ],
+      "limits": [
+        "Opponent hidden cards stay unnamed",
+        "No opened full discard pile"
+      ]
+    },
+    {
+      "turn_number": 4,
+      "who_played": "opponent",
+      "source_video": "20261010_015821000_iOS.MP4",
+      "timing": {
+        "draw_animation_end_seconds": 166,
+        "first_voluntary_move_seconds": 170,
+        "before_end_action_seconds": 191,
+        "end_after_resolution_seconds": 192
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "supported_count_inference": "Start7 after normal draw; end5 by public transactions",
+        "basis": "Hidden opponent fan; public transactions separately inferred",
+        "evidence_ids": [
+          "F0166_00"
+        ],
+        "status": "hidden",
+        "limit_reason": "No identities revealed"
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0166_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Soothing Shore",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0166_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0166_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "Visible card slots; names cross-checked with reveals",
+        "evidence_ids": [
+          "F0166_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "count_method": "Visible separate card backs in native fan",
+        "basis": "Not an owner turn start",
+        "evidence_ids": [
+          "F0166_00"
+        ],
+        "limit_reason": "Field applies at owner turn starts only",
+        "public_transaction_inference": "Start7 after normal draw; end5 by public transactions"
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "turn start",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261010_015821000_iOS.MP4",
+              "timestamp_seconds": 166,
+              "evidence_ids": [
+                "F0166_00"
+              ],
+              "basis": "Hidden opponent draw/card back only",
+              "limit_reason": "Identity hidden"
+            }
+          ],
+          "hand_count_before": 6,
+          "hand_count_after": 7,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 166,
+          "evidence_ids": [
+            "F0166_00"
+          ],
+          "limit_reason": "Opponent identities not exposed; counts can be public transaction inference"
+        },
+        {
+          "kind": "ability_draw",
+          "caused_by": "Legendary Pulse",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261010_015821000_iOS.MP4",
+              "timestamp_seconds": 191,
+              "evidence_ids": [
+                "F0191_00"
+              ],
+              "basis": "Hidden opponent draw/card back only",
+              "limit_reason": "Identity hidden"
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 191,
+          "evidence_ids": [
+            "F0191_00"
+          ],
+          "limit_reason": "Opponent identities not exposed; counts can be public transaction inference"
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Frigibax",
+          "target": "opponent center Bench",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Bench60HP Basic",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 170,
+          "evidence_ids": [
+            "F0170_00"
+          ],
+          "basis": "Visible action and resulting board/hand",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "opponent Active Suicune ex",
+          "energy": {
+            "type": "Water",
+            "count": 1,
+            "destination": "Active Suicune ex",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach1 Water",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 171,
+          "evidence_ids": [
+            "F0171_00"
+          ],
+          "basis": "Visible action and resulting board/hand",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "card_play",
+          "card_name": "Soothing Shore",
+          "target": "Stadium",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Replace Hiking Trail; owner Hiking Trail discarded",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 178,
+          "evidence_ids": [
+            "F0178_00"
+          ],
+          "basis": "Visible action and resulting board/hand",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "card_play",
+          "card_name": "Giant Cape",
+          "target": "opponent Active Suicune ex",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach+20HP cape; Suicune140/140→160/160",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 185,
+          "evidence_ids": [
+            "F0185_00"
+          ],
+          "basis": "Visible action and resulting board/hand",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": "turn",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "No attack; Suicune has1Water; Legendary Pulse draws1",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 191,
+          "evidence_ids": [
+            "F0191_00"
+          ],
+          "basis": "Visible action and resulting board/hand",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "name": "Soothing Shore",
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 191,
+          "result": "No Pokémon has6 Energy, so no visible healing",
+          "evidence_ids": [
+            "F0191_00"
+          ]
+        },
+        {
+          "name": "Legendary Pulse",
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 191,
+          "result": "Draw1 hidden card",
+          "evidence_ids": [
+            "F0191_00"
+          ]
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 4,
+        "phase": "start after normal draw",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "Visible HP/card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0166_00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact printing not established"
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "variant": null,
+              "bench_position": "center",
+              "hp_now": 140,
+              "hp_max": 140,
+              "hp_max_basis": "Visible HP/card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0166_00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact printing not established"
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Visible current/next Energy icons",
+            "evidence_ids": [
+              "F0166_00"
+            ],
+            "limit_reason": "No hidden future sequence inferred"
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0166_00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Suicune ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 140,
+            "hp_max": 140,
+            "hp_max_basis": "Visible HP/card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0166_00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact printing not established"
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Visible current/next Energy icons",
+            "evidence_ids": [
+              "F0166_00"
+            ],
+            "limit_reason": "No hidden future sequence inferred"
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0166_00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          {
+            "name": "Hiking Trail",
+            "source": "Hiking Trail",
+            "affected_player": "both",
+            "restriction_or_mark": "At end turn draw to3",
+            "expiry": "until replaced",
+            "evidence_ids": [
+              "F0166_00"
+            ]
+          }
+        ],
+        "evidence_ids": [
+          "F0166_00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 4,
+        "phase": "after resolution",
+        "stadium": "Soothing Shore",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "Visible HP/card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0192_00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact printing not established"
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "variant": null,
+              "bench_position": "center",
+              "hp_now": 140,
+              "hp_max": 140,
+              "hp_max_basis": "Visible HP/card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0192_00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact printing not established"
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Visible current/next Energy icons",
+            "evidence_ids": [
+              "F0192_00"
+            ],
+            "limit_reason": "No hidden future sequence inferred"
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0192_00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Suicune ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 160,
+            "hp_max": 160,
+            "hp_max_basis": "Visible HP/card; +20 Giant Cape when attached",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "Giant Cape",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0192_00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact printing not established"
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Frigibax",
+              "variant": null,
+              "bench_position": "center",
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible HP/card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0192_00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact printing not established"
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Visible current/next Energy icons",
+            "evidence_ids": [
+              "F0192_00"
+            ],
+            "limit_reason": "No hidden future sequence inferred"
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0192_00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          {
+            "name": "Soothing Shore",
+            "source": "Soothing Shore",
+            "affected_player": "both",
+            "restriction_or_mark": "At end turn heal20 from own Pokémon with at least6 Energy",
+            "expiry": "until replaced",
+            "evidence_ids": [
+              "F0192_00"
+            ]
+          }
+        ],
+        "evidence_ids": [
+          "F0192_00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0192_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Soothing Shore",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0192_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0192_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "Visible card slots; names cross-checked with reveals",
+        "evidence_ids": [
+          "F0192_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "F0166_00",
+        "F0191_00",
+        "F0192_00"
+      ],
+      "limits": [
+        "Opponent hidden cards stay unnamed",
+        "No opened full discard pile"
+      ]
+    },
+    {
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261010_015821000_iOS.MP4",
+      "timing": {
+        "draw_animation_end_seconds": 196,
+        "first_voluntary_move_seconds": 197,
+        "before_end_action_seconds": 220,
+        "end_after_resolution_seconds": 226
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0196_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Soothing Shore",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0196_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0196_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Poké Ball",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0196_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "Visible card slots; names cross-checked with reveals",
+        "evidence_ids": [
+          "F0196_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0196_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Soothing Shore",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0196_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0196_00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Poké Ball",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0196_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "Visible card slots; names cross-checked with reveals",
+        "evidence_ids": [
+          "F0196_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 5,
+        "supported_range": [
+          5,
+          5
+        ],
+        "count_method": "Visible separate card backs in native fan",
+        "basis": "Direct visual count; arithmetic corroboration kept separate",
+        "evidence_ids": [
+          "F0196_00"
+        ],
+        "limit_reason": null,
+        "public_transaction_inference": "5 from public draws/plays on turn4"
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "turn start",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Poké Ball",
+              "reveal_position": 1,
+              "source_video": "20261010_015821000_iOS.MP4",
+              "timestamp_seconds": 195,
+              "evidence_ids": [
+                "F0195_00"
+              ],
+              "basis": "Named visible reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 195,
+          "evidence_ids": [
+            "F0195_00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poké Ball",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": "Horsea",
+              "reveal_position": 1,
+              "source_video": "20261010_015821000_iOS.MP4",
+              "timestamp_seconds": 200,
+              "evidence_ids": [
+                "F0200_00"
+              ],
+              "basis": "Named visible reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 199,
+          "evidence_ids": [
+            "F0199_00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Poké Ball",
+          "target": "owner deck",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Find shiny Horsea, revealed200s",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 4,
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 197,
+          "evidence_ids": [
+            "F0197_00"
+          ],
+          "basis": "Visible action and resulting board/hand",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Rare Candy",
+          "target": "owner Active Horsea",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Evolve directly to Kingdra ex using card from hand; skip Seadra; inherit1Water",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            {
+              "sequence": 1,
+              "event": "Select Active Horsea as Rare Candy target",
+              "timestamp_seconds": 206,
+              "evidence_ids": [
+                "F0206_00"
+              ]
+            },
+            {
+              "sequence": 2,
+              "event": "Select Kingdra ex from hand",
+              "timestamp_seconds": 211,
+              "evidence_ids": [
+                "F0211_00"
+              ]
+            },
+            {
+              "sequence": 3,
+              "event": "Kingdra ex resolves170HP with inherited1Water",
+              "timestamp_seconds": 213,
+              "evidence_ids": [
+                "F0213_00"
+              ]
+            }
+          ],
+          "hand_count_after": 2,
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 204,
+          "evidence_ids": [
+            "F0204_00"
+          ],
+          "basis": "Visible action and resulting board/hand",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "card_play",
+          "card_name": "Horsea",
+          "target": "owner right Bench",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Bench second50HP Horsea",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 1,
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 216,
+          "evidence_ids": [
+            "F0216_00"
+          ],
+          "basis": "Visible action and resulting board/hand",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "owner Active Kingdra ex",
+          "energy": {
+            "type": "Water",
+            "count": 1,
+            "destination": "Active Kingdra ex",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attach second Water; total2",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 1,
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 220,
+          "evidence_ids": [
+            "F0220_00"
+          ],
+          "basis": "Visible action and resulting board/hand",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "attack",
+          "card_name": "Stormy Prison",
+          "target": "opponent Active Suicune ex",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "90damage:160→70HP; cannot retreat during opponent next turn",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 1,
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 222,
+          "evidence_ids": [
+            "F0222_00"
+          ],
+          "basis": "Visible action and resulting board/hand",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "name": "Soothing Shore",
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 226,
+          "result": "Neither side has6Energy; no healing",
+          "evidence_ids": [
+            "F0226_00"
+          ]
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 5,
+        "phase": "start after normal draw",
+        "stadium": "Soothing Shore",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "Visible HP/card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0196_00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact printing not established"
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "variant": null,
+              "bench_position": "center",
+              "hp_now": 140,
+              "hp_max": 140,
+              "hp_max_basis": "Visible HP/card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0196_00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact printing not established"
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Visible current/next Energy icons",
+            "evidence_ids": [
+              "F0196_00"
+            ],
+            "limit_reason": "No hidden future sequence inferred"
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0196_00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Suicune ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 160,
+            "hp_max": 160,
+            "hp_max_basis": "Visible HP/card; +20 Giant Cape when attached",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "Giant Cape",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0196_00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact printing not established"
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Frigibax",
+              "variant": null,
+              "bench_position": "center",
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible HP/card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0196_00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact printing not established"
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Visible current/next Energy icons",
+            "evidence_ids": [
+              "F0196_00"
+            ],
+            "limit_reason": "No hidden future sequence inferred"
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0196_00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          {
+            "name": "Soothing Shore",
+            "source": "Soothing Shore",
+            "affected_player": "both",
+            "restriction_or_mark": "At end turn heal20 from own Pokémon with at least6 Energy",
+            "expiry": "until replaced",
+            "evidence_ids": [
+              "F0196_00"
+            ]
+          }
+        ],
+        "evidence_ids": [
+          "F0196_00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 5,
+        "phase": "after resolution",
+        "stadium": "Soothing Shore",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 170,
+            "hp_max": 170,
+            "hp_max_basis": "Visible HP/card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0226_00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact printing not established"
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "variant": null,
+              "bench_position": "center",
+              "hp_now": 140,
+              "hp_max": 140,
+              "hp_max_basis": "Visible HP/card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0226_00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact printing not established"
+            },
+            {
+              "name": "Horsea",
+              "variant": null,
+              "bench_position": "right",
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "Visible HP/card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0226_00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact printing not established"
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Visible current/next Energy icons",
+            "evidence_ids": [
+              "F0226_00"
+            ],
+            "limit_reason": "No hidden future sequence inferred"
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0226_00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Suicune ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 70,
+            "hp_max": 160,
+            "hp_max_basis": "Visible HP/card; +20 Giant Cape when attached",
+            "damage": 90,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "Giant Cape",
+            "special_conditions": [],
+            "active_effects": [
+              {
+                "name": "Cannot retreat",
+                "source": "Kingdra ex: Stormy Prison",
+                "affected_player": "opponent",
+                "affected_pokemon": "Suicune ex",
+                "restriction_or_mark": "Defending Pokémon cannot retreat during opponent next turn",
+                "expiry": "end of opponent turn6",
+                "evidence_ids": [
+                  "F0226_00"
+                ]
+              }
+            ],
+            "evidence_ids": [
+              "F0226_00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact printing not established"
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Frigibax",
+              "variant": null,
+              "bench_position": "center",
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible HP/card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0226_00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact printing not established"
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Visible current/next Energy icons",
+            "evidence_ids": [
+              "F0226_00"
+            ],
+            "limit_reason": "No hidden future sequence inferred"
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0226_00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          {
+            "name": "Soothing Shore",
+            "source": "Soothing Shore",
+            "affected_player": "both",
+            "restriction_or_mark": "At end turn heal20 from own Pokémon with at least6 Energy",
+            "expiry": "until replaced",
+            "evidence_ids": [
+              "F0226_00"
+            ]
+          }
+        ],
+        "evidence_ids": [
+          "F0226_00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Soothing Shore",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0226_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 1,
+        "basis": "Visible card slots; names cross-checked with reveals",
+        "evidence_ids": [
+          "F0226_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [
+        "D5"
+      ],
+      "turn_evidence_ids": [
+        "F0196_00",
+        "F0220_00",
+        "F0226_00"
+      ],
+      "limits": [
+        "Opponent hidden cards stay unnamed",
+        "No opened full discard pile"
+      ]
+    },
+    {
+      "turn_number": 6,
+      "who_played": "opponent",
+      "source_video": "20261010_015821000_iOS.MP4",
+      "timing": {
+        "draw_animation_end_seconds": 231,
+        "first_voluntary_move_seconds": 233,
+        "before_end_action_seconds": 241,
+        "end_after_resolution_seconds": 242
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "supported_count_inference": "Start6 after normal draw; expected4 after Candy and Baxcalibur; exact fan count not separately asserted",
+        "basis": "Hidden opponent fan; public transactions separately inferred",
+        "evidence_ids": [
+          "F0231_00"
+        ],
+        "status": "hidden",
+        "limit_reason": "No identities revealed"
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Soothing Shore",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0231_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 1,
+        "basis": "Visible card slots; names cross-checked with reveals",
+        "evidence_ids": [
+          "F0231_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "count_method": "Visible separate card backs in native fan",
+        "basis": "Not an owner turn start",
+        "evidence_ids": [
+          "F0231_00"
+        ],
+        "limit_reason": "Field applies at owner turn starts only",
+        "public_transaction_inference": "Start6 after normal draw; expected4 after Candy and Baxcalibur; exact fan count not separately asserted"
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "turn start",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261010_015821000_iOS.MP4",
+              "timestamp_seconds": 231,
+              "evidence_ids": [
+                "F0231_00"
+              ],
+              "basis": "Hidden opponent draw/card back only",
+              "limit_reason": "Identity hidden"
+            }
+          ],
+          "hand_count_before": 5,
+          "hand_count_after": 6,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 231,
+          "evidence_ids": [
+            "F0231_00"
+          ],
+          "limit_reason": "Opponent identities not exposed; counts can be public transaction inference"
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Rare Candy",
+          "target": "opponent benched Frigibax",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Rare Candy evolves directly to Baxcalibur140HP; skip middle stage; no Energy added",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            {
+              "sequence": 1,
+              "event": "Baxcalibur appears center Bench",
+              "timestamp_seconds": 236,
+              "evidence_ids": [
+                "F0236_00"
+              ]
+            }
+          ],
+          "hand_count_after": null,
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 233,
+          "evidence_ids": [
+            "F0233_00"
+          ],
+          "basis": "Visible action and resulting board/hand",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "concession",
+          "card_name": null,
+          "target": "game",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Opponent concedes; owner Victory",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_015821000_iOS.MP4",
+          "timestamp_seconds": 242,
+          "evidence_ids": [
+            "F0242_00"
+          ],
+          "basis": "Visible action and resulting board/hand",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [],
+      "board_at_start": {
+        "turn_number_displayed": 6,
+        "phase": "start after normal draw",
+        "stadium": "Soothing Shore",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 170,
+            "hp_max": 170,
+            "hp_max_basis": "Visible HP/card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0231_00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact printing not established"
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "variant": null,
+              "bench_position": "center",
+              "hp_now": 140,
+              "hp_max": 140,
+              "hp_max_basis": "Visible HP/card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0231_00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact printing not established"
+            },
+            {
+              "name": "Horsea",
+              "variant": null,
+              "bench_position": "right",
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "Visible HP/card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0231_00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact printing not established"
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Visible current/next Energy icons",
+            "evidence_ids": [
+              "F0231_00"
+            ],
+            "limit_reason": "No hidden future sequence inferred"
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0231_00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Suicune ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 70,
+            "hp_max": 160,
+            "hp_max_basis": "Visible HP/card; +20 Giant Cape when attached",
+            "damage": 90,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "Giant Cape",
+            "special_conditions": [],
+            "active_effects": [
+              {
+                "name": "Cannot retreat",
+                "source": "Kingdra ex: Stormy Prison",
+                "affected_player": "opponent",
+                "affected_pokemon": "Suicune ex",
+                "restriction_or_mark": "Defending Pokémon cannot retreat during opponent next turn",
+                "expiry": "end of opponent turn6",
+                "evidence_ids": [
+                  "F0226_00"
+                ]
+              }
+            ],
+            "evidence_ids": [
+              "F0231_00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact printing not established"
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Frigibax",
+              "variant": null,
+              "bench_position": "center",
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible HP/card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0231_00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact printing not established"
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Visible current/next Energy icons",
+            "evidence_ids": [
+              "F0231_00"
+            ],
+            "limit_reason": "No hidden future sequence inferred"
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0231_00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          {
+            "name": "Soothing Shore",
+            "source": "Soothing Shore",
+            "affected_player": "both",
+            "restriction_or_mark": "At end turn heal20 from own Pokémon with at least6 Energy",
+            "expiry": "until replaced",
+            "evidence_ids": [
+              "F0226_00"
+            ]
+          }
+        ],
+        "evidence_ids": [
+          "F0231_00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 6,
+        "phase": "after resolution",
+        "stadium": "Soothing Shore",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 170,
+            "hp_max": 170,
+            "hp_max_basis": "Visible HP/card",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0242_00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact printing not established"
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "variant": null,
+              "bench_position": "center",
+              "hp_now": 140,
+              "hp_max": 140,
+              "hp_max_basis": "Visible HP/card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0242_00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact printing not established"
+            },
+            {
+              "name": "Horsea",
+              "variant": null,
+              "bench_position": "right",
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "Visible HP/card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0242_00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact printing not established"
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Visible current/next Energy icons",
+            "evidence_ids": [
+              "F0242_00"
+            ],
+            "limit_reason": "No hidden future sequence inferred"
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0242_00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Suicune ex",
+            "variant": null,
+            "bench_position": null,
+            "hp_now": 70,
+            "hp_max": 160,
+            "hp_max_basis": "Visible HP/card; +20 Giant Cape when attached",
+            "damage": 90,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "Giant Cape",
+            "special_conditions": [],
+            "active_effects": [
+              {
+                "name": "Cannot retreat",
+                "source": "Kingdra ex: Stormy Prison",
+                "affected_player": "opponent",
+                "affected_pokemon": "Suicune ex",
+                "restriction_or_mark": "Defending Pokémon cannot retreat during opponent next turn",
+                "expiry": "end of opponent turn6",
+                "evidence_ids": [
+                  "F0226_00"
+                ]
+              }
+            ],
+            "evidence_ids": [
+              "F0242_00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact printing not established"
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Baxcalibur",
+              "variant": null,
+              "bench_position": "center",
+              "hp_now": 140,
+              "hp_max": 140,
+              "hp_max_basis": "Visible HP/card",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0242_00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact printing not established"
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false
+            },
+            "basis": "Visible current/next Energy icons",
+            "evidence_ids": [
+              "F0242_00"
+            ],
+            "limit_reason": "No hidden future sequence inferred"
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0242_00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          {
+            "name": "Soothing Shore",
+            "source": "Soothing Shore",
+            "affected_player": "both",
+            "restriction_or_mark": "At end turn heal20 from own Pokémon with at least6 Energy",
+            "expiry": "until replaced",
+            "evidence_ids": [
+              "F0242_00"
+            ]
+          }
+        ],
+        "evidence_ids": [
+          "F0242_00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Soothing Shore",
+            "variant": null,
+            "basis": "Native visible hand plus named reveal continuity",
+            "evidence_ids": [
+              "F0242_00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 1,
+        "basis": "Visible card slots; names cross-checked with reveals",
+        "evidence_ids": [
+          "F0242_00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "F0231_00",
+        "F0241_00",
+        "F0242_00"
+      ],
+      "limits": [
+        "Opponent hidden cards stay unnamed",
+        "No opened full discard pile"
+      ]
+    }
+  ],
+  "limits": [
+    "Opponent hand identities and hidden normal/Research/Poké Ball/Legendary Pulse draws are unavailable. A later Basic play does not identify an earlier search result.",
+    "No discard-pile window or scrolling was opened. Public top cards and known transactions do not establish either complete discard pile.",
+    "Normal draw-end anchors are visually estimated source seconds. Actual decoded frame PTS was not measured; requested seek times remain separate.",
+    "The +1/+3/+6 candidates sometimes follow the first voluntary play. Dense earlier native frames supply the owner start hand; no future hand is substituted.",
+    "Notifications temporarily cover upper-screen information around112–118,149–156 and175–176 seconds. Clear adjacent frames establish the cited board and actions.",
+    "Filmed QR and log establish semantic deck composition; exact artwork/rarity of every hidden card is not established. No hidden identities were supplied from the deck."
+  ],
+  "copycat_observation": "No Copycat play in this battle",
+  "unproductive_actions_observation": "No visible canceled card play or declined effect; quick card inspections and accepted Boiler Smog are retained. End turns without attack are explicitly numbered."
+}

@@ -1,0 +1,127 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261012_010706000_iOS_game1",
+  "review_date": "2026-10-12",
+  "sources": [
+    {
+      "video_basename": "20261012_010706000_iOS.MP4",
+      "sha256": "6d6143c99e23bffe7a6feb7f01c20a112c060e13b9b9d4ebd0a25e597ca62fd0",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "deck_name": "Glimmora / Alolan Muk / Kingambit / Regigigas",
+  "queue": "Deluxe Pack: Mega Emblem Event",
+  "match_date_local": "2026-10-11",
+  "match_date_basis": "SOURCE_TIME.json UTCcreation_time convertedAmerica/Chicago",
+  "opening": {
+    "source_video": "20261012_010706000_iOS.MP4",
+    "timestamp_seconds": 25,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Lucky Ice Pop",
+        "variant": null,
+        "basis": "observed visible hand",
+        "evidence_ids": [
+          "F25_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Kingambit",
+        "variant": null,
+        "basis": "observed visible hand",
+        "evidence_ids": [
+          "F25_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Glimmet",
+        "variant": null,
+        "basis": "observed visible hand",
+        "evidence_ids": [
+          "F25_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Pawniard",
+        "variant": null,
+        "basis": "observed visible hand",
+        "evidence_ids": [
+          "F25_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Professor's Research",
+        "variant": null,
+        "basis": "observed visible hand",
+        "evidence_ids": [
+          "F25_00"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Glimmet",
+      "opening_position": 3,
+      "source_video": "20261012_010706000_iOS.MP4",
+      "timestamp_seconds": 26,
+      "evidence_ids": [
+        "F26_00"
+      ]
+    },
+    "redraw_or_replacement": "none observed",
+    "before_active_placement": true,
+    "status": "complete",
+    "evidence_ids": [
+      "F25_00"
+    ],
+    "limit_reason": null,
+    "bench_setup": {
+      "name": "Pawniard",
+      "timestamp_seconds": 32
+    }
+  },
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "full_battle_review_complete",
+  "outcome": {
+    "owner": "win",
+    "method": "points",
+    "points": [
+      3,
+      2
+    ],
+    "turns": 21,
+    "damage_done_displayed": 600,
+    "evidence_ids": [
+      "F819_00"
+    ]
+  },
+  "limits": [
+    "Opponent draws/search identities hidden unless later publicly played; hand fan overlap gives ranges for large fans.",
+    "Neither opened discard pile appears in the recording. Play-derived histories are inference, not pile snapshots.",
+    "Several first moves occur immediately after a zoomed normal draw. Candidate+1/+3/+6 can already be post-play; actual pre-play evidence and limits are individually identified.",
+    "Exact filmed QR semantic list verified; dated readable Pause Games live-log deck snapshot is absent. QR does not resolve artwork/printing aliases.",
+    "Native seek requested times are retained; exact decoded PTS was not measured. Turn transition timings are bounded to nearby source frames, not frame-accurate."
+  ],
+  "lead_checked": true,
+  "lead_acceptance": "LEAD_ACCEPTANCE.json"
+}

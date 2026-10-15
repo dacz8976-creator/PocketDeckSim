@@ -1,0 +1,53 @@
+{
+  "source": "20261001_020413000_iOS.MP4",
+  "reviewer": "sol_auto_evening_020413000",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "status": "first_pass_ready_for_independent_check",
+  "unreviewed_intervals": [],
+  "uncertainties": [
+    {
+      "id": "hidden_decks_and_draws",
+      "timestamps_seconds": [10.5, 82.5, 154.5],
+      "question": "Full hidden deck counts and all unrevealed opponent draws or search results.",
+      "finding": "Unknown. Only publicly played or revealed cards are named. The challenge title supplies an advertised opponent core, not a confirmed full list.",
+      "impact": "Prevents exact replay and full-deck consistency claims. Does not prevent result or full visible-turn review.",
+      "evidence": ["overview/sheet_01.jpg", "native/t0086.00.jpg", "native/t0156.00.jpg"]
+    },
+    {
+      "id": "terminal_energy_split",
+      "timestamps_seconds": [302, 306, 309, 312, 314, 315.5, 316],
+      "question": "Exact separation of turn-17 regular Psychic attachment and all three Fantasia Force Energy allocations.",
+      "finding": "Final clearly visible counts are Mega Gardevoir 6, Bramblin 4, Mimikyu 4. The worker does not confidently attribute every animated transfer to regular attachment versus attack effect. No rule defect is asserted.",
+      "impact": "Small terminal resource-bookkeeping limit. Mega already has enough Psychic for Fantasia Force; direct 110 knockout and +2 award are independent of this split.",
+      "evidence": ["native/t0306.00.jpg", "native/t0309.00.jpg", "native/t0312.00.jpg", "native/t0314.00.jpg", "native/t0315.50.jpg", "native/t0316.00.jpg"]
+    },
+    {
+      "id": "turn16_alternative_outcome",
+      "timestamps_seconds": [290, 293, 299, 309, 314],
+      "question": "Would retreating the 100-HP Crobat into 210-HP Mega Gengar on turn16 produce a win?",
+      "finding": "Not established. It can absorb one visible 110 hit and provide another draw/attachment opportunity, but Mega Gengar has only two Energy against a four-Energy attack cost. Hidden next draw and future opponent choices are unknown.",
+      "impact": "Survival alternative only, not proven optimal or winning play.",
+      "evidence": ["native/t0291.00.jpg", "native/t0293.00.jpg", "native/t0299.00.jpg", "native/t0309.00.jpg", "native/t0314.00.jpg"]
+    },
+    {
+      "id": "cosmetic_printings_and_clock",
+      "timestamps_seconds": [],
+      "question": "Exact set/card numbers, alternate-art identities beyond visible functional text, and filename timezone basis.",
+      "finding": "Unverified. Mechanically relevant versions are pinned by visible HP, attack, Ability and cost text. SOURCE.json preserves the filename clock ambiguity.",
+      "impact": "Do not infer exact card IDs, a full deck list or a local match date solely from filename.",
+      "evidence": ["SOURCE.json", "native/t0025.00.jpg", "native/t0213.00.jpg", "native/t0237.00.jpg", "native/t0291.00.jpg"]
+    }
+  ],
+  "resolved_checks": [
+    "Opponent left Bench card is Meloetta; later replacement is Bramblin, not Slowpoke.",
+    "Turn13 healing Supporter is Diantha, not Lillie; 90 heal and two Psychic discard are visible.",
+    "The drawn hand card is Team Rocket's Weezing ex and is not played.",
+    "Grindcore first flip shows zero heads and one tails; the Wynaut knockout instead shows No Energy attached.",
+    "Crobat retreat costs one Darkness-equivalent Energy; Peculiar Plaza does not apply to its Darkness type.",
+    "Mega Gengar ex evolves directly from Haunter and its displayed attack needs four Energy.",
+    "Direct Crobat damage to Psychic targets is 90 with weakness; poison ticks are 10.",
+    "Final results show Damage done440; direct attack sum includes overkill and excludes poison.",
+    "Opponent receives two 2-point awards; the three-circle HUD caps the displayed total at3."
+  ]
+}

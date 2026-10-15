@@ -1,0 +1,29 @@
+{
+  "source_sha256": "ca0f516306d5ffd8bf18326d4057d357160f77aaa019efdfd87303336b1291b9",
+  "lead": "/root",
+  "observations": [
+    {
+      "seconds": 25.5,
+      "finding": "Opening five left to right: Lucky Ice Pop, Professor Research, Copycat, Alolan Muk, Alolan Grimer.",
+      "frame": "turn_evidence/t0025.50_bottom.jpg"
+    },
+    {
+      "seconds": 439,
+      "finding": "Explicit Victory versus Hons and Glimmora Card of the Game. No detailed result statistics visible in this frame.",
+      "frame": "turn_evidence/t0439.00.jpg"
+    },
+    {
+      "seconds": 428,
+      "finding": "Explicit No cards left in deck: unable to draw cards message; owner turn12 deck exhaustion is observed.",
+      "frame": "turn_evidence/t0428.00.jpg"
+    },
+    {
+      "seconds": 430,
+      "finding": "Explicit Your opponent conceded banner against Hons. Corrects primary draft terminal-cause uncertainty; last board owner0 opponent1, followed by Victory439.",
+      "frame": "turn_evidence/t0430.00.jpg"
+    }
+  ],
+  "source_video": "20261012_210823000_iOS.MP4",
+  "checked_utc": "2026-10-12T23:41:46.4184443Z",
+  "scope": "Targeted lead visual checks; full-source and independent checks are separate evidence"
+}

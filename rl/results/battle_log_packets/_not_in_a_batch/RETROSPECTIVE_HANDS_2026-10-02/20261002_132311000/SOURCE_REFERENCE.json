@@ -1,0 +1,37 @@
+{
+  "schema": "retrospective-hand-supplement/v1",
+  "frozen_source_reference": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_132311000_iOS_shark_sol\\SOURCE.json",
+  "source_identity": {
+    "video_basename": "20261002_132311000_iOS.MP4",
+    "sha256": "f3d3765ca22feb385bd540c90c916d1b039382418a0e53711bfeccbe3e240a33",
+    "bytes": 886959676,
+    "duration_seconds": 486.048333,
+    "native_dimensions": [
+      1170,
+      2532
+    ]
+  },
+  "current_archive_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20261002_132311000_iOS.MP4",
+  "accepted_review_reference": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_132311000_iOS_shark_sol\\REVIEW.md",
+  "latest_shared_completion_event": "988e74c9-9289-4e05-9340-39ce493dc116",
+  "main_index_status": "Reviewed",
+  "supplement_registration": "BATCH_ASSIGNMENT.json pilot in_progress",
+  "current_hash_verification": {
+    "status": "verified",
+    "receipt": "LOCAL_SOURCE_VERIFICATION.json",
+    "verification": {
+      "actual_source_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20261002_132311000_iOS.MP4",
+      "sha256": "f3d3765ca22feb385bd540c90c916d1b039382418a0e53711bfeccbe3e240a33",
+      "bytes": 886959676,
+      "verified": true,
+      "elapsed_seconds": 0.8488785999943502,
+      "verified_utc": "2026-10-02T20:53:53.042439+00:00"
+    },
+    "earlier_failed_receipts": [
+      "SOURCE_ACCESS.json",
+      "CAMERA_SOURCE_ACCESS.json"
+    ],
+    "actual_inspected_source_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20261002_132311000_iOS.MP4"
+  },
+  "no_original_binding_modified": true
+}

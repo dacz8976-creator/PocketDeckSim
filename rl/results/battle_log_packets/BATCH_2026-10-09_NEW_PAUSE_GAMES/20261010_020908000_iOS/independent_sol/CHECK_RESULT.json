@@ -1,0 +1,62 @@
+{
+  "reviewer": "/root/check_020908",
+  "model": "gpt-6.1-sol",
+  "checked_at_utc": "2026-10-10T04:50:01.454399+00:00",
+  "accepted": true,
+  "status": "accepted_with_recording_limits",
+  "source_sha256": "6771089aca9afe1e952e047017c07b74964a184011832179c27fe7b7f839bffc",
+  "source_bytes": 712753914,
+  "source_identity_independently_verified": true,
+  "source_json_sha256": "55b333acdb4fb3029a2fa9b7ee3b899211f1aba161e1c051b721f5c0fdbbfaa4",
+  "blockers": [],
+  "accepted_input_sha256": {
+    "REVIEW.md": "b66d0a292fbb7ab7a1eb19fc10145739a03a5c9f408ac2ee6c90e2b928028e6d",
+    "COVERAGE.md": "f08bb05ea1b7abc0799fb5f21a3be989d40c43be432e42fe7bb7c4dfb863c952",
+    "SUMMARY.json": "b6cf53bb613fa3b87670b97bafc9d9418035879d2f6ba26d130ea15d04ee478b",
+    "UNCERTAINTIES.json": "1c1879a03439145ca5b3762eb895dc618f3950f21555142c30fb2212aee224d4",
+    "PAUSE_GAME.json": "7b61724c3574329183fdbf58e920a91ecbeb4b5663ba69c4ff4401939552dd66",
+    "DECK_USED.json": "7b6e280948e158541ef4eaf4409460742117752648171a4af1aff50ed7f40d72",
+    "TURN_LEDGER.json": "932690c57531bfd5df976988cd51d377ed712b42b085ae006cbc02dceb549801",
+    "TURN_EVIDENCE.json": "247429b773ac1bbd0839dfb03992f66f341312f68637527960461624a396e9b3"
+  },
+  "checked_input_sha256": {
+    "REVIEW.md": "b66d0a292fbb7ab7a1eb19fc10145739a03a5c9f408ac2ee6c90e2b928028e6d",
+    "COVERAGE.md": "f08bb05ea1b7abc0799fb5f21a3be989d40c43be432e42fe7bb7c4dfb863c952",
+    "SUMMARY.json": "b6cf53bb613fa3b87670b97bafc9d9418035879d2f6ba26d130ea15d04ee478b",
+    "UNCERTAINTIES.json": "1c1879a03439145ca5b3762eb895dc618f3950f21555142c30fb2212aee224d4",
+    "PAUSE_GAME.json": "7b61724c3574329183fdbf58e920a91ecbeb4b5663ba69c4ff4401939552dd66",
+    "DECK_USED.json": "7b6e280948e158541ef4eaf4409460742117752648171a4af1aff50ed7f40d72",
+    "TURN_LEDGER.json": "932690c57531bfd5df976988cd51d377ed712b42b085ae006cbc02dceb549801",
+    "TURN_EVIDENCE.json": "247429b773ac1bbd0839dfb03992f66f341312f68637527960461624a396e9b3"
+  },
+  "core_file_count": 8,
+  "actual_viewed_manifest": "VIEWED_MANIFEST.json",
+  "actual_viewed_image_count": 57,
+  "narrative": "CHECK_REVIEW.md",
+  "repair": {
+    "scope": "T4 per-card Stadium reveal timestamps and evidence references only",
+    "previous_ledger": "TURN_LEDGER.before_independent_timestamp_repair.json",
+    "corrected_reveals": [
+      {
+        "name": "Poke Ball",
+        "seconds": 200
+      },
+      {
+        "name": "Hiking Trail",
+        "seconds": 201
+      },
+      {
+        "name": "Rare Candy",
+        "seconds": 202
+      }
+    ]
+  },
+  "limits": [
+    "No opened discard piles; hidden opponent hand identities remain unknown.",
+    "Draw-end seek times are approximate, decoder PTS was not independently measured.",
+    "Semantic deck variants do not establish exact artwork/rarity.",
+    "Timeout notice establishes terminal result, not disconnect intention."
+  ],
+  "shared_or_external_writes": false,
+  "source_moved": false
+}

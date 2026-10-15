@@ -1,0 +1,26 @@
+{
+  "checked_utc": "2026-10-03T00:57:18.658303+00:00",
+  "source_video": "20261002_210952000_iOS.MP4",
+  "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+  "outcome": {
+    "result": "loss",
+    "owner_points": 2,
+    "opponent_points": 3,
+    "turns": 19,
+    "damage_done": 500,
+    "went": "second"
+  },
+  "evidence": [
+    "turn_evidence/t0014.80.jpg",
+    "turn_evidence/t0352.40.jpg",
+    "turn_evidence/t0093.00.jpg",
+    "turn_evidence/t0093.40.jpg",
+    "turn_evidence/t0110.60.jpg",
+    "turn_evidence/t0290.40.jpg",
+    "independent_sol/turn_evidence/t0035.50.jpg",
+    "independent_sol/turn_evidence/t0041.00.jpg",
+    "independent_sol/turn_evidence/t0253.50.jpg"
+  ],
+  "scope": "Entire source setup, all19game turns and terminal outcome, full draw-timed Pause capture protocol plus all four latest guide additions; local computer comparison only.",
+  "observations": "Root directly inspected five-card pre-Active opening and Auto On, terminal Defeat second19turns2-3damage500, corrected Research reveals Misty thenSharpedo, endhand, T2Ninetales and Vulpix named reveals, empty current Energy at290.402 and written promotion prompt at253.503. Independent full coverage reconciles final one Bench Ninetales KO for2 points; Active Sharpedo survives60 and other Ninetales100."
+}

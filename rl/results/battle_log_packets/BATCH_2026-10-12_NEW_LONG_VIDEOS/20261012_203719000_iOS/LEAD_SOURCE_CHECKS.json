@@ -1,0 +1,24 @@
+{
+  "source_sha256": "e85ac056e49ababe79fbd0388e8b132f3cc984a5deb445390a2f4df7b0137869",
+  "lead": "/root",
+  "observations": [
+    {
+      "seconds": 107.4,
+      "finding": "Poke Ball is being inspected; current Energy availability needs separate evidence. This contradicted the original Energy-first draft.",
+      "frame": "turn_evidence/t0107.40.jpg"
+    },
+    {
+      "seconds": 109,
+      "finding": "Poke Ball play is visible before the later Regigigas Energy attachment; primary corrected action order.",
+      "frame": "turn_evidence/t0109.00.jpg"
+    },
+    {
+      "seconds": 790,
+      "finding": "Explicit Your opponent conceded message, KCXPF, Kingambit Active and no owner attack before result.",
+      "frame": "turn_evidence/t0790.00.jpg"
+    }
+  ],
+  "source_video": "20261012_203719000_iOS.MP4",
+  "checked_utc": "2026-10-12T23:33:24.0949424Z",
+  "scope": "Targeted lead visual checks; full-source and independent checks are separate evidence"
+}

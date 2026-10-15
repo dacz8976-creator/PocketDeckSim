@@ -1,0 +1,80 @@
+{
+  "schema": "bounded_independent_sol_check_v1",
+  "reviewer": "/root/independent_grass_psychic",
+  "model": "gpt-6.1-sol",
+  "checked_utc": "2026-10-06T18:32:55.923830+00:00",
+  "source_video": "20261005_031138000_iOS.MP4",
+  "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+  "source_identity_basis": "Compared frozen SOURCE and packet bindings; reused intake hash without rereading original media. No redundant decode or media hash.",
+  "review_scope": "Bounded independent packet/evidence checks, not a second full battle visual pass.",
+  "status": "requires_narrow_repair",
+  "lead_acceptance": false,
+  "checked_turn_rows": 7,
+  "checks": [
+    "Opening five read29: Spritzee/Poke Ball/Hatenna/Hatterene/Research; Spritzee active in subsequent board.",
+    "Intact52.5 five-card start before Hatenna first play53, not53 candidate; Ball Hatenna60, Research Aromatisse66 then Togetic67 verified.",
+    "Ordinary owner T4 start116.5 hand5 before Aromatisse118; ordinary opponent T3 Greninja90, middle Hatenna damage100 and Plasma Hurricane resolved112 with Spritzee40 and Koko2Lightning inspected.",
+    "Generator Tail156.2 retained as no-effect action;178 explicitly attack did nothing; attempted attack name remains null/unknown because confusion fails before named attack.",
+    "Owner starts5/5/5, endings4/4/3, opponent fans4/3/2 independently counted; arithmetic preserves duplicates.",
+    "T6 start180.5 intact5;181.5 already benchedTogepi unsuitable as start; retreat191 removes Aromatisse Energy,193.5 attachment to Hatterene,195.5 hand3 verified.",
+    "Mental Crush196; Koko absent and owner2points204; Zeraora active206; concession214 and225 Victory/7turns/2-0/damage180 verified. Pre-removal Koko board is not substituted for postKO points.",
+    "Exactly7 ordered alternating rows; boundary turn display null with explicit absent banner reason. 178 is the actual next-turn6 label and77.5 shows3; ledger chronology remains separate.",
+    "All indexed native full1170x2532; bottom1170x507 y2025-2532; top1170x530 y130-660. Selected hand and candidate suitability match sampled frames.",
+    "Both start/end boards read structurally for every row; sampled HP/max/damage, positional Bench, Energy, toolsnone/statusConfused and generated Energy after earliest chosen hand have separate later evidence and timing limit.",
+    "Discard views not_shown, hidden draws null with reasons; exact filmed20 QR semantically resolved; prepared Psychic list distinct from old slot6Water list, external live save pending.",
+    "One narrow mismatch:124 frame is incoming card back, not claimed visible named Hatterene reveal. Hattrem126 and final duplicate Hatterene support transaction but need source reveal evidence or qualified inference."
+  ],
+  "required_repairs": [
+    {
+      "id": "P1",
+      "severity": "narrow_evidence_basis",
+      "json_path": "TURN_LEDGER.json#/turns/3/draws_and_searches/1/cards_in_reveal_order/0",
+      "claimed": "Hatterene visible named reveal at124, f0124.00",
+      "observed": "t0124.00.jpg displays incoming card back. Hattrem126 face-up; final four-card hand includes two Hatterene.",
+      "required": "Retain actual first Hatterene reveal frame and correct timestamp/evidence, or qualify identity/order as resulting-hand inference with unknown exact reveal time. Reconcile REVIEW.md / TURN_EVIDENCE.json references.",
+      "recheck_scope": "Only repaired first Research reveal and input hashes.",
+      "evidence": [
+        "turn_evidence/t0124.00.jpg",
+        "turn_evidence/t0126.00.jpg",
+        "turn_evidence/t0134.50_bottom.png"
+      ]
+    }
+  ],
+  "astra_escalation_required": false,
+  "recording_limits": [
+    "Hidden opposing information",
+    "No opened discard pile views",
+    "Decoded PTS not measured",
+    "QR printing/artwork unspecified",
+    "External deck snapshot/save not yet verified"
+  ],
+  "asset_validation": {
+    "indexed_frames": 124,
+    "missing_paths": [],
+    "unexpected_dimensions": [],
+    "all_indexed_native_and_crop_headers_checked": true
+  },
+  "checked_input_sha256": {
+    "SOURCE.json": "e22f8cbf71105f015a776cf4e3cf8027910602a8fdcde25269512a090a918f00",
+    "ASSIGNMENT.json": "b07d72bcaf19ffeed12a44721ee2df16bd6819b8c51f16585e93329a323a2eb6",
+    "SUMMARY.json": "27f97edfa3ce5122d83f505090cadd8fae75882c9b0853f3e08504c9eb7d9bfc",
+    "COVERAGE.md": "22b462e8bfc8ca5581732a8a89b158eed8e284c28ea8659e4dd360c1b834d814",
+    "REVIEW.md": "b95716f032cb9a1a8d5146a50d82d602b265932b7c3904697990ac9b73434a2a",
+    "PAUSE_GAME.json": "f64267ef7f61b2931cfc6a5d80f138339822daa73979d450f293b4a72cdc6e96",
+    "DECK_USED.json": "f160d738f7390858ab0e1db6f186e58e31c9887b28331de0eec9cb30f5d19dfe",
+    "TURN_LEDGER.json": "45507418fb22cf45f5c25ed02a7a436f74053b656b533a5e0d72633f42a76a02",
+    "TURN_EVIDENCE.json": "15e4dff8efca5f143a4d71a91e4f191edeb9c641c2f201121d13823c20ab0aa0",
+    "UNCERTAINTIES.json": "c238cebcce77bab7ca9f8b1344d08e1e5ce7d5d343b6f3a48538d670f469b4da",
+    "RECORDING_METADATA.json": "4a1eff2ce97fcbfbaa4df08707d75591b2b26c95b675552c36d94462ee29dc01",
+    "QR_DECODE.json": "5c4cf5bce50bfbec5f20247876f2759f46a3b2518460a8e42be3b447d14ec82f",
+    "QR_NAME_NORMALIZATION.json": "2121afc3bef3311777ea62603be6cf584664362b361306290cc2a1668db90545",
+    "../LIVE_DECK_SNAPSHOT.json": "f886698321bbdf67c06a17fe4d54a4ef2e1d464f02d972690383c64826432a28",
+    "../NEW_DECK_ENTRIES.json": "e3a946d41a06fa301b6f7da92cc173335a232c6eb24098607fb9a67f9ad49900"
+  },
+  "viewed_evidence": "VIEWED_EVIDENCE.json",
+  "writes_performed": [
+    "independent_sol/CHECK_RESULT.json",
+    "independent_sol/VIEWED_EVIDENCE.json"
+  ],
+  "checked_input_snapshot_basis": "Three corrected files use preserved submitted_before_independent_corrections bytes representing initial rejected submission. Other packet input bytes unchanged."
+}

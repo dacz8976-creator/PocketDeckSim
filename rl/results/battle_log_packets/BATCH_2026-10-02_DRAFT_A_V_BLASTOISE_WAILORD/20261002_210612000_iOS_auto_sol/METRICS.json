@@ -1,0 +1,20 @@
+{
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "locator_decode_passes": 1,
+  "locator_samples": 207,
+  "locator_grids_inspected": 11,
+  "native_captures": 113,
+  "native_crop_files": 226,
+  "native_capture_cap": 160,
+  "image_inspection_count": 94,
+  "image_inspection_count_status": "Manual count of94 displayed images in worker trace:11 locator grids and83 native fullframes/crops, including repeated comparisons; not unique images.",
+  "source_duration_seconds": 206.641667,
+  "elapsed_review_seconds": 1312.17,
+  "elapsed_time_status": "Dispatch-assignment to packet generation wall time, including queue/read/decode/inspection. Not isolated active model time.",
+  "tokens": null,
+  "dollar_cost": null,
+  "usage_status": "Actual provider usage not exposed to worker",
+  "source_decode_threads": 2,
+  "duplicate_locator_passes": 0
+}

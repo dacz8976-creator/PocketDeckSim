@@ -1,0 +1,1429 @@
+{
+  "schema": "independent_pause_games_acceptance/v1",
+  "reviewer": "independent_sol",
+  "checked_utc": "2026-10-06T19:26:18.956433+00:00",
+  "source_video": "20261005_033529000_iOS.MP4",
+  "source_sha256": "e272b0c74f6a863c68811a235d7b9611b14994611365e58694028f323afaea3d",
+  "accepted": false,
+  "status": "needs_narrow_repairs",
+  "checked_input_sha256": {
+    "SOURCE.json": "56d71b28e2ab32d50f49f3f9605c4ce237c1c0a84c0a0c462c5b339218a92f3c",
+    "REVIEW.md": "5ca9d96b6c238d1cd05cb86ce8c8a36072d2c421e051ee4575b5c85c409d67b1",
+    "COVERAGE.md": "bc6c454f7af7d6216be3f012ff28536049e20434f4e772c45f99e181c5f44d53",
+    "SUMMARY.json": "07befd117da8f9e2e636d9e547ae43db4e559af41e1d168c09e574f132f7ee38",
+    "UNCERTAINTIES.json": "793752dd3a0994d5df46c314e294846eb592b31e8b5a28db18f91913b677e141",
+    "PAUSE_GAME.json": "6d90d48cb92a81043ca11379b3c332bf97b16dde8edbcaadc509a7fde6db8ba1",
+    "DECK_USED.json": "c3ad95f578eecfcbe334bb917f11908f114fb53b0a51f4626d0dfe3b03afa58c",
+    "TURN_LEDGER.json": "99ba14aa0e106f81f1d76414d1c333980d9f97f4c90265017db41c863c89e3e6",
+    "TURN_EVIDENCE.json": "770b6f189ca24c9da49f550b18a66a5c42e5537041a38b572a803b6a0f11e2ff",
+    "QR_DECODE_RECEIPT.json": "5a674d1fa13643b87c6868326f860ad3a5f599614d7fc3187c5fc95886090fdd"
+  },
+  "initial_inputs_unchanged_at_report": true,
+  "required_repairs": [
+    {
+      "repair_id": "R1",
+      "file": "TURN_LEDGER.json",
+      "issue": "Current Energy availability is asserted before its observed generation. The large current sphere is empty at the selected boundary, while the small typed next preview is visible.",
+      "affected_fields": [
+        {
+          "json_path": "$.turns[1].board_at_start.opponent.energy_zone.this_turn",
+          "timestamp_seconds": 46,
+          "evidence_id": "f_0046_00",
+          "before": {
+            "type": "Fighting",
+            "count": 1,
+            "available": true
+          },
+          "required_value": {
+            "type": null,
+            "count": 0,
+            "available": false
+          },
+          "generation_bound_seconds": [
+            46,
+            49
+          ],
+          "later_generated_evidence_id": "f_0049_00"
+        },
+        {
+          "json_path": "$.turns[2].board_at_start.owner.energy_zone.this_turn",
+          "timestamp_seconds": 81.5,
+          "evidence_id": "f_0081_50",
+          "before": {
+            "type": "Metal",
+            "count": 1,
+            "available": true
+          },
+          "required_value": {
+            "type": null,
+            "count": 0,
+            "available": false
+          },
+          "generation_bound_seconds": [
+            81.5,
+            82.5
+          ],
+          "later_generated_evidence_id": "f_0082_50"
+        },
+        {
+          "json_path": "$.turns[4].board_at_start.owner.energy_zone.this_turn",
+          "timestamp_seconds": 131.5,
+          "evidence_id": "f_0131_50",
+          "before": {
+            "type": "Metal",
+            "count": 1,
+            "available": true
+          },
+          "required_value": {
+            "type": null,
+            "count": 0,
+            "available": false
+          },
+          "generation_bound_seconds": [
+            131.5,
+            134.5
+          ],
+          "later_generated_evidence_id": "f_0134_50"
+        },
+        {
+          "json_path": "$.turns[6].board_at_start.owner.energy_zone.this_turn",
+          "timestamp_seconds": 232.8,
+          "evidence_id": "f_0232_80",
+          "before": {
+            "type": "Metal",
+            "count": 1,
+            "available": true
+          },
+          "required_value": {
+            "type": null,
+            "count": 0,
+            "available": false
+          },
+          "generation_bound_seconds": [
+            232.8,
+            235.8
+          ],
+          "later_generated_evidence_id": "f_0235_80"
+        },
+        {
+          "json_path": "$.turns[8].board_at_start.owner.energy_zone.this_turn",
+          "timestamp_seconds": 310.8,
+          "evidence_id": "f_0310_80",
+          "before": {
+            "type": "Metal",
+            "count": 1,
+            "available": true
+          },
+          "required_value": {
+            "type": null,
+            "count": 0,
+            "available": false
+          },
+          "generation_bound_seconds": [
+            310.8,
+            313.8
+          ],
+          "later_generated_evidence_id": "f_0313_80"
+        }
+      ],
+      "repair": "Keep all selected intact hand/start evidence and next preview typing. Record observed current emptiness with explicit basis at these five starts and distinguish later generation as a bounded automatic transition. Reconcile any accompanying prose or capture claims that inherit current availability."
+    },
+    {
+      "repair_id": "R2",
+      "file": "TURN_LEDGER.json",
+      "issue": "Null Tool and Stadium values lack field-specific status/basis distinguishing inspected absence from unknown, contrary to PAUSE_GAMES_REVIEW_PROTOCOL.md null/evidence-status rule. Generic Pokemon observed status and artwork-printing limit do not describe Tool absence.",
+      "affected_fields": [
+        {
+          "json_path": "$.turns[0].board_at_start.stadium",
+          "evidence_ids": [
+            "f_0042_80"
+          ],
+          "timestamp_seconds": [
+            42.8
+          ],
+          "kind": "Stadium"
+        },
+        {
+          "json_path": "$.turns[0].board_at_start.owner.active.tool",
+          "evidence_ids": [
+            "f_0042_80"
+          ],
+          "timestamp_seconds": [
+            42.8
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[0].board_at_start.owner.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0042_80"
+          ],
+          "timestamp_seconds": [
+            42.8
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[0].board_at_start.opponent.active.tool",
+          "evidence_ids": [
+            "f_0042_80"
+          ],
+          "timestamp_seconds": [
+            42.8
+          ],
+          "kind": "Tool",
+          "pokemon": "Hitmonlee"
+        },
+        {
+          "json_path": "$.turns[0].board_after.stadium",
+          "evidence_ids": [
+            "f_0044_00"
+          ],
+          "timestamp_seconds": [
+            44.0
+          ],
+          "kind": "Stadium"
+        },
+        {
+          "json_path": "$.turns[0].board_after.owner.active.tool",
+          "evidence_ids": [
+            "f_0044_00"
+          ],
+          "timestamp_seconds": [
+            44.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[0].board_after.owner.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0044_00"
+          ],
+          "timestamp_seconds": [
+            44.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[0].board_after.opponent.active.tool",
+          "evidence_ids": [
+            "f_0044_00"
+          ],
+          "timestamp_seconds": [
+            44.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Hitmonlee"
+        },
+        {
+          "json_path": "$.turns[1].board_at_start.stadium",
+          "evidence_ids": [
+            "f_0046_00"
+          ],
+          "timestamp_seconds": [
+            46.0
+          ],
+          "kind": "Stadium"
+        },
+        {
+          "json_path": "$.turns[1].board_at_start.owner.active.tool",
+          "evidence_ids": [
+            "f_0046_00"
+          ],
+          "timestamp_seconds": [
+            46.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[1].board_at_start.owner.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0046_00"
+          ],
+          "timestamp_seconds": [
+            46.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[1].board_at_start.opponent.active.tool",
+          "evidence_ids": [
+            "f_0046_00"
+          ],
+          "timestamp_seconds": [
+            46.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Hitmonlee"
+        },
+        {
+          "json_path": "$.turns[1].board_after.owner.active.tool",
+          "evidence_ids": [
+            "f_0078_00"
+          ],
+          "timestamp_seconds": [
+            78.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[1].board_after.owner.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0078_00"
+          ],
+          "timestamp_seconds": [
+            78.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[1].board_after.opponent.active.tool",
+          "evidence_ids": [
+            "f_0078_00"
+          ],
+          "timestamp_seconds": [
+            78.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Hitmonlee"
+        },
+        {
+          "json_path": "$.turns[1].board_after.opponent.bench_in_position_order[0].tool",
+          "evidence_ids": [
+            "f_0078_00"
+          ],
+          "timestamp_seconds": [
+            78.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Riolu"
+        },
+        {
+          "json_path": "$.turns[2].board_at_start.owner.active.tool",
+          "evidence_ids": [
+            "f_0081_50"
+          ],
+          "timestamp_seconds": [
+            81.5
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[2].board_at_start.owner.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0081_50"
+          ],
+          "timestamp_seconds": [
+            81.5
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[2].board_at_start.opponent.active.tool",
+          "evidence_ids": [
+            "f_0081_50"
+          ],
+          "timestamp_seconds": [
+            81.5
+          ],
+          "kind": "Tool",
+          "pokemon": "Hitmonlee"
+        },
+        {
+          "json_path": "$.turns[2].board_at_start.opponent.bench_in_position_order[0].tool",
+          "evidence_ids": [
+            "f_0081_50"
+          ],
+          "timestamp_seconds": [
+            81.5
+          ],
+          "kind": "Tool",
+          "pokemon": "Riolu"
+        },
+        {
+          "json_path": "$.turns[2].board_after.owner.active.tool",
+          "evidence_ids": [
+            "f_0089_40"
+          ],
+          "timestamp_seconds": [
+            89.4
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[2].board_after.owner.bench_in_position_order[0].tool",
+          "evidence_ids": [
+            "f_0089_40"
+          ],
+          "timestamp_seconds": [
+            89.4
+          ],
+          "kind": "Tool",
+          "pokemon": "Honedge"
+        },
+        {
+          "json_path": "$.turns[2].board_after.owner.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0089_40"
+          ],
+          "timestamp_seconds": [
+            89.4
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[2].board_after.opponent.active.tool",
+          "evidence_ids": [
+            "f_0089_40"
+          ],
+          "timestamp_seconds": [
+            89.4
+          ],
+          "kind": "Tool",
+          "pokemon": "Hitmonlee"
+        },
+        {
+          "json_path": "$.turns[2].board_after.opponent.bench_in_position_order[0].tool",
+          "evidence_ids": [
+            "f_0089_40"
+          ],
+          "timestamp_seconds": [
+            89.4
+          ],
+          "kind": "Tool",
+          "pokemon": "Riolu"
+        },
+        {
+          "json_path": "$.turns[3].board_at_start.owner.active.tool",
+          "evidence_ids": [
+            "f_0093_00"
+          ],
+          "timestamp_seconds": [
+            93.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[3].board_at_start.owner.bench_in_position_order[0].tool",
+          "evidence_ids": [
+            "f_0093_00"
+          ],
+          "timestamp_seconds": [
+            93.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Honedge"
+        },
+        {
+          "json_path": "$.turns[3].board_at_start.owner.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0093_00"
+          ],
+          "timestamp_seconds": [
+            93.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[3].board_at_start.opponent.active.tool",
+          "evidence_ids": [
+            "f_0093_00"
+          ],
+          "timestamp_seconds": [
+            93.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Hitmonlee"
+        },
+        {
+          "json_path": "$.turns[3].board_at_start.opponent.bench_in_position_order[0].tool",
+          "evidence_ids": [
+            "f_0093_00"
+          ],
+          "timestamp_seconds": [
+            93.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Riolu"
+        },
+        {
+          "json_path": "$.turns[3].board_after.owner.active.tool",
+          "evidence_ids": [
+            "f_0128_00"
+          ],
+          "timestamp_seconds": [
+            128.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[3].board_after.owner.bench_in_position_order[0].tool",
+          "evidence_ids": [
+            "f_0128_00"
+          ],
+          "timestamp_seconds": [
+            128.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Honedge"
+        },
+        {
+          "json_path": "$.turns[3].board_after.owner.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0128_00"
+          ],
+          "timestamp_seconds": [
+            128.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[3].board_after.opponent.active.tool",
+          "evidence_ids": [
+            "f_0128_00"
+          ],
+          "timestamp_seconds": [
+            128.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Hitmonlee"
+        },
+        {
+          "json_path": "$.turns[3].board_after.opponent.bench_in_position_order[0].tool",
+          "evidence_ids": [
+            "f_0128_00"
+          ],
+          "timestamp_seconds": [
+            128.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Mega Lucario ex"
+        },
+        {
+          "json_path": "$.turns[3].board_after.opponent.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0128_00"
+          ],
+          "timestamp_seconds": [
+            128.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Marshadow"
+        },
+        {
+          "json_path": "$.turns[4].board_at_start.owner.active.tool",
+          "evidence_ids": [
+            "f_0131_50"
+          ],
+          "timestamp_seconds": [
+            131.5
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[4].board_at_start.owner.bench_in_position_order[0].tool",
+          "evidence_ids": [
+            "f_0131_50"
+          ],
+          "timestamp_seconds": [
+            131.5
+          ],
+          "kind": "Tool",
+          "pokemon": "Honedge"
+        },
+        {
+          "json_path": "$.turns[4].board_at_start.owner.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0131_50"
+          ],
+          "timestamp_seconds": [
+            131.5
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[4].board_at_start.opponent.active.tool",
+          "evidence_ids": [
+            "f_0131_50"
+          ],
+          "timestamp_seconds": [
+            131.5
+          ],
+          "kind": "Tool",
+          "pokemon": "Hitmonlee"
+        },
+        {
+          "json_path": "$.turns[4].board_at_start.opponent.bench_in_position_order[0].tool",
+          "evidence_ids": [
+            "f_0131_50"
+          ],
+          "timestamp_seconds": [
+            131.5
+          ],
+          "kind": "Tool",
+          "pokemon": "Mega Lucario ex"
+        },
+        {
+          "json_path": "$.turns[4].board_at_start.opponent.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0131_50"
+          ],
+          "timestamp_seconds": [
+            131.5
+          ],
+          "kind": "Tool",
+          "pokemon": "Marshadow"
+        },
+        {
+          "json_path": "$.turns[4].board_after.owner.active.tool",
+          "evidence_ids": [
+            "f_0158_00"
+          ],
+          "timestamp_seconds": [
+            158.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[4].board_after.owner.bench_in_position_order[0].tool",
+          "evidence_ids": [
+            "f_0158_00"
+          ],
+          "timestamp_seconds": [
+            158.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Doublade"
+        },
+        {
+          "json_path": "$.turns[4].board_after.owner.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0158_00"
+          ],
+          "timestamp_seconds": [
+            158.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[4].board_after.owner.bench_in_position_order[2].tool",
+          "evidence_ids": [
+            "f_0158_00"
+          ],
+          "timestamp_seconds": [
+            158.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Orthworm"
+        },
+        {
+          "json_path": "$.turns[4].board_after.opponent.active.tool",
+          "evidence_ids": [
+            "f_0158_00"
+          ],
+          "timestamp_seconds": [
+            158.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Hitmonlee"
+        },
+        {
+          "json_path": "$.turns[4].board_after.opponent.bench_in_position_order[0].tool",
+          "evidence_ids": [
+            "f_0158_00"
+          ],
+          "timestamp_seconds": [
+            158.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Mega Lucario ex"
+        },
+        {
+          "json_path": "$.turns[4].board_after.opponent.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0158_00"
+          ],
+          "timestamp_seconds": [
+            158.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Marshadow"
+        },
+        {
+          "json_path": "$.turns[5].board_at_start.owner.active.tool",
+          "evidence_ids": [
+            "f_0163_00"
+          ],
+          "timestamp_seconds": [
+            163.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[5].board_at_start.owner.bench_in_position_order[0].tool",
+          "evidence_ids": [
+            "f_0163_00"
+          ],
+          "timestamp_seconds": [
+            163.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Doublade"
+        },
+        {
+          "json_path": "$.turns[5].board_at_start.owner.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0163_00"
+          ],
+          "timestamp_seconds": [
+            163.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[5].board_at_start.owner.bench_in_position_order[2].tool",
+          "evidence_ids": [
+            "f_0163_00"
+          ],
+          "timestamp_seconds": [
+            163.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Orthworm"
+        },
+        {
+          "json_path": "$.turns[5].board_at_start.opponent.active.tool",
+          "evidence_ids": [
+            "f_0163_00"
+          ],
+          "timestamp_seconds": [
+            163.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Hitmonlee"
+        },
+        {
+          "json_path": "$.turns[5].board_at_start.opponent.bench_in_position_order[0].tool",
+          "evidence_ids": [
+            "f_0163_00"
+          ],
+          "timestamp_seconds": [
+            163.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Mega Lucario ex"
+        },
+        {
+          "json_path": "$.turns[5].board_at_start.opponent.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0163_00"
+          ],
+          "timestamp_seconds": [
+            163.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Marshadow"
+        },
+        {
+          "json_path": "$.turns[5].board_after.owner.active.tool",
+          "evidence_ids": [
+            "f_0229_00"
+          ],
+          "timestamp_seconds": [
+            229.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[5].board_after.owner.bench_in_position_order[0].tool",
+          "evidence_ids": [
+            "f_0229_00"
+          ],
+          "timestamp_seconds": [
+            229.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Doublade"
+        },
+        {
+          "json_path": "$.turns[5].board_after.owner.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0229_00"
+          ],
+          "timestamp_seconds": [
+            229.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[5].board_after.owner.bench_in_position_order[2].tool",
+          "evidence_ids": [
+            "f_0229_00"
+          ],
+          "timestamp_seconds": [
+            229.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Orthworm"
+        },
+        {
+          "json_path": "$.turns[5].board_after.opponent.active.tool",
+          "evidence_ids": [
+            "f_0229_00"
+          ],
+          "timestamp_seconds": [
+            229.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Hitmonlee"
+        },
+        {
+          "json_path": "$.turns[5].board_after.opponent.bench_in_position_order[0].tool",
+          "evidence_ids": [
+            "f_0229_00"
+          ],
+          "timestamp_seconds": [
+            229.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Mega Lucario ex"
+        },
+        {
+          "json_path": "$.turns[5].board_after.opponent.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0229_00"
+          ],
+          "timestamp_seconds": [
+            229.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Marshadow"
+        },
+        {
+          "json_path": "$.turns[5].board_after.opponent.bench_in_position_order[2].tool",
+          "evidence_ids": [
+            "f_0229_00"
+          ],
+          "timestamp_seconds": [
+            229.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Riolu"
+        },
+        {
+          "json_path": "$.turns[6].board_at_start.owner.active.tool",
+          "evidence_ids": [
+            "f_0232_80"
+          ],
+          "timestamp_seconds": [
+            232.8
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[6].board_at_start.owner.bench_in_position_order[0].tool",
+          "evidence_ids": [
+            "f_0232_80"
+          ],
+          "timestamp_seconds": [
+            232.8
+          ],
+          "kind": "Tool",
+          "pokemon": "Doublade"
+        },
+        {
+          "json_path": "$.turns[6].board_at_start.owner.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0232_80"
+          ],
+          "timestamp_seconds": [
+            232.8
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[6].board_at_start.owner.bench_in_position_order[2].tool",
+          "evidence_ids": [
+            "f_0232_80"
+          ],
+          "timestamp_seconds": [
+            232.8
+          ],
+          "kind": "Tool",
+          "pokemon": "Orthworm"
+        },
+        {
+          "json_path": "$.turns[6].board_at_start.opponent.active.tool",
+          "evidence_ids": [
+            "f_0232_80"
+          ],
+          "timestamp_seconds": [
+            232.8
+          ],
+          "kind": "Tool",
+          "pokemon": "Hitmonlee"
+        },
+        {
+          "json_path": "$.turns[6].board_at_start.opponent.bench_in_position_order[0].tool",
+          "evidence_ids": [
+            "f_0232_80"
+          ],
+          "timestamp_seconds": [
+            232.8
+          ],
+          "kind": "Tool",
+          "pokemon": "Mega Lucario ex"
+        },
+        {
+          "json_path": "$.turns[6].board_at_start.opponent.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0232_80"
+          ],
+          "timestamp_seconds": [
+            232.8
+          ],
+          "kind": "Tool",
+          "pokemon": "Marshadow"
+        },
+        {
+          "json_path": "$.turns[6].board_at_start.opponent.bench_in_position_order[2].tool",
+          "evidence_ids": [
+            "f_0232_80"
+          ],
+          "timestamp_seconds": [
+            232.8
+          ],
+          "kind": "Tool",
+          "pokemon": "Riolu"
+        },
+        {
+          "json_path": "$.turns[6].board_after.owner.active.tool",
+          "evidence_ids": [
+            "f_0273_00"
+          ],
+          "timestamp_seconds": [
+            273.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[6].board_after.owner.bench_in_position_order[0].tool",
+          "evidence_ids": [
+            "f_0273_00"
+          ],
+          "timestamp_seconds": [
+            273.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Aegislash"
+        },
+        {
+          "json_path": "$.turns[6].board_after.owner.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0273_00"
+          ],
+          "timestamp_seconds": [
+            273.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[6].board_after.owner.bench_in_position_order[2].tool",
+          "evidence_ids": [
+            "f_0273_00"
+          ],
+          "timestamp_seconds": [
+            273.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Orthworm"
+        },
+        {
+          "json_path": "$.turns[6].board_after.opponent.active.tool",
+          "evidence_ids": [
+            "f_0273_00"
+          ],
+          "timestamp_seconds": [
+            273.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Mega Lucario ex"
+        },
+        {
+          "json_path": "$.turns[6].board_after.opponent.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0273_00"
+          ],
+          "timestamp_seconds": [
+            273.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Marshadow"
+        },
+        {
+          "json_path": "$.turns[6].board_after.opponent.bench_in_position_order[2].tool",
+          "evidence_ids": [
+            "f_0273_00"
+          ],
+          "timestamp_seconds": [
+            273.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Riolu"
+        },
+        {
+          "json_path": "$.turns[7].board_at_start.owner.active.tool",
+          "evidence_ids": [
+            "f_0277_00"
+          ],
+          "timestamp_seconds": [
+            277.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[7].board_at_start.owner.bench_in_position_order[0].tool",
+          "evidence_ids": [
+            "f_0277_00"
+          ],
+          "timestamp_seconds": [
+            277.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Aegislash"
+        },
+        {
+          "json_path": "$.turns[7].board_at_start.owner.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0277_00"
+          ],
+          "timestamp_seconds": [
+            277.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[7].board_at_start.owner.bench_in_position_order[2].tool",
+          "evidence_ids": [
+            "f_0277_00"
+          ],
+          "timestamp_seconds": [
+            277.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Orthworm"
+        },
+        {
+          "json_path": "$.turns[7].board_at_start.opponent.active.tool",
+          "evidence_ids": [
+            "f_0277_00"
+          ],
+          "timestamp_seconds": [
+            277.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Mega Lucario ex"
+        },
+        {
+          "json_path": "$.turns[7].board_at_start.opponent.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0277_00"
+          ],
+          "timestamp_seconds": [
+            277.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Marshadow"
+        },
+        {
+          "json_path": "$.turns[7].board_at_start.opponent.bench_in_position_order[2].tool",
+          "evidence_ids": [
+            "f_0277_00"
+          ],
+          "timestamp_seconds": [
+            277.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Riolu"
+        },
+        {
+          "json_path": "$.turns[7].board_after.owner.active.tool",
+          "evidence_ids": [
+            "f_0309_00"
+          ],
+          "timestamp_seconds": [
+            309.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[7].board_after.owner.bench_in_position_order[0].tool",
+          "evidence_ids": [
+            "f_0309_00"
+          ],
+          "timestamp_seconds": [
+            309.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Aegislash"
+        },
+        {
+          "json_path": "$.turns[7].board_after.owner.bench_in_position_order[2].tool",
+          "evidence_ids": [
+            "f_0309_00"
+          ],
+          "timestamp_seconds": [
+            309.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Orthworm"
+        },
+        {
+          "json_path": "$.turns[7].board_after.opponent.active.tool",
+          "evidence_ids": [
+            "f_0309_00"
+          ],
+          "timestamp_seconds": [
+            309.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Mega Lucario ex"
+        },
+        {
+          "json_path": "$.turns[7].board_after.opponent.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0309_00"
+          ],
+          "timestamp_seconds": [
+            309.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Marshadow"
+        },
+        {
+          "json_path": "$.turns[7].board_after.opponent.bench_in_position_order[2].tool",
+          "evidence_ids": [
+            "f_0309_00"
+          ],
+          "timestamp_seconds": [
+            309.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Riolu"
+        },
+        {
+          "json_path": "$.turns[8].board_at_start.owner.active.tool",
+          "evidence_ids": [
+            "f_0310_80"
+          ],
+          "timestamp_seconds": [
+            310.8
+          ],
+          "kind": "Tool",
+          "pokemon": "Skarmory ex"
+        },
+        {
+          "json_path": "$.turns[8].board_at_start.owner.bench_in_position_order[0].tool",
+          "evidence_ids": [
+            "f_0310_80"
+          ],
+          "timestamp_seconds": [
+            310.8
+          ],
+          "kind": "Tool",
+          "pokemon": "Aegislash"
+        },
+        {
+          "json_path": "$.turns[8].board_at_start.owner.bench_in_position_order[2].tool",
+          "evidence_ids": [
+            "f_0310_80"
+          ],
+          "timestamp_seconds": [
+            310.8
+          ],
+          "kind": "Tool",
+          "pokemon": "Orthworm"
+        },
+        {
+          "json_path": "$.turns[8].board_at_start.opponent.active.tool",
+          "evidence_ids": [
+            "f_0310_80"
+          ],
+          "timestamp_seconds": [
+            310.8
+          ],
+          "kind": "Tool",
+          "pokemon": "Mega Lucario ex"
+        },
+        {
+          "json_path": "$.turns[8].board_at_start.opponent.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0310_80"
+          ],
+          "timestamp_seconds": [
+            310.8
+          ],
+          "kind": "Tool",
+          "pokemon": "Marshadow"
+        },
+        {
+          "json_path": "$.turns[8].board_at_start.opponent.bench_in_position_order[2].tool",
+          "evidence_ids": [
+            "f_0310_80"
+          ],
+          "timestamp_seconds": [
+            310.8
+          ],
+          "kind": "Tool",
+          "pokemon": "Riolu"
+        },
+        {
+          "json_path": "$.turns[8].board_after.owner.bench_in_position_order[0].tool",
+          "evidence_ids": [
+            "f_0350_00"
+          ],
+          "timestamp_seconds": [
+            350.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Aegislash"
+        },
+        {
+          "json_path": "$.turns[8].board_after.owner.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0350_00"
+          ],
+          "timestamp_seconds": [
+            350.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Honedge"
+        },
+        {
+          "json_path": "$.turns[8].board_after.owner.bench_in_position_order[2].tool",
+          "evidence_ids": [
+            "f_0350_00"
+          ],
+          "timestamp_seconds": [
+            350.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Orthworm"
+        },
+        {
+          "json_path": "$.turns[8].board_after.opponent.active.tool",
+          "evidence_ids": [
+            "f_0350_00"
+          ],
+          "timestamp_seconds": [
+            350.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Mega Lucario ex"
+        },
+        {
+          "json_path": "$.turns[8].board_after.opponent.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0350_00"
+          ],
+          "timestamp_seconds": [
+            350.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Marshadow"
+        },
+        {
+          "json_path": "$.turns[8].board_after.opponent.bench_in_position_order[2].tool",
+          "evidence_ids": [
+            "f_0350_00"
+          ],
+          "timestamp_seconds": [
+            350.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Riolu"
+        },
+        {
+          "json_path": "$.turns[9].board_at_start.owner.bench_in_position_order[0].tool",
+          "evidence_ids": [
+            "f_0355_00"
+          ],
+          "timestamp_seconds": [
+            355.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Aegislash"
+        },
+        {
+          "json_path": "$.turns[9].board_at_start.owner.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0355_00"
+          ],
+          "timestamp_seconds": [
+            355.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Honedge"
+        },
+        {
+          "json_path": "$.turns[9].board_at_start.owner.bench_in_position_order[2].tool",
+          "evidence_ids": [
+            "f_0355_00"
+          ],
+          "timestamp_seconds": [
+            355.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Orthworm"
+        },
+        {
+          "json_path": "$.turns[9].board_at_start.opponent.active.tool",
+          "evidence_ids": [
+            "f_0355_00"
+          ],
+          "timestamp_seconds": [
+            355.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Mega Lucario ex"
+        },
+        {
+          "json_path": "$.turns[9].board_at_start.opponent.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0355_00"
+          ],
+          "timestamp_seconds": [
+            355.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Marshadow"
+        },
+        {
+          "json_path": "$.turns[9].board_at_start.opponent.bench_in_position_order[2].tool",
+          "evidence_ids": [
+            "f_0355_00"
+          ],
+          "timestamp_seconds": [
+            355.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Riolu"
+        },
+        {
+          "json_path": "$.turns[9].board_after.owner.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0379_00"
+          ],
+          "timestamp_seconds": [
+            379.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Honedge"
+        },
+        {
+          "json_path": "$.turns[9].board_after.owner.bench_in_position_order[2].tool",
+          "evidence_ids": [
+            "f_0379_00"
+          ],
+          "timestamp_seconds": [
+            379.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Orthworm"
+        },
+        {
+          "json_path": "$.turns[9].board_after.opponent.active.tool",
+          "evidence_ids": [
+            "f_0379_00"
+          ],
+          "timestamp_seconds": [
+            379.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Mega Lucario ex"
+        },
+        {
+          "json_path": "$.turns[9].board_after.opponent.bench_in_position_order[1].tool",
+          "evidence_ids": [
+            "f_0379_00"
+          ],
+          "timestamp_seconds": [
+            379.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Marshadow"
+        },
+        {
+          "json_path": "$.turns[9].board_after.opponent.bench_in_position_order[2].tool",
+          "evidence_ids": [
+            "f_0379_00"
+          ],
+          "timestamp_seconds": [
+            379.0
+          ],
+          "kind": "Tool",
+          "pokemon": "Mega Lucario ex"
+        }
+      ],
+      "repair": "Add field-specific observed_absent status, evidence and absence basis (or an equivalent explicit object) to the listed Tool and Stadium fields. If a particular reference does not establish absence, mark it unknown with a specific reason. Preserve known empty Bench/terminal Active status and observed attached Barrier objects."
+    }
+  ],
+  "structural_checks": {
+    "retained_native_frames": 385,
+    "crop_files": 770,
+    "asset_bounds_dimensions_pixel_equivalence": "passed",
+    "unresolved_evidence_references": 0,
+    "source_identity": "Frozen CLI SOURCE metadata structurally agrees with all four structured documents and native frame index; source media not reread or rehashed.",
+    "qr_exact_20": "Prepared filmed-qr-b599dd4e7e1c entity counts exactly match all 20 filmed semantic slots; native QR image hash and frozen decode receipt agree. Printing limits retained.",
+    "live_snapshot": "Retained intake snapshot hash verified; absent matching live 20-card version remains explicit; no new-deck external save claimed.",
+    "full_source_coverage": "REVIEW/COVERAGE report the complete 0-400.856667 interval, dense event captures and explicit limits; bounded independent native samples included ordinary owner T3 and ordinary opponent T4 beyond flagged events."
+  },
+  "accepted_observations": [
+    "Five-card opening, New deck 6 QR/editor/event continuity, all ten native displayed turn banners, all five intact owner hands with scheduled candidates and before/end views checked.",
+    "Ordinary owner T3 bench input then Metal attachment, ordinary opponent T4 evolution/attachment/Research/Stretch Kick, and consequential named owner draws/searches agree.",
+    "T6 Pop Heads/Heads/Tails with Mega Fighting attachment between first and second Pops; Copycat four hidden draws and later Riolu bench agree.",
+    "T7 retained damage through evolution, silver Skarmory attachment, ordered Research reveals and Ball search, 100 damage KO/removal/point/replacement phases agree.",
+    "T9 20 then 10 effective healing, Heads then Tails, gold Barrier and second Metal attachment, 100 damage attack agree.",
+    "Cyrus switch, alternate Mega bench evolution and attachment, 140 damage to non-ex Aegislash, pre-removal/removal/third-point terminal phases and Defeat/results establish loss 1-3, ten turns, 270 displayed damage."
+  ],
+  "explicit_limits_accepted": [
+    "Hidden opponent draw identities remain null; fan counts and known reveals retained.",
+    "No discard pile viewer was opened. Periodic top previews do not claim full contents.",
+    "Exact frame PTS was not measured; requested source-local seeks are retained.",
+    "QR semantic identity does not determine all artwork/rarity printings.",
+    "Exact matching live deck snapshot/version unavailable; prepared local entry is not an external save.",
+    "Barrier expiry after the terminal point is unfilmed and remains unasserted."
+  ],
+  "preservation_instruction": "Preserve this rejected report and the exact checked inputs before root correction. Independent reviewer did not alter worker documents or source assets."
+}

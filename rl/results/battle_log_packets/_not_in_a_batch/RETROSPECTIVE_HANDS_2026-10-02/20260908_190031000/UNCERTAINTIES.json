@@ -1,0 +1,30 @@
+{
+  "capture_status": "complete_with_recording_limits",
+  "accessible_uninspected_required_fields": [],
+  "recording_limits": [
+    "Opponent unplayed cards and normal draw identities are hidden by card backs.",
+    "No discard panel was opened in the retained 1 fps locator scan; visible pile-top cards are recorded separately, full pile identities and order remain null.",
+    "One reduced sample per second does not examine every instant; brief subsecond prompts or panels can be missed.",
+    "Requested source-local times are retained; actual decoded frame PTS was not independently measured.",
+    "The exact historical 20-card log list is unavailable; visible core only."
+  ],
+  "independent_acceptance_status": "pending",
+  "mode": {
+    "classification": "uncertain",
+    "auto_control_present": false,
+    "auto_enabled": null,
+    "excluded_from_ladder": null,
+    "basis": "No Auto control visible in examined native full frames or all168 reduced 1fps locator samples. Manual controls and Supporter choices visible. Absence in limited views does not verify match mode.",
+    "native_evidence_ids": [
+      "t0052.00",
+      "t0133.00",
+      "t0153.00",
+      "t0155.00"
+    ],
+    "owner_rule": "Any visible Auto control even OFF means computer opponent and excluded from ladder.",
+    "obscured_view_limit": "Card/coin overlays hide portions of controls; no mode assertion from those overlays."
+  },
+  "old_packet_unchanged": true,
+  "consequential_conflicts": [],
+  "quick_grow_timing_qualification": "116.5 precedes Quick-Grow resolution;120/126 support the resolved evolution/recovery and discard. Exact input time is unmeasured."
+}

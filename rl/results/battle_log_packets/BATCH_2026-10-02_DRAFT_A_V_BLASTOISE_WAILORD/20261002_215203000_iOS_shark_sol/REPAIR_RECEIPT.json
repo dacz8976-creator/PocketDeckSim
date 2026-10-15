@@ -1,0 +1,26 @@
+{
+  "repaired_utc": "2026-10-03T01:21:23.314815+00:00",
+  "author": "/root",
+  "source_video": "20261002_215203000_iOS.MP4",
+  "source_sha256": "d0e031e9a27c358ad0e1590621014f2758bf80138b83c0776f9961ca34c88b7c",
+  "original_submission_preserved": "worker_submission/SUBMISSION.json",
+  "original_submission_sha256": "d3689e046466c856ca929b69ab9748ad846b3fb17e4c965e959d09d15db42b95",
+  "independent_rejection_sha256": "c8dff4fb7383eaf4ae8e3d600d2e16f8a84d2545cef894031edc4af360fc922d",
+  "corrections": [
+    "T1 Research completed hand count3to5",
+    "T1 Research measured native centerface35.5067",
+    "T7 Ball measured native centerface157.505"
+  ],
+  "changed_files": [
+    "TURN_LEDGER.json",
+    "TURN_EVIDENCE.json",
+    "REVIEW.md",
+    "TURN_TABLE.md"
+  ],
+  "primary_manifest_unchanged": true,
+  "independent_extraction_manifest_sha256": "4532139c083ec9cd047af29eceba4f23183f271a92b25b70e55b0fac5dbc6f13",
+  "retained_native_frames_union": 141,
+  "guide_and_inventory_semantics_unchanged": true,
+  "results_hidden_identities_and_move_order_unchanged": true,
+  "independent_recheck_pending": true
+}

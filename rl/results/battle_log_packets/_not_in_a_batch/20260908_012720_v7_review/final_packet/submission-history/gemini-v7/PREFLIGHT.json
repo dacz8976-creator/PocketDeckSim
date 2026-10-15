@@ -1,0 +1,49 @@
+{
+  "source_identity": {
+    "filename": "20260908_012720000_iOS.MP4",
+    "sha256": "B9E76626643D8950CB7A4277487DA2262B5FA96FAF9E87454495EBE896D47085",
+    "bytes": 530226009,
+    "duration_seconds": 282.628345
+  },
+  "completion": {
+    "finish_reasons": [
+      "STOP"
+    ],
+    "prompt_block_reason": null,
+    "automatic_retry_performed": false
+  },
+  "response_sha256": "AA636088130FC21D5C5D83AE1159CA56CEE6787DD57E0335AD05604A7B7A3FCD",
+  "battle_identity": {
+    "version": 1,
+    "opponent_label": {
+      "state": "observed",
+      "value": "Opponent",
+      "timestamp_seconds": 4.0,
+      "observation": "Opponent nameplate displayed above VS during matchmaking intro."
+    },
+    "opening_player": {
+      "state": "observed",
+      "value": "Teal Mask Ogerpon ex",
+      "timestamp_seconds": 17.0,
+      "observation": "Teal Mask Ogerpon ex placed in the Active Spot on player's side at setup."
+    },
+    "opening_opponent": {
+      "state": "observed",
+      "value": "Happiny",
+      "timestamp_seconds": 17.0,
+      "observation": "Happiny revealed in opponent's Active Spot at the start of the match."
+    },
+    "outcome": {
+      "state": "observed",
+      "value": "player_win",
+      "timestamp_seconds": 276.0,
+      "observation": "Player takes the final points reaching 3-2 points and Victory screen displays."
+    },
+    "result_text": {
+      "state": "observed",
+      "value": "Victory!",
+      "timestamp_seconds": 278.0,
+      "observation": "'Victory!' text banner displayed on screen with Whimsicott ex."
+    }
+  }
+}

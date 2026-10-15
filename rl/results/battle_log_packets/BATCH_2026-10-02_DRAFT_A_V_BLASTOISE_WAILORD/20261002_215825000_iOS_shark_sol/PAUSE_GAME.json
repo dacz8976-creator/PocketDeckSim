@@ -1,0 +1,120 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261002_215825",
+  "review_date": "2026-10-03T00:59:59.298373+00:00",
+  "sources": [
+    {
+      "video_basename": "20261002_215825000_iOS.MP4",
+      "sha256": "61fb9e041b4efa4ad31181c0cb89d94b38ad13f2bf194a48b8f606b24afb107c",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "destination": "local_review_batch_and_BATTLE_REVIEW_INDEX",
+  "online_game_entry_requested": false,
+  "deck_name": "Draft A: Shark Tempo",
+  "opening": {
+    "source_video": "20261002_215825000_iOS.MP4",
+    "timestamp_seconds": 20.0,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Copycat",
+        "variant": null,
+        "basis": "Direct named native hand in left-to-right order",
+        "evidence_ids": [
+          "F0020.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Professor's Research",
+        "variant": null,
+        "basis": "Direct named native hand in left-to-right order",
+        "evidence_ids": [
+          "F0020.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Alolan Vulpix",
+        "variant": null,
+        "basis": "Direct named native hand in left-to-right order",
+        "evidence_ids": [
+          "F0020.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Alolan Ninetales ex",
+        "variant": null,
+        "basis": "Direct named native hand in left-to-right order",
+        "evidence_ids": [
+          "F0020.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Misty",
+        "variant": null,
+        "basis": "Direct named native hand in left-to-right order",
+        "evidence_ids": [
+          "F0020.00"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Alolan Vulpix",
+      "opening_position": 3,
+      "source_video": "20261002_215825000_iOS.MP4",
+      "timestamp_seconds": 22.5,
+      "evidence_ids": [
+        "F0020.00",
+        "F0022.50"
+      ]
+    },
+    "redraw_or_replacement": [],
+    "before_active_placement": true,
+    "status": "observed",
+    "evidence_ids": [
+      "F0020.00"
+    ],
+    "limit_reason": null
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "complete_first_pass_pending_independent_acceptance",
+  "outcome": {
+    "owner": "win",
+    "displayed_score": [
+      3,
+      0
+    ],
+    "turns": 18,
+    "damage_done_displayed": 580,
+    "evidence_ids": [
+      "F0349.00",
+      "F0358.50"
+    ]
+  },
+  "limits": [
+    "No opened discard views; full pile contents cannot be read.",
+    "Opponent hidden hand identities unavailable.",
+    "Exact input times are not claimed; native decoded PTS are retained.",
+    "Underlying evolution faces inferred only from witnessed histories."
+  ],
+  "lead_checked": false,
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  }
+}

@@ -1,0 +1,31 @@
+{
+  "video_basename": "20261002_215203000_iOS.MP4",
+  "sha256": "d0e031e9a27c358ad0e1590621014f2758bf80138b83c0776f9961ca34c88b7c",
+  "bytes": 455918694,
+  "duration_seconds": 248.263333,
+  "streams": [
+    {
+      "codec_name": "hevc",
+      "width": 1170,
+      "height": 2532,
+      "start_time": "0.000000"
+    },
+    {
+      "codec_name": "aac",
+      "start_time": "0.000000"
+    }
+  ],
+  "source_path_at_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261002_215203000_iOS.MP4",
+  "recording_relationships": [],
+  "source_identity_basis": "Review_Log CLI verified SHA and stable file during hashing; size/mtime also stable through probe.",
+  "identity_verified_event_id": "e24335d5-8ef7-4768-a1c7-46d379458eff",
+  "intake_utc": "2026-10-03T00:09:09.374993+00:00",
+  "requested_log": null,
+  "owner_deck": "Original Draft A: Shark Tempo with Misty",
+  "owner_testimony": "Same computer opponent for eight complete recordings, five Auto followed by three manually piloted.",
+  "classification": "computer_battle",
+  "excluded_from_ladder": true,
+  "expected_action_authorship": "owner manual",
+  "match_date_local": "2026-10-02",
+  "recording_date_basis": "Owner supplied October2 batch and filenames; exact filename clock timezone not established."
+}

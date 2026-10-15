@@ -1,0 +1,32 @@
+{
+  "schema": "retrospective-hand-lead-acceptance-v1",
+  "source": "20261002_143837000_iOS.MP4",
+  "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+  "accepted_at_utc": "2026-10-02T20:51:22.383012+00:00",
+  "lead": "Codex retrospective lead",
+  "worker_model": "gpt-6.1-sol",
+  "worker_effort": "high",
+  "independent_model": "gpt-6.1-sol",
+  "independent_effort": "high",
+  "verdict": "accepted_with_recording_limits",
+  "target_turns": [
+    5,
+    7
+  ],
+  "original_full_battle_status": "Reviewed; preserved",
+  "scope": "Owner-authorized targeted starting-hand additions only; accepted outcome, boards, points and unrelated turns unchanged",
+  "independent_check": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\independent_sharpedo\\20261002_143837000\\SOURCE_CHECKS.json",
+  "structure_check": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_143837000\\STRUCTURE_CHECK.json",
+  "capture_status": "complete_with_recording_limits",
+  "source_read_basis": "Worker verified current archived source SHA after OneDrive delivery; independent verifier reused retained native evidence",
+  "shared_registration": "complete",
+  "limits": "Exact frame PTS unmeasured; scheduled candidates after first play are unsuitable; qualified ending views preserved",
+  "accepted_packet_hashes": {
+    "HAND_SUPPLEMENT.json": "d6a9f6a1f2f2c1e12d116f09c56f04832a8a85610bee8a8d027fd1b0de2a6027",
+    "TURN_EVIDENCE.json": "8b3782c97a6a599cd6b6b335df2d26e49f228e224e98b4f7033c66ce3af2ae9a",
+    "REVIEW_SUPPLEMENT.md": "a53e5f0d739d7d851dbe25127c4b47d194d6bd5aa71db5f67d7f335c6e7148af",
+    "UNCERTAINTIES.json": "dae2939d39c3f4147899205607ed3bc4f9ebeb2ad171ef6cec3c364f95da3c8c"
+  },
+  "shared_event": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Review_Log\\events\\2026-10-02T205123.386562_0000_036dc74a-38c3-41ae-8f5f-9a3448ee24fb.json",
+  "cli_verified_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac"
+}

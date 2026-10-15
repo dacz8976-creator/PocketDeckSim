@@ -1,0 +1,24 @@
+[
+  {
+    "source_video": "20261012_003458000_iOS.MP4",
+    "attempt_utc": "2026-10-12T02:49:13.474503+00:00",
+    "operation": "full Cloud Files hydration with FILE_READ_ATTRIBUTES handle",
+    "source_contents_modified": false,
+    "source_sha256": null,
+    "documentation": "https://learn.microsoft.com/en-us/windows/win32/api/cfapi/nf-cfapi-cfhydrateplaceholder",
+    "exit_code": 0,
+    "stdout": "Opening attribute handle\nRequesting complete local bytes\nS_OK",
+    "stderr": ""
+  },
+  {
+    "source_video": "20261012_004435000_iOS.MP4",
+    "attempt_utc": "2026-10-12T02:49:13.595803+00:00",
+    "operation": "full Cloud Files hydration with FILE_READ_ATTRIBUTES handle",
+    "source_contents_modified": false,
+    "source_sha256": null,
+    "documentation": "https://learn.microsoft.com/en-us/windows/win32/api/cfapi/nf-cfapi-cfhydrateplaceholder",
+    "exit_code": 0,
+    "stdout": "Opening attribute handle\nRequesting complete local bytes\nS_OK",
+    "stderr": ""
+  }
+]

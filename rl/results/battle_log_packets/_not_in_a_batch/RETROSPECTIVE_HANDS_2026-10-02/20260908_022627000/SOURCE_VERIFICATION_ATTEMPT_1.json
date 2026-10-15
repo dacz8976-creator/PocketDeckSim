@@ -1,0 +1,17 @@
+{
+  "source": "20260908_022627000_iOS.MP4",
+  "current_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260908_022627000_iOS.MP4",
+  "expected_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+  "expected_bytes": 1351891106,
+  "bytes_before": 1351891106,
+  "status": "verification_failed_cloud_delivery_timeout",
+  "started_utc": "2026-10-02T21:37:54.7904276Z",
+  "source_identity_hash_reads": 1,
+  "authorization": "Lead confirmed no concurrent reader and authorized one exact-source verification for actual native-hand field gaps",
+  "error": "Get-FileHash returned: The cloud operation was not completed before the time-out period expired.",
+  "actual_sha256": null,
+  "finished_utc": "2026-10-02T21:49:12.561594+00:00",
+  "exec_session": 26878,
+  "retry_started": false,
+  "limits": "No matching hash was produced. Original source not reread. Cached status must be checked and recovery coordinated by lead before further source reads."
+}

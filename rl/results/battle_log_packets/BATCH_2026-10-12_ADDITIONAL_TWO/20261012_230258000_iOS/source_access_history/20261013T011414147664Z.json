@@ -1,0 +1,31 @@
+{
+  "source": "20261012_230258000_iOS.MP4",
+  "attempt_utc": "2026-10-13T01:13:13.435229+00:00",
+  "operation": "bounded attribute-handle Cloud Files download",
+  "source_contents_modified": false,
+  "before": {
+    "logical_bytes": 1045075133,
+    "allocated_bytes": 524288000,
+    "attributes": 4724256,
+    "placeholder_state": 57,
+    "cloud_placeholder": true,
+    "in_sync": true,
+    "pinned": true,
+    "unpinned": false,
+    "online_only": false
+  },
+  "exit_code": 1,
+  "stdout": "Opening attribute-only handle\nRequesting complete download\n",
+  "stderr": "Traceback (most recent call last):\n  File \"C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-12_ADDITIONAL_TWO\\download_source_wait_longer.py\", line 35, in <module>\n    raise RuntimeError(f'Hydration HRESULT 0x{result & 0xffffffff:08X}')\nRuntimeError: Hydration HRESULT 0x800701AA\n",
+  "after": {
+    "logical_bytes": 1045075133,
+    "allocated_bytes": 524288000,
+    "attributes": 4724256,
+    "placeholder_state": 57,
+    "cloud_placeholder": true,
+    "in_sync": true,
+    "pinned": true,
+    "unpinned": false,
+    "online_only": false
+  }
+}

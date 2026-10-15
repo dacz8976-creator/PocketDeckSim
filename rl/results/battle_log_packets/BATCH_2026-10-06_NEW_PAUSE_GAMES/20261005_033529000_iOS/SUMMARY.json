@@ -1,0 +1,123 @@
+{
+  "schema": "battle-video-review-summary-v1",
+  "is_template": false,
+  "game_id": "20261005_033529000_iOS",
+  "source_video": "20261005_033529000_iOS.MP4",
+  "source_sha256": "e272b0c74f6a863c68811a235d7b9611b14994611365e58694028f323afaea3d",
+  "duration_seconds": 400.856667,
+  "review_status": "worker_complete_pending_independent_acceptance",
+  "coverage_status": "entire_supplied_source_reviewed",
+  "owner": "Dacz8976",
+  "opponent": "ゆぬ",
+  "match_date_local": "2026-10-04",
+  "match_datetime_local": "2026-10-04T22:35:29-05:00",
+  "datetime_basis": "Metadata creation_time UTC converted to America/Chicago; phone clock reads 10:35–10:41",
+  "visible_deck_label": "New deck 6",
+  "visible_deck_core": [
+    "Skarmory ex",
+    "Honedge",
+    "Doublade",
+    "Aegislash Cursed Metal",
+    "Aegislash Superb Shield",
+    "Orthworm"
+  ],
+  "mode": "Deluxe Pack: Mega Emblem Event",
+  "mode_basis": "Event selection screen at 4s; opponent search at 5s; uninterrupted sequence",
+  "computer_battle": false,
+  "auto_control_visible": false,
+  "auto_enabled": null,
+  "owner_choices_basis": "Owner-side touch selection, zooms, plays and End Turn visibly enacted; no Auto option shown",
+  "outcome": "loss",
+  "owner_points": 1,
+  "opponent_points": 3,
+  "actual_turns": 10,
+  "damage_done": 270,
+  "result_evidence_seconds": [
+    379,
+    390,
+    395
+  ],
+  "deck_list_status": "20 semantic cards decoded from filmed QR and game-bound; required matching live-log list/version missing",
+  "external_action_taken": false,
+  "lead_accepted": false,
+  "recommended_independent_checks": [
+    {
+      "seconds": [
+        26,
+        28,
+        34
+      ],
+      "reason": "Original five and setup binding"
+    },
+    {
+      "seconds": [
+        42.8,
+        43.5,
+        44
+      ],
+      "reason": "Intact T1 hand and End Turn input"
+    },
+    {
+      "seconds": [
+        81.5,
+        82,
+        87
+      ],
+      "reason": "Ordinary owner T3 first move and Metal attachment"
+    },
+    {
+      "seconds": [
+        173,
+        181,
+        182,
+        183,
+        184,
+        194,
+        204,
+        208,
+        210,
+        216,
+        226
+      ],
+      "reason": "Opponent T6 repeated Ice Pop, interleaved Energy attachment, Copycat count and attack"
+    },
+    {
+      "seconds": [
+        232.8,
+        233.5,
+        234,
+        241,
+        247,
+        248,
+        253,
+        260
+      ],
+      "reason": "T7 intact hand, evolution, silver attachment and named reveal order"
+    },
+    {
+      "seconds": [
+        310.8,
+        311.8,
+        312.5,
+        324,
+        332,
+        337,
+        340,
+        344.2,
+        348
+      ],
+      "reason": "T9 no-effect inspection, intact six and Tool/hand arithmetic"
+    },
+    {
+      "seconds": [
+        357,
+        360,
+        363,
+        368,
+        372,
+        390
+      ],
+      "reason": "Cyrus switch, second Mega Lucario, terminal KO/results"
+    }
+  ]
+}

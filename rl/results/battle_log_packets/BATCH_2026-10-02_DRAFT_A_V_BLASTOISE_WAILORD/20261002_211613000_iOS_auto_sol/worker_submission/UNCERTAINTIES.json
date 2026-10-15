@@ -1,0 +1,38 @@
+{
+  "source_video": "20261002_211613000_iOS.MP4",
+  "source_sha256": "8eec16e93f6e3bc1322e31bb5ff85c95a364ffb8bc14dd53427626226f1e3fd4",
+  "material_unresolved": [],
+  "inspected_recording_limits": [
+    {
+      "category": "Concealed opponent draws/searches not identifiable from the known deck.",
+      "status": "inspected_source_limit",
+      "consequential": false
+    },
+    {
+      "category": "Neither discard pile opened or scrolled; only visible top cards and separately labelled public discard events.",
+      "status": "inspected_source_limit",
+      "consequential": false
+    },
+    {
+      "category": "Covered evolution stacks are same-recording witnessed history; direct hidden stack reading remains unavailable.",
+      "status": "inspected_source_limit",
+      "consequential": false
+    },
+    {
+      "category": "Native candidates certify captured instants; reduced one-fps whole-timeline locators can miss subsecond invisible input.",
+      "status": "inspected_source_limit",
+      "consequential": false
+    },
+    {
+      "category": "Exact filmed collector numbers not transcribed; generic deck snapshot versions remain distinct from visible art.",
+      "status": "inspected_source_limit",
+      "consequential": false
+    }
+  ],
+  "not_inspected_source_intervals": [],
+  "not_inferred": [
+    "Hidden opponent held/drawn cards",
+    "Precise invisible player inputs",
+    "Entire discard counts or whole visual deck recovery"
+  ]
+}

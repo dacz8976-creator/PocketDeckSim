@@ -1,0 +1,73 @@
+{
+  "accepted": true,
+  "decision": "accepted_all_eight_after_narrow_source_correction_recheck",
+  "reviewer": "/root/check_remaining_015659",
+  "checked_utc": "2026-10-13T16:00:49.595628+00:00",
+  "source_video": "20261013_015659000_iOS.MP4",
+  "source_sha256": "6e2074461f324b9825dc0805101ba7d899933c2997709d36efc058b231dace9e",
+  "checked_input_sha256": {
+    "REVIEW.md": "064d77f58179598654b829afc7cb6920d67bdd46d976c5a7f04f90ac39106f67",
+    "COVERAGE.md": "903d262b6b7171e33504331ecd4e2d3c20e1dcd7767174a468c865d5745faea9",
+    "SUMMARY.json": "03bddf099e6d30b12a59faedd4a25a24aca36a9a7d41194b23d9e392a64af7e3",
+    "UNCERTAINTIES.json": "a2fad23251e93ec7138caa60df8d057577b2288f32fa81d9b398eb45cc9ee9f9",
+    "PAUSE_GAME.json": "617507f23fdc669f0f506e820acfb64a5b37cadb3a62dbdc5d61a2b5164b9c0f",
+    "DECK_USED.json": "8c240a79324492a54031c6ef02260363631d496d8c634a5e039f61c342c45f1b",
+    "TURN_LEDGER.json": "c6376f6d6eb240f20cd9276d1d9537e75e268731ede91694b7c1942a5a042b3b",
+    "TURN_EVIDENCE.json": "d6ecb04cf7696a3a4be6b3424eca88bc7ef02b31e0abb42cb78b0cadf3c00cfa"
+  },
+  "supplemental_checked_input_sha256": {
+    "astra_exception/CHECK_RESULT.json": "56c00dcf3c4649cf18dd085bafc57f94fbd5cc449609aed91b3401f6eb905463",
+    "astra_exception/t0267.80.jpg": "8e3bbbbcb261c15132342801b11cc81808a3285b04358b87d048f1f0ac5aa632",
+    "astra_exception/t0273.00.jpg": "c075e8ce0fadeba0c331331e9dd05d3f70e7509d5458413e7914814f03bb4427",
+    "astra_exception/t0274.00.jpg": "84ffe178b765d0070f32cc9daa49cae02976418a763f5601e30e876798c10196"
+  },
+  "all_eight_stable": true,
+  "freeze_utc": "2026-10-13T15:56:27.418051+00:00",
+  "scope": "Previous independent bounded acceptance checks retained; narrow recheck of repaired T8 order plus source-resolved Protective Poncho/T10 attachment order and later-board propagation. No duplicated whole-source review.",
+  "required_repairs": [],
+  "required_repairs_remaining": [],
+  "blocking_findings": [],
+  "previous_rejection": "independent_sol/CHECK_RESULT.json",
+  "preserved_rejected_bytes": "independent_sol/rejected_frozen_20261013_153653",
+  "pre_tool_resolution_bytes": "before_tool_resolution_20261013_1552",
+  "source_evidence_checks": [
+    {
+      "topic": "T8 correction",
+      "evidence_ids": [
+        "N0177_00",
+        "O00090",
+        "O00092",
+        "N0185_00"
+      ],
+      "result": "Revised Arena -> Center Lady -> Fighting183-185 -> attack -> forced replacement agrees with evidence independently viewed during original bounded check. Corrected prose and numbered actions agree."
+    },
+    {
+      "topic": "Protective Poncho title/effect/target",
+      "evidence_ids": [
+        "A0267_80",
+        "N0269_50"
+      ],
+      "result": "Independently inspected readable267.8 title and complete Bench-conditional text;269.5 icon attached to benched Mega. Exact printing remainsunknown."
+    },
+    {
+      "topic": "T10 Energy boundary",
+      "evidence_ids": [
+        "N0272_00",
+        "A0273_00",
+        "A0274_00"
+      ],
+      "result": "Independently inspected272 with Poncho already present, Hitmontop0Energy and currentorb available;273 with oneFighting attached and currentZone empty. Thus retreat -> Poncho -> Fighting -> attack.274 supplemental hash bound; corroborative settled state from Astra."
+    },
+    {
+      "topic": "later boards and remaining limits",
+      "result": "Every Mega Bench record from T10after through T13 retains named Poncho, Bench condition and unknown printing. Only resolved Tool-name limits removed. Historical deck/current-live limit, T11fan obscuration, absent opened discards and unmeasuredPTS remainexplicit."
+    }
+  ],
+  "structural_validation": {
+    "separate_from_visual_acceptance": true,
+    "structural_pass": true,
+    "turn_rows": 13,
+    "receipt": "independent_sol/CORRECTION_STRUCTURE_CHECK.json"
+  },
+  "acceptance_limits": "Bounded independent source checks plus primary full review, not a second full visual pass. Source hash inherited from frozen verified intake, not rehashed here. Live artifact save/readback and shared registration/archive are root responsibilities and not claimed by this receipt."
+}

@@ -1,0 +1,574 @@
+{
+  "filename": "20260907_224312000_iOS.MP4",
+  "source_path": "/home/dacz8976/20260907_224312000_iOS.MP4",
+  "sha256": "6F5BD2F13E548F8B5856132F7FAAB690641FD9A6F10F45D173802E09C9708593",
+  "bytes": 456674333,
+  "duration_seconds": 249.807,
+  "review_status": "partial",
+  "reviewer_attribution": "Gemini 3.8 Flash API first-pass draft",
+  "index_update_performed": false,
+  "media_move_performed": false,
+  "evidence_audit": {
+    "version": 1,
+    "opponent_label": "Opponent",
+    "match_mode": {
+      "value": "solo",
+      "evidence": [
+        {
+          "timestamp": "04:08.000",
+          "observation": "End screen displays 'vs. Random Battle (Expert)'"
+        }
+      ],
+      "uncertainty_id": null
+    },
+    "opponent_ai": {
+      "value": "yes",
+      "evidence": [
+        {
+          "timestamp": "00:02.800",
+          "observation": "Opponent banner displays 'AI' badge above 'Opponent'"
+        }
+      ],
+      "uncertainty_id": null
+    },
+    "auto": {
+      "value": "on",
+      "evidence": [
+        {
+          "timestamp": "00:07.400",
+          "observation": "Auto toggle checked and highlighted green"
+        }
+      ],
+      "uncertainty_id": null
+    },
+    "terminal": {
+      "outcome": "opponent_win",
+      "outcome_evidence": [
+        {
+          "timestamp": "04:00.400",
+          "observation": "Opponent reaches 3 points after Gabite knocked out"
+        }
+      ],
+      "result_text": "Defeat",
+      "result_text_evidence": [
+        {
+          "timestamp": "04:03.000",
+          "observation": "'Defeat' banner displayed on screen"
+        }
+      ],
+      "last_frame": {
+        "timestamp": "04:09.600",
+        "observation": "Summary screen showing 'Defeat...', Card of the Game Gabite, and stats"
+      },
+      "uncertainty_id": null
+    },
+    "pokemon": [
+      {
+        "id": "player-1",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:10.000",
+          "observation": "Gible placed in Active Spot with 0 Energy"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "03:57.800",
+          "observation": "Gabite knocked out and removed from play"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "player-2",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:24.400",
+          "observation": "Munchlax benched with 0 Energy"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "01:31.600",
+          "observation": "Munchlax knocked out and removed from play"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "player-3",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "01:54.000",
+          "observation": "Garchomp in Active Spot (evolved from Gabite) with 1 Fighting Energy"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "03:15.600",
+          "observation": "Garchomp knocked out and removed from play"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "player-4",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "02:28.600",
+          "observation": "Second Gible benched with 0 Energy"
+        },
+        "final": {
+          "Water": 1,
+          "Fighting": 1
+        },
+        "final_evidence": {
+          "timestamp": "03:44.200",
+          "observation": "Gabite in Active Spot with 1 Water and 1 Fighting attached"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "player-5",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "03:25.400",
+          "observation": "Celebi benched with 0 Energy"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "04:02.600",
+          "observation": "Celebi on Bench with 0 Energy"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-1",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:11.400",
+          "observation": "Deino in Active Spot with 0 Energy"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "03:39.400",
+          "observation": "Hydreigon knocked out and removed from play"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-2",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "01:11.400",
+          "observation": "Bombirdier placed onto opponent Bench"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "04:02.600",
+          "observation": "Bombirdier on Bench with 0 Energy"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-3",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "01:24.400",
+          "observation": "Mega Sableye ex placed onto opponent Bench"
+        },
+        "final": {
+          "Darkness": 2
+        },
+        "final_evidence": {
+          "timestamp": "04:02.600",
+          "observation": "Mega Sableye ex in Active Spot with 2 Darkness Energy attached"
+        },
+        "uncertainty_id": null
+      }
+    ],
+    "energy_events": [
+      {
+        "turn": 2,
+        "pokemon_id": "opp-1",
+        "kind": "manual",
+        "before": {},
+        "after": {
+          "Darkness": 1
+        },
+        "before_evidence": {
+          "timestamp": "00:28.600",
+          "observation": "Deino has 0 Energy"
+        },
+        "action_evidence": {
+          "timestamp": "00:32.600",
+          "observation": "Darkness Energy generated and moves to Deino"
+        },
+        "after_evidence": {
+          "timestamp": "00:34.000",
+          "observation": "Deino has 1 Darkness Energy attached"
+        }
+      },
+      {
+        "turn": 3,
+        "pokemon_id": "player-1",
+        "kind": "manual",
+        "before": {},
+        "after": {
+          "Fighting": 1
+        },
+        "before_evidence": {
+          "timestamp": "00:41.400",
+          "observation": "Gible has 0 Energy"
+        },
+        "action_evidence": {
+          "timestamp": "00:42.600",
+          "observation": "Fighting Energy attached from Energy Zone to Gible"
+        },
+        "after_evidence": {
+          "timestamp": "00:43.000",
+          "observation": "Gible has 1 Fighting Energy attached"
+        }
+      },
+      {
+        "turn": 4,
+        "pokemon_id": "opp-1",
+        "kind": "manual",
+        "before": {
+          "Darkness": 1
+        },
+        "after": {
+          "Darkness": 2
+        },
+        "before_evidence": {
+          "timestamp": "00:58.600",
+          "observation": "Deino has 1 Darkness Energy"
+        },
+        "action_evidence": {
+          "timestamp": "01:00.600",
+          "observation": "Darkness Energy generated and attached to Active"
+        },
+        "after_evidence": {
+          "timestamp": "01:04.000",
+          "observation": "Hydreigon has 2 Darkness Energy attached"
+        }
+      },
+      {
+        "turn": 4,
+        "pokemon_id": "opp-1",
+        "kind": "effect",
+        "before": {
+          "Darkness": 2
+        },
+        "after": {
+          "Darkness": 4
+        },
+        "before_evidence": {
+          "timestamp": "01:13.200",
+          "observation": "Hydreigon has 2 Darkness Energy"
+        },
+        "action_evidence": {
+          "timestamp": "01:13.600",
+          "observation": "Hydreigon uses Roar in Unison ability to attach 2 Darkness Energy"
+        },
+        "after_evidence": {
+          "timestamp": "01:16.800",
+          "observation": "Hydreigon has 4 Darkness Energy attached"
+        }
+      },
+      {
+        "turn": 4,
+        "pokemon_id": "opp-1",
+        "kind": "discard",
+        "before": {
+          "Darkness": 4
+        },
+        "after": {
+          "Darkness": 3
+        },
+        "before_evidence": {
+          "timestamp": "01:27.400",
+          "observation": "Hydreigon has 4 Darkness Energy before attack"
+        },
+        "action_evidence": {
+          "timestamp": "01:28.000",
+          "observation": "Hyper Ray discards 1 Darkness Energy"
+        },
+        "after_evidence": {
+          "timestamp": "01:36.400",
+          "observation": "Hydreigon has 3 Darkness Energy attached"
+        }
+      },
+      {
+        "turn": 5,
+        "pokemon_id": "player-1",
+        "kind": "manual",
+        "before": {
+          "Fighting": 1
+        },
+        "after": {
+          "Fighting": 1
+        },
+        "before_evidence": {
+          "timestamp": "01:39.400",
+          "observation": "Gabite has 1 Fighting Energy"
+        },
+        "action_evidence": {
+          "timestamp": "01:42.200",
+          "observation": "Water Energy generated in Energy Zone, not attached"
+        },
+        "after_evidence": {
+          "timestamp": "01:54.000",
+          "observation": "Garchomp active with 1 Fighting Energy"
+        }
+      },
+      {
+        "turn": 6,
+        "pokemon_id": "opp-1",
+        "kind": "manual",
+        "before": {
+          "Darkness": 3
+        },
+        "after": {
+          "Darkness": 3
+        },
+        "before_evidence": {
+          "timestamp": "02:04.000",
+          "observation": "Hydreigon has 3 Darkness Energy"
+        },
+        "action_evidence": {
+          "timestamp": "02:04.600",
+          "observation": "Darkness Energy generated in opponent Energy Zone"
+        },
+        "after_evidence": {
+          "timestamp": "02:07.400",
+          "observation": "Hydreigon has 3 Darkness Energy attached"
+        }
+      },
+      {
+        "turn": 6,
+        "pokemon_id": "opp-1",
+        "kind": "discard",
+        "before": {
+          "Darkness": 3
+        },
+        "after": {
+          "Darkness": 2
+        },
+        "before_evidence": {
+          "timestamp": "02:11.600",
+          "observation": "Hydreigon has 3 Darkness Energy"
+        },
+        "action_evidence": {
+          "timestamp": "02:12.000",
+          "observation": "Hyper Ray discards 1 Darkness Energy"
+        },
+        "after_evidence": {
+          "timestamp": "02:16.800",
+          "observation": "Hydreigon has 2 Darkness Energy attached"
+        }
+      },
+      {
+        "turn": 7,
+        "pokemon_id": "player-4",
+        "kind": "manual",
+        "before": {},
+        "after": {
+          "Fighting": 1
+        },
+        "before_evidence": {
+          "timestamp": "02:29.000",
+          "observation": "Benched Gible has 0 Energy"
+        },
+        "action_evidence": {
+          "timestamp": "02:30.000",
+          "observation": "Fighting Energy attached to benched Gible"
+        },
+        "after_evidence": {
+          "timestamp": "02:30.400",
+          "observation": "Benched Gible has 1 Fighting Energy attached"
+        }
+      },
+      {
+        "turn": 8,
+        "pokemon_id": "opp-1",
+        "kind": "manual",
+        "before": {
+          "Darkness": 2
+        },
+        "after": {
+          "Darkness": 3
+        },
+        "before_evidence": {
+          "timestamp": "03:00.200",
+          "observation": "Hydreigon has 2 Darkness Energy"
+        },
+        "action_evidence": {
+          "timestamp": "03:01.000",
+          "observation": "Darkness Energy attached to Hydreigon"
+        },
+        "after_evidence": {
+          "timestamp": "03:04.000",
+          "observation": "Hydreigon has 3 Darkness Energy"
+        }
+      },
+      {
+        "turn": 8,
+        "pokemon_id": "opp-1",
+        "kind": "effect",
+        "before": {
+          "Darkness": 3
+        },
+        "after": {
+          "Darkness": 4
+        },
+        "before_evidence": {
+          "timestamp": "03:04.400",
+          "observation": "Hydreigon has 3 Darkness Energy"
+        },
+        "action_evidence": {
+          "timestamp": "03:05.000",
+          "observation": "Hydreigon uses Roar in Unison to attach Darkness Energy"
+        },
+        "after_evidence": {
+          "timestamp": "03:07.400",
+          "observation": "Hydreigon has 4 Darkness Energy attached"
+        }
+      },
+      {
+        "turn": 8,
+        "pokemon_id": "opp-1",
+        "kind": "discard",
+        "before": {
+          "Darkness": 4
+        },
+        "after": {
+          "Darkness": 3
+        },
+        "before_evidence": {
+          "timestamp": "03:11.400",
+          "observation": "Hydreigon has 4 Darkness Energy"
+        },
+        "action_evidence": {
+          "timestamp": "03:12.000",
+          "observation": "Hyper Ray discards 1 Darkness Energy"
+        },
+        "after_evidence": {
+          "timestamp": "03:16.800",
+          "observation": "Hydreigon has 3 Darkness Energy attached"
+        }
+      },
+      {
+        "turn": 8,
+        "pokemon_id": "player-3",
+        "kind": "discard",
+        "before": {
+          "Fighting": 1
+        },
+        "after": {},
+        "before_evidence": {
+          "timestamp": "03:11.400",
+          "observation": "Garchomp has 1 Fighting Energy"
+        },
+        "action_evidence": {
+          "timestamp": "03:13.800",
+          "observation": "Garchomp knocked out"
+        },
+        "after_evidence": {
+          "timestamp": "03:15.600",
+          "observation": "Garchomp removed from play"
+        }
+      },
+      {
+        "turn": 9,
+        "pokemon_id": "player-4",
+        "kind": "manual",
+        "before": {
+          "Fighting": 1
+        },
+        "after": {
+          "Fighting": 1,
+          "Water": 1
+        },
+        "before_evidence": {
+          "timestamp": "03:22.200",
+          "observation": "Active Gible has 1 Fighting Energy"
+        },
+        "action_evidence": {
+          "timestamp": "03:29.600",
+          "observation": "Water Energy attached to Active Gabite (evolved)"
+        },
+        "after_evidence": {
+          "timestamp": "03:30.000",
+          "observation": "Gabite has 1 Water and 1 Fighting Energy attached"
+        }
+      },
+      {
+        "turn": 9,
+        "pokemon_id": "opp-1",
+        "kind": "discard",
+        "before": {
+          "Darkness": 3
+        },
+        "after": {},
+        "before_evidence": {
+          "timestamp": "03:30.000",
+          "observation": "Hydreigon has 3 Darkness Energy"
+        },
+        "action_evidence": {
+          "timestamp": "03:34.200",
+          "observation": "Hydreigon knocked out by Gabite's Linear Attack"
+        },
+        "after_evidence": {
+          "timestamp": "03:39.400",
+          "observation": "Hydreigon removed to discard"
+        }
+      },
+      {
+        "turn": 10,
+        "pokemon_id": "opp-3",
+        "kind": "manual",
+        "before": {},
+        "after": {
+          "Darkness": 1
+        },
+        "before_evidence": {
+          "timestamp": "03:46.400",
+          "observation": "Mega Sableye ex has 0 Energy"
+        },
+        "action_evidence": {
+          "timestamp": "03:51.400",
+          "observation": "Darkness Energy attached to Mega Sableye ex"
+        },
+        "after_evidence": {
+          "timestamp": "03:52.000",
+          "observation": "Mega Sableye ex has 1 Darkness Energy attached"
+        }
+      },
+      {
+        "turn": 10,
+        "pokemon_id": "player-4",
+        "kind": "discard",
+        "before": {
+          "Fighting": 1,
+          "Water": 1
+        },
+        "after": {},
+        "before_evidence": {
+          "timestamp": "03:52.000",
+          "observation": "Gabite has 2 Energy attached"
+        },
+        "action_evidence": {
+          "timestamp": "03:55.600",
+          "observation": "Gabite knocked out by Cursed Jewel"
+        },
+        "after_evidence": {
+          "timestamp": "03:57.800",
+          "observation": "Gabite removed from play"
+        }
+      }
+    ]
+  }
+}

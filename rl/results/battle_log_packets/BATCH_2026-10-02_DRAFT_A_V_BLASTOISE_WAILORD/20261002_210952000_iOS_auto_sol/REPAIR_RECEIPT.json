@@ -1,0 +1,29 @@
+{
+  "repaired_utc": "2026-10-03T00:55:07.753452+00:00",
+  "author": "/root",
+  "source_video": "20261002_210952000_iOS.MP4",
+  "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+  "original_core_sha256": "ae9dbf637c49ecf5f5825338f55efe50aae03c41d905d34256c090677476b955",
+  "original_guide_sha256": "ec615eca388eb920c30dc52b725925b3d111511af81c2d2057a42e33cfe771cc",
+  "independent_core_rejection_sha256": "d9179432d98ef0afd8852eebcaefb08ad98368496878ba94dc67839a1e0abd6f",
+  "independent_guide_rejection_sha256": "742a2e6d563e07e5e348fd668123bc992b89edca80f09500458e97dc047aca9c",
+  "corrections": [
+    "T18 current Energy slot pending generation",
+    "T2/T6 exact named reveal/search anchors",
+    "T15 visible written promotion prompt"
+  ],
+  "core_changed_files": [
+    "TURN_LEDGER.json",
+    "TURN_EVIDENCE.json",
+    "REVIEW.md",
+    "TURN_TABLE.md"
+  ],
+  "guide_changed_files": [
+    "GUIDE_UPDATE_SUPPLEMENT.json",
+    "GUIDE_UPDATE_SUPPLEMENT.md"
+  ],
+  "independent_extraction_manifest_sha256": "3ab33848e31f11fa93bdaa8470c6b8425540315c84c1e21f9f789653bb0b6b48",
+  "primary_extraction_manifest_unchanged": true,
+  "original_results_names_and_action_order_unchanged": true,
+  "independent_recheck_pending": true
+}

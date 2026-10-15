@@ -1,0 +1,49 @@
+{
+  "source_identity": {
+    "filename": "20260908_015702000_iOS.MP4",
+    "sha256": "3FBD29A85A17B5F4B4F7DDD3D7EE15B2177503FF3E15C56314DE9CC60EDCFB2D",
+    "bytes": 507514203,
+    "duration_seconds": 272.803333
+  },
+  "completion": {
+    "finish_reasons": [
+      "STOP"
+    ],
+    "prompt_block_reason": null,
+    "automatic_retry_performed": false
+  },
+  "response_sha256": "EC2918E3713A81DF452EE9C27A42C458FB09C6D506F3D96ADB215D8F81AD4305",
+  "battle_identity": {
+    "version": 1,
+    "opponent_label": {
+      "state": "observed",
+      "value": "Opponent",
+      "timestamp_seconds": 1.5,
+      "observation": "The opponent indicator at the top right of the battlefield displays the name Opponent above the score indicators."
+    },
+    "opening_player": {
+      "state": "observed",
+      "value": "Duraludon",
+      "timestamp_seconds": 1.5,
+      "observation": "Duraludon is in the player's Active Spot with 100 HP."
+    },
+    "opening_opponent": {
+      "state": "observed",
+      "value": "Team Rocket's Rattata",
+      "timestamp_seconds": 1.5,
+      "observation": "Team Rocket's Rattata is in the opponent's Active Spot with 40 HP before retreating."
+    },
+    "outcome": {
+      "state": "observed",
+      "value": "player_win",
+      "timestamp_seconds": 270.5,
+      "observation": "Player's Haxorus knocks out opponent's Chien-Pao ex, earning +2 points to fill all three point circles to secure a 3-point victory."
+    },
+    "result_text": {
+      "state": "not_shown",
+      "value": null,
+      "timestamp_seconds": 272.8,
+      "observation": "The video ends on a blank white transition screen before any final Victory banner is rendered."
+    }
+  }
+}

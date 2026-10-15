@@ -1,0 +1,27 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-14T15:14:20.103898+00:00",
+  "source_video": "20261002_012229000_iOS.MP4",
+  "source_sha256": "d767c42f6e9a4e8677ae45020e7fccc2a0e9954009faf699abada5ef6c4d49c5",
+  "source_game_count": 1,
+  "all_source_games_accepted": true,
+  "battle_complete": true,
+  "archive_eligible": true,
+  "scope": "Entire 309.766667-second recording; AI setup, all 12 turns and terminal defeat; one computer battle",
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-14_OLDER_FOUR\\20261002_012229000_iOS\\independent_sol\\CHECK_RESULT.json",
+  "independent_acceptance_sha256": "eaeb708f9062be56d10482fba52a876377a757d5d586e0483154850d55a6e646",
+  "accepted_input_sha256": {
+    "SOURCE.json": "8356a54ff34a2fbeb93d5a8a48d09f4aa3f6141852f4ac3bd699a0623ce3abb4",
+    "ASSIGNMENT.json": "ff780d668f2537ff5b8d899d36a054b14f8e3669625bc2d5781176af5aca5aa3",
+    "REVIEW.md": "fb532f893821247c8610b82bcff1844fa8fc01189f1fa9e23bc52cd5c8cc301d",
+    "COVERAGE.md": "59492c3bcfeeedec8d2ed2424feadd6fcad6369a01119d8011cf9120f32adb47",
+    "SUMMARY.json": "147b97f8aaa9b9bbcd0c899dc570ab9f5757ecfd3df43cac9f81d440f720f3e2",
+    "UNCERTAINTIES.json": "92f75c5d20cb535ed9fb35bdf57ba7f43cdd804ab83da519884854ed5ecb5235",
+    "EVENTS.json": "c09c1ee9d9d11fd990b009c24d0c60697085a11bbc0fd24871f8460f4f79929d",
+    "REVIEW_PACKET_HASHES.json": "68eb07fef9fe789fa3c1535c1ed425bee6f964867855478f51f462f93ff3e70f"
+  },
+  "root_checks": "SOURCE_CHECKS.json",
+  "notes": "Independent Sol acceptance and root native-source checks. Computer battle, Auto OFF observed, owner loss2-3. Excluded from Ladder Log and Pause Games. Original frozen primary independent_acceptance field remains historical; LEAD_ACCEPTANCE is authoritative."
+}

@@ -1,0 +1,16 @@
+{
+  "lead_checks": [
+    "evidence/end_sheet_1.jpg: end-turn confirmation and Poison10 reduces Glimmora10 to0",
+    "evidence/end_sheet_2.jpg: Shattering Crystal banner and point denial ability text",
+    "evidence/end_sheet_3.jpg: coin resolves Heads at166 seconds, then Glimmora removal",
+    "evidence/end_sheet_4.jpg: explicit opponent receives no points message at169 and replacement prompt171; point markers remain empty"
+  ],
+  "limitations": "Burn and tails outcome not observed. Simulator implementation not inspected.",
+  "source_sha256": "f60978df6529a745e0833c2a74ca1cbfa45798c43e44e05ea513c42d38c4d7e7",
+  "scope": "Independent lead acceptance of consequential rule-test evidence; no ladder result",
+  "accepted": true,
+  "accepted_utc": "2026-09-29T20:27:25.1366195Z",
+  "finding": "Poison knockout triggers Shattering Crystal. Heads denies the opponent points before replacement selection.",
+  "source_video": "20260929_200857000_iOS.MP4",
+  "first_pass": "sol_glimmora_200857"
+}

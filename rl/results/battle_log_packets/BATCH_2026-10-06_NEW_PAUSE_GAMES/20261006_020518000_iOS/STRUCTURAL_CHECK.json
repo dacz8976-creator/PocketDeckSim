@@ -1,0 +1,23 @@
+{
+  "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261006_020518000_iOS",
+  "structural_pass": true,
+  "turn_rows": 17,
+  "issues": [],
+  "visual_acceptance": false,
+  "limit": "Integrity/template checks do not establish battle coverage or semantic correctness.",
+  "checked_at_utc": "2026-10-06T20:31:05.892167+00:00",
+  "packet_hashes": {
+    "SOURCE.json": "f41642279d22c5bc03dc2bb7e8624100cdee034a4c0c3c23908b03f45d9bfd19",
+    "REVIEW.md": "14de67dff750078215181b12499dc8036187b817dd7906b9cb2da62def8714e4",
+    "COVERAGE.md": "63dbe04f2c030b13a49926a5baea2a33f00219f669891e77b475fb6b9532a151",
+    "SUMMARY.json": "4d88d0ee6fe0e6d97aa53ed10ff8af96158df5a52c03a337f32c4d2f8a263cfd",
+    "UNCERTAINTIES.json": "a340abfe800f7a7ef6d520652b6af3cced3fa8872e1a928aa814f7fcad51f29f",
+    "PAUSE_GAME.json": "48af57016f608796b26b87c058b01f83fe181663a8fe2b85cb718d6a3fbe2a2d",
+    "DECK_USED.json": "e5050f4d672894d77d3b8c2e03c81f2d5cdc84c4faa8a3b90c84b37d127ff5e8",
+    "TURN_LEDGER.json": "50170dac59a2cd9a492163cd603963cab8ef3438066857567d913a019ebdf3ec",
+    "TURN_EVIDENCE.json": "dc9e510b7c78c6915e7e0d9e16e76a00aae28d37df331bcd9940c936aa9198dd",
+    "CONSISTENCY_CHECK.json": "aa7b323a1434fc2c67c2aef5ce6e185e2832c0751efaa870bdff8d5d08cc89f7"
+  },
+  "native_frame_manifest_count": 292,
+  "worker_state": "stable_first_pass_pending_independent_acceptance"
+}

@@ -1,0 +1,53 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-13T15:07:50.816802+00:00",
+  "source_game_count": 1,
+  "all_source_games_accepted": true,
+  "source_video": "20261013_010003000_iOS.MP4",
+  "source_sha256": "3e2fc4897a2f9de4f03899a643a0c32e3bf46b5cc1f56a87d182dff9ceb9072b",
+  "scope": "Entire supplied recording, one human battle, opening, all 11 turns and terminal result",
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 11,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_REMAINING_SIX\\20261013_010003000_iOS\\independent_sol\\CORRECTION_RECHECK.json",
+  "accepted_input_sha256": {
+    "REVIEW.md": "8fc4d5cf6b32b6683acd1f81cc905641f125fa8e591ce3d489c94900b3dcda51",
+    "COVERAGE.md": "e3ca177c8e6a54d5f58ae614254845d1b288224177207b7e546bfe8f261fef22",
+    "SUMMARY.json": "f92f976ecdf4dabf026f208811b5e551e03b66cd6d19259583e3ddc8d383017e",
+    "UNCERTAINTIES.json": "2d8f6b3e057a336a8c4bd59aa1a4b522a2245281ad7b329baab1eda6b1ed8b7a",
+    "PAUSE_GAME.json": "4d97e67c892de0c73e57c43a5c41876be3241590846ec65f399ff21fc0279ec4",
+    "DECK_USED.json": "a38db70155f175fd61eb5f0cd934c34a0ba5aaca0fe52196c7727fd314192029",
+    "TURN_LEDGER.json": "db22de7256f59ae975f703e5fba1c7729eb480375ab5ddb2e5c95748e9428198",
+    "TURN_EVIDENCE.json": "e360cf5a2bef6bab9ba45c5b1001ac2f350da4338d72dfa8366a6496052db11c"
+  },
+  "basis": "Whole-source Sol review, separately bounded Sol checks against source frames, and lead reconciliation of coverage, ordinary decisions, draws/searches, hand arithmetic, point progression, decisive sequences and terminal outcome. Structural integrity checked separately.",
+  "administrative_fields_changed_after_independent_freeze": [
+    "lead_checked",
+    "battle_review_status",
+    "lead_acceptance"
+  ],
+  "source_limits": [
+    "No opened discard pile, no complete discard scroll for either player.",
+    "Opponent drawn/searched card identities stay hidden except publicly played cards.",
+    "Exact artwork/rarity unverified; filmed QR establishes semantic entities only.",
+    "Fresh live Pause Games deck snapshot pending root retrieval; filmed exact20 is separate.",
+    "Some draw candidates occur after an immediate first play; denser pre-play anchors retained.",
+    "Turn11 ends by opponent concession; before-end hand uses post-heal/pre-concession view, not End Turn."
+  ],
+  "outcome": {
+    "result": "win",
+    "method": "opponent_concession",
+    "opponent": "gimt",
+    "points_owner": 2,
+    "points_opponent": 0,
+    "turn_count": 11,
+    "evidence_ids": [
+      "f0452_00",
+      "f0456_00",
+      "f0472_00"
+    ]
+  },
+  "deck_status": "Filmed deck binding and exact dated historical live list are recorded in DECK_USED. Current browser access is blocked; no current live readback or save is claimed. A fresh saved-list readback remains a separate required external step.",
+  "external_status": "Prepared game import pending; browser stopped by URL policy check. No external save claimed."
+}

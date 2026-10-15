@@ -1,0 +1,252 @@
+{
+  "filename": "20260908_015201000_iOS.MP4",
+  "source_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260908_015201000_iOS.MP4",
+  "sha256": "65B404F8EC8CB712EF9D19FA5BC87E051EDC80050067BC179E8387AE404CE258",
+  "bytes": 127098167,
+  "duration_seconds": 68.12,
+  "review_status": "full_battle_review_complete_via_linked_continuation",
+  "index_update_performed": true,
+  "media_move_performed": true,
+  "recording_type": "linked_part_1",
+  "relationships": [
+    {
+      "type": "continued_by",
+      "status": "confirmed",
+      "filename": "20260908_015702000_iOS.MP4",
+      "sha256": "3FBD29A85A17B5F4B4F7DDD3D7EE15B2177503FF3E15C56314DE9CC60EDCFB2D",
+      "note": "The final board in this clip exactly matches the opening board of the continuation. The linked recording completes the battle."
+    }
+  ],
+  "model": "gemini-3.8-flash",
+  "review_method": "static video processing at 5 source frames per second with high media resolution",
+  "reviewer_attribution": "Gemini 3.8 Flash API primary outline, independently checked and corrected by Sol, accepted by Codex lead for all available footage",
+  "outcome": "player_win_via_linked_continuation",
+  "linked_battle": {
+    "complete": true,
+    "continuation_filename": "20260908_015702000_iOS.MP4",
+    "final_score": {"player": 3, "opponent": 2},
+    "outcome": "player_win",
+    "note": "The clip-specific terminal state below remains unknown because this file itself ends during Turn 3; the linked continuation resolves the full battle."
+  },
+  "battle_identity": {
+    "opponent_label": {
+      "state": "observed",
+      "value": "Opponent",
+      "timestamp_seconds": 4.2,
+      "observation": "Opponent matchup banner shows label Opponent with AI badge"
+    },
+    "opening_player": {
+      "state": "observed",
+      "value": "Duraludon",
+      "timestamp_seconds": 14.4,
+      "observation": "Player puts Duraludon into the Active Spot"
+    },
+    "opening_opponent": {
+      "state": "observed",
+      "value": "Team Rocket's Rattata",
+      "timestamp_seconds": 19.4,
+      "observation": "Opponent opening Active card revealed as Team Rocket's Rattata"
+    },
+    "outcome": {
+      "state": "unknown",
+      "value": null,
+      "timestamp_seconds": 68.12,
+      "observation": "Video ends prematurely at 01:08.000 during turn 3"
+    },
+    "result_text": {
+      "state": "not_shown",
+      "value": null,
+      "timestamp_seconds": 68.12,
+      "observation": "No terminal result banner appears before recording cutoff"
+    },
+    "version": 1
+  },
+  "evidence_audit": {
+    "version": 1,
+    "opponent_label": "Opponent",
+    "match_mode": {
+      "value": "solo",
+      "evidence": [
+        {
+          "timestamp": "00:04.200",
+          "observation": "AI badge displayed above generic Opponent label"
+        }
+      ],
+      "uncertainty_id": null
+    },
+    "opponent_ai": {
+      "value": "yes",
+      "evidence": [
+        {
+          "timestamp": "00:04.200",
+          "observation": "Explicit AI tag displayed above Opponent name"
+        }
+      ],
+      "uncertainty_id": null
+    },
+    "auto": {
+      "value": "off",
+      "evidence": [
+        {
+          "timestamp": "00:08.800",
+          "observation": "Auto toggle switch is in the off position"
+        }
+      ],
+      "uncertainty_id": null
+    },
+    "terminal": {
+      "outcome": "unknown",
+      "outcome_evidence": [
+        {
+          "timestamp": "01:08.000",
+          "observation": "Recording terminates mid-battle during turn 3 with score 0-0"
+        }
+      ],
+      "result_text": null,
+      "result_text_evidence": [
+        {
+          "timestamp": "01:08.000",
+          "observation": "No victory or defeat banner shown before video ends"
+        }
+      ],
+      "last_frame": {
+        "timestamp": "01:08.000",
+        "observation": "Opponent's turn 3 begins; board remains active as video cuts off"
+      },
+      "uncertainty_id": "U1"
+    },
+    "pokemon": [
+      {
+        "id": "player-1",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:14.400",
+          "observation": "Duraludon placed in Active Spot with 0 Energy"
+        },
+        "final": {
+          "Metal": 1
+        },
+        "final_evidence": {
+          "timestamp": "01:05.000",
+          "observation": "Duraludon has 1 Metal Energy attached"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "player-2",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:34.000",
+          "observation": "Dratini placed onto player's Bench with 0 Energy"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "01:08.000",
+          "observation": "Dratini remains on Bench with 0 Energy"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "player-3",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:51.400",
+          "observation": "Axew placed onto player's Bench with 0 Energy"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "01:08.000",
+          "observation": "Axew remains on Bench with 0 Energy"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-1",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:19.400",
+          "observation": "Opponent reveals Team Rocket's Rattata in Active Spot with 0 Energy"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "01:08.000",
+          "observation": "Team Rocket's Rattata remains Active with 0 Energy"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-2",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:20.600",
+          "observation": "Opponent reveals Corphish on Bench with 0 Energy"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "01:08.000",
+          "observation": "Corphish remains on Bench with 0 Energy"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-3",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:20.000",
+          "observation": "Opponent reveals Team Rocket's Rattata on Bench with 0 Energy"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "01:08.000",
+          "observation": "Bench Team Rocket's Rattata remains with 0 Energy"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-4",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:27.800",
+          "observation": "Opponent plays Chien-Pao ex onto Bench with 0 Energy"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "01:08.000",
+          "observation": "Chien-Pao ex remains on Bench with 0 Energy"
+        },
+        "uncertainty_id": null
+      }
+    ],
+    "energy_events": [
+      {
+        "turn": 2,
+        "pokemon_id": "player-1",
+        "kind": "manual",
+        "attachment_evidence": "movement_and_attached_icons",
+        "before": {},
+        "after": {
+          "Metal": 1
+        },
+        "before_evidence": {
+          "timestamp": "00:21.000",
+          "observation": "Duraludon in Active Spot has no Energy attached"
+        },
+        "action_evidence": {
+          "timestamp": "01:04.000",
+          "observation": "Metal Energy dragged from Energy Zone to Active Duraludon"
+        },
+        "after_evidence": {
+          "timestamp": "01:05.000",
+          "observation": "Duraludon shows 1 attached Metal Energy icon"
+        }
+      }
+    ]
+  }
+}

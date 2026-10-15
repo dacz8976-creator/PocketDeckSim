@@ -1,0 +1,314 @@
+{
+  "schema": "pause_batch_retained_qr_v1",
+  "decoded_at_utc": "2026-10-13T03:59:47.872134+00:00",
+  "source_video": "20261013_022530000_iOS.MP4",
+  "source_seconds": 0.0,
+  "source_sha256": "02714096351099424338ac83d3f529ef4f0e6979a978a50f48c5ff505a2b6cb7",
+  "retained_image": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_NEWEST_TWO\\20261013_022530000_iOS\\turn_evidence\\t0000.00.jpg",
+  "retained_image_sha256": "7f3cab51b067898a0339b7f548f68513c4dadfa890b0b359c33120994e720d55",
+  "native_dimensions": [
+    1170,
+    2532
+  ],
+  "scan_crop_xyxy": null,
+  "read_method": "zxingcpp_native_image",
+  "payload": "C5iWnpiWnpiYYJiYYJiapJiXrJiWqJiWqJiaXpibYpictgkACoIAQMQAQMQAPp4APp4AUSIAUSIAUSwAUSwCBgg=",
+  "payload_ascii_sha256": "324c9e740140afe5f9cfc41b81539d8322883a912fbeaa3388ed68a974fb40a8",
+  "decoded": {
+    "trainerIds": [
+      30,
+      30,
+      480,
+      480,
+      1060,
+      300,
+      40,
+      40,
+      990,
+      1250,
+      1590
+    ],
+    "pokemonIds": [
+      2690,
+      16580,
+      16580,
+      16030,
+      16030,
+      20770,
+      20770,
+      20780,
+      20780
+    ],
+    "energyTypes": [
+      6,
+      8
+    ],
+    "energy": [
+      {
+        "value": 6,
+        "name": "Fighting",
+        "selectable": true
+      },
+      {
+        "value": 8,
+        "name": "Metal",
+        "selectable": true
+      }
+    ],
+    "roundtrip": true,
+    "roundtrip_limit": null
+  },
+  "card_slot_count": 20,
+  "cards": [
+    {
+      "entity_kind": "trainer",
+      "entity_id": 30,
+      "count": 2,
+      "name": "Poké Ball",
+      "name_candidates": [
+        "Poké Ball"
+      ],
+      "functional_ids": [
+        "1b20901befde"
+      ],
+      "printing_aliases": [
+        "A2b 111",
+        "P-A 005"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 480,
+      "count": 2,
+      "name": "Rare Candy",
+      "name_candidates": [
+        "Rare Candy"
+      ],
+      "functional_ids": [
+        "87829fe1a8c1"
+      ],
+      "printing_aliases": [
+        "A3 144",
+        "A4b 314",
+        "A4b 315",
+        "A4b 379"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 1060,
+      "count": 1,
+      "name": "Lucky Ice Pop",
+      "name_candidates": [
+        "Lucky Ice Pop"
+      ],
+      "functional_ids": [
+        "15c19aaaf9a4"
+      ],
+      "printing_aliases": [
+        "B2 145"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 300,
+      "count": 1,
+      "name": "Rocky Helmet",
+      "name_candidates": [
+        "Rocky Helmet"
+      ],
+      "functional_ids": [
+        "bbe43f66fc9f"
+      ],
+      "printing_aliases": [
+        "A2 148",
+        "A4b 322",
+        "A4b 323"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 40,
+      "count": 2,
+      "name": "Professor’s Research",
+      "name_candidates": [
+        "Professor’s Research"
+      ],
+      "functional_ids": [
+        "c0015440f616"
+      ],
+      "printing_aliases": [
+        "A4b 373",
+        "P-A 007"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 990,
+      "count": 1,
+      "name": "Copycat",
+      "name_candidates": [
+        "Copycat"
+      ],
+      "functional_ids": [
+        "d5d2b111c197"
+      ],
+      "printing_aliases": [
+        "B1 225",
+        "B1 270"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 1250,
+      "count": 1,
+      "name": "Iris",
+      "name_candidates": [
+        "Iris"
+      ],
+      "functional_ids": [
+        "c47e7bd67ca2"
+      ],
+      "printing_aliases": [
+        "B2b 067",
+        "B2b 081"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 1590,
+      "count": 1,
+      "name": "Rainbow Cave",
+      "name_candidates": [
+        "Rainbow Cave"
+      ],
+      "functional_ids": [
+        "8013eecb0b49"
+      ],
+      "printing_aliases": [
+        "B4 155"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 2690,
+      "count": 1,
+      "name": "Druddigon",
+      "name_candidates": [
+        "Druddigon"
+      ],
+      "functional_ids": [
+        "79c5f1824c37"
+      ],
+      "printing_aliases": [
+        "A1a 056"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 16580,
+      "count": 2,
+      "name": "Axew",
+      "name_candidates": [
+        "Axew"
+      ],
+      "functional_ids": [
+        "89563343b575"
+      ],
+      "printing_aliases": [
+        "B2b 054",
+        "B2b 108"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 16030,
+      "count": 2,
+      "name": "Haxorus",
+      "name_candidates": [
+        "Haxorus"
+      ],
+      "functional_ids": [
+        "b3769dc058ec"
+      ],
+      "printing_aliases": [
+        "B2b 056",
+        "B2b 110",
+        "P-B 045"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 20770,
+      "count": 2,
+      "name": "Dratini",
+      "name_candidates": [
+        "Dratini"
+      ],
+      "functional_ids": [
+        "0c1b902c0b5c"
+      ],
+      "printing_aliases": [
+        "B4 116"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 20780,
+      "count": 2,
+      "name": "Dragonair",
+      "name_candidates": [
+        "Dragonair"
+      ],
+      "functional_ids": [
+        "6c12b680a399"
+      ],
+      "printing_aliases": [
+        "B4 117",
+        "B4 175",
+        "B4 233"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    }
+  ],
+  "all_entities_resolved": true,
+  "dependencies": {
+    "codec": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\third_party\\s216\\tcgp-deck-qr-102d75e\\src\\payload.js",
+    "codec_sha256": "7a08a1b85ba5b6044d173d7f1de3b7c21bbbdbab7b9f87e56eb109d278e12fb1",
+    "reader": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\lib\\decode_qr.py",
+    "reader_sha256": "f375891a38c3289f3fd994b62cf1a7289eb42398b54d47524619ffcbe824a603",
+    "catalog": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\s216_card_catalog_v1.json",
+    "catalog_sha256": "162dd23a116cabc87bc4404a643d7bad37480d4d44c057c5093aa114b8e45017",
+    "catalog_provenance": "pinned community-derived catalog, not an official complete card export",
+    "opencv": "5.0.0"
+  },
+  "limits": [
+    "QR is a filmed deck source, not a substitute for the required dated Pause Games log snapshot.",
+    "A deck QR does not establish hidden draws, the opening hand, or that this deck was used throughout a battle."
+  ]
+}

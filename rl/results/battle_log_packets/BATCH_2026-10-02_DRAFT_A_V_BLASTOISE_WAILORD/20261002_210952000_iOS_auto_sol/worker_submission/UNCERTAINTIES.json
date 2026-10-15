@@ -1,0 +1,38 @@
+{
+  "source_video": "20261002_210952000_iOS.MP4",
+  "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+  "consequential_ambiguities": [],
+  "requires_astra": false,
+  "recording_limits": [
+    {
+      "topic": "computer hand",
+      "status": "hidden",
+      "limit": "All normal draws, Research draws and Poke Ball finds stay null until public play; complete deck snapshot cannot identify a hidden draw."
+    },
+    {
+      "topic": "discard piles",
+      "status": "not_shown",
+      "limit": "Neither pile opened at any time; periodic source-bound unavailable markers retained. Top visible stack cards and play history are partial only."
+    },
+    {
+      "topic": "action timestamps",
+      "status": "approximate",
+      "limit": "Narrative/action seconds locate event or native anchor; measured selected-frame PTS is separately retained. One-fps full-source scan is not proof of every subsecond touch."
+    },
+    {
+      "topic": "physical printing",
+      "status": "not_inferred",
+      "limit": "Alternate red/rainbow/blue artworks readable; official set identifier in exact deck snapshot not asserted for a filmed physical art."
+    },
+    {
+      "topic": "Advanced",
+      "status": "separate_evidence",
+      "limit": "Beginning opponent selector identifies deck/AI, not menu category; Advanced comes from source-bound owner screenshot, with same-setup confirmation. No separate selectable difficulty."
+    },
+    {
+      "topic": "turn boundary",
+      "status": "phase_qualified",
+      "limit": "Some captured starts retain preceding header during draw transition. Empty current Energy is recorded separately from preview; board attributes use public instance continuity where boundary image alone is insufficient."
+    }
+  ]
+}

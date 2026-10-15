@@ -1,0 +1,25 @@
+{
+  "main_status": "Reviewed",
+  "new_native_fullframe_cap": 40,
+  "scope": "Authorized historical setup and every-turn field supplement, old accepted packet preserved",
+  "model": "gpt-6.1-sol",
+  "reasoning": "high",
+  "target_turn_numbers": [
+    1,
+    2,
+    3,
+    4
+  ],
+  "reviewer": "/root/sol_retro_ladder_021327",
+  "owner_turn_numbers": [
+    2,
+    4
+  ],
+  "started_utc": "2026-10-02T21:38:13.2106807Z",
+  "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+  "source": "20260908_190031000_iOS.MP4",
+  "status": "source_review_complete",
+  "capture_status": "complete_with_recording_limits",
+  "native_frame_cap": 43,
+  "independent_acceptance_status": "pending"
+}

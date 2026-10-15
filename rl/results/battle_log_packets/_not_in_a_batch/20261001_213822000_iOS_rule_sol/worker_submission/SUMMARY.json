@@ -1,0 +1,157 @@
+{
+  "video_basename": "20261001_213822000_iOS.MP4",
+  "sha256": "3017f3abbf17846d9041177e3fce268560c4ca7ed68277b2a2972b8a90f8399b",
+  "reviewer": "sol_rules_20261001_213822000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "status": "Finished first pass awaiting independent lead acceptance.",
+  "recording_type": "complete_solo_rules_testing_battle",
+  "complete_available_footage_review": true,
+  "battle_complete": true,
+  "proposed_completion_status": "full_battle_review_complete",
+  "ladder_eligible": false,
+  "mode": "Solo confirmed by named deck results page; owner Auto off until between 157 and 161 seconds, then on",
+  "outcomes": [
+    {
+      "battle": 1,
+      "owner": "Dacz8976",
+      "opponent": "Mega Blaziken ex & Typhlosion ex Deck (Deluxe Pack: Mega)",
+      "result": "loss",
+      "turns_played": 9,
+      "owner_points": 2,
+      "opponent_points": 1,
+      "owner_damage_done": 230,
+      "end_reason": "Last remaining owner Pokemon knocked out with empty Bench"
+    }
+  ],
+  "key_findings": [
+    "Wallace evolves 50-HP Water Carvanha into Mega Sharpedo ex from the deck; same-turn Basic evolution was not tested.",
+    "Turbo Shark deals 90 including weakness, knocks out 80-HP Ogerpon and increases benched Gyarados Water from 2 to 3 while Sharpedo retains 1 Water.",
+    "Wild Swing discards Mega Sharpedo ex and Mega Gyarados ex, deals 100 after Carefree Steps tails, and awards no opponent points for the discards.",
+    "Wild Swing can attack with empty Bench: 20 base plus 20 weakness equals 40.",
+    "Empty-board defeat occurs at opponent 1 point versus owner 2; results damage 230 includes overkill."
+  ],
+  "independent_check_times": [
+    {
+      "check": "opening/ordinary turn1",
+      "times": [
+        0,
+        1.5,
+        4,
+        15,
+        17
+      ]
+    },
+    {
+      "check": "Misty and Leap Out",
+      "times": [
+        35,
+        36,
+        38,
+        42,
+        50,
+        54
+      ]
+    },
+    {
+      "check": "Wallace",
+      "times": [
+        70.5,
+        74,
+        78
+      ]
+    },
+    {
+      "check": "Mega Gyarados identity",
+      "times": [
+        83
+      ]
+    },
+    {
+      "check": "Turbo Shark",
+      "times": [
+        87,
+        92,
+        94,
+        96,
+        101
+      ]
+    },
+    {
+      "check": "ordinary opponent turn5",
+      "times": [
+        104,
+        107,
+        110,
+        116,
+        122
+      ]
+    },
+    {
+      "check": "free retreat and fourth Water",
+      "times": [
+        128,
+        129,
+        132,
+        139,
+        140
+      ]
+    },
+    {
+      "check": "Wild Swing two Mega discards",
+      "times": [
+        143,
+        145,
+        147,
+        152,
+        154,
+        161
+      ]
+    },
+    {
+      "check": "Auto transition",
+      "times": [
+        157,
+        161
+      ]
+    },
+    {
+      "check": "Inferno tails retains Energy",
+      "times": [
+        173,
+        175,
+        178,
+        181
+      ]
+    },
+    {
+      "check": "empty Bench attack",
+      "times": [
+        187,
+        189,
+        191
+      ]
+    },
+    {
+      "check": "ending",
+      "times": [
+        191,
+        194,
+        197,
+        201.5,
+        203,
+        206,
+        208,
+        209,
+        215,
+        217
+      ]
+    }
+  ],
+  "evidence": {
+    "overview": "overview3/sheet_01.jpg through sheet_08.jpg",
+    "native": "native/t*.jpg",
+    "review": "REVIEW.md",
+    "coverage": "COVERAGE.md"
+  }
+}

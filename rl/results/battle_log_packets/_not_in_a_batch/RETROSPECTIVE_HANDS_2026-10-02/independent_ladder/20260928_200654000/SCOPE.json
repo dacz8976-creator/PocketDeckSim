@@ -1,0 +1,659 @@
+{
+  "reviewer": "sol_retro_ladder_021327",
+  "producer": "sol_retro_ladder_012720",
+  "source_sha256": "d4d0dd51f309c05abcdb6b1f04a75c036ca3e59b4abee3f6ce542b2d56149fd6",
+  "source_receipt_reused": "ROOT_SOURCE_VERIFICATION.json",
+  "original_movie_hash_reads": 0,
+  "original_movie_decodes": 0,
+  "new_extractions": 0,
+  "unique_native_full_frames_visually_inspected": 89,
+  "native_viewed": [
+    {
+      "evidence_id": "F0016.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0016.00.jpg",
+      "requested_source_seconds": 16.0,
+      "actual_frame_seconds_if_measured": 16.0133,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0033.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0033.00.jpg",
+      "requested_source_seconds": 33.0,
+      "actual_frame_seconds_if_measured": 33.015,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0045.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0045.00.jpg",
+      "requested_source_seconds": 45.0,
+      "actual_frame_seconds_if_measured": 45.005,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0046.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0046.00.jpg",
+      "requested_source_seconds": 46.0,
+      "actual_frame_seconds_if_measured": 46.005,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0055.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0055.00.jpg",
+      "requested_source_seconds": 55.0,
+      "actual_frame_seconds_if_measured": 55.01,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0057.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0057.00.jpg",
+      "requested_source_seconds": 57.0,
+      "actual_frame_seconds_if_measured": 57.01,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0060.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0060.00.jpg",
+      "requested_source_seconds": 60.0,
+      "actual_frame_seconds_if_measured": 60.01,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0069.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0069.00.jpg",
+      "requested_source_seconds": 69.0,
+      "actual_frame_seconds_if_measured": 69.0133,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0076.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0076.00.jpg",
+      "requested_source_seconds": 76.0,
+      "actual_frame_seconds_if_measured": 76.0317,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "R_evidence_t0084.0",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0084.0.jpg",
+      "requested_source_seconds": 84.0,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+    },
+    {
+      "evidence_id": "F0085.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0085.00.jpg",
+      "requested_source_seconds": 85.0,
+      "actual_frame_seconds_if_measured": 85.0017,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0093.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0093.00.jpg",
+      "requested_source_seconds": 93.0,
+      "actual_frame_seconds_if_measured": 93.0033,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "R_evidence_t0096.0",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0096.0.jpg",
+      "requested_source_seconds": 96.0,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+    },
+    {
+      "evidence_id": "R_evidence_t0108.0",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0108.0.jpg",
+      "requested_source_seconds": 108.0,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+    },
+    {
+      "evidence_id": "F0127.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0127.00.jpg",
+      "requested_source_seconds": 127.0,
+      "actual_frame_seconds_if_measured": 127.007,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0136.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0136.00.jpg",
+      "requested_source_seconds": 136.0,
+      "actual_frame_seconds_if_measured": 136.013,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0139.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0139.00.jpg",
+      "requested_source_seconds": 139.0,
+      "actual_frame_seconds_if_measured": 139.0,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0141.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0141.00.jpg",
+      "requested_source_seconds": 141.0,
+      "actual_frame_seconds_if_measured": 141.0,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0143.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0143.00.jpg",
+      "requested_source_seconds": 143.0,
+      "actual_frame_seconds_if_measured": 143.002,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0146.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0146.00.jpg",
+      "requested_source_seconds": 146.0,
+      "actual_frame_seconds_if_measured": 146.003,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0152.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0152.00.jpg",
+      "requested_source_seconds": 152.0,
+      "actual_frame_seconds_if_measured": 152.005,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "R_evidence_t0168.0",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0168.0.jpg",
+      "requested_source_seconds": 168.0,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+    },
+    {
+      "evidence_id": "F0191.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0191.00.jpg",
+      "requested_source_seconds": 191.0,
+      "actual_frame_seconds_if_measured": 191.005,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "R_evidence_t0198.0",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0198.0.jpg",
+      "requested_source_seconds": 198.0,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+    },
+    {
+      "evidence_id": "F0199.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0199.00.jpg",
+      "requested_source_seconds": 199.0,
+      "actual_frame_seconds_if_measured": 199.012,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0200.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0200.00.jpg",
+      "requested_source_seconds": 200.0,
+      "actual_frame_seconds_if_measured": 200.012,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0201.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0201.00.jpg",
+      "requested_source_seconds": 201.0,
+      "actual_frame_seconds_if_measured": 201.013,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0203.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0203.00.jpg",
+      "requested_source_seconds": 203.0,
+      "actual_frame_seconds_if_measured": 203.048,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0206.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0206.00.jpg",
+      "requested_source_seconds": 206.0,
+      "actual_frame_seconds_if_measured": 206.0,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0214.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0214.00.jpg",
+      "requested_source_seconds": 214.0,
+      "actual_frame_seconds_if_measured": 214.005,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "R_evidence_t0228.0",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0228.0.jpg",
+      "requested_source_seconds": 228.0,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+    },
+    {
+      "evidence_id": "F0244.80",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0244.80.jpg",
+      "requested_source_seconds": 244.8,
+      "actual_frame_seconds_if_measured": 244.81,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0250.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0250.00.jpg",
+      "requested_source_seconds": 250.0,
+      "actual_frame_seconds_if_measured": 250.015,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0251.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0251.00.jpg",
+      "requested_source_seconds": 251.0,
+      "actual_frame_seconds_if_measured": 251.0,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0264.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0264.00.jpg",
+      "requested_source_seconds": 264.0,
+      "actual_frame_seconds_if_measured": 264.012,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0280.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0280.00.jpg",
+      "requested_source_seconds": 280.0,
+      "actual_frame_seconds_if_measured": 280.008,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "R_evidence_t0282.0",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0282.0.jpg",
+      "requested_source_seconds": 282.0,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+    },
+    {
+      "evidence_id": "F0283.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0283.00.jpg",
+      "requested_source_seconds": 283.0,
+      "actual_frame_seconds_if_measured": 283.01,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0285.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0285.00.jpg",
+      "requested_source_seconds": 285.0,
+      "actual_frame_seconds_if_measured": 285.012,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0286.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0286.00.jpg",
+      "requested_source_seconds": 286.0,
+      "actual_frame_seconds_if_measured": 286.012,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0288.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0288.00.jpg",
+      "requested_source_seconds": 288.0,
+      "actual_frame_seconds_if_measured": 288.013,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "R_evidence_t0294.0",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0294.0.jpg",
+      "requested_source_seconds": 294.0,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+    },
+    {
+      "evidence_id": "F0304.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0304.00.jpg",
+      "requested_source_seconds": 304.0,
+      "actual_frame_seconds_if_measured": 304.005,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "R_evidence_t0318.0",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0318.0.jpg",
+      "requested_source_seconds": 318.0,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+    },
+    {
+      "evidence_id": "F0321.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0321.00.jpg",
+      "requested_source_seconds": 321.0,
+      "actual_frame_seconds_if_measured": 321.015,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0328.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0328.00.jpg",
+      "requested_source_seconds": 328.0,
+      "actual_frame_seconds_if_measured": 328.003,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "R_evidence_t0336.0",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0336.0.jpg",
+      "requested_source_seconds": 336.0,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+    },
+    {
+      "evidence_id": "F0351.80",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0351.80.jpg",
+      "requested_source_seconds": 351.8,
+      "actual_frame_seconds_if_measured": 351.803,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0360.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0360.00.jpg",
+      "requested_source_seconds": 360.0,
+      "actual_frame_seconds_if_measured": 360.008,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0373.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0373.00.jpg",
+      "requested_source_seconds": 373.0,
+      "actual_frame_seconds_if_measured": 373.003,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "R_evidence_t0384.0",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0384.0.jpg",
+      "requested_source_seconds": 384.0,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+    },
+    {
+      "evidence_id": "R_evidence_t0396.0",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0396.0.jpg",
+      "requested_source_seconds": 396.0,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+    },
+    {
+      "evidence_id": "F0399.50",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0399.50.jpg",
+      "requested_source_seconds": 399.5,
+      "actual_frame_seconds_if_measured": 399.51,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0400.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0400.00.jpg",
+      "requested_source_seconds": 400.0,
+      "actual_frame_seconds_if_measured": 400.01,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0402.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0402.00.jpg",
+      "requested_source_seconds": 402.0,
+      "actual_frame_seconds_if_measured": 402.012,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0405.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0405.00.jpg",
+      "requested_source_seconds": 405.0,
+      "actual_frame_seconds_if_measured": 405.012,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0413.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0413.00.jpg",
+      "requested_source_seconds": 413.0,
+      "actual_frame_seconds_if_measured": 413.0,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0422.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0422.00.jpg",
+      "requested_source_seconds": 422.0,
+      "actual_frame_seconds_if_measured": 422.003,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "R_evidence_t0426.0",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0426.0.jpg",
+      "requested_source_seconds": 426.0,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+    },
+    {
+      "evidence_id": "F0452.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0452.00.jpg",
+      "requested_source_seconds": 452.0,
+      "actual_frame_seconds_if_measured": 452.005,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "R_evidence_t0462.0",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0462.0.jpg",
+      "requested_source_seconds": 462.0,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+    },
+    {
+      "evidence_id": "F0465.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0465.00.jpg",
+      "requested_source_seconds": 465.0,
+      "actual_frame_seconds_if_measured": 465.015,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0467.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0467.00.jpg",
+      "requested_source_seconds": 467.0,
+      "actual_frame_seconds_if_measured": 467.015,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0469.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0469.00.jpg",
+      "requested_source_seconds": 469.0,
+      "actual_frame_seconds_if_measured": 469.0,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0472.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0472.00.jpg",
+      "requested_source_seconds": 472.0,
+      "actual_frame_seconds_if_measured": 472.002,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0489.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0489.00.jpg",
+      "requested_source_seconds": 489.0,
+      "actual_frame_seconds_if_measured": 489.008,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0497.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0497.00.jpg",
+      "requested_source_seconds": 497.0,
+      "actual_frame_seconds_if_measured": 497.01,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "R_evidence_t0516.0",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0516.0.jpg",
+      "requested_source_seconds": 516.0,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+    },
+    {
+      "evidence_id": "R_evidence_t0522.0",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0522.0.jpg",
+      "requested_source_seconds": 522.0,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+    },
+    {
+      "evidence_id": "R_evidence_t0540.0",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0540.0.jpg",
+      "requested_source_seconds": 540.0,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+    },
+    {
+      "evidence_id": "F0547.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0547.00.jpg",
+      "requested_source_seconds": 547.0,
+      "actual_frame_seconds_if_measured": 547.015,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0550.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0550.00.jpg",
+      "requested_source_seconds": 550.0,
+      "actual_frame_seconds_if_measured": 550.0,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0552.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0552.00.jpg",
+      "requested_source_seconds": 552.0,
+      "actual_frame_seconds_if_measured": 552.002,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0555.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0555.00.jpg",
+      "requested_source_seconds": 555.0,
+      "actual_frame_seconds_if_measured": 555.002,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0564.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0564.00.jpg",
+      "requested_source_seconds": 564.0,
+      "actual_frame_seconds_if_measured": 564.007,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "R_detail_t0571.0",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\detail\\t0571.0.jpg",
+      "requested_source_seconds": 571.0,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+    },
+    {
+      "evidence_id": "R_detail_t0574.0",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\detail\\t0574.0.jpg",
+      "requested_source_seconds": 574.0,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+    },
+    {
+      "evidence_id": "R_evidence_t0586.0",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0586.0.jpg",
+      "requested_source_seconds": 586.0,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+    },
+    {
+      "evidence_id": "R_evidence_t0594.0",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0594.0.jpg",
+      "requested_source_seconds": 594.0,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+    },
+    {
+      "evidence_id": "F0010.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0010.00.jpg",
+      "requested_source_seconds": 10.0,
+      "actual_frame_seconds_if_measured": 10.0133,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "R_evidence_t0066.0",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0066.0.jpg",
+      "requested_source_seconds": 66.0,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+    },
+    {
+      "evidence_id": "R_evidence_t0456.0",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0456.0.jpg",
+      "requested_source_seconds": 456.0,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+    },
+    {
+      "evidence_id": "R_evidence_t0420.0",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0420.0.jpg",
+      "requested_source_seconds": 420.0,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+    },
+    {
+      "evidence_id": "R_evidence_t0102.0",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0102.0.jpg",
+      "requested_source_seconds": 102.0,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+    },
+    {
+      "evidence_id": "R_evidence_t0156.0",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0156.0.jpg",
+      "requested_source_seconds": 156.0,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+    },
+    {
+      "evidence_id": "R_evidence_t0120.0",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0120.0.jpg",
+      "requested_source_seconds": 120.0,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+    },
+    {
+      "evidence_id": "R_evidence_t0330.0",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0330.0.jpg",
+      "requested_source_seconds": 330.0,
+      "actual_frame_seconds_if_measured": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt."
+    },
+    {
+      "evidence_id": "F0244.50",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0244.50.jpg",
+      "requested_source_seconds": 244.5,
+      "actual_frame_seconds_if_measured": 244.51,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    },
+    {
+      "evidence_id": "F0351.50",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0351.50.jpg",
+      "requested_source_seconds": 351.5,
+      "actual_frame_seconds_if_measured": 351.503,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log"
+    }
+  ],
+  "native_dimensions": [
+    1170,
+    2532
+  ],
+  "display_limit": "Tool rendered full-native images at946x2048; original1170x2532 files retained. No new crops or frame extraction.",
+  "reduced_locator_grids_independently_inspected": [
+    "grid_060_079.jpg",
+    "grid_180_199.jpg",
+    "grid_240_259.jpg",
+    "grid_340_359.jpg",
+    "grid_360_379.jpg",
+    "grid_420_439.jpg",
+    "grid_440_459.jpg",
+    "grid_520_539.jpg"
+  ],
+  "reduced_locator_use": "Action/coin/prompt timing and panel locator only; not native card-hand identity authority.",
+  "producer_locator_scope": "595 samples at1fps over nominal0..594,30grids producer-screened; independent checker did not rescreen all595.",
+  "canonical_turn_rows_read": 14,
+  "owner_hand_rows_read": 7,
+  "owner_scheduled_captures_visually_inspected": 28,
+  "opening_cards": 5,
+  "all_submitted_hashes_match": true,
+  "all_native_dimensions_checked": 157,
+  "hidden_limits": "Opponent concealed draws/search faces remain null; owner panel472 partial and five Darkness shown; no complete pile census; queue selection and continuous Auto absence unrecorded. Exact historical20 list unavailable. Subsecond inputs and exact reusedPTS unmeasured."
+}

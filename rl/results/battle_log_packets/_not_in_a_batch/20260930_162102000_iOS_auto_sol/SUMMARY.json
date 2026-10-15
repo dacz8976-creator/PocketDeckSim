@@ -1,0 +1,113 @@
+{
+  "video_basename": "20260930_162102000_iOS.MP4",
+  "sha256": "e23850f05a3e9a8b1b838c190a17cecfd88a50e7359013ffaee15c8c9a2758a5",
+  "bytes": 281358334,
+  "duration_seconds": 157.04,
+  "source_binding": "SOURCE.json; coordinator verified intake; exact named source extracted by worker",
+  "reviewer": "sol_auto_162102000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "scope": "Full supplied battle, setup through all seven turns and explicit Defeat",
+  "full_scope_reviewed": true,
+  "status": "full_battle_review_complete",
+  "mode": "autopilot_vs_computer",
+  "owner": "Dacz8976",
+  "opponent": "AI Opponent",
+  "going": "second",
+  "auto": {
+    "observed_enabled": true,
+    "disabled_state_observed": false,
+    "limits": "Sampled gameplay, not an assertion of every intervening frame; pregame Control Center and notifications present"
+  },
+  "result": "loss",
+  "result_evidence": [
+    {
+      "seconds": 144,
+      "path": "targeted/t0144.00.jpg",
+      "observed": "Passimian0HP after80damage"
+    },
+    {
+      "seconds": 147,
+      "path": "targeted/t0147.00.jpg",
+      "observed": "Owner Active and Bench empty; Mega Manectric40HP"
+    },
+    {
+      "seconds": 150,
+      "path": "targeted/t0150.00.jpg",
+      "observed": "Opponent +2points; finalowner1/opponent2"
+    },
+    {
+      "seconds": 152,
+      "path": "targeted/t0152.00.jpg",
+      "observed": "Explicit Defeat banner"
+    }
+  ],
+  "final_points": {
+    "owner": 1,
+    "opponent": 2
+  },
+  "owner_visible_core": [
+    "Passimian ex Active",
+    "Mega Lucario ex held",
+    "Gabite held"
+  ],
+  "opponent_visible_core": [
+    "Helioptile / Heliolisk",
+    "Electrike / Mega Manectric ex",
+    "Tadbulb / Bellibolt ex"
+  ],
+  "ladder_eligible": false,
+  "ladder_action": "excluded_by_owner_instruction; no Ladder Log write",
+  "anchors": {
+    "opening_ai": {
+      "path": "overview/sheet_01.jpg",
+      "seconds": 10.5
+    },
+    "opening_auto": {
+      "path": "targeted/t0016.00.jpg",
+      "seconds": 16
+    },
+    "ordinary": {
+      "path": "targeted/t0065.00.jpg",
+      "seconds": 65
+    },
+    "decisive": {
+      "path": "targeted/t0132.00.jpg",
+      "seconds": 132,
+      "observed": "130-damage popup; prior HP still animating from190; settled60 at135s"
+    },
+    "terminal": {
+      "path": "targeted/t0152.00.jpg",
+      "seconds": 152
+    }
+  },
+  "coverage_file": "COVERAGE.md",
+  "review_file": "REVIEW.md",
+  "uncertainties_file": "UNCERTAINTIES.json",
+  "astra_escalation_required": false,
+  "worker_did_not": [
+    "shared log write",
+    "index update",
+    "media map update",
+    "source move",
+    "Ladder Log write"
+  ],
+  "lead_astra_consultation": {
+    "consulted": true,
+    "model": "gpt-6-astra/high",
+    "scope": "Bounded Arena eligibility, damage/counterfactual and terminal Helmet interpretation",
+    "evidence": "ASTRA_CHECK.md"
+  },
+  "worker_actions_at_submission": {},
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "lead_acceptance_pending": false,
+  "source_archived": true,
+  "source_modified": false,
+  "archive_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260930_162102000_iOS.MP4",
+  "archive_receipt": "MOVE_RECEIPT.20260930_162102000_iOS.MP4.json",
+  "archive_completion_event_id": "4554fac9-5626-471f-840e-e1312d5d5add",
+  "global_registration_complete": true,
+  "current_review_event_id": "67203912-55ca-4670-8cd3-6e25fbbeaf3e",
+  "post_acceptance_corrections": "POST_ACCEPTANCE_CORRECTIONS.md"
+}

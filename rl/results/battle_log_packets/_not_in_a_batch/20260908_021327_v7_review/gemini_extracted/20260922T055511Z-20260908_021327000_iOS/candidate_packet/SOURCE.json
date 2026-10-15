@@ -1,0 +1,500 @@
+{
+  "filename": "20260908_021327000_iOS.MP4",
+  "source_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20260908_021327000_iOS.MP4",
+  "sha256": "95DF14AF59472EC02A077B5A5804F1A44E6C02048179952934B68C56EEE1E387",
+  "bytes": 767232143,
+  "duration_seconds": 410.492,
+  "model": "gemini-3.8-flash",
+  "review_method": "static video processing at 5 source frames per second with high media resolution",
+  "reviewer_attribution": "Gemini 3.8 Flash API first-pass draft",
+  "review_status": "partial",
+  "index_update_performed": false,
+  "media_move_performed": false,
+  "battle_identity": {
+    "opponent_label": {
+      "state": "observed",
+      "value": "たか",
+      "timestamp_seconds": 12.0,
+      "observation": "Opponent username 'たか' displayed on VS splash screen and top-left player card."
+    },
+    "opening_player": {
+      "state": "observed",
+      "value": "Oddish",
+      "timestamp_seconds": 32.0,
+      "observation": "Player starts with Oddish (60 HP) in Active Spot."
+    },
+    "opening_opponent": {
+      "state": "observed",
+      "value": "Zubat",
+      "timestamp_seconds": 32.0,
+      "observation": "Opponent starts with Zubat (60 HP) in Active Spot."
+    },
+    "outcome": {
+      "state": "observed",
+      "value": "player_win",
+      "timestamp_seconds": 402.0,
+      "observation": "Muk knocked out, score reaches 1-0, opponent surrenders and VICTORY banner appears."
+    },
+    "result_text": {
+      "state": "observed",
+      "value": "VICTORY",
+      "timestamp_seconds": 402.0,
+      "observation": "Large VICTORY banner displayed across screen."
+    },
+    "version": 1
+  },
+  "evidence_audit": {
+    "version": 1,
+    "opponent_label": "たか",
+    "match_mode": {
+      "value": "pvp",
+      "evidence": [
+        {
+          "timestamp": "00:12.400",
+          "observation": "Matchmaking splash screen displays human opponent profile and emblems."
+        },
+        {
+          "timestamp": "06:39.200",
+          "observation": "Opponent surrendered notification indicates human concession."
+        }
+      ],
+      "uncertainty_id": null
+    },
+    "opponent_ai": {
+      "value": "no",
+      "evidence": [
+        {
+          "timestamp": "06:39.200",
+          "observation": "Human player concession prompt displayed."
+        }
+      ],
+      "uncertainty_id": null
+    },
+    "auto": {
+      "value": "unknown",
+      "evidence": [
+        {
+          "timestamp": "00:32.000",
+          "observation": "PvP battle interface does not render an Auto control toggle."
+        }
+      ],
+      "uncertainty_id": "U1"
+    },
+    "terminal": {
+      "outcome": "player_win",
+      "outcome_evidence": [
+        {
+          "timestamp": "06:39.200",
+          "observation": "Opponent surrendered prompt."
+        },
+        {
+          "timestamp": "06:42.000",
+          "observation": "VICTORY banner displayed."
+        }
+      ],
+      "result_text": "VICTORY",
+      "result_text_evidence": [
+        {
+          "timestamp": "06:42.000",
+          "observation": "Large gold VICTORY banner rendered."
+        }
+      ],
+      "last_frame": {
+        "timestamp": "06:50.400",
+        "observation": "Final reward and victory transition screen."
+      },
+      "uncertainty_id": null
+    },
+    "pokemon": [
+      {
+        "id": "player-1",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:32.000",
+          "observation": "Oddish active with 0 attached Energy."
+        },
+        "final": {
+          "Grass": 2
+        },
+        "final_evidence": {
+          "timestamp": "06:35.000",
+          "observation": "Vileplume active with 2 Grass Energy attached."
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "player-2",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:32.000",
+          "observation": "Bulbasaur on bench with 0 attached Energy."
+        },
+        "final": {
+          "Grass": 3
+        },
+        "final_evidence": {
+          "timestamp": "06:35.000",
+          "observation": "Venusaur ex on bench with 3 Grass Energy attached."
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "player-3",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:46.000",
+          "observation": "Second Bulbasaur played to bench with 0 attached Energy."
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "06:35.000",
+          "observation": "Bulbasaur remains on bench with 0 attached Energy."
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-1",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:32.000",
+          "observation": "Zubat active with 0 attached Energy."
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "06:35.000",
+          "observation": "Golbat on bench with 0 attached Energy."
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-2",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:32.000",
+          "observation": "Grimer on bench with 0 attached Energy."
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "06:35.000",
+          "observation": "Muk knocked out and sent to discard with 0 attached Energy."
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-3",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "01:10.000",
+          "observation": "Koffing played to bench with 0 attached Energy."
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "06:35.000",
+          "observation": "Weezing on bench with 0 attached Energy."
+        },
+        "uncertainty_id": null
+      }
+    ],
+    "energy_events": [
+      {
+        "turn": 2,
+        "pokemon_id": "opp-1",
+        "kind": "manual",
+        "before": {},
+        "after": {
+          "Darkness": 1
+        },
+        "before_evidence": {
+          "timestamp": "00:58.000",
+          "observation": "Zubat has 0 Energy attached."
+        },
+        "action_evidence": {
+          "timestamp": "01:00.000",
+          "observation": "Opponent moves Darkness Energy to Active Zubat."
+        },
+        "after_evidence": {
+          "timestamp": "01:02.000",
+          "observation": "Zubat displays 1 Darkness Energy attached."
+        },
+        "attachment_evidence": "movement_and_attached_icons"
+      },
+      {
+        "turn": 3,
+        "pokemon_id": "player-1",
+        "kind": "manual",
+        "before": {},
+        "after": {
+          "Grass": 1
+        },
+        "before_evidence": {
+          "timestamp": "01:30.000",
+          "observation": "Gloom has 0 Energy attached."
+        },
+        "action_evidence": {
+          "timestamp": "01:32.000",
+          "observation": "Player attaches Grass Energy to Active Gloom."
+        },
+        "after_evidence": {
+          "timestamp": "01:34.000",
+          "observation": "Gloom displays 1 Grass Energy attached."
+        },
+        "attachment_evidence": "movement_and_attached_icons"
+      },
+      {
+        "turn": 4,
+        "pokemon_id": "opp-2",
+        "kind": "manual",
+        "before": {},
+        "after": {
+          "Darkness": 1
+        },
+        "before_evidence": {
+          "timestamp": "01:58.000",
+          "observation": "Benched Grimer has 0 Energy attached."
+        },
+        "action_evidence": {
+          "timestamp": "02:00.000",
+          "observation": "Opponent attaches Darkness Energy to Benched Grimer."
+        },
+        "after_evidence": {
+          "timestamp": "02:02.000",
+          "observation": "Grimer displays 1 Darkness Energy attached."
+        },
+        "attachment_evidence": "movement_and_attached_icons"
+      },
+      {
+        "turn": 5,
+        "pokemon_id": "player-1",
+        "kind": "manual",
+        "before": {
+          "Grass": 1
+        },
+        "after": {
+          "Grass": 2
+        },
+        "before_evidence": {
+          "timestamp": "02:34.000",
+          "observation": "Gloom has 1 Grass Energy attached."
+        },
+        "action_evidence": {
+          "timestamp": "02:36.000",
+          "observation": "Player attaches Grass Energy to Active Gloom."
+        },
+        "after_evidence": {
+          "timestamp": "02:38.000",
+          "observation": "Gloom displays 2 Grass Energy attached."
+        },
+        "attachment_evidence": "movement_and_attached_icons"
+      },
+      {
+        "turn": 6,
+        "pokemon_id": "opp-1",
+        "kind": "retreat",
+        "before": {
+          "Darkness": 1
+        },
+        "after": {},
+        "before_evidence": {
+          "timestamp": "03:14.000",
+          "observation": "Golbat has 1 Darkness Energy attached."
+        },
+        "action_evidence": {
+          "timestamp": "03:15.000",
+          "observation": "Golbat retreats, paying 1 Darkness Energy."
+        },
+        "after_evidence": {
+          "timestamp": "03:17.000",
+          "observation": "Golbat moves to bench with 0 Energy attached."
+        }
+      },
+      {
+        "turn": 6,
+        "pokemon_id": "opp-3",
+        "kind": "manual",
+        "before": {},
+        "after": {
+          "Darkness": 1
+        },
+        "before_evidence": {
+          "timestamp": "03:24.000",
+          "observation": "Active Weezing has 0 Energy attached."
+        },
+        "action_evidence": {
+          "timestamp": "03:26.000",
+          "observation": "Opponent attaches Darkness Energy to Active Weezing."
+        },
+        "after_evidence": {
+          "timestamp": "03:28.000",
+          "observation": "Weezing displays 1 Darkness Energy attached."
+        },
+        "attachment_evidence": "movement_and_attached_icons"
+      },
+      {
+        "turn": 7,
+        "pokemon_id": "player-2",
+        "kind": "manual",
+        "before": {},
+        "after": {
+          "Grass": 1
+        },
+        "before_evidence": {
+          "timestamp": "03:46.000",
+          "observation": "Venusaur ex has 0 Energy attached."
+        },
+        "action_evidence": {
+          "timestamp": "03:48.000",
+          "observation": "Player attaches Grass Energy to Benched Venusaur ex."
+        },
+        "after_evidence": {
+          "timestamp": "03:50.000",
+          "observation": "Venusaur ex displays 1 Grass Energy attached."
+        },
+        "attachment_evidence": "movement_and_attached_icons"
+      },
+      {
+        "turn": 8,
+        "pokemon_id": "opp-3",
+        "kind": "manual",
+        "before": {
+          "Darkness": 1
+        },
+        "after": {
+          "Darkness": 2
+        },
+        "before_evidence": {
+          "timestamp": "04:36.000",
+          "observation": "Weezing has 1 Darkness Energy attached."
+        },
+        "action_evidence": {
+          "timestamp": "04:38.000",
+          "observation": "Opponent attaches Darkness Energy to Active Weezing."
+        },
+        "after_evidence": {
+          "timestamp": "04:40.000",
+          "observation": "Weezing displays 2 Darkness Energy attached."
+        },
+        "attachment_evidence": "movement_and_attached_icons"
+      },
+      {
+        "turn": 8,
+        "pokemon_id": "opp-3",
+        "kind": "discard",
+        "before": {
+          "Darkness": 2
+        },
+        "after": {},
+        "before_evidence": {
+          "timestamp": "04:43.000",
+          "observation": "Weezing has 2 Darkness Energy attached before Koga is played."
+        },
+        "action_evidence": {
+          "timestamp": "04:46.000",
+          "observation": "Koga returns Weezing line to hand; attached Energy is discarded."
+        },
+        "after_evidence": {
+          "timestamp": "04:52.000",
+          "observation": "Koffing replayed to bench with 0 Energy."
+        }
+      },
+      {
+        "turn": 9,
+        "pokemon_id": "player-2",
+        "kind": "manual",
+        "before": {
+          "Grass": 1
+        },
+        "after": {
+          "Grass": 2
+        },
+        "before_evidence": {
+          "timestamp": "05:16.000",
+          "observation": "Venusaur ex has 1 Grass Energy attached."
+        },
+        "action_evidence": {
+          "timestamp": "05:18.000",
+          "observation": "Player attaches Grass Energy to Venusaur ex."
+        },
+        "after_evidence": {
+          "timestamp": "05:20.000",
+          "observation": "Venusaur ex displays 2 Grass Energy attached."
+        },
+        "attachment_evidence": "movement_and_attached_icons"
+      },
+      {
+        "turn": 10,
+        "pokemon_id": "opp-2",
+        "kind": "manual",
+        "before": {
+          "Darkness": 1
+        },
+        "after": {
+          "Darkness": 2
+        },
+        "before_evidence": {
+          "timestamp": "06:00.000",
+          "observation": "Active Muk has 1 Darkness Energy attached."
+        },
+        "action_evidence": {
+          "timestamp": "06:02.000",
+          "observation": "Opponent attaches Darkness Energy to Active Muk."
+        },
+        "after_evidence": {
+          "timestamp": "06:04.000",
+          "observation": "Muk displays 2 Darkness Energy attached."
+        },
+        "attachment_evidence": "movement_and_attached_icons"
+      },
+      {
+        "turn": 11,
+        "pokemon_id": "player-2",
+        "kind": "manual",
+        "before": {
+          "Grass": 2
+        },
+        "after": {
+          "Grass": 3
+        },
+        "before_evidence": {
+          "timestamp": "06:26.000",
+          "observation": "Venusaur ex has 2 Grass Energy attached."
+        },
+        "action_evidence": {
+          "timestamp": "06:28.000",
+          "observation": "Player attaches Grass Energy to Venusaur ex."
+        },
+        "after_evidence": {
+          "timestamp": "06:30.000",
+          "observation": "Venusaur ex displays 3 Grass Energy attached."
+        },
+        "attachment_evidence": "movement_and_attached_icons"
+      },
+      {
+        "turn": 11,
+        "pokemon_id": "opp-2",
+        "kind": "discard",
+        "before": {
+          "Darkness": 2
+        },
+        "after": {},
+        "before_evidence": {
+          "timestamp": "06:32.000",
+          "observation": "Muk has 2 Darkness Energy attached before knockout."
+        },
+        "action_evidence": {
+          "timestamp": "06:35.000",
+          "observation": "Muk is knocked out by Mega Drain; attached Energy discarded."
+        },
+        "after_evidence": {
+          "timestamp": "06:37.000",
+          "observation": "Muk removed from field; score updates to 1-0."
+        }
+      }
+    ]
+  }
+}

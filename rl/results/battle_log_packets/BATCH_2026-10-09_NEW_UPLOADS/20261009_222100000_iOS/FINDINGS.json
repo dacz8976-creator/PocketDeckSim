@@ -1,0 +1,42 @@
+{
+  "source": {
+    "filename": "20261009_222100000_iOS.MP4",
+    "sha256": "859e3f21a9966e99716f8b137f1eaadecf46aa097316ac082ffcae3d2f6b286a",
+    "duration_seconds": 195.989909,
+    "resolution": "1170x2532"
+  },
+  "reviewer": "resumed_review_222100",
+  "review_status": "full visual review complete; independent lead acceptance pending",
+  "classification": {
+    "game_type": "computer",
+    "auto_option_visible": true,
+    "auto_enabled_observed": false,
+    "ladder_log_eligible": false,
+    "pause_games_log_eligible": false,
+    "evidence": ["proof/t027.jpg", "proof/t165.jpg"]
+  },
+  "match": {
+    "match_count_in_recording": 1,
+    "opponent": "Mega Sableye ex Deck (Everyday Wonders)",
+    "owner_went_first": true,
+    "outcome": "Defeat",
+    "turns_played": 7,
+    "owner_points": 0,
+    "opponent_points": 2,
+    "owner_damage_done": 0,
+    "evidence": ["proof/t168.jpg", "proof/t169.jpg", "proof/t194.jpg"]
+  },
+  "owner_visible_core": ["Wailmer", "Indeedee ex", "Wailord in final hand"],
+  "opponent_visible_core": ["Deino", "Hydreigon", "Mega Sableye ex"],
+  "turns": [
+    {"turn": 1, "actor": "owner", "seconds": "24-55", "plays": ["Soothing Shore", "Copycat", "bench Wailmer", "Poke Ball", "bench Indeedee ex"], "attack": null, "score_after": "0-0", "evidence": ["proof/t038.jpg", "proof/t034.jpg", "proof/t043.jpg", "proof/t047.jpg", "proof/t053.jpg"]},
+    {"turn": 2, "actor": "opponent", "seconds": "55-72", "plays": ["bench Mega Sableye ex", "Darkness Energy to Deino", "unidentified Tool to Deino", "Headbutt 20 to Wailmer"], "score_after": "0-0", "evidence": ["proof/t064.jpg", "proof/t067.jpg", "proof/t070.jpg", "proof/t073.jpg"]},
+    {"turn": 3, "actor": "owner", "seconds": "73-87", "plays": ["Heavy Helmet to Active Wailmer", "Indeedee ex Watch Over heals Wailmer 80 to 100", "Water Energy to benched Wailmer"], "attack": null, "score_after": "0-0", "evidence": ["proof/t077.jpg", "proof/t080.jpg", "proof/t083.jpg", "proof/t086.jpg"]},
+    {"turn": 4, "actor": "opponent", "seconds": "88-118", "plays": ["Rare Candy Deino to Hydreigon", "Roar in Unison adds two Darkness Energy and self-damages 30", "Hyper Ray knocks out Active Wailmer"], "score_after": "0-1", "evidence": ["proof/t096.jpg", "proof/t106.jpg", "proof/t110.jpg", "proof/t114.jpg"]},
+    {"turn": 5, "actor": "owner", "seconds": "119-132", "plays": ["promote second Wailmer", "Poke Ball gives explicit no-target message", "second Water Energy to Wailmer"], "attack": null, "score_after": "0-1", "evidence": ["proof/t122.jpg", "proof/t126.jpg", "proof/t127.jpg", "proof/t130.jpg"]},
+    {"turn": 6, "actor": "opponent", "seconds": "133-159", "plays": ["Roar in Unison self-damages 30 and adds two Darkness Energy", "Poke Ball; target hidden", "third Darkness Energy attached from Energy Zone", "Hyper Ray knocks out second Wailmer"], "score_after": "0-2", "evidence": ["proof/t138.jpg", "proof/t142.jpg", "proof/t144.jpg", "proof/t148.jpg", "proof/t150.jpg", "proof/t158.jpg"]},
+    {"turn": 7, "actor": "owner", "seconds": "159-169", "plays": ["Concede dialog appears and disappears", "promote Indeedee ex", "draw Wailord"], "attack": null, "score_after": "0-2", "evidence": ["proof/t160.jpg", "proof/t161.jpg", "proof/t163.jpg", "proof/t164.jpg", "proof/t167.jpg", "proof/t168.jpg", "proof/t169.jpg"]}
+  ],
+  "terminal_limit": "Defeat follows while Active and Bench Indeedee ex remain and score is 0-2. The exact final acceptance or cancellation input, and any delay, are not established by the source. No third knockout is visible.",
+  "other_unknowns": ["opponent Tool identity", "opponent Poke Ball target if any", "hidden cards and full deck contents"]
+}

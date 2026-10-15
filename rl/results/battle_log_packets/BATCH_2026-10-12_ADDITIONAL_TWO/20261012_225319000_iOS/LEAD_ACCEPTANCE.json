@@ -1,0 +1,53 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-13T01:59:33.319411+00:00",
+  "source_game_count": 1,
+  "all_source_games_accepted": true,
+  "source_video": "20261012_225319000_iOS.MP4",
+  "source_sha256": "10908103247750567923e0899770318a2e53821055d7a2d464ab8d8a2b12dd70",
+  "scope": "Entire supplied recording, one human battle, opening, all 9 turns and terminal result",
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 9,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-12_ADDITIONAL_TWO\\20261012_225319000_iOS\\independent_sol\\CHECK_RESULT.json",
+  "accepted_input_sha256": {
+    "REVIEW.md": "155459b6a7d88f53109adf559d2513e1aed3e763becb28acd3c95314f690e5a3",
+    "COVERAGE.md": "e4dfa7e4ff23fff32269d6864c6372a0068f674923a7f57dfa7d5c30c53618dc",
+    "SUMMARY.json": "06ace5f974f5a2acfb7902e2bd76cfc16ff82c103622991bb5d62d9772ded412",
+    "UNCERTAINTIES.json": "c64bf90306bcb1fe949284be527b791e3b5f73f322302d9c8004144b1b99018d",
+    "PAUSE_GAME.json": "4a88ae97c406c2492ec37eb11db6573f4b3ca5bb18031214c6f1478cbef46d5a",
+    "DECK_USED.json": "4c44a7731f302f1677afc62cc363aa164904230bacdaa11ba54907ed6276acd0",
+    "TURN_LEDGER.json": "d604ae422be3793dd6531755968190306245fdd4ff5fef8ecf563289454802e7",
+    "TURN_EVIDENCE.json": "f049c5dfdcf951f4af78860d2462667a88e0f6be7495f28d989f82062ed9b109"
+  },
+  "basis": "Whole-source Sol review, separately bounded Sol checks against source frames, and lead reconciliation of coverage, ordinary decisions, draws/searches, hand arithmetic, point progression, decisive sequences and terminal outcome. Structural integrity checked separately.",
+  "administrative_fields_changed_after_independent_freeze": [
+    "lead_checked",
+    "battle_review_status",
+    "lead_acceptance"
+  ],
+  "source_limits": [
+    "No opened discard pile views in footage.",
+    "Opponent hidden draw and search identities remain unknown; later plays do not identify prior search backs.",
+    "Opponent fan2 overlaps support3-4 atT2 and5-6 atT8.",
+    "Encoded frame PTS not measured; requested source seeks and animation-end estimates retained.",
+    "Exact semantic20-card snapshot bound by QR; artwork and rarity unverified."
+  ],
+  "outcome": {
+    "owner": "defeat",
+    "opponent": "Job",
+    "ending": "owner concession",
+    "owner_points": 0,
+    "opponent_points": 2,
+    "turns_played": 9,
+    "damage_done": 50,
+    "evidence_ids": [
+      "f0426.00",
+      "f0429.00",
+      "f0438.00"
+    ]
+  },
+  "deck_status": "Exact live deck snapshot and filmed game binding are preserved in DECK_USED.json and independently checked.",
+  "external_status": "Prepared deck and game import pending; no external save claimed."
+}

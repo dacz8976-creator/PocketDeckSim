@@ -1,0 +1,11 @@
+{
+  "reviewer": "sol_auto_145405000",
+  "consequential_escalations": [],
+  "unreviewed_intervals": [],
+  "uncertainties": [
+    {"kind": "hidden_information", "interval_seconds": [0, 147.196667], "finding": "Unrevealed opponent hand and deck, and unshown owner deck contents remain unknown. The challenge title does not establish an Aegislash play."},
+    {"kind": "printing_identifiers", "interval_seconds": [0, 147.196667], "finding": "Mechanically relevant names, HP and attacks are visible, but collector/set identifiers and every fine-print detail are not asserted."},
+    {"kind": "event_timing", "interval_seconds": [73, 85], "finding": "Opponent turn 5 includes Research, second Meltan Bench placement, Metang evolution and a Metal attachment. Exact subsecond ordering of the attachment relative to the middle card plays is not asserted; the later Active attachment and Beam are clear."},
+    {"kind": "date_provenance", "interval_seconds": [0, 147.196667], "finding": "September 30 match date is from source filename and owner testimony, not an independently verified device calendar."}
+  ]
+}

@@ -1,0 +1,455 @@
+<!doctype html><html><head><meta charset=utf8><meta name=viewport content="width=device-width,initial-scale=1,viewport-fit=cover"><style>:root{color-scheme:light;box-sizing:border-box;padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}html{scroll-padding-top:env(safe-area-inset-top,0px)}body{margin:0;padding:0;font:14px -apple-system,BlinkMacSystemFont,sans-serif;background:#faf9f5;color:#141413}img{max-width:100%}[hidden]:not([hidden=until-found i]){display:none!important}</style></head><body>
+<title>Pause Games</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Bricolage+Grotesque:opsz,wght@12..96,600;12..96,700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap">
+<script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
+<style>
+/* Layout: one narrow column, phone first. A banner that never scrolls away, three tabs (Log, Decks, Summary), cards for decks and games.
+   Palette and faces follow his Season Brews page so the two read as one set. */
+:root{
+  --bg:#EEF1F5; --surface:#FFFFFF; --ink:#17212B; --muted:#5B6A7A; --line:#D5DCE4; --accent:#6A46C9; --accent-ink:#FFFFFF; --accent-soft:#EFEAFB;
+  --warn-bg:#FFF4E0; --warn-ink:#7A4A00; --warn-line:#E8C98A;
+  --win:#1F7A4D; --win-soft:#E3F3EA; --loss:#B3372F; --loss-soft:#FBE7E4; --conc:#2B6A9C; --conc-soft:#E2EEF8;
+  --code-bg:#F3F0FA;
+  --display:"Bricolage Grotesque","IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --body:"IBM Plex Sans",system-ui,-apple-system,"Segoe UI",sans-serif;
+  --mono:"IBM Plex Mono",ui-monospace,Menlo,Consolas,monospace;
+}
+@media (prefers-color-scheme: dark){:root:not([data-theme="light"]){
+  --bg:#11161C; --surface:#1A2129; --ink:#E7ECF2; --muted:#98A6B5; --line:#2C3642; --accent:#A98BF5; --accent-ink:#17102A; --accent-soft:#261F3A;
+  --warn-bg:#33270F; --warn-ink:#F3CF8A; --warn-line:#5A4620;
+  --win:#6FD1A0; --win-soft:#14301F; --loss:#F29A93; --loss-soft:#3A1D1B; --conc:#8CC1EC; --conc-soft:#172A3B;
+  --code-bg:#241F33; color-scheme:dark}}
+:root[data-theme="dark"]{
+  --bg:#11161C; --surface:#1A2129; --ink:#E7ECF2; --muted:#98A6B5; --line:#2C3642; --accent:#A98BF5; --accent-ink:#17102A; --accent-soft:#261F3A;
+  --warn-bg:#33270F; --warn-ink:#F3CF8A; --warn-line:#5A4620;
+  --win:#6FD1A0; --win-soft:#14301F; --loss:#F29A93; --loss-soft:#3A1D1B; --conc:#8CC1EC; --conc-soft:#172A3B;
+  --code-bg:#241F33; color-scheme:dark}
+*{box-sizing:border-box}
+body{margin:0;background:var(--bg);color:var(--ink);font-family:var(--body);font-size:15px;line-height:1.5}
+.wrap{max-width:720px;margin:0 auto;padding-inline:16px;padding-block:0 56px}
+h1,h2,h3{font-family:var(--display);margin:0;line-height:1.15;text-wrap:balance}
+h1{font-size:clamp(26px,6vw,34px);font-weight:700}
+h2{font-size:21px;font-weight:700}
+h3{font-size:17px;font-weight:600}
+p{margin:0}
+button,input,select,textarea{font:inherit;color:inherit}
+button{cursor:pointer;touch-action:manipulation}
+:focus-visible{outline:3px solid var(--accent);outline-offset:2px}
+.top{position:sticky;top:env(safe-area-inset-top,0px);z-index:5;background:var(--bg);padding-block:10px 0;margin-inline:-16px;padding-inline:16px}
+.banner{background:var(--warn-bg);color:var(--warn-ink);border:1px solid var(--warn-line);border-radius:6px;padding:9px 12px;display:grid;gap:2px}
+.banner strong{font-weight:600;font-size:15px}
+.banner span{font-size:13px}
+.tabs{display:flex;gap:4px;margin-top:10px;border-bottom:1px solid var(--line)}
+.tabs button{flex:1;min-height:44px;background:none;border:0;border-bottom:3px solid transparent;color:var(--muted);font-weight:500;font-size:15px}
+.tabs button[aria-selected="true"]{color:var(--accent);border-bottom-color:var(--accent);font-weight:600}
+.head{display:grid;gap:6px;padding-block:18px 6px}
+.head p{color:var(--muted);font-size:14px}
+.panel{display:grid;gap:16px;padding-block:14px}
+.panel[hidden]{display:none}
+.card{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:14px;display:grid;gap:12px;min-width:0}
+fieldset{border:0;padding:0;margin:0;min-width:0;display:grid;gap:6px}
+legend,.lab{font-size:12px;letter-spacing:.07em;text-transform:uppercase;color:var(--muted);font-weight:600;padding:0}
+.row2{display:grid;grid-template-columns:1fr 1fr;gap:12px}
+@media (max-width:420px){.row2{grid-template-columns:1fr}}
+input[type=text],input[type=date],select,textarea{width:100%;min-height:44px;background:var(--bg);border:1px solid var(--line);border-radius:6px;padding:9px 10px}
+textarea{min-height:76px;resize:vertical}
+.hint{font-size:13px;color:var(--muted)}
+.lab-wrap{display:grid;gap:6px;min-width:0}
+.seg{display:flex;gap:6px;flex-wrap:wrap;position:relative}
+.seg input{position:absolute;opacity:0;pointer-events:none}
+.seg label{flex:1 1 auto;min-width:0;min-height:44px;display:flex;align-items:center;justify-content:center;text-align:center;padding:6px 10px;border:1px solid var(--line);border-radius:6px;background:var(--bg);font-weight:500;cursor:pointer}
+.seg input:checked+label{background:var(--accent);border-color:var(--accent);color:var(--accent-ink);font-weight:600}
+.seg input:focus-visible+label{outline:3px solid var(--accent);outline-offset:2px}
+.seg.res input[value=win]:checked+label{background:var(--win);border-color:var(--win);color:var(--surface)}
+.seg.res input[value=loss]:checked+label{background:var(--loss);border-color:var(--loss);color:var(--surface)}
+.seg.res input[value=concession]:checked+label{background:var(--conc);border-color:var(--conc);color:var(--surface)}
+.rate{display:grid;gap:4px}
+.rate .name{display:flex;justify-content:space-between;gap:8px;align-items:baseline;flex-wrap:wrap}
+.rate .name b{font-weight:600}
+.rate .name span{font-size:13px;color:var(--muted)}
+.chips{display:grid;grid-template-columns:repeat(5,1fr);gap:6px}
+.chips button{min-height:44px;border:1px solid var(--line);border-radius:6px;background:var(--bg);font-weight:600;font-variant-numeric:tabular-nums}
+.chips button[aria-pressed="true"]{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn{min-height:46px;padding:0 18px;border-radius:6px;border:1px solid var(--line);background:var(--surface);font-weight:600}
+.btn.primary{background:var(--accent);border-color:var(--accent);color:var(--accent-ink)}
+.btn.primary[disabled]{opacity:.45;cursor:not-allowed}
+.btn.small{min-height:38px;padding:0 12px;font-size:14px;font-weight:500}
+.btn.danger{color:var(--loss);border-color:var(--loss)}
+.actions{display:flex;gap:8px;flex-wrap:wrap;align-items:center}
+.msg{font-size:14px;padding:8px 10px;border-radius:6px;background:var(--accent-soft)}
+.msg.err{background:var(--loss-soft);color:var(--loss)}
+.msg:empty{display:none}
+.game{display:grid;gap:8px}
+.game .top-row{display:flex;gap:8px;align-items:baseline;justify-content:space-between;flex-wrap:wrap}
+.game .when{font-size:13px;color:var(--muted);font-variant-numeric:tabular-nums}
+.pill{display:inline-block;padding:2px 9px;border-radius:99px;font-size:13px;font-weight:600}
+.pill.win{background:var(--win-soft);color:var(--win)}
+.pill.loss{background:var(--loss-soft);color:var(--loss)}
+.pill.concession{background:var(--conc-soft);color:var(--conc)}
+.rates{display:grid;grid-template-columns:repeat(4,1fr);gap:6px}
+.rates div{background:var(--bg);border-radius:6px;padding:5px 6px;text-align:center;min-width:0}
+.rates b{display:block;font-size:16px;font-variant-numeric:tabular-nums}
+.rates small{font-size:11px;color:var(--muted);letter-spacing:.03em}
+.note{font-size:14px;overflow-wrap:anywhere}
+.empty{background:var(--surface);border:1px dashed var(--line);border-radius:8px;padding:18px 14px;color:var(--muted);text-align:center}
+.tag{display:inline-block;font-size:11px;letter-spacing:.07em;text-transform:uppercase;font-weight:600;padding:2px 8px;border-radius:99px;background:var(--accent-soft);color:var(--accent)}
+.tag.draft{background:var(--warn-bg);color:var(--warn-ink)}
+.tag.aside{background:var(--loss-soft);color:var(--loss)}
+.deckhead{display:flex;gap:8px;justify-content:space-between;align-items:flex-start;flex-wrap:wrap}
+.deckhead .meta{display:flex;gap:8px;align-items:center;flex-wrap:wrap}
+.deckbody{display:grid;gap:14px}
+.deckbody[hidden]{display:none}
+table{border-collapse:collapse;width:100%;font-size:14px}
+th{text-align:left;font-size:12px;color:var(--muted);font-weight:500;border-bottom:1px solid var(--line);padding:4px 6px}
+td{padding:5px 6px;border-bottom:1px solid var(--line);vertical-align:top}
+td.n{width:2.2ch;color:var(--muted);font-variant-numeric:tabular-nums}
+td.id{font-family:var(--mono);font-size:12.5px;white-space:nowrap;color:var(--accent)}
+.scroll{overflow-x:auto}
+.qrbox{display:grid;gap:10px;justify-items:start}
+.qrbox svg{width:min(100%,300px);height:auto;border:1px solid var(--line);border-radius:4px;background:#fff;display:block}
+code.code{display:block;font-family:var(--mono);font-size:12px;word-break:break-all;background:var(--code-bg);padding:9px;border-radius:6px;user-select:all;width:100%}
+.sumline{display:grid;grid-template-columns:repeat(3,1fr);gap:8px;text-align:center}
+.sumline div{background:var(--surface);border:1px solid var(--line);border-radius:8px;padding:10px 6px}
+.sumline b{display:block;font-family:var(--display);font-size:24px;font-variant-numeric:tabular-nums}
+.sumline small{font-size:12px;color:var(--muted)}
+.bar{display:grid;grid-template-columns:104px 1fr 34px;gap:8px;align-items:center;font-size:13px}
+.bar .track{height:8px;background:var(--bg);border-radius:99px;overflow:hidden}
+.bar .fill{height:100%;background:var(--accent);border-radius:99px}
+.bar .val{text-align:right;font-variant-numeric:tabular-nums;color:var(--muted)}
+.bar.none .fill{background:transparent}
+.rec{font-family:var(--display);font-size:20px;font-weight:700;font-variant-numeric:tabular-nums}
+.foot{font-size:13px;color:var(--muted);padding-top:6px}
+@media (prefers-reduced-motion:no-preference){.chips button,.seg label{transition:background .12s,border-color .12s}}
+</style>
+
+<div class="wrap">
+  <div class="top">
+    <div class="banner" role="note">
+      <strong>Pause games: not ladder results</strong>
+      <span>Opponents are random testers. Read the ratings, not the record.</span>
+    </div>
+    <div class="tabs" role="tablist" aria-label="Sections">
+      <button type="button" role="tab" id="tab-log" aria-selected="true" aria-controls="p-log" data-tab="log">Log</button>
+      <button type="button" role="tab" id="tab-decks" aria-selected="false" aria-controls="p-decks" data-tab="decks">Decks</button>
+      <button type="button" role="tab" id="tab-sum" aria-selected="false" aria-controls="p-sum" data-tab="sum">Summary</button>
+    </div>
+  </div>
+
+  <div class="head">
+    <h1>Pause Games</h1>
+    <p>Games played in competitive mode while ranked is paused, with how each deck felt. A concession by your opponent counts as a full win.</p>
+  </div>
+
+  <section class="panel" id="p-log" role="tabpanel" aria-labelledby="tab-log">
+    <form class="card" id="gameform" autocomplete="off">
+      <h2>Log a game</h2>
+      <div class="row2">
+        <div class="lab-wrap"><label class="lab" for="f-date">Date</label><input type="date" id="f-date"></div>
+        <div class="lab-wrap"><label class="lab" for="f-deck">Deck</label>
+          <select id="f-deck"><option value="">Loading decks...</option></select></div>
+      </div>
+      <fieldset>
+        <legend>Result</legend>
+        <div class="seg res" id="f-result">
+          <input type="radio" name="result" id="r-win" value="win"><label for="r-win">Win</label>
+          <input type="radio" name="result" id="r-loss" value="loss"><label for="r-loss">Loss</label>
+          <input type="radio" name="result" id="r-conc" value="concession"><label for="r-conc">Win by concession</label>
+        </div>
+      </fieldset>
+      <fieldset>
+        <legend>Turn order</legend>
+        <div class="seg" id="f-first">
+          <input type="radio" name="first" id="o-first" value="first"><label for="o-first">Went first</label>
+          <input type="radio" name="first" id="o-second" value="second"><label for="o-second">Went second</label>
+        </div>
+      </fieldset>
+      <div class="lab-wrap"><label class="lab" for="f-opp">Opponent's deck, as seen (optional)</label>
+        <input type="text" id="f-opp" placeholder="For example: Riolu, Hitmonlee, Korrina" maxlength="200"></div>
+      <div class="card" style="gap:14px;background:var(--bg);border-style:dashed">
+        <div><span class="lab">How did the deck feel</span><p class="hint">Tap 1 (poor) to 5 (great). Tap the same number again to clear it. All four are optional.</p></div>
+        <div class="rate" data-r="competitive"><div class="name"><b>Competitive</b><span>Felt able to beat a real deck</span></div><div class="chips"></div></div>
+        <div class="rate" data-r="consistent"><div class="name"><b>Consistent</b><span>Did the same thing most games</span></div><div class="chips"></div></div>
+        <div class="rate" data-r="playable"><div class="name"><b>Playable</b><span>Easy to pilot, few awkward turns</span></div><div class="chips"></div></div>
+        <div class="rate" data-r="fun"><div class="name"><b>Fun</b><span>Enjoyed playing it</span></div><div class="chips"></div></div>
+      </div>
+      <div class="lab-wrap"><label class="lab" for="f-note">Note (optional)</label>
+        <textarea id="f-note" maxlength="1500" placeholder="What happened, what you would change"></textarea></div>
+      <div class="actions"><button type="submit" class="btn primary" id="f-save" disabled>Save game</button><span class="hint" id="f-need">Pick a deck and a result to save.</span></div>
+      <div class="msg" id="f-msg" role="status" aria-live="polite"></div>
+    </form>
+
+    <div style="display:grid;gap:10px">
+      <h2>Recent games</h2>
+      <div id="recent"><div class="empty">Loading games...</div></div>
+    </div>
+  </section>
+
+  <section class="panel" id="p-decks" role="tabpanel" aria-labelledby="tab-decks" hidden>
+    <p class="hint">Five decks that clear the bot's floor check and have never been logged on the ladder, and the four drafts from the brew shortlist, each tagged with what its floor page said (Oct 2). Open a deck for its list, its QR code and its deck code.</p>
+    <div id="decklist" style="display:grid;gap:12px"><div class="empty">Loading decks...</div></div>
+    <p class="foot">The QR code is the game's own deck-import code (Decks, Import, QR), made by the project's encoder, the same format as the Season Brews page. The code carries each card, not a printing, so any printing you own counts. Check that you own every card in a list before you import it.</p>
+  </section>
+
+  <section class="panel" id="p-sum" role="tabpanel" aria-labelledby="tab-sum" hidden>
+    <div class="sumline" id="sum-all"></div>
+    <div id="sum-decks" style="display:grid;gap:12px"><div class="empty">Loading...</div></div>
+    <p class="foot">Win and loss here are against random testers in competitive mode. A concession by the opponent is counted as a win. Ratings are averages of the 1 to 5 taps; a deck with no rating shows a dash.</p>
+  </section>
+</div>
+
+<script>
+(function () {
+  'use strict'; /* a write to a frozen object must throw here, not vanish */
+  var RATINGS =['competitive', 'consistent', 'playable', 'fun'];
+  var LABELS = { competitive: 'Competitive', consistent: 'Consistent', playable: 'Playable', fun: 'Fun' };
+  var RESULT_LABEL = { win: 'Win', loss: 'Loss', concession: 'Win by concession' };
+  var st = { decks: [], games: [], decksReady: false, gamesReady: false, db: null, dbChecked: false, canWrite: null, open: {}, confirm: null, shown: 20, ratings: {}, saving: false, dbError: '' };
+  var $ = function (id) { return document.getElementById(id); };
+  var esc = function (s) { var d = document.createElement('div'); d.textContent = s == null ? '' : String(s); return d.innerHTML.replace(/"/g, '&quot;').replace(/'/g, '&#39;'); };
+
+  /* ---------- tabs ---------- */
+  function showTab(name) {
+    ['log', 'decks', 'sum'].forEach(function (t) {
+      var on = t === name;
+      $('tab-' + t).setAttribute('aria-selected', on ? 'true' : 'false');
+      $('p-' + t).hidden = !on;
+    });
+    try { sessionStorage.setItem('pg-tab', name); } catch (e) {}
+  }
+  document.querySelector('.tabs').addEventListener('click', function (e) {
+    var b = e.target.closest('button[data-tab]'); if (b) { showTab(b.getAttribute('data-tab')); window.scrollTo(0, 0); }
+  });
+
+  /* ---------- the form ---------- */
+  function today() {
+    var d = new Date(), p = function (n) { return (n < 10 ? '0' : '') + n; };
+    return d.getFullYear() + '-' + p(d.getMonth() + 1) + '-' + p(d.getDate());
+  }
+  if (!$('f-date').value) $('f-date').value = today();
+  Array.prototype.forEach.call(document.querySelectorAll('.rate'), function (box) {
+    var key = box.getAttribute('data-r'), html = '';
+    for (var i = 1; i <= 5; i++) html += '<button type="button" data-v="' + i + '" aria-pressed="false" aria-label="' + LABELS[key] + ' ' + i + ' of 5">' + i + '</button>';
+    box.querySelector('.chips').innerHTML = html;
+    box.querySelector('.chips').addEventListener('click', function (e) {
+      var b = e.target.closest('button[data-v]'); if (!b) return;
+      var v = +b.getAttribute('data-v');
+      if (st.ratings[key] === v) delete st.ratings[key]; else st.ratings[key] = v;
+      paintChips(box, key);
+    });
+  });
+  function paintChips(box, key) {
+    Array.prototype.forEach.call(box.querySelectorAll('button[data-v]'), function (b) {
+      b.setAttribute('aria-pressed', st.ratings[key] === +b.getAttribute('data-v') ? 'true' : 'false');
+    });
+  }
+  function checked(name) { var el = document.querySelector('input[name=' + name + ']:checked'); return el ? el.value : ''; }
+  function canSave() { return !st.saving && st.db && st.canWrite !== false && $('f-deck').value && checked('result'); }
+  function paintSave() {
+    $('f-save').disabled = !canSave();
+    var need = [];
+    if (!st.dbChecked) { $('f-need').textContent = ''; return; }
+    if (!st.db) need.push('the database is not available in this view');
+    else if (st.canWrite === false) need.push('this view is read-only');
+    else { if (!$('f-deck').value) need.push('a deck'); if (!checked('result')) need.push('a result'); }
+    $('f-need').textContent = need.length ? (st.db && st.canWrite !== false ? 'Still needed: ' + need.join(' and ') + '.' : 'Cannot save: ' + need.join(', ') + '.') : '';
+  }
+  $('gameform').addEventListener('change', paintSave);
+  $('gameform').addEventListener('input', paintSave);
+  $('gameform').addEventListener('submit', function (e) {
+    e.preventDefault();
+    if (!canSave()) return;
+    var deckId = $('f-deck').value, deck = st.decks.filter(function (d) { return d.id === deckId; })[0];
+    var rat = {}; RATINGS.forEach(function (k) { if (st.ratings[k]) rat[k] = st.ratings[k]; });
+    var doc = { deck: deckId, deckName: deck ? deck.name : deckId, date: $('f-date').value || today(), ts: Date.now(),
+      result: checked('result'), first: checked('first'), opp: $('f-opp').value.trim(), ratings: rat, note: $('f-note').value.trim() };
+    st.saving = true; paintSave(); $('f-msg').className = 'msg'; $('f-msg').textContent = 'Saving...';
+    st.db.collection('pause_games').add(doc).then(function () {
+      st.saving = false;
+      $('f-msg').textContent = 'Saved: ' + doc.deckName + ', ' + RESULT_LABEL[doc.result].toLowerCase() + '.';
+      Array.prototype.forEach.call(document.querySelectorAll('input[name=result],input[name=first]'), function (r) { r.checked = false; });
+      st.ratings = {}; Array.prototype.forEach.call(document.querySelectorAll('.rate'), function (box) { paintChips(box, box.getAttribute('data-r')); });
+      $('f-opp').value = ''; $('f-note').value = ''; paintSave();
+    }, function (err) {
+      st.saving = false; $('f-msg').className = 'msg err';
+      $('f-msg').textContent = err && err.code === 'quota_exceeded' ? 'The database is full, so this game was not saved.'
+        : 'Not saved (' + ((err && err.code) || 'error') + '). Your entries are still in the form; try again.';
+      paintSave();
+    });
+  });
+
+  /* ---------- QR ---------- */
+  function qrSvg(text) {
+    try {
+      if (typeof qrcode !== 'function') return null;
+      var qr = qrcode(0, 'M'); qr.addData(text); qr.make();
+      var n = qr.getModuleCount(), m = 4, d = '';
+      for (var r = 0; r < n; r++) for (var c = 0; c < n; c++) if (qr.isDark(r, c)) d += 'M' + (c + m) + ' ' + (r + m) + 'h1v1h-1z';
+      var s = n + 2 * m;
+      return '<svg viewBox="0 0 ' + s + ' ' + s + '" role="img" aria-label="QR code of the deck code" shape-rendering="crispEdges"><rect width="' + s + '" height="' + s + '" fill="#ffffff"/><path d="' + d + '" fill="#000000"/></svg>';
+    } catch (e) { return null; }
+  }
+  function copyText(text, btn) {
+    var done = function (ok) { var t = btn.textContent; btn.textContent = ok ? 'Copied' : 'Select and copy'; setTimeout(function () { btn.textContent = t; }, 1600); };
+    try { navigator.clipboard.writeText(text).then(function () { done(true); }, function () { done(false); }); } catch (e) { done(false); }
+  }
+  function listText(deck) {
+    return 'Energy: ' + deck.energy + '\n' + (deck.cards || []).map(function (c) { return c.n + ' ' + c.name + ' ' + c.id; }).join('\n');
+  }
+
+  /* ---------- decks tab ---------- */
+  function deckCard(d) {
+    var open = !!st.open[d.id], g = d.group === 'draft';
+    var cards = d.cards || [], rows = function (kind) {
+      var r = cards.filter(function (c) { return c.kind === kind; });
+      return '<div class="scroll"><table><caption class="lab" style="text-align:left;padding-bottom:4px">' + kind + 's (' + r.reduce(function (a, c) { return a + c.n; }, 0) + ')</caption><tbody>' +
+        r.map(function (c) { return '<tr><td class="n">' + c.n + '</td><td>' + esc(c.name) + '</td><td class="id">' + esc(c.id) + '</td></tr>'; }).join('') + '</tbody></table></div>';
+    };
+    var body = '';
+    if (open) {
+      var svg = qrSvg(d.code || '');
+      body = '<div class="deckbody">' + rows('Pokémon') + rows('Trainer') +
+        '<div class="qrbox">' + (svg || '<p class="hint">The QR drawing did not load in this view. Use the deck code below.</p>') +
+        '<code class="code" tabindex="0">' + esc(d.code) + '</code>' +
+        '<div class="actions"><button type="button" class="btn small" data-copy="code" data-id="' + esc(d.id) + '">Copy code</button>' +
+        '<button type="button" class="btn small" data-copy="list" data-id="' + esc(d.id) + '">Copy list</button></div></div>' +
+        (d.source ? '<p class="hint">List from ' + esc(d.source) + '</p>' : '') + '</div>';
+    }
+    return '<article class="card" data-deck="' + esc(d.id) + '"><div class="deckhead"><div style="display:grid;gap:4px;min-width:0"><h3>' + esc(d.name) + '</h3>' +
+      '<div class="meta"><span class="tag' + (g ? ' draft' : '') + (d.status === 'set_aside' ? ' aside' : '') + '">' + esc(d.tag || (g ? 'Draft' : 'Floor-cleared, never logged')) + '</span><span class="hint">' + esc(d.energy) + ' energy</span></div></div></div>' +
+      '<p>' + esc(d.note) + '</p>' +
+      '<div class="actions"><button type="button" class="btn small" data-toggle="' + esc(d.id) + '" aria-expanded="' + open + '">' + (open ? 'Hide list and QR' : 'Show list and QR') + '</button>' +
+      '<button type="button" class="btn small" data-logdeck="' + esc(d.id) + '">Log a game with it</button></div>' + body + '</article>';
+  }
+  function paintDecks() {
+    var box = $('decklist');
+    if (!st.decksReady) { box.innerHTML = '<div class="empty">Loading decks...</div>'; return; }
+    if (!st.decks.length) { box.innerHTML = '<div class="empty">No decks are stored yet. The deck list lives in this page\'s database (collection pause_decks) and is added by Claude, so ask for it to be loaded.</div>'; return; }
+    box.innerHTML = st.decks.map(deckCard).join('');
+  }
+  $('decklist').addEventListener('click', function (e) {
+    var t = e.target.closest('[data-toggle]'), c = e.target.closest('[data-copy]'), l = e.target.closest('[data-logdeck]');
+    if (t) {
+      /* open or close this one deck in place: only its own card is redrawn */
+      var id = t.getAttribute('data-toggle'), deck = st.decks.filter(function (x) { return x.id === id; })[0], card = t.closest('article');
+      if (deck && card) { st.open[id] = !st.open[id]; card.outerHTML = deckCard(deck); var el = document.querySelector('[data-deck="' + id + '"]'); if (el && st.open[id]) el.scrollIntoView({ block: 'nearest' }); }
+    }
+    else if (c) { var d = st.decks.filter(function (x) { return x.id === c.getAttribute('data-id'); })[0]; if (d) copyText(c.getAttribute('data-copy') === 'code' ? d.code : listText(d), c); }
+    else if (l) { $('f-deck').value = l.getAttribute('data-logdeck'); showTab('log'); paintSave(); window.scrollTo(0, 0); }
+  });
+  function paintSelect() {
+    var sel = $('f-deck'), keep = sel.value;
+    if (!st.decksReady) return;
+    var groups = [['floor', 'Floor-cleared, never logged'], ['draft', 'Drafts']], html = '<option value="">Choose a deck</option>';
+    groups.forEach(function (g) {
+      var ds = st.decks.filter(function (d) { return d.group === g[0] && d.status !== 'set_aside'; });
+      if (ds.length) html += '<optgroup label="' + g[1] + '">' + ds.map(function (d) { return '<option value="' + esc(d.id) + '">' + esc(d.name) + '</option>'; }).join('') + '</optgroup>';
+    });
+    var aside = st.decks.filter(function (d) { return d.status === 'set_aside'; });
+    if (aside.length) html += '<optgroup label="Set aside (not to be played)">' + aside.map(function (d) { return '<option value="' + esc(d.id) + '">' + esc(d.name) + ' (set aside)</option>'; }).join('') + '</optgroup>';
+    var other = st.decks.filter(function (d) { return d.group !== 'floor' && d.group !== 'draft' && d.status !== 'set_aside'; });
+    if (other.length) html += '<optgroup label="Other">' + other.map(function (d) { return '<option value="' + esc(d.id) + '">' + esc(d.name) + '</option>'; }).join('') + '</optgroup>';
+    sel.innerHTML = html; sel.value = keep;
+    if (!st.decks.length) sel.innerHTML = '<option value="">No decks stored yet</option>';
+  }
+
+  /* ---------- recent games ---------- */
+  function gameCard(g) {
+    var r = g.ratings || {}, has = RATINGS.some(function (k) { return r[k]; });
+    var meta = [g.first === 'first' ? 'Went first' : g.first === 'second' ? 'Went second' : '', g.opp ? 'vs ' + g.opp : ''].filter(Boolean).join(' · ');
+    var conf = st.confirm === g.id;
+    return '<article class="card game"><div class="top-row"><div style="display:grid;gap:2px;min-width:0"><b>' + esc(g.deckName || g.deck) + '</b><span class="when">' + esc(g.date || '') + '</span></div>' +
+      '<span class="pill ' + esc(g.result) + '">' + esc(RESULT_LABEL[g.result] || g.result) + '</span></div>' +
+      (meta ? '<p class="note">' + esc(meta) + '</p>' : '') +
+      (has ? '<div class="rates">' + RATINGS.map(function (k) { return '<div><b>' + (r[k] || '-') + '</b><small>' + LABELS[k].toLowerCase() + '</small></div>'; }).join('') + '</div>' : '') +
+      (g.note ? '<p class="note">' + esc(g.note) + '</p>' : '') +
+      (st.canWrite === false ? '' : conf
+        ? '<div class="actions"><span class="hint">Delete this game?</span><button type="button" class="btn small danger" data-del-yes="' + esc(g.id) + '">Yes, delete</button><button type="button" class="btn small" data-del-no="1">Keep</button></div>'
+        : '<div class="actions"><button type="button" class="btn small" data-del="' + esc(g.id) + '">Delete</button></div>') + '</article>';
+  }
+  function sortedGames() {
+    return st.games.slice().sort(function (a, b) { return (b.ts || 0) - (a.ts || 0) || String(b.date).localeCompare(String(a.date)); });
+  }
+  function paintRecent() {
+    var box = $('recent');
+    if (!st.db && st.dbError) { box.innerHTML = '<div class="empty">' + esc(st.dbError) + '</div>'; return; }
+    if (!st.gamesReady) { box.innerHTML = '<div class="empty">Loading games...</div>'; return; }
+    var gs = sortedGames();
+    if (!gs.length) { box.innerHTML = '<div class="empty">No games yet. The first one goes in the form above.</div>'; return; }
+    box.innerHTML = '<div style="display:grid;gap:10px">' + gs.slice(0, st.shown).map(gameCard).join('') + '</div>' +
+      (gs.length > st.shown ? '<div class="actions" style="margin-top:10px"><button type="button" class="btn" data-more="1">Show older games (' + (gs.length - st.shown) + ')</button></div>' : '');
+  }
+  $('recent').addEventListener('click', function (e) {
+    var d = e.target.closest('[data-del]'), y = e.target.closest('[data-del-yes]'), n = e.target.closest('[data-del-no]'), m = e.target.closest('[data-more]');
+    if (d) { st.confirm = d.getAttribute('data-del'); paintRecent(); }
+    else if (n) { st.confirm = null; paintRecent(); }
+    else if (m) { st.shown += 20; paintRecent(); }
+    else if (y) {
+      var id = y.getAttribute('data-del-yes'); st.confirm = null;
+      st.db.collection('pause_games').doc(id).delete().then(null, function () { $('f-msg').className = 'msg err'; $('f-msg').textContent = 'Could not delete that game.'; });
+    }
+  });
+
+  /* ---------- summary ---------- */
+  function avg(list, k) { var v = list.map(function (g) { return (g.ratings || {})[k]; }).filter(Boolean); return v.length ? { a: v.reduce(function (x, y) { return x + y; }, 0) / v.length, n: v.length } : null; }
+  function paintSummary() {
+    var all = $('sum-all'), box = $('sum-decks');
+    if (!st.gamesReady || !st.decksReady) { all.innerHTML = ''; box.innerHTML = '<div class="empty">Loading...</div>'; return; }
+    var wins = st.games.filter(function (g) { return g.result === 'win' || g.result === 'concession'; }).length;
+    all.innerHTML = '<div><b>' + st.games.length + '</b><small>games</small></div><div><b>' + wins + '-' + (st.games.length - wins) + '</b><small>wins-losses</small></div><div><b>' +
+      st.games.filter(function (g) { return g.result === 'concession'; }).length + '</b><small>won by concession</small></div>';
+    var known = {}; st.decks.forEach(function (d) { known[d.id] = true; });
+    var rowsData = st.decks.map(function (d) { return { id: d.id, name: d.name, games: st.games.filter(function (g) { return g.deck === d.id; }) }; });
+    var strays = {}; st.games.forEach(function (g) { if (!known[g.deck]) { (strays[g.deck] = strays[g.deck] || { id: g.deck, name: g.deckName || g.deck, games: [] }).games.push(g); } });
+    Object.keys(strays).forEach(function (k) { rowsData.push(strays[k]); });
+    rowsData.sort(function (a, b) { return b.games.length - a.games.length; });
+    box.innerHTML = rowsData.map(function (r) {
+      var w = r.games.filter(function (g) { return g.result === 'win' || g.result === 'concession'; }).length, c = r.games.filter(function (g) { return g.result === 'concession'; }).length;
+      if (!r.games.length) return '<article class="card" style="opacity:.8"><div class="deckhead"><h3>' + esc(r.name) + '</h3><span class="hint">no games yet</span></div></article>';
+      return '<article class="card"><div class="deckhead"><h3>' + esc(r.name) + '</h3><span class="rec">' + w + '-' + (r.games.length - w) + '</span></div>' +
+        '<p class="hint">' + r.games.length + ' game' + (r.games.length === 1 ? '' : 's') + (c ? ', ' + c + ' won by concession' : '') + '</p>' +
+        RATINGS.map(function (k) {
+          var a = avg(r.games, k);
+          return '<div class="bar' + (a ? '' : ' none') + '"><span>' + LABELS[k] + '</span><div class="track"><div class="fill" style="width:' + (a ? Math.round(a.a / 5 * 100) : 0) + '%"></div></div><span class="val">' + (a ? a.a.toFixed(1) : '-') + '</span></div>';
+        }).join('') + '</article>';
+    }).join('') || '<div class="empty">No decks yet.</div>';
+  }
+
+  function paintAll() { paintSelect(); paintDecks(); paintRecent(); paintSummary(); paintSave(); }
+
+  /* ---------- the database ---------- */
+  var tab; try { tab = sessionStorage.getItem('pg-tab'); } catch (e) {}
+  if (tab === 'decks' || tab === 'sum') showTab(tab);
+  paintAll();
+  if (!window.claude || !window.claude.use) { st.dbChecked = true; st.dbError = 'This page keeps its games in the artifact database, which is not available in this view.'; paintAll(); return; }
+  Promise.all([window.claude.use('db'), window.claude.use('user')]).then(function (r) {
+    st.db = r[0]; st.dbChecked = true;
+    if (r[1]) { try { st.canWrite = r[1].can('data.write'); } catch (e) {} }
+    if (!st.db) { st.dbError = 'The artifact database is not available in this view, so nothing can be loaded or saved. Open the page from your own claude.ai account.'; paintAll(); return; }
+    var fail = function (e) { st.dbError = 'The database stopped answering (' + ((e && e.code) || 'error') + '). Reload the page.'; paintRecent(); };
+    /* The runtime hands over frozen documents (and often the same set again, first from its cache, then from the server, then on a refresh).
+       So: copy each document before adding its id (a write to a frozen object is silently dropped, which left every deck without an id and
+       made the QR button do nothing), skip a repeat of what is already on screen (a repaint under a finger can swallow a tap), and do not
+       treat an empty first delivery from the cache as "no decks". */
+    var copyDoc = function (d) { var o = Object.assign({}, d.data() || {}); o.id = d.id; return o; };
+    var fresh = function (snap) { return !(snap.metadata && snap.metadata.fromCache && !snap.docs.length); };
+    st.db.collection('pause_decks').orderBy('order').onSnapshot(function (snap) {
+      if (!fresh(snap)) return;
+      var decks = snap.docs.map(copyDoc), sig = JSON.stringify(decks);
+      if (st.decksReady && sig === st.deckSig) return;
+      st.deckSig = sig; st.decks = decks;
+      st.decksReady = true; paintSelect(); paintDecks(); paintSummary(); paintSave();
+    }, fail);
+    st.db.collection('pause_games').onSnapshot(function (snap) {
+      if (!fresh(snap)) return;
+      var games = snap.docs.map(copyDoc), sig = JSON.stringify(games);
+      if (st.gamesReady && sig === st.gameSig) return;
+      st.gameSig = sig; st.games = games;
+      st.gamesReady = true; paintRecent(); paintSummary();
+    }, fail);
+    paintSave();
+  });
+})();
+</script>
+
+</body></html>

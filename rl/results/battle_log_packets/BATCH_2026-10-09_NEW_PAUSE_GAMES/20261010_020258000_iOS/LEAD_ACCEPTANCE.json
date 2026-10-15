@@ -1,0 +1,38 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-10T04:46:22.740490+00:00",
+  "source_video": "20261010_020258000_iOS.MP4",
+  "source_sha256": "c5e7732cf212bd836fbcafc107b0f0d92ff43d8a8cd2f5b9f222b4fd466e5640",
+  "scope": "Whole supplied continuous battle: setup, all turns, terminal sequence and source ending",
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 8,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-09_NEW_PAUSE_GAMES\\20261010_020258000_iOS\\independent_sol\\CHECK_RESULT.json",
+  "basis": "Whole-source Sol review and coverage; separately commissioned bounded Sol checks of opening, ordinary turns/first moves, draws/searches, hands, both boards/Energy Zones, fans, decisive outcome; all frozen repairs independently verified. Root reconciled reports and inspected consequential boundary frames. Structure checked separately.",
+  "source_limits": [
+    "Opponent hand faces and hidden searches not fully revealed.",
+    "Neither player opens a discard pile; visible discard tops cannot establish full contents.",
+    "Normal draw end located to about0.2–0.8s precision; action timestamps approximate.",
+    "T4 mobile notification obscures upper clock and part of hand fan; three backs remain countable.",
+    "Several +3/+6 candidates show action after first play; clear earlier native selection retained.",
+    "Sabrina ends through concession with no replacement or final attack.",
+    "QR/log list functional identity verified; artwork/rarity aliases in the log do not prove filmed exact printings."
+  ],
+  "outcome": {
+    "result": "win",
+    "opponent": "Pikachu",
+    "method": "opponent concession",
+    "last_points": {
+      "owner": 2,
+      "opponent": 1
+    },
+    "evidence_ids": [
+      "F0330.00",
+      "F0340.00",
+      "F0342.00"
+    ]
+  },
+  "external_status": "Source-qualified live deck definitions have been saved and read back. This game save is pending; dated deck retrieval and any unverified earlier version are preserved in DECK_USED.json.",
+  "archive_authorization": "Completed local review may be safely archived after verified CLI registration; original bytes/name preserved."
+}

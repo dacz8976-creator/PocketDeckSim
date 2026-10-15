@@ -1,0 +1,4816 @@
+{
+  "source": "20260908_190933000_iOS.MP4",
+  "capture_status": "complete_with_recording_limits",
+  "setup": {
+    "source_video": "20260908_190933000_iOS.MP4",
+    "timestamp_seconds": 17.5,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Darkrai",
+        "basis": "direct native before Active selection",
+        "evidence_ids": [
+          "t0017.50"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Igglybuff",
+        "basis": "direct native before Active selection",
+        "evidence_ids": [
+          "t0017.50"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Copycat",
+        "basis": "direct native before Active selection",
+        "evidence_ids": [
+          "t0017.50"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Professor's Research",
+        "basis": "direct native before Active selection",
+        "evidence_ids": [
+          "t0017.50"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Eevee",
+        "basis": "direct native before Active selection",
+        "evidence_ids": [
+          "t0017.50"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Igglybuff",
+      "opening_position": 2,
+      "source_video": "20260908_190933000_iOS.MP4",
+      "timestamp_seconds": 40,
+      "evidence_ids": [
+        "t0017.50",
+        "t0040.00"
+      ]
+    },
+    "redraw_or_replacement": null,
+    "before_active_placement": true,
+    "status": "observed",
+    "evidence_ids": [
+      "t0017.50"
+    ],
+    "limit_reason": null
+  },
+  "turns": [
+    {
+      "turn_number": 1,
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          "Darkrai",
+          "Copycat",
+          "Professor's Research",
+          "Eevee",
+          "Eevee"
+        ],
+        "count": 5,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0044.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Eevee",
+          "Small Balloon"
+        ],
+        "count": 3,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0068.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "board_at_start": {
+        "turn_number_displayed": null,
+        "phase": "boundary observation",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Igglybuff",
+            "variant": null,
+            "pokemon_type": "Colorless",
+            "bench_position": null,
+            "hp_now": 30,
+            "hp_max": 30,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0044.50"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0044.50"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0044.50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Oricorio",
+            "variant": null,
+            "pokemon_type": "Lightning",
+            "bench_position": null,
+            "hp_now": 70,
+            "hp_max": 70,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [
+              "Safeguard: prevent attack damage from Pokémon ex."
+            ],
+            "evidence_ids": [
+              "t0044.50"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0044.50"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0044.50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0044.50"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": null,
+        "phase": "boundary observation",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Igglybuff",
+            "variant": null,
+            "pokemon_type": "Colorless",
+            "bench_position": null,
+            "hp_now": 30,
+            "hp_max": 30,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0087.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 1,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0087.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Eevee",
+              "variant": null,
+              "pokemon_type": "Colorless",
+              "bench_position": 2,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0087.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 3,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0087.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0087.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0087.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Oricorio",
+            "variant": null,
+            "pokemon_type": "Lightning",
+            "bench_position": null,
+            "hp_now": 20,
+            "hp_max": 70,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 50,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [
+              "Safeguard: prevent attack damage from Pokémon ex."
+            ],
+            "evidence_ids": [
+              "t0087.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": null,
+              "available": null
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0087.00"
+            ],
+            "limit_reason": "Sleep-recovery notice overlaps part of current Energy Zone; first-generation transition pending."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0087.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0087.00"
+        ]
+      },
+      "inherited_provenance": {
+        "turn_number": 1,
+        "accepted_source_line": 18,
+        "verbatim_accepted_section": "### Matchmaking and setup, about 0–40 seconds\n\nDacz8976 matches with BigGutSnorlax and is assigned first turn (`021-owner-going-first.jpg`). The owner's opening five are visibly **Igglybuff, Darkrai, Copycat, Professor's Research, and Eevee**; Igglybuff is the only Basic set Active. The opponent sets lone **Oricorio** Active. No Bench Pokémon or Energy are in play, and the score is 0–0 (`041-initial-board.jpg`). Oricorio's visible Safeguard prevents attack damage from Pokémon ex.\n\n### Dacz8976 turn 1, about 41–87 seconds\n\nThe visible turn draw is a second **Eevee** (`044-owner-draw-eevee.jpg`). The owner Benches the opening Darkrai, plays **Professor's Research**, and visibly draws **Poke Ball** and **Small Balloon** (`049-owner-research-play.jpg`, `053-research-results-pokeball-balloon.jpg`). The owner then plays Poke Ball; it returns a second **Darkrai**, which is Benched (`055-owner-pokeball-play.jpg`, `058-pokeball-darkrai-result.jpg`, `060-second-darkrai-benched.jpg`). One Eevee is also Benched (`068-eevee-benched.jpg`). Going first supplies no Energy attachment on this turn.\n\nIgglybuff uses zero-cost **Sleepy Lullaby**, dealing 10 and making Oricorio Asleep (`070-sleepy-lullaby.jpg`). The two Benched Darkrai then resolve **Bad Dreams** in order for 20 each: Oricorio moves 70→60 from the attack, then 60→40→20 (`075-first-bad-dreams.jpg`, `078-second-bad-dreams.jpg`). Pokémon Checkup follows because the target remains in play. The coin is visibly **Heads**, and the game reports that Oricorio recovered from Sleep (`084-sleep-check-heads.jpg`, `086-oricorio-recovers.jpg`). End state: owner Active Igglybuff30; Bench Darkrai100, Eevee50, Darkrai100; opponent lone Active Oricorio20 and awake; score 0–0.",
+        "basis": "inherited accepted prose, not completed new source observation"
+      },
+      "fresh_conflicts": []
+    },
+    {
+      "turn_number": 2,
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Eevee",
+          "Small Balloon"
+        ],
+        "count": 3,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0068.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Eevee",
+          "Small Balloon"
+        ],
+        "count": 3,
+        "basis": "native before prior owner ending action; unchanged through opponent turn by inspected footage",
+        "evidence_ids": [
+          "t0068.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "board_at_start": {
+        "turn_number_displayed": null,
+        "phase": "boundary observation",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Igglybuff",
+            "variant": null,
+            "pokemon_type": "Colorless",
+            "bench_position": null,
+            "hp_now": 30,
+            "hp_max": 30,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0087.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 1,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0087.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Eevee",
+              "variant": null,
+              "pokemon_type": "Colorless",
+              "bench_position": 2,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0087.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 3,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0087.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0087.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0087.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Oricorio",
+            "variant": null,
+            "pokemon_type": "Lightning",
+            "bench_position": null,
+            "hp_now": 20,
+            "hp_max": 70,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 50,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [
+              "Safeguard: prevent attack damage from Pokémon ex."
+            ],
+            "evidence_ids": [
+              "t0087.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": null,
+              "available": null
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0087.00"
+            ],
+            "limit_reason": "Sleep-recovery notice overlaps part of current Energy Zone; first-generation transition pending."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0087.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0087.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": null,
+        "phase": "boundary observation",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Igglybuff",
+            "variant": null,
+            "pokemon_type": "Colorless",
+            "bench_position": null,
+            "hp_now": 30,
+            "hp_max": 30,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0114.50"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 1,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0114.50"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Eevee",
+              "variant": null,
+              "pokemon_type": "Colorless",
+              "bench_position": 2,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0114.50"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 3,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0114.50"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": null,
+              "count": null,
+              "available": null
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0114.50"
+            ],
+            "limit_reason": "Current empty during generation transition; next marker not yet shown."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0114.50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Oricorio",
+            "variant": null,
+            "pokemon_type": "Lightning",
+            "bench_position": null,
+            "hp_now": 20,
+            "hp_max": 70,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 50,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [
+              "Safeguard: prevent attack damage from Pokémon ex."
+            ],
+            "evidence_ids": [
+              "t0114.50"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Electrike",
+              "variant": null,
+              "pokemon_type": "Lightning",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Lightning": 1
+                }
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0114.50"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Electrike",
+              "variant": null,
+              "pokemon_type": "Lightning",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0114.50"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0114.50"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0114.50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0114.50"
+        ]
+      },
+      "inherited_provenance": {
+        "turn_number": 2,
+        "accepted_source_line": 28,
+        "verbatim_accepted_section": "### BigGutSnorlax turn 2, about 88–115 seconds\n\nThe opponent's turn draw is hidden. BigGutSnorlax plays **Professor's Research** (`093-opponent-research-play.jpg`), then Benches two **Electrike**. One Lightning Energy is attached to the left Benched Electrike (`107-two-electrike-developed.jpg`, `109-lightning-to-left-electrike.jpg`). Oricorio remains Active at 20 HP, does not attack, and the score stays 0–0.",
+        "basis": "inherited accepted prose, not completed new source observation"
+      },
+      "fresh_conflicts": []
+    },
+    {
+      "turn_number": 3,
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Eevee",
+          "Small Balloon",
+          "Poké Ball"
+        ],
+        "count": 4,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0114.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          "Sabrina",
+          "Swablu",
+          "Training Area",
+          "Field Blower"
+        ],
+        "count": 4,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0143.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "board_at_start": {
+        "turn_number_displayed": null,
+        "phase": "boundary observation",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Igglybuff",
+            "variant": null,
+            "pokemon_type": "Colorless",
+            "bench_position": null,
+            "hp_now": 30,
+            "hp_max": 30,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0115.50"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 1,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0115.50"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Eevee",
+              "variant": null,
+              "pokemon_type": "Colorless",
+              "bench_position": 2,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0115.50"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 3,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0115.50"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Psychic",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0115.50"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0115.50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Oricorio",
+            "variant": null,
+            "pokemon_type": "Lightning",
+            "bench_position": null,
+            "hp_now": 20,
+            "hp_max": 70,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 50,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [
+              "Safeguard: prevent attack damage from Pokémon ex."
+            ],
+            "evidence_ids": [
+              "t0115.50"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Electrike",
+              "variant": null,
+              "pokemon_type": "Lightning",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Lightning": 1
+                }
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0115.50"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Electrike",
+              "variant": null,
+              "pokemon_type": "Lightning",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0115.50"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0115.50"
+            ],
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0115.50"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0115.50"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": null,
+        "phase": "boundary observation",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Igglybuff",
+            "variant": null,
+            "pokemon_type": "Colorless",
+            "bench_position": null,
+            "hp_now": 30,
+            "hp_max": 30,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0167.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 1,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0167.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Eevee",
+              "variant": null,
+              "pokemon_type": "Colorless",
+              "bench_position": 2,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Psychic": 1
+                }
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0167.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 3,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0167.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0167.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0167.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Electrike",
+            "variant": null,
+            "pokemon_type": "Lightning",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Lightning": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0167.00",
+              "t0114.50"
+            ],
+            "status": "observed",
+            "limit_reason": null,
+            "basis_note": "One Lightning carried from native114.5; banner overlaps attachment area. Inherited accepted promotion confirms same Electrike."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Electrike",
+              "variant": null,
+              "pokemon_type": "Lightning",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0167.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0167.00"
+            ],
+            "limit_reason": "Current empty observed at transition; no claim that subsequent generation is unavailable."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0167.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0167.00"
+        ]
+      },
+      "inherited_provenance": {
+        "turn_number": 3,
+        "accepted_source_line": 32,
+        "verbatim_accepted_section": "### Dacz8976 turn 3, about 116–173 seconds\n\nThe visible turn draw is **Poke Ball** (`117-owner-draw-pokeball.jpg`). That same card is then played and returns **Swablu** (`119-owner-pokeball-play.jpg`, `121-pokeball-swablu-result.jpg`). This is a draw followed by a play, not two Poke Ball plays.\n\nThe owner attaches **Small Balloon** to the left Darkrai (`127-small-balloon-attached-darkrai.jpg`) and plays **Copycat** (`128-copycat-play.jpg`). Copycat shuffles the held Swablu and Eevee back into the deck and produces four visible replacement cards: **Sabrina, Swablu, Training Area, and Field Blower** (`141-copycat-result-sabrina.jpg` through `144-copycat-result-field-blower.jpg`). The later Swablu therefore does not imply that Poke Ball was left unplayed. The first generated Psychic Energy is attached to the Benched Eevee (`153-first-psychic-to-eevee.jpg`).\n\nIgglybuff uses Sleepy Lullaby again: Oricorio20→10 and becomes Asleep (`160-second-sleepy-lullaby.jpg`). The first Bad Dreams placement Knocks Out the 10-HP Oricorio; the second Darkrai's ability also announces, but there is no second live-target HP transition. No Sleep check occurs because Oricorio leaves play (`166-bad-dreams-knockout.jpg`). Dacz8976 receives one point (`171-owner-first-point.jpg`).",
+        "basis": "inherited accepted prose, not completed new source observation"
+      },
+      "fresh_conflicts": [
+        {
+          "field": "approximate action timestamp",
+          "old_claim": "SleepyLullaby reference160; Copycat draws141through144; point171",
+          "fresh_observation": "Native136.5through139.5 show ordered Copycat reveals;144attackmenu;167turn4 banner and point1.",
+          "evidence_ids": [
+            "t0136.50",
+            "t0137.50",
+            "t0138.50",
+            "t0139.50",
+            "t0144.00",
+            "t0167.00"
+          ],
+          "impact": "Timing provenance only. Old account preserved."
+        }
+      ]
+    },
+    {
+      "turn_number": 4,
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          "Sabrina",
+          "Swablu",
+          "Training Area",
+          "Field Blower"
+        ],
+        "count": 4,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0143.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          "Sabrina",
+          "Swablu",
+          "Training Area",
+          "Field Blower"
+        ],
+        "count": 4,
+        "basis": "native before prior owner ending action; unchanged through opponent turn by inspected footage",
+        "evidence_ids": [
+          "t0143.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "board_at_start": {
+        "turn_number_displayed": null,
+        "phase": "boundary observation",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Igglybuff",
+            "variant": null,
+            "pokemon_type": "Colorless",
+            "bench_position": null,
+            "hp_now": 30,
+            "hp_max": 30,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0167.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 1,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0167.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Eevee",
+              "variant": null,
+              "pokemon_type": "Colorless",
+              "bench_position": 2,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Psychic": 1
+                }
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0167.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 3,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0167.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0167.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0167.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Electrike",
+            "variant": null,
+            "pokemon_type": "Lightning",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Lightning": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0167.00",
+              "t0114.50"
+            ],
+            "status": "observed",
+            "limit_reason": null,
+            "basis_note": "One Lightning carried from native114.5; banner overlaps attachment area. Inherited accepted promotion confirms same Electrike."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Electrike",
+              "variant": null,
+              "pokemon_type": "Lightning",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0167.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0167.00"
+            ],
+            "limit_reason": "Current empty observed at transition; no claim that subsequent generation is unavailable."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0167.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0167.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": null,
+        "phase": "after owner promotion, before owner turn5 normal draw",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Eevee",
+            "variant": null,
+            "pokemon_type": "Colorless",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Psychic": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [
+              "Boosted Evolution while Active."
+            ],
+            "evidence_ids": [
+              "t0212.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 1,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0212.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 3,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0212.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0212.00"
+            ],
+            "limit_reason": "Current empty observed at transition; no claim that subsequent generation is unavailable."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0212.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Mega Manectric ex",
+            "variant": "ex",
+            "pokemon_type": "Lightning",
+            "bench_position": null,
+            "hp_now": 180,
+            "hp_max": 180,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Lightning": 2
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0212.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Electrike",
+              "variant": null,
+              "pokemon_type": "Lightning",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0212.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0212.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0212.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0212.00"
+        ]
+      },
+      "inherited_provenance": {
+        "turn_number": 4,
+        "accepted_source_line": 40,
+        "verbatim_accepted_section": "### BigGutSnorlax turn 4, about 174–207 seconds\n\nThe opponent promotes the left Electrike that already has one Lightning Energy. The draw is hidden. A second Lightning is attached to Active Electrike, which then evolves into **Mega Manectric ex** (`181-opponent-turn-four-board.jpg`, `186-first-mega-manectric-evolution.jpg`). With the opponent at zero points and no Stadium in play, **Lightning Accelerator** deals its base 80 and Knocks Out Igglybuff30 (`198-lightning-accelerator-80.jpg`). BigGutSnorlax gains one point, making the score 1–1 (`204-score-one-one.jpg`). The second Electrike remains Benched.",
+        "basis": "inherited accepted prose, not completed new source observation"
+      },
+      "fresh_conflicts": []
+    },
+    {
+      "turn_number": 5,
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          "Sabrina",
+          "Swablu",
+          "Training Area",
+          "Field Blower",
+          "Professor's Research"
+        ],
+        "count": 5,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0214.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          "Sabrina",
+          "Training Area",
+          "Field Blower",
+          "Mega Altaria ex",
+          "Eevee"
+        ],
+        "count": 5,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0234.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "board_at_start": {
+        "turn_number_displayed": null,
+        "phase": "boundary observation",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Eevee",
+            "variant": null,
+            "pokemon_type": "Colorless",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Psychic": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [
+              "Boosted Evolution while Active."
+            ],
+            "evidence_ids": [
+              "t0214.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 1,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0214.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 3,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0214.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0214.00"
+            ],
+            "limit_reason": "Current empty observed at transition; no claim that subsequent generation is unavailable."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0214.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Mega Manectric ex",
+            "variant": "ex",
+            "pokemon_type": "Lightning",
+            "bench_position": null,
+            "hp_now": 180,
+            "hp_max": 180,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Lightning": 2
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0214.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Electrike",
+              "variant": null,
+              "pokemon_type": "Lightning",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0214.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0214.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0214.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0214.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": null,
+        "phase": "boundary observation",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Eevee",
+            "variant": null,
+            "pokemon_type": "Colorless",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Psychic": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [
+              "Boosted Evolution while Active."
+            ],
+            "evidence_ids": [
+              "t0241.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 1,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0241.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Swablu",
+              "variant": null,
+              "pokemon_type": "Colorless",
+              "bench_position": 2,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Psychic": 1
+                }
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0241.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 3,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0241.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0241.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0241.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Mega Manectric ex",
+            "variant": "ex",
+            "pokemon_type": "Lightning",
+            "bench_position": null,
+            "hp_now": 170,
+            "hp_max": 180,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 10,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Lightning": 2
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0241.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Electrike",
+              "variant": null,
+              "pokemon_type": "Lightning",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0241.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0241.00"
+            ],
+            "limit_reason": "Current empty observed at transition; no claim that subsequent generation is unavailable."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0241.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0241.00"
+        ]
+      },
+      "inherited_provenance": {
+        "turn_number": 5,
+        "accepted_source_line": 44,
+        "verbatim_accepted_section": "### Dacz8976 turn 5, about 208–241 seconds\n\nThe owner promotes Eevee with its one Psychic Energy (`209-eevee-promoted.jpg`). The visible draw is **Professor's Research**, which is then played (`213-owner-draw-research.jpg`, `215-owner-research-play.jpg`). Its two visible results are **Mega Altaria ex** and **Eevee** (`219-research-draw-mega-altaria.jpg`, `220-research-draw-eevee.jpg`). Swablu, retained from Copycat, is Benched (`223-swablu-benched.jpg`), and the turn's Psychic Energy is attached to it (`233-first-psychic-to-swablu.jpg`). Active Eevee uses **Stampede** for 10, moving Mega Manectric180→170 (`240-stampede-ten.jpg`, `241-owner-turn-five-end.jpg`).",
+        "basis": "inherited accepted prose, not completed new source observation"
+      },
+      "fresh_conflicts": []
+    },
+    {
+      "turn_number": 6,
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          "Sabrina",
+          "Training Area",
+          "Field Blower",
+          "Mega Altaria ex",
+          "Eevee"
+        ],
+        "count": 5,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0234.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          "Sabrina",
+          "Training Area",
+          "Field Blower",
+          "Mega Altaria ex",
+          "Eevee"
+        ],
+        "count": 5,
+        "basis": "native before prior owner ending action; unchanged through opponent turn by inspected footage",
+        "evidence_ids": [
+          "t0234.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "board_at_start": {
+        "turn_number_displayed": null,
+        "phase": "boundary observation",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Eevee",
+            "variant": null,
+            "pokemon_type": "Colorless",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Psychic": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [
+              "Boosted Evolution while Active."
+            ],
+            "evidence_ids": [
+              "t0241.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 1,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0241.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Swablu",
+              "variant": null,
+              "pokemon_type": "Colorless",
+              "bench_position": 2,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Psychic": 1
+                }
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0241.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 3,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0241.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0241.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0241.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Mega Manectric ex",
+            "variant": "ex",
+            "pokemon_type": "Lightning",
+            "bench_position": null,
+            "hp_now": 170,
+            "hp_max": 180,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 10,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Lightning": 2
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0241.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Electrike",
+              "variant": null,
+              "pokemon_type": "Lightning",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0241.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0241.00"
+            ],
+            "limit_reason": "Current empty observed at transition; no claim that subsequent generation is unavailable."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0241.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "t0241.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": null,
+        "phase": "after owner promotion and normal draw; board unchanged before first turn7 play",
+        "stadium": "Training Area",
+        "owner": {
+          "active": {
+            "name": "Swablu",
+            "variant": null,
+            "pokemon_type": "Colorless",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Psychic": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0287.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 1,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0287.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 3,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0287.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": null,
+              "count": null,
+              "available": null
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0287.00"
+            ],
+            "limit_reason": "Current empty during generation transition; next marker not yet shown."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0287.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Mega Manectric ex",
+            "variant": "ex",
+            "pokemon_type": "Lightning",
+            "bench_position": null,
+            "hp_now": 170,
+            "hp_max": 180,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 10,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Lightning": 2
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0287.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Voltorb",
+              "variant": null,
+              "pokemon_type": "Lightning",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0287.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Electrike",
+              "variant": null,
+              "pokemon_type": "Lightning",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Lightning": 1
+                }
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0287.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0287.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0287.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          "Training Area: Stage1 attacks+10 damage to opposing Active."
+        ],
+        "evidence_ids": [
+          "t0287.00"
+        ]
+      },
+      "inherited_provenance": {
+        "turn_number": 6,
+        "accepted_source_line": 48,
+        "verbatim_accepted_section": "### BigGutSnorlax turn 6, about 242–280 seconds\n\nThe turn draw is hidden. BigGutSnorlax Benches **Team Rocket's Voltorb**, attaches the turn's Lightning to the still-Benched Electrike, and plays **Training Area** (`246-first-voltorb-benched.jpg`, `247-lightning-to-benched-electrike.jpg`, `255-opponent-training-area-play.jpg`). The Active Mega Manectric uses Lightning Accelerator. With one opponent point and Training Area, the calculation is `80 + 30 + 10 = 120`; the displayed 120 Knocks Out Eevee50 (`273-lightning-accelerator-120.jpg`). BigGutSnorlax receives a second point (`278-opponent-second-point.jpg`). The owner promotes Swablu (`281-swablu-promoted.jpg`).",
+        "basis": "inherited accepted prose, not completed new source observation"
+      },
+      "fresh_conflicts": []
+    },
+    {
+      "turn_number": 7,
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          "Sabrina",
+          "Training Area",
+          "Field Blower",
+          "Mega Altaria ex",
+          "Eevee",
+          "Espeon"
+        ],
+        "count": 6,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0287.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          "Sabrina",
+          "Training Area",
+          "Field Blower",
+          "Espeon"
+        ],
+        "count": 4,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0300.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "board_at_start": {
+        "turn_number_displayed": null,
+        "phase": "boundary observation",
+        "stadium": "Training Area",
+        "owner": {
+          "active": {
+            "name": "Swablu",
+            "variant": null,
+            "pokemon_type": "Colorless",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Psychic": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0287.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 1,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0287.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 3,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0287.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": null,
+              "count": null,
+              "available": null
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0287.00"
+            ],
+            "limit_reason": "Current empty during generation transition; next marker not yet shown."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0287.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Mega Manectric ex",
+            "variant": "ex",
+            "pokemon_type": "Lightning",
+            "bench_position": null,
+            "hp_now": 170,
+            "hp_max": 180,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 10,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Lightning": 2
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0287.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Voltorb",
+              "variant": null,
+              "pokemon_type": "Lightning",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0287.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Electrike",
+              "variant": null,
+              "pokemon_type": "Lightning",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Lightning": 1
+                }
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0287.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0287.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0287.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          "Training Area: Stage1 attacks+10 damage to opposing Active."
+        ],
+        "evidence_ids": [
+          "t0287.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": null,
+        "phase": "boundary observation",
+        "stadium": "Training Area",
+        "owner": {
+          "active": {
+            "name": "Mega Altaria ex",
+            "variant": "ex",
+            "pokemon_type": "Psychic",
+            "bench_position": null,
+            "hp_now": 190,
+            "hp_max": 190,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Psychic": 2
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0308.00",
+              "t0300.00"
+            ],
+            "status": "observed",
+            "limit_reason": null,
+            "basis_note": "Boundary banner overlaps part of card; unchanged owner HP or carried opposing Energy uses adjacent native support plus no intervening relevant change."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 1,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0308.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Eevee",
+              "variant": null,
+              "pokemon_type": "Colorless",
+              "bench_position": 2,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0308.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 3,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0308.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0308.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0308.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Mega Manectric ex",
+            "variant": "ex",
+            "pokemon_type": "Lightning",
+            "bench_position": null,
+            "hp_now": 30,
+            "hp_max": 180,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 150,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Lightning": 2
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0308.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Voltorb",
+              "variant": null,
+              "pokemon_type": "Lightning",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0308.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Electrike",
+              "variant": null,
+              "pokemon_type": "Lightning",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Lightning": 1
+                }
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0308.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0308.00"
+            ],
+            "limit_reason": "Current empty observed at transition; no claim that subsequent generation is unavailable."
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0308.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          "Training Area: Stage1 attacks+10 damage to opposing Active."
+        ],
+        "evidence_ids": [
+          "t0308.00"
+        ]
+      },
+      "inherited_provenance": {
+        "turn_number": 7,
+        "accepted_source_line": 52,
+        "verbatim_accepted_section": "### Dacz8976 turn 7, about 281–316 seconds\n\nThe visible draw is **Espeon** (`287-owner-draw-espeon.jpg`). Active Swablu evolves into **Mega Altaria ex**, preserving its first Psychic Energy (`290-mega-altaria-evolution.jpg`). The owner Benches the Eevee drawn by Research, filling the Bench with two Darkrai and Eevee (`298-eevee-benched.jpg`), then attaches a second Psychic to Mega Altaria (`301-second-psychic-to-mega-altaria.jpg`). A warning shows that Sabrina remains usable, but the owner does not play it this turn (`304-sabrina-unused-warning.jpg`).\n\nMega Harmony displays and deals **140**: `40 + 30×3 owner Bench + 10 Training Area = 140`. The opponent's first Mega Manectric moves 170→30 (`313-mega-harmony-displays-140.jpg`, `315-first-mega-harmony-hit.jpg`). Score remains 1–2.",
+        "basis": "inherited accepted prose, not completed new source observation"
+      },
+      "fresh_conflicts": [
+        {
+          "field": "approximate action timestamp",
+          "old_claim": "MegaHarmony references313/315 and turn8 begins317",
+          "fresh_observation": "Native308 shows30HP and turn8 banner; source-local ending occurred earlier than old filename anchors.",
+          "evidence_ids": [
+            "t0308.00"
+          ],
+          "impact": "Timing provenance only; old accepted outcome/action facts unchanged."
+        }
+      ]
+    },
+    {
+      "turn_number": 8,
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          "Sabrina",
+          "Training Area",
+          "Field Blower",
+          "Espeon"
+        ],
+        "count": 4,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0300.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          "Sabrina",
+          "Training Area",
+          "Field Blower",
+          "Espeon"
+        ],
+        "count": 4,
+        "basis": "native before prior owner ending action; unchanged through opponent turn by inspected footage",
+        "evidence_ids": [
+          "t0300.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "board_at_start": {
+        "turn_number_displayed": null,
+        "phase": "boundary observation",
+        "stadium": "Training Area",
+        "owner": {
+          "active": {
+            "name": "Mega Altaria ex",
+            "variant": "ex",
+            "pokemon_type": "Psychic",
+            "bench_position": null,
+            "hp_now": 190,
+            "hp_max": 190,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Psychic": 2
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0308.00",
+              "t0300.00"
+            ],
+            "status": "observed",
+            "limit_reason": null,
+            "basis_note": "Boundary banner overlaps part of card; unchanged owner HP or carried opposing Energy uses adjacent native support plus no intervening relevant change."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 1,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0308.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Eevee",
+              "variant": null,
+              "pokemon_type": "Colorless",
+              "bench_position": 2,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0308.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 3,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0308.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0308.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0308.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Mega Manectric ex",
+            "variant": "ex",
+            "pokemon_type": "Lightning",
+            "bench_position": null,
+            "hp_now": 30,
+            "hp_max": 180,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 150,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Lightning": 2
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0308.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Voltorb",
+              "variant": null,
+              "pokemon_type": "Lightning",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0308.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Electrike",
+              "variant": null,
+              "pokemon_type": "Lightning",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Lightning": 1
+                }
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0308.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0308.00"
+            ],
+            "limit_reason": "Current empty observed at transition; no claim that subsequent generation is unavailable."
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0308.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          "Training Area: Stage1 attacks+10 damage to opposing Active."
+        ],
+        "evidence_ids": [
+          "t0308.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": null,
+        "phase": "after normal draw, before first turn9 play; board unchanged",
+        "stadium": "Training Area",
+        "owner": {
+          "active": {
+            "name": "Mega Altaria ex",
+            "variant": "ex",
+            "pokemon_type": "Psychic",
+            "bench_position": null,
+            "hp_now": 190,
+            "hp_max": 190,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Psychic": 2
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0357.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 1,
+              "hp_now": 70,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 30,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0357.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Eevee",
+              "variant": null,
+              "pokemon_type": "Colorless",
+              "bench_position": 2,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0357.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 3,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0357.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": null,
+              "count": null,
+              "available": null
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0357.00"
+            ],
+            "limit_reason": "Current empty during generation transition; next marker not yet shown."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0357.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Team Rocket's Electrode",
+            "variant": null,
+            "pokemon_type": "Lightning",
+            "bench_position": null,
+            "hp_now": 70,
+            "hp_max": 70,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Lightning": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [
+              "Destiny Burst: if Active knocked out by opposing attack damage, deal70 to attacking Pokémon; untriggered in recording."
+            ],
+            "evidence_ids": [
+              "t0357.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Mega Manectric ex",
+              "variant": "ex",
+              "pokemon_type": "Lightning",
+              "bench_position": 1,
+              "hp_now": 30,
+              "hp_max": 180,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 150,
+              "attached_energy": {
+                "total": 2,
+                "by_type": {
+                  "Lightning": 2
+                }
+              },
+              "tool": "Protective Poncho",
+              "special_conditions": [],
+              "active_effects": [
+                "Protective Poncho: prevent opposing attack/Ability damage while this Pokémon is on Bench."
+              ],
+              "evidence_ids": [
+                "t0357.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Mega Manectric ex",
+              "variant": "ex",
+              "pokemon_type": "Lightning",
+              "bench_position": 2,
+              "hp_now": 180,
+              "hp_max": 180,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Lightning": 1
+                }
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0357.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket's Voltorb",
+              "variant": null,
+              "pokemon_type": "Lightning",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0357.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0357.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0357.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          "Training Area: Stage1 attacks+10 damage to opposing Active."
+        ],
+        "evidence_ids": [
+          "t0357.00"
+        ]
+      },
+      "inherited_provenance": {
+        "turn_number": 8,
+        "accepted_source_line": 58,
+        "verbatim_accepted_section": "### BigGutSnorlax turn 8, about 317–353 seconds\n\nThe draw is hidden. The opponent evolves the first Team Rocket's Voltorb into **Team Rocket's Electrode** and attaches one Lightning to it (`318-electrode-evolution.jpg`). A **Protective Poncho** is attached to the damaged Active Mega Manectric (`323-protective-poncho-play.jpg`). The opponent then Benches a second Team Rocket's Voltorb and evolves the remaining Electrike into a fresh **Mega Manectric ex**, carrying forward the Lightning attached on turn 6 (`332-second-voltorb-benched.jpg`, `335-second-mega-manectric-evolution.jpg`).\n\nThe damaged Mega Manectric has zero retreat cost, so it retreats without discarding Energy; Electrode is promoted (`342-electrode-promoted.jpg`). Once the damaged Mega is on the Bench, Protective Poncho visibly activates its prevention against opposing attack and Ability damage (`343-protective-poncho-activates.jpg`). Electrode uses **Random Spark** for 30 on the owner's left Darkrai, moving it 100→70; Training Area does not add damage because the attack targets the Bench (`348-random-spark-thirty.jpg`, `350-darkrai-seventy.jpg`). Score stays 1–2.",
+        "basis": "inherited accepted prose, not completed new source observation"
+      },
+      "fresh_conflicts": []
+    },
+    {
+      "turn_number": 9,
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          "Sabrina",
+          "Training Area",
+          "Field Blower",
+          "Espeon",
+          "Espeon"
+        ],
+        "count": 5,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0357.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          "Training Area",
+          "Field Blower",
+          "Espeon"
+        ],
+        "count": 3,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0385.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "board_at_start": {
+        "turn_number_displayed": null,
+        "phase": "boundary observation",
+        "stadium": "Training Area",
+        "owner": {
+          "active": {
+            "name": "Mega Altaria ex",
+            "variant": "ex",
+            "pokemon_type": "Psychic",
+            "bench_position": null,
+            "hp_now": 190,
+            "hp_max": 190,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Psychic": 2
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0357.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 1,
+              "hp_now": 70,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 30,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0357.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Eevee",
+              "variant": null,
+              "pokemon_type": "Colorless",
+              "bench_position": 2,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0357.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 3,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0357.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": null,
+              "count": null,
+              "available": null
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0357.00"
+            ],
+            "limit_reason": "Current empty during generation transition; next marker not yet shown."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0357.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Team Rocket's Electrode",
+            "variant": null,
+            "pokemon_type": "Lightning",
+            "bench_position": null,
+            "hp_now": 70,
+            "hp_max": 70,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Lightning": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [
+              "Destiny Burst: if Active knocked out by opposing attack damage, deal70 to attacking Pokémon; untriggered in recording."
+            ],
+            "evidence_ids": [
+              "t0357.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Mega Manectric ex",
+              "variant": "ex",
+              "pokemon_type": "Lightning",
+              "bench_position": 1,
+              "hp_now": 30,
+              "hp_max": 180,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 150,
+              "attached_energy": {
+                "total": 2,
+                "by_type": {
+                  "Lightning": 2
+                }
+              },
+              "tool": "Protective Poncho",
+              "special_conditions": [],
+              "active_effects": [
+                "Protective Poncho: prevent opposing attack/Ability damage while this Pokémon is on Bench."
+              ],
+              "evidence_ids": [
+                "t0357.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Mega Manectric ex",
+              "variant": "ex",
+              "pokemon_type": "Lightning",
+              "bench_position": 2,
+              "hp_now": 180,
+              "hp_max": 180,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Lightning": 1
+                }
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0357.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket's Voltorb",
+              "variant": null,
+              "pokemon_type": "Lightning",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0357.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0357.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0357.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          "Training Area: Stage1 attacks+10 damage to opposing Active."
+        ],
+        "evidence_ids": [
+          "t0357.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": null,
+        "phase": "boundary observation",
+        "stadium": "Training Area",
+        "owner": {
+          "active": {
+            "name": "Mega Altaria ex",
+            "variant": "ex",
+            "pokemon_type": "Psychic",
+            "bench_position": null,
+            "hp_now": 190,
+            "hp_max": 190,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Psychic": 2
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0392.00",
+              "t0385.00"
+            ],
+            "status": "observed",
+            "limit_reason": null,
+            "basis_note": "Boundary banner overlaps part of card; unchanged owner HP or carried opposing Energy uses adjacent native support plus no intervening relevant change."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 1,
+              "hp_now": 70,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 30,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Psychic": 1
+                }
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0392.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Espeon",
+              "variant": null,
+              "pokemon_type": "Psychic",
+              "bench_position": 2,
+              "hp_now": 90,
+              "hp_max": 90,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0392.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 3,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0392.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0392.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0392.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Mega Manectric ex",
+            "variant": "ex",
+            "pokemon_type": "Lightning",
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 180,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 140,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Lightning": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0392.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Mega Manectric ex",
+              "variant": "ex",
+              "pokemon_type": "Lightning",
+              "bench_position": 1,
+              "hp_now": 30,
+              "hp_max": 180,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 150,
+              "attached_energy": {
+                "total": 2,
+                "by_type": {
+                  "Lightning": 2
+                }
+              },
+              "tool": "Protective Poncho",
+              "special_conditions": [],
+              "active_effects": [
+                "Protective Poncho: prevent opposing attack/Ability damage while this Pokémon is on Bench."
+              ],
+              "evidence_ids": [
+                "t0392.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket's Electrode",
+              "variant": null,
+              "pokemon_type": "Lightning",
+              "bench_position": 2,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Lightning": 1
+                }
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Destiny Burst: if Active knocked out by opposing attack damage, deal70 to attacking Pokémon; untriggered in recording."
+              ],
+              "evidence_ids": [
+                "t0392.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket's Voltorb",
+              "variant": null,
+              "pokemon_type": "Lightning",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0392.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0392.00"
+            ],
+            "limit_reason": "Current empty observed at transition; no claim that subsequent generation is unavailable."
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0392.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          "Training Area: Stage1 attacks+10 damage to opposing Active."
+        ],
+        "evidence_ids": [
+          "t0392.00"
+        ]
+      },
+      "inherited_provenance": {
+        "turn_number": 9,
+        "accepted_source_line": 64,
+        "verbatim_accepted_section": "### Dacz8976 turn 9, about 354–391 seconds\n\nThe visible draw is a second **Espeon**; the next frame fans two copies in hand, and one evolves the Benched Eevee (`356-owner-draw-second-espeon.jpg`, `359-eevee-evolves-espeon.jpg`). The owner plays **Sabrina**. The opponent chooses the fresh 180-HP Mega Manectric as the new Active and returns Electrode to the Bench (`362-owner-sabrina-play.jpg`).\n\nThe exact public decision root is retained at `374-post-sabrina-decision-root.jpg`: opponent Active fresh Mega Manectric180 with one Lightning; Bench damaged Mega Manectric30 with two Lightning and Protective Poncho, Electrode70 with one Lightning, and Voltorb60; Training Area in play; owner Active Mega Altaria190 with two Psychic; Bench damaged Darkrai70 with Small Balloon, Espeon90, and Darkrai100; score 1–2; a Psychic Energy is available; owner hand is Training Area, Field Blower, and the second Espeon.\n\nThe recorded line attaches that Psychic Energy to the damaged left Darkrai (`383-psychic-attachment-to-damaged-darkrai.jpg`). The owner does not retreat. Mega Altaria's displayed retreat cost is one Energy (`386-mega-altaria-retreat-cost.jpg`). Mega Harmony again deals 140, moving the fresh Mega Manectric180→40 (`390-second-mega-harmony-140.jpg`). The owner's later statement that the Balloon plus Energy was an escape plan against a possible Cyrus is testimony about intent; the source itself proves the attachment and board state.",
+        "basis": "inherited accepted prose, not completed new source observation"
+      },
+      "fresh_conflicts": []
+    },
+    {
+      "turn_number": 10,
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          "Training Area",
+          "Field Blower",
+          "Espeon"
+        ],
+        "count": 3,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0385.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          "Training Area",
+          "Field Blower",
+          "Espeon"
+        ],
+        "count": 3,
+        "basis": "native before prior owner ending action; unchanged through opponent turn by inspected footage",
+        "evidence_ids": [
+          "t0385.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "board_at_start": {
+        "turn_number_displayed": null,
+        "phase": "boundary observation",
+        "stadium": "Training Area",
+        "owner": {
+          "active": {
+            "name": "Mega Altaria ex",
+            "variant": "ex",
+            "pokemon_type": "Psychic",
+            "bench_position": null,
+            "hp_now": 190,
+            "hp_max": 190,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Psychic": 2
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0392.00",
+              "t0385.00"
+            ],
+            "status": "observed",
+            "limit_reason": null,
+            "basis_note": "Boundary banner overlaps part of card; unchanged owner HP or carried opposing Energy uses adjacent native support plus no intervening relevant change."
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 1,
+              "hp_now": 70,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 30,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Psychic": 1
+                }
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0392.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Espeon",
+              "variant": null,
+              "pokemon_type": "Psychic",
+              "bench_position": 2,
+              "hp_now": 90,
+              "hp_max": 90,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0392.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 3,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0392.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0392.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0392.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Mega Manectric ex",
+            "variant": "ex",
+            "pokemon_type": "Lightning",
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 180,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 140,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Lightning": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0392.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Mega Manectric ex",
+              "variant": "ex",
+              "pokemon_type": "Lightning",
+              "bench_position": 1,
+              "hp_now": 30,
+              "hp_max": 180,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 150,
+              "attached_energy": {
+                "total": 2,
+                "by_type": {
+                  "Lightning": 2
+                }
+              },
+              "tool": "Protective Poncho",
+              "special_conditions": [],
+              "active_effects": [
+                "Protective Poncho: prevent opposing attack/Ability damage while this Pokémon is on Bench."
+              ],
+              "evidence_ids": [
+                "t0392.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket's Electrode",
+              "variant": null,
+              "pokemon_type": "Lightning",
+              "bench_position": 2,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Lightning": 1
+                }
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Destiny Burst: if Active knocked out by opposing attack damage, deal70 to attacking Pokémon; untriggered in recording."
+              ],
+              "evidence_ids": [
+                "t0392.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket's Voltorb",
+              "variant": null,
+              "pokemon_type": "Lightning",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0392.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0392.00"
+            ],
+            "limit_reason": "Current empty observed at transition; no claim that subsequent generation is unavailable."
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0392.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          "Training Area: Stage1 attacks+10 damage to opposing Active."
+        ],
+        "evidence_ids": [
+          "t0392.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": null,
+        "phase": "boundary observation",
+        "stadium": "Training Area",
+        "owner": {
+          "active": null,
+          "bench_in_position_order": [
+            {
+              "name": "Mega Altaria ex",
+              "variant": "ex",
+              "pokemon_type": "Psychic",
+              "bench_position": 1,
+              "hp_now": 190,
+              "hp_max": 190,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 2,
+                "by_type": {
+                  "Psychic": 2
+                }
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0409.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Espeon",
+              "variant": null,
+              "pokemon_type": "Psychic",
+              "bench_position": 2,
+              "hp_now": 90,
+              "hp_max": 90,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0409.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Darkrai",
+              "variant": null,
+              "pokemon_type": "Darkness",
+              "bench_position": 3,
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Bad Dreams: end of each turn, if opposing Active is Asleep, deal20 to it; conditional inactive while opposing Active awake."
+              ],
+              "evidence_ids": [
+                "t0409.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Psychic",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0409.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0409.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Mega Manectric ex",
+            "variant": "ex",
+            "pokemon_type": "Lightning",
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 180,
+            "hp_max_basis": "visible printed card faces and accepted identity",
+            "damage": 140,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Lightning": 2
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "t0409.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Mega Manectric ex",
+              "variant": "ex",
+              "pokemon_type": "Lightning",
+              "bench_position": 1,
+              "hp_now": 30,
+              "hp_max": 180,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 150,
+              "attached_energy": {
+                "total": 2,
+                "by_type": {
+                  "Lightning": 2
+                }
+              },
+              "tool": "Protective Poncho",
+              "special_conditions": [],
+              "active_effects": [
+                "Protective Poncho: prevent opposing attack/Ability damage while this Pokémon is on Bench."
+              ],
+              "evidence_ids": [
+                "t0409.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket's Electrode",
+              "variant": null,
+              "pokemon_type": "Lightning",
+              "bench_position": 2,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Lightning": 1
+                }
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [
+                "Destiny Burst: if Active knocked out by opposing attack damage, deal70 to attacking Pokémon; untriggered in recording."
+              ],
+              "evidence_ids": [
+                "t0409.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket's Voltorb",
+              "variant": null,
+              "pokemon_type": "Lightning",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed card faces and accepted identity",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "t0409.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Lightning",
+              "count": 1,
+              "available": false
+            },
+            "basis": "native large current circle and small next indicator",
+            "evidence_ids": [
+              "t0409.00"
+            ],
+            "limit_reason": null
+          },
+          "points": 3,
+          "board_effects": [],
+          "evidence_ids": [
+            "t0409.00"
+          ],
+          "status": "observed",
+          "limit_reason": null,
+          "points_basis": {
+            "basis": "native point overlay412.5, separated from clear board409",
+            "evidence_ids": [
+              "t0412.50"
+            ]
+          }
+        },
+        "shared_effects": [
+          "Training Area: Stage1 attacks+10 damage to opposing Active."
+        ],
+        "evidence_ids": [
+          "t0409.00",
+          "t0412.50"
+        ]
+      },
+      "inherited_provenance": {
+        "turn_number": 10,
+        "accepted_source_line": 72,
+        "verbatim_accepted_section": "### BigGutSnorlax turn 10 and result, about 392–412.87 seconds\n\nThe draw is hidden. BigGutSnorlax first plays **Cyrus**, whose readable text switches one damaged opposing Benched Pokémon into the Active Spot (`397-5-opponent-cyrus-play.jpg`). The Sabrina card visible in the owner's discard is not the source of this switch. The damaged 70-HP Darkrai is the only eligible damaged owner Bench Pokémon, so Cyrus pulls it Active with Small Balloon (`401-cyrus-switches-darkrai-active.jpg`). The opponent then attaches a second Lightning to the 40-HP Active Mega Manectric; the attachment and settled two-Energy state are visible (`403-second-lightning-to-active-mega.jpg`, `404-pre-attack-energy-state.jpg`). The Psychic previously attached to Darkrai is also visible after the switch in the latter frame; it was attached during the owner's turn, not generated by the opponent's attack.\n\nThe attack's readable text is 80 plus 30 for each point the user has obtained (`405-lightning-accelerator-text.jpg`). With two opponent points and Training Area, Lightning Accelerator deals **150**: `80 + 30×2 + 10 = 150`. It Knocks Out Darkrai70 before the owner receives another action window, so Small Balloon cannot enable the planned retreat (`407-lightning-accelerator-150.jpg`). BigGutSnorlax receives the third point (`413-opponent-third-point.jpg`). The recording ends on this terminal 1–3 animation without a separate Defeat screen and contains no continuation.",
+        "basis": "inherited accepted prose, not completed new source observation"
+      },
+      "fresh_conflicts": []
+    }
+  ],
+  "mode": {
+    "classification": "uncertain",
+    "auto_control_present": false,
+    "auto_enabled": null,
+    "excluded_from_ladder": null,
+    "basis": "No Auto control observed in all413 reduced1fps samples or inspected53 native full images. ManualEndTurn, attackmenu and Supporter choices observed. Sampled absence does not independently prove mode.",
+    "native_evidence_ids": [
+      "t0044.50",
+      "t0143.50",
+      "t0300.00",
+      "t0302.50",
+      "t0385.00"
+    ],
+    "owner_rule": "Any visible Auto option evenOFF means computer opponent and excluded ladder.",
+    "obscured_view_limit": "Attack/card/coin/banners obscure some control views; no absence assertion for covered regions."
+  },
+  "independent_acceptance_status": "pending"
+}

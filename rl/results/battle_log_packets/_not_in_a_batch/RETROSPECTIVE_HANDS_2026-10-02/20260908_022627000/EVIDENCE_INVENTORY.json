@@ -1,0 +1,16 @@
+{
+  "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+  "prior_source_binding": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\evidence\\PREPROCESS_LOG.md",
+  "manifest": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\evidence\\EVIDENCE_MANIFEST.csv",
+  "manifest_entries": 1343,
+  "dimensions": {
+    "468x1012": 721,
+    "585x1266": 570,
+    "1170x2532": 52
+  },
+  "native_entries": 52,
+  "excluded_folder": "evidence/discarded_invalid_pts_shift_20260922T1529Z",
+  "exclusion_reason": "Detected invalid shiftedPTS; explicitly excluded from old manifest and current claims",
+  "metadata_probe": "PIL image header dimensions; all retained manifest files opened for dimension probe",
+  "native_timestamp_limit": "Actual decoded framePTS not independently supplied; exact requested source timestamps retained separately"
+}

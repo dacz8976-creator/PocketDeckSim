@@ -1,0 +1,143 @@
+{
+  "schema": "bounded-independent-clarification-v1",
+  "reviewer": "/root/astra_183108_gap",
+  "model_role": "Astra consequential ambiguity clarification",
+  "checked_at_utc": "2026-10-06T20:56:35.563470+00:00",
+  "source_video": "20261005_183108000_iOS.MP4",
+  "source_sha256": "94bd9d0e127291765928cc7cf4fc69a0ca5d1b21189622ed98bd2f1e14fb5f95",
+  "source_duration_seconds": 403.317007,
+  "scope": "Bounded independent clarification of buffered opponent T6 transition and literal opponent name only; not whole-source review or acceptance.",
+  "current_inputs_checked": [
+    {
+      "path": "SOURCE.json",
+      "sha256": "fc4a2dadc8036bf30868c012a66bb6525f9fc9ac719ab900685d201e8d309a05"
+    },
+    {
+      "path": "TURN_LEDGER.json",
+      "sha256": "a3951a9c10cd5d62f8781b2fa597545f601a9f2fe01873c376b2053b6de8660b"
+    },
+    {
+      "path": "TURN_EVIDENCE.json",
+      "sha256": "18c8cac3edba832939d0241890630eb1b642ede97ebd5c5ee08f3f0b63a18e8a"
+    },
+    {
+      "path": "REVIEW.md",
+      "sha256": "d25101139ef17cacc5b36bfc2d07d32d767f5c1935878cd6a8dd6d162148a580"
+    },
+    {
+      "path": "COVERAGE.md",
+      "sha256": "68d52bf173620db6e2ae9b1dadbbe032e85e580fbf8e1a5ee45501fc21e7a911"
+    },
+    {
+      "path": "UNCERTAINTIES.json",
+      "sha256": "a9ade470133dbda11870c8740aa78df69030434c418b2906c9ecfaeeb92fa28d"
+    }
+  ],
+  "media_rehashed": false,
+  "identity_basis": "Frozen SOURCE.json binding; retained evidence hashed in this check; original media not decoded or changed.",
+  "status": "narrow_findings_accepted_with_required_t6_count_repair",
+  "whole_source_acceptance": false,
+  "findings": [
+    {
+      "id": "GAP_BOARD",
+      "status": "supported",
+      "before": {
+        "witness_seconds": [
+          207,
+          217,
+          217.5,
+          218
+        ],
+        "opponent_active": "Gourgeist20HP,1Psychic",
+        "opponent_bench_left_to_right": [
+          "empty",
+          "Meloetta20HP,noEnergy",
+          "Greavard70HP,1Psychic"
+        ],
+        "opponent_current_zone": "1Psychic available; next Psychic preview",
+        "opponent_hand_count": 5
+      },
+      "obscuration": {
+        "witness_seconds": [
+          218.5,
+          219
+        ],
+        "text": "Connection is unstable / Check your network connection",
+        "description": "Blurred prior board behind connection modal; no usable intermediate action order."
+      },
+      "after": {
+        "witness_seconds": [
+          219.5,
+          220,
+          223
+        ],
+        "opponent_active": "Gourgeist20HP,1Psychic",
+        "opponent_bench_left_to_right": [
+          "Greavard70HP,noEnergy",
+          "Meloetta20HP,noEnergy",
+          "Houndstone130HP,2Psychic"
+        ],
+        "opponent_current_zone": "empty; next Psychic preview",
+        "opponent_hand_count": 3
+      },
+      "accepted_changes": [
+        "Previously right Greavard evolved into Houndstone.",
+        "Second Greavard was benched in previously empty left slot.",
+        "Right evolving Pokemon gained1Psychic; attachment timing relative to evolution unavailable."
+      ],
+      "ordering": "All three changes are resolved by219.5s and before Gourgeist Soul Shot public attack at224s. Mutual order unavailable.",
+      "interpretation_limit": "Before/after state establishes these changes, not exact remote inputs, timestamps, animations, or proof that no other hidden action occurred. Existing null nested order is appropriate."
+    },
+    {
+      "id": "T6_DRAW_COUNT",
+      "status": "required_repair",
+      "location": "TURN_LEDGER.json turns[turn_number=6].draws_and_searches[0]",
+      "rejected_claim": {
+        "hand_count_before": 3,
+        "hand_count_after": 4
+      },
+      "supported_replacement": {
+        "hand_count_before": 4,
+        "hand_count_after": 5,
+        "before_evidence": "F_0203_00_top",
+        "after_evidence": "F_0205_00_top"
+      },
+      "reason": "Four distinct card backs at203s; five at205s and207/217s. Three remain after buffered evolution and bench play at219.5s.",
+      "required_action": "Lead should correct these two T6 draw counts and cite203/205 top crops, preserving this original rejected claim in the clarification receipt."
+    },
+    {
+      "id": "EXTRA_DRAW",
+      "status": "not_evidenced",
+      "rejected_claim": "An extra hidden draw is needed to reconcile the gap.",
+      "finding": "Observed five-card pre-refresh fan minus the two Pokemon cards agrees with observed three-card post-refresh fan. No additional draw, search, card identity or ordering is established by these gap frames.",
+      "limit": "This reconciliation does not prove no unseen draw-and-removal pair occurred; do not invent one."
+    },
+    {
+      "id": "NAME",
+      "status": "supported_visual_transcription",
+      "literal": "ぐー、",
+      "unicode_codepoints": [
+        "U+3050",
+        "U+30FC",
+        "U+3001"
+      ],
+      "witness_seconds": [
+        16,
+        402
+      ],
+      "finding": "Profile at16s and result at402s display gu hiragana with dakuten, long-vowel mark, Japanese comma. Existing literal is supported.",
+      "limit": "This is image transcription, not an independently obtained underlying account string; no exact account identifier claim."
+    }
+  ],
+  "required_repairs": [
+    "Correct T6 normal draw count3→4 to4→5. No change required to unknown mutual ordering or name literal."
+  ],
+  "preserve_uncertainties": [
+    "Remote action order and exact input times during connection refresh.",
+    "Opponent hidden draws/search identities and later Soul Shot discard identity."
+  ],
+  "files_written": [
+    "astra_gap/CHECK_RESULT.json",
+    "astra_gap/VIEWED_EVIDENCE.json"
+  ]
+}

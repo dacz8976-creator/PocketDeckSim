@@ -1,0 +1,50 @@
+{
+  "source_video": "20261013_015659000_iOS.MP4",
+  "source_sha256": "6e2074461f324b9825dc0805101ba7d899933c2997709d36efc058b231dace9e",
+  "review_status": "complete_with_recording_limits",
+  "unreviewed_intervals": [],
+  "uncertainties": [
+    {
+      "kind": "recording_limit",
+      "description": "No opened discard pile snapshots recorded; hidden opponent draws/searches stay unknown."
+    },
+    {
+      "kind": "recording_limit",
+      "description": "T11 fan at start covered by phone notification; later/public arithmetic kept separate."
+    },
+    {
+      "kind": "external_limit",
+      "description": "Current live artifact blocked; exact20 historical catalog binding is qualified."
+    },
+    {
+      "kind": "timing_limit",
+      "description": "Native evidence filenames are requested source seeks; actual frame PTS unmeasured; all draw boundaries approximate."
+    },
+    {
+      "kind": "printing_limit",
+      "description": "Protective Poncho identity and Bench-conditional effect resolved directly from native267.8. Exact set and collector number remain unestablished.",
+      "evidence_ids": [
+        "A0267_80"
+      ],
+      "resolved_by": "astra_exception/CHECK_RESULT.json"
+    }
+  ],
+  "resolved_observations": [
+    {
+      "identity": "Protective Poncho",
+      "basis": "direct readable source title/effect, not owner hypothesis",
+      "evidence_ids": [
+        "A0267_80",
+        "N0269_50",
+        "N0270_20"
+      ]
+    },
+    {
+      "chronology": "Protective Poncho before Fighting Energy on Hitmontop",
+      "evidence_ids": [
+        "N0272_00",
+        "A0273_00"
+      ]
+    }
+  ]
+}

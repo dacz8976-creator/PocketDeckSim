@@ -1,0 +1,22 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "source_video": "20260930_143535000_iOS.MP4",
+  "source_sha256": "a9f997cedf71b6c7e2a4834c4282a657a183aa2e26dd01af605449cf1490a9de",
+  "scope": "Complete eleven-turn 191.185-second autopilot computer battle, setup through the three knockouts and named Victory",
+  "first_pass": "gpt-6.1-sol/high /root/sol_auto_143535",
+  "lead_checks": "Read full narrative, coverage, source, summary and uncertainties. Independently inspected105.00s ordinary state with Ralts30, Meloetta70/twoPsychic, owner Dialga150/twoMetal, reserve Dialga150/twoMetal and Revavroom110/noEnergy;137.00s Big Malasada text explicitly healing10;143.00s settled Dialga110/threeMetal and both reserve recipients with twoMetal;170.00s Dialga50/fourMetal versus Brambleghast90 and owner two points;190.00s explicit named Victory, eleven turns,3-0 and260 damage. The two Metallic Turbo recipients, healing and terminal chain reconcile.",
+  "outcome": "owner_win",
+  "final_points": {"owner": 3, "opponent": 0},
+  "owner_visible_core": "Dialga ex / Varoom / Revavroom",
+  "opponent": "AI Sylveon Deck (Deluxe Pack: Mega)",
+  "last_turn": 11,
+  "useful_finding": "Metallic Turbo develops two separate Bench recipients. Big Malasada heals10; Dialga's settled HP follows150 to100 to110 to50. Two30-damage Turbo attacks and two100-damage Heavy Impacts match the260-damage result. Condition removal was not tested.",
+  "unreviewed_intervals": [],
+  "material_unresolved": [],
+  "limitations": "Hidden opponent searches and unseen deck cards remain unknown. Exact subsecond timing and untested Big Malasada condition removal are not inferred.",
+  "ladder_eligible": false,
+  "ladder_action": "No Ladder Log entry; excluded by owner instruction",
+  "astra_consulted": false,
+  "astra_reason": "Targeted source frames resolved the meaningful identities and mechanics without a remaining consequential ambiguity"
+}

@@ -1,0 +1,497 @@
+{
+  "source": "20260908_190933000_iOS.MP4",
+  "missing_required_files": [],
+  "json_parsed": [
+    "ASSIGNMENT.json",
+    "ASTRA_QUESTIONS.json",
+    "CHECKPOINTS.json",
+    "DECK_USED.json",
+    "EVIDENCE_INVENTORY.json",
+    "FROZEN_FOR_INDEPENDENT_REVIEW.json",
+    "HAND_SUPPLEMENT.json",
+    "INHERITED_TURNS.json",
+    "METRICS.json",
+    "PACKET_VALIDATION.json",
+    "PAUSE_GAME.json",
+    "REVIEW_SUPPLEMENT.json",
+    "SOURCE_READ_ERROR.json",
+    "SOURCE_REFERENCE.json",
+    "SOURCE_VERIFICATION.json",
+    "STRUCTURE_CHECK.json",
+    "TURN_EVIDENCE.json",
+    "TURN_LEDGER.json",
+    "UNCERTAINTIES.json"
+  ],
+  "target_turn_numbers": [
+    1,
+    3,
+    5,
+    7,
+    9
+  ],
+  "expected_target_turn_numbers": [
+    1,
+    3,
+    5,
+    7,
+    9
+  ],
+  "target_mismatch": false,
+  "duplicate_target_turn_numbers": false,
+  "accepted_packet_files_changed": [],
+  "retained_images": [
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0017.50.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 265727,
+      "sha256": "5c128de8f3e327e73f9c1dc9737bad8fbad7039db071dccbaca2427e676d5b01"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0040.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 299552,
+      "sha256": "f8c5ba6b012525dcbe96561df69b88aa7274214811f0648967fbb68797bb5373"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0044.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 396113,
+      "sha256": "36c60a46df558c929188a9f4dc653610313ec075d287624e13a9946a814da62c"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0044.50.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 374583,
+      "sha256": "097dc54d7eb28d46c831aa1f89338c97770096c9715beff64f2c76fc4a9b5c21"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0045.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 305193,
+      "sha256": "c43fcfd5186284f60ca3cf8b522589e1c08a8e8e07ee549571cd5bac55f090a7"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0047.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 428496,
+      "sha256": "a468558821e2ff08e7dd5deb718795d5096b642c6f361b119a942337a5a778bb"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0050.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 382945,
+      "sha256": "2371308f1bfc562b94e346884e0b1812b4fdbb99cbe907e3b8109d873af9a799"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0050.50.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 387660,
+      "sha256": "05025356af8067570f0151b158353816ae992be875d3d9e728b3b8e038ef8276"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0051.50.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 383226,
+      "sha256": "0574374058d7912e5fc619d9708bef8517be5be1f90f3ad4bb95fcd831ea7af9"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0056.50.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 417000,
+      "sha256": "d3bfd874a6c6a500a9235716ea70ab280106105d3564fa81858aa3a707ffd068"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0068.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 444903,
+      "sha256": "21951cbd2309e7e565d202a99109ac0c8ad1fbbc530a0bad908d58d0e35265db"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0087.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 513398,
+      "sha256": "25a917105d977aa6d5cac64332bd4967885f3b073988e96b6e217a72fbea53be"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0114.50.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 482207,
+      "sha256": "5d6bc6ec6d2d01fadcfd899c443a6349694006c71d9298e622e2d15b0b101d8b"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0115.50.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 486001,
+      "sha256": "995f11b9b11879c18f4b2c94e4c2099955d9e673e77c7c6d39b6a4f9fff356a1"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0117.50.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 474635,
+      "sha256": "298fe5d11119c509e7fc5b1d3f6663f6e2a5c97604d5e4f34a3a6843b4c5196b"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0120.50.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 439828,
+      "sha256": "667b0724a3c4bb5320119c93110e3830574bf9774dbc7c0a10fd9f7e3710f143"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0136.50.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 383820,
+      "sha256": "c6ff03725b7d1bc7d0e128906d4027c768affe4758778883cd940b6ff4d0421c"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0137.50.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 412848,
+      "sha256": "049e61f84ba30a3bea1b36bdf43b045d486cb68f26f5434a44b713111f326c39"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0138.50.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 459075,
+      "sha256": "35e8ef3a04603daab30b7b550d38bc0464af50e4f0a5ccde64f92cdf0544b29f"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0139.50.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 430141,
+      "sha256": "d3b5494f4af4f70c1343d776c70eae1105ceaf6fb7732ae6a966e8b35e1b0429"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0143.50.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 485190,
+      "sha256": "08ab176d96308770b57828dc8b8d10261224183d6f0ce470c0a4e183c931e2b7"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0144.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 340453,
+      "sha256": "bc68249742543ec7e1fdd1eb93748b4883aaad180111506017a06bed9e2d1f27"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0167.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 421234,
+      "sha256": "804f4dc49a1a3cbd8d4274563e10849048b0df959b3b4a197d73430b1c90e730"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0212.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 388959,
+      "sha256": "7d2ac2170c4205e314ef613ff25f01671ac84710e4ef4c62f79005e72b82d085"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0214.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 445102,
+      "sha256": "6f8b7107ba9046c892a81da51a73f7b01b3f4712fe8e53cf22b887d7c5d04d5d"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0215.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 405981,
+      "sha256": "ed521486f857d3923b00bee18c738aa2cd4255a8ddfdaa9fa1da5d21af58d520"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0217.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 306607,
+      "sha256": "779bc206f037ad8e7322e3f57c8232d8a4db253cc53f6533156c96fcedc447aa"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0218.50.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 471612,
+      "sha256": "778d2d62ce13fba6d56587292498d2cbe6b33a04d4a01a7da5f08d0192617a3b"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0219.50.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 406506,
+      "sha256": "994f01fadfacbda35dbc1ea9f242564154533bd4d89351c2e5fb30b3d3856ad4"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0220.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 428509,
+      "sha256": "edead1708e8820b84e1defe82c6400f8c9e0f8b5a6a4974267f8e016c0c8ecc7"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0234.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 480210,
+      "sha256": "dbc41d8a00ee5d94089d56229d25596192bed4176f2938103f18ab5d6ebf6236"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0241.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 441543,
+      "sha256": "504995520ee1500e9f66249d3265874cd51023a2180441d123e5fc1e38e9e567"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0284.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 508474,
+      "sha256": "5a6f108aeb9c0043224d14959339ea8b80c9c63c60c0303dd65f11aedc12f0b5"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0287.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 489191,
+      "sha256": "d2eabd17fc08b98f71f4806c8d0a9d32cff1aa90ca2699e0df4e026d83d6b9ec"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0288.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 539772,
+      "sha256": "29b1e7e1d7bbe1140e3314ac8010713baba6d5aae4c9c7dec0373a78fd04ca20"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0290.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 497736,
+      "sha256": "8ff14c83e84ffdb71606ff15df68dbc4c0ad0531d2149fb613bd7e3c342c9b9f"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0293.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 511772,
+      "sha256": "8d9df8dfb528fd64aabfa95c049840104393474d0de8ce92bbe522019fcc2633"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0300.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 536518,
+      "sha256": "08dd3923c9ed95b4af66ae85f1a7d2c23fca7b67e25f502f3f35a331cdfe8cb1"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0302.50.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 311680,
+      "sha256": "d936ef7a600a4edd42765f90d0295bcf8aba981181c1a5358ec95e877040805b"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0308.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 451783,
+      "sha256": "4a2304419a6f8e40291d55d42f4895a4f37a03b9c58564e02692367a21de5ede"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0354.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 514818,
+      "sha256": "31d310f1ff770efee91e9951bd3405d207898614c91404e03c24293df5153ed1"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0357.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 562039,
+      "sha256": "f2eb067462248a0cc9c97fa9127a66215101903838959eb7a6c39629b80a68a1"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0358.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 496970,
+      "sha256": "d268a7a0d7fce17c3fb324b4429162c2ebd2b0d8caa387aa03655eeb6359944e"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0360.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 507319,
+      "sha256": "06a45f5c918fe7790ae467125688471772ddf3bef0a53460fe82615d9ab9b31f"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0363.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 569990,
+      "sha256": "2a236d5fd2eb3cc72d46da657c8630a97142a51efac9bd4aab488d3f91b802a0"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0385.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 569608,
+      "sha256": "fd50db3119415be443d8204c337b69ed06f9ab7d2666c1ebe380c9c31068b474"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0392.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 477591,
+      "sha256": "610c00fe1f785d8e27024334ecc607e11ce0ccfef957b6d2dc34d8e49958f010"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0403.50.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 630208,
+      "sha256": "1a63889a7fbf8515116345aad94e3aafa479c5cbec24eb3513e5e499138660ca"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0409.00.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 600141,
+      "sha256": "2bb3ae62535f61395332745308ebee7f4c7ca1ba4edd32c0ef4dfcf5ed5d83a0"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\turn_evidence\\t0412.50.jpg",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "bytes": 167007,
+      "sha256": "b6a75ee26519ac69cfa8eb47b1236ecec2c5f3040d80522d9dc4e5f7e76aae73"
+    }
+  ],
+  "retained_image_bytes": 22131874,
+  "structure_passed": true,
+  "visual_acceptance": "Not established by this structural check; separate independent Sol inspection required"
+}

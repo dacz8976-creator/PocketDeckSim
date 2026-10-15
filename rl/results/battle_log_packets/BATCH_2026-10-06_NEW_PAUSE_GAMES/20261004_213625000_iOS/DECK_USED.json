@@ -1,0 +1,324 @@
+{
+  "is_template": false,
+  "schema": "pause-games/deck-snapshot-v1",
+  "game_id": "20261004_213625000_iOS_game1",
+  "deck_name": "New deck 24",
+  "exact_list_status": "baseline_live_list_missing_filmed_qr_verified",
+  "log_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "live_snapshot": "../LIVE_DECK_SNAPSHOT.json",
+  "cards_in_log_order": null,
+  "counts_by_name_and_variant": null,
+  "retrieved_at_utc": "2026-10-06T18:11:53.615465+00:00",
+  "energy_configuration": [
+    "Grass"
+  ],
+  "filmed_qr_cards_20": [
+    {
+      "name": "Poké Ball",
+      "entity_id": 30,
+      "variant_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Poké Ball",
+      "entity_id": 30,
+      "variant_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Quick-Grow Extract",
+      "entity_id": 1020,
+      "variant_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Quick-Grow Extract",
+      "entity_id": 1020,
+      "variant_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Lucky Ice Pop",
+      "entity_id": 1060,
+      "variant_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Lucky Ice Pop",
+      "entity_id": 1060,
+      "variant_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Professor’s Research",
+      "entity_id": 40,
+      "variant_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Professor’s Research",
+      "entity_id": 40,
+      "variant_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Hiking Trail",
+      "entity_id": 1270,
+      "variant_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Fragrant Forest",
+      "entity_id": 1340,
+      "variant_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Caterpie",
+      "entity_id": 19040,
+      "variant_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Caterpie",
+      "entity_id": 19040,
+      "variant_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Metapod",
+      "entity_id": 19050,
+      "variant_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Metapod",
+      "entity_id": 19050,
+      "variant_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Butterfree",
+      "entity_id": 19060,
+      "variant_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Butterfree",
+      "entity_id": 19060,
+      "variant_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Shelmet",
+      "entity_id": 19740,
+      "variant_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Shelmet",
+      "entity_id": 19740,
+      "variant_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Accelgor",
+      "entity_id": 19750,
+      "variant_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Accelgor",
+      "entity_id": 19750,
+      "variant_limit": "QR does not specify artwork, rarity or exact printing"
+    }
+  ],
+  "filmed_qr_counts": [
+    {
+      "entity_kind": "trainer",
+      "entity_id": 30,
+      "count": 2,
+      "name": "Poké Ball",
+      "name_candidates": [
+        "Poké Ball"
+      ],
+      "functional_ids": [
+        "1b20901befde"
+      ],
+      "printing_aliases": [
+        "A2b 111",
+        "P-A 005"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 1020,
+      "count": 2,
+      "name": "Quick-Grow Extract",
+      "name_candidates": [
+        "Quick-Grow Extract"
+      ],
+      "functional_ids": [
+        "de4bec7df49e"
+      ],
+      "printing_aliases": [
+        "B1a 067",
+        "B1a 103"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 1060,
+      "count": 2,
+      "name": "Lucky Ice Pop",
+      "name_candidates": [
+        "Lucky Ice Pop"
+      ],
+      "functional_ids": [
+        "15c19aaaf9a4"
+      ],
+      "printing_aliases": [
+        "B2 145"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 40,
+      "count": 2,
+      "name": "Professor’s Research",
+      "name_candidates": [
+        "Professor’s Research"
+      ],
+      "functional_ids": [
+        "c0015440f616"
+      ],
+      "printing_aliases": [
+        "A4b 373",
+        "P-A 007"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 1270,
+      "count": 1,
+      "name": "Hiking Trail",
+      "name_candidates": [
+        "Hiking Trail"
+      ],
+      "functional_ids": [
+        "a2d79d4fdf89"
+      ],
+      "printing_aliases": [
+        "B2b 069"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 1340,
+      "count": 1,
+      "name": "Fragrant Forest",
+      "name_candidates": [
+        "Fragrant Forest"
+      ],
+      "functional_ids": [
+        "32d2313752ce"
+      ],
+      "printing_aliases": [
+        "B3 153"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 19040,
+      "count": 2,
+      "name": "Caterpie",
+      "name_candidates": [
+        "Caterpie"
+      ],
+      "functional_ids": [
+        "d78653281449"
+      ],
+      "printing_aliases": [
+        "B3b 001",
+        "B3b 091"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 19050,
+      "count": 2,
+      "name": "Metapod",
+      "name_candidates": [
+        "Metapod"
+      ],
+      "functional_ids": [
+        "c8ff712128ed"
+      ],
+      "printing_aliases": [
+        "B3b 002",
+        "B3b 092"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 19060,
+      "count": 2,
+      "name": "Butterfree",
+      "name_candidates": [
+        "Butterfree"
+      ],
+      "functional_ids": [
+        "c5ef01a8ac41"
+      ],
+      "printing_aliases": [
+        "B3b 003",
+        "B3b 093"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 19740,
+      "count": 2,
+      "name": "Shelmet",
+      "name_candidates": [
+        "Shelmet"
+      ],
+      "functional_ids": [
+        "6564d5e5b4f3"
+      ],
+      "printing_aliases": [
+        "B4 013"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 19750,
+      "count": 2,
+      "name": "Accelgor",
+      "name_candidates": [
+        "Accelgor"
+      ],
+      "functional_ids": [
+        "cdbdb9be8a11"
+      ],
+      "printing_aliases": [
+        "B4 014",
+        "B4 159"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    }
+  ],
+  "filmed_source": "QR_DECODE_RECEIPT.json",
+  "deck_selection_evidence_ids": [
+    "F0002.00",
+    "F0004.00",
+    "F0006.00",
+    "F0008.00"
+  ],
+  "limitations": [
+    "Baseline lacks matching list; cannot call this a dated exact log20-card snapshot until root creates/readbacks matching deck entry.",
+    "QR resolves semantic entity, not artwork/rarity. QR does not establish hidden hand identity."
+  ]
+}

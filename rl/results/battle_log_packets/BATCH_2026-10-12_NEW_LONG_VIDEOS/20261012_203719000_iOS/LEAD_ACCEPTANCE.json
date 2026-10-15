@@ -1,0 +1,49 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-13T00:04:19.637183+00:00",
+  "source_game_count": 1,
+  "all_source_games_accepted": true,
+  "source_video": "20261012_203719000_iOS.MP4",
+  "source_sha256": "e85ac056e49ababe79fbd0388e8b132f3cc984a5deb445390a2f4df7b0137869",
+  "scope": "Entire supplied recording, one human event battle, opening, all 21 turns and terminal result",
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 21,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-12_NEW_LONG_VIDEOS\\20261012_203719000_iOS\\independent_sol\\CORRECTION_RECHECK.json",
+  "accepted_input_sha256": {
+    "REVIEW.md": "8968b806f662445728b344d91466f81c25fa767ee86bb3c486772be526302d65",
+    "COVERAGE.md": "aa79c1802dacea4846d3d2373f45e53073457762565621dfd0829c47918b4a8d",
+    "SUMMARY.json": "990b80dcf647ad1212b95fc27a77dfbeaf02c4a881b9344c93e60aa3d83b0acf",
+    "UNCERTAINTIES.json": "4b4885055fa1d1c49e1e6c02365dcac99dff516f2edd9ce74bd948ef92d2ea52",
+    "PAUSE_GAME.json": "5decf7d91946a700ce5b0993859f8481485fbfc73767b9e19fe97d23807c65f3",
+    "DECK_USED.json": "3efbcfbc95abf7850bca6fb89b84b611535ca9c2cc2605d883603cb130400091",
+    "TURN_LEDGER.json": "89927ecbdc2ce40bf80862f599e4702bb699d2a965669407ad2c81e607d89c97",
+    "TURN_EVIDENCE.json": "a0009b720590cae4d1b16b23a9508667a6f94f3d5645b25f7adf4dc1c4f7a31c"
+  },
+  "basis": "Whole-source Sol review, separately bounded Sol checks against source frames, and lead reconciliation of coverage, ordinary decisions, draws/searches, hand arithmetic, point progression, decisive sequences and terminal outcome. Structural integrity checked separately.",
+  "administrative_fields_changed_after_independent_freeze": [
+    "lead_checked",
+    "battle_review_status",
+    "lead_acceptance"
+  ],
+  "source_limits": [
+    "Live Pause Games deck list missing; filmed QR list separately verified.",
+    "Discard piles never opened.",
+    "Some opponent fan overlap counts remain ranges.",
+    "Source seek times approximate, actual PTS not measured."
+  ],
+  "outcome": {
+    "owner": "win",
+    "cause": "opponent conceded",
+    "owner_points": 1,
+    "opponent_points": 2,
+    "turns_played": 21,
+    "evidence_ids": [
+      "f790_00",
+      "f800_50"
+    ]
+  },
+  "deck_status": "Exact filmed 20-card QR list independently bound; matching new live deck entry is not yet available.",
+  "external_status": "Prepared deck and game import pending; no external save claimed."
+}

@@ -1,0 +1,33 @@
+{
+  "lead": "/root",
+  "checked_utc": "2026-10-14T15:45:07.877313+00:00",
+  "source_filename": "20261014_142546000_iOS.MP4",
+  "source_sha256": "71f4550d39ecf24f1b12d5ad86260e685874c24ff32822c6216368efc4ef4805",
+  "observations": [
+    {
+      "path": "native/t0010.0.jpg",
+      "sha256": "6b744628a33fe7b480410fcda262f1b9cb16fa9c6be3d438dd15f4142e0b4552",
+      "directly_viewed_by_root": true,
+      "finding": "Deck 12 visibly selected with Spinarak/Ariados grass core."
+    },
+    {
+      "path": "native/t0227.0.jpg",
+      "sha256": "a223f1ca8190077d483c0960015d8abf962c32038086e04fc13f4d31e48492e6",
+      "directly_viewed_by_root": true,
+      "finding": "Owner turn banner shows combined turn 7; first player own T4. Opponent has zero points."
+    },
+    {
+      "path": "native/t0278.0.jpg",
+      "sha256": "a6d2cda4a83bbec1114af502e46c7c4c693c27d37dca6c2c6e3efa471980c8b3",
+      "directly_viewed_by_root": true,
+      "finding": "Whimsicott ex Active before first Grass Knot; opponent zero points, owner one point, Mega Sharpedo ex160 remaining HP."
+    },
+    {
+      "path": "native/t0299.8.jpg",
+      "sha256": "bfab34b26fdd7e290a0e7ced64b9288f8c20a2ff9dc8c7c662407cbfdd98da87",
+      "directly_viewed_by_root": true,
+      "finding": "Victory versus まいちゃん; went first;7 turns;3-0;220 damage;Whimsicott ex Card of the Game."
+    }
+  ],
+  "coverage_reconciliation": "Root read all turn/phase coverage and complete prose timeline; independent source checker sampled ordinary turns and decisive/source identity facts."
+}

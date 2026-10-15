@@ -1,0 +1,55 @@
+{
+  "source_video": "20261012_203719000_iOS.MP4",
+  "sha256": "e85ac056e49ababe79fbd0388e8b132f3cc984a5deb445390a2f4df7b0137869",
+  "game_id": "20261012_203719000_iOS-game-1",
+  "reviewer": "/root/long_203719",
+  "review_status": "repaired_review_ready_for_fresh_independent_check",
+  "review_scope": "Entire source 0 to 800.786667 s; setup, all 21 turns, ending and results",
+  "review_method": "Native 2-second full-battle seeks, 8-second overview, targeted subsecond draw/first-move/action refinements, direct audit of every boundary Zone",
+  "opponent": "KCXPF",
+  "owner": "Dacz8976",
+  "classification": "human_event_battle",
+  "queue": "Deluxe Pack: Mega Emblem Event",
+  "auto_visible": false,
+  "outcome": "win",
+  "outcome_cause": "opponent conceded",
+  "score": {
+    "owner": 1,
+    "opponent": 2
+  },
+  "turn_count": 21,
+  "went_first": true,
+  "damage_done_result_screen": 150,
+  "qr_sightings": [
+    0
+  ],
+  "source_time_file": "SOURCE_TIME.json",
+  "capture_status": "complete_with_recording_limits",
+  "deck_visible_core": [
+    "Regigigas",
+    "Alolan Grimer",
+    "Alolan Muk",
+    "Pawniard",
+    "Kingambit",
+    "Glimmet",
+    "Glimmora"
+  ],
+  "external_write_performed": false,
+  "lead_acceptance": false,
+  "independent_repairs": {
+    "prior_files": "before_independent_repairs_20261012T233338Z",
+    "turn_13_selected_frame": "f466_90",
+    "turn_3_boundary_energy": "Visibly empty at107.2, later generated Darkness at107.5 during first selection",
+    "all_boundary_zones_audited": true
+  },
+  "second_independent_repairs": {
+    "prior_files": "before_second_independent_repairs_20261012T235813Z",
+    "turn_3_later_next": "Null at 107.5 s; small marker absent or obscured",
+    "turn_9_start_next": "Null at 358 s; small marker absent or obscured",
+    "turn_19_attachment_proof": [
+      "f722_00",
+      "f732_00"
+    ],
+    "supported_hands_actions_outcome_unchanged": true
+  }
+}

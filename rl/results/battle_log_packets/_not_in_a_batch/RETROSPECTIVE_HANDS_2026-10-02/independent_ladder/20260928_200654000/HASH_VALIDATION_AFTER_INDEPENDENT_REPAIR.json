@@ -1,0 +1,344 @@
+{
+  "effective_submission_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\SUBMISSION_AFTER_INDEPENDENT_REPAIR.json",
+  "effective_submission_sha256": "adf1318ca9077e47a24222a6b6a5a362d8a47c0052dfc6ee171dbadea6e28ec3",
+  "original_submission_sha256": "6c96fd0cf646b928c739936fc7a27f855e4723ec7b0c822a306ccf6c41849d6b",
+  "all_19_current_hashes_match": true,
+  "all_19_original_snapshots_match": true,
+  "changed_files": [
+    "TURN_LEDGER.json",
+    "HAND_SUPPLEMENT.json",
+    "TURN_EVIDENCE.json",
+    "REVIEW_SUPPLEMENT.md",
+    "UNCERTAINTIES.json",
+    "ACTION_RECONCILIATION.json"
+  ],
+  "changed_file_count": 6,
+  "files": [
+    {
+      "file": "ASSIGNMENT.json",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\ASSIGNMENT.json",
+      "current_actual_sha256": "f4f2f4f19ebf58e1fefe92f28312e4a09af184752df68e6a9db3fb10d507db68",
+      "effective_submitted_sha256": "f4f2f4f19ebf58e1fefe92f28312e4a09af184752df68e6a9db3fb10d507db68",
+      "current_match": true,
+      "original_submitted_sha256": "f4f2f4f19ebf58e1fefe92f28312e4a09af184752df68e6a9db3fb10d507db68",
+      "snapshot_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\before_independent_repair\\ASSIGNMENT.json",
+      "snapshot_matches_original": true
+    },
+    {
+      "file": "PAUSE_GAME.json",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\PAUSE_GAME.json",
+      "current_actual_sha256": "8aad1f54bcc837ff4277bc1ae745cb427a11b4466475c73b8c5d4af6e25910bc",
+      "effective_submitted_sha256": "8aad1f54bcc837ff4277bc1ae745cb427a11b4466475c73b8c5d4af6e25910bc",
+      "current_match": true,
+      "original_submitted_sha256": "8aad1f54bcc837ff4277bc1ae745cb427a11b4466475c73b8c5d4af6e25910bc",
+      "snapshot_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\before_independent_repair\\PAUSE_GAME.json",
+      "snapshot_matches_original": true
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\TURN_LEDGER.json",
+      "current_actual_sha256": "694fc2b0eb2bd6b2c979d70f2b588048a6120f1ab010183cb22f011ddb8308bc",
+      "effective_submitted_sha256": "694fc2b0eb2bd6b2c979d70f2b588048a6120f1ab010183cb22f011ddb8308bc",
+      "current_match": true,
+      "original_submitted_sha256": "235701fe56da5d461ab1a7db72c1bb6a36081c797566092c918473ecda788435",
+      "snapshot_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\before_independent_repair\\TURN_LEDGER.json",
+      "snapshot_matches_original": true
+    },
+    {
+      "file": "HAND_SUPPLEMENT.json",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\HAND_SUPPLEMENT.json",
+      "current_actual_sha256": "19d59005b22d273f3968b5d734787f407d16c6cf753ea55889d35090a0e64ea1",
+      "effective_submitted_sha256": "19d59005b22d273f3968b5d734787f407d16c6cf753ea55889d35090a0e64ea1",
+      "current_match": true,
+      "original_submitted_sha256": "2d4fd173ce5ba3d854fb6244dac99d3e14855229eb2d0c6b88ca9bf99e50b452",
+      "snapshot_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\before_independent_repair\\HAND_SUPPLEMENT.json",
+      "snapshot_matches_original": true
+    },
+    {
+      "file": "SOURCE_REFERENCE.json",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\SOURCE_REFERENCE.json",
+      "current_actual_sha256": "15dc3ab3759a089231ab22540f8f99c5564874eece14cae8ee65bd2bb3258c2e",
+      "effective_submitted_sha256": "15dc3ab3759a089231ab22540f8f99c5564874eece14cae8ee65bd2bb3258c2e",
+      "current_match": true,
+      "original_submitted_sha256": "15dc3ab3759a089231ab22540f8f99c5564874eece14cae8ee65bd2bb3258c2e",
+      "snapshot_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\before_independent_repair\\SOURCE_REFERENCE.json",
+      "snapshot_matches_original": true
+    },
+    {
+      "file": "TURN_EVIDENCE.json",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\TURN_EVIDENCE.json",
+      "current_actual_sha256": "35b677abcecb91e0a1fde8e70afa83433e16811e04c352be13e9a747fed34fea",
+      "effective_submitted_sha256": "35b677abcecb91e0a1fde8e70afa83433e16811e04c352be13e9a747fed34fea",
+      "current_match": true,
+      "original_submitted_sha256": "4224e2eb224ce115ac1312d8f3452cc5ab4bb097ce851b776bb4063313bc370e",
+      "snapshot_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\before_independent_repair\\TURN_EVIDENCE.json",
+      "snapshot_matches_original": true
+    },
+    {
+      "file": "REVIEW_SUPPLEMENT.md",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\REVIEW_SUPPLEMENT.md",
+      "current_actual_sha256": "7fe2b257ad6b2e67706a6624ae21f75d2ecb391fd76ed9cda0b60533c4a7c50a",
+      "effective_submitted_sha256": "7fe2b257ad6b2e67706a6624ae21f75d2ecb391fd76ed9cda0b60533c4a7c50a",
+      "current_match": true,
+      "original_submitted_sha256": "9152ee34ad1b9d3841fde312108bf872f12b55e36dfaa06f8cacac1d6cdd4df1",
+      "snapshot_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\before_independent_repair\\REVIEW_SUPPLEMENT.md",
+      "snapshot_matches_original": true
+    },
+    {
+      "file": "UNCERTAINTIES.json",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\UNCERTAINTIES.json",
+      "current_actual_sha256": "a44e4241912db79b915de86dc2f39f03155b387bf574db8b369af0f003d4ef2a",
+      "effective_submitted_sha256": "a44e4241912db79b915de86dc2f39f03155b387bf574db8b369af0f003d4ef2a",
+      "current_match": true,
+      "original_submitted_sha256": "db7ee401b252bbb21079fd8be4c3348bd155f4396b09a4614621b2e822469f6e",
+      "snapshot_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\before_independent_repair\\UNCERTAINTIES.json",
+      "snapshot_matches_original": true
+    },
+    {
+      "file": "DECK_USED.json",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\DECK_USED.json",
+      "current_actual_sha256": "e06a0c0c528ede44325cea024d00d8a8484b00abd9d25640ba1c7c32984649bc",
+      "effective_submitted_sha256": "e06a0c0c528ede44325cea024d00d8a8484b00abd9d25640ba1c7c32984649bc",
+      "current_match": true,
+      "original_submitted_sha256": "e06a0c0c528ede44325cea024d00d8a8484b00abd9d25640ba1c7c32984649bc",
+      "snapshot_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\before_independent_repair\\DECK_USED.json",
+      "snapshot_matches_original": true
+    },
+    {
+      "file": "METRICS.json",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\METRICS.json",
+      "current_actual_sha256": "0786dad5f4362c306fc22cfc5fd53079dc8a57aa3a6f13af957c4aa74192865f",
+      "effective_submitted_sha256": "0786dad5f4362c306fc22cfc5fd53079dc8a57aa3a6f13af957c4aa74192865f",
+      "current_match": true,
+      "original_submitted_sha256": "0786dad5f4362c306fc22cfc5fd53079dc8a57aa3a6f13af957c4aa74192865f",
+      "snapshot_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\before_independent_repair\\METRICS.json",
+      "snapshot_matches_original": true
+    },
+    {
+      "file": "MODE_QUESTION.json",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\MODE_QUESTION.json",
+      "current_actual_sha256": "71688b91470ab58269190ed28fedc5f6f3248402eebc4adf67e702c2a12f61d4",
+      "effective_submitted_sha256": "71688b91470ab58269190ed28fedc5f6f3248402eebc4adf67e702c2a12f61d4",
+      "current_match": true,
+      "original_submitted_sha256": "71688b91470ab58269190ed28fedc5f6f3248402eebc4adf67e702c2a12f61d4",
+      "snapshot_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\before_independent_repair\\MODE_QUESTION.json",
+      "snapshot_matches_original": true
+    },
+    {
+      "file": "ACTION_RECONCILIATION.json",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\ACTION_RECONCILIATION.json",
+      "current_actual_sha256": "a97459f2aa16029da2206490184e423e68cbe97dd631f9c6152244e38181b22b",
+      "effective_submitted_sha256": "a97459f2aa16029da2206490184e423e68cbe97dd631f9c6152244e38181b22b",
+      "current_match": true,
+      "original_submitted_sha256": "d71253410923ebffaf1d077dfa7b9188b870ccee86b8ba5e2b7f7d286f07ff59",
+      "snapshot_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\before_independent_repair\\ACTION_RECONCILIATION.json",
+      "snapshot_matches_original": true
+    },
+    {
+      "file": "INHERITED_TURNS.json",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\INHERITED_TURNS.json",
+      "current_actual_sha256": "6bd68f7d61f52019328fea39667af8701f2e50e10bf25316a20d21b4b647bdf9",
+      "effective_submitted_sha256": "6bd68f7d61f52019328fea39667af8701f2e50e10bf25316a20d21b4b647bdf9",
+      "current_match": true,
+      "original_submitted_sha256": "6bd68f7d61f52019328fea39667af8701f2e50e10bf25316a20d21b4b647bdf9",
+      "snapshot_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\before_independent_repair\\INHERITED_TURNS.json",
+      "snapshot_matches_original": true
+    },
+    {
+      "file": "LOCATOR_SCAN.json",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\LOCATOR_SCAN.json",
+      "current_actual_sha256": "d5e174f7147429a5350df36d1efcaa7236b1707c89ee1efb7f9a4ffc159714a0",
+      "effective_submitted_sha256": "d5e174f7147429a5350df36d1efcaa7236b1707c89ee1efb7f9a4ffc159714a0",
+      "current_match": true,
+      "original_submitted_sha256": "d5e174f7147429a5350df36d1efcaa7236b1707c89ee1efb7f9a4ffc159714a0",
+      "snapshot_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\before_independent_repair\\LOCATOR_SCAN.json",
+      "snapshot_matches_original": true
+    },
+    {
+      "file": "EXTRACTION_PLAN.json",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\EXTRACTION_PLAN.json",
+      "current_actual_sha256": "8228a53dda1dd749633c23e3ff9bf9912fdb96dd7d75f45fe2c7442c1a8a85ac",
+      "effective_submitted_sha256": "8228a53dda1dd749633c23e3ff9bf9912fdb96dd7d75f45fe2c7442c1a8a85ac",
+      "current_match": true,
+      "original_submitted_sha256": "8228a53dda1dd749633c23e3ff9bf9912fdb96dd7d75f45fe2c7442c1a8a85ac",
+      "snapshot_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\before_independent_repair\\EXTRACTION_PLAN.json",
+      "snapshot_matches_original": true
+    },
+    {
+      "file": "EXTRACTION_MANIFEST.json",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\EXTRACTION_MANIFEST.json",
+      "current_actual_sha256": "f276b6829ab68aeeaa137463a5d6847364dc4449db8d98777d145c60eb0cbc1e",
+      "effective_submitted_sha256": "f276b6829ab68aeeaa137463a5d6847364dc4449db8d98777d145c60eb0cbc1e",
+      "current_match": true,
+      "original_submitted_sha256": "f276b6829ab68aeeaa137463a5d6847364dc4449db8d98777d145c60eb0cbc1e",
+      "snapshot_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\before_independent_repair\\EXTRACTION_MANIFEST.json",
+      "snapshot_matches_original": true
+    },
+    {
+      "file": "REUSED_MANIFEST.json",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\REUSED_MANIFEST.json",
+      "current_actual_sha256": "47161020419536931e9cbdd2b60d7996c193494c13f7887e9e8a162bb8b83ee9",
+      "effective_submitted_sha256": "47161020419536931e9cbdd2b60d7996c193494c13f7887e9e8a162bb8b83ee9",
+      "current_match": true,
+      "original_submitted_sha256": "47161020419536931e9cbdd2b60d7996c193494c13f7887e9e8a162bb8b83ee9",
+      "snapshot_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\before_independent_repair\\REUSED_MANIFEST.json",
+      "snapshot_matches_original": true
+    },
+    {
+      "file": "ROOT_SOURCE_VERIFICATION.json",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\ROOT_SOURCE_VERIFICATION.json",
+      "current_actual_sha256": "2f3914c5b2d536abd0895645910a168058d9c15d457abbe6e32a7146d0a4d2a9",
+      "effective_submitted_sha256": "2f3914c5b2d536abd0895645910a168058d9c15d457abbe6e32a7146d0a4d2a9",
+      "current_match": true,
+      "original_submitted_sha256": "2f3914c5b2d536abd0895645910a168058d9c15d457abbe6e32a7146d0a4d2a9",
+      "snapshot_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\before_independent_repair\\ROOT_SOURCE_VERIFICATION.json",
+      "snapshot_matches_original": true
+    },
+    {
+      "file": "VALIDATION.json",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\VALIDATION.json",
+      "current_actual_sha256": "4d7b9d80bcdf1232a3f975afbc6d632f0c1d9d79f1edd29a71f53631d1568198",
+      "effective_submitted_sha256": "4d7b9d80bcdf1232a3f975afbc6d632f0c1d9d79f1edd29a71f53631d1568198",
+      "current_match": true,
+      "original_submitted_sha256": "4d7b9d80bcdf1232a3f975afbc6d632f0c1d9d79f1edd29a71f53631d1568198",
+      "snapshot_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\before_independent_repair\\VALIDATION.json",
+      "snapshot_matches_original": true
+    }
+  ],
+  "astra_existing_native_hash_validation": [
+    {
+      "evidence_id": "F0055.00",
+      "actual_sha256": "e7cef25e4c0082567f8a1fc7c5c5336390950365d31ee7e84497184ad6fe617c",
+      "match": true,
+      "already_independently_viewed": true,
+      "direct_observation": "Owner large current slot empty; upcoming small Darkness not visible in this frame. Opponent empty current with small Metal preview."
+    },
+    {
+      "evidence_id": "F0057.00",
+      "actual_sha256": "fa4487b39e9b5529d62981ae8d7019764f550919fd3f2c564e24ffb2192de39a",
+      "match": true,
+      "already_independently_viewed": true,
+      "direct_observation": "Owner large current Darkness orb and separate small Darkness preview visible. Later than normal draw and first Poke Ball consumption."
+    },
+    {
+      "evidence_id": "F0139.00",
+      "actual_sha256": "978b14f5365d77865e1603a557869b139fbcbd84994b8c026ee0eaac61fbe57a",
+      "match": true,
+      "already_independently_viewed": true,
+      "direct_observation": "Owner large current slot empty; small Darkness preview visible during Lillie reveal."
+    },
+    {
+      "evidence_id": "F0141.00",
+      "actual_sha256": "3e286c1930b208c646d86f1b2fbccf5de69653b838c736445162bc006629a6a3",
+      "match": true,
+      "already_independently_viewed": true,
+      "direct_observation": "Owner large current Darkness orb visible; separate Next Energy generated message shows Darkness preview in animation. Exact animation completion not measured."
+    },
+    {
+      "evidence_id": "F0200.00",
+      "actual_sha256": "aef524becb12ede8d72a7ee012e01985e2c6a2bd93cf38985d5161f16997c099",
+      "match": true,
+      "already_independently_viewed": true,
+      "direct_observation": "Owner large current slot empty; small preview not visible at this instant."
+    },
+    {
+      "evidence_id": "F0201.00",
+      "actual_sha256": "83179ddc5416390d40da72753dfe75d0f6f277d1cd54688120167dd85968b06d",
+      "match": true,
+      "already_independently_viewed": true,
+      "direct_observation": "Owner large current Darkness orb visible below enlarged Hydreigon; preview/generation overlay partly obscured. Do not claim this frame independently proves every next-field component."
+    },
+    {
+      "evidence_id": "F0399.50",
+      "actual_sha256": "ae8a3199bf444d777da48f33716783e48dbdf53f792c2e17c410b3cb6ace8caa",
+      "match": true,
+      "already_independently_viewed": true,
+      "direct_observation": "Owner large current slot empty with small Darkness preview. Opponent current slot empty with small Metal preview; Arceus Active with three Metal."
+    },
+    {
+      "evidence_id": "F0402.00",
+      "actual_sha256": "7d6f032c4dcb1decd8f56ef67b30b78983e7a9643ce25f8c62491e926da332fd",
+      "match": true,
+      "already_independently_viewed": true,
+      "direct_observation": "Owner large current Darkness orb and small Darkness preview visible after Deino bench placement; opponent large current slot remains empty."
+    },
+    {
+      "evidence_id": "R_evidence_t0522.0",
+      "actual_sha256": "96305feb41c929d19a686d91b1548fc5c18fa18b73a05f7f2d7aca7616eaed7c",
+      "match": true,
+      "already_independently_viewed": true,
+      "direct_observation": "Turn13 banner. Opponent large current slot empty with small Metal preview; owner large current slot empty with small Darkness preview. Second Dialga one Metal badge is visible; banner limits other attributes."
+    },
+    {
+      "evidence_id": "F0547.00",
+      "actual_sha256": "ad7589dc2fb5f47ec09bd61c25906fcd8579077ca801bdff27489aa51a1a4244",
+      "match": true,
+      "already_independently_viewed": true,
+      "direct_observation": "Owner large current slot empty with small Darkness preview before T14 generation. Opponent current slot empty and small Metal preview; second Dialga now has two Metal."
+    },
+    {
+      "evidence_id": "F0550.00",
+      "actual_sha256": "32646707eff14cf5d80a628829dd622aeabd0ef06dd60b1fda28ada690ff9314",
+      "match": true,
+      "already_independently_viewed": true,
+      "direct_observation": "Owner large current Darkness orb plus small Darkness preview visible; opponent current slot empty plus small Metal preview."
+    },
+    {
+      "evidence_id": "R_evidence_t0120.0",
+      "actual_sha256": "b6b54f529ac11f4df2c66d9a0de0d8e505de04bc1084dbf3336c6ffcc556856f",
+      "match": true,
+      "already_independently_viewed": true,
+      "direct_observation": "Opponent large current Metal orb plus separate small Metal preview visible during T3."
+    },
+    {
+      "evidence_id": "R_evidence_t0168.0",
+      "actual_sha256": "220ff1b2752e59aa7ea55ed3cc944ece70cc37390eec0469abd5feb57682fb9e",
+      "match": true,
+      "already_independently_viewed": true,
+      "direct_observation": "Opponent large current Metal orb plus small Metal preview visible during Research animation in T5."
+    },
+    {
+      "evidence_id": "F0250.00",
+      "actual_sha256": "64620f901e529becadb01e2d3f022945f3f2582519ade396ac66ce5690251363",
+      "match": true,
+      "already_independently_viewed": true,
+      "direct_observation": "Opponent large current Metal orb plus small Metal preview visible during T7 card animation."
+    },
+    {
+      "evidence_id": "F0285.00",
+      "actual_sha256": "383d9924dedfdf4f718f0b5879cbaf1f3d86f840c37f745e304201a482f69a6a",
+      "match": true,
+      "already_independently_viewed": true,
+      "direct_observation": "Owner large current Darkness orb plus small Darkness preview visible during T8 hand/card transition."
+    },
+    {
+      "evidence_id": "R_evidence_t0456.0",
+      "actual_sha256": "2d1f243f88a66fa1aaac189bf4bd3038c903dd1d808f0492625a6ec0cf358165",
+      "match": true,
+      "already_independently_viewed": true,
+      "direct_observation": "Opponent large current Metal orb plus small Metal preview visible during T11 after Helmet. This later phase supports generated availability, not the turn-ending consumed state."
+    },
+    {
+      "evidence_id": "F0467.00",
+      "actual_sha256": "02da3d78dc0874b8321065f95c278fd8e54f33290039c382b163375f7dca5e94",
+      "match": true,
+      "already_independently_viewed": true,
+      "direct_observation": "Owner large Darkness orb visible with generation glow during T12; exact stable-generation completion not measured. Opponent current slot empty with small Metal preview."
+    },
+    {
+      "evidence_id": "F0328.00",
+      "actual_sha256": "0c60e4d64287565b9802f621d423423fe085f6bd5c7b8466bd30542d3338bf5f",
+      "match": true,
+      "already_independently_viewed": true,
+      "direct_observation": "Prior owner T8 pre-attack endpoint: opponent Arceus Bench with two Metal; opponent current slot empty and small Metal preview. This precedes the T9 generated phase."
+    },
+    {
+      "evidence_id": "F0373.00",
+      "actual_sha256": "350981ce62c632799746e64ecbaecbd7f58944d9fb630485888697b5487ff3de",
+      "match": true,
+      "already_independently_viewed": true,
+      "direct_observation": "T9 after Arceus promotion: Active Arceus has three Metal. No-target banner obscures opponent Energy Zone, so not used as a direct empty-current reading."
+    }
+  ],
+  "source_movie_hash_reads": 0
+}

@@ -1,0 +1,39 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-12T03:16:02.948126+00:00",
+  "source_game_count": 1,
+  "all_source_games_accepted": true,
+  "source_video": "20261012_003458000_iOS.MP4",
+  "source_sha256": "399ef7e1be5545ca1284a7aedb9f6eea70abb5929ed7cbf2083d539dae64f413",
+  "scope": "Whole supplied continuous battle: setup, all turns, terminal sequence and source ending",
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 11,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-11_NEW_PAUSE_GAMES\\20261012_003458000_iOS\\independent_sol\\CHECK_RESULT.json",
+  "basis": "Whole-source Sol review and coverage; separate bounded Sol verification of opening, ordinary turns/first moves, draws/searches, hands, both boards/Energy Zones, fans and outcome. Root reconciled reports and checked the terminal frame. Structure checked separately. Only lead_checked, lead_acceptance and battle_review_status administrative fields are updated after the frozen independent input.",
+  "source_limits": [
+    "Exact queue label is not shown; human match search/dual clocks and no Auto control support human routing.",
+    "Opponent faces and all opened discard views are absent.",
+    "QR verifies semantic20card membership and Water Energy, not artwork/rarity. Current log variants are preserved as log labels.",
+    "Post-concession source ends during result transition; concession banner itself establishes outcome.",
+    "A Horsea zoom is present at 26/27s and the right Research slot is clipped at the edge. Its visible name/art plus inspected setup continuity support the five named slots; no ideal unzoomed five-card pre-placement view is retained."
+  ],
+  "outcome": {
+    "owner": "Dacz8976",
+    "opponent": "しじみ",
+    "result": "win",
+    "method": "opponent_concession",
+    "source_seconds": 353,
+    "points_at_concession": {
+      "owner": 2,
+      "opponent": 2
+    },
+    "evidence_ids": [
+      "N353p000",
+      "N354p000"
+    ]
+  },
+  "external_status": "Live deck snapshot retrieved for this batch. This game save is pending; dated deck retrieval and filmed QR binding are preserved in DECK_USED.json.",
+  "archive_authorization": "Completed local review may be safely archived after verified CLI registration; original bytes/name preserved."
+}

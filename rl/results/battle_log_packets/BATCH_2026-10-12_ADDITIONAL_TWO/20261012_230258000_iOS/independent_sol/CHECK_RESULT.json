@@ -1,0 +1,46 @@
+{
+  "checker": "/root/check_later_230258",
+  "checked_utc": "2026-10-13T02:45:34.593817+00:00",
+  "status": "accepted",
+  "accepted": true,
+  "source_video": "20261012_230258000_iOS.MP4",
+  "source_sha256": "02c8539c786e5e57652c297ce425468955c4f70da2657a40cf39a2b0b330619a",
+  "source_identity_basis": "Frozen intake SOURCE.json and independently inspected source-derived native frames; source not rehashed by checker",
+  "scope": "Bounded independent visual checks plus all eight current packet files reconciled",
+  "checked_input_sha256": {
+    "REVIEW.md": "a7a5a8245d320d773812df90a35f140c4ae249cc67d1f94326c1f6d16bef268d",
+    "COVERAGE.md": "a6d71957844b068042fe358b9137ea1941ff5ebc1e15f0a8ae2178242fbec5fb",
+    "SUMMARY.json": "442bed0c02372db94269773db5ba696c0d70ec46e3e61a5458f0242af5c1eaa0",
+    "UNCERTAINTIES.json": "6fd51b20c0ba972d0350f2e2f7fe90e0156748f04dcaea0c7c795ee782333572",
+    "PAUSE_GAME.json": "74de4b5e7f932755dd9827125c0a907365dc0ece86b4d3920c5ba1d26e015a41",
+    "DECK_USED.json": "e4f1899bd0e537af4bca1126a0f54b0a1248eacf70b85597a972656d7120cd9e",
+    "TURN_LEDGER.json": "f679c506cc25dd59a0778f645916e4febc45701c1c6dffe820f18374ab202d36",
+    "TURN_EVIDENCE.json": "25fc0f3199d6cb90a8e3ec95004b60f824c907449cdf9707c0e1fc35afd86368"
+  },
+  "accepted_input_sha256": {
+    "REVIEW.md": "a7a5a8245d320d773812df90a35f140c4ae249cc67d1f94326c1f6d16bef268d",
+    "COVERAGE.md": "a6d71957844b068042fe358b9137ea1941ff5ebc1e15f0a8ae2178242fbec5fb",
+    "SUMMARY.json": "442bed0c02372db94269773db5ba696c0d70ec46e3e61a5458f0242af5c1eaa0",
+    "UNCERTAINTIES.json": "6fd51b20c0ba972d0350f2e2f7fe90e0156748f04dcaea0c7c795ee782333572",
+    "PAUSE_GAME.json": "74de4b5e7f932755dd9827125c0a907365dc0ece86b4d3920c5ba1d26e015a41",
+    "DECK_USED.json": "e4f1899bd0e537af4bca1126a0f54b0a1248eacf70b85597a972656d7120cd9e",
+    "TURN_LEDGER.json": "f679c506cc25dd59a0778f645916e4febc45701c1c6dffe820f18374ab202d36",
+    "TURN_EVIDENCE.json": "25fc0f3199d6cb90a8e3ec95004b60f824c907449cdf9707c0e1fc35afd86368"
+  },
+  "snapshot_directory": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-12_ADDITIONAL_TWO\\20261012_230258000_iOS\\independent_sol\\accepted_20261013T024534Z",
+  "source_checks": "INDEPENDENT_SOURCE_CHECKS.md",
+  "qr_check": "QR_CHECK.json",
+  "findings": [
+    "All eight final files reconciled with independently inspected source-derived frames and primary freeze 2026-10-13T02:41:43.337934Z; all eight hashes match.",
+    "Opening, QR identity, classification, 14-turn coverage, owner T5/T7 first moves, Research/search/Copycat faces, ending hands and terminal point sequence accepted with explicit recording limits.",
+    "Rejected draft anchors repaired to Glimmet61, Muk146, RareCandy200 and Glimmora275; independent before-first/unzoomed candidate flags repaired; T7 end284 honestly labels turn8 before generation, T13 end512 before next banner.",
+    "Supplemental validator passes 14 rows with no structural issues; visual/source acceptance is separate."
+  ],
+  "limitations": [
+    "Hidden opponent draws/searches are not identified from later plays.",
+    "Neither opened discard pile is shown.",
+    "Exact artwork/rarity and specific queue remain unestablished.",
+    "Source-local requested seek times are not measured frame PTS."
+  ],
+  "no_shared_index_or_external_mutation": true
+}

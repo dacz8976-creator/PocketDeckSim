@@ -1,0 +1,2978 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261006_012927000_iOS_game_02",
+  "sources": [
+    {
+      "video_basename": "20261006_012927000_iOS.MP4",
+      "sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+  "default_capture_policy": {
+    "owner_turn_offsets_after_draw_seconds": [
+      1,
+      3,
+      6
+    ],
+    "before_end_action_required": true,
+    "native_resolution_required": true,
+    "bottom_crop_height_fraction": 0.2,
+    "top_crop": "Fan, clock, points and Energy Zone; explicit bounds",
+    "fixed_grid_is_turn_start_evidence": false
+  },
+  "frames": [
+    {
+      "evidence_id": "f0622_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 622.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0622.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0622_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0622_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0624_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 624.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0624.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0624_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0624_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0626_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 626.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0626.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0626_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0626_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0628_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 628.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0628.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0628_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0628_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0630_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 630.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0630.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0630_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0630_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0632_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 632.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0632.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0632_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0632_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0634_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 634.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0634.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0634_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0634_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0636_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 636.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0636.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0636_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0636_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0638_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 638.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0638.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0638_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0638_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0640_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 640.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0640.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0640_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0640_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0642_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 642.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0642.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0642_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0642_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0644_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 644.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0644.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0644_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0644_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0646_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 646.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0646.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0646_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0646_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0648_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 648.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0648.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0648_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0648_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0649_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 649.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0649.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0649_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0649_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0650_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 650.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0650.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0650_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0650_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0651_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 651.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0651.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0651_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0651_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0652_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 652.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0652.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0652_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0652_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0653_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 653.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0653.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0653_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0653_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0654_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 654.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0654.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0654_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0654_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0655_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 655.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0655.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0655_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0655_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0656_00",
+      "role": "selected_owner_preplay_hand",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": 656,
+      "requested_source_seconds": 656.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0656.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0656_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0656_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Original-resolution intact fan before first play; selected earlier/dense view because fixed offsets can be postplay.",
+      "suitability_or_limit": null
+    },
+    {
+      "evidence_id": "f0657_00",
+      "role": "owner_draw_offset_candidate",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": 656,
+      "requested_source_seconds": 657.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 1,
+      "full_frame_path": "../native/t0657.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0657_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0657_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Ball already consumed by657; cannot be an intact start hand."
+    },
+    {
+      "evidence_id": "f0658_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 658.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0658.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0658_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0658_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0659_00",
+      "role": "owner_draw_offset_candidate",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": 656,
+      "requested_source_seconds": 659.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 3,
+      "full_frame_path": "../native/t0659.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0659_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0659_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Ball already consumed by657; cannot be an intact start hand."
+    },
+    {
+      "evidence_id": "f0660_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 660.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0660.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0660_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0660_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0661_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 661.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0661.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0661_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0661_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0662_00",
+      "role": "owner_draw_offset_candidate",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": 656,
+      "requested_source_seconds": 662.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 6,
+      "full_frame_path": "../native/t0662.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0662_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0662_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Ball already consumed by657; cannot be an intact start hand."
+    },
+    {
+      "evidence_id": "f0663_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 663.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0663.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0663_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0663_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0664_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 664.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0664.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0664_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0664_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0665_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 665.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0665.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0665_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0665_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0666_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 666.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0666.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0666_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0666_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0667_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 667.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0667.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0667_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0667_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0668_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 668.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0668.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0668_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0668_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0669_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 669.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0669.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0669_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0669_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0670_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 670.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0670.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0670_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0670_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0671_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 671.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0671.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0671_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0671_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0672_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 672.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0672.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0672_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0672_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0673_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 673.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0673.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0673_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0673_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0674_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 674.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0674.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0674_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0674_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0675_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 675.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0675.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0675_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0675_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0676_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 676.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0676.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0676_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0676_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0677_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 677.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0677.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0677_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0677_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0678_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 678.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0678.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0678_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0678_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0679_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 679.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0679.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0679_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0679_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0680_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 680.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0680.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0680_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0680_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0681_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 681.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0681.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0681_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0681_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0682_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 682.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0682.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0682_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0682_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0683_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 683.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0683.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0683_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0683_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0684_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 684.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0684.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0684_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0684_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0685_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 685.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0685.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0685_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0685_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0686_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 686.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0686.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0686_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0686_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0687_00",
+      "role": "before_end",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": 656,
+      "requested_source_seconds": 687.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0687.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0687_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0687_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Ball already consumed by657; cannot be an intact start hand."
+    },
+    {
+      "evidence_id": "f0687_50",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 687.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0687.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0687_50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0687_50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Additional bounded native phase reconciliation.",
+      "suitability_or_limit": "See turn/edit ledger for actual phase observation."
+    },
+    {
+      "evidence_id": "f0688_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 688.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0688.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0688_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0688_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0689_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 689.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0689.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0689_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0689_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0690_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 690.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0690.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0690_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0690_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0692_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 692.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0692.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0692_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0692_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0694_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 694.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0694.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0694_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0694_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0696_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 696.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0696.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0696_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0696_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0698_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 698.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0698.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0698_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0698_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0700_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 700.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0700.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0700_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0700_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0702_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 702.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0702.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0702_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0702_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0704_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 704.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0704.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0704_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0704_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0706_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 706.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0706.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0706_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0706_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0708_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 708.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0708.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0708_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0708_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0710_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 710.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0710.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0710_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0710_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0712_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 712.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0712.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0712_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0712_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0714_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 714.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0714.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0714_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0714_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0716_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 716.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0716.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0716_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0716_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    },
+    {
+      "evidence_id": "f0718_00",
+      "role": "retained_native_source_frame",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 718.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "../native/t0718.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "crops/f0718_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "crops/f0718_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          700
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native source retention; see ledger for actual observation. Unmarked candidates do not claim intact preplay hand.",
+      "suitability_or_limit": "Retained phase evidence; suitability must be judged in context."
+    }
+  ],
+  "discard_snapshots": [
+    {
+      "snapshot_id": "discard_2_opponent",
+      "turn_number": 2,
+      "pile_owner": "opponent",
+      "source_video": "20261006_012927000_iOS.MP4",
+      "timestamp_seconds": 706,
+      "cards_in_view": [
+        "Order Pad"
+      ],
+      "scroll_coverage": "top-card preview only; pile not opened",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "f0706_00"
+      ],
+      "limit_reason": "No opened discard-pile window or scroll exists in this game. This is not a complete pile."
+    },
+    {
+      "snapshot_id": "discard_1_owner",
+      "turn_number": 1,
+      "pile_owner": "owner",
+      "source_video": "20261006_012927000_iOS.MP4",
+      "timestamp_seconds": 687,
+      "cards_in_view": [
+        "Poké Ball"
+      ],
+      "scroll_coverage": "top-card preview only; pile not opened",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "f0687_00"
+      ],
+      "limit_reason": "No opened discard-pile window or scroll exists in this game. This is not a complete pile."
+    }
+  ],
+  "scheduled_capture_limits": [
+    "Owner acts rapidly on turns2/8/game2turn1; fixed+1/+3/+6 candidates include postplay or zoom views. Selected native55/277/656 preserve intact original preplay hands.",
+    "Selected121/217 retain intact fan before later Energy generation; subsequent122/218 establish current Energy independently.",
+    "No opened discard views filmed.",
+    "Exact decoded PTS is unmeasured; requested source-local seek times are retained."
+  ]
+}

@@ -1,0 +1,9 @@
+{
+  "source": "20261012_003458000_iOS.MP4",
+  "attempt_utc": "2026-10-12T01:36:05.430767+00:00",
+  "operation": "hydrate first1MiB only, then read32 bytes",
+  "source_contents_modified": false,
+  "sha256": null,
+  "exit_code": null,
+  "error": "Small-range hydration timed out after30 seconds; child terminated."
+}

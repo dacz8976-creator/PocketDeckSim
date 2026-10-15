@@ -1,0 +1,50 @@
+{
+  "game_id": "20261013_030351000_iOS_game_1",
+  "source_sha256": "d0a221cd236c620f467bbf34ad8078fd59c72323a7dca71a4af344f0489c6c7f",
+  "unreviewed_intervals": [],
+  "outcome_uncertain": false,
+  "items": [
+    {
+      "category": "recording_limit",
+      "description": "Specific queue title is not displayed; human battle classification is based on visible matchmaking/opponent play and no Auto option, with owner requested Pause Games routing.",
+      "status": "explicit_limit"
+    },
+    {
+      "category": "recording_limit",
+      "description": "Opposing hidden card identities and deck list unavailable.",
+      "status": "explicit_limit"
+    },
+    {
+      "category": "recording_limit",
+      "description": "T5/T7 single-card raised views and T9 inspection zoom do not prove an unzoomed spread hand.",
+      "status": "explicit_limit"
+    },
+    {
+      "category": "recording_limit",
+      "description": "Owner deck empty T15; no normal draw.",
+      "status": "explicit_limit"
+    },
+    {
+      "category": "recording_limit",
+      "description": "No opponent opened discard views and no other periodic owner pile openings.",
+      "status": "explicit_limit"
+    },
+    {
+      "category": "recording_limit",
+      "description": "Filmed QR exact 20 is initially absent from live 26-deck catalog; no fabricated live snapshot.",
+      "status": "explicit_limit"
+    },
+    {
+      "category": "recording_limit",
+      "description": "QR resolves semantic card versions and configured Fighting+Metal; exact printing/artwork/rarity remain qualified.",
+      "status": "explicit_limit"
+    }
+  ],
+  "precision": "Requested seconds approximate, no measured frame PTS",
+  "semantic_notes": [
+    "Do not confuse Koraidon ex final attacker with Darkrai; native 594 and 609 establish literal names.",
+    "Do not describe 130/100 Haxorus switch in T15 as healing.",
+    "T15 +2 delta comes from Igglybuff KO plus Iris; owner had 0 beforehand.",
+    "Starting Plains gives Basic Pokémon +20 HP and does not increase Haxorus/Dragonair."
+  ]
+}

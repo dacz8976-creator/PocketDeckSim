@@ -1,0 +1,48 @@
+{
+  "status": "full_battle_review_complete",
+  "remaining_coverage_gaps": [],
+  "honestly_unknown_hidden_information": [
+    "Complete20-card deck lists and unrevealed opponent hand.",
+    "Underlying coin random seed and choices not visibly revealed.",
+    "Exact filename wall-clock/timezone basis beyond intake date."
+  ],
+  "untested_rule_questions": [
+    {
+      "question": "Does Will alter the first coin on a Victory Star reroll after it has already applied to the initial attack batch?",
+      "reason": "The single accepted reroll occurs before Will is played. Later Will-supported Heat Charged rolls3heads and is retained."
+    },
+    {
+      "question": "How does Bounded Field handle Mega Evolution Pokemon ex?",
+      "reason": "No Mega Evolution Pokemon ex is used in this battle."
+    },
+    {
+      "question": "Will Flame Patch reject a Bench target or empty discard?",
+      "reason": "Both successful uses target Active Fire Moltres with discarded Fire available; early inspection is not an attempted play."
+    }
+  ],
+  "bounded_observation_limits": [
+    "Full visual phase review is not a claim of separately viewing every encoded frame.",
+    "Overview labels are fps midpoint samples; native filenames are exact requested timestamp frames.",
+    "Top-screen notifications briefly obscure some public cards; later settled states and printed cards resolve consequential claims.",
+    "Opponent resource actions are visible, but private policy reasoning is unknown."
+  ],
+  "resolved_draft_corrections": [
+    "Early supporter is Copycat; no Campfire is played.",
+    "Confusion supporter is Team Rocket's Master Plan; Will inspected early remains in hand until later.",
+    "Initial Bounded Field view around49s is inspection; actual Stadium play occurs around158-163s.",
+    "Opponent face-up X Speed is discard, not an opposing Stadium replacement.",
+    "Lopunny Jump Kick deals20 Active plus20 to one Bench Pokemon, not30.",
+    "Bronzor, not Chatot, is benched on turn7."
+  ],
+  "acceptance_work_remaining": "Independent lead checks, acceptance, registration and verified archival are complete.",
+  "worker_status_at_submission": "Finished first pass awaiting independent lead acceptance.",
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "lead_acceptance_pending": false,
+  "source_archived": true,
+  "source_modified": false,
+  "ladder_eligible": false,
+  "global_registration_complete": true,
+  "archive_receipt": "MOVE_RECEIPT.20261001_210403000_iOS.MP4.json",
+  "archive_completion_event_id": "ac1fddfe-de76-4f33-9d4c-b76bca482d6a"
+}

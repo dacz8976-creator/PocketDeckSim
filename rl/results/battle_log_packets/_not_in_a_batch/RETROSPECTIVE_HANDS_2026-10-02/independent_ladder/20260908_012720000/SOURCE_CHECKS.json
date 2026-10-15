@@ -1,0 +1,659 @@
+{
+  "schema": "retrospective-independent-source-check-v1",
+  "reviewer": "sol_verify_computer_012720",
+  "game_id": "20260908_012720000",
+  "checked_utc": "2026-10-02T21:36:13.804744+00:00",
+  "verdict": "needs_repair",
+  "scope": "Bounded independent hand/turn field verification; no outcome/rules/simulator audit",
+  "source_sha256": "b9e76626643d8950cb7a4277487da2262b5fa96faf9e87454495ebe896d47085",
+  "checks": [
+    {
+      "field": "source_binding",
+      "status": "pass",
+      "finding": "Frozen SOURCE.json, SOURCE_REFERENCE and root receipt match filename, SHA-256 b9e76626643d8950cb7a4277487da2262b5fa96faf9e87454495ebe896d47085, 530226009 bytes and duration282.628. Current original was not read."
+    },
+    {
+      "field": "native_crop_binding",
+      "status": "pass",
+      "finding": "All86 native files are1170x2532. All172 declared crops exist, match declared dimensions and declared regions within JPEG recompression mean difference <=1.1972/255. Full width bottom bounds[0,2025,1170,2532], top[0,0,1170,550]."
+    },
+    {
+      "field": "classification",
+      "status": "pass",
+      "finding": "Native4.4 shows AI badge; native10 and owner starts show checked Auto. Computer/excluded-ladder fields consistent with owner rule. Individual authorship remains uncertified. Historical result inherited, not newly outcome-audited."
+    },
+    {
+      "field": "opening_and_six_owner_hands",
+      "status": "pass",
+      "finding": "Openingfive at10 before Ogerpon placement12 checked. Turn2/4/6/8/10/12 starts and ends inspected; start counts5,5,5,5,6,4; end counts4,4,4,5,3,2. Artwork distinction and duplicate Ariados reconcile."
+    },
+    {
+      "field": "draw_search_refill_identities",
+      "status": "pass_with_provenance_repair",
+      "finding": "Dark-art Ariados, Poke Ball, Cottonee search, Hiking Trail, Copycat normal draw, X Speed normal draw, dark-art Ariados Copycat refill, X Speed then Spinarak end refill, Quick-Grow normal draw all verified in named native refs. Research and opponent draws remain hidden. Stadium causal attribution requires inference label."
+    },
+    {
+      "field": "opponent_fans",
+      "status": "pass",
+      "finding": "Six starts show2,2,2,1,1,3 backs, agreeing with counts. No hidden face identities invented."
+    },
+    {
+      "field": "actual_start_candidates",
+      "status": "pass",
+      "finding": "Native43 follows Energy attachment;87.6 follows Poke Ball consumption;131 follows evolution;258 follows both early plays. They are marked after first play, not untouched starts. Native213.5 still retains six cards before Goo-zooka. PTS and exact draw-end intervals remain unmeasured."
+    },
+    {
+      "field": "turn12_first_action_order",
+      "status": "supported_with_sample_timing_limit",
+      "finding": "Native255 still holds both Spinarak and X Speed. Retained grid240-259 shows Spinarak movement nominal255, Benched nominal256, X Speed center display nominal257. Native258 shows Spinarak Bench and remaining Ariados/Quick-Grow;261 shows retreat-cost notification with X Speed discard. This independently supports Spinarak before X Speed. Exact256.2/257 seek claims stay inherited; reduced locators were used for order, not new identity transcription."
+    },
+    {
+      "field": "boards_and_conditions",
+      "status": "pass_with_boundary_provenance_repair",
+      "finding": "Representative start/end frames confirm both Active/Bench, duplicate Magmar, HP, attached Energy, Tools, Stadium and next-zone types. Native175.5 explicitly says Whimsicott did not become Poisoned;199 Ogerpon did not become Confused;246.5 Confusion applied;263.5 recovered. Current-zone provenance issue isolated separately."
+    },
+    {
+      "field": "numbered_actions_and_hidden_limits",
+      "status": "pass",
+      "finding": "All12 rows have ordered plays, automatic/no-effect entries and explicit null prompt/decline limits. No opened discard panel or decline is claimed at every instant. Worker full283-sample screening is recorded and bounded to1fps; this independent check inspected only20 locator samples plus44 native anchors and does not repeat that whole screening. Hidden full pile and exact historical deck remain unknown."
+    }
+  ],
+  "required_repairs": [
+    {
+      "id": "INFERENCE_PROVENANCE",
+      "paths": [
+        "TURN_LEDGER.json:turns[9].draws_and_searches[2]",
+        "HAND_SUPPLEMENT.json:target_rows[4].draws_and_searches[2]",
+        "OBSERVATIONS.json corresponding turn10 draw",
+        "ACTION_QUESTIONS.json:questions[1].direct_field_value",
+        "REVIEW_SUPPLEMENT.md turn10/four differences"
+      ],
+      "finding": "X Speed and Spinarak identities and order are directly visible; Hiking Trail causation is inferred from turn-end timing, refill to three, field presence and printed text. Current cause field and prose assert it without inference qualification.",
+      "evidence": [
+        "F0227.00",
+        "F0235.80",
+        "F0236.50",
+        "F0238.50",
+        "astra_checks/20260908_012720000/ACTION_CHECK.md"
+      ],
+      "repair": "Preserve named card observations; explicitly mark Stadium causation as inference in all synchronized structured/readable occurrences."
+    },
+    {
+      "id": "OLD_PROSE_CHARACTERIZATION",
+      "paths": [
+        "ACTION_QUESTIONS.json:questions[2].old_claim",
+        "ACTION_QUESTIONS.json:questions[3].old_claim"
+      ],
+      "finding": "Old turn7 second Energy to Magmar wording is ambiguous, not an explicit Active-target assertion. Old turn11 summary omits attachment; it does not explicitly deny attachment. Current question descriptions overstate both historical claims.",
+      "evidence": [
+        "Accepted REVIEW.md turn7 and turn11",
+        "astra_checks/20260908_012720000/ACTION_CHECK.md"
+      ],
+      "repair": "Label turn7 old prose ambiguous and turn11 attachment an omission. Keep historical prose verbatim and new directly observed transactions."
+    },
+    {
+      "id": "ENERGY_ZONE_BOUNDARY_PROVENANCE",
+      "paths": [
+        "TURN_LEDGER.json opponent turn board_at_start energy_zone",
+        "OBSERVATIONS.json matching boundary fields"
+      ],
+      "finding": "Opponent-turn availability after generation is represented as native current-zone observation using preceding end-view refs, e.g. turn3 F0049.30, turn7 F0139.50 and turn11 F0238.50. Those native images show empty current circles with Darkness only as next symbol. Availability after generation may be a derived state, but its current direct-source description is inaccurate.",
+      "evidence": [
+        "F0049.30",
+        "F0139.50",
+        "F0238.50"
+      ],
+      "repair": "Separate observed empty current-zone state at the cited boundary from derived after-generation turn-start availability, or cite an actual after-generation anchor. Carry provenance consistently; do not change supported attachment counts."
+    }
+  ],
+  "submitted_file_binding": [
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\SOURCE_REFERENCE.json",
+      "bytes": 1872,
+      "sha256": "f66170fe9fec30bfde1dae5ca7ca610d7bce8d16e40fc175361f099fcf138446",
+      "text_read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\ROOT_SOURCE_VERIFICATION.json",
+      "bytes": 900,
+      "sha256": "896f6c8d8cd5da79d004963b481533924dcb44bea98564333ce12516dfb12fa5",
+      "text_read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\ASSIGNMENT.json",
+      "bytes": 959,
+      "sha256": "a78cd3c16e5e07a92fa282dae2aaf2bd4f119d3e7d793089513e0b6e4e96a1a1",
+      "text_read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\REVIEW_SUPPLEMENT.md",
+      "bytes": 8985,
+      "sha256": "c21fa1cfb087ba751674698de63d35ed371271603c053beffe6adc8255753b7e",
+      "text_read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\UNCERTAINTIES.json",
+      "bytes": 2910,
+      "sha256": "d48de8102c2555ca0ca1cc2d683dd00aa0ada020892a72ee2304220c2bc91a15",
+      "text_read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\TURN_EVIDENCE.json",
+      "bytes": 125716,
+      "sha256": "935e675205c1eb21cea5ef50732da23cee30cdbe73d0b1a5e5df2ee8addb24a7",
+      "text_read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\TURN_LEDGER.json",
+      "bytes": 309054,
+      "sha256": "cc12387a2c2de4160d4ce2c4836bd36826537be997d654d20a334ab50fca341d",
+      "text_read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\HAND_SUPPLEMENT.json",
+      "bytes": 41549,
+      "sha256": "415de9f086f44b97a994b810af2b88db365a2f056d8b019688000f187d9a3f66",
+      "text_read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\DECK_USED.json",
+      "bytes": 2116,
+      "sha256": "080a103a2493e3326b10eb7e95ec4135ee22f7daebcf64aa358c76057206d6cf",
+      "text_read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\PAUSE_GAME.json",
+      "bytes": 4723,
+      "sha256": "45ef25fa4bfbdedb7eb89ad1ef4aef2f2dc7c7a7bc425ee49879be47dfbcf422",
+      "text_read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\OBSERVATIONS.json",
+      "bytes": 309869,
+      "sha256": "1c06714286d1ff3e8eaa09afa1e52a53426a755677f40f81f693a9ca1a55ffb4",
+      "text_read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\ACTION_QUESTIONS.json",
+      "bytes": 2416,
+      "sha256": "8da729fe3e65a62c8cbd837fb0b4d7bbb9b01c8620d2860d4822f59ecd039339",
+      "text_read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\LOCATOR_SCAN.json",
+      "bytes": 3977,
+      "sha256": "697460a3c52c97ce1c3d77eb8ab51d93092ae0af0d6c31997e305f3acee310a8",
+      "text_read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\EXTRACTION_MANIFEST.json",
+      "bytes": 94755,
+      "sha256": "4cb192e47bbbc07ebb841290d64135c413ba0f026cdb0b59b6027a59a31d9a9b",
+      "text_read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\REUSED_MANIFEST.json",
+      "bytes": 3810,
+      "sha256": "350c7676cad938732022f6ecdded0638266a73eed397f0afdf3b0df0db706773",
+      "text_read_encoding": "utf-8-sig"
+    }
+  ],
+  "inspected_images": [
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0010.00.jpg",
+      "requested_source_seconds": 10.0,
+      "sha256": "99befafece0688e2e2c4a70bd852e964886f3fd66b95c1a54f9a027dd56e2d3d",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0012.00.jpg",
+      "requested_source_seconds": 12.0,
+      "sha256": "ee50cc067077f1a7cd9dea63d2327072c82a47e4e3adb1aef8e41255cd4715e0",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0041.00.jpg",
+      "requested_source_seconds": 41.0,
+      "sha256": "121b506bee7136b8df10c747cb3972a1a6b212ac1d7f6afe595b5690f1c2c81f",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0049.30.jpg",
+      "requested_source_seconds": 49.3,
+      "sha256": "5b2d1d780625a61ad55d7354ff6ec111ea04253acea036d548df19b23b931142",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0084.60.jpg",
+      "requested_source_seconds": 84.6,
+      "sha256": "1205d848f0ac797ec110270c772fd41d5c13fb7161b6320d194cef89c70779f3",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0104.80.jpg",
+      "requested_source_seconds": 104.8,
+      "sha256": "6b5d644b8409d0bb730f4cdfde87162a7054db953e4478b9e6911ec18b301251",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0128.00.jpg",
+      "requested_source_seconds": 128.0,
+      "sha256": "c8d9ebe83bca9966215278077e2f05e866aee04727cc7c0bb5e2399f91f3340f",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0139.50.jpg",
+      "requested_source_seconds": 139.5,
+      "sha256": "4076f1cd7523eccf26ff952493f394ed0907e06b07b0a2ba7eb73e321d7d3629",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0162.00.jpg",
+      "requested_source_seconds": 162.0,
+      "sha256": "2332d5b68d218da2dee265634bf6b40f12eab7c9c01e3d8524c3e08e942362a2",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0182.80.jpg",
+      "requested_source_seconds": 182.8,
+      "sha256": "a76d708650eab7402838b77ce7f152dc75121d46233247f1a0111b90d06de5a4",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0212.50.jpg",
+      "requested_source_seconds": 212.5,
+      "sha256": "c1612fe09636c4b6551911ee7b4a51f3137180c7281282132f384e510a2dab9d",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0238.50.jpg",
+      "requested_source_seconds": 238.5,
+      "sha256": "cb565cddc4822b5f62d9e7ce27e9a487f33dca45ca28042e8a507fbbe994b986",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0254.50.jpg",
+      "requested_source_seconds": 254.5,
+      "sha256": "268fcbb2662a240442d0e6ff1b3fed6be1320f25410ec1c707fa13bdf732d63e",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0270.00.jpg",
+      "requested_source_seconds": 270.0,
+      "sha256": "94ccac86d108620dc991eab4546218510ae6cb1df82a5ac425893d32b277657b",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0089.00.jpg",
+      "requested_source_seconds": 89.0,
+      "sha256": "a588716c9dcece32685674027e08f013e2905a2ee6a8a8b3c1af3d0ba1054f69",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0126.50.jpg",
+      "requested_source_seconds": 126.5,
+      "sha256": "dff8eb58348e1c9e2fc63aeeee7958c316cd6fe8347557054e0429c238d06dab",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0160.00.jpg",
+      "requested_source_seconds": 160.0,
+      "sha256": "ab8980ee659f6f774b3e1da2e97fac263582ca342b3c45319c186f4e233de235",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0211.50.jpg",
+      "requested_source_seconds": 211.5,
+      "sha256": "07955d9b738f69ebe3e0b43ee9eebf403d96e304bf9e118598f49b90c8060156",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0224.00.jpg",
+      "requested_source_seconds": 224.0,
+      "sha256": "930be3d433306a173b6afe2631872bf6216a5c2fa769981feb70702d9a6b7d51",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0226.00.jpg",
+      "requested_source_seconds": 226.0,
+      "sha256": "a17cf8cb4c8c9623d223e0274dc08cf5772d52cfb67cdee3f57990f4304a18c4",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0227.00.jpg",
+      "requested_source_seconds": 227.0,
+      "sha256": "2b4493e3d79160b0dc517e415c5dbb3e32c815a92293b1bb143f8b63d3b02202",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0235.80.jpg",
+      "requested_source_seconds": 235.8,
+      "sha256": "6edcf8afc281853c5e923c149611217eeb0338cd320a759e260e422a9097bbdf",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0236.50.jpg",
+      "requested_source_seconds": 236.5,
+      "sha256": "d6fd1d6474f0aa4db88fa110c792deb4dbeffb00622245d00f1a16c1c1f3f4b1",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0253.00.jpg",
+      "requested_source_seconds": 253.0,
+      "sha256": "547aace90b8474ca24e191de17153df52a93d8ba9f3e981d981b9687a3167ccb",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0255.00.jpg",
+      "requested_source_seconds": 255.0,
+      "sha256": "d77407445ef5f651acb56b0ba8b5cd4f5110cdfecb0cabdf2daeb1b909a72c2f",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0258.00.jpg",
+      "requested_source_seconds": 258.0,
+      "sha256": "2b926d87ec9b4edb92de6e5b5d9ded5f11716e1a6e259085b061d203030f15b7",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0261.00.jpg",
+      "requested_source_seconds": 261.0,
+      "sha256": "944aa6d8fac883bee2e7a16ce7ed09078a88204fe8486509d78d1f99de5996d2",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0175.50.jpg",
+      "requested_source_seconds": 175.5,
+      "sha256": "c3674380179bc66519dc62e1d376aaaaf5e5baf4cb3a35125436f02eb28a80ad",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0199.00.jpg",
+      "requested_source_seconds": 199.0,
+      "sha256": "4161adc96b20ed0da65ebee7c6f9e0c5c93d482cba966897068dd97e6bf8bbdc",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0246.50.jpg",
+      "requested_source_seconds": 246.5,
+      "sha256": "e7648bc7755e31093d7e2873dc7d373459e65b364902b5fafc19bd8a3f625163",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0080.50.jpg",
+      "requested_source_seconds": 80.5,
+      "sha256": "dd522743a860cbe608e3381540ea4586bf78d29d59e69096b296ce12f54957a3",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0123.50.jpg",
+      "requested_source_seconds": 123.5,
+      "sha256": "a9521326c15aed45e664577a9f5c0c3f6465ba4c4b9cca4a29ddba6dbb17a8ac",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0208.50.jpg",
+      "requested_source_seconds": 208.5,
+      "sha256": "95f2874e2512df653ad05ed8a5c70c9a1725bc4d6cd32c3ef17ae11db3a12aa4",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0249.50.jpg",
+      "requested_source_seconds": 249.5,
+      "sha256": "b0e85d9b5a5d55b868eb9a5af6a7939d4662b801df6ad7046f248a0aa5343317",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0144.00.jpg",
+      "requested_source_seconds": 144.0,
+      "sha256": "e4ab3e80d7f1b9dc73b3b9f5215a4064e8f723c42022beff4caa413dd87b0336",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0153.00.jpg",
+      "requested_source_seconds": 153.0,
+      "sha256": "e93ba46927d851cc438b095efcf7bb18212e56eecabca095b71478f873af28d5",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0241.00.jpg",
+      "requested_source_seconds": 241.0,
+      "sha256": "8945daf62ff9121b33897a3839fbed7edfbdf4a90f3566b90bc5c4e4b19b19e2",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0043.00.jpg",
+      "requested_source_seconds": 43.0,
+      "sha256": "32d54d27e99bbb02463b5d5c8a57d8f8de19ce986e9945e00276855e9bd7f339",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0087.60.jpg",
+      "requested_source_seconds": 87.6,
+      "sha256": "3c84142601f2608fbe78783cf2195a2c2b61ea8d964334e9097eab06507cd446",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0131.00.jpg",
+      "requested_source_seconds": 131.0,
+      "sha256": "5903a9bab247ba00c47f5247a8e9e11948cb5c209109dce8555e399fa6204a30",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0213.50.jpg",
+      "requested_source_seconds": 213.5,
+      "sha256": "66fb885b65b4d77a7ab65a8142aeea81aba241cdb46197b36a47d0b666679187",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0263.50.jpg",
+      "requested_source_seconds": 263.5,
+      "sha256": "8a0da5bc5eddf7512cccd2c899df5fa6c6ace161b3db981920b18b7160484756",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0004.40.jpg",
+      "requested_source_seconds": 4.4,
+      "sha256": "bcc982d3f195b9cc5a6e88041636974633c662fabec2d30a3cfcd8165de7086f",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\turn_evidence\\t0218.50.jpg",
+      "requested_source_seconds": 218.5,
+      "sha256": "e2fd67971b77b8faaf6266ab9cdb24b69cdb81781405392e0835b3ebd6cbb385",
+      "dimensions": [
+        1170,
+        2532
+      ],
+      "visually_inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\locator_scan\\grid_240_259.jpg",
+      "nominal_sample_seconds": [
+        240,
+        259
+      ],
+      "sha256": "931aaac12c3a854b803c2e3422a9c559345c245a052466dc67ddcb8b541ba87b",
+      "dimensions": [
+        936,
+        2650
+      ],
+      "visually_inspected": true,
+      "role": "Reduced primary event-order and panel locator; card identity grounded in native images"
+    }
+  ],
+  "no_original_reads_or_extractions": true,
+  "historical_packets_or_shared_logs_modified": false
+}

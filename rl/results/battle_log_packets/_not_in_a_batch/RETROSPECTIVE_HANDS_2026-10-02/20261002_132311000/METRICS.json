@@ -1,0 +1,42 @@
+{
+  "status": "worker_complete",
+  "written_utc": "2026-10-02T20:34:05.879470+00:00",
+  "wall_seconds": null,
+  "wall_time_limit": "Whole assignment start not measured; first extraction-attempt timestamp supplies an explicit elapsed-work lower bound. Parent may supply dispatch-to-completion wall time.",
+  "source_recovery_and_hash_elapsed_seconds": 535.041376499983,
+  "source_recovery_result": "Resolved: verified frozen SHA and size of actual archived original",
+  "extraction_attempt_started_utc": "2026-10-02T20:27:39Z",
+  "new_full_native_frames_requested": 20,
+  "new_full_native_frames_extracted": 20,
+  "new_frame_limit": 20,
+  "images_inspected": 48,
+  "unique_underlying_frames_inspected": 38,
+  "native_source_frames_reused": 8,
+  "new_crops_retained": 56,
+  "new_evidence_retained_bytes": 36396641,
+  "tokens": null,
+  "token_measurement": "unavailable",
+  "source_wait_elapsed_note": "534.19s for measured archive retry and camera retry together; first archive hash/extraction timeout unmeasured, total elapsed longer",
+  "source_recovery_attempts": [
+    {
+      "receipt": "SOURCE_ACCESS.json",
+      "elapsed_seconds": 196.20385029999306,
+      "status": "source_access_failed"
+    },
+    {
+      "receipt": "CAMERA_SOURCE_ACCESS.json",
+      "elapsed_seconds": 337.9886475999956,
+      "status": "source_access_failed"
+    }
+  ],
+  "completed_utc": "2026-10-02T20:58:22.364706+00:00",
+  "wall_seconds_from_first_extraction_attempt": 1843.364706,
+  "wall_seconds_from_verified_local_source": 269.322267,
+  "verified_local_hash_elapsed_seconds": 0.8488785999943502,
+  "new_full_frames_retained": 20,
+  "new_evidence_retained_count": 76,
+  "new_full_frame_bytes": 8770002,
+  "new_crop_bytes": 27626639,
+  "measured_first_19_frame_extraction_seconds": 8.121587100002216,
+  "last_frame_extraction_elapsed_seconds": null
+}

@@ -1,0 +1,430 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261010_013009000_iOS_game1",
+  "sources": [
+    {
+      "video_basename": "20261010_013009000_iOS.MP4",
+      "sha256": "80615dfc9c1e28f95434e3b4712f0540e6efc34392aef816419b6f82a0257329",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "deck_name_in_log": null,
+  "source_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "captured_at": "2026-10-10T03:20:04.384Z",
+  "log_list_version": "Pre-log snapshot:23 decks,28 games; filmed Gurdurr version absent",
+  "expected_card_count": 20,
+  "cards_in_log_order": null,
+  "counts_by_name_and_variant": null,
+  "energy_configuration_from_log": null,
+  "actual_card_count": 20,
+  "capture_source_text_or_image": "../LIVE_DECK_SNAPSHOT.json plus QR_DECODE.json and turn_evidence/t0001.00.jpg",
+  "game_version_binding_basis": "Filmed pre-match QR at1s, same source SHA; decoded20slots and byte-exact roundtrip. Main battle visibly plays Gurdurr, Naclstack and Bedrock Breaker Conkeldurr.",
+  "conflicts_with_filmed_cards": [
+    "Current live Conkeldurr/Garganacl list does not contain filmed Gurdurr version; do not silently substitute an existing deck"
+  ],
+  "exact_list_status": "filmed_qr_verified_live_version_absent",
+  "limits": [
+    "Matching named live20-card list not yet verified; lead is resolving new version before external logging",
+    "QR resolves semantic entities, not artwork/rarity/exact printing",
+    "Deck membership is not evidence of draw or play"
+  ],
+  "filmed_qr_snapshot": {
+    "payload": "CpiWnpiWnpiYYJiYYJiWqJiWqJiaXpicopicopibxgoAGl4AGl4AGmgAGnIAUBQASBwASBwASCYASDAASDABBg==",
+    "source_seconds": 1,
+    "evidence_ids": [
+      "f_0001_00"
+    ],
+    "decode_file": "QR_DECODE.json",
+    "card_slot_count": 20,
+    "roundtrip": true,
+    "energy_configuration": [
+      "Fighting"
+    ],
+    "cards_in_encoded_order": [
+      {
+        "name": "Poké Ball",
+        "semantic_entity_id": 30,
+        "printing_aliases": [
+          "A2b 111",
+          "P-A 005"
+        ]
+      },
+      {
+        "name": "Poké Ball",
+        "semantic_entity_id": 30,
+        "printing_aliases": [
+          "A2b 111",
+          "P-A 005"
+        ]
+      },
+      {
+        "name": "Rare Candy",
+        "semantic_entity_id": 480,
+        "printing_aliases": [
+          "A3 144",
+          "A4b 314",
+          "A4b 315",
+          "A4b 379"
+        ]
+      },
+      {
+        "name": "Rare Candy",
+        "semantic_entity_id": 480,
+        "printing_aliases": [
+          "A3 144",
+          "A4b 314",
+          "A4b 315",
+          "A4b 379"
+        ]
+      },
+      {
+        "name": "Professor’s Research",
+        "semantic_entity_id": 40,
+        "printing_aliases": [
+          "A4b 373",
+          "P-A 007"
+        ]
+      },
+      {
+        "name": "Professor’s Research",
+        "semantic_entity_id": 40,
+        "printing_aliases": [
+          "A4b 373",
+          "P-A 007"
+        ]
+      },
+      {
+        "name": "Copycat",
+        "semantic_entity_id": 990,
+        "printing_aliases": [
+          "B1 225",
+          "B1 270"
+        ]
+      },
+      {
+        "name": "Wally",
+        "semantic_entity_id": 1570,
+        "printing_aliases": [
+          "B4 153",
+          "B4 193"
+        ]
+      },
+      {
+        "name": "Wally",
+        "semantic_entity_id": 1570,
+        "printing_aliases": [
+          "B4 153",
+          "B4 193"
+        ]
+      },
+      {
+        "name": "Arena of Antiquity",
+        "semantic_entity_id": 1350,
+        "printing_aliases": [
+          "B3 154"
+        ]
+      },
+      {
+        "name": "Timburr",
+        "semantic_entity_id": 6750,
+        "printing_aliases": [
+          "A3 094"
+        ]
+      },
+      {
+        "name": "Timburr",
+        "semantic_entity_id": 6750,
+        "printing_aliases": [
+          "A3 094"
+        ]
+      },
+      {
+        "name": "Gurdurr",
+        "semantic_entity_id": 6760,
+        "printing_aliases": [
+          "A3 095"
+        ]
+      },
+      {
+        "name": "Conkeldurr",
+        "semantic_entity_id": 6770,
+        "printing_aliases": [
+          "A3 096"
+        ]
+      },
+      {
+        "name": "Conkeldurr",
+        "semantic_entity_id": 20500,
+        "printing_aliases": [
+          "B4 089"
+        ]
+      },
+      {
+        "name": "Nacli",
+        "semantic_entity_id": 18460,
+        "printing_aliases": [
+          "B3a 031"
+        ]
+      },
+      {
+        "name": "Nacli",
+        "semantic_entity_id": 18460,
+        "printing_aliases": [
+          "B3a 031"
+        ]
+      },
+      {
+        "name": "Naclstack",
+        "semantic_entity_id": 18470,
+        "printing_aliases": [
+          "B3a 032"
+        ]
+      },
+      {
+        "name": "Garganacl",
+        "semantic_entity_id": 18480,
+        "printing_aliases": [
+          "B3a 033"
+        ]
+      },
+      {
+        "name": "Garganacl",
+        "semantic_entity_id": 18480,
+        "printing_aliases": [
+          "B3a 033"
+        ]
+      }
+    ],
+    "counts_by_name_and_variant": [
+      {
+        "entity_kind": "trainer",
+        "entity_id": 30,
+        "count": 2,
+        "name": "Poké Ball",
+        "name_candidates": [
+          "Poké Ball"
+        ],
+        "functional_ids": [
+          "1b20901befde"
+        ],
+        "printing_aliases": [
+          "A2b 111",
+          "P-A 005"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "trainer",
+        "entity_id": 480,
+        "count": 2,
+        "name": "Rare Candy",
+        "name_candidates": [
+          "Rare Candy"
+        ],
+        "functional_ids": [
+          "87829fe1a8c1"
+        ],
+        "printing_aliases": [
+          "A3 144",
+          "A4b 314",
+          "A4b 315",
+          "A4b 379"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "trainer",
+        "entity_id": 40,
+        "count": 2,
+        "name": "Professor’s Research",
+        "name_candidates": [
+          "Professor’s Research"
+        ],
+        "functional_ids": [
+          "c0015440f616"
+        ],
+        "printing_aliases": [
+          "A4b 373",
+          "P-A 007"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "trainer",
+        "entity_id": 990,
+        "count": 1,
+        "name": "Copycat",
+        "name_candidates": [
+          "Copycat"
+        ],
+        "functional_ids": [
+          "d5d2b111c197"
+        ],
+        "printing_aliases": [
+          "B1 225",
+          "B1 270"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "trainer",
+        "entity_id": 1570,
+        "count": 2,
+        "name": "Wally",
+        "name_candidates": [
+          "Wally"
+        ],
+        "functional_ids": [
+          "abd4b4c27504"
+        ],
+        "printing_aliases": [
+          "B4 153",
+          "B4 193"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "trainer",
+        "entity_id": 1350,
+        "count": 1,
+        "name": "Arena of Antiquity",
+        "name_candidates": [
+          "Arena of Antiquity"
+        ],
+        "functional_ids": [
+          "d638bcb1abfc"
+        ],
+        "printing_aliases": [
+          "B3 154"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "pokemon",
+        "entity_id": 6750,
+        "count": 2,
+        "name": "Timburr",
+        "name_candidates": [
+          "Timburr"
+        ],
+        "functional_ids": [
+          "f48da41f51f4"
+        ],
+        "printing_aliases": [
+          "A3 094"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "pokemon",
+        "entity_id": 6760,
+        "count": 1,
+        "name": "Gurdurr",
+        "name_candidates": [
+          "Gurdurr"
+        ],
+        "functional_ids": [
+          "8fd20f480e22"
+        ],
+        "printing_aliases": [
+          "A3 095"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "pokemon",
+        "entity_id": 6770,
+        "count": 1,
+        "name": "Conkeldurr",
+        "name_candidates": [
+          "Conkeldurr"
+        ],
+        "functional_ids": [
+          "c6f4aa29339a"
+        ],
+        "printing_aliases": [
+          "A3 096"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "pokemon",
+        "entity_id": 20500,
+        "count": 1,
+        "name": "Conkeldurr",
+        "name_candidates": [
+          "Conkeldurr"
+        ],
+        "functional_ids": [
+          "8a6b7cc51886"
+        ],
+        "printing_aliases": [
+          "B4 089"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "pokemon",
+        "entity_id": 18460,
+        "count": 2,
+        "name": "Nacli",
+        "name_candidates": [
+          "Nacli"
+        ],
+        "functional_ids": [
+          "4e80524a9509"
+        ],
+        "printing_aliases": [
+          "B3a 031"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "pokemon",
+        "entity_id": 18470,
+        "count": 1,
+        "name": "Naclstack",
+        "name_candidates": [
+          "Naclstack"
+        ],
+        "functional_ids": [
+          "f35f496d4f1e"
+        ],
+        "printing_aliases": [
+          "B3a 032"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      },
+      {
+        "entity_kind": "pokemon",
+        "entity_id": 18480,
+        "count": 2,
+        "name": "Garganacl",
+        "name_candidates": [
+          "Garganacl"
+        ],
+        "functional_ids": [
+          "73a219ca7f5b"
+        ],
+        "printing_aliases": [
+          "B3a 033"
+        ],
+        "resolution": "resolved_semantic_entity",
+        "printing_limit": "QR does not specify artwork, rarity or exact printing"
+      }
+    ]
+  }
+}

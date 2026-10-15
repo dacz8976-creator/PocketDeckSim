@@ -1,0 +1,55 @@
+{
+  "source_video": "20261004_214731000_iOS.MP4",
+  "source_sha256": "d363bdd1c3f4aafc5ad9423764e706f8944407d68a04c82d72317592d7e7e198",
+  "items": [
+    {
+      "id": "U1",
+      "impact": "deck replay binding",
+      "status": "pending_lead_supplement",
+      "question": "Matching exact20-card live-log snapshot is missing for filmed Grass deck.",
+      "evidence": [
+        "../LIVE_DECK_SNAPSHOT.json",
+        "e_0024.50",
+        "e_0374.00"
+      ],
+      "limit": "No QR in this source."
+    },
+    {
+      "id": "U2",
+      "impact": "hidden information",
+      "status": "recording_limit",
+      "question": "Opponent draw/search identities concealed; no opened discard-pile views.",
+      "evidence": [
+        "e_0077.00",
+        "e_0163.00",
+        "e_0301.00"
+      ],
+      "limit": "Do not reconstruct hidden cards from arithmetic."
+    },
+    {
+      "id": "U3",
+      "impact": "precise input/PTS timing",
+      "status": "method_limit",
+      "question": "Draw animation end labels estimated in1-second windows; original frame PTS not measured.",
+      "evidence": [
+        "e_0095.00",
+        "e_0185.50",
+        "e_0244.00",
+        "e_0332.00"
+      ],
+      "limit": "All frame times are source-local requested seek times."
+    },
+    {
+      "id": "U4",
+      "impact": "queue and exact printings",
+      "status": "recording_limit",
+      "question": "Specific queue heading and card set/collector variants are not exposed.",
+      "evidence": [
+        "e_0038.00",
+        "e_0150.00",
+        "e_0238.00"
+      ],
+      "limit": "Human classification supported; use mechanics/HP for versions, not invented artwork IDs."
+    }
+  ]
+}

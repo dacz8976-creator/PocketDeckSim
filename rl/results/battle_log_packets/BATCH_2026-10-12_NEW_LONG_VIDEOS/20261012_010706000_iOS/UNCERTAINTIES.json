@@ -1,0 +1,35 @@
+{
+  "video_basename": "20261012_010706000_iOS.MP4",
+  "source_sha256": "6d6143c99e23bffe7a6feb7f01c20a112c060e13b9b9d4ebd0a25e597ca62fd0",
+  "game_id": "20261012_010706000_iOS_game1",
+  "unreviewed_intervals": [],
+  "uncertainties": [
+    {
+      "type": "recording_or_provenance_limit",
+      "description": "Opponent draws/search identities hidden unless later publicly played; hand fan overlap gives ranges for large fans.",
+      "consequence": "Do not claim complete hidden-hand replay or a dated live-log deck snapshot."
+    },
+    {
+      "type": "recording_or_provenance_limit",
+      "description": "Neither opened discard pile appears in the recording. Play-derived histories are inference, not pile snapshots.",
+      "consequence": "Do not claim complete hidden-hand replay or a dated live-log deck snapshot."
+    },
+    {
+      "type": "recording_or_provenance_limit",
+      "description": "Several first moves occur immediately after a zoomed normal draw. Candidate+1/+3/+6 can already be post-play; actual pre-play evidence and limits are individually identified.",
+      "consequence": "Do not claim complete hidden-hand replay or a dated live-log deck snapshot."
+    },
+    {
+      "type": "recording_or_provenance_limit",
+      "description": "Exact filmed QR semantic list verified; dated readable Pause Games live-log deck snapshot is absent. QR does not resolve artwork/printing aliases.",
+      "consequence": "Do not claim complete hidden-hand replay or a dated live-log deck snapshot."
+    },
+    {
+      "type": "recording_or_provenance_limit",
+      "description": "Native seek requested times are retained; exact decoded PTS was not measured. Turn transition timings are bounded to nearby source frames, not frame-accurate.",
+      "consequence": "Do not claim complete hidden-hand replay or a dated live-log deck snapshot."
+    }
+  ],
+  "material_outcome_uncertainty": false,
+  "lead_acceptance_pending": true
+}

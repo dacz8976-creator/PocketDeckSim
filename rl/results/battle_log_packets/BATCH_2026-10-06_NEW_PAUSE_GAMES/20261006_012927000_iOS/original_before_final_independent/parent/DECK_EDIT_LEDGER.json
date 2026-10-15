@@ -1,0 +1,531 @@
+{
+  "schema": "pause-games/deck-edit-v1",
+  "source_video": "20261006_012927000_iOS.MP4",
+  "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+  "source_interval_seconds": [
+    420,
+    622
+  ],
+  "initial_deck_proof": "DECK_USED.json source QR semantic20, continuously returned to New deck6 editor after game1",
+  "new_qr_observed": false,
+  "edits": [
+    {
+      "order": 1,
+      "source_interval_seconds": [
+        422,
+        428
+      ],
+      "source_video": "20261006_012927000_iOS.MP4",
+      "displayed_deck_count_before": 20,
+      "displayed_deck_count_after": 19,
+      "changes_by_semantic_variant": [
+        {
+          "name_and_variant": "Silvally [Brave Buddies]",
+          "count_delta": -1
+        }
+      ],
+      "evidence_ids": [
+        "f0422_00",
+        "f0426_00",
+        "f0428_00"
+      ],
+      "observation": "Original deck20; ordinary Brave Buddies quantity falls from2 to1.",
+      "input_timing_limit": "UI/reveal interval establishes the change; exact touch time and ordering inside multi-change intervals remain unknown."
+    },
+    {
+      "order": 2,
+      "source_interval_seconds": [
+        428,
+        442
+      ],
+      "source_video": "20261006_012927000_iOS.MP4",
+      "displayed_deck_count_before": 19,
+      "displayed_deck_count_after": 19,
+      "changes_by_semantic_variant": [
+        {
+          "name_and_variant": "Silvally [Brave Buddies]",
+          "count_delta": -1
+        },
+        {
+          "name_and_variant": "Silvally [Gold Breaker]",
+          "count_delta": 1
+        }
+      ],
+      "evidence_ids": [
+        "f0428_00",
+        "f0440_00",
+        "f0442_00",
+        "f0444_00"
+      ],
+      "observation": "Type: Null/related-card browsing precedes replacement. Gold Breaker face at440 is unselected;442 top deck has one Gold Breaker, no original Brave Buddies, count19. Order of add/remove within interval unknown.",
+      "input_timing_limit": "UI/reveal interval establishes the change; exact touch time and ordering inside multi-change intervals remain unknown."
+    },
+    {
+      "order": 3,
+      "source_interval_seconds": [
+        444,
+        460
+      ],
+      "source_video": "20261006_012927000_iOS.MP4",
+      "displayed_deck_count_before": 19,
+      "displayed_deck_count_after": 20,
+      "changes_by_semantic_variant": [
+        {
+          "name_and_variant": "Silvally [Brave Buddies]",
+          "count_delta": 1
+        }
+      ],
+      "evidence_ids": [
+        "f0446_00",
+        "f0450_00",
+        "f0458_00",
+        "f0460_00"
+      ],
+      "observation": "Related-art browsing;458 explicitly shows alternate Brave Buddies50+ selected1/2.460 deck20 contains one Gold Breaker and one Brave Buddies.",
+      "input_timing_limit": "UI/reveal interval establishes the change; exact touch time and ordering inside multi-change intervals remain unknown."
+    },
+    {
+      "order": 4,
+      "source_interval_seconds": [
+        478,
+        498
+      ],
+      "source_video": "20261006_012927000_iOS.MP4",
+      "displayed_deck_count_before": 20,
+      "displayed_deck_count_after": 19,
+      "changes_by_semantic_variant": [
+        {
+          "name_and_variant": "Persian [Shadow Claw]",
+          "count_delta": -1
+        }
+      ],
+      "evidence_ids": [
+        "f0478_00",
+        "f0482_00",
+        "f0494_00",
+        "f0498_00"
+      ],
+      "observation": "Shiny Shadow Claw printing changes selected1/1 to0/1.498 completed deck19 retains the other ordinary Shadow Claw Persian.",
+      "input_timing_limit": "UI/reveal interval establishes the change; exact touch time and ordering inside multi-change intervals remain unknown."
+    },
+    {
+      "order": 5,
+      "source_interval_seconds": [
+        530,
+        536
+      ],
+      "source_video": "20261006_012927000_iOS.MP4",
+      "displayed_deck_count_before": 19,
+      "displayed_deck_count_after": 21,
+      "changes_by_semantic_variant": [
+        {
+          "name_and_variant": "Team Rocket’s Persian [Dangerous Rogue]",
+          "count_delta": 2
+        }
+      ],
+      "evidence_ids": [
+        "f0532_00",
+        "f0534_00",
+        "f0536_00"
+      ],
+      "observation": "Dangerous Rogue card0/2 before addition, selected2/2 at536; deck21. Both original Meowth and remaining Shadow Claw Persian still visible.",
+      "input_timing_limit": "UI/reveal interval establishes the change; exact touch time and ordering inside multi-change intervals remain unknown."
+    },
+    {
+      "order": 6,
+      "source_interval_seconds": [
+        536,
+        538
+      ],
+      "source_video": "20261006_012927000_iOS.MP4",
+      "displayed_deck_count_before": 21,
+      "displayed_deck_count_after": 19,
+      "changes_by_semantic_variant": [
+        {
+          "name_and_variant": "Meowth [Carefree Steps / Feelin’ Fine]",
+          "count_delta": -1
+        },
+        {
+          "name_and_variant": "Meowth [Pay Day]",
+          "count_delta": -1
+        }
+      ],
+      "evidence_ids": [
+        "f0536_00",
+        "f0538_00",
+        "f0537_00",
+        "f0537_00"
+      ],
+      "observation": "Carefree Steps Meowth disappears first, count20 at537; Pay Day Meowth then disappears, count19 at538. Relative order is now established by bounded native537.",
+      "input_timing_limit": "UI/reveal interval establishes the change; exact touch time and ordering inside multi-change intervals remain unknown."
+    },
+    {
+      "order": 7,
+      "source_interval_seconds": [
+        538,
+        540
+      ],
+      "source_video": "20261006_012927000_iOS.MP4",
+      "displayed_deck_count_before": 19,
+      "displayed_deck_count_after": 18,
+      "changes_by_semantic_variant": [
+        {
+          "name_and_variant": "Persian [Shadow Claw]",
+          "count_delta": -1
+        }
+      ],
+      "evidence_ids": [
+        "f0538_00",
+        "f0540_00",
+        "f0539_00",
+        "f0539_00"
+      ],
+      "observation": "Last ordinary Persian disappears; two Dangerous Rogue remain.",
+      "input_timing_limit": "UI/reveal interval establishes the change; exact touch time and ordering inside multi-change intervals remain unknown."
+    },
+    {
+      "order": 8,
+      "source_interval_seconds": [
+        546,
+        548
+      ],
+      "source_video": "20261006_012927000_iOS.MP4",
+      "displayed_deck_count_before": 18,
+      "displayed_deck_count_after": 19,
+      "changes_by_semantic_variant": [
+        {
+          "name_and_variant": "Team Rocket’s Meowth [Scratch]",
+          "count_delta": 1
+        }
+      ],
+      "evidence_ids": [
+        "f0546_00",
+        "f0548_00"
+      ],
+      "observation": "First Scratch Meowth added, selected1/2 and deck19.",
+      "input_timing_limit": "UI/reveal interval establishes the change; exact touch time and ordering inside multi-change intervals remain unknown."
+    },
+    {
+      "order": 9,
+      "source_interval_seconds": [
+        550,
+        552
+      ],
+      "source_video": "20261006_012927000_iOS.MP4",
+      "displayed_deck_count_before": 19,
+      "displayed_deck_count_after": 20,
+      "changes_by_semantic_variant": [
+        {
+          "name_and_variant": "Team Rocket’s Meowth [Scratch]",
+          "count_delta": 1
+        }
+      ],
+      "evidence_ids": [
+        "f0550_00",
+        "f0552_00",
+        "f0554_00"
+      ],
+      "observation": "Second Scratch Meowth added, selected2/2 and deck20. Temporary blank row slot during animation is not asserted as a trainer removal.",
+      "input_timing_limit": "UI/reveal interval establishes the change; exact touch time and ordering inside multi-change intervals remain unknown."
+    },
+    {
+      "order": 10,
+      "source_interval_seconds": [
+        560,
+        562
+      ],
+      "source_video": "20261006_012927000_iOS.MP4",
+      "displayed_deck_count_before": 20,
+      "displayed_deck_count_after": 18,
+      "changes_by_semantic_variant": [
+        {
+          "name_and_variant": "Terapagos ex [Prism Impact]",
+          "count_delta": -2
+        }
+      ],
+      "evidence_ids": [
+        "f0558_00",
+        "f0560_00",
+        "f0562_00",
+        "f0564_00",
+        "f0561_00",
+        "f0561_00"
+      ],
+      "observation": "One Terapagos remains at561 with count19; second disappears at562 with count18. Both removed individually; final Type: Null and Gold Breaker/Brave Buddies pair remains.",
+      "input_timing_limit": "UI/reveal interval establishes the change; exact touch time and ordering inside multi-change intervals remain unknown."
+    },
+    {
+      "order": 11,
+      "source_interval_seconds": [
+        578,
+        580
+      ],
+      "source_video": "20261006_012927000_iOS.MP4",
+      "displayed_deck_count_before": 18,
+      "displayed_deck_count_after": 19,
+      "changes_by_semantic_variant": [
+        {
+          "name_and_variant": "Soothing Shore",
+          "count_delta": 1
+        }
+      ],
+      "evidence_ids": [
+        "f0578_00",
+        "f0580_00",
+        "f0582_00"
+      ],
+      "observation": "Soothing Shore unselected then selected1/2, count19.",
+      "input_timing_limit": "UI/reveal interval establishes the change; exact touch time and ordering inside multi-change intervals remain unknown."
+    },
+    {
+      "order": 12,
+      "source_interval_seconds": [
+        586,
+        588
+      ],
+      "source_video": "20261006_012927000_iOS.MP4",
+      "displayed_deck_count_before": 19,
+      "displayed_deck_count_after": 20,
+      "changes_by_semantic_variant": [
+        {
+          "name_and_variant": "Soothing Shore",
+          "count_delta": 1
+        }
+      ],
+      "evidence_ids": [
+        "f0586_00",
+        "f0588_00"
+      ],
+      "observation": "Selected2/2; two Soothing Shore in final trainer row, count20.",
+      "input_timing_limit": "UI/reveal interval establishes the change; exact touch time and ordering inside multi-change intervals remain unknown."
+    }
+  ],
+  "inspection_intervals_without_semantic_change": [
+    {
+      "interval": [
+        430,
+        440
+      ],
+      "content": "Type: Null and related Silvally inspection"
+    },
+    {
+      "interval": [
+        462,
+        478
+      ],
+      "content": "Meowth/Persian variant inspection"
+    },
+    {
+      "interval": [
+        498,
+        530
+      ],
+      "content": "Persian/Meowth inspection and Persian filter"
+    },
+    {
+      "interval": [
+        542,
+        546
+      ],
+      "content": "Meowth filter"
+    },
+    {
+      "interval": [
+        554,
+        560
+      ],
+      "content": "Deck-row scroll"
+    },
+    {
+      "interval": [
+        564,
+        578
+      ],
+      "content": "Deck-row scroll and Stadium filter"
+    },
+    {
+      "interval": [
+        602,
+        620
+      ],
+      "content": "Supporter filter/collection scroll; included Research/Copycat quantities and deck20 remain unchanged"
+    }
+  ],
+  "unchanged_semantic_counts_supported_by_continuity": {
+    "Snorlax ex": 1,
+    "Type: Null [Quick Blow]": 2,
+    "Poké Ball": 2,
+    "Lucky Ice Pop": 2,
+    "Field Blower": 1,
+    "Professor’s Research": 2,
+    "Cyrus": 1,
+    "Copycat": 1
+  },
+  "unchanged_trainer_evidence_ids": [
+    "f0536_00",
+    "f0554_00",
+    "f0558_00",
+    "f0566_00",
+    "f0588_00",
+    "f0608_00",
+    "f0618_00"
+  ],
+  "final_source_counts_by_name_and_variant": [
+    {
+      "name": "Snorlax ex [Full-Mouth Manner / Flop-Down Punch, 160 HP]",
+      "count": 1,
+      "entity_id": null,
+      "entity_limit": "New edited semantic entities require registry mapping; no ID guessed."
+    },
+    {
+      "name": "Team Rocket’s Meowth [Scratch, 50 HP]",
+      "count": 2,
+      "entity_id": null,
+      "entity_limit": "New edited semantic entities require registry mapping; no ID guessed."
+    },
+    {
+      "name": "Team Rocket’s Persian [Dangerous Rogue, 100 HP]",
+      "count": 2,
+      "entity_id": null,
+      "entity_limit": "New edited semantic entities require registry mapping; no ID guessed."
+    },
+    {
+      "name": "Type: Null [Quick Blow, 80 HP]",
+      "count": 2,
+      "entity_id": null,
+      "entity_limit": "New edited semantic entities require registry mapping; no ID guessed."
+    },
+    {
+      "name": "Silvally [Gold Breaker, 110 HP]",
+      "count": 1,
+      "entity_id": null,
+      "entity_limit": "New edited semantic entities require registry mapping; no ID guessed."
+    },
+    {
+      "name": "Silvally [Brave Buddies, 110 HP]",
+      "count": 1,
+      "entity_id": null,
+      "entity_limit": "New edited semantic entities require registry mapping; no ID guessed."
+    },
+    {
+      "name": "Poké Ball",
+      "count": 2,
+      "entity_id": null,
+      "entity_limit": "New edited semantic entities require registry mapping; no ID guessed."
+    },
+    {
+      "name": "Lucky Ice Pop",
+      "count": 2,
+      "entity_id": null,
+      "entity_limit": "New edited semantic entities require registry mapping; no ID guessed."
+    },
+    {
+      "name": "Field Blower",
+      "count": 1,
+      "entity_id": null,
+      "entity_limit": "New edited semantic entities require registry mapping; no ID guessed."
+    },
+    {
+      "name": "Professor’s Research",
+      "count": 2,
+      "entity_id": null,
+      "entity_limit": "New edited semantic entities require registry mapping; no ID guessed."
+    },
+    {
+      "name": "Cyrus",
+      "count": 1,
+      "entity_id": null,
+      "entity_limit": "New edited semantic entities require registry mapping; no ID guessed."
+    },
+    {
+      "name": "Copycat",
+      "count": 1,
+      "entity_id": null,
+      "entity_limit": "New edited semantic entities require registry mapping; no ID guessed."
+    },
+    {
+      "name": "Soothing Shore",
+      "count": 2,
+      "entity_id": null,
+      "entity_limit": "New edited semantic entities require registry mapping; no ID guessed."
+    }
+  ],
+  "final_card_count": 20,
+  "final_list_status": "exact_semantic20_observed_edited_source_bound",
+  "final_energy_configuration": [
+    "Darkness"
+  ],
+  "energy_edits": [
+    {
+      "interval": [
+        590,
+        592
+      ],
+      "observation": "Grass, Darkness and Metal configured initially.",
+      "evidence_ids": [
+        "f0590_00",
+        "f0592_00"
+      ]
+    },
+    {
+      "interval": [
+        592,
+        598
+      ],
+      "observation": "Energy dialog selection changes;594 warning states type not included in deck;596 temporarily shows Water alone selected. Exact intervening button sequence is not asserted.",
+      "evidence_ids": [
+        "f0594_00",
+        "f0596_00",
+        "f0598_00",
+        "f0595_00",
+        "f0597_00",
+        "f0595_00",
+        "f0597_00"
+      ]
+    },
+    {
+      "interval": [
+        598,
+        600
+      ],
+      "observation": "Deck-box popup597 and deck page599/600 show Darkness alone after transient Water selection.",
+      "evidence_ids": [
+        "f0600_00",
+        "f0597_00",
+        "f0599_00",
+        "f0597_00",
+        "f0599_00"
+      ]
+    },
+    {
+      "interval": [
+        620,
+        622
+      ],
+      "observation": "Final New deck6 page20/20 Darkness only; continuous Save and event queue selection into second game.",
+      "evidence_ids": [
+        "f0620_00",
+        "f0622_00",
+        "f0621_00",
+        "f0621_00"
+      ]
+    }
+  ],
+  "final_binding_evidence_ids": [
+    "f0588_00",
+    "f0590_00",
+    "f0600_00",
+    "f0618_00",
+    "f0620_00",
+    "f0622_00",
+    "f0630_00",
+    "f0644_00",
+    "f0654_00"
+  ],
+  "limits": [
+    "Semantic versions and counts established by original exact QR plus filmed edits, printed rule names, quantities, deck rows and final count. Exact within-cluster touch order remains unknown.",
+    "New semantic IDs require registry mapping; none guessed.",
+    "No new QR or live Pause Games list observed. Exact artwork is not asserted for all cards."
+  ],
+  "staged_edited_deck_id": "filmed-edit-cee45d5d45cb"
+}

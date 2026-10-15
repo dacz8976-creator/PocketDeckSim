@@ -1,0 +1,38 @@
+{
+  "video_basename": "20261012_003458000_iOS.MP4",
+  "source_sha256": "399ef7e1be5545ca1284a7aedb9f6eea70abb5929ed7cbf2083d539dae64f413",
+  "reviewer": "/root/pause_20261012_003458000_iOS",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "source_game_count": 1,
+  "turn_count": 11,
+  "classification": "human",
+  "exact_queue_label": null,
+  "match_date": "2026-10-11",
+  "deck": "Kingdra ex / Team Rocket’s Weezing ex",
+  "opponent": "しじみ",
+  "outcome": "owner win by opponent concession",
+  "points_at_end": {
+    "owner": 2,
+    "opponent": 2
+  },
+  "decisive_evidence": [
+    "N342p000",
+    "N346p000",
+    "N350p000",
+    "N351p000",
+    "N353p000",
+    "N354p000"
+  ],
+  "coverage_status": "complete_first_visual_review",
+  "capture_status": "complete_with_recording_limits",
+  "independent_acceptance_status": "pending",
+  "external_log_status": "lead_only_not_written_by_worker",
+  "source_move_status": "lead_only_not_moved_by_worker",
+  "limits": [
+    "Exact queue label is not shown; human match search/dual clocks and no Auto control support human routing.",
+    "Opponent faces and all opened discard views are absent.",
+    "QR verifies semantic20card membership and Water Energy, not artwork/rarity. Current log variants are preserved as log labels.",
+    "Post-concession source ends during result transition; concession banner itself establishes outcome."
+  ]
+}

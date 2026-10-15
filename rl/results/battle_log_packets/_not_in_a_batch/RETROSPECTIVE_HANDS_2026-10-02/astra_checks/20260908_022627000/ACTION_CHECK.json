@@ -1,0 +1,611 @@
+{
+  "schema": "bounded-astra-action-check-v1",
+  "source": "20260908_022627000_iOS.MP4",
+  "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+  "model": "gpt-6-astra",
+  "completed_utc": "2026-10-02 22:21:59 UTC",
+  "overall_status": "needs_repair",
+  "scope": "Six frozen source-field questions only. All six proposed core factual corrections are supported; one evidence-reference defect requires repair and one interval statement requires qualification. No whole-packet or outcome acceptance.",
+  "question_file": "Recording_QA/RETROSPECTIVE_HANDS_2026-10-02/20260908_022627000/ASTRA_QUESTIONS.json",
+  "source_identity": {
+    "receipt": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\SOURCE_VERIFICATION.json",
+    "status": "verified_sha256_match",
+    "source_stable": true,
+    "bytes": 1351891106,
+    "sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+    "reviewer_rehashed_original": false,
+    "receipt_finished_utc": "2026-10-02T21:51:52.8741177Z"
+  },
+  "metrics": {
+    "unique_native_full_frames_inspected": 27,
+    "question_cited_frames": 26,
+    "additional_already_retained_frames": 1,
+    "original_video_reads": 0,
+    "new_extractions": 0,
+    "crops_created": 0,
+    "old_files_edited": 0,
+    "inspection_method": "view_image detail original; full 1170x2532 native files, tool presentation resized to 946x2048. No contact sheets or broad scan.",
+    "timestamp_method": "Requested source seconds retained separately from producer-reported measured frame PTS. Reviewer did not independently measure video PTS; reused 668-second image has unknown actual PTS."
+  },
+  "mode": {
+    "auto_control_seen": false,
+    "scope": "No Auto control visible in the 27 inspected native frames, including the open menu at 679. Settings submenu and continuous footage were not inspected.",
+    "owner_rule": "Any visible Auto option, even OFF, makes a computer battle and excludes ladder.",
+    "classification_change_authorized_by_this_check": false
+  },
+  "findings": [
+    {
+      "question_id": "T3_COMFEY_ATTACHMENT_RETREAT",
+      "turns": [
+        3
+      ],
+      "status": "accepted",
+      "proposed_core_fields": "supported",
+      "conclusion": "Psychic attaches to Comfey, not Drowzee. Comfey has 1 Psychic before retreat and none afterward; promoted Drowzee has no Energy.",
+      "direct_source_basis": [
+        {
+          "evidence_id": "F0118.00",
+          "observation": "Comfey Active 50 has no attached Energy; printed retreat cost is one Colorless. Benched Drowzee 60 has no Energy."
+        },
+        {
+          "evidence_id": "F0120.00",
+          "observation": "Psychic attachment orb is over Comfey."
+        },
+        {
+          "evidence_id": "F0126.00",
+          "observation": "Comfey has one attached Psychic; benched Drowzee remains without Energy."
+        },
+        {
+          "evidence_id": "F0137.00",
+          "observation": "Drowzee Active 60 has no Energy; Comfey Bench 50 has none."
+        }
+      ],
+      "direct_vs_inferred_limits": "Attachment target is directly shown. Payment of the one Psychic is an inference from the actual position switch, the before/after typed Energy counts and printed one-Energy cost. Exact discard-selection input was not inspected.",
+      "old_claim_relation": "Contradiction: old Drowzee attachment, Drowzee 1 Psychic endpoint and zero-cost Comfey retreat are unsupported by the inspected source.",
+      "old_quotes": [
+        {
+          "accepted_review": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\REVIEW.md",
+          "source_line": 22,
+          "exact_quote": "| 3 — `01:34–02:18` | Dacz8976 | Benches Team Rocket's Rattata. Plays Poké Ball; Team Rocket's Drowzee is the publicly shown Basic obtained, then benched. Attaches Psychic Energy to Drowzee. Retreats zero-cost Comfey and promotes Drowzee. | Active Drowzee 60 with 1 Psychic; Bench Comfey 50 and Rattata 40; score 0–0. |"
+        }
+      ],
+      "required_repairs": []
+    },
+    {
+      "question_id": "HYPNO_P_COUNT_AND_SKORUPI_REMAINDER",
+      "turns": [
+        5,
+        6,
+        7
+      ],
+      "status": "accepted",
+      "proposed_core_fields": "supported",
+      "conclusion": "Hypno ends turn 5 with 1 Psychic, starts turn 7 with 1 and has 2 by 304 seconds. Skorupi has 1 Darkness after the first steal, 2 at turn 7 start and 1 after the second.",
+      "direct_source_basis": [
+        {
+          "evidence_id": "F0210.00",
+          "observation": "Hypno Active 50 has no Energy yet; Skorupi Active 60 has one Darkness; Cape Raticate has one Darkness."
+        },
+        {
+          "evidence_id": "F0225.00",
+          "observation": "Hypno Active 50 has one Psychic; Skorupi still one Darkness."
+        },
+        {
+          "evidence_id": "F0276.00",
+          "observation": "Hypno Active 10 has one Psychic; Skorupi has two Darkness."
+        },
+        {
+          "evidence_id": "F0304.00",
+          "observation": "Hypno action view shows two attached Psychic; Skorupi has one Darkness. Attached Energy is distinct from the attack-cost symbols."
+        }
+      ],
+      "direct_vs_inferred_limits": "Counts are direct endpoints. These stills do not show every intervening attachment or theft input; 304 seconds is a count anchor, not the attachment time.",
+      "old_claim_relation": "Contradiction: old turn-5 Hypno 2 Psychic and Skorupi zero, turn-6 Skorupi 1 Darkness endpoint, and turn-7 Skorupi zero conflict with the visible counts. The later Hypno attachment is also omitted in the old turn-7 prose.",
+      "old_quotes": [
+        {
+          "accepted_review": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\REVIEW.md",
+          "source_line": 24,
+          "exact_quote": "| 5 — `02:23–03:47` | Dacz8976 | Evolves Rattata into Team Rocket's Raticate ex and accepts Thieving Incisors, moving one random Darkness Energy from the opposing Active Skorupi to Raticate ex. Evolves Drowzee into Team Rocket's Hypno, preserving 40 damage (50 HP remaining). Attaches Elegant Cape to Raticate ex, raising it to 150 HP. Plays Copycat, shuffling the hand into the deck and drawing to the opponent's hand count. Benches a second Team Rocket's Rattata from the new hand. Team Rocket's Goo-zooka is previewed only. Attaches Psychic Energy to Active Hypno, which now has two Psychic Energy. | Active Hypno 50/90 with 2 Psychic; Bench Raticate ex 150 with Cape and 1 stolen Darkness, Comfey 50, Rattata 40. Skorupi has no Energy. Score 0–0. |"
+        },
+        {
+          "accepted_review": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\REVIEW.md",
+          "source_line": 25,
+          "exact_quote": "| 6 — `03:47–04:28` | hyp | Reattaches Darkness Energy to Skorupi and uses Bug Bite. Weakness again makes the damage 40. | Skorupi has 1 Darkness; Hypno 50→10; no KO; score 0–0. |"
+        },
+        {
+          "accepted_review": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\REVIEW.md",
+          "source_line": 26,
+          "exact_quote": "| 7 — `04:28–05:17` | Dacz8976 | Plays Poké Ball; the system reports no valid card in the deck. Plays Sightseer, views the top three cards, and publicly takes Team Rocket's Raticate ex. Evolves the second Rattata into the gold-art Team Rocket's Raticate ex; Thieving Incisors moves the reattached Darkness Energy from Active Skorupi to it. Plays Team Rocket's Goo-zooka, making the opponent's Active Retreat Cost one higher through the next turn. Hypno uses Entrap, switches benched Mega Absol ex Active, and deals 50. | Mega Absol ex 170→120 Active; Skorupi benched with no Energy. Dacz board: Hypno 10 Active; Raticate ex 150/Cape, Comfey 50, Raticate ex 120 on Bench. Score 0–0. |"
+        }
+      ],
+      "required_repairs": []
+    },
+    {
+      "question_id": "GIANT_CAPE_NOT_POTION",
+      "turns": [
+        8
+      ],
+      "status": "accepted",
+      "proposed_core_fields": "supported",
+      "conclusion": "Giant Cape is played onto Mega Absol ex. Its +20 HP bonus explains current HP 120 to 140 and maximum HP 170 to 190. Drapion retains one Darkness.",
+      "direct_source_basis": [
+        {
+          "evidence_id": "F0339.30",
+          "observation": "Named Giant Cape reveal with printed +20 HP; benched Drapion has one Darkness."
+        },
+        {
+          "evidence_id": "F0339.80",
+          "observation": "Tool attachment animation on Mega Absol, still at 120 HP."
+        },
+        {
+          "evidence_id": "F0340.50",
+          "observation": "Tool-slot attachment animation on Mega Absol, still at 120 HP."
+        },
+        {
+          "evidence_id": "F0350.00",
+          "observation": "Mega Absol has the Giant Cape icon and 140 HP; Drapion has one Darkness."
+        }
+      ],
+      "direct_vs_inferred_limits": "Named Tool and attachment are direct. Maximum 190 and preserved 50 damage are derived from base 170 plus the printed +20 bonus and the observed current HP. The bounded views do not certify absence of all other subsecond events.",
+      "old_claim_relation": "Contradiction: describing this visible +20 transition as Potion healing and Drapion as Energy-free conflicts with the source.",
+      "old_quotes": [
+        {
+          "accepted_review": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\REVIEW.md",
+          "source_line": 27,
+          "exact_quote": "| 8 — `05:17–05:45` | hyp | Evolves the benched, Energy-free Skorupi into Drapion. Attaches one Darkness Energy to Active Mega Absol ex. Plays Professor's Research and draws two. Uses Potion to heal Mega Absol ex by 20. No attack is observed. | Mega Absol ex 120→140 Active with 1 Darkness; Drapion 130 benched with no Energy. Score 0–0. |"
+        }
+      ],
+      "required_repairs": []
+    },
+    {
+      "question_id": "OPPONENT_ATTACHMENT_TARGETS_COUNTS",
+      "turns": [
+        10,
+        12,
+        14
+      ],
+      "status": "accepted_qualified",
+      "proposed_core_fields": "supported",
+      "conclusion": "Turn 10 attachment target is Mega Absol (1 to 2 Darkness), turn 12 target is Drapion (1 to 2), and turn 14 target is Drapion (2 to 3). Mega Absol's retreat leaves one Darkness.",
+      "direct_source_basis": [
+        {
+          "evidence_id": "F0394.00",
+          "observation": "Drapion Active has one Darkness; Mega Absol Bench has one; opponent generated Darkness remains available."
+        },
+        {
+          "evidence_id": "F0403.00",
+          "observation": "Drapion remains one Darkness; Mega Absol now has two; current generated orb is spent."
+        },
+        {
+          "evidence_id": "F0467.00",
+          "observation": "Mega Absol Active has two Darkness; Drapion Bench has one; generated Darkness is still available."
+        },
+        {
+          "evidence_id": "F0500.00",
+          "observation": "Owner turn 13 post-state: Mega Absol still two Darkness and Drapion now two."
+        },
+        {
+          "evidence_id": "F0554.00",
+          "observation": "After Mega Absol retreats it is benched with one Darkness; Active Drapion has two; generated Darkness is available."
+        },
+        {
+          "evidence_id": "F0559.00",
+          "observation": "Drapion has three Darkness and Mega Absol remains one; current generated orb is spent."
+        }
+      ],
+      "direct_vs_inferred_limits": "Board counts are direct; normal-attachment targets are endpoint-derived. Intervals are requested 394–403, 467–500, and 554–559 seconds. The 500-second anchor is owner turn 13, not opponent turn 12. Producer supplied the owner-turn-13 boundary near 499; this bounded review did not separately inspect that banner. Turn-12 attachment attribution uses that supplied turn boundary and the before/after state, not a direct input at 467 or 500. Mega Absol 2 to 1 retreat payment is also endpoint-derived.",
+      "old_claim_relation": "Contradiction: old turn-10 and turn-12 attachment targets and turn-14 Drapion total differ from the source.",
+      "old_quotes": [
+        {
+          "accepted_review": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\REVIEW.md",
+          "source_line": 29,
+          "exact_quote": "| 10 — `06:20–06:48` | hyp | Benches Deino and attaches one Darkness Energy to Active Drapion. No attack or damage is observed. | Drapion 80 Active with 1 Darkness; Bench Mega Absol ex 140 with 1 Darkness and Deino 60. Score 0–0. |"
+        },
+        {
+          "accepted_review": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\REVIEW.md",
+          "source_line": 31,
+          "exact_quote": "| 12 — `07:20–08:19` | hyp | Uses Lucky Ice Pop to heal Mega Absol ex by 20, 90→110; the flip is heads, so the same Item returns to hand. Uses Rare Candy to evolve Deino directly into Hydreigon. Attaches a second Darkness Energy to Mega Absol ex. Mega Absol ex uses Darkness Claw: 80 plus 20 Darkness weakness deals 100 to the 10-HP Hypno. Darkness Claw reveals Dacz8976's hand and discards Cyrus. | First Hypno is KO'd; `hyp` receives +1 at `08:12–08:13`, score 1–0. Dacz8976 promotes the Cape-equipped Raticate ex at 150 HP. |"
+        },
+        {
+          "accepted_review": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\REVIEW.md",
+          "source_line": 33,
+          "exact_quote": "| 14 — `08:34–09:50` | hyp | Replays the same Lucky Ice Pop, healing Mega Absol ex 40→60; heads returns it to hand again. Retreats Mega Absol ex for 1 Darkness, leaving it with 1, and promotes Drapion. Attaches a second Darkness Energy to Drapion, which then uses Stun Poison for 50; the status coin is tails, so no Poison or Paralysis is applied. | Cape-equipped Raticate ex 150→100; Drapion 80 Active with 2 Darkness; score 1–0. |"
+        }
+      ],
+      "required_repairs": [
+        "Qualify the frozen question's phrase '467 to 500, entirely within opponent turn 12': the endpoint interval crosses into owner turn 13; only the attachment event is attributed to opponent turn 12. Cite 500 as the next-turn post-state."
+      ]
+    },
+    {
+      "question_id": "CAPE_RATICATE_FREE_RETREAT",
+      "turns": [
+        15
+      ],
+      "status": "needs_repair",
+      "proposed_core_fields": "supported",
+      "conclusion": "The proposed free retreat and retained Psychic + Darkness are supported, but the proposed post-retreat citation at 593 seconds is wrong. Use 596 seconds.",
+      "direct_source_basis": [
+        {
+          "evidence_id": "F0590.00",
+          "observation": "Cape Raticate Active 100 has one Psychic plus one Darkness; Drowzee Bench 60 has one Psychic."
+        },
+        {
+          "evidence_id": "F0591.00",
+          "observation": "Raticate action menu shows two Colorless for Boost Dash, but no Energy symbols beside Retreat; attached Psychic and Darkness remain visible."
+        },
+        {
+          "evidence_id": "F0593.00",
+          "observation": "Cape Raticate is still Active with both Energy; this is not a post-retreat Bench endpoint."
+        },
+        {
+          "evidence_id": "F0596.00",
+          "observation": "Cape Raticate is now on the Bench at 100 HP with one Psychic and one Darkness. Hypno evolution is animating over the promoted Drowzee."
+        },
+        {
+          "evidence_id": "R0668.00",
+          "observation": "Printed Raticate detail has blank Retreat field and two-Colorless Boost Dash cost. Actual PTS is unmeasured for this reused image."
+        },
+        {
+          "evidence_id": "F0673.00",
+          "observation": "Later corroboration: Cape Raticate remains on the Bench with one Psychic and one Darkness."
+        }
+      ],
+      "direct_vs_inferred_limits": "Energy retention is direct at the nearby 596-second endpoint. Zero payment follows the blank live Retreat cost and unchanged typed Energy count; no discard input was observed. The much later 673 endpoint is corroboration only and is not needed to substitute for a nearby post-state.",
+      "old_claim_relation": "Contradiction: old two-Energy retreat with discarded Psychic and Darkness conflicts with the source. Attack cost must not be treated as retreat cost.",
+      "old_quotes": [
+        {
+          "accepted_review": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\REVIEW.md",
+          "source_line": 34,
+          "exact_quote": "| 15 — `09:50–10:16` | Dacz8976 | Draw again fails because the deck is empty. Retreats the Cape-equipped Raticate ex for 2 Energy, discarding its stolen Darkness and attached Psychic, and promotes the benched Drowzee. Evolves it into a second Team Rocket's Hypno, attaches another Psychic Energy, then uses Entrap. Entrap switches Mega Absol ex Active and deals 50. | Mega Absol ex 60→10 Active with 1 Darkness; second Hypno 90 Active for Dacz8976 with 2 Psychic; score 1–0. |"
+        }
+      ],
+      "required_repairs": [
+        "Replace 'after593' with 'after596' wherever used to prove post-retreat Bench Energy retention. Retain 593 only as a pre-switch/selection-phase observation. Add F0596.00 and its extraction-manifest metadata to the supporting references; requested 596.0, producer-measured PTS 596.0."
+      ]
+    },
+    {
+      "question_id": "T17_COMFEY_ATTACHMENT",
+      "turns": [
+        17
+      ],
+      "status": "accepted",
+      "proposed_core_fields": "supported",
+      "conclusion": "Turn 17 Psychic is attached to Comfey, which goes from zero to one Psychic. The visible menu has Concede, Settings and Battle Log, with no Auto option visible in that menu.",
+      "direct_source_basis": [
+        {
+          "evidence_id": "F0673.00",
+          "observation": "Comfey Bench 50 has no Energy; generated Psychic is available. Hand is Pokemon Flute and Professor's Research."
+        },
+        {
+          "evidence_id": "F0675.00",
+          "observation": "Psychic attachment orb is directly over Comfey; generated current orb is spent."
+        },
+        {
+          "evidence_id": "F0679.00",
+          "observation": "Open menu lists Concede, Settings and Battle Log. No Auto option or Concede confirmation is visible."
+        },
+        {
+          "evidence_id": "F0681.00",
+          "observation": "Comfey has one Psychic; hand remains Flute/Research and the board is visible with the menu closed."
+        }
+      ],
+      "direct_vs_inferred_limits": "Attachment is supported by trajectory and ending typed icon. No Auto observed in these bounded views does not certify absence throughout the recording or in a Settings submenu, and does not establish a human opponent. No Concede confirmation was inspected.",
+      "old_claim_relation": "Contradiction: old claim that this generated Psychic was unused is false. The menu-open/close description is consistent with the bounded views.",
+      "old_quotes": [
+        {
+          "accepted_review": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\REVIEW.md",
+          "source_line": 36,
+          "exact_quote": "| 17 — `11:10–11:25` | Dacz8976 | Draw fails because the deck is empty. A Psychic Energy is generated but left unused. Dacz8976 briefly opens and closes the menu without confirming Concede. Gold-art Raticate ex uses Boost Dash for 70. | Hydreigon 140→70; player Active Raticate ex remains 120 with its previously acquired Darkness and Psychic Energy. Visible score 2–0. |"
+        }
+      ],
+      "required_repairs": []
+    }
+  ],
+  "inspected_image_manifest": [
+    {
+      "evidence_id": "F0118.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0118.00.jpg",
+      "requested_source_seconds": 118,
+      "actual_frame_seconds_if_measured": 118.013,
+      "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0120.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0120.00.jpg",
+      "requested_source_seconds": 120,
+      "actual_frame_seconds_if_measured": 120.015,
+      "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0126.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0126.00.jpg",
+      "requested_source_seconds": 126,
+      "actual_frame_seconds_if_measured": 126,
+      "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0137.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0137.00.jpg",
+      "requested_source_seconds": 137,
+      "actual_frame_seconds_if_measured": 137.007,
+      "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0210.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0210.00.jpg",
+      "requested_source_seconds": 210,
+      "actual_frame_seconds_if_measured": 210.007,
+      "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0225.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0225.00.jpg",
+      "requested_source_seconds": 225,
+      "actual_frame_seconds_if_measured": 225.003,
+      "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0276.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0276.00.jpg",
+      "requested_source_seconds": 276,
+      "actual_frame_seconds_if_measured": 276,
+      "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0304.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0304.00.jpg",
+      "requested_source_seconds": 304,
+      "actual_frame_seconds_if_measured": 304.015,
+      "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0339.30",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0339.30.jpg",
+      "requested_source_seconds": 339.3,
+      "actual_frame_seconds_if_measured": 339.302,
+      "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0339.80",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0339.80.jpg",
+      "requested_source_seconds": 339.8,
+      "actual_frame_seconds_if_measured": 339.803,
+      "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0340.50",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0340.50.jpg",
+      "requested_source_seconds": 340.5,
+      "actual_frame_seconds_if_measured": 340.503,
+      "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0350.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0350.00.jpg",
+      "requested_source_seconds": 350,
+      "actual_frame_seconds_if_measured": 350.008,
+      "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0394.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0394.00.jpg",
+      "requested_source_seconds": 394,
+      "actual_frame_seconds_if_measured": 394.008,
+      "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0403.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0403.00.jpg",
+      "requested_source_seconds": 403,
+      "actual_frame_seconds_if_measured": 403.015,
+      "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0467.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0467.00.jpg",
+      "requested_source_seconds": 467,
+      "actual_frame_seconds_if_measured": 467.012,
+      "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0500.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0500.00.jpg",
+      "requested_source_seconds": 500,
+      "actual_frame_seconds_if_measured": 500.012,
+      "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0554.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0554.00.jpg",
+      "requested_source_seconds": 554,
+      "actual_frame_seconds_if_measured": 554.01,
+      "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0559.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0559.00.jpg",
+      "requested_source_seconds": 559,
+      "actual_frame_seconds_if_measured": 559.013,
+      "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0590.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0590.00.jpg",
+      "requested_source_seconds": 590,
+      "actual_frame_seconds_if_measured": 590.012,
+      "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0591.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0591.00.jpg",
+      "requested_source_seconds": 591,
+      "actual_frame_seconds_if_measured": 591.012,
+      "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0593.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0593.00.jpg",
+      "requested_source_seconds": 593,
+      "actual_frame_seconds_if_measured": 593.013,
+      "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0596.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0596.00.jpg",
+      "requested_source_seconds": 596,
+      "actual_frame_seconds_if_measured": 596,
+      "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "reason_added": "Resolve whether the 593-second frame is actually post-retreat."
+    },
+    {
+      "evidence_id": "R0668.00",
+      "full_frame_path": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\evidence\\full_resolution\\t_668.jpg",
+      "requested_source_seconds": 668,
+      "actual_frame_seconds_if_measured": null,
+      "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0673.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0673.00.jpg",
+      "requested_source_seconds": 673,
+      "actual_frame_seconds_if_measured": 673.003,
+      "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0675.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0675.00.jpg",
+      "requested_source_seconds": 675,
+      "actual_frame_seconds_if_measured": 675.003,
+      "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0679.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0679.00.jpg",
+      "requested_source_seconds": 679,
+      "actual_frame_seconds_if_measured": 679.005,
+      "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "F0681.00",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\turn_evidence\\t0681.00.jpg",
+      "requested_source_seconds": 681,
+      "actual_frame_seconds_if_measured": 681.007,
+      "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    }
+  ],
+  "preservation": {
+    "old_accepted_files_untouched": true,
+    "new_packet_untouched": true,
+    "outcome_re_reviewed": false,
+    "simulator_rule_audit": false,
+    "whole_packet_accepted": false
+  }
+}

@@ -1,0 +1,92 @@
+{
+  "source_video": "20261005_032857000_iOS.MP4",
+  "source_sha256": "a7aa71ededa0f2372282f5ba1ff0620b1fed9cedec8bb71101aee1db6eba297e",
+  "reviewer": "/root/pause_032857",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "review_completed_utc": "2026-10-06T18:50:01.641947+00:00",
+  "scope": "Entire305.965s source: filmed deck/QR, event matching, setup, all9turns, terminal removal and results.",
+  "coverage_status": "full_source_first_pass_complete_pending_independent_acceptance",
+  "capture_status": "complete_with_recording_limits",
+  "mode": "human_event",
+  "queue": "Deluxe Pack: Mega Emblem Event",
+  "match_date_local": "2026-10-04",
+  "opponent": "Friendlike_Andy",
+  "outcome": {
+    "owner_result": "loss",
+    "screen_result": "Defeat",
+    "opponent": "Friendlike_Andy",
+    "owner_points": 0,
+    "opponent_points": 2,
+    "turns_played": 9,
+    "damage_done_displayed": 220,
+    "cause_observed": "Last owner Pokemon knocked out; Active and all Bench slots empty.",
+    "evidence_ids": [
+      "E0287_00",
+      "E0288_00",
+      "E0292_00",
+      "E0297_00",
+      "E0298_00",
+      "E0304_00"
+    ]
+  },
+  "turn_count": 9,
+  "owner_turns": [
+    2,
+    4,
+    6,
+    8
+  ],
+  "auto_option_seen": false,
+  "source_modified": false,
+  "external_writes_performed": false,
+  "archive_performed": false,
+  "independent_check_targets": {
+    "opening": 26,
+    "ordinary_owner_first_decision": [
+      70.25,
+      70.75,
+      74.75,
+      79
+    ],
+    "ordinary_opponent_turn": [
+      90,
+      102.25,
+      108.25,
+      111,
+      114
+    ],
+    "consequential": [
+      183.5,
+      184,
+      192,
+      194,
+      202,
+      213,
+      216,
+      223.25,
+      246,
+      247
+    ],
+    "draw_order_and_end_hand": [
+      253.5,
+      253.75,
+      257.25,
+      258.25,
+      272,
+      274,
+      278
+    ],
+    "ending": [
+      287,
+      292,
+      297,
+      298,
+      304
+    ]
+  },
+  "limits": [
+    "Live snapshot of new Metal deck unavailable in initial nine-deck snapshot; exact filmedQR20 retained.",
+    "Opponent pile never opened."
+  ]
+}

@@ -1,0 +1,229 @@
+{
+  "prepared_utc": "2026-10-13T00:09:13.973799+00:00",
+  "existing_artifact": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "existing_authoring_task": "https://claude.ai/cowork/cse_01RtxfTEtHtFkw97BA1cpD4b",
+  "external_saved": false,
+  "sent_to_claude": false,
+  "operation": "Preserve existing entries; add only the missing filmed deck and four accepted source/game entries after fresh duplicate checks.",
+  "required_before_external_write": [
+    "Explicit owner authorization to send this prepared import to the existing Claude task.",
+    "Fresh duplicate checks by exact deck QR and source filename plus game identity.",
+    "Reload and verify exact new deck, all four entries and totals; compare prior 39 games and 25 decks against LIVE_BASELINE.json."
+  ],
+  "deck_documents": [
+    {
+      "document_id": "filmed-qr-d8a7167db33b",
+      "fields": {
+        "name": "Glimmora / Alolan Muk / Kingambit / Regigigas",
+        "energy": "Darkness",
+        "group": "filmed",
+        "status": "active",
+        "tag": "Filmed QR",
+        "order": 200,
+        "note": "Identical QR in all four October 12 uploads. Semantic card identities verified; filmed artwork and rarity unverified.",
+        "code": "C5iWnpiWnpiYYJiapJiapJiaIpiWqJiWqJiYkpiaXpibRAkAGv4AOSYASJ4ASJ4ASKgASKgASIAASJQARkYBBw==",
+        "source": "Four source-bound QR captures at 0 seconds; provenance in PREPARED_FILMED_DECK.json.",
+        "cards": [
+          {
+            "n": 1,
+            "name": "Alolan Grimer",
+            "kind": "Pokémon",
+            "id": "A3 110"
+          },
+          {
+            "n": 1,
+            "name": "Alolan Muk",
+            "kind": "Pokémon",
+            "id": "B2 097"
+          },
+          {
+            "n": 2,
+            "name": "Glimmet",
+            "kind": "Pokémon",
+            "id": "B3a 044"
+          },
+          {
+            "n": 2,
+            "name": "Glimmora",
+            "kind": "Pokémon",
+            "id": "B3a 045"
+          },
+          {
+            "n": 1,
+            "name": "Pawniard",
+            "kind": "Pokémon",
+            "id": "B3a 041"
+          },
+          {
+            "n": 1,
+            "name": "Kingambit",
+            "kind": "Pokémon",
+            "id": "B3a 043"
+          },
+          {
+            "n": 1,
+            "name": "Regigigas",
+            "kind": "Pokémon",
+            "id": "B3 134"
+          },
+          {
+            "n": 2,
+            "name": "Poké Ball",
+            "kind": "Trainer",
+            "id": "A2b 111"
+          },
+          {
+            "n": 1,
+            "name": "Rare Candy",
+            "kind": "Trainer",
+            "id": "A3 144"
+          },
+          {
+            "n": 2,
+            "name": "Lucky Ice Pop",
+            "kind": "Trainer",
+            "id": "B2 145"
+          },
+          {
+            "n": 1,
+            "name": "Heavy Helmet",
+            "kind": "Trainer",
+            "id": "B1 219"
+          },
+          {
+            "n": 2,
+            "name": "Professor’s Research",
+            "kind": "Trainer",
+            "id": "A4b 373"
+          },
+          {
+            "n": 1,
+            "name": "Ilima",
+            "kind": "Trainer",
+            "id": "A3 149"
+          },
+          {
+            "n": 1,
+            "name": "Copycat",
+            "kind": "Trainer",
+            "id": "B1 225"
+          },
+          {
+            "n": 1,
+            "name": "Mesagoza",
+            "kind": "Trainer",
+            "id": "B2a 093"
+          }
+        ]
+      }
+    }
+  ],
+  "game_documents": [
+    {
+      "source_video": "20261012_010706000_iOS.MP4",
+      "source_sha256": "6d6143c99e23bffe7a6feb7f01c20a112c060e13b9b9d4ebd0a25e597ca62fd0",
+      "game_number_in_source": 1,
+      "game_id": "20261012_010706000_iOS_game1",
+      "exact_game_deck_binding": true,
+      "deck_choice_basis": "Identical source-native QR at 0 seconds, exact semantic 20-card list and Darkness Energy.",
+      "result_evidence": "Kingambit knocks out Mega Gardevoir ex; Victory 3-2 around 808 s, detailed result 819 s (21 turns, 600 damage).",
+      "fields": {
+        "deck": "filmed-qr-d8a7167db33b",
+        "deckName": "Glimmora / Alolan Muk / Kingambit / Regigigas",
+        "date": "2026-10-11",
+        "result": "win",
+        "first": "first",
+        "opp": "Mega Gardevoir ex, Mega Diancie ex, Indeedee ex",
+        "ratings": {},
+        "note": "Source: 20261012_010706000_iOS.MP4; game 1; opponent: たまご. Deluxe Pack: Mega Emblem Event. Owner win; ending: points. Result evidence: Kingambit knocks out Mega Gardevoir ex; Victory 3-2 around 808 s, detailed result 819 s (21 turns, 600 damage). Full review: 21 turns. Evidence and capture limits: Recording_QA/BATCH_2026-10-12_NEW_LONG_VIDEOS/20261012_010706000_iOS/REVIEW.md; PAUSE_GAME.json and TURN_LEDGER.json beside it. Exact 20-card filmed QR verified. Hidden opponent cards remain unknown; discard piles were not opened. Native hand/draw crops retained. Ratings unassigned."
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261012_203719000_iOS.MP4",
+      "source_sha256": "e85ac056e49ababe79fbd0388e8b132f3cc984a5deb445390a2f4df7b0137869",
+      "game_number_in_source": 1,
+      "game_id": "20261012_203719000_iOS-game-1",
+      "exact_game_deck_binding": true,
+      "deck_choice_basis": "Identical source-native QR at 0 seconds, exact semantic 20-card list and Darkness Energy.",
+      "result_evidence": "Your opponent conceded at 790 s; Victory/result 799-800.5 s (21 turns, 150 damage). Last board 1-2.",
+      "fields": {
+        "deck": "filmed-qr-d8a7167db33b",
+        "deckName": "Glimmora / Alolan Muk / Kingambit / Regigigas",
+        "date": "2026-10-12",
+        "result": "concession",
+        "first": "first",
+        "opp": "Drampa, Dragonair, Mega Rayquaza ex",
+        "ratings": {},
+        "note": "Source: 20261012_203719000_iOS.MP4; game 1; opponent: KCXPF. Deluxe Pack: Mega Emblem Event. Owner win; ending: opponent conceded. Result evidence: Your opponent conceded at 790 s; Victory/result 799-800.5 s (21 turns, 150 damage). Last board 1-2. Full review: 21 turns. Evidence and capture limits: Recording_QA/BATCH_2026-10-12_NEW_LONG_VIDEOS/20261012_203719000_iOS/REVIEW.md; PAUSE_GAME.json and TURN_LEDGER.json beside it. Exact 20-card filmed QR verified. Hidden opponent cards remain unknown; discard piles were not opened. Native hand/draw crops retained. Ratings unassigned."
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261012_210041000_iOS.MP4",
+      "source_sha256": "6e8f59764ede0e890ac012fd4ccdd08fc7bfd480bbaae7721bd1f8046031fcc6",
+      "game_number_in_source": 1,
+      "game_id": "pause-20261012-210041",
+      "exact_game_deck_binding": true,
+      "deck_choice_basis": "Identical source-native QR at 0 seconds, exact semantic 20-card list and Darkness Energy.",
+      "result_evidence": "Concede menu 432.6 s, confirmation 433.2-433.5 s, then Defeat 434 s/result 440-443 s. Last board 0-2; final numeric statistics unavailable.",
+      "fields": {
+        "deck": "filmed-qr-d8a7167db33b",
+        "deckName": "Glimmora / Alolan Muk / Kingambit / Regigigas",
+        "date": "2026-10-12",
+        "result": "loss",
+        "first": "second",
+        "opp": "Mega Lucario ex, Hitmonchan ex, Riolu, Tyrogue",
+        "ratings": {},
+        "note": "Source: 20261012_210041000_iOS.MP4; game 1; opponent: 万丈目サンダー. Deluxe Pack: Mega Emblem Event. Owner loss; ending: owner_concession. Result evidence: Concede menu 432.6 s, confirmation 433.2-433.5 s, then Defeat 434 s/result 440-443 s. Last board 0-2; final numeric statistics unavailable. Full review: 14 turns. Evidence and capture limits: Recording_QA/BATCH_2026-10-12_NEW_LONG_VIDEOS/20261012_210041000_iOS/REVIEW.md; PAUSE_GAME.json and TURN_LEDGER.json beside it. Exact 20-card filmed QR verified. Hidden opponent cards remain unknown; discard piles were not opened. Native hand/draw crops retained. Ratings unassigned."
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_sha256": "ca0f516306d5ffd8bf18326d4057d357160f77aaa019efdfd87303336b1291b9",
+      "game_number_in_source": 1,
+      "game_id": "20261012_210823000_iOS_Hons",
+      "exact_game_deck_binding": true,
+      "deck_choice_basis": "Identical source-native QR at 0 seconds, exact semantic 20-card list and Darkness Energy.",
+      "result_evidence": "Your opponent conceded at 430-431 s; Victory versus Hons at 439 s. Last board 0-1; detailed result statistics not opened. Empty deck is explicitly shown at 428 s.",
+      "fields": {
+        "deck": "filmed-qr-d8a7167db33b",
+        "deckName": "Glimmora / Alolan Muk / Kingambit / Regigigas",
+        "date": "2026-10-12",
+        "result": "concession",
+        "first": "second",
+        "opp": "Mega Pidgeot ex, Meowth, Alolan Meowth",
+        "ratings": {},
+        "note": "Source: 20261012_210823000_iOS.MP4; game 1; opponent: Hons. Deluxe Pack: Mega Emblem Event. Owner win; ending: opponent_concession. Result evidence: Your opponent conceded at 430-431 s; Victory versus Hons at 439 s. Last board 0-1; detailed result statistics not opened. Empty deck is explicitly shown at 428 s. Full review: 12 turns. Evidence and capture limits: Recording_QA/BATCH_2026-10-12_NEW_LONG_VIDEOS/20261012_210823000_iOS/REVIEW.md; PAUSE_GAME.json and TURN_LEDGER.json beside it. Exact 20-card filmed QR verified. Hidden opponent cards remain unknown; discard piles were not opened. Native hand/draw crops retained. Ratings unassigned."
+      },
+      "external_saved": false
+    }
+  ],
+  "prepared_counts": {
+    "sources": 4,
+    "games": 4,
+    "decks": 1,
+    "wins": 3,
+    "losses": 1,
+    "opponent_concessions": 2,
+    "turns": 68
+  },
+  "live_baseline_counts": {
+    "games": 39,
+    "decks": 25
+  },
+  "expected_counts_if_baseline_unchanged": {
+    "games": 43,
+    "decks": 26,
+    "wins": 25,
+    "losses": 18,
+    "concession_wins": 15
+  },
+  "accepted_packet_refs": [
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-12_NEW_LONG_VIDEOS\\20261012_010706000_iOS\\LEAD_ACCEPTANCE.json",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-12_NEW_LONG_VIDEOS\\20261012_203719000_iOS\\LEAD_ACCEPTANCE.json",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-12_NEW_LONG_VIDEOS\\20261012_210041000_iOS\\LEAD_ACCEPTANCE.json",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-12_NEW_LONG_VIDEOS\\20261012_210823000_iOS\\LEAD_ACCEPTANCE.json"
+  ]
+}

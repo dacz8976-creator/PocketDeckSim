@@ -1,0 +1,52 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-12T23:00:36.263678+00:00",
+  "source_game_count": 1,
+  "all_source_games_accepted": true,
+  "source_video": "20261012_010706000_iOS.MP4",
+  "source_sha256": "6d6143c99e23bffe7a6feb7f01c20a112c060e13b9b9d4ebd0a25e597ca62fd0",
+  "scope": "Entire supplied recording, one human event battle, opening, all 21 turns and terminal result",
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 21,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-12_NEW_LONG_VIDEOS\\20261012_010706000_iOS\\independent_sol\\CORRECTION_RECHECK.json",
+  "accepted_input_sha256": {
+    "REVIEW.md": "57fbb0ec42abb0c996c382a0c3ce9897f6c97bb490f6c56b0036698746d0ed11",
+    "COVERAGE.md": "404e1f8eb0086104b0a77ce511e1249c37a46d8ae82277dc5ca701420bfdd5b1",
+    "SUMMARY.json": "283c187b4373fe9d857d05dad636ec06684714f0449621b91ff8232bf1ac1a3e",
+    "UNCERTAINTIES.json": "9be1a7eccf89ff29a50242d9642cab3ecad9a7e27fd383219836e4ba7e5e1cfa",
+    "PAUSE_GAME.json": "87cb3a348e3e4cfc7b1b704c062c3f7574ab87ee3c828c099e4ae58d108db15c",
+    "DECK_USED.json": "f984c637077832294f01d2fc46a1871b26d4dae7850649b9980fa94fe3bc48d0",
+    "TURN_LEDGER.json": "1acd9df6973e953edecf0eadd354af2e63c3c3e11c7309dba827348d1937e2c8",
+    "TURN_EVIDENCE.json": "14ea1e0a6774fc8ddac1348e3ab3b9ee50f51fe6125f9f5c61fc3c5c13e66e89"
+  },
+  "basis": "Whole-source Sol review, separately bounded Sol checks against source frames, and lead reconciliation of coverage, ordinary decisions, draws/searches, hand arithmetic, point progression, decisive sequences and terminal outcome. Structural integrity checked separately.",
+  "administrative_fields_changed_after_independent_freeze": [
+    "lead_checked",
+    "battle_review_status",
+    "lead_acceptance"
+  ],
+  "source_limits": [
+    "Opponent draws/search identities hidden unless later publicly played; hand fan overlap gives ranges for large fans.",
+    "Neither opened discard pile appears in the recording. Play-derived histories are inference, not pile snapshots.",
+    "Several first moves occur immediately after a zoomed normal draw. Candidate+1/+3/+6 can already be post-play; actual pre-play evidence and limits are individually identified.",
+    "Exact filmed QR semantic list verified; dated readable Pause Games live-log deck snapshot is absent. QR does not resolve artwork/printing aliases.",
+    "Native seek requested times are retained; exact decoded PTS was not measured. Turn transition timings are bounded to nearby source frames, not frame-accurate."
+  ],
+  "outcome": {
+    "owner": "win",
+    "method": "points",
+    "points": [
+      3,
+      2
+    ],
+    "turns": 21,
+    "damage_done_displayed": 600,
+    "evidence_ids": [
+      "F819_00"
+    ]
+  },
+  "deck_status": "Exact filmed 20-card QR list independently bound; matching new live deck entry is not yet available.",
+  "external_status": "Prepared deck and game import pending; no external save claimed."
+}

@@ -1,0 +1,131 @@
+{
+  "game_id": "20260929_020916000",
+  "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+  "questions": [
+    {
+      "question": "Do these native coin labels and hand/pile endpoints support three distinct Lucky Ice Pop plays with Heads/Tails/Tails, firstreturn and subsequent two discards? Qualify physical duplicate identity and play time separately from direct coin/hand observations.",
+      "turn_number": 5,
+      "old_quote": "| Owner turn 5, ~03:24-04:57 | Owner benches a second Entei ex, equips it with Giant Cape and Fire Energy, then repeatedly uses Lucky Ice Pop on the 10-HP Active Entei. The visible HP climbs to 70; one later flip is tails. Rainbow Cave and Flame Patch are used. Owner replaces Rainbow Cave with Starting Plains, adding 20 HP to Basic Pokemon: Active Entei 70 to 90, Benched Entei 160 to 180, and damaged Active Moltres 70 to 90. Blazing Beatdown deals 120 and KOs that first Moltres ex. Owner takes 2 points. [Healed to 70](evidence/t0408_healed_70hp.jpg), [attack](evidence/t0450_first_attack.jpg), [2 points](evidence/t0456_first_points.jpg). |",
+      "old_provenance": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260929_020916000_iOS_sol\\REVIEW.md",
+        "sha256": "1155f98a5d540f800b18cf65bd5220b864bba3699f4cffb5167c618c38d5caaa",
+        "source_line": 14
+      },
+      "new_proposal": "Direct labels236Heads/245Tails/254Tails. Native209twoPops;237twoPops afterHP30;246onePop anddiscardtop afterHP50;263none. Locator225preview/228firstplay,238secondplay,247thirdplay. Three plays located separately; cannot distinguish identical physical copies. Accepted repeated heal prose preserved.",
+      "decisive_native_anchors": [
+        {
+          "evidence_id": "F0209.00",
+          "requested_source_seconds": 209,
+          "measured_pts_seconds": 209.0,
+          "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0209.00.jpg"
+        },
+        {
+          "evidence_id": "F0236.00",
+          "requested_source_seconds": 236,
+          "measured_pts_seconds": 236.01,
+          "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0236.00.jpg"
+        },
+        {
+          "evidence_id": "F0237.00",
+          "requested_source_seconds": 237,
+          "measured_pts_seconds": 237.01,
+          "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0237.00.jpg"
+        },
+        {
+          "evidence_id": "F0245.00",
+          "requested_source_seconds": 245,
+          "measured_pts_seconds": 245.015,
+          "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0245.00.jpg"
+        },
+        {
+          "evidence_id": "F0246.00",
+          "requested_source_seconds": 246,
+          "measured_pts_seconds": 246.015,
+          "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0246.00.jpg"
+        },
+        {
+          "evidence_id": "F0253.00",
+          "requested_source_seconds": 253,
+          "measured_pts_seconds": 253.002,
+          "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0253.00.jpg"
+        },
+        {
+          "evidence_id": "F0254.00",
+          "requested_source_seconds": 254,
+          "measured_pts_seconds": 254.002,
+          "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0254.00.jpg"
+        },
+        {
+          "evidence_id": "F0263.00",
+          "requested_source_seconds": 263,
+          "measured_pts_seconds": 263.008,
+          "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0263.00.jpg"
+        },
+        {
+          "evidence_id": "F0288.00",
+          "requested_source_seconds": 288,
+          "measured_pts_seconds": 288.0,
+          "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0288.00.jpg"
+        }
+      ],
+      "scope": "Separate direct visible observations from input/transaction inference; no outcome rereview or old packet edit"
+    },
+    {
+      "question": "Does the Fire1→2→0 and switch sequence support paid retreat of two Fire with printedcost2, while preserving hidden-input qualification? Any supported alternative visible?",
+      "turn_number": 8,
+      "old_quote": "| Opponent turn 8, ~06:32-07:38 | Opponent plays Copycat, later moves Mega Houndoom ex back Active while the 30-HP Moltres stays Benched. The exact switching card or payment is not established. Giant Cape raises Mega Houndoom ex from 190 to 210 HP. Grim Hound Flare flips one head and deals 80, KOing the 10-HP first Entei ex. Opponent gains 2 points. [Cape board](evidence/t0704_mega_cape.jpg), [KO hit](evidence/t0732_entei_ko.jpg), [opponent points](evidence/t0740_opponent_points.jpg). |",
+      "old_provenance": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260929_020916000_iOS_sol\\REVIEW.md",
+        "sha256": "1155f98a5d540f800b18cf65bd5220b864bba3699f4cffb5167c618c38d5caaa",
+        "source_line": 17
+      },
+      "new_proposal": "Native411oneFire;414twoFireandprintedcost2;415/417switchanimation;418benchedMoltres0FireandMegaActive3Fire. Proposal paidretreat2Fire is derived from observed endpoints/cost; do not label missing retreat button or exact payment input direct.",
+      "decisive_native_anchors": [
+        {
+          "evidence_id": "F0409.00",
+          "requested_source_seconds": 409,
+          "measured_pts_seconds": 409.005,
+          "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0409.00.jpg"
+        },
+        {
+          "evidence_id": "F0411.00",
+          "requested_source_seconds": 411,
+          "measured_pts_seconds": 411.007,
+          "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0411.00.jpg"
+        },
+        {
+          "evidence_id": "F0414.00",
+          "requested_source_seconds": 414,
+          "measured_pts_seconds": 414.008,
+          "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0414.00.jpg"
+        },
+        {
+          "evidence_id": "F0415.00",
+          "requested_source_seconds": 415,
+          "measured_pts_seconds": 415.008,
+          "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0415.00.jpg"
+        },
+        {
+          "evidence_id": "F0417.00",
+          "requested_source_seconds": 417,
+          "measured_pts_seconds": 417.01,
+          "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0417.00.jpg"
+        },
+        {
+          "evidence_id": "F0418.00",
+          "requested_source_seconds": 418,
+          "measured_pts_seconds": 418.01,
+          "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0418.00.jpg"
+        },
+        {
+          "evidence_id": "F0424.00",
+          "requested_source_seconds": 424,
+          "measured_pts_seconds": 424.012,
+          "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0424.00.jpg"
+        }
+      ],
+      "scope": "Separate direct visible observations from input/transaction inference; no outcome rereview or old packet edit"
+    }
+  ],
+  "status": "pending_Astra_consequential_check"
+}

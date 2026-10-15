@@ -1,0 +1,26 @@
+{
+  "source_video": "20261013_010003000_iOS.MP4",
+  "source_sha256": "3e2fc4897a2f9de4f03899a643a0c32e3bf46b5cc1f56a87d182dff9ceb9072b",
+  "frozen_utc": "2026-10-13T15:03:18.029976+00:00",
+  "review_components": {
+    "REVIEW.md": "8fc4d5cf6b32b6683acd1f81cc905641f125fa8e591ce3d489c94900b3dcda51",
+    "COVERAGE.md": "e3ca177c8e6a54d5f58ae614254845d1b288224177207b7e546bfe8f261fef22",
+    "SUMMARY.json": "f92f976ecdf4dabf026f208811b5e551e03b66cd6d19259583e3ddc8d383017e",
+    "UNCERTAINTIES.json": "2d8f6b3e057a336a8c4bd59aa1a4b522a2245281ad7b329baab1eda6b1ed8b7a",
+    "PAUSE_GAME.json": "4d97e67c892de0c73e57c43a5c41876be3241590846ec65f399ff21fc0279ec4",
+    "DECK_USED.json": "a38db70155f175fd61eb5f0cd934c34a0ba5aaca0fe52196c7727fd314192029",
+    "TURN_LEDGER.json": "db22de7256f59ae975f703e5fba1c7729eb480375ab5ddb2e5c95748e9428198",
+    "TURN_EVIDENCE.json": "e360cf5a2bef6bab9ba45c5b1001ac2f350da4338d72dfa8366a6496052db11c"
+  },
+  "supplement_hashes": {
+    "SOURCE.json": "3c90142a392b8365e477b93649a8d800017b4789bdd0ea90af29ab04cba622a5",
+    "SOURCE_TIME.json": "4790e570887c9c361a17ec4c6b8a807581c42152f5082cbc3dae36fe887b97b2",
+    "QR_DECODE.json": "40594746957d2dc314ec9faa008d1c48c6dd221bb9ae0996ac8ac9ce87b512bb",
+    "HISTORICAL_DECK_MATCH.json": "51ff79d69214744e89492294a39f683ddf65f5fd3e868f90684eb52f2bb20e9c",
+    "STRUCTURAL_VALIDATION.json": "f84cbe1544afd67f0b3c17a008340e8d60033a82bb8877f41a28d6e62ecdaea2",
+    "REPAIR_RECEIPT.json": "c22e01932b84b8eea9163a68aad8e119ac47ac98cd16eb1212b501fe2bbe6355"
+  },
+  "scope": "Eight completed worker components, frozen for independent acceptance; supplements are separate",
+  "visual_acceptance": false,
+  "repair_receipt": "REPAIR_RECEIPT.json"
+}

@@ -1,0 +1,53 @@
+# Coverage Log
+
+- [x] Initial board inspection (00:00.000 - 00:01.000)
+- [x] Turn 3 (Opponent): 00:00.000 - 00:13.000
+  - Evidence anchors: 00:00.400 (Rattata retreat cost reduction banner), 00:04.600 (Chien-Pao ex promoted), 00:07.000 (Water Energy attached), 00:09.000 (Icicle attack declared), 00:10.400 (20 damage to Duraludon).
+  - State delta: Active Rattata retreated to Bench; Chien-Pao ex promoted to Active, received 1 Water Energy; Duraludon damaged to 80/100 HP.
+- [x] Turn 4 (Player): 00:13.000 - 00:54.400
+  - Evidence anchors: 00:18.200 (Bench Axew evolves into Fraxure), 00:25.400 (Rainbow Cave used), 00:33.800 (Copycat played), 00:43.000 (Dratini placed on Bench), 00:47.000 (Fighting Energy attached to Duraludon), 00:51.400 (Power Beam attack), 00:53.600 (50 damage to Chien-Pao ex).
+  - State delta: Bench Axew evolved to Fraxure; Dratini placed on Bench; Duraludon gained Fighting Energy; Chien-Pao ex damaged to 80/130 HP.
+- [x] Turn 5 (Opponent): 00:54.400 - 01:07.200
+  - Evidence anchors: 00:58.200 (Bench Corphish evolves into Crawdaunt), 00:59.400 (Unruly Claw ability triggers), 01:02.000 (Water Energy attached to Chien-Pao ex), 01:04.000 (Icicle attack declared), 01:05.400 (20 damage to Duraludon).
+  - State delta: Corphish evolved into Crawdaunt; Chien-Pao ex gained Water Energy (now 2); Duraludon damaged to 60/100 HP.
+- [x] Turn 6 (Player): 01:07.200 - 01:18.000
+  - Evidence anchors: 01:13.000 (Metal Energy attached to Duraludon), 01:15.000 (Power Beam attack), 01:16.400 (50 damage to Chien-Pao ex).
+  - State delta: Duraludon gained Metal Energy; Chien-Pao ex damaged to 30/130 HP.
+- [x] Turn 7 (Opponent): 01:18.000 - 01:37.600
+  - Evidence anchors: 01:21.000 (Water Energy attached to Chien-Pao ex), 01:27.000 (Diving Icicles attack), 01:28.400 (130 damage to Duraludon, KO), 01:33.400 (Opponent score 1-0), 01:37.000 (Active Dratini promoted).
+  - State delta: Chien-Pao ex attached 3rd Water Energy, discarded all 3 to use Diving Icicles; Duraludon knocked out (Opponent 1 pt); Dratini promoted.
+- [x] Turn 8 (Player): 01:37.600 - 01:49.400
+  - Evidence anchors: 01:43.200 (Poké Ball played, fails to find target), 01:48.400 (Fighting Energy attached to active Dratini), 01:49.200 (Turn passed).
+  - State delta: Poké Ball failed search; Dratini gained Fighting Energy; turn ended without attack.
+- [x] Turn 9 (Opponent): 01:49.400 - 02:02.200
+  - Evidence anchors: 01:53.200 (Professor's Research played), 01:57.200 (Bench Rattata evolves into Team Rocket's Raticate ex), 02:00.000 (Water Energy attached to Raticate ex), 02:01.400 (Crawdaunt switched/promoted into Active).
+  - State delta: Opponent drew 2 cards; Bench Rattata evolved into Raticate ex and received Water Energy; Crawdaunt switched to Active.
+- [x] Turn 10 (Player): 02:02.200 - 02:11.200
+  - Evidence anchors: 02:08.200 (Bench Fraxure evolves into Haxorus), 02:09.400 (Fighting Energy attached to Haxorus), 02:11.000 (Turn passed).
+  - State delta: Fraxure evolved to Haxorus; Haxorus received Fighting Energy; turn ended without attack.
+- [x] Turn 11 (Opponent): 02:11.200 - 02:14.600
+  - Evidence anchors: 02:13.200 (Water Energy attached to Active Crawdaunt), 02:14.400 (Turn passed).
+  - State delta: Active Crawdaunt gained 1 Water Energy; turn ended without attack.
+- [x] Turn 12 (Player): 02:14.600 - 03:03.800
+  - Evidence anchors: 02:20.000 (Active Dratini retreats for 1 Energy), 02:20.600 (Haxorus promoted to Active), 02:44.200 (Axew placed on Bench), 02:45.400 (Fighting Energy attached to Haxorus), 02:47.400 (Iris played), 02:51.000 (Frenzied Blade attack), 02:52.400 (170 damage to Crawdaunt, KO), 02:57.600 (Player score 2-1).
+  - State delta: Dratini retreated; Haxorus promoted; Axew benched; Haxorus gained 2nd Fighting Energy; Iris activated (+1 bonus point on KO); Crawdaunt knocked out; Player awarded 2 points (score 2-1); Chien-Pao ex promoted.
+- [x] Turn 13 (Opponent): 03:03.800 - 03:34.800
+  - Evidence anchors: 03:06.200 (Water Energy attached to Chien-Pao ex), 03:08.800 (Second Bench Rattata evolves into Team Rocket's Raticate ex), 03:14.600 (Team Rocket Grunt played; flips 2 heads, 1 tails), 03:22.800 (Corphish benched), 03:26.400 (Chien-Pao ex uses Diving Icicles targeting Bench Dratini), 03:30.000 (Bench Dratini knocked out), 03:33.400 (Opponent score 2-2).
+  - State delta: Opponent evolved 2nd Raticate ex; discarded Energy from Haxorus via Grunt; played Corphish; Chien-Pao ex discarded 1 Water Energy to KO bench Dratini; Opponent score reaches 2 points.
+- [x] Turn 14 (Player): 03:34.800 - 03:51.800
+  - Evidence anchors: 03:40.800 (Bench Dratini evolves into Dragonair), 03:45.200 (Metal Energy attached to Haxorus), 03:47.400 (Rainbow Cave effect used), 03:51.600 (Turn passed).
+  - State delta: Bench Dratini evolved into Dragonair; Metal Energy attached to Haxorus; turn ended without attack.
+- [x] Turn 15 (Opponent): 03:51.800 - 04:11.200
+  - Evidence anchors: 03:54.400 (Water Energy attached to Chien-Pao ex), 03:55.400 (Corphish evolves into Crawdaunt), 03:59.600 (Team Rocket Grunt played; flips 0 heads, 1 tails), 04:08.000 (Icicle attack declared), 04:09.400 (20 damage to Haxorus).
+  - State delta: Chien-Pao ex gained Water Energy; Corphish evolved into Crawdaunt; Grunt failed; Haxorus damaged to 130/150 HP.
+- [x] Turn 16 (Player): 04:11.200 - 04:32.600
+  - Evidence anchors: 04:17.000 (Dragonair Ability Dragon's Blessing activated), 04:19.000 (Metal Energy attached from discard to active Haxorus), 04:23.000 (Frenzied Blade attack declared), 04:24.400 (150 damage dealt to Chien-Pao ex, KO), 04:29.000 (Player score reaches 3 points, '+2 points!' animation), 04:32.600 (Screen transitions to white at video end).
+  - State delta: Dragonair accelerated Metal Energy to Haxorus; Haxorus attacked Chien-Pao ex for 150 damage, knocking it out; Player reached 3 points for the win.
+
+## Required Event Audit
+- `Deck searches and failed searches:` 01:43.200 Poké Ball played with message "There are no cards in the deck that can be the target of the effect" (failed search).
+- `Energy attachments and acceleration:` 00:07.000 (Water to opp Chien-Pao ex), 00:47.000 (Fighting to player Duraludon), 01:02.000 (Water to opp Chien-Pao ex), 01:13.000 (Metal to player Duraludon), 01:21.000 (Water to opp Chien-Pao ex), 01:48.400 (Fighting to player Dratini), 02:00.000 (Water to opp Raticate ex), 02:09.400 (Fighting to player Haxorus), 02:13.200 (Water to opp Crawdaunt), 02:45.400 (Fighting to player Haxorus), 03:06.200 (Water to opp Chien-Pao ex), 03:45.200 (Metal to player Haxorus), 03:54.400 (Water to opp Chien-Pao ex), 04:19.000 (Metal from discard to player Haxorus via Dragon's Blessing).
+- `Return-to-hand, replay, and exchange events:` 00:33.800 (Copycat played; shuffles hand into deck and redraws).
+- `Knockouts and score changes:` 01:29.400 Duraludon knocked out (Opponent score 1-0 at 01:33.400); 02:52.400 Crawdaunt knocked out by Haxorus with Iris active (Player score 2-1 at 02:57.600); 03:30.000 Bench Dratini knocked out by Diving Icicles (Opponent score 2-2 at 03:33.400); 04:24.400 Chien-Pao ex knocked out by Haxorus (Player score reaches 3 points at 04:29.000).
+- `Switches, retreats, and Bench changes:` 00:04.600 (Opponent Rattata retreats, Chien-Pao ex promoted); 01:37.000 (Player Dratini promoted post-KO); 02:01.400 (Opponent switches Crawdaunt to Active); 02:20.000 (Player Dratini retreats, Haxorus promoted); 03:01.400 (Opponent Chien-Pao ex promoted post-KO).
+- `Terminal sequence:` 04:24.400 Haxorus knocks out Chien-Pao ex for 150 damage; 04:28.800 3rd point icon illuminates on player side; 04:29.600 '+2 points!' banner overlays player icon; 04:32.000 screen fades to white; video terminates at 04:32.600 before text banner renders.

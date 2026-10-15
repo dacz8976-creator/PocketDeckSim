@@ -1,0 +1,166 @@
+{
+  "video_basename": "20261002_011527000_iOS.MP4",
+  "source_sha256": "7cbaa7c16071389d66d14ad9fcbf55f5991b2f7703f14d85eb0af4a68ef9d778",
+  "source_bytes": 748640119,
+  "source_duration_seconds": 404.598333,
+  "reviewer": "/root/older_011527",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "review_date": "2026-10-14",
+  "review_status": "first_pass_complete_ready_for_independent_check",
+  "entire_available_source_reviewed": true,
+  "classification": "computer",
+  "classification_basis": "Visible Auto option, including OFF, and named preset at Victory",
+  "external_log_eligible": false,
+  "ladder_log_eligible": false,
+  "pause_games_eligible": false,
+  "auto_state": "mixed_OFF_ON_OFF",
+  "auto_observations": [
+    {
+      "seconds": 13,
+      "state": "OFF",
+      "evidence": "native/t0013.00.jpg"
+    },
+    {
+      "seconds": 240,
+      "state": "OFF",
+      "evidence": "native/t0240.00.jpg"
+    },
+    {
+      "seconds": 318,
+      "state": "OFF",
+      "evidence": "native/t0318.00.jpg"
+    },
+    {
+      "seconds": 321,
+      "state": "ON",
+      "evidence": "native/t0321.00.jpg"
+    },
+    {
+      "seconds": 341,
+      "state": "ON",
+      "evidence": "native/t0341.00.jpg"
+    },
+    {
+      "seconds": 342,
+      "state": "OFF",
+      "evidence": "native/t0342.00.jpg"
+    },
+    {
+      "seconds": 390,
+      "state": "OFF",
+      "evidence": "native/t0390.00.jpg"
+    }
+  ],
+  "auto_enable_transition_interval_seconds": [
+    318,
+    321
+  ],
+  "auto_disable_transition_interval_seconds": [
+    341,
+    342
+  ],
+  "owner_control_limits": "OFF play is consistent with owner-side UI control but physical operator is not identified. ON overlaps knockout promotion, draw, Rare Candy/Greninja development and Water Shuriken targeting/damage resolution. The control is hidden at 338, visibly ON through 341 and first visibly OFF at 342. Queued actions across the 341-342 ON-to-OFF transition cannot be assigned individually with certainty.",
+  "game_count": 1,
+  "battle_complete": true,
+  "games": [
+    {
+      "game_number": 1,
+      "battle_complete": true,
+      "opening_recorded": true,
+      "terminal_recorded": true,
+      "turns_played": 14,
+      "owner_turn_order": "second",
+      "owner": "Dacz8976",
+      "opponent": "Mega Blaziken ex & Typhlosion ex Deck (Deluxe Pack: Mega)",
+      "outcome": "win",
+      "points_displayed": {
+        "owner": 3,
+        "opponent": 2
+      },
+      "damage_done_displayed": 490,
+      "outcome_evidence": [
+        {
+          "seconds": 393,
+          "observation": "+3 points for owner after Mega Blaziken ex knockout",
+          "path": "native/t0393.00.jpg"
+        },
+        {
+          "seconds": 401.6,
+          "observation": "Victory, went second, 14 turns, owner3/opponent2, damage490",
+          "path": "native/t0401.60.jpg"
+        },
+        {
+          "seconds": 404,
+          "observation": "Named-preset Victory rewards page",
+          "path": "native/t0404.00.jpg"
+        }
+      ]
+    }
+  ],
+  "opponent": "Mega Blaziken ex & Typhlosion ex Deck (Deluxe Pack: Mega)",
+  "outcome": "win",
+  "turns_played": 14,
+  "owner_points_displayed": 3,
+  "opponent_points_displayed": 2,
+  "damage_done": 490,
+  "source_creation_utc": "2026-10-02T01:15:27.000000Z",
+  "match_datetime_chicago": "2026-10-01T20:15:27-05:00",
+  "match_date_chicago": "2026-10-01",
+  "match_date_basis": "Source creation metadata converted to America/Chicago; consistent with visible 8:15 PM phone clock; not separately authenticated server date",
+  "owner_visible_deck_core": [
+    "Gible",
+    "Gabite",
+    "Garchomp (Reckless Shearing/Dragon Claw 100)",
+    "Froakie",
+    "Greninja (Water Shuriken/Mist Slash 60)"
+  ],
+  "opponent_visible_pokemon": [
+    "Hearthflame Mask Ogerpon",
+    "Victini",
+    "Torchic",
+    "Combusken",
+    "Cyndaquil",
+    "Meowth",
+    "Mega Blaziken ex"
+  ],
+  "exact_20_card_deck_known": false,
+  "exact_printing_numbers_known": false,
+  "material_recording_gaps": [],
+  "recording_limits": [
+    "Pre-match deck-selection menu is outside source.",
+    "Hidden opponent hand, search results and full deck lists are not revealed.",
+    "Physical operator and reasons for choices are not established."
+  ],
+  "turn8_attack_skip": {
+    "seconds_interval": [
+      239,
+      242
+    ],
+    "auto": "OFF",
+    "score_before": [
+      2,
+      0
+    ],
+    "owner_active": "Garchomp",
+    "owner_active_hp": 90,
+    "owner_active_energy": [
+      "Water",
+      "Fighting"
+    ],
+    "attack": "Dragon Claw 100",
+    "opponent_active": "Combusken",
+    "opponent_active_hp": 80,
+    "observation": "Turn ends without attack; Combusken remains80 and Turn9 banner appears.",
+    "intent": "unknown",
+    "evidence": [
+      "native/t0239.00.jpg",
+      "native/t0240.00.jpg",
+      "native/t0242.00.jpg"
+    ]
+  },
+  "independent_acceptance": false,
+  "registration_by_worker": false,
+  "source_moved_by_worker": false,
+  "external_writes_by_worker": false
+}

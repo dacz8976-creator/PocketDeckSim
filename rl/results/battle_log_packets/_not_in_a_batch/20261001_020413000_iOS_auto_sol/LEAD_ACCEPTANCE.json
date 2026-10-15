@@ -1,0 +1,40 @@
+{
+  "scope": "Complete seventeen-turn 326.96-second Auto AI battle, setup through terminal Fantasia Force knockout and named Defeat",
+  "lead_checks": "Read the complete narrative, all-turn coverage, source, summary and uncertainties. Independently inspected native25s setup;140s ordinary Grindcore30 and coin text;113.60s zero-heads/one-tail result;230.50s Diantha90-heal/two-Energy-discard text;242s post-Diantha settled190HP and five Psychic;309/312s final pre-attack board (Mega5, Bramblin2, Mimikyu4) and110 damage;315/316s settled post-attack board (6/4/4) and Crobat removal;316.50s terminal point-circle transition;326.50s named Defeat,17turns,2-3 and440 damage. The separate normal turn17 attachment was not established; narrowed that wording and preserved original worker documents. See LEAD_CLARIFICATION.md. Bounded lead checks supplement the worker complete visual review.",
+  "lead_evidence": [
+    "native/t0025.00.jpg",
+    "native/t0113.60.jpg",
+    "native/t0140.00.jpg",
+    "native/t0230.50.jpg",
+    "native/t0242.00.jpg",
+    "native/t0309.00.jpg",
+    "native/t0312.00.jpg",
+    "native/t0315.00.jpg",
+    "native/t0316.00.jpg",
+    "native/t0316.50.jpg",
+    "native/t0326.50.jpg",
+    "LEAD_CLARIFICATION.md"
+  ],
+  "outcome": "owner_loss",
+  "final_points": {
+    "owner": 2,
+    "opponent": 3
+  },
+  "result_display": "Loss 2-3 circles; opponent received 4 awarded points",
+  "owner_visible_core": "Guzzlord ex / Crobat ex / Mega Gengar ex",
+  "opponent": "AI Mega Gardevoir ex & Mimikyu ex Deck (Deluxe Pack: Mega)",
+  "last_turn": 17,
+  "useful_finding": "Wynaut delays Guzzlord through its attack tax. Mimikyu blocks the first Grindcore damage while a tails flip is still shown. Diantha heals without clearing Poison; free Psychic retreats under Peculiar Plaza clear it. The final exposed100-HP Crobat falls to110 while Mega Gengar remains two Energy short. Settled final Energy gain is three; no extra normal attachment or rule defect is established.",
+  "limitations": "Hidden decks/draws, cosmetic IDs, clock basis and separate normal turn17 attachment remain unknown. The Mega Gengar survival alternative is conditional, not a proven win.",
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "source_video": "20261001_020413000_iOS.MP4",
+  "source_sha256": "87fc6d7dd7f19ee01bec07969cf6991f8618315c9747a6ab18233c12436e65d4",
+  "first_pass": "gpt-6.1-sol/high /root/auto_020413",
+  "unreviewed_intervals": [],
+  "material_unresolved": [],
+  "ladder_eligible": false,
+  "ladder_action": "No Ladder Log entry; owner-declared Auto AI game",
+  "astra_consulted": false,
+  "astra_reason": "Source checks resolved consequential questions; no additional consultation required"
+}

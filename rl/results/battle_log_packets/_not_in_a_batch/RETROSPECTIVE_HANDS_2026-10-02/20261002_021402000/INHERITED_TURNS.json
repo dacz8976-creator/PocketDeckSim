@@ -1,0 +1,92 @@
+{
+  "source": "20261002_021402000_iOS.MP4",
+  "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+  "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+  "rows": [
+    {
+      "turn_number": 1,
+      "accepted_source_line": 26,
+      "verbatim_accepted_row": "| Turn 1, about 35-52s, owner | Heavy Helmet attaches to Active Wailmer. Poké Ball obtains the second Wailmer, which is benched. No Energy attachment or attack occurs. | overview 02; native 48.00s |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 2,
+      "accepted_source_line": 27,
+      "verbatim_accepted_row": "| Turn 2, about 52-72s, opponent | Meloetta's Strange Singing adds a hidden random Psychic Pokémon to the opponent's hand. Giratina ex uses Broken-Space Bellow and gains Psychic Energy, ending the turn. Giratina's early buildup includes normal Energy attachment; no attack or HP change occurs. | overview 02, native 92.00s for subsequent three-Energy state |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 3,
+      "accepted_source_line": 28,
+      "verbatim_accepted_row": "| Turn 3, about 72-82s, owner | Active Wailmer evolves into non-ex Wailord 200 HP. Owner attaches first Water to that Active. No attack with one Energy. | overview 03 |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 4,
+      "accepted_source_line": 29,
+      "verbatim_accepted_row": "| Turn 4, about 82-98s, opponent | Strange Singing triggers. Psychic attaches to Meloetta. Giratina ex uses Broken-Space Bellow again, building its Energy. No damage. | overview 03; native 92.00s |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 5,
+      "accepted_source_line": 30,
+      "verbatim_accepted_row": "| Turn 5, about 98-112s, owner | Benched Wailmer evolves into Wailord ex 250 HP. Second Water attaches to Active non-ex Wailord. Owner passes without attacking. | overview 03-04 |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 6,
+      "accepted_source_line": 31,
+      "verbatim_accepted_row": "| Turn 6, about 112-130s, opponent | Strange Singing triggers. Ralts 60 HP is benched and receives Psychic Energy. Giratina ex uses Broken-Space Bellow again. No attack. | overview 04; native 122.00s, 124.00s and 160.00s |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 7,
+      "accepted_source_line": 32,
+      "verbatim_accepted_row": "| Turn 7, about 130-148s, owner | Professor's Research draws two cards. Indeedee ex 130 HP is benched. Third Water attaches to non-ex Wailord. It still needs four Energy for Whale Pump, so no attack occurs. | overview 04-05 |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 8,
+      "accepted_source_line": 33,
+      "verbatim_accepted_row": "| Turn 8, about 148-204s, opponent | Strange Singing triggers. Rare Candy evolves Ralts into Mega Gardevoir ex. Mega Diancie ex is benched. Peculiar Plaza reduces Psychic Pokémon retreat cost by two. Sabrina forces an owner replacement; owner selects zero-Energy Wailord ex, benching the three-Water non-ex Wailord. Opponent retreats Meloetta and promotes Mega Gardevoir ex, supplies its second Psychic, then attacks with Fantasia Force. Wailord ex takes 110, 250 to 140. The attack adds three Psychic from the Energy Zone, visibly allocated into the Mega Gardevoir/Diancie board. | native 160.00s, 165.00s, 171.00s, 177.00s, 180.00s, 188.00s, 193.00s, 199.00s, 205.00s |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 9,
+      "accepted_source_line": 34,
+      "verbatim_accepted_row": "| Turn 9, about 204-280s, owner | First Indeedee's Watch Over heals Active ex 140 to 160. Owner inspects Mega Diancie: expected Brilliant Storm damage is 240 at that moment, not a played attack. Lucky Ice Pop heals 160 to 180; heads returns it to hand. Reused Pop heals 180 to 200; tails discards it. Copycat shuffles the remaining hand and draws to opponent hand count. Soothing Shore replaces Peculiar Plaza. Second Indeedee ex is benched and its Watch Over heals 200 to 220. Heavy Helmet attaches to Active ex. Water attaches to Active ex, enabling Shore's end-of-turn heal 220 to 240. No attack. Non-ex Wailord remains benched with three Water. | native 205.00s, 211.00s, 232.00s, 236.00s, 241.00s, 249.00s, 254.00s, 263.00s, 265.00s, 268.00s, 272.00s; overview 08 |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 10,
+      "accepted_source_line": 35,
+      "verbatim_accepted_row": "| Turn 10, about 280-314s, opponent | Protective Poncho attaches to benched Mega Diancie, protecting it from damage while benched. May is played but the interface says no cards in deck can be the effect's target. Psychic attaches to Mega Gardevoir. Fantasia Force hits Active ex for 90 after Heavy Helmet, 240 to 150. Three more Psychic are distributed; stable post-turn board shows Giratina four, Meloetta two, Mega Diancie four and Mega Gardevoir four. Score remains zero-zero. | native 291.00s, 296.00s, 300.00s, 309.00s, 336.00s; overview 09 |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 11,
+      "accepted_source_line": 36,
+      "verbatim_accepted_row": "| Turn 11, about 314-366s, owner | Both Watch Over abilities heal 150 to 170 to 190. Professor's Research draws Poké Ball and Cyrus. Poké Ball is played with no remaining Basic target, confirmed by on-screen message. Water is attached to benched non-ex Wailord, bringing it to four, while ex remains Active with one. Lucky Ice Pop heals ex 190 to 210; tails discards it. Shore heals ex to 230 at turn end. Owner does not attack. | native 331.00s, 336.00s, 350.00s, 360.00s; overview 09-11 |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 12,
+      "accepted_source_line": 37,
+      "verbatim_accepted_row": "| Turn 12, about 366-396s, opponent | Opponent plays Poké Ball with no deck target. Psychic attaches to Mega Diancie, which now has five. Mega Gardevoir retreats, discarding one Psychic, and Mega Diancie promotes. The resulting visible opponent board has fourteen Psychic in total. Brilliant Storm hits for displayed 300 after the owner's Helmet, knocking out 230-HP Wailord ex. Opponent gains two points. Owner is prompted to replace it. | native 373.00s, 383.00s, 386.00s, 392.00s; overview 11 |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 13,
+      "accepted_source_line": 38,
+      "verbatim_accepted_row": "| Turn 13, about 396-408s, owner | Non-ex Wailord promotes at full 200 HP. Owner draws Irida and inspects it; Irida remains in hand, so it is not treated as played. Fifth Water attaches to Wailord. Whale Pump displays 110 and is used, reducing Active Mega Diancie from 170 to stable 60 HP. This is the owner's only recorded attack. No owner point is earned. | native 402.00s, 410.00s; overview 12 |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 14,
+      "accepted_source_line": 39,
+      "verbatim_accepted_row": "| Turn 14, about 408-424s, opponent | Mega Diancie remains Active with stable 60 HP, then uses Brilliant Storm again. Displayed 300 damage knocks out 200-HP non-ex Wailord despite Heavy Helmet. Opponent gains one point and reaches three. | native 410.00s, 416.00s, 422.00s |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    }
+  ],
+  "limits": "Only explicitly turn-numbered accepted prose is copied. Zero rows means format unavailable, not zero game turns. This is reference scaffolding, not a completed capture ledger."
+}

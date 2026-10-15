@@ -1,0 +1,49 @@
+{
+  "accepted": false,
+  "reviewer": "/root/check_203719",
+  "source_video": "20261012_203719000_iOS.MP4",
+  "source_sha256": "e85ac056e49ababe79fbd0388e8b132f3cc984a5deb445390a2f4df7b0137869",
+  "checked_at_utc": "2026-10-12T23:28:16.192067+00:00",
+  "required_repairs": [
+    {
+      "id": "R1",
+      "turn": 13,
+      "seconds": [
+        467.5,
+        468,
+        469
+      ],
+      "finding": "Selected f468_00 is not a clean three-card hand before a play. Retained and independently re-extracted 468 s both show Glimmet detached from the fan and moving over the middle bench, with only Glimmora and Lucky Ice Pop remaining in the bottom hand. The ledger calls this three-card starting hand and the evidence calls it pre-play.",
+      "required_change": "Inspect the draw-to-placement interval, retain an earlier native full frame plus crops showing all three cards in the hand before Glimmet selection/placement, and bind the starting hand and board to the correct frame. Correct first-move timing or explicitly describe the selected-card transition. Do not label the current 468 s view an unzoomed pre-play hand."
+    },
+    {
+      "id": "R2",
+      "turn": 3,
+      "seconds": [
+        107.2,
+        149,
+        150,
+        152
+      ],
+      "finding": "TURN_LEDGER board_at_start owner energy_zone this_turn is Darkness count 1 available true citing f107_20, but that native frame and fresh source seek show an empty generated slot. At 149 s the full Darkness generated slot is visibly present; the attachment then resolves around 150 to 152 s.",
+      "required_change": "Separate the starting hand frame from a native start-boundary Energy Zone frame after generation and before first play, or explicitly preserve the animation/visibility limit. Bind an observed count and availability to evidence that actually shows them. Apply the same empty-slot semantics consistently, including T1 where the declared null-when-empty policy conflicts with Darkness count 0."
+    }
+  ],
+  "checked_input_sha256": {
+    "REVIEW.md": "8bf7a7d9622de44d87d1bd9a268f68c189b7174877219b6f0f9e52c312125db7",
+    "COVERAGE.md": "76b9dd97c07f1a5bb18da585c405033ce9425d33bef0d342ebbb880c68c01718",
+    "SUMMARY.json": "d46a6f53b521989053878ea81089de0586bfc3eef8a11e68578b83e80adc86c4",
+    "UNCERTAINTIES.json": "79f1a21b2ce87a108cea7d863981c3a41185d32b1d3dbc9fed26f7a5b95ad97d",
+    "PAUSE_GAME.json": "5decf7d91946a700ce5b0993859f8481485fbfc73767b9e19fe97d23807c65f3",
+    "DECK_USED.json": "3efbcfbc95abf7850bca6fb89b84b611535ca9c2cc2605d883603cb130400091",
+    "TURN_LEDGER.json": "b858869305b71365cf09a0da9404905f8e9858f43d776d109c8fad3d219baadd",
+    "TURN_EVIDENCE.json": "8e05d6dc81e951cf00c5302c6f8c18a767fc156eb7ae8149656cf5a2f3cd4266"
+  },
+  "packet_unchanged_during_check": true,
+  "fresh_source_frames": [
+    "fresh_107.20.jpg",
+    "fresh_468.00.jpg",
+    "fresh_790.00.jpg"
+  ],
+  "scope": "Bounded independent semantic audit, not a second full-source decode. Rejected on selected ordinary-turn hand evidence and board-boundary evidence before completion."
+}

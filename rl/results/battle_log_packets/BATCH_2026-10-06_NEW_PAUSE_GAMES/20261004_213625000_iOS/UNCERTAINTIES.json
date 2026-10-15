@@ -1,0 +1,38 @@
+{
+  "is_template": false,
+  "source_video": "20261004_213625000_iOS.MP4",
+  "items": [
+    {
+      "topic": "Exact baseline live deck",
+      "status": "missing_matching_list",
+      "evidence": "DECK_USED.json and QR_DECODE_RECEIPT.json",
+      "consequence": "Root new deck creation/readback required for log snapshot; no binding to Shark Tempo."
+    },
+    {
+      "topic": "Opponent hidden hands/searches",
+      "status": "unavailable",
+      "consequence": "No hidden identities inferred from deck membership."
+    },
+    {
+      "topic": "Discard snapshots",
+      "status": "not_shown",
+      "consequence": "No exact pile composition claimed."
+    },
+    {
+      "topic": "Native seek timing",
+      "status": "requested_seek_not_decoded_pts",
+      "consequence": "Approximate animation endpoints, source-local times retained."
+    },
+    {
+      "topic": "Research second card turn11",
+      "status": "not_drawn_deck_exhausted",
+      "evidence_seconds": [
+        401,
+        402,
+        403,
+        404
+      ],
+      "consequence": "Only one card added; source hand count and20-card transaction reconciliation agree."
+    }
+  ]
+}

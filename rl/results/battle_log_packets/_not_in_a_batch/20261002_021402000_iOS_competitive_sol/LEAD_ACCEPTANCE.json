@@ -1,0 +1,42 @@
+{
+  "source_video": "20261002_021402000_iOS.MP4",
+  "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+  "source_bytes": 795968694,
+  "accepted": true,
+  "coverage_checked": true,
+  "completion_status": "full_battle_review_complete",
+  "scope": "Entire 430.026667-second battle: matchmaking, setup, all fourteen turns, both knockouts, Defeat statistics",
+  "requested_log": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "ranked_ladder_eligible": false,
+  "accepted_at_utc": "2026-10-02T03:44:41.854257+00:00",
+  "reviewer": "root independent lead",
+  "first_pass_reviewer": "sol_competitive_20261002_021402000",
+  "lead_evidence": [
+    "LEAD_CHECK.jpg",
+    "overview/sheet_03.jpg",
+    "native/t0180.00.jpg",
+    "native/t0205.00.jpg",
+    "native/t0254.00.jpg",
+    "native/t0263.00.jpg",
+    "native/t0386.00.jpg",
+    "native/t0392.00.jpg",
+    "native/t0402.00.jpg",
+    "native/t0410.00.jpg",
+    "native/t0416.00.jpg",
+    "native/t0422.00.jpg",
+    "native/t0429.90.jpg"
+  ],
+  "independent_checks": [
+    "Read all four first-pass reports and reconciled complete coverage, identity, deck, turn order, HP/Energy/point transitions and terminal evidence.",
+    "Verified opening Meloetta/Giratina, ordinary early evolutions/Water attachments, forced zero-Energy Wailord ex and Stadium/healing state.",
+    "Verified two displayed300 hits, +2 then +1 opponent points, owner sole110 attack, stable Diancie60HP, and explicit Defeat/first/14turn/0-3/110damage result.",
+    "Astra confirms Indeedee survives observed110 at20HP, may heal while Active, retreat free under Peculiar Plaza before replacement, and enable fourth-Water Wailord100 attack on turn9. Its Bench vulnerability and alternate opposing choices remain unknown."
+  ],
+  "outcome_description": "Loss, 0-3 points, first, against ポジビン",
+  "astra_addendum": "../BATCH_2026-10-02_COMPETITIVE/ASTRA_TACTICAL_CHECKS.md",
+  "remaining_coverage_gaps": [],
+  "unverified_material_claims": [],
+  "limitations": [
+    "Hidden full lists, exact selected queue, opponent automation and concession motive remain unknown. Owner competitive intent and local date basis are qualified. Conditional alternative decisions do not establish a different game outcome."
+  ]
+}

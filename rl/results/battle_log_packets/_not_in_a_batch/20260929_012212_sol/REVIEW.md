@@ -1,0 +1,28 @@
+# Full battle review: 20260929_012212000_iOS.MP4
+
+Reviewer: `/root/sol_review_c`. The source is 435.632 seconds and was followed from fresh matchmaking through the visible terminal concession. All times below are elapsed video time, approximate to the nearest few seconds. `SOURCE.json` binds the packet to the source SHA-256. The container's UTC creation time converts to September 28, 2026 at 8:22:12 PM America/Chicago; the phone clock runs approximately 8:22–8:29 PM.
+
+## Ladder-ready result
+
+Owner `Dacz8976` **win** over `Maru` (opponent conceded). At approximately 429 seconds, the game says **“Your opponent conceded”** with the owner on 1 point and Maru on 2. The recording ends during the subsequent result animation, so an explicit Victory banner is not visible. Concession itself establishes the win. Owner's visible deck core is **Entei ex (two copies), Fire Energy, Giant Cape, Rainbow Cave**. Opponent's visible core is **Team Rocket's Rattata/Raticate ex (two Raticate ex), Alolan Vulpix/Ninetales ex, Water Energy**, with Stadiums Soothing Shore and Starting Plains. Hidden deck contents and mode are not established.
+
+## Chronological review
+
+| Video time | Visible battle event |
+|---|---|
+| 0–29s | Fresh match search leads to Maru (Lv 58) versus Dacz8976. Owner selects Entei ex as Active and is going second; opening hand includes Copycat, Sabrina, Rainbow Cave, and Poké Ball. Opponent starts Alolan Vulpix. Score 0–0. |
+| 30–57s, opponent turn 1 | Opponent benches Team Rocket's Rattata, uses Poké Ball and Professor's Research, and places Soothing Shore. No attack or point. |
+| 57–105s, owner turn 2 | Owner uses Poké Ball, benches a second Entei ex, replaces Soothing Shore with Rainbow Cave, uses its Energy Zone effect, attaches Fire Energy, and plays Repel to bring opponent's Rattata Active in place of Vulpix. No attack or point. |
+| 105–144s, opponent turn 3 | Opponent benches further Alolan Vulpix, evolves Active Rattata into Team Rocket's Raticate ex, and its Thieving Incisors moves Fire Energy from owner Entei to Raticate. Opponent plays Starting Plains over Rainbow Cave, giving Basic Pokémon +20 HP, then Raticate's Boost Dash deals 70 to owner Entei. Score remains 0–0. |
+| 144–195s, owner turn 4 | Owner's Lucky Ice Pop heals Active Entei in repeated increments, Flame Patch restores Fire Energy, and Sabrina brings Alolan Vulpix Active. Entei's Blazing Beatdown deals 60, leaving the Vulpix at 20 HP while Starting Plains remains in play. No point yet. |
+| 195–246s, opponent turn 5 | Opponent evolves a second Team Rocket's Rattata into Raticate ex, uses Thieving Incisors to move another Fire Energy from Active Entei, and plays Copycat. The opponent returns an Energy-equipped Raticate ex to Active; Boost Dash deals 70. No knockout; score 0–0. |
+| 246–285s, owner turn 6 | Owner uses Lucky Ice Pop again, adds Giant Cape to each Entei ex, and readies the Active one with Fire Energy. Blazing Beatdown deals 60 to Active Raticate ex, leaving it at 90 HP under its 150-HP display. No points. |
+| 285–321s, opponent turn 7 | Opponent forces/switches the two owner Entei ex so the healthier second copy becomes Active around 300s; the exact played card is not confidently readable. An Alolan Vulpix evolves to Alolan Ninetales ex on the Bench around 312–318s. Raticate ex's Boost Dash deals 70 to the new Active Entei, leaving it at 110 HP under Starting Plains. No points. |
+| 321–369s, owner turn 8 | Owner replaces Starting Plains with Rainbow Cave around 330–333s. Removing Starting Plains' +20 Basic HP makes the opponent's previously damaged Alolan Vulpix, displayed at 20 HP, be knocked out, so owner takes **1 point** around 339s. Owner uses Rainbow Cave, Flame Patch, and Pokémon Center Lady (heals Active Entei by 30, from 90 to 120). Entei attacks with Blazing Beatdown around 363s for 60, reducing Active Raticate ex from 90 to 30 HP. Score 1–0. |
+| 369–411s, opponent turn 9 | Opponent promotes Alolan Ninetales ex with two Water Energy to Active. A switch effect around 390s brings the owner's damaged first Entei ex Active; exact card is not confidently readable. Ninetales ex's Binding Snow for 80 knocks out that Entei ex around 399–405s. Opponent takes **2 points**, making score owner 1, Maru 2. The surviving Entei ex is promoted. |
+| 411–429s, owner turn 10 and terminal | Owner replaces Rainbow Cave with Starting Plains around 414–420s and uses Cyrus around 423s to pull the 30-HP damaged Raticate ex from the opponent's Bench to Active. Before an owner attack or further point, **“Your opponent conceded”** appears around 429s. The match is a win by concession at 1–2 points. |
+| 429–435.632s | Result transition starts; source ends during card animation. No separate Victory text is visible. |
+
+## Evidence and limits
+
+`contact_01.jpg` through `contact_13.jpg` cover the complete source in three-second steps, with targeted selected frames in `frames/`. Key states: `contact_01.jpg` matchup/setup; `contact_04.jpg` Stadium/Raticate development; `contact_06.jpg` owner early attacks; `contact_09.jpg` forced switch and Ninetales evolution; `contact_10.jpg` Rainbow Cave replacement, Vulpix knockout and point, Center Lady; `contact_11.jpg` Raticate to 30 HP and Ninetales promotion; `contact_12.jpg` first Entei knockout, owner turn 10, Cyrus, concession; `contact_13.jpg` ending animation. The full review includes intermediate turns, not solely opening and ending. Some exact coin outcomes and the identities of the two opponent switch effects are not reliably legible. Only seen owner cards are listed, not an inferred complete deck. The ranked or PvP submode is not claimed from visual evidence.

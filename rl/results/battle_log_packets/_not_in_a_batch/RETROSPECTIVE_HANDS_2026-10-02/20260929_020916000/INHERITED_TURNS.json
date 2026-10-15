@@ -1,0 +1,62 @@
+{
+  "source": "20260929_020916000_iOS.MP4",
+  "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260929_020916000_iOS_sol\\REVIEW.md",
+  "accepted_review_sha256": "1155f98a5d540f800b18cf65bd5220b864bba3699f4cffb5167c618c38d5caaa",
+  "rows": [
+    {
+      "turn_number": 1,
+      "accepted_source_line": 10,
+      "verbatim_accepted_row": "| Owner turn 1, ~00:28-00:52 | Owner equips Giant Cape, raising Entei ex to 160 HP, plays Rainbow Cave and Copycat, and uses Entei's Legendary Pulse draw. No Bench Pokemon or attached Energy is visible by the turn change. [Opening board](evidence/t0024_open_board.jpg). |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 2,
+      "accepted_source_line": 11,
+      "verbatim_accepted_row": "| Opponent turn 2, ~00:52-02:12 | Victini remains Active while opponent uses a Poke Ball and develops two Team Rocket's Moltres ex plus Houndour (60 HP) on Bench. The opponent brings one Moltres ex Active and its Heat Charged flips three heads, placing Fire Energy on it. Victini's Victory Star icon is visible. [Ordinary board](evidence/t0112_mid_board.jpg), [Heat Charged](evidence/t0208_heat_charged.jpg). |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 3,
+      "accepted_source_line": 12,
+      "verbatim_accepted_row": "| Owner turn 3, ~02:12-02:48 | Owner uses Rainbow Cave and Flame Patch, develops Fire Energy on Active Entei ex, and Blazing Beatdown deals 60 to Active Moltres ex, taking it from 130 to 70 HP. Score stays 0-0. [Build](evidence/t0232_owner_build.jpg). |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 4,
+      "accepted_source_line": 13,
+      "verbatim_accepted_row": "| Opponent turn 4, ~02:48-03:24 | A visible +20 attack modifier against the opposing Active Pokemon ex precedes Team Rocket's Moltres ex's Netherwing. The hit displays 150 damage and leaves Entei ex at 10 HP from 160; Moltres discards Fire Energy. The card supplying the +20 is not named here. [Modifier](evidence/t0318_damage_modifier.jpg), [Entei at 10](evidence/t0328_owner_10hp.jpg). |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 5,
+      "accepted_source_line": 14,
+      "verbatim_accepted_row": "| Owner turn 5, ~03:24-04:57 | Owner benches a second Entei ex, equips it with Giant Cape and Fire Energy, then repeatedly uses Lucky Ice Pop on the 10-HP Active Entei. The visible HP climbs to 70; one later flip is tails. Rainbow Cave and Flame Patch are used. Owner replaces Rainbow Cave with Starting Plains, adding 20 HP to Basic Pokemon: Active Entei 70 to 90, Benched Entei 160 to 180, and damaged Active Moltres 70 to 90. Blazing Beatdown deals 120 and KOs that first Moltres ex. Owner takes 2 points. [Healed to 70](evidence/t0408_healed_70hp.jpg), [attack](evidence/t0450_first_attack.jpg), [2 points](evidence/t0456_first_points.jpg). |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 6,
+      "accepted_source_line": 15,
+      "verbatim_accepted_row": "| Opponent turn 6, ~04:57-05:52 | Houndour is promoted and evolves into Mega Houndoom ex (190 HP), which becomes Active. Grim Hound Flare flips one head for 80 damage; owner's Active Entei drops from 90 to 10 HP. Opponent score remains 0. [Mega Houndoom](evidence/t0704_mega_cape.jpg), source 05:28-05:52. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 7,
+      "accepted_source_line": 16,
+      "verbatim_accepted_row": "| Owner turn 7, ~05:52-06:32 | Owner plays Sabrina, and opponent chooses the **second** Team Rocket's Moltres ex to replace Mega Houndoom ex Active. Under Starting Plains it has 150 HP. First Entei ex uses its 120-damage Blazing Beatdown, leaving this Moltres at 30 HP. Owner's score remains 2. [Damage](evidence/t0624_second_moltres_attack.jpg), [30-HP Moltres](evidence/t0632_second_moltres_30hp.jpg). |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 8,
+      "accepted_source_line": 17,
+      "verbatim_accepted_row": "| Opponent turn 8, ~06:32-07:38 | Opponent plays Copycat, later moves Mega Houndoom ex back Active while the 30-HP Moltres stays Benched. The exact switching card or payment is not established. Giant Cape raises Mega Houndoom ex from 190 to 210 HP. Grim Hound Flare flips one head and deals 80, KOing the 10-HP first Entei ex. Opponent gains 2 points. [Cape board](evidence/t0704_mega_cape.jpg), [KO hit](evidence/t0732_entei_ko.jpg), [opponent points](evidence/t0740_opponent_points.jpg). |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 9,
+      "accepted_source_line": 18,
+      "verbatim_accepted_row": "| Owner turn 9 and result, ~07:38-08:09.742 | Owner promotes the fresh second Entei ex (180 HP with Starting Plains and Giant Cape), **then** plays Cyrus to pull the opponent's damaged 30-HP second Moltres ex Active. Entei ex's Blazing Beatdown KOs it, gives owner the third point needed for the displayed win, and the named Victory screen follows. [Pre-Cyrus board](evidence/t0744_pre_cyrus.jpg), [Cyrus](evidence/t0749_cyrus.jpg), [final board](evidence/t0754_final_board.jpg), [attack](evidence/t0801_final_attack.jpg), [third point](evidence/t0804_third_point.jpg), [Victory](evidence/t0809_victory.jpg). |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    }
+  ],
+  "limits": "Only explicitly turn-numbered accepted prose is copied. Zero rows means format unavailable, not zero game turns. This is reference scaffolding, not a completed capture ledger."
+}

@@ -1,0 +1,68 @@
+{
+  "accepted": true,
+  "reviewer": "/root/check_210823",
+  "checked_at_utc": "2026-10-12T23:54:56.243248+00:00",
+  "revision": 2,
+  "video_basename": "20261012_210823000_iOS.MP4",
+  "source_sha256": "ca0f516306d5ffd8bf18326d4057d357160f77aaa019efdfd87303336b1291b9",
+  "accepted_input_sha256": {
+    "REVIEW.md": "0babfb33e66b71b5678336a2f6aa1381a7b39e21f03679cceffe2feedc96d658",
+    "COVERAGE.md": "3ee0a5c1a3f22c34546d4bc676d9aeb92877812d59fac684687d99f09c35bf8c",
+    "SUMMARY.json": "8297430ccd8eab07301e1d5f1acc9244db711632039c4081c7f9bd773634c7a5",
+    "UNCERTAINTIES.json": "f9418139ad95dd178611256ecfb71650f18dd536209b1011b05372331083ad73",
+    "PAUSE_GAME.json": "97473543190b9bc56889403d405bf069fae85a1b3eabfb86e8b06976c1e6c4b9",
+    "DECK_USED.json": "fd579d65645a9b79319ef20503055c0858f0e14a62c6aa41aa37b94e72d31322",
+    "TURN_LEDGER.json": "60e10271a374f6bc201a9537eea397df9191f14bef316edd2c6bdfe7d8afa801",
+    "TURN_EVIDENCE.json": "00f9eeef75fc8df1b70cab467d5cd466e5c40db8584253d9b57e6e4a90f7e964"
+  },
+  "required_repairs": [],
+  "check_scope": "Independent bounded semantic correction recheck of R1-R3 and related packet consistency, retaining previously passed opening, individual reveals, ordinary turn and hand checks.",
+  "rejected_receipt_preserved": true,
+  "rejected_receipt_sha256": "36dd3ef10fc33db819b61f4a75bed48ed925159eb7f91627aa104ed7259772a5",
+  "source_rehashed": false,
+  "new_source_decode_in_recheck": false,
+  "checks": {
+    "R1_terminal_cause": {
+      "passed": true,
+      "finding": "Observed opponent concession at 430, 430.5 and 431 seconds is now recorded consistently across prose, summary, game packet, ledger events and evidence. No residual terminal-cause uncertainty remains. Prior fresh direct source frame at 430 confirms the retained native frames.",
+      "evidence_ids": [
+        "native_0430.00",
+        "native_0430.50",
+        "native_0431.00",
+        "native_0439.00"
+      ]
+    },
+    "R2_failed_normal_draw": {
+      "passed": true,
+      "finding": "Explicit empty owner deck and failed draw at 428 and 428.5 are recorded as observed system events. No card enters the three-card hand; no owner voluntary play or successful draw timestamp is invented.",
+      "evidence_ids": [
+        "native_0428.00",
+        "native_0428.50"
+      ]
+    },
+    "R3_energy_zone_phase_binding": {
+      "passed": true,
+      "finding": "All 48 player/start-end zone records match ENERGY_ZONE_AUDIT and its 23 native frame pairs inspected in three contact sheets. Empty opponent current at 87 is zero/unavailable. Absent owner previews at 117, 206.5 and 292, obscured opponent preview at 166, and both absent previews at 200 remain null with specific limits. Other visible circles/previews retain directly observed values.",
+      "native_frames_checked": 23,
+      "player_boundary_records_checked": 48,
+      "audit": "energy_zone_audit/ENERGY_ZONE_AUDIT.json"
+    },
+    "last_board_vs_result": {
+      "passed": true,
+      "finding": "Last observed board 0-1 remains separate from Victory versus Hons and unopened final result statistics."
+    },
+    "preserved_limits": {
+      "passed": true,
+      "finding": "Missing live-log deck snapshot, unopened discard contents, opponent Colorless origin, unreadable small Alolan Meowth ability and hidden fan/identities remain explicit."
+    },
+    "final_input_identity": {
+      "passed": true,
+      "finding": "All eight current file hashes exactly equal REPAIR_FINAL_HASHES revision 2."
+    }
+  },
+  "primary_files_mutated": false,
+  "registration_performed": false,
+  "archive_performed": false,
+  "external_write_performed": false,
+  "acceptance_limit": "Independent source-bound packet acceptance confirms the submitted review and recording limits. Registration, archive and external log verification remain root shared-writer work."
+}

@@ -1,0 +1,5955 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261004_213625000_iOS_game1",
+  "source_video": "20261004_213625000_iOS.MP4",
+  "source_sha256": "aa7e935b335a2dfe11e43783f260698997845f7c85de8d6b1db976b7bf794225",
+  "frames": [
+    {
+      "evidence_id": "F0000.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 0.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0000.00.png",
+      "bottom_fifth": "turn_evidence/t0000.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0000.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0002.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 2.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0002.00.png",
+      "bottom_fifth": "turn_evidence/t0002.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0002.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0004.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 4.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0004.00.png",
+      "bottom_fifth": "turn_evidence/t0004.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0004.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0006.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 6.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0006.00.png",
+      "bottom_fifth": "turn_evidence/t0006.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0006.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0008.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 8.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0008.00.png",
+      "bottom_fifth": "turn_evidence/t0008.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0008.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0010.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 10.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0010.00.png",
+      "bottom_fifth": "turn_evidence/t0010.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0010.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0015.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 15.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0015.00.png",
+      "bottom_fifth": "turn_evidence/t0015.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0015.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0020.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 20.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0020.00.png",
+      "bottom_fifth": "turn_evidence/t0020.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0020.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0025.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 25.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0025.00.png",
+      "bottom_fifth": "turn_evidence/t0025.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0025.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0030.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 30.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0030.00.png",
+      "bottom_fifth": "turn_evidence/t0030.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0030.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0031.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 31.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0031.00.png",
+      "bottom_fifth": "turn_evidence/t0031.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0031.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0032.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 32.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0032.00.png",
+      "bottom_fifth": "turn_evidence/t0032.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0032.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0033.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 33.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0033.00.png",
+      "bottom_fifth": "turn_evidence/t0033.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0033.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0034.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 34.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0034.00.png",
+      "bottom_fifth": "turn_evidence/t0034.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0034.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0037.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 37.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0037.00.png",
+      "bottom_fifth": "turn_evidence/t0037.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0037.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0040.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 40.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0040.00.png",
+      "bottom_fifth": "turn_evidence/t0040.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0040.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0041.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 41.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0041.00.png",
+      "bottom_fifth": "turn_evidence/t0041.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0041.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0042.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 42.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0042.00.png",
+      "bottom_fifth": "turn_evidence/t0042.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0042.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0043.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 43.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0043.00.png",
+      "bottom_fifth": "turn_evidence/t0043.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0043.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0044.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 44.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0044.00.png",
+      "bottom_fifth": "turn_evidence/t0044.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0044.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0046.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 46.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0046.00.png",
+      "bottom_fifth": "turn_evidence/t0046.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0046.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0047.50",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 47.5,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0047.50.png",
+      "bottom_fifth": "turn_evidence/t0047.50_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0047.50_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0049.50",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 49.5,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0049.50.png",
+      "bottom_fifth": "turn_evidence/t0049.50_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0049.50_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0052.50",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 52.5,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0052.50.png",
+      "bottom_fifth": "turn_evidence/t0052.50_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0052.50_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0056.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 56.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0056.00.png",
+      "bottom_fifth": "turn_evidence/t0056.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0056.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0058.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 58.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0058.00.png",
+      "bottom_fifth": "turn_evidence/t0058.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0058.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0059.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 59.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0059.00.png",
+      "bottom_fifth": "turn_evidence/t0059.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0059.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0061.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 61.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0061.00.png",
+      "bottom_fifth": "turn_evidence/t0061.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0061.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0067.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 67.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0067.00.png",
+      "bottom_fifth": "turn_evidence/t0067.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0067.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0070.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 70.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0070.00.png",
+      "bottom_fifth": "turn_evidence/t0070.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0070.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0072.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 72.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0072.00.png",
+      "bottom_fifth": "turn_evidence/t0072.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0072.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0073.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 73.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0073.00.png",
+      "bottom_fifth": "turn_evidence/t0073.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0073.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0075.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 75.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0075.00.png",
+      "bottom_fifth": "turn_evidence/t0075.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0075.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0076.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 76.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0076.00.png",
+      "bottom_fifth": "turn_evidence/t0076.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0076.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0077.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 77.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0077.00.png",
+      "bottom_fifth": "turn_evidence/t0077.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0077.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0078.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 78.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0078.00.png",
+      "bottom_fifth": "turn_evidence/t0078.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0078.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0080.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 80.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0080.00.png",
+      "bottom_fifth": "turn_evidence/t0080.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0080.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0081.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 81.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0081.00.png",
+      "bottom_fifth": "turn_evidence/t0081.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0081.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0082.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 82.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0082.00.png",
+      "bottom_fifth": "turn_evidence/t0082.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0082.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0089.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 89.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0089.00.png",
+      "bottom_fifth": "turn_evidence/t0089.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0089.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0091.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 91.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0091.00.png",
+      "bottom_fifth": "turn_evidence/t0091.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0091.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0093.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 93.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0093.00.png",
+      "bottom_fifth": "turn_evidence/t0093.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0093.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0097.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 97.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0097.00.png",
+      "bottom_fifth": "turn_evidence/t0097.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0097.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0124.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 124.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0124.00.png",
+      "bottom_fifth": "turn_evidence/t0124.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0124.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0125.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 125.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0125.00.png",
+      "bottom_fifth": "turn_evidence/t0125.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0125.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0126.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 126.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0126.00.png",
+      "bottom_fifth": "turn_evidence/t0126.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0126.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0128.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 128.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0128.00.png",
+      "bottom_fifth": "turn_evidence/t0128.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0128.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0130.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 130.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0130.00.png",
+      "bottom_fifth": "turn_evidence/t0130.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0130.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0131.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 131.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0131.00.png",
+      "bottom_fifth": "turn_evidence/t0131.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0131.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0134.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 134.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0134.00.png",
+      "bottom_fifth": "turn_evidence/t0134.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0134.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0135.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 135.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0135.00.png",
+      "bottom_fifth": "turn_evidence/t0135.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0135.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0136.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 136.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0136.00.png",
+      "bottom_fifth": "turn_evidence/t0136.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0136.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0137.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 137.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0137.00.png",
+      "bottom_fifth": "turn_evidence/t0137.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0137.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0138.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 138.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0138.00.png",
+      "bottom_fifth": "turn_evidence/t0138.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0138.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0140.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 140.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0140.00.png",
+      "bottom_fifth": "turn_evidence/t0140.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0140.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0143.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 143.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0143.00.png",
+      "bottom_fifth": "turn_evidence/t0143.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0143.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0145.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 145.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0145.00.png",
+      "bottom_fifth": "turn_evidence/t0145.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0145.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0148.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 148.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0148.00.png",
+      "bottom_fifth": "turn_evidence/t0148.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0148.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0152.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 152.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0152.00.png",
+      "bottom_fifth": "turn_evidence/t0152.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0152.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0154.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 154.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0154.00.png",
+      "bottom_fifth": "turn_evidence/t0154.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0154.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0159.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 159.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0159.00.png",
+      "bottom_fifth": "turn_evidence/t0159.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0159.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0167.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 167.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0167.00.png",
+      "bottom_fifth": "turn_evidence/t0167.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0167.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0168.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 168.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0168.00.png",
+      "bottom_fifth": "turn_evidence/t0168.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0168.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0171.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 171.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0171.00.png",
+      "bottom_fifth": "turn_evidence/t0171.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0171.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0181.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 181.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0181.00.png",
+      "bottom_fifth": "turn_evidence/t0181.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0181.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0182.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 182.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0182.00.png",
+      "bottom_fifth": "turn_evidence/t0182.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0182.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0189.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 189.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0189.00.png",
+      "bottom_fifth": "turn_evidence/t0189.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0189.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0190.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 190.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0190.00.png",
+      "bottom_fifth": "turn_evidence/t0190.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0190.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0191.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 191.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0191.00.png",
+      "bottom_fifth": "turn_evidence/t0191.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0191.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0192.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 192.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0192.00.png",
+      "bottom_fifth": "turn_evidence/t0192.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0192.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0193.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 193.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0193.00.png",
+      "bottom_fifth": "turn_evidence/t0193.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0193.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0194.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 194.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0194.00.png",
+      "bottom_fifth": "turn_evidence/t0194.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0194.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0195.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 195.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0195.00.png",
+      "bottom_fifth": "turn_evidence/t0195.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0195.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0197.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 197.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0197.00.png",
+      "bottom_fifth": "turn_evidence/t0197.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0197.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0198.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 198.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0198.00.png",
+      "bottom_fifth": "turn_evidence/t0198.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0198.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0199.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 199.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0199.00.png",
+      "bottom_fifth": "turn_evidence/t0199.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0199.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0201.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 201.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0201.00.png",
+      "bottom_fifth": "turn_evidence/t0201.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0201.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0204.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 204.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0204.00.png",
+      "bottom_fifth": "turn_evidence/t0204.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0204.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0206.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 206.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0206.00.png",
+      "bottom_fifth": "turn_evidence/t0206.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0206.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0209.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 209.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0209.00.png",
+      "bottom_fifth": "turn_evidence/t0209.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0209.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0213.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 213.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0213.00.png",
+      "bottom_fifth": "turn_evidence/t0213.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0213.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0217.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 217.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0217.00.png",
+      "bottom_fifth": "turn_evidence/t0217.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0217.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0218.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 218.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0218.00.png",
+      "bottom_fifth": "turn_evidence/t0218.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0218.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0219.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 219.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0219.00.png",
+      "bottom_fifth": "turn_evidence/t0219.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0219.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0221.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 221.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0221.00.png",
+      "bottom_fifth": "turn_evidence/t0221.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0221.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0222.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 222.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0222.00.png",
+      "bottom_fifth": "turn_evidence/t0222.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0222.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0223.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 223.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0223.00.png",
+      "bottom_fifth": "turn_evidence/t0223.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0223.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0224.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 224.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0224.00.png",
+      "bottom_fifth": "turn_evidence/t0224.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0224.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0230.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 230.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0230.00.png",
+      "bottom_fifth": "turn_evidence/t0230.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0230.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0232.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 232.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0232.00.png",
+      "bottom_fifth": "turn_evidence/t0232.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0232.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0240.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 240.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0240.00.png",
+      "bottom_fifth": "turn_evidence/t0240.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0240.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0241.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 241.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0241.00.png",
+      "bottom_fifth": "turn_evidence/t0241.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0241.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0243.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 243.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0243.00.png",
+      "bottom_fifth": "turn_evidence/t0243.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0243.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0244.50",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 244.5,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0244.50.png",
+      "bottom_fifth": "turn_evidence/t0244.50_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0244.50_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0245.50",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 245.5,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0245.50.png",
+      "bottom_fifth": "turn_evidence/t0245.50_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0245.50_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0247.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 247.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0247.00.png",
+      "bottom_fifth": "turn_evidence/t0247.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0247.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0250.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 250.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0250.00.png",
+      "bottom_fifth": "turn_evidence/t0250.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0250.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0255.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 255.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0255.00.png",
+      "bottom_fifth": "turn_evidence/t0255.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0255.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0256.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 256.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0256.00.png",
+      "bottom_fifth": "turn_evidence/t0256.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0256.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0259.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 259.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0259.00.png",
+      "bottom_fifth": "turn_evidence/t0259.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0259.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0260.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 260.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0260.00.png",
+      "bottom_fifth": "turn_evidence/t0260.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0260.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0265.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 265.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0265.00.png",
+      "bottom_fifth": "turn_evidence/t0265.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0265.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0269.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 269.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0269.00.png",
+      "bottom_fifth": "turn_evidence/t0269.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0269.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0270.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 270.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0270.00.png",
+      "bottom_fifth": "turn_evidence/t0270.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0270.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0276.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 276.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0276.00.png",
+      "bottom_fifth": "turn_evidence/t0276.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0276.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0282.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 282.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0282.00.png",
+      "bottom_fifth": "turn_evidence/t0282.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0282.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0284.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 284.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0284.00.png",
+      "bottom_fifth": "turn_evidence/t0284.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0284.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0307.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 307.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0307.00.png",
+      "bottom_fifth": "turn_evidence/t0307.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0307.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0308.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 308.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0308.00.png",
+      "bottom_fifth": "turn_evidence/t0308.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0308.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0309.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 309.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0309.00.png",
+      "bottom_fifth": "turn_evidence/t0309.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0309.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0310.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 310.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0310.00.png",
+      "bottom_fifth": "turn_evidence/t0310.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0310.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0311.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 311.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0311.00.png",
+      "bottom_fifth": "turn_evidence/t0311.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0311.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0312.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 312.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0312.00.png",
+      "bottom_fifth": "turn_evidence/t0312.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0312.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0314.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 314.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0314.00.png",
+      "bottom_fifth": "turn_evidence/t0314.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0314.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0315.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 315.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0315.00.png",
+      "bottom_fifth": "turn_evidence/t0315.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0315.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0319.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 319.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0319.00.png",
+      "bottom_fifth": "turn_evidence/t0319.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0319.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0322.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 322.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0322.00.png",
+      "bottom_fifth": "turn_evidence/t0322.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0322.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0324.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 324.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0324.00.png",
+      "bottom_fifth": "turn_evidence/t0324.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0324.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0326.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 326.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0326.00.png",
+      "bottom_fifth": "turn_evidence/t0326.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0326.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0327.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 327.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0327.00.png",
+      "bottom_fifth": "turn_evidence/t0327.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0327.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0328.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 328.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0328.00.png",
+      "bottom_fifth": "turn_evidence/t0328.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0328.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0329.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 329.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0329.00.png",
+      "bottom_fifth": "turn_evidence/t0329.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0329.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0330.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 330.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0330.00.png",
+      "bottom_fifth": "turn_evidence/t0330.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0330.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0331.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 331.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0331.00.png",
+      "bottom_fifth": "turn_evidence/t0331.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0331.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0332.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 332.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0332.00.png",
+      "bottom_fifth": "turn_evidence/t0332.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0332.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0333.50",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 333.5,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0333.50.png",
+      "bottom_fifth": "turn_evidence/t0333.50_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0333.50_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0334.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 334.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0334.00.png",
+      "bottom_fifth": "turn_evidence/t0334.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0334.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0334.50",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 334.5,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0334.50.png",
+      "bottom_fifth": "turn_evidence/t0334.50_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0334.50_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0335.50",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 335.5,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0335.50.png",
+      "bottom_fifth": "turn_evidence/t0335.50_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0335.50_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0336.50",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 336.5,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0336.50.png",
+      "bottom_fifth": "turn_evidence/t0336.50_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0336.50_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0338.50",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 338.5,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0338.50.png",
+      "bottom_fifth": "turn_evidence/t0338.50_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0338.50_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0341.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 341.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0341.00.png",
+      "bottom_fifth": "turn_evidence/t0341.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0341.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0341.50",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 341.5,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0341.50.png",
+      "bottom_fifth": "turn_evidence/t0341.50_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0341.50_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0346.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 346.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0346.00.png",
+      "bottom_fifth": "turn_evidence/t0346.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0346.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0348.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 348.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0348.00.png",
+      "bottom_fifth": "turn_evidence/t0348.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0348.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0351.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 351.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0351.00.png",
+      "bottom_fifth": "turn_evidence/t0351.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0351.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0352.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 352.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0352.00.png",
+      "bottom_fifth": "turn_evidence/t0352.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0352.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0353.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 353.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0353.00.png",
+      "bottom_fifth": "turn_evidence/t0353.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0353.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0354.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 354.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0354.00.png",
+      "bottom_fifth": "turn_evidence/t0354.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0354.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0355.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 355.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0355.00.png",
+      "bottom_fifth": "turn_evidence/t0355.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0355.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0356.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 356.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0356.00.png",
+      "bottom_fifth": "turn_evidence/t0356.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0356.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0357.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 357.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0357.00.png",
+      "bottom_fifth": "turn_evidence/t0357.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0357.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0358.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 358.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0358.00.png",
+      "bottom_fifth": "turn_evidence/t0358.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0358.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0359.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 359.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0359.00.png",
+      "bottom_fifth": "turn_evidence/t0359.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0359.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0360.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 360.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0360.00.png",
+      "bottom_fifth": "turn_evidence/t0360.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0360.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0363.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 363.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0363.00.png",
+      "bottom_fifth": "turn_evidence/t0363.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0363.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0366.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 366.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0366.00.png",
+      "bottom_fifth": "turn_evidence/t0366.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0366.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0370.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 370.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0370.00.png",
+      "bottom_fifth": "turn_evidence/t0370.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0370.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0371.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 371.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0371.00.png",
+      "bottom_fifth": "turn_evidence/t0371.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0371.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0372.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 372.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0372.00.png",
+      "bottom_fifth": "turn_evidence/t0372.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0372.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0375.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 375.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0375.00.png",
+      "bottom_fifth": "turn_evidence/t0375.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0375.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0376.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 376.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0376.00.png",
+      "bottom_fifth": "turn_evidence/t0376.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0376.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0377.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 377.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0377.00.png",
+      "bottom_fifth": "turn_evidence/t0377.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0377.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0378.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 378.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0378.00.png",
+      "bottom_fifth": "turn_evidence/t0378.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0378.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0379.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 379.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0379.00.png",
+      "bottom_fifth": "turn_evidence/t0379.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0379.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0380.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 380.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0380.00.png",
+      "bottom_fifth": "turn_evidence/t0380.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0380.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0381.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 381.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0381.00.png",
+      "bottom_fifth": "turn_evidence/t0381.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0381.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0384.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 384.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0384.00.png",
+      "bottom_fifth": "turn_evidence/t0384.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0384.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0387.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 387.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0387.00.png",
+      "bottom_fifth": "turn_evidence/t0387.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0387.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0388.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 388.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0388.00.png",
+      "bottom_fifth": "turn_evidence/t0388.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0388.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0389.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 389.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0389.00.png",
+      "bottom_fifth": "turn_evidence/t0389.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0389.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0390.50",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 390.5,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0390.50.png",
+      "bottom_fifth": "turn_evidence/t0390.50_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0390.50_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0391.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 391.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0391.00.png",
+      "bottom_fifth": "turn_evidence/t0391.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0391.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0391.50",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 391.5,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0391.50.png",
+      "bottom_fifth": "turn_evidence/t0391.50_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0391.50_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0391.60",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 391.6,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0391.60.png",
+      "bottom_fifth": "turn_evidence/t0391.60_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0391.60_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0391.80",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 391.8,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0391.80.png",
+      "bottom_fifth": "turn_evidence/t0391.80_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0391.80_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0392.20",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 392.2,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0392.20.png",
+      "bottom_fifth": "turn_evidence/t0392.20_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0392.20_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0392.50",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 392.5,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0392.50.png",
+      "bottom_fifth": "turn_evidence/t0392.50_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0392.50_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0392.60",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 392.6,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0392.60.png",
+      "bottom_fifth": "turn_evidence/t0392.60_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0392.60_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0393.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 393.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0393.00.png",
+      "bottom_fifth": "turn_evidence/t0393.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0393.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0393.50",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 393.5,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0393.50.png",
+      "bottom_fifth": "turn_evidence/t0393.50_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0393.50_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0394.60",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 394.6,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0394.60.png",
+      "bottom_fifth": "turn_evidence/t0394.60_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0394.60_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0395.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 395.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0395.00.png",
+      "bottom_fifth": "turn_evidence/t0395.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0395.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0396.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 396.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0396.00.png",
+      "bottom_fifth": "turn_evidence/t0396.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0396.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0397.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 397.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0397.00.png",
+      "bottom_fifth": "turn_evidence/t0397.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0397.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0397.60",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 397.6,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0397.60.png",
+      "bottom_fifth": "turn_evidence/t0397.60_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0397.60_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0398.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 398.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0398.00.png",
+      "bottom_fifth": "turn_evidence/t0398.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0398.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0399.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 399.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0399.00.png",
+      "bottom_fifth": "turn_evidence/t0399.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0399.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0400.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 400.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0400.00.png",
+      "bottom_fifth": "turn_evidence/t0400.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0400.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0401.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 401.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0401.00.png",
+      "bottom_fifth": "turn_evidence/t0401.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0401.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0401.50",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 401.5,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0401.50.png",
+      "bottom_fifth": "turn_evidence/t0401.50_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0401.50_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0402.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 402.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0402.00.png",
+      "bottom_fifth": "turn_evidence/t0402.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0402.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0402.20",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 402.2,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0402.20.png",
+      "bottom_fifth": "turn_evidence/t0402.20_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0402.20_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0402.50",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 402.5,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0402.50.png",
+      "bottom_fifth": "turn_evidence/t0402.50_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0402.50_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0403.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 403.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0403.00.png",
+      "bottom_fifth": "turn_evidence/t0403.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0403.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0404.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 404.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0404.00.png",
+      "bottom_fifth": "turn_evidence/t0404.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0404.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0405.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 405.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0405.00.png",
+      "bottom_fifth": "turn_evidence/t0405.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0405.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0406.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 406.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0406.00.png",
+      "bottom_fifth": "turn_evidence/t0406.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0406.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0407.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 407.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0407.00.png",
+      "bottom_fifth": "turn_evidence/t0407.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0407.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0408.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 408.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0408.00.png",
+      "bottom_fifth": "turn_evidence/t0408.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0408.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0409.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 409.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0409.00.png",
+      "bottom_fifth": "turn_evidence/t0409.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0409.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0410.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 410.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0410.00.png",
+      "bottom_fifth": "turn_evidence/t0410.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0410.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0410.50",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 410.5,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0410.50.png",
+      "bottom_fifth": "turn_evidence/t0410.50_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0410.50_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0411.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 411.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0411.00.png",
+      "bottom_fifth": "turn_evidence/t0411.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0411.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0412.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 412.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0412.00.png",
+      "bottom_fifth": "turn_evidence/t0412.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0412.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0413.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 413.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0413.00.png",
+      "bottom_fifth": "turn_evidence/t0413.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0413.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0414.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 414.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0414.00.png",
+      "bottom_fifth": "turn_evidence/t0414.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0414.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0414.50",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 414.5,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0414.50.png",
+      "bottom_fifth": "turn_evidence/t0414.50_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0414.50_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0415.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 415.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0415.00.png",
+      "bottom_fifth": "turn_evidence/t0415.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0415.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0415.50",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 415.5,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0415.50.png",
+      "bottom_fifth": "turn_evidence/t0415.50_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0415.50_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0416.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 416.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0416.00.png",
+      "bottom_fifth": "turn_evidence/t0416.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0416.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0417.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 417.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0417.00.png",
+      "bottom_fifth": "turn_evidence/t0417.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0417.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0418.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 418.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0418.00.png",
+      "bottom_fifth": "turn_evidence/t0418.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0418.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0419.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 419.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0419.00.png",
+      "bottom_fifth": "turn_evidence/t0419.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0419.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0420.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 420.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0420.00.png",
+      "bottom_fifth": "turn_evidence/t0420.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0420.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0427.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 427.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0427.00.png",
+      "bottom_fifth": "turn_evidence/t0427.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0427.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0430.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 430.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0430.00.png",
+      "bottom_fifth": "turn_evidence/t0430.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0430.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0440.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 440.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0440.00.png",
+      "bottom_fifth": "turn_evidence/t0440.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0440.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0441.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 441.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0441.00.png",
+      "bottom_fifth": "turn_evidence/t0441.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0441.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0442.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 442.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0442.00.png",
+      "bottom_fifth": "turn_evidence/t0442.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0442.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0443.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 443.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0443.00.png",
+      "bottom_fifth": "turn_evidence/t0443.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0443.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0444.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 444.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0444.00.png",
+      "bottom_fifth": "turn_evidence/t0444.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0444.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0445.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 445.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0445.00.png",
+      "bottom_fifth": "turn_evidence/t0445.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0445.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0446.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 446.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0446.00.png",
+      "bottom_fifth": "turn_evidence/t0446.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0446.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0448.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 448.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0448.00.png",
+      "bottom_fifth": "turn_evidence/t0448.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0448.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0449.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 449.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0449.00.png",
+      "bottom_fifth": "turn_evidence/t0449.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0449.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0450.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 450.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0450.00.png",
+      "bottom_fifth": "turn_evidence/t0450.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0450.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0451.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 451.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0451.00.png",
+      "bottom_fifth": "turn_evidence/t0451.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0451.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0454.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 454.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0454.00.png",
+      "bottom_fifth": "turn_evidence/t0454.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0454.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0457.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 457.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0457.00.png",
+      "bottom_fifth": "turn_evidence/t0457.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0457.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    },
+    {
+      "evidence_id": "F0459.00",
+      "source_video": "20261004_213625000_iOS.MP4",
+      "requested_seek_seconds": 459.0,
+      "actual_frame_timestamp_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "full_frame": "turn_evidence/t0459.00.png",
+      "bottom_fifth": "turn_evidence/t0459.00_bottom.png",
+      "bottom_crop_xyxy": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "top_crop": "turn_evidence/t0459.00_top.png",
+      "top_crop_xyxy": [
+        0,
+        0,
+        1170,
+        607
+      ],
+      "status": "retained_native"
+    }
+  ],
+  "opening_evidence_id": "F0031.00",
+  "owner_turn_captures": [
+    {
+      "turn_number": 1,
+      "draw_end_seconds": 46.5,
+      "draw_end_basis": "dense reveal-to-hand frames inspected",
+      "candidate_frames": [
+        {
+          "offset_seconds": 1.0,
+          "evidence_id": "F0047.50",
+          "status": "suitable_pre_play",
+          "reason": null
+        },
+        {
+          "offset_seconds": 3.0,
+          "evidence_id": "F0049.50",
+          "status": "suitable_pre_play",
+          "reason": null
+        },
+        {
+          "offset_seconds": 6.0,
+          "evidence_id": "F0052.50",
+          "status": "suitable_pre_play",
+          "reason": null
+        }
+      ],
+      "chosen_pre_play_evidence_id": "F0047.50",
+      "chosen_reason": "Unzoomed native hand before first voluntary play; dense same-window candidate used for immediate move on turns7/9/11",
+      "before_end_evidence_id": "F0081.00",
+      "before_end_substitution": null,
+      "end_after_resolution_evidence_id": "F0081.00",
+      "opponent_fan_count": 3
+    },
+    {
+      "turn_number": 3,
+      "draw_end_seconds": 142,
+      "draw_end_basis": "dense reveal-to-hand frames inspected",
+      "candidate_frames": [
+        {
+          "offset_seconds": 1,
+          "evidence_id": "F0143.00",
+          "status": "suitable_pre_play",
+          "reason": null
+        },
+        {
+          "offset_seconds": 3,
+          "evidence_id": "F0145.00",
+          "status": "suitable_pre_play",
+          "reason": null
+        },
+        {
+          "offset_seconds": 6,
+          "evidence_id": "F0148.00",
+          "status": "suitable_pre_play",
+          "reason": null
+        }
+      ],
+      "chosen_pre_play_evidence_id": "F0143.00",
+      "chosen_reason": "Unzoomed native hand before first voluntary play; dense same-window candidate used for immediate move on turns7/9/11",
+      "before_end_evidence_id": "F0167.00",
+      "before_end_substitution": "Last clear hand before attack",
+      "end_after_resolution_evidence_id": "F0181.00",
+      "opponent_fan_count": 3
+    },
+    {
+      "turn_number": 5,
+      "draw_end_seconds": 203,
+      "draw_end_basis": "dense reveal-to-hand frames inspected",
+      "candidate_frames": [
+        {
+          "offset_seconds": 1,
+          "evidence_id": "F0204.00",
+          "status": "suitable_pre_play",
+          "reason": null
+        },
+        {
+          "offset_seconds": 3,
+          "evidence_id": "F0206.00",
+          "status": "suitable_pre_play",
+          "reason": null
+        },
+        {
+          "offset_seconds": 6,
+          "evidence_id": "F0209.00",
+          "status": "unsuitable_already_playing",
+          "reason": "First voluntary action has begun"
+        }
+      ],
+      "chosen_pre_play_evidence_id": "F0204.00",
+      "chosen_reason": "Unzoomed native hand before first voluntary play; dense same-window candidate used for immediate move on turns7/9/11",
+      "before_end_evidence_id": "F0218.00",
+      "before_end_substitution": "Last clear hand before attack",
+      "end_after_resolution_evidence_id": "F0223.00",
+      "opponent_fan_count": 3
+    },
+    {
+      "turn_number": 7,
+      "draw_end_seconds": 244.5,
+      "draw_end_basis": "dense reveal-to-hand frames inspected",
+      "candidate_frames": [
+        {
+          "offset_seconds": 1.0,
+          "evidence_id": "F0245.50",
+          "status": "unsuitable_already_playing",
+          "reason": "First voluntary action has begun"
+        },
+        {
+          "offset_seconds": 2.5,
+          "evidence_id": "F0247.00",
+          "status": "unsuitable_already_playing",
+          "reason": "First voluntary action has begun"
+        },
+        {
+          "offset_seconds": 5.5,
+          "evidence_id": "F0250.00",
+          "status": "unsuitable_already_playing",
+          "reason": "First voluntary action has begun"
+        }
+      ],
+      "chosen_pre_play_evidence_id": "F0244.50",
+      "chosen_reason": "Unzoomed native hand before first voluntary play; dense same-window candidate used for immediate move on turns7/9/11",
+      "before_end_evidence_id": "F0256.00",
+      "before_end_substitution": "Last clear hand before attack",
+      "end_after_resolution_evidence_id": "F0269.00",
+      "opponent_fan_count": 5
+    },
+    {
+      "turn_number": 9,
+      "draw_end_seconds": 335.5,
+      "draw_end_basis": "dense reveal-to-hand frames inspected",
+      "candidate_frames": [
+        {
+          "offset_seconds": 1.0,
+          "evidence_id": "F0336.50",
+          "status": "unsuitable_already_playing",
+          "reason": "First voluntary action has begun"
+        },
+        {
+          "offset_seconds": 3.0,
+          "evidence_id": "F0338.50",
+          "status": "unsuitable_already_playing",
+          "reason": "First voluntary action has begun"
+        },
+        {
+          "offset_seconds": 6.0,
+          "evidence_id": "F0341.50",
+          "status": "unsuitable_already_playing",
+          "reason": "First voluntary action has begun"
+        }
+      ],
+      "chosen_pre_play_evidence_id": "F0335.50",
+      "chosen_reason": "Unzoomed native hand before first voluntary play; dense same-window candidate used for immediate move on turns7/9/11",
+      "before_end_evidence_id": "F0348.00",
+      "before_end_substitution": "Last clear hand before attack",
+      "end_after_resolution_evidence_id": "F0359.00",
+      "opponent_fan_count": 4
+    },
+    {
+      "turn_number": 11,
+      "draw_end_seconds": 391.6,
+      "draw_end_basis": "dense reveal-to-hand frames inspected",
+      "candidate_frames": [
+        {
+          "offset_seconds": 1.0,
+          "evidence_id": "F0392.60",
+          "status": "unsuitable_already_playing",
+          "reason": "First voluntary action has begun"
+        },
+        {
+          "offset_seconds": 3.0,
+          "evidence_id": "F0394.60",
+          "status": "unsuitable_already_playing",
+          "reason": "First voluntary action has begun"
+        },
+        {
+          "offset_seconds": 6.0,
+          "evidence_id": "F0397.60",
+          "status": "unsuitable_already_playing",
+          "reason": "First voluntary action has begun"
+        }
+      ],
+      "chosen_pre_play_evidence_id": "F0391.60",
+      "chosen_reason": "Unzoomed native hand before first voluntary play; dense same-window candidate used for immediate move on turns7/9/11",
+      "before_end_evidence_id": "F0404.00",
+      "before_end_substitution": "Last clear hand before attack",
+      "end_after_resolution_evidence_id": "F0418.00",
+      "opponent_fan_count": 4
+    }
+  ],
+  "discard_snapshots": [],
+  "unavailable_captures": [
+    {
+      "capture": "Opened owner and opponent discard pile snapshots every2-3owner turns",
+      "status": "not_shown",
+      "reason": "Neither discard pile is opened anywhere in source; face-up pile top changes retained without claiming entire pile."
+    }
+  ],
+  "limits": [
+    "Requested seek time differs from an unmeasured actual frame PTS. Native PNG1170x2532, original-resolution crops."
+  ]
+}

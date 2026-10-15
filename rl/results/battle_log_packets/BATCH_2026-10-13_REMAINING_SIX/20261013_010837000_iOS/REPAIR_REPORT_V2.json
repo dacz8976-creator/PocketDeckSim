@@ -1,0 +1,688 @@
+{
+  "rejected_original": "independent_sol/rejected_8_v1",
+  "basis": "Independent source rejection R1-R3 plus bounded retained native reinspection",
+  "repairs": [
+    "R1 Research arrival Rare Candy69, Glimmet70;68 not arrival.",
+    "R2 T5 Muk first202/evolved204, then Glimmet208. Hand3->2->1.",
+    "R3 T5 PawniardDarkness1; T7 Kingambit inherits1 and new attachment toGlimmet1; T9 new attachment toKingambit2; T11 HeavyHelmet first369 then new attachment toMuk1. All start/end typed boards fromT5 onward propagated."
+  ],
+  "owner_energy_after_each_corrected_boundary": [
+    {
+      "turn": 5,
+      "board_at_start": [
+        {
+          "name": "Regigigas",
+          "position": null,
+          "energy": {
+            "total": 0,
+            "by_type": {}
+          }
+        },
+        {
+          "name": "Pawniard",
+          "position": 1,
+          "energy": {
+            "total": 0,
+            "by_type": {}
+          }
+        },
+        {
+          "name": "Alolan Grimer",
+          "position": 3,
+          "energy": {
+            "total": 0,
+            "by_type": {}
+          }
+        }
+      ],
+      "board_after": [
+        {
+          "name": "Regigigas",
+          "position": null,
+          "energy": {
+            "total": 0,
+            "by_type": {}
+          }
+        },
+        {
+          "name": "Pawniard",
+          "position": 1,
+          "energy": {
+            "total": 1,
+            "by_type": {
+              "Darkness": 1
+            }
+          }
+        },
+        {
+          "name": "Glimmet",
+          "position": 2,
+          "energy": {
+            "total": 0,
+            "by_type": {}
+          }
+        },
+        {
+          "name": "Alolan Muk",
+          "position": 3,
+          "energy": {
+            "total": 0,
+            "by_type": {}
+          }
+        }
+      ]
+    },
+    {
+      "turn": 6,
+      "board_at_start": [
+        {
+          "name": "Regigigas",
+          "position": null,
+          "energy": {
+            "total": 0,
+            "by_type": {}
+          }
+        },
+        {
+          "name": "Pawniard",
+          "position": 1,
+          "energy": {
+            "total": 1,
+            "by_type": {
+              "Darkness": 1
+            }
+          }
+        },
+        {
+          "name": "Glimmet",
+          "position": 2,
+          "energy": {
+            "total": 0,
+            "by_type": {}
+          }
+        },
+        {
+          "name": "Alolan Muk",
+          "position": 3,
+          "energy": {
+            "total": 0,
+            "by_type": {}
+          }
+        }
+      ],
+      "board_after": [
+        {
+          "name": "Regigigas",
+          "position": null,
+          "energy": {
+            "total": 0,
+            "by_type": {}
+          }
+        },
+        {
+          "name": "Pawniard",
+          "position": 1,
+          "energy": {
+            "total": 1,
+            "by_type": {
+              "Darkness": 1
+            }
+          }
+        },
+        {
+          "name": "Glimmet",
+          "position": 2,
+          "energy": {
+            "total": 0,
+            "by_type": {}
+          }
+        },
+        {
+          "name": "Alolan Muk",
+          "position": 3,
+          "energy": {
+            "total": 0,
+            "by_type": {}
+          }
+        }
+      ]
+    },
+    {
+      "turn": 7,
+      "board_at_start": [
+        {
+          "name": "Regigigas",
+          "position": null,
+          "energy": {
+            "total": 0,
+            "by_type": {}
+          }
+        },
+        {
+          "name": "Pawniard",
+          "position": 1,
+          "energy": {
+            "total": 1,
+            "by_type": {
+              "Darkness": 1
+            }
+          }
+        },
+        {
+          "name": "Glimmet",
+          "position": 2,
+          "energy": {
+            "total": 0,
+            "by_type": {}
+          }
+        },
+        {
+          "name": "Alolan Muk",
+          "position": 3,
+          "energy": {
+            "total": 0,
+            "by_type": {}
+          }
+        }
+      ],
+      "board_after": [
+        {
+          "name": "Regigigas",
+          "position": null,
+          "energy": {
+            "total": 0,
+            "by_type": {}
+          }
+        },
+        {
+          "name": "Kingambit",
+          "position": 1,
+          "energy": {
+            "total": 1,
+            "by_type": {
+              "Darkness": 1
+            }
+          }
+        },
+        {
+          "name": "Glimmet",
+          "position": 2,
+          "energy": {
+            "total": 1,
+            "by_type": {
+              "Darkness": 1
+            }
+          }
+        },
+        {
+          "name": "Alolan Muk",
+          "position": 3,
+          "energy": {
+            "total": 0,
+            "by_type": {}
+          }
+        }
+      ]
+    },
+    {
+      "turn": 8,
+      "board_at_start": [
+        {
+          "name": "Regigigas",
+          "position": null,
+          "energy": {
+            "total": 0,
+            "by_type": {}
+          }
+        },
+        {
+          "name": "Kingambit",
+          "position": 1,
+          "energy": {
+            "total": 1,
+            "by_type": {
+              "Darkness": 1
+            }
+          }
+        },
+        {
+          "name": "Glimmet",
+          "position": 2,
+          "energy": {
+            "total": 1,
+            "by_type": {
+              "Darkness": 1
+            }
+          }
+        },
+        {
+          "name": "Alolan Muk",
+          "position": 3,
+          "energy": {
+            "total": 0,
+            "by_type": {}
+          }
+        }
+      ],
+      "board_after": [
+        {
+          "name": "Glimmet",
+          "position": null,
+          "energy": {
+            "total": 1,
+            "by_type": {
+              "Darkness": 1
+            }
+          }
+        },
+        {
+          "name": "Kingambit",
+          "position": 1,
+          "energy": {
+            "total": 1,
+            "by_type": {
+              "Darkness": 1
+            }
+          }
+        },
+        {
+          "name": "Alolan Muk",
+          "position": 3,
+          "energy": {
+            "total": 0,
+            "by_type": {}
+          }
+        }
+      ]
+    },
+    {
+      "turn": 9,
+      "board_at_start": [
+        {
+          "name": "Glimmet",
+          "position": null,
+          "energy": {
+            "total": 1,
+            "by_type": {
+              "Darkness": 1
+            }
+          }
+        },
+        {
+          "name": "Kingambit",
+          "position": 1,
+          "energy": {
+            "total": 1,
+            "by_type": {
+              "Darkness": 1
+            }
+          }
+        },
+        {
+          "name": "Alolan Muk",
+          "position": 3,
+          "energy": {
+            "total": 0,
+            "by_type": {}
+          }
+        }
+      ],
+      "board_after": [
+        {
+          "name": "Glimmet",
+          "position": null,
+          "energy": {
+            "total": 1,
+            "by_type": {
+              "Darkness": 1
+            }
+          }
+        },
+        {
+          "name": "Kingambit",
+          "position": 1,
+          "energy": {
+            "total": 2,
+            "by_type": {
+              "Darkness": 2
+            }
+          }
+        },
+        {
+          "name": "Alolan Muk",
+          "position": 3,
+          "energy": {
+            "total": 0,
+            "by_type": {}
+          }
+        }
+      ]
+    },
+    {
+      "turn": 10,
+      "board_at_start": [
+        {
+          "name": "Glimmet",
+          "position": null,
+          "energy": {
+            "total": 1,
+            "by_type": {
+              "Darkness": 1
+            }
+          }
+        },
+        {
+          "name": "Kingambit",
+          "position": 1,
+          "energy": {
+            "total": 2,
+            "by_type": {
+              "Darkness": 2
+            }
+          }
+        },
+        {
+          "name": "Alolan Muk",
+          "position": 3,
+          "energy": {
+            "total": 0,
+            "by_type": {}
+          }
+        }
+      ],
+      "board_after": [
+        {
+          "name": "Glimmet",
+          "position": null,
+          "energy": {
+            "total": 1,
+            "by_type": {
+              "Darkness": 1
+            }
+          }
+        },
+        {
+          "name": "Kingambit",
+          "position": 1,
+          "energy": {
+            "total": 2,
+            "by_type": {
+              "Darkness": 2
+            }
+          }
+        },
+        {
+          "name": "Alolan Muk",
+          "position": 3,
+          "energy": {
+            "total": 0,
+            "by_type": {}
+          }
+        }
+      ]
+    },
+    {
+      "turn": 11,
+      "board_at_start": [
+        {
+          "name": "Glimmet",
+          "position": null,
+          "energy": {
+            "total": 1,
+            "by_type": {
+              "Darkness": 1
+            }
+          }
+        },
+        {
+          "name": "Kingambit",
+          "position": 1,
+          "energy": {
+            "total": 2,
+            "by_type": {
+              "Darkness": 2
+            }
+          }
+        },
+        {
+          "name": "Alolan Muk",
+          "position": 3,
+          "energy": {
+            "total": 0,
+            "by_type": {}
+          }
+        }
+      ],
+      "board_after": [
+        {
+          "name": "Glimmet",
+          "position": null,
+          "energy": {
+            "total": 1,
+            "by_type": {
+              "Darkness": 1
+            }
+          }
+        },
+        {
+          "name": "Kingambit",
+          "position": 1,
+          "energy": {
+            "total": 2,
+            "by_type": {
+              "Darkness": 2
+            }
+          }
+        },
+        {
+          "name": "Alolan Muk",
+          "position": 3,
+          "energy": {
+            "total": 1,
+            "by_type": {
+              "Darkness": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "turn": 12,
+      "board_at_start": [
+        {
+          "name": "Glimmet",
+          "position": null,
+          "energy": {
+            "total": 1,
+            "by_type": {
+              "Darkness": 1
+            }
+          }
+        },
+        {
+          "name": "Kingambit",
+          "position": 1,
+          "energy": {
+            "total": 2,
+            "by_type": {
+              "Darkness": 2
+            }
+          }
+        },
+        {
+          "name": "Alolan Muk",
+          "position": 3,
+          "energy": {
+            "total": 1,
+            "by_type": {
+              "Darkness": 1
+            }
+          }
+        }
+      ],
+      "board_after": [
+        {
+          "name": "Kingambit",
+          "position": null,
+          "energy": {
+            "total": 2,
+            "by_type": {
+              "Darkness": 2
+            }
+          }
+        },
+        {
+          "name": "Alolan Muk",
+          "position": 3,
+          "energy": {
+            "total": 1,
+            "by_type": {
+              "Darkness": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "turn": 13,
+      "board_at_start": [
+        {
+          "name": "Kingambit",
+          "position": null,
+          "energy": {
+            "total": 2,
+            "by_type": {
+              "Darkness": 2
+            }
+          }
+        },
+        {
+          "name": "Alolan Muk",
+          "position": 3,
+          "energy": {
+            "total": 1,
+            "by_type": {
+              "Darkness": 1
+            }
+          }
+        }
+      ],
+      "board_after": [
+        {
+          "name": "Kingambit",
+          "position": null,
+          "energy": {
+            "total": 3,
+            "by_type": {
+              "Darkness": 3
+            }
+          }
+        },
+        {
+          "name": "Alolan Muk",
+          "position": 3,
+          "energy": {
+            "total": 1,
+            "by_type": {
+              "Darkness": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "turn": 14,
+      "board_at_start": [
+        {
+          "name": "Kingambit",
+          "position": null,
+          "energy": {
+            "total": 3,
+            "by_type": {
+              "Darkness": 3
+            }
+          }
+        },
+        {
+          "name": "Alolan Muk",
+          "position": 3,
+          "energy": {
+            "total": 1,
+            "by_type": {
+              "Darkness": 1
+            }
+          }
+        }
+      ],
+      "board_after": [
+        {
+          "name": "Kingambit",
+          "position": null,
+          "energy": {
+            "total": 3,
+            "by_type": {
+              "Darkness": 3
+            }
+          }
+        },
+        {
+          "name": "Alolan Muk",
+          "position": 3,
+          "energy": {
+            "total": 1,
+            "by_type": {
+              "Darkness": 1
+            }
+          }
+        }
+      ]
+    },
+    {
+      "turn": 15,
+      "board_at_start": [
+        {
+          "name": "Kingambit",
+          "position": null,
+          "energy": {
+            "total": 3,
+            "by_type": {
+              "Darkness": 3
+            }
+          }
+        },
+        {
+          "name": "Alolan Muk",
+          "position": 3,
+          "energy": {
+            "total": 1,
+            "by_type": {
+              "Darkness": 1
+            }
+          }
+        }
+      ],
+      "board_after": [
+        {
+          "name": "Kingambit",
+          "position": null,
+          "energy": {
+            "total": 3,
+            "by_type": {
+              "Darkness": 3
+            }
+          }
+        },
+        {
+          "name": "Alolan Muk",
+          "position": 3,
+          "energy": {
+            "total": 1,
+            "by_type": {
+              "Darkness": 1
+            }
+          }
+        }
+      ]
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "video_basename": "20261002_161342000_iOS.MP4",
+  "sha256": "3db01a8db2f4229fd3327591a6012fe38da60e16fa47e71d0875c866bfbfd475",
+  "bytes": 417877242,
+  "duration_seconds": 227.676667,
+  "streams": [
+    {
+      "codec_name": "hevc",
+      "width": 1170,
+      "height": 2532
+    },
+    {
+      "codec_name": "aac"
+    }
+  ],
+  "source_path_at_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261002_161342000_iOS.MP4",
+  "recording_relationships": [
+    {
+      "other_source": "20261002_161001000_iOS.MP4",
+      "basis": "Owner says two parts of one battle; visual continuity must be checked",
+      "visual_continuity_verified": false
+    }
+  ],
+  "recording_date_basis": "October 2 filename and owner upload; exact filename timezone unverified",
+  "owner_testimony": "Two recordings of one computer battle; recording cut out. Rules test of coin-flip damage prevention against targeted attacks. Exclude Pause Games and Ladder Log.",
+  "recording_intent": "rules_testing",
+  "mode": "computer battle per owner, verify from footage",
+  "ladder_eligible": false,
+  "pause_games_eligible": false,
+  "reviewer": "sol_rules_20261002_carefree_steps",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "identity_verified_event_id": "6a48ae5b-8789-4db2-8b3d-d315b835ab72",
+  "intake_utc": "2026-10-02T17:17:24.567060+00:00"
+}

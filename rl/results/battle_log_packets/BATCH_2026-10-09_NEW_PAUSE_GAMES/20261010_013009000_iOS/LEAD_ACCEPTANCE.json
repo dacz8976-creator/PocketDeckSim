@@ -1,0 +1,43 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-10T04:21:37.411544+00:00",
+  "source_video": "20261010_013009000_iOS.MP4",
+  "source_sha256": "80615dfc9c1e28f95434e3b4712f0540e6efc34392aef816419b6f82a0257329",
+  "scope": "Whole supplied continuous battle: setup, all turns, terminal sequence and source ending",
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 16,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-09_NEW_PAUSE_GAMES\\20261010_013009000_iOS\\independent_sol\\CHECK_RESULT.json",
+  "basis": "Whole-source Sol review and coverage; separately commissioned bounded Sol checks of opening, ordinary turns/first moves, draws/searches, hands, both boards/Energy Zones, fans, decisive outcome; all frozen repairs independently verified. Root reconciled reports and inspected consequential boundary frames. Structure checked separately.",
+  "source_limits": [
+    "Exact sampled timestamps are requested seeks, not measured frame PTS. Hand identities come from native views/reveals, never from QR membership.",
+    "No expanded discard views occur in this recording.",
+    "T4 pre-Research opponent hand count is not directly established.",
+    "Turn15 +1/+3/+6 views are already after first voluntary play; selected509.5s before-play native frame supplies full two-card hand.",
+    "Exact filmed deck verified via QR_DECODE.json; initial23-deck absence is resolved by the saved matching live20-card variant and dated ../LIVE_NEW_DECKS_VERIFIED.json",
+    "Random human matchmaking visible; precise casual/ranked queue unrecorded",
+    "Owner numerical fun/competitive ratings not supplied",
+    "Turn9 selected328.1s pre-evolution hand has a draw fade overlay; not a fully settled unzoomed start capture. Later328.5s already evolves the Pokemon."
+  ],
+  "outcome": {
+    "owner": "Dacz8976",
+    "opponent": "立花宗茂",
+    "result": "loss",
+    "owner_points": 0,
+    "opponent_points": 3,
+    "turns": 16,
+    "went_first": true,
+    "damage_dealt": 140,
+    "KO_seconds": 550,
+    "third_point_seconds": 554,
+    "result_screen_seconds": 565,
+    "evidence_ids": [
+      "f_0550_00",
+      "f_0554_00",
+      "f_0565_00"
+    ]
+  },
+  "external_status": "Source-qualified live deck definitions have been saved and read back. This game save is pending; dated deck retrieval and any unverified earlier version are preserved in DECK_USED.json.",
+  "archive_authorization": "Completed local review may be safely archived after verified CLI registration; original bytes/name preserved."
+}

@@ -1,0 +1,39 @@
+{
+  "game_id": "20260929_020916000",
+  "source": "20260929_020916000_iOS.MP4",
+  "recording_limits": [
+    "Opponent cards drawn face-down cannot be named; hidden cards are null, never inferred from a presumed deck.",
+    "All 490 retained 1fps reduced samples (25 grids, nominal 0 through489 seconds) screened as action/prompt/discard locators. This does not inspect every instant; subsecond prompts or inputs can fall between samples.",
+    "No opened discard panel was observed in this sampled scan or85 native views. Periodic top-of-pile views establish only the visible top card, not full pile contents.",
+    "Source-local requested times and measured selected-frame PTS are distinct. Draw-end times are bracketed by retained views, not measured exact animation boundaries.",
+    "Start/end boards are explicitly composite source-derived boundary states with field anchors. Later endpoints and inherited accepted results are not exact simultaneous native boundary snapshots.",
+    "Historical exact20-card log snapshot unavailable without version binding. Filmed visible core is separately supported; no current deck substitution.",
+    "Auto option absent in inspected native controls, with sampled/obscured-view limits. This cannot prove absence at every instant or hidden menu. Auto enabled status and action authorship remain unknown."
+  ],
+  "accessible_uninspected_required_fields": [],
+  "conflicts": [
+    {
+      "turn_number": 5,
+      "inherited_quote": "| Owner turn 5, ~03:24-04:57 | Owner benches a second Entei ex, equips it with Giant Cape and Fire Energy, then repeatedly uses Lucky Ice Pop on the 10-HP Active Entei. The visible HP climbs to 70; one later flip is tails. Rainbow Cave and Flame Patch are used. Owner replaces Rainbow Cave with Starting Plains, adding 20 HP to Basic Pokemon: Active Entei 70 to 90, Benched Entei 160 to 180, and damaged Active Moltres 70 to 90. Blazing Beatdown deals 120 and KOs that first Moltres ex. Owner takes 2 points. [Healed to 70](evidence/t0408_healed_70hp.jpg), [attack](evidence/t0450_first_attack.jpg), [2 points](evidence/t0456_first_points.jpg). |",
+      "new_observation": "At288/312 backup Entei has0Fire; Active has4Fire. First backupFire visible381 on turn7. Old prose remains unchanged.",
+      "evidence_ids": [
+        "F0288.00",
+        "F0312.00",
+        "F0381.00"
+      ],
+      "status": "explicit_supplement_conflict_pending_independent_check"
+    }
+  ],
+  "consequential_review_pending": [
+    "Lucky Ice Pop physical-copy/order qualification",
+    "Moltres paid retreat endpoint inference"
+  ],
+  "hidden_fields": {
+    "opponent_draw_names": null,
+    "full_discard_piles": null,
+    "historical_exact20_log": null,
+    "auto_enabled_status": null,
+    "hidden_action_inputs": null
+  },
+  "independent_acceptance_status": "pending"
+}

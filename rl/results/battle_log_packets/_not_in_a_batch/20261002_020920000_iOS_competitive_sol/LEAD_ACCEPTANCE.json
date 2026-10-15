@@ -1,0 +1,35 @@
+{
+  "source_video": "20261002_020920000_iOS.MP4",
+  "source_sha256": "a9f4cfd8c2173a889abc99ae67320174bfd83822d2027884bcb106bf19ae8514",
+  "source_bytes": 457508292,
+  "accepted": true,
+  "coverage_checked": true,
+  "completion_status": "full_battle_review_complete",
+  "scope": "Entire 248.285-second battle: profiles, setup, all nine turns, concession and Victory statistics",
+  "requested_log": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "ranked_ladder_eligible": false,
+  "accepted_at_utc": "2026-10-02T03:44:41.548384+00:00",
+  "reviewer": "root independent lead",
+  "first_pass_reviewer": "sol_competitive_20261002_020920000",
+  "lead_evidence": [
+    "LEAD_CHECK.jpg",
+    "overview/sheet_03.jpg",
+    "native/t0206.00.jpg",
+    "native/t0214.00.jpg",
+    "native/t0238.00.jpg",
+    "native/t0247.40.jpg"
+  ],
+  "independent_checks": [
+    "Read all four first-pass reports and reconciled complete coverage, identity, deck, turn order, HP/Energy/point transitions and terminal evidence.",
+    "Verified opponent, going second, visible Water core and actual first attack damage120 before explicit concession and Victory statistics.",
+    "Checked ordinary development with two Indeedee, Helmet and regular Water attachments; reconciled all nine turns, HP and point transitions in full reports.",
+    "Astra confirms deferred evolution can permit turn6 Wave Splash80 into Charmeleon80 under the same board continuation; evolution would wait until a later turn. Alternate outcome is unknown."
+  ],
+  "outcome_description": "Win by concession, 0-0 points, second, against おさるの上司",
+  "astra_addendum": "../BATCH_2026-10-02_COMPETITIVE/ASTRA_TACTICAL_CHECKS.md",
+  "remaining_coverage_gaps": [],
+  "unverified_material_claims": [],
+  "limitations": [
+    "Hidden full lists, exact selected queue, opponent automation and concession motive remain unknown. Owner competitive intent and local date basis are qualified. Conditional alternative decisions do not establish a different game outcome."
+  ]
+}

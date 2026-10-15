@@ -1,0 +1,28 @@
+{
+  "checked_utc": "2026-10-13T01:28:24.282286+00:00",
+  "source_video": "20261012_225319000_iOS.MP4",
+  "source_sha256": "10908103247750567923e0899770318a2e53821055d7a2d464ab8d8a2b12dd70",
+  "reviewer": "/root",
+  "scope": "Bounded source checks; complete packet and independent acceptance remain pending",
+  "not_a_full_battle_review": true,
+  "evidence": [
+    {
+      "requested_seek_seconds": 42.0,
+      "file": "turn_evidence/t0042.00.jpg",
+      "observed": "Human board versus Job: Active Frigibax 60 HP versus owner Pawniard 50 HP; no Auto control in board view.",
+      "image_sha256": "76d04458a7cef8f990305de29ab4cbb803b8e4896572942a2b68760db5ef5e6f"
+    },
+    {
+      "requested_seek_seconds": 426.0,
+      "file": "turn_evidence/t0426.00.jpg",
+      "observed": "Owner Concede confirmation is explicit while opponent Ice Maker animation remains visible.",
+      "image_sha256": "8435ffc5f243f528fdb4d5d0ee9d9933679ca84daea509acf3a54e6fd3aa1c28"
+    },
+    {
+      "requested_seek_seconds": 438.0,
+      "file": "turn_evidence/t0438.00.jpg",
+      "observed": "Defeat versus Job. Went second, 9 turns, 0 owner points and 2 opponent points, 50 displayed damage.",
+      "image_sha256": "b686c91b67b98537b19796df460d413dea41e124bd1bd3b1f353d6a6b7155089"
+    }
+  ]
+}

@@ -1,0 +1,35 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-10T04:50:22.148511+00:00",
+  "source_video": "20261010_020908000_iOS.MP4",
+  "source_sha256": "6771089aca9afe1e952e047017c07b74964a184011832179c27fe7b7f839bffc",
+  "scope": "Whole supplied continuous battle: setup, all turns, terminal sequence and source ending",
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 7,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-09_NEW_PAUSE_GAMES\\20261010_020908000_iOS\\independent_sol\\CHECK_RESULT.json",
+  "basis": "Whole-source Sol review and coverage; separately commissioned bounded Sol checks of opening, ordinary turns/first moves, draws/searches, hands, both boards/Energy Zones, fans, decisive outcome; all frozen repairs independently verified. Root reconciled reports and inspected consequential boundary frames. Structure checked separately.",
+  "source_limits": [
+    "No opened discard pile appears anywhere in this source; visible top discard cards and play history do not establish a full pile.",
+    "Opponent hand identities and hidden draw/search results remain unknown except publicly revealed Koffing.",
+    "Draw-end times are visual approximations; frame requested seek times are preserved, actual decoder frame PTS was not separately measured.",
+    "Opponent connection intent and actual disconnect cause are not established.",
+    "QR and live log use semantic card variants; artwork/rarity exact printings are not established."
+  ],
+  "outcome": {
+    "owner_result": "win",
+    "basis": "Opponent connection-timeout notice followed by Victory",
+    "final_points_before_timeout": {
+      "owner": 1,
+      "opponent": 0
+    },
+    "evidence_ids": [
+      "F0378.00",
+      "F0382.00",
+      "F0388.80"
+    ]
+  },
+  "external_status": "Source-qualified live deck definitions have been saved and read back. This game save is pending; dated deck retrieval and any unverified earlier version are preserved in DECK_USED.json.",
+  "archive_authorization": "Completed local review may be safely archived after verified CLI registration; original bytes/name preserved."
+}

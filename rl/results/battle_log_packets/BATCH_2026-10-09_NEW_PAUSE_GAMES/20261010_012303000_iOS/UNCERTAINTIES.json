@@ -1,0 +1,56 @@
+{
+  "is_template": false,
+  "game_id": "20261010_012303000_iOS_game1",
+  "unreviewed_intervals": [],
+  "unresolved_material_outcome_claims": [],
+  "recording_limits": [
+    {
+      "topic": "No discard pile opened; periodic pile-content snapshots unavailable.",
+      "status": "inspected_source_limit"
+    },
+    {
+      "topic": "Opponent hidden draws and full deck remain unknown.",
+      "status": "inspected_source_limit"
+    },
+    {
+      "topic": "Exact artwork/rarity not encoded by QR; deck snapshot preserves log variant labels.",
+      "status": "inspected_source_limit"
+    },
+    {
+      "topic": "Final results loading continues to398.13s; terminal3point/Victory already clear388-390s.",
+      "status": "inspected_source_limit"
+    },
+    {
+      "topic": "Source timestamps are local seeks; frame PTS not separately measured.",
+      "status": "inspected_source_limit"
+    }
+  ],
+  "specific_limits": [
+    {
+      "topic": "Opening Active selection",
+      "seconds": [
+        30,
+        31,
+        31.5,
+        32
+      ],
+      "finding": "Dense views resolve selected Nacli as opening position3. Position1 remains in hand and is then benched. No unresolved slot remains."
+    },
+    {
+      "topic": "Opponent search timing",
+      "seconds": [
+        99,
+        102
+      ],
+      "finding": "Nihilego public found/placed; exact search-reveal instant bounded, no hidden draw guessed."
+    },
+    {
+      "topic": "Specific human queue",
+      "seconds": [
+        0,
+        43
+      ],
+      "finding": "Searching for opponent/match found visible; ranked/private/random label not shown. Human routing follows owner instruction."
+    }
+  ]
+}

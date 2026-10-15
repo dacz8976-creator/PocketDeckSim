@@ -1,0 +1,13 @@
+{
+  "coordinated_utc": "2026-10-03T00:13:46.594779+00:00",
+  "source_video": "20261002_211613000_iOS.MP4",
+  "source_sha256": "8eec16e93f6e3bc1322e31bb5ff85c95a364ffb8bc14dd53427626226f1e3fd4",
+  "prior_planned_reviewer": "/root/drafta_auto_211613",
+  "actual_reviewer": "/root/ind_drafta_205731",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "reason": "Use an available existing Sol context for the bounded batch after its prior independent task is complete. No other worker has begun this source.",
+  "identity_basis": "Previously verified SOURCE.json and intake event; assignment update does not claim a new media hash.",
+  "actual_destination": "local_review_batch_and_BATTLE_REVIEW_INDEX",
+  "external_game_entry_requested": false
+}

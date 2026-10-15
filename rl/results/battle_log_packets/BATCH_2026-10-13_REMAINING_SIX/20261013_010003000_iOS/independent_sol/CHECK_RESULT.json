@@ -1,0 +1,297 @@
+{
+  "schema": "battle-logs/bounded-independent-acceptance-v1",
+  "reviewer": "/root/check_remaining_010003",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "checked_utc": "2026-10-13T14:56:10.217850+00:00",
+  "source_video": "20261013_010003000_iOS.MP4",
+  "source_sha256": "3e2fc4897a2f9de4f03899a643a0c32e3bf46b5cc1f56a87d182dff9ceb9072b",
+  "source_identity_basis": "Frozen source binding supplied by root and existing verified CLI intake; no redundant source rehash or entire-video pass",
+  "accepted": false,
+  "checked_input_sha256": {
+    "REVIEW.md": "02de944d7438c9ccae811e5f9d751f3bc45db4a5f086b054a671076656303b2b",
+    "COVERAGE.md": "e3ca177c8e6a54d5f58ae614254845d1b288224177207b7e546bfe8f261fef22",
+    "SUMMARY.json": "f92f976ecdf4dabf026f208811b5e551e03b66cd6d19259583e3ddc8d383017e",
+    "UNCERTAINTIES.json": "2d8f6b3e057a336a8c4bd59aa1a4b522a2245281ad7b329baab1eda6b1ed8b7a",
+    "PAUSE_GAME.json": "4d97e67c892de0c73e57c43a5c41876be3241590846ec65f399ff21fc0279ec4",
+    "DECK_USED.json": "a38db70155f175fd61eb5f0cd934c34a0ba5aaca0fe52196c7727fd314192029",
+    "TURN_LEDGER.json": "b5a468124f8c4587c36525c34fec16f2e448e68d5eb0c59221ca49d069ba5feb",
+    "TURN_EVIDENCE.json": "a8f0a689f724cb245840f198a23b1751c7eb55dc97c6b0580c6aa6ad7af7315d"
+  },
+  "primary_freeze_match": true,
+  "required_repairs": [
+    {
+      "id": "T7_SEARCH_ARRIVAL_REFERENCE",
+      "files": [
+        "TURN_LEDGER.json"
+      ],
+      "problem": "T7 Alolan Grimer search timestamp 285 cites f0284_00, whose retained native frame has no Alolan Grimer arrival. Native286 shows the fifth card Alolan Grimer. Native285 does not exist.",
+      "repair": "Bind individual card and search-group timestamp/evidence to inspected arrival286/f0286_00, or retain and inspect a genuine earlier arrival frame. Do not use the pre-arrival284 frame as named arrival evidence."
+    },
+    {
+      "id": "T11_MISSING_ENERGY_ATTACHMENT",
+      "files": [
+        "REVIEW.md",
+        "TURN_LEDGER.json"
+      ],
+      "problem": "After Lucky Ice Pop heads, native449 shows Energy targeting. Native451-453 has Bench Alolan Muk with Darkness plus Colorless, total2, whereas T11 contains only IcePop action and its final board has Colorless1.",
+      "repair": "Inspect bounded449-450 transition, add the Darkness attachment to Bench Alolan Muk as numbered action2 afterIcePop and before Regigigas menu inspection, and correct final mixedEnergy total2 (Darkness1/Colorless1). Retain source-bound evidence and reconcile ownerZone consumption. No additional attack resolves."
+    }
+  ],
+  "native_findings": [
+    {
+      "topic": "setup",
+      "finding": "Native27 shows Regigigas, Mesagoza, Rare Candy, Glimmet, Glimmora left to right, owner going first. Five original slots supported."
+    },
+    {
+      "topic": "ordinary independent turn3",
+      "finding": "Native112 is unzoomed five-card preplay hand: Rare Candy, Glimmora, Lucky Ice Pop, Alolan Muk, Heavy Helmet. Native114 evolution leaves four. Native134 shows HP90 and four-card hand including returnedIcePop. Evolution/heal/heads return arithmetic supports ending4."
+    },
+    {
+      "topic": "search turn5",
+      "finding": "Native212.6 unzoomed preplay hand has PokeBall fifth. Native216 clearly reveals foundGlimmet. Search remains distinct from normal draw."
+    },
+    {
+      "topic": "Research arrivals",
+      "finding": "Native61/62 supports Lucky Ice Pop then Alolan Muk arrivals. Native387.5/388.5 supports Ilima then Kingambit arrivals."
+    },
+    {
+      "topic": "turn8 scoring",
+      "finding": "Native358 reads Shattering Crystal heads and deniedpoints text. Native369 ownerfirstpoint. Score/prose records0 opponentpoints after GlimmoraKO and poisonDrampaKO."
+    },
+    {
+      "topic": "Basic abilities",
+      "finding": "Native380 Alolan Muk text says Basic Pokemon in play have no Abilities; Stage1 Dragonair remains unaffected. Native398 shows Regigigas KO of Drampa and Colorless supplied to Bench Muk. Regigigas printed Seal restricts attacking, not attaching."
+    },
+    {
+      "topic": "final hand and result",
+      "finding": "Native448IcePopheads and449five-card hand. Native450 is Regigigas menu inspection. Native451-453 explicitly says Your opponent conceded. Native472 says vs.gimt Victory, wentfirst,11turns,2-0points,190damage. No final attack resolves."
+    },
+    {
+      "topic": "coverage/classification",
+      "finding": "Eight components report full source0-479.441667 and11 consecutive rows. Selected native gameplay has namedopponent and dualclocks with noAuto option, consistent with humanclassification. This is bounded independent acceptance, not a second fullvideopass."
+    },
+    {
+      "topic": "capture limits",
+      "finding": "Sixownerturns have draw-relative candidates,+1/+3/+6andbeforeend; earlyplay alternatives preserved forT5/T7. Nativecrop coordinates retained. Opponentfan counts explicit; hiddenidentities and unopeneddiscards are explicitlimits. NextEnergy numericcounts staynull. Native449finalEnergy target and451mixedEnergy require correction above."
+    },
+    {
+      "topic": "deck provenance",
+      "finding": "DECK_USED has20historicalcards, duplicatecounts total20, filmedexactQR20, DarknessEnergy. Historicalreceipt and QRpayload match their supplements. fresh_live_readback=false retained. Externalaccess limit does not implyfreshsave or preventlocalacceptance aftermaterialrepairs."
+    }
+  ],
+  "selected_native_evidence": [
+    {
+      "source_seconds": 27,
+      "path": "turn_evidence\\t0027.00.jpg",
+      "sha256": "b43e94b659a89f9b41e9853b469b9a3652d0d654f0f685b0d8a35e2de99e0cf9",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "source_seconds": 112,
+      "path": "turn_evidence\\t0112.00.jpg",
+      "sha256": "13fac26660642c2c1d9dda06572c82b6a0ef9f700a43d48771ff9b70aeae590d",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "source_seconds": 114,
+      "path": "turn_evidence\\t0114.00.jpg",
+      "sha256": "c0844b6bfad5c85466f5a0bb13cb483ee2848c568f4e5b58253dc120d7e593c7",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "source_seconds": 134,
+      "path": "turn_evidence\\t0134.00.jpg",
+      "sha256": "2d3fcfbe756c7ccffe51e4b56f5eee5fd87adc952e392522b798c55b5cdbf082",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "source_seconds": 212.6,
+      "path": "turn_evidence\\t0212.60.jpg",
+      "sha256": "8e55a313ee283fc46c9de2bce97fb088053f067bc97ce28e580193c21a8b1056",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "source_seconds": 216,
+      "path": "turn_evidence\\t0216.00.jpg",
+      "sha256": "305333c74ed3ab2905ca693eaeccdd0abd1309661147007c467a4f3a2a338695",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "source_seconds": 284,
+      "path": "turn_evidence\\t0284.00.jpg",
+      "sha256": "50761c8a303b7f4d50b8a93a8a6f812e7125d6176a728c1dbf0e9be30812e5a8",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "source_seconds": 286,
+      "path": "turn_evidence\\t0286.00.jpg",
+      "sha256": "108dbf35d9e642d9a648208778d2c85a0bd620cf7ec872f45bf8542083fd0826",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "source_seconds": 61,
+      "path": "turn_evidence\\t0061.00.jpg",
+      "sha256": "6ba0eed10bfefc6578cf0b7446b32474f5e2b344f8e29c8ae2d2b67c13bfe3dd",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "source_seconds": 62,
+      "path": "turn_evidence\\t0062.00.jpg",
+      "sha256": "0a4d3efdf993d797835541e7f3349269f5a36a6faeb9b77eb15d528aa74e4a10",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "source_seconds": 387.5,
+      "path": "turn_evidence\\t0387.50.jpg",
+      "sha256": "20bbc215c5fce12f993048e51b39b65dfde3947a98429233c540e48365dad4b4",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "source_seconds": 388.5,
+      "path": "turn_evidence\\t0388.50.jpg",
+      "sha256": "f5edb7e2a7b396b977c301cb8e381758a8373e3ebbe3d20318fdeecca4a5d873",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "source_seconds": 358,
+      "path": "turn_evidence\\t0358.00.jpg",
+      "sha256": "7a6e5a362b4fe6639683af8f8ca4a0ac82c197cd915b083c5cb65dab34bd305b",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "source_seconds": 369,
+      "path": "turn_evidence\\t0369.00.jpg",
+      "sha256": "32abd0d309b0d547eab6eaac82fccac02e05e281e607d3fb52459b1e8b37dfdc",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "source_seconds": 380,
+      "path": "turn_evidence\\t0380.00.jpg",
+      "sha256": "85a175d5b31f09e34f18969c92248804f0dded032722ed9766d16585c3c7c1e9",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "source_seconds": 398,
+      "path": "turn_evidence\\t0398.00.jpg",
+      "sha256": "b2fa95c15e46a258a69b20ed2a6a0f869c82185c37dd867e39c529fc45c99f96",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "source_seconds": 448,
+      "path": "turn_evidence\\t0448.00.jpg",
+      "sha256": "4c28ba3bef2e17cde9957dec343454fbadf2743c5ef9aa15a531214939e6a133",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "source_seconds": 449,
+      "path": "turn_evidence\\t0449.00.jpg",
+      "sha256": "cb0a39e56ab7f8f12c6a4f0721e2740adc1f9d43c31f253a0a4e0676164836cd",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "source_seconds": 450,
+      "path": "turn_evidence\\t0450.00.jpg",
+      "sha256": "9f523b6fd0f348f88a474f163ee8021326d1e4faa93b5caed6f34f338125164a",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "source_seconds": 451,
+      "path": "turn_evidence\\t0451.00.jpg",
+      "sha256": "2c5d000205162cdaf01658afe939a85d6e0e13ffdeb1c07e57397b0d629f1a78",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "source_seconds": 452,
+      "path": "turn_evidence\\t0452.00.jpg",
+      "sha256": "ad33eb5cb903e8d16da585f5c64649fb3e63890a6af76da6b86836115b8b7bf4",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "source_seconds": 453,
+      "path": "turn_evidence\\t0453.00.jpg",
+      "sha256": "86f2eb6aaa71073a0e74a7af70f22895989c4a06995d2ac66917c07a63c90844",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "source_seconds": 472,
+      "path": "turn_evidence\\t0472.00.jpg",
+      "sha256": "477cf4f9fa82fd2a928936c27af90dd81760562772522fb4a795bda931266370",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    }
+  ],
+  "packet_reference_inventory_passed": true,
+  "structural_validation_is_separate": true,
+  "fresh_live_readback": false,
+  "rejected_input_preservation": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_REMAINING_SIX\\20261013_010003000_iOS\\independent_sol\\rejected_inputs",
+  "scope": "All eight stable primary components, independently selected ordinary turn plus consequential draws/boards and terminal sequence; no shared writes, moves, browser access, lead acceptance, or subagents"
+}

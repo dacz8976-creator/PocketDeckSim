@@ -1,0 +1,146 @@
+{
+  "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+  "lead": "/root",
+  "lead_acceptance_claimed": false,
+  "scope": "Bounded lead native reconciliation across both games and edit interlude; separate independent acceptance required",
+  "viewed_utc": "2026-10-06T20:23:21.4027138Z",
+  "external_saved": false,
+  "source_video": "20261006_012927000_iOS.MP4",
+  "viewed": [
+    {
+      "observation": "Game1five-card opening Ball/Cyrus/Ball/Meowth/Persian beforeActiveplacement; ownersecond.",
+      "file": "native/t0026.00.jpg",
+      "seconds": 26
+    },
+    {
+      "observation": "Game1intactfive-card handbeforeBall, opponentbacks4, largecurrentcircleempty,nextDarknesspreview.",
+      "file": "native/t0055.00.jpg",
+      "seconds": 55
+    },
+    {
+      "observation": "SnorlaxHP0 at389, removalanimationstillvisible392, separatepointaward394, Defeat398/407versusElPapa;392doesnotprovecompletedremoval.",
+      "seconds": [
+        389,
+        392,
+        394,
+        398,
+        407
+      ]
+    },
+    {
+      "observation": "BraveBuddiesreadable450, GoldBreaker+BraveBuddiespair/finalninePokemon590,20/20Darkness-onlyconfiguration600/620.",
+      "seconds": [
+        450,
+        590,
+        600,
+        620
+      ]
+    },
+    {
+      "observation": "Game2openingTRPersian/Ball/Snorlaxex/Copycat/Pop beforeActiveplacement, ownerfirst.",
+      "file": "native/t0644.00.jpg",
+      "seconds": 644
+    },
+    {
+      "observation": "SilvallyGoldBreakerface655; selected656intactfivewithhighlightedBall,657fan4Ballconsumed,658Ballreveal,660TRMeowthsearchreveal. Consumptionbounded656-657.",
+      "seconds": [
+        655,
+        656,
+        657,
+        658,
+        660
+      ]
+    },
+    {
+      "observation": "Explicit Your opponent conceded message. OwnerSnorlax160 and BenchTRMeowth50/TypeNull80/TRMeowth50; noattachedEnergy, opponentZeraora90/currentLightningavailable.",
+      "file": "native/t0710.00.jpg",
+      "seconds": 710
+    },
+    {
+      "observation": "Victoryvsたこ, ownerfirst,2turns,0-0earnedpoints,0damage.",
+      "file": "native/t0718.00.jpg",
+      "seconds": 718
+    }
+  ],
+  "additional_terminal_views": [
+    {
+      "path": "native/t0393.00.jpg",
+      "observation": "FirstemptyActiveafterSnorlaxremovalanimation;not392.",
+      "sha256": "a26b50c831fbad376a45ace80291cd06433b746bda062f4ff40fe865b2f47410"
+    },
+    {
+      "path": "native/t0393.50.jpg",
+      "observation": "SettledemptyActive,remainingtypedboardsreadable;pointsawardseparatelater.",
+      "sha256": "ac5d3f5f7c25957c574527a787ccf29a474167046a1466b73cfce5299c170719"
+    }
+  ],
+  "final_independent_source_corrections": {
+    "reviewed_utc": "2026-10-06T20:47:54.075387+00:00",
+    "initial_energy_read": "Root earlier misread saved Water icon as Darkness; original observation retained as superseded.",
+    "corrected_energy_read": "Labeled596 menu Water selected/Darkness unselected;600/620sameWaterdroplet and656childnextWater.",
+    "corrected_copycat": "Four distinct named faces Ball674/TRMeowth675/Pop676/Cyrus677.667preview/668consumed/670oldreturn.",
+    "corrected_opponent_turn2": "692five settledbacks/currentLightning;694detachedplayedcard andfourfan;696four/698sixcombinedhiddenResearch;noindividualarrivalclaim.",
+    "native_views": [
+      {
+        "path": "native/t0596.00.jpg",
+        "sha256": "a2cbf61b9b3be1230b6ec5d2a97d504583e70f23826b7c1180857428cfb1c2a4"
+      },
+      {
+        "path": "native/t0600.00.jpg",
+        "sha256": "a3a423aa612b547dabfae4207659c776565179fdb11d53f2766f19bdcac72655"
+      },
+      {
+        "path": "native/t0620.00.jpg",
+        "sha256": "8ecea9ef134eec30bf3bcc32fa3bdf96aca6179d9c33f6d57aefb6f960446e35"
+      },
+      {
+        "path": "native/t0656.00.jpg",
+        "sha256": "95eaf812b31eb378893fdb234841abfa4108b2b3741e5f7ea8ab13f9ea0d5c89"
+      },
+      {
+        "path": "native/t0667.00.jpg",
+        "sha256": "48cf404842f0f712f0451023386feecd662efd0f754dc1b68de8b3d83c654b5b"
+      },
+      {
+        "path": "native/t0668.00.jpg",
+        "sha256": "b10dabc80ab94a483832447eeec106a7906e4b6b592e280658e3957436a3e77a"
+      },
+      {
+        "path": "native/t0670.00.jpg",
+        "sha256": "0eb96c1edfa032ddc25030d121b0d61bfe7d3af79c162921afc1f8ce454c694c"
+      },
+      {
+        "path": "native/t0674.00.jpg",
+        "sha256": "cb53cfbcb102619b536b21c2eaf5217befd585256e98f2c226cd03ecbaaab8a3"
+      },
+      {
+        "path": "native/t0675.00.jpg",
+        "sha256": "307ede8c287a0005cc66cd03ee8db3d4d11ebc944c043444c2869225f5de0b54"
+      },
+      {
+        "path": "native/t0676.00.jpg",
+        "sha256": "3592d791f1d7376d326c27de74244243005ac08e027cfb6e9812cba3f70fd697"
+      },
+      {
+        "path": "native/t0677.00.jpg",
+        "sha256": "dc078d49b064daf094174d192287f2945044ae169bce7aaf2c1f1b3ad44cd6d2"
+      },
+      {
+        "path": "native/t0692.00.jpg",
+        "sha256": "2a354aefdf6102124398782909c8153259b3875e5a7e7c8a46e878f189baa343"
+      },
+      {
+        "path": "native/t0694.00.jpg",
+        "sha256": "8cc2fd59665ebe85fecfc75ac6b0273ed36f0bdc9c686d36e2a3441099eb8b9f"
+      },
+      {
+        "path": "native/t0696.00.jpg",
+        "sha256": "e939a51f9221d2802741d5519f832f733440e422b28e2f5b680459c8cca08a0a"
+      },
+      {
+        "path": "native/t0698.00.jpg",
+        "sha256": "175192546ecf9614d48beb7eed5f29101026005e05b62abdccd31bca90e28e41"
+      }
+    ]
+  }
+}

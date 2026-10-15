@@ -1,0 +1,53 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20260908_190933000",
+  "sources": [
+    {
+      "video_basename": "20260908_190933000_iOS.MP4",
+      "sha256": "5c49e55a0b3153581904ffcefd747d941d5a729412a90708ec1f2783649610c5",
+      "source_json": "SOURCE_REFERENCE.json"
+    }
+  ],
+  "deck_name_in_log": null,
+  "source_url": null,
+  "captured_at": "2026-10-02",
+  "log_list_version": null,
+  "expected_card_count": 20,
+  "cards_in_log_order": null,
+  "counts_by_name_and_variant": null,
+  "energy_configuration_from_log": null,
+  "actual_card_count": null,
+  "capture_source_text_or_image": null,
+  "game_version_binding_basis": "Exact SHA-bound filmed source and accepted provenance; historical20-card log unavailable.",
+  "conflicts_with_filmed_cards": null,
+  "exact_list_status": "historical_list_unavailable",
+  "limits": [
+    "Opponent unplayed hand identities and normal draw identities are concealed by card backs.",
+    "No opened discard panel detected in413 retained reduced1fps locator samples; visible pile tops only, full pile identity/order unknown.",
+    "One sample per second does not inspect every instant; subsecond events can fall between samples.",
+    "Requested source-local seek times and approximate locator times are separate from unmeasured actual decoded PTS.",
+    "No exact historical20-card deck log snapshot is available; current deck lists were not substituted."
+  ],
+  "capture_status": "complete_with_recording_limits",
+  "visible_core": [
+    "Darkrai",
+    "Igglybuff",
+    "Copycat",
+    "Professor's Research",
+    "Eevee",
+    "Poké Ball",
+    "Small Balloon",
+    "Swablu",
+    "Sabrina",
+    "Training Area",
+    "Field Blower",
+    "Mega Altaria ex",
+    "Espeon"
+  ],
+  "visible_minimum_copies": {
+    "Darkrai": 2,
+    "Eevee": 2,
+    "Espeon": 2
+  }
+}

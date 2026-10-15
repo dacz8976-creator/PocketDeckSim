@@ -1,0 +1,30 @@
+{
+  "scope": "Sparse identification only",
+  "reviewed_samples": [
+    {
+      "source": "20260908_015201000_iOS.MP4",
+      "seconds": [
+        0,
+        30,
+        60
+      ],
+      "owner_list_match": false,
+      "owner_list_exclusion_evidence": [
+        "Axew visible",
+        "Dratini visible"
+      ],
+      "auto": "unchecked at60s; whole-recording mode unconfirmed",
+      "pvp": "unconfirmed",
+      "complete_match": "unconfirmed",
+      "strategy_grade": null
+    }
+  ],
+  "blocked_metadata_source": "20260908_015702000_iOS.MP4",
+  "unprobed": [
+    "20260908_021327000_iOS.MP4",
+    "20260908_022627000_iOS.MP4"
+  ],
+  "new_rules_mismatch_established": false,
+  "new_engine_changes": false,
+  "human_mistake_labels": 0
+}

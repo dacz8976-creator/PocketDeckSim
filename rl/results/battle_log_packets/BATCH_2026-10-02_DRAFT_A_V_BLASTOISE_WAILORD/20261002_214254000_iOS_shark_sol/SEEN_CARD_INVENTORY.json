@@ -1,0 +1,507 @@
+{
+  "source_video": "20261002_214254000_iOS.MP4",
+  "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+  "reviewer": "/root/drafta_auto_210952",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "cards": [
+    {
+      "name": "Carvanha",
+      "minimum_copies_supported": 2,
+      "deck_list_count_separate": 2,
+      "observations": [
+        {
+          "physical_occurrence_id": "carvanha1",
+          "source_video": "20261002_214254000_iOS.MP4",
+          "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+          "timestamp_seconds": 46.4,
+          "decoded_pts_seconds": 46.4017,
+          "evidence_ids": [
+            "F0046.40"
+          ],
+          "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors",
+          "context": "normal draw T2, right Bench then O-S1",
+          "identity_basis": "Source reveal/hand/top-board plus continuous public transaction, not expected list",
+          "readable_set_identifier": null
+        },
+        {
+          "physical_occurrence_id": "carvanha2",
+          "source_video": "20261002_214254000_iOS.MP4",
+          "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+          "timestamp_seconds": 97.4,
+          "decoded_pts_seconds": 97.41,
+          "evidence_ids": [
+            "F0097.40"
+          ],
+          "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors",
+          "context": "normal draw T4 while first Carvanha still on right Bench; left then O-S2",
+          "identity_basis": "Source reveal/hand/top-board plus continuous public transaction, not expected list",
+          "readable_set_identifier": null
+        }
+      ],
+      "simultaneous_duplicate_evidence": {
+        "supported": true,
+        "context": "first Carvanha on right Bench and second in hand",
+        "source_video": "20261002_214254000_iOS.MP4",
+        "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+        "timestamp_seconds": 97.4,
+        "decoded_pts_seconds": 97.41,
+        "evidence_ids": [
+          "F0097.40"
+        ],
+        "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors"
+      },
+      "repeat_sightings_are_new_copies": false,
+      "limit_reason": "Copycat redrawn Misty/Lapras/Cyrus and Lucky Ice Pop return are same physical copy, not additional copies. Under-card history does not reveal set number."
+    },
+    {
+      "name": "Mega Sharpedo ex",
+      "minimum_copies_supported": 2,
+      "deck_list_count_separate": 2,
+      "observations": [
+        {
+          "physical_occurrence_id": "sharpedo1",
+          "source_video": "20261002_214254000_iOS.MP4",
+          "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+          "timestamp_seconds": 14.5,
+          "decoded_pts_seconds": 14.515,
+          "evidence_ids": [
+            "F0014.50"
+          ],
+          "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors",
+          "context": "opening blue/gold artwork, evolves O-S1T4",
+          "identity_basis": "Source reveal/hand/top-board plus continuous public transaction, not expected list",
+          "readable_set_identifier": null
+        },
+        {
+          "physical_occurrence_id": "sharpedo2",
+          "source_video": "20261002_214254000_iOS.MP4",
+          "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+          "timestamp_seconds": 180.4,
+          "decoded_pts_seconds": 180.407,
+          "evidence_ids": [
+            "F0180.40"
+          ],
+          "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors",
+          "context": "normal draw T8 while first Sharpedo Active; red artwork evolves O-S2",
+          "identity_basis": "Source reveal/hand/top-board plus continuous public transaction, not expected list",
+          "readable_set_identifier": null
+        }
+      ],
+      "simultaneous_duplicate_evidence": {
+        "supported": true,
+        "context": "first Sharpedo Active and second in hand",
+        "source_video": "20261002_214254000_iOS.MP4",
+        "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+        "timestamp_seconds": 180.4,
+        "decoded_pts_seconds": 180.407,
+        "evidence_ids": [
+          "F0180.40"
+        ],
+        "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors"
+      },
+      "repeat_sightings_are_new_copies": false,
+      "limit_reason": "Copycat redrawn Misty/Lapras/Cyrus and Lucky Ice Pop return are same physical copy, not additional copies. Under-card history does not reveal set number."
+    },
+    {
+      "name": "Alolan Vulpix",
+      "minimum_copies_supported": 2,
+      "deck_list_count_separate": 2,
+      "observations": [
+        {
+          "physical_occurrence_id": "vulpix1",
+          "source_video": "20261002_214254000_iOS.MP4",
+          "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+          "timestamp_seconds": 14.5,
+          "decoded_pts_seconds": 14.515,
+          "evidence_ids": [
+            "F0014.50"
+          ],
+          "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors",
+          "context": "opening event-stamped artwork; O-N1Active",
+          "identity_basis": "Source reveal/hand/top-board plus continuous public transaction, not expected list",
+          "readable_set_identifier": null
+        },
+        {
+          "physical_occurrence_id": "vulpix2",
+          "source_video": "20261002_214254000_iOS.MP4",
+          "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+          "timestamp_seconds": 293.4,
+          "decoded_pts_seconds": 293.415,
+          "evidence_ids": [
+            "F0293.40"
+          ],
+          "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors",
+          "context": "Poke Ball reveal T12 while first Vulpix still on right Bench, then middle O-N2",
+          "identity_basis": "Source reveal/hand/top-board plus continuous public transaction, not expected list",
+          "readable_set_identifier": null
+        }
+      ],
+      "simultaneous_duplicate_evidence": {
+        "supported": true,
+        "context": "first Vulpix on right Bench and second search reveal",
+        "source_video": "20261002_214254000_iOS.MP4",
+        "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+        "timestamp_seconds": 293.4,
+        "decoded_pts_seconds": 293.415,
+        "evidence_ids": [
+          "F0293.40"
+        ],
+        "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors"
+      },
+      "repeat_sightings_are_new_copies": false,
+      "limit_reason": "Copycat redrawn Misty/Lapras/Cyrus and Lucky Ice Pop return are same physical copy, not additional copies. Under-card history does not reveal set number."
+    },
+    {
+      "name": "Alolan Ninetales ex",
+      "minimum_copies_supported": 2,
+      "deck_list_count_separate": 2,
+      "observations": [
+        {
+          "physical_occurrence_id": "ninetales1",
+          "source_video": "20261002_214254000_iOS.MP4",
+          "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+          "timestamp_seconds": 287.4,
+          "decoded_pts_seconds": 287.413,
+          "evidence_ids": [
+            "F0287.40"
+          ],
+          "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors",
+          "context": "Research reveal T12red artwork, evolves O-N1",
+          "identity_basis": "Source reveal/hand/top-board plus continuous public transaction, not expected list",
+          "readable_set_identifier": null
+        },
+        {
+          "physical_occurrence_id": "ninetales2",
+          "source_video": "20261002_214254000_iOS.MP4",
+          "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+          "timestamp_seconds": 377.4,
+          "decoded_pts_seconds": 377.408,
+          "evidence_ids": [
+            "F0377.40"
+          ],
+          "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors",
+          "context": "Research reveal T16rainbow artwork, evolves O-N2 while first Ninetales Active",
+          "identity_basis": "Source reveal/hand/top-board plus continuous public transaction, not expected list",
+          "readable_set_identifier": null
+        }
+      ],
+      "simultaneous_duplicate_evidence": {
+        "supported": true,
+        "context": "first Ninetales Active and second in draw reveal",
+        "source_video": "20261002_214254000_iOS.MP4",
+        "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+        "timestamp_seconds": 377.4,
+        "decoded_pts_seconds": 377.408,
+        "evidence_ids": [
+          "F0377.40"
+        ],
+        "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors"
+      },
+      "repeat_sightings_are_new_copies": false,
+      "limit_reason": "Copycat redrawn Misty/Lapras/Cyrus and Lucky Ice Pop return are same physical copy, not additional copies. Under-card history does not reveal set number."
+    },
+    {
+      "name": "Misty",
+      "minimum_copies_supported": 2,
+      "deck_list_count_separate": 2,
+      "observations": [
+        {
+          "physical_occurrence_id": "misty1",
+          "source_video": "20261002_214254000_iOS.MP4",
+          "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+          "timestamp_seconds": 14.5,
+          "decoded_pts_seconds": 14.515,
+          "evidence_ids": [
+            "F0014.50"
+          ],
+          "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors",
+          "context": "opening, played T2, visible discard top throughT10",
+          "identity_basis": "Source reveal/hand/top-board plus continuous public transaction, not expected list",
+          "readable_set_identifier": null
+        },
+        {
+          "physical_occurrence_id": "misty2",
+          "source_video": "20261002_214254000_iOS.MP4",
+          "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+          "timestamp_seconds": 226.4,
+          "decoded_pts_seconds": 226.402,
+          "evidence_ids": [
+            "F0226.40"
+          ],
+          "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors",
+          "context": "normal draw T10, first copy already used and on discard top; returned/redrawn Copycat same copy",
+          "identity_basis": "Source reveal/hand/top-board plus continuous public transaction, not expected list",
+          "readable_set_identifier": null
+        }
+      ],
+      "simultaneous_duplicate_evidence": {
+        "supported": true,
+        "context": "first Misty visible discard-stack top and second in hand",
+        "source_video": "20261002_214254000_iOS.MP4",
+        "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+        "timestamp_seconds": 226.4,
+        "decoded_pts_seconds": 226.402,
+        "evidence_ids": [
+          "F0226.40"
+        ],
+        "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors"
+      },
+      "repeat_sightings_are_new_copies": false,
+      "limit_reason": "Copycat redrawn Misty/Lapras/Cyrus and Lucky Ice Pop return are same physical copy, not additional copies. Under-card history does not reveal set number."
+    },
+    {
+      "name": "Professor's Research",
+      "minimum_copies_supported": 2,
+      "deck_list_count_separate": 2,
+      "observations": [
+        {
+          "physical_occurrence_id": "research1",
+          "source_video": "20261002_214254000_iOS.MP4",
+          "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+          "timestamp_seconds": 283.4,
+          "decoded_pts_seconds": 283.412,
+          "evidence_ids": [
+            "F0283.40"
+          ],
+          "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors",
+          "context": "normal draw T12, played then discard",
+          "identity_basis": "Source reveal/hand/top-board plus continuous public transaction, not expected list",
+          "readable_set_identifier": null
+        },
+        {
+          "physical_occurrence_id": "research2",
+          "source_video": "20261002_214254000_iOS.MP4",
+          "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+          "timestamp_seconds": 373.4,
+          "decoded_pts_seconds": 373.407,
+          "evidence_ids": [
+            "F0373.40"
+          ],
+          "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors",
+          "context": "normal draw T16alternate Professor Oak art; first Research already used, second played",
+          "identity_basis": "Source reveal/hand/top-board plus continuous public transaction, not expected list",
+          "readable_set_identifier": null
+        }
+      ],
+      "simultaneous_duplicate_evidence": {
+        "supported": false,
+        "context": "No simultaneous opened-pile view asserted; minimum distinct copies, where2, supported by consumed first copy then separate later draw"
+      },
+      "repeat_sightings_are_new_copies": false,
+      "limit_reason": "Copycat redrawn Misty/Lapras/Cyrus and Lucky Ice Pop return are same physical copy, not additional copies. Under-card history does not reveal set number."
+    },
+    {
+      "name": "Poké Ball",
+      "minimum_copies_supported": 2,
+      "deck_list_count_separate": 2,
+      "observations": [
+        {
+          "physical_occurrence_id": "pokeball1",
+          "source_video": "20261002_214254000_iOS.MP4",
+          "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+          "timestamp_seconds": 288.4,
+          "decoded_pts_seconds": 288.413,
+          "evidence_ids": [
+            "F0288.40"
+          ],
+          "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors",
+          "context": "Research draw T12, used to find Vulpix, visible top discard T14",
+          "identity_basis": "Source reveal/hand/top-board plus continuous public transaction, not expected list",
+          "readable_set_identifier": null
+        },
+        {
+          "physical_occurrence_id": "pokeball2",
+          "source_video": "20261002_214254000_iOS.MP4",
+          "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+          "timestamp_seconds": 428.4,
+          "decoded_pts_seconds": 428.408,
+          "evidence_ids": [
+            "F0428.40"
+          ],
+          "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors",
+          "context": "Copycat draw T18after first Poke Ball already consumed, attempted no-effect and retained",
+          "identity_basis": "Source reveal/hand/top-board plus continuous public transaction, not expected list",
+          "readable_set_identifier": null
+        }
+      ],
+      "simultaneous_duplicate_evidence": {
+        "supported": false,
+        "context": "No simultaneous opened-pile view asserted; minimum distinct copies, where2, supported by consumed first copy then separate later draw"
+      },
+      "repeat_sightings_are_new_copies": false,
+      "limit_reason": "Copycat redrawn Misty/Lapras/Cyrus and Lucky Ice Pop return are same physical copy, not additional copies. Under-card history does not reveal set number."
+    },
+    {
+      "name": "Lapras",
+      "minimum_copies_supported": 1,
+      "deck_list_count_separate": 1,
+      "observations": [
+        {
+          "physical_occurrence_id": "lapras1",
+          "source_video": "20261002_214254000_iOS.MP4",
+          "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+          "timestamp_seconds": 344.4,
+          "decoded_pts_seconds": 344.4,
+          "evidence_ids": [
+            "F0344.40"
+          ],
+          "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors",
+          "context": "normal draw T14; returned/redrawn by Copycat same copy",
+          "identity_basis": "Source reveal/hand/top-board plus continuous public transaction, not expected list",
+          "readable_set_identifier": null
+        }
+      ],
+      "simultaneous_duplicate_evidence": {
+        "supported": false,
+        "context": "No simultaneous opened-pile view asserted; minimum distinct copies, where2, supported by consumed first copy then separate later draw"
+      },
+      "repeat_sightings_are_new_copies": false,
+      "limit_reason": "Copycat redrawn Misty/Lapras/Cyrus and Lucky Ice Pop return are same physical copy, not additional copies. Under-card history does not reveal set number."
+    },
+    {
+      "name": "Cyrus",
+      "minimum_copies_supported": 1,
+      "deck_list_count_separate": 1,
+      "observations": [
+        {
+          "physical_occurrence_id": "cyrus1",
+          "source_video": "20261002_214254000_iOS.MP4",
+          "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+          "timestamp_seconds": 414.4,
+          "decoded_pts_seconds": 414.405,
+          "evidence_ids": [
+            "F0414.40"
+          ],
+          "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors",
+          "context": "normal draw T18; returned/redrawn Copycat same copy, played T22",
+          "identity_basis": "Source reveal/hand/top-board plus continuous public transaction, not expected list",
+          "readable_set_identifier": null
+        }
+      ],
+      "simultaneous_duplicate_evidence": {
+        "supported": false,
+        "context": "No simultaneous opened-pile view asserted; minimum distinct copies, where2, supported by consumed first copy then separate later draw"
+      },
+      "repeat_sightings_are_new_copies": false,
+      "limit_reason": "Copycat redrawn Misty/Lapras/Cyrus and Lucky Ice Pop return are same physical copy, not additional copies. Under-card history does not reveal set number."
+    },
+    {
+      "name": "Irida",
+      "minimum_copies_supported": 1,
+      "deck_list_count_separate": 1,
+      "observations": [
+        {
+          "physical_occurrence_id": "irida1",
+          "source_video": "20261002_214254000_iOS.MP4",
+          "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+          "timestamp_seconds": 14.5,
+          "decoded_pts_seconds": 14.515,
+          "evidence_ids": [
+            "F0014.50"
+          ],
+          "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors",
+          "context": "opening and held until played T10",
+          "identity_basis": "Source reveal/hand/top-board plus continuous public transaction, not expected list",
+          "readable_set_identifier": null
+        }
+      ],
+      "simultaneous_duplicate_evidence": {
+        "supported": false,
+        "context": "No simultaneous opened-pile view asserted; minimum distinct copies, where2, supported by consumed first copy then separate later draw"
+      },
+      "repeat_sightings_are_new_copies": false,
+      "limit_reason": "Copycat redrawn Misty/Lapras/Cyrus and Lucky Ice Pop return are same physical copy, not additional copies. Under-card history does not reveal set number."
+    },
+    {
+      "name": "Elegant Cape",
+      "minimum_copies_supported": 1,
+      "deck_list_count_separate": 1,
+      "observations": [
+        {
+          "physical_occurrence_id": "cape1",
+          "source_video": "20261002_214254000_iOS.MP4",
+          "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+          "timestamp_seconds": 14.5,
+          "decoded_pts_seconds": 14.515,
+          "evidence_ids": [
+            "F0014.50"
+          ],
+          "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors",
+          "context": "opening; Tool on O-S1T4throughend",
+          "identity_basis": "Source reveal/hand/top-board plus continuous public transaction, not expected list",
+          "readable_set_identifier": null
+        }
+      ],
+      "simultaneous_duplicate_evidence": {
+        "supported": false,
+        "context": "No simultaneous opened-pile view asserted; minimum distinct copies, where2, supported by consumed first copy then separate later draw"
+      },
+      "repeat_sightings_are_new_copies": false,
+      "limit_reason": "Copycat redrawn Misty/Lapras/Cyrus and Lucky Ice Pop return are same physical copy, not additional copies. Under-card history does not reveal set number."
+    },
+    {
+      "name": "Lucky Ice Pop",
+      "minimum_copies_supported": 1,
+      "deck_list_count_separate": 1,
+      "observations": [
+        {
+          "physical_occurrence_id": "icepop1",
+          "source_video": "20261002_214254000_iOS.MP4",
+          "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+          "timestamp_seconds": 147.4,
+          "decoded_pts_seconds": 147.415,
+          "evidence_ids": [
+            "F0147.40"
+          ],
+          "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors",
+          "context": "normal draw T6; T10first play Heads returns, second Tails discards, one physical copy",
+          "identity_basis": "Source reveal/hand/top-board plus continuous public transaction, not expected list",
+          "readable_set_identifier": null
+        }
+      ],
+      "simultaneous_duplicate_evidence": {
+        "supported": false,
+        "context": "No simultaneous opened-pile view asserted; minimum distinct copies, where2, supported by consumed first copy then separate later draw"
+      },
+      "repeat_sightings_are_new_copies": false,
+      "limit_reason": "Copycat redrawn Misty/Lapras/Cyrus and Lucky Ice Pop return are same physical copy, not additional copies. Under-card history does not reveal set number."
+    },
+    {
+      "name": "Copycat",
+      "minimum_copies_supported": 1,
+      "deck_list_count_separate": 1,
+      "observations": [
+        {
+          "physical_occurrence_id": "copycat1",
+          "source_video": "20261002_214254000_iOS.MP4",
+          "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+          "timestamp_seconds": 378.4,
+          "decoded_pts_seconds": 378.408,
+          "evidence_ids": [
+            "F0378.40"
+          ],
+          "timing_basis": "Measured decoded PTS for retained native frame; other event seconds are approximate continuous locator anchors",
+          "context": "Research reveal T16; played T18",
+          "identity_basis": "Source reveal/hand/top-board plus continuous public transaction, not expected list",
+          "readable_set_identifier": null
+        }
+      ],
+      "simultaneous_duplicate_evidence": {
+        "supported": false,
+        "context": "No simultaneous opened-pile view asserted; minimum distinct copies, where2, supported by consumed first copy then separate later draw"
+      },
+      "repeat_sightings_are_new_copies": false,
+      "limit_reason": "Copycat redrawn Misty/Lapras/Cyrus and Lucky Ice Pop return are same physical copy, not additional copies. Under-card history does not reveal set number."
+    }
+  ],
+  "minimum_distinct_cards_source_supported": 20,
+  "whole_20_card_deck_visually_recovered": true,
+  "basis": "All five opening cards plus9normal cards,4Research cards,1PokeBallsearch and1new Copycat card account for20distinct physical occurrences. Copycat redraws3previous held cards; no double-count. Empty-deck notices corroborate exhaustion. This is independent of exact list matching.",
+  "set_printings_whole_deck_recovered": false,
+  "limits": [
+    "No opened discard pile census; card identities seen through reveals/play/hand",
+    "Logged set variants separate from visible alternate artwork",
+    "No hidden computer card inferred"
+  ]
+}

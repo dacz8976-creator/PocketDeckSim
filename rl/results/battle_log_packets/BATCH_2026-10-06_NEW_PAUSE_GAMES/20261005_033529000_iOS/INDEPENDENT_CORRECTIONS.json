@@ -1,0 +1,788 @@
+{
+  "repaired_utc": "2026-10-06T19:28:58.622273+00:00",
+  "lead": "/root",
+  "source_sha256": "e272b0c74f6a863c68811a235d7b9611b14994611365e58694028f323afaea3d",
+  "initial_independent_report": "independent_sol/CHECK_RESULT.json",
+  "original_input_sha256": {
+    "SOURCE.json": "56d71b28e2ab32d50f49f3f9605c4ce237c1c0a84c0a0c462c5b339218a92f3c",
+    "REVIEW.md": "5ca9d96b6c238d1cd05cb86ce8c8a36072d2c421e051ee4575b5c85c409d67b1",
+    "COVERAGE.md": "bc6c454f7af7d6216be3f012ff28536049e20434f4e772c45f99e181c5f44d53",
+    "SUMMARY.json": "07befd117da8f9e2e636d9e547ae43db4e559af41e1d168c09e574f132f7ee38",
+    "UNCERTAINTIES.json": "793752dd3a0994d5df46c314e294846eb592b31e8b5a28db18f91913b677e141",
+    "PAUSE_GAME.json": "6d90d48cb92a81043ca11379b3c332bf97b16dde8edbcaadc509a7fde6db8ba1",
+    "DECK_USED.json": "c3ad95f578eecfcbe334bb917f11908f114fb53b0a51f4626d0dfe3b03afa58c",
+    "TURN_LEDGER.json": "99ba14aa0e106f81f1d76414d1c333980d9f97f4c90265017db41c863c89e3e6",
+    "TURN_EVIDENCE.json": "770b6f189ca24c9da49f550b18a66a5c42e5537041a38b572a803b6a0f11e2ff",
+    "QR_DECODE_RECEIPT.json": "5a674d1fa13643b87c6868326f860ad3a5f599614d7fc3187c5fc95886090fdd"
+  },
+  "original_input_backup": "original_before_R1_R2",
+  "required_repairs_applied": [
+    "R1",
+    "R2"
+  ],
+  "changes": [
+    {
+      "repair_id": "R1",
+      "json_path": "$.turns[1].board_at_start.opponent.energy_zone.this_turn",
+      "before": {
+        "type": "Fighting",
+        "count": 1,
+        "available": true
+      },
+      "after": {
+        "type": null,
+        "count": 0,
+        "available": false
+      }
+    },
+    {
+      "repair_id": "R1",
+      "json_path": "$.turns[2].board_at_start.owner.energy_zone.this_turn",
+      "before": {
+        "type": "Metal",
+        "count": 1,
+        "available": true
+      },
+      "after": {
+        "type": null,
+        "count": 0,
+        "available": false
+      }
+    },
+    {
+      "repair_id": "R1",
+      "json_path": "$.turns[4].board_at_start.owner.energy_zone.this_turn",
+      "before": {
+        "type": "Metal",
+        "count": 1,
+        "available": true
+      },
+      "after": {
+        "type": null,
+        "count": 0,
+        "available": false
+      }
+    },
+    {
+      "repair_id": "R1",
+      "json_path": "$.turns[6].board_at_start.owner.energy_zone.this_turn",
+      "before": {
+        "type": "Metal",
+        "count": 1,
+        "available": true
+      },
+      "after": {
+        "type": null,
+        "count": 0,
+        "available": false
+      }
+    },
+    {
+      "repair_id": "R1",
+      "json_path": "$.turns[8].board_at_start.owner.energy_zone.this_turn",
+      "before": {
+        "type": "Metal",
+        "count": 1,
+        "available": true
+      },
+      "after": {
+        "type": null,
+        "count": 0,
+        "available": false
+      }
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[0].board_at_start.stadium",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[0].board_at_start.owner.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[0].board_at_start.owner.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[0].board_at_start.opponent.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[0].board_after.stadium",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[0].board_after.owner.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[0].board_after.owner.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[0].board_after.opponent.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[1].board_at_start.stadium",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[1].board_at_start.owner.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[1].board_at_start.owner.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[1].board_at_start.opponent.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[1].board_after.owner.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[1].board_after.owner.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[1].board_after.opponent.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[1].board_after.opponent.bench_in_position_order[0].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[2].board_at_start.owner.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[2].board_at_start.owner.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[2].board_at_start.opponent.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[2].board_at_start.opponent.bench_in_position_order[0].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[2].board_after.owner.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[2].board_after.owner.bench_in_position_order[0].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[2].board_after.owner.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[2].board_after.opponent.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[2].board_after.opponent.bench_in_position_order[0].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[3].board_at_start.owner.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[3].board_at_start.owner.bench_in_position_order[0].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[3].board_at_start.owner.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[3].board_at_start.opponent.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[3].board_at_start.opponent.bench_in_position_order[0].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[3].board_after.owner.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[3].board_after.owner.bench_in_position_order[0].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[3].board_after.owner.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[3].board_after.opponent.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[3].board_after.opponent.bench_in_position_order[0].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[3].board_after.opponent.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[4].board_at_start.owner.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[4].board_at_start.owner.bench_in_position_order[0].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[4].board_at_start.owner.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[4].board_at_start.opponent.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[4].board_at_start.opponent.bench_in_position_order[0].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[4].board_at_start.opponent.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[4].board_after.owner.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[4].board_after.owner.bench_in_position_order[0].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[4].board_after.owner.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[4].board_after.owner.bench_in_position_order[2].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[4].board_after.opponent.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[4].board_after.opponent.bench_in_position_order[0].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[4].board_after.opponent.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[5].board_at_start.owner.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[5].board_at_start.owner.bench_in_position_order[0].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[5].board_at_start.owner.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[5].board_at_start.owner.bench_in_position_order[2].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[5].board_at_start.opponent.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[5].board_at_start.opponent.bench_in_position_order[0].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[5].board_at_start.opponent.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[5].board_after.owner.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[5].board_after.owner.bench_in_position_order[0].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[5].board_after.owner.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[5].board_after.owner.bench_in_position_order[2].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[5].board_after.opponent.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[5].board_after.opponent.bench_in_position_order[0].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[5].board_after.opponent.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[5].board_after.opponent.bench_in_position_order[2].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[6].board_at_start.owner.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[6].board_at_start.owner.bench_in_position_order[0].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[6].board_at_start.owner.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[6].board_at_start.owner.bench_in_position_order[2].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[6].board_at_start.opponent.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[6].board_at_start.opponent.bench_in_position_order[0].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[6].board_at_start.opponent.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[6].board_at_start.opponent.bench_in_position_order[2].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[6].board_after.owner.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[6].board_after.owner.bench_in_position_order[0].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[6].board_after.owner.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[6].board_after.owner.bench_in_position_order[2].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[6].board_after.opponent.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[6].board_after.opponent.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[6].board_after.opponent.bench_in_position_order[2].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[7].board_at_start.owner.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[7].board_at_start.owner.bench_in_position_order[0].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[7].board_at_start.owner.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[7].board_at_start.owner.bench_in_position_order[2].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[7].board_at_start.opponent.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[7].board_at_start.opponent.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[7].board_at_start.opponent.bench_in_position_order[2].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[7].board_after.owner.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[7].board_after.owner.bench_in_position_order[0].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[7].board_after.owner.bench_in_position_order[2].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[7].board_after.opponent.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[7].board_after.opponent.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[7].board_after.opponent.bench_in_position_order[2].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[8].board_at_start.owner.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[8].board_at_start.owner.bench_in_position_order[0].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[8].board_at_start.owner.bench_in_position_order[2].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[8].board_at_start.opponent.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[8].board_at_start.opponent.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[8].board_at_start.opponent.bench_in_position_order[2].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[8].board_after.owner.bench_in_position_order[0].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[8].board_after.owner.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[8].board_after.owner.bench_in_position_order[2].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[8].board_after.opponent.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[8].board_after.opponent.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[8].board_after.opponent.bench_in_position_order[2].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[9].board_at_start.owner.bench_in_position_order[0].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[9].board_at_start.owner.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[9].board_at_start.owner.bench_in_position_order[2].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[9].board_at_start.opponent.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[9].board_at_start.opponent.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[9].board_at_start.opponent.bench_in_position_order[2].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[9].board_after.owner.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[9].board_after.owner.bench_in_position_order[2].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[9].board_after.opponent.active.tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[9].board_after.opponent.bench_in_position_order[1].tool",
+      "before": null,
+      "after": "none"
+    },
+    {
+      "repair_id": "R2",
+      "json_path": "$.turns[9].board_after.opponent.bench_in_position_order[2].tool",
+      "before": null,
+      "after": "none"
+    }
+  ],
+  "related_checker_prose_disposition": "Checker confirmed Arena is first observed played at69s; qualify continuity to begin after Turn2 play.",
+  "retained_source_evidence_changed": false,
+  "independent_recheck_required": true
+}

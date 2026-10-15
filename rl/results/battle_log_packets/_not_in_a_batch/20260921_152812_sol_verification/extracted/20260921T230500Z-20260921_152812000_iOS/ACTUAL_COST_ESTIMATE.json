@@ -1,0 +1,11 @@
+{
+  "usage_fields_are_provider_reported": true,
+  "observed_input_tokens": 411633,
+  "observed_tool_use_tokens": 0,
+  "observed_output_tokens": 7981,
+  "observed_thought_tokens": 8015,
+  "estimated_billed_input_tokens": 411633,
+  "cost_usd_lower_bound": 0.338781,
+  "cost_usd_upper_bound": 0.36871,
+  "note": "A range is reported because SDK usage schemas may count thought tokens inside or outside total output tokens. Check the Google billing console for final billing."
+}

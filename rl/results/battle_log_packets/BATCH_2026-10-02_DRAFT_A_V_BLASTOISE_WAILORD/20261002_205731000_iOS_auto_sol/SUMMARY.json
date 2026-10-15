@@ -1,0 +1,61 @@
+{
+  "source_video": "20261002_205731000_iOS.MP4",
+  "source_sha256": "f1ce8e51bc351fc008563c73a72aa7915f0389707375437068c998afd0190199",
+  "game_id": "20261002_205731000_iOS_auto",
+  "review_status": "first_pass_complete_pending_independent_acceptance",
+  "reviewer": "/root/drafta_auto_205731",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "match_date_basis": "2026-10-02 source filename and owner batch assignment",
+  "deck_name": "Draft A: Shark Tempo",
+  "deck_version": "Original two-Misty snapshot",
+  "opponent": "Mega Blastoise ex & Wailord ex Deck (Deluxe Pack: Mega)",
+  "mode": "Computer Step-Up Battle",
+  "mode_basis": "Native0 AI tag and opponent deck selection; AI Opponent setup splash; Auto control on board",
+  "difficulty_category": "Advanced",
+  "difficulty_basis": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\ADVANCED_CATEGORY_CONFIRMATION.json",
+  "separate_difficulty_selector": false,
+  "difficulty_in_recording_label_visible": false,
+  "auto": {
+    "control_present": true,
+    "enabled": true,
+    "changes_observed": false,
+    "opening_evidence_ids": [
+      "F0000.00"
+    ],
+    "game_evidence_ids": [
+      "F0049.00",
+      "F0196.30",
+      "F0340.00",
+      "F0352.00"
+    ],
+    "action_authorship": "Enabled Auto throughout observed play; no separately measured physical input trace"
+  },
+  "ranked_ladder_eligible": false,
+  "outcome": "win",
+  "outcome_basis": {
+    "victory_evidence_ids": [
+      "F0365.00",
+      "F0371.00"
+    ],
+    "final_attack_evidence_ids": [
+      "F0352.00",
+      "F0358.00"
+    ],
+    "final_display_points": {
+      "owner": 3,
+      "opponent": 2
+    },
+    "went_second": true,
+    "turns_played": 18,
+    "damage_done": 610
+  },
+  "limits": [
+    "Concealed opponent normal/Research/Meowth draws and Poké Ball searches have unknown identities.",
+    "No opened discard pile; partial visible top snapshots only.",
+    "Original encoded movie was covered using all371 retained1fps locator samples and118 targeted native captures, not an assertion of every encoded frame inspection.",
+    "Action timestamps approximate; native selected-frame PTS remains measured.",
+    "Source selection shows AI deck and Auto On but lacks Advanced category label; Advanced is bound to separate owner-supplied category screenshot receipt.",
+    "No independent input telemetry; Auto checked UI and automatic sequence support authorship."
+  ]
+}

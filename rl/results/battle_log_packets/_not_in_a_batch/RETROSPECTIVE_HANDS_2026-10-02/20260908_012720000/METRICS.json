@@ -1,0 +1,36 @@
+{
+  "game_id": "20260908_012720000",
+  "worker_status": "source_work_complete_independent_acceptance_pending",
+  "registered_utc": "2026-10-02T21:03:35.3526492Z",
+  "finished_utc": "2026-10-02T21:30:01.854645+00:00",
+  "root_original_delivery_and_sha_reads": 1,
+  "worker_duplicate_sha_reads": 0,
+  "new_native_frames": 86,
+  "new_native_crops": 172,
+  "reused_native_full_frames": 3,
+  "approved_native_frame_cap": 86,
+  "new_frame_native_dimensions": [
+    1170,
+    2532
+  ],
+  "native_evidence_storage_bytes": 67219598,
+  "source_duration_seconds": 282.628,
+  "source_bytes": 530226009,
+  "token_usage": null,
+  "dollar_cost": null,
+  "cost_limit_reason": "Per-agent metering not exposed",
+  "no_source_move": true,
+  "no_external_log_index_or_simulator_edits": true,
+  "locator_decode_passes": 1,
+  "reduced_locator_samples": 283,
+  "locator_grids": 15,
+  "locator_rate_fps": 1,
+  "locator_source_interval_seconds": [
+    0,
+    282.628
+  ],
+  "locator_storage_bytes": 19705283,
+  "worker_cached_source_frame_seek_calls": 86,
+  "worker_cached_source_locator_decode_passes": 1,
+  "wall_seconds": 1586.501996
+}

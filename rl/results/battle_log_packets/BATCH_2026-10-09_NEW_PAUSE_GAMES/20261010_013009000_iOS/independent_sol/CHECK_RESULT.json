@@ -1,0 +1,43 @@
+{
+  "reviewer": "/root/check_013009",
+  "model": "gpt-6.1-sol",
+  "checked_at_utc": "2026-10-10T04:18:25.401815+00:00",
+  "scope": "Bounded independent packet/evidence check, not second full battle visual pass",
+  "status": "accepted_with_recording_limits",
+  "blocking_findings": [],
+  "source_sha256": "80615dfc9c1e28f95434e3b4712f0540e6efc34392aef816419b6f82a0257329",
+  "source_bytes": 1046911287,
+  "source_hash_independently_verified": true,
+  "accepted_input_sha256": {
+    "REVIEW.md": "99e247249ed4890e6ff46bcd959b5676f21b21bf28eba15000d6aa43798a445c",
+    "COVERAGE.md": "6c6de0852e15f772e1294933adca5e8f3a2aad3de3a022f3f88cc2dcb8d43ca5",
+    "SUMMARY.json": "cd4e747966240e46156f80dfc792102073d51e00acdea33947cfdaf140abb0ec",
+    "UNCERTAINTIES.json": "a4f32bf566561d3373f500da5d0b0203f042ff0a602fd750d018b9ead030d19d",
+    "PAUSE_GAME.json": "934dc254e27b3f1728892e7a0acc730973afc8fa3a5541b7614ed4e319928334",
+    "DECK_USED.json": "40b44bab1ba25af4b9140c3d1a94823bbd106d15697bf7af539e18f2f106ebc4",
+    "TURN_LEDGER.json": "0c5e6a086f0510b4c184ed85399b53fb076415ff694f169e825cb28e1922d2e9",
+    "TURN_EVIDENCE.json": "16f2c9f75196cb1e57d960d62ae174f98570ba6458223f2371a5cb739c09769b"
+  },
+  "input_hashes_at_check": {
+    "REVIEW.md": "99e247249ed4890e6ff46bcd959b5676f21b21bf28eba15000d6aa43798a445c",
+    "COVERAGE.md": "6c6de0852e15f772e1294933adca5e8f3a2aad3de3a022f3f88cc2dcb8d43ca5",
+    "SUMMARY.json": "cd4e747966240e46156f80dfc792102073d51e00acdea33947cfdaf140abb0ec",
+    "UNCERTAINTIES.json": "a4f32bf566561d3373f500da5d0b0203f042ff0a602fd750d018b9ead030d19d",
+    "PAUSE_GAME.json": "934dc254e27b3f1728892e7a0acc730973afc8fa3a5541b7614ed4e319928334",
+    "DECK_USED.json": "40b44bab1ba25af4b9140c3d1a94823bbd106d15697bf7af539e18f2f106ebc4",
+    "TURN_LEDGER.json": "0c5e6a086f0510b4c184ed85399b53fb076415ff694f169e825cb28e1922d2e9",
+    "TURN_EVIDENCE.json": "16f2c9f75196cb1e57d960d62ae174f98570ba6458223f2371a5cb739c09769b"
+  },
+  "actual_native_frames_viewed": 53,
+  "structural_frame_count": 213,
+  "turn_rows": 16,
+  "exact_deck_slots": 20,
+  "support_files": [
+    "CHECK.md",
+    "VIEWED_EVIDENCE.json",
+    "STRUCTURAL_CHECK.json"
+  ],
+  "external_log_independently_refetched": false,
+  "main_packet_or_index_or_external_modified": false,
+  "source_moved": false
+}

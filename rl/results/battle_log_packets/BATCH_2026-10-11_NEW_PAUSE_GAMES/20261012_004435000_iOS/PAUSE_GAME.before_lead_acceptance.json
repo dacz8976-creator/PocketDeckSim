@@ -1,0 +1,126 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261012_004435000_iOS-game1",
+  "review_date": "2026-10-11",
+  "sources": [
+    {
+      "video_basename": "20261012_004435000_iOS.MP4",
+      "sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "deck_name": "Kingdra ex / Team Rocket's Weezing ex",
+  "match_date": "2026-10-11",
+  "match_date_basis": "Parent verified source creation_time2026-10-12T00:44:35Z = Chicago2026-10-11 19:44:35; filename is UTC clock date.",
+  "classification": "human_battle",
+  "auto_control_seen": false,
+  "opening": {
+    "source_video": "20261012_004435000_iOS.MP4",
+    "timestamp_seconds": 27,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Kingdra ex",
+        "basis": "Direct five-card native opening before Active placement",
+        "evidence_ids": [
+          "n0027.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Hiking Trail",
+        "basis": "Direct five-card native opening before Active placement",
+        "evidence_ids": [
+          "n0027.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Team Rocket's Weezing ex",
+        "basis": "Direct five-card native opening before Active placement",
+        "evidence_ids": [
+          "n0027.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Team Rocket's Koffing",
+        "basis": "Direct five-card native opening before Active placement",
+        "evidence_ids": [
+          "n0027.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Rare Candy",
+        "basis": "Direct five-card native opening before Active placement",
+        "evidence_ids": [
+          "n0027.00"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Team Rocket's Koffing",
+      "opening_position": 4,
+      "source_video": "20261012_004435000_iOS.MP4",
+      "timestamp_seconds": 28,
+      "evidence_ids": [
+        "n0027.00",
+        "n0043.00",
+        "n0044.00"
+      ]
+    },
+    "redraw_or_replacement": false,
+    "before_active_placement": true,
+    "status": "observed",
+    "evidence_ids": [
+      "n0027.00"
+    ],
+    "limit_reason": null
+  },
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "worker_complete_pending_independent_acceptance",
+  "outcome": {
+    "owner_result": "win",
+    "method": "opponent_concession",
+    "opponent_name": "Chuaryzard",
+    "opponent_level": 47,
+    "concession_source_seconds": 451,
+    "evidence_ids": [
+      "n0451.00",
+      "n0452.00",
+      "n0462.00"
+    ],
+    "points": {
+      "owner": 0,
+      "opponent": 0
+    },
+    "turns_displayed": 10,
+    "result_screen_owner_damage": 90
+  },
+  "limits": [
+    "Opponent deck list and hand identities not filmed; hidden draws remain null.",
+    "No full discard-pile screens; only partial board-side top cards.",
+    "Mega Blaster mills3 owner cards, but only final top Soothing Shore is face-up; other2 identities and reveal-slot assignment unknown.",
+    "Exact queue subtype/ranked status unestablished; human match classification from matchmaking and absence of Auto throughout coverage.",
+    "Source creation time/date verified by parent; source SOURCE.json remains frozen.",
+    "T10 Research inspected; no resolved play/draw2 before concession."
+  ],
+  "lead_checked": false
+}

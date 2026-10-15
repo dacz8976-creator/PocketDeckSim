@@ -1,0 +1,43 @@
+{
+  "operation": "OneDrive online-only request",
+  "created_at_utc": "2026-10-03T00:47:59.533715+00:00",
+  "videos": 1,
+  "online_only": 0,
+  "allocated_bytes_before": 376952925,
+  "allocated_bytes_after": 376952925,
+  "local_bytes_reclaimed": 0,
+  "files_deleted": 0,
+  "method": "Microsoft-documented attrib +U -P; only in-sync cloud placeholders are changed",
+  "verification": "Cloud placeholder metadata and actual allocated disk bytes; video contents are never read",
+  "documentation": "https://learn.microsoft.com/en-us/sharepoint/files-on-demand-windows",
+  "entries": [
+    {
+      "video": "20261002_210612000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20261002_210612000_iOS.MP4",
+      "before": {
+        "logical_bytes": 376952925,
+        "allocated_bytes": 376952925,
+        "attributes": 525344,
+        "placeholder_state": 1,
+        "cloud_placeholder": true,
+        "in_sync": false,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "pending_reason": "Waiting for OneDrive to finish uploading/syncing; local contents retained",
+      "after": {
+        "logical_bytes": 376952925,
+        "allocated_bytes": 376952925,
+        "attributes": 525344,
+        "placeholder_state": 1,
+        "cloud_placeholder": true,
+        "in_sync": false,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    }
+  ]
+}

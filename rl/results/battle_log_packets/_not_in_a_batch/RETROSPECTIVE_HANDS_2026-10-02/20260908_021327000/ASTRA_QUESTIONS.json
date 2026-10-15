@@ -1,0 +1,240 @@
+{
+  "source": "20260908_021327000_iOS.MP4",
+  "sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+  "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_021327_v7_review\\final_packet\\REVIEW.md",
+  "status": "pending_bounded_independent_reconciliation",
+  "questions": [
+    {
+      "id": "C2",
+      "question": "Confirm the fresh bounded observation against the quoted accepted section. Assess only supplement fields and preserve the old packet.",
+      "turn": 8,
+      "observation": "Comfey has no attachedEnergy at188/239, and one at343/408; rightRaticate retains1. T8 addedEnergy destination is Comfey.",
+      "evidence_ids": [
+        "f0188.00",
+        "f0239.00",
+        "f0343.00",
+        "f0408.00"
+      ],
+      "native_frames": [
+        {
+          "source_video": "20260908_021327000_iOS.MP4",
+          "source_sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+          "requested_seconds": 188.0,
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_021327000\\turn_evidence\\t0188.00.jpg"
+        },
+        {
+          "source_video": "20260908_021327000_iOS.MP4",
+          "source_sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+          "requested_seconds": 239.0,
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_021327000\\turn_evidence\\t0239.00.jpg"
+        },
+        {
+          "source_video": "20260908_021327000_iOS.MP4",
+          "source_sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+          "requested_seconds": 343.0,
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_021327000\\turn_evidence\\t0343.00.jpg"
+        },
+        {
+          "source_video": "20260908_021327000_iOS.MP4",
+          "source_sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+          "requested_seconds": 408.0,
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_021327000\\turn_evidence\\t0408.00.jpg"
+        }
+      ],
+      "inherited_claim_summary": "manually attaches Psychic Energy to the right Raticate ex (1 to2)",
+      "inherited_claim": "### Turn 8 (Player), about 03:29-04:20\n\nSightseer looks at the top four cards and takes Team Rocket's Hypno. Drowzee evolves into Hypno. Pokémon Flute returns the knocked-out Jigglypuff from the opponent's discard pile to the Bench. The player manually attaches Psychic Energy to the right Raticate ex (1 to 2). Hypno uses Entrap, moving Mewtwo ex to the Active Spot and dealing 50 damage, reducing it from 150 HP to 100 HP. Hypno retains its two Psychic Energy.",
+      "inherited_claim_basis": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_021327_v7_review\\final_packet\\REVIEW.md:48"
+    },
+    {
+      "id": "C3",
+      "question": "Confirm the fresh bounded observation against the quoted accepted section. Assess only supplement fields and preserve the old packet.",
+      "turn": 10,
+      "observation": "Drowzee is Copycat draw4 at318; untouched five-card replacement at 320; both later PokéBalls show no eligible popup323,328.",
+      "evidence_ids": [
+        "f0310.00",
+        "f0318.00",
+        "f0320.00",
+        "f0323.00",
+        "f0328.00"
+      ],
+      "native_frames": [
+        {
+          "source_video": "20260908_021327000_iOS.MP4",
+          "source_sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+          "requested_seconds": 310.0,
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_021327000\\turn_evidence\\t0310.00.jpg"
+        },
+        {
+          "source_video": "20260908_021327000_iOS.MP4",
+          "source_sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+          "requested_seconds": 318.0,
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_021327000\\turn_evidence\\t0318.00.jpg"
+        },
+        {
+          "source_video": "20260908_021327000_iOS.MP4",
+          "source_sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+          "requested_seconds": 320.0,
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_021327000\\turn_evidence\\t0320.00.jpg"
+        },
+        {
+          "source_video": "20260908_021327000_iOS.MP4",
+          "source_sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+          "requested_seconds": 323.0,
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_021327000\\turn_evidence\\t0323.00.jpg"
+        },
+        {
+          "source_video": "20260908_021327000_iOS.MP4",
+          "source_sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+          "requested_seconds": 328.0,
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_021327000\\turn_evidence\\t0328.00.jpg"
+        }
+      ],
+      "inherited_claim_summary": "The first Poké Ball finds Drowzee. The second Poké Ball reports no eligible cards.",
+      "inherited_claim": "### Turn 10 (Player), about 04:59-05:52\n\nTeam Rocket's Goo-zooka increases the opponent's Retreat Cost by one for the turn. The first Poké Ball finds Drowzee. The second Poké Ball reports that there are no eligible cards in the deck. Hypno retreats and discards its two attached Psychic Energy. The center Raticate ex becomes Active. The player manually attaches a third Psychic Energy to the right benched Raticate ex (2 to 3), attaches Elegant Cape to the active center Raticate ex, and raises its maximum HP from 120 to 150. Boost Dash deals 70 damage, reducing Mewtwo ex from 110 HP to 40 HP.",
+      "inherited_claim_basis": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_021327_v7_review\\final_packet\\REVIEW.md:56"
+    },
+    {
+      "id": "C4",
+      "question": "Confirm the fresh bounded observation against the quoted accepted section. Assess only supplement fields and preserve the old packet.",
+      "turn": 10,
+      "observation": "Energy orb targets benched Hypno at343/345; finalHypno1andrightRaticate1at408. Cape is resolving as Energyorb is dragged; exact overlap order retained rather than silently replacing prose.",
+      "evidence_ids": [
+        "f0343.00",
+        "f0345.00",
+        "f0408.00"
+      ],
+      "native_frames": [
+        {
+          "source_video": "20260908_021327000_iOS.MP4",
+          "source_sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+          "requested_seconds": 343.0,
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_021327000\\turn_evidence\\t0343.00.jpg"
+        },
+        {
+          "source_video": "20260908_021327000_iOS.MP4",
+          "source_sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+          "requested_seconds": 345.0,
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_021327000\\turn_evidence\\t0345.00.jpg"
+        },
+        {
+          "source_video": "20260908_021327000_iOS.MP4",
+          "source_sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+          "requested_seconds": 408.0,
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_021327000\\turn_evidence\\t0408.00.jpg"
+        }
+      ],
+      "inherited_claim_summary": "manually attaches a third Psychic Energy to the right benched Raticate ex (2 to3), attaches Elegant Cape",
+      "inherited_claim": "### Turn 10 (Player), about 04:59-05:52\n\nTeam Rocket's Goo-zooka increases the opponent's Retreat Cost by one for the turn. The first Poké Ball finds Drowzee. The second Poké Ball reports that there are no eligible cards in the deck. Hypno retreats and discards its two attached Psychic Energy. The center Raticate ex becomes Active. The player manually attaches a third Psychic Energy to the right benched Raticate ex (2 to 3), attaches Elegant Cape to the active center Raticate ex, and raises its maximum HP from 120 to 150. Boost Dash deals 70 damage, reducing Mewtwo ex from 110 HP to 40 HP.",
+      "inherited_claim_basis": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_021327_v7_review\\final_packet\\REVIEW.md:56"
+    },
+    {
+      "id": "C5",
+      "question": "Confirm the fresh bounded observation against the quoted accepted section. Assess only supplement fields and preserve the old packet.",
+      "turn": 11,
+      "observation": "Mewtwoexshows2attachedPsychicat399/404/408; confusioncheck391andattackdidnothing396 establish attemptedattack. OpponentEnergyZonecurrentremainsunused399.",
+      "evidence_ids": [
+        "f0391.00",
+        "f0396.00",
+        "f0399.00",
+        "f0404.00"
+      ],
+      "native_frames": [
+        {
+          "source_video": "20260908_021327000_iOS.MP4",
+          "source_sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+          "requested_seconds": 391.0,
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_021327000\\turn_evidence\\t0391.00.jpg"
+        },
+        {
+          "source_video": "20260908_021327000_iOS.MP4",
+          "source_sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+          "requested_seconds": 396.0,
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_021327000\\turn_evidence\\t0396.00.jpg"
+        },
+        {
+          "source_video": "20260908_021327000_iOS.MP4",
+          "source_sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+          "requested_seconds": 399.0,
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_021327000\\turn_evidence\\t0399.00.jpg"
+        },
+        {
+          "source_video": "20260908_021327000_iOS.MP4",
+          "source_sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+          "requested_seconds": 404.0,
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_021327000\\turn_evidence\\t0404.00.jpg"
+        }
+      ],
+      "inherited_claim_summary": "manually attaches a third Psychic Energy to active Mewtwo ex (2 to3). No attack occurs.",
+      "inherited_claim": "### Turn 11 (Opponent), about 05:53-06:19\n\nThe opponent manually attaches a third Psychic Energy to active Mewtwo ex (2 to 3), benches Team Rocket's Slowpoke (80 HP), and uses Potion to heal 20 damage, raising Mewtwo ex from 40 HP to 60 HP. No attack occurs. Leftovers heals another 10 damage, raising Mewtwo ex to 70 HP. Score remains 1-0.",
+      "inherited_claim_basis": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_021327_v7_review\\final_packet\\REVIEW.md:60"
+    },
+    {
+      "id": "C6",
+      "question": "Confirm the fresh bounded observation against the quoted accepted section. Assess only supplement fields and preserve the old packet.",
+      "turn": 10,
+      "observation": "Printedtext300.5 says untilendofopponentnextturn.",
+      "evidence_ids": [
+        "f0300.50"
+      ],
+      "native_frames": [
+        {
+          "source_video": "20260908_021327000_iOS.MP4",
+          "source_sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+          "requested_seconds": 300.5,
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_021327000\\turn_evidence\\t0300.50.jpg"
+        }
+      ],
+      "inherited_claim_summary": "Goo-zooka increases opponentRetreatCostbyone for theturn",
+      "inherited_claim": "### Turn 10 (Player), about 04:59-05:52\n\nTeam Rocket's Goo-zooka increases the opponent's Retreat Cost by one for the turn. The first Poké Ball finds Drowzee. The second Poké Ball reports that there are no eligible cards in the deck. Hypno retreats and discards its two attached Psychic Energy. The center Raticate ex becomes Active. The player manually attaches a third Psychic Energy to the right benched Raticate ex (2 to 3), attaches Elegant Cape to the active center Raticate ex, and raises its maximum HP from 120 to 150. Boost Dash deals 70 damage, reducing Mewtwo ex from 110 HP to 40 HP.",
+      "inherited_claim_basis": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_021327_v7_review\\final_packet\\REVIEW.md:56"
+    },
+    {
+      "id": "C8",
+      "question": "Confirm the fresh bounded observation against the quoted accepted section. Assess only supplement fields and preserve the old packet.",
+      "turn": 2,
+      "observation": "Printed Flower Shield protects each owner Pokemon that has Psychic Energy attached while Comfey is in play. Comfey itself has zero at83/188, but energized Drowzee and Raticate already show protection. Turn8 attaches Energy to Comfey and adds protection to Comfey itself; it does not start protection for all others. The old turn2 statement is supported for energized Drowzee, with the per-Pokemon Energy condition qualified.",
+      "evidence_ids": [
+        "f0083.00",
+        "f0188.00",
+        "f0267.00",
+        "f0269.00"
+      ],
+      "native_frames": [
+        {
+          "source_video": "20260908_021327000_iOS.MP4",
+          "source_sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+          "requested_seconds": 83.0,
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_021327000\\turn_evidence\\t0083.00.jpg"
+        },
+        {
+          "source_video": "20260908_021327000_iOS.MP4",
+          "source_sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+          "requested_seconds": 188.0,
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_021327000\\turn_evidence\\t0188.00.jpg"
+        },
+        {
+          "source_video": "20260908_021327000_iOS.MP4",
+          "source_sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+          "requested_seconds": 267.0,
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_021327000\\turn_evidence\\t0267.00.jpg"
+        },
+        {
+          "source_video": "20260908_021327000_iOS.MP4",
+          "source_sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+          "requested_seconds": 269.0,
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_021327000\\turn_evidence\\t0269.00.jpg"
+        }
+      ],
+      "inherited_claim_summary": "Flower Shield is now protecting the player’s Pokémon",
+      "inherited_claim": "### Turn 2 (Player), about 00:48-01:32\n\nThe player draws Team Rocket's Raticate ex, then benches Team Rocket's Rattata, Comfey, and a second Team Rocket's Rattata. Professor's Research is played. Pokémon Flute is inspected but not played. The player manually attaches Psychic Energy to active Drowzee (0 to 1) and ends the turn without attacking. Comfey's Flower Shield is now protecting the player's Pokémon from Special Conditions.",
+      "inherited_claim_basis": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_021327_v7_review\\final_packet\\REVIEW.md:24",
+      "historical_difference_type": "old_statement_supported_with_per_pokemon_condition; prior_new_draft_rejected",
+      "status": "repaired_after_astra_check_pending_recheck"
+    }
+  ],
+  "resolved_supporter": {
+    "name": "Team Rocket's Master Plan",
+    "native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_021327000\\turn_evidence\\t0267.00.jpg",
+    "oldpacketunchanged": true
+  }
+}

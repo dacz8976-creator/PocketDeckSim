@@ -1,0 +1,38 @@
+{
+  "parser_version": "3.0",
+  "complete": false,
+  "ready_for_independent_review": false,
+  "review_status": "partial",
+  "semantic_verification_performed": false,
+  "completion_verified": false,
+  "end_marker_present": false,
+  "evidence_contract_valid": false,
+  "response_sha256": "D51BE16D0B9A77B27D690A3F92FEF85F9204BE61E9EF82CD3510B3E1E55DB874",
+  "packet_directory": "/home/dacz8976/Gemini_API_Pilot/runs/20260922T011844Z-20260907_232617000_iOS/candidate_packet",
+  "source_binding_verified": true,
+  "files": {
+    "SOURCE.json": {
+      "method": "filename_label",
+      "start_line": 3,
+      "end_line": 578,
+      "valid": true,
+      "transformations": [],
+      "path": "/home/dacz8976/Gemini_API_Pilot/runs/20260922T011844Z-20260907_232617000_iOS/candidate_packet/SOURCE.json",
+      "bytes": 17294,
+      "sha256": "89B49E98CDFCD135D8E357EB13A69B37B774F39A6ED743E5FC1E81329BCD7177"
+    }
+  },
+  "errors": [
+    "Unclosed code fence at line 582; content not recovered.",
+    "Section COVERAGE.md has no complete body.",
+    "Response lacks the unique final END_BATTLE_PACKET marker; possibly truncated.",
+    "COVERAGE.md: expected one section; found 0. No section selected.",
+    "REVIEW.md: expected one section; found 0. No section selected.",
+    "UNCERTAINTIES.json: expected one section; found 0. No section selected."
+  ],
+  "warnings": [
+    "Normal provider completion is unverified; independent-review handoff blocked. No automatic retry."
+  ],
+  "note": "Complete means four files pass structure and evidence-consistency checks, not factual correctness or acceptance. Handoff also requires source binding and normal provider completion.",
+  "report_path": "/home/dacz8976/Gemini_API_Pilot/runs/20260922T011844Z-20260907_232617000_iOS/PARSE_REPORT.json"
+}

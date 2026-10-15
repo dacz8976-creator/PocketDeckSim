@@ -1,0 +1,20 @@
+{
+  "status": "resolved_native_identity_match_locator_phase_qualified",
+  "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+  "prior_binding": "PREPROCESS_LOG.md explicitly binds native frames to exact SHA, but decodedPTS not measured in prior manifest. Filename times are presently provisional.",
+  "observations": [
+    {
+      "evidence_id": "R0500.00",
+      "observation": "Drapion shows two Darkness symbols; Mega Absol shows blue attached Tool and two Darkness; old prose T13 inherits Drapion one Darkness and omits Tool."
+    },
+    {
+      "evidence_id": "R0522.00",
+      "observation": "Card-back animation unlike overview source522 LuckyIcePop preview; timing alignment needs current exact source."
+    },
+    {
+      "evidence_id": "R0672.00",
+      "observation": "Cape Raticate still visibly carries Psychic/Darkness symbols after old prose T15 retreat-payment claim. Requires close current-source transaction comparison."
+    }
+  ],
+  "conclusion": "Old full native500/522 visually match current source. Reduced1fps frames can differ by sample phase, about1s. No demonstrated drift; old reduced evidence retained and used only for locators."
+}

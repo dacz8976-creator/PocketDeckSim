@@ -1,0 +1,1300 @@
+{
+  "schema": "retrospective-hand-supplement-v1",
+  "is_template": false,
+  "game_id": "20260908_012720000",
+  "target_turn_numbers": [
+    2,
+    4,
+    6,
+    8,
+    10,
+    12
+  ],
+  "sources": [
+    {
+      "video_basename": "20260908_012720000_iOS.MP4",
+      "sha256": "b9e76626643d8950cb7a4277487da2262b5fa96faf9e87454495ebe896d47085",
+      "source_json": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_012720_v7_review\\final_packet\\SOURCE.json"
+    }
+  ],
+  "capture_status": "complete_with_recording_limits",
+  "target_rows": [
+    {
+      "turn_number": 2,
+      "timing": {
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 42.8,
+        "before_end_action_seconds": 49.3,
+        "end_after_resolution_seconds": 49.3,
+        "timing_basis": "Accepted prose action anchors plus native requested seek times; no PTS measurement",
+        "draw_animation_end_interval_seconds": [
+          40,
+          41
+        ],
+        "draw_end_basis": "Bounded between zoom/incomplete hand and settled hand; exact end unmeasured",
+        "draw_capture_candidates": [
+          {
+            "requested_seconds": 41,
+            "offset_from_draw_end_range_seconds": [
+              0,
+              1
+            ],
+            "evidence_id": "F0041.00",
+            "before_first_play": true,
+            "selected_for_identity": true,
+            "role": "draw-offset candidate; may already follow a fast play"
+          },
+          {
+            "requested_seconds": 43,
+            "offset_from_draw_end_range_seconds": [
+              2,
+              3
+            ],
+            "evidence_id": "F0043.00",
+            "before_first_play": false,
+            "selected_for_identity": false,
+            "role": "draw-offset candidate; may already follow a fast play"
+          },
+          {
+            "requested_seconds": 46,
+            "offset_from_draw_end_range_seconds": [
+              5,
+              6
+            ],
+            "evidence_id": "F0046.00",
+            "before_first_play": false,
+            "selected_for_identity": false,
+            "role": "draw-offset candidate; may already follow a fast play"
+          }
+        ]
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Whimsicott ex",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0041.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Leaf Cape",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0041.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Ariados (green artwork; Trap Territory/Pierce)",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0041.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Team Rocket's Goo-zooka",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0041.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Ariados (dark artwork; Trap Territory/Pierce)",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0041.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "native full-width hand crop",
+        "evidence_ids": [
+          "F0041.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_turn_draw",
+          "caused_by": "turn start",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Ariados (dark artwork; Trap Territory/Pierce)",
+              "reveal_position": 1,
+              "source_video": "20260908_012720000_iOS.MP4",
+              "timestamp_seconds": 41,
+              "evidence_ids": [
+                "F0040.00",
+                "F0041.00"
+              ],
+              "basis": "native reveal/hand",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": null,
+          "source_video": "20260908_012720000_iOS.MP4",
+          "timestamp_seconds": 41,
+          "evidence_ids": [
+            "F0040.00",
+            "F0041.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Whimsicott ex",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0049.30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Ariados (green artwork; Trap Territory/Pierce)",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0049.30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Team Rocket's Goo-zooka",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0049.30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Ariados (dark artwork; Trap Territory/Pierce)",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0049.30"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "native full-width hand crop",
+        "evidence_ids": [
+          "F0049.30"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 2,
+        "supported_range": null,
+        "count_method": "Distinct visible card-back panels in fan",
+        "basis": "native top crop",
+        "evidence_ids": [
+          "F0041.00"
+        ],
+        "limit_reason": null
+      },
+      "limits": [
+        "One-second locator sampling screened the complete recorded interval; subsecond panels/prompts between samples cannot be excluded. No opened discard panel or visible decline dialog appears in the283 inspected samples. Full hidden pile contents remain unknown; no every-instant absence claim."
+      ]
+    },
+    {
+      "turn_number": 4,
+      "timing": {
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 86.4,
+        "before_end_action_seconds": 93.5,
+        "end_after_resolution_seconds": 105.4,
+        "timing_basis": "Accepted prose action anchors plus native requested seek times; no PTS measurement",
+        "draw_animation_end_interval_seconds": [
+          83.5,
+          84.6
+        ],
+        "draw_end_basis": "Bounded between zoom/incomplete hand and settled hand; exact end unmeasured",
+        "draw_capture_candidates": [
+          {
+            "requested_seconds": 85.5,
+            "offset_from_draw_end_range_seconds": [
+              0.9,
+              2.0
+            ],
+            "evidence_id": "F0085.50",
+            "before_first_play": true,
+            "selected_for_identity": false,
+            "role": "draw-offset candidate; may already follow a fast play"
+          },
+          {
+            "requested_seconds": 87.6,
+            "offset_from_draw_end_range_seconds": [
+              3.0,
+              4.1
+            ],
+            "evidence_id": "F0087.60",
+            "before_first_play": false,
+            "selected_for_identity": false,
+            "role": "draw-offset candidate; may already follow a fast play"
+          },
+          {
+            "requested_seconds": 90.6,
+            "offset_from_draw_end_range_seconds": [
+              6.0,
+              7.1
+            ],
+            "evidence_id": "F0090.60",
+            "before_first_play": false,
+            "selected_for_identity": false,
+            "role": "draw-offset candidate; may already follow a fast play"
+          }
+        ],
+        "end_after_resolution_basis": "Accepted prose promotion105.4; native104.8 is pre-promotion boundary/ending hand, not settled Active Magmar proof."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Whimsicott ex",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0084.60"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Ariados (green artwork; Trap Territory/Pierce)",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0084.60"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Team Rocket's Goo-zooka",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0084.60"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Ariados (dark artwork; Trap Territory/Pierce)",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0084.60"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Poké Ball",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0084.60"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "native full-width hand crop",
+        "evidence_ids": [
+          "F0084.60"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_turn_draw",
+          "caused_by": "turn start",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Poké Ball",
+              "reveal_position": 1,
+              "source_video": "20260908_012720000_iOS.MP4",
+              "timestamp_seconds": 84.6,
+              "evidence_ids": [
+                "F0083.50",
+                "F0084.60"
+              ],
+              "basis": "native reveal/hand",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": null,
+          "source_video": "20260908_012720000_iOS.MP4",
+          "timestamp_seconds": 84.6,
+          "evidence_ids": [
+            "F0083.50",
+            "F0084.60"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poké Ball",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": "Cottonee",
+              "reveal_position": 1,
+              "source_video": "20260908_012720000_iOS.MP4",
+              "timestamp_seconds": 89,
+              "evidence_ids": [
+                "F0089.00",
+                "F0090.60"
+              ],
+              "basis": "native reveal/hand",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": null,
+          "source_video": "20260908_012720000_iOS.MP4",
+          "timestamp_seconds": 89,
+          "evidence_ids": [
+            "F0089.00",
+            "F0090.60"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Whimsicott ex",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0104.80"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Ariados (green artwork; Trap Territory/Pierce)",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0104.80"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Team Rocket's Goo-zooka",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0104.80"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Ariados (dark artwork; Trap Territory/Pierce)",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0104.80"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "native full-width hand crop",
+        "evidence_ids": [
+          "F0104.80"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 2,
+        "supported_range": null,
+        "count_method": "Distinct visible card-back panels in fan",
+        "basis": "native top crop",
+        "evidence_ids": [
+          "F0084.60"
+        ],
+        "limit_reason": null
+      },
+      "limits": [
+        "One-second locator sampling screened the complete recorded interval; subsecond panels/prompts between samples cannot be excluded. No opened discard panel or visible decline dialog appears in the283 inspected samples. Full hidden pile contents remain unknown; no every-instant absence claim."
+      ]
+    },
+    {
+      "turn_number": 6,
+      "timing": {
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 130,
+        "before_end_action_seconds": 134.8,
+        "end_after_resolution_seconds": 139.5,
+        "timing_basis": "Accepted prose action anchors plus native requested seek times; no PTS measurement",
+        "draw_animation_end_interval_seconds": [
+          126.5,
+          128
+        ],
+        "draw_end_basis": "Bounded between zoom/incomplete hand and settled hand; exact end unmeasured",
+        "draw_capture_candidates": [
+          {
+            "requested_seconds": 128,
+            "offset_from_draw_end_range_seconds": [
+              0,
+              1.5
+            ],
+            "evidence_id": "F0128.00",
+            "before_first_play": true,
+            "selected_for_identity": true,
+            "role": "draw-offset candidate; may already follow a fast play"
+          },
+          {
+            "requested_seconds": 131,
+            "offset_from_draw_end_range_seconds": [
+              3,
+              4.5
+            ],
+            "evidence_id": "F0131.00",
+            "before_first_play": false,
+            "selected_for_identity": false,
+            "role": "draw-offset candidate; may already follow a fast play"
+          },
+          {
+            "requested_seconds": 134.8,
+            "offset_from_draw_end_range_seconds": [
+              6.8,
+              8.3
+            ],
+            "evidence_id": "F0134.80",
+            "before_first_play": false,
+            "selected_for_identity": false,
+            "role": "draw-offset candidate; may already follow a fast play"
+          }
+        ]
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Whimsicott ex",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0128.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Ariados (green artwork; Trap Territory/Pierce)",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0128.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Team Rocket's Goo-zooka",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0128.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Ariados (dark artwork; Trap Territory/Pierce)",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0128.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Hiking Trail",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0128.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "native full-width hand crop",
+        "evidence_ids": [
+          "F0128.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_turn_draw",
+          "caused_by": "turn start",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Hiking Trail",
+              "reveal_position": 1,
+              "source_video": "20260908_012720000_iOS.MP4",
+              "timestamp_seconds": 128,
+              "evidence_ids": [
+                "F0126.50",
+                "F0128.00"
+              ],
+              "basis": "native reveal/hand",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": null,
+          "source_video": "20260908_012720000_iOS.MP4",
+          "timestamp_seconds": 128,
+          "evidence_ids": [
+            "F0126.50",
+            "F0128.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Ariados (green artwork; Trap Territory/Pierce)",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0139.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Goo-zooka",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0139.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Ariados (dark artwork; Trap Territory/Pierce)",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0139.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Hiking Trail",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0139.50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "native full-width hand crop",
+        "evidence_ids": [
+          "F0139.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 2,
+        "supported_range": null,
+        "count_method": "Distinct visible card-back panels in fan",
+        "basis": "native top crop",
+        "evidence_ids": [
+          "F0128.00"
+        ],
+        "limit_reason": null
+      },
+      "limits": [
+        "One-second locator sampling screened the complete recorded interval; subsecond panels/prompts between samples cannot be excluded. No opened discard panel or visible decline dialog appears in the283 inspected samples. Full hidden pile contents remain unknown; no every-instant absence claim."
+      ]
+    },
+    {
+      "turn_number": 8,
+      "timing": {
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 162.8,
+        "before_end_action_seconds": 168,
+        "end_after_resolution_seconds": 182.8,
+        "timing_basis": "Accepted prose action anchors plus native requested seek times; no PTS measurement",
+        "draw_animation_end_interval_seconds": [
+          160,
+          162
+        ],
+        "draw_end_basis": "Bounded between zoom/incomplete hand and settled hand; exact end unmeasured",
+        "draw_capture_candidates": [
+          {
+            "requested_seconds": 162,
+            "offset_from_draw_end_range_seconds": [
+              0,
+              2
+            ],
+            "evidence_id": "F0162.00",
+            "before_first_play": true,
+            "selected_for_identity": true,
+            "role": "draw-offset candidate; may already follow a fast play"
+          },
+          {
+            "requested_seconds": 164,
+            "offset_from_draw_end_range_seconds": [
+              2,
+              4
+            ],
+            "evidence_id": "F0164.00",
+            "before_first_play": false,
+            "selected_for_identity": false,
+            "role": "draw-offset candidate; may already follow a fast play"
+          },
+          {
+            "requested_seconds": 166,
+            "offset_from_draw_end_range_seconds": [
+              4,
+              6
+            ],
+            "evidence_id": "F0166.00",
+            "before_first_play": false,
+            "selected_for_identity": false,
+            "role": "draw-offset candidate; may already follow a fast play"
+          }
+        ]
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Ariados (green artwork; Trap Territory/Pierce)",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0162.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Goo-zooka",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0162.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Ariados (dark artwork; Trap Territory/Pierce)",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0162.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Hiking Trail",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0162.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Copycat",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0162.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "native full-width hand crop",
+        "evidence_ids": [
+          "F0162.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_turn_draw",
+          "caused_by": "turn start",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Copycat",
+              "reveal_position": 1,
+              "source_video": "20260908_012720000_iOS.MP4",
+              "timestamp_seconds": 162,
+              "evidence_ids": [
+                "F0160.00",
+                "F0162.00"
+              ],
+              "basis": "native reveal/hand",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": null,
+          "source_video": "20260908_012720000_iOS.MP4",
+          "timestamp_seconds": 162,
+          "evidence_ids": [
+            "F0160.00",
+            "F0162.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Ariados (green artwork; Trap Territory/Pierce)",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0182.80"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Goo-zooka",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0182.80"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Ariados (dark artwork; Trap Territory/Pierce)",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0182.80"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Hiking Trail",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0182.80"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Copycat",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0182.80"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "native full-width hand crop",
+        "evidence_ids": [
+          "F0182.80"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 1,
+        "supported_range": null,
+        "count_method": "Distinct visible card-back panels in fan",
+        "basis": "native top crop",
+        "evidence_ids": [
+          "F0162.00"
+        ],
+        "limit_reason": null
+      },
+      "limits": [
+        "One-second locator sampling screened the complete recorded interval; subsecond panels/prompts between samples cannot be excluded. No opened discard panel or visible decline dialog appears in the283 inspected samples. Full hidden pile contents remain unknown; no every-instant absence claim."
+      ]
+    },
+    {
+      "turn_number": 10,
+      "timing": {
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 213,
+        "before_end_action_seconds": 228.8,
+        "end_after_resolution_seconds": 238.5,
+        "timing_basis": "Accepted prose action anchors plus native requested seek times; no PTS measurement",
+        "draw_animation_end_interval_seconds": [
+          211.5,
+          212.5
+        ],
+        "draw_end_basis": "Bounded between zoom/incomplete hand and settled hand; exact end unmeasured",
+        "draw_capture_candidates": [
+          {
+            "requested_seconds": 213,
+            "offset_from_draw_end_range_seconds": [
+              0.5,
+              1.5
+            ],
+            "evidence_id": "F0213.00",
+            "before_first_play": false,
+            "selected_for_identity": false,
+            "role": "draw-offset candidate; may already follow a fast play"
+          },
+          {
+            "requested_seconds": 215.5,
+            "offset_from_draw_end_range_seconds": [
+              3.0,
+              4.0
+            ],
+            "evidence_id": "F0215.50",
+            "before_first_play": false,
+            "selected_for_identity": false,
+            "role": "draw-offset candidate; may already follow a fast play"
+          },
+          {
+            "requested_seconds": 218.5,
+            "offset_from_draw_end_range_seconds": [
+              6.0,
+              7.0
+            ],
+            "evidence_id": "F0218.50",
+            "before_first_play": false,
+            "selected_for_identity": false,
+            "role": "draw-offset candidate; may already follow a fast play"
+          }
+        ]
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Ariados (green artwork; Trap Territory/Pierce)",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0212.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Goo-zooka",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0212.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Ariados (dark artwork; Trap Territory/Pierce)",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0212.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Hiking Trail",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0212.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Copycat",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0212.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 6,
+            "name": "X Speed",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0212.50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 6,
+        "basis": "native full-width hand crop",
+        "evidence_ids": [
+          "F0212.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_turn_draw",
+          "caused_by": "turn start",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "X Speed",
+              "reveal_position": 1,
+              "source_video": "20260908_012720000_iOS.MP4",
+              "timestamp_seconds": 212.5,
+              "evidence_ids": [
+                "F0211.50",
+                "F0212.50"
+              ],
+              "basis": "native reveal/hand",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 5,
+          "hand_count_after": 6,
+          "returned_or_discarded_cards": null,
+          "source_video": "20260908_012720000_iOS.MP4",
+          "timestamp_seconds": 212.5,
+          "evidence_ids": [
+            "F0211.50",
+            "F0212.50"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "supporter_refill",
+          "caused_by": "Copycat",
+          "linked_play_order": 3,
+          "cards_in_reveal_order": [
+            {
+              "name": "Ariados (dark artwork; Trap Territory/Pierce)",
+              "reveal_position": 1,
+              "source_video": "20260908_012720000_iOS.MP4",
+              "timestamp_seconds": 227,
+              "evidence_ids": [
+                "F0224.00",
+                "F0226.00",
+                "F0227.00"
+              ],
+              "basis": "native reveal/hand",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 1,
+          "returned_or_discarded_cards": [
+            "Ariados (green artwork; Trap Territory/Pierce)",
+            "Ariados (dark artwork; Trap Territory/Pierce)",
+            "X Speed"
+          ],
+          "source_video": "20260908_012720000_iOS.MP4",
+          "timestamp_seconds": 227,
+          "evidence_ids": [
+            "F0224.00",
+            "F0226.00",
+            "F0227.00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "stadium_draw",
+          "caused_by": "Hiking Trail",
+          "linked_play_order": 2,
+          "cards_in_reveal_order": [
+            {
+              "name": "X Speed",
+              "reveal_position": 1,
+              "source_video": "20260908_012720000_iOS.MP4",
+              "timestamp_seconds": 236.5,
+              "evidence_ids": [
+                "F0235.80",
+                "F0236.50",
+                "F0238.50"
+              ],
+              "basis": "native reveal/hand",
+              "limit_reason": null
+            },
+            {
+              "name": "Spinarak",
+              "reveal_position": 2,
+              "source_video": "20260908_012720000_iOS.MP4",
+              "timestamp_seconds": 236.5,
+              "evidence_ids": [
+                "F0235.80",
+                "F0236.50",
+                "F0238.50"
+              ],
+              "basis": "native reveal/hand",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 1,
+          "hand_count_after": 3,
+          "returned_or_discarded_cards": null,
+          "source_video": "20260908_012720000_iOS.MP4",
+          "timestamp_seconds": 236.5,
+          "evidence_ids": [
+            "F0235.80",
+            "F0236.50",
+            "F0238.50"
+          ],
+          "limit_reason": "Stadium cause inferred; card identities and order directly observed.",
+          "causal_status": "inferred",
+          "causal_basis": "Inferred from the end-turn timing, refill from one to three cards, Hiking Trail in play and its printed effect; the named card identities and reveal order are directly visible. No native message explicitly attributes the Spinarak draw to the Stadium."
+        }
+      ],
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Ariados (dark artwork; Trap Territory/Pierce)",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0238.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "X Speed",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0238.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Spinarak",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0238.50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "native full-width hand crop",
+        "evidence_ids": [
+          "F0238.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 1,
+        "supported_range": null,
+        "count_method": "Distinct visible card-back panels in fan",
+        "basis": "native top crop",
+        "evidence_ids": [
+          "F0212.50"
+        ],
+        "limit_reason": null
+      },
+      "limits": [
+        "One-second locator sampling screened the complete recorded interval; subsecond panels/prompts between samples cannot be excluded. No opened discard panel or visible decline dialog appears in the283 inspected samples. Full hidden pile contents remain unknown; no every-instant absence claim."
+      ]
+    },
+    {
+      "turn_number": 12,
+      "timing": {
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 256.2,
+        "before_end_action_seconds": 265,
+        "end_after_resolution_seconds": 272,
+        "timing_basis": "Accepted prose action anchors plus native requested seek times; no PTS measurement",
+        "draw_animation_end_interval_seconds": [
+          253,
+          254.5
+        ],
+        "draw_end_basis": "Bounded between zoom/incomplete hand and settled hand; exact end unmeasured",
+        "draw_capture_candidates": [
+          {
+            "requested_seconds": 255,
+            "offset_from_draw_end_range_seconds": [
+              0.5,
+              2
+            ],
+            "evidence_id": "F0255.00",
+            "before_first_play": true,
+            "selected_for_identity": false,
+            "role": "draw-offset candidate; may already follow a fast play"
+          },
+          {
+            "requested_seconds": 258,
+            "offset_from_draw_end_range_seconds": [
+              3.5,
+              5
+            ],
+            "evidence_id": "F0258.00",
+            "before_first_play": false,
+            "selected_for_identity": false,
+            "role": "draw-offset candidate; may already follow a fast play"
+          },
+          {
+            "requested_seconds": 261,
+            "offset_from_draw_end_range_seconds": [
+              6.5,
+              8
+            ],
+            "evidence_id": "F0261.00",
+            "before_first_play": false,
+            "selected_for_identity": false,
+            "role": "draw-offset candidate; may already follow a fast play"
+          }
+        ]
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Ariados (dark artwork; Trap Territory/Pierce)",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0254.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "X Speed",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0254.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Spinarak",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0254.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Quick-Grow Extract",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0254.50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "native full-width hand crop",
+        "evidence_ids": [
+          "F0254.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_turn_draw",
+          "caused_by": "turn start",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Quick-Grow Extract",
+              "reveal_position": 1,
+              "source_video": "20260908_012720000_iOS.MP4",
+              "timestamp_seconds": 254.5,
+              "evidence_ids": [
+                "F0253.00",
+                "F0254.50"
+              ],
+              "basis": "native reveal/hand",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": null,
+          "source_video": "20260908_012720000_iOS.MP4",
+          "timestamp_seconds": 254.5,
+          "evidence_ids": [
+            "F0253.00",
+            "F0254.50"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Ariados (dark artwork; Trap Territory/Pierce)",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0270.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Quick-Grow Extract",
+            "basis": "native full-width hand crop",
+            "evidence_ids": [
+              "F0270.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 2,
+        "basis": "native full-width hand crop",
+        "evidence_ids": [
+          "F0270.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 3,
+        "supported_range": null,
+        "count_method": "Distinct visible card-back panels in fan",
+        "basis": "native top crop",
+        "evidence_ids": [
+          "F0254.50"
+        ],
+        "limit_reason": null
+      },
+      "limits": [
+        "One-second locator sampling screened the complete recorded interval; subsecond panels/prompts between samples cannot be excluded. No opened discard panel or visible decline dialog appears in the283 inspected samples. Full hidden pile contents remain unknown; no every-instant absence claim."
+      ]
+    }
+  ],
+  "independent_acceptance_status": "pending",
+  "source_audit": "LOCATOR_SCAN.json"
+}

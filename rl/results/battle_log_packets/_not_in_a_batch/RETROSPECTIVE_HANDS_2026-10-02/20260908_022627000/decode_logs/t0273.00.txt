@@ -1,0 +1,45 @@
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'C:\Users\dacz8\OneDrive\Desktop\Battle Logs\Reviewed\20260908_022627000_iOS.MP4':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 1
+    compatible_brands: isommp41mp42
+    creation_time   : 2026-09-08T02:26:27.000000Z
+  Duration: 00:12:01.05, start: 0.000000, bitrate: 14999 kb/s
+  Stream #0:0[0x1](und): Video: hevc (Main) (hvc1 / 0x31637668), yuvj420p(pc, bt709, progressive), 1170x2532, 14988 kb/s, 59.29 fps, 60 tbr, 600 tbn (default)
+    Metadata:
+      creation_time   : 2026-09-08T02:26:27.000000Z
+      handler_name    : Core Media Video
+      vendor_id       : [0][0][0][0]
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 2 kb/s (default)
+    Metadata:
+      creation_time   : 2026-09-08T02:26:27.000000Z
+      handler_name    : Core Media Audio
+      vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 -> #0:0 (hevc (native) -> mjpeg (native))
+Press [q] to stop, [?] for help
+[Parsed_showinfo_0 @ 00000222f53c4480] config in time_base: 1/600, frame_rate: 60/1
+[Parsed_showinfo_0 @ 00000222f53c4480] config out time_base: 0/0, frame_rate: 0/0
+[Parsed_showinfo_0 @ 00000222f53c4480] n:   0 pts: 163809 pts_time:273.015 duration:     10 duration_time:0.0166667 pos:506357967 fmt:yuvj420p sar:0/1 s:1170x2532 i:P iskey:0 type:B checksum:9D9282B9 plane_checksum:[7D7BC2EF 29B7E6AC 9E40D900] mean:[166 141 119] stdev:[59.5 21.8 25.0]
+[Parsed_showinfo_0 @ 00000222f53c4480] color_range:pc color_space:bt709 color_primaries:bt709 color_trc:bt709
+Output #0, image2, to 'C:\Users\dacz8\OneDrive\Desktop\Battle Logs\Recording_QA\RETROSPECTIVE_HANDS_2026-10-02\20260908_022627000\turn_evidence\t0273.00.jpg':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 1
+    compatible_brands: isommp41mp42
+    encoder         : Lavf60.3.100
+  Stream #0:0(und): Video: mjpeg, yuvj420p(pc, bt709, progressive), 1170x2532, q=2-31, 200 kb/s, 60 fps, 60 tbn (default)
+    Metadata:
+      creation_time   : 2026-09-08T02:26:27.000000Z
+      handler_name    : Core Media Video
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.3.100 mjpeg
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/200000 buffer size: 0 vbv_delay: N/A
+frame=    0 fps=0.0 q=2.0 size=       0kB time=00:00:00.00 bitrate=N/A speed=   0x    
+[image2 @ 00000222f7521700] The specified filename 'C:\Users\dacz8\OneDrive\Desktop\Battle Logs\Recording_QA\RETROSPECTIVE_HANDS_2026-10-02\20260908_022627000\turn_evidence\t0273.00.jpg' does not contain an image sequence pattern or a pattern is invalid.
+[image2 @ 00000222f7521700] Use a pattern such as %03d for an image sequence or use the -update option (with -frames:v 1 if needed) to write a single image.
+[Parsed_showinfo_0 @ 00000222f53c4480] n:   1 pts: 163819 pts_time:273.032 duration:     10 duration_time:0.0166667 pos:506115193 fmt:yuvj420p sar:0/1 s:1170x2532 i:P iskey:0 type:P checksum:3CB30653 plane_checksum:[4B438D49 34812707 358351F4] mean:[166 141 118] stdev:[59.4 21.8 25.1]
+[Parsed_showinfo_0 @ 00000222f53c4480] color_range:pc color_space:bt709 color_primaries:bt709 color_trc:bt709
+frame=    1 fps=0.0 q=2.0 Lsize=N/A time=00:00:00.00 bitrate=N/A speed=   0x    
+video:492kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: unknown

@@ -1,0 +1,29 @@
+{
+  "source_video": "20261012_230258000_iOS.MP4",
+  "source_sha256": "02c8539c786e5e57652c297ce425468955c4f70da2657a40cf39a2b0b330619a",
+  "unreviewed_intervals": [],
+  "material_unresolved_events": [],
+  "recording_limits": [
+    "Neither player opens a discard pile; periodic complete pile snapshots unavailable throughout the supplied source.",
+    "Opponent face-down draws/searches remain unknown; later plays do not identify prior finds.",
+    "Semantic versions are established; artwork/rarity not fully identified.",
+    "Future Energy count/availability has no readable labeled numerical display and remains null despite visible next-type icon.",
+    "Turn 13 has no normal draw animation because deck is empty; native turn-start hand substitutes with explicit notice.",
+    "Later +1/+3/+6 candidate frames may show played cards/zooms; only the chosen earlier preplay hand supplies starting identities.",
+    "Source timestamps are requested local seeks; exact frame PTS not measured."
+  ],
+  "mode_limit": "Matchmaking and visible opponent establishhumanbattle; specific queue not displayed. No Auto control in supplied footage.",
+  "artwork_rarity_limit": "QR matchessemanticlist; no assertionofexactartwork or rare print forhidden cards.",
+  "opponent_hidden_searches": [
+    {
+      "turn": 4,
+      "timestamps": [
+        159,
+        188
+      ],
+      "identities": null,
+      "reason": "Face-downcards; subsequent Staryu plays are not identificationevidence."
+    }
+  ],
+  "copycat_limit": "Opponent fan 3 but only 2 available cards; named Research 422/Ilima 423 andendinghand 2 established. Exact shuffled deck order is hidden."
+}

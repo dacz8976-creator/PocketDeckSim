@@ -1,0 +1,65 @@
+{
+  "reviewer": "/root/check_020258",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "scope": "Bounded independent acceptance: opening, all owner first moves/preplay hands, named consequential draw sequences, selected ordinary/decisive state and terminal result. This is not a second full visual pass.",
+  "source_video": "20261010_020258000_iOS.MP4",
+  "source_sha256": "c5e7732cf212bd836fbcafc107b0f0d92ff43d8a8cd2f5b9f222b4fd466e5640",
+  "read_method": "Actual view_image inspection of listed retained native files; native dimensions verified with PIL; full-image display may be scaled by viewer. No image extraction treated as visual inspection.",
+  "actually_viewed_paths": [
+    "turn_evidence/t0036.50.jpg",
+    "turn_evidence/t0065.00.jpg",
+    "turn_evidence/t0184.20.jpg",
+    "turn_evidence/t0256.80.jpg",
+    "turn_evidence/t0319.00.jpg",
+    "turn_evidence/t0066.50.jpg",
+    "turn_evidence/t0185.50.jpg",
+    "turn_evidence/t0258.00.jpg",
+    "turn_evidence/t0321.70.jpg",
+    "turn_evidence/t0130.00.jpg",
+    "turn_evidence/t0067.00.jpg",
+    "turn_evidence/t0083.00.jpg",
+    "turn_evidence/t0084.00.jpg",
+    "turn_evidence/t0085.00.jpg",
+    "turn_evidence/t0086.00.jpg",
+    "turn_evidence/t0133.00.jpg",
+    "turn_evidence/t0200.00.jpg",
+    "turn_evidence/t0203.00.jpg",
+    "turn_evidence/t0219.00.jpg",
+    "turn_evidence/t0235.00.jpg",
+    "turn_evidence/t0236.00.jpg",
+    "turn_evidence/t0238.00.jpg",
+    "turn_evidence/t0261.00.jpg",
+    "turn_evidence/t0262.50.jpg",
+    "turn_evidence/t0267.00.jpg",
+    "turn_evidence/t0279.00.jpg",
+    "turn_evidence/t0330.00.jpg",
+    "turn_evidence/t0340.00.jpg",
+    "turn_evidence/t0290.00.jpg",
+    "turn_evidence/t0328.00.jpg",
+    "turn_evidence/t0185.00.jpg",
+    "turn_evidence/t0216.00.jpg",
+    "turn_evidence/t0342.00.jpg",
+    "turn_evidence/t0111.50_bottom.jpg",
+    "turn_evidence/t0206.50_bottom.jpg",
+    "turn_evidence/t0273.00_bottom.jpg",
+    "turn_evidence/t0326.50_bottom.jpg",
+    "qr_intake/t0001.00.jpg"
+  ],
+  "actual_view_count": 38,
+  "file_integrity_checked_native_frame_count": 158,
+  "crop_dimensions_checked": {
+    "full": [
+      1170,
+      2532
+    ],
+    "bottom": [
+      1170,
+      507
+    ],
+    "top": [
+      1170,
+      600
+    ]
+  }
+}

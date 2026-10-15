@@ -1,0 +1,4393 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261012_004435000_iOS-game1",
+  "sources": [
+    {
+      "video_basename": "20261012_004435000_iOS.MP4",
+      "sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "default_capture_policy": {
+    "owner_turn_offsets_after_draw_seconds": [
+      1,
+      3,
+      6
+    ],
+    "before_end_action_required": true,
+    "native_resolution_required": true,
+    "bottom_crop_height_fraction": 0.2,
+    "top_crop": "Native [0,0,1170,650] opponent fan/clocks/Energy Zone",
+    "fixed_grid_is_turn_start_evidence": false,
+    "discard_target_every_owner_turns": [
+      2,
+      3
+    ]
+  },
+  "frames": [
+    {
+      "evidence_id": "n0000.00",
+      "role": "native_action_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 0.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0000.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0005.00",
+      "role": "native_action_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 5.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0005.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0010.00",
+      "role": "native_action_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 10.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0010.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0020.00",
+      "role": "native_action_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 20.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0020.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0026.00",
+      "role": "native_action_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 26.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0026.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0027.00",
+      "role": "opening",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 27.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0027.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0027.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0027.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0043.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 1,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 43.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0043.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0043.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0043.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0044.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 1,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 44.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0044.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0127.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 1,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 127.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0127.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0129.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 1,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 129.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0129.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0129.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0129.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0130.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 1,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 130.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0130.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0134.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 134.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0134.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0134.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0134.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": false,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0135.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 135.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0135.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0135.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0135.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0136.00",
+      "role": "draw_timed_candidate",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": 135,
+      "requested_source_seconds": 136.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 1.0,
+      "full_frame_path": "turn_evidence/t0136.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0136.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0136.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Selected all5 preplay; opponent fan has 4 individually distinct card backs, direct native count",
+      "suitability_or_limit": "Selected all5 preplay",
+      "opponent_hand_count_observed": 4
+    },
+    {
+      "evidence_id": "n0137.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 137.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0137.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0138.00",
+      "role": "draw_timed_candidate",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": 135,
+      "requested_source_seconds": 138.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 3.0,
+      "full_frame_path": "turn_evidence/t0138.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0138.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0138.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "After Energy attachment; unsuitable start",
+      "suitability_or_limit": "After Energy attachment; unsuitable start"
+    },
+    {
+      "evidence_id": "n0139.00",
+      "role": "native_action_or_boundary;before_end_hand",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 139.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0139.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0139.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0139.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0140.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 140.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0140.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0141.00",
+      "role": "draw_timed_candidate",
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": 135,
+      "requested_source_seconds": 141.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 6.0,
+      "full_frame_path": "turn_evidence/t0141.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0141.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0141.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Opponent turn3 banner; unsuitable start",
+      "suitability_or_limit": "Opponent turn3 banner; unsuitable start"
+    },
+    {
+      "evidence_id": "n0150.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 150.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0150.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0151.50",
+      "role": "native_action_or_boundary",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 151.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0151.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0154.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 154.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0154.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0158.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 158.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0158.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0162.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 162.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0162.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0166.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 166.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0166.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0170.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 170.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0170.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0174.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 174.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0174.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0178.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 178.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0178.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0185.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 185.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0185.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0185.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0185.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0186.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 186.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0186.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0187.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 187.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0187.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0187.50",
+      "role": "native_action_or_boundary",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 187.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0187.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0187.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0187.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": false,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0188.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 188.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0188.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0188.30",
+      "role": "draw_timed_candidate",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": 188.2,
+      "requested_source_seconds": 188.3,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 0.1,
+      "full_frame_path": "turn_evidence/t0188.30.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0188.30_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0188.30_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Dense preplay all cards clear before immediate first play; opponent fan has 2 individually distinct card backs, direct native count",
+      "suitability_or_limit": "Dense preplay all cards clear before immediate first play",
+      "opponent_hand_count_observed": 2
+    },
+    {
+      "evidence_id": "n0189.00",
+      "role": "draw_timed_candidate",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": 188.2,
+      "requested_source_seconds": 189.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 0.8,
+      "full_frame_path": "turn_evidence/t0189.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0189.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0189.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Horsea placement already begun; unsuitable start",
+      "suitability_or_limit": "Horsea placement already begun; unsuitable start"
+    },
+    {
+      "evidence_id": "n0190.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 190.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0190.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0191.00",
+      "role": "draw_timed_candidate",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": 188.2,
+      "requested_source_seconds": 191.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 2.8,
+      "full_frame_path": "turn_evidence/t0191.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0191.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0191.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Horsea already benched; unsuitable start",
+      "suitability_or_limit": "Horsea already benched; unsuitable start"
+    },
+    {
+      "evidence_id": "n0192.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 192.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0192.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0194.00",
+      "role": "draw_timed_candidate",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": 188.2,
+      "requested_source_seconds": 194.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 5.8,
+      "full_frame_path": "turn_evidence/t0194.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0194.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0194.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Weezing evolution begun; unsuitable start",
+      "suitability_or_limit": "Weezing evolution begun; unsuitable start"
+    },
+    {
+      "evidence_id": "n0197.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 197.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0197.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0198.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 198.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0198.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0199.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 199.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0199.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0200.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 200.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0200.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0201.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 201.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0201.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0202.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 202.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0202.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0207.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 207.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0207.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0210.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 210.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0210.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0213.00",
+      "role": "native_action_or_boundary;before_end_hand",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 213.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0213.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0213.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0213.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0214.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 214.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0214.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0222.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 222.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0222.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0223.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 223.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0223.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0223.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0223.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0230.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 230.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0230.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0233.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 233.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0233.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0237.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 237.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0237.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0242.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 242.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0242.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0243.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 243.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0243.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0244.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 244.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0244.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0246.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 246.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0246.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0249.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 249.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0249.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0267.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 267.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0267.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0267.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0267.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0270.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 270.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0270.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0271.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 271.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0271.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0272.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 272.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0272.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0272.50",
+      "role": "native_action_or_boundary",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 272.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0272.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0272.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0272.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": false,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0273.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 273.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0273.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0274.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 274.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0274.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0274.50",
+      "role": "draw_timed_candidate",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": 274.4,
+      "requested_source_seconds": 274.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 0.1,
+      "full_frame_path": "turn_evidence/t0274.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0274.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0274.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Dense preplay all cards clear before immediate first play; opponent fan has 3 individually distinct card backs, direct native count",
+      "suitability_or_limit": "Dense preplay all cards clear before immediate first play",
+      "opponent_hand_count_observed": 3
+    },
+    {
+      "evidence_id": "n0275.00",
+      "role": "draw_timed_candidate",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": 274.4,
+      "requested_source_seconds": 275.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 0.6,
+      "full_frame_path": "turn_evidence/t0275.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0275.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0275.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Poké Ball already played; unsuitable start",
+      "suitability_or_limit": "Poké Ball already played; unsuitable start"
+    },
+    {
+      "evidence_id": "n0277.00",
+      "role": "draw_timed_candidate",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": 274.4,
+      "requested_source_seconds": 277.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 2.6,
+      "full_frame_path": "turn_evidence/t0277.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0277.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0277.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Search resolving; unsuitable start",
+      "suitability_or_limit": "Search resolving; unsuitable start"
+    },
+    {
+      "evidence_id": "n0278.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 278.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0278.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0279.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 279.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0279.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0280.00",
+      "role": "draw_timed_candidate",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": 274.4,
+      "requested_source_seconds": 280.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 5.6,
+      "full_frame_path": "turn_evidence/t0280.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0280.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0280.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "After searched card reveal; unsuitable start",
+      "suitability_or_limit": "After searched card reveal; unsuitable start"
+    },
+    {
+      "evidence_id": "n0281.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 281.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0281.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0286.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 286.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0286.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0289.00",
+      "role": "native_action_or_boundary;before_end_hand",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 289.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0289.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0289.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0289.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0291.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 291.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0291.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0293.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 293.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0293.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0294.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 294.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0294.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0294.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0294.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0299.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 299.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0299.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0299.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0299.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0300.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 7,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 300.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0300.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0304.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 7,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 304.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0304.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0309.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 7,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 309.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0309.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0310.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 7,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 310.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0310.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0311.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 7,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 311.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0311.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0313.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 7,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 313.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0313.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0315.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 7,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 315.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0315.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0333.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 7,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 333.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0333.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0342.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 7,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 342.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0342.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0342.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0342.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0346.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 7,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 346.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0346.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0347.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 347.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0347.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0348.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 348.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0348.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0349.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 349.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0349.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0350.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 350.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0350.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": false,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0351.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 351.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0351.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0351.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0351.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0351.40",
+      "role": "draw_timed_candidate",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": 351,
+      "requested_source_seconds": 351.4,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 0.4,
+      "full_frame_path": "turn_evidence/t0351.40.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0351.40_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0351.40_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Dense preplay all cards clear before immediate first play; opponent fan has 3 individually distinct card backs, direct native count",
+      "suitability_or_limit": "Dense preplay all cards clear before immediate first play",
+      "opponent_hand_count_observed": 3
+    },
+    {
+      "evidence_id": "n0352.00",
+      "role": "draw_timed_candidate",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": 351,
+      "requested_source_seconds": 352.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 1.0,
+      "full_frame_path": "turn_evidence/t0352.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0352.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0352.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Horsea play begun; unsuitable start",
+      "suitability_or_limit": "Horsea play begun; unsuitable start"
+    },
+    {
+      "evidence_id": "n0353.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 353.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0353.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0354.00",
+      "role": "draw_timed_candidate",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": 351,
+      "requested_source_seconds": 354.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 3.0,
+      "full_frame_path": "turn_evidence/t0354.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0354.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0354.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": null,
+      "observation": "Horsea zoom after play; unsuitable start",
+      "suitability_or_limit": "Horsea zoom after play; unsuitable start"
+    },
+    {
+      "evidence_id": "n0357.00",
+      "role": "draw_timed_candidate",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": 351,
+      "requested_source_seconds": 357.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 6.0,
+      "full_frame_path": "turn_evidence/t0357.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0357.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0357.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Kingdra evolution begun; unsuitable start",
+      "suitability_or_limit": "Kingdra evolution begun; unsuitable start"
+    },
+    {
+      "evidence_id": "n0358.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 358.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0358.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0369.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 369.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0369.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0373.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 373.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0373.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0374.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 374.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0374.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0375.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 375.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0375.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0376.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 376.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0376.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0377.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 377.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0377.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0378.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 378.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0378.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0379.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 379.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0379.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0380.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 380.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0380.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0392.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 392.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0392.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0394.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 394.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0394.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0397.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 397.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0397.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0398.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 398.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0398.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0399.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 399.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0399.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0402.00",
+      "role": "native_action_or_boundary;before_end_hand",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 402.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0402.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0402.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0402.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0403.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 403.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0403.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0406.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 406.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0406.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0410.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 410.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0410.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0414.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 414.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0414.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0419.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 9,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 419.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0419.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0419.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0419.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0423.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 9,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 423.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0423.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0424.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 9,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 424.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0424.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0425.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 9,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 425.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0425.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0426.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 9,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 426.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0426.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0427.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 9,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 427.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0427.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0435.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 9,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 435.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0435.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0437.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 9,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 437.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0437.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0441.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 9,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 441.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0441.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0443.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 9,
+      "who_played": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 443.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0443.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0445.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 10,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 445.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0445.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0445.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0445.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0446.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 10,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 446.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0446.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0447.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 10,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 447.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0447.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0447.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0447.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": false,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0448.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 10,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 448.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0448.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0448.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0448.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0449.00",
+      "role": "draw_timed_candidate;before_end_hand",
+      "turn_number": 10,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": 447.8,
+      "requested_source_seconds": 449.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 1.2,
+      "full_frame_path": "turn_evidence/t0449.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0449.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0449.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Selected clear all4 before inspection; opponent fan has 5 individually distinct card backs, direct native count",
+      "suitability_or_limit": "Selected clear all4 before inspection",
+      "opponent_hand_count_observed": 5
+    },
+    {
+      "evidence_id": "n0450.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 10,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 450.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0450.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0450.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0450.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": false,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0450.50",
+      "role": "native_action_or_boundary",
+      "turn_number": 10,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 450.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0450.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0451.00",
+      "role": "draw_timed_candidate",
+      "turn_number": 10,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": 447.8,
+      "requested_source_seconds": 451.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 3.2,
+      "full_frame_path": "turn_evidence/t0451.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0451.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0451.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Concession begins and hand Research lifted; unsuitable start",
+      "suitability_or_limit": "Concession begins and hand Research lifted; unsuitable start"
+    },
+    {
+      "evidence_id": "n0452.00",
+      "role": "native_action_or_boundary",
+      "turn_number": 10,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 452.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0452.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0452.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0452.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0453.00",
+      "role": "native_action_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 453.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0453.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0454.00",
+      "role": "draw_timed_candidate",
+      "turn_number": 10,
+      "who_played": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": 447.8,
+      "requested_source_seconds": 454.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 6.2,
+      "full_frame_path": "turn_evidence/t0454.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0454.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0454.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          650
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Terminal fade; no ongoing turn decision phase",
+      "suitability_or_limit": "Terminal fade; no ongoing turn decision phase"
+    },
+    {
+      "evidence_id": "n0455.00",
+      "role": "native_action_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 455.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0455.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    },
+    {
+      "evidence_id": "n0462.00",
+      "role": "native_action_or_boundary",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261012_004435000_iOS.MP4",
+      "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 462.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0462.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": null,
+      "top_crop": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "See turn ledger and full review for source-bound observation.",
+      "suitability_or_limit": "Native evidence; no inferred hand identity from deck list."
+    }
+  ],
+  "discard_snapshots": [
+    {
+      "snapshot_id": "discard_t4_owner",
+      "turn_number": 4,
+      "pile_owner": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "timestamp_seconds": null,
+      "cards_in_view": null,
+      "scroll_coverage": null,
+      "full_pile_established": false,
+      "evidence_ids": [],
+      "inspected_source_interval_seconds": [
+        0,
+        463.93
+      ],
+      "limit_reason": "Full source inspected; this pile is never opened. Board-side top card only, not a full discard view."
+    },
+    {
+      "snapshot_id": "discard_t4_opponent",
+      "turn_number": 4,
+      "pile_owner": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "timestamp_seconds": null,
+      "cards_in_view": null,
+      "scroll_coverage": null,
+      "full_pile_established": false,
+      "evidence_ids": [],
+      "inspected_source_interval_seconds": [
+        0,
+        463.93
+      ],
+      "limit_reason": "Full source inspected; this pile is never opened. Board-side top card only, not a full discard view."
+    },
+    {
+      "snapshot_id": "discard_t6_owner",
+      "turn_number": 6,
+      "pile_owner": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "timestamp_seconds": null,
+      "cards_in_view": null,
+      "scroll_coverage": null,
+      "full_pile_established": false,
+      "evidence_ids": [],
+      "inspected_source_interval_seconds": [
+        0,
+        463.93
+      ],
+      "limit_reason": "Full source inspected; this pile is never opened. Board-side top card only, not a full discard view."
+    },
+    {
+      "snapshot_id": "discard_t6_opponent",
+      "turn_number": 6,
+      "pile_owner": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "timestamp_seconds": null,
+      "cards_in_view": null,
+      "scroll_coverage": null,
+      "full_pile_established": false,
+      "evidence_ids": [],
+      "inspected_source_interval_seconds": [
+        0,
+        463.93
+      ],
+      "limit_reason": "Full source inspected; this pile is never opened. Board-side top card only, not a full discard view."
+    },
+    {
+      "snapshot_id": "discard_t8_owner",
+      "turn_number": 8,
+      "pile_owner": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "timestamp_seconds": null,
+      "cards_in_view": null,
+      "scroll_coverage": null,
+      "full_pile_established": false,
+      "evidence_ids": [],
+      "inspected_source_interval_seconds": [
+        0,
+        463.93
+      ],
+      "limit_reason": "Full source inspected; this pile is never opened. Board-side top card only, not a full discard view."
+    },
+    {
+      "snapshot_id": "discard_t8_opponent",
+      "turn_number": 8,
+      "pile_owner": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "timestamp_seconds": null,
+      "cards_in_view": null,
+      "scroll_coverage": null,
+      "full_pile_established": false,
+      "evidence_ids": [],
+      "inspected_source_interval_seconds": [
+        0,
+        463.93
+      ],
+      "limit_reason": "Full source inspected; this pile is never opened. Board-side top card only, not a full discard view."
+    },
+    {
+      "snapshot_id": "discard_t10_owner",
+      "turn_number": 10,
+      "pile_owner": "owner",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "timestamp_seconds": null,
+      "cards_in_view": null,
+      "scroll_coverage": null,
+      "full_pile_established": false,
+      "evidence_ids": [],
+      "inspected_source_interval_seconds": [
+        0,
+        463.93
+      ],
+      "limit_reason": "Full source inspected; this pile is never opened. Board-side top card only, not a full discard view."
+    },
+    {
+      "snapshot_id": "discard_t10_opponent",
+      "turn_number": 10,
+      "pile_owner": "opponent",
+      "source_video": "20261012_004435000_iOS.MP4",
+      "timestamp_seconds": null,
+      "cards_in_view": null,
+      "scroll_coverage": null,
+      "full_pile_established": false,
+      "evidence_ids": [],
+      "inspected_source_interval_seconds": [
+        0,
+        463.93
+      ],
+      "limit_reason": "Full source inspected; this pile is never opened. Board-side top card only, not a full discard view."
+    }
+  ],
+  "scheduled_capture_limits": [
+    "All5 owner turns retain ~+1/+3/+6 candidates and before-ending hands. Immediate play required dense188.3/274.5/351.4 preplay frames; later candidates remain retained with explicit unsuitable labels.",
+    "T10 +6 candidate occurs after concession. No later decision phase exists.",
+    "42 native top/bottom crop pairs retained. Full native frames preserve board and cropped-out context.",
+    "No full pile views are shown anywhere in this463.93sec source."
+  ]
+}

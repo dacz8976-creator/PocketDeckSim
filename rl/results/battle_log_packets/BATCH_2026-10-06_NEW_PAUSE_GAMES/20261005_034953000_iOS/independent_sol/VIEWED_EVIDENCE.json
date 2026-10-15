@@ -1,0 +1,1284 @@
+{
+  "game_id": "20261005_034953000_iOS",
+  "source_video": "20261005_034953000_iOS.MP4",
+  "source_sha256": "85f9e3803543f512323259794b7166808e5bfd2ff5a3854d8ce1a40686075180",
+  "checked_at_utc": "2026-10-06T19:55:33.853718+00:00",
+  "checked_input_sha256": {
+    "SOURCE.json": "891a7a104aa72078472f090fb48a2648a37b4febb51be948116aca9cc3c2c0e7",
+    "REVIEW.md": "0db953af90b14b1479115a6e662fe754814a2a2325ed2cbe5fed589725fe1054",
+    "COVERAGE.md": "9383e9bb625cf2682190cdb13b09673d6688e464d27f694baf9e5464b628055b",
+    "SUMMARY.json": "28ff37161301afbd3cee59260822714f31702ecae083b7797c8a0cc907464212",
+    "UNCERTAINTIES.json": "702bac515c45f9214dc2324514a6bc531e6dc6fa19452f23fff024cec29d9450",
+    "PAUSE_GAME.json": "4b020c79f1fbd8dac3c61ff566cfa441da6508dd154ca8ddb8783c9ec2fd8a1b",
+    "DECK_USED.json": "61b347b31eda9ce011faec763288dd12702a208ef14acc1b25015ff58503278f",
+    "TURN_LEDGER.json": "b301411847f7ff9a1a98e596638090535628683d78688074e3d42cf2a04f3897",
+    "TURN_EVIDENCE.json": "26e8359919a8436eff3806c789c3ff8fc733d765a3a7f0aca92d47413d78b4f3"
+  },
+  "supplemental_checked_input_sha256": {
+    "RECORDING_METADATA.json": "b7466a712b2c595306841d00cd34b034f967027a3fc107efdbcb354aff7cd68f",
+    "../NEW_DECK_ENTRIES.json": "e3a946d41a06fa301b6f7da92cc173335a232c6eb24098607fb9a67f9ad49900",
+    "qr_intake/QR_DECODE_0005.00.json": "a49a4f1c8e9039c501b4ef45950c7c68f39ff68a41a97f43c5979a4d7c68c033"
+  },
+  "scope": "Bounded independent acceptance check of source-wide first pass; no second full pass, media rehash, duplicate extractions, shared logging or source movement.",
+  "accepted": false,
+  "status": "required_repairs",
+  "native_frames_actually_viewed": [
+    {
+      "evidence_id": "f0006_00",
+      "source_seconds": 6.0,
+      "path": "turn_evidence\\t0006.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0007_00",
+      "source_seconds": 7.0,
+      "path": "turn_evidence\\t0007.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0031_00",
+      "source_seconds": 31.0,
+      "path": "turn_evidence\\t0031.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0035_00",
+      "source_seconds": 35.0,
+      "path": "turn_evidence\\t0035.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0040_00",
+      "source_seconds": 40.0,
+      "path": "turn_evidence\\t0040.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0047_00",
+      "source_seconds": 47.0,
+      "path": "turn_evidence\\t0047.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0080_00",
+      "source_seconds": 80.0,
+      "path": "turn_evidence\\t0080.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0082_00",
+      "source_seconds": 82.0,
+      "path": "turn_evidence\\t0082.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0083_00",
+      "source_seconds": 83.0,
+      "path": "turn_evidence\\t0083.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0083_80",
+      "source_seconds": 83.8,
+      "path": "turn_evidence\\t0083.80.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0084_00",
+      "source_seconds": 84.0,
+      "path": "turn_evidence\\t0084.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0086_00",
+      "source_seconds": 86.0,
+      "path": "turn_evidence\\t0086.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0087_00",
+      "source_seconds": 87.0,
+      "path": "turn_evidence\\t0087.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0088_00",
+      "source_seconds": 88.0,
+      "path": "turn_evidence\\t0088.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0089_00",
+      "source_seconds": 89.0,
+      "path": "turn_evidence\\t0089.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0091_00",
+      "source_seconds": 91.0,
+      "path": "turn_evidence\\t0091.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0093_00",
+      "source_seconds": 93.0,
+      "path": "turn_evidence\\t0093.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0094_00",
+      "source_seconds": 94.0,
+      "path": "turn_evidence\\t0094.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0095_00",
+      "source_seconds": 95.0,
+      "path": "turn_evidence\\t0095.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0099_00",
+      "source_seconds": 99.0,
+      "path": "turn_evidence\\t0099.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0100_00",
+      "source_seconds": 100.0,
+      "path": "turn_evidence\\t0100.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0101_00",
+      "source_seconds": 101.0,
+      "path": "turn_evidence\\t0101.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0102_00",
+      "source_seconds": 102.0,
+      "path": "turn_evidence\\t0102.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0104_00",
+      "source_seconds": 104.0,
+      "path": "turn_evidence\\t0104.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0105_00",
+      "source_seconds": 105.0,
+      "path": "turn_evidence\\t0105.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0106_00",
+      "source_seconds": 106.0,
+      "path": "turn_evidence\\t0106.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0107_00",
+      "source_seconds": 107.0,
+      "path": "turn_evidence\\t0107.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0108_00",
+      "source_seconds": 108.0,
+      "path": "turn_evidence\\t0108.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0109_00",
+      "source_seconds": 109.0,
+      "path": "turn_evidence\\t0109.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0110_00",
+      "source_seconds": 110.0,
+      "path": "turn_evidence\\t0110.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0113_00",
+      "source_seconds": 113.0,
+      "path": "turn_evidence\\t0113.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0114_00",
+      "source_seconds": 114.0,
+      "path": "turn_evidence\\t0114.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0114_60",
+      "source_seconds": 114.6,
+      "path": "turn_evidence\\t0114.60.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0116_60",
+      "source_seconds": 116.6,
+      "path": "turn_evidence\\t0116.60.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0119_60",
+      "source_seconds": 119.6,
+      "path": "turn_evidence\\t0119.60.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0128_00",
+      "source_seconds": 128.0,
+      "path": "turn_evidence\\t0128.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0134_00",
+      "source_seconds": 134.0,
+      "path": "turn_evidence\\t0134.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0147_00",
+      "source_seconds": 147.0,
+      "path": "turn_evidence\\t0147.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0149_00",
+      "source_seconds": 149.0,
+      "path": "turn_evidence\\t0149.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0149_50",
+      "source_seconds": 149.5,
+      "path": "turn_evidence\\t0149.50.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0150_00",
+      "source_seconds": 150.0,
+      "path": "turn_evidence\\t0150.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0150_50",
+      "source_seconds": 150.5,
+      "path": "turn_evidence\\t0150.50.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0152_50",
+      "source_seconds": 152.5,
+      "path": "turn_evidence\\t0152.50.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0155_50",
+      "source_seconds": 155.5,
+      "path": "turn_evidence\\t0155.50.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0161_00",
+      "source_seconds": 161.0,
+      "path": "turn_evidence\\t0161.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0164_00",
+      "source_seconds": 164.0,
+      "path": "turn_evidence\\t0164.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0165_00",
+      "source_seconds": 165.0,
+      "path": "turn_evidence\\t0165.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0180_00",
+      "source_seconds": 180.0,
+      "path": "turn_evidence\\t0180.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0183_00",
+      "source_seconds": 183.0,
+      "path": "turn_evidence\\t0183.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0184_50",
+      "source_seconds": 184.5,
+      "path": "turn_evidence\\t0184.50.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0185_00",
+      "source_seconds": 185.0,
+      "path": "turn_evidence\\t0185.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0187_00",
+      "source_seconds": 187.0,
+      "path": "turn_evidence\\t0187.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0190_00",
+      "source_seconds": 190.0,
+      "path": "turn_evidence\\t0190.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0195_00",
+      "source_seconds": 195.0,
+      "path": "turn_evidence\\t0195.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0203_00",
+      "source_seconds": 203.0,
+      "path": "turn_evidence\\t0203.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0220_00",
+      "source_seconds": 220.0,
+      "path": "turn_evidence\\t0220.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0222_00",
+      "source_seconds": 222.0,
+      "path": "turn_evidence\\t0222.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0223_00",
+      "source_seconds": 223.0,
+      "path": "turn_evidence\\t0223.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0223_50",
+      "source_seconds": 223.5,
+      "path": "turn_evidence\\t0223.50.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0224_00",
+      "source_seconds": 224.0,
+      "path": "turn_evidence\\t0224.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0226_00",
+      "source_seconds": 226.0,
+      "path": "turn_evidence\\t0226.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0229_00",
+      "source_seconds": 229.0,
+      "path": "turn_evidence\\t0229.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0230_00",
+      "source_seconds": 230.0,
+      "path": "turn_evidence\\t0230.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0236_00",
+      "source_seconds": 236.0,
+      "path": "turn_evidence\\t0236.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0246_00",
+      "source_seconds": 246.0,
+      "path": "turn_evidence\\t0246.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0248_00",
+      "source_seconds": 248.0,
+      "path": "turn_evidence\\t0248.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0249_00",
+      "source_seconds": 249.0,
+      "path": "turn_evidence\\t0249.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0252_00",
+      "source_seconds": 252.0,
+      "path": "turn_evidence\\t0252.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0261_00",
+      "source_seconds": 261.0,
+      "path": "turn_evidence\\t0261.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0262_00",
+      "source_seconds": 262.0,
+      "path": "turn_evidence\\t0262.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0263_00",
+      "source_seconds": 263.0,
+      "path": "turn_evidence\\t0263.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0264_00",
+      "source_seconds": 264.0,
+      "path": "turn_evidence\\t0264.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0266_00",
+      "source_seconds": 266.0,
+      "path": "turn_evidence\\t0266.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0267_00",
+      "source_seconds": 267.0,
+      "path": "turn_evidence\\t0267.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0268_00",
+      "source_seconds": 268.0,
+      "path": "turn_evidence\\t0268.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0268_50",
+      "source_seconds": 268.5,
+      "path": "turn_evidence\\t0268.50.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0270_50",
+      "source_seconds": 270.5,
+      "path": "turn_evidence\\t0270.50.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0271_00",
+      "source_seconds": 271.0,
+      "path": "turn_evidence\\t0271.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0272_00",
+      "source_seconds": 272.0,
+      "path": "turn_evidence\\t0272.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0273_00",
+      "source_seconds": 273.0,
+      "path": "turn_evidence\\t0273.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0273_50",
+      "source_seconds": 273.5,
+      "path": "turn_evidence\\t0273.50.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0274_00",
+      "source_seconds": 274.0,
+      "path": "turn_evidence\\t0274.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0281_00",
+      "source_seconds": 281.0,
+      "path": "turn_evidence\\t0281.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0283_00",
+      "source_seconds": 283.0,
+      "path": "turn_evidence\\t0283.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0284_00",
+      "source_seconds": 284.0,
+      "path": "turn_evidence\\t0284.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0288_00",
+      "source_seconds": 288.0,
+      "path": "turn_evidence\\t0288.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0294_00",
+      "source_seconds": 294.0,
+      "path": "turn_evidence\\t0294.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0296_00",
+      "source_seconds": 296.0,
+      "path": "turn_evidence\\t0296.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0330_00",
+      "source_seconds": 330.0,
+      "path": "turn_evidence\\t0330.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0332_00",
+      "source_seconds": 332.0,
+      "path": "turn_evidence\\t0332.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0333_00",
+      "source_seconds": 333.0,
+      "path": "turn_evidence\\t0333.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0333_50",
+      "source_seconds": 333.5,
+      "path": "turn_evidence\\t0333.50.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0334_00",
+      "source_seconds": 334.0,
+      "path": "turn_evidence\\t0334.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0336_00",
+      "source_seconds": 336.0,
+      "path": "turn_evidence\\t0336.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0339_00",
+      "source_seconds": 339.0,
+      "path": "turn_evidence\\t0339.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0357_00",
+      "source_seconds": 357.0,
+      "path": "turn_evidence\\t0357.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0361_00",
+      "source_seconds": 361.0,
+      "path": "turn_evidence\\t0361.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0364_00",
+      "source_seconds": 364.0,
+      "path": "turn_evidence\\t0364.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0366_00",
+      "source_seconds": 366.0,
+      "path": "turn_evidence\\t0366.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0371_00",
+      "source_seconds": 371.0,
+      "path": "turn_evidence\\t0371.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0372_00",
+      "source_seconds": 372.0,
+      "path": "turn_evidence\\t0372.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0377_00",
+      "source_seconds": 377.0,
+      "path": "turn_evidence\\t0377.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0381_00",
+      "source_seconds": 381.0,
+      "path": "turn_evidence\\t0381.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0382_00",
+      "source_seconds": 382.0,
+      "path": "turn_evidence\\t0382.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0384_00",
+      "source_seconds": 384.0,
+      "path": "turn_evidence\\t0384.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0385_00",
+      "source_seconds": 385.0,
+      "path": "turn_evidence\\t0385.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0387_00",
+      "source_seconds": 387.0,
+      "path": "turn_evidence\\t0387.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0388_00",
+      "source_seconds": 388.0,
+      "path": "turn_evidence\\t0388.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0389_00",
+      "source_seconds": 389.0,
+      "path": "turn_evidence\\t0389.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0390_00",
+      "source_seconds": 390.0,
+      "path": "turn_evidence\\t0390.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0391_00",
+      "source_seconds": 391.0,
+      "path": "turn_evidence\\t0391.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0394_00",
+      "source_seconds": 394.0,
+      "path": "turn_evidence\\t0394.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0409_00",
+      "source_seconds": 409.0,
+      "path": "turn_evidence\\t0409.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    }
+  ],
+  "supplemental_native_actually_viewed": [
+    {
+      "source_seconds": 5,
+      "path": "qr_intake/t0005.00.png",
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "purpose": "filmed QR opening and deck identity"
+    }
+  ],
+  "native_view_count": 114,
+  "notes": {
+    "opening": "Five cards shown in31/35/40; native deck6 corroborates QR5 before Battle7.",
+    "owner_hands": "All eight selected intact native views, all draw+1/+3/+6 candidates and every owner pre-end inspected; no substitutions.",
+    "ordinary_turn": "Owner82-93 first moves; opponent99-109 complete evolution/Research/attachment order, beyond flags.",
+    "terminal": "377/381/382/384/387/388/389/390/409; explicit opponent concession and final result.",
+    "repair_evidence": "See CHECK_RESULT R1-R3; all cited repair frames actually inspected.",
+    "crop_check": "24 decoded crops compared against matching native regions; all866 crop assets decoded and bounds validated structurally."
+  },
+  "structural_checks": {
+    "native_frames": 433,
+    "crop_files": 866,
+    "all_files_decode_and_dimensions_bounds_pass": true,
+    "all_evidence_id_references_resolve": true,
+    "all_frame_source_sha256_match_frozen_CLI_source": true,
+    "bounded_crop_correspondence": {
+      "sample_crops": 24,
+      "max_decoded_region_MAE": 1.120367279736116,
+      "interpretation": "JPEG reencoding differences are small; sizes and corresponding native regions match."
+    }
+  },
+  "correction_rechecks": [
+    {
+      "checked_input_sha256": {
+        "SOURCE.json": "891a7a104aa72078472f090fb48a2648a37b4febb51be948116aca9cc3c2c0e7",
+        "REVIEW.md": "04e7c57d5f3ffc07ed56a3198db948162996f6dc396153858df4e3af6deae7a4",
+        "COVERAGE.md": "2493d9debc43a68d4b93d17adeada9878ddb2b17575a2d777abb6dc99ff7bac1",
+        "SUMMARY.json": "28ff37161301afbd3cee59260822714f31702ecae083b7797c8a0cc907464212",
+        "UNCERTAINTIES.json": "702bac515c45f9214dc2324514a6bc531e6dc6fa19452f23fff024cec29d9450",
+        "PAUSE_GAME.json": "4b020c79f1fbd8dac3c61ff566cfa441da6508dd154ca8ddb8783c9ec2fd8a1b",
+        "DECK_USED.json": "61b347b31eda9ce011faec763288dd12702a208ef14acc1b25015ff58503278f",
+        "TURN_LEDGER.json": "882db5b063fa7ce9aef5068cb2960a056a4b0fe8bb20e45f3e0b4900d8b465fa",
+        "TURN_EVIDENCE.json": "1012fba68c6ebec51f158c5bd4b759e1f8206c740b848c4ceb7b3a00c1b8252e",
+        "RECORDING_METADATA.json": "b7466a712b2c595306841d00cd34b034f967027a3fc107efdbcb354aff7cd68f",
+        "../NEW_DECK_ENTRIES.json": "e3a946d41a06fa301b6f7da92cc173335a232c6eb24098607fb9a67f9ad49900",
+        "INDEPENDENT_CORRECTIONS.json": "8ad88cfd8888aeb939b13d728463b7b3ecca4b2a407c1ea26401142425a4b202",
+        "qr_intake/QR_DECODE_0005.00.json": "a49a4f1c8e9039c501b4ef45950c7c68f39ff68a41a97f43c5979a4d7c68c033"
+      },
+      "inspected_native_evidence": [
+        {
+          "seconds": 83,
+          "evidence_id": "f0083_00",
+          "full_frame_path": "turn_evidence\\t0083.00.jpg"
+        },
+        {
+          "seconds": 83.8,
+          "evidence_id": "f0083_80",
+          "full_frame_path": "turn_evidence\\t0083.80.jpg"
+        },
+        {
+          "seconds": 149.5,
+          "evidence_id": "f0149_50",
+          "full_frame_path": "turn_evidence\\t0149.50.jpg"
+        },
+        {
+          "seconds": 150.5,
+          "evidence_id": "f0150_50",
+          "full_frame_path": "turn_evidence\\t0150.50.jpg"
+        },
+        {
+          "seconds": 223,
+          "evidence_id": "f0223_00",
+          "full_frame_path": "turn_evidence\\t0223.00.jpg"
+        },
+        {
+          "seconds": 223.5,
+          "evidence_id": "f0223_50",
+          "full_frame_path": "turn_evidence\\t0223.50.jpg"
+        },
+        {
+          "seconds": 333,
+          "evidence_id": "f0333_00",
+          "full_frame_path": "turn_evidence\\t0333.00.jpg"
+        },
+        {
+          "seconds": 334,
+          "evidence_id": "f0334_00",
+          "full_frame_path": "turn_evidence\\t0334.00.jpg"
+        },
+        {
+          "seconds": 388,
+          "evidence_id": "f0388_00",
+          "full_frame_path": "turn_evidence\\t0388.00.jpg"
+        },
+        {
+          "seconds": 389,
+          "evidence_id": "f0389_00",
+          "full_frame_path": "turn_evidence\\t0389.00.jpg"
+        },
+        {
+          "seconds": 87,
+          "evidence_id": "f0087_00",
+          "full_frame_path": "turn_evidence\\t0087.00.jpg"
+        },
+        {
+          "seconds": 88,
+          "evidence_id": "f0088_00",
+          "full_frame_path": "turn_evidence\\t0088.00.jpg"
+        },
+        {
+          "seconds": 99,
+          "evidence_id": "f0099_00",
+          "full_frame_path": "turn_evidence\\t0099.00.jpg"
+        },
+        {
+          "seconds": 102,
+          "evidence_id": "f0102_00",
+          "full_frame_path": "turn_evidence\\t0102.00.jpg"
+        },
+        {
+          "seconds": 104,
+          "evidence_id": "f0104_00",
+          "full_frame_path": "turn_evidence\\t0104.00.jpg"
+        },
+        {
+          "seconds": 108,
+          "evidence_id": "f0108_00",
+          "full_frame_path": "turn_evidence\\t0108.00.jpg"
+        },
+        {
+          "seconds": 109,
+          "evidence_id": "f0109_00",
+          "full_frame_path": "turn_evidence\\t0109.00.jpg"
+        },
+        {
+          "seconds": 261,
+          "evidence_id": "f0261_00",
+          "full_frame_path": "turn_evidence\\t0261.00.jpg"
+        },
+        {
+          "seconds": 262,
+          "evidence_id": "f0262_00",
+          "full_frame_path": "turn_evidence\\t0262.00.jpg"
+        },
+        {
+          "seconds": 263,
+          "evidence_id": "f0263_00",
+          "full_frame_path": "turn_evidence\\t0263.00.jpg"
+        },
+        {
+          "seconds": 264,
+          "evidence_id": "f0264_00",
+          "full_frame_path": "turn_evidence\\t0264.00.jpg"
+        },
+        {
+          "seconds": 265,
+          "evidence_id": "f0265_00",
+          "full_frame_path": "turn_evidence\\t0265.00.jpg"
+        },
+        {
+          "seconds": 266,
+          "evidence_id": "f0266_00",
+          "full_frame_path": "turn_evidence\\t0266.00.jpg"
+        }
+      ],
+      "observations": [
+        "R1 five selected Energy states now explicitly empty or generation unknown; later Metal remains separate, intact hand selections retained.",
+        "R2 Fraxure99 then Research102/hidden fan104 then Metal108/resolved109 and linked order2 match.",
+        "R3 attach87-88, promotion261 pre/262animation/263face/264placed are corrected. Settled266 both boards match HP170/Metal3/Steel Apron/Doublade left, opponent Haxorus50 Active/three Bench; next Current12 at265 qualified before normal draw267."
+      ],
+      "remaining_repairs": [
+        {
+          "id": "R3_dependent_automatic_reference",
+          "file": "TURN_LEDGER.json",
+          "json_paths": [
+            "$.turns[10].automatic_events_in_order[2].evidence_ids"
+          ],
+          "timestamps_seconds": [
+            261,
+            262,
+            263,
+            264,
+            266
+          ],
+          "issue": "Remaining automatic promotion event still cites only f0261_00. Native261 is empty Active with Melmetal on Bench, preceding promotion; it cannot alone support the named completed promotion. Repaired voluntary promotion and board_after266 are correct.",
+          "required_change": "Replace or supplement sole pre-action261 with observed promotion animation262, reveal263, placed264 and/or settled266, qualifying261 only as pre-action bound. No new source extraction needed."
+        }
+      ],
+      "new_frame_structural_check": {
+        "f0266_00_source_binding_matches": true,
+        "native_and_crops_decode_bounds_pass": true,
+        "crop_max_mae": 0.9021634439780396,
+        "asset_sha256": {
+          "turn_evidence\\t0266.00.jpg": "33902adbe97fb2b278ea6764f8c7347c0de9b2de9b5c146f2583563f3e4f4d36",
+          "turn_evidence\\t0266.00_bottom.jpg": "b054f36c199ee5df54cc5d8ceb59612af763afe6a00d56bbb614a197fd4813a8",
+          "turn_evidence\\t0266.00_top.jpg": "5bd42c9fd5b2fd081b438cc555a66780683c658e9ca9a39346de49614599f5a5"
+        }
+      }
+    }
+  ],
+  "repair_rechecks": [
+    {
+      "source_sha256": "85f9e3803543f512323259794b7166808e5bfd2ff5a3854d8ce1a40686075180",
+      "accepted": true,
+      "status": "accepted_bounded_repair_recheck_R1_R3_complete",
+      "checked_utc": "2026-10-06T20:25:06.589870+00:00",
+      "required_repairs": [],
+      "remaining_repairs": [],
+      "checked_input_sha256": {
+        "SOURCE.json": "891a7a104aa72078472f090fb48a2648a37b4febb51be948116aca9cc3c2c0e7",
+        "REVIEW.md": "04e7c57d5f3ffc07ed56a3198db948162996f6dc396153858df4e3af6deae7a4",
+        "COVERAGE.md": "2493d9debc43a68d4b93d17adeada9878ddb2b17575a2d777abb6dc99ff7bac1",
+        "SUMMARY.json": "28ff37161301afbd3cee59260822714f31702ecae083b7797c8a0cc907464212",
+        "UNCERTAINTIES.json": "702bac515c45f9214dc2324514a6bc531e6dc6fa19452f23fff024cec29d9450",
+        "PAUSE_GAME.json": "4b020c79f1fbd8dac3c61ff566cfa441da6508dd154ca8ddb8783c9ec2fd8a1b",
+        "DECK_USED.json": "61b347b31eda9ce011faec763288dd12702a208ef14acc1b25015ff58503278f",
+        "TURN_LEDGER.json": "ff04e4d2e96b39c1b974d3bf2e87a3af1458cf0ffa5a67590c2ddded28d8b0e9",
+        "TURN_EVIDENCE.json": "1012fba68c6ebec51f158c5bd4b759e1f8206c740b848c4ceb7b3a00c1b8252e",
+        "RECORDING_METADATA.json": "b7466a712b2c595306841d00cd34b034f967027a3fc107efdbcb354aff7cd68f",
+        "../NEW_DECK_ENTRIES.json": "e3a946d41a06fa301b6f7da92cc173335a232c6eb24098607fb9a67f9ad49900",
+        "INDEPENDENT_CORRECTIONS.json": "8ad88cfd8888aeb939b13d728463b7b3ecca4b2a407c1ea26401142425a4b202",
+        "qr_intake/QR_DECODE_0005.00.json": "a49a4f1c8e9039c501b4ef45950c7c68f39ff68a41a97f43c5979a4d7c68c033",
+        "PROMOTION_REFERENCE_CORRECTION.json": "13363d3ebc954c66515d3f10f7903abff0c06826503c5e4130191b5533432438",
+        "independent_sol/CHECK_RESULT.json": "eaddcce7dfa6e867fc4975d312aba362e145d7cb3117f43c610f070295e93099",
+        "independent_sol/CORRECTION_RECHECK.before_promotion_dependency.json": "4fbf100a1d47fc9f75a3ac7e49d9dd658f9510fd3daea5c81f2330dea7fbe74d"
+      },
+      "scope": "Only last automatic promotion reference dependency; prior R1-R3 native recheck reused. No expanded visual pass or extraction.",
+      "verified": "261 explicitly prebound;262 animation/263 reveal/264 placement/266 settled supports automatic Melmetal promotion, matching prior independently viewed native evidence. All other prior accepted repaired inputs unchanged.",
+      "native_evidence_reused_seconds": [
+        261,
+        262,
+        263,
+        264,
+        266
+      ],
+      "initial_rejection_preserved": true,
+      "prior_failed_recheck_preserved": true
+    }
+  ]
+}

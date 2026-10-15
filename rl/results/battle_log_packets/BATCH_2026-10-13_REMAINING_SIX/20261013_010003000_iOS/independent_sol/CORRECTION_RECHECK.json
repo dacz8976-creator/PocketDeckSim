@@ -1,0 +1,108 @@
+{
+  "schema": "battle-logs/bounded-independent-acceptance-v1",
+  "reviewer": "/root/check_remaining_010003",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "checked_utc": "2026-10-13T15:06:02.159610+00:00",
+  "source_video": "20261013_010003000_iOS.MP4",
+  "source_sha256": "3e2fc4897a2f9de4f03899a643a0c32e3bf46b5cc1f56a87d182dff9ceb9072b",
+  "accepted": true,
+  "checked_input_sha256": {
+    "REVIEW.md": "8fc4d5cf6b32b6683acd1f81cc905641f125fa8e591ce3d489c94900b3dcda51",
+    "COVERAGE.md": "e3ca177c8e6a54d5f58ae614254845d1b288224177207b7e546bfe8f261fef22",
+    "SUMMARY.json": "f92f976ecdf4dabf026f208811b5e551e03b66cd6d19259583e3ddc8d383017e",
+    "UNCERTAINTIES.json": "2d8f6b3e057a336a8c4bd59aa1a4b522a2245281ad7b329baab1eda6b1ed8b7a",
+    "PAUSE_GAME.json": "4d97e67c892de0c73e57c43a5c41876be3241590846ec65f399ff21fc0279ec4",
+    "DECK_USED.json": "a38db70155f175fd61eb5f0cd934c34a0ba5aaca0fe52196c7727fd314192029",
+    "TURN_LEDGER.json": "db22de7256f59ae975f703e5fba1c7729eb480375ab5ddb2e5c95748e9428198",
+    "TURN_EVIDENCE.json": "e360cf5a2bef6bab9ba45c5b1001ac2f350da4338d72dfa8366a6496052db11c"
+  },
+  "primary_freeze_match": true,
+  "required_repairs": [],
+  "scope": "Narrow separate correction recheck of R1 and R2 against native evidence, repaired prose/ledger/evidence, and all eight new stable frozen hashes. Earlier bounded findings remain in CHECK_RESULT.json. No second entire-video pass.",
+  "previous_check": "CHECK_RESULT.json",
+  "original_rejection_preserved": true,
+  "changed_components": [
+    "REVIEW.md",
+    "TURN_LEDGER.json",
+    "TURN_EVIDENCE.json"
+  ],
+  "native_findings": [
+    {
+      "repair_id": "T7_SEARCH_ARRIVAL_REFERENCE",
+      "resolved": true,
+      "finding": "Alolan Grimer individual arrival and group now both use 286 s and f0286_00. Native 286 retained from prior check shows the added fifth card, correctly separated from the pre-arrival 284 s view."
+    },
+    {
+      "repair_id": "T11_MISSING_ENERGY_ATTACHMENT",
+      "resolved": true,
+      "finding": "New native 449.25/449.50 shows Darkness orb on Bench Alolan Muk; 449.75 shows resolution. Stable 451/453 shows Darkness 1 plus Colorless 1, total 2, and consumed current Energy Zone. Repaired action 2 follows Ice Pop and precedes Regigigas menu inspection. Hand remains five. No extra attack resolves."
+    }
+  ],
+  "selected_native_evidence": [
+    {
+      "evidence_id": "f0286_00",
+      "source_seconds": 286.0,
+      "path": "turn_evidence\\t0286.00.jpg",
+      "sha256": "108dbf35d9e642d9a648208778d2c85a0bd620cf7ec872f45bf8542083fd0826",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0449_25",
+      "source_seconds": 449.25,
+      "path": "turn_evidence\\t0449.25.jpg",
+      "sha256": "cebb9714f9c5ed05d58651ccecb8ad216188016d14b8d5805d57eb69439226fc",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0449_50",
+      "source_seconds": 449.5,
+      "path": "turn_evidence\\t0449.50.jpg",
+      "sha256": "0c6a02f4b71067d3aeb9ab1a4f26b4bf4d484f7a31b1e2d71d36c438be4f092a",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0449_75",
+      "source_seconds": 449.75,
+      "path": "turn_evidence\\t0449.75.jpg",
+      "sha256": "38d9d1c4990008ee67076593150f6d8664b10e4a37e8eed30816f6248dbbea7e",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0451_00",
+      "source_seconds": 451.0,
+      "path": "turn_evidence\\t0451.00.jpg",
+      "sha256": "2c5d000205162cdaf01658afe939a85d6e0e13ffdeb1c07e57397b0d629f1a78",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f0453_00",
+      "source_seconds": 453.0,
+      "path": "turn_evidence\\t0453.00.jpg",
+      "sha256": "86f2eb6aaa71073a0e74a7af70f22895989c4a06995d2ac66917c07a63c90844",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    }
+  ],
+  "structural_validation_is_separate": true,
+  "fresh_live_readback": false,
+  "external_limit": "Acceptance is local and retains historical exact deck provenance and blocked fresh live access. It does not assert a new external save.",
+  "remaining_material_findings": []
+}

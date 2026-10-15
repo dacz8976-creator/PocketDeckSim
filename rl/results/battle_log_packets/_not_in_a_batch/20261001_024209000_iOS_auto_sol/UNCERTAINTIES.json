@@ -1,0 +1,110 @@
+{
+  "schema": "battle_visual_uncertainties_v1",
+  "video_basename": "20261001_024209000_iOS.MP4",
+  "material_unreviewed_intervals": [],
+  "unresolved_material_outcome_or_score": false,
+  "items": [
+    {
+      "id": "hidden_cards",
+      "time_range_seconds": [
+        0,
+        227.535
+      ],
+      "status": "unknown_by_design",
+      "detail": "No full deck list or hidden opponent hand reconstructed. Gholdengo ex is named in the challenge but never appears on the board."
+    },
+    {
+      "id": "exact_printing_marks",
+      "time_range_seconds": [
+        15,
+        227.4
+      ],
+      "status": "bounded_identity",
+      "detail": "Mechanically relevant card names, HP and attacks are visible; unreadable set/printing marks are not assigned. Alternate artwork is not a different assumed mechanic."
+    },
+    {
+      "id": "opening_coin",
+      "time_range_seconds": [
+        7,
+        10
+      ],
+      "status": "immaterial_untranscribed_face",
+      "detail": "Opening coin animation inspected. The exact face is not transcribed; result stats directly establish went second."
+    },
+    {
+      "id": "Auto_detail_state",
+      "time_range_seconds": [
+        204,
+        207
+      ],
+      "status": "UI_interruption_observed_cause_limited",
+      "detail": "Checked at204, briefly gray/unchecked around205-206 during Mega Scizor detail overlay, checked again207. Do not infer manual tactical changes from this brief UI state."
+    },
+    {
+      "id": "action_onset_precision",
+      "time_range_seconds": [
+        0,
+        227.535
+      ],
+      "status": "timestamp_precision_limit",
+      "detail": "Turn/action ranges bracket observed transitions. Overview labels are fps midpoint labels, not exact onset times. Native named frames have exact requested source timestamps."
+    },
+    {
+      "id": "strategy_counterfactual",
+      "time_range_seconds": [
+        188,
+        214
+      ],
+      "status": "conditional_supported",
+      "detail": "On the visible turn12 board, a160 hit on Wynaut30 or Honedge60 would have yielded the owner's third point. Attack chooses randomly, so this is not an available target-selection action or a guaranteed winning policy. Hidden alternatives and best policy are not established."
+    },
+    {
+      "id": "first_turn_search_target",
+      "time_range_seconds": [
+        23,
+        29
+      ],
+      "status": "unproven_search_identity",
+      "detail": "Poke Ball use/discard and Wynaut benching are observed; do not assume Wynaut was the card searched without a separate revealed search target."
+    }
+  ],
+  "resolved_checks": [
+    {
+      "id": "late_Flame_Patch",
+      "evidence": [
+        "targeted/t0190.00.jpg",
+        "dense/t0191.00.jpg",
+        "dense/t0192.00.jpg",
+        "targeted/t0194.00.jpg",
+        "targeted/t0214.00.jpg"
+      ],
+      "resolution": "Turn12 Flame Patch remains in hand. Mega Fire increases four to five through generated Energy attachment, not a second confirmed Flame Patch play."
+    },
+    {
+      "id": "Skyla_switch",
+      "evidence": [
+        "extra/t0179.50.jpg",
+        "dense/t0182.00.jpg"
+      ],
+      "resolution": "Readable Skyla switches active Stage1 to Bench. Mega Scizor moves back to Bench, retains two Metal and Wynaut becomes active."
+    },
+    {
+      "id": "final_attack_damage",
+      "evidence": [
+        "dense/t0212.00.jpg",
+        "dense/t0213.00.jpg",
+        "targeted/t0214.00.jpg"
+      ],
+      "resolution": "Bullet Slugger displays160 and Camerupt settles from150 to0. Same-turn promotion and Training Area are visible. No burn KO claim."
+    },
+    {
+      "id": "completed_result_stats",
+      "evidence": [
+        "terminal/t0227.40.jpg"
+      ],
+      "resolution": "Final source frame directly shows went second, turns13, owner2, opponent3 and damage510. Stats are not inferred from earlier unfinished result frames."
+    }
+  ],
+  "lead_acceptance": "accepted",
+  "current_status": "full_battle_review_complete"
+}

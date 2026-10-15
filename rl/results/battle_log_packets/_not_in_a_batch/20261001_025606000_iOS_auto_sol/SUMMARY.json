@@ -1,0 +1,128 @@
+{
+  "video_basename": "20261001_025606000_iOS.MP4",
+  "reviewer": "sol_auto_evening_025606000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "review_status": "full_battle_review_complete",
+  "scope": "One complete Auto AI battle: setup, every turn, decisive sequence and terminal result",
+  "reviewed_through_seconds": 281.593333,
+  "uncovered_intervals": [],
+  "ladder_eligible": false,
+  "source_preserved": true,
+  "source_binding_preserved": true,
+  "mode": "owner_auto_vs_explicit_AI_opponent",
+  "auto_observed": true,
+  "auto_off_transitions_observed": false,
+  "pauses_observed": false,
+  "owner": "Dacz8976",
+  "outcome": "defeat",
+  "opponent_challenge": "Mega Scizor ex & Gholdengo ex Deck (Deluxe Pack: Mega)",
+  "turn_order": "second",
+  "last_turn": 13,
+  "displayed_points": {
+    "owner": 2,
+    "opponent": 3
+  },
+  "point_award_totals": {
+    "owner": 2,
+    "opponent": 3
+  },
+  "damage_done_displayed": 410,
+  "damage_reconciliation": [
+    10,
+    80,
+    120,
+    20,
+    100,
+    60,
+    20
+  ],
+  "card_of_the_game": "Simisear",
+  "visible_owner_core": [
+    "Pansear x2",
+    "Simisear x2",
+    "Charmander",
+    "Charmeleon (Ignition)",
+    "Victini (Victory Star)"
+  ],
+  "owner_trainers_visible": [
+    "Poke Ball",
+    "Professor's Research",
+    "Elegant Cape",
+    "Rocky Helmet",
+    "Rainbow Cave",
+    "Flame Patch (drawn, held, not played)"
+  ],
+  "visible_opponent_core": [
+    "Gimmighoul x2",
+    "Scyther",
+    "Mega Scizor ex",
+    "Honedge",
+    "Doublade",
+    "Aegislash (Superb Shield)"
+  ],
+  "opponent_trainers_visible": [
+    "Professor's Research",
+    "Training Area",
+    "Metal Core Barrier",
+    "Skyla"
+  ],
+  "conditions_or_healing_observed": [],
+  "meaningful_findings": [
+    "Turn 4 Ignition adds Fire to Active Simisear and subsequent ordinary attachment gives benched Charmeleon Fire in the same turn.",
+    "Turn 8 one-head Fury Swipes deals 20: 40 base plus 20 weakness plus 10 Training Area minus 50 Metal Core Barrier.",
+    "Turn 10 replaces Training Area with Rainbow Cave, then resets generated Fire to Fire; Flame Patch is only drawn/held.",
+    "Victini is drawn and benched on turn 12, after all Fury Swipes; no Victory Star reroll is observed.",
+    "Turn 13 Skyla switches wounded Mega Scizor to Bench, preserving all its Energy; Aegislash receives its third Metal and wins with Superb Shield80.",
+    "Rocky Helmet deals20 to Aegislash after Charmeleon's knockout; Aegislash remains120, Mega remains20 on Bench."
+  ],
+  "independent_lead_anchors_seconds": {
+    "opening": [
+      22.0,
+      26.0
+    ],
+    "ordinary_turn": [
+      138.0,
+      143.0,
+      156.0,
+      161.0,
+      170.0
+    ],
+    "ignition": [
+      74.0,
+      77.0,
+      80.0,
+      83.0,
+      94.0
+    ],
+    "decisive_sequence": [
+      254.0,
+      255.0,
+      257.2,
+      260.0,
+      264.0,
+      268.0,
+      272.0
+    ],
+    "terminal_result": [
+      281.5
+    ]
+  },
+  "remaining_limits": [
+    "Hidden hand/deck contents",
+    "Exact catalog/alternate-art IDs",
+    "Unverified filename clock basis",
+    "Unplayed alternatives and simultaneous-win adjudication",
+    "Independent lead acceptance complete"
+  ],
+  "worker_actions_at_submission": {},
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "lead_acceptance_pending": false,
+  "source_archived": true,
+  "source_modified": false,
+  "archive_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20261001_025606000_iOS.MP4",
+  "archive_receipt": "MOVE_RECEIPT.20261001_025606000_iOS.MP4.json",
+  "archive_completion_event_id": "9924ad55-cb17-437d-bc29-81a39fb13a05",
+  "global_registration_complete": true
+}

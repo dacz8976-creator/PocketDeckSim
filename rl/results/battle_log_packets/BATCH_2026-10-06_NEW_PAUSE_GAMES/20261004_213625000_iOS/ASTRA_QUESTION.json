@@ -1,0 +1,36 @@
+{
+  "question": "Identify source and exact scope of special-condition immunity after opponent benches Teal Mask Ogerpon ex and attaches Grass to Combee; retain Energy Zone as Grass, blue top-right hexagon is board-effect icon. Confirm why Deck and Cover fails Poison/Paralysis.",
+  "source_video": "20261004_213625000_iOS.MP4",
+  "source_sha256": "aa7e935b335a2dfe11e43783f260698997845f7c85de8d6b1db976b7bf794225",
+  "observed_text": "Can't be affected by any Special Conditions if Energy is attached (193s); Vespiquen ex didn't become Poisoned or Paralyzed (410s)",
+  "evidence_seconds": [
+    190,
+    191,
+    192,
+    193,
+    194,
+    195,
+    200,
+    310,
+    410,
+    418
+  ],
+  "images": [
+    "turn_evidence/t0190.00.png",
+    "turn_evidence/t0191.00.png",
+    "turn_evidence/t0192.00.png",
+    "turn_evidence/t0193.00.png",
+    "turn_evidence/t0194.00.png",
+    "turn_evidence/t0195.00.png",
+    "turn_evidence/t0200.00.png",
+    "turn_evidence/t0310.00.png",
+    "turn_evidence/t0410.00.png",
+    "turn_evidence/t0418.00.png"
+  ],
+  "before": "Pinsir Active no Energy; Combee right Bench no Energy; Ogerpon arrives center Bench.",
+  "after": "Combee gains one Grass Energy and blue immunity badge, top-right board-effect badge appears; later Ogerpon and Vespiquen with Grass show badges. Owner Deck and Cover50 damage still resolves; Poison/Paralysis fail.",
+  "tentative_source": "Teal Mask Ogerpon ex Soothing Wind, exact printed ability not yet independently read.",
+  "status": "resolved_by_dense_source_independent_check_requested",
+  "resolution": "Native189cardzoom clearly prints Soothing Wind: all own Pokemon with any Energy recover from and are immune to Special Conditions. No special Energy.",
+  "resolution_evidence": "turn_evidence/t0189.00.png"
+}

@@ -1,0 +1,145 @@
+t, taking the owner from 0 to 2.",
+      "fields": {
+        "deck": "filmed-qr-324c9e740140",
+        "deckName": "Haxorus / Dragonair / Druddigon",
+        "date": "2026-10-12",
+        "result": "loss",
+        "first": "first",
+        "opp": "Darkrai, Igglybuff, Koraidon ex",
+        "ratings": {},
+        "note": "Source: 20261013_030351000_iOS.MP4; game 1; opponent: ヒロ. Owner loss; Cyrus brings the damaged Haxorus Active, Koraidon ex gathers Fighting Energy with Legendary Drive, and World Wrecker knocks it out. Defeat at 625-626: 16 turns, 2-3, 230 damage, went first. The Igglybuff knockout earned one point plus the additional Iris point, taking the owner from 0 to 2. Full review: 16 turns. Review and capture limits: Recording_QA/BATCH_2026-10-13_NEWEST_TWO/20261013_030351000_iOS/REVIEW.md; PAUSE_GAME.json and TURN_LEDGER.json beside it. Native QR verifies exact 20-card Haxorus / Dragonair / Druddigon deck and Fighting/Metal Energy. Date is October 12 in Chicago, confirmed by recording creation metadata; filename retains UTC date. Hidden cards, unopened discard contents and any unresolved arrival order remain explicit in the packet. Ratings unassigned."
+      }
+    }
+  ]
+}
+
+Message collapsed
+Show more
+2 minutes ago
+
+
+
+Claude responded: Baseline matches (26 decks, 45 games, 25–20, 15 concession wins); no matching QR or source.
+Created a file, used artifact data, ran a command
+
+Created a file, used artifact data, ran a command
+
+Baseline matches (26 decks, 45 games, 25–20, 15 concession wins); no matching QR or source. Writing the three entries atomically.
+
+Used ArtifactData, used Artifact, ran a command
+
+Used ArtifactData, used Artifact, ran a command
+
+Pause Games
+Artifact·Anyone with the link 
+
+Hide
+
+I made a typo in the comparison script; rerunning it corrected.
+
+Compare every new field with the supplied values and all old data with the pre-write read
+
+Compare every new field with the supplied values and all old data with the pre-write read
+
+I added the Haxorus / Dragonair / Druddigon deck and both games, and the read-back matches. The page now has 27 decks and 47 games: 26 wins (16 by opponent concession) and 21 losses, as you expected.
+
+Before writing: the live data matched your baseline (26 decks, 45 games, 25–20, 15 concession wins). No saved deck had this QR code, and neither video or game ID was already saved, so I created all three entries and skipped nothing.
+
+Saved entries (each saved ID is the deck ID or game ID you supplied):
+
+Saved ID	What it is	Result
+filmed-qr-324c9e740140	Deck: Haxorus / Dragonair / Druddigon, Fighting + Metal, 20 cards	—
+20261013_022530000_iOS-game1	20261013_022530000_iOS.MP4, game 1, vs sadao, dated 2026-10-12	opponent concession (win)
+20261013_030351000_iOS_game_1	20261013_030351000_iOS.MP4, game 1, vs ヒロ, dated 2026-10-12	loss
+
+Read-back:
+
+Deck: every field matches what you supplied. The code decodes to 20 cards with Fighting and Metal Energy and the same Trainer and Pokémon counts as the list. Cards it shares with the earlier filmed decks are encoded the same way there.
+Games: every supplied field and the six source fields (filename, hash, game number, game ID, deck-list match, deck-choice basis) match exactly. Ratings are empty.
+What I added: only the save time the page uses to order Recent games.
+What I left out: result_evidence, because both notes already contain that text word for word.
+
+Unchanged: the 26 older decks and 45 older games are identical to my read just before the write. The page file, its sharing and the Ladder Log weren’t touched.
+
+
+Create a spreadsheet
+
+
+
+
+
+2 minutes ago
+
+Claude is AI and can make mistakes.
+Reply
+
+
+
+
+
+
+
+
+Opus 5.5
+Manual
+Pause Games
+
+By you
+
+
+
+Share
+
+
+Claude finished the response
+Progress
+
+11 earlier steps
+
+Read live artifact database (decks and games baseline)
+, Done
+Inspect import file and map to the page's schema
+, Done
+Insert missing deck definitions
+, Done
+Insert missing games
+, Done
+Update page UI only if needed (Filmed decks group)
+, Done
+Verify persistence and produce audit listing
+, Done
+Fresh read and check the final notes against saved games
+, Done
+Add the two clarity indicators to the page
+, Done
+Update the note field on the 18 games
+, Done
+Read back and verify notes, unchanged fields and totals
+, Done
+Read the live decks and games and check the two new decks
+, Done
+Save the two deck definitions
+, Done
+Read back and verify
+, Done
+Read live games/decks and locate the 20261010_014541000 loss
+, Not started
+Save the two binding fields and verify
+, Not started
+Outputs
+
+
+Pause Games
+Artifact
+Used in this session
+
+Uploads: FINAL_GAME_NOTES.json, PAUSE_GAMES_BATCH_IMPORT.json
+
+Uploads
+FINAL_GAME_NOTES.json, PAUSE_GAMES_BATCH_IMPORT.json
+A button for each file that opens it — press Tab until focus enters the card, Escape to return.
+Skills: artifact-design
+
+Skills
+artifact-design
+Buttons that scroll the chat to where Claude used each one — press Tab until focus enters the card, Escape to return.
