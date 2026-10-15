@@ -1,0 +1,17 @@
+test mega_garchomp_ex_test::falling_edge_costs_water_fighting_colorless ... FAILED
+test mega_garchomp_ex_test::falling_edge_does_190 ... FAILED
+test mega_garchomp_ex_test::it_evolves_from_gabite_and_from_gible_with_rare_candy ... FAILED
+test mega_garchomp_ex_test::falling_edge_discards_exactly_2_random_energy_from_itself ... FAILED
+test mega_garchomp_ex_test::its_knockout_gives_the_opponent_3_points ... FAILED
+test mega_garchomp_ex_test::retreat_costs_2_and_it_has_no_weakness ... FAILED
+test mega_garchomp_ex_test::the_card_is_a_stage_2_dragon_mega_ex_with_220_hp ... FAILED
+test mega_garchomp_ex_test::with_fewer_than_2_energy_attached_it_discards_what_is_there ... FAILED
+thread 'mega_garchomp_ex_test::falling_edge_costs_water_fighting_colorless' (3895) panicked at tests/pokemon/mega_garchomp_ex_test.rs:15:37:
+thread 'mega_garchomp_ex_test::falling_edge_does_190' (3897) panicked at tests/pokemon/mega_garchomp_ex_test.rs:15:37:
+thread 'mega_garchomp_ex_test::it_evolves_from_gabite_and_from_gible_with_rare_candy' (3898) panicked at tests/pokemon/mega_garchomp_ex_test.rs:15:37:
+thread 'mega_garchomp_ex_test::falling_edge_discards_exactly_2_random_energy_from_itself' (3896) panicked at tests/pokemon/mega_garchomp_ex_test.rs:15:37:
+thread 'mega_garchomp_ex_test::its_knockout_gives_the_opponent_3_points' (3899) panicked at tests/pokemon/mega_garchomp_ex_test.rs:15:37:
+thread 'mega_garchomp_ex_test::retreat_costs_2_and_it_has_no_weakness' (3900) panicked at tests/pokemon/mega_garchomp_ex_test.rs:15:37:
+thread 'mega_garchomp_ex_test::the_card_is_a_stage_2_dragon_mega_ex_with_220_hp' (3901) panicked at tests/pokemon/mega_garchomp_ex_test.rs:15:37:
+thread 'mega_garchomp_ex_test::with_fewer_than_2_energy_attached_it_discards_what_is_there' (3902) panicked at tests/pokemon/mega_garchomp_ex_test.rs:15:37:
+test result: FAILED. 0 passed; 8 failed; 0 ignored; 0 measured; 824 filtered out; finished in 0.06s

@@ -254,6 +254,8 @@ mod marshadow_revenge_test;
 mod mega_camerupt_ex_test;
 #[path = "pokemon/mega_diancie_ex_test.rs"]
 mod mega_diancie_ex_test;
+#[path = "pokemon/mega_garchomp_ex_test.rs"]
+mod mega_garchomp_ex_test;
 #[path = "pokemon/mega_houndoom_ex_test.rs"]
 mod mega_houndoom_ex_test;
 #[path = "pokemon/mega_kangaskhan_double_punching_family_test.rs"]
