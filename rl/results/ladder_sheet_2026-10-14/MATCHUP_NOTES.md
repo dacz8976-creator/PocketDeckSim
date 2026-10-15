@@ -50,16 +50,20 @@ For each: what the situation was, what you did, what the bots did, which is bett
   ready for 80, Poison Barb attached) is in front. It is worth 3 points, your whole game. You have Timburr in front, with Gurdurr and Conkeldurr in hand.
 - **You:** evolve to Gurdurr, attach the Energy, end the turn with no attack.
 - **The bots:** the same, then attack with Strength. All three, every time.
-- **Better?** You, clearly. Poison Barb poisons the Pokémon that attacks its holder while the holder is in front. A poisoned Gurdurr loses 10 at the
+- **Better?** You, clearly. Poison Barb poisons any Pokémon whose attack damages its holder while the holder is in front. A poisoned Gurdurr loses 10 at the
   check-up (20 with their Nihilego on the Bench), so Claw's 80 finishes it and they win. By not attacking you kept Gurdurr at 90 HP. It dropped to 10, and next turn
-  Conkeldurr's Bedrock Breaker (100, plus 20 from your Stadium) knocked out the Mega. The same trap had already cost you a Conkeldurr after your 4th turn, which is a
-  good reason to have seen it coming. I can't tell why all three bots attack; the everyday bot barely prefers it, so their agreement is no evidence here.
+  Conkeldurr's Bedrock Breaker (100, plus 20 from your Stadium) knocked out the Mega. Your 4th-turn attack was different, and it was right: they had 1 point then, not 2, and
+  your Conkeldurr (70 HP left) was facing Claw's 80 either way. That attack's 100 damage is what left the Mega low enough (110 after two Ice Pops) for Bedrock Breaker to
+  finish. I can't tell why all three bots attack. The everyday bot prefers it only a little, and its score for the attack shows no sign of their winning knock-out. The two
+  strong bots play the game out in simulation and still attack, and I can't explain that. Either way, the card text settles this turn, not the bots.
 - **Rule of thumb:** when they are one knock-out from winning, add the Poison damage to the hit you will take before you attack.
 - **For your decks:** Poison Barb is not in the eight lists on the ladder sheet, but real opponents do play it (this one did), so this is a "know the trap" note.
-  Field Blower (brew 07, deck 13, brew 10) removes the Barb first. Pokémon Center Lady (brew 07, brew 10) cures Poison afterwards. Teal Mask Ogerpon ex's
-  Soothing Wind (deck 12) stops Poison on your Pokémon that have Energy.
-- **Rules change:** this turn is flagged for Monday's change only because a Guts Pokémon (Conkeldurr A3 096) is in your deck. It is in your discard pile here,
-  and the Conkeldurr you evolve into has no Guts, so the change does not touch the turn.
+  Field Blower (brew 07, deck 13, brew 10) removes the Barb first, so play it before you attack. Pokémon Center Lady (brew 07, brew 10) cures Poison only on your next
+  turn, after the check-up has already hit, so she won't get you out of this trap. Teal Mask Ogerpon ex's Soothing Wind (deck 12) stops Poison on your Pokémon that have
+  Energy, as long as Ogerpon ex is in play.
+- **Rules change:** this turn is flagged for Monday's change only because a Guts Pokémon (Conkeldurr A3 096) is in your deck. The same flag is on every turn of this game.
+  It is in your discard pile here, nothing in your deck brings it back, and this turn you evolve into Gurdurr. The Conkeldurr in your hand is the Bedrock Breaker one, with
+  no Guts. So the change does not touch the turn.
 
 ## 3. Sabrina is a true gust only when they have exactly one Benched Pokémon
 *(Kingdra ex / Weezing ex game, your 2nd turn; the "other side" is a different turn of a different game)*
@@ -155,18 +159,21 @@ For each: what the situation was, what you did, what the bots did, which is bett
 - **Situation:** you have 0 points and they have 2, so any knock-out ends it. Your Terapagos ex (140 of 150 HP) is in front of a Happiny (30 HP). Your Bench has Snorlax ex (160 HP,
   no Energy) and Silvally. Their loaded Garchomp waits on their Bench, and Happiny's +20 is active, so Garchomp's Land Crush hits for 120 + 20 = 140. You hold Lucky Ice Pop,
   Persian and Type: Null.
-- **You:** Lucky Ice Pop (140 to 150), retreat to Snorlax ex, no attack.
+- **You:** Rainbow Cave (Metal again), Lucky Ice Pop (140 to 150; heads, so it came back to your hand), retreat to Snorlax ex (paying the Grass and the Metal),
+  Metal on Snorlax ex, Type: Null to the Bench, no attack.
 - **The bots:** all three, every time: Type: Null, Lucky Ice Pop, Energy on Terapagos, Prism Impact for 120. Happiny is gone, a free point.
 - **Better?** A judgment call. Healed to 150, Terapagos survives Garchomp's 140 with 10 HP, and so does Snorlax ex (160). Giovanni's +10 knocks out Terapagos (150) but not
   Snorlax ex, which is the one case where the retreat wins. Red's +20 or Cynthia's +50 (they played Cynthia on their next turn, which you could not see) beats both. Retreating
   also cost you the sure point and two Energy. The bots' agreement is no proof: the everyday bot only estimates their hit, and the strong bot guesses their hand from eight fixed
-  lists that have none of those Supporters.
+  lists that don't even have Garchomp, let alone those Supporters.
 - **Rule of thumb:** when one knock-out ends the game, count their biggest hit plus any Supporter that adds damage. Lucky Ice Pop heals only the Pokémon in front, so decide who
   stays in front first.
-- **For your decks:** Lucky Ice Pop is in brew 07 (two) and brew 10 (one). It heals only the Pokémon in front, and only if it is hurt. Darkrai ex has only 140 HP, so a 140 hit
-  knocks it out even at full health. A Mega Sableye ex (170 HP) or Mega Diancie ex (170 HP, 190 with a Giant Cape, which brew 10 runs) knocked out is 3 points, so the
-  "one knock-out ends it" counting starts earlier.
-- **Rules change:** this turn is flagged for Monday's change only because Meowth (Carefree Steps) is in your deck and discard pile. It does not come up in the turn.
+- **For your decks:** Lucky Ice Pop is in brew 07 (two) and brew 10 (one). It heals 20 from the Pokémon in front, only if that one is hurt, and on heads it comes back to your
+  hand. Darkrai ex has 140 HP (160 while your Starting Plains is in play; their own Stadium replaces it), so without the Plains a 140 hit knocks it out even at full health.
+  A Mega Sableye ex (170 HP, 190 under Starting Plains) or Mega Diancie ex (170 HP; brew 10's Giant Cape and Starting Plains add 20 each, up to 210) knocked out is 3 points,
+  so the "one knock-out ends it" counting starts earlier.
+- **Rules change:** this turn is flagged for Monday's change only because your list has a Meowth with Carefree Steps. Its only copy was knocked out on their 3rd turn (its coin
+  came up tails) and is in your discard pile, so it can't come up this turn or in their reply.
 
 ---
 
