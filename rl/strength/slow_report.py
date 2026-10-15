@@ -4,6 +4,7 @@
   slow_report.py DECKFILE [--deals N] [--no-paired] [--threads T]    register, run and report on one deck
   slow_report.py --dir RUNDIR [--report-only | --dry-run]            resume a registered run, or just rewrite its page, or say where it stands
   slow_report.py --selfcheck-only --program PATH                     replay both self-checks of a rebuilt program (a game at a time, resumable) and write their record
+  slow_report.py --paired-with REPORT_DIR --deck VARIANT             register a deck that differs by 1-2 cards as a PAIRED VARIANT of an earlier report, on its very deals (slow_report_paired.py)
 
 DECKFILE is a deck file inside the repository (`Energy: <Type>` and one `N Name SET NNN` line per card). The deck is played by kx3 against the 8
 public panel lists played by km3, N deals (default 5) x 2 seats per opponent, so 16 x N kx3 games; the frozen program also plays km3 on the deck
@@ -32,6 +33,9 @@ a checkout whose HEAD has the record unedited and with the pin's two texts, repl
 (config.json, manifest.json and manifest.sha256 unedited at HEAD; config selfcheck_how 'replayed' against the committed pin; both texts the pin's; the config's and the manifest's program sha256 this
 program's) is taken the same way when no record file is: the registration of an earlier slow report on that very program already replayed them. The registration then names it, and
 strength_prereg.py words the texts 'accepted from the committed record <path> (commit <sha>)', not 'replayed ... just before registration'.
+
+A paired variant (--paired-with, slow_report_paired.py) takes the base report's seed_base, deals, seats, opponents, threads and school rule instead of picking a seed slot, needs the same program and pin,
+and its page sets each game against its twin in the base report; the base folder is only read.
 
 One wrapper per run directory (a kernel lock, flock, that the program inherits, so it holds even if the wrapper is killed outright while the program plays on);
 a SIGTERM or SIGHUP stops the program before the wrapper exits, except a SIGHUP that was ignored at launch (`nohup`), which stays ignored. Pure standard
@@ -676,7 +680,7 @@ def headline_of(pin, deck_name):
 
 def build_config(*, pin, pin_path, deck_rel, deck_name, deck_sha, deck_state, deals, paired, seed_base, threads, program_sha, selfcheck_given='pin', selfcheck_how='pin',
                  resume_command=None, program=None, route='pinned', harness_checkout=None, school_rule='on', school_days=DEFAULT_SCHOOL_DAYS, pin_state=None, build_record=None,
-                 registered_on=None, selfcheck_record=None):
+                 registered_on=None, selfcheck_record=None, paired_with=None):
     """`selfcheck_record` (accepted_selfcheck_record's answer) says the texts in `selfcheck_given` were not replayed for this registration but accepted from a committed record of an earlier
     replay (a record file, or the committed registration of an earlier slow report); `selfcheck_how` is then 'record <path> <commit>', which strength_prereg.py takes for a rebuild's texts
     and words as accepted from that record, and the record is named here too: in the engine text, the summary and two entries of the slow_report block (selfcheck_how, selfcheck_record)."""
@@ -736,6 +740,11 @@ def build_config(*, pin, pin_path, deck_rel, deck_name, deck_sha, deck_state, de
     if selfcheck_record:
         cfg['slow_report']['selfcheck_how'] = f"record {selfcheck_record['path']} {selfcheck_record['commit']}"
         cfg['slow_report']['selfcheck_record'] = dict(selfcheck_record)
+    if paired_with:  # a paired variant (slow_report_paired.py): what it is paired with is part of the question and of the slow_report block, both of which are registered
+        import slow_report_paired as PAIRED
+        cfg['question'] += PAIRED.question_text(paired_with, deck_name)
+        cfg['slow_report']['paired_with'] = dict(paired_with)
+        cfg['slow_report']['summary'] += f" Paired with {paired_with['folder']}: the same seeds and deals as that report of {paired_with['base_deck_name']}."
     return cfg
 
 
@@ -1723,9 +1732,10 @@ def selfcheck_how(source, pin_state=None, record=None):
     return 'recorded at registration'
 
 
-def write_slow_report(rundir, out=None, pin_check=None):
+def write_slow_report(rundir, out=None, pin_check=None, card_info=None):
     """The page SLOW_REPORT.md of a registered run. `pin_check` = (pin, pin_path) also asks the pin in use whether the registration's claims about the program are its own (see
-    pin_provenance_problems); the page flags what does not hold."""
+    pin_provenance_problems); the page flags what does not hold. `card_info` (name -> (cheapest attack's Energy count, retreat cost)) is for the counts of a paired variant's page;
+    by default it is read from lib/deckgym-database.json."""
     man, msha = load_registered(rundir)
     sr = man.get('slow_report')
     if not sr:
@@ -1800,6 +1810,14 @@ def write_slow_report(rundir, out=None, pin_check=None):
                 half = t_crit(n - 1) * sd / math.sqrt(n)
                 P(head + f', {range_points(m, half)} (95% interval; this range refers to those {plural(n, "paired game")}).\n')
                 P(gain_range_note(pilot, ref, n, m, half) + '\n')
+
+    if sr.get('paired_with'):  # a paired variant (--paired-with): set against the twin games of its base report
+        import slow_report_paired as PAIRED
+        try:
+            L.extend(PAIRED.comparison_lines(rundir, man, games, card_info))
+        except Exception as e:  # noqa: BLE001  (the page of a finished run must be written whatever the comparison meets)
+            L.append('## Compared with the base report\n')
+            L.append(f'The comparison with the base report could not be completed: {type(e).__name__}: {e}. The rest of this page does not depend on it.\n')
 
     P('## Against each public list\n')
     P(f'| opponent ({ref}) | {pilot} games | score | 95% range |')
@@ -1926,6 +1944,10 @@ def write_slow_report(rundir, out=None, pin_check=None):
     order = ('before any game' if first_start is None or first_start >= (man.get('created_at') or '') else f"**but a game started at {first_start}, BEFORE the registration time**")
     P(f"- Registered {man.get('created_at')}, {order}; manifest sha256 `{msha[:16]}`; repository commit `{man.get('repo_commit')}`; pin `{sr['pin']['path']}`.")
     P(f"- {plural(deals, 'deal')} x 2 seats; seeds `{man['seed_base']} + p x {man['pair_stride']} + i` (p = opponent index, i = deal). The program plays each deal with each pilot on the deck, from one seed.")
+    if sr.get('paired_with'):
+        import slow_report_paired as PAIRED
+        for line in PAIRED.run_lines(sr):
+            P(line)
     if os.path.exists(os.path.join(rundir, 'REPORT.md')):
         P('- The engineering report with every number (paired differences, runtime, what more precision would cost) is `REPORT.md` beside this page.')
     text = '\n'.join(L).rstrip() + '\n'
@@ -1958,11 +1980,11 @@ def best_effort_pages(rundir, say):
         say(f'could not write the page before stopping: {e}')
 
 
-def main(argv=None, *, now=None, sleep=None, spawn=None, deck_check=None):
+def main(argv=None, *, now=None, sleep=None, spawn=None, deck_check=None, basic_check=None):
     ctx = {'tag': 'slow report'}
     try:
         with signals_stop_the_program():  # over the whole call: the self-check, the registration and the run all stop their child process (and clean up) on SIGTERM / SIGHUP
-            return _main(argv, ctx, now=now, sleep=sleep, spawn=spawn, deck_check=deck_check)
+            return _main(argv, ctx, now=now, sleep=sleep, spawn=spawn, deck_check=deck_check, basic_check=basic_check)
     except NoTimeZoneDatabase as e:
         raise SystemExit(f"[{ctx['tag']}] REFUSED: {e}") from None
     except SystemExit as e:
@@ -2013,9 +2035,14 @@ def selfcheck_only(a, pin, repo, say, now):
     return 0 if keep_record(repo, pin_run['program'], program_sha, texts, routes, now, say) else 1
 
 
-def _main(argv, ctx, *, now, sleep, spawn, deck_check):
+def _main(argv, ctx, *, now, sleep, spawn, deck_check, basic_check=None):
     ap = argparse.ArgumentParser(description='The opt-in slow report: kx3 on one deck v km3 on the public panel (see the module docstring).')
     ap.add_argument('deckfile', nargs='?', help='a deck file inside the repository')
+    ap.add_argument('--deck', help='the deck file, as an option (the same as DECKFILE; with --paired-with it is the variant)')
+    ap.add_argument('--paired-with', metavar='REPORT_FOLDER',
+                    help='register the deck as a PAIRED VARIANT of an earlier, registered slow report of a deck that differs from it by one or two cards (slow_report_paired.py): the variant plays that report\'s very '
+                         'deals (its seed base, deals, seats, opponents, threads and school rule are reused and no seed slot is taken), under the same program and pin, and its page sets each game '
+                         'against its twin in that report. The base folder is only read')
     ap.add_argument('--dir', help='resume (or just report on) a registered run directory')
     ap.add_argument('--deals', type=int, help='deals per opponent (default 5; 16 x N kx3 games)')
     ap.add_argument('--no-paired', action='store_true', help='leave out "how much better kx3 plays this deck than km3 on the same deals" (reported by default: the program plays km3 on the deck anyway, a second a game)')
@@ -2050,6 +2077,18 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
     spawn = spawn or default_spawn
     deck_check = deck_check or default_deck_check
     repo = os.path.abspath(a.repo)
+    if a.deck is not None:
+        if a.deckfile:
+            die('give the deck file once, as DECKFILE or as --deck, not both')
+        a.deckfile = a.deck
+    if a.paired_with is not None:
+        if a.dir or a.selfcheck_only or a.report_only:
+            die('REFUSED: --paired-with registers a new variant; it cannot be used with --dir, --report-only or --selfcheck-only (a registered variant is resumed with --dir RUNDIR alone)')
+        if not a.deckfile:
+            die('REFUSED: --paired-with needs the variant deck file (--deck FILE)')
+        for flag, given in (('--deals', a.deals is not None), ('--seed-base', a.seed_base is not None), ('--no-paired', a.no_paired)):
+            if given:
+                die(f"REFUSED: {flag} cannot be used with --paired-with: a paired variant plays the base report's deals, seeds and comparison as they are")
     pin = load_pin(a.pin)
     _LOG_EXTRA.update(pilot=pin['pilot'], reference=pin['reference'])
     ctx['tag'] = f"{pin['pilot_label']} v {pin['reference_label']}"
@@ -2068,6 +2107,7 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
     if not a.dir and not a.deckfile:
         die('give a deck file to report on, or --dir RUNDIR to resume a registered run')
 
+    pair = None  # the base report of a paired variant (slow_report_paired.load_base), when --paired-with is given
     if a.dir:
         for flag, given in (('--deals', a.deals is not None), ('--no-paired', a.no_paired), ('--date', a.date is not None), ('--seed-base', a.seed_base is not None),
                             ('--selfcheck', a.selfcheck), ('--register-only', a.register_only), ('--program', a.program is not None)):
@@ -2092,8 +2132,12 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
     else:
         if a.report_only:
             die('--report-only needs --dir RUNDIR (a run that is already registered)')
-        school_rule = a.school_rule or 'on'
-        school_days_text = a.school_days if a.school_days is not None else DEFAULT_SCHOOL_DAYS
+        if a.paired_with is not None:
+            import slow_report_paired as PAIRED
+            pair = PAIRED.load_base(a.paired_with, repo)  # refused here when it is not a registered report: nothing has been written
+        compare_on = pair.compare if pair else not a.no_paired  # whether the page compares the two pilots on the same deals
+        school_rule = a.school_rule or (pair.school_rule if pair else 'on')
+        school_days_text = a.school_days if a.school_days is not None else (pair.school_days if pair else DEFAULT_SCHOOL_DAYS)
         school_choice_overridden = False
         pin_state = require_committed_pin(repo, a.pin)  # before anything below trusts the pin
         program_path = os.path.abspath(a.program) if a.program else None
@@ -2104,7 +2148,7 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
         deck_abs = os.path.abspath(a.deckfile)
         name = deck_name_of(deck_abs)
         ctx['tag'] = headline_of(pin, name)
-        deals = 5 if a.deals is None else a.deals
+        deals = pair.deals if pair else (5 if a.deals is None else a.deals)
         if not 1 <= deals <= MAX_DEALS:
             die(f'REFUSED: --deals must be between 1 and {MAX_DEALS}')
 
@@ -2138,7 +2182,13 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
         state = deck_state(repo, rel)
         out_root = os.path.abspath(a.out_root) if a.out_root else os.path.join(repo, 'rl', 'results', 'slow_reports')
         reserved = pin.get('seed_reserved') or []
-        seed_base = pick_seed_base(dsha, out_root, tuple(pin['seed_block']), pin['seed_step'], a.seed_base, reserved)
+        paired = None
+        if pair:  # the base report's seeds are reused on purpose: no slot is picked, and the registration says so
+            paired = PAIRED.check(pair, repo=repo, pin=pin, pin_path=a.pin, program_sha=program_sha, registry=registry, panel_names=panel_names, deck_abs=deck_abs, deck_rel=rel,
+                                  name=name, basic_check=basic_check or PAIRED.default_basic_check(repo))
+            seed_base = pair.seed_base
+        else:
+            seed_base = pick_seed_base(dsha, out_root, tuple(pin['seed_block']), pin['seed_step'], a.seed_base, reserved)
         date = a.date if a.date is not None else local_date(now())
         try:
             if not re.fullmatch(r'\d{4}-\d{2}-\d{2}', date):
@@ -2149,16 +2199,19 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
         rundir = os.path.join(out_root, f'{date}_{name}')
         if os.path.exists(rundir):
             die(f'REFUSED: the run directory {rundir} already exists; resume it with --dir {shlex.quote(rundir)} (or pick another --date)')
-        threads = a.threads or pin['threads']
+        threads = a.threads or (pair.threads if pair and pair.threads else pin['threads'])
         et = expected_time(deals, pin)
         pilot_, ref_ = pin['pilot'], pin['reference']
-        say(f"question: how does {name} do when {pilot_} plays it against the {len(panel_names)} public lists" + (f', and is that better than when {ref_} plays the same deck on the same deals?' if not a.no_paired else '?'))
+        say(f"question: how does {name} do when {pilot_} plays it against the {len(panel_names)} public lists" + (f', and is that better than when {ref_} plays the same deck on the same deals?' if compare_on else '?'))
         for d_, played_, planned_, cmd_ in unfinished_runs(out_root, name):
             say(f"WARNING: an unfinished slow report of {name} already exists: {d_} ({played_} of {planned_} games played). Resume it ({cmd_}) "
                 'instead of registering a second one, unless you mean to.')
         say(f"plan: {name} ({rel}, {state}), {plural(deals, 'deal')} x 2 seats against the {len(panel_names)} public lists")
+        if paired:
+            for line in paired.lines:
+                say(line)
         say(f"size: {kg(et['kx3_games'], pilot_)} + {kg(et['kx3_games'], ref_, True)} on the same deals ({2 * et['kx3_games']} games in all; the {ref_} games take about "
-            f"a second each{'; with --no-paired they are still played and the page leaves them out' if a.no_paired else ''}); "
+            f"a second each{'; with --no-paired they are still played and the page leaves them out' if not compare_on else ''}); "
             f"the time is for the {kg(et['kx3_games'], pilot_)}: about {hours_text(et['typical_hours'][0])} to "
             f"{hours_text(et['typical_hours'][1])} if the deck plays like most of his, about {hours_text(et['wall_hours'])} if it plays like the Wailord wall (measured with 2 games at a time)")
         if school_rule == 'on' and school_days:
@@ -2180,9 +2233,11 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
                 f"({os.path.basename(build_rec['record_file'])}, sha256 {build_rec['record_sha256'][:12]}) says it is a rebuild of the pinned source (engine tree as archived {build_rec['engine_tree_archived'][:12]}, "
                 f"harness source {build_rec['harness_source_sha256'][:12]}, built with {rustc_line(build_rec, 'an unrecorded toolchain')}); {checked}, "
                 f"and the checkout's harness source equals the pinned build's")
-        say(f"stage use (not development evidence; the held-out lock is untouched), seeds from {seed_base}, program {pin_run['program']} "
+        say(f"stage use (not development evidence; the held-out lock is untouched), seeds from {seed_base}{' (the base report\'s: no new seed slot)' if pair else ''}, program {pin_run['program']} "
             f"({'pinned' if route == 'pinned' else 'rebuilt'}, sha256 {program_sha[:12]}), "
-            f"{'without' if a.no_paired else 'with'} the comparison with {ref_} on the same deals in the page, no pass or fail line")
+            f"{'without' if not compare_on else 'with'} the comparison with {ref_} on the same deals in the page, no pass or fail line")
+        if paired and paired.problems:  # after the plan above, so the person sees what was asked; before anything is written or replayed
+            die('REFUSED: this deck cannot be a paired variant of that report, so nothing was ' + ('written (a dry run writes nothing)' if a.dry_run else 'written') + ':\n  ' + '\n  '.join(paired.problems))
         if a.dry_run:
             say('dry run: nothing written')
             return 0
@@ -2203,15 +2258,16 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
                 keep_record(repo, pin_run['program'], program_sha, given, routes, now, say)
             if os.path.exists(rundir):  # hours may have passed: what was decided before the self-check is decided again
                 die(f'REFUSED: the run directory {rundir} appeared while the self-check ran; resume it with --dir {shlex.quote(rundir)} (or pick another --date)')
-            again = pick_seed_base(dsha, out_root, tuple(pin['seed_block']), pin['seed_step'], a.seed_base, reserved)
-            if again != seed_base:
-                say(f'note: seed slot {seed_base} was taken while the self-check ran; using {again}')
-                seed_base = again
-        cfg = build_config(pin=pin, pin_path=a.pin, deck_rel=rel, deck_name=name, deck_sha=dsha, deck_state=state, deals=deals, paired=not a.no_paired, seed_base=seed_base,
+            if not pair:  # (a paired variant keeps its base report's seeds whatever happened meanwhile)
+                again = pick_seed_base(dsha, out_root, tuple(pin['seed_block']), pin['seed_step'], a.seed_base, reserved)
+                if again != seed_base:
+                    say(f'note: seed slot {seed_base} was taken while the self-check ran; using {again}')
+                    seed_base = again
+        cfg = build_config(pin=pin, pin_path=a.pin, deck_rel=rel, deck_name=name, deck_sha=dsha, deck_state=state, deals=deals, paired=compare_on, seed_base=seed_base,
                            threads=threads, program_sha=program_sha, selfcheck_given=given, selfcheck_how=how,
                            resume_command=resume_command_for(rundir, school_rule, school_days_text), program=pin_run['program'], route=route,
                            harness_checkout=harness_here, school_rule=school_rule, school_days=school_days_text, pin_state=pin_state, build_record=build_rec,
-                           registered_on=socket.gethostname(), selfcheck_record=record)
+                           registered_on=socket.gethostname(), selfcheck_record=record, paired_with=paired.record if paired else None)
 
         def cleanup():
             shutil.rmtree(rundir, ignore_errors=True)
@@ -2234,7 +2290,8 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
                 if line.strip():
                     say(line.strip())
             man, msha = load_registered(rundir)
-            log_event(rundir, 'registered', manifest_sha256=msha, seed_base=seed_base, deals=deals, paired=not a.no_paired, threads=threads, deck_file=rel, deck_sha256=dsha)
+            log_event(rundir, 'registered', manifest_sha256=msha, seed_base=seed_base, deals=deals, paired=compare_on, threads=threads, deck_file=rel, deck_sha256=dsha,
+                      **({'paired_with': paired.record['folder']} if paired else {}))
         except BaseException:
             if not os.path.exists(os.path.join(rundir, 'manifest.sha256')):
                 cleanup()  # an interrupt (or a refusal) before the registration was written leaves nothing behind
@@ -2319,6 +2376,10 @@ def _main(argv, ctx, *, now, sleep, spawn, deck_check):
     say(f'SLOW_REPORT.md written in {rundir}')
     for line in console_lines(text):
         say(line)
+    if sr_block.get('paired_with'):
+        import slow_report_paired as PAIRED
+        for line in PAIRED.console_summary(text):
+            say(line)
     return 0
 
 

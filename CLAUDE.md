@@ -1,13 +1,15 @@
 # Notes for Claude sessions
 
 - **Read `START_HERE.md` first, then `PROJECT_INSTRUCTIONS.md`.** They win over every other file,
-  including this one. In short: the goal is creative decks Dustin wins with on the ladder; the
-  simulator doesn't rank decks; no new files, gates or process documents unless Dustin asks; report
-  in plain language.
+  including this one. The mission is to help Dustin improve decks he enjoys so they execute their plan
+  reliably and do better against the opponents he actually faces. Use START_HERE's brief mission check
+  when choosing work and in daily reviews. The simulator doesn't establish ladder rankings; no new
+  files, gates or process documents unless Dustin asks; report in plain language.
 - Pocket (the mobile game) is not the physical Pokémon TCG. Read `RULES_FOR_AGENTS.md` before
   touching game logic, and look cards up with `python3 lib/card.py <name or id>`, never from memory.
 - Current plan and status: `rl/RUN5.md`, "The plan, revised Sept 25" and its "Where things stand". The
-  yardstick is scoreboard v3's 45 cells vs Limitless (`rl/results/scoreboard_v3_2026-09-27/`).
+  scoreboard's 45 cells vs Limitless (`rl/results/scoreboard_v3_2026-09-27/`) are an evaluation measure;
+  START_HERE's mission determines why work is useful. Preserve each registered experiment's rules.
 - Pick seeds outside every range in START_HERE's seed table. Claude Code's diagnostics use
   20,000,000,000 and up.
 - Build: `cd engine && cargo build --release`. Tests: `cargo test --release --features test-utils`.
