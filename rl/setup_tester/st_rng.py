@@ -8,7 +8,7 @@ M64 = (1 << 64) - 1
 GOLD = 0x9E3779B97F4A7C15
 
 PURPOSES = {'shuffle': 1, 'swap': 2, 'reshuffle': 3, 'search': 4, 'coin': 5, 'return': 6, 'clock': 7,
-            'glimmora': 8, 'mesagoza': 9, 'bootstrap': 10, 'sightseer': 11, 'comm': 12, 'lisia': 13}
+            'glimmora': 8, 'mesagoza': 9, 'bootstrap': 10, 'sightseer': 11, 'comm': 12, 'lisia': 13, 'copycat': 14}
 
 
 def mix(x):

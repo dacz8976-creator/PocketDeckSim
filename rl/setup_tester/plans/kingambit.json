@@ -34,7 +34,7 @@
   "Pawniard"
  ],
  "blade_target": 2,
- "copycat_rule": "NM",
+ "copycat_rule": "valuation",
  "opp_hand": 4,
  "prof_hand_max": 8,
  "bench_reserved_for": "Pawniard",
@@ -64,7 +64,266 @@
   "Pawniard"
  ],
  "coin_pokemon_root": "Glimmet",
- "copycat_n": 2,
- "copycat_m": 1,
- "legacy_script": false
+ "legacy_script": false,
+ "p1_lead": "Regigigas",
+ "glimmora_energy_first": true,
+ "no_active_evolve": [
+  "Alolan Grimer"
+ ],
+ "pawniard_line": [
+  "Pawniard",
+  "Bisharp",
+  "Kingambit"
+ ],
+ "grimer_line": [
+  "Alolan Grimer",
+  "Alolan Muk"
+ ],
+ "copycat_samples": 16,
+ "copycat_fallback": {
+  "gap": 2,
+  "gap_must_keep": 5,
+  "must_keep": [
+   "Kingambit",
+   "Rare Candy"
+  ]
+ },
+ "copycat_default_value": 1,
+ "copycat_values": {
+  "Rare Candy": [
+   {
+    "when": [
+     "pawniard_due",
+     "kingambit_held",
+     "kingambit_needed"
+    ],
+    "value": 8
+   },
+   {
+    "when": [],
+    "value": 1
+   }
+  ],
+  "Kingambit": [
+   {
+    "when": [
+     "kingambit_needed",
+     "pawniard_due"
+    ],
+    "value": 8
+   },
+   {
+    "when": [
+     "kingambit_needed"
+    ],
+    "value": 5
+   },
+   {
+    "when": [],
+    "value": 1
+   }
+  ],
+  "Pawniard": [
+   {
+    "when": [
+     "no_pawniard_line_in_play",
+     "pawniard_due"
+    ],
+    "value": 8
+   },
+   {
+    "when": [
+     "no_pawniard_line_in_play"
+    ],
+    "value": 4
+   },
+   {
+    "when": [],
+    "value": 1
+   }
+  ],
+  "Bisharp": [
+   {
+    "when": [
+     "pawniard_in_play",
+     "bisharp_line_missing"
+    ],
+    "value": 6
+   },
+   {
+    "when": [
+     "bisharp_line_missing"
+    ],
+    "value": 3
+   },
+   {
+    "when": [],
+    "value": 1
+   }
+  ],
+  "Glimmet": [
+   {
+    "when": [
+     "glimmora_lines_lt2"
+    ],
+    "value": 6
+   },
+   {
+    "when": [],
+    "value": 1
+   }
+  ],
+  "Glimmora": [
+   {
+    "when": [
+     "glimmet_waits"
+    ],
+    "value": 8
+   },
+   {
+    "when": [
+     "glimmora_lines_lt2"
+    ],
+    "value": 3
+   },
+   {
+    "when": [],
+    "value": 1
+   }
+  ],
+  "Alolan Grimer": [
+   {
+    "when": [
+     "muk_needed"
+    ],
+    "value": 4
+   },
+   {
+    "when": [],
+    "value": 1
+   }
+  ],
+  "Alolan Muk": [
+   {
+    "when": [
+     "grimer_in_play",
+     "muk_needed"
+    ],
+    "value": 6
+   },
+   {
+    "when": [
+     "muk_needed"
+    ],
+    "value": 3
+   },
+   {
+    "when": [],
+    "value": 1
+   }
+  ],
+  "Regigigas": [
+   {
+    "when": [
+     "regigigas_missing"
+    ],
+    "value": 4
+   },
+   {
+    "when": [],
+    "value": 1
+   }
+  ],
+  "Juliana": [
+   {
+    "when": [
+     "kingambit_needed",
+     "kingambit_in_deck"
+    ],
+    "value": 6
+   },
+   {
+    "when": [],
+    "value": 1
+   }
+  ],
+  "Poké Ball": [
+   {
+    "when": [
+     "bench_room"
+    ],
+    "value": 3
+   },
+   {
+    "when": [],
+    "value": 1
+   }
+  ],
+  "Pokémon Communication": [
+   {
+    "when": [
+     "kingambit_needed"
+    ],
+    "value": 3
+   },
+   {
+    "when": [],
+    "value": 1
+   }
+  ],
+  "Mesagoza": [
+   {
+    "when": [
+     "no_stadium"
+    ],
+    "value": 4
+   },
+   {
+    "when": [],
+    "value": 0
+   }
+  ],
+  "Professor's Research": [
+   {
+    "when": [],
+    "value": 3
+   }
+  ],
+  "Lisia": [
+   {
+    "when": [
+     "bench_room"
+    ],
+    "value": 3
+   },
+   {
+    "when": [],
+    "value": 1
+   }
+  ],
+  "Sightseer": [
+   {
+    "when": [],
+    "value": 2
+   }
+  ],
+  "Ilima": [
+   {
+    "when": [],
+    "value": 1
+   }
+  ],
+  "Lucky Ice Pop": [
+   {
+    "when": [],
+    "value": 1
+   }
+  ],
+  "Heavy Helmet": [
+   {
+    "when": [],
+    "value": 1
+   }
+  ]
+ }
 }

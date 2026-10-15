@@ -197,8 +197,8 @@ class T2Hand(unittest.TestCase):
     def test_pawniard_always_finds_a_bench_slot(self):
         # four non-Pawniard Basics in hand; Pawniard is the next card drawn
         top = [REGI, GLIMMET, GLIMMET, GRIMER, HELM, PAWN]
-        _, tr = hand_deck(top, first=True)
-        self.assertIn('Pawniard', self.in_play(tr, 1))
+        _, tr = hand_deck(top, first=True, pawniard_bench='now')        # T-now reserves the slot (C6: first_ko and the
+        self.assertIn('Pawniard', self.in_play(tr, 1))                  # no-knock-out runs do not)
         self.assertLessEqual(len(self.in_play(tr, 1)), 4)
 
     def test_bench_cap_three(self):
@@ -500,7 +500,7 @@ class T8Amendment(unittest.TestCase):
 
     # --- promotion and P3 ---
     def mons(self, names, first_active=True):
-        ver = version()
+        ver = version(['-1 Lucky Ice Pop B2 145', '+1 Bisharp B3a 042'])
         g = sim.Game(ver, 0, True, CFG, order=sim.order_for(ver, [REGI]))
         slot = {'Pawniard': PAWN, 'Bisharp': BISH, 'Alolan Muk': MUK, 'Alolan Grimer': GRIMER, 'Glimmet': GLIMMET,
                 'Glimmora': GLIMMORA, 'Regigigas': REGI, 'Kingambit': KING}
@@ -548,7 +548,7 @@ class T8Amendment(unittest.TestCase):
     # --- the winning moment ---
     PACES = [('fast', 180, 3, 3), ('medium', 150, 2, 3), ('slow', 180, 3, 3)]   # R3: slow is a 180-HP Mega ex
 
-    def k_starts(self, clock, first, n=8):
+    def k_starts(self, clock, first, n=10):
         return [sum(clock.ko(j) for j in range(1, (t - 1 if first else t) + 1)) for t in range(1, n + 1)]
 
     def test_winning_moment_per_pace(self):
@@ -595,7 +595,7 @@ class T8Amendment(unittest.TestCase):
         c = clk.Fixed('t', {}, hand=7)
         ver = version()
         order = sim.order_for(ver, [REGI, COPY, HELM, ILIMA, POP, POP, PAWN])
-        tr = sim.play_deal(ver, 0, True, dict(CFG, copycat_rule='always'), clock=c, order=order)
+        tr = sim.play_deal(ver, 0, True, dict(CFG), clock=c, order=order)
         self.assertEqual(tr['copycat_draws'][:1], [7])
 
     # --- P1 and the exact lead chance ---

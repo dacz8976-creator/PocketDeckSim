@@ -40,6 +40,7 @@ class Timeline:
     the opponent's strongest Pokémon (HP, points) or None; opp_hand(t) is the recorded opponent hand at the start of
     our own turn t or None."""
     __slots__ = ('kos', 'complete_at', 'game', 'strongest', 'hands')
+    horizon = None
 
     def __init__(self, kos, complete_at, game, strongest=None, hands=None):
         self.kos, self.complete_at, self.game = kos, complete_at, game
@@ -59,9 +60,9 @@ class Timeline:
 class Fixed:
     """C-fixed: set paces, no sampling. `kos` is a dict {opponent turn: knock-outs} or a function of j."""
 
-    def __init__(self, name, kos, hp=None, pts=None, hand=None):
+    def __init__(self, name, kos, hp=None, pts=None, hand=None, horizon=None):
         self.name, self._kos = name, kos
-        self.hp, self.pts, self.hand = hp, pts, hand
+        self.hp, self.pts, self.hand, self.horizon = hp, pts, hand, horizon      # horizon None: the plan's
         self.games = [{'name': name}]
 
     @property
@@ -85,13 +86,16 @@ class Fixed:
 
 
 # Each pace carries an assumed strongest opponent (SPEC_AMENDMENT_1): fast a 180-HP Mega ex (3 points, the Blade needs
-# k=3), medium a 150-HP ex (2 points, k=3), slow a 220-HP Mega ex (3 points, k=4). 'ref190' (fast pace, a 190-HP Mega,
-# k=4 without Red) is a reference row.
+# k=3), medium a 150-HP ex (2 points, k=3), slow a 180-HP Mega ex (3 points, k=3; ruling R3, Oct 15: the 220-HP Mega
+# needs k=4, which never comes). 'ref190' (fast pace, a 190-HP Mega, k=4 without Red) and 'ref220' (the slow pace carried
+# on over odd opponent turns, a 220-HP Mega ex, 10 own turns) are reference rows.
 FIXED = {
     'fast': Fixed('C-fixed fast', lambda j: 1 if j >= 2 else 0, 180, 3),   # one knock-out each opponent turn from turn 2
     'medium': Fixed('C-fixed medium', lambda j: 1 if j >= 3 else 0, 150, 2),    # the same from turn 3
-    'slow': Fixed('C-fixed slow', lambda j: 1 if j in (3, 5, 7) else 0, 220, 3),
+    'slow': Fixed('C-fixed slow', lambda j: 1 if j in (3, 5, 7) else 0, 180, 3),
     'ref190': Fixed('C-fixed reference: fast pace, 190-HP Mega ex', lambda j: 1 if j >= 2 else 0, 190, 3),
+    'ref220': Fixed('C-fixed reference: slow pace, 220-HP Mega ex', lambda j: 1 if j >= 3 and j % 2 == 1 else 0, 220, 3,
+                    horizon=10),
 }
 
 

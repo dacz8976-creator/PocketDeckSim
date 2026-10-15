@@ -26,6 +26,7 @@ import json
 import os
 import sys
 
+from st_clock import points_of
 from st_rng import Stream
 
 HERE = os.path.dirname(os.path.abspath(__file__))
@@ -48,12 +49,20 @@ def load_cfg(path=None, **over):
     cfg.update(over)
     if cfg.get('legacy_script'):         # d0eb22eb's script: with pawniard_bench 'now' it reproduces that commit's numbers
         cfg.update(promote_order=['Glimmora', 'Glimmet', 'Alolan Grimer', 'Regigigas', 'Alolan Muk', 'Bisharp',
-                                  'Pawniard', 'Kingambit'], copycat_rule='smaller', energy_line=['Bisharp', 'Pawniard'])
+                                  'Pawniard', 'Kingambit'], energy_line=['Bisharp', 'Pawniard'])
+        cfg.update(no_active_evolve=[], copycat_rule='smaller')
         cfg.update(over)
     if 'attacker_cost' not in cfg:       # the main attack's Energy cost, from lib/card.py's database
         atk = next(a for a in cl.db()['name'][cfg['main_attacker']].attacks if a['title'] == cfg['attack'])
         cfg['attacker_cost'] = len(atk['cost'])
     return cfg
+
+
+def fallback_wanted(opp_hand, hand_n, must_keep_held, cfg):
+    """Dustin's own Copycat rule (the fallback, 'his 2 v 8'): with no must-keep card in hand, Copycat on a gap of 2 or
+    more between the opponent's hand and ours without the Copycat; with a must-keep card, only on a gap of 5 or more."""
+    fb = cfg['copycat_fallback']
+    return opp_hand - hand_n >= (fb['gap_must_keep'] if must_keep_held else fb['gap'])
 
 
 def blade_damage(k):
@@ -146,7 +155,7 @@ class Mon:
         self.root, self.hp = ver.root[slot], ver.hp[slot]
         _UID[0] += 1
         self.uid = _UID[0]                 # creation order (only the order matters)
-        self.turned = False                # a Glimmora's turn: Active at the start of our turn with [D] attached
+        self.turned = False                # R1, a Glimmora's turn: it attacked (Venomous Hit) at least once
 
 
 def winning_moment(turns, hp):
@@ -184,7 +193,11 @@ class Game:
         self.tl = None                            # the clock's reading for this deal (set by play_deal)
         self.first_ko_t = None                    # our own-turn count when our first Pokémon was knocked out
         self.promotions = 0
-        self.p3 = None                            # {'turn', 'cause'}: Muk or Pawniard Active (SPEC_AMENDMENT_1 P3)
+        self.p3 = {}                              # P3 by cause (R2) -> own turn it showed: pawn_lead, pawn_promo, grimer_muk
+        self.cc_cache = {}                        # Copycat decisions by (own turn, hand)
+        self.cc_last = None                       # this turn's last Copycat decision: (valuation says play, fallback says)
+        self.cc_decisions = self.cc_disagree = 0
+        self.und_snap = None                      # which lines can still happen once the clock's record stops
         self.glim_lines = []                      # uids of the Glimmet/Glimmora Pokémon, in the order placed
         self.glim = {}                            # Glimmora uid -> own turn it first had its turn
         self.hold = {tuple(x) for x in cfg['hold_evolutions']}
@@ -254,18 +267,20 @@ class Game:
         n = self.ver.name[slot]
         return lead.index(n) if n in lead else len(lead)
 
-    def pawniard_ok(self):
-        """May a Pawniard in hand be benched now? The config's bench trigger (SPEC_AMENDMENT_1 script change 2)."""
+    def pawniard_ok(self, hand=None):
+        """May a Pawniard in hand be benched now? The config's bench trigger (SPEC_AMENDMENT_1 script change 2).
+        'at_once' is the no-knock-out runs' trigger: bench it as soon as it is in hand, and reserve no Bench slot."""
         mode = self.cfg.get('pawniard_bench', 'now')
-        if mode == 'now':
+        if mode in ('now', 'at_once'):
             return True
         if mode == 'first_ko':                    # our first turn after one of ours was knocked out
             return self.ko >= 1
         if mode == 'late':                        # one own turn later than first_ko
             return self.first_ko_t is not None and self.t >= self.first_ko_t + 2
         if mode == 'pieces':                      # Kingambit and Rare Candy both in hand
-            v = self.ver
-            return any(v.name[h] == self.cfg['main_attacker'] for h in self.hand) and self.has_in_hand('candy') is not None
+            v, hand = self.ver, self.hand if hand is None else hand
+            return (any(v.name[h] == self.cfg['main_attacker'] for h in hand)
+                    and any(v.tkind[h] == 'candy' for h in hand))
         raise ValueError(mode)
 
     def place_basics(self):
@@ -304,10 +319,7 @@ class Game:
                     'mesagoza': False}
         cfg = self.cfg
         self.cur['k_start'] = self.ko
-        if self.play and self.play[0].name == cfg['coin_pokemon'] and self.play[0].energy >= 1:
-            a = self.play[0]
-            a.turned = True
-            self.glim.setdefault(a.uid, t)
+        self.cc_last = None
         self.opp_hand = self.tl.opp_hand(t) if self.tl is not None else None
         if self.opp_hand is None:
             self.opp_hand = cfg['opp_hand']
@@ -327,7 +339,9 @@ class Game:
         self.end_evolve()
         self.energy()
         self.attack()
-        self.note_front()
+        if self.cc_last is not None:
+            self.cc_decisions += 1
+            self.cc_disagree += self.cc_last[0] != self.cc_last[1]
         self.record()
 
     def items(self):
@@ -354,7 +368,7 @@ class Game:
                 continue
             s = self.has_in_hand('comm')
             if s is not None and any(v.name[c] in pieces for c in self.deck):
-                cand = [h for h in self.hand if v.is_pokemon[h] and v.name[h] not in pieces]
+                cand = [h for h in self.hand if v.is_pokemon[h] and v.name[h] not in pieces and not self.needed_card(h)]
                 if cand:
                     prom = cfg['promote_order']
                     give = min(cand, key=lambda h: prom.index(v.name[h]) if v.name[h] in prom else len(prom))
@@ -419,6 +433,8 @@ class Game:
         for m in self.play:
             if m.placed == self.t or m.evolved == self.t:
                 continue
+            if m is self.play[0] and m.name in self.cfg.get('no_active_evolve', ()):
+                continue                              # R2: an Active Alolan Grimer never becomes Muk
             for h in self.hand:
                 if v.stage[h] > 0 and v.frm[h] == m.name and (m.name, v.name[h]) not in self.hold:
                     self.hand.remove(h)
@@ -482,53 +498,107 @@ class Game:
             self.draw(2)
             return self.played('prof')
         s = self.has_in_hand('copycat')
-        if s is not None and cfg.get('copycat_rule') == 'NM':
-            if self.copycat_wanted():
-                self.discard_trainer(s)
-                for h in list(self.hand):
-                    self.hand.remove(h)
-                    self.insert_random(h)
-                self.copycat_draws.append(self.opp_hand)
-                self.draw(self.opp_hand)
-                return self.played('copycat')
-        elif s is not None:
+        rule = cfg.get('copycat_rule')
+        if s is not None and rule in ('valuation', 'fallback'):
+            if self.copycat_decide(s, rule):
+                return self.play_copycat(s)
+        elif s is not None:                          # d0eb22eb's rules ('smaller', 'always', 'never'), the legacy script
             main_in_hand = any(v.name[h] == main or v.tkind[h] == 'candy' for h in self.hand)
             smaller = len(self.hand) - 1 < cfg['opp_hand']
-            rule = cfg.get('copycat_rule')
             if rule != 'never' and not main_in_hand and (smaller or rule == 'always'):
-                self.discard_trainer(s)
-                for h in list(self.hand):
-                    self.hand.remove(h)
-                    self.insert_random(h)
-                self.copycat_draws.append(cfg['opp_hand'])
-                self.draw(cfg['opp_hand'])
-                return self.played('copycat')
+                self.opp_hand = cfg['opp_hand']
+                return self.play_copycat(s)
         return False
 
-    def needed_in_hand(self):
-        """Plan cards in hand that are still needed (SPEC_AMENDMENT_1 script change 7): Pawniard, Rare Candy and
-        Kingambit while no Kingambit is in play; Glimmet and Glimmora while fewer than two Glimmora lines are in play;
-        Alolan Grimer and Muk while no Muk is in play."""
-        v, cfg = self.ver, self.cfg
-        main = cfg['main_attacker']
-        names = [m.name for m in self.play]
-        n = 0
-        for h in self.hand:
-            nm = v.name[h]
-            if nm in (cfg['pawniard'], main) or v.tkind[h] == 'candy':
-                n += main not in names
-            elif nm in ('Glimmet', cfg['coin_pokemon']):
-                n += sum(m.root == 'Glimmet' for m in self.play) < 2
-            elif nm in ('Alolan Grimer', cfg['muk']):
-                n += cfg['muk'] not in names
-        return n
+    def play_copycat(self, s):
+        self.discard_trainer(s)
+        for h in list(self.hand):
+            self.hand.remove(h)
+            self.insert_random(h)
+        self.copycat_draws.append(self.opp_hand)
+        self.draw(self.opp_hand)
+        return self.played('copycat')
 
-    def copycat_wanted(self):
-        """Fewer than N plan cards still needed in hand, and the opponent's hand at least M larger than ours without
-        the Copycat. N and M are the config's copycat_n and copycat_m."""
-        cfg = self.cfg
-        return (self.needed_in_hand() < cfg['copycat_n']
-                and self.opp_hand - (len(self.hand) - 1) >= cfg['copycat_m'])
+    # ---- Copycat by Dustin's valuation, approximated (TESTER_FIX_BRIEF section B) ----
+    def valuation_state(self):
+        """The play-side facts the value table's conditions read (the same for every hand being valued)."""
+        cfg, names = self.cfg, [m.name for m in self.play]
+        glim_root = cfg['coin_pokemon_root']
+        line = cfg['pawniard_line']
+        return {'names': names,
+                'pawniard_line_in_play': any(n in line for n in names), 'pawniard_in_play': cfg['pawniard'] in names,
+                'kingambit_in_play': cfg['main_attacker'] in names,
+                'bisharp_line_missing': not any(n in line[1:] for n in names),
+                'glimmora_lines_lt2': sum(m.root == glim_root for m in self.play) < 2,
+                'glimmet_waits': any(m.name == glim_root for m in self.play),
+                'muk_in_play': cfg['muk'] in names, 'grimer_in_play': 'Alolan Grimer' in names,
+                'regigigas_in_play': cfg['muk_partner'] in names, 'bench_room': self.room(),
+                'no_stadium': self.stadium is None}
+
+    def hand_value(self, hand, deck_names, st):
+        """The value of a hand under the plan table (copycat_values): each card's first row whose conditions hold."""
+        cfg, v = self.cfg, self.ver
+        hn = [v.name[h] for h in hand]
+        main = cfg['main_attacker']
+        due = st['pawniard_line_in_play'] or self.pawniard_ok(hand)
+        facts = {'pawniard_due': due, 'kingambit_held': main in hn, 'kingambit_needed': not st['kingambit_in_play'],
+                 'no_pawniard_line_in_play': not st['pawniard_line_in_play'],
+                 'pawniard_in_play': st['pawniard_in_play'], 'bisharp_line_missing': st['bisharp_line_missing'],
+                 'glimmora_lines_lt2': st['glimmora_lines_lt2'], 'glimmet_waits': st['glimmet_waits'],
+                 'muk_needed': not st['muk_in_play'], 'grimer_in_play': st['grimer_in_play'],
+                 'regigigas_missing': not st['regigigas_in_play'], 'kingambit_in_deck': main in deck_names,
+                 'bench_room': st['bench_room'], 'no_stadium': st['no_stadium']}
+        table, default = cfg['copycat_values'], cfg['copycat_default_value']
+        total = 0
+        for n in hn:
+            rows = table.get(n)
+            if rows is None:
+                total += default
+                continue
+            total += next(r['value'] for r in rows if all(facts[c] for c in r['when']))
+        return total
+
+    def copycat_decide(self, s, rule):
+        """Play Copycat when the expected value of a fresh hand beats the current hand's value. A fresh hand is the
+        opponent's hand count of cards drawn from deck plus hand reshuffled, estimated from `copycat_samples` sampled
+        hands per decision (stream 'copycat' of this deal). Also asks the fallback rule, to count disagreements."""
+        v, cfg = self.ver, self.cfg
+        hand = [h for h in self.hand if h != s]
+        key = (self.t, tuple(sorted(hand)))
+        got = self.cc_cache.get(key)
+        if got is None:
+            st = self.valuation_state()
+            cur = self.hand_value(hand, {v.name[c] for c in self.deck}, st)
+            pool = self.deck + hand
+            n = min(self.opp_hand, HAND_LIMIT, len(pool))
+            rng = self.stream('copycat')
+            tot = 0
+            samples = cfg['copycat_samples']
+            for _ in range(samples):
+                p = list(pool)
+                for i in range(n):
+                    j = i + rng.below(len(p) - i)
+                    p[i], p[j] = p[j], p[i]
+                tot += self.hand_value(p[:n], {v.name[c] for c in p[n:]}, st)
+            keep = any(v.name[h] in cfg['copycat_fallback']['must_keep'] for h in hand)
+            got = (tot > cur * samples, fallback_wanted(self.opp_hand, len(hand), keep, cfg))
+            self.cc_cache[key] = got
+        self.cc_last = got
+        return got[0] if rule == 'valuation' else got[1]
+
+    def needed_card(self, h):
+        """Is the card a plan card still needed (SPEC_AMENDMENT_1 script change 7)? Pawniard, Rare Candy and Kingambit
+        while no Kingambit is in play; Glimmet and Glimmora while fewer than two Glimmora lines are in play; Alolan
+        Grimer and Muk while no Muk is in play."""
+        v, cfg = self.ver, self.cfg
+        main, nm = cfg['main_attacker'], v.name[h]
+        if nm in (cfg['pawniard'], main) or v.tkind[h] == 'candy':
+            return all(m.name != main for m in self.play)
+        if nm in ('Glimmet', cfg['coin_pokemon']):
+            return sum(m.root == 'Glimmet' for m in self.play) < 2
+        if nm in ('Alolan Grimer', cfg['muk']):
+            return all(m.name != cfg['muk'] for m in self.play)
+        return False
 
     def played(self, kind):
         self.cur['supporters'].append(kind)
@@ -544,8 +614,12 @@ class Game:
         pick = next((m for m in play if m.name == main and m.energy < self.cost), None)
         if pick is None and not cfg.get('legacy_script'):
             # Dustin's order: the Pawniard line up to [DD], the Active Glimmora up to [D], Regigigas (Giga Turbo [CCC])
-            # while Muk is in play, otherwise the Active
-            for nm in cfg['energy_line']:
+            # while Muk is in play, otherwise the Active. R1: an Active Glimmora that has not had its turn and has no [D]
+            # takes the turn's Energy before the Pawniard line (config glimmora_energy_first; False runs the old order)
+            if cfg.get('glimmora_energy_first', True) and play[0].name == cfg['coin_pokemon'] and play[0].energy < 1 \
+                    and not play[0].turned:
+                pick = play[0]
+            for nm in ([] if pick else cfg['energy_line']):
                 pick = next((m for m in play if m.name == nm and m.energy < self.cost), None)
                 if pick:
                     break
@@ -570,6 +644,9 @@ class Game:
         a = self.play[0] if self.play else None
         if a is None or self.first and self.t == 1:
             return
+        if a.name == self.cfg['coin_pokemon'] and a.energy >= 1:
+            a.turned = True                            # R1: its turn is that it attacked (Venomous Hit [D]) at least once
+            self.glim.setdefault(a.uid, self.t)
         if a.name == self.cfg['main_attacker'] and a.energy >= self.cost:
             self.blades.append({'turn': self.t, 'damage': blade_damage(self.ko), 'k': self.ko,
                                 'opp_points': self.opp_points})
@@ -593,12 +670,40 @@ class Game:
         self.turns.append(rec)
 
     # ---- the opponent's turn ----
-    def note_front(self, promoted=False):
-        """P3: Muk or Pawniard Active. 'opening' if it is still the starting Active, else the cause is a promotion with
-        nothing else left (the promotion order puts them last)."""
-        if self.p3 is None and self.play and self.play[0].name in self.cfg.get('front_break', ()):
-            self.p3 = {'turn': self.t + 1 if promoted else self.t, 'cause': 'promotion' if self.promotions else 'opening',
-                       'name': self.play[0].name}
+    def note_front(self, how):
+        """P3 by cause (R2): 'pawn_lead' Pawniard starts Active (forced to lead); 'pawn_promo' a Pawniard-line Pokémon
+        promoted by the order list, nothing earlier in it left; 'grimer_muk' Alolan Grimer or Muk Active, lead or
+        promotion. `how` is 'open' (the starting Active), 'order' (promoted by the order list) or 'ready' (Kingambit
+        promoted ready to attack, which is the plan, never a cause)."""
+        if not self.play or how == 'ready':
+            return
+        nm, cfg = self.play[0].name, self.cfg
+        cause = ('grimer_muk' if nm in cfg['grimer_line'] else
+                 'pawn_lead' if how == 'open' and nm == cfg['pawniard'] else
+                 'pawn_promo' if how == 'order' and nm in cfg['pawniard_line'] else None)
+        if cause:
+            self.p3.setdefault(cause, self.t + 1 if how == 'order' else self.t)
+
+    def can_later(self):
+        """Which P-lines can still happen after the clock's record stops (TESTER_FIX_BRIEF C5), judged from the board,
+        hand and deck then. An over-estimate is safe: it only leaves a cell undecided."""
+        v, cfg = self.ver, self.cfg
+        root, off = cfg['coin_pokemon_root'], self.hand + self.deck
+        cards = sum(v.root[c] == root for c in off)
+        alive = {m.uid for m in self.play}
+        pend = sum(m.root == root and m.uid not in self.glim for m in self.play)
+        lines = self.glim_lines
+
+        def one(i):
+            if len(lines) > i:
+                return lines[i] in self.glim or lines[i] in alive
+            return cards >= i + 1 - len(lines)
+        line = cfg['pawniard_line']
+        grim = cfg['grimer_line']
+        return {'P2.any': bool(pend or cards), 'P2.both': len(self.glim) + pend + cards >= 2, 'P2.g1': one(0),
+                'P2.g2': one(1), 'P3.pawn_lead': False,
+                'P3.pawn_promo': any(m.name in line for m in self.play) or any(v.name[c] in line for c in off),
+                'P3.grimer_muk': any(m.name in grim for m in self.play) or any(v.name[c] in grim for c in off)}
 
     def blade_needed(self):
         """The Blade's damage that knocks out their strongest Pokémon; the config's blade_target (a count of
@@ -613,13 +718,14 @@ class Game:
         main = cfg['main_attacker']
         prom = cfg['promote_order']
         ready = [m for m in self.play if m.name == main and m.energy >= self.cost]
+        how = 'order'
         if cfg.get('legacy_script'):
             if ready and self.ko >= cfg['blade_target']:
-                pick = ready[0]
+                pick, how = ready[0], 'ready'
             else:
                 pick = min(self.play, key=lambda m: prom.index(m.name) if m.name in prom else len(prom))
         elif ready and blade_damage(self.ko) >= self.blade_needed():
-            pick = ready[0]
+            pick, how = ready[0], 'ready'
         else:
             # a Glimmora that has not had its turn comes ahead of the other Glimmora, then the order list
             def key(m):
@@ -629,7 +735,7 @@ class Game:
         self.play.remove(pick)
         self.play.insert(0, pick)
         self.promotions += 1
-        self.note_front(promoted=True)
+        self.note_front(how)
 
     def knock_out(self, j):
         if not self.play:
@@ -640,7 +746,7 @@ class Game:
             self.first_ko_t = self.t
         if dead.name == self.cfg['pawniard'] and self.pawniard_lost_j is None:
             self.pawniard_lost_j = j
-        gain = 1
+        gain = points_of(self.ver.cards[dead.slot])          # a Mega ex gives 3, an ex 2, anything else 1 (C7)
         if dead.name == self.cfg['coin_pokemon']:
             mode = self.cfg.get('glimmora_coin', 'random')
             heads = mode == 'heads' or (mode == 'random' and self.stream('glimmora').below(2) == 1)
@@ -659,6 +765,7 @@ class Game:
         if kos is None:
             if self.und_j is None:
                 self.und_j = j
+                self.und_snap = self.can_later()
             kos = 0
         for _ in range(kos):
             if self.ended:
@@ -671,12 +778,13 @@ class Game:
 def play_deal(ver, deal, first, cfg, clock=None, order=None, seed_base=SEED_BASE):
     """One deal: the opening, then `horizon` own turns (`setup_horizon` with no clock). Returns the trace."""
     if clock is None and cfg.get('pawniard_bench') in ('first_ko', 'late'):
-        cfg = dict(cfg, pawniard_bench='now')    # no knock-outs happen with no clock, so the trigger could never fire
+        cfg = dict(cfg, pawniard_bench='at_once')    # no knock-out ever comes, so the trigger could never fire: bench it at
+        #                                              once, and reserve no Bench slot (TESTER_FIX_BRIEF C6)
     g = Game(ver, deal, first, cfg, order, seed_base)
     tl = clock.timeline(deal, first) if clock is not None else None
     g.tl = tl
-    g.note_front()
-    horizon = cfg['horizon'] if clock is not None else cfg['setup_horizon']
+    g.note_front('open')
+    horizon = (getattr(clock, 'horizon', None) or cfg['horizon']) if clock is not None else cfg['setup_horizon']
     setup = {'in_play': g.in_play_names(), 'roots': [m.root for m in g.play]}
     for t in range(1, horizon + 1):
         if tl is not None and not first:
@@ -699,6 +807,7 @@ def play_deal(ver, deal, first, cfg, clock=None, order=None, seed_base=SEED_BASE
     return {'setup': setup, 'turns': g.turns, 'strongest': strongest, 'p4': p4, 'p3': g.p3,
             'glimmora_turns': [t for _, t in glim], 'glimmora_uids': [u for u, _ in glim],
             'glimmora_lines': [g.glim.get(u) for u in g.glim_lines], 'first_attack_turn': g.first_attack_turn, 'blades': g.blades,
+            'copycat': {'decisions': g.cc_decisions, 'disagree': int(g.cc_disagree)}, 'can_later': g.und_snap,
             'ko': g.ko, 'opp_points': g.opp_points, 'ended': g.ended, 'und_j': g.und_j, 'und_own': und_own,
             'pawniard_lost_j': g.pawniard_lost_j, 'copycat_draws': g.copycat_draws,
             'game': tl.game if tl is not None else None, 'horizon': horizon, 'first': first}
