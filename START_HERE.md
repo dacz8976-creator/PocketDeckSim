@@ -15,6 +15,8 @@ Preserve the deck's identity and the parts Dustin likes, including creative and 
 
 The engine and bots support those decisions. Separate a weakness in the deck from an engine error or a bot that cannot execute the plan. Simulator results alone do not establish a ladder win rate or a deck ranking. Trustworthy playing quality takes priority over speed. Report time and cost; do not silently impose a speed requirement or a fixed game budget.
 
+**New decks (Dustin, Oct 15):** finding and optimizing new decks Dustin would enjoy is a goal. It comes after a bot shows it can pilot his decks' plans, starting with his Kingambit deck. Until then, deck suggestions are rare, fit his style (decks that make both players think, aren't too hard to set up, and can survive fast decks), and are labelled untested.
+
 ### Keep the work tied to the mission
 
 Before a substantial new job, state in its existing task or plan which deck, matchup, recurring problem or necessary engine/pilot capability it helps, what decision its result can change, who owns it and the expected time/cost (or what is still unknown). Reuse existing work and avoid overlapping ownership. This is a short explanation, not another document or approval gate.
