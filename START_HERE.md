@@ -5,11 +5,27 @@ Read this before anything else in the folder.
 - **What is running, finished or next** lives in `rl/RUN5.md`: "The plan, revised Sept 25 (approved by Dustin)", with its "Where things stand", order of work and rules. Each result's own dated folder under `rl/results/` holds its reading.
 - If another file disagrees with this page on a standing fact, the other file is history. On status, RUN5 wins.
 
-> Pocket Deck Lab (the folder beside this repo) is the archived predecessor. Deck building stays there; the simulator and bot work lives here. Anything marked *(Pocket Deck Lab only)* wasn't copied.
+> Pocket Deck Lab (the folder beside this repo) is the archived predecessor. Current deck lists, deck-improvement work, the simulator and bot work live here. Anything marked *(Pocket Deck Lab only)* is an archived reference that wasn't copied.
 
-## What this project is for
+## Mission (clarified by Dustin, Oct 14, 2026)
 
-Find 20-card Pokémon TCG Pocket decks that are creative **and** win: off-meta, catch people off guard, built around what Dustin enjoys playing (Arceus/Crobat, Xatu, poison, weird pairings). Not "the optimized deck that wins 0.1% more often." The output that counts is a deck Dustin plays on the ladder and wins with.
+**Help Dustin improve decks he enjoys playing so they carry out their plan reliably and perform better against the opponents he actually faces.**
+
+Preserve the deck's identity and the parts Dustin likes, including creative and unfamiliar strategies. Start with a deck he wants to play, its intended plan, common opponents and recurring weaknesses. Consider both small swaps and larger support changes. Explain exact changes, why they may help, what the evidence shows and what gets worse elsewhere. A useful finding can also show that a proposed change is not worth making.
+
+The engine and bots support those decisions. Separate a weakness in the deck from an engine error or a bot that cannot execute the plan. Simulator results alone do not establish a ladder win rate or a deck ranking. Trustworthy playing quality takes priority over speed. Report time and cost; do not silently impose a speed requirement or a fixed game budget.
+
+### Keep the work tied to the mission
+
+Before a substantial new job, state in its existing task or plan which deck, matchup, recurring problem or necessary engine/pilot capability it helps, what decision its result can change, who owns it and the expected time/cost (or what is still unknown). Reuse existing work and avoid overlapping ownership. This is a short explanation, not another document or approval gate.
+
+Revisit these three questions in the existing daily review and when choosing the next substantial job:
+
+1. What can Dustin actually use now, and what evidence supports it?
+2. How does current work help a chosen deck or a necessary engine/pilot capability?
+3. What should be reduced, deferred or redirected because it duplicates work or does not help a useful decision?
+
+Say plainly when no new practical benefit was delivered. Tests, reports, game counts and token use measure activity; explain the benefit they enable. Recommend changes to priorities without interrupting authorized work. Existing experiment registrations, evidence boundaries, release controls and Dustin's decisions remain in force; this mission does not change a registered test after its data is seen.
 
 ## The official engine (one line; the engine-switch procedure updates it)
 
@@ -23,16 +39,15 @@ Find 20-card Pokémon TCG Pocket decks that are creative **and** win: off-meta, 
   - Any new run identifies the add-on explicitly and has a fresh result identity.
 - **Every deck ranking produced before 2026-09-10 is void.** They ran on an engine where Asleep/Paralyzed Pokémon could still attack and retreat. Don't re-run them; don't cite them.
 - **What the simulator is for.**
-  - The yardstick is the scoreboard: 45 cells scored against Limitless (the current version and its numbers are in RUN5).
-  - The target real error is 5.5.
+  - The mission above is the practical yardstick. The scoreboard's 45 cells against Limitless and its target real error of 5.5 are evaluation measures, not the project's deliverable (current versions and rules are in RUN5).
   - The simulator hasn't been shown to rank decks, so brews are judged on the ladder.
-  - Card A vs card B in the same shell needs paired seeds and ≥1,000 games; differences under 5 points are noise.
+  - Compare deck variants under comparable conditions and report uncertainty and pilot limitations. The older fast-screen planning rule (at least 1,000 games; differences under 5 points treated as noise) is not a universal budget or statistical rule. Follow each existing registration as written; size new comparisons for the decision they need to inform.
 - **What "competitive" means is read off Limitless**, not simulated. Snapshot and top-30 table: `decks/classifier/limitless_2026-09-10.json`. Refresh roughly monthly or when a set drops.
 
 ## The loop
 
-Deck building has its own folder and rules: **`decks/README.md`** (*Pocket Deck Lab only*; kept separate from the bot/RL work).
-- In short: draft in `decks/brews/`, then QR + Ladder Log, then Dustin plays 10-15 games, then keep, adjust or retire.
+Current deck-improvement work uses `decks/dustin/`, `decks/brews/`, the Ladder Log and dated evidence in `rl/results/`. The archived Lab's `decks/README.md` is historical guidance, not the home of new work.
+- Start with the deck and problem Dustin cares about, compare useful alternatives, explain the tradeoffs, and provide the chosen list and QR when a list changes. Use his ladder feedback to keep, adjust or retire it; do not require him to finish a fixed game count before choosing what to play.
 - What the bot screen may be used for at the moment (the floor check, holds on ranking) is in RUN5.
 
 ## Before you do anything

@@ -5,10 +5,9 @@ the rules added since then. Read `START_HERE.md` first. Where the two differ, `S
 
 ## The goal
 
-- **Decks:** creative decks that also win, built around what Dustin enjoys: off-meta, the kind that
-  catches people off guard. The output that counts is a deck Dustin plays on the ladder and wins with.
-- **The bot:** one that can pilot as many of the common (meta) decks as possible, then learn to play other
-  decks against them. The meta set can be refreshed whenever wanted.
+**Help Dustin improve decks he enjoys playing so they carry out their plan reliably and perform better against the opponents he actually faces.**
+
+The standing mission and recurring work check are in `START_HERE.md`. Preserve the deck's identity, target common opponents and recurring weaknesses, and explain useful card or play changes with evidence and tradeoffs. Engine and pilot work serve those decisions. Prioritize trustworthy playing quality, report time/cost, and do not invent a speed requirement or fixed game budget.
 
 ## What's void
 
@@ -21,10 +20,8 @@ the rules added since then. Read `START_HERE.md` first. Where the two differ, `S
 
 - **It doesn't rank decks.** Real results come from Limitless (`decks/classifier/`,
   `rl/results/limitless_check_2026-09-23.md`) and Dustin's own ladder games.
-- **It doesn't judge brews; the ladder does.** Brew screening and its cutoffs wait until the engine is trustworthy and realistic (Dustin, Sept 24): fixing the engine comes first.
-  Until then the simulator's brew job is "does the combo fire".
-- **The Limitless table is the scoreboard** for any change to how the simulator plays
-  (`rl/results/deep_search_table/`).
+- **Its permitted uses follow the current plan in RUN5.** The Sept 24 blanket hold on brew screening is historical; later approved diagnostics and slow reports have their own scope and limitations. They do not establish a ladder ranking. Keep deck weaknesses, bot mistakes and engine errors distinct.
+- **The Limitless table is an evaluation measure**, with the applicable experiment's rules in RUN5 and its registration. It supports the mission; an improved aggregate score alone is not a useful deck recommendation.
 
 ## Who does what (changed Sept 24 evening; owners updated Sept 25)
 
