@@ -1,0 +1,49 @@
+{
+  "source_identity": {
+    "filename": "20260908_021327000_iOS.MP4",
+    "sha256": "95DF14AF59472EC02A077B5A5804F1A44E6C02048179952934B68C56EEE1E387",
+    "bytes": 767232143,
+    "duration_seconds": 410.491667
+  },
+  "completion": {
+    "finish_reasons": [
+      "STOP"
+    ],
+    "prompt_block_reason": null,
+    "automatic_retry_performed": false
+  },
+  "response_sha256": "2BD8D7B29220161356A0532F3B10965D614839C43AC1C4D353695C6D737C4417",
+  "battle_identity": {
+    "version": 1,
+    "opponent_label": {
+      "state": "observed",
+      "value": "ゆき",
+      "timestamp_seconds": 8.9,
+      "observation": "Opponent's username ゆき is clearly displayed on the match intro screen opposite player Dacz8976."
+    },
+    "opening_player": {
+      "state": "observed",
+      "value": "Team Rocket's Drowzee",
+      "timestamp_seconds": 26.2,
+      "observation": "Player starts with Team Rocket's Drowzee in the Active Spot as the match begins."
+    },
+    "opening_opponent": {
+      "state": "observed",
+      "value": "Jigglypuff",
+      "timestamp_seconds": 26.2,
+      "observation": "Opponent starts with Jigglypuff in the Active Spot as the match begins."
+    },
+    "outcome": {
+      "state": "observed",
+      "value": "player_win",
+      "timestamp_seconds": 407.0,
+      "observation": "Notification banner 'Your opponent conceded' appears on screen, indicating a player win."
+    },
+    "result_text": {
+      "state": "not_shown",
+      "value": null,
+      "timestamp_seconds": 410.0,
+      "observation": "Video ends on a blank transition frame following the concession announcement before any Victory banner is rendered."
+    }
+  }
+}

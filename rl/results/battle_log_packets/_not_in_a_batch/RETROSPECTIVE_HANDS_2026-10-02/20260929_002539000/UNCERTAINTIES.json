@@ -1,0 +1,47 @@
+{
+  "game_id": "20260929_002539000",
+  "capture_status": "complete_with_recording_limits",
+  "independent_acceptance": "pending",
+  "items": [
+    {
+      "field": "opponent hidden hand/draw/search/Communication identities",
+      "value": null,
+      "reason": "Cardbacks concealfaces; not inferred from later plays"
+    },
+    {
+      "field": "full discard piles and discarded Energy inventory/order",
+      "value": null,
+      "reason": "Closedpiletoponly; systematic1 fpsscan found no openedpanel; subsecondpanels cannot beexcluded"
+    },
+    {
+      "field": "historical exact20 deck/version",
+      "value": null,
+      "reason": "Batch current live snapshots are not source bound historical list"
+    },
+    {
+      "field": "exact touch/authorship/event PTS",
+      "value": null,
+      "reason": "Physicaltouch inputs unavailable; eventtimes bracketed, measurednative PTS separate"
+    },
+    {
+      "field": "Lucky Ice Pop T4tails",
+      "value": "tails inferred",
+      "reason": "Blackcoin face anddiscarded/no-return endpoint; notdirectword in selected native"
+    },
+    {
+      "field": "T4Rainbow Cave response",
+      "value": "Yes inferred",
+      "reason": "169/171missdialog, butregenerationtransitionandprinted Cave supportsuse; do notcertifyactualbuttoninput"
+    },
+    {
+      "field": "T9restored Lightningpre Mega Burst",
+      "value": 1,
+      "reason": "F356Fire1 thenability/typeddiscard/Mega Burst100; exactselectiontouch hidden"
+    },
+    {
+      "field": "oldacceptedturntiming",
+      "value": "approximate",
+      "reason": "Old T8row starts 304 and T10row 369; actualdraw/turnanchors307/373; preserve old quote anduse timedboundarieswith limits"
+    }
+  ]
+}

@@ -1,0 +1,76 @@
+{
+  "is_template": false,
+  "source_video": "20261005_033529000_iOS.MP4",
+  "source_sha256": "e272b0c74f6a863c68811a235d7b9611b14994611365e58694028f323afaea3d",
+  "uncertainties": [
+    {
+      "id": "u_log_version",
+      "status": "unresolved_external_source_limit",
+      "detail": "Required dated exact matching live Pause Games list/version not present in initial nine-deck snapshot. Filmed QR has all 20 semantic slots and is bound to game. Prepared entry local only."
+    },
+    {
+      "id": "u_hidden_opponent",
+      "status": "recording_limit",
+      "detail": "Opponent normal draws, Research cards, Poké Ball search result and Copycat cards are hidden. Counts observed; identities null."
+    },
+    {
+      "id": "u_printing",
+      "status": "recording_limit",
+      "detail": "QR functional card entity does not prove printing/artwork/rarity. Visible art labels only identify instances."
+    },
+    {
+      "id": "u_pts",
+      "status": "measurement_limit",
+      "detail": "Fast-seek requested timestamps are source-local approximation; exact decoded PTS not measured. First-input windows bounded with native neighboring frames."
+    },
+    {
+      "id": "u_discard",
+      "status": "recording_limit",
+      "detail": "No full discard viewer shown. Main board only reveals top card at periodic turns."
+    },
+    {
+      "id": "u_terminal_tool",
+      "status": "recording_limit",
+      "detail": "Game ends immediately after third point; Metal Core Barrier end-of-next-opponent-turn discard is not separately shown. Tool remains on benched silver Skarmory in terminal board."
+    }
+  ],
+  "resolved_questions": [
+    {
+      "detail": "Cyrus, not Sabrina, is the final Supporter",
+      "evidence_ids": [
+        "f_0357_00",
+        "f_0360_00"
+      ]
+    },
+    {
+      "detail": "Turn 6 second Fighting attachment occurs at 182 between first and second Ice Pop uses",
+      "evidence_ids": [
+        "f_0181_00",
+        "f_0182_00",
+        "f_0183_00"
+      ]
+    },
+    {
+      "detail": "Turn 7 Metal attaches to silver Skarmory, not hovered Orthworm",
+      "evidence_ids": [
+        "f_0240_00",
+        "f_0241_00",
+        "f_0242_00"
+      ]
+    },
+    {
+      "detail": "No Auto control visible; event matchmaking, not computer classification",
+      "evidence_ids": [
+        "f_0004_00",
+        "f_0005_00"
+      ]
+    },
+    {
+      "detail": "Defeat 1–3 after ten turns, damage done 270",
+      "evidence_ids": [
+        "f_0390_00",
+        "f_0395_00"
+      ]
+    }
+  ]
+}

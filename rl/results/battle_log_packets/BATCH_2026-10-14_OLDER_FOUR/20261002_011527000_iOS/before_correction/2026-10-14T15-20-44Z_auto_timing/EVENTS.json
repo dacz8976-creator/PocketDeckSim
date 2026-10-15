@@ -1,0 +1,182 @@
+{
+  "source_sha256": "7cbaa7c16071389d66d14ad9fcbf55f5991b2f7703f14d85eb0af4a68ef9d778",
+  "timestamp_precision": "source-local seconds, event locations approximate within animation; native evidence filenames are exact requested seek times",
+  "damage_events": [
+    {
+      "turn": 2,
+      "seconds_approx": 54,
+      "actor": "owner",
+      "action": "Gnaw",
+      "target": "Hearthflame Mask Ogerpon",
+      "displayed_damage": 20
+    },
+    {
+      "turn": 4,
+      "seconds_approx": 122,
+      "actor": "owner",
+      "action": "Dragon Claw",
+      "target": "Hearthflame Mask Ogerpon",
+      "displayed_damage": 100
+    },
+    {
+      "turn": 6,
+      "seconds_approx": 186,
+      "actor": "owner",
+      "action": "Dragon Claw",
+      "target": "Cyndaquil",
+      "displayed_damage": 100
+    },
+    {
+      "turn": 10,
+      "seconds_approx": 300,
+      "actor": "owner",
+      "action": "Linear Attack",
+      "target": "Benched Combusken",
+      "displayed_damage": 50
+    },
+    {
+      "turn": 12,
+      "seconds_approx": 339,
+      "actor": "owner",
+      "action": "Water Shuriken",
+      "target": "Mega Blaziken ex",
+      "displayed_damage": 20
+    },
+    {
+      "turn": 12,
+      "seconds_approx": 351,
+      "actor": "owner",
+      "action": "Dragon Claw",
+      "target": "Mega Blaziken ex",
+      "displayed_damage": 100
+    },
+    {
+      "turn": 14,
+      "seconds_approx": 382,
+      "actor": "owner",
+      "action": "Water Shuriken",
+      "target": "Benched Meowth",
+      "displayed_damage": 20
+    },
+    {
+      "turn": 14,
+      "seconds_approx": 389,
+      "actor": "owner",
+      "action": "Mist Slash",
+      "target": "Mega Blaziken ex",
+      "displayed_damage": 80
+    }
+  ],
+  "damage_sum": 490,
+  "point_events": [
+    {
+      "turn": 4,
+      "seconds_approx": 126,
+      "actor": "owner",
+      "knocked_out": "Hearthflame Mask Ogerpon",
+      "award": 1,
+      "score_displayed": [
+        1,
+        0
+      ]
+    },
+    {
+      "turn": 6,
+      "seconds_approx": 190,
+      "actor": "owner",
+      "knocked_out": "Cyndaquil",
+      "award": 1,
+      "score_displayed": [
+        2,
+        0
+      ]
+    },
+    {
+      "turn": 11,
+      "seconds_approx": 323,
+      "actor": "opponent",
+      "knocked_out": "Gabite",
+      "award": 1,
+      "score_displayed": [
+        2,
+        1
+      ]
+    },
+    {
+      "turn": 13,
+      "seconds_approx": 366,
+      "actor": "opponent",
+      "knocked_out": "Garchomp",
+      "award": 1,
+      "score_displayed": [
+        2,
+        2
+      ]
+    },
+    {
+      "turn": 14,
+      "seconds_approx": 393,
+      "actor": "owner",
+      "knocked_out": "Mega Blaziken ex",
+      "award": 3,
+      "score_displayed": [
+        3,
+        2
+      ],
+      "display_cap": 3
+    }
+  ],
+  "non_attack_turns": [
+    {
+      "turn": 1,
+      "actor": "opponent",
+      "reason_observed": "first-turn development; no Energy attached"
+    },
+    {
+      "turn": 8,
+      "actor": "owner",
+      "reason_observed": "end turn without attacking; intent unknown",
+      "evidence": [
+        "native/t0240.00.jpg",
+        "native/t0242.00.jpg"
+      ]
+    }
+  ],
+  "auto_observations": [
+    {
+      "seconds": 13,
+      "state": "OFF",
+      "evidence": "native/t0013.00.jpg"
+    },
+    {
+      "seconds": 240,
+      "state": "OFF",
+      "evidence": "native/t0240.00.jpg"
+    },
+    {
+      "seconds": 318,
+      "state": "OFF",
+      "evidence": "native/t0318.00.jpg"
+    },
+    {
+      "seconds": 321,
+      "state": "ON",
+      "evidence": "native/t0321.00.jpg"
+    },
+    {
+      "seconds": 337,
+      "state": "ON",
+      "evidence": "native/t0337.00.jpg"
+    },
+    {
+      "seconds": 338,
+      "state": "OFF",
+      "evidence": "native/t0338.00.jpg"
+    },
+    {
+      "seconds": 390,
+      "state": "OFF",
+      "evidence": "native/t0390.00.jpg"
+    }
+  ]
+}

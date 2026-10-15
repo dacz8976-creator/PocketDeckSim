@@ -1,0 +1,57 @@
+{
+  "accepted": true,
+  "source_sha256": "40a76d7c00d1b42e2e7a968890b213b8a3882254242cd388c4801b2c104b9ac2",
+  "source_video": "20261010_015452000_iOS.MP4",
+  "reviewer": "/root/check_015452",
+  "checked_at_utc": "2026-10-10T03:52:35.338263+00:00",
+  "required_repairs": [],
+  "resolved_repairs": [
+    "Removed invented Darkness change; native3/6/8 show the same Water icon and4 shows unsaved edit warning.",
+    "Corrected T2 settled normaldraw boundary to83 and four-back hand evidence; retained hidden Research draw interval87-89 with no invented individual reveal times.",
+    "Corrected T2 start Energy Zone to visibly empty before generation; later Water generation and95 attachment retained.",
+    "Preserved initial missing live deck snapshot as history and reconciled exact refreshed20-slot list and Water with filmed QR receipt."
+  ],
+  "checked_input_sha256": {
+    "PAUSE_GAME.json": "a9f3ac8af9929807f00faf6b8be38fa7c8c194c9fa6e21c1782c7e0e0eb9f6a3",
+    "DECK_USED.json": "d3eaf70eaac45641e3c3110f9ada32efef5fcec6a7b79c73179a09047c359500",
+    "TURN_LEDGER.json": "928eae86e29813e2ca2509cde25e869749e3d594e41d4873b15ada8a3eb2424f",
+    "TURN_EVIDENCE.json": "c24749112aadf5b0863ad7c65f5adbe736512ba2479d0b90f33e3163dcee2f1e",
+    "REVIEW.md": "b460f8fe1097c98137a00fecbed2e6a413ed900d5cb7102108ddcdf4472d3bb0",
+    "COVERAGE.md": "9e72a78682579e32da896c6bdb445da4bc488fa01a68926f7881d20d1c51f758",
+    "SUMMARY.json": "20f977c57d92efe7fc7fece2064dc1569479fdeed28d6de31e225963082c8355",
+    "UNCERTAINTIES.json": "eb403e03dd8d6bfe478f4d45d07fa3282267e6509e1dc23a30c03629b96c0eba"
+  },
+  "checked_supporting_sha256": {
+    "SOURCE.json": "a63c4efa234da656275b2dd728f93c52fc6b5777f82d3065b6a104058ec05e77",
+    "QR_DECODE.json": "f32d612c9977210524d11c08265af42c22266365700b1dee3cae91dd45de10e4",
+    "../LIVE_NEW_DECKS_VERIFIED.json": "65d9de8baf16f9795f491f8731581c1ffb3cbeb65423b4e6a679fbc630909aeb"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "outcome_verified": {
+    "owner": "Dacz8976",
+    "opponent": "msthsky",
+    "result": "win",
+    "method": "opponent_concession",
+    "concession_seconds": 162,
+    "result_seconds": 174,
+    "turns": 4,
+    "points": {
+      "owner": 0,
+      "opponent": 0
+    }
+  },
+  "acceptance_scope": "Bounded independent check of finished full review, coverage and selected native evidence. Root remains responsible for final registration and archival.",
+  "viewed_manifest": "VIEWED_EVIDENCE.json",
+  "source_identity_checks": {
+    "rehash_match": true,
+    "bytes": 305967963,
+    "native_width": 1170,
+    "native_height": 2532,
+    "two_independent_extracts_exact_match": true
+  },
+  "limits": [
+    "Requested seek times, not exact measured PTS.",
+    "No independent re-decode of QR payload: local interpreter lacks zxingcpp; receipt source hash and semantic count equality were independently checked.",
+    "Hidden opponent identities and unshown discard dialogs cannot be reconstructed."
+  ]
+}

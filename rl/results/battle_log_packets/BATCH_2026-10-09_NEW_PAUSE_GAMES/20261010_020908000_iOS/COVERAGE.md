@@ -1,0 +1,20 @@
+# Coverage checklist
+
+- [x]0-5: native QR, deck list and matchmaking continuity.
+- [x]5-27: matchmaking, opponent identity and opening deal.
+- [x]27-47: five opening slots, Horsea Active, no Bench, second player, opponent setup.
+- [x]50-70: opponent turn1, Research, Needle and damage.
+- [x]71-106: owner turn2, every numbered play, search, hand and healing.
+- [x]106-169: opponent turn3, search, Bench, Energy, Stadium and Needle.
+- [x]169-214: owner turn4, evolutions, Yes prompt, Water, end draws200/201/202s and checkups.
+- [x]214-252: opponent turn5, Leaf retreat, Master Plan, Berry, failed attack and end draw.
+- [x]252-302: owner turn6, no-effect Poke Ball, evolution, Energy destination, weakness KO, replacement, draw.
+- [x]302-378: opponent turn7, no-effect Ball, Elegant Cape, Energy and complete waiting sequence.
+- [x]378-388.888333: timeout notice, Victory, source-end final Victory statistics.
+- [x]One ledger row per displayed turn1-7; setup separate.
+- [x]Native draw-relative candidates and dense pre-play selected hands.
+- [x]Opening/first move/draw order/end hand/terminal claims have retained source evidence for independent acceptance.
+- [x]Both discards explicitly unavailable because neither pile is opened.
+- [ ]Independent lead acceptance and external entry/archive (lead responsibility).
+
+No unreviewed source interval remains. Coarse contact sheets locate phases; native frames supply hand/draw/decision evidence. Dense action inspections and their source timestamps are recorded in VIEWED_MANIFEST.json and TURN_EVIDENCE.json. Unknown information remains qualified.

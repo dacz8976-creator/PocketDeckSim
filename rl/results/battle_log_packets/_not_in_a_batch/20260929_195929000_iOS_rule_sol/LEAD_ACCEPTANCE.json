@@ -1,0 +1,17 @@
+{
+  "lead_checks": [
+    "evidence/regigigas_retreat4_076.jpg and heavy_helmet_card_165.jpg: qualifying retreat4 and attack-only text",
+    "evidence/regice_before_shuriken_177.jpg and regice_after_shuriken_181.jpg: Active Poncho Regice110 to90",
+    "evidence/blizzard_helmet_277.jpg and after_blizzard_283.jpg: Helmet Regigigas120 to60, Veil Registeel110 to100, Poncho Regice10 unchanged",
+    "evidence/regigigas_before_shuriken_290.jpg, shuriken_regigigas_292.jpg, regigigas_after_shuriken_294.jpg: Helmet60 to40",
+    "evidence/poncho_card_095.jpg and clear_veil_204.jpg: printed Tool scopes independently inspected"
+  ],
+  "limitations": "No direct ability hit on Veil bearer established. Simulator implementation not inspected.",
+  "source_sha256": "0b8ddc03780033304a70312e1adeaf4af53f3cec96dff1391cd67785adaa5266",
+  "scope": "Independent lead acceptance of consequential rule-test evidence; no ladder result",
+  "accepted": true,
+  "accepted_utc": "2026-09-29T20:27:22.81871Z",
+  "finding": "Water Shuriken deals full20 through qualifying Heavy Helmet. Poncho protects observed bench attack damage, not Active ability damage; Veil bearer takes bench attack damage.",
+  "source_video": "20260929_195929000_iOS.MP4",
+  "first_pass": "sol_shuriken_195929"
+}

@@ -1,0 +1,30 @@
+{
+  "schema": "retrospective-source-reference-v1",
+  "source": {
+    "video_basename": "20260908_012720000_iOS.MP4",
+    "sha256": "b9e76626643d8950cb7a4277487da2262b5fa96faf9e87454495ebe896d47085",
+    "source_json": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_012720_v7_review\\final_packet\\SOURCE.json"
+  },
+  "current_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260908_012720000_iOS.MP4",
+  "bytes": 530226009,
+  "duration_seconds": 282.628,
+  "root_verification_receipt": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\ROOT_SOURCE_VERIFICATION.json",
+  "verification_status": "verified_sha256_match",
+  "worker_duplicate_hash_reads": 0,
+  "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_012720_v7_review\\final_packet\\REVIEW.md",
+  "accepted_status": "Reviewed",
+  "accepted_outcome": "Owner win, displayed3-2, Victory",
+  "preservation": "Original source, historical accepted packet, shared events/index and external logs unchanged by this worker. Lead handles newly authorized ladder reclassification.",
+  "classification": "computer_battle",
+  "excluded_from_ladder": true,
+  "classification_basis": "Owner clarification relayed by lead: any visible Auto control, even an off option, identifies a computer opponent and excludes recording from ladder.",
+  "mode_observation": "AUTO: enabled in the checked footage against an AI opponent; individual action authorship is not certified.",
+  "mode_evidence": [
+    "F0004.40",
+    "F0010.00",
+    "F0041.00",
+    "F0212.50",
+    "F0259.50"
+  ],
+  "astra_mode_check": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\astra_checks\\20260908_012720000\\MODE_CHECK.json"
+}

@@ -1,0 +1,5153 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "pause-20261009-020258",
+  "sources": [
+    {
+      "video_basename": "20261010_020258000_iOS.MP4",
+      "sha256": "c5e7732cf212bd836fbcafc107b0f0d92ff43d8a8cd2f5b9f222b4fd466e5640",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "turns": [
+    {
+      "turn_number": 1,
+      "who_played": "opponent",
+      "source_video": "20261010_020258000_iOS.MP4",
+      "timing": {
+        "start_seconds": 48,
+        "end_seconds": 61,
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": null,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": 61
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": 5,
+        "basis": "visible card-back fan after draw",
+        "evidence_ids": [
+          "F0055.00"
+        ],
+        "status": "hidden_identities",
+        "limit_reason": "Opponent cards hidden"
+      },
+      "owner_hand_start": {
+        "status": "not_applicable",
+        "cards_left_to_right": null,
+        "count": null,
+        "limit_reason": "Opponent turn; named owner hand retained in adjacent owner rows"
+      },
+      "opponent_hand_at_owner_turn_start": null,
+      "draws_and_searches": [
+        {
+          "kind": "hidden_opponent_draw",
+          "caused_by": "normal turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261010_020258000_iOS.MP4",
+              "timestamp_seconds": 52,
+              "evidence_ids": [
+                "F0055.00"
+              ],
+              "basis": "hidden card-back addition",
+              "limit_reason": "Opponent face not revealed"
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 52,
+          "evidence_ids": [
+            "F0055.00"
+          ],
+          "limit_reason": "Opponent card identities hidden"
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poké Ball",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": "Lechonk",
+              "reveal_position": 1,
+              "source_video": "20261010_020258000_iOS.MP4",
+              "timestamp_seconds": 60,
+              "evidence_ids": [
+                "F0060.00"
+              ],
+              "basis": "visible reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 60,
+          "evidence_ids": [
+            "F0060.00"
+          ],
+          "limit_reason": "Identity established by subsequent visible bench placement; search reveal to opponent remained hidden."
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Poké Ball",
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Random Basic search resolves; found Lechonk later revealed",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 56,
+          "evidence_ids": [
+            "F0056.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "bench",
+          "card_name": "Lechonk",
+          "target": "opponent Bench 1",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Placed in opponent left Bench slot",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 59,
+          "evidence_ids": [
+            "F0059.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Ends without Energy attachment or attack",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 60,
+          "evidence_ids": [
+            "F0060.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [],
+      "board_at_start": {
+        "turn_number_displayed": null,
+        "phase": "after normal draw, before first voluntary play",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Team Rocket’s Koffing",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0055.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [
+              "F0055.00"
+            ],
+            "limit_reason": "No textual next label; icon type visually read. Empty current circle does not establish the prior turn Energy type."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0055.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Team Rocket’s Rattata",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 40,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0055.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Metal",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [
+              "F0055.00"
+            ],
+            "limit_reason": "No textual next label; icon type visually read. Empty current circle does not establish the prior turn Energy type."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0055.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0055.00"
+        ],
+        "game_turn_context": 1,
+        "turn_number_display_limit": "Banner not visible in selected static boundary view; context comes from separately inspected turn banners."
+      },
+      "board_after": {
+        "turn_number_displayed": null,
+        "phase": "after resolution before following draw",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Team Rocket’s Koffing",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0060.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [
+              "F0060.00"
+            ],
+            "limit_reason": "No textual next label; icon type visually read. Empty current circle does not establish the prior turn Energy type."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0060.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Team Rocket’s Rattata",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 40,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0060.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Lechonk",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0060.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Metal",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [
+              "F0060.00"
+            ],
+            "limit_reason": "No textual next label; icon type visually read. Empty current circle does not establish the prior turn Energy type."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0060.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0060.00"
+        ],
+        "game_turn_context": 1,
+        "turn_number_display_limit": "Banner not visible in selected static boundary view; context comes from separately inspected turn banners."
+      },
+      "owner_hand_end": null,
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "F0055.00"
+      ],
+      "limits": [
+        "Neither opened discard pile appears; public discard tops are partial evidence only."
+      ]
+    },
+    {
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261010_020258000_iOS.MP4",
+      "timing": {
+        "start_seconds": 61,
+        "end_seconds": 119,
+        "draw_animation_end_seconds": 64,
+        "first_voluntary_move_seconds": 66.5,
+        "before_end_action_seconds": 111.5,
+        "end_after_resolution_seconds": 120
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Hiking Trail",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0065.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0065.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Sabrina",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0065.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0065.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Small Balloon",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0065.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "direct visible hand, left to right",
+        "evidence_ids": [
+          "F0065.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Hiking Trail",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0065.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0065.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Sabrina",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0065.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0065.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Small Balloon",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0065.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "direct visible hand, left to right",
+        "evidence_ids": [
+          "F0065.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 4,
+        "supported_range": null,
+        "count_method": "Directly counted distinct card backs in native top crop",
+        "basis": "observation",
+        "evidence_ids": [
+          "F0065.00"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "normal turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Small Balloon",
+              "reveal_position": 1,
+              "source_video": "20261010_020258000_iOS.MP4",
+              "timestamp_seconds": 63.5,
+              "evidence_ids": [
+                "F0063.50"
+              ],
+              "basis": "visible reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 63.5,
+          "evidence_ids": [
+            "F0063.50"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "supporter_draw",
+          "caused_by": "Copycat",
+          "linked_play_order": 3,
+          "cards_in_reveal_order": [
+            {
+              "name": "Poké Ball",
+              "reveal_position": 1,
+              "source_video": "20261010_020258000_iOS.MP4",
+              "timestamp_seconds": 83,
+              "evidence_ids": [
+                "F0083.00"
+              ],
+              "basis": "visible reveal",
+              "limit_reason": null
+            },
+            {
+              "name": "Kingdra ex",
+              "reveal_position": 2,
+              "source_video": "20261010_020258000_iOS.MP4",
+              "timestamp_seconds": 84.5,
+              "evidence_ids": [
+                "F0084.50"
+              ],
+              "basis": "visible reveal",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "reveal_position": 3,
+              "source_video": "20261010_020258000_iOS.MP4",
+              "timestamp_seconds": 85,
+              "evidence_ids": [
+                "F0085.00"
+              ],
+              "basis": "visible reveal",
+              "limit_reason": null
+            },
+            {
+              "name": "Horsea",
+              "reveal_position": 4,
+              "source_video": "20261010_020258000_iOS.MP4",
+              "timestamp_seconds": 86,
+              "evidence_ids": [
+                "F0086.00"
+              ],
+              "basis": "visible reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 2,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": [
+            "Kingdra ex",
+            "Sabrina"
+          ],
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 84,
+          "evidence_ids": [
+            "F0084.00",
+            "F0084.50",
+            "F0085.00",
+            "F0086.00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poké Ball",
+          "linked_play_order": 4,
+          "cards_in_reveal_order": [
+            {
+              "name": "Horsea",
+              "reveal_position": 1,
+              "source_video": "20261010_020258000_iOS.MP4",
+              "timestamp_seconds": 92,
+              "evidence_ids": [
+                "F0092.00"
+              ],
+              "basis": "visible reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 92,
+          "evidence_ids": [
+            "F0092.00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "automatic_stadium_draw",
+          "caused_by": "Hiking Trail",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Rare Candy",
+              "reveal_position": 1,
+              "source_video": "20261010_020258000_iOS.MP4",
+              "timestamp_seconds": 117,
+              "evidence_ids": [
+                "F0117.00"
+              ],
+              "basis": "visible reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 2,
+          "hand_count_after": 3,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 117,
+          "evidence_ids": [
+            "F0117.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Small Balloon",
+          "target": "owner Active",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Tool attached to Koffing",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 66.5,
+          "evidence_ids": [
+            "F0066.50"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Hiking Trail",
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Stadium installed",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 73,
+          "evidence_ids": [
+            "F0070.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "card_play",
+          "card_name": "Copycat",
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Owner shuffles Kingdra ex and Sabrina, draws four",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 79,
+          "evidence_ids": [
+            "F0079.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "card_play",
+          "card_name": "Poké Ball",
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Search finds Horsea",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 89,
+          "evidence_ids": [
+            "F0089.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "bench",
+          "card_name": "Horsea",
+          "target": "owner Bench1",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Gold-art Horsea benched left",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 94,
+          "evidence_ids": [
+            "F0092.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 6,
+          "kind": "retreat",
+          "card_name": null,
+          "target": "owner Active",
+          "energy": {
+            "type": null,
+            "count": 0,
+            "destination": null,
+            "retreat_payment_by_type": {}
+          },
+          "result": "Koffing retreats at zero cost with Small Balloon; Horsea becomes Active",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 101,
+          "evidence_ids": [
+            "F0103.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 7,
+          "kind": "bench",
+          "card_name": "Horsea",
+          "target": "owner Bench2",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Second Horsea benched center",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 107,
+          "evidence_ids": [
+            "F0107.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 8,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "owner Active",
+          "energy": {
+            "type": "Water",
+            "count": 1,
+            "destination": "Horsea",
+            "retreat_payment_by_type": null
+          },
+          "result": "One Water attached to Active Horsea",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 108,
+          "evidence_ids": [
+            "F0108.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 9,
+          "kind": "attack",
+          "card_name": "Horsea",
+          "target": "opponent Active",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Hook deals30 to Rattata40→10",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 111.5,
+          "evidence_ids": [
+            "F0111.50"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        "Hiking Trail replenishes two-card ending hand to three by drawing Rare Candy."
+      ],
+      "board_at_start": {
+        "turn_number_displayed": null,
+        "phase": "after normal draw, before first voluntary play",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Team Rocket’s Koffing",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0065.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [
+              "F0065.00"
+            ],
+            "limit_reason": "No textual next label; icon type visually read. Empty current circle does not establish the prior turn Energy type."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0065.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Team Rocket’s Rattata",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 40,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0065.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Lechonk",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0065.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Metal",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [
+              "F0065.00"
+            ],
+            "limit_reason": "No textual next label; icon type visually read. Empty current circle does not establish the prior turn Energy type."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0065.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0065.00"
+        ],
+        "game_turn_context": 2,
+        "turn_number_display_limit": "Banner not visible in selected static boundary view; context comes from separately inspected turn banners."
+      },
+      "board_after": {
+        "turn_number_displayed": null,
+        "phase": "T2 effects resolved, next turn before opponent draw",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0120.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Koffing",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0120.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Horsea",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 2,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0120.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [
+              "F0120.00"
+            ],
+            "limit_reason": "No textual next label; icon type visually read. Empty current circle does not establish the prior turn Energy type."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0120.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Team Rocket’s Rattata",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 10,
+            "hp_max": 40,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 30,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0120.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Lechonk",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0120.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Metal",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [],
+            "limit_reason": "No textual next label; icon type visually read. Empty current circle does not establish the prior turn Energy type."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0120.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0120.00"
+        ],
+        "game_turn_context": 2,
+        "turn_number_display_limit": "Banner not visible in selected static boundary view; context comes from separately inspected turn banners."
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0111.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0111.50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 2,
+        "basis": "direct visible hand, left to right",
+        "evidence_ids": [
+          "F0111.50"
+        ],
+        "status": "observed",
+        "limit_reason": null,
+        "phase": "before attack/end or, T8, before concession",
+        "after_automatic_end_draw_count": 3
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "F0065.00"
+      ],
+      "limits": [
+        "Neither opened discard pile appears; public discard tops are partial evidence only."
+      ]
+    },
+    {
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20261010_020258000_iOS.MP4",
+      "timing": {
+        "start_seconds": 119,
+        "end_seconds": 181,
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": null,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": 181
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": 5,
+        "basis": "visible card-back fan after draw",
+        "evidence_ids": [
+          "F0120.00"
+        ],
+        "status": "hidden_identities",
+        "limit_reason": "Opponent cards hidden"
+      },
+      "owner_hand_start": {
+        "status": "not_applicable",
+        "cards_left_to_right": null,
+        "count": null,
+        "limit_reason": "Opponent turn; named owner hand retained in adjacent owner rows"
+      },
+      "opponent_hand_at_owner_turn_start": null,
+      "draws_and_searches": [
+        {
+          "kind": "hidden_opponent_draw",
+          "caused_by": "normal turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261010_020258000_iOS.MP4",
+              "timestamp_seconds": 124,
+              "evidence_ids": [
+                "F0127.00"
+              ],
+              "basis": "hidden card-back addition",
+              "limit_reason": "Opponent face not revealed"
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 124,
+          "evidence_ids": [
+            "F0127.00"
+          ],
+          "limit_reason": "Opponent card identities hidden"
+        },
+        {
+          "kind": "hidden_opponent_draw",
+          "caused_by": "Professor’s Research",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261010_020258000_iOS.MP4",
+              "timestamp_seconds": 138,
+              "evidence_ids": [
+                "F0138.00"
+              ],
+              "basis": "hidden card-back addition",
+              "limit_reason": "Opponent face not revealed"
+            },
+            {
+              "name": null,
+              "reveal_position": 2,
+              "source_video": "20261010_020258000_iOS.MP4",
+              "timestamp_seconds": 138,
+              "evidence_ids": [
+                "F0138.00"
+              ],
+              "basis": "hidden card-back addition",
+              "limit_reason": "Opponent face not revealed"
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 138,
+          "evidence_ids": [
+            "F0138.00",
+            "F0138.00"
+          ],
+          "limit_reason": "Opponent card identities hidden"
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "evolution",
+          "card_name": "Team Rocket’s Raticate ex",
+          "target": "opponent Active",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Rattata evolves, remaining HP10→90 with30 damage retained",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 127,
+          "evidence_ids": [
+            "F0127.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "ability",
+          "card_name": "Team Rocket’s Raticate ex",
+          "target": "opponent Active",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Thieving Incisors moves one Water from Active Horsea to Raticate",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 130,
+          "evidence_ids": [
+            "F0130.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "opponent Active",
+          "energy": {
+            "type": "Metal",
+            "count": 1,
+            "destination": "Team Rocket’s Raticate ex",
+            "retreat_payment_by_type": null
+          },
+          "result": "Metal attached to Raticate, now Water1+Metal1",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 133,
+          "evidence_ids": [
+            "F0133.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "card_play",
+          "card_name": "Professor’s Research",
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Draws two hidden opponent cards",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 137,
+          "evidence_ids": [
+            "F0137.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "bench",
+          "card_name": "Team Rocket’s Tinkatink",
+          "target": "opponent Bench3",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Tinkatink placed right",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 145,
+          "evidence_ids": [
+            "F0144.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 6,
+          "kind": "card_play",
+          "card_name": "Field Blower",
+          "target": "owner Bench1",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Discards owner Koffing’s Small Balloon; Hiking Trail stays",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 149,
+          "evidence_ids": [
+            "F0149.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 7,
+          "kind": "attack",
+          "card_name": "Team Rocket’s Raticate ex",
+          "target": "owner Active",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Boost Dash70 knocks out Active Horsea50",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 168,
+          "evidence_ids": [
+            "F0168.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        "Horsea knocked out, opponent gains1 point; owner promotes second Horsea from Bench2 (178s). Opponent has three-card ending fan; no Hiking draw required."
+      ],
+      "board_at_start": {
+        "turn_number_displayed": null,
+        "phase": "after normal draw, before first voluntary play",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0120.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Koffing",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Small Balloon",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0120.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Horsea",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 2,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0120.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [
+              "F0120.00"
+            ],
+            "limit_reason": "No textual next label; icon type visually read. Empty current circle does not establish the prior turn Energy type."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0120.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Team Rocket’s Rattata",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 10,
+            "hp_max": 40,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 30,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0120.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Lechonk",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0120.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Metal",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Metal",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [
+              "F0120.00"
+            ],
+            "limit_reason": "No textual next label; icon type visually read. Empty current circle does not establish the prior turn Energy type."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0120.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0120.00"
+        ],
+        "game_turn_context": 3,
+        "turn_number_display_limit": "Banner not visible in selected static boundary view; context comes from separately inspected turn banners."
+      },
+      "board_after": {
+        "turn_number_displayed": 4,
+        "phase": "After turn 3 resolves; following-turn 4 banner visible, before that normal draw",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0181.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Koffing",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0181.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [
+              "F0181.00"
+            ],
+            "limit_reason": "No textual next label; icon type visually read. Empty current circle does not establish the prior turn Energy type."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0181.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Team Rocket’s Raticate ex",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 90,
+            "hp_max": 120,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 30,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 1,
+                "Metal": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0181.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Lechonk",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0181.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket’s Tinkatink",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0181.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Metal",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [
+              "F0181.00"
+            ],
+            "limit_reason": "No textual next label; icon type visually read. Empty current circle does not establish the prior turn Energy type."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0181.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0181.00"
+        ],
+        "game_turn_context": 3,
+        "turn_number_display_limit": null
+      },
+      "owner_hand_end": null,
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "F0120.00"
+      ],
+      "limits": [
+        "Neither opened discard pile appears; public discard tops are partial evidence only."
+      ]
+    },
+    {
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261010_020258000_iOS.MP4",
+      "timing": {
+        "start_seconds": 181,
+        "end_seconds": 220,
+        "draw_animation_end_seconds": 183.8,
+        "first_voluntary_move_seconds": 185.5,
+        "before_end_action_seconds": 206.5,
+        "end_after_resolution_seconds": 219
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0184.20"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0184.20"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0184.20"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0184.20"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "direct visible hand, left to right",
+        "evidence_ids": [
+          "F0184.20"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0184.20"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0184.20"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0184.20"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0184.20"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "direct visible hand, left to right",
+        "evidence_ids": [
+          "F0184.20"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 3,
+        "supported_range": null,
+        "count_method": "Directly counted distinct card backs in native top crop",
+        "basis": "observation",
+        "evidence_ids": [
+          "F0184.20"
+        ],
+        "limit_reason": "T4 notification obscures upper clock; three card backs remain countable below it."
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "normal turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Rare Candy",
+              "reveal_position": 1,
+              "source_video": "20261010_020258000_iOS.MP4",
+              "timestamp_seconds": 183,
+              "evidence_ids": [
+                "F0183.00"
+              ],
+              "basis": "visible reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 183,
+          "evidence_ids": [
+            "F0183.00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "automatic_stadium_draw",
+          "caused_by": "Hiking Trail",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Poké Ball",
+              "reveal_position": 1,
+              "source_video": "20261010_020258000_iOS.MP4",
+              "timestamp_seconds": 210,
+              "evidence_ids": [
+                "F0210.00"
+              ],
+              "basis": "visible reveal",
+              "limit_reason": null
+            },
+            {
+              "name": "Professor’s Research",
+              "reveal_position": 2,
+              "source_video": "20261010_020258000_iOS.MP4",
+              "timestamp_seconds": 213,
+              "evidence_ids": [
+                "F0213.00"
+              ],
+              "basis": "visible reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 1,
+          "hand_count_after": 3,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 210,
+          "evidence_ids": [
+            "F0210.00",
+            "F0213.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Rare Candy",
+          "target": "owner Active",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Rare Candy evolves Active Horsea into Kingdra ex; one Kingdra and one Rare Candy removed",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 185.5,
+          "evidence_ids": [
+            "F0185.50"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "evolution",
+          "card_name": "Team Rocket’s Weezing ex",
+          "target": "owner Bench1",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Koffing evolves into Weezing ex",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 193,
+          "evidence_ids": [
+            "F0191.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "prompt_response",
+          "card_name": null,
+          "target": "opponent Active",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Boiler Smog accepted: opposing Active becomes Poisoned and Burned",
+          "prompt_text": "Use the effect of Boiler Smog?",
+          "response": "Yes",
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 200,
+          "evidence_ids": [
+            "F0200.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "owner Active",
+          "energy": {
+            "type": "Water",
+            "count": 1,
+            "destination": "Kingdra ex",
+            "retreat_payment_by_type": null
+          },
+          "result": "One Water attached to Kingdra ex",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 203,
+          "evidence_ids": [
+            "F0203.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Ends with one Rare Candy in hand, no attack",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 206.5,
+          "evidence_ids": [
+            "F0206.50"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        "Hiking draws Poké Ball then Professor’s Research; owner ends with three cards.",
+        "Poison10 reduces Raticate90→80, Burn20 reduces80→60. Burn recovery coin Tails, Burn remains."
+      ],
+      "board_at_start": {
+        "turn_number_displayed": null,
+        "phase": "after normal draw, before first voluntary play",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0184.20"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Koffing",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0184.20"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [],
+            "limit_reason": "Current circle empty at selected post-draw frame; Water generation animation completes after it, before attachment."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0184.20"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Team Rocket’s Raticate ex",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 90,
+            "hp_max": 120,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 30,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 1,
+                "Metal": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0184.20"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Lechonk",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0184.20"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket’s Tinkatink",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0184.20"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Metal",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [
+              "F0184.20"
+            ],
+            "limit_reason": "No textual next label; icon type visually read. Empty current circle does not establish the prior turn Energy type."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0184.20"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0184.20"
+        ],
+        "game_turn_context": 4,
+        "turn_number_display_limit": "Banner not visible in selected static boundary view; context comes from separately inspected turn banners."
+      },
+      "board_after": {
+        "turn_number_displayed": 5,
+        "phase": "After turn 4 resolves; following-turn 5 banner visible, before that normal draw",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 170,
+            "hp_max": 170,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0219.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 1,
+              "hp_now": 140,
+              "hp_max": 140,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0219.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [
+              "F0219.00"
+            ],
+            "limit_reason": "No textual next label; icon type visually read. Empty current circle does not establish the prior turn Energy type."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0219.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Team Rocket’s Raticate ex",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 120,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 60,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 1,
+                "Metal": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [
+              "Poisoned",
+              "Burned"
+            ],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0219.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Lechonk",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0219.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket’s Tinkatink",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0219.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Metal",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [
+              "F0219.00"
+            ],
+            "limit_reason": "No textual next label; icon type visually read. Empty current circle does not establish the prior turn Energy type."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0219.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0219.00"
+        ],
+        "game_turn_context": 4,
+        "turn_number_display_limit": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0206.50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 1,
+        "basis": "direct visible hand, left to right",
+        "evidence_ids": [
+          "F0206.50"
+        ],
+        "status": "observed",
+        "limit_reason": null,
+        "phase": "before attack/end or, T8, before concession",
+        "after_automatic_end_draw_count": 3
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "F0184.20"
+      ],
+      "limits": [
+        "Neither opened discard pile appears; public discard tops are partial evidence only."
+      ]
+    },
+    {
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261010_020258000_iOS.MP4",
+      "timing": {
+        "start_seconds": 220,
+        "end_seconds": 255,
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": null,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": 255
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": 4,
+        "basis": "visible card-back fan after draw",
+        "evidence_ids": [
+          "F0224.00"
+        ],
+        "status": "hidden_identities",
+        "limit_reason": "Opponent cards hidden"
+      },
+      "owner_hand_start": {
+        "status": "not_applicable",
+        "cards_left_to_right": null,
+        "count": null,
+        "limit_reason": "Opponent turn; named owner hand retained in adjacent owner rows"
+      },
+      "opponent_hand_at_owner_turn_start": null,
+      "draws_and_searches": [
+        {
+          "kind": "hidden_opponent_draw",
+          "caused_by": "normal turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261010_020258000_iOS.MP4",
+              "timestamp_seconds": 221,
+              "evidence_ids": [
+                "F0219.00"
+              ],
+              "basis": "hidden card-back addition",
+              "limit_reason": "Opponent face not revealed"
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 221,
+          "evidence_ids": [
+            "F0219.00"
+          ],
+          "limit_reason": "Opponent card identities hidden"
+        },
+        {
+          "kind": "forced_replacement_draw",
+          "caused_by": "opponent Red Card",
+          "linked_play_order": 2,
+          "cards_in_reveal_order": [
+            {
+              "name": "Seadra",
+              "reveal_position": 1,
+              "source_video": "20261010_020258000_iOS.MP4",
+              "timestamp_seconds": 235,
+              "evidence_ids": [
+                "F0235.00"
+              ],
+              "basis": "visible reveal",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket’s Koffing",
+              "reveal_position": 2,
+              "source_video": "20261010_020258000_iOS.MP4",
+              "timestamp_seconds": 236,
+              "evidence_ids": [
+                "F0236.00"
+              ],
+              "basis": "visible reveal",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "reveal_position": 3,
+              "source_video": "20261010_020258000_iOS.MP4",
+              "timestamp_seconds": 238,
+              "evidence_ids": [
+                "F0238.00"
+              ],
+              "basis": "visible reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 3,
+          "returned_or_discarded_cards": [
+            "Rare Candy",
+            "Poké Ball",
+            "Professor’s Research"
+          ],
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 235,
+          "evidence_ids": [
+            "F0235.00",
+            "F0236.00",
+            "F0238.00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "hidden_opponent_draw",
+          "caused_by": "Hiking Trail end-turn replenishment",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261010_020258000_iOS.MP4",
+              "timestamp_seconds": 245,
+              "evidence_ids": [
+                "F0244.00"
+              ],
+              "basis": "hidden card-back addition",
+              "limit_reason": "Opponent face not revealed"
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 245,
+          "evidence_ids": [
+            "F0244.00"
+          ],
+          "limit_reason": "Opponent card identities hidden"
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "evolution",
+          "card_name": "Team Rocket’s Tinkatuff",
+          "target": "opponent Bench3",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Tinkatink evolves to Tinkatuff80",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 226,
+          "evidence_ids": [
+            "F0224.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Red Card",
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Owner Rare Candy, Poké Ball and Research shuffle into deck; replacement hand draws three",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 229,
+          "evidence_ids": [
+            "F0228.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "opponent Bench3",
+          "energy": {
+            "type": "Metal",
+            "count": 1,
+            "destination": "Team Rocket’s Tinkatuff",
+            "retreat_payment_by_type": null
+          },
+          "result": "One Metal to Tinkatuff",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 238,
+          "evidence_ids": [
+            "F0238.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "attack",
+          "card_name": "Team Rocket’s Raticate ex",
+          "target": "owner Active",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Boost Dash70 damages Kingdra170→100",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 241,
+          "evidence_ids": [
+            "F0242.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        "Opponent ending fan2 replenishes to3 via Hiking Trail (identity hidden).",
+        "Poison10 Raticate60→50; Burn20 50→30. Burn recovery Heads and recovered banner (253–254s), Poison remains."
+      ],
+      "board_at_start": {
+        "turn_number_displayed": null,
+        "phase": "after normal draw, before first voluntary play",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 170,
+            "hp_max": 170,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0224.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 1,
+              "hp_now": 140,
+              "hp_max": 140,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0224.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [
+              "F0224.00"
+            ],
+            "limit_reason": "No textual next label; icon type visually read. Empty current circle does not establish the prior turn Energy type."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0224.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Team Rocket’s Raticate ex",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 120,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 60,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 1,
+                "Metal": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [
+              "Poisoned",
+              "Burned"
+            ],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0224.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Lechonk",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0224.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket’s Tinkatink",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0224.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Metal",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Metal",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [
+              "F0224.00"
+            ],
+            "limit_reason": "No textual next label; icon type visually read. Empty current circle does not establish the prior turn Energy type."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0224.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0224.00"
+        ],
+        "game_turn_context": 5,
+        "turn_number_display_limit": "Banner not visible in selected static boundary view; context comes from separately inspected turn banners."
+      },
+      "board_after": {
+        "turn_number_displayed": 6,
+        "phase": "After turn 5 resolves; following-turn 6 banner visible, before that normal draw",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 100,
+            "hp_max": 170,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 70,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0254.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 1,
+              "hp_now": 140,
+              "hp_max": 140,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0254.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [
+              "F0254.00"
+            ],
+            "limit_reason": "No textual next label; icon type visually read. Empty current circle does not establish the prior turn Energy type."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0254.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Team Rocket’s Raticate ex",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 30,
+            "hp_max": 120,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 90,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 1,
+                "Metal": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [
+              "Poisoned"
+            ],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0254.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Lechonk",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0254.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket’s Tinkatuff",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 3,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Metal": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0254.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Metal",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [
+              "F0254.00"
+            ],
+            "limit_reason": "No textual next label; icon type visually read. Empty current circle does not establish the prior turn Energy type."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0254.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0254.00"
+        ],
+        "game_turn_context": 5,
+        "turn_number_display_limit": null
+      },
+      "owner_hand_end": null,
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "F0224.00"
+      ],
+      "limits": [
+        "Neither opened discard pile appears; public discard tops are partial evidence only."
+      ]
+    },
+    {
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261010_020258000_iOS.MP4",
+      "timing": {
+        "start_seconds": 255,
+        "end_seconds": 291,
+        "draw_animation_end_seconds": 256.8,
+        "first_voluntary_move_seconds": 258,
+        "before_end_action_seconds": 273,
+        "end_after_resolution_seconds": 290
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Seadra",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0256.80"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket’s Koffing",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0256.80"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0256.80"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Professor’s Research",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0256.80"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "direct visible hand, left to right",
+        "evidence_ids": [
+          "F0256.80"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Seadra",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0256.80"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket’s Koffing",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0256.80"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0256.80"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Professor’s Research",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0256.80"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "direct visible hand, left to right",
+        "evidence_ids": [
+          "F0256.80"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 3,
+        "supported_range": null,
+        "count_method": "Directly counted distinct card backs in native top crop",
+        "basis": "observation",
+        "evidence_ids": [
+          "F0256.80"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "normal turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Professor’s Research",
+              "reveal_position": 1,
+              "source_video": "20261010_020258000_iOS.MP4",
+              "timestamp_seconds": 256,
+              "evidence_ids": [
+                "F0256.00"
+              ],
+              "basis": "visible reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 256,
+          "evidence_ids": [
+            "F0256.00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "supporter_draw",
+          "caused_by": "Professor’s Research",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": "Poké Ball",
+              "reveal_position": 1,
+              "source_video": "20261010_020258000_iOS.MP4",
+              "timestamp_seconds": 261,
+              "evidence_ids": [
+                "F0261.00"
+              ],
+              "basis": "visible reveal",
+              "limit_reason": null
+            },
+            {
+              "name": "Sabrina",
+              "reveal_position": 2,
+              "source_video": "20261010_020258000_iOS.MP4",
+              "timestamp_seconds": 262.5,
+              "evidence_ids": [
+                "F0262.50"
+              ],
+              "basis": "visible reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 261,
+          "evidence_ids": [
+            "F0261.00",
+            "F0262.50"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poké Ball",
+          "linked_play_order": 2,
+          "cards_in_reveal_order": [],
+          "hand_count_before": 5,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": [
+            "Poké Ball"
+          ],
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 267,
+          "evidence_ids": [
+            "F0267.00",
+            "F0268.00"
+          ],
+          "limit_reason": "Known empty successful finds: no target message, not an unreadable result."
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Professor’s Research",
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Draws Poké Ball and Sabrina",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 258,
+          "evidence_ids": [
+            "F0258.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Poké Ball",
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "No eligible Basic remains in deck: visible no-target message at268; card discarded",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 264,
+          "evidence_ids": [
+            "F0264.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "bench",
+          "card_name": "Team Rocket’s Koffing",
+          "target": "owner Bench2",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Koffing benched center",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 269,
+          "evidence_ids": [
+            "F0269.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "owner Active",
+          "energy": {
+            "type": "Water",
+            "count": 1,
+            "destination": "Kingdra ex",
+            "retreat_payment_by_type": null
+          },
+          "result": "Water attached to Kingdra; now two Water",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 271,
+          "evidence_ids": [
+            "F0271.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "attack",
+          "card_name": "Kingdra ex",
+          "target": "opponent Active",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Stormy Prison90 knocks out Raticate30 and displays Can’t retreat",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 274,
+          "evidence_ids": [
+            "F0274.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        "Raticate ex knockout awards owner2 points (2–1).",
+        "Tinkatuff with one Metal promoted by opponent (289s); no lingering Stormy Prison restriction on replacement.",
+        "Owner hand ends at3: Seadra, Weezing ex, Sabrina. No Hiking draw."
+      ],
+      "board_at_start": {
+        "turn_number_displayed": null,
+        "phase": "after normal draw, before first voluntary play",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 100,
+            "hp_max": 170,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 70,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0256.80"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 1,
+              "hp_now": 140,
+              "hp_max": 140,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0256.80"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [],
+            "limit_reason": "Current circle empty at selected post-draw frame; Water generation animation completes after it, before attachment."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0256.80"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Team Rocket’s Raticate ex",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 30,
+            "hp_max": 120,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 90,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 1,
+                "Metal": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [
+              "Poisoned"
+            ],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0256.80"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Lechonk",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0256.80"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket’s Tinkatuff",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 3,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Metal": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0256.80"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Metal",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [
+              "F0256.80"
+            ],
+            "limit_reason": "No textual next label; icon type visually read. Empty current circle does not establish the prior turn Energy type."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0256.80"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0256.80"
+        ],
+        "game_turn_context": 6,
+        "turn_number_display_limit": "Banner not visible in selected static boundary view; context comes from separately inspected turn banners."
+      },
+      "board_after": {
+        "turn_number_displayed": 7,
+        "phase": "After turn 6 resolves; following-turn 7 banner visible, before that normal draw",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 100,
+            "hp_max": 170,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 70,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0290.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 1,
+              "hp_now": 140,
+              "hp_max": 140,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0290.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket’s Koffing",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0290.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [
+              "F0290.00"
+            ],
+            "limit_reason": "No textual next label; icon type visually read. Empty current circle does not establish the prior turn Energy type."
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0290.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Team Rocket’s Tinkatuff",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 80,
+            "hp_max": 80,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Metal": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0290.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Lechonk",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0290.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Metal",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [
+              "F0290.00"
+            ],
+            "limit_reason": "No textual next label; icon type visually read. Empty current circle does not establish the prior turn Energy type."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0290.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0290.00"
+        ],
+        "game_turn_context": 6,
+        "turn_number_display_limit": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Seadra",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0273.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0273.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Sabrina",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0273.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "direct visible hand, left to right",
+        "evidence_ids": [
+          "F0273.00"
+        ],
+        "status": "observed",
+        "limit_reason": null,
+        "phase": "before attack/end or, T8, before concession",
+        "after_automatic_end_draw_count": 3
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "F0256.80"
+      ],
+      "limits": [
+        "Neither opened discard pile appears; public discard tops are partial evidence only."
+      ]
+    },
+    {
+      "turn_number": 7,
+      "who_played": "opponent",
+      "source_video": "20261010_020258000_iOS.MP4",
+      "timing": {
+        "start_seconds": 291,
+        "end_seconds": 316,
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": null,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": 316
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": 4,
+        "basis": "visible card-back fan after draw",
+        "evidence_ids": [
+          "F0290.00"
+        ],
+        "status": "hidden_identities",
+        "limit_reason": "Opponent cards hidden"
+      },
+      "owner_hand_start": {
+        "status": "not_applicable",
+        "cards_left_to_right": null,
+        "count": null,
+        "limit_reason": "Opponent turn; named owner hand retained in adjacent owner rows"
+      },
+      "opponent_hand_at_owner_turn_start": null,
+      "draws_and_searches": [
+        {
+          "kind": "hidden_opponent_draw",
+          "caused_by": "normal turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261010_020258000_iOS.MP4",
+              "timestamp_seconds": 292,
+              "evidence_ids": [
+                "F0290.00"
+              ],
+              "basis": "hidden card-back addition",
+              "limit_reason": "Opponent face not revealed"
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 292,
+          "evidence_ids": [
+            "F0290.00"
+          ],
+          "limit_reason": "Opponent card identities hidden"
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "evolution",
+          "card_name": "Team Rocket’s Tinkaton",
+          "target": "opponent Active",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Tinkatuff evolves to Tinkaton140",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 298,
+          "evidence_ids": [
+            "F0299.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "opponent Active",
+          "energy": {
+            "type": "Metal",
+            "count": 1,
+            "destination": "Team Rocket’s Tinkaton",
+            "retreat_payment_by_type": null
+          },
+          "result": "Second Metal attached to Tinkaton",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 300,
+          "evidence_ids": [
+            "F0299.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "bench",
+          "card_name": "Team Rocket’s Rattata",
+          "target": "opponent Bench3",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Second Rattata placed right",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 303,
+          "evidence_ids": [
+            "F0299.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "card_play",
+          "card_name": "Field Blower",
+          "target": "Stadium",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Hiking Trail discarded",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 309,
+          "evidence_ids": [
+            "F0310.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Ends without attack; Tinkaton two Metal versus three-Energy printed cost",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 315,
+          "evidence_ids": [
+            "F0315.00"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [],
+      "board_at_start": {
+        "turn_number_displayed": null,
+        "phase": "after normal draw, before first voluntary play",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 100,
+            "hp_max": 170,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 70,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0290.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 1,
+              "hp_now": 140,
+              "hp_max": 140,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0290.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket’s Koffing",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0290.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [
+              "F0290.00"
+            ],
+            "limit_reason": "No textual next label; icon type visually read. Empty current circle does not establish the prior turn Energy type."
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0290.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Team Rocket’s Tinkatuff",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 80,
+            "hp_max": 80,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Metal": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0290.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Lechonk",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0290.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Metal",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [],
+            "limit_reason": "Promotion/start boundary before this-turn Energy generation; next icon Metal visible."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0290.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0290.00"
+        ],
+        "game_turn_context": 7,
+        "turn_number_display_limit": "Banner not visible in selected static boundary view; context comes from separately inspected turn banners."
+      },
+      "board_after": {
+        "turn_number_displayed": null,
+        "phase": "after resolution before following draw",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 100,
+            "hp_max": 170,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 70,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0316.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 1,
+              "hp_now": 140,
+              "hp_max": 140,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0316.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket’s Koffing",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0316.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [
+              "F0316.00"
+            ],
+            "limit_reason": "No textual next label; icon type visually read. Empty current circle does not establish the prior turn Energy type."
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0316.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Team Rocket’s Tinkaton",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 140,
+            "hp_max": 140,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Metal": 2
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0316.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Lechonk",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0316.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket’s Rattata",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 3,
+              "hp_now": 40,
+              "hp_max": 40,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0316.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Metal",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [
+              "F0316.00"
+            ],
+            "limit_reason": "No textual next label; icon type visually read. Empty current circle does not establish the prior turn Energy type."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0316.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0316.00"
+        ],
+        "game_turn_context": 7,
+        "turn_number_display_limit": "Banner not visible in selected static boundary view; context comes from separately inspected turn banners."
+      },
+      "owner_hand_end": null,
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "F0290.00"
+      ],
+      "limits": [
+        "Neither opened discard pile appears; public discard tops are partial evidence only."
+      ]
+    },
+    {
+      "turn_number": 8,
+      "who_played": "owner",
+      "source_video": "20261010_020258000_iOS.MP4",
+      "timing": {
+        "start_seconds": 316,
+        "end_seconds": 332,
+        "draw_animation_end_seconds": 318.7,
+        "first_voluntary_move_seconds": 321.7,
+        "before_end_action_seconds": 326.5,
+        "end_after_resolution_seconds": 330
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Seadra",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0319.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0319.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Sabrina",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0319.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0319.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "direct visible hand, left to right",
+        "evidence_ids": [
+          "F0319.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Seadra",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0319.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0319.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Sabrina",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0319.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0319.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "direct visible hand, left to right",
+        "evidence_ids": [
+          "F0319.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 1,
+        "supported_range": null,
+        "count_method": "Directly counted distinct card backs in native top crop",
+        "basis": "observation",
+        "evidence_ids": [
+          "F0319.00"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": "normal turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Rare Candy",
+              "reveal_position": 1,
+              "source_video": "20261010_020258000_iOS.MP4",
+              "timestamp_seconds": 318,
+              "evidence_ids": [
+                "F0318.00"
+              ],
+              "basis": "visible reveal",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 318,
+          "evidence_ids": [
+            "F0318.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Sabrina",
+          "target": "opponent Active",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Opponent prompted to choose replacement; concedes before switching",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020258000_iOS.MP4",
+          "timestamp_seconds": 321.7,
+          "evidence_ids": [
+            "F0321.70"
+          ],
+          "basis": "visible source sequence; approximate action time",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        "Opponent concession confirmed native330s (overview around328.5s); Victory340–342s. No third-point knockout or Energy attachment."
+      ],
+      "board_at_start": {
+        "turn_number_displayed": null,
+        "phase": "after normal draw, before first voluntary play",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 100,
+            "hp_max": 170,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 70,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0319.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 1,
+              "hp_now": 140,
+              "hp_max": 140,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0319.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket’s Koffing",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0319.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [
+              "F0319.00"
+            ],
+            "limit_reason": "No textual next label; icon type visually read. Empty current circle does not establish the prior turn Energy type."
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0319.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Team Rocket’s Tinkaton",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 140,
+            "hp_max": 140,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Metal": 2
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0319.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Lechonk",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0319.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket’s Rattata",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 3,
+              "hp_now": 40,
+              "hp_max": 40,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0319.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Metal",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [
+              "F0319.00"
+            ],
+            "limit_reason": "No textual next label; icon type visually read. Empty current circle does not establish the prior turn Energy type."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0319.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0319.00"
+        ],
+        "game_turn_context": 8,
+        "turn_number_display_limit": "Banner not visible in selected static boundary view; context comes from separately inspected turn banners."
+      },
+      "board_after": {
+        "turn_number_displayed": null,
+        "phase": "opponent concession before Sabrina replacement resolves",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 100,
+            "hp_max": 170,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 70,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0316.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket’s Weezing ex",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 1,
+              "hp_now": 140,
+              "hp_max": 140,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0316.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket’s Koffing",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0316.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [],
+            "limit_reason": "No textual next label; icon type visually read. Empty current circle does not establish the prior turn Energy type."
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0316.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Team Rocket’s Tinkaton",
+            "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+            "bench_position": null,
+            "hp_now": 140,
+            "hp_max": 140,
+            "hp_max_basis": "visible card HP, no HP modifiers",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Metal": 2
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0316.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Lechonk",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0316.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket’s Rattata",
+              "variant": "visible HP and attack text; exact artwork printing not independently catalog verified",
+              "bench_position": 3,
+              "hp_now": 40,
+              "hp_max": 40,
+              "hp_max_basis": "visible card HP, no HP modifiers",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0316.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Metal",
+              "count": 1,
+              "available": null
+            },
+            "basis": "displayed current circle and small next-Energy icon; inactive circle empty, future availability not yet applicable",
+            "evidence_ids": [
+              "F0316.00"
+            ],
+            "limit_reason": "No textual next label; icon type visually read. Empty current circle does not establish the prior turn Energy type."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0316.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0328.00",
+          "F0330.00"
+        ],
+        "game_turn_context": 8,
+        "turn_number_display_limit": "Banner not visible in selected static boundary view; context comes from separately inspected turn banners."
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Seadra",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0326.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket’s Weezing ex",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0326.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "direct visible hand, left to right",
+            "evidence_ids": [
+              "F0326.50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "direct visible hand, left to right",
+        "evidence_ids": [
+          "F0326.50"
+        ],
+        "status": "observed",
+        "limit_reason": null,
+        "phase": "before attack/end or, T8, before concession",
+        "after_automatic_end_draw_count": 3
+      },
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "F0319.00"
+      ],
+      "limits": [
+        "Neither opened discard pile appears; public discard tops are partial evidence only.",
+        "No End Turn or attack occurred; final clear hand at326.5s substitutes before-end view because concession terminates game mid-Sabrina resolution."
+      ]
+    }
+  ],
+  "limits": [
+    "All times are source-local approximate seek/event observations, not measured decode frame PTS.",
+    "Opponent hidden hand identities not reconstructed.",
+    "Both opened discard piles absent throughout; periodic snapshots unavailable."
+  ]
+}

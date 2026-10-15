@@ -1,0 +1,45 @@
+{
+  "verifier": "/root/verify_195808",
+  "model": "gpt-6-sol",
+  "reasoning_effort": "high",
+  "decision": "ACCEPT",
+  "source_basename": "20261009_195808000_iOS.MP4",
+  "source_sha256": "0bb422f9b945c7f3b02b39c318d408ecfa420be5eda2acd1bd9b9612536dd410",
+  "source_bytes": 443511021,
+  "source_duration_seconds": 242.227324,
+  "classification": "computer battle, AI opponent, Auto ON during play, excluded from Ladder Log and human-only Pause Games log",
+  "outcome": {
+    "owner_result": "Defeat",
+    "opponent_label": "Mega Gardevoir ex Deck (Deluxe Pack: Mega)",
+    "owner_deck_label": "New deck 16",
+    "owner_points": 1,
+    "computer_points": 3,
+    "points_path": ["0-0", "1-0", "1-1", "1-2", "1-3"]
+  },
+  "independent_checks": [
+    "Setup: AI opponent, owner second, Auto Off selection and Auto On before play",
+    "Opponent Poké Ball leads to Meloetta on Bench; owner two Poké Balls reveal Pawniard and Glimmet",
+    "Meloetta Strange Singing searches a random Pokémon from deck to hidden hand",
+    "Rare Candy evolves Ralts to Mega Gardevoir ex and later Pawniard to Kingambit",
+    "Glimmora direct 50 attack damage KOs Meloetta at 30 HP for owner point 1",
+    "Fantasia Force 110 KOs first Glimmora; first Shattering Crystal tails gives computer point 1",
+    "Fantasia Force takes three Psychic Energy from zone: Gardevoir 2 plus Diancie 0 becomes Gardevoir 3 plus Diancie 2",
+    "Owner second Glimmora damages and Poisons Gardevoir; it retreats and clears Poison",
+    "Diancie with three Psychic plus Gardevoir with three deals Brilliant Storm 160; second Shattering Crystal tails gives computer point 2",
+    "Kingambit has two Darkness Energy and hits Diancie for 140 due to two lost Glimmora",
+    "Diancie gains fourth Psychic and Brilliant Storm deals 180 to Kingambit for computer point 3",
+    "Terminal Defeat 1-3; post-result tail contains no additional gameplay"
+  ],
+  "coverage_decision": "complete source-bound first-pass review accepted after bounded independent verification",
+  "corrections_reconciled": "Direct Meloetta KO, Strange Singing search, Energy attachments and Fantasia Force allocation, whole-board Brilliant Storm count, and Kingambit bonus from owner's Knocked Out Glimmora are correctly stated in the final primary files.",
+  "unknowns": [
+    "Complete New deck 16 list",
+    "Identity of random Pokémon fetched by Strange Singing and other hidden opponent cards"
+  ],
+  "required_changes": [],
+  "primary_files_read_and_reconciled": {
+    "REVIEW.md": "20dbbe1a8eadc3542876a6872dd321b45ef02f41257ace97aa9127366a88ec6e",
+    "COVERAGE.md": "3d1e7985d99b5cadadccf858d698ffc46c2e2ea8025a2fb1bd643bbecfcf43c3",
+    "FINDINGS.json": "601b79e335bcfb3fa74dfd0c7f8bb2e99b24e009fdf6cdbcc119e86c300f40e0"
+  }
+}

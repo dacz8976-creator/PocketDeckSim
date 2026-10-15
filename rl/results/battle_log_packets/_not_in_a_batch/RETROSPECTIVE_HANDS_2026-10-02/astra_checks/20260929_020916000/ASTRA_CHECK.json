@@ -1,0 +1,331 @@
+{
+  "game_id": "20260929_020916000",
+  "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+  "reviewer": "/root/astra_entei_020916",
+  "assigned_role": "Astra consequential-ambiguity checker",
+  "completed_at_utc": "2026-10-02T23:00:36.298561+00:00",
+  "status": "narrow_check_complete_with_qualifications",
+  "independent_scope": "Only two consequential questions in frozen ASTRA_QUESTIONS.json. Independent native visual check, not a full independent acceptance or an outcome review. Different Sol full acceptance remains required.",
+  "submission_sha256": "e5dfec7f398c31f27f1c867be3804c2af13f40c2b9069514cb6b509356cf675e",
+  "frozen_packet_checks": {
+    "ASTRA_QUESTIONS.json": {
+      "sha256": "a117ab0b8df4948398036b7ecba23c96be8312c1531d9e4cf7c5a80e173f22ed",
+      "matches_submission": true
+    },
+    "TURN_LEDGER.json": {
+      "sha256": "59edbb9d9450789e574751a619acd3a64d2e4339338c87f11b83a7b549baa6cc",
+      "matches_submission": true
+    },
+    "HAND_SUPPLEMENT.json": {
+      "sha256": "5bd514107b4a139ff2c9a6182e1653b52f46bbe1340882cbaf65236f7530c487",
+      "matches_submission": true
+    },
+    "REVIEW_SUPPLEMENT.md": {
+      "sha256": "71a8c2392835924eb287d8aec886df1b9c3bc017241a19afdff354a3bb0dcc11",
+      "matches_submission": true
+    },
+    "ASSIGNMENT.json": {
+      "sha256": "d6ff206d98a68c1bb910b6856ec227c39f065535d43c3ceed86ba17deb323ff5",
+      "matches_submission": true
+    },
+    "NATIVE_FILE_MANIFEST.json": {
+      "sha256": "9f375bdb5ab44b18753a5791c0e86c94690a9bf5aeedbd992a41079f8934fb5c",
+      "matches_submission": true
+    },
+    "REVIEW_SUPPLEMENT.json": {
+      "sha256": "3a1f7e305a0ca7b021ab55409a90451ac1c7496c4255633a272cb973a002f8c1",
+      "matches_submission": true
+    }
+  },
+  "source_identity_basis": "Inherited root-verified source SHA and source-bound retained-frame manifest. No original movie read, hash, download or locator decode performed.",
+  "inspected_native_count": 16,
+  "inspected_native_paths_and_hashes": [
+    {
+      "evidence_id": "F0209.00",
+      "requested_source_seconds": 209,
+      "measured_pts_seconds": 209.0,
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0209.00.jpg",
+      "sha256": "e3f8962cea4d4a7cf554d87530b64f7fd80aa48797913b280aa831b8c9a3cb32",
+      "bytes": 443752,
+      "matches_frozen_native_manifest": true,
+      "inspection": "independent visual inspection of full native image with original detail",
+      "observation": "Active Entei 10 HP; two Lucky Ice Pop cards in the eight-card owner fan; owner Bench empty."
+    },
+    {
+      "evidence_id": "F0236.00",
+      "requested_source_seconds": 236,
+      "measured_pts_seconds": 236.01,
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0236.00.jpg",
+      "sha256": "3e5a283917928750506cad7ed2a1c1b7de6e42dc29ebbbce6058f2e79f5d66c8",
+      "bytes": 167465,
+      "matches_frozen_native_manifest": true,
+      "inspection": "independent visual inspection of full native image with original detail",
+      "observation": "Heads label and Lucky Ice Pop effect text directly readable. Text specifies heal 20 and on heads return this card to hand instead of discard."
+    },
+    {
+      "evidence_id": "F0237.00",
+      "requested_source_seconds": 237,
+      "measured_pts_seconds": 237.01,
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0237.00.jpg",
+      "sha256": "9e6eb4b4b9fb71b932ccb0b61fe2292ef3a2ae1f0133ebf9b61f9c7f04efd0a5",
+      "bytes": 479376,
+      "matches_frozen_native_manifest": true,
+      "inspection": "independent visual inspection of full native image with original detail",
+      "observation": "Active Entei 30 HP; two Lucky Ice Pops in the six-card owner fan; Poke Ball visible as discard top; backup Entei 160 HP with Giant Cape and zero attached Energy icons."
+    },
+    {
+      "evidence_id": "F0245.00",
+      "requested_source_seconds": 245,
+      "measured_pts_seconds": 245.015,
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0245.00.jpg",
+      "sha256": "a4c85b97a4db8d9413e3110d04ad66937fb5994a228fd4173d2a1239b9f518a4",
+      "bytes": 162373,
+      "matches_frozen_native_manifest": true,
+      "inspection": "independent visual inspection of full native image with original detail",
+      "observation": "Tails label and Lucky Ice Pop effect text directly readable."
+    },
+    {
+      "evidence_id": "F0246.00",
+      "requested_source_seconds": 246,
+      "measured_pts_seconds": 246.015,
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0246.00.jpg",
+      "sha256": "abbc0893202c9a8b24a4738d61a37f9fda7850c89e48cac5afe74568849b2241",
+      "bytes": 485566,
+      "matches_frozen_native_manifest": true,
+      "inspection": "independent visual inspection of full native image with original detail",
+      "observation": "Active Entei 50 HP; one Lucky Ice Pop in five-card owner fan; Lucky Ice Pop visible as discard top; backup Entei zero Energy icons."
+    },
+    {
+      "evidence_id": "F0253.00",
+      "requested_source_seconds": 253,
+      "measured_pts_seconds": 253.002,
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0253.00.jpg",
+      "sha256": "08d30eae19eab03333b162717f87f95f91c9fa49df5d8a385d393b1345faf87b",
+      "bytes": 143160,
+      "matches_frozen_native_manifest": true,
+      "inspection": "independent visual inspection of full native image with original detail",
+      "observation": "Lucky Ice Pop effect text and coin animation. Coin orientation alone is not used as the final result; no final result label at this anchor."
+    },
+    {
+      "evidence_id": "F0254.00",
+      "requested_source_seconds": 254,
+      "measured_pts_seconds": 254.002,
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0254.00.jpg",
+      "sha256": "1c567e94b547fc2bbcae8fd3d7d7f223c8c425e1dd37bdec0c1229e37cae2e46",
+      "bytes": 156947,
+      "matches_frozen_native_manifest": true,
+      "inspection": "independent visual inspection of full native image with original detail",
+      "observation": "Tails label and Lucky Ice Pop effect text directly readable. Blurred board is not used for a precise 70-HP reading."
+    },
+    {
+      "evidence_id": "F0263.00",
+      "requested_source_seconds": 263,
+      "measured_pts_seconds": 263.008,
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0263.00.jpg",
+      "sha256": "516f13c3e617322e0901d79d7123d8ede036bd147c8d938da6afbbe4da20db08",
+      "bytes": 425457,
+      "matches_frozen_native_manifest": true,
+      "inspection": "independent visual inspection of full native image with original detail",
+      "observation": "Starting Plains reveal covers central board; remaining visible fan is Copycat, Rainbow Cave, Sabrina with no Lucky Ice Pop; Lucky Ice Pop is visible discard top. Central Entei HP is occluded."
+    },
+    {
+      "evidence_id": "F0288.00",
+      "requested_source_seconds": 288,
+      "measured_pts_seconds": 288.0,
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0288.00.jpg",
+      "sha256": "f7860583854208487bfd8b2d3a79f123cfe7d4cfc7456a880a0d5cfc7992bb56",
+      "bytes": 439553,
+      "matches_frozen_native_manifest": true,
+      "inspection": "independent visual inspection of full native image with original detail",
+      "observation": "Starting Plains in play; Active Entei 90 HP and four Fire; backup Entei 180 HP with Giant Cape and zero attached Energy icons. Owner fan has Copycat, Rainbow Cave, Sabrina."
+    },
+    {
+      "evidence_id": "F0409.00",
+      "requested_source_seconds": 409,
+      "measured_pts_seconds": 409.005,
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0409.00.jpg",
+      "sha256": "5c7a00ffc3098ac1767a01b4476a96403b7884a7beff5491cd8d9a508ba78aa2",
+      "bytes": 462082,
+      "matches_frozen_native_manifest": true,
+      "inspection": "independent visual inspection of full native image with original detail",
+      "observation": "Active Moltres 30 HP with zero attached Energy icons; benched Mega Houndoom 190 HP with three Fire; Fire available in opponent Energy Zone; Copycat atop opponent discard."
+    },
+    {
+      "evidence_id": "F0411.00",
+      "requested_source_seconds": 411,
+      "measured_pts_seconds": 411.007,
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0411.00.jpg",
+      "sha256": "96176314b0193b02fcb451443974fbd4891bce9efc4dca5168d3fef4de4346c5",
+      "bytes": 465850,
+      "matches_frozen_native_manifest": true,
+      "inspection": "independent visual inspection of full native image with original detail",
+      "observation": "Active Moltres 30 HP with one Fire; Fire still available in opponent Energy Zone; Flame Patch atop opponent discard. Mega Houndoom remains benched with three Fire."
+    },
+    {
+      "evidence_id": "F0414.00",
+      "requested_source_seconds": 414,
+      "measured_pts_seconds": 414.008,
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0414.00.jpg",
+      "sha256": "0e7947d4586f69be57aa4775232c2f63ebf42c81a609d72566a5322b6b931a20",
+      "bytes": 464659,
+      "matches_frozen_native_manifest": true,
+      "inspection": "independent visual inspection of full native image with original detail",
+      "observation": "Active Moltres 30 HP with two Fire; opponent generated Energy slot empty; printed Moltres retreat cost shows two Colorless symbols. Mega Houndoom remains benched with three Fire."
+    },
+    {
+      "evidence_id": "F0415.00",
+      "requested_source_seconds": 415,
+      "measured_pts_seconds": 415.008,
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0415.00.jpg",
+      "sha256": "58b521931442ed41dc3769f63899ba6f239ec9c36785724c69267af718e65acd",
+      "bytes": 410967,
+      "matches_frozen_native_manifest": true,
+      "inspection": "independent visual inspection of full native image with original detail",
+      "observation": "Switch animation obscures display counters; Mega Houndoom has left its Bench slot. Do not read temporarily absent Energy overlays as a settled zero count."
+    },
+    {
+      "evidence_id": "F0417.00",
+      "requested_source_seconds": 417,
+      "measured_pts_seconds": 417.01,
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0417.00.jpg",
+      "sha256": "695fb56efa9b0dd6b522aa5dfe08c0d6ca05ae61310710184455dce8e14c3809",
+      "bytes": 453097,
+      "matches_frozen_native_manifest": true,
+      "inspection": "independent visual inspection of full native image with original detail",
+      "observation": "Moltres occupies left Bench and Mega Houndoom is Active during transition; normal HP and Energy overlays are not yet restored."
+    },
+    {
+      "evidence_id": "F0418.00",
+      "requested_source_seconds": 418,
+      "measured_pts_seconds": 418.01,
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0418.00.jpg",
+      "sha256": "8856c88538886b33e55935e7cd0cb851885db90d0919c4039d30cc69fb902fb7",
+      "bytes": 463077,
+      "matches_frozen_native_manifest": true,
+      "inspection": "independent visual inspection of full native image with original detail",
+      "observation": "Settled board: Moltres benched at 30 HP with zero attached Energy icons; Mega Houndoom Active at 190 HP with three Fire. Flame Patch remains discard top and four opponent card backs remain visible."
+    },
+    {
+      "evidence_id": "F0424.00",
+      "requested_source_seconds": 424,
+      "measured_pts_seconds": 424.012,
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0424.00.jpg",
+      "sha256": "2520287182d8dae362536a4b160341b0ac1f7dfc20ec463b52871144a8a80075",
+      "bytes": 437331,
+      "matches_frozen_native_manifest": true,
+      "inspection": "independent visual inspection of full native image with original detail",
+      "observation": "Moltres remains benched with zero Energy icons; Active Mega Houndoom has three Fire, Giant Cape, 210 HP and visible +20 HP banner."
+    }
+  ],
+  "questions": [
+    {
+      "question_id": "T5_lucky_ice_pop",
+      "turn_number": 5,
+      "verdict": "supported_with_provenance_qualifications",
+      "direct_observations": [
+        "Final coin labels Heads at 236.010 PTS, Tails at 245.015 PTS, Tails at 254.002 PTS.",
+        "Lucky Ice Pop fan counts 2 at 209.000, 2 at 237.010, 1 at 246.015, 0 at 263.008. These are counts of that card, not total hand size.",
+        "Active Entei HP 10 at 209.000, 30 at 237.010, 50 at 246.015, and 90 after Starting Plains at 288.000.",
+        "Lucky Ice Pop effect text states heal 20; on heads put this Lucky Ice Pop into hand instead of discard.",
+        "Discard top is Poke Ball at 237.010 and Lucky Ice Pop at 246.015 and 263.008."
+      ],
+      "supported_inferences": [
+        "Three distinct Lucky Ice Pop resolutions with Heads/Tails/Tails are supported by separated coin labels, intervening settled hand/HP states, and loss of two Pops by the final hand endpoint. This does not mean three distinct physical cards.",
+        "First use returns its card; second and third uses discard their cards. This is endpoint/text-supported transaction attribution, not independently observed touch/return/discard animation.",
+        "Healing sequence 10 to 30 to 50 to 70 is supported. In this selected native set, the third 70-HP endpoint is derived from the third heal and subsequent 90 with Starting Plains, and also inherited from the accepted review; it is not a clean direct reading."
+      ],
+      "limits": [
+        "Exact play times 228/238/247 and preview at 225 are producer locator claims; their locator images were not independently inspected in this narrow check. Coin display PTS are not play-start times.",
+        "The two identical physical copies cannot be distinguished across the return and subsequent plays.",
+        "No full discard-panel count was observed; the two discard transactions are not two separately visible stacked physical cards."
+      ],
+      "corrections_or_required_wording": [
+        "Existing HP70 basis is already locator/endpoint qualified; preserve value and qualification. No correction of that value is requested.",
+        "Keep physical-copy identity unknown and exact play times locator-qualified."
+      ],
+      "old_quote": "| Owner turn 5, ~03:24-04:57 | Owner benches a second Entei ex, equips it with Giant Cape and Fire Energy, then repeatedly uses Lucky Ice Pop on the 10-HP Active Entei. The visible HP climbs to 70; one later flip is tails. Rainbow Cave and Flame Patch are used. Owner replaces Rainbow Cave with Starting Plains, adding 20 HP to Basic Pokemon: Active Entei 70 to 90, Benched Entei 160 to 180, and damaged Active Moltres 70 to 90. Blazing Beatdown deals 120 and KOs that first Moltres ex. Owner takes 2 points. [Healed to 70](evidence/t0408_healed_70hp.jpg), [attack](evidence/t0450_first_attack.jpg), [2 points](evidence/t0456_first_points.jpg). |",
+      "old_provenance": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260929_020916000_iOS_sol\\REVIEW.md",
+        "sha256": "1155f98a5d540f800b18cf65bd5220b864bba3699f4cffb5167c618c38d5caaa",
+        "source_line": 14
+      },
+      "accepted_wording": "Turn 5 contains three Lucky Ice Pop resolutions: Heads, Tails, Tails. Native endpoints show two Pops before and after the first resolution, then one and none. Those endpoints and the displayed effect text support a return after the first use and discards after the next two. Active Entei is directly seen at 10, 30 and 50 HP; 70 before Starting Plains is a supported derived/inherited value in this selected evidence set. The identity of each identical physical copy and exact touch times remain unknown."
+    },
+    {
+      "question_id": "T8_moltres_retreat",
+      "turn_number": 8,
+      "verdict": "supported_endpoint_derived_payment_input_hidden",
+      "direct_observations": [
+        "Moltres Active with 0 Fire at 409.005, 1 Fire at 411.007, 2 Fire at 414.008, then Bench with 0 Fire at 418.010.",
+        "Printed Moltres retreat cost is two Colorless symbols at 414.008.",
+        "Opponent Energy Zone changes from available Fire at 411.007 to empty generated slot at 414.008.",
+        "Switch animation at 415.008 and transition at 417.010 place Mega Houndoom Active and Moltres on the Bench.",
+        "Mega Houndoom has three Fire before and after switching; at 418.010 its settled Active HP is 190, later 210 with Giant Cape at 424.012."
+      ],
+      "supported_inferences": [
+        "Paid retreat discarding two Fire is strongly supported by the attached-Energy loss, matching printed cost, position exchange, unchanged four-card opponent hand across settled switch endpoints, and unchanged Flame Patch discard top.",
+        "No alternative switching card or effect is visible in the inspected anchors. This bounded absence is not a proof about every hidden input or unsampled instant."
+      ],
+      "limits": [
+        "Retreat-button selection, payment selection and exact discard input are hidden.",
+        "During 415/417 transition, HP/Energy overlays temporarily disappear on multiple cards; use settled 414/418 endpoints for Energy counts.",
+        "The precise initiating touch time is not established by an animation already visible at 415.008."
+      ],
+      "corrections_or_required_wording": [
+        "Replace ledger basis phrase 'direct Fire2input414' with 'direct two-Fire pre-switch state at 414.008 PTS'; the state is direct, the input is not."
+      ],
+      "old_quote": "| Opponent turn 8, ~06:32-07:38 | Opponent plays Copycat, later moves Mega Houndoom ex back Active while the 30-HP Moltres stays Benched. The exact switching card or payment is not established. Giant Cape raises Mega Houndoom ex from 190 to 210 HP. Grim Hound Flare flips one head and deals 80, KOing the 10-HP first Entei ex. Opponent gains 2 points. [Cape board](evidence/t0704_mega_cape.jpg), [KO hit](evidence/t0732_entei_ko.jpg), [opponent points](evidence/t0740_opponent_points.jpg). |",
+      "old_provenance": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260929_020916000_iOS_sol\\REVIEW.md",
+        "sha256": "1155f98a5d540f800b18cf65bd5220b864bba3699f4cffb5167c618c38d5caaa",
+        "source_line": 17
+      },
+      "accepted_wording": "Moltres gains a first and second Fire, then moves from Active to Bench with no Fire while Mega Houndoom moves Active retaining three Fire. The settled endpoints and printed retreat cost of two support a paid retreat discarding two Fire. The retreat/payment controls are not shown."
+    }
+  ],
+  "related_energy_conflict": {
+    "old_quote_preserved": "| Owner turn 5, ~03:24-04:57 | Owner benches a second Entei ex, equips it with Giant Cape and Fire Energy, then repeatedly uses Lucky Ice Pop on the 10-HP Active Entei. The visible HP climbs to 70; one later flip is tails. Rainbow Cave and Flame Patch are used. Owner replaces Rainbow Cave with Starting Plains, adding 20 HP to Basic Pokemon: Active Entei 70 to 90, Benched Entei 160 to 180, and damaged Active Moltres 70 to 90. Blazing Beatdown deals 120 and KOs that first Moltres ex. Owner takes 2 points. [Healed to 70](evidence/t0408_healed_70hp.jpg), [attack](evidence/t0450_first_attack.jpg), [2 points](evidence/t0456_first_points.jpg). |",
+    "direct_checked_finding": "Backup Entei has zero Energy icons at 237.010, 246.015 and 288.000 PTS, conflicting with the old turn-5 Fire-attachment assertion. At 409.005 PTS it has one Fire.",
+    "limit": "Producer attribution of its first Fire to turn 7 / 381 was read but that native anchor was outside this narrow visual assignment and not inspected. Do not claim Astra independently verified that precise attachment timing or invent earlier Energy.",
+    "old_packet_action": "Preserve old quote and original packet; retain explicit supplement conflict."
+  },
+  "additional_capture_required": false,
+  "additional_capture_reason": "Retained endpoints and direct labels suffice for the qualified findings; hidden inputs and duplicate identity can remain explicit limits.",
+  "new_native_capture_count": 0,
+  "original_video_reads": 0,
+  "shared_state_edits": false,
+  "old_packet_edits": false,
+  "full_acceptance_granted": false,
+  "targeted_replacements": [
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[7].plays_in_order[3].basis",
+      "current": "derived paid retreat: direct Fire2input414 andFire0endpoint418 plus printedretreatcost2; native415–417switch animation; selection/payment touch hidden",
+      "replacement": "derived paid retreat: direct two-Fire pre-switch state at 414.008 PTS and zero-Fire benched endpoint at 418.010 PTS plus printed retreat cost 2; native switch animation at 415.008-417.010 PTS; selection/payment touch hidden"
+    },
+    {
+      "file": "REVIEW_SUPPLEMENT.json",
+      "jsonpath": "$.rows[7].plays_in_order[3].basis",
+      "current": "derived paid retreat: direct Fire2input414 andFire0endpoint418 plus printedretreatcost2; native415–417switch animation; selection/payment touch hidden",
+      "replacement": "derived paid retreat: direct two-Fire pre-switch state at 414.008 PTS and zero-Fire benched endpoint at 418.010 PTS plus printed retreat cost 2; native switch animation at 415.008-417.010 PTS; selection/payment touch hidden"
+    }
+  ],
+  "turn5_hp70_canonical_field_check": {
+    "verdict": "existing_basis_already_qualified_no_value_change_or_provenance_repair_required",
+    "fields": [
+      {
+        "file": "TURN_LEDGER.json",
+        "result_jsonpath": "$.turns[4].plays_in_order[5].result",
+        "basis_jsonpath": "$.turns[4].plays_in_order[5].basis",
+        "basis": "locator247play after onePop246; nativeTails254, next hand263has none; HP70 supported laterpreStadiumlocator and90afterStadium288"
+      },
+      {
+        "file": "REVIEW_SUPPLEMENT.json",
+        "result_jsonpath": "$.rows[4].plays_in_order[5].result",
+        "basis_jsonpath": "$.rows[4].plays_in_order[5].basis",
+        "basis": "locator247play after onePop246; nativeTails254, next hand263has none; HP70 supported laterpreStadiumlocator and90afterStadium288"
+      }
+    ],
+    "finding": "HP70 is already supported through the producer pre-Stadium locator and 90 after Stadium; it is not falsely labeled direct in these canonical play fields. Preserve value70, current qualification and inherited quote. The selected Astra native anchors do not add a new direct70 reading."
+  }
+}

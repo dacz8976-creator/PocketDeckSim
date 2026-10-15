@@ -1,0 +1,43 @@
+{
+  "video_basename": "20261012_225319000_iOS.MP4",
+  "source_sha256": "10908103247750567923e0899770318a2e53821055d7a2d464ab8d8a2b12dd70",
+  "reviewer": "/root/pause_20261012_225319000_iOS",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "review_date": "2026-10-12",
+  "game_count": 1,
+  "classification": "human_matchmaking",
+  "mode_basis": "Searching for opponent, Job profile, two live clocks; no Auto option anywhere in recorded game",
+  "specific_queue": "not explicitly displayed",
+  "opponent": "Job",
+  "owner": "Dacz8976",
+  "owner_went": "second",
+  "turn_count": 9,
+  "outcome": "owner defeat by concession",
+  "points": {
+    "owner": 0,
+    "opponent": 2
+  },
+  "damage_done": 50,
+  "battle_review_status": "full_battle_review_complete_pending_independent_acceptance",
+  "capture_status": "complete_with_recording_limits",
+  "decisive_evidence": [
+    "f0306.00",
+    "f0312.00",
+    "f0393.00",
+    "f0397.00",
+    "f0426.00",
+    "f0429.00",
+    "f0438.00"
+  ],
+  "deck_snapshot_exact_match": true,
+  "limits": [
+    "No opened discard pile views in footage.",
+    "Opponent hidden draw and search identities remain unknown; later plays do not identify prior search backs.",
+    "Opponent fan2 overlaps support3-4 atT2 and5-6 atT8.",
+    "Encoded frame PTS not measured; requested source seeks and animation-end estimates retained.",
+    "Exact semantic20-card snapshot bound by QR; artwork and rarity unverified."
+  ],
+  "external_writes_performed": false,
+  "source_moved": false
+}

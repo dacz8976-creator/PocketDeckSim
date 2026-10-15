@@ -1,0 +1,29 @@
+{
+  "source_filename": "20261014_143111000_iOS.MP4",
+  "source_sha256": "dc9cc6c586e8ffa160f3ba3eb159420d72c48104a3e58000b76e260869078517",
+  "uncertainties": [
+    {
+      "category": "hidden_information",
+      "description": "Exact full deck lists and hidden opponent draws/hand contents are unknown. Visible core only is asserted."
+    },
+    {
+      "category": "tool_identity",
+      "timestamps_seconds": [
+        298,
+        300,
+        306
+      ],
+      "description": "Opponent blue tool visibly reduces active retreat cost by one; exact printed name is unreadable. No guessed name used."
+    },
+    {
+      "category": "event_timing",
+      "description": "Attack/event times are source-local visual bounds. First main attack transition169s and named card animation170s are distinguished; global4 is reconciled from full alternation, second-player order and explicit global10 banner."
+    },
+    {
+      "category": "occlusion",
+      "description": "Phone notifications briefly obscure the upper interface around40-45s,143-153s. Consequential claims have unobscured retained frames."
+    }
+  ],
+  "unreviewed_intervals": [],
+  "consequential_unresolved_questions": []
+}

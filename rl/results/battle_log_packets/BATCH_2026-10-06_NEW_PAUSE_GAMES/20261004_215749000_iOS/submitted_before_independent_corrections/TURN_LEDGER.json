@@ -1,0 +1,4105 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261004_215749000_iOS_game1",
+  "sources": [
+    {
+      "video_basename": "20261004_215749000_iOS.MP4",
+      "sha256": "2015607dfe613e8bf71f4637d5d26ed625d8a451b0541b93b3a82bf0457126af",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "turns": [
+    {
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261004_215749000_iOS.MP4",
+      "timing": {
+        "start_seconds": 52,
+        "end_seconds": 75,
+        "draw_animation_end_seconds": 55,
+        "first_voluntary_move_seconds": 56,
+        "before_end_action_seconds": 72,
+        "end_after_resolution_seconds": 75
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Combusken",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0055.00"
+            ]
+          },
+          {
+            "position": 2,
+            "name": "Copycat",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0055.00"
+            ]
+          },
+          {
+            "position": 3,
+            "name": "Flame Patch",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0055.00"
+            ]
+          },
+          {
+            "position": 4,
+            "name": "Rocky Helmet",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0055.00"
+            ]
+          },
+          {
+            "position": 5,
+            "name": "Poké Ball",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0055.00"
+            ]
+          }
+        ],
+        "count": 5,
+        "basis": "Directly visible left-to-right hand",
+        "evidence_ids": [
+          "f0055.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Combusken",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0055.00"
+            ]
+          },
+          {
+            "position": 2,
+            "name": "Copycat",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0055.00"
+            ]
+          },
+          {
+            "position": 3,
+            "name": "Flame Patch",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0055.00"
+            ]
+          },
+          {
+            "position": 4,
+            "name": "Rocky Helmet",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0055.00"
+            ]
+          },
+          {
+            "position": 5,
+            "name": "Poké Ball",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0055.00"
+            ]
+          }
+        ],
+        "count": 5,
+        "basis": "Direct visible hand after normal draw",
+        "evidence_ids": [
+          "f0055.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 3,
+        "supported_range": null,
+        "count_method": "Count exposed left edges and card backs in native top crop",
+        "basis": "observation",
+        "evidence_ids": [
+          "f0055.00"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Poké Ball",
+              "reveal_position": 1,
+              "source_video": "20261004_215749000_iOS.MP4",
+              "timestamp_seconds": 54,
+              "evidence_ids": [
+                "f0054.00"
+              ],
+              "basis": "observation",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 54,
+          "evidence_ids": [
+            "f0054.00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poké Ball",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": "Castform Sunny Form",
+              "reveal_position": 1,
+              "source_video": "20261004_215749000_iOS.MP4",
+              "timestamp_seconds": 60,
+              "evidence_ids": [
+                "f0060.00"
+              ],
+              "basis": "observation",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 60,
+          "evidence_ids": [
+            "f0060.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "Item",
+          "card_name": "Poké Ball",
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Search reveals Castform Sunny Form; owner hand returns to five after the search.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 5,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 56,
+          "evidence_ids": [
+            "f0056.00"
+          ],
+          "basis": "observation",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "bench Basic",
+          "card_name": "Castform Sunny Form",
+          "target": "owner Bench 3",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": "owner Bench 3",
+            "retreat_payment_by_type": null
+          },
+          "result": "Placed in rightmost Bench slot (3).",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 4,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 62,
+          "evidence_ids": [
+            "f0062.00"
+          ],
+          "basis": "observation",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "Tool",
+          "card_name": "Rocky Helmet",
+          "target": "owner Active Torchic",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": "owner Active Torchic",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attached to Active Torchic.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 3,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 66,
+          "evidence_ids": [
+            "f0066.00"
+          ],
+          "basis": "observation",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "end turn",
+          "card_name": null,
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Ends without using Copycat; no first-turn Energy attachment.",
+          "prompt_text": "End your turn? A Supporter card can be used",
+          "response": "OK accepted; warning was visibly dismissed to end turn",
+          "nested_events_in_order": [],
+          "hand_count_after": 3,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 74,
+          "evidence_ids": [
+            "f0074.00"
+          ],
+          "basis": "observation",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [],
+      "board_at_start": {
+        "turn_number_displayed": 1,
+        "phase": "stable board boundary",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Torchic",
+            "variant": "Peck 20, 60 HP; QR entity consistent with B1 033",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0055.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+          },
+          "bench_in_position_order": [
+            null,
+            null,
+            null
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Fire",
+              "count": 1,
+              "available": null
+            },
+            "basis": "Visible large current Energy orb or empty current slot, plus smaller next Energy icon",
+            "evidence_ids": [
+              "f0055.00"
+            ],
+            "limit_reason": "The smaller next icon establishes type, not an additional currently spendable Energy."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0055.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tinkatink",
+            "variant": "Corkscrew Punch 20",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0055.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+          },
+          "bench_in_position_order": [
+            null,
+            null,
+            {
+              "name": "Rookidee",
+              "variant": "Pluck 10, 60 HP",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0055.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Metal",
+              "count": 1,
+              "available": null
+            },
+            "basis": "Visible large current Energy orb or empty current slot, plus smaller next Energy icon",
+            "evidence_ids": [
+              "f0055.00"
+            ],
+            "limit_reason": "The smaller next icon establishes type, not an additional currently spendable Energy."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0055.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "f0055.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 1,
+        "phase": "Resolved owner turn1 board, before opponent actions",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Torchic",
+            "variant": "Peck 20, 60 HP; QR entity consistent with B1 033",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Rocky Helmet",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0074.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+          },
+          "bench_in_position_order": [
+            null,
+            null,
+            {
+              "name": "Castform Sunny Form",
+              "variant": "Sunny Scorching 30, 70 HP; B3 024 semantic QR entity",
+              "bench_position": 3,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0074.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Fire",
+              "count": 1,
+              "available": null
+            },
+            "basis": "Visible large current Energy orb or empty current slot, plus smaller next Energy icon",
+            "evidence_ids": [
+              "f0074.00"
+            ],
+            "limit_reason": "The smaller next icon establishes type, not an additional currently spendable Energy."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0074.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tinkatink",
+            "variant": "Corkscrew Punch 20",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0074.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+          },
+          "bench_in_position_order": [
+            null,
+            null,
+            {
+              "name": "Rookidee",
+              "variant": "Pluck 10, 60 HP",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0074.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Metal",
+              "count": 1,
+              "available": null
+            },
+            "basis": "Visible large current Energy orb or empty current slot, plus smaller next Energy icon",
+            "evidence_ids": [
+              "f0074.00"
+            ],
+            "limit_reason": "The smaller next icon establishes type, not an additional currently spendable Energy."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0074.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "f0080.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Combusken",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0074.00"
+            ]
+          },
+          {
+            "position": 2,
+            "name": "Copycat",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0074.00"
+            ]
+          },
+          {
+            "position": 3,
+            "name": "Flame Patch",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0074.00"
+            ]
+          }
+        ],
+        "count": 3,
+        "basis": "Directly visible left-to-right hand",
+        "evidence_ids": [
+          "f0074.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [
+        "not_shown_owner_1",
+        "not_shown_opponent_1"
+      ],
+      "turn_evidence_ids": [
+        "f0055.00",
+        "f0074.00",
+        "f0072.00",
+        "f0056.00",
+        "f0062.00",
+        "f0066.00",
+        "f0054.00",
+        "f0060.00"
+      ],
+      "limits": [
+        "No opened discard-pile view occurs anywhere in the supplied source. Public play history is not a full discard snapshot.",
+        "Opponent identities behind card backs remain unknown.",
+        "Approximate draw-animation ends and action onset times are bounded to the retained frames, generally within about one second.",
+        "No hidden choices or actions are inferred from deck membership."
+      ]
+    },
+    {
+      "turn_number": 2,
+      "who_played": "opponent",
+      "source_video": "20261004_215749000_iOS.MP4",
+      "timing": {
+        "start_seconds": 75,
+        "end_seconds": 103,
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 81,
+        "before_end_action_seconds": 98,
+        "end_after_resolution_seconds": 103
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "Directly visible left-to-right hand",
+        "evidence_ids": [
+          "f0080.00"
+        ],
+        "status": "hidden_opponent_hand",
+        "limit_reason": "Opponent card faces remain hidden."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Combusken",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0080.00"
+            ]
+          },
+          {
+            "position": 2,
+            "name": "Copycat",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0080.00"
+            ]
+          },
+          {
+            "position": 3,
+            "name": "Flame Patch",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0080.00"
+            ]
+          }
+        ],
+        "count": 3,
+        "basis": "Owner visible hand at this opponent boundary",
+        "evidence_ids": [
+          "f0080.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "count_method": "Count exposed left edges and card backs in native top crop",
+        "basis": "Not applicable to opponent turn",
+        "evidence_ids": [],
+        "limit_reason": "Required fan count applies at owner-turn start."
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261004_215749000_iOS.MP4",
+              "timestamp_seconds": 80,
+              "evidence_ids": [
+                "f0080.00"
+              ],
+              "basis": "hidden card back",
+              "limit_reason": "Opponent card face not revealed."
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 80,
+          "evidence_ids": [
+            "f0080.00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "forced replacement",
+          "caused_by": "opponent Red Card",
+          "linked_play_order": 2,
+          "cards_in_reveal_order": [
+            {
+              "name": "Flame Patch",
+              "reveal_position": 1,
+              "source_video": "20261004_215749000_iOS.MP4",
+              "timestamp_seconds": 91,
+              "evidence_ids": [
+                "f0091.00"
+              ],
+              "basis": "observation",
+              "limit_reason": null
+            },
+            {
+              "name": "Professor's Research",
+              "reveal_position": 2,
+              "source_video": "20261004_215749000_iOS.MP4",
+              "timestamp_seconds": 93,
+              "evidence_ids": [
+                "f0092.00",
+                "f0093.00"
+              ],
+              "basis": "Visible ordinary-art Research already joining hand behind the next full-art Research reveal; retained93s contains both.",
+              "limit_reason": null
+            },
+            {
+              "name": "Professor's Research",
+              "reveal_position": 3,
+              "source_video": "20261004_215749000_iOS.MP4",
+              "timestamp_seconds": 93,
+              "evidence_ids": [
+                "f0093.00",
+                "f0094.00"
+              ],
+              "basis": "Visible full-art Research reveal follows the ordinary-art Research.",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 3,
+          "returned_or_discarded_cards": [
+            {
+              "name": "Combusken",
+              "destination": "shuffled into owner deck",
+              "basis": "owner hand visible before Red Card"
+            },
+            {
+              "name": "Copycat",
+              "destination": "shuffled into owner deck",
+              "basis": "owner hand visible before Red Card"
+            },
+            {
+              "name": "Flame Patch",
+              "destination": "shuffled into owner deck",
+              "basis": "owner hand visible before Red Card"
+            }
+          ],
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 91,
+          "evidence_ids": [
+            "f0091.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "Energy attachment",
+          "card_name": null,
+          "target": "opponent Active Tinkatink",
+          "energy": {
+            "type": "Metal",
+            "count": 1,
+            "destination": "opponent Active Tinkatink",
+            "retreat_payment_by_type": null
+          },
+          "result": "Tinkatink receives one Metal Energy.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 82,
+          "evidence_ids": [
+            "f0082.00"
+          ],
+          "basis": "observation",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "Item",
+          "card_name": "Red Card",
+          "target": "owner hand",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": "owner hand",
+            "retreat_payment_by_type": null
+          },
+          "result": "Owner shuffles the three-card hand into the deck and receives three new cards.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 89,
+          "evidence_ids": [
+            "f0089.00"
+          ],
+          "basis": "observation",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "attack",
+          "card_name": "Tinkatink: Corkscrew Punch",
+          "target": "owner Active Torchic",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": "owner Active Torchic",
+            "retreat_payment_by_type": null
+          },
+          "result": "20 damage to Torchic: 60 to 40. Rocky Helmet returns 20 damage: Tinkatink 60 to 40.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 99,
+          "evidence_ids": [
+            "f0099.00"
+          ],
+          "basis": "observation",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "order": 1,
+          "name": "Rocky Helmet retaliation",
+          "timestamp_seconds": 101,
+          "result": "20 damage to attacking Tinkatink",
+          "evidence_ids": [
+            "f0101.00"
+          ]
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 2,
+        "phase": "stable board boundary",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Torchic",
+            "variant": "Peck 20, 60 HP; QR entity consistent with B1 033",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Rocky Helmet",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0080.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+          },
+          "bench_in_position_order": [
+            null,
+            null,
+            {
+              "name": "Castform Sunny Form",
+              "variant": "Sunny Scorching 30, 70 HP; B3 024 semantic QR entity",
+              "bench_position": 3,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0080.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Fire",
+              "count": 1,
+              "available": null
+            },
+            "basis": "Visible large current Energy orb or empty current slot, plus smaller next Energy icon",
+            "evidence_ids": [
+              "f0080.00"
+            ],
+            "limit_reason": "The smaller next icon establishes type, not an additional currently spendable Energy."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0080.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tinkatink",
+            "variant": "Corkscrew Punch 20",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0080.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+          },
+          "bench_in_position_order": [
+            null,
+            null,
+            {
+              "name": "Rookidee",
+              "variant": "Pluck 10, 60 HP",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0080.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Metal",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Metal",
+              "count": 1,
+              "available": null
+            },
+            "basis": "Visible large current Energy orb or empty current slot, plus smaller next Energy icon",
+            "evidence_ids": [
+              "f0080.00"
+            ],
+            "limit_reason": "The smaller next icon establishes type, not an additional currently spendable Energy."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0080.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "f0080.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 2,
+        "phase": "stable board boundary",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Torchic",
+            "variant": "Peck 20, 60 HP; QR entity consistent with B1 033",
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 60,
+            "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+            "damage": 20,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Rocky Helmet",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0104.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+          },
+          "bench_in_position_order": [
+            null,
+            null,
+            {
+              "name": "Castform Sunny Form",
+              "variant": "Sunny Scorching 30, 70 HP; B3 024 semantic QR entity",
+              "bench_position": 3,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0104.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Fire",
+              "count": 1,
+              "available": null
+            },
+            "basis": "Visible large current Energy orb or empty current slot, plus smaller next Energy icon",
+            "evidence_ids": [
+              "f0104.00"
+            ],
+            "limit_reason": "The smaller next icon establishes type, not an additional currently spendable Energy."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0104.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tinkatink",
+            "variant": "Corkscrew Punch 20, 60 HP",
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 60,
+            "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+            "damage": 20,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Metal": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0104.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+          },
+          "bench_in_position_order": [
+            null,
+            null,
+            {
+              "name": "Rookidee",
+              "variant": "Pluck 10, 60 HP",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0104.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Metal",
+              "count": 1,
+              "available": null
+            },
+            "basis": "Visible large current Energy orb or empty current slot, plus smaller next Energy icon",
+            "evidence_ids": [
+              "f0104.00"
+            ],
+            "limit_reason": "The smaller next icon establishes type, not an additional currently spendable Energy."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0104.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "f0104.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Flame Patch",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0104.00"
+            ]
+          },
+          {
+            "position": 2,
+            "name": "Professor's Research",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0104.00"
+            ]
+          },
+          {
+            "position": 3,
+            "name": "Professor's Research",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0104.00"
+            ]
+          }
+        ],
+        "count": 3,
+        "basis": "Directly visible left-to-right hand",
+        "evidence_ids": [
+          "f0104.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [
+        "not_shown_owner_2",
+        "not_shown_opponent_2"
+      ],
+      "turn_evidence_ids": [
+        "f0080.00",
+        "f0104.00",
+        "f0098.00",
+        "f0082.00",
+        "f0089.00",
+        "f0099.00",
+        "f0091.00"
+      ],
+      "limits": [
+        "No opened discard-pile view occurs anywhere in the supplied source. Public play history is not a full discard snapshot.",
+        "Opponent identities behind card backs remain unknown.",
+        "Approximate draw-animation ends and action onset times are bounded to the retained frames, generally within about one second.",
+        "No hidden choices or actions are inferred from deck membership."
+      ]
+    },
+    {
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261004_215749000_iOS.MP4",
+      "timing": {
+        "start_seconds": 103,
+        "end_seconds": 133,
+        "draw_animation_end_seconds": 106,
+        "first_voluntary_move_seconds": 107,
+        "before_end_action_seconds": 130,
+        "end_after_resolution_seconds": 133
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Flame Patch",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0106.00"
+            ]
+          },
+          {
+            "position": 2,
+            "name": "Professor's Research",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0106.00"
+            ]
+          },
+          {
+            "position": 3,
+            "name": "Professor's Research",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0106.00"
+            ]
+          },
+          {
+            "position": 4,
+            "name": "Combusken",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0106.00"
+            ]
+          }
+        ],
+        "count": 4,
+        "basis": "Directly visible left-to-right hand",
+        "evidence_ids": [
+          "f0106.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Flame Patch",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0106.00"
+            ]
+          },
+          {
+            "position": 2,
+            "name": "Professor's Research",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0106.00"
+            ]
+          },
+          {
+            "position": 3,
+            "name": "Professor's Research",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0106.00"
+            ]
+          },
+          {
+            "position": 4,
+            "name": "Combusken",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0106.00"
+            ]
+          }
+        ],
+        "count": 4,
+        "basis": "Direct visible hand after normal draw",
+        "evidence_ids": [
+          "f0106.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 3,
+        "supported_range": null,
+        "count_method": "Count exposed left edges and card backs in native top crop",
+        "basis": "observation",
+        "evidence_ids": [
+          "f0106.00"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Combusken",
+              "reveal_position": 1,
+              "source_video": "20261004_215749000_iOS.MP4",
+              "timestamp_seconds": 105,
+              "evidence_ids": [
+                "f0105.00"
+              ],
+              "basis": "observation",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 105,
+          "evidence_ids": [
+            "f0105.00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "Supporter draw",
+          "caused_by": "Professor's Research",
+          "linked_play_order": 2,
+          "cards_in_reveal_order": [
+            {
+              "name": "Torchic",
+              "reveal_position": 1,
+              "source_video": "20261004_215749000_iOS.MP4",
+              "timestamp_seconds": 118,
+              "evidence_ids": [
+                "f0118.00"
+              ],
+              "basis": "observation",
+              "limit_reason": null
+            },
+            {
+              "name": "Field Blower",
+              "reveal_position": 2,
+              "source_video": "20261004_215749000_iOS.MP4",
+              "timestamp_seconds": 120,
+              "evidence_ids": [
+                "f0120.00"
+              ],
+              "basis": "observation",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 2,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 118,
+          "evidence_ids": [
+            "f0118.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "evolution",
+          "card_name": "Combusken",
+          "target": "owner Active Torchic",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": "owner Active Torchic",
+            "retreat_payment_by_type": null
+          },
+          "result": "Evolves damaged Torchic; retains 20 damage and Rocky Helmet. HP changes 40/60 to 60/80.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 107,
+          "evidence_ids": [
+            "f0107.00"
+          ],
+          "basis": "observation",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "Supporter",
+          "card_name": "Professor's Research",
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Draws Torchic then Field Blower.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 114,
+          "evidence_ids": [
+            "f0114.00"
+          ],
+          "basis": "observation",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "bench Basic",
+          "card_name": "Torchic",
+          "target": "owner Bench 2",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": "owner Bench 2",
+            "retreat_payment_by_type": null
+          },
+          "result": "Placed in center Bench slot (2).",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 125,
+          "evidence_ids": [
+            "f0125.00"
+          ],
+          "basis": "observation",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "Energy attachment",
+          "card_name": null,
+          "target": "owner Active Combusken",
+          "energy": {
+            "type": "Fire",
+            "count": 1,
+            "destination": "owner Active Combusken",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attaches this turn’s Fire to Active Combusken.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 129,
+          "evidence_ids": [
+            "f0129.00"
+          ],
+          "basis": "observation",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "end turn",
+          "card_name": null,
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Ends with no attack; Combusken has only one of the two Energy required by High Jump Kick.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 132,
+          "evidence_ids": [
+            "f0132.00"
+          ],
+          "basis": "observation",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [],
+      "board_at_start": {
+        "turn_number_displayed": 3,
+        "phase": "stable board boundary",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Torchic",
+            "variant": "Peck 20, 60 HP; QR entity consistent with B1 033",
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 60,
+            "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+            "damage": 20,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Rocky Helmet",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0106.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+          },
+          "bench_in_position_order": [
+            null,
+            null,
+            {
+              "name": "Castform Sunny Form",
+              "variant": "Sunny Scorching 30, 70 HP; B3 024 semantic QR entity",
+              "bench_position": 3,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0106.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Fire",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Fire",
+              "count": 1,
+              "available": null
+            },
+            "basis": "Visible large current Energy orb or empty current slot, plus smaller next Energy icon",
+            "evidence_ids": [
+              "f0106.00"
+            ],
+            "limit_reason": "The smaller next icon establishes type, not an additional currently spendable Energy."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0106.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tinkatink",
+            "variant": "Corkscrew Punch 20, 60 HP",
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 60,
+            "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+            "damage": 20,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Metal": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0106.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+          },
+          "bench_in_position_order": [
+            null,
+            null,
+            {
+              "name": "Rookidee",
+              "variant": "Pluck 10, 60 HP",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0106.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Metal",
+              "count": 1,
+              "available": null
+            },
+            "basis": "Visible large current Energy orb or empty current slot, plus smaller next Energy icon",
+            "evidence_ids": [
+              "f0106.00"
+            ],
+            "limit_reason": "The smaller next icon establishes type, not an additional currently spendable Energy."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0106.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "f0106.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 3,
+        "phase": "Owner turn3 resolved board; no attack or end effect changes it",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Combusken",
+            "variant": "High Jump Kick 50, 80 HP; B1 034 semantic QR entity",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 80,
+            "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+            "damage": 20,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Fire": 1
+              }
+            },
+            "tool": "Rocky Helmet",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0131.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+          },
+          "bench_in_position_order": [
+            null,
+            {
+              "name": "Torchic",
+              "variant": "Peck 20, 60 HP; QR entity consistent with B1 033",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0131.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            },
+            {
+              "name": "Castform Sunny Form",
+              "variant": "Sunny Scorching 30, 70 HP; B3 024 semantic QR entity",
+              "bench_position": 3,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0131.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Fire",
+              "count": 1,
+              "available": null
+            },
+            "basis": "Visible large current Energy orb or empty current slot, plus smaller next Energy icon",
+            "evidence_ids": [
+              "f0131.00"
+            ],
+            "limit_reason": "The smaller next icon establishes type, not an additional currently spendable Energy."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0131.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tinkatink",
+            "variant": "Corkscrew Punch 20, 60 HP",
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 60,
+            "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+            "damage": 20,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Metal": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0131.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+          },
+          "bench_in_position_order": [
+            null,
+            null,
+            {
+              "name": "Rookidee",
+              "variant": "Pluck 10, 60 HP",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0131.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Metal",
+              "count": 1,
+              "available": null
+            },
+            "basis": "Visible large current Energy orb or empty current slot, plus smaller next Energy icon",
+            "evidence_ids": [
+              "f0131.00"
+            ],
+            "limit_reason": "The smaller next icon establishes type, not an additional currently spendable Energy."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0131.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "f0131.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Flame Patch",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0131.00"
+            ]
+          },
+          {
+            "position": 2,
+            "name": "Professor's Research",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0131.00"
+            ]
+          },
+          {
+            "position": 3,
+            "name": "Field Blower",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0131.00"
+            ]
+          }
+        ],
+        "count": 3,
+        "basis": "Directly visible left-to-right hand",
+        "evidence_ids": [
+          "f0131.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [
+        "not_shown_owner_3",
+        "not_shown_opponent_3"
+      ],
+      "turn_evidence_ids": [
+        "f0106.00",
+        "f0131.00",
+        "f0130.00",
+        "f0107.00",
+        "f0114.00",
+        "f0125.00",
+        "f0129.00",
+        "f0132.00",
+        "f0105.00",
+        "f0118.00"
+      ],
+      "limits": [
+        "No opened discard-pile view occurs anywhere in the supplied source. Public play history is not a full discard snapshot.",
+        "Opponent identities behind card backs remain unknown.",
+        "Approximate draw-animation ends and action onset times are bounded to the retained frames, generally within about one second.",
+        "No hidden choices or actions are inferred from deck membership."
+      ]
+    },
+    {
+      "turn_number": 4,
+      "who_played": "opponent",
+      "source_video": "20261004_215749000_iOS.MP4",
+      "timing": {
+        "start_seconds": 133,
+        "end_seconds": 165,
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 140,
+        "before_end_action_seconds": 157,
+        "end_after_resolution_seconds": 165
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "Directly visible left-to-right hand",
+        "evidence_ids": [
+          "f0133.00"
+        ],
+        "status": "hidden_opponent_hand",
+        "limit_reason": "Opponent card faces remain hidden."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Flame Patch",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0133.00"
+            ]
+          },
+          {
+            "position": 2,
+            "name": "Professor's Research",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0133.00"
+            ]
+          },
+          {
+            "position": 3,
+            "name": "Field Blower",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0133.00"
+            ]
+          }
+        ],
+        "count": 3,
+        "basis": "Owner visible hand at this opponent boundary",
+        "evidence_ids": [
+          "f0133.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "count_method": "Count exposed left edges and card backs in native top crop",
+        "basis": "Not applicable to opponent turn",
+        "evidence_ids": [],
+        "limit_reason": "Required fan count applies at owner-turn start."
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261004_215749000_iOS.MP4",
+              "timestamp_seconds": 134,
+              "evidence_ids": [
+                "f0134.00"
+              ],
+              "basis": "hidden card back",
+              "limit_reason": "Opponent card face not revealed."
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 134,
+          "evidence_ids": [
+            "f0134.00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "Supporter draw",
+          "caused_by": "Professor's Research",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261004_215749000_iOS.MP4",
+              "timestamp_seconds": 142,
+              "evidence_ids": [
+                "f0142.00"
+              ],
+              "basis": "hidden card back",
+              "limit_reason": "Opponent card face not revealed."
+            },
+            {
+              "name": null,
+              "reveal_position": 2,
+              "source_video": "20261004_215749000_iOS.MP4",
+              "timestamp_seconds": 143,
+              "evidence_ids": [
+                "f0143.00"
+              ],
+              "basis": "hidden card back",
+              "limit_reason": "Opponent card face not revealed."
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 142,
+          "evidence_ids": [
+            "f0142.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "Supporter",
+          "card_name": "Professor's Research",
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Draws two hidden cards.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 142,
+          "evidence_ids": [
+            "f0142.00"
+          ],
+          "basis": "observation",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "bench Basic",
+          "card_name": "Meltan",
+          "target": "opponent Bench 2",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": "opponent Bench 2",
+            "retreat_payment_by_type": null
+          },
+          "result": "Placed in center Bench slot (2).",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 144,
+          "evidence_ids": [
+            "f0144.00"
+          ],
+          "basis": "observation",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "Item",
+          "card_name": "Potion",
+          "target": "opponent Active Tinkatink",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": "opponent Active Tinkatink",
+            "retreat_payment_by_type": null
+          },
+          "result": "Heals Tinkatink by 20: 40 to 60.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 152,
+          "evidence_ids": [
+            "f0150.00",
+            "f0152.00",
+            "f0154.00"
+          ],
+          "basis": "observation",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "Energy attachment",
+          "card_name": null,
+          "target": "opponent Bench 2 Meltan",
+          "energy": {
+            "type": "Metal",
+            "count": 1,
+            "destination": "opponent Bench 2 Meltan",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attaches one Metal to benched Meltan.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 156,
+          "evidence_ids": [
+            "f0155.00",
+            "f0156.00",
+            "f0157.00"
+          ],
+          "basis": "observation",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "attack",
+          "card_name": "Tinkatink: Corkscrew Punch",
+          "target": "owner Active Combusken",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": "owner Active Combusken",
+            "retreat_payment_by_type": null
+          },
+          "result": "20 damage to Combusken: 60 to 40. Rocky Helmet returns 20 damage to Tinkatink: 60 to 40.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 161,
+          "evidence_ids": [
+            "f0161.00"
+          ],
+          "basis": "observation",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "order": 1,
+          "name": "Rocky Helmet retaliation",
+          "timestamp_seconds": 163,
+          "result": "Tinkatink returns to 40/60 HP",
+          "evidence_ids": [
+            "f0163.00"
+          ]
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 4,
+        "phase": "stable board boundary",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Combusken",
+            "variant": "High Jump Kick 50, 80 HP; B1 034 semantic QR entity",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 80,
+            "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+            "damage": 20,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Fire": 1
+              }
+            },
+            "tool": "Rocky Helmet",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0133.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+          },
+          "bench_in_position_order": [
+            null,
+            {
+              "name": "Torchic",
+              "variant": "Peck 20, 60 HP; QR entity consistent with B1 033",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0133.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            },
+            {
+              "name": "Castform Sunny Form",
+              "variant": "Sunny Scorching 30, 70 HP; B3 024 semantic QR entity",
+              "bench_position": 3,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0133.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Fire",
+              "count": 1,
+              "available": null
+            },
+            "basis": "Visible large current Energy orb or empty current slot, plus smaller next Energy icon",
+            "evidence_ids": [
+              "f0133.00"
+            ],
+            "limit_reason": "The smaller next icon establishes type, not an additional currently spendable Energy."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0133.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tinkatink",
+            "variant": "Corkscrew Punch 20, 60 HP",
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 60,
+            "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+            "damage": 20,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Metal": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0133.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+          },
+          "bench_in_position_order": [
+            null,
+            null,
+            {
+              "name": "Rookidee",
+              "variant": "Pluck 10, 60 HP",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0133.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Metal",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Metal",
+              "count": 1,
+              "available": null
+            },
+            "basis": "Visible large current Energy orb or empty current slot, plus smaller next Energy icon",
+            "evidence_ids": [
+              "f0133.00"
+            ],
+            "limit_reason": "The smaller next icon establishes type, not an additional currently spendable Energy."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0133.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "f0133.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 4,
+        "phase": "stable board boundary",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Combusken",
+            "variant": "High Jump Kick 50, 80 HP; B1 034 semantic QR entity",
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 80,
+            "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+            "damage": 40,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Fire": 1
+              }
+            },
+            "tool": "Rocky Helmet",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0163.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+          },
+          "bench_in_position_order": [
+            null,
+            {
+              "name": "Torchic",
+              "variant": "Peck 20, 60 HP; QR entity consistent with B1 033",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0163.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            },
+            {
+              "name": "Castform Sunny Form",
+              "variant": "Sunny Scorching 30, 70 HP; B3 024 semantic QR entity",
+              "bench_position": 3,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0163.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Fire",
+              "count": 1,
+              "available": null
+            },
+            "basis": "Visible large current Energy orb or empty current slot, plus smaller next Energy icon",
+            "evidence_ids": [
+              "f0163.00"
+            ],
+            "limit_reason": "The smaller next icon establishes type, not an additional currently spendable Energy."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0163.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tinkatink",
+            "variant": "Corkscrew Punch 20, 60 HP",
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 60,
+            "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+            "damage": 20,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Metal": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0163.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+          },
+          "bench_in_position_order": [
+            null,
+            {
+              "name": "Meltan",
+              "variant": "Amass, 60 HP",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Metal": 1
+                }
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0163.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            },
+            {
+              "name": "Rookidee",
+              "variant": "Pluck 10, 60 HP",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0163.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Metal",
+              "count": 1,
+              "available": null
+            },
+            "basis": "Visible large current Energy orb or empty current slot, plus smaller next Energy icon",
+            "evidence_ids": [
+              "f0163.00"
+            ],
+            "limit_reason": "The smaller next icon establishes type, not an additional currently spendable Energy."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0163.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "f0163.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Flame Patch",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0163.00"
+            ]
+          },
+          {
+            "position": 2,
+            "name": "Professor's Research",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0163.00"
+            ]
+          },
+          {
+            "position": 3,
+            "name": "Field Blower",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0163.00"
+            ]
+          }
+        ],
+        "count": 3,
+        "basis": "Directly visible left-to-right hand",
+        "evidence_ids": [
+          "f0163.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [
+        "not_shown_owner_4",
+        "not_shown_opponent_4"
+      ],
+      "turn_evidence_ids": [
+        "f0133.00",
+        "f0163.00",
+        "f0157.00",
+        "f0142.00",
+        "f0144.00",
+        "f0149.00",
+        "f0154.00",
+        "f0161.00",
+        "f0134.00",
+        "f0150.00",
+        "f0152.00",
+        "f0154.00",
+        "f0155.00",
+        "f0156.00",
+        "f0157.00"
+      ],
+      "limits": [
+        "No opened discard-pile view occurs anywhere in the supplied source. Public play history is not a full discard snapshot.",
+        "Opponent identities behind card backs remain unknown.",
+        "Approximate draw-animation ends and action onset times are bounded to the retained frames, generally within about one second.",
+        "No hidden choices or actions are inferred from deck membership."
+      ]
+    },
+    {
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261004_215749000_iOS.MP4",
+      "timing": {
+        "start_seconds": 165,
+        "end_seconds": 226,
+        "draw_animation_end_seconds": 169,
+        "first_voluntary_move_seconds": 173,
+        "before_end_action_seconds": 206,
+        "end_after_resolution_seconds": 226
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Flame Patch",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0170.00"
+            ]
+          },
+          {
+            "position": 2,
+            "name": "Professor's Research",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0170.00"
+            ]
+          },
+          {
+            "position": 3,
+            "name": "Field Blower",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0170.00"
+            ]
+          },
+          {
+            "position": 4,
+            "name": "Copycat",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0170.00"
+            ]
+          }
+        ],
+        "count": 4,
+        "basis": "Directly visible left-to-right hand",
+        "evidence_ids": [
+          "f0170.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Flame Patch",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0170.00"
+            ]
+          },
+          {
+            "position": 2,
+            "name": "Professor's Research",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0170.00"
+            ]
+          },
+          {
+            "position": 3,
+            "name": "Field Blower",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0170.00"
+            ]
+          },
+          {
+            "position": 4,
+            "name": "Copycat",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0170.00"
+            ]
+          }
+        ],
+        "count": 4,
+        "basis": "Direct visible hand after normal draw",
+        "evidence_ids": [
+          "f0170.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 3,
+        "supported_range": null,
+        "count_method": "Count exposed left edges and card backs in native top crop",
+        "basis": "observation",
+        "evidence_ids": [
+          "f0170.00"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Copycat",
+              "reveal_position": 1,
+              "source_video": "20261004_215749000_iOS.MP4",
+              "timestamp_seconds": 169,
+              "evidence_ids": [
+                "f0169.00"
+              ],
+              "basis": "observation",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 169,
+          "evidence_ids": [
+            "f0169.00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "Supporter draw",
+          "caused_by": "Professor's Research",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": "Combusken",
+              "reveal_position": 1,
+              "source_video": "20261004_215749000_iOS.MP4",
+              "timestamp_seconds": 177,
+              "evidence_ids": [
+                "f0177.00"
+              ],
+              "basis": "observation",
+              "limit_reason": null
+            },
+            {
+              "name": "Hiking Trail",
+              "reveal_position": 2,
+              "source_video": "20261004_215749000_iOS.MP4",
+              "timestamp_seconds": 178,
+              "evidence_ids": [
+                "f0178.00"
+              ],
+              "basis": "observation",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 177,
+          "evidence_ids": [
+            "f0177.00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "Stadium end-turn draw",
+          "caused_by": "Hiking Trail",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Mega Blaziken ex",
+              "reveal_position": 1,
+              "source_video": "20261004_215749000_iOS.MP4",
+              "timestamp_seconds": 225,
+              "evidence_ids": [
+                "f0225.00"
+              ],
+              "basis": "observation",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 2,
+          "hand_count_after": 3,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 225,
+          "evidence_ids": [
+            "f0225.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "Supporter",
+          "card_name": "Professor's Research",
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Draws Combusken then Hiking Trail.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 5,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 172,
+          "evidence_ids": [
+            "f0172.00"
+          ],
+          "basis": "observation",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "evolution",
+          "card_name": "Combusken",
+          "target": "owner Bench 2 Torchic",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": "owner Bench 2 Torchic",
+            "retreat_payment_by_type": null
+          },
+          "result": "Evolves the center benched Torchic. New Combusken is 80/80.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 4,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 179,
+          "evidence_ids": [
+            "f0179.00"
+          ],
+          "basis": "observation",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "Stadium",
+          "card_name": "Hiking Trail",
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Places Hiking Trail in the Stadium slot.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 3,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 190,
+          "evidence_ids": [
+            "f0190.00"
+          ],
+          "basis": "observation",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "retreat",
+          "card_name": "Combusken",
+          "target": "owner Bench 3 Castform Sunny Form",
+          "energy": {
+            "type": "Fire",
+            "count": 1,
+            "destination": "owner Bench 3 Castform Sunny Form",
+            "retreat_payment_by_type": {
+              "Fire": 1
+            }
+          },
+          "result": "Pays one Fire from the damaged Active Combusken; promotes Castform Sunny Form. Old Active moves to rightmost Bench slot3.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 3,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 195,
+          "evidence_ids": [
+            "f0195.00"
+          ],
+          "basis": "observation",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "Energy attachment",
+          "card_name": null,
+          "target": "owner Bench 2 Combusken",
+          "energy": {
+            "type": "Fire",
+            "count": 1,
+            "destination": "owner Bench 2 Combusken",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attaches the turn’s Fire Energy to the undamaged center benched Combusken. Native200s shows the attachment flash on that Bench card.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 3,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 200,
+          "evidence_ids": [
+            "f0199.00",
+            "f0200.00"
+          ],
+          "basis": "observation",
+          "limit_reason": null
+        },
+        {
+          "order": 6,
+          "kind": "Item",
+          "card_name": "Flame Patch",
+          "target": "owner Active Castform Sunny Form",
+          "energy": {
+            "type": "Fire",
+            "count": 1,
+            "destination": "owner Active Castform Sunny Form",
+            "retreat_payment_by_type": null
+          },
+          "result": "Attaches the Fire discarded for retreat to Active Castform Sunny Form; only the Active is a legal target shown by the card text. Castform gains its first Fire by206s.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 2,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 201,
+          "evidence_ids": [
+            "f0201.00",
+            "f0204.00",
+            "f0206.00"
+          ],
+          "basis": "observation",
+          "limit_reason": null
+        },
+        {
+          "order": 7,
+          "kind": "attack",
+          "card_name": "Castform Sunny Form: Sunny Scorching",
+          "target": "opponent Active Tinkatink",
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": "opponent Active Tinkatink",
+            "retreat_payment_by_type": null
+          },
+          "result": "Deals 50 including +20 Fire weakness to 40-HP Tinkatink; Tinkatink is knocked out. Owner gains one point. Stadium would cause Burn, but no enduring condition remains on the knocked-out target.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 2,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 208,
+          "evidence_ids": [
+            "f0208.00"
+          ],
+          "basis": "observation",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "order": 1,
+          "name": "Knockout and point",
+          "timestamp_seconds": 211,
+          "result": "Tinkatink knocked out; owner points 0 to1",
+          "evidence_ids": [
+            "f0211.00",
+            "f0216.00"
+          ]
+        },
+        {
+          "order": 2,
+          "name": "Hiking Trail",
+          "timestamp_seconds": 225,
+          "result": "Owner has two cards, draws Mega Blaziken ex at end of turn to finish with three. This is a Stadium end-turn draw, not a normal turn draw or a KO-triggered draw.",
+          "evidence_ids": [
+            "f0225.00"
+          ]
+        },
+        {
+          "order": 3,
+          "name": "Opponent replacement",
+          "timestamp_seconds": 225,
+          "result": "Meltan is promoted from center Bench to Active. Its one Metal Energy is retained.",
+          "evidence_ids": [
+            "f0225.00"
+          ]
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 5,
+        "phase": "stable board boundary",
+        "stadium": null,
+        "owner": {
+          "active": {
+            "name": "Combusken",
+            "variant": "High Jump Kick 50, 80 HP; B1 034 semantic QR entity",
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 80,
+            "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+            "damage": 40,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Fire": 1
+              }
+            },
+            "tool": "Rocky Helmet",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0170.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+          },
+          "bench_in_position_order": [
+            null,
+            {
+              "name": "Torchic",
+              "variant": "Peck 20, 60 HP; QR entity consistent with B1 033",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0170.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            },
+            {
+              "name": "Castform Sunny Form",
+              "variant": "Sunny Scorching 30, 70 HP; B3 024 semantic QR entity",
+              "bench_position": 3,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0170.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Fire",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Fire",
+              "count": 1,
+              "available": null
+            },
+            "basis": "Visible large current Energy orb or empty current slot, plus smaller next Energy icon",
+            "evidence_ids": [
+              "f0170.00"
+            ],
+            "limit_reason": "The smaller next icon establishes type, not an additional currently spendable Energy."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0170.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Tinkatink",
+            "variant": "Corkscrew Punch 20, 60 HP",
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 60,
+            "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+            "damage": 20,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Metal": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0170.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+          },
+          "bench_in_position_order": [
+            null,
+            {
+              "name": "Meltan",
+              "variant": "Amass, 60 HP",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Metal": 1
+                }
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0170.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            },
+            {
+              "name": "Rookidee",
+              "variant": "Pluck 10, 60 HP",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0170.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Metal",
+              "count": 1,
+              "available": null
+            },
+            "basis": "Visible large current Energy orb or empty current slot, plus smaller next Energy icon",
+            "evidence_ids": [
+              "f0170.00"
+            ],
+            "limit_reason": "The smaller next icon establishes type, not an additional currently spendable Energy."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0170.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "f0170.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 5,
+        "phase": "stable board boundary",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Castform Sunny Form",
+            "variant": "Sunny Scorching 30, 70 HP; B3 024 semantic QR entity",
+            "bench_position": null,
+            "hp_now": 70,
+            "hp_max": 70,
+            "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Fire": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0225.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+          },
+          "bench_in_position_order": [
+            null,
+            {
+              "name": "Combusken",
+              "variant": "High Jump Kick 50, 80 HP; B1 034 semantic QR entity",
+              "bench_position": 2,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Fire": 1
+                }
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0225.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            },
+            {
+              "name": "Combusken",
+              "variant": "High Jump Kick 50, 80 HP; B1 034 semantic QR entity",
+              "bench_position": 3,
+              "hp_now": 40,
+              "hp_max": 80,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 40,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Rocky Helmet",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0225.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Fire",
+              "count": 1,
+              "available": null
+            },
+            "basis": "Visible large current Energy orb or empty current slot, plus smaller next Energy icon",
+            "evidence_ids": [
+              "f0225.00"
+            ],
+            "limit_reason": "The smaller next icon establishes type, not an additional currently spendable Energy."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0225.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Meltan",
+            "variant": "Amass, 60 HP",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Metal": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0225.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+          },
+          "bench_in_position_order": [
+            null,
+            null,
+            {
+              "name": "Rookidee",
+              "variant": "Pluck 10, 60 HP",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0225.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Metal",
+              "count": 1,
+              "available": null
+            },
+            "basis": "Visible large current Energy orb or empty current slot, plus smaller next Energy icon",
+            "evidence_ids": [
+              "f0225.00"
+            ],
+            "limit_reason": "The smaller next icon establishes type, not an additional currently spendable Energy."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0225.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          {
+            "name": "Hiking Trail",
+            "observed_text": "At the end of each player’s turn, that player draws a card if they have 3 or fewer cards in their hand."
+          }
+        ],
+        "evidence_ids": [
+          "f0225.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Field Blower",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0225.00"
+            ]
+          },
+          {
+            "position": 2,
+            "name": "Copycat",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0225.00"
+            ]
+          },
+          {
+            "position": 3,
+            "name": "Mega Blaziken ex",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0225.00"
+            ]
+          }
+        ],
+        "count": 3,
+        "basis": "Visible225-226s hand after Hiking Trail end-turn draw, not pre-attack two-card hand",
+        "evidence_ids": [
+          "f0225.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [
+        "not_shown_owner_5",
+        "not_shown_opponent_5"
+      ],
+      "turn_evidence_ids": [
+        "f0170.00",
+        "f0225.00",
+        "f0206.00",
+        "f0172.00",
+        "f0179.00",
+        "f0190.00",
+        "f0195.00",
+        "f0200.00",
+        "f0201.00",
+        "f0208.00",
+        "f0169.00",
+        "f0177.00",
+        "f0200.00",
+        "f0201.00",
+        "f0204.00",
+        "f0206.00"
+      ],
+      "limits": [
+        "No opened discard-pile view occurs anywhere in the supplied source. Public play history is not a full discard snapshot.",
+        "Opponent identities behind card backs remain unknown.",
+        "Approximate draw-animation ends and action onset times are bounded to the retained frames, generally within about one second.",
+        "No hidden choices or actions are inferred from deck membership."
+      ]
+    },
+    {
+      "turn_number": 6,
+      "who_played": "opponent",
+      "source_video": "20261004_215749000_iOS.MP4",
+      "timing": {
+        "start_seconds": 226,
+        "end_seconds": 245,
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 232,
+        "before_end_action_seconds": 243,
+        "end_after_resolution_seconds": 245
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "Directly visible left-to-right hand",
+        "evidence_ids": [
+          "f0226.00"
+        ],
+        "status": "hidden_opponent_hand",
+        "limit_reason": "Opponent card faces remain hidden."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Field Blower",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0226.00"
+            ]
+          },
+          {
+            "position": 2,
+            "name": "Copycat",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0226.00"
+            ]
+          },
+          {
+            "position": 3,
+            "name": "Mega Blaziken ex",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0226.00"
+            ]
+          }
+        ],
+        "count": 3,
+        "basis": "Owner visible hand at this opponent boundary",
+        "evidence_ids": [
+          "f0226.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "count_method": "Count exposed left edges and card backs in native top crop",
+        "basis": "Not applicable to opponent turn",
+        "evidence_ids": [],
+        "limit_reason": "Required fan count applies at owner-turn start."
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261004_215749000_iOS.MP4",
+              "timestamp_seconds": 226,
+              "evidence_ids": [
+                "f0226.00"
+              ],
+              "basis": "hidden card back",
+              "limit_reason": "Opponent card face not revealed."
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 226,
+          "evidence_ids": [
+            "f0226.00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "Supporter draw",
+          "caused_by": "Professor's Research",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261004_215749000_iOS.MP4",
+              "timestamp_seconds": 233,
+              "evidence_ids": [
+                "f0233.00"
+              ],
+              "basis": "hidden card back",
+              "limit_reason": "Opponent card face not revealed."
+            },
+            {
+              "name": null,
+              "reveal_position": 2,
+              "source_video": "20261004_215749000_iOS.MP4",
+              "timestamp_seconds": 234,
+              "evidence_ids": [
+                "f0234.00"
+              ],
+              "basis": "hidden card back",
+              "limit_reason": "Opponent card face not revealed."
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": null,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 233,
+          "evidence_ids": [
+            "f0233.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "Supporter",
+          "card_name": "Professor's Research",
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Draws two hidden cards.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 232,
+          "evidence_ids": [
+            "f0232.00"
+          ],
+          "basis": "observation",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "concede",
+          "card_name": null,
+          "target": null,
+          "energy": {
+            "type": null,
+            "count": null,
+            "destination": null,
+            "retreat_payment_by_type": null
+          },
+          "result": "Your opponent conceded. Owner wins; board points are1-0 before results. No opponent Energy attachment or attack occurs after Research.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261004_215749000_iOS.MP4",
+          "timestamp_seconds": 244,
+          "evidence_ids": [
+            "f0244.00"
+          ],
+          "basis": "observation",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [],
+      "board_at_start": {
+        "turn_number_displayed": 6,
+        "phase": "stable board boundary",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Castform Sunny Form",
+            "variant": "Sunny Scorching 30, 70 HP; B3 024 semantic QR entity",
+            "bench_position": null,
+            "hp_now": 70,
+            "hp_max": 70,
+            "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Fire": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0226.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+          },
+          "bench_in_position_order": [
+            null,
+            {
+              "name": "Combusken",
+              "variant": "High Jump Kick 50, 80 HP; B1 034 semantic QR entity",
+              "bench_position": 2,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Fire": 1
+                }
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0226.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            },
+            {
+              "name": "Combusken",
+              "variant": "High Jump Kick 50, 80 HP; B1 034 semantic QR entity",
+              "bench_position": 3,
+              "hp_now": 40,
+              "hp_max": 80,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 40,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Rocky Helmet",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0226.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Fire",
+              "count": 1,
+              "available": null
+            },
+            "basis": "Visible large current Energy orb or empty current slot, plus smaller next Energy icon",
+            "evidence_ids": [
+              "f0226.00"
+            ],
+            "limit_reason": "The smaller next icon establishes type, not an additional currently spendable Energy."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0226.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Meltan",
+            "variant": "Amass, 60 HP",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Metal": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0226.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+          },
+          "bench_in_position_order": [
+            null,
+            null,
+            {
+              "name": "Rookidee",
+              "variant": "Pluck 10, 60 HP",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0226.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Metal",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Metal",
+              "count": 1,
+              "available": null
+            },
+            "basis": "Visible large current Energy orb or empty current slot, plus smaller next Energy icon",
+            "evidence_ids": [
+              "f0226.00"
+            ],
+            "limit_reason": "The smaller next icon establishes type, not an additional currently spendable Energy."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0226.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          {
+            "name": "Hiking Trail",
+            "observed_text": "At the end of each player’s turn, that player draws a card if they have 3 or fewer cards in their hand."
+          }
+        ],
+        "evidence_ids": [
+          "f0226.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 6,
+        "phase": "stable board boundary",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Castform Sunny Form",
+            "variant": "Sunny Scorching 30, 70 HP; B3 024 semantic QR entity",
+            "bench_position": null,
+            "hp_now": 70,
+            "hp_max": 70,
+            "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Fire": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0244.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+          },
+          "bench_in_position_order": [
+            null,
+            {
+              "name": "Combusken",
+              "variant": "High Jump Kick 50, 80 HP; B1 034 semantic QR entity",
+              "bench_position": 2,
+              "hp_now": 80,
+              "hp_max": 80,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Fire": 1
+                }
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0244.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            },
+            {
+              "name": "Combusken",
+              "variant": "High Jump Kick 50, 80 HP; B1 034 semantic QR entity",
+              "bench_position": 3,
+              "hp_now": 40,
+              "hp_max": 80,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 40,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Rocky Helmet",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0244.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Fire",
+              "count": 1,
+              "available": null
+            },
+            "basis": "Visible large current Energy orb or empty current slot, plus smaller next Energy icon",
+            "evidence_ids": [
+              "f0244.00"
+            ],
+            "limit_reason": "The smaller next icon establishes type, not an additional currently spendable Energy."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0244.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Meltan",
+            "variant": "Amass, 60 HP",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Metal": 1
+              }
+            },
+            "tool": null,
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "f0244.00"
+            ],
+            "status": "observed",
+            "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+          },
+          "bench_in_position_order": [
+            null,
+            null,
+            {
+              "name": "Rookidee",
+              "variant": "Pluck 10, 60 HP",
+              "bench_position": 3,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Visible printed HP and observed unchanged maximum",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": null,
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "f0244.00"
+              ],
+              "status": "observed",
+              "limit_reason": "Exact artwork/rarity is not identified unless card face establishes it."
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Metal",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Metal",
+              "count": 1,
+              "available": null
+            },
+            "basis": "Visible large current Energy orb or empty current slot, plus smaller next Energy icon",
+            "evidence_ids": [
+              "f0244.00"
+            ],
+            "limit_reason": "The smaller next icon establishes type, not an additional currently spendable Energy."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "f0244.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [
+          {
+            "name": "Hiking Trail",
+            "observed_text": "At the end of each player’s turn, that player draws a card if they have 3 or fewer cards in their hand."
+          }
+        ],
+        "evidence_ids": [
+          "f0244.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Field Blower",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0244.00"
+            ]
+          },
+          {
+            "position": 2,
+            "name": "Copycat",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0244.00"
+            ]
+          },
+          {
+            "position": 3,
+            "name": "Mega Blaziken ex",
+            "basis": "observation",
+            "evidence_ids": [
+              "f0244.00"
+            ]
+          }
+        ],
+        "count": 3,
+        "basis": "Directly visible left-to-right hand",
+        "evidence_ids": [
+          "f0244.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": [
+        "not_shown_owner_6",
+        "not_shown_opponent_6"
+      ],
+      "turn_evidence_ids": [
+        "f0226.00",
+        "f0244.00",
+        "f0243.00",
+        "f0232.00",
+        "f0233.00"
+      ],
+      "limits": [
+        "No opened discard-pile view occurs anywhere in the supplied source. Public play history is not a full discard snapshot.",
+        "Opponent identities behind card backs remain unknown.",
+        "Approximate draw-animation ends and action onset times are bounded to the retained frames, generally within about one second.",
+        "No hidden choices or actions are inferred from deck membership."
+      ]
+    }
+  ],
+  "limits": [
+    "No opened discard-pile view occurs anywhere in the supplied source. Public play history is not a full discard snapshot.",
+    "Opponent identities behind card backs remain unknown.",
+    "Approximate draw-animation ends and action onset times are bounded to the retained frames, generally within about one second.",
+    "No hidden choices or actions are inferred from deck membership."
+  ],
+  "reviewer": "/root/pause_20261004_215749000_iOS"
+}

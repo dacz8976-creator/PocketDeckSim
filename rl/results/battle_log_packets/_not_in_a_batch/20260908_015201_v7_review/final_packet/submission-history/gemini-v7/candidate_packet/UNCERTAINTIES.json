@@ -1,0 +1,11 @@
+[
+  {
+    "id": "U1",
+    "start_timestamp": "01:08.000",
+    "end_timestamp": "01:08.000",
+    "claim_or_question": "What is the final match outcome and score?",
+    "why_uncertain": "The video recording abruptly terminates at 01:08.000 as Opponent Turn 3 begins, before any attacks, knockouts, or victory conditions are resolved.",
+    "consequence_if_wrong": "The battle outcome would be falsely marked as a win, loss, or draw instead of remaining accurately classified as unknown.",
+    "recommended_sol_check": "Verify whether a longer capture exists for this match to determine the final terminal result."
+  }
+]

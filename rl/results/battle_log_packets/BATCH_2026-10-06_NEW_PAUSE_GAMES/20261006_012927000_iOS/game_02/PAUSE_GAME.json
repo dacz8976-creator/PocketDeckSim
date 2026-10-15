@@ -1,0 +1,101 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261006_012927000_iOS_game_02",
+  "review_date": "2026-10-06",
+  "sources": [
+    {
+      "video_basename": "20261006_012927000_iOS.MP4",
+      "sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "deck_name": "New deck 6",
+  "opening": {
+    "source_video": "20261006_012927000_iOS.MP4",
+    "timestamp_seconds": 644,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Team Rocket’s Persian [Dangerous Rogue, 100 HP]",
+        "basis": "Native original five-card hand before Active placement.",
+        "evidence_ids": [
+          "f0644_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Poké Ball",
+        "basis": "Native original five-card hand before Active placement.",
+        "evidence_ids": [
+          "f0644_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Snorlax ex [Full-Mouth Manner / Flop-Down Punch, 160 HP]",
+        "basis": "Native original five-card hand before Active placement.",
+        "evidence_ids": [
+          "f0644_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Copycat",
+        "basis": "Native original five-card hand before Active placement.",
+        "evidence_ids": [
+          "f0644_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Lucky Ice Pop",
+        "basis": "Native original five-card hand before Active placement.",
+        "evidence_ids": [
+          "f0644_00"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Snorlax ex [Full-Mouth Manner / Flop-Down Punch, 160 HP]",
+      "opening_position": 3,
+      "source_video": "20261006_012927000_iOS.MP4",
+      "timestamp_seconds": 646,
+      "evidence_ids": [
+        "f0646_00"
+      ]
+    },
+    "redraw_or_replacement": "none observed",
+    "before_active_placement": true,
+    "status": "observed",
+    "evidence_ids": [
+      "f0644_00"
+    ],
+    "limit_reason": null
+  },
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "full_battle_review_complete",
+  "outcome": "win",
+  "limits": [
+    "Live Pause Games exact20 snapshot has not been captured by worker.",
+    "Face-down opponent cards and unrecorded discard windows remain unknown."
+  ],
+  "lead_checked": true,
+  "external_saved": false,
+  "lead_acceptance": "LEAD_ACCEPTANCE.json"
+}

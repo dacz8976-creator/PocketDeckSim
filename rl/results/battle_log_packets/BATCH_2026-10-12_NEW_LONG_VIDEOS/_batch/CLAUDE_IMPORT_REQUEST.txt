@@ -1,0 +1,204 @@
+Update Dustin's existing Pause Games artifact only: https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd.
+
+The four new videos have finished full-source reviews, independent acceptance, registration and hash-preserving archival. Add the missing filmed Glimmora / Alolan Muk / Kingambit / Regigigas deck and these four games. Results are three wins and one loss, including two explicit opponent concessions.
+
+Use the artifact's existing data collections and supported fields. Preserve the artifact HTML, layout, sharing, every existing deck and every existing game. Do not create a replacement artifact or touch the Ladder Log. Check current data before writing: reuse a deck with the identical QR code and skip any game already present by source filename plus game number/game identity. Create only missing entries, using the exact fields below. Leave ratings unassigned. The opponent field contains only visibly established deck cores; opponent names, outcome evidence and local packet references are in notes.
+
+The verified earlier baseline is 25 decks and 39 games, 22 wins, 17 losses and 13 opponent-concession wins. If that baseline is unchanged and all four entries are absent, the result should be 26 decks and 43 games, 25 wins, 18 losses and 15 opponent-concession wins. Report the actual saved IDs and totals. Do not overwrite existing entries to force those totals.
+
+The deck QR verifies 20 semantic card slots and Darkness Energy. Listed card references do not establish filmed artwork or rarity. Preserve the separate source limits recorded in the game packets. Hons and KCXPF explicitly conceded; the owner's concession is a loss. Last observed points in concession games are separate from unopened final numeric statistics.
+
+The following JSON contains the reviewed deck and game fields:
+
+{
+  "deck_documents": [
+    {
+      "document_id": "filmed-qr-d8a7167db33b",
+      "fields": {
+        "name": "Glimmora / Alolan Muk / Kingambit / Regigigas",
+        "energy": "Darkness",
+        "group": "filmed",
+        "status": "active",
+        "tag": "Filmed QR",
+        "order": 200,
+        "note": "Identical QR in all four October 12 uploads. Semantic card identities verified; filmed artwork and rarity unverified.",
+        "code": "C5iWnpiWnpiYYJiapJiapJiaIpiWqJiWqJiYkpiaXpibRAkAGv4AOSYASJ4ASJ4ASKgASKgASIAASJQARkYBBw==",
+        "source": "Four source-bound QR captures at 0 seconds; provenance in PREPARED_FILMED_DECK.json.",
+        "cards": [
+          {
+            "n": 1,
+            "name": "Alolan Grimer",
+            "kind": "Pokémon",
+            "id": "A3 110"
+          },
+          {
+            "n": 1,
+            "name": "Alolan Muk",
+            "kind": "Pokémon",
+            "id": "B2 097"
+          },
+          {
+            "n": 2,
+            "name": "Glimmet",
+            "kind": "Pokémon",
+            "id": "B3a 044"
+          },
+          {
+            "n": 2,
+            "name": "Glimmora",
+            "kind": "Pokémon",
+            "id": "B3a 045"
+          },
+          {
+            "n": 1,
+            "name": "Pawniard",
+            "kind": "Pokémon",
+            "id": "B3a 041"
+          },
+          {
+            "n": 1,
+            "name": "Kingambit",
+            "kind": "Pokémon",
+            "id": "B3a 043"
+          },
+          {
+            "n": 1,
+            "name": "Regigigas",
+            "kind": "Pokémon",
+            "id": "B3 134"
+          },
+          {
+            "n": 2,
+            "name": "Poké Ball",
+            "kind": "Trainer",
+            "id": "A2b 111"
+          },
+          {
+            "n": 1,
+            "name": "Rare Candy",
+            "kind": "Trainer",
+            "id": "A3 144"
+          },
+          {
+            "n": 2,
+            "name": "Lucky Ice Pop",
+            "kind": "Trainer",
+            "id": "B2 145"
+          },
+          {
+            "n": 1,
+            "name": "Heavy Helmet",
+            "kind": "Trainer",
+            "id": "B1 219"
+          },
+          {
+            "n": 2,
+            "name": "Professor’s Research",
+            "kind": "Trainer",
+            "id": "A4b 373"
+          },
+          {
+            "n": 1,
+            "name": "Ilima",
+            "kind": "Trainer",
+            "id": "A3 149"
+          },
+          {
+            "n": 1,
+            "name": "Copycat",
+            "kind": "Trainer",
+            "id": "B1 225"
+          },
+          {
+            "n": 1,
+            "name": "Mesagoza",
+            "kind": "Trainer",
+            "id": "B2a 093"
+          }
+        ]
+      }
+    }
+  ],
+  "game_documents": [
+    {
+      "source_video": "20261012_010706000_iOS.MP4",
+      "source_sha256": "6d6143c99e23bffe7a6feb7f01c20a112c060e13b9b9d4ebd0a25e597ca62fd0",
+      "game_number_in_source": 1,
+      "game_id": "20261012_010706000_iOS_game1",
+      "exact_game_deck_binding": true,
+      "deck_choice_basis": "Identical source-native QR at 0 seconds, exact semantic 20-card list and Darkness Energy.",
+      "result_evidence": "Kingambit knocks out Mega Gardevoir ex; Victory 3-2 around 808 s, detailed result 819 s (21 turns, 600 damage).",
+      "fields": {
+        "deck": "filmed-qr-d8a7167db33b",
+        "deckName": "Glimmora / Alolan Muk / Kingambit / Regigigas",
+        "date": "2026-10-11",
+        "result": "win",
+        "first": "first",
+        "opp": "Mega Gardevoir ex, Mega Diancie ex, Indeedee ex",
+        "ratings": {},
+        "note": "Source: 20261012_010706000_iOS.MP4; game 1; opponent: たまご. Deluxe Pack: Mega Emblem Event. Owner win; ending: points. Result evidence: Kingambit knocks out Mega Gardevoir ex; Victory 3-2 around 808 s, detailed result 819 s (21 turns, 600 damage). Full review: 21 turns. Evidence and capture limits: Recording_QA/BATCH_2026-10-12_NEW_LONG_VIDEOS/20261012_010706000_iOS/REVIEW.md; PAUSE_GAME.json and TURN_LEDGER.json beside it. Exact 20-card filmed QR verified. Hidden opponent cards remain unknown; discard piles were not opened. Native hand/draw crops retained. Ratings unassigned."
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261012_203719000_iOS.MP4",
+      "source_sha256": "e85ac056e49ababe79fbd0388e8b132f3cc984a5deb445390a2f4df7b0137869",
+      "game_number_in_source": 1,
+      "game_id": "20261012_203719000_iOS-game-1",
+      "exact_game_deck_binding": true,
+      "deck_choice_basis": "Identical source-native QR at 0 seconds, exact semantic 20-card list and Darkness Energy.",
+      "result_evidence": "Your opponent conceded at 790 s; Victory/result 799-800.5 s (21 turns, 150 damage). Last board 1-2.",
+      "fields": {
+        "deck": "filmed-qr-d8a7167db33b",
+        "deckName": "Glimmora / Alolan Muk / Kingambit / Regigigas",
+        "date": "2026-10-12",
+        "result": "concession",
+        "first": "first",
+        "opp": "Drampa, Dragonair, Mega Rayquaza ex",
+        "ratings": {},
+        "note": "Source: 20261012_203719000_iOS.MP4; game 1; opponent: KCXPF. Deluxe Pack: Mega Emblem Event. Owner win; ending: opponent conceded. Result evidence: Your opponent conceded at 790 s; Victory/result 799-800.5 s (21 turns, 150 damage). Last board 1-2. Full review: 21 turns. Evidence and capture limits: Recording_QA/BATCH_2026-10-12_NEW_LONG_VIDEOS/20261012_203719000_iOS/REVIEW.md; PAUSE_GAME.json and TURN_LEDGER.json beside it. Exact 20-card filmed QR verified. Hidden opponent cards remain unknown; discard piles were not opened. Native hand/draw crops retained. Ratings unassigned."
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261012_210041000_iOS.MP4",
+      "source_sha256": "6e8f59764ede0e890ac012fd4ccdd08fc7bfd480bbaae7721bd1f8046031fcc6",
+      "game_number_in_source": 1,
+      "game_id": "pause-20261012-210041",
+      "exact_game_deck_binding": true,
+      "deck_choice_basis": "Identical source-native QR at 0 seconds, exact semantic 20-card list and Darkness Energy.",
+      "result_evidence": "Concede menu 432.6 s, confirmation 433.2-433.5 s, then Defeat 434 s/result 440-443 s. Last board 0-2; final numeric statistics unavailable.",
+      "fields": {
+        "deck": "filmed-qr-d8a7167db33b",
+        "deckName": "Glimmora / Alolan Muk / Kingambit / Regigigas",
+        "date": "2026-10-12",
+        "result": "loss",
+        "first": "second",
+        "opp": "Mega Lucario ex, Hitmonchan ex, Riolu, Tyrogue",
+        "ratings": {},
+        "note": "Source: 20261012_210041000_iOS.MP4; game 1; opponent: 万丈目サンダー. Deluxe Pack: Mega Emblem Event. Owner loss; ending: owner_concession. Result evidence: Concede menu 432.6 s, confirmation 433.2-433.5 s, then Defeat 434 s/result 440-443 s. Last board 0-2; final numeric statistics unavailable. Full review: 14 turns. Evidence and capture limits: Recording_QA/BATCH_2026-10-12_NEW_LONG_VIDEOS/20261012_210041000_iOS/REVIEW.md; PAUSE_GAME.json and TURN_LEDGER.json beside it. Exact 20-card filmed QR verified. Hidden opponent cards remain unknown; discard piles were not opened. Native hand/draw crops retained. Ratings unassigned."
+      },
+      "external_saved": false
+    },
+    {
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_sha256": "ca0f516306d5ffd8bf18326d4057d357160f77aaa019efdfd87303336b1291b9",
+      "game_number_in_source": 1,
+      "game_id": "20261012_210823000_iOS_Hons",
+      "exact_game_deck_binding": true,
+      "deck_choice_basis": "Identical source-native QR at 0 seconds, exact semantic 20-card list and Darkness Energy.",
+      "result_evidence": "Your opponent conceded at 430-431 s; Victory versus Hons at 439 s. Last board 0-1; detailed result statistics not opened. Empty deck is explicitly shown at 428 s.",
+      "fields": {
+        "deck": "filmed-qr-d8a7167db33b",
+        "deckName": "Glimmora / Alolan Muk / Kingambit / Regigigas",
+        "date": "2026-10-12",
+        "result": "concession",
+        "first": "second",
+        "opp": "Mega Pidgeot ex, Meowth, Alolan Meowth",
+        "ratings": {},
+        "note": "Source: 20261012_210823000_iOS.MP4; game 1; opponent: Hons. Deluxe Pack: Mega Emblem Event. Owner win; ending: opponent_concession. Result evidence: Your opponent conceded at 430-431 s; Victory versus Hons at 439 s. Last board 0-1; detailed result statistics not opened. Empty deck is explicitly shown at 428 s. Full review: 12 turns. Evidence and capture limits: Recording_QA/BATCH_2026-10-12_NEW_LONG_VIDEOS/20261012_210823000_iOS/REVIEW.md; PAUSE_GAME.json and TURN_LEDGER.json beside it. Exact 20-card filmed QR verified. Hidden opponent cards remain unknown; discard piles were not opened. Native hand/draw crops retained. Ratings unassigned."
+      },
+      "external_saved": false
+    }
+  ]
+}

@@ -1,0 +1,56 @@
+{
+  "checked_utc": "2026-10-13T02:54:51.213577+00:00",
+  "all_requested_reviews_complete": true,
+  "sources": [
+    {
+      "source": "20261012_225319000_iOS.MP4",
+      "sha256": "10908103247750567923e0899770318a2e53821055d7a2d464ab8d8a2b12dd70",
+      "game_id": "20261012_225319000_iOS",
+      "opponent": "Job",
+      "owner_result": "loss",
+      "turns": 9,
+      "complete": true,
+      "registration_event": "89705ff5-635e-4cbd-8802-39640cedf6ce",
+      "archive_hash_verified": true,
+      "external_saved": true,
+      "storage_online_only": true,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-12_ADDITIONAL_TWO\\20261012_225319000_iOS"
+    },
+    {
+      "source": "20261012_230258000_iOS.MP4",
+      "sha256": "02c8539c786e5e57652c297ce425468955c4f70da2657a40cf39a2b0b330619a",
+      "game_id": "20261012_230258000_iOS_game_1",
+      "opponent": "Giorno",
+      "owner_result": "loss",
+      "turns": 14,
+      "complete": true,
+      "registration_event": "988fb9fb-33a2-46dc-b47e-ca18c0f985c1",
+      "archive_hash_verified": true,
+      "external_saved": true,
+      "storage_online_only": true,
+      "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-12_ADDITIONAL_TWO\\20261012_230258000_iOS"
+    }
+  ],
+  "counts": {
+    "sources": 2,
+    "games": 2,
+    "wins": 0,
+    "losses": 2,
+    "turns": 23
+  },
+  "all_source_games_covered": true,
+  "unrelated_index_rows_unchanged": true,
+  "external_saved": true,
+  "fresh_live_counts": {
+    "games": 45,
+    "wins": 25,
+    "losses": 20,
+    "concession_wins": 15,
+    "decks": 26
+  },
+  "storage_online_only_count": 2,
+  "storage_allocated_bytes": 0,
+  "storage_receipt": "FINAL_STORAGE_CHECK.json",
+  "source_contents_not_read_for_final_reconciliation": true,
+  "accepted_packet_semantics_unchanged": true
+}

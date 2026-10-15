@@ -1,0 +1,19 @@
+{
+  "repair_id": "G1",
+  "rejected_report": "independent_sol/CHECK_RESULT.json",
+  "prior_submission": "submitted_before_independent_corrections/DECK_USED.json",
+  "changed_paths": [
+    ".filmed_qr_cards_20[0].name",
+    ".filmed_qr_cards_20[1].name",
+    ".filmed_qr_cards_20[6].name",
+    ".filmed_qr_cards_20[7].name",
+    ".filmed_qr_counts[0].name",
+    ".filmed_qr_counts[0].name_candidates[0]",
+    ".filmed_qr_counts[3].name",
+    ".filmed_qr_counts[3].name_candidates[0]"
+  ],
+  "scope": "Only eight authored copied card names normalized. Original QR receipt/catalog, all entity IDs/counts and source evidence unchanged.",
+  "current_sha256": {
+    "DECK_USED.json": "2da664d91e5a44dde1645de410f7ed8e6ae697609850ccf9703ecc4d5792a256"
+  }
+}

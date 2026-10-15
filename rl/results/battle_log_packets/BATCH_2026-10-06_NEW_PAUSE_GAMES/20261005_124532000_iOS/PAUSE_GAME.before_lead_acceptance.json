@@ -1,0 +1,130 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261005_124532000_iOS",
+  "review_date": "2026-10-06T19:56:36.641165+00:00",
+  "sources": [
+    {
+      "video_basename": "20261005_124532000_iOS.MP4",
+      "sha256": "d224f481fc02e3d5c6b3589ebbe89bfe839318a862d1883ce85554b9073cae75",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "deck_name": "Nidoking / Darkrai ex / Nihilego (one Darkrai, Cyrus revision)",
+  "opening": {
+    "source_video": "20261005_124532000_iOS.MP4",
+    "timestamp_seconds": 29,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Nidoran male",
+        "variant": null,
+        "basis": "Observed source hand in left-to-right order",
+        "evidence_ids": [
+          "f0029p00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Poison Barb",
+        "variant": null,
+        "basis": "Observed source hand in left-to-right order",
+        "evidence_ids": [
+          "f0029p00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Nidoran male",
+        "variant": null,
+        "basis": "Observed source hand in left-to-right order",
+        "evidence_ids": [
+          "f0029p00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Lucky Ice Pop",
+        "variant": null,
+        "basis": "Observed source hand in left-to-right order",
+        "evidence_ids": [
+          "f0029p00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Nidoking",
+        "variant": null,
+        "basis": "Observed source hand in left-to-right order",
+        "evidence_ids": [
+          "f0029p00"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Nidoran male",
+      "opening_position": 3,
+      "source_video": "20261005_124532000_iOS.MP4",
+      "timestamp_seconds": 30,
+      "evidence_ids": [
+        "f0030p00",
+        "f0031p00"
+      ]
+    },
+    "setup_bench": {
+      "name": "Nidoran male",
+      "opening_position": 1,
+      "bench_position": 1,
+      "evidence_ids": [
+        "f0032p00",
+        "f0038p00"
+      ]
+    },
+    "redraw_or_replacement": "none observed",
+    "before_active_placement": true,
+    "status": "observed",
+    "evidence_ids": [
+      "f0029p00",
+      "f0030p00",
+      "f0031p00"
+    ],
+    "limit_reason": null
+  },
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "full_source_first_pass_complete_pending_independent_acceptance",
+  "outcome": "loss",
+  "opponent": "Nick",
+  "mode": "Deluxe Pack: Mega Emblem Event",
+  "classification": "human_event_battle",
+  "auto_control_observed": false,
+  "turn_count": 8,
+  "final_points": {
+    "owner": 0,
+    "opponent": 3
+  },
+  "limits": [
+    "No full discard pile is opened in the source. Visible top previews and observed transactions are retained separately.",
+    "Hidden opponent card identities and private prompt choices remain unknown; public actions are recorded in visible resolution order.",
+    "Candidates are individually qualified:53.8 is intact but zoomed before consumption;90.2 is a consumed three-card hand. Later offset candidates are post-play. Selected53.2/89.2/187.95/269.7 remain intact native preplay hands; exact decoded PTS unmeasured.",
+    "Turn5 selected five-slot fan has a partly off-screen leftmost Lucky Ice Pop. Its identity is supported by filmed continuity from the preceding hand; no deck-membership inference is used.",
+    "QR establishes twenty semantic card slots and Darkness, with artwork/rarity unspecified. The initial dated live log snapshot lacks this Nidoking revision; a prepared deck entry is not a saved live snapshot.",
+    "Input/reveal times are visually localized source-local requests, not measured PTS or exact touch telemetry.",
+    "Terminal board324 is post-removal with opponent2 visible points. The separate327 and339.7 frames establish awarded terminal3 points; Darkrai0HP is a separate321/322 pre-removal state."
+  ],
+  "lead_checked": false
+}

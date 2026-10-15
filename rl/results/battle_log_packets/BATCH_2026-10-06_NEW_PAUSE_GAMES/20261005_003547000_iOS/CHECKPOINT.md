@@ -1,0 +1,1 @@
+Full-source review and structured packet submitted for independent acceptance. All14 turns and ending covered. Files: REVIEW.md, COVERAGE.md, SUMMARY.json, UNCERTAINTIES.json, PAUSE_GAME.json, DECK_USED.json, TURN_LEDGER.json, TURN_EVIDENCE.json, retained turn_evidence and QR PNG/receipt. Exact live-log deck mismatch unresolved; original remains unmoved.

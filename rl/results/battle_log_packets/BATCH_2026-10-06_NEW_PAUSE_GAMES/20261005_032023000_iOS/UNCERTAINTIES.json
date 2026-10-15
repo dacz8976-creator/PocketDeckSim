@@ -1,0 +1,69 @@
+{
+  "source_video": "20261005_032023000_iOS.MP4",
+  "source_sha256": "6fadd948b5526f22007c2ca2b11516c27801c2fbf2af57c290b214f9327f36a9",
+  "items": [
+    {
+      "id": "U1",
+      "severity": "recording_limit",
+      "topic": "Opponent hand identities",
+      "interval_seconds": [
+        44,
+        469
+      ],
+      "finding": "Hidden card backs do not establish names. Normal/search identities remain null unless revealed."
+    },
+    {
+      "id": "U2",
+      "severity": "recording_limit",
+      "topic": "Random selection order",
+      "interval_seconds": [
+        283,
+        287
+      ],
+      "finding": "Aggregate50 and100 shown on two Honedge; individual three target-selection order hidden."
+    },
+    {
+      "id": "U3",
+      "severity": "recording_limit",
+      "topic": "Random selection order",
+      "interval_seconds": [
+        386,
+        387
+      ],
+      "finding": "Aggregate0 to Active and50 to each Bench shown simultaneously; do not invent individual ordering."
+    },
+    {
+      "id": "U4",
+      "severity": "recording_limit",
+      "topic": "Discard views",
+      "interval_seconds": [
+        0,
+        480.65
+      ],
+      "finding": "No full pile opened; top previews and play-derived events only."
+    },
+    {
+      "id": "U5",
+      "severity": "provenance_limit",
+      "topic": "Exact live list",
+      "finding": "Exact20 local filmed QR is available; new deck prepared but external saved/reloaded list is not supplied to worker."
+    },
+    {
+      "id": "U6",
+      "severity": "recording_limit",
+      "topic": "Queue",
+      "finding": "Human opponent found and postgame thanks option; exact ranked/private/casual queue label not shown."
+    },
+    {
+      "id": "U7",
+      "severity": "recording_limit",
+      "topic": "Random final selection order",
+      "interval_seconds": [
+        460,
+        465
+      ],
+      "finding": "0 Active and50 to each Bench resolve together. Both Bench are0 at463; removal at464-465; three points separate467."
+    }
+  ],
+  "consequential_ambiguities_needing_astra": []
+}

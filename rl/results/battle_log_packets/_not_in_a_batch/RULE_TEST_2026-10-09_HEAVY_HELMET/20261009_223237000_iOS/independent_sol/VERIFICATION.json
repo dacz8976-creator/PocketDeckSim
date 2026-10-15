@@ -1,0 +1,47 @@
+{
+  "decision": "ACCEPT",
+  "reviewer": "/root/helmet_independent",
+  "model_role": "assigned Sol bounded independent source verifier",
+  "review_date": "2026-10-09",
+  "source_basename": "20261009_223237000_iOS.MP4",
+  "source_sha256": "7766e17b4e1141a72066e101b80869550bae11f72aa064951dfd7d23e8579f3f",
+  "source_identity_provenance": "lead verified intake and shared SOURCE.json; independent exact-seek source reads; no redundant full hash",
+  "scope": "Independent decisive sequence, coverage reconciliation, selected ordinary turn7, supplementary ending exchanges and result; not a second full visual pass",
+  "primary_files_read_and_reconciled": {
+    "REVIEW.md": "55e3c875f552b700f04765740cb38311e73bede5bd88e58509a4c38b4c26890c",
+    "COVERAGE.md": "711f1dfb0376554b8d801dfb77b575612c614317c837a432b30cc3034cd94d30",
+    "FINDINGS.json": "a06822c8dfc227ce4c8cc41337c4e5084240dd8b96858bd9c7f93585b798a9e1"
+  },
+  "checks": {
+    "primary_all_15_turn_coverage_reconciled": true,
+    "selected_ordinary_turn_independently_inspected": 7,
+    "exact_native_decisive_frames_inspected": true,
+    "heavy_helmet_identity_and_persistence": true,
+    "wailmer_retreat_cost": 3,
+    "wave_splash_water_cost": 3,
+    "normal_attack_positive_control": {"printed": 30, "observed": 10, "hp_before": 100, "hp_after": 90},
+    "primary_attack": {"name": "Wave Splash", "damage": 60, "togedemaru_hp_before": 80, "togedemaru_hp_after": 20},
+    "return_damage": {"printed": 30, "observed": 10, "wailmer_hp_before": 90, "wailmer_hp_after": 80, "helmet_glow": true},
+    "settled_post_state_checked": true,
+    "result": {"outcome": "victory", "owner_points": 3, "opponent_points": 0, "turns": 15, "damage_done": 380, "went_first": true},
+    "computer_classification": true,
+    "no_ladder_or_pause_games_entry_authorized": true
+  },
+  "supported_conclusion": "In this recording Heavy Helmet on active retreat3 Wailmer reduced Bristling Spikes attack30 to10 and its attack-created return30 to10; decisive settled Wailmer90->80 after WaveSplash60 taking Togedemaru80->20.",
+  "exact_seek_evidence": [
+    {"seconds": 77.5, "file": "exact_77.5s.jpg", "purpose": "Wailmer Helmet, retreat3, threeWater cost"},
+    {"seconds": 185, "file": "exact_185s.jpg", "purpose": "Positive control pre-state100HP"},
+    {"seconds": 187.5, "file": "exact_187.5s.jpg", "purpose": "Normal attack damage10 animation"},
+    {"seconds": 190, "file": "exact_190s.jpg", "purpose": "Positive control settled90HP and armed return30"},
+    {"seconds": 207.5, "file": "exact_207.5s.jpg", "purpose": "Primary pre-attack90HP and Togedemaru80"},
+    {"seconds": 211, "file": "exact_211s.jpg", "purpose": "WaveSplash complete Togedemaru20, Wailmer90 before return"},
+    {"seconds": 212.5, "file": "exact_212.5s.jpg", "purpose": "Helmet glow and return damage10"},
+    {"seconds": 214, "file": "exact_214s.jpg", "purpose": "Settled Wailmer80, Togedemaru20"},
+    {"seconds": 217.5, "file": "exact_217.5s.jpg", "purpose": "Persistent settled80HP/20HP and Helmet"}
+  ],
+  "shared_evidence_reused": ["sheet_01.jpg", "sheet_02.jpg", "sheet_03.jpg", "dense_sheet_05.jpg", "dense_sheet_11.jpg", "dense/sec_125.jpg", "dense/sec_134.jpg", "dense/sec_135.jpg", "dense/sec_309.jpg", "frames/overview_009.jpg", "frames/overview_016.jpg", "frames/overview_027.jpg", "frames/overview_028.jpg", "frames/overview_038.jpg", "frames/overview_041.jpg", "frames/overview_042.jpg", "frames/overview_043.jpg", "frames/overview_044.jpg", "frames/overview_054.jpg", "frames/overview_056.jpg", "frames/overview_057.jpg", "frames/overview_058.jpg", "frames/overview_059.jpg", "frames/overview_060.jpg", "frames/overview_061.jpg", "frames/overview_062.jpg", "wailmer_cost_native.jpg", "wailmer_detail_native.jpg"],
+  "correction_reconciliation": "Early reviewer reading1Water+2Colorless was withdrawn after native cost crop inspection; correct3Water is preserved in accepted primary report and no artifact cost correction is warranted.",
+  "required_changes": [],
+  "limits": ["Specific tested HeavyHelmet/BristlingSpikes pair only; other return cards, abilities, defensive modifiers and special conditions untested", "Hidden cards and exact20-card owner deck unknown", "Tiny collection identifiers not independently read", "Ordinary timestamps approximate filter-centered positions; exact-seek key frames requested at named seconds", "Independent check is bounded; full coverage belongs to the primary reviewer"],
+  "mutations": "Only independent_sol verification files and targeted exact evidence; no source, primary packet, index, registry, archive, browser or simulator mutation"
+}

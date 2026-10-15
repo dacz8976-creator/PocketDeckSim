@@ -1,0 +1,1210 @@
+{
+  "source_video": "20261012_210823000_iOS.MP4",
+  "source_sha256": "ca0f516306d5ffd8bf18326d4057d357160f77aaa019efdfd87303336b1291b9",
+  "audited_at_utc": "2026-10-12T23:49:12.387885+00:00",
+  "native_frame_count": 23,
+  "board_player_records": 48,
+  "records": [
+    {
+      "turn_number": 1,
+      "board_field": "board_at_start",
+      "player": "opponent",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 38,
+      "evidence_ids": [
+        "native_0038.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0038.00_opponent.png"
+    },
+    {
+      "turn_number": 1,
+      "board_field": "board_at_start",
+      "player": "owner",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 38,
+      "evidence_ids": [
+        "native_0038.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0038.00_owner.png"
+    },
+    {
+      "turn_number": 1,
+      "board_field": "board_after",
+      "player": "opponent",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 50,
+      "evidence_ids": [
+        "native_0050.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0050.00_opponent.png"
+    },
+    {
+      "turn_number": 1,
+      "board_field": "board_after",
+      "player": "owner",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 50,
+      "evidence_ids": [
+        "native_0050.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0050.00_owner.png"
+    },
+    {
+      "turn_number": 2,
+      "board_field": "board_at_start",
+      "player": "opponent",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 54.5,
+      "evidence_ids": [
+        "native_0054.50"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0054.50_opponent.png"
+    },
+    {
+      "turn_number": 2,
+      "board_field": "board_at_start",
+      "player": "owner",
+      "this_turn": {
+        "type": "Darkness",
+        "count": 1,
+        "available": true,
+        "display_status": "filled_Darkness_orb"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 54.5,
+      "evidence_ids": [
+        "native_0054.50"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0054.50_owner.png"
+    },
+    {
+      "turn_number": 2,
+      "board_field": "board_after",
+      "player": "opponent",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 85.5,
+      "evidence_ids": [
+        "native_0085.50"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0085.50_opponent.png"
+    },
+    {
+      "turn_number": 2,
+      "board_field": "board_after",
+      "player": "owner",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 85.5,
+      "evidence_ids": [
+        "native_0085.50"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0085.50_owner.png"
+    },
+    {
+      "turn_number": 3,
+      "board_field": "board_at_start",
+      "player": "opponent",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 87,
+      "evidence_ids": [
+        "native_0087.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0087.00_opponent.png"
+    },
+    {
+      "turn_number": 3,
+      "board_field": "board_at_start",
+      "player": "owner",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 87,
+      "evidence_ids": [
+        "native_0087.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0087.00_owner.png"
+    },
+    {
+      "turn_number": 3,
+      "board_field": "board_after",
+      "player": "opponent",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 114,
+      "evidence_ids": [
+        "native_0114.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0114.00_opponent.png"
+    },
+    {
+      "turn_number": 3,
+      "board_field": "board_after",
+      "player": "owner",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 114,
+      "evidence_ids": [
+        "native_0114.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0114.00_owner.png"
+    },
+    {
+      "turn_number": 4,
+      "board_field": "board_at_start",
+      "player": "opponent",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 117,
+      "evidence_ids": [
+        "native_0117.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0117.00_opponent.png"
+    },
+    {
+      "turn_number": 4,
+      "board_field": "board_at_start",
+      "player": "owner",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": null,
+        "count": null,
+        "available": null,
+        "display_status": "temporarily_absent_glyph"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 117,
+      "evidence_ids": [
+        "native_0117.00"
+      ],
+      "limit_reason": "The small next glyph is temporarily absent during this generation or attack phase. Future Energy type, count and availability are not established at this frame.",
+      "audit_crop_path": "energy_zone_audit/t0117.00_owner.png"
+    },
+    {
+      "turn_number": 4,
+      "board_field": "board_after",
+      "player": "opponent",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 160,
+      "evidence_ids": [
+        "native_0160.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0160.00_opponent.png"
+    },
+    {
+      "turn_number": 4,
+      "board_field": "board_after",
+      "player": "owner",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 160,
+      "evidence_ids": [
+        "native_0160.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0160.00_owner.png"
+    },
+    {
+      "turn_number": 5,
+      "board_field": "board_at_start",
+      "player": "opponent",
+      "this_turn": {
+        "type": "Darkness",
+        "count": 1,
+        "available": true,
+        "display_status": "filled_Darkness_orb"
+      },
+      "next": {
+        "type": null,
+        "count": null,
+        "available": null,
+        "display_status": "obscured_by_prompt"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value. The top of the filled current Darkness orb remains readable above the prompt; the next preview is obscured.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 166,
+      "evidence_ids": [
+        "native_0166.00"
+      ],
+      "limit_reason": "The small next glyph is obscured by the opponent prompt at 166 seconds.",
+      "audit_crop_path": "energy_zone_audit/t0166.00_opponent.png"
+    },
+    {
+      "turn_number": 5,
+      "board_field": "board_at_start",
+      "player": "owner",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 166,
+      "evidence_ids": [
+        "native_0166.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0166.00_owner.png"
+    },
+    {
+      "turn_number": 5,
+      "board_field": "board_after",
+      "player": "opponent",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": null,
+        "count": null,
+        "available": null,
+        "display_status": "temporarily_absent_glyph"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 200,
+      "evidence_ids": [
+        "native_0200.00"
+      ],
+      "limit_reason": "The small next glyph is temporarily absent during this generation or attack phase. Future Energy type, count and availability are not established at this frame.",
+      "audit_crop_path": "energy_zone_audit/t0200.00_opponent.png"
+    },
+    {
+      "turn_number": 5,
+      "board_field": "board_after",
+      "player": "owner",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": null,
+        "count": null,
+        "available": null,
+        "display_status": "temporarily_absent_glyph"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 200,
+      "evidence_ids": [
+        "native_0200.00"
+      ],
+      "limit_reason": "The small next glyph is temporarily absent during this generation or attack phase. Future Energy type, count and availability are not established at this frame.",
+      "audit_crop_path": "energy_zone_audit/t0200.00_owner.png"
+    },
+    {
+      "turn_number": 6,
+      "board_field": "board_at_start",
+      "player": "opponent",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 206.5,
+      "evidence_ids": [
+        "native_0206.50"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0206.50_opponent.png"
+    },
+    {
+      "turn_number": 6,
+      "board_field": "board_at_start",
+      "player": "owner",
+      "this_turn": {
+        "type": "Darkness",
+        "count": 1,
+        "available": true,
+        "display_status": "filled_Darkness_orb"
+      },
+      "next": {
+        "type": null,
+        "count": null,
+        "available": null,
+        "display_status": "temporarily_absent_glyph"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 206.5,
+      "evidence_ids": [
+        "native_0206.50"
+      ],
+      "limit_reason": "The small next glyph is temporarily absent during this generation or attack phase. Future Energy type, count and availability are not established at this frame.",
+      "audit_crop_path": "energy_zone_audit/t0206.50_owner.png"
+    },
+    {
+      "turn_number": 6,
+      "board_field": "board_after",
+      "player": "opponent",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 220.5,
+      "evidence_ids": [
+        "native_0220.50"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0220.50_opponent.png"
+    },
+    {
+      "turn_number": 6,
+      "board_field": "board_after",
+      "player": "owner",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 220.5,
+      "evidence_ids": [
+        "native_0220.50"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0220.50_owner.png"
+    },
+    {
+      "turn_number": 7,
+      "board_field": "board_at_start",
+      "player": "opponent",
+      "this_turn": {
+        "type": "Darkness",
+        "count": 1,
+        "available": true,
+        "display_status": "filled_Darkness_orb"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 224,
+      "evidence_ids": [
+        "native_0224.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0224.00_opponent.png"
+    },
+    {
+      "turn_number": 7,
+      "board_field": "board_at_start",
+      "player": "owner",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 224,
+      "evidence_ids": [
+        "native_0224.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0224.00_owner.png"
+    },
+    {
+      "turn_number": 7,
+      "board_field": "board_after",
+      "player": "opponent",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 287,
+      "evidence_ids": [
+        "native_0287.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0287.00_opponent.png"
+    },
+    {
+      "turn_number": 7,
+      "board_field": "board_after",
+      "player": "owner",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 287,
+      "evidence_ids": [
+        "native_0287.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0287.00_owner.png"
+    },
+    {
+      "turn_number": 8,
+      "board_field": "board_at_start",
+      "player": "opponent",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 292,
+      "evidence_ids": [
+        "native_0292.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0292.00_opponent.png"
+    },
+    {
+      "turn_number": 8,
+      "board_field": "board_at_start",
+      "player": "owner",
+      "this_turn": {
+        "type": "Darkness",
+        "count": 1,
+        "available": true,
+        "display_status": "filled_Darkness_orb"
+      },
+      "next": {
+        "type": null,
+        "count": null,
+        "available": null,
+        "display_status": "temporarily_absent_glyph"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 292,
+      "evidence_ids": [
+        "native_0292.00"
+      ],
+      "limit_reason": "The small next glyph is temporarily absent during this generation or attack phase. Future Energy type, count and availability are not established at this frame.",
+      "audit_crop_path": "energy_zone_audit/t0292.00_owner.png"
+    },
+    {
+      "turn_number": 8,
+      "board_field": "board_after",
+      "player": "opponent",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 314,
+      "evidence_ids": [
+        "native_0314.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0314.00_opponent.png"
+    },
+    {
+      "turn_number": 8,
+      "board_field": "board_after",
+      "player": "owner",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 314,
+      "evidence_ids": [
+        "native_0314.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0314.00_owner.png"
+    },
+    {
+      "turn_number": 9,
+      "board_field": "board_at_start",
+      "player": "opponent",
+      "this_turn": {
+        "type": "Darkness",
+        "count": 1,
+        "available": true,
+        "display_status": "filled_Darkness_orb"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 316,
+      "evidence_ids": [
+        "native_0316.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0316.00_opponent.png"
+    },
+    {
+      "turn_number": 9,
+      "board_field": "board_at_start",
+      "player": "owner",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 316,
+      "evidence_ids": [
+        "native_0316.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0316.00_owner.png"
+    },
+    {
+      "turn_number": 9,
+      "board_field": "board_after",
+      "player": "opponent",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 352,
+      "evidence_ids": [
+        "native_0352.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0352.00_opponent.png"
+    },
+    {
+      "turn_number": 9,
+      "board_field": "board_after",
+      "player": "owner",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 352,
+      "evidence_ids": [
+        "native_0352.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0352.00_owner.png"
+    },
+    {
+      "turn_number": 10,
+      "board_field": "board_at_start",
+      "player": "opponent",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 355.5,
+      "evidence_ids": [
+        "native_0355.50"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0355.50_opponent.png"
+    },
+    {
+      "turn_number": 10,
+      "board_field": "board_at_start",
+      "player": "owner",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 355.5,
+      "evidence_ids": [
+        "native_0355.50"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0355.50_owner.png"
+    },
+    {
+      "turn_number": 10,
+      "board_field": "board_after",
+      "player": "opponent",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 388,
+      "evidence_ids": [
+        "native_0388.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0388.00_opponent.png"
+    },
+    {
+      "turn_number": 10,
+      "board_field": "board_after",
+      "player": "owner",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 388,
+      "evidence_ids": [
+        "native_0388.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0388.00_owner.png"
+    },
+    {
+      "turn_number": 11,
+      "board_field": "board_at_start",
+      "player": "opponent",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 388,
+      "evidence_ids": [
+        "native_0388.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0388.00_opponent.png"
+    },
+    {
+      "turn_number": 11,
+      "board_field": "board_at_start",
+      "player": "owner",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 388,
+      "evidence_ids": [
+        "native_0388.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0388.00_owner.png"
+    },
+    {
+      "turn_number": 11,
+      "board_field": "board_after",
+      "player": "opponent",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 426,
+      "evidence_ids": [
+        "native_0426.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0426.00_opponent.png"
+    },
+    {
+      "turn_number": 11,
+      "board_field": "board_after",
+      "player": "owner",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 426,
+      "evidence_ids": [
+        "native_0426.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0426.00_owner.png"
+    },
+    {
+      "turn_number": 12,
+      "board_field": "board_at_start",
+      "player": "opponent",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 429,
+      "evidence_ids": [
+        "native_0429.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0429.00_opponent.png"
+    },
+    {
+      "turn_number": 12,
+      "board_field": "board_at_start",
+      "player": "owner",
+      "this_turn": {
+        "type": "Darkness",
+        "count": 1,
+        "available": true,
+        "display_status": "filled_Darkness_orb"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 429,
+      "evidence_ids": [
+        "native_0429.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0429.00_owner.png"
+    },
+    {
+      "turn_number": 12,
+      "board_field": "board_after",
+      "player": "opponent",
+      "this_turn": {
+        "type": null,
+        "count": 0,
+        "available": false,
+        "display_status": "visible_empty_current_circle"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 432,
+      "evidence_ids": [
+        "native_0432.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0432.00_opponent.png"
+    },
+    {
+      "turn_number": 12,
+      "board_field": "board_after",
+      "player": "owner",
+      "this_turn": {
+        "type": "Darkness",
+        "count": 1,
+        "available": true,
+        "display_status": "filled_Darkness_orb"
+      },
+      "next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false,
+        "display_status": "visible_Darkness_preview"
+      },
+      "basis": "Direct inspection of large current circle and small next glyph at the stated native frame. No deck configuration or subsequent frame supplies an absent value.",
+      "source_video": "20261012_210823000_iOS.MP4",
+      "source_seconds": 432,
+      "evidence_ids": [
+        "native_0432.00"
+      ],
+      "limit_reason": null,
+      "audit_crop_path": "energy_zone_audit/t0432.00_owner.png"
+    }
+  ],
+  "method": "Every one of the 24 start/end board records has both player zones inspected against its own frame. The 23 unique frames are retained as native crops and three contact sheets. No deck or later-frame default supplies an absent field."
+}

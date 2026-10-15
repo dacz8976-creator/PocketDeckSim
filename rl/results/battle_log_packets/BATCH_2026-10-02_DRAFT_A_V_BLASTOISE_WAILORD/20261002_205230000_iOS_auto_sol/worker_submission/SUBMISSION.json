@@ -1,0 +1,27 @@
+{
+  "source_video": "20261002_205230000_iOS.MP4",
+  "source_sha256": "5e1e5a7a8d7c8a2e9d1e8f69f978d49f2f772fbba3a7fd2c884ae997a3fa1d8c",
+  "reviewer": "/root/drafta_auto_205230",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "complete_first_pass": true,
+  "submitted_utc": "2026-10-02T23:56:05.972389+00:00",
+  "files": {
+    "SOURCE.json": "ebb4391c909efb2e2002cc51f82be050b1c51e01512639468cd20c433c67eb75",
+    "ASSIGNMENT.json": "4a8e99e6af275bf62b2304fdf1d5dab09df8f13b93107fc5aeccb395b9d3b864",
+    "REVIEW.md": "485cb2ce8141d1bb9fccd3142ed3c19fe3327ecf46f28d7e30b92f9d9e905842",
+    "COVERAGE.md": "b3af72a50816a22296031d427d026732e2b9360a3f707dcec64e6c6e6ec643ef",
+    "SUMMARY.json": "a96923c644b4abdb81b45a65053ab886e701a6a2de9f875a76bb424c6fc3553e",
+    "UNCERTAINTIES.json": "279fa5fe5c87f83518d352013209e48738f18868c5e83b9e8b9bc5dd5aa894fe",
+    "PAUSE_GAME.json": "d7366ed6a2864a1b31831cfd1b2153cadec39c9537259c06d793d6a665374eb4",
+    "DECK_USED.json": "34a6f739586805662670aba6bd1d4c8372a87af111a12ec547164e08e9a7bb2d",
+    "TURN_LEDGER.json": "6642735dc7b7d001f5ca28d87ea69cabc9299fa6ce068910df94e185be1b7802",
+    "TURN_EVIDENCE.json": "812667642efb1d06b78b025fc460fabe5ce577b8b49908dd8d6b4c243b3f5e85",
+    "TURN_TABLE.md": "a3c94fbf019f879e23bedd482c8b4f514ed93d1dd0d73fc2876b2405aaf6f6d0",
+    "METRICS.json": "464010eb42fe4a62ce76c406da7e56635c5ce3cfb49734a694d29045e0e482e0",
+    "EXTRACTION_MANIFEST.json": "07d227e87adccbd1ec89d3b3f071d03ccc8006faa14ce54ac9fdc037a0d9c64f"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "independent_acceptance": "pending",
+  "validation": "16 sequential rows; exact 20-card snapshot; all eight owner timed candidates, selected preplay and before-attack evidence present; all row evidence IDs resolve; no template flags remain."
+}

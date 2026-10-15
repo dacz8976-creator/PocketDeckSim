@@ -1,0 +1,84 @@
+{
+  "game_id": "20260929_002539000",
+  "old_packet_preserved": true,
+  "accepted_outcome_preserved": true,
+  "items": [
+    {
+      "turn": 1,
+      "old_quote": "Plays Poké Ball and benches Dratini (60 HP) and Mega Rayquaza ex (180 HP).",
+      "new_field": "Pokémon Communication also played; returned/replacementfaces hidden",
+      "relationship": "omission; no outcome change",
+      "evidence_ids": [
+        "F0051.60",
+        "F0059.00",
+        "R0063.00"
+      ]
+    },
+    {
+      "turn": 2,
+      "old_quote": "Plays Professor's Research and attaches Giant Cape to Active Entei ex",
+      "new_field": "Cape before Research; conjunction doesnotexplicitlyfixorder. Research Ball+Ice Pop, search Enteialt andnormal Fire Active plus Pulse Copycat added.",
+      "relationship": "orderclarification/omission",
+      "evidence_ids": [
+        "F0067.00",
+        "F0070.00",
+        "F0076.00",
+        "F0078.00",
+        "R0090.00",
+        "F0094.00"
+      ]
+    },
+    {
+      "turn": 3,
+      "old_quote": "Evolves Dratini into Dragonair (80 HP), plays Rainbow Cave, and develops Energy on Drampa.",
+      "new_field": "Thieving Machine recoversowner Ball, opponent Ball used; normal Fire ire plusdiscard Lightning Blessing; Firediscardedby Power Blast",
+      "relationship": "omission; no Researchplayasserted",
+      "evidence_ids": [
+        "R0099.00",
+        "F0112.00",
+        "F0115.00",
+        "F0117.00",
+        "F0127.00",
+        "R0129.00",
+        "F0138.00"
+      ]
+    },
+    {
+      "turn": 6,
+      "old_quote": "cycles the hand with Copycat",
+      "new_field": "Shuffle3; refill Starting Plains+Rainbow Cave matching opponent fan 2; Pulse Rainbow Cave; normal Fire bench and Patch FActive distinguished",
+      "relationship": "addednameddraw/typedtargetfields",
+      "evidence_ids": [
+        "F0241.00",
+        "F0251.00",
+        "F0269.00",
+        "F0286.00"
+      ]
+    },
+    {
+      "turn": 7,
+      "old_quote": "the other Drampa (120 HP with Starting Plains) moves Active",
+      "new_field": "Second Drampa benched T7, normal Lightning Raythen retreatone L; Blessingrestores Lightning to Drampa; no attackatone Energy",
+      "relationship": "additiveendpoint/actiondetail",
+      "evidence_ids": [
+        "F0293.00",
+        "F0295.00",
+        "F0302.00",
+        "F0305.00",
+        "F0310.00"
+      ]
+    },
+    {
+      "turn": 9,
+      "old_quote": "Mega Rayquaza ex attacks and KOs the damaged Active Entei ex.",
+      "new_field": "Mega Burst100, clears Fire+Lightning; owner Entei90HPKO,2points; remaining alternate Entei F2promoted",
+      "relationship": "addedattack/typed Energydetails",
+      "evidence_ids": [
+        "F0356.00",
+        "F0361.00",
+        "F0362.00",
+        "R0372.00"
+      ]
+    }
+  ]
+}

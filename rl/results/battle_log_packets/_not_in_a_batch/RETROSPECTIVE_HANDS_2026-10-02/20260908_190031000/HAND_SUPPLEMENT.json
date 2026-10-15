@@ -1,0 +1,259 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20260908_190031000",
+  "sources": [
+    {
+      "video_basename": "20260908_190031000_iOS.MP4",
+      "sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "source_json": "SOURCE_REFERENCE.json"
+    }
+  ],
+  "target_rows": 2,
+  "target_turn_numbers": [
+    2,
+    4
+  ],
+  "capture_status": "complete_with_recording_limits",
+  "rows": [
+    {
+      "turn_number": 2,
+      "draw_animation_end_seconds": 51,
+      "selected_start_evidence_ids": [
+        "t0051.00"
+      ],
+      "before_end_evidence_ids": [
+        "t0087.00"
+      ],
+      "candidates": [
+        {
+          "evidence_id": "t0052.00",
+          "requested_source_seconds": 52,
+          "offset_after_draw_seconds": 1,
+          "observation": "Untouched unzoomed5-card hand"
+        },
+        {
+          "evidence_id": "t0054.00",
+          "requested_source_seconds": 54,
+          "offset_after_draw_seconds": 3,
+          "observation": "Poké Ball already played: four cards remain; not start substitute"
+        },
+        {
+          "evidence_id": "t0057.00",
+          "requested_source_seconds": 57,
+          "offset_after_draw_seconds": 6,
+          "observation": "Darkrai search reveal overlay; not untouched start"
+        }
+      ],
+      "start_hand": {
+        "cards_left_to_right": [
+          "Small Balloon",
+          "Copycat",
+          "Professor's Research",
+          "Poké Ball",
+          "Mega Altaria ex"
+        ],
+        "count": 5,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0051.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "before_end_hand": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Mega Altaria ex",
+          "Training Area"
+        ],
+        "count": 3,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0087.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "named_draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Mega Altaria ex",
+              "reveal_position": 1,
+              "source_video": "20260908_190031000_iOS.MP4",
+              "timestamp_seconds": 51,
+              "evidence_ids": [
+                "t0051.00"
+              ],
+              "basis": "direct native reveal",
+              "limit_reason": null
+            }
+          ],
+          "timestamp_seconds": 51,
+          "source_video": "20260908_190031000_iOS.MP4",
+          "evidence_ids": [
+            "t0051.00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poké Ball",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": "Darkrai",
+              "reveal_position": 1,
+              "source_video": "20260908_190031000_iOS.MP4",
+              "timestamp_seconds": 57,
+              "evidence_ids": [
+                "t0057.00"
+              ],
+              "basis": "direct native reveal",
+              "limit_reason": null
+            }
+          ],
+          "timestamp_seconds": 57,
+          "source_video": "20260908_190031000_iOS.MP4",
+          "evidence_ids": [
+            "t0057.00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "supporter_draw",
+          "caused_by": "Professor's Research",
+          "linked_play_order": 2,
+          "cards_in_reveal_order": [
+            {
+              "name": "Swablu",
+              "reveal_position": 1,
+              "source_video": "20260908_190031000_iOS.MP4",
+              "timestamp_seconds": 64,
+              "evidence_ids": [
+                "t0064.00"
+              ],
+              "basis": "direct native reveal",
+              "limit_reason": null
+            },
+            {
+              "name": "Training Area",
+              "reveal_position": 2,
+              "source_video": "20260908_190031000_iOS.MP4",
+              "timestamp_seconds": 65,
+              "evidence_ids": [
+                "t0065.00"
+              ],
+              "basis": "direct native reveal",
+              "limit_reason": null
+            }
+          ],
+          "timestamp_seconds": 64,
+          "source_video": "20260908_190031000_iOS.MP4",
+          "evidence_ids": [
+            "t0064.00",
+            "t0065.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "capture_status": "complete_with_recording_limits"
+    },
+    {
+      "turn_number": 4,
+      "draw_animation_end_seconds": 133,
+      "selected_start_evidence_ids": [
+        "t0133.00"
+      ],
+      "before_end_evidence_ids": [
+        "t0153.00"
+      ],
+      "candidates": [
+        {
+          "evidence_id": "t0134.00",
+          "requested_source_seconds": 134,
+          "offset_after_draw_seconds": 1,
+          "observation": "Field Blower already moving/played; use133 dense preplay"
+        },
+        {
+          "evidence_id": "t0136.00",
+          "requested_source_seconds": 136,
+          "offset_after_draw_seconds": 3,
+          "observation": "Field Blower removal animation; three remaining cards"
+        },
+        {
+          "evidence_id": "t0139.00",
+          "requested_source_seconds": 139,
+          "offset_after_draw_seconds": 6,
+          "observation": "Helmet removed; three cards, not start substitute"
+        }
+      ],
+      "start_hand": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Mega Altaria ex",
+          "Training Area",
+          "Field Blower"
+        ],
+        "count": 4,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0133.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "before_end_hand": {
+        "cards_left_to_right": [
+          "Copycat"
+        ],
+        "count": 1,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0153.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "named_draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Field Blower",
+              "reveal_position": 1,
+              "source_video": "20260908_190031000_iOS.MP4",
+              "timestamp_seconds": 132,
+              "evidence_ids": [
+                "t0132.00"
+              ],
+              "basis": "direct native reveal",
+              "limit_reason": null
+            }
+          ],
+          "timestamp_seconds": 132,
+          "source_video": "20260908_190031000_iOS.MP4",
+          "evidence_ids": [
+            "t0132.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "capture_status": "complete_with_recording_limits"
+    }
+  ],
+  "limits": [
+    "Opponent unplayed cards and normal draw identities are hidden by card backs.",
+    "No discard panel was opened in the retained 1 fps locator scan; visible pile-top cards are recorded separately, full pile identities and order remain null.",
+    "One reduced sample per second does not examine every instant; brief subsecond prompts or panels can be missed.",
+    "Requested source-local times are retained; actual decoded frame PTS was not independently measured.",
+    "The exact historical 20-card log list is unavailable; visible core only."
+  ],
+  "independent_acceptance_status": "pending"
+}

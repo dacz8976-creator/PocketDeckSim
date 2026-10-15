@@ -1,0 +1,2259 @@
+{
+  "source_video": "20261002_205731000_iOS.MP4",
+  "source_sha256": "f1ce8e51bc351fc008563c73a72aa7915f0389707375437068c998afd0190199",
+  "reviewer": "/root supplemental author",
+  "created_utc": "2026-10-03T00:32:18.109052+00:00",
+  "guide_receipt": "../GUIDE_UPDATE_RECEIPT.json",
+  "independent_acceptance_pending": true,
+  "original_submission_manifest": "SUBMISSION.json",
+  "original_submission_sha256": "220c27a5b6b464dae05afe49c8d764e15063e6499378ce689d99be8d2b12ec03",
+  "status": "source_bound_inventory_pending_independent_supplement_check",
+  "cards": [
+    {
+      "name": "Alolan Ninetales ex",
+      "minimum_distinct_copies_seen": 2,
+      "copy_count_evidence_ids": [
+        "F0056.70",
+        "F0247.00"
+      ],
+      "copy_count_basis": "Two differently illustrated Ninetales together in hand at T4; later both physically in play.",
+      "simultaneous_hand_duplicate_observations": [
+        {
+          "count": 2,
+          "context": "owner_hand_start",
+          "turn_number": 4,
+          "evidence_ids": [
+            "F0056.70"
+          ]
+        },
+        {
+          "count": 2,
+          "context": "owner_hand_end",
+          "turn_number": 4,
+          "evidence_ids": [
+            "F0056.70",
+            "F0062.00",
+            "F0077.50"
+          ]
+        },
+        {
+          "count": 2,
+          "context": "owner_hand_start",
+          "turn_number": 6,
+          "evidence_ids": [
+            "F0097.70"
+          ]
+        },
+        {
+          "count": 2,
+          "context": "owner_hand_end",
+          "turn_number": 6,
+          "evidence_ids": [
+            "F0097.70",
+            "F0100.00",
+            "F0105.00"
+          ]
+        },
+        {
+          "count": 2,
+          "context": "owner_hand_start",
+          "turn_number": 8,
+          "evidence_ids": [
+            "F0131.70"
+          ]
+        }
+      ],
+      "occurrences": [
+        {
+          "context": "five-card opening",
+          "turn_number": null,
+          "source_seconds": 13.9,
+          "evidence_ids": [
+            "F0013.90"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 2,
+          "source_seconds": 29.7133,
+          "evidence_ids": [
+            "F0029.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 2,
+          "source_seconds": 29.7133,
+          "evidence_ids": [
+            "F0029.70",
+            "F0031.20",
+            "F0039.00"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 4,
+          "source_seconds": 56.7017,
+          "evidence_ids": [
+            "F0056.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 4,
+          "source_seconds": 56.7017,
+          "evidence_ids": [
+            "F0056.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 4,
+          "source_seconds": 56.7017,
+          "evidence_ids": [
+            "F0056.70",
+            "F0062.00",
+            "F0077.50"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 4,
+          "source_seconds": 56.7017,
+          "evidence_ids": [
+            "F0056.70",
+            "F0062.00",
+            "F0077.50"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "normal_draw",
+          "turn_number": 4,
+          "source_seconds": 54,
+          "evidence_ids": [
+            "F0056.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 6,
+          "source_seconds": 97.7083,
+          "evidence_ids": [
+            "F0097.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 6,
+          "source_seconds": 97.7083,
+          "evidence_ids": [
+            "F0097.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 6,
+          "source_seconds": 97.7083,
+          "evidence_ids": [
+            "F0097.70",
+            "F0100.00",
+            "F0105.00"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 6,
+          "source_seconds": 97.7083,
+          "evidence_ids": [
+            "F0097.70",
+            "F0100.00",
+            "F0105.00"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 8,
+          "source_seconds": 131.705,
+          "evidence_ids": [
+            "F0131.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 8,
+          "source_seconds": 131.705,
+          "evidence_ids": [
+            "F0131.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 8,
+          "source_seconds": 131.705,
+          "evidence_ids": [
+            "F0131.70",
+            "F0149.00",
+            "F0157.00"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner evolution",
+          "turn_number": 8,
+          "source_seconds": 133,
+          "evidence_ids": [
+            "F0131.70",
+            "F0149.00",
+            "F0157.00"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "board_after",
+          "turn_number": 8,
+          "source_seconds": 131.705,
+          "evidence_ids": [
+            "F0131.70",
+            "F0149.00",
+            "F0157.00"
+          ],
+          "instance_id": "O2"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 9,
+          "source_seconds": 157.012,
+          "evidence_ids": [
+            "F0157.00"
+          ],
+          "instance_id": "O2"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 9,
+          "source_seconds": 164.015,
+          "evidence_ids": [
+            "F0164.00",
+            "F0168.00",
+            "F0175.00",
+            "F0176.00",
+            "F0177.00",
+            "F0179.00",
+            "F0185.50"
+          ],
+          "instance_id": "O2"
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 10,
+          "source_seconds": 190.71,
+          "evidence_ids": [
+            "F0190.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 10,
+          "source_seconds": 190.71,
+          "evidence_ids": [
+            "F0190.70",
+            "F0196.30",
+            "F0204.50"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 10,
+          "source_seconds": 190.71,
+          "evidence_ids": [
+            "F0190.70"
+          ],
+          "instance_id": "O2"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 10,
+          "source_seconds": 190.71,
+          "evidence_ids": [
+            "F0190.70",
+            "F0196.30",
+            "F0204.50"
+          ],
+          "instance_id": "O2"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 11,
+          "source_seconds": 204.502,
+          "evidence_ids": [
+            "F0204.50"
+          ],
+          "instance_id": "O2"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 11,
+          "source_seconds": 211.005,
+          "evidence_ids": [
+            "F0211.00",
+            "F0219.00"
+          ],
+          "instance_id": "O2"
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 12,
+          "source_seconds": 224.708,
+          "evidence_ids": [
+            "F0224.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner evolution",
+          "turn_number": 12,
+          "source_seconds": 231,
+          "evidence_ids": [
+            "F0224.70",
+            "F0234.00",
+            "F0243.50"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 12,
+          "source_seconds": 224.708,
+          "evidence_ids": [
+            "F0224.70"
+          ],
+          "instance_id": "O2"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 12,
+          "source_seconds": 224.708,
+          "evidence_ids": [
+            "F0224.70",
+            "F0234.00",
+            "F0243.50"
+          ],
+          "instance_id": "O2"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 12,
+          "source_seconds": 224.708,
+          "evidence_ids": [
+            "F0224.70",
+            "F0234.00",
+            "F0243.50"
+          ],
+          "instance_id": "O3"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 13,
+          "source_seconds": 243.505,
+          "evidence_ids": [
+            "F0243.50"
+          ],
+          "instance_id": "O2"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 13,
+          "source_seconds": 243.505,
+          "evidence_ids": [
+            "F0243.50"
+          ],
+          "instance_id": "O3"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 13,
+          "source_seconds": 247.007,
+          "evidence_ids": [
+            "F0247.00",
+            "F0261.00",
+            "F0265.00"
+          ],
+          "instance_id": "O3"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 14,
+          "source_seconds": 270.713,
+          "evidence_ids": [
+            "F0270.70"
+          ],
+          "instance_id": "O3"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 14,
+          "source_seconds": 270.713,
+          "evidence_ids": [
+            "F0270.70",
+            "F0278.80",
+            "F0287.50"
+          ],
+          "instance_id": "O3"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 15,
+          "source_seconds": 287.507,
+          "evidence_ids": [
+            "F0287.50"
+          ],
+          "instance_id": "O3"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 15,
+          "source_seconds": 294.008,
+          "evidence_ids": [
+            "F0294.00",
+            "F0297.00",
+            "F0298.00",
+            "F0301.00",
+            "F0305.00"
+          ],
+          "instance_id": "O3"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 16,
+          "source_seconds": 310.703,
+          "evidence_ids": [
+            "F0310.70"
+          ],
+          "instance_id": "O3"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 16,
+          "source_seconds": 310.703,
+          "evidence_ids": [
+            "F0310.70",
+            "F0323.60",
+            "F0332.50"
+          ],
+          "instance_id": "O3"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 17,
+          "source_seconds": 332.513,
+          "evidence_ids": [
+            "F0332.50"
+          ],
+          "instance_id": "O3"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 17,
+          "source_seconds": 336.015,
+          "evidence_ids": [
+            "F0336.00",
+            "F0340.00"
+          ],
+          "instance_id": "O3"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 18,
+          "source_seconds": 345.705,
+          "evidence_ids": [
+            "F0345.70"
+          ],
+          "instance_id": "O3"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 18,
+          "source_seconds": 345.705,
+          "evidence_ids": [
+            "F0345.70",
+            "F0352.00",
+            "F0358.00"
+          ],
+          "instance_id": "O3"
+        }
+      ],
+      "variant_limit": "Mechanical identity and visible art only; physical set/rarity not verified."
+    },
+    {
+      "name": "Alolan Vulpix",
+      "minimum_distinct_copies_seen": 2,
+      "copy_count_evidence_ids": [
+        "F0131.70",
+        "F0190.70",
+        "F0224.70"
+      ],
+      "copy_count_basis": "O2 Vulpix evolves T8; distinct O3 Vulpix subsequently in hand/bench while O2 Ninetales remains in play.",
+      "simultaneous_hand_duplicate_observations": [],
+      "occurrences": [
+        {
+          "context": "owner_hand_start",
+          "turn_number": 6,
+          "source_seconds": 97.7083,
+          "evidence_ids": [
+            "F0097.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "normal_draw",
+          "turn_number": 6,
+          "source_seconds": 95,
+          "evidence_ids": [
+            "F0097.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner bench",
+          "turn_number": 6,
+          "source_seconds": 98,
+          "evidence_ids": [
+            "F0097.70",
+            "F0100.00",
+            "F0105.00"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "board_after",
+          "turn_number": 6,
+          "source_seconds": 97.7083,
+          "evidence_ids": [
+            "F0097.70",
+            "F0100.00",
+            "F0105.00"
+          ],
+          "instance_id": "O2"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 7,
+          "source_seconds": 105.013,
+          "evidence_ids": [
+            "F0105.00"
+          ],
+          "instance_id": "O2"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 7,
+          "source_seconds": 117.002,
+          "evidence_ids": [
+            "F0117.00",
+            "F0122.00",
+            "F0126.50"
+          ],
+          "instance_id": "O2"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 8,
+          "source_seconds": 131.705,
+          "evidence_ids": [
+            "F0131.70"
+          ],
+          "instance_id": "O2"
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 10,
+          "source_seconds": 190.71,
+          "evidence_ids": [
+            "F0190.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "normal_draw",
+          "turn_number": 10,
+          "source_seconds": 188,
+          "evidence_ids": [
+            "F0190.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner bench",
+          "turn_number": 10,
+          "source_seconds": 191,
+          "evidence_ids": [
+            "F0190.70",
+            "F0196.30",
+            "F0204.50"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "board_after",
+          "turn_number": 10,
+          "source_seconds": 190.71,
+          "evidence_ids": [
+            "F0190.70",
+            "F0196.30",
+            "F0204.50"
+          ],
+          "instance_id": "O3"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 11,
+          "source_seconds": 204.502,
+          "evidence_ids": [
+            "F0204.50"
+          ],
+          "instance_id": "O3"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 11,
+          "source_seconds": 211.005,
+          "evidence_ids": [
+            "F0211.00",
+            "F0219.00"
+          ],
+          "instance_id": "O3"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 12,
+          "source_seconds": 224.708,
+          "evidence_ids": [
+            "F0224.70"
+          ],
+          "instance_id": "O3"
+        }
+      ],
+      "variant_limit": "Mechanical identity and visible art only; physical set/rarity not verified."
+    },
+    {
+      "name": "Carvanha",
+      "minimum_distinct_copies_seen": 2,
+      "copy_count_evidence_ids": [
+        "F0031.20",
+        "F0345.70"
+      ],
+      "copy_count_basis": "O1 Carvanha observed before evolution, plus distinct O5 Carvanha visible alongside O1 Sharpedo; its Carvanha remains under evolved O1.",
+      "simultaneous_hand_duplicate_observations": [],
+      "occurrences": [
+        {
+          "context": "five-card opening",
+          "turn_number": null,
+          "source_seconds": 13.9,
+          "evidence_ids": [
+            "F0013.90"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 1,
+          "source_seconds": 18.0133,
+          "evidence_ids": [
+            "F0018.00"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 1,
+          "source_seconds": 25.0133,
+          "evidence_ids": [
+            "F0025.00"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 2,
+          "source_seconds": 29.7133,
+          "evidence_ids": [
+            "F0029.70"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 2,
+          "source_seconds": 29.7133,
+          "evidence_ids": [
+            "F0029.70",
+            "F0031.20",
+            "F0039.00"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 3,
+          "source_seconds": 39.0133,
+          "evidence_ids": [
+            "F0039.00"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 3,
+          "source_seconds": 45.015,
+          "evidence_ids": [
+            "F0045.00",
+            "F0049.00",
+            "F0051.00"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 4,
+          "source_seconds": 56.7017,
+          "evidence_ids": [
+            "F0056.70"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "search",
+          "turn_number": 16,
+          "source_seconds": 314.7,
+          "evidence_ids": [
+            "F0314.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner bench",
+          "turn_number": 16,
+          "source_seconds": 321,
+          "evidence_ids": [
+            "F0310.70",
+            "F0323.60",
+            "F0332.50"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "board_after",
+          "turn_number": 16,
+          "source_seconds": 310.703,
+          "evidence_ids": [
+            "F0310.70",
+            "F0323.60",
+            "F0332.50"
+          ],
+          "instance_id": "O5"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 17,
+          "source_seconds": 332.513,
+          "evidence_ids": [
+            "F0332.50"
+          ],
+          "instance_id": "O5"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 17,
+          "source_seconds": 336.015,
+          "evidence_ids": [
+            "F0336.00",
+            "F0340.00"
+          ],
+          "instance_id": "O5"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 18,
+          "source_seconds": 345.705,
+          "evidence_ids": [
+            "F0345.70"
+          ],
+          "instance_id": "O5"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 18,
+          "source_seconds": 345.705,
+          "evidence_ids": [
+            "F0345.70",
+            "F0352.00",
+            "F0358.00"
+          ],
+          "instance_id": "O5"
+        }
+      ],
+      "variant_limit": "Mechanical identity and visible art only; physical set/rarity not verified."
+    },
+    {
+      "name": "Copycat",
+      "minimum_distinct_copies_seen": 1,
+      "copy_count_evidence_ids": [
+        "F0029.70"
+      ],
+      "copy_count_basis": "At least one public face in recording; repeated sightings are not extra copies.",
+      "simultaneous_hand_duplicate_observations": [],
+      "occurrences": [
+        {
+          "context": "owner_hand_start",
+          "turn_number": 2,
+          "source_seconds": 29.7133,
+          "evidence_ids": [
+            "F0029.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 2,
+          "source_seconds": 29.7133,
+          "evidence_ids": [
+            "F0029.70",
+            "F0031.20",
+            "F0039.00"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "normal_draw",
+          "turn_number": 2,
+          "source_seconds": 27,
+          "evidence_ids": [
+            "F0029.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 4,
+          "source_seconds": 56.7017,
+          "evidence_ids": [
+            "F0056.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 4,
+          "source_seconds": 56.7017,
+          "evidence_ids": [
+            "F0056.70",
+            "F0062.00",
+            "F0077.50"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 6,
+          "source_seconds": 97.7083,
+          "evidence_ids": [
+            "F0097.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 6,
+          "source_seconds": 97.7083,
+          "evidence_ids": [
+            "F0097.70",
+            "F0100.00",
+            "F0105.00"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 8,
+          "source_seconds": 131.705,
+          "evidence_ids": [
+            "F0131.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 8,
+          "source_seconds": 131.705,
+          "evidence_ids": [
+            "F0131.70",
+            "F0149.00",
+            "F0157.00"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 10,
+          "source_seconds": 190.71,
+          "evidence_ids": [
+            "F0190.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 10,
+          "source_seconds": 190.71,
+          "evidence_ids": [
+            "F0190.70",
+            "F0196.30",
+            "F0204.50"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 12,
+          "source_seconds": 224.708,
+          "evidence_ids": [
+            "F0224.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 12,
+          "source_seconds": 224.708,
+          "evidence_ids": [
+            "F0224.70",
+            "F0234.00",
+            "F0243.50"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 14,
+          "source_seconds": 270.713,
+          "evidence_ids": [
+            "F0270.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 14,
+          "source_seconds": 270.713,
+          "evidence_ids": [
+            "F0270.70",
+            "F0278.80",
+            "F0287.50"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 16,
+          "source_seconds": 310.703,
+          "evidence_ids": [
+            "F0310.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 16,
+          "source_seconds": 310.703,
+          "evidence_ids": [
+            "F0310.70",
+            "F0323.60",
+            "F0332.50"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 18,
+          "source_seconds": 345.705,
+          "evidence_ids": [
+            "F0345.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 18,
+          "source_seconds": 345.705,
+          "evidence_ids": [
+            "F0345.70",
+            "F0352.00",
+            "F0358.00"
+          ],
+          "instance_id": null
+        }
+      ],
+      "variant_limit": "Mechanical identity and visible art only; physical set/rarity not verified."
+    },
+    {
+      "name": "Cyrus",
+      "minimum_distinct_copies_seen": 1,
+      "copy_count_evidence_ids": [
+        "F0310.70",
+        "F0323.60",
+        "F0332.50"
+      ],
+      "copy_count_basis": "At least one public face in recording; repeated sightings are not extra copies.",
+      "simultaneous_hand_duplicate_observations": [],
+      "occurrences": [
+        {
+          "context": "owner_hand_end",
+          "turn_number": 16,
+          "source_seconds": 310.703,
+          "evidence_ids": [
+            "F0310.70",
+            "F0323.60",
+            "F0332.50"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "supporter_draw",
+          "turn_number": 16,
+          "source_seconds": 320.4,
+          "evidence_ids": [
+            "F0319.40",
+            "F0320.40"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 18,
+          "source_seconds": 345.705,
+          "evidence_ids": [
+            "F0345.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner supporter",
+          "turn_number": 18,
+          "source_seconds": 347,
+          "evidence_ids": [
+            "F0345.70",
+            "F0352.00",
+            "F0358.00"
+          ],
+          "instance_id": null
+        }
+      ],
+      "variant_limit": "Mechanical identity and visible art only; physical set/rarity not verified."
+    },
+    {
+      "name": "Elegant Cape",
+      "minimum_distinct_copies_seen": 1,
+      "copy_count_evidence_ids": [
+        "F0345.70"
+      ],
+      "copy_count_basis": "At least one public face in recording; repeated sightings are not extra copies.",
+      "simultaneous_hand_duplicate_observations": [],
+      "occurrences": [
+        {
+          "context": "owner_hand_start",
+          "turn_number": 18,
+          "source_seconds": 345.705,
+          "evidence_ids": [
+            "F0345.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 18,
+          "source_seconds": 345.705,
+          "evidence_ids": [
+            "F0345.70",
+            "F0352.00",
+            "F0358.00"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "normal_draw",
+          "turn_number": 18,
+          "source_seconds": 343,
+          "evidence_ids": [
+            "F0345.70"
+          ],
+          "instance_id": null
+        }
+      ],
+      "variant_limit": "Mechanical identity and visible art only; physical set/rarity not verified."
+    },
+    {
+      "name": "Irida",
+      "minimum_distinct_copies_seen": 1,
+      "copy_count_evidence_ids": [
+        "F0013.90"
+      ],
+      "copy_count_basis": "At least one public face in recording; repeated sightings are not extra copies.",
+      "simultaneous_hand_duplicate_observations": [],
+      "occurrences": [
+        {
+          "context": "five-card opening",
+          "turn_number": null,
+          "source_seconds": 13.9,
+          "evidence_ids": [
+            "F0013.90"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 2,
+          "source_seconds": 29.7133,
+          "evidence_ids": [
+            "F0029.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 2,
+          "source_seconds": 29.7133,
+          "evidence_ids": [
+            "F0029.70",
+            "F0031.20",
+            "F0039.00"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 4,
+          "source_seconds": 56.7017,
+          "evidence_ids": [
+            "F0056.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 4,
+          "source_seconds": 56.7017,
+          "evidence_ids": [
+            "F0056.70",
+            "F0062.00",
+            "F0077.50"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 6,
+          "source_seconds": 97.7083,
+          "evidence_ids": [
+            "F0097.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 6,
+          "source_seconds": 97.7083,
+          "evidence_ids": [
+            "F0097.70",
+            "F0100.00",
+            "F0105.00"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 8,
+          "source_seconds": 131.705,
+          "evidence_ids": [
+            "F0131.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner supporter",
+          "turn_number": 8,
+          "source_seconds": 144,
+          "evidence_ids": [
+            "F0131.70",
+            "F0149.00",
+            "F0157.00"
+          ],
+          "instance_id": null
+        }
+      ],
+      "variant_limit": "Mechanical identity and visible art only; physical set/rarity not verified."
+    },
+    {
+      "name": "Lapras",
+      "minimum_distinct_copies_seen": 1,
+      "copy_count_evidence_ids": [
+        "F0224.70",
+        "F0234.00",
+        "F0243.50"
+      ],
+      "copy_count_basis": "At least one public face in recording; repeated sightings are not extra copies.",
+      "simultaneous_hand_duplicate_observations": [],
+      "occurrences": [
+        {
+          "context": "owner_hand_end",
+          "turn_number": 12,
+          "source_seconds": 224.708,
+          "evidence_ids": [
+            "F0224.70",
+            "F0234.00",
+            "F0243.50"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "search",
+          "turn_number": 12,
+          "source_seconds": 227.7,
+          "evidence_ids": [
+            "F0227.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 14,
+          "source_seconds": 270.713,
+          "evidence_ids": [
+            "F0270.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner bench",
+          "turn_number": 14,
+          "source_seconds": 277,
+          "evidence_ids": [
+            "F0270.70",
+            "F0278.80",
+            "F0287.50"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "board_after",
+          "turn_number": 14,
+          "source_seconds": 270.713,
+          "evidence_ids": [
+            "F0270.70",
+            "F0278.80",
+            "F0287.50"
+          ],
+          "instance_id": "O4"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 15,
+          "source_seconds": 287.507,
+          "evidence_ids": [
+            "F0287.50"
+          ],
+          "instance_id": "O4"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 15,
+          "source_seconds": 294.008,
+          "evidence_ids": [
+            "F0294.00",
+            "F0297.00",
+            "F0298.00",
+            "F0301.00",
+            "F0305.00"
+          ],
+          "instance_id": "O4"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 16,
+          "source_seconds": 310.703,
+          "evidence_ids": [
+            "F0310.70"
+          ],
+          "instance_id": "O4"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 16,
+          "source_seconds": 310.703,
+          "evidence_ids": [
+            "F0310.70",
+            "F0323.60",
+            "F0332.50"
+          ],
+          "instance_id": "O4"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 17,
+          "source_seconds": 332.513,
+          "evidence_ids": [
+            "F0332.50"
+          ],
+          "instance_id": "O4"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 17,
+          "source_seconds": 336.015,
+          "evidence_ids": [
+            "F0336.00",
+            "F0340.00"
+          ],
+          "instance_id": "O4"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 18,
+          "source_seconds": 345.705,
+          "evidence_ids": [
+            "F0345.70"
+          ],
+          "instance_id": "O4"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 18,
+          "source_seconds": 345.705,
+          "evidence_ids": [
+            "F0345.70",
+            "F0352.00",
+            "F0358.00"
+          ],
+          "instance_id": "O4"
+        }
+      ],
+      "variant_limit": "Mechanical identity and visible art only; physical set/rarity not verified."
+    },
+    {
+      "name": "Lucky Ice Pop",
+      "minimum_distinct_copies_seen": 1,
+      "copy_count_evidence_ids": [
+        "F0013.90"
+      ],
+      "copy_count_basis": "At least one public face in recording; repeated sightings are not extra copies.",
+      "simultaneous_hand_duplicate_observations": [],
+      "occurrences": [
+        {
+          "context": "five-card opening",
+          "turn_number": null,
+          "source_seconds": 13.9,
+          "evidence_ids": [
+            "F0013.90"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 2,
+          "source_seconds": 29.7133,
+          "evidence_ids": [
+            "F0029.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 2,
+          "source_seconds": 29.7133,
+          "evidence_ids": [
+            "F0029.70",
+            "F0031.20",
+            "F0039.00"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 4,
+          "source_seconds": 56.7017,
+          "evidence_ids": [
+            "F0056.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 4,
+          "source_seconds": 56.7017,
+          "evidence_ids": [
+            "F0056.70",
+            "F0062.00",
+            "F0077.50"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 6,
+          "source_seconds": 97.7083,
+          "evidence_ids": [
+            "F0097.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 6,
+          "source_seconds": 97.7083,
+          "evidence_ids": [
+            "F0097.70",
+            "F0100.00",
+            "F0105.00"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 8,
+          "source_seconds": 131.705,
+          "evidence_ids": [
+            "F0131.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner item",
+          "turn_number": 8,
+          "source_seconds": 136,
+          "evidence_ids": [
+            "F0131.70",
+            "F0149.00",
+            "F0157.00"
+          ],
+          "instance_id": null
+        }
+      ],
+      "variant_limit": "Mechanical identity and visible art only; physical set/rarity not verified."
+    },
+    {
+      "name": "Mega Sharpedo ex",
+      "minimum_distinct_copies_seen": 2,
+      "copy_count_evidence_ids": [
+        "F0310.70",
+        "F0314.70"
+      ],
+      "copy_count_basis": "Illustrated Sharpedo in play and regular-art second Sharpedo in hand simultaneously.",
+      "simultaneous_hand_duplicate_observations": [],
+      "occurrences": [
+        {
+          "context": "five-card opening",
+          "turn_number": null,
+          "source_seconds": 13.9,
+          "evidence_ids": [
+            "F0013.90"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 2,
+          "source_seconds": 29.7133,
+          "evidence_ids": [
+            "F0029.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 2,
+          "source_seconds": 29.7133,
+          "evidence_ids": [
+            "F0029.70",
+            "F0031.20",
+            "F0039.00"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 4,
+          "source_seconds": 56.7017,
+          "evidence_ids": [
+            "F0056.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner evolution",
+          "turn_number": 4,
+          "source_seconds": 58,
+          "evidence_ids": [
+            "F0056.70",
+            "F0062.00",
+            "F0077.50"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "board_after",
+          "turn_number": 4,
+          "source_seconds": 56.7017,
+          "evidence_ids": [
+            "F0056.70",
+            "F0062.00",
+            "F0077.50"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 5,
+          "source_seconds": 77.5033,
+          "evidence_ids": [
+            "F0077.50"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 5,
+          "source_seconds": 86.005,
+          "evidence_ids": [
+            "F0086.00",
+            "F0092.50"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 6,
+          "source_seconds": 97.7083,
+          "evidence_ids": [
+            "F0097.70"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 6,
+          "source_seconds": 97.7083,
+          "evidence_ids": [
+            "F0097.70",
+            "F0100.00",
+            "F0105.00"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 7,
+          "source_seconds": 105.013,
+          "evidence_ids": [
+            "F0105.00"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 7,
+          "source_seconds": 117.002,
+          "evidence_ids": [
+            "F0117.00",
+            "F0122.00",
+            "F0126.50"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 8,
+          "source_seconds": 131.705,
+          "evidence_ids": [
+            "F0131.70"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 8,
+          "source_seconds": 131.705,
+          "evidence_ids": [
+            "F0131.70",
+            "F0149.00",
+            "F0157.00"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 9,
+          "source_seconds": 157.012,
+          "evidence_ids": [
+            "F0157.00"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 9,
+          "source_seconds": 164.015,
+          "evidence_ids": [
+            "F0164.00",
+            "F0168.00",
+            "F0175.00",
+            "F0176.00",
+            "F0177.00",
+            "F0179.00",
+            "F0185.50"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 10,
+          "source_seconds": 190.71,
+          "evidence_ids": [
+            "F0190.70"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 10,
+          "source_seconds": 190.71,
+          "evidence_ids": [
+            "F0190.70",
+            "F0196.30",
+            "F0204.50"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 11,
+          "source_seconds": 204.502,
+          "evidence_ids": [
+            "F0204.50"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 11,
+          "source_seconds": 211.005,
+          "evidence_ids": [
+            "F0211.00",
+            "F0219.00"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 12,
+          "source_seconds": 224.708,
+          "evidence_ids": [
+            "F0224.70"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 12,
+          "source_seconds": 224.708,
+          "evidence_ids": [
+            "F0224.70",
+            "F0234.00",
+            "F0243.50"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 13,
+          "source_seconds": 243.505,
+          "evidence_ids": [
+            "F0243.50"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 13,
+          "source_seconds": 247.007,
+          "evidence_ids": [
+            "F0247.00",
+            "F0261.00",
+            "F0265.00"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 14,
+          "source_seconds": 270.713,
+          "evidence_ids": [
+            "F0270.70",
+            "F0278.80",
+            "F0287.50"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "supporter_draw",
+          "turn_number": 14,
+          "source_seconds": 275.7,
+          "evidence_ids": [
+            "F0274.50",
+            "F0275.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 14,
+          "source_seconds": 270.713,
+          "evidence_ids": [
+            "F0270.70"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 14,
+          "source_seconds": 270.713,
+          "evidence_ids": [
+            "F0270.70",
+            "F0278.80",
+            "F0287.50"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 15,
+          "source_seconds": 287.507,
+          "evidence_ids": [
+            "F0287.50"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 15,
+          "source_seconds": 294.008,
+          "evidence_ids": [
+            "F0294.00",
+            "F0297.00",
+            "F0298.00",
+            "F0301.00",
+            "F0305.00"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 16,
+          "source_seconds": 310.703,
+          "evidence_ids": [
+            "F0310.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 16,
+          "source_seconds": 310.703,
+          "evidence_ids": [
+            "F0310.70",
+            "F0323.60",
+            "F0332.50"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 16,
+          "source_seconds": 310.703,
+          "evidence_ids": [
+            "F0310.70"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 16,
+          "source_seconds": 310.703,
+          "evidence_ids": [
+            "F0310.70",
+            "F0323.60",
+            "F0332.50"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 17,
+          "source_seconds": 332.513,
+          "evidence_ids": [
+            "F0332.50"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 17,
+          "source_seconds": 336.015,
+          "evidence_ids": [
+            "F0336.00",
+            "F0340.00"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 18,
+          "source_seconds": 345.705,
+          "evidence_ids": [
+            "F0345.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 18,
+          "source_seconds": 345.705,
+          "evidence_ids": [
+            "F0345.70",
+            "F0352.00",
+            "F0358.00"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "board_at_start",
+          "turn_number": 18,
+          "source_seconds": 345.705,
+          "evidence_ids": [
+            "F0345.70"
+          ],
+          "instance_id": "O1"
+        },
+        {
+          "context": "board_after",
+          "turn_number": 18,
+          "source_seconds": 345.705,
+          "evidence_ids": [
+            "F0345.70",
+            "F0352.00",
+            "F0358.00"
+          ],
+          "instance_id": "O1"
+        }
+      ],
+      "variant_limit": "Mechanical identity and visible art only; physical set/rarity not verified."
+    },
+    {
+      "name": "Misty",
+      "minimum_distinct_copies_seen": 2,
+      "copy_count_evidence_ids": [
+        "F0345.70"
+      ],
+      "copy_count_basis": "Two Misty cards simultaneously in owner hand.",
+      "simultaneous_hand_duplicate_observations": [
+        {
+          "count": 2,
+          "context": "owner_hand_end",
+          "turn_number": 16,
+          "evidence_ids": [
+            "F0310.70",
+            "F0323.60",
+            "F0332.50"
+          ]
+        },
+        {
+          "count": 2,
+          "context": "owner_hand_start",
+          "turn_number": 18,
+          "evidence_ids": [
+            "F0345.70"
+          ]
+        },
+        {
+          "count": 2,
+          "context": "owner_hand_end",
+          "turn_number": 18,
+          "evidence_ids": [
+            "F0345.70",
+            "F0352.00",
+            "F0358.00"
+          ]
+        }
+      ],
+      "occurrences": [
+        {
+          "context": "owner_hand_start",
+          "turn_number": 8,
+          "source_seconds": 131.705,
+          "evidence_ids": [
+            "F0131.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 8,
+          "source_seconds": 131.705,
+          "evidence_ids": [
+            "F0131.70",
+            "F0149.00",
+            "F0157.00"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "normal_draw",
+          "turn_number": 8,
+          "source_seconds": 129,
+          "evidence_ids": [
+            "F0131.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 10,
+          "source_seconds": 190.71,
+          "evidence_ids": [
+            "F0190.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 10,
+          "source_seconds": 190.71,
+          "evidence_ids": [
+            "F0190.70",
+            "F0196.30",
+            "F0204.50"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 12,
+          "source_seconds": 224.708,
+          "evidence_ids": [
+            "F0224.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 12,
+          "source_seconds": 224.708,
+          "evidence_ids": [
+            "F0224.70",
+            "F0234.00",
+            "F0243.50"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 14,
+          "source_seconds": 270.713,
+          "evidence_ids": [
+            "F0270.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 14,
+          "source_seconds": 270.713,
+          "evidence_ids": [
+            "F0270.70",
+            "F0278.80",
+            "F0287.50"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 16,
+          "source_seconds": 310.703,
+          "evidence_ids": [
+            "F0310.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 16,
+          "source_seconds": 310.703,
+          "evidence_ids": [
+            "F0310.70",
+            "F0323.60",
+            "F0332.50"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 16,
+          "source_seconds": 310.703,
+          "evidence_ids": [
+            "F0310.70",
+            "F0323.60",
+            "F0332.50"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "supporter_draw",
+          "turn_number": 16,
+          "source_seconds": 319.4,
+          "evidence_ids": [
+            "F0319.40",
+            "F0320.40"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 18,
+          "source_seconds": 345.705,
+          "evidence_ids": [
+            "F0345.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 18,
+          "source_seconds": 345.705,
+          "evidence_ids": [
+            "F0345.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 18,
+          "source_seconds": 345.705,
+          "evidence_ids": [
+            "F0345.70",
+            "F0352.00",
+            "F0358.00"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 18,
+          "source_seconds": 345.705,
+          "evidence_ids": [
+            "F0345.70",
+            "F0352.00",
+            "F0358.00"
+          ],
+          "instance_id": null
+        }
+      ],
+      "variant_limit": "Mechanical identity and visible art only; physical set/rarity not verified."
+    },
+    {
+      "name": "Poké Ball",
+      "minimum_distinct_copies_seen": 2,
+      "copy_count_evidence_ids": [
+        "F0224.70",
+        "F0234.00",
+        "F0310.70",
+        "F0314.70"
+      ],
+      "copy_count_basis": "First Ball played T12, discarded; second normal draw T16 and played then. No owner shuffle/recycling of discarded Items occurs between. This is a witnessed transaction distinct-copy bound, not a two-face simultaneous fan claim.",
+      "simultaneous_hand_duplicate_observations": [],
+      "occurrences": [
+        {
+          "context": "owner_hand_start",
+          "turn_number": 12,
+          "source_seconds": 224.708,
+          "evidence_ids": [
+            "F0224.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "normal_draw",
+          "turn_number": 12,
+          "source_seconds": 222,
+          "evidence_ids": [
+            "F0224.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner item",
+          "turn_number": 12,
+          "source_seconds": 225,
+          "evidence_ids": [
+            "F0224.70",
+            "F0234.00",
+            "F0243.50"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 16,
+          "source_seconds": 310.703,
+          "evidence_ids": [
+            "F0310.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "normal_draw",
+          "turn_number": 16,
+          "source_seconds": 308,
+          "evidence_ids": [
+            "F0310.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner item",
+          "turn_number": 16,
+          "source_seconds": 312,
+          "evidence_ids": [
+            "F0310.70",
+            "F0323.60",
+            "F0332.50"
+          ],
+          "instance_id": null
+        }
+      ],
+      "variant_limit": "Mechanical identity and visible art only; physical set/rarity not verified."
+    },
+    {
+      "name": "Professor's Research",
+      "minimum_distinct_copies_seen": 2,
+      "copy_count_evidence_ids": [
+        "F0270.70",
+        "F0274.50",
+        "F0310.70"
+      ],
+      "copy_count_basis": "Illustrated Research played/discarded T14 and regular Research revealed by it; regular Research in hand alongside illustrated discard top at T16.",
+      "simultaneous_hand_duplicate_observations": [],
+      "occurrences": [
+        {
+          "context": "owner_hand_start",
+          "turn_number": 14,
+          "source_seconds": 270.713,
+          "evidence_ids": [
+            "F0270.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_end",
+          "turn_number": 14,
+          "source_seconds": 270.713,
+          "evidence_ids": [
+            "F0270.70",
+            "F0278.80",
+            "F0287.50"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "normal_draw",
+          "turn_number": 14,
+          "source_seconds": 268,
+          "evidence_ids": [
+            "F0270.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "supporter_draw",
+          "turn_number": 14,
+          "source_seconds": 274.5,
+          "evidence_ids": [
+            "F0274.50",
+            "F0275.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner supporter",
+          "turn_number": 14,
+          "source_seconds": 272,
+          "evidence_ids": [
+            "F0270.70",
+            "F0278.80",
+            "F0287.50"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner_hand_start",
+          "turn_number": 16,
+          "source_seconds": 310.703,
+          "evidence_ids": [
+            "F0310.70"
+          ],
+          "instance_id": null
+        },
+        {
+          "context": "owner supporter",
+          "turn_number": 16,
+          "source_seconds": 317,
+          "evidence_ids": [
+            "F0310.70",
+            "F0323.60",
+            "F0332.50"
+          ],
+          "instance_id": null
+        }
+      ],
+      "variant_limit": "Mechanical identity and visible art only; physical set/rarity not verified."
+    }
+  ],
+  "observed_distinct_card_slot_lower_bound": 20,
+  "visual_inventory_matches_twenty_card_mechanical_list": true,
+  "exact_printing_inventory_verified": false,
+  "count_basis": "All20 mechanical slots supported by simultaneous faces or tracked distinct instances/consumption. Supplied deck counts were not used to fill unseen copies.",
+  "owner_stadium_cards_seen": [],
+  "shared_stadium": {
+    "name": "Soothing Shore",
+    "played_by": "computer opponent",
+    "included_in_owner_inventory": false,
+    "evidence_ids": [
+      "F0056.70"
+    ]
+  },
+  "discard_limit": "Opened discard census absent; public plays and visible top cards are source-bound supplemental sightings only.",
+  "not_seen_names_from_supplied_deck": []
+}

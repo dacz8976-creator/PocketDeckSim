@@ -1,0 +1,3 @@
+# Lead anchor clarification after Astra consultation
+
+The unmodified worker report is preserved in `FIRST_PASS_REVIEW_BEFORE_LEAD_CORRECTION.md`. `targeted/t0129.00.jpg` shows Korrina's Fighting +30 caption. The explicit 130-damage popup is at `targeted/t0132.00.jpg`, and settled Mega Manectric60HP is at `targeted/t0135.00.jpg`. The timeline evidence labels and decisive summary anchor now reflect those actual frames. The attack arithmetic and observed loss remain unchanged. Astra also confirmed Arena's Fighting symbol, which agrees with this worker's eligibility wording, and bounded the Helmet/empty-field conclusions. See `ASTRA_CHECK.md`.

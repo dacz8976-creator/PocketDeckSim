@@ -1,0 +1,51 @@
+{
+  "source_video": "20261004_215749000_iOS.MP4",
+  "source_sha256": "2015607dfe613e8bf71f4637d5d26ed625d8a451b0541b93b3a82bf0457126af",
+  "items": [
+    {
+      "id": "deck_version",
+      "status": "resolved_conflict_preserved",
+      "time_seconds": 1,
+      "finding": "Filmed QR is exact functional20-slot Fire list; current named log list differs by Combusken2/RareCandy2. Neither source is overwritten.",
+      "evidence": [
+        "QR_DECODE.json",
+        "DECK_USED.json",
+        "f0105.00",
+        "f0177.00"
+      ]
+    },
+    {
+      "id": "discard_views",
+      "status": "recording_limit",
+      "finding": "Neither discard pile is opened; complete snapshot unavailable.",
+      "evidence": [
+        "COVERAGE.md"
+      ]
+    },
+    {
+      "id": "opponent_hidden",
+      "status": "recording_limit",
+      "finding": "Opponent normal and Research draws remain unknown card identities.",
+      "evidence": [
+        "f0142.00",
+        "f0232.00"
+      ]
+    },
+    {
+      "id": "queue",
+      "status": "recording_limit",
+      "finding": "Human online matchmaking visible. Exact queue/ranked mode label not established. No Auto observed."
+    },
+    {
+      "id": "draw_offsets",
+      "status": "bounded_timing",
+      "finding": "Owner draw ends approximated55/106/169 seconds; play starts rapidly on turns1 and3. Retained scheduled offsets and dense selected pre-play frames expose this timing rather than substituting post-play hands."
+    },
+    {
+      "id": "end_turn_draw",
+      "status": "observed_with_reveal_overlay_limit",
+      "time_seconds": 225,
+      "finding": "Low battery popup obscures part of Hiking Trail draw animation. Owner hand changes FieldBlower/Copycat to those cards plus visibly named MegaBlazikenex by225-226s. Trail printed end-turn text and final hand support its source."
+    }
+  ]
+}

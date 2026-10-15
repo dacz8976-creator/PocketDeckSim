@@ -1,0 +1,82 @@
+{
+  "schema": "bounded_independent_sol_check_v1",
+  "reviewer": "/root/independent_grass_psychic",
+  "model": "gpt-6.1-sol",
+  "checked_utc": "2026-10-06T18:37:37.999751+00:00",
+  "source_video": "20261004_213625000_iOS.MP4",
+  "source_sha256": "aa7e935b335a2dfe11e43783f260698997845f7c85de8d6b1db976b7bf794225",
+  "source_identity_basis": "Compared frozen SOURCE and packet bindings; reused intake hash without rereading original media. No redundant decode or media hash.",
+  "review_scope": "Bounded independent packet/evidence checks, not a second full battle visual pass.",
+  "status": "requires_narrow_repair",
+  "lead_acceptance": false,
+  "checked_turn_rows": 12,
+  "checks": [
+    "Five opening slots independently read at31; Caterpie slot4 active34.",
+    "Ordinary owner T5 intact3-card hand204 then first Poke Ball209; ordinary opponent T6 Forest230 then Combee second Grass240 inspected beyond worker priority moments.",
+    "Research Shelmet58 then Caterpie59; Quick-Grow Metapod154 and Ice Pop159 read; native167 ending two Butterfree shows Ice Pop absent.",
+    "Owner ending hands3/2/1/1/3/3 and opponent fans3/3/3/5/4/4 agree with inspected crop panels and transaction arithmetic.",
+    "Printed Ogerpon Soothing Wind189 and explicit failure message410 explain status immunity, not special Energy; Grass current/next icons distinguish the blue effect badge.",
+    "T11 Research401-404 adds one Lucky Ice Pop only; final hand2 then Trail ending3 agrees. Complete20-card accounting gives exhausted deck, separately inferred from observations.",
+    "Chase Order printed70+70 at444,140 displayed damage445, terminal awarded opponent point3 at450, Defeat459; terminal board owner active null is explicitly known empty afterKO.",
+    "Exactly12 ordered alternating rows; numeric turn1 transition44 observed, board turn_number_basis explicitly records chronology/current-turn transitions rather than claiming label remains at chosen boundary.",
+    "Native full1170x2532; bottom1170x507 y2025-2532; top1170x607. Candidate flags inspected at selected47.5,143,204,391.6 and unsuitable392.6; selected early hand contains intact4 before Energy action.",
+    "Both board states, HP/damage, Tools/effects and Energy Zones read structurally for all12rows; sampled ordinary and decisive boards agree. Terminal residual blue badge is explicitly UI clearance unknown after Ogerpon discard.",
+    "Opened discard snapshots are not_shown, hidden draws null with reasons; no full pile invented.",
+    "Filmed QR20 semantic slots and source hash retained; missing baseline list remains a limit, not substituted deck. Shared prepared entries have external_saved false.",
+    "Eight authored DECK_USED card-name fields inspected as UTF-8 codepoints and found mojibake; visual and deck-slot/count checks otherwise pass."
+  ],
+  "required_repairs": [
+    {
+      "id": "G1",
+      "severity": "required_narrow_repair",
+      "file": "DECK_USED.json",
+      "json_paths": [
+        "/filmed_qr_cards_20/0/name",
+        "/filmed_qr_cards_20/1/name",
+        "/filmed_qr_cards_20/6/name",
+        "/filmed_qr_cards_20/7/name",
+        "/filmed_qr_counts/0/name",
+        "/filmed_qr_counts/0/name_candidates/0",
+        "/filmed_qr_counts/3/name",
+        "/filmed_qr_counts/3/name_candidates/0"
+      ],
+      "finding": "Actual UTF-8 JSON contains stored mojibake in eight copied card-name values; QR_DECODE_RECEIPT names are correct. This is authored data corruption, not console Windows-1252 rendering.",
+      "repair": "Preserve submitted bytes and repair only copied names to Poké Ball and Professor’s Research, retaining exact QR receipt and deck identities/counts."
+    }
+  ],
+  "astra_escalation_required": false,
+  "recording_limits": [
+    "Hidden opposing information",
+    "No opened discard pile views",
+    "Decoded PTS not measured",
+    "QR printing/artwork unspecified",
+    "External deck snapshot/save not yet verified"
+  ],
+  "asset_validation": {
+    "indexed_frames": 221,
+    "missing_paths": [],
+    "unexpected_dimensions": [],
+    "all_indexed_native_and_crop_headers_checked": true
+  },
+  "checked_input_sha256": {
+    "SOURCE.json": "2b7cd32cada80f86c90ba0bb25a7e611006eaec8a3e6be11190270225189aebc",
+    "ASSIGNMENT.json": "b04b92090eda592a692494cad46cb8ace1259dd6ac1819c0b3fab4116d605769",
+    "SUMMARY.json": "1eb31d5609218f8f6900c19a385d8adb2c52d6759661eebffe96d642e09bc4c0",
+    "COVERAGE.md": "fd2b87d0d700fc560fdbd607dcede17999ac1b8f842cacf00a26b3bbefa0d695",
+    "REVIEW.md": "e2c5d8397695ec5c2339fe3ad8747a75b0b1e42fa571f0456c196be02621bc5e",
+    "PAUSE_GAME.json": "ab426381b666ed0cb211c33c051779b8b7049864eddb58e4c035a28358df258a",
+    "DECK_USED.json": "9c1748a190b30ed889131f60b68608021c9cf1de7ce5f61f6093105f306767d1",
+    "TURN_LEDGER.json": "53d39cd03f77414b8888bb863105a17e171f4366283abb8854d0019acee19197",
+    "TURN_EVIDENCE.json": "94f8ae3a6934a6bdb40772a17648b4c4f90e83f3d4a0184846bee57d593b5942",
+    "UNCERTAINTIES.json": "f5b84fc0ab46fc0f6408039bebcd5e19c60da6a47c668a852b7697e056e65580",
+    "RECORDING_METADATA.json": "22f46b11d50046f58ff4ab27bbce2a65993b9bd89ef7d0231f18e8298f6e655e",
+    "QR_DECODE_RECEIPT.json": "c8627054169e61388d3bdd141304b07747484fde9d74d50a81cbefc3a7dfcfc1",
+    "../LIVE_DECK_SNAPSHOT.json": "f886698321bbdf67c06a17fe4d54a4ef2e1d464f02d972690383c64826432a28",
+    "../NEW_DECK_ENTRIES.json": "e3a946d41a06fa301b6f7da92cc173335a232c6eb24098607fb9a67f9ad49900"
+  },
+  "viewed_evidence": "VIEWED_EVIDENCE.json",
+  "writes_performed": [
+    "independent_sol/CHECK_RESULT.json",
+    "independent_sol/VIEWED_EVIDENCE.json"
+  ]
+}

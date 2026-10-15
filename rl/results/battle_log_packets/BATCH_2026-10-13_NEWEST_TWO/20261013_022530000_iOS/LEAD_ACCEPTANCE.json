@@ -1,0 +1,56 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-13T04:44:18.195129+00:00",
+  "source_game_count": 1,
+  "all_source_games_accepted": true,
+  "source_video": "20261013_022530000_iOS.MP4",
+  "source_sha256": "02714096351099424338ac83d3f529ef4f0e6979a978a50f48c5ff505a2b6cb7",
+  "scope": "Entire supplied recording, one human battle, opening, all 12 turns and terminal result",
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 12,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_NEWEST_TWO\\20261013_022530000_iOS\\independent_sol\\CORRECTION_RECHECK.json",
+  "accepted_input_sha256": {
+    "REVIEW.md": "87ee48ef12eec36b50878f067ace9c02f7c83dc0428a60587a19a76af11c1019",
+    "COVERAGE.md": "953f26c7c6f972a85f5d6ad6d0654f2c7c0fa6ced453fc7feffc5f0dd6cc8a10",
+    "SUMMARY.json": "25c9e5b104317c7330898231510809148cb543d2b7b972aff91cabe878efd2b1",
+    "UNCERTAINTIES.json": "1dba92fb728e5f18719af13d26501e055832d4d250e6a2ad7435d455f5731bdf",
+    "PAUSE_GAME.json": "223cb33008819517617e602a59064e5cb4bee68a9c035536a5e243da0bce60bb",
+    "DECK_USED.json": "ef2953bd2cc3534ede7a28791ed9b4a7904ac2acbe53e06b91f87f4d81e6518e",
+    "TURN_LEDGER.json": "bfe1284d950d3cab8f276babeb22dda4b8dd5e52f1afff8114e16b789ec3ab59",
+    "TURN_EVIDENCE.json": "a6b55fb0065612361e8d92e8d192e60de0ef1e683f3fa36694987513bcf989e6"
+  },
+  "basis": "Whole-source Sol review, separately bounded Sol checks against source frames, and lead reconciliation of coverage, ordinary decisions, draws/searches, hand arithmetic, point progression, decisive sequences and terminal outcome. Structural integrity checked separately.",
+  "administrative_fields_changed_after_independent_freeze": [
+    "lead_checked",
+    "battle_review_status",
+    "lead_acceptance"
+  ],
+  "source_limits": [
+    "Exact artwork and rarity are not established by semantic QR IDs.",
+    "No opened opponent discard pile is recorded; owner pile opened only at 518, not every two to three owner turns.",
+    "Turn 11 has no retained unzoomed spread preplay hand before the fast evolution.",
+    "Exact Copycat second/third arrival times are not resolved; all three names are visibly established by the post-resolution hand at 145.",
+    "Native source seeks are approximate; actual frame PTS not measured.",
+    "Filename date is October 13, while phone 9:25 to 9:34 supports October 12 evening in Chicago if filename clock is UTC; date interpretation is qualified.",
+    "The initial live catalog lacks the filmed QR, so exact dated live-log deck snapshot requires root supplement."
+  ],
+  "outcome": {
+    "result": "win",
+    "method": "opponent concession",
+    "opponent": "sadao",
+    "owner": "Dacz8976",
+    "turn_count": 12,
+    "owner_points": 2,
+    "opponent_points": 1,
+    "damage_done": 480,
+    "evidence_ids": [
+      "N0544.00",
+      "N0550.00",
+      "N0559.00"
+    ]
+  },
+  "deck_status": "Filmed QR proves the exact 20 semantic slots and Fighting/Metal Energy. The deck was absent from the initial live list. Proposed list is PREPARED_FILMED_DECK.json. A separate live saved-list snapshot will be appended after actual external save, preserving initial reviewer provenance.",
+  "external_status": "Prepared deck and game import pending; no external save claimed."
+}

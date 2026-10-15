@@ -1,0 +1,162 @@
+{
+  "video_basename": "20261002_143837000_iOS.MP4",
+  "complete_available_footage_review": true,
+  "battle_complete": true,
+  "outcome": "win",
+  "outcome_type": "win_by_concession",
+  "turn_order": "owner_first",
+  "turns_played": 13,
+  "reviewer": "sol_shark_20261002_143837000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "review_status": "first_pass_complete_awaiting_lead_acceptance",
+  "owner_deck_name_likely": "Draft A: Shark Tempo",
+  "owner_deck_name_basis": "Owner identified; visible core consistent; full list not revealed",
+  "owner_deck_core": [
+    "Lapras (110 HP, Surf70)",
+    "Alolan Vulpix / Alolan Ninetales ex (Binding Snow80, Elegant Cape180HP)",
+    "Carvanha / Mega Sharpedo ex (190HP, Turbo Shark70)"
+  ],
+  "opponent_name": "限界社会人",
+  "opponent_deck_core": [
+    "Teal Mask Ogerpon ex (130HP)",
+    "Sprigatito / Meowscarada ex (Flower Trick, Solar Beam80, Leaf Cape190HP)",
+    "second Sprigatito (Leaf Cape90HP)"
+  ],
+  "mode_evidence": {
+    "visible": "Opponent search, named level60 online opponent",
+    "online_queue_subtype": "unknown",
+    "requested_log": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+    "ranked_ladder_eligible": false,
+    "auto_indicator": "No visible Auto label established; no automation inference"
+  },
+  "auto_intervals": [],
+  "final_score": {
+    "owner": 2,
+    "opponent": 1,
+    "basis": "Actual earned points on final result432s; concession occurred before a final attack"
+  },
+  "damage_done": 300,
+  "decisive_evidence": [
+    {
+      "timestamp_seconds": 330,
+      "retained_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_143837000_iOS_shark_sol\\native\\t0330.00.jpg",
+      "observation": "Ninetales Binding Snow knocks out50HP Meowscarada; owner earns2points"
+    },
+    {
+      "timestamp_seconds": 338,
+      "retained_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_143837000_iOS_shark_sol\\native\\t0338.00.jpg",
+      "observation": "Meowscarada absent; owner2points versus opponent1; Ninetales180HP2Water and Sharpedo170HP1Water"
+    },
+    {
+      "timestamp_seconds": 366,
+      "retained_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_143837000_iOS_shark_sol\\native\\t0366.00.jpg",
+      "observation": "Binding Snow attack text shows80 and next-turn Active Energy Zone attachment block; Ogerpon130->50"
+    },
+    {
+      "timestamp_seconds": 416,
+      "retained_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_143837000_iOS_shark_sol\\native\\t0416.00.jpg",
+      "observation": "Cyrus brings damaged benched Ogerpon back Active"
+    },
+    {
+      "timestamp_seconds": 418,
+      "retained_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_143837000_iOS_shark_sol\\native\\t0418.00.jpg",
+      "observation": "Your opponent conceded"
+    },
+    {
+      "timestamp_seconds": 422,
+      "retained_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_143837000_iOS_shark_sol\\native\\t0422.00.jpg",
+      "observation": "Dacz8976 Victory"
+    },
+    {
+      "timestamp_seconds": 432,
+      "retained_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_143837000_iOS_shark_sol\\native\\t0432.00.jpg",
+      "observation": "Victory vs opponent, went first,13turns,2-1points,300damage; Ninetales Card of Game"
+    }
+  ],
+  "key_findings": [
+    {
+      "type": "observation",
+      "finding": "Misty one heads then tails supplies Lapras1Water on first turn"
+    },
+    {
+      "type": "observation",
+      "finding": "Flower Trick marks Active Spot on turn4 and deals70 at ownerturn5end; Solar Beam80 KOs Lapras turn6"
+    },
+    {
+      "type": "observation",
+      "finding": "Turbo Shark70 on turn7 adds1Water to benched Ninetales; ordinary turn9 attachment provides secondWater"
+    },
+    {
+      "type": "observation",
+      "finding": "Lucky Ice Pop heads,heads,tails supplies60healing; Sharpedo110->170"
+    },
+    {
+      "type": "observation",
+      "finding": "Ninetales KOs Meowscarada for2points, then deals80 toOgerpon and blocks Active attachment; Cyrus retrieves damagedOgerpon before concession"
+    },
+    {
+      "type": "inference",
+      "finding": "Cheap Shark attack into Ninetales pivot demonstrates a functional Energy-and-denial sequence against this opponent"
+    },
+    {
+      "type": "owner_testimony",
+      "finding": "Fun and competitive"
+    },
+    {
+      "type": "untested_proposal",
+      "finding": "Wailord and Soothing Shore Stadium do not appear and are not validated"
+    }
+  ],
+  "limitations": [
+    "Exact full lists and hidden draws unknown",
+    "Exact online matchmaking subtype and automation unknown",
+    "Filename timezone unverified; date follows frozen owner assignment",
+    "Draft requires lead acceptance; shared/external logs not updated by worker"
+  ],
+  "sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+  "bytes": 801112679,
+  "duration_seconds": 433.090544,
+  "source_identity": {
+    "video_basename": "20261002_143837000_iOS.MP4",
+    "sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+    "bytes": 801112679,
+    "duration_seconds": 433.090544,
+    "streams": [
+      {
+        "codec_name": "hevc",
+        "width": 1170,
+        "height": 2532
+      },
+      {
+        "codec_name": "aac"
+      }
+    ],
+    "source_path_at_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261002_143837000_iOS.MP4",
+    "recording_relationships": [],
+    "requested_log": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+    "owner_deck": "Draft A: Shark Tempo",
+    "owner_testimony": "Five new games with the deck labelled Draft A: Shark Tempo in Pause Games.",
+    "match_date_local": "2026-10-02",
+    "recording_date_basis": "October 2 filename and new local upload date; exact filename timezone unverified",
+    "intake_utc": "2026-10-02T15:41:13.001680+00:00"
+  },
+  "evidence_inventory": {
+    "overview_sheets_inspected": 12,
+    "overview_frames": 108,
+    "step_seconds": 4,
+    "decode_threads_per_process": 2,
+    "dense_intervals_seconds": [
+      [
+        144,
+        174
+      ],
+      [
+        248,
+        288
+      ]
+    ],
+    "dense_sheets_inspected": 9,
+    "native_frames_inspected": 54
+  }
+}

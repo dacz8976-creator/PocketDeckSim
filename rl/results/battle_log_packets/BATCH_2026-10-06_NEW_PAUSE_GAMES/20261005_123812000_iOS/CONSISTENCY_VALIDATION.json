@@ -1,0 +1,21 @@
+{
+  "pass_consistency": true,
+  "checks": [
+    "Nine consecutive turns",
+    "Sequential plays",
+    "Exact semantic20 and distinct two-Darkrai revision",
+    "Both boards3 bench positions at all boundaries",
+    "Current Energy absence1/3/7 and glowunknown9 preserved",
+    "Five intact preplay native hands and fifteen scheduled candidates",
+    "Named owner draws/searches with Research reveal order",
+    "Final owner hand counts2/2/2/3/3",
+    "Fantasia Energy right3 then center4; KO points1-2; removed Actives replaced",
+    "Source-result link Concede→Defeat and full phases"
+  ],
+  "source_sha256": "3fb3dc25ac96c6e742f9467ba14abdbf91aff403ef2a5bdc62c7f414e775e5a0",
+  "visual_acceptance": false,
+  "limits": [
+    "Reviewer-authored consistency checks are not independent acceptance.",
+    "Live exact log list remains root pending."
+  ]
+}

@@ -1,0 +1,24 @@
+{
+  "schema": "retrospective-hand-supplement/source-reference-v1",
+  "video_basename": "20261002_115323000_iOS.MP4",
+  "sha256": "0a3c7a2dbd87adb74f2eea2d61723f5e68fd71a74f0ab80d7486a9ee1d6c6be0",
+  "bytes": 985296109,
+  "duration_seconds": 532.31,
+  "native_dimensions": {
+    "width": 1170,
+    "height": 2532
+  },
+  "frozen_source_json": "Recording_QA/20261002_115323000_iOS_shark_sol/SOURCE.json",
+  "accepted_review": "Recording_QA/20261002_115323000_iOS_shark_sol/REVIEW.md",
+  "current_path": "Reviewed/20261002_115323000_iOS.MP4",
+  "latest_event_id": "c5864d82-a26f-4a42-b020-8b1288c69fbe",
+  "latest_event_status": "full_battle_review_complete",
+  "main_index_status": "Reviewed",
+  "verification": "Current archived source SHA-256 matched the frozen SOURCE.json after OneDrive hydration; first attempt failed with provider-not-running, second succeeded.",
+  "scope": "Target owner turn 13 only",
+  "current_verified_sha256": "0a3c7a2dbd87adb74f2eea2d61723f5e68fd71a74f0ab80d7486a9ee1d6c6be0",
+  "current_verified_bytes": 985296109,
+  "verification_utc": "2026-10-02T20:38:49.737397+00:00",
+  "source_hydrated_for_targeted_inspection": true,
+  "local_space_release": "Lead finalization required; worker did not move or free source"
+}

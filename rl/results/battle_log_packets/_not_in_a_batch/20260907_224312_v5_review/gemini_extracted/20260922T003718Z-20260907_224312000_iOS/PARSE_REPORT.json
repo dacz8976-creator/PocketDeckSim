@@ -1,0 +1,79 @@
+{
+  "parser_version": "3.0",
+  "complete": false,
+  "ready_for_independent_review": false,
+  "review_status": "partial",
+  "semantic_verification_performed": false,
+  "completion_verified": true,
+  "end_marker_present": true,
+  "evidence_contract_valid": false,
+  "response_sha256": "9C24285D5561455A1E073A31F3DB1326E43D57FCE65E8700D3F1B921C843E920",
+  "packet_directory": "/home/dacz8976/Gemini_API_Pilot/runs/20260922T003718Z-20260907_224312000_iOS/candidate_packet",
+  "source_binding_verified": true,
+  "files": {
+    "SOURCE.json": {
+      "method": "filename_label",
+      "start_line": 3,
+      "end_line": 576,
+      "valid": true,
+      "transformations": [],
+      "path": "/home/dacz8976/Gemini_API_Pilot/runs/20260922T003718Z-20260907_224312000_iOS/candidate_packet/SOURCE.json",
+      "bytes": 15848,
+      "sha256": "3AB5412148FCFE320E49ACA04AB20453499DC97E32BFEBAB951DDF2E90467542"
+    },
+    "COVERAGE.md": {
+      "method": "filename_label",
+      "start_line": 581,
+      "end_line": 627,
+      "valid": true,
+      "transformations": [],
+      "path": "/home/dacz8976/Gemini_API_Pilot/runs/20260922T003718Z-20260907_224312000_iOS/candidate_packet/COVERAGE.md",
+      "bytes": 6662,
+      "sha256": "D74C66163C6C60563D011660FA0226784DE07DF507DF81EE7F9BCAB476B4C910"
+    },
+    "REVIEW.md": {
+      "method": "filename_label",
+      "start_line": 632,
+      "end_line": 703,
+      "valid": true,
+      "transformations": [],
+      "path": "/home/dacz8976/Gemini_API_Pilot/runs/20260922T003718Z-20260907_224312000_iOS/candidate_packet/REVIEW.md",
+      "bytes": 5567,
+      "sha256": "C28C181212CFC0519FFA9AAC27A48B21AC1AC36689D8E2EAF314AA393577D3F9"
+    },
+    "UNCERTAINTIES.json": {
+      "method": "filename_label",
+      "start_line": 708,
+      "end_line": 708,
+      "valid": true,
+      "transformations": [],
+      "path": "/home/dacz8976/Gemini_API_Pilot/runs/20260922T003718Z-20260907_224312000_iOS/candidate_packet/UNCERTAINTIES.json",
+      "bytes": 3,
+      "sha256": "37517E5F3DC66819F61F5A7BB8ACE1921282415F10551D2DEFA5C3EB0985B570"
+    }
+  },
+  "errors": [
+    "Evidence audit: event 0 zone/preview icons cannot establish an attachment.",
+    "Evidence audit: event 1 zone/preview icons cannot establish an attachment.",
+    "Evidence audit: event 2 zone/preview icons cannot establish an attachment.",
+    "Evidence audit: event 3 effect requires a visible named cause.",
+    "Evidence audit: event 5 manual attachment must add exactly one typed Energy.",
+    "Evidence audit: event 5 zone/preview icons cannot establish an attachment.",
+    "Evidence audit: event 6 manual attachment must add exactly one typed Energy.",
+    "Evidence audit: event 6 zone/preview icons cannot establish an attachment.",
+    "Evidence audit: event 8 zone/preview icons cannot establish an attachment.",
+    "Evidence audit: event 9 zone/preview icons cannot establish an attachment.",
+    "Evidence audit: event 10 effect requires a visible named cause.",
+    "Evidence audit: event 12 before-state contradicts the previous state of player-3.",
+    "Evidence audit: event 13 zone/preview icons cannot establish an attachment.",
+    "Evidence audit: event 15 zone/preview icons cannot establish an attachment.",
+    "Evidence audit: player-1 final Energy does not reconcile with its events.",
+    "Evidence audit: player-4 final Energy does not reconcile with its events.",
+    "Evidence audit: opp-3 final Energy does not reconcile with its events."
+  ],
+  "warnings": [
+    "Gemini supplied no uncertainties. Independent verification is still required."
+  ],
+  "note": "Complete means four files pass structure and evidence-consistency checks, not factual correctness or acceptance. Handoff also requires source binding and normal provider completion.",
+  "report_path": "/home/dacz8976/Gemini_API_Pilot/runs/20260922T003718Z-20260907_224312000_iOS/PARSE_REPORT.json"
+}

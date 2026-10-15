@@ -1,0 +1,150 @@
+{
+  "game_id": "20261005_034953000_iOS",
+  "source_video": "20261005_034953000_iOS.MP4",
+  "source_sha256": "85f9e3803543f512323259794b7166808e5bfd2ff5a3854d8ce1a40686075180",
+  "checked_at_utc": "2026-10-06T19:55:33.853718+00:00",
+  "checked_input_sha256": {
+    "SOURCE.json": "891a7a104aa72078472f090fb48a2648a37b4febb51be948116aca9cc3c2c0e7",
+    "REVIEW.md": "0db953af90b14b1479115a6e662fe754814a2a2325ed2cbe5fed589725fe1054",
+    "COVERAGE.md": "9383e9bb625cf2682190cdb13b09673d6688e464d27f694baf9e5464b628055b",
+    "SUMMARY.json": "28ff37161301afbd3cee59260822714f31702ecae083b7797c8a0cc907464212",
+    "UNCERTAINTIES.json": "702bac515c45f9214dc2324514a6bc531e6dc6fa19452f23fff024cec29d9450",
+    "PAUSE_GAME.json": "4b020c79f1fbd8dac3c61ff566cfa441da6508dd154ca8ddb8783c9ec2fd8a1b",
+    "DECK_USED.json": "61b347b31eda9ce011faec763288dd12702a208ef14acc1b25015ff58503278f",
+    "TURN_LEDGER.json": "b301411847f7ff9a1a98e596638090535628683d78688074e3d42cf2a04f3897",
+    "TURN_EVIDENCE.json": "26e8359919a8436eff3806c789c3ff8fc733d765a3a7f0aca92d47413d78b4f3"
+  },
+  "supplemental_checked_input_sha256": {
+    "RECORDING_METADATA.json": "b7466a712b2c595306841d00cd34b034f967027a3fc107efdbcb354aff7cd68f",
+    "../NEW_DECK_ENTRIES.json": "e3a946d41a06fa301b6f7da92cc173335a232c6eb24098607fb9a67f9ad49900",
+    "qr_intake/QR_DECODE_0005.00.json": "a49a4f1c8e9039c501b4ef45950c7c68f39ff68a41a97f43c5979a4d7c68c033"
+  },
+  "scope": "Bounded independent acceptance check of source-wide first pass; no second full pass, media rehash, duplicate extractions, shared logging or source movement.",
+  "accepted": false,
+  "status": "required_repairs",
+  "required_repairs": [
+    {
+      "id": "R1",
+      "file": "TURN_LEDGER.json",
+      "json_paths": [
+        "$.turns[1].board_at_start.owner.energy_zone",
+        "$.turns[5].board_at_start.owner.energy_zone",
+        "$.turns[9].board_at_start.owner.energy_zone",
+        "$.turns[13].board_at_start.owner.energy_zone",
+        "$.turns[15].board_at_start.owner.energy_zone"
+      ],
+      "timestamps_seconds": [
+        83,
+        149.5,
+        223,
+        333,
+        388
+      ],
+      "issue": "Five selected intact hand frames prematurely report settled available current Metal1. At83 and223 the current orb is in a bright generation flare, not a settled available orb; at149.5,333,388 the large current slot is empty. The small Metal icon is next Energy. Keep the intact hand selection.",
+      "required_change": "Represent the actual selected-frame empty or generating current state with an explicit basis/limit. Separately record later generated Metal evidence at83.8,150.5,223.5,334,389. Preserve next Metal and intact starting-hand references; do not substitute post-play hands. Qualify REVIEW/COVERAGE or linked claims where needed.",
+      "evidence_ids": [
+        "f0083_00",
+        "f0083_80",
+        "f0149_50",
+        "f0150_50",
+        "f0223_00",
+        "f0223_50",
+        "f0333_00",
+        "f0334_00",
+        "f0388_00",
+        "f0389_00"
+      ]
+    },
+    {
+      "id": "R2",
+      "file": "TURN_LEDGER.json",
+      "json_paths": [
+        "$.turns[2].plays_in_order[1]",
+        "$.turns[2].plays_in_order[2]",
+        "$.turns[2].draws_and_searches[1].linked_play_order"
+      ],
+      "timestamps_seconds": [
+        99,
+        100,
+        101,
+        102,
+        104,
+        105,
+        107,
+        108,
+        109
+      ],
+      "issue": "Ordinary opponent T3 order has Metal attachment100 before Research102. Native100 is still Fraxure evolution;101 right Fraxure has no Energy and current Metal remains available. Research appears102, concealed fan reaches4 at104/105 while Metal is still in the current Zone. At107 attachment is still pending;108 shows transfer and109 right Fraxure has one Metal.",
+      "required_change": "Order Fraxure evolution, Research, then Metal attachment. Reordinal Research to2 and linked draw to2; attachment order3 with a bounded input interval107-108 or first observed transfer108 and resulting109. Update corresponding REVIEW turn3 prose. Preserve hidden draw identities.",
+      "evidence_ids": [
+        "f0099_00",
+        "f0100_00",
+        "f0101_00",
+        "f0102_00",
+        "f0104_00",
+        "f0105_00",
+        "f0107_00",
+        "f0108_00",
+        "f0109_00"
+      ]
+    },
+    {
+      "id": "R3",
+      "file": "TURN_LEDGER.json",
+      "json_paths": [
+        "$.turns[1].plays_in_order[2].timestamp_seconds",
+        "$.turns[1].plays_in_order[2].timestamp_basis",
+        "$.turns[1].plays_in_order[2].evidence_ids",
+        "$.turns[10].plays_in_order[2].timestamp_seconds",
+        "$.turns[10].plays_in_order[2].timestamp_basis",
+        "$.turns[10].plays_in_order[2].evidence_ids"
+      ],
+      "timestamps_seconds": [
+        87,
+        88,
+        261,
+        262,
+        263,
+        264
+      ],
+      "issue": "Two single timestamps are labeled first observed input/selection/animation even though their native frames are pre-action. At87 Metal remains available with Magnemite unattached;88 shows transfer. At261 Active is empty and Melmetal remains on Bench;262 promotion animation begins,263 reveals Melmetal,264 places it Active.",
+      "required_change": "Use bounded input windows87-88 and261-262 with no invented touch, or pin observed animations88 and262 and distinguish reveal263/resolution264. Retain pre-action frames as bounds, not first input observations. Update matching REVIEW prose if it asserts exact onset.",
+      "evidence_ids": [
+        "f0087_00",
+        "f0088_00",
+        "f0261_00",
+        "f0262_00",
+        "f0263_00",
+        "f0264_00"
+      ]
+    }
+  ],
+  "input_hashes_unchanged_at_completion": true,
+  "structural_checks": {
+    "native_frames": 433,
+    "crop_files": 866,
+    "all_files_decode_and_dimensions_bounds_pass": true,
+    "all_evidence_id_references_resolve": true,
+    "all_frame_source_sha256_match_frozen_CLI_source": true,
+    "bounded_crop_correspondence": {
+      "sample_crops": 24,
+      "max_decoded_region_MAE": 1.120367279736116,
+      "interpretation": "JPEG reencoding differences are small; sizes and corresponding native regions match."
+    }
+  },
+  "passed_observations": [
+    "Native QR5, deck list6 and Battle7 continuous binding; exact20 semantic QR entities/counts/Metal match prepared filmed-qr-afe59c84d238; initial live snapshot missing explicitly and no external save claim.",
+    "Opening31/35/40 establishes five cards; all8 selected owner hands, scheduled candidates and pre-end hands inspected; identities and hand arithmetic agree, post-play and zoom limits are stated.",
+    "Ordinary first owner decision and complete opponent T3 inspected independently beyond unusual flags; R2/R3 list timing repairs.",
+    "Typed Metal/Fighting transfers, both boards, Tools and Stadium absence, HP/status effects, hidden fan counts and partial discard limits checked. All selected boundary current_turn_number_displayed null values have explicit unreadable-frame reasons; readable source banners sampled separately.",
+    "KO damage/zero-HP/removal/point-award/promotion phases agree; final opponent concession390 then result409 establishes MIYA human battle, went second,16turn win2-1,460 displayed damage.",
+    "Cursed Metal buffs its owner; four-Metal Tool-boosted Metal Arms180 and last Haxorus Frenzied Blade160 with Happiny Cheer/Steel Apron agree with visible effects."
+  ],
+  "accepted_recording_limits": [
+    "Opponent hidden draw/search identities remain unknown. No full discard pile view was opened; only visible top cards and known movement may be reported.",
+    "QR establishes semantic playable identities, not exact artwork/rarity. Missing pre-existing live deck version is explicit.",
+    "FFmpeg retained source-local seeks are not independently measured decoded PTS.",
+    "T16 later candidate frames include terminal overlays and are qualified."
+  ],
+  "preservation": "Initial rejected input hashes are frozen above; root must preserve these bytes before correction. Independent reviewer did not edit any checked input."
+}

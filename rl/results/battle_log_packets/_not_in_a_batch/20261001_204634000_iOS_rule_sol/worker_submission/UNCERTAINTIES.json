@@ -1,0 +1,40 @@
+{
+  "video_basename": "20261001_204634000_iOS.MP4",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "status": "Finished first pass awaiting independent lead acceptance.",
+  "remaining_coverage_gaps": [],
+  "available_footage_fully_reviewed": true,
+  "honestly_unknown_hidden_information": [
+    "Unrevealed opponent hand and complete deck list.",
+    "Full owner deck list and exact unrevealed cards returned by Copycat.",
+    "Exact expansion and card numbers for printings not exposed in readable detail; mechanically relevant identities and printed effects are preserved.",
+    "Owner intent beyond the explicit overall rules-testing designation. Specific probes are inferred from their setups, without treating them as ladder strategy decisions.",
+    "Sub-second tap and toggle times; native frame timestamps establish visible states, while phase boundaries and Auto transition windows are approximate."
+  ],
+  "untested_rules_branches": [
+    "A failed Confused attack check with benched Victini; observed Confused attack checks are heads, so no conclusion about rerolling such a failure is drawn.",
+    "Will interacting with confusion, or Will's first-coin guarantee during a subsequent Victory Star replacement batch.",
+    "A second Victory Star use in the same turn, including a second Victini in play.",
+    "Bounded Field's numerical weakness multiplier; all consequential Fire hits in this recording strike Pokemon without the relevant Fire weakness.",
+    "Clearing attack prohibition by a switching Trainer, or other status/ability combinations absent from this recording.",
+    "Simulator implementation parity; no simulator runs, code edits or training-data intake were performed."
+  ],
+  "source_observation_limitations": [
+    {
+      "approximately_seconds": [414, 417],
+      "limitation": "System access modal partially obscures Liepard's attack animation.",
+      "resolution": "Slashing Claw70 identity is visible before the modal, Darmanitan40 becomes0 at419, and opponent point is established by425. Knockout is resolved; exact obscured damage-animation digits are not claimed independently."
+    },
+    {
+      "limitation": "Phone notifications obscure top portions of a few frames.",
+      "resolution": "Adjacent native/overview frames retain the consequential actions and settled HP/Energy/score. No coverage interval remains unreviewed."
+    },
+    {
+      "limitation": "Final victory score circles cap at3.",
+      "resolution": "Actual awarded points reconcile to4 owner versus2 opponent from individual knockout awards, including final +2 at559."
+    }
+  ],
+  "unresolved_material_claims": [],
+  "independent_lead_acceptance_required": true
+}

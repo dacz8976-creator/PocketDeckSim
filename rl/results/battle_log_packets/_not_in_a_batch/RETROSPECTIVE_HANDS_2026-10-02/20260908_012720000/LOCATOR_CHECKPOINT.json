@@ -1,0 +1,38 @@
+{
+  "schema": "native-capture-checkpoint-v1",
+  "status": "approved_targets_extracted_and_inspected",
+  "lead_authorization": "Root approved116,175.5,199,246.5,263.5,276.5; final native cap86",
+  "retained_full_native_frames": 86,
+  "locator_scan_inspected_samples": 283,
+  "requested_additional_native_frames": 6,
+  "requested_new_cap": 86,
+  "targets_before_extraction": [
+    {
+      "requested_seconds": 116,
+      "reason": "Master Plan turn5 Heads result; no self-Confusion"
+    },
+    {
+      "requested_seconds": 175.5,
+      "reason": "Whimsicott did not become Poisoned, omitted inherited no-effect event"
+    },
+    {
+      "requested_seconds": 199,
+      "reason": "Ogerpon did not become Confused before KO, omitted inherited no-effect event"
+    },
+    {
+      "requested_seconds": 246.5,
+      "reason": "Whimsicott is now Confused notification"
+    },
+    {
+      "requested_seconds": 263.5,
+      "reason": "Whimsicott recovered from Confusion after retreat"
+    },
+    {
+      "requested_seconds": 276.5,
+      "reason": "Exact Victory result text"
+    }
+  ],
+  "discard_panel_locator_result": "No opened discard panel appears in inspected one-second samples; full pile identities unknown; shorter unsampled views cannot be excluded.",
+  "prompt_locator_result": "No Yes/No end-turn warning or visible decline dialog located; no every-instant absence claim.",
+  "native_card_identity_rule": "Locator images were not used for card identity transcription."
+}

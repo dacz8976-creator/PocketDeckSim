@@ -1,0 +1,26 @@
+{
+  "version": 1,
+  "verified_at_utc": "2026-09-22T05:22:38.0896443Z",
+  "sources": [
+    {
+      "filename": "20260908_015201000_iOS.MP4",
+      "bytes": 127098167,
+      "sha256": "65B404F8EC8CB712EF9D19FA5BC87E051EDC80050067BC179E8387AE404CE258",
+      "role": "linked_part_1"
+    },
+    {
+      "filename": "20260908_015702000_iOS.MP4",
+      "bytes": 507514203,
+      "sha256": "3FBD29A85A17B5F4B4F7DDD3D7EE15B2177503FF3E15C56314DE9CC60EDCFB2D",
+      "duration_seconds": 272.803,
+      "role": "linked_part_2"
+    },
+    {
+      "filename": "Gemini_Result_20260908_015702_v7.zip",
+      "sha256": "5AFAD13F63187149D82C268196A10CC498DBD5E74F0C917759DFEC02DC48646E",
+      "role": "gemini_primary_result"
+    }
+  ],
+  "continuity_verified": true,
+  "full_battle_outcome": "player_win_3_to_2"
+}

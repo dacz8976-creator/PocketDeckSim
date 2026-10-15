@@ -1,0 +1,26 @@
+{
+  "scope": "Complete fifteen-turn 320.985215-second autopilot computer battle, setup through both Greninja lines, Typhlosion Energy disruption, Mega Slowbro final attack and explicit Victory",
+  "first_pass": "gpt-6.1-sol/high /root/sol_auto_160256",
+  "lead_checks": "Read full review, coverage, summary and uncertainties. Independently inspected opening AI/Auto sheet;123-second ordinary Combusken Fire attachment;203-second Juliana text and complete sheet08 hidden search/evolution sequence;207-second Typhlosion card;249-second five-head/one-tail panel;285-second Irida text and zero-Energy Greninja;288-second Slowbro130HP/twoWater and Greninja60HP;303-second final two-head/one-tail panel;309-second opponent Bench40/30 and owner150HP/threeWater;complete sheet12 final visible3-1 circles;320.60-second explicit Victory. Hidden search-copy attribution and internal score claims narrowed in LEAD_CORRECTION.md.",
+  "outcome": "owner_win",
+  "final_points": {
+    "owner": 3,
+    "opponent": 1
+  },
+  "result_display": "Win; 3-1 circles shown, final ex knockout",
+  "owner_visible_core": "Greninja / Greninja ex / Mega Slowbro ex",
+  "opponent": "AI Mega Blaziken ex & Typhlosion ex Deck (Deluxe Pack: Mega)",
+  "last_turn": 15,
+  "useful_finding": "Typhlosion flips five heads but removes only Greninja ex's two available Water. Shifting Stream then brings in the accumulating Mega Slowbro. Irida heals only the energized Slowbro, and its final two-head attack damages both opposing Bench Pokemon without knocking either out.",
+  "limitations": "Root verification is bounded. Juliana search-copy identity remains hidden. The printed two-point ex rule and final visible3-1 circles are recorded separately; no exact +2 caption or internal total above three is established.",
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "source_video": "20260930_160256000_iOS.MP4",
+  "source_sha256": "e8ddb4464a188e03fdded2dc6dc14209dfb7a8ccc82affca8fd3e5cead0f9685",
+  "unreviewed_intervals": [],
+  "material_unresolved": [],
+  "ladder_eligible": false,
+  "ladder_action": "No Ladder Log entry; excluded by owner instruction",
+  "astra_consulted": false,
+  "astra_reason": "Readable targeted card, coin and settled-state frames resolved consequential interactions; hidden search identity remains explicitly unknown"
+}

@@ -1,0 +1,21 @@
+{
+  "source": "20261010_021629000_iOS.MP4",
+  "source_sha256": "c6780bc6ef6fe89e7db6ccee1f4d06e3ff3b0bc8a9db488a76345b5a46ee185d",
+  "scope": "Automated early QR intake; game/deck binding requires whole-source visual review",
+  "attempts": [
+    {
+      "seconds": 1,
+      "native_frame": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-09_NEW_PAUSE_GAMES\\20261010_021629000_iOS\\qr_intake\\t0001.00.jpg",
+      "exit_code": 2,
+      "stdout": "",
+      "stderr": "usage: decode_retained_qr.py [-h] --source-video SOURCE_VIDEO --seconds\n                             SECONDS [--source-sha256 SOURCE_SHA256]\n                             [--crop X1 Y1 X2 Y2] --out OUT\n                             image\ndecode_retained_qr.py: error: Expected exactly one QR payload, found 0. Retain a clearer native QR crop; no guessed identities.\n"
+    },
+    {
+      "seconds": 2,
+      "native_frame": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-09_NEW_PAUSE_GAMES\\20261010_021629000_iOS\\qr_intake\\t0002.00.jpg",
+      "exit_code": 0,
+      "stdout": "{\"output\": \"C:\\\\Users\\\\dacz8\\\\OneDrive\\\\Desktop\\\\Battle Logs\\\\Recording_QA\\\\BATCH_2026-10-09_NEW_PAUSE_GAMES\\\\20261010_021629000_iOS\\\\qr_intake\\\\QR_DECODE_0002.00.json\", \"card_slots\": 20, \"all_entities_resolved\": true, \"energy\": [{\"value\": 3, \"name\": \"Water\", \"selectable\": true}], \"roundtrip\": true}",
+      "stderr": ""
+    }
+  ]
+}

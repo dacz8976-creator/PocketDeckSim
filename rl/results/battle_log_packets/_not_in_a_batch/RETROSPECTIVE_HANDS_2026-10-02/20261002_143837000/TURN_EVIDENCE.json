@@ -1,0 +1,1236 @@
+{
+  "is_template": false,
+  "schema": "retrospective-target-hand-v1",
+  "game_id": "20261002_143837000",
+  "sources": [
+    {
+      "source_video": "20261002_143837000_iOS.MP4",
+      "frozen_source_reference": "../../20261002_143837000_iOS_shark_sol/SOURCE.json",
+      "shared_completion_event": "dc0e99bb-a012-4adc-85fb-a238f2834bff",
+      "source_binding_basis": "Current801112679-byte archived source SHA256 directly verified after hydration; matches frozen SOURCE.json. Reused native frames bound to same accepted packet.",
+      "main_status": "Reviewed",
+      "bytes": 801112679,
+      "current_source": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20261002_143837000_iOS.MP4",
+      "original_preserved": true,
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "source_moved": false,
+      "duration_seconds": 433.090544,
+      "sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "current_hash_verified": true,
+      "current_verified_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "current_verified_bytes": 801112679,
+      "current_verification_utc": "2026-10-02T20:39:26.392121+00:00",
+      "storage_note": "Leave hydrated source locally for lead verification; lead handles return to online-only.",
+      "hydration_note": "Initial read was denied in sandbox. Escalated first read failed with cloud provider not running; same source retry succeeded. No duplicate source copy."
+    }
+  ],
+  "default_capture_policy": {
+    "offsets_after_draw_seconds": [
+      1,
+      3,
+      6
+    ],
+    "new_native_frame_limit": 20,
+    "bottom_fraction": 0.2,
+    "fixed_grid_is_start_hand_evidence": false
+  },
+  "frames": [
+    {
+      "evidence_id": "t0172.00",
+      "role": "turn5 banner, before draw",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_143837000_iOS.MP4",
+      "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "draw_animation_end_seconds": 175,
+      "draw_animation_end_basis": "Approximate upper bound from sampled settling interval; not a frame-perfect measured endpoint",
+      "requested_source_seconds": 172.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": -3.0,
+      "full_frame_path": "turn_evidence/t0172.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0172.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0172.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": null,
+      "hand_spread": null,
+      "extraction_origin": "new bounded native seek",
+      "observation": "turn5 banner, before draw",
+      "suitability_or_limit": "Targeted draw/action/reconciliation reference only.",
+      "visual_inspection": "Full frame or native bottom/top crop inspected; not every frame board transcribed"
+    },
+    {
+      "evidence_id": "t0174.00",
+      "role": "normal draw reveal: Poke Ball",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_143837000_iOS.MP4",
+      "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "draw_animation_end_seconds": 175,
+      "draw_animation_end_basis": "Approximate upper bound from sampled settling interval; not a frame-perfect measured endpoint",
+      "requested_source_seconds": 174.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": -1.0,
+      "full_frame_path": "turn_evidence/t0174.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0174.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0174.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": null,
+      "hand_spread": null,
+      "extraction_origin": "new bounded native seek",
+      "observation": "normal draw reveal: Poke Ball",
+      "suitability_or_limit": "Targeted draw/action/reconciliation reference only.",
+      "visual_inspection": "Full frame or native bottom/top crop inspected; not every frame board transcribed"
+    },
+    {
+      "evidence_id": "t0175.00",
+      "role": "selected pre-play starting hand",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_143837000_iOS.MP4",
+      "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "draw_animation_end_seconds": 175,
+      "draw_animation_end_basis": "Approximate upper bound from sampled settling interval; not a frame-perfect measured endpoint",
+      "requested_source_seconds": 175.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 0.0,
+      "full_frame_path": "turn_evidence/t0175.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0175.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0175.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "extraction_origin": "new bounded native seek",
+      "observation": "selected pre-play starting hand",
+      "suitability_or_limit": "Direct four-card hand read before card leaves fan; selected card glow does not hide its name. Dense pre-play capture replaces unsuitable +1/+3/+6 views.",
+      "visual_inspection": "Full frame or native bottom/top crop inspected; not every frame board transcribed"
+    },
+    {
+      "evidence_id": "t0175.50",
+      "role": "first-play removal; Poke Ball absent",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_143837000_iOS.MP4",
+      "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "draw_animation_end_seconds": 175,
+      "draw_animation_end_basis": "Approximate upper bound from sampled settling interval; not a frame-perfect measured endpoint",
+      "requested_source_seconds": 175.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 0.5,
+      "full_frame_path": "turn_evidence/t0175.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0175.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0175.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "extraction_origin": "new bounded native seek",
+      "observation": "first-play removal; Poke Ball absent",
+      "suitability_or_limit": "Targeted draw/action/reconciliation reference only.",
+      "visual_inspection": "Full frame or native bottom/top crop inspected; not every frame board transcribed"
+    },
+    {
+      "evidence_id": "t0176.00",
+      "role": "scheduled +1 candidate, after first play",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_143837000_iOS.MP4",
+      "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "draw_animation_end_seconds": 175,
+      "draw_animation_end_basis": "Approximate upper bound from sampled settling interval; not a frame-perfect measured endpoint",
+      "requested_source_seconds": 176.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 1.0,
+      "full_frame_path": "turn_evidence/t0176.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0176.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0176.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "extraction_origin": "new bounded native seek",
+      "observation": "scheduled +1 candidate, after first play",
+      "suitability_or_limit": "After first play; cannot establish the starting hand.",
+      "visual_inspection": "Full frame or native bottom/top crop inspected; not every frame board transcribed"
+    },
+    {
+      "evidence_id": "t0177.00",
+      "role": "after first play",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_143837000_iOS.MP4",
+      "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "draw_animation_end_seconds": 175,
+      "draw_animation_end_basis": "Approximate upper bound from sampled settling interval; not a frame-perfect measured endpoint",
+      "requested_source_seconds": 177.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 2.0,
+      "full_frame_path": "turn_evidence/t0177.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0177.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0177.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "extraction_origin": "new bounded native seek",
+      "observation": "after first play",
+      "suitability_or_limit": "Targeted draw/action/reconciliation reference only.",
+      "visual_inspection": "Full frame or native bottom/top crop inspected; not every frame board transcribed"
+    },
+    {
+      "evidence_id": "t0178.00",
+      "role": "scheduled +3 candidate, after first play",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_143837000_iOS.MP4",
+      "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "draw_animation_end_seconds": 175,
+      "draw_animation_end_basis": "Approximate upper bound from sampled settling interval; not a frame-perfect measured endpoint",
+      "requested_source_seconds": 178.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 3.0,
+      "full_frame_path": "turn_evidence/t0178.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0178.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0178.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "extraction_origin": "new bounded native seek",
+      "observation": "scheduled +3 candidate, after first play",
+      "suitability_or_limit": "After first play; cannot establish the starting hand.",
+      "visual_inspection": "Full frame or native bottom/top crop inspected; not every frame board transcribed"
+    },
+    {
+      "evidence_id": "t0180.00",
+      "role": "Poke Ball search: Carvanha reveal and four-card transient hand",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_143837000_iOS.MP4",
+      "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "draw_animation_end_seconds": 175,
+      "draw_animation_end_basis": "Approximate upper bound from sampled settling interval; not a frame-perfect measured endpoint",
+      "requested_source_seconds": 180.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 5.0,
+      "full_frame_path": "turn_evidence/t0180.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0180.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0180.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "extraction_origin": "new bounded native seek",
+      "observation": "Poke Ball search: Carvanha reveal and four-card transient hand",
+      "suitability_or_limit": "Targeted draw/action/reconciliation reference only.",
+      "visual_inspection": "Full frame or native bottom/top crop inspected; not every frame board transcribed"
+    },
+    {
+      "evidence_id": "t0181.00",
+      "role": "scheduled +6 candidate; Carvanha leaving hand toward bench",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_143837000_iOS.MP4",
+      "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "draw_animation_end_seconds": 175,
+      "draw_animation_end_basis": "Approximate upper bound from sampled settling interval; not a frame-perfect measured endpoint",
+      "requested_source_seconds": 181.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 6.0,
+      "full_frame_path": "turn_evidence/t0181.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0181.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0181.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "extraction_origin": "new bounded native seek",
+      "observation": "scheduled +6 candidate; Carvanha leaving hand toward bench",
+      "suitability_or_limit": "After first play; cannot establish the starting hand.",
+      "visual_inspection": "Full frame or native bottom/top crop inspected; not every frame board transcribed"
+    },
+    {
+      "evidence_id": "t0188.00",
+      "role": "before-attack hand; Energy attachment animation",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_143837000_iOS.MP4",
+      "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "draw_animation_end_seconds": 175,
+      "draw_animation_end_basis": "Approximate upper bound from sampled settling interval; not a frame-perfect measured endpoint",
+      "requested_source_seconds": 188.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 13.0,
+      "full_frame_path": "turn_evidence/t0188.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0188.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0188.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "extraction_origin": "reused accepted native frame",
+      "observation": "before-attack hand; Energy attachment animation",
+      "suitability_or_limit": "Targeted draw/action/reconciliation reference only.",
+      "visual_inspection": "Full frame or native bottom/top crop inspected; not every frame board transcribed"
+    },
+    {
+      "evidence_id": "t0190.50",
+      "role": "before attack resolution; unused-Supporter warning with hand visible",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_143837000_iOS.MP4",
+      "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "draw_animation_end_seconds": 175,
+      "draw_animation_end_basis": "Approximate upper bound from sampled settling interval; not a frame-perfect measured endpoint",
+      "requested_source_seconds": 190.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 15.5,
+      "full_frame_path": "turn_evidence/t0190.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0190.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0190.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "extraction_origin": "new bounded native seek",
+      "observation": "before attack resolution; unused-Supporter warning with hand visible",
+      "suitability_or_limit": "Targeted draw/action/reconciliation reference only.",
+      "visual_inspection": "Full frame or native bottom/top crop inspected; not every frame board transcribed"
+    },
+    {
+      "evidence_id": "t0194.00",
+      "role": "ending hand during attack resolution",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_143837000_iOS.MP4",
+      "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "draw_animation_end_seconds": 175,
+      "draw_animation_end_basis": "Approximate upper bound from sampled settling interval; not a frame-perfect measured endpoint",
+      "requested_source_seconds": 194.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 19.0,
+      "full_frame_path": "turn_evidence/t0194.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0194.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0194.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "extraction_origin": "reused accepted native frame",
+      "observation": "ending hand during attack resolution",
+      "suitability_or_limit": "Ending-hand evidence; not a pre-play starting hand.",
+      "visual_inspection": "Full frame or native bottom/top crop inspected; not every frame board transcribed"
+    },
+    {
+      "evidence_id": "t0197.00",
+      "role": "ending hand after attack",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_143837000_iOS.MP4",
+      "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "draw_animation_end_seconds": 175,
+      "draw_animation_end_basis": "Approximate upper bound from sampled settling interval; not a frame-perfect measured endpoint",
+      "requested_source_seconds": 197.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 22.0,
+      "full_frame_path": "turn_evidence/t0197.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0197.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0197.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "extraction_origin": "reused accepted native frame",
+      "observation": "ending hand after attack",
+      "suitability_or_limit": "Ending-hand evidence; not a pre-play starting hand.",
+      "visual_inspection": "Full frame or native bottom/top crop inspected; not every frame board transcribed"
+    },
+    {
+      "evidence_id": "t0221.00",
+      "role": "normal draw reveal: Misty",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261002_143837000_iOS.MP4",
+      "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "draw_animation_end_seconds": 222.5,
+      "draw_animation_end_basis": "Approximate upper bound from sampled settling interval; not a frame-perfect measured endpoint",
+      "requested_source_seconds": 221.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": -1.5,
+      "full_frame_path": "turn_evidence/t0221.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0221.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0221.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": null,
+      "hand_spread": null,
+      "extraction_origin": "new bounded native seek",
+      "observation": "normal draw reveal: Misty",
+      "suitability_or_limit": "Targeted draw/action/reconciliation reference only.",
+      "visual_inspection": "Full frame or native bottom/top crop inspected; not every frame board transcribed"
+    },
+    {
+      "evidence_id": "t0222.00",
+      "role": "draw card moving into hand",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261002_143837000_iOS.MP4",
+      "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "draw_animation_end_seconds": 222.5,
+      "draw_animation_end_basis": "Approximate upper bound from sampled settling interval; not a frame-perfect measured endpoint",
+      "requested_source_seconds": 222.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": -0.5,
+      "full_frame_path": "turn_evidence/t0222.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0222.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0222.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": null,
+      "hand_spread": null,
+      "extraction_origin": "new bounded native seek",
+      "observation": "draw card moving into hand",
+      "suitability_or_limit": "Targeted draw/action/reconciliation reference only.",
+      "visual_inspection": "Full frame or native bottom/top crop inspected; not every frame board transcribed"
+    },
+    {
+      "evidence_id": "t0222.50",
+      "role": "selected pre-play starting hand",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261002_143837000_iOS.MP4",
+      "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "draw_animation_end_seconds": 222.5,
+      "draw_animation_end_basis": "Approximate upper bound from sampled settling interval; not a frame-perfect measured endpoint",
+      "requested_source_seconds": 222.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 0.0,
+      "full_frame_path": "turn_evidence/t0222.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0222.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0222.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "extraction_origin": "new bounded native seek",
+      "observation": "selected pre-play starting hand",
+      "suitability_or_limit": "Direct four-card hand read before card leaves fan; selected card glow does not hide its name. Dense pre-play capture replaces unsuitable +1/+3/+6 views.",
+      "visual_inspection": "Full frame or native bottom/top crop inspected; not every frame board transcribed"
+    },
+    {
+      "evidence_id": "t0223.00",
+      "role": "Mega Sharpedo removed from hand",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261002_143837000_iOS.MP4",
+      "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "draw_animation_end_seconds": 222.5,
+      "draw_animation_end_basis": "Approximate upper bound from sampled settling interval; not a frame-perfect measured endpoint",
+      "requested_source_seconds": 223.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 0.5,
+      "full_frame_path": "turn_evidence/t0223.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0223.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0223.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "extraction_origin": "new bounded native seek",
+      "observation": "Mega Sharpedo removed from hand",
+      "suitability_or_limit": "Targeted draw/action/reconciliation reference only.",
+      "visual_inspection": "Full frame or native bottom/top crop inspected; not every frame board transcribed"
+    },
+    {
+      "evidence_id": "t0223.50",
+      "role": "scheduled +1 candidate, after evolution card removed",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261002_143837000_iOS.MP4",
+      "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "draw_animation_end_seconds": 222.5,
+      "draw_animation_end_basis": "Approximate upper bound from sampled settling interval; not a frame-perfect measured endpoint",
+      "requested_source_seconds": 223.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 1.0,
+      "full_frame_path": "turn_evidence/t0223.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0223.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0223.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "extraction_origin": "new bounded native seek",
+      "observation": "scheduled +1 candidate, after evolution card removed",
+      "suitability_or_limit": "After first play; cannot establish the starting hand.",
+      "visual_inspection": "Full frame or native bottom/top crop inspected; not every frame board transcribed"
+    },
+    {
+      "evidence_id": "t0224.00",
+      "role": "after evolution removal",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261002_143837000_iOS.MP4",
+      "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "draw_animation_end_seconds": 222.5,
+      "draw_animation_end_basis": "Approximate upper bound from sampled settling interval; not a frame-perfect measured endpoint",
+      "requested_source_seconds": 224.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 1.5,
+      "full_frame_path": "turn_evidence/t0224.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0224.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0224.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "extraction_origin": "new bounded native seek",
+      "observation": "after evolution removal",
+      "suitability_or_limit": "Targeted draw/action/reconciliation reference only.",
+      "visual_inspection": "Full frame or native bottom/top crop inspected; not every frame board transcribed"
+    },
+    {
+      "evidence_id": "t0225.00",
+      "role": "after evolution removal",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261002_143837000_iOS.MP4",
+      "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "draw_animation_end_seconds": 222.5,
+      "draw_animation_end_basis": "Approximate upper bound from sampled settling interval; not a frame-perfect measured endpoint",
+      "requested_source_seconds": 225.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 2.5,
+      "full_frame_path": "turn_evidence/t0225.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0225.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0225.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "extraction_origin": "new bounded native seek",
+      "observation": "after evolution removal",
+      "suitability_or_limit": "Targeted draw/action/reconciliation reference only.",
+      "visual_inspection": "Full frame or native bottom/top crop inspected; not every frame board transcribed"
+    },
+    {
+      "evidence_id": "t0225.50",
+      "role": "scheduled +3 candidate, after first play",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261002_143837000_iOS.MP4",
+      "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "draw_animation_end_seconds": 222.5,
+      "draw_animation_end_basis": "Approximate upper bound from sampled settling interval; not a frame-perfect measured endpoint",
+      "requested_source_seconds": 225.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 3.0,
+      "full_frame_path": "turn_evidence/t0225.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0225.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0225.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "extraction_origin": "new bounded native seek",
+      "observation": "scheduled +3 candidate, after first play",
+      "suitability_or_limit": "After first play; cannot establish the starting hand.",
+      "visual_inspection": "Full frame or native bottom/top crop inspected; not every frame board transcribed"
+    },
+    {
+      "evidence_id": "t0228.00",
+      "role": "approximately +6 candidate after evolution",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261002_143837000_iOS.MP4",
+      "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "draw_animation_end_seconds": 222.5,
+      "draw_animation_end_basis": "Approximate upper bound from sampled settling interval; not a frame-perfect measured endpoint",
+      "requested_source_seconds": 228.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 5.5,
+      "full_frame_path": "turn_evidence/t0228.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0228.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0228.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "extraction_origin": "reused accepted native frame",
+      "observation": "approximately +6 candidate after evolution",
+      "suitability_or_limit": "After first play; cannot establish the starting hand.",
+      "visual_inspection": "Full frame or native bottom/top crop inspected; not every frame board transcribed"
+    },
+    {
+      "evidence_id": "t0236.00",
+      "role": "Copycat transition, hand temporarily hidden",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261002_143837000_iOS.MP4",
+      "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "draw_animation_end_seconds": 222.5,
+      "draw_animation_end_basis": "Approximate upper bound from sampled settling interval; not a frame-perfect measured endpoint",
+      "requested_source_seconds": 236.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 13.5,
+      "full_frame_path": "turn_evidence/t0236.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0236.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0236.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "extraction_origin": "reused accepted native frame",
+      "observation": "Copycat transition, hand temporarily hidden",
+      "suitability_or_limit": "Targeted draw/action/reconciliation reference only.",
+      "visual_inspection": "Full frame or native bottom/top crop inspected; not every frame board transcribed"
+    },
+    {
+      "evidence_id": "t0240.00",
+      "role": "Copycat Cyrus reveal, before attack",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261002_143837000_iOS.MP4",
+      "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "draw_animation_end_seconds": 222.5,
+      "draw_animation_end_basis": "Approximate upper bound from sampled settling interval; not a frame-perfect measured endpoint",
+      "requested_source_seconds": 240.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 17.5,
+      "full_frame_path": "turn_evidence/t0240.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0240.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0240.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "extraction_origin": "new bounded native seek",
+      "observation": "Copycat Cyrus reveal, before attack",
+      "suitability_or_limit": "Targeted draw/action/reconciliation reference only.",
+      "visual_inspection": "Full frame or native bottom/top crop inspected; not every frame board transcribed"
+    },
+    {
+      "evidence_id": "t0241.00",
+      "role": "before attack hand with attack-card zoom",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261002_143837000_iOS.MP4",
+      "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "draw_animation_end_seconds": 222.5,
+      "draw_animation_end_basis": "Approximate upper bound from sampled settling interval; not a frame-perfect measured endpoint",
+      "requested_source_seconds": 241.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 18.5,
+      "full_frame_path": "turn_evidence/t0241.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0241.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0241.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "extraction_origin": "new bounded native seek",
+      "observation": "before attack hand with attack-card zoom",
+      "suitability_or_limit": "Before attack, but zoom covers part of hand; ending names also directly visible at242 and246. No additional extraction after20-frame cap.",
+      "visual_inspection": "Full frame or native bottom/top crop inspected; not every frame board transcribed"
+    },
+    {
+      "evidence_id": "t0242.00",
+      "role": "ending hand during attack",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261002_143837000_iOS.MP4",
+      "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "draw_animation_end_seconds": 222.5,
+      "draw_animation_end_basis": "Approximate upper bound from sampled settling interval; not a frame-perfect measured endpoint",
+      "requested_source_seconds": 242.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 19.5,
+      "full_frame_path": "turn_evidence/t0242.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0242.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0242.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "extraction_origin": "reused accepted native frame",
+      "observation": "ending hand during attack",
+      "suitability_or_limit": "Ending-hand evidence; not a pre-play starting hand.",
+      "visual_inspection": "Full frame or native bottom/top crop inspected; not every frame board transcribed"
+    },
+    {
+      "evidence_id": "t0246.00",
+      "role": "ending hand after attack",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261002_143837000_iOS.MP4",
+      "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+      "draw_animation_end_seconds": 222.5,
+      "draw_animation_end_basis": "Approximate upper bound from sampled settling interval; not a frame-perfect measured endpoint",
+      "requested_source_seconds": 246.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 23.5,
+      "full_frame_path": "turn_evidence/t0246.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0246.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0246.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "extraction_origin": "reused accepted native frame",
+      "observation": "ending hand after attack",
+      "suitability_or_limit": "Ending-hand evidence; not a pre-play starting hand.",
+      "visual_inspection": "Full frame or native bottom/top crop inspected; not every frame board transcribed"
+    }
+  ],
+  "discard_snapshots": null,
+  "scheduled_capture_limits": [
+    "Turn5 draw settled by175.0, Poke Ball leaves fan by175.5; turn7 draw settled by222.5, Mega Sharpedo leaves fan by223.0. Later offset candidates cannot replace these dense selected views.",
+    "Exact frame PTS and animation endpoint not independently measured.",
+    "Discard snapshots and already accepted boards are outside this targeted supplement."
+  ]
+}

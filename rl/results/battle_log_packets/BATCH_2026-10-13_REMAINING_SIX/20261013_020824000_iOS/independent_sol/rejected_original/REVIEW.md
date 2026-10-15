@@ -1,0 +1,54 @@
+# Full battle review: 20261013_020824000_iOS.MP4
+
+Reviewer: /root/remaining_020824. Review date: 2026-10-13. Primary end-to-end visual review, pending separate independent acceptance.
+
+Exact source: 998764820 bytes, 540.93 seconds, SHA-256 `07937ec6622f5979fd73f65b81a6315bba5bcaadb5eb272c9b28d4b17c4bdaa4`. SOURCE.json and SOURCE_TIME.json retain original bindings.
+
+One human battle, Deluxe Pack: Mega Emblem Event, against Subbles. No Auto option is visible. Owner Dacz8976 went first and lost 0-3 after 14 turns. Match date is October 12 in Chicago, corroborated by phone 9:08 at start.
+
+The 0-5s filmed New deck 16 and native QR 4.00s match the dated historical log exactly by payload. See DECK_USED.json for all 20 slots and provenance. Current external verification is pending. The deck uses Alolan Muk without ex, 110HP, Power of Alchemy.
+
+Opening 27.70s before placement: Heavy Helmet, Alolan Muk, Professor's Research, Glimmet, Kingambit. Glimmet becomes Active 29.5s; opponent Shuckle ex. No redraw is shown.
+
+| Turn | Player | Source interval | Numbered action sequence | Owner ending hand | Evidence / JSON row |
+| --- | --- | --- | --- | --- | --- |
+| 1 | owner | 40.7-62.0667s | 1. Draw two cards in order: Poké Ball then Glimmora; 2. Search Alolan Grimer; 3. Bench Alolan Grimer in right slot; 4. End Turn; first-turn Energy not generated and no attack | 5 | TURN_LEDGER.json turn 1; [native 45.3s](turn_evidence/t0045.30.jpg) |
+| 2 | opponent | 62-120.4s | 1. Play Fragrant Forest; 2. Use Fragrant Forest; one hidden Basic search arrival; 3. Bench Combee in right slot; 4. Bench Combee in left slot; 5. Shuffle remaining two cards; draw five hidden cards matching owner hand; 6. Attach Grass to Shuckle ex; 7. Triple Slap: tails, heads, heads; 40 damage to Glimmet | unchanged except forced replacement | TURN_LEDGER.json turn 2; [native 63.8s](turn_evidence/t0063.80.jpg) |
+| 3 | owner | 121-150.5s | 1. Evolve Active Glimmet into Glimmora; preserve 40 damage, HP becomes50; 2. Evolve right Alolan Grimer into Alolan Muk; Power of Alchemy suppresses Basic Abilities; 3. Bench Pawniard in center slot; 4. Attach Heavy Helmet to Pawniard, not Glimmora; 5. Attach 1 Darkness from Energy Zone to Glimmora; 6. Venomous Hit: 30 to Shuckle ex and Poison; suppressed Solid Shell does not reduce this hit | 2 | TURN_LEDGER.json turn 3; [native 124.6s](turn_evidence/t0124.60.jpg) |
+| 4 | opponent | 150-211.5s | 1. Use Fragrant Forest; hidden Basic search; 2. Bench Teal Mask Ogerpon ex in center slot; 3. Attach Grass to right Combee before evolution; 4. Evolve right Combee to Vespiquen ex; 5. Attach Leaf Cape to right Vespiquen ex; effective HP170; 6. Triple Slap: heads, tails, heads; 40 to Glimmora | unchanged except forced replacement | TURN_LEDGER.json turn 4; [native 153.7s](turn_evidence/t0153.70.jpg) |
+| 5 | owner | 211-238.8s | 1. Draw Glimmet first, then Poké Ball; 2. Search Regigigas; 3. Bench second Glimmet in left slot; 4. Attach 1 Darkness from Energy Zone to Pawniard; 5. Venomous Hit: 30 to Shuckle ex; remains Poisoned | 3 | TURN_LEDGER.json turn 5; [native 214s](turn_evidence/t0214.00.jpg) |
+| 6 | opponent | 238-332.1s | 1. Reduce Shuckle ex retreat cost by1 this turn; 2. Retreat Shuckle ex to right slot and promote right Vespiquen ex; X Speed allows zero Energy payment; 3. Attach Grass to Active Vespiquen ex, from1 to2; 4. Attach Leaf Cape to left Combee; effective HP80; 5. Shuffle remaining two cards; draw three hidden cards matching owner hand; 6. Evolve left Combee to second Vespiquen ex; retain Leaf Cape, HP170; 7. Chase Order, no Basic discarded:70 damage to Glimmora | unchanged except forced replacement | TURN_LEDGER.json turn 6; [native 241.8s](turn_evidence/t0241.80.jpg) |
+| 7 | owner | 329-355.177s | 1. Bench Regigigas in left slot; 2. Replace Fragrant Forest with Mesagoza; 3. Accept offered Yes to use Mesagoza; tails, no search or added card; 4. Attach 1 Darkness from Energy Zone to Glimmet; 5. Glimmet retreats; Regigigas becomes Active; 6. End Turn without attack; no explicit Supporter warning or decline shown | 2 | TURN_LEDGER.json turn 7; [native 332.9s](turn_evidence/t0332.90.jpg) |
+| 8 | opponent | 355-404.8s | 1. Replace Mesagoza with Fragrant Forest; 2. Force owner switch; owner chooses Glimmet, swapping Regigigas to left Bench; 3. Owner chooses Glimmet as Sabrina replacement; 4. Attach Grass to left benched Vespiquen ex; 5. Chase Order: discard right benched Shuckle ex and its1 Grass to add70;140 to Glimmet | unchanged except forced replacement | TURN_LEDGER.json turn 8; [native 357.5s](turn_evidence/t0357.50.jpg) |
+| 9 | owner | 405-415.79s | 1. Attach 1 Darkness from Energy Zone to Regigigas; 2. End Turn, hand3; no visible Supporter warning or decline | 3 | TURN_LEDGER.json turn 9; [native 409.6s](turn_evidence/t0409.60.jpg) |
+| 10 | opponent | 415-427.5s | 1. Attach Grass to center Teal Mask Ogerpon ex; 2. Chase Order, no Basic discarded:70 to Regigigas | unchanged except forced replacement | TURN_LEDGER.json turn 10; [native 418.8s](turn_evidence/t0418.80.jpg) |
+| 11 | owner | 428-466.022s | 1. Heal Regigigas80 to100; tails, Lucky Ice Pop discarded; 2. Return damaged Colorless Regigigas to hand; its1 Darkness discarded; 3. Choose Pawniard as replacement Active; 4. Bench returned Regigigas center, fresh150HP; 5. Pawniard retreats; Regigigas becomes Active; 6. Attach 1 Darkness from Energy Zone to Regigigas; 7. End Turn without attack, hand2 | 2 | TURN_LEDGER.json turn 11; [native 432.1s](turn_evidence/t0432.10.jpg) |
+| 12 | opponent | 466-487.4s | 1. Bench second Shuckle ex in right slot; 2. Attach Grass to right Shuckle ex; 3. Chase Order: discard right Shuckle ex and its1 Grass;140 to Regigigas | unchanged except forced replacement | TURN_LEDGER.json turn 12; [native 469.5s](turn_evidence/t0469.50.jpg) |
+| 13 | owner | 487-511.978s | 1. Heal Regigigas10 to30; heads returns this Lucky Ice Pop to hand; 2. Replay same Lucky Ice Pop; heal30 to50; tails discards it; 3. Attach 1 Darkness from Energy Zone to Regigigas; 4. End Turn with Regigigas2 Darkness and hand2 | 2 | TURN_LEDGER.json turn 13; [native 490s](turn_evidence/t0490.00.jpg) |
+| 14 | opponent | 512-532s | 1. Chase Order: discard center Teal Mask Ogerpon ex with1 Grass;140 to Regigigas50HP, terminal KO; turn Grass left unused | unchanged except forced replacement | TURN_LEDGER.json turn 14; [native 514.9s](turn_evidence/t0514.90.jpg) |
+
+## Draw and hand reconciliation
+
+Turn 1 normal Ilima. Research reveals Poké Ball first 50.10s, then Glimmora 51.10s. Poké Ball finds Alolan Grimer 56.00s. Ending hand 5. Turn 3 normal Pawniard; full six-card pre-play 124.60s and two-card ending 144.20s. Turn 5 normal Research, then Research reveals Glimmet 217.50s followed by Poké Ball 218.40s; search finds Regigigas 224.50s. Ending hand 3. Turn 7 normal Mesagoza, ends 2 after Regigigas and Stadium; Mesagoza tails adds nothing. Turn 9 normal Lucky Ice Pop, ends 3. Turn 11 normal Glimmora; Lucky Ice Pop tails, Ilima return and rebench leave 2. Turn 13 normal Lucky Ice Pop; heads returns it once, replay tails, ends 2. No owner Copycat is played.
+
+Opponent Copycat turn 2 draws five hidden cards, matching the owner five-card ending hand; turn 6 draws three hidden cards, matching owner three. Fragrant Forest searches on turns 2 and 4 are hidden. Native top crop fan counts at owner starts: 4,5,4,2,1,2,2. See separate hidden card entries in the ledger.
+
+## Boards, Energy and mechanics
+
+Every turn row retains both starting and resulting boards, positioned Bench, effective maximum/current HP, typed Energy, Tool, conditions, points, Stadium and both Energy Zone lines. Current and next-type observations are kept separate; no future count is fabricated. All observed owner Energy is Darkness; opponent Energy is Grass.
+
+Heavy Helmet attaches to Pawniard, not Glimmora. Owner Energy destinations: turn 3 Glimmora, turn 5 Pawniard, turn 7 Glimmet, turn 9 Regigigas, turn 11 Regigigas, turn 13 Regigigas. Turn 7 Glimmet receives 1 then retreats for 1. Turn 11 Ilima returns Regigigas and discards its 1; Pawniard becomes Active, returned Regigigas is rebenched, Pawniard retreats for its 1, and Regigigas receives a new 1. Turn 13 attachment is confirmed by resulting Regigigas 2 Darkness, with Muk 0. The drag intermediate crossing Muk is not the target.
+
+Opponent turn 4 attaches Grass to right Combee before evolving it; turn 6 Active Vespiquen gains second Grass. Turn 8 left benched Vespiquen gains 1; turn 10 Ogerpon gains 1; turn 12 newly benched Shuckle gains 1 and is then discarded for Chase Order. Turn 14 Grass remains unused. Shuckle retreat on turn 6 uses X Speed and retains its 1 Grass.
+
+Alolan Muk Power of Alchemy suppresses Basic Abilities while it is in play. Shuckle Solid Shell therefore does not reduce Glimmora attacks after turn 3, and Ogerpon Soothing Wind is suppressed. The red barred Basic icons mark Ability suppression. Regigigas Seal of Antiquity literally prevents attack unless Regirock, Regice and Registeel are on Bench, but it is a Basic Ability suppressed here. It does not prohibit attaching Energy. Glimmora is Stage 1, so Shattering Crystal is available; its KO coin is tails 320.00s and Subbles receives a point.
+
+HP and points reconcile: Shuckle 120 takes 30 plus checkup 10, then checkup 10, then 30 plus checkup 10, reaching 30 before retreat removes Poison. Glimmora reaches 50 then 10 after successive 40 hits. It is knocked out by 70 on turn 6, yielding opponent point 1. Sabrina brings Glimmet forward on turn 8; boosted 140 knocks it out for point 2. Regigigas 150 takes 70 to 80, heals 20 to 100, returns with Ilima and is rebenched at 150. Boosted 140 leaves 10; two Lucky Ice Pop uses heal it to 50. Final boosted 140 knocks it out for point 3. Results show 60 attack damage done, agreeing with two Venomous Hits 30 each.
+
+## Terminal and recording limits
+
+Turn 14 discards Teal Mask Ogerpon ex, boosts Chase Order to 140, and knocks out Regigigas 524-527s. Third point 528-530s, Defeat 532s, result 540.40s directly shows Subbles, Went first, 14 turns and 0-3. The source ends on that result screen; there is no second game or related split.
+
+Neither discard pile is opened anywhere. Public discard history is available from actions and visible top cards; it is not a full pile snapshot. Opponent hidden identities and exact artwork/rarity remain unavailable. Draw-relative candidates are retained with native crops; fast plays use denser actual pre-play selections. Native requested seek times do not claim measured exact frame PTS. No explicit Supporter warning or declined prompt is shown.
+
+Capture status: complete_with_recording_limits. Primary battle coverage complete; independent acceptance, registration, archival and current external log entry are root responsibilities.

@@ -1,0 +1,35 @@
+{
+  "checker": "/root/check_later_230258",
+  "checked_utc": "2026-10-13T02:31:15.272128+00:00",
+  "status": "rejected",
+  "accepted": false,
+  "source_video": "20261012_230258000_iOS.MP4",
+  "source_sha256": "02c8539c786e5e57652c297ce425468955c4f70da2657a40cf39a2b0b330619a",
+  "source_identity_basis": "Frozen intake SOURCE.json and independently inspected source-derived native frames; source not rehashed by checker",
+  "scope": "Bounded independent visual checks plus all eight current packet files reconciled",
+  "checked_input_sha256": {
+    "REVIEW.md": "1a4f022888a63524bcad06d2c36ad4538ab9da9d66281f4aa294e5752a439451",
+    "COVERAGE.md": "9fb2ede115fb1234d65eeb54722cba838c93bab5b915833a544da9056382a692",
+    "SUMMARY.json": "2c41e229ff3f39c556a56edeab4b0a361a020ec19020a6301c7502b443883e96",
+    "UNCERTAINTIES.json": "3f26a6ce39a06dcd7a3176f632c996f2bc468ea678d73beaae735586e6f261f6",
+    "PAUSE_GAME.json": "1a29019c0ba2453de09c8298e1787844fa0dc34a3b2c74973adc03dca0537bb6",
+    "DECK_USED.json": "d331b41f5458f193395db84295f4ca35b1a21115bcc805eb07e2d7820da4cb6d",
+    "TURN_LEDGER.json": "326eadc4c26d4240e3e916c479b00aa28f027a12cf7cdaf7e2e1b53cd8bf2df2",
+    "TURN_EVIDENCE.json": "e29d2c5e011aa05feba2eafcde6247568a912e14539604f62fc6e79bd7273868"
+  },
+  "accepted_input_sha256": {},
+  "snapshot_directory": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-12_ADDITIONAL_TWO\\20261012_230258000_iOS\\independent_sol\\rejected_20261013T023115Z",
+  "source_checks": "INDEPENDENT_SOURCE_CHECKS.md",
+  "qr_check": "QR_CHECK.json",
+  "findings": [
+    "Draft named reveal evidence anchors precede actual faces: T1 Glimmet58 requires61; T3 Muk143 requires144 or later named hand; T5 RareCandy199 requires200.",
+    "Primary has not frozen final8 and readability cleanup pending. Core outcome and material sequences agree with source."
+  ],
+  "limitations": [
+    "Hidden opponent draws/searches are not identified from later plays.",
+    "Neither opened discard pile is shown.",
+    "Exact artwork/rarity and specific queue remain unestablished.",
+    "Source-local requested seek times are not measured frame PTS."
+  ],
+  "no_shared_index_or_external_mutation": true
+}

@@ -1,0 +1,55 @@
+# Complete rules-test recording review
+
+**Current status: lead-accepted full_battle_review_complete; original archived unchanged in `Reviewed`. Excluded from Ladder Log.**
+
+The complete first pass and independent lead checks are accepted; registration and archival are complete.
+
+Reviewer: sol_rules_20261001_213822000. Model/effort: gpt-6.1-sol/high. Review date: 2026-10-01. Source identity is preserved in SOURCE.json: 20261001_213822000_iOS.MP4, 217.453333 seconds, SHA-256 3017f3abbf17846d9041177e3fce268560c4ca7ed68277b2a2972b8a90f8399b.
+
+The entire supplied recording contains one complete rules-testing battle, from setup to the settled results page. Owner testimony explicitly excludes Ladder Log. Results establish a Solo encounter against “Mega Blaziken ex & Typhlosion ex Deck (Deluxe Pack: Mega)”. Auto is visibly off through most of the deliberate test, then enabled between 157 and 161 seconds and remains on through the ending. The owner's Auto button does not independently establish the opponent's control mode.
+
+The owner loses after nine turns despite leading 2 points to 1. Their last remaining Pokémon is knocked out with an empty Bench. This is a deliberate interaction test, so sacrificing the Bench is recorded as a probe rather than criticized as competitive play.
+
+## Complete timeline
+
+Times below are source seconds. overview3/sheet_01.jpg through sheet_08.jpg cover the complete clip at reusable 3-second spacing; their labels are approximate sampling midpoints. All native/t*.jpg anchors below were extracted at the stated source times.
+
+| Phase | Supplied footage and meaningful actions | Evidence |
+|---|---|---|
+| Setup, 0-7 | Owner Dacz8976 goes second. Active Magikarp has Leap Out, 30 HP; a second Magikarp has Splash and 30 HP. Opponent starts Hearthflame Mask Ogerpon, 80 HP, with Cyndaquil, 60 HP, on the Bench. No attached Energy or points. | native/t0000.00.jpg; t0001.50.jpg; t0004.00.jpg; overview3/sheet_01.jpg |
+| Turn 1, about 7-20 | Opponent plays Poké Ball, then Juliana, and benches a second Cyndaquil. Juliana's displayed text searches a random Stage 2 Pokémon into hand. Search identities remain hidden. No attachment or attack occurs. | overview3/sheet_01.jpg; native/t0015.00.jpg; native/t0017.00.jpg |
+| Turn 2, about 20-56 | Owner draws and benches Carvanha, 50 HP. Misty targets Active Leap Out Magikarp: one head then tails supplies one Water. A normal Energy Zone attachment supplies a second Water. Leap Out switches Magikarp with Carvanha; both Water remain on benched Magikarp. No damage or points. | native/t0029.00.jpg; t0033.00.jpg; t0035.00.jpg; t0036.00.jpg; t0038.00.jpg; t0042.00.jpg; t0050.00.jpg; t0054.00.jpg; overview3/sheet_03.jpg |
+| Turn 3, about 56-66 | Opponent evolves one Cyndaquil into Quilava, 80 HP, attaches one Fire to it, and benches Meowth, 50 HP, with Carefree Steps. Ogerpon remains Active without Energy, so no attack occurs. | native/t0060.00.jpg; t0062.00.jpg; t0063.00.jpg; t0065.00.jpg |
+| Turn 4, about 66-103 | Owner draws Mega Gyarados ex. Wallace evolves Active Carvanha directly into Mega Sharpedo ex, 190 HP, from the deck. Owner then evolves the two benched Magikarp into Wild Swing Gyarados, 130 HP, and Mega Gyarados ex, 210 HP, from hand. The ordinary Gyarados retains two Water; Mega Gyarados has none. Normal attachment gives Mega Sharpedo one Water. Turbo Shark does 90 including Ogerpon's +20 Water weakness, knocking out its 80 HP, and supplies one Water to benched ordinary Gyarados, now three. Owner gets one point. Meowth is promoted. | native/t0068.00.jpg; t0070.50.jpg; t0074.00.jpg; t0078.00.jpg; t0080.00.jpg; t0083.00.jpg; t0086.00.jpg; t0087.00.jpg; t0092.00.jpg; t0094.00.jpg; t0096.00.jpg; t0101.00.jpg |
+| Turn 5, about 103-117 | Opponent evolves Quilava into Typhlosion ex, 180 HP, attaches its second Fire, plays Poké Ball, and benches Torchic, 60 HP. Meowth remains Active without Energy and does not attack. | native/t0104.00.jpg; t0107.00.jpg; t0110.00.jpg; t0113.00.jpg; t0116.00.jpg |
+| Turn 6, about 117-166 | Owner plays a second Misty, with an immediate tails and no Energy gained. The exact chosen Water target is not securely established. Mega Sharpedo retreats for free, retaining its Water; ordinary Gyarados becomes Active with three Water. Owner attaches normal Water to Gyarados, now four. Wild Swing selects and discards BOTH benched Mega Pokémon, leaving an empty Bench. Meowth's Carefree Steps flips tails. Wild Swing deals 100, knocking out 50-HP Meowth. Owner reaches two points; opponent remains zero. Typhlosion is promoted. Auto becomes enabled between 157 and 161 seconds. | native/t0117.00.jpg; t0120.00.jpg; t0122.00.jpg; t0128.00.jpg; t0129.00.jpg; t0130.00.jpg; t0132.00.jpg; t0139.00.jpg; t0140.00.jpg; t0143.00.jpg; t0145.00.jpg; t0147.00.jpg; t0148.00.jpg; t0152.00.jpg; t0154.00.jpg; t0157.00.jpg; t0161.00.jpg; t0166.00.jpg |
+| Turn 7, about 166-182 | Opponent evolves its remaining Cyndaquil into Quilava and gives Active Typhlosion its third Fire. Destructive Inferno deals 110, leaving Gyarados at 20 HP. Its Energy-discard flip is immediate tails: zero Energy discarded, Gyarados retains four Water. | native/t0170.00.jpg; t0173.00.jpg; t0175.00.jpg; t0178.00.jpg; t0181.00.jpg |
+| Turn 8, about 182-191 | Owner draws Soothing Shore. It remains in hand and is not played as a Stadium. Auto attaches a fifth Water to Gyarados. With no Bench to discard, Wild Swing attacks for base 20 plus Typhlosion's +20 Water weakness, 40 total, reducing Typhlosion from 180 to 140 HP. | native/t0184.00.jpg; t0187.00.jpg; t0189.00.jpg; t0191.00.jpg |
+| Turn 9 and results, about 191-217.453 | Opponent draws and attaches one Fire to benched Quilava. Typhlosion uses Destructive Inferno again for 110 against Gyarados's remaining 20 HP. The Energy-discard coin sequence still appears after the lethal damage and again gives zero heads/one tails. Gyarados is removed, opponent gains one point, and Defeat appears with no owner Pokémon remaining. Settled results show went second, nine turns, owner two points, opponent one point, and damage done 230. Recording ends on this page. | native/t0194.00.jpg; t0197.00.jpg; t0201.50.jpg; t0203.00.jpg; t0206.00.jpg; t0208.00.jpg; t0209.00.jpg; t0215.00.jpg; t0217.00.jpg |
+
+## What the tests establish
+
+1. **Wallace can fetch and evolve Carvanha into Mega Sharpedo ex.** Native 70.50 shows Wallace targeting a Water Pokémon with maximum HP 50 or less and putting a random compatible Water evolution from the deck onto it. At 70 Carvanha is Active with 50 HP; at 74 Mega Sharpedo's printed Stage 1 says it evolves from Carvanha; at 78 it is the settled Active. Mega Sharpedo was absent from the visible pre-Wallace hand, which contained ordinary and Mega Gyarados. This test does not establish evolution on the same turn the Basic was played, because Carvanha entered on turn 2 and Wallace was played on turn 4.
+
+2. **Turbo Shark retains the attacker's Energy and accelerates a benched Water Pokémon after a knockout.** The printed attack at 87 costs one Water and takes a Water from the Energy Zone for a benched Water Pokémon. Before attack, ordinary Gyarados has two Water; after damage, at 94 the third Water is attaching, and at 96 the settled Bench shows three while Sharpedo retains one. Normal attachment had already been used on Sharpedo. No claim is made about no-Bench behavior, which was not tested.
+
+3. **Wild Swing can discard two Mega ex Pokémon without awarding their knockout points.** The printed attack at 143 says the player may discard any number of benched Water Pokémon, adding 40 per Pokémon to base 20. At 145 both Mega Sharpedo ex and Mega Gyarados ex are selected. At 147 the Bench is empty and opponent score is still zero. Carefree Steps flips tails at 152, and 154 shows 100 damage, matching 20 + 40 + 40. At 161 owner score is two and opponent zero. Both Mega cards are discarded by an attack effect, rather than knocked out. Their printed Mega rule awards three points when knocked out; that condition was not triggered by these discards. This establishes the observed interaction, not a fixture import or simulator correctness claim.
+
+4. **Carefree Steps tails allows the full calculated damage.** Native 122 and 150 show the ability text: attack damage prompts a flip, with heads preventing damage. At 152 tails occurs and 154 shows 100 damage. The heads branch remains untested.
+
+5. **Wild Swing remains usable with no Bench.** At 187 the Bench is empty and Gyarados has five Water. At 189 its base 20 plus weakness deals 40. This establishes zero-discard behavior without requiring a selectable benched target.
+
+6. **An empty board can end the battle below three opponent points.** The final KO removes the owner's only Pokémon. The opponent receives only one point at 206, yet Defeat follows and results confirm 2-1. Empty-board loss is the supported interpretation of the terminal state. No concede action is visible.
+
+7. **The results damage includes overkill.** The owner visibly deals 90, 100 and 40; their total is the reported 230, although the first two targets had only 80 and 50 HP. Effective HP removed would be 170. The results value is not a count of HP actually lost.
+
+## Limits and state reconciliation
+
+No supplied phase remains unreviewed. There are no Tools, played Stadiums, special conditions or healing events visible. Soothing Shore is a drawn hand card only. The blue icon on Meowth is its Carefree Steps indicator, not a special condition. Leap Out retains two attached Water; later evolution retains them, Turbo Shark adds a third, the free Sharpedo retreat spends none, the turn 6 attachment supplies a fourth, and the turn 8 attachment supplies a fifth. Both Destructive Inferno coin results are tails, so this clip does not test actual Energy removal.
+
+The first Misty is one head then tails; the second has zero heads then tails. The second Misty's chosen target remains honestly uncertain because the selection and animation do not clearly isolate it, but its zero-head result gives no Energy to any Pokémon. Hidden searches, complete deck contents and exact artwork/catalog numbers remain unknown. These limitations do not leave an uncovered gameplay interval. Independent lead acceptance, registration and matching-hash archival are complete.
+
+
+## Astra follow-up
+
+A bounded gpt-6-astra/high check reviewed the second Misty selection and confirmed that its target remains unknown. A card overlapped by Misty is not proof of the chosen target while all eligible cards and the selection prompt remain visible. The 0-head/1-tail result establishes zero Energy regardless. See the [bounded independent check](../BATCH_2026-10-01_RULES/ASTRA_CHECK.md). Full coverage and lead acceptance remain valid.

@@ -1,0 +1,33 @@
+{
+  "lead": "/root",
+  "checked_utc": "2026-10-14T15:19:37.025625+00:00",
+  "source_filename": "20260926_212155000_iOS.MP4",
+  "source_sha256": "258066407acbc779da233b4ee92a6fd49b6260f35534b0e5dd84e6d9c3102683",
+  "basis": "Direct original-resolution visual inspection, independent frozen packet and source identity reconciliation",
+  "observations": [
+    {
+      "path": "../root_checks/StefaGo/t0000.00.jpg",
+      "sha256": "840c985f01433348d93b49f05c2c2511767f0969db525ab37338e9536d92bf94",
+      "directly_viewed_by_root": true,
+      "finding": "Source starts during initial owner turn with placed Basics; setup and earlier initial choices absent; no entirely missing completed turn established"
+    },
+    {
+      "path": "evidence/t0200.00.jpg",
+      "sha256": "27d5dbdea84afdd39feb2cb9e283caac6eae9655cc0018b4c1077313b1f86b2d",
+      "directly_viewed_by_root": true,
+      "finding": "Your opponent conceded; last score2-1 against StefaGo"
+    },
+    {
+      "path": "evidence/t0201.00.jpg",
+      "sha256": "a535507c739623255d5eaecc4cc75784ee041b0dd65bf7dbdf19d9f1b9236255",
+      "directly_viewed_by_root": true,
+      "finding": "Concession remains visible"
+    },
+    {
+      "path": "evidence/t0203.50.jpg",
+      "sha256": "2a977cac29986ead51c2514c2fed81fe3a6e3ace0b14afba3f172c5c9436271c",
+      "directly_viewed_by_root": true,
+      "finding": "Dacz8976 Victory with Hydreigon; corrects earlier no-result claim"
+    }
+  ]
+}

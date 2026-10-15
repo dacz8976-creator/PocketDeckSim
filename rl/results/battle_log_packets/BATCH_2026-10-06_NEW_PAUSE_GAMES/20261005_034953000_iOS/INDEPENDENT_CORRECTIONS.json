@@ -1,0 +1,135 @@
+{
+  "repaired_utc": "2026-10-06T20:01:02.777378+00:00",
+  "lead": "/root",
+  "source_sha256": "85f9e3803543f512323259794b7166808e5bfd2ff5a3854d8ce1a40686075180",
+  "initial_independent_report": "independent_sol/CHECK_RESULT.json",
+  "original_input_sha256": {
+    "SOURCE.json": "891a7a104aa72078472f090fb48a2648a37b4febb51be948116aca9cc3c2c0e7",
+    "REVIEW.md": "0db953af90b14b1479115a6e662fe754814a2a2325ed2cbe5fed589725fe1054",
+    "COVERAGE.md": "9383e9bb625cf2682190cdb13b09673d6688e464d27f694baf9e5464b628055b",
+    "SUMMARY.json": "28ff37161301afbd3cee59260822714f31702ecae083b7797c8a0cc907464212",
+    "UNCERTAINTIES.json": "702bac515c45f9214dc2324514a6bc531e6dc6fa19452f23fff024cec29d9450",
+    "PAUSE_GAME.json": "4b020c79f1fbd8dac3c61ff566cfa441da6508dd154ca8ddb8783c9ec2fd8a1b",
+    "DECK_USED.json": "61b347b31eda9ce011faec763288dd12702a208ef14acc1b25015ff58503278f",
+    "TURN_LEDGER.json": "b301411847f7ff9a1a98e596638090535628683d78688074e3d42cf2a04f3897",
+    "TURN_EVIDENCE.json": "26e8359919a8436eff3806c789c3ff8fc733d765a3a7f0aca92d47413d78b4f3"
+  },
+  "original_input_backup": "original_before_R1_R3",
+  "required_repairs_applied": [
+    "R1",
+    "R2",
+    "R3"
+  ],
+  "changes": [
+    {
+      "repair_id": "R1",
+      "turn": 2,
+      "selected_seconds": 83,
+      "before": {
+        "type": "Metal",
+        "count": 1,
+        "available": true
+      },
+      "after": {
+        "type": null,
+        "count": null,
+        "available": null
+      },
+      "later_generated_seconds": 83.8
+    },
+    {
+      "repair_id": "R1",
+      "turn": 6,
+      "selected_seconds": 149.5,
+      "before": {
+        "type": "Metal",
+        "count": 1,
+        "available": true
+      },
+      "after": {
+        "type": "none",
+        "count": 0,
+        "available": false
+      },
+      "later_generated_seconds": 150.5
+    },
+    {
+      "repair_id": "R1",
+      "turn": 10,
+      "selected_seconds": 223,
+      "before": {
+        "type": "Metal",
+        "count": 1,
+        "available": true
+      },
+      "after": {
+        "type": null,
+        "count": null,
+        "available": null
+      },
+      "later_generated_seconds": 223.5
+    },
+    {
+      "repair_id": "R1",
+      "turn": 14,
+      "selected_seconds": 333,
+      "before": {
+        "type": "Metal",
+        "count": 1,
+        "available": true
+      },
+      "after": {
+        "type": "none",
+        "count": 0,
+        "available": false
+      },
+      "later_generated_seconds": 334
+    },
+    {
+      "repair_id": "R1",
+      "turn": 16,
+      "selected_seconds": 388,
+      "before": {
+        "type": "Metal",
+        "count": 1,
+        "available": true
+      },
+      "after": {
+        "type": "none",
+        "count": 0,
+        "available": false
+      },
+      "later_generated_seconds": 389
+    },
+    {
+      "repair_id": "R2",
+      "turn": 3,
+      "order": [
+        "Fraxure evolution99",
+        "Research102 and hidden draws104",
+        "Metal transfer108/resolved109",
+        "End Turn109"
+      ],
+      "opponent_touch_claimed": false
+    },
+    {
+      "repair_id": "R3",
+      "owner_attachment_selection_bound": [
+        87,
+        88
+      ],
+      "promotion_selection_bound": [
+        261,
+        262
+      ],
+      "promotion_reveal": 263,
+      "placed": 264,
+      "settled_board_reference": 266,
+      "next_turn_label": 12,
+      "next_turn_label_seconds": 265,
+      "board_content_changed": false
+    }
+  ],
+  "retained_frame_files_changed": false,
+  "independent_recheck_required": true
+}

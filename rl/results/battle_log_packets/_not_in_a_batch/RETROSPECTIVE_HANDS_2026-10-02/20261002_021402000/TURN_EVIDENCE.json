@@ -1,0 +1,3028 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261002_021402000_iOS.MP4",
+  "sources": [
+    {
+      "video_basename": "20261002_021402000_iOS.MP4",
+      "sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "source_json": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\SOURCE.json"
+    }
+  ],
+  "default_capture_policy": {
+    "owner_turn_offsets_after_draw_seconds": [
+      1,
+      3,
+      6
+    ],
+    "before_end_action_required": true,
+    "native_resolution_required": true,
+    "bottom_crop_height_fraction": 0.2,
+    "top_crop": "fan, clock and visible Energy Zone at [0,0,1170,550]",
+    "fixed_grid_is_turn_start_evidence": false
+  },
+  "frames": [
+    {
+      "evidence_id": "f0018.00",
+      "role": "opening_five",
+      "turn_number": null,
+      "who_played": "setup",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": null,
+      "draw_end_precision": null,
+      "draw_end_supported_interval_seconds": null,
+      "requested_source_seconds": 18,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0018.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0018.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0018.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "All five original cards before Active placement.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0019.00",
+      "role": "opening_active_selection",
+      "turn_number": null,
+      "who_played": "setup",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": null,
+      "draw_end_precision": null,
+      "draw_end_supported_interval_seconds": null,
+      "requested_source_seconds": 19,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0019.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0019.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0019.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Wailmer, original slot4, is selected for Active placement.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0037.50",
+      "role": "chosen_preplay_hand",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 37.25,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        37,
+        37.5
+      ],
+      "requested_source_seconds": 37.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 0.25,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0037.50.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0037.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0037.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Poké Ball, Pokémon Center Lady, Heavy Helmet, Irida, Wailord",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0039.50",
+      "role": "draw_timed_candidate",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 37.25,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        37,
+        37.5
+      ],
+      "requested_source_seconds": 39.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 2.25,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0039.50.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0039.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0039.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Later candidate used for timing/hand reconciliation; suitability differs after first play.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0042.50",
+      "role": "draw_timed_candidate",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 37.25,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        37,
+        37.5
+      ],
+      "requested_source_seconds": 42.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 5.25,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0042.50.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0042.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0042.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Later candidate used for timing/hand reconciliation; suitability differs after first play.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0050.50",
+      "role": "before_ending_action_hand",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 37.25,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        37,
+        37.5
+      ],
+      "requested_source_seconds": 50.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 13.25,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0050.50.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0050.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0050.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "3 cards: Pokémon Center Lady, Irida, Wailord",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0036.00",
+      "role": "normal_draw_reveal_or_boundary",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 37.25,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        37,
+        37.5
+      ],
+      "requested_source_seconds": 36,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": -1.25,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0036.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0036.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0036.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Wailord",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0037.00",
+      "role": "normal_draw_reveal_or_boundary",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 37.25,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        37,
+        37.5
+      ],
+      "requested_source_seconds": 37,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": -0.25,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0037.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0037.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0037.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Wailord",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0048.00",
+      "role": "draw_search_or_hand_reconciliation",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 37.25,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        37,
+        37.5
+      ],
+      "requested_source_seconds": 48,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 10.75,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\native\\t0048.00.jpg",
+      "full_frame_storage": "reference_to_accepted_native",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0048.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0048.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native reveal/fan reference; accepted plays remain inherited.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0072.30",
+      "role": "chosen_preplay_hand",
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 71.65,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        71,
+        72.3
+      ],
+      "requested_source_seconds": 72.3,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 0.65,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0072.30.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0072.30_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0072.30_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Pokémon Center Lady, Irida, Wailord, Cyrus",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0072.00",
+      "role": "draw_timed_candidate",
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 71.65,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        71,
+        72.3
+      ],
+      "requested_source_seconds": 72,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 0.35,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0072.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0072.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0072.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Later candidate used for timing/hand reconciliation; suitability differs after first play.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0074.00",
+      "role": "draw_timed_candidate",
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 71.65,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        71,
+        72.3
+      ],
+      "requested_source_seconds": 74,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 2.35,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0074.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0074.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0074.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Later candidate used for timing/hand reconciliation; suitability differs after first play.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0077.00",
+      "role": "before_ending_action_hand",
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 71.65,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        71,
+        72.3
+      ],
+      "requested_source_seconds": 77,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 5.35,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0077.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0077.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0077.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "3 cards: Pokémon Center Lady, Irida, Cyrus",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0071.00",
+      "role": "normal_draw_reveal_or_boundary",
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 71.65,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        71,
+        72.3
+      ],
+      "requested_source_seconds": 71,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": -0.65,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0071.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0071.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0071.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Cyrus",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0100.80",
+      "role": "chosen_preplay_hand",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 100.4,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        100,
+        100.8
+      ],
+      "requested_source_seconds": 100.8,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 0.4,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0100.80.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0100.80_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0100.80_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Pokémon Center Lady, Irida, Cyrus, Wailord ex",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0102.00",
+      "role": "draw_timed_candidate",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 100.4,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        100,
+        100.8
+      ],
+      "requested_source_seconds": 102,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 1.6,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0102.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0102.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0102.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Later candidate used for timing/hand reconciliation; suitability differs after first play.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0105.00",
+      "role": "draw_timed_candidate",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 100.4,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        100,
+        100.8
+      ],
+      "requested_source_seconds": 105,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 4.6,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0105.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0105.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0105.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Later candidate used for timing/hand reconciliation; suitability differs after first play.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0108.00",
+      "role": "before_ending_action_hand",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 100.4,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        100,
+        100.8
+      ],
+      "requested_source_seconds": 108,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 7.6,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0108.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0108.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0108.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "3 cards: Pokémon Center Lady, Irida, Cyrus",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0099.60",
+      "role": "normal_draw_reveal_or_boundary",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 100.4,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        100,
+        100.8
+      ],
+      "requested_source_seconds": 99.6,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": -0.8,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0099.60.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0099.60_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0099.60_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Wailord ex",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0100.00",
+      "role": "normal_draw_reveal_or_boundary",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 100.4,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        100,
+        100.8
+      ],
+      "requested_source_seconds": 100,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": -0.4,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0100.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0100.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0100.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Wailord ex",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0132.00",
+      "role": "chosen_preplay_hand",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 131.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        131,
+        132
+      ],
+      "requested_source_seconds": 132,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 0.5,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0132.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0132.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0132.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Pokémon Center Lady, Irida, Cyrus, Professor's Research",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0134.00",
+      "role": "draw_timed_candidate",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 131.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        131,
+        132
+      ],
+      "requested_source_seconds": 134,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 2.5,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0134.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0134.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0134.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Later candidate used for timing/hand reconciliation; suitability differs after first play.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0137.00",
+      "role": "draw_timed_candidate",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 131.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        131,
+        132
+      ],
+      "requested_source_seconds": 137,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 5.5,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0137.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0137.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0137.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Research: Copycat is enlarged in its reveal while Indeedee ex is already appended to the bottom fan. This is not the first-card reveal.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0146.00",
+      "role": "before_ending_action_hand",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 131.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        131,
+        132
+      ],
+      "requested_source_seconds": 146,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 14.5,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0146.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0146.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0146.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "4 cards: Pokémon Center Lady, Irida, Cyrus, Copycat",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0131.00",
+      "role": "normal_draw_reveal_or_boundary",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 131.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        131,
+        132
+      ],
+      "requested_source_seconds": 131,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": -0.5,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0131.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0131.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0131.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Professor's Research",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0139.00",
+      "role": "draw_search_or_hand_reconciliation",
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 131.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        131,
+        132
+      ],
+      "requested_source_seconds": 139,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 7.5,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0139.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0139.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0139.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native reveal/fan reference; accepted plays remain inherited.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0205.00",
+      "role": "chosen_preplay_hand",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 203.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        203,
+        204
+      ],
+      "requested_source_seconds": 205,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 1.5,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\native\\t0205.00.jpg",
+      "full_frame_storage": "reference_to_accepted_native",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0205.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0205.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Pokémon Center Lady, Irida, Cyrus, Copycat, Lucky Ice Pop",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0207.00",
+      "role": "draw_timed_candidate",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 203.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        203,
+        204
+      ],
+      "requested_source_seconds": 207,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 3.5,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0207.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0207.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0207.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Later candidate used for timing/hand reconciliation; suitability differs after first play.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0210.00",
+      "role": "draw_timed_candidate",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 203.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        203,
+        204
+      ],
+      "requested_source_seconds": 210,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 6.5,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0210.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0210.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0210.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Later candidate used for timing/hand reconciliation; suitability differs after first play.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0275.00",
+      "role": "before_ending_action_hand",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 203.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        203,
+        204
+      ],
+      "requested_source_seconds": 275,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 71.5,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0275.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0275.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0275.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "2 cards: Soothing Shore, Lucky Ice Pop",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0203.00",
+      "role": "normal_draw_reveal_or_boundary",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 203.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        203,
+        204
+      ],
+      "requested_source_seconds": 203,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": -0.5,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0203.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0203.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0203.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Lucky Ice Pop",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0204.00",
+      "role": "normal_draw_reveal_or_boundary",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 203.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        203,
+        204
+      ],
+      "requested_source_seconds": 204,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 0.5,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0204.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0204.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0204.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Lucky Ice Pop",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0211.00",
+      "role": "draw_search_or_hand_reconciliation",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 203.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        203,
+        204
+      ],
+      "requested_source_seconds": 211,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 7.5,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\native\\t0211.00.jpg",
+      "full_frame_storage": "reference_to_accepted_native",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0211.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0211.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native reveal/fan reference; accepted plays remain inherited.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0232.00",
+      "role": "draw_search_or_hand_reconciliation",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 203.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        203,
+        204
+      ],
+      "requested_source_seconds": 232,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 28.5,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\native\\t0232.00.jpg",
+      "full_frame_storage": "reference_to_accepted_native",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0232.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0232.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native reveal/fan reference; accepted plays remain inherited.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0236.00",
+      "role": "draw_search_or_hand_reconciliation",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 203.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        203,
+        204
+      ],
+      "requested_source_seconds": 236,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 32.5,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\native\\t0236.00.jpg",
+      "full_frame_storage": "reference_to_accepted_native",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0236.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0236.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native reveal/fan reference; accepted plays remain inherited.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0241.00",
+      "role": "draw_search_or_hand_reconciliation",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 203.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        203,
+        204
+      ],
+      "requested_source_seconds": 241,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 37.5,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\native\\t0241.00.jpg",
+      "full_frame_storage": "reference_to_accepted_native",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0241.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0241.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native reveal/fan reference; accepted plays remain inherited.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0246.00",
+      "role": "draw_search_or_hand_reconciliation",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 203.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        203,
+        204
+      ],
+      "requested_source_seconds": 246,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 42.5,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0246.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0246.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0246.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native reveal/fan reference; accepted plays remain inherited.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0247.50",
+      "role": "draw_search_or_hand_reconciliation",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 203.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        203,
+        204
+      ],
+      "requested_source_seconds": 247.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 44.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0247.50.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0247.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0247.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native reveal/fan reference; accepted plays remain inherited.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0248.00",
+      "role": "draw_search_or_hand_reconciliation",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 203.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        203,
+        204
+      ],
+      "requested_source_seconds": 248,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 44.5,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0248.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0248.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0248.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native reveal/fan reference; accepted plays remain inherited.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0249.00",
+      "role": "draw_search_or_hand_reconciliation",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 203.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        203,
+        204
+      ],
+      "requested_source_seconds": 249,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 45.5,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\native\\t0249.00.jpg",
+      "full_frame_storage": "reference_to_accepted_native",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0249.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0249.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native reveal/fan reference; accepted plays remain inherited.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0249.50",
+      "role": "draw_search_or_hand_reconciliation",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 203.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        203,
+        204
+      ],
+      "requested_source_seconds": 249.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 46.0,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0249.50.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0249.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0249.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native reveal/fan reference; accepted plays remain inherited.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0250.00",
+      "role": "draw_search_or_hand_reconciliation",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 203.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        203,
+        204
+      ],
+      "requested_source_seconds": 250,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 46.5,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0250.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0250.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0250.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native reveal/fan reference; accepted plays remain inherited.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0251.00",
+      "role": "draw_search_or_hand_reconciliation",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 203.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        203,
+        204
+      ],
+      "requested_source_seconds": 251,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 47.5,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0251.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0251.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0251.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native reveal/fan reference; accepted plays remain inherited.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0252.00",
+      "role": "draw_search_or_hand_reconciliation",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 203.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        203,
+        204
+      ],
+      "requested_source_seconds": 252,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 48.5,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0252.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0252.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0252.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native reveal/fan reference; accepted plays remain inherited.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0254.00",
+      "role": "draw_search_or_hand_reconciliation",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 203.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        203,
+        204
+      ],
+      "requested_source_seconds": 254,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 50.5,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\native\\t0254.00.jpg",
+      "full_frame_storage": "reference_to_accepted_native",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0254.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0254.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native reveal/fan reference; accepted plays remain inherited.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0263.00",
+      "role": "draw_search_or_hand_reconciliation",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 203.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        203,
+        204
+      ],
+      "requested_source_seconds": 263,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 59.5,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\native\\t0263.00.jpg",
+      "full_frame_storage": "reference_to_accepted_native",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0263.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0263.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native reveal/fan reference; accepted plays remain inherited.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0265.00",
+      "role": "draw_search_or_hand_reconciliation",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 203.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        203,
+        204
+      ],
+      "requested_source_seconds": 265,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 61.5,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\native\\t0265.00.jpg",
+      "full_frame_storage": "reference_to_accepted_native",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0265.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0265.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native reveal/fan reference; accepted plays remain inherited.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0268.00",
+      "role": "draw_search_or_hand_reconciliation",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 203.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        203,
+        204
+      ],
+      "requested_source_seconds": 268,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 64.5,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\native\\t0268.00.jpg",
+      "full_frame_storage": "reference_to_accepted_native",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0268.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0268.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native reveal/fan reference; accepted plays remain inherited.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0272.00",
+      "role": "draw_search_or_hand_reconciliation",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 203.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        203,
+        204
+      ],
+      "requested_source_seconds": 272,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 68.5,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\native\\t0272.00.jpg",
+      "full_frame_storage": "reference_to_accepted_native",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0272.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0272.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native reveal/fan reference; accepted plays remain inherited.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0316.50",
+      "role": "chosen_preplay_hand",
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 313.75,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        313,
+        314.5
+      ],
+      "requested_source_seconds": 316.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 2.75,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0316.50.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0316.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0316.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Soothing Shore, Lucky Ice Pop, Professor's Research",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0314.50",
+      "role": "draw_timed_candidate",
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 313.75,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        313,
+        314.5
+      ],
+      "requested_source_seconds": 314.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 0.75,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0314.50.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0314.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0314.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Later candidate used for timing/hand reconciliation; suitability differs after first play.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0319.50",
+      "role": "draw_timed_candidate",
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 313.75,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        313,
+        314.5
+      ],
+      "requested_source_seconds": 319.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 5.75,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0319.50.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0319.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0319.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Later candidate used for timing/hand reconciliation; suitability differs after first play.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0362.00",
+      "role": "before_ending_action_hand",
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 313.75,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        313,
+        314.5
+      ],
+      "requested_source_seconds": 362,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 48.25,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0362.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0362.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0362.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "2 cards: Soothing Shore, Cyrus",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0313.00",
+      "role": "normal_draw_reveal_or_boundary",
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 313.75,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        313,
+        314.5
+      ],
+      "requested_source_seconds": 313,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": -0.75,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\native\\t0313.00.jpg",
+      "full_frame_storage": "reference_to_accepted_native",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0313.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0313.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Professor's Research",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0330.00",
+      "role": "draw_search_or_hand_reconciliation",
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 313.75,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        313,
+        314.5
+      ],
+      "requested_source_seconds": 330,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 16.25,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0330.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0330.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0330.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native reveal/fan reference; accepted plays remain inherited.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0331.00",
+      "role": "draw_search_or_hand_reconciliation",
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 313.75,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        313,
+        314.5
+      ],
+      "requested_source_seconds": 331,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 17.25,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\native\\t0331.00.jpg",
+      "full_frame_storage": "reference_to_accepted_native",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0331.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0331.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native reveal/fan reference; accepted plays remain inherited.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0336.00",
+      "role": "draw_search_or_hand_reconciliation",
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 313.75,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        313,
+        314.5
+      ],
+      "requested_source_seconds": 336,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 22.25,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\native\\t0336.00.jpg",
+      "full_frame_storage": "reference_to_accepted_native",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0336.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0336.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native reveal/fan reference; accepted plays remain inherited.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0350.00",
+      "role": "draw_search_or_hand_reconciliation",
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 313.75,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        313,
+        314.5
+      ],
+      "requested_source_seconds": 350,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 36.25,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\native\\t0350.00.jpg",
+      "full_frame_storage": "reference_to_accepted_native",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0350.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\ref_t0350.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Native reveal/fan reference; accepted plays remain inherited.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0036.50",
+      "role": "bounded_timing_candidate_not_selected",
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 37.25,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        37,
+        37.5
+      ],
+      "requested_source_seconds": 36.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": -0.75,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0036.50.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0036.50_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0036.50_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained for draw/first-action boundary; not chosen as pre-play fan.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0080.00",
+      "role": "bounded_timing_candidate_not_selected",
+      "turn_number": null,
+      "who_played": "setup",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": null,
+      "draw_end_precision": null,
+      "draw_end_supported_interval_seconds": null,
+      "requested_source_seconds": 80.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0080.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0080.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0080.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained for draw/first-action boundary; not chosen as pre-play fan.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0099.00",
+      "role": "bounded_timing_candidate_not_selected",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 100.4,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        100,
+        100.8
+      ],
+      "requested_source_seconds": 99.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": -1.4,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0099.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0099.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0099.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained for draw/first-action boundary; not chosen as pre-play fan.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0101.20",
+      "role": "bounded_timing_candidate_not_selected",
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 100.4,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        100,
+        100.8
+      ],
+      "requested_source_seconds": 101.2,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 0.8,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0101.20.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0101.20_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0101.20_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained for draw/first-action boundary; not chosen as pre-play fan.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0206.00",
+      "role": "bounded_timing_candidate_not_selected",
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 203.5,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        203,
+        204
+      ],
+      "requested_source_seconds": 206.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 2.5,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0206.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0206.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0206.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained for draw/first-action boundary; not chosen as pre-play fan.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    },
+    {
+      "evidence_id": "f0324.00",
+      "role": "bounded_timing_candidate_not_selected",
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "source_sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "draw_animation_end_seconds": 313.75,
+      "draw_end_precision": "bounded estimate; exact animation-end frame not measured",
+      "draw_end_supported_interval_seconds": [
+        313,
+        314.5
+      ],
+      "requested_source_seconds": 324.0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": 10.25,
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0324.00.jpg",
+      "full_frame_storage": "new_native_extraction",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0324.00_bottom.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20261002_021402000\\turn_evidence\\t0324.00_top.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Retained for draw/first-action boundary; not chosen as pre-play fan.",
+      "suitability_or_limit": "Draw-end offsets approximate; many later candidates follow the rapid first play. No later candidate is substituted for the chosen pre-play fan."
+    }
+  ],
+  "discard_snapshots": null,
+  "discard_limit": "No opened pile seen in inspected native target/reveal frames. Not a claim of a fresh exhaustive discard audit.",
+  "scheduled_capture_limits": "Offsets tied to bounded draw-end windows. Exact +1/+3/+6 timing is not claimed for every candidate. Nearest retained candidates and denser pre-play captures preserve all target hands; several later scheduled candidates are after play.48 new-full-frame cap respected."
+}

@@ -1,0 +1,122 @@
+{
+  "source": {
+    "video_basename": "20261009_195432000_iOS.MP4",
+    "sha256": "bc41e4a4b4239027164fccf4401ff10c9c9a0657e4f22e13470f6228789afdfd",
+    "bytes": 313346480,
+    "duration_seconds": 170.702109,
+    "frame_width": 1170,
+    "frame_height": 2532
+  },
+  "coverage": {
+    "scope": "complete recorded battle, setup through terminal result",
+    "recorded_battles": 1,
+    "overview_sampling": "reduced-size 1 fps, seconds 0 through 170",
+    "consequential_proof": "targeted original-resolution frames",
+    "recording_gap_identified": false
+  },
+  "classification": {
+    "battle_type": "computer AI battle",
+    "opponent_display_name": "Miraidon ex Deck (Deluxe Pack: Mega)",
+    "auto_option_visible": true,
+    "auto_initially_on": false,
+    "auto_on_before_battle": true,
+    "auto_checked_during_visible_play": true,
+    "ladder_log_eligible": false,
+    "pause_games_log_eligible": false,
+    "proof": ["proof_native/t4s.jpg", "proof_native/t5s.jpg", "proof_native/t170s.jpg"]
+  },
+  "result": {
+    "winner": "player",
+    "screen_text": "Victory",
+    "turns": 8,
+    "player_went_second": true,
+    "player_points": 2,
+    "opponent_points": 0,
+    "player_damage_done": 240,
+    "final_opponent_active_empty": true,
+    "final_opponent_bench_empty": true,
+    "third_point_visible": false,
+    "card_of_game": "Conkeldurr (Guts)",
+    "proof": ["proof_native/t154s.jpg", "proof_native/t156s.jpg", "proof_native/t158s.jpg", "proof_native/t170s.jpg"]
+  },
+  "visible_player_core": ["Timburr", "Conkeldurr (Guts)", "Rare Candy", "Fighting Energy", "Sandshrew", "Sandslash"],
+  "visible_opponent_core": ["Miraidon ex", "Magnemite", "Magneton", "Magnezone ex", "Lightning Energy"],
+  "opening_hand": {
+    "cards": ["Copycat", "Timburr", "Lucky Ice Pop", "Conkeldurr (Guts)", "Rare Candy"],
+    "proof": "proof_native/t18s.jpg"
+  },
+  "turns": [
+    {
+      "number": 1,
+      "actor": "opponent",
+      "approx_seconds": [29, 40],
+      "events": ["Magnemite placed on Bench", "Poke Ball visible in discard", "Clemont played but target unavailable", "no attack observed"],
+      "proof": ["proof_native/t36s.jpg", "proof_native/t37s.jpg", "proof_native/t39s.jpg"]
+    },
+    {
+      "number": 2,
+      "actor": "player",
+      "approx_seconds": [40, 50],
+      "events": ["drew Conkeldurr with Bedrock Breaker", "attached Fighting to Active Timburr", "Corkscrew Punch dealt 40 including 20 weakness", "Miraidon ex 140 to 100 HP"],
+      "proof": ["proof_native/t42s.jpg", "proof_native/t45s.jpg", "proof_native/t47s.jpg", "proof_native/t52s.jpg"]
+    },
+    {
+      "number": 3,
+      "actor": "opponent",
+      "approx_seconds": [50, 60],
+      "events": ["Magnemite evolved to Magneton", "Volt Charge used", "Magneton at two Lightning Energy by turn end", "no attack observed"],
+      "proof": ["proof_native/t54s.jpg", "proof_native/t55s.jpg", "proof_native/t60s.jpg"]
+    },
+    {
+      "number": 4,
+      "actor": "player",
+      "approx_seconds": [60, 83],
+      "events": ["drew and Benched second Timburr", "attached second Fighting to Active Timburr", "Rare Candy evolved Active Timburr to Guts Conkeldurr", "Copycat shuffled remaining hand and drew Professor's Research, Rare Candy, Wally", "no attack observed"],
+      "proof": ["proof_native/t62s.jpg", "proof_native/t66s.jpg", "proof_native/t68s.jpg", "proof_native/t71s.jpg", "proof_native/t74s.jpg", "proof_native/t83s.jpg"]
+    },
+    {
+      "number": 5,
+      "actor": "opponent",
+      "approx_seconds": [83, 110],
+      "events": ["Magneton used Volt Charge and reached three Lightning Energy", "evolved to Magnezone ex", "Professor Turo shuffled Active Miraidon ex into deck", "Magnezone ex promoted to Active with empty Bench", "normal Lightning Energy attached to Magnezone ex during turn 5, raising three Energy still present at 96 seconds to four by 100 seconds before Storm Blade", "Storm Blade dealt 130 to Conkeldurr and discarded one Lightning Energy, leaving Magnezone ex with three", "Conkeldurr 150 to 20 HP"],
+      "energy_count_sequence": {"after_volt_charge_and_evolution": 3, "before_storm_blade": 4, "after_storm_blade_discard": 3},
+      "attachment_time_bound_seconds": [96, 100],
+      "attachment_instant_visible_in_sampled_stills": false,
+      "proof": ["proof_native/t86s.jpg", "proof_native/t92s.jpg", "proof_native/t93s.jpg", "proof_native/t96s.jpg", "proof_native/t100s.jpg", "proof_native/t101s.jpg", "proof_native/t105s.jpg", "proof_native/t109s.jpg"]
+    },
+    {
+      "number": 6,
+      "actor": "player",
+      "approx_seconds": [110, 126],
+      "events": ["drew Sandshrew", "Professor's Research drew Cyrus and Sandslash", "Benched Sandshrew", "attached third Fighting to Active Conkeldurr", "Mega Punch dealt 100 including weakness", "Magnezone ex 180 to 80 HP"],
+      "proof": ["proof_native/t111s.jpg", "proof_native/t113s.jpg", "proof_native/t117s.jpg", "proof_native/t120s.jpg", "proof_native/t122s.jpg", "proof_native/t125s.jpg"]
+    },
+    {
+      "number": 7,
+      "actor": "opponent",
+      "approx_seconds": [126, 142],
+      "events": ["Magnezone ex received Lightning Energy to move from three after the prior Storm Blade to four", "Storm Blade dealt 130 and discarded one Lightning Energy", "Guts check succeeded after Conkeldurr reached zero HP", "Conkeldurr survived at 10 HP", "opponent gained no point"],
+      "proof": ["proof_native/t109s.jpg", "proof_native/t130s.jpg", "proof_native/t133s.jpg", "proof_native/t142s.jpg", "proof_native/t143s.jpg"]
+    },
+    {
+      "number": 8,
+      "actor": "player",
+      "approx_seconds": [142, 170.702109],
+      "events": ["drew Sandshrew", "evolved Benched Sandshrew into Sandslash", "attached Fighting to Benched Timburr", "Conkeldurr Mega Punch dealt 100 including weakness", "Magnezone ex knocked out", "opponent Active and Bench empty", "Victory screen showed player 2 points, opponent 0"],
+      "proof": ["proof_native/t145s.jpg", "proof_native/t150s.jpg", "proof_native/t151s.jpg", "proof_native/t153s.jpg", "proof_native/t154s.jpg", "proof_native/t156s.jpg", "proof_native/t170s.jpg"]
+    }
+  ],
+  "damage_reconciliation": {
+    "player_attack_damage": [40, 100, 100],
+    "sum": 240,
+    "matches_result_screen": true,
+    "proof": ["proof_native/t47s.jpg", "proof_native/t125s.jpg", "proof_native/t153s.jpg", "proof_native/t170s.jpg"]
+  },
+  "limits": [
+    "Full 20-card deck lists and hidden deck contents are not established.",
+    "Magnemite's exact acquisition route is not established by the visible Poke Ball and Bench state.",
+    "The exact origin of each Lightning Energy in opponent turn 3 is not assigned.",
+    "Cards revealed during Copycat are draws, not subsequent plays.",
+    "No third point is shown or inferred."
+  ]
+}

@@ -1,0 +1,99 @@
+{
+  "video_basename": "20261001_021304000_iOS.MP4",
+  "reviewer": "sol_auto_evening_021304000",
+  "status": "full_battle_review_complete",
+  "unreviewed_battle_intervals": [],
+  "consequential_unresolved_events": [],
+  "uncertainties": [
+    {
+      "id": "hidden_cards",
+      "times": [
+        32.0,
+        70.0
+      ],
+      "detail": "Opponent Poke Ball fetch and unrevealed draw identities are hidden. Full deck lists and unseen cards remain unknown.",
+      "impact": "No effect on established outcome or public board transitions."
+    },
+    {
+      "id": "collector_printings",
+      "detail": "Some small in-play collector printings are not resolved. Relevant HP, attack and ability versions are visible and described.",
+      "impact": "Do not use this report as an exact complete deck import."
+    },
+    {
+      "id": "exact_action_starts",
+      "detail": "Phase intervals come from three-second midpoint overview sampling. Native anchors preserve exact requested source timestamps, not necessarily exact action onsets.",
+      "impact": "Use native evidence windows for later fixtures."
+    },
+    {
+      "id": "opening_coin_face",
+      "interval": [
+        6.0,
+        10.0
+      ],
+      "detail": "Opening coin animation is covered, but a settled face is not asserted. Opponent first and owner second are established by gameplay.",
+      "impact": "No effect on turn reconstruction."
+    },
+    {
+      "id": "result_statistics",
+      "interval": [
+        239.0,
+        244.25
+      ],
+      "detail": "Victory and challenge title appear. Last native frame 244.22 shows the opponent Card of the Game; numerical damage/turn/result statistics are not shown.",
+      "impact": "Do not invent result statistics. Last turn 12 is derived from continuous turn coverage."
+    },
+    {
+      "id": "filename_clock_basis",
+      "detail": "Filename uses 20261001; owner upload/request was September 30 America/Chicago. Source filename clock basis remains unverified as recorded in SOURCE.json.",
+      "impact": "No invented exact local recording date/time."
+    }
+  ],
+  "resolved_checks": [
+    {
+      "id": "wally_energy",
+      "times": [
+        154.5,
+        159.0
+      ],
+      "resolution": "Printed Wally supplies Colorless; settled Mega Gengar has three Darkness plus one Colorless."
+    },
+    {
+      "id": "turn 11_normal_energy_target",
+      "times": [
+        212.0,
+        213.0,
+        221.0
+      ],
+      "resolution": "Transfer animation passes over the board; settled 213 shows Mega Gardevoir four Psychic and Brambleghast two. Fantasia Force then leaves five/three/one across Gardevoir/Brambleghast/Chingling."
+    },
+    {
+      "id": "turn 12_guzzlord_energy",
+      "times": [
+        224.5,
+        231.0
+      ],
+      "resolution": "224.5 is the attachment phase; settled 231 shows Guzzlord's second Darkness."
+    },
+    {
+      "id": "point_cap",
+      "times": [
+        166.5,
+        235.0
+      ],
+      "resolution": "First KO awards two; final KO awards three. Owner earned five although UI shows only three circles."
+    },
+    {
+      "id": "draws_are_not_plays",
+      "times": [
+        53.0,
+        146.0,
+        190.5,
+        224.5
+      ],
+      "resolution": "Lillie initially drawn, Copycat drawn, Rare Candy drawn and Research drawn. Only Wally and later Lillie are played after opening Research."
+    }
+  ],
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "worker_status_at_submission": "finished_first_pass_awaiting_independent_lead_acceptance"
+}

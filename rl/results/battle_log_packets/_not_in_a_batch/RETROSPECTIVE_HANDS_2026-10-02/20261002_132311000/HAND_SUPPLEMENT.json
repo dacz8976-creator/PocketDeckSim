@@ -1,0 +1,824 @@
+{
+  "schema": "retrospective-hand-supplement/v1",
+  "source_identity": {
+    "video_basename": "20261002_132311000_iOS.MP4",
+    "sha256": "f3d3765ca22feb385bd540c90c916d1b039382418a0e53711bfeccbe3e240a33",
+    "bytes": 886959676,
+    "duration_seconds": 486.048333,
+    "native_dimensions": [
+      1170,
+      2532
+    ]
+  },
+  "scope_turns": [
+    5,
+    11
+  ],
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "Reviewed; accepted existing review",
+  "opening": {
+    "status": "not_requested",
+    "slots": null
+  },
+  "turns": [
+    {
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_132311000_iOS.MP4",
+      "source_sha256": "f3d3765ca22feb385bd540c90c916d1b039382418a0e53711bfeccbe3e240a33",
+      "timing": {
+        "accepted_turn_interval_seconds": [
+          162,
+          199
+        ],
+        "draw_animation_end_seconds": 163.7,
+        "first_voluntary_move_seconds": 164.1,
+        "before_end_action_seconds": 190,
+        "draw_end_sample_bracket_seconds": [
+          163,
+          163.7
+        ],
+        "draw_end_precision": "Anchor is first retained source frame with card in full fan. Exact animation-end instant lies within bracket; not a frame-exact measurement.",
+        "first_move_sample_bracket_seconds": [
+          163.7,
+          164.1
+        ],
+        "first_move_precision": "First retained frame showing selected card moved out of fan, not exact confirmation time",
+        "ending_action": "Attack, referenced from accepted review",
+        "before_end_precision": "Latest retained clear unzoomed hand before accepted attack; not exact last video frame"
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "observed name or distinctive illustration and visible name prefix; no deck/count deduction",
+            "evidence_ids": [
+              "native_0163.70",
+              "t5_native161",
+              "native_0164.10"
+            ],
+            "limit_reason": "Exact printing not identified in this hand observation"
+          },
+          {
+            "position": 2,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "observed name or distinctive illustration and visible name prefix; no deck/count deduction",
+            "evidence_ids": [
+              "native_0163.70",
+              "t5_native161",
+              "native_0164.10"
+            ],
+            "limit_reason": "Exact printing not identified in this hand observation"
+          },
+          {
+            "position": 3,
+            "name": "Alolan Ninetales ex",
+            "variant": null,
+            "basis": "observed name or distinctive illustration and visible name prefix; no deck/count deduction",
+            "evidence_ids": [
+              "native_0163.70",
+              "t5_native161",
+              "native_0164.10"
+            ],
+            "limit_reason": "Exact printing not identified in this hand observation"
+          },
+          {
+            "position": 4,
+            "name": "Misty",
+            "variant": null,
+            "basis": "observed name or distinctive illustration and visible name prefix; no deck/count deduction",
+            "evidence_ids": [
+              "native_0163.70",
+              "t5_native161",
+              "native_0164.10"
+            ],
+            "limit_reason": "Exact printing not identified in this hand observation"
+          },
+          {
+            "position": 5,
+            "name": "Irida",
+            "variant": null,
+            "basis": "observed name or distinctive illustration and visible name prefix; no deck/count deduction",
+            "evidence_ids": [
+              "native_0163.70",
+              "t5_native161",
+              "native_0164.10"
+            ],
+            "limit_reason": "Exact printing not identified in this hand observation"
+          },
+          {
+            "position": 6,
+            "name": "Mega Sharpedo ex",
+            "variant": null,
+            "basis": "observed name or distinctive illustration and visible name prefix; no deck/count deduction",
+            "evidence_ids": [
+              "native_0163.70",
+              "t5_native161",
+              "native_0164.10"
+            ],
+            "limit_reason": "Exact printing not identified in this hand observation"
+          }
+        ],
+        "count": 6,
+        "basis": "observation",
+        "status": "observed_native",
+        "evidence_ids": [
+          "native_0163.70",
+          "t5_native161",
+          "native_0164.10"
+        ],
+        "observation_limit": "Some carried-over card title suffixes overlap; distinctive illustration and name prefix visible across linked native views. Target sixth card name is fully readable in start fan and draw reveal."
+      },
+      "observed_pre_draw_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Lucky Ice Pop",
+            "basis": "observation",
+            "evidence_ids": [
+              "t5_native161"
+            ]
+          },
+          {
+            "position": 2,
+            "name": "Cyrus",
+            "basis": "observation",
+            "evidence_ids": [
+              "t5_native161"
+            ]
+          },
+          {
+            "position": 3,
+            "name": "Alolan Ninetales ex",
+            "basis": "observation",
+            "evidence_ids": [
+              "t5_native161"
+            ]
+          },
+          {
+            "position": 4,
+            "name": "Misty",
+            "basis": "observation",
+            "evidence_ids": [
+              "t5_native161"
+            ]
+          },
+          {
+            "position": 5,
+            "name": "Irida",
+            "basis": "observation",
+            "evidence_ids": [
+              "t5_native161"
+            ]
+          }
+        ],
+        "count": 5,
+        "status": "observed_native",
+        "evidence_ids": [
+          "t5_native161"
+        ]
+      },
+      "target_card": {
+        "name_in_start_fan": "Mega Sharpedo ex",
+        "candidate_name": "Mega Sharpedo ex",
+        "left_to_right_position": 6,
+        "native_confirmation_status": "directly_observed",
+        "evidence_ids": [
+          "native_0163.70",
+          "native_0163.00"
+        ],
+        "reason": "Readable normal-draw reveal followed by readable sixth card in native preplay fan; no identity from count, deck or later play"
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "name": "Mega Sharpedo ex",
+          "printing": null,
+          "timestamp_seconds_approximate": 163,
+          "timestamp_basis": "Requested source-local native-frame seek; exact presentation timestamp not separately measured",
+          "evidence_ids": [
+            "native_0163.00",
+            "native_0163.70"
+          ],
+          "basis": "observed_native_normal_draw_reveal",
+          "limit_reason": "Exact printing and exact draw-end instant not measured",
+          "timestamp_seconds": 163
+        }
+      ],
+      "accepted_play_sequence_reference": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_132311000_iOS_shark_sol\\REVIEW.md",
+        "section": "Turn 5, Owner, 162-199 seconds",
+        "status": "accepted_existing_prose_not_rereviewed"
+      },
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "evolution",
+          "card_name": "Mega Sharpedo ex",
+          "target": "benched Carvanha",
+          "timestamp_seconds_first_observed": 164.1,
+          "basis": "Accepted original Turn 5 account; targeted native frame supports hand removal",
+          "evidence_ids": [
+            "native_0164.10"
+          ]
+        },
+        {
+          "order": 2,
+          "kind": "Item",
+          "card_name": "Lucky Ice Pop",
+          "target": "Active Mega Sharpedo ex",
+          "nested_events": [
+            "Heads; card returns to hand"
+          ],
+          "basis": "accepted_original_prose_not_rereviewed"
+        },
+        {
+          "order": 3,
+          "kind": "Item",
+          "card_name": "Lucky Ice Pop",
+          "target": "Active Mega Sharpedo ex",
+          "nested_events": [
+            "Reuse; discard follows"
+          ],
+          "basis": "accepted_original_prose_not_rereviewed"
+        },
+        {
+          "order": 4,
+          "kind": "Energy attachment",
+          "card_name": null,
+          "energy": {
+            "type": "Water",
+            "count": 1,
+            "destination": "Active Mega Sharpedo ex"
+          },
+          "basis": "accepted_original_prose_not_rereviewed"
+        },
+        {
+          "order": 5,
+          "kind": "attack",
+          "card_name": null,
+          "name": "Turbo Shark",
+          "target": "Furfrou",
+          "nested_events": [
+            "Attack-generated Water to second Mega Sharpedo ex"
+          ],
+          "basis": "accepted_original_prose_not_rereviewed"
+        }
+      ],
+      "board_at_start": null,
+      "board_after": null,
+      "boards_status": "accepted_existing_review_out_of_scope",
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "observed name or distinctive illustration and visible name prefix; no deck/count deduction",
+            "evidence_ids": [
+              "t5_native190"
+            ],
+            "limit_reason": "Exact printing not identified in this hand observation"
+          },
+          {
+            "position": 2,
+            "name": "Alolan Ninetales ex",
+            "variant": null,
+            "basis": "observed name or distinctive illustration and visible name prefix; no deck/count deduction",
+            "evidence_ids": [
+              "t5_native190"
+            ],
+            "limit_reason": "Exact printing not identified in this hand observation"
+          },
+          {
+            "position": 3,
+            "name": "Misty",
+            "variant": null,
+            "basis": "observed name or distinctive illustration and visible name prefix; no deck/count deduction",
+            "evidence_ids": [
+              "t5_native190"
+            ],
+            "limit_reason": "Exact printing not identified in this hand observation"
+          },
+          {
+            "position": 4,
+            "name": "Irida",
+            "variant": null,
+            "basis": "observed name or distinctive illustration and visible name prefix; no deck/count deduction",
+            "evidence_ids": [
+              "t5_native190"
+            ],
+            "limit_reason": "Exact printing not identified in this hand observation"
+          }
+        ],
+        "count": 4,
+        "basis": "observation",
+        "status": "observed_native",
+        "evidence_ids": [
+          "t5_native190"
+        ]
+      },
+      "owner_hand_end_timing_limit": "Latest retained clear unzoomed hand before attack; attack end substitutes for End Turn. No card identity inferred from hand arithmetic.",
+      "hand_count_reconciliation": {
+        "inferred_start_count": null,
+        "basis": "Start fan directly counted six, end fan directly counted four/three; accepted card removals separately reconcile counts",
+        "accepted_removals": [
+          "Mega Sharpedo ex evolution",
+          "Lucky Ice Pop net discard after heads return and reuse"
+        ],
+        "inferred_end_count": 4,
+        "direct_end_count": 4,
+        "identity_inference_used": false,
+        "observed_start_count": 6
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 5,
+        "supported_range": null,
+        "count_method": "Count distinct visible card backs in retained native top crop at selected start-hand frame",
+        "basis": "observation",
+        "evidence_ids": [
+          "native_0163.70"
+        ],
+        "limit_reason": "Overlapping backs and clock bar; distinct visible card rectangles counted, hidden opponent identities unknown"
+      },
+      "capture_status": "complete_with_recording_limits",
+      "remaining_source_gap_seconds": null,
+      "scheduled_candidates": [
+        {
+          "requested_source_seconds": 165,
+          "offset_after_draw_anchor_seconds": 1.3,
+          "evidence_ids": [
+            "native_0165.00"
+          ],
+          "selected_for_start_hand": false,
+          "reason": "First card has already been moved/played; later candidate retained for timing contract, not used as opening fan"
+        },
+        {
+          "requested_source_seconds": 167,
+          "offset_after_draw_anchor_seconds": 3.3,
+          "evidence_ids": [
+            "native_0167.00"
+          ],
+          "selected_for_start_hand": false,
+          "reason": "First card has already been moved/played; later candidate retained for timing contract, not used as opening fan"
+        },
+        {
+          "requested_source_seconds": 170.1,
+          "offset_after_draw_anchor_seconds": 6.4,
+          "evidence_ids": [
+            "native_0170.10"
+          ],
+          "selected_for_start_hand": false,
+          "reason": "First card has already been moved/played; later candidate retained for timing contract, not used as opening fan"
+        }
+      ],
+      "opening_reconstruction": "not_requested",
+      "declines_and_no_effect_actions": {
+        "status": "not_reopened",
+        "reference": {
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_132311000_iOS_shark_sol\\REVIEW.md",
+          "section": "Turn 5, Owner, 162-199 seconds",
+          "status": "accepted_existing_prose_not_rereviewed"
+        },
+        "reason": "This two-hand supplement references accepted actions, without repeating action/board/outcome review."
+      }
+    },
+    {
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261002_132311000_iOS.MP4",
+      "source_sha256": "f3d3765ca22feb385bd540c90c916d1b039382418a0e53711bfeccbe3e240a33",
+      "timing": {
+        "accepted_turn_interval_seconds": [
+          356,
+          390
+        ],
+        "draw_animation_end_seconds": 359,
+        "first_voluntary_move_seconds": 360,
+        "before_end_action_seconds": 378,
+        "draw_end_sample_bracket_seconds": [
+          358,
+          359
+        ],
+        "draw_end_precision": "Anchor is first retained source frame with card in full fan. Exact animation-end instant lies within bracket; not a frame-exact measurement.",
+        "first_move_sample_bracket_seconds": [
+          359,
+          360
+        ],
+        "first_move_precision": "First retained frame showing selected card moved out of fan, not exact confirmation time",
+        "ending_action": "Attack, referenced from accepted review",
+        "before_end_precision": "Latest retained clear unzoomed hand before accepted attack; not exact last video frame"
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "observed name or distinctive illustration and visible name prefix; no deck/count deduction",
+            "evidence_ids": [
+              "native_0359.00",
+              "native_0360.00"
+            ],
+            "limit_reason": "Exact printing not identified in this hand observation"
+          },
+          {
+            "position": 2,
+            "name": "Misty",
+            "variant": null,
+            "basis": "observed name or distinctive illustration and visible name prefix; no deck/count deduction",
+            "evidence_ids": [
+              "native_0359.00",
+              "native_0360.00"
+            ],
+            "limit_reason": "Exact printing not identified in this hand observation"
+          },
+          {
+            "position": 3,
+            "name": "Irida",
+            "variant": null,
+            "basis": "observed name or distinctive illustration and visible name prefix; no deck/count deduction",
+            "evidence_ids": [
+              "native_0359.00",
+              "native_0360.00"
+            ],
+            "limit_reason": "Exact printing not identified in this hand observation"
+          },
+          {
+            "position": 4,
+            "name": "Alolan Vulpix",
+            "variant": null,
+            "basis": "observed name or distinctive illustration and visible name prefix; no deck/count deduction",
+            "evidence_ids": [
+              "native_0359.00",
+              "native_0360.00"
+            ],
+            "limit_reason": "Exact printing not identified in this hand observation"
+          },
+          {
+            "position": 5,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "observed name or distinctive illustration and visible name prefix; no deck/count deduction",
+            "evidence_ids": [
+              "native_0359.00",
+              "native_0360.00"
+            ],
+            "limit_reason": "Exact printing not identified in this hand observation"
+          },
+          {
+            "position": 6,
+            "name": "Elegant Cape",
+            "variant": null,
+            "basis": "observed name or distinctive illustration and visible name prefix; no deck/count deduction",
+            "evidence_ids": [
+              "native_0359.00",
+              "native_0360.00"
+            ],
+            "limit_reason": "Exact printing not identified in this hand observation"
+          }
+        ],
+        "count": 6,
+        "basis": "observation",
+        "status": "observed_native",
+        "evidence_ids": [
+          "native_0359.00",
+          "native_0360.00"
+        ],
+        "observation_limit": "Some carried-over card title suffixes overlap; distinctive illustration and name prefix visible across linked native views. Target sixth card name is fully readable in start fan and draw reveal."
+      },
+      "observed_pre_draw_hand": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Cyrus",
+            "basis": "observation",
+            "evidence_ids": [
+              "t11_native356"
+            ]
+          },
+          {
+            "position": 2,
+            "name": "Misty",
+            "basis": "observation",
+            "evidence_ids": [
+              "t11_native356"
+            ]
+          },
+          {
+            "position": 3,
+            "name": "Irida",
+            "basis": "observation",
+            "evidence_ids": [
+              "t11_native356"
+            ]
+          },
+          {
+            "position": 4,
+            "name": "Alolan Vulpix",
+            "basis": "observation",
+            "evidence_ids": [
+              "t11_native356"
+            ]
+          },
+          {
+            "position": 5,
+            "name": "Copycat",
+            "basis": "observation",
+            "evidence_ids": [
+              "t11_native356"
+            ]
+          }
+        ],
+        "count": 5,
+        "status": "observed_native",
+        "evidence_ids": [
+          "t11_native356"
+        ]
+      },
+      "target_card": {
+        "name_in_start_fan": "Elegant Cape",
+        "candidate_name": "Elegant Cape",
+        "left_to_right_position": 6,
+        "native_confirmation_status": "directly_observed",
+        "evidence_ids": [
+          "native_0359.00",
+          "native_0358.00"
+        ],
+        "reason": "Readable normal-draw reveal followed by readable sixth card in native preplay fan; no identity from count, deck or later play"
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "name": "Elegant Cape",
+          "timestamp_seconds_approximate": 358,
+          "timestamp_basis": "Requested source-local native-frame seek; exact presentation timestamp not separately measured",
+          "evidence_ids": [
+            "native_0358.00",
+            "native_0359.00"
+          ],
+          "basis": "observed_native_normal_draw_reveal",
+          "limit_reason": "Exact printing and exact draw-end instant not measured",
+          "timestamp_seconds": 358
+        }
+      ],
+      "accepted_play_sequence_reference": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_132311000_iOS_shark_sol\\REVIEW.md",
+        "section": "Turn 11, Owner, 356-390 seconds",
+        "status": "accepted_existing_prose_not_rereviewed"
+      },
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "Tool",
+          "card_name": "Elegant Cape",
+          "target": "Active Alolan Ninetales ex",
+          "timestamp_seconds_first_observed": 360,
+          "basis": "Accepted original Turn 11 account; targeted native frame supports hand removal",
+          "evidence_ids": [
+            "native_0360.00"
+          ]
+        },
+        {
+          "order": 2,
+          "kind": "Supporter",
+          "card_name": "Irida",
+          "basis": "accepted_original_prose_not_rereviewed"
+        },
+        {
+          "order": 3,
+          "kind": "bench Basic",
+          "card_name": "Alolan Vulpix",
+          "basis": "accepted_original_prose_not_rereviewed"
+        },
+        {
+          "order": 4,
+          "kind": "Energy attachment",
+          "card_name": null,
+          "energy": {
+            "type": "Water",
+            "count": 1,
+            "destination": "second Alolan Vulpix"
+          },
+          "basis": "accepted_original_prose_not_rereviewed"
+        },
+        {
+          "order": 5,
+          "kind": "attack",
+          "card_name": null,
+          "name": "Binding Snow",
+          "target": "Flygon ex",
+          "basis": "accepted_original_prose_not_rereviewed"
+        }
+      ],
+      "board_at_start": null,
+      "board_after": null,
+      "boards_status": "accepted_existing_review_out_of_scope",
+      "observed_hand_after_cape": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Cyrus",
+            "basis": "observation",
+            "evidence_ids": [
+              "t11_native366"
+            ]
+          },
+          {
+            "position": 2,
+            "name": "Misty",
+            "basis": "observation",
+            "evidence_ids": [
+              "t11_native366"
+            ]
+          },
+          {
+            "position": 3,
+            "name": "Irida",
+            "basis": "observation",
+            "evidence_ids": [
+              "t11_native366"
+            ]
+          },
+          {
+            "position": 4,
+            "name": "Alolan Vulpix",
+            "basis": "observation",
+            "evidence_ids": [
+              "t11_native366"
+            ]
+          },
+          {
+            "position": 5,
+            "name": "Copycat",
+            "basis": "observation",
+            "evidence_ids": [
+              "t11_native366"
+            ]
+          }
+        ],
+        "count": 5,
+        "status": "observed_native",
+        "evidence_ids": [
+          "t11_native366"
+        ]
+      },
+      "observed_hand_after_irida": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Cyrus",
+            "basis": "observation",
+            "evidence_ids": [
+              "t11_native372"
+            ]
+          },
+          {
+            "position": 2,
+            "name": "Misty",
+            "basis": "observation",
+            "evidence_ids": [
+              "t11_native372"
+            ]
+          },
+          {
+            "position": 3,
+            "name": "Alolan Vulpix",
+            "basis": "observation",
+            "evidence_ids": [
+              "t11_native372"
+            ]
+          },
+          {
+            "position": 4,
+            "name": "Copycat",
+            "basis": "observation",
+            "evidence_ids": [
+              "t11_native372"
+            ]
+          }
+        ],
+        "count": 4,
+        "status": "observed_native",
+        "evidence_ids": [
+          "t11_native372"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "observed name or distinctive illustration and visible name prefix; no deck/count deduction",
+            "evidence_ids": [
+              "t11_native378"
+            ],
+            "limit_reason": "Exact printing not identified in this hand observation"
+          },
+          {
+            "position": 2,
+            "name": "Misty",
+            "variant": null,
+            "basis": "observed name or distinctive illustration and visible name prefix; no deck/count deduction",
+            "evidence_ids": [
+              "t11_native378"
+            ],
+            "limit_reason": "Exact printing not identified in this hand observation"
+          },
+          {
+            "position": 3,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "observed name or distinctive illustration and visible name prefix; no deck/count deduction",
+            "evidence_ids": [
+              "t11_native378"
+            ],
+            "limit_reason": "Exact printing not identified in this hand observation"
+          }
+        ],
+        "count": 3,
+        "basis": "observation",
+        "status": "observed_native",
+        "evidence_ids": [
+          "t11_native378"
+        ]
+      },
+      "owner_hand_end_timing_limit": "Latest retained clear unzoomed hand before attack; attack end substitutes for End Turn. No card identity inferred from hand arithmetic.",
+      "hand_count_reconciliation": {
+        "inferred_start_count": null,
+        "basis": "Start fan directly counted six, end fan directly counted four/three; accepted card removals separately reconcile counts",
+        "accepted_removals": [
+          "Elegant Cape attachment",
+          "Irida",
+          "Alolan Vulpix bench"
+        ],
+        "inferred_end_count": 3,
+        "direct_end_count": 3,
+        "identity_inference_used": false,
+        "observed_start_count": 6
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 3,
+        "supported_range": null,
+        "count_method": "Count distinct visible card backs in retained native top crop at selected start-hand frame",
+        "basis": "observation",
+        "evidence_ids": [
+          "native_0359.00"
+        ],
+        "limit_reason": "Overlapping backs and clock bar; distinct visible card rectangles counted, hidden opponent identities unknown"
+      },
+      "capture_status": "complete_with_recording_limits",
+      "remaining_source_gap_seconds": null,
+      "scheduled_candidates": [
+        {
+          "requested_source_seconds": 360,
+          "offset_after_draw_anchor_seconds": 1,
+          "evidence_ids": [
+            "native_0360.00"
+          ],
+          "selected_for_start_hand": false,
+          "reason": "First card has already been moved/played; later candidate retained for timing contract, not used as opening fan"
+        },
+        {
+          "requested_source_seconds": 362,
+          "offset_after_draw_anchor_seconds": 3,
+          "evidence_ids": [
+            "native_0362.00"
+          ],
+          "selected_for_start_hand": false,
+          "reason": "First card has already been moved/played; later candidate retained for timing contract, not used as opening fan"
+        },
+        {
+          "requested_source_seconds": 365,
+          "offset_after_draw_anchor_seconds": 6,
+          "evidence_ids": [
+            "native_0365.00"
+          ],
+          "selected_for_start_hand": false,
+          "reason": "First card has already been moved/played; later candidate retained for timing contract, not used as opening fan"
+        }
+      ],
+      "opening_reconstruction": "not_requested",
+      "declines_and_no_effect_actions": {
+        "status": "not_reopened",
+        "reference": {
+          "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_132311000_iOS_shark_sol\\REVIEW.md",
+          "section": "Turn 11, Owner, 356-390 seconds",
+          "status": "accepted_existing_prose_not_rereviewed"
+        },
+        "reason": "This two-hand supplement references accepted actions, without repeating action/board/outcome review."
+      }
+    }
+  ],
+  "lead_checked": false,
+  "access_state": "resolved_verified_archived_original",
+  "uncertainty_kind": "limited_timestamp_precision_and_printing_only",
+  "worker_status": "ready_for_independent_acceptance",
+  "review_completed_utc": "2026-10-02T20:58:22.364706+00:00",
+  "mode_flag": "Dustin's own play",
+  "mode_basis": "Accepted original review; no new Auto/mode review"
+}

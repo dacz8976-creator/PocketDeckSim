@@ -1,0 +1,220 @@
+{
+  "verdict": "needs_repair",
+  "reviewer": "/root/sol_verify_ladder_232617",
+  "model": "Sol inherited parent settings",
+  "checked_at_utc": "2026-10-02T21:10:33.828230+00:00",
+  "scope": "Independent field supplement checks only. Accepted full review and outcome inherited; no original source reads or decoding.",
+  "source": {
+    "filename": "20260907_232617000_iOS.MP4",
+    "identity_matches_frozen_and_extraction_receipt": true,
+    "original_rehash_by_independent_reviewer": false,
+    "exact_decoded_pts": "unmeasured; requested source seeks only",
+    "current_path": "Reviewed/20260907_232617000_iOS.MP4"
+  },
+  "packet_hashes_at_review": {
+    "TURN_LEDGER.json": "2172cd69dc80e196ece2649d684358fd938d98d21d590d0c68b32a4513e447dc",
+    "TURN_EVIDENCE.json": "bf2bb6060916718502728ee159340a6c6056dcc122106f03e79433a02bca5e09",
+    "HAND_SUPPLEMENT.json": "e5e5d200f26df07eef45b07671c1471f3c01488efcd2cf76af2c56835857e209",
+    "PAUSE_GAME.json": "a31c425b0c13fd36e993a4ded3ccc01863ac4a33f888d804f11bec0f87776273",
+    "SOURCE_REFERENCE.json": "21f7a7cab548b8af531c63c6b30cd89c3540139e88f730e30fd00c92909a09fa"
+  },
+  "integrity": {
+    "checked_at_utc": "2026-10-02T21:08:46.964716+00:00",
+    "evidence_records": 120,
+    "native_hash_and_dimension_failures": [],
+    "crop_count_checked": 192,
+    "crop_bytes_checked": 119418512,
+    "native_bytes_hashed": 65628279,
+    "source_hash_matches_frozen_and_extraction_receipt": true,
+    "size_matches_frozen": true,
+    "duration_matches_frozen": true,
+    "accepted_review_hash_matches": true,
+    "top_bounds": [
+      [
+        0,
+        0,
+        1170,
+        720
+      ]
+    ],
+    "missing_named_ability_effect_fields": [
+      [
+        1,
+        "board_at_start",
+        "owner",
+        "active",
+        "Eevee"
+      ],
+      [
+        1,
+        "board_after",
+        "owner",
+        "active",
+        "Eevee"
+      ],
+      [
+        2,
+        "board_at_start",
+        "owner",
+        "active",
+        "Eevee"
+      ],
+      [
+        2,
+        "board_after",
+        "owner",
+        "active",
+        "Eevee"
+      ],
+      [
+        3,
+        "board_at_start",
+        "owner",
+        "active",
+        "Eevee"
+      ],
+      [
+        6,
+        "board_after",
+        "owner",
+        "1",
+        "Eevee"
+      ],
+      [
+        7,
+        "board_at_start",
+        "owner",
+        "1",
+        "Eevee"
+      ],
+      [
+        7,
+        "board_after",
+        "owner",
+        "active",
+        "Eevee"
+      ],
+      [
+        8,
+        "board_at_start",
+        "owner",
+        "active",
+        "Eevee"
+      ],
+      [
+        10,
+        "board_after",
+        "opponent",
+        "3",
+        "Falinks"
+      ],
+      [
+        11,
+        "board_at_start",
+        "opponent",
+        "3",
+        "Falinks"
+      ],
+      [
+        11,
+        "board_after",
+        "opponent",
+        "3",
+        "Falinks"
+      ]
+    ]
+  },
+  "visually_inspected_evidence_ids": [
+    "n13.000",
+    "f52.000",
+    "n137.300",
+    "f96.000",
+    "f215.000",
+    "f265.000",
+    "f360.000",
+    "f154.000",
+    "f236.000",
+    "f313.000",
+    "f390.000",
+    "f111.000",
+    "f56.000",
+    "f58.000",
+    "f141.500",
+    "f143.000",
+    "f223.000",
+    "f301.000",
+    "f302.000",
+    "f303.000",
+    "f304.000",
+    "f309.000",
+    "f50.000",
+    "f137.000",
+    "f213.000",
+    "f263.000",
+    "f358.000",
+    "f40.000",
+    "f100.000",
+    "f162.000",
+    "f170.000",
+    "f260.000",
+    "f320.000",
+    "f407.000",
+    "f410.000",
+    "f386.000"
+  ],
+  "checks_passed": [
+    "Opening five preplacement: Research twice, Goo-zooka, Lisia, Eevee, in that order.",
+    "Five untouched owner postdraw hands match names, order and counts; T4 uses n137.300 rather than already-lifted f138.000.",
+    "Owner start counts5,5,6,6,4 and end counts4,5,5,3,4 verified.",
+    "Opponent owner-start fan counts4,3,3,4,3 independently counted.",
+    "All five normal draws, two Lisia Rattata, Research Jolteon/Oricorio and Eevee/Jolteon, four Copycat Raticate/PokeBall/CenterLady/Ilima match native reveals.",
+    "Poke Ball no-target message establishes known empty result; opponent search result stays hidden.",
+    "All11 ledger rows contain both boards before/after, HP/max, Energy, Tool and condition fields, effects, Stadium, points and both EnergyZones with inherited/direct provenance. Sampled native fields agree apart from specified T2 effect omission.",
+    "Sampled boards confirm Bench positions, Oricorio10/70, Eevee50/50, Jolteon140/140, Rattata40/40, Raticate120/120, Riolu60/60, MegaLucario170/190, visible Energy totals, Stadium and score states.",
+    "EnergyZone samples distinguish large current tokens from small previews, including no T1 current token, current owner Lightning on T2/T6/T8/T10 and opponent Fighting on T5/T9/T11.",
+    "Owner discard111 shows Lisia and No discarded Energy. Unopened later inventories remain null;381-frame locator scan is sampling only.",
+    "Own-play/no-Auto flag is supported by owner selection/confirmation sequence and no Auto visible in inspected native views; exact matchmaking and opponentAI stay unknown.",
+    "Historical exact20-card deck remains unavailable with captured log/pre-season references and no current substitution.",
+    "120 native frame hashes/dimensions and192 crop pixel comparisons pass; bottom bounds0,2025,1170,2532 and top0,0,1170,720 preserve native resolution."
+  ],
+  "repairs_required": [
+    {
+      "file": "TURN_LEDGER.json",
+      "field": "turns[turn_number=2].board_at_start.owner.active.active_effects",
+      "current_value": null,
+      "required_change": "Record conditional Boosted Evolution eligibility on the owner first turn, with direct card-text evidence and owner-turn-order basis. Do not claim this eligibility on every later turn.",
+      "evidence_ids": [
+        "f52.000",
+        "n13.000"
+      ],
+      "requested_source_seconds": [
+        52,
+        13
+      ],
+      "observed_text": "As long as this Pokémon is in the Active Spot, it can evolve during your first turn or the turn you play it.",
+      "basis": "Native52 card text and badge, intact opening13 going-second banner, turn2 first owner turn; conditional first-turn permission is established. Later badge alone is insufficient."
+    }
+  ],
+  "recording_limits_accepted": [
+    "Hidden opponent identities and unshown discard inventories",
+    "Historical exact20-card deck unavailable",
+    "Requested source seconds are not measured decoded PTS",
+    "T10+3 candidate absent; recorded unchanged hand still supported",
+    "Terminal EnergyZone detail remains a blur limit; outcome not reopened"
+  ],
+  "metrics": {
+    "image_submissions": 36,
+    "original_source_reads": 0,
+    "new_extractions": 0,
+    "native_files_hashed": 120,
+    "native_bytes_hashed": 65628279,
+    "crop_files_compared": 192,
+    "crop_bytes_compared": 119418512,
+    "new_evidence_images_saved": 0,
+    "wall_time_seconds": null,
+    "wall_time_limit": "Start time was not separately measured",
+    "token_usage": null,
+    "dollar_usage": null
+  },
+  "mutations": "Only independent output folder written. Worker packet, accepted packet, source, index, events and outcomes not edited."
+}

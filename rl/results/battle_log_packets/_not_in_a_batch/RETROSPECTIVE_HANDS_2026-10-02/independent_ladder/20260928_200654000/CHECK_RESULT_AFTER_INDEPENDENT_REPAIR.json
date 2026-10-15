@@ -1,0 +1,481 @@
+{
+  "schema": "independent-retrospective-repair-acceptance-v1",
+  "game_id": "20260928_200654000",
+  "reviewer": "sol_retro_ladder_021327",
+  "checked_utc": "2026-10-02T23:28:35.686167+00:00",
+  "verdict": "accepted_with_recording_limits",
+  "independent_acceptance": true,
+  "effective_submission": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\SUBMISSION_AFTER_INDEPENDENT_REPAIR.json",
+  "effective_submission_sha256": "adf1318ca9077e47a24222a6b6a5a362d8a47c0052dfc6ee171dbadea6e28ec3",
+  "repair_groups": {
+    "R1": "accepted: ordered T11 normal Metal0→1 after Helmet/before attack; seven downstream counts corrected; current Zone consumed and upcoming preview preserved",
+    "R2": "accepted: all11 structured descriptors and readable prose use rainbow-border full art with one visible star; exact printing ID unknown",
+    "R3": "accepted: all13 acting-side start Zones have exact phase and attribute provenance. Eleven later native current-orb observations, T9/T13 endpoint-derived generation. Early empty/pending slots and upcoming previews remain distinct; T6/T12 selected animation does not certify complete settled preview",
+    "R4": "accepted: second T2 PB identity explicitly transaction-derived; cited69 cardback and76 already benched, with reduced locator used for reveal timing"
+  },
+  "required_energy_fields": [
+    {
+      "path": "$.turns[10].board_after.opponent.bench_in_position_order[2].attached_energy",
+      "actual": {
+        "total": 1,
+        "by_type": {
+          "Metal": 1
+        }
+      },
+      "expected": {
+        "total": 1,
+        "by_type": {
+          "Metal": 1
+        }
+      },
+      "match": true
+    },
+    {
+      "path": "$.turns[11].board_at_start.opponent.bench_in_position_order[2].attached_energy",
+      "actual": {
+        "total": 1,
+        "by_type": {
+          "Metal": 1
+        }
+      },
+      "expected": {
+        "total": 1,
+        "by_type": {
+          "Metal": 1
+        }
+      },
+      "match": true
+    },
+    {
+      "path": "$.turns[11].board_after.opponent.bench_in_position_order[2].attached_energy",
+      "actual": {
+        "total": 1,
+        "by_type": {
+          "Metal": 1
+        }
+      },
+      "expected": {
+        "total": 1,
+        "by_type": {
+          "Metal": 1
+        }
+      },
+      "match": true
+    },
+    {
+      "path": "$.turns[12].board_at_start.opponent.bench_in_position_order[2].attached_energy",
+      "actual": {
+        "total": 1,
+        "by_type": {
+          "Metal": 1
+        }
+      },
+      "expected": {
+        "total": 1,
+        "by_type": {
+          "Metal": 1
+        }
+      },
+      "match": true
+    },
+    {
+      "path": "$.turns[12].board_after.opponent.bench_in_position_order[2].attached_energy",
+      "actual": {
+        "total": 2,
+        "by_type": {
+          "Metal": 2
+        }
+      },
+      "expected": {
+        "total": 2,
+        "by_type": {
+          "Metal": 2
+        }
+      },
+      "match": true
+    },
+    {
+      "path": "$.turns[13].board_at_start.opponent.bench_in_position_order[2].attached_energy",
+      "actual": {
+        "total": 2,
+        "by_type": {
+          "Metal": 2
+        }
+      },
+      "expected": {
+        "total": 2,
+        "by_type": {
+          "Metal": 2
+        }
+      },
+      "match": true
+    },
+    {
+      "path": "$.turns[13].board_after.opponent.bench_in_position_order[2].attached_energy",
+      "actual": {
+        "total": 2,
+        "by_type": {
+          "Metal": 2
+        }
+      },
+      "expected": {
+        "total": 2,
+        "by_type": {
+          "Metal": 2
+        }
+      },
+      "match": true
+    }
+  ],
+  "printing_fields": [
+    {
+      "file": "TURN_LEDGER.json",
+      "path": "$.turns[5].hand_at_start.cards_left_to_right[2].variant",
+      "actual": "rainbow-border full art; one visible star",
+      "match": true
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "path": "$.turns[5].owner_hand_start.cards_left_to_right[2].variant",
+      "actual": "rainbow-border full art; one visible star",
+      "match": true
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "path": "$.turns[5].draws_and_searches[0].cards_in_reveal_order[0].variant",
+      "actual": "rainbow-border full art; one visible star",
+      "match": true
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "path": "$.turns[5].board_after.owner.bench_in_position_order[1].variant",
+      "actual": "rainbow-border full art; one visible star",
+      "match": true
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "path": "$.turns[6].board_at_start.owner.bench_in_position_order[1].variant",
+      "actual": "rainbow-border full art; one visible star",
+      "match": true
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "path": "$.turns[6].board_after.owner.bench_in_position_order[1].variant",
+      "actual": "rainbow-border full art; one visible star",
+      "match": true
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "path": "$.turns[7].board_at_start.owner.bench_in_position_order[1].variant",
+      "actual": "rainbow-border full art; one visible star",
+      "match": true
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "path": "$.turns[7].board_after.owner.active.variant",
+      "actual": "rainbow-border full art; one visible star",
+      "match": true
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "path": "$.turns[8].board_at_start.owner.active.variant",
+      "actual": "rainbow-border full art; one visible star",
+      "match": true
+    },
+    {
+      "file": "HAND_SUPPLEMENT.json",
+      "path": "$.target_rows[2].hand_at_start.cards_left_to_right[2].variant",
+      "actual": "rainbow-border full art; one visible star",
+      "match": true
+    },
+    {
+      "file": "TURN_EVIDENCE.json",
+      "path": "$.discard_snapshots[0].cards_in_view[5].variant",
+      "actual": "rainbow-border full art; one visible star",
+      "match": true
+    }
+  ],
+  "zone_phase_checks": [
+    {
+      "turn_number": 2,
+      "path": "$.turns[1].board_at_start.owner.energy_zone",
+      "same_as_Astra_source_qualified_zone": true,
+      "this_turn_basis": {
+        "basis": "direct later native orb within composite phase",
+        "evidence_ids": [
+          "F0057.00"
+        ],
+        "detail": "Owner large current Darkness orb and separate small Darkness preview visible. Later than normal draw and first Poke Ball consumption."
+      },
+      "next_basis": {
+        "basis": "Small upcoming preview directly visible at the listed later anchor; count1 identifies one preview, not a second usable Energy.",
+        "evidence_ids": [
+          "F0057.00"
+        ]
+      }
+    },
+    {
+      "turn_number": 3,
+      "path": "$.turns[2].board_at_start.opponent.energy_zone",
+      "same_as_Astra_source_qualified_zone": true,
+      "this_turn_basis": {
+        "basis": "direct later native orb within composite phase",
+        "evidence_ids": [
+          "R_evidence_t0120.0"
+        ],
+        "detail": "Opponent large current Metal orb plus separate small Metal preview visible during T3."
+      },
+      "next_basis": {
+        "basis": "Small upcoming preview directly visible at the listed later anchor; count1 identifies one preview, not a second usable Energy.",
+        "evidence_ids": [
+          "R_evidence_t0120.0"
+        ]
+      }
+    },
+    {
+      "turn_number": 4,
+      "path": "$.turns[3].board_at_start.owner.energy_zone",
+      "same_as_Astra_source_qualified_zone": true,
+      "this_turn_basis": {
+        "basis": "direct later native orb within composite phase",
+        "evidence_ids": [
+          "F0141.00"
+        ],
+        "detail": "Owner large current Darkness orb visible; separate Next Energy generated message shows Darkness preview in animation. Exact animation completion not measured."
+      },
+      "next_basis": {
+        "basis": "Darkness preview visible as small upcoming icon at F0139.00 and separately in the Next Energy generated animation at F0141.00; exact settled animation time unmeasured.",
+        "evidence_ids": [
+          "F0139.00",
+          "F0141.00"
+        ]
+      }
+    },
+    {
+      "turn_number": 5,
+      "path": "$.turns[4].board_at_start.opponent.energy_zone",
+      "same_as_Astra_source_qualified_zone": true,
+      "this_turn_basis": {
+        "basis": "direct later native orb within composite phase",
+        "evidence_ids": [
+          "R_evidence_t0168.0"
+        ],
+        "detail": "Opponent large current Metal orb plus small Metal preview visible during Research animation in T5."
+      },
+      "next_basis": {
+        "basis": "Small upcoming preview directly visible at the listed later anchor; count1 identifies one preview, not a second usable Energy.",
+        "evidence_ids": [
+          "R_evidence_t0168.0"
+        ]
+      }
+    },
+    {
+      "turn_number": 6,
+      "path": "$.turns[5].board_at_start.owner.energy_zone",
+      "same_as_Astra_source_qualified_zone": true,
+      "this_turn_basis": {
+        "basis": "direct later native orb within composite phase",
+        "evidence_ids": [
+          "F0201.00"
+        ],
+        "detail": "Owner large current Darkness orb visible below enlarged Hydreigon; preview/generation overlay partly obscured. Do not claim this frame independently proves every next-field component."
+      },
+      "next_basis": {
+        "basis": "Upcoming Darkness is retained from the producer composite and neighboring owner-preview observations, not independently visible as a settled small icon in this selected generation-animation anchor. Keep next.available=false; do not claim simultaneous complete Zone observation.",
+        "evidence_ids": [
+          "R_evidence_t0198.0",
+          "F0200.00"
+        ]
+      }
+    },
+    {
+      "turn_number": 7,
+      "path": "$.turns[6].board_at_start.opponent.energy_zone",
+      "same_as_Astra_source_qualified_zone": true,
+      "this_turn_basis": {
+        "basis": "direct later native orb within composite phase",
+        "evidence_ids": [
+          "F0250.00"
+        ],
+        "detail": "Opponent large current Metal orb plus small Metal preview visible during T7 card animation."
+      },
+      "next_basis": {
+        "basis": "Small upcoming preview directly visible at the listed later anchor; count1 identifies one preview, not a second usable Energy.",
+        "evidence_ids": [
+          "F0250.00"
+        ]
+      }
+    },
+    {
+      "turn_number": 8,
+      "path": "$.turns[7].board_at_start.owner.energy_zone",
+      "same_as_Astra_source_qualified_zone": true,
+      "this_turn_basis": {
+        "basis": "direct later native orb within composite phase",
+        "evidence_ids": [
+          "F0285.00"
+        ],
+        "detail": "Owner large current Darkness orb plus small Darkness preview visible during T8 hand/card transition."
+      },
+      "next_basis": {
+        "basis": "Small upcoming preview directly visible at the listed later anchor; count1 identifies one preview, not a second usable Energy.",
+        "evidence_ids": [
+          "F0285.00"
+        ]
+      }
+    },
+    {
+      "turn_number": 9,
+      "path": "$.turns[8].board_at_start.opponent.energy_zone",
+      "same_as_Astra_source_qualified_zone": true,
+      "this_turn_basis": {
+        "basis": "endpoint-derived plus independently reviewed normal attachment; no direct available-orb native anchor",
+        "evidence_ids": [
+          "F0328.00",
+          "F0373.00",
+          "F0399.50"
+        ],
+        "detail": "T8 endpoint F0328.00 has Arceus two Metal; after the recorded T9 normal attachment, F0373.00 shows Arceus three Metal, and F0399.50 shows the opponent current slot empty. Together with the independently reviewed T9 attachment sequence, these endpoints support one generated Metal before attachment. No selected native frame directly displays that available orb; no exact generation time is established."
+      },
+      "next_basis": {
+        "basis": "Direct small Metal preview at inspected unoccluded endpoints; available=false because preview is upcoming and separate from current Energy.",
+        "evidence_ids": [
+          "F0399.50"
+        ]
+      }
+    },
+    {
+      "turn_number": 10,
+      "path": "$.turns[9].board_at_start.owner.energy_zone",
+      "same_as_Astra_source_qualified_zone": true,
+      "this_turn_basis": {
+        "basis": "direct later native orb within composite phase",
+        "evidence_ids": [
+          "F0402.00"
+        ],
+        "detail": "Owner large current Darkness orb and small Darkness preview visible after Deino bench placement; opponent large current slot remains empty."
+      },
+      "next_basis": {
+        "basis": "Small upcoming preview directly visible at the listed later anchor; count1 identifies one preview, not a second usable Energy.",
+        "evidence_ids": [
+          "F0402.00"
+        ]
+      }
+    },
+    {
+      "turn_number": 11,
+      "path": "$.turns[10].board_at_start.opponent.energy_zone",
+      "same_as_Astra_source_qualified_zone": true,
+      "this_turn_basis": {
+        "basis": "direct later native orb within composite phase",
+        "evidence_ids": [
+          "R_evidence_t0456.0"
+        ],
+        "detail": "Opponent large current Metal orb plus small Metal preview visible during T11 after Helmet. This later phase supports generated availability, not the turn-ending consumed state."
+      },
+      "next_basis": {
+        "basis": "Small upcoming preview directly visible at the listed later anchor; count1 identifies one preview, not a second usable Energy.",
+        "evidence_ids": [
+          "R_evidence_t0456.0"
+        ]
+      }
+    },
+    {
+      "turn_number": 12,
+      "path": "$.turns[11].board_at_start.owner.energy_zone",
+      "same_as_Astra_source_qualified_zone": true,
+      "this_turn_basis": {
+        "basis": "direct later native orb within composite phase",
+        "evidence_ids": [
+          "F0467.00"
+        ],
+        "detail": "Owner large Darkness orb visible with generation glow during T12; exact stable-generation completion not measured. Opponent current slot empty with small Metal preview."
+      },
+      "next_basis": {
+        "basis": "Upcoming Darkness is retained from the producer composite and neighboring owner-preview observations, not independently visible as a settled small icon in this selected generation-animation anchor. Keep next.available=false; do not claim simultaneous complete Zone observation.",
+        "evidence_ids": [
+          "F0452.00",
+          "R_evidence_t0456.0",
+          "R_evidence_t0462.0",
+          "F0467.00"
+        ]
+      }
+    },
+    {
+      "turn_number": 13,
+      "path": "$.turns[12].board_at_start.opponent.energy_zone",
+      "same_as_Astra_source_qualified_zone": true,
+      "this_turn_basis": {
+        "basis": "endpoint-derived plus independently reviewed normal attachment; no direct available-orb native anchor",
+        "evidence_ids": [
+          "R_evidence_t0522.0",
+          "F0547.00"
+        ],
+        "detail": "T13 banner R_evidence_t0522.0 shows current slot empty/pending with small Metal preview and second Dialga one Metal. F0547.00 shows that Dialga two Metal and the opponent current slot empty. Together with the independently reviewed normal attachment, this supports one generated Metal before attachment. Its available phase is derived, not directly shown by these native endpoints."
+      },
+      "next_basis": {
+        "basis": "Direct small Metal preview at inspected unoccluded endpoints; available=false because preview is upcoming and separate from current Energy.",
+        "evidence_ids": [
+          "R_evidence_t0522.0",
+          "F0547.00"
+        ]
+      }
+    },
+    {
+      "turn_number": 14,
+      "path": "$.turns[13].board_at_start.owner.energy_zone",
+      "same_as_Astra_source_qualified_zone": true,
+      "this_turn_basis": {
+        "basis": "direct later native orb within composite phase",
+        "evidence_ids": [
+          "F0550.00"
+        ],
+        "detail": "Owner large current Darkness orb plus small Darkness preview visible; opponent current slot empty plus small Metal preview."
+      },
+      "next_basis": {
+        "basis": "Small upcoming preview directly visible at the listed later anchor; count1 identifies one preview, not a second usable Energy.",
+        "evidence_ids": [
+          "F0550.00"
+        ]
+      }
+    }
+  ],
+  "hash_validation_file": "HASH_VALIDATION_AFTER_INDEPENDENT_REPAIR.json",
+  "all_current_submitted_hashes_match": true,
+  "six_changed_files": [
+    "TURN_LEDGER.json",
+    "HAND_SUPPLEMENT.json",
+    "TURN_EVIDENCE.json",
+    "REVIEW_SUPPLEMENT.md",
+    "UNCERTAINTIES.json",
+    "ACTION_RECONCILIATION.json"
+  ],
+  "mirrors_checked": [
+    "TURN_LEDGER.hand_at_start / owner_hand_start / HAND_SUPPLEMENT",
+    "UNCERTAINTIES.newprose_vsaccepted / ACTION_RECONCILIATION.conflicts",
+    "REVIEW_SUPPLEMENT T6/T11/T13 and qualification paragraphs",
+    "TURN_EVIDENCE owner discard Hydreigon descriptor"
+  ],
+  "previous_full_independent_scope": "SCOPE.json:89 distinct native views,28 owner timing captures,8 locator grids; original verdict preserved",
+  "additional_native_views": 0,
+  "retained_source_basis": "Astra19 native phase observations were within the89 already viewed by this independent checker. Existing derivative hashes match; their phase conclusions were checked against those observations and current fields.",
+  "original_movie_reads": 0,
+  "original_movie_hashes": 0,
+  "new_extractions": 0,
+  "recording_limits_preserved": [
+    "Exact old retained framePTS unmeasured; requested times distinct from measured newPTS",
+    "Composite boards do not assert exact simultaneous native boundaries",
+    "T9/T13 available current Metal is endpoint-derived; no selected native direct available-orb anchor",
+    "T6/T12 selected generation animations do not certify all simultaneous preview details or exact generation completion",
+    "Opponent hidden identities, full pile contents and historical exact20card list unavailable",
+    "Auto absence bounded to inspected evidence; any observed Auto option includingOFF would exclude ladder. No observed Auto in original independently inspected set.",
+    "Exact touch inputs/authorship/queue not separately certified"
+  ],
+  "accepted_outcome": "owner2-3loss unchanged",
+  "source_identity_receipt_reused": true,
+  "producer_old_and_shared_files_modified_by_checker": false,
+  "errors": [],
+  "remaining_required_repairs": [],
+  "registration": "Root to inspect and register; checker did not update shared state",
+  "additional_diff_review": "All111 changed ledger paths reviewed: limited to13 Zone phase objects, required printing/search basis, seven attached-Energy corrections with carry-forward basis, T11 inserted action, and T13 attachment description. No HP/max, unrelated card name/Tool, point or other action field changed. Second-Dialga basis explicitly qualifies partial T13 banner with prior516 and later540/547."
+}

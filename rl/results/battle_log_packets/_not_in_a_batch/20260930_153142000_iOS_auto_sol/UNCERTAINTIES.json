@@ -1,0 +1,62 @@
+{
+  "reviewer": "sol_auto_153142000",
+  "video_basename": "20260930_153142000_iOS.MP4",
+  "consequential_unresolved_questions": [],
+  "uncertainties": [
+    {
+      "id": "hidden_information",
+      "times_seconds": [
+        0,
+        166.923855
+      ],
+      "detail": "Unrevealed deck cards and AI hand identities remain unknown. The visible cards and result deck name are not a complete deck list.",
+      "effect_on_completion": "none; hidden information is not reconstructed"
+    },
+    {
+      "id": "poke_ball_target",
+      "times_seconds": [
+        129.25,
+        131.75
+      ],
+      "detail": "Poke Ball resolves and a face-down card enters the AI hand. Its Basic Pokemon identity is not shown.",
+      "evidence": [
+        "turn9_detail/sheet_01.jpg",
+        "turn9_detail/sheet_02.jpg",
+        "keyframes/t0129.50.jpg"
+      ],
+      "effect_on_completion": "none; no later action depends on identifying this card"
+    },
+    {
+      "id": "exact_printings",
+      "times_seconds": [
+        0,
+        166.923855
+      ],
+      "detail": "Mechanical versions are identified from visible names, HP and attacks. Collection numbers and unseen exact printings are not claimed.",
+      "effect_on_completion": "none"
+    },
+    {
+      "id": "opening_coin",
+      "times_seconds": [
+        6,
+        10.5
+      ],
+      "detail": "The opening coin's final face was not separately established. Owner second-player status is directly visible in setup and the results screen.",
+      "evidence": [
+        "overview/sheet_01.jpg",
+        "keyframes/t0166.50.jpg"
+      ],
+      "effect_on_completion": "none; actual turn order is established"
+    },
+    {
+      "id": "review_precision",
+      "detail": "Meaningful visual states were reviewed with full-duration three-second sampling and targeted denser evidence. Turn-boundary times are approximate. Audio and every routine animation frame were not transcribed.",
+      "effect_on_completion": "none; all meaningful turns and terminal state reconcile"
+    },
+    {
+      "id": "general_rules",
+      "detail": "Quick Straight's visible text and observed damage, plus Mud Shot's Weakness display, establish this match's behavior. They do not constitute independent current-rules research or a simulator regression test.",
+      "effect_on_completion": "none"
+    }
+  ]
+}

@@ -1,0 +1,121 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261013_030351000_iOS_game_1",
+  "review_date": "2026-10-13",
+  "sources": [
+    {
+      "video_basename": "20261013_030351000_iOS.MP4",
+      "sha256": "d0a221cd236c620f467bbf34ad8078fd59c72323a7dca71a4af344f0489c6c7f",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "deck_name": "Haxorus / Dragonair / Druddigon",
+  "opening": {
+    "source_video": "20261013_030351000_iOS.MP4",
+    "timestamp_seconds": 32,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Rare Candy",
+        "variant": null,
+        "basis": "Visible filmed face, not deck inference",
+        "evidence_ids": [
+          "f0032.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Dratini",
+        "variant": null,
+        "basis": "Visible filmed face, not deck inference",
+        "evidence_ids": [
+          "f0032.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Copycat",
+        "variant": null,
+        "basis": "Visible filmed face, not deck inference",
+        "evidence_ids": [
+          "f0032.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Rainbow Cave",
+        "variant": null,
+        "basis": "Visible filmed face, not deck inference",
+        "evidence_ids": [
+          "f0032.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Dragonair",
+        "variant": null,
+        "basis": "Visible filmed face, not deck inference",
+        "evidence_ids": [
+          "f0032.00"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Dratini",
+      "opening_position": 2,
+      "source_video": "20261013_030351000_iOS.MP4",
+      "timestamp_seconds": 36,
+      "evidence_ids": [
+        "f0032.00",
+        "f0034.00",
+        "f0036.00"
+      ]
+    },
+    "redraw_or_replacement": "none shown",
+    "before_active_placement": true,
+    "status": "observed",
+    "evidence_ids": [
+      "f0032.00"
+    ],
+    "limit_reason": "At 32 Dratini is raised/selected; Active slot remains empty. Native 31 has a zoom and is not the chosen opening."
+  },
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "full_battle_review_complete_pending_independent_acceptance",
+  "outcome": {
+    "result": "loss",
+    "owner_points": 2,
+    "opponent_points": 3,
+    "turns_played": 16,
+    "damage_done": 230,
+    "result_evidence_ids": [
+      "f0626.00"
+    ],
+    "concession": false
+  },
+  "limits": [
+    "Specific queue title is not displayed; human battle classification is based on visible matchmaking/opponent play and no Auto option, with owner requested Pause Games routing.",
+    "Opposing hidden card identities and deck list unavailable.",
+    "T5/T7 single-card raised views and T9 inspection zoom do not prove an unzoomed spread hand.",
+    "Owner deck empty T15; no normal draw.",
+    "No opponent opened discard views and no other periodic owner pile openings.",
+    "Filmed QR exact 20 is initially absent from live 26-deck catalog; no fabricated live snapshot.",
+    "QR resolves semantic card versions and configured Fighting+Metal; exact printing/artwork/rarity remain qualified."
+  ],
+  "lead_checked": false
+}

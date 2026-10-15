@@ -101,6 +101,14 @@ field errors in two of these eight:
 
 The other six are right on every field.
 
+**Re-run, now current (Oct 15).** Both positions were re-run on positions v3 (main 358562b2) with the Oct 14 runners
+`pg_pos_F_cond2` and `pg_pos_C_cond2`, seeds 1-12 (`workers/P8_v3/`; km3 gates equal to v3's runs). Neither bot makes his first move
+in any replay:
+- 203719 t17: both start with Darkness on the Active (F 12 of 12, C 10 of 12).
+- 015659 t05: F places Pawniard in 12 of 12; C attaches Darkness to the Bench in 8 of 12.
+
+So part 2's statements about these two stand.
+
 **010837 t09 and t11.** His Glimmet is Active with Kingambit on his Bench. The opponent's Mega Kangaskhan ex is Active at t09, and at t11 it
 is on the Bench behind a 30-HP Pichu.
 - **km3 and F** retreat into Kingambit and use Overlord's Blade in 12 of 12 replays at both turns.

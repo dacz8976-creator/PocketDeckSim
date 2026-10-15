@@ -1,0 +1,67 @@
+# Full battle review: 20260930_162102000_iOS.MP4
+
+**Current status: completed full-battle review accepted by the lead; original archived unchanged in `Reviewed`. Excluded from Ladder Log.**
+
+Reviewer: sol_auto_162102000 / gpt-6.1-sol / high. Review date: 2026-09-30.
+Scope: complete supplied recording, setup through all seven turns and terminal result. Root alone performs acceptance, shared logging, indexing and any move.
+
+## Source and mode
+
+Source binding is SOURCE.json: 281358334 bytes, 157.04 seconds, SHA-256 e23850f05a3e9a8b1b838c190a17cecfd88a50e7359013ffaee15c8c9a2758a5. Intake source identity was supplied by the coordinator; this worker extracted frames from that exact named source and did not rehash or move it.
+
+The match identifies Dacz8976 against AI Opponent (overview/sheet_01.jpg, 10.5s). Dacz8976 goes second (13.5s). The checked green Auto button appears during setup at targeted/t0016.00.jpg and remains enabled at inspected gameplay states, including 35, 65, 89, 104, 129 and 147 seconds. No disabled Auto state or manual gameplay interruption was observed. Initial iOS Control Center and subsequent notification overlays are visible; they do not establish a gameplay mode change. Owner testimony separately identifies today's uploads as autopilot computer battles. Ladder eligibility is false unconditionally. No Ladder Log action is authorized for this packet.
+
+All times are approximate source anchors, not exact event onset. Overview labels are fps midpoint sample labels. Individual targeted filenames are requested source times. Notification text is unrelated and is not transcribed.
+
+## Mechanically identified public cards
+
+- Owner Active throughout: Passimian ex, printed HP130, Offload Pass, Seismic Toss60 for Fighting plus Colorless. Its attack knockout awards two points. Full enlargement at74s identifies this version. It remains the only owner Pokémon in play; the owner Bench stays empty.
+- Owner visible hand/development: two Lucky Ice Pop initially, Mega Lucario ex (HP190, Fighting Pulse90+), Rocky Helmet; Copycat drawn on the first owner turn. Copycat's draw reveals Mega Lucario ex, Arena of Antiquity, Gabite (HP80, Sharp Scythe30), and Korrina. A second Rocky Helmet is subsequently drawn, and Lucky Ice Pop is drawn on turn6. Mega Lucario ex and Gabite stay in hand and are never put in play. These observations do not establish a full deck list.
+- Opponent: Helioptile HP60 / Jumping Kick10 to one opposing Pokémon; Heliolisk HP80 / Electrispark40 with printed10 to each opposing Bench Pokémon; Electrike HP60 / Quick Attack10+; Mega Manectric ex HP180 / Lightning Accelerator80+, two Lightning cost, +30 per point that its controller has obtained. Enlargement83s shows that it evolves directly from Electrike and awards three points when knocked out. Tadbulb HP50 / Charge evolves to Bellibolt ex HP160 / High-Voltage Cannon70+. Bellibolt does not attack in this match.
+- Used Trainers: opponent Professor's Research; owner Rocky Helmet, Copycat, Lucky Ice Pop, Arena of Antiquity and Korrina. Opponent attaches a cape tool with visibly applied text “Stage 1 Pokémon get +30 HP”; its title is not readable in retained evidence, so the name is left unresolved. It raises Mega Manectric from180 to210.
+- Arena's printed effect gives Fighting Pokémon attacks +20 against the opponent's Active Pokémon ex. Korrina gives that class of attack +30 for the turn. The relevant weakness adds20. These are damage modifiers, not Special Conditions. No poison, sleep, paralysis, burn or confusion is observed.
+
+## Full timeline
+
+| Source interval / turn | Meaningful observed sequence and state | Evidence |
+|---|---|---|
+| 0–15s, pregame | iOS Control Center then loading/versus introduction. Dacz8976 vs AI Opponent; owner going second. | overview/sheet_01.jpg |
+| 15–26s, setup | Auto enabled. Owner places Passimian ex Active, HP130; Bench empty. Opponent places Helioptile Active and another Helioptile on right Bench, both60HP. Score0–0. Initial owner hand includes two Lucky Ice Pop, Mega Lucario ex and Rocky Helmet after Passimian placement. | targeted/t0016.00.jpg; overview/sheet_01.jpg |
+| 26–36s, turn1 opponent | Professor's Research is used and remains visible in discard. Electrike60 is added to middle Bench, alongside right Helioptile60. Active Helioptile60 has no attached Energy, and no attack/HP change is observed. | targeted/t0032.00.jpg, t0035.00.jpg |
+| 36–56s, turn2 owner | Copycat is drawn, Rocky Helmet is attached to Passimian, then Copycat is used: remaining hand shuffles into deck and cards are drawn. Arena, Gabite and Korrina appear in sequential draw/enlargement animations. Those enlargements are not plays. By56s hand contains Mega Lucario ex, Arena, Gabite, Korrina; Copycat is in discard. One Fighting Energy is attached to Passimian. No attack with only one Energy; HP130 and score0–0 remain. | t0041.00.jpg tool/Copycat hand; t0044.00.jpg shuffle; t0047.00.jpg draws; t0051.00.jpg Korrina drawn; t0056.00.jpg final state |
+| 56–67s, turn3 opponent | Active Helioptile evolves to Heliolisk80. Benched Electrike evolves to Mega Manectric ex180. Tadbulb50 is placed left Bench, filling all three opponent Bench slots with Tadbulb/Mega Manectric/Helioptile. One Lightning Energy is attached to benched Mega Manectric. Heliolisk is not powered and does not attack; Passimian remains130. | t0059.00.jpg, t0062.00.jpg, t0065.00.jpg |
+| 67–84s, turn4 owner | Second Rocky Helmet is drawn and stays in hand. Second Fighting Energy is attached to Passimian. Seismic Toss is used against Heliolisk. Base60 plus Fighting weakness20 is consistent with the80HP knockout. Heliolisk goes to discard, owner earns one point, score1–0. Arena and Korrina remain in hand and contribute nothing to this first attack. | t0069.00.jpg hand; t0072.00.jpg two Energy; t0074.00.jpg attack version; t0080.00.jpg +1; t0083.00.jpg promotion |
+| 84–107s, turn5 opponent | Mega Manectric ex is promoted from Bench to Active at180HP with one Lightning. Tadbulb evolves to Bellibolt ex160, remaining benched beside Helioptile60. Cape tool is attached to Mega Manectric; +30HP effect visibly raises it180→210. A second Lightning is attached. Lightning Accelerator hits Passimian for80,130→50. Opponent has0 points, so the printed point-based bonus is not applied. Rocky Helmet activates for20 retaliation, Mega Manectric210→190. Score remains1–0. | t0089.00.jpg before; t0092.00.jpg Bellibolt; t0096.00.jpg cape attached; t0098.00.jpg +30HP/210; t0102.00.jpg80 damage; t0104.00.jpg Helmet; t0108.00.jpg turn6/190 |
+| 107–133s, turn6 owner | Lucky Ice Pop is drawn, then used once. Passimian heals50→70. Coin animation shows the Poké Ball side at117s, and the used Item is subsequently in discard rather than returned to hand, consistent with tails; no second use occurs. Arena of Antiquity is played to the Stadium position; Korrina is played and placed in discard. Third Fighting Energy is attached to Passimian. Seismic Toss then hits Mega Manectric for130:60 base+20 weakness+20 Arena+30 Korrina,190→60. Mega Manectric survives; score1–0. | t0111.00.jpg drawn Item; t0117.00.jpg coin; t0120.00.jpg70HP/discard; t0123.00.jpg Arena on field; t0126.00.jpg Korrina used; t0129.00.jpg Korrina Fighting bonus caption; t0132.00.jpg 130-damage popup; t0135.00.jpg settled60HP |
+| 133–150s, turn7 opponent | Opponent draws and attaches one Lightning to benched Bellibolt. Mega Manectric retains two Lightning. It uses Lightning Accelerator for80 again, knocking out Passimian from70HP. Helmet's20 damage still resolves after the lethal hit and before the result screen, Mega Manectric60→40. Passimian and Helmet enter discard; owner Active and Bench are empty. Opponent receives+2 points, score1–2. Offload Pass has no benched owner recipient; no Energy transfer is observed. | t0135.00.jpg before attack/Bench Energy; overview/sheet_06.jpg139.5 attack; t0141.00.jpg80; t0144.00.jpg0HP; t0147.00.jpg empty field/40HP; t0150.00.jpg +2 |
+| 150–157.04s, terminal | Explicit Defeat banner at152s confirms owner loss. Recording then transitions to a loading screen by156s. No additional battle is present. Final rewards/results page is not captured. | targeted/t0152.00.jpg; t0156.00.jpg |
+
+## Consequential reconciliation and interpretation
+
+Owner HP:130 throughout opening and first knockout; first Mega Manectric attack130→50; one Ice Pop50→70; final80-damage attack70→0. Opponent Mega Manectric HP: printed180; cape raises live HP to210; first Helmet210→190; second Seismic Toss190→60; final Helmet60→40. Heliolisk goes80→0; the owner earns one point. Passimian ex knockout gives opponent two, for final1–2.
+
+Some enlarged attack cards show printed base HP180 or130 during animations. Those are not reversals of the live cape boost or healing. The orange triangles after cape/Stadium/Supporter animations are modifier indicators; they are not evidence of a Special Condition. Draw popups around49–51s are not proof that Arena or Korrina was played then. Their actual plays occur on turn6.
+
+The loss ends because the owner has no Pokémon remaining, despite the opponent having only two points. Mega Manectric survives the owner's strongest observed turn with60HP, sufficient to deliver the final80 hit. Even after Helmet retaliation it remains40HP. Lucky Ice Pop helps survival numerically but cannot prevent this recorded80 attack after a single20 heal.
+
+This is an Auto policy observation, not a judgment about Dustin's manual choices. The exposed hand on turn6 consists of evolution cards without their Basics, a second Helmet, Arena/Korrina and the healing Item. No usable benched Basic is visible; a counterfactual full-deck strategy cannot be established. No visible mechanics contradiction was found. Hidden hands, deck order and unrecorded strategic intentions remain unknown.
+
+## Limits
+
+All available meaningful phases were inspected through the full3-second overview plus targeted source frames. This is a full visual review, not a frame-by-frame replay or exact simulator fixture. Cape title remains unreadable although its applied +30Stage1HP effect is directly verified. The tails classification is supported by the coin face and the subsequent discard outcome; exact flip onset is not claimed. Final rewards page is absent, but Defeat itself is captured. SOURCE.json contains the coordinator's verified intake binding; this worker did not independently hash media.
+
+
+
+## Astra consultation and lead clarification
+
+Astra independently checked Arena Fighting eligibility, Korrina, the 130-damage attack, Helmet retaliation and the empty-field loss with only two opponent points. The evidence anchors were corrected: 129s shows the Korrina bonus caption,132s the130-damage popup, and135s settled60HP. See `ASTRA_CHECK.md` and `LEAD_CORRECTION.md`.
+
+
+## Lead completion
+
+Accepted as a completed full-battle review after the source checks documented in `LEAD_ACCEPTANCE.json`. The unchanged original is archived in `Reviewed`; matching before/after SHA-256 is recorded in `MOVE_RECEIPT.20260930_162102000_iOS.MP4.json`. No Ladder Log entry was created.
+
+
+## Post-acceptance wording and status check
+
+The accepted review has received a targeted wording/status follow-up. See [the correction record](POST_ACCEPTANCE_CORRECTIONS.md) for exact changes, preserved history and result-display limits. Outcome, score, source identity and Ladder exclusion are unchanged.

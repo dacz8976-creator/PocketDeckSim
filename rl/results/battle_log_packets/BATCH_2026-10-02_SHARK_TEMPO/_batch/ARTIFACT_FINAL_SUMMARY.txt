@@ -1,0 +1,52 @@
+Browser tab: 1903386862, Title: "Pause Games", URL: "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd".
+The following is a diff from the previous accessibility tree with ~ and + representing changed and added elements, respectively. Removed elements are summarized by ID range.
+Removed element IDs: 30, 33-136
+~						21 tab (selectable, settable, boolean) Log, Value: 0, ID: tab-log
+~						23 tab (selected, settable, boolean) Summary, Value: 1, ID: tab-sum
+~				27 container Description: Summary, ID: p-sum
+~					28 container sum-all
+~						29 text 10
++						30 text games
+~						31 text 6-4
+~						32 text wins-losses
++						33 text 3
++						34 text won by concession
++					35 container sum-decks
++						36 container
++							37 heading Wailord / Indeedee wall, Value: 3
++								38 text Wailord / Indeedee wall
++							39 text 2-3 5 games, 2 won by concession Competitive - Consistent - Playable - Fun -
++						40 container
++							41 heading Draft A: Shark Tempo, Value: 3
++								42 text Draft A: Shark Tempo
++							43 text 4-1 5 games, 1 won by concession Competitive - Consistent - Playable - Fun -
++						44 container
++							45 heading Mega Blaziken tournament list, Value: 3
++								46 text Mega Blaziken tournament list
++							47 text no games yet
++						48 container
++							49 heading Mega Manectric / Heliolisk, Value: 3
++								50 text Mega Manectric / Heliolisk
++							51 text no games yet
++						52 container
++							53 heading Alolan Ninetales / Raticate, Value: 3
++								54 text Alolan Ninetales / Raticate
++							55 text no games yet
++						56 container
++							57 heading Brew 7: Hoopa / Darkrai / Sableye, Value: 3
++								58 text Brew 7: Hoopa / Darkrai / Sableye
++							59 text no games yet
++						60 container
++							61 heading Draft B: Tide Heal, Value: 3
++								62 text Draft B: Tide Heal
++							63 text no games yet
++						64 container
++							65 heading Draft C: Meowstic / Hatterene v2, Value: 3
++								66 text Draft C: Meowstic / Hatterene v2
++							67 text no games yet
++						68 container
++							69 heading Draft D: Entei / Grimhound, Value: 3
++								70 text Draft D: Entei / Grimhound
++							71 text no games yet
++					72 text Win and loss here are against random testers in competitive mode. A concession by the opponent is counted as a win. Ratings are averages of the 1 to 5 taps; a deck with no rating shows a dash.
+The focused UI element is 23 tab (selected, settable, boolean) Summary, Value: 1, ID: tab-sum

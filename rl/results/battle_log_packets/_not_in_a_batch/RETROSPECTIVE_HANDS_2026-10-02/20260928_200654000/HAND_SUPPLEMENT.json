@@ -1,0 +1,1314 @@
+{
+  "schema": "retrospective-hand-supplement-v1",
+  "game_id": "20260928_200654000",
+  "source": "20260928_200654000_iOS.MP4",
+  "sha256": "d4d0dd51f309c05abcdb6b1f04a75c036ca3e59b4abee3f6ce542b2d56149fd6",
+  "target_turn_numbers": [
+    2,
+    4,
+    6,
+    8,
+    10,
+    12,
+    14
+  ],
+  "target_rows": [
+    {
+      "turn_number": 2,
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Professor's Research",
+            "variant": "regular art",
+            "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+            "evidence_ids": [
+              "F0055.00",
+              "F0060.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Deceptive Needle",
+            "variant": "regular art",
+            "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+            "evidence_ids": [
+              "F0055.00",
+              "F0060.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Poké Ball",
+            "variant": "regular art",
+            "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+            "evidence_ids": [
+              "F0055.00",
+              "F0060.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Poké Ball",
+            "variant": "regular art",
+            "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+            "evidence_ids": [
+              "F0055.00",
+              "F0060.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Zweilous",
+            "variant": null,
+            "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+            "evidence_ids": [
+              "F0055.00",
+              "F0060.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+        "evidence_ids": [
+          "F0055.00",
+          "F0060.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Zweilous",
+            "variant": null,
+            "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+            "evidence_ids": [
+              "R_evidence_t0096.0"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Galarian Obstagoon",
+            "variant": "full art",
+            "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+            "evidence_ids": [
+              "R_evidence_t0096.0"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 2,
+        "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+        "evidence_ids": [
+          "R_evidence_t0096.0"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "draw_end_supported_approx_seconds": 54.5,
+      "captures": [
+        {
+          "role": "draw_plus_about1",
+          "evidence_id": "F0055.00",
+          "requested_source_seconds": 55,
+          "actual_frame_seconds_if_measured": 55.01,
+          "offset_after_draw_seconds": 0.5,
+          "native_full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0055.00.jpg",
+          "bottom_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\b0055.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              2025,
+              1170,
+              2532
+            ]
+          },
+          "top_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\p0055.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              0,
+              1170,
+              550
+            ]
+          },
+          "suitability_or_limit": "Later offsets may follow quick plays/draws; start hand uses earliest readable reveal and source transaction reconciliation; no PTS invented for old native."
+        },
+        {
+          "role": "draw_plus_about3",
+          "evidence_id": "F0057.00",
+          "requested_source_seconds": 57,
+          "actual_frame_seconds_if_measured": 57.01,
+          "offset_after_draw_seconds": 2.5,
+          "native_full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0057.00.jpg",
+          "bottom_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\b0057.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              2025,
+              1170,
+              2532
+            ]
+          },
+          "top_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\p0057.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              0,
+              1170,
+              550
+            ]
+          },
+          "suitability_or_limit": "Later offsets may follow quick plays/draws; start hand uses earliest readable reveal and source transaction reconciliation; no PTS invented for old native."
+        },
+        {
+          "role": "draw_plus_about6",
+          "evidence_id": "F0060.00",
+          "requested_source_seconds": 60,
+          "actual_frame_seconds_if_measured": 60.01,
+          "offset_after_draw_seconds": 5.5,
+          "native_full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0060.00.jpg",
+          "bottom_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\b0060.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              2025,
+              1170,
+              2532
+            ]
+          },
+          "top_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\p0060.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              0,
+              1170,
+              550
+            ]
+          },
+          "suitability_or_limit": "Later offsets may follow quick plays/draws; start hand uses earliest readable reveal and source transaction reconciliation; no PTS invented for old native."
+        },
+        {
+          "role": "before_end_action",
+          "evidence_id": "R_evidence_t0096.0",
+          "requested_source_seconds": 96,
+          "actual_frame_seconds_if_measured": null,
+          "offset_after_draw_seconds": 41.5,
+          "native_full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0096.0.jpg",
+          "bottom_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\reused_crops\\R_evidence_t0096.0_hand.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              2025,
+              1170,
+              2532
+            ]
+          },
+          "top_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\reused_crops\\R_evidence_t0096.0_top.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              0,
+              1170,
+              550
+            ]
+          },
+          "suitability_or_limit": "Later offsets may follow quick plays/draws; start hand uses earliest readable reveal and source transaction reconciliation; no PTS invented for old native."
+        }
+      ],
+      "capture_status": "complete"
+    },
+    {
+      "turn_number": 4,
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Zweilous",
+            "variant": null,
+            "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+            "evidence_ids": [
+              "F0139.00",
+              "F0141.00",
+              "F0143.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Galarian Obstagoon",
+            "variant": "full art",
+            "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+            "evidence_ids": [
+              "F0139.00",
+              "F0141.00",
+              "F0143.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Lillie",
+            "variant": "full art",
+            "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+            "evidence_ids": [
+              "F0139.00",
+              "F0141.00",
+              "F0143.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+        "evidence_ids": [
+          "F0139.00",
+          "F0141.00",
+          "F0143.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Galarian Obstagoon",
+            "variant": "full art",
+            "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+            "evidence_ids": [
+              "F0152.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Lillie",
+            "variant": "full art",
+            "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+            "evidence_ids": [
+              "F0152.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 2,
+        "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+        "evidence_ids": [
+          "F0152.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "draw_end_supported_approx_seconds": 140,
+      "captures": [
+        {
+          "role": "draw_plus_about1",
+          "evidence_id": "F0141.00",
+          "requested_source_seconds": 141,
+          "actual_frame_seconds_if_measured": 141.0,
+          "offset_after_draw_seconds": 1,
+          "native_full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0141.00.jpg",
+          "bottom_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\b0141.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              2025,
+              1170,
+              2532
+            ]
+          },
+          "top_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\p0141.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              0,
+              1170,
+              550
+            ]
+          },
+          "suitability_or_limit": "Later offsets may follow quick plays/draws; start hand uses earliest readable reveal and source transaction reconciliation; no PTS invented for old native."
+        },
+        {
+          "role": "draw_plus_about3",
+          "evidence_id": "F0143.00",
+          "requested_source_seconds": 143,
+          "actual_frame_seconds_if_measured": 143.002,
+          "offset_after_draw_seconds": 3,
+          "native_full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0143.00.jpg",
+          "bottom_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\b0143.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              2025,
+              1170,
+              2532
+            ]
+          },
+          "top_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\p0143.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              0,
+              1170,
+              550
+            ]
+          },
+          "suitability_or_limit": "Later offsets may follow quick plays/draws; start hand uses earliest readable reveal and source transaction reconciliation; no PTS invented for old native."
+        },
+        {
+          "role": "draw_plus_about6",
+          "evidence_id": "F0146.00",
+          "requested_source_seconds": 146,
+          "actual_frame_seconds_if_measured": 146.003,
+          "offset_after_draw_seconds": 6,
+          "native_full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0146.00.jpg",
+          "bottom_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\b0146.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              2025,
+              1170,
+              2532
+            ]
+          },
+          "top_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\p0146.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              0,
+              1170,
+              550
+            ]
+          },
+          "suitability_or_limit": "Later offsets may follow quick plays/draws; start hand uses earliest readable reveal and source transaction reconciliation; no PTS invented for old native."
+        },
+        {
+          "role": "before_end_action",
+          "evidence_id": "F0152.00",
+          "requested_source_seconds": 152,
+          "actual_frame_seconds_if_measured": 152.005,
+          "offset_after_draw_seconds": 12,
+          "native_full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0152.00.jpg",
+          "bottom_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\b0152.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              2025,
+              1170,
+              2532
+            ]
+          },
+          "top_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\p0152.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              0,
+              1170,
+              550
+            ]
+          },
+          "suitability_or_limit": "Later offsets may follow quick plays/draws; start hand uses earliest readable reveal and source transaction reconciliation; no PTS invented for old native."
+        }
+      ],
+      "capture_status": "complete"
+    },
+    {
+      "turn_number": 6,
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Galarian Obstagoon",
+            "variant": "full art",
+            "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+            "evidence_ids": [
+              "F0199.00",
+              "F0200.00",
+              "F0201.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Lillie",
+            "variant": "full art",
+            "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+            "evidence_ids": [
+              "F0199.00",
+              "F0200.00",
+              "F0201.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Hydreigon",
+            "variant": "rainbow-border full art; one visible star",
+            "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+            "evidence_ids": [
+              "F0199.00",
+              "F0200.00",
+              "F0201.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+        "evidence_ids": [
+          "F0199.00",
+          "F0200.00",
+          "F0201.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Galarian Obstagoon",
+            "variant": "full art",
+            "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+            "evidence_ids": [
+              "F0214.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Lillie",
+            "variant": "full art",
+            "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+            "evidence_ids": [
+              "F0214.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 2,
+        "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+        "evidence_ids": [
+          "F0214.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "draw_end_supported_approx_seconds": 200,
+      "captures": [
+        {
+          "role": "draw_plus_about1",
+          "evidence_id": "F0201.00",
+          "requested_source_seconds": 201,
+          "actual_frame_seconds_if_measured": 201.013,
+          "offset_after_draw_seconds": 1,
+          "native_full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0201.00.jpg",
+          "bottom_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\b0201.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              2025,
+              1170,
+              2532
+            ]
+          },
+          "top_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\p0201.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              0,
+              1170,
+              550
+            ]
+          },
+          "suitability_or_limit": "Later offsets may follow quick plays/draws; start hand uses earliest readable reveal and source transaction reconciliation; no PTS invented for old native."
+        },
+        {
+          "role": "draw_plus_about3",
+          "evidence_id": "F0203.00",
+          "requested_source_seconds": 203,
+          "actual_frame_seconds_if_measured": 203.048,
+          "offset_after_draw_seconds": 3,
+          "native_full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0203.00.jpg",
+          "bottom_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\b0203.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              2025,
+              1170,
+              2532
+            ]
+          },
+          "top_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\p0203.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              0,
+              1170,
+              550
+            ]
+          },
+          "suitability_or_limit": "Later offsets may follow quick plays/draws; start hand uses earliest readable reveal and source transaction reconciliation; no PTS invented for old native."
+        },
+        {
+          "role": "draw_plus_about6",
+          "evidence_id": "F0206.00",
+          "requested_source_seconds": 206,
+          "actual_frame_seconds_if_measured": 206.0,
+          "offset_after_draw_seconds": 6,
+          "native_full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0206.00.jpg",
+          "bottom_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\b0206.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              2025,
+              1170,
+              2532
+            ]
+          },
+          "top_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\p0206.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              0,
+              1170,
+              550
+            ]
+          },
+          "suitability_or_limit": "Later offsets may follow quick plays/draws; start hand uses earliest readable reveal and source transaction reconciliation; no PTS invented for old native."
+        },
+        {
+          "role": "before_end_action",
+          "evidence_id": "F0214.00",
+          "requested_source_seconds": 214,
+          "actual_frame_seconds_if_measured": 214.005,
+          "offset_after_draw_seconds": 14,
+          "native_full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0214.00.jpg",
+          "bottom_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\b0214.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              2025,
+              1170,
+              2532
+            ]
+          },
+          "top_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\p0214.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              0,
+              1170,
+              550
+            ]
+          },
+          "suitability_or_limit": "Later offsets may follow quick plays/draws; start hand uses earliest readable reveal and source transaction reconciliation; no PTS invented for old native."
+        }
+      ],
+      "capture_status": "complete"
+    },
+    {
+      "turn_number": 8,
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Galarian Obstagoon",
+            "variant": "full art",
+            "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+            "evidence_ids": [
+              "F0280.00",
+              "R_evidence_t0282.0",
+              "F0288.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Lillie",
+            "variant": "full art",
+            "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+            "evidence_ids": [
+              "F0280.00",
+              "R_evidence_t0282.0",
+              "F0288.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Professor's Research",
+            "variant": "full art",
+            "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+            "evidence_ids": [
+              "F0280.00",
+              "R_evidence_t0282.0",
+              "F0288.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+        "evidence_ids": [
+          "F0280.00",
+          "R_evidence_t0282.0",
+          "F0288.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Lillie",
+            "variant": "full art",
+            "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+            "evidence_ids": [
+              "F0328.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Rare Candy",
+            "variant": "regular art",
+            "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+            "evidence_ids": [
+              "F0328.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 2,
+        "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+        "evidence_ids": [
+          "F0328.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "draw_end_supported_approx_seconds": 281,
+      "captures": [
+        {
+          "role": "draw_plus_about1",
+          "evidence_id": "R_evidence_t0282.0",
+          "requested_source_seconds": 282,
+          "actual_frame_seconds_if_measured": null,
+          "offset_after_draw_seconds": 1,
+          "native_full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0282.0.jpg",
+          "bottom_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\reused_crops\\R_evidence_t0282.0_hand.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              2025,
+              1170,
+              2532
+            ]
+          },
+          "top_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\reused_crops\\R_evidence_t0282.0_top.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              0,
+              1170,
+              550
+            ]
+          },
+          "suitability_or_limit": "Later offsets may follow quick plays/draws; start hand uses earliest readable reveal and source transaction reconciliation; no PTS invented for old native."
+        },
+        {
+          "role": "draw_plus_about3",
+          "evidence_id": "F0285.00",
+          "requested_source_seconds": 285,
+          "actual_frame_seconds_if_measured": 285.012,
+          "offset_after_draw_seconds": 4,
+          "native_full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0285.00.jpg",
+          "bottom_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\b0285.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              2025,
+              1170,
+              2532
+            ]
+          },
+          "top_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\p0285.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              0,
+              1170,
+              550
+            ]
+          },
+          "suitability_or_limit": "Later offsets may follow quick plays/draws; start hand uses earliest readable reveal and source transaction reconciliation; no PTS invented for old native."
+        },
+        {
+          "role": "draw_plus_about6",
+          "evidence_id": "F0288.00",
+          "requested_source_seconds": 288,
+          "actual_frame_seconds_if_measured": 288.013,
+          "offset_after_draw_seconds": 7,
+          "native_full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0288.00.jpg",
+          "bottom_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\b0288.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              2025,
+              1170,
+              2532
+            ]
+          },
+          "top_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\p0288.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              0,
+              1170,
+              550
+            ]
+          },
+          "suitability_or_limit": "Later offsets may follow quick plays/draws; start hand uses earliest readable reveal and source transaction reconciliation; no PTS invented for old native."
+        },
+        {
+          "role": "before_end_action",
+          "evidence_id": "F0328.00",
+          "requested_source_seconds": 328,
+          "actual_frame_seconds_if_measured": 328.003,
+          "offset_after_draw_seconds": 47,
+          "native_full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0328.00.jpg",
+          "bottom_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\b0328.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              2025,
+              1170,
+              2532
+            ]
+          },
+          "top_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\p0328.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              0,
+              1170,
+              550
+            ]
+          },
+          "suitability_or_limit": "Later offsets may follow quick plays/draws; start hand uses earliest readable reveal and source transaction reconciliation; no PTS invented for old native."
+        }
+      ],
+      "capture_status": "complete_with_recording_limits"
+    },
+    {
+      "turn_number": 10,
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Lillie",
+            "variant": "full art",
+            "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+            "evidence_ids": [
+              "F0399.50",
+              "F0400.00",
+              "F0402.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Rare Candy",
+            "variant": "regular art",
+            "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+            "evidence_ids": [
+              "F0399.50",
+              "F0400.00",
+              "F0402.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Deino",
+            "variant": "regular art",
+            "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+            "evidence_ids": [
+              "F0399.50",
+              "F0400.00",
+              "F0402.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+        "evidence_ids": [
+          "F0399.50",
+          "F0400.00",
+          "F0402.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Rare Candy",
+            "variant": "regular art",
+            "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+            "evidence_ids": [
+              "F0422.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 1,
+        "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+        "evidence_ids": [
+          "F0422.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "draw_end_supported_approx_seconds": 399,
+      "captures": [
+        {
+          "role": "draw_plus_about1",
+          "evidence_id": "F0400.00",
+          "requested_source_seconds": 400,
+          "actual_frame_seconds_if_measured": 400.01,
+          "offset_after_draw_seconds": 1,
+          "native_full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0400.00.jpg",
+          "bottom_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\b0400.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              2025,
+              1170,
+              2532
+            ]
+          },
+          "top_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\p0400.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              0,
+              1170,
+              550
+            ]
+          },
+          "suitability_or_limit": "Later offsets may follow quick plays/draws; start hand uses earliest readable reveal and source transaction reconciliation; no PTS invented for old native."
+        },
+        {
+          "role": "draw_plus_about3",
+          "evidence_id": "F0402.00",
+          "requested_source_seconds": 402,
+          "actual_frame_seconds_if_measured": 402.012,
+          "offset_after_draw_seconds": 3,
+          "native_full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0402.00.jpg",
+          "bottom_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\b0402.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              2025,
+              1170,
+              2532
+            ]
+          },
+          "top_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\p0402.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              0,
+              1170,
+              550
+            ]
+          },
+          "suitability_or_limit": "Later offsets may follow quick plays/draws; start hand uses earliest readable reveal and source transaction reconciliation; no PTS invented for old native."
+        },
+        {
+          "role": "draw_plus_about6",
+          "evidence_id": "F0405.00",
+          "requested_source_seconds": 405,
+          "actual_frame_seconds_if_measured": 405.012,
+          "offset_after_draw_seconds": 6,
+          "native_full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0405.00.jpg",
+          "bottom_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\b0405.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              2025,
+              1170,
+              2532
+            ]
+          },
+          "top_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\p0405.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              0,
+              1170,
+              550
+            ]
+          },
+          "suitability_or_limit": "Later offsets may follow quick plays/draws; start hand uses earliest readable reveal and source transaction reconciliation; no PTS invented for old native."
+        },
+        {
+          "role": "before_end_action",
+          "evidence_id": "F0422.00",
+          "requested_source_seconds": 422,
+          "actual_frame_seconds_if_measured": 422.003,
+          "offset_after_draw_seconds": 23,
+          "native_full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0422.00.jpg",
+          "bottom_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\b0422.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              2025,
+              1170,
+              2532
+            ]
+          },
+          "top_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\p0422.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              0,
+              1170,
+              550
+            ]
+          },
+          "suitability_or_limit": "Later offsets may follow quick plays/draws; start hand uses earliest readable reveal and source transaction reconciliation; no PTS invented for old native."
+        }
+      ],
+      "capture_status": "complete"
+    },
+    {
+      "turn_number": 12,
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Rare Candy",
+            "variant": "regular art",
+            "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+            "evidence_ids": [
+              "F0467.00",
+              "F0469.00",
+              "F0472.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Galarian Obstagoon",
+            "variant": "full art",
+            "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+            "evidence_ids": [
+              "F0467.00",
+              "F0469.00",
+              "F0472.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 2,
+        "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+        "evidence_ids": [
+          "F0467.00",
+          "F0469.00",
+          "F0472.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [],
+        "count": 0,
+        "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+        "evidence_ids": [
+          "F0497.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "draw_end_supported_approx_seconds": 466,
+      "captures": [
+        {
+          "role": "draw_plus_about1",
+          "evidence_id": "F0467.00",
+          "requested_source_seconds": 467,
+          "actual_frame_seconds_if_measured": 467.015,
+          "offset_after_draw_seconds": 1,
+          "native_full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0467.00.jpg",
+          "bottom_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\b0467.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              2025,
+              1170,
+              2532
+            ]
+          },
+          "top_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\p0467.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              0,
+              1170,
+              550
+            ]
+          },
+          "suitability_or_limit": "Later offsets may follow quick plays/draws; start hand uses earliest readable reveal and source transaction reconciliation; no PTS invented for old native."
+        },
+        {
+          "role": "draw_plus_about3",
+          "evidence_id": "F0469.00",
+          "requested_source_seconds": 469,
+          "actual_frame_seconds_if_measured": 469.0,
+          "offset_after_draw_seconds": 3,
+          "native_full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0469.00.jpg",
+          "bottom_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\b0469.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              2025,
+              1170,
+              2532
+            ]
+          },
+          "top_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\p0469.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              0,
+              1170,
+              550
+            ]
+          },
+          "suitability_or_limit": "Later offsets may follow quick plays/draws; start hand uses earliest readable reveal and source transaction reconciliation; no PTS invented for old native."
+        },
+        {
+          "role": "draw_plus_about6",
+          "evidence_id": "F0472.00",
+          "requested_source_seconds": 472,
+          "actual_frame_seconds_if_measured": 472.002,
+          "offset_after_draw_seconds": 6,
+          "native_full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0472.00.jpg",
+          "bottom_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\b0472.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              2025,
+              1170,
+              2532
+            ]
+          },
+          "top_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\p0472.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              0,
+              1170,
+              550
+            ]
+          },
+          "suitability_or_limit": "Later offsets may follow quick plays/draws; start hand uses earliest readable reveal and source transaction reconciliation; no PTS invented for old native."
+        },
+        {
+          "role": "before_end_action",
+          "evidence_id": "F0497.00",
+          "requested_source_seconds": 497,
+          "actual_frame_seconds_if_measured": 497.01,
+          "offset_after_draw_seconds": 31,
+          "native_full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0497.00.jpg",
+          "bottom_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\b0497.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              2025,
+              1170,
+              2532
+            ]
+          },
+          "top_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\p0497.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              0,
+              1170,
+              550
+            ]
+          },
+          "suitability_or_limit": "Later offsets may follow quick plays/draws; start hand uses earliest readable reveal and source transaction reconciliation; no PTS invented for old native."
+        }
+      ],
+      "capture_status": "complete"
+    },
+    {
+      "turn_number": 14,
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Piers",
+            "variant": "gold",
+            "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+            "evidence_ids": [
+              "F0550.00",
+              "F0552.00",
+              "F0555.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 1,
+        "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+        "evidence_ids": [
+          "F0550.00",
+          "F0552.00",
+          "F0555.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [],
+        "count": 0,
+        "basis": "native_visible_reveal_hand_and_transaction_reconciliation",
+        "evidence_ids": [
+          "F0564.00"
+        ],
+        "status": "complete",
+        "limit_reason": null
+      },
+      "draw_end_supported_approx_seconds": 549,
+      "captures": [
+        {
+          "role": "draw_plus_about1",
+          "evidence_id": "F0550.00",
+          "requested_source_seconds": 550,
+          "actual_frame_seconds_if_measured": 550.0,
+          "offset_after_draw_seconds": 1,
+          "native_full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0550.00.jpg",
+          "bottom_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\b0550.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              2025,
+              1170,
+              2532
+            ]
+          },
+          "top_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\p0550.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              0,
+              1170,
+              550
+            ]
+          },
+          "suitability_or_limit": "Later offsets may follow quick plays/draws; start hand uses earliest readable reveal and source transaction reconciliation; no PTS invented for old native."
+        },
+        {
+          "role": "draw_plus_about3",
+          "evidence_id": "F0552.00",
+          "requested_source_seconds": 552,
+          "actual_frame_seconds_if_measured": 552.002,
+          "offset_after_draw_seconds": 3,
+          "native_full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0552.00.jpg",
+          "bottom_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\b0552.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              2025,
+              1170,
+              2532
+            ]
+          },
+          "top_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\p0552.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              0,
+              1170,
+              550
+            ]
+          },
+          "suitability_or_limit": "Later offsets may follow quick plays/draws; start hand uses earliest readable reveal and source transaction reconciliation; no PTS invented for old native."
+        },
+        {
+          "role": "draw_plus_about6",
+          "evidence_id": "F0555.00",
+          "requested_source_seconds": 555,
+          "actual_frame_seconds_if_measured": 555.002,
+          "offset_after_draw_seconds": 6,
+          "native_full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0555.00.jpg",
+          "bottom_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\b0555.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              2025,
+              1170,
+              2532
+            ]
+          },
+          "top_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\p0555.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              0,
+              1170,
+              550
+            ]
+          },
+          "suitability_or_limit": "Later offsets may follow quick plays/draws; start hand uses earliest readable reveal and source transaction reconciliation; no PTS invented for old native."
+        },
+        {
+          "role": "before_end_action",
+          "evidence_id": "F0564.00",
+          "requested_source_seconds": 564,
+          "actual_frame_seconds_if_measured": 564.007,
+          "offset_after_draw_seconds": 15,
+          "native_full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0564.00.jpg",
+          "bottom_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\b0564.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              2025,
+              1170,
+              2532
+            ]
+          },
+          "top_crop": {
+            "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\p0564.00.jpg",
+            "pixel_bounds_x0_y0_x1_y1": [
+              0,
+              0,
+              1170,
+              550
+            ]
+          },
+          "suitability_or_limit": "Later offsets may follow quick plays/draws; start hand uses earliest readable reveal and source transaction reconciliation; no PTS invented for old native."
+        }
+      ],
+      "capture_status": "complete"
+    }
+  ],
+  "capture_status": "complete_with_recording_limits",
+  "independent_acceptance_status": "pending_separate_source_check"
+}

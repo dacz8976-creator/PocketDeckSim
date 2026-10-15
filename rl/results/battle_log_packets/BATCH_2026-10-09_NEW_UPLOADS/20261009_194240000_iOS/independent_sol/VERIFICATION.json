@@ -1,0 +1,41 @@
+{
+  "verifier": "/root/verify_194240",
+  "model": "gpt-6-sol",
+  "effort": "high",
+  "decision": "ACCEPT",
+  "source_basename": "20261009_194240000_iOS.MP4",
+  "source_sha256": "eaf837456911cdebf75c99c2b09a1f3f68bab9b2e8bfd4990cc3d4d3b648d630",
+  "source_bytes": 117061306,
+  "source_duration_seconds": 67.645624,
+  "classification": "computer battle, Auto ON during gameplay, excluded from Ladder Log and Pause Games",
+  "outcome": {
+    "owner_result": "victory",
+    "opponent_label": "Greninja ex Deck (Deluxe Pack: Mega)",
+    "turns_played": 2,
+    "owner_points": 1,
+    "opponent_points": 0,
+    "damage_done": 60,
+    "decisive_event": "Electrike Quick Attack heads, 60 weakness damage knocks out the lone 60 HP Froakie"
+  },
+  "independent_checks": [
+    "setup and Auto OFF to ON at 2-4 seconds",
+    "opening cards and both empty Benches at 14-25 seconds",
+    "opponent ordinary turn and both Trainer plays at 25-34 seconds",
+    "owner draw, Professor's Research draws and Energy attachment at 34-46 seconds",
+    "heads flip, lone knockout and one-point award at 46-58 seconds",
+    "victory and result summary at 60-67.646 seconds"
+  ],
+  "coverage_decision": "complete source-bound first-pass review accepted after bounded independent verification",
+  "correction_reconciled": "Draft REVIEW.md incorrectly said Mega Manectric ex could not evolve directly from Electrike. The visible card says Evolves from Electrike, and the lead corrected the review before acceptance.",
+  "unknowns": [
+    "Opponent's hidden hand and Professor's Research draw identities",
+    "Full owner deck list beyond visible partial deck editor rows",
+    "Other unrevealed cards"
+  ],
+  "required_changes": [],
+  "primary_files_read_and_reconciled": {
+    "REVIEW.md": "b33461fbc4f44c80661b2d19f26b1b3ac4ca64d99082b079f8e0509699c7be60",
+    "COVERAGE.md": "f34467dd30a183db58c273e540a544c3720670d622703eb10d3aebc364870a58",
+    "FINDINGS.json": "fbd4ace3e8762509211afd5318fabe25b981234b2990f97283e4bfdeb56d0f70"
+  }
+}

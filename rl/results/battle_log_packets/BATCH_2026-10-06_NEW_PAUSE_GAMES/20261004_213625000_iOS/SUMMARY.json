@@ -1,0 +1,68 @@
+{
+  "is_template": false,
+  "source_video": "20261004_213625000_iOS.MP4",
+  "source_sha256": "aa7e935b335a2dfe11e43783f260698997845f7c85de8d6b1db976b7bf794225",
+  "reviewer": "/root/pause_20261004_213625000_iOS",
+  "model": "gpt-6.1-sol",
+  "scope": "Whole source0-460.651667s; setup, all12turns, terminal result",
+  "classification": "human_event",
+  "auto_control_observed": false,
+  "game_count": 1,
+  "recording_cuts_observed": false,
+  "queue": "Deluxe Pack: Mega Emblem Event",
+  "owner": "Dacz8976",
+  "opponent": "Noytamon",
+  "deck_name": "New deck 24",
+  "owner_visible_core": [
+    "Caterpie",
+    "Metapod",
+    "Butterfree",
+    "Shelmet",
+    "Accelgor"
+  ],
+  "opponent_visible_core": [
+    "Exeggcute",
+    "Budew",
+    "Pinsir",
+    "Combee",
+    "Vespiquen ex",
+    "Teal Mask Ogerpon ex"
+  ],
+  "outcome": "loss",
+  "owner_points": 2,
+  "opponent_points": 3,
+  "result_seconds": [
+    445,
+    451,
+    459
+  ],
+  "capture_status": "complete_with_recording_limits",
+  "status": "ready_for_independent_review",
+  "consequential_checks": [
+    {
+      "seconds": [
+        189,
+        410
+      ],
+      "claim": "Soothing Wind makes Energy-bearing Vespiquen ex immune to Poison/Paralysis"
+    },
+    {
+      "seconds": [
+        401,
+        402,
+        403,
+        404
+      ],
+      "claim": "Research only draws one Ice Pop, deck exhausted"
+    },
+    {
+      "seconds": [
+        444,
+        445,
+        450,
+        459
+      ],
+      "claim": "Chase Order140KO and Defeat establish loss"
+    }
+  ]
+}

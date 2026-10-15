@@ -1,0 +1,81 @@
+{
+  "accepted": true,
+  "acceptance_basis": "Accepted reconciled full account: frozen REVIEW.md together with source-verified LEAD_CLARIFICATION.md. Initial rejected packet and corrections retained.",
+  "reviewer": "/root/check_ladder_143111",
+  "scope": "Bounded independent source/frozen-packet check plus verification of appended lead reconciliation; no second whole visual pass",
+  "source_filename": "20261014_143111000_iOS.MP4",
+  "source_sha256": "dc9cc6c586e8ffa160f3ba3eb159420d72c48104a3e58000b76e260869078517",
+  "source_bytes": 720403823,
+  "recording_duration_seconds": 394.146667,
+  "frozen_manifest_sha256": "c1eeeb5fa19bb9d713a4b7e8ef779bba0c9e6c79dfee1c9bddaa8e74d4de1e4c",
+  "frozen_files_match": true,
+  "frozen_file_count": 96,
+  "primary_unchanged": true,
+  "core_ladder_claims_accepted": true,
+  "findings": [
+    "Source identity, byte count, duration and 1170x2532 video resolution verified live. Before and after frozen-file checks both match all 96 entries.",
+    "COVERAGE and REVIEW provide continuous setup-through-end intervals, with opponent globals 1,3,5,7,9,11 and owner globals 2,4,6,8,10. No missing turn in the written coverage. Selected source observations and result count support the coverage structure.",
+    "Retained t0003.00 shows Ranked Match Season B4b SP with Deck 12 selected. Retained t0000.00 and later battle boards establish Ariados/Whimsicott ex/Teal Mask Ogerpon ex core. No Auto control or option appears in inspected native or fresh samples; explicit ranked queue supports human Ladder routing.",
+    "Retained t0390.00 directly establishes Defeat vs Ghezzuka, went second, 11 turns, owner2/opponent3 and damage410. Retained t0373.00 establishes the terminal Mega Swampert ex attack dealing150 to Ogerpon. No concession shown.",
+    "First Whimsicott ex Grass Knot is supported by t0165.00 before state with opponent0 and t0170.00 named attack. Cottonee Razor Leaf t0107.00 is the earlier support attack. OwnerT2/global4 derives from documented full alternation and second-player order; t0327.00 directly displays ownerglobal10. Required note accepted: 2nd | Whimsicott ex T2 | opp 0 pts.",
+    "Independently selected ordinary checks: opponent global3 at fresh129.50 shows damaged active Mudkip40, benched Mantyke and fresh Mudkip60, Cottonee80 and score0-0; ownerglobal10 at fresh356.50 shows Hiking Trail, second Ariados, benched Cottonee and Ogerpon130 before energy attachment/end; opponentglobal5/ownerglobal6 development checked at native199,215,217,219,239.",
+    "Mega Swampert ex is directly legible at t0251.00 and later boards; Mudkip, Marshtomp, Mantyke and Cramorant also visible. Exact full opponent list remains unknown.",
+    "LEAD_CLARIFICATION.md inspected and verified against previously independently inspected native239,312,327 and165/169/170. It accurately supersedes Lillie with Lisia, post-attack3Water with2Water, and absent168 reference with retained169/170. Core Ladder fields remain unchanged."
+  ],
+  "errors": [],
+  "limits": [
+    "This is a bounded independent check of a frozen full primary review, not a second end-to-end visual review. Written continuity plus selected ordinary and consequential source evidence was checked.",
+    "Global4 is reconstructed, not directly read from a retained global4 banner. OwnT2 is supported by second-player order and the complete primary alternation, with directly displayed global10 and terminal11 anchors.",
+    "No Auto observed means none in inspected evidence plus primary's full-pass report; bounded sampling alone cannot establish universal absence.",
+    "Hidden draws, full deck lists and exact blue retreat-tool name remain unverified. No game-rule or tactical claims are derived from this check.",
+    "Frozen originals and initial rejection remain intact. Final acceptance applies to REVIEW.md together with the hash-bound LEAD_CLARIFICATION.md; root handles shared completion writes."
+  ],
+  "fresh_samples_seconds": [
+    218.5,
+    129.5,
+    356.5
+  ],
+  "integrity_receipts": [
+    "INTEGRITY_BEFORE.json",
+    "INTEGRITY_AFTER.json",
+    "INTEGRITY_AFTER_RECONCILIATION.json"
+  ],
+  "resolved_errors": [
+    {
+      "severity": "factual_correction_required",
+      "location": "REVIEW.md ownerT3/global6 row",
+      "claim": "Draws Lillie, plays it, reveals Spinarak and Cottonee from the deck",
+      "correction": "Supporter is Lisia. Its name and art are visible in right discard at retained t0239.00, with native-resolution crop saved. Spinarak/Cottonee search observations remain supported; exact supporter draw/play time should be qualified as within this turn rather than219s, which shows Cottonee's search reveal.",
+      "evidence": [
+        "../native/t0239.00.jpg",
+        "native_t0239.00_Lisia_crop.png",
+        "fresh_t0218.50.jpg",
+        "../native/t0219.00.jpg"
+      ]
+    },
+    {
+      "severity": "factual_correction_required",
+      "location": "REVIEW.md opponentT5/global9 row",
+      "claim": "Mega has three visible Water afterward",
+      "correction": "Mega has two visible Water afterward. Native t0306.00 shows four before the attack, t0312.00 shows two after Whimsicott is discarded, and t0327.00 and fresh356.50 retain two before the final opponent attachment. Do not infer identities of randomly discarded Energy beyond visible transitions.",
+      "evidence": [
+        "../native/t0306.00.jpg",
+        "../native/t0312.00.jpg",
+        "../native/t0327.00.jpg",
+        "fresh_t0356.50.jpg"
+      ]
+    },
+    {
+      "severity": "minor_evidence_reference",
+      "location": "REVIEW.md first-main-attacker evidence paragraph",
+      "claim": "native/t0168.00.jpg retained selection evidence",
+      "correction": "This path is absent from the packet/frozen manifest. Existing169/170 frames support the attack transition and named animation; omit or qualify the168 reference in appended reconciliation."
+    }
+  ],
+  "lead_clarification_sha256": "ddcba75480ad619c9b6b3efe25d735835a21c000e2b1766cb4fa97f9b690fa9a",
+  "accepted_account_files": [
+    "../REVIEW.md",
+    "../LEAD_CLARIFICATION.md"
+  ],
+  "initial_rejection_path": "CHECK_RESULT.rejected_initial.json"
+}

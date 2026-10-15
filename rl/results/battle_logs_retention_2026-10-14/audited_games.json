@@ -1,0 +1,489 @@
+{
+ "schema": "battle-logs-retention/audited-games-v3",
+ "confirmed": {
+  "by": "Dustin via the laptop",
+  "date": "2026-10-14",
+  "games_sha256": "c161dea6ec7e6cc48197f627ad8cbaebd9bd8b5c6609e5a78c5a85633cdd253f"
+ },
+ "confirmed_help": "Dustin's decision, written down by him or for him (nothing but these three keys may be in it): {\"by\": \"Dustin\" or \"Dustin via the laptop\", \"date\": \"YYYY-MM-DD\", \"games_sha256\": \"<what `wsl python3 tools/battle_logs_cleanup.py --audit-hash` prints>\"}; commit it to main and push, then `git fetch origin`. tools/battle_logs_cleanup.py --apply refuses while it is missing, malformed, not Dustin's name, or no longer matches `games`; withdraw it by setting \"confirmed\" back to null.",
+ "proposed_by": "Sonnet (Opus agents progress), 2026-10-14, from the records on main; see make_audited_games.py for the evidence per tier",
+ "games": {
+  "kw-261004_213625000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261004_213625000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
+   "positions": 6,
+   "positions_sha256": "32e2ee4386cf3ecaacec0ded29e4a05a44ff7b60d54323af4a8b4216e81fa05c",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261004_215749000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261004_215749000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
+   "positions": 3,
+   "positions_sha256": "6314478e00b13efb3024f1c621870c67cabcf8b15f1fadea88af4e456607529e",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261005_003547000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_003547000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
+   "positions": 7,
+   "positions_sha256": "69d4c6c94920a4a0b27935bcedb29f7650e966600980af982562faa3f9698642",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261005_031138000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_031138000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
+   "positions": 3,
+   "positions_sha256": "b7daa8adc9c718fa87554ae59180b3de8241f74838f52fe91b82dbfb00f9bc5e",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261005_032023000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_032023000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
+   "positions": 6,
+   "positions_sha256": "d6f3ba095de5b23135351e7e7c9bbdcf450e7318f586fe50825712ec4ee8ece6",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261005_032857000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_032857000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
+   "positions": 4,
+   "positions_sha256": "80e4dd837a42adc95b2d94dce4dd797f53e54f06dcead9235c33a46981812c45",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261005_033529000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_033529000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
+   "positions": 5,
+   "positions_sha256": "0a3511a2018a550183382f7a23c415f2dc86100abfe517d7d8b7aee9de26ff5e",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261005_034953000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_034953000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
+   "positions": 8,
+   "positions_sha256": "d084b5573d6a4833ed2f903f8f5782b235886d96c584e3610cef82b7d5a8a4f0",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261005_123812000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_123812000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
+   "positions": 5,
+   "positions_sha256": "96590e8378bf120798d2fc9bfbe703c9807cb7c46235a560c8598d21347c05f9",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261005_124532000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_124532000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
+   "positions": 4,
+   "positions_sha256": "eca542585946b19e6814ba2f1500439598414976ca6286d43e8674d4942c7402",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261005_183108000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_183108000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
+   "positions": 5,
+   "positions_sha256": "ad67f4e1b5d04bc7bad26c903d86ea2e65ed4bbf572166933c57fcb9a50e609b",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261006_012927000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261006_012927000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
+   "positions": 5,
+   "positions_sha256": "5bb25e5faf6623a09603a5834eacc273470a7801a8c22495f1a58786bb0329ce",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261006_020518000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261006_020518000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
+   "positions": 9,
+   "positions_sha256": "cbc8adef32d5282f6e90270684022d17a893e212bfc8330139ee6169cbf93ca3",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261010_012303000": {
+   "folder": "BATCH_2026-10-09_NEW_PAUSE_GAMES/20261010_012303000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
+   "positions": 6,
+   "positions_sha256": "22af79486fe7a20bf7830342616a1e280c65581205bf34c32d66f417313055bc",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261010_013009000": {
+   "folder": "BATCH_2026-10-09_NEW_PAUSE_GAMES/20261010_013009000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
+   "positions": 8,
+   "positions_sha256": "17754f9814f69b2b5cc3ae702e7eca81534ab0ba2ca53edf03a1c570a717612c",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261010_014541000": {
+   "folder": "BATCH_2026-10-09_NEW_PAUSE_GAMES/20261010_014541000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
+   "positions": 4,
+   "positions_sha256": "3cfbe5e9382920cb403251765334f7b1aec9c18f8b51fe699338fd8e7af4b964",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261010_015452000": {
+   "folder": "BATCH_2026-10-09_NEW_PAUSE_GAMES/20261010_015452000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
+   "positions": 2,
+   "positions_sha256": "4f4ed2cc5b2ac9adff7fdc80ae176a95d4707ce36b57758191e0f014818aa970",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261010_015821000": {
+   "folder": "BATCH_2026-10-09_NEW_PAUSE_GAMES/20261010_015821000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
+   "positions": 3,
+   "positions_sha256": "4fe0aaf06375c8d1094e2e99ec678c7aa48419cdbc373439095abdbe706512b5",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261010_020258000": {
+   "folder": "BATCH_2026-10-09_NEW_PAUSE_GAMES/20261010_020258000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
+   "positions": 4,
+   "positions_sha256": "80b7952930d40a94efaa72429e874833d8a0237d4cf1834b6ab1186088482e94",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261010_020908000": {
+   "folder": "BATCH_2026-10-09_NEW_PAUSE_GAMES/20261010_020908000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
+   "positions": 3,
+   "positions_sha256": "f4243bf3528bc37f714682723b1150a169de7c6fd271621e97e87c5f601770b3",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261010_021629000": {
+   "folder": "BATCH_2026-10-09_NEW_PAUSE_GAMES/20261010_021629000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
+   "positions": 12,
+   "positions_sha256": "2f1edefece4f7ab8b1df356700528b2d9b7864e84596d8e1d56db816c8f78ca9",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261012_003458000": {
+   "folder": "BATCH_2026-10-11_NEW_PAUSE_GAMES/20261012_003458000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
+   "positions": 6,
+   "positions_sha256": "b8132e3c85766de93c372a537bbff1f5f26fb0d7262bc35b1e5415eeabcab9dc",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261012_004128000": {
+   "folder": "BATCH_2026-10-11_NEW_PAUSE_GAMES/20261012_004128000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
+   "positions": 2,
+   "positions_sha256": "aa06e19c903eaed9daf1b6a4c79771104964effc01d8a933487985f09eccef6f",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261012_004435000": {
+   "folder": "BATCH_2026-10-11_NEW_PAUSE_GAMES/20261012_004435000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
+   "positions": 5,
+   "positions_sha256": "82d8a8fe0db22b7b1509a1d17aab2b1e68f89adf1cdab1752d3cabab3f68597f",
+   "tier": "A",
+   "evidence": [
+    "e9a7d35e (laptop panel 1, Oct 12: errors found)",
+    "43b7d71d + 2eff1be6 (laptop panel 2: every error fixed, byte-for-byte regeneration; integrated)",
+    "28df6315 (REVIEW_PGFIX_laptop.md, Oct 13: the 125 positions regenerate identical)"
+   ]
+  },
+  "kw-261012_010706000": {
+   "folder": "BATCH_2026-10-12_NEW_LONG_VIDEOS/20261012_010706000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-13/v2/games_meta.json",
+   "positions": 11,
+   "positions_sha256": "d7442951c3340fc703969e2c096edb669db178ffd13c06e95b24507a35140152",
+   "tier": "B",
+   "evidence": [
+    "373b41a6 (laptop panel on the 92 positions against the raw ledgers: not ready, 3 blockers and 9 majors)",
+    "cfc143fb (Sonnet's positions v3: every blocker and major fixed)",
+    "358562b2 (the laptop's recheck: no blocker or major left, v3 introduced none; the other 13 of the 14 can move from pending to games under a new acceptance; v2/REVIEW_POSITIONS_laptop.md)"
+   ]
+  },
+  "kw-261012_203719000": {
+   "folder": "BATCH_2026-10-12_NEW_LONG_VIDEOS/20261012_203719000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-13/v2/games_meta.json",
+   "positions": 9,
+   "positions_sha256": "b62f8d5d6f255fe088c101f85cb5da0685a415a1e95f40a2b5a460f12e0e7e66",
+   "tier": "B",
+   "evidence": [
+    "373b41a6 (laptop panel on the 92 positions against the raw ledgers: not ready, 3 blockers and 9 majors)",
+    "cfc143fb (Sonnet's positions v3: every blocker and major fixed)",
+    "358562b2 (the laptop's recheck: no blocker or major left, v3 introduced none; the other 13 of the 14 can move from pending to games under a new acceptance; v2/REVIEW_POSITIONS_laptop.md)"
+   ]
+  },
+  "kw-261012_210041000": {
+   "folder": "BATCH_2026-10-12_NEW_LONG_VIDEOS/20261012_210041000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-13/v2/games_meta.json",
+   "positions": 7,
+   "positions_sha256": "ab038d15c4a72fb53e4d977ccab20d26c2ffc3a21a56898f611a97390c8a63ae",
+   "tier": "B",
+   "evidence": [
+    "373b41a6 (laptop panel on the 92 positions against the raw ledgers: not ready, 3 blockers and 9 majors)",
+    "cfc143fb (Sonnet's positions v3: every blocker and major fixed)",
+    "358562b2 (the laptop's recheck: no blocker or major left, v3 introduced none; the other 13 of the 14 can move from pending to games under a new acceptance; v2/REVIEW_POSITIONS_laptop.md)"
+   ]
+  },
+  "kw-261012_210823000": {
+   "folder": "BATCH_2026-10-12_NEW_LONG_VIDEOS/20261012_210823000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-13/v2/games_meta.json",
+   "positions": 6,
+   "positions_sha256": "351464d21ee76cfc7025503ea890892c14415338bb1abb281314c7fd4c9326a0",
+   "tier": "B",
+   "evidence": [
+    "373b41a6 (laptop panel on the 92 positions against the raw ledgers: not ready, 3 blockers and 9 majors)",
+    "cfc143fb (Sonnet's positions v3: every blocker and major fixed)",
+    "358562b2 (the laptop's recheck: no blocker or major left, v3 introduced none; the other 13 of the 14 can move from pending to games under a new acceptance; v2/REVIEW_POSITIONS_laptop.md)"
+   ]
+  },
+  "kw-261012_225319000": {
+   "folder": "BATCH_2026-10-12_ADDITIONAL_TWO/20261012_225319000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-13/v2/games_meta.json",
+   "positions": 4,
+   "positions_sha256": "e27e60dd43754f5261ae8850868875e0850fc8e0b089d7c4ee7fc1b1619b3ecf",
+   "tier": "B",
+   "evidence": [
+    "373b41a6 (laptop panel on the 92 positions against the raw ledgers: not ready, 3 blockers and 9 majors)",
+    "cfc143fb (Sonnet's positions v3: every blocker and major fixed)",
+    "358562b2 (the laptop's recheck: no blocker or major left, v3 introduced none; the other 13 of the 14 can move from pending to games under a new acceptance; v2/REVIEW_POSITIONS_laptop.md)"
+   ]
+  },
+  "kw-261012_230258000": {
+   "folder": "BATCH_2026-10-12_ADDITIONAL_TWO/20261012_230258000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-13/v2/games_meta.json",
+   "positions": 7,
+   "positions_sha256": "65080e77b0dfc21fee552cf6d58613a875d32e024af3656ef758bda1c77c70aa",
+   "tier": "B",
+   "evidence": [
+    "373b41a6 (laptop panel on the 92 positions against the raw ledgers: not ready, 3 blockers and 9 majors)",
+    "cfc143fb (Sonnet's positions v3: every blocker and major fixed)",
+    "358562b2 (the laptop's recheck: no blocker or major left, v3 introduced none; the other 13 of the 14 can move from pending to games under a new acceptance; v2/REVIEW_POSITIONS_laptop.md)"
+   ]
+  },
+  "kw-261013_010003000": {
+   "folder": "BATCH_2026-10-13_REMAINING_SIX/20261013_010003000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-13/v2/games_meta.json",
+   "positions": 6,
+   "positions_sha256": "90a21088dbea30f86ec302248b7b840d4d07fec7f39bb356a6c36cf70db87510",
+   "tier": "B",
+   "evidence": [
+    "373b41a6 (laptop panel on the 92 positions against the raw ledgers: not ready, 3 blockers and 9 majors)",
+    "cfc143fb (Sonnet's positions v3: every blocker and major fixed)",
+    "358562b2 (the laptop's recheck: no blocker or major left, v3 introduced none; the other 13 of the 14 can move from pending to games under a new acceptance; v2/REVIEW_POSITIONS_laptop.md)"
+   ]
+  },
+  "kw-261013_010837000": {
+   "folder": "BATCH_2026-10-13_REMAINING_SIX/20261013_010837000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-13/v2/games_meta.json",
+   "positions": 8,
+   "positions_sha256": "b3600c224821d11abbe3dc22877269e18e6554cdc3ae731b07229f36805b9ab4",
+   "tier": "B",
+   "evidence": [
+    "373b41a6 (laptop panel on the 92 positions against the raw ledgers: not ready, 3 blockers and 9 majors)",
+    "cfc143fb (Sonnet's positions v3: every blocker and major fixed)",
+    "358562b2 (the laptop's recheck: no blocker or major left, v3 introduced none; the other 13 of the 14 can move from pending to games under a new acceptance; v2/REVIEW_POSITIONS_laptop.md)"
+   ]
+  },
+  "kw-261013_014423000": {
+   "folder": "BATCH_2026-10-13_REMAINING_SIX/20261013_014423000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-13/v2/games_meta.json",
+   "positions": 5,
+   "positions_sha256": "d88b8289397a231ed28558e9dd3f269c8f4587c12adc725dc49da8551afc8c03",
+   "tier": "B",
+   "evidence": [
+    "373b41a6 (laptop panel on the 92 positions against the raw ledgers: not ready, 3 blockers and 9 majors)",
+    "cfc143fb (Sonnet's positions v3: every blocker and major fixed)",
+    "358562b2 (the laptop's recheck: no blocker or major left, v3 introduced none; the other 13 of the 14 can move from pending to games under a new acceptance; v2/REVIEW_POSITIONS_laptop.md)"
+   ]
+  },
+  "kw-261013_015011000": {
+   "folder": "BATCH_2026-10-13_REMAINING_SIX/20261013_015011000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-13/v2/games_meta.json",
+   "positions": 2,
+   "positions_sha256": "7a64d92ada6826b98d2373f9bccbbe48e0a9551d0a1cefbc530baeed1bf5eb94",
+   "tier": "B",
+   "evidence": [
+    "373b41a6 (laptop panel on the 92 positions against the raw ledgers: not ready, 3 blockers and 9 majors)",
+    "cfc143fb (Sonnet's positions v3: every blocker and major fixed)",
+    "358562b2 (the laptop's recheck: no blocker or major left, v3 introduced none; the other 13 of the 14 can move from pending to games under a new acceptance; v2/REVIEW_POSITIONS_laptop.md)"
+   ]
+  },
+  "kw-261013_020824000": {
+   "folder": "BATCH_2026-10-13_REMAINING_SIX/20261013_020824000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-13/v2/games_meta.json",
+   "positions": 7,
+   "positions_sha256": "2a1590bcf502187edf982114aa9ebcc9a54bd755247d606876d1b38bb56b6d95",
+   "tier": "B",
+   "evidence": [
+    "373b41a6 (laptop panel on the 92 positions against the raw ledgers: not ready, 3 blockers and 9 majors)",
+    "cfc143fb (Sonnet's positions v3: every blocker and major fixed)",
+    "358562b2 (the laptop's recheck: no blocker or major left, v3 introduced none; the other 13 of the 14 can move from pending to games under a new acceptance; v2/REVIEW_POSITIONS_laptop.md)"
+   ]
+  },
+  "kw-261013_022530000": {
+   "folder": "BATCH_2026-10-13_NEWEST_TWO/20261013_022530000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-13/v2/games_meta.json",
+   "positions": 6,
+   "positions_sha256": "09aea6590b3445220c54c86fcee41e2e72cc2bf6e9c8564d9df431c5ac2aff88",
+   "tier": "B",
+   "evidence": [
+    "373b41a6 (laptop panel on the 92 positions against the raw ledgers: not ready, 3 blockers and 9 majors)",
+    "cfc143fb (Sonnet's positions v3: every blocker and major fixed)",
+    "358562b2 (the laptop's recheck: no blocker or major left, v3 introduced none; the other 13 of the 14 can move from pending to games under a new acceptance; v2/REVIEW_POSITIONS_laptop.md)"
+   ]
+  },
+  "kw-261013_030351000": {
+   "folder": "BATCH_2026-10-13_NEWEST_TWO/20261013_030351000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-13/v2/games_meta.json",
+   "positions": 8,
+   "positions_sha256": "30f47662b00f97b288585005068eda5ea107e07d066bac09e5b87417d7f3f9f1",
+   "tier": "B",
+   "evidence": [
+    "373b41a6 (laptop panel on the 92 positions against the raw ledgers: not ready, 3 blockers and 9 majors)",
+    "cfc143fb (Sonnet's positions v3: every blocker and major fixed)",
+    "358562b2 (the laptop's recheck: no blocker or major left, v3 introduced none; the other 13 of the 14 can move from pending to games under a new acceptance; v2/REVIEW_POSITIONS_laptop.md)"
+   ]
+  }
+ },
+ "pending": {
+  "kw-261004_214518000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261004_214518000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
+   "tier": "A0",
+   "why": "no positions to review: Codex found no exact 20-card list, so the converter produced none and the review of the 125 positions cannot cover this game"
+  },
+  "kw-261004_214731000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261004_214731000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
+   "tier": "A0",
+   "why": "no positions to review: Codex found no exact 20-card list, so the converter produced none and the review of the 125 positions cannot cover this game"
+  },
+  "kw-261005_034229000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261005_034229000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
+   "tier": "A0",
+   "why": "no positions to review: Codex found no exact 20-card list, so the converter produced none and the review of the 125 positions cannot cover this game"
+  },
+  "kw-261006_012140000": {
+   "folder": "BATCH_2026-10-06_NEW_PAUSE_GAMES/20261006_012140000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-12/games_meta.json",
+   "tier": "A0",
+   "why": "no positions to review: Codex found no exact 20-card list, so the converter produced none and the review of the 125 positions cannot cover this game"
+  },
+  "kw-261013_015659000": {
+   "folder": "BATCH_2026-10-13_REMAINING_SIX/20261013_015659000_iOS",
+   "games_meta": "rl/results/pause_games_new_2026-10-13/v2/games_meta.json",
+   "positions": 6,
+   "tier": "B",
+   "why": "T10-12 opponent hand open; frames are the only evidence (the laptop's recheck, 358562b2: stays pending until the question is settled or accepted as open)"
+  }
+ }
+}

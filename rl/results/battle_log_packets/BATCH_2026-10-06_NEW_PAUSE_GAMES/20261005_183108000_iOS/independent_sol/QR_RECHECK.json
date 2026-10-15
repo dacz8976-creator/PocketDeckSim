@@ -1,0 +1,254 @@
+{
+  "schema": "bounded-independent-sol-acceptance-v1",
+  "reviewer": "/root/independent_183108",
+  "review_model": "gpt-6.1-sol",
+  "review_role": "Fresh separate Sol bounded independent acceptance, not the full-review worker",
+  "checked_at_utc": "2026-10-06T21:06:45.329304+00:00",
+  "source_video": "20261005_183108000_iOS.MP4",
+  "source_sha256": "94bd9d0e127291765928cc7cf4fc69a0ca5d1b21189622ed98bd2f1e14fb5f95",
+  "source_duration_seconds": 403.317007,
+  "media_rehashed": false,
+  "identity_basis": "Frozen CLI SOURCE.json binding; retained native evidence checked and hashed. No original media decoding or mutation.",
+  "status": "exact_20_filmed_QR_definition_supported_live_save_pending",
+  "native_image": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_183108000_iOS\\qr_intake\\t0001.00.png",
+  "native_image_sha256": "094e5bffe741a905afc18805147bd8b71352e43b2384dfc22284a01747866000",
+  "independent_native_zxing_payload_matches": true,
+  "payload_ascii_sha256": "d0b1bba631c176934858403e8f9a8f7f0e35d51058ae04ef01756b5d46d7596b",
+  "twenty_slot_entity_counts_match_packet": true,
+  "cards": [
+    {
+      "entity_kind": "trainer",
+      "entity_id": 30,
+      "count": 2,
+      "name": "Poké Ball",
+      "name_candidates": [
+        "Poké Ball"
+      ],
+      "functional_ids": [
+        "1b20901befde"
+      ],
+      "printing_aliases": [
+        "A2b 111",
+        "P-A 005"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 1060,
+      "count": 2,
+      "name": "Lucky Ice Pop",
+      "name_candidates": [
+        "Lucky Ice Pop"
+      ],
+      "functional_ids": [
+        "15c19aaaf9a4"
+      ],
+      "printing_aliases": [
+        "B2 145"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 500,
+      "count": 2,
+      "name": "Poison Barb",
+      "name_candidates": [
+        "Poison Barb"
+      ],
+      "functional_ids": [
+        "9c51ca00216c"
+      ],
+      "printing_aliases": [
+        "A3 146"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 1520,
+      "count": 1,
+      "name": "Deceptive Needle",
+      "name_candidates": [
+        "Deceptive Needle"
+      ],
+      "functional_ids": [
+        "b791a928a490"
+      ],
+      "printing_aliases": [
+        "B4 148"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 40,
+      "count": 2,
+      "name": "Professor’s Research",
+      "name_candidates": [
+        "Professor’s Research"
+      ],
+      "functional_ids": [
+        "c0015440f616"
+      ],
+      "printing_aliases": [
+        "A4b 373",
+        "P-A 007"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 320,
+      "count": 1,
+      "name": "Cyrus",
+      "name_candidates": [
+        "Cyrus"
+      ],
+      "functional_ids": [
+        "fff346783fd6"
+      ],
+      "printing_aliases": [
+        "A2 150",
+        "A2 190",
+        "A4b 326",
+        "A4b 327"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 990,
+      "count": 1,
+      "name": "Copycat",
+      "name_candidates": [
+        "Copycat"
+      ],
+      "functional_ids": [
+        "d5d2b111c197"
+      ],
+      "printing_aliases": [
+        "B1 225",
+        "B1 270"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 1570,
+      "count": 1,
+      "name": "Wally",
+      "name_candidates": [
+        "Wally"
+      ],
+      "functional_ids": [
+        "abd4b4c27504"
+      ],
+      "printing_aliases": [
+        "B4 153",
+        "B4 193"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 2660,
+      "count": 2,
+      "name": "Venipede",
+      "name_candidates": [
+        "Venipede"
+      ],
+      "functional_ids": [
+        "6969577b72a7"
+      ],
+      "printing_aliases": [
+        "A1a 053"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 2670,
+      "count": 2,
+      "name": "Whirlipede",
+      "name_candidates": [
+        "Whirlipede"
+      ],
+      "functional_ids": [
+        "c8bed3090bc3"
+      ],
+      "printing_aliases": [
+        "A1a 054"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 2680,
+      "count": 2,
+      "name": "Scolipede",
+      "name_candidates": [
+        "Scolipede"
+      ],
+      "functional_ids": [
+        "4badf7574b6f"
+      ],
+      "printing_aliases": [
+        "A1a 055"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 19390,
+      "count": 2,
+      "name": "Mega Sableye ex",
+      "name_candidates": [
+        "Mega Sableye ex"
+      ],
+      "functional_ids": [
+        "65b7c946c7b8"
+      ],
+      "printing_aliases": [
+        "B3b 041",
+        "B3b 081",
+        "B3b 088"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    }
+  ],
+  "energy": [
+    {
+      "value": 7,
+      "name": "Darkness",
+      "selectable": true
+    }
+  ],
+  "continuity_witnesses_seconds": [
+    1,
+    4,
+    8,
+    16,
+    32,
+    40
+  ],
+  "continuity_finding": "Retained filmed QR, Event selection New deck 6 slot11, human matchmaking, opening and Venipede placement agree with full-worker continuous setup account. No second game or edit is claimed by the packet.",
+  "limits": [
+    "Full worker supplies whole-source continuity; this is a bounded independent witness check, not a second full decode.",
+    "Exact playable QR definitions do not specify artwork/rarity and do not establish hidden card identities.",
+    "Live Pause Games saved-deck and game registration remain lead-only; this receipt does not claim either."
+  ]
+}

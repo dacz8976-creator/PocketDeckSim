@@ -1,0 +1,34 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-06T18:17:12.002447+00:00",
+  "source_video": "20261004_214731000_iOS.MP4",
+  "source_sha256": "d363bdd1c3f4aafc5ad9423764e706f8944407d68a04c82d72317592d7e7e198",
+  "scope": "Whole supplied continuous battle: setup, all turns, terminal sequence and source ending",
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 8,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261004_214731000_iOS\\independent_sol\\CORRECTION_RECHECK.json",
+  "basis": "Whole-source Sol review and coverage; separately commissioned bounded Sol checks of opening, ordinary turns/first moves, draws/searches, hands, both boards/Energy Zones, fans, decisive outcome; all frozen repairs independently verified. Root reconciled reports and inspected consequential boundary frames. Structure checked separately.",
+  "source_limits": [
+    "Opponent card faces remain hidden for draws/searches not revealed.",
+    "Exact input/frame PTS was not measured; retained seek times identify source-local evidence.",
+    "No opened discard-pile views in this recording.",
+    "The filmed Grass deck does not match any of the nine current live lists. Deck supplement pending lead QR/live-log reconciliation."
+  ],
+  "outcome": {
+    "owner": "win",
+    "opponent": "CloutDemon",
+    "points": [
+      3,
+      0
+    ],
+    "turns_played": 8,
+    "damage_done_displayed": 200,
+    "evidence_ids": [
+      "e_0374.00"
+    ]
+  },
+  "external_status": "Prepared for Pause Games; no new live deck or game save claimed. Missing matching current live list is preserved, filmed QR definitions prepared separately.",
+  "archive_authorization": "Completed local review may be safely archived after verified CLI registration; original bytes/name preserved."
+}

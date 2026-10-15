@@ -1,0 +1,72 @@
+{
+  "verdict": "accepted_with_recording_limits",
+  "reviewer": "/root/sol_verify_ladder_232617",
+  "checked_at_utc": "2026-10-02T21:16:06.426587+00:00",
+  "scope": "Narrow recheck of four changed files only, against native52 previously inspected; initial needs_repair and worker submission preserved.",
+  "initial_verdict_file": "SOURCE_CHECKS.json",
+  "changed_files": {
+    "TURN_LEDGER.json": {
+      "before_sha256": "2172cd69dc80e196ece2649d684358fd938d98d21d590d0c68b32a4513e447dc",
+      "after_sha256": "86f822faccf871c05e17ba68f65de69e109d179cca9df4130db725cfc4b1465e"
+    },
+    "TURN_EVIDENCE.json": {
+      "before_sha256": "bf2bb6060916718502728ee159340a6c6056dcc122106f03e79433a02bca5e09",
+      "after_sha256": "fb8e56d97919bef54365bfa18540a6ff668224b535d3ffb85a8d68bf0ac4b227"
+    },
+    "REVIEW_SUPPLEMENT.md": {
+      "before_sha256": "aa355f69e993a466ba2292158272a9d7c59ec541df85843884721a5b00ead918",
+      "after_sha256": "c7c526a96665a4fe3c5f2c4fe9f7b379b1215ce15749220004c37d1692f4c46e"
+    },
+    "UNCERTAINTIES.json": {
+      "before_sha256": "6f72efe501af6a177148d61c979a0c9f4e7bdcac9a9074621ed25913693aec95",
+      "after_sha256": "4ce257dec585fa563ccdd3e1aca51c5ba42bf1574ff1f8a4b39c5a9a1cd3d147"
+    }
+  },
+  "repair_acceptance": {
+    "field": "TURN_LEDGER.json turns[turn_number=2].board_at_start.owner.active.active_effects",
+    "native_evidence_id": "f52.000",
+    "native_text": "As long as this Pokémon is in the Active Spot, it can evolve during your first turn or the turn you play it.",
+    "supported_application": "Active Eevee, first owner turn2 after going second. The added effect is conditional eligibility only at this board phase.",
+    "no_later_blanket_claim": true,
+    "ledger_only_diff_is_required_effect": true,
+    "evidence_and_readable_notes_match": true
+  },
+  "mode_clarification": {
+    "owner_rule": "Any visible Auto option/control, even OFF, establishes computer opponent and excludes recording from ladder; still process supplement.",
+    "observations": [
+      {
+        "evidence_ids": [
+          "f236.000",
+          "f309.000"
+        ],
+        "requested_source_seconds": [
+          236,
+          309
+        ],
+        "observation": "Native full views expose the left menu control and right End Turn control; no Auto option/control visible. Transient text is higher on screen and does not obscure those controls."
+      },
+      {
+        "evidence_ids": [
+          "f52.000",
+          "f215.000",
+          "f265.000",
+          "f313.000",
+          "f360.000",
+          "f390.000"
+        ],
+        "observation": "Previously inspected native owner gameplay boards/control regions also show no visible Auto control."
+      }
+    ],
+    "conclusion": "Retained unoccluded control views support the packet no-Auto-visible observation. No Auto-triggered ladder exclusion is identified in this bounded check.",
+    "limit": "Absence in inspected retained views does not certify every instant or unopened menu. Exact matchmaking remains unknown; no blanket opponent-AI inference."
+  },
+  "metrics": {
+    "new_image_submissions": 0,
+    "previous_native52_evidence_reused": true,
+    "original_source_reads": 0,
+    "new_extractions": 0,
+    "changed_files_checked": 4
+  },
+  "remaining_repairs": [],
+  "packet_edits_by_checker": false
+}

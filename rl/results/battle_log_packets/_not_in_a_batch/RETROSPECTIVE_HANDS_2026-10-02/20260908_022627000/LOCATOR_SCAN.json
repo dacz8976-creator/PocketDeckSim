@@ -1,0 +1,116 @@
+{
+  "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+  "kind": "reused_prior_manifest_bound_complete1fps_timeline",
+  "source_duration_seconds": 721.046825,
+  "nominal_source_interval_seconds": [
+    0,
+    720
+  ],
+  "sampling_rate_fps": 1,
+  "retained_samples": 721,
+  "grid_count": 37,
+  "inspection_status": "complete_37_grids_721_retained_samples_visually_inspected",
+  "original_video_reads": 0,
+  "card_identity_use": false,
+  "source_provenance": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\evidence\\PREPROCESS_LOG.md",
+  "timestamp_limit": "Retained source-relative nominal1fps labels; actual samplePTS absent. Old/native500 and522 match freshly verified source frames. Reduced locators are phase-qualified within approximately1s, not demonstrated drift.",
+  "limits": [
+    "One-second sampling can miss subsecond panels or inputs; no every-instant absence claim.",
+    "Reduced locator images not used for hand card identity."
+  ],
+  "inspected_intervals_seconds": [
+    [
+      0,
+      720
+    ]
+  ],
+  "checked_panels": [
+    {
+      "seconds": [
+        174,
+        191,
+        290
+      ],
+      "kind": "evolution ability and Tool target choices"
+    },
+    {
+      "seconds": [
+        275,
+        276
+      ],
+      "kind": "Poké Ball no-target notice"
+    },
+    {
+      "seconds": [
+        281
+      ],
+      "kind": "Sightseer opened deck panel, not discard"
+    },
+    {
+      "seconds": [
+        427
+      ],
+      "kind": "end-turn Supporter available warning"
+    },
+    {
+      "seconds": [
+        500,
+        502,
+        590,
+        591,
+        672,
+        673
+      ],
+      "kind": "empty-deck notices"
+    },
+    {
+      "seconds": [
+        678,
+        679,
+        681
+      ],
+      "kind": "Locator678 suggests menu; actual native679 menu open showing Concede/Settings/Battle Log, native681 closed. Difference is phase-qualified, not demonstrated source drift."
+    }
+  ],
+  "discard_observations": {
+    "opened_discard_panel_seen_in_samples": false,
+    "periodic_closed_pile_views_seconds": [
+      41,
+      97,
+      166,
+      271,
+      350,
+      411,
+      500,
+      590,
+      672,
+      720
+    ],
+    "limits": "Closed pile surfaces and newly displayed cards may be observed separately in native anchors. Full unopened discard contents and cards hidden behind the displayed top card remain unknown. One-second sampling does not exclude a subsecond opening."
+  },
+  "controls": {
+    "auto_option_seen_in_reduced_samples": false,
+    "qualification": "Panel/timing locator observation only. Native unoccluded controls will support mode qualification; no assertion every instant was screened."
+  },
+  "original_video_reads_for_this_locator_scan": 0,
+  "periodic_native_discard_observation_ids": [
+    "D1_owner",
+    "D1_opponent",
+    "D3_owner",
+    "D3_opponent",
+    "D5_owner",
+    "D5_opponent",
+    "D7_owner",
+    "D7_opponent",
+    "D9_owner",
+    "D9_opponent",
+    "D11_owner",
+    "D11_opponent",
+    "D13_owner",
+    "D13_opponent",
+    "D15_owner",
+    "D15_opponent",
+    "D17_owner",
+    "D17_opponent"
+  ]
+}

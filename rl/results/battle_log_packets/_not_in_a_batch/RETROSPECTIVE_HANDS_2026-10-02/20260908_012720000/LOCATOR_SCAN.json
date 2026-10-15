@@ -1,0 +1,56 @@
+{
+  "schema": "source-panel-locator-v1",
+  "source": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260908_012720000_iOS.MP4",
+  "source_sha256": "b9e76626643d8950cb7a4277487da2262b5fa96faf9e87454495ebe896d47085",
+  "sampling_rate_fps": 1,
+  "sampling_interval_seconds": 1,
+  "source_duration_seconds": 282.628,
+  "retained_reduced_samples": 283,
+  "dimensions": [
+    234,
+    506
+  ],
+  "grids": [
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\locator_scan\\grid_000_019.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\locator_scan\\grid_020_039.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\locator_scan\\grid_040_059.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\locator_scan\\grid_060_079.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\locator_scan\\grid_080_099.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\locator_scan\\grid_100_119.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\locator_scan\\grid_120_139.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\locator_scan\\grid_140_159.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\locator_scan\\grid_160_179.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\locator_scan\\grid_180_199.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\locator_scan\\grid_200_219.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\locator_scan\\grid_220_239.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\locator_scan\\grid_240_259.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\locator_scan\\grid_260_279.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\locator_scan\\grid_280_282.jpg"
+  ],
+  "purpose": "Locate panels/prompts only; no card identity transcription",
+  "timestamp_basis": "Nominal one-second sample ordinals from ffmpeg fps filter; actual decoded PTS not measured; target event native extraction requires separate requested time",
+  "inspection_status": "complete_interval_samples_visually_inspected",
+  "limits": [
+    "One-second locator sampling screened the complete recorded interval; subsecond panels/prompts between samples cannot be excluded. No opened discard panel or visible decline dialog appears in the283 inspected samples. Full hidden pile contents remain unknown; no every-instant absence claim.",
+    "Reduced locators were used for panel/prompt location only; card identities remain grounded in native evidence."
+  ],
+  "samples_inspected": 283,
+  "grids_inspected": 15,
+  "nominal_inspected_interval_seconds": [
+    0,
+    282
+  ],
+  "complete_recording_duration_seconds": 282.628,
+  "opened_discard_panel_located": false,
+  "visible_decline_dialog_located": false,
+  "yes_no_end_turn_warning_located": false,
+  "additional_native_targets": [
+    116,
+    175.5,
+    199,
+    246.5,
+    263.5,
+    276.5
+  ],
+  "additional_native_cap_approved": 86
+}

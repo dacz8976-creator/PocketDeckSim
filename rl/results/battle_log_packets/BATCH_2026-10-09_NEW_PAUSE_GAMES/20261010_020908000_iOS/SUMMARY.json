@@ -1,0 +1,44 @@
+{
+  "source_video": "20261010_020908000_iOS.MP4",
+  "sha256": "6771089aca9afe1e952e047017c07b74964a184011832179c27fe7b7f839bffc",
+  "reviewer": "/root/pause_020908",
+  "model": "gpt-6.1-sol",
+  "scope": "Entire supplied source: deck QR/continuity, setup, displayed turns1-7, timeout/Victory and recording end",
+  "worker_status": "full_review_complete_awaiting_independent_acceptance",
+  "classification": "human_battle",
+  "opponent": "Desk",
+  "owner_result": "win",
+  "terminal_reason_observed": "Your opponent did not return within the allowed time.",
+  "terminal_seconds": 378,
+  "victory_seconds": 382,
+  "points_before_terminal": "1-0",
+  "deck_name": "Kingdra ex / Team Rocket's Weezing ex",
+  "capture_status": "complete_with_recording_limits",
+  "owner_turns": [
+    2,
+    4,
+    6
+  ],
+  "turn_count": 7,
+  "limits": [
+    "No opened discard pile appears anywhere in this source; visible top discard cards and play history do not establish a full pile.",
+    "Opponent hand identities and hidden draw/search results remain unknown except publicly revealed Koffing.",
+    "Draw-end times are visual approximations; frame requested seek times are preserved, actual decoder frame PTS was not separately measured.",
+    "Opponent connection intent and actual disconnect cause are not established.",
+    "QR and live log use semantic card variants; artwork/rarity exact printings are not established."
+  ],
+  "external_writes": false,
+  "source_moved": false,
+  "game_mode": "Deluxe Pack: Mega Emblem Event",
+  "mode_basis": "Event selection visible at3s before matchmaking",
+  "final_result_statistics": {
+    "turn_order": "went second",
+    "turns_played": 7,
+    "owner_points": 1,
+    "opponent_points": 0,
+    "damage_done": 140,
+    "card_of_the_game": "Kingdra ex",
+    "source_seconds": 388.8,
+    "evidence_id": "F0388.80"
+  }
+}

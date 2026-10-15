@@ -1,0 +1,50 @@
+{
+  "game_id": "20260929_020916000",
+  "checkpoints": [
+    {
+      "count": 60,
+      "approved_cap_before": 60,
+      "requested_extra": 22,
+      "approved_cap_after": 82,
+      "times": [
+        22.5,
+        35.5,
+        56.5,
+        65.5,
+        79.5,
+        141.5,
+        151,
+        152,
+        160,
+        172,
+        196.5,
+        237,
+        246,
+        254,
+        314,
+        317,
+        366,
+        385,
+        392,
+        415,
+        418,
+        482
+      ],
+      "justification": "Exact opening/untouched hand/refill/Research pair/prompt/fan/Zone/coin hand return/settled board gaps; approved bylead before extraction"
+    },
+    {
+      "count": 82,
+      "approved_cap_before": 82,
+      "requested_extra": 3,
+      "approved_cap_after": 85,
+      "times": [
+        65,
+        236,
+        245
+      ],
+      "justification": "Named Small Balloon face and first/second actual coin labels;65.5 past face, return endpoints not directcoin labels; leadapproved before extraction"
+    }
+  ],
+  "current_count": 85,
+  "approved_cap": 85
+}

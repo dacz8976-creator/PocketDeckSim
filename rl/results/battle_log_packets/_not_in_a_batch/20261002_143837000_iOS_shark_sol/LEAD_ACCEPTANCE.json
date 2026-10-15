@@ -1,0 +1,27 @@
+{
+  "source_video": "20261002_143837000_iOS.MP4",
+  "source_sha256": "9e4fedc64b09b615713d8735584b2a33dc63a3a2090551a9836b475d5c72adac",
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "coverage_checked": true,
+  "completion_status": "full_battle_review_complete",
+  "requested_log": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "ranked_ladder_eligible": false,
+  "remaining_coverage_gaps": [],
+  "unverified_material_claims": [],
+  "scope": "Entire 433.090544-second recording: setup, every supplied turn, meaningful state changes and terminal outcome",
+  "lead_evidence": [
+    "overview/sheet_03.jpg",
+    "LEAD_SEQUENCE_CONTACT.jpg",
+    "native/t0150.00.jpg",
+    "native/t0418.00.jpg",
+    "native/t0432.00.jpg"
+  ],
+  "astra_reports": [
+    "ASTRA_FLOWER_TRICK_CHECK.md"
+  ],
+  "lead_notes": "Lead independently inspected ordinary opponent draw and early evolution/Cape/attachment choices, fifteen exact sequence states covering Misty, delayed Flower Trick, Turbo Shark Bench attachment, Ninetales pivot and point awards, Cyrus, explicit concession and Victory. The original-resolution Flower Trick card and terminal stats were directly checked. Thirteen-turn coverage, 300 damage, HP and Water ledgers and the earned 2-1 concession result reconcile. Astra confirms delayed70 affects the Pokemon in the chosen spot at the end of the owner intervening turn; it is not recoil or an Ability. Opponent motive and hidden lists remain unknown.",
+  "checked_at": "2026-10-02T17:09:24.283842+00:00",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high"
+}

@@ -1,0 +1,48 @@
+# Full battle review: 20260930_142105000_iOS.MP4
+
+**Current status: completed full-battle review accepted by the lead; original archived unchanged in Reviewed. Excluded from Ladder Log.**
+
+Reviewer: `sol_auto_142105000`, GPT-6.1 Sol, high reasoning. Review date: September 30, 2026. Scope: one complete battle, setup through Victory and the closing transition. Lead acceptance and global registration remain the coordinator's responsibility.
+
+**Result: Dacz8976 wins 3-0 against the AI.** The versus screen labels the opponent AI, the setup says the owner goes first, and Auto is enabled throughout the visible battle. Owner testimony also identifies this September 30 recording as autopilot against the computer. It is excluded from the Ladder Log.
+
+Source identity is bound in `SOURCE.json`: 159.021667 seconds, 293,071,088 bytes, SHA-256 `33aa21f00544ea03546d97ebc5f0007832cf8c151a5dbc5a5de7106ea4331ee6`. The source was preserved. All six overview sheets were inspected, followed by targeted full-resolution frames and seven detail sheets. Timestamps below refer to elapsed video time; phase boundaries are approximate, usually within 1.5 seconds.
+
+## Visible core
+
+- Owner: Alolan Vulpix (60 HP, Gnaw 20), Alolan Ninetales ex (150 HP, Binding Snow 80 for two Water Energy), Team Rocket's Rattata (40 HP), Team Rocket's Raticate ex (120 HP, Thieving Incisors, Boost Dash 70). Two Raticate ex artworks are visible in hand; only the full-art copy evolves in play. Elegant Cape is attached to Ninetales. Visible Trainers also include Professor's Research, Sightseer, Poke Ball, Copycat, Cyrus, and a deck-revealed Ilima. This is not an asserted full deck list.
+- AI: Active Victini (70 HP, Victory Star, V-Flame 40), then Crocalor (100 HP, Bite 50), then Numel (70 HP, Knock Away 20+). Bench development also reveals Fuecoco (70), Charmander (70), Charcadet (60), and Cyndaquil (60). No complete opponent deck or hidden hand is inferred.
+
+## Turn-by-turn account
+
+| Phase / time | Meaningful visible actions and state |
+|---|---|
+| Setup, 0-17s | Loading, versus screen with AI label, coin animation, and “You are going first.” Auto places Alolan Vulpix Active against Victini. Both benches empty; score 0-0. The initial hand visibly includes Ninetales ex, Research, Copycat, Cyrus. The coin face is not needed to infer a particular flip result. Evidence: `overview/sheet_01.jpg`, especially 4.5s, 10.5s, 13.5s, 16.5s. |
+| Owner T1, about 17-26s | Draws Elegant Cape. Plays Professor's Research at 21s and draws two Raticate ex cards, visible by 23-26s. No Energy attachment, evolution, bench play or attack. Vulpix 60, Victini 70. Evidence: `evidence/t0020.00.jpg`, `t0021.00.jpg`, `t0023.00.jpg`, `t0026.00.jpg` (current turn 2 transition). |
+| AI T2, about 26-42s | Plays Research around 30s, then Poke Ball at 33s. Benches Fuecoco, Charcadet, then Charmander, filling all three slots by 39s. Attaches one Fire Energy to Victini by 42s. Ends without attacking; V-Flame's visible cost requires two Energy. Score stays 0-0. Evidence: `t0030.00.jpg`, `t0033.00.jpg`, `t0038.00.jpg`, `t0039.00.jpg`, `t0042.00.jpg`. The searched Basic is not individually established. |
+| Owner T3, about 42-63s | Draws Sightseer. Evolves Vulpix into Alolan Ninetales ex at 47s, increasing HP to 150. Attaches one Water Energy, then Elegant Cape; the Stage 1 +30 HP message and 180 HP are visible. Plays Sightseer around 59s. Its four revealed cards at 60s are Ilima, Team Rocket's Rattata, Alolan Vulpix, Poke Ball, with no Stage 1 among them. The hand remains Copycat, Cyrus and two Raticate ex; no Stage 1 is added. Ends without an attack because Ninetales has one Water. Evidence: `t0044.00.jpg`, `t0047.00.jpg`, `t0051.00.jpg`, `t0060.00.jpg`, `t0062.00.jpg`, `t0063.00.jpg`. |
+| AI T4, about 63-72s | Evolves benched Fuecoco into Crocalor, HP 70 to 100 (66s). Attaches a second Fire Energy to Victini (68s). Victini uses V-Flame (69s), showing 40 damage around 70.5s. Ninetales falls from 180 to 140 HP and retains Cape and one Water. No knockout; 0-0. No Victory Star activation or coin flip is visible for this attack. Evidence: `t0066.00.jpg`, `t0068.00.jpg`, `t0069.00.jpg`, `t0072.00.jpg`, `overview/sheet_03.jpg`. |
+| Owner T5, about 72-94s | Draws and plays Poke Ball, revealing Team Rocket's Rattata around 79-81s. Benches it at 40 HP. Attaches a second Water to Ninetales around 83s. Uses Binding Snow around 85s; “Weakness 100” is visible at 87s and Victini reaches 0 HP. The Active Energy attachment prohibition appears, then Victini is discarded and the owner gains the first point. Ninetales remains 140 HP with two Water and Cape; Rattata has no Energy. Evidence: `t0077.00.jpg`, `t0081.00.jpg`, `t0083.00.jpg`, `t0087.00.jpg`, `t0089.00.jpg`, `overview/sheet_04.jpg` (1-0 at 94.5s). |
+| AI T6, about 94-104s | Promotes Crocalor at 100 HP with no Energy. The prohibition symbol persists into the opponent turn. Draws, benches Numel at 70 HP around 101s, and attaches one Fire Energy to that benched Numel around 102s. Crocalor stays without Energy and does not attack. Ninetales remains 140, score 1-0. Evidence: `t0096.00.jpg`, `t0100.00.jpg`, `t0101.00.jpg`, `t0102.00.jpg`, `t0103.00.jpg`. |
+| Owner T7, about 104-124s | Draws a second Alolan Ninetales ex (107s). Evolves benched Rattata into Team Rocket's Raticate ex at 110-111s, HP 40 to 120. Crocalor has no Energy at this time, so no Energy theft is established. Attaches the turn's Water Energy to Raticate by 113-128s; Ninetales stays at two Water. Uses Binding Snow again, reducing Crocalor from 100 to 0 HP by 117s; the visible 80 attack and Water +20 weakness reconcile that knockout. Prohibition reapplies and owner gains the second point. Evidence: `t0107.00.jpg`, `t0110.00.jpg`, `t0111.00.jpg`, `t0113.00.jpg`, `t0117.00.jpg`, `t0123.00.jpg`, `t0128.00.jpg`. |
+| AI T8, about 124-134s | Promotes Numel with 70 HP and its existing one Fire Energy. Draws, benches Cyndaquil in the vacant right slot at 130s, and attaches Fire Energy to Cyndaquil by 131s. Numel remains at one Fire and does not attack; its visible Knock Away cost is two Energy. The Active prohibition remains visible. No switch, retreat or further evolution occurs. Evidence: `t0125.00.jpg`, `t0128.00.jpg`, `t0130.00.jpg`, `t0131.00.jpg`, `t0134.00.jpg`. |
+| Owner T9 and terminal, about 134-159s | Draws Professor's Research around 135s and retains it in hand. No additional Energy attachment or Trainer play is established before the attack. Ninetales uses Binding Snow around 138s. “Weakness 100” is visible at 140s; Numel reaches 0 HP by 141s. Third point is confirmed at 147s. Victory appears around 151.5-155s, followed by a closing loading transition. Final board before completion: Ninetales 140 HP, Cape, two Water; Raticate ex 120 HP, one Water; opponent bench Charmander 70, Charcadet 60, Cyndaquil 60 with one Fire. Score 3-0. Evidence: `t0135.00.jpg`, `t0138.00.jpg`, `t0140.00.jpg`, `t0141.00.jpg`, `t0147.00.jpg`, `t0152.00.jpg`, `overview/sheet_06.jpg`. |
+
+## Decisions and mechanics
+
+**Observed:** Auto commits two Water attachments to Ninetales, evolves it before Victini's first attack, adds Cape, and takes three successive knockouts with Binding Snow. Cape visibly changes maximum/current HP from 150 to 180; V-Flame then leaves 140. All three defeated Pokemon are single-point targets. No healing, voluntary switch, retreat, Stadium or special condition is visible.
+
+**Observed:** Binding Snow's displayed effect prevents taking Energy from the opponent's Energy Zone to attach to their Active Pokemon on the next turn. The effect persists through the knockout and promotion: Crocalor and then Numel face the prohibition. The AI successfully attaches to benched Numel and Cyndaquil, so this footage supports an Active attachment restriction, not a ban on all attachments.
+
+**Inference from the visible state:** The repeated 100-damage Water attacks are enough for Victini 70, Crocalor 100 and Numel 70. Promotion into Water weakness and insufficient Energy let the owner finish while taking only 40 damage. The AI's bench attachments preserve some future development, but neither promoted Active can attack before it is knocked out. Hidden options and the bot's reasons remain unknown.
+
+**Observed and bounded interpretation:** Sightseer misses because its four visible cards contain no Stage 1. This records the search result, not proof that choosing to search was a policy error. Evolving Raticate while Crocalor has zero Energy develops a backup but supplies no observed immediate theft. Auto then gives it one Water. Holding the evolution for a later Energy-bearing target is a conceivable alternative, but this recording cannot prove that it would improve the outcome. The owner's obvious available finish is taken without an unnecessary Research play on T9.
+
+## Limits
+
+The full visible battle is accounted for. Hidden cards, full deck lists, exact searched opponent Basic, detailed engine intent and precise subsecond turn boundaries remain uncertain. Notification banners around 127-148s partly cover the opponent hand and score header; Active/Bench cards, key Energy counts, attack damage, third point and Victory remain legible. Review completion does not assert an exact replay of hidden information. See `COVERAGE.md` and `UNCERTAINTIES.json`.
+
+
+## Lead completion
+
+Accepted as a completed full-battle review after the source checks documented in `LEAD_ACCEPTANCE.json`. The unchanged original is archived in `Reviewed`; matching before/after SHA-256 is recorded in `MOVE_RECEIPT.20260930_142105000_iOS.MP4.json`. No Ladder Log entry was created.

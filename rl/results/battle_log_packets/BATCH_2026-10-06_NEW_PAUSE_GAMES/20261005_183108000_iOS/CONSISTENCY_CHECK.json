@@ -1,0 +1,74 @@
+{
+  "checks": {
+    "actual_turns": true,
+    "sequential_turns": true,
+    "exact_deck20": true,
+    "owner_start_end_counts": {
+      "1": [
+        5,
+        5
+      ],
+      "3": [
+        6,
+        4
+      ],
+      "5": [
+        5,
+        2
+      ],
+      "7": [
+        3,
+        2
+      ],
+      "9": [
+        3,
+        1
+      ]
+    },
+    "points_boundaries": [
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        2,
+        2
+      ],
+      [
+        0,
+        0,
+        0,
+        0,
+        0,
+        1,
+        1,
+        1,
+        1,
+        3
+      ]
+    ],
+    "no_live_claim": true,
+    "T6_internal_order_unknown": true,
+    "T10_terminal_owner_active_empty": true,
+    "T9_energy_target_bench": true,
+    "selected_hands_before_first_consumption": true,
+    "opening5_actual": true,
+    "native_evidence_registered": 391,
+    "damage_result_crosscheck": {
+      "direct_owner_attacks": 330,
+      "cursed_jewel_retaliations": 120,
+      "deceptive_needle": 20,
+      "sum": 470,
+      "result": 470,
+      "poison_checkup_separate": 10
+    },
+    "turn8_normal_draw_before_ability": true
+  },
+  "consistency_pass": true,
+  "semantic_acceptance": false,
+  "basis": "Cross-checked source native frames, hand counts, HP trajectory, KO/removal/promotion order and terminal points; independent reviewer still required."
+}

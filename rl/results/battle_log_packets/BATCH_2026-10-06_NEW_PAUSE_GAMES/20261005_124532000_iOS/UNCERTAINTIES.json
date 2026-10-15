@@ -1,0 +1,38 @@
+{
+  "source_video": "20261005_124532000_iOS.MP4",
+  "source_sha256": "d224f481fc02e3d5c6b3589ebbe89bfe839318a862d1883ce85554b9073cae75",
+  "status": "complete_with_recording_limits",
+  "unreviewed_intervals": [],
+  "consequential_unresolved_ambiguities": [],
+  "recording_limits": [
+    {
+      "id": "limit1",
+      "description": "No full discard pile is opened in the source. Visible top previews and observed transactions are retained separately."
+    },
+    {
+      "id": "limit2",
+      "description": "Hidden opponent card identities and private prompt choices remain unknown; public actions are recorded in visible resolution order."
+    },
+    {
+      "id": "limit3",
+      "description": "Candidates are individually qualified:53.8 is intact but zoomed before consumption;90.2 is a consumed three-card hand. Later offset candidates are post-play. Selected53.2/89.2/187.95/269.7 remain intact native preplay hands; exact decoded PTS unmeasured."
+    },
+    {
+      "id": "limit4",
+      "description": "Turn5 selected five-slot fan has a partly off-screen leftmost Lucky Ice Pop. Its identity is supported by filmed continuity from the preceding hand; no deck-membership inference is used."
+    },
+    {
+      "id": "limit5",
+      "description": "QR establishes twenty semantic card slots and Darkness, with artwork/rarity unspecified. The initial dated live log snapshot lacks this Nidoking revision; a prepared deck entry is not a saved live snapshot."
+    },
+    {
+      "id": "limit6",
+      "description": "Input/reveal times are visually localized source-local requests, not measured PTS or exact touch telemetry."
+    },
+    {
+      "id": "limit7",
+      "description": "Terminal board324 is post-removal with opponent2 visible points. The separate327 and339.7 frames establish awarded terminal3 points; Darkrai0HP is a separate321/322 pre-removal state."
+    }
+  ],
+  "strategic_judgments": "No strategic quality claim made; source review and public state only"
+}

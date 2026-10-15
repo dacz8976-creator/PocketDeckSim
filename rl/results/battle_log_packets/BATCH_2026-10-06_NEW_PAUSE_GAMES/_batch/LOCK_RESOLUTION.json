@@ -1,0 +1,18 @@
+{
+  "recorded_utc": "2026-10-06T17:57:53.389363+00:00",
+  "initial_lock_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Review_Log\\.write.lock",
+  "observed_creation_local": "2026-10-06T12:14:26-05:00",
+  "creation_actor": "inferred root intake review_log.py process from matching intake time; original owner record removed before inspection",
+  "confirmed_named_creator": false,
+  "initial_contents": 0,
+  "initial_active_writers": 0,
+  "initial_attributes": 1073,
+  "owner_authorization": "You can remove it if it is empty",
+  "successful_method": "Recheck empty and inactive; clear only ReadOnly attribute, ordinary literal-path Remove-Item",
+  "result": "empty leftover lock removed; later legitimate locks use normal own-process cleanup",
+  "cleanup_repairs": [
+    "Review_Log/review_log.py",
+    "Recording_QA/finalize_accepted_review.ps1"
+  ],
+  "recursive_delete": false
+}

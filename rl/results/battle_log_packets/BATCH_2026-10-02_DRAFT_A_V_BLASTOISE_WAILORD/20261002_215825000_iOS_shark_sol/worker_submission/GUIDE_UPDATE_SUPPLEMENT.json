@@ -1,0 +1,3903 @@
+{
+  "source_video": "20261002_215825000_iOS.MP4",
+  "source_sha256": "61fb9e041b4efa4ad31181c0cb89d94b38ad13f2bf194a48b8f606b24afb107c",
+  "active_first_pass": true,
+  "original_submission": null,
+  "canonical_submission": "SUBMISSION.json",
+  "requirements": {
+    "fresh_owner_starts": true,
+    "evolution_history_in_ledger": true,
+    "complete_seen_inventory": "SEEN_CARD_INVENTORY.json",
+    "decision_actor_per_turn": true,
+    "opponent_turn_owner_choices": []
+  },
+  "owner_turn_start_observations": [
+    {
+      "turn_number": 2,
+      "evidence_ids": [
+        "F0040.50"
+      ],
+      "fresh_both_boards": {
+        "turn_number_displayed": 2,
+        "phase": "post-draw before first voluntary action",
+        "stadium": "none",
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0040.50"
+        ],
+        "boundary_provenance": "Fresh native boundary inspection supplemented by individually witnessed same-source transitions; timing is selected-frame PTS in manifest.",
+        "owner": {
+          "active": {
+            "instance_id": "oV1",
+            "name": "Alolan Vulpix",
+            "variant": {
+              "mechanics_identification": "Alolan Vulpix; shown attacks/HP establish identity",
+              "set_number": null,
+              "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+            },
+            "bench_position": "active",
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "Printed HP/undamaged prior state in same source",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {
+                "Water": 0
+              },
+              "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_bottom_to_top": [
+              {
+                "name": "Alolan Vulpix",
+                "basis": "Basic directly visible",
+                "face_visible_at_boundary": true
+              }
+            ],
+            "evolution_history": [],
+            "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+            "evidence_ids": [
+              "F0040.50"
+            ],
+            "status": "observed_with_history",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": null,
+              "empty": true,
+              "bench_position": "left",
+              "basis": "Visibly empty board slot",
+              "evidence_ids": [
+                "F0040.50"
+              ]
+            },
+            {
+              "name": null,
+              "empty": true,
+              "bench_position": "middle",
+              "basis": "Visibly empty board slot",
+              "evidence_ids": [
+                "F0040.50"
+              ]
+            },
+            {
+              "name": null,
+              "empty": true,
+              "bench_position": "right",
+              "basis": "Visibly empty board slot",
+              "evidence_ids": [
+                "F0040.50"
+              ]
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true,
+              "phase": "generated_available"
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false,
+              "phase": "preview",
+              "limit": null
+            },
+            "basis": "Native displayed current circle and smaller preview; Water icons inspected. Current empty slots are not an available Energy.",
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0040.50"
+          ],
+          "status": "observed_with_transition_history",
+          "limit_reason": "Endpoint of opponent first turn uses 34.5 s Meowth development before end animation; unchanged endpoint is verified by owner-start 40.5 s."
+        },
+        "opponent": {
+          "active": {
+            "instance_id": "pF1",
+            "name": "Frigibax",
+            "variant": {
+              "mechanics_identification": "Frigibax; shown attacks/HP establish identity",
+              "set_number": null,
+              "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+            },
+            "bench_position": "active",
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "Printed HP/undamaged prior state in same source",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {
+                "Water": 0
+              },
+              "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_bottom_to_top": [
+              {
+                "name": "Frigibax",
+                "basis": "Basic directly visible",
+                "face_visible_at_boundary": true
+              }
+            ],
+            "evolution_history": [],
+            "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+            "evidence_ids": [
+              "F0040.50"
+            ],
+            "status": "observed_with_history",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": null,
+              "empty": true,
+              "bench_position": "left",
+              "basis": "Visibly empty board slot",
+              "evidence_ids": [
+                "F0040.50"
+              ]
+            },
+            {
+              "instance_id": "pM",
+              "name": "Meowth",
+              "variant": {
+                "mechanics_identification": "Meowth; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "middle",
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Meowth",
+                  "basis": "Basic directly visible",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0040.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            },
+            {
+              "instance_id": "pS1",
+              "name": "Squirtle",
+              "variant": {
+                "mechanics_identification": "Squirtle; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "right",
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Squirtle",
+                  "basis": "Basic directly visible",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0040.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false,
+              "phase": "empty_or_consumed"
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false,
+              "phase": "preview",
+              "limit": null
+            },
+            "basis": "Native displayed current circle and smaller preview; Water icons inspected. Current empty slots are not an available Energy.",
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0040.50"
+          ],
+          "status": "observed_with_transition_history",
+          "limit_reason": "Endpoint of opponent first turn uses 34.5 s Meowth development before end animation; unchanged endpoint is verified by owner-start 40.5 s."
+        }
+      },
+      "decision_maker": {
+        "actor": "Dustin",
+        "basis": "Owner testimony manual; native Auto control OFF throughout this turn",
+        "auto_control_present": true,
+        "auto_enabled": false,
+        "evidence_ids": [
+          "F0040.50",
+          "F0054.50"
+        ],
+        "observed_span_seconds": [
+          40.5,
+          54.5
+        ],
+        "limit": "Actions attributed from persistent witnessed mode and owner testimony; invisible physical taps are not separately witnessed."
+      }
+    },
+    {
+      "turn_number": 4,
+      "evidence_ids": [
+        "F0080.50"
+      ],
+      "fresh_both_boards": {
+        "turn_number_displayed": 4,
+        "phase": "post-draw before first voluntary action",
+        "stadium": "Soothing Shore",
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0080.50"
+        ],
+        "boundary_provenance": "Fresh native boundary inspection supplemented by individually witnessed same-source transitions; timing is selected-frame PTS in manifest.",
+        "owner": {
+          "active": {
+            "instance_id": "oV1",
+            "name": "Alolan Vulpix",
+            "variant": {
+              "mechanics_identification": "Alolan Vulpix; shown attacks/HP establish identity",
+              "set_number": null,
+              "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+            },
+            "bench_position": "active",
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "Printed HP/undamaged prior state in same source",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              },
+              "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_bottom_to_top": [
+              {
+                "name": "Alolan Vulpix",
+                "basis": "Basic directly visible",
+                "face_visible_at_boundary": true
+              }
+            ],
+            "evolution_history": [],
+            "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+            "evidence_ids": [
+              "F0080.50"
+            ],
+            "status": "observed_with_history",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": null,
+              "empty": true,
+              "bench_position": "left",
+              "basis": "Visibly empty board slot",
+              "evidence_ids": [
+                "F0080.50"
+              ]
+            },
+            {
+              "name": null,
+              "empty": true,
+              "bench_position": "middle",
+              "basis": "Visibly empty board slot",
+              "evidence_ids": [
+                "F0080.50"
+              ]
+            },
+            {
+              "instance_id": "oC1",
+              "name": "Carvanha",
+              "variant": {
+                "mechanics_identification": "Carvanha; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "right",
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Carvanha",
+                  "basis": "Basic directly visible",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0080.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true,
+              "phase": "generated_available"
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false,
+              "phase": "preview",
+              "limit": null
+            },
+            "basis": "Native displayed current circle and smaller preview; Water icons inspected. Current empty slots are not an available Energy.",
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0080.50"
+          ],
+          "status": "observed_with_transition_history",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "instance_id": "pM",
+            "name": "Meowth",
+            "variant": {
+              "mechanics_identification": "Meowth; shown attacks/HP establish identity",
+              "set_number": null,
+              "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+            },
+            "bench_position": "active",
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "Printed HP/undamaged prior state in same source",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              },
+              "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_bottom_to_top": [
+              {
+                "name": "Meowth",
+                "basis": "Basic directly visible",
+                "face_visible_at_boundary": true
+              }
+            ],
+            "evolution_history": [],
+            "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+            "evidence_ids": [
+              "F0080.50"
+            ],
+            "status": "observed_with_history",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": null,
+              "empty": true,
+              "bench_position": "left",
+              "basis": "Visibly empty board slot",
+              "evidence_ids": [
+                "F0080.50"
+              ]
+            },
+            {
+              "instance_id": "pF1",
+              "name": "Frigibax",
+              "variant": {
+                "mechanics_identification": "Frigibax; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "middle",
+              "hp_now": 40,
+              "hp_max": 60,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 20,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Frigibax",
+                  "basis": "Basic directly visible",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0080.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            },
+            {
+              "instance_id": "pS1",
+              "name": "Squirtle",
+              "variant": {
+                "mechanics_identification": "Squirtle; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "right",
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Squirtle",
+                  "basis": "Basic directly visible",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0080.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false,
+              "phase": "empty_or_consumed"
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false,
+              "phase": "preview",
+              "limit": null
+            },
+            "basis": "Native displayed current circle and smaller preview; Water icons inspected. Current empty slots are not an available Energy.",
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0080.50"
+          ],
+          "status": "observed_with_transition_history",
+          "limit_reason": null
+        }
+      },
+      "decision_maker": {
+        "actor": "Dustin",
+        "basis": "Owner testimony manual; native Auto control OFF throughout this turn",
+        "auto_control_present": true,
+        "auto_enabled": false,
+        "evidence_ids": [
+          "F0080.50",
+          "F0124.00"
+        ],
+        "observed_span_seconds": [
+          80.5,
+          124.0
+        ],
+        "limit": "Actions attributed from persistent witnessed mode and owner testimony; invisible physical taps are not separately witnessed."
+      }
+    },
+    {
+      "turn_number": 6,
+      "evidence_ids": [
+        "F0143.50"
+      ],
+      "fresh_both_boards": {
+        "turn_number_displayed": 6,
+        "phase": "post-draw before first voluntary action",
+        "stadium": "Soothing Shore",
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0143.50"
+        ],
+        "boundary_provenance": "Fresh native boundary inspection supplemented by individually witnessed same-source transitions; timing is selected-frame PTS in manifest.",
+        "owner": {
+          "active": {
+            "instance_id": "oV1",
+            "name": "Alolan Ninetales ex",
+            "variant": {
+              "mechanics_identification": "Alolan Ninetales ex; shown attacks/HP establish identity",
+              "set_number": null,
+              "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+            },
+            "bench_position": "active",
+            "hp_now": 180,
+            "hp_max": 180,
+            "hp_max_basis": "Printed HP visible in this game; +30 Elegant Cape witnessed at 103-108 s",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              },
+              "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+            },
+            "tool": "Elegant Cape",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_bottom_to_top": [
+              {
+                "name": "Alolan Vulpix",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": false
+              },
+              {
+                "name": "Alolan Ninetales ex",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": true
+              }
+            ],
+            "evolution_history": [
+              {
+                "name": "Alolan Ninetales ex",
+                "source_seconds_approx": 83,
+                "evidence_ids": [
+                  "F0082.50"
+                ]
+              }
+            ],
+            "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+            "evidence_ids": [
+              "F0143.50"
+            ],
+            "status": "observed_with_history",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "instance_id": "oV2",
+              "name": "Alolan Vulpix",
+              "variant": {
+                "mechanics_identification": "Alolan Vulpix; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "left",
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Alolan Vulpix",
+                  "basis": "Basic directly visible",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0143.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            },
+            {
+              "name": null,
+              "empty": true,
+              "bench_position": "middle",
+              "basis": "Visibly empty board slot",
+              "evidence_ids": [
+                "F0143.50"
+              ]
+            },
+            {
+              "instance_id": "oC1",
+              "name": "Mega Sharpedo ex",
+              "variant": {
+                "mechanics_identification": "Mega Sharpedo ex; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "right",
+              "hp_now": 190,
+              "hp_max": 190,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Carvanha",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": false
+                },
+                {
+                  "name": "Mega Sharpedo ex",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [
+                {
+                  "name": "Mega Sharpedo ex",
+                  "source_seconds_approx": 110,
+                  "evidence_ids": [
+                    "F0111.50"
+                  ]
+                }
+              ],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0143.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true,
+              "phase": "generated_available"
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false,
+              "phase": "preview",
+              "limit": null
+            },
+            "basis": "Native displayed current circle and smaller preview; Water icons inspected. Current empty slots are not an available Energy.",
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0143.50"
+          ],
+          "status": "observed_with_transition_history",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "instance_id": "pM",
+            "name": "Meowth",
+            "variant": {
+              "mechanics_identification": "Meowth; shown attacks/HP establish identity",
+              "set_number": null,
+              "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+            },
+            "bench_position": "active",
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "Printed HP/undamaged prior state in same source",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              },
+              "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_bottom_to_top": [
+              {
+                "name": "Meowth",
+                "basis": "Basic directly visible",
+                "face_visible_at_boundary": true
+              }
+            ],
+            "evolution_history": [],
+            "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+            "evidence_ids": [
+              "F0143.50"
+            ],
+            "status": "observed_with_history",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "instance_id": "pF2",
+              "name": "Frigibax",
+              "variant": {
+                "mechanics_identification": "Frigibax; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "left",
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Frigibax",
+                  "basis": "Basic directly visible",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0143.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            },
+            {
+              "instance_id": "pF1",
+              "name": "Arctibax",
+              "variant": {
+                "mechanics_identification": "Arctibax; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "middle",
+              "hp_now": 90,
+              "hp_max": 90,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Frigibax",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": false
+                },
+                {
+                  "name": "Arctibax",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [
+                {
+                  "name": "Arctibax",
+                  "source_seconds_approx": 129,
+                  "evidence_ids": [
+                    "F0129.50"
+                  ]
+                }
+              ],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0143.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            },
+            {
+              "instance_id": "pS1",
+              "name": "Squirtle",
+              "variant": {
+                "mechanics_identification": "Squirtle; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "right",
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Squirtle",
+                  "basis": "Basic directly visible",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0143.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false,
+              "phase": "empty_or_consumed"
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false,
+              "phase": "preview",
+              "limit": null
+            },
+            "basis": "Native displayed current circle and smaller preview; Water icons inspected. Current empty slots are not an available Energy.",
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0143.50"
+          ],
+          "status": "observed_with_transition_history",
+          "limit_reason": null
+        }
+      },
+      "decision_maker": {
+        "actor": "Dustin",
+        "basis": "Owner testimony manual; native Auto control OFF throughout this turn",
+        "auto_control_present": true,
+        "auto_enabled": false,
+        "evidence_ids": [
+          "F0143.50",
+          "F0172.50"
+        ],
+        "observed_span_seconds": [
+          143.5,
+          172.5
+        ],
+        "limit": "Actions attributed from persistent witnessed mode and owner testimony; invisible physical taps are not separately witnessed."
+      }
+    },
+    {
+      "turn_number": 8,
+      "evidence_ids": [
+        "F0187.50"
+      ],
+      "fresh_both_boards": {
+        "turn_number_displayed": 8,
+        "phase": "post-draw before first voluntary action",
+        "stadium": "Soothing Shore",
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0187.50"
+        ],
+        "boundary_provenance": "Fresh native boundary inspection supplemented by individually witnessed same-source transitions; timing is selected-frame PTS in manifest.",
+        "owner": {
+          "active": {
+            "instance_id": "oV1",
+            "name": "Alolan Ninetales ex",
+            "variant": {
+              "mechanics_identification": "Alolan Ninetales ex; shown attacks/HP establish identity",
+              "set_number": null,
+              "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+            },
+            "bench_position": "active",
+            "hp_now": 180,
+            "hp_max": 180,
+            "hp_max_basis": "Printed HP visible in this game; +30 Elegant Cape witnessed at 103-108 s",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              },
+              "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+            },
+            "tool": "Elegant Cape",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_bottom_to_top": [
+              {
+                "name": "Alolan Vulpix",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": false
+              },
+              {
+                "name": "Alolan Ninetales ex",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": true
+              }
+            ],
+            "evolution_history": [
+              {
+                "name": "Alolan Ninetales ex",
+                "source_seconds_approx": 83,
+                "evidence_ids": [
+                  "F0082.50"
+                ]
+              }
+            ],
+            "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+            "evidence_ids": [
+              "F0187.50"
+            ],
+            "status": "observed_with_history",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "instance_id": "oV2",
+              "name": "Alolan Vulpix",
+              "variant": {
+                "mechanics_identification": "Alolan Vulpix; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "left",
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Alolan Vulpix",
+                  "basis": "Basic directly visible",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0187.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            },
+            {
+              "name": null,
+              "empty": true,
+              "bench_position": "middle",
+              "basis": "Visibly empty board slot",
+              "evidence_ids": [
+                "F0187.50"
+              ]
+            },
+            {
+              "instance_id": "oC1",
+              "name": "Mega Sharpedo ex",
+              "variant": {
+                "mechanics_identification": "Mega Sharpedo ex; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "right",
+              "hp_now": 190,
+              "hp_max": 190,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Carvanha",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": false
+                },
+                {
+                  "name": "Mega Sharpedo ex",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [
+                {
+                  "name": "Mega Sharpedo ex",
+                  "source_seconds_approx": 110,
+                  "evidence_ids": [
+                    "F0111.50"
+                  ]
+                }
+              ],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0187.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false,
+              "phase": "generation_pending_during_draw_resolution",
+              "limit": "Selected earliest named-hand frame precedes the current Water generation animation."
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false,
+              "phase": "preview",
+              "limit": null
+            },
+            "basis": "Native displayed current circle and smaller preview; Water icons inspected. Current empty slots are not an available Energy.",
+            "limit_reason": null,
+            "generation_followup": {
+              "requested_source_seconds": 188.5,
+              "evidence_ids": [
+                "F0188.50"
+              ],
+              "this_turn": {
+                "type": "Water",
+                "count": 1,
+                "available": true,
+                "phase": "generated_after_selected_hand_boundary"
+              }
+            }
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0187.50"
+          ],
+          "status": "observed_with_transition_history",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "instance_id": "pF1",
+            "name": "Baxcalibur",
+            "variant": {
+              "mechanics_identification": "Baxcalibur; shown attacks/HP establish identity",
+              "set_number": null,
+              "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+            },
+            "bench_position": "active",
+            "hp_now": 140,
+            "hp_max": 140,
+            "hp_max_basis": "Printed HP/undamaged prior state in same source",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              },
+              "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_bottom_to_top": [
+              {
+                "name": "Frigibax",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": false
+              },
+              {
+                "name": "Arctibax",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": false
+              },
+              {
+                "name": "Baxcalibur",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": true
+              }
+            ],
+            "evolution_history": [
+              {
+                "name": "Arctibax",
+                "source_seconds_approx": 129,
+                "evidence_ids": [
+                  "F0129.50"
+                ]
+              },
+              {
+                "name": "Baxcalibur",
+                "source_seconds_approx": 177,
+                "evidence_ids": [
+                  "F0178.00"
+                ]
+              }
+            ],
+            "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+            "evidence_ids": [
+              "F0187.50"
+            ],
+            "status": "observed_with_history",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "instance_id": "pF2",
+              "name": "Arctibax",
+              "variant": {
+                "mechanics_identification": "Arctibax; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "left",
+              "hp_now": 90,
+              "hp_max": 90,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Frigibax",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": false
+                },
+                {
+                  "name": "Arctibax",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [
+                {
+                  "name": "Arctibax",
+                  "source_seconds_approx": 181,
+                  "evidence_ids": [
+                    "F0182.50"
+                  ]
+                }
+              ],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0187.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            },
+            {
+              "instance_id": "pS2",
+              "name": "Squirtle",
+              "variant": {
+                "mechanics_identification": "Squirtle; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "middle",
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Squirtle",
+                  "basis": "Basic directly visible",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0187.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            },
+            {
+              "instance_id": "pS1",
+              "name": "Wartortle",
+              "variant": {
+                "mechanics_identification": "Wartortle; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "right",
+              "hp_now": 90,
+              "hp_max": 90,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Squirtle",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": false
+                },
+                {
+                  "name": "Wartortle",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [
+                {
+                  "name": "Wartortle",
+                  "source_seconds_approx": 178,
+                  "evidence_ids": [
+                    "F0178.00"
+                  ]
+                }
+              ],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0187.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false,
+              "phase": "empty_or_consumed"
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false,
+              "phase": "preview",
+              "limit": null
+            },
+            "basis": "Native displayed current circle and smaller preview; Water icons inspected. Current empty slots are not an available Energy.",
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0187.50"
+          ],
+          "status": "observed_with_transition_history",
+          "limit_reason": null
+        }
+      },
+      "decision_maker": {
+        "actor": "Dustin",
+        "basis": "Owner testimony manual; native Auto control OFF throughout this turn",
+        "auto_control_present": true,
+        "auto_enabled": false,
+        "evidence_ids": [
+          "F0187.50",
+          "F0197.50"
+        ],
+        "observed_span_seconds": [
+          187.5,
+          197.5
+        ],
+        "limit": "Actions attributed from persistent witnessed mode and owner testimony; invisible physical taps are not separately witnessed."
+      }
+    },
+    {
+      "turn_number": 10,
+      "evidence_ids": [
+        "F0217.50"
+      ],
+      "fresh_both_boards": {
+        "turn_number_displayed": 10,
+        "phase": "post-draw before first voluntary action",
+        "stadium": "Soothing Shore",
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0217.50"
+        ],
+        "boundary_provenance": "Fresh native boundary inspection supplemented by individually witnessed same-source transitions; timing is selected-frame PTS in manifest.",
+        "owner": {
+          "active": {
+            "instance_id": "oV1",
+            "name": "Alolan Ninetales ex",
+            "variant": {
+              "mechanics_identification": "Alolan Ninetales ex; shown attacks/HP establish identity",
+              "set_number": null,
+              "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+            },
+            "bench_position": "active",
+            "hp_now": 180,
+            "hp_max": 180,
+            "hp_max_basis": "Printed HP visible in this game; +30 Elegant Cape witnessed at 103-108 s",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              },
+              "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+            },
+            "tool": "Elegant Cape",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_bottom_to_top": [
+              {
+                "name": "Alolan Vulpix",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": false
+              },
+              {
+                "name": "Alolan Ninetales ex",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": true
+              }
+            ],
+            "evolution_history": [
+              {
+                "name": "Alolan Ninetales ex",
+                "source_seconds_approx": 83,
+                "evidence_ids": [
+                  "F0082.50"
+                ]
+              }
+            ],
+            "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+            "evidence_ids": [
+              "F0217.50"
+            ],
+            "status": "observed_with_history",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "instance_id": "oV2",
+              "name": "Alolan Vulpix",
+              "variant": {
+                "mechanics_identification": "Alolan Vulpix; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "left",
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Alolan Vulpix",
+                  "basis": "Basic directly visible",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0217.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            },
+            {
+              "instance_id": "oL1",
+              "name": "Lapras",
+              "variant": {
+                "mechanics_identification": "Lapras; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "middle",
+              "hp_now": 110,
+              "hp_max": 110,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Lapras",
+                  "basis": "Basic directly visible",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0217.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            },
+            {
+              "instance_id": "oC1",
+              "name": "Mega Sharpedo ex",
+              "variant": {
+                "mechanics_identification": "Mega Sharpedo ex; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "right",
+              "hp_now": 190,
+              "hp_max": 190,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Carvanha",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": false
+                },
+                {
+                  "name": "Mega Sharpedo ex",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [
+                {
+                  "name": "Mega Sharpedo ex",
+                  "source_seconds_approx": 110,
+                  "evidence_ids": [
+                    "F0111.50"
+                  ]
+                }
+              ],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0217.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true,
+              "phase": "generated_available"
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false,
+              "phase": "preview",
+              "limit": null
+            },
+            "basis": "Native displayed current circle and smaller preview; Water icons inspected. Current empty slots are not an available Energy.",
+            "limit_reason": null
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0217.50"
+          ],
+          "status": "observed_with_transition_history",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "instance_id": "pF1",
+            "name": "Baxcalibur",
+            "variant": {
+              "mechanics_identification": "Baxcalibur; shown attacks/HP establish identity",
+              "set_number": null,
+              "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+            },
+            "bench_position": "active",
+            "hp_now": 80,
+            "hp_max": 140,
+            "hp_max_basis": "Printed HP/undamaged prior state in same source",
+            "damage": 60,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              },
+              "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_bottom_to_top": [
+              {
+                "name": "Frigibax",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": false
+              },
+              {
+                "name": "Arctibax",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": false
+              },
+              {
+                "name": "Baxcalibur",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": true
+              }
+            ],
+            "evolution_history": [
+              {
+                "name": "Arctibax",
+                "source_seconds_approx": 129,
+                "evidence_ids": [
+                  "F0129.50"
+                ]
+              },
+              {
+                "name": "Baxcalibur",
+                "source_seconds_approx": 177,
+                "evidence_ids": [
+                  "F0178.00"
+                ]
+              }
+            ],
+            "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+            "evidence_ids": [
+              "F0217.50"
+            ],
+            "status": "observed_with_history",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "instance_id": "pF2",
+              "name": "Arctibax",
+              "variant": {
+                "mechanics_identification": "Arctibax; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "left",
+              "hp_now": 90,
+              "hp_max": 90,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Frigibax",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": false
+                },
+                {
+                  "name": "Arctibax",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [
+                {
+                  "name": "Arctibax",
+                  "source_seconds_approx": 181,
+                  "evidence_ids": [
+                    "F0182.50"
+                  ]
+                }
+              ],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0217.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            },
+            {
+              "instance_id": "pS2",
+              "name": "Wartortle",
+              "variant": {
+                "mechanics_identification": "Wartortle; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "middle",
+              "hp_now": 90,
+              "hp_max": 90,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Squirtle",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": false
+                },
+                {
+                  "name": "Wartortle",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [
+                {
+                  "name": "Wartortle",
+                  "source_seconds_approx": 207,
+                  "evidence_ids": [
+                    "F0208.00"
+                  ]
+                }
+              ],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0217.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            },
+            {
+              "instance_id": "pS1",
+              "name": "Mega Blastoise ex",
+              "variant": {
+                "mechanics_identification": "Mega Blastoise ex; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "right",
+              "hp_now": 230,
+              "hp_max": 230,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 2,
+                "by_type": {
+                  "Water": 2
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Squirtle",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": false
+                },
+                {
+                  "name": "Wartortle",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": false
+                },
+                {
+                  "name": "Mega Blastoise ex",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [
+                {
+                  "name": "Wartortle",
+                  "source_seconds_approx": 178,
+                  "evidence_ids": [
+                    "F0178.00"
+                  ]
+                },
+                {
+                  "name": "Mega Blastoise ex",
+                  "source_seconds_approx": 203,
+                  "evidence_ids": [
+                    "F0205.50"
+                  ]
+                }
+              ],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0217.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false,
+              "phase": "empty_or_consumed"
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false,
+              "phase": "preview",
+              "limit": null
+            },
+            "basis": "Native displayed current circle and smaller preview; Water icons inspected. Current empty slots are not an available Energy.",
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0217.50"
+          ],
+          "status": "observed_with_transition_history",
+          "limit_reason": null
+        }
+      },
+      "decision_maker": {
+        "actor": "Dustin",
+        "basis": "Owner testimony manual; native Auto control OFF throughout this turn",
+        "auto_control_present": true,
+        "auto_enabled": false,
+        "evidence_ids": [
+          "F0217.50",
+          "F0233.50"
+        ],
+        "observed_span_seconds": [
+          217.5,
+          233.5
+        ],
+        "limit": "Actions attributed from persistent witnessed mode and owner testimony; invisible physical taps are not separately witnessed."
+      }
+    },
+    {
+      "turn_number": 12,
+      "evidence_ids": [
+        "F0243.50"
+      ],
+      "fresh_both_boards": {
+        "turn_number_displayed": 12,
+        "phase": "post-draw before first voluntary action",
+        "stadium": "Soothing Shore",
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0243.50"
+        ],
+        "boundary_provenance": "Fresh native boundary inspection supplemented by individually witnessed same-source transitions; timing is selected-frame PTS in manifest.",
+        "owner": {
+          "active": {
+            "instance_id": "oV1",
+            "name": "Alolan Ninetales ex",
+            "variant": {
+              "mechanics_identification": "Alolan Ninetales ex; shown attacks/HP establish identity",
+              "set_number": null,
+              "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+            },
+            "bench_position": "active",
+            "hp_now": 180,
+            "hp_max": 180,
+            "hp_max_basis": "Printed HP visible in this game; +30 Elegant Cape witnessed at 103-108 s",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              },
+              "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+            },
+            "tool": "Elegant Cape",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_bottom_to_top": [
+              {
+                "name": "Alolan Vulpix",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": false
+              },
+              {
+                "name": "Alolan Ninetales ex",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": true
+              }
+            ],
+            "evolution_history": [
+              {
+                "name": "Alolan Ninetales ex",
+                "source_seconds_approx": 83,
+                "evidence_ids": [
+                  "F0082.50"
+                ]
+              }
+            ],
+            "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+            "evidence_ids": [
+              "F0243.50"
+            ],
+            "status": "observed_with_history",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "instance_id": "oV2",
+              "name": "Alolan Vulpix",
+              "variant": {
+                "mechanics_identification": "Alolan Vulpix; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "left",
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Alolan Vulpix",
+                  "basis": "Basic directly visible",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0243.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            },
+            {
+              "instance_id": "oL1",
+              "name": "Lapras",
+              "variant": {
+                "mechanics_identification": "Lapras; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "middle",
+              "hp_now": 110,
+              "hp_max": 110,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 2,
+                "by_type": {
+                  "Water": 2
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Lapras",
+                  "basis": "Basic directly visible",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0243.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            },
+            {
+              "instance_id": "oC1",
+              "name": "Mega Sharpedo ex",
+              "variant": {
+                "mechanics_identification": "Mega Sharpedo ex; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "right",
+              "hp_now": 190,
+              "hp_max": 190,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Carvanha",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": false
+                },
+                {
+                  "name": "Mega Sharpedo ex",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [
+                {
+                  "name": "Mega Sharpedo ex",
+                  "source_seconds_approx": 110,
+                  "evidence_ids": [
+                    "F0111.50"
+                  ]
+                }
+              ],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0243.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false,
+              "phase": "generation_pending_during_draw_resolution",
+              "limit": "Selected earliest named-hand frame precedes the current Water generation animation."
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false,
+              "phase": "preview",
+              "limit": null
+            },
+            "basis": "Native displayed current circle and smaller preview; Water icons inspected. Current empty slots are not an available Energy.",
+            "limit_reason": null,
+            "generation_followup": {
+              "requested_source_seconds": 244.5,
+              "evidence_ids": [
+                "F0244.50"
+              ],
+              "this_turn": {
+                "type": "Water",
+                "count": 1,
+                "available": true,
+                "phase": "generated_after_selected_hand_boundary"
+              }
+            }
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0243.50"
+          ],
+          "status": "observed_with_transition_history",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "instance_id": "pS1",
+            "name": "Mega Blastoise ex",
+            "variant": {
+              "mechanics_identification": "Mega Blastoise ex; shown attacks/HP establish identity",
+              "set_number": null,
+              "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+            },
+            "bench_position": "active",
+            "hp_now": 230,
+            "hp_max": 230,
+            "hp_max_basis": "Printed HP/undamaged prior state in same source",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              },
+              "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_bottom_to_top": [
+              {
+                "name": "Squirtle",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": false
+              },
+              {
+                "name": "Wartortle",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": false
+              },
+              {
+                "name": "Mega Blastoise ex",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": true
+              }
+            ],
+            "evolution_history": [
+              {
+                "name": "Wartortle",
+                "source_seconds_approx": 178,
+                "evidence_ids": [
+                  "F0178.00"
+                ]
+              },
+              {
+                "name": "Mega Blastoise ex",
+                "source_seconds_approx": 203,
+                "evidence_ids": [
+                  "F0205.50"
+                ]
+              }
+            ],
+            "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+            "evidence_ids": [
+              "F0243.50"
+            ],
+            "status": "observed_with_history",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "instance_id": "pF2",
+              "name": "Arctibax",
+              "variant": {
+                "mechanics_identification": "Arctibax; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "left",
+              "hp_now": 90,
+              "hp_max": 90,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Frigibax",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": false
+                },
+                {
+                  "name": "Arctibax",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [
+                {
+                  "name": "Arctibax",
+                  "source_seconds_approx": 181,
+                  "evidence_ids": [
+                    "F0182.50"
+                  ]
+                }
+              ],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0243.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            },
+            {
+              "instance_id": "pS2",
+              "name": "Wartortle",
+              "variant": {
+                "mechanics_identification": "Wartortle; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "middle",
+              "hp_now": 90,
+              "hp_max": 90,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Squirtle",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": false
+                },
+                {
+                  "name": "Wartortle",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [
+                {
+                  "name": "Wartortle",
+                  "source_seconds_approx": 207,
+                  "evidence_ids": [
+                    "F0208.00"
+                  ]
+                }
+              ],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0243.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            },
+            {
+              "instance_id": "pW",
+              "name": "Wailmer",
+              "variant": {
+                "mechanics_identification": "Wailmer; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "right",
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Wailmer",
+                  "basis": "Basic directly visible",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0243.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false,
+              "phase": "empty_or_consumed"
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false,
+              "phase": "preview",
+              "limit": null
+            },
+            "basis": "Native displayed current circle and smaller preview; Water icons inspected. Current empty slots are not an available Energy.",
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0243.50"
+          ],
+          "status": "observed_with_transition_history",
+          "limit_reason": null
+        }
+      },
+      "decision_maker": {
+        "actor": "Dustin",
+        "basis": "Owner testimony manual; native Auto control OFF throughout this turn",
+        "auto_control_present": true,
+        "auto_enabled": false,
+        "evidence_ids": [
+          "F0243.50",
+          "F0258.50"
+        ],
+        "observed_span_seconds": [
+          243.5,
+          258.5
+        ],
+        "limit": "Actions attributed from persistent witnessed mode and owner testimony; invisible physical taps are not separately witnessed."
+      }
+    },
+    {
+      "turn_number": 14,
+      "evidence_ids": [
+        "F0269.50"
+      ],
+      "fresh_both_boards": {
+        "turn_number_displayed": 14,
+        "phase": "post-draw before first voluntary action",
+        "stadium": "Soothing Shore",
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0269.50"
+        ],
+        "boundary_provenance": "Fresh native boundary inspection supplemented by individually witnessed same-source transitions; timing is selected-frame PTS in manifest.",
+        "owner": {
+          "active": {
+            "instance_id": "oV1",
+            "name": "Alolan Ninetales ex",
+            "variant": {
+              "mechanics_identification": "Alolan Ninetales ex; shown attacks/HP establish identity",
+              "set_number": null,
+              "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+            },
+            "bench_position": "active",
+            "hp_now": 180,
+            "hp_max": 180,
+            "hp_max_basis": "Printed HP visible in this game; +30 Elegant Cape witnessed at 103-108 s",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              },
+              "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+            },
+            "tool": "Elegant Cape",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_bottom_to_top": [
+              {
+                "name": "Alolan Vulpix",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": false
+              },
+              {
+                "name": "Alolan Ninetales ex",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": true
+              }
+            ],
+            "evolution_history": [
+              {
+                "name": "Alolan Ninetales ex",
+                "source_seconds_approx": 83,
+                "evidence_ids": [
+                  "F0082.50"
+                ]
+              }
+            ],
+            "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+            "evidence_ids": [
+              "F0269.50"
+            ],
+            "status": "observed_with_history",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "instance_id": "oV2",
+              "name": "Alolan Ninetales ex",
+              "variant": {
+                "mechanics_identification": "Alolan Ninetales ex; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "left",
+              "hp_now": 150,
+              "hp_max": 150,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Alolan Vulpix",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": false
+                },
+                {
+                  "name": "Alolan Ninetales ex",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [
+                {
+                  "name": "Alolan Ninetales ex",
+                  "source_seconds_approx": 245,
+                  "evidence_ids": [
+                    "F0244.50"
+                  ]
+                }
+              ],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0269.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            },
+            {
+              "instance_id": "oL1",
+              "name": "Lapras",
+              "variant": {
+                "mechanics_identification": "Lapras; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "middle",
+              "hp_now": 110,
+              "hp_max": 110,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 3,
+                "by_type": {
+                  "Water": 3
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Lapras",
+                  "basis": "Basic directly visible",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0269.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            },
+            {
+              "instance_id": "oC1",
+              "name": "Mega Sharpedo ex",
+              "variant": {
+                "mechanics_identification": "Mega Sharpedo ex; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "right",
+              "hp_now": 190,
+              "hp_max": 190,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Carvanha",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": false
+                },
+                {
+                  "name": "Mega Sharpedo ex",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [
+                {
+                  "name": "Mega Sharpedo ex",
+                  "source_seconds_approx": 110,
+                  "evidence_ids": [
+                    "F0111.50"
+                  ]
+                }
+              ],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0269.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false,
+              "phase": "generation_pending_during_draw_resolution",
+              "limit": "Selected earliest named-hand frame precedes the current Water generation animation."
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false,
+              "phase": "preview",
+              "limit": null
+            },
+            "basis": "Native displayed current circle and smaller preview; Water icons inspected. Current empty slots are not an available Energy.",
+            "limit_reason": null,
+            "generation_followup": {
+              "requested_source_seconds": 270.5,
+              "evidence_ids": [
+                "F0270.50"
+              ],
+              "this_turn": {
+                "type": "Water",
+                "count": 1,
+                "available": true,
+                "phase": "generated_after_selected_hand_boundary"
+              }
+            }
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0269.50"
+          ],
+          "status": "observed_with_transition_history",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "instance_id": "pS1",
+            "name": "Mega Blastoise ex",
+            "variant": {
+              "mechanics_identification": "Mega Blastoise ex; shown attacks/HP establish identity",
+              "set_number": null,
+              "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+            },
+            "bench_position": "active",
+            "hp_now": 170,
+            "hp_max": 230,
+            "hp_max_basis": "Printed HP/undamaged prior state in same source",
+            "damage": 60,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              },
+              "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_bottom_to_top": [
+              {
+                "name": "Squirtle",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": false
+              },
+              {
+                "name": "Wartortle",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": false
+              },
+              {
+                "name": "Mega Blastoise ex",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": true
+              }
+            ],
+            "evolution_history": [
+              {
+                "name": "Wartortle",
+                "source_seconds_approx": 178,
+                "evidence_ids": [
+                  "F0178.00"
+                ]
+              },
+              {
+                "name": "Mega Blastoise ex",
+                "source_seconds_approx": 203,
+                "evidence_ids": [
+                  "F0205.50"
+                ]
+              }
+            ],
+            "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+            "evidence_ids": [
+              "F0269.50"
+            ],
+            "status": "observed_with_history",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "instance_id": "pF2",
+              "name": "Arctibax",
+              "variant": {
+                "mechanics_identification": "Arctibax; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "left",
+              "hp_now": 90,
+              "hp_max": 90,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Frigibax",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": false
+                },
+                {
+                  "name": "Arctibax",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [
+                {
+                  "name": "Arctibax",
+                  "source_seconds_approx": 181,
+                  "evidence_ids": [
+                    "F0182.50"
+                  ]
+                }
+              ],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0269.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            },
+            {
+              "instance_id": "pS2",
+              "name": "Wartortle",
+              "variant": {
+                "mechanics_identification": "Wartortle; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "middle",
+              "hp_now": 90,
+              "hp_max": 90,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 2,
+                "by_type": {
+                  "Water": 2
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Squirtle",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": false
+                },
+                {
+                  "name": "Wartortle",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [
+                {
+                  "name": "Wartortle",
+                  "source_seconds_approx": 207,
+                  "evidence_ids": [
+                    "F0208.00"
+                  ]
+                }
+              ],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0269.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            },
+            {
+              "instance_id": "pW",
+              "name": "Wailmer",
+              "variant": {
+                "mechanics_identification": "Wailmer; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "right",
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Wailmer",
+                  "basis": "Basic directly visible",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0269.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false,
+              "phase": "empty_or_consumed"
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false,
+              "phase": "preview",
+              "limit": null
+            },
+            "basis": "Native displayed current circle and smaller preview; Water icons inspected. Current empty slots are not an available Energy.",
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0269.50"
+          ],
+          "status": "observed_with_transition_history",
+          "limit_reason": null
+        }
+      },
+      "decision_maker": {
+        "actor": "Dustin",
+        "basis": "Owner testimony manual; native Auto control OFF throughout this turn",
+        "auto_control_present": true,
+        "auto_enabled": false,
+        "evidence_ids": [
+          "F0269.50",
+          "F0288.50"
+        ],
+        "observed_span_seconds": [
+          269.5,
+          288.5
+        ],
+        "limit": "Actions attributed from persistent witnessed mode and owner testimony; invisible physical taps are not separately witnessed."
+      }
+    },
+    {
+      "turn_number": 16,
+      "evidence_ids": [
+        "F0301.50"
+      ],
+      "fresh_both_boards": {
+        "turn_number_displayed": 16,
+        "phase": "post-draw before first voluntary action",
+        "stadium": "Soothing Shore",
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0301.50"
+        ],
+        "boundary_provenance": "Fresh native boundary inspection supplemented by individually witnessed same-source transitions; timing is selected-frame PTS in manifest.",
+        "owner": {
+          "active": {
+            "instance_id": "oV1",
+            "name": "Alolan Ninetales ex",
+            "variant": {
+              "mechanics_identification": "Alolan Ninetales ex; shown attacks/HP establish identity",
+              "set_number": null,
+              "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+            },
+            "bench_position": "active",
+            "hp_now": 180,
+            "hp_max": 180,
+            "hp_max_basis": "Printed HP visible in this game; +30 Elegant Cape witnessed at 103-108 s",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              },
+              "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+            },
+            "tool": "Elegant Cape",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_bottom_to_top": [
+              {
+                "name": "Alolan Vulpix",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": false
+              },
+              {
+                "name": "Alolan Ninetales ex",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": true
+              }
+            ],
+            "evolution_history": [
+              {
+                "name": "Alolan Ninetales ex",
+                "source_seconds_approx": 83,
+                "evidence_ids": [
+                  "F0082.50"
+                ]
+              }
+            ],
+            "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+            "evidence_ids": [
+              "F0301.50"
+            ],
+            "status": "observed_with_history",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "instance_id": "oV2",
+              "name": "Alolan Ninetales ex",
+              "variant": {
+                "mechanics_identification": "Alolan Ninetales ex; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "left",
+              "hp_now": 150,
+              "hp_max": 150,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 2,
+                "by_type": {
+                  "Water": 2
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Alolan Vulpix",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": false
+                },
+                {
+                  "name": "Alolan Ninetales ex",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [
+                {
+                  "name": "Alolan Ninetales ex",
+                  "source_seconds_approx": 245,
+                  "evidence_ids": [
+                    "F0244.50"
+                  ]
+                }
+              ],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0301.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            },
+            {
+              "instance_id": "oL1",
+              "name": "Lapras",
+              "variant": {
+                "mechanics_identification": "Lapras; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "middle",
+              "hp_now": 110,
+              "hp_max": 110,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 3,
+                "by_type": {
+                  "Water": 3
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Lapras",
+                  "basis": "Basic directly visible",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0301.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            },
+            {
+              "instance_id": "oC1",
+              "name": "Mega Sharpedo ex",
+              "variant": {
+                "mechanics_identification": "Mega Sharpedo ex; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "right",
+              "hp_now": 190,
+              "hp_max": 190,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Carvanha",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": false
+                },
+                {
+                  "name": "Mega Sharpedo ex",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [
+                {
+                  "name": "Mega Sharpedo ex",
+                  "source_seconds_approx": 110,
+                  "evidence_ids": [
+                    "F0111.50"
+                  ]
+                }
+              ],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0301.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true,
+              "phase": "generated_available"
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false,
+              "phase": "preview",
+              "limit": null
+            },
+            "basis": "Native displayed current circle and smaller preview; Water icons inspected. Current empty slots are not an available Energy.",
+            "limit_reason": null
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0301.50"
+          ],
+          "status": "observed_with_transition_history",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "instance_id": "pS1",
+            "name": "Mega Blastoise ex",
+            "variant": {
+              "mechanics_identification": "Mega Blastoise ex; shown attacks/HP establish identity",
+              "set_number": null,
+              "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+            },
+            "bench_position": "active",
+            "hp_now": 110,
+            "hp_max": 230,
+            "hp_max_basis": "Printed HP/undamaged prior state in same source",
+            "damage": 120,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              },
+              "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_bottom_to_top": [
+              {
+                "name": "Squirtle",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": false
+              },
+              {
+                "name": "Wartortle",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": false
+              },
+              {
+                "name": "Mega Blastoise ex",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": true
+              }
+            ],
+            "evolution_history": [
+              {
+                "name": "Wartortle",
+                "source_seconds_approx": 178,
+                "evidence_ids": [
+                  "F0178.00"
+                ]
+              },
+              {
+                "name": "Mega Blastoise ex",
+                "source_seconds_approx": 203,
+                "evidence_ids": [
+                  "F0205.50"
+                ]
+              }
+            ],
+            "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+            "evidence_ids": [
+              "F0301.50"
+            ],
+            "status": "observed_with_history",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "instance_id": "pF2",
+              "name": "Arctibax",
+              "variant": {
+                "mechanics_identification": "Arctibax; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "left",
+              "hp_now": 90,
+              "hp_max": 90,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Frigibax",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": false
+                },
+                {
+                  "name": "Arctibax",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [
+                {
+                  "name": "Arctibax",
+                  "source_seconds_approx": 181,
+                  "evidence_ids": [
+                    "F0182.50"
+                  ]
+                }
+              ],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0301.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            },
+            {
+              "instance_id": "pS2",
+              "name": "Wartortle",
+              "variant": {
+                "mechanics_identification": "Wartortle; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "middle",
+              "hp_now": 90,
+              "hp_max": 90,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 3,
+                "by_type": {
+                  "Water": 3
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Squirtle",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": false
+                },
+                {
+                  "name": "Wartortle",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [
+                {
+                  "name": "Wartortle",
+                  "source_seconds_approx": 207,
+                  "evidence_ids": [
+                    "F0208.00"
+                  ]
+                }
+              ],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0301.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            },
+            {
+              "instance_id": "pW",
+              "name": "Wailmer",
+              "variant": {
+                "mechanics_identification": "Wailmer; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "right",
+              "hp_now": 100,
+              "hp_max": 100,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Wailmer",
+                  "basis": "Basic directly visible",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0301.50"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false,
+              "phase": "empty_or_consumed"
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false,
+              "phase": "preview",
+              "limit": null
+            },
+            "basis": "Native displayed current circle and smaller preview; Water icons inspected. Current empty slots are not an available Energy.",
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0301.50"
+          ],
+          "status": "observed_with_transition_history",
+          "limit_reason": null
+        }
+      },
+      "decision_maker": {
+        "actor": "Dustin",
+        "basis": "Owner testimony manual; native Auto control OFF throughout this turn",
+        "auto_control_present": true,
+        "auto_enabled": false,
+        "evidence_ids": [
+          "F0301.50",
+          "F0322.50"
+        ],
+        "observed_span_seconds": [
+          301.5,
+          322.5
+        ],
+        "limit": "Actions attributed from persistent witnessed mode and owner testimony; invisible physical taps are not separately witnessed."
+      }
+    },
+    {
+      "turn_number": 18,
+      "evidence_ids": [
+        "F0337.80",
+        "F0337.00"
+      ],
+      "fresh_both_boards": {
+        "turn_number_displayed": 18,
+        "phase": "post-draw before first voluntary action",
+        "stadium": "Soothing Shore",
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0337.80",
+          "F0337.00"
+        ],
+        "boundary_provenance": "337.0 s unobstructed same-turn boards establish every HP/Energy;337.8 s failed-draw boundary establishes unchanged hand and generated current Water. No owner play occurs between them.",
+        "owner": {
+          "active": {
+            "instance_id": "oV1",
+            "name": "Alolan Ninetales ex",
+            "variant": {
+              "mechanics_identification": "Alolan Ninetales ex; shown attacks/HP establish identity",
+              "set_number": null,
+              "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+            },
+            "bench_position": "active",
+            "hp_now": 180,
+            "hp_max": 180,
+            "hp_max_basis": "Printed HP visible in this game; +30 Elegant Cape witnessed at 103-108 s",
+            "damage": 0,
+            "attached_energy": {
+              "total": 3,
+              "by_type": {
+                "Water": 3
+              },
+              "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+            },
+            "tool": "Elegant Cape",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_bottom_to_top": [
+              {
+                "name": "Alolan Vulpix",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": false
+              },
+              {
+                "name": "Alolan Ninetales ex",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": true
+              }
+            ],
+            "evolution_history": [
+              {
+                "name": "Alolan Ninetales ex",
+                "source_seconds_approx": 83,
+                "evidence_ids": [
+                  "F0082.50"
+                ]
+              }
+            ],
+            "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+            "evidence_ids": [
+              "F0337.00"
+            ],
+            "status": "observed_with_history",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "instance_id": "oV2",
+              "name": "Alolan Ninetales ex",
+              "variant": {
+                "mechanics_identification": "Alolan Ninetales ex; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "left",
+              "hp_now": 150,
+              "hp_max": 150,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 2,
+                "by_type": {
+                  "Water": 2
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Alolan Vulpix",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": false
+                },
+                {
+                  "name": "Alolan Ninetales ex",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [
+                {
+                  "name": "Alolan Ninetales ex",
+                  "source_seconds_approx": 245,
+                  "evidence_ids": [
+                    "F0244.50"
+                  ]
+                }
+              ],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0337.00"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            },
+            {
+              "instance_id": "oL1",
+              "name": "Lapras",
+              "variant": {
+                "mechanics_identification": "Lapras; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "middle",
+              "hp_now": 110,
+              "hp_max": 110,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 3,
+                "by_type": {
+                  "Water": 3
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Lapras",
+                  "basis": "Basic directly visible",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0337.00"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            },
+            {
+              "instance_id": "oC1",
+              "name": "Mega Sharpedo ex",
+              "variant": {
+                "mechanics_identification": "Mega Sharpedo ex; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "right",
+              "hp_now": 190,
+              "hp_max": 190,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Carvanha",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": false
+                },
+                {
+                  "name": "Mega Sharpedo ex",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [
+                {
+                  "name": "Mega Sharpedo ex",
+                  "source_seconds_approx": 110,
+                  "evidence_ids": [
+                    "F0111.50"
+                  ]
+                }
+              ],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0337.00"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true,
+              "phase": "generated_available"
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false,
+              "phase": "preview",
+              "limit": null
+            },
+            "basis": "Native displayed current circle and smaller preview; Water icons inspected. Current empty slots are not an available Energy.",
+            "limit_reason": null
+          },
+          "points": 2,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0337.80",
+            "F0337.00"
+          ],
+          "status": "observed_with_transition_history",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "instance_id": "pS1",
+            "name": "Mega Blastoise ex",
+            "variant": {
+              "mechanics_identification": "Mega Blastoise ex; shown attacks/HP establish identity",
+              "set_number": null,
+              "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+            },
+            "bench_position": "active",
+            "hp_now": 50,
+            "hp_max": 230,
+            "hp_max_basis": "Printed HP/undamaged prior state in same source",
+            "damage": 180,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              },
+              "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_bottom_to_top": [
+              {
+                "name": "Squirtle",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": false
+              },
+              {
+                "name": "Wartortle",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": false
+              },
+              {
+                "name": "Mega Blastoise ex",
+                "basis": "Witnessed same-recording evolution history",
+                "face_visible_at_boundary": true
+              }
+            ],
+            "evolution_history": [
+              {
+                "name": "Wartortle",
+                "source_seconds_approx": 178,
+                "evidence_ids": [
+                  "F0178.00"
+                ]
+              },
+              {
+                "name": "Mega Blastoise ex",
+                "source_seconds_approx": 203,
+                "evidence_ids": [
+                  "F0205.50"
+                ]
+              }
+            ],
+            "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+            "evidence_ids": [
+              "F0337.00"
+            ],
+            "status": "observed_with_history",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "instance_id": "pF2",
+              "name": "Arctibax",
+              "variant": {
+                "mechanics_identification": "Arctibax; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "left",
+              "hp_now": 90,
+              "hp_max": 90,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {
+                  "Water": 0
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Frigibax",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": false
+                },
+                {
+                  "name": "Arctibax",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [
+                {
+                  "name": "Arctibax",
+                  "source_seconds_approx": 181,
+                  "evidence_ids": [
+                    "F0182.50"
+                  ]
+                }
+              ],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0337.00"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            },
+            {
+              "instance_id": "pS2",
+              "name": "Wartortle",
+              "variant": {
+                "mechanics_identification": "Wartortle; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "middle",
+              "hp_now": 90,
+              "hp_max": 90,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 3,
+                "by_type": {
+                  "Water": 3
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Squirtle",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": false
+                },
+                {
+                  "name": "Wartortle",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [
+                {
+                  "name": "Wartortle",
+                  "source_seconds_approx": 207,
+                  "evidence_ids": [
+                    "F0208.00"
+                  ]
+                }
+              ],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0337.00"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            },
+            {
+              "instance_id": "pW",
+              "name": "Wailord ex",
+              "variant": {
+                "mechanics_identification": "Wailord ex; shown attacks/HP establish identity",
+                "set_number": null,
+                "limit": "Filmed art differs for duplicate evolutions; saved log variant is not assumed to be the filmed printing."
+              },
+              "bench_position": "right",
+              "hp_now": 250,
+              "hp_max": 250,
+              "hp_max_basis": "Printed HP/undamaged prior state in same source",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                },
+                "basis": "Individual attached Water symbols freshly inspected at native owner-start boundaries; witnessed attachments and same-source continuity supplement endpoint states"
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evolution_stack_bottom_to_top": [
+                {
+                  "name": "Wailmer",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": false
+                },
+                {
+                  "name": "Wailord ex",
+                  "basis": "Witnessed same-recording evolution history",
+                  "face_visible_at_boundary": true
+                }
+              ],
+              "evolution_history": [
+                {
+                  "name": "Wailord ex",
+                  "source_seconds_approx": 329,
+                  "evidence_ids": [
+                    "F0330.00"
+                  ]
+                }
+              ],
+              "stack_limit": "Underlying faces are not exposed; genealogy is witnessed history, not a claim that hidden faces were read.",
+              "evidence_ids": [
+                "F0337.00"
+              ],
+              "status": "observed_with_history",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": null,
+              "count": 0,
+              "available": false,
+              "phase": "empty_or_consumed"
+            },
+            "next": {
+              "type": "Water",
+              "count": 1,
+              "available": false,
+              "phase": "preview",
+              "limit": null
+            },
+            "basis": "Native displayed current circle and smaller preview; Water icons inspected. Current empty slots are not an available Energy.",
+            "limit_reason": null
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0337.80",
+            "F0337.00"
+          ],
+          "status": "observed_with_transition_history",
+          "limit_reason": null
+        }
+      },
+      "decision_maker": {
+        "actor": "Dustin",
+        "basis": "Owner testimony manual; native Auto control OFF throughout this turn",
+        "auto_control_present": true,
+        "auto_enabled": false,
+        "evidence_ids": [
+          "F0337.80",
+          "F0349.00"
+        ],
+        "observed_span_seconds": [
+          337.8,
+          349.0
+        ],
+        "limit": "Actions attributed from persistent witnessed mode and owner testimony; invisible physical taps are not separately witnessed."
+      }
+    }
+  ],
+  "opponent_turn_owner_choice_findings": "No owner forced promotion, switch, KO-choice or selection screen occurs in opponent turns; owner never loses HP or Pokemon in this battle. Computer replacement choices after owner KOs belong to computer and are recorded separately.",
+  "limits": [
+    "Never opened; identities and totals not reconstructed from deck snapshot.",
+    "Art and mechanics visible, but log set IDs remain deck-source metadata.",
+    "Source-local animation timing approximately located by whole timeline; actual capture PTS are measured separately.",
+    "History establishes genealogy; underlying faces were not exposed."
+  ],
+  "independent_acceptance": "pending"
+}

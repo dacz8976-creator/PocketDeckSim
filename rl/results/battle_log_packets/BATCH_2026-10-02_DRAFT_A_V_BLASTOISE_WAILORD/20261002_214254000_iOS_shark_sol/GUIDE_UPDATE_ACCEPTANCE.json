@@ -1,0 +1,34 @@
+{
+  "accepted": true,
+  "accepted_utc": "2026-10-03T01:09:32.396844+00:00",
+  "accepted_by": "/root",
+  "source_video": "20261002_214254000_iOS.MP4",
+  "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+  "guide_update_checked": true,
+  "independent_reviewer": "/root/ind_drafta_manual1",
+  "independent_model": "gpt-6.1-sol",
+  "independent_check": "independent_sol/CHECK_RESULT_AFTER_REPAIR.json",
+  "independent_check_sha256": "5aa08cc4f585cd67d9a12deeee200c6a56b18628314b38aaef1b76e9c19f3729",
+  "checked_submission_manifest": "SUBMISSION_AFTER_INDEPENDENT_REPAIR.json",
+  "checked_submission_manifest_sha256": "da50682768f9be368fd86255c00bdb8732fa6d867635580b003b088cbf928ed0",
+  "accepted_files": {
+    "GUIDE_UPDATE_SUPPLEMENT.json": "cbc0e32de4d7ba834b9f504bb3738b4444cc23bd7f94445161906c80202be691",
+    "GUIDE_UPDATE_SUPPLEMENT.md": "2677c8fe39fd8c711517dc717ad7041a6ccb89fe36632b014062cb670261519e",
+    "SEEN_CARD_INVENTORY.json": "d035449d1f6e6c2d80e525236a58c9b7847a9e736c8c9fb9101316c73ceb15c3",
+    "SEEN_CARD_INVENTORY.md": "9ad53932c0389d2a5740fd77b790605707a6f3eff5e8f6266144336772e40d78"
+  },
+  "remaining_coverage_gaps": [],
+  "unverified_material_claims": [],
+  "limits": [
+    "No hidden computer draw/search card identities inferred; fan counts do not identify concealed cards.",
+    "No opened discard pile census or under-card stack inspection occurred. Visible top cards and witnessed physical evolution histories remain explicitly qualified.",
+    "Exact logged twenty-card printing snapshot is separate from source-supported twenty physical card occurrences; set numbers for whole deck are not visually recovered.",
+    "Owner Auto control remains OFF; visible Auto nevertheless identifies computer battle. Advanced category is separately owner-confirmed screenshot, not a recorded difficulty-selector claim.",
+    "T20/T22 empty-deck notice provides draw boundary anchor; fast-start selected hands retain explicit modal/transition limits.",
+    "Per-action source anchors are approximate event chronology, not exact touchscreen input times."
+  ],
+  "guide_source_receipt": "../GUIDE_UPDATE_RECEIPT.json",
+  "scope": "Only these eight current same-card computer comparison games; older packets untouched",
+  "actual_destination": "local_review_batch_and_BATTLE_REVIEW_INDEX",
+  "external_game_entry_requested": false
+}

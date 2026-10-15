@@ -1,0 +1,32 @@
+{
+  "recorded_utc": "2026-10-13T01:14:32.383223+00:00",
+  "lead": "/root",
+  "single_shared_writer": true,
+  "sources": [
+    {
+      "source": "20261012_225319000_iOS.MP4",
+      "registered_alias": "/root/pause_20261012_225319000_iOS",
+      "primary_worker": "/root/later_225319",
+      "primary_model": "gpt-6.1-sol",
+      "primary_effort": "high",
+      "independent_worker": "/root/check_later_225319",
+      "independent_model": "gpt-6.1-sol",
+      "independent_effort": "high",
+      "source_download_pending": false,
+      "current_status": "accepted_registered_archived_and_live_verified"
+    },
+    {
+      "source": "20261012_230258000_iOS.MP4",
+      "registered_alias": "/root/pause_20261012_230258000_iOS",
+      "primary_worker": "/root/later_230258",
+      "source_download_pending": false,
+      "independent_worker": "/root/check_later_230258",
+      "primary_model": "gpt-6.1-sol",
+      "primary_effort": "high",
+      "independent_model": "gpt-6.1-sol",
+      "independent_effort": "high",
+      "current_status": "full_review_and_independent_checks_in_progress"
+    }
+  ],
+  "updated_utc": "2026-10-13T02:16:28.664710+00:00"
+}

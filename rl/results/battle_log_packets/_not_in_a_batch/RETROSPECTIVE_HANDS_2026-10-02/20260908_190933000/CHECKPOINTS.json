@@ -1,0 +1,30 @@
+{
+  "initial_cap": 40,
+  "extensions": [
+    {
+      "cap": 48,
+      "requested_seconds": [
+        358,
+        360,
+        363,
+        385,
+        392,
+        403.5,
+        409,
+        412.5
+      ],
+      "reason": "Mandatory turn9 timed hand candidates/pre-end and final board/Energy/points fields.",
+      "authorization": "lead approved"
+    },
+    {
+      "cap": 50,
+      "requested_seconds": [
+        44.5,
+        143.5
+      ],
+      "reason": "Dense untouched turn1 hand before Darkrai lift; unzoomed turn3 pre-end before attack menu.",
+      "authorization": "lead approved"
+    }
+  ],
+  "actual_new_native_full_frames": 50
+}

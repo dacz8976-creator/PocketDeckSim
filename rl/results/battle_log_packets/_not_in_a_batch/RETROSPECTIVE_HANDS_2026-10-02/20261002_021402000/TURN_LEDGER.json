@@ -1,0 +1,3833 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261002_021402000_iOS.MP4",
+  "sources": [
+    {
+      "video_basename": "20261002_021402000_iOS.MP4",
+      "sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "source_json": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\SOURCE.json"
+    }
+  ],
+  "turns": [
+    {
+      "turn_number": 1,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "timing": {
+        "accepted_window": "Turn 1, about 35-52s, owner",
+        "draw_animation_end_seconds": 37.25,
+        "first_voluntary_move_seconds": null,
+        "before_end_action_seconds": 50.5,
+        "end_after_resolution_seconds": null,
+        "draw_end_supported_interval_seconds": [
+          37,
+          37.5
+        ],
+        "first_move_supported_interval_seconds": [
+          37.5,
+          39.5
+        ],
+        "timing_basis": "Bounded native candidate inspection; exact video frame PTS and exact first-action onset were not measured."
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Poké Ball",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0037.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Pokémon Center Lady",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0037.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Heavy Helmet",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0037.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Irida",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0037.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Wailord",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0037.50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0037.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Poké Ball",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0037.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Pokémon Center Lady",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0037.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Heavy Helmet",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0037.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Irida",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0037.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Wailord",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0037.50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0037.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 3,
+        "supported_range": null,
+        "count_method": "Visible separate card-back faces and bottom boundaries in native top crop",
+        "basis": "direct_visual_count",
+        "evidence_ids": [
+          "f0037.50"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": "normal turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Wailord",
+              "reveal_position": 1,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 37.5,
+              "evidence_ids": [
+                "f0037.50"
+              ],
+              "basis": "direct_native_observation",
+              "limit_reason": null
+            }
+          ],
+          "returned_or_discarded_cards": null,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": 37.5,
+          "evidence_ids": [
+            "f0037.50"
+          ],
+          "limit_reason": "Draw identity directly observed during reveal or subsequent fan; animation-end time bounded separately."
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poké Ball",
+          "linked_play_order": 2,
+          "cards_in_reveal_order": [
+            {
+              "name": "Wailmer",
+              "reveal_position": 1,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 48,
+              "evidence_ids": [
+                "f0048.00"
+              ],
+              "basis": "direct_native_observation",
+              "limit_reason": null
+            }
+          ],
+          "returned_or_discarded_cards": null,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": 48,
+          "evidence_ids": [
+            "f0048.00"
+          ],
+          "limit_reason": "Found Wailmer visibly in hand at48, then benched by50.5; exact search-reveal instant not measured."
+        }
+      ],
+      "draws_searches_accepted_account_reference": {
+        "status": "inherited_accepted_review_not_new_visual_observation",
+        "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+        "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+        "accepted_source_line": 26,
+        "verbatim_accepted_row": "| Turn 1, about 35-52s, owner | Heavy Helmet attaches to Active Wailmer. Poké Ball obtains the second Wailmer, which is benched. No Energy attachment or attack occurs. | overview 02; native 48.00s |"
+      },
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Heavy Helmet",
+          "target": "Active Wailmer",
+          "result": "Attached",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 26,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Poké Ball",
+          "target": null,
+          "result": "Obtains second Wailmer",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 26,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        },
+        {
+          "order": 3,
+          "kind": "card_play",
+          "card_name": "Wailmer",
+          "target": "Bench",
+          "result": "Benched",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 26,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        },
+        {
+          "order": 4,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "result": "No Energy attachment or attack",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 26,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        }
+      ],
+      "numbering_basis": "Numbered voluntary sequence as far as accepted prose explicitly supports; End Turn is inherited from its pass/no-attack account. Automatic healing stays in the original result prose.",
+      "automatic_events_in_order": null,
+      "board_at_start": {
+        "status": "inherited_reference_only",
+        "owner": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "opponent": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "accepted_board_reference": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+          "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+          "accepted_source_line": 26,
+          "verbatim_accepted_row": "| Turn 1, about 35-52s, owner | Heavy Helmet attaches to Active Wailmer. Poké Ball obtains the second Wailmer, which is benched. No Energy attachment or attack occurs. | overview 02; native 48.00s |"
+        },
+        "limit_reason": "Accepted prose and native references govern board facts; no new start/end board reconstruction in this bounded request."
+      },
+      "board_after": {
+        "status": "inherited_reference_only",
+        "owner": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "opponent": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "accepted_board_reference": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+          "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+          "accepted_source_line": 26,
+          "verbatim_accepted_row": "| Turn 1, about 35-52s, owner | Heavy Helmet attaches to Active Wailmer. Poké Ball obtains the second Wailmer, which is benched. No Energy attachment or attack occurs. | overview 02; native 48.00s |"
+        },
+        "limit_reason": "Accepted prose and native references govern board facts; no new start/end board reconstruction in this bounded request."
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Center Lady",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0050.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Irida",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0050.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Wailord",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0050.50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0050.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": null,
+      "turn_evidence_ids": [
+        "f0037.50",
+        "f0039.50",
+        "f0042.50",
+        "f0050.50",
+        "f0036.00",
+        "f0037.00",
+        "f0048.00"
+      ],
+      "accepted_reference": {
+        "status": "inherited_accepted_review_not_new_visual_observation",
+        "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+        "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+        "accepted_source_line": 26,
+        "verbatim_accepted_row": "| Turn 1, about 35-52s, owner | Heavy Helmet attaches to Active Wailmer. Poké Ball obtains the second Wailmer, which is benched. No Energy attachment or attack occurs. | overview 02; native 48.00s |"
+      },
+      "limits": "Target hand identities and counts are fresh native observations. Boards, points and voluntary plays remain inherited. Exact action onset and exact video-frame PTS were not measured; hidden opponent identities and discard contents remain unknown.",
+      "discard_limits": "No opened discard-pile window is visible in the inspected hand/reveal evidence. No claim that every intervening second was freshly checked for pile views."
+    },
+    {
+      "turn_number": 2,
+      "who_played": "opponent",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "timing": {
+        "accepted_window": "Turn 2, about 52-72s, opponent",
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": null,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": null
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "outside_requested_scope",
+        "limit_reason": "Opponent card identities are hidden; no hand identities inferred."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "outside_requested_scope",
+        "limit_reason": "Not requested beyond first six owner turns."
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "basis": null,
+        "evidence_ids": null,
+        "limit_reason": "Outside requested target owner hands."
+      },
+      "draws_and_searches": null,
+      "draws_searches_accepted_account_reference": {
+        "status": "inherited_accepted_review_not_new_visual_observation",
+        "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+        "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+        "accepted_source_line": 27,
+        "verbatim_accepted_row": "| Turn 2, about 52-72s, opponent | Meloetta's Strange Singing adds a hidden random Psychic Pokémon to the opponent's hand. Giratina ex uses Broken-Space Bellow and gains Psychic Energy, ending the turn. Giratina's early buildup includes normal Energy attachment; no attack or HP change occurs. | overview 02, native 92.00s for subsequent three-Energy state |"
+      },
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "inherited_narrative_unit",
+          "description": "Meloetta's Strange Singing adds a hidden random Psychic Pokémon to the opponent's hand.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 27,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 2,
+          "kind": "inherited_narrative_unit",
+          "description": "Giratina ex uses Broken-Space Bellow and gains Psychic Energy, ending the turn.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 27,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 3,
+          "kind": "inherited_narrative_unit",
+          "description": "Giratina's early buildup includes normal Energy attachment; no attack or HP change occurs.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 27,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        }
+      ],
+      "numbering_basis": "Inherited sentence order, not newly inspected exact subaction order. Target owner turns replace this with accepted voluntary-action sequence where possible.",
+      "automatic_events_in_order": null,
+      "board_at_start": {
+        "status": "inherited_reference_only",
+        "owner": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "opponent": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "accepted_board_reference": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+          "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+          "accepted_source_line": 27,
+          "verbatim_accepted_row": "| Turn 2, about 52-72s, opponent | Meloetta's Strange Singing adds a hidden random Psychic Pokémon to the opponent's hand. Giratina ex uses Broken-Space Bellow and gains Psychic Energy, ending the turn. Giratina's early buildup includes normal Energy attachment; no attack or HP change occurs. | overview 02, native 92.00s for subsequent three-Energy state |"
+        },
+        "limit_reason": "Accepted prose and native references govern board facts; no new start/end board reconstruction in this bounded request."
+      },
+      "board_after": {
+        "status": "inherited_reference_only",
+        "owner": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "opponent": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "accepted_board_reference": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+          "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+          "accepted_source_line": 27,
+          "verbatim_accepted_row": "| Turn 2, about 52-72s, opponent | Meloetta's Strange Singing adds a hidden random Psychic Pokémon to the opponent's hand. Giratina ex uses Broken-Space Bellow and gains Psychic Energy, ending the turn. Giratina's early buildup includes normal Energy attachment; no attack or HP change occurs. | overview 02, native 92.00s for subsequent three-Energy state |"
+        },
+        "limit_reason": "Accepted prose and native references govern board facts; no new start/end board reconstruction in this bounded request."
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "outside_requested_scope",
+        "limit_reason": "Outside requested target owner hands."
+      },
+      "discard_snapshot_ids": null,
+      "turn_evidence_ids": null,
+      "accepted_reference": {
+        "status": "inherited_accepted_review_not_new_visual_observation",
+        "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+        "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+        "accepted_source_line": 27,
+        "verbatim_accepted_row": "| Turn 2, about 52-72s, opponent | Meloetta's Strange Singing adds a hidden random Psychic Pokémon to the opponent's hand. Giratina ex uses Broken-Space Bellow and gains Psychic Energy, ending the turn. Giratina's early buildup includes normal Energy attachment; no attack or HP change occurs. | overview 02, native 92.00s for subsequent three-Energy state |"
+      },
+      "limits": "Accepted battle account preserved. Newly observed hand fields are populated only for turns 1,3,5,7,9,11."
+    },
+    {
+      "turn_number": 3,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "timing": {
+        "accepted_window": "Turn 3, about 72-82s, owner",
+        "draw_animation_end_seconds": 71.65,
+        "first_voluntary_move_seconds": null,
+        "before_end_action_seconds": 77,
+        "end_after_resolution_seconds": null,
+        "draw_end_supported_interval_seconds": [
+          71,
+          72.3
+        ],
+        "first_move_supported_interval_seconds": [
+          72.3,
+          74
+        ],
+        "timing_basis": "Bounded native candidate inspection; exact video frame PTS and exact first-action onset were not measured."
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Center Lady",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0072.30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Irida",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0072.30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Wailord",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0072.30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0072.30"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0072.30"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Center Lady",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0072.30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Irida",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0072.30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Wailord",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0072.30"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0072.30"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0072.30"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 5,
+        "supported_range": null,
+        "count_method": "Visible separate card-back faces and bottom boundaries in native top crop",
+        "basis": "direct_visual_count",
+        "evidence_ids": [
+          "f0072.30"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": "normal turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Cyrus",
+              "reveal_position": 1,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 72.3,
+              "evidence_ids": [
+                "f0072.30"
+              ],
+              "basis": "direct_native_observation",
+              "limit_reason": null
+            }
+          ],
+          "returned_or_discarded_cards": null,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": 72.3,
+          "evidence_ids": [
+            "f0072.30"
+          ],
+          "limit_reason": "Draw identity directly observed during reveal or subsequent fan; animation-end time bounded separately."
+        }
+      ],
+      "draws_searches_accepted_account_reference": {
+        "status": "inherited_accepted_review_not_new_visual_observation",
+        "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+        "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+        "accepted_source_line": 28,
+        "verbatim_accepted_row": "| Turn 3, about 72-82s, owner | Active Wailmer evolves into non-ex Wailord 200 HP. Owner attaches first Water to that Active. No attack with one Energy. | overview 03 |"
+      },
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "evolution",
+          "card_name": "Wailord",
+          "target": "Active Wailmer",
+          "result": "Non-ex Wailord 200 HP",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 28,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        },
+        {
+          "order": 2,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Active Wailord",
+          "result": "First Water",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 28,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        },
+        {
+          "order": 3,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "result": "No attack with one Energy",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 28,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        }
+      ],
+      "numbering_basis": "Numbered voluntary sequence as far as accepted prose explicitly supports; End Turn is inherited from its pass/no-attack account. Automatic healing stays in the original result prose.",
+      "automatic_events_in_order": null,
+      "board_at_start": {
+        "status": "inherited_reference_only",
+        "owner": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "opponent": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "accepted_board_reference": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+          "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+          "accepted_source_line": 28,
+          "verbatim_accepted_row": "| Turn 3, about 72-82s, owner | Active Wailmer evolves into non-ex Wailord 200 HP. Owner attaches first Water to that Active. No attack with one Energy. | overview 03 |"
+        },
+        "limit_reason": "Accepted prose and native references govern board facts; no new start/end board reconstruction in this bounded request."
+      },
+      "board_after": {
+        "status": "inherited_reference_only",
+        "owner": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "opponent": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "accepted_board_reference": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+          "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+          "accepted_source_line": 28,
+          "verbatim_accepted_row": "| Turn 3, about 72-82s, owner | Active Wailmer evolves into non-ex Wailord 200 HP. Owner attaches first Water to that Active. No attack with one Energy. | overview 03 |"
+        },
+        "limit_reason": "Accepted prose and native references govern board facts; no new start/end board reconstruction in this bounded request."
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Center Lady",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0077.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Irida",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0077.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0077.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0077.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": null,
+      "turn_evidence_ids": [
+        "f0072.30",
+        "f0072.00",
+        "f0074.00",
+        "f0077.00",
+        "f0071.00"
+      ],
+      "accepted_reference": {
+        "status": "inherited_accepted_review_not_new_visual_observation",
+        "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+        "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+        "accepted_source_line": 28,
+        "verbatim_accepted_row": "| Turn 3, about 72-82s, owner | Active Wailmer evolves into non-ex Wailord 200 HP. Owner attaches first Water to that Active. No attack with one Energy. | overview 03 |"
+      },
+      "limits": "Target hand identities and counts are fresh native observations. Boards, points and voluntary plays remain inherited. Exact action onset and exact video-frame PTS were not measured; hidden opponent identities and discard contents remain unknown.",
+      "discard_limits": "No opened discard-pile window is visible in the inspected hand/reveal evidence. No claim that every intervening second was freshly checked for pile views."
+    },
+    {
+      "turn_number": 4,
+      "who_played": "opponent",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "timing": {
+        "accepted_window": "Turn 4, about 82-98s, opponent",
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": null,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": null
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "outside_requested_scope",
+        "limit_reason": "Opponent card identities are hidden; no hand identities inferred."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "outside_requested_scope",
+        "limit_reason": "Not requested beyond first six owner turns."
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "basis": null,
+        "evidence_ids": null,
+        "limit_reason": "Outside requested target owner hands."
+      },
+      "draws_and_searches": null,
+      "draws_searches_accepted_account_reference": {
+        "status": "inherited_accepted_review_not_new_visual_observation",
+        "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+        "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+        "accepted_source_line": 29,
+        "verbatim_accepted_row": "| Turn 4, about 82-98s, opponent | Strange Singing triggers. Psychic attaches to Meloetta. Giratina ex uses Broken-Space Bellow again, building its Energy. No damage. | overview 03; native 92.00s |"
+      },
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "inherited_narrative_unit",
+          "description": "Strange Singing triggers.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 29,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 2,
+          "kind": "inherited_narrative_unit",
+          "description": "Psychic attaches to Meloetta.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 29,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 3,
+          "kind": "inherited_narrative_unit",
+          "description": "Giratina ex uses Broken-Space Bellow again, building its Energy.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 29,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 4,
+          "kind": "inherited_narrative_unit",
+          "description": "No damage.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 29,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        }
+      ],
+      "numbering_basis": "Inherited sentence order, not newly inspected exact subaction order. Target owner turns replace this with accepted voluntary-action sequence where possible.",
+      "automatic_events_in_order": null,
+      "board_at_start": {
+        "status": "inherited_reference_only",
+        "owner": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "opponent": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "accepted_board_reference": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+          "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+          "accepted_source_line": 29,
+          "verbatim_accepted_row": "| Turn 4, about 82-98s, opponent | Strange Singing triggers. Psychic attaches to Meloetta. Giratina ex uses Broken-Space Bellow again, building its Energy. No damage. | overview 03; native 92.00s |"
+        },
+        "limit_reason": "Accepted prose and native references govern board facts; no new start/end board reconstruction in this bounded request."
+      },
+      "board_after": {
+        "status": "inherited_reference_only",
+        "owner": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "opponent": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "accepted_board_reference": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+          "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+          "accepted_source_line": 29,
+          "verbatim_accepted_row": "| Turn 4, about 82-98s, opponent | Strange Singing triggers. Psychic attaches to Meloetta. Giratina ex uses Broken-Space Bellow again, building its Energy. No damage. | overview 03; native 92.00s |"
+        },
+        "limit_reason": "Accepted prose and native references govern board facts; no new start/end board reconstruction in this bounded request."
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "outside_requested_scope",
+        "limit_reason": "Outside requested target owner hands."
+      },
+      "discard_snapshot_ids": null,
+      "turn_evidence_ids": null,
+      "accepted_reference": {
+        "status": "inherited_accepted_review_not_new_visual_observation",
+        "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+        "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+        "accepted_source_line": 29,
+        "verbatim_accepted_row": "| Turn 4, about 82-98s, opponent | Strange Singing triggers. Psychic attaches to Meloetta. Giratina ex uses Broken-Space Bellow again, building its Energy. No damage. | overview 03; native 92.00s |"
+      },
+      "limits": "Accepted battle account preserved. Newly observed hand fields are populated only for turns 1,3,5,7,9,11."
+    },
+    {
+      "turn_number": 5,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "timing": {
+        "accepted_window": "Turn 5, about 98-112s, owner",
+        "draw_animation_end_seconds": 100.4,
+        "first_voluntary_move_seconds": null,
+        "before_end_action_seconds": 108,
+        "end_after_resolution_seconds": null,
+        "draw_end_supported_interval_seconds": [
+          100,
+          100.8
+        ],
+        "first_move_supported_interval_seconds": [
+          100.8,
+          101.2
+        ],
+        "timing_basis": "Bounded native candidate inspection; exact video frame PTS and exact first-action onset were not measured."
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Center Lady",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0100.80"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Irida",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0100.80"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0100.80"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Wailord ex",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0100.80"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0100.80"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Center Lady",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0100.80"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Irida",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0100.80"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0100.80"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Wailord ex",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0100.80"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0100.80"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": [
+          7,
+          8
+        ],
+        "count_method": "Visible separate card-back faces and bottom boundaries in native top crop",
+        "basis": "direct_visual_supported_range",
+        "evidence_ids": [
+          "f0100.80"
+        ],
+        "limit_reason": "Tight overlapping card backs obscure one boundary; no bookkeeping substituted for visual count."
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": "normal turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Wailord ex",
+              "reveal_position": 1,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 100.8,
+              "evidence_ids": [
+                "f0100.80"
+              ],
+              "basis": "direct_native_observation",
+              "limit_reason": null
+            }
+          ],
+          "returned_or_discarded_cards": null,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": 100.8,
+          "evidence_ids": [
+            "f0100.80"
+          ],
+          "limit_reason": "Draw identity directly observed during reveal or subsequent fan; animation-end time bounded separately."
+        }
+      ],
+      "draws_searches_accepted_account_reference": {
+        "status": "inherited_accepted_review_not_new_visual_observation",
+        "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+        "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+        "accepted_source_line": 30,
+        "verbatim_accepted_row": "| Turn 5, about 98-112s, owner | Benched Wailmer evolves into Wailord ex 250 HP. Second Water attaches to Active non-ex Wailord. Owner passes without attacking. | overview 03-04 |"
+      },
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "evolution",
+          "card_name": "Wailord ex",
+          "target": "Benched Wailmer",
+          "result": "Wailord ex 250 HP",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 30,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        },
+        {
+          "order": 2,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Active non-ex Wailord",
+          "result": "Second Water",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 30,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        },
+        {
+          "order": 3,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "result": "No attack",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 30,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        }
+      ],
+      "numbering_basis": "Numbered voluntary sequence as far as accepted prose explicitly supports; End Turn is inherited from its pass/no-attack account. Automatic healing stays in the original result prose.",
+      "automatic_events_in_order": null,
+      "board_at_start": {
+        "status": "inherited_reference_only",
+        "owner": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "opponent": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "accepted_board_reference": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+          "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+          "accepted_source_line": 30,
+          "verbatim_accepted_row": "| Turn 5, about 98-112s, owner | Benched Wailmer evolves into Wailord ex 250 HP. Second Water attaches to Active non-ex Wailord. Owner passes without attacking. | overview 03-04 |"
+        },
+        "limit_reason": "Accepted prose and native references govern board facts; no new start/end board reconstruction in this bounded request."
+      },
+      "board_after": {
+        "status": "inherited_reference_only",
+        "owner": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "opponent": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "accepted_board_reference": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+          "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+          "accepted_source_line": 30,
+          "verbatim_accepted_row": "| Turn 5, about 98-112s, owner | Benched Wailmer evolves into Wailord ex 250 HP. Second Water attaches to Active non-ex Wailord. Owner passes without attacking. | overview 03-04 |"
+        },
+        "limit_reason": "Accepted prose and native references govern board facts; no new start/end board reconstruction in this bounded request."
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Center Lady",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0108.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Irida",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0108.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0108.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0108.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": null,
+      "turn_evidence_ids": [
+        "f0100.80",
+        "f0102.00",
+        "f0105.00",
+        "f0108.00",
+        "f0099.60",
+        "f0100.00"
+      ],
+      "accepted_reference": {
+        "status": "inherited_accepted_review_not_new_visual_observation",
+        "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+        "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+        "accepted_source_line": 30,
+        "verbatim_accepted_row": "| Turn 5, about 98-112s, owner | Benched Wailmer evolves into Wailord ex 250 HP. Second Water attaches to Active non-ex Wailord. Owner passes without attacking. | overview 03-04 |"
+      },
+      "limits": "Target hand identities and counts are fresh native observations. Boards, points and voluntary plays remain inherited. Exact action onset and exact video-frame PTS were not measured; hidden opponent identities and discard contents remain unknown.",
+      "discard_limits": "No opened discard-pile window is visible in the inspected hand/reveal evidence. No claim that every intervening second was freshly checked for pile views."
+    },
+    {
+      "turn_number": 6,
+      "who_played": "opponent",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "timing": {
+        "accepted_window": "Turn 6, about 112-130s, opponent",
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": null,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": null
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "outside_requested_scope",
+        "limit_reason": "Opponent card identities are hidden; no hand identities inferred."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "outside_requested_scope",
+        "limit_reason": "Not requested beyond first six owner turns."
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "basis": null,
+        "evidence_ids": null,
+        "limit_reason": "Outside requested target owner hands."
+      },
+      "draws_and_searches": null,
+      "draws_searches_accepted_account_reference": {
+        "status": "inherited_accepted_review_not_new_visual_observation",
+        "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+        "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+        "accepted_source_line": 31,
+        "verbatim_accepted_row": "| Turn 6, about 112-130s, opponent | Strange Singing triggers. Ralts 60 HP is benched and receives Psychic Energy. Giratina ex uses Broken-Space Bellow again. No attack. | overview 04; native 122.00s, 124.00s and 160.00s |"
+      },
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "inherited_narrative_unit",
+          "description": "Strange Singing triggers.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 31,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 2,
+          "kind": "inherited_narrative_unit",
+          "description": "Ralts 60 HP is benched and receives Psychic Energy.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 31,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 3,
+          "kind": "inherited_narrative_unit",
+          "description": "Giratina ex uses Broken-Space Bellow again.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 31,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 4,
+          "kind": "inherited_narrative_unit",
+          "description": "No attack.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 31,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        }
+      ],
+      "numbering_basis": "Inherited sentence order, not newly inspected exact subaction order. Target owner turns replace this with accepted voluntary-action sequence where possible.",
+      "automatic_events_in_order": null,
+      "board_at_start": {
+        "status": "inherited_reference_only",
+        "owner": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "opponent": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "accepted_board_reference": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+          "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+          "accepted_source_line": 31,
+          "verbatim_accepted_row": "| Turn 6, about 112-130s, opponent | Strange Singing triggers. Ralts 60 HP is benched and receives Psychic Energy. Giratina ex uses Broken-Space Bellow again. No attack. | overview 04; native 122.00s, 124.00s and 160.00s |"
+        },
+        "limit_reason": "Accepted prose and native references govern board facts; no new start/end board reconstruction in this bounded request."
+      },
+      "board_after": {
+        "status": "inherited_reference_only",
+        "owner": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "opponent": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "accepted_board_reference": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+          "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+          "accepted_source_line": 31,
+          "verbatim_accepted_row": "| Turn 6, about 112-130s, opponent | Strange Singing triggers. Ralts 60 HP is benched and receives Psychic Energy. Giratina ex uses Broken-Space Bellow again. No attack. | overview 04; native 122.00s, 124.00s and 160.00s |"
+        },
+        "limit_reason": "Accepted prose and native references govern board facts; no new start/end board reconstruction in this bounded request."
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "outside_requested_scope",
+        "limit_reason": "Outside requested target owner hands."
+      },
+      "discard_snapshot_ids": null,
+      "turn_evidence_ids": null,
+      "accepted_reference": {
+        "status": "inherited_accepted_review_not_new_visual_observation",
+        "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+        "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+        "accepted_source_line": 31,
+        "verbatim_accepted_row": "| Turn 6, about 112-130s, opponent | Strange Singing triggers. Ralts 60 HP is benched and receives Psychic Energy. Giratina ex uses Broken-Space Bellow again. No attack. | overview 04; native 122.00s, 124.00s and 160.00s |"
+      },
+      "limits": "Accepted battle account preserved. Newly observed hand fields are populated only for turns 1,3,5,7,9,11."
+    },
+    {
+      "turn_number": 7,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "timing": {
+        "accepted_window": "Turn 7, about 130-148s, owner",
+        "draw_animation_end_seconds": 131.5,
+        "first_voluntary_move_seconds": null,
+        "before_end_action_seconds": 146,
+        "end_after_resolution_seconds": null,
+        "draw_end_supported_interval_seconds": [
+          131,
+          132
+        ],
+        "first_move_supported_interval_seconds": [
+          132,
+          134
+        ],
+        "timing_basis": "Bounded native candidate inspection; exact video frame PTS and exact first-action onset were not measured."
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Center Lady",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0132.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Irida",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0132.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0132.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Professor's Research",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0132.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0132.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Center Lady",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0132.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Irida",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0132.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0132.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Professor's Research",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0132.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0132.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": [
+          7,
+          8
+        ],
+        "count_method": "Visible separate card-back faces and bottom boundaries in native top crop",
+        "basis": "direct_visual_supported_range",
+        "evidence_ids": [
+          "f0132.00"
+        ],
+        "limit_reason": "Tight overlapping card backs obscure one boundary; no bookkeeping substituted for visual count."
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": "normal turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Professor's Research",
+              "reveal_position": 1,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 132,
+              "evidence_ids": [
+                "f0132.00"
+              ],
+              "basis": "direct_native_observation",
+              "limit_reason": null
+            }
+          ],
+          "returned_or_discarded_cards": null,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": 132,
+          "evidence_ids": [
+            "f0132.00"
+          ],
+          "limit_reason": "Draw identity directly observed during reveal or subsequent fan; animation-end time bounded separately."
+        },
+        {
+          "kind": "research",
+          "caused_by": "Professor's Research",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": "Indeedee ex",
+              "reveal_position": 1,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 137,
+              "evidence_ids": [
+                "f0137.00"
+              ],
+              "basis": "direct_fan_identity_with_order_inferred_from_second_reveal_and_append_state",
+              "limit_reason": "At137 Indeedee is already in the fan; its first reveal is not directly captured in this cited frame."
+            },
+            {
+              "name": "Copycat",
+              "reveal_position": 2,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 137,
+              "evidence_ids": [
+                "f0137.00",
+                "f0139.00"
+              ],
+              "basis": "direct_enlarged_reveal_at137_and_retained_fan_at139",
+              "limit_reason": null
+            }
+          ],
+          "returned_or_discarded_cards": null,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": 137,
+          "evidence_ids": [
+            "f0137.00",
+            "f0139.00"
+          ],
+          "limit_reason": "Native137 shows Indeedee ex already appended in the fan and Copycat enlarged as the current Research reveal. Indeedee identity is directly observed in the fan; its first-card order is inferred from this append state preceding the displayed second card. Copycat reveal is directly observed at137 and its retained fan at139. Exact first-reveal onset is unmeasured.",
+          "reveal_order_basis": "append_state_at137_with_Copycat_displayed_as_second_Research_card"
+        }
+      ],
+      "draws_searches_accepted_account_reference": {
+        "status": "inherited_accepted_review_not_new_visual_observation",
+        "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+        "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+        "accepted_source_line": 32,
+        "verbatim_accepted_row": "| Turn 7, about 130-148s, owner | Professor's Research draws two cards. Indeedee ex 130 HP is benched. Third Water attaches to non-ex Wailord. It still needs four Energy for Whale Pump, so no attack occurs. | overview 04-05 |"
+      },
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Professor's Research",
+          "target": null,
+          "result": "Draws two cards",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 32,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Indeedee ex",
+          "target": "Bench",
+          "result": "First Indeedee ex benched",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 32,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        },
+        {
+          "order": 3,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Active non-ex Wailord",
+          "result": "Third Water",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 32,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        },
+        {
+          "order": 4,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "result": "No attack",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 32,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        }
+      ],
+      "numbering_basis": "Numbered voluntary sequence as far as accepted prose explicitly supports; End Turn is inherited from its pass/no-attack account. Automatic healing stays in the original result prose.",
+      "automatic_events_in_order": null,
+      "board_at_start": {
+        "status": "inherited_reference_only",
+        "owner": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "opponent": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "accepted_board_reference": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+          "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+          "accepted_source_line": 32,
+          "verbatim_accepted_row": "| Turn 7, about 130-148s, owner | Professor's Research draws two cards. Indeedee ex 130 HP is benched. Third Water attaches to non-ex Wailord. It still needs four Energy for Whale Pump, so no attack occurs. | overview 04-05 |"
+        },
+        "limit_reason": "Accepted prose and native references govern board facts; no new start/end board reconstruction in this bounded request."
+      },
+      "board_after": {
+        "status": "inherited_reference_only",
+        "owner": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "opponent": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "accepted_board_reference": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+          "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+          "accepted_source_line": 32,
+          "verbatim_accepted_row": "| Turn 7, about 130-148s, owner | Professor's Research draws two cards. Indeedee ex 130 HP is benched. Third Water attaches to non-ex Wailord. It still needs four Energy for Whale Pump, so no attack occurs. | overview 04-05 |"
+        },
+        "limit_reason": "Accepted prose and native references govern board facts; no new start/end board reconstruction in this bounded request."
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Center Lady",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0146.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Irida",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0146.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0146.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0146.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0146.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": null,
+      "turn_evidence_ids": [
+        "f0132.00",
+        "f0134.00",
+        "f0137.00",
+        "f0146.00",
+        "f0131.00",
+        "f0139.00"
+      ],
+      "accepted_reference": {
+        "status": "inherited_accepted_review_not_new_visual_observation",
+        "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+        "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+        "accepted_source_line": 32,
+        "verbatim_accepted_row": "| Turn 7, about 130-148s, owner | Professor's Research draws two cards. Indeedee ex 130 HP is benched. Third Water attaches to non-ex Wailord. It still needs four Energy for Whale Pump, so no attack occurs. | overview 04-05 |"
+      },
+      "limits": "Target hand identities and counts are fresh native observations. Boards, points and voluntary plays remain inherited. Exact action onset and exact video-frame PTS were not measured; hidden opponent identities and discard contents remain unknown.",
+      "discard_limits": "No opened discard-pile window is visible in the inspected hand/reveal evidence. No claim that every intervening second was freshly checked for pile views."
+    },
+    {
+      "turn_number": 8,
+      "who_played": "opponent",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "timing": {
+        "accepted_window": "Turn 8, about 148-204s, opponent",
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": null,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": null
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "outside_requested_scope",
+        "limit_reason": "Opponent card identities are hidden; no hand identities inferred."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "outside_requested_scope",
+        "limit_reason": "Not requested beyond first six owner turns."
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "basis": null,
+        "evidence_ids": null,
+        "limit_reason": "Outside requested target owner hands."
+      },
+      "draws_and_searches": null,
+      "draws_searches_accepted_account_reference": {
+        "status": "inherited_accepted_review_not_new_visual_observation",
+        "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+        "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+        "accepted_source_line": 33,
+        "verbatim_accepted_row": "| Turn 8, about 148-204s, opponent | Strange Singing triggers. Rare Candy evolves Ralts into Mega Gardevoir ex. Mega Diancie ex is benched. Peculiar Plaza reduces Psychic Pokémon retreat cost by two. Sabrina forces an owner replacement; owner selects zero-Energy Wailord ex, benching the three-Water non-ex Wailord. Opponent retreats Meloetta and promotes Mega Gardevoir ex, supplies its second Psychic, then attacks with Fantasia Force. Wailord ex takes 110, 250 to 140. The attack adds three Psychic from the Energy Zone, visibly allocated into the Mega Gardevoir/Diancie board. | native 160.00s, 165.00s, 171.00s, 177.00s, 180.00s, 188.00s, 193.00s, 199.00s, 205.00s |"
+      },
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "inherited_narrative_unit",
+          "description": "Strange Singing triggers.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 33,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 2,
+          "kind": "inherited_narrative_unit",
+          "description": "Rare Candy evolves Ralts into Mega Gardevoir ex.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 33,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 3,
+          "kind": "inherited_narrative_unit",
+          "description": "Mega Diancie ex is benched.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 33,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 4,
+          "kind": "inherited_narrative_unit",
+          "description": "Peculiar Plaza reduces Psychic Pokémon retreat cost by two.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 33,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 5,
+          "kind": "inherited_narrative_unit",
+          "description": "Sabrina forces an owner replacement; owner selects zero-Energy Wailord ex, benching the three-Water non-ex Wailord.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 33,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 6,
+          "kind": "inherited_narrative_unit",
+          "description": "Opponent retreats Meloetta and promotes Mega Gardevoir ex, supplies its second Psychic, then attacks with Fantasia Force.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 33,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 7,
+          "kind": "inherited_narrative_unit",
+          "description": "Wailord ex takes 110, 250 to 140.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 33,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 8,
+          "kind": "inherited_narrative_unit",
+          "description": "The attack adds three Psychic from the Energy Zone, visibly allocated into the Mega Gardevoir/Diancie board.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 33,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        }
+      ],
+      "numbering_basis": "Inherited sentence order, not newly inspected exact subaction order. Target owner turns replace this with accepted voluntary-action sequence where possible.",
+      "automatic_events_in_order": null,
+      "board_at_start": {
+        "status": "inherited_reference_only",
+        "owner": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "opponent": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "accepted_board_reference": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+          "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+          "accepted_source_line": 33,
+          "verbatim_accepted_row": "| Turn 8, about 148-204s, opponent | Strange Singing triggers. Rare Candy evolves Ralts into Mega Gardevoir ex. Mega Diancie ex is benched. Peculiar Plaza reduces Psychic Pokémon retreat cost by two. Sabrina forces an owner replacement; owner selects zero-Energy Wailord ex, benching the three-Water non-ex Wailord. Opponent retreats Meloetta and promotes Mega Gardevoir ex, supplies its second Psychic, then attacks with Fantasia Force. Wailord ex takes 110, 250 to 140. The attack adds three Psychic from the Energy Zone, visibly allocated into the Mega Gardevoir/Diancie board. | native 160.00s, 165.00s, 171.00s, 177.00s, 180.00s, 188.00s, 193.00s, 199.00s, 205.00s |"
+        },
+        "limit_reason": "Accepted prose and native references govern board facts; no new start/end board reconstruction in this bounded request."
+      },
+      "board_after": {
+        "status": "inherited_reference_only",
+        "owner": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "opponent": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "accepted_board_reference": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+          "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+          "accepted_source_line": 33,
+          "verbatim_accepted_row": "| Turn 8, about 148-204s, opponent | Strange Singing triggers. Rare Candy evolves Ralts into Mega Gardevoir ex. Mega Diancie ex is benched. Peculiar Plaza reduces Psychic Pokémon retreat cost by two. Sabrina forces an owner replacement; owner selects zero-Energy Wailord ex, benching the three-Water non-ex Wailord. Opponent retreats Meloetta and promotes Mega Gardevoir ex, supplies its second Psychic, then attacks with Fantasia Force. Wailord ex takes 110, 250 to 140. The attack adds three Psychic from the Energy Zone, visibly allocated into the Mega Gardevoir/Diancie board. | native 160.00s, 165.00s, 171.00s, 177.00s, 180.00s, 188.00s, 193.00s, 199.00s, 205.00s |"
+        },
+        "limit_reason": "Accepted prose and native references govern board facts; no new start/end board reconstruction in this bounded request."
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "outside_requested_scope",
+        "limit_reason": "Outside requested target owner hands."
+      },
+      "discard_snapshot_ids": null,
+      "turn_evidence_ids": null,
+      "accepted_reference": {
+        "status": "inherited_accepted_review_not_new_visual_observation",
+        "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+        "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+        "accepted_source_line": 33,
+        "verbatim_accepted_row": "| Turn 8, about 148-204s, opponent | Strange Singing triggers. Rare Candy evolves Ralts into Mega Gardevoir ex. Mega Diancie ex is benched. Peculiar Plaza reduces Psychic Pokémon retreat cost by two. Sabrina forces an owner replacement; owner selects zero-Energy Wailord ex, benching the three-Water non-ex Wailord. Opponent retreats Meloetta and promotes Mega Gardevoir ex, supplies its second Psychic, then attacks with Fantasia Force. Wailord ex takes 110, 250 to 140. The attack adds three Psychic from the Energy Zone, visibly allocated into the Mega Gardevoir/Diancie board. | native 160.00s, 165.00s, 171.00s, 177.00s, 180.00s, 188.00s, 193.00s, 199.00s, 205.00s |"
+      },
+      "limits": "Accepted battle account preserved. Newly observed hand fields are populated only for turns 1,3,5,7,9,11."
+    },
+    {
+      "turn_number": 9,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "timing": {
+        "accepted_window": "Turn 9, about 204-280s, owner",
+        "draw_animation_end_seconds": 203.5,
+        "first_voluntary_move_seconds": null,
+        "before_end_action_seconds": 275,
+        "end_after_resolution_seconds": null,
+        "draw_end_supported_interval_seconds": [
+          203,
+          204
+        ],
+        "first_move_supported_interval_seconds": [
+          205,
+          206
+        ],
+        "timing_basis": "Bounded native candidate inspection; exact video frame PTS and exact first-action onset were not measured."
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Center Lady",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0205.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Irida",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0205.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0205.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0205.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0205.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0205.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Pokémon Center Lady",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0205.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Irida",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0205.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0205.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0205.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0205.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0205.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 5,
+        "supported_range": null,
+        "count_method": "Visible separate card-back faces and bottom boundaries in native top crop",
+        "basis": "direct_visual_count",
+        "evidence_ids": [
+          "f0205.00"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": "normal turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Lucky Ice Pop",
+              "reveal_position": 1,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 205,
+              "evidence_ids": [
+                "f0205.00"
+              ],
+              "basis": "direct_native_observation",
+              "limit_reason": null
+            }
+          ],
+          "returned_or_discarded_cards": null,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": 205,
+          "evidence_ids": [
+            "f0205.00"
+          ],
+          "limit_reason": "Draw identity directly observed during reveal or subsequent fan; animation-end time bounded separately."
+        },
+        {
+          "kind": "copycat",
+          "caused_by": "Copycat",
+          "linked_play_order": 4,
+          "cards_in_reveal_order": [
+            {
+              "name": "Heavy Helmet",
+              "reveal_position": 1,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 249,
+              "evidence_ids": [
+                "f0249.00"
+              ],
+              "basis": "direct_native_observation",
+              "limit_reason": null
+            },
+            {
+              "name": "Indeedee ex",
+              "reveal_position": 2,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 249.5,
+              "evidence_ids": [
+                "f0249.50"
+              ],
+              "basis": "direct_native_observation",
+              "limit_reason": null
+            },
+            {
+              "name": "Soothing Shore",
+              "reveal_position": 3,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 249.5,
+              "evidence_ids": [
+                "f0249.50"
+              ],
+              "basis": "direct_native_observation",
+              "limit_reason": null
+            },
+            {
+              "name": "Lucky Ice Pop",
+              "reveal_position": 4,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 250,
+              "evidence_ids": [
+                "f0250.00"
+              ],
+              "basis": "direct_native_observation",
+              "limit_reason": null
+            },
+            {
+              "name": "Soothing Shore",
+              "reveal_position": 5,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 252,
+              "evidence_ids": [
+                "f0252.00"
+              ],
+              "basis": "direct_native_observation",
+              "limit_reason": null
+            }
+          ],
+          "returned_or_discarded_cards": [
+            "Pokémon Center Lady",
+            "Irida",
+            "Cyrus"
+          ],
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": 249,
+          "evidence_ids": [
+            "f0249.00",
+            "f0249.50",
+            "f0249.50",
+            "f0250.00",
+            "f0252.00"
+          ],
+          "limit_reason": "All five names and duplicate Shores directly preserved together at252. Reveal positions follow append order; times are retained reveal/fan anchors rather than exact onset. Earlier accepted native249 is a reveal anchor with approximate original seek provenance.",
+          "hand_count_before": 3,
+          "hand_count_after": 5,
+          "all_five_in_one_fan_evidence_ids": [
+            "f0252.00"
+          ]
+        }
+      ],
+      "draws_searches_accepted_account_reference": {
+        "status": "inherited_accepted_review_not_new_visual_observation",
+        "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+        "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+        "accepted_source_line": 34,
+        "verbatim_accepted_row": "| Turn 9, about 204-280s, owner | First Indeedee's Watch Over heals Active ex 140 to 160. Owner inspects Mega Diancie: expected Brilliant Storm damage is 240 at that moment, not a played attack. Lucky Ice Pop heals 160 to 180; heads returns it to hand. Reused Pop heals 180 to 200; tails discards it. Copycat shuffles the remaining hand and draws to opponent hand count. Soothing Shore replaces Peculiar Plaza. Second Indeedee ex is benched and its Watch Over heals 200 to 220. Heavy Helmet attaches to Active ex. Water attaches to Active ex, enabling Shore's end-of-turn heal 220 to 240. No attack. Non-ex Wailord remains benched with three Water. | native 205.00s, 211.00s, 232.00s, 236.00s, 241.00s, 249.00s, 254.00s, 263.00s, 265.00s, 268.00s, 272.00s; overview 08 |"
+      },
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "ability",
+          "card_name": "Indeedee ex",
+          "target": "Active Wailord ex",
+          "result": "First Watch Over heals 140 to 160",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 34,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Lucky Ice Pop",
+          "target": "Active Wailord ex",
+          "result": "Heals to 180; heads returns Pop",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 34,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        },
+        {
+          "order": 3,
+          "kind": "card_play",
+          "card_name": "Lucky Ice Pop",
+          "target": "Active Wailord ex",
+          "result": "Heals to 200; tails discards Pop",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 34,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        },
+        {
+          "order": 4,
+          "kind": "card_play",
+          "card_name": "Copycat",
+          "target": null,
+          "result": "Remaining hand shuffled; draws to opponent count",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 34,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        },
+        {
+          "order": 5,
+          "kind": "card_play",
+          "card_name": "Soothing Shore",
+          "target": "Stadium",
+          "result": "Replaces Peculiar Plaza",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 34,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        },
+        {
+          "order": 6,
+          "kind": "card_play",
+          "card_name": "Indeedee ex",
+          "target": "Bench",
+          "result": "Second Indeedee ex benched",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 34,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        },
+        {
+          "order": 7,
+          "kind": "ability",
+          "card_name": "Indeedee ex",
+          "target": "Active Wailord ex",
+          "result": "Second Watch Over heals to 220",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 34,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        },
+        {
+          "order": 8,
+          "kind": "card_play",
+          "card_name": "Heavy Helmet",
+          "target": "Active Wailord ex",
+          "result": "Attached",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 34,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        },
+        {
+          "order": 9,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Active Wailord ex",
+          "result": "Water attached",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 34,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        },
+        {
+          "order": 10,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "result": "Shore heals to 240; no attack",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 34,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        }
+      ],
+      "numbering_basis": "Numbered voluntary sequence as far as accepted prose explicitly supports; End Turn is inherited from its pass/no-attack account. Automatic healing stays in the original result prose.",
+      "automatic_events_in_order": null,
+      "board_at_start": {
+        "status": "inherited_reference_only",
+        "owner": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "opponent": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "accepted_board_reference": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+          "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+          "accepted_source_line": 34,
+          "verbatim_accepted_row": "| Turn 9, about 204-280s, owner | First Indeedee's Watch Over heals Active ex 140 to 160. Owner inspects Mega Diancie: expected Brilliant Storm damage is 240 at that moment, not a played attack. Lucky Ice Pop heals 160 to 180; heads returns it to hand. Reused Pop heals 180 to 200; tails discards it. Copycat shuffles the remaining hand and draws to opponent hand count. Soothing Shore replaces Peculiar Plaza. Second Indeedee ex is benched and its Watch Over heals 200 to 220. Heavy Helmet attaches to Active ex. Water attaches to Active ex, enabling Shore's end-of-turn heal 220 to 240. No attack. Non-ex Wailord remains benched with three Water. | native 205.00s, 211.00s, 232.00s, 236.00s, 241.00s, 249.00s, 254.00s, 263.00s, 265.00s, 268.00s, 272.00s; overview 08 |"
+        },
+        "limit_reason": "Accepted prose and native references govern board facts; no new start/end board reconstruction in this bounded request."
+      },
+      "board_after": {
+        "status": "inherited_reference_only",
+        "owner": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "opponent": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "accepted_board_reference": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+          "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+          "accepted_source_line": 34,
+          "verbatim_accepted_row": "| Turn 9, about 204-280s, owner | First Indeedee's Watch Over heals Active ex 140 to 160. Owner inspects Mega Diancie: expected Brilliant Storm damage is 240 at that moment, not a played attack. Lucky Ice Pop heals 160 to 180; heads returns it to hand. Reused Pop heals 180 to 200; tails discards it. Copycat shuffles the remaining hand and draws to opponent hand count. Soothing Shore replaces Peculiar Plaza. Second Indeedee ex is benched and its Watch Over heals 200 to 220. Heavy Helmet attaches to Active ex. Water attaches to Active ex, enabling Shore's end-of-turn heal 220 to 240. No attack. Non-ex Wailord remains benched with three Water. | native 205.00s, 211.00s, 232.00s, 236.00s, 241.00s, 249.00s, 254.00s, 263.00s, 265.00s, 268.00s, 272.00s; overview 08 |"
+        },
+        "limit_reason": "Accepted prose and native references govern board facts; no new start/end board reconstruction in this bounded request."
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Soothing Shore",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0275.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0275.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 2,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0275.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": null,
+      "turn_evidence_ids": [
+        "f0205.00",
+        "f0207.00",
+        "f0210.00",
+        "f0275.00",
+        "f0203.00",
+        "f0204.00",
+        "f0211.00",
+        "f0232.00",
+        "f0236.00",
+        "f0241.00",
+        "f0246.00",
+        "f0247.50",
+        "f0248.00",
+        "f0249.00",
+        "f0249.50",
+        "f0250.00",
+        "f0251.00",
+        "f0252.00",
+        "f0254.00",
+        "f0263.00",
+        "f0265.00",
+        "f0268.00",
+        "f0272.00"
+      ],
+      "accepted_reference": {
+        "status": "inherited_accepted_review_not_new_visual_observation",
+        "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+        "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+        "accepted_source_line": 34,
+        "verbatim_accepted_row": "| Turn 9, about 204-280s, owner | First Indeedee's Watch Over heals Active ex 140 to 160. Owner inspects Mega Diancie: expected Brilliant Storm damage is 240 at that moment, not a played attack. Lucky Ice Pop heals 160 to 180; heads returns it to hand. Reused Pop heals 180 to 200; tails discards it. Copycat shuffles the remaining hand and draws to opponent hand count. Soothing Shore replaces Peculiar Plaza. Second Indeedee ex is benched and its Watch Over heals 200 to 220. Heavy Helmet attaches to Active ex. Water attaches to Active ex, enabling Shore's end-of-turn heal 220 to 240. No attack. Non-ex Wailord remains benched with three Water. | native 205.00s, 211.00s, 232.00s, 236.00s, 241.00s, 249.00s, 254.00s, 263.00s, 265.00s, 268.00s, 272.00s; overview 08 |"
+      },
+      "limits": "Target hand identities and counts are fresh native observations. Boards, points and voluntary plays remain inherited. Exact action onset and exact video-frame PTS were not measured; hidden opponent identities and discard contents remain unknown.",
+      "discard_limits": "No opened discard-pile window is visible in the inspected hand/reveal evidence. No claim that every intervening second was freshly checked for pile views."
+    },
+    {
+      "turn_number": 10,
+      "who_played": "opponent",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "timing": {
+        "accepted_window": "Turn 10, about 280-314s, opponent",
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": null,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": null
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "outside_requested_scope",
+        "limit_reason": "Opponent card identities are hidden; no hand identities inferred."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "outside_requested_scope",
+        "limit_reason": "Not requested beyond first six owner turns."
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "basis": null,
+        "evidence_ids": null,
+        "limit_reason": "Outside requested target owner hands."
+      },
+      "draws_and_searches": null,
+      "draws_searches_accepted_account_reference": {
+        "status": "inherited_accepted_review_not_new_visual_observation",
+        "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+        "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+        "accepted_source_line": 35,
+        "verbatim_accepted_row": "| Turn 10, about 280-314s, opponent | Protective Poncho attaches to benched Mega Diancie, protecting it from damage while benched. May is played but the interface says no cards in deck can be the effect's target. Psychic attaches to Mega Gardevoir. Fantasia Force hits Active ex for 90 after Heavy Helmet, 240 to 150. Three more Psychic are distributed; stable post-turn board shows Giratina four, Meloetta two, Mega Diancie four and Mega Gardevoir four. Score remains zero-zero. | native 291.00s, 296.00s, 300.00s, 309.00s, 336.00s; overview 09 |"
+      },
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "inherited_narrative_unit",
+          "description": "Protective Poncho attaches to benched Mega Diancie, protecting it from damage while benched.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 35,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 2,
+          "kind": "inherited_narrative_unit",
+          "description": "May is played but the interface says no cards in deck can be the effect's target.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 35,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 3,
+          "kind": "inherited_narrative_unit",
+          "description": "Psychic attaches to Mega Gardevoir.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 35,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 4,
+          "kind": "inherited_narrative_unit",
+          "description": "Fantasia Force hits Active ex for 90 after Heavy Helmet, 240 to 150.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 35,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 5,
+          "kind": "inherited_narrative_unit",
+          "description": "Three more Psychic are distributed; stable post-turn board shows Giratina four, Meloetta two, Mega Diancie four and Mega Gardevoir four.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 35,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 6,
+          "kind": "inherited_narrative_unit",
+          "description": "Score remains zero-zero.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 35,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        }
+      ],
+      "numbering_basis": "Inherited sentence order, not newly inspected exact subaction order. Target owner turns replace this with accepted voluntary-action sequence where possible.",
+      "automatic_events_in_order": null,
+      "board_at_start": {
+        "status": "inherited_reference_only",
+        "owner": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "opponent": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "accepted_board_reference": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+          "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+          "accepted_source_line": 35,
+          "verbatim_accepted_row": "| Turn 10, about 280-314s, opponent | Protective Poncho attaches to benched Mega Diancie, protecting it from damage while benched. May is played but the interface says no cards in deck can be the effect's target. Psychic attaches to Mega Gardevoir. Fantasia Force hits Active ex for 90 after Heavy Helmet, 240 to 150. Three more Psychic are distributed; stable post-turn board shows Giratina four, Meloetta two, Mega Diancie four and Mega Gardevoir four. Score remains zero-zero. | native 291.00s, 296.00s, 300.00s, 309.00s, 336.00s; overview 09 |"
+        },
+        "limit_reason": "Accepted prose and native references govern board facts; no new start/end board reconstruction in this bounded request."
+      },
+      "board_after": {
+        "status": "inherited_reference_only",
+        "owner": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "opponent": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "accepted_board_reference": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+          "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+          "accepted_source_line": 35,
+          "verbatim_accepted_row": "| Turn 10, about 280-314s, opponent | Protective Poncho attaches to benched Mega Diancie, protecting it from damage while benched. May is played but the interface says no cards in deck can be the effect's target. Psychic attaches to Mega Gardevoir. Fantasia Force hits Active ex for 90 after Heavy Helmet, 240 to 150. Three more Psychic are distributed; stable post-turn board shows Giratina four, Meloetta two, Mega Diancie four and Mega Gardevoir four. Score remains zero-zero. | native 291.00s, 296.00s, 300.00s, 309.00s, 336.00s; overview 09 |"
+        },
+        "limit_reason": "Accepted prose and native references govern board facts; no new start/end board reconstruction in this bounded request."
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "outside_requested_scope",
+        "limit_reason": "Outside requested target owner hands."
+      },
+      "discard_snapshot_ids": null,
+      "turn_evidence_ids": null,
+      "accepted_reference": {
+        "status": "inherited_accepted_review_not_new_visual_observation",
+        "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+        "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+        "accepted_source_line": 35,
+        "verbatim_accepted_row": "| Turn 10, about 280-314s, opponent | Protective Poncho attaches to benched Mega Diancie, protecting it from damage while benched. May is played but the interface says no cards in deck can be the effect's target. Psychic attaches to Mega Gardevoir. Fantasia Force hits Active ex for 90 after Heavy Helmet, 240 to 150. Three more Psychic are distributed; stable post-turn board shows Giratina four, Meloetta two, Mega Diancie four and Mega Gardevoir four. Score remains zero-zero. | native 291.00s, 296.00s, 300.00s, 309.00s, 336.00s; overview 09 |"
+      },
+      "limits": "Accepted battle account preserved. Newly observed hand fields are populated only for turns 1,3,5,7,9,11."
+    },
+    {
+      "turn_number": 11,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "timing": {
+        "accepted_window": "Turn 11, about 314-366s, owner",
+        "draw_animation_end_seconds": 313.75,
+        "first_voluntary_move_seconds": null,
+        "before_end_action_seconds": 362,
+        "end_after_resolution_seconds": null,
+        "draw_end_supported_interval_seconds": [
+          313,
+          314.5
+        ],
+        "first_move_supported_interval_seconds": [
+          316.5,
+          319.5
+        ],
+        "timing_basis": "Bounded native candidate inspection; exact video frame PTS and exact first-action onset were not measured."
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Soothing Shore",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0316.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0316.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Professor's Research",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0316.50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0316.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Soothing Shore",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0316.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0316.50"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Professor's Research",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0316.50"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0316.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 4,
+        "supported_range": null,
+        "count_method": "Visible separate card-back faces and bottom boundaries in native top crop",
+        "basis": "direct_visual_count",
+        "evidence_ids": [
+          "f0316.50"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": "normal turn draw",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Professor's Research",
+              "reveal_position": 1,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 316.5,
+              "evidence_ids": [
+                "f0316.50"
+              ],
+              "basis": "direct_native_observation",
+              "limit_reason": null
+            }
+          ],
+          "returned_or_discarded_cards": null,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": 316.5,
+          "evidence_ids": [
+            "f0316.50"
+          ],
+          "limit_reason": "Draw identity directly observed during reveal or subsequent fan; animation-end time bounded separately."
+        },
+        {
+          "kind": "research",
+          "caused_by": "Professor's Research",
+          "linked_play_order": 3,
+          "cards_in_reveal_order": [
+            {
+              "name": "Cyrus",
+              "reveal_position": 1,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 330,
+              "evidence_ids": [
+                "f0330.00"
+              ],
+              "basis": "direct_native_observation",
+              "limit_reason": null
+            },
+            {
+              "name": "Poké Ball",
+              "reveal_position": 2,
+              "source_video": "20261002_021402000_iOS.MP4",
+              "timestamp_seconds": 331,
+              "evidence_ids": [
+                "f0331.00"
+              ],
+              "basis": "direct_native_observation",
+              "limit_reason": null
+            }
+          ],
+          "returned_or_discarded_cards": null,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": 330,
+          "evidence_ids": [
+            "f0330.00",
+            "f0331.00"
+          ],
+          "limit_reason": "Observed reveal order Cyrus then Poké Ball supplements the accepted unordered pair."
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poké Ball",
+          "linked_play_order": 4,
+          "cards_in_reveal_order": [],
+          "basis": "inherited_no_target_message_with_native336_reference",
+          "hand_count_after": 3,
+          "evidence_ids": [
+            "f0336.00"
+          ],
+          "limit_reason": "Known unsuccessful search; empty revealed-card array means no card obtained, not uninspected."
+        }
+      ],
+      "draws_searches_accepted_account_reference": {
+        "status": "inherited_accepted_review_not_new_visual_observation",
+        "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+        "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+        "accepted_source_line": 36,
+        "verbatim_accepted_row": "| Turn 11, about 314-366s, owner | Both Watch Over abilities heal 150 to 170 to 190. Professor's Research draws Poké Ball and Cyrus. Poké Ball is played with no remaining Basic target, confirmed by on-screen message. Water is attached to benched non-ex Wailord, bringing it to four, while ex remains Active with one. Lucky Ice Pop heals ex 190 to 210; tails discards it. Shore heals ex to 230 at turn end. Owner does not attack. | native 331.00s, 336.00s, 350.00s, 360.00s; overview 09-11 |"
+      },
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "ability",
+          "card_name": "Indeedee ex",
+          "target": "Active Wailord ex",
+          "result": "First Watch Over heals 150 to 170",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 36,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        },
+        {
+          "order": 2,
+          "kind": "ability",
+          "card_name": "Indeedee ex",
+          "target": "Active Wailord ex",
+          "result": "Second Watch Over heals 170 to 190",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 36,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        },
+        {
+          "order": 3,
+          "kind": "card_play",
+          "card_name": "Professor's Research",
+          "target": null,
+          "result": "Draws Poké Ball and Cyrus; original prose did not assert reveal order",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 36,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        },
+        {
+          "order": 4,
+          "kind": "card_play",
+          "card_name": "Poké Ball",
+          "target": null,
+          "result": "No Basic target; on-screen no-target message",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 36,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        },
+        {
+          "order": 5,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Benched non-ex Wailord",
+          "result": "Fourth Water; ex remains Active with one",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 36,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        },
+        {
+          "order": 6,
+          "kind": "card_play",
+          "card_name": "Lucky Ice Pop",
+          "target": "Active Wailord ex",
+          "result": "Heals to 210; tails discards Pop",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 36,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        },
+        {
+          "order": 7,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "result": "Shore heals to 230; no attack",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "evidence_ids": null,
+          "accepted_source_line": 36,
+          "prompt_text": null,
+          "response": null,
+          "limit_reason": "Accepted sequence transcribed. This supplement does not freshly re-review accepted plays or declare unseen prompts declined."
+        }
+      ],
+      "numbering_basis": "Numbered voluntary sequence as far as accepted prose explicitly supports; End Turn is inherited from its pass/no-attack account. Automatic healing stays in the original result prose.",
+      "automatic_events_in_order": null,
+      "board_at_start": {
+        "status": "inherited_reference_only",
+        "owner": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "opponent": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "accepted_board_reference": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+          "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+          "accepted_source_line": 36,
+          "verbatim_accepted_row": "| Turn 11, about 314-366s, owner | Both Watch Over abilities heal 150 to 170 to 190. Professor's Research draws Poké Ball and Cyrus. Poké Ball is played with no remaining Basic target, confirmed by on-screen message. Water is attached to benched non-ex Wailord, bringing it to four, while ex remains Active with one. Lucky Ice Pop heals ex 190 to 210; tails discards it. Shore heals ex to 230 at turn end. Owner does not attack. | native 331.00s, 336.00s, 350.00s, 360.00s; overview 09-11 |"
+        },
+        "limit_reason": "Accepted prose and native references govern board facts; no new start/end board reconstruction in this bounded request."
+      },
+      "board_after": {
+        "status": "inherited_reference_only",
+        "owner": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "opponent": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "accepted_board_reference": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+          "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+          "accepted_source_line": 36,
+          "verbatim_accepted_row": "| Turn 11, about 314-366s, owner | Both Watch Over abilities heal 150 to 170 to 190. Professor's Research draws Poké Ball and Cyrus. Poké Ball is played with no remaining Basic target, confirmed by on-screen message. Water is attached to benched non-ex Wailord, bringing it to four, while ex remains Active with one. Lucky Ice Pop heals ex 190 to 210; tails discards it. Shore heals ex to 230 at turn end. Owner does not attack. | native 331.00s, 336.00s, 350.00s, 360.00s; overview 09-11 |"
+        },
+        "limit_reason": "Accepted prose and native references govern board facts; no new start/end board reconstruction in this bounded request."
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Soothing Shore",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0362.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Cyrus",
+            "variant": null,
+            "basis": "direct_native_frame_observation",
+            "evidence_ids": [
+              "f0362.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 2,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0362.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "discard_snapshot_ids": null,
+      "turn_evidence_ids": [
+        "f0316.50",
+        "f0314.50",
+        "f0319.50",
+        "f0362.00",
+        "f0313.00",
+        "f0330.00",
+        "f0331.00",
+        "f0336.00",
+        "f0350.00"
+      ],
+      "accepted_reference": {
+        "status": "inherited_accepted_review_not_new_visual_observation",
+        "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+        "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+        "accepted_source_line": 36,
+        "verbatim_accepted_row": "| Turn 11, about 314-366s, owner | Both Watch Over abilities heal 150 to 170 to 190. Professor's Research draws Poké Ball and Cyrus. Poké Ball is played with no remaining Basic target, confirmed by on-screen message. Water is attached to benched non-ex Wailord, bringing it to four, while ex remains Active with one. Lucky Ice Pop heals ex 190 to 210; tails discards it. Shore heals ex to 230 at turn end. Owner does not attack. | native 331.00s, 336.00s, 350.00s, 360.00s; overview 09-11 |"
+      },
+      "limits": "Target hand identities and counts are fresh native observations. Boards, points and voluntary plays remain inherited. Exact action onset and exact video-frame PTS were not measured; hidden opponent identities and discard contents remain unknown.",
+      "discard_limits": "No opened discard-pile window is visible in the inspected hand/reveal evidence. No claim that every intervening second was freshly checked for pile views."
+    },
+    {
+      "turn_number": 12,
+      "who_played": "opponent",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "timing": {
+        "accepted_window": "Turn 12, about 366-396s, opponent",
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": null,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": null
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "outside_requested_scope",
+        "limit_reason": "Opponent card identities are hidden; no hand identities inferred."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "outside_requested_scope",
+        "limit_reason": "Not requested beyond first six owner turns."
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "basis": null,
+        "evidence_ids": null,
+        "limit_reason": "Outside requested target owner hands."
+      },
+      "draws_and_searches": null,
+      "draws_searches_accepted_account_reference": {
+        "status": "inherited_accepted_review_not_new_visual_observation",
+        "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+        "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+        "accepted_source_line": 37,
+        "verbatim_accepted_row": "| Turn 12, about 366-396s, opponent | Opponent plays Poké Ball with no deck target. Psychic attaches to Mega Diancie, which now has five. Mega Gardevoir retreats, discarding one Psychic, and Mega Diancie promotes. The resulting visible opponent board has fourteen Psychic in total. Brilliant Storm hits for displayed 300 after the owner's Helmet, knocking out 230-HP Wailord ex. Opponent gains two points. Owner is prompted to replace it. | native 373.00s, 383.00s, 386.00s, 392.00s; overview 11 |"
+      },
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "inherited_narrative_unit",
+          "description": "Opponent plays Poké Ball with no deck target.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 37,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 2,
+          "kind": "inherited_narrative_unit",
+          "description": "Psychic attaches to Mega Diancie, which now has five.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 37,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 3,
+          "kind": "inherited_narrative_unit",
+          "description": "Mega Gardevoir retreats, discarding one Psychic, and Mega Diancie promotes.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 37,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 4,
+          "kind": "inherited_narrative_unit",
+          "description": "The resulting visible opponent board has fourteen Psychic in total.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 37,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 5,
+          "kind": "inherited_narrative_unit",
+          "description": "Brilliant Storm hits for displayed 300 after the owner's Helmet, knocking out 230-HP Wailord ex.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 37,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 6,
+          "kind": "inherited_narrative_unit",
+          "description": "Opponent gains two points.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 37,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 7,
+          "kind": "inherited_narrative_unit",
+          "description": "Owner is prompted to replace it.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 37,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        }
+      ],
+      "numbering_basis": "Inherited sentence order, not newly inspected exact subaction order. Target owner turns replace this with accepted voluntary-action sequence where possible.",
+      "automatic_events_in_order": null,
+      "board_at_start": {
+        "status": "inherited_reference_only",
+        "owner": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "opponent": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "accepted_board_reference": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+          "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+          "accepted_source_line": 37,
+          "verbatim_accepted_row": "| Turn 12, about 366-396s, opponent | Opponent plays Poké Ball with no deck target. Psychic attaches to Mega Diancie, which now has five. Mega Gardevoir retreats, discarding one Psychic, and Mega Diancie promotes. The resulting visible opponent board has fourteen Psychic in total. Brilliant Storm hits for displayed 300 after the owner's Helmet, knocking out 230-HP Wailord ex. Opponent gains two points. Owner is prompted to replace it. | native 373.00s, 383.00s, 386.00s, 392.00s; overview 11 |"
+        },
+        "limit_reason": "Accepted prose and native references govern board facts; no new start/end board reconstruction in this bounded request."
+      },
+      "board_after": {
+        "status": "inherited_reference_only",
+        "owner": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "opponent": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "accepted_board_reference": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+          "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+          "accepted_source_line": 37,
+          "verbatim_accepted_row": "| Turn 12, about 366-396s, opponent | Opponent plays Poké Ball with no deck target. Psychic attaches to Mega Diancie, which now has five. Mega Gardevoir retreats, discarding one Psychic, and Mega Diancie promotes. The resulting visible opponent board has fourteen Psychic in total. Brilliant Storm hits for displayed 300 after the owner's Helmet, knocking out 230-HP Wailord ex. Opponent gains two points. Owner is prompted to replace it. | native 373.00s, 383.00s, 386.00s, 392.00s; overview 11 |"
+        },
+        "limit_reason": "Accepted prose and native references govern board facts; no new start/end board reconstruction in this bounded request."
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "outside_requested_scope",
+        "limit_reason": "Outside requested target owner hands."
+      },
+      "discard_snapshot_ids": null,
+      "turn_evidence_ids": null,
+      "accepted_reference": {
+        "status": "inherited_accepted_review_not_new_visual_observation",
+        "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+        "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+        "accepted_source_line": 37,
+        "verbatim_accepted_row": "| Turn 12, about 366-396s, opponent | Opponent plays Poké Ball with no deck target. Psychic attaches to Mega Diancie, which now has five. Mega Gardevoir retreats, discarding one Psychic, and Mega Diancie promotes. The resulting visible opponent board has fourteen Psychic in total. Brilliant Storm hits for displayed 300 after the owner's Helmet, knocking out 230-HP Wailord ex. Opponent gains two points. Owner is prompted to replace it. | native 373.00s, 383.00s, 386.00s, 392.00s; overview 11 |"
+      },
+      "limits": "Accepted battle account preserved. Newly observed hand fields are populated only for turns 1,3,5,7,9,11."
+    },
+    {
+      "turn_number": 13,
+      "who_played": "owner",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "timing": {
+        "accepted_window": "Turn 13, about 396-408s, owner",
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": null,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": null
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "outside_requested_scope",
+        "limit_reason": "Not a requested owner turn."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "outside_requested_scope",
+        "limit_reason": "Not requested beyond first six owner turns."
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "basis": null,
+        "evidence_ids": null,
+        "limit_reason": "Outside requested target owner hands."
+      },
+      "draws_and_searches": null,
+      "draws_searches_accepted_account_reference": {
+        "status": "inherited_accepted_review_not_new_visual_observation",
+        "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+        "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+        "accepted_source_line": 38,
+        "verbatim_accepted_row": "| Turn 13, about 396-408s, owner | Non-ex Wailord promotes at full 200 HP. Owner draws Irida and inspects it; Irida remains in hand, so it is not treated as played. Fifth Water attaches to Wailord. Whale Pump displays 110 and is used, reducing Active Mega Diancie from 170 to stable 60 HP. This is the owner's only recorded attack. No owner point is earned. | native 402.00s, 410.00s; overview 12 |"
+      },
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "inherited_narrative_unit",
+          "description": "Non-ex Wailord promotes at full 200 HP.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 38,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 2,
+          "kind": "inherited_narrative_unit",
+          "description": "Owner draws Irida and inspects it; Irida remains in hand, so it is not treated as played.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 38,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 3,
+          "kind": "inherited_narrative_unit",
+          "description": "Fifth Water attaches to Wailord.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 38,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 4,
+          "kind": "inherited_narrative_unit",
+          "description": "Whale Pump displays 110 and is used, reducing Active Mega Diancie from 170 to stable 60 HP.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 38,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 5,
+          "kind": "inherited_narrative_unit",
+          "description": "This is the owner's only recorded attack.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 38,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 6,
+          "kind": "inherited_narrative_unit",
+          "description": "No owner point is earned.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 38,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        }
+      ],
+      "numbering_basis": "Inherited sentence order, not newly inspected exact subaction order. Target owner turns replace this with accepted voluntary-action sequence where possible.",
+      "automatic_events_in_order": null,
+      "board_at_start": {
+        "status": "inherited_reference_only",
+        "owner": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "opponent": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "accepted_board_reference": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+          "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+          "accepted_source_line": 38,
+          "verbatim_accepted_row": "| Turn 13, about 396-408s, owner | Non-ex Wailord promotes at full 200 HP. Owner draws Irida and inspects it; Irida remains in hand, so it is not treated as played. Fifth Water attaches to Wailord. Whale Pump displays 110 and is used, reducing Active Mega Diancie from 170 to stable 60 HP. This is the owner's only recorded attack. No owner point is earned. | native 402.00s, 410.00s; overview 12 |"
+        },
+        "limit_reason": "Accepted prose and native references govern board facts; no new start/end board reconstruction in this bounded request."
+      },
+      "board_after": {
+        "status": "inherited_reference_only",
+        "owner": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "opponent": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "accepted_board_reference": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+          "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+          "accepted_source_line": 38,
+          "verbatim_accepted_row": "| Turn 13, about 396-408s, owner | Non-ex Wailord promotes at full 200 HP. Owner draws Irida and inspects it; Irida remains in hand, so it is not treated as played. Fifth Water attaches to Wailord. Whale Pump displays 110 and is used, reducing Active Mega Diancie from 170 to stable 60 HP. This is the owner's only recorded attack. No owner point is earned. | native 402.00s, 410.00s; overview 12 |"
+        },
+        "limit_reason": "Accepted prose and native references govern board facts; no new start/end board reconstruction in this bounded request."
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "outside_requested_scope",
+        "limit_reason": "Outside requested target owner hands."
+      },
+      "discard_snapshot_ids": null,
+      "turn_evidence_ids": null,
+      "accepted_reference": {
+        "status": "inherited_accepted_review_not_new_visual_observation",
+        "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+        "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+        "accepted_source_line": 38,
+        "verbatim_accepted_row": "| Turn 13, about 396-408s, owner | Non-ex Wailord promotes at full 200 HP. Owner draws Irida and inspects it; Irida remains in hand, so it is not treated as played. Fifth Water attaches to Wailord. Whale Pump displays 110 and is used, reducing Active Mega Diancie from 170 to stable 60 HP. This is the owner's only recorded attack. No owner point is earned. | native 402.00s, 410.00s; overview 12 |"
+      },
+      "limits": "Accepted battle account preserved. Newly observed hand fields are populated only for turns 1,3,5,7,9,11."
+    },
+    {
+      "turn_number": 14,
+      "who_played": "opponent",
+      "source_video": "20261002_021402000_iOS.MP4",
+      "timing": {
+        "accepted_window": "Turn 14, about 408-424s, opponent",
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": null,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": null
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "outside_requested_scope",
+        "limit_reason": "Opponent card identities are hidden; no hand identities inferred."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "outside_requested_scope",
+        "limit_reason": "Not requested beyond first six owner turns."
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "basis": null,
+        "evidence_ids": null,
+        "limit_reason": "Outside requested target owner hands."
+      },
+      "draws_and_searches": null,
+      "draws_searches_accepted_account_reference": {
+        "status": "inherited_accepted_review_not_new_visual_observation",
+        "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+        "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+        "accepted_source_line": 39,
+        "verbatim_accepted_row": "| Turn 14, about 408-424s, opponent | Mega Diancie remains Active with stable 60 HP, then uses Brilliant Storm again. Displayed 300 damage knocks out 200-HP non-ex Wailord despite Heavy Helmet. Opponent gains one point and reaches three. | native 410.00s, 416.00s, 422.00s |"
+      },
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "inherited_narrative_unit",
+          "description": "Mega Diancie remains Active with stable 60 HP, then uses Brilliant Storm again.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 39,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 2,
+          "kind": "inherited_narrative_unit",
+          "description": "Displayed 300 damage knocks out 200-HP non-ex Wailord despite Heavy Helmet.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 39,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        },
+        {
+          "order": 3,
+          "kind": "inherited_narrative_unit",
+          "description": "Opponent gains one point and reaches three.",
+          "basis": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_source_line": 39,
+          "source_video": "20261002_021402000_iOS.MP4",
+          "timestamp_seconds": null,
+          "limit_reason": "Narrative sentence order preserved. Compound actions within a sentence are not silently split or independently verified."
+        }
+      ],
+      "numbering_basis": "Inherited sentence order, not newly inspected exact subaction order. Target owner turns replace this with accepted voluntary-action sequence where possible.",
+      "automatic_events_in_order": null,
+      "board_at_start": {
+        "status": "inherited_reference_only",
+        "owner": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "opponent": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "accepted_board_reference": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+          "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+          "accepted_source_line": 39,
+          "verbatim_accepted_row": "| Turn 14, about 408-424s, opponent | Mega Diancie remains Active with stable 60 HP, then uses Brilliant Storm again. Displayed 300 damage knocks out 200-HP non-ex Wailord despite Heavy Helmet. Opponent gains one point and reaches three. | native 410.00s, 416.00s, 422.00s |"
+        },
+        "limit_reason": "Accepted prose and native references govern board facts; no new start/end board reconstruction in this bounded request."
+      },
+      "board_after": {
+        "status": "inherited_reference_only",
+        "owner": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "opponent": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "energy_zone": {
+            "this_turn": null,
+            "next": null,
+            "status": "outside_requested_hand_supplement",
+            "limit_reason": "No fresh board or Energy Zone review authorized."
+          }
+        },
+        "accepted_board_reference": {
+          "status": "inherited_accepted_review_not_new_visual_observation",
+          "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+          "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+          "accepted_source_line": 39,
+          "verbatim_accepted_row": "| Turn 14, about 408-424s, opponent | Mega Diancie remains Active with stable 60 HP, then uses Brilliant Storm again. Displayed 300 damage knocks out 200-HP non-ex Wailord despite Heavy Helmet. Opponent gains one point and reaches three. | native 410.00s, 416.00s, 422.00s |"
+        },
+        "limit_reason": "Accepted prose and native references govern board facts; no new start/end board reconstruction in this bounded request."
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": null,
+        "status": "outside_requested_scope",
+        "limit_reason": "Outside requested target owner hands."
+      },
+      "discard_snapshot_ids": null,
+      "turn_evidence_ids": null,
+      "accepted_reference": {
+        "status": "inherited_accepted_review_not_new_visual_observation",
+        "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\REVIEW.md",
+        "accepted_review_sha256": "c6e361d1f95db21cf3b2d500d8d6d3f7db0b0d059aae500a22a677b466abe044",
+        "accepted_source_line": 39,
+        "verbatim_accepted_row": "| Turn 14, about 408-424s, opponent | Mega Diancie remains Active with stable 60 HP, then uses Brilliant Storm again. Displayed 300 damage knocks out 200-HP non-ex Wailord despite Heavy Helmet. Opponent gains one point and reaches three. | native 410.00s, 416.00s, 422.00s |"
+      },
+      "limits": "Accepted battle account preserved. Newly observed hand fields are populated only for turns 1,3,5,7,9,11."
+    }
+  ],
+  "limits": "Fourteen accepted game turns are included as inherited context. This is not a fresh all-turn capture. Owner turn13 is explicitly outside the bounded supplement."
+}

@@ -1,0 +1,48 @@
+{
+  "game_id": "20260929_002539000",
+  "checker": "sol_verify_computer_012720",
+  "producer": "sol_retro_ladder_012720",
+  "independent_of_producer": true,
+  "checked_utc": "2026-10-02T23:31:24.821243+00:00",
+  "verdict": "repair_required",
+  "source_work_status": "complete_with_recording_limits",
+  "source_sha256": "a951746c8a5226b0f575405e985c72cc3af249da0a757e0712b621d82b85aa06",
+  "submission_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\SUBMISSION.json",
+  "submission_sha256": "5ff5ed564e6cb166813e0b5e14d3eedebb1528fa31fe6b2889040669643a2cf4",
+  "payload_hashes_match": true,
+  "binding_report": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\independent_ladder\\20260929_002539000\\FILE_AND_EVIDENCE_BINDING.json",
+  "required_repairs": [
+    {
+      "id": "T10_OPPONENT_END_FAN",
+      "paths": [
+        "TURN_LEDGER.json#/turns/9/opponent_hand_end/count",
+        "REVIEW_SUPPLEMENT.md#Turn-10"
+      ],
+      "submitted_count": 3,
+      "supported_count": 2,
+      "native_evidence_ids": [
+        "F0385.00",
+        "F0395.00",
+        "R0396.00"
+      ],
+      "later_draw_locator": "grid_380_399.jpg nominal397",
+      "reason": "Third opponent back appears only during Turn11 normal draw. Preserve separately reconciled T11 post-draw start count3.",
+      "new_capture_required": false
+    }
+  ],
+  "other_substantive_fields": "Supported with described direct, inherited, endpoint-inferred and hidden-information qualifications",
+  "mode": {
+    "classification": "ladder_presumed",
+    "Master_Ball_Rank_observed": true,
+    "opponent": "ユアンジュナ",
+    "auto_option_seen_in_checked_controls": false,
+    "auto_enabled": null,
+    "individual_authorship": null,
+    "limit": "Sampled absence, not every-instant absence. Any visible Auto option even Off requires computer classification."
+  },
+  "accepted_outcome_changed": false,
+  "historical_exact20_known": false,
+  "scope": "Full independent field packet check. No broad outcome/rules/simulator audit. Producer and shared files untouched.",
+  "metrics_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\independent_ladder\\20260929_002539000\\METRICS.json",
+  "detail_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\independent_ladder\\20260929_002539000\\CHECK_RESULT.md"
+}

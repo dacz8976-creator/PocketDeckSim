@@ -1,0 +1,64 @@
+{
+  "source_video": "20261013_020824000_iOS.MP4",
+  "source_sha256": "07937ec6622f5979fd73f65b81a6315bba5bcaadb5eb272c9b28d4b17c4bdaa4",
+  "classification": "human",
+  "auto_option_visible": false,
+  "opponent": "Subbles",
+  "result": "loss",
+  "turn_count": 14,
+  "match_date": "2026-10-12",
+  "match_date_basis": "SOURCE_TIME.json container UTC creation2026-10-13T02:08:24Z maps to Chicago2026-10-12 21:08; filmed phone9:08 corroborates",
+  "game_count": 1,
+  "owner_turn_order": "first",
+  "went_first": true,
+  "owner_points": 0,
+  "opponent_points": 3,
+  "opponent_visible_core": [
+    "Shuckle ex",
+    "Combee",
+    "Vespiquen ex",
+    "Teal Mask Ogerpon ex"
+  ],
+  "owner_visible_core": [
+    "Glimmet",
+    "Glimmora",
+    "Alolan Grimer",
+    "Alolan Muk",
+    "Pawniard",
+    "Regigigas"
+  ],
+  "deck_name": "Glimmora / Alolan Muk / Kingambit / Regigigas",
+  "terminal_method": "Vespiquen ex Chase Order discards Teal Mask Ogerpon ex, deals140 to Regigigas50, third point",
+  "terminal_evidence": [
+    {
+      "seconds": 524,
+      "path": "turn_evidence/t0524.00.jpg",
+      "observation": "140 damage lands on50HP Regigigas"
+    },
+    {
+      "seconds": 527,
+      "path": "turn_evidence/t0527.00.jpg",
+      "observation": "Regigigas removed"
+    },
+    {
+      "seconds": 532,
+      "path": "turn_evidence/t0532.00.jpg",
+      "observation": "Defeat banner"
+    },
+    {
+      "seconds": 540.4,
+      "path": "turn_evidence/t0540.40.jpg",
+      "observation": "Defeat vs Subbles; Went first; Turns played14; Your points0; Opponent points3; Damage done60"
+    }
+  ],
+  "capture_status": "complete_with_recording_limits",
+  "full_battle_review_status": "primary_complete_pending_independent_check",
+  "external_log_status": "pending_browser_policy_access",
+  "reviewer": "/root/remaining_020824",
+  "review_model": "inherited Sol",
+  "mechanics": [
+    "Power of Alchemy suppresses Basic Abilities, including Shuckle Solid Shell, Ogerpon Soothing Wind, Regigigas Seal of Antiquity.",
+    "Seal of Antiquity literal restriction is attack, not Energy attachment.",
+    "Glimmora Shattering Crystal remains a Stage1 Ability and flips tails on KO."
+  ]
+}

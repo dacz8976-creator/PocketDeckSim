@@ -1,0 +1,41 @@
+{
+  "video_basename": "20261001_213822000_iOS.MP4",
+  "remaining_coverage_gaps": [],
+  "honestly_unknown_hidden_information": [
+    {
+      "item": "Opponent search results",
+      "times": [
+        15,
+        110
+      ],
+      "detail": "Pok\u00e9 Ball/Juliana are shown but hidden search identities are not independently revealed as the immediate fetched card."
+    },
+    {
+      "item": "Complete decks and unused cards",
+      "detail": "Only public cards and owner visible hand cards are established; results names a Solo deck, not its exact20-card contents."
+    },
+    {
+      "item": "Exact catalog numbers/artwork printings",
+      "detail": "Mechanically relevant names, HP and attack/ability text are visible; catalog IDs are not required for these observed findings."
+    }
+  ],
+  "remaining_observational_uncertainties": [
+    {
+      "item": "Second Misty selected Water target",
+      "times": [
+        120,
+        122,
+        128
+      ],
+      "detail": "Eligible Water cards are highlighted, but the chosen target is not securely isolated. Zero heads/one tails gives no Energy regardless."
+    }
+  ],
+  "untested_rules_branches": [
+    "Wallace evolution on the same turn a Basic enters play",
+    "Turbo Shark with no eligible benched Water Pokemon",
+    "Carefree Steps heads preventing damage",
+    "Destructive Inferno heads actually removing Energy",
+    "Mega ex being knocked out and awarding three points"
+  ],
+  "independent_acceptance_pending": true
+}

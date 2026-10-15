@@ -1,0 +1,149 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261005_032857000_iOS",
+  "review_date": "2026-10-06",
+  "sources": [
+    {
+      "video_basename": "20261005_032857000_iOS.MP4",
+      "sha256": "a7aa71ededa0f2372282f5ba1ff0620b1fed9cedec8bb71101aee1db6eba297e",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "deck_name": "Aegislash / Team Rocket's Tinkaton (filmed New deck6)",
+  "opening": {
+    "source_video": "20261005_032857000_iOS.MP4",
+    "timestamp_seconds": 26,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Honedge",
+        "variant": null,
+        "basis": "observation",
+        "evidence_ids": [
+          "E0026_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Aegislash",
+        "variant": "Cursed Metal",
+        "basis": "observation",
+        "evidence_ids": [
+          "E0026_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Professor's Research",
+        "variant": null,
+        "basis": "observation",
+        "evidence_ids": [
+          "E0026_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Doublade",
+        "variant": null,
+        "basis": "observation",
+        "evidence_ids": [
+          "E0026_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Team Rocket's Tinkatink",
+        "variant": null,
+        "basis": "observation",
+        "evidence_ids": [
+          "E0026_00"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Honedge",
+      "opening_position": 1,
+      "source_video": "20261005_032857000_iOS.MP4",
+      "timestamp_seconds": 32,
+      "evidence_ids": [
+        "E0032_00",
+        "E0036_00"
+      ]
+    },
+    "initial_bench": [
+      {
+        "name": "Team Rocket's Tinkatink",
+        "position": 1,
+        "timestamp_seconds": 36,
+        "evidence_ids": [
+          "E0036_00"
+        ]
+      }
+    ],
+    "redraw_or_replacement": [],
+    "before_active_placement": true,
+    "status": "observed",
+    "evidence_ids": [
+      "E0026_00",
+      "E0032_00",
+      "E0036_00"
+    ],
+    "limit_reason": null
+  },
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "full_battle_review_complete",
+  "outcome": {
+    "owner_result": "loss",
+    "screen_result": "Defeat",
+    "opponent": "Friendlike_Andy",
+    "owner_points": 0,
+    "opponent_points": 2,
+    "turns_played": 9,
+    "damage_done_displayed": 220,
+    "cause_observed": "Last owner Pokemon knocked out; Active and all Bench slots empty.",
+    "evidence_ids": [
+      "E0287_00",
+      "E0288_00",
+      "E0292_00",
+      "E0297_00",
+      "E0298_00",
+      "E0304_00"
+    ]
+  },
+  "mode": {
+    "classification": "human",
+    "queue": "Deluxe Pack: Mega Emblem Event",
+    "auto_control_visible": false,
+    "basis": "Event screen4s, human matchmaking6-12s, opponent account and nine recorded turns; no Auto option seen in source.",
+    "evidence_ids": [
+      "E0004_00",
+      "E0006_00",
+      "E0012_00"
+    ]
+  },
+  "match_date_local": "2026-10-04",
+  "match_date_basis": "RECORDING_METADATA.json embedded creation_timeUTC converted to America/Chicago; 22:28:57 local.",
+  "limits": [
+    "Full live-log20card snapshot of this new Metal revision remains unavailable in initial snapshot, while filmedQR20 is exact.",
+    "Discard capture limited to owner278s; opponent pile never opened.",
+    "All timestamps are source-local native requested seeks, not measured PTS."
+  ],
+  "lead_checked": true,
+  "lead_acceptance": "LEAD_ACCEPTANCE.json"
+}

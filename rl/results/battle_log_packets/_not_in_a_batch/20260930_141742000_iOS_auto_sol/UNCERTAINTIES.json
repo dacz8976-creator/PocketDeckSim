@@ -1,0 +1,67 @@
+{
+  "reviewer": "sol_auto_141742000",
+  "consequential_unresolved": [],
+  "unreviewed_intervals": [],
+  "items": [
+    {
+      "id": "hidden_decks",
+      "times_seconds": [
+        0,
+        165.18
+      ],
+      "status": "unknown_not_required",
+      "description": "The complete decks and opponent hidden hand are not exposed. Visible card core is documented; no hidden winning alternative or exact deck list is inferred."
+    },
+    {
+      "id": "poke_ball_result",
+      "times_seconds": [
+        30,
+        36.5
+      ],
+      "status": "unknown_not_required",
+      "description": "AI Poke Ball is visibly played, but the random Basic searched is not separately revealed. Later benched Scyther, Bulbasaur and Petilil are not assigned to that search.",
+      "evidence": "detail_25_65/sheet_01.jpg"
+    },
+    {
+      "id": "computer_challenge",
+      "times_seconds": [
+        4.5,
+        10.5
+      ],
+      "status": "unknown_not_required",
+      "description": "AI opponent and checked owner Auto are directly visible, consistent with owner testimony. Specific challenge/difficulty/menu is not shown.",
+      "evidence": "evidence/t0004.50.jpg"
+    },
+    {
+      "id": "burn_checks",
+      "times_seconds": [
+        73,
+        79.5,
+        117.5,
+        124.5,
+        147.5,
+        154.5
+      ],
+      "status": "not_tested",
+      "description": "Targets reach zero from the attack before Burned messages and point awards. No burn damage tick or coin result is established; Burn is not credited as the knockout cause."
+    },
+    {
+      "id": "exact_event_boundaries",
+      "times_seconds": [
+        0,
+        165.18
+      ],
+      "status": "approximate",
+      "description": "Narrative boundaries are approximate video seconds using 3-second overview, 1-second focused sequences and exact-seek stills. All meaningful turn actions are accounted for; routine animations are not transcribed frame by frame."
+    },
+    {
+      "id": "audio",
+      "times_seconds": [
+        0,
+        165.18
+      ],
+      "status": "not_inspected",
+      "description": "This is a visual gameplay review; no audio transcript was made."
+    }
+  ]
+}

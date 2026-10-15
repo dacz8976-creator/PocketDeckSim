@@ -1,0 +1,132 @@
+{
+  "deck_name": "Mega Blastoise ex & Wailord ex Deck (Deluxe Pack: Mega)",
+  "energy_configuration": [
+    "Water"
+  ],
+  "difficulty": null,
+  "difficulty_status": "not_applicable_no_difficulty_settings",
+  "cards_in_screenshot_order": [
+    {
+      "name": "Wailmer",
+      "variant": null
+    },
+    {
+      "name": "Wailmer",
+      "variant": null
+    },
+    {
+      "name": "Wailord ex",
+      "variant": null
+    },
+    {
+      "name": "Meowth",
+      "variant": null
+    },
+    {
+      "name": "Frigibax",
+      "variant": null
+    },
+    {
+      "name": "Frigibax",
+      "variant": null
+    },
+    {
+      "name": "Arctibax",
+      "variant": null
+    },
+    {
+      "name": "Arctibax",
+      "variant": null
+    },
+    {
+      "name": "Baxcalibur",
+      "variant": null
+    },
+    {
+      "name": "Squirtle",
+      "variant": null
+    },
+    {
+      "name": "Squirtle",
+      "variant": null
+    },
+    {
+      "name": "Wartortle",
+      "variant": null
+    },
+    {
+      "name": "Wartortle",
+      "variant": null
+    },
+    {
+      "name": "Mega Blastoise ex",
+      "variant": null
+    },
+    {
+      "name": "X Speed",
+      "variant": null
+    },
+    {
+      "name": "Poké Ball",
+      "variant": null
+    },
+    {
+      "name": "Poké Ball",
+      "variant": null
+    },
+    {
+      "name": "Professor's Research",
+      "variant": null
+    },
+    {
+      "name": "Professor's Research",
+      "variant": null
+    },
+    {
+      "name": "Soothing Shore",
+      "variant": null
+    }
+  ],
+  "counts_by_name": {
+    "Wailmer": 2,
+    "Wailord ex": 1,
+    "Meowth": 1,
+    "Frigibax": 2,
+    "Arctibax": 2,
+    "Baxcalibur": 1,
+    "Squirtle": 2,
+    "Wartortle": 2,
+    "Mega Blastoise ex": 1,
+    "X Speed": 1,
+    "Poké Ball": 2,
+    "Professor's Research": 2,
+    "Soothing Shore": 1
+  },
+  "total_card_slots": 20,
+  "basis": "Root inspected all three owner-supplied native screenshots; overlap deduplicated, not treated as extra copies.",
+  "game_binding_basis": "Owner states all eight games use the same computer opponent; workers verify filmed core/setup for conflicts.",
+  "screenshots": [
+    {
+      "original": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261002_205209000_iOS.png",
+      "copy": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\opponent_deck\\20261002_205209000_iOS.png",
+      "sha256": "93678c693d961f88027bed83e4508645f36b42d8acddcca996a6a6971c8358e7"
+    },
+    {
+      "original": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261002_205214000_iOS.png",
+      "copy": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\opponent_deck\\20261002_205214000_iOS.png",
+      "sha256": "4a63f3df91df810e74804f720424e85a01b58ec3d97186e3bb17c6f37d2eef81"
+    },
+    {
+      "original": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261002_205218000_iOS.png",
+      "copy": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\opponent_deck\\20261002_205218000_iOS.png",
+      "sha256": "6e256b06e709d671cf2db5616daef196cc14298a5731b36dcc560f84d0f69316"
+    }
+  ],
+  "hidden_hand_rule": "A known complete opponent deck is not evidence of a concealed draw or held card.",
+  "set_ids_not_inferred": true,
+  "difficulty_basis": {
+    "owner_confirmation": "There aren’t difficulty settings",
+    "received_utc": "2026-10-02T23:46:09.305051+00:00",
+    "source_observation": "Workers inspected opening selection and AI setup; no difficulty label/control is visible. Owner confirmation establishes that no selectable setting exists in this setup."
+  }
+}

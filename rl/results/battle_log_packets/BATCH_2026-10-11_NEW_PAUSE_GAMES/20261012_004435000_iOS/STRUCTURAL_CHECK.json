@@ -1,0 +1,30 @@
+{
+  "status": "passed",
+  "required_files": [
+    "REVIEW.md",
+    "COVERAGE.md",
+    "SUMMARY.json",
+    "UNCERTAINTIES.json",
+    "PAUSE_GAME.json",
+    "DECK_USED.json",
+    "TURN_LEDGER.json",
+    "TURN_EVIDENCE.json"
+  ],
+  "turn_rows": 10,
+  "deck_slots": 20,
+  "opening_slots": 5,
+  "native_frames": 142,
+  "crop_pairs": 42,
+  "native_and_crop_bytes": 64348677,
+  "checks": [
+    "UTF-8 JSON parse; no templates",
+    "Exactly one row per displayed turn",
+    "Exact20card deck and QR match",
+    "Native dimensions, image integrity and crop bounds",
+    "All evidence IDs exist",
+    "Board HP/energy arithmetic",
+    "Owner hands/counts and scheduled offsets/preplay/end crops",
+    "116 retained reduced coverage samples"
+  ],
+  "independent_acceptance": "pending"
+}

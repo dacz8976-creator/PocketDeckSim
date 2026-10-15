@@ -1,0 +1,241 @@
+{
+  "schema": "independent-acceptance-check-v1",
+  "source_video": "20261006_012927000_iOS.MP4",
+  "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+  "accepted": true,
+  "status": "accepted_after_frozen_R1_R3_recheck",
+  "created_utc": "2026-10-06T20:50:43.457588+00:00",
+  "checked_input_sha256": {
+    "SOURCE.json": "349cbbc3c86cd70047aee5ac616e4120518a2d3003640af4c57ba7e3989b5ebf",
+    "REVIEW.md": "8e5c7ff23febd4ecadf9e45f28720856c1e35596e128ce7241c6c7a9d3eed73b",
+    "COVERAGE.md": "8b962a8a28e68bb453cef8217293a086d449dcc09e04289be4968d0973094299",
+    "SUMMARY.json": "462f214f1c1e9fc1ceb4d4452ddaf8c933d1af44dae4489bcb273fd731d0d5b6",
+    "UNCERTAINTIES.json": "2babf60628ae8e28dd62b7c36c3f7f86da9a3f42f894cc24b8307fd53c4100c7",
+    "PAUSE_GAME.json": "fc729074fa7a094c7229769774a4ff5cdf29ec6c09e6af51684ff53c55944db6",
+    "DECK_USED.json": "45c106e28e517d7671f3a8fceba1e41fae597a7c617cfd040d5f31a7f49b43e6",
+    "TURN_LEDGER.json": "7c534c633acfcc1761a1e9ec6db1406bf35110b5b44f991193f35ab02ca78502",
+    "TURN_EVIDENCE.json": "dc6579c9400026ee49461befb312f16286305629e81fa159f5bb98911b7de7a8"
+  },
+  "supplemental_checked_input_sha256": {
+    "../DECK_EDIT_LEDGER.json": "1e24b900da6890befecceb0a6484caaae8eceb7e3b1a19569f8478e649203060",
+    "../CORRECTION_LEDGER.json": "f802a093ce3c3b72e81f69113da5c19f392172a7b4303b3c509358dcc1217cb1",
+    "../FINAL_INDEPENDENT_CORRECTIONS.json": "7a37c7d83fab9d7f50dc76312590d7bc9d64d5fa6eedbc95f39887f549bcc713",
+    "../RELATED_GAME_PACKETS.json": "0ad9b2a4c4f9ccccca194fbc74943b3be68f81ed07b275e772b7840f521bf373",
+    "../HANDOFF.md": "48f8b8410da9dc9b50b5e415fd7305d0124005a9ca8bd55725b53767ba09de29",
+    "../RECORDING_METADATA.json": "26d076bfc8b3d95634537f08653831d06980bef6bd64142b53803b24b28b704f",
+    "../../EDITED_DECK_ENTRY.json": "b91991f3b1d3194c2a0271c2de7e1df8e9356d28d1b507261c649b28f46c6947",
+    "../../EDITED_DECK_ENTRY.md": "51c5c0423f429cedad458e86e47fc72c6ff6a983b9e3b6a57f90d7d1707c54b9",
+    "../../PAUSE_EDITED_DECK_IMPORT.json": "b6603f2c182da5fdbfb245e1676c3d07357f1c6df8400725469d0b7306785175",
+    "../../NEW_DECK_ENTRIES.json": "e3a946d41a06fa301b6f7da92cc173335a232c6eb24098607fb9a67f9ad49900",
+    "../qr_intake/QR_DECODE_0001.00.json": "5b549be9679473191e956216cbc4124e59371868ebcfa4bd5bc238954d8d1b4e",
+    "../qr_intake/t0001.00.png": "7eb570c1e05b021817895f636067288f4a5e1752316909d347d4bff24b41a82d",
+    "../../../../../../../Projects/Pocket Deck Lab/s216_card_catalog_v1.json": "162dd23a116cabc87bc4404a643d7bad37480d4d44c057c5093aa114b8e45017",
+    "independent_sol/VIEWED_EVIDENCE.json": "32da0d633e6e0a40d33f233c45dd3d6534b15a28031ed6ef16180f198179470d",
+    "independent_sol/STRUCTURAL_CHECK.json": "fe9c076bea226d964563f03fabf9c2a664ef16cf490a5f3fec2a6c887b80d9d6",
+    "independent_sol/CHECK_RESULT.rejected_water_mismatch.json": "0f227017a1695fbb64f0e278456bd7653516d3031cb2bf6711fac0788672a6bc",
+    "independent_sol/CHECK_RESULT.rejected_R1_R3.json": "fab2d3686a99260bf903bf53cbfaae78e3ca44fbaa34c8ecc08a35392e41d629",
+    "ROOT_FINAL_REPAIR_STRUCTURE_CHECK.json": "14353d3b07888cc33ebbea5de38538e56dc0f3befdb5b155ee4281c2ee195ca5",
+    "../SOURCE.json": "349cbbc3c86cd70047aee5ac616e4120518a2d3003640af4c57ba7e3989b5ebf",
+    "../REVIEW.md": "0bd2f3b8a56d561261d9239308edb3ca10bc72d015ce75e3d8e12e31f3f42cb9",
+    "../COVERAGE.md": "be7c1e7e943ef381fcd01279c9747089c14d24f7df559b9fe041fdc78836f171",
+    "../SUMMARY.json": "3445bb15210ec7a842a7a4dd74e7d39502a60d701b2666ad2e14ca069c309afa",
+    "../UNCERTAINTIES.json": "782554964652d09fd15d349825a902e4e139a63eeabfaf671021ef684df49431",
+    "../PAUSE_GAME.json": "85d54a60e2150c2877b64138bc28c21e586fa30963e1ff4e668fb298d3f326d6",
+    "../DECK_USED.json": "7bfe4f644477dad7342747b694c4d9520488aeac62e8ca3b79c8c825bfec5c7d",
+    "../TURN_LEDGER.json": "86eb259ea9ead6e759eef5c0972dae57182a04de23220a3dc5e2312ca48765fa",
+    "../TURN_EVIDENCE.json": "5a94f906f34713298cd16d7c053e046223e4e3d1c802157141c30e013a0d6ebf"
+  },
+  "required_repairs": [],
+  "all_source_segments_verified": true,
+  "required_source_game_count": 2,
+  "structural_checks": {
+    "created_utc": "2026-10-06T20:43:04.008922+00:00",
+    "frames": 71,
+    "crops": 142,
+    "all_files_decode_and_bounds_pass": true,
+    "source_media_rehashed": false,
+    "native_dimensions": [
+      1170,
+      2532
+    ],
+    "reference_and_source_binding_errors": [],
+    "crop_pixel_comparisons": 48,
+    "all_compared_crop_pixels_equal": true,
+    "ledger_turn_count": 2,
+    "turn_numbers": [
+      1,
+      2
+    ],
+    "exact20_arithmetic_and_qr_or_edited_counts_pass": true,
+    "catalog_sha256": "162dd23a116cabc87bc4404a643d7bad37480d4d44c057c5093aa114b8e45017",
+    "limit": "Structural decoding, crop binding and count checks are separate from source visual acceptance.",
+    "reference_scope_limit": "Child source deck proof IDs resolve in parent TURN_EVIDENCE through ../DECK_EDIT_LEDGER.json, same frozen source SHA and local timebase."
+  },
+  "supported_conclusions": [
+    "Game1 ElPapa loss, owner second,11 turns,0-3 UI cap; HP0/removal/empty Active/award2/Defeat phases independently supported.",
+    "Game2 human event opponentたこ, owner first,2 turns,explicit concession708–710,Victory718,0-0,0damage.",
+    "Initial QR semantic20 distinct from final edited semantic20. Final card membership/counts and catalog variants agree; final Energy must be Water. Exact printing/artwork remains null.",
+    "All selected owner hands/openings and consequential searches inspected; game1 Copycat141/143, paid Grass+Metal retreat361–363 and ordinary opponent3 assessed.",
+    "No full discard-pile windows claimed; only previews. Hidden opponents remain unknown. No source-media rehash/archive/external writes performed."
+  ],
+  "inspection_scope": "Bounded independent acceptance of full first-pass packets: selected opening/ordinary owner and complete ordinary opponent3; selected middle hands, consequential interaction/end; edit binding and tiny game2. Not a routine second whole-game1 pass.",
+  "resolved_before_frozen_rejection": [
+    "Child COVERAGE firstBall prose corrected to consumption656–657/display658.",
+    "Child staged_edited_deck_file corrected to ../../EDITED_DECK_ENTRY.json with prior version retained."
+  ],
+  "prior_frozen_rejection": "CHECK_RESULT.rejected_R1_R3.json",
+  "remaining_repairs": [],
+  "resolved_findings": [
+    {
+      "id": "R1",
+      "resolved": true,
+      "finding": "596 explicitly selects Water; final saved droplet and child next previews match Water. Original game1 configuration and frozen13 remain unchanged. Water semantic identity recomputed and all staged references agree."
+    },
+    {
+      "id": "R2",
+      "resolved": true,
+      "finding": "Copycat consumption667-668, face668, returned3 at670; four reveals Ball674/TRMeowth675/Pop676/Cyrus677 now agree with native evidence."
+    },
+    {
+      "id": "R3",
+      "resolved": true,
+      "finding": "Opponent settled five-back fan/current Lightning692; draw/generation690-692 and combined hidden Research696-698 with names/individual times null. OrderPad face700/coin702/tails704 now separated."
+    }
+  ],
+  "verified_source_game_count": 2,
+  "source_segment_verification": [
+    {
+      "segment": "game1",
+      "seconds": [
+        0,
+        420
+      ],
+      "basis": "Retained initial independent bounded opening/ordinary turns/selected hands/searches/retreat/terminal inspection plus full worker coverage."
+    },
+    {
+      "segment": "continuous edited deck binding",
+      "seconds": [
+        420,
+        622
+      ],
+      "basis": "Retained independent variant/count/edit inspection; corrected Water596 through Save621/queue622; exact semantic20 and catalog mappings."
+    },
+    {
+      "segment": "game2 and source ending",
+      "seconds": [
+        622,
+        719.001667
+      ],
+      "basis": "Entire tiny game2 retained independent native inspection, corrected event sequence, explicit concession708-710 and Victory718/source ending."
+    }
+  ],
+  "preserved_initial_inputs": [
+    {
+      "path": "original_before_final_independent/parent/SOURCE.json",
+      "sha256": "349cbbc3c86cd70047aee5ac616e4120518a2d3003640af4c57ba7e3989b5ebf",
+      "matches_frozen_rejection": true
+    },
+    {
+      "path": "original_before_final_independent/parent/REVIEW.md",
+      "sha256": "4dad64ab6438b22c537a220f1c735f597ebb5b96860c28cd8e89834d25dec1d0",
+      "matches_frozen_rejection": true
+    },
+    {
+      "path": "original_before_final_independent/parent/COVERAGE.md",
+      "sha256": "be7c1e7e943ef381fcd01279c9747089c14d24f7df559b9fe041fdc78836f171",
+      "matches_frozen_rejection": true
+    },
+    {
+      "path": "original_before_final_independent/parent/SUMMARY.json",
+      "sha256": "3445bb15210ec7a842a7a4dd74e7d39502a60d701b2666ad2e14ca069c309afa",
+      "matches_frozen_rejection": true
+    },
+    {
+      "path": "original_before_final_independent/parent/UNCERTAINTIES.json",
+      "sha256": "782554964652d09fd15d349825a902e4e139a63eeabfaf671021ef684df49431",
+      "matches_frozen_rejection": true
+    },
+    {
+      "path": "original_before_final_independent/parent/PAUSE_GAME.json",
+      "sha256": "85d54a60e2150c2877b64138bc28c21e586fa30963e1ff4e668fb298d3f326d6",
+      "matches_frozen_rejection": true
+    },
+    {
+      "path": "original_before_final_independent/parent/DECK_USED.json",
+      "sha256": "7bfe4f644477dad7342747b694c4d9520488aeac62e8ca3b79c8c825bfec5c7d",
+      "matches_frozen_rejection": true
+    },
+    {
+      "path": "original_before_final_independent/parent/TURN_LEDGER.json",
+      "sha256": "cf0b3a449b80c9b37c24840e9bd7e5df7fd70effff21d8dd9184200fc20607b2",
+      "matches_frozen_rejection": true
+    },
+    {
+      "path": "original_before_final_independent/parent/TURN_EVIDENCE.json",
+      "sha256": "5a94f906f34713298cd16d7c053e046223e4e3d1c802157141c30e013a0d6ebf",
+      "matches_frozen_rejection": true
+    },
+    {
+      "path": "original_before_final_independent/parent/DECK_EDIT_LEDGER.json",
+      "sha256": "1ea0245a67e5f6f64f0fc715495f8b8dd0ff7c8f982fbf5953ff3dae864dca5d",
+      "matches_frozen_rejection": true
+    },
+    {
+      "path": "original_before_final_independent/parent/CORRECTION_LEDGER.json",
+      "sha256": "c739e3c83a0d1e8232033c88b02c55e9e58acf4659bb3dca8a0364c82c1171f8",
+      "matches_frozen_rejection": true
+    },
+    {
+      "path": "original_before_final_independent/parent/HANDOFF.md",
+      "sha256": "32953a877e3a302d0835fc9f7d53d9d3de8e8fbc0fe449cac5042d9d9eb0c9d0",
+      "matches_frozen_rejection": true
+    },
+    {
+      "path": "original_before_final_independent/game_02/SOURCE.json",
+      "sha256": "349cbbc3c86cd70047aee5ac616e4120518a2d3003640af4c57ba7e3989b5ebf",
+      "matches_frozen_rejection": true
+    },
+    {
+      "path": "original_before_final_independent/game_02/REVIEW.md",
+      "sha256": "6657bf8442d4fe15ef493bc19b40a3e50d2fedeb6afdaebff6fb274216846210",
+      "matches_frozen_rejection": true
+    },
+    {
+      "path": "original_before_final_independent/game_02/COVERAGE.md",
+      "sha256": "8e12352e775f686954d0f5555edfb684f373f477d94a79c3e513388ff3cb999c",
+      "matches_frozen_rejection": true
+    },
+    {
+      "path": "original_before_final_independent/game_02/SUMMARY.json",
+      "sha256": "462f214f1c1e9fc1ceb4d4452ddaf8c933d1af44dae4489bcb273fd731d0d5b6",
+      "matches_frozen_rejection": true
+    },
+    {
+      "path": "original_before_final_independent/game_02/UNCERTAINTIES.json",
+      "sha256": "b7ae24645164e195dc3c640e5b11e2e6df07bd40d0eeabe655e0e641427d2192",
+      "matches_frozen_rejection": true
+    },
+    {
+      "path": "original_before_final_independent/game_02/PAUSE_GAME.json",
+      "sha256": "fc729074fa7a094c7229769774a4ff5cdf29ec6c09e6af51684ff53c55944db6",
+      "matches_frozen_rejection": true
+    },
+    {
+      "path": "original_before_final_independent/game_02/DECK_USED.json",
+      "sha256": "5735ca52a85980d6b1fb1605efe4e5796fbb23c966481da2f0c1a7f2b3079cac",
+      "matches_frozen_rejection": true
+    },
+    {
+      "path": "original_before_final_independent/game_02/TURN_LEDGER.json",
+      "sha256": "fd37adc607657e930c014400e2177cef4a729d81dc59b84f4678f795261c8d7a",
+      "matches_frozen_rejection": true
+    },
+    {
+      "path": "original_before_final_independent/game_02/TURN_EVIDENCE.json",
+      "sha256": "e9edd0fb2f04d49e43417490615d0b594f25cd3d0db9ab5dce9f2460c3e5630c",
+      "matches_frozen_rejection": true
+    }
+  ],
+  "edited_semantic_identity": "filmed-edit-2c58f9b081c7",
+  "recheck_scope": "Narrow R1-R3 recheck; combines retained initial independent bounded inspection of both games, entire edit binding and source ending. No new whole-game1 pass or media rehash."
+}

@@ -1,0 +1,118 @@
+{
+  "source_video": "20261006_020518000_iOS.MP4",
+  "source_sha256": "64968acf700ddfecc51cc5bcb01014db7afa855545057bd6934226afd35a53e7",
+  "review_status": "whole_source_first_pass_complete_pending_independent_acceptance",
+  "game_count": 1,
+  "games": [
+    {
+      "game_id": "20261006_020518000_iOS",
+      "match_date_local": "2026-10-05",
+      "outcome": {
+        "result": "win",
+        "owner": "Dacz8976",
+        "opponent": "Adgbag",
+        "points_owner": 3,
+        "points_opponent": 2,
+        "turns": 17,
+        "basis": "Third knockout of opponent Copperajah by Hitmonchan ex Quick Straight, then owner third point, Victory vs Adgbag.",
+        "evidence_ids": [
+          "f0573_00",
+          "f0574_00",
+          "f0577_00",
+          "f0578_00",
+          "f0579_00",
+          "f0582_00",
+          "f0583_00",
+          "f0590_00",
+          "f0591_00",
+          "f0594_00"
+        ],
+        "concession": "none established",
+        "mode": "Deluxe Pack: Mega Emblem Event human matchmaking",
+        "ranked_status": "not established as ranked; event menu visible",
+        "auto_control": "No Auto control/option visible during setup, all battle turns or result. Human matchmaking shown."
+      },
+      "deck": "Conkeldurr / Sandslash / Hitmonchan ex"
+    }
+  ],
+  "coverage_seconds": [
+    0,
+    616.08966
+  ],
+  "review_method": "Full-source visual traversal using locator grids followed by native setup, ordinary-turn action, draw and result inspection. Grids are locators only.",
+  "external_registration_status": "not_performed_by_worker",
+  "archive_status": "not_performed_by_worker",
+  "limits": [
+    "Matching exact20 list is absent from retrieved live Pause Games deck snapshot; QR establishes filmed semantic entities and Energy, not an existing live log version.",
+    "Opponent normal draws, May search/shuffle identities and hidden hand faces are unknown.",
+    "Neither discard pile is opened anywhere. Full pile content/order cannot be established.",
+    "QR functional entities do not encode exact artwork/rarity. Hitmonchan ex artwork printing remains qualified.",
+    "Frame times are source-local requested seek values; actual decoded presentation timestamps were not measured.",
+    "This is the first-pass packet. Independent visual acceptance, duplicate check, registration and external save verification belong to the lead."
+  ],
+  "independent_acceptance_targets": [
+    {
+      "interval_seconds": [
+        28,
+        33
+      ],
+      "claim": "Original5 and Active opening position4"
+    },
+    {
+      "interval_seconds": [
+        56,
+        65
+      ],
+      "claim": "Ordinary first decision: no development, End Turn; selected hand59.5"
+    },
+    {
+      "interval_seconds": [
+        65,
+        93
+      ],
+      "claim": "Full ordinary opponent turn2: Metal before Research, Cufant bench, LungeOut20"
+    },
+    {
+      "interval_seconds": [
+        176,
+        194
+      ],
+      "claim": "Full opponent turn6: Copperajah evolution before second Metal Stakataka"
+    },
+    {
+      "interval_seconds": [
+        194,
+        230
+      ],
+      "claim": "Two Lucky Ice Pops, both heads, Energy attachment and reduced10damage"
+    },
+    {
+      "interval_seconds": [
+        330,
+        367
+      ],
+      "claim": "Candy, Wally Colorless, normalFighting, retreatcost1, damage80, separatedKO/score/promotion"
+    },
+    {
+      "interval_seconds": [
+        367,
+        429
+      ],
+      "claim": "Full opponent turn12, May hidden search/shuffle, two benches, HeavyImpact"
+    },
+    {
+      "interval_seconds": [
+        484,
+        518
+      ],
+      "claim": "Research reveals Poké Ball then Timburr, searchHitmonchan, Energy goesTimburr"
+    },
+    {
+      "interval_seconds": [
+        518,
+        594
+      ],
+      "claim": "Two Metal onTinkaton; SandslashKO; promotion; currentEnergy generation; terminalHP0/removal/point/Victory"
+    }
+  ]
+}

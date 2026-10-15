@@ -1,0 +1,6 @@
+# October2 guide supplement
+
+The active first pass integrates fresh native boards and physical evolution history in every owner-turn ledger row. Each of nine owner turns records Dustin as decision maker with AutoOFF evidence, spanning start and ending anchors; no toggle observed. The whole recording shows no owner choice during computer turns. Owner Pokemon remain undamaged. SEEN_CARD_INVENTORY supplies copy minima, simultaneous duplicate proof and genealogy. Hidden evolution faces and all unopened discards remain explicit limits. This packet requires separate independent acceptance.
+
+
+Independent bounded corrections: T4 Copycat center reveals are Cape97.2, Ice Pop98.0, Cyrus99.0, Misty100.0, Sharpedo101.0, each bound to measured native PTS. Names/order, hand endpoints and physical-copy counts are unchanged. T6/T18 selected starts show Water1 in the current orb during generation animation; exact readiness and smaller preview are qualified. T12 selected start has empty current slot and no readable settled preview. Later native availability/preview evidence remains separate, with T18 unused-Energy warning339.5 as later proof. T8/T14 original pending labels were already correct. Original19-file submission and rejected receipt are preserved.

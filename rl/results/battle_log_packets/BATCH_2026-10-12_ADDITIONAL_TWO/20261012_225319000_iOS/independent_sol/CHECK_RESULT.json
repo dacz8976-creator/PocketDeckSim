@@ -1,0 +1,58 @@
+{
+  "status": "accepted_with_recording_limits",
+  "accepted": true,
+  "semantic_acceptance": true,
+  "checker": "/root/check_later_225319",
+  "model": "gpt-6.1-sol",
+  "checked_at_utc": "2026-10-13T01:58:40.562827+00:00",
+  "source_video": "20261012_225319000_iOS.MP4",
+  "source_sha256": "10908103247750567923e0899770318a2e53821055d7a2d464ab8d8a2b12dd70",
+  "source_bytes": 808683746,
+  "duration_seconds": 438.538333,
+  "primary_frozen_utc": "2026-10-13T01:53:56.360310+00:00",
+  "accepted_input_sha256": {
+    "REVIEW.md": "155459b6a7d88f53109adf559d2513e1aed3e763becb28acd3c95314f690e5a3",
+    "COVERAGE.md": "e4dfa7e4ff23fff32269d6864c6372a0068f674923a7f57dfa7d5c30c53618dc",
+    "SUMMARY.json": "06ace5f974f5a2acfb7902e2bd76cfc16ff82c103622991bb5d62d9772ded412",
+    "UNCERTAINTIES.json": "c64bf90306bcb1fe949284be527b791e3b5f73f322302d9c8004144b1b99018d",
+    "PAUSE_GAME.json": "4a88ae97c406c2492ec37eb11db6573f4b3ca5bb18031214c6f1478cbef46d5a",
+    "DECK_USED.json": "4c44a7731f302f1677afc62cc363aa164904230bacdaa11ba54907ed6276acd0",
+    "TURN_LEDGER.json": "d604ae422be3793dd6531755968190306245fdd4ff5fef8ecf563289454802e7",
+    "TURN_EVIDENCE.json": "f049c5dfdcf951f4af78860d2462667a88e0f6be7495f28d989f82062ed9b109"
+  },
+  "scope": "Source-bound bounded independent checks of opening, source/turn coverage, terminal, ordinary owner turns2 and6, additional Copycat turn4, draw/search reveal order, hand arithmetic, boards and both Energy Zones; final eight-file semantic reconciliation. Primary full battle account accepted.",
+  "ordinary_owner_turns_checked": [
+    2,
+    6
+  ],
+  "additional_turn_checks": [
+    4
+  ],
+  "source_evidence": [
+    "independent_sol/QR_CHECK.json",
+    "independent_sol/SOURCE_CHECK_NOTES.md",
+    "independent_sol/T6_CORRECTION.md",
+    "independent_sol/FINAL_RECONCILIATION.md"
+  ],
+  "preserved_rejection": "independent_sol/CHECK_RESULT.rejected_t6.json",
+  "structural_validation": "independent_sol/STRUCTURAL_CHECK.json",
+  "outcome": "owner defeat by explicit concession",
+  "points": {
+    "owner": 0,
+    "opponent": 2
+  },
+  "turns": 9,
+  "unresolved_material_findings": [],
+  "recording_limits": [
+    "Opponent hidden draw/search identities remain unknown.",
+    "Opponent fan overlap supports ranges3-4 atT2 and5-6 atT8.",
+    "No opened discard-pile views are recorded.",
+    "Next Energy icons establish type previews, not numeric future availability.",
+    "Requested timestamps and animation boundaries retained; actual frame PTS unmeasured.",
+    "Exact semantic20-card deck matches QR/live snapshot; artwork and rarity unverified."
+  ],
+  "independent_continuous_full_pass": false,
+  "shared_writes_performed": false,
+  "source_moved": false,
+  "external_changes": false
+}

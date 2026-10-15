@@ -1,0 +1,60 @@
+{
+  "video_basename": "20261002_143309000_iOS.MP4",
+  "reviewer": "sol_shark_20261002_143309000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "review_date": "2026-10-02",
+  "status": "full_first_pass_awaiting_lead_acceptance",
+  "complete_available_footage_review": true,
+  "battle_complete": true,
+  "outcome": "win",
+  "outcome_type": "win",
+  "turn_order": "went_second",
+  "turns_played": 10,
+  "owner_name": "Dacz8976",
+  "owner_deck_name_likely": "Draft A: Shark Tempo",
+  "owner_deck_name_basis": "owner supplied identification",
+  "owner_deck_core": ["Alolan Vulpix / Alolan Ninetales ex, Binding Snow 80", "Carvanha / Mega Sharpedo ex, Turbo Shark 70", "Lapras, Surf 70"],
+  "owner_visible_support": ["Professor's Research", "Misty", "Poke Ball", "Elegant Cape", "Irida", "Copycat in hand", "Cyrus in hand"],
+  "opponent_name": "もつ",
+  "opponent_deck_core": ["Sigilyph, Spike Draw 10", "Two Ralts / Kirlia / Gardevoir lines, Psy Shadow and Psyshot 60", "Mewtwo ex, Psychic Sphere 50 and Psydrive 150"],
+  "mode_evidence": {
+    "pvp": "Search/find named opponent, separate clocks and waiting-for-opponent messages",
+    "queue": "unknown, label not visible",
+    "auto": "No Auto indicator or mode change visible; owner interactive prompts observed; opponent automation unknown",
+    "owner_requested_category": "Pause Games",
+    "ranked_ladder_eligible": false
+  },
+  "auto_intervals": [],
+  "auto_intervals_basis": "No visibly established Auto interval; empty list does not establish opponent manual play",
+  "final_score": {"owner": 3, "opponent": 0},
+  "damage_done": 340,
+  "decisive_evidence": [
+    {"timestamp_seconds": 92, "path": "native/t0092.00.jpg", "fact": "Ninetales Binding Snow 80, two Water cost, Energy Zone restriction"},
+    {"timestamp_seconds": 190, "path": "native/t0190.00.jpg", "fact": "Mewtwo 150 -> 70 after Binding Snow; visible Active attachment restriction"},
+    {"timestamp_seconds": 238, "path": "native/t0238.00.jpg", "fact": "Mewtwo 90 -> 10 after next Binding Snow; owner remains 1-0"},
+    {"timestamp_seconds": 278, "path": "native/t0278.00.jpg", "fact": "Final Binding Snow reduces Mewtwo to zero HP"},
+    {"timestamp_seconds": 298, "path": "native/t0298.00.jpg", "fact": "Victory vs. もつ; went second; ten turns; 3-0; 340 damage"}
+  ],
+  "key_findings": [
+    {"type": "observation", "finding": "Ninetales supplies every attack after evolving, KOs Sigilyph and Mewtwo and repeatedly applies the Active Energy Zone restriction"},
+    {"type": "observation", "finding": "Misty gets two heads then tails for two Water to Lapras; owner develops Lapras and Mega Sharpedo as ready Bench attackers but neither attacks"},
+    {"type": "observation", "finding": "Elegant Cape raises Stage 1 Ninetales HP by 30; Irida heals its only ten damage before the winning attack; no Stadium played"},
+    {"type": "observation", "finding": "Opponent promotes zero-Energy Mewtwo and never powers or attacks with it; Energy goes to the two Gardevoir on Bench"},
+    {"type": "inference_pending_clarification", "finding": "Printed Binding Snow and Psy Shadow text suggest a consequential Energy Zone interaction; no actual Psy Shadow attempt or failed activation was seen"},
+    {"type": "conditional_tactical_alternative", "finding": "Keeping Mewtwo on Bench to receive normal Energy could avoid stranding an unpowered Active; hidden switching resources and rule interaction require qualification"},
+    {"type": "owner_testimony", "finding": "Fun and competitive; Wailord and Soothing Shore combinations are untested proposals; no numeric ratings supplied"}
+  ],
+  "limitations": ["Hidden lists and hands unknown", "Exact queue and opponent automation unknown", "Binding Snow/Psy Shadow interpretation pending targeted lead or Astra clarification", "Single match does not establish general deck strength or validate Mega Sharpedo attack", "First-pass packet awaiting lead acceptance"],
+  "source_identity": {
+    "sha256": "3358738fb441f5ca54931447b3c6b11fb6063255caa13f7406f1ec0e3e29c461",
+    "bytes": 549306104,
+    "duration_seconds": 299.64068,
+    "source_path_at_review": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/20261002_143309000_iOS.MP4",
+    "binding_checked": "SOURCE.json and ASSIGNMENT.json hashes agree with lead supplied frozen identity",
+    "worker_rehashed_source": false
+  },
+  "coverage": {"overview_step_seconds": 4, "overview_frames": 75, "overview_sheets_inspected": 9, "targeted_dense_windows": [{"start_seconds": 52, "end_seconds": 94, "step_seconds": 2}, {"start_seconds": 162, "end_seconds": 188, "step_seconds": 2}], "native_frames_inspected": 24, "unreviewed_intervals": []},
+  "shared_writes_performed": false,
+  "source_moved": false
+}

@@ -1,0 +1,179 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261010_012303000_iOS_game1",
+  "sources": [
+    {
+      "video_basename": "20261010_012303000_iOS.MP4",
+      "sha256": "0e00fad4af7232b8b50c5cd9b946fdef9a1ac3e873166667e57ac3bce15bcc3e",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "deck_name_in_log": "Conkeldurr / Garganacl",
+  "source_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "captured_at": "2026-10-10T03:46:03.247Z",
+  "log_list_version": "Rendered live addition verified after save; filmed-qr-bc8737d983eb",
+  "expected_card_count": 20,
+  "cards_in_log_order": [
+    {
+      "name": "Timburr",
+      "variant": "A3 094"
+    },
+    {
+      "name": "Timburr",
+      "variant": "A3 094"
+    },
+    {
+      "name": "Gurdurr",
+      "variant": "A3 095"
+    },
+    {
+      "name": "Conkeldurr",
+      "variant": "A3 096"
+    },
+    {
+      "name": "Conkeldurr",
+      "variant": "B4 089"
+    },
+    {
+      "name": "Nacli",
+      "variant": "B3a 031"
+    },
+    {
+      "name": "Nacli",
+      "variant": "B3a 031"
+    },
+    {
+      "name": "Naclstack",
+      "variant": "B3a 032"
+    },
+    {
+      "name": "Garganacl",
+      "variant": "B3a 033"
+    },
+    {
+      "name": "Garganacl",
+      "variant": "B3a 033"
+    },
+    {
+      "name": "Poké Ball",
+      "variant": "A2b 111"
+    },
+    {
+      "name": "Poké Ball",
+      "variant": "A2b 111"
+    },
+    {
+      "name": "Rare Candy",
+      "variant": "A3 144"
+    },
+    {
+      "name": "Rare Candy",
+      "variant": "A3 144"
+    },
+    {
+      "name": "Professor’s Research",
+      "variant": "A4b 373"
+    },
+    {
+      "name": "Professor’s Research",
+      "variant": "A4b 373"
+    },
+    {
+      "name": "Copycat",
+      "variant": "B1 225"
+    },
+    {
+      "name": "Wally",
+      "variant": "B4 153"
+    },
+    {
+      "name": "Wally",
+      "variant": "B4 153"
+    },
+    {
+      "name": "Arena of Antiquity",
+      "variant": "B3 154"
+    }
+  ],
+  "counts_by_name_and_variant": [
+    {
+      "count": 2,
+      "name": "Timburr",
+      "variant": "A3 094"
+    },
+    {
+      "count": 1,
+      "name": "Gurdurr",
+      "variant": "A3 095"
+    },
+    {
+      "count": 1,
+      "name": "Conkeldurr",
+      "variant": "A3 096"
+    },
+    {
+      "count": 1,
+      "name": "Conkeldurr",
+      "variant": "B4 089"
+    },
+    {
+      "count": 2,
+      "name": "Nacli",
+      "variant": "B3a 031"
+    },
+    {
+      "count": 1,
+      "name": "Naclstack",
+      "variant": "B3a 032"
+    },
+    {
+      "count": 2,
+      "name": "Garganacl",
+      "variant": "B3a 033"
+    },
+    {
+      "count": 2,
+      "name": "Poké Ball",
+      "variant": "A2b 111"
+    },
+    {
+      "count": 2,
+      "name": "Rare Candy",
+      "variant": "A3 144"
+    },
+    {
+      "count": 2,
+      "name": "Professor’s Research",
+      "variant": "A4b 373"
+    },
+    {
+      "count": 1,
+      "name": "Copycat",
+      "variant": "B1 225"
+    },
+    {
+      "count": 2,
+      "name": "Wally",
+      "variant": "B4 153"
+    },
+    {
+      "count": 1,
+      "name": "Arena of Antiquity",
+      "variant": "B3 154"
+    }
+  ],
+  "energy_configuration_from_log": [
+    "Fighting"
+  ],
+  "actual_card_count": 20,
+  "capture_source_text_or_image": "../LIVE_NEW_DECKS_VERIFIED.json",
+  "game_version_binding_basis": "Source-bound QR at1s has identical payload to live deck definition. Continuous QR/editor New deck6 -> matchmaking -> one game, same Fighting deck core and both Conkeldurr variants. All filmed cards compatible. QR is not used to infer any hand identity. Source-qualified live addition now matches the filmed QR exactly.",
+  "conflicts_with_filmed_cards": [],
+  "exact_list_status": "verified_live_list_and_filmed_qr_game_binding",
+  "limits": [
+    "Log labels identify semantic variants; exact physical artwork/rarity remains unverified. Live definition text cites sibling013009 source, but this source has independently decoded identical QR and continuous game binding."
+  ],
+  "initial_log_snapshot": "DECK_USED.before_live_refresh.json",
+  "live_refresh_utc": "2026-10-10T04:16:28.217785+00:00"
+}

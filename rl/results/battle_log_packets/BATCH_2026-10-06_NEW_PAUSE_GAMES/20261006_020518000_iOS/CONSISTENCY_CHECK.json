@@ -1,0 +1,44 @@
+{
+  "semantic_consistency_pass": true,
+  "basis": "First-pass explicit sequence and numerical checks against native observations; not independent acceptance",
+  "checked": [
+    "All17 rows",
+    "Owner start/end hand count arrays",
+    "20QR entity slots and variants",
+    "HP_now+damage=HP_max on every occupied boundary card",
+    "Attached Energy typed sums",
+    "Owner and opponent score arrays",
+    "Separate HP0/removal/award/promotion frames",
+    "Generation separated from preview",
+    "Wally Colorless plus normal Fighting; retreat payment",
+    "Research reveal order Poké Ball then Timburr",
+    "No pile content inferred from preview"
+  ],
+  "final_score": [
+    3,
+    2
+  ],
+  "owner_start_counts": [
+    4,
+    5,
+    4,
+    5,
+    6,
+    5,
+    3,
+    4,
+    4
+  ],
+  "owner_end_counts": [
+    4,
+    3,
+    4,
+    5,
+    4,
+    2,
+    3,
+    3,
+    4
+  ],
+  "independent_visual_acceptance": false
+}

@@ -1,0 +1,23 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "source_video": "20260930_144608000_iOS.MP4",
+  "source_sha256": "e048a913159ad112f1ed57a05abd21107a6775c95fb2be80dd19f647e787295b",
+  "scope": "Complete twelve-turn 189.373333-second autopilot computer battle, setup through all six Quick Straight attacks and explicit terminal results",
+  "first_pass": "gpt-6.1-sol/high /root/sol_auto_144608",
+  "lead_checks": "Root read the full source-bound narrative, coverage, summary and uncertainties and reconciled HP, scores, attack total and six Energy attachments. Separate Sol verifier inspected opening sheet, ordinary37/48-second states, terminal169/172-second states, final174-second attack and189-second results, as documented in INDEPENDENT_CHECK.md; no conflicts found. Final attachment is to Passimian, not Rhyperior, and Gastly uses Mumble without Sleep.",
+  "independent_check": "INDEPENDENT_CHECK.md",
+  "outcome": "owner_win",
+  "final_points": {"owner": 3, "opponent": 0},
+  "owner_visible_core": "Hitmonchan ex / Passimian ex / Rhyhorn / Rhydon / Rhyperior",
+  "opponent": "AI Alolan Muk Deck (Deluxe Pack: Mega)",
+  "last_turn": 12,
+  "useful_finding": "Quick Straight visibly excludes Weakness. Six50-damage attacks match300 result damage; Hitmonchan ends at40HP. Four reserve Fighting are on Rhyperior and the final attachment goes to Passimian. Potion remains unused and no Sleep is applied.",
+  "unreviewed_intervals": [],
+  "material_unresolved": [],
+  "limitations": "Independent verification is a bounded visual check rather than a second full review. Hidden opponent cards, complete decks and Auto rationale remain unknown. Offload Pass is not triggered in this battle.",
+  "ladder_eligible": false,
+  "ladder_action": "No Ladder Log entry; excluded by owner instruction",
+  "astra_consulted": false,
+  "astra_reason": "No consequential ambiguity remained after full source review and independent visual checks"
+}

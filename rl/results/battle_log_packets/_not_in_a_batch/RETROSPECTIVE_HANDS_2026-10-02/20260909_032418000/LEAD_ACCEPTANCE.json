@@ -1,0 +1,32 @@
+{
+  "schema": "retrospective-hand-lead-acceptance-v1",
+  "source": "20260909_032418000_iOS.MP4",
+  "source_sha256": "750514530d208e76a8fbd8fc968aa6900ef08b0a0c84d5c00ce48c656f1f9672",
+  "accepted_at_utc": "2026-10-02T22:56:02.798184+00:00",
+  "lead": "Codex retrospective lead",
+  "worker_model": "gpt-6.1-sol",
+  "worker_effort": "high",
+  "independent_model": "gpt-6.1-sol",
+  "independent_effort": "high",
+  "verdict": "accepted_with_recording_limits",
+  "target_turns": [],
+  "original_full_battle_status": "Reviewed; preserved",
+  "scope": "Setup and recorded-turn field additions; accepted battle outcome preserved",
+  "independent_check": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\independent_ladder\\20260909_032418000\\CHECK_RESULT_AFTER_PHASE_REPAIR.json",
+  "structure_check": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_032418000\\STRUCTURE_CHECK.json",
+  "capture_status": null,
+  "source_read_basis": null,
+  "shared_registration": "complete",
+  "accepted_packet_hashes": {
+    "REVIEW_SUPPLEMENT.md": "1accf4f62f7d773ebd03623dcb43367eeb55e9c22b0ff8d7cab986f82ca72ea5",
+    "HAND_SUPPLEMENT.json": "0d7a281dff1b3d4755b3c356c8e84e4e82067c0139f3e66222a412e3a7b1da38",
+    "TURN_EVIDENCE.json": "e786ed42dddccddab690911094671b8888e46bb808b5be4de0f805153386ac2c",
+    "UNCERTAINTIES.json": "05b96b6fb5e9a4dd955c962f6ebfae26099e2031a89d1858e0e28ef2979b23f1",
+    "DECK_USED.json": "c66dad0437969b93273d74c5ca0daf6b928649c873ec974f3abbea29d37cc6b2",
+    "PAUSE_GAME.json": "d57aa80f52eb57b42fc32f96ca9b3833f545edfff163ab7d8b41d72e013e6216",
+    "TURN_LEDGER.json": "d94885adcc5b083e6efeee8e40f009de9e4a278ded5ed7a2fb24135657af59bb"
+  },
+  "retained_evidence_only": false,
+  "shared_event": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Review_Log\\events\\2026-10-02T225603.868917_0000_583e8953-f6a5-42b2-848b-e3c9403d24c6.json",
+  "registration_identity_provenance": "verified_by_cli_sha256"
+}

@@ -1,0 +1,30 @@
+{
+  "source_video": "20261013_022530000_iOS.MP4",
+  "source_sha256": "02714096351099424338ac83d3f529ef4f0e6979a978a50f48c5ff505a2b6cb7",
+  "frozen_utc": "2026-10-13T04:37:21.578101+00:00",
+  "reviewer": "/root/pause_20261013_022530000_iOS",
+  "actual_worker": "/root/newest_022530",
+  "files": {
+    "REVIEW.md": "87ee48ef12eec36b50878f067ace9c02f7c83dc0428a60587a19a76af11c1019",
+    "COVERAGE.md": "953f26c7c6f972a85f5d6ad6d0654f2c7c0fa6ced453fc7feffc5f0dd6cc8a10",
+    "SUMMARY.json": "25c9e5b104317c7330898231510809148cb543d2b7b972aff91cabe878efd2b1",
+    "UNCERTAINTIES.json": "1dba92fb728e5f18719af13d26501e055832d4d250e6a2ad7435d455f5731bdf",
+    "PAUSE_GAME.json": "223cb33008819517617e602a59064e5cb4bee68a9c035536a5e243da0bce60bb",
+    "DECK_USED.json": "ef2953bd2cc3534ede7a28791ed9b4a7904ac2acbe53e06b91f87f4d81e6518e",
+    "TURN_LEDGER.json": "bfe1284d950d3cab8f276babeb22dda4b8dd5e52f1afff8114e16b789ec3ab59",
+    "TURN_EVIDENCE.json": "a6b55fb0065612361e8d92e8d192e60de0ef1e683f3fa36694987513bcf989e6"
+  },
+  "file_sizes": {
+    "REVIEW.md": 9240,
+    "COVERAGE.md": 1580,
+    "SUMMARY.json": 1177,
+    "UNCERTAINTIES.json": 1121,
+    "PAUSE_GAME.json": 3853,
+    "DECK_USED.json": 3335,
+    "TURN_LEDGER.json": 282663,
+    "TURN_EVIDENCE.json": 419270
+  },
+  "scope": "Eight final authored review files. Independent visual acceptance remains separate.",
+  "status": "submitted_for_independent_acceptance",
+  "correction_history": "Copycat named-hand anchor and unresolved arrival order, ordinary prose spacing, owner hand arithmetic, and turn 6 Rocky Helmet resolution corrected before this freeze."
+}

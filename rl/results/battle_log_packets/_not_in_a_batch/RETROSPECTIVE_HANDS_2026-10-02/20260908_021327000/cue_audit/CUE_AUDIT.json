@@ -1,0 +1,134 @@
+{
+  "source": "20260908_021327000_iOS.MP4",
+  "sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+  "status": "reviewed_sampled_locator_scan",
+  "sample_count": 410,
+  "sampling_rate_fps": 1,
+  "source_interval_seconds": [
+    0,
+    410.492
+  ],
+  "reviewed_grids": [
+    "grid_01.jpg",
+    "grid_02.jpg",
+    "grid_03.jpg",
+    "grid_04.jpg",
+    "grid_05.jpg",
+    "grid_06.jpg",
+    "grid_07.jpg",
+    "grid_08.jpg",
+    "grid_09.jpg",
+    "grid_10.jpg",
+    "grid_11.jpg",
+    "grid_12.jpg"
+  ],
+  "dimensions": [
+    234,
+    506
+  ],
+  "native_evidence": false,
+  "timestamp_precision": "Approximate midpoint labels from fps1 locator extraction; independently measured PTS unavailable.",
+  "opened_discard_panels_observed": false,
+  "full_pile_established": false,
+  "visible_declines_observed": false,
+  "auto_control_observed": false,
+  "native_followups": [
+    169.5,
+    170.5,
+    190,
+    353
+  ],
+  "material_cues": [
+    {
+      "seconds": [
+        108.5,
+        160.5
+      ],
+      "kind": "Thieving Incisors choice",
+      "result": "Energy transfer subsequently observed; no declined choice seen.",
+      "native_refs": [
+        "f0108.00",
+        "f0110.00",
+        "f0159.00",
+        "f0169.50"
+      ]
+    },
+    {
+      "seconds": [
+        117.5,
+        121.5
+      ],
+      "kind": "Researcher coin search",
+      "result": "No found cards, tails; accepted action retained.",
+      "native_refs": [
+        "f0121.00"
+      ]
+    },
+    {
+      "seconds": [
+        221.5,
+        224.5
+      ],
+      "kind": "Sightseer deck panel",
+      "result": "Deck inspection, not discard panel; Hypno selected.",
+      "native_refs": [
+        "f0224.00"
+      ]
+    },
+    {
+      "seconds": [
+        268.5,
+        269.5
+      ],
+      "kind": "Hypno confusion prevented",
+      "native_refs": [
+        "f0269.00"
+      ]
+    },
+    {
+      "seconds": [
+        293.5,
+        295.5
+      ],
+      "kind": "Confusion attack did nothing, turn9",
+      "native_refs": [
+        "f0298.00"
+      ],
+      "basis": "Accepted action corroborated by sampled locator; exact attack name inherited."
+    },
+    {
+      "seconds": [
+        323.5,
+        328.5
+      ],
+      "kind": "Both Poké Ball no eligible target warnings",
+      "native_refs": [
+        "f0323.00",
+        "f0328.00"
+      ]
+    },
+    {
+      "seconds": [
+        391.5,
+        396.5
+      ],
+      "kind": "Confusion attack did nothing, turn11",
+      "native_refs": [
+        "f0391.00",
+        "f0396.00"
+      ]
+    },
+    {
+      "seconds": [
+        406,
+        406
+      ],
+      "kind": "End turn Energy warning",
+      "native_refs": [
+        "f0406.00"
+      ],
+      "basis": "Native captured warning falls between reduced sample views; response not established."
+    }
+  ],
+  "limitations": "This examines 410 sampled views, not every instant. Native406 warning missed by adjacent reduced samples demonstrates brief-prompt limitation. No new result review. No opened discard panel found, so no full pile contents inferred."
+}

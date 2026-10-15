@@ -1,0 +1,702 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20260908_190933000",
+  "sources": [
+    {
+      "video_basename": "20260908_190933000_iOS.MP4",
+      "sha256": "5c49e55a0b3153581904ffcefd747d941d5a729412a90708ec1f2783649610c5",
+      "source_json": "SOURCE_REFERENCE.json"
+    }
+  ],
+  "target_rows": 5,
+  "target_turn_numbers": [
+    1,
+    3,
+    5,
+    7,
+    9
+  ],
+  "capture_status": "complete_with_recording_limits",
+  "rows": [
+    {
+      "turn_number": 1,
+      "draw_animation_end_seconds": 44.3,
+      "timing_basis": "approximate direct source-local animation end; unmeasuredPTS",
+      "selected_start_evidence_ids": [
+        "t0044.50"
+      ],
+      "before_end_evidence_ids": [
+        "t0068.00"
+      ],
+      "start_hand": {
+        "cards_left_to_right": [
+          "Darkrai",
+          "Copycat",
+          "Professor's Research",
+          "Eevee",
+          "Eevee"
+        ],
+        "count": 5,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0044.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "before_end_hand": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Eevee",
+          "Small Balloon"
+        ],
+        "count": 3,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0068.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "candidates": [
+        {
+          "evidence_id": "t0045.00",
+          "requested_source_seconds": 45,
+          "offset_after_draw_seconds": 0.7,
+          "observation": "Darkrai already lifted; not untouched hand"
+        },
+        {
+          "evidence_id": "t0047.00",
+          "requested_source_seconds": 47,
+          "offset_after_draw_seconds": 2.7,
+          "observation": "Research inspected after Darkrai bench; not start substitute"
+        },
+        {
+          "evidence_id": "t0050.00",
+          "requested_source_seconds": 50,
+          "offset_after_draw_seconds": 5.7,
+          "observation": "Research already played; draw begins"
+        }
+      ],
+      "named_draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Eevee",
+              "reveal_position": 1,
+              "source_video": "20260908_190933000_iOS.MP4",
+              "timestamp_seconds": 44,
+              "evidence_ids": [
+                "t0044.00"
+              ],
+              "basis": "direct native reveal or untouched postdraw card",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": null,
+          "source_video": "20260908_190933000_iOS.MP4",
+          "timestamp_seconds": 44,
+          "evidence_ids": [
+            "t0044.00"
+          ],
+          "limit_reason": null,
+          "hand_count_basis": "Visible boundary hand counts and counted named play/draw transitions; intermediate counts are arithmetic inference."
+        },
+        {
+          "kind": "supporter_draw",
+          "caused_by": "Professor's Research",
+          "linked_play_order": 2,
+          "cards_in_reveal_order": [
+            {
+              "name": "Poké Ball",
+              "reveal_position": 1,
+              "source_video": "20260908_190933000_iOS.MP4",
+              "timestamp_seconds": 50.5,
+              "evidence_ids": [
+                "t0050.50"
+              ],
+              "basis": "Accepted named/order Research pair, native51.5 partial Poké Ball illustration behind Small Balloon and subsequent search;50.5 first card back is flipping. Name not independently legible at50.5.",
+              "limit_reason": "First reveal frame50.5 is still flipping; name/order attributed to exact inherited accepted turn1, with partial native51.5 illustration support."
+            },
+            {
+              "name": "Small Balloon",
+              "reveal_position": 2,
+              "source_video": "20260908_190933000_iOS.MP4",
+              "timestamp_seconds": 51.5,
+              "evidence_ids": [
+                "t0051.50"
+              ],
+              "basis": "Accepted named/order Research pair, native51.5 partial Poké Ball illustration behind Small Balloon and subsequent search;50.5 first card back is flipping. Name not independently legible at50.5.",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": null,
+          "source_video": "20260908_190933000_iOS.MP4",
+          "timestamp_seconds": 50.5,
+          "evidence_ids": [
+            "t0050.50",
+            "t0051.50"
+          ],
+          "limit_reason": null,
+          "hand_count_basis": "Visible boundary hand counts and counted named play/draw transitions; intermediate counts are arithmetic inference."
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poké Ball",
+          "linked_play_order": 3,
+          "cards_in_reveal_order": [
+            {
+              "name": "Darkrai",
+              "reveal_position": 1,
+              "source_video": "20260908_190933000_iOS.MP4",
+              "timestamp_seconds": 56.5,
+              "evidence_ids": [
+                "t0056.50"
+              ],
+              "basis": "direct native reveal or untouched postdraw card",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": null,
+          "source_video": "20260908_190933000_iOS.MP4",
+          "timestamp_seconds": 56.5,
+          "evidence_ids": [
+            "t0056.50"
+          ],
+          "limit_reason": null,
+          "hand_count_basis": "Visible boundary hand counts and counted named play/draw transitions; intermediate counts are arithmetic inference."
+        }
+      ],
+      "capture_status": "complete_with_recording_limits"
+    },
+    {
+      "turn_number": 3,
+      "draw_animation_end_seconds": 114.5,
+      "timing_basis": "approximate direct source-local animation end; unmeasuredPTS",
+      "selected_start_evidence_ids": [
+        "t0114.50"
+      ],
+      "before_end_evidence_ids": [
+        "t0143.50"
+      ],
+      "start_hand": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Eevee",
+          "Small Balloon",
+          "Poké Ball"
+        ],
+        "count": 4,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0114.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "before_end_hand": {
+        "cards_left_to_right": [
+          "Sabrina",
+          "Swablu",
+          "Training Area",
+          "Field Blower"
+        ],
+        "count": 4,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0143.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "candidates": [
+        {
+          "evidence_id": "t0115.50",
+          "requested_source_seconds": 115.5,
+          "offset_after_draw_seconds": 1,
+          "observation": "Untouched4-card hand; Psychic generated"
+        },
+        {
+          "evidence_id": "t0117.50",
+          "requested_source_seconds": 117.5,
+          "offset_after_draw_seconds": 3,
+          "observation": "Poké Ball already played;3-card hand"
+        },
+        {
+          "evidence_id": "t0120.50",
+          "requested_source_seconds": 120.5,
+          "offset_after_draw_seconds": 6,
+          "observation": "Swablu search reveal overlay"
+        }
+      ],
+      "named_draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Poké Ball",
+              "reveal_position": 1,
+              "source_video": "20260908_190933000_iOS.MP4",
+              "timestamp_seconds": 114.5,
+              "evidence_ids": [
+                "t0114.50"
+              ],
+              "basis": "direct native reveal or untouched postdraw card",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": null,
+          "source_video": "20260908_190933000_iOS.MP4",
+          "timestamp_seconds": 114.5,
+          "evidence_ids": [
+            "t0114.50"
+          ],
+          "limit_reason": null,
+          "hand_count_basis": "Visible boundary hand counts and counted named play/draw transitions; intermediate counts are arithmetic inference."
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poké Ball",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": "Swablu",
+              "reveal_position": 1,
+              "source_video": "20260908_190933000_iOS.MP4",
+              "timestamp_seconds": 120.5,
+              "evidence_ids": [
+                "t0120.50"
+              ],
+              "basis": "direct native reveal or untouched postdraw card",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": null,
+          "source_video": "20260908_190933000_iOS.MP4",
+          "timestamp_seconds": 120.5,
+          "evidence_ids": [
+            "t0120.50"
+          ],
+          "limit_reason": null,
+          "hand_count_basis": "Visible boundary hand counts and counted named play/draw transitions; intermediate counts are arithmetic inference."
+        },
+        {
+          "kind": "replacement_draw",
+          "caused_by": "Copycat",
+          "linked_play_order": 3,
+          "cards_in_reveal_order": [
+            {
+              "name": "Sabrina",
+              "reveal_position": 1,
+              "source_video": "20260908_190933000_iOS.MP4",
+              "timestamp_seconds": 136.5,
+              "evidence_ids": [
+                "t0136.50"
+              ],
+              "basis": "direct native reveal or untouched postdraw card",
+              "limit_reason": null
+            },
+            {
+              "name": "Swablu",
+              "reveal_position": 2,
+              "source_video": "20260908_190933000_iOS.MP4",
+              "timestamp_seconds": 137.5,
+              "evidence_ids": [
+                "t0137.50"
+              ],
+              "basis": "direct native reveal or untouched postdraw card",
+              "limit_reason": null
+            },
+            {
+              "name": "Training Area",
+              "reveal_position": 3,
+              "source_video": "20260908_190933000_iOS.MP4",
+              "timestamp_seconds": 138.5,
+              "evidence_ids": [
+                "t0138.50"
+              ],
+              "basis": "direct native reveal or untouched postdraw card",
+              "limit_reason": null
+            },
+            {
+              "name": "Field Blower",
+              "reveal_position": 4,
+              "source_video": "20260908_190933000_iOS.MP4",
+              "timestamp_seconds": 139.5,
+              "evidence_ids": [
+                "t0139.50"
+              ],
+              "basis": "direct native reveal or untouched postdraw card",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 2,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": {
+            "destination": "deck shuffled",
+            "cards": [
+              "Eevee",
+              "Swablu"
+            ],
+            "basis": "inherited accepted return set and reduced locator preplay hand; no claimed hidden deck order"
+          },
+          "source_video": "20260908_190933000_iOS.MP4",
+          "timestamp_seconds": 136.5,
+          "evidence_ids": [
+            "t0136.50",
+            "t0137.50",
+            "t0138.50",
+            "t0139.50"
+          ],
+          "limit_reason": null,
+          "hand_count_basis": "Visible boundary hand counts and counted named play/draw transitions; intermediate counts are arithmetic inference."
+        }
+      ],
+      "capture_status": "complete_with_recording_limits"
+    },
+    {
+      "turn_number": 5,
+      "draw_animation_end_seconds": 214,
+      "timing_basis": "approximate direct source-local animation end; unmeasuredPTS",
+      "selected_start_evidence_ids": [
+        "t0214.00"
+      ],
+      "before_end_evidence_ids": [
+        "t0234.00"
+      ],
+      "start_hand": {
+        "cards_left_to_right": [
+          "Sabrina",
+          "Swablu",
+          "Training Area",
+          "Field Blower",
+          "Professor's Research"
+        ],
+        "count": 5,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0214.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "before_end_hand": {
+        "cards_left_to_right": [
+          "Sabrina",
+          "Training Area",
+          "Field Blower",
+          "Mega Altaria ex",
+          "Eevee"
+        ],
+        "count": 5,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0234.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "candidates": [
+        {
+          "evidence_id": "t0215.00",
+          "requested_source_seconds": 215,
+          "offset_after_draw_seconds": 1,
+          "observation": "Research inspected, hand fanned for selection"
+        },
+        {
+          "evidence_id": "t0217.00",
+          "requested_source_seconds": 217,
+          "offset_after_draw_seconds": 3,
+          "observation": "Research resolution overlay after play"
+        },
+        {
+          "evidence_id": "t0220.00",
+          "requested_source_seconds": 220,
+          "offset_after_draw_seconds": 6,
+          "observation": "Research second reveal; not untouched normal-draw hand"
+        }
+      ],
+      "named_draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Professor's Research",
+              "reveal_position": 1,
+              "source_video": "20260908_190933000_iOS.MP4",
+              "timestamp_seconds": 214,
+              "evidence_ids": [
+                "t0214.00"
+              ],
+              "basis": "direct native reveal or untouched postdraw card",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": null,
+          "source_video": "20260908_190933000_iOS.MP4",
+          "timestamp_seconds": 214,
+          "evidence_ids": [
+            "t0214.00"
+          ],
+          "limit_reason": null,
+          "hand_count_basis": "Visible boundary hand counts and counted named play/draw transitions; intermediate counts are arithmetic inference."
+        },
+        {
+          "kind": "supporter_draw",
+          "caused_by": "Professor's Research",
+          "linked_play_order": 2,
+          "cards_in_reveal_order": [
+            {
+              "name": "Mega Altaria ex",
+              "reveal_position": 1,
+              "source_video": "20260908_190933000_iOS.MP4",
+              "timestamp_seconds": 218.5,
+              "evidence_ids": [
+                "t0218.50"
+              ],
+              "basis": "direct native reveal or untouched postdraw card",
+              "limit_reason": null
+            },
+            {
+              "name": "Eevee",
+              "reveal_position": 2,
+              "source_video": "20260908_190933000_iOS.MP4",
+              "timestamp_seconds": 219.5,
+              "evidence_ids": [
+                "t0219.50"
+              ],
+              "basis": "direct native reveal or untouched postdraw card",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 6,
+          "returned_or_discarded_cards": null,
+          "source_video": "20260908_190933000_iOS.MP4",
+          "timestamp_seconds": 218.5,
+          "evidence_ids": [
+            "t0218.50",
+            "t0219.50"
+          ],
+          "limit_reason": null,
+          "hand_count_basis": "Visible boundary hand counts and counted named play/draw transitions; intermediate counts are arithmetic inference."
+        }
+      ],
+      "capture_status": "complete_with_recording_limits"
+    },
+    {
+      "turn_number": 7,
+      "draw_animation_end_seconds": 287,
+      "timing_basis": "approximate direct source-local animation end; unmeasuredPTS",
+      "selected_start_evidence_ids": [
+        "t0287.00"
+      ],
+      "before_end_evidence_ids": [
+        "t0300.00"
+      ],
+      "start_hand": {
+        "cards_left_to_right": [
+          "Sabrina",
+          "Training Area",
+          "Field Blower",
+          "Mega Altaria ex",
+          "Eevee",
+          "Espeon"
+        ],
+        "count": 6,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0287.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "before_end_hand": {
+        "cards_left_to_right": [
+          "Sabrina",
+          "Training Area",
+          "Field Blower",
+          "Espeon"
+        ],
+        "count": 4,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0300.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "candidates": [
+        {
+          "evidence_id": "t0288.00",
+          "requested_source_seconds": 288,
+          "offset_after_draw_seconds": 1,
+          "observation": "Altaria inspected/selected from hand"
+        },
+        {
+          "evidence_id": "t0290.00",
+          "requested_source_seconds": 290,
+          "offset_after_draw_seconds": 3,
+          "observation": "Evolution moving onto Swablu"
+        },
+        {
+          "evidence_id": "t0293.00",
+          "requested_source_seconds": 293,
+          "offset_after_draw_seconds": 6,
+          "observation": "Evolution settled;5-card hand"
+        }
+      ],
+      "named_draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Espeon",
+              "reveal_position": 1,
+              "source_video": "20260908_190933000_iOS.MP4",
+              "timestamp_seconds": 287,
+              "evidence_ids": [
+                "t0287.00"
+              ],
+              "basis": "direct native reveal or untouched postdraw card",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 5,
+          "hand_count_after": 6,
+          "returned_or_discarded_cards": null,
+          "source_video": "20260908_190933000_iOS.MP4",
+          "timestamp_seconds": 287,
+          "evidence_ids": [
+            "t0287.00"
+          ],
+          "limit_reason": null,
+          "hand_count_basis": "Visible boundary hand counts and counted named play/draw transitions; intermediate counts are arithmetic inference."
+        }
+      ],
+      "capture_status": "complete_with_recording_limits"
+    },
+    {
+      "turn_number": 9,
+      "draw_animation_end_seconds": 357,
+      "timing_basis": "approximate direct source-local animation end; unmeasuredPTS",
+      "selected_start_evidence_ids": [
+        "t0357.00"
+      ],
+      "before_end_evidence_ids": [
+        "t0385.00"
+      ],
+      "start_hand": {
+        "cards_left_to_right": [
+          "Sabrina",
+          "Training Area",
+          "Field Blower",
+          "Espeon",
+          "Espeon"
+        ],
+        "count": 5,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0357.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "before_end_hand": {
+        "cards_left_to_right": [
+          "Training Area",
+          "Field Blower",
+          "Espeon"
+        ],
+        "count": 3,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0385.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "candidates": [
+        {
+          "evidence_id": "t0358.00",
+          "requested_source_seconds": 358,
+          "offset_after_draw_seconds": 1,
+          "observation": "Espeon lifted for evolution"
+        },
+        {
+          "evidence_id": "t0360.00",
+          "requested_source_seconds": 360,
+          "offset_after_draw_seconds": 3,
+          "observation": "Espeon evolution inspection overlay"
+        },
+        {
+          "evidence_id": "t0363.00",
+          "requested_source_seconds": 363,
+          "offset_after_draw_seconds": 6,
+          "observation": "Sabrina being selected; four cards after evolution"
+        }
+      ],
+      "named_draws_and_searches": [
+        {
+          "kind": "normal",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Espeon",
+              "reveal_position": 1,
+              "source_video": "20260908_190933000_iOS.MP4",
+              "timestamp_seconds": 357,
+              "evidence_ids": [
+                "t0357.00"
+              ],
+              "basis": "direct native reveal or untouched postdraw card",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": null,
+          "source_video": "20260908_190933000_iOS.MP4",
+          "timestamp_seconds": 357,
+          "evidence_ids": [
+            "t0357.00"
+          ],
+          "limit_reason": null,
+          "hand_count_basis": "Visible boundary hand counts and counted named play/draw transitions; intermediate counts are arithmetic inference."
+        }
+      ],
+      "capture_status": "complete_with_recording_limits"
+    }
+  ],
+  "limits": [
+    "Opponent unplayed hand identities and normal draw identities are concealed by card backs.",
+    "No opened discard panel detected in413 retained reduced1fps locator samples; visible pile tops only, full pile identity/order unknown.",
+    "One sample per second does not inspect every instant; subsecond events can fall between samples.",
+    "Requested source-local seek times and approximate locator times are separate from unmeasured actual decoded PTS.",
+    "No exact historical20-card deck log snapshot is available; current deck lists were not substituted."
+  ],
+  "independent_acceptance_status": "pending"
+}

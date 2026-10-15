@@ -1,0 +1,52 @@
+{
+  "game_id": "20260908_012720000",
+  "items": [
+    {
+      "field": "prompt_and_decline_sampling",
+      "status": "recording_sampling_limit",
+      "reason": "One-second locator sampling screened the complete recorded interval; subsecond panels/prompts between samples cannot be excluded. No opened discard panel or visible decline dialog appears in the283 inspected samples. Full hidden pile contents remain unknown; no every-instant absence claim."
+    },
+    {
+      "field": "discard_full_contents",
+      "status": "unexposed_in_inspected_views",
+      "reason": "Periodic closed-pile views retained; no opened pile in283 one-second locator samples. Full pile contents unknown; short unsampled opening cannot be excluded."
+    },
+    {
+      "field": "prompt_and_decline_sampling",
+      "status": "recording_sampling_limit",
+      "reason": "One-second locator sampling screened the complete recorded interval; subsecond panels/prompts between samples cannot be excluded. No opened discard panel or visible decline dialog appears in the283 inspected samples. Full hidden pile contents remain unknown; no every-instant absence claim."
+    },
+    {
+      "field": "prompt_and_decline_sampling",
+      "status": "recording_sampling_limit",
+      "reason": "One-second locator sampling screened the complete recorded interval; subsecond panels/prompts between samples cannot be excluded. No opened discard panel or visible decline dialog appears in the283 inspected samples. Full hidden pile contents remain unknown; no every-instant absence claim."
+    },
+    {
+      "field": "opponent_hand_draw_identities",
+      "status": "hidden",
+      "reason": "Card backs rather than faces; null identities, no deck-based inference."
+    },
+    {
+      "field": "historical_exact20_deck",
+      "status": "unavailable_historical_version",
+      "reason": "No corresponding historical20-card deck supplied; current deck not substituted."
+    },
+    {
+      "field": "actual_frame_pts_and_draw_end",
+      "status": "measurement_limit",
+      "reason": "Requested seek times recorded; actual decoded frame PTS and exact draw end not measured. Draw end intervals and after-play candidates explicitly marked."
+    },
+    {
+      "field": "action_authorship",
+      "status": "uncertified",
+      "reason": "Auto checked at sampled anchors and AI badge; no continuous touch-input evidence or toggle audit. Classification follows explicit owner rule."
+    },
+    {
+      "field": "old_prose_conflicts",
+      "status": "pending_independent_field_check",
+      "reason": "Native transaction differences saved in ACTION_QUESTIONS.json; old accepted prose retained verbatim, outcome preserved."
+    }
+  ],
+  "material_recording_gap": false,
+  "recording_gap_basis": "Inherited accepted coverage covers all12 recordedturns; field sampling limits separately disclosed."
+}

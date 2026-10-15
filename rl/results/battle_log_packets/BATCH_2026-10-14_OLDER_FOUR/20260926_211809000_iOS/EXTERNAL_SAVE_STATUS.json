@@ -1,0 +1,53 @@
+{
+  "recorded_utc": "2026-10-14T15:33:36.041753+00:00",
+  "artifact_url": "https://claude.ai/artifact/GHSfGSCzNiWNj8SFPXV3R1",
+  "owner_authorized_retry_and_verified_saves": true,
+  "owner_answer": "Approve browser retry and verified saves",
+  "initial_auto_review_rejection": "Earlier Computer Use stop after browser URL verification failed was cited; explicit fresh retry approval requested and granted",
+  "fresh_browser_inventory": "Succeeded after approval; one returned Chrome window, Pause Games title",
+  "initial_capture": "Returned null accessibility and wallpaper; no usable browser contents",
+  "initial_activation_error": "GetCursorPos failed: Access is denied. (0x80070005)",
+  "bounded_recovery": "Fresh list_windows and uniquely returned Chrome selection; one activation/state recovery attempt",
+  "recovery_error": "computer-use request timed out: get_window_state",
+  "browser_inputs_after_recovery_failure": 0,
+  "current_live_source_filename_duplicate_check": false,
+  "external_entries_written_this_turn": 0,
+  "current_totals_verified": false,
+  "status": "prepared_pending_browser_availability",
+  "next_step": "When browser control is available, check source filename duplicates, save only absent prepared results, reload and verify entries/totals; user authorization persists",
+  "candidates": [
+    "20260926_211809000_iOS.MP4",
+    "20260926_212155000_iOS.MP4"
+  ],
+  "computer_sources_excluded": [
+    "20261002_011527000_iOS.MP4",
+    "20261002_012229000_iOS.MP4"
+  ],
+  "source_filename": "20260926_211809000_iOS.MP4",
+  "prepared_result": {
+    "source_filename": "20260926_211809000_iOS.MP4",
+    "source_sha256": "f5b6c67fbe006c8485056d8b959a52146289cf8b95c32705b2149135b6bb6a49",
+    "match_date": "2026-09-26",
+    "date_basis": "Embedded source creation21:18:09UTC converted to America/Chicago16:18:09; actual battle start is not recorded",
+    "owner": "Dacz8976",
+    "opponent": "XaBy8",
+    "visible_deck_core": [
+      "Galarian Obstagoon",
+      "Galarian Zigzagoon",
+      "Mega Sableye ex"
+    ],
+    "outcome": "win",
+    "method": "opponent_concession",
+    "last_visible_points": {
+      "owner": 2,
+      "opponent": 0
+    },
+    "result_evidence": "Explicit Your opponent conceded at source38/40s and named Dacz8976 Victory at43.4s",
+    "result_evidence_paths": [
+      "20260926_211809000_iOS/evidence/native_38p000s.jpg",
+      "20260926_211809000_iOS/evidence/native_43p400s.jpg"
+    ],
+    "scope_limit": "Late-match43.463333s excerpt; setup, earlier turns and first owner point absent. Full20-card list unknown.",
+    "mode": "actual_queue_unknown_no_auto_observed_owner_default_ladder_route"
+  }
+}

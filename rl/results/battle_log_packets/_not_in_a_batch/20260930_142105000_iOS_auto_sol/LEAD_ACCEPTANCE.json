@@ -1,0 +1,23 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "source_video": "20260930_142105000_iOS.MP4",
+  "source_sha256": "33aa21f00544ea03546d97ebc5f0007832cf8c151a5dbc5a5de7106ea4331ee6",
+  "scope": "Complete nine-turn 159.021667-second autopilot computer battle, setup through three Binding Snow knockouts and explicit Victory",
+  "first_pass": "gpt-6.1-sol/high /root/sol_auto_142105",
+  "lead_checks": "Read full review, coverage, source, summary and uncertainties. Independently inspected51.00s ordinary Ninetales evolution/first Water with150HP,117.00s Crocalor0HP and Ninetales140HP withCape/twoWater/Raticate120,147.00s third point and152.00s explicit Dacz8976 Victory with readable Binding Snow text. Complete nine-turn account and source-bound retained evidence reconcile HP, Energy, points and promotions; draw/search/play distinctions and notification limits are explicit.",
+  "outcome": "owner_win",
+  "result": "Dacz8976 wins 3-0 using Alolan Ninetales ex against AI",
+  "final_points": {"owner": 3, "opponent": 0},
+  "owner_visible_core": "Alolan Vulpix / Alolan Ninetales ex; Team Rocket's Raticate ex; Elegant Cape",
+  "opponent": "AI / Opponent",
+  "last_turn": 9,
+  "useful_finding": "Binding Snow's restriction icon persists through knockout/promotion while AI attaches Energy to its Bench. Sightseer reveals no Stage1 and adds none. Raticate evolves against zero-Energy Crocalor, so no theft is established.",
+  "unreviewed_intervals": [],
+  "material_unresolved": [],
+  "limitations": "Full decks, hidden hand/search details and bot intent remain unknown. No attempted prohibited Active attachment or successful Raticate Energy theft was recorded. Late phone notifications obscure some hand/header details without hiding the result.",
+  "ladder_eligible": false,
+  "ladder_action": "No Ladder Log entry; excluded by owner instruction",
+  "astra_consulted": false,
+  "astra_reason": "Targeted source inspection left no consequential difficult or conflicting observation"
+}

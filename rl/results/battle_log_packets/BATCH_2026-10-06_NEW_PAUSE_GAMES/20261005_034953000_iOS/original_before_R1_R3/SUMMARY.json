@@ -1,0 +1,117 @@
+{
+  "source_video": "20261005_034953000_iOS.MP4",
+  "source_sha256": "85f9e3803543f512323259794b7166808e5bfd2ff5a3854d8ce1a40686075180",
+  "reviewer": "/root/pause_034953",
+  "model": "Sol",
+  "review_date": "2026-10-06",
+  "review_scope": "Entire source 0..410.035s; setup, all 16 turns, terminal concession and results",
+  "review_status": "full_source_first_pass_complete_pending_independent_acceptance",
+  "capture_status": "complete_with_recording_limits",
+  "classification": "human_event_battle",
+  "auto_control_visible": false,
+  "mode": "Deluxe Pack: Mega Emblem Event",
+  "mode_evidence_ids": [
+    "f0000_00",
+    "f0007_00"
+  ],
+  "opponent": "MIYA",
+  "owner": "Dacz8976",
+  "local_match_date": "2026-10-04",
+  "local_match_date_basis": "RECORDING_METADATA.json embedded UTC creation time converts to America/Chicago",
+  "outcome": "win",
+  "result_evidence_ids": [
+    "f0390_00",
+    "f0391_00",
+    "f0395_00",
+    "f0409_00"
+  ],
+  "method": "opponent conceded",
+  "points": {
+    "owner": 2,
+    "opponent": 1
+  },
+  "turns": 16,
+  "damage_done": 460,
+  "deck_label": "New deck 6",
+  "deck_name": "Aegislash / Melmetal ex / Magnezone",
+  "external_eligibility": "human Pause Games eligible; lead only registers/saves",
+  "independent_targets": [
+    {
+      "seconds": [
+        31,
+        35,
+        40
+      ],
+      "purpose": "Original opening five and selected Active"
+    },
+    {
+      "seconds": [
+        82,
+        83,
+        83.8,
+        86,
+        87,
+        91,
+        93
+      ],
+      "purpose": "Ordinary owner first move, draw, fan and Tackle ending hand"
+    },
+    {
+      "seconds": [
+        95,
+        99,
+        100,
+        102,
+        104,
+        109
+      ],
+      "purpose": "Ordinary opponent turn3 action order and concealed Research draw"
+    },
+    {
+      "seconds": [
+        222,
+        223,
+        223.5,
+        228,
+        233,
+        235
+      ],
+      "purpose": "Immediate evolution after owner turn10 draw and exact version"
+    },
+    {
+      "seconds": [
+        267,
+        268,
+        272,
+        274,
+        281,
+        283,
+        284,
+        288,
+        294
+      ],
+      "purpose": "Owner turn12 draw, Cursed Metal, Metal Arms180 and point/promotion"
+    },
+    {
+      "seconds": [
+        377,
+        381,
+        382,
+        384,
+        387,
+        388,
+        390,
+        409
+      ],
+      "purpose": "Final opponent turn, 160 damage, last draw, explicit concession and results"
+    }
+  ],
+  "limits": [
+    "Opponent identities remain hidden for normal and Research draws and both Poke Ball searches.",
+    "No player opens a discard pile anywhere in this source; visible top cards are partial previews.",
+    "Source-local timestamp estimates use native FFmpeg seeks; no separate frame PTS measurement.",
+    "Initial live deck snapshot has no matching new metal list; exact QR semantic list preserved, live saving pending lead.",
+    "Later +1/+3/+6 owner candidates can already show immediate plays; selected earlier intact frames are retained.",
+    "Rainbow Cave activation choice is not exposed from opponent perspective; subsequent attachments are observed Metal."
+  ]
+}

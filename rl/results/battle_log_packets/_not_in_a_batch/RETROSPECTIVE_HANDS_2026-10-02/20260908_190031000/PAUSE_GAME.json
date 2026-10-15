@@ -1,0 +1,130 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20260908_190031000",
+  "review_date": "2026-10-02",
+  "sources": [
+    {
+      "video_basename": "20260908_190031000_iOS.MP4",
+      "sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+      "source_json": "SOURCE_REFERENCE.json"
+    }
+  ],
+  "destination": null,
+  "deck_name": "Mega Altaria ex / Darkrai (visible core)",
+  "opening": {
+    "source_video": "20260908_190031000_iOS.MP4",
+    "timestamp_seconds": 23,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Small Balloon",
+        "basis": "native visible card face before Active selection",
+        "evidence_ids": [
+          "t0023.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Copycat",
+        "basis": "native visible card face before Active selection",
+        "evidence_ids": [
+          "t0023.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Professor's Research",
+        "basis": "native visible card face before Active selection",
+        "evidence_ids": [
+          "t0023.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Poké Ball",
+        "basis": "native visible card face before Active selection",
+        "evidence_ids": [
+          "t0023.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Eevee",
+        "basis": "native visible card face before Active selection",
+        "evidence_ids": [
+          "t0023.00"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Eevee",
+      "opening_position": 5,
+      "source_video": "20260908_190031000_iOS.MP4",
+      "timestamp_seconds": 38,
+      "evidence_ids": [
+        "t0023.00",
+        "t0038.00"
+      ]
+    },
+    "redraw_or_replacement": null,
+    "before_active_placement": true,
+    "status": "observed",
+    "evidence_ids": [
+      "t0023.00"
+    ],
+    "limit_reason": null
+  },
+  "packet_files": {
+    "prose": "REVIEW_SUPPLEMENT.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "capture_status_allowed_after_review": [
+    "complete",
+    "complete_with_recording_limits",
+    "incomplete_review"
+  ],
+  "battle_review_status": "inherited accepted full review; supplement pending independent acceptance",
+  "outcome": {
+    "owner": "Dacz8976",
+    "opponent": "Cool Hand",
+    "result": "win",
+    "score": "1-0",
+    "basis": "inherited accepted outcome only",
+    "accepted_review": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\video-review-coordinator-2026-09-09\\previously-finished-audit\\first-altaria\\REVIEW.md"
+  },
+  "limits": [
+    "Opponent unplayed cards and normal draw identities are hidden by card backs.",
+    "No discard panel was opened in the retained 1 fps locator scan; visible pile-top cards are recorded separately, full pile identities and order remain null.",
+    "One reduced sample per second does not examine every instant; brief subsecond prompts or panels can be missed.",
+    "Requested source-local times are retained; actual decoded frame PTS was not independently measured.",
+    "The exact historical 20-card log list is unavailable; visible core only."
+  ],
+  "lead_checked": false,
+  "mode_classification": {
+    "classification": "uncertain",
+    "auto_control_present": false,
+    "auto_enabled": null,
+    "excluded_from_ladder": null,
+    "basis": "No Auto control visible in examined native full frames or all168 reduced 1fps locator samples. Manual controls and Supporter choices visible. Absence in limited views does not verify match mode.",
+    "native_evidence_ids": [
+      "t0052.00",
+      "t0133.00",
+      "t0153.00",
+      "t0155.00"
+    ],
+    "owner_rule": "Any visible Auto control even OFF means computer opponent and excluded from ladder.",
+    "obscured_view_limit": "Card/coin overlays hide portions of controls; no mode assertion from those overlays."
+  }
+}

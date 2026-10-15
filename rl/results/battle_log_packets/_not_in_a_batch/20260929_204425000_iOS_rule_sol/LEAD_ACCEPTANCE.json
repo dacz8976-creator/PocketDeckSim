@@ -1,0 +1,17 @@
+{
+  "accepted": true,
+  "scope": "Entire supplied Harden rule test reviewed by Sol; consequential comparison independently checked",
+  "limitations": "Cascoon Harden only; Hide and Blocking Shell not tested. No simulator inspection or code changes.",
+  "accepted_utc": "2026-09-29T20:58:30.2037054Z",
+  "first_pass": "sol_shuriken_204425",
+  "source_sha256": "9992a8d1d9a53372dab9aa0256c400c8f0e47d92e21d8771f2a9d847b2926084",
+  "finding": "Water Shuriken20 passes Harden (110to90); same-turn IceWing40 is blocked, confirming active protection.",
+  "lead_checks": [
+    "t_85_5.jpg: Cascoon80HP Harden text expressly attacks40orless",
+    "Harden message and110HP seen in original sec102, retained t_101_5.jpg",
+    "t_113_0.jpg: Greninja present before ability, Cascoon110HP",
+    "Ability banner verified original sec115, retained t_114_5.jpg; t_115_5.jpg shows20damage;90HP after verified original sec117, retained t_116_5.jpg",
+    "IceWing40 verified original sec124, retained t_123_5.jpg; t_124_5.jpg shield animation at90; subsequent90 verified original sec126"
+  ],
+  "source_video": "20260929_204425000_iOS.MP4"
+}

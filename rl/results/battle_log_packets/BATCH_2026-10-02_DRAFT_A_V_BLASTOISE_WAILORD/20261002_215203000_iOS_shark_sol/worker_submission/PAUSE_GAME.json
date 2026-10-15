@@ -1,0 +1,163 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261002_215203000_iOS_shark_sol",
+  "sources": [
+    {
+      "video_basename": "20261002_215203000_iOS.MP4",
+      "sha256": "d0e031e9a27c358ad0e1590621014f2758bf80138b83c0776f9961ca34c88b7c",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "review_date": "2026-10-02",
+  "destination": "local_review_batch_and_BATTLE_REVIEW_INDEX",
+  "online_game_entry_requested": false,
+  "deck_name": "Draft A: Shark Tempo",
+  "opening": {
+    "source_video": "20261002_215203000_iOS.MP4",
+    "timestamp_seconds": 14.01,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Misty",
+        "variant": null,
+        "visible_art_description": null,
+        "basis": "Native visible name/art; exact collector number not transcribed",
+        "evidence_ids": [
+          "F0014.00"
+        ],
+        "limit_reason": "The supplied log printing is separate from observed alternate art."
+      },
+      {
+        "position": 2,
+        "name": "Lucky Ice Pop",
+        "variant": null,
+        "visible_art_description": null,
+        "basis": "Native visible name/art; exact collector number not transcribed",
+        "evidence_ids": [
+          "F0014.00"
+        ],
+        "limit_reason": "The supplied log printing is separate from observed alternate art."
+      },
+      {
+        "position": 3,
+        "name": "Carvanha",
+        "variant": null,
+        "visible_art_description": null,
+        "basis": "Native visible name/art; exact collector number not transcribed",
+        "evidence_ids": [
+          "F0014.00"
+        ],
+        "limit_reason": "The supplied log printing is separate from observed alternate art."
+      },
+      {
+        "position": 4,
+        "name": "Lapras",
+        "variant": null,
+        "visible_art_description": null,
+        "basis": "Native visible name/art; exact collector number not transcribed",
+        "evidence_ids": [
+          "F0014.00"
+        ],
+        "limit_reason": "The supplied log printing is separate from observed alternate art."
+      },
+      {
+        "position": 5,
+        "name": "Alolan Ninetales ex",
+        "variant": null,
+        "visible_art_description": "white illustrated",
+        "basis": "Native visible name/art; exact collector number not transcribed",
+        "evidence_ids": [
+          "F0014.00"
+        ],
+        "limit_reason": "The supplied log printing is separate from observed alternate art."
+      }
+    ],
+    "selected_active": {
+      "name": "Lapras",
+      "opening_position": 4,
+      "source_video": "20261002_215203000_iOS.MP4",
+      "timestamp_seconds": 22.0067,
+      "evidence_ids": [
+        "F0022.00",
+        "F0024.80",
+        "F0030.50"
+      ]
+    },
+    "redraw_or_replacement": "none shown",
+    "before_active_placement": true,
+    "status": "observed",
+    "evidence_ids": [
+      "F0014.00",
+      "F0018.00"
+    ],
+    "limit_reason": null
+  },
+  "setup": {
+    "owner_active": "Lapras",
+    "owner_bench": [
+      {
+        "name": "Carvanha",
+        "position": "right"
+      }
+    ],
+    "opponent_active": "Meowth",
+    "opponent_bench": [
+      {
+        "name": "Wailmer",
+        "position": "right"
+      }
+    ],
+    "evidence_ids": [
+      "F0025.50",
+      "F0030.50"
+    ],
+    "starting_hand_after_placements": [
+      "Misty",
+      "Lucky Ice Pop",
+      "Alolan Ninetales ex"
+    ]
+  },
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json",
+    "seen_inventory": "SEEN_CARD_INVENTORY.json",
+    "evening_update": "GUIDE_UPDATE_SUPPLEMENT.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "complete_first_pass_pending_independent_acceptance",
+  "outcome": {
+    "owner_result": "win",
+    "opponent_result": "loss",
+    "owner_points": 3,
+    "opponent_points": 0,
+    "turns_displayed": 12,
+    "went_first": "opponent",
+    "damage_displayed": 380,
+    "card_of_game": "Alolan Ninetales ex",
+    "source_video": "20261002_215203000_iOS.MP4",
+    "timestamp_seconds": 247.015,
+    "evidence_ids": [
+      "F0232.50",
+      "F0237.00",
+      "F0239.00",
+      "F0247.00"
+    ],
+    "basis": "Native Victory shows 3–0, 12 turns, owner went second, 380 damage; Wailord ex terminal KO"
+  },
+  "limits": [
+    "Hidden opponent draws/search faces remain null; supplied deck is not evidence of held card names.",
+    "Both discard piles stay unopened/unscrolled; only visible top faces and separately public played/KO events, not a complete pile census.",
+    "Covered lower evolution faces are unknown directly; same source witnessed genealogy is identified explicitly.",
+    "All one-fps source locator cells inspected plus 137 native views; no claim of every unrecorded subsecond input.",
+    "Exact collector numbers not transcribed; visible art differences do not change separate supplied 20-card log snapshot.",
+    "Auto OFF plus visible manual choice screens supports owner manual decisions; touch/input telemetry is not recorded.",
+    "Composite boundary states have source_seconds null and separate measured anchor ranges; earliest anchor may precede some final attributes and does not establish an exact state instant."
+  ],
+  "lead_checked": false
+}

@@ -1,0 +1,547 @@
+{
+  "verdict": "needs_repair",
+  "reviewer": "Sol, different producer independent source-field check",
+  "source": "20260908_190933000_iOS.MP4",
+  "source_sha256": "5c49e55a0b3153581904ffcefd747d941d5a729412a90708ec1f2783649610c5",
+  "checked_utc": "2026-10-02T22:28:43.515023+00:00",
+  "source_binding": {
+    "frozen": {
+      "schema_version": 1,
+      "review_kind": "independent_acceptance_audit",
+      "audit_date": "2026-09-09",
+      "auditor_model": "OpenAI Sol",
+      "reasoning_effort": "high",
+      "filename": "20260908_190933000_iOS.MP4",
+      "sha256": "5c49e55a0b3153581904ffcefd747d941d5a729412a90708ec1f2783649610c5",
+      "bytes": 771967232,
+      "duration_seconds": 412.87,
+      "current_path": "/mnt/c/Users/dacz8/OneDrive/Desktop/Battle Logs/Reviewed/20260908_190933000_iOS.MP4",
+      "historical_paths": [
+        "/mnt/c/Users/dacz8/OneDrive/Desktop/Battle Logs/20260908_190933000_iOS.MP4",
+        "/mnt/c/Users/dacz8/OneDrive/Desktop/Battle Logs/Reviewed/20260908_190933000_iOS.MP4"
+      ],
+      "recording_relationships": "One standalone PvP battle from matchmaking and setup through the terminal 1-3 point animation; no linked continuation or second battle observed",
+      "source_identity_verified_on": "2026-09-09",
+      "original_evidence": [
+        {
+          "path": "/mnt/c/Users/dacz8/Projects/Pocket Deck Lab/Boss Folder/competitive-deck-study-2026-09-08/round-robin-checkpoint/reports/video-intake/second-altaria/REVIEW.md",
+          "sha256": "64179ae0ddae9e8ade8abcd750db38af166defe46db466689651308288c8a871"
+        },
+        {
+          "path": "/home/dacz8976/.codex/visualizations/2026/09/08/01a082fa-e1a4-7840-bba7-297c4efa4cde/recovered/study/video-intake/second-altaria/INTAKE.json",
+          "sha256": "5135eba13ed4e6848c4132a2a96b3fc0782996f2868dfb7e00d170bdb8a50bd7"
+        },
+        {
+          "path": "/home/dacz8976/.codex/visualizations/2026/09/08/01a082fa-e1a4-7840-bba7-297c4efa4cde/recovered/study/video-intake/second-altaria/OWNER_STRATEGY_FEEDBACK.md",
+          "sha256": "7ccd5823ca52a3a8e0de295c77821a1b95efd075c3fdf394423196ba759b988c"
+        }
+      ]
+    },
+    "current_verification": {
+      "source": "20260908_190933000_iOS.MP4",
+      "current_path": "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Reviewed/20260908_190933000_iOS.MP4",
+      "sha256": "5c49e55a0b3153581904ffcefd747d941d5a729412a90708ec1f2783649610c5",
+      "logical_bytes": 771967232,
+      "status": "verified_sha256_match",
+      "expected_binding": "C:/Users/dacz8/Projects/Pocket Deck Lab/Boss Folder/video-review-coordinator-2026-09-09/previously-finished-audit/second-altaria/SOURCE.json",
+      "method": "Get-FileHash SHA256 against exact Reviewed source once after completed delivery",
+      "attempts": 2,
+      "completed_sha256_reads": 1,
+      "first_attempt_receipt": "SOURCE_READ_ERROR.json",
+      "retry_authorization": "Lead confirmed 771967232 bytes fully allocated at21:47:25UTC and authorized verification retry after earlier cloud error session ended.",
+      "verified_date": "2026-10-02",
+      "source_moved": false
+    },
+    "original_video_rehashed_by_checker": false
+  },
+  "required_repairs": [
+    {
+      "turn": 2,
+      "issue": "Opponent Poke Ball search omitted from numbered actions and draws/searches.",
+      "required": "Add concealed search after first shiny Electrike bench and before regular Electrike bench. Search card identity remains unknown; do not infer exact find from later bench. Keep inherited old narrative separately.",
+      "evidence": [
+        "cue_audit/grid_03.jpg samples100.5-103.5",
+        "independent_added_evidence/t0100.50.jpg concealed reveal",
+        "t0102.50 preceding second bench",
+        "t0108.50 second Electrike and readable Poke Ball opposing pile top",
+        "native114.5 resulting board"
+      ]
+    },
+    {
+      "turn": 8,
+      "issue": "Inherited action order contradicts fresh source sequence.",
+      "required": "New numbered sequence Poncho, Electrode evolution, new Voltorb bench, fresh Mega evolution, retreat to Electrode, manual Lightning to Active Electrode, Random Spark. Preserve old ordering and timestamps as inherited conflict.",
+      "evidence": [
+        "added_t8/t0314.50.jpg Poncho revealed before evolution",
+        "t0317.50 Electrode evolving after Poncho already attached",
+        "t0333.50 Voltorb slot3 while slot2 still Electrike",
+        "t0335.50 Mega evolution slot2",
+        "t0339.50 current Lightning remains available; Electrode has zero attached",
+        "t0343.50 Electrode promoted Active with zero attached",
+        "native354 Active Electrode now one Lightning, damagedMega still two on bench",
+        "grid10/11 attack350.5-353.5"
+      ]
+    }
+  ],
+  "other_binding_errors": [
+    {
+      "turn": 1,
+      "missing_union": [
+        "t0044.00",
+        "t0050.50"
+      ],
+      "unresolved": []
+    },
+    {
+      "turn": 2,
+      "missing_union": [
+        "t0068.00"
+      ],
+      "unresolved": []
+    },
+    {
+      "turn": 3,
+      "missing_union": [
+        "t0114.50"
+      ],
+      "unresolved": []
+    },
+    {
+      "turn": 4,
+      "missing_union": [
+        "t0114.50",
+        "t0143.50"
+      ],
+      "unresolved": []
+    },
+    {
+      "turn": 6,
+      "missing_union": [
+        "t0234.00"
+      ],
+      "unresolved": []
+    },
+    {
+      "turn": 8,
+      "missing_union": [
+        "t0300.00"
+      ],
+      "unresolved": []
+    },
+    {
+      "turn": 10,
+      "missing_union": [
+        "t0385.00"
+      ],
+      "unresolved": []
+    }
+  ],
+  "checked_native_seconds": [
+    17.5,
+    44.5,
+    45,
+    50.5,
+    51.5,
+    56.5,
+    68,
+    87,
+    114.5,
+    115.5,
+    117.5,
+    120.5,
+    136.5,
+    137.5,
+    138.5,
+    139.5,
+    143.5,
+    167,
+    212,
+    214,
+    218.5,
+    219.5,
+    234,
+    241,
+    287,
+    290,
+    300,
+    302.5,
+    308,
+    354,
+    357,
+    358,
+    363,
+    374,
+    385,
+    392,
+    397.5,
+    403.5,
+    409,
+    412.5
+  ],
+  "added_native_seconds": [
+    100.5,
+    102.5,
+    108.5,
+    314.5,
+    317.5,
+    333.5,
+    335.5,
+    339.5,
+    343.5
+  ],
+  "checked_fields": [
+    "Opening5 positional order and Igglybuff slot2",
+    "All5 owner untouched starts and ending names/counts; named normals, Research, Copycat four refills, Ball finds",
+    "All10 both boards HP, typed Energy, tools, conditions/effect icons, TrainingArea and current/next Zones",
+    "Opponent fan counts, periodic visible pile tops, warning302.5 and OK resolution",
+    "Numbered plays and bounded no-effect/decline/prompts via413sample screen"
+  ],
+  "canonical_field_checks": [
+    {
+      "turn": 1,
+      "ending_hand": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Eevee",
+          "Small Balloon"
+        ],
+        "count": 3,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0068.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "nested_reference_count": 10,
+      "discard_ids": [
+        "pile_1_owner"
+      ]
+    },
+    {
+      "turn": 2,
+      "ending_hand": {
+        "cards_left_to_right": [
+          "Copycat",
+          "Eevee",
+          "Small Balloon"
+        ],
+        "count": 3,
+        "basis": "native before prior owner ending action; unchanged through opponent turn by inspected footage",
+        "evidence_ids": [
+          "t0068.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "nested_reference_count": 3,
+      "discard_ids": []
+    },
+    {
+      "turn": 3,
+      "ending_hand": {
+        "cards_left_to_right": [
+          "Sabrina",
+          "Swablu",
+          "Training Area",
+          "Field Blower"
+        ],
+        "count": 4,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0143.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "nested_reference_count": 11,
+      "discard_ids": [
+        "pile_3_owner",
+        "pile_3_opponent"
+      ]
+    },
+    {
+      "turn": 4,
+      "ending_hand": {
+        "cards_left_to_right": [
+          "Sabrina",
+          "Swablu",
+          "Training Area",
+          "Field Blower"
+        ],
+        "count": 4,
+        "basis": "native before prior owner ending action; unchanged through opponent turn by inspected footage",
+        "evidence_ids": [
+          "t0143.50"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "nested_reference_count": 4,
+      "discard_ids": []
+    },
+    {
+      "turn": 5,
+      "ending_hand": {
+        "cards_left_to_right": [
+          "Sabrina",
+          "Training Area",
+          "Field Blower",
+          "Mega Altaria ex",
+          "Eevee"
+        ],
+        "count": 5,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0234.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "nested_reference_count": 7,
+      "discard_ids": [
+        "pile_5_owner",
+        "pile_5_opponent"
+      ]
+    },
+    {
+      "turn": 6,
+      "ending_hand": {
+        "cards_left_to_right": [
+          "Sabrina",
+          "Training Area",
+          "Field Blower",
+          "Mega Altaria ex",
+          "Eevee"
+        ],
+        "count": 5,
+        "basis": "native before prior owner ending action; unchanged through opponent turn by inspected footage",
+        "evidence_ids": [
+          "t0234.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "nested_reference_count": 3,
+      "discard_ids": [
+        "pile_6_owner"
+      ]
+    },
+    {
+      "turn": 7,
+      "ending_hand": {
+        "cards_left_to_right": [
+          "Sabrina",
+          "Training Area",
+          "Field Blower",
+          "Espeon"
+        ],
+        "count": 4,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0300.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "nested_reference_count": 7,
+      "discard_ids": []
+    },
+    {
+      "turn": 8,
+      "ending_hand": {
+        "cards_left_to_right": [
+          "Sabrina",
+          "Training Area",
+          "Field Blower",
+          "Espeon"
+        ],
+        "count": 4,
+        "basis": "native before prior owner ending action; unchanged through opponent turn by inspected footage",
+        "evidence_ids": [
+          "t0300.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "nested_reference_count": 4,
+      "discard_ids": [
+        "pile_8_opponent"
+      ]
+    },
+    {
+      "turn": 9,
+      "ending_hand": {
+        "cards_left_to_right": [
+          "Training Area",
+          "Field Blower",
+          "Espeon"
+        ],
+        "count": 3,
+        "basis": "direct native unzoomed hand",
+        "evidence_ids": [
+          "t0385.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "nested_reference_count": 8,
+      "discard_ids": [
+        "pile_9_owner"
+      ]
+    },
+    {
+      "turn": 10,
+      "ending_hand": {
+        "cards_left_to_right": [
+          "Training Area",
+          "Field Blower",
+          "Espeon"
+        ],
+        "count": 3,
+        "basis": "native before prior owner ending action; unchanged through opponent turn by inspected footage",
+        "evidence_ids": [
+          "t0385.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "nested_reference_count": 6,
+      "discard_ids": [
+        "pile_10_opponent",
+        "pile_10_owner"
+      ]
+    }
+  ],
+  "limits": [
+    "Unplayed opponent hand and normal/search draw identities concealed by backs; Poké Ball exact find unknown.",
+    "No opened discard panel detected in all413 inspected locator samples; visible tops only, hidden full pile content/order unestablished.",
+    "All413 retained1fps samples inspected for bounded cues, not every recorded instant; unsampled subsecond events and input transitions can be missed.",
+    "Native requested source offsets and locator midpoint labels are source-local approximations; decoded PTS and exact input instant unmeasured.",
+    "First T1 Research first card50.5 flips back;51.5 partially recognizable Poké Ball behind Small Balloon. Exact first-card label/order remains inherited accepted prose with partial native support.",
+    "Historical exact20-card log snapshot unavailable; do not substitute current deck.",
+    "No Auto option visible in inspected native controls or413 locator samples, absence limited to inspected views. Any visible Auto even OFF would classify computer and exclude ladder.",
+    "Final409 clear board has empty owner Active and surviving MegaAltaria on bench1;412.5 blurred point overlay does not establish promotion.",
+    "Rapid turn1 44.5 and turn3 114.5 untouched hands serve actual starts;45 and117.5 afterplay states do not replace starts. Offset1/3/6 views after first play are qualified rather than reconstructed untouched hands."
+  ],
+  "submitted_packet_files": [
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\ASSIGNMENT.json",
+      "sha256": "d71630202ec2321256c0d46c17e69d44d60e162bdfdba0405de05a0f44a0a8b4",
+      "read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\ASTRA_QUESTIONS.json",
+      "sha256": "8e78e1498be1fd3a2827c6b168979fd0883c57f124ed7d4a29434776f1aee2e3",
+      "read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\CHECKPOINTS.json",
+      "sha256": "7730f3e5c9a8b4b3af8b4f4ebb582de86b0ed372eeab4ae5ab2de44b2a7d4d2d",
+      "read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\COVERAGE.md",
+      "sha256": "05ce895d6ebddb790a74eb21bb17573dcf7b048b39af4e6e5ae03a75ec155894",
+      "read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\DECK_USED.json",
+      "sha256": "d71a66d045884b4c47a6ab2d0e114696b44d51add6f2d01d234e29d38ea29257",
+      "read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\EVIDENCE_INVENTORY.json",
+      "sha256": "96cbd4e6705f7dc252bdd4c47376a127712d50fc5ea87a07162dcfa94456972e",
+      "read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\FROZEN_FOR_INDEPENDENT_REVIEW.json",
+      "sha256": "4981351241cf0334252234d6570f67ff12a85e8c3f354f553d91e07ae26581e9",
+      "read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\HAND_SUPPLEMENT.json",
+      "sha256": "94444067dd0e5e25c94edf5f8f663ba753404618a4b515bb5afc9251a7b5137a",
+      "read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\INHERITED_TURNS.json",
+      "sha256": "95c252675dcacdd627651235a50c7de4085cf51564b294a05d7640a14d7aadd9",
+      "read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\METRICS.json",
+      "sha256": "a823c04b14fc11260578c754a1b9873ebf15ceda5a4cf84f8058cfe1d7272be6",
+      "read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\PACKET_VALIDATION.json",
+      "sha256": "2e06fe0dd2e42e355b4340d018b0388e0613d45e4d5e1b56203f00868fe90c02",
+      "read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\PAUSE_GAME.json",
+      "sha256": "c439c2a340bfb5b7273df57bc495649e1761bca7e726d99d4848c4665f340d37",
+      "read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\REVIEW_SUPPLEMENT.json",
+      "sha256": "eee839dd071a397a8318a2a08b05e5c47198d4562c6f958c4407565c8071d013",
+      "read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\REVIEW_SUPPLEMENT.md",
+      "sha256": "6d7488da4b73eba6378ebc25255a749cff7dd9985be2db7778a3276c81c25a7a",
+      "read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\SOURCE_READ_ERROR.json",
+      "sha256": "45a67155a7a29d9dbe8229a3454b4d7c62e63bfdcebc0318951c195119b15b70",
+      "read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\SOURCE_REFERENCE.json",
+      "sha256": "42aabfb35939fdd262734afb00a2c328ffb43323a2dbac2ee8f735d5763e4bbf",
+      "read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\SOURCE_VERIFICATION.json",
+      "sha256": "6aaa00bf792bb6cd23b4199b5f36a13862445e83c38dc6b3f61bb9644c5083ba",
+      "read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\STRUCTURE_CHECK.json",
+      "sha256": "688f94f147c5e34a1bd469908b7113abb55dbff20ee1dbd20cab5351a3c3b4e8",
+      "read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\TURN_EVIDENCE.json",
+      "sha256": "ade5daae601498461f98fcf9feb30842ba486aabf27fa067da707b8227eef622",
+      "read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\TURN_LEDGER.json",
+      "sha256": "af224e1afef6cf99cea26e696ba4a2605a6ef9b22912d7a9d4435efa41e10996",
+      "read_encoding": "utf-8-sig"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_190933000\\UNCERTAINTIES.json",
+      "sha256": "9659b703a13c2945a3a8b5abf94facdd2fb668ec0021af67b11d4a8032f7e091",
+      "read_encoding": "utf-8-sig"
+    }
+  ],
+  "metrics": {
+    "original_video_sha_reads": 0,
+    "cached_original_extraction_invocations_by_checker": 1,
+    "new_native_frames_extracted_by_checker": 6,
+    "lead_added_native_frames_inspected": 3,
+    "existing_decisive_native_submissions": 40,
+    "total_native_submissions": 49,
+    "locator_samples_screened": 413,
+    "locator_grids_screened": 12,
+    "packet_edits": 0,
+    "shared_log_edits": 0,
+    "outcome_audit": false
+  }
+}

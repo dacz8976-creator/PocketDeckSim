@@ -1,0 +1,46 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "accepted_at_utc": "2026-10-10T03:47:33.856547+00:00",
+  "lead": "/root",
+  "source_filename": "20261009_222740000_iOS.MP4",
+  "source_sha256": "8b43e46373858a9dd0bed106fedab96d8b96d058f09c8d5152850f86c4fc7295",
+  "source_bytes": 485072375,
+  "duration_seconds": 264.625,
+  "first_pass_model": "gpt-6-sol",
+  "first_pass_reasoning_effort": "high",
+  "independent_model": "gpt-6-sol",
+  "independent_reasoning_effort": "high",
+  "primary_files_read_and_checked_by_lead": [
+    "REVIEW.md",
+    "COVERAGE.md",
+    "FINDINGS.json"
+  ],
+  "independent_verification": "independent_sol/VERIFICATION.json",
+  "verified_primary_hashes": {
+    "REVIEW.md": "cda8e4ed4ffeedf73cfa022c28cf1da5e9390959bcdb2cc568058edef5be6037",
+    "COVERAGE.md": "811bc306080b1b148bc7ee2fda1601e54ab20ddde0ebced83dcfc35747429aef",
+    "FINDINGS.json": "9b9bea98ad1d65b9092325da4db8f76125380bd4a847d72d05b0cae044eabf4f"
+  },
+  "lead_direct_visual_checks": [
+    "native_proof/0s.jpg",
+    "native_proof/174s.jpg",
+    "native_proof/179s.jpg",
+    "native_proof/200s.jpg",
+    "native_proof/209s.jpg",
+    "native_proof/241s.jpg",
+    "intake_frames/3_263.625s.jpg"
+  ],
+  "full_source_and_turn_coverage_accepted": true,
+  "classification_and_outcome_reconciled": true,
+  "source_limits_preserved": true,
+  "outcome": {
+    "owner_result": "Victory",
+    "owner_points": 3,
+    "opponent_points": 0,
+    "turns": 12,
+    "damage": 300
+  },
+  "external_log_routing": "Computer battle excluded from Ladder and Pause Games",
+  "archive_identity_and_registration": "Required next; acceptance alone does not claim movement"
+}

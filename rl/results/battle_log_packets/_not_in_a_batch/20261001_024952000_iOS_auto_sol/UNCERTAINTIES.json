@@ -1,0 +1,59 @@
+{
+  "status": "full_battle_review_complete",
+  "remaining_coverage_gaps": [],
+  "items": [
+    {
+      "id": "auto_pause_intent",
+      "times_seconds": [
+        191,
+        194,
+        198,
+        207,
+        210,
+        211.5
+      ],
+      "uncertainty": "Exact toggle input and human intent not visible. Actual empty gray Auto control establishes off interval; paused actions are not attributed to uninterrupted Auto."
+    },
+    {
+      "id": "hidden_cards",
+      "times_seconds": [
+        85,
+        162,
+        270.9
+      ],
+      "uncertainty": "Full decks, unseen opponent hand and exact Poke Ball fetches are not all established; later played Basics are not retroactively assigned to a particular search without evidence."
+    },
+    {
+      "id": "clock_basis",
+      "times_seconds": [],
+      "uncertainty": "Filename October 1 versus owner local September 30; source naming clock basis unverified."
+    },
+    {
+      "id": "stats_absent",
+      "times_seconds": [
+        270,
+        270.5,
+        270.9
+      ],
+      "uncertainty": "Result shows Defeat, challenge and Card of the Game but no damage totals, elapsed battle time or separate statistics panel."
+    },
+    {
+      "id": "phase_boundaries",
+      "times_seconds": [],
+      "uncertainty": "Review interval boundaries are approximate; overview labels are sampling midpoints. Native filename times are exact seek requests."
+    },
+    {
+      "id": "alternative_strategy",
+      "times_seconds": [
+        145,
+        194,
+        244,
+        251
+      ],
+      "uncertainty": "Simisear evolution, Bench development and retaining Training Area are conditional alternatives, not proof of a winning line. Random target distribution is not measured."
+    }
+  ],
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "worker_status_at_submission": "finished_first_pass_awaiting_independent_lead_acceptance"
+}

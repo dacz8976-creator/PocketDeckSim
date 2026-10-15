@@ -1,0 +1,36 @@
+{
+  "video_basename": "20261001_030109000_iOS.MP4",
+  "sha256": "983669ff95f73370d229f93bca20f80da889d5cbb9a918160e155d7eea2d4d59",
+  "bytes": 270777166,
+  "duration_seconds": 148.686667,
+  "streams": [
+    {
+      "codec_name": "hevc",
+      "width": 1170,
+      "height": 2532
+    },
+    {
+      "codec_name": "aac"
+    }
+  ],
+  "source_path_at_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261001_030109000_iOS.MP4",
+  "recording_relationships": [
+    {
+      "type": "unchanged_review_copy",
+      "original_path": "C:\\Users\\dacz8\\OneDrive\\Pictures\\Camera Roll 1\\2026\\09\\20261001_030109000_iOS.MP4",
+      "source_copy_receipt": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-09-30_EVENING\\SOURCE_COPY.20261001_030109000_iOS.MP4.json",
+      "original_preserved": true,
+      "independent_gameplay_observations": 1
+    }
+  ],
+  "recording_date_basis": "Source names use 20261001; upload and owner request occur September 30 America/Chicago. Source filename clock basis is unverified.",
+  "owner_testimony": "Just uploaded 11 new videos for review. Not ladder log games, just auto ai games. Same process as before.",
+  "mode": "autopilot_vs_computer",
+  "ladder_eligible": false,
+  "ladder_action": "excluded_by_owner_instruction; no Ladder Log write",
+  "reviewer": "sol_auto_evening_030109000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "identity_verified_event_id": "7ce56b89-54c5-4307-aa3a-200eb8c53734",
+  "intake_utc": "2026-10-01T03:34:54.773127+00:00"
+}

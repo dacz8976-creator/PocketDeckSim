@@ -1,0 +1,546 @@
+{
+  "filename": "20260908_012720000_iOS.MP4",
+  "source_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20260908_012720000_iOS.MP4",
+  "sha256": "B9E76626643D8950CB7A4277487DA2262B5FA96FAF9E87454495EBE896D47085",
+  "bytes": 530226009,
+  "duration_seconds": 282.628,
+  "review_status": "full_battle_review_complete_and_lead_accepted",
+  "reviewer_attribution": "Gemini v7 two-pass primary, Sol selective reviewer, Codex lead correction",
+  "recording_type": "screen_recording",
+  "relationships": [
+    {
+      "path": "prior_evidence/FOCUSED_REVIEW.md",
+      "scope": "Prior focused review of the 03:08-03:25 Cyrus, Confusion Gas, Soothing Wind, knockout and +2-point sequence; corroboration only"
+    },
+    {
+      "path": "prior_evidence/EVENTS.json",
+      "scope": "Timestamped prior focused-event ledger for the Ogerpon knockout sequence"
+    },
+    {
+      "path": "prior_evidence/ogerpon-video-review-2026-09-07-VERIFIED.json",
+      "scope": "Verification receipt for the prior focused evidence packet"
+    }
+  ],
+  "index_update_performed": true,
+  "media_move_performed": true,
+  "battle_identity": {
+    "version": 1,
+    "opponent_label": {
+      "state": "observed",
+      "value": "Opponent",
+      "timestamp_seconds": 4.5,
+      "observation": "VS splash screen displays Opponent with an AI badge above it."
+    },
+    "opening_player": {
+      "state": "observed",
+      "value": "Teal Mask Ogerpon ex",
+      "timestamp_seconds": 13.0,
+      "observation": "Player places Teal Mask Ogerpon ex into the Active Spot."
+    },
+    "opening_opponent": {
+      "state": "observed",
+      "value": "Happiny",
+      "timestamp_seconds": 16.2,
+      "observation": "Opponent reveals Happiny in the Active Spot."
+    },
+    "outcome": {
+      "state": "observed",
+      "value": "player_win",
+      "timestamp_seconds": 276.5,
+      "observation": "Player achieves 3 points and the Victory screen displays Whimsicott ex."
+    },
+    "result_text": {
+      "state": "observed",
+      "value": "Victory!",
+      "timestamp_seconds": 276.6,
+      "observation": "Victory! text is prominently displayed over Whimsicott ex."
+    }
+  },
+  "evidence_audit": {
+    "version": 1,
+    "opponent_label": "Opponent",
+    "match_mode": {
+      "value": "solo",
+      "evidence": [
+        {
+          "timestamp": "00:04.400",
+          "observation": "AI badge shown directly above Opponent label."
+        }
+      ],
+      "uncertainty_id": null
+    },
+    "opponent_ai": {
+      "value": "yes",
+      "evidence": [
+        {
+          "timestamp": "00:04.400",
+          "observation": "AI badge displayed on VS splash screen."
+        }
+      ],
+      "uncertainty_id": null
+    },
+    "auto": {
+      "value": "off",
+      "evidence": [
+        {
+          "timestamp": "00:08.800",
+          "observation": "Auto toggle button is visible with checkmark/Auto state in play field."
+        }
+      ],
+      "uncertainty_id": null
+    },
+    "terminal": {
+      "outcome": "player_win",
+      "outcome_evidence": [
+        {
+          "timestamp": "04:32.200",
+          "observation": "Player reaches 3 points (+2 points animation triggers)."
+        }
+      ],
+      "result_text": "Victory!",
+      "result_text_evidence": [
+        {
+          "timestamp": "04:36.400",
+          "observation": "Victory! banner appears over Whimsicott ex card."
+        }
+      ],
+      "last_frame": {
+        "timestamp": "04:42.400",
+        "observation": "Final frame showing Victory! screen and Tap to Proceed prompt."
+      },
+      "uncertainty_id": null
+    },
+    "pokemon": [
+      {
+        "id": "player-ogerpon",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:13.000",
+          "observation": "Teal Mask Ogerpon ex placed into Active Spot."
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "03:19.400",
+          "observation": "Teal Mask Ogerpon ex knocked out and sent to discard."
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "player-cottonee",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "01:31.400",
+          "observation": "Cottonee placed onto player's Bench."
+        },
+        "final": {
+          "Grass": 3
+        },
+        "final_evidence": {
+          "timestamp": "04:34.000",
+          "observation": "Whimsicott ex (evolved from Cottonee) on Bench with 3 Grass Energy."
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "player-spinarak",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "04:16.200",
+          "observation": "Spinarak played to Bench via Quick-Grow Extract."
+        },
+        "final": {
+          "Grass": 1
+        },
+        "final_evidence": {
+          "timestamp": "04:34.000",
+          "observation": "Spinarak active with 1 Grass Energy attached."
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-happiny",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:16.200",
+          "observation": "Happiny revealed in Active Spot."
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "01:40.400",
+          "observation": "Happiny knocked out and discarded."
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-koffing",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:16.800",
+          "observation": "Team Rocket's Koffing placed on opponent's Bench."
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "04:29.400",
+          "observation": "Team Rocket's Weezing ex (evolved from Koffing) knocked out and discarded."
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-magmar",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:31.800",
+          "observation": "Team Rocket's Magmar played to opponent's Bench."
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "02:55.600",
+          "observation": "Team Rocket's Magmar knocked out and discarded."
+        },
+        "uncertainty_id": null
+      }
+    ],
+    "energy_events": [
+      {
+        "turn": 2,
+        "pokemon_id": "player-ogerpon",
+        "kind": "manual",
+        "before": {},
+        "after": {
+          "Grass": 1
+        },
+        "before_evidence": {
+          "timestamp": "00:41.200",
+          "observation": "Teal Mask Ogerpon ex has 0 attached Energy."
+        },
+        "action_evidence": {
+          "timestamp": "00:42.800",
+          "observation": "Grass Energy dragged to Teal Mask Ogerpon ex."
+        },
+        "after_evidence": {
+          "timestamp": "00:43.600",
+          "observation": "Teal Mask Ogerpon ex displays 1 Grass Energy attached."
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 3,
+        "pokemon_id": "opp-koffing",
+        "kind": "manual",
+        "before": {},
+        "after": {
+          "Darkness": 1
+        },
+        "before_evidence": {
+          "timestamp": "01:13.200",
+          "observation": "Team Rocket's Weezing ex has 0 attached Energy"
+        },
+        "action_evidence": {
+          "timestamp": "01:13.600",
+          "observation": "Opponent attaches Darkness Energy to Team Rocket's Weezing ex"
+        },
+        "after_evidence": {
+          "timestamp": "01:14.000",
+          "observation": "Team Rocket's Weezing ex displays 1 Darkness Energy attached"
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 4,
+        "pokemon_id": "player-ogerpon",
+        "kind": "manual",
+        "before": {
+          "Grass": 1
+        },
+        "after": {
+          "Grass": 2
+        },
+        "before_evidence": {
+          "timestamp": "01:21.800",
+          "observation": "Teal Mask Ogerpon ex has 1 Grass Energy attached."
+        },
+        "action_evidence": {
+          "timestamp": "01:32.800",
+          "observation": "Grass Energy dragged to Teal Mask Ogerpon ex."
+        },
+        "after_evidence": {
+          "timestamp": "01:33.800",
+          "observation": "Teal Mask Ogerpon ex displays 2 Grass Energy attached."
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 5,
+        "pokemon_id": "opp-magmar",
+        "kind": "manual",
+        "before": {},
+        "after": {
+          "Darkness": 1
+        },
+        "before_evidence": {
+          "timestamp": "01:46.800",
+          "observation": "Team Rocket's Magmar has 0 Energy attached."
+        },
+        "action_evidence": {
+          "timestamp": "01:48.400",
+          "observation": "Opponent attaches Darkness Energy to Magmar."
+        },
+        "after_evidence": {
+          "timestamp": "01:49.000",
+          "observation": "Team Rocket's Magmar displays 1 Energy attached."
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 6,
+        "pokemon_id": "player-cottonee",
+        "kind": "manual",
+        "before": {},
+        "after": {
+          "Grass": 1
+        },
+        "before_evidence": {
+          "timestamp": "02:04.800",
+          "observation": "Cottonee on Bench has 0 attached Energy."
+        },
+        "action_evidence": {
+          "timestamp": "02:12.800",
+          "observation": "Grass Energy dragged to Whimsicott ex."
+        },
+        "after_evidence": {
+          "timestamp": "02:13.800",
+          "observation": "Whimsicott ex has 1 Grass Energy attached."
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 7,
+        "pokemon_id": "opp-magmar",
+        "kind": "manual",
+        "before": {
+          "Darkness": 1
+        },
+        "after": {
+          "Darkness": 2
+        },
+        "before_evidence": {
+          "timestamp": "02:22.000",
+          "observation": "Team Rocket's Magmar has 1 Energy."
+        },
+        "action_evidence": {
+          "timestamp": "02:22.800",
+          "observation": "Opponent attaches a second Energy to Magmar."
+        },
+        "after_evidence": {
+          "timestamp": "02:23.400",
+          "observation": "Team Rocket's Magmar displays 2 Energy attached."
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 8,
+        "pokemon_id": "player-cottonee",
+        "kind": "manual",
+        "before": {
+          "Grass": 1
+        },
+        "after": {
+          "Grass": 2
+        },
+        "before_evidence": {
+          "timestamp": "02:38.600",
+          "observation": "Whimsicott ex has 1 Grass Energy attached."
+        },
+        "action_evidence": {
+          "timestamp": "02:42.800",
+          "observation": "Grass Energy dragged to Whimsicott ex."
+        },
+        "after_evidence": {
+          "timestamp": "02:43.400",
+          "observation": "Whimsicott ex displays 2 Grass Energy attached."
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 8,
+        "pokemon_id": "player-ogerpon",
+        "kind": "retreat",
+        "before": {
+          "Grass": 2
+        },
+        "after": {
+          "Grass": 1
+        },
+        "before_evidence": {
+          "timestamp": "02:44.200",
+          "observation": "Active Teal Mask Ogerpon ex has 2 Grass Energy before retreating"
+        },
+        "action_evidence": {
+          "timestamp": "02:44.800",
+          "observation": "Teal Mask Ogerpon ex pays its one-Energy retreat cost"
+        },
+        "after_evidence": {
+          "timestamp": "02:46.000",
+          "observation": "Benched Teal Mask Ogerpon ex has 1 Grass Energy remaining"
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 8,
+        "pokemon_id": "opp-magmar",
+        "kind": "discard",
+        "before": {
+          "Darkness": 2
+        },
+        "after": {},
+        "before_evidence": {
+          "timestamp": "02:51.600",
+          "observation": "Team Rocket's Magmar has 2 Energy."
+        },
+        "action_evidence": {
+          "timestamp": "02:52.000",
+          "observation": "Magmar takes 100 damage and is knocked out."
+        },
+        "after_evidence": {
+          "timestamp": "02:55.400",
+          "observation": "Magmar is sent to discard pile."
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 9,
+        "pokemon_id": "opp-koffing",
+        "kind": "manual",
+        "before": {
+          "Darkness": 1
+        },
+        "after": {
+          "Darkness": 2
+        },
+        "before_evidence": {
+          "timestamp": "03:05.400",
+          "observation": "Team Rocket's Weezing ex has 1 Darkness Energy attached."
+        },
+        "action_evidence": {
+          "timestamp": "03:13.000",
+          "observation": "Opponent attaches Darkness Energy to Weezing ex."
+        },
+        "after_evidence": {
+          "timestamp": "03:13.600",
+          "observation": "Team Rocket's Weezing ex displays 2 Darkness Energy attached."
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 9,
+        "pokemon_id": "player-ogerpon",
+        "kind": "discard",
+        "before": {
+          "Grass": 1
+        },
+        "after": {},
+        "before_evidence": {
+          "timestamp": "03:16.800",
+          "observation": "Ogerpon ex has 1 Grass Energy remaining after its Turn 8 retreat."
+        },
+        "action_evidence": {
+          "timestamp": "03:17.600",
+          "observation": "Ogerpon ex HP drops to 0."
+        },
+        "after_evidence": {
+          "timestamp": "03:19.400",
+          "observation": "Ogerpon ex is sent to discard pile."
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 10,
+        "pokemon_id": "player-cottonee",
+        "kind": "manual",
+        "before": {
+          "Grass": 2
+        },
+        "after": {
+          "Grass": 3
+        },
+        "before_evidence": {
+          "timestamp": "03:30.000",
+          "observation": "Whimsicott ex has 2 Grass Energy attached."
+        },
+        "action_evidence": {
+          "timestamp": "03:47.800",
+          "observation": "Grass Energy dragged to Whimsicott ex."
+        },
+        "after_evidence": {
+          "timestamp": "03:48.400",
+          "observation": "Whimsicott ex displays 3 Grass Energy attached."
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 12,
+        "pokemon_id": "player-spinarak",
+        "kind": "manual",
+        "before": {},
+        "after": {
+          "Grass": 1
+        },
+        "before_evidence": {
+          "timestamp": "04:16.200",
+          "observation": "Spinarak played to Bench with 0 Energy."
+        },
+        "action_evidence": {
+          "timestamp": "04:24.400",
+          "observation": "Grass Energy attached to Spinarak."
+        },
+        "after_evidence": {
+          "timestamp": "04:25.000",
+          "observation": "Spinarak displays 1 Grass Energy attached."
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 12,
+        "pokemon_id": "opp-koffing",
+        "kind": "discard",
+        "before": {
+          "Darkness": 2
+        },
+        "after": {},
+        "before_evidence": {
+          "timestamp": "04:27.200",
+          "observation": "Team Rocket's Weezing ex has 2 Darkness Energy."
+        },
+        "action_evidence": {
+          "timestamp": "04:27.600",
+          "observation": "Weezing ex HP reduced to 0 by Sting."
+        },
+        "after_evidence": {
+          "timestamp": "04:29.400",
+          "observation": "Weezing ex discarded upon knockout."
+        },
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      }
+    ]
+  }
+}

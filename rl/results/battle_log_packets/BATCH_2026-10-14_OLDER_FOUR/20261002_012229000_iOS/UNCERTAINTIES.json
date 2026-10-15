@@ -1,0 +1,60 @@
+{
+  "source_sha256": "d767c42f6e9a4e8677ae45020e7fccc2a0e9954009faf699abada5ef6c4d49c5",
+  "consequential_uncertainties": [],
+  "nonblocking_limits": [
+    {
+      "id": "U1",
+      "subject": "Owner-side controller",
+      "finding": "Auto remains OFF in observed board frames; interactive inputs do not prove which person or external controller made them.",
+      "evidence": [
+        "native/t0008.00.jpg",
+        "dense/t0175.00.jpg",
+        "dense/t0287.00.jpg"
+      ]
+    },
+    {
+      "id": "U2",
+      "subject": "Exact deck and printings",
+      "finding": "No full deck list is shown. Visible attack/HP/ability versions are recorded; exact collection printing and hidden cards remain unknown. Typhlosion ex appears only in the opponent deck label.",
+      "evidence": [
+        "dense/t0117.00.jpg",
+        "dense/t0222.00.jpg",
+        "dense/t0277.00.jpg",
+        "dense/t0309.00.jpg"
+      ]
+    },
+    {
+      "id": "U3",
+      "subject": "Opponent Poke Ball result",
+      "finding": "Search animation shows a face-down card. Cyndaquil and another Torchic are subsequently benched; which was searched versus already held is unknown.",
+      "seconds": [
+        44,
+        48,
+        52,
+        54
+      ],
+      "evidence": [
+        "native/t0044.00.jpg",
+        "native/t0048.00.jpg",
+        "dense/t0054.00.jpg"
+      ]
+    },
+    {
+      "id": "U4",
+      "subject": "Match date",
+      "finding": "October1 Chicago date comes from UTC creation metadata. On-screen8:22-8:27 clock is consistent; explicit calendar match date is not shown.",
+      "evidence": [
+        "SOURCE.json",
+        "native/t0008.00.jpg",
+        "dense/t0309.00.jpg"
+      ]
+    }
+  ],
+  "coverage_gaps": [],
+  "apparent_cuts": [],
+  "interpretation_notes": [
+    "Victini identity and Victory Star were resolved by native enlargement; no Chimchar appears.",
+    "Turn7 Cave result shows current Fighting and next Water, followed by Fighting attachment to Froakie.",
+    "Garchomp Burn coin Heads follows the20-damage checkup; it does not prevent a0-HP KO."
+  ]
+}

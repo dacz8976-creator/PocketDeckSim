@@ -1,0 +1,117 @@
+{
+  "video_basename": "20260930_143535000_iOS.MP4",
+  "reviewer": "sol_auto_143535000",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "review_state": "full_battle_review_complete",
+  "reviewed_interval_seconds": [
+    0,
+    191.185
+  ],
+  "unreviewed_phases": [],
+  "source_sha256": "a9f997cedf71b6c7e2a4834c4282a657a183aa2e26dd01af605449cf1490a9de",
+  "source_bytes": 348187404,
+  "identity_basis": "Lead-supplied SOURCE.json and registered identity event; worker did not rehash",
+  "mode": "auto_vs_ai",
+  "mode_visual_evidence": [
+    "keyframes/t0005.00.jpg",
+    "keyframes/t0010.00.jpg"
+  ],
+  "owner": "Dacz8976",
+  "opponent_label": "AI Opponent",
+  "challenge_label": "Sylveon Deck (Deluxe Pack: Mega)",
+  "outcome": "Victory",
+  "owner_points": 3,
+  "opponent_points": 0,
+  "turns_played": 11,
+  "went_first": true,
+  "damage_done": 260,
+  "owner_visible_core": [
+    "Dialga ex",
+    "Varoom",
+    "Revavroom"
+  ],
+  "owner_visible_unplayed_cards": [
+    "Magneton",
+    "Magnezone",
+    "Pokemon Flute",
+    "Team Rocket's Boss",
+    "additional Revavroom"
+  ],
+  "opponent_visible_core": [
+    "Ralts",
+    "Swablu",
+    "Klefki",
+    "Meloetta",
+    "Bramblin",
+    "Brambleghast"
+  ],
+  "knockouts": [
+    {
+      "turn": 7,
+      "pokemon": "Ralts",
+      "owner_points_after": 1
+    },
+    {
+      "turn": 9,
+      "pokemon": "Meloetta",
+      "owner_points_after": 2
+    },
+    {
+      "turn": 11,
+      "pokemon": "Brambleghast",
+      "owner_points_after": 3
+    }
+  ],
+  "final_owner_active": {
+    "pokemon": "Dialga ex",
+    "hp_remaining": 50,
+    "metal_energy": 4
+  },
+  "final_owner_bench": [
+    {
+      "pokemon": "Dialga ex",
+      "hp_remaining": 150,
+      "metal_energy": 3
+    },
+    {
+      "pokemon": "Revavroom",
+      "hp_remaining": 110,
+      "metal_energy": 2
+    }
+  ],
+  "consequential_uncertainties": 0,
+  "ladder_eligible": false,
+  "ladder_action": "none; excluded by owner instruction",
+  "review_files": [
+    "SOURCE.json",
+    "REVIEW.md",
+    "COVERAGE.md",
+    "UNCERTAINTIES.json",
+    "SUMMARY.json"
+  ],
+  "evidence_counts": {
+    "overview_sheets": 8,
+    "overview_frames": 64,
+    "full_resolution_keyframes": 68
+  },
+  "result_evidence": [
+    "keyframes/t0180.00.jpg",
+    "keyframes/t0185.00.jpg",
+    "keyframes/t0190.00.jpg"
+  ],
+  "worker_actions_at_submission": {
+    "global_mutations": "none; lead handles acceptance, registration and archiving"
+  },
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "lead_acceptance_pending": false,
+  "source_archived": true,
+  "source_modified": false,
+  "archive_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260930_143535000_iOS.MP4",
+  "archive_receipt": "MOVE_RECEIPT.20260930_143535000_iOS.MP4.json",
+  "archive_completion_event_id": "a0b452ef-a67c-4c8b-9f38-d9ed36589d1a",
+  "global_registration_complete": true,
+  "current_review_event_id": "d6059c69-074f-44f6-9946-424a57197c40",
+  "post_acceptance_corrections": "POST_ACCEPTANCE_CORRECTIONS.md"
+}

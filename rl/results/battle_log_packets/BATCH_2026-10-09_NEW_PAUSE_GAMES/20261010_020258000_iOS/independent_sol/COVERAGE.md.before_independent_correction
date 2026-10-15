@@ -1,0 +1,30 @@
+# Coverage and hand-capture check
+
+Reviewer `/root/pause_020258`, gpt-6.1-sol/high. Full available source reviewed, 0–342.526667s, one continuous game. Actual visual views are listed in VISUAL_VIEW_MANIFEST.json. Native capture paths and hashes are in TURN_EVIDENCE.json. This is a first pass awaiting independent lead acceptance.
+
+| Source interval | Reviewed coverage |
+| --- | --- |
+| 0–35s | Filmed QR, continuous matchmaking into Pikachu profile, loading and second-player coin/setup transition. |
+| 35–48s | Five-card opening before placement, Koffing Active, opponent Rattata Active, both initial boards. |
+| 48–61s | Turn1 hidden draw, Poké Ball, Lechonk Bench, end. |
+| 61–119s | Turn2 full ordered Tool/Stadium/Copycat/search/bench/retreat/attachment/Hook sequence and Hiking end draw. |
+| 119–181s | Turn3 Raticate evolution and Water theft, Metal attachment, Research, Tinkatink, Field Blower, Horsea KO, point and replacement. |
+| 181–220s | Turn4 normal draw, Rare Candy evolution, Weezing evolution, Boiler Smog prompt Yes, Water, End Turn, both Hiking draws, Poison/Burn and Tails checkup. |
+| 220–255s | Turn5 evolution, Red Card replacements, Tinkatuff attachment, attack, opponent Hiking draw, Poison/Burn and Heads recovery. |
+| 255–291s | Turn6 normal Research, both Research draws, failed Poké Ball, Koffing Bench, Water, Stormy Prison KO, two points and opponent promotion. |
+| 291–316s | Turn7 Tinkaton evolution, second Metal, Rattata Bench, Field Blower removes Stadium, no attack/end. |
+| 316–332s | Turn8 Rare Candy draw, Sabrina, waiting prompt and opponent concession, final board/hand/score. |
+| 332–342.526667s | Results transition and Victory vs.Pikachu, Kingdra card of game. |
+
+There are exactly8 ledger rows, owner and opponent alternately. No unreviewed interval or missing continuation. A 3s overview locates all phases; denser native action/reveal windows establish the meaningful sequences. Neither an enlarged overview nor a filename-only inspection supplies the hand evidence.
+
+| Owner turn | Approx draw end | +1/+3/+6 native candidates | Selected before first play | Before end action | Opponent fan / owner hand |
+| --- | --- | --- | --- | --- | --- |
+| 2 |64s |65/67/70s |65s, all5 named |111.5s before Hook |Direct4; hand2 before attack,3 after Hiking |
+| 4 |183.8s |185/187/190s |184.2s, all4 named, before Candy drag |206.5s before End Turn |Direct3; hand1 before end,3 after Hiking |
+| 6 |256.8s |258/260/263s |256.8s, all4 named, before Research |273s before Stormy Prison |Direct3; final hand3 |
+| 8 |318.7s |319/321.7/324.7s |319s, all4 named, before Sabrina |326.5s final clear hand during switch prompt |Direct1; final hand3, unused Water |
+
+Each retained native frame has full-frame, bottom [0,2025,1170,2532] and top [0,0,1170,600] crops. Later candidates after first play are marked unsuitable as preplay hands. T8 has no End Turn because concession interrupts Sabrina; the final clear hand supplies the terminal substitute. Research, Copycat, Poké Ball and Red Card cards are individually named; opponent hidden additions are separate unknowns. Both boards include HP/max/damage, typed Energy, Tools, Special Conditions, Stadium, points and Energy Zone timing. No unobserved warning is labeled declined. Exact live20-card snapshot and filmed QR binding are saved per game.
+
+Neither discard pile is opened, so all periodic pile snapshots remain unavailable, with explicit inspected-source reasons. Functional deck matches the live20-slot snapshot; exact artworks and printing aliases remain limited. These are source limits, not uninspected work. No source moves, shared-log writes or external artifact mutation were performed by this reviewer.

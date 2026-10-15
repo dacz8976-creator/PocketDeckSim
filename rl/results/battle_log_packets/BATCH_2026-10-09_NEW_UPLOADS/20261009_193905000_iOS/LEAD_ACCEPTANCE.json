@@ -1,0 +1,48 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "accepted_at_utc": "2026-10-10T01:40:31.085600+00:00",
+  "lead": "/root",
+  "source_filename": "20261009_193905000_iOS.MP4",
+  "source_sha256": "bade03dea4b20d3b08476f78cf677487ea803905503968aef31ceb60286ecc77",
+  "source_bytes": 324765990,
+  "duration_seconds": 176.924377,
+  "first_pass_model": "gpt-6-sol",
+  "first_pass_reasoning_effort": "high",
+  "independent_model": "gpt-6-sol",
+  "independent_reasoning_effort": "high",
+  "primary_files_read_and_checked_by_lead": [
+    "REVIEW.md",
+    "COVERAGE.md",
+    "FINDINGS.json"
+  ],
+  "independent_verification": "independent_sol/VERIFICATION.json",
+  "verified_primary_hashes": {
+    "REVIEW.md": "cbff706c10ac99ba14a63555f9f6a032a69b7668a6e1798208c3988b0d8ac3ca",
+    "COVERAGE.md": "8c197809f6c4439647a029502a80f7318104442e84ce5794311a3f394ffa12a2",
+    "FINDINGS.json": "f7ff2d75403b92f797477b7dbb4a89a7a5160237ff34d40e041a8ec8d89bba0b"
+  },
+  "lead_direct_visual_checks": [
+    "frames/action_001.jpg",
+    "frames/action_093.jpg",
+    "frames/action_151.jpg",
+    "frames/action_159.jpg",
+    "frames/action_160.jpg"
+  ],
+  "full_source_and_turn_coverage_accepted": true,
+  "classification_and_outcome_reconciled": true,
+  "source_limits_preserved": true,
+  "outcome": {
+    "winner": "Dacz8976",
+    "result": "Victory",
+    "owner_points": 3,
+    "opponent_points": 1,
+    "turns": 7,
+    "computer_battle": true,
+    "auto_enabled": true,
+    "eligible_ladder_log": false,
+    "eligible_pause_games": false
+  },
+  "external_log_routing": "Computer battle excluded from Ladder and Pause Games",
+  "archive_identity_and_registration": "Required next; acceptance alone does not claim movement"
+}

@@ -1,0 +1,38 @@
+{
+ "reference": "km3",
+ "seats": [
+  0,
+  1
+ ],
+ "pair_stride": 10000,
+ "threads": 2,
+ "log_level": "deck",
+ "ext_timeout_s": null,
+ "intended_lines": "rl/strength/intended_lines.json",
+ "name": "m64_replay_rules2_b",
+ "question": "m64's REPLAY CHECK on the current engine (rl/results/m64_on_rules2_2026-10/SPEC.md section 3): do the combined run's m64 games replay exactly on the rules-switch-2 engine, except deck 10 against t-weezing, where each changed game must show Will's new rule acting? This registration: 01-muk-glimmora-kingambit-regigigas, 05-indeedee-stoutland, draft-A-shark-tempo v the 8 panel lists, deals 0-1, seed_base 24440000000 (each key the combined run's own seed).",
+ "pilot": "kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64",
+ "stage": "dev",
+ "decks": [
+  "01-muk-glimmora-kingambit-regigigas",
+  "05-indeedee-stoutland",
+  "draft-A-shark-tempo"
+ ],
+ "opponents": [
+  "t-altaria",
+  "t-blaziken",
+  "t-hydreigon",
+  "t-lucario",
+  "t-sceptile",
+  "t-suicune",
+  "t-vespiquen",
+  "t-weezing"
+ ],
+ "deals": 2,
+ "seed_base": 24440000000,
+ "program": "/home/dacz8976/kx_r2c/strength",
+ "program_sha256": "6798e33cb355ac00e0bd83fcae8aa01ed9385752ce7695025c234e78faa5e5c0",
+ "engine": "laptop/kx3cand-on-rules2 9a0bc5ac28ccf421044c3c68dc2779123b607bca engine tree 5d557d350b6d (the candidate kx3's players, claude/playout-pilot 172cbe9c byte for byte, on main-c045ede's engine, rules switch 2), built on the laptop Oct 14 with rl/strength/build.sh (harness bf9c5d6814007f1f)",
+ "pilot_provenance": "kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64 from claude/playout-pilot@172cbe9c (the combined run's and the held-out exam's m64), its players byte for byte on main-c045ede's engine",
+ "reference_provenance": "km3 in the same build; its self-check must be the pinned km3's (81b572198c04d5d1)"
+}

@@ -1,0 +1,67 @@
+{
+  "video_basename": "20260930_143122000_iOS.MP4",
+  "sha256": "f207da9093a5b579f0fc79b0993e7132f9e17e78c219790de8547163e6c59847",
+  "bytes": 378700328,
+  "duration_seconds": 206.301667,
+  "reviewer": "sol_auto_143122000",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "review_date": "2026-09-30",
+  "scope": "Complete available battle, setup through explicit Victory; turns 1-11",
+  "review_status": "full_battle_review_complete",
+  "coverage_complete": true,
+  "lead_accepted": false,
+  "mode": "autopilot_vs_ai",
+  "mode_evidence": "AI intro and checked Auto button; owner testimony",
+  "opponent": "Raichu Deck (Deluxe Pack: Mega)",
+  "owner": "Dacz8976",
+  "outcome": "win",
+  "final_score": {
+    "owner": 3,
+    "opponent": 2
+  },
+  "terminal_turn": 11,
+  "terminal_evidence": [
+    "evidence/t0192.00.jpg",
+    "overview/sheet_08.jpg",
+    "evidence/t0205.00.jpg"
+  ],
+  "owner_visible_core": [
+    "Passimian ex",
+    "Croagunk",
+    "Toxicroak",
+    "Roggenrola",
+    "Boldore",
+    "Gigalith ex"
+  ],
+  "opponent_visible_cards": [
+    "Mareep",
+    "Flaaffy",
+    "Iron Thorns",
+    "Helioptile",
+    "Electrike",
+    "Magnemite"
+  ],
+  "key_observation": "Electrike heads Quick Attack deals 40 to KO 30-HP Passimian ex. Offload Pass visibly moves its two Fighting Energy to Toxicroak, which is promoted and immediately KOs 60-HP Electrike with Poison Jab. The direct attack reaches zero HP before the Poisoned announcement.",
+  "ladder_eligible": false,
+  "ladder_action": "none, excluded by owner instruction",
+  "astra_escalation_required": false,
+  "retained_overview_samples": 69,
+  "retained_targeted_frames": 57,
+  "unreviewed_intervals": [],
+  "worker_actions_at_submission": {
+    "source_moved": false,
+    "global_log_written": false
+  },
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "lead_acceptance_pending": false,
+  "source_archived": true,
+  "source_modified": false,
+  "archive_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260930_143122000_iOS.MP4",
+  "archive_receipt": "MOVE_RECEIPT.20260930_143122000_iOS.MP4.json",
+  "archive_completion_event_id": "6855550a-e67a-4839-922c-61f3498aa07e",
+  "global_registration_complete": true,
+  "current_review_event_id": "c127d1fc-caa1-432f-a664-7442fdbdd07f",
+  "post_acceptance_corrections": "POST_ACCEPTANCE_CORRECTIONS.md"
+}

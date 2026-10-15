@@ -1,0 +1,29 @@
+{
+  "utc": "2026-10-10T04:53:17.553136+00:00",
+  "original_sha256": "bc46bfb2875070dfc5f3cd865460c3d2bc9424bac87091f4aad9146eb5c98a98",
+  "preserved_original": "independent_sol\\TURN_LEDGER.before_independent_correction.json",
+  "changes": {
+    "shore_labels": 47,
+    "reduced_basis_labels": 93,
+    "native_pre_end_links": [
+      {
+        "turn": 8,
+        "added_evidence_id": "E_0268.00"
+      },
+      {
+        "turn": 16,
+        "added_evidence_id": "E_0538.00"
+      },
+      {
+        "turn": 24,
+        "added_evidence_id": "E_0851.00"
+      }
+    ],
+    "turn4_draw_evidence_qualification": {
+      "retained": "E_0106.00",
+      "added": "E_0108.00",
+      "basis": "First-play reveal plus continuous retained five-card hand, no clear six-card fan claimed"
+    }
+  },
+  "basis": "Native printed Shore text at E_0266.00; inspected native pre-end hands; all prior D references retained"
+}

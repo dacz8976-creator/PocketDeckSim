@@ -1,0 +1,11 @@
+[
+  {
+    "start_timestamp": "00:00.000",
+    "end_timestamp": "00:01.000",
+    "claim_or_question": "Is the match mode Solo (vs AI) or PvP?",
+    "why_uncertain": "The opponent's nameplate displays the generic label 'Opponent' with standard sleeves and avatar, but the match setup screen is not shown to verify if it is an AI battle or a casual/ranked human match.",
+    "consequence_if_wrong": "Metadata classification only; does not affect board state, game rules, scoring, or battle outcome.",
+    "recommended_sol_check": "Confirm whether the 'Opponent' label corresponds to standard AI battle formatting in this build.",
+    "id": "U1"
+  }
+]

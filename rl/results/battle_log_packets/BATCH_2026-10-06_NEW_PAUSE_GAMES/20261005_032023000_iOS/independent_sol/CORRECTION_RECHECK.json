@@ -1,0 +1,68 @@
+{
+  "schema": "pause-games/independent-correction-recheck-v1",
+  "game_id": "20261005_032023000_iOS",
+  "source_sha256": "6fadd948b5526f22007c2ca2b11516c27801c2fbf2af57c290b214f9327f36a9",
+  "reviewer": "/root/independent_metal",
+  "repair_id": "R1",
+  "accepted": true,
+  "status": "accepted_after_R1_surgical_repair",
+  "required_repairs": [],
+  "remaining_repairs": [],
+  "checked_input_sha256": {
+    "SOURCE.json": "56e9e4d1ca022efac46feaa68cd2dc413f2bdd4c1a14656cbc9617e10857a3bd",
+    "REVIEW.md": "167a1d8e2204e7f05a7afdf6258df169882b8ee8ed680400dda921ab169e7725",
+    "COVERAGE.md": "442154e949bde43308b1241ed87af485b3d0a04e8915d3446997310cfabb1716",
+    "SUMMARY.json": "13348250fd442dc6a391efc2d31a8f8d185e29bd86c65aed9d8a80b439fa869d",
+    "UNCERTAINTIES.json": "06eff065b4e94546714beb3949c697e529a190db0040f23a2f934f4711473087",
+    "PAUSE_GAME.json": "ecd975053587c84ade625811d540987a8111668884db07040cc4ce218f0f24c2",
+    "DECK_USED.json": "aa8e3305559f32d4da208577120df6568fe2e05ffeec3038c65736541239b384",
+    "TURN_LEDGER.json": "1500716587b08be99f6c1715abbbc76de120c8f1f5eea199c58e6b8267e3b1b9",
+    "TURN_EVIDENCE.json": "cae43251f328edbe421e492f07422c061a702e44fef5661b1235410924b1111c"
+  },
+  "initial_rejected_report": {
+    "path": "CHECK_RESULT.json",
+    "accepted": false,
+    "sha256": "82539d7f3dfcbb754aa4f1d63902c79dc806dd9e015dd3084e1478b847b14384",
+    "preserved": true
+  },
+  "scope": "Tiny recheck limited to repaired turn12 native capture, references, selected role, approximate draw anchor, bounded Research input, candidate offsets and associated prose. Prior independent accepted checks carry forward. No second full-source pass or media read/hash/extraction.",
+  "inspected_native_evidence": [
+    {
+      "path": "turn_evidence/t0397.00.jpg",
+      "source_seconds": 397,
+      "observation": "Intact unzoomed four-card fan: Superb Shield Aegislash, Rocket Tinkaton, Cursed Metal Aegislash, Research. Both boards and current Metal icon support new references."
+    },
+    {
+      "path": "turn_evidence/t0397.20.jpg",
+      "source_seconds": 397.2,
+      "observation": "Research selected and central animation already begun; supports input window397.0-397.2."
+    },
+    {
+      "path": "turn_evidence/t0397.50.jpg",
+      "source_seconds": 397.5,
+      "observation": "Only three prior cards remain; corrected post-first-play role and selected=false/before_first_play=false accurate."
+    },
+    {
+      "path": "turn_evidence/t0397.00_bottom.png",
+      "source_seconds": 397,
+      "observation": "Native1170x507 exact pixel crop of new frame, full four-card fan."
+    },
+    {
+      "path": "turn_evidence/t0397.00_top.png",
+      "source_seconds": 397,
+      "observation": "Native1170x770 exact pixel crop, opponent fan3 and board."
+    }
+  ],
+  "repaired_fields_checked": [
+    "TURN_LEDGER.json turns[11] owner_hand_start/hand_at_start and board_at_start now reference f0397.00.",
+    "TURN_LEDGER.json turns[11] timing draw_animation_end_seconds397 and first_voluntary_move_window_seconds[397,397.2] explicit approximation; Research action input_timestamp_window_seconds agrees.",
+    "TURN_EVIDENCE.json f0397.00 selected_preplay native frame and exact crops; f0397.50 post-first-play role.",
+    "TURN_EVIDENCE.json candidates398.2/400.2/403.2 offsets1.2/3.2/6.2 and after-play limits retained.",
+    "REVIEW.md T12 line and correction note agree; COVERAGE.md now identifies intact hand397.0.",
+    "INDEPENDENT_CORRECTIONS.json current hashes match repaired files and identifies historical self-check receipts."
+  ],
+  "limits": [
+    "Requested seek times are source-local; precise decoded PTS/touch are not independently measured.",
+    "Local independent acceptance; root owns lead acceptance, shared registration, external logging and archival."
+  ]
+}

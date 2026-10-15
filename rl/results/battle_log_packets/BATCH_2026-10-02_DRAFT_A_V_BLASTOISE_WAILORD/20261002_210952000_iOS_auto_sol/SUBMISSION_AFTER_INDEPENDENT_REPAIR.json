@@ -1,0 +1,30 @@
+{
+  "source_video": "20261002_210952000_iOS.MP4",
+  "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "reviewer": "drafta_auto_210952",
+  "complete_first_pass": true,
+  "independent_accepted": false,
+  "completed_utc": "2026-10-03T00:20:10.433563+00:00",
+  "files": {
+    "SOURCE.json": "fab01fb167e97459974aa8ebddc4733dc3f2a7b560a511f802edf372ad355883",
+    "ASSIGNMENT.json": "a43b15de1decf962f806ac9b101d88ed9c4cb80866680f96b806d57229f57e26",
+    "REVIEW.md": "8ac5d9dd8c86fd103ff9d4b2d1e775c8e1c4e41c291462a46afb1e29637fa6a8",
+    "COVERAGE.md": "41aab5af62e027b24c108368b9032c1d0d27cce8103afdcecf986b7127700bcf",
+    "SUMMARY.json": "df2a7857b82db5cf386caafd1a43be0ad9ecded8c2898ae72fa4fe7f1f4bdb64",
+    "UNCERTAINTIES.json": "cec42d95a310cc8a19e35e93e6e1819110e9fa44711accb8127922163f71e23d",
+    "PAUSE_GAME.json": "f1cb70cd860fd58ed066df04cc74a1c6533149e1015b396016a752321dfcb10f",
+    "DECK_USED.json": "3dc371942205719542a8f6155f15cfb6f7c304cd46a2a7b693796a3e489bc9a4",
+    "TURN_LEDGER.json": "7d2edb6230223ff622a3c0fdef5f7a76bb48262ab29b9fc1d7996fc5d0cbf3ef",
+    "TURN_EVIDENCE.json": "c6131c352e138882b6eae5565a2be1f4f1c2f81c9bd3a4ee6e038ec178c6f9f9",
+    "TURN_TABLE.md": "4d2e999f4ab6abadf0af7144cade2339a06a367ace5d8d2553696fcada978666",
+    "METRICS.json": "805a45096d8d5efc2102d37312ad0e4313eb7fcc6b065308cddf053811aabe51",
+    "EXTRACTION_MANIFEST.json": "8c022556400d845cb8c7d9de6e1f720da0ef51523bdafb92e7148e32c4a0e86c",
+    "ROUTING.json": "fe003b07a399209cefd07b296f259d23cea8bfcc1c8ccf97be3c045a97ee7426",
+    "LOCATOR_PREPROCESSING.json": "d8a2bf721bf1ba81089793ffa2a5c8c7e5a5e4e28c432921092c877cd294f80c",
+    "REPAIR_RECEIPT.json": "1f15d621284e910d93339e3c64a8609160afd6bcb382aa208144a37d4e6916ea"
+  },
+  "original_submission_preserved": "worker_submission/SUBMISSION.json",
+  "repair_receipt": "REPAIR_RECEIPT.json"
+}

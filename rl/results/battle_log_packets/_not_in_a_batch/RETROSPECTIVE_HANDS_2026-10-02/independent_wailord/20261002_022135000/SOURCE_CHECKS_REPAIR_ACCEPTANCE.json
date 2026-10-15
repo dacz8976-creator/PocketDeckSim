@@ -1,0 +1,194 @@
+{
+  "schema": "independent-focused-repair-acceptance-v1",
+  "game_id": "20261002_022135000_iOS.MP4",
+  "verdict": "accepted_with_recording_limits",
+  "checked_at_utc": "2026-10-02T21:27:06.198958+00:00",
+  "scope": "Only six repaired text/JSON files compared to preserved initial submission; native52 evidence reused from prior independent inspection.",
+  "initial_source_checks_sha256": "bab00b79fc031cc4ae5eb64bd0c8ebe85a34424aa28680ee5bc4daa6b8b97151",
+  "changed_files": {
+    "HAND_SUPPLEMENT.json": {
+      "preserved_sha256": "ad7d7efb7640decca8672a875eaad43361b4faa9be7ecb52b525357738c5a288",
+      "repaired_sha256": "6ce76727441b61bb52f1e593a63e30cf3995ee56faf5403f6e4b936c1984e043",
+      "mtime_utc": "2026-10-02T21:26:16.248200+00:00",
+      "changes": [
+        {
+          "field": "$.limits[7]",
+          "before": "Research first draw Poké Ball is directly visible at52s; Pokémon Center Lady is directly present by54s after the quick Poké Ball play. Its identity as the second Research addition is transaction-reconciled, not an isolated readable second-draw animation.",
+          "after": "Native52s directly displays Pokémon Center Lady as the current enlarged Research reveal, with Poké Ball already in the fan. Both identities are directly observed; Ball-first order follows the append state preceding the displayed second card. Requested52s is not measured decoded frame PTS."
+        },
+        {
+          "field": "$.target_rows[0].draws_and_searches[1].cards_in_reveal_order[0].basis",
+          "before": "direct_native_observation",
+          "after": "direct_fan_identity_with_first_card_order_from_second_reveal_append_state"
+        },
+        {
+          "field": "$.target_rows[0].draws_and_searches[1].cards_in_reveal_order[0].limit_reason",
+          "before": null,
+          "after": "At52 Poké Ball is already in the fan; this cited frame is not its isolated enlarged reveal."
+        },
+        {
+          "field": "$.target_rows[0].draws_and_searches[1].cards_in_reveal_order[1].basis",
+          "before": "transaction_reconciled_observed_new_card",
+          "after": "direct_enlarged_native_reveal"
+        },
+        {
+          "field": "$.target_rows[0].draws_and_searches[1].cards_in_reveal_order[1].evidence_ids[0]",
+          "before": "f_0054.00",
+          "after": "f_0052.00"
+        },
+        {
+          "field": "$.target_rows[0].draws_and_searches[1].cards_in_reveal_order[1].limit_reason",
+          "before": "Research first draw Poké Ball is directly visible at52s; Pokémon Center Lady is directly present by54s after the quick Poké Ball play. Its identity as the second Research addition is transaction-reconciled, not an isolated readable second-draw animation.",
+          "after": "Requested source time retained; actual decoded PTS unmeasured."
+        },
+        {
+          "field": "$.target_rows[0].draws_and_searches[1].cards_in_reveal_order[1].timestamp_seconds",
+          "before": 54,
+          "after": 52
+        },
+        {
+          "field": "$.target_rows[0].draws_and_searches[1].limit_reason",
+          "before": "Research first draw Poké Ball is directly visible at52s; Pokémon Center Lady is directly present by54s after the quick Poké Ball play. Its identity as the second Research addition is transaction-reconciled, not an isolated readable second-draw animation.",
+          "after": "Native52s directly displays Pokémon Center Lady as the current enlarged Research reveal, with Poké Ball already in the fan. Both identities are directly observed; Ball-first order follows the append state preceding the displayed second card. Requested52s is not measured decoded frame PTS."
+        },
+        {
+          "field": "$.target_rows[0].draws_and_searches[1].reveal_order_basis",
+          "before": null,
+          "after": "Ball already appended while CenterLady is displayed as current second Research reveal."
+        }
+      ]
+    },
+    "TURN_LEDGER.json": {
+      "preserved_sha256": "58b165969d4cf0a9033ea1c87a64331c23717fe21eff1da5b277caca95ba714e",
+      "repaired_sha256": "3c74a7bf1699aac77245d3b3fedf56d4d65c1f906f806299baf24b0ce4f21cda",
+      "mtime_utc": "2026-10-02T21:26:16.253640+00:00",
+      "changes": [
+        {
+          "field": "$.limits[7]",
+          "before": "Research first draw Poké Ball is directly visible at52s; Pokémon Center Lady is directly present by54s after the quick Poké Ball play. Its identity as the second Research addition is transaction-reconciled, not an isolated readable second-draw animation.",
+          "after": "Native52s directly displays Pokémon Center Lady as the current enlarged Research reveal, with Poké Ball already in the fan. Both identities are directly observed; Ball-first order follows the append state preceding the displayed second card. Requested52s is not measured decoded frame PTS."
+        },
+        {
+          "field": "$.turns[0].draws_and_searches[1].cards_in_reveal_order[0].basis",
+          "before": "direct_native_observation",
+          "after": "direct_fan_identity_with_first_card_order_from_second_reveal_append_state"
+        },
+        {
+          "field": "$.turns[0].draws_and_searches[1].cards_in_reveal_order[0].limit_reason",
+          "before": null,
+          "after": "At52 Poké Ball is already in the fan; this cited frame is not its isolated enlarged reveal."
+        },
+        {
+          "field": "$.turns[0].draws_and_searches[1].cards_in_reveal_order[1].basis",
+          "before": "transaction_reconciled_observed_new_card",
+          "after": "direct_enlarged_native_reveal"
+        },
+        {
+          "field": "$.turns[0].draws_and_searches[1].cards_in_reveal_order[1].evidence_ids[0]",
+          "before": "f_0054.00",
+          "after": "f_0052.00"
+        },
+        {
+          "field": "$.turns[0].draws_and_searches[1].cards_in_reveal_order[1].limit_reason",
+          "before": "Research first draw Poké Ball is directly visible at52s; Pokémon Center Lady is directly present by54s after the quick Poké Ball play. Its identity as the second Research addition is transaction-reconciled, not an isolated readable second-draw animation.",
+          "after": "Requested source time retained; actual decoded PTS unmeasured."
+        },
+        {
+          "field": "$.turns[0].draws_and_searches[1].cards_in_reveal_order[1].timestamp_seconds",
+          "before": 54,
+          "after": 52
+        },
+        {
+          "field": "$.turns[0].draws_and_searches[1].limit_reason",
+          "before": "Research first draw Poké Ball is directly visible at52s; Pokémon Center Lady is directly present by54s after the quick Poké Ball play. Its identity as the second Research addition is transaction-reconciled, not an isolated readable second-draw animation.",
+          "after": "Native52s directly displays Pokémon Center Lady as the current enlarged Research reveal, with Poké Ball already in the fan. Both identities are directly observed; Ball-first order follows the append state preceding the displayed second card. Requested52s is not measured decoded frame PTS."
+        },
+        {
+          "field": "$.turns[0].draws_and_searches[1].reveal_order_basis",
+          "before": null,
+          "after": "Ball already appended while CenterLady is displayed as current second Research reveal."
+        }
+      ]
+    },
+    "TURN_EVIDENCE.json": {
+      "preserved_sha256": "42c3edd59e2cb63e0f65c63ffba68432797708f6991a103ffabf4a4ebf221f42",
+      "repaired_sha256": "77cfb1fd0762c17a7aa52e407a6c29d1b21225cb8e1672bbc1c1337877b17824",
+      "mtime_utc": "2026-10-02T21:26:16.257644+00:00",
+      "changes": [
+        {
+          "field": "$.frames[18].observation",
+          "before": "No settled five-card fan retained in dense immediate-draw/play sequence; never substitute remaining four cards for untouched five.",
+          "after": "Enlarged Pokémon Center Lady Research reveal; Poké Ball already in fan with two Lucky Ice Pops."
+        },
+        {
+          "field": "$.scheduled_capture_limits[7]",
+          "before": "Research first draw Poké Ball is directly visible at52s; Pokémon Center Lady is directly present by54s after the quick Poké Ball play. Its identity as the second Research addition is transaction-reconciled, not an isolated readable second-draw animation.",
+          "after": "Native52s directly displays Pokémon Center Lady as the current enlarged Research reveal, with Poké Ball already in the fan. Both identities are directly observed; Ball-first order follows the append state preceding the displayed second card. Requested52s is not measured decoded frame PTS."
+        }
+      ]
+    },
+    "PAUSE_GAME.json": {
+      "preserved_sha256": "21051fe109453c73518ddd1abf3282406e4f1c32ae4c05ef5dc3dd91c9dce04f",
+      "repaired_sha256": "fd9d64bd0d7dcf02b9231f0a0269f8aa044569e3e0c859886c2a3884fdeff7f3",
+      "mtime_utc": "2026-10-02T21:26:16.258647+00:00",
+      "changes": [
+        {
+          "field": "$.limits[7]",
+          "before": "Research first draw Poké Ball is directly visible at52s; Pokémon Center Lady is directly present by54s after the quick Poké Ball play. Its identity as the second Research addition is transaction-reconciled, not an isolated readable second-draw animation.",
+          "after": "Native52s directly displays Pokémon Center Lady as the current enlarged Research reveal, with Poké Ball already in the fan. Both identities are directly observed; Ball-first order follows the append state preceding the displayed second card. Requested52s is not measured decoded frame PTS."
+        }
+      ]
+    },
+    "UNCERTAINTIES.json": {
+      "preserved_sha256": "0a9ffea1cbddddfb1e727b67a0a2111f8915d8c7fedd338543ac081ae27a2ec7",
+      "repaired_sha256": "6344b5789ab6da9a4c4af4879e701f730fbae04222d540ebf2e844f509e01694",
+      "mtime_utc": "2026-10-02T21:26:16.259647+00:00",
+      "changes": [
+        {
+          "field": "$.limits[7]",
+          "before": "Research first draw Poké Ball is directly visible at52s; Pokémon Center Lady is directly present by54s after the quick Poké Ball play. Its identity as the second Research addition is transaction-reconciled, not an isolated readable second-draw animation.",
+          "after": "Native52s directly displays Pokémon Center Lady as the current enlarged Research reveal, with Poké Ball already in the fan. Both identities are directly observed; Ball-first order follows the append state preceding the displayed second card. Requested52s is not measured decoded frame PTS."
+        }
+      ]
+    },
+    "REVIEW_SUPPLEMENT.md": {
+      "preserved_sha256": "11463f46459097187ef5cbe6642754e409c6ceacdc5bb8f770505e316ab2065a",
+      "repaired_sha256": "12b18a84d76ebbe97d3b41d21b0a8c22622f8bb38843ebd740f406da0e30a729",
+      "mtime_utc": "2026-10-02T21:26:16.261156+00:00",
+      "diff": "--- \n\n+++ \n\n@@ -15,7 +15,7 @@\n\n | 9 | Lucky Ice Pop; Lucky Ice Pop; Poké Ball; Irida | Irida | 236.35s | 3: Lucky Ice Pop; Lucky Ice Pop; Irida | 3 directly counted |\n | 11 | Lucky Ice Pop; Lucky Ice Pop; Irida; Soothing Shore | Soothing Shore | 270.65s | 3: Lucky Ice Pop; Lucky Ice Pop; Irida | 4 directly counted |\n \n-Turn1 Research adds Poké Ball and Pokémon Center Lady. Poké Ball is directly visible at52s; the second addition is reconciled from the new Center Lady observed by54s, after the quick Ball play. The Ball finds Wailmer, revealed/placed around57s. Turn9 Ball finds no card. Copycat is not used in the bounded first-six-turn set; later turn19 Copycat remains inherited accepted context only.\n+Turn1 Research adds Poké Ball and Pokémon Center Lady. Native52s directly shows Center Lady enlarged as the current reveal, with Ball already in the fan. Ball-first order follows this append state; both identities are directly observed. The Ball finds Wailmer, revealed/placed around57s. Turn9 Ball finds no card. Copycat is not used in the bounded first-six-turn set; later turn19 Copycat remains inherited accepted context only.\n \n Scheduled draw+1/+3/+6 candidates are retained and classified individually. Fast play means many already follow the first action. Turn1 has a readable incoming Indeedee ex but no settled five-card fan in the inspected dense window. Turns7/11 retain a fully named incoming card at the fan edge. No identity comes from the current deck list.\n \n@@ -65,5 +65,5 @@\n\n - Draw-end bounds and first-action times are observation estimates from discrete frame seeks, not exact decoded PTS. Requested seek times are preserved; actual PTS was not measured.\n - Candidates at approximately draw+1,+3,+6 often follow a fast first play. Turn3+6 and turn11+6 are already opponent-turn transitions and are not pre-end/start-hand evidence.\n - No opened discard-pile panel is established within these inspected owner windows. A visible last-discard card is not an opened pile or full discard list. Intervening opponent turns and later hands are inherited only.\n-- Research first draw Poké Ball is directly visible at52s; Pokémon Center Lady is directly present by54s after the quick Poké Ball play. Its identity as the second Research addition is transaction-reconciled, not an isolated readable second-draw animation.\n+- Native52s directly displays Pokémon Center Lady as the current enlarged Research reveal, with Poké Ball already in the fan. Both identities are directly observed; Ball-first order follows the append state preceding the displayed second card. Requested52s is not measured decoded frame PTS.\n - Current live20-card deck snapshot is saved separately. Historical exact version remains unverified, and deck membership was never used to fill a hand."
+    }
+  },
+  "errors": [],
+  "findings": [
+    "All six preserved baselines match initial report snapshot hashes.",
+    "Changes are limited to T1 Research direct CenterLady reveal provenance, Ball fan identity and qualified order, repeated source limit, and f_0052 observation. No unrelated differences.",
+    "Previously viewed f_0052.00 directly supports enlarged CenterLady and Ball already in fan. Ball-first order is now correctly attributed to append state rather than an isolated Ball enlarged reveal.",
+    "All30 inherited accepted_context objects and approximate intervals remain unchanged; all card names, order, counts, searches and mode/recording limits remain unchanged.",
+    "No new image submissions or original video reads/extractions; no packet/shared index edits by checker."
+  ],
+  "retained_limits": [
+    "Only bounded retained images checked; no claim every instant examined.",
+    "T1 physical fifth fan slot unrecorded; start hand names observed with disclosed reconstruction.",
+    "Actual decodedPTS unmeasured.",
+    "Hidden opponent identities and unopened discard lists unknown.",
+    "Later owner hands and all outcomes/boards are inherited only."
+  ],
+  "mode_check": {
+    "owner_rule": "Any visible Auto option/control, even OFF, means computer opponent and exclusion from ladder; still process supplement.",
+    "observed": "No Auto control visible in retained selected unoccluded control views. f_0242.00 shows full left menu button and right EndTurn control; f_0089.00 andf_0236.35 support same bounded observation.",
+    "evidence_ids": [
+      "f_0242.00",
+      "f_0089.00",
+      "f_0236.35"
+    ],
+    "qualification": "Does not establish every recording instant, unopened menus, exact queue label or opponent type. Overlay views were not used to infer absence. Mode remains owner play from accepted testimony with exact queue unknown; no visible Auto-based exclusion found in inspected controls."
+  },
+  "metrics": {
+    "files_rechecked": 6,
+    "json_leaf_changes": 22,
+    "new_image_submissions": 0,
+    "original_video_reads": 0,
+    "extractions": 0,
+    "packet_edits": 0
+  }
+}

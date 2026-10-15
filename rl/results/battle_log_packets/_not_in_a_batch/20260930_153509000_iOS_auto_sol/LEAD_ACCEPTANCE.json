@@ -1,0 +1,23 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "source_video": "20260930_153509000_iOS.MP4",
+  "source_sha256": "a5f612912532832d4e23f1849edc39a4220dd0e9a65dec0db8eae82f3dc37274",
+  "scope": "Complete seven-turn 157.463923-second autopilot computer battle, setup through Stadium removal, Flower Trick marker, final retreat and explicit results",
+  "first_pass": "gpt-6.1-sol/high /root/sol_auto_153509",
+  "lead_checks": "Root read the source-bound full narrative, coverage, summary and uncertainties, reconciling HP, 30+50+140 damage, attachments, retreat and 1+2 point awards. Separate Sol verifier inspected opening overview,106-second ordinary damage,121.5-second Flower Trick text,124.5-second marked Castform,137-second marked Mega after retreat,terminal sheet and155-second results, as recorded in INDEPENDENT_CHECK.md. No consequential discrepancy found. Delayed70 damage resolution is explicitly unobserved.",
+  "independent_check": "INDEPENDENT_CHECK.md",
+  "outcome": "owner_win",
+  "final_points": {"owner": 3, "opponent": 0},
+  "owner_visible_core": "Castform Sunny Form / Torchic / Mega Blaziken ex / Heatmor",
+  "opponent": "AI Mega Sceptile ex & Meowscarada ex Deck (Deluxe Pack: Mega)",
+  "last_turn": 7,
+  "useful_finding": "Auto removes its own Hiking Trail before Copycat. Flower Trick marks the Active spot; its marker stays there when Mega Blaziken replaces Castform. The battle ends before delayed 70 damage resolves. Mega Burning deals 140, discards one Fire and earns two points; Burn follows an already established knockout.",
+  "unreviewed_intervals": [],
+  "material_unresolved": [],
+  "limitations": "Independent verification is bounded. Hidden cards and exact printing identifiers remain unknown. This footage establishes marker placement, not later delayed damage resolution or future timing interactions.",
+  "ladder_eligible": false,
+  "ladder_action": "No Ladder Log entry; excluded by owner instruction",
+  "astra_consulted": false,
+  "astra_reason": "Readable card text and before/after source states resolved the consequential marker behavior; unobserved delayed resolution stays a documented limit"
+}

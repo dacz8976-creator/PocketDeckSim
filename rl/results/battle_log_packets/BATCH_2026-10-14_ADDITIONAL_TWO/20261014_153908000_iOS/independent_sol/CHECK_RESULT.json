@@ -1,0 +1,155 @@
+{
+  "accepted": true,
+  "reviewer": "/root/check_ladder_153908",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "source_filename": "20261014_153908000_iOS.MP4",
+  "source_sha256": "570b6dea5b9132ada3934fb7c9947bfc261825f0e4e83b0c8c5009028fd4a7b3",
+  "frozen_manifest_sha256": "aadff0c45953c133d7878f246c2415b3aa1ae4def406b56d02e950452f1fa36b",
+  "frozen_files_match": true,
+  "primary_unchanged": true,
+  "source_matches_before_after": true,
+  "frozen_files_count": 58,
+  "checked_findings": [
+    {
+      "claim": "source identity and primary integrity",
+      "decision": "pass",
+      "detail": "469580898 bytes; source SHA-256 matches before and after; all 58 frozen files and manifest unchanged"
+    },
+    {
+      "claim": "setup, mode and deck",
+      "decision": "pass",
+      "timestamps_seconds": [
+        3,
+        28,
+        52,
+        66,
+        104,
+        203,
+        257.37
+      ],
+      "detail": "Ranked Match Season B4b SP, Ultra Ball Rank 4; Deck 12; second. Visible owner core Cottonee/Whimsicott ex, Spinarak/Ariados, Teal Mask Ogerpon ex. No Auto option observed in inspected retained evidence; ranked queue supports ladder classification."
+    },
+    {
+      "claim": "full first-pass coverage",
+      "decision": "pass",
+      "detail": "COVERAGE.md and REVIEW.md account for setup, all displayed global turns 1-8, four owner turns, knockout replacement, and results through 257.528333 seconds. Boundary/state samples and retained phase sheets agree; no missing phase or contradictory state found. This is a bounded acceptance audit of the full first pass, not an independent second whole-video pass."
+    },
+    {
+      "claim": "first main-attacker attack note",
+      "decision": "pass",
+      "timestamps_seconds": [
+        28,
+        66,
+        76,
+        104,
+        136,
+        138,
+        257.37
+      ],
+      "detail": "Whimsicott ex first Grass Knot is owner T2/global 4 at about 138s; opponent has zero lit points at 136s BEFORE attack. Cottonee Razor Leaf on owner T1/global 2 is a separate supporting attack. Short external prefix 2nd | Whimsicott ex T2 | opp 0 pts preserves the frozen three values."
+    },
+    {
+      "claim": "point and terminal sequence",
+      "decision": "pass",
+      "timestamps_seconds": [
+        136,
+        138,
+        146,
+        148,
+        168,
+        172,
+        203,
+        214,
+        218,
+        224,
+        229,
+        230.5,
+        237,
+        240,
+        246,
+        248,
+        257.37
+      ],
+      "detail": "Indeedee ex KO gives +2; fresh148 shows 2-0 and Indeedee discarded with Ivysaur pending promotion. Mega starts 240 HP, drops to70 after Grass Knot, Erika heals60 to130, final170 damage KOs it. Retained246 displays +3 and capped owner3; results Victory versus V1PER, second,8turns,3-0,490damage. Damage reconciles20+130+170+170."
+    },
+    {
+      "claim": "opponent Mega evolution",
+      "decision": "pass",
+      "timestamps_seconds": [
+        162,
+        166,
+        168,
+        170,
+        172
+      ],
+      "detail": "Ivysaur pre-evolution; Quick-Grow Extract appears atop opponent discard in retained166/172 evidence while Mega evolution resolves168-170. Accept Extract-assisted evolution, not assumed natural evolution."
+    },
+    {
+      "claim": "independently selected ordinary turns",
+      "decision": "pass",
+      "timestamps_seconds": [
+        66,
+        68,
+        70,
+        76,
+        78,
+        82,
+        90,
+        218,
+        224,
+        229,
+        230.5
+      ],
+      "detail": "Selected ownerT1/global2: Goo-zooka inspected and both copies retained, Grass attached to Cottonee, Razor Leaf20, Indeedee110 then Watch Over130 next turn. Selected opponentT4/global7: Mega70, third Grass attachment, Erika healing60 to130, owner board remains undamaged. Fresh source seeks76 and230.5 support these ordinary checks."
+    }
+  ],
+  "errors": [],
+  "limits": [
+    "Bounded acceptance check, not a second complete visual pass or exact input replay.",
+    "Hidden opponent cards, private search results, exact full deck lists and unseen inputs remain unknown.",
+    "Approximate action times reflect retained native frames/phase samples.",
+    "No Auto option observed; this is an observation across inspected evidence, reinforced by explicit ranked queue."
+  ],
+  "fresh_seeks_seconds": [
+    76,
+    148,
+    230.5
+  ],
+  "retained_native_timestamps_seconds": [
+    3,
+    28,
+    52,
+    66,
+    68,
+    90,
+    97,
+    104,
+    136,
+    138,
+    168,
+    172,
+    203,
+    213,
+    224,
+    227,
+    228,
+    229,
+    237,
+    240,
+    248,
+    257.37
+  ],
+  "retained_phase_sheets_inspected": [
+    "phase_scan/contact_02.jpg",
+    "phase_scan/contact_04.jpg",
+    "phase_scan/contact_05.jpg",
+    "phase_scan/contact_06.jpg"
+  ],
+  "integrity_receipts": [
+    "INTEGRITY_BEFORE.json",
+    "INTEGRITY_AFTER.json"
+  ],
+  "corrections_required": [],
+  "lead_registration_and_external_actions": "Reserved for root; none performed by independent reviewer."
+}

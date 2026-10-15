@@ -1,0 +1,341 @@
+{
+  "filename": "20260908_021327000_iOS.MP4",
+  "source_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260908_021327000_iOS.MP4",
+  "sha256": "95DF14AF59472EC02A077B5A5804F1A44E6C02048179952934B68C56EEE1E387",
+  "bytes": 767232143,
+  "duration_seconds": 410.492,
+  "review_status": "full_battle_review_complete",
+  "index_update_performed": true,
+  "media_move_performed": true,
+  "model": "Gemini 3.8 Flash primary; Sol routine review; Codex lead reconciliation",
+  "reviewer": "Lead accepted after source-identity and terminal verification",
+  "recording_type": "complete_battle",
+  "battle_identity": {
+    "opponent_label": {
+      "state": "observed",
+      "value": "ゆき",
+      "timestamp_seconds": 20.0,
+      "observation": "Opening matchup and nameplate show opponent ゆき."
+    },
+    "opening_player": {
+      "state": "observed",
+      "value": "Team Rocket's Drowzee",
+      "timestamp_seconds": 24.0,
+      "observation": "Player opening Active is Team Rocket's Drowzee with 60 HP."
+    },
+    "opening_opponent": {
+      "state": "observed",
+      "value": "Jigglypuff",
+      "timestamp_seconds": 24.0,
+      "observation": "Opponent opening Active is Jigglypuff with 60 HP."
+    },
+    "outcome": {
+      "state": "observed",
+      "value": "player_win",
+      "timestamp_seconds": 407.5,
+      "observation": "The screen states Your opponent conceded while the player leads 1-0."
+    },
+    "result_text": {
+      "state": "not_shown",
+      "value": null,
+      "timestamp_seconds": 410.492,
+      "observation": "The recording ends after the concession message without a separate result banner."
+    },
+    "version": 1
+  },
+  "evidence_audit": {
+    "version": 1,
+    "opponent_label": "ゆき",
+    "match_mode": {
+      "value": "unknown",
+      "evidence": [
+        {"timestamp": "00:20.000", "observation": "Opponent name ゆき is visible, but match-mode classification is not needed for the battle ledger."}
+      ],
+      "uncertainty_id": "U2"
+    },
+    "opponent_ai": {
+      "value": "unknown",
+      "evidence": [
+        {"timestamp": "00:20.000", "observation": "No reliable pilot-type label is used for acceptance."}
+      ],
+      "uncertainty_id": "U2"
+    },
+    "auto": {
+      "value": "unknown",
+      "evidence": [
+        {"timestamp": "00:24.000", "observation": "Auto status is not needed for the battle ledger."}
+      ],
+      "uncertainty_id": "U2"
+    },
+    "terminal": {
+      "outcome": "player_win",
+      "outcome_evidence": [
+        {"timestamp": "06:47.500", "observation": "The screen states Your opponent conceded while the displayed score remains 1-0."}
+      ],
+      "result_text": null,
+      "result_text_evidence": [
+        {"timestamp": "06:50.200", "observation": "The final transition contains no separate result banner."}
+      ],
+      "last_frame": {
+        "timestamp": "06:50.492",
+        "observation": "Final frame is the post-concession transition with no additional battle action."
+      },
+      "uncertainty_id": null
+    },
+    "pokemon": [
+      {
+        "id": "player-1",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {"timestamp": "00:24.000", "observation": "Opening Team Rocket's Drowzee has no attached Energy."},
+        "final": {},
+        "final_evidence": {"timestamp": "05:15.000", "observation": "After evolving into Hypno and retreating, this Pokémon has no attached Energy."},
+        "uncertainty_id": null
+      },
+      {
+        "id": "player-2",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {"timestamp": "00:57.000", "observation": "Center Team Rocket's Rattata is benched with no attached Energy."},
+        "final": {"Psychic": 2},
+        "final_evidence": {"timestamp": "06:42.000", "observation": "Active center Team Rocket's Raticate ex visibly retains 2 Psychic Energy."},
+        "uncertainty_id": null
+      },
+      {
+        "id": "player-3",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {"timestamp": "01:00.000", "observation": "Comfey is benched with no attached Energy."},
+        "final": {},
+        "final_evidence": {"timestamp": "06:42.000", "observation": "Comfey remains on the Bench with no attached Energy."},
+        "uncertainty_id": null
+      },
+      {
+        "id": "player-4",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {"timestamp": "01:03.000", "observation": "Right Team Rocket's Rattata is benched with no attached Energy."},
+        "final": {"Psychic": 3},
+        "final_evidence": {"timestamp": "06:42.000", "observation": "Right Team Rocket's Raticate ex visibly retains 3 Psychic Energy."},
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-1",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {"timestamp": "00:24.000", "observation": "Opening Jigglypuff has no attached Energy."},
+        "final": {},
+        "final_evidence": {"timestamp": "03:04.000", "observation": "Jigglypuff is knocked out with no attached Energy remaining."},
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-2",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {"timestamp": "00:43.000", "observation": "Second Jigglypuff is benched with no attached Energy."},
+        "final": {},
+        "final_evidence": {"timestamp": "06:42.000", "observation": "The remaining Jigglypuff is on the Bench with no attached Energy."},
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-3",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {"timestamp": "03:20.000", "observation": "Mewtwo ex is benched with no attached Energy before the Turn 7 attachment."},
+        "final": {"Psychic": 3},
+        "final_evidence": {"timestamp": "06:42.000", "observation": "Active Mewtwo ex visibly retains 3 Psychic Energy."},
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-4",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {"timestamp": "06:01.000", "observation": "Team Rocket's Slowpoke is benched with no attached Energy."},
+        "final": {},
+        "final_evidence": {"timestamp": "06:42.000", "observation": "Team Rocket's Slowpoke remains on the Bench with no attached Energy."},
+        "uncertainty_id": null
+      }
+    ],
+    "energy_events": [
+      {
+        "turn": 2,
+        "pokemon_id": "player-1",
+        "kind": "manual",
+        "before": {},
+        "after": {"Psychic": 1},
+        "before_evidence": {"timestamp": "01:16.000", "observation": "Active Drowzee has no attached Energy."},
+        "action_evidence": {"timestamp": "01:18.000", "observation": "Psychic Energy moves from the Energy Zone to Drowzee."},
+        "after_evidence": {"timestamp": "01:19.000", "observation": "Drowzee shows 1 Psychic Energy."},
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 3,
+        "pokemon_id": "opp-1",
+        "kind": "manual",
+        "before": {},
+        "after": {"Psychic": 1},
+        "before_evidence": {"timestamp": "01:34.000", "observation": "Active Jigglypuff has no attached Energy."},
+        "action_evidence": {"timestamp": "01:35.000", "observation": "Psychic Energy moves to active Jigglypuff."},
+        "after_evidence": {"timestamp": "01:36.000", "observation": "Jigglypuff shows 1 Psychic Energy."},
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 4,
+        "pokemon_id": "opp-1",
+        "kind": "effect",
+        "cause": "Team Rocket's Raticate ex's Thieving Incisors",
+        "before": {"Psychic": 1},
+        "after": {},
+        "before_evidence": {"timestamp": "01:47.000", "observation": "Jigglypuff shows 1 Psychic Energy."},
+        "action_evidence": {"timestamp": "01:49.000", "observation": "Thieving Incisors moves Jigglypuff's Psychic Energy away."},
+        "after_evidence": {"timestamp": "01:50.000", "observation": "Jigglypuff shows no attached Energy."},
+        "uncertainty_id": null
+      },
+      {
+        "turn": 4,
+        "pokemon_id": "player-2",
+        "kind": "effect",
+        "cause": "Team Rocket's Raticate ex's Thieving Incisors",
+        "before": {},
+        "after": {"Psychic": 1},
+        "before_evidence": {"timestamp": "01:47.000", "observation": "Center Raticate ex has no attached Energy."},
+        "action_evidence": {"timestamp": "01:49.000", "observation": "Thieving Incisors moves Psychic Energy to center Raticate ex."},
+        "after_evidence": {"timestamp": "01:50.000", "observation": "Center Raticate ex shows 1 Psychic Energy."},
+        "uncertainty_id": null
+      },
+      {
+        "turn": 4,
+        "pokemon_id": "player-1",
+        "kind": "manual",
+        "before": {"Psychic": 1},
+        "after": {"Psychic": 2},
+        "before_evidence": {"timestamp": "01:59.000", "observation": "Drowzee shows 1 Psychic Energy."},
+        "action_evidence": {"timestamp": "02:00.000", "observation": "A second Psychic Energy moves to Drowzee."},
+        "after_evidence": {"timestamp": "02:01.000", "observation": "Drowzee shows 2 Psychic Energy."},
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 5,
+        "pokemon_id": "opp-1",
+        "kind": "manual",
+        "before": {},
+        "after": {"Psychic": 1},
+        "before_evidence": {"timestamp": "02:12.000", "observation": "Active Jigglypuff has no attached Energy."},
+        "action_evidence": {"timestamp": "02:13.000", "observation": "Psychic Energy moves to active Jigglypuff."},
+        "after_evidence": {"timestamp": "02:14.000", "observation": "Jigglypuff shows 1 Psychic Energy."},
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 6,
+        "pokemon_id": "opp-1",
+        "kind": "effect",
+        "cause": "Team Rocket's Raticate ex's Thieving Incisors",
+        "before": {"Psychic": 1},
+        "after": {},
+        "before_evidence": {"timestamp": "02:37.000", "observation": "Jigglypuff shows 1 Psychic Energy."},
+        "action_evidence": {"timestamp": "02:39.000", "observation": "The right Raticate ex's Thieving Incisors moves Jigglypuff's Psychic Energy away."},
+        "after_evidence": {"timestamp": "02:40.000", "observation": "Jigglypuff shows no attached Energy."},
+        "uncertainty_id": null
+      },
+      {
+        "turn": 6,
+        "pokemon_id": "player-4",
+        "kind": "effect",
+        "cause": "Team Rocket's Raticate ex's Thieving Incisors",
+        "before": {},
+        "after": {"Psychic": 1},
+        "before_evidence": {"timestamp": "02:37.000", "observation": "Right Raticate ex has no attached Energy."},
+        "action_evidence": {"timestamp": "02:39.000", "observation": "Thieving Incisors moves Psychic Energy to right Raticate ex."},
+        "after_evidence": {"timestamp": "02:40.000", "observation": "Right Raticate ex shows 1 Psychic Energy."},
+        "uncertainty_id": null
+      },
+      {
+        "turn": 6,
+        "pokemon_id": "player-2",
+        "kind": "manual",
+        "before": {"Psychic": 1},
+        "after": {"Psychic": 2},
+        "before_evidence": {"timestamp": "02:48.000", "observation": "Center Raticate ex shows 1 Psychic Energy."},
+        "action_evidence": {"timestamp": "02:49.000", "observation": "A second Psychic Energy moves to center Raticate ex."},
+        "after_evidence": {"timestamp": "02:50.000", "observation": "Center Raticate ex shows 2 Psychic Energy."},
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 7,
+        "pokemon_id": "opp-3",
+        "kind": "manual",
+        "before": {},
+        "after": {"Psychic": 1},
+        "before_evidence": {"timestamp": "03:21.000", "observation": "Benched Mewtwo ex has no attached Energy."},
+        "action_evidence": {"timestamp": "03:22.000", "observation": "Psychic Energy moves to Mewtwo ex."},
+        "after_evidence": {"timestamp": "03:23.000", "observation": "Mewtwo ex shows 1 Psychic Energy."},
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 8,
+        "pokemon_id": "player-4",
+        "kind": "manual",
+        "before": {"Psychic": 1},
+        "after": {"Psychic": 2},
+        "before_evidence": {"timestamp": "03:51.000", "observation": "Right Raticate ex shows 1 Psychic Energy."},
+        "action_evidence": {"timestamp": "03:52.000", "observation": "A second Psychic Energy moves to right Raticate ex."},
+        "after_evidence": {"timestamp": "03:53.000", "observation": "Right Raticate ex shows 2 Psychic Energy."},
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 9,
+        "pokemon_id": "opp-3",
+        "kind": "manual",
+        "before": {"Psychic": 1},
+        "after": {"Psychic": 2},
+        "before_evidence": {"timestamp": "04:23.000", "observation": "Active Mewtwo ex shows 1 Psychic Energy."},
+        "action_evidence": {"timestamp": "04:24.000", "observation": "A second Psychic Energy moves to Mewtwo ex."},
+        "after_evidence": {"timestamp": "04:25.000", "observation": "Mewtwo ex shows 2 Psychic Energy."},
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 10,
+        "pokemon_id": "player-1",
+        "kind": "retreat",
+        "before": {"Psychic": 2},
+        "after": {},
+        "before_evidence": {"timestamp": "05:10.000", "observation": "Active Hypno shows 2 Psychic Energy."},
+        "action_evidence": {"timestamp": "05:12.000", "observation": "Hypno discards its 2 Psychic Energy to retreat."},
+        "after_evidence": {"timestamp": "05:15.000", "observation": "Hypno is on the Bench with no attached Energy."},
+        "uncertainty_id": null
+      },
+      {
+        "turn": 10,
+        "pokemon_id": "player-4",
+        "kind": "manual",
+        "before": {"Psychic": 2},
+        "after": {"Psychic": 3},
+        "before_evidence": {"timestamp": "05:24.000", "observation": "Right Raticate ex shows 2 Psychic Energy."},
+        "action_evidence": {"timestamp": "05:25.000", "observation": "A third Psychic Energy moves to right Raticate ex."},
+        "after_evidence": {"timestamp": "05:26.000", "observation": "Right Raticate ex shows 3 Psychic Energy."},
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 11,
+        "pokemon_id": "opp-3",
+        "kind": "manual",
+        "before": {"Psychic": 2},
+        "after": {"Psychic": 3},
+        "before_evidence": {"timestamp": "05:56.000", "observation": "Active Mewtwo ex shows 2 Psychic Energy."},
+        "action_evidence": {"timestamp": "05:57.000", "observation": "A third Psychic Energy moves to Mewtwo ex."},
+        "after_evidence": {"timestamp": "05:58.000", "observation": "Mewtwo ex shows 3 Psychic Energy."},
+        "attachment_evidence": "movement_and_attached_icons",
+        "uncertainty_id": null
+      }
+    ]
+  }
+}

@@ -1,0 +1,134 @@
+{
+  "video_basename": "20261001_015649000_iOS.MP4",
+  "sha256": "8a63214ddc6415beaf70747d9bd59fa5e3d0a56ff2355bd9c27ad2b15e73b1b9",
+  "reviewer": "sol_auto_evening_015649000",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "status": "full_battle_review_complete",
+  "scope": "One complete battle, setup, all nine turns and terminal result",
+  "full_available_battle_coverage": true,
+  "independent_lead_accepted": true,
+  "owner": "Dacz8976",
+  "result": "win",
+  "result_evidence_seconds": [
+    205.5,
+    211.0,
+    220.8,
+    221.08
+  ],
+  "opponent_type": "computer_AI",
+  "opponent_challenge": "Mega Manectric ex & Bellibolt ex Deck (Deluxe Pack: Mega)",
+  "owner_visible_play_core": [
+    "Mienfoo",
+    "Mienshao",
+    "Riolu",
+    "Mega Lucario ex",
+    "Gible"
+  ],
+  "owner_hand_only": [
+    "Passimian ex",
+    "second Mega Lucario ex"
+  ],
+  "opponent_visible_play_core": [
+    "Electrike",
+    "Pikachu",
+    "Helioptile",
+    "Heliolisk",
+    "Mega Manectric ex"
+  ],
+  "last_turn": 9,
+  "last_turn_basis": "Current turn 9 banner at 191.00; gameplay reconstruction",
+  "displayed_point_circles": {
+    "owner": 3,
+    "opponent": 1
+  },
+  "observed_point_award_totals": {
+    "owner": 5,
+    "opponent": 1
+  },
+  "point_awards": [
+    {
+      "turn": 3,
+      "side": "owner",
+      "victim": "Pikachu",
+      "award": 1
+    },
+    {
+      "turn": 7,
+      "side": "owner",
+      "victim": "Heliolisk",
+      "award": 1
+    },
+    {
+      "turn": 8,
+      "side": "opponent",
+      "victim": "Mienshao",
+      "award": 1
+    },
+    {
+      "turn": 9,
+      "side": "owner",
+      "victim": "Mega Manectric ex",
+      "award": 3
+    }
+  ],
+  "auto_status": "Predominantly enabled; visibly paused around promotion and final-turn Stadium selection; resumed before final attachment and attack",
+  "auto_pause_evidence_seconds": [
+    189.0,
+    190.0,
+    192.0,
+    194.0,
+    195.0
+  ],
+  "auto_resume_evidence_seconds": [
+    197.0,
+    198.0
+  ],
+  "material_intervention": "Arena of Antiquity selected while Auto was unchecked, replacing Bounded Field. This supplies the 20 damage needed for the immediate final knockout.",
+  "final_damage_calculation": "Fighting Pulse 90 + extra Fighting bonus 50 + Arena of Antiquity 20 + ordinary Fighting Weakness 20 = 180",
+  "result_statistics_shown": false,
+  "unreviewed_battle_intervals": [],
+  "ladder_eligible": false,
+  "ladder_action": "excluded_by_owner_instruction; no write",
+  "independent_checks_requested_seconds": {
+    "opening": [
+      4.5
+    ],
+    "ordinary_turn": [
+      114.5,
+      119.5,
+      126.5,
+      130.5
+    ],
+    "decisive_sequence": [
+      189.0,
+      191.0,
+      195.0,
+      196.0,
+      197.0,
+      200.0,
+      202.0,
+      205.5,
+      211.0
+    ],
+    "terminal": [
+      220.8,
+      221.08
+    ]
+  },
+  "overview_only_midpoint_anchors_seconds": [
+    16.5,
+    133.5
+  ],
+  "overview_anchor_limit": "16.50 and 133.50 have retained overview samples only, not exact-time native frames. Extract from original if an exact native check is desired.",
+  "worker_actions_at_submission": {},
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "lead_acceptance_pending": false,
+  "source_archived": true,
+  "source_modified": false,
+  "archive_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20261001_015649000_iOS.MP4",
+  "archive_receipt": "MOVE_RECEIPT.20261001_015649000_iOS.MP4.json",
+  "archive_completion_event_id": "b34d46c4-2127-4c35-94ac-9af9c01a607e",
+  "global_registration_complete": true
+}

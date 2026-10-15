@@ -1,0 +1,178 @@
+{
+  "checked_at_utc": "2026-10-06T21:02:35.724873+00:00",
+  "native_image_payload_match": true,
+  "payload_ascii_sha256": "913d34a7e9b532fd5ab9d4fca76b194e6b9e9a013ecd9de7d90bb19b2412da2b",
+  "trainer_ids": [
+    30,
+    30,
+    480,
+    480,
+    1060,
+    1060,
+    40,
+    40,
+    320,
+    990,
+    1570
+  ],
+  "pokemon_ids": [
+    6750,
+    6750,
+    6770,
+    20500,
+    12060,
+    14430,
+    14430,
+    14440,
+    1380
+  ],
+  "energy_types": [
+    6
+  ],
+  "card_count": 20,
+  "semantic_entity_mapping": {
+    "trainer:480": {
+      "names": [
+        "Rare Candy"
+      ],
+      "variants": [
+        "A3 144",
+        "A4b 314",
+        "A4b 315",
+        "A4b 379"
+      ],
+      "count": 2
+    },
+    "trainer:320": {
+      "names": [
+        "Cyrus"
+      ],
+      "variants": [
+        "A2 150",
+        "A2 190",
+        "A4b 326",
+        "A4b 327"
+      ],
+      "count": 1
+    },
+    "trainer:1570": {
+      "names": [
+        "Wally"
+      ],
+      "variants": [
+        "B4 153",
+        "B4 193"
+      ],
+      "count": 1
+    },
+    "trainer:1060": {
+      "names": [
+        "Lucky Ice Pop"
+      ],
+      "variants": [
+        "B2 145"
+      ],
+      "count": 2
+    },
+    "trainer:40": {
+      "names": [
+        "Professor’s Research"
+      ],
+      "variants": [
+        "A4b 373",
+        "P-A 007"
+      ],
+      "count": 2
+    },
+    "trainer:990": {
+      "names": [
+        "Copycat"
+      ],
+      "variants": [
+        "B1 225",
+        "B1 270"
+      ],
+      "count": 1
+    },
+    "trainer:30": {
+      "names": [
+        "Poké Ball"
+      ],
+      "variants": [
+        "A2b 111",
+        "P-A 005"
+      ],
+      "count": 2
+    },
+    "pokemon:1380": {
+      "names": [
+        "Sandslash"
+      ],
+      "variants": [
+        "A1 138"
+      ],
+      "count": 1
+    },
+    "pokemon:14440": {
+      "names": [
+        "Sandslash"
+      ],
+      "variants": [
+        "B2 078"
+      ],
+      "count": 1
+    },
+    "pokemon:6750": {
+      "names": [
+        "Timburr"
+      ],
+      "variants": [
+        "A3 094"
+      ],
+      "count": 2
+    },
+    "pokemon:6770": {
+      "names": [
+        "Conkeldurr"
+      ],
+      "variants": [
+        "A3 096"
+      ],
+      "count": 1
+    },
+    "pokemon:20500": {
+      "names": [
+        "Conkeldurr"
+      ],
+      "variants": [
+        "B4 089"
+      ],
+      "count": 1
+    },
+    "pokemon:12060": {
+      "names": [
+        "Hitmonchan ex"
+      ],
+      "variants": [
+        "B1 124",
+        "B1 261",
+        "B1 279",
+        "B3 229"
+      ],
+      "count": 1
+    },
+    "pokemon:14430": {
+      "names": [
+        "Sandshrew"
+      ],
+      "variants": [
+        "B2 077",
+        "B2 170"
+      ],
+      "count": 2
+    }
+  },
+  "limits": [
+    "Community-derived pinned catalog supplies entity mapping; QR does not encode artwork or rarity. Matching live log deck version remains absent, separately from exact filmed semantic list."
+  ]
+}

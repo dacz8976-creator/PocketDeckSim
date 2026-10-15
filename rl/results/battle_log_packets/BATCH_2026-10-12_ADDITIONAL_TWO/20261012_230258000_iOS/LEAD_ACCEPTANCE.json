@@ -1,0 +1,57 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-13T02:46:20.529881+00:00",
+  "source_game_count": 1,
+  "all_source_games_accepted": true,
+  "source_video": "20261012_230258000_iOS.MP4",
+  "source_sha256": "02c8539c786e5e57652c297ce425468955c4f70da2657a40cf39a2b0b330619a",
+  "scope": "Entire supplied recording, one human battle, opening, all 14 turns and terminal result",
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 14,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-12_ADDITIONAL_TWO\\20261012_230258000_iOS\\independent_sol\\CHECK_RESULT.json",
+  "accepted_input_sha256": {
+    "REVIEW.md": "a7a5a8245d320d773812df90a35f140c4ae249cc67d1f94326c1f6d16bef268d",
+    "COVERAGE.md": "a6d71957844b068042fe358b9137ea1941ff5ebc1e15f0a8ae2178242fbec5fb",
+    "SUMMARY.json": "442bed0c02372db94269773db5ba696c0d70ec46e3e61a5458f0242af5c1eaa0",
+    "UNCERTAINTIES.json": "6fd51b20c0ba972d0350f2e2f7fe90e0156748f04dcaea0c7c795ee782333572",
+    "PAUSE_GAME.json": "74de4b5e7f932755dd9827125c0a907365dc0ece86b4d3920c5ba1d26e015a41",
+    "DECK_USED.json": "e4f1899bd0e537af4bca1126a0f54b0a1248eacf70b85597a972656d7120cd9e",
+    "TURN_LEDGER.json": "f679c506cc25dd59a0778f645916e4febc45701c1c6dffe820f18374ab202d36",
+    "TURN_EVIDENCE.json": "25fc0f3199d6cb90a8e3ec95004b60f824c907449cdf9707c0e1fc35afd86368"
+  },
+  "basis": "Whole-source Sol review, separately bounded Sol checks against source frames, and lead reconciliation of coverage, ordinary decisions, draws/searches, hand arithmetic, point progression, decisive sequences and terminal outcome. Structural integrity checked separately.",
+  "administrative_fields_changed_after_independent_freeze": [
+    "lead_checked",
+    "battle_review_status",
+    "lead_acceptance"
+  ],
+  "source_limits": [
+    "Neither player opens a discard pile; periodic complete pile snapshots unavailable throughout the supplied source.",
+    "Opponent face-down draws/searches remain unknown; later plays do not identify prior finds.",
+    "Semantic versions are established; artwork/rarity not fully identified.",
+    "Future Energy count/availability has no readable labeled numerical display and remains null despite visible next-type icon.",
+    "Turn 13 has no normal draw animation because deck is empty; native turn-start hand substitutes with explicit notice.",
+    "Later +1/+3/+6 candidate frames may show played cards/zooms; only the chosen earlier preplay hand supplies starting identities.",
+    "Source timestamps are requested local seeks; exact frame PTS not measured."
+  ],
+  "outcome": {
+    "result": "loss",
+    "owner": "Dacz8976",
+    "opponent": "Giorno",
+    "owner_points": 2,
+    "opponent_points": 3,
+    "turns_played": 14,
+    "damage_done": 160,
+    "method": "Opponent third point from Starmie ex Hydro Splash KO of Alolan Muk",
+    "evidence_ids": [
+      "F0548_00",
+      "F0553_00",
+      "F0558_00",
+      "F0564_00"
+    ]
+  },
+  "deck_status": "Exact live deck snapshot and filmed game binding are preserved in DECK_USED.json and independently checked.",
+  "external_status": "Prepared deck and game import pending; no external save claimed."
+}

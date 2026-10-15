@@ -1,0 +1,23 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "source_video": "20260930_153142000_iOS.MP4",
+  "source_sha256": "7b2083a31e6949035824d9c9a71605a9b48fb4f5c5d7695aa8eed4b30f42d601",
+  "scope": "Complete ten-turn 166.923855-second autopilot computer battle, setup through the final retreat, Mud Shot knockout and explicit results",
+  "first_pass": "gpt-6.1-sol/high /root/sol_auto_153142",
+  "lead_checks": "Root read full narrative, coverage, summary and uncertainties, reconciling four Quick Straight attacks plus Mud Shot, HP and Energy counts. Separate Sol verifier inspected opening overview,71-second ordinary Wing Attack,146-second pre-retreat,149-second promoted Excadrill,153-second Mud Shot and166.5-second results, as recorded in INDEPENDENT_CHECK.md. Final attachment is to left Cubone; Hitmonchan's sole Energy disappears after retreat; no consequential contradiction found.",
+  "independent_check": "INDEPENDENT_CHECK.md",
+  "outcome": "owner_win",
+  "final_points": {"owner": 3, "opponent": 0},
+  "owner_visible_core": "Hitmonchan ex / Cubone / Marowak ex / Drilbur / Excadrill",
+  "opponent": "AI Raticate Deck (Deluxe Pack: Mega)",
+  "last_turn": 10,
+  "useful_finding": "Auto retreats the surviving Hitmonchan into Excadrill for the last knockout and loses Hitmonchan's one Energy. Quick Straight could already defeat the visible 10 HP target, so the retreat is unnecessary for that immediate win. Four attacks of 50 plus Mud Shot's 70 match 270 result damage.",
+  "unreviewed_intervals": [],
+  "material_unresolved": [],
+  "limitations": "Independent verification is bounded. Hidden search results, complete decks and fine timing remain unknown. The immediate alternative is a tactical observation, not a rules defect or general bot-strength conclusion.",
+  "ladder_eligible": false,
+  "ladder_action": "No Ladder Log entry; excluded by owner instruction",
+  "astra_consulted": false,
+  "astra_reason": "No consequential ambiguity remained after full source review and bounded independent checks"
+}

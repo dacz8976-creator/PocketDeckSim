@@ -1,0 +1,25 @@
+{
+  "repaired_utc": "2026-10-03T01:07:43.570726+00:00",
+  "author": "/root",
+  "source_video": "20261002_214254000_iOS.MP4",
+  "source_sha256": "c01cd8298bc47d115917dcee862d0795bee6e7095796365ee026f6713fa4595b",
+  "original_submission_preserved": "worker_submission/SUBMISSION.json",
+  "original_submission_sha256": "79549cb7badc7ccc4741caa7648010a9178c011a3c8e8496cd307f8302dc566f",
+  "independent_rejection_sha256": "a78af30a7aae3c7e5c793e650d43dfa48a3ab4f0e40371f8b41ce78957245e8b",
+  "corrections": [
+    "T18 four individual Copycat reveal anchors and Ball inventory anchor",
+    "T18 Copycat/Ball/ordinary Water/attack order and exact visible Ball rejection banner",
+    "T4/T8 existing before-end hand evidence IDs made explicit"
+  ],
+  "changed_files": [
+    "TURN_LEDGER.json",
+    "REVIEW.md",
+    "TURN_TABLE.md",
+    "SEEN_CARD_INVENTORY.json",
+    "SEEN_CARD_INVENTORY.md"
+  ],
+  "primary_manifest_unchanged": true,
+  "no_new_extraction": true,
+  "names_results_end_hand_and_copy_counts_unchanged": true,
+  "independent_recheck_pending": true
+}

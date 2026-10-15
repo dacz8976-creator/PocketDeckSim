@@ -1,0 +1,51 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20260909_023151000",
+  "sources": [
+    {
+      "video_basename": "20260909_023151000_iOS.MP4",
+      "sha256": "3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+      "source_json": "SOURCE_REFERENCE.json"
+    }
+  ],
+  "deck_name_in_log": null,
+  "expected_card_count": 20,
+  "cards_in_log_order": null,
+  "counts_by_name_and_variant": null,
+  "actual_card_count": null,
+  "exact_list_status": "historical_list_unavailable",
+  "capture_status": "complete_with_recording_limits",
+  "visible_core": [
+    "Electrike",
+    "Helioptile",
+    "Heliolisk",
+    "Mega Manectric ex",
+    "Elegant Cape",
+    "Clemont's Backpack",
+    "Training Area",
+    "Poké Ball",
+    "Professor's Research"
+  ],
+  "visible_minimum_copies": {
+    "Electrike": 2,
+    "Helioptile": 2,
+    "Heliolisk": 1,
+    "Mega Manectric ex": 1,
+    "Elegant Cape": 1,
+    "Clemont's Backpack": 1,
+    "Training Area": 1,
+    "Poké Ball": 1,
+    "Professor's Research": 1
+  },
+  "copy_count_limit": "Two Electrike simultaneously in play proves2; second Helioptile in hand while first evolved line remains in play proves2. Other listed counts are conservative minimum observations, not exact deckcounts.",
+  "nearby_QR_binding": "separate unbound owner-supplied evidence; not used for exact historicaldeck",
+  "limits": [
+    "Hidden opponent normal/Research/Legendary Pulse draws and concealed search identities remain null; subsequent bench cards do not identify a concealed search result.",
+    "Exact historical 20-card deck snapshot unavailable; nearby QR is separate unbound evidence and no full deck is reconstructed.",
+    "All344 reduced1fps samples were inspected through18 grids once. This bounds sampled cues, not every instant, input or subsecond event.",
+    "Requested native seek times and inherited nominal native times are source-local. Actual frame PTS and exact input times unmeasured; inherited anchors have their retained tolerance.",
+    "No opened full discard panel detected in bounded timeline screening. Periodic visible tops and overlapping cards are recorded; hidden contents/order and discarded Energy totals not reconstructed.",
+    "No Auto control observed in sampled controls. This is not proof of every-instant absence; any visible Auto option, even OFF, means computer battle under owner rule."
+  ]
+}

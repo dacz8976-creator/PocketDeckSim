@@ -1,0 +1,302 @@
+{
+  "schema": "bounded_astra_exception_check_v1",
+  "created_utc": "2026-10-13T15:50:56.113766+00:00",
+  "reviewer": "/root/astra_tool_015659",
+  "review_scope": "Only identity and literal effect of Turn 10 Tool attached to benched Mega Lucario ex, plus root-requested adjacent Tool-versus-Energy action-order check; not a full-source review or independent acceptance.",
+  "source_video": "20261013_015659000_iOS.MP4",
+  "sourceSHA": "6e2074461f324b9825dc0805101ba7d899933c2997709d36efc058b231dace9e",
+  "source_sha256": "6e2074461f324b9825dc0805101ba7d899933c2997709d36efc058b231dace9e",
+  "source_identity_basis": {
+    "packet_source_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_REMAINING_SIX\\20261013_015659000_iOS\\SOURCE.json",
+    "packet_source_sha256": "7fea2d48d05638f420f7b06a234101615f3857adc11d7887fb34ba80cd83337d",
+    "intake_verified_event_id": "0439bc01-d5bb-4947-9b59-36ba79f624c9",
+    "source_hash_inherited_from_verified_intake": true,
+    "source_rehashed_by_this_checker": false,
+    "current_source_bytes_checked": 727722112
+  },
+  "status": "resolved_directly_from_source_frame",
+  "accepted_identity": "Protective Poncho",
+  "identity_evidence_status": "directly_observed_readable_card_title",
+  "identity_confidence": "high; title fully legible at requested seek267.80 seconds",
+  "exact_printing": null,
+  "exact_printing_limit": "Set and collector number not established; do not assign B2 or another printing from catalog.",
+  "literal_card_effect": "As long as the Pokémon this card is attached to is on your Bench, prevent all damage done to that Pokémon by your opponent’s attacks and Abilities.",
+  "literal_ui_popup": "Prevent all damage done by the opponent’s attacks and Abilities",
+  "target": "opponent benched Mega Lucario ex",
+  "effect_condition": "The attached Pokémon is on its owner’s Bench.",
+  "effect_duration": "Conditional while attached and on the Bench; no fixed turn expiry stated in visible text.",
+  "observations": [
+    {
+      "time_seconds": 267.8,
+      "fact": "Full displayed card has Pokémon Tool category, readable Protective Poncho title, and complete Bench-conditional prevention effect.",
+      "evidence_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_REMAINING_SIX\\20261013_015659000_iOS\\astra_exception\\t0267.80.jpg"
+    },
+    {
+      "time_seconds": 268.1,
+      "fact": "Same card and title remain visible through bright attachment animation.",
+      "evidence_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_REMAINING_SIX\\20261013_015659000_iOS\\astra_exception\\t0268.10.jpg"
+    },
+    {
+      "time_seconds": 269.5,
+      "fact": "Tool art icon is attached on benched Mega Lucario ex; icon matches the displayed card art.",
+      "evidence_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_REMAINING_SIX\\20261013_015659000_iOS\\turn_evidence\\t0269.50.jpg"
+    },
+    {
+      "time_seconds": 270.2,
+      "fact": "Blue shield and literal damage-prevention popup appear at benched Mega Lucario ex.",
+      "evidence_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_REMAINING_SIX\\20261013_015659000_iOS\\turn_evidence\\t0270.20.jpg"
+    },
+    {
+      "time_seconds": 287,
+      "fact": "Same attached Tool icon remains visible on benched Mega during later owner turn.",
+      "evidence_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_REMAINING_SIX\\20261013_015659000_iOS\\turn_evidence\\t0287.00.jpg"
+    },
+    {
+      "time_seconds": 272,
+      "fact": "Tool icon and prevention popup already present on benched Mega. Hitmontop has no attached Energy icon; opponent Energy Zone still has its large current Fighting orb.",
+      "evidence_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_REMAINING_SIX\\20261013_015659000_iOS\\turn_evidence\\t0272.00.jpg"
+    },
+    {
+      "time_seconds": 273,
+      "fact": "Active Hitmontop now has one Fighting Energy icon and the large current Fighting orb has left the opponent Energy Zone. Protective Poncho icon remains on benched Mega.",
+      "evidence_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_REMAINING_SIX\\20261013_015659000_iOS\\astra_exception\\t0273.00.jpg"
+    },
+    {
+      "time_seconds": 274,
+      "fact": "Settled board confirms one Fighting on Active Hitmontop, Protective Poncho plus blue shield on benched Mega.",
+      "evidence_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_REMAINING_SIX\\20261013_015659000_iOS\\astra_exception\\t0274.00.jpg"
+    }
+  ],
+  "inferences": [],
+  "owner_testimony": {
+    "text": "I can also tell you what the tool was, I believe protective poncho.",
+    "certainty": "tentative",
+    "received_via": "Root relay during check",
+    "used_as_identity_proof": false,
+    "note": "Corroborated independently by fully readable267.80s source frame."
+  },
+  "reference_limits": {
+    "local_catalog": "C:/Users/dacz8/Projects/Pocket Deck Lab/s216_card_catalog_v1.json",
+    "catalog_use": "Narrow alias search only; not used to substitute for filmed identity, artwork or rules.",
+    "web_use": "Official-domain searches found no usable official card page. Third-party search results were not adopted. Visible in-game card text is direct primary evidence and resolves the question."
+  },
+  "inspected_images": [
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_REMAINING_SIX\\20261013_015659000_iOS\\turn_evidence\\t0267.00.jpg",
+      "sha256": "66dba7fe500a395e4acbf3c8a13c3fc425f3e8b6441ab93510b5216b3c619775",
+      "requested_seek_seconds": 267,
+      "actual_frame_pts_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_REMAINING_SIX\\20261013_015659000_iOS\\turn_evidence\\t0268.50.jpg",
+      "sha256": "c18bde993ec815520d7b026a8c48052fb0d9f48e482b887423784fb2a6e852ae",
+      "requested_seek_seconds": 268.5,
+      "actual_frame_pts_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_REMAINING_SIX\\20261013_015659000_iOS\\turn_evidence\\t0269.00.jpg",
+      "sha256": "ae7bbd009c8a749525f9ef35c1f89a5bc34ce1ccd6db483a5f83657edbc97e0b",
+      "requested_seek_seconds": 269,
+      "actual_frame_pts_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_REMAINING_SIX\\20261013_015659000_iOS\\turn_evidence\\t0269.50.jpg",
+      "sha256": "1f06f24cf4bbcbefc1ef5653fb469c6f1ab7fe106db013d90d5cce8cb4e99ee3",
+      "requested_seek_seconds": 269.5,
+      "actual_frame_pts_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_REMAINING_SIX\\20261013_015659000_iOS\\turn_evidence\\t0270.20.jpg",
+      "sha256": "7ba12aa854341734f9b2f9c7cb9bf2d5f1d265c85d9ef5329e594b0ce6363257",
+      "requested_seek_seconds": 270.2,
+      "actual_frame_pts_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_REMAINING_SIX\\20261013_015659000_iOS\\turn_evidence\\t0271.00.jpg",
+      "sha256": "835488d0ad7d159ccf3f7d863eb93b0eadb759c2ea5b5873c7048871f6bffeb4",
+      "requested_seek_seconds": 271,
+      "actual_frame_pts_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_REMAINING_SIX\\20261013_015659000_iOS\\turn_evidence\\t0272.00.jpg",
+      "sha256": "1b21acd5e207c4a53ab42a4dfb16dadb8aa12c2584a18c510b5b166cb92896d2",
+      "requested_seek_seconds": 272,
+      "actual_frame_pts_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_REMAINING_SIX\\20261013_015659000_iOS\\turn_evidence\\t0287.00.jpg",
+      "sha256": "7f320db048e6c84d787bbe8c73a9a21de3cc7611ff8a60e80977201caac131d7",
+      "requested_seek_seconds": 287,
+      "actual_frame_pts_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_REMAINING_SIX\\20261013_015659000_iOS\\turn_evidence\\t0288.00.jpg",
+      "sha256": "f12d5fd68d85be7465659796468b81cd6fd3bf8b3ae515d50c8a06407534b7d3",
+      "requested_seek_seconds": 288,
+      "actual_frame_pts_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_REMAINING_SIX\\20261013_015659000_iOS\\astra_exception\\t0267.40.jpg",
+      "sha256": "fc63bd86eb1d1e09ced2a0cac298e82639f8aeba35f89c870dc1b3ad307142ac",
+      "requested_seek_seconds": 267.4,
+      "actual_frame_pts_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_REMAINING_SIX\\20261013_015659000_iOS\\astra_exception\\t0267.80.jpg",
+      "sha256": "8e3bbbbcb261c15132342801b11cc81808a3285b04358b87d048f1f0ac5aa632",
+      "requested_seek_seconds": 267.8,
+      "actual_frame_pts_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_REMAINING_SIX\\20261013_015659000_iOS\\astra_exception\\t0268.10.jpg",
+      "sha256": "c6a69df162dcafbfda12ab7cdba72ef85bea717b7e38612ccdfd4982dc937799",
+      "requested_seek_seconds": 268.1,
+      "actual_frame_pts_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_REMAINING_SIX\\20261013_015659000_iOS\\astra_exception\\t0273.00.jpg",
+      "sha256": "c075e8ce0fadeba0c331331e9dd05d3f70e7509d5458413e7914814f03bb4427",
+      "requested_seek_seconds": 273.0,
+      "actual_frame_pts_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_REMAINING_SIX\\20261013_015659000_iOS\\astra_exception\\t0274.00.jpg",
+      "sha256": "84ffe178b765d0070f32cc9daa49cae02976418a763f5601e30e876798c10196",
+      "requested_seek_seconds": 274.0,
+      "actual_frame_pts_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspected": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_REMAINING_SIX\\20261013_015659000_iOS\\astra_exception\\t0275.00.jpg",
+      "sha256": "85a9f2f0ce026b48d53a82fb596dafab557019037c022720c65b5c049da42376",
+      "requested_seek_seconds": 275.0,
+      "actual_frame_pts_seconds": null,
+      "native_dimensions": [
+        1170,
+        2532
+      ],
+      "inspected": true
+    }
+  ],
+  "additional_extraction": {
+    "count": 6,
+    "requested_seek_seconds": [
+      267.4,
+      267.8,
+      268.1,
+      273,
+      274,
+      275
+    ],
+    "decoder": "C:/Program Files/MiniTool Screen Recorder/FFmpeg/ffmpeg.exe",
+    "decode_threads": 1,
+    "output_directory": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_REMAINING_SIX\\20261013_015659000_iOS\\astra_exception",
+    "method": "Existing extract_auto_review.py explicit native single-frame seeks; no scaling, synthesis or mass extraction.",
+    "timing_limit": "Requested seeks, not independently measured frame PTS."
+  },
+  "exact_packet_additions_or_corrections_required": [
+    "Bind this CHECK_RESULT.json and astra_exception/t0267.80.jpg plus t0273.00.jpg in lead acceptance. Add those native source frames to TURN_EVIDENCE or reference them through this bound supplement.",
+    "TURN_LEDGER turn10: swap current plays5 and6. New play5 is Protective Poncho attachment to benched Mega; card_name Protective Poncho, readable card anchor267.80s, settled Tool icon269.50s and shield270.20s. New play6 is one Fighting attached to Active Hitmontop, transition after272s and by273s; use273s completion anchor, not268.5s. Attack remains play7. Preserve unrelated T8 repair.",
+    "TURN_LEDGER opponent benched Mega Lucario ex from turn10 board_after onward: set tool and active_effect source_name to Protective Poncho. Qualify prevention as Bench-conditional using literal_card_effect; replace unreadable-name/duration limit with null. Keep exact_printing unknown and avoid a fixed turn expiry.",
+    "REVIEW.md Turn10: change order to retreat, Protective Poncho attachment, Fighting attachment to Hitmontop, attack. Replace Tool uncertainty with direct title/effect at267.80s and Bench condition. Replace claim that268.5 anchors Fighting attachment with272-273 transition/273 completion anchor.",
+    "UNCERTAINTIES.json: remove or mark resolved only the Tool-name recording limit, citing this check and267.80s; preserve all unrelated limits.",
+    "PAUSE_GAME.json: replace both unreadable-Tool limitation strings with resolved direct-title note or remove those limits.",
+    "COVERAGE.md: remove fleeting unreadable opponent Tool from remaining recording limits."
+  ],
+  "primary_packet_files_modified": false,
+  "shared_registration_or_archive_actions": false,
+  "lead_decision": "Pending root integration/binding and independent acceptance; this check does not grant completion authority.",
+  "adjacent_action_order_check": {
+    "status": "material_order_correction_required",
+    "accepted_order": [
+      "Previously recorded retreat to Hitmontop",
+      "Protective Poncho attached to benched Mega Lucario ex",
+      "Fighting Energy attached to Active Hitmontop",
+      "Previously recorded Piercing Spin attack"
+    ],
+    "earliest_fully_readable_card_anchor_seconds": 267.8,
+    "readable_flash_alone_proves_committed_target": false,
+    "committed_tool_target_basis": "Readably named card at267.80 followed by attachment flash at268.10, Tool artwork icon located on benched Mega at269.50, and blue-shield prevention popup there at270.20. Later icon persists.",
+    "earliest_clear_attached_tool_icon_among_inspected_seconds": 269.5,
+    "shield_popup_anchor_seconds": 270.2,
+    "last_inspected_pre_energy_anchor_seconds": 272,
+    "first_inspected_attached_energy_anchor_seconds": 273,
+    "settled_energy_confirmation_seconds": 274,
+    "energy_attachment_interval_seconds": [
+      272,
+      273
+    ],
+    "timestamp_precision_limit": "Requested seeks, actual PTS unmeasured; do not call these exact click/commit times.",
+    "primary_claim_rejected": "Fighting attachment to Hitmontop at268.5 before Tool attachment.",
+    "reason": "At268.50 no Fighting is attached to Hitmontop and current Fighting orb remains in Energy Zone. Tool is visibly attached and its effect active before the Fighting attachment boundary272-273."
+  }
+}

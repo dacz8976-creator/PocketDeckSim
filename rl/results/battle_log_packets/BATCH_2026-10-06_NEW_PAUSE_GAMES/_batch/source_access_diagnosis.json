@@ -1,0 +1,34 @@
+{
+  "timestamp_utc": "2026-10-06T17:12:00.439307+00:00",
+  "scope": "Bounded read-only source-access diagnosis. No media, index, events, settings, or OneDrive process changes.",
+  "source": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261006_020518000_iOS.MP4",
+  "size_bytes": 1122356121,
+  "probe": "Open binary and read first 16 bytes; child deadline 25 seconds",
+  "readable": false,
+  "timeout_seconds": 25,
+  "blocker": "Cloud placeholder did not deliver even first 16 bytes within bounded read deadline. No battle review is possible until original video bytes are locally readable.",
+  "elapsed_seconds": 25.312,
+  "camera_roll_probe": {
+    "source": "C:\\Users\\dacz8\\OneDrive\\Pictures\\Camera Roll 1\\2026\\10\\20261005_123812000_iOS.mp4",
+    "size_bytes": 621742095,
+    "attributes_before": 4194336,
+    "deadline_seconds": 25,
+    "probe": "ffprobe format duration and video stream metadata",
+    "readable": false,
+    "timed_out": true,
+    "elapsed_seconds": 25.391,
+    "attributes_after": 4194336
+  },
+  "onedrive_process_observed": {
+    "pid": 3396,
+    "responding": true
+  },
+  "root_counterpart": {
+    "source": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261005_123812000_iOS.MP4",
+    "size_bytes": 621742095,
+    "attributes": 4199968
+  },
+  "status": "pending_readable_source",
+  "limitations": "Same names and sizes do not establish identical bytes. No source replacement or move performed. Root intake separately succeeded for 20261004_214731000_iOS.MP4 per coordinator, so availability is per-source, not blanket failure.",
+  "next_step": "Let existing supported OneDrive hydration complete, then perform source hash binding and metadata before assigning review. A readable Camera Roll candidate requires its own SHA-256 and preserved source provenance; root byte identity must not be assumed."
+}

@@ -1,0 +1,34 @@
+{
+  "accepted": true,
+  "accepted_utc": "2026-10-03T00:58:42.175776+00:00",
+  "accepted_by": "/root",
+  "source_video": "20261002_210952000_iOS.MP4",
+  "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+  "guide_update_checked": true,
+  "independent_reviewer": "/root/ind_drafta_auto4",
+  "independent_model": "gpt-6.1-sol",
+  "independent_check": "independent_sol/CHECK_GUIDE_UPDATE_AFTER_REPAIR_NORMALIZED.json",
+  "independent_check_sha256": "3b770429b18fcaa6f67e7366c19510912b91d7061101aca5ae784de2a0210836",
+  "checked_submission_manifest": "GUIDE_UPDATE_SUBMISSION_AFTER_REPAIR.json",
+  "checked_submission_manifest_sha256": "deb368da1948aafaf9616dbab753a1f88769f1a020e44cbdce30fa42bcdcae77",
+  "accepted_files": {
+    "GUIDE_UPDATE_SUPPLEMENT.json": "12641ba4822b2c20bd6b366f6ce1100d8f01d0103f0735c499c422d204576000",
+    "GUIDE_UPDATE_SUPPLEMENT.md": "3eabf1503207970a7c329d4d5b4a8a4b03a83c13bd02dc96d9cfd102f5bbd13e",
+    "SEEN_CARD_INVENTORY.json": "c1cbcd22c436536bed111fe5804608e602d9bd2f6f44a962f6d0e4575f043211",
+    "SEEN_CARD_INVENTORY.md": "515101bf17bd1b0b74b25cf1ecfb7e22b9dabb037830e88a0ce8246d12221ddd"
+  },
+  "remaining_coverage_gaps": [],
+  "unverified_material_claims": [],
+  "limits": [
+    "Concealed opponent identities and deck order remain unknown.",
+    "Neither discard pile is opened. Exposed tops do not establish full pile contents or counts.",
+    "Lower evolution faces are hidden now; named stacks derive only from witnessed same-recording history.",
+    "Input telemetry is absent. Checked Auto persists without observed toggle/override; invisible human input is not verifiable.",
+    "Retained image PTS is not an exact touch or draw-completion instant.",
+    "19distinct owner physical cards is a visual lower bound, separate from supplied exact20card snapshot. Second PokeBall not visually established."
+  ],
+  "guide_source_receipt": "../GUIDE_UPDATE_RECEIPT.json",
+  "scope": "Only these eight current same-card computer comparison games; older packets untouched",
+  "actual_destination": "local_review_batch_and_BATTLE_REVIEW_INDEX",
+  "external_game_entry_requested": false
+}

@@ -1,0 +1,28 @@
+{
+  "video_basename": "20261001_205658000_iOS.MP4",
+  "sha256": "0ffab49dc08b8b76fafe7b8f979d01007a77db016c3bff39b038dedd61d600b7",
+  "bytes": 756720360,
+  "duration_seconds": 409.606667,
+  "streams": [
+    {
+      "codec_name": "hevc",
+      "width": 1170,
+      "height": 2532
+    },
+    {
+      "codec_name": "aac"
+    }
+  ],
+  "source_path_at_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261001_205658000_iOS.MP4",
+  "recording_relationships": [],
+  "recording_date_basis": "Filename 20261001; exact clock and timezone basis unverified",
+  "owner_testimony": "Can we process the newly uploaded videos? All not ladders and rules testing",
+  "recording_intent": "rules_testing",
+  "mode": "verify_from_footage",
+  "ladder_eligible": false,
+  "reviewer": "sol_rules_20261001_205658000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "identity_verified_event_id": "ca90a0df-de4d-4580-8bc5-bfce5d7e6e9f",
+  "intake_utc": "2026-10-02T00:11:08.442469+00:00"
+}

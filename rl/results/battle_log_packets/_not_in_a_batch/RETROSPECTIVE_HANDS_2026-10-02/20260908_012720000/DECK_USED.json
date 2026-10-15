@@ -1,0 +1,46 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20260908_012720000",
+  "sources": [
+    {
+      "video_basename": "20260908_012720000_iOS.MP4",
+      "sha256": "b9e76626643d8950cb7a4277487da2262b5fa96faf9e87454495ebe896d47085",
+      "source_json": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_012720_v7_review\\final_packet\\SOURCE.json"
+    }
+  ],
+  "deck_name_in_log": null,
+  "source_url": null,
+  "captured_at": null,
+  "log_list_version": null,
+  "expected_card_count": 20,
+  "cards_in_log_order": null,
+  "counts_by_name_and_variant": null,
+  "energy_configuration_from_log": null,
+  "actual_card_count": null,
+  "capture_source_text_or_image": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\DECK_LOG_CAPTURE.txt",
+  "game_version_binding_basis": "Historical computer battle. Supplied batch deck snapshots contain Shark Tempo and Wailord decks only; historical Ogerpon/Whimsicott exact20-card list unavailable.",
+  "conflicts_with_filmed_cards": null,
+  "exact_list_status": "unavailable_historical_version",
+  "limits": null,
+  "limit_reason": "Current Pause Games snapshot does not provide this historical Ogerpon/Whimsicott20-card deck; no current list substituted.",
+  "visible_core": [
+    "Teal Mask Ogerpon ex",
+    "Cottonee",
+    "Whimsicott ex",
+    "Ariados",
+    "Spinarak"
+  ],
+  "classification": "computer_battle",
+  "excluded_from_ladder": true,
+  "classification_basis": "Owner clarification relayed by lead: any visible Auto control, even an off option, identifies a computer opponent and excludes recording from ladder.",
+  "mode_observation": "AUTO: enabled in the checked footage against an AI opponent; individual action authorship is not certified.",
+  "mode_evidence": [
+    "F0004.40",
+    "F0010.00",
+    "F0041.00",
+    "F0212.50",
+    "F0259.50"
+  ],
+  "astra_mode_check": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\astra_checks\\20260908_012720000\\MODE_CHECK.json"
+}

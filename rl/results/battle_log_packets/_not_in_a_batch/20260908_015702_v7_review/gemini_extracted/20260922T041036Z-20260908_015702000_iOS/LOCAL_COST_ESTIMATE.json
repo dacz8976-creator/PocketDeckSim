@@ -1,0 +1,45 @@
+{
+  "method": "local_conservative_two_pass_estimate",
+  "maximum_requests": 2,
+  "passes": {
+    "preflight": {
+      "method": "local_conservative_estimate",
+      "sampled_frames": 273,
+      "video_tokens_per_frame": 280,
+      "estimated_visual_tokens": 76440,
+      "estimated_audio_tokens": 6821,
+      "approximate_prompt_tokens": 612,
+      "margin_multiplier": 1.1,
+      "estimated_input_tokens_with_margin": 92261,
+      "max_output_tokens": 4096,
+      "input_price_usd_per_million": 0.75,
+      "output_price_usd_per_million": 3.75,
+      "estimated_input_cost_usd": 0.069196,
+      "maximum_output_cost_usd": 0.01536,
+      "conservative_total_usd": 0.084556,
+      "pricing_valid_through": "2026-12-31",
+      "warning": "This is not a hard provider billing cap. It is a conservative local check before one request. Actual usage is recorded after completion."
+    },
+    "main": {
+      "method": "local_conservative_estimate",
+      "sampled_frames": 1365,
+      "video_tokens_per_frame": 280,
+      "estimated_visual_tokens": 382200,
+      "estimated_audio_tokens": 6821,
+      "approximate_prompt_tokens": 3726,
+      "margin_multiplier": 1.1,
+      "estimated_input_tokens_with_margin": 432022,
+      "max_output_tokens": 24000,
+      "input_price_usd_per_million": 0.75,
+      "output_price_usd_per_million": 3.75,
+      "estimated_input_cost_usd": 0.324017,
+      "maximum_output_cost_usd": 0.09,
+      "conservative_total_usd": 0.414017,
+      "pricing_valid_through": "2026-12-31",
+      "warning": "This is not a hard provider billing cap. It is a conservative local check before one request. Actual usage is recorded after completion."
+    }
+  },
+  "sampled_frames": 1638,
+  "conservative_total_usd": 0.498573,
+  "warning": "Combined ceiling for both requests, not a provider billing cap. Preflight uses additional quota/credit; it is not guaranteed free."
+}

@@ -1,0 +1,4689 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261010_020908000_iOS_game1",
+  "sources": [
+    {
+      "video_basename": "20261010_020908000_iOS.MP4",
+      "sha256": "6771089aca9afe1e952e047017c07b74964a184011832179c27fe7b7f839bffc",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "turns": [
+    {
+      "turn_number": 1,
+      "who_played": "opponent",
+      "source_video": "20261010_020908000_iOS.MP4",
+      "timing": {
+        "start_seconds": 50,
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 56,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": 70
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "card-back fan only",
+        "evidence_ids": [
+          "F0050.00"
+        ],
+        "status": "hidden",
+        "limit_reason": "Opponent card identities are face down."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": [],
+        "status": "not_applicable",
+        "limit_reason": "Opponent turn; owner hand captured at adjacent boundaries."
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "count_method": "Count distinct visible card backs in native top crop",
+        "basis": "not applicable on opponent turn",
+        "evidence_ids": [
+          "F0050.00"
+        ],
+        "limit_reason": "Opponent turn"
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261010_020908000_iOS.MP4",
+              "timestamp_seconds": 50,
+              "evidence_ids": [
+                "F0050.00"
+              ],
+              "basis": "visible reveal/hand",
+              "limit_reason": "Opponent reveal remains face down."
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 50,
+          "evidence_ids": [
+            "F0050.00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "supporter_draw",
+          "caused_by": "Professor's Research",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261010_020908000_iOS.MP4",
+              "timestamp_seconds": 58,
+              "evidence_ids": [
+                "F0058.00"
+              ],
+              "basis": "visible reveal/hand",
+              "limit_reason": "Opponent reveal remains face down."
+            },
+            {
+              "name": null,
+              "reveal_position": 2,
+              "source_video": "20261010_020908000_iOS.MP4",
+              "timestamp_seconds": 58,
+              "evidence_ids": [
+                "F0058.00"
+              ],
+              "basis": "visible reveal/hand",
+              "limit_reason": "Opponent reveal remains face down."
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 58,
+          "evidence_ids": [
+            "F0058.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Professor's Research",
+          "target": null,
+          "energy": null,
+          "result": "Draws two hidden cards.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 56,
+          "evidence_ids": [
+            "F0056.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Deceptive Needle",
+          "target": "Nihilego",
+          "energy": null,
+          "result": "Tool attached.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 66,
+          "evidence_ids": [
+            "F0066.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "energy": null,
+          "result": "Ends turn without an attack.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 69,
+          "evidence_ids": [
+            "F0069.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "event": "Deceptive Needle",
+          "timestamp_seconds": 70,
+          "result": "Horsea 50 to 40 HP; 10 damage."
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 1,
+        "phase": "resolved board boundary",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": "Hook 30 / 50 HP",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0047.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": null,
+              "available": null
+            },
+            "basis": "Visible large current orb and small next orb; future count is not displayed.",
+            "evidence_ids": [
+              "F0047.00"
+            ],
+            "limit_reason": "Next type visible; next count/availability not displayed."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0047.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Nihilego",
+            "variant": "More Poison / New Wave / 70 HP",
+            "bench_position": null,
+            "hp_now": 70,
+            "hp_max": 70,
+            "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0047.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Magmar",
+              "variant": "Derisive Roasting 10+ / 70 HP",
+              "bench_position": 3,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0047.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Darkness",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Darkness",
+              "count": null,
+              "available": null
+            },
+            "basis": "Visible large current orb and small next orb; future count is not displayed.",
+            "evidence_ids": [
+              "F0047.00"
+            ],
+            "limit_reason": "Next type visible; next count/availability not displayed."
+          },
+          "points": 0,
+          "board_effects": [
+            {
+              "name": "More Poison",
+              "source": "Nihilego",
+              "affected_player": "owner",
+              "restriction_or_mark": "Owner Active takes10 additional damage from Poisoned while ability is in effect.",
+              "expiry": "while Nihilego remains in play",
+              "basis": "visible printed ability"
+            }
+          ],
+          "evidence_ids": [
+            "F0047.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0047.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 1,
+        "phase": "resolved board boundary",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": "Hook 30 / 50 HP",
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 50,
+            "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+            "damage": 10,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0070.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": null,
+              "available": null
+            },
+            "basis": "Visible large current orb and small next orb; future count is not displayed.",
+            "evidence_ids": [
+              "F0070.00"
+            ],
+            "limit_reason": "Next type visible; next count/availability not displayed."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0070.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Nihilego",
+            "variant": "More Poison / New Wave / 70 HP",
+            "bench_position": null,
+            "hp_now": 70,
+            "hp_max": 70,
+            "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Deceptive Needle",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0070.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Magmar",
+              "variant": "Derisive Roasting 10+ / 70 HP",
+              "bench_position": 3,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0070.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Darkness",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Darkness",
+              "count": null,
+              "available": null
+            },
+            "basis": "Visible large current orb and small next orb; future count is not displayed.",
+            "evidence_ids": [
+              "F0070.00"
+            ],
+            "limit_reason": "Next type visible; next count/availability not displayed."
+          },
+          "points": 0,
+          "board_effects": [
+            {
+              "name": "More Poison",
+              "source": "Nihilego",
+              "affected_player": "owner",
+              "restriction_or_mark": "Owner Active takes10 additional damage from Poisoned while ability is in effect.",
+              "expiry": "while Nihilego remains in play",
+              "basis": "visible printed ability"
+            }
+          ],
+          "evidence_ids": [
+            "F0070.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0070.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": [],
+        "status": "not_applicable",
+        "limit_reason": "Opponent turn; owner hand captured at adjacent boundaries."
+      },
+      "owner_before_end_hand_count": null,
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "F0050.00",
+        "F0056.00",
+        "F0066.00",
+        "F0069.00",
+        "F0070.00"
+      ],
+      "limits": [
+        "Opponent hidden draws retain unknown identities.",
+        "No opened discard pile in this turn."
+      ]
+    },
+    {
+      "turn_number": 2,
+      "who_played": "owner",
+      "source_video": "20261010_020908000_iOS.MP4",
+      "timing": {
+        "start_seconds": 71,
+        "draw_animation_end_seconds": 73.4,
+        "first_voluntary_move_seconds": 75,
+        "before_end_action_seconds": 94,
+        "end_after_resolution_seconds": 106
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Team Rocket's Weezing ex",
+            "variant": null,
+            "basis": "visible native hand/reveal",
+            "evidence_ids": [
+              "F0073.40"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Koffing",
+            "variant": null,
+            "basis": "visible native hand/reveal",
+            "evidence_ids": [
+              "F0073.40"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Team Rocket's Koffing",
+            "variant": null,
+            "basis": "visible native hand/reveal",
+            "evidence_ids": [
+              "F0073.40"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Soothing Shore",
+            "variant": null,
+            "basis": "visible native hand/reveal",
+            "evidence_ids": [
+              "F0073.40"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Poke Ball",
+            "variant": null,
+            "basis": "visible native hand/reveal",
+            "evidence_ids": [
+              "F0073.40"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "visually counted native hand",
+        "evidence_ids": [
+          "F0073.40"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Team Rocket's Weezing ex",
+            "variant": null,
+            "basis": "visible native hand/reveal",
+            "evidence_ids": [
+              "F0073.40"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Koffing",
+            "variant": null,
+            "basis": "visible native hand/reveal",
+            "evidence_ids": [
+              "F0073.40"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Team Rocket's Koffing",
+            "variant": null,
+            "basis": "visible native hand/reveal",
+            "evidence_ids": [
+              "F0073.40"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Soothing Shore",
+            "variant": null,
+            "basis": "visible native hand/reveal",
+            "evidence_ids": [
+              "F0073.40"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Poke Ball",
+            "variant": null,
+            "basis": "visible native hand/reveal",
+            "evidence_ids": [
+              "F0073.40"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "visually counted native hand",
+        "evidence_ids": [
+          "F0073.40"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 4,
+        "supported_range": null,
+        "count_method": "Count distinct visible card backs in native top crop",
+        "basis": "direct fan observation",
+        "evidence_ids": [
+          "F0073.40"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Poke Ball",
+              "reveal_position": 1,
+              "source_video": "20261010_020908000_iOS.MP4",
+              "timestamp_seconds": 73,
+              "evidence_ids": [
+                "F0073.00"
+              ],
+              "basis": "visible reveal/hand",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 4,
+          "hand_count_after": 5,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 73,
+          "evidence_ids": [
+            "F0073.00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poke Ball",
+          "linked_play_order": 3,
+          "cards_in_reveal_order": [
+            {
+              "name": "Horsea",
+              "reveal_position": 1,
+              "source_video": "20261010_020908000_iOS.MP4",
+              "timestamp_seconds": 84,
+              "evidence_ids": [
+                "F0084.00"
+              ],
+              "basis": "visible reveal/hand",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 2,
+          "hand_count_after": 3,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 84,
+          "evidence_ids": [
+            "F0084.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Team Rocket's Koffing",
+          "target": "Bench position 1",
+          "energy": null,
+          "result": "Benched.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 4,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 75,
+          "evidence_ids": [
+            "F0075.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Team Rocket's Koffing",
+          "target": "Bench position 2",
+          "energy": null,
+          "result": "Benched.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 3,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 80,
+          "evidence_ids": [
+            "F0080.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "card_play",
+          "card_name": "Poke Ball",
+          "target": null,
+          "energy": null,
+          "result": "Finds Horsea.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            "Horsea revealed and added to hand"
+          ],
+          "hand_count_after": 3,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 82,
+          "evidence_ids": [
+            "F0082.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "card_play",
+          "card_name": "Horsea",
+          "target": "Bench position 3",
+          "energy": null,
+          "result": "Benched.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 2,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 86,
+          "evidence_ids": [
+            "F0086.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "card_play",
+          "card_name": "Soothing Shore",
+          "target": "Stadium",
+          "energy": null,
+          "result": "Soothing Shore enters play.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 1,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 90,
+          "evidence_ids": [
+            "F0090.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 6,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Active Horsea",
+          "energy": {
+            "type": "Water",
+            "count": 1,
+            "destination": "Active Horsea",
+            "retreat_payment_by_type": null
+          },
+          "result": "1 Water attached.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 1,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 93,
+          "evidence_ids": [
+            "F0093.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 7,
+          "kind": "attack",
+          "card_name": "Horsea",
+          "target": "Nihilego",
+          "energy": null,
+          "result": "Hook deals 30, Nihilego 70 to 40.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 1,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 98,
+          "evidence_ids": [
+            "F0098.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "event": "Soothing Shore",
+          "timestamp_seconds": 102,
+          "result": "Heals owner Active Horsea 40 to 50, capped at maximum; printed stadium heals 20 to Water-attached Pokemon."
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 2,
+        "phase": "resolved board boundary",
+        "stadium": "none",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": "Hook 30 / 50 HP",
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 50,
+            "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+            "damage": 10,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0070.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": null,
+              "available": null
+            },
+            "basis": "Visible large current orb and small next orb; future count is not displayed.",
+            "evidence_ids": [],
+            "limit_reason": "Next type visible; next count/availability not displayed."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0070.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Nihilego",
+            "variant": "More Poison / New Wave / 70 HP",
+            "bench_position": null,
+            "hp_now": 70,
+            "hp_max": 70,
+            "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Deceptive Needle",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0070.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Magmar",
+              "variant": "Derisive Roasting 10+ / 70 HP",
+              "bench_position": 3,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0070.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Darkness",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Darkness",
+              "count": null,
+              "available": null
+            },
+            "basis": "Visible large current orb and small next orb; future count is not displayed.",
+            "evidence_ids": [
+              "F0070.00"
+            ],
+            "limit_reason": "Next type visible; next count/availability not displayed."
+          },
+          "points": 0,
+          "board_effects": [
+            {
+              "name": "More Poison",
+              "source": "Nihilego",
+              "affected_player": "owner",
+              "restriction_or_mark": "Owner Active takes10 additional damage from Poisoned while ability is in effect.",
+              "expiry": "while Nihilego remains in play",
+              "basis": "visible printed ability"
+            }
+          ],
+          "evidence_ids": [
+            "F0070.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0073.40"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 2,
+        "phase": "resolved board boundary",
+        "stadium": "Soothing Shore",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": "Hook 30 / 50 HP",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0104.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": "Reverse Thrust 10 / 60 HP",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0104.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": "Reverse Thrust 10 / 60 HP",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0104.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Horsea",
+              "variant": "Hook 30 / 50 HP",
+              "bench_position": 3,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0104.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": null,
+              "available": null
+            },
+            "basis": "Visible large current orb and small next orb; future count is not displayed.",
+            "evidence_ids": [
+              "F0104.00"
+            ],
+            "limit_reason": "Next type visible; next count/availability not displayed."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0104.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Nihilego",
+            "variant": "More Poison / New Wave / 70 HP",
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 70,
+            "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+            "damage": 30,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Deceptive Needle",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0104.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Magmar",
+              "variant": "Derisive Roasting 10+ / 70 HP",
+              "bench_position": 3,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0104.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Darkness",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Darkness",
+              "count": null,
+              "available": null
+            },
+            "basis": "Visible large current orb and small next orb; future count is not displayed.",
+            "evidence_ids": [
+              "F0104.00"
+            ],
+            "limit_reason": "Next type visible; next count/availability not displayed."
+          },
+          "points": 0,
+          "board_effects": [
+            {
+              "name": "More Poison",
+              "source": "Nihilego",
+              "affected_player": "owner",
+              "restriction_or_mark": "Owner Active takes10 additional damage from Poisoned while ability is in effect.",
+              "expiry": "while Nihilego remains in play",
+              "basis": "visible printed ability"
+            }
+          ],
+          "evidence_ids": [
+            "F0104.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0104.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Team Rocket's Weezing ex",
+            "variant": null,
+            "basis": "visible native hand/reveal",
+            "evidence_ids": [
+              "F0104.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 1,
+        "basis": "visually counted native hand",
+        "evidence_ids": [
+          "F0104.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_before_end_hand_count": 1,
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "F0071.00",
+        "F0075.00",
+        "F0080.00",
+        "F0082.00",
+        "F0086.00",
+        "F0090.00",
+        "F0093.00",
+        "F0098.00",
+        "F0106.00"
+      ],
+      "limits": [
+        "Opponent hidden draws retain unknown identities.",
+        "No opened discard pile in this turn."
+      ],
+      "hand_reconciliation": "4 after setup +1 normal draw -2 benched Koffing -1 Poke Ball +1 searched Horsea -1 bench Horsea -1 Stadium =1 ending card"
+    },
+    {
+      "turn_number": 3,
+      "who_played": "opponent",
+      "source_video": "20261010_020908000_iOS.MP4",
+      "timing": {
+        "start_seconds": 106,
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 112,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": 169
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "card-back fan only",
+        "evidence_ids": [
+          "F0106.00"
+        ],
+        "status": "hidden",
+        "limit_reason": "Opponent card identities are face down."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": [],
+        "status": "not_applicable",
+        "limit_reason": "Opponent turn; owner hand captured at adjacent boundaries."
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "count_method": "Count distinct visible card backs in native top crop",
+        "basis": "not applicable on opponent turn",
+        "evidence_ids": [
+          "F0106.00"
+        ],
+        "limit_reason": "Opponent turn"
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261010_020908000_iOS.MP4",
+              "timestamp_seconds": 108,
+              "evidence_ids": [
+                "F0108.00"
+              ],
+              "basis": "visible reveal/hand",
+              "limit_reason": "Opponent reveal remains face down."
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 108,
+          "evidence_ids": [
+            "F0108.00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "search",
+          "caused_by": "Poke Ball",
+          "linked_play_order": 1,
+          "cards_in_reveal_order": [
+            {
+              "name": "Team Rocket's Koffing",
+              "reveal_position": 1,
+              "source_video": "20261010_020908000_iOS.MP4",
+              "timestamp_seconds": 126,
+              "evidence_ids": [
+                "F0126.00"
+              ],
+              "basis": "visible reveal/hand",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 126,
+          "evidence_ids": [
+            "F0126.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Poke Ball",
+          "target": null,
+          "energy": null,
+          "result": "Search finds Team Rocket's Koffing.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 112,
+          "evidence_ids": [
+            "F0112.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Team Rocket's Koffing",
+          "target": "Bench position 2",
+          "energy": null,
+          "result": "Benched.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 138,
+          "evidence_ids": [
+            "F0138.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Team Rocket's Magmar",
+          "energy": {
+            "type": "Darkness",
+            "count": 1,
+            "destination": "Bench Team Rocket's Magmar",
+            "retreat_payment_by_type": null
+          },
+          "result": "1 Darkness attached to benched Magmar.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 152,
+          "evidence_ids": [
+            "F0152.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": "Attachment is bracketed by pre/post board states around 148-152s; action timestamp approximate."
+        },
+        {
+          "order": 4,
+          "kind": "card_play",
+          "card_name": "Hiking Trail",
+          "target": "Stadium",
+          "energy": null,
+          "result": "Replaces Soothing Shore.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 154,
+          "evidence_ids": [
+            "F0154.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "energy": null,
+          "result": "Ends without attack.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 162,
+          "evidence_ids": [
+            "F0162.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "event": "Hiking Trail",
+          "timestamp_seconds": 162,
+          "result": "Opponent fan remains three; no hidden card names established."
+        },
+        {
+          "event": "Deceptive Needle",
+          "timestamp_seconds": 167,
+          "result": "Horsea 50 to 40 HP."
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 3,
+        "phase": "resolved board boundary",
+        "stadium": "Soothing Shore",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": "Hook 30 / 50 HP",
+            "bench_position": null,
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0104.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": "Reverse Thrust 10 / 60 HP",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0104.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": "Reverse Thrust 10 / 60 HP",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0104.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Horsea",
+              "variant": "Hook 30 / 50 HP",
+              "bench_position": 3,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0104.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": null,
+              "available": null
+            },
+            "basis": "Visible large current orb and small next orb; future count is not displayed.",
+            "evidence_ids": [
+              "F0104.00"
+            ],
+            "limit_reason": "Next type visible; next count/availability not displayed."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0104.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Nihilego",
+            "variant": "More Poison / New Wave / 70 HP",
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 70,
+            "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+            "damage": 30,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Deceptive Needle",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0104.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Magmar",
+              "variant": "Derisive Roasting 10+ / 70 HP",
+              "bench_position": 3,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0104.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Darkness",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Darkness",
+              "count": null,
+              "available": null
+            },
+            "basis": "Visible large current orb and small next orb; future count is not displayed.",
+            "evidence_ids": [],
+            "limit_reason": "Next type visible; next count/availability not displayed."
+          },
+          "points": 0,
+          "board_effects": [
+            {
+              "name": "More Poison",
+              "source": "Nihilego",
+              "affected_player": "owner",
+              "restriction_or_mark": "Owner Active takes10 additional damage from Poisoned while ability is in effect.",
+              "expiry": "while Nihilego remains in play",
+              "basis": "visible printed ability"
+            }
+          ],
+          "evidence_ids": [
+            "F0104.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0104.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 3,
+        "phase": "resolved board boundary",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": "Hook 30 / 50 HP",
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 50,
+            "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+            "damage": 10,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0168.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": "Reverse Thrust 10 / 60 HP",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0168.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": "Reverse Thrust 10 / 60 HP",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0168.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Horsea",
+              "variant": "Hook 30 / 50 HP",
+              "bench_position": 3,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0168.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": null,
+              "available": null
+            },
+            "basis": "Visible large current orb and small next orb; future count is not displayed.",
+            "evidence_ids": [
+              "F0168.00"
+            ],
+            "limit_reason": "Next type visible; next count/availability not displayed."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0168.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Nihilego",
+            "variant": "More Poison / New Wave / 70 HP",
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 70,
+            "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+            "damage": 30,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Deceptive Needle",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0168.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": "Reverse Thrust 10 / 60 HP",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0168.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket's Magmar",
+              "variant": "Derisive Roasting 10+ / 70 HP",
+              "bench_position": 3,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Darkness": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0168.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Darkness",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Darkness",
+              "count": null,
+              "available": null
+            },
+            "basis": "Visible large current orb and small next orb; future count is not displayed.",
+            "evidence_ids": [
+              "F0168.00"
+            ],
+            "limit_reason": "Next type visible; next count/availability not displayed."
+          },
+          "points": 0,
+          "board_effects": [
+            {
+              "name": "More Poison",
+              "source": "Nihilego",
+              "affected_player": "owner",
+              "restriction_or_mark": "Owner Active takes10 additional damage from Poisoned while ability is in effect.",
+              "expiry": "while Nihilego remains in play",
+              "basis": "visible printed ability"
+            }
+          ],
+          "evidence_ids": [
+            "F0168.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0168.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": [],
+        "status": "not_applicable",
+        "limit_reason": "Opponent turn; owner hand captured at adjacent boundaries."
+      },
+      "owner_before_end_hand_count": null,
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "F0106.00",
+        "F0112.00",
+        "F0138.00",
+        "F0152.00",
+        "F0154.00",
+        "F0162.00",
+        "F0169.00"
+      ],
+      "limits": [
+        "Opponent hidden draws retain unknown identities.",
+        "No opened discard pile in this turn."
+      ]
+    },
+    {
+      "turn_number": 4,
+      "who_played": "owner",
+      "source_video": "20261010_020908000_iOS.MP4",
+      "timing": {
+        "start_seconds": 169,
+        "draw_animation_end_seconds": 173.8,
+        "first_voluntary_move_seconds": 178,
+        "before_end_action_seconds": 196,
+        "end_after_resolution_seconds": 214
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Team Rocket's Weezing ex",
+            "variant": null,
+            "basis": "visible native hand/reveal",
+            "evidence_ids": [
+              "F0174.80"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Seadra",
+            "variant": null,
+            "basis": "visible native hand/reveal",
+            "evidence_ids": [
+              "F0174.80"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 2,
+        "basis": "visually counted native hand",
+        "evidence_ids": [
+          "F0174.80"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Team Rocket's Weezing ex",
+            "variant": null,
+            "basis": "visible native hand/reveal",
+            "evidence_ids": [
+              "F0174.80"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Seadra",
+            "variant": null,
+            "basis": "visible native hand/reveal",
+            "evidence_ids": [
+              "F0174.80"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 2,
+        "basis": "visually counted native hand",
+        "evidence_ids": [
+          "F0174.80"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 3,
+        "supported_range": null,
+        "count_method": "Count distinct visible card backs in native top crop",
+        "basis": "direct fan observation",
+        "evidence_ids": [
+          "F0174.80"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Seadra",
+              "reveal_position": 1,
+              "source_video": "20261010_020908000_iOS.MP4",
+              "timestamp_seconds": 172.7,
+              "evidence_ids": [
+                "F0172.70"
+              ],
+              "basis": "visible reveal/hand",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 1,
+          "hand_count_after": 2,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 172.7,
+          "evidence_ids": [
+            "F0172.70"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "stadium_draw",
+          "caused_by": "Hiking Trail",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Poke Ball",
+              "reveal_position": 1,
+              "source_video": "20261010_020908000_iOS.MP4",
+              "timestamp_seconds": 200,
+              "evidence_ids": [
+                "F0200.00"
+              ],
+              "basis": "visible reveal/hand",
+              "limit_reason": null
+            },
+            {
+              "name": "Hiking Trail",
+              "reveal_position": 2,
+              "source_video": "20261010_020908000_iOS.MP4",
+              "timestamp_seconds": 201,
+              "evidence_ids": [
+                "F0201.00"
+              ],
+              "basis": "visible reveal/hand",
+              "limit_reason": null
+            },
+            {
+              "name": "Rare Candy",
+              "reveal_position": 3,
+              "source_video": "20261010_020908000_iOS.MP4",
+              "timestamp_seconds": 202,
+              "evidence_ids": [
+                "F0202.00"
+              ],
+              "basis": "visible reveal/hand",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 0,
+          "hand_count_after": 3,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 200,
+          "evidence_ids": [
+            "F0200.00",
+            "F0201.00",
+            "F0202.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "evolution",
+          "card_name": "Seadra",
+          "target": "Active Horsea",
+          "energy": null,
+          "result": "Evolves; inherited 10 damage gives 60/70 HP.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 1,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 178,
+          "evidence_ids": [
+            "F0178.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "evolution",
+          "card_name": "Team Rocket's Weezing ex",
+          "target": "Bench position 1 Koffing",
+          "energy": null,
+          "result": "Evolves into Weezing ex, 140 HP.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 0,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 182,
+          "evidence_ids": [
+            "F0182.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "prompt_response",
+          "card_name": null,
+          "target": "Boiler Smog",
+          "energy": null,
+          "result": "Accepts effect.",
+          "prompt_text": "Use the effect of Boiler Smog!",
+          "response": "Yes",
+          "nested_events_in_order": [
+            "Nihilego becomes Poisoned and Burned"
+          ],
+          "hand_count_after": 0,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 187,
+          "evidence_ids": [
+            "F0187.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Active Seadra",
+          "energy": {
+            "type": "Water",
+            "count": 1,
+            "destination": "Active Seadra",
+            "retreat_payment_by_type": null
+          },
+          "result": "Second Water attached.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 0,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 195,
+          "evidence_ids": [
+            "F0195.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "end_turn",
+          "card_name": null,
+          "target": null,
+          "energy": null,
+          "result": "Ends with no attack and no hand cards before automatic draw.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 0,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 197,
+          "evidence_ids": [
+            "F0197.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "event": "Hiking Trail",
+          "timestamp_seconds": 198,
+          "result": "Draws to three: Poke Ball, Hiking Trail, Rare Candy, separately revealed in that order."
+        },
+        {
+          "event": "Pokemon Checkup",
+          "timestamp_seconds": 204,
+          "result": "Poison and Burn total 30 damage, Nihilego 40 to 10 HP."
+        },
+        {
+          "event": "Burn coin",
+          "timestamp_seconds": 210,
+          "result": "Heads; Nihilego recovers from Burned, remains Poisoned."
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 4,
+        "phase": "resolved board boundary",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Horsea",
+            "variant": "Hook 30 / 50 HP",
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 50,
+            "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+            "damage": 10,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0168.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": "Reverse Thrust 10 / 60 HP",
+              "bench_position": 1,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0168.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": "Reverse Thrust 10 / 60 HP",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0168.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Horsea",
+              "variant": "Hook 30 / 50 HP",
+              "bench_position": 3,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0168.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": null,
+              "available": null
+            },
+            "basis": "Visible large current orb and small next orb; future count is not displayed.",
+            "evidence_ids": [],
+            "limit_reason": "Next type visible; next count/availability not displayed."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0168.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Nihilego",
+            "variant": "More Poison / New Wave / 70 HP",
+            "bench_position": null,
+            "hp_now": 40,
+            "hp_max": 70,
+            "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+            "damage": 30,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Deceptive Needle",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0168.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": "Reverse Thrust 10 / 60 HP",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0168.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket's Magmar",
+              "variant": "Derisive Roasting 10+ / 70 HP",
+              "bench_position": 3,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Darkness": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0168.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Darkness",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Darkness",
+              "count": null,
+              "available": null
+            },
+            "basis": "Visible large current orb and small next orb; future count is not displayed.",
+            "evidence_ids": [
+              "F0168.00"
+            ],
+            "limit_reason": "Next type visible; next count/availability not displayed."
+          },
+          "points": 0,
+          "board_effects": [
+            {
+              "name": "More Poison",
+              "source": "Nihilego",
+              "affected_player": "owner",
+              "restriction_or_mark": "Owner Active takes10 additional damage from Poisoned while ability is in effect.",
+              "expiry": "while Nihilego remains in play",
+              "basis": "visible printed ability"
+            }
+          ],
+          "evidence_ids": [
+            "F0168.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0168.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 4,
+        "phase": "resolved board boundary",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Seadra",
+            "variant": "Water Arrow 50 / 70 HP",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 70,
+            "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+            "damage": 10,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0214.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Weezing ex",
+              "variant": "Boiler Smog / Confusion Gas 60 / 140 HP",
+              "bench_position": 1,
+              "hp_now": 140,
+              "hp_max": 140,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0214.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": "Reverse Thrust 10 / 60 HP",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0214.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Horsea",
+              "variant": "Hook 30 / 50 HP",
+              "bench_position": 3,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0214.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": null,
+              "available": null
+            },
+            "basis": "Visible large current orb and small next orb; future count is not displayed.",
+            "evidence_ids": [
+              "F0214.00"
+            ],
+            "limit_reason": "Next type visible; next count/availability not displayed."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0214.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Nihilego",
+            "variant": "More Poison / New Wave / 70 HP",
+            "bench_position": null,
+            "hp_now": 10,
+            "hp_max": 70,
+            "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+            "damage": 60,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Deceptive Needle",
+            "special_conditions": [
+              "Poisoned"
+            ],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0214.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": "Reverse Thrust 10 / 60 HP",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0214.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket's Magmar",
+              "variant": "Derisive Roasting 10+ / 70 HP",
+              "bench_position": 3,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Darkness": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0214.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Darkness",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Darkness",
+              "count": null,
+              "available": null
+            },
+            "basis": "Visible large current orb and small next orb; future count is not displayed.",
+            "evidence_ids": [
+              "F0214.00"
+            ],
+            "limit_reason": "Next type visible; next count/availability not displayed."
+          },
+          "points": 0,
+          "board_effects": [
+            {
+              "name": "More Poison",
+              "source": "Nihilego",
+              "affected_player": "owner",
+              "restriction_or_mark": "Owner Active takes10 additional damage from Poisoned while ability is in effect.",
+              "expiry": "while Nihilego remains in play",
+              "basis": "visible printed ability"
+            }
+          ],
+          "evidence_ids": [
+            "F0214.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0214.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Poke Ball",
+            "variant": null,
+            "basis": "visible native hand/reveal",
+            "evidence_ids": [
+              "F0214.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Hiking Trail",
+            "variant": null,
+            "basis": "visible native hand/reveal",
+            "evidence_ids": [
+              "F0214.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "visible native hand/reveal",
+            "evidence_ids": [
+              "F0214.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "visually counted native hand",
+        "evidence_ids": [
+          "F0214.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_before_end_hand_count": 0,
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "F0169.00",
+        "F0178.00",
+        "F0182.00",
+        "F0187.00",
+        "F0195.00",
+        "F0197.00",
+        "F0214.00"
+      ],
+      "limits": [
+        "Opponent hidden draws retain unknown identities.",
+        "No opened discard pile in this turn."
+      ],
+      "hand_reconciliation": "1+1 normal Seadra -1 Seadra evolution -1 Weezing evolution =0 before End Turn; Hiking Trail adds3 to end at3"
+    },
+    {
+      "turn_number": 5,
+      "who_played": "opponent",
+      "source_video": "20261010_020908000_iOS.MP4",
+      "timing": {
+        "start_seconds": 214,
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 216,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": 252
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "card-back fan only",
+        "evidence_ids": [
+          "F0214.00"
+        ],
+        "status": "hidden",
+        "limit_reason": "Opponent card identities are face down."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": [],
+        "status": "not_applicable",
+        "limit_reason": "Opponent turn; owner hand captured at adjacent boundaries."
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "count_method": "Count distinct visible card backs in native top crop",
+        "basis": "not applicable on opponent turn",
+        "evidence_ids": [
+          "F0214.00"
+        ],
+        "limit_reason": "Opponent turn"
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261010_020908000_iOS.MP4",
+              "timestamp_seconds": 216,
+              "evidence_ids": [
+                "F0216.00"
+              ],
+              "basis": "visible reveal/hand",
+              "limit_reason": "Opponent reveal remains face down."
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 216,
+          "evidence_ids": [
+            "F0216.00"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "stadium_draw",
+          "caused_by": "Hiking Trail",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261010_020908000_iOS.MP4",
+              "timestamp_seconds": 250,
+              "evidence_ids": [
+                "F0250.00"
+              ],
+              "basis": "visible reveal/hand",
+              "limit_reason": "Opponent reveal remains face down."
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 250,
+          "evidence_ids": [
+            "F0250.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Leaf",
+          "target": "opponent retreat",
+          "energy": null,
+          "result": "Leaf used before retreat.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 216,
+          "evidence_ids": [
+            "F0216.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "retreat",
+          "card_name": null,
+          "target": "Nihilego to benched Magmar",
+          "energy": {
+            "type": null,
+            "count": 0,
+            "destination": null,
+            "retreat_payment_by_type": {}
+          },
+          "result": "Nihilego retreats with zero attached Energy and zero Energy payment; poison clears on bench.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 218,
+          "evidence_ids": [
+            "F0218.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "card_play",
+          "card_name": "Team Rocket's Master Plan",
+          "target": "both Actives",
+          "energy": null,
+          "result": "Seadra Confused; tails also makes Magmar Confused.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 225,
+          "evidence_ids": [
+            "F0225.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "card_play",
+          "card_name": "Lum Berry",
+          "target": "Active Magmar",
+          "energy": null,
+          "result": "Tool attached.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 237,
+          "evidence_ids": [
+            "F0237.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 5,
+          "kind": "attack",
+          "card_name": "Team Rocket's Magmar",
+          "target": "Seadra",
+          "energy": null,
+          "result": "Derisive Roasting attempted; confusion coin tails; The attack did nothing.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 240,
+          "evidence_ids": [
+            "F0240.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "event": "Lum Berry",
+          "timestamp_seconds": 245,
+          "result": "Clears Magmar Confusion and is discarded; Seadra remains Confused."
+        },
+        {
+          "event": "Hiking Trail",
+          "timestamp_seconds": 249,
+          "result": "Opponent fan refills from two to three, identity hidden; owner HP stays60."
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 5,
+        "phase": "resolved board boundary",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Seadra",
+            "variant": "Water Arrow 50 / 70 HP",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 70,
+            "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+            "damage": 10,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0214.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Weezing ex",
+              "variant": "Boiler Smog / Confusion Gas 60 / 140 HP",
+              "bench_position": 1,
+              "hp_now": 140,
+              "hp_max": 140,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0214.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": "Reverse Thrust 10 / 60 HP",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0214.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Horsea",
+              "variant": "Hook 30 / 50 HP",
+              "bench_position": 3,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0214.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": null,
+              "available": null
+            },
+            "basis": "Visible large current orb and small next orb; future count is not displayed.",
+            "evidence_ids": [
+              "F0214.00"
+            ],
+            "limit_reason": "Next type visible; next count/availability not displayed."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0214.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Nihilego",
+            "variant": "More Poison / New Wave / 70 HP",
+            "bench_position": null,
+            "hp_now": 10,
+            "hp_max": 70,
+            "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+            "damage": 60,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Deceptive Needle",
+            "special_conditions": [
+              "Poisoned"
+            ],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0214.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": "Reverse Thrust 10 / 60 HP",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0214.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket's Magmar",
+              "variant": "Derisive Roasting 10+ / 70 HP",
+              "bench_position": 3,
+              "hp_now": 70,
+              "hp_max": 70,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Darkness": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0214.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Darkness",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Darkness",
+              "count": null,
+              "available": null
+            },
+            "basis": "Visible large current orb and small next orb; future count is not displayed.",
+            "evidence_ids": [],
+            "limit_reason": "Next type visible; next count/availability not displayed."
+          },
+          "points": 0,
+          "board_effects": [
+            {
+              "name": "More Poison",
+              "source": "Nihilego",
+              "affected_player": "owner",
+              "restriction_or_mark": "Owner Active takes10 additional damage from Poisoned while ability is in effect.",
+              "expiry": "while Nihilego remains in play",
+              "basis": "visible printed ability"
+            }
+          ],
+          "evidence_ids": [
+            "F0214.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0214.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 5,
+        "phase": "resolved board boundary",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Seadra",
+            "variant": "Water Arrow 50 / 70 HP",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 70,
+            "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+            "damage": 10,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": "none",
+            "special_conditions": [
+              "Confused"
+            ],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0251.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Weezing ex",
+              "variant": "Boiler Smog / Confusion Gas 60 / 140 HP",
+              "bench_position": 1,
+              "hp_now": 140,
+              "hp_max": 140,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0251.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": "Reverse Thrust 10 / 60 HP",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0251.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Horsea",
+              "variant": "Hook 30 / 50 HP",
+              "bench_position": 3,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0251.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": null,
+              "available": null
+            },
+            "basis": "Visible large current orb and small next orb; future count is not displayed.",
+            "evidence_ids": [
+              "F0251.00"
+            ],
+            "limit_reason": "Next type visible; next count/availability not displayed."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0251.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Team Rocket's Magmar",
+            "variant": "Derisive Roasting 10+ / 70 HP",
+            "bench_position": null,
+            "hp_now": 70,
+            "hp_max": 70,
+            "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Darkness": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0251.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": "Reverse Thrust 10 / 60 HP",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0251.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Nihilego",
+              "variant": "More Poison / New Wave / 70 HP",
+              "bench_position": 3,
+              "hp_now": 10,
+              "hp_max": 70,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 60,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Deceptive Needle",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0251.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Darkness",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Darkness",
+              "count": null,
+              "available": null
+            },
+            "basis": "Visible large current orb and small next orb; future count is not displayed.",
+            "evidence_ids": [
+              "F0251.00"
+            ],
+            "limit_reason": "Next type visible; next count/availability not displayed."
+          },
+          "points": 0,
+          "board_effects": [
+            {
+              "name": "More Poison",
+              "source": "Nihilego",
+              "affected_player": "owner",
+              "restriction_or_mark": "Owner Active takes10 additional damage from Poisoned while ability is in effect.",
+              "expiry": "while Nihilego remains in play",
+              "basis": "visible printed ability"
+            }
+          ],
+          "evidence_ids": [
+            "F0251.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0251.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": [],
+        "status": "not_applicable",
+        "limit_reason": "Opponent turn; owner hand captured at adjacent boundaries."
+      },
+      "owner_before_end_hand_count": null,
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "F0214.00",
+        "F0216.00",
+        "F0218.00",
+        "F0225.00",
+        "F0237.00",
+        "F0240.00",
+        "F0252.00"
+      ],
+      "limits": [
+        "Opponent hidden draws retain unknown identities.",
+        "No opened discard pile in this turn."
+      ]
+    },
+    {
+      "turn_number": 6,
+      "who_played": "owner",
+      "source_video": "20261010_020908000_iOS.MP4",
+      "timing": {
+        "start_seconds": 252,
+        "draw_animation_end_seconds": 254.6,
+        "first_voluntary_move_seconds": 255.6,
+        "before_end_action_seconds": 270,
+        "end_after_resolution_seconds": 302
+      },
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Poke Ball",
+            "variant": null,
+            "basis": "visible native hand/reveal",
+            "evidence_ids": [
+              "F0255.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Hiking Trail",
+            "variant": null,
+            "basis": "visible native hand/reveal",
+            "evidence_ids": [
+              "F0255.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "visible native hand/reveal",
+            "evidence_ids": [
+              "F0255.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "visible native hand/reveal",
+            "evidence_ids": [
+              "F0255.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "visually counted native hand",
+        "evidence_ids": [
+          "F0255.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Poke Ball",
+            "variant": null,
+            "basis": "visible native hand/reveal",
+            "evidence_ids": [
+              "F0255.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Hiking Trail",
+            "variant": null,
+            "basis": "visible native hand/reveal",
+            "evidence_ids": [
+              "F0255.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "visible native hand/reveal",
+            "evidence_ids": [
+              "F0255.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Kingdra ex",
+            "variant": null,
+            "basis": "visible native hand/reveal",
+            "evidence_ids": [
+              "F0255.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "visually counted native hand",
+        "evidence_ids": [
+          "F0255.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": 3,
+        "supported_range": null,
+        "count_method": "Count distinct visible card backs in native top crop",
+        "basis": "direct fan observation",
+        "evidence_ids": [
+          "F0255.00"
+        ],
+        "limit_reason": null
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Kingdra ex",
+              "reveal_position": 1,
+              "source_video": "20261010_020908000_iOS.MP4",
+              "timestamp_seconds": 254.2,
+              "evidence_ids": [
+                "F0254.20"
+              ],
+              "basis": "visible reveal/hand",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 3,
+          "hand_count_after": 4,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 254.2,
+          "evidence_ids": [
+            "F0254.20"
+          ],
+          "limit_reason": null
+        },
+        {
+          "kind": "stadium_draw",
+          "caused_by": "Hiking Trail",
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": "Copycat",
+              "reveal_position": 1,
+              "source_video": "20261010_020908000_iOS.MP4",
+              "timestamp_seconds": 302,
+              "evidence_ids": [
+                "F0302.00"
+              ],
+              "basis": "visible reveal/hand",
+              "limit_reason": null
+            }
+          ],
+          "hand_count_before": 2,
+          "hand_count_after": 3,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 302,
+          "evidence_ids": [
+            "F0302.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Poke Ball",
+          "target": null,
+          "energy": null,
+          "result": "No effect: There are no cards in the deck that can be the target of the effect.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 3,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 255.6,
+          "evidence_ids": [
+            "F0255.60"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "evolution",
+          "card_name": "Kingdra ex",
+          "target": "Active Seadra",
+          "energy": null,
+          "result": "Evolves, inherited 10 damage gives160/170 HP; Confusion clears.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 2,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 262,
+          "evidence_ids": [
+            "F0262.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Bench position3 Horsea",
+          "energy": {
+            "type": "Water",
+            "count": 1,
+            "destination": "Bench position3 Horsea",
+            "retreat_payment_by_type": null
+          },
+          "result": "1 Water attached to Horsea; Kingdra retains2 Water.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": 2,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 269,
+          "evidence_ids": [
+            "F0269.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 4,
+          "kind": "attack",
+          "card_name": "Kingdra ex",
+          "target": "Active Magmar",
+          "energy": null,
+          "result": "Stormy Prison deals110 (90 printed plus20 Water weakness); Magmar knocked out; owner gains point1.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [
+            "Retreat-block text displayed on Magmar before KO",
+            "Opponent promotes Nihilego at298"
+          ],
+          "hand_count_after": 2,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 274,
+          "evidence_ids": [
+            "F0274.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "event": "KO",
+          "timestamp_seconds": 282,
+          "result": "Magmar and its Darkness Energy discarded; points1-0."
+        },
+        {
+          "event": "Replacement",
+          "timestamp_seconds": 298,
+          "result": "Nihilego promoted from bench3,10HP; Koffing remainsbench2."
+        },
+        {
+          "event": "Hiking Trail",
+          "timestamp_seconds": 300,
+          "result": "Owner draws Copycat from2 to3 cards."
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 6,
+        "phase": "resolved board boundary",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Seadra",
+            "variant": "Water Arrow 50 / 70 HP",
+            "bench_position": null,
+            "hp_now": 60,
+            "hp_max": 70,
+            "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+            "damage": 10,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": "none",
+            "special_conditions": [
+              "Confused"
+            ],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0251.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Weezing ex",
+              "variant": "Boiler Smog / Confusion Gas 60 / 140 HP",
+              "bench_position": 1,
+              "hp_now": 140,
+              "hp_max": 140,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0251.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": "Reverse Thrust 10 / 60 HP",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0251.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Horsea",
+              "variant": "Hook 30 / 50 HP",
+              "bench_position": 3,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0251.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Water",
+              "count": null,
+              "available": null
+            },
+            "basis": "Visible large current orb and small next orb; future count is not displayed.",
+            "evidence_ids": [],
+            "limit_reason": "Next type visible; next count/availability not displayed."
+          },
+          "points": 0,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0251.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Team Rocket's Magmar",
+            "variant": "Derisive Roasting 10+ / 70 HP",
+            "bench_position": null,
+            "hp_now": 70,
+            "hp_max": 70,
+            "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Darkness": 1
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0251.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": "Reverse Thrust 10 / 60 HP",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0251.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Nihilego",
+              "variant": "More Poison / New Wave / 70 HP",
+              "bench_position": 3,
+              "hp_now": 10,
+              "hp_max": 70,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 60,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "Deceptive Needle",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0251.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Darkness",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Darkness",
+              "count": null,
+              "available": null
+            },
+            "basis": "Visible large current orb and small next orb; future count is not displayed.",
+            "evidence_ids": [
+              "F0251.00"
+            ],
+            "limit_reason": "Next type visible; next count/availability not displayed."
+          },
+          "points": 0,
+          "board_effects": [
+            {
+              "name": "More Poison",
+              "source": "Nihilego",
+              "affected_player": "owner",
+              "restriction_or_mark": "Owner Active takes10 additional damage from Poisoned while ability is in effect.",
+              "expiry": "while Nihilego remains in play",
+              "basis": "visible printed ability"
+            }
+          ],
+          "evidence_ids": [
+            "F0251.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0251.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 6,
+        "phase": "resolved board boundary",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": "Stormy Prison 90 / 170 HP",
+            "bench_position": null,
+            "hp_now": 160,
+            "hp_max": 170,
+            "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+            "damage": 10,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0300.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Weezing ex",
+              "variant": "Boiler Smog / Confusion Gas 60 / 140 HP",
+              "bench_position": 1,
+              "hp_now": 140,
+              "hp_max": 140,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0300.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": "Reverse Thrust 10 / 60 HP",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0300.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Horsea",
+              "variant": "Hook 30 / 50 HP",
+              "bench_position": 3,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0300.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": null,
+              "available": null
+            },
+            "basis": "Visible large current orb and small next orb; future count is not displayed.",
+            "evidence_ids": [
+              "F0300.00"
+            ],
+            "limit_reason": "Next type visible; next count/availability not displayed."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0300.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Nihilego",
+            "variant": "More Poison / New Wave / 70 HP",
+            "bench_position": null,
+            "hp_now": 10,
+            "hp_max": 70,
+            "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+            "damage": 60,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Deceptive Needle",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0300.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": "Reverse Thrust 10 / 60 HP",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0300.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Darkness",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Darkness",
+              "count": null,
+              "available": null
+            },
+            "basis": "Visible large current orb and small next orb; future count is not displayed.",
+            "evidence_ids": [
+              "F0300.00"
+            ],
+            "limit_reason": "Next type visible; next count/availability not displayed."
+          },
+          "points": 0,
+          "board_effects": [
+            {
+              "name": "More Poison",
+              "source": "Nihilego",
+              "affected_player": "owner",
+              "restriction_or_mark": "Owner Active takes10 additional damage from Poisoned while ability is in effect.",
+              "expiry": "while Nihilego remains in play",
+              "basis": "visible printed ability"
+            }
+          ],
+          "evidence_ids": [
+            "F0300.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0300.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Hiking Trail",
+            "variant": null,
+            "basis": "visible native hand/reveal",
+            "evidence_ids": [
+              "F0302.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Rare Candy",
+            "variant": null,
+            "basis": "visible native hand/reveal",
+            "evidence_ids": [
+              "F0302.00"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Copycat",
+            "variant": null,
+            "basis": "visible native hand/reveal",
+            "evidence_ids": [
+              "F0302.00"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 3,
+        "basis": "visually counted native hand",
+        "evidence_ids": [
+          "F0302.00"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_before_end_hand_count": 2,
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "F0252.00",
+        "F0255.60",
+        "F0262.00",
+        "F0269.00",
+        "F0274.00",
+        "F0302.00"
+      ],
+      "limits": [
+        "Opponent hidden draws retain unknown identities.",
+        "No opened discard pile in this turn."
+      ],
+      "hand_reconciliation": "3+1 normal Kingdra -1 no-effect Poke Ball -1 Kingdra evolution =2 before attack; Hiking Trail adds Copycat to end at3"
+    },
+    {
+      "turn_number": 7,
+      "who_played": "opponent",
+      "source_video": "20261010_020908000_iOS.MP4",
+      "timing": {
+        "start_seconds": 302,
+        "draw_animation_end_seconds": null,
+        "first_voluntary_move_seconds": 304,
+        "before_end_action_seconds": null,
+        "end_after_resolution_seconds": 378
+      },
+      "hand_at_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": "card-back fan only",
+        "evidence_ids": [
+          "F0302.00"
+        ],
+        "status": "hidden",
+        "limit_reason": "Opponent card identities are face down."
+      },
+      "owner_hand_start": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": [],
+        "status": "not_applicable",
+        "limit_reason": "Opponent turn; owner hand captured at adjacent boundaries."
+      },
+      "opponent_hand_at_owner_turn_start": {
+        "count": null,
+        "supported_range": null,
+        "count_method": "Count distinct visible card backs in native top crop",
+        "basis": "not applicable on opponent turn",
+        "evidence_ids": [
+          "F0302.00"
+        ],
+        "limit_reason": "Opponent turn"
+      },
+      "draws_and_searches": [
+        {
+          "kind": "normal_draw",
+          "caused_by": null,
+          "linked_play_order": null,
+          "cards_in_reveal_order": [
+            {
+              "name": null,
+              "reveal_position": 1,
+              "source_video": "20261010_020908000_iOS.MP4",
+              "timestamp_seconds": 302,
+              "evidence_ids": [
+                "F0302.00"
+              ],
+              "basis": "visible reveal/hand",
+              "limit_reason": "Opponent reveal remains face down."
+            }
+          ],
+          "hand_count_before": null,
+          "hand_count_after": null,
+          "returned_or_discarded_cards": [],
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 302,
+          "evidence_ids": [
+            "F0302.00"
+          ],
+          "limit_reason": null
+        }
+      ],
+      "plays_in_order": [
+        {
+          "order": 1,
+          "kind": "card_play",
+          "card_name": "Poke Ball",
+          "target": null,
+          "energy": null,
+          "result": "No effect: There are no cards in the deck that can be the target of the effect.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 304,
+          "evidence_ids": [
+            "F0304.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 2,
+          "kind": "card_play",
+          "card_name": "Elegant Cape",
+          "target": "Bench position2 Koffing",
+          "energy": null,
+          "result": "Tool attached; Basic Koffing remains60HP. Printed tool gives Stage1 +30HP.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 309.5,
+          "evidence_ids": [
+            "F0309.50"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        },
+        {
+          "order": 3,
+          "kind": "energy_attachment",
+          "card_name": null,
+          "target": "Bench position2 Koffing",
+          "energy": {
+            "type": "Darkness",
+            "count": 1,
+            "destination": "Bench position2 Koffing",
+            "retreat_payment_by_type": null
+          },
+          "result": "1 Darkness attached.",
+          "prompt_text": null,
+          "response": null,
+          "nested_events_in_order": [],
+          "hand_count_after": null,
+          "source_video": "20261010_020908000_iOS.MP4",
+          "timestamp_seconds": 315,
+          "evidence_ids": [
+            "F0315.00"
+          ],
+          "basis": "source observation",
+          "limit_reason": null
+        }
+      ],
+      "automatic_events_in_order": [
+        {
+          "event": "Connection timeout",
+          "timestamp_seconds": 378,
+          "result": "Error: Your opponent did not return within the allowed time."
+        },
+        {
+          "event": "Victory",
+          "timestamp_seconds": 382,
+          "result": "Dacz8976 Victory displayed; points before timeout1-0."
+        }
+      ],
+      "board_at_start": {
+        "turn_number_displayed": 7,
+        "phase": "resolved board boundary",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": "Stormy Prison 90 / 170 HP",
+            "bench_position": null,
+            "hp_now": 160,
+            "hp_max": 170,
+            "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+            "damage": 10,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0300.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Weezing ex",
+              "variant": "Boiler Smog / Confusion Gas 60 / 140 HP",
+              "bench_position": 1,
+              "hp_now": 140,
+              "hp_max": 140,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0300.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": "Reverse Thrust 10 / 60 HP",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0300.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Horsea",
+              "variant": "Hook 30 / 50 HP",
+              "bench_position": 3,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0300.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": null,
+              "available": null
+            },
+            "basis": "Visible large current orb and small next orb; future count is not displayed.",
+            "evidence_ids": [
+              "F0300.00"
+            ],
+            "limit_reason": "Next type visible; next count/availability not displayed."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0300.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Nihilego",
+            "variant": "More Poison / New Wave / 70 HP",
+            "bench_position": null,
+            "hp_now": 10,
+            "hp_max": 70,
+            "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+            "damage": 60,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Deceptive Needle",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0300.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": "Reverse Thrust 10 / 60 HP",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0300.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Darkness",
+              "count": 1,
+              "available": true
+            },
+            "next": {
+              "type": "Darkness",
+              "count": null,
+              "available": null
+            },
+            "basis": "Visible large current orb and small next orb; future count is not displayed.",
+            "evidence_ids": [],
+            "limit_reason": "Next type visible; next count/availability not displayed."
+          },
+          "points": 0,
+          "board_effects": [
+            {
+              "name": "More Poison",
+              "source": "Nihilego",
+              "affected_player": "owner",
+              "restriction_or_mark": "Owner Active takes10 additional damage from Poisoned while ability is in effect.",
+              "expiry": "while Nihilego remains in play",
+              "basis": "visible printed ability"
+            }
+          ],
+          "evidence_ids": [
+            "F0300.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0300.00"
+        ]
+      },
+      "board_after": {
+        "turn_number_displayed": 7,
+        "phase": "resolved board boundary",
+        "stadium": "Hiking Trail",
+        "owner": {
+          "active": {
+            "name": "Kingdra ex",
+            "variant": "Stormy Prison 90 / 170 HP",
+            "bench_position": null,
+            "hp_now": 160,
+            "hp_max": 170,
+            "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+            "damage": 10,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              }
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0376.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Weezing ex",
+              "variant": "Boiler Smog / Confusion Gas 60 / 140 HP",
+              "bench_position": 1,
+              "hp_now": 140,
+              "hp_max": 140,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0376.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": "Reverse Thrust 10 / 60 HP",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 0,
+                "by_type": {}
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0376.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            },
+            {
+              "name": "Horsea",
+              "variant": "Hook 30 / 50 HP",
+              "bench_position": 3,
+              "hp_now": 50,
+              "hp_max": 50,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Water": 1
+                }
+              },
+              "tool": "none",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0376.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Water",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Water",
+              "count": null,
+              "available": null
+            },
+            "basis": "Visible large current orb and small next orb; future count is not displayed.",
+            "evidence_ids": [
+              "F0376.00"
+            ],
+            "limit_reason": "Next type visible; next count/availability not displayed."
+          },
+          "points": 1,
+          "board_effects": [],
+          "evidence_ids": [
+            "F0376.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "opponent": {
+          "active": {
+            "name": "Nihilego",
+            "variant": "More Poison / New Wave / 70 HP",
+            "bench_position": null,
+            "hp_now": 10,
+            "hp_max": 70,
+            "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+            "damage": 60,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {}
+            },
+            "tool": "Deceptive Needle",
+            "special_conditions": [],
+            "active_effects": [],
+            "evidence_ids": [
+              "F0376.00"
+            ],
+            "status": "observed",
+            "limit_reason": null
+          },
+          "bench_in_position_order": [
+            {
+              "name": "Team Rocket's Koffing",
+              "variant": "Reverse Thrust 10 / 60 HP",
+              "bench_position": 2,
+              "hp_now": 60,
+              "hp_max": 60,
+              "hp_max_basis": "visible printed HP; no applicable HP modifier shown",
+              "damage": 0,
+              "attached_energy": {
+                "total": 1,
+                "by_type": {
+                  "Darkness": 1
+                }
+              },
+              "tool": "Elegant Cape",
+              "special_conditions": [],
+              "active_effects": [],
+              "evidence_ids": [
+                "F0376.00"
+              ],
+              "status": "observed",
+              "limit_reason": null
+            }
+          ],
+          "energy_zone": {
+            "this_turn": {
+              "type": "Darkness",
+              "count": 0,
+              "available": false
+            },
+            "next": {
+              "type": "Darkness",
+              "count": null,
+              "available": null
+            },
+            "basis": "Visible large current orb and small next orb; future count is not displayed.",
+            "evidence_ids": [
+              "F0376.00"
+            ],
+            "limit_reason": "Next type visible; next count/availability not displayed."
+          },
+          "points": 0,
+          "board_effects": [
+            {
+              "name": "More Poison",
+              "source": "Nihilego",
+              "affected_player": "owner",
+              "restriction_or_mark": "Owner Active takes10 additional damage from Poisoned while ability is in effect.",
+              "expiry": "while Nihilego remains in play",
+              "basis": "visible printed ability"
+            }
+          ],
+          "evidence_ids": [
+            "F0376.00"
+          ],
+          "status": "observed",
+          "limit_reason": null
+        },
+        "shared_effects": [],
+        "evidence_ids": [
+          "F0376.00"
+        ]
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": null,
+        "count": null,
+        "basis": null,
+        "evidence_ids": [],
+        "status": "not_applicable",
+        "limit_reason": "Opponent turn; owner hand captured at adjacent boundaries."
+      },
+      "owner_before_end_hand_count": null,
+      "discard_snapshot_ids": [],
+      "turn_evidence_ids": [
+        "F0302.00",
+        "F0304.00",
+        "F0309.50",
+        "F0315.00",
+        "F0378.00"
+      ],
+      "limits": [
+        "Opponent hidden draws retain unknown identities.",
+        "No opened discard pile in this turn.",
+        "Terminal timeout occurs within turn7; no normal end-of-turn resolution."
+      ]
+    }
+  ],
+  "limits": [
+    "No opened discard pile appears anywhere in this source; visible top discard cards and play history do not establish a full pile.",
+    "Opponent hand identities and hidden draw/search results remain unknown except publicly revealed Koffing.",
+    "Draw-end times are visual approximations; frame requested seek times are preserved, actual decoder frame PTS was not separately measured.",
+    "Opponent connection intent and actual disconnect cause are not established.",
+    "QR and live log use semantic card variants; artwork/rarity exact printings are not established."
+  ]
+}

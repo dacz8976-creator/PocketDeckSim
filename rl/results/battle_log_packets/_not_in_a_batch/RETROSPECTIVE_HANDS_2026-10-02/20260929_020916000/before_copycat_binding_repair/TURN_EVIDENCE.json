@@ -1,0 +1,4209 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20260929_020916000",
+  "sources": [
+    {
+      "video_basename": "20260929_020916000_iOS.MP4",
+      "sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "source_json": "SOURCE_REFERENCE.json"
+    }
+  ],
+  "default_capture_policy": {
+    "owner_turn_offsets_after_draw_seconds": [
+      1,
+      3,
+      6
+    ],
+    "before_end_action_required": true,
+    "native_resolution_required": true,
+    "bottom_crop_height_fraction": 0.2,
+    "top_crop": "0,0,1170,550 retained,includes clock/fan/EnergyZone",
+    "fixed_grid_is_turn_start_evidence": false,
+    "discard_target_every_owner_turns": [
+      2,
+      3
+    ]
+  },
+  "frames": [
+    {
+      "evidence_id": "F0022.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 22.0,
+      "actual_frame_seconds_if_measured": 22.005,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0022.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0022.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0022.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0022.00.txt",
+      "role": "setup",
+      "turn_number": 0,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Board/Zone/sequence candidate; see turn ledger and exact limits"
+      ]
+    },
+    {
+      "evidence_id": "F0034.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 34.0,
+      "actual_frame_seconds_if_measured": 34.005,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0034.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0034.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0034.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0034.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 1,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Board/Zone/sequence candidate; see turn ledger and exact limits"
+      ]
+    },
+    {
+      "evidence_id": "F0035.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 35.0,
+      "actual_frame_seconds_if_measured": 35.005,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0035.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0035.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0035.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0035.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 1,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn1 normal draw/search"
+      ]
+    },
+    {
+      "evidence_id": "F0036.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 36.0,
+      "actual_frame_seconds_if_measured": 36.0217,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0036.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0036.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0036.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0036.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 1,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn1 action1: tool Giant Cape",
+        "Turn1 scheduled offset1 candidate, inspected even if post-play"
+      ]
+    },
+    {
+      "evidence_id": "F0038.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 38.0,
+      "actual_frame_seconds_if_measured": 38.005,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0038.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0038.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0038.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0038.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 1,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn1 action1: tool Giant Cape",
+        "Turn1 scheduled offset3 candidate, inspected even if post-play"
+      ]
+    },
+    {
+      "evidence_id": "F0041.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 41.0,
+      "actual_frame_seconds_if_measured": 41.005,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0041.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0041.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0041.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0041.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 1,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn1 action1: tool Giant Cape",
+        "Turn1 scheduled offset6 candidate, inspected even if post-play"
+      ]
+    },
+    {
+      "evidence_id": "F0051.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 51.0,
+      "actual_frame_seconds_if_measured": 51.0233,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0051.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0051.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0051.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0051.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 1,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn1 action3: supporter Copycat"
+      ]
+    },
+    {
+      "evidence_id": "F0052.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 52.0,
+      "actual_frame_seconds_if_measured": 52.0067,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0052.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0052.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0052.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0052.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 1,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn1 action3: supporter Copycat",
+        "Turn1 supporter_refill draw/search"
+      ]
+    },
+    {
+      "evidence_id": "F0053.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 53.0,
+      "actual_frame_seconds_if_measured": 53.0067,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0053.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0053.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0053.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0053.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 1,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn1 action3: supporter Copycat",
+        "Turn1 supporter_refill draw/search"
+      ]
+    },
+    {
+      "evidence_id": "F0054.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 54.0,
+      "actual_frame_seconds_if_measured": 54.0083,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0054.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0054.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0054.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0054.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 1,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn1 action3: supporter Copycat",
+        "Turn1 supporter_refill draw/search"
+      ]
+    },
+    {
+      "evidence_id": "F0055.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 55.0,
+      "actual_frame_seconds_if_measured": 55.0083,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0055.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0055.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0055.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0055.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 1,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn1 action3: supporter Copycat",
+        "Turn1 supporter_refill draw/search"
+      ]
+    },
+    {
+      "evidence_id": "F0059.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 59.0,
+      "actual_frame_seconds_if_measured": 59.0083,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0059.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0059.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0059.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0059.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 1,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn1 action4: end_turn ",
+        "Turn1 ability draw/search"
+      ]
+    },
+    {
+      "evidence_id": "F0062.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 62.0,
+      "actual_frame_seconds_if_measured": 62.0083,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0062.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0062.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0062.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0062.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 1,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn1 hand after end/automatic events",
+        "Turn1 action4: end_turn ",
+        "Turn2 owner hand at start"
+      ]
+    },
+    {
+      "evidence_id": "F0064.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 64.0,
+      "actual_frame_seconds_if_measured": 64.0083,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0064.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0064.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0064.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0064.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 2,
+      "who_played": "opponent",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn2 normal draw/search"
+      ]
+    },
+    {
+      "evidence_id": "F0104.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 104.0,
+      "actual_frame_seconds_if_measured": 104.015,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0104.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0104.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0104.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0104.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 2,
+      "who_played": "opponent",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn2 action4: item Poké Ball",
+        "Turn2 action5: bench Team Rocket's Moltres ex",
+        "Turn2 search draw/search"
+      ]
+    },
+    {
+      "evidence_id": "F0114.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 114.0,
+      "actual_frame_seconds_if_measured": 114.015,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0114.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0114.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0114.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0114.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 2,
+      "who_played": "opponent",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn2 action6: bench Team Rocket's Moltres ex",
+        "Turn2 action7: bench Houndour",
+        "Turn2 action8: retreat Victini"
+      ]
+    },
+    {
+      "evidence_id": "F0132.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 132.0,
+      "actual_frame_seconds_if_measured": 132.0,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0132.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0132.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0132.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0132.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 2,
+      "who_played": "opponent",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn2 hand after end/automatic events",
+        "Turn2 action8: retreat Victini",
+        "Turn2 action9: energy_attach ",
+        "Turn2 action10: attack Heat Charged"
+      ]
+    },
+    {
+      "evidence_id": "F0138.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 138.0,
+      "actual_frame_seconds_if_measured": 138.002,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0138.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0138.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0138.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0138.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 3,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn3 normal draw/search"
+      ]
+    },
+    {
+      "evidence_id": "F0139.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 139.0,
+      "actual_frame_seconds_if_measured": 139.002,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0139.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0139.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0139.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0139.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 3,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn2 action1: tool Small Balloon",
+        "Turn2 action4: item Poké Ball",
+        "Turn2 action8: retreat Victini",
+        "Turn2 action10: attack Heat Charged",
+        "Turn3 owner hand at start"
+      ]
+    },
+    {
+      "evidence_id": "F0140.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 140.0,
+      "actual_frame_seconds_if_measured": 140.002,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0140.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0140.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0140.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0140.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 3,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn3 scheduled offset1 candidate, inspected even if post-play"
+      ]
+    },
+    {
+      "evidence_id": "F0142.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 142.0,
+      "actual_frame_seconds_if_measured": 142.002,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0142.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0142.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0142.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0142.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 3,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn3 scheduled offset3 candidate, inspected even if post-play"
+      ]
+    },
+    {
+      "evidence_id": "F0145.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 145.0,
+      "actual_frame_seconds_if_measured": 145.002,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0145.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0145.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0145.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0145.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 3,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn3 action1: stadium_effect Rainbow Cave",
+        "Turn3 scheduled offset6 candidate, inspected even if post-play"
+      ]
+    },
+    {
+      "evidence_id": "F0159.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 159.0,
+      "actual_frame_seconds_if_measured": 159.003,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0159.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0159.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0159.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0159.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 3,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn3 action3: item Flame Patch",
+        "Turn3 action4: energy_attach "
+      ]
+    },
+    {
+      "evidence_id": "F0167.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 167.0,
+      "actual_frame_seconds_if_measured": 167.005,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0167.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0167.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0167.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0167.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 3,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn3 action3: item Flame Patch",
+        "Turn3 action4: energy_attach ",
+        "Turn3 action5: attack Blazing Beatdown"
+      ]
+    },
+    {
+      "evidence_id": "F0170.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 170.0,
+      "actual_frame_seconds_if_measured": 170.005,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0170.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0170.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0170.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0170.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 3,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn3 hand after end/automatic events",
+        "Turn3 action4: energy_attach ",
+        "Turn3 action5: attack Blazing Beatdown",
+        "Turn3 ability draw/search",
+        "Turn4 owner hand at start"
+      ]
+    },
+    {
+      "evidence_id": "F0196.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 196.0,
+      "actual_frame_seconds_if_measured": 196.013,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0196.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0196.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0196.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0196.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 4,
+      "who_played": "opponent",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Board/Zone/sequence candidate; see turn ledger and exact limits"
+      ]
+    },
+    {
+      "evidence_id": "F0205.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 205.0,
+      "actual_frame_seconds_if_measured": 205.015,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0205.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0205.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0205.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0205.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 4,
+      "who_played": "opponent",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn4 hand after end/automatic events",
+        "Turn4 action1: energy_attach ",
+        "Turn4 action3: attack Netherwing"
+      ]
+    },
+    {
+      "evidence_id": "F0208.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 208.0,
+      "actual_frame_seconds_if_measured": 208.015,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0208.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0208.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0208.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0208.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 5,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn5 normal draw/search"
+      ]
+    },
+    {
+      "evidence_id": "F0209.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 209.0,
+      "actual_frame_seconds_if_measured": 209.0,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0209.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0209.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0209.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0209.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 5,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn5 owner hand at start",
+        "Turn5 action4: item Lucky Ice Pop"
+      ]
+    },
+    {
+      "evidence_id": "F0210.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 210.0,
+      "actual_frame_seconds_if_measured": 210.0,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0210.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0210.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0210.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0210.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 5,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn5 action1: item Poké Ball",
+        "Turn5 scheduled offset1 candidate, inspected even if post-play"
+      ]
+    },
+    {
+      "evidence_id": "F0212.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 212.0,
+      "actual_frame_seconds_if_measured": 212.002,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0212.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0212.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0212.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0212.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 5,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn5 action1: item Poké Ball",
+        "Turn5 scheduled offset3 candidate, inspected even if post-play"
+      ]
+    },
+    {
+      "evidence_id": "F0215.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 215.0,
+      "actual_frame_seconds_if_measured": 215.002,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0215.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0215.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0215.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0215.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 5,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn5 action1: item Poké Ball",
+        "Turn5 search draw/search",
+        "Turn5 scheduled offset6 candidate, inspected even if post-play"
+      ]
+    },
+    {
+      "evidence_id": "F0253.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 253.0,
+      "actual_frame_seconds_if_measured": 253.002,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0253.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0253.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0253.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0253.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 5,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn5 action6: item Lucky Ice Pop"
+      ]
+    },
+    {
+      "evidence_id": "F0263.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 263.0,
+      "actual_frame_seconds_if_measured": 263.008,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0263.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0263.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0263.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0263.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 5,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn5 action6: item Lucky Ice Pop",
+        "Turn5 action7: supporter Professor's Research (regular)",
+        "Turn5 action11: stadium Starting Plains",
+        "Turn5 supporter draw/search"
+      ]
+    },
+    {
+      "evidence_id": "F0264.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 264.0,
+      "actual_frame_seconds_if_measured": 264.01,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0264.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0264.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0264.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0264.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 5,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn5 action7: supporter Professor's Research (regular)",
+        "Turn5 action8: stadium_effect Rainbow Cave",
+        "Turn5 supporter draw/search"
+      ]
+    },
+    {
+      "evidence_id": "F0288.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 288.0,
+      "actual_frame_seconds_if_measured": 288.0,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0288.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0288.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0288.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0288.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 5,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn5 before-end hand",
+        "Turn5 action8: stadium_effect Rainbow Cave",
+        "Turn5 action9: item Flame Patch",
+        "Turn5 action10: energy_attach ",
+        "Turn5 action11: stadium Starting Plains",
+        "Turn5 action12: attack Blazing Beatdown"
+      ]
+    },
+    {
+      "evidence_id": "F0309.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 309.0,
+      "actual_frame_seconds_if_measured": 309.005,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0309.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0309.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0309.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0309.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 5,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Board/Zone/sequence candidate; see turn ledger and exact limits"
+      ]
+    },
+    {
+      "evidence_id": "F0312.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 312.0,
+      "actual_frame_seconds_if_measured": 312.007,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0312.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0312.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0312.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0312.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 5,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn5 hand after end/automatic events",
+        "Turn5 action12: attack Blazing Beatdown",
+        "Turn5 ability draw/search",
+        "Turn6 owner hand at start"
+      ]
+    },
+    {
+      "evidence_id": "F0329.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 329.0,
+      "actual_frame_seconds_if_measured": 329.013,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0329.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0329.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0329.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0329.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 6,
+      "who_played": "opponent",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn6 action3: supporter Professor's Research (full art)",
+        "Turn6 action4: evolution Mega Houndoom ex",
+        "Turn6 supporter draw/search"
+      ]
+    },
+    {
+      "evidence_id": "F0334.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 334.0,
+      "actual_frame_seconds_if_measured": 334.015,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0334.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0334.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0334.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0334.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 6,
+      "who_played": "opponent",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn6 action1: item Flame Patch",
+        "Turn6 action2: energy_attach ",
+        "Turn6 action3: supporter Professor's Research (full art)",
+        "Turn6 action4: evolution Mega Houndoom ex",
+        "Turn6 action5: attack Grim Hound Flare",
+        "Turn6 action6: ability Victory Star"
+      ]
+    },
+    {
+      "evidence_id": "F0354.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 354.0,
+      "actual_frame_seconds_if_measured": 354.013,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0354.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0354.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0354.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0354.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 6,
+      "who_played": "opponent",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn6 hand after end/automatic events",
+        "Turn6 action5: attack Grim Hound Flare",
+        "Turn6 action6: ability Victory Star"
+      ]
+    },
+    {
+      "evidence_id": "F0357.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 357.0,
+      "actual_frame_seconds_if_measured": 357.013,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0357.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0357.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0357.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0357.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 7,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn7 normal draw/search"
+      ]
+    },
+    {
+      "evidence_id": "F0358.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 358.0,
+      "actual_frame_seconds_if_measured": 358.013,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0358.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0358.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0358.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0358.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 7,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn7 owner hand at start"
+      ]
+    },
+    {
+      "evidence_id": "F0359.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 359.0,
+      "actual_frame_seconds_if_measured": 359.015,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0359.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0359.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0359.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0359.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 7,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn7 scheduled offset1 candidate, inspected even if post-play"
+      ]
+    },
+    {
+      "evidence_id": "F0361.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 361.0,
+      "actual_frame_seconds_if_measured": 361.015,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0361.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0361.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0361.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0361.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 7,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn7 action1: preview_no_effect Sabrina",
+        "Turn7 scheduled offset3 candidate, inspected even if post-play"
+      ]
+    },
+    {
+      "evidence_id": "F0364.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 364.0,
+      "actual_frame_seconds_if_measured": 364.015,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0364.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0364.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0364.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0364.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 7,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn7 action1: preview_no_effect Sabrina",
+        "Turn7 scheduled offset6 candidate, inspected even if post-play"
+      ]
+    },
+    {
+      "evidence_id": "F0381.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 381.0,
+      "actual_frame_seconds_if_measured": 381.0,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0381.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0381.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0381.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0381.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 7,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn7 before-end hand",
+        "Turn7 action2: supporter Sabrina",
+        "Turn7 action3: energy_attach ",
+        "Turn7 action4: attack Blazing Beatdown"
+      ]
+    },
+    {
+      "evidence_id": "F0388.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 388.0,
+      "actual_frame_seconds_if_measured": 388.003,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0388.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0388.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0388.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0388.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 7,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn7 ability draw/search"
+      ]
+    },
+    {
+      "evidence_id": "F0390.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 390.0,
+      "actual_frame_seconds_if_measured": 390.003,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0390.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0390.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0390.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0390.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 8,
+      "who_played": "opponent",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn7 hand after end/automatic events",
+        "Turn8 owner hand at start"
+      ]
+    },
+    {
+      "evidence_id": "F0400.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 400.0,
+      "actual_frame_seconds_if_measured": 400.003,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0400.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0400.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0400.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0400.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 8,
+      "who_played": "opponent",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn8 action1: supporter Copycat",
+        "Turn8 supporter_refill draw/search"
+      ]
+    },
+    {
+      "evidence_id": "F0409.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 409.0,
+      "actual_frame_seconds_if_measured": 409.005,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0409.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0409.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0409.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0409.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 8,
+      "who_played": "opponent",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn8 action1: supporter Copycat",
+        "Turn8 action2: item Flame Patch"
+      ]
+    },
+    {
+      "evidence_id": "F0411.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 411.0,
+      "actual_frame_seconds_if_measured": 411.007,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0411.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0411.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0411.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0411.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 8,
+      "who_played": "opponent",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn8 action2: item Flame Patch",
+        "Turn8 action3: energy_attach "
+      ]
+    },
+    {
+      "evidence_id": "F0414.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 414.0,
+      "actual_frame_seconds_if_measured": 414.008,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0414.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0414.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0414.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0414.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 8,
+      "who_played": "opponent",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn8 action3: energy_attach ",
+        "Turn8 action4: retreat Team Rocket's Moltres ex"
+      ]
+    },
+    {
+      "evidence_id": "F0417.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 417.0,
+      "actual_frame_seconds_if_measured": 417.01,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0417.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0417.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0417.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0417.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 8,
+      "who_played": "opponent",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn8 action4: retreat Team Rocket's Moltres ex"
+      ]
+    },
+    {
+      "evidence_id": "F0424.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 424.0,
+      "actual_frame_seconds_if_measured": 424.012,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0424.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0424.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0424.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0424.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 8,
+      "who_played": "opponent",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn8 action5: tool Giant Cape",
+        "Turn8 action6: attack Grim Hound Flare"
+      ]
+    },
+    {
+      "evidence_id": "F0466.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 466.0,
+      "actual_frame_seconds_if_measured": 466.002,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0466.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0466.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0466.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0466.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 9,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn8 hand after end/automatic events",
+        "Turn8 action6: attack Grim Hound Flare",
+        "Turn9 owner hand at start",
+        "Turn9 action2: energy_attach ",
+        "Turn9 normal_failed draw/search"
+      ]
+    },
+    {
+      "evidence_id": "F0467.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 467.0,
+      "actual_frame_seconds_if_measured": 467.002,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0467.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0467.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0467.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0467.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 9,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn9 owner hand at start",
+        "Turn9 normal_failed draw/search",
+        "Turn9 scheduled offset1 candidate, inspected even if post-play"
+      ]
+    },
+    {
+      "evidence_id": "F0469.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 469.0,
+      "actual_frame_seconds_if_measured": 469.003,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0469.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0469.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0469.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0469.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 9,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn9 action1: supporter Cyrus",
+        "Turn9 scheduled offset3 candidate, inspected even if post-play"
+      ]
+    },
+    {
+      "evidence_id": "F0473.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 473.0,
+      "actual_frame_seconds_if_measured": 473.005,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0473.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0473.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0473.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0473.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 9,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn9 action1: supporter Cyrus",
+        "Turn9 scheduled offset6 candidate, inspected even if post-play"
+      ]
+    },
+    {
+      "evidence_id": "F0477.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 477.0,
+      "actual_frame_seconds_if_measured": 477.007,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0477.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0477.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0477.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0477.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 9,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn9 before-end hand",
+        "Turn9 action1: supporter Cyrus",
+        "Turn9 action2: energy_attach ",
+        "Turn9 action3: attack Blazing Beatdown"
+      ]
+    },
+    {
+      "evidence_id": "F0022.50",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 22.5,
+      "actual_frame_seconds_if_measured": 22.505,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0022.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0022.50.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0022.50.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0022.50.txt",
+      "role": "setup",
+      "turn_number": 0,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Board/Zone/sequence candidate; see turn ledger and exact limits"
+      ]
+    },
+    {
+      "evidence_id": "F0035.50",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 35.5,
+      "actual_frame_seconds_if_measured": 35.505,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0035.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0035.50.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0035.50.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0035.50.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 1,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": true,
+      "before_first_play": true,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn1 owner hand at start"
+      ]
+    },
+    {
+      "evidence_id": "F0056.50",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 56.5,
+      "actual_frame_seconds_if_measured": 56.525,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0056.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0056.50.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0056.50.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0056.50.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 1,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn1 before-end hand",
+        "Turn1 action1: tool Giant Cape",
+        "Turn1 action2: stadium Rainbow Cave",
+        "Turn1 action3: supporter Copycat",
+        "Turn1 action4: end_turn "
+      ]
+    },
+    {
+      "evidence_id": "F0065.50",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 65.5,
+      "actual_frame_seconds_if_measured": 65.51,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0065.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0065.50.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0065.50.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0065.50.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 2,
+      "who_played": "opponent",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Board/Zone/sequence candidate; see turn ledger and exact limits"
+      ]
+    },
+    {
+      "evidence_id": "F0079.50",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 79.5,
+      "actual_frame_seconds_if_measured": 79.51,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0079.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0079.50.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0079.50.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0079.50.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 2,
+      "who_played": "opponent",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn2 action2: stadium_effect Rainbow Cave",
+        "Turn2 action3: supporter Copycat",
+        "Turn2 supporter_refill draw/search"
+      ]
+    },
+    {
+      "evidence_id": "F0141.50",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 141.5,
+      "actual_frame_seconds_if_measured": 141.502,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0141.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0141.50.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0141.50.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0141.50.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 3,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn3 action1: stadium_effect Rainbow Cave"
+      ]
+    },
+    {
+      "evidence_id": "F0151.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 151.0,
+      "actual_frame_seconds_if_measured": 151.003,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0151.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0151.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0151.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0151.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 3,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn3 action2: supporter Professor's Research (full art)",
+        "Turn3 supporter draw/search"
+      ]
+    },
+    {
+      "evidence_id": "F0152.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 152.0,
+      "actual_frame_seconds_if_measured": 152.003,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0152.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0152.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0152.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0152.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 3,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn3 action2: supporter Professor's Research (full art)",
+        "Turn3 supporter draw/search"
+      ]
+    },
+    {
+      "evidence_id": "F0160.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 160.0,
+      "actual_frame_seconds_if_measured": 160.003,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0160.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0160.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0160.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0160.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 3,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn3 before-end hand",
+        "Turn3 action3: item Flame Patch",
+        "Turn3 action5: attack Blazing Beatdown"
+      ]
+    },
+    {
+      "evidence_id": "F0172.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 172.0,
+      "actual_frame_seconds_if_measured": 172.007,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0172.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0172.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0172.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0172.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 4,
+      "who_played": "opponent",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn4 normal draw/search"
+      ]
+    },
+    {
+      "evidence_id": "F0196.50",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 196.5,
+      "actual_frame_seconds_if_measured": 196.513,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0196.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0196.50.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0196.50.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0196.50.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 4,
+      "who_played": "opponent",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn4 action1: energy_attach ",
+        "Turn4 action2: supporter Red",
+        "Turn4 action3: attack Netherwing"
+      ]
+    },
+    {
+      "evidence_id": "F0237.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 237.0,
+      "actual_frame_seconds_if_measured": 237.01,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0237.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0237.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0237.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0237.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 5,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn5 action2: bench Entei ex",
+        "Turn5 action3: tool Giant Cape",
+        "Turn5 action4: item Lucky Ice Pop",
+        "Turn5 action5: item Lucky Ice Pop"
+      ]
+    },
+    {
+      "evidence_id": "F0246.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 246.0,
+      "actual_frame_seconds_if_measured": 246.015,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0246.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0246.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0246.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0246.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 5,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn5 action5: item Lucky Ice Pop",
+        "Turn5 action6: item Lucky Ice Pop"
+      ]
+    },
+    {
+      "evidence_id": "F0254.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 254.0,
+      "actual_frame_seconds_if_measured": 254.002,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0254.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0254.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0254.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0254.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 5,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn5 action6: item Lucky Ice Pop"
+      ]
+    },
+    {
+      "evidence_id": "F0314.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 314.0,
+      "actual_frame_seconds_if_measured": 314.008,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0314.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0314.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0314.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0314.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 6,
+      "who_played": "opponent",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn6 normal draw/search"
+      ]
+    },
+    {
+      "evidence_id": "F0317.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 317.0,
+      "actual_frame_seconds_if_measured": 317.01,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0317.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0317.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0317.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0317.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 6,
+      "who_played": "opponent",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn6 action1: item Flame Patch"
+      ]
+    },
+    {
+      "evidence_id": "F0366.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 366.0,
+      "actual_frame_seconds_if_measured": 366.015,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0366.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0366.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0366.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0366.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 7,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn7 action2: supporter Sabrina"
+      ]
+    },
+    {
+      "evidence_id": "F0385.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 385.0,
+      "actual_frame_seconds_if_measured": 385.002,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0385.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0385.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0385.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0385.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 7,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn7 action4: attack Blazing Beatdown"
+      ]
+    },
+    {
+      "evidence_id": "F0392.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 392.0,
+      "actual_frame_seconds_if_measured": 392.003,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0392.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0392.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0392.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0392.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 8,
+      "who_played": "opponent",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn8 normal draw/search"
+      ]
+    },
+    {
+      "evidence_id": "F0415.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 415.0,
+      "actual_frame_seconds_if_measured": 415.008,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0415.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0415.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0415.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0415.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 8,
+      "who_played": "opponent",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn8 action4: retreat Team Rocket's Moltres ex"
+      ]
+    },
+    {
+      "evidence_id": "F0418.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 418.0,
+      "actual_frame_seconds_if_measured": 418.01,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0418.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0418.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0418.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0418.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 8,
+      "who_played": "opponent",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn8 action4: retreat Team Rocket's Moltres ex",
+        "Turn8 action5: tool Giant Cape"
+      ]
+    },
+    {
+      "evidence_id": "F0482.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 482.0,
+      "actual_frame_seconds_if_measured": 482.008,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0482.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0482.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0482.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0482.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 9,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn9 hand after end/automatic events",
+        "Turn9 action3: attack Blazing Beatdown"
+      ]
+    },
+    {
+      "evidence_id": "F0065.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 65.0,
+      "actual_frame_seconds_if_measured": 65.0083,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0065.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0065.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0065.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0065.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 2,
+      "who_played": "opponent",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": null,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn2 action1: tool Small Balloon"
+      ]
+    },
+    {
+      "evidence_id": "F0236.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 236.0,
+      "actual_frame_seconds_if_measured": 236.01,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0236.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0236.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0236.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0236.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 5,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn5 action4: item Lucky Ice Pop"
+      ]
+    },
+    {
+      "evidence_id": "F0245.00",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "source_sha256": "3022f6254189df2a58879e3af1abdc692530407225e5d1ba4f3a3bc17752f3d7",
+      "requested_source_seconds": 245.0,
+      "actual_frame_seconds_if_measured": 245.015,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0245.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\b0245.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\p0245.00.jpg",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          550
+        ]
+      },
+      "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\decode_logs\\t0245.00.txt",
+      "role": "native field capture / sequence candidate",
+      "turn_number": 5,
+      "who_played": "owner",
+      "draw_animation_end_seconds": null,
+      "offset_after_draw_seconds": null,
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": null,
+      "hand_spread": null,
+      "observation": "Inspected full native source-bound view. Field-specific interpretations and suitability in linked ledger/hand rows; overlays may obscure individual fields.",
+      "suitability_or_limit": "Retained even when draw/attachment animation is pending; not every scheduled offset is untouched-hand evidence.",
+      "capture_purposes": [
+        "Turn5 action5: item Lucky Ice Pop"
+      ]
+    }
+  ],
+  "discard_snapshots": [
+    {
+      "snapshot_id": "D1",
+      "turn_number": 1,
+      "pile_owner": "owner",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "timestamp_seconds": 62,
+      "cards_in_view": [
+        "Copycat"
+      ],
+      "scroll_coverage": "Only visible top-of-pile board card; no opened panel",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "F0062.00"
+      ],
+      "limit_reason": "Top card only. Pile size, covered contents and Energy discard items not established."
+    },
+    {
+      "snapshot_id": "D2",
+      "turn_number": 2,
+      "pile_owner": "opponent",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "timestamp_seconds": 104,
+      "cards_in_view": [
+        "Poké Ball"
+      ],
+      "scroll_coverage": "Only visible top-of-pile board card; no opened panel",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "F0104.00"
+      ],
+      "limit_reason": "Top card only. Pile size, covered contents and Energy discard items not established."
+    },
+    {
+      "snapshot_id": "D3",
+      "turn_number": 3,
+      "pile_owner": "owner",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "timestamp_seconds": 160,
+      "cards_in_view": [
+        "Flame Patch"
+      ],
+      "scroll_coverage": "Only visible top-of-pile board card; no opened panel",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "F0160.00"
+      ],
+      "limit_reason": "Top card only. Pile size, covered contents and Energy discard items not established."
+    },
+    {
+      "snapshot_id": "D4",
+      "turn_number": 4,
+      "pile_owner": "opponent",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "timestamp_seconds": 205,
+      "cards_in_view": [
+        "Red"
+      ],
+      "scroll_coverage": "Only visible top-of-pile board card; no opened panel",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "F0205.00"
+      ],
+      "limit_reason": "Top card only. Pile size, covered contents and Energy discard items not established."
+    },
+    {
+      "snapshot_id": "D5a",
+      "turn_number": 5,
+      "pile_owner": "owner",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "timestamp_seconds": 246,
+      "cards_in_view": [
+        "Lucky Ice Pop"
+      ],
+      "scroll_coverage": "Only visible top-of-pile board card; no opened panel",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "F0246.00"
+      ],
+      "limit_reason": "Top card only. Pile size, covered contents and Energy discard items not established."
+    },
+    {
+      "snapshot_id": "D5b",
+      "turn_number": 5,
+      "pile_owner": "owner",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "timestamp_seconds": 288,
+      "cards_in_view": [
+        "Rainbow Cave"
+      ],
+      "scroll_coverage": "Only visible top-of-pile board card; no opened panel",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "F0288.00"
+      ],
+      "limit_reason": "Top card only. Pile size, covered contents and Energy discard items not established."
+    },
+    {
+      "snapshot_id": "D6",
+      "turn_number": 6,
+      "pile_owner": "opponent",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "timestamp_seconds": 334,
+      "cards_in_view": [
+        "Professor's Research (full art)"
+      ],
+      "scroll_coverage": "Only visible top-of-pile board card; no opened panel",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "F0334.00"
+      ],
+      "limit_reason": "Top card only. Pile size, covered contents and Energy discard items not established."
+    },
+    {
+      "snapshot_id": "D7",
+      "turn_number": 7,
+      "pile_owner": "owner",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "timestamp_seconds": 381,
+      "cards_in_view": [
+        "Sabrina"
+      ],
+      "scroll_coverage": "Only visible top-of-pile board card; no opened panel",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "F0381.00"
+      ],
+      "limit_reason": "Top card only. Pile size, covered contents and Energy discard items not established."
+    },
+    {
+      "snapshot_id": "D8",
+      "turn_number": 8,
+      "pile_owner": "opponent",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "timestamp_seconds": 424,
+      "cards_in_view": [
+        "Flame Patch"
+      ],
+      "scroll_coverage": "Only visible top-of-pile board card; no opened panel",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "F0424.00"
+      ],
+      "limit_reason": "Top card only. Pile size, covered contents and Energy discard items not established."
+    },
+    {
+      "snapshot_id": "D9",
+      "turn_number": 9,
+      "pile_owner": "owner",
+      "source_video": "20260929_020916000_iOS.MP4",
+      "timestamp_seconds": 477,
+      "cards_in_view": [
+        "Cyrus"
+      ],
+      "scroll_coverage": "Only visible top-of-pile board card; no opened panel",
+      "full_pile_established": false,
+      "evidence_ids": [
+        "F0477.00"
+      ],
+      "limit_reason": "Top card only. Pile size, covered contents and Energy discard items not established."
+    }
+  ],
+  "scheduled_capture_limits": [
+    "Opponent cards drawn face-down cannot be named; hidden cards are null, never inferred from a presumed deck.",
+    "All 490 retained 1fps reduced samples (25 grids, nominal 0 through489 seconds) screened as action/prompt/discard locators. This does not inspect every instant; subsecond prompts or inputs can fall between samples.",
+    "No opened discard panel was observed in this sampled scan or85 native views. Periodic top-of-pile views establish only the visible top card, not full pile contents.",
+    "Source-local requested times and measured selected-frame PTS are distinct. Draw-end times are bracketed by retained views, not measured exact animation boundaries.",
+    "Start/end boards are explicitly composite source-derived boundary states with field anchors. Later endpoints and inherited accepted results are not exact simultaneous native boundary snapshots.",
+    "Historical exact20-card log snapshot unavailable without version binding. Filmed visible core is separately supported; no current deck substitution.",
+    "Auto option absent in inspected native controls, with sampled/obscured-view limits. This cannot prove absence at every instant or hidden menu. Auto enabled status and action authorship remain unknown."
+  ]
+}

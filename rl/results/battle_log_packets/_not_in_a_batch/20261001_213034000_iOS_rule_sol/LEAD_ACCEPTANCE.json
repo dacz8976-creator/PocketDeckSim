@@ -1,0 +1,44 @@
+{
+  "accepted": true,
+  "accepted_utc": "2026-10-02T00:35:21.040777+00:00",
+  "source_video": "20261001_213034000_iOS.MP4",
+  "source_sha256": "cdf8a7e08e68bd58d8f0c2b380e96eec4b28e758ad3a5affde9ff7ef76a3941b",
+  "reviewer": "/root",
+  "first_pass": "sol_rules_20261001_213034000",
+  "first_pass_model": "gpt-6.1-sol",
+  "first_pass_effort": "high",
+  "completion_status": "full_battle_review_complete",
+  "scope": "Entire 212.071667-second AI Solo rules-test battle, loading and setup through all eight turns and final results",
+  "coverage_checked": true,
+  "remaining_coverage_gaps": [],
+  "unverified_material_claims": [],
+  "ladder_eligible": false,
+  "outcome_description": "Victory; owner four actual awarded points versus opponent two, with owner circles capped at three; eight turns; 320 displayed damage",
+  "key_findings": [
+    "Two benched Ariados increased the retreat-cost amount used by Grass Knot: 40 + 30 x (Moltres printed two + one + one) = 160. Actual retreat payment was not tested.",
+    "Infernape Flare Blitz used two Fire and displayed 160 including weakness against each Whimsicott ex. All attached Fire were discarded after each attack.",
+    "One Flame Patch plus the ordinary attachment restored the two Fire needed for the final Flare Blitz. A second Patch was drawn and remained in hand.",
+    "Each Whimsicott ex knockout awarded two points; the owner earned four total while score circles capped at three. The 320 displayed damage included overkill."
+  ],
+  "limitations": [
+    "No paid retreat or Leaf/X Speed interaction was tested.",
+    "No Grass Knot was used against Infernape; the second Whimsicott had only one Grass and did not attack.",
+    "Quick-Grow first-turn/newly-played restrictions, hidden decks and random-selection distribution were not tested."
+  ],
+  "lead_evidence": [
+    "LEAD_CHECK_1.jpg",
+    "LEAD_CHECK_2.jpg",
+    "LEAD_CHECK_3.jpg",
+    "native/t0035.00.jpg",
+    "native/t0051.00.jpg",
+    "ending_dense/sample_frames/00012.jpg"
+  ],
+  "lead_checks": [
+    "Read whole REVIEW/COVERAGE/SUMMARY/UNCERTAINTIES; all eight turns and source ending are reconciled.",
+    "Opening overview plus 4.5 AI identity, 27.5 board, 31.5 held Copycat and 35 actual Research, 41 settled development, 43.5 Moltres text and 51 Heat Charged one head independently inspected.",
+    "57/58.5 first Ariados and 106.5/108.5 second ability notification; 67.5 Grass Knot text, 120 damage160, 122 knockout and 124 opponent two points verified.",
+    "136 Infernape evolution, 148 two Fire, 153 card text, 157.5 weakness160, 159/166 zero Fire after first attack verified.",
+    "186 played Patch text, 188 one Fire with zone available, 190 two Fire, 194/195 final knockout and zero Fire, 199 second two-point award and 203 Victory verified.",
+    "Ending dense frame00012 directly inspected: went second, eight turns, three owner/two opponent circles and damage320."
+  ]
+}

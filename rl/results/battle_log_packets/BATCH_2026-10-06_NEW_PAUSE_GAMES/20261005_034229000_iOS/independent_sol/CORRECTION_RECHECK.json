@@ -1,0 +1,260 @@
+{
+  "game_id": "20261005_034229000_iOS",
+  "source_video": "20261005_034229000_iOS.MP4",
+  "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+  "checked_at_utc": "2026-10-06T19:57:39.644583+00:00",
+  "scope": "Tiny repair-only independent recheck against frozen original R1-R4 rejection. No expanded full review or media hash reread.",
+  "accepted": true,
+  "status": "accepted_after_R1_R4_repairs",
+  "required_repairs": [],
+  "remaining_repairs": [],
+  "checked_input_sha256": {
+    "SOURCE.json": "b31e89789db63fbbe9ec64ff20df069733742765591c2bf81b22b495bebe085a",
+    "REVIEW.md": "e374b9bccea300b5bb1ac4164b9f3408c57ffff1520941ea425092713e0cbe40",
+    "COVERAGE.md": "753eeece139c1b34656e19062b050ee10cd568674ddc495dd747d845dc9b59f7",
+    "SUMMARY.json": "e8d09f6c9911ae85bed215ed142bda07649074f10eec1077e24ee48ce06e5b77",
+    "UNCERTAINTIES.json": "53e64e2a854de67ddd2e5cf5c49720158860530d85b163d97b1d7fab3d60ed3a",
+    "PAUSE_GAME.json": "dd91a480943091aa1ecc06cfb15331854a38bb1abbac57a0837c3d3cb7fd2d23",
+    "DECK_USED.json": "d6477769fab59ae75c3f058f69558b473ab1038a2b4f161f1e0ced18174540f2",
+    "TURN_LEDGER.json": "916bbf77e98eef237f9973cdb9a6ad4e1f7d4b157366948511c9aa5b0c4aa1c0",
+    "TURN_EVIDENCE.json": "f20457cde7336e203a833a8c0d649300f29f756f3a74f36f49afbfc0db036a74"
+  },
+  "supplemental_checked_input_sha256": {
+    "INDEPENDENT_CORRECTIONS.json": "866a319be3eabdbe76eafdfe133f1e2d821f7fc2a9ad7f58d41cd08fbf206a18",
+    "RECORDING_METADATA.json": "2938ea58a0ca11616734e03ead15ea67e1e86b058c09ac8c3d0835a943064ed4",
+    "../NEW_DECK_ENTRIES.json": "e3a946d41a06fa301b6f7da92cc173335a232c6eb24098607fb9a67f9ad49900"
+  },
+  "initial_rejected_report_sha256": "aa3e55409411562cf8000b06c0a23d2419e5b420cc5cf4cae7094732f1f31a3e",
+  "original_rejected_inputs_preserved_and_hash_checked": true,
+  "current_inputs_unchanged_during_recheck": true,
+  "repair_dispositions": [
+    {
+      "id": "R1",
+      "accepted": true,
+      "basis": "Native111/213.7/283 empty selected current orb;112/214.5/283.8 generated Metal separately recorded. Intact hands and next previews preserved."
+    },
+    {
+      "id": "R2",
+      "accepted": true,
+      "basis": "All84 specified fields now explicit none with qualified absence. Original bounded board observations stand; named Pokemon empty Tool fields distinct from empty Bench slots."
+    },
+    {
+      "id": "R3",
+      "accepted": true,
+      "basis": "Native65.0 directly displays Current turn:2. Selected ordinary boundary still correctly has no displayed label."
+    },
+    {
+      "id": "R4",
+      "accepted": true,
+      "basis": "Native83 Ball reveal/fan4 then90 Ball top/fan5;90.5 hidden draw,91.5 Research top/fan6;96 Research top/fan6 then97 search/98 Ball top/fan6. Plaza absent151/present153. Core intact313,Tool prompt313.5,reveal315,Skarmory Core thumbnail318. Exact remote/target touches remain bounded; hidden names not invented."
+    }
+  ],
+  "native_full_frames_actually_viewed": [
+    {
+      "evidence_id": "f_0083_00",
+      "source_seconds": 83.0,
+      "path": "turn_evidence/t0083.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "f_0090_00",
+      "source_seconds": 90.0,
+      "path": "turn_evidence/t0090.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "f_0096_00",
+      "source_seconds": 96.0,
+      "path": "turn_evidence/t0096.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "f_0111_00",
+      "source_seconds": 111.0,
+      "path": "turn_evidence/t0111.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "f_0112_00",
+      "source_seconds": 112.0,
+      "path": "turn_evidence/t0112.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "f_0213_70",
+      "source_seconds": 213.7,
+      "path": "turn_evidence/t0213.70.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "f_0214_50",
+      "source_seconds": 214.5,
+      "path": "turn_evidence/t0214.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "f_0283_00",
+      "source_seconds": 283.0,
+      "path": "turn_evidence/t0283.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "f_0283_80",
+      "source_seconds": 283.8,
+      "path": "turn_evidence/t0283.80.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "f_0313_00",
+      "source_seconds": 313.0,
+      "path": "turn_evidence/t0313.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "f_0315_00",
+      "source_seconds": 315.0,
+      "path": "turn_evidence/t0315.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "f_0318_00",
+      "source_seconds": 318.0,
+      "path": "turn_evidence/t0318.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "f_0065_00",
+      "source_seconds": 65.0,
+      "path": "root_turn2_banner/t0065.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "f_0090_50",
+      "source_seconds": 90.5,
+      "path": "root_action_windows/t0090.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "f_0091_50",
+      "source_seconds": 91.5,
+      "path": "root_action_windows/t0091.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "f_0092_50",
+      "source_seconds": 92.5,
+      "path": "root_action_windows/t0092.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "f_0097_00",
+      "source_seconds": 97.0,
+      "path": "root_action_windows/t0097.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "f_0098_00",
+      "source_seconds": 98.0,
+      "path": "root_action_windows/t0098.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "f_0099_00",
+      "source_seconds": 99.0,
+      "path": "root_action_windows/t0099.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "f_0151_00",
+      "source_seconds": 151.0,
+      "path": "root_action_windows/t0151.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "f_0153_00",
+      "source_seconds": 153.0,
+      "path": "root_action_windows/t0153.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    },
+    {
+      "evidence_id": "f_0313_50",
+      "source_seconds": 313.5,
+      "path": "root_action_windows/t0313.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      }
+    }
+  ],
+  "new_asset_checks": {
+    "new_native_frames": 10,
+    "new_crops": 20,
+    "decoded_dimensions_bounds_sha256_pass": true,
+    "crop_correspondence_max_MAE": 1.1622830234270076,
+    "all_current_evidence_references_resolve": true
+  },
+  "preservation": "Initial CHECK_RESULT remains rejected and byte-for-byte unchanged. Initial VIEWED_EVIDENCE fields remain historical; correction update is appended separately. Prior accepted recording limits remain."
+}
