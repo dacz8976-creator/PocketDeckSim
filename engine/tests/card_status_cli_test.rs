@@ -20,7 +20,11 @@ fn inventory_includes_new_printings_and_explicit_rule_boundaries() {
     assert_eq!(all["schema_version"], 1);
     assert_eq!(all["engine_version"], env!("CARGO_PKG_VERSION"));
     let cards = all["cards"].as_array().unwrap();
-    assert_eq!(cards.len(), 3879);
+    // 3,880 since Oct 15: Mega Garchomp ex (P-B 099), added from Dustin's screenshot (rl/results/mega_garchomp_2026-10-15/).
+    assert_eq!(cards.len(), 3880);
+    assert!(cards
+        .iter()
+        .any(|card| card["id"] == "P-B 099" && card["status"] == "Complete"));
     for id in [
         "B3 025", "P-B 049", "B4 115", "B4a 051", "B4a 069", "B4a 109",
     ] {
