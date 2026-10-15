@@ -1079,7 +1079,7 @@ SETUP_WORDS = {"P2.any": "at least one Glimmora attacks", "P2.both": "both Glimm
                "P2.g1": "the first Glimmora attacks", "P2.g2": "the second Glimmora attacks",
                "P4.late1": "not ready, ready 1 turn late", "P4.late2p": "not ready, ready 2 or more turns late",
                "P4.never": "the moment came and Kingambit was never ready", "P4.nomoment": "their strongest is never in reach",
-               "P3.pawn_lead": "Pawniard forced to lead", "P3.pawn_promo": "a Pawniard-line Pokémon promoted, nothing else left",
+               "P3.pawn_lead": "Pawniard forced to lead", "P3.pawn_promo": "Bisharp or an unready Kingambit promoted by the order list (before Grimer and Muk)",
                "P3.grimer_muk": "Alolan Grimer or Muk in front",
                "P4.ko": "Kingambit ready to knock out their strongest", "P4.win": "ready, and the knockout wins outright",
                "P5.ko": "ready then or later (before they reach 3 points), knocks out their strongest",
