@@ -1,0 +1,1486 @@
+{
+ "schema": "ladder-predictions v3",
+ "deck": {
+  "name": "brew-09-sableye-obstagoon",
+  "file": "decks/brews/brew-09-sableye-obstagoon.txt",
+  "version_id": "5254637c9b25",
+  "card_list_sha256": "5254637c9b2507729f83d660858686528a252a9a9fff287c2f174970747cdf32",
+  "file_sha256": "ec0a9376344eb42e13fac9ecb278099d43406455fbc3f8e2749f9d258c5a9a6d",
+  "card_list": [
+   "energy: darkness",
+   "2 copycat B1 225",
+   "1 cyrus A2 150",
+   "1 deceptive needle B4 148",
+   "1 field blower B3 147",
+   "2 galarian obstagoon B2 100",
+   "2 galarian zigzagoon B4 95",
+   "1 giant cape A2 147",
+   "2 mega sableye ex B3B 41",
+   "2 poké ball P-A 5",
+   "1 pokémon center lady A2B 70",
+   "2 professor's research P-A 7",
+   "2 rare candy A3 144",
+   "1 starting plains B2 154"
+  ],
+  "card_count": 20,
+  "log_docs": [
+   "brew-09"
+  ],
+  "log_label": null,
+  "file_versions": [
+   {
+    "sha256": "ec0a9376344eb42e13fac9ecb278099d43406455fbc3f8e2749f9d258c5a9a6d",
+    "card_list_sha256": "5254637c9b2507729f83d660858686528a252a9a9fff287c2f174970747cdf32",
+    "first_commit": "83fd3496b80ab69012c70d988c9febe2c93c96eb",
+    "first_date": "2026-09-24T19:53:03Z"
+   }
+  ],
+  "committed": true
+ },
+ "written_at": "2026-10-15T02:25:38Z",
+ "written_by": {
+  "script": "make_predictions.py",
+  "code_sha256": {
+   "make_predictions.py": "5c5db8bce50666c0ccf8de489f39d5d46c3cbbe6d16259eff2c71d407ea39931",
+   "read_ladder.py": "9064aab95d3c93c0cf2450db6016765a42caaae7ba31dbee11faaa2819983dd3"
+  },
+  "repo_head": "b97ba593df79ce34d755f5927849273259892947"
+ },
+ "first_game_already_played": null,
+ "games_already_read": 1,
+ "ladder_log_at_writing": {
+  "export": "ladderlog_export.json",
+  "export_sha256": "fb125b3a98fc55190cc2a71d4d85cc959f8e8d2a0368739af9758c5c1225fbea",
+  "game_keys": [
+   "brew-01/dryde5b2",
+   "brew-01/op2nw4iq",
+   "brew-01/puegkh26",
+   "brew-01/pzgxofc5",
+   "brew-03a/5j3gatiy",
+   "brew-03a/fjrp6698",
+   "brew-03a/i0b7q0aw",
+   "brew-03a/j7ygejzg",
+   "brew-04/dt62hbj1",
+   "brew-05/265qsbyq",
+   "brew-05/c3eehz66",
+   "brew-05/g4plkw2m",
+   "brew-05/inj3tqmf",
+   "brew-05/q29m429j",
+   "brew-05/sxmmfqbf",
+   "brew-05c/cgt39800",
+   "brew-05c/k4koxjza",
+   "brew-05c/sgyuq7p8",
+   "brew-06/b06l1",
+   "brew-06/b06l2",
+   "brew-06/b06l3",
+   "brew-06b/bj01ko8c",
+   "brew-06b/tpc15fb7",
+   "brew-06b/ys8h59kt",
+   "brew-08/66bj8pko",
+   "brew-08/6v6uz8f4",
+   "brew-08/6vpilygm",
+   "brew-08/b1onjy8e",
+   "brew-08/izt3v99l",
+   "brew-08/oubs7din",
+   "brew-08/oxvly9rd",
+   "brew-08/vxshsx64",
+   "brew-08/wu76b104",
+   "brew-08/xy1ivenh",
+   "brew-09/k9rp6pmw",
+   "c-hydreigon-galarian-obstagoon-video-visib/5u42iufb",
+   "c-hydreigon-galarian-obstagoon-video-visib/efkegujq",
+   "c-hydreigon-galarian-obstagoon-video-visib/gx13ee2a",
+   "c-hydreigon-galarian-obstagoon-video-visib/ile7odgu",
+   "c-hydreigon-galarian-obstagoon-video-visib/k95ae5i5",
+   "c-hydreigon-galarian-obstagoon-video-visib/l6uu55cr",
+   "c-hydreigon-galarian-obstagoon-video-visib/n85t8ocx",
+   "c-hydreigon-galarian-obstagoon-video-visib/ztoknodg",
+   "c-mega-sharpedo-ex-gyarados-video-visible-/lb8dqt2y",
+   "c-skarmory-ex-chandelure/6tycxfqa",
+   "c-skarmory-ex-indeedee-ex-genesect-video-v/69ex1k6d",
+   "c-skarmory-ex-indeedee-ex-genesect-video-v/bva14dpt",
+   "c-type-null-silvally-video-visible-core/oefujszt",
+   "d02/1hwx3rpd",
+   "d02/4a0xzylt",
+   "d02/ks7cq6me",
+   "d02/kzwhyst4",
+   "d07/k7mqsc2z",
+   "d07/pukrqofc",
+   "d07/y9vhwux3",
+   "d07/zsy3l5cr",
+   "d12/4p1dhyul",
+   "d12/ceratxro",
+   "d12/cje2afoa",
+   "d12/htcgfxoj",
+   "d12/le8qdtg1",
+   "d12/mk7rxbwl",
+   "d12/pe0sas7w",
+   "d12/x737u7z9",
+   "d12/y78azdr4",
+   "d12/zvste53r",
+   "d13/0cdbmnk8",
+   "d13/33zbl0xu",
+   "d13/8l9xp47h",
+   "d13/hfg8daaq",
+   "d13/kjyd2zt6",
+   "d13/mi3oz3p9",
+   "d13/tpjqlnr4",
+   "d13/wlfww6p5",
+   "d13/yymjb6fj",
+   "d13/zjh2t7xi"
+  ],
+  "games_logged": 76,
+  "newest_logged": "2026-10-15T01:29:58Z",
+  "newest_video": "20261014_234728000_iOS",
+  "newest_video_start": "2026-10-14T23:47:28Z"
+ },
+ "notes": [
+  "Staged Oct 15 for the ladder validation (v3 rules); every committed source of this card list is given, older-engine ones kept for the record.",
+  "One game logged under brew-09 last season (a win), none this season when written. The forecast shape is the current-engine km3 floor."
+ ],
+ "who_plays_the_panel": "km3 plays the 8 panel lists in every run (slow reports, exams and floors). The frozen kx3 (and m64 or m32, slower kx3 settings) knows the 8 lists and expects one of them, so its number is the optimistic end; km3 on the deck v km3 on the panel is the like-for-like number. The Ladder Log's opponent field says nothing about the opponent's skill or rank.",
+ "reading_rule_version": "r2 (2026-10-15)",
+ "reading_rule": [
+  "Registration: this file counts from its first readable commit on main, made on main itself (by path), never merged or fast-forwarded from another branch. Its time is that commit's committer time (the committing machine's clock), or this file's own written_at if that is later, or the time main's reflog shows the commit arriving if that is later still.",
+  "Test or feedback: a game is a test of this file only if its play time is known from an iOS video name (in the Ladder Log note, or recovered by an agent from the Battle Logs listing into the committed version notes), it started at least 10 minutes after the registration time, it was not yet in the Ladder Log when this file was written, and its video is newer than the newest video that existed then. A game with no video name is 'time unknown' and a game whose video starts after its log time is 'time doubtful': both are feedback. Every other game is feedback.",
+  "Ties: a game is read with the version in the deck file on main when it was played ('assumed'), or with the version an agent's committed version note gives ('confirmed', citing the evidence path). If several deck files share a Ladder Log section, the file's log_label in the note decides, else the game is not read (ambiguous). Before each reading an agent compares his side's cards in each test game's review packet with the card list and notes 'checked' or 'mismatch: <card>'; mismatched games are not read, and the reading gives the record on checked games beside the record on all games. His notes help but are never required.",
+  "Each reading leads with the matched games (wins v expected wins, the chance in words), then the off-panel record with no prediction, then the level check labelled with its assumption. Exact and variant matches are shown apart.",
+  "A win by the opponent's concession is a full win in every record and check. Early concessions often hide the attacker, so they land off the panel: the matched games are short of wins and the matched check leans against the bot. Each reading counts those wins and repeats the matched check with 1 in 4 of them counted as panel wins.",
+  "Only the bots on the engine pinned when this file was written are compared. The running tally keeps one forecast per game and per bot and engine (the earliest registered): wins minus expected wins on matched test games. It says nothing about screening or ranking decks.",
+  "Verdict: the first reading with 20 test games of this version is its verdict; if the season ends or the version is retired first, the reading then is. Every other reading is interim."
+ ],
+ "sources_check": {
+  "how": "manifests on main naming this deck with this card list (slow reports and exams)",
+  "checked": true,
+  "not_given": [],
+  "other_versions": [],
+  "floor_pages_not_given": []
+ },
+ "bots": [
+  {
+   "id": "kx3_slow",
+   "role": "kx3_slow",
+   "label": "frozen kx3 (slow report, current engine)",
+   "kind": "slow_report",
+   "arm": "X",
+   "pilot": "kx3",
+   "panel_pilot": [
+    "km3"
+   ],
+   "knows_the_panel_lists": true,
+   "counts": "win 1, tie 1/2, loss 0",
+   "n": 160,
+   "wins": 105,
+   "ties": 4,
+   "losses": 51,
+   "number_pct": 66.9,
+   "ci95_wilson": [
+    59.3,
+    73.7
+   ],
+   "x": 107.0,
+   "per_opponent": [
+    {
+     "list": "t-altaria",
+     "n": 20,
+     "wins": 17,
+     "ties": 0,
+     "losses": 3,
+     "x": 17.0,
+     "pct": 85.0,
+     "ci95": [
+      64.0,
+      94.8
+     ]
+    },
+    {
+     "list": "t-blaziken",
+     "n": 20,
+     "wins": 14,
+     "ties": 1,
+     "losses": 5,
+     "x": 14.5,
+     "pct": 72.5,
+     "ci95": [
+      50.6,
+      87.2
+     ]
+    },
+    {
+     "list": "t-hydreigon",
+     "n": 20,
+     "wins": 17,
+     "ties": 0,
+     "losses": 3,
+     "x": 17.0,
+     "pct": 85.0,
+     "ci95": [
+      64.0,
+      94.8
+     ]
+    },
+    {
+     "list": "t-lucario",
+     "n": 20,
+     "wins": 16,
+     "ties": 1,
+     "losses": 3,
+     "x": 16.5,
+     "pct": 82.5,
+     "ci95": [
+      61.1,
+      93.4
+     ]
+    },
+    {
+     "list": "t-sceptile",
+     "n": 20,
+     "wins": 10,
+     "ties": 0,
+     "losses": 10,
+     "x": 10.0,
+     "pct": 50.0,
+     "ci95": [
+      29.9,
+      70.1
+     ]
+    },
+    {
+     "list": "t-suicune",
+     "n": 20,
+     "wins": 12,
+     "ties": 0,
+     "losses": 8,
+     "x": 12.0,
+     "pct": 60.0,
+     "ci95": [
+      38.7,
+      78.1
+     ]
+    },
+    {
+     "list": "t-vespiquen",
+     "n": 20,
+     "wins": 12,
+     "ties": 1,
+     "losses": 7,
+     "x": 12.5,
+     "pct": 62.5,
+     "ci95": [
+      40.9,
+      80.0
+     ]
+    },
+    {
+     "list": "t-weezing",
+     "n": 20,
+     "wins": 7,
+     "ties": 1,
+     "losses": 12,
+     "x": 7.5,
+     "pct": 37.5,
+     "ci95": [
+      20.0,
+      59.1
+     ]
+    }
+   ],
+   "wins_range_95_if_ladder_equalled_this": {
+    "10": [
+     4,
+     9
+    ],
+    "20": [
+     9,
+     17
+    ],
+    "40": [
+     20,
+     33
+    ]
+   },
+   "engine": {
+    "key": "4ebb30a94173",
+    "tree": "4ebb30a94173",
+    "current_when_written": true,
+    "label": "rules switch 2 (main-c045ede, pinned Oct 12)",
+    "text": "laptop/kx3-on-rules2 cd20a97a engine tree 4ebb30a94173: the frozen kx3's players (claude/playout-pilot d513e37b, byte for byte) on main-c045ede's engine (rules switch 2, pinned Oct 12), built on the laptop Oct 12 with rl/strength/build.sh (harness bf9c5d68)"
+   },
+   "in_bot_comparison": true,
+   "comparison_note": null,
+   "source": {
+    "folder": "rl/results/slow_reports/2026-10-12_brew-09-sableye-obstagoon",
+    "manifest_name": "slow_report_brew-09-sableye-obstagoon",
+    "stage": "use",
+    "registered_at": "2026-10-13T04:54:49Z",
+    "repo_commit_at_registration": "05ec3470db87f37dc305c7b50b8b8c42c5fd70c9",
+    "program_sha256": "5011e227cf63619cc8ca9750ee69090037844f8e7abcd0432776b1e2ae3b7f0e",
+    "manifest_file_sha256": "577a1ac83dd4f50d1a44f4b644ce7ff83f9422b432b2346f4b07ef084a96750a",
+    "deck_sha256_in_manifest": "ec0a9376344eb42e13fac9ecb278099d43406455fbc3f8e2749f9d258c5a9a6d",
+    "tested_version": "the same file (sha256 ec0a9376344e)",
+    "files": [
+     {
+      "path": "rl/results/slow_reports/2026-10-12_brew-09-sableye-obstagoon/games.jsonl",
+      "first_commit": {
+       "commit": "d73cf13cdc3277433f894c07f5c37eb28c6b6b14",
+       "date": "2026-10-13T10:44:32Z"
+      },
+      "first_commit_on_main": {
+       "commit": "b89b7ebea31d9abe7fafe6a85be2897b961ce258",
+       "date": "2026-10-13T19:06:11Z"
+      }
+     },
+     {
+      "path": "rl/results/slow_reports/2026-10-12_brew-09-sableye-obstagoon/manifest.json",
+      "first_commit": {
+       "commit": "e154577abe649c7f53ef8e9d33894857e48a739a",
+       "date": "2026-10-13T04:54:49Z"
+      },
+      "first_commit_on_main": {
+       "commit": "b89b7ebea31d9abe7fafe6a85be2897b961ce258",
+       "date": "2026-10-13T19:06:11Z"
+      }
+     }
+    ]
+   },
+   "fixed_at": "2026-10-13T10:44:32Z",
+   "games_sha256": "56d3aa995db17132adf64abf6bf22db23676a2869e6d5e35a7a7a3ab2eb2aff2"
+  },
+  {
+   "id": "km3_slow_same_deals",
+   "role": "km3_slow_same_deals",
+   "label": "km3 (slow report same deals)",
+   "kind": "slow_report",
+   "arm": "ref",
+   "pilot": "km3",
+   "panel_pilot": [
+    "km3"
+   ],
+   "knows_the_panel_lists": false,
+   "counts": "win 1, tie 1/2, loss 0",
+   "n": 160,
+   "wins": 71,
+   "ties": 4,
+   "losses": 85,
+   "number_pct": 45.6,
+   "ci95_wilson": [
+    38.1,
+    53.4
+   ],
+   "x": 73.0,
+   "per_opponent": [
+    {
+     "list": "t-altaria",
+     "n": 20,
+     "wins": 13,
+     "ties": 0,
+     "losses": 7,
+     "x": 13.0,
+     "pct": 65.0,
+     "ci95": [
+      43.3,
+      81.9
+     ]
+    },
+    {
+     "list": "t-blaziken",
+     "n": 20,
+     "wins": 11,
+     "ties": 0,
+     "losses": 9,
+     "x": 11.0,
+     "pct": 55.0,
+     "ci95": [
+      34.2,
+      74.2
+     ]
+    },
+    {
+     "list": "t-hydreigon",
+     "n": 20,
+     "wins": 13,
+     "ties": 0,
+     "losses": 7,
+     "x": 13.0,
+     "pct": 65.0,
+     "ci95": [
+      43.3,
+      81.9
+     ]
+    },
+    {
+     "list": "t-lucario",
+     "n": 20,
+     "wins": 13,
+     "ties": 0,
+     "losses": 7,
+     "x": 13.0,
+     "pct": 65.0,
+     "ci95": [
+      43.3,
+      81.9
+     ]
+    },
+    {
+     "list": "t-sceptile",
+     "n": 20,
+     "wins": 5,
+     "ties": 0,
+     "losses": 15,
+     "x": 5.0,
+     "pct": 25.0,
+     "ci95": [
+      11.2,
+      46.9
+     ]
+    },
+    {
+     "list": "t-suicune",
+     "n": 20,
+     "wins": 4,
+     "ties": 2,
+     "losses": 14,
+     "x": 5.0,
+     "pct": 25.0,
+     "ci95": [
+      11.2,
+      46.9
+     ]
+    },
+    {
+     "list": "t-vespiquen",
+     "n": 20,
+     "wins": 7,
+     "ties": 1,
+     "losses": 12,
+     "x": 7.5,
+     "pct": 37.5,
+     "ci95": [
+      20.0,
+      59.1
+     ]
+    },
+    {
+     "list": "t-weezing",
+     "n": 20,
+     "wins": 5,
+     "ties": 1,
+     "losses": 14,
+     "x": 5.5,
+     "pct": 27.5,
+     "ci95": [
+      12.8,
+      49.4
+     ]
+    }
+   ],
+   "wins_range_95_if_ladder_equalled_this": {
+    "10": [
+     2,
+     8
+    ],
+    "20": [
+     5,
+     14
+    ],
+    "40": [
+     11,
+     25
+    ]
+   },
+   "engine": {
+    "key": "4ebb30a94173",
+    "tree": "4ebb30a94173",
+    "current_when_written": true,
+    "label": "rules switch 2 (main-c045ede, pinned Oct 12)",
+    "text": "laptop/kx3-on-rules2 cd20a97a engine tree 4ebb30a94173: the frozen kx3's players (claude/playout-pilot d513e37b, byte for byte) on main-c045ede's engine (rules switch 2, pinned Oct 12), built on the laptop Oct 12 with rl/strength/build.sh (harness bf9c5d68)"
+   },
+   "in_bot_comparison": true,
+   "comparison_note": null,
+   "source": {
+    "folder": "rl/results/slow_reports/2026-10-12_brew-09-sableye-obstagoon",
+    "manifest_name": "slow_report_brew-09-sableye-obstagoon",
+    "stage": "use",
+    "registered_at": "2026-10-13T04:54:49Z",
+    "repo_commit_at_registration": "05ec3470db87f37dc305c7b50b8b8c42c5fd70c9",
+    "program_sha256": "5011e227cf63619cc8ca9750ee69090037844f8e7abcd0432776b1e2ae3b7f0e",
+    "manifest_file_sha256": "577a1ac83dd4f50d1a44f4b644ce7ff83f9422b432b2346f4b07ef084a96750a",
+    "deck_sha256_in_manifest": "ec0a9376344eb42e13fac9ecb278099d43406455fbc3f8e2749f9d258c5a9a6d",
+    "tested_version": "the same file (sha256 ec0a9376344e)",
+    "files": [
+     {
+      "path": "rl/results/slow_reports/2026-10-12_brew-09-sableye-obstagoon/games.jsonl",
+      "first_commit": {
+       "commit": "d73cf13cdc3277433f894c07f5c37eb28c6b6b14",
+       "date": "2026-10-13T10:44:32Z"
+      },
+      "first_commit_on_main": {
+       "commit": "b89b7ebea31d9abe7fafe6a85be2897b961ce258",
+       "date": "2026-10-13T19:06:11Z"
+      }
+     },
+     {
+      "path": "rl/results/slow_reports/2026-10-12_brew-09-sableye-obstagoon/manifest.json",
+      "first_commit": {
+       "commit": "e154577abe649c7f53ef8e9d33894857e48a739a",
+       "date": "2026-10-13T04:54:49Z"
+      },
+      "first_commit_on_main": {
+       "commit": "b89b7ebea31d9abe7fafe6a85be2897b961ce258",
+       "date": "2026-10-13T19:06:11Z"
+      }
+     }
+    ]
+   },
+   "fixed_at": "2026-10-13T10:44:32Z",
+   "games_sha256": "8ad83b4d84d0af39d9bde60980c4926fb221828b30a08a88aab21a9031522763"
+  },
+  {
+   "id": "km3_floor",
+   "role": "km3_floor",
+   "label": "km3 floor",
+   "kind": "floor",
+   "arm": null,
+   "pilot": "km3",
+   "panel_pilot": [
+    "km3"
+   ],
+   "knows_the_panel_lists": false,
+   "counts": "wins only (a draw is not a win), as the floor pages count",
+   "n": 1920,
+   "wins": 837,
+   "ties": 34,
+   "losses": 1049,
+   "number_pct": 43.6,
+   "ci95_wilson": [
+    41.4,
+    45.8
+   ],
+   "x": 837.0,
+   "per_opponent": [
+    {
+     "list": "t-altaria",
+     "n": 240,
+     "wins": 133,
+     "ties": 2,
+     "losses": 105,
+     "x": 133.0,
+     "pct": 55.4,
+     "ci95": [
+      49.1,
+      61.6
+     ]
+    },
+    {
+     "list": "t-blaziken",
+     "n": 240,
+     "wins": 137,
+     "ties": 4,
+     "losses": 99,
+     "x": 137.0,
+     "pct": 57.1,
+     "ci95": [
+      50.8,
+      63.2
+     ]
+    },
+    {
+     "list": "t-hydreigon",
+     "n": 240,
+     "wins": 140,
+     "ties": 2,
+     "losses": 98,
+     "x": 140.0,
+     "pct": 58.3,
+     "ci95": [
+      52.0,
+      64.4
+     ]
+    },
+    {
+     "list": "t-lucario",
+     "n": 240,
+     "wins": 100,
+     "ties": 6,
+     "losses": 134,
+     "x": 100.0,
+     "pct": 41.7,
+     "ci95": [
+      35.6,
+      48.0
+     ]
+    },
+    {
+     "list": "t-sceptile",
+     "n": 240,
+     "wins": 76,
+     "ties": 1,
+     "losses": 163,
+     "x": 76.0,
+     "pct": 31.7,
+     "ci95": [
+      26.1,
+      37.8
+     ]
+    },
+    {
+     "list": "t-suicune",
+     "n": 240,
+     "wins": 82,
+     "ties": 11,
+     "losses": 147,
+     "x": 82.0,
+     "pct": 34.2,
+     "ci95": [
+      28.5,
+      40.4
+     ]
+    },
+    {
+     "list": "t-vespiquen",
+     "n": 240,
+     "wins": 93,
+     "ties": 4,
+     "losses": 143,
+     "x": 93.0,
+     "pct": 38.8,
+     "ci95": [
+      32.8,
+      45.0
+     ]
+    },
+    {
+     "list": "t-weezing",
+     "n": 240,
+     "wins": 76,
+     "ties": 4,
+     "losses": 160,
+     "x": 76.0,
+     "pct": 31.7,
+     "ci95": [
+      26.1,
+      37.8
+     ]
+    }
+   ],
+   "wins_range_95_if_ladder_equalled_this": {
+    "10": [
+     1,
+     7
+    ],
+    "20": [
+     4,
+     13
+    ],
+    "40": [
+     11,
+     24
+    ]
+   },
+   "engine": {
+    "key": "rl/engine-2026-10-12/deckgym",
+    "path": "rl/engine-2026-10-12/deckgym",
+    "current_when_written": true,
+    "label": "rules switch 2 (main-c045ede, pinned Oct 12)"
+   },
+   "in_bot_comparison": true,
+   "comparison_note": null,
+   "source": {
+    "page": "rl/results/floor_recheck_rules2_2026-10/pages/brew-09/brew-09-sableye-obstagoon.md",
+    "games": "rl/results/floor_recheck_rules2_2026-10/pages/brew-09/brew-09-sableye-obstagoon_games.jsonl",
+    "deck_check": {
+     "how": "the deck file's card list at the commit that first holds these floor games (a floor page does not record the card list it ran, so this check cannot tell two lists apart if the deck file changed before the run)",
+     "card_list_sha256": "5254637c9b2507729f83d660858686528a252a9a9fff287c2f174970747cdf32",
+     "matches": true,
+     "file_sha256": "ec0a9376344eb42e13fac9ecb278099d43406455fbc3f8e2749f9d258c5a9a6d",
+     "commit": "7f235df3c5b62ab92de4c450243ab00903c1c2b5"
+    },
+    "files": [
+     {
+      "path": "rl/results/floor_recheck_rules2_2026-10/pages/brew-09/brew-09-sableye-obstagoon_games.jsonl",
+      "first_commit": {
+       "commit": "7f235df3c5b62ab92de4c450243ab00903c1c2b5",
+       "date": "2026-10-12T05:36:06Z"
+      },
+      "first_commit_on_main": {
+       "commit": "7f235df3c5b62ab92de4c450243ab00903c1c2b5",
+       "date": "2026-10-12T05:36:06Z"
+      }
+     },
+     {
+      "path": "rl/results/floor_recheck_rules2_2026-10/pages/brew-09/brew-09-sableye-obstagoon.md",
+      "first_commit": {
+       "commit": "7f235df3c5b62ab92de4c450243ab00903c1c2b5",
+       "date": "2026-10-12T05:36:06Z"
+      },
+      "first_commit_on_main": {
+       "commit": "7f235df3c5b62ab92de4c450243ab00903c1c2b5",
+       "date": "2026-10-12T05:36:06Z"
+      }
+     }
+    ]
+   },
+   "fixed_at": "2026-10-12T05:36:06Z",
+   "games_sha256": "b8b0957c02604d34e7f96e87ac9ee6cdf9ce743fd03fa97d70b955bdb88832ca"
+  },
+  {
+   "id": "km3_floor@engine-2026-09-30",
+   "role": "km3_floor",
+   "label": "km3 floor (older engine)",
+   "kind": "floor",
+   "arm": null,
+   "pilot": "km3",
+   "panel_pilot": [
+    "km3"
+   ],
+   "knows_the_panel_lists": false,
+   "counts": "wins only (a draw is not a win), as the floor pages count",
+   "n": 1920,
+   "wins": 835,
+   "ties": 34,
+   "losses": 1051,
+   "number_pct": 43.5,
+   "ci95_wilson": [
+    41.3,
+    45.7
+   ],
+   "x": 835.0,
+   "per_opponent": [
+    {
+     "list": "t-altaria",
+     "n": 240,
+     "wins": 131,
+     "ties": 2,
+     "losses": 107,
+     "x": 131.0,
+     "pct": 54.6,
+     "ci95": [
+      48.3,
+      60.8
+     ]
+    },
+    {
+     "list": "t-blaziken",
+     "n": 240,
+     "wins": 137,
+     "ties": 4,
+     "losses": 99,
+     "x": 137.0,
+     "pct": 57.1,
+     "ci95": [
+      50.8,
+      63.2
+     ]
+    },
+    {
+     "list": "t-hydreigon",
+     "n": 240,
+     "wins": 140,
+     "ties": 2,
+     "losses": 98,
+     "x": 140.0,
+     "pct": 58.3,
+     "ci95": [
+      52.0,
+      64.4
+     ]
+    },
+    {
+     "list": "t-lucario",
+     "n": 240,
+     "wins": 100,
+     "ties": 6,
+     "losses": 134,
+     "x": 100.0,
+     "pct": 41.7,
+     "ci95": [
+      35.6,
+      48.0
+     ]
+    },
+    {
+     "list": "t-sceptile",
+     "n": 240,
+     "wins": 76,
+     "ties": 1,
+     "losses": 163,
+     "x": 76.0,
+     "pct": 31.7,
+     "ci95": [
+      26.1,
+      37.8
+     ]
+    },
+    {
+     "list": "t-suicune",
+     "n": 240,
+     "wins": 82,
+     "ties": 11,
+     "losses": 147,
+     "x": 82.0,
+     "pct": 34.2,
+     "ci95": [
+      28.5,
+      40.4
+     ]
+    },
+    {
+     "list": "t-vespiquen",
+     "n": 240,
+     "wins": 93,
+     "ties": 4,
+     "losses": 143,
+     "x": 93.0,
+     "pct": 38.8,
+     "ci95": [
+      32.8,
+      45.0
+     ]
+    },
+    {
+     "list": "t-weezing",
+     "n": 240,
+     "wins": 76,
+     "ties": 4,
+     "losses": 160,
+     "x": 76.0,
+     "pct": 31.7,
+     "ci95": [
+      26.1,
+      37.8
+     ]
+    }
+   ],
+   "wins_range_95_if_ladder_equalled_this": {
+    "10": [
+     1,
+     7
+    ],
+    "20": [
+     4,
+     13
+    ],
+    "40": [
+     11,
+     24
+    ]
+   },
+   "engine": {
+    "key": "rl/engine-2026-09-30/deckgym",
+    "path": "rl/engine-2026-09-30/deckgym",
+    "current_when_written": false,
+    "label": "older engine (before rules switch 2 (main-c045ede, pinned Oct 12))"
+   },
+   "in_bot_comparison": false,
+   "comparison_note": "older engine: kept for the record, out of the bot comparison",
+   "source": {
+    "page": "rl/results/floor_dustin_2026-09-30/brew-09-sableye-obstagoon.md",
+    "games": "rl/results/floor_dustin_2026-09-30/brew-09-sableye-obstagoon_games.jsonl",
+    "deck_check": {
+     "how": "the deck file's card list at the commit that first holds these floor games (a floor page does not record the card list it ran, so this check cannot tell two lists apart if the deck file changed before the run)",
+     "card_list_sha256": "5254637c9b2507729f83d660858686528a252a9a9fff287c2f174970747cdf32",
+     "matches": true,
+     "file_sha256": "ec0a9376344eb42e13fac9ecb278099d43406455fbc3f8e2749f9d258c5a9a6d",
+     "commit": "4690810278b40b490d7c57aee2c7b35ae315ddab"
+    },
+    "files": [
+     {
+      "path": "rl/results/floor_dustin_2026-09-30/brew-09-sableye-obstagoon_games.jsonl",
+      "first_commit": {
+       "commit": "4690810278b40b490d7c57aee2c7b35ae315ddab",
+       "date": "2026-09-30T21:34:07Z"
+      },
+      "first_commit_on_main": {
+       "commit": "4690810278b40b490d7c57aee2c7b35ae315ddab",
+       "date": "2026-09-30T21:34:07Z"
+      }
+     },
+     {
+      "path": "rl/results/floor_dustin_2026-09-30/brew-09-sableye-obstagoon.md",
+      "first_commit": {
+       "commit": "4690810278b40b490d7c57aee2c7b35ae315ddab",
+       "date": "2026-09-30T21:34:07Z"
+      },
+      "first_commit_on_main": {
+       "commit": "4690810278b40b490d7c57aee2c7b35ae315ddab",
+       "date": "2026-09-30T21:34:07Z"
+      }
+     }
+    ]
+   },
+   "fixed_at": "2026-09-30T21:34:07Z",
+   "games_sha256": "86dfa424e358d6a83a632b3d7c0de3434389db427f486ba82211c029006c9eb3"
+  },
+  {
+   "id": "kog3_floor@engine-2026-09-28",
+   "role": "kog3_floor",
+   "label": "kog3 floor (older engine)",
+   "kind": "floor",
+   "arm": null,
+   "pilot": "kog3",
+   "panel_pilot": [
+    "kog3"
+   ],
+   "knows_the_panel_lists": false,
+   "counts": "wins only (a draw is not a win), as the floor pages count",
+   "n": 1920,
+   "wins": 835,
+   "ties": 34,
+   "losses": 1051,
+   "number_pct": 43.5,
+   "ci95_wilson": [
+    41.3,
+    45.7
+   ],
+   "x": 835.0,
+   "per_opponent": [
+    {
+     "list": "t-altaria",
+     "n": 240,
+     "wins": 132,
+     "ties": 2,
+     "losses": 106,
+     "x": 132.0,
+     "pct": 55.0,
+     "ci95": [
+      48.7,
+      61.2
+     ]
+    },
+    {
+     "list": "t-blaziken",
+     "n": 240,
+     "wins": 137,
+     "ties": 4,
+     "losses": 99,
+     "x": 137.0,
+     "pct": 57.1,
+     "ci95": [
+      50.8,
+      63.2
+     ]
+    },
+    {
+     "list": "t-hydreigon",
+     "n": 240,
+     "wins": 140,
+     "ties": 2,
+     "losses": 98,
+     "x": 140.0,
+     "pct": 58.3,
+     "ci95": [
+      52.0,
+      64.4
+     ]
+    },
+    {
+     "list": "t-lucario",
+     "n": 240,
+     "wins": 97,
+     "ties": 7,
+     "losses": 136,
+     "x": 97.0,
+     "pct": 40.4,
+     "ci95": [
+      34.4,
+      46.7
+     ]
+    },
+    {
+     "list": "t-sceptile",
+     "n": 240,
+     "wins": 76,
+     "ties": 1,
+     "losses": 163,
+     "x": 76.0,
+     "pct": 31.7,
+     "ci95": [
+      26.1,
+      37.8
+     ]
+    },
+    {
+     "list": "t-suicune",
+     "n": 240,
+     "wins": 84,
+     "ties": 10,
+     "losses": 146,
+     "x": 84.0,
+     "pct": 35.0,
+     "ci95": [
+      29.2,
+      41.2
+     ]
+    },
+    {
+     "list": "t-vespiquen",
+     "n": 240,
+     "wins": 93,
+     "ties": 4,
+     "losses": 143,
+     "x": 93.0,
+     "pct": 38.8,
+     "ci95": [
+      32.8,
+      45.0
+     ]
+    },
+    {
+     "list": "t-weezing",
+     "n": 240,
+     "wins": 76,
+     "ties": 4,
+     "losses": 160,
+     "x": 76.0,
+     "pct": 31.7,
+     "ci95": [
+      26.1,
+      37.8
+     ]
+    }
+   ],
+   "wins_range_95_if_ladder_equalled_this": {
+    "10": [
+     1,
+     7
+    ],
+    "20": [
+     4,
+     13
+    ],
+    "40": [
+     11,
+     24
+    ]
+   },
+   "engine": {
+    "key": "rl/engine-2026-09-28/deckgym",
+    "path": "rl/engine-2026-09-28/deckgym",
+    "current_when_written": false,
+    "label": "older engine (before rules switch 2 (main-c045ede, pinned Oct 12))"
+   },
+   "in_bot_comparison": false,
+   "comparison_note": "older engine: kept for the record, out of the bot comparison",
+   "source": {
+    "page": "rl/results/floor_brews_2026-09-28/brew-09-sableye-obstagoon.md",
+    "games": "rl/results/floor_brews_2026-09-28/brew-09-sableye-obstagoon_games.jsonl",
+    "deck_check": {
+     "how": "the deck file's card list at the commit that first holds these floor games (a floor page does not record the card list it ran, so this check cannot tell two lists apart if the deck file changed before the run)",
+     "card_list_sha256": "5254637c9b2507729f83d660858686528a252a9a9fff287c2f174970747cdf32",
+     "matches": true,
+     "file_sha256": "ec0a9376344eb42e13fac9ecb278099d43406455fbc3f8e2749f9d258c5a9a6d",
+     "commit": "e8b60c4a1266199b9c17c05d196b0c3bef7825de"
+    },
+    "files": [
+     {
+      "path": "rl/results/floor_brews_2026-09-28/brew-09-sableye-obstagoon_games.jsonl",
+      "first_commit": {
+       "commit": "e8b60c4a1266199b9c17c05d196b0c3bef7825de",
+       "date": "2026-09-28T23:36:36Z"
+      },
+      "first_commit_on_main": {
+       "commit": "e8b60c4a1266199b9c17c05d196b0c3bef7825de",
+       "date": "2026-09-28T23:36:36Z"
+      }
+     },
+     {
+      "path": "rl/results/floor_brews_2026-09-28/brew-09-sableye-obstagoon.md",
+      "first_commit": {
+       "commit": "e8b60c4a1266199b9c17c05d196b0c3bef7825de",
+       "date": "2026-09-28T23:36:36Z"
+      },
+      "first_commit_on_main": {
+       "commit": "e8b60c4a1266199b9c17c05d196b0c3bef7825de",
+       "date": "2026-09-28T23:36:36Z"
+      }
+     }
+    ]
+   },
+   "fixed_at": "2026-09-28T23:36:36Z",
+   "games_sha256": "cae4c66d870edb99bcb8b6d0ba0cb854eebb3c8bbefc32b799f61e84d8a0bc13"
+  }
+ ],
+ "duplicates": [],
+ "matching_rule": {
+  "version": "v1 (2026-10-14)",
+  "how": [
+   "Clean the text: lower case; curly quotes straightened; hyphens and dashes to spaces; spaces collapsed; 'm <name>' read as 'mega <name>' for the Pokemon whose Mega this rule names (altaria, blaziken, lucario, sceptile, charizard, sharpedo, rayquaza, absol).",
+   "A game goes on a list when the text names one of the list's 'names' alternatives (every phrase of it, as whole words) and none of its 'unless' words; the first list in order wins.",
+   "'exact' when every Pokemon the text names is in that list (from the list's file); 'variant' when anything else is named. Words in parentheses, after a ';', and the words in 'filler' are ignored for this.",
+   "A guess word ('likely', 'maybe', 'probably', 'possibly', '?') makes the game 'inferred': its record is shown apart and it is never scored.",
+   "Lists marked readout_only have no bot number: their games count with the off-panel games.",
+   "Everything else is 'unmatched' (off the panel, no prediction). A concession before the opponent's attacker showed is unmatched by construction; the game still counts in every record (see the reading rule on the bias this causes)."
+  ],
+  "guess_words": [
+   "likely",
+   "maybe",
+   "probably",
+   "possibly",
+   "?"
+  ],
+  "filler": [
+   "ex",
+   "mega",
+   "tr",
+   "team",
+   "rocket",
+   "rocket's",
+   "and",
+   "with",
+   "or",
+   "deck",
+   "list",
+   "core",
+   "build",
+   "line",
+   "pile"
+  ],
+  "lists": [
+   {
+    "list": "t-altaria",
+    "names": [
+     [
+      "mega altaria"
+     ]
+    ],
+    "unless": [],
+    "pokemon": [
+     "Swablu",
+     "Mega Altaria ex",
+     "Eevee",
+     "Espeon",
+     "Darkrai",
+     "Igglybuff"
+    ]
+   },
+   {
+    "list": "t-blaziken",
+    "names": [
+     [
+      "mega blaziken"
+     ]
+    ],
+    "unless": [],
+    "pokemon": [
+     "Torchic",
+     "Mega Blaziken ex",
+     "Heatmor",
+     "Castform Sunny Form"
+    ]
+   },
+   {
+    "list": "t-hydreigon",
+    "names": [
+     [
+      "hydreigon"
+     ]
+    ],
+    "unless": [],
+    "pokemon": [
+     "Deino",
+     "Hydreigon",
+     "Bombirdier",
+     "Mega Absol ex"
+    ]
+   },
+   {
+    "list": "t-lucario",
+    "names": [
+     [
+      "mega lucario"
+     ]
+    ],
+    "unless": [
+     "raticate"
+    ],
+    "pokemon": [
+     "Riolu",
+     "Mega Lucario ex",
+     "Lucario",
+     "Bonsly",
+     "Hitmonlee"
+    ]
+   },
+   {
+    "list": "t-sceptile",
+    "names": [
+     [
+      "mega sceptile"
+     ]
+    ],
+    "unless": [],
+    "pokemon": [
+     "Caterpie",
+     "Metapod",
+     "Butterfree",
+     "Treecko",
+     "Grovyle",
+     "Mega Sceptile ex"
+    ]
+   },
+   {
+    "list": "t-suicune",
+    "names": [
+     [
+      "suicune ex"
+     ],
+     [
+      "suicune",
+      "baxcalibur"
+     ]
+    ],
+    "unless": [],
+    "pokemon": [
+     "Frigibax",
+     "Baxcalibur",
+     "Suicune ex",
+     "Chien-Pao ex"
+    ]
+   },
+   {
+    "list": "t-vespiquen",
+    "names": [
+     [
+      "vespiquen"
+     ]
+    ],
+    "unless": [],
+    "pokemon": [
+     "Combee",
+     "Vespiquen ex",
+     "Shuckle ex",
+     "Teal Mask Ogerpon ex"
+    ]
+   },
+   {
+    "list": "t-weezing",
+    "names": [
+     [
+      "weezing ex"
+     ]
+    ],
+    "unless": [
+     "magmar"
+    ],
+    "pokemon": [
+     "Hoopa ex",
+     "Team Rocket's Koffing",
+     "Team Rocket's Weezing ex",
+     "Darkrai ex"
+    ]
+   },
+   {
+    "list": "h-charizardy_entei",
+    "names": [
+     [
+      "mega charizard y"
+     ]
+    ],
+    "unless": [],
+    "readout_only": true,
+    "pokemon": [
+     "Charmander",
+     "Charmeleon",
+     "Mega Charizard Y ex",
+     "Entei ex"
+    ]
+   },
+   {
+    "list": "l-sharpedo",
+    "names": [
+     [
+      "mega sharpedo"
+     ]
+    ],
+    "unless": [],
+    "readout_only": true,
+    "pokemon": [
+     "Carvanha",
+     "Mega Sharpedo ex",
+     "Magikarp",
+     "Gyarados",
+     "Mantyke",
+     "Chien-Pao ex"
+    ]
+   },
+   {
+    "list": "g-dragonair_mega_rayquaza",
+    "names": [
+     [
+      "mega rayquaza"
+     ]
+    ],
+    "unless": [],
+    "readout_only": true,
+    "pokemon": [
+     "Dratini",
+     "Gouging Fire",
+     "Dragonair",
+     "Mega Rayquaza ex"
+    ]
+   }
+  ],
+  "list_files": {
+   "t-altaria": "decks/screen/opponents/t-altaria.txt",
+   "t-blaziken": "decks/screen/opponents/t-blaziken.txt",
+   "t-hydreigon": "decks/screen/opponents/t-hydreigon.txt",
+   "t-lucario": "decks/screen/opponents/t-lucario.txt",
+   "t-sceptile": "decks/screen/opponents/t-sceptile.txt",
+   "t-suicune": "decks/screen/opponents/t-suicune.txt",
+   "t-vespiquen": "decks/screen/opponents/t-vespiquen.txt",
+   "t-weezing": "decks/screen/opponents/t-weezing.txt",
+   "h-charizardy_entei": "rl/results/b2e_card_check_2026-09-26/decks/h-charizardy_entei.txt",
+   "l-sharpedo": "decks/screen/panel_ladder_2026-09-26/l-sharpedo.txt",
+   "g-dragonair_mega_rayquaza": "decks/gauntlet_2026-09-26/g-dragonair_mega_rayquaza.txt"
+  }
+ },
+ "forecast": {
+  "rule": {
+   "version": "calibrated-v1",
+   "matched": "f_k = expit(logit(floor_k) + c): the km3 floor's shape across the 8 lists (240 games a list), shifted by one logit constant c, solved by bisection, so that the equal-weight mean of the 8 forecasts equals the bot's own number. The raw per-list cells (6-20 games a list) are saved, not used: mostly noise.",
+   "shape": "the newest current-engine floor given; if there is none, the newest older-engine floor, flagged. An addendum uses its base file's shape.",
+   "unmatched": "no matchup forecast; the game is in the off-panel record. The level check uses the bot's number for every game, labelled with its assumption (off-panel opponents are like the panel on average).",
+   "inferred": "not scored: the list was guessed."
+  },
+  "floor_bot": "km3_floor",
+  "floor_engine_current": true,
+  "note": null,
+  "shape": [
+   0.554167,
+   0.570833,
+   0.583333,
+   0.416667,
+   0.316667,
+   0.341667,
+   0.3875,
+   0.316667
+  ],
+  "per_bot": {
+   "kx3_slow": {
+    "level": 0.66875,
+    "shift_logit": 1.006249,
+    "per_list": {
+     "t-altaria": 0.772726,
+     "t-blaziken": 0.784401,
+     "t-hydreigon": 0.792937,
+     "t-lucario": 0.661453,
+     "t-sceptile": 0.559003,
+     "t-suicune": 0.586708,
+     "t-vespiquen": 0.633768,
+     "t-weezing": 0.559003
+    },
+    "per_list_pct": {
+     "t-altaria": 77.3,
+     "t-blaziken": 78.4,
+     "t-hydreigon": 79.3,
+     "t-lucario": 66.1,
+     "t-sceptile": 55.9,
+     "t-suicune": 58.7,
+     "t-vespiquen": 63.4,
+     "t-weezing": 55.9
+    },
+    "mean_of_lists_pct": 66.9
+   },
+   "km3_slow_same_deals": {
+    "level": 0.45625,
+    "shift_logit": 0.086352,
+    "per_list": {
+     "t-altaria": 0.575389,
+     "t-blaziken": 0.591847,
+     "t-hydreigon": 0.604159,
+     "t-lucario": 0.437794,
+     "t-sceptile": 0.335641,
+     "t-suicune": 0.361347,
+     "t-vespiquen": 0.408183,
+     "t-weezing": 0.335641
+    },
+    "per_list_pct": {
+     "t-altaria": 57.5,
+     "t-blaziken": 59.2,
+     "t-hydreigon": 60.4,
+     "t-lucario": 43.8,
+     "t-sceptile": 33.6,
+     "t-suicune": 36.1,
+     "t-vespiquen": 40.8,
+     "t-weezing": 33.6
+    },
+    "mean_of_lists_pct": 45.6
+   },
+   "km3_floor": {
+    "level": 0.435937,
+    "shift_logit": -0.0,
+    "per_list": {
+     "t-altaria": 0.554167,
+     "t-blaziken": 0.570833,
+     "t-hydreigon": 0.583333,
+     "t-lucario": 0.416667,
+     "t-sceptile": 0.316667,
+     "t-suicune": 0.341667,
+     "t-vespiquen": 0.3875,
+     "t-weezing": 0.316667
+    },
+    "per_list_pct": {
+     "t-altaria": 55.4,
+     "t-blaziken": 57.1,
+     "t-hydreigon": 58.3,
+     "t-lucario": 41.7,
+     "t-sceptile": 31.7,
+     "t-suicune": 34.2,
+     "t-vespiquen": 38.8,
+     "t-weezing": 31.7
+    },
+    "mean_of_lists_pct": 43.6
+   },
+   "km3_floor@engine-2026-09-30": {
+    "level": 0.434896,
+    "shift_logit": -0.00445,
+    "per_list": {
+     "t-altaria": 0.553067,
+     "t-blaziken": 0.569743,
+     "t-hydreigon": 0.582251,
+     "t-lucario": 0.415586,
+     "t-sceptile": 0.315705,
+     "t-suicune": 0.340666,
+     "t-vespiquen": 0.386444,
+     "t-weezing": 0.315705
+    },
+    "per_list_pct": {
+     "t-altaria": 55.3,
+     "t-blaziken": 57.0,
+     "t-hydreigon": 58.2,
+     "t-lucario": 41.6,
+     "t-sceptile": 31.6,
+     "t-suicune": 34.1,
+     "t-vespiquen": 38.6,
+     "t-weezing": 31.6
+    },
+    "mean_of_lists_pct": 43.5
+   },
+   "kog3_floor@engine-2026-09-28": {
+    "level": 0.434896,
+    "shift_logit": -0.00445,
+    "per_list": {
+     "t-altaria": 0.553067,
+     "t-blaziken": 0.569743,
+     "t-hydreigon": 0.582251,
+     "t-lucario": 0.415586,
+     "t-sceptile": 0.315705,
+     "t-suicune": 0.340666,
+     "t-vespiquen": 0.386444,
+     "t-weezing": 0.315705
+    },
+    "per_list_pct": {
+     "t-altaria": 55.3,
+     "t-blaziken": 57.0,
+     "t-hydreigon": 58.2,
+     "t-lucario": 41.6,
+     "t-sceptile": 31.6,
+     "t-suicune": 34.1,
+     "t-vespiquen": 38.6,
+     "t-weezing": 31.6
+    },
+    "mean_of_lists_pct": 43.5
+   }
+  }
+ }
+}
