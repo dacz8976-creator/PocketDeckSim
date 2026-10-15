@@ -169,6 +169,9 @@ pub struct PlayoutParams {
     /// ky (`ky<depth>...`; Oct 14; the next pilot, no switch yet): the pilot is spelled ky, and with no list consistent
     /// REALISTIC draws the closest pooled list, as F did, instead of inferring one. Everything else is kx's.
     pub closest: bool,
+    /// ky `_infer` (declared; off by default, so ky keeps F's closest list): with no list consistent, the inferred list kx
+    /// builds, as on 9a0bc5ac. Only ky codes take it.
+    pub infer: bool,
 }
 
 impl PlayoutParams {
@@ -188,12 +191,26 @@ impl PlayoutParams {
             z_skip: None,
             max_rounds: None,
             closest: false,
+            infer: false,
         }
     }
 
     /// Parses the code after the `ky` prefix (lowercase): the `kx` parts, with the closest-list fallback.
     pub fn parse_ky(rest: &str) -> Result<Self, String> {
-        Self::parse(rest).map(|params| PlayoutParams { closest: true, ..params }).map_err(|e| e.replacen("kx", "ky", 3))
+        let mut infer = false;
+        let kept: Vec<&str> = rest
+            .split('_')
+            .enumerate()
+            .filter(|&(i, part)| {
+                let hit = i > 0 && part == "infer";
+                infer |= hit;
+                !hit
+            })
+            .map(|(_, part)| part)
+            .collect();
+        Self::parse(&kept.join("_"))
+            .map(|params| PlayoutParams { closest: true, infer, ..params })
+            .map_err(|e| e.replacen("kx", "ky", 3))
     }
 
     /// Parses the code after the `kx` prefix (lowercase), e.g. `3_r8_c5_z1.5_lab_t30_trace`.
@@ -263,7 +280,7 @@ impl PlayoutParams {
     /// them are as before).
     pub fn code(&self) -> String {
         format!(
-            "{}{}_r{}_c{}_z{}_{}_t{}{}_pool{}{}{}{}{}{}",
+            "{}{}_r{}_c{}_z{}_{}_t{}{}_pool{}{}{}{}{}{}{}",
             if self.closest { "ky" } else { "kx" },
             self.depth,
             self.rollouts,
@@ -277,7 +294,8 @@ impl PlayoutParams {
             if self.noeffect { "_noeffect" } else { "" },
             self.z_attack.map_or(String::new(), |z| format!("_za{z}")),
             self.z_skip.map_or(String::new(), |z| format!("_zs{z}")),
-            self.max_rounds.map_or(String::new(), |m| format!("_m{m}"))
+            self.max_rounds.map_or(String::new(), |m| format!("_m{m}")),
+            if self.infer { "_infer" } else { "" }
         )
     }
 }
@@ -540,7 +558,7 @@ struct Core {
     depth: usize,
     /// The Tool-placement rule in the play-outs.
     tools: bool,
-    /// ky: with no list consistent, the closest pooled list rather than an inferred one.
+    /// ky (without `_infer`): with no list consistent, the closest pooled list rather than an inferred one.
     closest: bool,
 }
 
@@ -591,7 +609,7 @@ impl PlayoutPlayer {
                 pool.iter().find(|(_, d)| id_multiset(d) == target).map(|(name, _)| (name.clone(), opponent_list.clone()))
             })
             .flatten();
-        let core = Core { deck, pool, meta, listed, extras, lab, depth: params.depth, tools: params.tools, closest: params.closest };
+        let core = Core { deck, pool, meta, listed, extras, lab, depth: params.depth, tools: params.tools, closest: params.closest && !params.infer };
         PlayoutPlayer { params, km, core, printed: false, decisions: 0, millis: 0.0, omniscient: 0 }
     }
 
@@ -1726,6 +1744,41 @@ mod tests {
         // kx3 still infers where ky3 takes the closest.
         let (_, label) = k.core.sample_list(&bulbasaur, &[EnergyType::Metal], &mut StdRng::seed_from_u64(1));
         assert!(label.starts_with("inferred from"), "{label}");
+    }
+
+    /// `_infer` (ky only, off by default): parsed, spelled back, and refused on kx; off, the code and the params are as before.
+    #[test]
+    fn ky_infer_parses_round_trips_and_is_off_by_default() {
+        let on = PlayoutParams::parse_ky("3_r16_c12_z2_real_t0_poolmeta_infer").unwrap();
+        let off = PlayoutParams::parse_ky("3_r16_c12_z2_real_t0_poolmeta").unwrap();
+        assert!(on.infer && on.closest && !off.infer);
+        assert_eq!(on.code(), "ky3_r16_c12_z2_real_t0_poolmeta_infer");
+        assert_eq!(off.code(), "ky3_r16_c12_z2_real_t0_poolmeta");
+        assert_eq!(PlayoutParams { infer: false, ..on.clone() }, off);
+        let back = crate::players::parse_player_code(&on.code()).unwrap();
+        assert!(matches!(back, crate::players::PlayerCode::KX { params } if params == on));
+        assert!(PlayoutParams::parse_ky("3_infer_m64").unwrap().infer);
+        assert!(crate::players::parse_player_code("kx3_infer").is_err());
+        assert!(crate::players::parse_player_code("ky3_inferx").is_err());
+    }
+
+    /// With `_infer` on, ky3 builds an inferred list where none is consistent (as kx3 does); off, it takes the closest.
+    #[test]
+    fn ky_infer_switches_the_fallback_to_an_inferred_list() {
+        let (deck_a, deck_b) = crate::test_support::load_test_decks();
+        let params = PlayoutParams::parse_ky("3_r16_c12_z2_real_t0_poolmeta_infer").unwrap();
+        let on = PlayoutPlayer::with_extra_lists(deck_a, deck_b, params, Vec::new());
+        let off = ky_pilot();
+        let bulbasaur = vec![get_card_by_enum(CardId::A1001Bulbasaur)];
+        let label = |p: &PlayoutPlayer| p.core.sample_list(&bulbasaur, &[EnergyType::Metal], &mut StdRng::seed_from_u64(1)).1;
+        assert!(label(&on).starts_with("inferred from"), "{}", label(&on));
+        assert!(label(&off).contains("(closest,"), "{}", label(&off));
+        // Where a list is consistent, on and off draw the same list.
+        for seed in 0..20 {
+            let a = on.core.sample_list(&[], &[EnergyType::Water], &mut StdRng::seed_from_u64(seed));
+            let b = off.core.sample_list(&[], &[EnergyType::Water], &mut StdRng::seed_from_u64(seed));
+            assert_eq!((a.1, a.0.cards), (b.1, b.0.cards));
+        }
     }
 
     /// The meta pool loads 8 lists: each research/X holds the same cards and Energy as t-X.
