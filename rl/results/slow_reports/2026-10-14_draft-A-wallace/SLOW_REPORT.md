@@ -6,17 +6,17 @@
 
 Question: how does draft-A-wallace do when kx3 plays it against the 8 public lists, and is that better than when km3 plays the same deck on the same deals?
 
-**PARTIAL: 100 kx3 games + 100 cheap km3 baseline games so far (200 of the 320 games planned; both pilots' games count in the 320). The numbers below will move; read them as a snapshot.**
+**PARTIAL: 120 kx3 games + 120 cheap km3 baseline games so far (240 of the 320 games planned; both pilots' games count in the 320). The numbers below will move; read them as a snapshot.**
 
-Size: 100 kx3 games + 100 cheap km3 baseline games so far, of 160 kx3 games + 160 cheap km3 baseline games planned.
+Size: 120 kx3 games + 120 cheap km3 baseline games so far, of 160 kx3 games + 160 cheap km3 baseline games planned.
 
-draft-A-wallace scored **64.0%** over **100 games** (games from 5 of the 8 public lists so far): probably between 54.2% and 72.7% (95% interval; this range refers to these 100 kx3 games). A win counts 1, a tie 1/2, a loss 0.
+draft-A-wallace scored **65.0%** over **120 games** (games from 6 of the 8 public lists so far): probably between 56.1% and 72.9% (95% interval; this range refers to these 120 kx3 games). A win counts 1, a tie 1/2, a loss 0.
 
 ### How much better kx3 plays this deck than km3
 
-On the same deals, kx3 scored **+16.0 points** compared with km3 piloting this deck (kx3 64.0%, km3 on this deck 48.0%, over 100 paired games: each a deal and seat played by both pilots, so 100 kx3 games + 100 cheap km3 baseline games), probably between +7.2 and +24.8 points (95% interval; this range refers to those 100 paired games).
+On the same deals, kx3 scored **+15.8 points** compared with km3 piloting this deck (kx3 65.0%, km3 on this deck 49.2%, over 120 paired games: each a deal and seat played by both pilots, so 120 kx3 games + 120 cheap km3 baseline games), probably between +8.1 and +23.6 points (95% interval; this range refers to those 120 paired games).
 
-That range does not include no gain: on these 100 paired games kx3 did better than km3. It does not say by exactly how much: that part of the range is as wide as 100 paired games make it.
+That range does not include no gain: on these 120 paired games kx3 did better than km3. It does not say by exactly how much: that part of the range is as wide as 120 paired games make it.
 
 ## Against each public list
 
@@ -27,7 +27,7 @@ That range does not include no gain: on these 100 paired games kx3 did better th
 | t-hydreigon | 20 | 65.0% | 43.3% to 81.9% |
 | t-lucario | 20 | 70.0% | 48.1% to 85.5% |
 | t-sceptile | 20 | 45.0% | 25.8% to 65.8% |
-| t-suicune | 0 | n/a | n/a |
+| t-suicune | 20 | 70.0% | 48.1% to 85.5% |
 | t-vespiquen | 0 | n/a | n/a |
 | t-weezing | 0 | n/a | n/a |
 
@@ -35,25 +35,25 @@ Each row's range refers only to the kx3 games against that list (the row's games
 
 ## Who went first
 
-- When draft-A-wallace went first: 69.2% over 52 games (55.7% to 80.1%)
-- When draft-A-wallace went second: 58.3% over 48 games (44.3% to 71.2%)
+- When draft-A-wallace went first: 69.8% over 63 games (57.6% to 79.8%)
+- When draft-A-wallace went second: 59.6% over 57 games (46.7% to 71.4%)
 
 Each range refers only to the kx3 games on its line; a few dozen games can show a large first-or-second difference, not a small one.
 
 ## The time it took
 
-kx3 took 602 s a game on average (about 10 min), median 546 s, slowest 1462 s, with 4 threads going at once. km3 playing this deck took 0.6 s a game.
-Running time from the run log: 4.3 h over 5 sittings, for 200 games in all: 100 kx3 games + 100 cheap km3 baseline games.
+kx3 took 781 s a game on average (about 13 min), median 582 s, slowest 3045 s, with 4 threads going at once. km3 playing this deck took 0.7 s a game.
+Running time from the run log: 6.8 h over 6 sittings, for 240 games in all: 120 kx3 games + 120 cheap km3 baseline games.
 
 ## What these numbers can and can't say
 
-**These numbers say how draft-A-wallace did in simulated games with kx3 playing it against the 8 public lists, probably between 54.2% and 72.7%; they are not a ranking, they say nothing about decks outside those lists, and there is no pass or fail line.**
+**These numbers say how draft-A-wallace did in simulated games with kx3 playing it against the 8 public lists, probably between 56.1% and 72.9%; they are not a ranking, they say nothing about decks outside those lists, and there is no pass or fail line.**
 
 In more detail:
 
 - kx3, a strong but slow pilot, plays your deck knowing its own cards. It does not know which of the 8 public lists it faces, but its opponent is always one of them and always plays like the program kx3 imagines when it looks ahead, so it is better informed here than it would be against a person on the ladder or a deck outside the 8 lists. Read the score as the optimistic end.
 - The 8 lists count equally here, not by how common they are on the ladder.
-- The range covers only the luck of the shuffles and coin flips in these 100 games; it does not cover how true to the real game the simulator is. It can tell whether kx3 plays draft-A-wallace clearly above or clearly below an even score against these 8 lists; it cannot tell two decks apart whose scores differ by less than the width of such a range (18.5 points here), and more deals narrow it.
+- The range covers only the luck of the shuffles and coin flips in these 120 games; it does not cover how true to the real game the simulator is. It can tell whether kx3 plays draft-A-wallace clearly above or clearly below an even score against these 8 lists; it cannot tell two decks apart whose scores differ by less than the width of such a range (16.8 points here), and more deals narrow it.
 - There is no pass or fail line: whether draft-A-wallace is worth playing is a call for the player.
 
 ## What was run
