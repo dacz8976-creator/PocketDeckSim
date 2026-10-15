@@ -151,6 +151,22 @@ Line numbers refer to origin/main 70319c3d. These files are the same blobs on 9a
 
 ## 3. The pilot test
 
+**Amendment (Oct 15, after Dustin corrected the plan; see `../../setup_tester/SPEC_AMENDMENT_1.md`).** The plan lines are P2-P5
+from that amendment, on his played list:
+- P2: both Glimmora had their turn. In a bot game that means each attacked at least once.
+- P3: Muk or Pawniard was Active.
+- P4: Kingambit ready at the winning moment, in two columns, "knocks out their strongest" and "wins outright".
+- P5: the plan was reached before the opponent's third point.
+
+His plan is the reference:
+- Regigigas leads as the wall, with Ilima to pull it back.
+- Both Glimmora get a turn.
+- Muk and Pawniard are never Active.
+- Pawniard is benched after the first knockout of his Pokémon and takes two turns to get [DD] and evolve.
+- The Blade target is their strongest Pokémon, when knocking it out wins.
+
+Speed ("Kingambit by own turn N") is descriptive only.
+
 Commit `EXPECTED_KG.md` before any run. For each case it records:
 - the property and its baseline count for each arm family;
 - its class under gate 0's rule: a positive only if that family's baseline meets the property in 8 or fewer of 12 seeds, otherwise a keep check.
