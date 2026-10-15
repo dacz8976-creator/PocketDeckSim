@@ -10,27 +10,28 @@ Pre-registration order: registered 2026-10-15T18:29:56Z; first game started 2026
 
 Self-check digests recorded at registration: `selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1` (accepted from the committed record rl/results/slow_report_selfcheck_records/selfcheck_5011e227cf63_20261012T204746Z.json (commit 381f955b7f7c): an earlier replay by slow_report.py of a program with this sha256, equal to the committed pin; not replayed at this registration); `selfcheck pilot=kx3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=138 digest=31d638dbc818b0fa` (accepted from the committed record rl/results/slow_report_selfcheck_records/selfcheck_5011e227cf63_20261012T204746Z.json (commit 381f955b7f7c): an earlier replay by slow_report.py of a program with this sha256, equal to the committed pin; not replayed at this registration)
 
-- Planned 320 games; finished 40; complete pairs 20 (= 40 games); unpaired games 0; errors 0.
+- Planned 320 games; finished 80; complete pairs 40 (= 80 games); unpaired games 0; errors 0.
 - Paired difference = score(arm X) − score(arm ref) per (deck, opponent, deal, seat), in percentage points of score (win 1, tie ½). Intervals are mean ± 1.96·sd/√n over paired games. No pass/fail threshold.
 
 ## Result
 
-**Pooled over all 20 paired games: +20.0 ± 18.0 points** (arm X 35.0% vs arm ref 15.0% score).
+**Pooled over all 40 paired games: +15.0 ± 11.2 points** (arm X 60.0% vs arm ref 45.0% score).
 
 
 ### Per deck, pooled over its opponents
 
 | deck | paired games | arm X score | arm ref score | paired difference (points) | went first: diff | went second: diff |
 |---|---|---|---|---|---|---|
-| 13-a-giant-cape | 20 | 35.0% | 15.0% | +20.0 ± 18.0 | +25.0 ± 32.1 | +16.7 ± 22.0 |
+| 13-a-giant-cape | 40 | 60.0% | 45.0% | +15.0 ± 11.2 | +11.1 ± 14.9 | +18.2 ± 16.5 |
 
-Overall by who went first (identical in both arms): deck first +25.0 ± 32.1 (n=8); deck second +16.7 ± 22.0 (n=12).
+Overall by who went first (identical in both arms): deck first +11.1 ± 14.9 (n=18); deck second +18.2 ± 16.5 (n=22).
 
 ### Per (deck, opponent) pair
 
 | deck | opponent | n | arm X | arm ref | paired difference (points) |
 |---|---|---|---|---|---|
 | 13-a-giant-cape | t-altaria | 20 | 35.0% | 15.0% | +20.0 ± 18.0 |
+| 13-a-giant-cape | t-blaziken | 20 | 85.0% | 75.0% | +10.0 ± 13.5 |
 
 ## Runtime and cost
 
@@ -38,12 +39,12 @@ Wall time is per game on this machine with the threads the run used; it includes
 
 | arm | role | pilot | games | wall per game: mean / median / p95 / max | games per second (1 thread) | decisions per game | ms per decision: mean / median / p95 / max | decision time per game |
 |---|---|---|---|---|---|---|---|---|
-| X | deck seat | `kx3` | 20 | 675.90 / 690.37 / 1648.08 / 1648.08 s | 0.00 | 22.1 | 30561.9 / 27159.3 / 63310.3 / 101661.9 | 11 min |
-| X | opponent seat | `km3` | 20 |  |  | 23.6 | 19.4 / 8.1 / 77.9 / 209.6 | 0.46 s |
-| ref | deck seat | `km3` | 20 | 0.77 / 0.75 / 1.60 / 1.60 s | 1.30 | 22.6 | 16.6 / 7.5 / 61.6 / 246.4 | 0.38 s |
-| ref | opponent seat | `km3` | 20 |  |  | 24.0 | 15.7 / 7.1 / 63.9 / 149.9 | 0.38 s |
+| X | deck seat | `kx3` | 40 | 545.19 / 453.23 / 1344.89 / 1648.08 s | 0.00 | 22.6 | 24162.4 / 21435.5 / 55425.7 / 101661.9 | 9 min |
+| X | opponent seat | `km3` | 40 |  |  | 23.0 | 13.4 / 5.6 / 58.6 / 209.6 | 0.31 s |
+| ref | deck seat | `km3` | 40 | 0.63 / 0.57 / 1.28 / 1.60 s | 1.58 | 22.4 | 16.2 / 7.2 / 60.1 / 246.4 | 0.36 s |
+| ref | opponent seat | `km3` | 40 |  |  | 23.4 | 10.9 / 4.8 / 46.3 / 149.9 | 0.26 s |
 
-One paired game (both arms) took 11 min on average; the run used 4 thread(s).
+One paired game (both arms) took 9 min on average; the run used 4 thread(s).
 
 ## What more precision would take
 
@@ -51,8 +52,8 @@ At the sd reached, the number of paired games for a given half-width is `(1.96·
 
 | scope | paired games so far | sd | interval now (points) | for ±5 points: total / more games, time | for ±3 points: total / more games, time |
 |---|---|---|---|---|---|
-| all decks pooled | 20 | 41.0 | +20.0 ± 18.0 | 259 / 239, 11.2 h | 719 / 699, 32.8 h |
-| 13-a-giant-cape | 20 | 41.0 | +20.0 ± 18.0 | 259 / 239, 11.2 h | 719 / 699, 32.8 h |
+| all decks pooled | 40 | 36.2 | +15.0 ± 11.2 | 201 / 161, 6.1 h | 559 / 519, 19.7 h |
+| 13-a-giant-cape | 40 | 36.2 | +15.0 ± 11.2 | 201 / 161, 6.1 h | 559 / 519, 19.7 h |
 
 ## Intended lines
 
