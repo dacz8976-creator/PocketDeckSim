@@ -508,11 +508,11 @@ class T8Amendment(unittest.TestCase):
         return g
 
     def test_muk_or_pawniard_promoted_only_when_nothing_else_is_in_play(self):
-        g = self.mons(['Glimmet', 'Pawniard', 'Alolan Muk', 'Regigigas'])
+        g = self.mons(['Pawniard', 'Alolan Muk', 'Alolan Grimer', 'Regigigas'])   # the dead Active is already out
         g.promote()
         self.assertEqual(g.play[0].name, 'Regigigas')
         self.assertIsNone(g.p3)
-        g = self.mons(['Glimmet', 'Pawniard', 'Alolan Muk'])
+        g = self.mons(['Pawniard', 'Alolan Muk'])
         g.promote()
         self.assertIn(g.play[0].name, ('Pawniard', 'Alolan Muk'))
         self.assertEqual(g.p3['cause'], 'promotion')            # nothing else left to promote
@@ -549,6 +549,13 @@ class T8Amendment(unittest.TestCase):
 
     def test_winning_moment_per_pace(self):
         for name, hp, pts, kneed in self.PACES:
+            if kneed == 4:      # slow: its 3 knock-outs (opponent turns 3, 5, 7) end the deal at 3 points: k = 4 never comes
+                c = clk.FIXED[name]
+                self.assertEqual((c.hp, c.pts), (hp, pts))
+                self.assertIsNone(sim.winning_moment([{'k_start': k, 'kgdd': True} for k in self.k_starts(c, True, 12)],
+                                                     hp)['W'])
+                self.assertEqual(sim.winning_moment([{'k_start': k, 'kgdd': True} for k in range(6)], hp)['W'], 5)
+                continue
             c = clk.FIXED[name]
             self.assertEqual((c.hp, c.pts), (hp, pts), msg=name)
             for first in (True, False):
@@ -586,18 +593,19 @@ class T8Amendment(unittest.TestCase):
         return [t['supporters'] for t in tr['turns']]
 
     def test_copycat_n0_never_plays_it_and_huge_n_m_minus20_always_does(self):
-        top = [REGI, COPY, HELM, ILIMA, POP, POP, POP, POP]
+        top = [REGI, COPY, HELM, ILIMA, POP, POP, PAWN]
         for sup in self.copy_turns(top, copycat_n=0, copycat_m=-20):
             self.assertNotIn('copycat', sup)
         self.assertIn('copycat', self.copy_turns(top, copycat_n=99, copycat_m=-20)[0])
-        # (b): the opponent's hand (4) must be at least M larger than ours without the Copycat (5 on turn 1)
-        self.assertIn('copycat', self.copy_turns(top, copycat_n=99, copycat_m=-1)[0])
-        self.assertNotIn('copycat', self.copy_turns(top, copycat_n=99, copycat_m=0)[0])
+        # (b): the opponent's hand (4) must be at least M larger than ours without the Copycat (4 on turn 1: the
+        # Regigigas went to the Active spot, the turn's draw came in)
+        self.assertIn('copycat', self.copy_turns(top, copycat_n=99, copycat_m=0)[0])
+        self.assertNotIn('copycat', self.copy_turns(top, copycat_n=99, copycat_m=1)[0])
 
     def test_copycat_uses_the_clock_records_hand(self):
         c = clk.Fixed('t', {}, hand=7)
         ver = version()
-        order = sim.order_for(ver, [REGI, COPY, HELM, ILIMA, POP, POP, POP])
+        order = sim.order_for(ver, [REGI, COPY, HELM, ILIMA, POP, POP, PAWN])
         tr = sim.play_deal(ver, 0, True, dict(CFG, copycat_rule='NM', copycat_n=99, copycat_m=0), clock=c, order=order)
         self.assertEqual(tr['copycat_draws'][:1], [7])
 

@@ -40,9 +40,9 @@ from st_rng import Stream    # noqa: E402
 Z = 1.96
 SEED_BASE = sim.SEED_BASE
 MAX_VERSIONS = 100
-CLOCK_NAMES = ['his', 'his_seat', 'bot', 'fast', 'medium', 'slow']
+CLOCK_NAMES = ['his', 'his_seat', 'bot', 'fast', 'medium', 'slow', 'ref190']
 CLOCK_LABEL = {'his': 'C-his', 'his_seat': 'C-his, seat-matched', 'bot': 'C-bot', 'fast': 'C-fixed fast',
-               'medium': 'C-fixed medium', 'slow': 'C-fixed slow'}
+               'medium': 'C-fixed medium', 'slow': 'C-fixed slow', 'ref190': 'C-fixed reference (fast pace, 190-HP Mega ex)'}
 HIS_LIST = 'rl/results/pause_games_new_2026-10-13/decks/KW261012_203719000.txt'
 DECK01 = 'decks/dustin/01-muk-glimmora-kingambit-regigigas.txt'
 HIS_ID, DECK01_ID = '73dfed58d1d6', '35d98d0dcaf2'
@@ -114,7 +114,7 @@ def build_cards(path, diff=None):
 
 # ------------------------------------------------------------------------------------------------ measures
 def measure_ids(cfg):
-    ids = ['K1.t0'] + [f'K1.t{t}' for t in range(1, 6)] + [f'K2.t{t}' for t in range(2, 7)] \
+    ids = ['P1', 'K1.t0'] + [f'K1.t{t}' for t in range(1, 6)] + [f'K2.t{t}' for t in range(2, 7)] \
         + [f'K6.t{t}' for t in range(3, 6)]
     ids += [f'G3.{nm}.t{t}' for nm in cfg['key_pokemon'] for t in range(1, 6)]
     ids += [f'G4.s1.t{t}' for t in range(2, 6)] + [f'G4.s2.t{t}' for t in range(2, 6)]
@@ -126,7 +126,7 @@ def setup_values(tr, cfg, cost):
     """One deal's setup measures, in measure_ids order, plus G5's count (a value measure)."""
     turns, key = tr['turns'], cfg['key_pokemon']
     main, pawn = cfg['main_attacker'], cfg['pawniard']
-    v = [1 if pawn in tr['setup']['roots'] else 0]
+    v = [1 if tr['setup']['in_play'][0] == cfg['lead_order'][0] else 0, 1 if pawn in tr['setup']['roots'] else 0]
     v += [1 if pawn in turns[t - 1]['roots'] else 0 for t in range(1, 6)]
     v += [1 if main in turns[t - 1]['in_play'] else 0 for t in range(2, 7)]
     v += [1 if (cfg['muk'] in turns[t - 1]['in_play'] and cfg['muk_partner'] in turns[t - 1]['in_play']) else 0
@@ -141,8 +141,16 @@ def setup_values(tr, cfg, cost):
     return v, sum(empties)
 
 
+P_IDS = ['P2.any', 'P2.both', 'P2.g1', 'P2.g2', 'P3', 'P3.opening', 'P3.promo', 'P4.ko', 'P4.win', 'P4.late1',
+         'P4.late2p', 'P4.never', 'P4.nomoment', 'P5.ko', 'P5.win']
+
+
+def K_IDS(cfg):
+    return [m for m in clock_ids(cfg['horizon']) if m not in P_IDS]
+
+
 def clock_ids(horizon):
-    return [f'K3.by{x}' for x in range(2, horizon + 1)] + ['K3.never', 'K3.k0', 'K3.k1', 'K3.k2', 'K3.k3p',
+    return P_IDS + [f'K3.by{x}' for x in range(2, horizon + 1)] + ['K3.never', 'K3.k0', 'K3.k1', 'K3.k2', 'K3.k3p',
                                                           'K4', 'K5']
 
 
@@ -156,6 +164,37 @@ def clock_values(tr, cfg):
         if Tev is not None and Tev <= X and (und is None or Tev < und):
             return 1
         return 0 if (und is None or X < und) else 2
+
+    # the P-lines (SPEC_AMENDMENT_1)
+    gt = sorted(x for x in tr['glimmora_turns'] if x is not None)
+    lines = tr['glimmora_lines'] + [None, None]
+    p3 = tr['p3']
+    out += [event(gt[0] if gt else None, H), event(gt[1] if len(gt) > 1 else None, H), event(lines[0], H),
+            event(lines[1], H), event(p3['turn'] if p3 else None, H),
+            event(p3['turn'] if p3 and p3['cause'] == 'opening' else None, H),
+            event(p3['turn'] if p3 and p3['cause'] == 'promotion' else None, H)]
+    p4 = tr['p4']
+    keys = ['P4.ko', 'P4.win', 'P4.late1', 'P4.late2p', 'P4.never', 'P4.nomoment', 'P5.ko', 'P5.win']
+    v = dict.fromkeys(keys, 0)
+    if p4 is not None:
+        W, R, win = p4['W'], p4['R'], p4['pts'] >= 3
+        closed = und is None or H < und              # the record covers the whole deal
+        if W is None or (und is not None and W >= und):
+            if W is None and closed:
+                v['P4.nomoment'] = 1
+            elif not closed or W is not None:
+                v = dict.fromkeys(keys, 2)
+        else:
+            v['P4.ko'] = 1 if R == W else 0
+            v['P4.win'] = 1 if R == W and win else 0
+            if R is not None and (und is None or R < und):
+                v['P4.late1'], v['P4.late2p'] = int(R == W + 1), int(R >= W + 2)
+                v['P5.ko'], v['P5.win'] = 1, int(win)
+            elif closed:
+                v['P4.never'] = 1
+            else:
+                v.update({k: 2 for k in ('P4.late1', 'P4.late2p', 'P4.never', 'P5.ko', 'P5.win')})
+    out += [v[k] for k in keys]
 
     by = [event(T, X) for X in range(2, H + 1)]
     out += by
@@ -435,7 +474,7 @@ def compare_consistency(path, n):
 
     full = run()
     nomesa = run(mesagoza_coin='tails')
-    nocopy = run(mesagoza_coin='tails', copycat_rule='never')
+    nocopy = run(mesagoza_coin='tails', copycat_n=0)
     cfg = sim.load_cfg()
     plan = cl.Plan(path, ['Darkness'], base, main=cfg['main_attacker'])
     note = plan.effect_notes.get('Mesagoza', '')
@@ -450,9 +489,10 @@ def compare_consistency(path, n):
         why = (f"{100 * mesa:+.1f} points of the {100 * gap:+.1f} gap is Mesagoza: lib/consistency.py's note on it is "
                f"'{note}', so the solitaire model never uses it, while this script plays it and flips each turn "
                f"(measured by forcing the coin to tails); the remaining {100 * rest:+.1f} is Copycat and Supporter "
-               f"policy: the script plays Copycat when the hand holds no Kingambit or Rare Candy and is smaller than the "
-               f"opponent's, the solitaire model only when it holds no card the plan needs (with Copycat never played "
-               f"the script is {100 * (nocopy[t] - c):+.1f} from it)")
+               f"policy: the script plays Copycat by the N/M rule (fewer than N still-needed plan cards in hand and the "
+               f"opponent's hand at least M larger than ours), the solitaire model only when it holds no card the plan "
+               f"needs (with Copycat never played the script is {100 * (nocopy[t] - c):+.1f} from it); it also holds "
+               f"Pawniard only by the T-now trigger here and puts Energy on the Pawniard line first")
         rows.append({'turn': t, 'tester': full[t], 'consistency': c, 'gap': gap, 'tester_no_mesagoza': nomesa[t],
                      'tester_no_mesagoza_no_copycat': nocopy[t], 'explained': why})
     return rows
@@ -499,19 +539,18 @@ def comparison_sections(root, n):
     return L
 
 
-SENS = [('lead order: Pawniard first', {'lead_order': ['Pawniard', 'Glimmet', 'Alolan Grimer', 'Regigigas']}),
-        ('promote order: Regigigas first', {'promote_order': ['Regigigas', 'Glimmet', 'Alolan Grimer', 'Glimora'.replace('Glimora', 'Glimmora'),
-                                                           'Alolan Muk', 'Bisharp', 'Pawniard', 'Kingambit']}),
-        ('Copycat whenever no Kingambit or Rare Candy is in hand', {'copycat_rule': 'always'}),
-        ('Blade target 3 (the 180 line)', {'blade_target': 3}),
-        ('Poke Ball over names, not cards', {'poke_ball_over': 'names'}),
-        ('opponent hand 2 (Copycat)', {'opp_hand': 2}),
-        ('opponent hand 6 (Copycat)', {'opp_hand': 6})]
+SENS = [('T-now: Pawniard benched as soon as drawn (the old default)', {'pawniard_bench': 'now'}),
+        ('T-late: Pawniard benched one own turn after T-first-KO', {'pawniard_bench': 'late'}),
+        ('T-pieces: Pawniard benched when Kingambit and Rare Candy are both in hand', {'pawniard_bench': 'pieces'}),
+        ('lead order: Pawniard first', {'lead_order': ['Pawniard', 'Regigigas', 'Glimmet', 'Alolan Grimer']}),
+        ('Poke Ball over names, not cards', {'poke_ball_over': 'names'})] + [
+    (f'Copycat N={n} M={m}' + (' (the headline)' if (n, m) == (2, 1) else ''), {'copycat_n': n, 'copycat_m': m})
+    for n in (1, 2, 3) for m in (0, 1, 2)]
 
 
 def sensitivity(base_path, n_deals, clock_deals, clocks, plan=None, workers=1):
-    """The base list under one alternative of each choice Dustin confirms (SPEC "Dustin confirms five choices"), on the
-    same deals. Returns RESULTS.md lines."""
+    """The base list under the alternatives of the choices still open (the bench trigger, Copycat's N and M grid, the
+    lead order, Poke Ball), on the same deals. Returns RESULTS.md lines."""
     jobs = [('default', {})] + SENS
     kw = dict(clocks=clocks, clock_deals=clock_deals, plan=plan, keep_vectors=True)
     if workers > 1:
@@ -519,13 +558,16 @@ def sensitivity(base_path, n_deals, clock_deals, clocks, plan=None, workers=1):
             rs = pool.starmap(_sens_job, [(base_path, n_deals, ov, kw) for _, ov in jobs])
     else:
         rs = [_sens_job(base_path, n_deals, ov, kw) for _, ov in jobs]
-    cfg = sim.load_cfg(plan)
     d0 = rs[0]
-    L = ['## How much each confirmable choice matters (on the base list)', '',
-         'One alternative of each value Dustin confirms, run once on the base list on the same deals. Pooled, '
-         'paired differences from the default (percentage points; the range is +-1.96 sd/sqrt(n); a "*" marks a range '
-         'that excludes 0 and a difference of at least 1 point). Only measures a choice can touch are listed.', '']
-    ids = ['K1.t1', 'K1.t3', 'K2.t2', 'K2.t3', 'K2.t4', 'K2.t5', 'K6.t4', 'G5.any3', 'G6.t3', 'G6.t5']
+    L = ['## How much each open choice matters (on the base list)', '',
+         'Each alternative is run once on the base list on the same deals, against the default config (T-first-KO, '
+         'Copycat N=2 M=1). Pooled, paired differences in percentage points; a "*" marks a range (+-1.96 sd/sqrt(n) for '
+         'the setup measures, as in the paired tables) that excludes 0 with a difference of at least 1 point. The '
+         'Copycat grid is N in {1, 2, 3} by M in {0, 1, 2}; its headline N=2 M=1 equals the default (all zeros). '
+         'Dustin has not answered N and M yet.', '']
+    ids = ['P1', 'K1.t1', 'K1.t3', 'K2.t3', 'K2.t5', 'G5.any3', 'G6.t3']
+    L += ['Setup measures with no knock-outs (these runs bench Pawniard at once under T-first-KO and T-late, so the '
+          'bench-trigger rows differ only on T-pieces here):', '']
     L.append('| Alternative | ' + ' | '.join(ids) + ' |')
     L.append('|---|' + '---|' * len(ids))
     for (name, _), r in zip(jobs[1:], rs[1:]):
@@ -535,11 +577,9 @@ def sensitivity(base_path, n_deals, clock_deals, clocks, plan=None, workers=1):
             cells.append(f'{100 * d:+.1f}' + ('*' if (lo > 0 or hi < 0) and abs(d) >= 0.01 else ''))
         L.append(f'| {name} | ' + ' | '.join(cells) + ' |')
     L.append('')
-    cl_ids = ['K3.by3', 'K3.by5', 'K3.never', 'K4', 'K5']
+    cl_ids = ['P2.both', 'P3', 'P4.ko', 'P4.win', 'P5.ko', 'P5.win', 'K3.never']
     for c in clocks:
-        if c not in ('his', 'bot', 'fast'):
-            continue
-        L.append(f'Clock measures under {CLOCK_LABEL[c]}, difference from the default (pooled points, undecided as no):')
+        L.append(f'Plan lines under {CLOCK_LABEL[c]}, difference from the default (pooled points, undecided as no):')
         L.append('')
         L.append('| Alternative | ' + ' | '.join(cl_ids) + ' |')
         L.append('|---|' + '---|' * len(cl_ids))
@@ -571,7 +611,26 @@ MEASURE_NAMES = {
     'G5.any3': 'an empty own turn among turns 1-3'}
 
 
+CLOCK_MEASURE_NAMES = {
+    'P2.any': 'P2 at least one Glimmora had its turn', 'P2.both': 'P2 both Glimmora had their turn',
+    'P2.g1': 'P2 the first Glimmora placed had its turn', 'P2.g2': 'P2 the second Glimmora placed had its turn',
+    'P3': 'P3 plan broken in front: Muk or Pawniard Active at any point',
+    'P3.opening': 'P3, cause: the opening (still the starting Active)',
+    'P3.promo': 'P3, cause: promoted, nothing else left',
+    'P4.ko': 'P4 ready at the winning moment: Knocks out their strongest',
+    'P4.win': 'P4 ready at the winning moment: Wins outright (a lower bound)',
+    'P4.late1': 'P4 not ready, ready 1 turn late', 'P4.late2p': 'P4 not ready, ready 2 or more turns late',
+    'P4.never': 'P4 the moment came and Kingambit was never ready in the deal',
+    'P4.nomoment': 'P4 the winning moment never came in the deal (the Blade never reaches their strongest)',
+    'P5.ko': 'P5 plan reached in time: Knocks out their strongest',
+    'P5.win': 'P5 plan reached in time: Wins outright (a lower bound)'}
+
+
 def measure_label(m, cfg):
+    if m in CLOCK_MEASURE_NAMES:
+        return CLOCK_MEASURE_NAMES[m]
+    if m == 'P1':
+        return 'P1 Regigigas leads (the Active at the start of the game; exact above)'
     if m.startswith('G3.'):
         _, nm, t = m.split('.')
         return f'G3 {nm} in play, own turn {t[1:]}'
@@ -594,9 +653,19 @@ def build_report(out_dir, deck_name, runs, args, cfg, record, extra=None):
     L.append('')
     L.append('Not a ranking and not a ladder forecast: it shows what the cards allow under a written script (SPEC.md), on '
              'the same deals for every version. It does not say who wins.')
-    L.append('**PROPOSED, not yet confirmed by Dustin:** the plan lines K1-K6, the lead order, the promote order, the '
-             'Copycat rule, the Blade target and what "a fast deck" means (C-fixed fast). None of this is to be reported '
-             'to him as settled until he confirms or rewrites each.')
+    L.append('**Plan config follows SPEC_AMENDMENT_1 (Dustin, Oct 15):** Regigigas leads; Pawniard is held until the '
+             f'bench trigger ({cfg["pawniard_bench"]}; default first_ko = our first turn after one of ours was knocked '
+             'out, a spot free); Grimer and Muk are benched; Glimmora gets a turn; Energy goes to the Pawniard line up to '
+             '[DD], then the Active Glimmora, then Regigigas while Muk is in play. The lines that lead are P1-P5; the old '
+             'G and K lines stay below "descriptive (speed is not the goal)". The no-knock-out runs have no knock-out to '
+             'trigger first_ko, so they bench Pawniard at once (T-now), and say so.')
+    L.append(f'**Copycat is the N/M rule** (play it when fewer than N still-needed plan cards are in hand and the '
+             f'opponent\'s hand is at least M larger than ours without it). **N and M are still to be asked of Dustin, '
+             f'once.** The headline uses N={cfg["copycat_n"]}, M={cfg["copycat_m"]}; the N x M grid is in the choices '
+             'section.')
+    L.append('**PROPOSED, not yet confirmed by Dustin:** the plan lines, the lead and promotion orders, the Copycat N and '
+             'M, and the assumed strongest Pokémon of C-fixed. Nothing here is to be reported to him as settled until he '
+             'confirms or rewrites each.')
     L.append('')
     # exact part for every version
     for name, r in versions.items():
@@ -616,13 +685,34 @@ def build_report(out_dir, deck_name, runs, args, cfg, record, extra=None):
         L.append('')
         L.extend(exact_lines(r['exact']))
         L.append('')
+        L.append('### Plan lines: does the deck line up with Dustin\'s plan?')
+        L.append('')
         L.append(f'Simulated, no knock-outs; {r["n_deals"]:,} deals (deal i uses seed {SEED_BASE:,} + i; even i going first). '
                  'Wilson 95% ranges.')
         L.append('')
         L.append('| Measure | going first | going second | pooled |')
         L.append('|---|---|---|---|')
         rj = {}
-        for m in ids:
+
+        def setup_rows(sel):
+            for m in sel:
+                row = r['measures'][m]
+                L.append(f'| {measure_label(m, cfg)} | ' + ' | '.join(pct(row[s]['x'], row[s]['n']) for s in
+                                                                  ('first', 'second', 'pooled')) + ' |')
+                rj[m] = {s: dict(row[s], wilson=[round(v, 5) for v in wilson(row[s]['x'], row[s]['n'])])
+                         for s in ('first', 'second', 'pooled')}
+        setup_rows(['P1'])
+        L.append('')
+        cj = {}
+        for c in clocks:
+            L.extend(clock_table(c, r, base if name != 'base' else None, gm[c], bc[c], cfg, cj, P_IDS))
+        L.append('#### descriptive (speed is not the goal)')
+        L.append('')
+        L.append('The old G and K lines, kept for reference. Kingambit\'s speed is not the yardstick for this deck.')
+        L.append('')
+        L.append('| Measure | going first | going second | pooled |')
+        L.append('|---|---|---|---|')
+        for m in ids[1:]:
             row = r['measures'][m]
             L.append(f'| {measure_label(m, cfg)} | ' + ' | '.join(pct(row[s]['x'], row[s]['n']) for s in
                                                               ('first', 'second', 'pooled')) + ' |')
@@ -633,9 +723,9 @@ def build_report(out_dir, deck_name, runs, args, cfg, record, extra=None):
             f'{row[s]["x"] / row[s]["n"]:.3f}' for s in ('first', 'second', 'pooled')) + ' |')
         rj['G5.n5'] = row
         L.append('')
-        cj = {}
         for c in clocks:
-            L.extend(clock_table(c, r, base if name != 'base' else None, gm[c], bc[c], cfg, cj))
+            L.extend(clock_table(c, r, base if name != 'base' else None, gm[c], bc[c], cfg, cj, K_IDS(cfg),
+                                 plan_lines=False))
         diffs = []
         pj = {}
         if name != 'base':
@@ -662,6 +752,8 @@ def build_report(out_dir, deck_name, runs, args, cfg, record, extra=None):
             L.append('Only flagged rows are shown above; the full differences are in results.json.')
             L.append('')
             L.extend(summary(name, r, diffs, cfg, runs))
+        else:
+            L.extend(['**Plain summary, base.**', ''] + NOT_MODELLED + [''])
         res_json['versions'][name] = {'label': r['label'], 'list_id': r.get('list_id'), 'diff': r.get('diff'),
                                       'exact': r['exact'], 'setup': rj, 'clock': cj, 'paired_vs_base': pj, 'seconds': r['seconds']}
     L.extend(extra or [])
@@ -680,7 +772,9 @@ def build_report(out_dir, deck_name, runs, args, cfg, record, extra=None):
 
 def exact_block(cards, cfg):
     out = {'p0': ex.p0(sum(c.is_basic for c in cards))}
+    out['lead'] = ex.lead_chance(cards, cfg['lead_order'])
     out['basics_in_hand'] = {k: v for k, v in ex.basics_in_hand(cards).items() if k}
+    out['lead_order'] = list(cfg['lead_order'])
     out['forced_active'] = ex.forced_active(cards)
     keys = [nm for nm in cfg['key_pokemon'] if any(c.name == nm for c in cards)] + sorted(
         {c.name for c in cards if c.kind == 'T' and sim.KIND.get(c.name) in ('candy', 'juliana', 'lisia', 'pokeball')})
@@ -692,12 +786,18 @@ def exact_block(cards, cfg):
     return out
 
 
+def sim_lead(e):
+    return list(e.get('lead_order', []))
+
+
 def exact_lines(e):
     L = [f'- P0 (no Basic in the first 5 cards): {e["p0"]:.5f}. Basics in the opening hand: ' +
          ', '.join(f'{k}: {v:.3f}' for k, v in e['basics_in_hand'].items() if k < 3) +
          f', 3 or more: {sum(v for k, v in e["basics_in_hand"].items() if k >= 3):.3f}.',
          '- Chance of being the only Basic (forced Active): ' + ', '.join(
              f'{k} {v:.5f}' for k, v in sorted(e['forced_active'].items())) + '.',
+         '- Chance each Pokémon is the starting Active (lead order ' + ', '.join(sim_lead(e)) + '): ' + ', '.join(
+             f'{k} {v:.5f}' for k, v in sorted(e['lead'].items())) + ' (P1 is the Regigigas figure).',
          '- In the opening hand: ' + ', '.join(f'{k} {v:.4f}' for k, v in e['in_hand'].items()) + '.']
     if 'trio_seen' in e:
         L.append(f'- Pawniard, Kingambit and Rare Candy all seen in 7 cards: {e["trio_seen"][7]:.5f}; in 8 cards: '
@@ -709,20 +809,26 @@ def exact_lines(e):
     return L
 
 
-def clock_table(c, r, base, gm, counts, cfg, cj):
+def clock_table(c, r, base, gm, counts, cfg, cj, ids, plan_lines=True):
     """One clock's table for one version, with bootstrap ranges where the clock is recorded."""
     clock = make_clock(c, ROOT)
     n = r['clock_deals']
     vv = r['vectors']
     bv = base['vectors'] if base else None
     games = len(clock.games)
-    L = [f'Clock measures under {CLOCK_LABEL[c]} ({n:,} deals, {games} recorded game(s) sampled by the deal alone). '
+    L = [f'{"Plan lines" if plan_lines else "Clock measures"} under {CLOCK_LABEL[c]} ({n:,} deals, {games} recorded '
+         'game(s) sampled by the deal alone). '
          'Cells: undecided counted as no, then as yes, with the bootstrap range over the recorded games when there is '
-         'more than one (SPEC "Width"). Undecided = the record stops before the measure is decided.', '',
-         '| Measure | going first | going second | pooled |', '|---|---|---|---|']
+         'more than one (SPEC "Width"). Undecided = the record stops before the measure is decided.', '']
+    if plan_lines:
+        L += [strongest_line(c, clock), '',
+              'P4 "Knocks out their strongest" is the HP condition alone; "Wins outright" adds enough points from zero '
+              '(their Pokémon\'s points at least 3). Any points we score before the Blade (Glimmora\'s Venomous Hit '
+              'knockouts, for example) are not modelled, so "wins outright" is a lower bound.', '']
+    L += ['| Measure | going first | going second | pooled |', '|---|---|---|---|']
     mask = {'first': seat_mask(n, 0), 'second': seat_mask(n, 1), 'pooled': int.from_bytes(b'\x01' * n, 'little')}
-    cj[c] = {}
-    for m in clock_ids(cfg['horizon']):
+    cj.setdefault(c, {})
+    for m in ids:
         b = vv[f'{c}|{m}']
         yes, und = _ints(b)
         cells = []
@@ -744,11 +850,11 @@ def clock_table(c, r, base, gm, counts, cfg, cj):
             same = x0 == x1
             cells.append(f'{100 * x0 / nn:.1f}%' + ('' if same else f' / {100 * x1 / nn:.1f}%') + rng)
             cj[c].setdefault(m, {})[s] = entry
-        L.append(f'| {m} | ' + ' | '.join(cells) + ' |')
+        L.append(f'| {measure_label(m, cfg) if plan_lines else m} | ' + ' | '.join(cells) + ' |')
     L.append('')
     if bv is not None:
         flagged = []
-        for m in clock_ids(cfg['horizon']):
+        for m in ids:
             key = f'{c}|{m}'
             a_yes, b_yes = _ints(vv[key])[0], _ints(bv[key])[0]
             for s in ('pooled',):
@@ -771,6 +877,21 @@ def clock_table(c, r, base, gm, counts, cfg, cj):
     return L
 
 
+def strongest_line(c, clock):
+    """The opponent's strongest Pokémon the clock carries (SPEC_AMENDMENT_1), for every plan-line table."""
+    def one(hp, pts):
+        return f'{hp}-HP {"Mega ex" if pts == 3 else "ex" if pts == 2 else "non-ex"}, {pts} point{"s" if pts > 1 else ""}'
+    if isinstance(clock, clk.Fixed):
+        return (f'Strongest Pokémon assumed for this pace: a {one(clock.hp, clock.pts)} (the Blade needs 60 + 40k >= '
+                f'{clock.hp}, k = {-(-(clock.hp - 60) // 40)}).')
+    cnt = collections.Counter(g['strongest'] for g in clock.games)
+    txt = ', '.join(f'{one(*k)} in {v} game(s)' for k, v in sorted(cnt.items(), reverse=True))
+    if c == 'bot':
+        return (f'Strongest Pokémon (FLAGGED: the logs do not show the opponent\'s HP, so this is the biggest Pokémon '
+                f'in the panel list of that game): {txt}.')
+    return f'Strongest Pokémon (per recorded game, the highest-HP Pokémon seen in play on his opponent\'s board): {txt}.'
+
+
 def paired_diff_bits(a, b, mask):
     one = mask
     nn = mask.bit_count()
@@ -785,6 +906,12 @@ def paired_diff_bits(a, b, mask):
 
 
 NOT_PLAYED = {'ilima', 'other'}
+NOT_MODELLED = [
+    '**Not modelled** (stated in every summary): Ilima\'s pull-back, the Pops\' heals and the Helmet all act on damage, and '
+    'the tester\'s clocks count knockouts, not damage, so they are "not valued here" (blanks). That is a real limit for '
+    'this plan: Regigigas walling, and Glimmora surviving long enough for its turn, depend on them. Only his games or a bot '
+    'that plays the plan can measure those. Also not modelled: our own attacks and any points we score before the Blade, '
+    'retreats, and disruption (SPEC "It cannot represent").']
 
 
 def summary(name, r, diffs, cfg, runs):
@@ -807,7 +934,10 @@ def summary(name, r, diffs, cfg, runs):
             nv.append(c.name)
     L.append('Not valued here (changed cards the script never plays: they count as blanks): ' +
              (', '.join(sorted(set(nv))) or 'none') + '.')
-    L.append('Clocks used: ' + ', '.join(CLOCK_LABEL[c] for c in r['clocks']) + ' (Copycat draws 4 under every clock).')
+    L.append('Clocks used: ' + ', '.join(CLOCK_LABEL[c] for c in r['clocks']) + ' (Copycat draws the opponent\'s hand: '
+             'the recorded one under C-his, otherwise 4).')
+    L.append('')
+    L.extend(NOT_MODELLED)
     L.append('')
     return L
 
