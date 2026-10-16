@@ -1,0 +1,30 @@
+{
+  "source_filename": "20261015_205332000_iOS.MP4",
+  "source_sha256": "2d0b8e0c42714b0572556faeaeacae13f8d3210b822290f9a528d291bb220d3a",
+  "unreviewed_intervals": [],
+  "material_outcome_uncertainties": [],
+  "uncertainties": [
+    {
+      "topic": "Specific queue label",
+      "finding": "Human matchmaking is visible and no Auto option appears. Ladder is the owner's default classification; specific ranked queue label not independently shown."
+    },
+    {
+      "topic": "Hidden cards and full lists",
+      "finding": "Only public/visible cards are named. No exact20-card list or hidden opponent options reconstructed."
+    },
+    {
+      "topic": "Repeated Lucky Ice Pop coin sequence",
+      "times_seconds": [
+        347,
+        417,
+        448,
+        488
+      ],
+      "finding": "Intermediate HP values establish six opponent20HP heals on global10 and four owner20HP heals on global11. Not every repeated coin result is individually transcribed; no exact number of distinct Item copies is claimed."
+    },
+    {
+      "topic": "Subsecond animation ordering",
+      "finding": "Some attachment/draw timings use bounded nearby frames. Every turn and material state transition is covered; exact frame-level replay is not claimed."
+    }
+  ]
+}

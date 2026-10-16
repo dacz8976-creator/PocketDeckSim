@@ -1,0 +1,27 @@
+{
+  "lead": "/root",
+  "checked_utc": "2026-10-15T03:07:34.940695+00:00",
+  "source_filename": "20261015_020931000_iOS.MP4",
+  "source_sha256": "a8e539e31976ed5591bba0a2cfba3db3a44168b61191e259b5cd55bf05e37060",
+  "observations": [
+    {
+      "path": "evidence/t0111.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Raticate ex has90HP and one attached Darkness Energy; Bonsly50 has Giant Cape but no attached Energy. Owner's unused Energy Zone is Water, distinct from the stolen Darkness.",
+      "sha256": "55d11d84c81b9ec746a84ab8dc54f5122d139e8ba568add7455eb8f0b1cb630f"
+    },
+    {
+      "path": "evidence/t0119.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Explicit Your opponent conceded banner. Bonsly is30HP with Giant Cape removed; both point counters empty.",
+      "sha256": "9c3a0e1c5194f6c7c4477d7c4b959a42f4d961ef26ac2d8022b7f3ae7a989a15"
+    },
+    {
+      "path": "evidence/t0132.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Victory versus Rogshamosh, went first, three turns, both point rows empty, damage0 and owner Card of the Game None.",
+      "sha256": "678b2810b4e879cca1dc8ffd9ff356c3284c8aa9397149d6d80706e93af67b36"
+    }
+  ],
+  "coverage_reconciliation": "Root read full timeline and turn/phase coverage; separate Sol reviewer checked decisive sequences and ordinary turns against retained source evidence."
+}

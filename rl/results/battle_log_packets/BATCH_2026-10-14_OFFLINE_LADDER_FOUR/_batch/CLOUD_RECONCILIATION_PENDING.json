@@ -1,45 +1,10 @@
 {
-  "checked_utc": "2026-10-14T19:55:07.065588+00:00",
-  "owner_deferred": true,
-  "sources": [
-    {
-      "filename": "20261014_160506000_iOS.MP4",
-      "source_sha256": "65a94f2a9cfcfc69d5bcbb9f11e2a5d1fd045daeb7c6fea703f20454e174239b",
-      "local_current_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Offline_Inbox\\20261014_160506000_iOS.MP4",
-      "downloads_original": "C:\\Users\\dacz8\\Downloads\\20261014_160506000_iOS.MP4",
-      "canonical_cloud_placeholder": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261014_160506000_iOS.MP4",
-      "canonical_cloud_copy_verified": false
-    },
-    {
-      "filename": "20261014_161324000_iOS.MP4",
-      "source_sha256": "d058d4cff7c50e4813f9bebacfc895ac0227bec97a941be0e08289787aff94e6",
-      "local_current_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Offline_Inbox\\20261014_161324000_iOS.MP4",
-      "downloads_original": "C:\\Users\\dacz8\\Downloads\\20261014_161324000_iOS.MP4",
-      "canonical_cloud_placeholder": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261014_161324000_iOS.MP4",
-      "canonical_cloud_copy_verified": false
-    },
-    {
-      "filename": "20261014_163325000_iOS.MP4",
-      "source_sha256": "2e88a291ff91ab3e7d2e9dea0af36022ee4e307324fa946bcddd61017bde8973",
-      "local_current_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Offline_Inbox\\20261014_163325000_iOS.MP4",
-      "downloads_original": "C:\\Users\\dacz8\\Downloads\\20261014_163325000_iOS.MP4",
-      "canonical_cloud_placeholder": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261014_163325000_iOS.MP4",
-      "canonical_cloud_copy_verified": false
-    },
-    {
-      "filename": "20261014_164328000_iOS.MP4",
-      "source_sha256": "7ee7c78dead4c3365ea94114d00eb97e8444ff6c62560f7e6a0464fd82284a74",
-      "local_current_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Offline_Inbox\\20261014_164328000_iOS.MP4",
-      "downloads_original": "C:\\Users\\dacz8\\Downloads\\20261014_164328000_iOS.MP4",
-      "canonical_cloud_placeholder": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261014_164328000_iOS.MP4",
-      "canonical_cloud_copy_verified": false
-    }
+  "pending": false,
+  "checked_utc": "2026-10-14T22:38:13.047298+00:00",
+  "source_count": 4,
+  "current_status": "SYNC_RECOVERY_STATUS.json",
+  "remaining": [
+    "OneDrive local video cache release remains pending; originals retained"
   ],
-  "no_cloud_or_local_original_deleted": true,
-  "future_work": [
-    "When OneDrive returns, verify canonical cloud bytes against each local source hash",
-    "Reconcile source placement without overwriting conflicts or creating duplicate Ladder entries",
-    "Mirror accepted written reviews and retained evidence to Boss Folder",
-    "Release video cache only after archive identity and cloud synchronization are verified"
-  ]
+  "historical_pending_record": "CLOUD_RECONCILIATION_PENDING.before_sync_recovery.json"
 }

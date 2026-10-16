@@ -1,0 +1,33 @@
+{
+  "lead": "/root",
+  "checked_utc": "2026-10-15T01:28:24.208652+00:00",
+  "source_filename": "20261014_234728000_iOS.MP4",
+  "source_sha256": "3f7d921a16db1c3c5df0af58e3b598163a33ddd359e9e10738924035aecc5c72",
+  "observations": [
+    {
+      "path": "evidence/f_0176.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Binding Snow animation against Dragonair with opponent0points; first mainattack ownT3/global5 from complete banner/turn account.",
+      "sha256": "06ebeb11cfead067e0a94a52a8314c79de49624efcbf5ca861f7e9647bf8f7f6"
+    },
+    {
+      "path": "evidence/f_0392.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Both players have2points. BackupNinetales180/Cape with1Water facesRayquaza180 withnoEnergy; benchedGougingFire110 retainsFire+Lightning.",
+      "sha256": "554a9c194baff414726cfd852a529b6256ed3cd97abc923bc5a5119c7a7b2cad"
+    },
+    {
+      "path": "evidence/f_0398.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Your opponent conceded explicitly displayed, before a further owner action.",
+      "sha256": "42bcc4bda7af4e87a81b518488b6abafe9aabfe0d2a6ca6f19965b8395357771"
+    },
+    {
+      "path": "evidence/f_0407.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Victory versusカビゴンです andNinetalesCardoftheGame; detailedstatistics table not shown.",
+      "sha256": "32ae5f01052a89e9eb346e305c7691bd18bbd5aa81a642ca60b0e010fed68227"
+    }
+  ],
+  "coverage_reconciliation": "Root read full timeline and turn/phase coverage; separate Sol reviewer checked decisive sequences and ordinary turns against retained source evidence."
+}

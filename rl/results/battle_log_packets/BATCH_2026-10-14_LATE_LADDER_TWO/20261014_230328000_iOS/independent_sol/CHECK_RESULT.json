@@ -1,0 +1,55 @@
+{
+  "accepted": true,
+  "acceptance_scope": "Frozen full review accepted with the explicit mode/rank erratum below. This is a bounded independent semantic check of retained native evidence, not a second full pass. Root must carry the erratum into lead clarification and external wording.",
+  "reviewer": "/root/check_late_230328",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "source_filename": "20261014_230328000_iOS.MP4",
+  "source_sha256": "3b50f97739c3b2154ba1135c3ec15b46336d8a1b62c2b3cf58412e2814254c18",
+  "source_bytes": 695885571,
+  "source_duration_seconds": 377.473333,
+  "source_identity_basis": "Lead-supplied verified identity agrees with frozen SOURCE.json and manifest. Original media was not decoded or rehashed in this check.",
+  "frozen_manifest_sha256": "628432284d1e1a0474a71b581a2658fbfce1d40694ec8fd9c9c049150803afbf",
+  "frozen_file_count": 230,
+  "frozen_files_match": true,
+  "primary_unchanged": true,
+  "integrity": {"before_mismatches": [], "after_mismatches": [], "manifest_unchanged": true},
+  "documents_read": ["START_HERE_VIDEO_REVIEW.md", "Review_Log/README.md", "REVIEW.md", "COVERAGE.md", "SUMMARY.json", "UNCERTAINTIES.json", "REVIEW_PACKET_HASHES.json", "SOURCE.json"],
+  "inspected_native_paths": [
+    "evidence/t0000.00.jpg", "evidence/t0012.00.jpg", "evidence/t0024.00.jpg", "evidence/t0027.00.jpg", "evidence/t0033.00.jpg",
+    "evidence/phase_0001.jpg", "evidence/phase_0002.jpg", "evidence/phase_0003.jpg", "evidence/phase_0004.jpg", "evidence/phase_0005.jpg", "evidence/phase_0006.jpg", "evidence/phase_0007.jpg", "evidence/phase_0008.jpg", "evidence/phase_0009.jpg", "evidence/phase_0010.jpg",
+    "evidence/t0060.00.jpg", "evidence/t0066.00.jpg", "evidence/t0069.00.jpg", "evidence/t0111.00.jpg", "evidence/t0135.00.jpg", "evidence/t0159.00.jpg", "evidence/t0165.00.jpg", "evidence/t0168.00.jpg",
+    "evidence/t0180.00.jpg", "evidence/t0187.50.jpg", "evidence/t0200.00.jpg", "evidence/t0202.00.jpg", "evidence/t0210.00.jpg", "evidence/t0220.50.jpg", "evidence/t0226.00.jpg",
+    "evidence/t0256.50.jpg", "evidence/t0258.00.jpg", "evidence/t0264.00.jpg", "evidence/t0282.00.jpg", "evidence/t0285.00.jpg", "evidence/t0297.00.jpg", "evidence/t0303.00.jpg", "evidence/t0318.00.jpg", "evidence/t0321.20.jpg", "evidence/t0322.00.jpg",
+    "evidence/t0334.00_charizard_native_crop.png", "evidence/t0363.00.jpg", "evidence/t0369.00.jpg", "evidence/t0372.00.jpg", "evidence/t0377.20.jpg"
+  ],
+  "ordinary_samples": [
+    {"turn": 1, "check": "Sightseer top four and selected cards", "observed": "Native60s shows Soothing Shore, Cyrus, Ninetales ex, Raticate ex. Native66/69 hand contains Ninetales and Raticate, supporting those two Pokemon selections. Unselected green Stadium may safely remain generic in primary prose."},
+    {"turn": 1, "check": "Cape target", "observed": "Native66/69 shows Elegant Cape attached to benched Vulpix, with Active Rattata40 and Entei140 unchanged."},
+    {"turn": 3, "check": "Cape survival and Field Blower target", "observed": "Ninetales reaches180 on evolution135s; Field Blower enlarged159s;165s shows Rainbow Cave in opponent discard, Cape retained, Ninetales180.168s confirms first attachedWater. No earlier supporting attack is indicated by the early board states or100damage final total."},
+    {"turn": 4, "check": "Supporter identity and Fire development", "observed": "187.50s explicitly reads Copycat, not Research.180s Charmeleon Ignition text attaches zoneFire to ActiveFire; earlier165s Entei2Fire becomes4Fire at200s, consistent with Ignition plus normal attachment.202s shows Blazing Beatdown."},
+    {"turn": 5, "check": "Raticate Energy transfer", "observed": "220.50s Thieving Incisors activation;226s old Active Entei3Fire and Raticate1Fire, versus4Fire at200s. This is a transfer, not a discard."},
+    {"turn": 6, "check": "Bench attachment under Binding Snow", "observed": "282s zoneFire present and Charmeleon unenergized;285s zone orb gone and Charmeleon1Fire; Active Entei remains40HP/0Energy. No contradiction with Active-only restriction."},
+    {"turn": 7, "check": "No-effect Item and benchWater", "observed": "303s explicitly reports no deck targets;318s shows Water on benched Vulpix while Ninetales remains2Water."}
+  ],
+  "consequential_checks": {
+    "mode": "Human opponent TA28 with profile/greeting; no Auto control visible in inspected native samples. Treat as ladder under owner default. Ranked queue and current ranks are unverified in retained setup samples.",
+    "order": "27s says going first; final377.20s says Went first.",
+    "coverage": "Primary REVIEW/COVERAGE account for setup, all eight global turns, transitions, point awards and terminal result across0-377.473333s. Selected ordinary and consequential samples agree; no material omitted phase or contradictory state transition identified within bounded check.",
+    "first_main_attack": "Ninetales Binding Snow at258s is ownT3/global5 in complete primary turn account.256.50s shows targetEntei140,2Water on Ninetales and opponent1point;264s target40.100damage agrees with80+20Water weakness and final100total. Earlier first-turn Rattata has no Energy and third-global-turn Ninetales only1Water; no earlier supporting attack supported.",
+    "global7": "297s explicitly currentturn7.318s Ninetales60HP/2Water/Cape versusEntei40HP/0Energy.321.20s explicitly warns An attack can be used.322s starts opponentturn8 with Entei still40. Available BindingSnow KO for2points is supported as a tactical inference, not a played branch or guaranteed win.",
+    "terminal": "363s shows60damage on60HP Ninetales;369s TA28+2points reaches3;372s Defeat;377.20s Defeat vsTA28, Went first,8turns,0-3,100damage. Rattata KO firstpoint at111s reconciles1+2=3.",
+    "mega_charizard": "Native source crop supports MegaCharizard ex220HP; final form glyph insufficiently clear. Preserve unknown form, without artwork-color inference."
+  },
+  "findings": [
+    {"severity": "minor_erratum", "topic": "Mode and current rank overclaim", "primary_claim": "One ranked human match; both matchup badges Ultra Ball Rank4", "evidence": ["evidence/phase_0004.jpg", "evidence/phase_0003.jpg", "evidence/phase_0007.jpg"], "observed": "Retained setup shows opponentLv60, greeting and historical Master badges A2b/A3/A3a; no readable current-rank matchup badge or Ranked queue label located in bounded retained setup inspection.", "reconciled_wording": "Human battle, treated as ladder under owner's default classification. Exact queue and current ranks remain unverified.", "resolution": "Explicit erratum in this acceptance; root to append lead clarification preserving frozen primary."}
+  ],
+  "material_discrepancies": [],
+  "limits": [
+    "Bounded retained-frame inspection plus primary coverage/point reconciliation. No second full video pass and no new decoding.",
+    "No Auto control visible in inspected frames; this independent check does not independently prove every frame of the full recording lacks it.",
+    "Full20-card decks, hidden hands, exact printings, MegaCharizard form and player intent remain unknown.",
+    "Timing is approximate; Raticate draw/evolution preview around210s lies at the reported turn boundary, without changing attack-turn conclusions.",
+    "No shared event/index updates, external log writes, source moves or primary edits performed. Lead retains final integration authority."
+  ]
+}

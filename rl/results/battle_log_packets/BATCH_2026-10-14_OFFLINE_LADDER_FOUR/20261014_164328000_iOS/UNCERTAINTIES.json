@@ -1,0 +1,13 @@
+{
+  "source_filename": "20261014_164328000_iOS.MP4",
+  "source_sha256": "7ee7c78dead4c3365ea94114d00eb97e8444ff6c62560f7e6a0464fd82284a74",
+  "consequential_unresolved_outcome_or_note_claims": [],
+  "items": [
+    {"id": "hidden_cards", "interval_seconds": [0, 412.853333], "limit": "Opponent hand/draws and unrevealed deck cards remain hidden. Visible owner core is sufficient for Deck12 routing; no exact full list asserted.", "effect_on_result": "none"},
+    {"id": "timestamps", "interval_seconds": [0, 412.853333], "limit": "Rounded phase and animation boundaries use four-second sheets refined by native seeks. Whimsicott Grass Knot banner directly visible at186s; note T2/global4/one opposing point is unambiguous.", "effect_on_result": "none"},
+    {"id": "turn3_end", "interval_seconds": [324, 334], "limit": "Owner retreats Whimsicott to Cottonee, attaches Grass to Ogerpon and makes no attack. Countdown reaches two seconds at328s, then opponent turn. Explicit End Turn tap versus automatic timer expiration is not proven.", "effect_on_result": "none; avoid attributing intentional pass or timeout as fact"},
+    {"id": "notifications", "intervals_seconds": [[98, 102], [255, 270]], "limit": "Transient upper-screen notifications obscure some names/hand-fan details. Adjacent frames resolve trainer and board changes. Notification content is unrelated and not transcribed.", "effect_on_result": "none"},
+    {"id": "cloud_copy", "interval_seconds": null, "limit": "Source binding is the verified Offline_Inbox copy; inaccessible canonical OneDrive copy and sync status are unverified.", "effect_on_result": "local-only storage/reconciliation pending"},
+    {"id": "optimal_strategy", "interval_seconds": [245, 333], "limit": "130 Grass Knot preview is ten short of Baxcalibur HP; damaged Whimsicott remains exposed to visible any-target Diving Icicles after retreat. Hidden-information optimal alternative and owner intent are not asserted.", "effect_on_result": "risk/actual sequence established; no optimal-play verdict"}
+  ]
+}

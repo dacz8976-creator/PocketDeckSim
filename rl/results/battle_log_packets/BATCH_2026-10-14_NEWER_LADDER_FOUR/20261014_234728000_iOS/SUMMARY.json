@@ -1,0 +1,115 @@
+{
+  "source_filename": "20261014_234728000_iOS.MP4",
+  "source_sha256": "3f7d921a16db1c3c5df0af58e3b598163a33ddd359e9e10738924035aecc5c72",
+  "source_bytes": 755824311,
+  "source_duration_seconds": 407.985,
+  "recording_creation_utc": "2026-10-14T23:47:28.000000Z",
+  "match_date": "2026-10-14",
+  "reviewer": "/root/newer_234728",
+  "existing_claim": "/root/evening_234728",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "primary_review_complete": true,
+  "independent_acceptance_pending": true,
+  "battle_complete": true,
+  "match_count": 1,
+  "mode": "ranked ladder",
+  "rank_visible": "Ultra Ball Rank 4 (both players)",
+  "auto_option_seen": false,
+  "manual_interaction_seen": true,
+  "owner": "Dacz8976",
+  "opponent": "カビゴンです",
+  "deck": {
+    "name": "Deck 13-A",
+    "main_attacker": "Alolan Ninetales ex",
+    "energy": [
+      "Water"
+    ],
+    "visible_core": [
+      "Alolan Vulpix",
+      "Alolan Ninetales ex",
+      "Team Rocket's Rattata",
+      "Team Rocket's Raticate ex"
+    ],
+    "complete_20_card_list_established": false
+  },
+  "opponent_visible_core": [
+    "Mega Rayquaza ex",
+    "Dratini",
+    "Dragonair",
+    "Gouging Fire"
+  ],
+  "result": "win",
+  "result_method": "opponent concession",
+  "score": {
+    "owner": 2,
+    "opponent": 2,
+    "meaning": "actual points before concession; no fabricated third point"
+  },
+  "going_order": "1st",
+  "exact_three_item_note_prefix": "1st | Alolan Ninetales ex T3 | opp 0 pts",
+  "first_main_attack": {
+    "pokemon": "Alolan Ninetales ex",
+    "attack": "Binding Snow",
+    "own_turn": 3,
+    "global_turn": 5,
+    "seconds_approx": 176,
+    "opponent_points_before": 0,
+    "damage": 80,
+    "target": "Dragonair",
+    "target_hp_before": 80,
+    "knockout": true
+  },
+  "supporting_attacks": [],
+  "global_turns_observed": 11,
+  "owner_turns_started": 6,
+  "opponent_turns_started": 5,
+  "point_progression": [
+    {
+      "seconds_approx": 184,
+      "score": "1-0",
+      "event": "Dragonair KO"
+    },
+    {
+      "seconds_approx": 350,
+      "score": "2-0",
+      "event": "Gouging Fire KO"
+    },
+    {
+      "seconds_approx": 386,
+      "score": "2-2",
+      "event": "Alolan Ninetales ex KO"
+    },
+    {
+      "seconds_approx": 398,
+      "score": "2-2",
+      "event": "Opponent conceded"
+    }
+  ],
+  "decisive_native_evidence": [
+    "evidence/f_0002.00.jpg",
+    "evidence/f_0018.00.jpg",
+    "evidence/f_0022.00.jpg",
+    "evidence/f_0042.00.jpg",
+    "evidence/f_0176.00.jpg",
+    "evidence/f_0178.00.jpg",
+    "evidence/f_0184.00.jpg",
+    "evidence/f_0350.00.jpg",
+    "evidence/f_0376.00.jpg",
+    "evidence/f_0380.00.jpg",
+    "evidence/f_0382.00.jpg",
+    "evidence/f_0386.00.jpg",
+    "evidence/f_0392.00.jpg",
+    "evidence/f_0393.00.jpg",
+    "evidence/f_0398.00.jpg",
+    "evidence/f_0407.00.jpg"
+  ],
+  "external_log_written": false,
+  "source_moved": false,
+  "limits": [
+    "Final detailed statistics table is not shown; score 2-2 is from the preconcession board and global turn 11 from the visible banner at 393 seconds.",
+    "Full opponent hand and both exact 20-card lists are not established.",
+    "No post-concession continuation or guaranteed tactical outcome is inferred.",
+    "Primary visual review uses targeted native stills and state reconciliation, not exact simulator replay."
+  ]
+}

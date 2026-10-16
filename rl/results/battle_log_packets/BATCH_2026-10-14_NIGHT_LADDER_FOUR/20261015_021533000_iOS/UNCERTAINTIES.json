@@ -1,0 +1,41 @@
+{
+  "source_filename": "20261015_021533000_iOS.MP4",
+  "source_sha256": "79e90e086586b39d1d9b7e674227d321a1c37f77b21e0054e5725d8dddf79996",
+  "consequential_unresolved": [],
+  "nonconsequential_uncertainties": [
+    {
+      "topic": "opponent_name",
+      "timestamps": [
+        20,
+        323
+      ],
+      "finding": "Visible single dot/bullet, transcribed as •; exact Unicode encoding cannot be inferred from pixels."
+    },
+    {
+      "topic": "hidden_information",
+      "finding": "Hidden opponent hand, full deck lists/counts, unseen choices and exact print identifiers beyond visible mechanically established versions remain unknown."
+    },
+    {
+      "topic": "ice_pop_copies",
+      "timestamps": [
+        110,
+        120,
+        170
+      ],
+      "finding": "Repeated use and healing visible; cannot distinguish physical copies of identical Items."
+    },
+    {
+      "topic": "exact_action_onsets",
+      "finding": "Review timestamps are approximate source-local action intervals; retained frame filenames are precise seek targets."
+    },
+    {
+      "topic": "rank",
+      "timestamps": [
+        20
+      ],
+      "finding": "Master Ball Rank visible for both players; no numeric rating, ranked position or point movement shown."
+    }
+  ],
+  "mode": "Ranked ladder supported by matchup panels; no Auto option observed.",
+  "acceptance": "Separate fresh independent acceptance pending."
+}

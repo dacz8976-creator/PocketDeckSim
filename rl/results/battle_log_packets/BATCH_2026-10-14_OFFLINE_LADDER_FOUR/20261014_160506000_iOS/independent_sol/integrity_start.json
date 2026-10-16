@@ -1,0 +1,29 @@
+{
+  "frozen_manifest_sha256": "e8808cdea8fba2df2b004aac0fd9aaf63b98a2c0ff98b3870cb6b8f52a37b746",
+  "frozen_count": 323,
+  "frozen_files_match": true,
+  "mismatches": [],
+  "source_sha256": "65a94f2a9cfcfc69d5bcbb9f11e2a5d1fd045daeb7c6fea703f20454e174239b",
+  "source_hash_match": true,
+  "source_bytes": 805372298,
+  "source_stable": true,
+  "probe": {
+    "programs": [],
+    "streams": [
+      {
+        "codec_name": "hevc",
+        "width": 1170,
+        "height": 2532
+      },
+      {
+        "codec_name": "aac"
+      }
+    ],
+    "format": {
+      "duration": "437.791667",
+      "tags": {
+        "creation_time": "2026-10-14T16:05:06.000000Z"
+      }
+    }
+  }
+}

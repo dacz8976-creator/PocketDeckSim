@@ -44,6 +44,14 @@ summary = load(packet / 'SUMMARY.json')
 decision = load(packet / 'ROOT_DECISION.json')
 manifest_path = packet / 'REVIEW_PACKET_HASHES.json'
 manifest = load(manifest_path)
+assert manifest['source_sha256'] == source['sha256']
+raw_files = manifest['files']
+if isinstance(raw_files, list):
+    assert len({f['path'] for f in raw_files}) == len(raw_files), 'Duplicate frozen evidence path'
+    frozen_files = {f['path']: f['sha256'] for f in raw_files}
+else:
+    assert isinstance(raw_files, dict)
+    frozen_files = raw_files
 check_path = packet / 'independent_sol/CHECK_RESULT.json'
 check = load(check_path)
 assert check['accepted'] and check['frozen_files_match'] and check['primary_unchanged']
@@ -55,7 +63,7 @@ assert decision['battle_complete'] and decision['root_read_full_timeline_and_cov
 assert decision['auto_option_seen'] is False
 assert summary['exact_three_item_note_prefix'] == decision.get('primary_note_prefix', decision['note_prefix'])
 assert summary['outcome'] == decision['result']
-for rel, sha in manifest['files'].items():
+for rel, sha in frozen_files.items():
     target = (packet / rel).resolve()
     assert target.is_relative_to(packet) and digest(target) == sha, rel
 assert len(decision['observations']) >= 3 and all(o['directly_viewed_by_root'] for o in decision['observations'])
@@ -70,7 +78,7 @@ save_new(packet / 'LEAD_ACCEPTANCE.json', {'accepted': True, 'decision': 'accept
      'source_game_count': 1, 'all_source_games_accepted': True, 'battle_complete': True, 'archive_eligible': True,
      'scope': decision['scope'], 'independent_acceptance': str(check_path), 'independent_acceptance_sha256': digest(check_path),
      'independent_model_configuration': 'gpt-6.1-sol/high fresh compact source check',
-     'accepted_input_sha256': manifest['files'], 'frozen_manifest_sha256': digest(manifest_path),
+     'accepted_input_sha256': frozen_files, 'frozen_manifest_sha256': digest(manifest_path),
      'root_decision': 'ROOT_DECISION.json', 'root_checks': 'SOURCE_CHECKS.json', 'clarifications': decision.get('clarifications', []),
      'canonical_cloud_copy_verified': False, 'offline_local_source_accepted': True})
 if (packet / 'LEAD_CLARIFICATION.md').exists():

@@ -1,0 +1,27 @@
+{
+  "lead": "/root",
+  "checked_utc": "2026-10-15T21:19:24.185958+00:00",
+  "source_filename": "20261015_201201000_iOS.MP4",
+  "source_sha256": "b47053e381a5b87f5495e4d3ddaaeead9ea23c7be66967652eeb1e56fe83bf8c",
+  "observations": [
+    {
+      "path": "native/t0224.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Glimmora Venomous Hit selected into Espeon; opponent has zero points.",
+      "sha256": "f82f914bb22ab93934626d4d173b02b0d61d0a82b403e32d287211f30dfd7d47"
+    },
+    {
+      "path": "native/t0371.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Explicit owner Concede confirmation and visible1-2 score; Kingambit remains in hand.",
+      "sha256": "feb05c0b0fc104a690988817af6bfd87ed12991f8283adddc07ca218e2d1b9a1"
+    },
+    {
+      "path": "native/t0382.20.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Defeat versus azcolgatewhite; went first, nine turns, owner1 opponent2,60damage.",
+      "sha256": "2416f78ac7a340c590c8b516bd5ea7cab73745cfd450de5e3db3a88bee27c5e6"
+    }
+  ],
+  "coverage_reconciliation": "Lead read full timeline and turn/phase coverage. A separate Sol reviewer checked ordinary turns and decisive evidence against retained source frames."
+}

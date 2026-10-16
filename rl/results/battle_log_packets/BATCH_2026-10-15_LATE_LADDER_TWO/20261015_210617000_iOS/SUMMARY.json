@@ -1,0 +1,101 @@
+{
+  "source_filename": "20261015_210617000_iOS.MP4",
+  "source_sha256": "f1c9f16ca8fca83bc466aa8698fabb6297ceba504284a8bf6a8ee3be9d273cea",
+  "reviewer": "/root/ladder_210617",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "battle_complete": true,
+  "match_count": 1,
+  "opponent_identifier": "C'est mo",
+  "owner_identifier": "Dacz8976",
+  "owner_visible_core": [
+    "Pawniard",
+    "Glimmet x2",
+    "Glimmora x2",
+    "Regigigas",
+    "Alolan Grimer",
+    "Alolan Muk",
+    "Kingambit via Rare Candy"
+  ],
+  "opponent_visible_core": [
+    "Meloetta",
+    "Ralts",
+    "Carbink x2",
+    "Mega Diancie ex x2",
+    "Mega Gardevoir ex via Rare Candy"
+  ],
+  "outcome": "win",
+  "score": {
+    "owner": 3,
+    "opponent": 2,
+    "terminal_method": "Kingambit Overlord's Blade 180 KOs 170-HP Mega Diancie ex"
+  },
+  "first_or_second": "second",
+  "mode": "human ranked; Ranked Match Season B4b SP explicitly visible",
+  "auto_option_seen": false,
+  "selected_deck_label": "New deck 16",
+  "selected_deck_slot": "02",
+  "match_date_local": "2026-10-15",
+  "source_creation_local": "2026-10-15T16:06:17-05:00",
+  "turns_played_global": 16,
+  "damage_done": 520,
+  "first_attacks": [
+    {
+      "pokemon": "Pawniard",
+      "own_turn": 1,
+      "global_turn": 2,
+      "opponent_points": 0,
+      "approx_seconds": 136,
+      "attack": "Slash"
+    },
+    {
+      "pokemon": "Glimmora",
+      "own_turn": 2,
+      "global_turn": 4,
+      "opponent_points": 0,
+      "approx_seconds": 233,
+      "attack": "Venomous Hit"
+    },
+    {
+      "pokemon": "Regigigas",
+      "own_turn": 7,
+      "global_turn": 14,
+      "opponent_points": 1,
+      "approx_seconds": 626,
+      "attack": "Giga Turbo"
+    },
+    {
+      "pokemon": "Kingambit",
+      "own_turn": 8,
+      "global_turn": 16,
+      "opponent_points": 2,
+      "approx_seconds": 672,
+      "attack": "Overlord's Blade"
+    }
+  ],
+  "exact_three_item_note_prefix": "2nd|Glimmora T2; Kingambit T8|opp 0; 2 pts respectively",
+  "note": "2nd|Glimmora T2; Kingambit T8|opp 0; 2 pts respectively. Pawniard first attacked own T1 with opp0; Regigigas first attacked own T7 with opp1. First Glimmora KO awarded no point on Shattering Crystal heads; second Glimmora tails and Regigigas KO made opp2 despite three owner Pokemon KOs. Muk suppressed Seal of Antiquity, Regigigas Giga Turbo hit for100 and charged Muk; two manual Darkness attachments powered Kingambit, and Kingambit180 KOed fresh170HP Mega Diancie ex for Victory3-2 in16global turns. Ranked selected New deck16; exact20 unknown.",
+  "decisive_evidence": [
+    "details/t0526.00.jpg",
+    "details/t0594.00.jpg",
+    "details/t0612.00.jpg",
+    "details/t0626.00.jpg",
+    "details/t0672.00.jpg",
+    "details/t0674.00.jpg",
+    "details/t0691.30.jpg"
+  ],
+  "independent_acceptance": "pending separate checker",
+  "lead_acceptance": "pending",
+  "energy_clarification": {
+    "owner_T5": "Darkness to regular-art Glimmora after Sabrina",
+    "owner_T6": "third Darkness to Regigigas",
+    "owner_T7": "Darkness to Kingambit; Giga Turbo Colorless to Alolan Muk",
+    "owner_T8": "second Darkness to Kingambit",
+    "evidence": [
+      "native/t0538.00.jpg",
+      "details/t0626.00.jpg",
+      "details/t0664.00.jpg",
+      "native/t0675.00.jpg"
+    ]
+  }
+}

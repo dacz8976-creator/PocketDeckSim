@@ -1,0 +1,39 @@
+{
+  "lead": "/root",
+  "checked_utc": "2026-10-14T23:30:49.113804+00:00",
+  "source_filename": "20261014_214436000_iOS.MP4",
+  "source_sha256": "44a44a5af6820d83f379f757be09a0e24b49d220dbe82d603ad32f9b1dfffa72",
+  "observations": [
+    {
+      "path": "native/t0005.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Ranked Season B4b SP, Ultra Ball Rank4, Deck13-A selected.",
+      "sha256": "653b8376663401e6625118d206eefc3bf19dd3b54c958a28720961bd7231f64b"
+    },
+    {
+      "path": "native/t0203.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Ninetales ex Binding Snow selected with two Water; opponent score0, Igglybuff Active.",
+      "sha256": "402983d68578aef6d843fb84da6c77930cd98d6750c9f3d46653e4b46be55b89"
+    },
+    {
+      "path": "native/t0205.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Named Binding Snow attack animation; opponent still0 before point award.",
+      "sha256": "5bc5fc1c7dbcab3b2c74f1ab58c52aaa3ef2b0a6ff06a6b418fb1a927b22833c"
+    },
+    {
+      "path": "native/t0364.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Terminal Mega Altaria ex Mega Harmony card with three Benched Pokemon, consistent with130 damage.",
+      "sha256": "587bb47754c2c4f5609f0b12e118378cc38046f2546f10a1db5f0de91c42c2ad"
+    },
+    {
+      "path": "native/t0379.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Defeat versus N.N; second;11 turns;owner1/opponent3 displayed points;160 damage.",
+      "sha256": "2acc506fefe7bd2095b9a7df94e647bb3336367528d2d9610da6409e18567f50"
+    }
+  ],
+  "coverage_reconciliation": "Root read full timeline and turn/phase coverage; separate Sol reviewer checked decisive sequences and ordinary turns against retained source evidence."
+}

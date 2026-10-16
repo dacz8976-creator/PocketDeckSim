@@ -9,3 +9,9 @@ Accepted local copies move to Offline_Reviewed with unchanged filenames and befo
 OneDrive synchronization, canonical cloud identity comparison and final placement, Boss Folder mirroring, and source cache release are deferred under the owner's offline instruction. CLOUD_RECONCILIATION_PENDING.json in accepted packets will record exact outstanding work. Do not delete originals, release local data before cloud verification, overwrite cloud placeholders, or create duplicate Ladder entries when synchronization returns.
 
 These are new ladder recordings. The Pause Games supplement and older paused backlog are outside this batch. Hidden cards and unrecorded information must remain unknown. Any visible Auto option, even OFF, means a computer game that stays out of the human Ladder Log.
+
+## Completed local result
+
+All four games have completed full reviews, separate independent source acceptance, root reconciliation, immutable completion registration, and verified local archive moves. All four are saved exactly once under Deck 12 and verified after an explicit artifact reload. The current season is 2 wins, 8 losses, and 10 games (20%); the 56 historical games and all 62 prior saved rows remain unchanged.
+
+Local accepted videos are in Battle Logs/Offline_Reviewed. Each Downloads original and the existing canonical cloud placeholder is preserved. CLOUD_RECONCILIATION_PENDING.json records the deferred synchronization and identity/placement work. The immutable first-pass reports remain intact; nonmaterial season/Card of the Game and Poké Ball citation corrections are explicit root addenda. The online log is complete and must not be duplicated when OneDrive returns.

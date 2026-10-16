@@ -1,0 +1,33 @@
+{
+  "accepted": true,
+  "source_filename": "20261015_205332000_iOS.MP4",
+  "source_sha256": "2d0b8e0c42714b0572556faeaeacae13f8d3210b822290f9a528d291bb220d3a",
+  "frozen_manifest_sha256": "36fae0de5f75293606d23d83cbbc232136d3bfe30397dc31961b6b5a3ef98c2c",
+  "frozen_files_match": true,
+  "primary_unchanged": true,
+  "frozen_file_count": 334,
+  "checker": "/root/independent_late_two",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "checked_utc": "2026-10-15T21:57:25.526505+00:00",
+  "checks": [
+    "Full frozen REVIEW.md, COVERAGE.md, SUMMARY.json, UNCERTAINTIES.json read and reconciled against source-first checkpoint.",
+    "Opening/setup/opponent, selected independent ordinary turns, score progression and decisive native ending verified.",
+    "Coverage provides all15globalturns plus setup and terminal; bounded independent check did not duplicate primary full-video decoding.",
+    "First attacks source verified: Glimmora own2/global3 opp0; Regigigas own5/global9 opp1; Kingambit own8/global15 opp1.",
+    "Initial checker Regigigas own4/global7 statement corrected explicitly after native284/306/332/334/340/343/344 recheck; history retained.",
+    "BothGlimmora KOcount2 with onlyopp1point supported: firsttails,secondheads; Kingambit140native620 KOsDarkrai140. Regigigas returnedbyIlima, notKO.",
+    "Victory3-1,first,15turns,500damage results verified native640; no concession.",
+    "334frozenprimaryfiles matchmanifest and remain unchanged from pre-reconciliation baseline."
+  ],
+  "boundaries": [
+    "Independent source checks bounded to setup, selected ordinary turns, first attacks, consequential state/KO/score transitions and ending, followed by full-account reconciliation.",
+    "No events/index/browser/archive writes.",
+    "Exactrankedqueue label, hiddenhands/full20 and eachrepeatedLuckyIcePopcoin remain unknown as primary states."
+  ],
+  "outcome": "win",
+  "score": {
+    "owner": 3,
+    "opponent": 1
+  }
+}

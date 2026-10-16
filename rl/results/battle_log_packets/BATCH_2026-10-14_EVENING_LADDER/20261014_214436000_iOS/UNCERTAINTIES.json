@@ -1,0 +1,13 @@
+{
+  "source_filename": "20261014_214436000_iOS.MP4",
+  "source_sha256": "44a44a5af6820d83f379f757be09a0e24b49d220dbe82d603ad32f9b1dfffa72",
+  "unreviewed_intervals": [],
+  "consequential_unresolved_claims": [],
+  "limits": [
+    {"item": "Exact 20-card lists", "status": "unknown", "reason": "Only visible cards, public evolutions and selected owner draws are established."},
+    {"item": "Unrevealed opponent draws and earlier Poke Ball return", "source_seconds": [97, 99], "status": "hidden", "reason": "No public return identity is shown; do not infer a future played card was this specific search result."},
+    {"item": "Exact input instants", "status": "approximate", "reason": "Source times cite readable action windows and representative animation frames, not individual taps."},
+    {"item": "Terminal score convention", "status": "resolved_display_limit", "reason": "Two opposing +2 ex awards are visible; final result displays three opposing points, capped at the winning threshold."},
+    {"item": "Lead acceptance and live external persistence", "status": "outside_worker_authority", "reason": "Primary review does not itself register completion, move sources or write an external log."}
+  ]
+}

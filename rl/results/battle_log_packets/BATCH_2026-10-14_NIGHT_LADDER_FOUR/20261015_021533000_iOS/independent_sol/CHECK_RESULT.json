@@ -1,0 +1,86 @@
+{
+  "accepted": true,
+  "source_filename": "20261015_021533000_iOS.MP4",
+  "source_sha256": "79e90e086586b39d1d9b7e674227d321a1c37f77b21e0054e5725d8dddf79996",
+  "source_bytes": 593306034,
+  "source_duration_seconds": 323.708333,
+  "frozen_manifest_sha256": "414ac8d0d746580af764aed80fa9038cb08dfa8f5dc527bb1c5d68d4ec03f4ac",
+  "frozen_file_count": 180,
+  "frozen_files_match": true,
+  "primary_unchanged": true,
+  "integrity_checks": "All 180 manifest-listed file hashes and manifest hash matched before and after semantic inspection; no primary files modified.",
+  "reviewer": "/root/check_night_021533",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "scope": "Fresh bounded independent acceptance of frozen full-battle packet. Read SOURCE, REVIEW, COVERAGE, SUMMARY and UNCERTAINTIES; inspected retained sheets and selected native evidence, including two ordinary development sequences beyond highlighted decisive claims. This is not a second full-video review.",
+  "frames": [
+    "evidence/t0020.00.jpg",
+    "evidence/t0065.00.jpg",
+    "evidence/t0072.50.jpg",
+    "evidence/t0077.50.jpg",
+    "evidence/t0142.50.jpg",
+    "evidence/t0147.50.jpg",
+    "evidence/t0157.50.jpg",
+    "evidence/t0205.00.jpg",
+    "evidence/t0212.50.jpg",
+    "evidence/t0215.00.jpg",
+    "evidence/t0277.50.jpg",
+    "evidence/t0285.00.jpg",
+    "evidence/t0287.50.jpg",
+    "evidence/t0296.00.jpg",
+    "evidence/t0301.00.jpg",
+    "evidence/t0305.00.jpg",
+    "evidence/t0315.00.jpg",
+    "evidence/t0323.00.jpg"
+  ],
+  "sheets": [
+    "sheet_0000.00_0085.00.jpg",
+    "sheet_0090.00_0175.00.jpg",
+    "sheet_0180.00_0265.00.jpg",
+    "sheet_0270.00_0323.00.jpg"
+  ],
+  "findings": [
+    {
+      "topic": "coverage_and_identity",
+      "finding": "Source identity agrees across assignment, immutable in-progress event and frozen SOURCE. Full prose and coverage account setup through all ten global turns and final result; no material coverage contradiction found in bounded checks. Raw video was not rehashed or decoded by this acceptance pass."
+    },
+    {
+      "topic": "ordinary_sequence_1",
+      "interval_seconds": [60, 98],
+      "finding": "Independently selected early own-turn development agrees: Poke Ball reveal, Alolan Vulpix acquisition and bench placement, Soothing Shore placement, then Rattata supporting attack. Native 65/72.5/77.5 and early sheets preserve order and resulting board; these are not Ninetales main-attacker attacks."
+    },
+    {
+      "topic": "ordinary_sequence_2",
+      "interval_seconds": [133, 160],
+      "finding": "Independently selected own-turn-3 development agrees: second Rattata benched, Vulpix evolved to Ninetales, Elegant Cape selected then attached, Ninetales reaches 180 HP and receives Water; supporting Active Rattata deals 20 to Ivysaur. Native 142.5/147.5/157.5 and sheet show the progression."
+    },
+    {
+      "topic": "mode_order_and_opponent",
+      "finding": "Native t20 shows both Master Ball Rank panels and one dot/bullet opponent name. No Auto option appears in inspected evidence; ladder classification is supported. Final native t323 explicitly says Went first. Exact opponent-name Unicode remains unknown."
+    },
+    {
+      "topic": "first_main_attack",
+      "finding": "Native t205 says current turn 7, own turn 4 when going first; opponent already has one point. Native t212.5 shows Ninetales with two Water and Binding Snow 80, t215 shows its attack animation. Earlier Rattata Ambush attacks are supporting attacks. Accept prefix: 1st | Alolan Ninetales ex T4 | opp 1 pts."
+    },
+    {
+      "topic": "retreat_and_bench_heal",
+      "finding": "Native t277.5 shows poisoned Ninetales at 50 HP with three Water and a two-Energy retreat. Native t285 shows Rattata Active and Ninetales benched at 50 with one Water and no Poison icon. Native t287.5 shows a 20 heal, and t301 confirms Ninetales at 70."
+    },
+    {
+      "topic": "terminal_sequence",
+      "finding": "Native t296 explicitly names Repel and its Basic-Active switching text. The only bench replacement is Ninetales; t301 shows it forced Active at 70. t305 shows Critical Bloom 120 damage, t315 explicitly awards two points reaching three, and t323 confirms Defeat 0-3, ten turns, 140 damage. This supports actual knockout loss, with no concession inference."
+    },
+    {
+      "topic": "deck_and_damage",
+      "finding": "Visible Rattata/Vulpix/Ninetales/Raticate ex core and Bulbasaur/Ivysaur/Mega Venusaur ex opposing line agree with inspected evidence. Raticate remains in hand in late native frames. Supporting 40+20 and main 80 reconcile final damage 140. Full deck lists and exact internal deck-label mapping are not independently established by this bounded visual check."
+    }
+  ],
+  "material_issues": [],
+  "corrections_required": [],
+  "limits": [
+    "Bounded independent evidence acceptance supplements the primary full review; it does not assert a second continuous full-video pass.",
+    "Source hash, byte count and duration were checked against frozen identity and the existing CLI-hashed event, not by re-reading raw video.",
+    "Hidden cards, complete deck lists, unseen choices, exact print identifiers and exact opponent-name Unicode remain unknown.",
+    "No shared index, event, media move, Boss Folder or external artifact write performed. Root retains integration and final registration authority."
+  ]
+}

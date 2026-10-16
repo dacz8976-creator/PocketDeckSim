@@ -1,0 +1,27 @@
+{
+  "lead": "/root",
+  "checked_utc": "2026-10-14T23:34:53.440406+00:00",
+  "source_filename": "20261014_225802000_iOS.MP4",
+  "source_sha256": "393e8bf370f120ecd45a80b17da3a0e97777ed646c0d4505588f66a67f9dad28",
+  "observations": [
+    {
+      "path": "evidence/t0137.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Owner second turn Rattata Active,no Bench,Vulpix unavailable,two Ninetales ex in hand;opponent1 point and Suicune/Baxcalibur/Chien-Pao visible.",
+      "sha256": "8a1013210b90e3bd81687eeef070b47af080e780cda3c7085174b575fcc30afd"
+    },
+    {
+      "path": "evidence/t0148.50.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Owner concession confirmation;Rattata still Active,no Ninetales in play;opponent1 point.",
+      "sha256": "57e0206e00fa7eb9eb027c9f4757ef51095324e07fc3e3a8fa99f97ee95a90fb"
+    },
+    {
+      "path": "evidence/t0156.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Defeat versus Bruno Wik;second;four turns;0-1points;40damage;Rattata card of game.",
+      "sha256": "bf860aee8e425911c3266040ce961e44ca09da08e36a7efa0f339757b9f936a0"
+    }
+  ],
+  "coverage_reconciliation": "Root read full timeline and turn/phase coverage; separate Sol reviewer checked decisive sequences and ordinary turns against retained source evidence."
+}

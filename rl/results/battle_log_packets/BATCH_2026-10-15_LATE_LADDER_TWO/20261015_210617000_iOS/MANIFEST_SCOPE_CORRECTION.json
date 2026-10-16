@@ -1,0 +1,29 @@
+{
+  "correction_utc": "2026-10-15T21:55:32.555380+00:00",
+  "cause": "Original freeze used recursive packet enumeration and accidentally included checker-owned independent_sol/SOURCE_OBSERVATIONS.md. Independent checker appended a source checkpoint after the freeze, creating a checker-file mismatch. All primary document and evidence hashes remained unchanged.",
+  "old_manifest": "REVIEW_PACKET_HASHES.before_scope_fix.json",
+  "old_manifest_sha256": "67431da78ad3244ba9e10655cae065ad6efbe79896783841e2a67da80283690e",
+  "new_manifest": "REVIEW_PACKET_HASHES.json",
+  "new_manifest_sha256": "36f122ebe1ccb534bd79b605f31b566fabbc5b72ebaf6a03f0faaedf236604a1",
+  "old_file_count": 272,
+  "new_primary_file_count": 269,
+  "excluded_old_entries": [
+    "ASSIGNMENT_REGISTRATION.json",
+    "independent_sol/SOURCE_OBSERVATIONS.md",
+    "independent_sol/selected_source.jpg"
+  ],
+  "all_retained_primary_hashes_unchanged": true,
+  "unchanged_primary_document_hashes": {
+    "ASSIGNMENT.json": "44be137f292d37d142d15b93d0122d2cc8091dc4f60d0f0007aeeb19e0661d86",
+    "COVERAGE.md": "6d0aa44206012d686e427603ce2a45b67e034a671bb00ec29be9ee49fb8da39a",
+    "LOCAL_METADATA.json": "32d62a3cb713fe99960792e40d565db8cf84c7b2ed007b7989fb71c42e3e7674",
+    "PROBE.json": "a9e5a1a16a626f48f1fed7551abdb9928d96106e97df48e594b66e8629dc186c",
+    "REVIEW.md": "0ca4bad5973662698ddd75251ab30f0270d038b80e1b168c3b4d74d61510df44",
+    "SOURCE.json": "1fc974b5e8b45a366f9fb41bbb2f9e21b119f50ff8d6595148df936fcc9f330b",
+    "SUMMARY.json": "da466f2c59d10d6ca95e32af95d9c12389aec53c3905750d816fba6aa785ad42",
+    "UNCERTAINTIES.json": "32beb51b46ddf3354a21ec0334b7a1fcdd1e8dbd5b68c49c5671db345838362a"
+  },
+  "unchanged_primary_evidence_file_count": 261,
+  "factual_content_edited": false,
+  "correction_record_excluded_from_manifest": true
+}

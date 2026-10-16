@@ -1,0 +1,27 @@
+{
+  "lead": "/root",
+  "checked_utc": "2026-10-15T01:13:04.125773+00:00",
+  "source_filename": "20261014_234511000_iOS.MP4",
+  "source_sha256": "5d79d17a888d0dc2acc400855121979258efe11177b2254ebaae5e9c7a39784a",
+  "observations": [
+    {
+      "path": "evidence/native_000.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Opening Share With2DPatternCode overlay obscures deck label; no exact source deck label is asserted.",
+      "sha256": "e624e90a8a1685649140adfe1a12b87280ccc5e37bede3609217891766a2a3ba"
+    },
+    {
+      "path": "evidence/native_105.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Your opponent conceded explicitly displayed. Team Rocket's Articuno ex130, Rattata40 and benched Vulpix60 withWater visible, all at fullHP.",
+      "sha256": "6d71399c7e891b904085f6afcd88c691af831a791616256d9baa5b3488dd1ccc"
+    },
+    {
+      "path": "evidence/native_114.70.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Victory versusグズマ推し,second,3turns,0-0,damage0,CardoftheGameNone.",
+      "sha256": "0b37a536d718ad655bc2c7cafd403620adbb6e9ecf7769d86ace5a4a50b18069"
+    }
+  ],
+  "coverage_reconciliation": "Root read full timeline and turn/phase coverage; separate Sol reviewer checked decisive sequences and ordinary turns against retained source evidence."
+}

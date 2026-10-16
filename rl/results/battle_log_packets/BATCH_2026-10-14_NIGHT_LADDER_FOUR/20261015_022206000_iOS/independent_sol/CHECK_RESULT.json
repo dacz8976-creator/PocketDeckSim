@@ -1,0 +1,37 @@
+{
+  "accepted": true,
+  "source_filename": "20261015_022206000_iOS.MP4",
+  "source_sha256": "80e5fb7c964c1c6025f5f4ffb7adacda937878442e00c01db8104292784dc5dd",
+  "source_bytes_verified": 451082547,
+  "source_duration_seconds_bound_by_SOURCE_json": 249.658333,
+  "frozen_manifest_sha256": "3d602170c2e29c2d26eaa4414f700ad12091de491351ce24ca1b94607baadc48",
+  "frozen_files_count": 210,
+  "frozen_files_match": true,
+  "primary_unchanged": true,
+  "integrity_checks": "All 210 manifest entries verified before and after visual inspection; manifest hash matched supplied hash both times. Original source SHA-256 and byte count freshly verified. No primary files changed.",
+  "reviewer": "/root/check_night_022206",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "scope": "Bounded independent acceptance of frozen full first-pass packet. Read full REVIEW.md, COVERAGE.md, SUMMARY.json and UNCERTAINTIES.json. Independently inspected setup/order/mode, multiple ordinary sequences, main no-attack, points and terminal sequence using retained native frames and contact sheets; no second full-video pass.",
+  "frames": {
+    "native_full_frames": [26, 62, 68, 91, 95, 130, 152, 180, 189, 192, 195, 211, 231, 234, 239, 249.6],
+    "native_crops": ["deck_selection_crop.png", "darkrai_text_crop.png"],
+    "contact_sheets": ["sheet_0003.00_0070.00.jpg", "sheet_0089.00_0119.00.jpg", "sheet_0155.00_0201.00.jpg", "sheet_0203.00_0239.00.jpg"]
+  },
+  "findings": [
+    {"kind": "confirmed", "detail": "Deck 13-A selection, ranked Master Ball screens and going-first setup agree. No Auto control appears in inspected gameplay/menu evidence; ladder routing is supported with primary full-coverage mode observation."},
+    {"kind": "ordinary_sequence_1", "detail": "Owner turn 1 Poke Ball obtains Rattata, Rattata is benched, Research is played and Soothing Shore plus Raticate ex appear in hand. No Energy attachment or attack is shown; board and hand agree across sheet40-70 and native62/68."},
+    {"kind": "ordinary_sequence_2", "detail": "Opponent Eevee enters active before its Boosted Evolution effect and evolves to 90-HP Espeon; Igglybuff remains benched. Native91/95 and sheet89-119 agree with chronology. Unexpanded retreat input remains unknown."},
+    {"kind": "ordinary_sequence_3", "detail": "Sightseer four-card reveal is Ninetales ex, Research, Raticate ex and Poke Ball. Field Blower selection highlights opponent Small Balloon; native192 shows its discard with Cape and Soothing Shore retained."},
+    {"kind": "confirmed", "detail": "Sabrina forces 40-HP Rattata active; Hypnoblast40 and explicit +1 point agree. Ninetales ex is 180 HP with Cape and one Water at152, then has two Water by195. Its asleep state persists after the180 tails, and turn5 ends without attack; final Damage done0 independently corroborates no owner attack."},
+    {"kind": "confirmed", "detail": "Two 100-HP non-ex Darkrai and their separate Bad Dreams triggers are visible. HP sequence reconciles180-40-20-20=100, then Shore+20 and two ability20 steps leave80. Final Hypnoblast40 leaves40, two Bad Dreams20 remove remaining40, followed by +2 points reaching3. No Poison is needed or shown."},
+    {"kind": "confirmed", "detail": "Final native249.60 explicitly establishes Defeat versus le-0702-on, went first, six turns, owner0/opponent3 points, damage done0. Prefix accepted: 1st | Alolan Ninetales ex no attack | opp N/A."}
+  ],
+  "corrections_required": [],
+  "limits": [
+    "Independent check is bounded and relies on primary end-to-end coverage for unsampled moments; it is not a second complete visual pass.",
+    "Hidden full decks, hidden opponent hand and unexpanded retreat input remain unknown.",
+    "Small animation HP values are intermediate; stable state transitions and named ability triggers establish the reconciled totals.",
+    "No external log, shared index, event, move or Boss Folder write was performed by this reviewer."
+  ]
+}

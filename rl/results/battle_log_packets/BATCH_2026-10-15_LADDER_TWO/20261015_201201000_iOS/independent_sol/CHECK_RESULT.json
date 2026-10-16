@@ -1,0 +1,33 @@
+{
+  "reviewer": "/root/independent_ladder_two",
+  "model": "gpt-6.1-sol",
+  "effort": "high (inherited)",
+  "checked_utc": "2026-10-15T21:19:04.2991505Z",
+  "source_filename": "20261015_201201000_iOS.MP4",
+  "source_sha256": "b47053e381a5b87f5495e4d3ddaaeead9ea23c7be66967652eeb1e56fe83bf8c",
+  "accepted": true,
+  "scope": "Bounded independent source and frozen primary acceptance, not a second full review",
+  "checks": [
+    "Initial source observations before primary reports",
+    "Ranked setup and opponent",
+    "Independently selected ordinary healing turn",
+    "First Glimmora attack own T3 global5 opponent0",
+    "Kingambit no attack, N/A first attack",
+    "Score progression and Muk knockout",
+    "Explicit concession and terminal1-2 loss",
+    "Full primary reports/coverage/uncertainties read",
+    "All frozen files match and unchanged"
+  ],
+  "boundaries": [
+    "Exact20-card list and variant unknown",
+    "Regigigas not observed in this source",
+    "No original media rehash or duplicate decode",
+    "No shared log registration, moves or external writes"
+  ],
+  "frozen_manifest_sha256": "17aa7e3cebd1b2b059dba6ea57b753894f1828e1f3c95ef369d8bed88708bd1e",
+  "frozen_file_count": 219,
+  "frozen_files_match": true,
+  "primary_unchanged": true,
+  "mismatches": [],
+  "after_check_changes": []
+}

@@ -1,0 +1,11 @@
+{
+  "source_filename": "20261014_163325000_iOS.MP4",
+  "uncertainties": [
+    {"id":"hidden_cards","material_to_result":false,"timestamps_seconds":[85,169,302,433],"finding":"Opponent hidden hand and exact searched Pokemon identities are not fully visible. Exact 20-card lists are unknown.","resolution":"Preserve visible core only; no reconstructed hidden contents."},
+    {"id":"timing_precision","material_to_result":false,"timestamps_seconds":[228,510,512,556],"finding":"Attack timestamps identify retained animation/menu frames, not the exact touchscreen press frame. Ariados Pierce selection at510 becomes damage at512.","resolution":"First supporting Ariados attack is approximately511 seconds, ownerT6/global11; no ambiguity about turn, attacker, opponent1 point or result."},
+    {"id":"main_attacker_convention","material_to_result":true,"timestamps_seconds":[356,568],"finding":"Whimsicott ex is the main attacker under the owner's Deck12 logging convention, per lead clarification. It never attacks; Ogerpon and Ariados provide the two actual supporting attacks.","resolution":"Use exact prefix 1st | Whimsicott ex no attack | opp pts N/A, without replacing it with a support attack."},
+    {"id":"canonical_cloud","material_to_result":false,"timestamps_seconds":[],"finding":"OneDrive canonical placeholder is inaccessible; its contents and final sync status are unverified.","resolution":"Review binds to the SHA-256-verified readable Offline_Inbox copy in SOURCE.json; Downloads and placeholder preserved."}
+  ],
+  "unreviewed_intervals": [],
+  "consequential_source_ambiguities_requiring_higher_reasoning": []
+}

@@ -1,0 +1,15 @@
+{
+  "source_filename": "20261014_161324000_iOS.MP4",
+  "source_sha256": "d058d4cff7c50e4813f9bebacfc895ac0227bec97a941be0e08289787aff94e6",
+  "coverage_remaining": [],
+  "material_outcome_or_note_ambiguities": [],
+  "items": [
+    {"id": "hidden_cards", "source_interval_seconds": [25, 310], "finding": "Opponent hand/draw/search contents are hidden unless later played. No full opposing deck or hidden possession is asserted.", "impact": "Does not prevent result or first-attack note."},
+    {"id": "owner_deck_partial", "source_interval_seconds": [0, 4], "evidence": ["native/t0002.00.jpg"], "finding": "Deck12 label and visible Pokémon core including Teal Mask Ogerpon ex are established; lower deck rows are not shown.", "impact": "Section matching valid; full20 unknown."},
+    {"id": "queue_and_auto", "source_interval_seconds": [4, 325.745], "evidence": ["native/t0020.00.jpg", "native/t0325.50.jpg"], "finding": "Matchmaking/rank show ladder-compatible human battle and owner designated ladder. No Auto option visible. Exact queue-selection and hidden menu controls are not shown.", "impact": "No observed contradictory computer evidence."},
+    {"id": "notifications", "source_interval_seconds": [25, 180], "finding": "Several phone notifications briefly cover upper UI. Before/after frames reconcile meaningful boards and score; no hidden actions inferred from notification contents.", "impact": "No uncovered battle turn."},
+    {"id": "input_timing", "source_interval_seconds": [33, 309], "finding": "Timeline uses bounded source-local times for some short touch/animation transitions. Main Grass Knot explicitly named at268.50; ownT4 from sequential turn count. Exact global7 banner not retained in a readable frame.", "impact": "T4/global7 and opponent2 before attack remain established by sequence and result."},
+    {"id": "second_ice_pop_flip", "source_interval_seconds": [214, 222], "evidence": ["native/t0216.00.jpg", "native/t0219.00.jpg", "native/t0221.00.jpg"], "finding": "Second use heals remaining10HP. Reverse coin face followed by Lucky Ice Pop moving to discard supports tails; exact tails text not retained.", "impact": "HP80 and subsequent KO sequence are directly established regardless."},
+    {"id": "offline_cloud", "source_interval_seconds": null, "finding": "Verified readable Offline_Inbox identity supplied by source binding; inaccessible canonical cloud copy not verified. Source originals preserved.", "impact": "Root retains pending OneDrive reconciliation."}
+  ]
+}

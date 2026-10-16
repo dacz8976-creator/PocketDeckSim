@@ -1,0 +1,144 @@
+{
+  "video_basename": "20261014_232438000_iOS.MP4",
+  "source_sha256": "f9a5d6cde19f3707eb79ee75552de9b9514bffcfb01e422f48234316f0b2d88e",
+  "source_bytes": 648135831,
+  "duration_seconds": 354.753333,
+  "reviewer": "/root/newer_232438 continuing /root/evening_232438",
+  "assignment_event": "7d9bf3b5-1dc0-4e18-8a0c-12947dff814b",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "review_scope": "Full available recording, setup through complete result; primary review pending independent acceptance",
+  "match_count": 1,
+  "battle_complete": true,
+  "available_recording_fully_reviewed": true,
+  "independent_acceptance": false,
+  "match_date_local": "2026-10-14",
+  "source_creation_utc": "2026-10-14T23:24:38Z",
+  "owner": "Dacz8976",
+  "opponent": "ててら",
+  "deck_label": "Deck 13-A",
+  "deck_core": [
+    "Alolan Vulpix",
+    "Alolan Ninetales ex",
+    "Team Rocket’s Rattata",
+    "Team Rocket’s Raticate ex"
+  ],
+  "deck_list_complete": false,
+  "opponent_visible_core": [
+    "Caterpie (Quick Growth)",
+    "Metapod (Ram30)",
+    "Butterfree (Sunny Wind60, heal20)"
+  ],
+  "mode": "ladder by owner default; exact ranked queue/tier unestablished",
+  "auto_option_seen": false,
+  "auto_enabled": null,
+  "mega_form_seen": false,
+  "turn_order": "first",
+  "global_turns": 10,
+  "owner_turns": 5,
+  "result": "loss",
+  "concession": false,
+  "score": {
+    "owner": 0,
+    "opponent": 3,
+    "basis": "result screen352s"
+  },
+  "damage_done": 230,
+  "main_attacker": "Alolan Ninetales ex",
+  "firstmainattack": {
+    "attacked": false,
+    "owner_own_turn": null,
+    "global_turn": null,
+    "opponent_points_before": null,
+    "display": "Alolan Ninetales ex no attack; opp N/A"
+  },
+  "exact_three_item_note_prefix": "1st | Alolan Ninetales ex no attack | opp N/A",
+  "supporting_attacks": [
+    {
+      "pokemon": "Alolan Vulpix",
+      "attack": "Gnaw",
+      "damage": 20,
+      "owner_own_turn": 2,
+      "global_turn": 3,
+      "time_seconds": [
+        136,
+        140
+      ],
+      "opponent_points_before": 0
+    },
+    {
+      "pokemon": "Team Rocket’s Raticate ex",
+      "attack": "Boost Dash",
+      "damage": 70,
+      "owner_own_turn": 3,
+      "global_turn": 5,
+      "time_seconds": [
+        188,
+        192
+      ],
+      "opponent_points_before": 1
+    },
+    {
+      "pokemon": "Team Rocket’s Raticate ex",
+      "attack": "Boost Dash",
+      "damage": 70,
+      "owner_own_turn": 4,
+      "global_turn": 7,
+      "time_seconds": [
+        234,
+        240
+      ],
+      "opponent_points_before": 2
+    },
+    {
+      "pokemon": "Team Rocket’s Raticate ex",
+      "attack": "Boost Dash",
+      "damage": 70,
+      "owner_own_turn": 5,
+      "global_turn": 9,
+      "time_seconds": [
+        314,
+        318
+      ],
+      "opponent_points_before": 2
+    }
+  ],
+  "point_progression": [
+    {
+      "time_seconds": 170,
+      "owner": 0,
+      "opponent": 1,
+      "event": "Sunny Wind knocks out first Vulpix"
+    },
+    {
+      "time_seconds": 218,
+      "owner": 0,
+      "opponent": 2,
+      "event": "Sunny Wind knocks out second Vulpix after Sabrina"
+    },
+    {
+      "time_seconds": 352,
+      "owner": 0,
+      "opponent": 3,
+      "event": "Giovanni Sunny Wind80 knocks out Raticate ex; result screen capped at3"
+    }
+  ],
+  "decisive_evidence": [
+    "evidence/t0330.00.jpg",
+    "evidence/t0334.00.jpg",
+    "evidence/t0338.00.jpg",
+    "evidence/t0344.00.jpg",
+    "evidence/t0352.00.jpg"
+  ],
+  "important_observations": [
+    "Caterpie Quick Growth evolves at end of owner turn1",
+    "Thieving Incisors moves opponent Grass Energy to Raticate ex",
+    "Elegant Cape on basic Vulpix confers no Stage1 HP bonus",
+    "Four Lucky Ice Pop uses heal Butterfree80 total",
+    "Giovanni boosts final Sunny Wind60 to80 against Active ex"
+  ],
+  "limitations_file": "UNCERTAINTIES.json",
+  "coverage_file": "COVERAGE.md",
+  "report_file": "REVIEW.md",
+  "source_filename": "20261014_232438000_iOS.MP4"
+}
