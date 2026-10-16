@@ -441,6 +441,9 @@ pub fn skip_stands(diffs: &[f64], threshold: f64) -> bool {
     }
     let mean = diffs.iter().sum::<f64>() / n;
     let se = (diffs.iter().map(|d| (d - mean).powi(2)).sum::<f64>() / (n - 1.0)).sqrt() / n.sqrt();
+    // The reading the coordinator confirmed (Oct 15, laptop review L3): the mean is at least `threshold` AND more than 2 SE
+    // above 0. Not "mean minus 2 SE at least `threshold`": that would let fewer skips stand, the unsafe side for the cases
+    // where passing is right. Kept.
     mean >= threshold && mean > 2.0 * se
 }
 
