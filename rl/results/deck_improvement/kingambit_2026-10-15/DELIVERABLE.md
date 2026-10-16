@@ -1,5 +1,15 @@
 # Kingambit (deck 01): what to change, why, and what you give up
 
+> **SUPERSEDED (Oct 15).**
+> - Versions B, C and B+ below are withdrawn, after Dustin's plan correction the same day. They cut cards his plan uses: the
+>   Lucky Ice Pops keep Glimmora alive for its turn, and Ilima pulls Regigigas back.
+> - This page also measured speed ("Kingambit by own turn N"), which is not the deck's goal.
+> - **The current comparison** is `rl/setup_tester/runs/2026-10-15_kingambit_A_A1_A2/`, from the reviewed setup tester under
+>   his plan. It covers his list A, A1 and A2. The swap pool and the 2nd-Regigigas runs are beside it.
+> - **The deck journal** `rl/deck_journal/journals/01-muk-glimmora-kingambit-regigigas.md` holds those results and his ladder
+>   games.
+> - This page is kept as history only.
+
 DRAFT
 
 ## 1. Your plan and the core (please confirm)
