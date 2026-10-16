@@ -75,3 +75,4 @@ Written Oct 9 for the Fable coordinator session (Dustin's single delegator). The
 - 2026-10-15 22:16Z: 2026-10-15_13-a-big-malasada: slice done, 240 of 320 games on disk, folder pushed.
 - 2026-10-15 23:56Z: 2026-10-15_13-a-big-malasada: slice done, 280 of 320 games on disk, folder pushed.
 - 2026-10-16 00:19Z: 2026-10-15_13-a-big-malasada: slice done, 320 of 320 games on disk, folder pushed.
+- 2026-10-16 00:22Z: report 7 (variant B, 13-a-big-malasada, paired with the Oct 12 deck-13 report, seed_base 24,606,700,000 reused) FINISHED: all 320 games, 0 errors, 5.9 h. Variant minus base: kx3 +3.8 points over 160 twins (-1.5 to +9.0, includes no change); km3 +2.5 (-0.5 to +5.5). Big Malasada played 79 times in 79 of 160 kx3 games, 81 times in 81 of 160 km3 games. Turns a charged Pokemon did not attack against t-altaria (kx3, base v variant): 10 v 7 (km3: 9 v 7). Folder pushed (c175744a). Reported to Dustin in chat. Idle, waiting for the coordinator.
