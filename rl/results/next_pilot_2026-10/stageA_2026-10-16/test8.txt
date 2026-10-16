@@ -1,0 +1,8 @@
+test 8: 80 deals; identical 74; differ 6; first difference NOT at a reachable Blade (count >= 1, a Pawniard-line Pokemon in play, the deck's seat deciding): 0
+first differences by the deck's own-knock-out count: {1: 2, 2: 2, 3: 2}
+{"seed": 25011000001, "decision": 53, "turn": 12, "actor": 0, "deck_seat": 0, "count": 3, "board": ["Regigigas", "Kingambit"], "km3": "Attach:1Darkness@0 zone", "kmb3": "Play:Ilima", "reachable": true}
+{"seed": 25012500004, "decision": 66, "turn": 10, "actor": 1, "deck_seat": 1, "count": 2, "board": ["Glimmora", "Glimmet", "Pawniard"], "km3": "Evolve:Glimmora@1", "kmb3": "Play:Rare Candy", "reachable": true}
+{"seed": 25013500000, "decision": 51, "turn": 13, "actor": 1, "deck_seat": 1, "count": 3, "board": ["Glimmora", "Pawniard"], "km3": "Play:Professor's Research", "kmb3": "Play:Rare Candy", "reachable": true}
+{"seed": 25015000002, "decision": 59, "turn": 10, "actor": 0, "deck_seat": 0, "count": 2, "board": ["Alolan Muk", "Glimmora", "Kingambit"], "km3": "Promote:0@1", "kmb3": "Promote:0@3", "reachable": true}
+{"seed": 25016000001, "decision": 48, "turn": 9, "actor": 0, "deck_seat": 0, "count": 1, "board": ["Regigigas", "Glimmet", "Kingambit", "Glimmora"], "km3": "UseStadium", "kmb3": "Play:Ilima", "reachable": true}
+{"seed": 25017500004, "decision": 27, "turn": 7, "actor": 1, "deck_seat": 1, "count": 1, "board": ["Glimmet", "Regigigas", "Alolan Grimer", "Pawniard"], "km3": "Attach:1Darkness@0 zone", "kmb3": "Play:Rare Candy", "reachable": true}

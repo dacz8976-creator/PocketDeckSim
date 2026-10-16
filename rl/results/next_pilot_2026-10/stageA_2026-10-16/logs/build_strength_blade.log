@@ -1,0 +1,39 @@
+warning: unused import: `TrainerType`
+  --> /home/dacz8976/stageA/sb_blade/tree/engine/src/players/value_functions.rs:21:76
+   |
+   |                                 ^^^^^^^^^^^
+   |
+   --> /home/dacz8976/stageA/sb_blade/tree/engine/src/actions/energy_moves.rs:187:9
+    |
+    |         ----^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    --> /home/dacz8976/stageA/sb_blade/tree/engine/src/players/value_functions.rs:2136:9
+     |
+     |         ----^^^^^^^^^^^^
+     |         |
+     |         help: remove this `mut`
+   --> /home/dacz8976/stageA/sb_blade/tree/engine/src/actions/attack_outcome.rs:487:12
+    |
+    | ------------------- associated function in this implementation
+    |            ^^^^^^^^^^^^^^^^^^^^^
+    |
+    --> /home/dacz8976/stageA/sb_blade/tree/engine/src/players/value_functions.rs:1819:4
+     |
+     |    ^^^^^^^^^^^^^^^^
+    --> /home/dacz8976/stageA/sb_blade/tree/engine/src/players/value_functions.rs:1923:4
+     |
+     |    ^^^^^^^^^^^^^^
+    --> /home/dacz8976/stageA/sb_blade/tree/engine/src/players/value_functions.rs:2724:4
+     |
+     |    ^^^^^^^^^^^^^^^^^^^^^^^
+    --> /home/dacz8976/stageA/sb_blade/tree/engine/src/players/value_functions.rs:3020:4
+     |
+     |    ^^^^^^^^^^^^^^^^^
+engine: origin/sonnet/ky3-blade engine tree c39010fe26f15818beb7b83abb5cb4b8668e3d87
+engine tree as archived: c39010fe26f15818beb7b83abb5cb4b8668e3d87
+program: /home/dacz8976/stageA/bin/strength_blade
+program sha256: b74dee233e6cf77d8a381025e0ea1775c99c17865a33c3a412c800dfa4e440a9
+harness source sha256: bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e
+build record: /home/dacz8976/stageA/bin/strength_blade.build.json
