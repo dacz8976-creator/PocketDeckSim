@@ -2050,6 +2050,8 @@ mod queue_tests {
         let (off, _) = attack_leaf(&state, "Double-Punching Family", SearchFlags::default(), &km);
         let (resolved, _) = attack_leaf(&state, "Double-Punching Family", on(), &km);
         eprintln!("VK_110-style leaf: off {off}, on {resolved}");
-        assert!(resolved - off > 9_000.0, "off {off}, on {resolved}");
+        // The board is FINDINGS' VK_110 as described, not its position file (not in the repository), so the leaf is 1667 and
+        // 11777.1 where its root line scored 1691.0 and 11781.1: the jump is pinned to FINDINGS' 10,090, within 100.
+        assert!((resolved - off - 10_090.0).abs() < 100.0 && resolved > 11_700.0, "off {off}, on {resolved}");
     }
 }

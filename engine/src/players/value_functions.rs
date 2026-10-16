@@ -6241,6 +6241,8 @@ mod punch_tests {
     }
 
     /// 5. FINDINGS' totals: Kingambit + Glimmora + Muk, 6 → 4; a 180-HP ex, 3 → 2.
+    /// The 3 → 2 row is pinned on the FINDINGS table's 180-HP ex row (a Mega Kangaskhan ex at 1 point), not on the game
+    /// 010837 turn 9 board: that position's file is not in the repository, so its board can't be rebuilt from here.
     #[test]
     fn the_clock_totals_of_the_findings() {
         let board3 = board(
