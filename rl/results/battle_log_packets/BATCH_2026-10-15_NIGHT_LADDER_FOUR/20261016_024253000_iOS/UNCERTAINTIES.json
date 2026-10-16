@@ -1,0 +1,31 @@
+{
+  "source_filename": "20261016_024253000_iOS.MP4",
+  "source_sha256": "f9c112be78ea4a2f0c8c72b8b47d529fad49001efde34780b3562f4c8a69441b",
+  "material_outcome_uncertainties": [],
+  "unreviewed_intervals": [],
+  "unknowns": [
+    {
+      "topic": "full_decks_and_hidden_information",
+      "status": "unknown",
+      "description": "No complete 20-card deck-list view; hidden opponent hand/search identities not guessed."
+    },
+    {
+      "topic": "fine_energy_animation_order",
+      "status": "bounded",
+      "description": "Several opponent Rainbow Cave/Dragonair interactions occur between sampled views; the actual accumulated Energy, attacks, discards and HP transitions were reconciled. No different outcome or missing turn implied."
+    },
+    {
+      "topic": "exact_turn_boundary_seconds",
+      "status": "approximate",
+      "description": "Review table intervals delimit phases approximately. Native frames retain exact requested offsets."
+    }
+  ],
+  "resolved": [
+    "First/19turns/3-2/540 damage explicitly confirmed on native860.",
+    "Owner core support is Alolan Muk110, not ex; Power of Alchemy affects Basic Pokemon only.",
+    "Opponent support is Dragonair80, not Froslass or Oricorio.",
+    "Glimmora KO Heads denied a point but still supplies one of three KO counts for Kingambit180.",
+    "Heavy Helmet reduced final150 MegaBurst to130, leaving Kingambit10HP.",
+    "First Kingambit attack own8/global15 at opponent2; first Glimmora own2/global3 at opponent0."
+  ]
+}

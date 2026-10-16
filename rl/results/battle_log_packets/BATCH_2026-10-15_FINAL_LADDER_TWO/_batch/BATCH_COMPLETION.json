@@ -1,0 +1,63 @@
+{
+  "checked_utc": "2026-10-16T04:17:33.766677+00:00",
+  "requested_games": 2,
+  "review_and_ladder_logging_complete": true,
+  "archive_complete": true,
+  "sources": [
+    {
+      "source": "20261016_030833000_iOS.MP4",
+      "group": "BATCH_2026-10-15_FINAL_LADDER_TWO",
+      "source_sha256": "6b96796ba0645aab33f131c8bd6b62a23951406662a33f456911e20f2d51e541",
+      "result": "loss",
+      "opponent": "アヤカ",
+      "review_complete": true,
+      "independently_accepted": true,
+      "registered": true,
+      "archived": true,
+      "external_saved_and_reloaded": true,
+      "cloud_metadata": {
+        "logical_bytes": 681167398,
+        "allocated_bytes": 681167398,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "storage_complete": false
+    },
+    {
+      "source": "20261016_031512000_iOS.MP4",
+      "group": "BATCH_2026-10-15_FINAL_LADDER_TWO",
+      "source_sha256": "72d27860d438ef14528f60da481f7bbe24c5c650a3737844ecb4d14c280ef48f",
+      "result": "loss",
+      "opponent": "Pogue",
+      "review_complete": true,
+      "independently_accepted": true,
+      "registered": true,
+      "archived": true,
+      "external_saved_and_reloaded": true,
+      "cloud_metadata": {
+        "logical_bytes": 536481462,
+        "allocated_bytes": 536481462,
+        "attributes": 525344,
+        "placeholder_state": 1,
+        "cloud_placeholder": true,
+        "in_sync": false,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "storage_complete": false
+    }
+  ],
+  "review_pending": [],
+  "external_pending": [],
+  "storage_pending": [
+    "20261016_030833000_iOS.MP4",
+    "20261016_031512000_iOS.MP4"
+  ],
+  "combined_live_verification": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RESUME_2026-10-15_FIVE\\LIVE_SAVE_VERIFICATION.all_five.json"
+}

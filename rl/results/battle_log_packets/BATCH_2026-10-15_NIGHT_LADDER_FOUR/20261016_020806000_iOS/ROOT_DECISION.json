@@ -1,0 +1,43 @@
+{
+  "opponent": "Miki",
+  "opponent_deck": "Drampa / Mega Rayquaza ex / Dratini / Dragonair; full list unknown",
+  "note": "First | Kingambit no attack; Glimmora first attack own T2; Regigigas first attack own T5 | Opp points at first attack: Kingambit N/A; Glimmora 0; Regigigas 0 | vs Miki | 2026-10-15 21:08:06 CDT | 20261016_020806000_iOS.MP4 | Muk/Glimmora/Kingambit/Regigigas visible core; exact list unknown. Owner concedes548-550s at actual1-1; Defeat vs Miki557s. First,13global turns/7owner turns. Glimmora first Venomous Hit ownT2/opp0. Muk suppresses Basic abilities, enabling Regigigas; Giga Turbo100 first ownT5/opp0 KOs Drampa and attaches1Colorless to benched Muk, confirmed native389/392/440. Rocky Helmet returns20; Heavy Helmet reduces Power Blast70 to50. First Glimmora KO heads denies opponentpoint; second tails gives opponent1. Ilima resets Regigigas; Rare Candy makes Kingambit ownT7 but oneDarkness and noattack before concession. Ranked SeasonB4bSP, Master Ball775; no Auto seen; hidden cards unknown.",
+  "scope": "Entire ranked source: queue/setup, all13global turns/7owner turns, all meaningful development and HP/Energy/score transitions, concession and Defeat/rank. Accepted with source-confirmed Giga Turbo Colorless attachment correction; original frozen primary preserved.",
+  "registration_notes": "Loss by ownerconcession at1-1 vs Miki; first,13global turns. Kingambit neverattacks; Glimmora own2/opp0; Regigigas own5/opp0. LEAD_CLARIFICATION and independentCHECK supersede incorrect primary no-GigaTurbo-transfer claim:1Colorless attachesMuk. Ranked pointer also corrected. Full source accepted with explicit addendum.",
+  "clarifications": [
+    "Giga Turbo attaches1Colorless to Alolan Muk; no-transfer/emptyZone explanation in frozenREVIEW is superseded by LEAD_CLARIFICATION.md and source392/440.",
+    "Ranked queue evidence is action/early01.jpg firsttile; native0001 isQRscreen; rankedresultnative0558 independentlyconfirms.",
+    "Matching visible core supports Deck01 family, not exact20card variant.",
+    "Concession ends actual1-1; no invented third point or forced-loss claim."
+  ],
+  "direct_source_observations": [
+    {
+      "path": "native/t0392.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Drampa0HP after GigaTurbo, Regigigas3Darkness, RockyHelmet20; Muk visibly1Colorless."
+    },
+    {
+      "path": "native/t0440.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Muk retains1Colorless on nextownerturn; Regigigas70HP and3Darkness."
+    },
+    {
+      "path": "native/t0548.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Concede menu open, visible1-1; Kingambit140HP Active opposite MegaRayquaza180HP."
+    },
+    {
+      "path": "native/t0557.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Explicit Defeat versus Miki."
+    }
+  ],
+  "accepted": true,
+  "source_filename": "20261016_020806000_iOS.MP4",
+  "source_sha256": "3500dda99e8c7174a9fdaeebe13678fc17793a2c728db0728f903b5d6f4a0066",
+  "full_timeline_and_coverage_read": true,
+  "auto_option_seen": false,
+  "section": "d01",
+  "result": "loss",
+  "note_prefix": "First | Kingambit no attack; Glimmora first attack own T2; Regigigas first attack own T5 | Opp points at first attack: Kingambit N/A; Glimmora 0; Regigigas 0"
+}

@@ -1,0 +1,81 @@
+{
+  "source_filename": "20261016_031512000_iOS.MP4",
+  "source_sha256": "72d27860d438ef14528f60da481f7bbe24c5c650a3737844ecb4d14c280ef48f",
+  "source_bytes": 536481462,
+  "duration_seconds": 290.638333,
+  "reviewer": "/root/ladder_031512",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "battle_complete": true,
+  "match_count": 1,
+  "full_available_source_reviewed": true,
+  "outcome": "loss",
+  "outcome_mechanism": "owner concession, followed by ranked Defeat",
+  "opponent_identifier": "Pogue",
+  "owner_identifier": "Dacz8976",
+  "match_date_local": "2026-10-15",
+  "source_creation_local": "2026-10-15T22:15:12-05:00",
+  "mode": "ranked ladder, Master Ball Rank",
+  "auto_control_seen": false,
+  "auto_status": "No Auto control/option visible in reviewed source",
+  "computer_battle": false,
+  "ladder_eligible": true,
+  "pause_games_protocol_applied": false,
+  "visible_owner_core": [
+    "Glimmet/Glimmora",
+    "Pawniard/Kingambit (Kingambit preview only)",
+    "Alolan Grimer/Alolan Muk (Muk hand only)",
+    "Regigigas"
+  ],
+  "visible_opponent_core": [
+    "Entei ex",
+    "Charmander/Charmeleon/Mega Charizard Y ex"
+  ],
+  "exact_decks_known": false,
+  "first_or_second": "second",
+  "owner_turns": 5,
+  "global_terminal_turn": 10,
+  "terminal_board_points": {
+    "owner": 0,
+    "opponent": 2
+  },
+  "first_attacks_by_core": {
+    "Glimmora": {
+      "own_turn": 2,
+      "global_turn": 4,
+      "source_seconds_approx": 115.5,
+      "opponent_points": 0
+    },
+    "Glimmet": {
+      "attack": "no attack",
+      "opponent_points": null
+    },
+    "Kingambit": {
+      "attack": "no attack",
+      "opponent_points": null
+    },
+    "Alolan Muk": {
+      "attack": "no attack",
+      "opponent_points": null
+    },
+    "Regigigas": {
+      "attack": "no attack",
+      "opponent_points": null
+    },
+    "Pawniard": {
+      "attack": "no attack",
+      "opponent_points": null
+    }
+  },
+  "exact_three_item_note_prefix": "second | Glimmora first attack own turn 2; Kingambit/Alolan Muk/Regigigas no attack | opponent 0 points at Glimmora first attack; other cores N/A",
+  "decisive_native_evidence": [
+    "evidence/native/t0189.50.jpg",
+    "evidence/native/t0202.50.jpg",
+    "evidence/native/t0255.00.jpg",
+    "evidence/native/t0262.50.jpg",
+    "evidence/native/t0281.00.jpg",
+    "evidence/native/t0283.00.jpg",
+    "evidence/native/t0290.50.jpg"
+  ],
+  "independent_acceptance_pending": true
+}

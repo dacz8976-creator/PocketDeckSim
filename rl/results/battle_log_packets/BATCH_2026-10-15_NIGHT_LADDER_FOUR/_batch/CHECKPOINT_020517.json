@@ -1,0 +1,131 @@
+{
+  "checked_utc": "2026-10-16T03:24:42.980383+00:00",
+  "requested_sources": [
+    "20261016_015753000_iOS.MP4",
+    "20261016_020517000_iOS.MP4",
+    "20261016_020806000_iOS.MP4",
+    "20261016_024253000_iOS.MP4"
+  ],
+  "requested_count": 4,
+  "batch_complete": false,
+  "completed_sources": [
+    "20261016_020517000_iOS.MP4"
+  ],
+  "pending_sources": [
+    "20261016_015753000_iOS.MP4",
+    "20261016_020806000_iOS.MP4",
+    "20261016_024253000_iOS.MP4"
+  ],
+  "states": [
+    {
+      "source_filename": "20261016_015753000_iOS.MP4",
+      "review_complete": false,
+      "independently_accepted": false,
+      "lead_accepted": false,
+      "registered_complete": false,
+      "archived": false,
+      "external_saved_and_reloaded": false,
+      "source_sha256": null,
+      "duration_seconds": null,
+      "cloud_metadata": {
+        "logical_bytes": 781475086,
+        "allocated_bytes": 0,
+        "attributes": 4724256,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": true
+      },
+      "storage_complete": false,
+      "remaining": "Download readable bytes, verify identity/duration, full review, independent acceptance, live log/readback and archive"
+    },
+    {
+      "source_filename": "20261016_020517000_iOS.MP4",
+      "review_complete": true,
+      "independently_accepted": true,
+      "lead_accepted": true,
+      "registered_complete": true,
+      "archived": true,
+      "external_saved_and_reloaded": true,
+      "source_sha256": "4d98de32a83b926897d5da49926e7a313fdbc2f78608a2f2b14d91ae39dd9821",
+      "duration_seconds": 151.706667,
+      "cloud_metadata": {
+        "logical_bytes": 270715753,
+        "allocated_bytes": 270715753,
+        "attributes": 525344,
+        "placeholder_state": 1,
+        "cloud_placeholder": true,
+        "in_sync": false,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "storage_complete": false,
+      "remaining": "OneDrive cache release pending"
+    },
+    {
+      "source_filename": "20261016_020806000_iOS.MP4",
+      "review_complete": false,
+      "independently_accepted": false,
+      "lead_accepted": false,
+      "registered_complete": false,
+      "archived": false,
+      "external_saved_and_reloaded": false,
+      "source_sha256": null,
+      "duration_seconds": null,
+      "cloud_metadata": {
+        "logical_bytes": 1039108871,
+        "allocated_bytes": 524288000,
+        "attributes": 4724256,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "storage_complete": false,
+      "remaining": "Download readable bytes, verify identity/duration, full review, independent acceptance, live log/readback and archive"
+    },
+    {
+      "source_filename": "20261016_024253000_iOS.MP4",
+      "review_complete": false,
+      "independently_accepted": false,
+      "lead_accepted": false,
+      "registered_complete": false,
+      "archived": false,
+      "external_saved_and_reloaded": false,
+      "source_sha256": null,
+      "duration_seconds": null,
+      "cloud_metadata": {
+        "logical_bytes": 1613329420,
+        "allocated_bytes": 0,
+        "attributes": 4724256,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": true
+      },
+      "storage_complete": false,
+      "remaining": "Download readable bytes, verify identity/duration, full review, independent acceptance, live log/readback and archive"
+    }
+  ],
+  "live_totals": {
+    "wins": 12,
+    "losses": 17,
+    "games": 29
+  },
+  "prior_entries_preserved": 28,
+  "original_media_read_during_checkpoint": false,
+  "videos_deleted": 0,
+  "blockers": [
+    "OneDrive client exits and bounded hydration attempts timed out for three sources.",
+    "Browser download attempted on OneDrive but no readable file was found locally.",
+    "Chrome internal Downloads URL denied by URL security policy; further download-control access rejected by automatic approval review.",
+    "User approval to return to normal OneDrive download buttons requested; awaiting response."
+  ]
+}
