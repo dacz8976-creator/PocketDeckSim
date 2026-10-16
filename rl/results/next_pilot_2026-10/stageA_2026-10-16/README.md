@@ -1,12 +1,19 @@
 # Stage A: item 7's Kingambit pilot (Oct 16, 2026, laptop)
 
-**Verdict in plain words.** The Blade-aware bot still doesn't play Dustin's Kingambit plan, which is to let other
-Pokémon fall so Overlord's Blade grows. Pricing the Blade alone (kmb3) changes nothing. Adding "expected points"
-(kmbc3) makes the bot attack with Glimmora more and win a little more against itself. It gets there by letting the
-opponent score sooner and bringing Kingambit out later, which is the opposite of his plan. So by
-`EXPECTED_KG.md` (sonnet/ky3-blade 0f5f234d) the verdict is **not "pilots Kingambit better"**: part (a) fails,
-and part (b) is the brief's "PL2 up while G2 fails" case. The ky3 line is parked until after the Oct 19 reset
-(coordinator).
+**Verdict in plain words.** By the rules registered in `EXPECTED_KG.md` (sonnet/ky3-blade 0f5f234d), the verdict
+is **not "pilots Kingambit better"**: part (a) fails (2 of 12), and part (b) is the brief's "PL2 up while G2 fails"
+case.
+- Pricing the Blade alone (kmb3) changes nothing.
+- Adding "expected points" (kmbc3) makes the bot attack with Glimmora more and win a little more against itself.
+  But the opponent is closer to winning when Kingambit first swings. And in part (a), at three of his turns, it puts
+  Energy on the Active Regigigas instead of building toward Kingambit.
+
+**Correction, Oct 16 (Dustin):** "I also bring Kingambit out later. The key is not having him die too soon".
+- So a later first Blade is NOT against his plan. The first version of this README said it was (tip 0c57c1a5); that was wrong.
+- The measure that matters is whether Kingambit gets its swings before it is knocked out. The measures below
+  don't count that directly: they time the first Blade.
+
+The ky3 line is parked until after the Oct 19 reset (coordinator).
 
 **How it was run.**
 - One detached tmux driver (`stageA_driver.sh`) on the laptop's WSL with serial builds (CARGO_BUILD_JOBS 6).
