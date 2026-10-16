@@ -1,0 +1,55 @@
+fork cards 3520
+fork sets {'A1': 286, 'A1a': 86, 'A2': 207, 'A2a': 96, 'A2b': 111, 'A3': 239, 'A3a': 103, 'A3b': 107, 'A4': 241, 'A4a': 105, 'A4b': 379, 'B1': 331, 'B1a': 103, 'B2': 234, 'B2a': 131, 'B2b': 117, 'B3': 234, 'B3a': 109, 'B3b': 106, 'P-A': 117, 'P-B': 78}
+incomplete listed 364
+== dustin 01 kingambit as played: 20 cards; not in fork DB: 0; in DB but engine-incomplete: 4
+   INCOMPLETE  (1, 'Alolan Muk', 'B2 097', 'Ability not implemented')
+   INCOMPLETE  (2, 'Glimmora', 'B3a 045', 'Ability not implemented')
+   INCOMPLETE  (1, 'Kingambit', 'B3a 043', 'Attack effect not implemented')
+   INCOMPLETE  (1, 'Regigigas', 'B3 134', 'Ability not implemented')
+== dustin 01 muk-glimmora-kingambit-regigigas: 20 cards; not in fork DB: 0; in DB but engine-incomplete: 4
+   INCOMPLETE  (1, 'Alolan Muk', 'B2 097', 'Ability not implemented')
+   INCOMPLETE  (2, 'Glimmora', 'B3a 045', 'Ability not implemented')
+   INCOMPLETE  (1, 'Kingambit', 'B3a 043', 'Attack effect not implemented')
+   INCOMPLETE  (1, 'Regigigas', 'B3 134', 'Ability not implemented')
+== brew 07: 20 cards; not in fork DB: 2; in DB but engine-incomplete: 0
+   NOT IN DB   (2, 'Hoopa ex', 'B4 103', [])
+   NOT IN DB   (2, 'Deceptive Needle', 'B4 148', [])
+== deck 12: 20 cards; not in fork DB: 1; in DB but engine-incomplete: 0
+   NOT IN DB   (2, "Team Rocket's Goo-zooka", 'B4a 068', [])
+== deck 13-a: 20 cards; not in fork DB: 3; in DB but engine-incomplete: 0
+   NOT IN DB   (2, "Team Rocket's Rattata", 'B4a 058', [])
+   NOT IN DB   (2, "Team Rocket's Raticate ex", 'B4a 059', [])
+   NOT IN DB   (1, 'Soothing Shore', 'B4 154', [])
+== brew 08: 20 cards; not in fork DB: 1; in DB but engine-incomplete: 0
+   NOT IN DB   (2, 'Rainbow Cave', 'B4 155', [])
+== brew 09: 20 cards; not in fork DB: 2; in DB but engine-incomplete: 0
+   NOT IN DB   (2, 'Galarian Zigzagoon', 'B4 095', ['B2 098'])
+   NOT IN DB   (1, 'Deceptive Needle', 'B4 148', [])
+== draft A (wallace): 20 cards; not in fork DB: 2; in DB but engine-incomplete: 0
+   NOT IN DB   (2, 'Carvanha', 'B4 034', ['A3a 011'])
+   NOT IN DB   (2, 'Mega Sharpedo ex', 'B4 035', [])
+== draft A shark: 20 cards; not in fork DB: 2; in DB but engine-incomplete: 0
+   NOT IN DB   (2, 'Carvanha', 'B4 034', ['A3a 011'])
+   NOT IN DB   (2, 'Mega Sharpedo ex', 'B4 035', [])
+== draft D: 20 cards; not in fork DB: 2; in DB but engine-incomplete: 1
+   NOT IN DB   (1, 'Mega Houndoom ex', 'P-B 080', [])
+   NOT IN DB   (2, 'Rainbow Cave', 'B4 155', [])
+   INCOMPLETE  (2, 'Victini', 'B3 025', 'Ability not implemented')
+== brew 10: 20 cards; not in fork DB: 0; in DB but engine-incomplete: 0
+== panel altaria: 20 cards; not in fork DB: 0; in DB but engine-incomplete: 0
+== panel blaziken: 20 cards; not in fork DB: 0; in DB but engine-incomplete: 0
+== panel hydreigon: 20 cards; not in fork DB: 1; in DB but engine-incomplete: 0
+   NOT IN DB   (2, 'Deceptive Needle', 'B4 148', [])
+== panel lucario: 20 cards; not in fork DB: 0; in DB but engine-incomplete: 0
+== panel sceptile: 20 cards; not in fork DB: 0; in DB but engine-incomplete: 0
+== panel suicune: 20 cards; not in fork DB: 2; in DB but engine-incomplete: 0
+   NOT IN DB   (1, "Team Rocket's Boss", 'B4a 071', [])
+   NOT IN DB   (1, 'Soothing Shore', 'B4 154', [])
+== panel vespiquen: 20 cards; not in fork DB: 2; in DB but engine-incomplete: 0
+   NOT IN DB   (2, 'Combee', 'B4 010', ['A2 017', 'A2 157', 'A2a 004'])
+   NOT IN DB   (2, 'Vespiquen ex', 'B4 011', [])
+== panel weezing: 20 cards; not in fork DB: 4; in DB but engine-incomplete: 0
+   NOT IN DB   (2, 'Hoopa ex', 'B4 103', [])
+   NOT IN DB   (2, "Team Rocket's Koffing", 'B4a 042', [])
+   NOT IN DB   (2, "Team Rocket's Weezing ex", 'B4a 043', [])
+   NOT IN DB   (2, 'Deceptive Needle', 'B4 148', [])
