@@ -49,7 +49,7 @@ LISTED  78b2ba4b7e24
   Bots: none on this list yet.
   Your ladder games: none logged.
 
-NOW PLAYING  73dfed58d1d6  (in 16 of your games, Oct 11-15, from the deck code on video)
+NOW PLAYING  73dfed58d1d6  (in 22 of your games, Oct 11-15, from the deck code on video)
   Changed from the deck-01 file: 1 Copycat out, 1 Lucky Ice Pop in; Alolan Grimer A3 110 in place of B2 096 (a different card).
   Why: not stated.
   Setup odds (setup tester, run 2026-10-15_kingambit_A_A1_A2 at 03e8309; a script playing your plan, not a win rate; Copycat played by your valuation, approximated (value table in the run's RESULTS.md); the fallback rule would play it differently in 42.5% of its decisions):
