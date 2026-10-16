@@ -6,34 +6,34 @@
 
 Question: how does 13-a-giant-cape do when kx3 plays it against the 8 public lists, and is that better than when km3 plays the same deck on the same deals?
 
-**PARTIAL: 120 kx3 games + 120 cheap km3 baseline games so far (240 of the 320 games planned; both pilots' games count in the 320). The numbers below will move; read them as a snapshot.**
+**PARTIAL: 140 kx3 games + 140 cheap km3 baseline games so far (280 of the 320 games planned; both pilots' games count in the 320). The numbers below will move; read them as a snapshot.**
 
-Size: 120 kx3 games + 120 cheap km3 baseline games so far, of 160 kx3 games + 160 cheap km3 baseline games planned.
+Size: 140 kx3 games + 140 cheap km3 baseline games so far, of 160 kx3 games + 160 cheap km3 baseline games planned.
 
-13-a-giant-cape scored **71.7%** over **120 games** (games from 6 of the 8 public lists so far): probably between 63.0% and 79.0% (95% interval; this range refers to these 120 kx3 games). A win counts 1, a tie 1/2, a loss 0.
+13-a-giant-cape scored **72.9%** over **140 games** (games from 7 of the 8 public lists so far): probably between 65.0% and 79.5% (95% interval; this range refers to these 140 kx3 games). A win counts 1, a tie 1/2, a loss 0.
 
 ### How much better kx3 plays this deck than km3
 
-On the same deals, kx3 scored **+16.7 points** compared with km3 piloting this deck (kx3 71.7%, km3 on this deck 55.0%, over 120 paired games: each a deal and seat played by both pilots, so 120 kx3 games + 120 cheap km3 baseline games), probably between +9.5 and +23.8 points (95% interval; this range refers to those 120 paired games).
+On the same deals, kx3 scored **+15.7 points** compared with km3 piloting this deck (kx3 72.9%, km3 on this deck 57.1%, over 140 paired games: each a deal and seat played by both pilots, so 140 kx3 games + 140 cheap km3 baseline games), probably between +9.3 and +22.1 points (95% interval; this range refers to those 140 paired games).
 
-That range does not include no gain: on these 120 paired games kx3 did better than km3. It does not say by exactly how much: that part of the range is as wide as 120 paired games make it.
+That range does not include no gain: on these 140 paired games kx3 did better than km3. It does not say by exactly how much: that part of the range is as wide as 140 paired games make it.
 
 ## Compared with the base report
 
 Base: `rl/results/slow_reports/2026-10-12_13-a-ninetales-raticate` (13-a-ninetales-raticate). This deck, 13-a-giant-cape, differs from it by -1 Ilima A3 149, +1 Giant Cape A2 147. Each game below is set against its twin in the base report: the same opponent, deal, seat and pilot, so the same seed. The replaced card keeps its place in the deck file (card 17 of 20), and so in the shuffle: the deals differ only in that card.
 
-Only games played in both reports are compared: 240 of the 240 games of this report have a twin in the base report (320 games there).
+Only games played in both reports are compared: 280 of the 280 games of this report have a twin in the base report (320 games there).
 
 ### What the change did to the score
 
 | pilot | twin games | base | 13-a-giant-cape | 13-a-giant-cape minus base |
 |---|---|---|---|---|
-| kx3 | 120 | 70.0% | 71.7% | +1.7 |
-| km3 | 120 | 50.0% | 55.0% | +5.0 |
+| kx3 | 140 | 71.4% | 72.9% | +1.4 |
+| km3 | 140 | 52.9% | 57.1% | +4.3 |
 
-kx3: +1.7 points on the same deals, probably between -5.7 and +9.1 points (95% interval; this range refers to those 120 twin games). 100 of the 120 kx3 twins ended the same way (win, tie or loss); of the 120 with a log on both sides, 21 were the same game from start to finish. Who went first was the same in all 120 kx3 twins. That range includes no change at all: these 120 twin games do not show that the change helped kx3 or that it hurt. They argue against a change much larger than 9.1 points; a smaller one needs more deals.
+kx3: +1.4 points on the same deals, probably between -5.5 and +8.4 points (95% interval; this range refers to those 140 twin games). 116 of the 140 kx3 twins ended the same way (win, tie or loss); of the 140 with a log on both sides, 24 were the same game from start to finish. Who went first was the same in all 140 kx3 twins. That range includes no change at all: these 140 twin games do not show that the change helped kx3 or that it hurt. They argue against a change much larger than 8.4 points; a smaller one needs more deals.
 
-km3: +5.0 points on the same deals, probably between -0.7 and +10.7 points (95% interval; this range refers to those 120 twin games). 108 of the 120 km3 twins ended the same way (win, tie or loss); of the 120 with a log on both sides, 32 were the same game from start to finish. Who went first was the same in all 120 km3 twins. That range includes no change at all: these 120 twin games do not show that the change helped km3 or that it hurt. They argue against a change much larger than 10.7 points; a smaller one needs more deals.
+km3: +4.3 points on the same deals, probably between -1.0 and +9.5 points (95% interval; this range refers to those 140 twin games). 126 of the 140 km3 twins ended the same way (win, tie or loss); of the 140 with a log on both sides, 38 were the same game from start to finish. Who went first was the same in all 140 km3 twins. That range includes no change at all: these 140 twin games do not show that the change helped km3 or that it hurt. They argue against a change much larger than 9.5 points; a smaller one needs more deals.
 
 A change of one card is usually too small for these ranges to show it; the counts further down, of whether the card did its job, say more.
 
@@ -47,7 +47,7 @@ A change of one card is usually too small for these ranges to show it; the count
 | t-lucario | 20 | 65.0% | 65.0% | +0.0 (-21.5 to +21.5) | 40.0% | 50.0% | +10.0 (-10.9 to +30.9) |
 | t-sceptile | 20 | 70.0% | 75.0% | +5.0 (-13.4 to +23.4) | 55.0% | 65.0% | +10.0 (-4.4 to +24.4) |
 | t-suicune | 20 | 90.0% | 100.0% | +10.0 (-4.4 to +24.4) | 70.0% | 75.0% | +5.0 (-5.5 to +15.5) |
-| t-vespiquen | 0 | n/a | n/a | n/a | n/a | n/a | n/a |
+| t-vespiquen | 20 | 80.0% | 80.0% | +0.0 (-21.5 to +21.5) | 70.0% | 70.0% | +0.0 (-15.2 to +15.2) |
 | t-weezing | 0 | n/a | n/a | n/a | n/a | n/a | n/a |
 
 Each range refers to the twins on its row (the t range of their score differences); a row has few of them, so it can show a large change, not a small one.
@@ -56,39 +56,39 @@ Each range refers to the twins on its row (the t range of their score difference
 
 Counted from the logged moves of the deck's side, which hold the deck's own moves and the points and nothing else (no Hit Points, damage, Special Conditions or opponent moves). A game without a log counts as no play.
 
-#### kx3 (120 twin games)
+#### kx3 (140 twin games)
 
 | | base | this deck |
 |---|---|---|
-| Ilima played | 3 times in 3 of 120 games | 0 times in 0 of 120 games |
-| Giant Cape played | 0 times in 0 of 120 games | 88 times in 88 of 120 games |
-| Giant Cape went to | nothing | the Active Pokémon 47, a Benched Pokémon 16; Alolan Ninetales ex 22, Alolan Vulpix 19, Team Rocket's Raticate ex 9, Team Rocket's Rattata 13 |
-| Giant Cape put on with only one place to put it, so nothing to log | 0 | 25 |
-| games where the opponent scored | 72 | 72 |
-| games where the opponent's first point was a knock-out of our opening Pokémon (never evolved or moved) | 22 | 21 |
-| games where the opponent's first point was the opening Pokémon or a benched Pokémon of the same name (cannot be told apart) | 8 | 5 |
-| turns a charged Pokémon did not attack, all lists | 14 | 13 |
+| Ilima played | 6 times in 6 of 140 games | 0 times in 0 of 140 games |
+| Giant Cape played | 0 times in 0 of 140 games | 103 times in 103 of 140 games |
+| Giant Cape went to | nothing | the Active Pokémon 57, a Benched Pokémon 20; Alolan Ninetales ex 27, Alolan Vulpix 24, Team Rocket's Raticate ex 13, Team Rocket's Rattata 13 |
+| Giant Cape put on with only one place to put it, so nothing to log | 0 | 26 |
+| games where the opponent scored | 83 | 86 |
+| games where the opponent's first point was a knock-out of our opening Pokémon (never evolved or moved) | 25 | 25 |
+| games where the opponent's first point was the opening Pokémon or a benched Pokémon of the same name (cannot be told apart) | 10 | 6 |
+| turns a charged Pokémon did not attack, all lists | 16 | 13 |
 | turns a charged Pokémon did not attack, against t-altaria | 10 | 9 |
-| our turns in all, for scale | 639 | 659 |
+| our turns in all, for scale | 762 | 783 |
 
-The replay of the moves lost track of the board 22 times in these 240 games (kx3); it sees only the deck's own moves, so a benched Pokémon from the setup is unknown to it.
+The replay of the moves lost track of the board 24 times in these 280 games (kx3); it sees only the deck's own moves, so a benched Pokémon from the setup is unknown to it.
 
-#### km3 (120 twin games)
+#### km3 (140 twin games)
 
 | | base | this deck |
 |---|---|---|
-| Ilima played | 1 time in 1 of 120 games | 0 times in 0 of 120 games |
-| Giant Cape played | 0 times in 0 of 120 games | 85 times in 85 of 120 games |
-| Giant Cape went to | nothing | the Active Pokémon 45, a Benched Pokémon 15; Alolan Ninetales ex 19, Alolan Vulpix 16, Team Rocket's Raticate ex 10, Team Rocket's Rattata 15 |
-| Giant Cape put on with only one place to put it, so nothing to log | 0 | 25 |
-| games where the opponent scored | 79 | 77 |
-| games where the opponent's first point was a knock-out of our opening Pokémon (never evolved or moved) | 29 | 26 |
-| games where the opponent's first point was the opening Pokémon or a benched Pokémon of the same name (cannot be told apart) | 7 | 5 |
+| Ilima played | 1 time in 1 of 140 games | 0 times in 0 of 140 games |
+| Giant Cape played | 0 times in 0 of 140 games | 99 times in 99 of 140 games |
+| Giant Cape went to | nothing | the Active Pokémon 53, a Benched Pokémon 19; Alolan Ninetales ex 23, Alolan Vulpix 21, Team Rocket's Raticate ex 13, Team Rocket's Rattata 15 |
+| Giant Cape put on with only one place to put it, so nothing to log | 0 | 27 |
+| games where the opponent scored | 92 | 89 |
+| games where the opponent's first point was a knock-out of our opening Pokémon (never evolved or moved) | 34 | 30 |
+| games where the opponent's first point was the opening Pokémon or a benched Pokémon of the same name (cannot be told apart) | 8 | 6 |
 | turns a charged Pokémon did not attack, all lists | 10 | 11 |
 | turns a charged Pokémon did not attack, against t-altaria | 9 | 9 |
-| our turns in all, for scale | 602 | 612 |
+| our turns in all, for scale | 722 | 728 |
 
-The replay of the moves lost track of the board 23 times in these 240 games (km3); it sees only the deck's own moves, so a benched Pokémon from the setup is unknown to it.
+The replay of the moves lost track of the board 27 times in these 280 games (km3); it sees only the deck's own moves, so a benched Pokémon from the setup is unknown to it.
 
 Not countable from these records:
 
@@ -105,32 +105,32 @@ Not countable from these records:
 | t-lucario | 20 | 65.0% | 43.3% to 81.9% |
 | t-sceptile | 20 | 75.0% | 53.1% to 88.8% |
 | t-suicune | 20 | 100.0% | 83.9% to 100.0% |
-| t-vespiquen | 0 | n/a | n/a |
+| t-vespiquen | 20 | 80.0% | 58.4% to 91.9% |
 | t-weezing | 0 | n/a | n/a |
 
 Each row's range refers only to the kx3 games against that list (the row's games column); with so few games it can tell a very easy or a very hard list from an even one, not two similar lists from each other.
 
 ## Who went first
 
-- When 13-a-giant-cape went first: 69.6% over 56 games (56.7% to 80.1%)
-- When 13-a-giant-cape went second: 73.4% over 64 games (61.5% to 82.7%)
+- When 13-a-giant-cape went first: 72.7% over 66 games (61.0% to 82.0%)
+- When 13-a-giant-cape went second: 73.0% over 74 games (61.9% to 81.8%)
 
 Each range refers only to the kx3 games on its line; a few dozen games can show a large first-or-second difference, not a small one.
 
 ## The time it took
 
-kx3 took 546 s a game on average (about 9 min), median 498 s, slowest 1648 s, with 4 threads going at once. km3 playing this deck took 0.6 s a game.
-Running time from the run log: 4.7 h over 6 sittings, for 240 games in all: 120 kx3 games + 120 cheap km3 baseline games.
+kx3 took 651 s a game on average (about 11 min), median 536 s, slowest 2144 s, with 4 threads going at once. km3 playing this deck took 0.7 s a game.
+Running time from the run log: 6.6 h over 7 sittings, for 280 games in all: 140 kx3 games + 140 cheap km3 baseline games.
 
 ## What these numbers can and can't say
 
-**These numbers say how 13-a-giant-cape did in simulated games with kx3 playing it against the 8 public lists, probably between 63.0% and 79.0%; they are not a ranking, they say nothing about decks outside those lists, and there is no pass or fail line.**
+**These numbers say how 13-a-giant-cape did in simulated games with kx3 playing it against the 8 public lists, probably between 65.0% and 79.5%; they are not a ranking, they say nothing about decks outside those lists, and there is no pass or fail line.**
 
 In more detail:
 
 - kx3, a strong but slow pilot, plays your deck knowing its own cards. It does not know which of the 8 public lists it faces, but its opponent is always one of them and always plays like the program kx3 imagines when it looks ahead, so it is better informed here than it would be against a person on the ladder or a deck outside the 8 lists. Read the score as the optimistic end.
 - The 8 lists count equally here, not by how common they are on the ladder.
-- The range covers only the luck of the shuffles and coin flips in these 120 games; it does not cover how true to the real game the simulator is. It can tell whether kx3 plays 13-a-giant-cape clearly above or clearly below an even score against these 8 lists; it cannot tell two decks apart whose scores differ by less than the width of such a range (16.0 points here), and more deals narrow it.
+- The range covers only the luck of the shuffles and coin flips in these 140 games; it does not cover how true to the real game the simulator is. It can tell whether kx3 plays 13-a-giant-cape clearly above or clearly below an even score against these 8 lists; it cannot tell two decks apart whose scores differ by less than the width of such a range (14.5 points here), and more deals narrow it.
 - There is no pass or fail line: whether 13-a-giant-cape is worth playing is a call for the player.
 
 ## What was run
