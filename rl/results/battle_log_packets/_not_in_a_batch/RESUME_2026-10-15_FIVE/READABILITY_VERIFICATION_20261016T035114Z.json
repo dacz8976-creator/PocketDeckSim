@@ -1,0 +1,168 @@
+{
+  "verified_at_utc": "2026-10-16T03:51:14.449819+00:00",
+  "scope": "Download diagnosis and readability verification only. No gameplay review or review status changes.",
+  "prior_failure_receipt": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\LOCAL_DOWNLOAD_RESUME_20261015\\AVAILABILITY.20261016T034052051448Z.json",
+  "finding": "The three formerly incomplete placeholders became fully local during diagnosis. Prior receipt reports 0x8007018B cloud access denied. Exact transient provider cause not established.",
+  "actions": {
+    "onedrive_restarted": false,
+    "sync_paused": false,
+    "browser_downloaded": false,
+    "sources_modified_or_moved": false
+  },
+  "results": [
+    {
+      "source": "20261016_015753000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261016_015753000_iOS.MP4",
+      "size_bytes": 781475086,
+      "sha256": "365da4f239709a8512e425fbeb8a3fff9b90cb7b9f5ba208e51ca9679c4f8fe3",
+      "elapsed_seconds": 3.922,
+      "stable_size_and_mtime": true,
+      "metadata_before": {
+        "logical_bytes": 781475086,
+        "allocated_bytes": 781475086,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "metadata_after": {
+        "logical_bytes": 781475086,
+        "allocated_bytes": 781475086,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "ffprobe_exit_code": 0,
+      "ffprobe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "hevc",
+            "codec_type": "video",
+            "width": 1170,
+            "height": 2532
+          },
+          {
+            "codec_name": "aac",
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "425.561667",
+          "size": "781475086"
+        }
+      },
+      "ffprobe_error": ""
+    },
+    {
+      "source": "20261016_020806000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261016_020806000_iOS.MP4",
+      "size_bytes": 1039108871,
+      "sha256": "3500dda99e8c7174a9fdaeebe13678fc17793a2c728db0728f903b5d6f4a0066",
+      "elapsed_seconds": 2.454,
+      "stable_size_and_mtime": true,
+      "metadata_before": {
+        "logical_bytes": 1039108871,
+        "allocated_bytes": 1039108871,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "metadata_after": {
+        "logical_bytes": 1039108871,
+        "allocated_bytes": 1039108871,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "ffprobe_exit_code": 0,
+      "ffprobe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "hevc",
+            "codec_type": "video",
+            "width": 1170,
+            "height": 2532
+          },
+          {
+            "codec_name": "aac",
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "559.355000",
+          "size": "1039108871"
+        }
+      },
+      "ffprobe_error": ""
+    },
+    {
+      "source": "20261016_031512000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261016_031512000_iOS.MP4",
+      "size_bytes": 536481462,
+      "sha256": "72d27860d438ef14528f60da481f7bbe24c5c650a3737844ecb4d14c280ef48f",
+      "elapsed_seconds": 1.75,
+      "stable_size_and_mtime": true,
+      "metadata_before": {
+        "logical_bytes": 536481462,
+        "allocated_bytes": 536481462,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "metadata_after": {
+        "logical_bytes": 536481462,
+        "allocated_bytes": 536481462,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "ffprobe_exit_code": 0,
+      "ffprobe": {
+        "programs": [],
+        "streams": [
+          {
+            "codec_name": "hevc",
+            "codec_type": "video",
+            "width": 1170,
+            "height": 2532
+          },
+          {
+            "codec_name": "aac",
+            "codec_type": "audio"
+          }
+        ],
+        "format": {
+          "duration": "290.638333",
+          "size": "536481462"
+        }
+      },
+      "ffprobe_error": ""
+    }
+  ],
+  "all_three_verified": true
+}

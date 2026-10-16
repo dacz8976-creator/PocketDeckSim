@@ -1,0 +1,56 @@
+{
+  "checked_utc": "20261016T034052051448Z",
+  "pending": [
+    {
+      "source": "20261016_015753000_iOS.MP4",
+      "metadata": {
+        "logical_bytes": 781475086,
+        "allocated_bytes": 0,
+        "attributes": 4724256,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": true
+      }
+    },
+    {
+      "source": "20261016_020806000_iOS.MP4",
+      "metadata": {
+        "logical_bytes": 1039108871,
+        "allocated_bytes": 524288000,
+        "attributes": 4724256,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "source": "20261016_031512000_iOS.MP4",
+      "metadata": {
+        "logical_bytes": 536481462,
+        "allocated_bytes": 524288000,
+        "attributes": 4724256,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    }
+  ],
+  "visual_review_started": false,
+  "normal_read_last_result": "031512 returned OSError22 on first4MiB read after waiting; same result outside sandbox.",
+  "hydration_last_result": "0x8007018B; native Windows FormatError says Access to the cloud file is denied.",
+  "cloud_originals_preserved": true,
+  "source_bytes_not_hashed": [
+    "20261016_015753000_iOS.MP4",
+    "20261016_020806000_iOS.MP4",
+    "20261016_031512000_iOS.MP4"
+  ]
+}

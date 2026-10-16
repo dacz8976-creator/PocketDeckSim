@@ -1,0 +1,39 @@
+{
+  "lead": "/root",
+  "checked_utc": "2026-10-16T03:46:46.995206+00:00",
+  "source_filename": "20261016_024253000_iOS.MP4",
+  "source_sha256": "f9c112be78ea4a2f0c8c72b8b47d529fad49001efde34780b3562f4c8a69441b",
+  "observations": [
+    {
+      "path": "evidence/native/t0165.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Opponent turn4 follows first Glimmora Venomous Hit; Rayquaza140HP and Poisoned, opponent0points.",
+      "sha256": "ea02753d4cb099e61e2c7eb5207f92e759d7449ac1f5fa8841b67a183553c9da"
+    },
+    {
+      "path": "evidence/native/t0695.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Post first Kingambit KO: opposing Active empty, owner1/opponent2; Kingambit140HP and Muk110HP; opposing Dragonair80 and Rayquaza160 on Bench.",
+      "sha256": "d5c520960cdbb371d45328b95487c9972edccac0209c2aced98c43df6885f610"
+    },
+    {
+      "path": "evidence/native/t0839.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Kingambit10HP with Heavy Helmet survives; score2-2, Active Rayquaza180HP.",
+      "sha256": "556f3b2c1cdef3d63b227676c6e6e5cc545739c7ea372cff5da9f8bc869f7209"
+    },
+    {
+      "path": "evidence/native/t0846.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Final180damage hits180HP Mega Rayquaza ex; Kingambit survives at10HP.",
+      "sha256": "813b058b3dd6c07dca65cfb7c83a455bb59647132a50392f2a36923d70089623"
+    },
+    {
+      "path": "evidence/native/t0860.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Victory versus 暗黑掌門人; wentfirst,19turns,owner3/opponent2,540damage.",
+      "sha256": "aab6a8b25826a604e9490c1e119513ef79c5f5b1c2bae4a9b88d653bb199c1b5"
+    }
+  ],
+  "coverage_reconciliation": "Lead read full timeline and turn/phase coverage. A separate Sol reviewer checked ordinary turns and decisive evidence against retained source frames."
+}
