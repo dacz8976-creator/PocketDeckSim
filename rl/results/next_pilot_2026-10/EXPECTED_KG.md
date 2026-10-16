@@ -55,19 +55,38 @@ cut count is given where it matters (010837 t03).
 | 6 | 015659 t05 | 0 | reviewed, study v2, confounded | the Energy goes on the newly placed Pawniard (@3) | 0/12 | 0/12 (v3) | 1/12 (v3) | **positive** | F, C: positive | `_expo` case: no change from any code here |
 | 7 | 010837 t09 | 2 | reviewed, the cloud's diagnosis | no Blade: Hang Down after Pops (the Blade is 140, the Kangaskhan 180) | 0/12 | 0/12 | 11/12 | **positive**, counted in fast arms | F: positive; C: keep check | kmbc3 perhaps; kmb3 no |
 | 8 | 010837 t11 | 2 | reviewed, the cloud's diagnosis | no Blade: Hang Down, the Pichu knock-out declined | 0/12 | 0/12 | 12/12 | **positive**. Declined knock-out: reported, not counted | F: positive; C: keep check | not changed by any fast code |
-| 9 | 210041 t06 | 0 | pending second reader | no Ilima this turn; the Energy goes on the benched Pawniard | 0/12 (Ilima 12/12) | 0/12 | 0/12 | **positive** (pending) | F, C: positive | **kmbc3 changes it**; kmb3 no |
-| 10 | 203719 t07 | 0 | pending second reader | no Blade (Glimmora promoted, Kingambit stays out) | 0/12 | n/m | n/m | **positive** (pending) | gate 0 | **kmbc3 changes it**; kmb3 no |
-| 11 | 210823 t08 | 0 | pending second reader | no Blade (Glimmora promoted) | 0/12 | n/m | n/m | **positive** (pending) | gate 0 | kmbc3 perhaps; kmb3 no |
-| 12 | 010706 t11 | 1 | pending second reader | Heavy Helmet on the Kingambit (@1) | 0/12 (Muk @0 12/12) | n/m | n/m | **positive** (pending) | gate 0 | no change from any code here (the Helmet is not priced by the Blade) |
-| 13 | 010837 t05 | 1 | pending second reader | the Energy goes on the benched Pawniard (@1) | 0/12 (Regigigas @0 12/12) | n/m | n/m | **positive** (pending) | gate 0 | no change expected |
-| 14 | 014423 t03 | 0 | pending second reader | the Energy goes on the benched Pawniard (@1) | 1/12 (@0 in 8; 2 plans are cut before an attach) | n/m | n/m | **positive** (pending) | gate 0 | `_expo` case: no change from any code here |
-| 15 | 203719 t11 | 0 | pending second reader | Heavy Helmet on the Kingambit (@3) | 0/12 (Helmet @0 12/12) | n/m | n/m | **positive** (pending) | gate 0 | no change expected |
+| 9 | 210041 t06 | 0 | second reader: agree (counts) | no Ilima this turn; the Energy goes on the benched Pawniard | 0/12 (Ilima 12/12) | 0/12 | 0/12 | **positive** | F, C: positive | **kmbc3 changes it**; kmb3 no |
+| 10 | 203719 t07 | 0 | second reader: agree (counts) | no Blade (Glimmora promoted, Kingambit stays out) | 0/12 | n/m | n/m | **positive** | gate 0 | **kmbc3 changes it**; kmb3 no |
+| 11 | 210823 t08 | 0 | second reader: agree (counts) | no Blade (Glimmora promoted) | 0/12 | n/m | n/m | **positive** | gate 0 | kmbc3 perhaps; kmb3 no |
+| 12 | 010706 t11 | 1 | second reader: agree (counts) | Heavy Helmet on the Kingambit (@1) | 0/12 (Muk @0 12/12) | n/m | n/m | **positive** | gate 0 | no change from any code here (the Helmet is not priced by the Blade) |
+| 13 | 010837 t05 | 1 | second reader: agree (counts) | the Energy goes on the benched Pawniard (@1) | 0/12 (Regigigas @0 12/12) | n/m | n/m | **positive** | gate 0 | no change expected |
+| 14 | 014423 t03 | 0 | second reader: agree (counts) | the Energy goes on the benched Pawniard (@1) | 1/12 (@0 in 8; 2 plans are cut before an attach) | n/m | n/m | **positive** | gate 0 | `_expo` case: no change from any code here |
+| 15 | 203719 t11 | 0 | second reader: agree (counts) | Heavy Helmet on the Kingambit (@3) | 0/12 (Helmet @0 12/12) | n/m | n/m | **positive** | gate 0 | no change expected |
 
 "n/m" = not measured (F and C ran only the eight kx3-study positions). Seven of the 15 are at count 0 (cases 1, 6, 9, 10, 11, 14, 15).
 
-**The seven "pending second reader" cases** are 9-15. My reading of each is in `FIRST_READ_7.md` (all seven: upheld; confidence from medium-high
-to low-medium; case 14 is high but is an `_expo` case, not a Blade one). **None counts until a second reader has read it.** If the second reader
-rules a case "unclear" or "km3 better", it drops out of the positives and out of kmbc3's "at least half of its counted positives" denominator.
+**The seven former "pending second reader" cases** are 9-15. The first reading is `FIRST_READ_7.md` (all seven: upheld; confidence from
+medium-high to low-medium; case 14 is high but is an `_expo` case, not a Blade one). The second reading, `SECOND_READ_7.md`, was written
+before the first was opened (Sonnet worker, Oct 16). Per turn, the class is the same in both, **agree, all seven count** (none is
+"unclear" or "km3 better", so the counted list and kmbc3's denominator are 12):
+
+| case | turn | first reader | second reader | result |
+|---|---|---|---|---|
+| 9 | 210041 t06 | upheld, medium | positive, medium-low | agree (counts) |
+| 10 | 203719 t07 | upheld, medium | positive, medium-high | agree (counts) |
+| 11 | 210823 t08 | upheld, medium | positive, medium-high | agree (counts) |
+| 12 | 010706 t11 | upheld, medium-high | positive, medium | agree (counts) |
+| 13 | 010837 t05 | upheld, low-medium | positive, medium-high | agree (counts) |
+| 14 | 014423 t03 | upheld, high (`_expo`) | positive, medium-high (`_expo`) | agree (counts) |
+| 15 | 203719 t11 | upheld, medium-high | positive, medium | agree (counts) |
+
+The classes agree; some reasons differ, for the laptop's review. Neither reading changes a class:
+- Case 9: the first reader has km3 promoting the Pawniard after Ilima and losing it; the second reader did not consider that and reads Glimmet
+  or Muk as the victim (Muk in front being what Dustin says loses). Both end at "the Regigigas is the cheaper loss".
+- Case 15: the first reader reads the Energy as going on the Glimmora ("@1"); the second reader reads "@1" as board index 1, the Muk (the
+  same convention gives the Kingambit for "@1" in 010706 t11). Both rest the case on the Helmet alone, which is the property.
+- Case 12: the Peculiar Plaza/Helmet-does-not-save-Muk reading is the first reader's; the second reader reached the same Muk fall from
+  Mega Diancie ex's Brilliant Storm and did not use the Stadium.
 
 **Case 1 and the rule.** Dustin ruled this pass deliberate, so it was listed as a reviewed positive. By gate 0's rule as written it is a keep
 check for the km family: km3 does not Slash in 10 of 12, only because 10 of its plans are cut at Copycat before the choice (his own line puts
@@ -161,4 +180,4 @@ difference stated, when it runs. The prediction below does not depend on whether
 - F and C baselines are on eight positions only, and only 203719 t17 and 015659 t05 use the v3 runs (the other six positions are identical
   in v3 per the study's own note).
 - The 17-turn list rests on a hand rule over the position records, not on engine output; see section 4.
-- The seven pending cases carry one reader only (`FIRST_READ_7.md`).
+- Cases 9-15 now carry two readers (`FIRST_READ_7.md`, `SECOND_READ_7.md`), agreeing on all seven. Neither reader saw a frame or the opponent's hidden hand.
