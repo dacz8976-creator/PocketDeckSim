@@ -2283,6 +2283,51 @@ mod tests {
         assert_eq!(report.chosen, idle, "nothing is played in its place");
     }
 
+    /// M4: `KX_EXTRA_LISTS` takes deck 12 game 3 T4's 14-card opponent list (hand 2 and deck 2 left to fill), and a world
+    /// sampled from it fills his hand 2 and deck 2 from the list alone.
+    #[test]
+    fn a_14_card_extra_list_loads_and_fills_the_hidden_zones() {
+        let spec = "G3T4=../rl/results/next_pilot_2026-10/skip_export/game3_t4_opp.txt";
+        let extras = parse_extra_lists_against(spec, std::path::Path::new("..")).expect("the 14-card list loads");
+        assert_eq!(extras[0].deck.cards.len(), 14);
+        let (deck_a, deck_b) = crate::test_support::load_test_decks();
+        let p = PlayoutPlayer::with_extra_lists(deck_a, deck_b, PlayoutParams::parse_ky("3_r4_c12_z2_real_t0_poolmeta").unwrap(), extras);
+        let on = |id: CardId| mon(id).with_energy(vec![EnergyType::Lightning, EnergyType::Lightning]);
+        let mut game = crate::test_support::get_test_game_with_board(
+            vec![mon(CardId::A1001Bulbasaur)],
+            vec![on(CardId::A3a021Zeraora), mon(CardId::A1098Magneton), mon(CardId::A1098Magneton)],
+        );
+        let mut state = game.get_state_clone();
+        state.move_generation_stack.clear();
+        let card = |id: CardId| get_card_by_enum(id);
+        state.hands[1] = vec![card(CardId::PA005PokeBall), card(CardId::PA005PokeBall)];
+        state.decks[1].cards = vec![card(CardId::PA005PokeBall), card(CardId::PA005PokeBall)];
+        state.discard_piles[1] = vec![card(CardId::A3a021Zeraora), card(CardId::PA007ProfessorsResearch), card(CardId::PA007ProfessorsResearch), card(CardId::PA005PokeBall)];
+        state.energy_zone[1] = crate::state::EnergyZone { current: Some(EnergyType::Lightning), next: Some(EnergyType::Lightning) };
+        game.set_state(state);
+        let state = game.get_state_clone();
+        let observation = PlayerObservation::from_state(&state, 0, &crate::observation::RevealedKnowledge::default());
+        let (mut from_extra, mut others) = (0, 0);
+        for seed in 0..30 {
+            let (world, _, name) = p.core.sample_state(&observation, &mut StdRng::seed_from_u64(seed));
+            assert_eq!((world.hands[1].len(), world.decks[1].cards.len()), (2, 2), "seed {seed}: {name}");
+            assert!(world.hands[1].iter().chain(world.decks[1].cards.iter()).all(|c| !c.is_unknown()), "seed {seed}: {name}");
+            if name.starts_with("extra:G3T4") {
+                from_extra += 1;
+                // Every hidden card is one of the list's own (the test board shows no Magnemite behind the Magnetons and no
+                // Stadium, which the real position does, so which four of the unseen nine are hidden varies).
+                let listed = ["Cyrus", "Magnezone", "Magnemite", "Miraidon ex", "Poké Ball", "Starting Plains"];
+                for card in world.hands[1].iter().chain(world.decks[1].cards.iter()) {
+                    assert!(listed.contains(&card.get_name().as_str()), "seed {seed}: {}", card.get_name());
+                }
+            } else {
+                others += 1;
+            }
+        }
+        eprintln!("worlds from the extra list: {from_extra} of 30 ({others} from other consistent lists)");
+        assert!(from_extra > 0, "no world came from the extra list");
+    }
+
     fn attack_of(state: &State, title: &str) -> Action {
         state
             .generate_possible_actions()
