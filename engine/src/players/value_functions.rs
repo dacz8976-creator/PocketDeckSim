@@ -349,6 +349,18 @@ pub fn public_clock_effect_km_punch_value_function(state: &State, myself: usize)
     parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KM_PUNCH)
 }
 
+/// The `kmb` code (players/mod.rs `KMB`): km with Overlord's Blade priced at the owner's count of own knock-outs
+/// ([`EvalFeatures::KMB`]). The same as km on every board where no such attack is a threat candidate and on every board
+/// where the owner's count is 0.
+pub fn public_clock_effect_kmb_value_function(state: &State, myself: usize) -> f64 {
+    parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KMB)
+}
+
+/// ky `_blade` with `_punch`: [`public_clock_effect_km_punch_value_function`] and the Blade priced at the count.
+pub fn public_clock_effect_km_punch_blade_value_function(state: &State, myself: usize) -> f64 {
+    parametric_value_function_ex6(state, myself, &ValueFunctionParams::baseline(), true, false, true, true, false, EvalFeatures::KM_PUNCH_BLADE)
+}
+
 /// Weight of [`best_benched_attacker_online_score`] in `kq`: half the Active online score's 500 in
 /// [`ValueFunctionParams::baseline`]. Pre-set before any A/B and not tuned on the table.
 pub const KQ_BENCH_ATTACKER_WEIGHT: f64 = 250.0;
@@ -397,6 +409,10 @@ struct EvalFeatures {
     /// cuts, the 40 carrying on to the next victim after a knock-out, and the threat is picked on 120 ([`kt_clock_punch`]).
     /// Read only in kt's clock, with its flag on; off, every clock is as before.
     punch: bool,
+    /// ky `_blade` and kmb: an attack that does extra damage per own knock-out this game (Kingambit's Overlord's Blade) is
+    /// priced in kt's clock at its owner's current count ([`clock_attack_damage`]). Read only there; off, every clock is as
+    /// before.
+    blade_count: bool,
 }
 
 impl EvalFeatures {
@@ -416,6 +432,7 @@ impl EvalFeatures {
         zone_to_bench: false,
         stadium_bonus_in_clock: false,
         punch: false,
+        blade_count: false,
     };
     const KQ: EvalFeatures = EvalFeatures {
         next_attack_reduction: true,
@@ -433,6 +450,7 @@ impl EvalFeatures {
         zone_to_bench: false,
         stadium_bonus_in_clock: false,
         punch: false,
+        blade_count: false,
     };
     const KD: EvalFeatures = EvalFeatures {
         next_attack_reduction: false,
@@ -450,6 +468,7 @@ impl EvalFeatures {
         zone_to_bench: false,
         stadium_bonus_in_clock: false,
         punch: false,
+        blade_count: false,
     };
     const KPR: EvalFeatures = EvalFeatures {
         next_attack_reduction: false,
@@ -467,6 +486,7 @@ impl EvalFeatures {
         zone_to_bench: false,
         stadium_bonus_in_clock: false,
         punch: false,
+        blade_count: false,
     };
     const KOA: EvalFeatures = EvalFeatures { opening_first_turn_active: true, ..EvalFeatures::OFF };
     const KOB: EvalFeatures = EvalFeatures { opening_bench_working: true, ..EvalFeatures::OFF };
@@ -502,6 +522,10 @@ impl EvalFeatures {
     const KM: EvalFeatures = EvalFeatures { stadium_bonus_in_clock: true, ..EvalFeatures::KTA };
     /// ky's km with `_punch`: [`EvalFeatures::KM`] and the per-punch forecast.
     const KM_PUNCH: EvalFeatures = EvalFeatures { punch: true, ..EvalFeatures::KM };
+    /// kmb: km with the Blade priced at the current count (`rl/results/next_pilot_2026-10/KINGAMBIT_ITEM7.md` section 1).
+    const KMB: EvalFeatures = EvalFeatures { blade_count: true, ..EvalFeatures::KM };
+    /// ky's km with `_punch` and `_blade`.
+    const KM_PUNCH_BLADE: EvalFeatures = EvalFeatures { punch: true, blade_count: true, ..EvalFeatures::KM };
 
     /// Whether kt's clock ([`kt_clocks`]) replaces kp's.
     fn kt_clock(&self) -> bool {
@@ -1769,6 +1793,34 @@ fn kt_clock_stadium(
     kt_clock_punch(state, victim_owner, read_scanned_zones, effect_aware, reserve_aware, consume_bench, cuts, stadium_bonus, false)
 }
 
+/// The clock's damage estimate for `atk` held by `slot` of `owner` (the threat's owner): the effect-aware estimate, or the
+/// printed damage. With `blade`, an attack whose effect maps to `ExtraDamagePerOwnKnockoutThisGame` adds `damage_per_ko` per
+/// own knock-out of `owner` this game. The switch reads the mechanic, never a card name.
+fn clock_attack_damage(
+    atk: &Attack,
+    slot: &PlayedCard,
+    state: &State,
+    owner: usize,
+    effect_aware: bool,
+    reserve_aware: bool,
+    blade: bool,
+) -> u32 {
+    let damage = if effect_aware {
+        estimated_attack_damage_ex(atk, slot, state, owner, reserve_aware).round() as u32
+    } else {
+        atk.fixed_damage
+    };
+    if !blade {
+        return damage;
+    }
+    match atk.effect.as_deref().and_then(|effect| EFFECT_MECHANIC_MAP.get(effect)) {
+        Some(Mechanic::ExtraDamagePerOwnKnockoutThisGame { damage_per_ko }) => {
+            damage + damage_per_ko * state.count_own_knockouts_this_game(owner)
+        }
+        _ => damage,
+    }
+}
+
 /// The damage Mega Kangaskhan ex's second punch adds to the first's printed 80.
 const SECOND_PUNCH: u32 = 40;
 
@@ -1830,8 +1882,7 @@ fn punch_clock_turns(victims: &[PunchVictim], points_before: u8) -> f64 {
     turns as f64
 }
 
-/// [`kt_clock_stadium`] with ky `_punch` (`punch`): a Mega Kangaskhan ex threat is picked on 120 and its clock is
-/// [`punch_clock_turns`]; with any other threat, or `punch` off, the clock is [`kt_clock_stadium`]'s exactly.
+/// [`kt_clock_blade`] with ky `_blade` off.
 #[allow(clippy::too_many_arguments)]
 fn kt_clock_punch(
     state: &State,
@@ -1844,13 +1895,29 @@ fn kt_clock_punch(
     stadium_bonus: bool,
     punch: bool,
 ) -> KtClock {
+    kt_clock_blade(state, victim_owner, read_scanned_zones, effect_aware, reserve_aware, consume_bench, cuts, stadium_bonus, punch, false)
+}
+
+/// [`kt_clock_stadium`] with ky `_punch` (`punch`): a Mega Kangaskhan ex threat is picked on 120 and its clock is
+/// [`punch_clock_turns`]; with any other threat, or `punch` off, the clock is [`kt_clock_stadium`]'s exactly. With ky
+/// `_blade` (`blade`) an attack that does extra damage per own knock-out is priced at its owner's count
+/// ([`clock_attack_damage`]); off, nothing differs.
+#[allow(clippy::too_many_arguments)]
+fn kt_clock_blade(
+    state: &State,
+    victim_owner: usize,
+    read_scanned_zones: bool,
+    effect_aware: bool,
+    reserve_aware: bool,
+    consume_bench: bool,
+    cuts: bool,
+    stadium_bonus: bool,
+    punch: bool,
+    blade: bool,
+) -> KtClock {
     let owner = (victim_owner + 1) % 2;
     let attack_damage = |atk: &Attack, slot: &PlayedCard| -> u32 {
-        let damage = if effect_aware {
-            estimated_attack_damage_ex(atk, slot, state, owner, reserve_aware).round() as u32
-        } else {
-            atk.fixed_damage
-        };
+        let damage = clock_attack_damage(atk, slot, state, owner, effect_aware, reserve_aware, blade);
         if punch && is_double_punch(atk) {
             damage + SECOND_PUNCH
         } else {
@@ -2050,10 +2117,10 @@ fn kt_clocks(
 ) -> (f64, f64) {
     let opponent = (myself + 1) % 2;
     let (cuts, n2) = (features.defender_cuts, features.stadium_bonus_in_clock);
-    let punch = features.punch;
+    let (punch, blade) = (features.punch, features.blade_count);
     debug_assert!(!(punch && features.counter_damage), "_punch has no counter-damage path");
-    let mine = kt_clock_punch(state, myself, false, effect_aware, reserve_aware, public_eval, cuts, n2, punch);
-    let theirs = kt_clock_punch(state, opponent, public_eval, effect_aware, reserve_aware, public_eval, cuts, n2, punch);
+    let mine = kt_clock_blade(state, myself, false, effect_aware, reserve_aware, public_eval, cuts, n2, punch, blade);
+    let theirs = kt_clock_blade(state, opponent, public_eval, effect_aware, reserve_aware, public_eval, cuts, n2, punch, blade);
     if !features.counter_damage {
         return (mine.total(0.0), theirs.total(0.0));
     }
@@ -6282,5 +6349,209 @@ mod punch_tests {
             parametric_value_function_ex6(&state, 0, &ValueFunctionParams::baseline(), true, false, true, true, false, features)
         };
         assert_eq!(value(EvalFeatures::KM).to_bits(), value(EvalFeatures::KM_PUNCH).to_bits());
+    }
+}
+
+/// ky `_blade` and the fast code kmb (`rl/results/next_pilot_2026-10/KINGAMBIT_ITEM7.md` section 1): Overlord's Blade priced
+/// at the owner's current count of own knock-outs in kt's clock. Numbers from `lib/card.py`: Kingambit B3a 043 (Stage 2 from
+/// Bisharp, 140 HP, [D][D] Overlord's Blade 60, +40 per own knock-out), Alolan Muk B2 097 ([D][C][C] Sludge Bomb 70),
+/// Regigigas B3 134 ([C][C][C] Giga Turbo 100), Pawniard B3a 041 (Basic [D]), Mega Kangaskhan ex (180 HP, 3 points).
+#[cfg(test)]
+mod blade_tests {
+    use super::*;
+    use crate::card_ids::CardId;
+    use crate::observation::{PlayerObservation, RevealedKnowledge};
+    use crate::players::RandomPlayer;
+    use crate::{Deck, Game};
+
+    fn mon(id: CardId) -> PlayedCard {
+        PlayedCard::from_id(id)
+    }
+
+    fn kingambit() -> PlayedCard {
+        mon(CardId::B3a043Kingambit).with_energy(vec![EnergyType::Darkness; 2])
+    }
+
+    fn muk() -> PlayedCard {
+        mon(CardId::B2097AlolanMuk).with_energy(vec![EnergyType::Darkness, EnergyType::Colorless, EnergyType::Colorless])
+    }
+
+    fn regigigas() -> PlayedCard {
+        mon(CardId::B3134Regigigas).with_energy(vec![EnergyType::Colorless; 3])
+    }
+
+    /// Player 0 holds `mine` (the threats), player 1 `theirs`; counts of own knock-outs `(player 0, player 1)`.
+    fn board(mine: Vec<PlayedCard>, theirs: Vec<PlayedCard>, counts: (u32, u32)) -> State {
+        let mut state = State::default();
+        state.set_board(mine, theirs);
+        state.turn_count = 5;
+        state.current_player = 0;
+        state.set_own_knockouts_this_game(0, counts.0);
+        state.set_own_knockouts_this_game(1, counts.1);
+        state
+    }
+
+    fn blade_attack(pokemon: &PlayedCard) -> Attack {
+        pokemon.card.get_attacks()[0].clone()
+    }
+
+    /// The threat slot and damage of the clock on player 1's side (the threats are player 0's), `blade` on or off.
+    fn pick(state: &State, blade: bool) -> (Option<usize>, Option<u32>) {
+        let clock = kt_clock_blade(state, 1, false, true, false, true, true, true, false, blade);
+        let candidates = threat_candidates(state, 0, false, None, &|atk, slot| {
+            clock_attack_damage(atk, slot, state, 0, true, false, blade)
+        });
+        let damage = clock.threat_slot.and_then(|slot| {
+            candidates.iter().filter(|c| c.slot == slot).map(|c| c.damage).max()
+        });
+        (clock.threat_slot, damage)
+    }
+
+    /// 1. Estimate: 60, 100, 140, 180 at counts 0-3 with the flag; 60 at every count without it.
+    #[test]
+    fn the_estimate_is_60_plus_40_per_own_knock_out_with_the_flag() {
+        let k = kingambit();
+        for (count, expected) in [(0u32, 60u32), (1, 100), (2, 140), (3, 180)] {
+            let state = board(vec![k.clone()], vec![mon(CardId::B2127MegaKangaskhanEx)], (count, 0));
+            assert_eq!(clock_attack_damage(&blade_attack(&k), &k, &state, 0, true, false, true), expected, "count {count}");
+            assert_eq!(clock_attack_damage(&blade_attack(&k), &k, &state, 0, true, false, false), 60, "count {count}, off");
+        }
+    }
+
+    /// 2. Whose count: the opponent at 3 and the owner at 0 gives 60; the owner at 3 and the opponent at 0 gives 180.
+    #[test]
+    fn the_owners_count_is_read_not_the_opponents() {
+        let k = kingambit();
+        let state = board(vec![k.clone()], vec![mon(CardId::B2127MegaKangaskhanEx)], (0, 3));
+        assert_eq!(clock_attack_damage(&blade_attack(&k), &k, &state, 0, true, false, true), 60);
+        let state = board(vec![k.clone()], vec![mon(CardId::B2127MegaKangaskhanEx)], (3, 0));
+        assert_eq!(clock_attack_damage(&blade_attack(&k), &k, &state, 0, true, false, true), 180);
+    }
+
+    /// 3. The threat pick: Kingambit over Muk from count 1; with Regigigas first, it wins ties at count 0 and 1, and
+    /// Kingambit takes over at 2-3. Without the flag Kingambit is never picked.
+    #[test]
+    fn the_threat_pick_moves_to_kingambit_as_the_count_grows() {
+        let victim = vec![mon(CardId::B2127MegaKangaskhanEx)];
+        for (count, slot) in [(0u32, 1), (1, 0), (2, 0), (3, 0)] {
+            let state = board(vec![kingambit(), muk()], victim.clone(), (count, 0));
+            assert_eq!(pick(&state, true).0, Some(slot), "count {count}");
+            assert_eq!(pick(&state, false).0, Some(1), "count {count}, off");
+        }
+        for (count, slot) in [(0u32, 0), (1, 0), (2, 1), (3, 1)] {
+            let state = board(vec![regigigas(), kingambit()], victim.clone(), (count, 0));
+            assert_eq!(pick(&state, true).0, Some(slot), "Regigigas first, count {count}");
+            assert_eq!(pick(&state, false).0, Some(0), "Regigigas first, count {count}, off");
+        }
+    }
+
+    /// 4. Evolution form: Pawniard (DD) in play, Kingambit in hand, count 2: the form reads 140 and its steps stay 2.
+    #[test]
+    fn an_evolution_form_reads_the_count_and_keeps_its_steps() {
+        let mut state = board(
+            vec![mon(CardId::B3a041Pawniard).with_energy(vec![EnergyType::Darkness; 2])],
+            vec![mon(CardId::B2127MegaKangaskhanEx)],
+            (2, 0),
+        );
+        state.hands[0].push(crate::database::get_card_by_enum(CardId::B3a043Kingambit));
+        let form = |blade| {
+            threat_candidates(&state, 0, true, None, &|atk, slot| clock_attack_damage(atk, slot, &state, 0, true, false, blade))
+                .into_iter()
+                .find(|c| c.form.is_some())
+                .map(|c| (c.damage, c.missing))
+        };
+        assert_eq!(form(true), Some((140, 2)));
+        assert_eq!(form(false), Some((60, 2)));
+    }
+
+    /// 5. The clock: only a ready Kingambit against an Active 180-HP Mega ex (3 points): `theirs` totals 3, 2, 2, 1 at
+    /// counts 0-3 with the flag, and 3 without it.
+    #[test]
+    fn the_clock_shortens_as_the_count_grows() {
+        for (count, turns) in [(0u32, 3.0), (1, 2.0), (2, 2.0), (3, 1.0)] {
+            let state = board(vec![kingambit()], vec![mon(CardId::B2127MegaKangaskhanEx)], (count, 0));
+            let (_, theirs) = kt_clocks(&state, 0, true, true, false, EvalFeatures::KMB);
+            assert_eq!(theirs, turns, "count {count}");
+            let (_, theirs) = kt_clocks(&state, 0, true, true, false, EvalFeatures::KM);
+            assert_eq!(theirs, 3.0, "count {count}, off");
+        }
+    }
+
+    /// 6. Mirror: an opposing Kingambit is read at the opponent's count in his `mine` clock.
+    #[test]
+    fn an_opposing_kingambit_is_read_at_the_opponents_count() {
+        let mega = || mon(CardId::B2127MegaKangaskhanEx);
+        let state = board(vec![mega()], vec![kingambit()], (0, 3));
+        let (mine, _) = kt_clocks(&state, 0, true, true, false, EvalFeatures::KMB);
+        assert_eq!(mine, 1.0);
+        let state = board(vec![mega()], vec![kingambit()], (3, 0));
+        let (mine, _) = kt_clocks(&state, 0, true, true, false, EvalFeatures::KMB);
+        assert_eq!(mine, 3.0);
+    }
+
+    fn value(state: &State, me: usize, features: EvalFeatures) -> f64 {
+        parametric_value_function_ex6(state, me, &ValueFunctionParams::baseline(), true, false, true, true, false, features)
+    }
+
+    /// 7. Identity: the flag is false in every older constant, and with count 0 on both sides every value is bit-equal to
+    /// km's, in 24 random games on deck 01 and on lists with no Kingambit (there, at any count).
+    #[test]
+    fn the_flag_is_off_in_every_older_code_and_count_zero_is_km() {
+        for f in [
+            EvalFeatures::OFF,
+            EvalFeatures::KQ,
+            EvalFeatures::KD,
+            EvalFeatures::KPR,
+            EvalFeatures::KPF,
+            EvalFeatures::KPH,
+            EvalFeatures::KOG,
+            EvalFeatures::KT,
+            EvalFeatures::KTA,
+            EvalFeatures::KM,
+            EvalFeatures::KM_PUNCH,
+        ] {
+            assert!(!f.blade_count, "{f:?}");
+        }
+        assert!(EvalFeatures::KMB.blade_count);
+        let (mut zero, mut kingambit_lists, mut later) = (0, 0, 0);
+        let deck = |path: &str| Deck::from_file(&format!("../decks/{path}.txt")).unwrap();
+        let pairs = [
+            ("dustin/01-muk-glimmora-kingambit-regigigas", "research/altaria"),
+            ("research/lucario", "dustin/01-muk-glimmora-kingambit-regigigas"),
+            ("research/altaria", "research/blaziken"),
+            ("research/suicune", "research/lucario"),
+        ];
+        for (a, b) in pairs {
+            let has_kingambit = a.starts_with("dustin") || b.starts_with("dustin");
+            for seed in 0..6u64 {
+                let players: Vec<Box<dyn crate::players::Player>> =
+                    vec![Box::new(RandomPlayer { deck: deck(a) }), Box::new(RandomPlayer { deck: deck(b) })];
+                let mut game = Game::new(players, 20_000_000_500 + seed);
+                let mut ticks = 0;
+                while !game.is_game_over() && ticks < 400 {
+                    let state = game.get_state_clone();
+                    for me in 0..2 {
+                        let observation = PlayerObservation::from_state(&state, me, &RevealedKnowledge::default());
+                        let view = observation.visible_state();
+                        let counts_zero = view.count_own_knockouts_this_game(0) == 0 && view.count_own_knockouts_this_game(1) == 0;
+                        if counts_zero || !has_kingambit {
+                            assert_eq!(
+                                value(view, me, EvalFeatures::KM).to_bits(),
+                                value(view, me, EvalFeatures::KMB).to_bits(),
+                                "{a} v {b}, turn {}",
+                                view.turn_count
+                            );
+                            zero += counts_zero as usize;
+                            kingambit_lists += !has_kingambit as usize;
+                        } else {
+                            later += 1;
+                        }
+                    }
+                    game.play_tick();
+                    ticks += 1;
+                }
+            }
+        }
+        assert!(zero > 200 && kingambit_lists > 200 && later > 50, "{zero} at count 0, {kingambit_lists} without Kingambit, {later} later");
     }
 }

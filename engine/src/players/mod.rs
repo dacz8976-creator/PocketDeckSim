@@ -211,6 +211,10 @@ pub enum PlayerCode {
     /// Antiquity) in kta's threat clock for both sides (rl/results/trainer_pricing_2026-09-28/REGISTRATION_DRAFT.md,
     /// registered Sept 29, re-issued on kta by Amendment 1, Sept 30; value_functions::public_clock_effect_km_value_function).
     KM { max_depth: usize },
+    /// 'kmb<N>': 'km<N>' with Overlord's Blade (Kingambit) priced at its owner's current count of own knock-outs in the
+    /// threat clock (ky3 `_blade`'s fast code; rl/results/next_pilot_2026-10/KINGAMBIT_ITEM7.md section 1;
+    /// value_functions::public_clock_effect_kmb_value_function). Equal to km<N> wherever that count is 0.
+    KMB { max_depth: usize },
     /// 'kx<N>[_r<R>][_c<cap>][_z<z>][_lab|_real][_t<s>][_trace]': the play-out chooser on top of km<N> (branch
     /// claude/playout-pilot, Oct 2; DESIGN.md sections 5 and 9; playout_player.rs). Every distinct legal move, up to a cap,
     /// played out R times with km<N> on both sides from states sampled from its own observation; km<N>'s move kept within
@@ -291,6 +295,13 @@ pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
     // starts with 'ky'.
     if let Some(rest) = lower.strip_prefix("ky") {
         return playout_player::PlayoutParams::parse_ky(rest).map(|params| PlayerCode::KX { params });
+    }
+    // 'kmb<N>' (see PlayerCode::KMB): km + the Blade at the count. Before 'km<N>', which would reject it.
+    if let Some(depth) = lower.strip_prefix("kmb") {
+        if let Ok(max_depth) = depth.parse::<usize>() {
+            return Ok(PlayerCode::KMB { max_depth });
+        }
+        return Err(format!("Invalid player code: {s}. Use 'kmb<number>', e.g. 'kmb3'"));
     }
     // 'km<N>' (see PlayerCode::KM): kta + N2. Before 'k<N>', which would reject it. No other code starts with 'km'.
     if let Some(depth) = lower.strip_prefix("km") {
@@ -501,12 +512,14 @@ pub fn create_players(
 }
 
 /// km<N> for ky's own seat, with its km corrections: `punch` (`_punch`: Mega Kangaskhan ex's forecast per punch) and `queue`
-/// (`_queue`: a from-attack damage frame resolved before scoring). With both off it is `get_player`'s km<N>, field for field.
-pub fn km_with_corrections(deck: Deck, max_depth: usize, punch: bool, queue: bool) -> Box<dyn Player> {
-    let value_function: expectiminimax_player::ValueFunction = if punch {
-        Box::new(value_functions::public_clock_effect_km_punch_value_function)
-    } else {
-        Box::new(value_functions::public_clock_effect_km_value_function)
+/// (`_queue`: a from-attack damage frame resolved before scoring) and `blade` (`_blade`: Overlord's Blade priced at its owner's
+/// count). With all off it is `get_player`'s km<N>, field for field.
+pub fn km_with_corrections(deck: Deck, max_depth: usize, punch: bool, queue: bool, blade: bool) -> Box<dyn Player> {
+    let value_function: expectiminimax_player::ValueFunction = match (punch, blade) {
+        (false, false) => Box::new(value_functions::public_clock_effect_km_value_function),
+        (true, false) => Box::new(value_functions::public_clock_effect_km_punch_value_function),
+        (false, true) => Box::new(value_functions::public_clock_effect_kmb_value_function),
+        (true, true) => Box::new(value_functions::public_clock_effect_km_punch_blade_value_function),
     };
     Box::new(PublicPricingPlayer {
         search: ExpectiMiniMaxPlayer {
@@ -718,7 +731,8 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
         | PlayerCode::KTA { max_depth }
         | PlayerCode::KTB { max_depth }
         | PlayerCode::KTC { max_depth }
-        | PlayerCode::KM { max_depth } => {
+        | PlayerCode::KM { max_depth }
+        | PlayerCode::KMB { max_depth } => {
             let value_function: expectiminimax_player::ValueFunction = match player {
                 PlayerCode::KOA { .. } => Box::new(value_functions::public_clock_effect_koa_value_function),
                 PlayerCode::KOB { .. } => Box::new(value_functions::public_clock_effect_kob_value_function),
@@ -734,6 +748,7 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
                 PlayerCode::KTB { .. } => Box::new(value_functions::public_clock_effect_ktb_value_function),
                 PlayerCode::KTC { .. } => Box::new(value_functions::public_clock_effect_ktc_value_function),
                 PlayerCode::KM { .. } => Box::new(value_functions::public_clock_effect_km_value_function),
+                PlayerCode::KMB { .. } => Box::new(value_functions::public_clock_effect_kmb_value_function),
                 _ => Box::new(value_functions::public_clock_effect_kor_value_function),
             };
             Box::new(PublicPricingPlayer {
@@ -947,6 +962,17 @@ mod s42_tier_parse_tests {
         // tier is `s` and not `w`.
         assert_eq!(parse_player_code("w").unwrap(), PlayerCode::W);
         assert_eq!(parse_player_code("er").unwrap(), PlayerCode::ER);
+    }
+
+    /// kmb<N> (ky3 `_blade`'s fast code): parsed before km<N>, which rejects it; km3 still parses to KM.
+    #[test]
+    fn kmb_parses_before_km_and_km_is_unchanged() {
+        assert_eq!(parse_player_code("kmb3").unwrap(), PlayerCode::KMB { max_depth: 3 });
+        assert_eq!(parse_player_code("KMB5").unwrap(), PlayerCode::KMB { max_depth: 5 });
+        assert_eq!(parse_player_code("km3").unwrap(), PlayerCode::KM { max_depth: 3 });
+        for bad in ["kmb", "kmbx", "kmb3x", "kmb1a"] {
+            assert!(parse_player_code(bad).is_err(), "{bad}");
+        }
     }
 
     #[test]
