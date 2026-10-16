@@ -1,0 +1,26 @@
+{
+  "accepted": true,
+  "source_filename": "20261015_210617000_iOS.MP4",
+  "source_sha256": "f1c9f16ca8fca83bc466aa8698fabb6297ceba504284a8bf6a8ee3be9d273cea",
+  "full_timeline_and_coverage_read": true,
+  "auto_option_seen": false,
+  "section": "d01",
+  "opponent": "C'est mo",
+  "opponent_deck": "Mega Diancie ex / Mega Gardevoir ex / Meloetta / Carbink / Ralts; full list unknown",
+  "result": "win",
+  "note_prefix": "2nd|Glimmora T2; Kingambit T8|opp 0; 2 pts respectively",
+  "note": "2nd|Glimmora T2; Kingambit T8|opp 0; 2 pts respectively | vs C'est mo | 2026-10-15 16:06:17 CDT | 20261015_210617000_iOS.MP4 | Muk/Glimmora/Kingambit/Regigigas visible core; exact list unknown. Victory3-2 at691.30s; second,16turns,520damage. Glimmora first Venomous Hit ownT2/global4 about233s with opponent0. Pawniard first attacks ownT1/opp0; Regigigas ownT7/opp1. First Glimmora KO gives no point on heads; second Glimmora tails and Regigigas KO leave opponent2 despite three owner KOs. Giga Turbo100 charges Muk with Colorless; Kingambit receives manual Darkness on ownT7/T8. Kingambit first Overlord's Blade180 at672s on ownT8/global16 KOs fresh Mega Diancie ex170HP. Score2-2 before terminalKO, finaldisplay3-2. Ranked Master Ball; no Auto seen; hidden cards unknown.",
+  "scope": "Whole single-game ladder source: ranked queue and setup, all16global turns, all8owner turns, terminal knockout and full victory statistics; separate independent checks and lead acceptance.",
+  "registration_notes": "Win3-2 versus C'est mo; second,16turns,520damage. Glimmora ownT2/opp0; Kingambit ownT8/opp2. Source-checked Giga Turbo Energy goes to Muk; two manual Darkness attachments power Kingambit. Full source coverage independently and lead accepted; live save/readback separate.",
+  "clarifications": [
+    "MANIFEST_SCOPE_CORRECTION.json preserves the original manifest and records the corrected primary-only scope. All269primary file hashes are unchanged; checker-owned addenda are separate.",
+    "Existing Deck 01 matches all observed core lines; New deck16 slot02 is the in-game label and does not establish an exact20-card variant.",
+    "Final frozen account corrects the pre-freeze Energy interpretation: Giga Turbo gives Colorless to Muk; Kingambit receives Darkness on owner turns7and8.",
+    "The first Glimmora heads prevents a point but still counts as a knockout for Kingambit. Final score is the source-displayed3-2, with no larger total inferred."
+  ],
+  "direct_source_observations": [
+    {"path": "details/t0234.00.jpg", "directly_viewed_by_root": true, "finding": "First Glimmora attack-resolution window against Meloetta; opponent has zero points. Meloetta20HP is transitional, not a separate heal."},
+    {"path": "details/t0672.00.jpg", "directly_viewed_by_root": true, "finding": "Kingambit deals180 to fresh Mega Diancie ex170HP while score2-2; two Darkness on Kingambit, Colorless on Muk."},
+    {"path": "details/t0691.30.jpg", "directly_viewed_by_root": true, "finding": "Victory versus C'est mo; wentsecond,16turns,owner3opponent2,520damage; Kingambit Card of Game."}
+  ]
+}

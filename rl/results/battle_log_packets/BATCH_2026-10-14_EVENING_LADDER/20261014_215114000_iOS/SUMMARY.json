@@ -1,0 +1,126 @@
+{
+  "source_filename": "20261014_215114000_iOS.MP4",
+  "source_sha256": "b3170e7b962e7141ab0168cf4ca9aa2ce7e1241e6b750eee785eff51657c8a4a",
+  "source_bytes": 829014558,
+  "duration_seconds": 447.65,
+  "reviewer": "/root/evening_215114",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "review_date": "2026-10-14",
+  "review_scope": "Complete source, setup through terminal, all meaningful actions in all 13 global turns",
+  "battle_complete": true,
+  "review_of_available_source_complete": true,
+  "match_count": 1,
+  "match_date": "2026-10-14",
+  "mode": {
+    "classification": "human_ranked_ladder",
+    "auto_option_seen": false,
+    "auto_enabled": null,
+    "owner_choice_authorship": "visible manual taps",
+    "evidence": "evidence/t0019.00.jpg"
+  },
+  "deck": {
+    "label": "Deck 13-A",
+    "visible_core": [
+      "Alolan Vulpix",
+      "Alolan Ninetales ex",
+      "Team Rocket's Rattata",
+      "Team Rocket's Raticate ex"
+    ],
+    "full_twenty_card_list_established": false,
+    "label_evidence": "evidence/t0000.00.jpg"
+  },
+  "opponent": {
+    "name": "羊羽",
+    "visible_core": [
+      "Deino",
+      "Hydreigon",
+      "Mega Absol ex",
+      "Absol",
+      "Bombirdier"
+    ],
+    "full_deck_unknown": true
+  },
+  "result": {
+    "owner_result": "win",
+    "method": "opponent_concession",
+    "concession_source_seconds": 436,
+    "evidence": "evidence/t0436.00.jpg",
+    "victory_evidence": "evidence/t0447.00.jpg"
+  },
+  "score": {
+    "owner": 2,
+    "opponent": 2,
+    "no_third_point_awarded": true,
+    "progression": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        1
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        1,
+        2
+      ],
+      [
+        2,
+        2
+      ]
+    ]
+  },
+  "order": {
+    "owner": "second",
+    "evidence": "evidence/t0447.00.jpg"
+  },
+  "global_turns_played": 13,
+  "damage_done_displayed": 340,
+  "first_main_attack": {
+    "pokemon": "Alolan Ninetales ex",
+    "attack": "Binding Snow",
+    "own_turn": 3,
+    "global_turn": 6,
+    "source_seconds": 201,
+    "source_time_window_seconds": [
+      201,
+      203
+    ],
+    "opponent_points_before_attack": 2,
+    "evidence": [
+      "evidence/t0200.00.jpg",
+      "evidence/t0201.00.jpg",
+      "evidence/t0203.00.jpg",
+      "evidence/t0204.00.jpg"
+    ],
+    "named_attack_banner": "evidence/t0201.00.jpg",
+    "damage_resolution": "evidence/t0203.00.jpg"
+  },
+  "exact_three_item_note_prefix": "2nd | Alolan Ninetales ex T3 | opp 2 pts",
+  "evidence_paths": [
+    "evidence/t0000.00.jpg",
+    "evidence/t0019.00.jpg",
+    "evidence/t0032.00.jpg",
+    "evidence/t0124.00.jpg",
+    "evidence/t0153.00.jpg",
+    "evidence/t0201.00.jpg",
+    "evidence/t0203.00.jpg",
+    "evidence/t0338.00.jpg",
+    "evidence/t0349.00.jpg",
+    "evidence/t0351.00.jpg",
+    "evidence/t0353.00.jpg",
+    "evidence/t0386.00.jpg",
+    "evidence/t0436.00.jpg",
+    "evidence/t0447.00.jpg"
+  ],
+  "independent_acceptance_pending": true,
+  "shared_registration_by_worker": false,
+  "source_moved_by_worker": false,
+  "external_write_by_worker": false,
+  "boss_mirror_by_worker": false
+}

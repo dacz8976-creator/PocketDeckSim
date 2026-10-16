@@ -1,0 +1,129 @@
+{
+  "accepted": true,
+  "acceptance_scope": "Bounded independent semantic acceptance of the complete primary review; not a second whole-video pass. Nonblocking opponent-name final-glyph uncertainty must remain explicit in lead/external presentation.",
+  "source_filename": "20261014_233402000_iOS.MP4",
+  "source_sha256": "32390ef837ec4ebc65700bc78d18d13c63230da6b71c7c54fed3760b627b0dcd",
+  "source_bytes": 770900030,
+  "source_duration_seconds": 418.038333,
+  "frozen_manifest_sha256": "579e029c2f7f01c9c8efd66a9b3365b2e06bf5491c404150601a6e9df7af18f0",
+  "frozen_manifest_sha256_before": "579e029c2f7f01c9c8efd66a9b3365b2e06bf5491c404150601a6e9df7af18f0",
+  "frozen_files_count": 489,
+  "frozen_files_match": true,
+  "frozen_files_match_before": true,
+  "frozen_files_match_after": true,
+  "frozen_mismatches": [],
+  "primary_unchanged": true,
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "reviewer": "/root/check_newer_233402",
+  "checked_utc": "2026-10-15T01:13:48.3046989Z",
+  "inspectedpaths": [
+    "SOURCE.json",
+    "REVIEW.md",
+    "COVERAGE.md",
+    "SUMMARY.json",
+    "UNCERTAINTIES.json",
+    "REVIEW_PACKET_HASHES.json",
+    "key_times.csv",
+    "evidence/t0417.70.jpg",
+    "evidence/key_003.jpg",
+    "evidence/key_004.jpg",
+    "evidence/key_028.jpg",
+    "sheets/key3_02.jpg",
+    "sheets/action_a1.jpg",
+    "sheets/action_a2.jpg",
+    "sheets/key3_04.jpg",
+    "evidence/key_206.jpg",
+    "evidence/key_100.jpg",
+    "evidence/key_108.jpg",
+    "evidence/key_151.jpg",
+    "sheets/action_b1.jpg",
+    "sheets/action_b2.jpg",
+    "sheets/action_c1.jpg",
+    "evidence/key_228.jpg",
+    "evidence/key_291.jpg",
+    "sheets/action_d1.jpg",
+    "sheets/action_d2.jpg",
+    "sheets/action_d3.jpg",
+    "sheets/action_d4.jpg",
+    "evidence/key_296.jpg",
+    "evidence/key_306.jpg",
+    "evidence/key_292.jpg",
+    "sheets/action_e1.jpg",
+    "sheets/action_e2.jpg",
+    "evidence/tool_discard_332_50_crop.png",
+    "evidence/key_227.jpg",
+    "evidence/key_299.jpg",
+    "sheets/key3_11.jpg"
+  ],
+  "ordinarysamples": [
+    {
+      "sample": "Sightseer and Red Card",
+      "evidence": [
+        "sheets/key3_02.jpg",
+        "evidence/key_100.jpg",
+        "evidence/key_108.jpg"
+      ],
+      "finding": "Second Vulpix benched, Sightseer offers Ninetales and takes it into hand; subsequent Red Card replaces visible four-card Ninetales/Sabrina/Cape/Raticate hand with Poke Ball/Cyrus/Raticate. Exact fourth Sightseer Supporter left unknown."
+    },
+    {
+      "sample": "Bench setup",
+      "evidence": [
+        "sheets/key3_04.jpg",
+        "evidence/key_151.jpg"
+      ],
+      "finding": "Water and Elegant Cape are on benched Vulpix, while Active Vulpix remains 50 HP; Rattata benched."
+    },
+    {
+      "sample": "Thieving Incisors",
+      "evidence": [
+        "evidence/key_206.jpg"
+      ],
+      "finding": "Raticate ex on Bench has one Darkness Energy, opposing Active Zoroark has none; consistent with transfer account."
+    }
+  ],
+  "findings": [
+    {
+      "type": "confirmed",
+      "detail": "Ranked Match Season B4b SP, Ultra Ball Rank 4, Deck 13-A and correct Vulpix/Ninetales/TR Rattata/TR Raticate core; first-player setup visible."
+    },
+    {
+      "type": "confirmed",
+      "detail": "Results native t0417.70 confirms Defeat, went first, 10 turns, owner 2 points/opponent 3, damage 180. Final Brutal Bash 90 knocks out Ninetales at 80, and ex knockout adds two points to reach three."
+    },
+    {
+      "type": "confirmed",
+      "detail": "Primary coverage enumerates setup and all ten global turns with no gaps. Sampled state transitions and terminal table reconcile with that complete account; independent check remains bounded."
+    },
+    {
+      "type": "confirmed",
+      "detail": "First main Binding Snow is key_306 at 307.758333s, owner T4/global7, opponent already one point. Earlier Vulpix Gnaw 20 is separate supporting attack on owner T3/global5. Damage total 20+80+80=180."
+    },
+    {
+      "type": "confirmed",
+      "detail": "Vulpix 60 to Needle 50 to Brutal Bash 20 to Needle 10, then 60-damage KO. Cape Ninetales 180 to Needle 170; Field Blower removes opposing Needle and retains Cape; Binding 80 makes Zoroark 130 to 50; full-bench Brutal Bash 90 makes Ninetales 170 to 80; second Binding KO yields two points; replacement energized Zoroark deals final 90."
+    },
+    {
+      "type": "confirmed",
+      "detail": "Binding Snow text restricts Energy Zone attachment to Active. Existing energy, benched attachment and promotion remain visible in the next-turn sequence. No unrestricted attack-lock claim is made."
+    },
+    {
+      "type": "nonblocking_uncertainty",
+      "field": "opponent",
+      "primary_value": "ヴィオレ魔ぬ",
+      "recommended_display": "ヴィオレ魔 [final glyph uncertain: ぬ/る]",
+      "detail": "Native result and point-screen views inspected. Checker does not safely distinguish final glyph; retain source image as authoritative, do not certify exact transcription."
+    },
+    {
+      "type": "confirmed_limit",
+      "detail": "Deceptive Needle readable in retained crop and trigger banners. Exact late retreat-increase card and early Supporters remain unresolved. No winning alternative inferred."
+    }
+  ],
+  "limits": [
+    "Source video was not independently decoded or rehashed by checker. Source identity is bound through supplied source SHA and matching frozen SOURCE.json; lead retains media identity responsibility.",
+    "Reused retained native evidence and source-local key_times mapping; no new decoding and no second full pass.",
+    "Hidden hand/deck and exact unknown card names remain unknown.",
+    "No shared index/events, external log, source move, Boss mirror or frozen primary changes."
+  ],
+  "memory_used": "MEMORY.md:2885-2889 used only for provenance versus semantic-acceptance distinction and bounded-review limits."
+}

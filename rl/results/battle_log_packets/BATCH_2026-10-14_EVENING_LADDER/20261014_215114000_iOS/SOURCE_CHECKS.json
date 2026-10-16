@@ -1,0 +1,39 @@
+{
+  "lead": "/root",
+  "checked_utc": "2026-10-14T23:34:51.317647+00:00",
+  "source_filename": "20261014_215114000_iOS.MP4",
+  "source_sha256": "b3170e7b962e7141ab0168cf4ca9aa2ce7e1241e6b750eee785eff51657c8a4a",
+  "observations": [
+    {
+      "path": "evidence/t0200.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Before first main attack Ninetales180HP with two Water, Hydreigon90HP,opponent2 points.",
+      "sha256": "6dd0e4ef14d0f9c716b835dfdd0558f66b6a58356e95589eb1e291b81e1062fb"
+    },
+    {
+      "path": "evidence/t0203.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "First Binding Snow resolves80 against Hydreigon,opponent2 points.",
+      "sha256": "c613d877ffb3e9f089de4ca56b6bc32136e139e3abba363d170636e4312bbbd7"
+    },
+    {
+      "path": "evidence/t0204.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Hydreigon reduced90 to10,score0-2 after first main attack.",
+      "sha256": "072d2185b9cf5ff7174bd98c004b138c392e001223fd37c4579ee099a46b213d"
+    },
+    {
+      "path": "evidence/t0436.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Explicit Your opponent conceded; owner Ninetales30HP and Raticate ex Bench; no invented final attack.",
+      "sha256": "b62599a2a7a2ecb69f0df5303f5b4232801d5fb304895e6b6bca457408c24456"
+    },
+    {
+      "path": "evidence/t0447.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Victory versus 羊羽;second;13turns;2-2points;340damage.",
+      "sha256": "e972ad9ad2b0ab26aec3c2273b8c1c20595f95e2339b556b0665654f75ee1ec1"
+    }
+  ],
+  "coverage_reconciliation": "Root read full timeline and turn/phase coverage; separate Sol reviewer checked decisive sequences and ordinary turns against retained source evidence."
+}

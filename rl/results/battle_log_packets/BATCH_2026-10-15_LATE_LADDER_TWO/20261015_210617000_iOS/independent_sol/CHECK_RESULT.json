@@ -1,0 +1,33 @@
+{
+  "accepted": true,
+  "source_filename": "20261015_210617000_iOS.MP4",
+  "source_sha256": "f1c9f16ca8fca83bc466aa8698fabb6297ceba504284a8bf6a8ee3be9d273cea",
+  "frozen_manifest_sha256": "36f122ebe1ccb534bd79b605f31b566fabbc5b72ebaf6a03f0faaedf236604a1",
+  "frozen_files_match": true,
+  "primary_unchanged": true,
+  "frozen_file_count": 269,
+  "checker": "/root/independent_late_two",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "checked_utc": "2026-10-15T21:56:31.543546+00:00",
+  "checks": [
+    "Full REVIEW.md, COVERAGE.md, SUMMARY.json, UNCERTAINTIES.json reconciled after source-first observation checkpoint.",
+    "Setup/opponent/core, chosen ordinary turns, terminal KO sequence and score progression independently checked against reused source frames.",
+    "All16globalturns represented without uncovered interval; bounded checker is not a second full review.",
+    "First attacks agree: Pawniard own1/global2 opp0; Glimmora own2/global4 opp0; Regigigas own7/global14 opp1; Kingambit own8/global16 opp2.",
+    "Glimmora heads then tails,3ownerKOs vs2opponentpoints, Kingambit180 onDiancie170 and Victory3-2 verified.",
+    "CorrectedEnergy verified: GigaTurboColorless toMuk; KingambitmanualDarkness own7/8.",
+    "All269primaryfrozenfilesmatch; unchanged versus oldmanifest and checkbaseline; oldmanifest and pendingreceipt preserved."
+  ],
+  "boundaries": [
+    "Independent bounded source verification plus full account reconciliation; not duplicate whole-video decoding.",
+    "No event/index/browser/archive edits.",
+    "Hidden deck/hand and nonmaterial secondLuckyIcePopflip remain limited as primary documents state."
+  ],
+  "manifest_scope_correction": "MANIFEST_SCOPE_CORRECTION.json; oldmanifest SHA67431da78ad3244ba9e10655cae065ad6efbe79896783841e2a67da80283690e; primaryfactualfilesunchanged",
+  "outcome": "win",
+  "score": {
+    "owner": 3,
+    "opponent": 2
+  }
+}

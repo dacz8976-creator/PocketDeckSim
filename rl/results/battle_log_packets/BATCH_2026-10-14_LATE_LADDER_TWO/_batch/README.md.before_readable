@@ -1,0 +1,12 @@
+# Two late October 14 ladder uploads: pending availability
+
+Requested sources:
+
+- 20261014_230328000_iOS.MP4, logical size 695,885,571 bytes.
+- 20261014_231006000_iOS.MP4, logical size 866,074,163 bytes.
+
+Both are OneDrive cloud placeholders with zero allocated local bytes in the latest bounded hydration receipts. The initial 32-byte reads timed out after 30 seconds, and one serialized Cloud Files hydration retry per source timed out after 35 seconds without downloading bytes. No visual review, source SHA-256, duration, result, completion registration or archive move is claimed. The shared review index remains unchanged for these two sources.
+
+Computer Use ended because it could not verify the current Windows browser URL sufficiently to enforce its policy. No live Ladder Log entry was submitted. The four earlier accepted evening results remain saved locally and pending live save/readback in BATCH_2026-10-14_EVENING_LADDER; their original videos were not reopened.
+
+Resume when each source is locally readable, using OneDrive Always keep on this device or an intact downloaded copy in Offline_Inbox. Confirm stable size/mtime, full SHA-256 and duration before assigning complete Sol reviews, independent acceptance, completion registration, archival and live logging. Check live source filenames for duplicates before saving any of the six pending results. Do not restart the older paused backlog.

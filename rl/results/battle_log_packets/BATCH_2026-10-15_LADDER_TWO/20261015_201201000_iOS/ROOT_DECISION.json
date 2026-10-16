@@ -1,0 +1,24 @@
+{
+  "accepted": true,
+  "source_filename": "20261015_201201000_iOS.MP4",
+  "source_sha256": "b47053e381a5b87f5495e4d3ddaaeead9ea23c7be66967652eeb1e56fe83bf8c",
+  "full_timeline_and_coverage_read": true,
+  "auto_option_seen": false,
+  "section": "d01",
+  "opponent": "azcolgatewhite",
+  "opponent_deck": "Mega Altaria ex / Espeon / Darkrai / Igglybuff / Eevee; full list unknown",
+  "result": "loss",
+  "note_prefix": "1st | Glimmora T3; Kingambit no attack | opp 0; N/A respectively",
+  "note": "1st | Glimmora T3; Kingambit no attack | opp 0; N/A respectively | vs azcolgatewhite | 2026-10-15 15:12:01 CDT | 20261015_201201000_iOS.MP4 | Visible Muk/Glimmora/Kingambit core, routed to Deck 01 family; Regigigas and full list unshown. Owner concedes at371s, actual1-2. Defeat stats382.20s: first,9turns,60damage. Venomous Hit224-229s on ownT3/global5 with opponent0; Poison later KOs Espeon. Sabrina forces Muk Active, then Mega Harmony140 KOs it for opponent2. Muk and Kingambit never attack. Ranked Master Ball; no Auto seen; hidden cards unknown.",
+  "scope": "Whole single-game ladder source: setup, all nine global turns, explicit owner concession and final statistics; independent source acceptance and lead checks.",
+  "registration_notes": "Loss versus azcolgatewhite, owner concession actual1-2; first; Glimmora ownT3/opponent0, Kingambit no attack. Source-bound full coverage, separate independent checks and lead acceptance. External save/readback separate.",
+  "clarifications": [
+    "The observed screen slot 02 named New deck 16 is separate from the external deck identifier. Existing Deck 01 family is the appropriate matching visible Muk/Glimmora/Kingambit core. The exact full list and Regigigas presence in this recording remain unverified.",
+    "Glimmora is the only actual owner attacker; Kingambit is separately noted as no attack. The concession ends at actual1-2, with no third point inferred."
+  ],
+  "direct_source_observations": [
+    {"path": "native/t0224.00.jpg", "directly_viewed_by_root": true, "finding": "Glimmora Venomous Hit selected into Espeon; opponent has zero points."},
+    {"path": "native/t0371.00.jpg", "directly_viewed_by_root": true, "finding": "Explicit owner Concede confirmation and visible1-2 score; Kingambit remains in hand."},
+    {"path": "native/t0382.20.jpg", "directly_viewed_by_root": true, "finding": "Defeat versus azcolgatewhite; went first, nine turns, owner1 opponent2,60damage."}
+  ]
+}

@@ -1,0 +1,68 @@
+{
+  "checked_utc": "2026-10-15T21:32:04.510313+00:00",
+  "requested_games": 2,
+  "review_and_ladder_logging_complete": true,
+  "archive_complete": true,
+  "sources": [
+    {
+      "source": "20261015_201201000_iOS.MP4",
+      "source_sha256": "b47053e381a5b87f5495e4d3ddaaeead9ea23c7be66967652eeb1e56fe83bf8c",
+      "result": "loss",
+      "opponent": "azcolgatewhite",
+      "review_complete": true,
+      "independently_accepted": true,
+      "registered": true,
+      "archived": true,
+      "external_saved": true,
+      "fresh_reload_verified": true,
+      "cloud_metadata": {
+        "logical_bytes": 704289770,
+        "allocated_bytes": 704289770,
+        "attributes": 1049632,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": false
+      },
+      "storage_complete": false
+    },
+    {
+      "source": "20261015_201850000_iOS.MP4",
+      "source_sha256": "877668e7f12e0619f4cd1a372cba29d9c1e45af52f98ca4a0274d1f026c215cb",
+      "result": "win",
+      "opponent": "Dresseur Zuin",
+      "review_complete": true,
+      "independently_accepted": true,
+      "registered": true,
+      "archived": true,
+      "external_saved": true,
+      "fresh_reload_verified": true,
+      "cloud_metadata": {
+        "logical_bytes": 1490606145,
+        "allocated_bytes": 1490606145,
+        "attributes": 525344,
+        "placeholder_state": 1,
+        "cloud_placeholder": true,
+        "in_sync": false,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "storage_complete": false
+    }
+  ],
+  "live_verified_current_season": {
+    "wins": 9,
+    "losses": 17,
+    "games": 26
+  },
+  "unrelated_index_rows_preserved": 214,
+  "storage_pending": [
+    "20261015_201201000_iOS.MP4",
+    "20261015_201850000_iOS.MP4"
+  ],
+  "external_pending": [],
+  "review_pending": []
+}

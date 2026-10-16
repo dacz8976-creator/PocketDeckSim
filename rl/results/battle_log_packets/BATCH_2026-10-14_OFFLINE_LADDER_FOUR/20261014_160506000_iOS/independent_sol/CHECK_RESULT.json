@@ -1,0 +1,335 @@
+{
+  "accepted": true,
+  "reviewer": "/root/check_offline_160506",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "reasoning_effort": "high",
+  "checked_utc": "2026-10-14T20:05:15.058580+00:00",
+  "source_filename": "20261014_160506000_iOS.MP4",
+  "source_sha256": "65a94f2a9cfcfc69d5bcbb9f11e2a5d1fd045daeb7c6fea703f20454e174239b",
+  "source_path_checked": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Offline_Inbox\\20261014_160506000_iOS.MP4",
+  "source_bytes_verified": 805372298,
+  "source_duration_seconds_verified": 437.791667,
+  "source_creation_utc_verified": "2026-10-14T16:05:06.000000Z",
+  "source_identity_match": true,
+  "canonical_cloud_copy_verified": false,
+  "frozen_manifest_sha256": "e8808cdea8fba2df2b004aac0fd9aaf63b98a2c0ff98b3870cb6b8f52a37b746",
+  "frozen_files_checked": 323,
+  "frozen_files_match": true,
+  "primary_unchanged": true,
+  "frozen_mismatches": [],
+  "inspected_native_paths_timestamps": [
+    {
+      "path": "gaps/t0002.00.jpg",
+      "source_timestamp_seconds": 2.0
+    },
+    {
+      "path": "gaps/t0010.00.jpg",
+      "source_timestamp_seconds": 10.0
+    },
+    {
+      "path": "native/t0027.00.jpg",
+      "source_timestamp_seconds": 27.0
+    },
+    {
+      "path": "native/t0080.00.jpg",
+      "source_timestamp_seconds": 80.0
+    },
+    {
+      "path": "native/t0085.00.jpg",
+      "source_timestamp_seconds": 85.0
+    },
+    {
+      "path": "native/t0092.00.jpg",
+      "source_timestamp_seconds": 92.0
+    },
+    {
+      "path": "native/t0098.00.jpg",
+      "source_timestamp_seconds": 98.0
+    },
+    {
+      "path": "native/t0104.00.jpg",
+      "source_timestamp_seconds": 104.0
+    },
+    {
+      "path": "native/t0108.00.jpg",
+      "source_timestamp_seconds": 108.0
+    },
+    {
+      "path": "native/t0137.00.jpg",
+      "source_timestamp_seconds": 137.0
+    },
+    {
+      "path": "native/t0144.00.jpg",
+      "source_timestamp_seconds": 144.0
+    },
+    {
+      "path": "native/t0151.00.jpg",
+      "source_timestamp_seconds": 151.0
+    },
+    {
+      "path": "native/t0156.00.jpg",
+      "source_timestamp_seconds": 156.0
+    },
+    {
+      "path": "native/t0164.00.jpg",
+      "source_timestamp_seconds": 164.0
+    },
+    {
+      "path": "gaps/t0168.00.jpg",
+      "source_timestamp_seconds": 168.0
+    },
+    {
+      "path": "gaps/t0248.00.jpg",
+      "source_timestamp_seconds": 248.0
+    },
+    {
+      "path": "native/t0258.00.jpg",
+      "source_timestamp_seconds": 258.0
+    },
+    {
+      "path": "gaps/t0266.00.jpg",
+      "source_timestamp_seconds": 266.0
+    },
+    {
+      "path": "native/t0270.00.jpg",
+      "source_timestamp_seconds": 270.0
+    },
+    {
+      "path": "native/t0277.00.jpg",
+      "source_timestamp_seconds": 277.0
+    },
+    {
+      "path": "detail/t0278.00.jpg",
+      "source_timestamp_seconds": 278.0
+    },
+    {
+      "path": "detail/t0289.00.jpg",
+      "source_timestamp_seconds": 289.0
+    },
+    {
+      "path": "detail/t0291.00.jpg",
+      "source_timestamp_seconds": 291.0
+    },
+    {
+      "path": "gaps/t0297.00.jpg",
+      "source_timestamp_seconds": 297.0
+    },
+    {
+      "path": "native/t0299.00.jpg",
+      "source_timestamp_seconds": 299.0
+    },
+    {
+      "path": "native/t0306.00.jpg",
+      "source_timestamp_seconds": 306.0
+    },
+    {
+      "path": "native/t0310.00.jpg",
+      "source_timestamp_seconds": 310.0
+    },
+    {
+      "path": "detail/t0311.00.jpg",
+      "source_timestamp_seconds": 311.0
+    },
+    {
+      "path": "detail/t0313.00.jpg",
+      "source_timestamp_seconds": 313.0
+    },
+    {
+      "path": "gaps/t0316.00.jpg",
+      "source_timestamp_seconds": 316.0
+    },
+    {
+      "path": "native/t0321.00.jpg",
+      "source_timestamp_seconds": 321.0
+    },
+    {
+      "path": "native/t0411.00.jpg",
+      "source_timestamp_seconds": 411.0
+    },
+    {
+      "path": "detail/t0415.00.jpg",
+      "source_timestamp_seconds": 415.0
+    },
+    {
+      "path": "detail/t0419.00.jpg",
+      "source_timestamp_seconds": 419.0
+    },
+    {
+      "path": "gaps/t0420.00.jpg",
+      "source_timestamp_seconds": 420.0
+    },
+    {
+      "path": "native/t0424.00.jpg",
+      "source_timestamp_seconds": 424.0
+    },
+    {
+      "path": "native/t0436.00.jpg",
+      "source_timestamp_seconds": 436.0
+    }
+  ],
+  "fresh_source_samples": [
+    {
+      "path": "independent_sol/fresh_native/t0092.00.jpg",
+      "source_timestamp_seconds": 92.0
+    },
+    {
+      "path": "independent_sol/fresh_native/t0156.00.jpg",
+      "source_timestamp_seconds": 156.0
+    },
+    {
+      "path": "independent_sol/fresh_native/t0291.00.jpg",
+      "source_timestamp_seconds": 291.0
+    },
+    {
+      "path": "independent_sol/fresh_native/t0424.00.jpg",
+      "source_timestamp_seconds": 424.0
+    }
+  ],
+  "fresh_sample_findings": "Fresh native source samples reproduce the retained board/actions at92,156,291,424; all four inspected visually. Decoding used serialized pre-input threads1/seek and single output frames.",
+  "independently_selected_ordinary_checks": [
+    {
+      "turn": "owner T1 / global2",
+      "selection_basis": "Independent routine opening development choice, not an unresolved-issue list",
+      "timestamps": [
+        80,
+        85,
+        92,
+        98,
+        104,
+        108
+      ],
+      "finding": "Poke Ball retrieves Cottonee, Cottonee and Spinarak appear on Bench, Hiking Trail enters play, Grass is attached to Ogerpon, both Actives remain130HP. Post-end hand contains Goo-zooka/Copycat/Quick-Grow. Copycat enlarged draw is not a Supporter play. No Whimsicott attack here.",
+      "supported": true
+    },
+    {
+      "turn": "owner T2 / global4",
+      "selection_basis": "Independent routine evolution/tool/attachment and opening attack choice",
+      "timestamps": [
+        137,
+        144,
+        151,
+        156,
+        164,
+        168
+      ],
+      "finding": "Quick-Grow targets Cottonee and Whimsicott appears on Bench. Leaf Cape adds30HP to Ogerpon110->140; second Grass is attached. Ogerpon Energized Leaves previews60 and hits60, with Whimsicott still benched. This is a supporting attack.",
+      "supported": true
+    },
+    {
+      "turn": "opponent T5 / global9",
+      "selection_basis": "Independent ordinary post-KO Energy/Supporter/damage turn choice",
+      "timestamps": [
+        299,
+        306,
+        310,
+        311,
+        313,
+        316,
+        321
+      ],
+      "finding": "One-Energy Oricorio promotes, gains second Lightning, Giovanni names/+10 effect appears, Zzzap follows, Whimsicott140->80. Both players retain2points; no additional KO. OS Do Not Disturb Off is not an Auto option.",
+      "supported": true
+    }
+  ],
+  "coverage_check": {
+    "full_account_supported": true,
+    "prematch_setup": true,
+    "global_turns_accounted_for": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13
+    ],
+    "owner_turn_globals": [
+      2,
+      4,
+      6,
+      8,
+      10,
+      12
+    ],
+    "continuous_review_intervals": "0-43,43-75,75-106,106-126,126-171,171-217,217-251,251-278,278-299,299-322,322-352,352-376,376-403,403-425,425-437.791667",
+    "unreviewed_intervals_found": [],
+    "basis": "Read full timeline and coverage, reconciled sequential boards/HP/points with retained evidence and ordinary independent checks. This is bounded acceptance, not a duplicate full visual pass."
+  },
+  "accepted_log_facts": {
+    "match_date": "2026-10-14",
+    "owner": "Dacz8976",
+    "opponent": "Odin",
+    "visible_deck_label": "Deck12",
+    "recommended_ladder_section": "deck 12 (Ariados / Whimsicott / Ogerpon)",
+    "owner_visible_core": [
+      "Teal Mask Ogerpon ex",
+      "Cottonee/Whimsicott ex",
+      "Spinarak/Ariados"
+    ],
+    "opponent_visible_core": [
+      "Tapu Koko ex",
+      "two Safeguard Oricorio"
+    ],
+    "mode": "ranked human ladder",
+    "auto_option_observed": false,
+    "mode_basis": "Ranked SeasonB4bSP UltraBallRank4/700 entry and Odin player card; no Auto control/option in inspected native gameplay/UI.",
+    "outcome": "loss",
+    "terminal_visible_score": {
+      "owner": 2,
+      "opponent": 3
+    },
+    "point_progression_owner_opponent": [
+      [
+        0,
+        0
+      ],
+      [
+        0,
+        2
+      ],
+      [
+        2,
+        2
+      ],
+      [
+        2,
+        3
+      ]
+    ],
+    "first_or_second": "second",
+    "first_main_attacker_attack": {
+      "pokemon": "Whimsicott ex",
+      "attack": "Grass Knot",
+      "own_turn_number": 4,
+      "global_displayed_turn": 8,
+      "source_timestamp_seconds": 291,
+      "opponent_points_before": 2,
+      "owner_points_before": 0
+    },
+    "primary_note_prefix": "second | T4 | 2",
+    "lead_display_note_prefix": "2nd | Whimsicott ex T4 | opp2pts",
+    "main_attacker_interpretation": "Whimsicott ex is the required main attacker. Ogerpon T2/T3 attacks are supporting; native164/168 and gaps248 show Ogerpon attacking with Whimsicott benched."
+  },
+  "material_corrections": [],
+  "nonmaterial_corrections": [
+    {
+      "field": "note_prefix_display",
+      "finding": "Lead may display the same three values as 2nd | Whimsicott ex T4 | opp2pts. This expands identity/points labels without changing the frozen primary values."
+    }
+  ],
+  "remaining_uncertainties": [
+    "Unrevealed cards and exact full20-card lists remain unknown.",
+    "Sampled UI supports no observed Auto; hidden unopened menu contents are not exhaustively proved. Ranked matchmaking directly supports the human ladder classification.",
+    "Action/turn starting boundaries between retained timestamps remain approximate.",
+    "Source identity is established for readable Offline_Inbox only. The inaccessible canonical OneDrive copy and sync/reconciliation remain pending."
+  ],
+  "initial_rejection": false,
+  "scope_limits": "Only independent_sol written. No frozen primary edits, shared registrations/index/events/maps, media moves, browser/external/Boss Folder writes."
+}

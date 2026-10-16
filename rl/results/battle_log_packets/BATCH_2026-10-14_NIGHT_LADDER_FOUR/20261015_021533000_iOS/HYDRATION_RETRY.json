@@ -1,0 +1,44 @@
+{
+  "source": "20261015_021533000_iOS.MP4",
+  "utc": "2026-10-15T02:42:05.698078+00:00",
+  "before": {
+    "logical_bytes": 593306034,
+    "allocated_bytes": 0,
+    "attributes": 4199968,
+    "placeholder_state": 49,
+    "cloud_placeholder": true,
+    "in_sync": false,
+    "pinned": false,
+    "unpinned": false,
+    "online_only": true
+  },
+  "contents_modified": false,
+  "local_availability_preference_refreshed": [
+    {
+      "flags": [
+        "-P",
+        "-U"
+      ],
+      "exit_code": 0
+    },
+    {
+      "flags": [
+        "+P",
+        "-U"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "result": "Cloud Files hydration timed out after 35 seconds; child stopped",
+  "after": {
+    "logical_bytes": 593306034,
+    "allocated_bytes": 0,
+    "attributes": 4724256,
+    "placeholder_state": 49,
+    "cloud_placeholder": true,
+    "in_sync": false,
+    "pinned": true,
+    "unpinned": false,
+    "online_only": true
+  }
+}

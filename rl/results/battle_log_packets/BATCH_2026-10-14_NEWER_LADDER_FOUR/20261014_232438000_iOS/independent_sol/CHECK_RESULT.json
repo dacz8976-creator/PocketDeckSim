@@ -1,0 +1,85 @@
+{
+  "accepted": true,
+  "acceptance_basis": "Reconciled full primary review accepted with the explicit minor opening draw-attribution erratum below; lead must carry this erratum in its append-only clarification and registration evidence.",
+  "reviewer": "/root/check_newer_232438",
+  "source_filename": "20261014_232438000_iOS.MP4",
+  "source_sha256": "f9a5d6cde19f3707eb79ee75552de9b9514bffcfb01e422f48234316f0b2d88e",
+  "source_bytes": 648135831,
+  "duration_seconds": 354.753333,
+  "frozen_manifest_sha256": "bbd911adf8a12fce3e7cd5313fdf63ec1d67f73938238c9e81bf764b7645423d",
+  "frozen_file_count": 178,
+  "frozen_files_match": true,
+  "frozen_hashes_before_match": true,
+  "frozen_hashes_after_match": true,
+  "primary_unchanged": true,
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "scope": "Bounded independent semantic acceptance using frozen retained evidence. Reconciled complete primary coverage, score/HP chains and decisive events; independently sampled ordinary actions. This is not a second full source playback or independent frame-by-frame full pass.",
+  "inspectedpaths": [
+    "START_HERE_VIDEO_REVIEW.md", "Review_Log/README.md",
+    "SOURCE.json", "REVIEW.md", "COVERAGE.md", "SUMMARY.json", "UNCERTAINTIES.json", "REVIEW_PACKET_HASHES.json",
+    "overview_0.jpg", "overview_1.jpg", "overview_2.jpg", "overview_3.jpg", "overview_4.jpg", "overview_5.jpg", "detail_D.jpg",
+    "evidence/t0036.00.jpg", "evidence/t0048.00.jpg", "evidence/t0050.00.jpg", "evidence/t0054.00.jpg", "evidence/t0060.00.jpg", "evidence/t0064.00.jpg", "evidence/t0070.00.jpg", "evidence/t0075.00.jpg", "evidence/t0077.00.jpg",
+    "evidence/t0122.00.jpg", "evidence/t0128.00.jpg", "evidence/t0144.00.jpg", "evidence/t0162.00.jpg", "evidence/t0170.00.jpg", "evidence/t0178.00.jpg", "evidence/t0182.00.jpg", "evidence/t0202.00.jpg", "evidence/t0218.00.jpg",
+    "evidence/t0254.00.jpg", "evidence/t0262.00.jpg", "evidence/t0270.00.jpg", "evidence/t0278.00.jpg", "evidence/t0290.00.jpg", "evidence/t0292.00.jpg", "evidence/t0320.00.jpg", "evidence/t0330.00.jpg", "evidence/t0334.00.jpg", "evidence/t0338.00.jpg", "evidence/t0352.00.jpg"
+  ],
+  "ordinarysamples": [
+    {
+      "sample": "Opening draw, Poke Ball, Research and bench development",
+      "evidence": ["evidence/t0036.00.jpg", "evidence/t0048.00.jpg", "evidence/t0050.00.jpg", "evidence/t0054.00.jpg", "evidence/t0060.00.jpg", "evidence/t0064.00.jpg", "evidence/t0070.00.jpg", "evidence/t0075.00.jpg"],
+      "result": "Two Poke Balls, Research, Rattata bench and second Vulpix bench are supported. Opening draw attribution needs the explicit correction in findings: Shore was already in hand before Research; Research supplied Cyrus and the second Poke Ball."
+    },
+    {
+      "sample": "Raticate Grass transfer",
+      "evidence": ["overview_1.jpg", "evidence/t0122.00.jpg", "evidence/t0128.00.jpg", "evidence/t0144.00.jpg"],
+      "result": "Thieving Incisors animation occurs after evolution; opponent Metapod subsequently has no attached Energy while benched Raticate visibly carries the Grass. It is transfer to Raticate, not discard."
+    },
+    {
+      "sample": "Soothing Shore versus Butterfree self-healing",
+      "evidence": ["evidence/t0128.00.jpg", "evidence/t0144.00.jpg", "evidence/t0162.00.jpg", "overview_2.jpg", "evidence/t0292.00.jpg", "evidence/t0320.00.jpg"],
+      "result": "Shore text requires Water attached and heals that player's Pokemon at end of their turn. Water-bearing Vulpix heals30 to50; later Raticate heals60 to80. Grass-only Butterfree has Sunny Wind60/heal20 printed on the card, explaining its attack self-heals separately from Shore."
+    },
+    {
+      "sample": "Caterpie Quick Growth",
+      "evidence": ["evidence/t0070.00.jpg", "evidence/t0075.00.jpg", "evidence/t0077.00.jpg"],
+      "result": "Printed trigger is at end of Caterpie owner's opponent's turn while Active. The owner's first turn ends and Caterpie evolves into Metapod before opponent turn2. No ordinary evolution from opponent hand needs inventing."
+    }
+  ],
+  "findings": [
+    {
+      "severity": "minor factual erratum",
+      "topic": "Global1 draw and Research draw attribution",
+      "primary_claim": "Owner draws Poke Ball; Research draws Soothing Shore and Cyrus.",
+      "correction": "Owner's first turn draw is Soothing Shore. At36 the remaining opening hand is Raticate ex, Poke Ball, Professor's Research and Field Blower; at48 Shore is already present before the first Poke Ball. At60 Research is played, and at64 Cyrus and a second Poke Ball appear alongside the preexisting Shore. Research therefore draws Cyrus and Poke Ball. The two searches and resulting Rattata/Vulpix benches remain correct.",
+      "evidence": ["evidence/t0036.00.jpg", "evidence/t0048.00.jpg", "evidence/t0050.00.jpg", "evidence/t0060.00.jpg", "evidence/t0064.00.jpg"],
+      "impact": "No change to coverage, board development, main-attacker non-use, damage, points or outcome. Accepted only with this explicit correction carried in the reconciled account; frozen primary is preserved."
+    },
+    {
+      "topic": "Whole primary coverage and mode",
+      "result": "Coverage accounts for setup and every global turn1-10 through terminal result, with no missing primary interval identified. Retained overview progression coheres with the timeline. No Auto option appears in inspected setup/gameplay evidence; owner default ladder applies, exact rank/queue remains unknown."
+    },
+    {
+      "topic": "Order, main attacker, supporting damage",
+      "result": "First order is explicit at36 and result352. Both Vulpix are knocked out without evolving; Ninetales ex is later in hand and never attacks. Preserve exact prefix: 1st | Alolan Ninetales ex no attack | opp N/A. Vulpix Gnaw20 followed by three Raticate Boost Dash70 attacks gives230, matching result352."
+    },
+    {
+      "topic": "Cape, Sabrina and points",
+      "result": "Cape text at178 grants30 HP to Stage1 only; basic Vulpix stays60. Sabrina switches it Active, then Sunny Wind60 knocks it out. Point1 at170 and point2 at218 are directly visible. Final result is owner0/opponent3; no concession is indicated."
+    },
+    {
+      "topic": "Lucky Ice Pop and stable HP chain",
+      "result": "Retained overview4/detailD and native254/262/270/278 show repeated20 healing progression from10 to30 to50 to70 to90 across four uses. Sunny Wind then heals Butterfree90 to110. Raticate120 takes60 to stable60 at292, then Shore heals to80 at320. Native290's red90 is an in-progress damage counter, not a stable postattack90 state. First Pop exact coin frame remains unknown, and physical copy count is not established."
+    },
+    {
+      "topic": "Final Giovanni knockout and result",
+      "result": "Native330 shows plus20 against opponent Active Pokemon ex with Raticate80. Native334 shows Sunny Wind60, and338 shows Raticate0/Butterfree60. This is80 total boosted damage and exact KO. Native352 explicitly shows Defeat vsててら, went first,10 turns, owner0 points, opponent3 points,230 damage."
+    }
+  ],
+  "limits": [
+    "Source identity relies on supplied source hash and frozen SOURCE binding; this checker rehashed all178 frozen packet files before and after inspection, not the original video again.",
+    "Independent work is bounded evidence verification and acceptance of the full primary review, not a claim of a second whole-video review.",
+    "Hidden cards, full deck lists, exact ranked tier/queue, some nonconsequential bench Energy attachment instants and first Ice Pop exact coin-result frame remain unestablished.",
+    "No new video extraction, primary edits, shared event/index writes, external writes, moves or Boss mirror were performed.",
+    "Lead is responsible for append-only clarification, final acceptance integration, registration and any authorized external/archive work."
+  ]
+}

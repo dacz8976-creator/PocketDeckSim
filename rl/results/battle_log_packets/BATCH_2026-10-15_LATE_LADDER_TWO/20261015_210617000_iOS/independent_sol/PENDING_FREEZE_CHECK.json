@@ -1,0 +1,15 @@
+{
+  "frozen_manifest_sha256": "67431da78ad3244ba9e10655cae065ad6efbe79896783841e2a67da80283690e",
+  "file_count": 272,
+  "mismatch": [
+    "independent_sol/SOURCE_OBSERVATIONS.md"
+  ],
+  "accepted": false,
+  "status": "pending_corrected_primary_only_freeze",
+  "source_filename": "20261015_210617000_iOS.MP4",
+  "source_sha256": "f1c9f16ca8fca83bc466aa8698fabb6297ceba504284a8bf6a8ee3be9d273cea",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "note": "Primary source/account reconciles; checker-owned SOURCE_OBSERVATIONS.md was inadvertently included in primary freeze and changed during parallel checkpoint. Only independent file mismatched; primary unchanged. Preserve this pending receipt after refreeze.",
+  "utc": "2026-10-15T21:55:00.953354+00:00"
+}

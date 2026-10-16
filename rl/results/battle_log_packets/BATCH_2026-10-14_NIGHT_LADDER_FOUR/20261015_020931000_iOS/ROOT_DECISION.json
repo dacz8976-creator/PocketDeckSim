@@ -1,0 +1,22 @@
+{
+  "accepted": true,
+  "decision_stage": "Root source reconciliation; registration gated on separate independent acceptance",
+  "source_filename": "20261015_020931000_iOS.MP4",
+  "source_sha256": "a8e539e31976ed5591bba0a2cfba3db3a44168b61191e259b5cd55bf05e37060",
+  "auto_option_seen": false,
+  "full_timeline_and_coverage_read": true,
+  "section": "d13",
+  "opponent": "Rogshamosh",
+  "opponent_deck": "Bonsly (Teary Attack); full list unknown",
+  "result": "win",
+  "note_prefix": "1st | Alolan Ninetales ex no attack | opp N/A",
+  "note": "1st | Alolan Ninetales ex no attack | opp N/A | vs Rogshamosh | 2026-10-14 21:09:31 CDT | 20261015_020931000_iOS.MP4 | Deck 13-A: Alolan Ninetales ex / Team Rocket's Raticate ex core. Win by explicit opponent concession119s; Victory132s confirms first,3turns,actual0-0 and damage0. No owner attack occurs. Copycat finds Raticate ex; Active Rattata evolves, Thieving Incisors takes Bonsly's Darkness Energy, and Field Blower removes Giant Cape before concession. Ninetales never reaches play. Ranked Master Ball queue; no Auto seen. Full lists, hidden cards, concession reason and postmatch rank unknown; no third point inferred.",
+  "scope": "Whole single-game recording, 0-132.836667 seconds: ranked prequeue, order/setup, all three global turns and meaningful actions/decisions, damage/Energy/Tool changes, explicit concession and full final statistics. No hidden cards or concession motive inferred.",
+  "registration_notes": "Sol/high full primary review, fresh separate Sol/high bounded independent acceptance, root complete timeline/coverage reconciliation and native evidence checks. Original 108-file manifest preserved exactly; requested JSON uncertainty companion is appended and bound by separate supplemental manifest. No older backlog or Pause Games supplement.",
+  "direct_source_observations": [
+    {"path": "evidence/t0111.00.jpg", "directly_viewed_by_root": true, "finding": "Raticate ex has90HP and one attached Darkness Energy; Bonsly50 has Giant Cape but no attached Energy. Owner's unused Energy Zone is Water, distinct from the stolen Darkness."},
+    {"path": "evidence/t0119.00.jpg", "directly_viewed_by_root": true, "finding": "Explicit Your opponent conceded banner. Bonsly is30HP with Giant Cape removed; both point counters empty."},
+    {"path": "evidence/t0132.00.jpg", "directly_viewed_by_root": true, "finding": "Victory versus Rogshamosh, went first, three turns, both point rows empty, damage0 and owner Card of the Game None."}
+  ],
+  "clarifications": ["LEAD_CLARIFICATION.md: unused owner Energy is Water; stolen attachment is Darkness. Bonsly HP reaches30 by119s, rather than118s. Original primary manifest and files remain unchanged; JSON uncertainty companion is separately bound."]
+}

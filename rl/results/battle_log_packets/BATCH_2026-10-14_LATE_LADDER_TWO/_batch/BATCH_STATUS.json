@@ -1,0 +1,72 @@
+{
+  "checked_utc": "2026-10-15T01:22:15.731044+00:00",
+  "requested_games": 2,
+  "reviewed_games": 2,
+  "saved_games": 2,
+  "review_and_archive_complete": true,
+  "review_and_ladder_logging_complete": true,
+  "remaining_external_saves": [],
+  "external_blocker": null,
+  "storage_pending": [
+    "20261014_230328000_iOS.MP4",
+    "20261014_231006000_iOS.MP4"
+  ],
+  "unrelated_index_rows_preserved": 204,
+  "source_rows": [
+    {
+      "source": "20261014_230328000_iOS.MP4",
+      "source_sha256": "3b50f97739c3b2154ba1135c3ec15b46336d8a1b62c2b3cf58412e2814254c18",
+      "review_complete": true,
+      "independently_accepted": true,
+      "registered": true,
+      "archived": true,
+      "current_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20261014_230328000_iOS.MP4",
+      "result": "loss",
+      "opponent": "TA28",
+      "section": "d13",
+      "note_prefix": "1st | Alolan Ninetales ex T3 | opp 1 pt",
+      "external_saved": true,
+      "fresh_reload_verified": true,
+      "cloud_metadata": {
+        "logical_bytes": 695885571,
+        "allocated_bytes": 695885571,
+        "attributes": 1056,
+        "placeholder_state": 1,
+        "cloud_placeholder": true,
+        "in_sync": false,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "storage_complete": false
+    },
+    {
+      "source": "20261014_231006000_iOS.MP4",
+      "source_sha256": "60f6a6c04e3f6e8c989b867b9dd41c536d4d0ac853b40603575a4ce3829faeee",
+      "review_complete": true,
+      "independently_accepted": true,
+      "registered": true,
+      "archived": true,
+      "current_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20261014_231006000_iOS.MP4",
+      "result": "win",
+      "opponent": "Zeno",
+      "section": "d13",
+      "note_prefix": "1st | Alolan Ninetales ex T3 | opp 1 pts",
+      "external_saved": true,
+      "fresh_reload_verified": true,
+      "cloud_metadata": {
+        "logical_bytes": 866074163,
+        "allocated_bytes": 866074163,
+        "attributes": 1056,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": false,
+        "online_only": false
+      },
+      "storage_complete": false
+    }
+  ],
+  "artifact": "https://claude.ai/artifact/GHSfGSCzNiWNj8SFPXV3R1"
+}

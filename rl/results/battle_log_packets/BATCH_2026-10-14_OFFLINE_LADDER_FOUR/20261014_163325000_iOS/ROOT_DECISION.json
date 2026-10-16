@@ -1,0 +1,55 @@
+{
+  "opponent": "Shotgun",
+  "opponent_deck": "Castform Sunny Form / Torchic / Mega Blaziken ex",
+  "result": "loss",
+  "note_prefix": "1st | Whimsicott ex no attack | opp pts N/A",
+  "note": "1st | Whimsicott ex no attack | opp pts N/A | vs Shotgun | recorded 2026-10-14 11:33:25 CDT | 20261014_163325000_iOS.MP4 | Defeat 1-3 at09:37; Mega Blaziken ex terminal KO. Supporting Ogerpon T3, Ariados T6.",
+  "scope": "Whole one-game ladder source, all12 turns and terminal defeat; main attacker never attacks; local source, independent checking and root source-checked addendum.",
+  "registration_notes": "Owner authorized offline review. Deck12 loss1-3 versus Shotgun; first; Whimsicott ex stays benched after evolving ownT5 and never attacks, so timing/points are N/A. Supporting OgerponT3 and AriadosT6 remain separate. Root addendum corrects season label to B4b SP and Card of the Game to Ogerpon ex, without changing log facts; frozen primary retained. Canonical cloud copy unverified and cloud reconciliation deferred.",
+  "clarifications": [
+    "LEAD_CLARIFICATION.md supersedes B46 with B4b SP and Castform Card of the Game with Teal Mask Ogerpon ex; original frozen account stays intact."
+  ],
+  "observations": [
+    {
+      "path": "native/t0002.50.jpg",
+      "finding": "Season B4b SP, Ultra Ball Rank4 700pts and Deck12; corrects primary season label.",
+      "directly_viewed_by_root": true
+    },
+    {
+      "path": "native/t0032.50.jpg",
+      "finding": "Opening explicitly shows owner going first.",
+      "directly_viewed_by_root": true
+    },
+    {
+      "path": "final_checks/t0356.00.jpg",
+      "finding": "Whimsicott ex evolves on Bench, with Ariados Active on ownerT5.",
+      "directly_viewed_by_root": true
+    },
+    {
+      "path": "native/t0554.00.jpg",
+      "finding": "Cyrus has brought Ogerpon40HP Active; Whimsicott ex140HP remains Bench; Shotgun2points before last attack.",
+      "directly_viewed_by_root": true
+    },
+    {
+      "path": "native/t0565.00.jpg",
+      "finding": "Terminal points owner1/Shotgun3 after +2 award.",
+      "directly_viewed_by_root": true
+    },
+    {
+      "path": "native/t0577.00.jpg",
+      "finding": "Defeat versus Shotgun; went first,12turns,1-3,90damage; Ogerpon ex Card of the Game.",
+      "directly_viewed_by_root": true
+    }
+  ],
+  "source_filename": "20261014_163325000_iOS.MP4",
+  "source_sha256": "2e88a291ff91ab3e7d2e9dea0af36022ee4e307324fa946bcddd61017bde8973",
+  "primary_note_prefix": "1st | Whimsicott ex no attack | opp pts N/A",
+  "checked_utc": "2026-10-14T20:04:43.534936+00:00",
+  "lead": "/root",
+  "battle_complete": true,
+  "root_read_full_timeline_and_coverage": true,
+  "auto_option_seen": false,
+  "section": "d12",
+  "deck_name": "Ariados / Whimsicott / Ogerpon",
+  "energy": "Grass"
+}

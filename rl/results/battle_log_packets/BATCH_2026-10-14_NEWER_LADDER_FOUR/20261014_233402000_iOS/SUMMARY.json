@@ -1,0 +1,82 @@
+{
+  "source_filename": "20261014_233402000_iOS.MP4",
+  "source_sha256": "32390ef837ec4ebc65700bc78d18d13c63230da6b71c7c54fed3760b627b0dcd",
+  "source_bytes": 770900030,
+  "source_duration_seconds": 418.038333,
+  "source_creation_utc": "2026-10-14T23:34:02.000000Z",
+  "match_date_local": "2026-10-14",
+  "reviewer": "/root/evening_233402",
+  "continued_by": "/root/newer_233402",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "scope": "Entire supplied recording, all ten global turns through result table",
+  "primary_review_complete": true,
+  "independently_accepted": false,
+  "battle_complete": true,
+  "match_count": 1,
+  "mode": "ranked ladder",
+  "queue_evidence": "Ranked Match, Season B4b SP, Ultra Ball Rank 4, owner734pts visible at3.018s",
+  "auto_option_seen": false,
+  "auto_enabled_observed": false,
+  "owner": "Dacz8976",
+  "opponent": "ヴィオレ魔ぬ",
+  "opponent_name_evidence": "evidence/t0417.70.jpg",
+  "opponent_core": [
+    "Zorua",
+    "Zoroark ex",
+    "Poipole",
+    "Naganadel",
+    "Nihilego"
+  ],
+  "deck_name": "Deck 13-A",
+  "deck_core": [
+    "Alolan Vulpix",
+    "Alolan Ninetales ex",
+    "Team Rocket's Rattata",
+    "Team Rocket's Raticate ex"
+  ],
+  "full_deck_known": false,
+  "result": "loss",
+  "result_method": "Final Brutal Bash attack knockout of Alolan Ninetales ex",
+  "concession": false,
+  "owner_points": 2,
+  "opponent_points": 3,
+  "score": "2-3",
+  "result_timestamp_seconds": 417.7,
+  "global_turns": 10,
+  "damage_done_result_table": 180,
+  "went_first": true,
+  "main_attacker": "Alolan Ninetales ex",
+  "first_main_attack": {
+    "attack": "Binding Snow",
+    "own_turn": 4,
+    "global_turn": 7,
+    "timestamp_seconds": 307.758,
+    "opponent_points_before": 1,
+    "damage": 80
+  },
+  "supporting_earlier_attacks": [
+    {
+      "attacker": "Alolan Vulpix",
+      "attack": "Gnaw",
+      "own_turn": 3,
+      "global_turn": 5,
+      "timestamp_seconds": 227.5,
+      "damage": 20,
+      "opponent_points_before": 0
+    }
+  ],
+  "exact_three_item_note_prefix": "1st | Alolan Ninetales ex T4 | opp 1 pt",
+  "external_log_eligible": true,
+  "external_log_written": false,
+  "decisive_evidence": [
+    "evidence/key_003.jpg",
+    "evidence/key_028.jpg",
+    "evidence/key_206.jpg",
+    "evidence/key_306.jpg",
+    "evidence/key_397.jpg",
+    "evidence/key_406.jpg",
+    "evidence/key_409.jpg",
+    "evidence/t0417.70.jpg"
+  ]
+}

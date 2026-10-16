@@ -1,0 +1,128 @@
+{
+  "source_filename": "20261015_015320000_iOS.MP4",
+  "source_sha256": "9a1e0725ad0ac4b3dd3fc8c445e08b3c16be7edbbd9dd9d7b1f7c1333b30c953",
+  "source_bytes": 858013310,
+  "duration_seconds": 463.635,
+  "reviewer": "/root/night_015320",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "review_scope": "Complete supplied recording including setup, all 11 global turns and terminal results",
+  "battle_complete": true,
+  "review_complete": true,
+  "match_count": 1,
+  "independent_acceptance": "pending lead-assigned fresh checker",
+  "match_date_local": "2026-10-14",
+  "timezone": "America/Chicago",
+  "recording_creation_utc": "2026-10-15T01:53:20Z",
+  "mode": "ranked ladder",
+  "mode_evidence": [
+    "evidence/t0004.00.jpg",
+    "evidence/t0020.00.jpg"
+  ],
+  "rank_visible": "Master Ball Rank",
+  "owner_queue_points_visible": 758,
+  "auto_option_seen": false,
+  "auto_enabled_observed": false,
+  "auto_limit": "No Auto option visible across reviewed setup/gameplay/result footage; no Auto operation observed.",
+  "owner": "Dacz8976",
+  "opponent": "脳筋",
+  "deck_label": "Deck 13-A",
+  "deck_core": [
+    "Alolan Vulpix",
+    "Alolan Ninetales ex",
+    "Team Rocket's Rattata",
+    "Team Rocket's Raticate ex"
+  ],
+  "main_attacker": "Alolan Ninetales ex",
+  "owner_energy_types_visible": [
+    "Water"
+  ],
+  "opponent_core": [
+    "Mega Rayquaza ex",
+    "Pichu",
+    "Gouging Fire",
+    "Dratini",
+    "Dragonair"
+  ],
+  "result": "loss",
+  "termination": "opponent Mega Burst 200 KOs caped Alolan Ninetales ex",
+  "score": {
+    "owner": 2,
+    "opponent": 3,
+    "basis": "displayed terminal three-slot point indicators",
+    "pre_terminal_owner": 2,
+    "pre_terminal_opponent": 2,
+    "not_a_concession": true
+  },
+  "turn_order": "2nd",
+  "global_turns": 11,
+  "owner_turns": 5,
+  "opponent_turns": 6,
+  "first_main_attack": {
+    "pokemon": "Alolan Ninetales ex",
+    "attack": "Binding Snow",
+    "owner_turn": 4,
+    "global_turn": 8,
+    "opponent_points_before_attack": 2,
+    "start_seconds_approx": 319,
+    "damage_seconds": 320,
+    "damage": 80,
+    "opponent_active": "Mega Rayquaza ex",
+    "hp_before": 160,
+    "hp_after": 80,
+    "evidence": [
+      "evidence/t0312.00.jpg",
+      "evidence/t0318.00.jpg",
+      "evidence/t0320.00.jpg",
+      "evidence/t0322.00.jpg"
+    ]
+  },
+  "earlier_supporting_attacks": [
+    {
+      "pokemon": "Team Rocket's Rattata",
+      "attack": "Ambush",
+      "owner_turn": 1,
+      "coin": "tails",
+      "damage": 20,
+      "seconds": 110
+    },
+    {
+      "pokemon": "Team Rocket's Rattata",
+      "attack": "Ambush",
+      "owner_turn": 2,
+      "coin": "tails",
+      "damage_nominal": 20,
+      "remaining_hp_removed": 10,
+      "seconds": 173
+    },
+    {
+      "pokemon": "Alolan Vulpix",
+      "attack": "Gnaw",
+      "owner_turn": 3,
+      "damage": 20,
+      "seconds": 262
+    }
+  ],
+  "exact_three_item_note_prefix": "2nd | MAIN Alolan Ninetales ex T4 | opp 2 pts",
+  "decisive_evidence": [
+    "evidence/t0229.00.jpg",
+    "evidence/t0300.00.jpg",
+    "evidence/t0312.00.jpg",
+    "evidence/t0320.00.jpg",
+    "evidence/t0442.00.jpg",
+    "evidence/t0447.00.jpg",
+    "evidence/t0448.00.jpg",
+    "evidence/t0452.00.jpg",
+    "evidence/t0462.00.jpg"
+  ],
+  "external_log_eligibility": "Ranked human-ladder evidence; lead owns duplicate check and any external entry",
+  "external_logs_written_by_reviewer": false,
+  "shared_log_or_index_written_by_reviewer": false,
+  "source_moved_by_reviewer": false,
+  "limits": [
+    "Full 20-card lists and hidden cards unknown",
+    "Dragonair small ability body text not transcribed; name and observed Energy changes retained",
+    "Individual attachment timings may be bounded by adjacent frames rather than exact instant",
+    "Displayed final score 2-3 retained without inventing fourth point"
+  ]
+}

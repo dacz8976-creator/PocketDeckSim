@@ -1,0 +1,77 @@
+{
+  "source_filename": "20261015_205332000_iOS.MP4",
+  "source_sha256": "2d0b8e0c42714b0572556faeaeacae13f8d3210b822290f9a528d291bb220d3a",
+  "reviewer": "/root/ladder_205332",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "battle_complete": true,
+  "available_footage_fully_reviewed": true,
+  "match_count": 1,
+  "match_date": "2026-10-15",
+  "opponent_identifier": "Fxllenboy.exe",
+  "owner_visible_core": [
+    "Alolan Grimer",
+    "Alolan Muk (Power of Alchemy)",
+    "Glimmet",
+    "Glimmora (Shattering Crystal / Venomous Hit)",
+    "Pawniard",
+    "Kingambit (Overlord's Blade)",
+    "Regigigas (Seal of Antiquity / Giga Turbo)"
+  ],
+  "opponent_visible_core": [
+    "Mega Sableye ex",
+    "Mega Absol ex",
+    "Darkrai ex",
+    "Gastly",
+    "Hoopa ex"
+  ],
+  "selected_deck_name": "New deck 16",
+  "outcome": "Win",
+  "score": {
+    "owner": 3,
+    "opponent": 1
+  },
+  "first_or_second": "first",
+  "global_turns": 15,
+  "owner_turns": 8,
+  "damage_done": 500,
+  "first_attacks": [
+    {
+      "attacker": "Glimmora",
+      "owner_turn": 2,
+      "global_turn": 3,
+      "opponent_points": 0,
+      "timestamp_seconds": 172,
+      "attack": "Venomous Hit"
+    },
+    {
+      "attacker": "Regigigas",
+      "owner_turn": 5,
+      "global_turn": 9,
+      "opponent_points": 1,
+      "timestamp_seconds": 342,
+      "attack": "Giga Turbo"
+    },
+    {
+      "attacker": "Kingambit",
+      "owner_turn": 8,
+      "global_turn": 15,
+      "opponent_points": 1,
+      "timestamp_seconds": 620,
+      "attack": "Overlord's Blade",
+      "damage": 140
+    }
+  ],
+  "owner_knockout_count": 2,
+  "opponent_points_from_owner_knockouts": 1,
+  "mode": "human match; ladder by owner default; specific queue not independently established",
+  "auto_option_seen": false,
+  "auto_made_owner_choices": false,
+  "exact_three_item_note_prefix": "1st | Glimmora T2; Regigigas T5; Kingambit T8 | opp 0; 1; 1 pts respectively",
+  "result_evidence": [
+    "evidence/t0620.00.jpg",
+    "evidence/t0626.00.jpg",
+    "evidence/t0640.00.jpg"
+  ],
+  "primary_complete_pending_independent_and_lead_acceptance": true
+}

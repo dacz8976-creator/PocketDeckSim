@@ -1,0 +1,257 @@
+{
+  "accepted": true,
+  "reviewer": "/root/check_215114",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "checked_utc": "2026-10-14T23:33:58.362468+00:00",
+  "source_filename": "20261014_215114000_iOS.MP4",
+  "source_sha256": "b3170e7b962e7141ab0168cf4ca9aa2ce7e1241e6b750eee785eff51657c8a4a",
+  "source_binding": "Reused lead-verified original SOURCE.json binding; original was not rehashed or altered.",
+  "frozen_manifest_sha256": "5dd3cab575981455daea579a44a33f0a0e9cbee3e0fbea2fd06fbf13b41885bb",
+  "expected_frozen_manifest_sha256": "5dd3cab575981455daea579a44a33f0a0e9cbee3e0fbea2fd06fbf13b41885bb",
+  "frozen_files_match": true,
+  "frozen_file_count": 331,
+  "file_hash_mismatches": [],
+  "primary_unchanged": true,
+  "scope": "Bounded independent semantic acceptance using retained native evidence, primary review and full phase coverage account. Not a repeated full visual pass.",
+  "documents_read": [
+    "SOURCE.json",
+    "REVIEW.md",
+    "COVERAGE.md",
+    "SUMMARY.json",
+    "REVIEW_PACKET_HASHES.json",
+    "START_HERE_VIDEO_REVIEW.md",
+    "Review_Log/README.md"
+  ],
+  "inspected_evidence": [
+    {
+      "path": "evidence/t0000.00.jpg",
+      "source_seconds": 0,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0019.00.jpg",
+      "source_seconds": 19,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0052.00.jpg",
+      "source_seconds": 52,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0064.00.jpg",
+      "source_seconds": 64,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0068.00.jpg",
+      "source_seconds": 68,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0076.00.jpg",
+      "source_seconds": 76,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0153.00.jpg",
+      "source_seconds": 153,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0178.00.jpg",
+      "source_seconds": 178,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0180.00.jpg",
+      "source_seconds": 180,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0182.00.jpg",
+      "source_seconds": 182,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0194.00.jpg",
+      "source_seconds": 194,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0201.00.jpg",
+      "source_seconds": 201,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0203.00.jpg",
+      "source_seconds": 203,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0226.00.jpg",
+      "source_seconds": 226,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0236.00.jpg",
+      "source_seconds": 236,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0248.00.jpg",
+      "source_seconds": 248,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0252.00.jpg",
+      "source_seconds": 252,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0271.00.jpg",
+      "source_seconds": 271,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0273.00.jpg",
+      "source_seconds": 273,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0330.00.jpg",
+      "source_seconds": 330,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0332.00.jpg",
+      "source_seconds": 332,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0338.00.jpg",
+      "source_seconds": 338,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0345.00.jpg",
+      "source_seconds": 345,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0347.00.jpg",
+      "source_seconds": 347,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0349.00.jpg",
+      "source_seconds": 349,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0351.00.jpg",
+      "source_seconds": 351,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0353.00.jpg",
+      "source_seconds": 353,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0388.00.jpg",
+      "source_seconds": 388,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0390.00.jpg",
+      "source_seconds": 390,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0392.00.jpg",
+      "source_seconds": 392,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0396.00.jpg",
+      "source_seconds": 396,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0436.00.jpg",
+      "source_seconds": 436,
+      "view": "native retained frame individually inspected"
+    },
+    {
+      "path": "evidence/t0447.00.jpg",
+      "source_seconds": 447,
+      "view": "native retained frame individually inspected"
+    }
+  ],
+  "ordinary_samples": [
+    {
+      "global_turn": 2,
+      "owner_turn": 1,
+      "times": [
+        52,
+        64,
+        68,
+        76
+      ],
+      "checks": "Elegant Cape draw; Research and visible Rattata plus Research in hand; Soothing Shore played; end board has benched Rattata40, Vulpix60 with one Water, Deino60 to40, score0-0. Cape remains in hand. No Auto option visible.",
+      "consistent": true
+    },
+    {
+      "global_turn": 8,
+      "owner_turn": 4,
+      "times": [
+        226,
+        236,
+        248,
+        252
+      ],
+      "checks": "Initial Hydreigon10 without Energy; Ninetales180 with Cape gains third Water. Binding Snow80 inspected on card, first Hydreigon knockout awards one owner point, Absol70 with one Darkness promoted. Ninetales remains180, score1-2. Bench Hydreigon150 and Mega Absol170 retained.",
+      "consistent": true
+    }
+  ],
+  "findings": [
+    {
+      "severity": "none",
+      "fact": "Deck13-A and visible Vulpix/Ninetales ex/Rattata/Raticate ex core confirmed at0. Both Ultra Ball Rank4 badges and opponent name 羊羽 confirmed at19. No Auto option observed in inspected board UI; exact queue menu remains unshown."
+    },
+    {
+      "severity": "none",
+      "fact": "First Ninetales attack accepted as ownerT3/global6: opponent turn5 banner at153, Rattata already knocked out and Vulpix promoted at178-180, Ninetales evolution194, named Binding Snow201 and80-damage203. Opponent already2 points; Ninetales180/Cape/twoWater, Hydreigon90 before damage. This differs from earlier Vulpix Gnaw20."
+    },
+    {
+      "severity": "none",
+      "fact": "Enhanced Blade native text271 has printed20 plus30 with Tool. Absol is Tool-equipped and Ninetales is130 at273 after180 earlier; bench Hydreigon120/threeDarkness. No Ninetales healing assigned to opponent ending."
+    },
+    {
+      "severity": "none",
+      "fact": "Owner turn10 ending: score2-2, promoted Hydreigon120/threeDarkness, Ninetales130 in healing animation330 then150 at332. Matches Soothing Shore20 recovery on owner ending."
+    },
+    {
+      "severity": "none",
+      "fact": "Deceptive Needle enlarged native text338 establishes end-of-owner-of-Tool turn10damage. Hyper Ray130 native345; Ninetales150 to20 at347, named Needle activation349 then10HP351. Hydreigon Energy present347 then gone351; Mega Absol has oneDarkness351. Score2-2. Separate130 and10 events, no Helmet inference."
+    },
+    {
+      "severity": "none",
+      "fact": "Owner turn12 banner353, end attack state388 has Hydreigon40/noEnergy and Ninetales10/threeWater plus Raticate120/oneWater. Soothing Shore named390,20healing392, Ninetales30 by396. No successful Raticate Energy theft is inferred."
+    },
+    {
+      "severity": "none",
+      "fact": "Explicit opponent concession436 with Ninetales30, Hydreigon80/noEnergy, benched Mega Absol170 and Bombirdier70. Victory447 versus 羊羽, wentsecond,13turns,points2-2,damage340. No third knockout point. The340 agrees with20+four80 attacks."
+    }
+  ],
+  "material_discrepancies": [],
+  "limits": [
+    "Independent semantic checking was bounded to listed retained evidence and two ordinary turn samples; no second complete frame pass was performed.",
+    "Full first-pass setup-to-terminal coverage is documented by primary reviewer in COVERAGE.md and REVIEW.md, and checked for interval/turn/result consistency.",
+    "Hidden cards, unshown complete deck lists, unknown card versions and intentions remain unknown. No external card/rules lookup was needed because consequential card text is readable in native evidence.",
+    "The precise global6 turn banner was not separately viewed; turn number derives from observed preceding opponent turn5, promotion/evolution/attack sequence, second turn order and full coverage account.",
+    "No primary edits, shared event/index/location changes, source moves, external game entries or Boss Folder writes occurred."
+  ]
+}

@@ -1,0 +1,21 @@
+{
+  "lead": "/root",
+  "checked_utc": "2026-10-15T01:14:24.729024+00:00",
+  "source_filename": "20261014_233402000_iOS.MP4",
+  "source_sha256": "32390ef837ec4ebc65700bc78d18d13c63230da6b71c7c54fed3760b627b0dcd",
+  "observations": [
+    {
+      "path": "evidence/key_306.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Binding Snow declaration with opponent1point visible; mapped source time307.758s,first main attack ownT4/global7 in complete turn account.",
+      "sha256": "d13f522f480db3d1bd189a00f533fd8b24ad4e918a232f382ddbe6220b1d5a2a"
+    },
+    {
+      "path": "evidence/t0417.70.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Defeat, wentfirst,10turns,owner2/opponent3,damage180. Opponent final-name glyph not safely transcribed; retained as uncertain.",
+      "sha256": "d51835c985bc409c37409ec916c523c35befef9771b9067e58afcc21f59d95d7"
+    }
+  ],
+  "coverage_reconciliation": "Root read full timeline and turn/phase coverage; separate Sol reviewer checked decisive sequences and ordinary turns against retained source evidence."
+}

@@ -1,0 +1,29 @@
+{
+  "reviewer": "/root/evening_225451",
+  "source_filename": "20261014_225451000_iOS.MP4",
+  "material_outcome_uncertainties": [],
+  "limits": [
+    {
+      "topic": "hidden_cards",
+      "detail": "Unrevealed opponent draws, hand and remaining deck are unknown."
+    },
+    {
+      "topic": "full_owner_list",
+      "detail": "Only editor visible upper core and gameplay trainers are identified, not every card in 20-card deck."
+    },
+    {
+      "topic": "timing",
+      "detail": "Action times are source-local approximate samples, generally within one or two seconds; first named Binding Snow at116."
+    },
+    {
+      "topic": "concession_reason",
+      "detail": "Opponent concession is explicit, its motivation is not recorded."
+    },
+    {
+      "topic": "sampling",
+      "detail": "End-to-end phases and meaningful actions checked through coarse orientation plus dense targeted native states; no claim of viewing every animation frame."
+    }
+  ],
+  "unreviewed_intervals": [],
+  "missing_battle_ending": false
+}

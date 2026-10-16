@@ -1,0 +1,16 @@
+{
+  "source_filename": "20261014_160506000_iOS.MP4",
+  "source_sha256": "65a94f2a9cfcfc69d5bcbb9f11e2a5d1fd045daeb7c6fea703f20454e174239b",
+  "reviewer": "/root/offline_ladder_160506",
+  "unreviewed_intervals": [],
+  "missing_recording_continuation": false,
+  "unresolved_material_outcome_or_note_claims": [],
+  "items": [
+    {"topic": "Hidden information", "timestamps": [0,437.791667], "status": "explicit_limit", "finding": "Unrevealed opponent cards and full20-card lists are unknown; visible deck cores are sufficient for classification, not exact lists."},
+    {"topic": "Timestamp precision", "timestamps": [278,289,291,292,424,436], "status": "bounded", "finding": "Every retained frame uses its exact seek time. Turn/event starting boundaries can fall between frames. Main attack banner at291s; first-main-attack interval approximately290-292s. OwnerT4/global8 and preattack opponent2 are directly established."},
+    {"topic": "Source date", "timestamps": [0,437.791667], "status": "resolved", "finding": "Creation UTC16:05:06 corresponds to Chicago11:05:06CDT on2026-10-14 and agrees with phone clock11:05-11:12. No match-date ambiguity affecting the log."},
+    {"topic": "Multiple owner attackers", "timestamps": [164,168,246,248,278,291], "status": "interpretation_explicit", "finding": "Whimsicott ex is the Deck12 main attacker with Ariados. Earlier Ogerpon attacks are supporting/opening attacks, first onownerT2, not the required main attack."},
+    {"topic": "Terminal points", "timestamps": [420,424,428,436], "status": "resolved", "finding": "Final Whimsicott ex KO earns sufficient points to win. Display reachesopponent3 and owner2; retain visible2-3 rather than arithmetic2-4."},
+    {"topic": "Cloud reconciliation", "timestamps": [], "status": "pending_external_state", "finding": "Reviewed verified offline copy. The inaccessible cloud placeholder is not verified. Downloads original and cloud placeholder preserved; sync and finalcloud reconciliation remainpending."}
+  ]
+}

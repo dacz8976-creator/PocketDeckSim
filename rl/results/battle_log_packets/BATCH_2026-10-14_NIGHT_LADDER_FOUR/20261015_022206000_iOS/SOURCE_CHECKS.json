@@ -1,0 +1,27 @@
+{
+  "lead": "/root",
+  "checked_utc": "2026-10-15T03:08:29.772403+00:00",
+  "source_filename": "20261015_022206000_iOS.MP4",
+  "source_sha256": "80e5fb7c964c1c6025f5f4ffb7adacda937878442e00c01db8104292784dc5dd",
+  "observations": [
+    {
+      "path": "evidence/t0199.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Alolan Ninetales ex is asleep at120HP with Cape and two Water, opposite Espeon and two100HP non-ex Darkrai; Soothing Shore remains in play.",
+      "sha256": "f4059504ce8b76beeb05485fba955d2fa47e43c4dea1a38432a495b2462db49e"
+    },
+    {
+      "path": "evidence/t0234.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Late Bad Dreams animation shows the two Darkrai board and Ninetales during the terminal checkup. Owner has no Bench; Raticate ex copies remain held.",
+      "sha256": "29b8426898bcabba3e2389131c059908c8793c52748e1ca8b3ede0180ecd7437"
+    },
+    {
+      "path": "evidence/t0249.60.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Defeat versus le-0702-on; final panel explicitly says went first, six turns, owner0/opponent3, damage0 and Card of the Game None.",
+      "sha256": "1b14091dc139b012a7820dede23a51ffbca80b7a0ab2effa4833289e8ecf3471"
+    }
+  ],
+  "coverage_reconciliation": "Root read full timeline and turn/phase coverage; separate Sol reviewer checked decisive sequences and ordinary turns against retained source evidence."
+}

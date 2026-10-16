@@ -1,0 +1,23 @@
+{
+  "accepted": true,
+  "decision_stage": "Root source reconciliation; completion registration remains gated on separate independent acceptance",
+  "source_filename": "20261014_225451000_iOS.MP4",
+  "source_sha256": "42d70079e0c431c59af4c4c1475494fc718a4499e5bc73f8bcf6ea8bacde7582",
+  "auto_option_seen": false,
+  "full_timeline_and_coverage_read": true,
+  "section": "d13",
+  "opponent": "ろっき",
+  "opponent_deck": "Rotom ex",
+  "result": "win",
+  "note_prefix": "2nd | Alolan Ninetales ex T2 | opp 0 pts",
+  "note": "2nd | Alolan Ninetales ex T2 | opp 0 pts | vs ろっき | 2026-10-14 17:54:51 CDT | 20261014_225451000_iOS.MP4 | Deck 13-A. Opponent conceded at02:42; Victory at02:51.3,0-0 points. First Binding Snow ownT2/global4 at01:56 after Sabrina; Rotom ex uses Bench Energy plus Elemental Switch, Junk Spark90.",
+  "scope": "Whole one-game ranked ladder recording, setup, all six global turns, explicit concession and terminal victory; independent source checks and root reconciliation",
+  "registration_notes": "Deck13-A,second,Ninetales ex first Binding Snow ownT2/global4 with opponent0. Concession win0-0 versus ろっき. Minor global3 chronology erratum in LEAD_CLARIFICATION.md: Order Pad/tails precedes Bench Lightning80-82; frozen primary preserved. No hypothetical knockout credited. Live save/reload remains separate. Root sole shared writer.",
+  "direct_source_observations": [
+    {"path":"details/t0116.00.jpg","directly_viewed_by_root":true,"finding":"Named first Binding Snow against Rotom ex, both score tracks0, with backup Vulpix."},
+    {"path":"details/t0162.00.jpg","directly_viewed_by_root":true,"finding":"Explicit Your opponent conceded; opponent Rotom40HP, owner Ninetales60HP."},
+    {"path":"details/t0171.30.jpg","directly_viewed_by_root":true,"finding":"Victory versus ろっき,second,six turns,0-0 points,100 damage."},
+    {"path":"details/t0080.00.jpg","directly_viewed_by_root":true,"finding":"Bench Lightning attachment animation after Order Pad is already in discard; supports independent chronology erratum."}
+  ],
+  "clarifications": ["Global3: Order Pad/tails occurs before Bench Lightning attachment80-82, then RedCard85. Outcome, first main attack, turn and points unchanged. LEAD_CLARIFICATION.md supersedes only that order in frozen prose."]
+}

@@ -1,0 +1,60 @@
+{
+  "opponent": "ヤンチャ",
+  "opponent_deck": "Charmander / Charmeleon / Charizard",
+  "result": "loss",
+  "note_prefix": "1st | Whimsicott ex T4 | opp 2 pts",
+  "note": "1st | Whimsicott ex T4 | opp 2 pts | vs ヤンチャ | recorded 2026-10-14 11:13:24 CDT | 20261014_161324000_iOS.MP4 | Defeat 1-3 at05:25.5; Charizard terminal KO after Sabrina.",
+  "scope": "Whole one-game ladder source, all8 turns and terminal defeat; local Downloads source accepted with separate source checks and root reconciliation.",
+  "registration_notes": "Owner authorized offline local review. Visible Deck12, loss1-3 versus ヤンチャ; first; Whimsicott ex first Grass Knot ownT4/global7 with opponent2 before. Early Ariados Pierce ownT2 is supporting; Ogerpon only appears in deck setup. Exact queue-selection screen unrecorded, no Auto seen. Canonical cloud copy unverified; local archive and future cloud reconciliation separate. Independent checker and root reconcile the nonmaterial Poke Ball citation timing in LEAD_CLARIFICATION.md; frozen primary retained.",
+  "observations": [
+    {
+      "path": "native/t0002.00.jpg",
+      "finding": "Deck12 directly named, visible Spinarak/Ariados/Cottonee/Whimsicott ex/Ogerpon ex core, Grass energy.",
+      "directly_viewed_by_root": true
+    },
+    {
+      "path": "native/t0022.00.jpg",
+      "finding": "Opening explicitly shows going first.",
+      "directly_viewed_by_root": true
+    },
+    {
+      "path": "native/t0266.00.jpg",
+      "finding": "First Grass Knot100 selection with Active Whimsicott ex, opponent ヤンチャ2points beforehand and80HP Charmeleon target.",
+      "directly_viewed_by_root": true
+    },
+    {
+      "path": "native/t0268.50.jpg",
+      "finding": "Named Whimsicott ex Grass Knot attack, opponent2points.",
+      "directly_viewed_by_root": true
+    },
+    {
+      "path": "native/t0325.50.jpg",
+      "finding": "Defeat versus ヤンチャ; went first;8combined turns;owner1/opponent3;130damage.",
+      "directly_viewed_by_root": true
+    },
+    {
+      "path": "native/t0072.00.jpg",
+      "finding": "Opposing discard is empty; corrects the premature first-pass citation.",
+      "directly_viewed_by_root": true
+    },
+    {
+      "path": "native/t0079.00.jpg",
+      "finding": "Opposing discard clearly shows Poke Ball; corrected citation time79.",
+      "directly_viewed_by_root": true
+    }
+  ],
+  "source_filename": "20261014_161324000_iOS.MP4",
+  "source_sha256": "d058d4cff7c50e4813f9bebacfc895ac0227bec97a941be0e08289787aff94e6",
+  "primary_note_prefix": "First | Whimsicott ex first attack T4 | Opponent points before attack: 2",
+  "checked_utc": "2026-10-14T20:03:07.536923+00:00",
+  "lead": "/root",
+  "battle_complete": true,
+  "root_read_full_timeline_and_coverage": true,
+  "auto_option_seen": false,
+  "clarifications": [
+    "LEAD_CLARIFICATION.md corrects opposing Poke Ball discard citation from72 to79 seconds; root directly inspected both native frames; no log fact changes."
+  ],
+  "section": "d12",
+  "deck_name": "Ariados / Whimsicott / Ogerpon",
+  "energy": "Grass"
+}

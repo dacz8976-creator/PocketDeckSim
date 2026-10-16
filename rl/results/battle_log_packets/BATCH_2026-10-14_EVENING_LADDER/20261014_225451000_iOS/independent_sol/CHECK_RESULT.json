@@ -1,0 +1,62 @@
+{
+  "accepted": true,
+  "verdict": "accepted_with_minor_chronology_erratum",
+  "reviewer": "/root/check_225451",
+  "review_date": "2026-10-14",
+  "model": "Sol per assignment; exact runtime identifier not exposed to reviewer",
+  "effort": "inherited parent setting; exact effort not exposed to reviewer",
+  "scope": "Bounded independent semantic acceptance of frozen full-review packet, decisive sequences and selected ordinary turns. Not a repeated complete first pass.",
+  "source_filename": "20261014_225451000_iOS.MP4",
+  "source_sha256": "42d70079e0c431c59af4c4c1475494fc718a4499e5bc73f8bcf6ea8bacde7582",
+  "source_identity": {
+    "sha256_provenance": "Existing verified source binding supplied by lead and SOURCE.json; no repeated original-media hash",
+    "current_stat_bytes": 311790033,
+    "fresh_ffprobe_duration_seconds": 171.588333,
+    "fresh_ffprobe_size": 311790033,
+    "fresh_ffprobe_video": "hevc 1170x2532; AAC audio",
+    "source_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20261014_225451000_iOS.MP4"
+  },
+  "frozen_manifest": "REVIEW_PACKET_HASHES.json",
+  "frozen_manifest_sha256": "d94f4fa326396591d11628b721d35b43ad4ae5d8ee34bbd545bb6276ba8a1777",
+  "frozen_file_count": 152,
+  "frozen_files_match": true,
+  "frozen_file_mismatches": [],
+  "primary_unchanged": true,
+  "primary_unchanged_basis": "All 152 manifest files and manifest hash rechecked after semantic inspection; no primary edits made",
+  "documents_read": ["SOURCE.json", "REVIEW.md", "COVERAGE.md", "SUMMARY.json", "UNCERTAINTIES.json", "ROOT_DECISION.json", "REVIEW_PACKET_HASHES.json", "../../../START_HERE_VIDEO_REVIEW.md", "../../../Review_Log/README.md"],
+  "inspected_native_evidence": [
+    "details/t0000.00.jpg", "details/t0004.00.jpg", "details/t0012.00.jpg",
+    "details/t0050.00.jpg", "details/t0056.00.jpg", "details/t0062.00.jpg", "details/t0065.00.jpg", "details/t0069.00.jpg",
+    "details/t0073.00.jpg", "details/t0074.00.jpg", "details/t0078.00.jpg", "details/t0080.00.jpg", "details/t0082.00.jpg", "details/t0083.00.jpg", "details/t0085.00.jpg", "details/t0094.00.jpg", "details/t0095.00.jpg",
+    "details/t0114.00.jpg", "details/t0116.00.jpg", "details/t0121.00.jpg",
+    "details/t0138.00.jpg", "details/t0139.00.jpg", "details/t0144.00.jpg", "details/t0146.00.jpg", "details/t0150.00.jpg", "details/t0152.00.jpg", "details/t0154.00.jpg", "details/t0155.00.jpg", "details/t0162.00.jpg", "details/t0171.30.jpg"
+  ],
+  "material_checks": [
+    {"topic": "mode_deck_opponent", "passed": true, "observed": "Deck 13-A and visible Vulpix/Ninetales/Rattata/Raticate core at0; ranked Season B4b SP, Ultra Ball Rank4,710pts at4; opponent ろっき at12. No Auto control in independently inspected queue/battle native samples. Human ranked ladder eligibility agrees with full first pass."},
+    {"topic": "first_main_attack", "passed": true, "observed": "Ninetales has two Water and faces120HP Rotom at114, both score tracks empty. Binding Snow named at116; opponent current turn5 with Rotom40 at121 establishes preceding owner global4, ownT2. Second order independently explicit at171.3."},
+    {"topic": "global5_energy_route", "passed": true, "observed": "At138 zone Lightning remains and Active40HP Rotom has one Lightning. At144 zone is empty, benched100HP Rotom has Lightning and Active still one. Elemental Switch named at146. At150 Active40HP Rotom has two Lightning and Bench none. This supports Bench attachment followed by transfer, without retreat."},
+    {"topic": "no_target_and_xspeed", "passed": true, "observed": "At138 explicit no-cards-in-deck target message with Poke Ball in discard. X Speed named139. Rotom40 remains Active through144,150,152,155 and162, while Rotom100 remains Bench. No retreat or new Pokemon is credited."},
+    {"topic": "junk_spark_hp_score", "passed": true, "observed": "Junk Spark named152, red90 damage overlay154, settled Ninetales60HP155, from150HP150. No KO/point award. Terminal confirms0-0 and owner's100 total damage, consistent with Gnaw20 plus Binding Snow80."},
+    {"topic": "terminal", "passed": true, "observed": "At162 explicit Your opponent conceded. At171.3 Victory versus ろっき, went second,6 turns,0-0 points,damage100. No hypothetical final attack or KO credited."}
+  ],
+  "ordinary_turn_samples": [
+    {"interval_seconds": [50,69], "finding": "Two120HP Rotom, owner60HP Vulpix and empty Bench at50; Research play56, first Water62, named Gnaw65 and Active Rotom100HP entering global3 at69. Cape remains in hand and Vulpix60HP. Consistent ordinary development and damage account."},
+    {"interval_seconds": [73,95], "finding": "Order Pad74 and tails78 precede first opponent Bench attachment animation80 and settled Lightning82. Red Card85 replaces owner's six-card hand with Sabrina/two Ninetales94, then owner current turn4 at95. End state matches review; attachment timestamp/order requires erratum below."}
+  ],
+  "findings": [
+    {
+      "severity": "minor",
+      "topic": "global3_chronology",
+      "primary_claim": "REVIEW.md says Bench Lightning attaches71-73 before Order Pad74",
+      "corrected_observation": "Lightning remains available in zone and Bench has none at73/74. Order Pad named74, tails78, zone-to-Bench attachment animation80, settled Bench Lightning82, then Red Card85. Record attachment about80-82 after Order Pad/tails.",
+      "evidence": ["details/t0073.00.jpg", "details/t0074.00.jpg", "details/t0078.00.jpg", "details/t0080.00.jpg", "details/t0082.00.jpg", "details/t0085.00.jpg"],
+      "effect": "No change to outcome, HP/points, first main attack, first-main-attack own-turn value, or global5 Energy routing. Lead notified and will append clarification; frozen primary preserved."
+    }
+  ],
+  "limitations": [
+    "Bounded independent review of retained native evidence, not a second full battle review or every animation frame.",
+    "Source SHA reused from verified identity binding; current stat and fresh ffprobe match binding.",
+    "Hidden hands/decks and full owner20-card list remain unknown. No invented identities or concession motivation.",
+    "No external log, shared registration/index, archival move, or Boss-folder write performed by this reviewer."
+  ]
+}

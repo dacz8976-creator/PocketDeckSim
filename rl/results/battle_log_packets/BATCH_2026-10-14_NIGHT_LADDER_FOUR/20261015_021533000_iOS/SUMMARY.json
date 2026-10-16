@@ -1,0 +1,97 @@
+{
+  "source_filename": "20261015_021533000_iOS.MP4",
+  "source_sha256": "79e90e086586b39d1d9b7e674227d321a1c37f77b21e0054e5725d8dddf79996",
+  "source_bytes": 593306034,
+  "source_duration_seconds": 323.708333,
+  "reviewer": "/root/night_021533",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "scope": "Full visual first pass, prebattle through detailed result",
+  "battle_complete": true,
+  "match_count": 1,
+  "full_available_coverage_complete": true,
+  "independent_acceptance": "pending",
+  "exact_three_item_note_prefix": "1st | Alolan Ninetales ex T4 | opp 1 pts",
+  "match_date_local": "2026-10-14",
+  "source_creation_utc": "2026-10-15T02:15:33Z",
+  "owner": "Dacz8976",
+  "opponent": "•",
+  "opponent_name_limit": "single visible dot/bullet glyph; exact Unicode unknown",
+  "mode": "ranked ladder",
+  "auto_option_observed": false,
+  "computer_battle": false,
+  "result": "loss",
+  "score": {
+    "owner": 0,
+    "opponent": 3
+  },
+  "going_order": "first",
+  "global_turns_played": 10,
+  "damage_done_final_panel": 140,
+  "deck": {
+    "visible_core": [
+      "Team Rocket’s Rattata",
+      "Alolan Vulpix",
+      "Alolan Ninetales ex",
+      "Team Rocket’s Raticate ex"
+    ],
+    "main_attacker": "Alolan Ninetales ex",
+    "raticate_ex_status": "drawn and held, never played",
+    "full_list_known": false
+  },
+  "opponent_deck": {
+    "visible_core": [
+      "Bulbasaur",
+      "Ivysaur (Synthesis)",
+      "Mega Venusaur ex (Critical Bloom)"
+    ],
+    "full_list_known": false
+  },
+  "firstmainattack": {
+    "pokemon": "Alolan Ninetales ex",
+    "attack": "Binding Snow",
+    "damage": 80,
+    "owner_turn": 4,
+    "global_turn": 7,
+    "source_seconds_approx": [
+      214,
+      218
+    ],
+    "opponent_points_before_attack": 1,
+    "owner_points_before_attack": 0,
+    "evidence": [
+      "evidence/t0212.50.jpg",
+      "evidence/t0215.00.jpg",
+      "evidence/t0217.50.jpg"
+    ]
+  },
+  "supporting_attacks": [
+    {
+      "owner_turn": 2,
+      "pokemon": "Team Rocket’s Rattata",
+      "attack": "Ambush",
+      "coin": "Heads",
+      "damage": 40
+    },
+    {
+      "owner_turn": 3,
+      "pokemon": "Team Rocket’s Rattata",
+      "attack": "Ambush",
+      "coin": "Tails",
+      "damage": 20
+    }
+  ],
+  "terminal_sequence": {
+    "first_ko": "Critical Bloom knocks out Team Rocket’s Rattata for1point",
+    "decisive_item": "Repel",
+    "repel_evidence": "evidence/t0296.00.jpg",
+    "last_ko": "Critical Bloom120 knocks out Alolan Ninetales ex70HP for2points",
+    "result_evidence": [
+      "evidence/t0315.00.jpg",
+      "evidence/t0323.00.jpg"
+    ]
+  },
+  "external_write_performed": false,
+  "shared_write_performed": false,
+  "source_move_performed": false
+}

@@ -1,0 +1,105 @@
+{
+  "accepted": true,
+  "source_filename": "20261015_015320000_iOS.MP4",
+  "source_sha256": "9a1e0725ad0ac4b3dd3fc8c445e08b3c16be7edbbd9dd9d7b1f7c1333b30c953",
+  "source_bytes": 858013310,
+  "duration_seconds": 463.635,
+  "frozen_manifest_sha256": "e14506e2a3f46d51844864db33d5bb7202f7c9d681fe977edc75c157b24a9b26",
+  "frozen_manifest_sha256_before": "e14506e2a3f46d51844864db33d5bb7202f7c9d681fe977edc75c157b24a9b26",
+  "frozen_file_count": 195,
+  "frozen_files_match": true,
+  "frozen_files_match_before": true,
+  "frozen_files_match_after": true,
+  "primary_unchanged": true,
+  "mismatches": [],
+  "reviewer": "/root/check_night_015320",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "checked_utc": "2026-10-15T02:52:07.1008579Z",
+  "native_frames_inspected": [
+    "evidence/t0000.00.jpg",
+    "evidence/t0004.00.jpg",
+    "evidence/t0073.00.jpg",
+    "evidence/t0098.00.jpg",
+    "evidence/t0104.00.jpg",
+    "evidence/t0110.00.jpg",
+    "evidence/t0254.00.jpg",
+    "evidence/t0264.00.jpg",
+    "evidence/t0180.00.jpg",
+    "evidence/t0234.00.jpg",
+    "evidence/t0306.00.jpg",
+    "evidence/t0312.00.jpg",
+    "evidence/t0320.00.jpg",
+    "evidence/t0322.00.jpg",
+    "evidence/t0362.00.jpg",
+    "evidence/t0368.00.jpg",
+    "evidence/t0380.00.jpg",
+    "evidence/t0392.00.jpg",
+    "evidence/t0414.00.jpg",
+    "evidence/t0418.00.jpg",
+    "evidence/t0429.00.jpg",
+    "evidence/t0438.00.jpg",
+    "evidence/t0441.00.jpg",
+    "evidence/t0442.00.jpg",
+    "evidence/t0412.00.jpg",
+    "evidence/t0424.00.jpg",
+    "evidence/t0432.00.jpg",
+    "evidence/t0436.00.jpg",
+    "evidence/t0447.00.jpg",
+    "evidence/t0448.00.jpg",
+    "evidence/t0452.00.jpg",
+    "evidence/t0462.00.jpg"
+  ],
+  "native_frame_count": 32,
+  "navigation_sheets_inspected": [
+    "sheet_0000.00_0136.00.jpg",
+    "sheet_0046.00_0154.00.jpg",
+    "sheet_0198.00_0322.00.jpg",
+    "sheet_0288.00_0462.00.jpg",
+    "sheet_0334.00_0450.00.jpg"
+  ],
+  "checked_scope": [
+    "Read complete REVIEW.md, COVERAGE.md, SUMMARY.json, UNCERTAINTIES.json and source binding. Verified frozen file hashes before and after semantic inspection.",
+    "Setup, visible deck core, ranked queue, order, no visible Auto option on checked evidence.",
+    "Independent ordinary sequences: owner T1 searches/bench/Cape/Field Blower/Water/Ambush; owner T3 Ninetales Bench evolution/Cape180/Water to Active Vulpix/Gnaw20.",
+    "Point progression owner0-1-2 and opponent0-1-2-3, first MAIN Ninetales attack ownerT4/global8 with opponent2.",
+    "Restriction wording, Rayquaza Bench recharge, final Fire+three Lightning, Elemental Switch, Mega Burst200, Ninetales zero HP and Defeat."
+  ],
+  "findings": [
+    {
+      "type": "append_only_minor_timestamp_correction",
+      "material": false,
+      "primary_claim": "Rainbow Cave replaces Soothing Shore by428s in opponentT6 timeline",
+      "correction": "Soothing Shore is still in play at429s and432s. Rainbow Cave is in play by436s and438s. Bound the replacement to after432s through436s; do not use by428s.",
+      "evidence": [
+        "evidence/t0429.00.jpg",
+        "evidence/t0432.00.jpg",
+        "evidence/t0436.00.jpg",
+        "evidence/t0438.00.jpg"
+      ],
+      "impact": "No change to Trainer identity, final Energy states, outcome, point progression or full-coverage acceptance. This check supplies the correction without editing frozen primary files."
+    }
+  ],
+  "conclusions": {
+    "mode": "ranked ladder supported by Master Ball queue; no Auto option observed in checked evidence",
+    "deck_core": "Deck13-A, Alolan Vulpix/Alolan Ninetales ex and Team Rockets Rattata/Raticate ex",
+    "order": "2nd",
+    "first_main_attack": "Alolan Ninetales ex Binding Snow80 on ownerT4/global8, opponent already2points",
+    "earlier_support_attacks": "Rattata Ambush ownerT1 andT2; Vulpix Gnaw ownerT3 remain separate",
+    "point_progression": "0-0 ->1-0 ->1-1 ->1-2 ->2-2 ->2-3 displayed",
+    "terminal": "Mega Rayquaza ex Fire+3 Lightning before attack; four Energy discarded;200damage at447s; caped Ninetales180->0 at448s; opponent third displayed point452s; Defeat vs 脳筋462s",
+    "mechanics": "Active-only Energy Zone restriction is visible; Bench Fire/Lightning recharge and later transfer increase Rayquaza Energy. Do not infer restriction failure or additional general rules."
+  },
+  "limits": [
+    "Bounded independent semantic acceptance, not a second full-video pass. Primary end-to-end coverage was reconciled against retained sheets and selected native frames.",
+    "Original video was not reread or rehashed by this checker; exact source identity is inherited from frozen SOURCE.json and parent assignment.",
+    "Full decklists, hidden hands, exact ability body text and unshown attachment instants stay unknown.",
+    "Final displayed score2-3 is retained. No fourth terminal point is invented.",
+    "No external log, shared event/index, source move or Boss Folder write. Root owns lead acceptance and integration."
+  ],
+  "required_lead_clarification": [],
+  "required_lead_integration": [
+    "Retain this append-only timestamp correction with the accepted primary packet. Primary files remain unchanged."
+  ],
+  "memory_use": "MEMORY.md quick pass only reconfirmed semantic acceptance versus structural checks; current packet evidence controls findings."
+}

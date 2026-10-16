@@ -1,0 +1,33 @@
+{
+  "source_filename": "20261015_210617000_iOS.MP4",
+  "source_sha256": "f1c9f16ca8fca83bc466aa8698fabb6297ceba504284a8bf6a8ee3be9d273cea",
+  "material_outcome_uncertainties": [],
+  "items": [
+    {
+      "topic": "Hidden deck and hands",
+      "limit": "No exact20-card list or unseen opponent cards inferred; revealed core only."
+    },
+    {
+      "topic": "Global3 second Lucky Ice Pop flip",
+      "seconds": [
+        153,
+        170
+      ],
+      "observed": "Two20HP heals toMeloetta60; firstheads visible.",
+      "unresolved": "Secondflip outcome not independently resolved; does not affect state or result."
+    },
+    {
+      "topic": "Timing and energy animation",
+      "limit": "Turn windows approximate; manual ownerDarkness placements and consequentialEnergy state tracked, but obscured individual opponentEnergy-animation order not reconstructed."
+    },
+    {
+      "topic": "Animated HP at234",
+      "limit": "Meloetta20 is captured during the damage/Poison sequence; do not interpret it as stable pre/post-attack HP. Firstpoint explicitly verified240."
+    },
+    {
+      "topic": "Canonical ladder deck identity",
+      "limit": "Opening selects New deck16 slot02; matching existing canonical deck is a lead decision, not an exact deck-list determination."
+    }
+  ],
+  "resolved_energy_note": "Original-resolution states resolve the energy targets: Active regular Glimmora gets ownerT5 Darkness; Regigigas third Darkness on ownerT6; Kingambit manualDarkness ownerT7/T8; GigaTurbo generatedColorless toAlolanMuk. The lastfullboard clearly distinguishesColorlessMuk fromDarknessKingambit."
+}
