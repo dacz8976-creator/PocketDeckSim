@@ -1680,11 +1680,15 @@ impl PlayoutPlayer {
             let (world, _, _, _) = sample(0);
             attacks.iter().map(|a| attack_effects(&world, a)).collect::<Vec<AttackEffect>>()
         }));
-        let Ok(effects) = effects else { return };
+        let Ok(effects) = effects else {
+            report.reason = format!("{}; _atk looked: effects failed", report.reason);
+            return;
+        };
         // km's own move is the km line: its attack among the attacks, else its move joined as a line when its line attacks.
         let km = report.candidates[0].clone();
         let moves = atk_moves(&attacks, &effects, &km, report.chosen != 0);
         if moves.is_empty() {
+            report.reason = format!("{}; _atk looked: no attack does anything", report.reason);
             return;
         }
         // The chosen move and each line, played from every sampled world and seed, with the opponent's points watched.
@@ -1707,6 +1711,7 @@ impl PlayoutPlayer {
             .collect();
         let rounds: Vec<Vec<(f64, bool, f64)>> = rounds.into_iter().flatten().collect();
         if rounds.is_empty() {
+            report.reason = format!("{}; _atk looked: play-outs failed", report.reason);
             return;
         }
         let n = rounds.len() as f64;
@@ -2248,6 +2253,34 @@ mod tests {
         let moves = atk_moves(&attacks, &effects, &km(&end), true);
         assert_eq!(moves.iter().map(|m| m.2).collect::<Vec<_>>(), vec![false, false, true]);
         assert_eq!(atk_moves(&attacks, &effects, &km(&end), false).len(), 2, "not km's line, no extra line");
+    }
+
+    /// M2: a Sing-only board (Sing only puts to sleep: nothing is damaged). `_atk` looked, found nothing that does anything,
+    /// and says so.
+    #[test]
+    fn atk_says_it_looked_when_no_attack_does_anything() {
+        use crate::models::EnergyType;
+        let mut game = crate::test_support::get_test_game_with_board(
+            vec![mon(CardId::PA022Jigglypuff).with_energy(vec![EnergyType::Colorless])],
+            vec![mon(CardId::B3b055Snorlax)],
+        );
+        let mut state = game.get_state_clone();
+        state.move_generation_stack.clear();
+        game.set_state(state);
+        let state = game.get_state_clone();
+        let (deck_a, deck_b) = crate::test_support::load_test_decks();
+        let params = PlayoutParams::parse_ky("3_r4_c12_z2_real_t0_poolmeta").unwrap();
+        let mut p = PlayoutPlayer::with_extra_lists(deck_a, deck_b, params, Vec::new());
+        let observation = PlayerObservation::from_state(&state, 0, &crate::observation::RevealedKnowledge::default());
+        let actions = state.generate_possible_actions().1;
+        let mut report = p.evaluate(&mut StdRng::seed_from_u64(3), &observation, &actions);
+        // The review is run on its own, with the pilot's choice set to the move that is not an attack.
+        let idle = report.candidates.iter().position(|c| !matches!(c.action.action, crate::actions::SimpleAction::Attack(_))).expect("a move that is not an attack");
+        report.chosen = idle;
+        report.candidates[idle].attacks_this_turn = 0;
+        p.atk_review(&mut report, &observation, &actions, 7, 0.25);
+        assert!(report.reason.contains("_atk looked: no attack does anything"), "{}", report.reason);
+        assert_eq!(report.chosen, idle, "nothing is played in its place");
     }
 
     fn attack_of(state: &State, title: &str) -> Action {
