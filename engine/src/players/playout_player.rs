@@ -183,6 +183,10 @@ pub struct PlayoutParams {
     /// at its owner's current count of own knock-outs (value_functions.rs `clock_attack_damage`). The simulated opponent
     /// stays plain km<depth>. Only ky codes take it.
     pub blade: bool,
+    /// ky `_count` (off by default; implies `_blade`, so `blade` is on whenever this is): on ky's own seat, km<depth> also
+    /// counts a victim with a knock-out-points coin as half a point and prices the Blade at the count its owner will have at
+    /// each hit (value_functions.rs `kt_clock_count`). Spelled back as `_blade_count`. Only ky codes take it.
+    pub count: bool,
 }
 
 impl PlayoutParams {
@@ -206,12 +210,13 @@ impl PlayoutParams {
             punch: false,
             queue: false,
             blade: false,
+            count: false,
         }
     }
 
     /// Parses the code after the `ky` prefix (lowercase): the `kx` parts, with the closest-list fallback.
     pub fn parse_ky(rest: &str) -> Result<Self, String> {
-        let (mut infer, mut punch, mut queue, mut blade) = (false, false, false, false);
+        let (mut infer, mut punch, mut queue, mut blade, mut count) = (false, false, false, false, false);
         let kept: Vec<&str> = rest
             .split('_')
             .enumerate()
@@ -221,6 +226,7 @@ impl PlayoutParams {
                     "punch" => Some(&mut punch),
                     "queue" => Some(&mut queue),
                     "blade" => Some(&mut blade),
+                    "count" => Some(&mut count),
                     _ => None,
                 };
                 match switch {
@@ -234,7 +240,7 @@ impl PlayoutParams {
             .map(|(_, part)| part)
             .collect();
         Self::parse(&kept.join("_"))
-            .map(|params| PlayoutParams { closest: true, infer, punch, queue, blade, ..params })
+            .map(|params| PlayoutParams { closest: true, infer, punch, queue, blade: blade || count, count, ..params })
             .map_err(|e| e.replacen("kx", "ky", 3))
     }
 
@@ -305,7 +311,7 @@ impl PlayoutParams {
     /// them are as before).
     pub fn code(&self) -> String {
         format!(
-            "{}{}_r{}_c{}_z{}_{}_t{}{}_pool{}{}{}{}{}{}{}{}{}{}",
+            "{}{}_r{}_c{}_z{}_{}_t{}{}_pool{}{}{}{}{}{}{}{}{}{}{}",
             if self.closest { "ky" } else { "kx" },
             self.depth,
             self.rollouts,
@@ -323,7 +329,8 @@ impl PlayoutParams {
             if self.infer { "_infer" } else { "" },
             if self.punch { "_punch" } else { "" },
             if self.queue { "_queue" } else { "" },
-            if self.blade { "_blade" } else { "" }
+            if self.blade { "_blade" } else { "" },
+            if self.count { "_count" } else { "" }
         )
     }
 }
@@ -593,13 +600,15 @@ struct Core {
     queue: bool,
     /// ky `_blade`: the same, for pricing Overlord's Blade at the count.
     blade: bool,
+    /// ky `_count`: the same, for kmbc's pricing (implies `blade`).
+    count: bool,
 }
 
 impl Core {
     /// km<depth> for the pilot's own seat: plain km<depth> unless `_punch`, `_queue` or `_blade` is on.
     fn own_km(&self, deck: Deck, opponent_list: &Deck) -> Box<dyn Player> {
         if self.punch || self.queue || self.blade {
-            km_with_corrections(deck, self.depth, self.punch, self.queue, self.blade)
+            km_with_corrections(deck, self.depth, self.punch, self.queue, self.blade, self.count)
         } else {
             get_player(deck, opponent_list, &PlayerCode::KM { max_depth: self.depth })
         }
@@ -618,7 +627,7 @@ impl PlayoutPlayer {
     /// The pilot with these extra lists (tests; `new` passes those of `KX_EXTRA_LISTS`).
     pub fn with_extra_lists(deck: Deck, opponent_list: Deck, params: PlayoutParams, extra_lists: Vec<ExtraList>) -> Self {
         let km = if params.punch || params.queue || params.blade {
-            km_with_corrections(deck.clone(), params.depth, params.punch, params.queue, params.blade)
+            km_with_corrections(deck.clone(), params.depth, params.punch, params.queue, params.blade, params.count)
         } else {
             get_player(deck.clone(), &opponent_list, &PlayerCode::KM { max_depth: params.depth })
         };
@@ -657,7 +666,7 @@ impl PlayoutPlayer {
                 pool.iter().find(|(_, d)| id_multiset(d) == target).map(|(name, _)| (name.clone(), opponent_list.clone()))
             })
             .flatten();
-        let core = Core { deck, pool, meta, listed, extras, lab, depth: params.depth, tools: params.tools, closest: params.closest && !params.infer, punch: params.punch, queue: params.queue, blade: params.blade };
+        let core = Core { deck, pool, meta, listed, extras, lab, depth: params.depth, tools: params.tools, closest: params.closest && !params.infer, punch: params.punch, queue: params.queue, blade: params.blade, count: params.count };
         PlayoutPlayer { params, km, core, printed: false, decisions: 0, millis: 0.0, omniscient: 0 }
     }
 
@@ -1852,6 +1861,27 @@ mod tests {
         assert_eq!(all.code(), format!("ky{base}_infer_punch_queue_blade"));
         assert!(crate::players::parse_player_code("kx3_blade").is_err());
         assert!(crate::players::parse_player_code("ky3_bladex").is_err());
+    }
+
+    /// `_count` (ky only, off by default): implies `_blade`, parsed in any order, spelled back as `_blade_count` (the slow
+    /// `ky3_blade_count`), refused on kx.
+    #[test]
+    fn ky_count_implies_blade_parses_round_trips_and_is_off_by_default() {
+        let base = "3_r16_c12_z2_real_t0_poolmeta";
+        let off = PlayoutParams::parse_ky(base).unwrap();
+        assert!(!off.count);
+        let on = PlayoutParams::parse_ky(&format!("{base}_count")).unwrap();
+        assert!(on.count && on.blade);
+        assert_eq!(on, PlayoutParams::parse_ky(&format!("{base}_blade_count")).unwrap());
+        assert_eq!(on, PlayoutParams::parse_ky(&format!("{base}_count_blade")).unwrap());
+        assert_eq!(on.code(), format!("ky{base}_blade_count"));
+        assert_eq!(crate::players::parse_player_code(&on.code()).unwrap(), crate::players::PlayerCode::KX { params: on.clone() });
+        assert_eq!(PlayoutParams { count: false, ..on.clone() }, PlayoutParams::parse_ky(&format!("{base}_blade")).unwrap());
+        let all = PlayoutParams::parse_ky(&format!("{base}_count_queue_punch_infer")).unwrap();
+        assert!(all.count && all.blade && all.queue && all.punch && all.infer);
+        assert_eq!(all.code(), format!("ky{base}_infer_punch_queue_blade_count"));
+        assert!(crate::players::parse_player_code("kx3_count").is_err());
+        assert!(crate::players::parse_player_code("ky3_countx").is_err());
     }
 
     /// With `_infer` on, ky3 builds an inferred list where none is consistent (as kx3 does); off, it takes the closest.

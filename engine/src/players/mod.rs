@@ -215,6 +215,13 @@ pub enum PlayerCode {
     /// threat clock (ky3 `_blade`'s fast code; rl/results/next_pilot_2026-10/KINGAMBIT_ITEM7.md section 1;
     /// value_functions::public_clock_effect_kmb_value_function). Equal to km<N> wherever that count is 0.
     KMB { max_depth: usize },
+    /// 'kmbc<N>': 'kmb<N>' with all of ky3 `_count` (expected points for a victim with a knock-out-points coin; the Blade priced
+    /// at the count its owner will have at each hit, with the other side's knock-outs as the schedule;
+    /// rl/results/next_pilot_2026-10/KINGAMBIT_ITEM7.md section 2; value_functions::public_clock_effect_kmbc_value_function).
+    KMBC { max_depth: usize },
+    /// 'kmbd<N>': 'kmb<N>' and part 1 of `_count` only (expected points), the diagnostic
+    /// (value_functions::public_clock_effect_kmbd_value_function).
+    KMBD { max_depth: usize },
     /// 'kx<N>[_r<R>][_c<cap>][_z<z>][_lab|_real][_t<s>][_trace]': the play-out chooser on top of km<N> (branch
     /// claude/playout-pilot, Oct 2; DESIGN.md sections 5 and 9; playout_player.rs). Every distinct legal move, up to a cap,
     /// played out R times with km<N> on both sides from states sampled from its own observation; km<N>'s move kept within
@@ -295,6 +302,18 @@ pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
     // starts with 'ky'.
     if let Some(rest) = lower.strip_prefix("ky") {
         return playout_player::PlayoutParams::parse_ky(rest).map(|params| PlayerCode::KX { params });
+    }
+    // 'kmbc<N>' and 'kmbd<N>' (see PlayerCode::KMBC, KMBD), before 'kmb<N>', which would reject them.
+    for (prefix, make) in [
+        ("kmbc", (|max_depth| PlayerCode::KMBC { max_depth }) as fn(usize) -> PlayerCode),
+        ("kmbd", (|max_depth| PlayerCode::KMBD { max_depth }) as fn(usize) -> PlayerCode),
+    ] {
+        if let Some(depth) = lower.strip_prefix(prefix) {
+            return depth
+                .parse::<usize>()
+                .map(make)
+                .map_err(|_| format!("Invalid player code: {s}. Use '{prefix}<number>', e.g. '{prefix}3'"));
+        }
     }
     // 'kmb<N>' (see PlayerCode::KMB): km + the Blade at the count. Before 'km<N>', which would reject it.
     if let Some(depth) = lower.strip_prefix("kmb") {
@@ -512,14 +531,16 @@ pub fn create_players(
 }
 
 /// km<N> for ky's own seat, with its km corrections: `punch` (`_punch`: Mega Kangaskhan ex's forecast per punch) and `queue`
-/// (`_queue`: a from-attack damage frame resolved before scoring) and `blade` (`_blade`: Overlord's Blade priced at its owner's
-/// count). With all off it is `get_player`'s km<N>, field for field.
-pub fn km_with_corrections(deck: Deck, max_depth: usize, punch: bool, queue: bool, blade: bool) -> Box<dyn Player> {
-    let value_function: expectiminimax_player::ValueFunction = match (punch, blade) {
-        (false, false) => Box::new(value_functions::public_clock_effect_km_value_function),
-        (true, false) => Box::new(value_functions::public_clock_effect_km_punch_value_function),
-        (false, true) => Box::new(value_functions::public_clock_effect_kmb_value_function),
-        (true, true) => Box::new(value_functions::public_clock_effect_km_punch_blade_value_function),
+/// (`_queue`: a from-attack damage frame resolved before scoring), `blade` (`_blade`: Overlord's Blade priced at its owner's
+/// count) and `count` (`_count`, which implies `blade`: kmbc's pricing). With all off it is `get_player`'s km<N>, field for field.
+pub fn km_with_corrections(deck: Deck, max_depth: usize, punch: bool, queue: bool, blade: bool, count: bool) -> Box<dyn Player> {
+    let value_function: expectiminimax_player::ValueFunction = match (punch, blade || count, count) {
+        (false, false, _) => Box::new(value_functions::public_clock_effect_km_value_function),
+        (true, false, _) => Box::new(value_functions::public_clock_effect_km_punch_value_function),
+        (false, true, false) => Box::new(value_functions::public_clock_effect_kmb_value_function),
+        (true, true, false) => Box::new(value_functions::public_clock_effect_km_punch_blade_value_function),
+        (false, true, true) => Box::new(value_functions::public_clock_effect_kmbc_value_function),
+        (true, true, true) => Box::new(value_functions::public_clock_effect_km_punch_count_value_function),
     };
     Box::new(PublicPricingPlayer {
         search: ExpectiMiniMaxPlayer {
@@ -732,7 +753,9 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
         | PlayerCode::KTB { max_depth }
         | PlayerCode::KTC { max_depth }
         | PlayerCode::KM { max_depth }
-        | PlayerCode::KMB { max_depth } => {
+        | PlayerCode::KMB { max_depth }
+        | PlayerCode::KMBC { max_depth }
+        | PlayerCode::KMBD { max_depth } => {
             let value_function: expectiminimax_player::ValueFunction = match player {
                 PlayerCode::KOA { .. } => Box::new(value_functions::public_clock_effect_koa_value_function),
                 PlayerCode::KOB { .. } => Box::new(value_functions::public_clock_effect_kob_value_function),
@@ -749,6 +772,8 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
                 PlayerCode::KTC { .. } => Box::new(value_functions::public_clock_effect_ktc_value_function),
                 PlayerCode::KM { .. } => Box::new(value_functions::public_clock_effect_km_value_function),
                 PlayerCode::KMB { .. } => Box::new(value_functions::public_clock_effect_kmb_value_function),
+                PlayerCode::KMBC { .. } => Box::new(value_functions::public_clock_effect_kmbc_value_function),
+                PlayerCode::KMBD { .. } => Box::new(value_functions::public_clock_effect_kmbd_value_function),
                 _ => Box::new(value_functions::public_clock_effect_kor_value_function),
             };
             Box::new(PublicPricingPlayer {
@@ -971,6 +996,18 @@ mod s42_tier_parse_tests {
         assert_eq!(parse_player_code("KMB5").unwrap(), PlayerCode::KMB { max_depth: 5 });
         assert_eq!(parse_player_code("km3").unwrap(), PlayerCode::KM { max_depth: 3 });
         for bad in ["kmb", "kmbx", "kmb3x", "kmb1a"] {
+            assert!(parse_player_code(bad).is_err(), "{bad}");
+        }
+    }
+
+    /// kmbc<N> and kmbd<N> (ky3 `_count`'s fast codes): parsed before kmb<N>; kmb3 and km3 still parse as before.
+    #[test]
+    fn kmbc_and_kmbd_parse_before_kmb_and_the_older_codes_are_unchanged() {
+        assert_eq!(parse_player_code("kmbc3").unwrap(), PlayerCode::KMBC { max_depth: 3 });
+        assert_eq!(parse_player_code("KMBD2").unwrap(), PlayerCode::KMBD { max_depth: 2 });
+        assert_eq!(parse_player_code("kmb3").unwrap(), PlayerCode::KMB { max_depth: 3 });
+        assert_eq!(parse_player_code("km3").unwrap(), PlayerCode::KM { max_depth: 3 });
+        for bad in ["kmbc", "kmbd", "kmbcx", "kmbc3x", "kmbd1a", "kmbe3"] {
             assert!(parse_player_code(bad).is_err(), "{bad}");
         }
     }
