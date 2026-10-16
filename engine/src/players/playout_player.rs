@@ -1649,6 +1649,63 @@ impl PlayoutPlayer {
     }
 }
 
+/// Print-only score dump (`PG_DUMP` set, as the pause-games harness sets it for km's root scores): after each decision, every
+/// candidate's mean play-out score, its paired difference from km's move with the standard error, the rounds, which is km's move
+/// and which was played, the reason and the drops (ky3 item 7: F's and C's scores at 203719 t17 and 010837 t03). It reads the
+/// finished report and changes nothing.
+fn score_dump(report: &DecisionReport) {
+    eprintln!(
+        "PGPLAY turn={} actor={} candidates={} rounds={} km={} chosen={} reason={}",
+        report.turn,
+        report.actor,
+        report.candidates.len(),
+        report.rounds,
+        crate::kg_log::label(&report.candidates[report.km3].action),
+        crate::kg_log::label(&report.candidates[report.chosen].action),
+        report.reason
+    );
+    for (i, c) in report.candidates.iter().enumerate() {
+        eprintln!(
+            "PGPLAY   {:>12.6} diff={:>9.6} se={:>9.6} rounds={} {}{}{}",
+            c.score,
+            c.diff,
+            c.se,
+            c.rounds,
+            crate::kg_log::label(&c.action),
+            if i == report.km3 { " [km]" } else { "" },
+            if i == report.chosen { " [played]" } else { "" }
+        );
+    }
+    for d in &report.dropped {
+        eprintln!("PGPLAY   dropped {} ({})", d.label, d.reason);
+    }
+}
+
+/// What the last play-out decision on this thread did, for the logger (`kg_log`): km's move, the move played, and whether the
+/// pilot changed it. Left by `decision_fn` on the calling thread (play-outs run on other threads and never touch it).
+#[derive(Debug, Clone, PartialEq)]
+pub struct SwitchNote {
+    pub km: String,
+    pub chosen: String,
+    pub changed: bool,
+}
+
+thread_local! {
+    static SWITCH_NOTE: RefCell<Option<SwitchNote>> = const { RefCell::new(None) };
+}
+
+fn leave_switch_note(report: &DecisionReport) {
+    let km = crate::kg_log::label(&report.candidates[report.km3].action);
+    let chosen = crate::kg_log::label(&report.candidates[report.chosen].action);
+    let changed = report.chosen != report.km3;
+    SWITCH_NOTE.with(|n| *n.borrow_mut() = Some(SwitchNote { km, chosen, changed }));
+}
+
+/// Reads and clears this thread's switch note.
+pub fn take_switch_note() -> Option<SwitchNote> {
+    SWITCH_NOTE.with(|n| n.borrow_mut().take())
+}
+
 /// The pause-games position runner (rl/results/pause_games_decisions_2026-10-02/harness/) patches km's search to print its
 /// root scores whenever `PG_DUMP` is set, and sets it for the whole process. Inside this pilot every km decision of every
 /// play-out would print, so the variable is switched off while the pilot decides and restored after (print-only; no
@@ -1705,6 +1762,10 @@ impl Player for PlayoutPlayer {
         if self.params.trace {
             self.trace(&report);
         }
+        if std::env::var_os("PG_DUMP").is_some() {
+            score_dump(&report);
+        }
+        leave_switch_note(&report);
         report.candidates[report.chosen].action.clone()
     }
 

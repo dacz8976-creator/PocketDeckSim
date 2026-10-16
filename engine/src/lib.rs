@@ -12,6 +12,7 @@ pub mod example_utils;
 pub mod game;
 pub mod gameplay_stats_collector;
 mod hooks;
+pub mod kg_log;
 pub mod models;
 pub mod move_generation;
 pub mod optimize;
