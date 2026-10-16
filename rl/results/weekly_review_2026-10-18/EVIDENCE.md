@@ -25,6 +25,17 @@ Written by the coordinator (Claude, "Multi-agent project orchestration") on Fri 
   - The deck journal has his 10 ladder games filed.
   - He liked the Claydol Heal Block idea ("this is the creativity I like").
 
+## Maintainer input (Oct 16 evening, deckgym Discord)
+
+The original deckgym creator (Discord: AMANSA) thanked Dustin for the PRs and said "those screen recordings are gold".
+- **On bots:** "The best Bot right now follows the Expectiminimax Algorithm on search 3 on the website. But you can get stronger bots in the CLI if you go deeper in depth (maybe 8 is the strongest yet meaningful), but it will take its time to think! ... not useful for simulating thousands of games."
+- **New work:** "I am working on a new generation of AI which will be stronger and faster, was about to post about it."
+- **On PRs:** either single PRs or one batch, with one commit per fix.
+
+What this means for B and C:
+- **A cheap comparison is available now.** Upstream's deeper expectiminimax (depth 5-8) can be run on the stage A plan positions. Position checks need only a few decisions, so the slowness doesn't matter.
+- **His new AI may be the "different way".** Waiting for it, and offering Dustin's labelled real-game positions as a test of whether a bot plays like a person, could beat building our own. Sharing that data is Dustin's call.
+
 ## Spend
 
 - **Weekly meter:** 91% on Fri 21Z (67% on Thu 17Z, 86% on Fri 17Z). It resets Mon 12:00Z.
