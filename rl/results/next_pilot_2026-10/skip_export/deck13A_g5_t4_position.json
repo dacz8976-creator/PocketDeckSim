@@ -1,0 +1,111 @@
+[
+ {
+  "id": "deck13A-game5-T4",
+  "note": "Deck 13-A, ladder game 5 (video 20261014_230328, battle_log_packets/BATCH_2026-10-14_LATE_LADDER_TWO/20261014_230328000_iOS/REVIEW.md), owner went first, own T4 = global turn 7, after the Poke Ball (no target) and the Water to the benched Vulpix, Ilima still in hand. Built by hand from that review and nothing else. Seen and used as given: Alolan Ninetales ex 60 of 180 (Elegant Cape, 2 Water, Alolan Vulpix behind) Active; Alolan Vulpix 60 with 1 Water and Team Rocket's Raticate ex 120 with the stolen Fire (Rattata behind) on the Bench; points 0-1 (Rattata knocked out); the opponent's Entei ex Active at 40 of 140 with no Energy (the one Sabrina brought up), his other Entei ex Benched with 3 Fire, Charmeleon 80 with 1 Fire (Charmander behind) and a second Charmander 70 Benched; no Stadium (Field Blower took Rainbow Cave). The attack Binding Snow (WW, 80 + 20 Water weakness) is legal and knocks out the 40-HP Entei ex for 2 points; the right move per Dustin's line and the review's reading is NOT to attack, keeping the 60-HP Ninetales ex back from the Blazing Beatdown that follows (their benched Entei ex, 3 Fire, knocks it out for the third point). APPROXIMATE WORLD: no opponent list is known beyond his core, so there is no 'filler' key (his unseen cards cycle from the pilot's list, as for any position of an unknown opponent); his hand 4 and deck 5 are counted from the 20 cards (5 on the board, 6 in his discard, 9 left). The owner's discard is read from the turns shown (Rattata, Sightseer, Copycat, Sabrina, Field Blower, 2 Poke Ball); his deck is what the 20-card list of decks/dustin/13-a-ninetales-raticate.txt leaves (6). The video does not show his whole list being inspected, so that list is the saved one. Carry the 'approximate world' label into every result for this case.",
+  "deck": "deck13A",
+  "turn_count": 7,
+  "points": [
+   0,
+   1
+  ],
+  "me": {
+   "hand": [
+    "Ilima A3 149"
+   ],
+   "discard": [
+    "Team Rocket's Rattata B4a 058",
+    "Sightseer B2 150",
+    "Copycat B1 225",
+    "Sabrina A1 225",
+    "Field Blower B3 147",
+    "Poké Ball P-A 005",
+    "Poké Ball P-A 005"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Alolan Ninetales ex B2 029",
+     "hp": 60,
+     "energy": [
+      "Water",
+      "Water"
+     ],
+     "tools": [
+      "Elegant Cape B3b 065"
+     ],
+     "behind": [
+      "Alolan Vulpix B2 028"
+     ]
+    },
+    {
+     "card": "Alolan Vulpix B2 028",
+     "hp": 60,
+     "energy": [
+      "Water"
+     ]
+    },
+    {
+     "card": "Team Rocket's Raticate ex B4a 059",
+     "hp": 120,
+     "energy": [
+      "Fire"
+     ],
+     "behind": [
+      "Team Rocket's Rattata B4a 058"
+     ]
+    }
+   ],
+   "energy_now": "Water",
+   "energy_next": "Water",
+   "knockouts": 1
+  },
+  "opp": {
+   "hand_count": 4,
+   "deck_count": 5,
+   "discard": [
+    "Rainbow Cave B4 155",
+    "Flame Patch B1 217",
+    "Professor's Research P-A 007",
+    "Poké Ball P-A 005",
+    "Poké Ball P-A 005",
+    "Copycat B1 225"
+   ],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Entei ex A4a 010",
+     "hp": 40,
+     "energy": []
+    },
+    {
+     "card": "Entei ex A4a 010",
+     "hp": 140,
+     "energy": [
+      "Fire",
+      "Fire",
+      "Fire"
+     ]
+    },
+    {
+     "card": "Charmeleon B1a 012",
+     "hp": 80,
+     "energy": [
+      "Fire"
+     ],
+     "behind": [
+      "Charmander B2b 007"
+     ]
+    },
+    {
+     "card": "Charmander B2b 007",
+     "hp": 70,
+     "energy": []
+    }
+   ],
+   "energy_now": "Fire",
+   "energy_next": "Fire",
+   "knockouts": 0
+  },
+  "turn_effects": []
+ }
+]

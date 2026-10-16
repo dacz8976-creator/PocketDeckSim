@@ -4,8 +4,10 @@ Source: `DESIGN_NOTE.md` and `DESIGN_NOTE_CASES.md` (read from origin/main). Not
 records already show; "to measure" means gate 0 (km3, F and ky3 with no switch, the same 12 seeds) fills it in. Gate 0 decides each
 case's role: a case is a **positive** only if the baseline meets its property in at most 8 of 12; otherwise it is a **keep check**.
 
+Skip rule (confirmed by the coordinator, Oct 15): a skip stands when the mean is at least the threshold AND the mean is more than 2 SE above 0 (not mean minus 2 SE at least the threshold). Kept.
+
 Pass rules (gate 1). Positive: 10 or more of 12 and at least 4 above the baseline. Negative or keep check: no seed loses what the
-baseline had. A negative counts only if `_atk` looked in at least 6 of its 12 replays; otherwise it is "not exercised".
+baseline had. A negative counts only if `_atk` looked in at least 6 of its 12 replays; otherwise it is "not exercised". Since the M2 fix `_atk` writes "_atk looked: ..." or "_atk: ... played instead" on every look, including "no attack does anything", "effects failed" and "play-outs failed", so 10 v Altaria 1|0 t7 reads as looked.
 `_punch` and `_queue` are judged by their unit tests. The all-switches run must meet every switch's rules, and a failing negative
 stops its switch. A failing right-to-pass case blocks adoption even when it is reported as a known limit.
 
@@ -51,8 +53,8 @@ It is swept at 0.15, 0.25 and 0.5.
 | draft A v Blaziken 0\|0 t2 | no Gnaw | yes | Watch: Rocky Helmet's 20 back plus Sunny Scorching and Burn put the Vulpix in knockout range next turn. Helmet damage carried onto the future Ninetales ex is outside the window. | keeps the attack: fails |
 | 10 v Suicune 4\|1 t3 | evolve Natu, no Peck | yes, if F evolves | Watch: with 2 more benched, Crystal Waltz does 60 = Natu's HP, and an empty Bench loses the game. | not reached |
 | 10 v Altaria 1\|0 t7 | either move | yes | "Does something" fails: Life Drain on a 10-HP Darkrai and Feather with an empty hand change nothing. | not reached |
-| deck 12 game 3 T4 (hand-built, `skip_export/game3_t4_*`) | keep the 40-HP Ariados in front (Pierce), no retreat into Whimsicott ex | no: his line attacks, so "not exercised" | None needed for `_atk`. A keep check for every switch, and the `_expo` negative later. Miraidon ex goes to F and ky3 through `KX_EXTRA_LISTS`. | n/a |
-| deck 13-A G5 T4 (video 20261014_230328; to be built by hand, not yet in `skip_export/`) | no attack: keep the 60-HP Ninetales ex back from the Binding Snow knock-out on Entei-B | yes | Watch: the knock-out makes it 2-1, then their benched Entei-A (3 Fire already) knocks out the 60-HP Ninetales ex for the third point. | not measured |
+| deck 12 game 3 T4 (hand-built, `skip_export/game3_t4_*`) | keep the 40-HP Ariados in front (Pierce), no retreat into Whimsicott ex | no: his line attacks, so "not exercised" | None needed for `_atk`. A keep check for every switch, and the `_expo` negative later. Miraidon ex goes to F and ky3 through `KX_EXTRA_LISTS`: checked Oct 15, the 14-card list loads and a sampled world fills his hand 2 and deck 2 from it (test `a_14_card_extra_list_loads_and_fills_the_hidden_zones`). **Approximate world** (his real deck held 6 more unseen cards): a keep check only when labelled so, never `_expo`'s negative as it stands. | n/a |
+| deck 13-A G5 T4 (video 20261014_230328; built by hand, `skip_export/deck13A_g5_t4_position.json`, **approximate world**: no opponent list, his hand 4 and deck 5 counted; `pg_pos` loads it with no problems) | no attack: keep the 60-HP Ninetales ex back from the Binding Snow knock-out on Entei-B | yes | Watch: the knock-out makes it 2-1, then their benched Entei-A (3 Fire already) knocks out the 60-HP Ninetales ex for the third point. | not measured |
 | 012303 t09 | evolve to Gurdurr and attach, no Strength | no: F's line attacks (all three bots) | None needed: "not exercised", a keep check for every switch. A later positive for the watch used the other way (Mega Absol ex's Poison Barb, the check-up and Darkness Claw knock out Gurdurr for the third point). | keeps the attack, which loses on the spot |
 
 **010837 t09 and t11 (correct passes after the cloud's diagnosis):**
@@ -102,4 +104,4 @@ t16 and deck 12 game 8 T2), `_spread`, and the Kingambit pilot (item 7). Deck 12
 ## H. Positions that did not export
 
 Any position the export drops (km3 on the current engine does not make its recorded `km3_move` in most of 12 seeds) is listed by
-the tool and is not a case. Deck 13-A G5 T4 is not yet built; until it is, its row above is a placeholder and gate 1 cannot score it.
+the tool and is not a case. Deck 13-A G5 T4 is built (see its row in C). Its world is approximate, and every result for it carries that label.
