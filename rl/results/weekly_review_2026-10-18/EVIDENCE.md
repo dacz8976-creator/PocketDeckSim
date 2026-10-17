@@ -37,6 +37,13 @@ The original deckgym creator (Discord: AMANSA) thanked Dustin for the PRs and sa
 - That is the kind of card-combination play Dustin wants, learned without hand-coding.
 - Unknown so far: whether it is one model for all decks or one per deck, its strength numbers, and whether it will be public.
 
+**His earlier public posts** (X, @CodeAMANSA; screenshots Dustin shared on Oct 16):
+- **Kaggle Pokémon TCG competition (physical TCG, judging by the cards shown):** his Ogerpon entry placed 425th of 6,807. It was "trained entirely via self-play for ~10 hours using PPO + League Play", with a model of about 500K parameters: "no transformers, no embeddings, just feature engineering and some network design".
+  - Hand-designed features instead of card numbers is the fix our September RL notes named and never built: describe cards by what they are.
+  - League play (training against a pool of past opponents) is the other piece.
+- **Deck structure (Aug 30):** from 115 Pocket tournaments (June data, via DeckGym's Limitless integration), the winning structure is 8 Pokémon, 7 Supporters and 5 other cards. Champion decks peak at 8 Pokémon (29 decks), then 7 (25).
+  - That is the kind of real-results check Dustin said would make pilot-free checks worth having. His own lists can be compared against it.
+
 What this means for B and C:
 - **A cheap comparison is available now.** Upstream's deeper expectiminimax (depth 5-8) can be run on the stage A plan positions. Position checks need only a few decisions, so the slowness doesn't matter.
 - **His new AI may be the "different way".** Waiting for it, and offering Dustin's labelled real-game positions as a test of whether a bot plays like a person, could beat building our own. Sharing that data is Dustin's call.
