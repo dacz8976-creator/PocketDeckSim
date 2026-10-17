@@ -32,6 +32,11 @@ The original deckgym creator (Discord: AMANSA) thanked Dustin for the PRs and sa
 - **New work:** "I am working on a new generation of AI which will be stronger and faster, was about to post about it."
 - **On PRs:** either single PRs or one batch, with one commit per fix.
 
+**Follow-up at 7:08 PM:** he posted his new AI (x.com/CodeAMANSA, Oct 16). It is "trained via Reinforcement Learning", and it "learned the Rainbow Cave + Flame Patch + Entei ex play all on its own". His caption: "Deck building tools require strong AIs ... Results soon!"
+- His replay viewer shows the AI's probability for each option at each step; in the clip, "Play Rainbow Cave" is at 99%.
+- That is the kind of card-combination play Dustin wants, learned without hand-coding.
+- Unknown so far: whether it is one model for all decks or one per deck, its strength numbers, and whether it will be public.
+
 What this means for B and C:
 - **A cheap comparison is available now.** Upstream's deeper expectiminimax (depth 5-8) can be run on the stage A plan positions. Position checks need only a few decisions, so the slowness doesn't matter.
 - **His new AI may be the "different way".** Waiting for it, and offering Dustin's labelled real-game positions as a test of whether a bot plays like a person, could beat building our own. Sharing that data is Dustin's call.
