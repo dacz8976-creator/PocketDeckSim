@@ -17,7 +17,8 @@ Written by the coordinator (Claude, "Multi-agent project orchestration") on Fri 
 
 - **Upstream engine:**
   - bcollazo merged our PR #383 on Oct 16.
-  - We opened 6 more small card-text PRs, #403-#408, on Oct 16. Each passed upstream's format, lint and test checks first.
+  - We opened 6 more small card-text PRs, #403-#408, on Oct 16. Each passed upstream's format, lint and test checks first. **All six were merged within about 4 hours.**
+  - A second batch of 9 opened on Oct 17, #409-#417 (Rare Candy locks, Eevee, Disguise, Wallace, hit-back by text, Legendary Pulse, Electrical Cord, Will vs Victory Star, double-KO promote order). They were awaiting review at this update.
   - The upstream comparison (main c0fcff86) found nothing upstream that changes a game his decks play.
   - Taking upstream's B4b card data (438 cards, including Mega Garchomp ex) is planned for the next engine update.
 - **For his decks:**
@@ -35,7 +36,8 @@ The original deckgym creator (Discord: AMANSA) thanked Dustin for the PRs and sa
 **Follow-up at 7:08 PM:** he posted his new AI (x.com/CodeAMANSA, Oct 16). It is "trained via Reinforcement Learning", and it "learned the Rainbow Cave + Flame Patch + Entei ex play all on its own". His caption: "Deck building tools require strong AIs ... Results soon!"
 - His replay viewer shows the AI's probability for each option at each step; in the clip, "Play Rainbow Cave" is at 99%.
 - That is the kind of card-combination play Dustin wants, learned without hand-coding.
-- Unknown so far: whether it is one model for all decks or one per deck, its strength numbers, and whether it will be public.
+- **Generalist, confirmed (7:41 PM, verbatim):** "I am trying to have one model that can play every card. A generalist. Even though its harder, is what would have most impact for DeckGym." That is the exact gap that ended our September RL.
+- Still unknown: its demonstrated strength, when it will be available, and whether it will be public.
 
 **His earlier public posts** (X, @CodeAMANSA; screenshots Dustin shared on Oct 16):
 - **Kaggle Pokémon TCG competition (physical TCG, judging by the cards shown):** his Ogerpon entry placed 425th of 6,807. It was "trained entirely via self-play for ~10 hours using PPO + League Play", with a model of about 500K parameters: "no transformers, no embeddings, just feature engineering and some network design".
@@ -50,7 +52,7 @@ What this means for B and C:
 
 ## Spend
 
-- **Weekly meter:** 91% on Fri 21Z (67% on Thu 17Z, 86% on Fri 17Z). It resets Mon 12:00Z.
+- **Weekly meter:** 91% on Fri 21Z (67% on Thu 17Z, 86% on Fri 17Z), and still 91% on Sun 15Z after a quiet weekend. About 9% is left for tonight's review. It resets Mon 12:00Z.
   - The biggest costs were Sonnet's thorough upstream comparison, which he approved, and long-lived sessions re-reading big contexts.
 - **API credits:** about $40 since Oct 14, out of the $200 monthly pool that expires Oct 28. That covered the pilot builds, tools, 6 PRs (~$2.70), research and checks.
 - **Laptop time:** stage A about 10 hours; builds kept to one at a time (WSL has 7.6 GB).
@@ -69,7 +71,7 @@ See `OUTSIDE_IDEAS.md` next to this file.
 - **Top 3, each with a small comparison:**
   1. An AI model as a second opinion only where km3 and kx3 disagree. Test it on 100-150 positions he has labelled, for about $10-30 in credits. It helps if it agrees with him more often than kx3 does.
   2. A "what Dustin would do" guide learned from his recorded games, used only to order the search's moves or break its ties. Test it on whole held-out games. It fails if he hasn't recorded enough games.
-  3. Read the Kaggle and PokéAgent competition write-ups for methods we lack. Whether they can be read is unverified.
+  3. Read the Kaggle and PokéAgent competition write-ups for methods we lack. **Done:** Codex's `COMPETITIONS.md` in this folder completes that research. Read it for C; it supersedes OUTSIDE_IDEAS.md on the competitions.
 - **Not recommended now:** more per-deck reinforcement-learning networks, ReBeL or Student of Games, an AI model as the whole pilot, or more hand-added plan terms before the exam exists.
 
 ## His direction this week (his words are in memory)
@@ -81,8 +83,19 @@ See `OUTSIDE_IDEAS.md` next to this file.
 - The simulator is paused, but he wants it to keep improving "unless it really is impossible".
 - He wants these reviews every Monday.
 
-## Open decisions for Monday
+## Open decisions for this review
 
-- The next pilot step: build the held-out exam first, try outside idea 1 or 2, or take a maintenance week.
+- **The next pilot step.** Options: build the held-out exam first, try outside idea 1 or 2, or take a maintenance week.
+  - **Astra's recommendation (Oct 18 morning):** pick ONE runnable bot experiment aimed at a specific Kingambit planning failure. It should find out, for each failure, whether the useful line is:
+    - (a) missing from the search;
+    - (b) present but scored poorly; or
+    - (c) only paying off beyond the opponent's next turn.
+  - That answer decides between improving the search and trying a learned evaluator. No more broad surveys, no more rounds of small scoring bonuses.
+  - **A concrete form of it:**
+    - Take the stage A positions where the bot didn't follow his plan: the Energy to Regigigas instead of Kingambit at 203719 t09/t11 and 210823 t06; the dropped Glimmet placement at 010706 t13 and 203719 t13; and the counted positives it missed.
+    - Dump km3's scored options to tell (a) from (b).
+    - Run upstream's deeper expectiminimax (depth 5-8, the maintainer's suggestion; slow but fine for a few positions) to test (c).
+    - Cost: a few laptop hours, a few dollars of credits, a small share of the meter.
+  - Weigh it against waiting for the maintainer's generalist AI, which may make our own pilot work unnecessary.
 - Batch 2 of upstream PRs (needs his OK).
 - When to bring in upstream's B4b card data (planned for the next engine update).
