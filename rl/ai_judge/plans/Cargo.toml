@@ -1,0 +1,13 @@
+[package]
+name = "judge_plans"
+version = "0.1.0"
+edition = "2021"
+description = "Lists the legal whole-turn plans of a pg_pos position from the engine's own legal moves, for the AI plan judge. Builds against an engine tree by path; changes nothing in engine/."
+
+[dependencies]
+deckgym = { path = "../../../engine" }
+rand = "0.8"
+serde_json = "1.0"
+
+# not part of the engine's (or any parent's) workspace
+[workspace]
