@@ -1,5 +1,5 @@
 {
- "format": "pds-exam-v1.5",
+ "format": "pds-exam-v1.5.1",
  "created": "2026-10-19",
  "scoring": "Two metrics, fixed before any candidate output. (1) PREFIX agreement, all scored points: the candidate's first segment (its actions up to and including its first chance action: a draw, search, coin or random pick, incl. UseStadium on Mesagoza; or its whole turn if none) is correct if it matches answer.first_segment or the first_segment of an acceptable line. (2) PLAN-SEGMENT agreement: the same test on the points whose answer.segment_scope is 'full' (the scored segment holds all of his turn's strategic actions). The two are reported separately; prefix agreement is not a measure of plan quality. Matching is by REPLAY: apply the candidate's segment and each accepted segment to the position and compare the resulting state up to the chance boundary (board, hand, discard, Energy, Tools, points, Active), so a retreat that renumbers slots is judged by its result, not its labels; label-set matching is only a fallback when replay is unavailable and must be reported as such. All 51 points are scored (Dustin answered the 5 pending points on Oct 19; see key_rule). Points with decided_game true are also reported separately. Points carry their game id: results use a game-level bootstrap, paired across candidates; an unclear difference is 'inconclusive'. Reported per deck kind and answer kind, always with 'three decks only'.",
  "decks": {
@@ -9019,7 +9019,11 @@
     },
     "dustin_answer": {
      "words": "The game was over. I was losing no matter what I did. Attaching energy to rattata would be the smart play normally, but it wasn't going to change anything",
-     "source": "Dustin, Oct 19 (relayed verbatim by the coordinator), with the coordinator's labelling decision"
+     "source": "Dustin, Oct 19 (relayed verbatim by the coordinator), with the coordinator's labelling decision",
+     "correction": {
+      "words": "For 5. I think I thought I had lost, but just finished the video and I won. The energy attachment to rattata didn't matter, but would have been the better move there",
+      "source": "Dustin, Oct 19 (relayed verbatim by the coordinator): supersedes \"the game was over\"; the key stands, the point is not decided_game"
+     }
     },
     "recorded_move_acceptable": false,
     "rejected_alternatives": [
@@ -9030,7 +9034,7 @@
        "Attack:Binding Snow"
       ],
       "reason": "his recorded move",
-      "rejected_because": "Dustin: attaching to Rattata 'would be the smart play normally'; the game was already decided"
+      "rejected_because": "Dustin: attaching the Water to Rattata 'would have been the better move there' (it didn't change the result; he won)"
      }
     ],
     "key_line": [
@@ -9042,7 +9046,7 @@
     "key_source": "dustin"
    },
    "fresh": true,
-   "decided_game": true
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_142546000_iOS-t3",
@@ -9958,5 +9962,5 @@
  ],
  "label_format": "Answer key and legal_root use the AI judge's target-preserving labels: plain labels as before, and actions with arguments as Name#{json} with sorted keys (e.g. a Field Blower Tool discard keeps player, Pokemon and Tool index). build/label_adapter.py converts to and from the legal-moves tool's Name{k:v} form losslessly; compare with same_action() (parsed arguments), never by name alone. answer.legal_steps keeps the tool's raw form.",
  "scope_rule": "A point's segment_scope is set by its shortest accepted segment (coordinator, Oct 19): 'full' only if every accepted line's first segment (his and each acceptable line; pending alternatives don't count) contains all of that line's strategic actions; 'none' if his own first segment contains none of his strategic actions; otherwise 'partial'. Plan-segment agreement uses 'full' points only; 'partial' and 'none' points count for prefix agreement only. segment_scope_by_line and segment_scope_his show the parts; segment_scope_v13 keeps the old value.",
- "key_rule": "The answer key is what a good player of his decks would do, using his judgment. It is his recorded move by default (answer.his_move, which always stays the record); where he said otherwise, answer.key_line holds the key and answer.recorded_move_acceptable is false (2 points: 031512 t2, 215114 t10). answer.first_segment is the key's first segment. His words are in answer.dustin_answer. Lines he or the coordinator ruled out are in answer.rejected_alternatives and never count. decided_game marks a point whose game was already lost; reports show those separately."
+ "key_rule": "The answer key is what a good player of his decks would do, using his judgment. It is his recorded move by default (answer.his_move, which always stays the record); where he said otherwise, answer.key_line holds the key and answer.recorded_move_acceptable is false (2 points: 031512 t2, 215114 t10). answer.first_segment is the key's first segment. His words are in answer.dustin_answer. Lines he or the coordinator ruled out are in answer.rejected_alternatives and never count. decided_game marks a point whose game was already decided; reports show those separately (no point carries it as of v1.5.1)."
 }

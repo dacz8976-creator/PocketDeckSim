@@ -6,7 +6,7 @@ The exam holds 51 decision points from 27 of Dustin's real ranked games (Oct 14-
 - **It asks:** does a bot play these turns the way a good player of his decks would?
 - **No bot has seen it:** no bot was developed on these games (they aren't in stage A, the Oct 18 diagnostic or the pause-game sets), and no bot has been run on these positions.
 
-File: `exam_2026-10-19.json`, format `pds-exam-v1.5`. One file serves any bot: km3, kx3, the AI judge, and later an external bot through upstream's `docs/bot-protocol.md`.
+File: `exam_2026-10-19.json`, format `pds-exam-v1.5.1`. One file serves any bot: km3, kx3, the AI judge, and later an external bot through upstream's `docs/bot-protocol.md`.
 
 ## What a candidate may see (`bot_view`)
 A candidate sees only `points[i].position` and `points[i].legal_root`.
@@ -175,7 +175,7 @@ Dustin answered the 5 pending points. His exact words are stored in `answer.dust
 | 225451 t4 (13-A) | Sabrina pulled up the Rotom ex with 1 Energy so it can't get its second | his move (Sabrina) | keep-Sabrina line: rejected |
 | 031512 t2 (Kingambit) | "Not attacking was a mistake"; Pawniard stays in hand until something is knocked out | Poké Ball, Darkness on Glimmet, Hang Down, Pawniard kept in hand | his recorded no-attack line and bench Pawniard + Hang Down: rejected. answer_kind prepare → attack now (the key now deals damage this turn; old value in `answer_kind_v14`) |
 | 031512 t8 (Kingambit) | not much benefit either way | his move | the Pawniard-Energy line: acceptable too |
-| 215114 t10 (13-A) | the game was over; attaching to Rattata "would be the smart play normally" | the Water goes on the new Rattata | his recorded line: rejected as play quality. `decided_game: true`, so reports show it separately |
+| 215114 t10 (13-A) | attaching to Rattata "would have been the better move there". He first said the game was over, then corrected it on re-watching: he won (v1.5.1) | the Water goes on the new Rattata | his recorded line: rejected as play quality. Not `decided_game` (his correction) |
 
 - **Counts:**
   - answer kinds: prepare 23, attack now 23, sacrifice 5;
@@ -189,3 +189,11 @@ Dustin answered the 5 pending points. His exact words are stored in `answer.dust
   - The chance stop equals the first segment in 68 of 69 lines. The other is Quick-Grow's engine random pick, as in v1.4.
   - After the chance, 42 lines were validated to the end. 3 matched every action and stop only at Hiking Trail's end-of-turn draw, including the new X Speed / Cottonee line (8/8). 24 lines have no chance action.
 - **Snapshot:** `exam_2026-10-19.v14_f71de2a9.json`.
+
+## v1.5.1 (Oct 19): Dustin's correction for 215114 t10
+His words: "For 5. I think I thought I had lost, but just finished the video and I won. The energy attachment to rattata didn't matter, but would have been the better move there".
+- The key is unchanged: the turn's Water goes on the new Rattata.
+- His recorded line is still not acceptable.
+- The point is no longer `decided_game`, so no point carries that flag now.
+- The correction is stored with his earlier words in `answer.dustin_answer.correction`.
+- No line changed, so v1.5's validation stands.
