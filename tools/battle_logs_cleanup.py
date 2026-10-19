@@ -15,7 +15,7 @@ folder. The game packet is the unit; a batch is DELETE when every packet in it p
 committed state of origin/main, which must be what origin has now (no --no-git, no other --ref without --allow-ref-other-than-origin-main, no going on when origin cannot be asked without --allow-offline).
 Only .jpg/.jpeg/.png files inside game packets that pass are ever deleted, each only after its whole folder chain below Recording_QA has been looked at again (no link or junction) and, where the
 file system allows, through a handle on its folder: never json/txt/md or any other file, never a video, never anything outside Recording_QA. Standard library only."""
-import argparse, collections, dataclasses, datetime, hashlib, json, os, posixpath, re, signal, stat, subprocess, sys
+import argparse, collections, dataclasses, datetime, hashlib, json, os, posixpath, re, shlex, signal, stat, subprocess, sys
 
 FRAME_EXT = ('.jpg', '.jpeg', '.png')
 GAME_PACKET = re.compile(r'^\d{8}_\d{6,9}_iOS')                 # 20261013_030351000_iOS (and 20261002_205230000_iOS_auto_sol)
@@ -34,6 +34,11 @@ ACCEPTANCE_KEYS = {'by', 'date', 'games_sha256'}                     # nothing e
 EARLIEST_ACCEPTANCE = datetime.date(2026, 10, 14)                    # the audit list was proposed that day: an earlier date cannot be an acceptance of it
 BATTLE_LOGS_DEFAULT = 'C:/Users/dacz8/OneDrive/Desktop/Battle Logs'  # where the videos are (at its top and in Reviewed\)
 LOCATION_FILE = 'BATTLE_LOGS_LOCATION.json'                         # --move-to writes it into the moved Recording_QA: where the videos stayed
+MEDIA_LOCATIONS = 'MEDIA_LOCATIONS.json'                            # in Battle Logs: Codex's record of where each video is, with the Drive archive entries
+CACHE_DEFAULT = 'C:/Users/dacz8/BattleLogsData/Cache/raw'          # <root>/<sha256>/<original file name>: downloads of archived videos
+DRIVE_CHECK_ENV = 'BATTLE_LOGS_DRIVE_CHECK'
+DRIVE_CHECK_TIMEOUT = 30                                            # seconds: a check that is slower than this is "not confirmed"
+SHA_RE = re.compile(r'^[0-9a-f]{64}$')
 DEFAULT_REF = 'origin/main'
 RELATED_KEYS = {'game_packets', 'games', 'packets', 'related_games', 'related_game_packets', 'related', 'game_folders', 'folders'}      # where RELATED_GAME_PACKETS.json lists the games, in the layouts seen or likely
 NATIVE_FS = {'ext2', 'ext3', 'ext4', 'xfs', 'btrfs', 'tmpfs', 'overlay', 'f2fs', 'zfs', 'jfs'}         # file systems on which a directory handle stays on the folder it opened (not 9p: the mounted Windows drive)
@@ -543,9 +548,147 @@ def video_index_all(dirs):
     return out
 
 
-def check_video(game, videos, where='', fresh=False):
-    """-> (ok, reason): the packet's SOURCE.json names a video, with its size, and some copy of it in Battle Logs has exactly that size (frames can be cut again from it). `fresh` asks the
-    file system again (the sizes of the copies as they are NOW), for the check just before a packet's frames are deleted"""
+class Archive:
+    """where a video can be besides the Battle Logs folders: Codex's MEDIA_LOCATIONS.json (records with the file name, bytes, sha256 and, for an archived one, google_drive_archive.file_id), the
+    local cache of downloads (<cache_root>/<sha256>/<file name>) and a live Drive check. A copy counts only as the rule in check_video says; a Drive record alone never does."""
+
+    def __init__(self, records=None, cache_root=None, drive_cmd=None, timeout=DRIVE_CHECK_TIMEOUT, warnings=()):
+        self.records = records or {}        # lower-case file name -> [record dict]
+        self.cache_root, self.drive_cmd, self.timeout = cache_root, drive_cmd, timeout
+        self.warnings = list(warnings)
+        self._sha = {}                      # (path, size, mtime_ns) -> sha256: kept for this run only
+        self._live = {}                     # file id -> (ok, why): only for the scan, never for the check right before a deletion
+
+    @classmethod
+    def load(cls, files, cache_root=None, drive_cmd=None, timeout=DRIVE_CHECK_TIMEOUT):
+        records, warns = {}, []
+        for f in files:
+            if not os.path.exists(f):
+                continue
+            data = _json(f)
+            if not isinstance(data, dict):
+                warns.append(f'{f} cannot be read as a JSON object; its records are ignored')
+                continue
+            for lst in data.values():
+                for r in (lst if isinstance(lst, list) else []):
+                    if isinstance(r, dict) and isinstance(r.get('filename'), str) and r['filename']:
+                        records.setdefault(r['filename'].lower(), []).append(r)
+        return cls(records, cache_root, drive_cmd, timeout, warns)
+
+    def has_records(self, name):
+        return bool(self.records.get(name.lower()))
+
+    # --- the cache
+    def _sha_of(self, path, st):
+        key = (path, st.st_size, st.st_mtime_ns)
+        if key not in self._sha:
+            self._sha[key] = sha256_of(path)
+        return self._sha[key]
+
+    def cache_check(self, name, want, src_sha=None):
+        """-> (ok, why): a file <cache_root>/<sha256>/<name> whose size is `want` and whose own SHA-256 (computed now) is the sha256 the record (or SOURCE.json) gives"""
+        if not self.cache_root:
+            return False, 'no cache folder configured'
+        shas = {r['sha256'].lower() for r in self.records.get(name.lower(), []) if isinstance(r.get('sha256'), str) and SHA_RE.match(r['sha256'].lower())
+                and (r.get('bytes') in (None, want))}
+        if src_sha is not None:
+            if not (isinstance(src_sha, str) and SHA_RE.match(src_sha.lower())):
+                return False, 'SOURCE.json records a sha256 that is not 64 hex digits'
+            shas = {src_sha.lower()} & shas if shas else {src_sha.lower()}
+        if not shas:
+            return False, 'no record gives a sha256 (with this size) for it'
+        if os.path.basename(name) != name or name in ('.', '..'):
+            return False, 'the video name is not a plain file name'
+        why = []
+        for sha in sorted(shas):
+            d = os.path.join(self.cache_root, sha)
+            fp = os.path.join(d, name)
+            if not os.path.isfile(fp):
+                why.append(f'{sha[:12]}.../{name} is not in the cache')
+                continue
+            if is_link(d) or is_link(fp):
+                why.append(f'{sha[:12]}.../{name} in the cache is a link, not a file')
+                continue
+            try:
+                st = os.stat(fp)
+                if st.st_size != want:
+                    why.append(f'cache copy {sha[:12]}.../{name} has {st.st_size} bytes, SOURCE.json says {want}')
+                    continue
+                got = self._sha_of(fp, st)
+            except OSError as e:
+                why.append(f'cache copy {sha[:12]}.../{name} cannot be read ({type(e).__name__})')
+                continue
+            if got != sha:
+                why.append(f'cache copy {sha[:12]}.../{name} has SHA-256 {got[:12]}..., the record says {sha[:12]}...')
+                continue
+            return True, ''
+        return False, '; '.join(why)
+
+    # --- Drive
+    def drive_check(self, name, want, fresh=False):
+        """-> (ok, why): some Drive record of `name` whose live check (the external command, run now) says the file exists, is not in Trash and has `want` bytes"""
+        recs = [r for r in self.records.get(name.lower(), []) if isinstance(r.get('google_drive_archive'), dict) and isinstance(r['google_drive_archive'].get('file_id'), str)
+                and r['google_drive_archive']['file_id'].strip()]
+        if not recs:
+            return False, 'no Drive record'
+        if not self.drive_cmd:
+            return False, 'it has a Drive record, but no live Drive check is configured (--drive-check-cmd or BATTLE_LOGS_DRIVE_CHECK), and a record alone never counts'
+        why = []
+        for r in recs:
+            a = r['google_drive_archive']
+            fid = a['file_id'].strip()
+            if r.get('bytes') not in (None, want):
+                why.append(f'the Drive record says {r.get("bytes")} bytes, SOURCE.json says {want}')
+                continue
+            if not fresh and fid in self._live:
+                res = self._live[fid]
+            else:
+                res = self._live_check(fid, want, a.get('provider_checksums') if isinstance(a.get('provider_checksums'), dict) else {}, r.get('sha256'))
+                if not fresh:
+                    self._live[fid] = res
+            if res[0]:
+                return True, ''
+            why.append(res[1])
+        return False, '; '.join(why)
+
+    def _live_check(self, fid, want, sums, rec_sha):
+        try:
+            if any(c in fid for c in '\x00\r\n') or fid.startswith('-'):
+                return False, f'Drive file id {fid!r} is not usable'
+            argv = [t.replace('{id}', fid) for t in shlex.split(self.drive_cmd, posix=os.name != 'nt')]
+            if not any('{id}' in t for t in shlex.split(self.drive_cmd, posix=os.name != 'nt')):
+                argv.append(fid)
+            r = subprocess.run(argv, capture_output=True, text=True, timeout=self.timeout, stdin=subprocess.DEVNULL)
+        except subprocess.TimeoutExpired:
+            return False, f'the Drive check for {fid} took more than {self.timeout} s'
+        except (OSError, ValueError) as e:
+            return False, f'the Drive check could not be run ({type(e).__name__})'
+        if r.returncode != 0:
+            return False, f'the Drive check for {fid} failed (exit {r.returncode})'
+        try:
+            j = json.loads(r.stdout)
+        except ValueError:
+            return False, f'the Drive check for {fid} did not print JSON'
+        if not isinstance(j, dict) or j.get('id') != fid:
+            return False, f'the Drive check for {fid} answered for another file or in an unexpected shape'
+        if j.get('exists') is not True:
+            return False, f'Drive says file {fid} does not exist'
+        if j.get('trashed') is not False:
+            return False, f'Drive says file {fid} is in Trash (or does not say it is not)'
+        size = j.get('size')
+        size = int(size) if isinstance(size, str) and size.isdigit() else size
+        if isinstance(size, bool) or size != want:
+            return False, f'Drive says file {fid} has {j.get("size")!r} bytes, SOURCE.json says {want}'
+        for key, mine in (('md5', sums.get('md5')), ('sha256', sums.get('sha256') or rec_sha)):
+            if key in j and isinstance(mine, str) and mine and str(j[key]).lower() != mine.lower():
+                return False, f'Drive says file {fid} has {key} {str(j[key])[:12]}..., the record says {mine[:12]}...'
+        return True, ''
+
+
+def check_video(game, videos, where='', fresh=False, archive=None):
+    """-> (ok, reason): the packet's SOURCE.json names a video, with its size, and the video still exists: (a) some copy of it in Battle Logs has exactly that size, or (b) the download cache has
+    it under its sha256 (from MEDIA_LOCATIONS.json or SOURCE.json), at that size and with that SHA-256, or (c) it is archived in Google Drive and a live check, now, says it is there, not in Trash,
+    with that size. Frames can be cut again from any of these. `fresh` asks the file systems and Drive again (the check just before a packet's frames are deleted)"""
     src = _json(os.path.join(game.path, 'SOURCE.json'))
     src = src if isinstance(src, dict) else {}
     name = src.get('video_basename')
@@ -563,14 +706,25 @@ def check_video(game, videos, where='', fresh=False):
             except OSError:
                 pass
         copies = now
-    if not copies:
-        return False, f'source video {name} not found in Battle Logs' + (f' (looked in {where}; --videos PATH names the folder)' if where else '')
-    if want not in {s for s, _ in copies}:
-        return False, f'source video {name} has {", ".join(str(s) for s, _ in copies)} bytes, SOURCE.json says {want}'
-    return True, ''
+    if want in {s for s, _ in copies}:
+        return True, ''
+    if copies:
+        local = f'source video {name} has {", ".join(str(s) for s, _ in copies)} bytes, SOURCE.json says {want}'
+    else:
+        local = f'source video {name} not found in Battle Logs' + (f' (looked in {where}; --videos PATH names the folder)' if where else '')
+    if archive is None or not archive.has_records(name):
+        return False, local
+    sha = src.get('sha256')
+    ok, cwhy = archive.cache_check(name, want, sha)
+    if ok:
+        return True, ''
+    ok, dwhy = archive.drive_check(name, want, fresh)
+    if ok:
+        return True, ''
+    return False, f'{local}; archived: not in the cache ({cwhy}); Drive: {dwhy}'
 
 
-def scan_qa(qa_root, videos=None, where=''):
+def scan_qa(qa_root, videos=None, where='', archive=None):
     batches = []
     for name in sorted(os.listdir(qa_root)):
         bp = os.path.join(qa_root, name)
@@ -585,7 +739,7 @@ def scan_qa(qa_root, videos=None, where=''):
             if os.path.isdir(cp) and GAME_PACKET.match(child):
                 g = scan_packet(child, cp)
                 if videos is not None:
-                    g.video = check_video(g, videos, where)
+                    g.video = check_video(g, videos, where, archive=archive)
                 b.games.append(g)
             elif os.path.isdir(cp):
                 frames, links, bad = scan_frames(cp)
@@ -757,12 +911,15 @@ def mb(n):
     return f'{n / 1048576:,.0f} MB' if n < 1 << 30 else f'{n / (1 << 30):,.2f} GB'
 
 
-def report(decisions, view, qa_root, index, verbose=False, out=None, videos_from=None, warnings=(), asked_origin=False):
+def report(decisions, view, qa_root, index, verbose=False, out=None, videos_from=None, warnings=(), asked_origin=False, archive=None):
     out = out or sys.stdout
     p = lambda *a: print(*a, file=out)
     p(f'Recording_QA: {qa_root}')
     if videos_from is not None:
         p('Source videos looked for in: ' + ('; '.join(f'{d} ({why})' for d, why in videos_from) or 'NOWHERE (no Battle Logs folder found: give --videos PATH)'))
+    if archive is not None:
+        p(f'Archived videos: cache {archive.cache_root or "(none)"} (a copy counts only with the recorded SHA-256 and size); MEDIA_LOCATIONS records for {len(archive.records)} files; Drive live check: '
+          + (f'{archive.drive_cmd}' if archive.drive_cmd else 'NOT configured, so a video that is only in Drive is never confirmed and its packets stay (--drive-check-cmd, or BATTLE_LOGS_DRIVE_CHECK)'))
     for w in warnings:
         p('WARNING: ' + w)
     p(f'Committed state read from: {view.describe()}' + ('' if asked_origin or view.no_git else ' -- origin was NOT asked whether this is current (--apply asks)'))
@@ -1316,6 +1473,10 @@ def main(argv=None):
     ap.add_argument('--audit-hash', action='store_true', help='print the games_sha256 an acceptance in the audit list must carry for the games listed now (with the ref and commit it was computed from), and exit')
     ap.add_argument('--videos', metavar='PATH', help='the Battle Logs folder that holds the source videos (at its top and in Reviewed/); default: the one recorded in the moved Recording_QA by --move-to, the folder '
                     'Recording_QA is in, and C:/Users/dacz8/OneDrive/Desktop/Battle Logs')
+    ap.add_argument('--cache-root', default=CACHE_DEFAULT, metavar='PATH', help='the folder of downloaded archived videos, <PATH>/<sha256>/<file name> (default ' + CACHE_DEFAULT + '); a cache copy counts only with the recorded size and SHA-256')
+    ap.add_argument('--media-locations', metavar='FILE', help='Codex\'s MEDIA_LOCATIONS.json (default: the one in each Battle Logs folder the tool looks in)')
+    ap.add_argument('--drive-check-cmd', metavar='CMD', default=os.environ.get(DRIVE_CHECK_ENV), help='external command that asks Drive live about one archived file; "{id}" in it is replaced by the Drive file ID (else the ID is appended). '
+                    'It must print JSON with id, exists, trashed and size (optionally md5/sha256). A Drive-only video counts as present only when it says exists:true, trashed:false and the size SOURCE.json records; no command, an error, a timeout or anything else = not confirmed (default: env ' + DRIVE_CHECK_ENV + ')')
     ap.add_argument('--allow-target-in-onedrive', action='store_true', help='with --move-to: accept a target that is itself inside a OneDrive folder (the move would not take Recording_QA out of OneDrive)')
     ap.add_argument('--allow-offline', action='store_true', help='with --apply / --move-to: go on when origin cannot be asked whether origin/main is current (otherwise refused: an acceptance may have been withdrawn since the last fetch)')
     ap.add_argument('--verbose', '-v', action='store_true', help='list the reasons for every held-back game')
@@ -1379,8 +1540,16 @@ def main(argv=None):
         raise ToolError(f'--videos {a.videos!r} is not a folder')
     vdirs, vwarn = video_dirs(qa_root, explicit)
     videos, where = video_index_all(vdirs), '; '.join(d for d, _ in vdirs) or 'no Battle Logs folder found'
-    decisions = filter_batches(decide(scan_qa(qa_root, videos, where), index), set(a.only) if a.only else None)
-    report(decisions, view, qa_root, index, a.verbose, videos_from=vdirs, warnings=vwarn, asked_origin=bool(a.apply and not a.dry_run))
+    if a.media_locations:
+        ml = [to_local(a.media_locations)]
+        if not os.path.isfile(ml[0]):
+            raise ToolError(f'--media-locations {a.media_locations!r} is not a file')
+    else:
+        ml = [os.path.join(d, MEDIA_LOCATIONS) for d, _ in vdirs]
+    archive = Archive.load(ml, os.path.abspath(to_local(a.cache_root)) if a.cache_root else None, a.drive_check_cmd)
+    vwarn = list(vwarn) + archive.warnings
+    decisions = filter_batches(decide(scan_qa(qa_root, videos, where, archive), index), set(a.only) if a.only else None)
+    report(decisions, view, qa_root, index, a.verbose, videos_from=vdirs, warnings=vwarn, asked_origin=bool(a.apply and not a.dry_run), archive=archive)
     if a.apply and not a.dry_run:
         check_fresh(view, a.allow_offline)
 
@@ -1393,7 +1562,7 @@ def main(argv=None):
             check_fresh(view, a.allow_offline)              # asked again after the question: an acceptance withdrawn while it was open still counts
             return True
         res = apply_deletions(decisions, qa_root, index, view=view, only=set(a.only) if a.only else None, confirm=confirm, whole_batches_only=a.whole_batches_only,
-                              video_check=lambda game: check_video(game, videos, where, fresh=True))
+                              video_check=lambda game: check_video(game, videos, where, fresh=True, archive=archive))
         return 1 if res[1] or res.skipped else 0
     return 0
 
