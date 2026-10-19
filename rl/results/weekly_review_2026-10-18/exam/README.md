@@ -85,3 +85,21 @@ A point usually tests more than one deck kind, so the rows aren't independent an
 - **The legal-moves-only patch:** `pg_pos_legal_only.diff`, applied to stage A's pg_pos source. It never constructs a bot.
 - **The worker briefs:** INV, A and B.
 - **Cost:** credit jobs of $1.95 (inventory), $4.14 (build) and $2.35 (labels).
+
+## v1.2 changes (Oct 19, before any candidate output; Astra's checkpoint-1 review)
+Made by a recovery copy of the laptop session. No bot, judge or API call was used. The changes:
+- **Candidate view:** `position.approximate_reason` and `notes` now hold only a generic note. Some of the old text named later draws or coin results; it moved to `answer.build_notes`.
+- **First segments:** recomputed with one rule for every line. A segment ends at the first chance action: a draw, search, coin, random pick, or UseStadium on Mesagoza.
+- **Scope:** each point carries `answer.segment_scope` (full 20 / partial 10 / none 21). Plan-segment agreement uses only "full"; prefix agreement is reported separately and is not plan quality.
+- **Draw-first orders:** settled in `answer.draw_first`.
+  - Accepted for Research, Poké Ball and Lucky Ice Pop (9 points; added to `acceptable`).
+  - Not accepted for Copycat (2 points: the cards played first would be shuffled away).
+- **Dustin's 5 points:** set to `status: pending_dustin`. Their alternatives moved to `pending_alternatives` and don't count. These points aren't scored until he answers.
+- **Matching:** precommitted as replay equivalence, not label sets (see `scoring`).
+- **Fixes:**
+  - LAD-20261016_024253000_iOS-t1: going first, turn 1 has no Energy. `energy_now` is now none, and Attach left `legal_root`.
+  - LAD-20261016_020517000_iOS-t2: `UseStadium` added after Play:Mesagoza; its flip found Glimmet.
+  - The two Quick-Grow Extract lines now name their target: benched Spinarak (in_play_idx 1) and the Active Cottonee (in_play_idx 0).
+- **Every point** carries `fresh: true`.
+- **Re-validation:** all 51 positions re-checked with the legal-moves-only tool (`build/legal_v12.jsonl`): 0 problems, 0 PGDUMP lines.
+- **Previous version:** `exam_2026-10-19.v11_43265934.json`.

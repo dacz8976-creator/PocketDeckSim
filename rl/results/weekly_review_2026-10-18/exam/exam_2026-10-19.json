@@ -1,7 +1,7 @@
 {
- "format": "pds-exam-v1.1",
+ "format": "pds-exam-v1.2",
  "created": "2026-10-19",
- "scoring": "a bot's whole turn is correct if it equals his_move or any acceptable line, compared as action sets (order only where stated); points carry their game id, and results are reported with a game-level bootstrap, paired across bots; an unclear difference is 'inconclusive'. Plans stop at the first chance event (a draw, search or coin, free or not): the candidate's first segment (its actions up to and including its first chance action, or its whole turn if none) is correct if, as a set, it equals answer.first_segment or the first segment of an acceptable line.",
+ "scoring": "Two metrics, fixed before any candidate output. (1) PREFIX agreement, all scored points: the candidate's first segment (its actions up to and including its first chance action: a draw, search, coin or random pick, incl. UseStadium on Mesagoza; or its whole turn if none) is correct if it matches answer.first_segment or the first_segment of an acceptable line. (2) PLAN-SEGMENT agreement: the same test on the points whose answer.segment_scope is 'full' (the scored segment holds all of his turn's strategic actions). The two are reported separately; prefix agreement is not a measure of plan quality. Matching is by REPLAY: apply the candidate's segment and each accepted segment to the position and compare the resulting state up to the chance boundary (board, hand, discard, Energy, Tools, points, Active), so a retreat that renumbers slots is judged by its result, not its labels; label-set matching is only a fallback when replay is unavailable and must be reported as such. Points with answer.status 'pending_dustin' are NOT scored until he answers; their pending alternatives never count. Points carry their game id: results use a game-level bootstrap, paired across candidates; an unclear difference is 'inconclusive'. Reported per deck kind and answer kind, always with 'three decks only'.",
  "decks": {
   "12-ariados-whimsicott-ogerpon": {
    "list_file": "/home/dacz8976/exam/decks/12-ariados-whimsicott-ogerpon.txt",
@@ -167,7 +167,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [],
     "notes": "",
     "heldout": true,
@@ -226,8 +226,24 @@
       "step": 0
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "none",
+    "strategic_actions_after_segment": [
+     "Place:Spinarak@2",
+     "Evolve:Whimsicott ex@0",
+     "Attach:1Grass@0 zone",
+     "Play:Team Rocket's Goo-zooka",
+     "Play:Team Rocket's Goo-zooka",
+     "Attack:Grass Knot"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Poké Ball"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_153908000_iOS-t6",
@@ -315,7 +331,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [],
     "notes": "",
     "heldout": true,
@@ -341,14 +357,14 @@
    "answer": {
     "his_move": [
      "Play:Quick-Grow Extract",
-     "ChooseRandomEvolutionTarget",
+     "ChooseRandomEvolutionTarget{in_play_idx:1,energy_type:Grass}",
      "Attach:1Grass@2 zone",
      "Play:Professor's Research",
      "Attack:Grass Knot"
     ],
     "first_segment": [
      "Play:Quick-Grow Extract",
-     "ChooseRandomEvolutionTarget"
+     "ChooseRandomEvolutionTarget{in_play_idx:1,energy_type:Grass}"
     ],
     "acceptable": [],
     "why_his": "Quick-Grow Extract makes Ariados (a lasting +1 Retreat Cost, so Grass Knot 170 into the Helmeted Mega Venusaur ex) and the Energy starts Ogerpon ex as the second attacker.",
@@ -371,7 +387,7 @@
       "step": 0
      },
      {
-      "forced": "ChooseRandomEvolutionTarget",
+      "forced": "ChooseRandomEvolutionTarget{in_play_idx:1,energy_type:Grass}",
       "legal": [
        "ChooseRandomEvolutionTarget{in_play_idx:0,energy_type:Grass}",
        "ChooseRandomEvolutionTarget{in_play_idx:1,energy_type:Grass}",
@@ -380,8 +396,20 @@
       "step": 1
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "none",
+    "strategic_actions_after_segment": [
+     "Attach:1Grass@2 zone",
+     "Attack:Grass Knot"
+    ],
+    "legal_stopped": "hidden random choice (ChooseRandomEvolutionTarget{in_play_idx:0,energy_type:Grass})"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_142546000_iOS-t7",
@@ -498,7 +526,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [],
     "notes": "",
     "heldout": true,
@@ -556,7 +584,29 @@
        "Attach:1Grass@0 zone",
        "Attack:Grass Knot"
       ],
-      "reason": "Same game-winning Grass Knot 160; X Speed and Hiking Trail change nothing when the KO ends the game (Research must come before evolving the drawn Whimsicott ex)."
+      "reason": "Same game-winning Grass Knot 160; X Speed and Hiking Trail change nothing when the KO ends the game (Research must come before evolving the drawn Whimsicott ex).",
+      "first_segment": [
+       "Evolve:Ariados@2",
+       "Play:Professor's Research"
+      ]
+     },
+     {
+      "line": [
+       "Play:Professor's Research",
+       "Play:Hiking Trail",
+       "Evolve:Ariados@2",
+       "Evolve:Whimsicott ex@3",
+       "Play:X Speed",
+       "Retreat:3",
+       "Play:Team Rocket's Goo-zooka",
+       "Play:Team Rocket's Goo-zooka",
+       "Attach:1Grass@0 zone",
+       "Attack:Grass Knot"
+      ],
+      "reason": "draw-first order of his own line (settled before any candidate output)",
+      "first_segment": [
+       "Play:Professor's Research"
+      ]
      }
     ],
     "why_his": "Second Ariados, two Goo-zookas and a fresh Whimsicott ex (X Speed retreat keeps Ariados's Grass) make Grass Knot 160, knocking out the 160-HP Mega Sharpedo ex for 3 points and the game.",
@@ -623,8 +673,29 @@
       "step": 2
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "draw_first": {
+     "accepted": true,
+     "reason": "Professor's Research first only adds information; the actions he took before it stay available after it"
+    },
+    "segment_scope": "partial",
+    "strategic_actions_after_segment": [
+     "Evolve:Whimsicott ex@3",
+     "Play:X Speed",
+     "Retreat:3",
+     "Play:Team Rocket's Goo-zooka",
+     "Play:Team Rocket's Goo-zooka",
+     "Attach:1Grass@0 zone",
+     "Attack:Grass Knot"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Professor's Research"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_143111000_iOS-t8",
@@ -726,7 +797,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [],
     "notes": "",
     "heldout": true,
@@ -815,8 +886,17 @@
       "step": 3
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "full",
+    "strategic_actions_after_segment": [],
+    "legal_stopped": "end of line"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_143111000_iOS-t10",
@@ -918,7 +998,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown; the Tool on his Mega Swampert ex (a retreat-reducing Tool) was unreadable and is left off",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [
      "Tool on Mega Swampert ex unreadable (retreat cost 1 less); omitted"
     ],
@@ -970,8 +1050,22 @@
       "step": 0
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown; the Tool on his Mega Swampert ex (a retreat-reducing Tool) was unreadable and is left off",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "none",
+    "strategic_actions_after_segment": [
+     "Play:Hiking Trail",
+     "Evolve:Ariados@2",
+     "Place:Cottonee@3",
+     "Attach:1Grass@0 zone"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Professor's Research"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_144627000_iOS-t2",
@@ -1050,7 +1144,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [],
     "notes": "",
     "heldout": true,
@@ -1097,8 +1191,21 @@
       "step": 0
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "none",
+    "strategic_actions_after_segment": [
+     "Place:Spinarak@1",
+     "Place:Cottonee@2",
+     "Attach:1Grass@2 zone"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Professor's Research"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_145449000_iOS-t4",
@@ -1185,7 +1292,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [],
     "notes": "",
     "heldout": true,
@@ -1249,8 +1356,24 @@
       "step": 0
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "none",
+    "strategic_actions_after_segment": [
+     "Place:Cottonee@3",
+     "Evolve:Ariados@1",
+     "Retreat:1",
+     "Evolve:Whimsicott ex@1",
+     "Attach:1Grass@0 zone",
+     "Attack:Pierce"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Poké Ball"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_160506000_iOS-t6",
@@ -1351,7 +1474,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [],
     "notes": "",
     "heldout": true,
@@ -1408,8 +1531,22 @@
       "step": 0
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "none",
+    "strategic_actions_after_segment": [
+     "Place:Spinarak@3",
+     "Evolve:Ariados@2",
+     "Attach:1Grass@1 zone",
+     "Attack:Energized Leaves"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Lisia"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_160506000_iOS-t10",
@@ -1520,7 +1657,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [],
     "notes": "",
     "heldout": true,
@@ -1572,7 +1709,15 @@
        "Attach:1Grass@0 zone",
        "Attack:Pierce"
       ],
-      "reason": "Same switch to Ariados, but X Speed lets the damaged Whimsicott ex keep both Grass."
+      "reason": "Same switch to Ariados, but X Speed lets the damaged Whimsicott ex keep both Grass.",
+      "first_segment": [
+       "Evolve:Ariados@2",
+       "Evolve:Whimsicott ex@3",
+       "Play:X Speed",
+       "Retreat:2",
+       "Attach:1Grass@0 zone",
+       "Attack:Pierce"
+      ]
      },
      {
       "line": [
@@ -1582,7 +1727,14 @@
        "Attach:1Grass@0 zone",
        "Attack:Pierce"
       ],
-      "reason": "Same line switching to the other, identical 90-HP Ariados."
+      "reason": "Same line switching to the other, identical 90-HP Ariados.",
+      "first_segment": [
+       "Evolve:Ariados@2",
+       "Evolve:Whimsicott ex@3",
+       "Retreat:1",
+       "Attach:1Grass@0 zone",
+       "Attack:Pierce"
+      ]
      }
     ],
     "why_his": "Grass Knot does 0 into Safeguard Oricorio, so the damaged Whimsicott ex retreats to a fresh Ariados for Pierce 30; second Whimsicott ex evolves on the Bench.",
@@ -1678,8 +1830,17 @@
       "step": 5
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "full",
+    "strategic_actions_after_segment": [],
+    "legal_stopped": "end of line"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_161324000_iOS-t5",
@@ -1767,7 +1928,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [
      "Charmander/Charmeleon printings chosen by name, HP and attack titles (Combustion, Slash, Ignition)"
     ],
@@ -1804,22 +1965,7 @@
     "first_segment": [
      "Play:Professor's Research"
     ],
-    "acceptable": [
-     {
-      "line": [
-       "Play:Professor's Research",
-       "Evolve:Whimsicott ex@1",
-       "Place:Cottonee@2",
-       "Play:Leaf Cape",
-       "Tool:Leaf Cape@1",
-       "Attach:1Grass@1 zone",
-       "Play:X Speed",
-       "Retreat:1",
-       "EndTurn"
-      ],
-      "reason": "(pending Dustin's answer) X Speed retreats the last Spinarak for free; the caped Whimsicott ex absorbs about 60 of 170 and no point is given up."
-     }
-    ],
+    "acceptable": [],
     "why_his": "Lets the unenergised Spinarak fall to Charmeleon and builds Whimsicott ex on the Bench (Leaf Cape 170 HP, first Grass) for Grass Knot next turn.",
     "ambiguous": "You let your last Spinarak be KO'd for a point; would X Speed retreating it to the 170-HP caped Whimsicott ex (taking about 60) have been better?",
     "legal_steps": [
@@ -1839,8 +1985,42 @@
       "step": 0
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "pending_dustin",
+    "pending_alternatives": [
+     {
+      "line": [
+       "Play:Professor's Research",
+       "Evolve:Whimsicott ex@1",
+       "Place:Cottonee@2",
+       "Play:Leaf Cape",
+       "Tool:Leaf Cape@1",
+       "Attach:1Grass@1 zone",
+       "Play:X Speed",
+       "Retreat:1",
+       "EndTurn"
+      ],
+      "reason": "(pending Dustin's answer) X Speed retreats the last Spinarak for free; the caped Whimsicott ex absorbs about 60 of 170 and no point is given up.",
+      "first_segment": [
+       "Play:Professor's Research"
+      ]
+     }
+    ],
+    "segment_scope": "none",
+    "strategic_actions_after_segment": [
+     "Evolve:Whimsicott ex@1",
+     "Place:Cottonee@2",
+     "Play:Leaf Cape",
+     "Tool:Leaf Cape@1",
+     "Attach:1Grass@1 zone"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Professor's Research"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_161324000_iOS-t7",
@@ -1945,7 +2125,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [
      "Charmander/Charmeleon printings chosen by name, HP and attack titles (Combustion, Slash, Ignition)"
     ],
@@ -1981,7 +2161,20 @@
      "Evolve:Whimsicott ex@1",
      "Play:Professor's Research"
     ],
-    "acceptable": [],
+    "acceptable": [
+     {
+      "line": [
+       "Play:Professor's Research",
+       "Attach:1Grass@0 zone",
+       "Evolve:Whimsicott ex@1",
+       "Attack:Grass Knot"
+      ],
+      "reason": "draw-first order of his own line (settled before any candidate output)",
+      "first_segment": [
+       "Play:Professor's Research"
+      ]
+     }
+    ],
     "why_his": "Second Grass on the caped Whimsicott ex gives Grass Knot 100, enough to KO the 80-HP Charmeleon; the second Whimsicott ex is evolved as backup.",
     "ambiguous": null,
     "legal_steps": [
@@ -2028,8 +2221,23 @@
       "step": 2
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "draw_first": {
+     "accepted": true,
+     "reason": "Professor's Research first only adds information; the actions he took before it stay available after it"
+    },
+    "segment_scope": "partial",
+    "strategic_actions_after_segment": [
+     "Attack:Grass Knot"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Professor's Research"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_164328000_iOS-t4",
@@ -2129,7 +2337,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown; Chien-Pao's Energy count after Diving Icicles taken as 2 Water",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [],
     "notes": "",
     "heldout": true,
@@ -2158,7 +2366,7 @@
      "Place:Cottonee@2",
      "Place:Spinarak@3",
      "Play:Quick-Grow Extract",
-     "ChooseRandomEvolutionTarget",
+     "ChooseRandomEvolutionTarget{in_play_idx:0,energy_type:Grass}",
      "Attach:1Grass@0 zone",
      "Play:Team Rocket's Goo-zooka",
      "Play:Team Rocket's Goo-zooka",
@@ -2188,8 +2396,24 @@
       "step": 0
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown; Chien-Pao's Energy count after Diving Icicles taken as 2 Water",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "none",
+    "strategic_actions_after_segment": [
+     "Place:Cottonee@2",
+     "Place:Spinarak@3",
+     "Attach:1Grass@0 zone",
+     "Play:Team Rocket's Goo-zooka",
+     "Play:Team Rocket's Goo-zooka",
+     "Attack:Grass Knot"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Lisia"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_214436000_iOS-t6",
@@ -2295,7 +2519,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [
      "Swablu, Darkrai and Eevee printings chosen by name and HP only (Mega Altaria ex's Stage 1 base, Bad Dreams Ability not checked against a printing)"
     ],
@@ -2388,8 +2612,17 @@
       "step": 4
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "full",
+    "strategic_actions_after_segment": [],
+    "legal_stopped": "the turn is over (opponent's frame)"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_214436000_iOS-t10",
@@ -2501,7 +2734,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [
      "Swablu, Darkrai and Eevee printings chosen by name and HP only (Mega Altaria ex's Stage 1 base, Bad Dreams Ability not checked against a printing)"
     ],
@@ -2538,7 +2771,22 @@
      "Place:Team Rocket's Rattata@1",
      "Play:Professor's Research"
     ],
-    "acceptable": [],
+    "acceptable": [
+     {
+      "line": [
+       "Play:Professor's Research",
+       "Place:Team Rocket's Rattata@1",
+       "Play:Poké Ball",
+       "Place:Team Rocket's Rattata@2",
+       "Attach:1Water@2 zone",
+       "Attack:Binding Snow"
+      ],
+      "reason": "draw-first order of his own line (settled before any candidate output)",
+      "first_segment": [
+       "Play:Professor's Research"
+      ]
+     }
+    ],
     "why_his": "Benches two Rattata and energises one for Raticate ex while Binding Snow takes Espeon 90 -> 10 and locks its Energy; Ninetales can't be saved.",
     "ambiguous": null,
     "legal_steps": [
@@ -2572,8 +2820,25 @@
       "step": 1
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "draw_first": {
+     "accepted": true,
+     "reason": "Professor's Research first only adds information; the actions he took before it stay available after it"
+    },
+    "segment_scope": "partial",
+    "strategic_actions_after_segment": [
+     "Place:Team Rocket's Rattata@2",
+     "Attach:1Water@2 zone",
+     "Attack:Binding Snow"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Professor's Research"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_215114000_iOS-t6",
@@ -2675,7 +2940,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [],
     "notes": "",
     "heldout": true,
@@ -2723,8 +2988,21 @@
       "step": 0
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "none",
+    "strategic_actions_after_segment": [
+     "Evolve:Alolan Ninetales ex@0",
+     "Attach:1Water@0 zone",
+     "Attack:Binding Snow"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Sightseer"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_215114000_iOS-t12",
@@ -2844,7 +3122,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [],
     "notes": "",
     "heldout": true,
@@ -2932,8 +3210,17 @@
       "step": 3
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "full",
+    "strategic_actions_after_segment": [],
+    "legal_stopped": "end of line"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_225451000_iOS-t4",
@@ -3007,7 +3294,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [],
     "notes": "",
     "heldout": true,
@@ -3045,17 +3332,7 @@
      "Attach:1Water@0 zone",
      "Attack:Binding Snow"
     ],
-    "acceptable": [
-     {
-      "line": [
-       "Place:Alolan Vulpix@1",
-       "Evolve:Alolan Ninetales ex@0",
-       "Attach:1Water@0 zone",
-       "Attack:Binding Snow"
-      ],
-      "reason": "(pending Dustin's answer) Binding Snow the unenergised 100-HP Rotom ex to 20, locking an Active that has no Energy, and keep Sabrina."
-     }
-    ],
+    "acceptable": [],
     "why_his": "Sabrina pulls the energised Rotom ex Active so Binding Snow hits it (120 -> 40) and blocks Energy to it; Vulpix #2 benched.",
     "ambiguous": "Sabrina to bring the energised Rotom ex Active, or Binding Snow the unenergised 100-HP Rotom ex to 20 and keep Sabrina?",
     "legal_steps": [
@@ -3137,8 +3414,34 @@
       "step": 6
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "pending_dustin",
+    "pending_alternatives": [
+     {
+      "line": [
+       "Place:Alolan Vulpix@1",
+       "Evolve:Alolan Ninetales ex@0",
+       "Attach:1Water@0 zone",
+       "Attack:Binding Snow"
+      ],
+      "reason": "(pending Dustin's answer) Binding Snow the unenergised 100-HP Rotom ex to 20, locking an Active that has no Energy, and keep Sabrina.",
+      "first_segment": [
+       "Place:Alolan Vulpix@1",
+       "Evolve:Alolan Ninetales ex@0",
+       "Attach:1Water@0 zone",
+       "Attack:Binding Snow"
+      ]
+     }
+    ],
+    "segment_scope": "full",
+    "strategic_actions_after_segment": [],
+    "legal_stopped": "end of line"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_230328000_iOS-t3",
@@ -3217,7 +3520,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [
      "Charmander printing chosen by HP (70) only"
     ],
@@ -3274,8 +3577,24 @@
       "step": 0
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "none",
+    "strategic_actions_after_segment": [
+     "Place:Alolan Vulpix@1",
+     "Evolve:Alolan Ninetales ex@0",
+     "Place:Team Rocket's Rattata@2",
+     "Play:Field Blower",
+     "DiscardActiveStadium",
+     "Attach:1Water@0 zone"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Poké Ball"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_233402000_iOS-t5",
@@ -3373,7 +3692,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [],
     "notes": "",
     "heldout": true,
@@ -3418,7 +3737,14 @@
        "Attach:1Water@1 zone",
        "EndTurn"
       ],
-      "reason": "Same sacrifice, but the Water goes on the Ninetales ex that survives; Gnaw's 20 doesn't change later KO counts."
+      "reason": "Same sacrifice, but the Water goes on the Ninetales ex that survives; Gnaw's 20 doesn't change later KO counts.",
+      "first_segment": [
+       "Evolve:Team Rocket's Raticate ex@2",
+       "Ability@2",
+       "Evolve:Alolan Ninetales ex@1",
+       "Attach:1Water@1 zone",
+       "EndTurn"
+      ]
      }
     ],
     "why_his": "Raticate ex steals Zoroark ex's only Energy; the caped Vulpix becomes Ninetales ex on the Bench while the 10-HP Active Vulpix chips with Gnaw and is left to fall.",
@@ -3490,8 +3816,17 @@
       "step": 5
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "full",
+    "strategic_actions_after_segment": [],
+    "legal_stopped": "end of line"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_233402000_iOS-t9",
@@ -3609,7 +3944,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown; one retreat-cost-raising card the opponent played was unreadable and is left out",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [],
     "notes": "",
     "heldout": true,
@@ -3667,8 +4002,17 @@
       "step": 1
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown; one retreat-cost-raising card the opponent played was unreadable and is left out",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "full",
+    "strategic_actions_after_segment": [],
+    "legal_stopped": "the turn is over (opponent's frame)"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_231006000_iOS-t3",
@@ -3755,7 +4099,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [
      "Charmander printing chosen by HP (70) only"
     ],
@@ -3796,7 +4140,24 @@
      "Evolve:Alolan Ninetales ex@0",
      "Play:Professor's Research"
     ],
-    "acceptable": [],
+    "acceptable": [
+     {
+      "line": [
+       "Play:Professor's Research",
+       "Evolve:Team Rocket's Raticate ex@1",
+       "Ability@1",
+       "Evolve:Alolan Ninetales ex@0",
+       "Play:Poké Ball",
+       "Place:Team Rocket's Rattata@2",
+       "Attach:1Water@0 zone",
+       "EndTurn"
+      ],
+      "reason": "draw-first order of his own line (settled before any candidate output)",
+      "first_segment": [
+       "Play:Professor's Research"
+      ]
+     }
+    ],
     "why_his": "Raticate ex steals a Fire from Entei ex (2 -> 1), Ninetales ex evolves and takes its first Water, and Research/Poke Ball add a Rattata.",
     "ambiguous": null,
     "legal_steps": [
@@ -3852,8 +4213,24 @@
       "step": 3
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "draw_first": {
+     "accepted": true,
+     "reason": "Professor's Research first only adds information; the actions he took before it stay available after it"
+    },
+    "segment_scope": "partial",
+    "strategic_actions_after_segment": [
+     "Place:Team Rocket's Rattata@2",
+     "Attach:1Water@0 zone"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Professor's Research"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_231006000_iOS-t9",
@@ -3964,7 +4341,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [
      "Charmander/Charmeleon printings chosen by HP only"
     ],
@@ -4062,8 +4439,17 @@
       "step": 4
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "full",
+    "strategic_actions_after_segment": [],
+    "legal_stopped": "end of line"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_234728000_iOS-t7",
@@ -4163,7 +4549,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [
      "the review calls an opponent Tool 'Shell Balloon', which is not a card in the data; Small Balloon (retreat cost reduction) stands in for it, in the opponent's discard only",
      "Dratini/Dragonair printings chosen by name and HP only"
@@ -4227,8 +4613,24 @@
       "step": 0
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "none",
+    "strategic_actions_after_segment": [
+     "Evolve:Alolan Ninetales ex@1",
+     "Play:Soothing Shore",
+     "Attach:1Water@1 zone",
+     "Play:Elegant Cape",
+     "Tool:Elegant Cape@1",
+     "Attack:Binding Snow"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Professor's Research"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_234728000_iOS-t9",
@@ -4342,7 +4744,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [
      "the review calls an opponent Tool 'Shell Balloon', which is not a card in the data; Small Balloon (retreat cost reduction) stands in for it, in the opponent's discard only",
      "Dratini/Dragonair printings chosen by name and HP only"
@@ -4400,8 +4802,20 @@
       "step": 0
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "none",
+    "strategic_actions_after_segment": [
+     "Attach:1Water@2 zone",
+     "Attack:Binding Snow"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Sightseer"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261015_015320000_iOS-t4",
@@ -4499,7 +4913,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [],
     "notes": "",
     "heldout": true,
@@ -4591,8 +5005,17 @@
       "step": 2
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "full",
+    "strategic_actions_after_segment": [],
+    "legal_stopped": "the turn is over (opponent's frame)"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261015_015320000_iOS-t8",
@@ -4701,7 +5124,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [
      "Dratini/Dragonair printings chosen by name and HP only"
     ],
@@ -4769,8 +5192,17 @@
       "step": 2
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "full",
+    "strategic_actions_after_segment": [],
+    "legal_stopped": "end of line"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261015_015320000_iOS-t10",
@@ -4886,7 +5318,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [
      "Dratini/Dragonair printings chosen by name and HP only"
     ],
@@ -4969,8 +5401,17 @@
       "step": 2
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "full",
+    "strategic_actions_after_segment": [],
+    "legal_stopped": "the turn is over (opponent's frame)"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261015_020931000_iOS-t3",
@@ -5050,7 +5491,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown; Bonsly's printing chosen by name and HP only",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [
      "Bonsly printing (B3 078 or B3 168)"
     ],
@@ -5093,7 +5534,10 @@
        "Attach:1Water@0 zone",
        "Attack:Boost Dash"
       ],
-      "reason": "His line completed: Water plus the stolen Darkness pays Boost Dash, which KOs the 30-HP Bonsly and wins by empty board (the opponent conceded before this)."
+      "reason": "His line completed: Water plus the stolen Darkness pays Boost Dash, which KOs the 30-HP Bonsly and wins by empty board (the opponent conceded before this).",
+      "first_segment": [
+       "Play:Copycat"
+      ]
      }
     ],
     "why_his": "Copycat finds Raticate ex; Thieving Incisors strips Bonsly's only Energy and Field Blower its Giant Cape, setting up Boost Dash (70 - 30 from Teary Attack) to KO the lone Bonsly; the opponent conceded mid-turn, so the recorded line stops there.",
@@ -5112,8 +5556,22 @@
       "step": 0
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown; Bonsly's printing chosen by name and HP only",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "none",
+    "strategic_actions_after_segment": [
+     "Evolve:Team Rocket's Raticate ex@0",
+     "Ability@0",
+     "Play:Field Blower",
+     "DiscardToolFromPokemon"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Copycat"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261015_021533000_iOS-t5",
@@ -5196,7 +5654,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [
      "Bulbasaur/Ivysaur printings chosen by name and HP only"
     ],
@@ -5338,8 +5796,17 @@
       "step": 6
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "full",
+    "strategic_actions_after_segment": [],
+    "legal_stopped": "end of line"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261015_022206000_iOS-t3",
@@ -5421,7 +5888,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [
      "Darkrai and Eevee printings chosen by name and HP only"
     ],
@@ -5472,8 +5939,23 @@
       "step": 0
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "none",
+    "strategic_actions_after_segment": [
+     "Evolve:Alolan Ninetales ex@0",
+     "Play:Soothing Shore",
+     "Attach:1Water@0 zone",
+     "Play:Elegant Cape",
+     "Tool:Elegant Cape@0"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Sightseer"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261015_201201000_iOS-t3",
@@ -5561,7 +6043,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown; Lucky Ice Pop's coin results are not in the position (it can return to hand on heads), so the three plays are checked on a variant without them",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [
      "Swablu, Darkrai and Eevee printings chosen by name and HP only (Bad Dreams Ability not checked against a printing)"
     ],
@@ -5597,7 +6079,22 @@
      "Evolve:Alolan Muk@2",
      "Play:Lucky Ice Pop"
     ],
-    "acceptable": [],
+    "acceptable": [
+     {
+      "line": [
+       "Play:Lucky Ice Pop",
+       "Evolve:Alolan Muk@2",
+       "Play:Lucky Ice Pop",
+       "Play:Lucky Ice Pop",
+       "Attach:1Darkness@2 zone",
+       "EndTurn"
+      ],
+      "reason": "draw-first order of his own line (settled before any candidate output)",
+      "first_segment": [
+       "Play:Lucky Ice Pop"
+      ]
+     }
+    ],
     "why_his": "Alolan Muk switches off Basic Abilities (the opponent's Darkrai, Igglybuff); three Lucky Ice Pops bring the sleeping Glimmet 10 -> 60; Energy starts Muk.",
     "ambiguous": null,
     "legal_steps": [
@@ -5629,8 +6126,23 @@
       "step": 1
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown; Lucky Ice Pop's coin results are not in the position (it can return to hand on heads), so the three plays are checked on a variant without them",
+     "notes": ""
+    },
+    "status": "final",
+    "draw_first": {
+     "accepted": true,
+     "reason": "Lucky Ice Pop first only adds information; the actions he took before it stay available after it"
+    },
+    "segment_scope": "partial",
+    "strategic_actions_after_segment": [
+     "Attach:1Darkness@2 zone"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Lucky Ice Pop"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261015_201201000_iOS-t7",
@@ -5738,7 +6250,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [
      "Swablu, Darkrai and Eevee printings chosen by name and HP only (Bad Dreams Ability not checked against a printing)"
     ],
@@ -5775,7 +6287,13 @@
        "Attach:1Darkness@1 zone",
        "EndTurn"
       ],
-      "reason": "Same, plus Heavy Helmet on Muk (Retreat Cost 3 qualifies for -20 damage)."
+      "reason": "Same, plus Heavy Helmet on Muk (Retreat Cost 3 qualifies for -20 damage).",
+      "first_segment": [
+       "Play:Heavy Helmet",
+       "Tool:Heavy Helmet@1",
+       "Attach:1Darkness@1 zone",
+       "EndTurn"
+      ]
      }
     ],
     "why_his": "Second Darkness on the benched Muk; Poison KOs the 10-HP Espeon at Checkup anyway, so the Energy-less Glimmet doesn't need to attack.",
@@ -5802,8 +6320,17 @@
       "step": 1
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "full",
+    "strategic_actions_after_segment": [],
+    "legal_stopped": "the turn is over (opponent's frame)"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261015_205332000_iOS-t5",
@@ -5909,7 +6436,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown; Lucky Ice Pop (returned to the opponent's hand on heads) is in his hand count, not his discard",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [],
     "notes": "",
     "heldout": true,
@@ -5972,8 +6499,17 @@
       "step": 2
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown; Lucky Ice Pop (returned to the opponent's hand on heads) is in his hand count, not his discard",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "full",
+    "strategic_actions_after_segment": [],
+    "legal_stopped": "end of line"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261015_205332000_iOS-t9",
@@ -6076,7 +6612,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [],
     "notes": "",
     "heldout": true,
@@ -6161,8 +6697,17 @@
       "step": 4
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "full",
+    "strategic_actions_after_segment": [],
+    "legal_stopped": "end of line"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261015_210617000_iOS-t2",
@@ -6230,7 +6775,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [
      "Ralts and Carbink printings chosen by name and HP only"
     ],
@@ -6264,7 +6809,22 @@
      "Attach:1Darkness@0 zone",
      "Play:Poké Ball"
     ],
-    "acceptable": [],
+    "acceptable": [
+     {
+      "line": [
+       "Play:Poké Ball",
+       "Attach:1Darkness@0 zone",
+       "Place:Glimmet@1",
+       "Play:Professor's Research",
+       "Place:Glimmet@2",
+       "Attack:Slash"
+      ],
+      "reason": "draw-first order of his own line (settled before any candidate output)",
+      "first_segment": [
+       "Play:Poké Ball"
+      ]
+     }
+    ],
     "why_his": "Slash 50 with Weakness takes Meloetta 70 -> 20 while Poke Ball and Research put two Glimmet on the Bench.",
     "ambiguous": null,
     "legal_steps": [
@@ -6293,8 +6853,25 @@
       "step": 1
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "draw_first": {
+     "accepted": true,
+     "reason": "Poké Ball first only adds information; the actions he took before it stay available after it"
+    },
+    "segment_scope": "partial",
+    "strategic_actions_after_segment": [
+     "Place:Glimmet@1",
+     "Place:Glimmet@2",
+     "Attack:Slash"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Poké Ball"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261015_210617000_iOS-t6",
@@ -6392,7 +6969,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [
      "Ralts and Carbink printings chosen by name and HP only"
     ],
@@ -6431,7 +7008,12 @@
        "Attach:1Darkness@3 zone",
        "Attack:Venomous Hit"
       ],
-      "reason": "Same, plus Mesagoza's free coin for a random Pokemon (nothing visible lost; the Bench is full)."
+      "reason": "Same, plus Mesagoza's free coin for a random Pokemon (nothing visible lost; the Bench is full).",
+      "first_segment": [
+       "Play:Mesagoza",
+       "Attach:1Darkness@3 zone",
+       "Attack:Venomous Hit"
+      ]
      }
     ],
     "why_his": "Energy to Regigigas for the Muk combo; Venomous Hit 30 plus Poison on Carbink.",
@@ -6469,8 +7051,17 @@
       "step": 2
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "full",
+    "strategic_actions_after_segment": [],
+    "legal_stopped": "end of line"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261016_030833000_iOS-t2",
@@ -6546,7 +7137,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown; Lucky Ice Pop's coin and Copycat's draw are hidden, so the line is checked on a variant that resolves them as they happened",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [
      "Bombirdier printing chosen by HP (70) only"
     ],
@@ -6601,8 +7192,24 @@
       "step": 0
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown; Lucky Ice Pop's coin and Copycat's draw are hidden, so the line is checked on a variant that resolves them as they happened",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "none",
+    "strategic_actions_after_segment": [
+     "Place:Pawniard@1",
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@1",
+     "Place:Regigigas@2",
+     "Attach:1Darkness@0 zone",
+     "Attack:Hang Down"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Poké Ball"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261016_031512000_iOS-t2",
@@ -6665,7 +7272,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [
      "Charmander/Charmeleon printings chosen by name and HP only"
     ],
@@ -6693,25 +7300,7 @@
     "first_segment": [
      "Play:Poké Ball"
     ],
-    "acceptable": [
-     {
-      "line": [
-       "Play:Poké Ball",
-       "Attach:1Darkness@0 zone",
-       "Attack:Hang Down"
-      ],
-      "reason": "(pending Dustin's answer) Same, plus a free Hang Down 20 on Charmander."
-     },
-     {
-      "line": [
-       "Play:Poké Ball",
-       "Place:Pawniard@1",
-       "Attach:1Darkness@0 zone",
-       "Attack:Hang Down"
-      ],
-      "reason": "(pending Dustin's answer) Also bench Pawniard now so it can be Rare Candied sooner."
-     }
-    ],
+    "acceptable": [],
     "why_his": "Poke Ball finds Pawniard, kept in hand, and the first Darkness goes on Glimmet; no attack.",
     "ambiguous": "On your first turn you declined Hang Down and kept Pawniard in hand. Was that deliberate (and why), or were the free 20 damage and a benched Pawniard better?",
     "legal_steps": [
@@ -6726,8 +7315,44 @@
       "step": 0
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "pending_dustin",
+    "pending_alternatives": [
+     {
+      "line": [
+       "Play:Poké Ball",
+       "Attach:1Darkness@0 zone",
+       "Attack:Hang Down"
+      ],
+      "reason": "(pending Dustin's answer) Same, plus a free Hang Down 20 on Charmander.",
+      "first_segment": [
+       "Play:Poké Ball"
+      ]
+     },
+     {
+      "line": [
+       "Play:Poké Ball",
+       "Place:Pawniard@1",
+       "Attach:1Darkness@0 zone",
+       "Attack:Hang Down"
+      ],
+      "reason": "(pending Dustin's answer) Also bench Pawniard now so it can be Rare Candied sooner.",
+      "first_segment": [
+       "Play:Poké Ball"
+      ]
+     }
+    ],
+    "segment_scope": "none",
+    "strategic_actions_after_segment": [
+     "Attach:1Darkness@0 zone"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Poké Ball"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261016_031512000_iOS-t8",
@@ -6829,7 +7454,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [
      "Charmander/Charmeleon printings chosen by name and HP only"
     ],
@@ -6857,15 +7482,7 @@
      "Attach:1Darkness@0 zone",
      "EndTurn"
     ],
-    "acceptable": [
-     {
-      "line": [
-       "Attach:1Darkness@1 zone",
-       "EndTurn"
-      ],
-      "reason": "(pending Dustin's answer) Second Darkness on Pawniard instead, so a Rare Candied Kingambit could use Overlord's Blade at once."
-     }
-    ],
+    "acceptable": [],
     "why_his": "Second Darkness on Regigigas, which can't attack and holds the Active Spot to soak hits; its KO adds to Overlord's Blade.",
     "ambiguous": "With no Grimer in play to switch off Seal of Antiquity, why the second Darkness on Regigigas rather than on Pawniard toward Kingambit?",
     "legal_steps": [
@@ -6888,8 +7505,30 @@
       "step": 1
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "pending_dustin",
+    "pending_alternatives": [
+     {
+      "line": [
+       "Attach:1Darkness@1 zone",
+       "EndTurn"
+      ],
+      "reason": "(pending Dustin's answer) Second Darkness on Pawniard instead, so a Rare Candied Kingambit could use Overlord's Blade at once.",
+      "first_segment": [
+       "Attach:1Darkness@1 zone",
+       "EndTurn"
+      ]
+     }
+    ],
+    "segment_scope": "full",
+    "strategic_actions_after_segment": [],
+    "legal_stopped": "the turn is over (opponent's frame)"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261016_015753000_iOS-t5",
@@ -6975,7 +7614,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown; Lucky Ice Pop's coin is hidden (it returned to hand on heads), so the line is checked on a variant without that play",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [],
     "notes": "",
     "heldout": true,
@@ -7006,7 +7645,21 @@
      "Attach:1Darkness@0 zone",
      "Play:Lucky Ice Pop"
     ],
-    "acceptable": [],
+    "acceptable": [
+     {
+      "line": [
+       "Play:Lucky Ice Pop",
+       "Play:Rare Candy",
+       "Evolve:Kingambit@0",
+       "Attach:1Darkness@0 zone",
+       "EndTurn"
+      ],
+      "reason": "draw-first order of his own line (settled before any candidate output)",
+      "first_segment": [
+       "Play:Lucky Ice Pop"
+      ]
+     }
+    ],
     "why_his": "Rare Candy evolves the Helmeted Pawniard into Kingambit; first Darkness on it and Lucky Ice Pop heals Electromagnetic Wall's 20.",
     "ambiguous": null,
     "legal_steps": [
@@ -7047,8 +7700,21 @@
       "step": 3
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown; Lucky Ice Pop's coin is hidden (it returned to hand on heads), so the line is checked on a variant without that play",
+     "notes": ""
+    },
+    "status": "final",
+    "draw_first": {
+     "accepted": true,
+     "reason": "Lucky Ice Pop first only adds information; the actions he took before it stay available after it"
+    },
+    "segment_scope": "full",
+    "strategic_actions_after_segment": [],
+    "legal_stopped": "hidden draw or coin at Play:Lucky Ice Pop"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261016_015753000_iOS-t7",
@@ -7141,7 +7807,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown; Lucky Ice Pop's two coins are hidden, so the line is checked on a variant with the Pops already resolved (Kingambit at 110)",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [],
     "notes": "",
     "heldout": true,
@@ -7173,7 +7839,21 @@
      "Place:Glimmet@1",
      "Play:Lucky Ice Pop"
     ],
-    "acceptable": [],
+    "acceptable": [
+     {
+      "line": [
+       "Play:Lucky Ice Pop",
+       "Place:Glimmet@1",
+       "Play:Lucky Ice Pop",
+       "Attach:1Darkness@0 zone",
+       "Attack:Overlord's Blade"
+      ],
+      "reason": "draw-first order of his own line (settled before any candidate output)",
+      "first_segment": [
+       "Play:Lucky Ice Pop"
+      ]
+     }
+    ],
     "why_his": "Ice Pops heal Kingambit, the second Darkness pays Overlord's Blade 100 (one KO so far), Jolteon ex 130 -> 30, and Glimmet is benched as the backup.",
     "ambiguous": null,
     "legal_steps": [
@@ -7202,8 +7882,24 @@
       "step": 1
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown; Lucky Ice Pop's two coins are hidden, so the line is checked on a variant with the Pops already resolved (Kingambit at 110)",
+     "notes": ""
+    },
+    "status": "final",
+    "draw_first": {
+     "accepted": true,
+     "reason": "Lucky Ice Pop first only adds information; the actions he took before it stay available after it"
+    },
+    "segment_scope": "partial",
+    "strategic_actions_after_segment": [
+     "Attach:1Darkness@0 zone",
+     "Attack:Overlord's Blade"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Lucky Ice Pop"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261016_015753000_iOS-t9",
@@ -7297,7 +7993,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [],
     "notes": "",
     "heldout": true,
@@ -7371,8 +8067,17 @@
       "step": 3
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "full",
+    "strategic_actions_after_segment": [],
+    "legal_stopped": "end of line"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261016_020517000_iOS-t2",
@@ -7440,7 +8145,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size estimated from the visible plays; opponent's list unknown; Bonsly's printing chosen by name and HP only; Mesagoza's coin is hidden (it found Glimmet)",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [
      "Bonsly printing (B3 078 or B3 168)"
     ],
@@ -7462,12 +8167,14 @@
    "answer": {
     "his_move": [
      "Play:Mesagoza",
+     "UseStadium",
      "Place:Glimmet@1",
      "Attach:1Darkness@0 zone",
      "EndTurn"
     ],
     "first_segment": [
-     "Play:Mesagoza"
+     "Play:Mesagoza",
+     "UseStadium"
     ],
     "acceptable": [],
     "why_his": "Mesagoza fetches Glimmet for the Bench and the Energy goes on Regigigas for the later Muk combo; Regigigas can't attack.",
@@ -7484,8 +8191,20 @@
       "step": 0
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size estimated from the visible plays; opponent's list unknown; Bonsly's printing chosen by name and HP only; Mesagoza's coin is hidden (it found Glimmet)",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "partial",
+    "strategic_actions_after_segment": [
+     "Place:Glimmet@1",
+     "Attach:1Darkness@0 zone"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Mesagoza"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261016_024253000_iOS-t1",
@@ -7522,7 +8241,7 @@
        "hp": 60
       }
      ],
-     "energy_now": "Darkness",
+     "energy_now": null,
      "energy_next": "Darkness",
      "knockouts": 0
     },
@@ -7543,7 +8262,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size estimated from the visible plays; opponent's list unknown; Copycat's draw is hidden: the review names Glimmet, Regigigas and Mesagoza but not the other two cards, so the line is checked on a variant with two stand-in cards (Glimmora)",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [],
     "notes": "",
     "heldout": true,
@@ -7552,8 +8271,7 @@
    "legal_root": [
     "EndTurn",
     "Play:Copycat",
-    "Play:Professor's Research",
-    "Attach:1Darkness@0 zone"
+    "Play:Professor's Research"
    ],
    "legal_stopped": "hidden draw or coin at Play:Copycat",
    "source": {
@@ -7581,15 +8299,27 @@
       "legal": [
        "EndTurn",
        "Play:Copycat",
-       "Play:Professor's Research",
-       "Attach:1Darkness@0 zone"
+       "Play:Professor's Research"
       ],
       "matched": "Play:Copycat",
       "step": 0
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size estimated from the visible plays; opponent's list unknown; Copycat's draw is hidden: the review names Glimmet, Regigigas and Mesagoza but not the other two cards, so the line is checked on a variant with two stand-in cards (Glimmora)",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "none",
+    "strategic_actions_after_segment": [
+     "Place:Glimmet@1",
+     "Place:Regigigas@2",
+     "Play:Mesagoza"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Copycat"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_234728000_iOS-t5",
@@ -7688,7 +8418,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [
      "the review calls an opponent Tool 'Shell Balloon', which is not a card in the data; Small Balloon stands in for it",
      "Dratini/Dragonair printings chosen by name and HP only"
@@ -7777,8 +8507,23 @@
       "step": 3
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "draw_first": {
+     "accepted": false,
+     "reason": "Copycat shuffles the hand away, so the cards he played first would be lost; his order is the plan"
+    },
+    "segment_scope": "partial",
+    "strategic_actions_after_segment": [
+     "Attack:Binding Snow"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Copycat"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_215114000_iOS-t10",
@@ -7899,7 +8644,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [],
     "notes": "",
     "heldout": true,
@@ -7929,17 +8674,7 @@
     "first_segment": [
      "Play:Poké Ball"
     ],
-    "acceptable": [
-     {
-      "line": [
-       "Play:Poké Ball",
-       "Place:Team Rocket's Rattata@1",
-       "Attach:1Water@1 zone",
-       "Attack:Binding Snow"
-      ],
-      "reason": "(pending Dustin's answer) Same, but the turn's Water goes on the new Rattata instead of being wasted."
-     }
-    ],
+    "acceptable": [],
     "why_his": "Poke Ball adds a Rattata to the Bench and Binding Snow KOs the Clear Veil Absol (Clear Veil stops effects, not damage) to tie 2-2.",
     "ambiguous": "You left the turn's Water unattached despite the game's warning. Was that deliberate, or should it have gone on the new Rattata?",
     "legal_steps": [
@@ -7958,8 +8693,34 @@
       "step": 0
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "pending_dustin",
+    "pending_alternatives": [
+     {
+      "line": [
+       "Play:Poké Ball",
+       "Place:Team Rocket's Rattata@1",
+       "Attach:1Water@1 zone",
+       "Attack:Binding Snow"
+      ],
+      "reason": "(pending Dustin's answer) Same, but the turn's Water goes on the new Rattata instead of being wasted.",
+      "first_segment": [
+       "Play:Poké Ball"
+      ]
+     }
+    ],
+    "segment_scope": "none",
+    "strategic_actions_after_segment": [
+     "Place:Team Rocket's Rattata@1",
+     "Attack:Binding Snow"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Poké Ball"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_142546000_iOS-t3",
@@ -8038,7 +8799,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown; Copycat's four drawn cards are the four the review shows afterward (Lisia, Research, Ariados, X Speed)",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [],
     "notes": "",
     "heldout": true,
@@ -8135,8 +8896,24 @@
       "step": 3
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown; Copycat's four drawn cards are the four the review shows afterward (Lisia, Research, Ariados, X Speed)",
+     "notes": ""
+    },
+    "status": "final",
+    "draw_first": {
+     "accepted": false,
+     "reason": "Copycat shuffles the hand away, so the cards he played first would be lost; his order is the plan"
+    },
+    "segment_scope": "partial",
+    "strategic_actions_after_segment": [
+     "Attach:1Grass@0 zone",
+     "Attack:Pierce"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Copycat"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_143111000_iOS-t6",
@@ -8237,7 +9014,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [],
     "notes": "",
     "heldout": true,
@@ -8289,8 +9066,21 @@
       "step": 0
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "none",
+    "strategic_actions_after_segment": [
+     "Place:Spinarak@3",
+     "Attach:1Grass@2 zone",
+     "Attack:Grass Knot"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Lisia"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_214436000_iOS-t4",
@@ -8378,7 +9168,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [
      "Swablu, Darkrai and Eevee printings chosen by name and HP only"
     ],
@@ -8430,8 +9220,22 @@
       "step": 0
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "none",
+    "strategic_actions_after_segment": [
+     "Attach:1Water@0 zone",
+     "Evolve:Alolan Ninetales ex@0",
+     "Play:Elegant Cape",
+     "Tool:Elegant Cape@0"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Professor's Research"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_215114000_iOS-t4",
@@ -8520,7 +9324,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [],
     "notes": "",
     "heldout": true,
@@ -8571,8 +9375,22 @@
       "step": 0
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "none",
+    "strategic_actions_after_segment": [
+     "Place:Alolan Vulpix@1",
+     "Play:Elegant Cape",
+     "Tool:Elegant Cape@1",
+     "Attach:1Water@1 zone"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Professor's Research"
+   },
+   "fresh": true
   },
   {
    "id": "LAD-20261014_233402000_iOS-t7",
@@ -8679,7 +9497,7 @@
     "hand_source": "review",
     "decision_maker": "Dustin",
     "approximate": true,
-    "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+    "approximate_reason": "opponent's list unknown; opponent hand size, discard and Energy are estimates from the video review",
     "opp_ambiguous": [],
     "notes": "",
     "heldout": true,
@@ -8762,16 +9580,28 @@
       "step": 4
      }
     ],
-    "free_chance_first_variants": []
-   }
+    "free_chance_first_variants": [],
+    "build_notes": {
+     "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
+     "notes": ""
+    },
+    "status": "final",
+    "segment_scope": "full",
+    "strategic_actions_after_segment": [],
+    "legal_stopped": "end of line"
+   },
+   "fresh": true
   }
  ],
  "bot_view": "Give a bot or judge ONLY points[i].position (pg_pos --positions takes it; note it has no 'force') and points[i].legal_root. Everything under points[i].answer, and answer_kind, is the answer key and must not be shown to a candidate.",
- "free_chance_first_decision": "Checked before any bot run (Oct 19): none of the 51 positions offers a free optional chance step among its first legal actions (no Mesagoza in play; no coin-flip Ability). The only UseStadium at a root is Rainbow Cave (7 positions), which is not a chance event. So no 'free chance step first' variants are listed.",
+ "free_chance_first_decision": "Checked before any bot run (Oct 19): none of the 51 positions offers a free optional chance step among its first legal actions (no Mesagoza in play; no coin-flip Ability). The only UseStadium at a root is Rainbow Cave (7 positions), which is not a chance event. So no 'free chance step first' variants are listed. v1.2: draw-first orderings of his own line are settled per point in answer.draw_first: accepted for Research, Poke Ball and Lucky Ice Pop (9 points; added to acceptable with their first segment), not accepted for Copycat (2 points: the cards played first would be shuffled away).",
  "known_limits": [
-  "Order around a draw is scored as he played it. In 11 positions his first segment has other actions before the draw; a candidate that draws first is scored wrong there. Not reviewed position by position; revisit only if a result hinges on them.",
   "All positions are approximate on the opponent's side (list unknown; hand size and discard estimated from the review).",
   "No 'abandon' points: none of his recorded ladder turns was usable for it. 'fast pressure' is covered only by deck 12 and only with attack-now points.",
-  "Deck kinds are multi-tagged; most points sit in several deck-kind rows, so rows are not independent."
+  "Deck kinds are multi-tagged; most points sit in several deck-kind rows, so rows are not independent.",
+  "Scope: 21 of 51 first segments hold none of his turn's strategic actions and 10 only part (answer.segment_scope); plan-segment agreement uses the 20 'full' points. Reconstructed later decision points (after a draw, with only what is then visible) were not built; that is the honest next step if prefix results are uninformative.",
+  "LAD-20261016_020517000_iOS-t2: the legal-moves tool still stops at Play:Mesagoza (its built-in stop list); under the v1.2 rule playing Mesagoza is deterministic and the segment ends at UseStadium. A runner must use the rule in 'scoring', not the tool's stop. (The tool was not rebuilt: C: had under 1 GB free.)",
+  "Five points are held for Dustin (161324 t5, 225451 t4, 031512 t2, 031512 t8, 215114 t10); two concern the scored prefix (225451 t4 Sabrina, 031512 t8 Energy), three later actions.",
+  "Three decks only (12, 13-A, Kingambit); no abandon-plan points; opponent states are estimates from video reviews (answer.build_notes keeps the detail)."
  ]
 }
