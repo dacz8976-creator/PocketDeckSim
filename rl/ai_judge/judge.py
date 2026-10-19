@@ -113,12 +113,17 @@ def resolve_ids(args, positions):
 
 
 # ---------------------------------------------------------------------------------------------------------------------------------- plan list
-def list_plans(ids, positions_path=DEFAULT_POSITIONS, decks_dir=DEFAULT_DECKS, world_seed=1, max_plans=None, bin_path=PLANS_BIN):
+def list_plans(ids, positions_path=DEFAULT_POSITIONS, decks_dir=DEFAULT_DECKS, world_seed=1, max_plans=None, bin_path=PLANS_BIN,
+               max_nodes=None, max_steps=None):
+    """Runs the plan lister with EVERY generation input explicit (world seed, plan cap, node cap, step cap) and checks the answer: the binary must exit 0 and
+    return exactly one plan list for each requested id (no problem lines, no duplicates, no missing ids)."""
     if not os.path.exists(bin_path):
         sys.exit(f'{bin_path} is missing: build rl/ai_judge/plans (see README.md) or set JUDGE_PLANS_BIN')
-    cmd = [bin_path, '--positions', positions_path] + deck_args(decks_dir) + ['--world-seed', str(world_seed)]
-    if max_plans:
-        cmd += ['--max-plans', str(max_plans)]
+    max_plans = max_plans or FROZEN['max_plans']
+    max_nodes = max_nodes or FROZEN['max_nodes']
+    max_steps = max_steps or FROZEN['max_steps']
+    cmd = [bin_path, '--positions', positions_path] + deck_args(decks_dir) + ['--world-seed', str(world_seed), '--max-plans', str(max_plans),
+                                                                               '--max-nodes', str(max_nodes), '--max-steps', str(max_steps)]
     for i in ids:
         cmd += ['--only', i]
     r = subprocess.run(cmd, capture_output=True, text=True)
@@ -127,7 +132,14 @@ def list_plans(ids, positions_path=DEFAULT_POSITIONS, decks_dir=DEFAULT_DECKS, w
     out = {}
     for line in r.stdout.splitlines():
         j = json.loads(line)
+        if j.get('kind') != 'plans':
+            sys.exit(f"judge_plans could not list {j.get('id')}: {j}")
+        if j['id'] in out:
+            sys.exit(f"judge_plans listed {j['id']} twice")
         out[j['id']] = j
+    missing = [i for i in ids if i not in out]
+    if missing:
+        sys.exit(f'judge_plans returned no plan list for {missing[:5]}')
     return out
 
 
@@ -377,6 +389,8 @@ FROZEN = {
     'temperature': None,        # the API default (the model reasons first; see README)
     'plan_world_seed': 1,
     'max_plans': 2000,
+    'max_nodes': 200000,
+    'max_steps': 30,
 }
 
 
@@ -413,12 +427,17 @@ def record(position, bot, plan, cut, **extra):
     return r
 
 
-def judge_one(pid, positions, recs, order, live, model, temperature=None, decks_dir=DEFAULT_DECKS, compact_above=COMPACT_ABOVE, max_tokens=MAX_TOKENS, prompt_version='v1'):
+def judge_one(pid, positions, recs, order, live, model, temperature=None, decks_dir=DEFAULT_DECKS, compact_above=COMPACT_ABOVE, max_tokens=MAX_TOKENS, prompt_version='v1', allow_capped=False):
     pos, rec = positions[pid], recs[pid]
+    if live and rec['capped'] and not allow_capped:
+        raise SystemExit(f"{pid}: the plan list is capped ({rec['n_plans']} of at least {rec['total_found']} plans): it is not every legal choice, so a formal judge call is refused "
+                         "(--allow-capped only for experiments; such a record is never `frozen`)")
     system, user, shown = render_prompt(pos, rec, order, decks_dir, compact_above, prompt_version)
     est = estimate_tokens(system, user, 'compact' if len(shown) > compact_above else 'full')
     frozen = (model == FROZEN['model'] and prompt_version == FROZEN['prompt_version'] and order == FROZEN['order'] and compact_above == FROZEN['compact_above']
-              and max_tokens == FROZEN['max_tokens'] and temperature == FROZEN['temperature'])
+              and max_tokens == FROZEN['max_tokens'] and temperature == FROZEN['temperature'] and not rec['capped']
+              and rec.get('world_seed') == FROZEN['plan_world_seed']
+              and rec.get('limits') == {k: FROZEN[k] for k in ('max_plans', 'max_nodes', 'max_steps')})
     base = dict(order=order, n_plans=len(shown), capped=rec['capped'], total_plans_found=rec['total_found'], model=model, prompt_tokens_estimate=est, dry_run=not live,
                 prompt_form='compact' if len(shown) > compact_above else 'full', prompt_version=prompt_version, frozen=frozen,
                 prompt_sha256=hashlib.sha256((system + '\n\0\n' + user).encode('utf-8')).hexdigest()[:16])
@@ -442,10 +461,17 @@ def run_pg_pos(bot, ids, seeds, recs, positions_path=DEFAULT_POSITIONS, decks_di
     for pid in ids:
         cmd = [bin_path, '--positions', positions_path] + deck_args(decks_dir) + ['--seeds', ','.join(map(str, seeds)), '--bot', bot, '--only', pid]
         r = subprocess.run(cmd, capture_output=True, text=True)
-        for line in r.stdout.splitlines():
-            j = json.loads(line)
-            if j.get('kind') == 'free':
-                rows.append((pid, j))
+        if r.returncode:
+            sys.exit(f'{bin_path} failed on {pid} (exit {r.returncode}): {r.stderr[-800:]}')
+        got = [json.loads(line) for line in r.stdout.splitlines()]
+        problems = [j for j in got if j.get('problems')]
+        if problems:
+            sys.exit(f'{bin_path} reports a problem with position {pid}: {problems[0].get("problems")}')
+        free = [j for j in got if j.get('kind') == 'free' and j.get('id') == pid]
+        seen = sorted(j['seed'] for j in free)
+        if seen != sorted(seeds):
+            sys.exit(f'{bot} on {pid}: expected exactly one free-play row for each of seeds {sorted(seeds)}, got {seen}')
+        rows += [(pid, j) for j in free]
     matched = match_plans([(pid, f"{pid}|{j['seed']}", j['plan']) for pid, j in rows], recs, positions_path, decks_dir)
     out = []
     for pid, j in rows:
@@ -493,7 +519,15 @@ def replay(items, positions_path=DEFAULT_POSITIONS, decks_dir=DEFAULT_DECKS, wor
     out = {}
     for line in r.stdout.splitlines():
         j = json.loads(line)
+        if j['tag'] in out:
+            sys.exit(f"judge_plans --replay answered tag {j['tag']} twice")
         out[j['tag']] = j['keys'] if j['ok'] else j['error']
+    tags = [t for _, t, _ in items]
+    if len(set(tags)) != len(tags):
+        sys.exit('replay: duplicate tags in the request')
+    missing = [t for t in tags if t not in out]
+    if missing:
+        sys.exit(f'judge_plans --replay gave no answer for {missing[:5]}')
     return out
 
 
@@ -570,6 +604,7 @@ def main(argv=None):
     p.add_argument('--workers', type=int, default=1, help='concurrent API calls')
     p.add_argument('--stop-usd', type=float, help='stop starting new calls once this much has been spent in this invocation (at the assumed prices)')
     p.add_argument('--tag', help='free text stored in every record (the experiment name)')
+    p.add_argument('--allow-capped', action='store_true', help='experiments only: judge a capped (incomplete) plan list; the record is never frozen')
     p.add_argument('--out')
     p = sub.add_parser('spend', help='sum the cost recorded in result files'); p.add_argument('files', nargs='+')
     sub.add_parser('fingerprint', help='print the frozen-prompt fingerprint and settings')
@@ -578,6 +613,7 @@ def main(argv=None):
     p.add_argument('--workers', type=int, default=1)
     p.add_argument('--stop-usd', type=float)
     p.add_argument('--tag')
+    p.add_argument('--allow-capped', action='store_true')
     p.add_argument('--max-tokens', type=int, default=MAX_TOKENS)
     p.add_argument('--bot', required=True)
     p.add_argument('--seeds', default='1')
@@ -703,7 +739,7 @@ def main(argv=None):
             with lock:
                 if a.live and stop_usd is not None and total >= stop_usd:
                     return None
-            r, _, _ = judge_one(i, positions, recs, a.order, a.live, a.model, getattr(a, 'temperature', None), a.decks, a.compact_above, a.max_tokens, a.prompt)
+            r, _, _ = judge_one(i, positions, recs, a.order, a.live, a.model, getattr(a, 'temperature', None), a.decks, a.compact_above, a.max_tokens, a.prompt, a.allow_capped)
             r['repeat'] = k
             r['tag'] = getattr(a, 'tag', None)
             with lock:

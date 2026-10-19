@@ -371,7 +371,15 @@ fn pg_label(a: &Action) -> String {
         SimpleAction::ChooseRetreatEnergy { to_in_play_idx, .. } => format!("RetreatPay:{}", to_in_play_idx),
         SimpleAction::AttachTypedFromDiscard { in_play_idx, energy_type, .. } => format!("AttachTypedFromDiscard:{:?}@{}", energy_type, in_play_idx),
         SimpleAction::EndTurn => "EndTurn".to_string(),
-        other => format!("{:?}", other).split(|c: char| c == ' ' || c == '{' || c == '(').next().unwrap_or("?").to_string(),
+        // Every other action: its name plus ALL its arguments, so two actions that differ only in a target (Field Blower's DiscardToolFromPokemon on
+        // different Pokémon or Tools, say) never share a label. Short recorded labels (the bare name) still match, see label_matches.
+        other => {
+            let name = format!("{:?}", other).split(|c: char| c == ' ' || c == '{' || c == '(').next().unwrap_or("?").to_string();
+            match serde_json::to_value(other) {
+                Ok(Value::Object(m)) if m.len() == 1 => format!("{}#{}", name, m.values().next().unwrap()),
+                _ => name,
+            }
+        }
     }
 }
 
@@ -409,6 +417,10 @@ fn english(st: &State, a: &Action) -> String {
             format!("Choose {} to be the Active Pokémon", slot_name(st, *player, *in_play_idx))
         }
         SimpleAction::EndTurn => "End the turn".to_string(),
+        SimpleAction::DiscardToolFromPokemon { player, in_play_idx, tool_idx } => {
+            let tool = st.in_play_pokemon[*player].get(*in_play_idx).and_then(|p| p.as_ref()).and_then(|p| p.attached_tools.get(*tool_idx)).map(|t| t.get_name()).unwrap_or_else(|| "?".into());
+            format!("Discard the Tool {} from {} {}", tool, if *player == me { "your" } else { "the opponent's" }, slot_name(st, *player, *in_play_idx))
+        }
         SimpleAction::UseStadium => format!("Use the Stadium {} (its once-per-turn effect)", st.active_stadium.as_ref().map(|c| c.get_name()).unwrap_or_else(|| "?".into())),
         SimpleAction::DiscardActiveStadium => "Discard the Stadium in play".to_string(),
         _ => format!("{} (a choice)", pg_label(a)),
@@ -819,7 +831,7 @@ fn list_plans(world: &State, lim: &Limits) -> (Vec<Value>, usize, usize, bool, u
 
 /// Recorded plans name a Place or an Ability without its slot number.
 fn label_matches(engine: &str, want: &str) -> bool {
-    engine == want || ((want.starts_with("Place:") || want.starts_with("Ability")) && !want.contains('@') && engine.split('@').next() == Some(want))
+    engine == want || (!want.contains('#') && engine.split('#').next() == Some(want)) || ((want.starts_with("Place:") || want.starts_with("Ability")) && !want.contains('@') && engine.split('@').next() == Some(want))
 }
 
 /// Replays a move list (labels, as pg_pos and the bots print them) from the start of the turn through the SAME step rules as the plan lister and
@@ -957,7 +969,7 @@ fn main() {
         Value::Array(plans.clone()).to_string().hash(&mut h);
         println!(
             "{}",
-            json!({"kind": "plans", "id": id, "start": start, "n_plans": plans.len(), "total_found": total_found, "capped": capped, "nodes": nodes,
+            json!({"kind": "plans", "id": id, "world_seed": world_seed, "start": start, "n_plans": plans.len(), "total_found": total_found, "capped": capped, "nodes": nodes,
                    "paths_cut_at_max_steps": depth_cut,
                    "limits": {"max_plans": lim.max_plans, "max_nodes": lim.max_nodes, "max_steps": lim.max_steps},
                    "plans_hash": format!("{:016x}", h.finish()), "plans": plans})

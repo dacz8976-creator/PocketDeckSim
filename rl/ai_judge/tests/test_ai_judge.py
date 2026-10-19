@@ -15,6 +15,7 @@ import judge  # noqa: E402
 FIX = os.path.join(HERE, 'fixtures')
 POS = os.path.join(FIX, 'mini_positions.json')
 DECKS = os.path.join(FIX, 'decks')
+DECK_ARGS = None
 HAVE_BIN = os.path.exists(judge.PLANS_BIN)
 
 
@@ -206,9 +207,10 @@ class PlanList(unittest.TestCase):
         self.assertEqual(by_end, {'attack': 12, 'chance': 18, 'end_turn': 18})
 
     def test_the_real_next_draw_and_the_world_never_change_the_output(self):
-        a = plans(['MINI-DRAW', 'MINI-DRAW-TOP'], world_seed=1)[1]
-        b = plans(['MINI-DRAW', 'MINI-DRAW-TOP'], world_seed=2)[1]
-        c = plans(['MINI-DRAW', 'MINI-DRAW-TOP'], world_seed=99)[1]
+        strip = lambda out: '\n'.join(json.dumps({k: v for k, v in json.loads(l).items() if k != 'world_seed'}, sort_keys=True) for l in out.splitlines())  # the seed is echoed
+        a = strip(plans(['MINI-DRAW', 'MINI-DRAW-TOP'], world_seed=1)[1])
+        b = strip(plans(['MINI-DRAW', 'MINI-DRAW-TOP'], world_seed=2)[1])
+        c = strip(plans(['MINI-DRAW', 'MINI-DRAW-TOP'], world_seed=99)[1])
         self.assertEqual(a, b)
         self.assertEqual(a, c)
         recs = plans(['MINI-DRAW', 'MINI-DRAW-TOP'])[0]
@@ -259,6 +261,31 @@ class PlanList(unittest.TestCase):
         keys = judge.replay([('MINI-DRAW', 't', ['Play:Mesagoza'])], POS, DECKS)['t']
         self.assertIsInstance(keys, str)
         self.assertIn('no legal action', keys)
+
+    def test_field_blower_targets_keep_their_own_identity(self):
+        rec = plans(['MINI-BLOWER'])[0]['MINI-BLOWER']
+        blow = [p for p in rec['plans'] if any(l.startswith('DiscardToolFromPokemon') for l in p['labels'])]
+        labels = {l for p in blow for l in p['labels'] if l.startswith('DiscardToolFromPokemon')}
+        self.assertEqual(len(labels), 2, labels)  # two different Pokémon -> two different labels, not one shared name
+        self.assertEqual(len({p['key'] for p in blow}), len(blow))
+        self.assertTrue(any('Active' in ' '.join(p['steps']) for p in blow) and any('Bench 1' in ' '.join(p['steps']) for p in blow))
+        # replay tells them apart, with the full label and with the bare recorded name (which fits both)
+        full = sorted(labels)
+        k0 = judge.replay([('MINI-BLOWER', 'a', ['Play:Field Blower', full[0]]), ('MINI-BLOWER', 'b', ['Play:Field Blower', full[1]]),
+                           ('MINI-BLOWER', 'c', ['Play:Field Blower', 'DiscardToolFromPokemon'])], POS, DECKS)
+        self.assertNotEqual(k0['a'], k0['b'])
+        self.assertEqual(len(k0['c']), 2)
+        self.assertTrue(set(k0['a']) | set(k0['b']) == set(k0['c']))
+
+    def test_every_generation_input_is_echoed_and_a_capped_list_is_refused(self):
+        rec = plans(['MINI-DRAW'], extra=['--max-plans', '3'])[0]['MINI-DRAW']
+        self.assertEqual(rec['world_seed'], 1)
+        self.assertEqual(rec['limits']['max_plans'], 3)
+        positions = judge.load_positions()
+        positions['MINI-DRAW'] = json.load(open(POS))[0]
+        with self.assertRaises(SystemExit) as cm:
+            judge.judge_one('MINI-DRAW', positions, {'MINI-DRAW': rec}, 'forward', True, judge.MODEL)
+        self.assertIn('capped', str(cm.exception))
 
     def test_the_cap_is_reported(self):
         rec = plans(['MINI-DRAW'], extra=['--max-plans', '3'])[0]['MINI-DRAW']

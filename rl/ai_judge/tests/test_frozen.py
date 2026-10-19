@@ -45,7 +45,7 @@ class Frozen(unittest.TestCase):
         pid = 'KW-261013_010837000-t07'
         mk = lambda n: {'n': n, 'key': f'k{n}', 'labels': [f'Retreat:{n}', 'EndTurn'], 'steps': [f'Retreat to slot {n}', 'End the turn'], 'n_steps': 2, 'end': 'end_turn',
                         'final': {'kind': 'end_turn'}, 'result': {'board': [], 'hand': [], 'points': [0, 0], 'deck_size': 9}}
-        rec = {pid: {'capped': False, 'total_found': 8, 'plans': [mk(n) for n in range(1, 9)], 'start': {
+        rec = {pid: {'capped': False, 'total_found': 8, 'world_seed': 1, 'limits': {'max_plans': 2000, 'max_nodes': 200000, 'max_steps': 30}, 'plans': [mk(n) for n in range(1, 9)], 'start': {
             'turn_count': 7, 'points': [0, 0], 'energy_zone': ['Darkness', 'Darkness'], 'stadium': None, 'stadium_owner': None,
             'me': {'board': [], 'hand': [], 'discard': [], 'discard_energy': [], 'deck_size': 9, 'unseen_deck': {'Glimmet': 1}},
             'opp': {'board': [], 'hand_count': 5, 'deck_count': 12, 'discard': [], 'discard_energy': []}}}}
@@ -86,3 +86,39 @@ class OrderPolicy(unittest.TestCase):
 
 if __name__ == '__main__':
     unittest.main()
+
+
+class GenerationInputsAreChecked(unittest.TestCase):
+    def test_a_different_world_seed_or_limit_makes_the_record_not_frozen(self):
+        from unittest import mock
+        pid = 'KW-261013_010837000-t07'
+        positions = judge.load_positions()
+        mk = lambda n: {'n': n, 'key': f'k{n}', 'labels': [f'Retreat:{n}', 'EndTurn'], 'steps': [f'Retreat {n}', 'End the turn'], 'n_steps': 2, 'end': 'end_turn',
+                        'final': {'kind': 'end_turn'}, 'result': {'board': [], 'hand': [], 'points': [0, 0], 'deck_size': 9}}
+        start = {'turn_count': 7, 'points': [0, 0], 'energy_zone': ['Darkness', 'Darkness'], 'stadium': None, 'stadium_owner': None,
+                 'me': {'board': [], 'hand': [], 'discard': [], 'discard_energy': [], 'deck_size': 9, 'unseen_deck': {'Glimmet': 1}},
+                 'opp': {'board': [], 'hand_count': 5, 'deck_count': 12, 'discard': [], 'discard_energy': []}}
+        good = {'capped': False, 'total_found': 3, 'world_seed': 1, 'limits': {'max_plans': 2000, 'max_nodes': 200000, 'max_steps': 30},
+                'plans': [mk(1), mk(2), mk(3)], 'start': start}
+        reply = ('PLAN: 1\nREASON: x', {'input_tokens': 1, 'output_tokens': 1}, 0.1, judge.MODEL, {'stop_reason': 'end_turn', 'content_types': ['text']})
+        flags = []
+        for rec in (good, {**good, 'world_seed': 2}, {**good, 'limits': {**good['limits'], 'max_plans': 5}}, {**good, 'limits': {**good['limits'], 'max_steps': 9}}):
+            with mock.patch.object(judge, 'call_claude', return_value=reply):
+                flags.append(judge.judge_one(pid, positions, {pid: rec}, judge.FROZEN['order'], True, judge.MODEL)[0]['frozen'])
+        self.assertEqual(flags, [True, False, False, False])
+
+    def test_baseline_runner_fails_loudly_on_a_failed_or_short_run(self):
+        import subprocess, tempfile, stat
+        d = tempfile.mkdtemp()
+        bad = os.path.join(d, 'fake_pg_pos.sh')
+        open(bad, 'w').write('#!/bin/bash\necho \'{"kind":"free","id":"KW-261013_010837000-t07","seed":1,"plan":[],"cut":"end of turn"}\'\nexit 3\n')
+        os.chmod(bad, 0o755)
+        with self.assertRaises(SystemExit) as cm:
+            judge.run_pg_pos('km3', ['KW-261013_010837000-t07'], [1], {}, bin_path=bad)
+        self.assertIn('failed', str(cm.exception))
+        short = os.path.join(d, 'short.sh')
+        open(short, 'w').write('#!/bin/bash\necho \'{"kind":"free","id":"KW-261013_010837000-t07","seed":1,"plan":[],"cut":"x"}\'\n')
+        os.chmod(short, 0o755)
+        with self.assertRaises(SystemExit) as cm:
+            judge.run_pg_pos('km3', ['KW-261013_010837000-t07'], [1, 2], {}, bin_path=short)  # seed 2 missing
+        self.assertIn('expected exactly one', str(cm.exception))

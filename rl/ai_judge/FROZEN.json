@@ -1,7 +1,12 @@
 {
  "frozen_on": "2026-10-19",
- "tag": "judge-prompt-frozen-1",
- "fingerprint": "3ff1d2da95088fcff385005a178466ea7b5f531b652dbad88ae2b09222540c50",
+ "tag": "judge-prompt-frozen-2",
+ "supersedes": {
+  "tag": "judge-prompt-frozen-1",
+  "commit": "3faaf6911661287a28e7f8c7c17497fa7bc6181e",
+  "fingerprint": "3ff1d2da95088fcff385005a178466ea7b5f531b652dbad88ae2b09222540c50"
+ },
+ "fingerprint": "0cb2421552661b563bdb49fca31aca53f468d0853661908fbbf7730fcb5ba762",
  "settings": {
   "model": "claude-sonnet-5-5",
   "prompt_version": "v1",
@@ -10,7 +15,15 @@
   "max_tokens": 8000,
   "temperature": null,
   "plan_world_seed": 1,
-  "max_plans": 2000
+  "max_plans": 2000,
+  "max_nodes": 200000,
+  "max_steps": 30
  },
- "note": "prompt v1 (SYSTEM + ANSWER_FORMAT + COMPACT_LEGEND in judge.py) with a fixed per-position shuffle of the plan order; see FROZEN.md"
+ "source_sha256": {
+  "judge.py": "e1ff2445095ae5a75848802d8f85d222483116ed265b28bbab19c6dbe2254663",
+  "plans/src/main.rs": "97f18e6a7fdaa9933be091f87970254b37cf37c28cd7acdc776cc5543ad6822e",
+  "plans/Cargo.lock": "e183002a2e1a040cc761d2d9f81575259d710ea6a2f2a55054bc75485b8d0a7c"
+ },
+ "plans_binary_sha256": "ae8ab5c37821803744850eb25e90da9cdb2d9a40371948d71cf2732ccbb68542",
+ "note": "prompt v1 text unchanged from frozen-1; changed: plan labels keep all action arguments, every generation input pinned and checked, capped lists refused for live calls, baseline-runner failure checks. Records carry prompt_sha256 and frozen=true only under these exact inputs."
 }

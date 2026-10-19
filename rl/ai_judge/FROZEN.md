@@ -50,3 +50,18 @@ All figures are at the assumed prices. Files are in `runs/`; `analyze_bias.py`, 
 - A single judge call is a random variable: on the old positions it repeats its own plan 77% of the time and agrees with another order 63-77% of the time.
   Score it against the exam's **acceptable-move sets**, not only the one recorded move, and run it twice (`--repeat 2`) to report its consistency.
 - Report the judge's choice by listed plan number; two plans that differ only by a free optional step are different plans to the lister.
+
+---
+# Superseding freeze `judge-prompt-frozen-2` (Oct 19, recovery copy of the Sonnet worker, after Astra's checkpoint-2 findings)
+
+`judge-prompt-frozen-1` (commit 3faaf691) is kept untouched. The prompt text is unchanged; these repairs make the identity exact. Old/synthetic fixtures only; no API calls.
+
+1. **Complete action identity.** Any action without a short pg_pos name is labelled with its name plus all its arguments (`DiscardToolFromPokemon#{"in_play_idx":1,"player":1,"tool_idx":0}`), so Field Blower's different targets are different labels, are shown with their target ("Discard the Tool Heavy Helmet from the opponent's Pichu (Bench 1)") and replay tells them apart. A recorded bare name (`DiscardToolFromPokemon`) still matches every target (replay then returns all candidate keys). Tested on a synthetic position (`MINI-BLOWER`).
+2. **Every generation input is pinned and checked.** World seed, plan cap, node cap and step cap are explicit in `FROZEN`, passed on every lister call, echoed by the lister, and a record is `frozen: true` only if they all match. A **capped list is not every legal choice**: live judge calls refuse it (`--allow-capped` exists for experiments and never gives `frozen: true`). In the 92 stage A positions none is capped.
+3. **Baseline runners fail loudly.** Lister and replay check exit codes, problem lines, duplicate or missing ids/tags; the pg_pos runner requires exactly one free-play row per requested seed. Nothing is compared on surviving rows.
+4. **Exact identity** is in `FROZEN.json`: fingerprint, settings, sha256 of `judge.py`, `plans/src/main.rs`, `plans/Cargo.lock` and of the built lister binary.
+
+## Analysis contract (for the exam)
+- **One predefined call per position** (frozen settings, repeat 0) is the primary result. Repeats (`--repeat`) only measure consistency and are reported as a separate sensitivity estimate; never pick the better run, never pool repeats to enlarge the sample.
+- Uncertainty is game-clustered (positions from one game are one cluster).
+- **Limitation, stated plainly:** on the 30 old positions the same prompt repeated its plan in 23 of 30 and a reordered prompt in 19 of 30. My earlier phrase that the disagreements are "between nearly equal plans" is **not demonstrated**: of the 17 positions where v1 choices differed, 6 differed in kind (attack versus draw/coin versus end turn); the rest differed within a kind. Some of that is real instability of the judge, not only near-ties.
