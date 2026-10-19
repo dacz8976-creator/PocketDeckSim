@@ -1,8 +1,9 @@
 # AI plan judge: harness (step 2 of rl/results/weekly_review_2026-10-18/PLAN.md)
 
-Oct 18, 2026 (Sonnet 5.5 session "Opus agents progress", for the coordinator). Built and tested on the OLD positions only (stage A's 92 and the
+Oct 18-19, 2026 (Sonnet 5.5 session "Opus agents progress", for the coordinator). Built, shaped and tested on the OLD positions only (stage A's 92 and the
 diagnostic's 14). The laptop's exam folder and branch were not opened. No engine rules changed: `plans/` is a separate crate that calls the engine
-by path (like `rl/strength`), and `engine/` is untouched. **The prompt is a first version, not frozen**; nothing here has been scored on fresh positions.
+by path (like `rl/strength`), and `engine/` is untouched. **The prompt and settings are frozen since Oct 19** (tag `judge-prompt-frozen-1`, `FROZEN.md`);
+nothing here has been scored on fresh positions.
 
 ## What is here
 
@@ -10,7 +11,10 @@ by path (like `rl/strength`), and `engine/` is untouched. **The prompt is a firs
 |---|---|
 | `plans/` (Rust, `judge_plans`) | Lists the engine's legal **whole-turn plans** of a pg_pos position; replays a bot's or a recording's move list into the same list |
 | `judge.py` | Prompt, parser, API call, cost record, bot runner (`km3`, `kx3`, `judge`), shared result format, scoring against recorded plans |
-| `tests/` | 26 tests: parser, prompt whitelist, cost, the plan list (count, dedupe, chance cut-off, no leakage, cap, replay), the live path with a fake API |
+| `tests/` | 33 tests: parser, prompt whitelist, cost, the plan list (count, dedupe, chance cut-off, no leakage, cap, replay), the live path with a fake API, the freeze |
+| `FROZEN.md`, `FROZEN.json` | The frozen prompt and settings, the measurements behind them, and the fingerprint the freeze test checks |
+| `runs/` | Every live run of the shaping work (position bias, prompt v1 against v2, voting, compact against full, the frozen check): 300 calls, raw replies, costs |
+| `analyze_bias.py`, `compare_runs.py`, `vote_stability.py` | Reproduce the position-bias, version-comparison and voting numbers from `runs/` |
 | `results_old_positions/` | Plan counts, prompt sizes, coverage of the recorded plans, km3 and kx3 on the 14 diagnostic positions |
 | `smoke/` | The five live smoke calls (raw replies, tokens, cost) |
 
@@ -34,7 +38,9 @@ python3 -B -m unittest discover -s tests -v                # the tests (plan-lis
 ```
 
 The key is read from `ANTHROPIC_API_KEY` or the last `export ANTHROPIC_API_KEY=` line of `~/.bashrc` and is never printed or stored.
-Default model `claude-sonnet-5-5` (`AI_JUDGE_MODEL` or `--model`).
+The model is fixed at `claude-sonnet-5-5` (`--model` exists for experiments and makes the record `frozen: false`). With no flags, `judge` and `run --bot judge`
+use the frozen settings (`FROZEN.md`); `--repeat N` asks the same prompt N times, `--workers W` runs calls side by side, `--stop-usd X` stops starting calls at
+X dollars, `judge.py spend FILE...` totals the recorded cost.
 
 ## 1. The plan list (from the engine's full legal moves, never a bot's candidates)
 
@@ -74,8 +80,11 @@ deck is only a set of cards, no order), then the engine's `search_state` gives o
   one-line form with move labels (`Attach:1Darkness@2 zone > Evolve:Kingambit@1 > Attack:Slash [opp ...]`) and a legend (`--compact-above`).
 - **Answer:** exactly `PLAN: <number>` and `REASON: <one line>`. The parser accepts formatting variants (bold, `=`, "Plan 7", `#7`), refuses a number
   outside the list, several different numbers, or no number, and keeps a choice whose reason is missing but says so. It is not fooled by a number inside the
-  reason. `--order forward|reverse|shuffle:N` changes the order the plans are shown in (a check on position bias); the record stores both the number shown
-  and the listed plan number.
+  reason. `--order forward|reverse|shuffle:N|shuffle-id` changes the order the plans are shown in; the frozen default is `shuffle-id` (a fixed shuffle per
+  position); the record stores both the number shown and the listed plan number.
+- **Frozen (Oct 19):** prompt v1, order `shuffle-id`, model `claude-sonnet-5-5`, 8,000 output tokens, compact form above 80 plans, one call per decision.
+  See `FROZEN.md` for the settings and the measurements behind them (position bias, a rejected v2 prompt, voting, compact against full form), and
+  `FROZEN.json` for the fingerprint that `tests/test_frozen.py` checks. A record carries `frozen: true` when it ran under those settings.
 - The model reasons before it answers and that counts as output: a cap of 1,500 output tokens was too small for a 57-plan position (smoke call 3), so the
   default is 8,000 (`--max-tokens`). A reply cut off by the cap is recorded as an error, not guessed.
 
@@ -161,10 +170,12 @@ in the console before quoting these.
    variant to the acceptable set).
 2. **The dollar figures rest on assumed prices** (see above); the token counts are exact.
 3. **The model reasons by default** (hidden reasoning, about 0.8-1.2k output tokens); the output cap must stay high (8,000). Whether a smaller thinking
-   budget or no reasoning changes the quality is untested (and would be a prompt-shaping question for the old positions only).
-4. **Position bias** is untested: `--order reverse|shuffle:N` exists but no run compares orders. Running the judge twice checks consistency only (PLAN.md).
-5. **Long lists:** the compact form (above 80 plans) is untested for quality; one smoke call chose a sensible plan, no more. The largest prompt is 106k
-   tokens.
+   budget or no reasoning changes the quality is untested and now frozen out.
+4. **Position bias (measured Oct 19, FROZEN.md):** the same prompt repeats its plan 77% of the time on 30 positions (93% on the 14), another order agrees
+   63-77%; the choice does not gravitate to a place in the list, the disagreements are between nearly equal plans. Voting over three orders did not help (73%).
+   The scoring must use acceptable-move sets, and running the judge twice reports its consistency only (PLAN.md).
+5. **Long lists:** the compact form (above 80 plans) costs about a third of the full form and loses nothing visible on four lists of 225-479 plans; such lists
+   are noisy in either form (hundreds of near-equal plans). The largest prompt is 106k tokens.
 6. **Old recorded plan 020824 t03** does not replay (slot numbers).
 7. The maintainer-bot adapter (above) is not built.
 8. The estimator for prompt tokens is calibrated on five calls (2.1 characters per token full form, 1.7 compact form); it is good to about 5% on those.

@@ -1,0 +1,16 @@
+{
+ "frozen_on": "2026-10-19",
+ "tag": "judge-prompt-frozen-1",
+ "fingerprint": "3ff1d2da95088fcff385005a178466ea7b5f531b652dbad88ae2b09222540c50",
+ "settings": {
+  "model": "claude-sonnet-5-5",
+  "prompt_version": "v1",
+  "order": "shuffle-id",
+  "compact_above": 80,
+  "max_tokens": 8000,
+  "temperature": null,
+  "plan_world_seed": 1,
+  "max_plans": 2000
+ },
+ "note": "prompt v1 (SYSTEM + ANSWER_FORMAT + COMPACT_LEGEND in judge.py) with a fixed per-position shuffle of the plan order; see FROZEN.md"
+}
