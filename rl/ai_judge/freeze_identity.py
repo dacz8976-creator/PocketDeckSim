@@ -14,7 +14,7 @@ sys.path.insert(0, HERE)
 import judge  # noqa: E402
 
 HARNESS = 'rl/results/pause_games_decisions_2026-10-02/harness'
-SOURCES = ['rl/ai_judge/judge.py', 'rl/ai_judge/formal.py', 'rl/ai_judge/validate_baseline.py', 'rl/ai_judge/freeze_identity.py', 'rl/ai_judge/plans/src/main.rs', 'rl/ai_judge/plans/Cargo.lock',
+SOURCES = ['rl/ai_judge/judge.py', 'rl/ai_judge/formal.py', 'rl/ai_judge/analysis.py', 'rl/ai_judge/validate_baseline.py', 'rl/ai_judge/freeze_identity.py', 'rl/ai_judge/plans/src/main.rs', 'rl/ai_judge/plans/Cargo.lock',
            f'{HARNESS}/pgd_patch.py', f'{HARNESS}/dg_patch.py', f'{HARNESS}/pg_pos.rs']
 PLANS_BIN = judge.PLANS_BIN
 BASELINE_BIN = judge.PG_POS_BIN

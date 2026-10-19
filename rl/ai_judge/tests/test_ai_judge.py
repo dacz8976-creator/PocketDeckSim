@@ -45,10 +45,12 @@ class Parser(unittest.TestCase):
         self.assertFalse(r['ok'])
         self.assertIn('several', r['error'])
 
-    def test_a_missing_reason_keeps_the_choice_and_says_so(self):
+    def test_a_missing_reason_keeps_the_choice_and_says_so_as_a_warning_not_an_error(self):
         r = judge.parse_choice('PLAN: 2', 5)
         self.assertTrue(r['ok'])
-        self.assertIn('REASON', r['error'])
+        self.assertIsNone(r['error'])  # a record never carries an error together with a plan number
+        self.assertIn('REASON', r['warning'])
+        self.assertIsNone(judge.parse_choice('PLAN: 2\nREASON: x', 5)['warning'])
 
     def test_a_number_inside_the_reason_is_not_the_plan(self):
         r = judge.parse_choice('PLAN: 2\nREASON: plan 4 loses to a Rare Candy', 5)

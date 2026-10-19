@@ -15,7 +15,7 @@ Design rules (rl/results/weekly_review_2026-10-18/PLAN.md, step 2):
   * dry run by default: nothing leaves the machine unless --live is given.
 """
 import argparse, hashlib, inspect, json, os, re, subprocess, sys, threading, time, urllib.request, urllib.error
-import formal
+import analysis, formal
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, '..', '..'))
@@ -358,7 +358,8 @@ def parse_choice(text, n_plans):
     n = nums[0]
     if not 1 <= n <= n_plans:
         return {'ok': False, 'plan': None, 'reason': reason, 'error': f'plan {n} is not in 1..{n_plans}'}
-    return {'ok': True, 'plan': n, 'reason': reason, 'error': None if reason else 'no REASON line (choice kept)'}
+    # a missing REASON line is a WARNING, not an error: the choice is intact, and a record never carries an error together with a plan number (formal.py refuses that)
+    return {'ok': True, 'plan': n, 'reason': reason, 'error': None, 'warning': None if reason else 'no REASON line (choice kept)'}
 
 
 # ---------------------------------------------------------------------------------------------------------------------------------- API
@@ -437,6 +438,13 @@ def frozen_identity():
         return json.load(f)
 
 
+plan_list_sha256 = formal.plan_list_sha256  # the identity of one plan list; every row carries the hash of the list it was made from
+
+
+def prompt_hash(system, user):
+    return hashlib.sha256((system + '\n\0\n' + user).encode('utf-8')).hexdigest()[:16]
+
+
 def record(position, bot, plan, cut, **extra):
     r = {'schema': SCHEMA, 'position': position, 'bot': bot, 'seed': None, 'plan': plan, 'cut': cut}
     r.update(extra)
@@ -456,7 +464,7 @@ def judge_one(pid, positions, recs, order, live, model, temperature=None, decks_
               and rec.get('limits') == {k: FROZEN[k] for k in ('max_plans', 'max_nodes', 'max_steps')})
     base = dict(order=order, n_plans=len(shown), capped=rec['capped'], total_plans_found=rec['total_found'], model=model, prompt_tokens_estimate=est, dry_run=not live,
                 prompt_form='compact' if len(shown) > compact_above else 'full', prompt_version=prompt_version, frozen=frozen,
-                prompt_sha256=hashlib.sha256((system + '\n\0\n' + user).encode('utf-8')).hexdigest()[:16])
+                prompt_sha256=prompt_hash(system, user), plan_list_sha256=plan_list_sha256(rec))
     if not live:
         return record(pid, 'judge', None, None, plan_number=None, reason=None, cost=None, **base), system, user
     text, usage, secs, model_used, extra = call_claude(system, user, model, max_tokens=max_tokens, temperature=temperature)
@@ -465,7 +473,8 @@ def judge_one(pid, positions, recs, order, live, model, temperature=None, decks_
         parsed['error'] = f"{parsed['error']}; the reply was cut at max_tokens={max_tokens} (reasoning used it up): raise --max-tokens"
     plan = shown[parsed['plan']] if parsed['ok'] else None
     r = record(pid, 'judge', plan['labels'] if plan else None, plan['end'] if plan else None, plan_number=plan['n'] if plan else None, shown_number=parsed['plan'],
-               reason=parsed['reason'], parse_error=parsed['error'], raw=text, seconds=secs, cost=cost_of(model_used, usage), **extra, **base)
+               plan_key=plan['key'] if plan else None, reason=parsed['reason'], parse_error=parsed['error'], parse_warning=parsed.get('warning'), raw=text, seconds=secs,
+               cost=cost_of(model_used, usage), **extra, **base)
     return r, system, user
 
 
@@ -495,7 +504,8 @@ def run_pg_pos(bot, ids, seeds, recs, positions_path=DEFAULT_POSITIONS, decks_di
         n, err = matched[f"{pid}|{j['seed']}"]
         plan = canonical_plan(j['plan'], recs[pid])
         end = recs[pid]['plans'][n - 1]['end'] if n else None
-        rec = record(pid, bot, plan, end, plan_number=n, match_error=err, plan_full=j['plan'], pg_pos_cut=j['cut'], pg_pos_sha256=pg_sha, cost=None, dry_run=False)
+        rec = record(pid, bot, plan, end, plan_number=n, match_error=err, plan_full=j['plan'], pg_pos_cut=j['cut'], pg_pos_sha256=pg_sha, cost=None, dry_run=False,
+                     plan_key=(recs[pid]['plans'][n - 1]['key'] if n else None), plan_list_sha256=plan_list_sha256(recs[pid]))
         rec['seed'] = j['seed']
         out.append(rec)
     return out
@@ -697,7 +707,11 @@ def main(argv=None):
     p.add_argument('--bots', default='km3,kx3,judge')
     p.add_argument('--seeds', default='1', help='seeds of the step bots (km3, kx3): one expected row per seed')
     p.add_argument('--judge-repeats', type=int, default=1, help='judge rows per position (repeat indices 0..N-1)')
-    p.add_argument('--references', required=True, help='JSON: {position: [{"id": ..., "labels": [...]}]} the accepted move lists')
+    p.add_argument('--references', required=True, help='JSON: {"references": {position: [{"id": ..., "labels": [...]}]}, "eligible_games": [...], "excluded_games": [{"game", "reason"}]} '
+                   '(the accepted move lists and the games the primary comparison is over; see formal.py)')
+    p.add_argument('--contrasts', help='paired contrasts as a:b,c:d (default: the judge against every other bot)')
+    p.add_argument('--min-games', type=int, default=analysis.MIN_GAMES, help='fewer eligible games than this: the comparison fails (a game bootstrap on a handful of clusters is not trustworthy)')
+    p.add_argument('--resamples', type=int, default=analysis.RESAMPLES, help='game-bootstrap resamples (the report records the number and the seed)')
     p.add_argument('--on-problem', choices=['fail', 'inconclusive'], default='fail')
     p.add_argument('--allow-unfrozen', action='store_true', help='experiments only: accept judge rows not produced under the frozen settings')
     p.add_argument('--allow-other-binaries', action='store_true', help='experiments only: accept a plan lister or baseline executable other than the frozen ones (FROZEN.json)')
@@ -757,7 +771,8 @@ def main(argv=None):
             sys.exit('no positions: give --ids, --id or --set')
         rows = []
         for fn in a.results:
-            rows += [json.loads(l) for l in open(fn, encoding='utf-8') if l.strip()]
+            with open(fn, encoding='utf-8') as f:
+                rows += [json.loads(l) for l in f if l.strip()]
         baseline_sha = None
         if not a.allow_other_binaries:
             ident = frozen_identity()
@@ -767,27 +782,51 @@ def main(argv=None):
                          "rebuild it from the frozen source or use --allow-other-binaries for an experiment")
             baseline_sha = ident['baseline']['binary_sha256']
         recs = list_plans(ids, a.positions, a.decks, a.world_seed, a.max_plans)
-        with open(a.references, encoding='utf-8') as f:
-            references = json.load(f)
+        references, eligibility = formal.load_references(a.references)
         games = {i: positions[i].get('game') for i in ids}
+        rendered = {}
+
+        def expect_judge(pid, row):
+            """The prompt the judge row must have been answered from, re-rendered now: frozen settings, or (experiments, --allow-unfrozen) the row's own order and prompt version."""
+            order = row.get('order') if a.allow_unfrozen else FROZEN['order']
+            version = row.get('prompt_version', 'v1') if a.allow_unfrozen else FROZEN['prompt_version']
+            if (pid, order, version) not in rendered:
+                try:
+                    system, user, shown = render_prompt(positions[pid], recs[pid], order, a.decks, a.compact_above, version)
+                    rendered[(pid, order, version)] = {'prompt_sha256': prompt_hash(system, user), 'shown': {k: p['n'] for k, p in shown.items()}}
+                except (SystemExit, AssertionError, KeyError, TypeError) as e:
+                    rendered[(pid, order, version)] = {'error': f'order {order!r}, prompt version {version!r}: {e}'}
+            return rendered[(pid, order, version)]
+
+        contrasts = [tuple(x.split(':', 1)) for x in a.contrasts.split(',')] if a.contrasts else None
         try:
-            report = formal.compare(rows, ids, a.bots.split(','), [int(x) for x in a.seeds.split(',')], a.judge_repeats, references, recs,
-                                    lambda items, r: match_plans(items, r, a.positions, a.decks), games, a.on_problem, not a.allow_unfrozen, baseline_sha)
+            report = formal.compare(rows, ids, a.bots.split(','), [int(x) for x in a.seeds.split(',') if x.strip()], a.judge_repeats, references, recs,
+                                    lambda items, r: match_plans(items, r, a.positions, a.decks), games, a.on_problem, not a.allow_unfrozen, baseline_sha,
+                                    eligibility, expect_judge, contrasts, a.min_games, a.resamples)
         except formal.BatchFailed as e:
             report = e.report
             if a.out:
-                json.dump(report, open(a.out, 'w', encoding='utf-8'), indent=1)
+                with open(a.out, 'w', encoding='utf-8') as f:
+                    json.dump(report, f, indent=1)
             print(f'COMPARISON FAILED: {len(e.problems)} problem(s); no agreement is reported:', file=sys.stderr)
             formal.print_problems(e.problems)
             return formal.exit_code(report)
         if a.out:
-            json.dump(report, open(a.out, 'w', encoding='utf-8'), indent=1)
+            with open(a.out, 'w', encoding='utf-8') as f:
+                json.dump(report, f, indent=1)
         if report['status'] != 'complete':
             print(f'COMPARISON {report["status"].upper()}: {len(report["problems"])} problem(s); every expected row is listed in the report, no agreement is reported:', file=sys.stderr)
             formal.print_problems(report['problems'])
         else:
             for bot, g in report['agreement'].items():
                 print(f"{bot}: {g['agree']}/{g['rows']} rows agree with an accepted move")
+            an = report['analysis']
+            pop = an['population']
+            print(f"analysis over {pop['n_decisions']} decisions in {pop['n_games']} games ({an['method']['interval']}; excluded games: {len(pop['excluded_games'])}):")
+            for b, r in an['rates'].items():
+                print(f"  {b}: {r['estimate']:.3f} [{r['ci_low']:.3f}, {r['ci_high']:.3f}]")
+            for c in an['contrasts']:
+                print(f"  {c['a']} - {c['b']}: {c['estimate']:+.3f} [{c['ci_low']:+.3f}, {c['ci_high']:+.3f}]  sign-flip p {c['sign_flip_p']:.3f}  -> {c['verdict']} ({c['reason']})")
         return formal.exit_code(report)
 
     positions = load_positions(a.positions)
