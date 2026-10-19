@@ -110,6 +110,13 @@ evidence if step 4 ran, and measured cost. Not another design document.
 **Rough cost:** about 3-5% of the weekly meter, $10-30 of API credits (they expire Oct 28), a few laptop hours (his
 laptop stops at noon on school days unless he says otherwise), and a few minutes of his time on ambiguous labels.
 
+**Two rules for reading the results (Astra, Oct 18, final word on the plan):**
+- **Reuse the format and tools; keep fresh questions for validation.** Once a position has been studied and used to
+  improve a bot, it stays useful as a check that old mistakes don't return, but it is no longer independent evidence
+  of improvement. Each exam position is marked fresh or used.
+- **The five categories explain the results; they are not five pass/fail gates.** With a modest exam, some will stay
+  uncertain. Meaningful improvement across several common deck types counts even if unusual combinations stay hard.
+
 ## After this week: the broad test battery (roadmap, not this week's work)
 
 From Astra, shared by Dustin on Oct 18: "A broad test battery could tell us where the simulator is useful now, where
