@@ -5,6 +5,12 @@ its follow-up note (ASTRA_REVIEW.md), on Dustin's word: "combine the reviews and
 **Revised the same evening with Astra's four corrections** (on the comparison, the finished-game baseline, future
 leakage, and the Kingambit-losses wording). Exam preparation continues under the revised plan.
 
+**Goal clarified the same evening (Astra, shared by Dustin):** "Kingambit should be a challenging test case, not the
+gatekeeper for the entire project." The goal is broad, trustworthy usefulness with known limits: a bot that plays a
+broad range of decks competently and clearly identifies the strategies it cannot handle. It can then help test and
+improve the decks it supports while its weaknesses are worked on. So results are reported by kind of deck and kind of
+decision, not as one pass/fail.
+
 ## Where the two reviews agree
 
 - **Verdict: REDIRECT.** No new bot capability was shown this week. Stop adding hand-made scoring bonuses to the pilot.
@@ -35,8 +41,11 @@ leakage, and the Kingambit-losses wording). Exam preparation continues under the
 1. **Exam (Mon-Tue).**
    - Take 40-60 decision points from his recorded ladder games that no bot was developed on: not stage A, the
      diagnostic or the pause-game sets.
-   - Use more than one deck. Cover all four kinds of right answer: prepare, sacrifice, attack now, and abandon the
-     plan. Include positions where both bots agree.
+   - Use a representative mix of deck kinds: fast attackers, evolution decks, Bench preparation, defensive strategies
+     and unusual combinations. Kingambit is one hard case among them, not the majority.
+   - Tag each point with its deck kind and its kind of right answer. Cover all four answers: prepare, sacrifice,
+     attack now, and abandon the plan. Include positions where both bots agree.
+   - If his recordings can't cover a deck kind, list it as untested; don't assume it.
    - Record each point's game. Points from one game are not independent, and no whole game may also feed
      development.
    - The default label is his recorded move. Agents list other acceptable moves, each with a reason, and any of them
@@ -60,6 +69,8 @@ leakage, and the Kingambit-losses wording). Exam preparation continues under the
    - The judge "helps" only if that interval sits above zero. If it straddles zero, the result is **inconclusive**,
      not a win.
    - Running the judge twice checks its consistency only; it does not show it is better.
+   - Report the same comparison **by deck kind and by kind of decision**: where each bot does well, where it
+     struggles, and where the evidence is too thin (small groups will often be inconclusive; say so).
 4. **Finished games (Thu-Sat), only if step 3 clears the bar.**
    - Before any game, write down three things: when the judge is consulted (which decision points), who plays the
      remaining moves (frozen kx3), and what result would justify expansion.
@@ -72,6 +83,8 @@ leakage, and the Kingambit-losses wording). Exam preparation continues under the
    - An unclear result is reported as inconclusive.
    - Otherwise: a maintenance period, upstream help, and waiting for the maintainer's AI.
    - The AI judge is a hypothesis to test, not an assumed improvement.
+   - Improvements on other decks count even if Kingambit stays hard. Deck comparisons are used only within the deck
+     kinds and decisions where competence has been shown, and the known limits are listed beside every comparison.
 
 **Deliverable for next Sunday's review:** a runnable comparison with its decisions, the uncertainty, finished-game
 evidence if step 4 ran, and measured cost. Not another design document.
