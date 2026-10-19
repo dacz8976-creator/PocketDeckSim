@@ -41,10 +41,23 @@ decision, not as one pass/fail.
 1. **Exam (Mon-Tue).**
    - Take 40-60 decision points from his recorded ladder games that no bot was developed on: not stage A, the
      diagnostic or the pause-game sets.
-   - Use a representative mix of deck kinds: fast attackers, evolution decks, Bench preparation, defensive strategies
-     and unusual combinations. Kingambit is one hard case among them, not the majority.
-   - Tag each point with its deck kind and its kind of right answer. Cover all four answers: prepare, sacrifice,
+   - Use a representative mix of decks, tagged by **how they need to be played** (Astra's categories; a deck can be
+     in several):
+
+     | Category | What the bot must show |
+     |---|---|
+     | Fast pressure | Attack promptly, take available wins, spend resources sensibly |
+     | Evolution and setup | Assemble the line and protect vulnerable pieces |
+     | Bench preparation | Energize the next attacker while keeping something useful in front |
+     | Sacrifice and recovery | Give up a point when that creates a better position |
+     | Control and combinations | Sequence effects correctly and change plans when the combination fails |
+
+     Kingambit is one hard case among them, not the majority.
+   - Tag each point with its categories and its kind of right answer. Cover all four answers: prepare, sacrifice,
      attack now, and abandon the plan. Include positions where both bots agree.
+   - **Make it reusable.** Use one file format (position, the engine's full legal moves, labels, categories, game) that
+     any bot can be run against: km3, kx3, the AI judge, and later the maintainer's bot through upstream's
+     external-bot interface (docs/bot-protocol.md).
    - If his recordings can't cover a deck kind, list it as untested; don't assume it.
    - The deck mix and the reporting categories (deck kind by kind of answer) are committed with the labels, before any
      bot runs.
@@ -96,6 +109,35 @@ evidence if step 4 ran, and measured cost. Not another design document.
 
 **Rough cost:** about 3-5% of the weekly meter, $10-30 of API credits (they expire Oct 28), a few laptop hours (his
 laptop stops at noon on school days unless he says otherwise), and a few minutes of his time on ambiguous labels.
+
+## After this week: the broad test battery (roadmap, not this week's work)
+
+From Astra, shared by Dustin on Oct 18: "A broad test battery could tell us where the simulator is useful now, where
+it needs work, and whether a new bot expands that useful territory." This week's exam is its first piece. Later:
+
+- **Catalogue.**
+  - Common decks, meaningful variants of them, and the unusual decks he enjoys, each tagged with the five playing
+    categories.
+  - Extend `lib/deck_classifier.py`, which recognizes card effects, to label playing requirements. Check those labels
+    against real lists, since two decks with similar cards can need different decisions.
+- **Three kinds of evidence, side by side, per category:**
+  1. **Matchup results**: where the simulator disagrees with Limitless tournament results, allowing for uncertainty,
+     different lists and different opponents. Compare per matchup as well as overall, and keep it separate from his
+     ladder experience.
+  2. **Quality of play**: does it carry out the deck's plan, spot knockouts, protect developing attackers and adapt?
+     Right win rates alone can come from two badly played decks.
+  3. **Deck-change judgments**: does it tell useful card changes from harmful ones? This is the closest test of what
+     he wants.
+- **Reports in plain words per category**, with "unknown" where evidence is missing. For example: "Bench-setup decks:
+  encouraging on these tested lists and opponents; still unreliable when retreating exposes an unprepared attacker;
+  variant testing uncertain." No whole category is called "trusted" after a few successes.
+- **Human play.** He plays against the bot and flags only the few decisions that look clearly wrong, sometimes playing
+  both sides of a matchup to separate a hard matchup from poor piloting.
+  - The engine already supports masked observations and legal choices for a human player. Its terminal board has
+    limits around choices and recording, so a small interface repair or adapter comes first (from Astra's reading
+    of the source, not yet tried in play).
+- **Order:** broad coverage first, reusing compatible existing results. Extra games go only to uncertain questions
+  that matter to him.
 
 ## Side work this week (no new experiments)
 
