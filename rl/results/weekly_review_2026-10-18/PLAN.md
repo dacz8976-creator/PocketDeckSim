@@ -46,6 +46,8 @@ decision, not as one pass/fail.
    - Tag each point with its deck kind and its kind of right answer. Cover all four answers: prepare, sacrifice,
      attack now, and abandon the plan. Include positions where both bots agree.
    - If his recordings can't cover a deck kind, list it as untested; don't assume it.
+   - The deck mix and the reporting categories (deck kind by kind of answer) are committed with the labels, before any
+     bot runs.
    - Record each point's game. Points from one game are not independent, and no whole game may also feed
      development.
    - The default label is his recorded move. Agents list other acceptable moves, each with a reason, and any of them
@@ -85,6 +87,9 @@ decision, not as one pass/fail.
    - The AI judge is a hypothesis to test, not an assumed improvement.
    - Improvements on other decks count even if Kingambit stays hard. Deck comparisons are used only within the deck
      kinds and decisions where competence has been shown, and the known limits are listed beside every comparison.
+   - The choice to expand or to enter maintenance reflects demonstrated usefulness across the whole range. Failure on
+     one unusual strategy does not cancel broader progress. The aim is a useful deck-testing tool with known
+     limitations, not a bot trained to reproduce one deck's plan.
 
 **Deliverable for next Sunday's review:** a runnable comparison with its decisions, the uncertainty, finished-game
 evidence if step 4 ran, and measured cost. Not another design document.
