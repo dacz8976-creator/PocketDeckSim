@@ -1,0 +1,123 @@
+{
+ "lines": 69,
+ "by_tag": {
+  "his": 51,
+  "alt": 16,
+  "key": 2
+ },
+ "pgdump_lines": 0,
+ "shipped_position_problems": 0,
+ "shipped_unmatched": [
+  [
+   "LAD-20261014_153908000_iOS-t6",
+   "his",
+   "hidden random choice (ChooseRandomEvolutionTarget{in_play_idx:0,energy_type:Grass})"
+  ]
+ ],
+ "stop_equals_first_segment": 68,
+ "stop_differs": [
+  [
+   "LAD-20261014_153908000_iOS-t6",
+   "his",
+   1,
+   2,
+   "hidden random choice (ChooseRandomEvolutionTarget{in_play_idx:0,energy_type:Grass})"
+  ]
+ ],
+ "after_chance": {
+  "validated": 42,
+  "n/a": 24,
+  "partly": 3
+ },
+ "after_chance_detail": [
+  [
+   "LAD-20261014_143111000_iOS-t10",
+   "his",
+   "partly: stops again at hidden draw or coin at EndTurn after 5/5"
+  ],
+  [
+   "LAD-20261014_161324000_iOS-t5",
+   "his",
+   "partly: stops again at hidden draw or coin at EndTurn after 6/6"
+  ],
+  [
+   "LAD-20261014_161324000_iOS-t5",
+   "alt0",
+   "partly: stops again at hidden draw or coin at EndTurn after 8/8"
+  ]
+ ],
+ "new_or_changed_lines": [
+  [
+   "LAD-20261014_161324000_iOS-t5",
+   "his",
+   1,
+   7,
+   "hidden draw or coin at Play:Professor's Research",
+   "partly: stops again at hidden draw or coin at EndTurn after 6/6"
+  ],
+  [
+   "LAD-20261014_161324000_iOS-t5",
+   "alt0",
+   1,
+   9,
+   "hidden draw or coin at Play:Professor's Research",
+   "partly: stops again at hidden draw or coin at EndTurn after 8/8"
+  ],
+  [
+   "LAD-20261014_225451000_iOS-t4",
+   "his",
+   5,
+   5,
+   "end of line",
+   "n/a (no chance action in the line)"
+  ],
+  [
+   "LAD-20261016_031512000_iOS-t2",
+   "his",
+   1,
+   3,
+   "hidden draw or coin at Play:Poké Ball",
+   "validated (2/2 actions, the turn is over (opponent's frame))"
+  ],
+  [
+   "LAD-20261016_031512000_iOS-t2",
+   "key",
+   1,
+   3,
+   "hidden draw or coin at Play:Poké Ball",
+   "validated (2/2 actions, end of line)"
+  ],
+  [
+   "LAD-20261016_031512000_iOS-t8",
+   "his",
+   2,
+   2,
+   "the turn is over (opponent's frame)",
+   "n/a (no chance action in the line)"
+  ],
+  [
+   "LAD-20261016_031512000_iOS-t8",
+   "alt0",
+   2,
+   2,
+   "the turn is over (opponent's frame)",
+   "n/a (no chance action in the line)"
+  ],
+  [
+   "LAD-20261014_215114000_iOS-t10",
+   "his",
+   1,
+   3,
+   "hidden draw or coin at Play:Poké Ball",
+   "validated (2/2 actions, the turn is over (opponent's frame))"
+  ],
+  [
+   "LAD-20261014_215114000_iOS-t10",
+   "key",
+   1,
+   4,
+   "hidden draw or coin at Play:Poké Ball",
+   "validated (3/3 actions, the turn is over (opponent's frame))"
+  ]
+ ]
+}

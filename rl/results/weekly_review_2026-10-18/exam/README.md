@@ -6,7 +6,7 @@ The exam holds 51 decision points from 27 of Dustin's real ranked games (Oct 14-
 - **It asks:** does a bot play these turns the way a good player of his decks would?
 - **No bot has seen it:** no bot was developed on these games (they aren't in stage A, the Oct 18 diagnostic or the pause-game sets), and no bot has been run on these positions.
 
-File: `exam_2026-10-19.json`, format `pds-exam-v1.4`. One file serves any bot: km3, kx3, the AI judge, and later an external bot through upstream's `docs/bot-protocol.md`.
+File: `exam_2026-10-19.json`, format `pds-exam-v1.5`. One file serves any bot: km3, kx3, the AI judge, and later an external bot through upstream's `docs/bot-protocol.md`.
 
 ## What a candidate may see (`bot_view`)
 A candidate sees only `points[i].position` and `points[i].legal_root`.
@@ -39,13 +39,13 @@ The `scoring` field in the JSON is authoritative; this summarises it.
   - Playing a Stadium is never a chance action, and using a deterministic Stadium (Rainbow Cave, for example) isn't either.
 - **Two metrics, reported separately:**
   - (1) prefix agreement on every scored point;
-  - (2) plan-segment agreement on the points with `answer.segment_scope == "full"` (17 scored points; 19 of all 51).
+  - (2) plan-segment agreement on the points with `answer.segment_scope == "full"` (19 of the 51 points).
   - A point is "full" only if EVERY accepted segment (his and each acceptable line) holds all of that line's strategic actions; its shortest accepted segment sets its scope (`scope_rule`). "partial" and "none" points count for prefix agreement only.
   - Prefix agreement is not plan quality.
 - **A match:** the segment matches `answer.first_segment` or the `first_segment` of any `acceptable` line.
   - Matching is by replay: both segments are applied to the position and the resulting states compared up to the chance boundary.
   - Label matching is a fallback only, must be reported as such, and compares labels with `build/label_adapter.py` `same_action()`, so targets are never dropped.
-- **Held points:** `answer.status == "pending_dustin"` points (5) are not scored, and their `pending_alternatives` never count.
+- **The key (v1.5):** what a good player of his decks would do, using his judgment. It's his recorded move by default; where he said otherwise, `answer.key_line` holds the key (`key_rule`). All 51 points are scored. Lines in `answer.rejected_alternatives` never count. Points with `decided_game: true` are also reported separately.
 - **Statistics:** game-level bootstrap, paired across candidates; an unclear difference is "inconclusive". Results are per deck kind and answer kind, always labelled "three decks only".
 - **Labels:** see `label_format`. Arguments are kept as `Name#{json}`.
 ## Deck mix
@@ -55,7 +55,7 @@ The `scoring` field in the JSON is authoritative; this summarises it.
 | 13-A (Alolan Ninetales ex / TR Raticate ex) | 23 | evolution and setup, Bench preparation, control and combinations |
 | Kingambit, list A | 14 | evolution and setup, Bench preparation, sacrifice and recovery, control and combinations |
 
-Kingambit is one hard case (27% of points), not the gatekeeper. The answer kinds are prepare 24, attack now 22, sacrifice 5 and abandon 0.
+Kingambit is one hard case (27% of points), not the gatekeeper. The answer kinds are prepare 23, attack now 23, sacrifice 5 and abandon 0 (v1.5).
 
 ## Coverage, deck kind x answer kind
 A point usually tests more than one deck kind, so the rows aren't independent and add up to more than 51.
@@ -64,7 +64,7 @@ A point usually tests more than one deck kind, so the rows aren't independent an
 |---|---:|---:|---:|---:|
 | fast pressure | 0 | 0 | 7 | 0 |
 | evolution and setup | 14 | 3 | 12 | 0 |
-| Bench preparation | 18 | 4 | 10 | 0 |
+| Bench preparation | 17 | 4 | 11 | 0 |
 | sacrifice and recovery | 3 | 2 | 2 | 0 |
 | control and combinations | 16 | 3 | 15 | 0 |
 
@@ -159,3 +159,33 @@ No bot, judge, API call or search was used. The legal-moves tool was rebuilt (12
   - **`UseStadium` in LAD-20261016_024253000_iOS-t1:** it comes after Copycat. Its continuation is checked with the reviewed tails, but the UseStadium step itself isn't separately checked in the post-Copycat state.
   - **The draws inside the variants** are the review's account of what he drew. They can't check whether a candidate's different draw would make the same later actions legal; a candidate gets the engine's own draw.
 - **Snapshot:** `exam_2026-10-19.v13_4b72704f.json`.
+
+## v1.5 changes (Oct 19, the live laptop session; before any candidate output)
+Dustin answered the 5 pending points. His exact words are stored in `answer.dustin_answer`, and the coordinator made the labelling decisions. No bot, judge, API call or search was used.
+
+**The general rule (`key_rule`):** the key is what a good player of his decks would do, using his judgment.
+- It is his recorded move by default. `answer.his_move` always stays the record.
+- Where he said otherwise, `answer.key_line` holds the key, and `answer.recorded_move_acceptable` is false. That applies to 2 points.
+- `answer.first_segment` is the key's first segment.
+- Lines he or the coordinator ruled out are listed in `answer.rejected_alternatives` and never count.
+
+| point | his answer, in short | key | changes |
+|---|---|---|---|
+| 161324 t5 (deck 12) | sacrificing Spinarak was the better option; Whimsicott ex knocked out ends the game | his move | X Speed into Whimsicott ex: rejected. X Speed with Cottonee Active as the sacrifice ("could have been considered"): added as acceptable, with his reason for keeping X Speed |
+| 225451 t4 (13-A) | Sabrina pulled up the Rotom ex with 1 Energy so it can't get its second | his move (Sabrina) | keep-Sabrina line: rejected |
+| 031512 t2 (Kingambit) | "Not attacking was a mistake"; Pawniard stays in hand until something is knocked out | Poké Ball, Darkness on Glimmet, Hang Down, Pawniard kept in hand | his recorded no-attack line and bench Pawniard + Hang Down: rejected. answer_kind prepare → attack now (the key now deals damage this turn; old value in `answer_kind_v14`) |
+| 031512 t8 (Kingambit) | not much benefit either way | his move | the Pawniard-Energy line: acceptable too |
+| 215114 t10 (13-A) | the game was over; attaching to Rattata "would be the smart play normally" | the Water goes on the new Rattata | his recorded line: rejected as play quality. `decided_game: true`, so reports show it separately |
+
+- **Counts:**
+  - answer kinds: prepare 23, attack now 23, sacrifice 5;
+  - scope over all 51 points (all scored): full 19, partial 11, none 21;
+  - full points by deck: 13-A 11, Kingambit 6, deck 12 2;
+  - full points by kind: attack now 9, prepare 7, sacrifice 3;
+  - lines: 16 acceptable alternatives, 2 key lines, 5 rejected lines.
+- **Re-validation:** all 69 lines (51 recorded, 2 keys, 16 acceptable) were checked with the rebuilt legal-only tool, in `build/vlines_v15.jsonl` and `build/VALIDATION_v15.json`.
+  - 0 position problems and 0 PGDUMP lines.
+  - Every forced action is legal.
+  - The chance stop equals the first segment in 68 of 69 lines. The other is Quick-Grow's engine random pick, as in v1.4.
+  - After the chance, 42 lines were validated to the end. 3 matched every action and stop only at Hiking Trail's end-of-turn draw, including the new X Speed / Cottonee line (8/8). 24 lines have no chance action.
+- **Snapshot:** `exam_2026-10-19.v14_f71de2a9.json`.

@@ -1,7 +1,7 @@
 {
- "format": "pds-exam-v1.4",
+ "format": "pds-exam-v1.5",
  "created": "2026-10-19",
- "scoring": "Two metrics, fixed before any candidate output. (1) PREFIX agreement, all scored points: the candidate's first segment (its actions up to and including its first chance action: a draw, search, coin or random pick, incl. UseStadium on Mesagoza; or its whole turn if none) is correct if it matches answer.first_segment or the first_segment of an acceptable line. (2) PLAN-SEGMENT agreement: the same test on the points whose answer.segment_scope is 'full' (the scored segment holds all of his turn's strategic actions). The two are reported separately; prefix agreement is not a measure of plan quality. Matching is by REPLAY: apply the candidate's segment and each accepted segment to the position and compare the resulting state up to the chance boundary (board, hand, discard, Energy, Tools, points, Active), so a retreat that renumbers slots is judged by its result, not its labels; label-set matching is only a fallback when replay is unavailable and must be reported as such. Points with answer.status 'pending_dustin' are NOT scored until he answers; their pending alternatives never count. Points carry their game id: results use a game-level bootstrap, paired across candidates; an unclear difference is 'inconclusive'. Reported per deck kind and answer kind, always with 'three decks only'.",
+ "scoring": "Two metrics, fixed before any candidate output. (1) PREFIX agreement, all scored points: the candidate's first segment (its actions up to and including its first chance action: a draw, search, coin or random pick, incl. UseStadium on Mesagoza; or its whole turn if none) is correct if it matches answer.first_segment or the first_segment of an acceptable line. (2) PLAN-SEGMENT agreement: the same test on the points whose answer.segment_scope is 'full' (the scored segment holds all of his turn's strategic actions). The two are reported separately; prefix agreement is not a measure of plan quality. Matching is by REPLAY: apply the candidate's segment and each accepted segment to the position and compare the resulting state up to the chance boundary (board, hand, discard, Energy, Tools, points, Active), so a retreat that renumbers slots is judged by its result, not its labels; label-set matching is only a fallback when replay is unavailable and must be reported as such. All 51 points are scored (Dustin answered the 5 pending points on Oct 19; see key_rule). Points with decided_game true are also reported separately. Points carry their game id: results use a game-level bootstrap, paired across candidates; an unclear difference is 'inconclusive'. Reported per deck kind and answer kind, always with 'three decks only'.",
  "decks": {
   "12-ariados-whimsicott-ogerpon": {
    "list_file": "/home/dacz8976/exam/decks/12-ariados-whimsicott-ogerpon.txt",
@@ -71,9 +71,9 @@
   "evolution and setup x sacrifice": 3,
   "evolution and setup x attack now": 12,
   "evolution and setup x abandon": 0,
-  "Bench preparation x prepare": 18,
+  "Bench preparation x prepare": 17,
   "Bench preparation x sacrifice": 4,
-  "Bench preparation x attack now": 10,
+  "Bench preparation x attack now": 11,
   "Bench preparation x abandon": 0,
   "sacrifice and recovery x prepare": 3,
   "sacrifice and recovery x sacrifice": 2,
@@ -245,10 +245,11 @@
     "segment_scope_v13": "none",
     "segment_scope_his": "none",
     "segment_scope_by_line": {
-     "his": "none"
+     "key": "none"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_153908000_iOS-t6",
@@ -416,10 +417,11 @@
     "segment_scope_v13": "none",
     "segment_scope_his": "none",
     "segment_scope_by_line": {
-     "his": "none"
+     "key": "none"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_142546000_iOS-t7",
@@ -707,12 +709,13 @@
     "segment_scope_v13": "partial",
     "segment_scope_his": "partial",
     "segment_scope_by_line": {
-     "his": "partial",
+     "key": "partial",
      "alt0": "partial",
      "alt1": "none"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_143111000_iOS-t8",
@@ -915,10 +918,11 @@
     "segment_scope_v13": "full",
     "segment_scope_his": "full",
     "segment_scope_by_line": {
-     "his": "full"
+     "key": "full"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_143111000_iOS-t10",
@@ -1089,10 +1093,11 @@
     "segment_scope_v13": "none",
     "segment_scope_his": "none",
     "segment_scope_by_line": {
-     "his": "none"
+     "key": "none"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_144627000_iOS-t2",
@@ -1234,10 +1239,11 @@
     "segment_scope_v13": "none",
     "segment_scope_his": "none",
     "segment_scope_by_line": {
-     "his": "none"
+     "key": "none"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_145449000_iOS-t4",
@@ -1407,10 +1413,11 @@
     "segment_scope_v13": "none",
     "segment_scope_his": "none",
     "segment_scope_by_line": {
-     "his": "none"
+     "key": "none"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_160506000_iOS-t6",
@@ -1585,10 +1592,11 @@
     "segment_scope_v13": "none",
     "segment_scope_his": "none",
     "segment_scope_by_line": {
-     "his": "none"
+     "key": "none"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_160506000_iOS-t10",
@@ -1884,12 +1892,13 @@
     "segment_scope_v13": "full",
     "segment_scope_his": "full",
     "segment_scope_by_line": {
-     "his": "full",
+     "key": "full",
      "alt0": "full",
      "alt1": "full"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_161324000_iOS-t5",
@@ -2014,7 +2023,25 @@
     "first_segment": [
      "Play:Professor's Research"
     ],
-    "acceptable": [],
+    "acceptable": [
+     {
+      "line": [
+       "Play:Professor's Research",
+       "Evolve:Whimsicott ex@1",
+       "Place:Cottonee@2",
+       "Play:Leaf Cape",
+       "Tool:Leaf Cape@1",
+       "Attach:1Grass@1 zone",
+       "Play:X Speed",
+       "Retreat:2",
+       "EndTurn"
+      ],
+      "first_segment": [
+       "Play:Professor's Research"
+      ],
+      "reason": "Dustin: X Speed and Cottonee Active as the sacrifice 'could have been considered'; he preferred keeping X Speed for a later free retreat with two Whimsicott ex"
+     }
+    ],
     "why_his": "Lets the unenergised Spinarak fall to Charmeleon and builds Whimsicott ex on the Bench (Leaf Cape 170 HP, first Grass) for Grass Knot next turn.",
     "ambiguous": "You let your last Spinarak be KO'd for a point; would X Speed retreating it to the 170-HP caped Whimsicott ex (taking about 60) have been better?",
     "legal_steps": [
@@ -2039,8 +2066,28 @@
      "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
      "notes": ""
     },
-    "status": "pending_dustin",
-    "pending_alternatives": [
+    "status": "final",
+    "segment_scope": "none",
+    "strategic_actions_after_segment": [
+     "Evolve:Whimsicott ex@1",
+     "Place:Cottonee@2",
+     "Play:Leaf Cape",
+     "Tool:Leaf Cape@1",
+     "Attach:1Grass@1 zone"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Professor's Research",
+    "segment_scope_v13": "none",
+    "segment_scope_his": "none",
+    "segment_scope_by_line": {
+     "key": "none",
+     "alt0": "none"
+    },
+    "dustin_answer": {
+     "words": "At this point I had lost 1 point to the opponent. Whimsicott ex getting knocked out, ends the game. Sacrificing spinarak is what I weighed as the better option since I needed one more turn to get the second energy to attack with whimsicott. Using the Xspeed and putting cottonee up could have been considered, but I was hoping to have two whimsicott ex to use and be able to retreat for free (with the x speed), if/when I needed to.",
+     "source": "Dustin, Oct 19 (relayed verbatim by the coordinator), with the coordinator's labelling decision"
+    },
+    "recorded_move_acceptable": true,
+    "rejected_alternatives": [
      {
       "line": [
        "Play:Professor's Research",
@@ -2054,27 +2101,12 @@
        "EndTurn"
       ],
       "reason": "(pending Dustin's answer) X Speed retreats the last Spinarak for free; the caped Whimsicott ex absorbs about 60 of 170 and no point is given up.",
-      "first_segment": [
-       "Play:Professor's Research"
-      ]
+      "rejected_because": "Dustin: Whimsicott ex knocked out ends the game (he was at 0-1, an ex gives 2 points), so retreating into it is not acceptable"
      }
-    ],
-    "segment_scope": "none",
-    "strategic_actions_after_segment": [
-     "Evolve:Whimsicott ex@1",
-     "Place:Cottonee@2",
-     "Play:Leaf Cape",
-     "Tool:Leaf Cape@1",
-     "Attach:1Grass@1 zone"
-    ],
-    "legal_stopped": "hidden draw or coin at Play:Professor's Research",
-    "segment_scope_v13": "none",
-    "segment_scope_his": "none",
-    "segment_scope_by_line": {
-     "his": "none"
-    }
+    ]
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_161324000_iOS-t7",
@@ -2293,11 +2325,12 @@
     "segment_scope_v13": "partial",
     "segment_scope_his": "partial",
     "segment_scope_by_line": {
-     "his": "partial",
+     "key": "partial",
      "alt0": "none"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_164328000_iOS-t4",
@@ -2475,10 +2508,11 @@
     "segment_scope_v13": "none",
     "segment_scope_his": "none",
     "segment_scope_by_line": {
-     "his": "none"
+     "key": "none"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_214436000_iOS-t6",
@@ -2689,10 +2723,11 @@
     "segment_scope_v13": "full",
     "segment_scope_his": "full",
     "segment_scope_by_line": {
-     "his": "full"
+     "key": "full"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_214436000_iOS-t10",
@@ -2910,11 +2945,12 @@
     "segment_scope_v13": "partial",
     "segment_scope_his": "partial",
     "segment_scope_by_line": {
-     "his": "partial",
+     "key": "partial",
      "alt0": "none"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_215114000_iOS-t6",
@@ -3080,10 +3116,11 @@
     "segment_scope_v13": "none",
     "segment_scope_his": "none",
     "segment_scope_by_line": {
-     "his": "none"
+     "key": "none"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_215114000_iOS-t12",
@@ -3303,10 +3340,11 @@
     "segment_scope_v13": "full",
     "segment_scope_his": "full",
     "segment_scope_by_line": {
-     "his": "full"
+     "key": "full"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_225451000_iOS-t4",
@@ -3505,8 +3543,21 @@
      "approximate_reason": "opponent hand size and discard estimated from the visible plays; opponent's list unknown",
      "notes": ""
     },
-    "status": "pending_dustin",
-    "pending_alternatives": [
+    "status": "final",
+    "segment_scope": "full",
+    "strategic_actions_after_segment": [],
+    "legal_stopped": "end of line",
+    "segment_scope_v13": "full",
+    "segment_scope_his": "full",
+    "segment_scope_by_line": {
+     "key": "full"
+    },
+    "dustin_answer": {
+     "words": "The bench rotom ex had 1 energy, it needed two to attack, so pulling it up prevented it from being able to get the second energy onto it. And then the active Rotom is on the bench, where it can get energy in two turns, but that isn't scary. That was my thinking.",
+     "source": "Dustin, Oct 19 (relayed verbatim by the coordinator), with the coordinator's labelling decision"
+    },
+    "recorded_move_acceptable": true,
+    "rejected_alternatives": [
      {
       "line": [
        "Place:Alolan Vulpix@1",
@@ -3515,24 +3566,12 @@
        "Attack:Binding Snow"
       ],
       "reason": "(pending Dustin's answer) Binding Snow the unenergised 100-HP Rotom ex to 20, locking an Active that has no Energy, and keep Sabrina.",
-      "first_segment": [
-       "Place:Alolan Vulpix@1",
-       "Evolve:Alolan Ninetales ex@0",
-       "Attach:1Water@0 zone",
-       "Attack:Binding Snow"
-      ]
+      "rejected_because": "Dustin: Sabrina pulled up the benched Rotom ex with 1 Energy so it can't get its second; the unpowered one on the Bench isn't a threat"
      }
-    ],
-    "segment_scope": "full",
-    "strategic_actions_after_segment": [],
-    "legal_stopped": "end of line",
-    "segment_scope_v13": "full",
-    "segment_scope_his": "full",
-    "segment_scope_by_line": {
-     "his": "full"
-    }
+    ]
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_230328000_iOS-t3",
@@ -3687,10 +3726,11 @@
     "segment_scope_v13": "none",
     "segment_scope_his": "none",
     "segment_scope_by_line": {
-     "his": "none"
+     "key": "none"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_233402000_iOS-t5",
@@ -3924,11 +3964,12 @@
     "segment_scope_v13": "full",
     "segment_scope_his": "full",
     "segment_scope_by_line": {
-     "his": "full",
+     "key": "full",
      "alt0": "full"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_233402000_iOS-t9",
@@ -4116,10 +4157,11 @@
     "segment_scope_v13": "full",
     "segment_scope_his": "full",
     "segment_scope_by_line": {
-     "his": "full"
+     "key": "full"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_231006000_iOS-t3",
@@ -4339,11 +4381,12 @@
     "segment_scope_v13": "partial",
     "segment_scope_his": "partial",
     "segment_scope_by_line": {
-     "his": "partial",
+     "key": "partial",
      "alt0": "none"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_231006000_iOS-t9",
@@ -4564,10 +4607,11 @@
     "segment_scope_v13": "full",
     "segment_scope_his": "full",
     "segment_scope_by_line": {
-     "his": "full"
+     "key": "full"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_234728000_iOS-t7",
@@ -4750,10 +4794,11 @@
     "segment_scope_v13": "none",
     "segment_scope_his": "none",
     "segment_scope_by_line": {
-     "his": "none"
+     "key": "none"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_234728000_iOS-t9",
@@ -4940,10 +4985,11 @@
     "segment_scope_v13": "none",
     "segment_scope_his": "none",
     "segment_scope_by_line": {
-     "his": "none"
+     "key": "none"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261015_015320000_iOS-t4",
@@ -5145,10 +5191,11 @@
     "segment_scope_v13": "full",
     "segment_scope_his": "full",
     "segment_scope_by_line": {
-     "his": "full"
+     "key": "full"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261015_015320000_iOS-t8",
@@ -5337,10 +5384,11 @@
     "segment_scope_v13": "full",
     "segment_scope_his": "full",
     "segment_scope_by_line": {
-     "his": "full"
+     "key": "full"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261015_015320000_iOS-t10",
@@ -5551,10 +5599,11 @@
     "segment_scope_v13": "full",
     "segment_scope_his": "full",
     "segment_scope_by_line": {
-     "his": "full"
+     "key": "full"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261015_020931000_iOS-t3",
@@ -5716,11 +5765,12 @@
     "segment_scope_v13": "none",
     "segment_scope_his": "none",
     "segment_scope_by_line": {
-     "his": "none",
+     "key": "none",
      "alt0": "none"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261015_021533000_iOS-t5",
@@ -5957,10 +6007,11 @@
     "segment_scope_v13": "full",
     "segment_scope_his": "full",
     "segment_scope_by_line": {
-     "his": "full"
+     "key": "full"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261015_022206000_iOS-t3",
@@ -6111,10 +6162,11 @@
     "segment_scope_v13": "none",
     "segment_scope_his": "none",
     "segment_scope_by_line": {
-     "his": "none"
+     "key": "none"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261015_201201000_iOS-t3",
@@ -6303,11 +6355,12 @@
     "segment_scope_v13": "partial",
     "segment_scope_his": "partial",
     "segment_scope_by_line": {
-     "his": "partial",
+     "key": "partial",
      "alt0": "none"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261015_201201000_iOS-t7",
@@ -6497,11 +6550,12 @@
     "segment_scope_v13": "full",
     "segment_scope_his": "full",
     "segment_scope_by_line": {
-     "his": "full",
+     "key": "full",
      "alt0": "full"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261015_205332000_iOS-t5",
@@ -6682,10 +6736,11 @@
     "segment_scope_v13": "full",
     "segment_scope_his": "full",
     "segment_scope_by_line": {
-     "his": "full"
+     "key": "full"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261015_205332000_iOS-t9",
@@ -6885,10 +6940,11 @@
     "segment_scope_v13": "full",
     "segment_scope_his": "full",
     "segment_scope_by_line": {
-     "his": "full"
+     "key": "full"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261015_210617000_iOS-t2",
@@ -7054,11 +7110,12 @@
     "segment_scope_v13": "partial",
     "segment_scope_his": "partial",
     "segment_scope_by_line": {
-     "his": "partial",
+     "key": "partial",
      "alt0": "none"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261015_210617000_iOS-t6",
@@ -7250,11 +7307,12 @@
     "segment_scope_v13": "full",
     "segment_scope_his": "full",
     "segment_scope_by_line": {
-     "his": "full",
+     "key": "full",
      "alt0": "partial"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261016_030833000_iOS-t2",
@@ -7404,10 +7462,11 @@
     "segment_scope_v13": "none",
     "segment_scope_his": "none",
     "segment_scope_by_line": {
-     "his": "none"
+     "key": "none"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261016_031512000_iOS-t2",
@@ -7416,7 +7475,7 @@
    "deck_kinds": [
     "Bench preparation"
    ],
-   "answer_kind": "prepare",
+   "answer_kind": "attack now",
    "position": {
     "id": "LAD-20261016_031512000_iOS-t2",
     "game": "20261016_031512000_iOS",
@@ -7518,18 +7577,31 @@
      "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
      "notes": ""
     },
-    "status": "pending_dustin",
-    "pending_alternatives": [
+    "status": "final",
+    "segment_scope": "none",
+    "strategic_actions_after_segment": [
+     "Attach:1Darkness@0 zone"
+    ],
+    "legal_stopped": "hidden draw or coin at Play:Poké Ball",
+    "segment_scope_v13": "none",
+    "segment_scope_his": "none",
+    "segment_scope_by_line": {
+     "key": "none"
+    },
+    "dustin_answer": {
+     "words": "Not attacking was a mistake. Benching pawniard is an option, but I've expressed my opinion on this before, ideally I have muk, regigas and two glimmora active, then after one dies I play pawniard so it doesn't take up a spot or get sniped before I can use it.",
+     "source": "Dustin, Oct 19 (relayed verbatim by the coordinator), with the coordinator's labelling decision"
+    },
+    "recorded_move_acceptable": false,
+    "rejected_alternatives": [
      {
       "line": [
        "Play:Poké Ball",
        "Attach:1Darkness@0 zone",
-       "Attack:Hang Down"
+       "EndTurn"
       ],
-      "reason": "(pending Dustin's answer) Same, plus a free Hang Down 20 on Charmander.",
-      "first_segment": [
-       "Play:Poké Ball"
-      ]
+      "reason": "his recorded move",
+      "rejected_because": "Dustin: 'Not attacking was a mistake.'"
      },
      {
       "line": [
@@ -7539,23 +7611,19 @@
        "Attack:Hang Down"
       ],
       "reason": "(pending Dustin's answer) Also bench Pawniard now so it can be Rare Candied sooner.",
-      "first_segment": [
-       "Play:Poké Ball"
-      ]
+      "rejected_because": "Dustin's plan: Pawniard stays in hand until a Pokémon has been knocked out, so it doesn't take a Bench spot or get sniped"
      }
     ],
-    "segment_scope": "none",
-    "strategic_actions_after_segment": [
-     "Attach:1Darkness@0 zone"
+    "key_line": [
+     "Play:Poké Ball",
+     "Attach:1Darkness@0 zone",
+     "Attack:Hang Down"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Poké Ball",
-    "segment_scope_v13": "none",
-    "segment_scope_his": "none",
-    "segment_scope_by_line": {
-     "his": "none"
-    }
+    "key_source": "dustin",
+    "answer_kind_v14": "prepare"
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261016_031512000_iOS-t8",
@@ -7685,7 +7753,19 @@
      "Attach:1Darkness@0 zone",
      "EndTurn"
     ],
-    "acceptable": [],
+    "acceptable": [
+     {
+      "line": [
+       "Attach:1Darkness@1 zone",
+       "EndTurn"
+      ],
+      "reason": "Dustin: both are reasonable ('there wasn't much benefit to attaching a second energy to pawniard either')",
+      "first_segment": [
+       "Attach:1Darkness@1 zone",
+       "EndTurn"
+      ]
+     }
+    ],
     "why_his": "Second Darkness on Regigigas, which can't attack and holds the Active Spot to soak hits; its KO adds to Overlord's Blade.",
     "ambiguous": "With no Grimer in play to switch off Seal of Antiquity, why the second Darkness on Regigigas rather than on Pawniard toward Kingambit?",
     "legal_steps": [
@@ -7713,30 +7793,25 @@
      "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
      "notes": ""
     },
-    "status": "pending_dustin",
-    "pending_alternatives": [
-     {
-      "line": [
-       "Attach:1Darkness@1 zone",
-       "EndTurn"
-      ],
-      "reason": "(pending Dustin's answer) Second Darkness on Pawniard instead, so a Rare Candied Kingambit could use Overlord's Blade at once.",
-      "first_segment": [
-       "Attach:1Darkness@1 zone",
-       "EndTurn"
-      ]
-     }
-    ],
+    "status": "final",
     "segment_scope": "full",
     "strategic_actions_after_segment": [],
     "legal_stopped": "the turn is over (opponent's frame)",
     "segment_scope_v13": "full",
     "segment_scope_his": "full",
     "segment_scope_by_line": {
-     "his": "full"
-    }
+     "key": "full",
+     "alt0": "full"
+    },
+    "dustin_answer": {
+     "words": "Pawniard had one energy attached already, if when I'm able to evolve him to kingambit, I will be able to attach the necessary second energy to him then. I know I'm two turns from being able to use regigigas's attack, but there wasn't much benefit to attaching a second energy to pawniard either. I don't think any choices I made would have let me win that game with the cards I drew.",
+     "source": "Dustin, Oct 19 (relayed verbatim by the coordinator), with the coordinator's labelling decision"
+    },
+    "recorded_move_acceptable": true,
+    "rejected_alternatives": []
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261016_015753000_iOS-t5",
@@ -7910,10 +7985,11 @@
     "segment_scope_v13": "full",
     "segment_scope_his": "full",
     "segment_scope_by_line": {
-     "his": "full"
+     "key": "full"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261016_015753000_iOS-t7",
@@ -8100,11 +8176,12 @@
     "segment_scope_v13": "partial",
     "segment_scope_his": "partial",
     "segment_scope_by_line": {
-     "his": "partial",
+     "key": "partial",
      "alt0": "none"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261016_015753000_iOS-t9",
@@ -8284,10 +8361,11 @@
     "segment_scope_v13": "full",
     "segment_scope_his": "full",
     "segment_scope_by_line": {
-     "his": "full"
+     "key": "full"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261016_020517000_iOS-t2",
@@ -8416,10 +8494,11 @@
     "segment_scope_v13": "partial",
     "segment_scope_his": "partial",
     "segment_scope_by_line": {
-     "his": "partial"
+     "key": "partial"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261016_024253000_iOS-t1",
@@ -8537,10 +8616,11 @@
     "segment_scope_v13": "none",
     "segment_scope_his": "none",
     "segment_scope_by_line": {
-     "his": "none"
+     "key": "none"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_234728000_iOS-t5",
@@ -8746,10 +8826,11 @@
     "segment_scope_v13": "partial",
     "segment_scope_his": "partial",
     "segment_scope_by_line": {
-     "his": "partial"
+     "key": "partial"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_215114000_iOS-t10",
@@ -8924,21 +9005,7 @@
      "approximate_reason": "opponent hand size, discard and Energy estimated from the visible plays; opponent's list unknown",
      "notes": ""
     },
-    "status": "pending_dustin",
-    "pending_alternatives": [
-     {
-      "line": [
-       "Play:Poké Ball",
-       "Place:Team Rocket's Rattata@1",
-       "Attach:1Water@1 zone",
-       "Attack:Binding Snow"
-      ],
-      "reason": "(pending Dustin's answer) Same, but the turn's Water goes on the new Rattata instead of being wasted.",
-      "first_segment": [
-       "Play:Poké Ball"
-      ]
-     }
-    ],
+    "status": "final",
     "segment_scope": "none",
     "strategic_actions_after_segment": [
      "Place:Team Rocket's Rattata@1",
@@ -8948,10 +9015,34 @@
     "segment_scope_v13": "none",
     "segment_scope_his": "none",
     "segment_scope_by_line": {
-     "his": "none"
-    }
+     "key": "none"
+    },
+    "dustin_answer": {
+     "words": "The game was over. I was losing no matter what I did. Attaching energy to rattata would be the smart play normally, but it wasn't going to change anything",
+     "source": "Dustin, Oct 19 (relayed verbatim by the coordinator), with the coordinator's labelling decision"
+    },
+    "recorded_move_acceptable": false,
+    "rejected_alternatives": [
+     {
+      "line": [
+       "Play:Poké Ball",
+       "Place:Team Rocket's Rattata@1",
+       "Attack:Binding Snow"
+      ],
+      "reason": "his recorded move",
+      "rejected_because": "Dustin: attaching to Rattata 'would be the smart play normally'; the game was already decided"
+     }
+    ],
+    "key_line": [
+     "Play:Poké Ball",
+     "Place:Team Rocket's Rattata@1",
+     "Attach:1Water@1 zone",
+     "Attack:Binding Snow"
+    ],
+    "key_source": "dustin"
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": true
   },
   {
    "id": "LAD-20261014_142546000_iOS-t3",
@@ -9146,10 +9237,11 @@
     "segment_scope_v13": "partial",
     "segment_scope_his": "partial",
     "segment_scope_by_line": {
-     "his": "partial"
+     "key": "partial"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_143111000_iOS-t6",
@@ -9318,10 +9410,11 @@
     "segment_scope_v13": "none",
     "segment_scope_his": "none",
     "segment_scope_by_line": {
-     "his": "none"
+     "key": "none"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_214436000_iOS-t4",
@@ -9478,10 +9571,11 @@
     "segment_scope_v13": "none",
     "segment_scope_his": "none",
     "segment_scope_by_line": {
-     "his": "none"
+     "key": "none"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_215114000_iOS-t4",
@@ -9638,10 +9732,11 @@
     "segment_scope_v13": "none",
     "segment_scope_his": "none",
     "segment_scope_by_line": {
-     "his": "none"
+     "key": "none"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   },
   {
    "id": "LAD-20261014_233402000_iOS-t7",
@@ -9843,10 +9938,11 @@
     "segment_scope_v13": "full",
     "segment_scope_his": "full",
     "segment_scope_by_line": {
-     "his": "full"
+     "key": "full"
     }
    },
-   "fresh": true
+   "fresh": true,
+   "decided_game": false
   }
  ],
  "bot_view": "Give a bot or judge ONLY points[i].position (pg_pos --positions takes it; note it has no 'force') and points[i].legal_root. Everything under points[i].answer, and answer_kind, is the answer key and must not be shown to a candidate.",
@@ -9861,5 +9957,6 @@
   "Three decks only (12, 13-A, Kingambit); no abandon-plan points; opponent states are estimates from video reviews (answer.build_notes keeps the detail)."
  ],
  "label_format": "Answer key and legal_root use the AI judge's target-preserving labels: plain labels as before, and actions with arguments as Name#{json} with sorted keys (e.g. a Field Blower Tool discard keeps player, Pokemon and Tool index). build/label_adapter.py converts to and from the legal-moves tool's Name{k:v} form losslessly; compare with same_action() (parsed arguments), never by name alone. answer.legal_steps keeps the tool's raw form.",
- "scope_rule": "A point's segment_scope is set by its shortest accepted segment (coordinator, Oct 19): 'full' only if every accepted line's first segment (his and each acceptable line; pending alternatives don't count) contains all of that line's strategic actions; 'none' if his own first segment contains none of his strategic actions; otherwise 'partial'. Plan-segment agreement uses 'full' points only; 'partial' and 'none' points count for prefix agreement only. segment_scope_by_line and segment_scope_his show the parts; segment_scope_v13 keeps the old value."
+ "scope_rule": "A point's segment_scope is set by its shortest accepted segment (coordinator, Oct 19): 'full' only if every accepted line's first segment (his and each acceptable line; pending alternatives don't count) contains all of that line's strategic actions; 'none' if his own first segment contains none of his strategic actions; otherwise 'partial'. Plan-segment agreement uses 'full' points only; 'partial' and 'none' points count for prefix agreement only. segment_scope_by_line and segment_scope_his show the parts; segment_scope_v13 keeps the old value.",
+ "key_rule": "The answer key is what a good player of his decks would do, using his judgment. It is his recorded move by default (answer.his_move, which always stays the record); where he said otherwise, answer.key_line holds the key and answer.recorded_move_acceptable is false (2 points: 031512 t2, 215114 t10). answer.first_segment is the key's first segment. His words are in answer.dustin_answer. Lines he or the coordinator ruled out are in answer.rejected_alternatives and never count. decided_game marks a point whose game was already lost; reports show those separately."
 }
