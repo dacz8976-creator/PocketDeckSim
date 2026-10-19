@@ -1,0 +1,155 @@
+--- /home/dacz8976/stageA/src_pg/engine/examples/pg_pos.rs	2026-10-16 10:28:28.288611503 -0500
++++ /home/dacz8976/exam/src_legal/engine/examples/pg_pos.rs	2026-10-19 09:08:02.909344500 -0500
+@@ -352,6 +352,49 @@
+     label == "Play:Professor's Research" || label == "Play:Copycat" || label.starts_with("Play:Poké Ball") || label.starts_with("Play:Poke Ball")
+ }
+ 
++/// True when applying the action (on a copy, with random players that are never ticked) changes either deck's size or the pilot's hand by an unseen card:
++/// a hidden draw or search. Such an action is recorded but never applied, so no hidden card enters the position.
++fn draws_hidden(st: &State, a: &Action, dm: &Deck, df: &Deck) -> bool {
++    let mut g = Game::from_state(st.clone(), players(dm, df, "r"), 1);
++    g.apply_action(a);
++    let after = g.get_state_clone();
++    let label = pg_label(a);
++    // Oct 19 (exam v1.4): playing Mesagoza is deterministic; its coin is UseStadium while Mesagoza is the Stadium.
++    let known_draw = ["Copycat", "Sightseer", "Lisia", "Professor's Research", "Poké Ball", "Poke Ball", "Lucky Ice Pop", "Red Card", "Silver", "Pokémon Communication"]
++        .iter()
++        .any(|n| label == format!("Play:{n}"));
++    let mesagoza_coin = label == "UseStadium" && st.active_stadium.as_ref().is_some_and(|c| format!("{c:?}").contains("Mesagoza"));
++    let known_draw = known_draw || mesagoza_coin;
++    let mut grew = false;
++    for c in &after.hands[0] {
++        let id = c.get_id();
++        let n_after = after.hands[0].iter().filter(|x| x.get_id() == id).count();
++        let n_before = st.hands[0].iter().filter(|x| x.get_id() == id).count();
++        if n_after > n_before {
++            grew = true;
++        }
++    }
++    known_draw || grew || after.decks[0].cards.len() != st.decks[0].cards.len() || after.decks[1].cards.len() != st.decks[1].cards.len()
++}
++
++/// The legal actions' labels (pg_label); where two different actions carry one label (e.g. Field Blower's choice of which Tool to discard) each gets its
++/// Debug arguments appended, e.g. "DiscardToolFromPokemon{player:1,in_play_idx:0}", so a force line can name exactly one of them.
++fn legal_labels(acts: &[Action]) -> Vec<String> {
++    let base: Vec<String> = acts.iter().map(pg_label).collect();
++    (0..acts.len())
++        .map(|i| {
++            let dup = (0..acts.len()).any(|j| j != i && base[j] == base[i] && acts[j] != acts[i]);
++            if dup {
++                let dbg = format!("{:?}", acts[i].action);
++                let tail: String = dbg.find(|c: char| c == ' ' || c == '{' || c == '(').map(|k| dbg[k..].chars().filter(|c| !c.is_whitespace()).collect()).unwrap_or_default();
++                format!("{}{}", base[i], tail)
++            } else {
++                base[i].clone()
++            }
++        })
++        .collect()
++}
++
+ fn main() {
+     let args: Vec<String> = std::env::args().collect();
+     let positions: Vec<Value> = serde_json::from_str(&std::fs::read_to_string(arg(&args, "--positions").expect("--positions")).unwrap()).unwrap();
+@@ -363,6 +406,7 @@
+     let seeds: Vec<u64> = arg(&args, "--seeds").unwrap_or_else(|| "1".into()).split(',').map(|x| x.trim().parse().unwrap()).collect();
+     let bot = arg(&args, "--bot").unwrap_or_else(|| "km3".into());
+     let only = arg(&args, "--only");
++    let legal_only = args.iter().any(|a| a == "--legal-only");
+     let mode = if args.iter().any(|a| a == "--tree") { "tree" } else { "1" };
+     std::env::set_var("PG_DUMP", mode);
+ 
+@@ -405,6 +449,94 @@
+                                   "hp": {"me": hps(0), "opp": hps(1)}}));
+         }
+         if !first.problems.is_empty() {
++            if legal_only {
++                println!("{}", json!({"kind": "legal", "id": id, "steps": [], "stopped": "position has problems"}));
++            }
++            continue;
++        }
++        if legal_only {
++            // legal-moves-only mode: no bot is ever constructed or asked; the players are random ones that are never ticked
++            let force: Vec<String> = pos.get("force").and_then(|f| f.as_array()).map(|a| a.iter().map(|x| x.as_str().unwrap().to_string()).collect()).unwrap_or_default();
++            let built = build(pos, &deck_me, &deck_filler, 1);
++            let mut driver = Game::from_state(built.state, players(&deck_me, &deck_filler, "r"), 1);
++            let mut steps: Vec<Value> = Vec::new();
++            let mut stopped = "end of line".to_string();
++            let mut k = 0usize;
++            let mut fi = 0usize;
++            loop {
++                if driver.is_game_over() {
++                    stopped = "game over".into();
++                    break;
++                }
++                let st = driver.get_state_clone();
++                let (actor, acts) = st.generate_possible_actions();
++                if actor != 0 {
++                    // a pending choice of the opponent's inside Dustin's turn (e.g. Sabrina's switch) with one option resolves on its own
++                    if !st.move_generation_stack.is_empty() && acts.len() == 1 && !draws_hidden(&st, &acts[0], &deck_me, &deck_filler) {
++                        steps.push(json!({"step": k, "forced": null, "auto_opponent": pg_label(&acts[0]), "legal": [pg_label(&acts[0])]}));
++                        k += 1;
++                        driver.apply_action(&acts[0]);
++                        continue;
++                    }
++                    stopped = "the turn is over (opponent's frame)".into();
++                    break;
++                }
++                let legal: Vec<String> = legal_labels(&acts);
++                let want = force.get(fi).cloned();
++                if !legal.is_empty() && legal.iter().all(|l| l.starts_with("ChooseRandom")) {
++                    // the engine's own random pick (e.g. Quick-Grow Extract's evolution): hidden, never applied
++                    steps.push(json!({"step": k, "forced": want, "legal": legal}));
++                    stopped = format!("hidden random choice ({})", legal[0]);
++                    break;
++                }
++                // a single option that is not the wanted label resolves on its own
++                if acts.len() == 1 && want.as_ref().map_or(true, |w| legal[0] != *w && !legal[0].starts_with(w.as_str())) {
++                    steps.push(json!({"step": k, "forced": null, "auto": legal[0], "legal": legal}));
++                    k += 1;
++                    if draws_hidden(&st, &acts[0], &deck_me, &deck_filler) {
++                        stopped = format!("hidden draw or coin at auto action {}", legal[0]);
++                        break;
++                    }
++                    driver.apply_action(&acts[0]);
++                    continue;
++                }
++                let Some(w) = want else {
++                    steps.push(json!({"step": k, "forced": null, "legal": legal}));
++                    break;
++                };
++                let exact: Vec<usize> = (0..acts.len()).filter(|&i| legal[i] == w).collect();
++                let pick: Vec<usize> = if !exact.is_empty() { exact } else { (0..acts.len()).filter(|&i| legal[i].starts_with(w.as_str())).collect() };
++                let same = !pick.is_empty() && pick.iter().all(|&i| acts[i] == acts[pick[0]]);
++                if !same {
++                    steps.push(json!({"step": k, "forced": w, "matched": null, "legal": legal}));
++                    stopped = format!("unmatched label {w:?} ({} candidates)", pick.len());
++                    break;
++                }
++                let a = acts[pick[0]].clone();
++                steps.push(json!({"step": k, "forced": w, "matched": legal[pick[0]], "legal": legal}));
++                k += 1;
++                fi += 1;
++                if draws_hidden(&st, &a, &deck_me, &deck_filler) {
++                    stopped = format!("hidden draw or coin at {}", legal[pick[0]]);
++                    break;
++                }
++                driver.apply_action(&a);
++                if fi == force.len() {
++                    // one more legal list after the last forced action
++                    if driver.is_game_over() {
++                        stopped = "game over".into();
++                    } else {
++                        let (actor2, acts2) = driver.get_state_clone().generate_possible_actions();
++                        if actor2 != 0 {
++                            stopped = "the turn is over (opponent's frame)".into();
++                        } else {
++                            steps.push(json!({"step": k, "forced": null, "legal": acts2.iter().map(pg_label).collect::<Vec<_>>()}));
++                        }
++                    }
++                    break;
++                }
++            }
++            println!("{}", json!({"kind": "legal", "id": id, "steps": steps, "stopped": stopped}));
+             continue;
+         }
+         let force: Vec<String> = pos.get("force").and_then(|f| f.as_array()).map(|a| a.iter().map(|x| x.as_str().unwrap().to_string()).collect()).unwrap_or_default();

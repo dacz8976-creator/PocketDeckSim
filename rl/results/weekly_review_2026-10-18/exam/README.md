@@ -6,7 +6,7 @@ The exam holds 51 decision points from 27 of Dustin's real ranked games (Oct 14-
 - **It asks:** does a bot play these turns the way a good player of his decks would?
 - **No bot has seen it:** no bot was developed on these games (they aren't in stage A, the Oct 18 diagnostic or the pause-game sets), and no bot has been run on these positions.
 
-File: `exam_2026-10-19.json`, format `pds-exam-v1.1`. One file serves any bot: km3, kx3, the AI judge, and later an external bot through upstream's `docs/bot-protocol.md`.
+File: `exam_2026-10-19.json`, format `pds-exam-v1.4`. One file serves any bot: km3, kx3, the AI judge, and later an external bot through upstream's `docs/bot-protocol.md`.
 
 ## What a candidate may see (`bot_view`)
 A candidate sees only `points[i].position` and `points[i].legal_root`.
@@ -39,7 +39,8 @@ The `scoring` field in the JSON is authoritative; this summarises it.
   - Playing a Stadium is never a chance action, and using a deterministic Stadium (Rainbow Cave, for example) isn't either.
 - **Two metrics, reported separately:**
   - (1) prefix agreement on every scored point;
-  - (2) plan-segment agreement on the points with `answer.segment_scope == "full"` (20 points).
+  - (2) plan-segment agreement on the points with `answer.segment_scope == "full"` (17 scored points; 19 of all 51).
+  - A point is "full" only if EVERY accepted segment (his and each acceptable line) holds all of that line's strategic actions; its shortest accepted segment sets its scope (`scope_rule`). "partial" and "none" points count for prefix agreement only.
   - Prefix agreement is not plan quality.
 - **A match:** the segment matches `answer.first_segment` or the `first_segment` of any `acceptable` line.
   - Matching is by replay: both segments are applied to the position and the resulting states compared up to the chance boundary.
@@ -84,9 +85,9 @@ A point usually tests more than one deck kind, so the rows aren't independent an
   - It recorded the free-chance decision.
 
 ## Known limits
-- **Order around a draw:** it is scored as he played it. In 11 points his first segment has other actions before the draw, and a candidate that draws first is scored wrong there. These weren't reviewed one by one; revisit them only if a result hinges on them.
+- **Order around a draw:** settled in v1.2-v1.3 (`answer.draw_first`): draw-first is accepted at 7 points and not at 3 (Copycat, and one turn where Lucky Ice Pop isn't yet legal).
 - **Approximate positions:** every position is approximate on the opponent's side. Their list is unknown, and their hand size and discard are estimated from the review (BUILD.md).
-- **Engine quirk:** in LAD-20261016_024253000_iOS-t1 (going first), the engine lists `Attach:1Darkness@0 zone` as legal. Pocket gives no Energy on the first turn of the player going first, so this is probably how the position marks the first turn. A candidate that attaches there is breaking a rule, not choosing an alternative.
+- **First-turn Energy:** fixed in v1.2. LAD-20261016_024253000_iOS-t1 (going first) has no Energy on turn 1, and Attach is no longer in its legal_root.
 
 ## Provenance (`build/`)
 - **The inventory:** INVENTORY.md and inventory.json, covering 36 games and 178 of his turns: 91 usable and 19 near-usable.
@@ -127,3 +128,34 @@ Made by the same recovery copy. No bot, judge, build or API call was used. The c
   - `UseStadium` after `Play:Mesagoza` is unchecked, because the tool stops at Play:Mesagoza.
   - The judge's exact label string depends on serde_json's key order, assumed sorted. Comparing parsed arguments avoids depending on it.
 - **Snapshots:** `exam_2026-10-19.v11_43265934.json` and `exam_2026-10-19.v12_fa6c9b7e.json`.
+
+## v1.4 changes (Oct 19, the live laptop session; before any candidate output)
+No bot, judge, API call or search was used. The legal-moves tool was rebuilt (12 s, 2 jobs, nice 19) and printed 0 PGDUMP lines.
+- **Scope rule (coordinator):** a point's `segment_scope` is set by its shortest accepted segment.
+  - It is "full" only if every accepted line's first segment holds all of that line's strategic actions.
+  - It is "none" if his own segment holds none of his.
+  - Otherwise it is "partial", and the point counts for prefix agreement only.
+  - The parts are recorded in `segment_scope_by_line` and `segment_scope_his`. The old value is kept as `segment_scope_v13`.
+  - One point changed: LAD-20261015_210617000_iOS-t6, full → partial. Its accepted Mesagoza-coin line scores only Play:Mesagoza + UseStadium, before the Energy and the attack.
+- **Counts:**
+  - all 51 points: full 19, partial 11, none 21;
+  - the 46 scored points (5 pending Dustin): full 17, partial 11, none 18.
+  - Full scored points by deck: 13-A 10, Kingambit 5, deck 12 2.
+  - Full scored points by kind: attack now 8, prepare 7, sacrifice 2.
+- **The rebuilt checker:** `build/pg_pos_legal_only_v14.diff` against stage A's pg_pos; binary sha256 prefix dcefe4eabbe56873.
+  - Playing Mesagoza is now deterministic (applied). `UseStadium` while Mesagoza is the Stadium is the chance stop, matching the scoring rule.
+- **Re-validation of all 71 lines** (51 his, 14 accepted alternatives, 6 pending), in `build/vlines_v14.jsonl` and `build/VALIDATION_v14.json`:
+  - **On the candidate positions:**
+    - 0 position problems, and every forced action is legal.
+    - The tool's chance stop equals the line's `first_segment` in 70 of 71 lines.
+    - The one exception is LAD-20261014_153908000_iOS-t6: its segment ends at Quick-Grow Extract's random evolution pick. That is the engine's own pick, which the tool shows but doesn't apply; his target, benched Spinarak, is among its options.
+  - **UseStadium after Play:Mesagoza** is now checked: legal and the chance stop in LAD-20261016_020517000_iOS-t2 (his line) and LAD-20261015_210617000_iOS-t6 (alt0).
+  - **After the chance:** the build's verification variants put the recorded draws in the hand up front, take out the chance actions, and apply the coin results as reviewed.
+    - 43 of the 46 lines with a chance action were validated to the end.
+    - In the other 3, every action matched, and the tool stopped only at EndTurn, because Hiking Trail draws at the end of the turn (161324 t5 his and pend0, 143111 t10 his).
+    - 25 lines have no chance action.
+- **Still unvalidated:**
+  - **The coin outcome of the alternative Mesagoza flip** in 210617 t6 alt0: its continuation is checked assuming tails, since an alternative has no recorded outcome.
+  - **`UseStadium` in LAD-20261016_024253000_iOS-t1:** it comes after Copycat. Its continuation is checked with the reviewed tails, but the UseStadium step itself isn't separately checked in the post-Copycat state.
+  - **The draws inside the variants** are the review's account of what he drew. They can't check whether a candidate's different draw would make the same later actions legal; a candidate gets the engine's own draw.
+- **Snapshot:** `exam_2026-10-19.v13_4b72704f.json`.

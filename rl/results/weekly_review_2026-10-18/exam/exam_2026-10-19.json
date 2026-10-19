@@ -1,5 +1,5 @@
 {
- "format": "pds-exam-v1.3",
+ "format": "pds-exam-v1.4",
  "created": "2026-10-19",
  "scoring": "Two metrics, fixed before any candidate output. (1) PREFIX agreement, all scored points: the candidate's first segment (its actions up to and including its first chance action: a draw, search, coin or random pick, incl. UseStadium on Mesagoza; or its whole turn if none) is correct if it matches answer.first_segment or the first_segment of an acceptable line. (2) PLAN-SEGMENT agreement: the same test on the points whose answer.segment_scope is 'full' (the scored segment holds all of his turn's strategic actions). The two are reported separately; prefix agreement is not a measure of plan quality. Matching is by REPLAY: apply the candidate's segment and each accepted segment to the position and compare the resulting state up to the chance boundary (board, hand, discard, Energy, Tools, points, Active), so a retreat that renumbers slots is judged by its result, not its labels; label-set matching is only a fallback when replay is unavailable and must be reported as such. Points with answer.status 'pending_dustin' are NOT scored until he answers; their pending alternatives never count. Points carry their game id: results use a game-level bootstrap, paired across candidates; an unclear difference is 'inconclusive'. Reported per deck kind and answer kind, always with 'three decks only'.",
  "decks": {
@@ -241,7 +241,12 @@
      "Play:Team Rocket's Goo-zooka",
      "Attack:Grass Knot"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Poké Ball"
+    "legal_stopped": "hidden draw or coin at Play:Poké Ball",
+    "segment_scope_v13": "none",
+    "segment_scope_his": "none",
+    "segment_scope_by_line": {
+     "his": "none"
+    }
    },
    "fresh": true
   },
@@ -407,7 +412,12 @@
      "Attach:1Grass@2 zone",
      "Attack:Grass Knot"
     ],
-    "legal_stopped": "hidden random choice (ChooseRandomEvolutionTarget{in_play_idx:0,energy_type:Grass})"
+    "legal_stopped": "hidden random choice (ChooseRandomEvolutionTarget{in_play_idx:0,energy_type:Grass})",
+    "segment_scope_v13": "none",
+    "segment_scope_his": "none",
+    "segment_scope_by_line": {
+     "his": "none"
+    }
    },
    "fresh": true
   },
@@ -693,7 +703,14 @@
      "Attach:1Grass@0 zone",
      "Attack:Grass Knot"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Professor's Research"
+    "legal_stopped": "hidden draw or coin at Play:Professor's Research",
+    "segment_scope_v13": "partial",
+    "segment_scope_his": "partial",
+    "segment_scope_by_line": {
+     "his": "partial",
+     "alt0": "partial",
+     "alt1": "none"
+    }
    },
    "fresh": true
   },
@@ -894,7 +911,12 @@
     "status": "final",
     "segment_scope": "full",
     "strategic_actions_after_segment": [],
-    "legal_stopped": "end of line"
+    "legal_stopped": "end of line",
+    "segment_scope_v13": "full",
+    "segment_scope_his": "full",
+    "segment_scope_by_line": {
+     "his": "full"
+    }
    },
    "fresh": true
   },
@@ -1063,7 +1085,12 @@
      "Place:Cottonee@3",
      "Attach:1Grass@0 zone"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Professor's Research"
+    "legal_stopped": "hidden draw or coin at Play:Professor's Research",
+    "segment_scope_v13": "none",
+    "segment_scope_his": "none",
+    "segment_scope_by_line": {
+     "his": "none"
+    }
    },
    "fresh": true
   },
@@ -1203,7 +1230,12 @@
      "Place:Cottonee@2",
      "Attach:1Grass@2 zone"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Professor's Research"
+    "legal_stopped": "hidden draw or coin at Play:Professor's Research",
+    "segment_scope_v13": "none",
+    "segment_scope_his": "none",
+    "segment_scope_by_line": {
+     "his": "none"
+    }
    },
    "fresh": true
   },
@@ -1371,7 +1403,12 @@
      "Attach:1Grass@0 zone",
      "Attack:Pierce"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Poké Ball"
+    "legal_stopped": "hidden draw or coin at Play:Poké Ball",
+    "segment_scope_v13": "none",
+    "segment_scope_his": "none",
+    "segment_scope_by_line": {
+     "his": "none"
+    }
    },
    "fresh": true
   },
@@ -1544,7 +1581,12 @@
      "Attach:1Grass@1 zone",
      "Attack:Energized Leaves"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Lisia"
+    "legal_stopped": "hidden draw or coin at Play:Lisia",
+    "segment_scope_v13": "none",
+    "segment_scope_his": "none",
+    "segment_scope_by_line": {
+     "his": "none"
+    }
    },
    "fresh": true
   },
@@ -1838,7 +1880,14 @@
     "status": "final",
     "segment_scope": "full",
     "strategic_actions_after_segment": [],
-    "legal_stopped": "end of line"
+    "legal_stopped": "end of line",
+    "segment_scope_v13": "full",
+    "segment_scope_his": "full",
+    "segment_scope_by_line": {
+     "his": "full",
+     "alt0": "full",
+     "alt1": "full"
+    }
    },
    "fresh": true
   },
@@ -2018,7 +2067,12 @@
      "Tool:Leaf Cape@1",
      "Attach:1Grass@1 zone"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Professor's Research"
+    "legal_stopped": "hidden draw or coin at Play:Professor's Research",
+    "segment_scope_v13": "none",
+    "segment_scope_his": "none",
+    "segment_scope_by_line": {
+     "his": "none"
+    }
    },
    "fresh": true
   },
@@ -2235,7 +2289,13 @@
     "strategic_actions_after_segment": [
      "Attack:Grass Knot"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Professor's Research"
+    "legal_stopped": "hidden draw or coin at Play:Professor's Research",
+    "segment_scope_v13": "partial",
+    "segment_scope_his": "partial",
+    "segment_scope_by_line": {
+     "his": "partial",
+     "alt0": "none"
+    }
    },
    "fresh": true
   },
@@ -2411,7 +2471,12 @@
      "Play:Team Rocket's Goo-zooka",
      "Attack:Grass Knot"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Lisia"
+    "legal_stopped": "hidden draw or coin at Play:Lisia",
+    "segment_scope_v13": "none",
+    "segment_scope_his": "none",
+    "segment_scope_by_line": {
+     "his": "none"
+    }
    },
    "fresh": true
   },
@@ -2620,7 +2685,12 @@
     "status": "final",
     "segment_scope": "full",
     "strategic_actions_after_segment": [],
-    "legal_stopped": "the turn is over (opponent's frame)"
+    "legal_stopped": "the turn is over (opponent's frame)",
+    "segment_scope_v13": "full",
+    "segment_scope_his": "full",
+    "segment_scope_by_line": {
+     "his": "full"
+    }
    },
    "fresh": true
   },
@@ -2836,7 +2906,13 @@
      "Attach:1Water@2 zone",
      "Attack:Binding Snow"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Professor's Research"
+    "legal_stopped": "hidden draw or coin at Play:Professor's Research",
+    "segment_scope_v13": "partial",
+    "segment_scope_his": "partial",
+    "segment_scope_by_line": {
+     "his": "partial",
+     "alt0": "none"
+    }
    },
    "fresh": true
   },
@@ -3000,7 +3076,12 @@
      "Attach:1Water@0 zone",
      "Attack:Binding Snow"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Sightseer"
+    "legal_stopped": "hidden draw or coin at Play:Sightseer",
+    "segment_scope_v13": "none",
+    "segment_scope_his": "none",
+    "segment_scope_by_line": {
+     "his": "none"
+    }
    },
    "fresh": true
   },
@@ -3218,7 +3299,12 @@
     "status": "final",
     "segment_scope": "full",
     "strategic_actions_after_segment": [],
-    "legal_stopped": "end of line"
+    "legal_stopped": "end of line",
+    "segment_scope_v13": "full",
+    "segment_scope_his": "full",
+    "segment_scope_by_line": {
+     "his": "full"
+    }
    },
    "fresh": true
   },
@@ -3439,7 +3525,12 @@
     ],
     "segment_scope": "full",
     "strategic_actions_after_segment": [],
-    "legal_stopped": "end of line"
+    "legal_stopped": "end of line",
+    "segment_scope_v13": "full",
+    "segment_scope_his": "full",
+    "segment_scope_by_line": {
+     "his": "full"
+    }
    },
    "fresh": true
   },
@@ -3592,7 +3683,12 @@
      "DiscardActiveStadium",
      "Attach:1Water@0 zone"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Poké Ball"
+    "legal_stopped": "hidden draw or coin at Play:Poké Ball",
+    "segment_scope_v13": "none",
+    "segment_scope_his": "none",
+    "segment_scope_by_line": {
+     "his": "none"
+    }
    },
    "fresh": true
   },
@@ -3824,7 +3920,13 @@
     "status": "final",
     "segment_scope": "full",
     "strategic_actions_after_segment": [],
-    "legal_stopped": "end of line"
+    "legal_stopped": "end of line",
+    "segment_scope_v13": "full",
+    "segment_scope_his": "full",
+    "segment_scope_by_line": {
+     "his": "full",
+     "alt0": "full"
+    }
    },
    "fresh": true
   },
@@ -4010,7 +4112,12 @@
     "status": "final",
     "segment_scope": "full",
     "strategic_actions_after_segment": [],
-    "legal_stopped": "the turn is over (opponent's frame)"
+    "legal_stopped": "the turn is over (opponent's frame)",
+    "segment_scope_v13": "full",
+    "segment_scope_his": "full",
+    "segment_scope_by_line": {
+     "his": "full"
+    }
    },
    "fresh": true
   },
@@ -4228,7 +4335,13 @@
      "Place:Team Rocket's Rattata@2",
      "Attach:1Water@0 zone"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Professor's Research"
+    "legal_stopped": "hidden draw or coin at Play:Professor's Research",
+    "segment_scope_v13": "partial",
+    "segment_scope_his": "partial",
+    "segment_scope_by_line": {
+     "his": "partial",
+     "alt0": "none"
+    }
    },
    "fresh": true
   },
@@ -4447,7 +4560,12 @@
     "status": "final",
     "segment_scope": "full",
     "strategic_actions_after_segment": [],
-    "legal_stopped": "end of line"
+    "legal_stopped": "end of line",
+    "segment_scope_v13": "full",
+    "segment_scope_his": "full",
+    "segment_scope_by_line": {
+     "his": "full"
+    }
    },
    "fresh": true
   },
@@ -4628,7 +4746,12 @@
      "Tool:Elegant Cape@1",
      "Attack:Binding Snow"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Professor's Research"
+    "legal_stopped": "hidden draw or coin at Play:Professor's Research",
+    "segment_scope_v13": "none",
+    "segment_scope_his": "none",
+    "segment_scope_by_line": {
+     "his": "none"
+    }
    },
    "fresh": true
   },
@@ -4813,7 +4936,12 @@
      "Attach:1Water@2 zone",
      "Attack:Binding Snow"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Sightseer"
+    "legal_stopped": "hidden draw or coin at Play:Sightseer",
+    "segment_scope_v13": "none",
+    "segment_scope_his": "none",
+    "segment_scope_by_line": {
+     "his": "none"
+    }
    },
    "fresh": true
   },
@@ -5013,7 +5141,12 @@
     "status": "final",
     "segment_scope": "full",
     "strategic_actions_after_segment": [],
-    "legal_stopped": "the turn is over (opponent's frame)"
+    "legal_stopped": "the turn is over (opponent's frame)",
+    "segment_scope_v13": "full",
+    "segment_scope_his": "full",
+    "segment_scope_by_line": {
+     "his": "full"
+    }
    },
    "fresh": true
   },
@@ -5200,7 +5333,12 @@
     "status": "final",
     "segment_scope": "full",
     "strategic_actions_after_segment": [],
-    "legal_stopped": "end of line"
+    "legal_stopped": "end of line",
+    "segment_scope_v13": "full",
+    "segment_scope_his": "full",
+    "segment_scope_by_line": {
+     "his": "full"
+    }
    },
    "fresh": true
   },
@@ -5409,7 +5547,12 @@
     "status": "final",
     "segment_scope": "full",
     "strategic_actions_after_segment": [],
-    "legal_stopped": "the turn is over (opponent's frame)"
+    "legal_stopped": "the turn is over (opponent's frame)",
+    "segment_scope_v13": "full",
+    "segment_scope_his": "full",
+    "segment_scope_by_line": {
+     "his": "full"
+    }
    },
    "fresh": true
   },
@@ -5569,7 +5712,13 @@
      "Play:Field Blower",
      "DiscardToolFromPokemon"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Copycat"
+    "legal_stopped": "hidden draw or coin at Play:Copycat",
+    "segment_scope_v13": "none",
+    "segment_scope_his": "none",
+    "segment_scope_by_line": {
+     "his": "none",
+     "alt0": "none"
+    }
    },
    "fresh": true
   },
@@ -5804,7 +5953,12 @@
     "status": "final",
     "segment_scope": "full",
     "strategic_actions_after_segment": [],
-    "legal_stopped": "end of line"
+    "legal_stopped": "end of line",
+    "segment_scope_v13": "full",
+    "segment_scope_his": "full",
+    "segment_scope_by_line": {
+     "his": "full"
+    }
    },
    "fresh": true
   },
@@ -5953,7 +6107,12 @@
      "Play:Elegant Cape",
      "Tool:Elegant Cape@0"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Sightseer"
+    "legal_stopped": "hidden draw or coin at Play:Sightseer",
+    "segment_scope_v13": "none",
+    "segment_scope_his": "none",
+    "segment_scope_by_line": {
+     "his": "none"
+    }
    },
    "fresh": true
   },
@@ -6140,7 +6299,13 @@
     "strategic_actions_after_segment": [
      "Attach:1Darkness@2 zone"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Lucky Ice Pop"
+    "legal_stopped": "hidden draw or coin at Play:Lucky Ice Pop",
+    "segment_scope_v13": "partial",
+    "segment_scope_his": "partial",
+    "segment_scope_by_line": {
+     "his": "partial",
+     "alt0": "none"
+    }
    },
    "fresh": true
   },
@@ -6328,7 +6493,13 @@
     "status": "final",
     "segment_scope": "full",
     "strategic_actions_after_segment": [],
-    "legal_stopped": "the turn is over (opponent's frame)"
+    "legal_stopped": "the turn is over (opponent's frame)",
+    "segment_scope_v13": "full",
+    "segment_scope_his": "full",
+    "segment_scope_by_line": {
+     "his": "full",
+     "alt0": "full"
+    }
    },
    "fresh": true
   },
@@ -6507,7 +6678,12 @@
     "status": "final",
     "segment_scope": "full",
     "strategic_actions_after_segment": [],
-    "legal_stopped": "end of line"
+    "legal_stopped": "end of line",
+    "segment_scope_v13": "full",
+    "segment_scope_his": "full",
+    "segment_scope_by_line": {
+     "his": "full"
+    }
    },
    "fresh": true
   },
@@ -6705,7 +6881,12 @@
     "status": "final",
     "segment_scope": "full",
     "strategic_actions_after_segment": [],
-    "legal_stopped": "end of line"
+    "legal_stopped": "end of line",
+    "segment_scope_v13": "full",
+    "segment_scope_his": "full",
+    "segment_scope_by_line": {
+     "his": "full"
+    }
    },
    "fresh": true
   },
@@ -6869,7 +7050,13 @@
      "Place:Glimmet@2",
      "Attack:Slash"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Poké Ball"
+    "legal_stopped": "hidden draw or coin at Play:Poké Ball",
+    "segment_scope_v13": "partial",
+    "segment_scope_his": "partial",
+    "segment_scope_by_line": {
+     "his": "partial",
+     "alt0": "none"
+    }
    },
    "fresh": true
   },
@@ -7057,9 +7244,15 @@
      "notes": ""
     },
     "status": "final",
-    "segment_scope": "full",
+    "segment_scope": "partial",
     "strategic_actions_after_segment": [],
-    "legal_stopped": "end of line"
+    "legal_stopped": "end of line",
+    "segment_scope_v13": "full",
+    "segment_scope_his": "full",
+    "segment_scope_by_line": {
+     "his": "full",
+     "alt0": "partial"
+    }
    },
    "fresh": true
   },
@@ -7207,7 +7400,12 @@
      "Attach:1Darkness@0 zone",
      "Attack:Hang Down"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Poké Ball"
+    "legal_stopped": "hidden draw or coin at Play:Poké Ball",
+    "segment_scope_v13": "none",
+    "segment_scope_his": "none",
+    "segment_scope_by_line": {
+     "his": "none"
+    }
    },
    "fresh": true
   },
@@ -7350,7 +7548,12 @@
     "strategic_actions_after_segment": [
      "Attach:1Darkness@0 zone"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Poké Ball"
+    "legal_stopped": "hidden draw or coin at Play:Poké Ball",
+    "segment_scope_v13": "none",
+    "segment_scope_his": "none",
+    "segment_scope_by_line": {
+     "his": "none"
+    }
    },
    "fresh": true
   },
@@ -7526,7 +7729,12 @@
     ],
     "segment_scope": "full",
     "strategic_actions_after_segment": [],
-    "legal_stopped": "the turn is over (opponent's frame)"
+    "legal_stopped": "the turn is over (opponent's frame)",
+    "segment_scope_v13": "full",
+    "segment_scope_his": "full",
+    "segment_scope_by_line": {
+     "his": "full"
+    }
    },
    "fresh": true
   },
@@ -7698,7 +7906,12 @@
     },
     "segment_scope": "full",
     "strategic_actions_after_segment": [],
-    "legal_stopped": "hidden draw or coin at Play:Lucky Ice Pop"
+    "legal_stopped": "hidden draw or coin at Play:Lucky Ice Pop",
+    "segment_scope_v13": "full",
+    "segment_scope_his": "full",
+    "segment_scope_by_line": {
+     "his": "full"
+    }
    },
    "fresh": true
   },
@@ -7883,7 +8096,13 @@
      "Attach:1Darkness@0 zone",
      "Attack:Overlord's Blade"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Lucky Ice Pop"
+    "legal_stopped": "hidden draw or coin at Play:Lucky Ice Pop",
+    "segment_scope_v13": "partial",
+    "segment_scope_his": "partial",
+    "segment_scope_by_line": {
+     "his": "partial",
+     "alt0": "none"
+    }
    },
    "fresh": true
   },
@@ -8061,7 +8280,12 @@
     "status": "final",
     "segment_scope": "full",
     "strategic_actions_after_segment": [],
-    "legal_stopped": "end of line"
+    "legal_stopped": "end of line",
+    "segment_scope_v13": "full",
+    "segment_scope_his": "full",
+    "segment_scope_by_line": {
+     "his": "full"
+    }
    },
    "fresh": true
   },
@@ -8188,7 +8412,12 @@
      "Place:Glimmet@1",
      "Attach:1Darkness@0 zone"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Mesagoza"
+    "legal_stopped": "hidden draw or coin at Play:Mesagoza",
+    "segment_scope_v13": "partial",
+    "segment_scope_his": "partial",
+    "segment_scope_by_line": {
+     "his": "partial"
+    }
    },
    "fresh": true
   },
@@ -8304,7 +8533,12 @@
      "Place:Regigigas@2",
      "Play:Mesagoza"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Copycat"
+    "legal_stopped": "hidden draw or coin at Play:Copycat",
+    "segment_scope_v13": "none",
+    "segment_scope_his": "none",
+    "segment_scope_by_line": {
+     "his": "none"
+    }
    },
    "fresh": true
   },
@@ -8508,7 +8742,12 @@
     "strategic_actions_after_segment": [
      "Attack:Binding Snow"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Copycat"
+    "legal_stopped": "hidden draw or coin at Play:Copycat",
+    "segment_scope_v13": "partial",
+    "segment_scope_his": "partial",
+    "segment_scope_by_line": {
+     "his": "partial"
+    }
    },
    "fresh": true
   },
@@ -8705,7 +8944,12 @@
      "Place:Team Rocket's Rattata@1",
      "Attack:Binding Snow"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Poké Ball"
+    "legal_stopped": "hidden draw or coin at Play:Poké Ball",
+    "segment_scope_v13": "none",
+    "segment_scope_his": "none",
+    "segment_scope_by_line": {
+     "his": "none"
+    }
    },
    "fresh": true
   },
@@ -8898,7 +9142,12 @@
      "Attach:1Grass@0 zone",
      "Attack:Pierce"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Copycat"
+    "legal_stopped": "hidden draw or coin at Play:Copycat",
+    "segment_scope_v13": "partial",
+    "segment_scope_his": "partial",
+    "segment_scope_by_line": {
+     "his": "partial"
+    }
    },
    "fresh": true
   },
@@ -9065,7 +9314,12 @@
      "Attach:1Grass@2 zone",
      "Attack:Grass Knot"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Lisia"
+    "legal_stopped": "hidden draw or coin at Play:Lisia",
+    "segment_scope_v13": "none",
+    "segment_scope_his": "none",
+    "segment_scope_by_line": {
+     "his": "none"
+    }
    },
    "fresh": true
   },
@@ -9220,7 +9474,12 @@
      "Play:Elegant Cape",
      "Tool:Elegant Cape@0"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Professor's Research"
+    "legal_stopped": "hidden draw or coin at Play:Professor's Research",
+    "segment_scope_v13": "none",
+    "segment_scope_his": "none",
+    "segment_scope_by_line": {
+     "his": "none"
+    }
    },
    "fresh": true
   },
@@ -9375,7 +9634,12 @@
      "Tool:Elegant Cape@1",
      "Attach:1Water@1 zone"
     ],
-    "legal_stopped": "hidden draw or coin at Play:Professor's Research"
+    "legal_stopped": "hidden draw or coin at Play:Professor's Research",
+    "segment_scope_v13": "none",
+    "segment_scope_his": "none",
+    "segment_scope_by_line": {
+     "his": "none"
+    }
    },
    "fresh": true
   },
@@ -9575,7 +9839,12 @@
     "status": "final",
     "segment_scope": "full",
     "strategic_actions_after_segment": [],
-    "legal_stopped": "end of line"
+    "legal_stopped": "end of line",
+    "segment_scope_v13": "full",
+    "segment_scope_his": "full",
+    "segment_scope_by_line": {
+     "his": "full"
+    }
    },
    "fresh": true
   }
@@ -9591,5 +9860,6 @@
   "Five points are held for Dustin (161324 t5, 225451 t4, 031512 t2, 031512 t8, 215114 t10); two concern the scored prefix (225451 t4 Sabrina, 031512 t8 Energy), three later actions.",
   "Three decks only (12, 13-A, Kingambit); no abandon-plan points; opponent states are estimates from video reviews (answer.build_notes keeps the detail)."
  ],
- "label_format": "Answer key and legal_root use the AI judge's target-preserving labels: plain labels as before, and actions with arguments as Name#{json} with sorted keys (e.g. a Field Blower Tool discard keeps player, Pokemon and Tool index). build/label_adapter.py converts to and from the legal-moves tool's Name{k:v} form losslessly; compare with same_action() (parsed arguments), never by name alone. answer.legal_steps keeps the tool's raw form."
+ "label_format": "Answer key and legal_root use the AI judge's target-preserving labels: plain labels as before, and actions with arguments as Name#{json} with sorted keys (e.g. a Field Blower Tool discard keeps player, Pokemon and Tool index). build/label_adapter.py converts to and from the legal-moves tool's Name{k:v} form losslessly; compare with same_action() (parsed arguments), never by name alone. answer.legal_steps keeps the tool's raw form.",
+ "scope_rule": "A point's segment_scope is set by its shortest accepted segment (coordinator, Oct 19): 'full' only if every accepted line's first segment (his and each acceptable line; pending alternatives don't count) contains all of that line's strategic actions; 'none' if his own first segment contains none of his strategic actions; otherwise 'partial'. Plan-segment agreement uses 'full' points only; 'partial' and 'none' points count for prefix agreement only. segment_scope_by_line and segment_scope_his show the parts; segment_scope_v13 keeps the old value."
 }

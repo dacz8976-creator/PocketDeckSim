@@ -1,0 +1,38 @@
+{
+ "lines": 71,
+ "pgdump_lines": 0,
+ "shipped_position_problems": 0,
+ "shipped_unmatched": 1,
+ "stop_equals_first_segment": 70,
+ "stop_differs": [
+  [
+   "LAD-20261014_153908000_iOS-t6",
+   "his",
+   1,
+   2,
+   "hidden random choice (ChooseRandomEvolutionTarget{in_play_idx:0,energy_type:Grass})"
+  ]
+ ],
+ "after_chance": {
+  "validated": 43,
+  "n/a": 25,
+  "partly": 3
+ },
+ "after_chance_detail": [
+  [
+   "LAD-20261014_143111000_iOS-t10",
+   "his",
+   "partly: stops again at hidden draw or coin at EndTurn after 5/5"
+  ],
+  [
+   "LAD-20261014_161324000_iOS-t5",
+   "his",
+   "partly: stops again at hidden draw or coin at EndTurn after 6/6"
+  ],
+  [
+   "LAD-20261014_161324000_iOS-t5",
+   "pend0",
+   "partly: stops again at hidden draw or coin at EndTurn after 8/8"
+  ]
+ ]
+}
