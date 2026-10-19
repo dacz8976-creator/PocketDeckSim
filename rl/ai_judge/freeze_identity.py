@@ -15,7 +15,7 @@ import judge  # noqa: E402
 
 HARNESS = 'rl/results/pause_games_decisions_2026-10-02/harness'
 SOURCES = ['rl/ai_judge/judge.py', 'rl/ai_judge/formal.py', 'rl/ai_judge/analysis.py', 'rl/ai_judge/validate_baseline.py', 'rl/ai_judge/freeze_identity.py', 'rl/ai_judge/plans/src/main.rs', 'rl/ai_judge/plans/Cargo.lock',
-           'rl/ai_judge/tests/test_formal.py', 'rl/ai_judge/tests/test_analysis.py',
+           'rl/ai_judge/tests/test_formal.py', 'rl/ai_judge/tests/test_analysis.py', 'lib/card.py', 'lib/deckgym-database.json',  # the card texts the prompt quotes
            f'{HARNESS}/pgd_patch.py', f'{HARNESS}/dg_patch.py', f'{HARNESS}/pg_pos.rs']
 PLANS_BIN = judge.PLANS_BIN
 BASELINE_BIN = judge.PG_POS_BIN

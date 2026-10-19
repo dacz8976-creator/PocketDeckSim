@@ -3,7 +3,7 @@
 Oct 18-19, 2026 (Sonnet 5.5 session "Opus agents progress", for the coordinator). Built, shaped and tested on the OLD positions only (stage A's 92 and the
 diagnostic's 14). The laptop's exam folder and branch were not opened. No engine rules changed: `plans/` is a separate crate that calls the engine
 by path (like `rl/strength`), and `engine/` is untouched. **The prompt and settings are frozen since Oct 19**; the current freeze is tag
-`judge-prompt-frozen-3` (frozen-1 and frozen-2 are kept; the prompt is the same in all three, the identity and the formal comparison path differ, see `FROZEN.md`).
+`judge-prompt-frozen-4` (frozen-1, -2 and -3 are kept; the prompt is the same in all four, the identity, the formal comparison path and the analysis differ, see `FROZEN.md`).
 Nothing here has been scored on fresh positions.
 
 ## What is here
@@ -12,8 +12,9 @@ Nothing here has been scored on fresh positions.
 |---|---|
 | `plans/` (Rust, `judge_plans`) | Lists the engine's legal **whole-turn plans** of a pg_pos position; replays a bot's or a recording's move list into the same list |
 | `judge.py` | Prompt, parser, API call, cost record, bot runner (`km3`, `kx3`, `judge`), shared result format, scoring against recorded plans, the `compare` command |
-| `formal.py` | The formal paired comparison: every expected row accounted for, any unresolved row fails the batch or makes the comparison inconclusive |
-| `tests/` | 64 tests: parser, prompt whitelist, cost, the plan list (count, dedupe, chance cut-off, no leakage, cap, replay, Stadium, Field Blower and random-evolution targets, label key order), the formal path (logic and command line), the baseline printer at runtime, the freeze identity |
+| `formal.py` | The formal paired comparison: every expected row accounted for and proven to be the choice it claims (plan number, plan-list identity, replay, prompt and reply), the references filtered to the explicit selection; any problem fails the batch or makes the comparison inconclusive |
+| `analysis.py` | The game-clustered analysis: prefix agreement for the primary points, full-plan agreement for the full-scope subset, a descriptive diagnostic block for the rest |
+| `tests/` | About 150 tests: parser, prompt whitelist, cost, the plan list (count, dedupe, chance cut-off, no leakage, cap, replay, Stadium, Field Blower and random-evolution targets, label key order), the formal path (logic, negative controls and command line), the selection / filtering of the references, the analysis (estimates, clustering, repeats), the baseline printer at runtime, the freeze identity |
 | `FROZEN.md`, `FROZEN.json` | The frozen prompt and settings, the measurements behind them, and the identity (fingerprint, source hashes, executables) the freeze tests check |
 | `freeze_identity.py` | `--check`: compare the repository and the built executables with `FROZEN.json` |
 | `validate_baseline.py`, `build_baseline.sh`, `validation/` | Rebuild the baseline (pg_pos with the target-preserving printer) and validate it at runtime on fixtures; the evidence files |
@@ -39,7 +40,8 @@ python3 judge.py run --bot km3 --set diag14 --seeds 1,2,3 --out out.jsonl # any 
 python3 judge.py run --bot judge --set diag14 --out out.jsonl             # the judge through the same runner
 python3 judge.py coverage --set stageA                     # is each recorded plan one of the listed plans? (completeness check)
 python3 judge.py score --results out.jsonl                 # same listed plan as the recorded one (old positions only); exits 2 on any row it cannot score
-python3 judge.py compare --results a.jsonl b.jsonl --set <ids> --bots km3,kx3,judge --seeds 1,2,3 --references refs.json --out report.json   # the formal comparison
+python3 judge.py preflight --set stageA                    # do the plans' own labels name them? (exit 2 and the positions if some plan's labels fit several plans)
+python3 judge.py compare --results a.jsonl b.jsonl --ids <ids> --bots km3,kx3,judge --seeds 1,2,3 --references refs.json --eligibility elig.json --out report.json   # the formal comparison
 python3 freeze_identity.py --check                         # does the repository match FROZEN.json?
 python3 -B -m unittest discover -s tests -v                # the tests (plan-list tests need the built binary and are skipped without it)
 ```
@@ -51,13 +53,25 @@ X dollars, `judge.py spend FILE...` totals the recorded cost.
 
 ## The formal comparison (nothing unresolved is left out)
 
-`judge.py compare` (`formal.py`) is the only path meant for the exam. The expected rows are fixed first (every position x bot x seed for km3/kx3, every position x
-repeat for the judge). The accepted moves come in a references file `{position: [{"id": ..., "labels": [...]}]}`; each is replayed into the plan list. A row is a
-problem when it is missing, duplicated, unexpected, has no listed plan (an unfollowable or **ambiguous** move list, a parse failure), is a dry run, was not made under
-the frozen settings, comes from a capped plan list, or was played by a baseline executable other than the frozen one; a reference that does not map to exactly one plan
-is a problem too. With any problem there are no agreement numbers at all: `--on-problem fail` (default) exits 2, `--on-problem inconclusive` writes a report with every
-expected row and its state and exits 3. Only a clean batch exits 0. `score`, `run` and `judge --live` also exit 2 instead of passing over a row they could not resolve.
-The report keeps each row's `game`, so game-clustered uncertainty can be computed from it (not implemented here).
+`judge.py compare` (`formal.py`, `analysis.py`) is the only path meant for the exam; read the module docstring of `formal.py` for the full list of checks.
+
+* **Inputs.** The results files (one JSON row per line, written by `run` / `judge`); the **references file** `{point: [{"id": ..., "labels": [...]}]}` with the accepted
+  moves of ALL points; the **eligibility file** `{"primary_ids": [...], "full_scope_ids": [...], "games": {point: game}, "excluded_reasons": {point: text}}` that selects
+  the primary points, the full-scope subset and each point's game. The references are FILTERED to the points of the batch: unselected references are never read.
+* **Rows.** The expected rows are fixed first (every point x bot x seed for km3/kx3, every point x repeat for the judge). A row is a problem when it is missing,
+  duplicated, unexpected, malformed, has no listed plan (an unfollowable or **ambiguous** move list, a parse failure), or does not hold up against the CURRENT plan list:
+  plan number out of range or not a whole number, a number beside an error, a plan-list identity (`plan_list_sha256`) or `plan_key` that is not the current one, a
+  step bot's `plan_full` that does not replay to that plan, a judge row whose answer does not map to that plan in the re-rendered prompt, whose prompt hash, labels or
+  stored reply do not match, that was not made under the frozen model / token cap / temperature, or was played by another baseline executable.
+* **Results.** With any problem at a primary point there are no numbers at all: `--on-problem fail` (default) exits 2, `--on-problem inconclusive` writes a report with
+  every expected primary row and its state and exits 3. A clean batch exits 0 and carries: **prefix agreement** for all primary points (rates and judge-vs-bot
+  contrasts, game-clustered bootstrap interval, sign-flip test, verdict `<bot> higher` or `inconclusive`); **full-plan agreement** as a separate block for the
+  full-scope subset only; the judge's repeats as a separate sensitivity estimate (one predefined call per decision is the primary result); and a descriptive
+  `diagnostic_excluded` block for points of the batch outside the primary selection. `row_account` counts rows and is not an agreement figure. `report["run"]` records the
+  inputs' hashes, the executables and the experiment switches (`formal: false` when any `--allow-*`, a lower `--min-games` or fewer than 5,000 `--resamples` was used).
+  Exit 3 means a DATA problem; a clean batch whose interval includes 0 exits 0 with the verdict `inconclusive`.
+* **Other commands.** `score` is an unchecked development figure; `score`, `run` and `judge --live` exit 2 instead of passing over a row they could not resolve.
+  `--out` may not be one of the input files; use a fresh `--out` per run and gate on the exit code (a run that dies before writing leaves an older report where it was).
 
 ## Rebuilding the baseline (pg_pos)
 
@@ -124,7 +138,10 @@ Every bot writes one JSON line per (position, seed) with the same fields, so km3
  "reason": "...", "shown_number": n, "order": "forward", "n_plans": N, "capped": false, "prompt_form": "full|compact",
  "model": ..., "prompt_tokens_estimate": n, "stop_reason": ..., "seconds": s,
  "cost": {"input_tokens", "output_tokens", "usd", "price_per_mtok", "price_note"} | null,   # null for bots that cost nothing
- "dry_run": true|false, "match_error": text|null}
+ "dry_run": true|false, "match_error": text|null,
+ "plan_key": key of the listed plan, "plan_list_sha256": hash of the plan list it was made from,   # what the formal path checks the number against
+ "model", "max_tokens", "temperature", "frozen", "prompt_sha256", "raw": the model's reply, "parse_error": text|null (a failure), "parse_warning": text|null (e.g. no REASON line),
+ "pg_pos_sha256": baseline executable (km3/kx3 only), "repeat": n (judge only; step bots carry "seed" instead)}
 ```
 
 `plan_number` is what the exam scoring needs: the recorded move and any acceptable moves are each replayed into the same list

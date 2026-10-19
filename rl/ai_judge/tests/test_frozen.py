@@ -20,14 +20,16 @@ class Frozen(unittest.TestCase):
 
     def test_the_sources_and_executables_are_the_frozen_ones(self):
         import freeze_identity
-        self.assertEqual(self.frozen['tag'], 'judge-prompt-frozen-3')
+        self.assertEqual(self.frozen['tag'], 'judge-prompt-frozen-4')
         # the sources, the engine tree and (where built) the lister and baseline executables must equal FROZEN.json
         self.assertEqual(freeze_identity.check(self.frozen), [])
 
     def test_earlier_freezes_are_recorded_as_superseded_not_rewritten(self):
         tags = [s['tag'] for s in self.frozen['supersedes']]
-        self.assertEqual(tags, ['judge-prompt-frozen-2', 'judge-prompt-frozen-1'])
-        self.assertEqual(self.frozen['supersedes'][0]['fingerprint'], self.frozen['fingerprint'])  # the prompt is the one frozen-2 froze
+        self.assertEqual(tags, ['judge-prompt-frozen-3', 'judge-prompt-frozen-2', 'judge-prompt-frozen-1'])
+        self.assertEqual(self.frozen['supersedes'][0]['fingerprint'], self.frozen['fingerprint'])  # the prompt is the one frozen-3 and frozen-2 froze
+        self.assertEqual(self.frozen['supersedes'][1]['fingerprint'], self.frozen['fingerprint'])
+        self.assertEqual(self.frozen['supersedes'][0]['commit'], '316f3577142238083c8c0ca222d2cc06afdd67ff')
 
     def test_the_prompt_and_its_layout_code_are_the_frozen_ones(self):
         self.assertEqual(judge.fingerprint(), self.frozen['fingerprint'],

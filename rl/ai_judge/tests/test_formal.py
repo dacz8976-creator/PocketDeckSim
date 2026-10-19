@@ -41,13 +41,14 @@ def valid(n, recs, pid):
 
 def step_row(pid, bot, seed, n, recs=RECS, **kw):
     r = {'position': pid, 'bot': bot, 'seed': seed, 'plan': ['x'], 'plan_full': [f'{pid}-full-{seed}'], 'plan_number': n, 'match_error': None, 'dry_run': False,
-         'plan_key': recs[pid]['plans'][n - 1]['key'] if valid(n, recs, pid) else None, 'plan_list_sha256': formal.plan_list_sha256(recs[pid])}
+         'pg_pos_cut': 'end of turn', 'plan_key': recs[pid]['plans'][n - 1]['key'] if valid(n, recs, pid) else None, 'plan_list_sha256': formal.plan_list_sha256(recs[pid])}
     r.update(kw)
     return r
 
 
 def judge_row(pid, repeat, n, recs=RECS, **kw):
-    r = {'position': pid, 'bot': 'judge', 'seed': None, 'repeat': repeat, 'plan': recs[pid]['plans'][n - 1]['labels'] if valid(n, recs, pid) else ['x'], 'cut': 'end_turn',
+    r = {'position': pid, 'bot': 'judge', 'seed': None, 'repeat': repeat, 'plan': recs[pid]['plans'][n - 1]['labels'] if valid(n, recs, pid) else ['x'],
+         'cut': recs[pid]['plans'][n - 1]['end'] if valid(n, recs, pid) else 'end_turn', 'stop_reason': 'end_turn',
          'plan_number': n, 'shown_number': n, 'raw': f'PLAN: {n}\nREASON: x', 'frozen': True, 'dry_run': False, 'capped': False, 'parse_error': None, 'prompt_sha256': f'prompt-{pid}',
          'model': 'm', 'max_tokens': 8000, 'temperature': None,
          'plan_key': recs[pid]['plans'][n - 1]['key'] if valid(n, recs, pid) else None, 'plan_list_sha256': formal.plan_list_sha256(recs[pid])}
@@ -64,8 +65,8 @@ def expect_identity(pid, row):
     return {'prompt_sha256': f'prompt-{pid}', 'shown': {1: 1, 2: 2}, 'parse': parse, 'settings': SETTINGS}
 
 
-def normalize(labels):
-    return [str(l) for l in labels]
+def full_match(row_labels, ref_labels):
+    return [str(l) for l in row_labels] == [str(l) for l in ref_labels]
 
 
 class Matcher:
@@ -91,11 +92,12 @@ def complete_rows(with_p3=False):
 
 
 def run(rows, refs=REFS, answers=ANSWERS, replays=None, on_problem='fail', recs=RECS, require_frozen=True, elig=ELIG, expect_judge=expect_identity, min_games=2,
-        ids=('P1', 'P2'), bots=('km3', 'judge'), seeds=(1, 2), judge_repeats=1, baseline_sha256=None, contrasts=None, resamples=200, matcher=None, norm=normalize):
+        ids=('P1', 'P2'), bots=('km3', 'judge'), seeds=(1, 2), judge_repeats=1, baseline_sha256=None, contrasts=None, resamples=200, matcher=None, fmatch=full_match,
+        position_games=None):
     claims = {f"{r.get('position')}|{r.get('bot')}|{r.get('seed')}": r.get('plan_number') for r in rows if isinstance(r, dict) and r.get('bot') != 'judge'}
     m = matcher or Matcher(answers, replays, claims)
     return formal.compare(rows, list(ids), list(bots), list(seeds), judge_repeats, refs, recs, m, elig, on_problem, require_frozen, baseline_sha256, expect_judge, contrasts,
-                          min_games, resamples, norm)
+                          min_games, resamples, fmatch, None, (), (), position_games)
 
 
 def kinds(rep_or_exc):
@@ -265,7 +267,7 @@ class FormalPath(unittest.TestCase):
         broken = lambda pid, row: {'error': 'unknown order'}  # the prompt cannot be re-rendered at all
         self.assertIn('prompt_mismatch', kinds(self.failed(with_judge(), expect_judge=broken)))
         with self.assertRaises(ValueError):  # the judge can only be compared with an expectation of its prompt
-            formal.compare(complete_rows(), ['P1', 'P2'], ['km3', 'judge'], [1, 2], 1, REFS, RECS, Matcher(), ELIG, 'fail', True, None, None, None, 2, 50, normalize)
+            formal.compare(complete_rows(), ['P1', 'P2'], ['km3', 'judge'], [1, 2], 1, REFS, RECS, Matcher(), ELIG, 'fail', True, None, None, None, 2, 50, full_match)
 
     def test_a_judge_choice_is_re_derived_from_its_stored_reply(self):
         def with_judge(**kw):
@@ -486,8 +488,10 @@ class FormalPath(unittest.TestCase):
         self.assertEqual(run(complete_rows(), elig={**ELIG, 'full_scope_ids': []})['analysis']['full_scope'], None)
 
     def test_a_judge_plan_that_stops_at_a_chance_event_has_no_complete_plan_and_is_counted_apart(self):
-        rows = complete_rows()[:-2] + [judge_row('P1', 0, 1, cut='chance'), judge_row('P2', 0, 1)]
-        rep = run(rows)
+        chance = {**RECS, 'P1': {**RECS['P1'], 'plans': [dict(RECS['P1']['plans'][0], end='chance')] + RECS['P1']['plans'][1:]}}
+        rows = [step_row('P1', 'km3', 1, 1, recs=chance), step_row('P1', 'km3', 2, 2, recs=chance), step_row('P2', 'km3', 1, 2), step_row('P2', 'km3', 2, 2),
+                judge_row('P1', 0, 1, recs=chance), judge_row('P2', 0, 1)]
+        rep = run(rows, recs=chance)
         self.assertEqual(rep['status'], 'complete')
         self.assertIsNone([r for r in rep['rows'] if r['position'] == 'P1' and r['bot'] == 'judge'][0]['full_agrees'])
         fs = rep['analysis']['full_scope']
@@ -496,10 +500,106 @@ class FormalPath(unittest.TestCase):
         self.assertEqual(fs['contrasts'][0]['n_pairs_dropped'], 1)
         self.assertEqual(fs['contrasts'][0]['verdict'], 'inconclusive')
 
+    def test_a_judge_plan_that_ends_at_an_attack_or_the_end_of_the_turn_is_a_complete_plan(self):
+        for end in ('attack', 'end_turn'):
+            recs = {**RECS, 'P1': {**RECS['P1'], 'plans': [dict(RECS['P1']['plans'][0], end=end)] + RECS['P1']['plans'][1:]}}
+            rows = [step_row('P1', 'km3', 1, 1, recs=recs), step_row('P1', 'km3', 2, 2, recs=recs), step_row('P2', 'km3', 1, 2), step_row('P2', 'km3', 2, 2),
+                    judge_row('P1', 0, 1, recs=recs), judge_row('P2', 0, 1)]
+            rep = run(rows, recs=recs)
+            self.assertTrue([r for r in rep['rows'] if r['position'] == 'P1' and r['bot'] == 'judge'][0]['full_agrees'], end)
+
+    def test_the_row_cannot_decide_whether_its_plan_is_complete(self):
+        # the judge's `cut` is checked against the numbered plan's end in the CURRENT list; editing it alone must not move a decision in or out of the full-plan block
+        for cut in ('chance', 'attack', 'opponent_choice', None):
+            rows = complete_rows()[:-2] + [judge_row('P1', 0, 1, cut=cut), judge_row('P2', 0, 1)]
+            exc = self.failed(rows)
+            self.assertEqual(kinds(exc), ['cut_mismatch'], cut)
+        # a real chance plan with a row that claims the plan is complete
+        chance = {**RECS, 'P1': {**RECS['P1'], 'plans': [dict(RECS['P1']['plans'][0], end='chance')] + RECS['P1']['plans'][1:]}}
+        rows = [step_row('P1', 'km3', 1, 1, recs=chance), step_row('P1', 'km3', 2, 2, recs=chance), step_row('P2', 'km3', 1, 2), step_row('P2', 'km3', 2, 2),
+                judge_row('P1', 0, 1, recs=chance, cut='end_turn'), judge_row('P2', 0, 1)]
+        self.assertEqual(kinds(self.failed(rows, recs=chance)), ['cut_mismatch'])
+
+    def test_a_step_bot_turn_that_pg_pos_cut_at_a_draw_card_is_not_a_complete_plan(self):
+        rows = complete_rows()
+        rows[0]['pg_pos_cut'] = 'first draw'  # km3 seed 1 at P1 (full-scope): pg_pos stopped at the first draw card
+        rep = run(rows)
+        full = {(r['bot'], r['run']): r['full_agrees'] for r in rep['rows'] if r['position'] == 'P1'}
+        self.assertIsNone(full[('km3', 1)])
+        self.assertIs(full[('km3', 2)], False)
+        # a bot's value at a decision is the mean over ALL its seeds: with one seed not comparable the decision has no full-plan value (nothing is averaged over a subset)
+        self.assertEqual(rep['analysis']['full_scope']['not_comparable']['km3'], ['P1'])
+        rows = complete_rows()
+        del rows[0]['pg_pos_cut']  # a step row that does not say how its turn ended is not complete either
+        self.assertIsNone([r for r in run(rows)['rows'] if r['position'] == 'P1' and r['bot'] == 'km3' and r['run'] == 1][0]['full_agrees'])
+
+    def test_a_reply_cut_at_the_output_cap_is_not_an_intact_answer(self):
+        rows = complete_rows()[:-2] + [judge_row('P1', 0, 1, stop_reason='max_tokens'), judge_row('P2', 0, 1)]
+        self.assertEqual(kinds(self.failed(rows)), ['truncated_reply'])
+
     def test_an_unreadable_label_in_a_full_scope_row_is_a_problem_not_a_crash(self):
-        def boom(labels):
+        def boom(a, b):
             raise ValueError('cannot read this label')
-        self.assertIn('full_plan_unreadable', kinds(run(complete_rows(), norm=boom, on_problem='inconclusive')))
+        self.assertIn('full_plan_unreadable', kinds(run(complete_rows(), fmatch=boom, on_problem='inconclusive')))
+
+    def test_a_broken_plan_list_at_an_unselected_point_never_switches_off_the_replay_of_primary_rows(self):
+        broken = {**RECS, 'P3': {**RECS['P3'], 'plans': [RECS['P3']['plans'][0], dict(RECS['P3']['plans'][1], key=RECS['P3']['plans'][0]['key'])]}}  # two plans share a key
+        rows = complete_rows() + [step_row('P3', 'km3', 1, 1, recs=RECS), step_row('P3', 'km3', 2, 1, recs=RECS), judge_row('P3', 0, 1, recs=RECS)]
+        rep = run(rows, recs=broken, ids=('P1', 'P2', 'P3'))
+        self.assertEqual(rep['status'], 'complete')  # the diagnostic point's problem does not stop the primary comparison...
+        self.assertIn('list_integrity', [p['kind'] for p in rep['diagnostic_excluded']['problems']])
+        # ... but it does not weaken any check on primary rows either: a primary row whose recorded moves replay to another plan still fails
+        exc = self.failed(rows, recs=broken, ids=('P1', 'P2', 'P3'), replays={'P1|km3|1': (2, None)})
+        self.assertEqual(kinds(exc), ['replay_mismatch'])
+
+    def test_the_games_of_the_eligibility_file_and_of_the_positions_file_must_group_the_points_alike(self):
+        same_partition = {'P1': 'kw-A', 'P2': 'kw-B', 'P3': 'kw-C'}  # other names, same grouping: fine
+        self.assertEqual(run(complete_rows(), position_games=same_partition)['status'], 'complete')
+        merged = {'P1': 'kw-A', 'P2': 'kw-A', 'P3': 'kw-C'}  # the positions file puts P1 and P2 in ONE game: the clusters (and the 10-game gate) would differ
+        exc = self.failed(complete_rows(), position_games=merged)
+        self.assertEqual(kinds(exc), ['game_conflict'])
+        elig_one = {**ELIG, 'games': {'P1': 'g1', 'P2': 'g1', 'P3': 'g3'}}
+        self.assertEqual(kinds(self.failed(complete_rows(), elig=elig_one, position_games=same_partition, min_games=1)), ['game_conflict'])
+        self.assertEqual(run(complete_rows(), position_games={'P1': None, 'P2': ''})['status'], 'complete')  # a position file without games has nothing to contradict
+
+    def test_the_eligibility_file_is_strict(self):
+        for bad in ({k: v for k, v in ELIG.items() if k != 'full_scope_ids'}, {**ELIG, 'full_scope_id': ['P1']}, {**ELIG, 'schema': 'something else'}, {**ELIG, 'extra': 1}):
+            self.assertIn('eligibility_malformed', kinds(self.failed(complete_rows(), elig=bad)), bad)
+        self.assertEqual(run(complete_rows(), elig={**ELIG, 'schema': analysis.ELIGIBILITY_SCHEMA})['status'], 'complete')
+        # game ids that differ only in case or spacing are different games to the machine and probably the same game to the author
+        for games in ({'P1': 'g1', 'P2': 'G1'}, {'P1': 'g1', 'P2': 'g1 '}, {'P1': 'g1', 'P2': 'g​2'}):
+            self.assertIn('eligibility_malformed', kinds(self.failed(complete_rows(), elig={**ELIG, 'games': {**games, 'P3': 'g3'}}, min_games=1)), games)
+
+    def test_point_ids_and_bot_names_may_not_contain_the_tag_separator(self):
+        recs = {**RECS, 'P|1': mk_rec('P|1')}
+        exc = self.failed(complete_rows(), ids=('P1', 'P|1'), recs=recs)
+        self.assertEqual(kinds(exc), ['bad_request'])
+        self.assertEqual(kinds(self.failed(complete_rows(), bots=('km|3', 'judge'))), ['bad_request'])
+
+    def test_the_report_does_not_depend_on_the_order_the_points_were_named_in(self):
+        a = run(complete_rows(), ids=('P1', 'P2'))
+        b = run(list(reversed(complete_rows())), ids=('P2', 'P1'))
+        self.assertEqual(a, b)
+
+    def test_a_failed_report_shows_no_numbers_for_the_unselected_points_either(self):
+        rows = complete_rows() + [step_row('P3', 'km3', 1, 1), step_row('P3', 'km3', 2, 1), judge_row('P3', 0, 1)]
+        rows[0] = step_row('P1', 'km3', 1, 999)
+        rep = run(rows, ids=('P1', 'P2', 'P3'), on_problem='inconclusive')
+        dx = rep['diagnostic_excluded']
+        self.assertIsNone(dx['per_bot'])
+        self.assertTrue(all(r['agrees'] is None and r['accepted'] == [] for r in dx['rows']))
+        self.assertEqual(dx['shares_a_game_with_a_primary_point'], [])
+        shared = run(complete_rows() + [step_row('P3', 'km3', 1, 1), step_row('P3', 'km3', 2, 1), judge_row('P3', 0, 1)], ids=('P1', 'P2', 'P3'),
+                     elig={**ELIG, 'games': {'P1': 'g1', 'P2': 'g2', 'P3': 'g2'}})
+        self.assertEqual(shared['diagnostic_excluded']['shares_a_game_with_a_primary_point'], ['P3'])  # exposure is per game: say so
+
+    def test_the_analysis_gets_the_requested_parameters(self):
+        with mock.patch.object(analysis, 'analyse', wraps=analysis.analyse) as spy:
+            run(complete_rows(), contrasts=[('judge', 'km3')], min_games=2, resamples=123)
+        args, kwargs = spy.call_args
+        self.assertEqual(args[4], [('judge', 'km3')])  # contrasts
+        self.assertEqual(args[5], 123)  # resamples
+        self.assertEqual(kwargs.get('min_games'), 2)
 
 
 # ---------------------------------------------------------------------------------------------------------------------------------- helpers in judge.py
@@ -509,11 +609,18 @@ class JudgeHelpers(unittest.TestCase):
         d = tempfile.mkdtemp()
         p = os.path.join(d, 'rows.jsonl')
         with open(p, 'w', encoding='utf-8') as f:
-            f.write('﻿{"position": "a", "bot": "km3"}\n\n{"truncated": \n[1, 2]\n')  # a BOM, a blank line, a truncated line, a non-object
-        rows, problems = judge.read_rows([p])
-        self.assertEqual(len(rows), 2)  # the first object and the list (a non-object is the formal path's problem)
-        self.assertEqual([x['kind'] for x in problems], ['unreadable_row'])
+            f.write('﻿{"position": "a", "bot": "km3"}\n\n{"truncated": \n[1, 2]\n{"position": "a", "position": "b"}\n{"s": "line separator"}\n')  # BOM, blank, truncated, non-object, repeated key, U+2028 in a string
+        rows, problems, hashes = judge.read_rows([p])
+        self.assertEqual(len(rows), 3)  # the first object, the list (a non-object is the formal path's problem) and the U+2028 line (not split)
+        self.assertEqual([x['kind'] for x in problems], ['unreadable_row', 'unreadable_row'])
         self.assertIn('line 3', problems[0]['detail'])
+        self.assertIn('duplicate key', problems[1]['detail'])
+        self.assertEqual(hashes[p], judge.file_sha256(p))  # the hash is of the bytes the rows were read from
+        bad = os.path.join(d, 'latin.jsonl')
+        with open(bad, 'wb') as f:
+            f.write(b'{"position": "caf\xe9"}\n')
+        rows, problems, _ = judge.read_rows([bad])
+        self.assertEqual((rows, [x['kind'] for x in problems]), ([], ['unreadable_row']))  # not UTF-8: a problem, not a crash
 
     def test_seeds_and_contrasts_are_parsed_without_crashing(self):
         self.assertEqual(judge.parse_seeds('1, 2,,3,'), ([1, 2, 3], []))
@@ -533,12 +640,31 @@ class JudgeHelpers(unittest.TestCase):
             self.assertIsNone(out[tag][0], tag)
             self.assertIn('unreadable move list', out[tag][1])
 
-    def test_normalize_full_is_a_canonical_comparable_form(self):
+    def test_normalize_full_is_a_canonical_comparable_form_that_keeps_slots(self):
         a = judge.normalize_full(['Place:Axew@3', 'Ability@2', 'Foo#{"b": 1, "a": 2}', 'EndTurn'])
-        self.assertEqual(a, ['Place:Axew', 'Ability', 'Foo#{"a":2,"b":1}'])
+        self.assertEqual(a, ['Place:Axew@3', 'Ability@2', 'Foo#{"a":2,"b":1}'])
         self.assertEqual(judge.normalize_full(['Attack:Slam']), ['Attack:Slam'])
+        self.assertEqual(judge.normalize_full(['EndTurn', 'EndTurn']), ['EndTurn'])  # only the closing End the turn is dropped
         with self.assertRaises(ValueError):
             judge.normalize_full(['Foo#{oops'])
+
+    def test_energy_lists_are_a_multiset_in_every_canonical_label(self):
+        a = judge.concrete_label('ChooseRetreatEnergy#{"to_in_play_idx": 1, "energies": ["Water", "Fire"]}')
+        self.assertEqual(a, 'ChooseRetreatEnergy#{"energies":["Fire","Water"],"to_in_play_idx":1}')
+        self.assertEqual(judge.concrete_label('ChooseRetreatEnergy#{"energies":["Fire","Water"],"to_in_play_idx":1}'), a)
+        self.assertNotEqual(judge.concrete_label('ChooseRetreatEnergy#{"energies":["Fire","Fire"],"to_in_play_idx":1}'), a)
+
+    def test_full_match_is_label_by_label_in_order_with_slotless_references(self):
+        fm = judge.full_match
+        row = ['Place:Axew@3', 'Attach:1Fire@0 zone', 'Ability@2', 'Attack:Slam']
+        self.assertTrue(fm(row, ['Place:Axew@3', 'Attach:1Fire@0 zone', 'Ability@2', 'Attack:Slam']))
+        self.assertTrue(fm(row, ['Place:Axew', 'Attach:1Fire@0 zone', 'Ability', 'Attack:Slam']))  # a reference that names no slot fits any slot (as in the replay)
+        self.assertFalse(fm(row, ['Place:Axew@1', 'Attach:1Fire@0 zone', 'Ability@2', 'Attack:Slam']))  # a slot that is named must be the slot
+        self.assertFalse(fm(row, ['Place:Axew@3', 'Attach:1Fire@0 zone', 'Ability@1', 'Attack:Slam']))  # Ability@1 and Ability@2 are different Pokémon
+        self.assertFalse(fm(['Ability@2'], ['Place:Axew@3']))
+        self.assertFalse(fm(['Ability@2', 'Attack:Slam'], ['Attack:Slam', 'Ability@2']))  # the order of the moves is part of a complete plan
+        self.assertFalse(fm(row, row[:-1]))  # a reference that is a prefix is not the complete plan
+        self.assertTrue(fm(row + ['EndTurn'], row))  # the closing End the turn is not a move that matters
 
     def test_resolve_ids_refuses_a_repeated_point(self):
         class A:
@@ -704,13 +830,18 @@ class CommandLinePath(unittest.TestCase):
         self.assertIn('judge higher', out)
         self.assertIn('diagnostic only', out)
         self.assertIn('EXPERIMENT RUN', err)  # --allow-other-binaries is an experiment switch and says so
+        self.assertIn('EXPERIMENT RESULT (not the formal result', out)
+        self.assertIs(rep['formal'], False)
 
     def test_the_report_records_what_it_was_made_from_and_which_switches_were_on(self):
         rep, out, err = self.good_report()
         run_info = rep['run']
         self.assertFalse(run_info['formal'])
         self.assertEqual(run_info['experiment_switches'], ['--allow-other-binaries', '--resamples 2000 (< 5000)'])  # the test's small resample count is an experiment setting too
-        self.assertEqual(set(run_info['inputs']), {'positions_sha256', 'references_sha256', 'eligibility_sha256', 'results_sha256'})
+        self.assertEqual(set(run_info['inputs']), {'positions_sha256', 'references_sha256', 'eligibility_sha256', 'results_sha256', 'decks_sha256', 'card_database'})
+        self.assertEqual(run_info['inputs']['card_database']['sha256'], judge.file_sha256(judge.card_database_path()))
+        self.assertEqual(run_info['inputs']['decks_sha256'], judge.dir_sha256(DECKS))
+        self.assertEqual(rep['formal'], False)
         self.assertEqual(run_info['plan_list_sha256'][self.ids[0]], formal.plan_list_sha256(self.recs[self.ids[0]]))
         self.assertEqual(run_info['request']['seeds'], [1])
         self.assertEqual(run_info['freeze']['fingerprint_now'], judge.fingerprint())
@@ -1032,6 +1163,71 @@ class CommandLinePath(unittest.TestCase):
         open(empty, 'w').close()
         with self.assertRaises(SystemExit):
             self.cli(['score', '--positions', self.positions_path, '--decks', DECKS, '--results', empty])
+
+    def test_a_run_with_no_experiment_switch_is_the_formal_result(self):
+        import freeze_identity
+        rows = self.good_rows()
+        km3_sha = [r for r in rows if r['bot'] == 'km3'][0]['pg_pos_sha256']
+        real = dict(judge.frozen_identity())
+        ident = {**real, 'plans_binary_sha256': judge.file_sha256(judge.PLANS_BIN), 'baseline': {**real['baseline'], 'binary_sha256': km3_sha}}
+        d, rf, qf, ef = self.files(rows)
+        out = os.path.join(d, 'rep.json')
+        argv = [a for a in self.argv(rf, qf, ef, extra=['--out', out]) if a != '--allow-other-binaries']
+        with mock.patch.object(judge, 'frozen_identity', return_value=ident), mock.patch.object(freeze_identity, 'check', return_value=[]):
+            code, o, err = self.cli(argv)  # the default 20,000 resamples and the 10-game minimum
+        self.assertEqual(code, 0, err)
+        rep = json.load(open(out))
+        self.assertIs(rep['formal'], True)
+        self.assertEqual(rep['run']['experiment_switches'], [])
+        self.assertEqual(rep['analysis']['method']['resamples'], analysis.RESAMPLES)
+        self.assertIn('FORMAL RESULT', o)
+        self.assertNotIn('EXPERIMENT', err + o)
+
+    def test_an_internal_error_or_an_early_exit_never_leaves_an_older_result_in_place(self):
+        d, rf, qf, ef = self.files(self.good_rows())
+        out = os.path.join(d, 'rep.json')
+        with open(out, 'w') as f:
+            json.dump({'status': 'complete', 'old': True}, f)
+        with mock.patch.object(judge, '_run_compare', side_effect=RuntimeError('boom')):
+            code, o, err = self.cli(self.argv(rf, qf, ef, extra=['--out', out]))
+        self.assertEqual(code, 1)
+        self.assertIn('boom', err)
+        rep = json.load(open(out))
+        self.assertEqual((rep['status'], rep['problems'][0]['kind']), ('failed', 'internal_error'))
+        with open(out, 'w') as f:
+            json.dump({'status': 'complete', 'old': True}, f)
+        real = dict(judge.frozen_identity())
+        with mock.patch.object(judge, 'frozen_identity', return_value={**real, 'plans_binary_sha256': '0' * 64}):
+            with self.assertRaises(SystemExit):
+                self.cli([a for a in self.argv(rf, qf, ef, extra=['--out', out]) if a != '--allow-other-binaries'])
+        self.assertEqual(json.load(open(out))['status'], 'did_not_finish')  # replaced at the start: a run that died is never mistaken for the earlier result
+
+    def test_the_games_of_the_eligibility_file_must_group_the_points_like_the_positions_file(self):
+        games = {c['id']: c['game'] for c in self.positions.values()}
+        games['BLW-01'] = games['BLW-00']  # the eligibility file calls two points one game; the positions file keeps them apart
+        d, rf, qf, ef = self.files(self.good_rows(), elig={'primary_ids': self.primary, 'full_scope_ids': [], 'games': games})
+        code, out, err = self.cli(self.argv(rf, qf, ef))
+        self.assertEqual(code, 2)
+        self.assertIn('game_conflict', err)
+        renamed = {pid: g.replace('game-', 'G') for pid, g in {c['id']: c['game'] for c in self.positions.values()}.items()}  # other names, same grouping: fine
+        d, rf, qf, ef = self.files(self.good_rows(), elig={'primary_ids': self.primary, 'full_scope_ids': [], 'games': renamed})
+        code, out, err = self.cli(self.argv(rf, qf, ef, extra=['--resamples', '200']))
+        self.assertEqual(code, 0, err)
+
+    def test_a_row_that_repeats_a_json_key_is_a_problem(self):
+        d, rf, qf, ef = self.files(self.good_rows(), raw_lines='{"position": "BLW-00", "position": "BLW-01"}\n')
+        code, out, err = self.cli(self.argv(rf, qf, ef))
+        self.assertEqual(code, 2)
+        self.assertIn('duplicate key', err)
+
+    def test_a_cut_reply_with_a_plan_line_is_not_a_choice(self):
+        pid = self.ids[0]
+        shown = {p['n']: k for k, p in judge.render_prompt(self.positions[pid], self.recs[pid], judge.FROZEN['order'], DECKS)[2].items()}
+        reply = (f"PLAN: {shown[self.blow[0]['n']]}\nREASON: x", {'input_tokens': 1, 'output_tokens': 1}, 0.1, judge.MODEL, {'stop_reason': 'max_tokens', 'content_types': ['text']})
+        with mock.patch.object(judge, 'call_claude', return_value=reply):
+            r, _, _ = judge.judge_one(pid, self.positions, self.recs, judge.FROZEN['order'], True, judge.MODEL, decks_dir=DECKS)
+        self.assertIsNone(r['plan_number'])
+        self.assertIn('cut at max_tokens', r['parse_error'])
 
     def test_the_preflight_command_names_the_positions_whose_labels_do_not_name_their_plans(self):
         code, out, err = self.cli(['preflight', '--positions', self.positions_path, '--decks', DECKS, '--ids', *self.ids[:3]])

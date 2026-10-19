@@ -52,6 +52,22 @@ class Parser(unittest.TestCase):
         self.assertIn('REASON', r['warning'])
         self.assertIsNone(judge.parse_choice('PLAN: 2\nREASON: x', 5)['warning'])
 
+    def test_a_plan_line_that_names_several_plans_is_refused(self):
+        for t in ['PLAN: 4 or 7\nREASON: x', 'PLAN: 4, 7\nREASON: x', 'PLAN: 4 / 7\nREASON: x', 'PLAN: 4 and 7\nREASON: x', 'plan: 4 | 7\nreason: x', 'PLAN: 4 then plan 7\nREASON: x']:
+            r = judge.parse_choice(t, 9)
+            self.assertFalse(r['ok'], t)
+            self.assertIn('several plans', r['error'])
+        for t in ['PLAN: 7.\nREASON: x', 'PLAN: 7 (the attack)\nREASON: x', '**PLAN: 7**\nREASON: x', 'PLAN: 7 (energy on 2)\nREASON: x']:
+            self.assertEqual(judge.parse_choice(t, 9)['plan'], 7, t)
+
+    def test_parsing_a_flood_of_blank_lines_is_fast(self):
+        import time
+        t0 = time.time()
+        self.assertEqual(judge.parse_choice('\n' * 200000 + 'PLAN: 3\nREASON: x', 5)['plan'], 3)
+        self.assertFalse(judge.parse_choice(' ' * 100000 + '\nPLAN: 3', 2)['ok'])
+        self.assertEqual(judge.parse_choice('PLAN: 3' + ' ' * 100000, 5)['plan'], 3)  # trailing blanks are stripped before any matching
+        self.assertLess(time.time() - t0, 5)
+
     def test_a_number_inside_the_reason_is_not_the_plan(self):
         r = judge.parse_choice('PLAN: 2\nREASON: plan 4 loses to a Rare Candy', 5)
         self.assertEqual(r['plan'], 2)

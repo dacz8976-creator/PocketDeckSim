@@ -25,6 +25,7 @@ import random
 
 SCHEMA = 'ai_judge_clustered_analysis_v2'
 ELIGIBILITY_SCHEMA = 'ai_judge_eligibility_v1'
+ELIGIBILITY_KEYS = {'schema', 'primary_ids', 'full_scope_ids', 'games', 'excluded_reasons'}
 CONFIDENCE = 0.95
 RESAMPLES = 20000
 MIN_FORMAL_RESAMPLES = 5000  # fewer resamples than this and a report is marked as an experiment
@@ -46,6 +47,13 @@ def eligibility_shape_problems(e):
     if not isinstance(e, dict):
         return ['the eligibility file is not an object']
     out = []
+    unknown = sorted(set(e) - ELIGIBILITY_KEYS)
+    if unknown:
+        out.append(f'unknown key(s) {unknown[:5]} (a misspelt key would silently drop part of the selection); allowed: {sorted(ELIGIBILITY_KEYS)}')
+    if 'schema' in e and e['schema'] != ELIGIBILITY_SCHEMA:
+        out.append(f'"schema" must be {ELIGIBILITY_SCHEMA!r}, got {e["schema"]!r}')
+    if 'full_scope_ids' not in e:
+        out.append('"full_scope_ids" must be present (an empty list when no point has a full-plan comparison)')
     prim, full, games = e.get('primary_ids'), e.get('full_scope_ids', []), e.get('games')
     if not _ids_ok(prim) or not prim:
         out.append('"primary_ids" must be a non-empty list of distinct point ids')
@@ -57,6 +65,16 @@ def eligibility_shape_problems(e):
         out.append(f'"full_scope_ids" must be a subset of "primary_ids": {sorted(set(full) - set(prim))[:5]}')
     if not isinstance(games, dict) or not all(isinstance(k, str) and isinstance(v, str) and v for k, v in games.items()):
         out.append('"games" must map point ids to non-empty game ids')
+    else:
+        odd = sorted(v for v in set(games.values()) if v != v.strip() or not v.isprintable())
+        if odd:
+            out.append(f'game ids may not have leading / trailing space or non-printable characters: {odd[:3]!r}')
+        names = {}
+        for v in set(games.values()):
+            names.setdefault(v.strip().casefold(), set()).add(v)
+        clash = sorted(sorted(s) for s in names.values() if len(s) > 1)
+        if clash:
+            out.append(f'game ids that differ only in case or spacing would be counted as different games: {clash[:3]}')
     reasons = e.get('excluded_reasons', {})
     if not isinstance(reasons, dict) or not all(isinstance(k, str) and isinstance(v, str) and v.strip() for k, v in reasons.items()):
         out.append('"excluded_reasons" must map point ids to non-empty reason texts')
@@ -244,7 +262,10 @@ def _block(pids, games, vals, bots, judge_repeats, contrasts, resamples, seed, m
     def interval(name):
         point, lo, hi = est[name]
         r = lambda x: None if x is None else round(x, 6)
-        return {'estimate': r(point), 'ci_low': r(lo), 'ci_high': r(hi), 'n_decisions': defined[name], 'n_games': sum(1 for c in series[name][1] if c)}
+        n_games = sum(1 for c in series[name][1] if c)
+        if n_games < 2:  # an interval from resampling ONE game has no width and says nothing
+            lo = hi = None
+        return {'estimate': r(point), 'ci_low': r(lo), 'ci_high': r(hi), 'n_decisions': defined[name], 'n_games': n_games}
 
     def contrast_block(a, b, prefix, with_verdict):
         name = f'{prefix}:{a}-{b}'
@@ -265,6 +286,12 @@ def _block(pids, games, vals, bots, judge_repeats, contrasts, resamples, seed, m
             pa = [get(a, p, 0) for p in pids]
             pb = [get(b, p, 0) for p in pids]
             pairs = [(x, y) for x, y in zip(pa, pb) if x is not None and y is not None]
+            if blk['n_pairs_dropped'] and pairs:
+                # the contrast is over the decisions comparable for BOTH bots: say so, and show each bot's rate on exactly those decisions (its own rate above may
+                # cover other decisions), because dropping non-comparable pairs is conditional on the outcome when a plan is not comparable more often when it fails
+                blk['matched_rates'] = {a: round(sum(x for x, _ in pairs) / len(pairs), 6), b: round(sum(y for _, y in pairs) / len(pairs), 6)}
+                if with_verdict and 'reason' in blk:
+                    blk['reason'] += f"; computed on {len(pairs)} of {len(pids)} decisions, {blk['n_pairs_dropped']} not comparable for both bots (dropped, not scored)"
             if pairs and all(x in (0.0, 1.0) and y in (0.0, 1.0) for x, y in pairs):
                 blk['discordant'] = {'both': sum(1 for x, y in pairs if x == 1 and y == 1), f'{a}_only': sum(1 for x, y in pairs if x == 1 and y == 0),
                                      f'{b}_only': sum(1 for x, y in pairs if x == 0 and y == 1), 'neither': sum(1 for x, y in pairs if x == 0 and y == 0)}
@@ -296,8 +323,8 @@ def analyse(rows, eligibility, bots, judge_repeats, contrasts=None, resamples=RE
     """The clustered comparison over a complete batch. `rows` = the report rows of the PRIMARY points only (fields: position, bot, run, state, plan_number, agrees,
     full_agrees); `eligibility` = the parsed eligibility file; contrasts = [(a, b)] (default: the judge against every other bot). Returns the analysis block:
     {'method', 'prefix': <block over all primary points>, 'full_scope': <block over the full-scope subset> or None}."""
-    primary = list(eligibility['primary_ids'])
-    full = list(eligibility.get('full_scope_ids', []))
+    primary = sorted(eligibility['primary_ids'])
+    full = sorted(eligibility.get('full_scope_ids', []))
     games = eligibility['games']
     leaked = sorted({r['position'] for r in rows} - set(primary))
     if leaked:

@@ -126,6 +126,9 @@ def request_problems(ids, bots, seeds, judge_repeats, contrasts=None, min_games=
         out.append(_prob('bad_request', 'no points'))
     if not bots or not all(isinstance(b, str) and b for b in bots):
         out.append(_prob('bad_request', 'no bots, or a bot name that is not text'))
+    bad_names = [x for x in list(ids) + list(bots) if not isinstance(x, str) or '|' in x]
+    if bad_names:
+        out.append(_prob('bad_request', f'point ids and bot names may not contain "|" (it separates the replay tags): {bad_names[:3]}'))
     if any(b != 'judge' for b in bots) and not seeds:
         out.append(_prob('bad_request', 'step bots need at least one seed'))
     if not all(_is_int(s) for s in seeds):
@@ -204,10 +207,14 @@ def check_chosen_plan(row, bot, rec, list_hash, expect_judge, require_frozen):
                         out.append(('reply_mismatch', f'the stored reply says plan {got!r} but the row records {sn!r}'))
             if require_frozen:
                 for k, v in (exp.get('settings') or {}).items():
-                    if row.get(k) != v:
-                        out.append(('not_frozen', f'the row records {k}={row.get(k)!r}, the freeze says {v!r}'))
+                    if k not in row or row[k] != v:
+                        out.append(('not_frozen', f"the row records {k}={row.get(k, '<missing>')!r}, the freeze says {v!r}"))
         if row.get('plan') != plan['labels']:
             out.append(('labels_mismatch', f"the row's moves {row.get('plan')!r} are not the labels of plan {n}"))
+        if row.get('cut') != plan['end']:
+            out.append(('cut_mismatch', f"the row says its plan ends with {row.get('cut')!r} but plan {n} of the current list ends with {plan['end']!r} (the end decides whether a complete plan exists)"))
+        if row.get('stop_reason') == 'max_tokens':
+            out.append(('truncated_reply', 'the reply was cut at the output cap: the stored choice is not an intact answer'))
     else:
         pf = row.get('plan_full')
         if not isinstance(pf, list) or not pf or not all(isinstance(x, str) for x in pf):
@@ -323,23 +330,25 @@ def map_references(references, recs, match, ids):
     return out, problems, len([p for p in references if p not in set(ids)])
 
 
-def row_full_labels(row, bot):
-    """The complete move sequence a row stands for, or None when it has none (a judge plan that stops at a chance event or for an opponent's choice)."""
+def row_full_labels(row, bot, plan_end):
+    """The complete move sequence a row stands for, or None when it has none. A judge plan is complete when the CURRENT list's numbered plan ends with an attack
+    or the end of the turn (not at a chance event or for the opponent's choice); a step bot's turn is complete when pg_pos played it to the end of the turn
+    (`pg_pos_cut` 'end of turn'; it stops at the first draw card)."""
     if bot == 'judge':
-        return row.get('plan') if row.get('cut') in ('attack', 'end_turn') else None
+        return row.get('plan') if plan_end in ('attack', 'end_turn') else None
     pf = row.get('plan_full')
-    return pf if isinstance(pf, list) else None
+    return pf if (isinstance(pf, list) and row.get('pg_pos_cut') == 'end of turn') else None
 
 
-def full_plan_agreement(row, bot, refs, normalize):
-    """-> (True | False | None, error text or None). Full-plan agreement: the row's complete move sequence equals an accepted complete sequence (compared after
-    `normalize`, the canonical label form without the trailing End the turn). None = the row has no complete sequence (not comparable)."""
-    labels = row_full_labels(row, bot)
+def full_plan_agreement(row, bot, plan_end, refs, full_match):
+    """-> (True | False | None, error text or None). Full-plan agreement: the row's complete move sequence equals an accepted complete sequence, label by label
+    (`full_match(row_labels, ref_labels)` -> bool decides: canonical label form, the closing End the turn ignored, a slotless reference Place / Ability fits any
+    slot). It is ORDER-SENSITIVE: the same plan reached by a different order of moves is not full-plan agreement. None = the row has no complete sequence."""
+    labels = row_full_labels(row, bot, plan_end)
     if labels is None:
         return None, None
     try:
-        got = normalize(labels)
-        return any(normalize(ref['labels']) == got for ref in refs), None
+        return any(full_match(labels, ref['labels']) for ref in refs), None
     except (ValueError, TypeError, AttributeError) as e:
         return None, f'a move label cannot be read: {e}'
 
@@ -393,25 +402,45 @@ def early_failure(problems, on_problem, run_info=None):
     raise err
 
 
+def game_conflicts(eligibility, position_games):
+    """The eligibility file's games are what the clustering uses; the positions file may carry its own `game`. They must induce the SAME partition of the primary
+    points (the names may differ): two points are in one game in one file exactly when they are in one game in the other. A regrouping changes the clusters, the
+    10-game gate and every interval, so it is a problem, not a quiet choice."""
+    ids = [p for p in eligibility['primary_ids'] if isinstance(position_games.get(p), str) and position_games[p]]
+    games, out = eligibility['games'], []
+    for i, a in enumerate(ids):
+        for b in ids[i + 1:]:
+            if (games.get(a) == games.get(b)) != (position_games[a] == position_games[b]):
+                out.append(_prob('game_conflict', f'the eligibility file and the positions file group {a!r} and {b!r} differently '
+                                                  f'(eligibility: {games.get(a)!r} / {games.get(b)!r}; positions: {position_games[a]!r} / {position_games[b]!r})', a))
+                if len(out) >= 5:
+                    return out
+    return out
+
+
 def compare(rows, ids, bots, seeds, judge_repeats, references, recs, match, eligibility, on_problem='fail', require_frozen=True, baseline_sha256=None,
-            expect_judge=None, contrasts=None, min_games=analysis.MIN_GAMES, resamples=analysis.RESAMPLES, normalize=None, run_info=None, extra_problems=(),
-            read_problems=()):
+            expect_judge=None, contrasts=None, min_games=analysis.MIN_GAMES, resamples=analysis.RESAMPLES, full_match=None, run_info=None, extra_problems=(),
+            read_problems=(), position_games=None):
     """The whole path. Returns the report; raises BatchFailed (exit code 2) for on_problem='fail' when anything is unresolved.
     expect_judge(point, row) -> {'prompt_sha256', 'shown': {number printed in the prompt: plan number}, 'parse': reply text -> number or None,
     'settings': {model, max_tokens, temperature}} (or {'error': text}) is required whenever the judge is a bot: it is how a judge row is tied to the prompt and
-    reply it was answered from. `normalize(labels)` -> canonical comparable label list is required for the full-plan agreement of the full-scope points."""
+    reply it was answered from. `full_match(row_labels, ref_labels)` -> bool is required for the full-plan agreement of the full-scope points.
+    `position_games` = {point: game} from the positions file, cross-checked against the eligibility file's games."""
     if 'judge' in bots and expect_judge is None:
         raise ValueError('compare: the judge rows can only be checked with expect_judge (the prompt re-rendered under the frozen settings)')
     problems = list(extra_problems) + request_problems(ids, bots, seeds, judge_repeats, contrasts, min_games, resamples)
     if not isinstance(references, dict):
         problems.append(_prob('reference_malformed', 'the references must be an object {point: [{"id", "labels"}]}'))
     problems += analysis.eligibility_problems(ids, references, eligibility, min_games) if not problems else []
+    if not problems and position_games is not None:
+        problems += game_conflicts(eligibility, position_games)
     if problems:
         return early_failure(problems, on_problem, run_info)
-    primary = list(eligibility['primary_ids'])
+    ids = sorted(ids)  # the report does not depend on the order the points were named in
+    primary = sorted(eligibility['primary_ids'])
     pset, full_scope = set(primary), set(eligibility.get('full_scope_ids', []))
-    if full_scope and normalize is None:
-        raise ValueError('compare: the full-scope points need `normalize` (the canonical form of a move list)')
+    if full_scope and full_match is None:
+        raise ValueError('compare: the full-scope points need `full_match` (how two complete move lists are compared)')
     diag_ids = [i for i in ids if i not in pset]
     dset = set(diag_ids)
     games = eligibility['games']
@@ -420,9 +449,9 @@ def compare(rows, ids, bots, seeds, judge_repeats, references, recs, match, elig
     by_key, row_problems = check_rows(rows, expected, recs, require_frozen, baseline_sha256, expect_judge)
     problems += row_problems
     problems += list(read_problems)  # lines of the results files that did not parse: the batch fails, with every expected row still accounted for
-    bad = {(p['position'], p['bot'], p['run']) for p in problems if p.get('bot')}
-    if not any(p['kind'] == 'list_integrity' for p in problems):
-        problems += replay_problems(by_key, recs, match, bad)
+    integrity_bad = {p['position'] for p in problems if p['kind'] == 'list_integrity'}
+    bad = {(p['position'], p['bot'], p['run']) for p in problems if p.get('bot')} | {k for k in by_key if k[0] in integrity_bad}
+    problems += replay_problems(by_key, recs, match, bad)  # a broken plan list at ONE point never switches the replay off for the others
     accepted, ref_problems, n_ignored = map_references(references, recs, match, ids)
     problems += ref_problems
     problems += [_prob('reference_missing', 'no accepted move list for this point', pid) for pid in diag_ids if not references.get(pid)]
@@ -431,8 +460,11 @@ def compare(rows, ids, bots, seeds, judge_repeats, references, recs, match, elig
     for key in expected:
         pid, bot, run = key
         row = by_key.get(key)
-        if pid in full_scope and row is not None and row.get('plan_number') is not None and pid in accepted:
-            val, err = full_plan_agreement(row, bot, references[pid], normalize)
+        if pid in full_scope and row is not None and key not in bad and row.get('plan_number') is not None and pid in accepted:
+            n = row['plan_number']
+            if not (_is_int(n) and pid in recs and 1 <= n <= len(recs[pid]['plans'])):
+                continue
+            val, err = full_plan_agreement(row, bot, recs[pid]['plans'][n - 1]['end'], references[pid], full_match)
             full_agree[key] = val
             if err:
                 problems.append(_prob('full_plan_unreadable', err, pid, bot, run))
@@ -449,14 +481,20 @@ def compare(rows, ids, bots, seeds, judge_repeats, references, recs, match, elig
         a[r['state']] = a.get(r['state'], 0) + 1
     diag_rows = _rows(dset, expected, by_key, states, accepted, games, set(), {}, True)
     reasons = eligibility.get('excluded_reasons', {})
+    primary_games = {games[p] for p in primary}
     report = {'schema': SCHEMA, 'status': status, 'n_expected_rows': len(prim_expected), 'n_present_rows': sum(1 for k in prim_expected if by_key.get(k) is not None),
               'n_resolved_rows': sum(1 for r in report_rows if r['state'] == 'ok'), 'problems': batch_problems, 'rows': report_rows,
               'row_account': {'what': 'row accounting only (primary points; every repeat and seed is a row): not an agreement figure', 'per_bot_state_counts': account},
               'selection': {'primary_ids': len(primary), 'full_scope_ids': len(full_scope), 'diagnostic_ids': list(diag_ids), 'references_in_file': len(references),
                             'references_used': len([p for p in ids if p in references]), 'references_ignored': n_ignored},
-              'analysis': None,
+              'analysis': None, 'formal': (run_info or {}).get('formal'),
               'diagnostic_excluded': {**analysis.diagnostic_block(diag_rows, diag_ids, reasons, bots, judge_repeats), 'problems': diag_problems,
+                                      'shares_a_game_with_a_primary_point': [p for p in diag_ids if games.get(p) in primary_games],
                                       'n_expected_rows': len([k for k in expected if k[0] in dset]), 'rows': diag_rows} if diag_ids else None}
+    if diag_ids and not complete:
+        report['diagnostic_excluded']['per_bot'] = None  # with any problem the comparison shows no numbers, the excluded points' included
+        for r in report['diagnostic_excluded']['rows']:
+            r['agrees'], r['accepted'] = None, []
     if run_info is not None:
         report['run'] = run_info
     if complete:

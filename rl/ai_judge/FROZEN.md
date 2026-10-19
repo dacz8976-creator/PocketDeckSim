@@ -105,3 +105,72 @@ What changed since frozen-2 (source commit 9bc0e0a7 was the recovery copy's sour
 - The rebuilt baseline is validated on three small fixtures, not on a corpus: a Tool-target, a random-evolution target and a Stadium. Other action types that print as
   `Name#JSON` (the rest of the fallback set) rely on the same rule but were not each exercised.
 - The game-clustered uncertainty required by the analysis contract is not implemented in this harness; the report keeps the `game` of every row so it can be.
+  (**Implemented in frozen-4**: `analysis.py`, below.)
+
+---
+# Superseding freeze `judge-prompt-frozen-4` (Oct 19, the live Sonnet worker, after Astra's re-review of frozen-3 and the exam side's selection requirement)
+
+`judge-prompt-frozen-1` (3faaf691), `-2` (cb8835dc) and `-3` (316f3577) are kept untouched. **The prompt is unchanged**: the fingerprint equals frozen-2's and
+frozen-3's (`0cb24215...`), checked by `tests/test_frozen.py` and, new, by `compare` itself, which refuses to run when the code's fingerprint, sources or executables
+differ from this record (`--allow-other-binaries` is the experiment switch). Old and synthetic fixtures only; no exam access, no API calls, no main merge.
+
+## Dated disclosure (Oct 19, 2026)
+
+On the morning of Oct 19, while reading the agent mailbox, I opened two messages that were **not addressed to `sonnet`** (an independent source review, and the
+coordinator's note to its author) and I said so in my mailbox message `20261019T1426Z-sonnet-001`. One of them contained **one exam example** (one answer-key
+example). Astra ruled this developer exposure to one answer-key example; the exposed game is excluded from the primary comparison on the exam side, so in a
+report it can only appear in the diagnostic block. I did not use, copy or record the example anywhere and it is not repeated here. **The judge prompt has not
+changed since frozen-2** (fingerprint `0cb24215...`, verified at frozen-3 and again at frozen-4), so nothing I read can have shaped the prompt. The code written
+afterwards (`formal.py`, `analysis.py`, the `compare` command) is generic and was tested on synthetic fixtures only. From now on I read only mailbox messages
+addressed to `sonnet`.
+
+## What changed since frozen-3 (generic work; old and synthetic fixtures only)
+
+1. **A plan number is checked, never believed** (`formal.py`). A row that names a plan must name a whole number inside the CURRENT plan list (bool, float, text, 0 and
+   999 in a two-plan list are refused); must not carry a `match_error` or `parse_error` beside it; must carry `plan_list_sha256` (sha256 of the lister's whole
+   record: start state, world seed, limits, every plan with key, labels and end) equal to the hash of the list used now, and the `plan_key` of that numbered plan;
+   a step bot's full move list (`plan_full`) is replayed through the engine again and must reach exactly that plan; a judge row must map, in the prompt re-rendered
+   under the frozen settings, to that plan (`shown_number`), carry that prompt's hash and the plan's labels, and its stored reply (`raw`) must say the number it
+   records. Rows that predate these fields get one clear `predates_identity` problem. Negative controls run through the FORMAL path (`tests/test_formal.py`),
+   on pure logic and on the command line with rows written by the real writers.
+2. **Exact row identity and flags.** A row's run is its whole-number `seed` (step bot) or `repeat` (judge), never a mixture or a bool/float; `frozen` must be
+   exactly `true` and `dry_run` exactly `false`; the judge's recorded model, `max_tokens` and `temperature` (now written into every judge row) must equal the
+   freeze. Malformed rows, labels, contrasts, seeds and references are recorded as problems (with a report), not tracebacks; duplicate JSON keys in an input are refused.
+3. **The selection is explicit and the references are filtered** (`--eligibility FILE`, `analysis.py`). The references file covers ALL points; the eligibility file names
+   the primary point ids, the full-scope subset and every point's game (`{"primary_ids", "full_scope_ids", "games", "excluded_reasons"}`). Only references of points in
+   the batch are read or validated; every selected point must have references; no unselected point reaches the primary aggregation, the bootstrap or the full-scope
+   block (`analyse` refuses rows outside the selection). **Prefix agreement** (agreement up to the plan's own end: first chance event, attack, end of turn) is
+   reported for all primary points; **full-plan agreement** (the complete move sequence equals an accepted complete sequence, compared in canonical label form) only for
+   the full-scope subset, as a separate block; a judge plan that stops at a chance event or for the opponent's choice has no complete sequence and is counted as
+   "not comparable" (listed, never scored, the pairs dropped are named). Points of the batch outside the selection appear **only in a separate descriptive
+   diagnostic block** (no interval, no verdict); a problem at such a point never stops the primary comparison. Tested with synthetic references in which some ids are
+   excluded and with garbage rows at the excluded points.
+4. **The analysis contract is implemented** (`analysis.py`). Unit = decision (point); resampling unit = game (whole games drawn with replacement); estimator = sum of
+   per-decision values / number of decisions; 95% nominal percentile interval, 20,000 resamples, fixed seed 20261019; one predefined judge call per decision (repeat
+   0) is the primary result; extra repeats are a separate sensitivity estimate (per-decision mean over repeats; no verdict is drawn from it; they are never extra
+   samples; no run is picked); a step bot's value is the mean over all its expected seeds; an interval that includes 0 is "inconclusive"; a direction also needs the
+   exact sign-flip test over games (p < 0.05); fewer than 10 games among the primary points fails the batch (`--min-games` below 10 or `--resamples` below 5,000
+   marks the report as an experiment). Calibration by simulation (statistics review): the interval's real coverage is about 89-94% at 10-17 games, not 95%; the
+   verdict rule is conservative (false directions 2-4% under a true null) and, being in effect the sign-flip test, has low power: with ~51 decisions a true gap of
+   about 0.3 is needed for ~80% power at 10-17 games, so "inconclusive" will be the usual outcome for smaller gaps. No multiplicity adjustment: with the two default
+   contrasts the chance of at least one false direction is about 5%; name one primary contrast if a single claim is wanted.
+5. **The report says what it was made from** (`report["run"]`): freeze tag and fingerprints, lister and required baseline hashes, sha256 of the positions, references,
+   eligibility and results files, per-position plan-list hashes, request (bots, seeds, repeats, contrasts, thresholds), `formal: true/false` with the list of
+   experiment switches used, and a plan-list label check. `row_account` is a count of rows (every seed and repeat is a row) and not an agreement figure; there is no
+   pooled `agreement` headline. A failed or inconclusive report carries no row-level agreement.
+6. **Identity** (`FROZEN.json`): fingerprint unchanged; source hashes now include `analysis.py` and the two test files; `freeze_identity.py --check` also flags a
+   source missing from the record.
+
+## Known limitation found by the review, not fixed in this freeze unless stated in FROZEN.json
+
+On four of the 92 old positions the lister's short labels do not identify a plan: **one action kind, `ChooseRetreatEnergy` (printed `RetreatPay:<slot>`), drops
+which Energy was paid** (1,142 of 5,728 plans; 434 groups of plans share identical labels and identical step text but are different states: the Energy left on
+the retreated Pokemon). A bot or recorded move list that uses such a label is AMBIGUOUS and fails the formal comparison; the judge is shown plans that look
+identical. `judge.py preflight` and `report["run"]["plan_list_label_check"]` list the affected positions. A second, smaller defect: `--replay` abandons a whole
+move list when one fan-out alternative cannot follow it (137 plans, all at one position, and one recorded old plan). See the mailbox message for the proposed fix.
+
+## Still not shown
+- No exam position, answer or bot output was used. The formal path and the analysis are tested on synthetic rows and fixtures only.
+- The rebuilt baseline printer is validated on three small fixtures; the full-plan comparison is label-based (canonical label equality), so it inherits the label
+  limitation above.
+- The percentile interval undercovers slightly at 10-17 games (see item 4); power is low for small true gaps.

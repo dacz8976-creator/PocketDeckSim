@@ -113,6 +113,55 @@ class Estimates(unittest.TestCase):
     def test_an_unusable_interval_is_inconclusive(self):
         self.assertEqual(analysis.verdict('judge', 'km3', 0.2, None, None, 0.01, 12)[0], 'inconclusive')
 
+    def test_a_direction_needs_the_real_sign_flip_p_not_only_the_interval(self):
+        # 10 games: the judge agrees (and km3 never does) in 5 of them, the other 5 are even. The interval excludes 0 (a resample without a favourable game has
+        # probability 1/1024) but all 5 non-zero games point one way, which a randomisation test over games calls p = 2/32 = 0.0625: not a direction
+        c = prefix(analyse(games_of(10, 1, lambda g, k: [1 if g < 5 else 0], lambda g, k: [0]), resamples=4000))
+        self.assertGreater(c['ci_low'], 0)
+        self.assertAlmostEqual(c['sign_flip_p'], 0.0625, places=4)
+        self.assertEqual(c['verdict'], 'inconclusive')
+        self.assertIn('sign-flip', c['reason'])
+        # six favourable games out of ten: p = 2/64 = 0.031: a direction
+        c = prefix(analyse(games_of(10, 1, lambda g, k: [1 if g < 6 else 0], lambda g, k: [0]), resamples=4000))
+        self.assertAlmostEqual(c['sign_flip_p'], 0.03125, places=4)
+        self.assertEqual(c['verdict'], 'judge higher')
+
+    def test_the_minimum_counts_the_games_with_data_not_the_games_in_the_population(self):
+        def full(n_with_data):
+            return lambda g, k: {'judge': [None if g >= n_with_data else 1], 'km3': [0]} if k == 0 else None
+        f9 = analyse(games_of(12, 2, lambda g, k: [1], lambda g, k: [0], full=full(9)))['full_scope']
+        self.assertEqual(f9['population']['n_games'], 12)  # twelve games hold full-scope points ...
+        self.assertEqual(f9['contrasts'][0]['verdict'], 'inconclusive')  # ... but only nine of them have a value for both bots
+        self.assertIn('9 games < 10', f9['contrasts'][0]['reason'])
+        f10 = analyse(games_of(12, 2, lambda g, k: [1], lambda g, k: [0], full=full(10)))['full_scope']
+        self.assertEqual(f10['contrasts'][0]['verdict'], 'judge higher')
+
+    def test_an_interval_from_one_game_is_not_reported(self):
+        a = analyse(games_of(1, 3, lambda g, k: [1], lambda g, k: [0]), min_games=1)
+        r = a['prefix']['rates']['judge']
+        self.assertEqual((r['n_games'], r['ci_low'], r['ci_high']), (1, None, None))
+        self.assertEqual(r['estimate'], 1.0)
+        self.assertIsNone(prefix(a)['ci_low'])
+        self.assertEqual(prefix(a)['verdict'], 'inconclusive')
+
+    def test_dropped_pairs_are_shown_with_matched_rates_and_named_in_the_reason(self):
+        # the judge's plan is not comparable at three decisions where km3 agrees: dropping them is conditional, so the contrast says on which decisions it was computed
+        def full(g, k):
+            return {'judge': [None if g < 3 else 1], 'km3': [1 if g < 3 else 0]} if k == 0 else None
+        f = analyse(games_of(12, 2, lambda g, k: [1], lambda g, k: [0], full=full))['full_scope']
+        c = f['contrasts'][0]
+        self.assertEqual(c['n_pairs_dropped'], 3)
+        self.assertEqual(c['matched_rates'], {'judge': 1.0, 'km3': 0.0})
+        self.assertIn('computed on 9 of 12 decisions, 3 not comparable', c['reason'])
+        self.assertAlmostEqual(f['rates']['km3']['estimate'], 3 / 12, places=5)  # km3's own rate covers all twelve decisions
+
+    def test_the_report_does_not_depend_on_the_process_hash_seed(self):
+        import subprocess
+        code = ("import sys, json; sys.path.insert(0, %r); sys.path.insert(0, %r); import test_analysis as T; "
+                "print(json.dumps(T.analyse(T.games_of(12, 2, lambda g, k: [1 if (g + k) %% 3 else 0], lambda g, k: [1 if g %% 2 else 0]), resamples=300), sort_keys=True))" % (os.path.dirname(HERE), HERE))
+        outs = [subprocess.run([sys.executable, '-B', '-c', code], capture_output=True, text=True, env={**os.environ, 'PYTHONHASHSEED': s}).stdout for s in ('1', '2', '3')]
+        self.assertTrue(outs[0] and outs[0] == outs[1] == outs[2])
+
 
 class Clustering(unittest.TestCase):
     def test_correlated_decisions_in_one_game_widen_the_interval(self):
@@ -291,7 +340,10 @@ class SelectionAndScopes(unittest.TestCase):
         self.assertEqual(analysis.eligibility_shape_problems(ok), [])
         self.assertEqual(analysis.eligibility_shape_problems({**ok, 'full_scope_ids': []}), [])
         bad_cases = [None, [], {}, {**ok, 'primary_ids': []}, {**ok, 'primary_ids': ['a', 'a']}, {**ok, 'full_scope_ids': ['z']}, {**ok, 'games': ['g']},
-                     {**ok, 'games': {'a': ''}}, {**ok, 'excluded_reasons': {'c': '  '}}, {**ok, 'excluded_reasons': {'a': 'x'}}, {**ok, 'primary_ids': 'a'}]
+                     {**ok, 'games': {'a': ''}}, {**ok, 'excluded_reasons': {'c': '  '}}, {**ok, 'excluded_reasons': {'a': 'x'}}, {**ok, 'primary_ids': 'a'},
+                     {k: v for k, v in ok.items() if k != 'full_scope_ids'},  # a missing key would silently mean "no full-scope subset"
+                     {**ok, 'full_scope_id': ['a']}, {**ok, 'schema': 'other'},  # a misspelt key / the wrong schema
+                     {**ok, 'games': {'a': 'g1 ', 'b': 'g2'}}, {**ok, 'games': {'a': 'G1', 'b': 'g1'}}, {**ok, 'games': {'a': 'g​1', 'b': 'g2'}}]
         for bad in bad_cases:
             self.assertTrue(analysis.eligibility_shape_problems(bad), bad)
 

@@ -4,7 +4,7 @@
   python3 rl/ai_judge/judge.py plans   --ids ID ... | --set diag14|stageA       list the engine's whole-turn plans (counts)
   python3 rl/ai_judge/judge.py prompt  --id ID                                  print the prompt for one position + its token estimate
   python3 rl/ai_judge/judge.py judge   --ids ... [--live --max-calls N] --out F  the judge on positions (DRY RUN unless --live)
-  python3 rl/ai_judge/judge.py run     --bot km3|kx3|judge --set ... --out F    any bot on a list of positions, one shared result format
+  python3 rl/ai_judge/judge.py run     --bot km3|judge --set ... --out F        a step bot (k<number>) or the judge on a list of positions, one shared result format
   python3 rl/ai_judge/judge.py score   --results F                              agreement with a position's recorded plan (old positions only)
 
 Design rules (rl/results/weekly_review_2026-10-18/PLAN.md, step 2):
@@ -349,15 +349,32 @@ def estimate_tokens(system, user, form='full'):
 
 
 # ---------------------------------------------------------------------------------------------------------------------------------- parser
+_PLAN_LINE = re.compile(r'(?i)^\**\s*PLAN\s*\**\s*[:=\-]\s*\**\s*(?:plan\s*)?#?\s*(\d+)(.*)$')
+_MORE_PLANS = re.compile(r'(?i)^\s*\**\s*[.)]?\s*(?:,|/|\||\bor\b|\band\b|\bthen\b|\bvs\.?)\s*(?:plan\s*)?#?\d+')  # what follows the number: "or 7", ", 7", "/ 7" ...
+_REASON_LINE = re.compile(r'(?i)^\**\s*REASON\s*\**\s*[:=\-]\s*(.+?)\s*$')
+
+
 def parse_choice(text, n_plans):
     """The reply must carry 'PLAN: <number>' (1..n_plans) and a one-line 'REASON: ...'. Returns {'ok', 'plan', 'reason', 'error'}."""
-    nums = [int(m.group(1)) for m in re.finditer(r'(?im)^\s*\**\s*PLAN\s*\**\s*[:=\-]\s*\**\s*(?:plan\s*)?#?\s*(\d+)', text)]
-    reason_m = re.search(r'(?im)^\s*\**\s*REASON\s*\**\s*[:=\-]\s*(.+?)\s*$', text)
-    reason = reason_m.group(1).strip() if reason_m else None
+    nums, reason, several = [], None, False
+    for line in text.splitlines():  # line by line, so a reply made of blank lines cannot make the matching expensive
+        line = line.strip()
+        if not line or len(line) > 5000:
+            continue
+        m = _PLAN_LINE.match(line) if len(line) <= 400 else None
+        if m:
+            nums.append(int(m.group(1)))
+            several = several or bool(_MORE_PLANS.match(m.group(2)))
+        elif reason is None:
+            rm = _REASON_LINE.match(line)
+            if rm:
+                reason = rm.group(1).strip()
     if not nums:
         return {'ok': False, 'plan': None, 'reason': reason, 'error': 'no PLAN line'}
     if len(set(nums)) > 1:
         return {'ok': False, 'plan': None, 'reason': reason, 'error': f'several different PLAN lines {sorted(set(nums))}'}
+    if several:
+        return {'ok': False, 'plan': None, 'reason': reason, 'error': 'the PLAN line names several plans (for example "PLAN: 4 or 7"): one number is required'}
     n = nums[0]
     if not 1 <= n <= n_plans:
         return {'ok': False, 'plan': None, 'reason': reason, 'error': f'plan {n} is not in 1..{n_plans}'}
@@ -473,8 +490,9 @@ def judge_one(pid, positions, recs, order, live, model, temperature=None, decks_
         return record(pid, 'judge', None, None, plan_number=None, reason=None, cost=None, **base), system, user
     text, usage, secs, model_used, extra = call_claude(system, user, model, max_tokens=max_tokens, temperature=temperature)
     parsed = parse_choice(text, len(shown))
-    if not parsed['ok'] and extra.get('stop_reason') == 'max_tokens':
-        parsed['error'] = f"{parsed['error']}; the reply was cut at max_tokens={max_tokens} (reasoning used it up): raise --max-tokens"
+    if extra.get('stop_reason') == 'max_tokens':  # a reply cut by the cap is never an intact answer, even when a PLAN line made it in: no choice is kept
+        parsed = {'ok': False, 'plan': None, 'reason': parsed['reason'], 'error': f"the reply was cut at max_tokens={max_tokens} (reasoning used it up): raise --max-tokens"
+                  + ('' if parsed['ok'] else f"; {parsed['error']}")}
     plan = shown[parsed['plan']] if parsed['ok'] else None
     r = record(pid, 'judge', plan['labels'] if plan else None, plan['end'] if plan else None, plan_number=plan['n'] if plan else None, shown_number=parsed['plan'],
                plan_key=plan['key'] if plan else None, reason=parsed['reason'], parse_error=parsed['error'], parse_warning=parsed.get('warning'), raw=text, seconds=secs,
@@ -484,8 +502,12 @@ def judge_one(pid, positions, recs, order, live, model, temperature=None, decks_
 
 # ---------------------------------------------------------------------------------------------------------------------------------- bots through pg_pos
 def run_pg_pos(bot, ids, seeds, recs, positions_path=DEFAULT_POSITIONS, decks_dir=DEFAULT_DECKS, bin_path=PG_POS_BIN):
-    """km3 / kx3 (any bot code pg_pos knows) on positions. pg_pos plays the bot's whole turn; the record keeps what it played (`plan_full`) and the same
-    plan in the judge's terms (`plan`: cut after the first chance step, nothing after an attack) with the listed plan's number."""
+    """km3 (any bot code of the form k<number> that pg_pos knows) on positions. pg_pos plays the bot's turn up to its first draw card or the end of the turn
+    (`pg_pos_cut`: 'first draw' | 'end of turn'); the record keeps what it played (`plan_full`) and the same plan in the judge's terms (`plan`: cut after the first
+    chance step, nothing after an attack) with the listed plan's number. Other step bots (kx3, the playout pilot) are NOT played by the frozen baseline executable."""
+    if not re.fullmatch(r'km?\d+', bot):
+        sys.exit(f"the frozen baseline executable (pg_pos) plays the minimax bots coded k<number> / km<number> (k3, km3, km1, ...), not {bot!r}: another step bot (kx3, "
+                 "the playout pilot) needs its own frozen executable and identity")
     rows = []
     pg_sha = file_sha256(bin_path)
     for pid in ids:
@@ -585,6 +607,14 @@ def _compact(obj):
     return json.dumps(obj, sort_keys=True, separators=(',', ':'), ensure_ascii=False)  # the form serde_json prints: no spaces, keys sorted, raw UTF-8
 
 
+def _sorted_energies(obj):
+    """A list of Energy types under the key `energies` is a multiset (which Energy a retreat pays or an attack discards): its order is not part of the action, so it is
+    sorted in the canonical label (the lister does the same, in plans/src/main.rs canon_label)."""
+    if isinstance(obj, dict) and isinstance(obj.get('energies'), list) and all(isinstance(e, str) for e in obj['energies']):
+        return {**obj, 'energies': sorted(obj['energies'])}
+    return obj
+
+
 def concrete_label(label):
     """One canonical concrete action label across packages: Name#<compact JSON, keys sorted>. A `Name#{json}` label is re-written in that form, so JSON key
     order and spacing never matter (its content must be valid JSON, else ValueError). A legacy `Name{field:value,...}` label is converted when every
@@ -592,8 +622,8 @@ def concrete_label(label):
     name, hash_, js = label.partition('#')
     if hash_ and re.fullmatch(r'[A-Za-z]\w*', name):
         try:
-            return f'{name}#{_compact(json.loads(js))}'
-        except ValueError:
+            return f'{name}#{_compact(_sorted_energies(json.loads(js)))}'
+        except (ValueError, RecursionError):
             raise ValueError(f'concrete label {label!r}: the part after # is not valid JSON') from None
     m = _LEGACY.match(label)
     if not m:
@@ -643,12 +673,22 @@ def match_plans(items, recs, positions_path=DEFAULT_POSITIONS, decks_dir=DEFAULT
 
 
 def normalize_full(labels):
-    """The canonical, comparable form of a COMPLETE move list (full-plan agreement): labels in the Name#JSON form, Place / Ability without the slot number, and
-    without a closing End the turn. Raises ValueError for a label that cannot be read."""
-    out = [_norm(concrete_label(l)) for l in labels]
+    """The canonical form of a COMPLETE move list (full-plan agreement): every label in the Name#JSON form (Energy lists sorted), without a closing End the turn.
+    Slots are kept. Raises ValueError for a label that cannot be read."""
+    out = [concrete_label(l) for l in labels]
     if out and out[-1] == 'EndTurn':
         out.pop()
     return out
+
+
+def full_match(row_labels, ref_labels):
+    """Do two COMPLETE move lists agree label by label, in the same order? `ref_labels` is the accepted (recorded) list: a reference Place / Ability label without
+    its slot number fits any slot, exactly as in the engine replay (label_matches); a label WITH a slot must match it. Order matters (the same plan reached by a
+    different order of moves is not full-plan agreement). Raises ValueError for a label that cannot be read."""
+    a, b = normalize_full(row_labels), normalize_full(ref_labels)
+    if len(a) != len(b):
+        return False
+    return all(x == y or (y.startswith(('Place:', 'Ability')) and '@' not in y and x.split('@')[0] == y) for x, y in zip(a, b))
 
 
 def label_roundtrip(recs, positions_path=DEFAULT_POSITIONS, decks_dir=DEFAULT_DECKS):
@@ -693,18 +733,30 @@ def fingerprint():
 
 # ---------------------------------------------------------------------------------------------------------------------------------- the formal comparison command
 def read_rows(paths):
-    """-> (rows, problems): one JSON value per non-blank line; a line that does not parse is a problem naming the file and line, never a crash."""
-    rows, problems = [], []
+    """-> (rows, problems, {file: sha256 of the bytes read}): one JSON value per non-blank line; a line that does not parse (or repeats a key in an object) is a
+    problem naming the file and line, never a crash. Each file is read once; the hash is of the bytes the rows came from."""
+    rows, problems, hashes = [], [], {}
+
+    def problem(detail):
+        problems.append({'kind': 'unreadable_row', 'position': None, 'bot': None, 'run': None, 'detail': detail})
+
     for fn in paths:
-        with open(fn, encoding='utf-8-sig') as f:
-            for i, line in enumerate(f, 1):
-                if not line.strip():
-                    continue
-                try:
-                    rows.append(json.loads(line))
-                except ValueError as e:
-                    problems.append({'kind': 'unreadable_row', 'position': None, 'bot': None, 'run': None, 'detail': f'{fn} line {i}: {e}'})
-    return rows, problems
+        with open(fn, 'rb') as f:
+            data = f.read()
+        hashes[fn] = hashlib.sha256(data).hexdigest()
+        try:
+            text = data.decode('utf-8-sig')
+        except UnicodeDecodeError as e:
+            problem(f'{fn} is not UTF-8 text: {e}')
+            continue
+        for i, line in enumerate(text.split('\n'), 1):
+            if not line.strip():
+                continue
+            try:
+                rows.append(json.loads(line, object_pairs_hook=formal._no_duplicate_keys))
+            except (ValueError, RecursionError) as e:
+                problem(f'{fn} line {i}: {e}')
+    return rows, problems, hashes
 
 
 def parse_seeds(text):
@@ -757,8 +809,34 @@ def print_analysis(report):
         print(f"diagnostic only (points outside the primary selection, descriptive, not part of any number above): {len(dx['points'])} point(s)")
 
 
+def card_database_path():
+    """The card database the prompt's card texts come from, found exactly as lib/card.py finds it (PDL_DB first)."""
+    here = os.path.join(REPO, 'lib')
+    for p in (os.environ.get('PDL_DB', ''), os.path.join(here, 'deckgym-database.json'), os.path.join(here, '..', 'deckgym-database.json'), 'deckgym-database.json'):
+        if p and os.path.exists(p):
+            return os.path.abspath(p)
+    return None
+
+
+def dir_sha256(path):
+    """One hash for a directory of files: the sha256 of the sorted (name, file hash) pairs."""
+    h = hashlib.sha256()
+    for fn in sorted(os.listdir(path)):
+        full = os.path.join(path, fn)
+        if os.path.isfile(full):
+            h.update(f'{fn}\0{file_sha256(full)}\n'.encode('utf-8'))
+    return h.hexdigest()
+
+
+def _write_report(path, report):
+    with open(path, 'w', encoding='utf-8') as f:
+        json.dump(report, f, indent=1)
+
+
 def run_compare(a):
-    """judge.py compare: the formal paired comparison. Exit 0 complete, 2 failed, 3 inconclusive (data problems); 1 = did not run (unreadable input, wrong executable)."""
+    """judge.py compare: the formal paired comparison. Exit 0 complete, 2 failed, 3 inconclusive (data problems); 1 = did not run (unreadable input, wrong
+    executable, internal error). A report written to --out is replaced at the start by a 'did_not_finish' stub, so a run that dies never leaves an older 'complete'
+    result at that path."""
     positions = load_positions(a.positions)
     ids = resolve_ids(a, positions)
     if not ids:
@@ -771,12 +849,28 @@ def run_compare(a):
             sys.exit(f'input file not found: {p}')
     if a.out and os.path.exists(a.out) and any(os.path.samefile(p, a.out) for p in inputs):
         sys.exit(f'--out {a.out} is one of the input files: the report would overwrite it')
+    if a.out:
+        _write_report(a.out, {'schema': formal.SCHEMA, 'status': 'did_not_finish', 'analysis': None,
+                              'problems': [{'kind': 'did_not_finish', 'position': None, 'bot': None, 'run': None, 'detail': 'the comparison started but never wrote its result: this file is not a result'}]})
+    try:
+        return _run_compare(a, positions, ids)
+    except (SystemExit, KeyboardInterrupt):
+        raise
+    except Exception as e:  # a defect or an input nobody foresaw: no result, said so in the report file, exit 1 (never a half result)
+        msg = f'{type(e).__name__}: {e}'
+        if a.out:
+            _write_report(a.out, {'schema': formal.SCHEMA, 'status': 'failed', 'analysis': None, 'problems': [{'kind': 'internal_error', 'position': None, 'bot': None, 'run': None, 'detail': msg}]})
+        print(f'COMPARISON DID NOT FINISH (internal error, no result): {msg}', file=sys.stderr)
+        return 1
+
+
+def _run_compare(a, positions, ids):
     try:
         references = formal.load_json(a.references)
         eligibility = formal.load_json(a.eligibility)
     except (OSError, ValueError) as e:
         sys.exit(f'cannot read the references / eligibility file: {e}')
-    rows, read_problems = read_rows(a.results)
+    rows, read_problems, results_sha = read_rows(a.results)
     seeds, seed_problems = parse_seeds(a.seeds)
     contrasts = parse_contrasts(a.contrasts)
     ident = frozen_identity()
@@ -791,6 +885,8 @@ def run_compare(a):
         experiment.append(f'--resamples {a.resamples} (< {analysis.MIN_FORMAL_RESAMPLES})')
     if a.world_seed != FROZEN['plan_world_seed'] or (a.max_plans is not None and a.max_plans != FROZEN['max_plans']) or a.compact_above != FROZEN['compact_above']:
         experiment.append('plan-list generation or compact threshold differs from the freeze')
+    if os.environ.get('PDL_DB'):
+        experiment.append('PDL_DB is set (the card texts may come from another database)')
     baseline_sha = ident['baseline']['binary_sha256'] if not a.allow_other_binaries else None
     if not a.allow_other_binaries:
         got = file_sha256(PLANS_BIN)
@@ -822,11 +918,12 @@ def run_compare(a):
                 rendered[k] = {'error': f'order {order!r}, prompt version {version!r}: {type(e).__name__}: {e}'}
         return rendered[k]
 
+    db = card_database_path()
     run_info = {'formal': not experiment, 'experiment_switches': experiment,
                 'freeze': {'tag': ident['tag'], 'fingerprint_now': fingerprint(), 'fingerprint_frozen': ident['fingerprint']},
                 'executables': {'plans_binary_sha256': file_sha256(PLANS_BIN), 'baseline_sha256_required': baseline_sha},
                 'inputs': {'positions_sha256': file_sha256(a.positions), 'references_sha256': file_sha256(a.references), 'eligibility_sha256': file_sha256(a.eligibility),
-                           'results_sha256': {p: file_sha256(p) for p in a.results}},
+                           'results_sha256': results_sha, 'decks_sha256': dir_sha256(a.decks), 'card_database': {'path': db, 'sha256': file_sha256(db) if db else None}},
                 'plan_list_sha256': {pid: plan_list_sha256(recs[pid]) for pid in ids},
                 'generation': {'world_seed': a.world_seed, 'limits': {k: recs[ids[0]]['limits'][k] for k in ('max_plans', 'max_nodes', 'max_steps')}},
                 'request': {'bots': a.bots, 'seeds': seeds, 'judge_repeats': a.judge_repeats, 'contrasts': a.contrasts, 'on_problem': a.on_problem,
@@ -836,27 +933,34 @@ def run_compare(a):
                                                  'list using such a label is AMBIGUOUS, and the judge is shown plans that look identical', 'positions': ambiguous}
     if experiment:
         print('EXPERIMENT RUN, not the formal result: ' + '; '.join(experiment), file=sys.stderr)
+    position_games = {i: positions[i].get('game') for i in ids}
     try:
         report = formal.compare(rows, ids, a.bots.split(','), seeds, a.judge_repeats, references, recs, lambda items, r: match_plans(items, r, a.positions, a.decks), eligibility,
-                                a.on_problem, not a.allow_unfrozen, baseline_sha, expect_judge, contrasts, a.min_games, a.resamples, normalize_full, run_info, seed_problems,
-                                read_problems)
+                                a.on_problem, not a.allow_unfrozen, baseline_sha, expect_judge, contrasts, a.min_games, a.resamples, full_match, run_info, seed_problems,
+                                read_problems, position_games)
     except formal.BatchFailed as e:
         report = e.report
         report.setdefault('run', run_info)
+        report.setdefault('formal', run_info['formal'])
         if a.out:
-            with open(a.out, 'w', encoding='utf-8') as f:
-                json.dump(report, f, indent=1)
+            _write_report(a.out, report)
         print(f'COMPARISON FAILED: {len(e.problems)} problem(s); no agreement is reported:', file=sys.stderr)
         formal.print_problems(e.problems)
         return formal.exit_code(report)
+    report.setdefault('run', run_info)
+    report.setdefault('formal', run_info['formal'])
     if a.out:
-        with open(a.out, 'w', encoding='utf-8') as f:
-            json.dump(report, f, indent=1)
+        _write_report(a.out, report)
     if report['status'] != 'complete':
         print(f'COMPARISON {report["status"].upper()}: {len(report["problems"])} problem(s); every expected primary row is listed in the report, no agreement is reported:', file=sys.stderr)
         formal.print_problems(report['problems'])
     else:
         print_analysis(report)
+        dp = (report.get('diagnostic_excluded') or {}).get('problems') or []
+        if dp:
+            print(f'{len(dp)} problem(s) at points outside the primary selection (they do not affect the numbers above):', file=sys.stderr)
+            formal.print_problems(dp)
+        print('FORMAL RESULT' if run_info['formal'] else 'EXPERIMENT RESULT (not the formal result: ' + '; '.join(experiment) + ')')
     return formal.exit_code(report)
 
 
@@ -920,8 +1024,8 @@ def main(argv=None):
     p.add_argument('--lenient', action='store_true', help='development only: list unresolved rows but do not fail (they are still never counted)')
     p = sub.add_parser('compare', help='the formal paired comparison: every expected row accounted for, or the batch fails / is inconclusive (formal.py)'); common(p)
     p.add_argument('--results', nargs='+', required=True)
-    p.add_argument('--bots', default='km3,kx3,judge')
-    p.add_argument('--seeds', default='1', help='seeds of the step bots (km3, kx3): one expected row per seed')
+    p.add_argument('--bots', default='km3,judge', help='the bots whose rows are compared: the judge and step bots coded k<number> (the frozen baseline executable plays no other)')
+    p.add_argument('--seeds', default='1', help='seeds of the step bots (km3): one expected row per seed')
     p.add_argument('--judge-repeats', type=int, default=1, help='judge rows per position (repeat indices 0..N-1)')
     p.add_argument('--references', required=True, help='JSON {position: [{"id": ..., "labels": [...]}]}: the accepted move lists of ALL points (filtered to the batch; see formal.py)')
     p.add_argument('--eligibility', required=True, help='JSON {"primary_ids": [...], "full_scope_ids": [...], "games": {position: game}, "excluded_reasons": {...}}: '
@@ -957,7 +1061,7 @@ def main(argv=None):
 
     if a.cmd == 'score':
         positions = load_positions(a.positions)
-        rows, row_problems = read_rows([a.results])
+        rows, row_problems, _ = read_rows([a.results])
         if row_problems or not rows or not all(isinstance(r, dict) and isinstance(r.get('position'), str) and isinstance(r.get('bot'), str) for r in rows):
             sys.exit(f'score: {a.results} has no rows, or a line that is not a JSON object with a text `position` and `bot` ' + ('; '.join(p['detail'] for p in row_problems[:3])))
         print('UNCHECKED development figure: score takes each row\'s plan_number as written (it does not check it against the plan list, the identity hashes or the prompt); '
