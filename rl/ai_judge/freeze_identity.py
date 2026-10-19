@@ -15,6 +15,7 @@ import judge  # noqa: E402
 
 HARNESS = 'rl/results/pause_games_decisions_2026-10-02/harness'
 SOURCES = ['rl/ai_judge/judge.py', 'rl/ai_judge/formal.py', 'rl/ai_judge/analysis.py', 'rl/ai_judge/validate_baseline.py', 'rl/ai_judge/freeze_identity.py', 'rl/ai_judge/plans/src/main.rs', 'rl/ai_judge/plans/Cargo.lock',
+           'rl/ai_judge/tests/test_formal.py', 'rl/ai_judge/tests/test_analysis.py',
            f'{HARNESS}/pgd_patch.py', f'{HARNESS}/dg_patch.py', f'{HARNESS}/pg_pos.rs']
 PLANS_BIN = judge.PLANS_BIN
 BASELINE_BIN = judge.PG_POS_BIN
@@ -47,6 +48,9 @@ def check(frozen):
     for p, h in frozen['source_sha256'].items():
         if cur['source_sha256'].get(p) != h:
             diffs.append(f'source changed since the freeze: {p}')
+    for p in SOURCES:
+        if p not in frozen['source_sha256']:
+            diffs.append(f'source not recorded in FROZEN.json: {p}')
     if cur['engine_tree'] != frozen['baseline']['engine_tree']:
         diffs.append(f"engine tree {cur['engine_tree'][:12]} differs from the frozen baseline's {frozen['baseline']['engine_tree'][:12]}")
     if os.path.exists(PLANS_BIN) and sha(PLANS_BIN) != frozen['plans_binary_sha256']:

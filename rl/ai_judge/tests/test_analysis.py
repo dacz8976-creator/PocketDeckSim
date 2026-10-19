@@ -13,30 +13,46 @@ RES = 3000  # resamples in the tests (the formal default is 20,000)
 
 
 def make_rows(spec):
-    """spec: {game: [ {'judge': [agree per repeat], 'km3': [agree per seed]}, ... one dict per decision ]} -> (report rows, {position: game})."""
-    rows, games = [], {}
+    """spec: {game: [ decision, ... ]}, a decision = {'judge': [agree per repeat], 'km3': [agree per seed], 'full': {bot: [full-plan agree or None per run]} (optional)}.
+    -> (report rows, eligibility file for ALL the points: every point primary, those with a 'full' entry also full-scope)."""
+    rows, games, primary, full_ids = [], {}, [], []
     for g, decisions in spec.items():
         for k, d in enumerate(decisions):
             pid = f'{g}-d{k}'
             games[pid] = g
-            for bot, agrees in d.items():
-                for run, a in enumerate(agrees, start=(0 if bot == 'judge' else 1)):
-                    rows.append({'position': pid, 'game': g, 'bot': bot, 'run': run, 'state': 'ok', 'plan_number': 1 if a else 2, 'accepted': ['r'] if a else [], 'agrees': bool(a)})
-    return rows, games
+            primary.append(pid)
+            if 'full' in d:
+                full_ids.append(pid)
+            for bot in ('judge', 'km3'):
+                if bot not in d:
+                    continue
+                for i, a in enumerate(d[bot]):
+                    fa = d['full'][bot][i] if 'full' in d else a
+                    rows.append({'position': pid, 'game': g, 'bot': bot, 'run': i + (0 if bot == 'judge' else 1), 'state': 'ok', 'plan_number': 1 if a else 2,
+                                 'accepted': ['r'] if a else [], 'agrees': bool(a), 'full_scope': pid in full_ids, 'full_agrees': fa})
+    return rows, {'primary_ids': primary, 'full_scope_ids': full_ids, 'games': games}
 
 
-def elig(spec, excluded=()):
-    return {'eligible_games': [g for g in spec if g not in dict(excluded)], 'excluded_games': [{'game': g, 'reason': r} for g, r in excluded]}
+def analyse(spec, judge_repeats=1, **kw):
+    rows, elig = make_rows(spec)
+    return analysis.analyse(rows, elig, ['km3', 'judge'], judge_repeats, resamples=kw.pop('resamples', RES), **kw)
 
 
-def analyse(spec, judge_repeats=1, excluded=(), **kw):
-    rows, games = make_rows(spec)
-    return analysis.analyse(rows, games, elig(spec, excluded), ['km3', 'judge'], judge_repeats, resamples=kw.pop('resamples', RES), **kw)
+def games_of(n, per_game, judge, km3, full=None):
+    """n games, `per_game` decisions each; judge(g, k) / km3(g, k) -> list of agreement flags (repeats / seeds); full(g, k) -> {bot: [...]} or None."""
+    out = {}
+    for g in range(n):
+        out[f'g{g:02d}'] = []
+        for k in range(per_game):
+            d = {'judge': judge(g, k), 'km3': km3(g, k)}
+            if full is not None and full(g, k) is not None:
+                d['full'] = full(g, k)
+            out[f'g{g:02d}'].append(d)
+    return out
 
 
-def games_of(n, per_game, judge, km3):
-    """n games, `per_game` decisions each; judge(g, k) / km3(g, k) -> list of agreement flags (repeats / seeds)."""
-    return {f'g{g:02d}': [{'judge': judge(g, k), 'km3': km3(g, k)} for k in range(per_game)] for g in range(n)}
+def prefix(a, i=0):
+    return a['prefix']['contrasts'][i]
 
 
 class Estimates(unittest.TestCase):
@@ -44,60 +60,68 @@ class Estimates(unittest.TestCase):
         # game a has 1 decision (agrees), game b has 3 (none agree): the rate is 1/4, not the mean of the game means (0.5)
         spec = {'a': [{'judge': [1], 'km3': [0]}], 'b': [{'judge': [0], 'km3': [0]}] * 3}
         a = analyse(spec, min_games=1)
-        self.assertAlmostEqual(a['rates']['judge']['estimate'], 0.25, places=5)
-        self.assertAlmostEqual(a['contrasts'][0]['estimate'], 0.25, places=5)
-        self.assertEqual(a['population']['decisions_per_game'], {'a': 1, 'b': 3})
+        self.assertAlmostEqual(a['prefix']['rates']['judge']['estimate'], 0.25, places=5)
+        self.assertAlmostEqual(prefix(a)['estimate'], 0.25, places=5)
+        self.assertEqual(a['prefix']['population']['decisions_per_game'], {'a': 1, 'b': 3})
 
     def test_a_unanimous_advantage_is_a_direction_and_says_why(self):
         a = analyse(games_of(12, 2, lambda g, k: [1], lambda g, k: [0]))
-        c = a['contrasts'][0]
+        c = prefix(a)
         self.assertEqual((c['estimate'], c['ci_low'], c['ci_high']), (1.0, 1.0, 1.0))
         self.assertEqual((c['verdict'], c['sign_flip'], c['sign_flip_p']), ('judge higher', 'exact', round(2 / 4096, 6)))
         self.assertIn('every game gave the same difference', c['reason'])
         self.assertEqual(c['discordant'], {'both': 0, 'judge_only': 24, 'km3_only': 0, 'neither': 0})
 
+    def test_the_same_difference_note_needs_every_game_to_agree_not_a_collapsed_interval(self):
+        # games differ (differences 1,1,...,0): a collapsed interval (a single resample) must not say 'every game gave the same difference'
+        a = analyse(games_of(12, 1, lambda g, k: [1 if g < 8 else 0], lambda g, k: [0]), resamples=1)
+        self.assertNotIn('every game gave the same difference', prefix(a)['reason'])
+
     def test_no_difference_is_inconclusive(self):
-        a = analyse(games_of(12, 2, lambda g, k: [1], lambda g, k: [1]))
-        c = a['contrasts'][0]
+        c = prefix(analyse(games_of(12, 2, lambda g, k: [1], lambda g, k: [1])))
         self.assertEqual((c['estimate'], c['verdict']), (0.0, 'inconclusive'))
         self.assertIn('includes 0', c['reason'])
 
     def test_an_interval_that_includes_zero_is_inconclusive_even_when_one_bot_leads(self):
-        # judge better in 7 games, km3 in 5: the interval includes 0
-        a = analyse(games_of(12, 2, lambda g, k: [1 if g < 7 else 0], lambda g, k: [0 if g < 7 else 1]))
-        c = a['contrasts'][0]
+        c = prefix(analyse(games_of(12, 2, lambda g, k: [1 if g < 7 else 0], lambda g, k: [0 if g < 7 else 1])))
         self.assertAlmostEqual(c['estimate'], 4 / 24, places=5)  # +1 on 14 decisions, -1 on 10
         self.assertLess(c['ci_low'], 0)
         self.assertGreater(c['ci_high'], 0)
         self.assertEqual(c['verdict'], 'inconclusive')
 
     def test_the_direction_works_both_ways(self):
-        a = analyse(games_of(12, 2, lambda g, k: [0], lambda g, k: [1]))
-        self.assertEqual(a['contrasts'][0]['verdict'], 'km3 higher')
+        self.assertEqual(prefix(analyse(games_of(12, 2, lambda g, k: [0], lambda g, k: [1])))['verdict'], 'km3 higher')
 
-    def test_too_few_games_is_inconclusive_whatever_the_effect(self):
-        a = analyse(games_of(5, 4, lambda g, k: [1], lambda g, k: [0]), min_games=analysis.MIN_GAMES)
-        c = a['contrasts'][0]
+    def test_too_few_games_is_inconclusive_whatever_the_effect_and_exactly_min_games_is_enough(self):
+        c = prefix(analyse(games_of(5, 4, lambda g, k: [1], lambda g, k: [0])))
         self.assertEqual(c['verdict'], 'inconclusive')
         self.assertIn('5 games < 10', c['reason'])
+        self.assertEqual(prefix(analyse(games_of(10, 2, lambda g, k: [1], lambda g, k: [0])))['verdict'], 'judge higher')
+        self.assertEqual(prefix(analyse(games_of(9, 2, lambda g, k: [1], lambda g, k: [0])))['verdict'], 'inconclusive')
 
     def test_a_direction_needs_the_sign_flip_test_to_agree(self):
-        # the verdict function on numbers where the interval excludes 0 but the randomisation test over games does not support it
         v, why = analysis.verdict('judge', 'km3', 0.2, 0.01, 0.4, 0.2, 12)
         self.assertEqual(v, 'inconclusive')
         self.assertIn('sign-flip', why)
         self.assertEqual(analysis.verdict('judge', 'km3', 0.2, 0.01, 0.4, 0.01, 12)[0], 'judge higher')
         self.assertEqual(analysis.verdict('judge', 'km3', -0.2, -0.4, -0.01, 0.01, 12)[0], 'km3 higher')
+        # an interval that excludes 0 with p between 0.05 and 0.10 is not a direction
+        self.assertEqual(analysis.verdict('judge', 'km3', 0.2, 0.01, 0.4, 0.07, 12)[0], 'inconclusive')
+        # an interval through zero is inconclusive even when the sign-flip test is tiny
+        self.assertEqual(analysis.verdict('judge', 'km3', 0.2, -0.01, 0.4, 0.001, 12)[0], 'inconclusive')
+
+    def test_an_unusable_interval_is_inconclusive(self):
+        self.assertEqual(analysis.verdict('judge', 'km3', 0.2, None, None, 0.01, 12)[0], 'inconclusive')
 
 
 class Clustering(unittest.TestCase):
     def test_correlated_decisions_in_one_game_widen_the_interval(self):
-        # 10 games x 4 decisions, all-or-nothing within a game: 6 of 10 games agree; a naive position-level bootstrap would treat the 40 decisions as independent
+        # 10 games x 4 decisions, all-or-nothing within a game: 6 of 10 games agree; a naive point-level bootstrap would treat the 40 decisions as independent
         spec = games_of(10, 4, lambda g, k: [1 if g < 6 else 0], lambda g, k: [0])
         a = analyse(spec, resamples=4000)
-        c = a['rates']['judge']
+        c = a['prefix']['rates']['judge']
         clustered = c['ci_high'] - c['ci_low']
-        rows, games = make_rows(spec)
+        rows, _ = make_rows(spec)
         rng = random.Random(1)
         vals = [1.0 if r['agrees'] else 0.0 for r in rows if r['bot'] == 'judge']
         naive = sorted(sum(vals[int(rng.random() * 40)] for _ in range(40)) / 40 for _ in range(4000))
@@ -105,93 +129,187 @@ class Clustering(unittest.TestCase):
         self.assertGreater(clustered, 1.6 * (hi - lo))
 
     def test_the_interval_matches_the_binomial_for_one_decision_per_game(self):
-        # 20 games, 10 agree, one decision each: the game bootstrap is the ordinary bootstrap of a proportion; Binomial(20, 0.5)/20 has 2.5% / 97.5% points near 0.30 / 0.70
-        a = analyse(games_of(20, 1, lambda g, k: [1 if g < 10 else 0], lambda g, k: [0]), resamples=6000)
-        r = a['rates']['judge']
+        # 20 games, 10 agree, one decision each: Binomial(20, 0.5)/20 has 2.5% / 97.5% points near 0.30 / 0.70
+        r = analyse(games_of(20, 1, lambda g, k: [1 if g < 10 else 0], lambda g, k: [0]), resamples=6000)['prefix']['rates']['judge']
         self.assertAlmostEqual(r['estimate'], 0.5, places=5)
         self.assertTrue(0.25 <= r['ci_low'] <= 0.35, r)
         self.assertTrue(0.65 <= r['ci_high'] <= 0.75, r)
 
+    def test_unequal_game_sizes_use_the_ratio_bootstrap_not_the_mean_of_game_means(self):
+        # one game with 12 decisions (9 favourable), eleven with 1 (3 favourable): the exact ratio bootstrap gives this golden interval (checked by enumeration)
+        counts = [12] + [1] * 11
+        sums = [9.0] + [1.0] * 3 + [0.0] * 8
+        point, lo, hi = analysis.game_bootstrap({'diff': (sums, counts)}, resamples=20000)['diff']
+        self.assertEqual((round(point, 3), round(lo, 3), round(hi, 3)), (0.522, 0.083, 0.689))
+
     def test_the_interval_function_takes_the_right_order_statistics(self):
         draws = [i / 1000 for i in range(1000)]
         self.assertEqual(analysis.percentile_interval(draws), (0.025, 0.974))  # floor(25) and ceil(975) - 1
+        self.assertEqual(analysis.percentile_interval(list(range(1500)))[0], 37)  # 0.025 * 1500 = 37.5: floored
+        self.assertEqual(analysis.percentile_interval(list(range(20000))), (500, 19499))
+        with self.assertRaises(ValueError):
+            analysis.percentile_interval([])
+
+    def test_the_resample_count_is_honoured_and_validated(self):
+        calls = []
+
+        class Counting(random.Random):
+            def random(self):
+                calls.append(1)
+                return super().random()
+        orig = analysis.random.Random
+        analysis.random.Random = Counting
+        try:
+            analysis.game_bootstrap({'x': ([1.0] * 12, [1] * 12)}, resamples=2500)
+        finally:
+            analysis.random.Random = orig
+        self.assertEqual(len(calls), 2500 * 12)  # one draw per game per resample
+        for bad in (0, -5, 1.5, True, None):
+            with self.assertRaises(ValueError, msg=repr(bad)):
+                analysis.game_bootstrap({'x': ([1.0] * 12, [1] * 12)}, resamples=bad)
+
+    def test_all_series_share_one_set_of_draws(self):
+        # a rate and a difference built from the same data must move together: a = rate, d = a - 0 is the same series, so the same interval
+        s = [1.0, 0.0, 1.0, 1.0, 0.0, 1.0, 1.0, 1.0, 0.0, 1.0, 1.0, 0.0]
+        est = analysis.game_bootstrap({'rate': (s, [1] * 12), 'diff': (list(s), [1] * 12)}, resamples=2000)
+        self.assertEqual(est['rate'], est['diff'])
 
 
 class RepeatsAreASensitivityEstimateNotExtraSamples(unittest.TestCase):
     def test_the_primary_result_is_the_one_predefined_call(self):
         # repeat 0 is wrong everywhere, repeats 1 and 2 are right: the primary result is repeat 0, whatever the others did
-        spec = games_of(12, 2, lambda g, k: [0, 1, 1], lambda g, k: [1])
-        a = analyse(spec, judge_repeats=3)
-        self.assertAlmostEqual(a['rates']['judge']['estimate'], 0.0, places=5)
-        self.assertEqual(a['contrasts'][0]['verdict'], 'km3 higher')
-        s = a['sensitivity']
-        self.assertAlmostEqual(s['judge_rate']['estimate'], 2 / 3, places=5)
-        self.assertEqual(a['population']['n_decisions'], 24)  # a decision counts once, not once per repeat
+        a = analyse(games_of(12, 2, lambda g, k: [0, 1, 1], lambda g, k: [1]), judge_repeats=3)
+        self.assertAlmostEqual(a['prefix']['rates']['judge']['estimate'], 0.0, places=5)
+        self.assertEqual(prefix(a)['verdict'], 'km3 higher')
+        self.assertAlmostEqual(a['prefix']['sensitivity']['judge_rate']['estimate'], 2 / 3, places=5)
+        self.assertEqual(a['prefix']['population']['n_decisions'], 24)  # a decision counts once, not once per repeat
         # and the other way round: the better repeat is not picked up either
-        spec = games_of(12, 2, lambda g, k: [1, 0, 0], lambda g, k: [0])
-        b = analyse(spec, judge_repeats=3)
-        self.assertAlmostEqual(b['rates']['judge']['estimate'], 1.0, places=5)
-        self.assertAlmostEqual(b['sensitivity']['judge_rate']['estimate'], 1 / 3, places=5)
+        b = analyse(games_of(12, 2, lambda g, k: [1, 0, 0], lambda g, k: [0]), judge_repeats=3)
+        self.assertAlmostEqual(b['prefix']['rates']['judge']['estimate'], 1.0, places=5)
+        self.assertAlmostEqual(b['prefix']['sensitivity']['judge_rate']['estimate'], 1 / 3, places=5)
 
-    def test_the_sensitivity_estimate_is_reported_apart_and_with_the_repeat_consistency(self):
+    def test_the_sensitivity_estimate_is_reported_apart_with_no_verdict_and_the_repeat_consistency(self):
         spec = games_of(12, 2, lambda g, k: [1, 1, 0] if k == 0 else [1, 1, 1], lambda g, k: [0])
-        a = analyse(spec, judge_repeats=3)
-        s = a['sensitivity']
+        s = analyse(spec, judge_repeats=3)['prefix']['sensitivity']
         self.assertEqual([c['a'] for c in s['contrasts']], ['judge'])
+        self.assertNotIn('verdict', s['contrasts'][0])  # the primary contrast is the only one that draws a direction
+        self.assertAlmostEqual(s['contrasts'][0]['estimate'], 5 / 6, places=5)  # the contrast uses the repeat mean, not the primary call (1.0)
         rc = s['repeat_consistency']
         self.assertEqual(rc['of_decisions'], 24)
         self.assertEqual(rc['decisions_with_the_same_plan_in_every_repeat'], 12)  # plan numbers: [1,1,2] differs, [1,1,1] is the same
         self.assertAlmostEqual(rc['pairwise_same_plan'], (12 * 1 + 12 * 3) / 72, places=5)
-        self.assertIsNone(analyse(spec, judge_repeats=1)['sensitivity'])  # one call per decision: nothing to report apart
+        self.assertIsNone(analyse(spec, judge_repeats=1)['prefix']['sensitivity'])  # one call per decision: nothing to report apart
+
+    def test_a_contrast_with_the_judge_second_gets_its_sensitivity_version_too(self):
+        spec = games_of(12, 1, lambda g, k: [1, 0], lambda g, k: [1])
+        s = analyse(spec, judge_repeats=2, contrasts=[('km3', 'judge')])['prefix']['sensitivity']
+        self.assertEqual([(c['a'], c['b']) for c in s['contrasts']], [('km3', 'judge')])
+        self.assertAlmostEqual(s['contrasts'][0]['estimate'], 0.5, places=5)
 
     def test_a_step_bots_value_is_the_mean_over_all_its_predefined_seeds(self):
-        spec = games_of(12, 1, lambda g, k: [1], lambda g, k: [1, 0])  # km3: seed 1 agrees, seed 2 does not
-        a = analyse(spec)
-        self.assertAlmostEqual(a['rates']['km3']['estimate'], 0.5, places=5)
-        self.assertNotIn('discordant', a['contrasts'][0])  # fractional values: no 2x2 table
+        a = analyse(games_of(12, 1, lambda g, k: [1], lambda g, k: [1, 0]))  # km3: seed 1 agrees, seed 2 does not
+        self.assertAlmostEqual(a['prefix']['rates']['km3']['estimate'], 0.5, places=5)
+        self.assertNotIn('discordant', prefix(a))  # fractional values: no 2x2 table
 
     def test_a_missing_primary_call_is_an_error_not_a_silent_fallback(self):
-        spec = games_of(12, 1, lambda g, k: [1], lambda g, k: [0])
-        rows, games = make_rows(spec)
-        rows = [r for r in rows if not (r['bot'] == 'judge' and r['position'] == 'g00-d0')]
+        rows, elig = make_rows(games_of(12, 1, lambda g, k: [1], lambda g, k: [0]))
         with self.assertRaises(ValueError):
-            analysis.analyse(rows, games, elig(spec), ['km3', 'judge'], 1, resamples=50)
-        # a judge decision that has repeats but no repeat 0 is refused too
-        rows, games = make_rows(games_of(12, 1, lambda g, k: [1, 1], lambda g, k: [0]))
-        rows = [r for r in rows if not (r['bot'] == 'judge' and r['run'] == 0 and r['position'] == 'g00-d0')]
-        with self.assertRaises(ValueError):
-            analysis.analyse(rows, games, elig(spec), ['km3', 'judge'], 2, resamples=50)
+            analysis.analyse([r for r in rows if not (r['bot'] == 'judge' and r['position'] == 'g00-d0')], elig, ['km3', 'judge'], 1, resamples=50)
+        rows, elig = make_rows(games_of(12, 1, lambda g, k: [1, 1], lambda g, k: [0]))
+        with self.assertRaises(ValueError):  # a judge decision that has repeats but no repeat 0
+            analysis.analyse([r for r in rows if not (r['bot'] == 'judge' and r['run'] == 0 and r['position'] == 'g00-d0')], elig, ['km3', 'judge'], 2, resamples=50)
+
+    def test_contrasts_must_name_two_different_bots_of_the_batch(self):
+        rows, elig = make_rows(games_of(12, 1, lambda g, k: [1], lambda g, k: [0]))
+        for bad in ([('judge', 'nobody')], [('judge', 'judge')], [('km3', 'judge'), ('x', 'y')]):
+            with self.assertRaises(ValueError):
+                analysis.analyse(rows, elig, ['km3', 'judge'], 1, contrasts=bad, resamples=50)
 
 
-class Population(unittest.TestCase):
-    def test_an_excluded_game_is_named_with_its_reason_and_changes_the_estimates(self):
-        spec = games_of(12, 1, lambda g, k: [1 if g != 11 else 0], lambda g, k: [0])
-        with_ex = analyse(spec, excluded=[('g11', 'synthetic exposure')])
-        without = analyse(spec)
-        self.assertEqual(with_ex['population']['excluded_games'], [{'game': 'g11', 'reason': 'synthetic exposure', 'n_decisions': 1}])
-        self.assertEqual(with_ex['population']['n_games'], 11)
-        self.assertAlmostEqual(with_ex['rates']['judge']['estimate'], 1.0, places=5)
-        self.assertAlmostEqual(without['rates']['judge']['estimate'], 11 / 12, places=5)
+class SelectionAndScopes(unittest.TestCase):
+    def full(self, g, k):
+        return {'judge': [1], 'km3': [0]} if k == 0 else None  # the first decision of each game is full-scope: the judge's complete plan agrees, km3's does not
 
-    def test_the_eligibility_block_is_checked_for_shape(self):
-        ok = {'eligible_games': ['a', 'b'], 'excluded_games': [{'game': 'c', 'reason': 'exposure'}]}
-        self.assertEqual(analysis.check_eligibility(ok), [])
-        for bad in (None, [], {}, {'eligible_games': []}, {'eligible_games': ['a', 'a']}, {'eligible_games': ['a'], 'excluded_games': [{'game': 'a', 'reason': 'x'}]},
-                    {'eligible_games': ['a'], 'excluded_games': [{'game': 'c'}]}, {'eligible_games': ['a'], 'excluded_games': [{'game': 'c', 'reason': '  '}]},
-                    {'eligible_games': ['a'], 'excluded_games': 'c'}, {'eligible_games': ['a'], 'excluded_games': [{'game': 'c', 'reason': 'x'}, {'game': 'c', 'reason': 'y'}]}):
-            self.assertTrue(analysis.check_eligibility(bad), bad)
+    def test_analyse_refuses_rows_of_points_outside_the_primary_selection(self):
+        rows, elig = make_rows(games_of(12, 2, lambda g, k: [1], lambda g, k: [0]))
+        rows.append({**rows[0], 'position': 'stranger', 'game': 'gX'})
+        with self.assertRaises(ValueError) as cm:
+            analysis.analyse(rows, elig, ['km3', 'judge'], 1, resamples=50)
+        self.assertIn('outside the primary selection', str(cm.exception))
 
-    def test_population_problems_name_each_failure_kind(self):
+    def test_a_point_outside_the_selection_changes_no_primary_number_even_when_its_rows_are_extreme(self):
+        spec = games_of(12, 2, lambda g, k: [1 if (g + k) % 3 else 0], lambda g, k: [1 if (g * k) % 2 else 0])
+        rows, elig = make_rows(spec)
+        base = analysis.analyse(rows, elig, ['km3', 'judge'], 1, resamples=500)
+        # the same selection, plus a whole game of unselected rows that all agree for the judge and none for km3: handing them to analyse is refused, and filtering
+        # them out (the caller's job) leaves every primary number identical
+        extra = [{**r, 'position': r['position'] + 'x', 'game': 'gX', 'agrees': r['bot'] == 'judge', 'full_agrees': r['bot'] == 'judge'} for r in rows[:8]]
+        again = analysis.analyse([r for r in rows + extra if r['position'] in set(elig['primary_ids'])], elig, ['km3', 'judge'], 1, resamples=500)
+        self.assertEqual(base, again)
+
+    def test_full_plan_agreement_is_a_separate_block_over_the_full_scope_subset_only(self):
+        spec = games_of(12, 2, lambda g, k: [1], lambda g, k: [0], full=self.full)
+        a = analyse(spec)
+        self.assertEqual(a['prefix']['population']['n_decisions'], 24)
+        self.assertEqual(a['full_scope']['population']['n_decisions'], 12)  # the first decision of each game
+        self.assertAlmostEqual(a['full_scope']['rates']['judge']['estimate'], 1.0, places=5)
+        self.assertAlmostEqual(a['full_scope']['rates']['km3']['estimate'], 0.0, places=5)
+        self.assertEqual(a['full_scope']['contrasts'][0]['verdict'], 'judge higher')
+        self.assertIsNone(analyse(games_of(12, 2, lambda g, k: [1], lambda g, k: [0]))['full_scope'])  # no full-scope subset: no block
+
+    def test_a_judge_plan_that_stops_at_a_chance_event_is_not_comparable_and_is_counted_not_dropped(self):
+        def full(g, k):
+            return {'judge': [None if g < 4 else 1], 'km3': [1]} if k == 0 else None
+        a = analyse(games_of(12, 2, lambda g, k: [1], lambda g, k: [0], full=full))
+        f = a['full_scope']
+        self.assertEqual(f['not_comparable']['judge'], [f'g{g:02d}-d0' for g in range(4)])
+        self.assertEqual(f['not_comparable']['km3'], [])
+        self.assertEqual(f['rates']['judge']['n_decisions'], 8)
+        c = f['contrasts'][0]
+        self.assertEqual((c['n_decisions'], c['n_pairs_dropped']), (8, 4))  # the pairs without a comparable judge value are named, not silently gone
+        self.assertEqual(f['rates']['km3']['n_decisions'], 12)
+
+    def test_the_full_scope_block_never_fails_the_batch_but_says_inconclusive_with_too_few_games(self):
+        def full(g, k):
+            return {'judge': [1], 'km3': [0]} if (k == 0 and g < 3) else None
+        a = analyse(games_of(12, 2, lambda g, k: [1], lambda g, k: [0], full=full))
+        c = a['full_scope']['contrasts'][0]
+        self.assertEqual(c['verdict'], 'inconclusive')
+        self.assertIn('3 games < 10', c['reason'])
+
+    def test_the_diagnostic_block_is_descriptive_only(self):
+        rows, elig = make_rows(games_of(2, 2, lambda g, k: [1 if k == 0 else 0], lambda g, k: [0]))
+        ids = elig['primary_ids']
+        d = analysis.diagnostic_block(rows, ids, {ids[0]: 'developer exposure (synthetic)'}, ['km3', 'judge'], 1)
+        self.assertEqual(d['per_bot']['judge'], {'decisions_resolved': 4, 'agreement_sum': 2.0})
+        self.assertEqual(d['points'][0], {'position': ids[0], 'reason': 'developer exposure (synthetic)'})
+        self.assertEqual(set(d), {'what', 'points', 'per_bot'})  # counts only: no interval, no contrast, no verdict field
+        self.assertEqual(set(d['per_bot']['judge']), {'decisions_resolved', 'agreement_sum'})
+
+    def test_the_eligibility_file_is_checked_for_shape(self):
+        ok = {'primary_ids': ['a', 'b'], 'full_scope_ids': ['a'], 'games': {'a': 'g1', 'b': 'g2'}, 'excluded_reasons': {'c': 'exposure'}}
+        self.assertEqual(analysis.eligibility_shape_problems(ok), [])
+        self.assertEqual(analysis.eligibility_shape_problems({**ok, 'full_scope_ids': []}), [])
+        bad_cases = [None, [], {}, {**ok, 'primary_ids': []}, {**ok, 'primary_ids': ['a', 'a']}, {**ok, 'full_scope_ids': ['z']}, {**ok, 'games': ['g']},
+                     {**ok, 'games': {'a': ''}}, {**ok, 'excluded_reasons': {'c': '  '}}, {**ok, 'excluded_reasons': {'a': 'x'}}, {**ok, 'primary_ids': 'a'}]
+        for bad in bad_cases:
+            self.assertTrue(analysis.eligibility_shape_problems(bad), bad)
+
+    def test_eligibility_problems_name_each_failure_kind(self):
         ids = ['p1', 'p2', 'p3']
-        games = {'p1': 'a', 'p2': 'b', 'p3': 'c'}
-        elig_ok = {'eligible_games': ['a', 'b', 'c']}
-        kinds = lambda **kw: sorted(p['kind'] for p in analysis.population_problems(**kw))
-        self.assertEqual(kinds(ids=ids, games=games, eligibility=elig_ok, min_games=3), [])
-        self.assertEqual(kinds(ids=ids, games=games, eligibility=None), ['no_eligibility'])
-        self.assertEqual(kinds(ids=ids, games={**games, 'p3': None}, eligibility=elig_ok, min_games=1), ['eligible_game_uncovered', 'no_game'])
-        self.assertEqual(kinds(ids=ids, games=games, eligibility={'eligible_games': ['a', 'b']}, min_games=1), ['game_not_listed'])
-        self.assertEqual(kinds(ids=ids, games=games, eligibility={'eligible_games': ['a', 'b', 'c', 'd']}, min_games=1), ['eligible_game_uncovered'])
-        self.assertEqual(kinds(ids=ids, games=games, eligibility=elig_ok, min_games=4), ['too_few_games'])
+        refs = {'p1': [1], 'p2': [1], 'p3': [1], 'p4': 'junk never read'}
+        ok = {'primary_ids': ['p1', 'p2'], 'full_scope_ids': [], 'games': {'p1': 'a', 'p2': 'b', 'p3': 'c'}}
+        kinds = lambda **kw: sorted(p['kind'] for p in analysis.eligibility_problems(**kw))
+        self.assertEqual(kinds(ids=ids, references=refs, e=ok, min_games=2), [])
+        self.assertEqual(kinds(ids=ids, references=refs, e=None), ['no_eligibility'])
+        self.assertEqual(kinds(ids=ids, references=refs, e={**ok, 'primary_ids': ['p1', 'p9']}, min_games=1), ['primary_not_in_batch'])
+        self.assertEqual(kinds(ids=ids, references=refs, e={**ok, 'games': {'p1': 'a'}}, min_games=1), ['no_game'])
+        self.assertEqual(kinds(ids=ids, references={'p1': [1]}, e=ok, min_games=1), ['reference_missing'])
+        self.assertEqual(kinds(ids=ids, references={**refs, 'p2': []}, e=ok, min_games=1), ['reference_missing'])
+        self.assertEqual(kinds(ids=ids, references=refs, e=ok, min_games=3), ['too_few_games'])
+        self.assertEqual(set(kinds(ids=ids, references=refs, e={'primary_ids': 'p1'})), {'eligibility_malformed'})
+        # two selected points in ONE game are one cluster
+        self.assertEqual(kinds(ids=ids, references=refs, e={**ok, 'games': {'p1': 'a', 'p2': 'a'}}, min_games=2), ['too_few_games'])
 
 
 class Reproducibility(unittest.TestCase):
@@ -201,6 +319,8 @@ class Reproducibility(unittest.TestCase):
         self.assertEqual(a, b)
         self.assertEqual(a['method']['seed'], analysis.SEED)
         self.assertEqual(analyse(spec, seed=7)['method']['seed'], 7)  # the seed used is part of the report
+        self.assertEqual(a['method']['bots'], ['km3', 'judge'])
+        self.assertEqual((a['method']['judge_repeats'], a['method']['contrasts']), (1, ['judge:km3']))
 
     def test_sign_flip_is_exact_for_small_samples_and_seeded_beyond(self):
         self.assertEqual(analysis.sign_flip_p([1.0, 1.0, 1.0]), (0.25, 'exact'))  # 2 of 8 sign patterns reach |sum| = 3
@@ -209,6 +329,7 @@ class Reproducibility(unittest.TestCase):
         p, how = analysis.sign_flip_p([1.0] * 17)
         self.assertEqual(how, 'monte-carlo')
         self.assertLess(p, 0.001)
+        self.assertGreater(analysis.sign_flip_p([1.0] * 30)[0], 0.0)  # the +1: a Monte Carlo p is never exactly 0
         self.assertEqual(analysis.sign_flip_p([1.0] * 17), (p, how))  # seeded
 
 

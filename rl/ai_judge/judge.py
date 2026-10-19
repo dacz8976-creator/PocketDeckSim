@@ -111,6 +111,9 @@ def resolve_ids(args, positions):
     missing = [i for i in ids if i not in positions]
     if missing:
         sys.exit(f'unknown position ids: {missing[:5]}')
+    dup = sorted({i for i in ids if ids.count(i) > 1})
+    if dup:
+        sys.exit(f'position ids named more than once: {dup[:5]} (a repeated id would make duplicate rows, and paid judge calls, for the same decision)')
     return ids
 
 
@@ -462,7 +465,8 @@ def judge_one(pid, positions, recs, order, live, model, temperature=None, decks_
               and max_tokens == FROZEN['max_tokens'] and temperature == FROZEN['temperature'] and not rec['capped']
               and rec.get('world_seed') == FROZEN['plan_world_seed']
               and rec.get('limits') == {k: FROZEN[k] for k in ('max_plans', 'max_nodes', 'max_steps')})
-    base = dict(order=order, n_plans=len(shown), capped=rec['capped'], total_plans_found=rec['total_found'], model=model, prompt_tokens_estimate=est, dry_run=not live,
+    base = dict(order=order, n_plans=len(shown), capped=rec['capped'], total_plans_found=rec['total_found'], model=model, max_tokens=max_tokens, temperature=temperature,
+                prompt_tokens_estimate=est, dry_run=not live,
                 prompt_form='compact' if len(shown) > compact_above else 'full', prompt_version=prompt_version, frozen=frozen,
                 prompt_sha256=prompt_hash(system, user), plan_list_sha256=plan_list_sha256(rec))
     if not live:
@@ -612,10 +616,22 @@ def concrete_label(label):
 
 
 def match_plans(items, recs, positions_path=DEFAULT_POSITIONS, decks_dir=DEFAULT_DECKS):
-    """items = [(position id, tag, labels)] -> {tag: (plan number or None, error text or None)}."""
-    keys = replay(items, positions_path, decks_dir)
-    out = {}
-    for pid, tag, _ in items:
+    """items = [(position id, tag, labels)] -> {tag: (plan number or None, error text or None)}. A move list that is not a non-empty list of readable text labels
+    is answered with an error text for that item alone (it never takes the other items down)."""
+    out, good = {}, []
+    for pid, tag, labels in items:
+        if not isinstance(labels, list) or not labels or not all(isinstance(l, str) for l in labels):
+            out[tag] = (None, 'unreadable move list: it must be a non-empty list of text labels')
+            continue
+        try:
+            for l in labels:
+                concrete_label(l)
+        except ValueError as e:
+            out[tag] = (None, f'unreadable move list: {e}')
+            continue
+        good.append((pid, tag, labels))
+    keys = replay(good, positions_path, decks_dir) if good else {}
+    for pid, tag, _ in good:
         k = keys.get(tag)
         try:
             n = number_for(recs[pid], k)
@@ -623,6 +639,36 @@ def match_plans(items, recs, positions_path=DEFAULT_POSITIONS, decks_dir=DEFAULT
             out[tag] = (None, f'ambiguous: {e}')
             continue
         out[tag] = (n, k if isinstance(k, str) else (None if n else 'reaches no listed plan (capped list?)'))
+    return out
+
+
+def normalize_full(labels):
+    """The canonical, comparable form of a COMPLETE move list (full-plan agreement): labels in the Name#JSON form, Place / Ability without the slot number, and
+    without a closing End the turn. Raises ValueError for a label that cannot be read."""
+    out = [_norm(concrete_label(l)) for l in labels]
+    if out and out[-1] == 'EndTurn':
+        out.pop()
+    return out
+
+
+def label_roundtrip(recs, positions_path=DEFAULT_POSITIONS, decks_dir=DEFAULT_DECKS):
+    """Do the plans' own labels name them? For every plan the labels are replayed through the engine; they must reach exactly that plan's key. Returns
+    {position: {n_plans, unique, ambiguous, unfollowable}}. A plan whose labels fit several plans cannot be named by a bot's or a recording's move list (such a
+    list is AMBIGUOUS and fails the formal comparison), and the judge is shown plans that look identical."""
+    items = [(pid, f"{pid}|{p['n']}", p['labels']) for pid, rec in recs.items() for p in rec['plans']]
+    keys = replay(items, positions_path, decks_dir) if items else {}
+    out = {pid: {'n_plans': len(rec['plans']), 'unique': 0, 'ambiguous': 0, 'unfollowable': 0} for pid, rec in recs.items()}
+    for pid, tag, _ in items:
+        n, k = int(tag.rsplit('|', 1)[1]), keys[tag]
+        if not isinstance(k, list):
+            out[pid]['unfollowable'] += 1
+            continue
+        try:
+            got = number_for(recs[pid], k)
+        except AmbiguousPlan:
+            out[pid]['ambiguous'] += 1
+            continue
+        out[pid]['unique' if got == n else 'ambiguous'] += 1
     return out
 
 
@@ -645,6 +691,175 @@ def fingerprint():
     return hashlib.sha256('\n\0\n'.join(parts).encode('utf-8')).hexdigest()
 
 
+# ---------------------------------------------------------------------------------------------------------------------------------- the formal comparison command
+def read_rows(paths):
+    """-> (rows, problems): one JSON value per non-blank line; a line that does not parse is a problem naming the file and line, never a crash."""
+    rows, problems = [], []
+    for fn in paths:
+        with open(fn, encoding='utf-8-sig') as f:
+            for i, line in enumerate(f, 1):
+                if not line.strip():
+                    continue
+                try:
+                    rows.append(json.loads(line))
+                except ValueError as e:
+                    problems.append({'kind': 'unreadable_row', 'position': None, 'bot': None, 'run': None, 'detail': f'{fn} line {i}: {e}'})
+    return rows, problems
+
+
+def parse_seeds(text):
+    """'1,2,3' -> ([1, 2, 3], problems); blanks between commas are tolerated, anything that is not a whole number is a problem."""
+    seeds, problems = [], []
+    for tok in text.split(','):
+        tok = tok.strip()
+        if not tok:
+            continue
+        if re.fullmatch(r'-?\d+', tok):
+            seeds.append(int(tok))
+        else:
+            problems.append({'kind': 'bad_request', 'position': None, 'bot': None, 'run': None, 'detail': f'--seeds: {tok!r} is not a whole number'})
+    return seeds, problems
+
+
+def parse_contrasts(text):
+    """'judge:km3,judge:kx3' -> [('judge', 'km3'), ('judge', 'kx3')]; a piece that is not a:b stays a one-element tuple so the request check names it."""
+    if not text:
+        return None
+    return [tuple(x.strip().split(':')) if x.strip().count(':') == 1 else (x.strip(),) for x in text.split(',')]
+
+
+def print_analysis(report):
+    an = report['analysis']
+    m = an['method']
+    for scope, title in (('prefix', 'PREFIX agreement (all primary points)'), ('full_scope', 'FULL-PLAN agreement (full-scope points only)')):
+        blk = an[scope]
+        if not blk:
+            continue
+        pop = blk['population']
+        print(f"{title}: {pop['n_decisions']} decisions in {pop['n_games']} games ({m['interval']}):")
+        for b, r in blk['rates'].items():
+            if r['estimate'] is None:
+                print(f'  {b}: no comparable decision')
+            else:
+                lo = 'n/a' if r['ci_low'] is None else f"{r['ci_low']:.3f}"
+                hi = 'n/a' if r['ci_high'] is None else f"{r['ci_high']:.3f}"
+                print(f"  {b}: {r['estimate']:.3f} [{lo}, {hi}] over {r['n_decisions']} decisions")
+        for c in blk['contrasts']:
+            if c['estimate'] is None:
+                print(f"  {c['a']} - {c['b']}: no decision comparable for both -> {c.get('verdict')}")
+                continue
+            lo = 'n/a' if c['ci_low'] is None else f"{c['ci_low']:+.3f}"
+            hi = 'n/a' if c['ci_high'] is None else f"{c['ci_high']:+.3f}"
+            print(f"  {c['a']} - {c['b']}: {c['estimate']:+.3f} [{lo}, {hi}]  sign-flip p {c.get('sign_flip_p')}  -> {c.get('verdict')} ({c.get('reason')})"
+                  + (f"; {c['n_pairs_dropped']} decision(s) not comparable for both" if c['n_pairs_dropped'] else ''))
+    dx = report.get('diagnostic_excluded')
+    if dx:
+        print(f"diagnostic only (points outside the primary selection, descriptive, not part of any number above): {len(dx['points'])} point(s)")
+
+
+def run_compare(a):
+    """judge.py compare: the formal paired comparison. Exit 0 complete, 2 failed, 3 inconclusive (data problems); 1 = did not run (unreadable input, wrong executable)."""
+    positions = load_positions(a.positions)
+    ids = resolve_ids(a, positions)
+    if not ids:
+        sys.exit('no positions: give --ids, --id or --set')
+    if a.prompt != 'v1':
+        sys.exit('compare re-renders the frozen prompt (v1); it does not take --prompt')
+    inputs = [a.positions, a.references, a.eligibility, *a.results]
+    for p in inputs:
+        if not os.path.exists(p):
+            sys.exit(f'input file not found: {p}')
+    if a.out and os.path.exists(a.out) and any(os.path.samefile(p, a.out) for p in inputs):
+        sys.exit(f'--out {a.out} is one of the input files: the report would overwrite it')
+    try:
+        references = formal.load_json(a.references)
+        eligibility = formal.load_json(a.eligibility)
+    except (OSError, ValueError) as e:
+        sys.exit(f'cannot read the references / eligibility file: {e}')
+    rows, read_problems = read_rows(a.results)
+    seeds, seed_problems = parse_seeds(a.seeds)
+    contrasts = parse_contrasts(a.contrasts)
+    ident = frozen_identity()
+    experiment = []
+    if a.allow_unfrozen:
+        experiment.append('--allow-unfrozen')
+    if a.allow_other_binaries:
+        experiment.append('--allow-other-binaries')
+    if a.min_games < analysis.MIN_GAMES:
+        experiment.append(f'--min-games {a.min_games} (< {analysis.MIN_GAMES})')
+    if a.resamples < analysis.MIN_FORMAL_RESAMPLES:
+        experiment.append(f'--resamples {a.resamples} (< {analysis.MIN_FORMAL_RESAMPLES})')
+    if a.world_seed != FROZEN['plan_world_seed'] or (a.max_plans is not None and a.max_plans != FROZEN['max_plans']) or a.compact_above != FROZEN['compact_above']:
+        experiment.append('plan-list generation or compact threshold differs from the freeze')
+    baseline_sha = ident['baseline']['binary_sha256'] if not a.allow_other_binaries else None
+    if not a.allow_other_binaries:
+        got = file_sha256(PLANS_BIN)
+        if got != ident['plans_binary_sha256']:
+            sys.exit(f"the plan lister {PLANS_BIN} is not the frozen executable ({ident['tag']}): sha256 {got[:16]} != {ident['plans_binary_sha256'][:16]}; "
+                     "rebuild it from the frozen source or use --allow-other-binaries for an experiment")
+        import freeze_identity
+        diffs = freeze_identity.check(ident)
+        if diffs:
+            sys.exit(f"the code, prompt or executables are not the frozen ones ({ident['tag']}): " + '; '.join(diffs) + ' (--allow-other-binaries is for experiments only)')
+    recs = list_plans(ids, a.positions, a.decks, a.world_seed, a.max_plans)
+    rendered = {}
+    compact_above = a.compact_above if a.allow_unfrozen else FROZEN['compact_above']
+
+    def expect_judge(pid, row):
+        """The prompt and reply the judge row must have been answered from, re-rendered now: the frozen settings, or (experiments, --allow-unfrozen) the row's own
+        order and prompt version."""
+        order = row.get('order') if a.allow_unfrozen else FROZEN['order']
+        version = row.get('prompt_version', 'v1') if a.allow_unfrozen else FROZEN['prompt_version']
+        k = (pid, repr(order), repr(version))
+        if k not in rendered:
+            try:
+                system, user, shown = render_prompt(positions[pid], recs[pid], order, a.decks, compact_above, version)
+                n = len(shown)
+                rendered[k] = {'prompt_sha256': prompt_hash(system, user), 'shown': {i: p['n'] for i, p in shown.items()},
+                               'parse': (lambda raw, n=n: (lambda r: r['plan'] if r['ok'] else None)(parse_choice(raw, n))),
+                               'settings': {'model': FROZEN['model'], 'max_tokens': FROZEN['max_tokens'], 'temperature': FROZEN['temperature']}}
+            except Exception as e:  # SystemExit from an unknown order, or whatever a malformed order / version does: a prompt_mismatch problem, never a crash
+                rendered[k] = {'error': f'order {order!r}, prompt version {version!r}: {type(e).__name__}: {e}'}
+        return rendered[k]
+
+    run_info = {'formal': not experiment, 'experiment_switches': experiment,
+                'freeze': {'tag': ident['tag'], 'fingerprint_now': fingerprint(), 'fingerprint_frozen': ident['fingerprint']},
+                'executables': {'plans_binary_sha256': file_sha256(PLANS_BIN), 'baseline_sha256_required': baseline_sha},
+                'inputs': {'positions_sha256': file_sha256(a.positions), 'references_sha256': file_sha256(a.references), 'eligibility_sha256': file_sha256(a.eligibility),
+                           'results_sha256': {p: file_sha256(p) for p in a.results}},
+                'plan_list_sha256': {pid: plan_list_sha256(recs[pid]) for pid in ids},
+                'generation': {'world_seed': a.world_seed, 'limits': {k: recs[ids[0]]['limits'][k] for k in ('max_plans', 'max_nodes', 'max_steps')}},
+                'request': {'bots': a.bots, 'seeds': seeds, 'judge_repeats': a.judge_repeats, 'contrasts': a.contrasts, 'on_problem': a.on_problem,
+                            'min_games': a.min_games, 'resamples': a.resamples}}
+    ambiguous = {pid: v for pid, v in label_roundtrip(recs, a.positions, a.decks).items() if v['ambiguous'] or v['unfollowable']}
+    run_info['plan_list_label_check'] = {'what': 'positions where some plans\' own labels do not name them (fit several plans or cannot be followed): a bot or recorded move '
+                                                 'list using such a label is AMBIGUOUS, and the judge is shown plans that look identical', 'positions': ambiguous}
+    if experiment:
+        print('EXPERIMENT RUN, not the formal result: ' + '; '.join(experiment), file=sys.stderr)
+    try:
+        report = formal.compare(rows, ids, a.bots.split(','), seeds, a.judge_repeats, references, recs, lambda items, r: match_plans(items, r, a.positions, a.decks), eligibility,
+                                a.on_problem, not a.allow_unfrozen, baseline_sha, expect_judge, contrasts, a.min_games, a.resamples, normalize_full, run_info, seed_problems,
+                                read_problems)
+    except formal.BatchFailed as e:
+        report = e.report
+        report.setdefault('run', run_info)
+        if a.out:
+            with open(a.out, 'w', encoding='utf-8') as f:
+                json.dump(report, f, indent=1)
+        print(f'COMPARISON FAILED: {len(e.problems)} problem(s); no agreement is reported:', file=sys.stderr)
+        formal.print_problems(e.problems)
+        return formal.exit_code(report)
+    if a.out:
+        with open(a.out, 'w', encoding='utf-8') as f:
+            json.dump(report, f, indent=1)
+    if report['status'] != 'complete':
+        print(f'COMPARISON {report["status"].upper()}: {len(report["problems"])} problem(s); every expected primary row is listed in the report, no agreement is reported:', file=sys.stderr)
+        formal.print_problems(report['problems'])
+    else:
+        print_analysis(report)
+    return formal.exit_code(report)
+
+
 # ---------------------------------------------------------------------------------------------------------------------------------- CLI
 def main(argv=None):
     ap = argparse.ArgumentParser(description=__doc__, formatter_class=argparse.RawDescriptionHelpFormatter)
@@ -664,6 +879,7 @@ def main(argv=None):
     p = sub.add_parser('plans'); common(p)
     p.add_argument('--json', action='store_true')
     p = sub.add_parser('coverage', help="check that each position's recorded plan is among the listed plans (completeness of the plan list)"); common(p)
+    p = sub.add_parser('preflight', help="do the plans' own labels name them? replays every plan's labels; exit 2 if some plan's labels fit several plans or cannot be followed"); common(p)
     p = sub.add_parser('prompt'); common(p)
     p.add_argument('--order', default=FROZEN['order'])
     p.add_argument('--show', action='store_true', help='print the whole prompt (default: print its size only)')
@@ -707,11 +923,13 @@ def main(argv=None):
     p.add_argument('--bots', default='km3,kx3,judge')
     p.add_argument('--seeds', default='1', help='seeds of the step bots (km3, kx3): one expected row per seed')
     p.add_argument('--judge-repeats', type=int, default=1, help='judge rows per position (repeat indices 0..N-1)')
-    p.add_argument('--references', required=True, help='JSON: {"references": {position: [{"id": ..., "labels": [...]}]}, "eligible_games": [...], "excluded_games": [{"game", "reason"}]} '
-                   '(the accepted move lists and the games the primary comparison is over; see formal.py)')
+    p.add_argument('--references', required=True, help='JSON {position: [{"id": ..., "labels": [...]}]}: the accepted move lists of ALL points (filtered to the batch; see formal.py)')
+    p.add_argument('--eligibility', required=True, help='JSON {"primary_ids": [...], "full_scope_ids": [...], "games": {position: game}, "excluded_reasons": {...}}: '
+                   'the explicit selection of the primary comparison (see formal.py)')
     p.add_argument('--contrasts', help='paired contrasts as a:b,c:d (default: the judge against every other bot)')
-    p.add_argument('--min-games', type=int, default=analysis.MIN_GAMES, help='fewer eligible games than this: the comparison fails (a game bootstrap on a handful of clusters is not trustworthy)')
-    p.add_argument('--resamples', type=int, default=analysis.RESAMPLES, help='game-bootstrap resamples (the report records the number and the seed)')
+    p.add_argument('--min-games', type=int, default=analysis.MIN_GAMES, help='fewer games among the primary points than this: the comparison fails (a game bootstrap on a handful of '
+                   'clusters is not trustworthy); a lower value marks the report as an experiment')
+    p.add_argument('--resamples', type=int, default=analysis.RESAMPLES, help='game-bootstrap resamples (recorded in the report with the seed; fewer than 5000 marks it as an experiment)')
     p.add_argument('--on-problem', choices=['fail', 'inconclusive'], default='fail')
     p.add_argument('--allow-unfrozen', action='store_true', help='experiments only: accept judge rows not produced under the frozen settings')
     p.add_argument('--allow-other-binaries', action='store_true', help='experiments only: accept a plan lister or baseline executable other than the frozen ones (FROZEN.json)')
@@ -739,7 +957,11 @@ def main(argv=None):
 
     if a.cmd == 'score':
         positions = load_positions(a.positions)
-        rows = [json.loads(l) for l in open(a.results) if l.strip()]
+        rows, row_problems = read_rows([a.results])
+        if row_problems or not rows or not all(isinstance(r, dict) and isinstance(r.get('position'), str) and isinstance(r.get('bot'), str) for r in rows):
+            sys.exit(f'score: {a.results} has no rows, or a line that is not a JSON object with a text `position` and `bot` ' + ('; '.join(p['detail'] for p in row_problems[:3])))
+        print('UNCHECKED development figure: score takes each row\'s plan_number as written (it does not check it against the plan list, the identity hashes or the prompt); '
+              'the formal path is `compare`', file=sys.stderr)
         pids = sorted({r['position'] for r in rows})
         recs = list_plans(pids, a.positions, a.decks)
         his = match_plans([(i, i, positions[i]['his_plan']) for i in pids if positions[i].get('his_plan')], recs, a.positions, a.decks)
@@ -765,69 +987,7 @@ def main(argv=None):
         return 0
 
     if a.cmd == 'compare':
-        positions = load_positions(a.positions)
-        ids = resolve_ids(a, positions)
-        if not ids:
-            sys.exit('no positions: give --ids, --id or --set')
-        rows = []
-        for fn in a.results:
-            with open(fn, encoding='utf-8') as f:
-                rows += [json.loads(l) for l in f if l.strip()]
-        baseline_sha = None
-        if not a.allow_other_binaries:
-            ident = frozen_identity()
-            got = file_sha256(PLANS_BIN)
-            if got != ident['plans_binary_sha256']:
-                sys.exit(f"the plan lister {PLANS_BIN} is not the frozen executable ({ident['tag']}): sha256 {got[:16]} != {ident['plans_binary_sha256'][:16]}; "
-                         "rebuild it from the frozen source or use --allow-other-binaries for an experiment")
-            baseline_sha = ident['baseline']['binary_sha256']
-        recs = list_plans(ids, a.positions, a.decks, a.world_seed, a.max_plans)
-        references, eligibility = formal.load_references(a.references)
-        games = {i: positions[i].get('game') for i in ids}
-        rendered = {}
-
-        def expect_judge(pid, row):
-            """The prompt the judge row must have been answered from, re-rendered now: frozen settings, or (experiments, --allow-unfrozen) the row's own order and prompt version."""
-            order = row.get('order') if a.allow_unfrozen else FROZEN['order']
-            version = row.get('prompt_version', 'v1') if a.allow_unfrozen else FROZEN['prompt_version']
-            if (pid, order, version) not in rendered:
-                try:
-                    system, user, shown = render_prompt(positions[pid], recs[pid], order, a.decks, a.compact_above, version)
-                    rendered[(pid, order, version)] = {'prompt_sha256': prompt_hash(system, user), 'shown': {k: p['n'] for k, p in shown.items()}}
-                except (SystemExit, AssertionError, KeyError, TypeError) as e:
-                    rendered[(pid, order, version)] = {'error': f'order {order!r}, prompt version {version!r}: {e}'}
-            return rendered[(pid, order, version)]
-
-        contrasts = [tuple(x.split(':', 1)) for x in a.contrasts.split(',')] if a.contrasts else None
-        try:
-            report = formal.compare(rows, ids, a.bots.split(','), [int(x) for x in a.seeds.split(',') if x.strip()], a.judge_repeats, references, recs,
-                                    lambda items, r: match_plans(items, r, a.positions, a.decks), games, a.on_problem, not a.allow_unfrozen, baseline_sha,
-                                    eligibility, expect_judge, contrasts, a.min_games, a.resamples)
-        except formal.BatchFailed as e:
-            report = e.report
-            if a.out:
-                with open(a.out, 'w', encoding='utf-8') as f:
-                    json.dump(report, f, indent=1)
-            print(f'COMPARISON FAILED: {len(e.problems)} problem(s); no agreement is reported:', file=sys.stderr)
-            formal.print_problems(e.problems)
-            return formal.exit_code(report)
-        if a.out:
-            with open(a.out, 'w', encoding='utf-8') as f:
-                json.dump(report, f, indent=1)
-        if report['status'] != 'complete':
-            print(f'COMPARISON {report["status"].upper()}: {len(report["problems"])} problem(s); every expected row is listed in the report, no agreement is reported:', file=sys.stderr)
-            formal.print_problems(report['problems'])
-        else:
-            for bot, g in report['agreement'].items():
-                print(f"{bot}: {g['agree']}/{g['rows']} rows agree with an accepted move")
-            an = report['analysis']
-            pop = an['population']
-            print(f"analysis over {pop['n_decisions']} decisions in {pop['n_games']} games ({an['method']['interval']}; excluded games: {len(pop['excluded_games'])}):")
-            for b, r in an['rates'].items():
-                print(f"  {b}: {r['estimate']:.3f} [{r['ci_low']:.3f}, {r['ci_high']:.3f}]")
-            for c in an['contrasts']:
-                print(f"  {c['a']} - {c['b']}: {c['estimate']:+.3f} [{c['ci_low']:+.3f}, {c['ci_high']:+.3f}]  sign-flip p {c['sign_flip_p']:.3f}  -> {c['verdict']} ({c['reason']})")
-        return formal.exit_code(report)
+        return run_compare(a)
 
     positions = load_positions(a.positions)
     ids = resolve_ids(a, positions)
@@ -850,6 +1010,16 @@ def main(argv=None):
                 c[p['end']] = c.get(p['end'], 0) + 1
             print(f"{i:28} {r['n_plans']:6} {r['total_found']:6} {str(r['capped']):>6} {r['nodes']:7}   {c.get('attack', 0)}/{c.get('chance', 0)}/{c.get('end_turn', 0)}/{c.get('opponent_choice', 0)}")
         return 0
+
+    if a.cmd == 'preflight':
+        recs = list_plans(ids, a.positions, a.decks, a.world_seed, a.max_plans)
+        check = label_roundtrip(recs, a.positions, a.decks)
+        bad = {pid: v for pid, v in check.items() if v['ambiguous'] or v['unfollowable']}
+        for pid in ids:
+            v = check[pid]
+            print(f"{pid:30} plans {v['n_plans']:5}  unique {v['unique']:5}  ambiguous {v['ambiguous']:5}  unfollowable {v['unfollowable']:5}")
+        print(f'{len(bad)} of {len(ids)} position(s) have plans whose own labels do not name them (a bot or recorded move list that uses such a label is AMBIGUOUS and fails the formal comparison)')
+        return 2 if bad else 0
 
     if a.cmd == 'coverage':
         recs = list_plans(ids, a.positions, a.decks, a.world_seed, a.max_plans)
@@ -931,7 +1101,9 @@ def main(argv=None):
         return 0
 
     if a.cmd == 'run':
-        seeds = [int(x) for x in a.seeds.split(',')]
+        seeds, seed_problems = parse_seeds(a.seeds)
+        if seed_problems or not seeds or len(set(seeds)) != len(seeds):
+            sys.exit(f'--seeds {a.seeds!r}: give at least one whole-number seed, each once')
         plan_lists = list_plans(ids, a.positions, a.decks, a.world_seed, a.max_plans)
         bad = []
         for r in run_pg_pos(a.bot, ids, seeds, plan_lists, a.positions, a.decks, a.pg_pos_bin):
