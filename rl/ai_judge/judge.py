@@ -26,7 +26,8 @@ V2 = os.path.join(REPO, 'rl', 'results', 'pause_games_new_2026-10-13', 'v2')
 DEFAULT_POSITIONS = os.path.join(V2, 'positions_all.json')
 DEFAULT_DECKS = os.path.join(V2, 'decks')
 PLANS_BIN = os.environ.get('JUDGE_PLANS_BIN', '/home/dacz8976/ai_judge_target/release/judge_plans')
-PG_POS_BIN = os.environ.get('PG_POS_BIN', '/home/dacz8976/stageA/bin/pg_pos_blade')
+PG_POS_BIN = os.environ.get('PG_POS_BIN', '/home/dacz8976/ai_judge_pgpos/bin/pg_pos_target_preserving')  # the rebuilt, target-preserving baseline (FROZEN.json: baseline)
+FROZEN_JSON = os.path.join(HERE, 'FROZEN.json')
 MODEL = 'claude-sonnet-5-5'  # one fixed model id for every judge run (FROZEN.json records it); --model exists for experiments and marks the record as not frozen
 SCHEMA = 'ai_judge_choice_v1'
 
@@ -422,6 +423,20 @@ def cost_of(model, usage):
 
 
 # ---------------------------------------------------------------------------------------------------------------------------------- records
+def file_sha256(path):
+    h = hashlib.sha256()
+    with open(path, 'rb') as f:
+        for chunk in iter(lambda: f.read(1 << 20), b''):
+            h.update(chunk)
+    return h.hexdigest()
+
+
+def frozen_identity():
+    """FROZEN.json: the recorded identity (prompt fingerprint, source hashes, executables) of the current freeze."""
+    with open(FROZEN_JSON, encoding='utf-8') as f:
+        return json.load(f)
+
+
 def record(position, bot, plan, cut, **extra):
     r = {'schema': SCHEMA, 'position': position, 'bot': bot, 'seed': None, 'plan': plan, 'cut': cut}
     r.update(extra)
@@ -459,6 +474,7 @@ def run_pg_pos(bot, ids, seeds, recs, positions_path=DEFAULT_POSITIONS, decks_di
     """km3 / kx3 (any bot code pg_pos knows) on positions. pg_pos plays the bot's whole turn; the record keeps what it played (`plan_full`) and the same
     plan in the judge's terms (`plan`: cut after the first chance step, nothing after an attack) with the listed plan's number."""
     rows = []
+    pg_sha = file_sha256(bin_path)
     for pid in ids:
         cmd = [bin_path, '--positions', positions_path] + deck_args(decks_dir) + ['--seeds', ','.join(map(str, seeds)), '--bot', bot, '--only', pid]
         r = subprocess.run(cmd, capture_output=True, text=True)
@@ -479,7 +495,7 @@ def run_pg_pos(bot, ids, seeds, recs, positions_path=DEFAULT_POSITIONS, decks_di
         n, err = matched[f"{pid}|{j['seed']}"]
         plan = canonical_plan(j['plan'], recs[pid])
         end = recs[pid]['plans'][n - 1]['end'] if n else None
-        rec = record(pid, bot, plan, end, plan_number=n, match_error=err, plan_full=j['plan'], pg_pos_cut=j['cut'], cost=None, dry_run=False)
+        rec = record(pid, bot, plan, end, plan_number=n, match_error=err, plan_full=j['plan'], pg_pos_cut=j['cut'], pg_pos_sha256=pg_sha, cost=None, dry_run=False)
         rec['seed'] = j['seed']
         out.append(rec)
     return out
@@ -684,6 +700,7 @@ def main(argv=None):
     p.add_argument('--references', required=True, help='JSON: {position: [{"id": ..., "labels": [...]}]} the accepted move lists')
     p.add_argument('--on-problem', choices=['fail', 'inconclusive'], default='fail')
     p.add_argument('--allow-unfrozen', action='store_true', help='experiments only: accept judge rows not produced under the frozen settings')
+    p.add_argument('--allow-other-binaries', action='store_true', help='experiments only: accept a plan lister or baseline executable other than the frozen ones (FROZEN.json)')
     p.add_argument('--out', help='write the report here (also written when the batch fails)')
     a = ap.parse_args(argv)
 
@@ -741,13 +758,21 @@ def main(argv=None):
         rows = []
         for fn in a.results:
             rows += [json.loads(l) for l in open(fn, encoding='utf-8') if l.strip()]
+        baseline_sha = None
+        if not a.allow_other_binaries:
+            ident = frozen_identity()
+            got = file_sha256(PLANS_BIN)
+            if got != ident['plans_binary_sha256']:
+                sys.exit(f"the plan lister {PLANS_BIN} is not the frozen executable ({ident['tag']}): sha256 {got[:16]} != {ident['plans_binary_sha256'][:16]}; "
+                         "rebuild it from the frozen source or use --allow-other-binaries for an experiment")
+            baseline_sha = ident['baseline']['binary_sha256']
         recs = list_plans(ids, a.positions, a.decks, a.world_seed, a.max_plans)
         with open(a.references, encoding='utf-8') as f:
             references = json.load(f)
         games = {i: positions[i].get('game') for i in ids}
         try:
             report = formal.compare(rows, ids, a.bots.split(','), [int(x) for x in a.seeds.split(',')], a.judge_repeats, references, recs,
-                                    lambda items, r: match_plans(items, r, a.positions, a.decks), games, a.on_problem, not a.allow_unfrozen)
+                                    lambda items, r: match_plans(items, r, a.positions, a.decks), games, a.on_problem, not a.allow_unfrozen, baseline_sha)
         except formal.BatchFailed as e:
             report = e.report
             if a.out:

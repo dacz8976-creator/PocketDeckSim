@@ -1,0 +1,90 @@
+{
+ "binary": "/home/dacz8976/ai_judge_pgpos/bin/pg_pos_target_preserving",
+ "binary_sha256": "7749a53e5b92c6bf735f73e5eb2fa0a93667a78fc985414a999314924fa8af22",
+ "checks": {
+  "MINI-BLOWER": {
+   "force": "Play:Field Blower",
+   "legal_target_labels": [
+    "DiscardToolFromPokemon#{\"in_play_idx\":0,\"player\":1,\"tool_idx\":0}",
+    "DiscardToolFromPokemon#{\"in_play_idx\":1,\"player\":1,\"tool_idx\":0}"
+   ],
+   "bot_choice": "DiscardToolFromPokemon#{\"in_play_idx\":1,\"player\":1,\"tool_idx\":0}",
+   "lister_labels": [
+    "DiscardToolFromPokemon#{\"in_play_idx\":0,\"player\":1,\"tool_idx\":0}",
+    "DiscardToolFromPokemon#{\"in_play_idx\":1,\"player\":1,\"tool_idx\":0}"
+   ],
+   "free_play_plans": [
+    [
+     "Play:Field Blower",
+     "DiscardToolFromPokemon#{\"in_play_idx\":1,\"player\":1,\"tool_idx\":0}",
+     "Attack:Stomp",
+     "EndTurn"
+    ],
+    [
+     "Play:Field Blower",
+     "DiscardToolFromPokemon#{\"in_play_idx\":1,\"player\":1,\"tool_idx\":0}",
+     "Attack:Stomp"
+    ],
+    [
+     "Play:Field Blower",
+     "DiscardToolFromPokemon#{\"in_play_idx\":1,\"player\":1,\"tool_idx\":0}",
+     "Attack:Stomp"
+    ]
+   ],
+   "harness_plan_numbers": [
+    4,
+    4,
+    4
+   ],
+   "ambiguous": 0
+  },
+  "MINI-QGE": {
+   "force": "Play:Quick-Grow Extract",
+   "legal_target_labels": [
+    "ChooseRandomEvolutionTarget#{\"energy_type\":\"Grass\",\"in_play_idx\":0}",
+    "ChooseRandomEvolutionTarget#{\"energy_type\":\"Grass\",\"in_play_idx\":1}"
+   ],
+   "bot_choice": "ChooseRandomEvolutionTarget#{\"energy_type\":\"Grass\",\"in_play_idx\":1}",
+   "lister_labels": [
+    "ChooseRandomEvolutionTarget#{\"energy_type\":\"Grass\",\"in_play_idx\":0}",
+    "ChooseRandomEvolutionTarget#{\"energy_type\":\"Grass\",\"in_play_idx\":1}"
+   ],
+   "free_play_plans": [
+    [
+     "Play:Quick-Grow Extract",
+     "ChooseRandomEvolutionTarget#{\"energy_type\":\"Grass\",\"in_play_idx\":1}",
+     "Attach:1Grass@0 zone",
+     "EndTurn"
+    ],
+    [
+     "Play:Quick-Grow Extract",
+     "ChooseRandomEvolutionTarget#{\"energy_type\":\"Grass\",\"in_play_idx\":1}",
+     "Attach:1Grass@0 zone",
+     "EndTurn"
+    ],
+    [
+     "Play:Quick-Grow Extract",
+     "ChooseRandomEvolutionTarget#{\"energy_type\":\"Grass\",\"in_play_idx\":1}",
+     "Attach:1Grass@0 zone",
+     "EndTurn"
+    ]
+   ],
+   "harness_plan_numbers": [
+    2,
+    2,
+    2
+   ],
+   "ambiguous": 0
+  }
+ },
+ "old_executable": {
+  "binary": "/home/dacz8976/stageA/bin/pg_pos_blade",
+  "binary_sha256": "bbc05e1f8972fccddeee08fbe438414be5d60c464e9114be04c0f8dc5af5b790",
+  "legal_labels_at_the_target_choice": [
+   "DiscardToolFromPokemon",
+   "DiscardToolFromPokemon"
+  ],
+  "bot_choice": "DiscardToolFromPokemon",
+  "drops_the_target": true
+ }
+}

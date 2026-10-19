@@ -18,6 +18,17 @@ class Frozen(unittest.TestCase):
         with open(os.path.join(ROOT, 'FROZEN.json'), encoding='utf-8') as f:
             self.frozen = json.load(f)
 
+    def test_the_sources_and_executables_are_the_frozen_ones(self):
+        import freeze_identity
+        self.assertEqual(self.frozen['tag'], 'judge-prompt-frozen-3')
+        # the sources, the engine tree and (where built) the lister and baseline executables must equal FROZEN.json
+        self.assertEqual(freeze_identity.check(self.frozen), [])
+
+    def test_earlier_freezes_are_recorded_as_superseded_not_rewritten(self):
+        tags = [s['tag'] for s in self.frozen['supersedes']]
+        self.assertEqual(tags, ['judge-prompt-frozen-2', 'judge-prompt-frozen-1'])
+        self.assertEqual(self.frozen['supersedes'][0]['fingerprint'], self.frozen['fingerprint'])  # the prompt is the one frozen-2 froze
+
     def test_the_prompt_and_its_layout_code_are_the_frozen_ones(self):
         self.assertEqual(judge.fingerprint(), self.frozen['fingerprint'],
                          'the judge prompt or its layout code changed after the freeze: see this file\'s docstring')

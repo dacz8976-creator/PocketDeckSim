@@ -1,0 +1,44 @@
+{
+ "Mesagoza": {
+  "use_offered": true,
+  "use_is_chance": true,
+  "final_kinds": [
+   "coin_or_random"
+  ],
+  "plans_continuing_after_the_use": 0
+ },
+ "Fragrant Forest": {
+  "use_offered": true,
+  "use_is_chance": true,
+  "final_kinds": [
+   "your_deck"
+  ],
+  "plans_continuing_after_the_use": 0
+ },
+ "Area Zero": {
+  "use_offered": true,
+  "use_is_chance": false,
+  "final_kinds": [],
+  "plans_continuing_after_the_use": 6
+ },
+ "Kid's Room": {
+  "use_offered": true,
+  "use_is_chance": false,
+  "final_kinds": [],
+  "plans_continuing_after_the_use": 6
+ },
+ "Arcade": {
+  "use_offered": true,
+  "use_is_chance": true,
+  "final_kinds": [
+   "coin_or_random"
+  ],
+  "plans_continuing_after_the_use": 0
+ },
+ "Rainbow Cave": {
+  "use_offered": true,
+  "use_is_chance": false,
+  "final_kinds": [],
+  "plans_continuing_after_the_use": 46
+ }
+}

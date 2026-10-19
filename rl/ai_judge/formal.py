@@ -48,7 +48,7 @@ def expected_rows(ids, bots, seeds, judge_repeats):
     return out
 
 
-def check_rows(rows, expected, recs, require_frozen=True):
+def check_rows(rows, expected, recs, require_frozen=True, baseline_sha256=None):
     """Returns (by_key, problems): by_key maps each expected key to its single row (or None), problems is a list of dicts {kind, position, bot, run, detail}."""
     problems = []
     seen = {}
@@ -75,6 +75,8 @@ def check_rows(rows, expected, recs, require_frozen=True):
             why = row.get('match_error') or row.get('parse_error') or 'no listed plan'
             kind = 'ambiguous' if str(why).startswith('ambiguous') else 'unresolved'
             problems.append({**base, 'kind': kind, 'detail': str(why)})
+        if bot != 'judge' and baseline_sha256 is not None and row.get('pg_pos_sha256') != baseline_sha256:
+            problems.append({**base, 'kind': 'baseline_binary', 'detail': f"the row was not played by the frozen baseline executable (its sha256 {str(row.get('pg_pos_sha256'))[:16]})"})
         if bot == 'judge':
             if row.get('dry_run'):
                 problems.append({**base, 'kind': 'dry_run', 'detail': 'a dry-run record has no choice'})
@@ -134,10 +136,10 @@ def paired_report(ids, expected, by_key, accepted, problems, games=None, on_prob
     return report
 
 
-def compare(rows, ids, bots, seeds, judge_repeats, references, recs, match, games=None, on_problem='fail', require_frozen=True):
+def compare(rows, ids, bots, seeds, judge_repeats, references, recs, match, games=None, on_problem='fail', require_frozen=True, baseline_sha256=None):
     """The whole path. Returns the report; raises BatchFailed (exit code 2) for on_problem='fail' when anything is unresolved."""
     expected = expected_rows(ids, bots, seeds, judge_repeats)
-    by_key, problems = check_rows(rows, expected, recs, require_frozen)
+    by_key, problems = check_rows(rows, expected, recs, require_frozen, baseline_sha256)
     accepted, ref_problems = map_references(references, recs, match)
     problems += ref_problems
     missing_refs = [pid for pid in ids if not references.get(pid)]

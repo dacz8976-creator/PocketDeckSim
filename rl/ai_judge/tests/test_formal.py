@@ -107,6 +107,15 @@ class FormalPath(unittest.TestCase):
         rows = complete_rows()[:-2] + [judge_row('P1', 0, 1, frozen=False), judge_row('P2', 0, 1)]
         self.assertEqual(run(rows, require_frozen=False)['status'], 'complete')
 
+    def test_step_bot_rows_must_come_from_the_frozen_baseline_executable(self):
+        rows = [dict(r, pg_pos_sha256='aaa') if r['bot'] == 'km3' else r for r in complete_rows()]
+        rep = formal.compare(rows, ['P1', 'P2'], ['km3', 'judge'], [1, 2], 1, REFS, RECS, GOOD, None, 'inconclusive', True, 'aaa')
+        self.assertEqual(rep['status'], 'complete')
+        rep = formal.compare(rows, ['P1', 'P2'], ['km3', 'judge'], [1, 2], 1, REFS, RECS, GOOD, None, 'inconclusive', True, 'bbb')
+        self.assertEqual(sorted({p['kind'] for p in rep['problems']}), ['baseline_binary'])
+        self.assertEqual(len(rep['problems']), 4)  # every km3 row; the judge rows carry no baseline identity
+        self.assertEqual(rep['status'], 'inconclusive')
+
     def test_a_capped_plan_list_stops_the_comparison(self):
         recs = {**RECS, 'P2': {**RECS['P2'], 'capped': True}}
         rep = run(complete_rows(), recs=recs, on_problem='inconclusive')
@@ -160,7 +169,8 @@ class CommandLinePath(unittest.TestCase):
         return judge.list_plans([pid], POS, DECKS)[pid]
 
     def base_argv(self, rf, qf, extra=()):
-        return ['compare', '--positions', POS, '--decks', DECKS, '--ids', 'MINI-BLOWER', '--results', rf, '--bots', 'km3,judge', '--seeds', '1,2', '--references', qf, *extra]
+        return ['compare', '--positions', POS, '--decks', DECKS, '--ids', 'MINI-BLOWER', '--results', rf, '--bots', 'km3,judge', '--seeds', '1,2', '--references', qf,
+                '--allow-other-binaries', *extra]  # the fixtures' rows were not made by the frozen executables
 
     def blower_rows(self):
         rec = self.plans('MINI-BLOWER')
@@ -232,6 +242,22 @@ class CommandLinePath(unittest.TestCase):
         code, _, err = self.cli(argv(path, out))
         self.assertEqual(code, 0, err)
         self.assertIsNotNone(json.loads(open(out).read().splitlines()[0])['plan_number'])
+
+    def test_the_frozen_plan_lister_executable_is_enforced_unless_an_experiment_says_otherwise(self):
+        from unittest import mock
+        rows, full, _ = self.blower_rows()
+        d, rf, qf = self.files(rows, {'MINI-BLOWER': [{'id': 'recorded', 'labels': ['Play:Field Blower', full[0]]}]})
+        argv = [a for a in self.base_argv(rf, qf) if a != '--allow-other-binaries']
+        wrong = {'tag': 'judge-prompt-frozen-X', 'plans_binary_sha256': '0' * 64, 'baseline': {'binary_sha256': '1' * 64}}
+        with mock.patch.object(judge, 'frozen_identity', return_value=wrong):
+            with self.assertRaises(SystemExit) as cm:
+                self.cli(argv)
+        self.assertIn('not the frozen executable', str(cm.exception))
+        right = {'tag': 'judge-prompt-frozen-X', 'plans_binary_sha256': judge.file_sha256(judge.PLANS_BIN), 'baseline': {'binary_sha256': '1' * 64}}
+        with mock.patch.object(judge, 'frozen_identity', return_value=right):
+            code, out, err = self.cli(argv)
+        self.assertEqual(code, 2)  # the km3 rows carry no frozen-baseline identity: every one is a problem
+        self.assertIn('baseline_binary', err)
 
     def test_score_fails_on_an_unmapped_row_instead_of_dropping_it(self):
         rows, full, _ = self.blower_rows()

@@ -2,17 +2,22 @@
 
 Oct 18-19, 2026 (Sonnet 5.5 session "Opus agents progress", for the coordinator). Built, shaped and tested on the OLD positions only (stage A's 92 and the
 diagnostic's 14). The laptop's exam folder and branch were not opened. No engine rules changed: `plans/` is a separate crate that calls the engine
-by path (like `rl/strength`), and `engine/` is untouched. **The prompt and settings are frozen since Oct 19** (tag `judge-prompt-frozen-1`, `FROZEN.md`);
-nothing here has been scored on fresh positions.
+by path (like `rl/strength`), and `engine/` is untouched. **The prompt and settings are frozen since Oct 19**; the current freeze is tag
+`judge-prompt-frozen-3` (frozen-1 and frozen-2 are kept; the prompt is the same in all three, the identity and the formal comparison path differ, see `FROZEN.md`).
+Nothing here has been scored on fresh positions.
 
 ## What is here
 
 | File | What it does |
 |---|---|
 | `plans/` (Rust, `judge_plans`) | Lists the engine's legal **whole-turn plans** of a pg_pos position; replays a bot's or a recording's move list into the same list |
-| `judge.py` | Prompt, parser, API call, cost record, bot runner (`km3`, `kx3`, `judge`), shared result format, scoring against recorded plans |
-| `tests/` | 33 tests: parser, prompt whitelist, cost, the plan list (count, dedupe, chance cut-off, no leakage, cap, replay), the live path with a fake API, the freeze |
-| `FROZEN.md`, `FROZEN.json` | The frozen prompt and settings, the measurements behind them, and the fingerprint the freeze test checks |
+| `judge.py` | Prompt, parser, API call, cost record, bot runner (`km3`, `kx3`, `judge`), shared result format, scoring against recorded plans, the `compare` command |
+| `formal.py` | The formal paired comparison: every expected row accounted for, any unresolved row fails the batch or makes the comparison inconclusive |
+| `tests/` | 64 tests: parser, prompt whitelist, cost, the plan list (count, dedupe, chance cut-off, no leakage, cap, replay, Stadium, Field Blower and random-evolution targets, label key order), the formal path (logic and command line), the baseline printer at runtime, the freeze identity |
+| `FROZEN.md`, `FROZEN.json` | The frozen prompt and settings, the measurements behind them, and the identity (fingerprint, source hashes, executables) the freeze tests check |
+| `freeze_identity.py` | `--check`: compare the repository and the built executables with `FROZEN.json` |
+| `validate_baseline.py`, `build_baseline.sh`, `validation/` | Rebuild the baseline (pg_pos with the target-preserving printer) and validate it at runtime on fixtures; the evidence files |
+| `stadium_use_audit.py` | Which Stadium uses the lister treats as chance (`validation/stadium_use_audit.json`) |
 | `runs/` | Every live run of the shaping work (position bias, prompt v1 against v2, voting, compact against full, the frozen check): 300 calls, raw replies, costs |
 | `analyze_bias.py`, `compare_runs.py`, `vote_stability.py` | Reproduce the position-bias, version-comparison and voting numbers from `runs/` |
 | `results_old_positions/` | Plan counts, prompt sizes, coverage of the recorded plans, km3 and kx3 on the 14 diagnostic positions |
@@ -33,7 +38,9 @@ python3 judge.py judge --id <ID> --live --max-calls 1 --out out.jsonl     # a re
 python3 judge.py run --bot km3 --set diag14 --seeds 1,2,3 --out out.jsonl # any bot through pg_pos (PG_POS_BIN), same result format
 python3 judge.py run --bot judge --set diag14 --out out.jsonl             # the judge through the same runner
 python3 judge.py coverage --set stageA                     # is each recorded plan one of the listed plans? (completeness check)
-python3 judge.py score --results out.jsonl                 # same listed plan as the recorded one (old positions only)
+python3 judge.py score --results out.jsonl                 # same listed plan as the recorded one (old positions only); exits 2 on any row it cannot score
+python3 judge.py compare --results a.jsonl b.jsonl --set <ids> --bots km3,kx3,judge --seeds 1,2,3 --references refs.json --out report.json   # the formal comparison
+python3 freeze_identity.py --check                         # does the repository match FROZEN.json?
 python3 -B -m unittest discover -s tests -v                # the tests (plan-list tests need the built binary and are skipped without it)
 ```
 
@@ -41,6 +48,23 @@ The key is read from `ANTHROPIC_API_KEY` or the last `export ANTHROPIC_API_KEY=`
 The model is fixed at `claude-sonnet-5-5` (`--model` exists for experiments and makes the record `frozen: false`). With no flags, `judge` and `run --bot judge`
 use the frozen settings (`FROZEN.md`); `--repeat N` asks the same prompt N times, `--workers W` runs calls side by side, `--stop-usd X` stops starting calls at
 X dollars, `judge.py spend FILE...` totals the recorded cost.
+
+## The formal comparison (nothing unresolved is left out)
+
+`judge.py compare` (`formal.py`) is the only path meant for the exam. The expected rows are fixed first (every position x bot x seed for km3/kx3, every position x
+repeat for the judge). The accepted moves come in a references file `{position: [{"id": ..., "labels": [...]}]}`; each is replayed into the plan list. A row is a
+problem when it is missing, duplicated, unexpected, has no listed plan (an unfollowable or **ambiguous** move list, a parse failure), is a dry run, was not made under
+the frozen settings, comes from a capped plan list, or was played by a baseline executable other than the frozen one; a reference that does not map to exactly one plan
+is a problem too. With any problem there are no agreement numbers at all: `--on-problem fail` (default) exits 2, `--on-problem inconclusive` writes a report with every
+expected row and its state and exits 3. Only a clean batch exits 0. `score`, `run` and `judge --live` also exit 2 instead of passing over a row they could not resolve.
+The report keeps each row's `game`, so game-clustered uncertainty can be computed from it (not implemented here).
+
+## Rebuilding the baseline (pg_pos)
+
+The step bots (km3, kx3) are played by `pg_pos`, built from this branch's engine tree with `pgd_patch.py` (print-only) and `pg_pos.rs`; its printer writes every action
+without a short name as `Name#<all arguments as compact JSON, keys sorted>`, the same rule as the lister. `bash build_baseline.sh` rebuilds it (one cargo at a time, 2
+jobs, low priority) into `~/ai_judge_pgpos/bin/pg_pos_target_preserving`; `python3 validate_baseline.py --out validation/baseline_printer_validation.json` validates it on
+fixtures. FROZEN.json records its sha256.
 
 ## 1. The plan list (from the engine's full legal moves, never a bot's candidates)
 
