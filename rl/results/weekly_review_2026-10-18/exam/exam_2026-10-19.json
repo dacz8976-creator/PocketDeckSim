@@ -1,5 +1,5 @@
 {
- "format": "pds-exam-v1.2",
+ "format": "pds-exam-v1.3",
  "created": "2026-10-19",
  "scoring": "Two metrics, fixed before any candidate output. (1) PREFIX agreement, all scored points: the candidate's first segment (its actions up to and including its first chance action: a draw, search, coin or random pick, incl. UseStadium on Mesagoza; or its whole turn if none) is correct if it matches answer.first_segment or the first_segment of an acceptable line. (2) PLAN-SEGMENT agreement: the same test on the points whose answer.segment_scope is 'full' (the scored segment holds all of his turn's strategic actions). The two are reported separately; prefix agreement is not a measure of plan quality. Matching is by REPLAY: apply the candidate's segment and each accepted segment to the position and compare the resulting state up to the chance boundary (board, hand, discard, Energy, Tools, points, Active), so a retreat that renumbers slots is judged by its result, not its labels; label-set matching is only a fallback when replay is unavailable and must be reported as such. Points with answer.status 'pending_dustin' are NOT scored until he answers; their pending alternatives never count. Points carry their game id: results use a game-level bootstrap, paired across candidates; an unclear difference is 'inconclusive'. Reported per deck kind and answer kind, always with 'three decks only'.",
  "decks": {
@@ -357,14 +357,14 @@
    "answer": {
     "his_move": [
      "Play:Quick-Grow Extract",
-     "ChooseRandomEvolutionTarget{in_play_idx:1,energy_type:Grass}",
+     "ChooseRandomEvolutionTarget#{\"energy_type\":\"Grass\",\"in_play_idx\":1}",
      "Attach:1Grass@2 zone",
      "Play:Professor's Research",
      "Attack:Grass Knot"
     ],
     "first_segment": [
      "Play:Quick-Grow Extract",
-     "ChooseRandomEvolutionTarget{in_play_idx:1,energy_type:Grass}"
+     "ChooseRandomEvolutionTarget#{\"energy_type\":\"Grass\",\"in_play_idx\":1}"
     ],
     "acceptable": [],
     "why_his": "Quick-Grow Extract makes Ariados (a lasting +1 Retreat Cost, so Grass Knot 170 into the Helmeted Mega Venusaur ex) and the Energy starts Ogerpon ex as the second attacker.",
@@ -2366,7 +2366,7 @@
      "Place:Cottonee@2",
      "Place:Spinarak@3",
      "Play:Quick-Grow Extract",
-     "ChooseRandomEvolutionTarget{in_play_idx:0,energy_type:Grass}",
+     "ChooseRandomEvolutionTarget#{\"energy_type\":\"Grass\",\"in_play_idx\":0}",
      "Attach:1Grass@0 zone",
      "Play:Team Rocket's Goo-zooka",
      "Play:Team Rocket's Goo-zooka",
@@ -7005,14 +7005,14 @@
      {
       "line": [
        "Play:Mesagoza",
+       "UseStadium",
        "Attach:1Darkness@3 zone",
        "Attack:Venomous Hit"
       ],
       "reason": "Same, plus Mesagoza's free coin for a random Pokemon (nothing visible lost; the Bench is full).",
       "first_segment": [
        "Play:Mesagoza",
-       "Attach:1Darkness@3 zone",
-       "Attack:Venomous Hit"
+       "UseStadium"
       ]
      }
     ],
@@ -7645,21 +7645,7 @@
      "Attach:1Darkness@0 zone",
      "Play:Lucky Ice Pop"
     ],
-    "acceptable": [
-     {
-      "line": [
-       "Play:Lucky Ice Pop",
-       "Play:Rare Candy",
-       "Evolve:Kingambit@0",
-       "Attach:1Darkness@0 zone",
-       "EndTurn"
-      ],
-      "reason": "draw-first order of his own line (settled before any candidate output)",
-      "first_segment": [
-       "Play:Lucky Ice Pop"
-      ]
-     }
-    ],
+    "acceptable": [],
     "why_his": "Rare Candy evolves the Helmeted Pawniard into Kingambit; first Darkness on it and Lucky Ice Pop heals Electromagnetic Wall's 20.",
     "ambiguous": null,
     "legal_steps": [
@@ -7707,8 +7693,8 @@
     },
     "status": "final",
     "draw_first": {
-     "accepted": true,
-     "reason": "Lucky Ice Pop first only adds information; the actions he took before it stay available after it"
+     "accepted": false,
+     "reason": "Lucky Ice Pop is not playable at the start of this turn (not in legal_root); it becomes legal only after his earlier actions"
     },
     "segment_scope": "full",
     "strategic_actions_after_segment": [],
@@ -8285,6 +8271,7 @@
      "Place:Glimmet@1",
      "Place:Regigigas@2",
      "Play:Mesagoza",
+     "UseStadium",
      "EndTurn"
     ],
     "first_segment": [
@@ -8445,14 +8432,14 @@
     "his_move": [
      "Attach:1Water@0 zone",
      "Play:Field Blower",
-     "DiscardToolFromPokemon{player:1,in_play_idx:2,tool_idx:0}",
+     "DiscardToolFromPokemon#{\"in_play_idx\":2,\"player\":1,\"tool_idx\":0}",
      "Play:Copycat",
      "Attack:Binding Snow"
     ],
     "first_segment": [
      "Attach:1Water@0 zone",
      "Play:Field Blower",
-     "DiscardToolFromPokemon{player:1,in_play_idx:2,tool_idx:0}",
+     "DiscardToolFromPokemon#{\"in_play_idx\":2,\"player\":1,\"tool_idx\":0}",
      "Play:Copycat"
     ],
     "acceptable": [],
@@ -9518,13 +9505,13 @@
    "answer": {
     "his_move": [
      "Play:Field Blower",
-     "DiscardToolFromPokemon{player:1,in_play_idx:0,tool_idx:0}",
+     "DiscardToolFromPokemon#{\"in_play_idx\":0,\"player\":1,\"tool_idx\":0}",
      "Attach:1Water@0 zone",
      "Attack:Binding Snow"
     ],
     "first_segment": [
      "Play:Field Blower",
-     "DiscardToolFromPokemon{player:1,in_play_idx:0,tool_idx:0}",
+     "DiscardToolFromPokemon#{\"in_play_idx\":0,\"player\":1,\"tool_idx\":0}",
      "Attach:1Water@0 zone",
      "Attack:Binding Snow"
     ],
@@ -9594,14 +9581,15 @@
   }
  ],
  "bot_view": "Give a bot or judge ONLY points[i].position (pg_pos --positions takes it; note it has no 'force') and points[i].legal_root. Everything under points[i].answer, and answer_kind, is the answer key and must not be shown to a candidate.",
- "free_chance_first_decision": "Checked before any bot run (Oct 19): none of the 51 positions offers a free optional chance step among its first legal actions (no Mesagoza in play; no coin-flip Ability). The only UseStadium at a root is Rainbow Cave (7 positions), which is not a chance event. So no 'free chance step first' variants are listed. v1.2: draw-first orderings of his own line are settled per point in answer.draw_first: accepted for Research, Poke Ball and Lucky Ice Pop (9 points; added to acceptable with their first segment), not accepted for Copycat (2 points: the cards played first would be shuffled away).",
+ "free_chance_first_decision": "Checked before any bot run (Oct 19): none of the 51 positions offers a free optional chance step among its first legal actions (no Mesagoza in play; no coin-flip Ability). The only UseStadium at a root is Rainbow Cave (7 positions), which is not a chance event. So no 'free chance step first' variants are listed. v1.2: draw-first orderings of his own line are settled per point in answer.draw_first: accepted for Research, Poke Ball and Lucky Ice Pop where the draw card is legal at the start of the turn (7 points; added to acceptable with their first segment); not accepted for Copycat (2 points: the cards played first would be shuffled away) or where Lucky Ice Pop is not yet legal (1 point, v1.3).",
  "known_limits": [
   "All positions are approximate on the opponent's side (list unknown; hand size and discard estimated from the review).",
   "No 'abandon' points: none of his recorded ladder turns was usable for it. 'fast pressure' is covered only by deck 12 and only with attack-now points.",
   "Deck kinds are multi-tagged; most points sit in several deck-kind rows, so rows are not independent.",
   "Scope: 21 of 51 first segments hold none of his turn's strategic actions and 10 only part (answer.segment_scope); plan-segment agreement uses the 20 'full' points. Reconstructed later decision points (after a draw, with only what is then visible) were not built; that is the honest next step if prefix results are uninformative.",
-  "LAD-20261016_020517000_iOS-t2: the legal-moves tool still stops at Play:Mesagoza (its built-in stop list); under the v1.2 rule playing Mesagoza is deterministic and the segment ends at UseStadium. A runner must use the rule in 'scoring', not the tool's stop. (The tool was not rebuilt: C: had under 1 GB free.)",
+  "LAD-20261016_020517000_iOS-t2: the legal-moves tool still stops at Play:Mesagoza (also in 024253 t1 and the 210617 t6 alternative) (its built-in stop list); under the v1.2 rule playing Mesagoza is deterministic and the segment ends at UseStadium. A runner must use the rule in 'scoring', not the tool's stop. (The tool was not rebuilt: C: had under 1 GB free.)",
   "Five points are held for Dustin (161324 t5, 225451 t4, 031512 t2, 031512 t8, 215114 t10); two concern the scored prefix (225451 t4 Sabrina, 031512 t8 Energy), three later actions.",
   "Three decks only (12, 13-A, Kingambit); no abandon-plan points; opponent states are estimates from video reviews (answer.build_notes keeps the detail)."
- ]
+ ],
+ "label_format": "Answer key and legal_root use the AI judge's target-preserving labels: plain labels as before, and actions with arguments as Name#{json} with sorted keys (e.g. a Field Blower Tool discard keeps player, Pokemon and Tool index). build/label_adapter.py converts to and from the legal-moves tool's Name{k:v} form losslessly; compare with same_action() (parsed arguments), never by name alone. answer.legal_steps keeps the tool's raw form."
 }

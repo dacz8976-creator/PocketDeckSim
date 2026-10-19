@@ -31,13 +31,22 @@ A candidate sees only `points[i].position` and `points[i].legal_root`.
     - `legal_steps`: the engine's legal list at each step of his line, up to the first hidden draw or coin;
     - `free_chance_first_variants`.
 
-## Scoring (fixed before any bot runs)
-- **Plans stop at the first chance event:** a draw, a search, or a coin, free or not.
-- **A correct first segment:** a candidate's first segment is its actions up to and including its first chance action, or its whole turn if it has none. It is correct if, as a set, it equals `answer.first_segment` or the first segment of an `acceptable` line.
-- **Free chance steps first:** none of the 51 positions offers a free optional chance step among its first actions. There's no Mesagoza in play and no coin-flip Ability. The only Stadium action at a root is Rainbow Cave's, which isn't a chance event. So there are no "free chance step first" variants. This was decided before any bot run.
-- **Independence:** points carry their game id, because turns from one game aren't independent. Results use a game-level bootstrap, paired across bots, and an unclear difference is reported as "inconclusive".
-- **Reporting:** per deck kind and per answer kind. There is no single pass/fail.
-
+## Scoring (operative contract, v1.3; fixed before any candidate output)
+The `scoring` field in the JSON is authoritative; this summarises it.
+- **Candidate view:** only `position` and `legal_root`. Nothing under `answer`, and not `answer_kind`.
+- **Segment:** a candidate's first segment is its actions up to and including its first chance action, or its whole turn if it has none.
+  - Chance actions are Professor's Research, Poké Ball, Copycat, Lisia, Sightseer, Lucky Ice Pop, a random evolution pick, and `UseStadium` while Mesagoza is the Stadium.
+  - Playing a Stadium is never a chance action, and using a deterministic Stadium (Rainbow Cave, for example) isn't either.
+- **Two metrics, reported separately:**
+  - (1) prefix agreement on every scored point;
+  - (2) plan-segment agreement on the points with `answer.segment_scope == "full"` (20 points).
+  - Prefix agreement is not plan quality.
+- **A match:** the segment matches `answer.first_segment` or the `first_segment` of any `acceptable` line.
+  - Matching is by replay: both segments are applied to the position and the resulting states compared up to the chance boundary.
+  - Label matching is a fallback only, must be reported as such, and compares labels with `build/label_adapter.py` `same_action()`, so targets are never dropped.
+- **Held points:** `answer.status == "pending_dustin"` points (5) are not scored, and their `pending_alternatives` never count.
+- **Statistics:** game-level bootstrap, paired across candidates; an unclear difference is "inconclusive". Results are per deck kind and answer kind, always labelled "three decks only".
+- **Labels:** see `label_format`. Arguments are kept as `Name#{json}`.
 ## Deck mix
 | deck | points | deck kinds (how it must be played) |
 |---|---:|---|
@@ -103,3 +112,18 @@ Made by a recovery copy of the laptop session. No bot, judge or API call was use
 - **Every point** carries `fresh: true`.
 - **Re-validation:** all 51 positions re-checked with the legal-moves-only tool (`build/legal_v12.jsonl`): 0 problems, 0 PGDUMP lines.
 - **Previous version:** `exam_2026-10-19.v11_43265934.json`.
+
+## v1.3 changes (Oct 19, before any candidate output; Astra's follow-up 20261019T1122Z)
+Made by the same recovery copy. No bot, judge, build or API call was used. The changes:
+- **Stadium rule:** `UseStadium` is a chance action only while Mesagoza is the Stadium. Playing a Stadium is deterministic.
+- **Mesagoza lines:**
+  - LAD-20261016_024253000_iOS-t1: `UseStadium` added. The review says he used Mesagoza's coin (tails).
+  - LAD-20261015_210617000_iOS-t6: the alternative whose reason is Mesagoza's free coin now actually flips (`UseStadium`).
+- **An illegal alternative removed:** the Lucky Ice Pop-first line in LAD-20261016_015753000_iOS-t5. Pop isn't in that turn's legal_root, so draw-first isn't accepted there. 7 draw-first points remain accepted, and 3 are not. (v1.2 said 9 accepted; that was a miscount, it was 8.)
+- **Labels:** answer-key and legal_root labels now use the judge's `Name#{json}` form (`build/label_adapter.py`, lossless, fixture-tested).
+- **Legality checks:** every recorded, accepted and pending line (71 lines) was checked with the existing legal-moves binary (`build/vlines_v13.jsonl`): no unmatched action, 0 PGDUMP lines.
+- **Unrun checks** (no rebuild was possible, C: under 0.5 GB free):
+  - Steps after a hidden draw or coin can't be checked (45 lines stop there).
+  - `UseStadium` after `Play:Mesagoza` is unchecked, because the tool stops at Play:Mesagoza.
+  - The judge's exact label string depends on serde_json's key order, assumed sorted. Comparing parsed arguments avoids depending on it.
+- **Snapshots:** `exam_2026-10-19.v11_43265934.json` and `exam_2026-10-19.v12_fa6c9b7e.json`.
