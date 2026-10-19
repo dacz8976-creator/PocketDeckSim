@@ -6,7 +6,7 @@ The exam holds 51 decision points from 27 of Dustin's real ranked games (Oct 14-
 - **It asks:** does a bot play these turns the way a good player of his decks would?
 - **No bot has seen it:** no bot was developed on these games (they aren't in stage A, the Oct 18 diagnostic or the pause-game sets), and no bot has been run on these positions.
 
-File: `exam_2026-10-19.json`, format `pds-exam-v1.5.1`. One file serves any bot: km3, kx3, the AI judge, and later an external bot through upstream's `docs/bot-protocol.md`.
+File: `exam_2026-10-19.json`, format `pds-exam-v1.6`. The formal comparison's accepted moves are in `references.json`, with eligibility and scope in `references_meta.json`. One file serves any bot: km3, kx3, the AI judge, and later an external bot through upstream's `docs/bot-protocol.md`.
 
 ## What a candidate may see (`bot_view`)
 A candidate sees only `points[i].position` and `points[i].legal_root`.
@@ -35,7 +35,8 @@ A candidate sees only `points[i].position` and `points[i].legal_root`.
 The `scoring` field in the JSON is authoritative; this summarises it.
 - **Candidate view:** only `position` and `legal_root`. Nothing under `answer`, and not `answer_kind`.
 - **Segment:** a candidate's first segment is its actions up to and including its first chance action, or its whole turn if it has none.
-  - Chance actions are Professor's Research, Poké Ball, Copycat, Lisia, Sightseer, Lucky Ice Pop, a random evolution pick, and `UseStadium` while Mesagoza is the Stadium.
+  - Chance actions are Professor's Research, Poké Ball, Copycat, Lisia, Sightseer, Lucky Ice Pop, Quick-Grow Extract's evolution, and `UseStadium` while Mesagoza is the Stadium.
+  - For Quick-Grow Extract, the player picks a visible target (the label's `in_play_idx`), then the evolution card is random. The segment ends at that pick (corrected wording, v1.6).
   - Playing a Stadium is never a chance action, and using a deterministic Stadium (Rainbow Cave, for example) isn't either.
 - **Two metrics, reported separately:**
   - (1) prefix agreement on every scored point;
@@ -45,6 +46,7 @@ The `scoring` field in the JSON is authoritative; this summarises it.
 - **A match:** the segment matches `answer.first_segment` or the `first_segment` of any `acceptable` line.
   - Matching is by replay: both segments are applied to the position and the resulting states compared up to the chance boundary.
   - Label matching is a fallback only, must be reported as such, and compares labels with `build/label_adapter.py` `same_action()`, so targets are never dropped.
+- **Primary result (v1.6):** only `primary_eligible` points: 49 points from 26 games. Game 20261015_210617000_iOS (2 points) is in `primary_excluded_games`, and is reported separately as diagnostic/sensitivity only.
 - **The key (v1.5):** what a good player of his decks would do, using his judgment. It's his recorded move by default; where he said otherwise, `answer.key_line` holds the key (`key_rule`). All 51 points are scored. Lines in `answer.rejected_alternatives` never count. Points with `decided_game: true` are also reported separately.
 - **Statistics:** game-level bootstrap, paired across candidates; an unclear difference is "inconclusive". Results are per deck kind and answer kind, always labelled "three decks only".
 - **Labels:** see `label_format`. Arguments are kept as `Name#{json}`.
@@ -148,7 +150,7 @@ No bot, judge, API call or search was used. The legal-moves tool was rebuilt (12
   - **On the candidate positions:**
     - 0 position problems, and every forced action is legal.
     - The tool's chance stop equals the line's `first_segment` in 70 of 71 lines.
-    - The one exception is LAD-20261014_153908000_iOS-t6: its segment ends at Quick-Grow Extract's random evolution pick. That is the engine's own pick, which the tool shows but doesn't apply; his target, benched Spinarak, is among its options.
+    - The one exception is LAD-20261014_153908000_iOS-t6: its segment ends at Quick-Grow Extract's evolution step. There the player picks a visible target, and then the evolution card is random. The legal-only tool lists the target options (his target, benched Spinarak, is among them) but doesn't apply the random evolution. (Wording corrected in v1.6: the target isn't random.)
   - **UseStadium after Play:Mesagoza** is now checked: legal and the chance stop in LAD-20261016_020517000_iOS-t2 (his line) and LAD-20261015_210617000_iOS-t6 (alt0).
   - **After the chance:** the build's verification variants put the recorded draws in the hand up front, take out the chance actions, and apply the coin results as reviewed.
     - 43 of the 46 lines with a chance action were validated to the end.
@@ -186,7 +188,7 @@ Dustin answered the 5 pending points. His exact words are stored in `answer.dust
 - **Re-validation:** all 69 lines (51 recorded, 2 keys, 16 acceptable) were checked with the rebuilt legal-only tool, in `build/vlines_v15.jsonl` and `build/VALIDATION_v15.json`.
   - 0 position problems and 0 PGDUMP lines.
   - Every forced action is legal.
-  - The chance stop equals the first segment in 68 of 69 lines. The other is Quick-Grow's engine random pick, as in v1.4.
+  - The chance stop equals the first segment in 68 of 69 lines. The other is Quick-Grow's evolution step (player-chosen target, random evolution card), as in v1.4.
   - After the chance, 42 lines were validated to the end. 3 matched every action and stop only at Hiking Trail's end-of-turn draw, including the new X Speed / Cottonee line (8/8). 24 lines have no chance action.
 - **Snapshot:** `exam_2026-10-19.v14_f71de2a9.json`.
 
@@ -197,3 +199,35 @@ His words: "For 5. I think I thought I had lost, but just finished the video and
 - The point is no longer `decided_game`, so no point carries that flag now.
 - The correction is stored with his earlier words in `answer.dustin_answer.correction`.
 - No line changed, so v1.5's validation stands.
+
+## v1.6 changes (Oct 19, the live laptop session; before any bot run)
+No bot, judge, API call or search was used.
+
+**Exposure treatment** (the coordinator's decision, on Astra's recommendation):
+- `primary_excluded_games` is ["20261015_210617000_iOS"], with a dated reason in `primary_exclusion_reasons`. On Oct 19, Sonnet, the judge's developer, read one answer-key example from that game in a review message not addressed to it.
+- That game's 2 points (t2, t6) keep their labels and stay in the file, with `primary_eligible: false`. They are reported separately as diagnostic/sensitivity only.
+- `denominator_history` records every version's counts.
+- **Primary eligible:**
+  - 49 points from 26 games;
+  - scope: full 19, partial 9, none 21;
+  - by deck: 13-A 23, deck 12 14, Kingambit 12;
+  - by kind: prepare 22, attack now 22, sacrifice 5.
+
+**References for the formal comparison:**
+- `references.json` is in the judge harness's generic format, `{position id: [{id, labels}]}`. It covers all 51 points with 67 lines.
+- The key is `key_line` where present (id `key`), otherwise his recorded move (`recorded`). A recorded move marked not acceptable is never a key.
+- Accepted alternatives are included (`alt<i>`); rejected ones are excluded.
+- Each list is a whole accepted turn; the judge's replay follows it to its first chance step or its attack.
+- The 69 validation records aren't answers and aren't imported.
+- `references_meta.json` holds the contract, the primary and excluded lists, each point's scope, the primary full-scope list, each point's game, and the counts.
+- Prefix agreement (all eligible points) and full-plan agreement (eligible points with scope "full") stay separate metrics.
+
+**Who certified each rejection:** each rejected line now carries `certified_by`.
+- **"dustin":** 2 lines. His own recorded line at 031512 t2 ("Not attacking was a mistake") and at 215114 t10 ("would have been the better move").
+- **"coordinator_decision_from_his_words":** 2 lines, 161324 t5 and 225451 t4.
+- **"coordinator_interpretation":** 1 line, bench Pawniard + Hang Down at 031512 t2. This is the coordinator's stricter reading: Dustin called benching Pawniard "an option". It isn't a human-certified mistake.
+
+**Record fixes:**
+- The Quick-Grow wording is corrected above: the player picks the target, and the evolution card is random.
+- **Future hardening:** `build/validate_v14.py` computed a full-completion flag that it never used. v1.6 checked it directly: every post-chance variant in `vlines_v15.jsonl` that counts as validated matched ALL of its remaining actions (0 shortfalls). A future checker should assert this rather than leave it to a reader.
+- **Snapshot:** `exam_2026-10-19.v151_100c52b6.json`.

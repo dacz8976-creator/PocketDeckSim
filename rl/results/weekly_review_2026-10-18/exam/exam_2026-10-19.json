@@ -1,7 +1,7 @@
 {
- "format": "pds-exam-v1.5.1",
+ "format": "pds-exam-v1.6",
  "created": "2026-10-19",
- "scoring": "Two metrics, fixed before any candidate output. (1) PREFIX agreement, all scored points: the candidate's first segment (its actions up to and including its first chance action: a draw, search, coin or random pick, incl. UseStadium on Mesagoza; or its whole turn if none) is correct if it matches answer.first_segment or the first_segment of an acceptable line. (2) PLAN-SEGMENT agreement: the same test on the points whose answer.segment_scope is 'full' (the scored segment holds all of his turn's strategic actions). The two are reported separately; prefix agreement is not a measure of plan quality. Matching is by REPLAY: apply the candidate's segment and each accepted segment to the position and compare the resulting state up to the chance boundary (board, hand, discard, Energy, Tools, points, Active), so a retreat that renumbers slots is judged by its result, not its labels; label-set matching is only a fallback when replay is unavailable and must be reported as such. All 51 points are scored (Dustin answered the 5 pending points on Oct 19; see key_rule). Points with decided_game true are also reported separately. Points carry their game id: results use a game-level bootstrap, paired across candidates; an unclear difference is 'inconclusive'. Reported per deck kind and answer kind, always with 'three decks only'.",
+ "scoring": "Two metrics, fixed before any candidate output. (1) PREFIX agreement, all scored points: the candidate's first segment (its actions up to and including its first chance action: a draw, search or coin, Quick-Grow Extract's evolution (the player picks a visible target; the evolution card is random) and UseStadium on Mesagoza; or its whole turn if none) is correct if it matches answer.first_segment or the first_segment of an acceptable line. (2) PLAN-SEGMENT agreement: the same test on the points whose answer.segment_scope is 'full' (the scored segment holds all of his turn's strategic actions). The two are reported separately; prefix agreement is not a measure of plan quality. Matching is by REPLAY: apply the candidate's segment and each accepted segment to the position and compare the resulting state up to the chance boundary (board, hand, discard, Energy, Tools, points, Active), so a retreat that renumbers slots is judged by its result, not its labels; label-set matching is only a fallback when replay is unavailable and must be reported as such. All 51 points are scored (Dustin answered the 5 pending points on Oct 19; see key_rule). Points with decided_game true are also reported separately. Points carry their game id: results use a game-level bootstrap, paired across candidates; an unclear difference is 'inconclusive'. Reported per deck kind and answer kind, always with 'three decks only'.",
  "decks": {
   "12-ariados-whimsicott-ogerpon": {
    "list_file": "/home/dacz8976/exam/decks/12-ariados-whimsicott-ogerpon.txt",
@@ -249,7 +249,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_153908000_iOS-t6",
@@ -421,7 +422,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_142546000_iOS-t7",
@@ -715,7 +717,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_143111000_iOS-t8",
@@ -922,7 +925,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_143111000_iOS-t10",
@@ -1097,7 +1101,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_144627000_iOS-t2",
@@ -1243,7 +1248,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_145449000_iOS-t4",
@@ -1417,7 +1423,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_160506000_iOS-t6",
@@ -1596,7 +1603,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_160506000_iOS-t10",
@@ -1898,7 +1906,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_161324000_iOS-t5",
@@ -2101,12 +2110,14 @@
        "EndTurn"
       ],
       "reason": "(pending Dustin's answer) X Speed retreats the last Spinarak for free; the caped Whimsicott ex absorbs about 60 of 170 and no point is given up.",
-      "rejected_because": "Dustin: Whimsicott ex knocked out ends the game (he was at 0-1, an ex gives 2 points), so retreating into it is not acceptable"
+      "rejected_because": "Dustin: Whimsicott ex knocked out ends the game (he was at 0-1, an ex gives 2 points), so retreating into it is not acceptable",
+      "certified_by": "coordinator_decision_from_his_words"
      }
     ]
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_161324000_iOS-t7",
@@ -2330,7 +2341,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_164328000_iOS-t4",
@@ -2512,7 +2524,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_214436000_iOS-t6",
@@ -2727,7 +2740,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_214436000_iOS-t10",
@@ -2950,7 +2964,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_215114000_iOS-t6",
@@ -3120,7 +3135,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_215114000_iOS-t12",
@@ -3344,7 +3360,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_225451000_iOS-t4",
@@ -3566,12 +3583,14 @@
        "Attack:Binding Snow"
       ],
       "reason": "(pending Dustin's answer) Binding Snow the unenergised 100-HP Rotom ex to 20, locking an Active that has no Energy, and keep Sabrina.",
-      "rejected_because": "Dustin: Sabrina pulled up the benched Rotom ex with 1 Energy so it can't get its second; the unpowered one on the Bench isn't a threat"
+      "rejected_because": "Dustin: Sabrina pulled up the benched Rotom ex with 1 Energy so it can't get its second; the unpowered one on the Bench isn't a threat",
+      "certified_by": "coordinator_decision_from_his_words"
      }
     ]
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_230328000_iOS-t3",
@@ -3730,7 +3749,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_233402000_iOS-t5",
@@ -3969,7 +3989,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_233402000_iOS-t9",
@@ -4161,7 +4182,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_231006000_iOS-t3",
@@ -4386,7 +4408,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_231006000_iOS-t9",
@@ -4611,7 +4634,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_234728000_iOS-t7",
@@ -4798,7 +4822,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_234728000_iOS-t9",
@@ -4989,7 +5014,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261015_015320000_iOS-t4",
@@ -5195,7 +5221,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261015_015320000_iOS-t8",
@@ -5388,7 +5415,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261015_015320000_iOS-t10",
@@ -5603,7 +5631,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261015_020931000_iOS-t3",
@@ -5770,7 +5799,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261015_021533000_iOS-t5",
@@ -6011,7 +6041,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261015_022206000_iOS-t3",
@@ -6166,7 +6197,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261015_201201000_iOS-t3",
@@ -6360,7 +6392,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261015_201201000_iOS-t7",
@@ -6555,7 +6588,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261015_205332000_iOS-t5",
@@ -6740,7 +6774,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261015_205332000_iOS-t9",
@@ -6944,7 +6979,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261015_210617000_iOS-t2",
@@ -7115,7 +7151,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": false
   },
   {
    "id": "LAD-20261015_210617000_iOS-t6",
@@ -7312,7 +7349,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": false
   },
   {
    "id": "LAD-20261016_030833000_iOS-t2",
@@ -7466,7 +7504,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261016_031512000_iOS-t2",
@@ -7601,7 +7640,8 @@
        "EndTurn"
       ],
       "reason": "his recorded move",
-      "rejected_because": "Dustin: 'Not attacking was a mistake.'"
+      "rejected_because": "Dustin: 'Not attacking was a mistake.'",
+      "certified_by": "dustin"
      },
      {
       "line": [
@@ -7611,7 +7651,9 @@
        "Attack:Hang Down"
       ],
       "reason": "(pending Dustin's answer) Also bench Pawniard now so it can be Rare Candied sooner.",
-      "rejected_because": "Dustin's plan: Pawniard stays in hand until a Pokémon has been knocked out, so it doesn't take a Bench spot or get sniped"
+      "rejected_because": "Dustin's plan: Pawniard stays in hand until a Pokémon has been knocked out, so it doesn't take a Bench spot or get sniped",
+      "certified_by": "coordinator_interpretation",
+      "basis_note": "The coordinator's stricter reading of his plan: Dustin called benching Pawniard 'an option' while describing his preference to hold it until a Pokémon is knocked out. Not a human-certified mistake."
      }
     ],
     "key_line": [
@@ -7623,7 +7665,8 @@
     "answer_kind_v14": "prepare"
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261016_031512000_iOS-t8",
@@ -7811,7 +7854,8 @@
     "rejected_alternatives": []
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261016_015753000_iOS-t5",
@@ -7989,7 +8033,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261016_015753000_iOS-t7",
@@ -8181,7 +8226,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261016_015753000_iOS-t9",
@@ -8365,7 +8411,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261016_020517000_iOS-t2",
@@ -8498,7 +8545,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261016_024253000_iOS-t1",
@@ -8620,7 +8668,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_234728000_iOS-t5",
@@ -8830,7 +8879,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_215114000_iOS-t10",
@@ -9034,7 +9084,8 @@
        "Attack:Binding Snow"
       ],
       "reason": "his recorded move",
-      "rejected_because": "Dustin: attaching the Water to Rattata 'would have been the better move there' (it didn't change the result; he won)"
+      "rejected_because": "Dustin: attaching the Water to Rattata 'would have been the better move there' (it didn't change the result; he won)",
+      "certified_by": "dustin"
      }
     ],
     "key_line": [
@@ -9046,7 +9097,8 @@
     "key_source": "dustin"
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_142546000_iOS-t3",
@@ -9245,7 +9297,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_143111000_iOS-t6",
@@ -9418,7 +9471,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_214436000_iOS-t4",
@@ -9579,7 +9633,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_215114000_iOS-t4",
@@ -9740,7 +9795,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   },
   {
    "id": "LAD-20261014_233402000_iOS-t7",
@@ -9946,7 +10002,8 @@
     }
    },
    "fresh": true,
-   "decided_game": false
+   "decided_game": false,
+   "primary_eligible": true
   }
  ],
  "bot_view": "Give a bot or judge ONLY points[i].position (pg_pos --positions takes it; note it has no 'force') and points[i].legal_root. Everything under points[i].answer, and answer_kind, is the answer key and must not be shown to a candidate.",
@@ -9962,5 +10019,44 @@
  ],
  "label_format": "Answer key and legal_root use the AI judge's target-preserving labels: plain labels as before, and actions with arguments as Name#{json} with sorted keys (e.g. a Field Blower Tool discard keeps player, Pokemon and Tool index). build/label_adapter.py converts to and from the legal-moves tool's Name{k:v} form losslessly; compare with same_action() (parsed arguments), never by name alone. answer.legal_steps keeps the tool's raw form.",
  "scope_rule": "A point's segment_scope is set by its shortest accepted segment (coordinator, Oct 19): 'full' only if every accepted line's first segment (his and each acceptable line; pending alternatives don't count) contains all of that line's strategic actions; 'none' if his own first segment contains none of his strategic actions; otherwise 'partial'. Plan-segment agreement uses 'full' points only; 'partial' and 'none' points count for prefix agreement only. segment_scope_by_line and segment_scope_his show the parts; segment_scope_v13 keeps the old value.",
- "key_rule": "The answer key is what a good player of his decks would do, using his judgment. It is his recorded move by default (answer.his_move, which always stays the record); where he said otherwise, answer.key_line holds the key and answer.recorded_move_acceptable is false (2 points: 031512 t2, 215114 t10). answer.first_segment is the key's first segment. His words are in answer.dustin_answer. Lines he or the coordinator ruled out are in answer.rejected_alternatives and never count. decided_game marks a point whose game was already decided; reports show those separately (no point carries it as of v1.5.1)."
+ "key_rule": "The answer key is what a good player of his decks would do, using his judgment. It is his recorded move by default (answer.his_move, which always stays the record); where he said otherwise, answer.key_line holds the key and answer.recorded_move_acceptable is false (2 points: 031512 t2, 215114 t10). answer.first_segment is the key's first segment. His words are in answer.dustin_answer. Lines he or the coordinator ruled out are in answer.rejected_alternatives and never count. decided_game marks a point whose game was already decided; reports show those separately (no point carries it as of v1.5.1).",
+ "primary_excluded_games": [
+  "20261015_210617000_iOS"
+ ],
+ "primary_exclusion_reasons": {
+  "20261015_210617000_iOS": "2026-10-19: developer exposure. Sonnet (the judge harness's developer) read one answer-key example from this game in a review message not addressed to it. Decided by the coordinator on Astra's recommendation. This game's points keep their labels and stay in the file, but are reported separately as diagnostic/sensitivity only, never in the primary result."
+ },
+ "denominator_history": [
+  {
+   "version": "v1.1-v1.3",
+   "points": 51,
+   "scored": 46,
+   "note": "5 points held pending Dustin"
+  },
+  {
+   "version": "v1.4",
+   "points": 51,
+   "scored": 46,
+   "full_scope_scored": 17,
+   "note": "scope set by the shortest accepted segment"
+  },
+  {
+   "version": "v1.5/v1.5.1",
+   "points": 51,
+   "scored": 51,
+   "full_scope": 19,
+   "note": "Dustin's 5 answers applied"
+  },
+  {
+   "version": "v1.6",
+   "points": 51,
+   "primary_eligible": 49,
+   "excluded": [
+    "LAD-20261015_210617000_iOS-t2",
+    "LAD-20261015_210617000_iOS-t6"
+   ],
+   "primary_full_scope": 19,
+   "note": "game 20261015_210617000_iOS excluded from the primary result (developer exposure, Oct 19)"
+  }
+ ]
 }
