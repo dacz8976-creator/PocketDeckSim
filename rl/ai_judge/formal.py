@@ -44,6 +44,7 @@ import sys
 import analysis
 
 SCHEMA = 'ai_judge_paired_comparison_v2'
+COMPLETE_CUTS = ('end of turn', 'game over')  # pg_pos_cut values of a step-bot turn that was played through; 'first draw' stops it at a draw card (not a complete plan)
 
 
 class BatchFailed(SystemExit):
@@ -332,12 +333,12 @@ def map_references(references, recs, match, ids):
 
 def row_full_labels(row, bot, plan_end):
     """The complete move sequence a row stands for, or None when it has none. A judge plan is complete when the CURRENT list's numbered plan ends with an attack
-    or the end of the turn (not at a chance event or for the opponent's choice); a step bot's turn is complete when pg_pos played it to the end of the turn
-    (`pg_pos_cut` 'end of turn'; it stops at the first draw card)."""
+    or the end of the turn (not at a chance event or for the opponent's choice); a step bot's turn is complete when pg_pos played it through (`pg_pos_cut` 'end of
+    turn' or 'game over'; it stops at the first draw card)."""
     if bot == 'judge':
         return row.get('plan') if plan_end in ('attack', 'end_turn') else None
     pf = row.get('plan_full')
-    return pf if (isinstance(pf, list) and row.get('pg_pos_cut') == 'end of turn') else None
+    return pf if (isinstance(pf, list) and row.get('pg_pos_cut') in COMPLETE_CUTS) else None
 
 
 def full_plan_agreement(row, bot, plan_end, refs, full_match):

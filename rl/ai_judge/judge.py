@@ -673,9 +673,13 @@ def match_plans(items, recs, positions_path=DEFAULT_POSITIONS, decks_dir=DEFAULT
 
 
 def normalize_full(labels):
-    """The canonical form of a COMPLETE move list (full-plan agreement): every label in the Name#JSON form (Energy lists sorted), without a closing End the turn.
-    Slots are kept. Raises ValueError for a label that cannot be read."""
+    """The canonical form of a COMPLETE move list (full-plan agreement): every label in the Name#JSON form (Energy lists sorted); the plan ends at its Attack (what
+    follows an attack is the engine's bookkeeping and the opponent's turn, as in canonical_plan: real bot lists carry End the turn, ResolveAttackRetaliation ...),
+    else without a closing End the turn. Slots are kept. Raises ValueError for a label that cannot be read."""
     out = [concrete_label(l) for l in labels]
+    for i, l in enumerate(out):
+        if l.startswith('Attack:'):
+            return out[:i + 1]
     if out and out[-1] == 'EndTurn':
         out.pop()
     return out

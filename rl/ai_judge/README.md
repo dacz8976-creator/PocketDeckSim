@@ -11,7 +11,7 @@ Nothing here has been scored on fresh positions.
 | File | What it does |
 |---|---|
 | `plans/` (Rust, `judge_plans`) | Lists the engine's legal **whole-turn plans** of a pg_pos position; replays a bot's or a recording's move list into the same list |
-| `judge.py` | Prompt, parser, API call, cost record, bot runner (`km3`, `kx3`, `judge`), shared result format, scoring against recorded plans, the `compare` command |
+| `judge.py` | Prompt, parser, API call, cost record, bot runner (`km3` through the frozen baseline executable, `judge`; the playout pilot kx3 is not played by it), shared result format, scoring against recorded plans, the `compare` command |
 | `formal.py` | The formal paired comparison: every expected row accounted for and proven to be the choice it claims (plan number, plan-list identity, replay, prompt and reply), the references filtered to the explicit selection; any problem fails the batch or makes the comparison inconclusive |
 | `analysis.py` | The game-clustered analysis: prefix agreement for the primary points, full-plan agreement for the full-scope subset, a descriptive diagnostic block for the rest |
 | `tests/` | About 150 tests: parser, prompt whitelist, cost, the plan list (count, dedupe, chance cut-off, no leakage, cap, replay, Stadium, Field Blower and random-evolution targets, label key order), the formal path (logic, negative controls and command line), the selection / filtering of the references, the analysis (estimates, clustering, repeats), the baseline printer at runtime, the freeze identity |
@@ -41,7 +41,7 @@ python3 judge.py run --bot judge --set diag14 --out out.jsonl             # the 
 python3 judge.py coverage --set stageA                     # is each recorded plan one of the listed plans? (completeness check)
 python3 judge.py score --results out.jsonl                 # same listed plan as the recorded one (old positions only); exits 2 on any row it cannot score
 python3 judge.py preflight --set stageA                    # do the plans' own labels name them? (exit 2 and the positions if some plan's labels fit several plans)
-python3 judge.py compare --results a.jsonl b.jsonl --ids <ids> --bots km3,kx3,judge --seeds 1,2,3 --references refs.json --eligibility elig.json --out report.json   # the formal comparison
+python3 judge.py compare --results a.jsonl b.jsonl --ids <ids> --bots km3,judge --seeds 1,2,3 --references refs.json --eligibility elig.json --out report.json   # the formal comparison
 python3 freeze_identity.py --check                         # does the repository match FROZEN.json?
 python3 -B -m unittest discover -s tests -v                # the tests (plan-list tests need the built binary and are skipped without it)
 ```
@@ -75,7 +75,7 @@ X dollars, `judge.py spend FILE...` totals the recorded cost.
 
 ## Rebuilding the baseline (pg_pos)
 
-The step bots (km3, kx3) are played by `pg_pos`, built from this branch's engine tree with `pgd_patch.py` (print-only) and `pg_pos.rs`; its printer writes every action
+The step bot (km3; `k<number>` / `km<number>` codes) is played by `pg_pos`, built from this branch's engine tree with `pgd_patch.py` (print-only) and `pg_pos.rs`; its printer writes every action
 without a short name as `Name#<all arguments as compact JSON, keys sorted>`, the same rule as the lister. `bash build_baseline.sh` rebuilds it (one cargo at a time, 2
 jobs, low priority) into `~/ai_judge_pgpos/bin/pg_pos_target_preserving`; `python3 validate_baseline.py --out validation/baseline_printer_validation.json` validates it on
 fixtures. FROZEN.json records its sha256.
@@ -134,7 +134,7 @@ Every bot writes one JSON line per (position, seed) with the same fields, so km3
 {"schema": "ai_judge_choice_v1", "position": id, "bot": "km3|kx3|judge|...", "seed": n|null,
  "plan": [move labels, cut after the first chance step or the attack], "cut": "attack|chance|end_turn|opponent_choice",
  "plan_number": n,            # the number of the listed plan this reaches (replayed through the engine, so orders and slot numbers do not matter)
- "plan_full": [...],          # km3/kx3: what the bot actually played (pg_pos plays on past a chance step)
+ "plan_full": [...],          # step bots: what the bot actually played; pg_pos plays up to its first draw card or the end of the turn ("pg_pos_cut": "first draw" | "end of turn")
  "reason": "...", "shown_number": n, "order": "forward", "n_plans": N, "capped": false, "prompt_form": "full|compact",
  "model": ..., "prompt_tokens_estimate": n, "stop_reason": ..., "seconds": s,
  "cost": {"input_tokens", "output_tokens", "usd", "price_per_mtok", "price_note"} | null,   # null for bots that cost nothing

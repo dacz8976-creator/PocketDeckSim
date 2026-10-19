@@ -368,7 +368,8 @@ fn pg_label(a: &Action) -> String {
         SimpleAction::Activate { player, in_play_idx } => format!("Activate:{}@{}", player, in_play_idx),
         SimpleAction::Promote { player, in_play_idx } => format!("Promote:{}@{}", player, in_play_idx),
         SimpleAction::ChooseMistyTarget { in_play_idx } => format!("MistyTarget@{}", in_play_idx),
-        SimpleAction::ChooseRetreatEnergy { to_in_play_idx, .. } => format!("RetreatPay:{}", to_in_play_idx),
+        // ChooseRetreatEnergy (which Energy a retreat pays) has NO short label: the old `RetreatPay:<slot>` dropped the payment, so two different payments were one
+        // label (1,142 of 5,728 plans on the 92 old positions could not be named). It takes the Name#JSON fallback below, which carries every argument.
         SimpleAction::AttachTypedFromDiscard { in_play_idx, energy_type, .. } => format!("AttachTypedFromDiscard:{:?}@{}", energy_type, in_play_idx),
         SimpleAction::EndTurn => "EndTurn".to_string(),
         // Every other action: its name plus ALL its arguments, so two actions that differ only in a target (Field Blower's DiscardToolFromPokemon on
@@ -423,6 +424,12 @@ fn english(st: &State, a: &Action) -> String {
         }
         SimpleAction::UseStadium => format!("Use the Stadium {} (its once-per-turn effect)", st.active_stadium.as_ref().map(|c| c.get_name()).unwrap_or_else(|| "?".into())),
         SimpleAction::DiscardActiveStadium => "Discard the Stadium in play".to_string(),
+        SimpleAction::ChooseRetreatEnergy { to_in_play_idx, energies } => format!(
+            "Pay the retreat cost of {} (switching with {}) by discarding {} Energy",
+            slot_name(st, me, 0),
+            slot_name(st, me, *to_in_play_idx),
+            energies.iter().map(|e| format!("{e:?}")).collect::<Vec<_>>().join(" + ")
+        ),
         _ => format!("{} (a choice)", pg_label(a)),
     }
 }
@@ -836,7 +843,10 @@ fn canon_label(l: &str) -> String {
     match l.split_once('#') {
         Some((name, js)) if name.chars().next().map_or(false, |c| c.is_ascii_alphabetic()) && name.chars().all(|c| c.is_ascii_alphanumeric() || c == '_') => {
             match serde_json::from_str::<Value>(js) {
-                Ok(v) => format!("{name}#{v}"),
+                Ok(mut v) => {
+                    sort_energies(&mut v);
+                    format!("{name}#{v}")
+                }
                 Err(_) => l.to_string(),
             }
         }
@@ -844,8 +854,22 @@ fn canon_label(l: &str) -> String {
     }
 }
 
-/// Recorded plans name a Place or an Ability without its slot number.
+/// A list of Energy types under the key `energies` is a multiset (which Energy a retreat pays or an attack discards): its order is not part of the action, so
+/// the canonical label sorts it (judge.py `concrete_label` does the same on the Python side).
+fn sort_energies(v: &mut Value) {
+    if let Value::Object(m) = v {
+        if let Some(Value::Array(a)) = m.get_mut("energies") {
+            if a.iter().all(|x| x.is_string()) {
+                a.sort_by(|x, y| x.as_str().cmp(&y.as_str()));
+            }
+        }
+    }
+}
+
+/// Recorded plans name a Place or an Ability without its slot number. Both sides are compared in the canonical label form (key order and Energy order never matter).
 fn label_matches(engine: &str, want: &str) -> bool {
+    let engine = canon_label(engine);
+    let engine = engine.as_str();
     engine == want || (!want.contains('#') && engine.split('#').next() == Some(want)) || ((want.starts_with("Place:") || want.starts_with("Ability")) && !want.contains('@') && engine.split('@').next() == Some(want))
 }
 
@@ -892,16 +916,43 @@ fn replay(st: State, labels: &[String], i: usize, last: Option<String>, out: &mu
         }
         return Err(format!("no legal action labelled {:?} at step {} (legal: {:?})", want, i, acts.iter().map(pg_label).collect::<Vec<_>>()));
     }
+    // Every candidate is followed on its own: one that cannot follow the rest of the list (for example a slotless `Place:X` put on a slot where the later
+    // `Tool:...@2` is not legal) is pruned, and the list is unfollowable only when NO candidate can follow it. (It used to give up on the first dead end.)
+    let mut first_err: Option<String> = None;
+    let mut any_ok = false;
     for a in cands {
         let label = pg_label(&a);
-        match step_kind(&st, &a) {
-            Kind::Attack(info) => out.push(leaf_key(&st, &label, &info)),
-            Kind::EndTurn => out.push(leaf_key(&st, &label, &json!({"kind": "end_turn"}))),
-            Kind::Chance(extra) => out.push(leaf_key(&st, &label, &extra)),
-            Kind::Child(s1) => replay(s1, labels, i + 1, Some(label), out, depth + 1)?,
+        let mark = out.len();
+        let r: Result<(), String> = match step_kind(&st, &a) {
+            Kind::Attack(info) => {
+                out.push(leaf_key(&st, &label, &info));
+                Ok(())
+            }
+            Kind::EndTurn => {
+                out.push(leaf_key(&st, &label, &json!({"kind": "end_turn"})));
+                Ok(())
+            }
+            Kind::Chance(extra) => {
+                out.push(leaf_key(&st, &label, &extra));
+                Ok(())
+            }
+            Kind::Child(s1) => replay(s1, labels, i + 1, Some(label), out, depth + 1),
+        };
+        match r {
+            Ok(()) => any_ok = true,
+            Err(e) => {
+                out.truncate(mark);
+                if first_err.is_none() {
+                    first_err = Some(e);
+                }
+            }
         }
     }
-    Ok(())
+    if any_ok {
+        Ok(())
+    } else {
+        Err(first_err.unwrap_or_else(|| "no candidate could follow the move list".into()))
+    }
 }
 
 fn load_decks(args: &[String]) -> HashMap<String, Deck> {

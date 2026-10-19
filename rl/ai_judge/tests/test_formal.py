@@ -530,6 +530,9 @@ class FormalPath(unittest.TestCase):
         # a bot's value at a decision is the mean over ALL its seeds: with one seed not comparable the decision has no full-plan value (nothing is averaged over a subset)
         self.assertEqual(rep['analysis']['full_scope']['not_comparable']['km3'], ['P1'])
         rows = complete_rows()
+        rows[0]['pg_pos_cut'] = 'game over'  # a turn that ended the game was played through: a complete plan
+        self.assertIs([r for r in run(rows)['rows'] if r['position'] == 'P1' and r['bot'] == 'km3' and r['run'] == 1][0]['full_agrees'], True)
+        rows = complete_rows()
         del rows[0]['pg_pos_cut']  # a step row that does not say how its turn ended is not complete either
         self.assertIsNone([r for r in run(rows)['rows'] if r['position'] == 'P1' and r['bot'] == 'km3' and r['run'] == 1][0]['full_agrees'])
 
@@ -645,6 +648,10 @@ class JudgeHelpers(unittest.TestCase):
         self.assertEqual(a, ['Place:Axew@3', 'Ability@2', 'Foo#{"a":2,"b":1}'])
         self.assertEqual(judge.normalize_full(['Attack:Slam']), ['Attack:Slam'])
         self.assertEqual(judge.normalize_full(['EndTurn', 'EndTurn']), ['EndTurn'])  # only the closing End the turn is dropped
+        # the plan ends at its attack: real bot lists go on with End the turn / ResolveAttackRetaliation / an Attach after it, and recorded human plans end there
+        self.assertEqual(judge.normalize_full(['Attach:1Fire@0 zone', 'Attack:Slam', 'EndTurn']), ['Attach:1Fire@0 zone', 'Attack:Slam'])
+        self.assertEqual(judge.normalize_full(['Attack:Slam', 'ResolveAttackRetaliation#{"a":1}', 'Attach:1Fire@0 zone']), ['Attack:Slam'])
+        self.assertTrue(judge.full_match(['Attack:Slam', 'EndTurn'], ['Attack:Slam']))
         with self.assertRaises(ValueError):
             judge.normalize_full(['Foo#{oops'])
 

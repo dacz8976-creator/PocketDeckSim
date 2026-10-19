@@ -1,6 +1,6 @@
 {
  "binary": "/home/dacz8976/ai_judge_pgpos/bin/pg_pos_target_preserving",
- "binary_sha256": "7749a53e5b92c6bf735f73e5eb2fa0a93667a78fc985414a999314924fa8af22",
+ "binary_sha256": "f35a1a99188806c7713cc40dd8fff65172c21a15d5449174f1cd3c1cfc40ad36",
  "checks": {
   "MINI-BLOWER": {
    "force": "Play:Field Blower",
@@ -75,6 +75,39 @@
     2
    ],
    "ambiguous": 0
+  },
+  "MINI-RETREAT": {
+   "force": "Retreat:1",
+   "legal_target_labels": [
+    "ChooseRetreatEnergy#{\"energies\":[\"Fire\"],\"to_in_play_idx\":1}",
+    "ChooseRetreatEnergy#{\"energies\":[\"Water\"],\"to_in_play_idx\":1}"
+   ],
+   "bot_choice": "ChooseRetreatEnergy#{\"energies\":[\"Water\"],\"to_in_play_idx\":1}",
+   "lister_labels": [
+    "ChooseRetreatEnergy#{\"energies\":[\"Fire\"],\"to_in_play_idx\":1}",
+    "ChooseRetreatEnergy#{\"energies\":[\"Water\"],\"to_in_play_idx\":1}"
+   ],
+   "free_play_plans": [
+    [
+     "Attach:1Fire@1 zone",
+     "Attack:Stomp",
+     "EndTurn"
+    ],
+    [
+     "Attach:1Fire@1 zone",
+     "Attack:Stomp"
+    ],
+    [
+     "Attach:1Fire@1 zone",
+     "Attack:Stomp"
+    ]
+   ],
+   "harness_plan_numbers": [
+    3,
+    3,
+    3
+   ],
+   "ambiguous": 0
   }
  },
  "old_executable": {
@@ -85,6 +118,14 @@
    "DiscardToolFromPokemon"
   ],
   "bot_choice": "DiscardToolFromPokemon",
-  "drops_the_target": true
+  "drops_the_target": true,
+  "retreat": {
+   "legal_labels_at_the_payment_choice": [
+    "RetreatPay:1",
+    "RetreatPay:1"
+   ],
+   "bot_choice": "RetreatPay:1",
+   "drops_the_payment": true
+  }
  }
 }

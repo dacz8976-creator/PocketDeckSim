@@ -42,7 +42,7 @@ pub fn pg_label(a: &Action) -> String {
         SimpleAction::Activate { player, in_play_idx } => format!("Activate:{}@{}", player, in_play_idx),
         SimpleAction::Promote { player, in_play_idx } => format!("Promote:{}@{}", player, in_play_idx),
         SimpleAction::ChooseMistyTarget { in_play_idx } => format!("MistyTarget@{}", in_play_idx),
-        SimpleAction::ChooseRetreatEnergy { to_in_play_idx, .. } => format!("RetreatPay:{}", to_in_play_idx),
+        // ChooseRetreatEnergy has no short label (Oct 19): the old RetreatPay:<slot> dropped WHICH Energy was paid. It takes the Name#JSON fallback below.
         SimpleAction::AttachTypedFromDiscard { in_play_idx, energy_type, .. } => format!("AttachTypedFromDiscard:{:?}@{}", energy_type, in_play_idx),
         SimpleAction::EndTurn => "EndTurn".to_string(),
         // Name#<all arguments as compact JSON, keys sorted> for every action without a short name above (Oct 19: the bare name dropped the target of

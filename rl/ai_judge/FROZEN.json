@@ -1,7 +1,12 @@
 {
  "frozen_on": "2026-10-19",
- "tag": "judge-prompt-frozen-3",
+ "tag": "judge-prompt-frozen-4",
  "supersedes": [
+  {
+   "tag": "judge-prompt-frozen-3",
+   "commit": "316f3577142238083c8c0ca222d2cc06afdd67ff",
+   "fingerprint": "0cb2421552661b563bdb49fca31aca53f468d0853661908fbbf7730fcb5ba762"
+  },
   {
    "tag": "judge-prompt-frozen-2",
    "commit": "cb8835dcdb2669d7cb25b487f635212476673c28",
@@ -27,25 +32,30 @@
   "max_steps": 30
  },
  "source_sha256": {
-  "rl/ai_judge/judge.py": "e0e3883dac4a7caa8cc27c445c6e02d7a4e207cefa9056a942a434e6a1a3fe38",
-  "rl/ai_judge/formal.py": "91d7589e3cdb80085b9ed84511a034d6d256ee8477da5c656c83bafd5dbc605e",
-  "rl/ai_judge/validate_baseline.py": "98709f33e880a2b4c51b2c7aabafb4e8a9916fb7b51b71c6af293abb6bf4209d",
-  "rl/ai_judge/freeze_identity.py": "032489815900e385deab4cf814bfb3d7a096b342c288c81d90bccbaa4161cbfa",
-  "rl/ai_judge/plans/src/main.rs": "220edd45010a7bf7bca7f1f74b319943697b9058a9b966365c0b22fe7c5bacad",
+  "rl/ai_judge/judge.py": "9a34fcd32ea33498961c297e9aef66fe48260d1a31445e4c2e8c0040ae87a182",
+  "rl/ai_judge/formal.py": "edc262e3c885203df5650a1d3ef9e4e6a8e24aa219795102b0fe07845d00ac26",
+  "rl/ai_judge/analysis.py": "0672d1becbab9787b22c77abbd83ed400f2aa8b2f71577b86a2cf3614de1d3cf",
+  "rl/ai_judge/validate_baseline.py": "855c1fca1366684a9c88bc5a8766d1d476dafe4705bed74c5412b24cd1abf752",
+  "rl/ai_judge/freeze_identity.py": "f3cce1b35c413b316778faabdfd962e9bbfb85ea7d85a16e96912019ea70e753",
+  "rl/ai_judge/plans/src/main.rs": "73830a21c34f806299f7a1ec4e42fc2c6025d82e11a0be47bf31f51aaac460ce",
   "rl/ai_judge/plans/Cargo.lock": "e183002a2e1a040cc761d2d9f81575259d710ea6a2f2a55054bc75485b8d0a7c",
-  "rl/results/pause_games_decisions_2026-10-02/harness/pgd_patch.py": "ef04658d616cc01b5bbeaf80d5c3379267c110df8f1d718379f9acc6ccb65c07",
+  "rl/ai_judge/tests/test_formal.py": "fa21ca5d1d8b410f3a32ebc7633a3dcbdfa7d2316adb3f7353350f6613a5bc7b",
+  "rl/ai_judge/tests/test_analysis.py": "852eb1008b60bb88f116785793de4ad62904d7a183570d84665e08af45c9cf96",
+  "lib/card.py": "73e6f2a8dbf10b9c4f7b877564e1fdb91dc8015744e7e82f873bfbae837cea4c",
+  "lib/deckgym-database.json": "2f48cb72966c23ba3794f437aa94312e4eadcb2703c32893411ee27fc63b11d9",
+  "rl/results/pause_games_decisions_2026-10-02/harness/pgd_patch.py": "904b9e86ab058d4d379b3f323ad5dd2bbeb4d5ebf03e5bc2db63257b325b3279",
   "rl/results/pause_games_decisions_2026-10-02/harness/dg_patch.py": "c98ccc63a29a8b7e467a91043a5179295e2cfb9b67ab0a36ad946cdabb77949b",
   "rl/results/pause_games_decisions_2026-10-02/harness/pg_pos.rs": "224888a8bc6867dcfefed7d39174f5bb31228f49d9ce399ffa1aa4680e69cbc7"
  },
- "plans_binary_sha256": "eb9574c91dc5fe13a2e0ff4f629dff0f770bfb1c4acb276dc7a0680684550e55",
+ "plans_binary_sha256": "bd4eeb6e4579f88c12b5a889178af2f34071a1bca9b1675552b4e47b418ea00b",
  "baseline": {
-  "binary_sha256": "7749a53e5b92c6bf735f73e5eb2fa0a93667a78fc985414a999314924fa8af22",
+  "binary_sha256": "f35a1a99188806c7713cc40dd8fff65172c21a15d5449174f1cd3c1cfc40ad36",
   "engine_tree": "70652fff03af511e32a169e16209e158a998dda6",
   "rustc": "rustc 1.93.1 (01f6ddf75 2026-02-11) (built from a source tarball)",
   "built_by": "rl/ai_judge/build_baseline.sh (git archive HEAD engine, pgd_patch.py, cargo build --release --locked --offline --example pg_pos, 2 jobs)",
-  "printer": "Name#<all arguments as compact JSON, keys sorted> for every action without a short name; same rule as plans/src/main.rs",
+  "printer": "Name#<all arguments as compact JSON, keys sorted, Energy lists sorted> for every action without a short name (ChooseRetreatEnergy has none since frozen-4); same rule as plans/src/main.rs",
   "validation": "rl/ai_judge/validation/baseline_printer_validation.json",
   "reproduced": "a second build from scratch with rl/ai_judge/build_baseline.sh gave the identical sha256"
  },
- "note": "prompt v1 text and every frozen setting unchanged from frozen-2 (same fingerprint). New: the formal comparison path (formal.py, judge.py compare), Name#JSON key-order normalisation, the rebuilt and runtime-validated baseline printer, executable identity enforced in compare. Records carry prompt_sha256 and frozen=true only under these exact inputs; step-bot rows carry pg_pos_sha256."
+ "note": "prompt v1 text and every frozen setting unchanged from frozen-2 and frozen-3 (same fingerprint). New since frozen-3: plan numbers are checked against the current plan list (identity hash, key, replay, prompt and reply re-derivation), the explicit eligibility selection with filtered references, prefix / full-plan / diagnostic reporting, the game-clustered analysis (analysis.py), strict row identity and flags, report provenance, compare checks the code fingerprint and the sources. Judge rows now record max_tokens and temperature; a missing REASON line is parse_warning. The plan lister and the baseline (pg_pos) were REBUILT: ChooseRetreatEnergy takes the Name#JSON label (it dropped the Energy paid), Energy lists are sorted in canonical labels, and replay prunes a dead alternative instead of abandoning the list."
 }

@@ -161,16 +161,34 @@ addressed to `sonnet`.
 6. **Identity** (`FROZEN.json`): fingerprint unchanged; source hashes now include `analysis.py` and the two test files; `freeze_identity.py --check` also flags a
    source missing from the record.
 
-## Known limitation found by the review, not fixed in this freeze unless stated in FROZEN.json
+## Label identity and replay (the lister and the baseline were REBUILT for this freeze; the engine is untouched)
 
-On four of the 92 old positions the lister's short labels do not identify a plan: **one action kind, `ChooseRetreatEnergy` (printed `RetreatPay:<slot>`), drops
-which Energy was paid** (1,142 of 5,728 plans; 434 groups of plans share identical labels and identical step text but are different states: the Energy left on
-the retreated Pokemon). A bot or recorded move list that uses such a label is AMBIGUOUS and fails the formal comparison; the judge is shown plans that look
-identical. `judge.py preflight` and `report["run"]["plan_list_label_check"]` list the affected positions. A second, smaller defect: `--replay` abandons a whole
-move list when one fan-out alternative cannot follow it (137 plans, all at one position, and one recorded old plan). See the mailbox message for the proposed fix.
+The round-2 review found that on four of the 92 old positions the lister's short labels did not identify a plan: **one action kind, `ChooseRetreatEnergy` (printed
+`RetreatPay:<slot>`), dropped which Energy was paid** (1,142 of 5,728 plans could not be named by their own labels; 434 groups of plans shared identical labels and
+identical step text but were different states: the Energy left on the retreated Pokemon). A bot or recorded move list that used such a label was AMBIGUOUS and failed
+the formal comparison, and the judge was shown plans that looked identical. Fixed, as asked by the coordinator, in `plans/src/main.rs` and in the baseline printer
+(`pgd_patch.py`): the short label is gone, a paid retreat now prints `ChooseRetreatEnergy#{"energies":["Fire"],"to_in_play_idx":1}` (the existing `Name#JSON`
+fallback) and its step reads "Pay the retreat cost of X (switching with Y) by discarding Fire Energy". Also in this rebuild (same executables, so the same freeze):
+1. **Energy lists are a multiset**: `energies` is sorted in every canonical label (lister and Python), so a reference written in another Energy order still matches.
+2. **Replay prunes dead alternatives**: a fan-out alternative that cannot follow the rest of a move list (for example a slotless `Place:X` put on a slot where the
+   later `Tool:...@2` is not legal) is dropped; the list is unfollowable only when NO alternative can follow it. Before, the first dead end abandoned the whole list
+   (137 plans at one old position, and the recorded plan of KW-261013_020824000-t03).
+3. **Effect on the old positions** (`python3 judge.py preflight --set stageA`): 0 of the 92 positions now have plans whose labels do not name them (was 4); the
+   recorded (human) plans that replay to exactly one listed plan are 84 of 88 (was 83); the other four are recorded plans with a slotless `Place:X` that fits
+   several bench slots (genuinely ambiguous: give the slot, or list the accepted variants as separate references). Plan numbers inside the four affected positions
+   changed (plans are sorted by label text); old judge rows made before this freeze at those positions (e.g. `runs/big4_compact_vs_full.jsonl`) refer to the old
+   numbering and are not comparable; they are development rows, never exam rows.
+4. `judge.py preflight` (and `report["run"]["plan_list_label_check"]`) lists positions whose plan lists contain a paid retreat or anything else the labels fail to
+   name; the exam side can run it to check its references against the new label format (a reference that retreats must now name the payment, or list the payments as
+   separate accepted variants).
 
 ## Still not shown
 - No exam position, answer or bot output was used. The formal path and the analysis are tested on synthetic rows and fixtures only.
-- The rebuilt baseline printer is validated on three small fixtures; the full-plan comparison is label-based (canonical label equality), so it inherits the label
-  limitation above.
-- The percentile interval undercovers slightly at 10-17 games (see item 4); power is low for small true gaps.
+- The rebuilt baseline printer is validated on four small fixtures (Tool target, random-evolution target, retreat payment, Stadium); the full-plan comparison is
+  label-based (canonical label equality, order-sensitive), so it is only as good as the labels.
+- The frozen baseline executable plays `k<number>` / `km<number>` bots (km3); the playout pilot kx3 is a different program and has no frozen identity here: rows
+  from it fail `baseline_binary`. `--bots` defaults to `km3,judge`.
+- The percentile interval undercovers slightly at 10-17 games (see item 4); power is low for small true gaps. The card texts in the prompt come from
+  `lib/deckgym-database.json` (now part of the source hashes and recorded in the report); a card id missing from the database gets no text, silently.
+- Not changed, by decision: a position the lister cannot build stops `compare` before any comparison (exit 1), also when it is an unselected one (drop it from `--ids`);
+  a run that dies leaves a `did_not_finish` / `failed` stub at `--out`, never an older result.

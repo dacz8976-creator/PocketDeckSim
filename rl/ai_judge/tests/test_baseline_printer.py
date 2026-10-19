@@ -19,9 +19,15 @@ HAVE = os.path.exists(vb.DEFAULT_NEW) and os.path.exists(judge.PLANS_BIN)
 class BaselinePrinter(unittest.TestCase):
     def test_two_tool_targets_and_a_random_evolution_target_survive_every_step(self):
         ev = vb.validate(vb.DEFAULT_NEW, None)  # raises AssertionError with the labels seen when any check fails
-        for pid in ('MINI-BLOWER', 'MINI-QGE'):
+        for pid in ('MINI-BLOWER', 'MINI-QGE', 'MINI-RETREAT'):
             self.assertEqual(len(ev['checks'][pid]['legal_target_labels']), 2)
             self.assertEqual(ev['checks'][pid]['ambiguous'], 0)
+
+    def test_a_retreat_payment_keeps_its_energy_in_the_bots_move_list(self):
+        legal, choice = vb.last_legal(vb.run_pg_pos(vb.DEFAULT_NEW, 'MINI-RETREAT', seeds=(1,), positions=vb.RET_POS))
+        payments = sorted(l for l in legal if l.startswith('ChooseRetreatEnergy'))
+        self.assertEqual(payments, ['ChooseRetreatEnergy#{"energies":["Fire"],"to_in_play_idx":1}', 'ChooseRetreatEnergy#{"energies":["Water"],"to_in_play_idx":1}'])
+        self.assertIn(choice, payments)
 
     def test_the_old_executable_is_the_defect_this_fixes(self):
         old = vb.DEFAULT_OLD
@@ -30,6 +36,8 @@ class BaselinePrinter(unittest.TestCase):
         rows = vb.run_pg_pos(old, 'MINI-BLOWER', seeds=(1,))
         legal, choice = vb.last_legal(rows)
         self.assertEqual(sorted(set(l for l in legal if l.startswith('DiscardToolFromPokemon'))), ['DiscardToolFromPokemon'])  # two targets, one bare name
+        legal, choice = vb.last_legal(vb.run_pg_pos(old, 'MINI-RETREAT', seeds=(1,), positions=vb.RET_POS))
+        self.assertEqual(sorted(l for l in legal if l.startswith('RetreatPay')), ['RetreatPay:1', 'RetreatPay:1'])  # two payments, one label
 
 
 if __name__ == '__main__':

@@ -7,9 +7,11 @@ What it checks, on tests/fixtures (no exam data, no API, no game logs):
   1. Field Blower with two Tool holders: the baseline's legal actions at the target choice are TWO different `DiscardToolFromPokemon#{...}` labels, each with its
      own Pokémon (in_play_idx 0 and 1), and the bot's choice carries its target.
   2. Quick-Grow Extract with two Grass Pokémon: two different `ChooseRandomEvolutionTarget#{...}` labels (energy_type, in_play_idx), the bot's choice carries its target.
-  3. The baseline's concrete labels are byte-equal to the labels the plan lister prints for the same position and step (one canonical format across the packages).
-  4. Free play of km3 on those positions: every concrete label is kept in `plan_full`, and the harness maps the row to exactly ONE listed plan (no ambiguity).
-  5. (optional) the OLD executable, run on the same positions, prints the bare name for both targets: the defect this fix removes.
+  3. A retreat with two possible payments (a Pokémon holding Fire and Water, retreat cost 1): two different `ChooseRetreatEnergy#{"energies":[...],"to_in_play_idx":1}`
+     labels (Oct 19: the old `RetreatPay:<slot>` label dropped WHICH Energy was paid), the bot's choice carries its payment.
+  4. The baseline's concrete labels are byte-equal to the labels the plan lister prints for the same position and step (one canonical format across the packages).
+  5. Free play of km3 on those positions: every concrete label is kept in `plan_full`, and the harness maps the row to exactly ONE listed plan (no ambiguity).
+  6. (optional) the OLD executable, run on the same positions, prints the bare name for both Tool targets and `RetreatPay:1` for both payments: the defects fixed.
 It writes the evidence (the labels seen, the executable's sha256) as JSON.
 """
 import argparse, hashlib, json, os, subprocess, sys
@@ -33,8 +35,11 @@ def sha256(path):
     return h.hexdigest()
 
 
-def run_pg_pos(binary, pid, seeds=(1, 2, 3), bot='km3'):
-    cmd = [binary, '--positions', POS] + judge.deck_args(DECKS) + ['--seeds', ','.join(map(str, seeds)), '--bot', bot, '--only', pid]
+RET_POS = os.path.join(FIX, 'retreat_positions.json')
+
+
+def run_pg_pos(binary, pid, seeds=(1, 2, 3), bot='km3', positions=POS):
+    cmd = [binary, '--positions', positions] + judge.deck_args(DECKS) + ['--seeds', ','.join(map(str, seeds)), '--bot', bot, '--only', pid]
     r = subprocess.run(cmd, capture_output=True, text=True)
     if r.returncode:
         raise AssertionError(f'{binary} exited {r.returncode} on {pid}: {r.stderr[-400:]}')
@@ -53,13 +58,19 @@ def last_legal(rows, seed=1):
 
 def validate(binary=DEFAULT_NEW, old=None):
     ev = {'binary': binary, 'binary_sha256': sha256(binary), 'checks': {}}
-    lister = judge.list_plans(['MINI-BLOWER', 'MINI-QGE'], POS, DECKS)
-    for pid, prefix, force in [('MINI-BLOWER', 'DiscardToolFromPokemon#', 'Play:Field Blower'), ('MINI-QGE', 'ChooseRandomEvolutionTarget#', 'Play:Quick-Grow Extract')]:
-        rows = run_pg_pos(binary, pid)
+    lister = {**judge.list_plans(['MINI-BLOWER', 'MINI-QGE'], POS, DECKS), **judge.list_plans(['MINI-RETREAT'], RET_POS, DECKS)}
+    cases = [('MINI-BLOWER', POS, 'DiscardToolFromPokemon#', 'Play:Field Blower', lambda t: json.loads(t.split('#', 1)[1]).get('in_play_idx')),
+             ('MINI-QGE', POS, 'ChooseRandomEvolutionTarget#', 'Play:Quick-Grow Extract', lambda t: json.loads(t.split('#', 1)[1]).get('in_play_idx')),
+             ('MINI-RETREAT', RET_POS, 'ChooseRetreatEnergy#', 'Retreat:1', lambda t: tuple(json.loads(t.split('#', 1)[1]).get('energies')))]
+    for pid, positions, prefix, force, target_of in cases:
+        rows = run_pg_pos(binary, pid, positions=positions)
         legal, choice = last_legal(rows)
         targets = [l for l in legal if l.startswith(prefix)]
         assert len(targets) == 2 and len(set(targets)) == 2, f'{pid}: expected two different target labels, got {legal}'
-        assert all(json.loads(t.split('#', 1)[1]).get('in_play_idx') in (0, 1) for t in targets), targets
+        if pid == 'MINI-RETREAT':
+            assert sorted(target_of(t) for t in targets) == [('Fire',), ('Water',)], targets  # the two payments the Pokémon can make
+        else:
+            assert all(target_of(t) in (0, 1) for t in targets), targets
         assert choice in targets, f'{pid}: the bot choice {choice!r} is not one of the target labels'
         listed = {l for p in lister[pid]['plans'] for l in p['labels'] if l.startswith(prefix)}
         assert set(targets) == listed, f'{pid}: baseline labels {sorted(targets)} differ from the lister labels {sorted(listed)}'
@@ -67,8 +78,11 @@ def validate(binary=DEFAULT_NEW, old=None):
         assert len(free) == 3, free
         for j in free:
             kept = [l for l in j['plan'] if l.startswith(prefix)]
-            assert kept and all('#' in l for l in kept), f'{pid} seed {j["seed"]}: a target label lost its arguments: {j["plan"]}'
-        out = judge.run_pg_pos('km3', [pid], [1, 2, 3], lister, POS, DECKS, binary)
+            if pid != 'MINI-RETREAT':  # km3 may or may not retreat on its own; when it does, the payment label carries its Energy
+                assert kept and all('#' in l for l in kept), f'{pid} seed {j["seed"]}: a target label lost its arguments: {j["plan"]}'
+            else:
+                assert all('#' in l for l in kept), f'{pid} seed {j["seed"]}: a payment label lost its Energy: {j["plan"]}'
+        out = judge.run_pg_pos('km3', [pid], [1, 2, 3], lister, positions, DECKS, binary)
         assert all(r['plan_number'] is not None and not r['match_error'] for r in out), [(r['seed'], r['plan_number'], r['match_error']) for r in out]
         ev['checks'][pid] = {'force': force, 'legal_target_labels': sorted(targets), 'bot_choice': choice, 'lister_labels': sorted(listed),
                              'free_play_plans': [j['plan'] for j in free], 'harness_plan_numbers': [r['plan_number'] for r in out], 'ambiguous': 0}
@@ -77,6 +91,9 @@ def validate(binary=DEFAULT_NEW, old=None):
         legal, choice = last_legal(rows)
         ev['old_executable'] = {'binary': old, 'binary_sha256': sha256(old), 'legal_labels_at_the_target_choice': legal, 'bot_choice': choice,
                                 'drops_the_target': sorted(set(l for l in legal if l.startswith('DiscardToolFromPokemon'))) == ['DiscardToolFromPokemon']}
+        rows = run_pg_pos(old, 'MINI-RETREAT', seeds=(1,), positions=RET_POS)
+        legal, choice = last_legal(rows)
+        ev['old_executable']['retreat'] = {'legal_labels_at_the_payment_choice': legal, 'bot_choice': choice, 'drops_the_payment': legal.count('RetreatPay:1') == 2}
     return ev
 
 

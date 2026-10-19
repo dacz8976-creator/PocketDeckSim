@@ -418,5 +418,80 @@ class PlanList(unittest.TestCase):
         self.assertIn('EndTurn', labels)
 
 
+RET_POS = os.path.join(FIX, 'retreat_positions.json')
+OLD_POS = judge.DEFAULT_POSITIONS  # the 92 old positions (stage A); present in the repository
+
+
+@unittest.skipUnless(os.path.exists(judge.PLANS_BIN), 'judge_plans is not built')
+class RetreatPaymentLabels(unittest.TestCase):
+    """Oct 19 review finding: ChooseRetreatEnergy had the short label RetreatPay:<slot>, which dropped WHICH Energy was paid, so 1,142 of the 5,728 plans of the 92 old
+    positions could not be named by their own labels. It now takes the Name#JSON fallback."""
+
+    @classmethod
+    def setUpClass(cls):
+        cls.rec = judge.list_plans(['MINI-RETREAT'], RET_POS, DECKS)['MINI-RETREAT']
+
+    def test_two_payments_are_two_labels_with_their_energy_and_a_readable_step(self):
+        labels = {l for p in self.rec['plans'] for l in p['labels'] if l.startswith('ChooseRetreatEnergy')}
+        self.assertEqual(labels, {'ChooseRetreatEnergy#{"energies":["Fire"],"to_in_play_idx":1}', 'ChooseRetreatEnergy#{"energies":["Water"],"to_in_play_idx":1}'})
+        self.assertFalse(any('RetreatPay' in l for p in self.rec['plans'] for l in p['labels']))
+        steps = {s for p in self.rec['plans'] for s in p['steps'] if 'retreat cost' in s}
+        self.assertEqual(len(steps), 2, steps)
+        self.assertTrue(all(s.startswith('Pay the retreat cost of Ponyta (Active) (switching with Vulpix (Bench 1)) by discarding ') for s in steps), steps)
+        self.assertEqual(sorted(s.rsplit(' by discarding ', 1)[1] for s in steps), ['Fire Energy', 'Water Energy'])
+
+    def test_every_plan_is_named_by_its_own_labels(self):
+        check = judge.label_roundtrip({'MINI-RETREAT': self.rec}, RET_POS, DECKS)['MINI-RETREAT']
+        self.assertEqual((check['ambiguous'], check['unfollowable'], check['unique']), (0, 0, self.rec['n_plans']))
+
+    def test_a_reference_must_name_the_payment_and_a_bare_name_is_ambiguous(self):
+        retreat = [p for p in self.rec['plans'] if p['end'] == 'end_turn' and p['labels'][0] == 'Retreat:1' and 'Water' in ''.join(p['labels'])]
+        self.assertEqual(len(retreat), 1, [p['labels'] for p in self.rec['plans']])
+        recs = {'MINI-RETREAT': self.rec}
+        item = lambda tag, labels: ('MINI-RETREAT', tag, labels)
+        out = judge.match_plans([item('full', retreat[0]['labels']), item('bare', ['Retreat:1', 'ChooseRetreatEnergy', 'EndTurn']),
+                                 item('none', ['Retreat:1']),
+                                 item('flipped', ['Retreat:1', 'ChooseRetreatEnergy#{"to_in_play_idx":1,"energies":["Water"]}', 'EndTurn'])], recs, RET_POS, DECKS)
+        self.assertEqual(out['full'][0], retreat[0]['n'])
+        self.assertEqual(out['flipped'][0], retreat[0]['n'])  # key order in a requested label never matters
+        self.assertIsNone(out['bare'][0])
+        self.assertTrue(out['bare'][1].startswith('ambiguous'), out['bare'])  # the bare name fits both payments: never resolved to the first
+        self.assertIsNone(out['none'][0])
+        self.assertIn('ChooseRetreatEnergy', out['none'][1])  # a retreat whose payment is not named cannot be followed: it says which payments were legal
+
+
+@unittest.skipUnless(os.path.exists(judge.PLANS_BIN) and os.path.exists(OLD_POS), 'judge_plans or the old positions are not available')
+class ReplayOnOldPositions(unittest.TestCase):
+    def test_the_order_of_energies_in_a_requested_label_does_not_matter(self):
+        pid = 'KW-261013_022530000-t09'
+        rec = judge.list_plans([pid], OLD_POS)[pid]
+        two = [(p, l) for p in rec['plans'] for l in p['labels'] if l.startswith('ChooseRetreatEnergy#') and len(json.loads(l.split('#', 1)[1])['energies']) >= 2]
+        if not two:
+            self.skipTest('no two-Energy payment in this list')
+        p, label = two[0]
+        body = json.loads(label.split('#', 1)[1])
+        body['energies'] = list(reversed(body['energies']))
+        flipped = [('ChooseRetreatEnergy#' + json.dumps(body)) if l == label else l for l in p['labels']]
+        self.assertNotEqual(flipped, p['labels'])
+        out = judge.match_plans([(pid, 'x', flipped)], {pid: rec}, OLD_POS)
+        self.assertEqual(out['x'], (p['n'], None))
+
+    def test_a_dead_alternative_does_not_take_a_followable_move_list_down(self):
+        # the recorded plan of KW-261013_020824000-t03 places a Pawniard WITHOUT a slot and later attaches a Tool to slot 2: the slots where that later move is not legal
+        # used to abort the whole list ("unresolved"); they are now pruned and the list resolves
+        pid = 'KW-261013_020824000-t03'
+        positions = judge.load_positions(OLD_POS)
+        rec = judge.list_plans([pid], OLD_POS)[pid]
+        out = judge.match_plans([(pid, 'h', positions[pid]['his_plan'])], {pid: rec}, OLD_POS)
+        self.assertIsNotNone(out['h'][0], out)
+
+    def test_every_listed_plan_of_the_old_positions_is_named_by_its_own_labels(self):
+        ids = judge.resolve_ids(type('A', (), {'ids': None, 'id': None, 'set': 'stageA'}), judge.load_positions(OLD_POS))
+        check = judge.label_roundtrip(judge.list_plans(ids, OLD_POS), OLD_POS)
+        bad = {pid: v for pid, v in check.items() if v['ambiguous'] or v['unfollowable']}
+        self.assertEqual(bad, {})
+        self.assertEqual(sum(v['n_plans'] for v in check.values()), sum(v['unique'] for v in check.values()))
+
+
 if __name__ == '__main__':
     unittest.main()
