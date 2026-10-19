@@ -6,7 +6,7 @@
 The parser, prompt and cost tests need nothing built. The plan-list tests (count, dedupe, chance cut-off, no future leakage, cap) run the
 judge_plans binary on the small positions in tests/fixtures and are skipped when it is not built (see README.md; JUDGE_PLANS_BIN points at it).
 """
-import json, os, subprocess, sys, unittest
+import json, os, subprocess, sys, tempfile, unittest
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, os.path.dirname(HERE))
@@ -129,6 +129,22 @@ class ConcreteActionFormat(unittest.TestCase):
     def test_canonical_and_short_labels_pass_unchanged(self):
         for l in ['Attach:1Darkness@2 zone', 'EndTurn', 'DiscardToolFromPokemon', 'DiscardToolFromPokemon#{"in_play_idx":1,"player":1,"tool_idx":0}']:
             self.assertEqual(judge.concrete_label(l), l)
+
+    def test_json_key_order_and_spacing_never_matter(self):
+        a = judge.concrete_label('DiscardToolFromPokemon#{"tool_idx": 0, "player": 1, "in_play_idx": 2}')
+        b = judge.concrete_label('DiscardToolFromPokemon#{"in_play_idx":2,"player":1,"tool_idx":0}')
+        c = judge.concrete_label('DiscardToolFromPokemon{player:1,in_play_idx:2,tool_idx:0}')  # the legacy spelling of the same action
+        self.assertEqual(a, b)
+        self.assertEqual(b, c)
+        self.assertEqual(b, 'DiscardToolFromPokemon#{"in_play_idx":2,"player":1,"tool_idx":0}')
+        # raw UTF-8, as serde_json prints it
+        self.assertEqual(judge.concrete_label('X#{"name": "Poké Ball"}'), 'X#{"name":"Poké Ball"}')
+        with self.assertRaises(ValueError):
+            judge.concrete_label('DiscardToolFromPokemon#{"tool_idx": 0,')  # not JSON: never guessed at
+
+    def test_an_argument_is_never_dropped_to_the_bare_name(self):
+        self.assertNotEqual(judge.concrete_label('ChooseRandomEvolutionTarget#{"in_play_idx":0}'), judge.concrete_label('ChooseRandomEvolutionTarget#{"in_play_idx":1}'))
+        self.assertNotEqual(judge.concrete_label('ChooseRandomEvolutionTarget#{"in_play_idx":0}'), 'ChooseRandomEvolutionTarget')
 
     def test_a_legacy_label_that_cannot_be_read_without_loss_is_rejected(self):
         for l in ['Y{card:Some(Pawniard)}', 'Y{a:[1,2]}', 'Y{oops}']:
@@ -306,6 +322,59 @@ class PlanList(unittest.TestCase):
         self.assertNotEqual(k0['a'], k0['b'])
         self.assertEqual(len(k0['c']), 2)
         self.assertTrue(set(k0['a']) | set(k0['b']) == set(k0['c']))
+
+    def test_the_lister_itself_reads_labels_whatever_their_json_key_order(self):
+        # straight to the binary, bypassing judge.concrete_label: spaces and reversed key order must reach the same plan
+        rec = plans(['MINI-BLOWER'])[0]['MINI-BLOWER']
+        full = sorted({l for p in rec['plans'] for l in p['labels'] if l.startswith('DiscardToolFromPokemon#')})
+        name, js = full[0].split('#', 1)
+        obj = json.loads(js)
+        scrambled = name + '#' + json.dumps(dict(reversed(list(obj.items()))), separators=(', ', ': '))
+        self.assertNotEqual(scrambled, full[0])
+        with tempfile.NamedTemporaryFile('w', suffix='.jsonl', delete=False) as f:
+            f.write(json.dumps({'id': 'MINI-BLOWER', 'tag': 'plain', 'labels': ['Play:Field Blower', full[0]]}) + '\n')
+            f.write(json.dumps({'id': 'MINI-BLOWER', 'tag': 'scrambled', 'labels': ['Play:Field Blower', scrambled]}) + '\n')
+            path = f.name
+        try:
+            cmd = [judge.PLANS_BIN, '--positions', POS] + judge.deck_args(DECKS) + ['--replay', path]
+            out = {json.loads(l)['tag']: json.loads(l) for l in subprocess.run(cmd, capture_output=True, text=True, check=True).stdout.splitlines()}
+        finally:
+            os.unlink(path)
+        self.assertTrue(out['plain']['ok'] and out['scrambled']['ok'], out)
+        self.assertEqual(out['plain']['keys'], out['scrambled']['keys'])
+
+    def test_a_random_evolution_target_keeps_its_own_identity(self):
+        rec = plans(['MINI-QGE'])[0]['MINI-QGE']
+        targets = {l for p in rec['plans'] for l in p['labels'] if l.startswith('ChooseRandomEvolutionTarget')}
+        self.assertEqual(len(targets), 2, targets)  # two Bulbasaur: two different labels, each with its slot
+        self.assertTrue(all('in_play_idx' in t for t in targets))
+        chosen = [p for p in rec['plans'] if p['labels'][-1] in targets and p['labels'][:-1] == ['Play:Quick-Grow Extract']]
+        self.assertEqual(len(chosen), 2)
+        self.assertTrue(all(p['end'] == 'chance' for p in chosen))  # the evolution drawn from the deck is a chance event: the plan stops at the choice
+        full = sorted(targets)
+        keys = judge.replay([('MINI-QGE', 'a', ['Play:Quick-Grow Extract', full[0]]), ('MINI-QGE', 'b', ['Play:Quick-Grow Extract', full[1]]),
+                             ('MINI-QGE', 'bare', ['Play:Quick-Grow Extract', 'ChooseRandomEvolutionTarget'])], POS, DECKS)
+        self.assertNotEqual(keys['a'], keys['b'])
+        self.assertEqual(len(keys['bare']), 2)
+        with self.assertRaises(judge.AmbiguousPlan):
+            judge.number_for(rec, keys['bare'])  # a bare name is never resolved to the first target
+        self.assertNotEqual(judge.number_for(rec, keys['a']), judge.number_for(rec, keys['b']))
+
+    def test_playing_a_stadium_is_never_chance_and_using_mesagoza_always_is(self):
+        rec = plans(['MINI-STADIUM'])[0]['MINI-STADIUM']
+        play = [p for p in rec['plans'] if 'Play:Mesagoza' in p['labels']]
+        self.assertTrue(play)
+        for p in play:
+            if p['labels'][-1] == 'Play:Mesagoza':
+                self.assertNotEqual(p['end'], 'chance', p['labels'])  # playing the Stadium ends no plan by itself
+        used = [p for p in rec['plans'] if 'UseStadium' in p['labels']]
+        self.assertTrue(used)
+        for p in used:
+            self.assertEqual(p['labels'][-1], 'UseStadium')  # nothing follows the flip
+            self.assertEqual(p['end'], 'chance')
+            self.assertEqual(p['final']['kind'], 'coin_or_random')
+            self.assertEqual(p['final']['branch_chances'][-1], 0.5)  # tails: nothing happens, 50%
+        self.assertTrue(any(p['labels'][-1] == 'Play:Mesagoza' and p['end'] == 'end_turn' or p['end'] == 'attack' for p in play))
 
     def test_every_generation_input_is_echoed_and_a_capped_list_is_refused(self):
         rec = plans(['MINI-DRAW'], extra=['--max-plans', '3'])[0]['MINI-DRAW']

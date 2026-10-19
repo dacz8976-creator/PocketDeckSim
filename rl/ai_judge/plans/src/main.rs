@@ -829,6 +829,21 @@ fn list_plans(world: &State, lim: &Limits) -> (Vec<Value>, usize, usize, bool, u
     (plans, total_found, nodes, capped, deepest_cut)
 }
 
+/// A `Name#{json}` label with its JSON read and written back in the compact, key-sorted form the printers use, so key order and spacing in a requested
+/// label never matter (serde_json keeps its maps sorted here). Anything else, and JSON that does not parse, is returned unchanged (it then simply
+/// matches no legal action and the replay says so).
+fn canon_label(l: &str) -> String {
+    match l.split_once('#') {
+        Some((name, js)) if name.chars().next().map_or(false, |c| c.is_ascii_alphabetic()) && name.chars().all(|c| c.is_ascii_alphanumeric() || c == '_') => {
+            match serde_json::from_str::<Value>(js) {
+                Ok(v) => format!("{name}#{v}"),
+                Err(_) => l.to_string(),
+            }
+        }
+        _ => l.to_string(),
+    }
+}
+
 /// Recorded plans name a Place or an Ability without its slot number.
 fn label_matches(engine: &str, want: &str) -> bool {
     engine == want || (!want.contains('#') && engine.split('#').next() == Some(want)) || ((want.starts_with("Place:") || want.starts_with("Ability")) && !want.contains('@') && engine.split('@').next() == Some(want))
@@ -932,7 +947,7 @@ fn main() {
         for line in std::fs::read_to_string(file).unwrap().lines().filter(|l| !l.trim().is_empty()) {
             let req: Value = serde_json::from_str(line).unwrap();
             let id = req["id"].as_str().unwrap().to_string();
-            let labels: Vec<String> = req["labels"].as_array().unwrap().iter().map(|x| x.as_str().unwrap().to_string()).collect();
+            let labels: Vec<String> = req["labels"].as_array().unwrap().iter().map(|x| canon_label(x.as_str().unwrap())).collect();
             let world = worlds
                 .entry(id.clone())
                 .or_insert_with(|| match by_id.get(&id) {

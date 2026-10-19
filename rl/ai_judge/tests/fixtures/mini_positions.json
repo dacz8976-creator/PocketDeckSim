@@ -214,5 +214,104 @@
   "his_plan": [
    "Play:Field Blower"
   ]
+ },
+ {
+  "id": "MINI-STADIUM",
+  "deck": "K01",
+  "game": "mini",
+  "his_turn": 3,
+  "turn_count": 5,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Mesagoza B2a 093"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Pawniard B3a 041",
+     "hp": 50,
+     "energy": [
+      "Darkness"
+     ]
+    },
+    {
+     "card": "Glimmet B3a 044",
+     "hp": 60
+    }
+   ],
+   "energy_now": "Darkness",
+   "energy_next": "Darkness",
+   "knockouts": 0
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Pichu A4 066",
+     "hp": 30
+    }
+   ],
+   "energy_next": "Lightning"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Mesagoza"
+  ]
+ },
+ {
+  "id": "MINI-QGE",
+  "deck": "QGE",
+  "game": "mini",
+  "his_turn": 3,
+  "turn_count": 5,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [
+    "Quick-Grow Extract B1a 067"
+   ],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Bulbasaur A1 001",
+     "hp": 70
+    },
+    {
+     "card": "Bulbasaur A1 001",
+     "hp": 70
+    }
+   ],
+   "energy_now": "Grass",
+   "energy_next": "Grass",
+   "knockouts": 0
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Pichu A4 066",
+     "hp": 30
+    }
+   ],
+   "energy_next": "Lightning"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [
+   "Play:Quick-Grow Extract"
+  ]
  }
 ]

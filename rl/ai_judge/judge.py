@@ -15,6 +15,7 @@ Design rules (rl/results/weekly_review_2026-10-18/PLAN.md, step 2):
   * dry run by default: nothing leaves the machine unless --live is given.
 """
 import argparse, hashlib, inspect, json, os, re, subprocess, sys, threading, time, urllib.request, urllib.error
+import formal
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, '..', '..'))
@@ -550,9 +551,20 @@ def number_for(rec, keys):
 _LEGACY = re.compile(r'^([A-Za-z]\w*)\{(.*)\}$')
 
 
+def _compact(obj):
+    return json.dumps(obj, sort_keys=True, separators=(',', ':'), ensure_ascii=False)  # the form serde_json prints: no spaces, keys sorted, raw UTF-8
+
+
 def concrete_label(label):
-    """One canonical concrete action label across packages: Name#<compact JSON, keys sorted>. A legacy `Name{field:value,...}` label is converted when every
-    value is an integer, true/false or a bare word (lossless); anything else is rejected with a clear error. Short names and Name#JSON pass unchanged."""
+    """One canonical concrete action label across packages: Name#<compact JSON, keys sorted>. A `Name#{json}` label is re-written in that form, so JSON key
+    order and spacing never matter (its content must be valid JSON, else ValueError). A legacy `Name{field:value,...}` label is converted when every
+    value is an integer, true/false or a quoted string (lossless); anything else is rejected with a clear error. Short names pass unchanged."""
+    name, hash_, js = label.partition('#')
+    if hash_ and re.fullmatch(r'[A-Za-z]\w*', name):
+        try:
+            return f'{name}#{_compact(json.loads(js))}'
+        except ValueError:
+            raise ValueError(f'concrete label {label!r}: the part after # is not valid JSON') from None
     m = _LEGACY.match(label)
     if not m:
         return label
@@ -570,7 +582,7 @@ def concrete_label(label):
             obj[k] = v[1:-1]
         else:
             raise ValueError(f'unsupported legacy concrete label {label!r}: value {v!r} is not an integer, boolean or quoted string')
-    return f"{m.group(1)}#{json.dumps(obj, sort_keys=True, separators=(',', ':'))}"
+    return f'{m.group(1)}#{_compact(obj)}'
 
 
 def match_plans(items, recs, positions_path=DEFAULT_POSITIONS, decks_dir=DEFAULT_DECKS):
@@ -652,16 +664,27 @@ def main(argv=None):
     p.add_argument('--allow-capped', action='store_true')
     p.add_argument('--max-tokens', type=int, default=MAX_TOKENS)
     p.add_argument('--bot', required=True)
+    p.add_argument('--pg-pos-bin', default=PG_POS_BIN, help='the pg_pos executable that plays the step bots (its sha256 belongs in the run record)')
     p.add_argument('--seeds', default='1')
     p.add_argument('--order', default=FROZEN['order'])
     p.add_argument('--live', action='store_true')
     p.add_argument('--max-calls', type=int, default=1)
     p.add_argument('--model', default=MODEL)
     p.add_argument('--out')
-    p = sub.add_parser('score')
+    p = sub.add_parser('score', help='development check on old positions: agreement with the recorded plan; FAILS (exit 2) on any unresolved row unless --lenient')
     p.add_argument('--results', required=True)
     p.add_argument('--positions', default=DEFAULT_POSITIONS)
     p.add_argument('--decks', default=DEFAULT_DECKS)
+    p.add_argument('--lenient', action='store_true', help='development only: list unresolved rows but do not fail (they are still never counted)')
+    p = sub.add_parser('compare', help='the formal paired comparison: every expected row accounted for, or the batch fails / is inconclusive (formal.py)'); common(p)
+    p.add_argument('--results', nargs='+', required=True)
+    p.add_argument('--bots', default='km3,kx3,judge')
+    p.add_argument('--seeds', default='1', help='seeds of the step bots (km3, kx3): one expected row per seed')
+    p.add_argument('--judge-repeats', type=int, default=1, help='judge rows per position (repeat indices 0..N-1)')
+    p.add_argument('--references', required=True, help='JSON: {position: [{"id": ..., "labels": [...]}]} the accepted move lists')
+    p.add_argument('--on-problem', choices=['fail', 'inconclusive'], default='fail')
+    p.add_argument('--allow-unfrozen', action='store_true', help='experiments only: accept judge rows not produced under the frozen settings')
+    p.add_argument('--out', help='write the report here (also written when the batch fails)')
     a = ap.parse_args(argv)
 
     if a.cmd == 'fingerprint':
@@ -690,15 +713,57 @@ def main(argv=None):
         recs = list_plans(pids, a.positions, a.decks)
         his = match_plans([(i, i, positions[i]['his_plan']) for i in pids if positions[i].get('his_plan')], recs, a.positions, a.decks)
         tot = ok = 0
+        unresolved = []
         for r in rows:
-            his_n = his.get(r['position'], (None, None))[0]
+            his_n, his_err = his.get(r['position'], (None, 'no recorded plan'))
             ag = None if (his_n is None or r.get('plan_number') is None) else r['plan_number'] == his_n
             if ag is not None:
                 tot += 1
                 ok += bool(ag)
+            else:
+                unresolved.append((r['position'], r['bot'], r.get('seed', r.get('repeat')), his_err if his_n is None else (r.get('match_error') or r.get('parse_error') or 'no listed plan')))
             print(f"{r['position']:28} {r['bot']:6} seed={r.get('seed')} plan {r.get('plan_number')} / recorded {his_n} agrees={ag}")
         print(f'agreement {ok}/{tot}: same listed plan as the recorded one (old positions only: a development check, not evidence)')
+        if unresolved:
+            print(f'{len(unresolved)} of {len(rows)} rows could not be scored (not counted in the {tot} above):', file=sys.stderr)
+            for u in unresolved[:20]:
+                print('  ', u, file=sys.stderr)
+            if not a.lenient:
+                print('score FAILS: unresolved rows are never silently dropped (use --lenient only for a development look)', file=sys.stderr)
+                return 2
         return 0
+
+    if a.cmd == 'compare':
+        positions = load_positions(a.positions)
+        ids = resolve_ids(a, positions)
+        if not ids:
+            sys.exit('no positions: give --ids, --id or --set')
+        rows = []
+        for fn in a.results:
+            rows += [json.loads(l) for l in open(fn, encoding='utf-8') if l.strip()]
+        recs = list_plans(ids, a.positions, a.decks, a.world_seed, a.max_plans)
+        with open(a.references, encoding='utf-8') as f:
+            references = json.load(f)
+        games = {i: positions[i].get('game') for i in ids}
+        try:
+            report = formal.compare(rows, ids, a.bots.split(','), [int(x) for x in a.seeds.split(',')], a.judge_repeats, references, recs,
+                                    lambda items, r: match_plans(items, r, a.positions, a.decks), games, a.on_problem, not a.allow_unfrozen)
+        except formal.BatchFailed as e:
+            report = e.report
+            if a.out:
+                json.dump(report, open(a.out, 'w', encoding='utf-8'), indent=1)
+            print(f'COMPARISON FAILED: {len(e.problems)} problem(s); no agreement is reported:', file=sys.stderr)
+            formal.print_problems(e.problems)
+            return formal.exit_code(report)
+        if a.out:
+            json.dump(report, open(a.out, 'w', encoding='utf-8'), indent=1)
+        if report['status'] != 'complete':
+            print(f'COMPARISON {report["status"].upper()}: {len(report["problems"])} problem(s); every expected row is listed in the report, no agreement is reported:', file=sys.stderr)
+            formal.print_problems(report['problems'])
+        else:
+            for bot, g in report['agreement'].items():
+                print(f"{bot}: {g['agree']}/{g['rows']} rows agree with an accepted move")
+        return formal.exit_code(report)
 
     positions = load_positions(a.positions)
     ids = resolve_ids(a, positions)
@@ -788,8 +853,13 @@ def main(argv=None):
         if a.live:
             from concurrent.futures import ThreadPoolExecutor
             with ThreadPoolExecutor(max_workers=max(1, getattr(a, 'workers', 1))) as ex:
-                list(ex.map(one, tasks))
+                done = list(ex.map(one, tasks))
             print(f'{calls} call(s), about ${total:.4f} ({PRICE_NOTE})', file=sys.stderr)
+            skipped = sum(r is None for r in done)
+            failed = [r for r in done if r is not None and r['plan_number'] is None]
+            if skipped or failed:
+                print(f'INCOMPLETE BATCH: {skipped} call(s) not made (--stop-usd) and {len(failed)} without a usable choice; the file has every row that was made', file=sys.stderr)
+                return 2
         else:
             for t in tasks:
                 r = one(t)
@@ -799,8 +869,16 @@ def main(argv=None):
     if a.cmd == 'run':
         seeds = [int(x) for x in a.seeds.split(',')]
         plan_lists = list_plans(ids, a.positions, a.decks, a.world_seed, a.max_plans)
-        for r in run_pg_pos(a.bot, ids, seeds, plan_lists, a.positions, a.decks):
+        bad = []
+        for r in run_pg_pos(a.bot, ids, seeds, plan_lists, a.positions, a.decks, a.pg_pos_bin):
             emit(r)
+            if r['plan_number'] is None:
+                bad.append((r['position'], r['seed'], r.get('match_error')))
+        if bad:
+            print(f'{len(bad)} row(s) could not be mapped to ONE listed plan (written to the file with plan_number null and a match_error); the batch FAILS:', file=sys.stderr)
+            for b in bad[:20]:
+                print('  ', b, file=sys.stderr)
+            return 2
         return 0
     return 0
 
