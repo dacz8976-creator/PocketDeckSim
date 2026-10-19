@@ -29,6 +29,16 @@ observed cases below all fit it):
 | 4. Defender-side effects | "takes −X damage from attacks" (Heavy Helmet, Metal Core Barrier, Steel Apron, Abilities, attack effects like Superb Shield), "takes +X damage from attacks", damage prevention (Safeguard, Disguise, "prevent all damage that is X or less", coin-flip prevention like Securely Sheltered) | Metal Core Barrier −50: Wild Swing 60 → 10, Mega Blaster 140 → 90 [OBSERVED 220914]; Fighting Coach +20 and Heavy Helmet −20 on 110 → 110 [OBSERVED 031007] |
 
 - **Damage never goes below 0.** Hisuian Goodra's Securely Sheltered (Heads, −80) against a 70-damage Quick Straight gave a literal 0. [OBSERVED 031007]
+- **An attack that step 2 takes to 0 does 0: no Weakness.**
+  - [OBSERVED Growl_weakness_test, Oct 19]: under Cubone's Growl (−20 on the Defending Pokémon's attacks), Pheromosa's Jump Blues (20) did **0** to the Grass-weak Active Cubone. Weakness did not bring it back to 20.
+  - **The cut also reaches the Bench:** the same Jump Blues did 0 to the Benched Hariyama.
+  - **Control:** under the same −20, Shaymin's Flop (30) did 30 to Cubone (30 − 20 + 20).
+  - **Engine:** it gave 20 for the Active hit until the fix on branch `claude/growl-zero-no-weakness`, not yet pinned; it already cut the Bench hit (`05` #11, `08` T7).
+- **A hit back keeps the attack's Weakness rules even when its holder is knocked out.**
+  - [OBSERVED Boundedfield_hitback_test, Oct 19]: with Bounded Field in play, Alolan Sandslash's Spike Armor (40) hit back on the Water-weak Heatran with "Weakness 80" (40 × 2). This came after Heatran's attack had knocked Sandslash out.
+  - Before Bounded Field, the same game's hit back on the Water-weak Litten showed Weakness 60 (40 + 20).
+  - So Bounded Field doubles a non-Mega holder's hit back (section 2), and the holder's knockout doesn't stop it.
+  - **Engine ✓:** the hit back runs before knockouts are handled, with Bounded Field's ×2. There's a test on the same branch.
 - Boosts from several sources add up (two Clemont's Backpacks + Training Area = +50) [OBSERVED trial-manectric]; same-name passive boosts stack (two Fighting Coach = +40) [COMMUNITY] pokemon-zone. Several reductions on one Pokémon add up the same way: Metal Core Barrier (−50) plus Skarmory ex's Steel Wing ("During your opponent's next turn, this Pokémon takes −20 damage from attacks") stopped a 70-damage Turbo Shark completely (70 − 50 − 20 = 0) [OBSERVED native-skarmory-indeedee]. (An earlier fact-check wrongly said Steel Wing wasn't a real card and this was dropped; it is Skarmory ex's attack, A4 124.)
 - The GameWith JP weakness page gives the same order independently: "10(ワザのダメージ)+20(弱点)-20(ワザの効果)". [COMMUNITY]
 
@@ -69,6 +79,7 @@ So flat cases agree; cases with a reduction bigger than the pre-Weakness damage,
   - [OBSERVED] four times: Electrispark's Bench portion got Clemont's Backpack's +20 but not Training Area's +10 (023151, trial-manectric); Random Spark on a Benched Darkrai got no Training Area bonus (second-altaria).
   - [COMMUNITY] did2memo (JP): Giovanni's +10 applies to the Active part of a spread/random attack only; not to Bench picks, not to Ability damage, not to a 0-damage result.
   - ⚠ Engine: every turn-long boost is Active-only (`hooks/core.rs:1015`), so Clemont's Backpack's +20 never reaches the Bench (`07` M2, shown by running it).
+- **Attacker-side debuffs reach the Bench.** "Attacks used by this Pokémon do −X damage" (Growl, Moonblast, Teary Attack) cuts every target the attack damages. Under Growl, Jump Blues's 20 to a Benched Hariyama did 0 [OBSERVED Growl_weakness_test, Oct 19]. Engine ✓ (`modify_damage`'s carried reduction).
 - Defender-side effects on a Benched Pokémon apply if their text doesn't restrict them to the Active Spot (e.g. Protective Poncho *only* works on the Bench; Rocky Helmet *only* in the Active Spot). [INFERRED from card text; Protective Poncho [OBSERVED second-altaria]]
   - Protective Poncho [OBSERVED 195929, Sept 29]: on the Bench it blocked Blizzard's Bench damage twice (Regice stayed at 10); on an Active Regice it did nothing (Ice Wing 110 → 70, Water Shuriken 110 → 90). Engine ✓. Not seen: Water Shuriken aimed at a Benched Poncho holder (its Ability protection is card text only).
 - A protection Ability on the Active (Oricorio's Safeguard vs ex attacks) protects only that Pokémon; the same attack's Bench damage still lands. [OBSERVED 031901, 170229]
