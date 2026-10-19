@@ -1,0 +1,765 @@
+{
+ "summary": {
+  "points": 51,
+  "games": 27,
+  "by_kind": {
+   "attack now": 21,
+   "prepare": 24,
+   "sacrifice": 6
+  },
+  "by_deck": {
+   "12-ariados-whimsicott-ogerpon": 14,
+   "13-a-ninetales-raticate": 23,
+   "kingambit_list_A": 14
+  },
+  "kingambit_share": 0.275,
+  "max_per_game": 4,
+  "abandon": "0 usable abandon turns exist in the eligible games (inventory: abandon usable 0, near-usable 1), so none could be included",
+  "eligible_usable_turns": 91
+ },
+ "picked": [
+  {
+   "game": "20261014_153908000_iOS",
+   "turn": 2,
+   "global_turn": 4,
+   "id": "LAD-20261014_153908000_iOS-t4",
+   "deck": "12-ariados-whimsicott-ogerpon",
+   "kind": "attack now",
+   "why": "attack-now turn; Poke Ball->Spinarak, evolve Whimsicott, 2 retreat-cost items, Grass Knot KO Indeedee ex"
+  },
+  {
+   "game": "20261014_153908000_iOS",
+   "turn": 3,
+   "global_turn": 6,
+   "id": "LAD-20261014_153908000_iOS-t6",
+   "deck": "12-ariados-whimsicott-ogerpon",
+   "kind": "prepare",
+   "why": "prepare turn; Quick-Grow on Spinarak->Ariados, Research drew Copycat+Lisia, Grass Knot 170 no KO"
+  },
+  {
+   "game": "20261014_214436000_iOS",
+   "turn": 2,
+   "global_turn": 4,
+   "id": "LAD-20261014_214436000_iOS-t4",
+   "deck": "13-a-ninetales-raticate",
+   "kind": "prepare",
+   "why": "prepare turn; Research (Cyrus, Cape), Water on active, evolve Ninetales ex, Elegant Cape, no attack"
+  },
+  {
+   "game": "20261014_214436000_iOS",
+   "turn": 3,
+   "global_turn": 6,
+   "id": "LAD-20261014_214436000_iOS-t6",
+   "deck": "13-a-ninetales-raticate",
+   "kind": "attack now",
+   "why": "attack-now turn; Evolve 2nd Ninetales, Field Blower on Training Area, Binding Snow KO Igglybuff"
+  },
+  {
+   "game": "20261014_214436000_iOS",
+   "turn": 5,
+   "global_turn": 10,
+   "id": "LAD-20261014_214436000_iOS-t10",
+   "deck": "13-a-ninetales-raticate",
+   "kind": "prepare",
+   "why": "prepare turn; Rattata, Research, Poke Ball 2nd Rattata, Binding Snow 80 no KO; Raticate held"
+  },
+  {
+   "game": "20261014_215114000_iOS",
+   "turn": 2,
+   "global_turn": 4,
+   "id": "LAD-20261014_215114000_iOS-t4",
+   "deck": "13-a-ninetales-raticate",
+   "kind": "prepare",
+   "why": "prepare turn; Research (Field Blower, Poke Ball), Poke Ball->Vulpix, Cape+Water on bench Vulpix, no attack"
+  },
+  {
+   "game": "20261014_215114000_iOS",
+   "turn": 3,
+   "global_turn": 6,
+   "id": "LAD-20261014_215114000_iOS-t6",
+   "deck": "13-a-ninetales-raticate",
+   "kind": "attack now",
+   "why": "attack-now turn; Sightseer->Ninetales ex, evolve, Water, Binding Snow 80 on Hydreigon"
+  },
+  {
+   "game": "20261014_215114000_iOS",
+   "turn": 5,
+   "global_turn": 10,
+   "id": "LAD-20261014_215114000_iOS-t10",
+   "deck": "13-a-ninetales-raticate",
+   "kind": "attack now",
+   "why": "attack-now turn; Poke Ball->Rattata, no energy/supporter, Binding Snow KO Absol"
+  },
+  {
+   "game": "20261014_215114000_iOS",
+   "turn": 6,
+   "global_turn": 12,
+   "id": "LAD-20261014_215114000_iOS-t12",
+   "deck": "13-a-ninetales-raticate",
+   "kind": "prepare",
+   "why": "prepare turn; Evolved Raticate ex, Water on bench, Binding Snow with 10HP Ninetales"
+  },
+  {
+   "game": "20261014_225451000_iOS",
+   "turn": 2,
+   "global_turn": 4,
+   "id": "LAD-20261014_225451000_iOS-t4",
+   "deck": "13-a-ninetales-raticate",
+   "kind": "attack now",
+   "why": "attack-now turn; Red Card refreshed hand to Sabrina+2 Ninetales; drew Vulpix; bench, evolve, Sabrina to pull energized Rotom, Binding Snow 80"
+  },
+  {
+   "game": "20261014_230328000_iOS",
+   "turn": 2,
+   "global_turn": 3,
+   "id": "LAD-20261014_230328000_iOS-t3",
+   "deck": "13-a-ninetales-raticate",
+   "kind": "prepare",
+   "why": "prepare turn; Poke Ball, evolve Ninetales (Cape), Copycat dumped Ninetales/Raticate, Field Blower, Water, no attack"
+  },
+  {
+   "game": "20261014_231006000_iOS",
+   "turn": 2,
+   "global_turn": 3,
+   "id": "LAD-20261014_231006000_iOS-t3",
+   "deck": "13-a-ninetales-raticate",
+   "kind": "prepare",
+   "why": "prepare turn; Evolve Raticate (steal Fire) and Ninetales, Research, empty Poke Ball, bench Rattata, Water"
+  },
+  {
+   "game": "20261014_231006000_iOS",
+   "turn": 5,
+   "global_turn": 9,
+   "id": "LAD-20261014_231006000_iOS-t9",
+   "deck": "13-a-ninetales-raticate",
+   "kind": "attack now",
+   "why": "attack-now turn; 2nd Raticate evolve + steal Fire, Water, Binding Snow 100 no KO; Cyrus held"
+  },
+  {
+   "game": "20261014_233402000_iOS",
+   "turn": 3,
+   "global_turn": 5,
+   "id": "LAD-20261014_233402000_iOS-t5",
+   "deck": "13-a-ninetales-raticate",
+   "kind": "sacrifice",
+   "why": "every usable sacrifice turn is included; Raticate steal Darkness, bench Vulpix->Ninetales, Water on dying active Vulpix, Gnaw 20"
+  },
+  {
+   "game": "20261014_233402000_iOS",
+   "turn": 4,
+   "global_turn": 7,
+   "id": "LAD-20261014_233402000_iOS-t7",
+   "deck": "13-a-ninetales-raticate",
+   "kind": "attack now",
+   "why": "attack-now turn; Field Blower on Needle, Water, Binding Snow 80"
+  },
+  {
+   "game": "20261014_233402000_iOS",
+   "turn": 5,
+   "global_turn": 9,
+   "id": "LAD-20261014_233402000_iOS-t9",
+   "deck": "13-a-ninetales-raticate",
+   "kind": "attack now",
+   "why": "attack-now turn; Water on Raticate, Binding Snow KO Zoroark (2 pts); Cyrus/Sabrina held, Ninetales left exposed"
+  },
+  {
+   "game": "20261014_234728000_iOS",
+   "turn": 3,
+   "global_turn": 5,
+   "id": "LAD-20261014_234728000_iOS-t5",
+   "deck": "13-a-ninetales-raticate",
+   "kind": "attack now",
+   "why": "attack-now turn; Water, Field Blower on Shell Balloon, Copycat, Binding Snow KO Dragonair"
+  },
+  {
+   "game": "20261014_234728000_iOS",
+   "turn": 4,
+   "global_turn": 7,
+   "id": "LAD-20261014_234728000_iOS-t7",
+   "deck": "13-a-ninetales-raticate",
+   "kind": "prepare",
+   "why": "prepare turn; Research (Cape, Ninetales #2), evolve 2nd Ninetales, Shore, Water+Cape on bench Ninetales, Binding Snow 80"
+  },
+  {
+   "game": "20261014_234728000_iOS",
+   "turn": 5,
+   "global_turn": 9,
+   "id": "LAD-20261014_234728000_iOS-t9",
+   "deck": "13-a-ninetales-raticate",
+   "kind": "prepare",
+   "why": "prepare turn; Sightseer (Raticate), Water on benched Rattata not Ninetales, Binding Snow KO Gouging Fire; Ninetales promoted later with 1 Water"
+  },
+  {
+   "game": "20261014_142546000_iOS",
+   "turn": 2,
+   "global_turn": 3,
+   "id": "LAD-20261014_142546000_iOS-t3",
+   "deck": "12-ariados-whimsicott-ogerpon",
+   "kind": "attack now",
+   "why": "attack-now turn; Evolve Ariados, Cape on Ogerpon, Copycat, Grass, Pierce KO Mantyke"
+  },
+  {
+   "game": "20261014_142546000_iOS",
+   "turn": 4,
+   "global_turn": 7,
+   "id": "LAD-20261014_142546000_iOS-t7",
+   "deck": "12-ariados-whimsicott-ogerpon",
+   "kind": "attack now",
+   "why": "attack-now turn; Hiking Trail, 2nd Ariados, Research, Whimsicott, X Speed retreat, 2 Goo-zooka, Grass Knot 160 KO Mega Sharpedo ex"
+  },
+  {
+   "game": "20261014_143111000_iOS",
+   "turn": 3,
+   "global_turn": 6,
+   "id": "LAD-20261014_143111000_iOS-t6",
+   "deck": "12-ariados-whimsicott-ogerpon",
+   "kind": "attack now",
+   "why": "attack-now turn; Lillie, bench Spinarak, Grass on Ogerpon, Grass Knot 130 KO Marshtomp; Cottonee kept in hand"
+  },
+  {
+   "game": "20261014_143111000_iOS",
+   "turn": 4,
+   "global_turn": 8,
+   "id": "LAD-20261014_143111000_iOS-t8",
+   "deck": "12-ariados-whimsicott-ogerpon",
+   "kind": "attack now",
+   "why": "attack-now turn; Goo-zooka, Grass, Grass Knot 190 on Mega Swampert (40 left) with own Whimsicott at 20"
+  },
+  {
+   "game": "20261014_143111000_iOS",
+   "turn": 5,
+   "global_turn": 10,
+   "id": "LAD-20261014_143111000_iOS-t10",
+   "deck": "12-ariados-whimsicott-ogerpon",
+   "kind": "prepare",
+   "why": "prepare turn; Research, Hiking Trail, evolve 2nd Ariados, bench Cottonee, Grass on Ogerpon, no attack; Ogerpon KO'd next"
+  },
+  {
+   "game": "20261014_144627000_iOS",
+   "turn": 1,
+   "global_turn": 2,
+   "id": "LAD-20261014_144627000_iOS-t2",
+   "deck": "12-ariados-whimsicott-ogerpon",
+   "kind": "sacrifice",
+   "why": "every usable sacrifice turn is included; Research, bench Spinarak+Cottonee, Grass on BENCHED Cottonee leaving active Cottonee to die, no attack"
+  },
+  {
+   "game": "20261014_145449000_iOS",
+   "turn": 2,
+   "global_turn": 4,
+   "id": "LAD-20261014_145449000_iOS-t4",
+   "deck": "12-ariados-whimsicott-ogerpon",
+   "kind": "prepare",
+   "why": "prepare turn; Poke Ball, Research, Ariados, retreat Cottonee, evolve Whimsicott on bench, Grass, Pierce 30"
+  },
+  {
+   "game": "20261015_015320000_iOS",
+   "turn": 2,
+   "global_turn": 4,
+   "id": "LAD-20261015_015320000_iOS-t4",
+   "deck": "13-a-ninetales-raticate",
+   "kind": "attack now",
+   "why": "attack-now turn; Bench 2nd Vulpix, Water on caped bench Vulpix not active, Ambush KO Pichu"
+  },
+  {
+   "game": "20261015_015320000_iOS",
+   "turn": 4,
+   "global_turn": 8,
+   "id": "LAD-20261015_015320000_iOS-t8",
+   "deck": "13-a-ninetales-raticate",
+   "kind": "attack now",
+   "why": "attack-now turn; Water on Ninetales, first Binding Snow 80 on Mega Rayquaza; Raticates held"
+  },
+  {
+   "game": "20261015_015320000_iOS",
+   "turn": 5,
+   "global_turn": 10,
+   "id": "LAD-20261015_015320000_iOS-t10",
+   "deck": "13-a-ninetales-raticate",
+   "kind": "prepare",
+   "why": "prepare turn; Shore, Water on benched Rattata, Binding Snow KO Pichu; Raticates unused"
+  },
+  {
+   "game": "20261015_020931000_iOS",
+   "turn": 2,
+   "global_turn": 3,
+   "id": "LAD-20261015_020931000_iOS-t3",
+   "deck": "13-a-ninetales-raticate",
+   "kind": "prepare",
+   "why": "prepare turn; Copycat dumped 2 Ninetales for Raticate/Vulpix etc, evolve Raticate steal Energy, Field Blower on Giant Cape"
+  },
+  {
+   "game": "20261015_021533000_iOS",
+   "turn": 3,
+   "global_turn": 5,
+   "id": "LAD-20261015_021533000_iOS-t5",
+   "deck": "13-a-ninetales-raticate",
+   "kind": "prepare",
+   "why": "prepare turn; Bench Rattata, evolve Ninetales + Cape, Water on bench Ninetales, Ambush tails 20"
+  },
+  {
+   "game": "20261015_022206000_iOS",
+   "turn": 2,
+   "global_turn": 3,
+   "id": "LAD-20261015_022206000_iOS-t3",
+   "deck": "13-a-ninetales-raticate",
+   "kind": "prepare",
+   "why": "prepare turn; Sightseer (Ninetales, Raticate), evolve, Shore, Water, Cape, no attack with 1 Water"
+  },
+  {
+   "game": "20261014_160506000_iOS",
+   "turn": 3,
+   "global_turn": 6,
+   "id": "LAD-20261014_160506000_iOS-t6",
+   "deck": "12-ariados-whimsicott-ogerpon",
+   "kind": "attack now",
+   "why": "attack-now turn; Lisia, Ariados, Grass on bench Whimsicott, Energized Leaves 120 leaving Tapu at 10"
+  },
+  {
+   "game": "20261014_160506000_iOS",
+   "turn": 5,
+   "global_turn": 10,
+   "id": "LAD-20261014_160506000_iOS-t10",
+   "deck": "12-ariados-whimsicott-ogerpon",
+   "kind": "prepare",
+   "why": "prepare turn; Evolve 2nd Ariados/Whimsicott, retreat damaged Whimsicott, Pierce 30 (Safeguard makes Grass Knot 0)"
+  },
+  {
+   "game": "20261014_161324000_iOS",
+   "turn": 3,
+   "global_turn": 5,
+   "id": "LAD-20261014_161324000_iOS-t5",
+   "deck": "12-ariados-whimsicott-ogerpon",
+   "kind": "sacrifice",
+   "why": "every usable sacrifice turn is included; Research, evolve Whimsicott, Leaf Cape, Grass on bench Whimsicott, no attack, active Spinarak left to die"
+  },
+  {
+   "game": "20261014_161324000_iOS",
+   "turn": 4,
+   "global_turn": 7,
+   "id": "LAD-20261014_161324000_iOS-t7",
+   "deck": "12-ariados-whimsicott-ogerpon",
+   "kind": "attack now",
+   "why": "attack-now turn; 2nd Grass, evolve 2nd Whimsicott, Research, Grass Knot 100 KO Charmeleon (1 pt)"
+  },
+  {
+   "game": "20261014_164328000_iOS",
+   "turn": 2,
+   "global_turn": 4,
+   "id": "LAD-20261014_164328000_iOS-t4",
+   "deck": "12-ariados-whimsicott-ogerpon",
+   "kind": "attack now",
+   "why": "attack-now turn; Lisia, Quick-Grow Whimsicott, Grass, 2 Goo-zooka, Grass Knot 130 KO Chien-Pao ex"
+  },
+  {
+   "game": "20261015_201201000_iOS",
+   "turn": 2,
+   "global_turn": 3,
+   "id": "LAD-20261015_201201000_iOS-t3",
+   "deck": "kingambit_list_A",
+   "kind": "prepare",
+   "why": "prepare turn; Evolve Muk (blocks Basic abilities), Lucky Ice Pop x3 heal, Dark on Muk, no attack (asleep); Helmet held"
+  },
+  {
+   "game": "20261015_201201000_iOS",
+   "turn": 4,
+   "global_turn": 7,
+   "id": "LAD-20261015_201201000_iOS-t7",
+   "deck": "kingambit_list_A",
+   "kind": "prepare",
+   "why": "prepare turn; Drew Kingambit; 2nd Dark on bench Muk, active Glimmet energyless, no attack"
+  },
+  {
+   "game": "20261015_205332000_iOS",
+   "turn": 3,
+   "global_turn": 5,
+   "id": "LAD-20261015_205332000_iOS-t5",
+   "deck": "kingambit_list_A",
+   "kind": "sacrifice",
+   "why": "every usable sacrifice turn is included; Dark on Regigigas, Venomous Hit with 10HP Glimmora (died to Cursed Jewel, crystal tails = 1 pt); Ilima held"
+  },
+  {
+   "game": "20261015_205332000_iOS",
+   "turn": 5,
+   "global_turn": 9,
+   "id": "LAD-20261015_205332000_iOS-t9",
+   "deck": "kingambit_list_A",
+   "kind": "prepare",
+   "why": "prepare turn; Evolve Muk on bench (turns off Regigigas limit), 3rd Dark, Giga Turbo 100"
+  },
+  {
+   "game": "20261015_210617000_iOS",
+   "turn": 1,
+   "global_turn": 2,
+   "id": "LAD-20261015_210617000_iOS-t2",
+   "deck": "kingambit_list_A",
+   "kind": "attack now",
+   "why": "attack-now turn; Dark on Pawniard, Poke Ball->Glimmet, Research, Slash 50 (illegal evolve attempt noted)"
+  },
+  {
+   "game": "20261015_210617000_iOS",
+   "turn": 3,
+   "global_turn": 6,
+   "id": "LAD-20261015_210617000_iOS-t6",
+   "deck": "kingambit_list_A",
+   "kind": "prepare",
+   "why": "prepare turn; Drew Ilima, Dark on Regigigas not Glimmora, Venomous Hit 30; Grimer/Mesagoza held"
+  },
+  {
+   "game": "20261016_030833000_iOS",
+   "turn": 1,
+   "global_turn": 2,
+   "id": "LAD-20261016_030833000_iOS-t2",
+   "deck": "kingambit_list_A",
+   "kind": "prepare",
+   "why": "prepare turn; Poke Ball->Pawniard, Helmet on Pawniard, Pop heal, Copycat (Rare Candy kept), Regigigas benched, Dark, Hang Down 20"
+  },
+  {
+   "game": "20261016_031512000_iOS",
+   "turn": 1,
+   "global_turn": 2,
+   "id": "LAD-20261016_031512000_iOS-t2",
+   "deck": "kingambit_list_A",
+   "kind": "attack now",
+   "why": "attack-now turn; Poke Ball->Pawniard held, Dark on Glimmet, DECLINED available Hang Down 20, ended turn"
+  },
+  {
+   "game": "20261016_031512000_iOS",
+   "turn": 4,
+   "global_turn": 8,
+   "id": "LAD-20261016_031512000_iOS-t8",
+   "deck": "kingambit_list_A",
+   "kind": "sacrifice",
+   "why": "every usable sacrifice turn is included; Dark on Regigigas (Seal blocks attack), kept it active rather than retreat to Pawniard, no attack"
+  },
+  {
+   "game": "20261016_015753000_iOS",
+   "turn": 3,
+   "global_turn": 5,
+   "id": "LAD-20261016_015753000_iOS-t5",
+   "deck": "kingambit_list_A",
+   "kind": "prepare",
+   "why": "prepare turn; Rare Candy Pawniard->Kingambit, Dark, Pop heal, no attack (1 Energy)"
+  },
+  {
+   "game": "20261016_015753000_iOS",
+   "turn": 4,
+   "global_turn": 7,
+   "id": "LAD-20261016_015753000_iOS-t7",
+   "deck": "kingambit_list_A",
+   "kind": "attack now",
+   "why": "attack-now turn; Bench Glimmet, Pop x2, 2nd Dark on Kingambit, Overlord's Blade 100 (after 1 KO) into Jolteon ex"
+  },
+  {
+   "game": "20261016_015753000_iOS",
+   "turn": 5,
+   "global_turn": 9,
+   "id": "LAD-20261016_015753000_iOS-t9",
+   "deck": "kingambit_list_A",
+   "kind": "sacrifice",
+   "why": "every usable sacrifice turn is included; Bench Grimer, Dark on Glimmet, Hang Down 20 then poison KO of Jolteon (2 pts) leaving Glimmet at 20HP into Bite"
+  },
+  {
+   "game": "20261016_020517000_iOS",
+   "turn": 1,
+   "global_turn": 2,
+   "id": "LAD-20261016_020517000_iOS-t2",
+   "deck": "kingambit_list_A",
+   "kind": "prepare",
+   "why": "prepare turn; Mesagoza heads->Glimmet, bench, Dark on Regigigas (Seal-blocked) instead of Glimmet, no attack"
+  },
+  {
+   "game": "20261016_024253000_iOS",
+   "turn": 1,
+   "global_turn": 1,
+   "id": "LAD-20261016_024253000_iOS-t1",
+   "deck": "kingambit_list_A",
+   "kind": "prepare",
+   "why": "prepare turn; Copycat (Research shuffled away), bench Glimmet + Regigigas, Mesagoza tails, no attack"
+  }
+ ],
+ "picked_but_dropped": [
+  {
+   "game": "20261014_163325000_iOS",
+   "turn": 3,
+   "global_turn": 5,
+   "kind": "prepare",
+   "reason": "the review shows Mesagoza played every turn, and Mesagoza is not in the deck-12 list we were told to use (Ariados/Whimsicott/Ogerpon list); the position cannot be built from that list without inventing a different deck"
+  },
+  {
+   "game": "20261015_201850000_iOS",
+   "turn": 8,
+   "global_turn": 16,
+   "kind": "prepare",
+   "reason": "not built: opponent Garchomp/Gabite/Dragonair line's Energy counts and Tools (Memory Light, Rainbow Cave Energy) are not readable from the review, and 7 earlier turns of hand/discard tracking including a Lucky Ice Pop with unrecorded coin; cost judged too high for a clean position"
+  },
+  {
+   "game": "20261015_201850000_iOS",
+   "turn": 9,
+   "global_turn": 18,
+   "kind": "attack now",
+   "reason": "not built, same reason as turn 8"
+  }
+ ],
+ "eligible_not_picked": [
+  {
+   "game": "20261014_214436000_iOS",
+   "turn": 1,
+   "global_turn": 2,
+   "kind": "prepare",
+   "reason": "game already has 3 points picked; kept spread across games"
+  },
+  {
+   "game": "20261014_215114000_iOS",
+   "turn": 1,
+   "global_turn": 2,
+   "kind": "prepare",
+   "reason": "game already has 4 points picked; kept spread across games"
+  },
+  {
+   "game": "20261014_225451000_iOS",
+   "turn": 1,
+   "global_turn": 2,
+   "kind": "prepare",
+   "reason": "a more unusual or decisive turn from another game was picked instead; not needed to reach the count"
+  },
+  {
+   "game": "20261014_230328000_iOS",
+   "turn": 1,
+   "global_turn": 1,
+   "kind": "prepare",
+   "reason": "a more unusual or decisive turn from another game was picked instead; not needed to reach the count"
+  },
+  {
+   "game": "20261014_231006000_iOS",
+   "turn": 3,
+   "global_turn": 5,
+   "kind": "attack now",
+   "reason": "a more unusual or decisive turn from another game was picked instead; not needed to reach the count"
+  },
+  {
+   "game": "20261014_233402000_iOS",
+   "turn": 1,
+   "global_turn": 1,
+   "kind": "prepare",
+   "reason": "game already has 3 points picked; kept spread across games"
+  },
+  {
+   "game": "20261014_233402000_iOS",
+   "turn": 2,
+   "global_turn": 3,
+   "kind": "prepare",
+   "reason": "game already has 3 points picked; kept spread across games"
+  },
+  {
+   "game": "20261014_234728000_iOS",
+   "turn": 2,
+   "global_turn": 3,
+   "kind": "attack now",
+   "reason": "game already has 3 points picked; kept spread across games"
+  },
+  {
+   "game": "20261014_142546000_iOS",
+   "turn": 3,
+   "global_turn": 5,
+   "kind": "prepare",
+   "reason": "a more unusual or decisive turn from another game was picked instead; not needed to reach the count"
+  },
+  {
+   "game": "20261014_143111000_iOS",
+   "turn": 1,
+   "global_turn": 2,
+   "kind": "prepare",
+   "reason": "game already has 3 points picked; kept spread across games"
+  },
+  {
+   "game": "20261014_143111000_iOS",
+   "turn": 2,
+   "global_turn": 4,
+   "kind": "attack now",
+   "reason": "game already has 3 points picked; kept spread across games"
+  },
+  {
+   "game": "20261014_145449000_iOS",
+   "turn": 1,
+   "global_turn": 2,
+   "kind": "prepare",
+   "reason": "a more unusual or decisive turn from another game was picked instead; not needed to reach the count"
+  },
+  {
+   "game": "20261015_015320000_iOS",
+   "turn": 1,
+   "global_turn": 2,
+   "kind": "prepare",
+   "reason": "game already has 3 points picked; kept spread across games"
+  },
+  {
+   "game": "20261015_015320000_iOS",
+   "turn": 3,
+   "global_turn": 6,
+   "kind": "prepare",
+   "reason": "game already has 3 points picked; kept spread across games"
+  },
+  {
+   "game": "20261015_021533000_iOS",
+   "turn": 2,
+   "global_turn": 3,
+   "kind": "prepare",
+   "reason": "a more unusual or decisive turn from another game was picked instead; not needed to reach the count"
+  },
+  {
+   "game": "20261015_021533000_iOS",
+   "turn": 5,
+   "global_turn": 9,
+   "kind": "other",
+   "reason": "kind 'other' is outside the asked kinds (sacrifice, abandon, attack now, prepare)"
+  },
+  {
+   "game": "20261015_022206000_iOS",
+   "turn": 1,
+   "global_turn": 1,
+   "kind": "prepare",
+   "reason": "a more unusual or decisive turn from another game was picked instead; not needed to reach the count"
+  },
+  {
+   "game": "20261014_160506000_iOS",
+   "turn": 1,
+   "global_turn": 2,
+   "kind": "prepare",
+   "reason": "a more unusual or decisive turn from another game was picked instead; not needed to reach the count"
+  },
+  {
+   "game": "20261014_160506000_iOS",
+   "turn": 2,
+   "global_turn": 4,
+   "kind": "attack now",
+   "reason": "a more unusual or decisive turn from another game was picked instead; not needed to reach the count"
+  },
+  {
+   "game": "20261014_160506000_iOS",
+   "turn": 6,
+   "global_turn": 12,
+   "kind": "prepare",
+   "reason": "a more unusual or decisive turn from another game was picked instead; not needed to reach the count"
+  },
+  {
+   "game": "20261014_161324000_iOS",
+   "turn": 1,
+   "global_turn": 1,
+   "kind": "prepare",
+   "reason": "a more unusual or decisive turn from another game was picked instead; not needed to reach the count"
+  },
+  {
+   "game": "20261014_161324000_iOS",
+   "turn": 2,
+   "global_turn": 3,
+   "kind": "prepare",
+   "reason": "a more unusual or decisive turn from another game was picked instead; not needed to reach the count"
+  },
+  {
+   "game": "20261014_164328000_iOS",
+   "turn": 1,
+   "global_turn": 2,
+   "kind": "prepare",
+   "reason": "a more unusual or decisive turn from another game was picked instead; not needed to reach the count"
+  },
+  {
+   "game": "20261014_164328000_iOS",
+   "turn": 3,
+   "global_turn": 6,
+   "kind": "other",
+   "reason": "kind 'other' is outside the asked kinds (sacrifice, abandon, attack now, prepare)"
+  },
+  {
+   "game": "20260926_212155000_iOS",
+   "turn": 3,
+   "global_turn": 6,
+   "kind": "attack now",
+   "reason": "a more unusual or decisive turn from another game was picked instead; not needed to reach the count"
+  },
+  {
+   "game": "20260926_212155000_iOS",
+   "turn": 4,
+   "global_turn": 8,
+   "kind": "attack now",
+   "reason": "a more unusual or decisive turn from another game was picked instead; not needed to reach the count"
+  },
+  {
+   "game": "20261015_201201000_iOS",
+   "turn": 3,
+   "global_turn": 5,
+   "kind": "attack now",
+   "reason": "Kingambit already at 14 of 51 points (27%); this one was a more routine turn than the picked ones"
+  },
+  {
+   "game": "20261015_201850000_iOS",
+   "turn": 10,
+   "global_turn": 20,
+   "kind": "prepare",
+   "reason": "Kingambit already at 14 of 51 points (27%); this one was a more routine turn than the picked ones"
+  },
+  {
+   "game": "20261015_205332000_iOS",
+   "turn": 2,
+   "global_turn": 3,
+   "kind": "prepare",
+   "reason": "Kingambit already at 14 of 51 points (27%); this one was a more routine turn than the picked ones"
+  },
+  {
+   "game": "20261015_205332000_iOS",
+   "turn": 4,
+   "global_turn": 7,
+   "kind": "prepare",
+   "reason": "Kingambit already at 14 of 51 points (27%); this one was a more routine turn than the picked ones"
+  },
+  {
+   "game": "20261015_205332000_iOS",
+   "turn": 6,
+   "global_turn": 11,
+   "kind": "prepare",
+   "reason": "Kingambit already at 14 of 51 points (27%); this one was a more routine turn than the picked ones"
+  },
+  {
+   "game": "20261015_210617000_iOS",
+   "turn": 4,
+   "global_turn": 8,
+   "kind": "prepare",
+   "reason": "Kingambit already at 14 of 51 points (27%); this one was a more routine turn than the picked ones"
+  },
+  {
+   "game": "20261016_030833000_iOS",
+   "turn": 2,
+   "global_turn": 4,
+   "kind": "prepare",
+   "reason": "Kingambit already at 14 of 51 points (27%); this one was a more routine turn than the picked ones"
+  },
+  {
+   "game": "20261016_031512000_iOS",
+   "turn": 2,
+   "global_turn": 4,
+   "kind": "prepare",
+   "reason": "Kingambit already at 14 of 51 points (27%); this one was a more routine turn than the picked ones"
+  },
+  {
+   "game": "20261016_031512000_iOS",
+   "turn": 3,
+   "global_turn": 6,
+   "kind": "prepare",
+   "reason": "Kingambit already at 14 of 51 points (27%); this one was a more routine turn than the picked ones"
+  },
+  {
+   "game": "20261016_015753000_iOS",
+   "turn": 1,
+   "global_turn": 1,
+   "kind": "prepare",
+   "reason": "game already has 3 points picked; kept spread across games"
+  },
+  {
+   "game": "20261016_015753000_iOS",
+   "turn": 2,
+   "global_turn": 3,
+   "kind": "prepare",
+   "reason": "game already has 3 points picked; kept spread across games"
+  }
+ ]
+}
