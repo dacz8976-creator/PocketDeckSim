@@ -45,7 +45,15 @@ pub fn pg_label(a: &Action) -> String {
         SimpleAction::ChooseRetreatEnergy { to_in_play_idx, .. } => format!("RetreatPay:{}", to_in_play_idx),
         SimpleAction::AttachTypedFromDiscard { in_play_idx, energy_type, .. } => format!("AttachTypedFromDiscard:{:?}@{}", energy_type, in_play_idx),
         SimpleAction::EndTurn => "EndTurn".to_string(),
-        other => format!("{:?}", other).split(|c: char| c == ' ' || c == '{' || c == '(').next().unwrap_or("?").to_string(),
+        // Name#<all arguments as compact JSON, keys sorted> for every action without a short name above (Oct 19: the bare name dropped the target of
+        // Field Blower's DiscardToolFromPokemon and of random-evolution targets). Same format as rl/ai_judge/plans/src/main.rs.
+        other => {
+            let name = format!("{:?}", other).split(|c: char| c == ' ' || c == '{' || c == '(').next().unwrap_or("?").to_string();
+            match serde_json::to_value(other) {
+                Ok(serde_json::Value::Object(m)) if m.len() == 1 => format!("{}#{}", name, m.values().next().unwrap()),
+                _ => name,
+            }
+        }
     }
 }
 

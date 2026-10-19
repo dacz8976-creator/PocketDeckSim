@@ -118,6 +118,36 @@ class TestFakeStart:
              'opp': {'board': ['Active: Mega Kangaskhan ex 180/180 HP, Energy [Lightning]'], 'hand_count': 5, 'deck_count': 12, 'discard': [], 'discard_energy': []}}
 
 
+class ConcreteActionFormat(unittest.TestCase):
+    """Pure Python, no binaries: the canonical concrete action label is Name#<compact JSON, keys sorted>."""
+    def test_legacy_brace_labels_convert_losslessly(self):
+        self.assertEqual(judge.concrete_label('DiscardToolFromPokemon{player:1,in_play_idx:2,tool_idx:0}'),
+                         'DiscardToolFromPokemon#{"in_play_idx":2,"player":1,"tool_idx":0}')
+        self.assertEqual(judge.concrete_label('ChooseRandomEvolutionTarget{in_play_idx:3}'), 'ChooseRandomEvolutionTarget#{"in_play_idx":3}')
+        self.assertEqual(judge.concrete_label('X{flag:true,name:"a b"}'), 'X#{"flag":true,"name":"a b"}')
+
+    def test_canonical_and_short_labels_pass_unchanged(self):
+        for l in ['Attach:1Darkness@2 zone', 'EndTurn', 'DiscardToolFromPokemon', 'DiscardToolFromPokemon#{"in_play_idx":1,"player":1,"tool_idx":0}']:
+            self.assertEqual(judge.concrete_label(l), l)
+
+    def test_a_legacy_label_that_cannot_be_read_without_loss_is_rejected(self):
+        for l in ['Y{card:Some(Pawniard)}', 'Y{a:[1,2]}', 'Y{oops}']:
+            with self.assertRaises(ValueError, msg=l):
+                judge.concrete_label(l)
+
+    def test_two_targets_are_never_resolved_to_the_first(self):
+        rec = {'plans': [{'n': 1, 'key': 'a'}, {'n': 2, 'key': 'b'}]}
+        with self.assertRaises(judge.AmbiguousPlan):
+            judge.number_for(rec, ['a', 'b'])  # a bare name that fits both targets
+        self.assertEqual(judge.number_for(rec, ['b', 'b']), 2)  # the same plan twice is not ambiguous
+
+    def test_the_baseline_printer_patch_prints_all_arguments(self):
+        src = open(os.path.join(HERE, '..', '..', 'results', 'pause_games_decisions_2026-10-02', 'harness', 'pgd_patch.py'), encoding='utf-8').read()
+        self.assertIn('format!("{}#{}", name, m.values().next().unwrap())', src)
+        rs = open(os.path.join(HERE, '..', 'plans', 'src', 'main.rs'), encoding='utf-8').read()
+        self.assertIn('format!("{}#{}", name, m.values().next().unwrap())', rs)  # the same rule in both printers
+
+
 class Cost(unittest.TestCase):
     def test_cost_uses_the_response_usage_and_the_price_table(self):
         c = judge.cost_of('claude-sonnet-5-5', {'input_tokens': 10000, 'output_tokens': 100})

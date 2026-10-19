@@ -507,7 +507,7 @@ def replay(items, positions_path=DEFAULT_POSITIONS, decks_dir=DEFAULT_DECKS, wor
     import tempfile
     with tempfile.NamedTemporaryFile('w', suffix='.jsonl', delete=False) as f:
         for pid, tag, labels in items:
-            f.write(json.dumps({'id': pid, 'tag': tag, 'labels': labels}) + '\n')
+            f.write(json.dumps({'id': pid, 'tag': tag, 'labels': [concrete_label(l) for l in labels]}) + '\n')
         path = f.name
     try:
         cmd = [bin_path, '--positions', positions_path] + deck_args(decks_dir) + ['--world-seed', str(world_seed), '--replay', path]
@@ -531,15 +531,46 @@ def replay(items, positions_path=DEFAULT_POSITIONS, decks_dir=DEFAULT_DECKS, wor
     return out
 
 
+class AmbiguousPlan(ValueError):
+    """A move list that fits more than one listed plan (for example a bare recorded name that fits several targets)."""
+
+
 def number_for(rec, keys):
-    """The listed plan whose key is among `keys` (None when the move list could not be followed or reaches no listed plan)."""
+    """The ONE listed plan whose key is among `keys`; None when the list could not be followed (keys is an error text) or reaches no listed plan.
+    Raises AmbiguousPlan when the keys fit more than one listed plan: a bare name is never resolved to the first target."""
     if not isinstance(keys, list):
         return None
     by_key = {p['key']: p['n'] for p in rec['plans']}
-    for k in keys:
-        if k in by_key:
-            return by_key[k]
-    return None
+    hit = sorted({by_key[k] for k in keys if k in by_key})
+    if len(hit) > 1:
+        raise AmbiguousPlan(f'the move list fits {len(hit)} different listed plans {hit[:6]}: name the target (Name#{{json}} label)')
+    return hit[0] if hit else None
+
+
+_LEGACY = re.compile(r'^([A-Za-z]\w*)\{(.*)\}$')
+
+
+def concrete_label(label):
+    """One canonical concrete action label across packages: Name#<compact JSON, keys sorted>. A legacy `Name{field:value,...}` label is converted when every
+    value is an integer, true/false or a bare word (lossless); anything else is rejected with a clear error. Short names and Name#JSON pass unchanged."""
+    m = _LEGACY.match(label)
+    if not m:
+        return label
+    obj = {}
+    body = m.group(2).strip()
+    for part in ([x.strip() for x in body.split(',')] if body else []):
+        if ':' not in part:
+            raise ValueError(f'unsupported legacy concrete label {label!r}: cannot read {part!r}')
+        k, v = (x.strip() for x in part.split(':', 1))
+        if re.fullmatch(r'-?\d+', v):
+            obj[k] = int(v)
+        elif v in ('true', 'false'):
+            obj[k] = v == 'true'
+        elif re.fullmatch(r'"[^"\\]*"', v):
+            obj[k] = v[1:-1]
+        else:
+            raise ValueError(f'unsupported legacy concrete label {label!r}: value {v!r} is not an integer, boolean or quoted string')
+    return f"{m.group(1)}#{json.dumps(obj, sort_keys=True, separators=(',', ':'))}"
 
 
 def match_plans(items, recs, positions_path=DEFAULT_POSITIONS, decks_dir=DEFAULT_DECKS):
@@ -548,7 +579,12 @@ def match_plans(items, recs, positions_path=DEFAULT_POSITIONS, decks_dir=DEFAULT
     out = {}
     for pid, tag, _ in items:
         k = keys.get(tag)
-        out[tag] = (number_for(recs[pid], k), k if isinstance(k, str) else (None if number_for(recs[pid], k) else 'reaches no listed plan (capped list?)'))
+        try:
+            n = number_for(recs[pid], k)
+        except AmbiguousPlan as e:
+            out[tag] = (None, f'ambiguous: {e}')
+            continue
+        out[tag] = (n, k if isinstance(k, str) else (None if n else 'reaches no listed plan (capped list?)'))
     return out
 
 
