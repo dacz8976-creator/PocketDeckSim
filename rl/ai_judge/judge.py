@@ -268,9 +268,12 @@ def render_prompt(pos, rec, order='forward', decks_dir=DEFAULT_DECKS, compact_ab
     return SYSTEM, '\n'.join(L), shown
 
 
-def estimate_tokens(*texts):
-    """No network: about 3.4 characters per token for this kind of text (plain estimate; use --count-tokens for the API's exact count)."""
-    return int(sum(len(t) for t in texts) / 3.4) + 1
+CHARS_PER_TOKEN = {'full': 2.1, 'compact': 1.7}  # measured on the smoke calls: 8,605 characters = 4,190 tokens (full); 112,000 characters = 44,712 tokens (compact)
+
+
+def estimate_tokens(system, user, form='full'):
+    """No network: an estimate from the characters, good to about 5% (use the live call's usage numbers for the exact count)."""
+    return int((len(system) + len(user)) / CHARS_PER_TOKEN[form]) + 1
 
 
 # ---------------------------------------------------------------------------------------------------------------------------------- parser
@@ -306,7 +309,11 @@ def load_key():
     sys.exit('no ANTHROPIC_API_KEY (environment or ~/.bashrc)')
 
 
-def call_claude(system, user, model=MODEL, max_tokens=300, temperature=None, timeout=120):
+MAX_TOKENS = 8000  # the model reasons before it answers and that reasoning counts as output: 1,500 was not enough for a 57-plan position (smoke call 3)
+
+
+def call_claude(system, user, model=MODEL, max_tokens=MAX_TOKENS, temperature=None, timeout=300):
+    """One Messages API call. Returns (text, usage, seconds, model, extra) where extra = {'stop_reason', 'content_types'}."""
     body = {'model': model, 'max_tokens': max_tokens, 'system': system, 'messages': [{'role': 'user', 'content': user}]}
     if temperature is not None:
         body['temperature'] = temperature
@@ -320,7 +327,7 @@ def call_claude(system, user, model=MODEL, max_tokens=300, temperature=None, tim
         sys.exit(f'API error {e.code}: {e.read().decode()[:500]}')
     text = ''.join(b.get('text', '') for b in j.get('content', []) if b.get('type') == 'text')
     u = j.get('usage', {})
-    return text, u, round(time.time() - t0, 2), j.get('model', model)
+    return text, u, round(time.time() - t0, 2), j.get('model', model), {'stop_reason': j.get('stop_reason'), 'content_types': [b.get('type') for b in j.get('content', [])]}
 
 
 def cost_of(model, usage):
@@ -338,19 +345,21 @@ def record(position, bot, plan, cut, **extra):
     return r
 
 
-def judge_one(pid, positions, recs, order, live, model, temperature=None, decks_dir=DEFAULT_DECKS, compact_above=COMPACT_ABOVE):
+def judge_one(pid, positions, recs, order, live, model, temperature=None, decks_dir=DEFAULT_DECKS, compact_above=COMPACT_ABOVE, max_tokens=MAX_TOKENS):
     pos, rec = positions[pid], recs[pid]
     system, user, shown = render_prompt(pos, rec, order, decks_dir, compact_above)
-    est = estimate_tokens(system, user)
+    est = estimate_tokens(system, user, 'compact' if len(shown) > compact_above else 'full')
     base = dict(order=order, n_plans=len(shown), capped=rec['capped'], total_plans_found=rec['total_found'], model=model, prompt_tokens_estimate=est, dry_run=not live,
                 prompt_form='compact' if len(shown) > compact_above else 'full')
     if not live:
         return record(pid, 'judge', None, None, plan_number=None, reason=None, cost=None, **base), system, user
-    text, usage, secs, model_used = call_claude(system, user, model, temperature=temperature)
+    text, usage, secs, model_used, extra = call_claude(system, user, model, max_tokens=max_tokens, temperature=temperature)
     parsed = parse_choice(text, len(shown))
+    if not parsed['ok'] and extra.get('stop_reason') == 'max_tokens':
+        parsed['error'] = f"{parsed['error']}; the reply was cut at max_tokens={max_tokens} (reasoning used it up): raise --max-tokens"
     plan = shown[parsed['plan']] if parsed['ok'] else None
     r = record(pid, 'judge', plan['labels'] if plan else None, plan['end'] if plan else None, plan_number=plan['n'] if plan else None, shown_number=parsed['plan'],
-               reason=parsed['reason'], parse_error=parsed['error'], raw=text, seconds=secs, cost=cost_of(model_used, usage), **base)
+               reason=parsed['reason'], parse_error=parsed['error'], raw=text, seconds=secs, cost=cost_of(model_used, usage), **extra, **base)
     return r, system, user
 
 
@@ -475,8 +484,10 @@ def main(argv=None):
     p.add_argument('--max-calls', type=int, default=1, help='hard cap on API calls in this invocation')
     p.add_argument('--model', default=MODEL)
     p.add_argument('--temperature', type=float)
+    p.add_argument('--max-tokens', type=int, default=MAX_TOKENS, help='output cap per call, reasoning included')
     p.add_argument('--out')
     p = sub.add_parser('run'); common(p)
+    p.add_argument('--max-tokens', type=int, default=MAX_TOKENS)
     p.add_argument('--bot', required=True)
     p.add_argument('--seeds', default='1')
     p.add_argument('--order', default='forward')
@@ -551,7 +562,7 @@ def main(argv=None):
     if a.cmd == 'prompt':
         for i in ids:
             system, user, shown = render_prompt(positions[i], recs[i], a.order, a.decks, a.compact_above)
-            n = estimate_tokens(system, user)
+            n = estimate_tokens(system, user, 'compact' if len(shown) > a.compact_above else 'full')
             print(f'### {i}: {len(shown)} plans, prompt about {n} tokens ({len(system) + len(user)} characters)')
             if a.show:
                 print('--- SYSTEM\n' + system + '\n--- USER\n' + user)
@@ -573,7 +584,7 @@ def main(argv=None):
             if a.live and calls >= a.max_calls:
                 print(f'stopped: --max-calls {a.max_calls} reached', file=sys.stderr)
                 break
-            r, system, user = judge_one(i, positions, recs, a.order, a.live, a.model, getattr(a, 'temperature', None), a.decks, a.compact_above)
+            r, system, user = judge_one(i, positions, recs, a.order, a.live, a.model, getattr(a, 'temperature', None), a.decks, a.compact_above, a.max_tokens)
             if not a.live:
                 print(f"[dry run] {i}: {r['n_plans']} plans, prompt about {r['prompt_tokens_estimate']} tokens (estimate). Nothing was sent.")
             else:

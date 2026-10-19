@@ -76,6 +76,47 @@ class PlanMatching(unittest.TestCase):
         self.assertIsNone(judge.number_for(rec, 'no legal action labelled ...'))  # an error text instead of keys
 
 
+class LivePath(unittest.TestCase):
+    """judge_one with the API call replaced by a fake: no network."""
+    def rec(self):
+        mk = lambda n, labels, end: {'n': n, 'key': f'k{n}', 'labels': labels, 'steps': labels, 'n_steps': len(labels), 'end': end, 'final': {'kind': 'end_turn'},
+                                    'result': {'board': ['Active: Regigigas 30/130 HP, Energy []'], 'hand': ['Kingambit'], 'points': [0, 0], 'deck_size': 9}}
+        return {'KW-261013_010837000-t07': {'capped': False, 'total_found': 3,
+                'start': TestFakeStart.START, 'plans': [mk(1, ['EndTurn'], 'end_turn'), mk(2, ['Retreat:1', 'EndTurn'], 'end_turn'), mk(3, ['Attach:1Darkness@0 zone', 'EndTurn'], 'end_turn')]}}
+
+    def run_fake(self, order, reply, stop='end_turn'):
+        from unittest import mock
+        usage = {'input_tokens': 1000, 'output_tokens': 50}
+        with mock.patch.object(judge, 'call_claude', return_value=(reply, usage, 1.5, judge.MODEL, {'stop_reason': stop, 'content_types': ['thinking', 'text']})):
+            r, _, _ = judge.judge_one('KW-261013_010837000-t07', judge.load_positions(), self.rec(), order, True, judge.MODEL)
+        return r
+
+    def test_a_reversed_prompt_maps_the_chosen_number_back_to_the_listed_plan(self):
+        r = self.run_fake('reverse', 'PLAN: 1\nREASON: attach')
+        self.assertEqual((r['shown_number'], r['plan_number']), (1, 3))  # shown first = listed third
+        self.assertEqual(r['plan'], ['Attach:1Darkness@0 zone', 'EndTurn'])
+        self.assertEqual(r['order'], 'reverse')
+        self.assertEqual(r['cost']['input_tokens'], 1000)
+        self.assertGreater(r['cost']['usd'], 0)
+
+    def test_reasoning_that_uses_up_the_output_cap_is_reported_not_guessed(self):
+        r = self.run_fake('forward', '', stop='max_tokens')
+        self.assertIsNone(r['plan_number'])
+        self.assertIn('max_tokens', r['parse_error'])
+        self.assertIsNotNone(r['cost'])  # the tokens were still spent and are recorded
+
+    def test_an_answer_outside_the_list_is_refused(self):
+        r = self.run_fake('forward', 'PLAN: 9\nREASON: x')
+        self.assertIsNone(r['plan_number'])
+        self.assertIn('not in 1..3', r['parse_error'])
+
+
+class TestFakeStart:
+    START = {'turn_count': 7, 'points': [0, 0], 'energy_zone': ['Darkness', 'Darkness'], 'stadium': None, 'stadium_owner': None,
+             'me': {'board': ['Active: Regigigas 30/130 HP, Energy []'], 'hand': ['Kingambit'], 'discard': [], 'discard_energy': [], 'deck_size': 9, 'unseen_deck': {'Glimmet': 1}},
+             'opp': {'board': ['Active: Mega Kangaskhan ex 180/180 HP, Energy [Lightning]'], 'hand_count': 5, 'deck_count': 12, 'discard': [], 'discard_energy': []}}
+
+
 class Cost(unittest.TestCase):
     def test_cost_uses_the_response_usage_and_the_price_table(self):
         c = judge.cost_of('claude-sonnet-5-5', {'input_tokens': 10000, 'output_tokens': 100})
