@@ -1,0 +1,140 @@
+2026-10-20T02:09:30Z driver_build start; candidate d9d2e70458273b77c379a7424ad33a162289205a (engine tree 12e23abd9fe5cf720526dbcb2f6481d293aa5159)
+2026-10-20T02:09:30Z build_N: archive + cargo build --release --locked (deckgym, legality_scan, goldfish), jobs 2
+2026-10-20T02:12:00Z driver_games: waiting for driver 1 (selfcheck_km3.done)
+2026-10-20T02:18:18Z build_N OK: BUILD OK in 527 s; 245e11e8cf939da7ba12a50fbb18630c67b1fb2231a692dd0c259c4a01556745  deckgym bce5654bb51b8b8bc201fba353267c575c168291959c32de6ee1365ecf7db8e9  legality_scan f53e948997326174103d917642cde78edb788098a7e8a5faf702096c91390e35  goldfish 
+2026-10-20T02:18:18Z test_N1: cargo test --release --features test-utils --locked --no-fail-fast (RUST_TEST_THREADS 2)
+test_N1: 2108 passed, 0 failed; failing: []
+2026-10-20T02:31:23Z test_N1 rc=0 in 785 s
+2026-10-20T02:31:23Z strength_N: rl/strength/build.sh d9d2e70458273b77c379a7424ad33a162289205a -> /home/dacz8976/pincand_work/programs/N/strength (own build and target folders)
+2026-10-20T02:35:56Z strength_N OK: 04fadd96870e4a7876a8eebc3f86721d42bfab62ed8e4906cb0986228948680f
+2026-10-20T02:36:02Z selfcheck km3 old (76df495bef0b057f): selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1
+2026-10-20T02:36:08Z selfcheck km3 new (04fadd96870e4a78): selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1
+2026-10-20T02:36:08Z driver_build done
+2026-10-20T02:37:00Z test_N2: the ported tests (git status in pincand: 10 paths) copied into N/engine/tests; cargo test, jobs 1
+deckgym: OK
+legality_scan: OK
+goldfish: OK
+2026-10-20T02:37:01Z old sample: step 10 and the kd3 table
+old 08a9b3a_10_cli_k3: SAME (240 games, 9 s) Player 0 won: 150 (62.50%) | Player 1 won: 90 (37.50%) | Draws: 0 (0.00%)
+old 08a9b3a_10_cli_kp3: SAME (240 games, 12 s) Player 0 won: 144 (60.00%) | Player 1 won: 96 (40.00%) | Draws: 0 (0.00%)
+old 08a9b3a_10_cli_kog3: SAME (240 games, 11 s) Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%)
+old 08a9b3a_10_cli_kta3: SAME (240 games, 12 s) Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%)
+old 08a9b3a_10_cli_km3: SAME (240 games, 12 s) Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%)
+old 08a9b3a_10_goldfish: SAME (0 games, 0 s) page =, coverage =
+test_N2: 2125 passed, 0 failed; failing: []; compile errors: 0 []
+2026-10-20T02:42:19Z test_N2 rc=0 in 318 s
+2026-10-20T02:42:19Z strength_K: candidate engine + kx3's added files (laptop/kx3-on-rules2 cd20a97a)
+ engine/examples/playout_smoke.rs               | 199 ++++++
+ engine/src/players/mod.rs                      |  12 +
+ engine/src/players/playout_player.rs           | 848 +++++++++++++++++++++++++
+ engine/src/players/playout_pool.rs             | 315 +++++++++
+ engine/tests/playout_pilot_extra_lists_test.rs |  45 ++
+ engine/tests/playout_pilot_test.rs             | 385 +++++++++++
+ 6 files changed, 1804 insertions(+)
+old 08a9b3a_10_run_screen: SAME (3840 games, 278 s) run_screen: /home/dacz8976/pincand_work/games/old/08a9b3a_10_run_screen.txt v engine_switch_rules2_2026-10/08a9b3a_10_run_screen.txt: 20 of 20 lines equal (2 decks; the header's engine path aside)
+old 08a9b3a_table_kd3_40: SAME (1120 games, 118 s) 0 differing deals of 1120; rules page: /home/dacz8976/pincand_work/games/old/08a9b3a_table_kd3_40.txt: no RULE finding
+2026-10-20T02:44:38Z new tier 1
+new 08a9b3a_10_cli_k3: SAME (240 games, 9 s) Player 0 won: 150 (62.50%) | Player 1 won: 90 (37.50%) | Draws: 0 (0.00%)
+new 08a9b3a_10_cli_kp3: SAME (240 games, 12 s) Player 0 won: 144 (60.00%) | Player 1 won: 96 (40.00%) | Draws: 0 (0.00%)
+new 08a9b3a_10_cli_kog3: SAME (240 games, 11 s) Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%)
+new 08a9b3a_10_cli_kta3: SAME (240 games, 11 s) Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%)
+new 08a9b3a_10_cli_km3: SAME (240 games, 13 s) Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%)
+new 08a9b3a_10_goldfish: SAME (0 games, 0 s) page =, coverage =
+2026-10-20T02:49:18Z strength_K OK: 068c993a3251a4d02f5aa7cbbee65bb2c3116ffeb548ddad9f641501af2cd725 (overlay base c045ede0e6d69c9dcb8d4cb3165c8ada3f8ef72e)
+new 08a9b3a_10_run_screen: SAME (3840 games, 320 s) run_screen: /home/dacz8976/pincand_work/games/new/08a9b3a_10_run_screen.txt v engine_switch_rules2_2026-10/08a9b3a_10_run_screen.txt: 20 of 20 lines equal (2 decks; the header's engine path aside)
+new floor:14: SAME (1920 games, 398 s)   coverage program: recorded rl/engine-2026-10-02/goldfish (sha256 cecc76fbe51b3327..), replayed rl/engine-2026-10-12/goldfish (sha256 d8cfb7799770e166..) (set aside in the page by --allow-coverage-program: the page names the goldfish floor.py used; the coverage file itself is compared above)
+new floor:10: SAME (1920 games, 283 s)   coverage program: recorded rl/engine-2026-10-02/goldfish (sha256 cecc76fbe51b3327..), replayed rl/engine-2026-10-12/goldfish (sha256 d8cfb7799770e166..) (set aside in the page by --allow-coverage-program: the page names the goldfish floor.py used; the coverage file itself is compared above)
+new floor:06: SAME (1920 games, 238 s)   coverage program: recorded rl/engine-2026-10-02/goldfish (sha256 cecc76fbe51b3327..), replayed rl/engine-2026-10-12/goldfish (sha256 d8cfb7799770e166..) (set aside in the page by --allow-coverage-program: the page names the goldfish floor.py used; the coverage file itself is compared above)
+new floor:02: SAME (1920 games, 334 s)   coverage program: recorded rl/engine-2026-10-02/goldfish (sha256 cecc76fbe51b3327..), replayed rl/engine-2026-10-12/goldfish (sha256 d8cfb7799770e166..) (set aside in the page by --allow-coverage-program: the page names the goldfish floor.py used; the coverage file itself is compared above)
+new floor:08: SAME (1920 games, 436 s)   coverage program: recorded rl/engine-2026-10-02/goldfish (sha256 cecc76fbe51b3327..), replayed rl/engine-2026-10-12/goldfish (sha256 d8cfb7799770e166..) (set aside in the page by --allow-coverage-program: the page names the goldfish floor.py used; the coverage file itself is compared above)
+new floor:D_root: SAME (1920 games, 418 s)   allowed: line 24, the row of B3 025, its engine cell only: recorded "engine: Implemented with unverified rule boundaries; Victory Star supports printed attack-effect coin batches. After a Confusion heads the attack's own coins are offered for a reroll, with no second Confusion check (rules/04 §9, 
+new floor:D_amended: SAME (1920 games, 405 s)   allowed: line 24, the row of B3 025, its engine cell only: recorded "engine: Implemented with unverified rule boundaries; Victory Star supports printed attack-effect coin batches. After a Confusion heads the attack's own coins are offered for a reroll, with no second Confusion check (rules/04 §9, 
+new 08a9b3a_new17_k3: DIFFERS (8500 games, 1142 s) 8 differing deals of 8500; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_new17_k3.txt: no RULE finding
+new 08a9b3a_new17_kp3: DIFFERS (8500 games, 1283 s) 7 differing deals of 8500; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_new17_kp3.txt: no RULE finding
+2026-10-20T04:14:59Z selfcheck kx3 new (068c993a3251a4d0) in 5141 s: selfcheck pilot=kx3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=138 digest=31d638dbc818b0fa
+2026-10-20T04:15:11Z selfcheck km3 on the kx3 build: selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1
+2026-10-20T04:15:11Z driver_extra done
+2026-10-20T04:16:28Z U = 239b70a069f2a29296fe23c0f71ec2923d0fb6b8: d9d2e70458273b77c379a7424ad33a162289205a with the Growl commit 501fc1ddbee43e42bdbdc9a68bd8d8ede61bf66b reverted (local ref refs/pocketdecksim/engine-candidate-2026-10-20-U; not pushed); engine diff v the candidate:  1 file changed, 3 insertions(+), 89 deletions(-)
+2026-10-20T04:24:02Z build_U OK: BUILD OK in 453 s; legality_scan a1493ce8fa7fa971e412e672b6ecbf2f9cee7f7bdb1dfb4b2044bc9f68bc1380
+2026-10-20T04:25:23Z U 08a9b3a_new17_k3 pairings 21,22: 1000 games in 81 s
+2026-10-20T04:25:23Z U v old (08a9b3a_new17_k3, pairings 21-22): exit 0 U v old 08a9b3a_new17_k3 p21-22: v engine_switch_rules2_2026-10/08a9b3a_new17_k3.jsonl 1000 of 1000 equal on every field the reference records (19 fields: a, a_file, abilities, b, b_file, bot_a, bot_b
+2026-10-20T04:27:02Z U 08a9b3a_new17_kp3 pairings 21,22: 1000 games in 99 s
+2026-10-20T04:27:02Z U v old (08a9b3a_new17_kp3, pairings 21-22): exit 0 U v old 08a9b3a_new17_kp3 p21-22: v engine_switch_rules2_2026-10/08a9b3a_new17_kp3.jsonl 1000 of 1000 equal on every field the reference records (19 fields: a, a_file, abilities, b, b_file, bot_a, bot
+2026-10-20T04:28:39Z U 08a9b3a_dev_km3_new17 pairings 21,22: 1000 games in 97 s
+2026-10-20T04:28:39Z U v old (08a9b3a_dev_km3_new17, pairings 21-22): exit 0 U v old 08a9b3a_dev_km3_new17 p21-22: v engine_switch_rules2_2026-10/08a9b3a_dev_km3_new17.jsonl 1000 of 1000 equal on every field the reference records (19 fields: a, a_file, abilities, b, b_file, bo
+2026-10-20T04:28:39Z driver_u done
+new 08a9b3a_dev_km3_new17: DIFFERS (8500 games, 927 s) 7 differing deals of 8500; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_dev_km3_new17.txt: no RULE finding
+new 08a9b3a_cov_var_v-lucario_2_km3: SAME (3500 games, 206 s) 0 differing deals of 3500; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_cov_var_v-lucario_2_km3.txt: no RULE finding
+new 08a9b3a_table_k3: SAME (14000 games, 806 s) 0 differing deals of 14000; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_table_k3.txt: no RULE finding
+new 08a9b3a_table_kp3: SAME (14000 games, 945 s) 0 differing deals of 14000; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_table_kp3.txt: no RULE finding
+new 08a9b3a_dev_km3_table: SAME (14000 games, 975 s) 0 differing deals of 14000; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_dev_km3_table.txt: no RULE finding
+2026-10-20T05:17:49Z new tier 2
+new 08a9b3a_table_kd3_40: SAME (1120 games, 94 s) 0 differing deals of 1120; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_table_kd3_40.txt: no RULE finding
+new 08a9b3a_table_kpr3_40: SAME (1120 games, 98 s) 0 differing deals of 1120; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_table_kpr3_40.txt: no RULE finding
+new 08a9b3a_new17_kog3: DIFFERS (8500 games, 654 s) 7 differing deals of 8500; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_new17_kog3.txt: no RULE finding
+new 08a9b3a_table_kog3: SAME (14000 games, 945 s) 0 differing deals of 14000; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_table_kog3.txt: no RULE finding
+new 08a9b3a_table_kq3: SAME (14000 games, 1146 s) 0 differing deals of 14000; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_table_kq3.txt: no RULE finding
+new 08a9b3a_cov_var_v-suicune_2_km3: SAME (3500 games, 295 s) 0 differing deals of 3500; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_cov_var_v-suicune_2_km3.txt: no RULE finding
+2026-10-20T06:14:08Z driver_u2: waiting for tier2.done
+new 08a9b3a_cov_var_v-weezing_2_km3: SAME (3500 games, 255 s) 0 differing deals of 3500; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_cov_var_v-weezing_2_km3.txt: no RULE finding
+new 08a9b3a_cov_scizor_km3: SAME (4000 games, 317 s) 0 differing deals of 4000; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_cov_scizor_km3.txt: no RULE finding
+new 08a9b3a_cov_var_l-charizardy_km3: SAME (4000 games, 344 s) 0 differing deals of 4000; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_cov_var_l-charizardy_km3.txt: no RULE finding
+new 08a9b3a_dev_kta3_new17: DIFFERS (8500 games, 695 s) 7 differing deals of 8500; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_dev_kta3_new17.txt: no RULE finding
+new 08a9b3a_fresh_kta3_new17: DIFFERS (8500 games, 685 s) 1 differing deals of 8500; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_fresh_kta3_new17.txt: no RULE finding
+new 08a9b3a_dev_kta3_table: SAME (14000 games, 986 s) 0 differing deals of 14000; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_dev_kta3_table.txt: no RULE finding
+new 08a9b3a_fresh_kta3_table: SAME (14000 games, 986 s) 0 differing deals of 14000; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_fresh_kta3_table.txt: no RULE finding
+new 08a9b3a_cov_b2e_km3: SAME (48000 games, 3554 s) 0 differing deals of 48000; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_cov_b2e_km3.txt: no RULE finding
+2026-10-20T08:22:20Z driver_games done
+08a9b3a_new17_k3 21 SAME
+08a9b3a_new17_kp3 21 SAME
+08a9b3a_dev_km3_new17 21 SAME
+08a9b3a_new17_kog3 21 SAME
+08a9b3a_dev_kta3_new17 21 SAME
+08a9b3a_fresh_kta3_new17 21 SAME
+08a9b3a_dev_km3_new17: 7 changed deals; by reach: {'growl': 7}
+08a9b3a_dev_kta3_new17: 7 changed deals; by reach: {'growl': 7}
+08a9b3a_fresh_kta3_new17: 1 changed deals; by reach: {'growl': 1}
+08a9b3a_new17_k3: 8 changed deals; by reach: {'growl': 8}
+08a9b3a_new17_kog3: 7 changed deals; by reach: {'growl': 7}
+08a9b3a_new17_kp3: 7 changed deals; by reach: {'growl': 7}
+2026-10-20T08:27:36Z driver_u2: U verification: 08a9b3a_new17_k3 21 SAME;08a9b3a_new17_kp3 21 SAME;08a9b3a_dev_km3_new17 21 SAME;08a9b3a_new17_kog3 21 SAME;08a9b3a_dev_kta3_new17 21 SAME;08a9b3a_fresh_kta3_new17 21 SAME;
+2026-10-20T08:49:05Z driver_more start
+new 08a9b3a_8b_cloud_new_k3: SAME (240 games, 31 s) 0 differing deals of 240; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_8b_cloud_new_k3.txt: no RULE finding
+new 08a9b3a_8b_cloud_new_km3: SAME (240 games, 37 s) 0 differing deals of 240; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_8b_cloud_new_km3.txt: no RULE finding
+new 08a9b3a_8b_new2_new_k3: SAME (280 games, 33 s) 0 differing deals of 280; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_8b_new2_new_k3.txt: no RULE finding
+new 08a9b3a_8b_new2_new_km3: SAME (280 games, 35 s) 0 differing deals of 280; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_8b_new2_new_km3.txt: no RULE finding
+new 08a9b3a_8_will_new_k3: SAME (750 games, 42 s) 0 differing deals of 750; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_8_will_new_k3.txt: no RULE finding
+new 08a9b3a_8_will_new_km3: SAME (1500 games, 108 s) 0 differing deals of 1500; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_8_will_new_km3.txt: no RULE finding
+new 08a9b3a_8_new_k3: SAME (8000 games, 854 s) 0 differing deals of 8000; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_8_new_k3.txt: no RULE finding
+new 08a9b3a_8_new_km3: DIFFERS (16000 games, 1939 s) 1 differing deals of 16000; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_8_new_km3.txt: no RULE finding
+7c_km3 SAME 0
+7c2_km3 SAME 0
+dray_dev_km3 DIFFERS 629
+dray_dev_kta3 DIFFERS 621
+dray_dev_k3 DIFFERS 10
+2026-10-20T10:30:04Z driver_more done: 08a9b3a_8b_cloud_new_k3 SAME 0 differing deals of 240; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_8b_cloud_new_k3.txt: no RULE finding;08a9b3a_8b_cloud_new_km3 SAME 0 differing deals of 240; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_8b_cloud_new_km3.txt: no RULE finding;08a9b3a_8b_new2_new_k3 SAME 0 differing deals of 280; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_8b_new2_new_k3.txt: no RULE finding;08a9b3a_8b_new2_new_km3 SAME 0 differing deals of 280; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_8b_new2_new_km3.txt: no RULE finding;08a9b3a_8_will_new_k3 SAME 0 differing deals of 750; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_8_will_new_k3.txt: no RULE finding;08a9b3a_8_will_new_km3 SAME 0 differing deals of 1500; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_8_will_new_km3.txt: no RULE finding;08a9b3a_8_new_k3 SAME 0 differing deals of 8000; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_8_new_k3.txt: no RULE finding;08a9b3a_8_new_km3 DIFFERS 1 differing deals of 16000; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_8_new_km3.txt: no RULE finding;7c_km3 SAME 0 differing deals of 1920 (new v old, both played tonight);7c2_km3 SAME 0 differing deals of 1440 (new v old, both played tonight);dray_dev_km3 DIFFERS 629 differing deals of 4000 (new v old, both played tonight);dray_dev_kta3 DIFFERS 621 differing deals of 4000 (new v old, both played tonight);dray_dev_k3 DIFFERS 10 differing deals of 4000 (new v old, both played tonight);
+km3 629 by pairing {0: 70, 1: 76, 2: 74, 3: 85, 4: 63, 5: 83, 6: 97, 7: 81} winner flips 157
+kta3 621 by pairing {0: 69, 1: 76, 2: 74, 3: 78, 4: 63, 5: 83, 6: 97, 7: 81} winner flips 148
+k3 10 by pairing {1: 2, 3: 2, 4: 3, 5: 3} winner flips 3
+2026-10-20T10:32:10Z V = 2e75429f323c37f3ae6dc814e379d19ebf1efbb9: d9d2e70458273b77c379a7424ad33a162289205a with the #401 commit 42d2dd8e3cdbbb029cb1281627aef2db605f43ed reverted (local ref refs/pocketdecksim/engine-candidate-2026-10-20-V); diff v candidate:  1 file changed, 3 insertions(+), 3 deletions(-)
+2026-10-20T10:36:41Z build_V OK: BUILD OK in 270 s; legality_scan 046460ab55e703c6e1334c03c9755038e4fc6d4e13d6473990ee02c1d9d818d4
+2026-10-20T10:43:32Z V v old, dray km3, pairings 0-2,4-7: exit 1 V v old dray km3 (pairings other than 3): v /home/dacz8976/pincand_work/games/oldnew/dray_dev_km3_old.jsonl 3500 of 3500 equal on every field the reference reco
+2026-10-20T10:43:32Z V v old, dray km3, pairing 3: exit 0 V v old dray km3 pairing 3: v /home/dacz8976/pincand_work/games/oldnew/dray_dev_km3_old.jsonl 500 of 500 equal on every field the reference records (18 fields: 
+2026-10-20T10:44:10Z U v new (candidate), dray km3 pairing 3: exit 0 U v new dray km3 pairing 3: v /home/dacz8976/pincand_work/games/oldnew/dray_dev_km3_new.jsonl 500 of 500 equal on every field the reference records (18 fields: 
+2026-10-20T10:44:10Z U v old, dray km3 pairing 3: exit 1 U v old dray km3 pairing 3: v /home/dacz8976/pincand_work/games/oldnew/dray_dev_km3_old.jsonl 415 of 500 equal on every field the reference records (18 fields: 
+2026-10-20T10:51:06Z V v old, dray kta3, pairings 0-2,4-7: exit 1 V v old dray kta3 (pairings other than 3): v /home/dacz8976/pincand_work/games/oldnew/dray_dev_kta3_old.jsonl 3500 of 3500 equal on every field the reference re
+2026-10-20T10:51:06Z V v old, dray kta3, pairing 3: exit 0 V v old dray kta3 pairing 3: v /home/dacz8976/pincand_work/games/oldnew/dray_dev_kta3_old.jsonl 500 of 500 equal on every field the reference records (18 fields
+2026-10-20T10:51:44Z U v new (candidate), dray kta3 pairing 3: exit 0 U v new dray kta3 pairing 3: v /home/dacz8976/pincand_work/games/oldnew/dray_dev_kta3_new.jsonl 500 of 500 equal on every field the reference records (18 fields
+2026-10-20T10:51:44Z U v old, dray kta3 pairing 3: exit 1 U v old dray kta3 pairing 3: v /home/dacz8976/pincand_work/games/oldnew/dray_dev_kta3_old.jsonl 422 of 500 equal on every field the reference records (18 fields
+2026-10-20T10:57:54Z V v old, dray k3, pairings 0-2,4-7: exit 1 V v old dray k3 (pairings other than 3): v /home/dacz8976/pincand_work/games/oldnew/dray_dev_k3_old.jsonl 3500 of 3500 equal on every field the reference record
+2026-10-20T10:57:54Z V v old, dray k3, pairing 3: exit 0 V v old dray k3 pairing 3: v /home/dacz8976/pincand_work/games/oldnew/dray_dev_k3_old.jsonl 500 of 500 equal on every field the reference records (18 fields: a,
+2026-10-20T10:58:29Z U v new (candidate), dray k3 pairing 3: exit 0 U v new dray k3 pairing 3: v /home/dacz8976/pincand_work/games/oldnew/dray_dev_k3_new.jsonl 500 of 500 equal on every field the reference records (18 fields: a,
+2026-10-20T10:58:29Z U v old, dray k3 pairing 3: exit 1 U v old dray k3 pairing 3: v /home/dacz8976/pincand_work/games/oldnew/dray_dev_k3_old.jsonl 498 of 500 equal on every field the reference records (18 fields: a,
+2026-10-20T10:58:29Z driver_v done
+2026-10-20T10:59:17Z V v old (corrected --expect 3500), dray km3, pairings 0-2,4-7: exit 0 V v old dray km3 (pairings 0-2, 4-7): v /home/dacz8976/pincand_work/games/oldnew/dray_dev_km3_old.jsonl 3500 of 3500 equal on every field the reference records (21 fields
+2026-10-20T10:59:17Z V v old (corrected --expect 3500), dray kta3, pairings 0-2,4-7: exit 0 V v old dray kta3 (pairings 0-2, 4-7): v /home/dacz8976/pincand_work/games/oldnew/dray_dev_kta3_old.jsonl 3500 of 3500 equal on every field the reference records (21 fiel
+2026-10-20T10:59:17Z V v old (corrected --expect 3500), dray k3, pairings 0-2,4-7: exit 0 V v old dray k3 (pairings 0-2, 4-7): v /home/dacz8976/pincand_work/games/oldnew/dray_dev_k3_old.jsonl 3500 of 3500 equal on every field the reference records (21 fields: 
+2026-10-20T10:59:17Z V v old, dray km3, all 8 pairings: exit 0 V v old dray km3 (all): v /home/dacz8976/pincand_work/games/oldnew/dray_dev_km3_old.jsonl 4000 of 4000 equal on every field the reference records (21 
+2026-10-20T10:59:17Z V v old, dray kta3, all 8 pairings: exit 0 V v old dray kta3 (all): v /home/dacz8976/pincand_work/games/oldnew/dray_dev_kta3_old.jsonl 4000 of 4000 equal on every field the reference records (2
+2026-10-20T10:59:17Z V v old, dray k3, all 8 pairings: exit 0 V v old dray k3 (all): v /home/dacz8976/pincand_work/games/oldnew/dray_dev_k3_old.jsonl 4000 of 4000 equal on every field the reference records (21 fi
+2026-10-20T10:59:17Z heavy work done; keeper asked to exit

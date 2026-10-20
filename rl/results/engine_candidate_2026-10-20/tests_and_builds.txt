@@ -1,0 +1,28 @@
+# engine suite at d9d2e704 (cargo test --release --features test-utils --locked --no-fail-fast, jobs 2, RUST_TEST_THREADS 2)
+2026-10-20T02:18:18Z test_N1: cargo test --release --features test-utils --locked --no-fail-fast (RUST_TEST_THREADS 2)
+test_N1: 2108 passed, 0 failed; failing: []
+2026-10-20T02:31:23Z test_N1 rc=0 in 785 s
+# with the ported tests (ccb1d3b5's engine/tests, jobs 1, RUST_TEST_THREADS 1)
+2026-10-20T02:37:00Z test_N2: the ported tests (git status in pincand: 10 paths) copied into N/engine/tests; cargo test, jobs 1
+test_N2: 2125 passed, 0 failed; failing: []; compile errors: 0 []
+2026-10-20T02:42:19Z test_N2 rc=0 in 318 s
+# builds (the strength builds ran at 8 jobs: rl/strength/build.sh's STRENGTH_JOBS default)
+2026-10-20T02:09:30Z build_N: archive + cargo build --release --locked (deckgym, legality_scan, goldfish), jobs 2
+2026-10-20T02:18:18Z build_N OK: BUILD OK in 527 s; 245e11e8cf939da7ba12a50fbb18630c67b1fb2231a692dd0c259c4a01556745  deckgym bce5654bb51b8b8bc201fba353267c575c168291959c32de6ee1365ecf7db8e9  legality_scan f53e948997326174103d917642cde78edb788098a7e8a5faf702096c91390e35  goldfish 
+2026-10-20T02:31:23Z strength_N: rl/strength/build.sh d9d2e70458273b77c379a7424ad33a162289205a -> /home/dacz8976/pincand_work/programs/N/strength (own build and target folders)
+2026-10-20T02:35:56Z strength_N OK: 04fadd96870e4a7876a8eebc3f86721d42bfab62ed8e4906cb0986228948680f
+2026-10-20T02:42:19Z strength_K: candidate engine + kx3's added files (laptop/kx3-on-rules2 cd20a97a)
+2026-10-20T02:49:18Z strength_K OK: 068c993a3251a4d02f5aa7cbbee65bb2c3116ffeb548ddad9f641501af2cd725 (overlay base c045ede0e6d69c9dcb8d4cb3165c8ada3f8ef72e)
+2026-10-20T04:24:02Z build_U OK: BUILD OK in 453 s; legality_scan a1493ce8fa7fa971e412e672b6ecbf2f9cee7f7bdb1dfb4b2044bc9f68bc1380
+2026-10-20T10:36:41Z build_V OK: BUILD OK in 270 s; legality_scan 046460ab55e703c6e1334c03c9755038e4fc6d4e13d6473990ee02c1d9d818d4
+# test result lines
+      7 test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+      6 test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+      6 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+      6 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+      5 test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+      6 test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+      3 test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+      3 test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+      2 test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+      2 test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.09s
