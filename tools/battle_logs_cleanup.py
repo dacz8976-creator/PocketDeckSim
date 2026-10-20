@@ -35,7 +35,11 @@ EARLIEST_ACCEPTANCE = datetime.date(2026, 10, 14)                    # the audit
 BATTLE_LOGS_DEFAULT = 'C:/Users/dacz8/OneDrive/Desktop/Battle Logs'  # where the videos are (at its top and in Reviewed\)
 LOCATION_FILE = 'BATTLE_LOGS_LOCATION.json'                         # --move-to writes it into the moved Recording_QA: where the videos stayed
 MEDIA_LOCATIONS = 'MEDIA_LOCATIONS.json'                            # in Battle Logs: Codex's record of where each video is, with the Drive archive entries
-CACHE_DEFAULT = 'C:/Users/dacz8/BattleLogsData/Cache/raw'          # <root>/<sha256>/<original file name>: downloads of archived videos
+CACHE_DEFAULT = 'C:/Users/dacz8/BattleLogsData/Cache'              # only if Codex's LOCAL_DATA_LOCATIONS.json cannot be read: the cache root; downloads are <root>/raw/<sha256>/<original file name>
+DATA_LOCATIONS = 'Review_Log/LOCAL_DATA_LOCATIONS.json'            # Codex's record of the data folders, next to MEDIA_LOCATIONS.json in Battle Logs
+HELPER_PYTHON = 'C:/Users/dacz8/.cache/codex-runtimes/codex-primary-runtime/dependencies/python/python.exe'    # the Windows Python Codex's drive_media.py runs with
+HELPER_SCRIPT = 'Review_Log/drive_media.py'                        # Codex's metadata-only Drive helper, in Battle Logs
+HELPER_TIMEOUT = 90                                                 # seconds: it lists the registered parent folder through rclone
 DRIVE_CHECK_ENV = 'BATTLE_LOGS_DRIVE_CHECK'
 DRIVE_CHECK_TIMEOUT = 30                                            # seconds: a check that is slower than this is "not confirmed"
 SHA_RE = re.compile(r'^[0-9a-f]{64}$')
@@ -326,7 +330,7 @@ class Batch:
 
 def _json(path):
     try:
-        with open(path, encoding='utf-8') as f:
+        with open(path, encoding='utf-8-sig') as f:
             return json.load(f)
     except (OSError, ValueError):
         return None
@@ -549,18 +553,20 @@ def video_index_all(dirs):
 
 
 class Archive:
-    """where a video can be besides the Battle Logs folders: Codex's MEDIA_LOCATIONS.json (records with the file name, bytes, sha256 and, for an archived one, google_drive_archive.file_id), the
-    local cache of downloads (<cache_root>/<sha256>/<file name>) and a live Drive check. A copy counts only as the rule in check_video says; a Drive record alone never does."""
+    """where a video can be besides the Battle Logs folders: Codex's MEDIA_LOCATIONS.json (records with the file name, bytes, sha256 and, for an archived or Drive-native one,
+    google_drive_archive / google_drive_source with the file id), the local cache of downloads (<raw root>/<sha256>/<file name>) and a live Drive check. A copy counts only as the rule in
+    check_video says; a Drive record alone never does. Everything here only READS: the cache and Battle Logs are never written, moved or deleted from."""
 
-    def __init__(self, records=None, cache_root=None, drive_cmd=None, timeout=DRIVE_CHECK_TIMEOUT, warnings=()):
+    def __init__(self, records=None, cache_root=None, drive_cmd=None, timeout=DRIVE_CHECK_TIMEOUT, warnings=(), helper=None):
         self.records = records or {}        # lower-case file name -> [record dict]
         self.cache_root, self.drive_cmd, self.timeout = cache_root, drive_cmd, timeout
+        self.helper = helper                # (argv prefix, cwd) of Codex's drive_media.py `metadata`: the default live check when no --drive-check-cmd is given
         self.warnings = list(warnings)
-        self._sha = {}                      # (path, size, mtime_ns) -> sha256: kept for this run only
+        self._sha = {}                      # (path, dev, inode, size, mtime_ns) -> sha256: kept for this run's scan only, never read by the check right before a deletion
         self._live = {}                     # file id -> (ok, why): only for the scan, never for the check right before a deletion
 
     @classmethod
-    def load(cls, files, cache_root=None, drive_cmd=None, timeout=DRIVE_CHECK_TIMEOUT):
+    def load(cls, files, cache_root=None, drive_cmd=None, timeout=DRIVE_CHECK_TIMEOUT, helper=None):
         records, warns = {}, []
         for f in files:
             if not os.path.exists(f):
@@ -573,33 +579,119 @@ class Archive:
                 for r in (lst if isinstance(lst, list) else []):
                     if isinstance(r, dict) and isinstance(r.get('filename'), str) and r['filename']:
                         records.setdefault(r['filename'].lower(), []).append(r)
-        return cls(records, cache_root, drive_cmd, timeout, warns)
+        return cls(records, cache_root, drive_cmd, timeout, warns, helper)
 
     def has_records(self, name):
         return bool(self.records.get(name.lower()))
 
+    @staticmethod
+    def drive_of(r):
+        """-> (dict | None, why): the record's Drive registration, google_drive_archive or google_drive_source (Codex's resolver takes both; a record that has both is a conflict)"""
+        arc, src = r.get('google_drive_archive'), r.get('google_drive_source')
+        if arc and src:
+            return None, 'the record has both google_drive_archive and google_drive_source (Drive source and archive registrations conflict)'
+        d = arc or src
+        if d is None or d == {} or d is False:
+            return None, ''
+        if not isinstance(d, dict):
+            return None, 'the record gives its Drive registration in an unusable shape'
+        return d, ''
+
+    def identity(self, r, src_sha=None):
+        """-> (ident, why): what ONE record says the file is: sha256 / md5 / sha1 (lower case), Drive file id and parent. Every place the record, its registration, its provider checksums, its
+        stored metadata, its source_identity and SOURCE.json (`src_sha`) name a value must give the same one; a known conflict -> (None, why), and no fallback may use the record"""
+        d, why = self.drive_of(r)
+        if why:
+            return None, why
+        d = d or {}
+        meta = d.get('metadata') if isinstance(d.get('metadata'), dict) else {}
+        vals = {'sha256': [], 'md5': [], 'sha1': []}
+
+        def add(kind, v, where):
+            if v is None or v == '':
+                return None
+            if not isinstance(v, str) or (kind == 'sha256' and not SHA_RE.match(v.lower())):
+                return f'{where} gives a {kind} that is not usable'
+            vals[kind].append((v.lower(), where))
+        problems = []
+        if src_sha is not None:
+            problems.append(add('sha256', src_sha, 'SOURCE.json') if isinstance(src_sha, str) else 'SOURCE.json records a sha256 that is not 64 hex digits')
+        problems.append(add('sha256', r.get('sha256'), 'the record'))
+        for label, pc in (('the registration', d.get('provider_checksums')), ('the stored Drive metadata', meta.get('provider_checksums'))):
+            if isinstance(pc, dict):
+                for kind, keys in (('sha256', ('sha256', 'sha256Checksum')), ('md5', ('md5', 'md5Checksum')), ('sha1', ('sha1', 'sha1Checksum'))):
+                    for k in keys:
+                        problems.append(add(kind, pc.get(k), f'{label} ({k})'))
+        fid, parent = d.get('file_id'), d.get('parent_id')
+        si = r.get('source_identity')
+        if isinstance(si, str) and si:
+            m = re.match(r'^google_drive:([^:]+):sha256:([0-9A-Fa-f]{64})$', si)
+            if not m:
+                problems.append('source_identity is not google_drive:<id>:sha256:<sha256>')
+            else:
+                problems.append(add('sha256', m.group(2), 'source_identity'))
+                if isinstance(fid, str) and m.group(1) != fid:
+                    problems.append('source_identity names another Drive file than the registration')
+        if meta:
+            if meta.get('file_id') not in (None, fid):
+                problems.append('the stored Drive metadata names another Drive file than the registration')
+            if isinstance(meta.get('parent_ids'), list) and parent is not None and parent not in meta['parent_ids']:
+                problems.append('the registered parent is not among the stored Drive metadata parents')
+            if meta.get('bytes') is not None and r.get('bytes') is not None and meta['bytes'] != r['bytes']:
+                problems.append('the stored Drive metadata has another size than the record')
+        problems = [p for p in problems if p]
+        for kind, lst in vals.items():
+            if len({v for v, _ in lst}) > 1:
+                problems.append(f'{kind} differs between ' + ' and '.join(f'{w} ({v[:12]}...)' for v, w in lst))
+        if problems:
+            return None, 'conflicting or unusable identity: ' + '; '.join(problems)
+        one = lambda k: vals[k][0][0] if vals[k] else None
+        return {'sha256': one('sha256'), 'md5': one('md5'), 'sha1': one('sha1'), 'fid': fid.strip() if isinstance(fid, str) else None, 'parent': parent if isinstance(parent, str) else None}, ''
+
     # --- the cache
-    def _sha_of(self, path, st):
-        key = (path, st.st_size, st.st_mtime_ns)
-        if key not in self._sha:
-            self._sha[key] = sha256_of(path)
+    def _stable_sha(self, fp, fresh):
+        """SHA-256 of the file, read now. Its identity (device, inode, size, modification time) must be the same before, at the open handle and after the read, else it is not confirmed.
+        `fresh` never reads the run's remembered hashes"""
+        st = os.lstat(fp)
+        sig = lambda s: (s.st_dev, s.st_ino, s.st_size, s.st_mtime_ns)
+        if not stat.S_ISREG(st.st_mode):
+            raise OSError('not a regular file')
+        key = (fp,) + sig(st)
+        if not fresh and key in self._sha:
+            return self._sha[key]
+        h = hashlib.sha256()
+        with open(fp, 'rb') as f:
+            fs = os.fstat(f.fileno())
+            if (fs.st_ino, fs.st_size, fs.st_mtime_ns) != sig(st)[1:]:
+                raise OSError('the file changed while it was opened')
+            for chunk in iter(lambda: f.read(1 << 20), b''):
+                h.update(chunk)
+        if sig(os.lstat(fp)) != sig(st):
+            raise OSError('the file changed while it was read')
+        self._sha[key] = h.hexdigest()
         return self._sha[key]
 
-    def cache_check(self, name, want, src_sha=None):
-        """-> (ok, why): a file <cache_root>/<sha256>/<name> whose size is `want` and whose own SHA-256 (computed now) is the sha256 the record (or SOURCE.json) gives"""
+    def cache_check(self, name, want, src_sha=None, fresh=False):
+        """-> (ok, why): a file <cache_root>/<sha256>/<name> whose size is `want` and whose own SHA-256 (computed now) is the sha256 the record (or SOURCE.json) gives. `fresh` (the check right
+        before a deletion) hashes the file again, never from memory, and wants the file to be the same file before, during and after the read"""
         if not self.cache_root:
             return False, 'no cache folder configured'
-        shas = {r['sha256'].lower() for r in self.records.get(name.lower(), []) if isinstance(r.get('sha256'), str) and SHA_RE.match(r['sha256'].lower())
-                and (r.get('bytes') in (None, want))}
-        if src_sha is not None:
-            if not (isinstance(src_sha, str) and SHA_RE.match(src_sha.lower())):
-                return False, 'SOURCE.json records a sha256 that is not 64 hex digits'
-            shas = {src_sha.lower()} & shas if shas else {src_sha.lower()}
+        if src_sha is not None and not (isinstance(src_sha, str) and SHA_RE.match(src_sha.lower())):
+            return False, 'SOURCE.json records a sha256 that is not 64 hex digits'
+        shas, bad = set(), []
+        for r in self.records.get(name.lower(), []):
+            if r.get('bytes') not in (None, want):
+                continue
+            ident, why = self.identity(r, src_sha)
+            if ident is None:
+                bad.append(why)
+            elif ident['sha256']:
+                shas.add(ident['sha256'])
         if not shas:
-            return False, 'no record gives a sha256 (with this size) for it'
+            return False, '; '.join(bad) if bad else 'no record gives a sha256 (with this size) for it'
         if os.path.basename(name) != name or name in ('.', '..'):
             return False, 'the video name is not a plain file name'
-        why = []
+        why = list(bad)
         for sha in sorted(shas):
             d = os.path.join(self.cache_root, sha)
             fp = os.path.join(d, name)
@@ -614,9 +706,9 @@ class Archive:
                 if st.st_size != want:
                     why.append(f'cache copy {sha[:12]}.../{name} has {st.st_size} bytes, SOURCE.json says {want}')
                     continue
-                got = self._sha_of(fp, st)
+                got = self._stable_sha(fp, fresh)
             except OSError as e:
-                why.append(f'cache copy {sha[:12]}.../{name} cannot be read ({type(e).__name__})')
+                why.append(f'cache copy {sha[:12]}.../{name} cannot be read steadily ({type(e).__name__}: {e})')
                 continue
             if got != sha:
                 why.append(f'cache copy {sha[:12]}.../{name} has SHA-256 {got[:12]}..., the record says {sha[:12]}...')
@@ -625,31 +717,53 @@ class Archive:
         return False, '; '.join(why)
 
     # --- Drive
-    def drive_check(self, name, want, fresh=False):
-        """-> (ok, why): some Drive record of `name` whose live check (the external command, run now) says the file exists, is not in Trash and has `want` bytes"""
-        recs = [r for r in self.records.get(name.lower(), []) if isinstance(r.get('google_drive_archive'), dict) and isinstance(r['google_drive_archive'].get('file_id'), str)
-                and r['google_drive_archive']['file_id'].strip()]
+    def drive_check(self, name, want, fresh=False, src_sha=None):
+        """-> (ok, why): the Drive record of `name` (google_drive_archive or google_drive_source) whose live check (Codex's metadata helper, or --drive-check-cmd; run now) says the file exists, is
+        not in Trash and has `want` bytes and the checksums the record, SOURCE.json and Drive agree on. A known conflict between those sources refuses the record before Drive is asked"""
+        recs = [r for r in self.records.get(name.lower(), []) if r.get('google_drive_archive') or r.get('google_drive_source')]
         if not recs:
             return False, 'no Drive record'
-        if not self.drive_cmd:
-            return False, 'it has a Drive record, but no live Drive check is configured (--drive-check-cmd or BATTLE_LOGS_DRIVE_CHECK), and a record alone never counts'
-        why = []
-        for r in recs:
-            a = r['google_drive_archive']
-            fid = a['file_id'].strip()
-            if r.get('bytes') not in (None, want):
-                why.append(f'the Drive record says {r.get("bytes")} bytes, SOURCE.json says {want}')
-                continue
-            if not fresh and fid in self._live:
-                res = self._live[fid]
-            else:
-                res = self._live_check(fid, want, a.get('provider_checksums') if isinstance(a.get('provider_checksums'), dict) else {}, r.get('sha256'))
-                if not fresh:
-                    self._live[fid] = res
-            if res[0]:
-                return True, ''
-            why.append(res[1])
-        return False, '; '.join(why)
+        if len(recs) > 1:
+            return False, f'{len(recs)} Drive records for {name} (duplicate archive location records)'
+        r = recs[0]
+        ident, why = self.identity(r, src_sha)
+        if ident is None:
+            return False, why
+        if not ident['fid']:
+            return False, 'the Drive record has no file id'
+        if not self.drive_cmd and not self.helper:
+            return False, 'it has a Drive record, but no live Drive check is configured (Codex\'s drive_media.py was not found; --drive-check-cmd or BATTLE_LOGS_DRIVE_CHECK), and a record alone never counts'
+        fid = ident['fid']
+        if r.get('bytes') not in (None, want):
+            return False, f'the Drive record says {r.get("bytes")} bytes, SOURCE.json says {want}'
+        if not self.drive_cmd and not (ident['parent'] and re.fullmatch(r'[A-Za-z0-9_-]{5,200}', ident['parent']) and re.fullmatch(r'[A-Za-z0-9_-]{5,200}', fid) and ident['parent'] != fid):
+            return False, 'the Drive record has no usable parent folder id (the metadata helper needs the registered file and parent ids)'
+        if not fresh and fid in self._live:
+            return self._live[fid]
+        if self.drive_cmd:
+            res = self._live_check(fid, want, {'md5': ident['md5'], 'sha1': ident['sha1']}, ident['sha256'])
+        else:
+            res = self._helper_check(fid, ident['parent'], want, name, ident)
+        if not fresh:
+            self._live[fid] = res
+        return res
+
+    def _validate_live(self, j, fid, want, sums, sha):
+        """the same gate for --drive-check-cmd's answer and for the helper's mapped answer"""
+        if not isinstance(j, dict) or j.get('id') != fid:
+            return False, f'the Drive check for {fid} answered for another file or in an unexpected shape'
+        if j.get('exists') is not True:
+            return False, f'Drive says file {fid} does not exist'
+        if j.get('trashed') is not False:
+            return False, f'Drive says file {fid} is in Trash (or does not say it is not)'
+        size = j.get('size')
+        size = int(size) if isinstance(size, str) and size.isdigit() else size
+        if isinstance(size, bool) or size != want:
+            return False, f'Drive says file {fid} has {j.get("size")!r} bytes, SOURCE.json says {want}'
+        for key, mine in (('md5', sums.get('md5')), ('sha1', sums.get('sha1')), ('sha256', sha)):
+            if key in j and isinstance(mine, str) and mine and str(j[key]).lower() != mine.lower():
+                return False, f'Drive says file {fid} has {key} {str(j[key])[:12]}..., the record says {mine[:12]}...'
+        return True, ''
 
     def _live_check(self, fid, want, sums, rec_sha):
         try:
@@ -669,20 +783,57 @@ class Archive:
             j = json.loads(r.stdout)
         except ValueError:
             return False, f'the Drive check for {fid} did not print JSON'
-        if not isinstance(j, dict) or j.get('id') != fid:
-            return False, f'the Drive check for {fid} answered for another file or in an unexpected shape'
-        if j.get('exists') is not True:
-            return False, f'Drive says file {fid} does not exist'
-        if j.get('trashed') is not False:
-            return False, f'Drive says file {fid} is in Trash (or does not say it is not)'
-        size = j.get('size')
-        size = int(size) if isinstance(size, str) and size.isdigit() else size
-        if isinstance(size, bool) or size != want:
-            return False, f'Drive says file {fid} has {j.get("size")!r} bytes, SOURCE.json says {want}'
-        for key, mine in (('md5', sums.get('md5')), ('sha256', sums.get('sha256') or rec_sha)):
-            if key in j and isinstance(mine, str) and mine and str(j[key]).lower() != mine.lower():
-                return False, f'Drive says file {fid} has {key} {str(j[key])[:12]}..., the record says {mine[:12]}...'
-        return True, ''
+        return self._validate_live(j, fid, want, sums, rec_sha)
+
+    def _helper_check(self, fid, parent, want, name, ident):
+        """Codex's drive_media.py `metadata --file-id --parent-id` (metadata only, no download): fail closed. Needs a successful exit, one JSON object, the record's file id, the registered parent
+        among parent_ids, SOURCE.json's bytes, the record's file name, and every checksum it gives consistent with SOURCE/registry (at least one must be given); only then it is mapped to
+        exists / trashed:false / size / md5 / sha1 / sha256 and passed through the same gate as --drive-check-cmd"""
+        prefix, cwd = self.helper
+        try:
+            r = subprocess.run(list(prefix) + ['--file-id', fid, '--parent-id', parent], capture_output=True, text=True, encoding='utf-8', errors='replace',
+                               timeout=self.timeout, stdin=subprocess.DEVNULL, cwd=cwd)
+        except subprocess.TimeoutExpired:
+            return False, f'the Drive metadata helper for {fid} took more than {self.timeout} s'
+        except (OSError, ValueError) as e:
+            return False, f'the Drive metadata helper could not be run ({type(e).__name__})'
+        if r.returncode != 0:
+            return False, f'the Drive metadata helper for {fid} failed (exit {r.returncode}); the file is not confirmed'
+        try:
+            j = json.loads(r.stdout)
+        except ValueError:
+            return False, f'the Drive metadata helper for {fid} did not print JSON'
+        if not isinstance(j, dict):
+            return False, f'the Drive metadata helper for {fid} printed an unexpected shape'
+        if j.get('file_id') != fid:
+            return False, f'the Drive metadata helper answered for another file than {fid}'
+        pids = j.get('parent_ids')
+        if not isinstance(pids, list) or parent not in pids:
+            return False, f'the Drive metadata helper does not list the registered parent folder for {fid} (the file moved?)'
+        size = j.get('bytes')
+        if isinstance(size, bool) or not isinstance(size, int) or size != want:
+            return False, f'the Drive metadata helper says {size!r} bytes for {fid}, SOURCE.json says {want}'
+        if j.get('filename') != name:
+            return False, f'the Drive metadata helper says the file is named {j.get("filename")!r}, not {name!r}'
+        pc = j.get('provider_checksums')
+        if not isinstance(pc, dict):
+            return False, f'the Drive metadata helper gave no checksums for {fid}'
+        mapped, matched = {}, 0
+        for key, out, mine in (('md5Checksum', 'md5', ident['md5']), ('sha1Checksum', 'sha1', ident['sha1']), ('sha256Checksum', 'sha256', ident['sha256'])):
+            if key not in pc or pc[key] in (None, ''):
+                continue
+            v = pc[key]
+            if not isinstance(v, str):
+                return False, f'the Drive metadata helper gave an unusable {key}'
+            mapped[out] = v.lower()
+            if mine:
+                if v.lower() != mine.lower():
+                    return False, f'Drive says file {fid} has {out} {v[:12]}..., SOURCE.json / the registry say {mine[:12]}...'
+                matched += 1
+        if not matched:
+            return False, f'the Drive metadata helper gave no checksum that SOURCE.json or the registry can confirm for {fid}'
+        mapped.update({'id': fid, 'exists': True, 'trashed': False, 'size': size})
+        return self._validate_live(mapped, fid, want, {'md5': ident['md5'], 'sha1': ident['sha1']}, ident['sha256'])
 
 
 def check_video(game, videos, where='', fresh=False, archive=None):
@@ -715,10 +866,10 @@ def check_video(game, videos, where='', fresh=False, archive=None):
     if archive is None or not archive.has_records(name):
         return False, local
     sha = src.get('sha256')
-    ok, cwhy = archive.cache_check(name, want, sha)
+    ok, cwhy = archive.cache_check(name, want, sha, fresh)
     if ok:
         return True, ''
-    ok, dwhy = archive.drive_check(name, want, fresh)
+    ok, dwhy = archive.drive_check(name, want, fresh, sha)
     if ok:
         return True, ''
     return False, f'{local}; archived: not in the cache ({cwhy}); Drive: {dwhy}'
@@ -919,7 +1070,7 @@ def report(decisions, view, qa_root, index, verbose=False, out=None, videos_from
         p('Source videos looked for in: ' + ('; '.join(f'{d} ({why})' for d, why in videos_from) or 'NOWHERE (no Battle Logs folder found: give --videos PATH)'))
     if archive is not None:
         p(f'Archived videos: cache {archive.cache_root or "(none)"} (a copy counts only with the recorded SHA-256 and size); MEDIA_LOCATIONS records for {len(archive.records)} files; Drive live check: '
-          + (f'{archive.drive_cmd}' if archive.drive_cmd else 'NOT configured, so a video that is only in Drive is never confirmed and its packets stay (--drive-check-cmd, or BATTLE_LOGS_DRIVE_CHECK)'))
+          + (f'{archive.drive_cmd}' if archive.drive_cmd else f'Codex\'s metadata helper ({" ".join(archive.helper[0])})' if archive.helper else 'NOT configured, so a video that is only in Drive is never confirmed and its packets stay (--drive-check-cmd, or BATTLE_LOGS_DRIVE_CHECK)'))
     for w in warnings:
         p('WARNING: ' + w)
     p(f'Committed state read from: {view.describe()}' + ('' if asked_origin or view.no_git else ' -- origin was NOT asked whether this is current (--apply asks)'))
@@ -1452,6 +1603,36 @@ def stale_references(source, repo):
 
 
 # ---------------------------------------------------------------------------------------------------------------- command line
+def data_config(battle_logs, override=None):
+    """-> (raw root, warnings): the cache's raw folder (<Cache>/raw, as Codex's raw_video_cache lays it out) from Codex's LOCAL_DATA_LOCATIONS.json (directories.Cache, which must lie under
+    current_root); `override` (--cache-root) names the Cache folder instead. Unreadable config -> the built-in default and a plain warning. Read only (Codex's data_paths.py is not run)"""
+    if override:
+        return os.path.join(os.path.abspath(to_local(override)), 'raw'), []
+    warn = None
+    for d in battle_logs:
+        f = os.path.join(d, DATA_LOCATIONS)
+        if not os.path.isfile(f):
+            continue
+        j = _json(f)
+        cache = j.get('directories', {}).get('Cache') if isinstance(j, dict) and isinstance(j.get('directories'), dict) else None
+        root = j.get('current_root') if isinstance(j, dict) else None
+        if isinstance(cache, str) and isinstance(root, str) and fold(to_local(cache)).startswith(fold(to_local(root)).rstrip('/\\') + os.sep):
+            return os.path.join(os.path.abspath(to_local(cache)), 'raw'), []
+        warn = f'{f} could not be read for the cache folder (no directories.Cache under current_root)'
+    return (os.path.join(os.path.abspath(to_local(CACHE_DEFAULT)), 'raw'),
+            [(warn or f'Codex\'s {DATA_LOCATIONS} was not found in the Battle Logs folders') + f'; using the built-in cache folder {CACHE_DEFAULT}'])
+
+
+def find_helper(battle_logs):
+    """-> (argv prefix, cwd) of Codex's drive_media.py `metadata` run with the Windows Python (from WSL through Windows interop; -B so Python writes no .pyc into Battle Logs), or None"""
+    py = to_local(HELPER_PYTHON)
+    for d in battle_logs:
+        script = os.path.join(d, HELPER_SCRIPT)
+        if os.path.isfile(script) and os.path.isfile(py):
+            return [py, '-B', to_windows(os.path.abspath(script)) if os.name != 'nt' else os.path.abspath(script), 'metadata'], os.path.dirname(os.path.abspath(script))
+    return None
+
+
 def default_repo():
     return os.path.abspath(os.path.join(os.path.dirname(os.path.abspath(__file__)), '..'))
 
@@ -1473,9 +1654,10 @@ def main(argv=None):
     ap.add_argument('--audit-hash', action='store_true', help='print the games_sha256 an acceptance in the audit list must carry for the games listed now (with the ref and commit it was computed from), and exit')
     ap.add_argument('--videos', metavar='PATH', help='the Battle Logs folder that holds the source videos (at its top and in Reviewed/); default: the one recorded in the moved Recording_QA by --move-to, the folder '
                     'Recording_QA is in, and C:/Users/dacz8/OneDrive/Desktop/Battle Logs')
-    ap.add_argument('--cache-root', default=CACHE_DEFAULT, metavar='PATH', help='the folder of downloaded archived videos, <PATH>/<sha256>/<file name> (default ' + CACHE_DEFAULT + '); a cache copy counts only with the recorded size and SHA-256')
+    ap.add_argument('--cache-root', metavar='PATH', help='override the cache folder (Codex\'s Cache; downloaded archived videos are <PATH>/raw/<sha256>/<file name>). Default: directories.Cache of Codex\'s Review_Log/LOCAL_DATA_LOCATIONS.json; '
+                    'a cache copy counts only with the recorded size and SHA-256. The tool only reads the cache')
     ap.add_argument('--media-locations', metavar='FILE', help='Codex\'s MEDIA_LOCATIONS.json (default: the one in each Battle Logs folder the tool looks in)')
-    ap.add_argument('--drive-check-cmd', metavar='CMD', default=os.environ.get(DRIVE_CHECK_ENV), help='external command that asks Drive live about one archived file; "{id}" in it is replaced by the Drive file ID (else the ID is appended). '
+    ap.add_argument('--drive-check-cmd', metavar='CMD', default=os.environ.get(DRIVE_CHECK_ENV), help='OVERRIDES the default live check (Codex\'s Review_Log/drive_media.py metadata, used when it is present): external command that asks Drive live about one archived file; "{id}" in it is replaced by the Drive file ID (else the ID is appended). '
                     'It must print JSON with id, exists, trashed and size (optionally md5/sha256). A Drive-only video counts as present only when it says exists:true, trashed:false and the size SOURCE.json records; no command, an error, a timeout or anything else = not confirmed (default: env ' + DRIVE_CHECK_ENV + ')')
     ap.add_argument('--allow-target-in-onedrive', action='store_true', help='with --move-to: accept a target that is itself inside a OneDrive folder (the move would not take Recording_QA out of OneDrive)')
     ap.add_argument('--allow-offline', action='store_true', help='with --apply / --move-to: go on when origin cannot be asked whether origin/main is current (otherwise refused: an acceptance may have been withdrawn since the last fetch)')
@@ -1546,8 +1728,12 @@ def main(argv=None):
             raise ToolError(f'--media-locations {a.media_locations!r} is not a file')
     else:
         ml = [os.path.join(d, MEDIA_LOCATIONS) for d, _ in vdirs]
-    archive = Archive.load(ml, os.path.abspath(to_local(a.cache_root)) if a.cache_root else None, a.drive_check_cmd)
-    vwarn = list(vwarn) + archive.warnings
+    bl_dirs = [os.path.dirname(os.path.abspath(f)) for f in ml if os.path.isfile(f)] + [d for d, _ in vdirs]
+    raw_root, cwarn = data_config(bl_dirs, a.cache_root)
+    archive = Archive.load(ml, raw_root, a.drive_check_cmd, helper=None if a.drive_check_cmd else find_helper(bl_dirs))
+    if archive.helper:
+        archive.timeout = HELPER_TIMEOUT
+    vwarn = list(vwarn) + cwarn + archive.warnings
     decisions = filter_batches(decide(scan_qa(qa_root, videos, where, archive), index), set(a.only) if a.only else None)
     report(decisions, view, qa_root, index, a.verbose, videos_from=vdirs, warnings=vwarn, asked_origin=bool(a.apply and not a.dry_run), archive=archive)
     if a.apply and not a.dry_run:
