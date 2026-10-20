@@ -84,8 +84,9 @@ tutorial/UI strings · [OBSERVED] seen in Dustin's recorded games · [COMMUNITY]
    (Mega Lucario ex ← Riolu, Mega Blaziken ex ← Combusken) or are Basics; 3 points when Knocked Out.
 8. **Bench damage:** no Weakness ever [OFFICIAL, in-app Tips: "Don't apply Weakness for Benched Pokémon"]; attacker boosts reach the Bench only if their text says "your opponent's
    Pokémon" (Clemont's Backpack) rather than "…Active Pokémon" (Giovanni, Training Area, Fighting Coach) [OBSERVED ×4].
-9. **Non-attack damage (Poison/Burn, Abilities, Tools, retaliation) is not "damage from an attack"** — no Weakness, no
-   Giovanni, not reduced by "−X from attacks", not blocked by Disguise/Safeguard [OFFICIAL + OBSERVED].
+9. **Non-attack damage (Poison/Burn, Abilities, Tools, an Ability's or a Tool's retaliation) is not "damage from an attack"** — no Weakness, no
+   Giovanni, not reduced by "−X from attacks", not blocked by Disguise/Safeguard [OFFICIAL + OBSERVED]. The hit back an
+   attack leaves (Cursed Jewel and four more) **is** damage from an attack, in every situation [DUSTIN, Oct 20; `02` §4].
 10. **Energy:** unattached Energy is discarded at end of turn; card effects that attach from the Zone don't use the
     once-per-turn attachment [COMMUNITY + OBSERVED]. Both players see both "next" Energies.
 11. **Hand limit 10:** draws past 10 are skipped (card stays in deck); an empty deck is never a loss [IN-GAME TEXT].
