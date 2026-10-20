@@ -15,9 +15,9 @@ pub(crate) fn generate_ability_actions(state: &State) -> Vec<SimpleAction> {
     let mut actions = vec![];
 
     for (in_play_idx, card) in state.enumerate_in_play_pokemon(current_player) {
-        if card.card.is_fossil() {
-            actions.push(SimpleAction::DiscardFossil { in_play_idx });
-        } else if can_use_ability(state, (in_play_idx, card)) {
+        // Upstream #401: Fossils have no Ability; their discard option comes from
+        // `generate_discard_fossil_actions` (it was offered twice per Fossil).
+        if !card.card.is_fossil() && can_use_ability(state, (in_play_idx, card)) {
             actions.push(SimpleAction::UseAbility { in_play_idx });
         }
     }
