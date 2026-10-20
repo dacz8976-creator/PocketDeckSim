@@ -8,8 +8,8 @@ REF=${REF:-judge-prompt-frozen-4}
 EXAM_COMMIT=5518fd604760edb40b41d1406723f14cd8343b78       # exam v1.6, passed by Astra
 WINREPO="/mnt/c/Users/dacz8/Projects/Pocket Deck Sim/PocketDeckSim"
 HERE=$(cd "$(dirname "$0")" && pwd)
-STOP_PRIMARY=12.0     # the $25 cap for both judge runs: each run stops starting calls at $12 (one call can run over by ~$0.15)
-STOP_REPEAT=12.0
+TOTAL_USD=25          # the authorized total for both judge runs: a HARD bound (budget_judge.py reserves each call's worst case before sending it)
+RUN_CAP=12            # and each run's own hard cap
 EST_LIMIT=12.0        # an estimate above this for one run stops the script before any call
 if [ "$MODE" = live ]; then SEEDS=25100000001,25100000002,25100000003; else SEEDS=25100900001,25100900002,25100900003; fi
 export PATH="$HOME/.local/bin:$HOME/.cargo/bin:$PATH"
@@ -37,6 +37,10 @@ git merge-base --is-ancestor "$EXAM_COMMIT" origin/sonnet/exam-2026-10-19 || fai
 cd rl/ai_judge
 python3 freeze_identity.py --check > "$OUT/freeze_check.txt" 2>&1 || { cat "$OUT/freeze_check.txt" | tee -a "$LOG"; fail "freeze_identity.py --check failed"; }
 log "freeze_identity --check: pass"
+# the spend bound's own tests (mocks and old fixtures only: no key, no API call, nothing from the exam)
+env -u ANTHROPIC_API_KEY python3 "$HERE/test_budget.py" > "$OUT/test_budget.txt" 2>&1 || { tail -5 "$OUT/test_budget.txt" | tee -a "$LOG"; fail "test_budget.py failed"; }
+log "spend bound tests: $(tail -1 "$OUT/test_budget.txt")"
+LEDGER=$OUT/spend_ledger.json
 
 # 3. inputs from the exam commit
 python3 "$HERE/prep_inputs.py" "$OUT/repo" "$EXAM_COMMIT" "$REF" "$OUT/in" | tee -a "$LOG"
@@ -64,13 +68,13 @@ EOF
 python3 judge.py run --bot km3 --positions "$P" --decks "$D" --ids $IDS --seeds "$SEEDS" --out "$OUT/km3.jsonl" > "$OUT/km3.stdout" 2>&1 || fail "km3 run"
 log "km3 rows: $(wc -l < "$OUT/km3.jsonl")"
 
-judge_run() {  # $1 out file, $2 tag, $3 stop-usd
+judge_run() {  # $1 out file, $2 tag. judge.judge_one with the FROZEN settings, under the hard spend bound (one ledger for both runs)
   if [ "$MODE" = live ]; then
-    python3 judge.py run --bot judge --positions "$P" --decks "$D" --ids $IDS --live --max-calls "$NIDS" --repeat 1 --workers 4 \
-      --stop-usd "$3" --tag "$2" --out "$1"
+    python3 "$HERE/budget_judge.py" --positions "$P" --decks "$D" --ids $IDS --max-calls "$NIDS" --repeat 1 --workers 4 --tag "$2" --out "$1" \
+      --ledger "$LEDGER" --total-usd "$TOTAL_USD" --run-cap-usd "$RUN_CAP" --live
   else
-    python3 "$HERE/mock_judge.py" run --bot judge --positions "$P" --decks "$D" --ids $IDS --live --max-calls "$NIDS" --repeat 1 --workers 4 \
-      --stop-usd "$3" --tag "MOCK_DRY_RUN_$2" --out "$1"
+    env -u ANTHROPIC_API_KEY python3 "$HERE/budget_judge.py" --positions "$P" --decks "$D" --ids $IDS --max-calls "$NIDS" --repeat 1 --workers 4 \
+      --tag "MOCK_DRY_RUN_$2" --out "$1" --ledger "$LEDGER" --total-usd "$TOTAL_USD" --run-cap-usd "$RUN_CAP" --mock
   fi
 }
 compare() {  # $1 out report, $2 judge repeats, rest: result files
@@ -84,7 +88,8 @@ compare() {  # $1 out report, $2 judge repeats, rest: result files
 }
 
 # 6. the judge: ONE primary call per decision
-judge_run "$OUT/judge_primary.jsonl" exam_run1_primary "$STOP_PRIMARY" > "$OUT/judge_primary.stdout" 2>&1 || fail "judge primary run"
+judge_run "$OUT/judge_primary.jsonl" exam_run1_primary > "$OUT/judge_primary.stdout" 2>&1 || { tail -3 "$OUT/judge_primary.stdout" | tee -a "$LOG"; fail "judge primary run"; }
+log "judge primary: $(grep 'call(s) returned' "$OUT/judge_primary.stdout")"
 log "judge primary rows: $(wc -l < "$OUT/judge_primary.jsonl")"
 
 # 7. the formal comparison (primary): any problem at a primary point fails the batch
@@ -93,7 +98,8 @@ log "compare (primary) exit $RC"
 [ "$RC" = 0 ] || fail "formal comparison (primary) exit $RC: see report_primary.json(.stdout)"
 
 # 8. the separate sensitivity repeat, then its own comparison
-judge_run "$OUT/judge_repeat_raw.jsonl" exam_run1_repeat "$STOP_REPEAT" > "$OUT/judge_repeat.stdout" 2>&1 || fail "judge repeat run"
+judge_run "$OUT/judge_repeat_raw.jsonl" exam_run1_repeat > "$OUT/judge_repeat.stdout" 2>&1 || { tail -3 "$OUT/judge_repeat.stdout" | tee -a "$LOG"; fail "judge repeat run"; }
+log "judge repeat: $(grep 'call(s) returned' "$OUT/judge_repeat.stdout")"
 python3 "$HERE/relabel_repeat.py" "$OUT/judge_repeat_raw.jsonl" "$OUT/judge_repeat.jsonl" | tee -a "$LOG"
 RC2=$(compare "$OUT/report_sensitivity.json" 2 "$OUT/km3.jsonl" "$OUT/judge_primary.jsonl" "$OUT/judge_repeat.jsonl")
 log "compare (sensitivity) exit $RC2"
@@ -109,6 +115,7 @@ files = [f for f in sorted(os.listdir(out)) if os.path.isfile(os.path.join(out, 
 m = {'mode': mode, 'judge_ref': ref, 'seeds': seeds, 'compare_primary_exit': int(rc), 'compare_sensitivity_exit': int(rc2),
      'relabel': 'judge_repeat.jsonl = judge_repeat_raw.jsonl with repeat 0 -> 1 (relabel_repeat.py); nothing else changed',
      'baseline_note': 'km3 only: the frozen baseline executable plays k<number>/km<number> bots, not kx3',
+     'spend_bound': 'budget_judge.py: each call reserved at its worst case before sending; $25 total over both runs (spend_ledger.json), $12 per run',
      'files': {f: h(os.path.join(out, f)) for f in files}, 'inputs': json.load(open(os.path.join(out, 'in', 'inputs_manifest.json')))}
 json.dump(m, open(os.path.join(out, 'run_manifest.json'), 'w'), indent=1)
 print('manifest written')
