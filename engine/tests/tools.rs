@@ -16,6 +16,8 @@ mod memory_light_leftovers_lucky_mittens_test;
 mod protective_poncho_test;
 #[path = "tools/raikou_rocky_helmet_order_test.rs"]
 mod raikou_rocky_helmet_order_test;
+#[path = "tools/rocky_helmet_delayed_counterattack_test.rs"]
+mod rocky_helmet_delayed_counterattack_test;
 #[path = "tools/rescue_scarf_beastite_test.rs"]
 mod rescue_scarf_beastite_test;
 #[path = "tools/small_balloon_test.rs"]

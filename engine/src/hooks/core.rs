@@ -15,7 +15,7 @@ use crate::{
     },
     card_ids::CardId,
     effects::{CardEffect, DamageReductionScope, TurnEffect},
-    hooks::retreat::get_board_retreat_cost_at,
+    hooks::retreat::{get_board_retreat_cost_at, get_current_retreat_cost_at},
     models::{Card, EnergyType, PlayedCard, TrainerCard, TrainerType, BASIC_STAGE},
     stadiums::{
         get_arena_of_antiquity_damage_bonus, get_training_area_damage_bonus,
@@ -1533,19 +1533,112 @@ fn printed_weakness_application(
     WeaknessApplication::None
 }
 
-/// Return damage an attack left takes Weakness (`rules/02` section 2): `printed_weakness_application` with `holder` as the
-/// Attacking Pokémon of the attack that left it, for `receiver`, the Attacking Pokémon it hits back. +20 when `receiver`'s
-/// printed Weakness is one of `holder`'s types (Double Type counts), and under Bounded Field the attack's return damage
-/// doubled (x2) unless `holder` is a Mega Evolution Pokémon ex: the card's text, since the hit back is that attack's own
-/// damage (the coordinator via Dustin's card-text rule, Oct 9; P2 first chose a flat +20). Else 0. A stated choice: the
-/// receiver's `NoWeakness` isn't read (only Metal Defender and Adamantine Rolling give it, to their own user, and they add
-/// it before this hit back lands though it covers only the opponent's next turn).
-pub(crate) fn attack_return_weakness_extra(state: &State, holder: &PlayedCard, receiver: &PlayedCard) -> u32 {
-    match printed_weakness_application(state, receiver, holder) {
-        WeaknessApplication::None => 0,
-        WeaknessApplication::Flat(extra) => extra,
-        WeaknessApplication::Double => super::counterattack::attack_counterattack_damage(holder),
+/// The hit back an attack left (`CardEffect::Counterattack`: Cursed Jewel, Spike Armor, Bristling Spikes, Needle Lariat,
+/// Shell Trap) is that attack's damage in every situation (Dustin, Oct 20: "The attack back is treated as an attack in every
+/// situation (weakness, attack blocking, bounded field) not like an ability"; `rules/02` section 4). `amount` is the
+/// attack's part of the return damage of `holder_ref`; `receiver_ref` is the Attacking Pokémon it hits; `weakness_on` is
+/// P2's switch. The stages, in `modify_damage`'s order, read on what lasts on the board (as `persistent_defender_damage`):
+/// - prevention: Safeguard (`PreventAllDamageFromEx`) against a holder that is a Pokémon ex; on the Bench (after a
+///   self-switch attack) Protective Poncho and Shell Shield (`PreventDamageWhileBenched`);
+/// - before Weakness: Intimidating Fang (`ReduceOpponentActiveDamage`) of the receiving side's Active, the holder being the
+///   opponent's Active; a hit back it takes to 0 does nothing, Weakness included (rules/05 #11);
+/// - Weakness, only while the receiver is Active: the printed rule, +20 when its Weakness is one of the holder's types
+///   (Double Type counts), or Bounded Field's x2 unless the holder is a Mega Evolution Pokémon ex
+///   (`printed_weakness_application`; rules/02 section 2, P2). A stated choice: the receiver's `NoWeakness` isn't read
+///   (only Metal Defender and Adamantine Rolling give it, to their own user, for the opponent's next turn);
+/// - after Weakness, the receiver's lasting cuts: Heavy Helmet (on the Retreat Cost now: the hit back lands on the receiver's
+///   own turn, so this turn's X Speed or Leaf counts), Steel Apron, Metal Core Barrier, `ReduceDamageFromAttacks` from its
+///   Ability, the conditional Abilities (Thick Fat, Resilience Link, Ice Face, Unown's GUARD) and Coordinated Unit.
+///
+/// Left out: what is stored on the receiver and its side's turn effects (it is the receiver's own turn, so each was put there
+/// this turn for the opponent's next turn: Steel Wing, Hide, Harden, Blue, Jasmine, ...); the coin-flip Abilities (Carefree
+/// Steps, Guarded Grill, Securely Sheltered: no coin is flipped for a hit back yet); the holder's own bonuses (the ruling
+/// names none). Disguise is the caller's, since it is used up. With nothing on the receiver this is `amount` plus P2's Weakness.
+pub(crate) fn attack_hit_back_damage(
+    state: &State,
+    holder_ref: (usize, usize),
+    receiver_ref: (usize, usize),
+    amount: u32,
+    weakness_on: bool,
+) -> u32 {
+    let (holder_player, holder_idx) = holder_ref;
+    let (receiver_player, receiver_idx) = receiver_ref;
+    let (Some(holder), Some(receiver)) = (
+        state.in_play_pokemon[holder_player][holder_idx].as_ref(),
+        state.in_play_pokemon[receiver_player][receiver_idx].as_ref(),
+    ) else {
+        return amount;
+    };
+    if amount == 0 {
+        return 0;
     }
+    let is_active = receiver_idx == 0;
+    let ability_effect = get_in_play_ability_mechanic(state, receiver).and_then(card_effect_from_ability_mechanic);
+    if matches!(ability_effect, Some(CardEffect::PreventAllDamageFromEx)) && holder.card.is_ex() {
+        debug!("Safeguard: the hit back of a Pokémon ex is prevented");
+        return 0;
+    }
+    if !is_active
+        && (matches!(ability_effect, Some(CardEffect::PreventDamageWhileBenched))
+            || has_tool(receiver, CardId::B2147ProtectivePoncho))
+    {
+        debug!("The Benched receiver is protected: the hit back is prevented");
+        return 0;
+    }
+    // Intimidating Fang works from the receiving side's Active Spot, on attacks used by the opponent's Active.
+    let fang_effect = if is_active {
+        ability_effect.clone()
+    } else {
+        state
+            .maybe_get_active(receiver_player)
+            .and_then(|active| get_in_play_ability_mechanic(state, active))
+            .and_then(card_effect_from_ability_mechanic)
+    };
+    let intimidating_fang = match fang_effect {
+        Some(CardEffect::ReduceOpponentActiveDamage { amount: fang }) if holder_idx == 0 => fang,
+        _ => 0,
+    };
+    let pre_weakness = amount.saturating_sub(intimidating_fang);
+    if pre_weakness == 0 {
+        debug!("Intimidating Fang took the hit back to 0: no damage, no Weakness");
+        return 0;
+    }
+    let weakness = if weakness_on && is_active {
+        printed_weakness_application(state, receiver, holder)
+    } else {
+        WeaknessApplication::None
+    };
+    let after_weakness = match weakness {
+        WeaknessApplication::None => pre_weakness,
+        WeaknessApplication::Flat(extra) => pre_weakness + extra,
+        WeaknessApplication::Double => pre_weakness * 2,
+    };
+    let ability_cut = match ability_effect {
+        Some(CardEffect::ReduceDamageFromAttacks { amount: cut }) => cut,
+        _ => 0,
+    };
+    let heavy_helmet = if has_tool(receiver, CardId::B1219HeavyHelmet)
+        && get_current_retreat_cost_at(state, receiver_player, receiver, is_active).len() >= 3
+    {
+        20 * tool_count(receiver, CardId::B1219HeavyHelmet)
+    } else {
+        0
+    };
+    let cuts: u64 = [
+        heavy_helmet,
+        steel_apron_reduction(state, receiver),
+        metal_core_barrier_reduction(state, receiver),
+        ability_cut,
+        get_conditional_ability_damage_reduction(state, holder_player, holder, receiver_player, receiver, true),
+        get_coordinated_unit_reduction(state, holder_player, receiver_player, receiver, true),
+    ]
+    .into_iter()
+    .map(u64::from)
+    .sum();
+    if cuts > 0 {
+        debug!("The receiver's cuts take {cuts} off the hit back ({after_weakness} after Weakness)");
+    }
+    u32::try_from(u64::from(after_weakness).saturating_sub(cuts)).unwrap_or(u32::MAX)
 }
 
 fn get_future_booster_damage_bonus(attacking_pokemon: &PlayedCard) -> u32 {
@@ -3613,6 +3706,149 @@ mod attack_cut_to_zero_and_hit_back_tests {
         assert_eq!(hit_back(true), 80);
         // Without it: 40 + 20 = 60 (the same recording's earlier hit back on the Water-weak Litten).
         assert_eq!(hit_back(false), 60);
+    }
+
+    /// Dustin, Oct 20: the hit back "is treated as an attack in every situation". Player 0's `holder` (its hit back armed
+    /// with `amount`, none when 0) answers player 1's `receiver` at `receiver_idx` (on the Bench after a self-switch attack,
+    /// behind a Snorlax) on player 1's turn: (the damage the receiver takes, the holder's HP after). P2's switch on.
+    fn retaliate(holder: PlayedCard, amount: u32, receiver: PlayedCard, receiver_idx: usize, bounded: bool) -> (u32, u32) {
+        retaliate_on(|_| {}, true, holder, amount, receiver, receiver_idx, bounded)
+    }
+
+    /// `retaliate` after `setup` on the board, with P2's switch at `p2`.
+    fn retaliate_on(
+        setup: impl FnOnce(&mut State),
+        p2: bool,
+        holder: PlayedCard,
+        amount: u32,
+        receiver: PlayedCard,
+        receiver_idx: usize,
+        bounded: bool,
+    ) -> (u32, u32) {
+        let mut holder = holder;
+        if amount > 0 {
+            holder.add_effect(CardEffect::Counterattack { amount }, 1);
+        }
+        let player_1 = if receiver_idx == 0 { vec![receiver] } else { vec![mon(CardId::A1211Snorlax), receiver] };
+        let mut state = State::default();
+        state.set_board(vec![holder], player_1);
+        state.current_player = 1;
+        if bounded {
+            state.active_stadium = Some(get_card_by_enum(CardId::B3155BoundedField));
+        }
+        setup(&mut state);
+        let hp = |state: &State| state.in_play_pokemon[1][receiver_idx].as_ref().unwrap().get_remaining_hp();
+        let before = hp(&state);
+        crate::actions::with_return_weakness(p2, || {
+            crate::actions::handle_attack_retaliation(&mut state, (1, receiver_idx), &[(0, 0)])
+        });
+        (before - hp(&state), state.get_active(0).get_remaining_hp())
+    }
+
+    #[test]
+    fn the_receivers_heavy_helmet_cuts_the_hit_back_after_weakness() {
+        // Spike Armor's 40 on the Water-weak Heatran (Retreat Cost 3): +20, or x2 under Bounded Field, then -20.
+        let heatran = |helmet: bool| {
+            let heatran = mon(CardId::A2a013Heatran);
+            if helmet { heatran.with_tool(get_card_by_enum(CardId::B1219HeavyHelmet)) } else { heatran }
+        };
+        let sandslash = || mon(CardId::A3039AlolanSandslash);
+        assert_eq!(retaliate(sandslash(), 40, heatran(false), 0, false).0, 60);
+        assert_eq!(retaliate(sandslash(), 40, heatran(true), 0, false).0, 40);
+        assert_eq!(retaliate(sandslash(), 40, heatran(false), 0, true).0, 80);
+        assert_eq!(retaliate(sandslash(), 40, heatran(true), 0, true).0, 60);
+    }
+
+    #[test]
+    fn the_receivers_rocky_helmet_and_rough_skin_answer_the_hit_back_once() {
+        let helmet = || get_card_by_enum(CardId::A2148RockyHelmet);
+        let sandslash = || mon(CardId::A3039AlolanSandslash);
+        // Heatran (Rocky Helmet) takes 40 + 20; Alolan Sandslash (100 HP) takes the Helmet's 20 back (upstream #367).
+        assert_eq!(retaliate(sandslash(), 40, mon(CardId::A2a013Heatran).with_tool(helmet()), 0, false), (60, 80));
+        // A Helmet on each side: the holder's 20 is flat and answers nothing; the receiver's answers the hit back once.
+        assert_eq!(
+            retaliate(sandslash().with_tool(helmet()), 40, mon(CardId::A2a013Heatran).with_tool(helmet()), 0, false),
+            (80, 80)
+        );
+        // Druddigon's Rough Skin (an Ability with the same trigger) answers it too.
+        assert_eq!(retaliate(sandslash(), 40, mon(CardId::A1a056Druddigon), 0, false), (40, 80));
+    }
+
+    #[test]
+    fn a_tools_and_an_abilitys_return_damage_stay_flat_and_answer_nothing() {
+        // Upstream #418: an Ability's return damage (Rough Skin) is not an attack's, and neither is Rocky Helmet's.
+        let helmet = || get_card_by_enum(CardId::A2148RockyHelmet);
+        for holder in [mon(CardId::A1001Bulbasaur).with_tool(helmet()), mon(CardId::A1a056Druddigon)] {
+            let full = holder.get_remaining_hp();
+            for tool in [CardId::B1219HeavyHelmet, CardId::A2148RockyHelmet] {
+                let receiver = mon(CardId::A2a013Heatran).with_tool(get_card_by_enum(tool));
+                assert_eq!(retaliate(holder.clone(), 0, receiver, 0, false), (20, full), "{tool:?}");
+            }
+        }
+    }
+
+    #[test]
+    fn prevention_on_the_receiver_stops_the_hit_back_and_its_answer() {
+        let helmet = || get_card_by_enum(CardId::A2148RockyHelmet);
+        let sandslash = || mon(CardId::A3039AlolanSandslash);
+        // Safeguard against a Pokémon ex: Oricorio takes nothing, so its Rocky Helmet does not fire either.
+        assert_eq!(
+            retaliate(mon(CardId::B3b041MegaSableyeEx), 40, mon(CardId::A3066Oricorio).with_tool(helmet()), 0, false),
+            (0, 170)
+        );
+        // Against a Pokémon that isn't an ex: 40, and the Helmet's 20 back.
+        assert_eq!(retaliate(sandslash(), 40, mon(CardId::A3066Oricorio).with_tool(helmet()), 0, false), (40, 80));
+        // On the Bench: Protective Poncho prevents it. Without it the hit back lands flat (no Weakness on the Bench), and a
+        // Benched Rocky Helmet doesn't answer.
+        let poncho = get_card_by_enum(CardId::B2147ProtectivePoncho);
+        assert_eq!(retaliate(sandslash(), 40, mon(CardId::A2a013Heatran).with_tool(poncho), 1, false), (0, 100));
+        assert_eq!(retaliate(sandslash(), 40, mon(CardId::A2a013Heatran).with_tool(helmet()), 1, false), (40, 100));
+    }
+
+    #[test]
+    fn the_receivers_intimidating_fang_cuts_the_hit_back_before_weakness() {
+        // Luxray in the Active Spot: attacks used by the opponent's Active Pokémon do -20. Needle Lariat's 80: 60.
+        assert_eq!(retaliate(mon(CardId::B2010Chesnaught), 80, mon(CardId::A3a015Luxray), 0, false).0, 60);
+        // Shell Trap's 20 goes to 0: no damage, so Luxray's Rocky Helmet doesn't answer.
+        let luxray = mon(CardId::A3a015Luxray).with_tool(get_card_by_enum(CardId::A2148RockyHelmet));
+        assert_eq!(retaliate(mon(CardId::B1047Turtonator), 20, luxray, 0, false), (0, 110));
+    }
+
+    #[test]
+    fn heavy_helmet_reads_the_receivers_retreat_cost_now() {
+        // The hit back lands on the receiver's own turn: X Speed played this turn takes Heatran's Retreat Cost from 3 to
+        // 2, so its Heavy Helmet cuts nothing (40 + 20); without it, 40 + 20 - 20.
+        let heatran = || mon(CardId::A2a013Heatran).with_tool(get_card_by_enum(CardId::B1219HeavyHelmet));
+        let sandslash = || mon(CardId::A3039AlolanSandslash);
+        let x_speed = |state: &mut State| state.add_turn_effect(TurnEffect::ReducedRetreatCost { amount: 1 }, 0);
+        assert_eq!(retaliate_on(x_speed, true, sandslash(), 40, heatran(), 0, false).0, 60);
+        assert_eq!(retaliate(sandslash(), 40, heatran(), 0, false).0, 40);
+    }
+
+    #[test]
+    fn with_p2_off_the_hit_back_is_flat_again_and_nothing_answers() {
+        // P2's off-switch (`with_return_weakness(false, ..)`, `DECKGYM_FLAT_RETURN_DAMAGE`, `with_round2(false, ..)`): the
+        // engine before P2, so no Weakness, no cut, no prevention and no answer.
+        let off = |holder: PlayedCard, amount: u32, receiver: PlayedCard| retaliate_on(|_| {}, false, holder, amount, receiver, 0, false);
+        let sandslash = || mon(CardId::A3039AlolanSandslash);
+        let heatran = |tool: CardId| mon(CardId::A2a013Heatran).with_tool(get_card_by_enum(tool));
+        assert_eq!(off(sandslash(), 40, heatran(CardId::B1219HeavyHelmet)), (40, 100));
+        assert_eq!(off(sandslash(), 40, heatran(CardId::A2148RockyHelmet)), (40, 100));
+        assert_eq!(off(mon(CardId::B3b041MegaSableyeEx), 40, mon(CardId::A3066Oricorio)), (40, 170));
+        assert_eq!(off(mon(CardId::A3b048Togedemaru), 30, mon(CardId::B2073MimikyuEx)), (30, 80));
+    }
+
+    #[test]
+    fn disguise_on_the_receiver_prevents_the_first_hit_back_and_is_used_up() {
+        let mut togedemaru = mon(CardId::A3b048Togedemaru);
+        togedemaru.add_effect(CardEffect::Counterattack { amount: 30 }, 1);
+        let mut state = State::default();
+        state.set_board(vec![togedemaru], vec![mon(CardId::B2073MimikyuEx)]);
+        crate::actions::handle_attack_retaliation(&mut state, (1, 0), &[(0, 0)]);
+        assert_eq!(state.get_active(1).get_remaining_hp(), 120);
+        assert!(state.get_active(1).prevent_first_attack_damage_used);
+        crate::actions::handle_attack_retaliation(&mut state, (1, 0), &[(0, 0)]);
+        assert_eq!(state.get_active(1).get_remaining_hp(), 90);
     }
 }
 

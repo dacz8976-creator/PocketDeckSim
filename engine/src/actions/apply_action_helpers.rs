@@ -16,7 +16,7 @@ use crate::{
     card_ids::CardId,
     effects::{CardEffect, TurnEffect},
     hooks::{
-        attack_counterattack_damage, attack_return_weakness_extra,
+        attack_counterattack_damage, attack_hit_back_damage,
         get_counterattack_damage, maybe_attach_energy_on_damaged,
         maybe_shuffle_attacker_hand_card_on_damaged, modify_damage, on_attack_knockout,
         on_end_turn, on_knockout, should_poison_attacker, DamageModifierContext,
@@ -613,8 +613,10 @@ pub(crate) fn handle_damage_only(
     damaged_actives
 }
 
-/// P2's off-switch (rules switch 2, PLAN (e)). On, return damage an attack left takes Weakness (`handle_attack_retaliation`);
-/// off, it is flat again: the engine before P2 in behaviour, the same number in the same branch. On by default.
+/// P2's off-switch (rules switch 2, PLAN (e)). On, return damage an attack left takes Weakness (`handle_attack_retaliation`),
+/// and since the Oct 20 ruling it is that attack's damage in every situation: the Attacking Pokémon's own protection and
+/// answers apply too (`attack_hit_back_damage`); off, it is flat again and nothing answers it: the engine before P2 in
+/// behaviour, the same number in the same branch. On by default.
 /// `DECKGYM_FLAT_RETURN_DAMAGE=1` (or `true`) turns it off for the whole process, read once; `with_return_weakness` sets it
 /// for one call on this thread (a single decision of the revert check, or a test).
 static FLAT_RETURN_DAMAGE: LazyLock<bool> = LazyLock::new(|| {
@@ -768,34 +770,67 @@ pub fn with_round2<R>(on: bool, f: impl FnOnce() -> R) -> R {
     )
 }
 
-/// Resolve reactions only after the attack's own effects, using the current Ability state. Return damage an attack left
-/// takes Weakness while the Attacking Pokémon is Active (P2, unless its off-switch is off); a Tool's and an Ability's stay
-/// flat.
+/// Resolve reactions only after the attack's own effects, using the current Ability state. Rocky Helmet's and an Ability's
+/// return damage stay flat and set off nothing. The hit back an attack left is that attack's damage in every situation
+/// (Dustin, Oct 20; `rules/02` section 4): Weakness while the Attacking Pokémon is Active (P2, unless its off-switch is off)
+/// and the Attacking Pokémon's own protection (`attack_hit_back_damage`, then Disguise). When it still does damage to an
+/// Active Attacking Pokémon, that Pokémon's own reactions to being damaged by an attack answer the holder: Rocky Helmet and
+/// the 20-damage Abilities (Rough Skin and the like; upstream #367/#418), then Poison Barb and Poison Point. Never the
+/// Attacking Pokémon's own new hit back (its text covers the opponent's next turn). Its Bouncy Body and Dark Pendant, the
+/// coin-flip Abilities and Guts are not run for a hit back yet (rules/09); nor does a Benched receiver's Protective Poncho
+/// stop the holder's Ability return damage (a gap from before). P2's off-switch turns all of this off: flat, no answer.
 pub(crate) fn handle_attack_retaliation(
     state: &mut State,
     attacking_ref: (usize, usize),
     damaged_actives: &[(usize, usize)],
 ) {
-    let attacking_player = attacking_ref.0;
+    let (attacking_player, attacking_idx) = attacking_ref;
     for &(target_player, target_idx) in damaged_actives {
         let Some(target) = state.in_play_pokemon[target_player][target_idx].as_ref() else { continue; };
-        let counter_damage = get_counterattack_damage(state, target);
-        let weakness_extra = if return_weakness_on() && attacking_ref.1 == 0 && attack_counterattack_damage(target) > 0 {
-            state.in_play_pokemon[attacking_player][0]
-                .as_ref()
-                .map_or(0, |attacker| attack_return_weakness_extra(state, target, attacker))
-        } else {
-            0
-        };
-        if weakness_extra > 0 {
-            debug!("Return damage left by an attack takes Weakness: +{weakness_extra}");
-        }
+        let attack_part = attack_counterattack_damage(target);
+        let flat_part = get_counterattack_damage(state, target) - attack_part;
         let should_poison = should_poison_attacker(state, target);
-        if let Some(attacker) = state.in_play_pokemon[attacking_player][attacking_ref.1].as_mut() {
-            attacker.apply_damage(counter_damage + weakness_extra);
+        let as_attack = return_weakness_on();
+        let mut hit_back = if attack_part == 0 {
+            0
+        } else if as_attack {
+            attack_hit_back_damage(state, (target_player, target_idx), attacking_ref, attack_part, true)
+        } else {
+            attack_part
+        };
+        if as_attack && hit_back > 0 && checkapply_prevent_first_attack(state, attacking_player, attacking_idx, true) {
+            debug!("Disguise prevents the hit back an attack left");
+            hit_back = 0;
         }
-        if should_poison && attacking_ref.1 == 0 {
-            state.apply_status_condition(attacking_player, attacking_ref.1, StatusCondition::Poisoned);
+        if attack_part > 0 {
+            debug!("The hit back an attack left: {attack_part} printed, {hit_back} done");
+        }
+        // The Attacking Pokémon's answer, read before the damage lands (as the holder's is): its Rocky Helmet and
+        // 20-damage Ability, not its own Counterattack, and its Poison Barb or Poison Point.
+        let (answer, answer_poisons) = if as_attack && hit_back > 0 && attacking_idx == 0 {
+            state.in_play_pokemon[attacking_player][0].as_ref().map_or((0, false), |receiver| {
+                (
+                    get_counterattack_damage(state, receiver) - attack_counterattack_damage(receiver),
+                    should_poison_attacker(state, receiver),
+                )
+            })
+        } else {
+            (0, false)
+        };
+        if let Some(attacker) = state.in_play_pokemon[attacking_player][attacking_idx].as_mut() {
+            attacker.apply_damage(flat_part + hit_back);
+        }
+        if should_poison && attacking_idx == 0 {
+            state.apply_status_condition(attacking_player, attacking_idx, StatusCondition::Poisoned);
+        }
+        if answer > 0 {
+            if let Some(holder) = state.in_play_pokemon[target_player][target_idx].as_mut() {
+                debug!("The Attacking Pokémon's Rocky Helmet or Ability answers the hit back: {answer}");
+                holder.apply_damage(answer);
+            }
+        }
+        if answer_poisons {
+            state.apply_status_condition(target_player, target_idx, StatusCondition::Poisoned);
         }
         maybe_attach_energy_on_damaged(state, target_player, target_idx);
         maybe_shuffle_attacker_hand_card_on_damaged(state, target_player, target_idx, attacking_player);
