@@ -41,3 +41,17 @@ The kit is in `run1/` (README_run1.md, run_exam.sh).
   - Its printer gives bare action names. Rows the harness can't map to exactly one listed plan (for example the 2 Field Blower points) count as
     unscored, never as a miss and never dropped silently.
 - **How it's reported:** descriptively, beside the formal result, with no interval or verdict against the judge.
+
+### The side run's two caveats (recorded before any run; the coordinator chose this binary, option 1)
+1. **Bare-name labels.** pg_pos_blade's printer writes action names without their target arguments, unlike the frozen baseline's
+   `Name#JSON` labels.
+   - So a kx3 line can fit more than one listed plan, or none. The 2 Field Blower points (LAD-20261014_234728000_iOS-t5 and
+     LAD-20261014_233402000_iOS-t7) may well come out unmapped.
+   - Every such row is UNSCORED: counted and shown, never scored as a miss, never dropped.
+2. **A different engine and rules version.**
+   - pg_pos_blade is built from sonnet/ky3-blade 0f5f234d, while the formal km3 and judge rows run on the frozen baseline's engine tree 70652fff.
+   - Its kx3 is the F pilot's code path, but it isn't verified to play these positions as the frozen F pilot does.
+   - So the side run's numbers aren't comparable to the formal judge-vs-km3 result, and they support no claim about the judge against our best bot.
+
+**The timing probe** was run on 2 OLD stage A positions, never on the exam, with dry seeds from the block. It's reported in the mailbox note that carries
+this file's tip.
