@@ -2258,5 +2258,569 @@ class MoreOnTheCommandLine(unittest.TestCase):
         self.assertIn('git fetch origin', out)
 
 
+class ArchiveBase(unittest.TestCase):
+    NAME = '20261001_000000001_iOS.MP4'
+    PACKET = 'BATCH_A/20261001_000000001_iOS'
+    BODY = b'v' * VIDEO_BYTES
+
+    def setUp(self):
+        self.t = Tree(self)
+        self.t.game('BATCH_A', '20261001_000000001_iOS', video=None)
+        self.sha = __import__('hashlib').sha256(self.BODY).hexdigest()
+        self.cache = os.path.join(self.t.root, 'Cache', 'raw')
+        self.stub_dir = os.path.join(self.t.root, 'stub')
+        write(os.path.join(self.stub_dir, 'mode'), 'ok')
+        write(os.path.join(self.stub_dir, 'check.py'), STUB)
+        self.cmd = f'{sys.executable} {os.path.join(self.stub_dir, "check.py")} {{id}}'
+
+    def mode(self, m):
+        write(os.path.join(self.stub_dir, 'mode'), m)
+
+    def record(self, **kw):
+        r = {'filename': self.NAME, 'bytes': VIDEO_BYTES, 'sha256': self.sha,
+             'google_drive_archive': {'file_id': 'FID123', 'original_retained': False, 'provider_checksums': {'sha256': self.sha, 'md5': 'md5md5'}}}
+        r.update(kw)
+        return r
+
+    def archive(self, records=None, cmd=None, timeout=5):
+        recs = {self.NAME.lower(): records if records is not None else [self.record()]}
+        return bl.Archive(recs, self.cache, cmd, timeout)
+
+    def put_cache(self, body=None, sha=None):
+        write(os.path.join(self.cache, sha or self.sha, self.NAME), self.BODY if body is None else body)
+
+    def verdict(self, archive, fresh=False):
+        game = bl.scan_qa(self.t.qa, self.t.videos(), '', archive)[0].games[0]
+        return game.video if not fresh else bl.check_video(game, self.t.videos(), fresh=True, archive=archive)
+
+
+class ArchivedVideos(ArchiveBase):
+    """a video that is no longer in Battle Logs: found in the download cache (size and SHA-256), or in Google Drive only with a live check right before the deletion"""
+    # --- the cache
+    def test_a_cache_copy_with_the_recorded_size_and_sha256_counts(self):
+        self.put_cache()
+        self.assertEqual(self.verdict(self.archive()), (True, ''))
+        d = bl.decide(bl.scan_qa(self.t.qa, self.t.videos(), '', self.archive()), index([self.PACKET]))[0]
+        self.assertTrue(d.delete)
+
+    def test_a_cache_copy_with_the_wrong_sha256_does_not(self):
+        self.put_cache(body=b'w' * VIDEO_BYTES)             # right size, other content
+        ok, why = self.verdict(self.archive())
+        self.assertFalse(ok)
+        self.assertIn('has SHA-256', why)
+
+    def test_a_cache_copy_with_the_wrong_size_does_not(self):
+        self.put_cache(body=self.BODY[:-1])
+        ok, why = self.verdict(self.archive())
+        self.assertFalse(ok)
+        self.assertIn('has 999 bytes', why)
+
+    def test_a_record_that_points_nowhere_does_not_count(self):
+        ok, why = self.verdict(self.archive([self.record(google_drive_archive=None)]))
+        self.assertFalse(ok)
+        self.assertIn('not in the cache', why)
+        ok, why = self.verdict(self.archive([]))              # no record at all: the old message
+        self.assertIn('not found in Battle Logs', why)
+
+    def test_a_record_with_another_size_than_the_packet_gives_no_cache_hit(self):
+        self.put_cache()
+        self.assertFalse(self.verdict(self.archive([self.record(bytes=VIDEO_BYTES + 1)]))[0])
+
+    def test_a_sha256_in_source_json_must_agree_with_the_record(self):
+        self.put_cache()
+        gp = os.path.join(self.t.qa, 'BATCH_A', '20261001_000000001_iOS')
+        write(os.path.join(gp, 'SOURCE.json'), json.dumps({'video_basename': self.NAME, 'bytes': VIDEO_BYTES, 'sha256': 'cd' * 32}))
+        self.assertFalse(self.verdict(self.archive())[0])
+        write(os.path.join(gp, 'SOURCE.json'), json.dumps({'video_basename': self.NAME, 'bytes': VIDEO_BYTES, 'sha256': self.sha}))
+        self.assertTrue(self.verdict(self.archive())[0])
+
+    def test_a_linked_cache_file_does_not_count(self):
+        write(os.path.join(self.t.root, 'elsewhere', self.NAME), self.BODY)
+        os.makedirs(os.path.join(self.cache, self.sha))
+        os.symlink(os.path.join(self.t.root, 'elsewhere', self.NAME), os.path.join(self.cache, self.sha, self.NAME))
+        self.assertIn('link', self.verdict(self.archive())[1])
+
+    def test_a_local_copy_still_counts_without_any_archive(self):
+        write(os.path.join(self.t.logs, self.NAME), self.BODY)
+        self.assertTrue(self.verdict(self.archive([]))[0])
+        self.assertTrue(self.verdict(None)[0])
+
+    # --- Drive
+    def test_a_drive_only_video_with_no_command_is_never_confirmed_and_the_dry_run_says_so(self):
+        ok, why = self.verdict(self.archive())
+        self.assertFalse(ok)
+        self.assertIn('no live Drive check is configured', why)
+        self.assertIn('a record alone never counts', why)
+        d = bl.decide(bl.scan_qa(self.t.qa, self.t.videos(), '', self.archive()), index([self.PACKET]))
+        out = io.StringIO()
+        bl.report(d, FakeView(), self.t.qa, index([self.PACKET]), verbose=True, out=out, archive=self.archive())
+        self.assertIn('NOT configured', out.getvalue())
+        self.assertIn('stays 20261001_000000001_iOS', out.getvalue())
+
+    def test_a_live_check_that_finds_it_in_drive_not_trashed_with_the_size_counts(self):
+        self.assertEqual(self.verdict(self.archive(cmd=self.cmd)), (True, ''))
+
+    def test_the_id_is_appended_when_the_template_has_no_placeholder(self):
+        a = self.archive(cmd=f'{sys.executable} {os.path.join(self.stub_dir, "check.py")}')
+        self.assertTrue(self.verdict(a)[0])
+
+    def test_a_trashed_or_missing_or_resized_or_unsure_file_is_held(self):
+        for m, word in (('trashed', 'Trash'), ('gone', 'does not exist'), ('size', 'bytes'), ('md5', 'md5'), ('notrashedfield', 'Trash'), ('trashstring', 'Trash'),
+                        ('otherid', 'another file'), ('nosize', 'bytes'), ('sizebool', 'bytes')):
+            with self.subTest(m):
+                self.mode(m)
+                ok, why = self.verdict(self.archive(cmd=self.cmd))
+                self.assertFalse(ok)
+                self.assertIn(word, why)
+
+    def test_a_check_that_fails_hangs_or_prints_rubbish_is_not_a_confirmation(self):
+        for m, word in (('error', 'failed'), ('badjson', 'did not print JSON'), ('list', 'unexpected shape'), ('empty', 'did not print JSON'), ('timeout', 'more than 1 s')):
+            with self.subTest(m):
+                self.mode(m)
+                ok, why = self.verdict(self.archive(cmd=self.cmd, timeout=1))
+                self.assertFalse(ok)
+                self.assertIn(word, why)
+        ok, why = self.verdict(self.archive(cmd=os.path.join(self.t.root, 'no_such_program') + ' {id}'))
+        self.assertFalse(ok)
+        self.assertIn('could not be run', why)
+
+    def test_a_drive_record_with_another_size_than_the_packet_is_held_without_asking(self):
+        self.assertFalse(self.verdict(self.archive([self.record(bytes=5)], cmd=self.cmd))[0])
+
+    def test_the_scan_asks_drive_once_per_file_but_the_check_before_a_deletion_asks_every_time(self):
+        a = self.archive(cmd=self.cmd)
+        calls = []
+        real = a._live_check
+        a._live_check = lambda *x: calls.append(1) or real(*x)
+        self.verdict(a)
+        self.verdict(a)
+        self.assertEqual(len(calls), 1, 'the scan remembers the answer for a file id')
+        game = bl.scan_qa(self.t.qa, self.t.videos(), '', a)[0].games[0]
+        bl.check_video(game, self.t.videos(), fresh=True, archive=a)
+        bl.check_video(game, self.t.videos(), fresh=True, archive=a)
+        self.assertEqual(len(calls), 3, 'the check before a deletion asks Drive every time')
+
+    # --- right before the deletion
+    def apply(self, archive, confirm):
+        idx = index([self.PACKET])
+        vids = self.t.videos()
+        d = bl.decide(bl.scan_qa(self.t.qa, vids, '', archive), idx)
+        out = io.StringIO()
+        res = bl.apply_deletions(d, self.t.qa, idx, confirm=confirm, out=out, video_check=lambda g: bl.check_video(g, vids, fresh=True, archive=archive))
+        return res, out.getvalue(), os.path.join(self.t.qa, 'BATCH_A', '20261001_000000001_iOS', 'turn_evidence', 't0000.jpg')
+
+    def test_a_cache_file_that_vanishes_while_the_question_is_open_leaves_the_frames(self):
+        self.put_cache()
+
+        def meanwhile(*a):
+            os.remove(os.path.join(self.cache, self.sha, self.NAME))
+            return True
+        res, out, frame = self.apply(self.archive(), meanwhile)
+        self.assertEqual(res.skipped, 1)
+        self.assertIn('checked again just before deletion', out)
+        self.assertTrue(os.path.exists(frame))
+
+    def test_a_cache_file_changed_while_the_question_is_open_leaves_the_frames(self):
+        self.put_cache()
+
+        def meanwhile(*a):
+            write(os.path.join(self.cache, self.sha, self.NAME), b'w' * VIDEO_BYTES)
+            return True
+        res, out, frame = self.apply(self.archive(), meanwhile)
+        self.assertEqual(res.skipped, 1)
+        self.assertTrue(os.path.exists(frame))
+
+    def test_a_drive_file_that_goes_to_trash_while_the_question_is_open_leaves_the_frames(self):
+        def meanwhile(*a):
+            self.mode('trashed')
+            return True
+        res, out, frame = self.apply(self.archive(cmd=self.cmd), meanwhile)
+        self.assertEqual(res.skipped, 1)
+        self.assertIn('Trash', out)
+        self.assertTrue(os.path.exists(frame))
+
+    def test_with_the_cache_or_drive_still_good_the_frames_go(self):
+        res, out, frame = self.apply(self.archive(cmd=self.cmd), lambda *a: True)
+        self.assertEqual(res.skipped, 0)
+        self.assertFalse(os.path.exists(frame))
+
+    def test_the_options_reach_the_tool_and_a_dry_run_with_no_command_says_drive_only_is_not_confirmed(self):
+        self.put_cache()
+        ml = os.path.join(self.t.logs, bl.MEDIA_LOCATIONS)
+        write(ml, json.dumps({'moved': [self.record()]}))
+        a = bl.Archive.load([ml], self.cache, None)
+        self.assertEqual(len(a.records[self.NAME.lower()]), 1)
+        self.assertTrue(self.verdict(a)[0])
+        write(ml, '{not json')
+        self.assertTrue(bl.Archive.load([ml], self.cache).warnings)
+
+
+HELPER_STUB = r"""
+import argparse, json, os, sys, time
+here = os.path.dirname(os.path.abspath(__file__))
+mode = open(os.path.join(here, 'mode')).read().strip()
+sha = open(os.path.join(here, 'sha')).read().strip()
+open(os.path.join(here, 'calls'), 'a').write('x')
+p = argparse.ArgumentParser()
+p.add_argument('action'); p.add_argument('--file-id', required=True); p.add_argument('--parent-id', required=True)
+a = p.parse_args()
+j = {'provider': 'google_drive', 'file_id': a.file_id, 'filename': '20261001_000000001_iOS.MP4', 'bytes': 1000, 'mime_type': 'video/mp4', 'parent_ids': [a.parent_id],
+     'provider_checksums': {'md5Checksum': 'md5md5', 'sha256Checksum': sha}}
+if mode == 'error': sys.stderr.write('Drive media error: boom\n'); sys.exit(2)
+elif mode == 'badjson': print('{oops'); sys.exit(0)
+elif mode == 'list': print('[]'); sys.exit(0)
+elif mode == 'empty': sys.exit(0)
+elif mode == 'timeout': time.sleep(10)
+elif mode == 'otherfile': j['file_id'] = 'OTHER'
+elif mode == 'noparent': j['parent_ids'] = ['SOMEWHERE_ELSE']
+elif mode == 'parentstr': j['parent_ids'] = a.parent_id
+elif mode == 'bytes': j['bytes'] = 999
+elif mode == 'bytesstr': j['bytes'] = '1000'
+elif mode == 'name': j['filename'] = 'other.MP4'
+elif mode == 'md5': j['provider_checksums']['md5Checksum'] = 'other'
+elif mode == 'sha': j['provider_checksums']['sha256Checksum'] = 'c' * 64
+elif mode == 'nosums': j['provider_checksums'] = {}
+elif mode == 'nosumsfield': del j['provider_checksums']
+elif mode == 'md5only': del j['provider_checksums']['sha256Checksum']
+elif mode == 'shaonly': del j['provider_checksums']['md5Checksum']
+print(json.dumps(j))
+"""
+
+
+class ArchiveHardening(ArchiveBase):
+    """Astra's findings of Oct 19: a fresh cache check hashes again and sees one steady file, Drive fallbacks refuse a conflicting identity, Drive-native records count like archive ones,
+    and the live check is Codex's metadata helper through a fail-closed adapter"""
+    PARENT = 'PARENT123'
+
+    def setUp(self):
+        super().setUp()
+        write(os.path.join(self.stub_dir, 'sha'), self.sha)
+        write(os.path.join(self.stub_dir, 'helper.py'), HELPER_STUB)
+        self.helper = ([sys.executable, os.path.join(self.stub_dir, 'helper.py'), 'metadata'], None)
+
+    def record(self, **kw):
+        r = super().record(**kw)
+        if r.get('google_drive_archive'):
+            r['google_drive_archive']['parent_id'] = self.PARENT
+        return r
+
+    def harchive(self, records=None, timeout=5, cmd=None):
+        recs = {self.NAME.lower(): records if records is not None else [self.record()]}
+        return bl.Archive(recs, self.cache, cmd, timeout, helper=self.helper)
+
+    def set_source(self, **kw):
+        write(os.path.join(self.t.qa, 'BATCH_A', '20261001_000000001_iOS', 'SOURCE.json'), json.dumps({'video_basename': self.NAME, 'bytes': VIDEO_BYTES, **kw}))
+
+    def calls(self):
+        p = os.path.join(self.stub_dir, 'calls')
+        if not os.path.exists(p):
+            return 0
+        with open(p) as f:
+            return len(f.read())
+
+    # --- 1: a fresh check hashes again, and sees one steady file
+    def swap(self, body):
+        fp = os.path.join(self.cache, self.sha, self.NAME)
+        st = os.stat(fp)
+        tmp = fp + '.new'
+        write(tmp, body)
+        os.utime(tmp, ns=(st.st_atime_ns, st.st_mtime_ns))
+        os.replace(tmp, fp)                     # another inode, the same size and modification time
+        self.assertEqual((os.stat(fp).st_size, os.stat(fp).st_mtime_ns), (st.st_size, st.st_mtime_ns))
+
+    def test_a_cache_file_replaced_with_the_same_size_and_mtime_is_caught_by_the_fresh_check(self):
+        self.put_cache()
+        a = self.archive()
+        game = bl.scan_qa(self.t.qa, self.t.videos(), '', a)[0].games[0]
+        self.assertEqual(game.video, (True, ''))
+        self.swap(b'w' * VIDEO_BYTES)
+        ok, why = bl.check_video(game, self.t.videos(), fresh=True, archive=a)
+        self.assertFalse(ok)
+        self.assertIn('has SHA-256', why)
+
+    def test_a_cache_file_rewritten_in_place_with_the_same_size_and_mtime_is_caught_by_the_fresh_check(self):
+        self.put_cache()
+        a = self.archive()
+        game = bl.scan_qa(self.t.qa, self.t.videos(), '', a)[0].games[0]
+        fp = os.path.join(self.cache, self.sha, self.NAME)
+        st = os.stat(fp)
+        with open(fp, 'r+b') as f:
+            f.write(b'w' * VIDEO_BYTES)
+        os.utime(fp, ns=(st.st_atime_ns, st.st_mtime_ns))       # the same inode, size and modification time: only hashing again can tell
+        self.assertFalse(bl.check_video(game, self.t.videos(), fresh=True, archive=a)[0])
+
+    def test_the_fresh_check_hashes_every_time_and_the_scan_remembers(self):
+        self.put_cache()
+        a, n = self.archive(), []
+        real = bl.hashlib.sha256
+        bl.hashlib.sha256 = lambda *x: n.append(1) or real(*x)
+        try:
+            a.cache_check(self.NAME, VIDEO_BYTES)
+            a.cache_check(self.NAME, VIDEO_BYTES)
+            self.assertEqual(len(n), 1)
+            a.cache_check(self.NAME, VIDEO_BYTES, fresh=True)
+            a.cache_check(self.NAME, VIDEO_BYTES, fresh=True)
+            self.assertEqual(len(n), 3)
+        finally:
+            bl.hashlib.sha256 = real
+
+    def test_a_file_that_changes_while_it_is_read_is_not_confirmed(self):
+        self.put_cache()
+        a, real, done = self.archive(), bl.hashlib.sha256, []
+
+        def sneaky(*x):
+            h = real(*x)
+            if not done:
+                done.append(1)
+                self.swap(b'v' * VIDEO_BYTES)               # the same bytes, but a different file
+            return h
+        bl.hashlib.sha256 = sneaky
+        try:
+            ok, why = a.cache_check(self.NAME, VIDEO_BYTES, fresh=True)
+        finally:
+            bl.hashlib.sha256 = real
+        self.assertFalse(ok)
+        self.assertIn('cannot be read steadily', why)
+
+    def test_a_file_that_grows_or_is_touched_while_it_is_read_is_not_confirmed(self):
+        self.put_cache()
+        a, real, done = self.archive(), bl.hashlib.sha256, []
+        fp = os.path.join(self.cache, self.sha, self.NAME)
+
+        def sneaky(*x):
+            if not done:
+                done.append(1)
+                os.utime(fp, ns=(1, 1))
+            return real(*x)
+        bl.hashlib.sha256 = sneaky
+        try:
+            self.assertFalse(a.cache_check(self.NAME, VIDEO_BYTES, fresh=True)[0])
+        finally:
+            bl.hashlib.sha256 = real
+
+    # --- 2: a conflicting SOURCE.json sha256 refuses every fallback
+    def conflict_record(self):
+        b = 'b' * 64
+        return self.record(sha256=b, google_drive_archive={'file_id': 'FID123', 'parent_id': self.PARENT, 'provider_checksums': {'sha256': b, 'md5': 'md5md5'}})
+
+    def test_a_source_sha256_that_conflicts_with_the_registry_and_a_live_checker_that_agrees_with_the_registry_is_held(self):
+        self.set_source(sha256=self.sha)                    # SOURCE.json says A, the registry, the provider record and the live check say B
+        self.mode('sha_b')
+        for fresh in (False, True):
+            ok, why = self.verdict(self.archive([self.conflict_record()], cmd=self.cmd), fresh=fresh)
+            self.assertFalse(ok, fresh)
+            self.assertIn('sha256 differs', why)
+        self.set_source(sha256='b' * 64)                    # control: all agree
+        self.assertTrue(self.verdict(self.archive([self.conflict_record()], cmd=self.cmd), fresh=True)[0])
+
+    def test_a_conflict_inside_the_record_is_held_without_asking_drive(self):
+        calls = []
+        r = self.record(google_drive_archive={'file_id': 'FID123', 'parent_id': self.PARENT, 'provider_checksums': {'sha256': 'b' * 64}})      # top level A, provider B
+        a = self.archive([r], cmd=self.cmd)
+        a._live_check = lambda *x: calls.append(1) or (True, '')
+        ok, why = self.verdict(a, fresh=True)
+        self.assertFalse(ok)
+        self.assertIn('sha256 differs', why)
+        self.assertEqual(calls, [])
+
+    def test_a_live_sha256_that_differs_from_source_json_is_held_even_if_the_record_says_nothing(self):
+        self.set_source(sha256=self.sha)
+        r = self.record()
+        del r['sha256']
+        r['google_drive_archive'] = {'file_id': 'FID123', 'parent_id': self.PARENT}
+        self.mode('sha_b')
+        ok, why = self.verdict(self.archive([r], cmd=self.cmd), fresh=True)
+        self.assertFalse(ok)
+        self.assertIn('sha256', why)
+
+    def test_a_conflict_also_stops_the_cache_fallback(self):
+        self.put_cache()
+        self.set_source(sha256=self.sha)
+        ok, why = self.verdict(self.archive([self.conflict_record()]), fresh=True)      # the record's sha B has no cache file; SOURCE's A may not be used with it
+        self.assertFalse(ok)
+        self.assertIn('sha256 differs', why)
+
+    # --- 3: google_drive_source records
+    def source_record(self):
+        r = self.record()
+        r['google_drive_source'] = r.pop('google_drive_archive')
+        return r
+
+    def test_a_drive_native_record_counts_like_an_archive_record(self):
+        self.assertEqual(self.verdict(self.archive([self.source_record()], cmd=self.cmd), fresh=True), (True, ''))
+        self.assertEqual(self.verdict(self.harchive([self.source_record()]), fresh=True), (True, ''))
+
+    def test_a_record_with_both_a_source_and_an_archive_registration_is_refused(self):
+        r = self.record()
+        r['google_drive_source'] = dict(r['google_drive_archive'])
+        for a in (self.archive([r], cmd=self.cmd), self.harchive([r])):
+            ok, why = self.verdict(a, fresh=True)
+            self.assertFalse(ok)
+            self.assertIn('conflict', why)
+
+    def test_other_identity_conflicts_inside_a_record_are_refused(self):
+        def with_(**kw):
+            r = self.record()
+            r['google_drive_archive'].update(kw)
+            return r
+        cases = {'stored metadata names another file': with_(metadata={'file_id': 'ELSE', 'bytes': VIDEO_BYTES}),
+                 'stored parent not registered': with_(metadata={'file_id': 'FID123', 'parent_ids': ['ELSE']}),
+                 'stored size differs': with_(metadata={'file_id': 'FID123', 'bytes': 5}),
+                 'stored sha differs': with_(metadata={'file_id': 'FID123', 'provider_checksums': {'sha256Checksum': 'd' * 64}}),
+                 'md5 differs': with_(metadata={'file_id': 'FID123', 'provider_checksums': {'md5Checksum': 'other'}})}
+        cases['source_identity names another file'] = {**self.record(), 'source_identity': f'google_drive:ELSE:sha256:{self.sha}'}
+        cases['source_identity sha differs'] = {**self.record(), 'source_identity': f'google_drive:FID123:sha256:{"e" * 64}'}
+        for label, r in cases.items():
+            with self.subTest(label):
+                self.assertFalse(self.verdict(self.archive([r], cmd=self.cmd), fresh=True)[0])
+        ok = {**self.record(), 'source_identity': f'google_drive:FID123:sha256:{self.sha}'}
+        self.assertTrue(self.verdict(self.archive([ok], cmd=self.cmd), fresh=True)[0])
+
+    def test_two_drive_records_for_one_file_name_are_refused(self):
+        self.assertIn('duplicate', self.verdict(self.archive([self.record(), self.record()], cmd=self.cmd), fresh=True)[1])
+
+    # --- 5: the metadata helper, through the fail-closed adapter
+    def test_the_helper_is_the_default_live_check_and_gets_the_registered_ids(self):
+        self.assertEqual(self.verdict(self.harchive()), (True, ''))
+        self.assertEqual(self.calls(), 1)
+        self.assertEqual(self.verdict(self.harchive(), fresh=True), (True, ''))
+
+    def test_the_scan_asks_the_helper_once_per_file_and_the_check_before_a_deletion_every_time(self):
+        a = self.harchive()
+        self.verdict(a)
+        self.verdict(a)
+        self.assertEqual(self.calls(), 1)
+        self.verdict(a, fresh=True)
+        self.verdict(a, fresh=True)
+        self.assertEqual(self.calls(), 3)
+
+    def test_every_helper_failure_or_odd_answer_is_not_a_confirmation(self):
+        for m, word in (('error', 'failed (exit 2)'), ('badjson', 'did not print JSON'), ('list', 'unexpected shape'), ('empty', 'did not print JSON'), ('timeout', 'more than 1 s'),
+                        ('otherfile', 'another file'), ('noparent', 'registered parent'), ('parentstr', 'registered parent'), ('bytes', '999 bytes'), ('bytesstr', "'1000' bytes"),
+                        ('name', 'is named'), ('md5', 'md5'), ('sha', 'sha256'), ('nosums', 'no checksum'), ('nosumsfield', 'no checksums')):
+            with self.subTest(m):
+                self.mode(m)
+                ok, why = self.verdict(self.harchive(timeout=1), fresh=True)
+                self.assertFalse(ok)
+                self.assertIn(word, why)
+
+    def test_one_matching_checksum_is_enough_but_a_stored_record_is_never_the_answer(self):
+        for m in ('md5only', 'shaonly'):
+            self.mode(m)
+            self.assertTrue(self.verdict(self.harchive(), fresh=True)[0], m)
+        ok, why = self.verdict(bl.Archive({self.NAME.lower(): [self.record()]}, self.cache, None, 5, helper=([os.path.join(self.t.root, 'no_such_program')], None)), fresh=True)
+        self.assertFalse(ok)
+        self.assertIn('could not be run', why)
+
+    def test_a_helper_answer_is_checked_against_source_json_too(self):
+        self.set_source(sha256='f' * 64)
+        self.assertFalse(self.verdict(self.harchive(), fresh=True)[0])
+
+    def test_the_helper_needs_a_registered_parent_and_its_own_ids(self):
+        r = self.record()
+        del r['google_drive_archive']['parent_id']
+        ok, why = self.verdict(self.harchive([r]), fresh=True)
+        self.assertFalse(ok)
+        self.assertIn('parent folder id', why)
+        r['google_drive_archive']['parent_id'] = 'FID123'
+        self.assertFalse(self.verdict(self.harchive([r]), fresh=True)[0])
+
+    def test_a_drive_check_command_overrides_the_helper(self):
+        self.mode('sha_b')                                      # the command's answer is the one that counts: it disagrees on sha256
+        self.assertFalse(self.verdict(self.harchive(cmd=self.cmd), fresh=True)[0])
+        self.assertEqual(self.calls(), 0)
+
+    def test_a_helper_that_is_missing_means_a_record_alone_never_counts(self):
+        ok, why = self.verdict(self.archive(), fresh=True)
+        self.assertFalse(ok)
+        self.assertIn('no live Drive check is configured', why)
+
+    def test_the_helper_must_be_able_to_stop_the_deletion_right_before_it(self):
+        def meanwhile(*a):
+            self.mode('noparent')                               # the file left its registered folder while the question was open
+            return True
+        arch = self.harchive()
+        idx = index([self.PACKET])
+        vids = self.t.videos()
+        d = bl.decide(bl.scan_qa(self.t.qa, vids, '', arch), idx)
+        self.assertTrue(d[0].delete)
+        out = io.StringIO()
+        res = bl.apply_deletions(d, self.t.qa, idx, confirm=meanwhile, out=out, video_check=lambda g: bl.check_video(g, vids, fresh=True, archive=arch))
+        self.assertEqual(res.skipped, 1)
+        self.assertTrue(os.path.exists(os.path.join(self.t.qa, 'BATCH_A', '20261001_000000001_iOS', 'turn_evidence', 't0000.jpg')))
+
+    # --- config
+    def test_the_cache_folder_comes_from_codex_data_locations_and_the_override_wins(self):
+        bl_dir = os.path.join(self.t.root, 'BL')
+        cache = os.path.join(self.t.root, 'Data', 'Cache')
+        write(os.path.join(bl_dir, 'Review_Log', 'LOCAL_DATA_LOCATIONS.json'), json.dumps({'current_root': os.path.join(self.t.root, 'Data'), 'directories': {'Cache': cache}}))
+        self.assertEqual(bl.data_config([bl_dir]), (os.path.join(cache, 'raw'), []))
+        self.assertEqual(bl.data_config([bl_dir], os.path.join(self.t.root, 'Other')), (os.path.join(self.t.root, 'Other', 'raw'), []))
+
+    def test_an_unreadable_data_locations_file_falls_back_with_a_plain_warning(self):
+        bl_dir = os.path.join(self.t.root, 'BL')
+        for body in (None, '{nope', json.dumps({'current_root': 'C:/x', 'directories': {'Cache': 'D:/elsewhere'}}), json.dumps([])):
+            if body is not None:
+                write(os.path.join(bl_dir, 'Review_Log', 'LOCAL_DATA_LOCATIONS.json'), body)
+            root, warns = bl.data_config([bl_dir])
+            self.assertTrue(root.endswith(os.path.join('BattleLogsData', 'Cache', 'raw')))
+            self.assertEqual(len(warns), 1)
+            self.assertIn('built-in cache folder', warns[0])
+
+    def test_no_helper_is_found_without_codexs_script(self):
+        self.assertIsNone(bl.find_helper([os.path.join(self.t.root, 'BL')]))
+
+    # --- 6: only reads
+    def test_checks_never_write_to_the_cache_or_battle_logs(self):
+        self.put_cache()
+        write(os.path.join(self.t.logs, 'MEDIA_LOCATIONS.json'), json.dumps({'moved': [self.record()]}))
+
+        def snap():
+            out = {}
+            for root in (self.cache, self.t.logs):
+                for dp, dn, fn in os.walk(root):
+                    for n in dn + fn:
+                        p = os.path.join(dp, n)
+                        st = os.lstat(p)
+                        out[p] = (st.st_size, st.st_mtime_ns, st.st_ino)
+            return out
+        before = snap()
+        for a in (self.archive(), self.harchive(), self.archive(cmd=self.cmd)):
+            self.verdict(a)
+            self.verdict(a, fresh=True)
+        self.assertEqual(before, snap())
+
+
+class FakeView:
+    no_git, ref, commit = True, 'x', None
+
+    def describe(self):
+        return 'fake'
+
+
+STUB = r"""
+import json, os, sys, time
+mode = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'mode')).read().strip()
+fid = sys.argv[1]
+j = {'id': fid, 'exists': True, 'trashed': False, 'size': 1000, 'md5': 'md5md5'}
+if mode == 'trashed': j['trashed'] = True
+elif mode == 'gone': j['exists'] = False
+elif mode == 'size': j['size'] = 999
+elif mode == 'md5': j['md5'] = 'other'
+elif mode == 'sha_b': j['sha256'] = 'b' * 64
+elif mode == 'notrashedfield': del j['trashed']
+elif mode == 'trashstring': j['trashed'] = 'false'
+elif mode == 'otherid': j['id'] = 'OTHER'
+elif mode == 'nosize': del j['size']
+elif mode == 'sizebool': j['size'] = True
+elif mode == 'error': sys.exit(3)
+elif mode == 'badjson': print('{oops'); sys.exit(0)
+elif mode == 'list': print('[]'); sys.exit(0)
+elif mode == 'empty': sys.exit(0)
+elif mode == 'timeout': time.sleep(10)
+print(json.dumps(j))
+"""
+
+
 if __name__ == '__main__':
     unittest.main()
