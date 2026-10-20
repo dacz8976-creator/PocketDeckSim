@@ -321,6 +321,12 @@ fn offer_on_evolve_ability(actor: usize, state: &mut State, in_play_idx: usize) 
 
 /// Called when a basic Pokémon is placed from hand onto the bench (index > 0).
 pub(crate) fn on_bench_from_hand(actor: usize, state: &mut State, card: &Card, bench_idx: usize) {
+    // Upstream #385: these Abilities read "Once during your turn, when you put this Pokémon from your
+    // hand onto your Bench". Setup comes before any turn, and the player who is not on turn (Team
+    // Rocket's Boss benching an opponent's Pokémon) never gets them.
+    if state.turn_count == 0 || actor != state.current_player {
+        return;
+    }
     match get_entering_play_ability_mechanic(state, card) {
         Some(AbilityMechanic::LegendaryDrive) => {
             if state.maybe_get_active(actor).is_none() {
