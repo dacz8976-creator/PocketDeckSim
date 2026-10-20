@@ -1,0 +1,22 @@
+PASS stress: accrued + reserved never above the total (sampled): max seen $0.9997
+PASS stress: peak at each reservation never above the total: peak $1.0000
+PASS stress: final accrued within the total, nothing left reserved: accrued $0.9948, 54 calls, 9546 refused
+PASS stress: the bound was actually exercised (refusals happened)
+PASS worst-case calls: total spend within the bound: $1.8270 for 7 calls of $0.2610; 33 refused
+PASS worst-case calls: as many calls as fit were sent, no more: 7 sent, 7 fit
+PASS failed call: the error is passed on
+PASS failed call: charged its whole worst case: $0.12601 vs worst $0.12601
+PASS failed call: no further call is sent
+PASS run cap: a reservation past the run cap is refused
+PASS ledger: a second run on the same ledger at once is refused
+PASS ledger: the next run continues from the accrued total
+PASS ledger: a different total on an existing ledger is refused
+PASS mock run: exit 0 and one row per task: exit 0, 12 rows; 12 call(s) returned, 0 failed; this run $0.3357 (cap $12.0); ledger $0.3357 of $25.0 (peak accrued+reserved $0.5804); 0 refused by the bound (assumed list price per million tokens; verify in the console)
+PASS mock run: every row is frozen, tagged, with its repeat
+PASS mock run: ledger = the rows' summed cost: ledger $0.33568, rows $0.33568
+PASS mock run: the lock is released
+PASS parity: the same rows as judge.py's own loop (every field): judge.py exit 0; 
+PASS tight total: exit 2, some calls not sent: exit 2, 5 rows of 12, total $0.3101
+PASS tight total: spend within the total: $0.16361 of $0.3101 (largest mock call $0.03667)
+PASS shared ledger: the second run adds to the first: $0.33568 -> $0.67136
+21/21 passed

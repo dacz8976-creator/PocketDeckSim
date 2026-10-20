@@ -30,8 +30,11 @@ Run 1 **passes** only if the formal PRIMARY PREFIX verdict is **"judge higher"**
 "judge higher" only when ALL of these hold:
 - the 95% game-clustered percentile bootstrap interval of the judge-minus-km3 prefix agreement lies above zero (`ci_low > 0`);
 - the sign-flip test over games supports that direction (`sign_flip_p < 0.05`). With 26 games this is analysis.py's fixed-seed Monte Carlo
-  sign-flip test (100,000 draws, seed 20261019), not the exact one: analysis.py enumerates every sign pattern only up to 16 games. (Wording
-  corrected Oct 20 before the live run, at Astra's note; the method is unchanged.)
+  sign-flip test (100,000 draws, seeded with SEED + 1 = 20261020; the bootstrap uses SEED = 20261019), not the exact one: analysis.py enumerates
+  every sign pattern only up to 16 games.
+  - "exact" was corrected before the live run, at Astra's note.
+  - The seed number was corrected after the run (Oct 20), from the 0c0add4d text's "seed 20261019". The verification found it.
+  - The method, the frozen code and the verdict are unchanged.
 - there are at least 10 games with data (MIN_GAMES).
 
 Anything else is **not a pass**: "inconclusive" (the interval includes 0, or the sign-flip test doesn't support the direction) or "km3 higher".

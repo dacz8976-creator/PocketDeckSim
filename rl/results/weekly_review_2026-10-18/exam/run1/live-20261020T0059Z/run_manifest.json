@@ -1,0 +1,49 @@
+{
+ "mode": "live",
+ "judge_ref": "judge-prompt-frozen-4",
+ "seeds": "25100000001,25100000002,25100000003",
+ "compare_primary_exit": 0,
+ "compare_sensitivity_exit": 0,
+ "relabel": "judge_repeat.jsonl = judge_repeat_raw.jsonl with repeat 0 -> 1 (relabel_repeat.py); nothing else changed",
+ "baseline_note": "km3 only: the frozen baseline executable plays k<number>/km<number> bots, not kx3",
+ "spend_bound": "budget_judge.py: each call reserved at its worst case before sending; $25 total over both runs (spend_ledger.json), $12 per run",
+ "files": {
+  "by_category.json": "c421165c94a665252be9314134687afa66b4165fe12585e61ecd091c0c5629be",
+  "freeze_check.txt": "5a23aea07b73211ee7e84173308b04240e5eebf61a71a5857ceaed8a21c53395",
+  "judge_primary.jsonl": "26381b68e76917b20714beaab7d9680fa898ae53bd1f7c66b226eebe8bfb64bd",
+  "judge_primary.stdout": "80b10731527f3cb9a44c93d7b63b0199ef72d954f2a64109e4e5da3f7d82604f",
+  "judge_repeat.jsonl": "d571c6f84b73548b1c6d58428d956a26b2147b486a3fb638a91aafc0dc655988",
+  "judge_repeat.stdout": "2e6a6a9c0eb62aecd667f0406db43f3c03fd8a98f9f218e493ebbfc5833bf0d4",
+  "judge_repeat_raw.jsonl": "280bf3392164f13b75b2950ce84ebad30a40ed4d85215033261272862c82d80a",
+  "km3.jsonl": "3cc523d32f7290780881f79b5ec67d7945843c72af92bd0d0a8dab34a1f76fab",
+  "km3.stdout": "9262ad153df537fee520b8aaab8b6a67a4b496a9a38095d9f643faba65e3471e",
+  "plans.txt": "efa0d6fae2cbb7ed165a11d7007ccb76c3809970f07e5459dacf4195bf80edf6",
+  "prompt_sizes.txt": "85336e7affc3a931df1d5df790b616ab0df88015e740d71b6a3eba49fa105c6e",
+  "report_primary.json": "16f02a9ba6456ee1afc6530f4c687c98c5ec3735ece981334dba6eb390a34ea8",
+  "report_primary.json.stdout": "8db7f8140c20d0975d743ef1a0abddd309098308920967719c819ecb88c7f8c8",
+  "report_sensitivity.json": "9117650ba0ca398fe382f409ee9945fcd5ffd1b82ad7f354b0ca54dc889daf20",
+  "report_sensitivity.json.stdout": "8db7f8140c20d0975d743ef1a0abddd309098308920967719c819ecb88c7f8c8",
+  "run.log": "0231e928dbdcdbe43fcc2685d9f281a85e2577aa90fcb57ddbfc29185e36b795",
+  "spend.txt": "089743f1eda55961f32fcc97e196bbc0c951a187f2727691dfe1c77154fd5350",
+  "spend_ledger.json": "46397275c3cb0ecac7caf4aa69dda85da1c1cf3191f92be15ad87822817349ce",
+  "test_budget.txt": "a01fb62525504afe6808caafbd87ba84b999fe09153c8909d5e8545019d54801"
+ },
+ "inputs": {
+  "exam_commit": "5518fd604760edb40b41d1406723f14cd8343b78",
+  "judge_ref": "judge-prompt-frozen-4",
+  "judge_ref_commit": "f7d5f4e594b2a61352f5f0116f8b54fa4373f7ae",
+  "files": {
+   "exam:exam_2026-10-19.json": "3766b5960342bd486530c74e61fefb44a1f136e76b07e31570834f2cc688e5ba",
+   "exam:references.json": "12e0e997620f19b241597e2fac80f530e278daedb6af1aabc27953197cc809fd",
+   "exam:references_meta.json": "6adca41edaf46031f268329229faffb6d184651e0f7864cc202d910dd9357fd7",
+   "deck:12-ariados-whimsicott-ogerpon": "4d059bd2c5cba229cc025746f05dca2d03281ebe07c0712917d9fc8d53c65bd5",
+   "deck:13-a-ninetales-raticate": "f79ad459a1188f10ba34be4606f3cbc60db21386e8ef91721c5506239653b6fa",
+   "deck:kingambit_list_A": "378f015a11734be6138a6ee595110d0086572a1d3a9ce0e364d2afc8d675526b",
+   "in:positions.json": "17bea6e345667f765ea6d78fd427f091ed6671c4a5e0ef923ed80f30f6cb02c1",
+   "in:references.json": "12e0e997620f19b241597e2fac80f530e278daedb6af1aabc27953197cc809fd",
+   "in:eligibility.json": "6199ddeffd8ad084a726c0e6e356abb908112724068eb2985ce9cae2344daac2",
+   "in:ids.txt": "9071083970dad95a56a3a32a73f2a90811227706f2005edf8506e969ae3e8aa0",
+   "in:categories.json": "c74c9f1b0ccc4113b69e5d0fc8f2d561e1fe111a750ae9f87ae4f63c4459c16e"
+  }
+ }
+}

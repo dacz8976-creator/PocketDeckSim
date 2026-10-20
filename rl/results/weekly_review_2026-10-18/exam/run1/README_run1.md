@@ -1,4 +1,6 @@
-# Exam run 1: the first scored run (prepared Oct 19-20, NOT run)
+# Exam run 1: the first scored run (prepared Oct 19-20; run live Oct 20, 00:59-01:05Z)
+
+**The results are in `RESULTS_run1.md`, and the outputs are in `live-20261020T0059Z/`.** They wait for Astra's checkpoint-3 review.
 
 This is PLAN step 3 for the unseen-positions exam (v1.6, `5518fd60`). The live run starts on the coordinator's go. Astra passed the frozen tag
 `judge-prompt-frozen-4` (commit 72eea776, Sonnet's final review round on top of the dry runs' eb19c7af; the prompt is unchanged) and this kit at a2db950c. The formal comparison is the judge against km3. kx3 can't run on the frozen tree, and the
@@ -34,15 +36,17 @@ non-formal kx3 side run is skipped (3-hour rule). Both are recorded in `PREREG_D
 8. **Wrap-up.**
    - `categories.py`: a DESCRIPTIVE breakdown of the primary prefix agreement by deck kind, answer kind and deck. It has no interval or verdict.
    - `judge.py spend` totals the cost.
-   - `run_manifest.json` records every file's sha256, the judge commit, the seeds and the exit codes.
+   - `run_manifest.json` records the sha256 of every output written before it, the judge ref, the seeds and the exit codes. Its `judge_ref_commit` is
+     the annotated tag object, f7d5f4e5 for frozen-4, which points to commit 72eea776; run.log line 2 names the commit. run.log's final "done" line
+     and STATUS come after the manifest.
 
 ## The pass condition (fixed before any live call)
 Run 1 passes only if the formal PRIMARY PREFIX verdict is **"judge higher"**: `analysis.prefix.contrasts[0]` in `report_primary.json` (a = judge,
 b = km3), on 49 primary points from 26 games.
 - That verdict needs the 95% game-clustered interval of judge minus km3 to lie above zero AND the sign-flip test over games to support it
   (p < 0.05), with at least 10 games. This is analysis.py's existing `verdict()` rule.
-- With 26 games the sign-flip test is analysis.py's fixed-seed Monte Carlo version (100,000 draws, seed 20261019). The exact enumeration is used only
-  up to 16 games.
+- With 26 games the sign-flip test is analysis.py's fixed-seed Monte Carlo version: 100,000 draws, seeded with SEED + 1 = 20261020. The bootstrap uses
+  20261019, and the exact enumeration is used only up to 16 games. The seed number was corrected after the run; the method is unchanged.
 - "Inconclusive" or "km3 higher" is not a pass. It sends the coming week to maintenance and upstream work with no kx3 port. That is a resource choice,
   not evidence that the AI approach can't help.
 - The 19-point full-scope block, the repeat, the diagnostic block and the categories are reported separately and don't enter the pass condition.
