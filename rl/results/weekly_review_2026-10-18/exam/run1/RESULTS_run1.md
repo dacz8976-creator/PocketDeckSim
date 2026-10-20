@@ -1,6 +1,12 @@
 # Exam run 1: results (live, Oct 20, 2026, 00:59-01:05Z)
 
-**For Astra's checkpoint-3 review (the analysis review). Not yet for Dustin: the coordinator reports to him after the review.**
+**Checkpoint 3 (the analysis review): PASSED.** Astra passed it at 4b74d4e9 (mailbox 20261020T0131Z-astra-run1-analysis-pass-001).
+- Run 1 does NOT pass the advancement rule. Maintenance and upstream work follow.
+- The original result files and the verdict are kept as they are, and nothing was rescored. Later edits to this note are wording only.
+- The coordinator reports to Dustin.
+
+**What these numbers are.** They measure agreement with the registered acceptable plans. They are not correct-play percentages, win rates,
+human-level strength or a measure of how reliably decks are ranked. The result doesn't show that km3 itself is a trustworthy deck tester.
 
 ## What ran
 - **Judge:** `judge-prompt-frozen-4`, commit 72eea776. `freeze_identity.py --check` passed (freeze_check.txt: "identity matches FROZEN.json").
@@ -80,8 +86,8 @@ The staged decision is the same for "inconclusive" and "km3 higher", so none of 
     before seeing the card, so it is a real difference in the decision, not a scoring defect.
   - A post-hoc lenient rescoring that forgives superset plans gives judge 0.490 and km3 0.612. That is descriptive only.
 - **Attacking at once.** In 9 more misses, the judge attacked at once where the accepted plan drew or searched first.
-- **Compact prompts don't explain the gap.** On the 17 compact-form prompts (more than 80 plans) the judge was level with km3, 3 vs 2. The whole gap
-  is on the 32 full-form points: judge 8, km3 20.
+- **The observed gap was concentrated in the full-form prompts.** That's the 32 points with 80 plans or fewer: judge 8, km3 20. On the 17
+  compact-form prompts (more than 80 plans) it was 3 vs 2. This split was made after the run and is not a controlled comparison.
 - **A weak hint about list position.** The judge may favour plans shown early in its shuffled list: mean relative rank 0.43, p ≈ 0.07. The
   first-shown plan wasn't over-chosen (2 of 51). This is weak and post hoc.
 
@@ -145,11 +151,20 @@ The staged decision is the same for "inconclusive" and "km3 higher", so none of 
 - `pg_pos_cut`: 87 at the end of the turn and 66 at a first draw card. pg_pos plays to the end of the turn or to its first draw card, whichever comes
   first.
 
-**Not checked: what km3 can see**
-- pg_pos plays each position on a seeded deal: km3's unseen deck order, and the opponent's hidden cards filled from the pilot's own list. These are
-  random fill-ins, not the recorded game's cards.
-- Whether km3's search reads them wasn't checked. No answer key reached either bot: the candidate positions hold the position and id only, and all
-  51 equal the exam commit's.
+**What km3 can see** (Astra's trace at checkpoint 3, in the frozen judge 72eea776 / engine 70652fff; recorded here as Astra's finding)
+- **The real hidden cards don't reach km3's search.**
+  - `rl/results/pause_games_decisions_2026-10-02/harness/pg_pos.rs:415-430` calls the normal `Game::play_tick`.
+  - `engine/src/game.rs:220-232` builds a `PlayerObservation`.
+  - `engine/src/observation.rs:54-60` removes km3's own ordered deck and masks the opponent's hand and deck as Unknown.
+  - km3's player passes that observation to its normal decision function, not the omniscient one.
+  - `engine/src/players/expectiminimax_player.rs:395-403` searches `observation.search_state`. That state reshuffles the known own-deck multiset
+    with separate search randomness (`engine/src/observation.rs:145-156`).
+  - So neither the seeded own-deck order nor the opponent's filled-in cards reach the search.
+- **The limitation Astra names.** km3 searches ONE imagined own-deck order per decision. An ordinary DrawCard or Research is evaluated on that
+  imagined order, not over all possible draws; some other chance events are probability-weighted.
+  - That is an approximation, not access to the real future.
+  - Its effect on the score was not measured. It must not be used to explain away the gap, including the gap at the chance-ending points.
+- **No answer key reached either bot.** The candidate positions hold the position and id only, and all 51 equal the exam commit's.
 
 **Other**
 - No secret appears in any committed file (count-only check).
@@ -157,18 +172,28 @@ The staged decision is the same for "inconclusive" and "km3 higher", so none of 
   cache; the index contents are unchanged.
 
 ## API usage: actual, kept apart from the estimates
-**Actual** (the API's own `usage` fields on every row, priced at the harness's assumed list price of $3 / $15 per million tokens; no cache tokens; the
-console bill is the authority on dollars):
+**Actual tokens** come from the API's own `usage` fields on every row; there were no cache tokens. They are priced two ways:
+- **$3 / $15 per million tokens: the harness's conservative ASSUMED price.** This is `judge.PRICES`, which every dollar figure the run printed (rows,
+  ledger, spend.txt) and the spend bound use.
+- **$2 / $10 per million tokens: the official claude-sonnet-5-5 standard price,** by Astra's source
+  (https://platform.claude.com/docs/en/models/sonnet-5-5/overview).
 
-| | calls | input tokens | output tokens | $ at list price |
-|---|---|---|---|---|
-| primary | 51 | 672,134 | 63,590 | 2.970 |
-| repeat | 51 | 672,134 | 62,890 | 2.960 |
-| **total** | **102** | **1,344,268** | **126,480** | **5.930** |
+**At the official price, actual use was $3.95 ($3.953336).** The $5.93 at the configured $3/$15 is conservative accounting, not the official price.
+The billing console was not inspected.
 
-**Conservative figures, which are NOT what was spent:**
+| | calls | input tokens | output tokens | $ at the assumed $3/$15 | $ at the official $2/$10 |
+|---|---|---|---|---|---|
+| primary | 51 | 672,134 | 63,590 | 2.970 | 1.980 |
+| repeat | 51 | 672,134 | 62,890 | 2.960 | 1.973 |
+| **total** | **102** | **1,344,268** | **126,480** | **5.930** | **3.953** |
+
+(Price wording corrected Oct 20 after the run, at the coordinator's note from Astra's source: the earlier text called $3/$15 the "list price". Wording
+only.)
+
+**Conservative figures, which are NOT what was spent** (all at the assumed $3/$15):
 - **The pre-run estimate:** $3.2155 per run, printed as $3.22 ($6.43 for both). It assumed 689,336 input tokens from the prompt sizes and 1,500
   output tokens a call. The actual figures were 672,134 input tokens per run (97.5%) and about 1,240 output tokens a call.
 - **The spend bound's worst-case reservations:**
   - peak spent-plus-reserved was $3.50 in the primary run and $6.46 overall, against the $12-per-run and $25 caps;
   - 0 calls were refused, none failed, and the ledger closed at $5.93 of $25.
+  - At the official price, the same bound would have been even further from binding.

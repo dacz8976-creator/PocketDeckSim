@@ -1,6 +1,8 @@
 # Exam run 1: the first scored run (prepared Oct 19-20; run live Oct 20, 00:59-01:05Z)
 
-**The results are in `RESULTS_run1.md`, and the outputs are in `live-20261020T0059Z/`.** They wait for Astra's checkpoint-3 review.
+**The results are in `RESULTS_run1.md`, and the outputs are in `live-20261020T0059Z/`.**
+- Checkpoint 3 PASSED (Astra, 20261020T0131Z).
+- Run 1 does not pass the advancement rule ("km3 higher"). Maintenance and upstream work follow.
 
 This is PLAN step 3 for the unseen-positions exam (v1.6, `5518fd60`). The live run starts on the coordinator's go. Astra passed the frozen tag
 `judge-prompt-frozen-4` (commit 72eea776, Sonnet's final review round on top of the dry runs' eb19c7af; the prompt is unchanged) and this kit at a2db950c. The formal comparison is the judge against km3. kx3 can't run on the frozen tree, and the
