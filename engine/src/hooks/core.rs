@@ -2079,8 +2079,8 @@ pub(crate) fn modify_damage(
     // An attack that the attacker-side stage takes to 0 does no damage at all: no Weakness and no Defending-Pokemon
     // stage, like an attack whose own damage is 0 (above). rules/05 #11, settled Oct 19 by the recording
     // Growl_weakness_test: under Growl's -20, Jump Blues (20) did 0 to the Grass-weak Active Cubone and 0 to the Benched
-    // Hariyama (rules/02 sections 1 and 3). Skipping a defender-side "+X damage" here as well is a stated choice: the
-    // recording had none.
+    // Hariyama (rules/02 sections 1 and 3). Skipping a defender-side "+X damage" here as well is the plain reading by
+    // analogy, an accepted uncertainty (Oct 20; the recording had none; Shot List row cut-to-zero-plus-x).
     if pre_weakness == 0 {
         debug!("The attacker-side stage took the attack to 0: no damage, no Weakness");
         return 0;
@@ -3577,6 +3577,20 @@ mod attack_cut_to_zero_and_hit_back_tests {
     }
 
     #[test]
+    fn a_defender_side_plus_x_is_also_skipped_when_the_cut_reaches_zero() {
+        // Pins an accepted uncertainty (Oct 20; Astra's review; Dustin: "the plain reading is the rule unless otherwise
+        // stated"): the recording showed Weakness skipped at 0, not a "takes +X damage" effect on the Defending Pokemon.
+        // modify_damage returns 0 before that step, so +X is skipped too: the plain reading by analogy. Video proof is the
+        // Shot List row cut-to-zero-plus-x; if it shows otherwise, change the early return and this test.
+        let mut state = growled();
+        state.in_play_pokemon[0][0].as_mut().unwrap().add_effect(CardEffect::IncreasedVulnerability { amount: 20 }, 1);
+        // 20 - 20 = 0: stays 0, with neither Weakness nor the +20.
+        assert_eq!(modify_damage(&state, (1, 0), (20, 0, 0), true, PLAIN), 0);
+        // 30 - 20 = 10, then Weakness +20 and the +20: 50.
+        assert_eq!(modify_damage(&state, (1, 0), (30, 0, 0), true, PLAIN), 50);
+    }
+
+    #[test]
     fn a_hit_back_fires_from_a_knocked_out_holder_and_is_doubled_under_bounded_field() {
         // Spike Armor's 40 is on Alolan Sandslash; the Fire Heatran (weak to Water) has just knocked it out (0 HP, not
         // yet removed: retaliation runs before the knockouts are handled) and takes the hit back.
@@ -3599,5 +3613,56 @@ mod attack_cut_to_zero_and_hit_back_tests {
         assert_eq!(hit_back(true), 80);
         // Without it: 40 + 20 = 60 (the same recording's earlier hit back on the Water-weak Litten).
         assert_eq!(hit_back(false), 60);
+    }
+}
+
+#[cfg(test)]
+mod on_bench_from_hand_turn_guard_tests {
+    //! Upstream #385's guard in on_bench_from_hand covers Poltchageist (B4 017) too: "Once during your turn, when you
+    //! put this Pokemon from your hand onto your Bench, you may heal 20 damage from your Active [G] Pokemon."
+    //! (Astra's Oct 20 review: no dedicated on-turn/off-turn test existed.)
+    use super::*;
+    use crate::database::get_card_by_enum;
+
+    /// Both players have a damaged Grass Active (Bulbasaur, 40 of 70 HP left), so the heal is worth offering to either.
+    fn board(turn: u8, current_player: usize, damaged: bool) -> State {
+        let mut state = State::default();
+        state.set_board(
+            vec![PlayedCard::from_id(CardId::A1001Bulbasaur)],
+            vec![PlayedCard::from_id(CardId::A1001Bulbasaur)],
+        );
+        if damaged {
+            for p in 0..2 {
+                state.in_play_pokemon[p][0].as_mut().unwrap().set_remaining_hp(40);
+            }
+        }
+        state.turn_count = turn;
+        state.current_player = current_player;
+        state
+    }
+
+    fn bench_poltchageist(mut state: State, actor: usize) -> State {
+        let card = get_card_by_enum(CardId::B4017Poltchageist);
+        on_bench_from_hand(actor, &mut state, &card, 1);
+        state
+    }
+
+    #[test]
+    fn poltchageist_heal_is_offered_on_its_owners_turn() {
+        let state = bench_poltchageist(board(3, 0, true), 0);
+        assert_eq!(
+            state.move_generation_stack,
+            vec![(0, vec![SimpleAction::UseAbility { in_play_idx: 1 }, SimpleAction::Noop])]
+        );
+    }
+
+    #[test]
+    fn poltchageist_heal_is_not_offered_off_turn_or_in_setup() {
+        // Player 0's Poltchageist benched on player 1's turn (for example by Team Rocket's Boss): no offer.
+        assert!(bench_poltchageist(board(3, 1, true), 0).move_generation_stack.is_empty());
+        // Setup (turn 0): no offer.
+        assert!(bench_poltchageist(board(0, 0, true), 0).move_generation_stack.is_empty());
+        // On its turn but with nothing to heal: no offer (the existing worth-offering check).
+        assert!(bench_poltchageist(board(3, 0, false), 0).move_generation_stack.is_empty());
     }
 }
