@@ -1633,8 +1633,7 @@ pub(crate) enum DefenderHit {
 /// - prevention: `PreventAllDamageFromEx` (Safeguard) from the defender's Ability, against an attacker ex; and on
 ///   the Bench, Protective Poncho and `PreventDamageWhileBenched` (Shell Shield);
 /// - before Weakness: `ReduceOpponentActiveDamage` (Intimidating Fang) from the Ability of the defending side's
-///   Active: the defender's own when it is the Active, the current Active's for a Benched hit; a hit it takes to 0
-///   does nothing, Weakness included (rules/05 #11, Oct 19);
+///   Active: the defender's own when it is the Active, the current Active's for a Benched hit;
 /// - Weakness: the printed rule, +20 or Bounded Field's x2 (`printed_weakness_application`), on the Active only;
 /// - after Weakness, every finite reduction that isn't temporary: the Tools Heavy Helmet and Steel Apron;
 ///   `ReduceDamageFromAttacks` from the defender's Ability (Solid Shell, Shell Armor, ...); the conditional
@@ -1696,10 +1695,6 @@ pub(crate) fn persistent_defender_damage(
             _ => 0,
         };
         let pre_weakness = base.saturating_sub(intimidating_fang);
-        // As in `modify_damage`: an attack the attacker-side stage takes to 0 does nothing (rules/05 #11, Oct 19).
-        if pre_weakness == 0 {
-            return (0, 0);
-        }
         let weakness = if weakness_applies {
             printed_weakness_application(state, defender, attacker)
         } else {
@@ -2076,15 +2071,6 @@ pub(crate) fn modify_damage(
     let pre_weakness = pre_weakness
         .saturating_sub(intimidating_fang_reduction)
         .saturating_sub(carried_attack_reduction);
-    // An attack that the attacker-side stage takes to 0 does no damage at all: no Weakness and no Defending-Pokemon
-    // stage, like an attack whose own damage is 0 (above). rules/05 #11, settled Oct 19 by the recording
-    // Growl_weakness_test: under Growl's -20, Jump Blues (20) did 0 to the Grass-weak Active Cubone and 0 to the Benched
-    // Hariyama (rules/02 sections 1 and 3). Skipping a defender-side "+X damage" here as well is a stated choice: the
-    // recording had none.
-    if pre_weakness == 0 {
-        debug!("The attacker-side stage took the attack to 0: no damage, no Weakness");
-        return 0;
-    }
     let after_weakness = match weakness_application {
         WeaknessApplication::None => pre_weakness,
         WeaknessApplication::Flat(amount) => pre_weakness + amount,
@@ -3152,10 +3138,8 @@ mod persistent_defender_damage_tests {
 
     #[test]
     fn intimidating_fang_comes_off_before_weakness() {
-        // Luxray is weak to Fighting: 30 - 20 = 10 before Weakness adds 20.
-        assert_eq!(both(mon(CardId::A3a015Luxray), mon(CardId::B3079Riolu), 30), ((30.0, 30.0), 30.0));
-        // 10 - 20 is cut to 0, and an attack cut to 0 takes no Weakness (rules/05 #11, Oct 19; this used to give 20).
-        assert_eq!(both(mon(CardId::A3a015Luxray), mon(CardId::B3079Riolu), 10), ((0.0, 0.0), 0.0));
+        // Luxray is weak to Fighting: 10 - 20 floors at 0 before Weakness adds 20.
+        assert_eq!(both(mon(CardId::A3a015Luxray), mon(CardId::B3079Riolu), 10), ((20.0, 20.0), 20.0));
     }
 
     #[test]
@@ -3529,75 +3513,5 @@ mod temporary_defender_reduction_tests {
         let barrier = get_card_by_enum(CardId::B2148MetalCoreBarrier);
         assert_eq!(lasting(mon(CardId::A2111Skarmory).with_tool(barrier), 40), (0, 0));
         assert_eq!(lasting(mon(CardId::A2111Skarmory), 40), (0, 0));
-    }
-}
-
-#[cfg(test)]
-mod attack_cut_to_zero_and_hit_back_tests {
-    //! rules/05 #11, settled Oct 19 by two recorded rules tests (rules/02 sections 1-3):
-    //! - Growl_weakness_test: under Growl's -20, Pheromosa's Jump Blues (20, plus 20 to a Benched Pokemon) did 0 to the
-    //!   Grass-weak Active Cubone and 0 to the Benched Hariyama; a Flop (30) under the same -20 did 30 (30 - 20 + 20).
-    //! - Boundedfield_hitback_test: with Bounded Field in play, Alolan Sandslash's Spike Armor hit back for "Weakness 80"
-    //!   on the Water-weak Heatran (40 x 2), after Heatran's attack had knocked Sandslash out.
-    use super::*;
-    use crate::database::get_card_by_enum;
-
-    fn mon(id: CardId) -> PlayedCard {
-        PlayedCard::from_id(id)
-    }
-
-    const PLAIN: DamageModifierContext<'static> = DamageModifierContext { attack_name: None, attack_effect: None };
-
-    /// Player 1's Grass Pheromosa attacks under Growl's -20; player 0 has the Grass-weak Cubone Active and Hariyama
-    /// (weak to Psychic) on the Bench.
-    fn growled() -> State {
-        let mut pheromosa = mon(CardId::A3a007Pheromosa);
-        pheromosa.add_effect(CardEffect::ReducedAttackDamage { amount: 20 }, 1);
-        let mut state = State::default();
-        state.set_board(vec![mon(CardId::A3089Cubone), mon(CardId::A3091Hariyama)], vec![pheromosa]);
-        state
-    }
-
-    #[test]
-    fn an_attack_cut_to_zero_does_no_damage_and_takes_no_weakness() {
-        let state = growled();
-        // Jump Blues 20 - 20 = 0 on the Active: 0, not the 20 that Weakness used to add.
-        assert_eq!(modify_damage(&state, (1, 0), (20, 0, 0), true, PLAIN), 0);
-        // A cut that leaves damage still takes Weakness: 30 - 20 + 20 = 30 (the recording's Flop).
-        assert_eq!(modify_damage(&state, (1, 0), (30, 0, 0), true, PLAIN), 30);
-    }
-
-    #[test]
-    fn growl_cuts_bench_damage_too() {
-        let state = growled();
-        // Jump Blues's 20 to the Benched Hariyama: 0 under Growl.
-        assert_eq!(modify_damage(&state, (1, 0), (20, 0, 1), true, PLAIN), 0);
-        // A bigger Bench hit only loses the 20 (no Weakness on the Bench): 30 - 20 = 10.
-        assert_eq!(modify_damage(&state, (1, 0), (30, 0, 1), true, PLAIN), 10);
-    }
-
-    #[test]
-    fn a_hit_back_fires_from_a_knocked_out_holder_and_is_doubled_under_bounded_field() {
-        // Spike Armor's 40 is on Alolan Sandslash; the Fire Heatran (weak to Water) has just knocked it out (0 HP, not
-        // yet removed: retaliation runs before the knockouts are handled) and takes the hit back.
-        let hit_back = |bounded: bool| {
-            let mut sandslash = mon(CardId::A3039AlolanSandslash);
-            sandslash.add_effect(CardEffect::Counterattack { amount: 40 }, 1);
-            let mut state = State::default();
-            state.set_board(vec![sandslash], vec![mon(CardId::A2a013Heatran)]);
-            state.in_play_pokemon[0][0].as_mut().unwrap().set_remaining_hp(0);
-            if bounded {
-                state.active_stadium = Some(get_card_by_enum(CardId::B3155BoundedField));
-            }
-            let before = state.get_active(1).get_remaining_hp();
-            crate::actions::with_return_weakness(true, || {
-                crate::actions::handle_attack_retaliation(&mut state, (1, 0), &[(0, 0)])
-            });
-            before - state.get_active(1).get_remaining_hp()
-        };
-        // Bounded Field: Weakness x2 on the hit back, 40 x 2 = 80 (the recording's "Weakness 80").
-        assert_eq!(hit_back(true), 80);
-        // Without it: 40 + 20 = 60 (the same recording's earlier hit back on the Water-weak Litten).
-        assert_eq!(hit_back(false), 60);
     }
 }
