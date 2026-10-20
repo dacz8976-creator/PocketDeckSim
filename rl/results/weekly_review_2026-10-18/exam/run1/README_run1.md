@@ -1,7 +1,7 @@
 # Exam run 1: the first scored run (prepared Oct 19-20, NOT run)
 
-This is PLAN step 3 for the unseen-positions exam (v1.6, `5518fd60`). It is prepared and dry-run only. The live run starts on the coordinator's go, after
-Astra passes the frozen tag `judge-prompt-frozen-4`. The formal comparison is the judge against km3. kx3 can't run on the frozen tree, and the
+This is PLAN step 3 for the unseen-positions exam (v1.6, `5518fd60`). The live run starts on the coordinator's go. Astra passed the frozen tag
+`judge-prompt-frozen-4` (commit 72eea776, Sonnet's final review round on top of the dry runs' eb19c7af; the prompt is unchanged) and this kit at a2db950c. The formal comparison is the judge against km3. kx3 can't run on the frozen tree, and the
 non-formal kx3 side run is skipped (3-hour rule). Both are recorded in `PREREG_DEVIATION.md`.
 
 ## What runs
@@ -41,6 +41,8 @@ Run 1 passes only if the formal PRIMARY PREFIX verdict is **"judge higher"**: `a
 b = km3), on 49 primary points from 26 games.
 - That verdict needs the 95% game-clustered interval of judge minus km3 to lie above zero AND the sign-flip test over games to support it
   (p < 0.05), with at least 10 games. This is analysis.py's existing `verdict()` rule.
+- With 26 games the sign-flip test is analysis.py's fixed-seed Monte Carlo version (100,000 draws, seed 20261019). The exact enumeration is used only
+  up to 16 games.
 - "Inconclusive" or "km3 higher" is not a pass. It sends the coming week to maintenance and upstream work with no kx3 port. That is a resource choice,
   not evidence that the AI approach can't help.
 - The 19-point full-scope block, the repeat, the diagnostic block and the categories are reported separately and don't enter the pass condition.
@@ -59,7 +61,8 @@ The details are in `PREREG_DEVIATION.md`.
 - **Why it holds.** With 4 calls in flight, spent plus reserved never passes the total.
 - **Rows are unchanged.** Each call is `judge.judge_one` with the FROZEN settings. `test_budget.py` checks that the rows equal judge.py's own loop's,
   field for field.
-- **Tests** (`test_budget.py`, 21 checks, all passing on eb19c7af; mocks and old fixtures only):
+- **Tests** (`test_budget.py`, 21 checks; mocks and old fixtures only). They all passed on eb19c7af, and the live run repeats them on the frozen tag before
+  any call:
   - 32 threads with random costs never pass the bound;
   - calls that each cost their full worst case stop exactly at the bound;
   - a failed call is charged its worst case and stops sending;
@@ -92,8 +95,12 @@ The first attempt stopped because `compare` wasn't given `--positions/--decks`; 
 - **What was produced.** Run 2 wrote the km3 and mock agreement figures to `report_primary.json`, `report_sensitivity.json` and `by_category.json`.
 - **Who saw what.** Only the laptop session saw figures, and only the console's category breakdown (km3's and the mock's prefix agreement by deck kind,
   answer kind and deck), with counts. The overall contrasts were never opened. No figure went to anyone else.
-- **What changed afterwards.** Nothing in the prompt, keys, eligibility, comparator or decision rule changed. Since then there have been only records,
-  README text, the unrun `kx3_side.py`, the written-out pass condition (analysis.py's existing rule) and the spend bound (no row field changes).
+- **What changed afterwards.**
+  - Unchanged: the prompt, the keys, the eligibility, prefix agreement and the decision rule.
+  - The frozen tag (72eea776) changed the separate full-plan comparison and some label reading on top of the dry runs' eb19c7af, as listed in
+    `PREREG_DEVIATION.md`. Sonnet made that change without any dry-run figure.
+  - In the kit: only records, README text, the unrun `kx3_side.py`, the written-out pass condition (analysis.py's existing rule) and the spend bound
+    (no row field changes).
 - **Baseline exposure, not judge exposure.** km3 is a frozen, untuned baseline. Nothing is known about the judge on the exam.
 - **The live run regenerates km3** on the registered seeds 25,100,000,001-003. No dry-run row is reused.
 

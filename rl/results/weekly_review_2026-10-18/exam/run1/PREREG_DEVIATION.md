@@ -29,7 +29,9 @@ Run 1 **passes** only if the formal PRIMARY PREFIX verdict is **"judge higher"**
 (a = judge, b = km3), on the 49 primary points from 26 games, from a comparison with `formal: true` and exit 0. analysis.py's existing `verdict()` gives
 "judge higher" only when ALL of these hold:
 - the 95% game-clustered percentile bootstrap interval of the judge-minus-km3 prefix agreement lies above zero (`ci_low > 0`);
-- the exact sign-flip test over games supports that direction (`sign_flip_p < 0.05`);
+- the sign-flip test over games supports that direction (`sign_flip_p < 0.05`). With 26 games this is analysis.py's fixed-seed Monte Carlo
+  sign-flip test (100,000 draws, seed 20261019), not the exact one: analysis.py enumerates every sign pattern only up to 16 games. (Wording
+  corrected Oct 20 before the live run, at Astra's note; the method is unchanged.)
 - there are at least 10 games with data (MIN_GAMES).
 
 Anything else is **not a pass**: "inconclusive" (the interval includes 0, or the sign-flip test doesn't support the direction) or "km3 higher".
@@ -100,20 +102,29 @@ Anything else is **not a pass**: "inconclusive" (the interval includes 0, or the
   - the category breakdown: km3's and the mock judge's prefix agreement on the primary points by deck kind, answer kind and deck, with counts;
   - row counts, exit codes, the cost estimate and the mock spend.
 - The overall primary and full-scope contrasts in the report files (estimate, interval, sign-flip p, verdict) were never opened. On Oct 20 only their
-  field names were read, to write the pass condition.
+  field names were read, to write the pass condition. (Those reports' full-scope blocks used the pre-frozen-4 full-plan comparison; see below.)
 - No figure went to the coordinator, Astra, Sonnet or Dustin. The mailbox and the session's messages were checked.
 - The mock judge's figures are meaningless.
 
-**What changed afterwards: nothing in the judge or the scoring.**
+**What changed afterwards: nothing in the judge's prompt or the pass rule.** (Corrected Oct 20 before the live run: an earlier version of this
+record, written before the tag, said the harness hadn't moved since the dry run.)
 - **Unchanged:**
-  - the judge commit, eb19c7af (the frozen-4 candidate; the harness branch hasn't moved since);
-  - the prompt and its settings;
+  - the prompt and its settings (the frozen tag's commit message and FROZEN.json: prompt unchanged);
+  - judge.py's call, cost and run-loop code (`judge_one`, `call_claude`, `cost_of`, FROZEN);
   - the exam and its keys: 5518fd60, `references.json` 12e0e997…, `references_meta.json` 6adca41e…;
   - the eligibility (`prep_inputs.py` is unchanged);
-  - the comparator (formal.py);
-  - the decision rule (analysis.py).
-- **Changed after the figures:**
-  - this deviation record: 2d2a201e, b75b4ee5 and this version;
+  - prefix agreement (plan identity) and the decision rule (analysis.py's `verdict()`, its constants and the bootstrap).
+- **Changed in the judge tag after the dry run.** `judge-prompt-frozen-4` is commit 72eea776 (00:51Z Oct 20), Sonnet's final review round on top of
+  eb19c7af, the commit the dry runs used. No dry-run figure had been shared with Sonnet, Astra or the coordinator. It changed:
+  - **the full-plan comparison** (formal.py `full_plan_agreement`, judge.py `full_match`): a complete turn now agrees when it reaches the same listed plan
+    as an accepted move list, and whatever follows a chance event matches label by label. Before, the whole sequence was compared label by label, in
+    order. This is the separate 19-point block, not the pass condition;
+  - **label reading:** Energy lists are sorted when labels are compared, a malformed label escape is refused, and an ambiguity message is reworded;
+  - **compare's bookkeeping:** the "did not finish" stub is written earlier, a warning was added for full-scope points with an incomplete recorded plan,
+    and problem counts are grouped by kind;
+  - **docstrings and tests,** and FROZEN.json's source hashes.
+- **Changed in the kit after the figures:**
+  - this deviation record: 2d2a201e, b75b4ee5, a2db950c and this version;
   - `kx3_side.py` (4324945a, never run, now skipped);
   - README text;
   - the written-out pass condition, which restates analysis.py's existing rule;
