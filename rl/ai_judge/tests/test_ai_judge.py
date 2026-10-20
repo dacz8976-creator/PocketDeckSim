@@ -460,6 +460,26 @@ class RetreatPaymentLabels(unittest.TestCase):
         self.assertIn('ChooseRetreatEnergy', out['none'][1])  # a retreat whose payment is not named cannot be followed: it says which payments were legal
 
 
+    def test_payments_of_mixed_energies_are_named_although_the_engines_order_is_not_alphabetical(self):
+        # the engine lists Energy in its own enum order (Grass, Fire, Water, Lightning ...): a payment of Grass + Fire prints ["Grass","Fire"]; a requested label is
+        # sorted by Python (concrete_label) and the engine's label by the lister (label_matches), so they meet; nothing on the 92 old positions exercises this
+        rec = judge.list_plans(['MINI-RETREAT3'], RET_POS, DECKS)['MINI-RETREAT3']
+        pays = [(p, l, json.loads(l.split('#', 1)[1])['energies']) for p in rec['plans'] for l in p['labels'] if l.startswith('ChooseRetreatEnergy#')]
+        self.assertTrue(any(e != sorted(e) for _, _, e in pays), 'the fixture must contain a payment whose engine order is not alphabetical')
+        check = judge.label_roundtrip({'MINI-RETREAT3': rec}, RET_POS, DECKS)['MINI-RETREAT3']
+        self.assertEqual((check['ambiguous'], check['unfollowable'], check['unique']), (0, 0, rec['n_plans']))
+        p, label, energies = next(x for x in pays if x[2] != sorted(x[2]))
+        sorted_request = [judge.concrete_label(l) for l in p['labels']]
+        self.assertIn('ChooseRetreatEnergy#' + judge._compact({'energies': sorted(energies), 'to_in_play_idx': json.loads(label.split('#', 1)[1])['to_in_play_idx']}), sorted_request)
+        self.assertEqual(judge.match_plans([('MINI-RETREAT3', 'x', sorted_request)], {'MINI-RETREAT3': rec}, RET_POS, DECKS)['x'], (p['n'], None))
+
+    def test_a_lone_surrogate_in_a_requested_label_cannot_take_a_batch_down(self):
+        items = [('MINI-RETREAT', 'good', ['Retreat:1']), ('MINI-RETREAT', 'bad', ['Foo#{"energies":["\\ud800"]}'])]
+        out = judge.match_plans(items, {'MINI-RETREAT': self.rec}, RET_POS, DECKS)
+        self.assertIn('unreadable move list', out['bad'][1])
+        self.assertIn('good', out)
+
+
 @unittest.skipUnless(os.path.exists(judge.PLANS_BIN) and os.path.exists(OLD_POS), 'judge_plans or the old positions are not available')
 class ReplayOnOldPositions(unittest.TestCase):
     def test_the_order_of_energies_in_a_requested_label_does_not_matter(self):

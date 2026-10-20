@@ -341,15 +341,17 @@ def row_full_labels(row, bot, plan_end):
     return pf if (isinstance(pf, list) and row.get('pg_pos_cut') in COMPLETE_CUTS) else None
 
 
-def full_plan_agreement(row, bot, plan_end, refs, full_match):
-    """-> (True | False | None, error text or None). Full-plan agreement: the row's complete move sequence equals an accepted complete sequence, label by label
-    (`full_match(row_labels, ref_labels)` -> bool decides: canonical label form, the closing End the turn ignored, a slotless reference Place / Ability fits any
-    slot). It is ORDER-SENSITIVE: the same plan reached by a different order of moves is not full-plan agreement. None = the row has no complete sequence."""
+def full_plan_agreement(row, bot, plan_end, cands, rec, full_match):
+    """-> (True | False | None, error text or None). Full-plan agreement of a COMPLETE turn: the row reaches the same listed plan as an accepted move list (the plan
+    identity, order of moves up to the plan's own end not mattering: that is prefix agreement) AND whatever follows the plan's own end, after a chance event, equals
+    the accepted list's remainder label by label (`full_match(row_labels, ref_labels, rec)` -> bool decides that: canonical label form, closing End the turn ignored,
+    a slotless reference Place / Ability fits any slot, order of the remainder matters). `cands` = the accepted entries whose plan IS the row's plan. A row with no
+    complete sequence is None (not comparable); a row whose plan no accepted entry shares is False."""
     labels = row_full_labels(row, bot, plan_end)
     if labels is None:
         return None, None
     try:
-        return any(full_match(labels, ref['labels']) for ref in refs), None
+        return any(full_match(labels, ref['labels'], rec) for ref in cands), None
     except (ValueError, TypeError, AttributeError) as e:
         return None, f'a move label cannot be read: {e}'
 
@@ -425,7 +427,8 @@ def compare(rows, ids, bots, seeds, judge_repeats, references, recs, match, elig
     """The whole path. Returns the report; raises BatchFailed (exit code 2) for on_problem='fail' when anything is unresolved.
     expect_judge(point, row) -> {'prompt_sha256', 'shown': {number printed in the prompt: plan number}, 'parse': reply text -> number or None,
     'settings': {model, max_tokens, temperature}} (or {'error': text}) is required whenever the judge is a bot: it is how a judge row is tied to the prompt and
-    reply it was answered from. `full_match(row_labels, ref_labels)` -> bool is required for the full-plan agreement of the full-scope points.
+    reply it was answered from. `full_match(row_labels, ref_labels, rec)` -> bool (the remainder after a chance event, label by label) is required for the full-plan
+    agreement of the full-scope points.
     `position_games` = {point: game} from the positions file, cross-checked against the eligibility file's games."""
     if 'judge' in bots and expect_judge is None:
         raise ValueError('compare: the judge rows can only be checked with expect_judge (the prompt re-rendered under the frozen settings)')
@@ -465,7 +468,8 @@ def compare(rows, ids, bots, seeds, judge_repeats, references, recs, match, elig
             n = row['plan_number']
             if not (_is_int(n) and pid in recs and 1 <= n <= len(recs[pid]['plans'])):
                 continue
-            val, err = full_plan_agreement(row, bot, recs[pid]['plans'][n - 1]['end'], references[pid], full_match)
+            cands = [ref for ref in references[pid] if accepted[pid].get(ref['id']) == n]
+            val, err = full_plan_agreement(row, bot, recs[pid]['plans'][n - 1]['end'], cands, recs[pid], full_match)
             full_agree[key] = val
             if err:
                 problems.append(_prob('full_plan_unreadable', err, pid, bot, run))
@@ -513,6 +517,11 @@ def exit_code(report):
 
 def print_problems(problems, file=None):
     file = file or sys.stderr  # looked up when called, so a redirected stderr is honoured
+    if len(problems) > 5:
+        counts = {}
+        for p in problems:
+            counts[p['kind']] = counts.get(p['kind'], 0) + 1
+        print('  by kind: ' + ', '.join(f'{k} {v}' for k, v in sorted(counts.items(), key=lambda kv: (-kv[1], kv[0]))), file=file)
     for p in problems[:50]:
         print(f"  {p['kind']}: {p.get('position')} {p.get('bot')} {p.get('run')}: {p.get('detail')}", file=file)
     if len(problems) > 50:

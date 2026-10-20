@@ -136,6 +136,24 @@ class Estimates(unittest.TestCase):
         f10 = analyse(games_of(12, 2, lambda g, k: [1], lambda g, k: [0], full=full(10)))['full_scope']
         self.assertEqual(f10['contrasts'][0]['verdict'], 'judge higher')
 
+    def test_a_rate_with_data_in_one_game_of_many_gets_no_interval(self):
+        # the judge has a comparable full-plan value in ONE of twelve games: its rate has no interval (the games without data are not clusters of that rate)
+        def full(g, k):
+            return {'judge': [1 if g == 0 else None], 'km3': [0]} if k == 0 else None
+        f = analyse(games_of(12, 2, lambda g, k: [1], lambda g, k: [0], full=full))['full_scope']
+        r = f['rates']['judge']
+        self.assertEqual((r['n_decisions'], r['n_games'], r['ci_low'], r['ci_high']), (1, 1, None, None))
+        self.assertEqual(f['rates']['km3']['n_games'], 12)
+        self.assertIsNotNone(f['rates']['km3']['ci_low'])
+
+    def test_the_exact_sign_flip_limit_and_the_documented_constants(self):
+        self.assertEqual(analysis.SIGN_FLIP_EXACT_MAX_GAMES, 16)
+        self.assertEqual(analysis.sign_flip_p([1.0] * 16)[1], 'exact')
+        self.assertEqual(analysis.sign_flip_p([1.0] * 16)[0], 2 / 65536)
+        self.assertEqual(analysis.sign_flip_p([1.0] * 17)[1], 'monte-carlo')
+        self.assertEqual((analysis.MIN_GAMES, analysis.RESAMPLES, analysis.MIN_FORMAL_RESAMPLES, analysis.CONFIDENCE, analysis.SEED), (10, 20000, 5000, 0.95, 20261019))
+        self.assertEqual(analysis.PRIMARY_JUDGE_RUN, 0)
+
     def test_an_interval_from_one_game_is_not_reported(self):
         a = analyse(games_of(1, 3, lambda g, k: [1], lambda g, k: [0]), min_games=1)
         r = a['prefix']['rates']['judge']

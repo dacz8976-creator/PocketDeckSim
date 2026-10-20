@@ -49,5 +49,67 @@
   "force": [
    "Retreat:1"
   ]
+ },
+ {
+  "id": "MINI-RETREAT3",
+  "deck": "RT",
+  "game": "mini",
+  "his_turn": 3,
+  "turn_count": 5,
+  "points": [
+   0,
+   0
+  ],
+  "me": {
+   "hand": [],
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Venusaur A1 003",
+     "hp": 120,
+     "energy": [
+      "Fire",
+      "Fire",
+      "Water",
+      "Grass",
+      "Lightning"
+     ]
+    },
+    {
+     "card": "Ivysaur A1 002",
+     "hp": 60
+    },
+    {
+     "card": "Bulbasaur A1 001",
+     "hp": 40
+    },
+    {
+     "card": "Starmie A1 075",
+     "hp": 60
+    }
+   ],
+   "energy_now": "Fire",
+   "energy_next": "Fire",
+   "knockouts": 0
+  },
+  "opp": {
+   "hand_count": 4,
+   "discard": [],
+   "discard_energy": [],
+   "board": [
+    {
+     "card": "Pichu A4 066",
+     "hp": 30
+    }
+   ],
+   "energy_next": "Lightning"
+  },
+  "stadium": null,
+  "turn_effects": [],
+  "his_plan": [],
+  "force": [
+   "Retreat:1"
+  ]
  }
 ]

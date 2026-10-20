@@ -65,7 +65,9 @@ X dollars, `judge.py spend FILE...` totals the recorded cost.
   stored reply do not match, that was not made under the frozen model / token cap / temperature, or was played by another baseline executable.
 * **Results.** With any problem at a primary point there are no numbers at all: `--on-problem fail` (default) exits 2, `--on-problem inconclusive` writes a report with
   every expected primary row and its state and exits 3. A clean batch exits 0 and carries: **prefix agreement** for all primary points (rates and judge-vs-bot
-  contrasts, game-clustered bootstrap interval, sign-flip test, verdict `<bot> higher` or `inconclusive`); **full-plan agreement** as a separate block for the
+  contrasts, game-clustered bootstrap interval, sign-flip test, verdict `<bot> higher` or `inconclusive`); **full-plan agreement** (complete turns only: the same
+  listed plan as an accepted move list, plus what follows a chance event equal label by label; a judge plan that stops at a chance event, and a bot turn pg_pos cut
+  at a draw card, are "not comparable" and counted apart) as a separate block for the
   full-scope subset only; the judge's repeats as a separate sensitivity estimate (one predefined call per decision is the primary result); and a descriptive
   `diagnostic_excluded` block for points of the batch outside the primary selection. `row_account` counts rows and is not an agreement figure. `report["run"]` records the
   inputs' hashes, the executables and the experiment switches (`formal: false` when any `--allow-*`, a lower `--min-games` or fewer than 5,000 `--resamples` was used).

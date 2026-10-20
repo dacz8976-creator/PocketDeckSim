@@ -140,7 +140,9 @@ addressed to `sonnet`.
    the primary point ids, the full-scope subset and every point's game (`{"primary_ids", "full_scope_ids", "games", "excluded_reasons"}`). Only references of points in
    the batch are read or validated; every selected point must have references; no unselected point reaches the primary aggregation, the bootstrap or the full-scope
    block (`analyse` refuses rows outside the selection). **Prefix agreement** (agreement up to the plan's own end: first chance event, attack, end of turn) is
-   reported for all primary points; **full-plan agreement** (the complete move sequence equals an accepted complete sequence, compared in canonical label form) only for
+   reported for all primary points; **full-plan agreement** (a complete turn: the same listed plan as an accepted move list, order of moves up to the plan's own
+   end not mattering, and what follows a chance event equal label by label in canonical form; the part after a chance event cannot be replayed, so it is compared
+   as written and is order-sensitive) only for
    the full-scope subset, as a separate block; a judge plan that stops at a chance event or for the opponent's choice has no complete sequence and is counted as
    "not comparable" (listed, never scored, the pairs dropped are named). Points of the batch outside the selection appear **only in a separate descriptive
    diagnostic block** (no interval, no verdict); a problem at such a point never stops the primary comparison. Tested with synthetic references in which some ids are
@@ -169,7 +171,9 @@ identical step text but were different states: the Energy left on the retreated 
 the formal comparison, and the judge was shown plans that looked identical. Fixed, as asked by the coordinator, in `plans/src/main.rs` and in the baseline printer
 (`pgd_patch.py`): the short label is gone, a paid retreat now prints `ChooseRetreatEnergy#{"energies":["Fire"],"to_in_play_idx":1}` (the existing `Name#JSON`
 fallback) and its step reads "Pay the retreat cost of X (switching with Y) by discarding Fire Energy". Also in this rebuild (same executables, so the same freeze):
-1. **Energy lists are a multiset**: `energies` is sorted in every canonical label (lister and Python), so a reference written in another Energy order still matches.
+1. **Energy lists are a multiset**: `energies` is sorted when labels are COMPARED (lister `label_matches` / `canon_label`, Python `concrete_label`), so a reference written in
+   another Energy order still matches. The printed labels (lister output, baseline `plan_full`) carry the engine's own order (Grass, Fire, Water, Lightning ...):
+   pass raw printed labels through `judge.concrete_label` before comparing them as strings.
 2. **Replay prunes dead alternatives**: a fan-out alternative that cannot follow the rest of a move list (for example a slotless `Place:X` put on a slot where the
    later `Tool:...@2` is not legal) is dropped; the list is unfollowable only when NO alternative can follow it. Before, the first dead end abandoned the whole list
    (137 plans at one old position, and the recorded plan of KW-261013_020824000-t03).
@@ -185,7 +189,8 @@ fallback) and its step reads "Pay the retreat cost of X (switching with Y) by di
 ## Still not shown
 - No exam position, answer or bot output was used. The formal path and the analysis are tested on synthetic rows and fixtures only.
 - The rebuilt baseline printer is validated on four small fixtures (Tool target, random-evolution target, retreat payment, Stadium); the full-plan comparison is
-  label-based (canonical label equality, order-sensitive), so it is only as good as the labels.
+  label-based after a chance event (canonical label equality, order-sensitive there), so it is only as good as the labels; the tail of a step bot's turn after a chance
+  event is not replay-checked (it is the executable's output, identified by the baseline hash in the row).
 - The frozen baseline executable plays `k<number>` / `km<number>` bots (km3); the playout pilot kx3 is a different program and has no frozen identity here: rows
   from it fail `baseline_binary`. `--bots` defaults to `km3,judge`.
 - The percentile interval undercovers slightly at 10-17 games (see item 4); power is low for small true gaps. The card texts in the prompt come from

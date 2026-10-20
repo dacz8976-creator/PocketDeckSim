@@ -8,7 +8,8 @@ The contract (FROZEN.md, "Analysis contract"):
   * the unit of analysis is the DECISION (point); the unit of resampling is the GAME: points of one game are one cluster, so a game-level bootstrap (whole games
     drawn with replacement) is the only interval reported; a point-level interval would count correlated decisions as independent;
   * PREFIX agreement (the move list agrees with an accepted one up to the plan's own end: the first chance event, the attack or the end of the turn) is reported
-    for ALL primary points. FULL-PLAN agreement (the complete move sequence equals an accepted complete sequence) is reported only for the full-scope subset, as a
+    for ALL primary points. FULL-PLAN agreement (a COMPLETE turn: the same listed plan as an accepted move list, order of moves up to the plan's own end not
+    mattering, and what follows a chance event equal label by label) is reported only for the full-scope subset, as a
     separate block; a judge plan that stops at a chance event has no complete sequence and is "not comparable" there (counted, never scored, never dropped silently);
   * points outside the primary selection appear only in a separate DIAGNOSTIC block (descriptive counts, no interval, no verdict);
   * ONE predefined judge call per decision is the primary result (repeat 0). Extra judge repeats are a separate SENSITIVITY estimate (the per-decision mean over
@@ -345,7 +346,8 @@ def analyse(rows, eligibility, bots, judge_repeats, contrasts=None, resamples=RE
                          'resamples': resamples, 'seed': seed, 'estimator': 'sum of per-decision values / number of decisions (every decision weighs the same)',
                          'primary': f'judge: the one call per decision (repeat {PRIMARY_JUDGE_RUN}); step bots: mean over all predefined seeds',
                          'agreement': {'prefix': 'all primary points: the move list agrees with an accepted one up to the plan\'s own end (first chance event, attack or end of turn)',
-                                       'full_plan': 'full-scope points only: the complete move sequence equals an accepted complete sequence; a judge plan that stops at a chance event is not comparable'},
+                                       'full_plan': 'full-scope points only, complete turns only: the same listed plan as an accepted move list AND what follows a chance event equal label by label; '
+                                                    'a judge plan that stops at a chance event, and a step-bot turn pg_pos cut at a draw card, are not comparable'},
                          'sign_flip': f'exact test over games up to {SIGN_FLIP_EXACT_MAX_GAMES} games, seeded Monte Carlo ({SIGN_FLIP_DRAWS} draws) beyond; a direction needs p < {1.0 - CONFIDENCE:.2f} as well',
                          'min_games': min_games, 'contrasts': [f'{a}:{b}' for a, b in contrasts],
                          'multiplicity': 'no adjustment for several contrasts (with the two default contrasts the chance of at least one false direction is about 5%)'}}

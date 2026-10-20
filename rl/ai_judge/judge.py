@@ -596,7 +596,8 @@ def number_for(rec, keys):
     by_key = {p['key']: p['n'] for p in rec['plans']}
     hit = sorted({by_key[k] for k in keys if k in by_key})
     if len(hit) > 1:
-        raise AmbiguousPlan(f'the move list fits {len(hit)} different listed plans {hit[:6]}: name the target (Name#{{json}} label)')
+        raise AmbiguousPlan(f'the move list fits {len(hit)} different listed plans {hit[:6]}: name the target (Name#{{json}} label); for a Place / Ability label give its slot '
+                            f'(Place:Axew@3), or list each plan it fits as a separate accepted entry of the point\'s reference list')
     return hit[0] if hit else None
 
 
@@ -622,7 +623,9 @@ def concrete_label(label):
     name, hash_, js = label.partition('#')
     if hash_ and re.fullmatch(r'[A-Za-z]\w*', name):
         try:
-            return f'{name}#{_compact(_sorted_energies(json.loads(js)))}'
+            canon = f'{name}#{_compact(_sorted_energies(json.loads(js)))}'
+            canon.encode('utf-8')  # a lone surrogate escape ("\ud800") parses in Python but not in the lister: refuse it here
+            return canon
         except (ValueError, RecursionError):
             raise ValueError(f'concrete label {label!r}: the part after # is not valid JSON') from None
     m = _LEGACY.match(label)
@@ -685,14 +688,24 @@ def normalize_full(labels):
     return out
 
 
-def full_match(row_labels, ref_labels):
-    """Do two COMPLETE move lists agree label by label, in the same order? `ref_labels` is the accepted (recorded) list: a reference Place / Ability label without
-    its slot number fits any slot, exactly as in the engine replay (label_matches); a label WITH a slot must match it. Order matters (the same plan reached by a
-    different order of moves is not full-plan agreement). Raises ValueError for a label that cannot be read."""
-    a, b = normalize_full(row_labels), normalize_full(ref_labels)
-    if len(a) != len(b):
-        return False
-    return all(x == y or (y.startswith(('Place:', 'Ability')) and '@' not in y and x.split('@')[0] == y) for x, y in zip(a, b))
+def _label_eq(x, y):
+    """x (played) against y (accepted/recorded): equal, or y is a Place / Ability label without its slot number (it fits any slot, as in the engine replay)."""
+    return x == y or (y.startswith(('Place:', 'Ability')) and '@' not in y and x.split('@')[0] == y)
+
+
+def full_match(row_labels, ref_labels, rec):
+    """The REMAINDER of two COMPLETE move lists after the plan's own end (the first chance event; for a plan that goes to its Attack or End the turn there is none).
+    The part up to that end is compared by plan identity elsewhere (the row and the accepted list reach the same listed plan: order of moves does not matter there);
+    what follows a chance event cannot be replayed, so it is compared label by label, in order, in canonical form (closing End the turn dropped, the plan ends at its
+    Attack, a reference Place / Ability label without its slot fits any slot). Raises ValueError for a label that cannot be read."""
+    def remainder(labels):
+        labels = [concrete_label(l) for l in labels]
+        head = canonical_plan(labels, rec)
+        if head and head[-1].startswith('Attack:'):
+            return []  # the plan ends at its attack: whatever the list carries after it is bookkeeping, not a decision of the turn
+        return normalize_full(labels[len(head):])
+    a, b = remainder(row_labels), remainder(ref_labels)
+    return len(a) == len(b) and all(_label_eq(x, y) for x, y in zip(a, b))
 
 
 def label_roundtrip(recs, positions_path=DEFAULT_POSITIONS, decks_dir=DEFAULT_DECKS):
@@ -841,21 +854,23 @@ def run_compare(a):
     """judge.py compare: the formal paired comparison. Exit 0 complete, 2 failed, 3 inconclusive (data problems); 1 = did not run (unreadable input, wrong
     executable, internal error). A report written to --out is replaced at the start by a 'did_not_finish' stub, so a run that dies never leaves an older 'complete'
     result at that path."""
+    inputs = [a.positions, a.references, a.eligibility, *a.results]
+    if a.out:  # the first things that can stop the run: --out must not be an input and must be writable; THEN the stub replaces whatever result was there
+        if os.path.exists(a.out) and any(os.path.exists(p) and os.path.samefile(p, a.out) for p in inputs):
+            sys.exit(f'--out {a.out} is one of the input files: the report would overwrite it')
+        if not os.path.isdir(os.path.dirname(os.path.abspath(a.out))):
+            sys.exit(f'--out {a.out}: its directory does not exist')
+        _write_report(a.out, {'schema': formal.SCHEMA, 'status': 'did_not_finish', 'analysis': None,
+                              'problems': [{'kind': 'did_not_finish', 'position': None, 'bot': None, 'run': None, 'detail': 'the comparison started but never wrote its result: this file is not a result'}]})
+    if a.prompt != 'v1':
+        sys.exit('compare re-renders the frozen prompt (v1); it does not take --prompt')
+    for p in inputs:
+        if not os.path.exists(p):
+            sys.exit(f'input file not found: {p}')
     positions = load_positions(a.positions)
     ids = resolve_ids(a, positions)
     if not ids:
         sys.exit('no positions: give --ids, --id or --set')
-    if a.prompt != 'v1':
-        sys.exit('compare re-renders the frozen prompt (v1); it does not take --prompt')
-    inputs = [a.positions, a.references, a.eligibility, *a.results]
-    for p in inputs:
-        if not os.path.exists(p):
-            sys.exit(f'input file not found: {p}')
-    if a.out and os.path.exists(a.out) and any(os.path.samefile(p, a.out) for p in inputs):
-        sys.exit(f'--out {a.out} is one of the input files: the report would overwrite it')
-    if a.out:
-        _write_report(a.out, {'schema': formal.SCHEMA, 'status': 'did_not_finish', 'analysis': None,
-                              'problems': [{'kind': 'did_not_finish', 'position': None, 'bot': None, 'run': None, 'detail': 'the comparison started but never wrote its result: this file is not a result'}]})
     try:
         return _run_compare(a, positions, ids)
     except (SystemExit, KeyboardInterrupt):
@@ -935,6 +950,17 @@ def _run_compare(a, positions, ids):
     ambiguous = {pid: v for pid, v in label_roundtrip(recs, a.positions, a.decks).items() if v['ambiguous'] or v['unfollowable']}
     run_info['plan_list_label_check'] = {'what': 'positions where some plans\' own labels do not name them (fit several plans or cannot be followed): a bot or recorded move '
                                                  'list using such a label is AMBIGUOUS, and the judge is shown plans that look identical', 'positions': ambiguous}
+    # a full-scope point whose recorded (human) plan the positions file says is incomplete is scored as disagreement by every complete bot plan: say so
+    warnings = []
+    full = eligibility.get('full_scope_ids') if isinstance(eligibility, dict) else None
+    for pid in (full if isinstance(full, list) else []):
+        pos = positions.get(pid) if isinstance(pid, str) else None
+        if pos and (pos.get('his_plan_ended') is False or pos.get('plan_truncated_at') is not None):
+            warnings.append(f'{pid}: in the full-scope subset, but the positions file says its recorded plan is incomplete (his_plan_ended={pos.get("his_plan_ended")!r}, '
+                            f'plan_truncated_at={pos.get("plan_truncated_at")!r}): a complete plan can only disagree with it')
+    run_info['warnings'] = warnings
+    for w in warnings:
+        print('WARNING: ' + w, file=sys.stderr)
     if experiment:
         print('EXPERIMENT RUN, not the formal result: ' + '; '.join(experiment), file=sys.stderr)
     position_games = {i: positions[i].get('game') for i in ids}

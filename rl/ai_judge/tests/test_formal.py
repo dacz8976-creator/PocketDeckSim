@@ -65,7 +65,8 @@ def expect_identity(pid, row):
     return {'prompt_sha256': f'prompt-{pid}', 'shown': {1: 1, 2: 2}, 'parse': parse, 'settings': SETTINGS}
 
 
-def full_match(row_labels, ref_labels):
+def full_match(row_labels, ref_labels, rec=None):
+    """A stand-in for judge.full_match: here the whole lists are compared (the pure tests only need the wiring: which entries are candidates, what a row stands for)."""
     return [str(l) for l in row_labels] == [str(l) for l in ref_labels]
 
 
@@ -322,6 +323,17 @@ class FormalPath(unittest.TestCase):
             self.assertIn(k, exc.problems[0]['detail'])
         rows = complete_rows()[:-2] + [judge_row('P1', 0, 1, model='claude-haiku-5-5'), judge_row('P2', 0, 1)]
         self.assertEqual(run(rows, require_frozen=False)['status'], 'complete')
+        for k in ('model', 'max_tokens', 'temperature'):  # a setting the row does not record at all is not the frozen one either
+            rows = complete_rows()[:-2] + [judge_row('P1', 0, 1), judge_row('P2', 0, 1)]
+            del rows[-2][k]
+            exc = self.failed(rows)
+            self.assertEqual(kinds(exc), ['not_frozen'], k)
+            self.assertIn('<missing>', exc.problems[0]['detail'])
+        # temperature None is the frozen value (not set); 0 is a different setting, and so is False
+        for t in (0, 0.0, False):
+            rows = complete_rows()[:-2] + [judge_row('P1', 0, 1, temperature=t), judge_row('P2', 0, 1)]
+            if t is False or t == 0:
+                self.assertEqual(kinds(self.failed(rows)), ['not_frozen'], t)
 
     def test_the_plan_list_must_be_something_a_number_can_point_into(self):
         bad_numbering = {**RECS, 'P1': {**RECS['P1'], 'plans': [dict(RECS['P1']['plans'][0], n=2), dict(RECS['P1']['plans'][1], n=1)]}}
@@ -487,6 +499,32 @@ class FormalPath(unittest.TestCase):
         self.assertEqual(rep['analysis']['prefix']['population']['n_decisions'], 2)
         self.assertEqual(run(complete_rows(), elig={**ELIG, 'full_scope_ids': []})['analysis']['full_scope'], None)
 
+    def test_full_plan_agreement_is_the_plan_identity_plus_the_remainder_after_a_chance_event(self):
+        # up to the plan's own end the PLAN decides (same listed plan as an accepted entry), whatever the order of the moves: a bot that reaches the recorded state by
+        # another order of moves still agrees (this was order-sensitive before: even a perfect pick could score as a disagreement)
+        rows = complete_rows()
+        rows[0]['plan_full'] = ['zz', 'aa']  # km3 seed 1 at P1 (plan 1, which the accepted entries name): different moves, same listed plan
+        full = {(r['bot'], r['run']): r['full_agrees'] for r in run(rows, fmatch=judge.full_match)['rows'] if r['position'] == 'P1'}
+        self.assertIs(full[('km3', 1)], True)
+        self.assertIs(full[('km3', 2)], False)  # seed 2 reaches plan 2, which no accepted entry shares
+        # after a chance event the remainder is compared in order
+        chance = {**RECS, 'P1': {**RECS['P1'], 'plans': [dict(RECS['P1']['plans'][0], labels=['Play:Poké Ball'], end='chance')] + RECS['P1']['plans'][1:]}}
+        answers = {**ANSWERS, ('P1', 'recorded'): (1, None)}
+
+        def go(tail, ref_tail=('Place:Axew@3', 'EndTurn')):
+            refs = {**REFS, 'P1': [{'id': 'recorded', 'labels': ['Play:Poké Ball', *ref_tail]}]}
+            rs = [step_row('P1', 'km3', 1, 1, recs=chance, plan_full=['Attach:1Fire@0 zone', 'Play:Poké Ball'] + tail), step_row('P1', 'km3', 2, 1, recs=chance, plan_full=['Play:Poké Ball', 'Place:Axew@3']),
+                  step_row('P2', 'km3', 1, 2), step_row('P2', 'km3', 2, 2), judge_row('P1', 0, 1, recs=chance), judge_row('P2', 0, 1)]
+            rep = run(rs, recs=chance, refs=refs, answers=answers, fmatch=judge.full_match)
+            return {(r['bot'], r['run']): r['full_agrees'] for r in rep['rows'] if r['position'] == 'P1'}
+        self.assertIs(go(['Place:Axew@3'])[('km3', 1)], True)
+        self.assertIs(go(['Place:Axew@3'], ('Place:Axew',))[('km3', 1)], True)  # a reference that names no slot fits any slot
+        self.assertIs(go(['Place:Axew'])[('km3', 1)], False)  # but a PLAYED label without its slot against a named slot does not
+        self.assertIs(go(['Place:Dratini@3'])[('km3', 1)], False)
+        self.assertIs(go([])[('km3', 1)], False)  # the row stops before the reference's remainder
+        self.assertIs(go(['Place:Axew@3'])[('km3', 2)], True)  # the other seed (no moves before the draw) has the same remainder
+        self.assertIsNone(go(['Place:Axew@3'])[('judge', 0)])  # the judge's plan stops at the chance event: no complete plan
+
     def test_a_judge_plan_that_stops_at_a_chance_event_has_no_complete_plan_and_is_counted_apart(self):
         chance = {**RECS, 'P1': {**RECS['P1'], 'plans': [dict(RECS['P1']['plans'][0], end='chance')] + RECS['P1']['plans'][1:]}}
         rows = [step_row('P1', 'km3', 1, 1, recs=chance), step_row('P1', 'km3', 2, 2, recs=chance), step_row('P2', 'km3', 1, 2), step_row('P2', 'km3', 2, 2),
@@ -541,7 +579,7 @@ class FormalPath(unittest.TestCase):
         self.assertEqual(kinds(self.failed(rows)), ['truncated_reply'])
 
     def test_an_unreadable_label_in_a_full_scope_row_is_a_problem_not_a_crash(self):
-        def boom(a, b):
+        def boom(a, b, rec=None):
             raise ValueError('cannot read this label')
         self.assertIn('full_plan_unreadable', kinds(run(complete_rows(), fmatch=boom, on_problem='inconclusive')))
 
@@ -651,7 +689,7 @@ class JudgeHelpers(unittest.TestCase):
         # the plan ends at its attack: real bot lists go on with End the turn / ResolveAttackRetaliation / an Attach after it, and recorded human plans end there
         self.assertEqual(judge.normalize_full(['Attach:1Fire@0 zone', 'Attack:Slam', 'EndTurn']), ['Attach:1Fire@0 zone', 'Attack:Slam'])
         self.assertEqual(judge.normalize_full(['Attack:Slam', 'ResolveAttackRetaliation#{"a":1}', 'Attach:1Fire@0 zone']), ['Attack:Slam'])
-        self.assertTrue(judge.full_match(['Attack:Slam', 'EndTurn'], ['Attack:Slam']))
+        self.assertTrue(judge.full_match(['Attack:Slam', 'EndTurn'], ['Attack:Slam'], {'plans': []}))
         with self.assertRaises(ValueError):
             judge.normalize_full(['Foo#{oops'])
 
@@ -661,17 +699,69 @@ class JudgeHelpers(unittest.TestCase):
         self.assertEqual(judge.concrete_label('ChooseRetreatEnergy#{"energies":["Fire","Water"],"to_in_play_idx":1}'), a)
         self.assertNotEqual(judge.concrete_label('ChooseRetreatEnergy#{"energies":["Fire","Fire"],"to_in_play_idx":1}'), a)
 
-    def test_full_match_is_label_by_label_in_order_with_slotless_references(self):
+    def test_full_match_compares_what_follows_the_plans_own_end_label_by_label(self):
         fm = judge.full_match
-        row = ['Place:Axew@3', 'Attach:1Fire@0 zone', 'Ability@2', 'Attack:Slam']
-        self.assertTrue(fm(row, ['Place:Axew@3', 'Attach:1Fire@0 zone', 'Ability@2', 'Attack:Slam']))
-        self.assertTrue(fm(row, ['Place:Axew', 'Attach:1Fire@0 zone', 'Ability', 'Attack:Slam']))  # a reference that names no slot fits any slot (as in the replay)
-        self.assertFalse(fm(row, ['Place:Axew@1', 'Attach:1Fire@0 zone', 'Ability@2', 'Attack:Slam']))  # a slot that is named must be the slot
-        self.assertFalse(fm(row, ['Place:Axew@3', 'Attach:1Fire@0 zone', 'Ability@1', 'Attack:Slam']))  # Ability@1 and Ability@2 are different Pokémon
-        self.assertFalse(fm(['Ability@2'], ['Place:Axew@3']))
-        self.assertFalse(fm(['Ability@2', 'Attack:Slam'], ['Attack:Slam', 'Ability@2']))  # the order of the moves is part of a complete plan
-        self.assertFalse(fm(row, row[:-1]))  # a reference that is a prefix is not the complete plan
-        self.assertTrue(fm(row + ['EndTurn'], row))  # the closing End the turn is not a move that matters
+        rec = {'plans': [{'labels': ['Play:Poké Ball'], 'end': 'chance'}, {'labels': ['Attack:Slam'], 'end': 'attack'}]}  # a plan that stops at a draw/search, and one that attacks
+        # up to the plan's own end, the plan identity decides (checked elsewhere): the ORDER of the moves there does not matter, so the remainder is empty on both sides
+        self.assertTrue(fm(['Place:Axew@3', 'Attach:1Fire@0 zone', 'Attack:Slam'], ['Attach:1Fire@0 zone', 'Place:Axew@3', 'Attack:Slam'], rec))
+        self.assertTrue(fm(['Attach:1Fire@0 zone', 'Attack:Slam', 'EndTurn'], ['Attach:1Fire@0 zone', 'Attack:Slam', 'Attach:1Fire@1 zone'], rec))  # nothing after an attack counts
+        # after a chance event (here: the draw) the remainder is compared in order, label by label
+        row = ['Place:Axew@3', 'Play:Poké Ball', 'Ability@2', 'Attach:1Fire@0 zone', 'Attack:Slam']
+        self.assertTrue(fm(row, ['Place:Axew@3', 'Play:Poké Ball', 'Ability@2', 'Attach:1Fire@0 zone', 'Attack:Slam'], rec))
+        self.assertTrue(fm(row, ['Place:Axew@3', 'Play:Poké Ball', 'Ability', 'Attach:1Fire@0 zone', 'Attack:Slam'], rec))  # a reference that names no slot fits any slot
+        self.assertFalse(fm(row, ['Play:Poké Ball', 'Place:Axew@3', 'Ability@2', 'Attach:1Fire@0 zone', 'Attack:Slam'], rec))  # a move played BEFORE the draw is not one played after it
+        self.assertTrue(fm(['Attach:1Fire@0 zone', 'Place:Axew@3'] + row[1:], ['Place:Axew@3', 'Attach:1Fire@0 zone'] + row[1:], rec))  # moves before the draw: order is free
+        self.assertFalse(fm(row, ['Play:Poké Ball', 'Ability@1', 'Attach:1Fire@0 zone', 'Attack:Slam'], rec))  # Ability@1 and Ability@2 are different Pokémon
+        self.assertFalse(fm(row, ['Play:Poké Ball', 'Attach:1Fire@0 zone', 'Ability@2', 'Attack:Slam'], rec))  # the order after the chance event is part of the plan
+        self.assertFalse(fm(row, ['Play:Poké Ball', 'Ability@2'], rec))  # a reference that stops early is not the complete plan
+        self.assertTrue(fm(row[:-1] + ['EndTurn'], ['Play:Poké Ball', 'Ability@2', 'Attach:1Fire@0 zone'], rec))  # the closing End the turn is not a move that matters
+        with self.assertRaises(ValueError):
+            fm(['Foo#{oops'], ['Foo'], rec)
+
+    def test_a_lone_surrogate_in_a_label_is_refused_here_because_the_lister_would_panic(self):
+        with self.assertRaises(ValueError):
+            judge.concrete_label('Foo#{"energies":["\\ud800"]}')
+        self.assertEqual(judge.concrete_label('Foo#{"x":"é"}'), 'Foo#{"x":"é"}')
+
+    def test_the_lister_and_the_baseline_runner_check_what_they_are_given(self):
+        d = tempfile.mkdtemp()
+        rows = [{'kind': 'plans', 'id': 'MINI-BLOWER', 'plans': []}, {'kind': 'plans', 'id': 'OTHER', 'plans': []}]
+
+        def fake(name, out_lines, code=0):
+            p = os.path.join(d, name)
+            with open(p, 'w') as f:
+                f.write('#!/bin/bash\n' + ''.join(f"echo '{json.dumps(l)}'\n" for l in out_lines) + f'exit {code}\n')
+            os.chmod(p, 0o755)
+            return p
+        ok = {'kind': 'plans', 'id': 'MINI-BLOWER', 'plans': []}
+        with self.assertRaises(SystemExit) as cm:  # a plan list twice
+            judge.list_plans(['MINI-BLOWER'], POS, DECKS, bin_path=fake('twice', [ok, ok]))
+        self.assertIn('twice', str(cm.exception))
+        with self.assertRaises(SystemExit) as cm:  # no plan list for a requested id
+            judge.list_plans(['MINI-BLOWER', 'MINI-DRAW'], POS, DECKS, bin_path=fake('missing', [ok]))
+        self.assertIn('no plan list', str(cm.exception))
+        with self.assertRaises(SystemExit) as cm:  # a problem line
+            judge.list_plans(['MINI-BLOWER'], POS, DECKS, bin_path=fake('problem', [{'kind': 'problem', 'id': 'MINI-BLOWER', 'problems': ['x']}]))
+        self.assertIn('could not list', str(cm.exception))
+        with self.assertRaises(SystemExit) as cm:  # a failing lister
+            judge.list_plans(['MINI-BLOWER'], POS, DECKS, bin_path=fake('fails', [ok], code=3))
+        self.assertIn('failed', str(cm.exception))
+        # the baseline runner: the bot code, the problem lines, the rows per seed
+        recs = judge.list_plans(['MINI-BLOWER'], POS, DECKS)
+        for bad in ('kx3', 'zzz', 'k', 'km'):
+            with self.assertRaises(SystemExit) as cm:
+                judge.run_pg_pos(bad, ['MINI-BLOWER'], [1], recs, POS, DECKS, bin_path=fake('any', []))
+            self.assertIn('plays the minimax bots', str(cm.exception))
+        with self.assertRaises(SystemExit) as cm:
+            judge.run_pg_pos('km3', ['MINI-BLOWER'], [1], recs, POS, DECKS, bin_path=fake('prob', [{'id': 'MINI-BLOWER', 'problems': ['bad position']}]))
+        self.assertIn('reports a problem', str(cm.exception))
+        free = lambda seed, pid='MINI-BLOWER': {'kind': 'free', 'id': pid, 'seed': seed, 'plan': ['Play:Field Blower'], 'cut': 'end of turn'}
+        with self.assertRaises(SystemExit) as cm:  # a seed's row twice, another missing
+            judge.run_pg_pos('km3', ['MINI-BLOWER'], [1, 2], recs, POS, DECKS, bin_path=fake('dupseed', [free(1), free(1)]))
+        self.assertIn('expected exactly one', str(cm.exception))
+        with self.assertRaises(SystemExit) as cm:  # a row for another point is not this point's row
+            judge.run_pg_pos('km3', ['MINI-BLOWER'], [1], recs, POS, DECKS, bin_path=fake('otherid', [free(1, 'OTHER')]))
+        self.assertIn('expected exactly one', str(cm.exception))
 
     def test_resolve_ids_refuses_a_repeated_point(self):
         class A:
@@ -1070,6 +1160,7 @@ class CommandLinePath(unittest.TestCase):
         code, out, err = self.cli(self.argv(rf, qf, ef, extra=['--out', os.path.join(d, 'rep.json')]))
         self.assertEqual(code, 2)
         self.assertIn('reference_ambiguous', err)
+        self.assertIn('separate accepted entry', err)  # the message says what to do, not only what is wrong
         rep = json.load(open(os.path.join(d, 'rep.json')))
         self.assertEqual((rep['status'], rep['analysis'], len(rep['rows'])), ('failed', None, 22))
         code, out, err = self.cli(self.argv(rf, qf, ef, extra=['--on-problem', 'inconclusive', '--out', os.path.join(d, 'rep2.json')]))
@@ -1220,6 +1311,40 @@ class CommandLinePath(unittest.TestCase):
         d, rf, qf, ef = self.files(self.good_rows(), elig={'primary_ids': self.primary, 'full_scope_ids': [], 'games': renamed})
         code, out, err = self.cli(self.argv(rf, qf, ef, extra=['--resamples', '200']))
         self.assertEqual(code, 0, err)
+
+    def test_the_stub_replaces_an_older_result_before_anything_that_can_stop_the_run(self):
+        d, rf, qf, ef = self.files(self.good_rows())
+        out = os.path.join(d, 'rep.json')
+        for argv_change, what in ((lambda a: [x if x != qf else os.path.join(d, 'no_such_references.json') for x in a], 'an input file that does not exist'),
+                                  (lambda a: a + ['--prompt', 'v2'], 'an option compare refuses')):
+            with open(out, 'w') as f:
+                json.dump({'status': 'complete', 'old': True}, f)
+            with self.assertRaises(SystemExit, msg=what):
+                self.cli(argv_change(self.argv(rf, qf, ef, extra=['--out', out])))
+            self.assertEqual(json.load(open(out))['status'], 'did_not_finish', what)
+        with self.assertRaises(SystemExit) as cm:  # a directory that is not there is said, not a traceback
+            self.cli(self.argv(rf, qf, ef, extra=['--out', os.path.join(d, 'no_such_dir', 'rep.json')]))
+        self.assertIn('directory does not exist', str(cm.exception))
+
+    def test_a_full_scope_point_with_an_incomplete_recorded_plan_is_warned_about(self):
+        clones = json.load(open(self.positions_path))
+        clones[0]['his_plan_ended'] = False  # BLW-00 is in the full-scope subset
+        pp = os.path.join(self.tmp, 'positions_incomplete.json')
+        with open(pp, 'w') as f:
+            json.dump(clones, f)
+        d, rf, qf, ef = self.files(self.good_rows())
+        out = os.path.join(d, 'rep.json')
+        argv = self.argv(rf, qf, ef, extra=['--out', out, '--resamples', '200'])
+        argv[argv.index('--positions') + 1] = pp
+        code, o, err = self.cli(argv)
+        self.assertEqual(code, 0, err)
+        self.assertIn('WARNING: BLW-00', err)
+        self.assertEqual(len(json.load(open(out))['run']['warnings']), 1)
+
+    def test_problems_are_summarised_by_kind_before_the_first_lines(self):
+        buf = io.StringIO()
+        formal.print_problems([{'kind': 'missing', 'position': f'P{i}', 'bot': 'km3', 'run': 1, 'detail': 'x'} for i in range(8)] + [{'kind': 'bad_row', 'position': None, 'bot': None, 'run': None, 'detail': 'y'}], file=buf)
+        self.assertTrue(buf.getvalue().startswith('  by kind: missing 8, bad_row 1'), buf.getvalue()[:80])
 
     def test_a_row_that_repeats_a_json_key_is_a_problem(self):
         d, rf, qf, ef = self.files(self.good_rows(), raw_lines='{"position": "BLW-00", "position": "BLW-01"}\n')
