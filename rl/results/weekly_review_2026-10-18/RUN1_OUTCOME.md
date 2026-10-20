@@ -54,9 +54,16 @@ resource choice, not evidence that AI approaches can't help.
 - That branch holds the exam's answer key and per-decision patterns. Keep them away from anyone building or tuning a
   bot. A bot changed using those patterns turns these 49 decisions from fresh evidence into a regression check
   (PLAN.md, "fresh vs used").
+- **The exam is reusable but no longer automatically fresh** (Astra, Oct 20). The main lesson from the judge's misses is
+  already known to the coordinator, to Dustin and to Astra, so any bot developed with that lesson needs new positions
+  for independent validation. A bot developed separately, such as the maintainer's, can still be compared on this
+  exam.
 
 ## Next (maintenance)
 - Upstream: PRs #424 and #426 are waiting for the maintainer's merge. A further batch needs Dustin's OK.
-- Engine: the Growl-to-0 fix (branch claude/growl-zero-no-weakness) and the catch-up with upstream go in at the next pin,
-  which needs Dustin's word.
+- Engine: Dustin chose to make the fixes this week, and Astra voted to defer. The laptop is building a CANDIDATE pin on
+  a branch: the Growl-to-0 fix and the upstream catch-up.
+  - Before building, it lists each change and the results that change should move. The old pin stays intact.
+  - Every changed self-check result is sorted as (a) a rule fix, (b) an upstream change, or (c) unexplained.
+  - Nothing is adopted until Astra reviews it and Dustin says yes.
 - Watch for the maintainer's AI. The exam is reusable for any bot, including his through docs/bot-protocol.md.
