@@ -34,6 +34,16 @@ def interaction(text='PLAN: 1\nREASON: x', status='completed', tin=10000, tout=3
             'usage': {'total_input_tokens': tin, 'total_output_tokens': tout, 'total_thought_tokens': tthought, 'total_tokens': tin + tout + tthought, 'total_cached_tokens': 0}}
 
 
+def generate_content(text='PLAN: 1\nREASON: x', finish='STOP', tin=10000, tcand=300, tthought=1700, parts=None, total='auto'):
+    """A Vertex AI GenerateContentResponse as the documented message family has it (field names from ai.google.dev/api/generate-content; the first part is a thought)."""
+    parts = parts if parts is not None else [{'text': 'THOUGHT SUMMARY must not be in the reply', 'thought': True}, {'text': text}]
+    cand = {'content': {'role': 'model', 'parts': parts}}
+    if finish is not None:
+        cand['finishReason'] = finish
+    return {'candidates': [cand], 'modelVersion': 'gemini-4-argon',
+            'usageMetadata': {'promptTokenCount': tin, 'candidatesTokenCount': tcand, 'thoughtsTokenCount': tthought, 'totalTokenCount': tin + tcand + tthought if total == 'auto' else total}}
+
+
 class Parsing(unittest.TestCase):
     def test_a_completed_reply_gives_the_model_output_text_only(self):
         text, usage, model, extra = providers.parse_interaction(interaction(), 'gemini-4-argon')
@@ -159,7 +169,7 @@ class Key(unittest.TestCase):
         self.assertEqual(self.load('export GEMINI_API_KEY=fromfile\n', {'GEMINI_API_KEY': 'fromenv'}), 'fromenv')
 
     def test_the_last_export_line_of_bashrc_is_used_as_text(self):
-        self.assertEqual(self.load('export GEMINI_API_KEY=old\nalias x=y\nexport GEMINI_API_KEY="new key"\n'), 'new key')
+        self.assertEqual(self.load('export GEMINI_API_KEY=old\nalias x=y\nexport GEMINI_API_KEY="new-key"\n'), 'new-key')  # (a key with a blank in it is refused: see test_vertex.Key)
         self.assertEqual(self.load("  export GEMINI_API_KEY='single'  \n"), 'single')
         self.assertEqual(self.load('export GEMINI_API_KEY=plain # a comment\n'), 'plain')
         self.assertEqual(self.load('export ANTHROPIC_API_KEY=other\nexport GEMINI_API_KEY=right\n'), 'right')
@@ -167,9 +177,9 @@ class Key(unittest.TestCase):
     def test_a_line_is_never_executed(self):
         d = tempfile.mkdtemp()
         marker = os.path.join(d, 'executed')
-        got = self.load(f'export GEMINI_API_KEY=$(touch {marker})\n')
+        with self.assertRaises(SystemExit):  # refused as shell syntax (the literal text '$(touch' is not a key), never executed
+            self.load(f'export GEMINI_API_KEY=$(touch {marker})\n')
         self.assertFalse(os.path.exists(marker))
-        self.assertTrue(got.startswith('$(touch'))
 
     def test_no_key_exits_naming_the_variable_only(self):
         for text in (None, '# nothing\nexport ANTHROPIC_API_KEY=a\n', 'GEMINI_API_KEY=notexported\n'):
@@ -205,6 +215,17 @@ class Prices(unittest.TestCase):
         c = judge.gemini_cost_of({'input_tokens': None, 'output_tokens': 0}, 12000, 8000, datetime.date(2026, 10, 21))
         self.assertTrue(c['usd_is_worst_case'])
         self.assertAlmostEqual(c['usd'], 12000 * 4 / 1e6 + 8000 * 20 / 1e6)
+
+    def test_a_reply_whose_output_count_is_missing_is_charged_its_worst_case_too(self):
+        # an input count with no output count at all (usage_missing from the parser) would otherwise be costed as a free answer
+        c = judge.gemini_cost_of({'input_tokens': 5000, 'output_tokens': 0}, 12000, 8000, datetime.date(2026, 10, 21), usage_missing=True)
+        self.assertTrue(c['usd_is_worst_case'])
+        self.assertAlmostEqual(c['usd'], 12000 * 4 / 1e6 + 8000 * 20 / 1e6)
+        j = interaction()
+        j['usage'] = {'total_input_tokens': 5000}
+        _, usage, _, extra = providers.parse_interaction(j, 'm')
+        self.assertTrue(extra['usage_missing'])
+        self.assertTrue(judge.gemini_cost_of(usage, 12000, 8000, usage_missing=extra['usage_missing'])['usd_is_worst_case'])
 
 
 class JudgeRows(unittest.TestCase):
@@ -301,7 +322,7 @@ class Identity(unittest.TestCase):
         self.assertEqual(set(judge.FROZEN), {'model', 'prompt_version', 'order', 'compact_above', 'max_tokens', 'temperature', 'plan_world_seed', 'max_plans', 'max_nodes', 'max_steps'})
 
     def test_the_judge_block_records_provider_model_settings_prices_mapping_and_sources(self):
-        b = judge.frozen_judge_block()
+        b = judge.frozen_judge_block('gemini')  # the frozen-5 block (the AI Studio provider is still in the code)
         self.assertEqual((b['provider'], b['settings']['model'], b['settings']['thinking_level'], b['settings']['max_tokens']), ('gemini', 'gemini-4-argon', 'high', 8000))
         self.assertEqual(b['price_per_mtok'], {'through_2026-11-30': [2.0, 10.0], 'from_2026-12-01': [4.0, 20.0], 'reservation': [4.0, 20.0]})
         self.assertTrue(all(u.startswith('https://ai.google.dev/') for u in b['sources']))
@@ -313,8 +334,10 @@ class Identity(unittest.TestCase):
     def test_a_freeze_record_without_a_judge_block_is_the_anthropic_freeze(self):
         provider, settings = judge.judge_expectation({})
         self.assertEqual((provider, settings), ('anthropic', {'model': 'claude-sonnet-5-5', 'max_tokens': 8000, 'temperature': None}))
-        provider, settings = judge.judge_expectation({'judge': judge.frozen_judge_block()})
+        provider, settings = judge.judge_expectation({'judge': judge.frozen_judge_block('gemini')})
         self.assertEqual((provider, settings), ('gemini', judge.judge_settings('gemini')))
+        provider, settings = judge.judge_expectation({'judge': judge.frozen_judge_block('gemini-vertex')})
+        self.assertEqual((provider, settings), ('gemini-vertex', judge.judge_settings('gemini-vertex')))
 
     def test_the_current_freeze_record_carries_the_judge_block_it_was_made_from(self):
         with open(os.path.join(ROOT, 'FROZEN.json'), encoding='utf-8') as f:

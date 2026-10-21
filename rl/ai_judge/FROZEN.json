@@ -1,7 +1,12 @@
 {
  "frozen_on": "2026-10-21",
- "tag": "judge-prompt-frozen-5",
+ "tag": "judge-prompt-frozen-6",
  "supersedes": [
+  {
+   "tag": "judge-prompt-frozen-5",
+   "commit": "544d80ff891b8277aa5eb8f189b10e3a56ac86e6",
+   "fingerprint": "0cb2421552661b563bdb49fca31aca53f468d0853661908fbbf7730fcb5ba762"
+  },
   {
    "tag": "judge-prompt-frozen-4",
    "commit": "72eea776ea745be837be94320068402eb81fa11a",
@@ -37,17 +42,17 @@
   "max_steps": 30
  },
  "judge": {
-  "provider": "gemini",
+  "provider": "gemini-vertex",
   "settings": {
-   "provider": "gemini",
+   "provider": "gemini-vertex",
    "model": "gemini-4-argon",
-   "max_tokens": 8000,
+   "max_tokens": 32768,
    "temperature": null,
-   "thinking_level": "high",
-   "thinking_summaries": "none"
+   "thinking_level": "HIGH"
   },
-  "endpoint": "https://generativelanguage.googleapis.com/v1beta/interactions",
-  "api": "Interactions API (POST /v1beta/interactions)",
+  "endpoint": "https://aiplatform.googleapis.com/v1/publishers/google/models/{model}:generateContent",
+  "api": "Vertex AI GenerateContent API (POST /v1/publishers/google/models/MODEL:generateContent)",
+  "key_variable": "VERTEX_API_KEY",
   "price_per_mtok": {
    "through_2026-11-30": [
     2.0,
@@ -62,42 +67,52 @@
     20.0
    ]
   },
-  "price_note": "Gemini 4 Argon Standard tier, ai.google.dev/gemini-api/docs/pricing (read 2026-10-21): $2 / $10 per 1M input / output tokens (thinking billed as output) through 2026-11-30, $4 / $20 from 2026-12-01; input charged in full (the implicit-cache discount is ignored: a conservative upper bound)",
+  "price_note": "Gemini 4 Argon on Vertex AI (Gemini Enterprise Agent Platform): $2 / $10 per 1M input / output tokens through 2026-11-30, $4 / $20 from 2026-12-01, per the Google Cloud announcement cloud.google.com/blog/products/ai-machine-learning/gemini-4-argon-available-on-google-cloud (read 2026-10-21; the Vertex pricing page tables could not be read, so verify in the billing console); thinking tokens are billed as output (the model guide: every token processed is billed, thinking included; ai.google.dev/gemini-api/docs/pricing); input charged in full (the cached-input discount is ignored: a conservative upper bound)",
   "mapping": {
-   "prompt": "identical: the frozen system text goes in `system_instruction`, the user text in `input`; the prompt fingerprint and every row's prompt_sha256 are the same as for the Anthropic judge",
-   "output cap": "max_tokens 8000 -> generation_config.max_output_tokens 8000; for Gemini it is documented as thinking + answer together, as the Anthropic cap was (reasoning counted as output). CANNOT MATCH: tokenizers differ, so 8,000 Gemini tokens is not 8,000 Claude tokens, and at high thinking the model may spend the cap on thinking; such a reply is status \"incomplete\" and fails exactly like a reply cut at max_tokens (no retry, no choice kept)",
-   "reasoning": "Anthropic: the model's default reasoning, no setting. Gemini: generation_config.thinking_level \"high\" (the highest of low / medium / high; the coordinator's pre-registered choice). CANNOT MATCH: the two are different mechanisms; \"high\" is the closest to \"as much reasoning as the model will do\"",
-   "thought text": "generation_config.thinking_summaries \"none\": no thought summary is requested, so none is billed beyond the thinking tokens, and none could enter the stored reply (`raw` is model_output text only)",
-   "temperature": "not set for either (the provider default); Gemini 4 Argon documents no temperature setting, so none is sent and --temperature is refused",
-   "other sampling": "top_p, top_k, seed, stop sequences: not set",
+   "prompt": "identical: the frozen system text goes in `systemInstruction` (one text part), the user text in `contents` (one user turn, one text part); the prompt fingerprint and every row's prompt_sha256 are the same as for the Anthropic judge and for frozen-5",
+   "output cap": "max_tokens 32768 -> generationConfig.maxOutputTokens 32768: the most a non-streaming direct HTTP call allows (documented: 65,536 per synchronous request, 32,768 for non-streaming direct HTTP), counting thinking + answer together as the Anthropic cap did. It is NOT the 8,000 of frozen-4 / frozen-5: raised so that high thinking does not use the cap up (a cut reply keeps no choice and aborts the formal comparison). CANNOT MATCH: the tokenizers differ and the cap is four times larger",
+   "reasoning": "Anthropic: the model's default reasoning, no setting. Vertex: generationConfig.thinkingConfig.thinkingLevel \"HIGH\" (LOW / MEDIUM default / HIGH; thinking_budget and MINIMAL are HTTP 400). CANNOT MATCH: different mechanisms",
+   "thought text": "not requested (includeThoughts is not sent); any part the response flags `thought: true` is skipped, so `raw` is the answer text only",
+   "temperature": "not set for either; Vertex ignores a custom temperature / top_p / top_k for this model, so none is sent and --temperature is refused",
+   "other sampling": "seed, stop sequences, safety settings, candidateCount: not set (defaults); a prompt the service blocks (promptFeedback.blockReason) has no candidate and so no choice",
    "retries": "none: one request per call; a failed request is a failed call (the budget wrapper charges its full worst case and the batch is incomplete)",
-   "streaming": "none: one synchronous request; the 65,536 synchronous output limit is above the 8,000 cap",
-   "storage": "store false: Google keeps no interaction",
-   "price": "USD per 1M tokens, input / output including thinking: 2 / 10 through 2026-11-30, 4 / 20 from 2026-12-01 (Standard tier); the budget reserves every call at 4 / 20; the cached-input discount is ignored",
-   "finish": "stop_reason is \"end_turn\" only for status \"completed\"; anything else (\"incomplete\", \"failed\", \"cancelled\", ...) is stored as \"gemini:<status>\" and is never an intact answer"
+   "streaming": "none: one synchronous generateContent request on v1 (no long decode: it needs v1beta1; a finishReason CONTINUATION would keep no choice)",
+   "serving": "the same model id as frozen-5 but the Vertex AI serving stack, not the Gemini Developer API; identical outputs are not guaranteed",
+   "price": "USD per 1M tokens, input / output including thinking: 2 / 10 through 2026-11-30, 4 / 20 from 2026-12-01 (Google Cloud announcement; the Vertex pricing tables could not be read); the budget reserves every call at 4 / 20; the cached-input discount is ignored",
+   "finish": "stop_reason is \"end_turn\" only for finishReason STOP; any other finishReason (MAX_TOKENS, SAFETY, CONTINUATION, ...), a candidate without a finishReason, no candidate, or a blocked prompt is stored as \"vertex:<reason>\" (NO_FINISH_REASON, NO_CANDIDATE, BLOCKED_<blockReason>) and is never an intact answer",
+   "usage": "input = promptTokenCount (cached input charged in full); output = totalTokenCount - promptTokenCount when the total is consistent, else candidatesTokenCount + thoughtsTokenCount",
+   "key": "a Google Cloud API key bound to a service account, read from VERTEX_API_KEY (environment, else the last export line of ~/.bashrc, parsed as text; an empty last export retires an earlier key; the key must be letters, digits, \".\", \"-\" and \"_\" only, so a shell expression is refused, not expanded) and sent only in the x-goog-api-key header; a redirect answer is an error, never followed"
   },
   "sources": [
-   "https://ai.google.dev/gemini-api/docs/models",
+   "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/4-argon",
+   "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/guides/gemini-4-argon",
+   "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/start/api-keys?usertype=standard",
+   "https://cloud.google.com/blog/products/ai-machine-learning/gemini-4-argon-available-on-google-cloud",
+   "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/reference/rest/v1/GenerateContentResponse",
+   "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/reference/rest/v1/GenerationConfig",
+   "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/start/express-mode/vertex-ai-express-mode-api-reference",
+   "https://docs.cloud.google.com/docs/authentication/api-keys-use",
+   "https://ai.google.dev/api/generate-content",
    "https://ai.google.dev/gemini-api/docs/pricing",
-   "https://ai.google.dev/gemini-api/docs/thinking",
-   "https://ai.google.dev/gemini-api/docs/interactions",
-   "https://ai.google.dev/api/interactions-api"
+   "https://ai.google.dev/gemini-api/docs/billing",
+   "https://docs.cloud.google.com/free/docs/free-cloud-features"
   ]
  },
  "source_sha256": {
-  "rl/ai_judge/judge.py": "6a9933e78fa6e2dd398cb96436a970147d7499d08d1ddb5a7e67bc5497216ed2",
-  "rl/ai_judge/formal.py": "40c6cf0de96e862919f5b6533869e731c1a7462fd9fccc959ad5220ccd3fb070",
+  "rl/ai_judge/judge.py": "f4a6e17cf0488af26047fd4f82767cd66be165e2c886c5251f6069144a3e9506",
+  "rl/ai_judge/formal.py": "10381f4c19f7db862aa3953061b4eaded4108437bc85e9c5166df7f7d8ce2740",
   "rl/ai_judge/analysis.py": "5529ddc45abcbff8820fcf2723f71e94aa80f286a7d0b6a39dc1bca50d4482ae",
-  "rl/ai_judge/providers.py": "b0a887b3e7f260bcecc40b4694fc7d4d67b5a52a15b1b50e8c9e8ccad400cb29",
-  "rl/ai_judge/budget_judge.py": "4b7769d1a3ed39402564830d877085cf655cbc7877389637999958596bef6a9c",
+  "rl/ai_judge/providers.py": "23f7efcb64b8abfacd54bfdbad7fa6ac803fe3adb599ca064cbbaec914a77d2f",
+  "rl/ai_judge/budget_judge.py": "57e79793e37f5ff26532c10efc0e67097f1d25d06fe355b2e62d362aaba7fdb8",
   "rl/ai_judge/validate_baseline.py": "855c1fca1366684a9c88bc5a8766d1d476dafe4705bed74c5412b24cd1abf752",
-  "rl/ai_judge/freeze_identity.py": "3e052367bbd0443f309df6674207d2487927d7abb9e8ef8b8c6707fba61ab6de",
+  "rl/ai_judge/freeze_identity.py": "e932c931caa6d1fd940ce7c6530d4ba2b65b580bb5d6b3c206e7ac8a211dd555",
   "rl/ai_judge/plans/src/main.rs": "73830a21c34f806299f7a1ec4e42fc2c6025d82e11a0be47bf31f51aaac460ce",
   "rl/ai_judge/plans/Cargo.lock": "e183002a2e1a040cc761d2d9f81575259d710ea6a2f2a55054bc75485b8d0a7c",
-  "rl/ai_judge/tests/test_formal.py": "551bf6f3d8a6652c831781902341bfc11222741b3ab103964c3b1744b0d264f5",
+  "rl/ai_judge/tests/test_formal.py": "bad62dc7a20c9c25b457f171b5dcbf8f907acc514b7e0523bc435416c39dbacb",
   "rl/ai_judge/tests/test_analysis.py": "583d537292ba962f8e8d2f393a5e55a6d2ab66d33f5c4e9000b037503bda7cad",
-  "rl/ai_judge/tests/test_gemini.py": "0e19aa319ed2b48adc149d5e86cab56c7b111460d8d6b4b47bd0e62f8b2b3348",
-  "rl/ai_judge/tests/test_budget.py": "0bab81c8574bff2aabc3c813098dc4ea5618820d814afea1e5542fe353b994f1",
+  "rl/ai_judge/tests/test_gemini.py": "85cc1268839a803c0a074b8d6523113c035cb0cd921e88f0f9f50cd7151cd998",
+  "rl/ai_judge/tests/test_vertex.py": "706cef4b261649befd8ef0758d723d93c3c5dddb09e7c61f8cc37bbf3e8fc592",
+  "rl/ai_judge/tests/test_budget.py": "ab62b0a6d032259fb5003bf4437dd722f23f839fbfd9da5973eb5e19beaa6c76",
   "lib/card.py": "73e6f2a8dbf10b9c4f7b877564e1fdb91dc8015744e7e82f873bfbae837cea4c",
   "lib/deckgym-database.json": "2f48cb72966c23ba3794f437aa94312e4eadcb2703c32893411ee27fc63b11d9",
   "rl/results/pause_games_decisions_2026-10-02/harness/pgd_patch.py": "904b9e86ab058d4d379b3f323ad5dd2bbeb4d5ebf03e5bc2db63257b325b3279",
@@ -114,5 +129,5 @@
   "validation": "rl/ai_judge/validation/baseline_printer_validation.json",
   "reproduced": "a second build from scratch with rl/ai_judge/build_baseline.sh gave the identical sha256"
  },
- "note": "Provider change only: the judge is Gemini 4 Argon (gemini-4-argon, thinking level high, 8,000 output tokens including thinking) through the Interactions API, chosen by the coordinator before any build (run 1 on claude-sonnet-5-5 did not pass against km3). The prompt (fingerprint 0cb24215...), judge.FROZEN (the Anthropic freeze's settings, inside the fingerprint), the parser, the invalid-label handling, the no-retry policy, the plan lister and the baseline (engine 70652fff) are exactly the frozen-4 ones. New: providers.py, budget_judge.py (hard spend bound, $15 total), the judge block of this record (provider, settings, prices, mapping and its sources), compare checks each judge row against it. Prices: $2 / $10 per 1M tokens through 2026-11-30, $4 / $20 after; reservations at $4 / $20. The Anthropic freeze (frozen-4) stays valid for its own rows."
+ "note": "Provider change only: the judge is Gemini 4 Argon (gemini-4-argon, thinking level HIGH, 32,768 output tokens including thinking) through the Vertex AI GenerateContent API (Dustin's Google Cloud trial credits pay for Vertex AI, not for the Gemini Developer API), key in VERTEX_API_KEY sent only in the x-goog-api-key header. The output cap is 32,768 (the most a non-streaming HTTP call allows) instead of frozen-5's 8,000 so that high thinking does not cut a reply off: a judge row without a choice aborts the formal comparison. The prompt (fingerprint 0cb24215...), judge.FROZEN (the Anthropic freeze's settings, inside the fingerprint), the parser, the invalid-label handling, the no-retry policy, the plan lister and the baseline (engine 70652fff) are exactly the frozen-4 / frozen-5 ones; the Developer API provider of frozen-5 stays in the code. Prices: $2 / $10 per 1M tokens through 2026-11-30, $4 / $20 after; reservations at $4 / $20 (the Vertex pricing tables could not be read: the Google Cloud announcement is the source)."
 }

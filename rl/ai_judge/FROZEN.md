@@ -245,3 +245,77 @@ reads `model_output` text only, treats a missing usage block as unknown cost and
 is what confirms the call and the parse. The Standard price ends its introductory rate after Nov 30; the reservation always uses the higher one.
 
 **Disclosure.** No exam position, reference, answer or RESULTS file was opened for this freeze; no live call was made while writing it (mocks only); no main merge.
+
+---
+# Superseding freeze `judge-prompt-frozen-6` (Oct 21, the live Sonnet worker; the same judge model served by Vertex AI)
+
+**Why.** Dustin's Google credits are a Google Cloud free trial, and Google's Gemini API billing page says that for accounts opened after March 2, 2026 the trial credit cannot
+pay for Gemini API / AI Studio usage (https://ai.google.dev/gemini-api/docs/billing). The credits can pay for Vertex AI (now "Gemini Enterprise Agent Platform"). Dustin chose to
+use them: frozen-5 (Developer API, tag `judge-prompt-frozen-5`, commit 544d80ff) is **not moved**; frozen-6 changes only the provider and one setting. **The prompt is unchanged**
+(fingerprint `0cb24215...`, the same as frozen-2 to -5), and so are `judge.FROZEN`, the parser, the invalid-label handling, the no-retry policy, the plan lister, the baseline
+and the engine tree `70652fff`.
+
+**What changed against frozen-5.**
+1. Provider `gemini-vertex` (`providers.py`): `POST https://aiplatform.googleapis.com/v1/publishers/google/models/gemini-4-argon:generateContent`, GenerateContent body
+   (`systemInstruction` + one user `contents` turn + `generationConfig` {`maxOutputTokens` 32768, `thinkingConfig.thinkingLevel` "HIGH"}), the key only in the `x-goog-api-key`
+   header (never in the URL), the answer is the text of the first candidate's parts that are not flagged `thought: true`, `finishReason` STOP is a finished answer and anything
+   else (MAX_TOKENS, SAFETY, CONTINUATION, no candidate, a blocked prompt) is `vertex:<reason>` and keeps **no choice**, usage from `usageMetadata` (thinking included), one request,
+   no retry. Key variable **`VERTEX_API_KEY`** (environment, else the last `export VERTEX_API_KEY=` line of `~/.bashrc`, parsed as text), never printed, logged or committed.
+2. **The output cap is 32,768 (frozen-5: 8,000).** Run 1's Claude judge used at most 4,213 output tokens; Gemini at its highest thinking level may use most of 8,000 and end cut
+   off, which would measure "Gemini with its thinking cut short". 32,768 is the most a non-streaming direct HTTP request allows (the guide: 65,536 per synchronous request, 32,768
+   for non-streaming direct HTTP; thinking counts toward it). A row without a choice aborts the formal comparison (`compare`: kind `unresolved`, exit 2; `formal.py`), so the cap
+   is the protection, not a retry. Tokenizers differ from Claude's, so the cap still cannot "match" frozen-4's 8,000.
+3. `budget_judge.py` default provider is `gemini-vertex`; reservations at $4 / $20 per 1M tokens, so at 32,768 output tokens one call reserves **about $0.68-0.83 for the old
+   positions' prompts of 2k-19k tokens** ($0.655 of it is the output cap) and up to about $1.64 for the largest old prompt (1,203 plans). Four workers hold about $2.7-3.3, which
+   fits in the $15 ledger until about $11.5 has been spent; a $2 smoke test fits two workers, not three (use one). A call that fits only once the calls in flight have settled now
+   WAITS for them instead of being dropped (the review showed that with four workers and a run cap below the total the tail of the batch was refused after only $5 of $15 was spent);
+   for the primary run set `--run-cap-usd` equal to `--total-usd`. Actual cost of one call is far below its reservation (about $0.02-0.15 at the introductory price unless thinking
+   runs to the cap, when it is about $0.33 plus input). If every one of the 51 primary calls ran to the 32,768 cap the introductory-price cost would be about $17-18 for old-position
+   prompts and the $15 bound would stop the run: that is what the bound is for. The ledger now records the calls in flight, so a run that is killed is charged for them when the
+   ledger is next opened. The $2 smoke test uses its own ledger file: its spend is on top of the $15 formal ledger.
+4. Fixed on the way, after two adversarial reviews of this candidate (round 1: 14 agents, wf_5a44aaa7-1ea; round 2 on the fixes: 2 agents, wf_c507d08a-0d0): a key with a trailing
+   CR/LF (a Windows-edited file) was printed by the HTTP library's error and not scrubbed: `load_key` now strips it and accepts only letters, digits, '.', '-' and '_' (every Google
+   API key; a shell expression such as `export VERTEX_API_KEY=$(cat file)` is refused instead of being sent as the literal text, which would have cost a charged call), and a
+   `ValueError` from the request shows its type only; a redirect answer is an error and is no longer followed (urllib would have re-sent the key header to the redirect's host); an
+   error body is scrubbed before it is cut; a body that ends early (`http.client.HTTPException`) or is absurdly nested stops the call cleanly; a later empty `export VERTEX_API_KEY=`
+   retires an earlier key; the ledger is exception-safe (a failed ledger write halts the run instead of leaving a waiter blocked for ever, a reply the costing cannot read is charged at
+   its worst case, a nan or infinite cap is refused, nothing in flight means nothing to wait for); a task failure behind several workers (any exception) ends the batch as incomplete
+   (exit 2) instead of a traceback; a reply whose output count is absent is charged its worst case in the row too; a candidate without a finishReason is `vertex:NO_FINISH_REASON`;
+   `--mock` rows say `mock: true` and `compare` refuses them; a Gemini row records `model_returned` and the compare report lists the distinct values (`run.judge_models_returned`) and warns
+   when they differ or are not the frozen model; `freeze_identity` refuses a Gemini freeze record that has no `judge` block; the client timeout is 1,260 s (the guide's per-request
+   limit is 20 minutes). One shared request routine serves both Gemini providers (also frozen-5's code, which stays).
+
+**Price (Google Cloud announcement, read Oct 21; the Vertex pricing page's tables could not be read through my tools, verify in the billing console).** $2 / $10 per 1M input /
+output tokens (thinking billed as output) through 2026-11-30, $4 / $20 from 2026-12-01 (https://cloud.google.com/blog/products/ai-machine-learning/gemini-4-argon-available-on-google-cloud).
+
+**Settings mapping** (also `FROZEN.json` -> `judge.mapping`; what cannot match is marked):
+
+| frozen-4 (Anthropic) | frozen-6 (Vertex AI) | matches? |
+|---|---|---|
+| system text, user text | `systemInstruction` (one text part), `contents` (one user turn) | yes (same `prompt_sha256`) |
+| `max_tokens` 8,000, reasoning counted as output | `maxOutputTokens` 32,768, thinking + answer together | meaning yes, size no: the most a non-streaming call allows; tokenizers differ |
+| the model's default reasoning | `thinkingConfig.thinkingLevel` "HIGH" (LOW / MEDIUM default / HIGH) | no: different mechanisms |
+| thought text | not requested; parts flagged `thought: true` are skipped | n/a |
+| temperature not set | not set (Vertex ignores a custom value for this model; `--temperature` is refused) | yes |
+| no retry | no retry | yes |
+| finish | STOP = finished; anything else = no choice | same rule |
+| the serving stack | Vertex AI, the same model id as frozen-5 on the Developer API | identical outputs not guaranteed |
+
+**The key.** A Google Cloud API key bound to a service account, made in the Cloud console following
+https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/start/api-keys?usertype=standard (project with the trial's billing account; enable the Vertex AI API, which Google
+now calls the Agent Platform API; a service account with the Agent Platform (Vertex AI) User role, `roles/aiplatform.user`, which the API quickstart names; the key page itself names
+"Gemini Enterprise Agent Platform Express User (Beta)": a 403 is a role problem, not a freeze-breaking fault; Credentials > Create credentials > API key > "Authenticate API calls
+through a service account"). The organization policy `iam.managed.disableServiceAccountApiKeyCreation` must be off; if it cannot be, the page falls back to application default
+credentials, which this adapter does NOT support (stop and report). Express mode (the @gmail key) is not an option: its model list does not include gemini-4-argon and it is separate
+from the Google Cloud Free Program.
+
+**Not verified until a live call.** The response fields (`candidates[].content.parts[].text` / `thought`, `finishReason`, `usageMetadata.promptTokenCount` / `candidatesTokenCount` /
+`thoughtsTokenCount` / `totalTokenCount` / `cachedContentTokenCount`, `promptFeedback.blockReason`) are documented by Vertex's own v1 reference
+(https://docs.cloud.google.com/vertex-ai/generative-ai/docs/reference/rest/v1/GenerateContentResponse); what it does not say is whether `candidatesTokenCount` includes the thoughts or
+`promptTokenCount` the cached tokens (the Developer API reference lists thoughts and candidates as separate addends of the total; `_usage` takes the output as total minus prompt, which is
+right if they are disjoint or if the candidates hold the thoughts, and is recorded as `answer_tokens` + `thought_tokens` so the smoke test shows which). That a service-account-bound key is
+accepted in the `x-goog-api-key` header (the quickstart's example puts it in `?key=`; the header is documented by the express-mode reference and the API-key guide) and that the trial
+billing account is charged are likewise unconfirmed. The smoke test (5 old positions, `--total-usd 2`) is what confirms them; a failure that needs a different request or parser means
+a new freeze, not a moved tag.
+
+**Disclosure.** No exam position, reference, answer or RESULTS file was opened for this freeze; no live call was made while writing it (mocks only); no main merge.

@@ -22,10 +22,17 @@ HAVE_BIN = os.path.exists(judge.PLANS_BIN)
 
 
 def made_judge_row(pid, positions, recs, order, reply_text, stop_reason='end_turn', model=None):
-    """One judge row exactly as judge_one makes it, for the judge of the CURRENT freeze (FROZEN.json: Anthropic up to frozen-4, Gemini from frozen-5), with the provider's call
+    """One judge row exactly as judge_one makes it, for the judge of the CURRENT freeze (FROZEN.json: Anthropic up to frozen-4, Gemini frozen-5, Vertex AI from frozen-6), with the provider's call
     replaced by a fixed reply (no key, no network). stop_reason 'max_tokens' is a reply cut by the output cap."""
     import providers
-    if judge.judge_expectation(judge.frozen_identity())[0] == 'gemini':
+    provider = judge.judge_expectation(judge.frozen_identity())[0]
+    if provider == 'gemini-vertex':
+        done = stop_reason == 'end_turn'
+        reply = (reply_text, {'input_tokens': 1, 'output_tokens': 1, 'thought_tokens': 0, 'answer_tokens': 1, 'cached_tokens': 0}, 0.1, 'gemini-4-argon',
+                 {'stop_reason': 'end_turn' if done else 'vertex:MAX_TOKENS', 'content_types': ['text'], 'finish_reason': 'STOP' if done else 'MAX_TOKENS', 'usage_missing': False, 'n_candidates': 1})
+        with mock.patch.object(providers, 'call_vertex', return_value=reply):
+            return judge.judge_one(pid, positions, recs, order, True, model or 'gemini-4-argon', decks_dir=DECKS, provider='gemini-vertex', max_tokens=judge.judge_settings(provider)['max_tokens'])
+    if provider == 'gemini':
         done = stop_reason == 'end_turn'
         reply = (reply_text, {'input_tokens': 1, 'output_tokens': 1, 'thought_tokens': 0, 'answer_tokens': 1, 'cached_tokens': 0}, 0.1, 'gemini-4-argon',
                  {'stop_reason': 'end_turn' if done else 'gemini:incomplete', 'content_types': ['model_output'], 'status': 'completed' if done else 'incomplete', 'usage_missing': False})
@@ -959,6 +966,31 @@ class CommandLinePath(unittest.TestCase):
         self.assertEqual(rep['analysis']['method']['judge_repeats'], 1)
         self.assertEqual(rep['analysis']['method']['bots'], ['km3', 'judge'])
 
+    def test_the_report_lists_the_model_versions_that_answered_and_warns_when_they_differ(self):
+        provider = judge.judge_expectation(judge.frozen_identity())[0]
+        rep, out, err = self.good_report()
+        self.assertEqual(rep['run']['judge_models_returned'], [] if provider == 'anthropic' else ['gemini-4-argon'])  # a Gemini row records model_returned; an Anthropic row has none
+        if provider == 'anthropic':
+            self.skipTest('the freeze is an Anthropic freeze: its rows carry no model_returned')
+        rows = self.good_rows()
+        for i, r in enumerate([r for r in rows if r['bot'] == 'judge']):
+            r['model_returned'] = 'gemini-4-argon-20261013' if i % 2 else 'gemini-4-argon'
+        d, rf, qf, ef = self.files(rows)
+        out = os.path.join(d, 'rep.json')
+        code, _, err = self.cli(self.argv(rf, qf, ef, extra=['--out', out, '--resamples', '2000']))
+        with open(out) as f:
+            rep2 = json.load(f)
+        self.assertEqual(rep2['run']['judge_models_returned'], ['gemini-4-argon', 'gemini-4-argon-20261013'])
+        self.assertTrue(any('more than one model version' in w for w in rep2['run']['warnings']))
+        for r in rows:
+            if r['bot'] == 'judge':
+                r['model_returned'] = 'some-other-model'
+        d, rf, qf, ef = self.files(rows)
+        out = os.path.join(d, 'rep.json')
+        self.cli(self.argv(rf, qf, ef, extra=['--out', out, '--resamples', '2000']))
+        with open(out) as f:
+            self.assertTrue(any('not by the frozen model' in w for w in json.load(f)['run']['warnings']))
+
     def test_unselected_points_cannot_change_a_primary_number_even_when_their_rows_are_garbage(self):
         base, _, _ = self.good_report()
         rows = self.good_rows()
@@ -1086,7 +1118,7 @@ class CommandLinePath(unittest.TestCase):
         self.assertTrue('prompt_mismatch' in err or 'shown_mismatch' in err, err)
 
     def test_frozen_4_rows_of_the_anthropic_judge_are_refused_under_a_gemini_freeze(self):
-        if judge.judge_expectation(judge.frozen_identity())[0] != 'gemini':
+        if judge.judge_expectation(judge.frozen_identity())[0] not in ('gemini', 'gemini-vertex'):
             self.skipTest('the current freeze is not a Gemini freeze')
         rows = []
         for i, pid in enumerate(self.ids):

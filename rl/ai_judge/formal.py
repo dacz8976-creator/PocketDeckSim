@@ -13,7 +13,8 @@ listed plan. Here nothing is left out and no number is taken on trust:
     whole-number `repeat` (judge, no `seed`);
   * a row is a problem when it is missing, appears twice, was not expected, has no listed plan (an unfollowable or AMBIGUOUS move list, a parse failure), is not
     an object with a text `position` and `bot`, or (judge) is not exactly `dry_run: false` / `frozen: true`, was made with another model, token cap or
-    temperature than the freeze (and, from frozen-5, another provider or thinking level), or used a capped (incomplete) plan list;
+    temperature than the freeze (and, from frozen-5, another provider or thinking level), or used a capped (incomplete) plan list; a judge row WITHOUT a usable choice (an invalid
+    label, a reply cut at the output cap, any unfinished status) is `unresolved` and stops the comparison, never a miss;
   * a row with a plan number is checked against the CURRENT plan list, not believed:
       - the number must be a whole number inside the list (bool, float, text and 0 are not numbers; 999 in a two-plan list is a problem);
       - a row that carries a plan number AND a match_error or parse_error contradicts itself;
@@ -44,6 +45,7 @@ import sys
 import analysis
 
 SCHEMA = 'ai_judge_paired_comparison_v2'
+UNFINISHED_PREFIXES = ('gemini:', 'vertex:')  # a judge row's stop_reason that starts so is a Gemini reply that did not finish ('end_turn' otherwise); judge_one keeps no choice for it
 COMPLETE_CUTS = ('end of turn', 'game over')  # pg_pos_cut values of a step-bot turn that was played through; 'first draw' stops it at a draw card (not a complete plan)
 
 
@@ -215,7 +217,7 @@ def check_chosen_plan(row, bot, rec, list_hash, expect_judge, require_frozen):
         if row.get('cut') != plan['end']:
             out.append(('cut_mismatch', f"the row says its plan ends with {row.get('cut')!r} but plan {n} of the current list ends with {plan['end']!r} (the end decides whether a complete plan exists)"))
         sr = row.get('stop_reason')
-        if sr == 'max_tokens' or (isinstance(sr, str) and sr.startswith('gemini:')):  # Gemini rows carry 'end_turn' only for status "completed", else 'gemini:<status>'
+        if sr == 'max_tokens' or (isinstance(sr, str) and sr.startswith(UNFINISHED_PREFIXES)):  # Gemini rows carry 'end_turn' only for status "completed" / finishReason STOP, else 'gemini:<status>' / 'vertex:<reason>'
             out.append(('truncated_reply', f'the reply did not finish (stop reason {sr!r}; the output cap includes thinking): the stored choice is not an intact answer'))
     else:
         pf = row.get('plan_full')
@@ -265,6 +267,8 @@ def check_rows(rows, expected, recs, require_frozen=True, baseline_sha256=None, 
             problems.append({**base, 'kind': 'list_integrity', 'detail': 'there is no plan list for this position to check the row against'})
         if row.get('dry_run') is not False:
             problems.append({**base, 'kind': 'dry_run', 'detail': f"`dry_run` must be exactly false (a dry-run record has no choice), got {row.get('dry_run')!r}"})
+        if row.get('mock'):
+            problems.append({**base, 'kind': 'mock_row', 'detail': 'the row was made by a --mock run (budget_judge.py): no model was called, so it can never be a result'})
         if bot != 'judge' and baseline_sha256 is not None and row.get('pg_pos_sha256') != baseline_sha256:
             problems.append({**base, 'kind': 'baseline_binary', 'detail': f"the row was not played by the frozen baseline executable (its sha256 {str(row.get('pg_pos_sha256'))[:16]})"})
         if bot == 'judge' and require_frozen and row.get('frozen') is not True:
@@ -427,7 +431,8 @@ def compare(rows, ids, bots, seeds, judge_repeats, references, recs, match, elig
             read_problems=(), position_games=None):
     """The whole path. Returns the report; raises BatchFailed (exit code 2) for on_problem='fail' when anything is unresolved.
     expect_judge(point, row) -> {'prompt_sha256', 'shown': {number printed in the prompt: plan number}, 'parse': reply text -> number or None,
-    'settings': {model, max_tokens, temperature, plus provider / thinking_level / thinking_summaries for a Gemini freeze}} (or {'error': text}) is required whenever the judge is a bot: it is how a judge row is tied to the prompt and
+    'settings': the freeze's judge settings, every key of which the row must record equal: {model, max_tokens, temperature} for the Anthropic freeze, plus provider and thinking_level
+    (and thinking_summaries for the Developer API) for a Gemini freeze} (or {'error': text}) is required whenever the judge is a bot: it is how a judge row is tied to the prompt and
     reply it was answered from. `full_match(row_labels, ref_labels, rec)` -> bool (the remainder after a chance event, label by label) is required for the full-plan
     agreement of the full-scope points.
     `position_games` = {point: game} from the positions file, cross-checked against the eligibility file's games."""
