@@ -1,0 +1,2 @@
+cwd /home/dacz8976/pincand
+nice -n 19 ionice -c3 python3 /home/dacz8976/pincand/rl/results/engine_switch_rules2_2026-10/floor_with.py /home/dacz8976/pincand_work/programs/F/deckgym 2d3709b272abf8a83431c3e72d59f9ff0e2c8ae3e60698f22a1ca79e65ab2085 /home/dacz8976/pincand/decks/screen/floor.py decks/brews/brew-09-sableye-obstagoon.txt --out /home/dacz8976/pincand_work/floor2F/B_brew-09

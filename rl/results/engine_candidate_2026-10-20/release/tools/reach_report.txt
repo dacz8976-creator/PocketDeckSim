@@ -1,0 +1,923 @@
+reach_scan.py at commit c1670e81: database.rs has 3879 cards
+
+== 0. Census id lists re-derived from database.rs (by ability / attack / trainer name) ==
+  (0 trainer/ability groups with ids outside the census list; attack-title extras are information only)
+
+== 1. Deck lists: 210 committed .txt files at c1670e81 parse as deck lists (>=3 card lines and an Energy line or 15-20 cards) ==
+
+Lists holding a hit-back holder:
+  decks/brews/brew-07-hoopa-darkrai-sableye.txt: 1x Mega Sableye ex B3b 041 (Cursed Jewel, hit back 40)
+  decks/brews/brew-09-sableye-obstagoon.txt: 2x Mega Sableye ex B3b 041 (Cursed Jewel, hit back 40)
+  rl/results/pause_games_new_2026-10-12/decks/KW261005_183108000.txt: 2x Mega Sableye ex B3b 041 (Cursed Jewel, hit back 40)
+  -> 3 lists
+
+== 2. Per-deck holders and receiving-side items (focus lists) ==
+  decks/brews/brew-06-pyukumuku-silvally-payback.txt (20 cards; Energy Psychic): holders: none
+      item [c1 IN] Rocky Helmet: 1x Rocky Helmet A2 148
+      item [c8 IN] Innards Out / Final Scream / Destiny Burst: 2x Pyukumuku A3 054
+      item [T3 NEVER] Giovanni / Red (unscoped turn boosts): 1x Red A2b 071
+  decks/brews/brew-06b-pyukumuku-silvally-scyther-grass.txt (20 cards; Energy Grass): holders: none
+      item [b5 IN] Protective Poncho: 1x Protective Poncho B2 147
+      item [c1 IN] Rocky Helmet: 1x Rocky Helmet A2 148
+      item [c8 IN] Innards Out / Final Scream / Destiny Burst: 2x Pyukumuku A3 054
+      item [T3 NEVER] Giovanni / Red (unscoped turn boosts): 1x Red A2b 071
+  decks/dustin/14-comfey-raticate-hypno.txt (20 cards; Energy Psychic): holders: none
+      no receiving-side, holder-side or trap item
+  decks/brews/brew-05b-meowstic-hatterene-comfey.txt (20 cards; Energy Psychic): holders: none
+      no receiving-side, holder-side or trap item
+      retreat changers: Peculiar Plaza B2 155
+  decks/dustin/07-skarmory-stall.txt (20 cards; Energy Metal): holders: none
+      item [a2 IN] Steel Apron: 1x Steel Apron A4 153
+      item [a3 IN] Metal Core Barrier: 2x Metal Core Barrier B2 148
+      item [a11/T1 NEVER] attack self-cuts (Guard Press, Stiffen, Steel Wing, ...): 2x Skarmory ex A4 124
+      item [a12/T2 NEVER] Blue / Adaman / Jasmine / Cheren / Beast Wall: 2x Jasmine A4 160
+      item [T3 NEVER] Giovanni / Red (unscoped turn boosts): 2x Red A2b 071
+  decks/dustin/12-ariados-whimsicott-ogerpon.txt (20 cards; Energy Grass): holders: none
+      no receiving-side, holder-side or trap item
+  decks/brews/brew-07-hoopa-darkrai-sableye.txt (20 cards; Energy Darkness): holders: Mega Sableye ex B3b 041
+      item [c14/T1 NEVER] the receiver's own new Counterattack (a holder attacking into a holder): 1x Mega Sableye ex B3b 041
+  decks/brews/brew-09-sableye-obstagoon.txt (20 cards; Energy Darkness): holders: Mega Sableye ex B3b 041
+      item [c14/T1 NEVER] the receiver's own new Counterattack (a holder attacking into a holder): 2x Mega Sableye ex B3b 041
+  rl/results/engine_switch_rules2_2026-10/floor_7c/d_first/draft-D-entei-grimhound.txt (20 cards; Energy Fire): holders: none
+      no receiving-side, holder-side or trap item
+  decks/brews/drafts_2026-10-01/draft-D-entei-grimhound.txt (20 cards; Energy Fire): holders: none
+      no receiving-side, holder-side or trap item
+  decks/screen/opponents/t-altaria.txt (20 cards; Energy Psychic): holders: none
+      item [either HOLDER_OPEN] Training Area +10 for Stage 1 (Stadium, both sides): 1x Training Area B2 153
+      retreat changers: Small Balloon B3b 064
+  decks/screen/opponents/t-blaziken.txt (20 cards; Energy Fire): holders: none
+      item [c1 IN] Rocky Helmet: 1x Rocky Helmet A2 148
+  decks/screen/opponents/t-hydreigon.txt (20 cards; Energy Darkness): holders: none
+      no receiving-side, holder-side or trap item
+  decks/screen/opponents/t-lucario.txt (20 cards; Energy Fighting): holders: none
+      item [b5 IN] Protective Poncho: 1x Protective Poncho B2 147
+      item [T3 NEVER] Growl family (cut put on the holder): 1x Bonsly B3 078
+  decks/screen/opponents/t-sceptile.txt (20 cards; Energy Grass): holders: none
+      no receiving-side, holder-side or trap item
+  decks/screen/opponents/t-suicune.txt (20 cards; Energy Water): holders: none
+      item [a11/T1 NEVER] attack self-cuts (Guard Press, Stiffen, Steel Wing, ...): 1x Frigibax P-B 037
+      Retreat>=3: Baxcalibur B2a 036 (Retreat 3)
+      retreat changers: Inflatable Boat A4a 067
+  decks/screen/opponents/t-vespiquen.txt (20 cards; Energy Grass): holders: none
+      item [a4 IN] Solid Shell -20: 2x Shuckle ex A4 021
+  decks/screen/opponents/t-weezing.txt (20 cards; Energy Darkness): holders: none
+      no receiving-side, holder-side or trap item
+      self-switch attackers: Team Rocket's Koffing B4a 042
+  decks/research/altaria.txt (20 cards; Energy Psychic): holders: none
+      item [either HOLDER_OPEN] Training Area +10 for Stage 1 (Stadium, both sides): 1x Training Area B2 153
+      retreat changers: Small Balloon B3b 064
+  decks/research/blaziken.txt (20 cards; Energy Fire): holders: none
+      item [c1 IN] Rocky Helmet: 1x Rocky Helmet A2 148
+  decks/research/hydreigon.txt (20 cards; Energy Darkness): holders: none
+      no receiving-side, holder-side or trap item
+  decks/research/lucario.txt (20 cards; Energy Fighting): holders: none
+      item [b5 IN] Protective Poncho: 1x Protective Poncho B2 147
+      item [T3 NEVER] Growl family (cut put on the holder): 1x Bonsly B3 078
+  decks/research/sceptile.txt (20 cards; Energy Grass): holders: none
+      no receiving-side, holder-side or trap item
+  decks/research/suicune.txt (20 cards; Energy Water): holders: none
+      item [a11/T1 NEVER] attack self-cuts (Guard Press, Stiffen, Steel Wing, ...): 1x Frigibax P-B 037
+      Retreat>=3: Baxcalibur B2a 036 (Retreat 3)
+      retreat changers: Inflatable Boat A4a 067
+  decks/research/vespiquen.txt (20 cards; Energy Grass): holders: none
+      item [a4 IN] Solid Shell -20: 2x Shuckle ex A4 021
+  decks/research/weezing.txt (20 cards; Energy Darkness): holders: none
+      no receiving-side, holder-side or trap item
+      self-switch attackers: Team Rocket's Koffing B4a 042
+  decks/brews/brew-01-arceus-crobat-xatu.txt (20 cards; Energy Psychic): holders: none
+      no receiving-side, holder-side or trap item
+  decks/brews/brew-02-arceus-tandemaus-persian.txt (20 cards; Energy Darkness): holders: none
+      no receiving-side, holder-side or trap item
+  decks/brews/brew-03a-arceus-nihilego-toxapex.txt (20 cards; Energy Darkness): holders: none
+      item [c1 IN] Rocky Helmet: 1x Rocky Helmet A4b 322
+      item [c3 IN] Poison Barb: 1x Poison Barb A3 146
+  decks/brews/brew-03b-arceus-crobat-nihilego-toxapex.txt (20 cards; Energy Darkness): holders: none
+      no receiving-side, holder-side or trap item
+  decks/brews/brew-04-xatu-slowking.txt (20 cards; Energy Psychic): holders: none
+      item [c10 IN] Lucky Egg: 1x Lucky Egg B3 148
+      Retreat>=3: Team Rocket's Slowking ex B4a 026 (Retreat 3)
+      self-switch attackers: Team Rocket's Koffing B4a 042
+  decks/brews/brew-05-meowstic-hatterene-confusion.txt (20 cards; Energy Psychic): holders: none
+      no receiving-side, holder-side or trap item
+  decks/brews/brew-08-entei-rainbow-cave.txt (20 cards; Energy Fire): holders: none
+      no receiving-side, holder-side or trap item
+  decks/brews/brew-10-diancie-giratina.txt (20 cards; Energy Psychic): holders: none
+      no receiving-side, holder-side or trap item
+      retreat changers: Peculiar Plaza B2 155
+  decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt (20 cards; Energy Water): holders: none
+      no receiving-side, holder-side or trap item
+  decks/brews/drafts_2026-10-01/draft-A-wallace.txt (20 cards; Energy Water): holders: none
+      no receiving-side, holder-side or trap item
+  decks/brews/drafts_2026-10-01/draft-B-tide-heal.txt (20 cards; Energy Water): holders: none
+      no receiving-side, holder-side or trap item
+      Retreat>=3: Wailmer B1 056 (Retreat 3), Wailord B1 057 (Retreat 4)
+  decks/brews/drafts_2026-10-01/draft-C-meowstic-hatterene-v2.txt (20 cards; Energy Psychic): holders: none
+      no receiving-side, holder-side or trap item
+      retreat changers: Peculiar Plaza B2 155
+  decks/computer/blastoise-wailord-deluxe.txt (20 cards; Energy Water): holders: none
+      item [b4 IN] Celestial Blessing / Carefree Steps (coin): 1x Meowth B2 124
+      item [b6 IN] Shell Shield (cannot happen in practice): 2x Wartortle B1a 018
+      Retreat>=3: Baxcalibur B2a 036 (Retreat 3), Mega Blastoise ex B1a 020 (Retreat 3), Wailmer B4 036 (Retreat 3), Wailord ex B4 037 (Retreat 4)
+  decks/dustin/01-kingambit-as-played.txt (20 cards; Energy Darkness): holders: none
+      item [a1 IN] Heavy Helmet: 1x Heavy Helmet B1 219
+      item [c15 UNCHANGED] Fade into Darkness / Shattering Crystal (any KO): 2x Glimmora B3a 045
+      Retreat>=3: Alolan Muk B2 097 (Retreat 3), Kingambit B3a 043 (Retreat 3), Regigigas B3 134 (Retreat 4)
+  decks/dustin/01-muk-glimmora-kingambit-regigigas.txt (20 cards; Energy Darkness): holders: none
+      item [a1 IN] Heavy Helmet: 1x Heavy Helmet B1 219
+      item [c15 UNCHANGED] Fade into Darkness / Shattering Crystal (any KO): 2x Glimmora B3a 045
+      Retreat>=3: Alolan Muk B2 097 (Retreat 3), Kingambit B3a 043 (Retreat 3), Regigigas B3 134 (Retreat 4)
+  decks/dustin/02-arceus-crobat.txt (20 cards; Energy Darkness): holders: none
+      item [c10 IN] Lucky Egg: 1x Lucky Egg B3 148
+  decks/dustin/03-wailord-indeedee-wall.txt (20 cards; Energy Water): holders: none
+      item [a1 IN] Heavy Helmet: 2x Heavy Helmet B1 219
+      Retreat>=3: Wailmer B4 036 (Retreat 3), Wailord B1 057 (Retreat 4), Wailord ex B4 037 (Retreat 4)
+  decks/dustin/04-absol-hoopa-darkrai.txt (20 cards; Energy Darkness): holders: none
+      no receiving-side, holder-side or trap item
+  decks/dustin/05-indeedee-stoutland.txt (20 cards; Energy Psychic): holders: none
+      item [b5 IN] Protective Poncho: 1x Protective Poncho B2 147
+      item [a12/T2 NEVER] Blue / Adaman / Jasmine / Cheren / Beast Wall: 1x Cheren B3 151
+  decks/dustin/06-mega-blaziken-tournament-list.txt (20 cards; Energy Fire): holders: none
+      item [c1 IN] Rocky Helmet: 1x Rocky Helmet A2 148
+  decks/dustin/08-garchomp-toolbox.txt (20 cards; Energy Water, Fighting): holders: none
+      item [b10 NEVER] Illusive Trickery / Mach Stealth: 2x Garchomp B4a 054
+      retreat changers: Small Balloon B3b 064
+  decks/dustin/09-mega-manectric-heliolisk.txt (20 cards; Energy Lightning): holders: none
+      item [either HOLDER_OPEN] Training Area +10 for Stage 1 (Stadium, both sides): 1x Training Area B2 153
+  decks/dustin/10-xatu-oricorio-tr-weezing.txt (20 cards; Energy Psychic): holders: none
+      item [c3 IN] Poison Barb: 2x Poison Barb A3 146
+      self-switch attackers: Team Rocket's Koffing B4a 042
+  decks/dustin/11-archaludon-haxorus-dragonair.txt (20 cards; Energy Fighting, Metal): holders: none
+      item [a11/T1 NEVER] attack self-cuts (Guard Press, Stiffen, Steel Wing, ...): 1x Archaludon B4a 056
+      Retreat>=3: Archaludon B4a 056 (Retreat 3)
+  decks/dustin/13-a-ninetales-raticate.txt (20 cards; Energy Water): holders: none
+      no receiving-side, holder-side or trap item
+  decks/dustin/15-jolteon-oricorio-raticate.txt (20 cards; Energy Lightning): holders: none
+      item [b1 IN] Safeguard: 1x Oricorio A3 066
+  decks/variants-2026-09-23/altaria_jlng_pmpt44_2026-08-29.txt (20 cards; Energy Psychic): holders: none
+      item [either HOLDER_OPEN] Training Area +10 for Stage 1 (Stadium, both sides): 1x Training Area B2 153
+      retreat changers: Small Balloon B3b 064
+  decks/variants-2026-09-23/altaria_lanora_blockdragon_2026-09-10.txt (20 cards; Energy Psychic): holders: none
+      item [either HOLDER_OPEN] Training Area +10 for Stage 1 (Stadium, both sides): 1x Training Area B2 153
+      retreat changers: Small Balloon B3b 064
+  decks/variants-2026-09-23/vespiquen_kovacs469_pokebounty_2026-09-14.txt (20 cards; Energy Grass): holders: none
+      item [a4 IN] Solid Shell -20: 2x Shuckle ex A4 021
+  decks/variants-2026-09-23/vespiquen_twidleurstixx_breakfastclub_2026-09-02.txt (20 cards; Energy Grass): holders: none
+      item [a4 IN] Solid Shell -20: 2x Shuckle ex A4 021
+  decks/variants-2026-10-15/13-a-big-malasada.txt (20 cards; Energy Water): holders: none
+      no receiving-side, holder-side or trap item
+  decks/variants-2026-10-15/13-a-giant-cape.txt (20 cards; Energy Water): holders: none
+      no receiving-side, holder-side or trap item
+
+== 3. Every committed list holding a BROUGHT-IN receiving item (could move only against a holder) ==
+  a1 Heavy Helmet (IN): 34 lists
+      decks/dustin/01-kingambit-as-played.txt [1x Heavy Helmet B1 219]
+      decks/dustin/01-muk-glimmora-kingambit-regigigas.txt [1x Heavy Helmet B1 219]
+      decks/dustin/03-wailord-indeedee-wall.txt [2x Heavy Helmet B1 219]
+      rl/results/engine_switch_rules_2026-10/carriers/alternates/hisuian_goodra.txt [1x Heavy Helmet B1 219]
+      rl/results/next_pilot_2026-10/stageA_2026-10-16/blind_read/inputs/his_list.txt [1x Heavy Helmet B1 219]
+      rl/results/pause_games_decisions_2026-10-02/decks/deck03.txt [2x Heavy Helmet B1 219]
+      rl/results/pause_games_decisions_2026-10-02/harness/test_oct13/KW261013_010837000.txt [1x Heavy Helmet B1 219]
+      rl/results/pause_games_decisions_2026-10-02/reconstructed_decks/R032418.txt [1x Heavy Helmet B1 219]
+      rl/results/pause_games_new_2026-10-12/decks/KW261005_123812000.txt [1x Heavy Helmet B1 219]
+      rl/results/pause_games_new_2026-10-12/decks/KW261005_124532000.txt [1x Heavy Helmet B1 219]
+      rl/results/pause_games_new_2026-10-13/decks/KW261012_010706000.txt [1x Heavy Helmet B1 219]
+      rl/results/pause_games_new_2026-10-13/decks/KW261012_203719000.txt [1x Heavy Helmet B1 219]
+      rl/results/pause_games_new_2026-10-13/decks/KW261012_210041000.txt [1x Heavy Helmet B1 219]
+      rl/results/pause_games_new_2026-10-13/decks/KW261012_210823000.txt [1x Heavy Helmet B1 219]
+      rl/results/pause_games_new_2026-10-13/decks/KW261012_225319000.txt [1x Heavy Helmet B1 219]
+      rl/results/pause_games_new_2026-10-13/decks/KW261012_230258000.txt [1x Heavy Helmet B1 219]
+      rl/results/pause_games_new_2026-10-13/decks/KW261013_010003000.txt [1x Heavy Helmet B1 219]
+      rl/results/pause_games_new_2026-10-13/decks/KW261013_010837000.txt [1x Heavy Helmet B1 219]
+      rl/results/pause_games_new_2026-10-13/decks/KW261013_014423000.txt [1x Heavy Helmet B1 219]
+      rl/results/pause_games_new_2026-10-13/decks/KW261013_015011000.txt [1x Heavy Helmet B1 219]
+      rl/results/pause_games_new_2026-10-13/decks/KW261013_015659000.txt [1x Heavy Helmet B1 219]
+      rl/results/pause_games_new_2026-10-13/decks/KW261013_020824000.txt [1x Heavy Helmet B1 219]
+      rl/results/pause_games_new_2026-10-13/v2/decks/KW261012_010706000.txt [1x Heavy Helmet B1 219]
+      rl/results/pause_games_new_2026-10-13/v2/decks/KW261012_203719000.txt [1x Heavy Helmet B1 219]
+      rl/results/pause_games_new_2026-10-13/v2/decks/KW261012_210041000.txt [1x Heavy Helmet B1 219]
+      rl/results/pause_games_new_2026-10-13/v2/decks/KW261012_210823000.txt [1x Heavy Helmet B1 219]
+      rl/results/pause_games_new_2026-10-13/v2/decks/KW261012_225319000.txt [1x Heavy Helmet B1 219]
+      rl/results/pause_games_new_2026-10-13/v2/decks/KW261012_230258000.txt [1x Heavy Helmet B1 219]
+      rl/results/pause_games_new_2026-10-13/v2/decks/KW261013_010003000.txt [1x Heavy Helmet B1 219]
+      rl/results/pause_games_new_2026-10-13/v2/decks/KW261013_010837000.txt [1x Heavy Helmet B1 219]
+      rl/results/pause_games_new_2026-10-13/v2/decks/KW261013_014423000.txt [1x Heavy Helmet B1 219]
+      rl/results/pause_games_new_2026-10-13/v2/decks/KW261013_015011000.txt [1x Heavy Helmet B1 219]
+      rl/results/pause_games_new_2026-10-13/v2/decks/KW261013_015659000.txt [1x Heavy Helmet B1 219]
+      rl/results/pause_games_new_2026-10-13/v2/decks/KW261013_020824000.txt [1x Heavy Helmet B1 219]
+  a13 Guarded Grill / Securely Sheltered (coin) (IN): 1 lists
+      rl/results/engine_switch_rules_2026-10/carriers/alternates/hisuian_goodra.txt [2x Hisuian Goodra B3b 050]
+  a2 Steel Apron (IN): 3 lists
+      decks/dustin/07-skarmory-stall.txt [1x Steel Apron A4 153]
+      rl/results/pause_games_new_2026-10-12/decks/KW261005_033529000.txt [1x Steel Apron A4 153]
+      rl/results/pause_games_new_2026-10-12/decks/KW261005_034953000.txt [2x Steel Apron A4 153]
+  a3 Metal Core Barrier (IN): 7 lists
+      decks/dustin/07-skarmory-stall.txt [2x Metal Core Barrier B2 148]
+      decks/gauntlet_2026-09-26/g-mega_scizor_revavroom.txt [2x Metal Core Barrier B2 148]
+      engine/example_decks/metal-barrier.txt [2x Metal Core Barrier B2 148]
+      rl/results/pause_games_new_2026-10-12/decks/KW261005_032023000.txt [2x Metal Core Barrier B2 148]
+      rl/results/pause_games_new_2026-10-12/decks/KW261005_032857000.txt [2x Metal Core Barrier B2 148]
+      rl/results/pause_games_new_2026-10-12/decks/KW261005_033529000.txt [2x Metal Core Barrier B2 148]
+      rl/results/pause_games_new_2026-10-12/decks/KW261005_034953000.txt [1x Metal Core Barrier B2 148]
+  a4 Exoskeleton -20 (IN): 1 lists
+      engine/example_decks/donphan.txt [1x Donphan A4a 044]
+  a4 Fur Coat -20 (IN): 2 lists
+      engine/example_decks/great_tusk_koraidon.txt [2x Furfrou B1a 065]
+      engine/example_decks/metal-barrier.txt [2x Furfrou B1a 065]
+  a4 Solid Shell -20 (IN): 4 lists
+      decks/research/vespiquen.txt [2x Shuckle ex A4 021]
+      decks/screen/opponents/t-vespiquen.txt [2x Shuckle ex A4 021]
+      decks/variants-2026-09-23/vespiquen_kovacs469_pokebounty_2026-09-14.txt [2x Shuckle ex A4 021]
+      decks/variants-2026-09-23/vespiquen_twidleurstixx_breakfastclub_2026-09-02.txt [2x Shuckle ex A4 021]
+  a6 Resilience Link -30 (IN): 1 lists
+      rl/results/pause_games_new_2026-10-12/decks/KW261005_034953000.txt [1x Magnezone A2a 055]
+  b1 Safeguard (IN): 8 lists
+      decks/dustin/15-jolteon-oricorio-raticate.txt [1x Oricorio A3 066]
+      engine/example_decks/benchmark-electric.txt [2x Oricorio A3 066]
+      engine/example_decks/silvally.txt [2x Oricorio A3 066]
+      engine/example_decks/zerakoko.txt [2x Oricorio A3 066]
+      rl/results/engine_switch_rules_2026-10/carriers/alternates/houndoom_victini.txt [1x Oricorio A3 066]
+      rl/results/kt_carrier_census_2026-09-26/decks/c-jumpluff_ex_team_rocket_s_electrode.txt [1x Oricorio A3 066]
+      rl/results/kt_carrier_census_2026-09-26/decks/c-magnezone_ex_magnezone.txt [2x Oricorio A3 066]
+      rl/results/pause_games_decisions_2026-10-02/reconstructed_decks/R232617.txt [1x Oricorio A3 066]
+  b2 Disguise (IN): 1 lists
+      engine/example_decks/mega-garde.txt [2x Mimikyu ex B2 073]
+  b4 Celestial Blessing / Carefree Steps (coin) (IN): 10 lists
+      decks/computer/blastoise-wailord-deluxe.txt [1x Meowth B2 124]
+      engine/example_decks/coinflip_deck.txt [1x Meowth B2 204]
+      rl/results/coin_prevention_repair_2026-09-30/smoke/meowth_carefree.txt [2x Meowth B2 124]
+      rl/results/coin_prevention_round2_2026-10-01/smoke/meowth_carefree.txt [2x Meowth B2 124]
+      rl/results/engine_switch_rules_2026-10/carriers/alternates/togekiss_meowth.txt [2x Togekiss A4 080, 2x Meowth B2 124]
+      rl/results/engine_switch_rules_2026-10/carriers/garchomp_meowth.txt [2x Meowth B2 124]
+      rl/results/engine_switch_rules_2026-10/scratch_8b/meowth_carefree.txt [2x Meowth B2 124]
+      rl/results/pause_games_decisions_2026-10-02/decks/computer/blastoise-wailord-deluxe.txt [1x Meowth B2 124]
+      rl/results/pause_games_new_2026-10-12/decks/KW261005_031138000.txt [2x Togekiss A4 080]
+      rl/results/pause_games_new_2026-10-12/decks/KW261006_012927000.txt [1x Meowth B2 124]
+  b5 Protective Poncho (IN): 15 lists
+      decks/brews/brew-06b-pyukumuku-silvally-scyther-grass.txt [1x Protective Poncho B2 147]
+      decks/dustin/05-indeedee-stoutland.txt [1x Protective Poncho B2 147]
+      decks/gauntlet_2026-09-26/v-lucario_swap2.txt [1x Protective Poncho B2 147]
+      decks/research/lucario.txt [1x Protective Poncho B2 147]
+      decks/screen/opponents/t-lucario.txt [1x Protective Poncho B2 147]
+      decks/screen/panel_ladder_2026-09-26/l-charizardy.txt [1x Protective Poncho B2 147]
+      engine/example_decks/igglybuff-mega-gengar.txt [1x Protective Poncho B2 147]
+      engine/example_decks/mega-garde.txt [1x Protective Poncho B2 147]
+      engine/example_decks/swampert-kanga-ninetails.txt [1x Protective Poncho B2 147]
+      rl/results/b2e_card_check_2026-09-26/decks/h-garchomp.txt [1x Protective Poncho B2 147]
+      rl/results/kt_carrier_census_2026-09-26/decks/c-magnezone_ex_magnezone.txt [1x Protective Poncho B2 147]
+      rl/results/kt_carrier_census_2026-09-26/decks/c-mega_altaria_ex_igglybuff.txt [1x Protective Poncho B2 147]
+      rl/results/kt_carrier_census_2026-09-26/decks/c-mega_lucario_ex_lucario.txt [1x Protective Poncho B2 147]
+      rl/results/limitless_skill_model_2026-09-25/decklists/charizardy_entei.txt [1x Protective Poncho B2 147]
+      rl/results/limitless_skill_model_2026-09-25/decklists/garchomp.txt [1x Protective Poncho B2 147]
+  b6 Shell Shield (cannot happen in practice) (IN): 2 lists
+      decks/computer/blastoise-wailord-deluxe.txt [2x Wartortle B1a 018]
+      rl/results/pause_games_decisions_2026-10-02/decks/computer/blastoise-wailord-deluxe.txt [2x Wartortle B1a 018]
+  c1 Rocky Helmet (IN): 36 lists
+      decks/brews/brew-03a-arceus-nihilego-toxapex.txt [1x Rocky Helmet A4b 322]
+      decks/brews/brew-06-pyukumuku-silvally-payback.txt [1x Rocky Helmet A2 148]
+      decks/brews/brew-06b-pyukumuku-silvally-scyther-grass.txt [1x Rocky Helmet A2 148]
+      decks/dustin/06-mega-blaziken-tournament-list.txt [1x Rocky Helmet A2 148]
+      decks/research/blaziken.txt [1x Rocky Helmet A2 148]
+      decks/screen/opponents/t-blaziken.txt [1x Rocky Helmet A2 148]
+      engine/example_decks/altaria.txt [2x Rocky Helmet A2 148]
+      engine/example_decks/benchmark-electric.txt [1x Rocky Helmet A2 148]
+      engine/example_decks/chande-cofa.txt [1x Rocky Helmet A2 148]
+      engine/example_decks/coinflip_deck.txt [2x Rocky Helmet A2 148]
+      engine/example_decks/flareon.txt [1x Rocky Helmet A2 148]
+      engine/example_decks/galarian-obstagoon.txt [1x Rocky Helmet A2 148]
+      engine/example_decks/giratina-darkrai.txt [2x Rocky Helmet A2 148]
+      engine/example_decks/mega-absol-hydreigon.txt [2x Rocky Helmet A2 148]
+      engine/example_decks/solgaleo_shiinotic.txt [1x Rocky Helmet A2 148]
+      engine/example_decks/solgaleo_sylveon.txt [1x Rocky Helmet A2 148]
+      engine/example_decks/venu-leafon.txt [2x Rocky Helmet A2 148]
+      engine/example_decks/venu-serperior.txt [2x Rocky Helmet A2 148]
+      rl/results/coin_prevention_repair_2026-09-30/smoke/fire_heatmor.txt [1x Rocky Helmet A2 148]
+      rl/results/coin_prevention_repair_2026-09-30/smoke/meowth_carefree.txt [1x Rocky Helmet A2 148]
+      rl/results/coin_prevention_round2_2026-10-01/smoke/fire_heatmor.txt [1x Rocky Helmet A2 148]
+      rl/results/coin_prevention_round2_2026-10-01/smoke/meowth_carefree.txt [1x Rocky Helmet A2 148]
+      rl/results/engine_switch_rules_2026-10/scratch_8b/fire_heatmor.txt [1x Rocky Helmet A2 148]
+      rl/results/engine_switch_rules_2026-10/scratch_8b/fire_victini.txt [1x Rocky Helmet A2 148]
+      rl/results/engine_switch_rules_2026-10/scratch_8b/meowth_carefree.txt [1x Rocky Helmet A2 148]
+      rl/results/engine_switch_rules_2026-10/scratch_8b/psychic_confuse.txt [1x Rocky Helmet A2 148]
+      rl/results/kt_carrier_census_2026-09-26/decks/c-jumpluff_ex_team_rocket_s_electrode.txt [2x Rocky Helmet A2 148]
+      rl/results/pause_games_decisions_2026-10-02/harness/test_oct13/KW261013_030351000.txt [1x Rocky Helmet A2 148]
+      rl/results/pause_games_decisions_2026-10-02/harness/test_oct14/KW261013_030351000.txt [1x Rocky Helmet A2 148]
+      rl/results/pause_games_new_2026-10-12/decks/KW261004_215749000.txt [1x Rocky Helmet A2 148]
+      rl/results/pause_games_new_2026-10-13/decks/KW261013_022530000.txt [1x Rocky Helmet A2 148]
+      rl/results/pause_games_new_2026-10-13/decks/KW261013_030351000.txt [1x Rocky Helmet A2 148]
+      rl/results/pause_games_new_2026-10-13/v2/decks/KW261013_022530000.txt [1x Rocky Helmet A2 148]
+      rl/results/pause_games_new_2026-10-13/v2/decks/KW261013_030351000.txt [1x Rocky Helmet A2 148]
+      rl/results/victory_star_repair_2026-09-30/smoke/fire_victini.txt [1x Rocky Helmet A2 148]
+      rl/results/victory_star_repair_2026-09-30/smoke/psychic_confuse.txt [1x Rocky Helmet A2 148]
+  c10 Lucky Egg (IN): 2 lists
+      decks/brews/brew-04-xatu-slowking.txt [1x Lucky Egg B3 148]
+      decks/dustin/02-arceus-crobat.txt [1x Lucky Egg B3 148]
+  c12 Electrical Cord (fires today already) (ALREADY): 1 lists
+      engine/example_decks/benchmark-electric.txt [2x Electrical Cord A3a 065]
+  c2 Counterattack / Rough Skin / Steel Spikes / Automated Combat (20 back) (IN): 6 lists
+      rl/results/pause_games_decisions_2026-10-02/harness/test_oct13/KW261013_030351000.txt [1x Druddigon A1a 056]
+      rl/results/pause_games_decisions_2026-10-02/harness/test_oct14/KW261013_030351000.txt [1x Druddigon A1a 056]
+      rl/results/pause_games_new_2026-10-13/decks/KW261013_022530000.txt [1x Druddigon A1a 056]
+      rl/results/pause_games_new_2026-10-13/decks/KW261013_030351000.txt [1x Druddigon A1a 056]
+      rl/results/pause_games_new_2026-10-13/v2/decks/KW261013_022530000.txt [1x Druddigon A1a 056]
+      rl/results/pause_games_new_2026-10-13/v2/decks/KW261013_030351000.txt [1x Druddigon A1a 056]
+  c3 Poison Barb (IN): 8 lists
+      decks/brews/brew-03a-arceus-nihilego-toxapex.txt [1x Poison Barb A3 146]
+      decks/dustin/10-xatu-oricorio-tr-weezing.txt [2x Poison Barb A3 146]
+      engine/example_decks/flareon.txt [1x Poison Barb A3 146]
+      engine/example_decks/guzzlord.txt [2x Poison Barb A3 146]
+      engine/tests/fixtures/result-deck-a.txt [2x Poison Barb A3 146]
+      rl/results/pause_games_new_2026-10-12/decks/KW261005_123812000.txt [1x Poison Barb A3 146]
+      rl/results/pause_games_new_2026-10-12/decks/KW261005_124532000.txt [1x Poison Barb A3 146]
+      rl/results/pause_games_new_2026-10-12/decks/KW261005_183108000.txt [2x Poison Barb A3 146]
+  c6 Guts (coin) (IN): 3 lists
+      rl/results/pause_games_new_2026-10-12/decks/KW261006_020518000.txt [1x Conkeldurr A3 096]
+      rl/results/pause_games_new_2026-10-12/decks/KW261010_012303000.txt [1x Conkeldurr A3 096]
+      rl/results/pause_games_new_2026-10-12/decks/KW261010_013009000.txt [1x Conkeldurr A3 096]
+  c8 Innards Out / Final Scream / Destiny Burst (IN): 3 lists
+      decks/brews/brew-06-pyukumuku-silvally-payback.txt [2x Pyukumuku A3 054]
+      decks/brews/brew-06b-pyukumuku-silvally-scyther-grass.txt [2x Pyukumuku A3 054]
+      rl/results/kt_carrier_census_2026-09-26/decks/c-jumpluff_ex_team_rocket_s_electrode.txt [2x Team Rocket's Electrode B4a 020]
+
+== 4. Recorded tables: does any pairing reach the change? ==
+  70 committed pairs files (held_file/panel_file); 16 of them replayed by the candidate pass or rules switch 2
+
+  rl/results/engine_switch_rules2_2026-10/classify_check_8b/handoff_8b.tsv [older table; 25 rows, 2 distinct pairings]: 0 pairing(s) REACH
+   pairing 8b: decks/brews/brew-09-sableye-obstagoon.txt v decks/screen/opponents/t-altaria.txt
+    holder-side Training Area +10 for Stage 1 (Stadium, both sides) [HOLDER_OPEN] (Mega Sableye ex B3b 041): receiving list: 1x Training Area B2 153; cannot: holder stage 0
+
+  rl/results/engine_switch_rules2_2026-10/early_warning_8b/pairs_8b.tsv [older table; 6 rows, 6 distinct pairings]: 0 pairing(s) REACH
+   pairing 36: decks/brews/brew-07-hoopa-darkrai-sableye.txt v decks/screen/opponents/t-altaria.txt
+    holder-side Training Area +10 for Stage 1 (Stadium, both sides) [HOLDER_OPEN] (Mega Sableye ex B3b 041): receiving list: 1x Training Area B2 153; cannot: holder stage 0
+   pairing 37: decks/brews/brew-09-sableye-obstagoon.txt v decks/screen/opponents/t-altaria.txt
+    holder-side Training Area +10 for Stage 1 (Stadium, both sides) [HOLDER_OPEN] (Mega Sableye ex B3b 041): receiving list: 1x Training Area B2 153; cannot: holder stage 0
+
+  rl/results/engine_switch_rules2_2026-10/handoff_8b_cloud_k3.tsv [older table; 12 rows, 2 distinct pairings]: 0 pairing(s) REACH
+   pairing 8b: decks/brews/brew-09-sableye-obstagoon.txt v decks/screen/opponents/t-altaria.txt
+    holder-side Training Area +10 for Stage 1 (Stadium, both sides) [HOLDER_OPEN] (Mega Sableye ex B3b 041): receiving list: 1x Training Area B2 153; cannot: holder stage 0
+
+  rl/results/engine_switch_rules2_2026-10/handoff_8b_cloud_km3.tsv [older table; 13 rows, 2 distinct pairings]: 0 pairing(s) REACH
+   pairing 8b: decks/brews/brew-09-sableye-obstagoon.txt v decks/screen/opponents/t-altaria.txt
+    holder-side Training Area +10 for Stage 1 (Stadium, both sides) [HOLDER_OPEN] (Mega Sableye ex B3b 041): receiving list: 1x Training Area B2 153; cannot: holder stage 0
+
+  rl/results/engine_switch_rules2_2026-10/handoff_8c.tsv [older table; 1133 rows, 20 distinct pairings]: 0 pairing(s) REACH
+   pairing 8b: decks/brews/brew-09-sableye-obstagoon.txt v decks/screen/opponents/t-altaria.txt
+    holder-side Training Area +10 for Stage 1 (Stadium, both sides) [HOLDER_OPEN] (Mega Sableye ex B3b 041): receiving list: 1x Training Area B2 153; cannot: holder stage 0
+
+  rl/results/engine_switch_rules2_2026-10/pairs_8b_cloud.tsv [REPLAYED by candidate/rules2; 6 rows, 6 distinct pairings]: 0 pairing(s) REACH
+   pairing 36: decks/brews/brew-07-hoopa-darkrai-sableye.txt v decks/screen/opponents/t-altaria.txt
+    holder-side Training Area +10 for Stage 1 (Stadium, both sides) [HOLDER_OPEN] (Mega Sableye ex B3b 041): receiving list: 1x Training Area B2 153; cannot: holder stage 0
+   pairing 37: decks/brews/brew-09-sableye-obstagoon.txt v decks/screen/opponents/t-altaria.txt
+    holder-side Training Area +10 for Stage 1 (Stadium, both sides) [HOLDER_OPEN] (Mega Sableye ex B3b 041): receiving list: 1x Training Area B2 153; cannot: holder stage 0
+     replayed by rl/results/engine_candidate_2026-10-20/games/new/08a9b3a_8b_cloud_new_k3.cmd (pairings 32,33,34,35,36,37)
+     replayed by rl/results/engine_candidate_2026-10-20/games/new/08a9b3a_8b_cloud_new_km3.cmd (pairings 32,33,34,35,36,37)
+
+  rl/results/round2_readiness_2026-10-02/counter_smoke_p2/pairs.tsv [older table; 4 rows, 4 distinct pairings]: 1 pairing(s) REACH
+   pairing 0: decks/brews/brew-07-hoopa-darkrai-sableye.txt v decks/screen/opponents/t-altaria.txt
+    holder-side Training Area +10 for Stage 1 (Stadium, both sides) [HOLDER_OPEN] (Mega Sableye ex B3b 041): receiving list: 1x Training Area B2 153; cannot: holder stage 0
+   pairing 1: decks/brews/brew-09-sableye-obstagoon.txt v decks/screen/opponents/t-altaria.txt
+    holder-side Training Area +10 for Stage 1 (Stadium, both sides) [HOLDER_OPEN] (Mega Sableye ex B3b 041): receiving list: 1x Training Area B2 153; cannot: holder stage 0
+   pairing 2: decks/brews/brew-09-sableye-obstagoon.txt v decks/screen/opponents/t-sceptile.txt
+    holder side decks/brews/brew-09-sableye-obstagoon.txt: the receiving list decks/screen/opponents/t-sceptile.txt holds NO receiving-side item -> cannot reach
+   pairing 3: decks/brews/brew-07-hoopa-darkrai-sableye.txt v decks/screen/opponents/t-blaziken.txt  ** REACHES **
+    REACH  holder Mega Sableye ex B3b 041 (decks/brews/brew-07-hoopa-darkrai-sableye.txt) <- c1 Rocky Helmet [IN] on decks/screen/opponents/t-blaziken.txt: 1x Rocky Helmet A2 148; 
+
+  pairs files with NO holder in any pairing (63): cannot reach the change
+    rl/results/b2e_card_check_2026-09-26/b2e_pairings.tsv  [REPLAYED]
+    rl/results/coin_prevention_repair_2026-09-30/smoke/pairs.tsv
+    rl/results/coin_prevention_round2_2026-10-01/p3_smoke/pairs.tsv
+    rl/results/coin_prevention_round2_2026-10-01/smoke/pairs.tsv
+    rl/results/engine_switch_2026-09-28/touched/touched.tsv
+    rl/results/engine_switch_rules2_2026-10/handoff_7c_km3.tsv
+    rl/results/engine_switch_rules2_2026-10/handoff_8_k3.tsv
+    rl/results/engine_switch_rules2_2026-10/handoff_8_km3.tsv
+    rl/results/engine_switch_rules2_2026-10/handoff_8_will_k3.tsv
+    rl/results/engine_switch_rules2_2026-10/handoff_8_will_km3.tsv
+    rl/results/engine_switch_rules2_2026-10/handoff_8b_new2_k3.tsv
+    rl/results/engine_switch_rules2_2026-10/handoff_8b_new2_km3.tsv
+    rl/results/engine_switch_rules2_2026-10/handoff_9_km3.tsv
+    rl/results/engine_switch_rules2_2026-10/pairs_7c2.tsv  [REPLAYED]
+    rl/results/engine_switch_rules2_2026-10/pairs_8b2.tsv  [REPLAYED]
+    rl/results/engine_switch_rules2_2026-10/pairs_will.tsv  [REPLAYED]
+    rl/results/engine_switch_rules_2026-10/handoff_8_k3.tsv
+    rl/results/engine_switch_rules_2026-10/handoff_8_km3.tsv
+    rl/results/engine_switch_rules_2026-10/handoff_8b_k3.tsv
+    rl/results/engine_switch_rules_2026-10/handoff_8b_km3.tsv
+    rl/results/engine_switch_rules_2026-10/handoff_8c.tsv
+    rl/results/engine_switch_rules_2026-10/pairs_7c.tsv  [REPLAYED]
+    rl/results/engine_switch_rules_2026-10/pairs_8.tsv  [REPLAYED]
+    rl/results/gauntlet_runs_2026-09-26/tsv/id_charizardy_main.tsv
+    rl/results/gauntlet_runs_2026-09-26/tsv/id_lucario_main.tsv
+    rl/results/gauntlet_runs_2026-09-26/tsv/id_suicune_main.tsv
+    rl/results/gauntlet_runs_2026-09-26/tsv/id_weezing_main.tsv
+    rl/results/gauntlet_runs_2026-09-26/tsv/new_decks.tsv  [REPLAYED]
+    rl/results/gauntlet_runs_2026-09-26/tsv/new_decks_run.tsv
+    rl/results/gauntlet_runs_2026-09-26/tsv/var_l-charizardy.tsv  [REPLAYED]
+    rl/results/gauntlet_runs_2026-09-26/tsv/var_v-charizardy_swap1.tsv
+    rl/results/gauntlet_runs_2026-09-26/tsv/var_v-charizardy_swap2.tsv
+    rl/results/gauntlet_runs_2026-09-26/tsv/var_v-lucario_2.tsv  [REPLAYED]
+    rl/results/gauntlet_runs_2026-09-26/tsv/var_v-lucario_swap1.tsv
+    rl/results/gauntlet_runs_2026-09-26/tsv/var_v-lucario_swap2.tsv
+    rl/results/gauntlet_runs_2026-09-26/tsv/var_v-suicune_2.tsv  [REPLAYED]
+    rl/results/gauntlet_runs_2026-09-26/tsv/var_v-suicune_swap1.tsv
+    rl/results/gauntlet_runs_2026-09-26/tsv/var_v-suicune_swap2.tsv
+    rl/results/gauntlet_runs_2026-09-26/tsv/var_v-weezing_2.tsv  [REPLAYED]
+    rl/results/gauntlet_runs_2026-09-26/tsv/var_v-weezing_swap1.tsv
+    rl/results/gauntlet_runs_2026-09-26/tsv/var_v-weezing_swap2.tsv
+    rl/results/km_tables_2026-09-30/pairs/d_lucario_block.tsv
+    rl/results/koa_2026-09-26/reading/variant7.tsv
+    rl/results/koa_2026-09-26/reading/variant_self.tsv
+    rl/results/kt_tables_2026-09-28/d_rayquaza.tsv
+    rl/results/kta_tables_2026-09-29/pairs/dev_b2e.tsv
+    rl/results/kta_tables_2026-09-29/pairs/dev_d_rayquaza.tsv  [REPLAYED]
+    rl/results/kta_tables_2026-09-29/pairs/dev_new_decks.tsv
+    rl/results/kta_tables_2026-09-29/pairs/dev_table28.tsv
+    rl/results/kta_tables_2026-09-29/pairs/dev_var_l-charizardy.tsv
+    rl/results/kta_tables_2026-09-29/pairs/dev_var_v-lucario_2.tsv
+    rl/results/kta_tables_2026-09-29/pairs/dev_var_v-suicune_2.tsv
+    rl/results/kta_tables_2026-09-29/pairs/dev_var_v-weezing_2.tsv
+    rl/results/kta_tables_2026-09-29/pairs/fresh_b2e.tsv
+    rl/results/kta_tables_2026-09-29/pairs/fresh_d_rayquaza.tsv
+    rl/results/kta_tables_2026-09-29/pairs/fresh_new_decks.tsv  [REPLAYED]
+    rl/results/kta_tables_2026-09-29/pairs/fresh_table28.tsv  [REPLAYED]
+    rl/results/kta_tables_2026-09-29/pairs/fresh_var_l-charizardy.tsv
+    rl/results/kta_tables_2026-09-29/pairs/fresh_var_v-lucario_2.tsv
+    rl/results/kta_tables_2026-09-29/pairs/fresh_var_v-suicune_2.tsv
+    rl/results/kta_tables_2026-09-29/pairs/fresh_var_v-weezing_2.tsv
+    rl/results/round2_readiness_2026-10-02/counter_smoke/pairs.tsv
+    rl/results/victory_star_repair_2026-09-30/smoke/pairs.tsv
+
+  research table (legality_scan --decks decks/research, 28 pairings: all pairs of the 8 lists)
+    no holder in any research list -> cannot reach (k3, kp3, km3, kog3, kq3, kpr3, kd3, kta3 dev/fresh tables, CLI altaria v blaziken)
+
+  floor pages / run_screen (list v each of decks/screen/opponents/*.txt)
+   decks/brews/brew-02-arceus-tandemaus-persian.txt: cannot reach; floor pages: 2
+      page rl/results/floor_brews_2026-09-28/brew-02-arceus-tandemaus-persian.md
+      page rl/results/floor_dustin_2026-09-30/brew-02-arceus-tandemaus-persian.md
+   decks/brews/brew-03b-arceus-crobat-nihilego-toxapex.txt: cannot reach; floor pages: 2
+      page rl/results/floor_brews_2026-09-28/brew-03b-arceus-crobat-nihilego-toxapex.md
+      page rl/results/floor_dustin_2026-09-30/brew-03b-arceus-crobat-nihilego-toxapex.md
+   decks/brews/brew-05b-meowstic-hatterene-comfey.txt: cannot reach; floor pages: 5
+      page rl/results/floor_payback_check_2026-09-25/brew-05b-meowstic-hatterene-comfey.md
+      page rl/results/floor_recheck_2026-09-28/brew-05b-meowstic-hatterene-comfey.md
+      page rl/results/floor_recheck_2026-09-30/brew-05b-meowstic-hatterene-comfey.md
+      page rl/results/floor_recheck_2026-10/brew-05b-meowstic-hatterene-comfey.md
+      page rl/results/floor_recheck_rules2_2026-10/brew-05b-meowstic-hatterene-comfey.md
+   decks/brews/brew-06-pyukumuku-silvally-payback.txt: cannot reach; floor pages: 5
+      page rl/results/floor_payback_check_2026-09-25/brew-06-pyukumuku-silvally-payback.md
+      page rl/results/floor_recheck_2026-09-28/brew-06-pyukumuku-silvally-payback.md
+      page rl/results/floor_recheck_2026-09-30/brew-06-pyukumuku-silvally-payback.md
+      page rl/results/floor_recheck_2026-10/brew-06-pyukumuku-silvally-payback.md
+      page rl/results/floor_recheck_rules2_2026-10/brew-06-pyukumuku-silvally-payback.md
+   decks/brews/brew-06b-pyukumuku-silvally-scyther-grass.txt: cannot reach; floor pages: 5
+      page rl/results/floor_payback_check_2026-09-25/brew-06b-pyukumuku-silvally-scyther-grass.md
+      page rl/results/floor_recheck_2026-09-28/brew-06b-pyukumuku-silvally-scyther-grass.md
+      page rl/results/floor_recheck_2026-09-30/brew-06b-pyukumuku-silvally-scyther-grass.md
+      page rl/results/floor_recheck_2026-10/brew-06b-pyukumuku-silvally-scyther-grass.md
+      page rl/results/floor_recheck_rules2_2026-10/brew-06b-pyukumuku-silvally-scyther-grass.md
+   decks/brews/brew-07-hoopa-darkrai-sableye.txt: REACHES; floor pages: 3
+      page rl/results/floor_brews_2026-09-28/brew-07-hoopa-darkrai-sableye.md
+      page rl/results/floor_dustin_2026-09-30/brew-07-hoopa-darkrai-sableye.md
+      page rl/results/floor_recheck_rules2_2026-10/pages/brew-07/brew-07-hoopa-darkrai-sableye.md
+      v decks/screen/opponents/t-altaria.txt
+      holder-side Training Area +10 for Stage 1 (Stadium, both sides) [HOLDER_OPEN] (Mega Sableye ex B3b 041): receiving list: 1x Training Area B2 153; cannot: holder stage 0
+      v decks/screen/opponents/t-blaziken.txt  ** REACHES **
+      REACH  holder Mega Sableye ex B3b 041 (decks/brews/brew-07-hoopa-darkrai-sableye.txt) <- c1 Rocky Helmet [IN] on decks/screen/opponents/t-blaziken.txt: 1x Rocky Helmet A2 148; 
+      v decks/screen/opponents/t-hydreigon.txt
+      holder side decks/brews/brew-07-hoopa-darkrai-sableye.txt: the receiving list decks/screen/opponents/t-hydreigon.txt holds NO receiving-side item -> cannot reach
+      v decks/screen/opponents/t-lucario.txt
+      blocked holder Mega Sableye ex B3b 041 <- b5 Protective Poncho: 1x Protective Poncho B2 147; no self-switch attacker in the list, so no Benched receiver
+      trap-only (must NOT move) holder Mega Sableye ex B3b 041 <- T3 Growl family (cut put on the holder): 1x Bonsly B3 078
+      v decks/screen/opponents/t-sceptile.txt
+      holder side decks/brews/brew-07-hoopa-darkrai-sableye.txt: the receiving list decks/screen/opponents/t-sceptile.txt holds NO receiving-side item -> cannot reach
+      v decks/screen/opponents/t-suicune.txt
+      trap-only (must NOT move) holder Mega Sableye ex B3b 041 <- a11/T1 attack self-cuts (Guard Press, Stiffen, Steel Wing, ...): 1x Frigibax P-B 037
+      v decks/screen/opponents/t-vespiquen.txt  ** REACHES **
+      REACH  holder Mega Sableye ex B3b 041 (decks/brews/brew-07-hoopa-darkrai-sableye.txt) <- a4 Solid Shell -20 [IN] on decks/screen/opponents/t-vespiquen.txt: 2x Shuckle ex A4 021; 
+      v decks/screen/opponents/t-weezing.txt
+      holder side decks/brews/brew-07-hoopa-darkrai-sableye.txt: the receiving list decks/screen/opponents/t-weezing.txt holds NO receiving-side item -> cannot reach
+   decks/brews/brew-08-entei-rainbow-cave.txt: cannot reach; floor pages: 2
+      page rl/results/floor_brews_2026-09-28/brew-08-entei-rainbow-cave.md
+      page rl/results/floor_dustin_2026-09-30/brew-08-entei-rainbow-cave.md
+   decks/brews/brew-09-sableye-obstagoon.txt: REACHES; floor pages: 3
+      page rl/results/floor_brews_2026-09-28/brew-09-sableye-obstagoon.md
+      page rl/results/floor_dustin_2026-09-30/brew-09-sableye-obstagoon.md
+      page rl/results/floor_recheck_rules2_2026-10/pages/brew-09/brew-09-sableye-obstagoon.md
+      v decks/screen/opponents/t-altaria.txt
+      holder-side Training Area +10 for Stage 1 (Stadium, both sides) [HOLDER_OPEN] (Mega Sableye ex B3b 041): receiving list: 1x Training Area B2 153; cannot: holder stage 0
+      v decks/screen/opponents/t-blaziken.txt  ** REACHES **
+      REACH  holder Mega Sableye ex B3b 041 (decks/brews/brew-09-sableye-obstagoon.txt) <- c1 Rocky Helmet [IN] on decks/screen/opponents/t-blaziken.txt: 1x Rocky Helmet A2 148; 
+      v decks/screen/opponents/t-hydreigon.txt
+      holder side decks/brews/brew-09-sableye-obstagoon.txt: the receiving list decks/screen/opponents/t-hydreigon.txt holds NO receiving-side item -> cannot reach
+      v decks/screen/opponents/t-lucario.txt
+      blocked holder Mega Sableye ex B3b 041 <- b5 Protective Poncho: 1x Protective Poncho B2 147; no self-switch attacker in the list, so no Benched receiver
+      trap-only (must NOT move) holder Mega Sableye ex B3b 041 <- T3 Growl family (cut put on the holder): 1x Bonsly B3 078
+      v decks/screen/opponents/t-sceptile.txt
+      holder side decks/brews/brew-09-sableye-obstagoon.txt: the receiving list decks/screen/opponents/t-sceptile.txt holds NO receiving-side item -> cannot reach
+      v decks/screen/opponents/t-suicune.txt
+      trap-only (must NOT move) holder Mega Sableye ex B3b 041 <- a11/T1 attack self-cuts (Guard Press, Stiffen, Steel Wing, ...): 1x Frigibax P-B 037
+      v decks/screen/opponents/t-vespiquen.txt  ** REACHES **
+      REACH  holder Mega Sableye ex B3b 041 (decks/brews/brew-09-sableye-obstagoon.txt) <- a4 Solid Shell -20 [IN] on decks/screen/opponents/t-vespiquen.txt: 2x Shuckle ex A4 021; 
+      v decks/screen/opponents/t-weezing.txt
+      holder side decks/brews/brew-09-sableye-obstagoon.txt: the receiving list decks/screen/opponents/t-weezing.txt holds NO receiving-side item -> cannot reach
+   decks/brews/brew-10-diancie-giratina.txt: cannot reach; floor pages: 2
+      page rl/results/floor_brews_2026-09-28/brew-10-diancie-giratina.md
+      page rl/results/floor_dustin_2026-09-30/brew-10-diancie-giratina.md
+   decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt: cannot reach; floor pages: 2
+      page rl/results/floor_drafts_2026-10-02/draft-A-shark-tempo.md
+      page rl/results/floor_drafts_2026-10-02/draft-A_attackers-sharpedo/draft-A-shark-tempo.md
+   decks/brews/drafts_2026-10-01/draft-B-tide-heal.txt: cannot reach; floor pages: 1
+      page rl/results/floor_drafts_2026-10-02/draft-B-tide-heal.md
+   decks/brews/drafts_2026-10-01/draft-C-meowstic-hatterene-v2.txt: cannot reach; floor pages: 1
+      page rl/results/floor_drafts_2026-10-02/draft-C-meowstic-hatterene-v2.md
+   decks/brews/drafts_2026-10-01/draft-D-entei-grimhound.txt: cannot reach; floor pages: 10
+      page rl/results/engine_candidate_2026-10-20/games/new/floor_D_amended/draft-D-entei-grimhound.md
+      page rl/results/engine_candidate_2026-10-20/games/new/floor_D_root/draft-D-entei-grimhound.md
+      page rl/results/engine_switch_rules2_2026-10/floor_7c/D_amended/draft-D-entei-grimhound.md
+      page rl/results/engine_switch_rules2_2026-10/floor_7c/D_root/draft-D-entei-grimhound.md
+      page rl/results/floor_drafts_2026-10-02/draft-D-entei-grimhound.md
+      page rl/results/floor_drafts_2026-10-02/draft-D_amended/draft-D-entei-grimhound.md
+      page rl/results/floor_drafts_2026-10-02/draft-D_victini-passive/draft-D-entei-grimhound.md
+      page rl/results/floor_recheck_rules2_2026-10/pages/D_amended/draft-D-entei-grimhound.md
+      page rl/results/floor_recheck_rules2_2026-10/pages/D_root/draft-D-entei-grimhound.md
+      page rl/results/floor_recheck_rules2_2026-10/pages/D_victini-passive/draft-D-entei-grimhound.md
+   decks/dustin/01-muk-glimmora-kingambit-regigigas.txt: cannot reach; floor pages: 1
+      page rl/results/floor_dustin_2026-09-30/01-muk-glimmora-kingambit-regigigas.md
+   decks/dustin/02-arceus-crobat.txt: cannot reach; floor pages: 3
+      page rl/results/engine_candidate_2026-10-20/games/new/floor_02/02-arceus-crobat.md
+      page rl/results/engine_switch_rules2_2026-10/floor_7c/02/02-arceus-crobat.md
+      page rl/results/floor_dustin_2026-09-30/02-arceus-crobat.md
+   decks/dustin/03-wailord-indeedee-wall.txt: cannot reach; floor pages: 1
+      page rl/results/floor_dustin_2026-09-30/03-wailord-indeedee-wall.md
+   decks/dustin/04-absol-hoopa-darkrai.txt: cannot reach; floor pages: 1
+      page rl/results/floor_dustin_2026-09-30/04-absol-hoopa-darkrai.md
+   decks/dustin/05-indeedee-stoutland.txt: cannot reach; floor pages: 1
+      page rl/results/floor_dustin_2026-09-30/05-indeedee-stoutland.md
+   decks/dustin/06-mega-blaziken-tournament-list.txt: cannot reach; floor pages: 3
+      page rl/results/engine_candidate_2026-10-20/games/new/floor_06/06-mega-blaziken-tournament-list.md
+      page rl/results/engine_switch_rules2_2026-10/floor_7c/06/06-mega-blaziken-tournament-list.md
+      page rl/results/floor_dustin_2026-09-30/06-mega-blaziken-tournament-list.md
+   decks/dustin/07-skarmory-stall.txt: cannot reach; floor pages: 5
+      page rl/results/floor_payback_check_2026-09-25/07-skarmory-stall.md
+      page rl/results/floor_recheck_2026-09-28/07-skarmory-stall.md
+      page rl/results/floor_recheck_2026-09-30/07-skarmory-stall.md
+      page rl/results/floor_recheck_2026-10/07-skarmory-stall.md
+      page rl/results/floor_recheck_rules2_2026-10/07-skarmory-stall.md
+   decks/dustin/08-garchomp-toolbox.txt: cannot reach; floor pages: 3
+      page rl/results/engine_candidate_2026-10-20/games/new/floor_08/08-garchomp-toolbox.md
+      page rl/results/engine_switch_rules2_2026-10/floor_7c/08/08-garchomp-toolbox.md
+      page rl/results/floor_dustin_2026-09-30/08-garchomp-toolbox.md
+   decks/dustin/09-mega-manectric-heliolisk.txt: cannot reach; floor pages: 1
+      page rl/results/floor_dustin_2026-09-30/09-mega-manectric-heliolisk.md
+   decks/dustin/10-xatu-oricorio-tr-weezing.txt: cannot reach; floor pages: 3
+      page rl/results/engine_candidate_2026-10-20/games/new/floor_10/10-xatu-oricorio-tr-weezing.md
+      page rl/results/engine_switch_rules2_2026-10/floor_7c/10/10-xatu-oricorio-tr-weezing.md
+      page rl/results/floor_dustin_2026-09-30/10-xatu-oricorio-tr-weezing.md
+   decks/dustin/11-archaludon-haxorus-dragonair.txt: cannot reach; floor pages: 1
+      page rl/results/floor_dustin_2026-09-30/11-archaludon-haxorus-dragonair.md
+   decks/dustin/12-ariados-whimsicott-ogerpon.txt: cannot reach; floor pages: 2
+      page rl/results/floor_dustin_2026-09-30/12-ariados-whimsicott-ogerpon.md
+      page rl/results/floor_recheck_rules2_2026-10/pages/12/12-ariados-whimsicott-ogerpon.md
+   decks/dustin/13-a-ninetales-raticate.txt: cannot reach; floor pages: 1
+      page rl/results/floor_dustin_2026-09-30/13-a-ninetales-raticate.md
+   decks/dustin/14-comfey-raticate-hypno.txt: cannot reach; floor pages: 8
+      page rl/results/engine_candidate_2026-10-20/games/new/floor_14/14-comfey-raticate-hypno.md
+      page rl/results/engine_switch_rules2_2026-10/floor_7c/14/14-comfey-raticate-hypno.md
+      page rl/results/floor_dustin_2026-09-30/14-comfey-raticate-hypno.md
+      page rl/results/floor_payback_check_2026-09-25/control_k3/14-comfey-raticate-hypno.md
+      page rl/results/floor_recheck_2026-09-28/control_k3/14-comfey-raticate-hypno.md
+      page rl/results/floor_recheck_2026-09-30/control_k3/14-comfey-raticate-hypno.md
+      page rl/results/floor_recheck_2026-10/control_k3/14-comfey-raticate-hypno.md
+      page rl/results/floor_recheck_rules2_2026-10/control_k3/14-comfey-raticate-hypno.md
+   decks/dustin/15-jolteon-oricorio-raticate.txt: cannot reach; floor pages: 1
+      page rl/results/floor_dustin_2026-09-30/15-jolteon-oricorio-raticate.md
+   rl/results/engine_switch_rules2_2026-10/floor_7c/d_first/draft-D-entei-grimhound.txt: cannot reach; floor pages: 10
+      page rl/results/engine_candidate_2026-10-20/games/new/floor_D_amended/draft-D-entei-grimhound.md
+      page rl/results/engine_candidate_2026-10-20/games/new/floor_D_root/draft-D-entei-grimhound.md
+      page rl/results/engine_switch_rules2_2026-10/floor_7c/D_amended/draft-D-entei-grimhound.md
+      page rl/results/engine_switch_rules2_2026-10/floor_7c/D_root/draft-D-entei-grimhound.md
+      page rl/results/floor_drafts_2026-10-02/draft-D-entei-grimhound.md
+      page rl/results/floor_drafts_2026-10-02/draft-D_amended/draft-D-entei-grimhound.md
+      page rl/results/floor_drafts_2026-10-02/draft-D_victini-passive/draft-D-entei-grimhound.md
+      page rl/results/floor_recheck_rules2_2026-10/pages/D_amended/draft-D-entei-grimhound.md
+      page rl/results/floor_recheck_rules2_2026-10/pages/D_root/draft-D-entei-grimhound.md
+      page rl/results/floor_recheck_rules2_2026-10/pages/D_victini-passive/draft-D-entei-grimhound.md
+
+  km3 / kx3 self-check: t-altaria v t-suicune
+    cannot reach (no holder in either list)
+
+  kx3's pool (playout_pool.rs POOL, the lists kx3 may imagine for the opponent)
+    laptop/kx3-on-engine-candidate-2026-10-20: 16 pool lists
+      t-altaria: holders none; items ['either Training Area +10 for Stage 1 (Stadium, both sides)']; same cards as decks/screen/opponents/t-altaria.txt
+      t-blaziken: holders none; items ['c1 Rocky Helmet']; same cards as decks/screen/opponents/t-blaziken.txt
+      t-hydreigon: holders none; items none; same cards as decks/screen/opponents/t-hydreigon.txt
+      t-lucario: holders none; items ['T3 Growl family (cut put on the holder)', 'b5 Protective Poncho']; same cards as decks/screen/opponents/t-lucario.txt
+      t-sceptile: holders none; items none; same cards as decks/screen/opponents/t-sceptile.txt
+      t-suicune: holders none; items ['a11/T1 attack self-cuts (Guard Press, Stiffen, Steel Wing, ...)']; same cards as decks/screen/opponents/t-suicune.txt
+      t-vespiquen: holders none; items ['a4 Solid Shell -20']; same cards as decks/screen/opponents/t-vespiquen.txt
+      t-weezing: holders none; items none; same cards as decks/screen/opponents/t-weezing.txt
+      research/altaria: holders none; items ['either Training Area +10 for Stage 1 (Stadium, both sides)']; same cards as decks/research/altaria.txt
+      research/blaziken: holders none; items ['c1 Rocky Helmet']; same cards as decks/research/blaziken.txt
+      research/hydreigon: holders none; items none; same cards as decks/research/hydreigon.txt
+      research/lucario: holders none; items ['T3 Growl family (cut put on the holder)', 'b5 Protective Poncho']; same cards as decks/research/lucario.txt
+      research/sceptile: holders none; items none; same cards as decks/research/sceptile.txt
+      research/suicune: holders none; items ['a11/T1 attack self-cuts (Guard Press, Stiffen, Steel Wing, ...)']; same cards as decks/research/suicune.txt
+      research/vespiquen: holders none; items ['a4 Solid Shell -20']; same cards as decks/research/vespiquen.txt
+      research/weezing: holders none; items none; same cards as decks/research/weezing.txt
+      KX_EXTRA_LISTS (run-time extras) refuse decks/brews paths; the fixed computer deck:
+        decks/computer/blastoise-wailord-deluxe.txt: holders none; items ['Celestial Blessing / Carefree Steps (coin)', 'Shell Shield (cannot happen in practice)']
+    origin/laptop/kx3-on-rules2: 16 pool lists
+      t-altaria: holders none; items ['either Training Area +10 for Stage 1 (Stadium, both sides)']; same cards as decks/screen/opponents/t-altaria.txt
+      t-blaziken: holders none; items ['c1 Rocky Helmet']; same cards as decks/screen/opponents/t-blaziken.txt
+      t-hydreigon: holders none; items none; same cards as decks/screen/opponents/t-hydreigon.txt
+      t-lucario: holders none; items ['T3 Growl family (cut put on the holder)', 'b5 Protective Poncho']; same cards as decks/screen/opponents/t-lucario.txt
+      t-sceptile: holders none; items none; same cards as decks/screen/opponents/t-sceptile.txt
+      t-suicune: holders none; items ['a11/T1 attack self-cuts (Guard Press, Stiffen, Steel Wing, ...)']; same cards as decks/screen/opponents/t-suicune.txt
+      t-vespiquen: holders none; items ['a4 Solid Shell -20']; same cards as decks/screen/opponents/t-vespiquen.txt
+      t-weezing: holders none; items none; same cards as decks/screen/opponents/t-weezing.txt
+      research/altaria: holders none; items ['either Training Area +10 for Stage 1 (Stadium, both sides)']; same cards as decks/research/altaria.txt
+      research/blaziken: holders none; items ['c1 Rocky Helmet']; same cards as decks/research/blaziken.txt
+      research/hydreigon: holders none; items none; same cards as decks/research/hydreigon.txt
+      research/lucario: holders none; items ['T3 Growl family (cut put on the holder)', 'b5 Protective Poncho']; same cards as decks/research/lucario.txt
+      research/sceptile: holders none; items none; same cards as decks/research/sceptile.txt
+      research/suicune: holders none; items ['a11/T1 attack self-cuts (Guard Press, Stiffen, Steel Wing, ...)']; same cards as decks/research/suicune.txt
+      research/vespiquen: holders none; items ['a4 Solid Shell -20']; same cards as decks/research/vespiquen.txt
+      research/weezing: holders none; items none; same cards as decks/research/weezing.txt
+      KX_EXTRA_LISTS (run-time extras) refuse decks/brews paths; the fixed computer deck:
+        decks/computer/blastoise-wailord-deluxe.txt: holders none; items ['Celestial Blessing / Carefree Steps (coin)', 'Shell Shield (cannot happen in practice)']
+
+  strength-harness runs (rl/results/**/config*.json: deck_files / decks / deck_groups x opponents / opponent_groups)
+   rl/results/exam_m32_m64_2026-10/configs/config_m32.json (pilot kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m32, reference km3; 11 deck(s) x 8 opponents): cannot reach
+   rl/results/exam_m32_m64_2026-10/configs/config_m64.json (pilot kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64, reference km3; 11 deck(s) x 8 opponents): cannot reach
+   rl/results/kx3_on_rules2_2026-10/configs/config_replay_a.json (pilot kx3, reference km3; 3 deck(s) x 8 opponents): cannot reach
+   rl/results/kx3_on_rules2_2026-10/configs/config_replay_b.json (pilot kx3, reference km3; 3 deck(s) x 8 opponents): cannot reach
+   rl/results/kx3_on_rules2_2026-10/configs/config_replay_c.json (pilot kx3, reference km3; 1 deck(s) x 1 opponents): cannot reach
+   rl/results/m64_on_rules2_2026-10/configs/config_replay_a.json (pilot kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64, reference km3; 3 deck(s) x 8 opponents): cannot reach
+   rl/results/m64_on_rules2_2026-10/configs/config_replay_b.json (pilot kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64, reference km3; 3 deck(s) x 8 opponents): cannot reach
+   rl/results/m64_on_rules2_2026-10/configs/config_replay_c.json (pilot kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64, reference km3; 1 deck(s) x 1 opponents): cannot reach
+   rl/results/slow_report_smoke_2026-10-07/run1_complete_under_nohup/config.json (pilot km3, reference km3; 1 deck(s) x 8 opponents): cannot reach
+   rl/results/slow_report_smoke_2026-10-07/run3_cloud_route_real_rebuild_and_restart/config.json (pilot km3, reference km3; 1 deck(s) x 8 opponents): cannot reach
+   rl/results/slow_reports/2026-10-08_draft-A-wallace/config.json (pilot kx3, reference km3; 1 deck(s) x 8 opponents): cannot reach
+   rl/results/slow_reports/2026-10-09_brew-08-entei-rainbow-cave/config.json (pilot kx3, reference km3; 1 deck(s) x 8 opponents): cannot reach
+   rl/results/slow_reports/2026-10-12_13-a-ninetales-raticate/config.json (pilot kx3, reference km3; 1 deck(s) x 8 opponents): cannot reach
+   rl/results/slow_reports/2026-10-12_brew-07-hoopa-darkrai-sableye/config.json (pilot kx3, reference km3; 1 deck(s) x 8 opponents): REACHES
+      decks/brews/brew-07-hoopa-darkrai-sableye.txt v decks/screen/opponents/t-blaziken.txt: REACH  holder Mega Sableye ex B3b 041 (decks/brews/brew-07-hoopa-darkrai-sableye.txt) <- c1 Rocky Helmet [IN] on decks/screen/opponents/t-blaziken.txt: 1x Rocky Helmet A2 148;
+      decks/brews/brew-07-hoopa-darkrai-sableye.txt v decks/screen/opponents/t-vespiquen.txt: REACH  holder Mega Sableye ex B3b 041 (decks/brews/brew-07-hoopa-darkrai-sableye.txt) <- a4 Solid Shell -20 [IN] on decks/screen/opponents/t-vespiquen.txt: 2x Shuckle ex A4 021;
+   rl/results/slow_reports/2026-10-12_brew-09-sableye-obstagoon/config.json (pilot kx3, reference km3; 1 deck(s) x 8 opponents): REACHES
+      decks/brews/brew-09-sableye-obstagoon.txt v decks/screen/opponents/t-blaziken.txt: REACH  holder Mega Sableye ex B3b 041 (decks/brews/brew-09-sableye-obstagoon.txt) <- c1 Rocky Helmet [IN] on decks/screen/opponents/t-blaziken.txt: 1x Rocky Helmet A2 148;
+      decks/brews/brew-09-sableye-obstagoon.txt v decks/screen/opponents/t-vespiquen.txt: REACH  holder Mega Sableye ex B3b 041 (decks/brews/brew-09-sableye-obstagoon.txt) <- a4 Solid Shell -20 [IN] on decks/screen/opponents/t-vespiquen.txt: 2x Shuckle ex A4 021;
+   rl/results/slow_reports/2026-10-12_draft-D-entei-grimhound/config.json (pilot kx3, reference km3; 1 deck(s) x 8 opponents): cannot reach
+   rl/results/slow_reports/2026-10-13_12-ariados-whimsicott-ogerpon/config.json (pilot kx3, reference km3; 1 deck(s) x 8 opponents): cannot reach
+   rl/results/slow_reports/2026-10-13_brew-10-diancie-giratina/config.json (pilot kx3, reference km3; 1 deck(s) x 8 opponents): cannot reach
+   rl/results/slow_reports/2026-10-14_brew-08-entei-rainbow-cave/config.json (pilot kx3, reference km3; 1 deck(s) x 8 opponents): cannot reach
+   rl/results/slow_reports/2026-10-14_draft-A-wallace/config.json (pilot kx3, reference km3; 1 deck(s) x 8 opponents): cannot reach
+   rl/results/strength_2026-10-03_kx3_dev/config.json (pilot kx3, reference km3; 7 deck(s) x 8 opponents): cannot reach
+   rl/results/strength_2026-10-04_km3_v_k3/config.json (pilot km3, reference k3; 7 deck(s) x 8 opponents): cannot reach
+   rl/results/strength_2026-10-04_kx3_v_k3/config.json (pilot kx3, reference k3; 7 deck(s) x 8 opponents): cannot reach
+   rl/results/strength_2026-10-05_kx3_exam/config.json (pilot kx3, reference km3; 11 deck(s) x 8 opponents): cannot reach
+   rl/results/strength_2026-10-05_kx3_replay_d513/config.json (pilot kx3, reference k3; 7 deck(s) x 8 opponents): cannot reach
+   rl/results/strength_2026-10-06_kx3_tools_gate3/config.json (pilot kx3_r16_c12_z2_real_t0_poolmeta_tools, reference km3; 7 deck(s) x 8 opponents): cannot reach
+   rl/results/strength_2026-10-08_kx3_combined/config.json (pilot kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m64, reference km3; 7 deck(s) x 8 opponents): cannot reach
+   rl/results/thinking_time_2026-10/configs/config_m16_a.json (pilot kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3, reference km3; 3 deck(s) x 8 opponents): cannot reach
+   rl/results/thinking_time_2026-10/configs/config_m16_b.json (pilot kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3, reference km3; 3 deck(s) x 8 opponents): cannot reach
+   rl/results/thinking_time_2026-10/configs/config_m32_a.json (pilot kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m32, reference km3; 3 deck(s) x 8 opponents): cannot reach
+   rl/results/thinking_time_2026-10/configs/config_m32_b.json (pilot kx3_r16_c12_z2_real_t0_poolmeta_tools_zs3_m32, reference km3; 3 deck(s) x 8 opponents): cannot reach
+
+== 5. Positions (pause games / position lists): a holder on one side and an item on the other ==
+  rl/results/pause_games_new_2026-10-12/positions_all.json: 5 position(s) reach
+    KW-261005_183108000-t01 (opp hidden cards filled from his list): holder Mega Sableye ex B3b 041 (me) <- Poison Barb on opp: 2x Poison Barb A3 146; holder Mega Sableye ex B3b 041 (opp) <- Poison Barb on me: 2x Poison Barb A3 146
+    KW-261005_183108000-t03 (opp hidden cards filled from his list): holder Mega Sableye ex B3b 041 (me) <- Poison Barb on opp: 2x Poison Barb A3 146; holder Mega Sableye ex B3b 041 (opp) <- Poison Barb on me: 2x Poison Barb A3 146
+    KW-261005_183108000-t05 (opp hidden cards filled from his list): holder Mega Sableye ex B3b 041 (me) <- Poison Barb on opp: 2x Poison Barb A3 146; holder Mega Sableye ex B3b 041 (opp) <- Poison Barb on me: 2x Poison Barb A3 146
+    KW-261005_183108000-t07 (opp hidden cards filled from his list): holder Mega Sableye ex B3b 041 (me) <- Poison Barb on opp: 2x Poison Barb A3 146; holder Mega Sableye ex B3b 041 (opp) <- Poison Barb on me: 2x Poison Barb A3 146
+    KW-261005_183108000-t09 (opp hidden cards filled from his list): holder Mega Sableye ex B3b 041 (me) <- Poison Barb on opp: 2x Poison Barb A3 146; holder Mega Sableye ex B3b 041 (opp) <- Poison Barb on me: 2x Poison Barb A3 146
+  rl/results/pause_games_new_2026-10-12/superseded_v1/positions_all.json: 5 position(s) reach
+    KW-261005_183108000-t01 (opp hidden cards filled from his list): holder Mega Sableye ex B3b 041 (me) <- Poison Barb on opp: 2x Poison Barb A3 146; holder Mega Sableye ex B3b 041 (opp) <- Poison Barb on me: 2x Poison Barb A3 146
+    KW-261005_183108000-t03 (opp hidden cards filled from his list): holder Mega Sableye ex B3b 041 (me) <- Poison Barb on opp: 2x Poison Barb A3 146; holder Mega Sableye ex B3b 041 (opp) <- Poison Barb on me: 2x Poison Barb A3 146
+    KW-261005_183108000-t05 (opp hidden cards filled from his list): holder Mega Sableye ex B3b 041 (me) <- Poison Barb on opp: 2x Poison Barb A3 146; holder Mega Sableye ex B3b 041 (opp) <- Poison Barb on me: 2x Poison Barb A3 146
+    KW-261005_183108000-t07 (opp hidden cards filled from his list): holder Mega Sableye ex B3b 041 (me) <- Poison Barb on opp: 2x Poison Barb A3 146; holder Mega Sableye ex B3b 041 (opp) <- Poison Barb on me: 2x Poison Barb A3 146
+    KW-261005_183108000-t09 (opp hidden cards filled from his list): holder Mega Sableye ex B3b 041 (me) <- Poison Barb on opp: 2x Poison Barb A3 146; holder Mega Sableye ex B3b 041 (opp) <- Poison Barb on me: 2x Poison Barb A3 146
+  rl/results/pause_positions_kx3_2026-10/reading/positions_119.json: 5 position(s) reach
+    KW-261005_183108000-t01 (opp hidden cards filled from his list): holder Mega Sableye ex B3b 041 (me) <- Poison Barb on opp: 2x Poison Barb A3 146; holder Mega Sableye ex B3b 041 (opp) <- Poison Barb on me: 2x Poison Barb A3 146
+    KW-261005_183108000-t03 (opp hidden cards filled from his list): holder Mega Sableye ex B3b 041 (me) <- Poison Barb on opp: 2x Poison Barb A3 146; holder Mega Sableye ex B3b 041 (opp) <- Poison Barb on me: 2x Poison Barb A3 146
+    KW-261005_183108000-t05 (opp hidden cards filled from his list): holder Mega Sableye ex B3b 041 (me) <- Poison Barb on opp: 2x Poison Barb A3 146; holder Mega Sableye ex B3b 041 (opp) <- Poison Barb on me: 2x Poison Barb A3 146
+    KW-261005_183108000-t07 (opp hidden cards filled from his list): holder Mega Sableye ex B3b 041 (me) <- Poison Barb on opp: 2x Poison Barb A3 146; holder Mega Sableye ex B3b 041 (opp) <- Poison Barb on me: 2x Poison Barb A3 146
+    KW-261005_183108000-t09 (opp hidden cards filled from his list): holder Mega Sableye ex B3b 041 (me) <- Poison Barb on opp: 2x Poison Barb A3 146; holder Mega Sableye ex B3b 041 (opp) <- Poison Barb on me: 2x Poison Barb A3 146
+  (26 position files scanned: committed .json files with 'position' in the path holding me/opp positions)
+
+== 6. Every committed file that names a holder list (by file name) or a holder game (by game id) ==
+  pattern: 183108000|brew\-07\-hoopa\-darkrai\-sableye|brew\-09\-sableye\-obstagoon  (328 files)
+  START_HERE.md: 1 files
+      START_HERE.md
+  decks/consistency_2026-09-25: 4 files
+      decks/consistency_2026-09-25/ANCHORS.md
+      decks/consistency_2026-09-25/brew-07-hoopa-darkrai-sableye.md
+      decks/consistency_2026-09-25/brew-09-sableye-obstagoon.md
+      decks/consistency_2026-09-25/lists.tsv
+  decks/screen: 3 files
+      decks/screen/panel_ladder_2026-09-26/brew_scorecard.md
+      decks/screen/panel_ladder_2026-09-26/build_brew_scorecard.py
+      decks/screen/panel_ladder_2026-09-26/build_calibration_games.py
+  rl/results/b2e_card_check_2026-09-26: 2 files
+      rl/results/b2e_card_check_2026-09-26/README.md
+      rl/results/b2e_card_check_2026-09-26/card_check_dustin_hoopa_absol.md
+  rl/results/battle_log_packets: 133 files (game evidence packets, not engine results)
+  rl/results/battle_logs_retention_2026-10-14: 1 files
+      rl/results/battle_logs_retention_2026-10-14/audited_games.json
+  rl/results/brew_pilot_check_2026-09-25: 2 files
+      rl/results/brew_pilot_check_2026-09-25/brew_pilot.py
+      rl/results/brew_pilot_check_2026-09-25/screen_rerun_kp3.txt
+  rl/results/coin_prevention_repair_2026-09-30: 1 files
+      rl/results/coin_prevention_repair_2026-09-30/census_output.txt
+  rl/results/coin_prevention_round2_2026-10-01: 1 files
+      rl/results/coin_prevention_round2_2026-10-01/P2_EVIDENCE_sonnet.md
+  rl/results/engine_switch_rules2_2026-10: 44 files
+      rl/results/engine_switch_rules2_2026-10/08a9b3a_8b_cloud_new_k3.jsonl
+      rl/results/engine_switch_rules2_2026-10/08a9b3a_8b_cloud_new_k3.txt
+      rl/results/engine_switch_rules2_2026-10/08a9b3a_8b_cloud_new_km3.jsonl
+      rl/results/engine_switch_rules2_2026-10/08a9b3a_8b_cloud_new_km3.txt
+      rl/results/engine_switch_rules2_2026-10/08a9b3a_8b_cloud_old_k3.jsonl
+      rl/results/engine_switch_rules2_2026-10/08a9b3a_8b_cloud_old_k3.txt
+      rl/results/engine_switch_rules2_2026-10/08a9b3a_8b_cloud_old_km3.jsonl
+      rl/results/engine_switch_rules2_2026-10/08a9b3a_8b_cloud_old_km3.txt
+      rl/results/engine_switch_rules2_2026-10/08a9b3a_8b_cloud_watch_k3.jsonl
+      rl/results/engine_switch_rules2_2026-10/08a9b3a_8b_cloud_watch_k3.txt
+      rl/results/engine_switch_rules2_2026-10/08a9b3a_8b_cloud_watch_km3.jsonl
+      rl/results/engine_switch_rules2_2026-10/08a9b3a_8b_cloud_watch_km3.txt
+      rl/results/engine_switch_rules2_2026-10/08a9b3a_inputs2.sha256
+      rl/results/engine_switch_rules2_2026-10/PLAN.md
+      rl/results/engine_switch_rules2_2026-10/classify_check_8b/handoff_8b.tsv
+      rl/results/engine_switch_rules2_2026-10/early_warning_8b/8b_new_k3.jsonl
+      rl/results/engine_switch_rules2_2026-10/early_warning_8b/8b_new_km3.jsonl
+      rl/results/engine_switch_rules2_2026-10/early_warning_8b/8b_old_k3.jsonl
+      rl/results/engine_switch_rules2_2026-10/early_warning_8b/8b_old_km3.jsonl
+      rl/results/engine_switch_rules2_2026-10/early_warning_8b/8b_pinned_k3.jsonl
+      rl/results/engine_switch_rules2_2026-10/early_warning_8b/8b_pinned_km3.jsonl
+      rl/results/engine_switch_rules2_2026-10/early_warning_8b/8b_watch_k3.jsonl
+      rl/results/engine_switch_rules2_2026-10/early_warning_8b/8b_watch_km3.jsonl
+      rl/results/engine_switch_rules2_2026-10/early_warning_8b/README.md
+      rl/results/engine_switch_rules2_2026-10/early_warning_8b/classify_output.txt
+      rl/results/engine_switch_rules2_2026-10/early_warning_8b/decks_sha256.txt
+      rl/results/engine_switch_rules2_2026-10/early_warning_8b/pairs_8b.tsv
+      rl/results/engine_switch_rules2_2026-10/early_warning_8b/run_8b.sh
+      rl/results/engine_switch_rules2_2026-10/early_warning_8b/scan_page_new_k3.txt
+      rl/results/engine_switch_rules2_2026-10/early_warning_8b/scan_page_new_km3.txt
+      rl/results/engine_switch_rules2_2026-10/early_warning_8b/scan_page_old_k3.txt
+      rl/results/engine_switch_rules2_2026-10/early_warning_8b/scan_page_old_km3.txt
+      rl/results/engine_switch_rules2_2026-10/early_warning_8b/scan_page_pinned_k3.txt
+      rl/results/engine_switch_rules2_2026-10/early_warning_8b/scan_page_pinned_km3.txt
+      rl/results/engine_switch_rules2_2026-10/early_warning_8b/scan_page_watch_k3.txt
+      rl/results/engine_switch_rules2_2026-10/early_warning_8b/scan_page_watch_km3.txt
+      rl/results/engine_switch_rules2_2026-10/handoff_8b_cloud_k3.tsv
+      rl/results/engine_switch_rules2_2026-10/handoff_8b_cloud_km3.tsv
+      rl/results/engine_switch_rules2_2026-10/handoff_8c.tsv
+      rl/results/engine_switch_rules2_2026-10/pairs_8b_cloud.tsv
+      ... 4 more
+  rl/results/floor_brews_2026-09-28: 5 files
+      rl/results/floor_brews_2026-09-28/brew-07-hoopa-darkrai-sableye.md
+      rl/results/floor_brews_2026-09-28/brew-09-sableye-obstagoon.md
+      rl/results/floor_brews_2026-09-28/run.log
+      rl/results/floor_brews_2026-09-28/run_floor.sh
+      rl/results/floor_brews_2026-09-28/timing.txt
+  rl/results/floor_dustin_2026-09-30: 5 files
+      rl/results/floor_dustin_2026-09-30/brew-07-hoopa-darkrai-sableye.md
+      rl/results/floor_dustin_2026-09-30/brew-09-sableye-obstagoon.md
+      rl/results/floor_dustin_2026-09-30/run.log
+      rl/results/floor_dustin_2026-09-30/run_floor.sh
+      rl/results/floor_dustin_2026-09-30/timing.txt
+  rl/results/floor_recheck_rules2_2026-10: 8 files
+      rl/results/floor_recheck_rules2_2026-10/PLAN.md
+      rl/results/floor_recheck_rules2_2026-10/pages/brew-07/OLD_PAGE.txt
+      rl/results/floor_recheck_rules2_2026-10/pages/brew-07/brew-07-hoopa-darkrai-sableye.md
+      rl/results/floor_recheck_rules2_2026-10/pages/brew-09/OLD_PAGE.txt
+      rl/results/floor_recheck_rules2_2026-10/pages/brew-09/brew-09-sableye-obstagoon.md
+      rl/results/floor_recheck_rules2_2026-10/pages/run_pages.log
+      rl/results/floor_recheck_rules2_2026-10/run_pages.sh
+      rl/results/floor_recheck_rules2_2026-10/test_runners.py
+  rl/results/kt_carrier_census_2026-09-26: 8 files
+      rl/results/kt_carrier_census_2026-09-26/cards.json
+      rl/results/kt_carrier_census_2026-09-26/cards.md
+      rl/results/kt_carrier_census_2026-09-26/cards_skeptic.md
+      rl/results/kt_carrier_census_2026-09-26/census.csv
+      rl/results/kt_carrier_census_2026-09-26/census_summary.json
+      rl/results/kt_carrier_census_2026-09-26/recount.py
+      rl/results/kt_carrier_census_2026-09-26/recount_summary.json
+      rl/results/kt_carrier_census_2026-09-26/skeptic_c-mega_altaria_ex_igglybuff.md
+  rl/results/ladder_qr_page_2026-10-14: 4 files
+      rl/results/ladder_qr_page_2026-10-14/build.py
+      rl/results/ladder_qr_page_2026-10-14/ladder_qr_page.html
+      rl/results/ladder_qr_page_2026-10-14/verification.json
+      rl/results/ladder_qr_page_2026-10-14/verification.txt
+  rl/results/ladder_sheet_2026-10-14: 1 files
+      rl/results/ladder_sheet_2026-10-14/MATCHUP_NOTES.md
+  rl/results/ladder_validation: 4 files
+      rl/results/ladder_validation/DETAILS.md
+      rl/results/ladder_validation/predictions/brew-07-hoopa-darkrai-sableye@0a7d9d5a9df9.json
+      rl/results/ladder_validation/predictions/brew-09-sableye-obstagoon@5254637c9b25.json
+      rl/results/ladder_validation/readings/2026-10-15_staging_dry_run.txt
+  rl/results/new_pause_games_triage_2026-10-06: 2 files
+      rl/results/new_pause_games_triage_2026-10-06/TRIAGE.md
+      rl/results/new_pause_games_triage_2026-10-06/scripts/cand.py
+  rl/results/opening_active_census_2026-09-26: 4 files
+      rl/results/opening_active_census_2026-09-26/census.json
+      rl/results/opening_active_census_2026-09-26/census_output.txt
+      rl/results/opening_active_census_2026-09-26/check_census.json
+      rl/results/opening_active_census_2026-09-26/check_census_output.txt
+  rl/results/pause_games_decisions_2026-10-02: 1 files
+      rl/results/pause_games_decisions_2026-10-02/reconstructed_decks/R200654.json
+  rl/results/pause_games_new_2026-10-12: 14 files
+      rl/results/pause_games_new_2026-10-12/games_meta.json
+      rl/results/pause_games_new_2026-10-12/harness/test_ledger_to_positions.py
+      rl/results/pause_games_new_2026-10-12/km3_TABLES.md
+      rl/results/pause_games_new_2026-10-12/km3_summary.json
+      rl/results/pause_games_new_2026-10-12/position_list.json
+      rl/results/pause_games_new_2026-10-12/position_list.tsv
+      rl/results/pause_games_new_2026-10-12/positions_all.json
+      rl/results/pause_games_new_2026-10-12/report_convert.json
+      rl/results/pause_games_new_2026-10-12/report_out.txt
+      rl/results/pause_games_new_2026-10-12/review_evidence/reader_panel_output.json
+      rl/results/pause_games_new_2026-10-12/review_evidence/reader_scripts/report.json
+      rl/results/pause_games_new_2026-10-12/review_evidence/verify_panel_output.json
+      rl/results/pause_games_new_2026-10-12/superseded_v1/km3_summary.json
+      rl/results/pause_games_new_2026-10-12/superseded_v1/positions_all.json
+  rl/results/pause_positions_kx3_2026-10: 45 files
+      rl/results/pause_positions_kx3_2026-10/reading/C_TABLES.md
+      rl/results/pause_positions_kx3_2026-10/reading/C_report.txt
+      rl/results/pause_positions_kx3_2026-10/reading/C_summary.json
+      rl/results/pause_positions_kx3_2026-10/reading/F_TABLES.md
+      rl/results/pause_positions_kx3_2026-10/reading/F_report.txt
+      rl/results/pause_positions_kx3_2026-10/reading/F_summary.json
+      rl/results/pause_positions_kx3_2026-10/reading/km3_TABLES.md
+      rl/results/pause_positions_kx3_2026-10/reading/km3_report.txt
+      rl/results/pause_positions_kx3_2026-10/reading/km3_summary.json
+      rl/results/pause_positions_kx3_2026-10/reading/positions_119.json
+      rl/results/pause_positions_kx3_2026-10/reading/reading_output.txt
+      rl/results/pause_positions_kx3_2026-10/run_ids.txt
+      rl/results/pause_positions_kx3_2026-10/runs_km3/err_KW-261005_183108000-t01.txt
+      rl/results/pause_positions_kx3_2026-10/runs_km3/err_KW-261005_183108000-t03.txt
+      rl/results/pause_positions_kx3_2026-10/runs_km3/err_KW-261005_183108000-t05.txt
+      rl/results/pause_positions_kx3_2026-10/runs_km3/err_KW-261005_183108000-t07.txt
+      rl/results/pause_positions_kx3_2026-10/runs_km3/err_KW-261005_183108000-t09.txt
+      rl/results/pause_positions_kx3_2026-10/runs_km3/out_KW-261005_183108000-t01.jsonl
+      rl/results/pause_positions_kx3_2026-10/runs_km3/out_KW-261005_183108000-t03.jsonl
+      rl/results/pause_positions_kx3_2026-10/runs_km3/out_KW-261005_183108000-t05.jsonl
+      rl/results/pause_positions_kx3_2026-10/runs_km3/out_KW-261005_183108000-t07.jsonl
+      rl/results/pause_positions_kx3_2026-10/runs_km3/out_KW-261005_183108000-t09.jsonl
+      rl/results/pause_positions_kx3_2026-10/shards/S4.txt
+      rl/results/pause_positions_kx3_2026-10/workers/PC4/runs_B/TIMING.txt
+      rl/results/pause_positions_kx3_2026-10/workers/PC4/runs_B/err_KW-261005_183108000-t01.txt
+      rl/results/pause_positions_kx3_2026-10/workers/PC4/runs_B/err_KW-261005_183108000-t03.txt
+      rl/results/pause_positions_kx3_2026-10/workers/PC4/runs_B/err_KW-261005_183108000-t05.txt
+      rl/results/pause_positions_kx3_2026-10/workers/PC4/runs_B/err_KW-261005_183108000-t07.txt
+      rl/results/pause_positions_kx3_2026-10/workers/PC4/runs_B/err_KW-261005_183108000-t09.txt
+      rl/results/pause_positions_kx3_2026-10/workers/PC4/runs_B/out_KW-261005_183108000-t01.jsonl
+      rl/results/pause_positions_kx3_2026-10/workers/PC4/runs_B/out_KW-261005_183108000-t03.jsonl
+      rl/results/pause_positions_kx3_2026-10/workers/PC4/runs_B/out_KW-261005_183108000-t05.jsonl
+      rl/results/pause_positions_kx3_2026-10/workers/PC4/runs_B/out_KW-261005_183108000-t07.jsonl
+      rl/results/pause_positions_kx3_2026-10/workers/PC4/runs_B/out_KW-261005_183108000-t09.jsonl
+      rl/results/pause_positions_kx3_2026-10/workers/PF4/runs_B/TIMING.txt
+      rl/results/pause_positions_kx3_2026-10/workers/PF4/runs_B/err_KW-261005_183108000-t01.txt
+      rl/results/pause_positions_kx3_2026-10/workers/PF4/runs_B/err_KW-261005_183108000-t03.txt
+      rl/results/pause_positions_kx3_2026-10/workers/PF4/runs_B/err_KW-261005_183108000-t05.txt
+      rl/results/pause_positions_kx3_2026-10/workers/PF4/runs_B/err_KW-261005_183108000-t07.txt
+      rl/results/pause_positions_kx3_2026-10/workers/PF4/runs_B/err_KW-261005_183108000-t09.txt
+      ... 5 more
+  rl/results/round2_readiness_2026-10-02: 6 files
+      rl/results/round2_readiness_2026-10-02/counter_smoke_p2/compare_output.txt
+      rl/results/round2_readiness_2026-10-02/counter_smoke_p2/games_p2_plain.jsonl
+      rl/results/round2_readiness_2026-10-02/counter_smoke_p2/games_p2_watch.jsonl
+      rl/results/round2_readiness_2026-10-02/counter_smoke_p2/games_p_plain.jsonl
+      rl/results/round2_readiness_2026-10-02/counter_smoke_p2/pairs.tsv
+      rl/results/round2_readiness_2026-10-02/inventory_output_p2.txt
+  rl/results/slow_reports: 16 files
+      rl/results/slow_reports/2026-10-12_brew-07-hoopa-darkrai-sableye/PREREGISTRATION.md
+      rl/results/slow_reports/2026-10-12_brew-07-hoopa-darkrai-sableye/REPORT.md
+      rl/results/slow_reports/2026-10-12_brew-07-hoopa-darkrai-sableye/SLOW_REPORT.md
+      rl/results/slow_reports/2026-10-12_brew-07-hoopa-darkrai-sableye/config.json
+      rl/results/slow_reports/2026-10-12_brew-07-hoopa-darkrai-sableye/games.jsonl
+      rl/results/slow_reports/2026-10-12_brew-07-hoopa-darkrai-sableye/manifest.json
+      rl/results/slow_reports/2026-10-12_brew-07-hoopa-darkrai-sableye/report.json
+      rl/results/slow_reports/2026-10-12_brew-07-hoopa-darkrai-sableye/slow_report_log.jsonl
+      rl/results/slow_reports/2026-10-12_brew-09-sableye-obstagoon/PREREGISTRATION.md
+      rl/results/slow_reports/2026-10-12_brew-09-sableye-obstagoon/REPORT.md
+      rl/results/slow_reports/2026-10-12_brew-09-sableye-obstagoon/SLOW_REPORT.md
+      rl/results/slow_reports/2026-10-12_brew-09-sableye-obstagoon/config.json
+      rl/results/slow_reports/2026-10-12_brew-09-sableye-obstagoon/games.jsonl
+      rl/results/slow_reports/2026-10-12_brew-09-sableye-obstagoon/manifest.json
+      rl/results/slow_reports/2026-10-12_brew-09-sableye-obstagoon/report.json
+      rl/results/slow_reports/2026-10-12_brew-09-sableye-obstagoon/slow_report_log.jsonl
+  rl/results/trainer_audit_2026-09-25: 6 files
+      rl/results/trainer_audit_2026-09-25/audit_tools.tsv
+      rl/results/trainer_audit_2026-09-25/audit_trainers.tsv
+      rl/results/trainer_audit_2026-09-25/blower_stadium/plan.json
+      rl/results/trainer_audit_2026-09-25/blower_stadium/summary.txt
+      rl/results/trainer_audit_2026-09-25/plan.json
+      rl/results/trainer_audit_2026-09-25/useless_tools.txt
+  rl/results/upstream_compare_2026-10-16: 2 files
+      rl/results/upstream_compare_2026-10-16/DETAIL_A.md
+      rl/results/upstream_compare_2026-10-16/DETAIL_B.md
+  rl/results/xspeed_census_2026-09-27: 4 files
+      rl/results/xspeed_census_2026-09-27/census.log
+      rl/results/xspeed_census_2026-09-27/games.jsonl
+      rl/results/xspeed_census_2026-09-27/summary.txt
+      rl/results/xspeed_census_2026-09-27/xspeed_census.py
+  rules/_research_notes: 1 files
+      rules/_research_notes/shot_list_archive_2026-10-09.json

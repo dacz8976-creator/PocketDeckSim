@@ -1,0 +1,25 @@
+The final build's differing games against the Oct 20 build's (lane A, equal to the recorded pages), per opponent.
+The brought-in cards in those rows (engine/database.json): t-blaziken 1 Rocky Helmet A2 148, which now answers
+Mega Sableye ex's hit back; t-vespiquen 2 Shuckle ex A4 021, Solid Shell "This Pokemon takes -20 damage from attacks",
+which now cuts it. No other list in decks/screen/opponents holds a card item 8 reads. Sort: (a), item 8.
+
+B_brew-07: 20 of 1920 games differ (F v C)
+  t-altaria                    games  240  differ   0  wins C  186  F  186  (+0)
+  t-blaziken                   games  240  differ   8  wins C  143  F  140  (-3)
+  t-hydreigon                  games  240  differ   0  wins C  167  F  167  (+0)
+  t-lucario                    games  240  differ   0  wins C  140  F  140  (+0)
+  t-sceptile                   games  240  differ   0  wins C   88  F   88  (+0)
+  t-suicune                    games  240  differ   0  wins C  142  F  142  (+0)
+  t-vespiquen                  games  240  differ  12  wins C  119  F  119  (+0)
+  t-weezing                    games  240  differ   0  wins C  183  F  183  (+0)
+  fields changed: {'dead': 17, 'flagged': 14, 'points': 8, 'turns': 14, 'won': 5, 'conceded': 2, 'could': 3, 'did': 2, 'draw': 1}
+B_brew-09: 64 of 1920 games differ (F v C)
+  t-altaria                    games  240  differ   0  wins C  133  F  133  (+0)
+  t-blaziken                   games  240  differ  21  wins C  137  F  131  (-6)
+  t-hydreigon                  games  240  differ   0  wins C  140  F  140  (+0)
+  t-lucario                    games  240  differ   0  wins C  100  F  100  (+0)
+  t-sceptile                   games  240  differ   0  wins C   76  F   76  (+0)
+  t-suicune                    games  240  differ   0  wins C   82  F   82  (+0)
+  t-vespiquen                  games  240  differ  43  wins C   93  F   86  (-7)
+  t-weezing                    games  240  differ   0  wins C   76  F   76  (+0)
+  fields changed: {'dead': 56, 'flagged': 57, 'points': 36, 'turns': 51, 'won': 25, 'draw': 3}

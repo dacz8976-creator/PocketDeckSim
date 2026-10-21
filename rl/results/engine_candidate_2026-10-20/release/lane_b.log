@@ -1,0 +1,68 @@
+2026-10-20T14:37:35Z lane_b armed (pgid 753105); K=0915f3d5e850bbe67370f53d899be15c3e5c34d0
+2026-10-20T14:38:57Z lane_b armed (pgid 753243); K=0915f3d5e850bbe67370f53d899be15c3e5c34d0
+2026-10-20T14:40:25Z lane_b armed (pgid 753386); K=0915f3d5e850bbe67370f53d899be15c3e5c34d0
+2026-10-20T16:28:59Z lane_b v2 armed (pgid 1183097)
+2026-10-21T02:00:01Z lane_b v2 start: F=4d4884492aa85496acf9bafdae18b22739f56647 (engine tree 46239c19c883271ade83bba9eff13d50fca3e868)
+2026-10-21T02:11:55Z build_F OK: BUILD OK in 713 s; 2d3709b272abf8a8 2975381f33fdd7fc db52d3de65ca2577 
+2026-10-21T02:11:55Z suite_F: cargo test --release --features test-utils --locked --no-fail-fast (RUST_TEST_THREADS 2)
+2026-10-21T02:31:56Z suite_F rc=0 in 1201 s: passed 2150 failed 0 compile_errors 0 failing []
+merge-tree: 3fde29b17eccd48fb7425c6ff85441dd41186518 (merge base c045ede0e6d69c9dcb8d4cb3165c8ada3f8ef72e)
+A	engine/examples/playout_smoke.rs
+M	engine/src/players/mod.rs
+A	engine/src/players/playout_player.rs
+A	engine/src/players/playout_pool.rs
+A	engine/tests/playout_pilot_extra_lists_test.rs
+A	engine/tests/playout_pilot_test.rs
+engine tree 64de03e2c3c25b8371e9b87c5727d1f93ec70c30
+K=87a7f3404263e1bfe76e8765ba8dd94695e19cfe
+2026-10-21T02:31:57Z strength_r3: build.sh 87a7f3404263e1bfe76e8765ba8dd94695e19cfe -> /home/dacz8976/kx_r3/strength (STRENGTH_JOBS=2, /home/dacz8976/kx_r3_build)
+2026-10-21T02:38:27Z strength_r3 rc=0 in 390 s; RECORD OK 7d046b6f9c1dcd9a9a834c2995bad256bc784e804ea08d351878e035cb24d319
+2026-10-21T02:38:38Z sc_km3: selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1
+2026-10-21T02:38:38Z sc_kx3: started in the background
+2026-10-21T02:42:38Z floorF: floor2.py on F's deckgym (2d3709b272abf8a83431c3e72d59f9ff0e2c8ae3e60698f22a1ca79e65ab2085), each piece also v lane A's page
+2026-10-21T03:45:15Z floorF: exit 0
+B_D_victini-passive	1920	345	SAME	cand B_D_victini-passive: /home/dacz8976/pincand_work/floor2F/B_D_victini-passive/draft-D-entei-grimhound_games.jsonl v /home/dacz8976/pincand_work/floor2F/_ref_stripped/D_victini-passive/draft-D-entei-grimhound_games.jsonl: 1920 of 1920 games equal 
+A_brew-06	1920	301	SAME	cand A_brew-06: /home/dacz8976/pincand_work/floor2F/A_brew-06/brew-06-pyukumuku-silvally-payback_games.jsonl v floor_recheck_rules2_2026-10/brew-06-pyukumuku-silvally-payback_games.jsonl: 1920 of 1920 games equal on every field of the per-game summar
+A_brew-06b	1920	273	SAME	cand A_brew-06b: /home/dacz8976/pincand_work/floor2F/A_brew-06b/brew-06b-pyukumuku-silvally-scyther-grass_games.jsonl v floor_recheck_rules2_2026-10/brew-06b-pyukumuku-silvally-scyther-grass_games.jsonl: 1920 of 1920 games equal on every field of the
+A_control14_k3	1920	281	SAME	cand A_control14_k3: /home/dacz8976/pincand_work/floor2F/A_control14_k3/14-comfey-raticate-hypno_games.jsonl v floor_recheck_rules2_2026-10/control_k3/14-comfey-raticate-hypno_games.jsonl: 1920 of 1920 games equal on every field of the per-game summa
+A_brew-05b	1920	288	SAME	cand A_brew-05b: /home/dacz8976/pincand_work/floor2F/A_brew-05b/brew-05b-meowstic-hatterene-comfey_games.jsonl v floor_recheck_rules2_2026-10/brew-05b-meowstic-hatterene-comfey_games.jsonl: 1920 of 1920 games equal on every field of the per-game summ
+A_07	1920	324	SAME	cand A_07: /home/dacz8976/pincand_work/floor2F/A_07/07-skarmory-stall_games.jsonl v floor_recheck_rules2_2026-10/07-skarmory-stall_games.jsonl: 1920 of 1920 games equal on every field of the per-game summary record (14 fields: conceded, could, dead, 
+A_run_screen	3840	409	SAME	run_screen: /home/dacz8976/pincand_work/floor2F/A_run_screen/run_screen.txt v floor_recheck_rules2_2026-10/run_screen.txt: 20 of 20 lines equal (2 decks; the header's engine path aside)
+B_12	1920	336	SAME	cand B_12: /home/dacz8976/pincand_work/floor2F/B_12/12-ariados-whimsicott-ogerpon_games.jsonl v floor_recheck_rules2_2026-10/pages/12/12-ariados-whimsicott-ogerpon_games.jsonl: 1920 of 1920 games equal on every field of the per-game summary record (1
+B_brew-07	1920	270	DIFFERS	cand B_brew-07: /home/dacz8976/pincand_work/floor2F/B_brew-07/brew-07-hoopa-darkrai-sableye_games.jsonl v floor_recheck_rules2_2026-10/pages/brew-07/brew-07-hoopa-darkrai-sableye_games.jsonl: 1900 of 1920 games equal on every field of the per-game su | with t-lucario reported apart: exit 1 | v floor2: exit 1
+B_brew-09	1920	214	DIFFERS	cand B_brew-09: /home/dacz8976/pincand_work/floor2F/B_brew-09/brew-09-sableye-obstagoon_games.jsonl v floor_recheck_rules2_2026-10/pages/brew-09/brew-09-sableye-obstagoon_games.jsonl: 1856 of 1920 games equal on every field of the per-game summary re | with t-lucario reported apart: exit 1 | v floor2: exit 1
+B_D_root	1920	347	SAME	cand B_D_root: /home/dacz8976/pincand_work/floor2F/B_D_root/draft-D-entei-grimhound_games.jsonl v /home/dacz8976/pincand_work/floor2F/_ref_stripped/D_root/draft-D-entei-grimhound_games.jsonl: 1920 of 1920 games equal on every field of the per-game su
+B_D_amended	1920	362	SAME	cand B_D_amended: /home/dacz8976/pincand_work/floor2F/B_D_amended/draft-D-entei-grimhound_games.jsonl v /home/dacz8976/pincand_work/floor2F/_ref_stripped/D_amended/draft-D-entei-grimhound_games.jsonl: 1920 of 1920 games equal on every field of the pe
+2026-10-21T03:45:15Z replay f 08a9b3a_10_cli_k3
+2026-10-21T03:45:30Z replay f 08a9b3a_10_cli_kp3
+2026-10-21T03:45:49Z replay f 08a9b3a_10_cli_kog3
+2026-10-21T03:46:10Z replay f 08a9b3a_10_cli_kta3
+2026-10-21T03:46:27Z replay f 08a9b3a_10_cli_km3
+2026-10-21T03:46:46Z replay f 08a9b3a_10_goldfish
+2026-10-21T03:46:46Z replay f 08a9b3a_10_run_screen
+2026-10-21T03:53:19Z replay f 08a9b3a_8b_cloud_new_k3
+2026-10-21T03:53:52Z replay f 08a9b3a_8b_cloud_new_km3
+2026-10-21T03:54:39Z replay f 08a9b3a_dev_km3_new17
+2026-10-21T04:07:42Z replay f 08a9b3a_table_k3
+2026-10-21T04:20:18Z replay f 08a9b3a_dev_km3_table
+2026-10-21T04:35:29Z replay f 08a9b3a_8_new_km3
+2026-10-21T05:03:28Z replay f 08a9b3a_new17_k3
+2026-10-21T05:12:32Z replay f 08a9b3a_cov_b2e_km3
+f	08a9b3a_10_cli_k3	240	14	SAME	Player 0 won: 150 (62.50%) | Player 1 won: 90 (37.50%) | Draws: 0 (0.00%) | v new: SAME
+f	08a9b3a_10_cli_kp3	240	18	SAME	Player 0 won: 144 (60.00%) | Player 1 won: 96 (40.00%) | Draws: 0 (0.00%) | v new: SAME
+f	08a9b3a_10_cli_kog3	240	20	SAME	Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%) | v new: SAME
+f	08a9b3a_10_cli_kta3	240	17	SAME	Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%) | v new: SAME
+f	08a9b3a_10_cli_km3	240	18	SAME	Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%) | v new: SAME
+f	08a9b3a_10_goldfish	0	0	SAME	page =, coverage =
+f	08a9b3a_10_run_screen	3840	392	SAME	run_screen: /home/dacz8976/pincand_work/games/f/08a9b3a_10_run_screen.txt v engine_switch_rules2_2026-10/08a9b3a_10_run_screen.txt: 20 of 20 lines equal (2 decks; the header's engine path aside) | v new: SAME
+f	08a9b3a_8b_cloud_new_k3	240	33	SAME	0 differing deals of 240 | v new: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/f/08a9b3a_8b_cloud_new_k3.txt: no RULE finding
+f	08a9b3a_8b_cloud_new_km3	240	46	SAME	0 differing deals of 240 | v new: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/f/08a9b3a_8b_cloud_new_km3.txt: no RULE finding
+f	08a9b3a_dev_km3_new17	8500	782	DIFFERS	7 differing deals of 8500 | v new: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/f/08a9b3a_dev_km3_new17.txt: no RULE finding
+f	08a9b3a_table_k3	14000	754	SAME	0 differing deals of 14000 | v new: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/f/08a9b3a_table_k3.txt: no RULE finding
+f	08a9b3a_dev_km3_table	14000	910	SAME	0 differing deals of 14000 | v new: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/f/08a9b3a_dev_km3_table.txt: no RULE finding
+f	08a9b3a_8_new_km3	16000	1676	DIFFERS	1 differing deals of 16000 | v new: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/f/08a9b3a_8_new_km3.txt: no RULE finding
+f	08a9b3a_new17_k3	8500	542	DIFFERS	8 differing deals of 8500 | v new: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/f/08a9b3a_new17_k3.txt: no RULE finding
+f	08a9b3a_cov_b2e_km3	48000	3289	SAME	0 differing deals of 48000 | v new: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/f/08a9b3a_cov_b2e_km3.txt: no RULE finding
+2026-10-21T06:07:26Z waiting for sc_kx3 (pid 1271734)
+2026-10-21T06:07:26Z sc_kx3: rc/secs 0 4846: selfcheck pilot=kx3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=138 digest=31d638dbc818b0fa
+2026-10-21T06:07:26Z lane_b v2 done

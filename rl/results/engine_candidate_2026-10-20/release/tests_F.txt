@@ -1,0 +1,183 @@
+2026-10-21T02:11:55Z suite_F: cargo test --release --features test-utils --locked --no-fail-fast (RUST_TEST_THREADS 2)
+2026-10-21T02:31:56Z suite_F rc=0 in 1201 s: passed 2150 failed 0 compile_errors 0 failing []
+test result: ok. 432 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 37.46s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+test result: ok. 0 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.00s
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 19 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+test result: ok. 23 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.79s
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.10s
+test result: ok. 10 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 18 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.10s
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.22s
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+test result: ok. 11 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 33 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.06s
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 1.68s
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+test result: ok. 829 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 5.03s
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.04s
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.31s
+test result: ok. 15 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 20 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+test result: ok. 14 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 9 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+test result: ok. 23 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 13 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+test result: ok. 26 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.17s
+test result: ok. 3 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+test result: ok. 8 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 21 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 4 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 41 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 12 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.02s
+test result: ok. 5 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.21s
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 46 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.08s
+test result: ok. 123 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.05s
+test result: ok. 6 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s
+test result: ok. 20 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.07s
+test result: ok. 16 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.03s
+test result: ok. 7 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.24s
+test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.29s
+test actions::apply_action_helpers::tests::test_mimikyu_ex_disguise_prevents_first_attack_only ... ok
+test actions::apply_attack_action::test::immediate_tails_is_a_noop_and_does_not_consume_disguise ... ok
+test actions::apply_attack_action::test::test_guzzlord_grindcore_does_not_respect_oricorio_safeguard ... ok
+test hooks::core::attack_cut_to_zero_and_hit_back_tests::a_defender_side_plus_x_is_also_skipped_when_the_cut_reaches_zero ... ok
+test hooks::core::attack_cut_to_zero_and_hit_back_tests::a_defender_side_plus_x_lands_when_the_cut_leaves_damage_and_not_at_zero ... ok
+test hooks::core::attack_cut_to_zero_and_hit_back_tests::a_hit_back_fires_from_a_knocked_out_holder_and_is_doubled_under_bounded_field ... ok
+test hooks::core::attack_cut_to_zero_and_hit_back_tests::an_attack_cut_to_zero_does_no_damage_and_takes_no_weakness ... ok
+test hooks::core::attack_cut_to_zero_and_hit_back_tests::a_tools_and_an_abilitys_return_damage_stay_flat_and_answer_nothing ... ok
+test hooks::core::attack_cut_to_zero_and_hit_back_tests::disguise_on_the_receiver_prevents_the_first_hit_back_and_is_used_up ... ok
+test hooks::core::attack_cut_to_zero_and_hit_back_tests::growl_cuts_bench_damage_too ... ok
+test hooks::core::attack_cut_to_zero_and_hit_back_tests::heavy_helmet_reads_the_receivers_retreat_cost_now ... ok
+test hooks::core::attack_cut_to_zero_and_hit_back_tests::prevention_on_the_receiver_stops_the_hit_back_and_its_answer ... ok
+test hooks::core::attack_cut_to_zero_and_hit_back_tests::the_receivers_heavy_helmet_cuts_the_hit_back_after_weakness ... ok
+test hooks::core::attack_cut_to_zero_and_hit_back_tests::rough_skins_answer_to_a_hit_back_ends_the_chain ... ok
+test hooks::core::attack_cut_to_zero_and_hit_back_tests::the_receivers_intimidating_fang_cuts_the_hit_back_before_weakness ... ok
+test hooks::core::attack_cut_to_zero_and_hit_back_tests::the_receivers_rocky_helmet_and_rough_skin_answer_the_hit_back_once ... ok
+test hooks::core::on_bench_from_hand_turn_guard_tests::poltchageist_heal_is_not_offered_off_turn_or_in_setup ... ok
+test hooks::core::attack_cut_to_zero_and_hit_back_tests::with_p2_off_the_hit_back_is_flat_again_and_nothing_answers ... ok
+test hooks::core::on_bench_from_hand_turn_guard_tests::poltchageist_heal_is_offered_on_its_owners_turn ... ok
+test hooks::core::persistent_defender_damage_tests::disguise_prevents_the_first_hit_until_used ... ok
+test hooks::core::persistent_defender_damage_tests::intimidating_fang_comes_off_before_weakness ... ok
+test hooks::core::persistent_defender_damage_tests::safeguard_prevents_damage_from_an_ex_only ... ok
+test players::expectiminimax_player::promotion_continuation_tests::knock_back_finishes_switch_before_retaliation_and_final_knockouts ... ok
+test players::expectiminimax_player::promotion_continuation_tests::self_switch_retaliation_keeps_only_both_real_promotions ... ok
+test players::value_functions::kd_feature_tests::disguise_is_not_a_victim_the_threat_cannot_damage ... ok
+test players::value_functions::kt_tests::rocky_helmet_takes_the_hits_the_threat_lands_off_its_hp_in_the_holders_clock ... ok
+test safeguard_blocks_ex_damage_but_does_not_block_energy_effects ... ok
+test electrode_active_knockout_retaliates_for_seventy_once ... ok
+test electrode_does_not_retaliate_without_a_knockout ... ok
+test electrode_poison_knockout_does_not_trigger_attack_retaliation ... ok
+test attack_damage_only_test::test_heavy_helmet_does_not_cut_greninjas_water_shuriken ... ok
+test attack_damage_only_test::test_heavy_helmet_cuts_an_opponents_attack_but_not_other_damage ... ok
+test attack_effects_test::test_dialga_rocky_helmet_knockout_with_energy_attach ... ok
+test observed_psychic_deals_120_to_sudowoodo_and_rocky_helmet_returns_20 ... ok
+test additional_ability_logic_test::test_intimidating_fang_check_does_not_panic_when_defenders_active_was_knocked_out ... ok
+test additional_ability_logic_test::test_luxray_intimidating_fang_reduces_opponent_active_damage ... ok
+test legacy_ability_logic_test::test_oricorio_safeguard_prevents_damage_from_ex_attack ... ok
+test mega_medicham_ex_test::test_mega_medicham_chakra_fist_damages_oricorio_through_safeguard ... ok
+test mega_kangaskhan_double_punching_family_test::test_mega_kangaskhan_double_punching_family_red_vs_ex_with_rocky_helmet ... ok
+test meowth_carefree_steps_test::g2_copied_second_punch_waits_for_the_copiers_promotion_after_rocky_helmet ... ok
+test rampardos_head_smash_test::test_rampardos_head_smash_rocky_helmet_promotion_order ... ok
+test sawk_test::test_sawk_bypasses_heavy_helmet_and_ability ... ok
+test team_rocket_electrode_destiny_burst_test::destiny_burst_can_hit_an_attacker_already_knocked_out_by_rocky_helmet ... ok
+test ursaluna_guts_test::test_guts_survival_still_triggers_rocky_helmet ... ok
+test heavy_helmet_does_not_reduce_poison_damage ... ok
+test heavy_helmet_reads_the_current_retreat_cost_where_the_holder_sits ... ok
+test heavy_helmet_reduces_only_opponent_attack_damage ... ok
+test intimidating_fang_reduces_attacker_damage_before_double_weakness ... ok
+test sing_does_not_use_up_disguise ... ok
+test an_abilitys_answer_to_the_hit_back_ends_the_chain ... ok
+test heavy_helmet_on_the_attacker_cuts_a_bristling_spikes_hit_back_from_30_to_10 ... ok
+test rocky_helmet_on_the_attacker_answers_the_hit_back ... ok
+test the_attackers_own_new_hit_back_does_not_answer ... ok
+test the_attackers_damage_cuts_apply_to_the_hit_back ... ok
+test the_attackers_rough_skin_and_poison_barb_answer_the_hit_back ... ok
+test the_attackers_prevention_applies_to_the_hit_back ... ok
+test knock_back_resolves_before_original_defender_retaliates ... ok
+test bounded_field_doubles_the_hit_back_x2 ... ok
+test double_knockout_by_the_hit_back_the_attacker_promotes_first ... ok
+test held_back_hit_back_takes_weakness ... ok
+test hit_back_on_a_benched_attacker_stays_flat ... ok
+test metal_defender_does_not_shield_its_own_hit_back ... ok
+test recording_183108_t10_hit_back_lands_when_the_holder_is_knocked_out ... ok
+test perish_body_branch_hit_back_takes_weakness ... ok
+test revert_round2_off_turns_p2_off_too ... ok
+test rocky_helmet_stays_flat_on_a_weak_attacker ... ok
+test swift_does_not_shield_the_hit_back ... ok
+test weakness_decides_the_knockout_by_the_hit_back ... ok
+test point_denial_after_retaliation_preserves_both_promotions ... ok
+test prickly_powder_disables_rough_skin_before_retaliation_but_not_tool ... ok
+test rough_skin_respects_muk_and_iron_jugulis_printing_works ... ok
+test raikou_rocky_helmet_order_test::test_jumpluff_ex_takes_rocky_helmet_damage_even_when_switching ... ok
+test raikou_rocky_helmet_order_test::test_raikou_rocky_helmet_promotion_order ... ok
+test rocky_helmet_delayed_counterattack_test::rocky_helmet_answers_mega_sableye_ex_cursed_jewel_hit_back ... ok
+test rocky_helmet_delayed_counterattack_test::rocky_helmet_damage_does_not_set_off_the_opposing_rocky_helmet ... ok
+test rocky_helmet_delayed_counterattack_test::rough_skin_does_not_set_off_rocky_helmet ... ok
+test luckycad_poison_barb::fighting_pulse_ko_still_triggers_defenders_poison_barb ... ok
+test xatu_checkup::life_drain_into_poison_barb_does_not_poison_xatu ... ok
