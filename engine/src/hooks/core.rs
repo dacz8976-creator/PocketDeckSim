@@ -2172,8 +2172,8 @@ pub(crate) fn modify_damage(
     // An attack that the attacker-side stage takes to 0 does no damage at all: no Weakness and no Defending-Pokemon
     // stage, like an attack whose own damage is 0 (above). rules/05 #11, settled Oct 19 by the recording
     // Growl_weakness_test: under Growl's -20, Jump Blues (20) did 0 to the Grass-weak Active Cubone and 0 to the Benched
-    // Hariyama (rules/02 sections 1 and 3). Skipping a defender-side "+X damage" here as well is the plain reading by
-    // analogy, an accepted uncertainty (Oct 20; the recording had none; Shot List row cut-to-zero-plus-x).
+    // Hariyama (rules/02 sections 1 and 3). A defender-side "+X damage" is skipped here as well, as recorded on Oct 20:
+    // Flittle's Flop (20) under Intimidating Fang did 0 to a Luxray carrying Lumina Crash's +50 (rules/05 #11).
     if pre_weakness == 0 {
         debug!("The attacker-side stage took the attack to 0: no damage, no Weakness");
         return 0;
@@ -3671,16 +3671,31 @@ mod attack_cut_to_zero_and_hit_back_tests {
 
     #[test]
     fn a_defender_side_plus_x_is_also_skipped_when_the_cut_reaches_zero() {
-        // Pins an accepted uncertainty (Oct 20; Astra's review; Dustin: "the plain reading is the rule unless otherwise
-        // stated"): the recording showed Weakness skipped at 0, not a "takes +X damage" effect on the Defending Pokemon.
-        // modify_damage returns 0 before that step, so +X is skipped too: the plain reading by analogy. Video proof is the
-        // Shot List row cut-to-zero-plus-x; if it shows otherwise, change the early return and this test.
+        // A defender-side "+X damage" is skipped too when the cut reaches 0 (recorded Oct 20, Shot List row
+        // cut-to-zero-plus-x; the next test pins the recording itself). modify_damage returns 0 before that step.
         let mut state = growled();
         state.in_play_pokemon[0][0].as_mut().unwrap().add_effect(CardEffect::IncreasedVulnerability { amount: 20 }, 1);
         // 20 - 20 = 0: stays 0, with neither Weakness nor the +20.
         assert_eq!(modify_damage(&state, (1, 0), (20, 0, 0), true, PLAIN), 0);
         // 30 - 20 = 10, then Weakness +20 and the +20: 50.
         assert_eq!(modify_damage(&state, (1, 0), (30, 0, 0), true, PLAIN), 50);
+    }
+
+    #[test]
+    fn a_defender_side_plus_x_lands_when_the_cut_leaves_damage_and_not_at_zero() {
+        // Recorded Oct 20 (Recording_QA/LUXRAY_ESPATHRA_RETRY_2026-10-20, clip02 ScreenRecording_10-20-2026 17-54-38_1.mp4;
+        // Codex review, independent PASS, lead acceptance): Luxray (Intimidating Fang) carried Espathra's Lumina Crash
+        // (+50 from attacks). Flittle's Flop (20) previewed and did 0 (04:01.5, 04:09.5; Luxray stayed at 100). The
+        // control: Slurpuff's Draining Kiss (50) did 80 (05:13.5): 50 - 20 + 50. Neither attacker hits Luxray's Weakness.
+        let mut luxray = mon(CardId::A3a015Luxray);
+        luxray.add_effect(CardEffect::IncreasedVulnerability { amount: 50 }, 1);
+        let board = |attacker: CardId| {
+            let mut state = State::default();
+            state.set_board(vec![luxray.clone()], vec![mon(attacker)]);
+            state
+        };
+        assert_eq!(modify_damage(&board(CardId::B2a050Flittle), (1, 0), (20, 0, 0), true, PLAIN), 0);
+        assert_eq!(modify_damage(&board(CardId::B1118Slurpuff), (1, 0), (50, 0, 0), true, PLAIN), 80);
     }
 
     #[test]
@@ -3772,6 +3787,15 @@ mod attack_cut_to_zero_and_hit_back_tests {
         );
         // Druddigon's Rough Skin (an Ability with the same trigger) answers it too.
         assert_eq!(retaliate(sandslash(), 40, mon(CardId::A1a056Druddigon), 0, false), (40, 80));
+    }
+
+    #[test]
+    fn rough_skins_answer_to_a_hit_back_ends_the_chain() {
+        // Rough Skin answers the hit back with an Ability's damage, not an attack's: the holder's Rocky Helmet doesn't fire
+        // on it, and nothing answers again. Druddigon takes the holder's Helmet 20 (for its own attack) and the hit back's
+        // 40; the holder takes Rough Skin's 20 once.
+        let sandslash = mon(CardId::A3039AlolanSandslash).with_tool(get_card_by_enum(CardId::A2148RockyHelmet));
+        assert_eq!(retaliate(sandslash, 40, mon(CardId::A1a056Druddigon), 0, false), (60, 80));
     }
 
     #[test]

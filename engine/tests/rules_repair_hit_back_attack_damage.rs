@@ -290,6 +290,21 @@ fn the_attackers_rough_skin_and_poison_barb_answer_the_hit_back() {
     assert!(state.get_active(1).is_poisoned(), "Poison Barb: the holder is now Poisoned");
 }
 
+/// No chain: Ferrothorn attacks a Chesnaught that holds Rocky Helmet and has Needle Lariat armed. Chesnaught's Helmet
+/// answers the attack (20) and Needle Lariat hits back (80); Ferrothorn's Steel Spikes answers the hit back (20, an
+/// Ability's damage), and there it stops: the Helmet doesn't answer Steel Spikes.
+#[test]
+fn an_abilitys_answer_to_the_hit_back_ends_the_chain() {
+    use EnergyType::*;
+    let chesnaught = with_tool(with_energy(CardId::B2010Chesnaught, &[Grass, Grass, Grass, Grass]), CardId::A2148RockyHelmet);
+    let ferrothorn = with_energy(CardId::A3a052Ferrothorn, &[Metal, Metal, Colorless]);
+    let mut game = armed_against(chesnaught, "Needle Lariat", 80, ferrothorn, vec![]);
+    apply_attack(&mut game, "Spinning Attack");
+    let state = game.get_state_clone();
+    assert_eq!(hp(&state, 0, 0), 10, "Ferrothorn 110 - 20 (Rocky Helmet) - 80 (the hit back)");
+    assert_eq!(hp(&state, 1, 0), 70, "Chesnaught 160 - 70 - 20 (Steel Spikes), and no more");
+}
+
 /// The attacker's own new hit back covers the opponent's next turn: it doesn't answer the holder's hit back now.
 #[test]
 fn the_attackers_own_new_hit_back_does_not_answer() {
