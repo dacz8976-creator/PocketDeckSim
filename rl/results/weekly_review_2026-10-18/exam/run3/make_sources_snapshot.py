@@ -23,6 +23,8 @@ TEXT = ['REVIEW.md', 'LEAD_ACCEPTANCE.json', 'LADDER_ENTRY.json', 'LADDER_SAVED.
         'FINDINGS.json', 'COVERAGE.md', 'CANDIDATE_FREEZE.json', 'FIRST_PASS_FREEZE.json', 'REVIEW_METRICS.json', 'NATIVE_EVIDENCE.json', 'READY.json',
         'ROOT_TEXT_CORRECTION.json', 'independent/VERIFICATION.json']
 PIN_FILES = ['LEAD_ACCEPTANCE.json', 'CANDIDATE_FREEZE.json', 'FIRST_PASS_FREEZE.json', 'independent/VERIFICATION.json']
+# owner rulings about recordings outside the packets, recorded as given (coordinator-023, Oct 21)
+NOTES = ['Oct 18 .MOV: not a game (owner confirmed)']
 SR = re.compile(r'ScreenRecording_(\d{2})-(\d{2})-(\d{4})[ _](\d{2})-(\d{2})-(\d{2})')
 IOS = re.compile(r'(\d{8})_(\d{6})(\d{3})_iOS')
 HEX = re.compile(r'^[0-9a-f]{64}$')
@@ -133,7 +135,7 @@ def main():
                                   'note': 'in the review index, no packet folder in the given evidence directories'})
     out = {'what': "exam v2's window record (make_sources_snapshot.py); sources copied to run3/sources/<packet>/, hash-checked against the packets' pins",
            'window_start_exclusive': a.window_start, 'window_end_inclusive': a.window_end, 'evidence': a.evidence,
-           'packets': rec, 'index_rows_without_packet': stray,
+           'packets': rec, 'index_rows_without_packet': stray, 'notes': NOTES,
            'counts': {'in_window': len(rec), 'in': sum(r['status'] == 'in' for r in rec), 'excluded': sum(r['status'] == 'excluded' for r in rec)}}
     json.dump(out, open(a.window_out, 'w', encoding='utf-8'), indent=1, ensure_ascii=False)
     print(json.dumps(out['counts']), '| index rows without a packet:', len(stray))
