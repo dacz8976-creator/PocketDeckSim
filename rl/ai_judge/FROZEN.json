@@ -1,7 +1,12 @@
 {
- "frozen_on": "2026-10-19",
- "tag": "judge-prompt-frozen-4",
+ "frozen_on": "2026-10-21",
+ "tag": "judge-prompt-frozen-5",
  "supersedes": [
+  {
+   "tag": "judge-prompt-frozen-4",
+   "commit": "72eea776ea745be837be94320068402eb81fa11a",
+   "fingerprint": "0cb2421552661b563bdb49fca31aca53f468d0853661908fbbf7730fcb5ba762"
+  },
   {
    "tag": "judge-prompt-frozen-3",
    "commit": "316f3577142238083c8c0ca222d2cc06afdd67ff",
@@ -31,16 +36,68 @@
   "max_nodes": 200000,
   "max_steps": 30
  },
+ "judge": {
+  "provider": "gemini",
+  "settings": {
+   "provider": "gemini",
+   "model": "gemini-4-argon",
+   "max_tokens": 8000,
+   "temperature": null,
+   "thinking_level": "high",
+   "thinking_summaries": "none"
+  },
+  "endpoint": "https://generativelanguage.googleapis.com/v1beta/interactions",
+  "api": "Interactions API (POST /v1beta/interactions)",
+  "price_per_mtok": {
+   "through_2026-11-30": [
+    2.0,
+    10.0
+   ],
+   "from_2026-12-01": [
+    4.0,
+    20.0
+   ],
+   "reservation": [
+    4.0,
+    20.0
+   ]
+  },
+  "price_note": "Gemini 4 Argon Standard tier, ai.google.dev/gemini-api/docs/pricing (read 2026-10-21): $2 / $10 per 1M input / output tokens (thinking billed as output) through 2026-11-30, $4 / $20 from 2026-12-01; input charged in full (the implicit-cache discount is ignored: a conservative upper bound)",
+  "mapping": {
+   "prompt": "identical: the frozen system text goes in `system_instruction`, the user text in `input`; the prompt fingerprint and every row's prompt_sha256 are the same as for the Anthropic judge",
+   "output cap": "max_tokens 8000 -> generation_config.max_output_tokens 8000; for Gemini it is documented as thinking + answer together, as the Anthropic cap was (reasoning counted as output). CANNOT MATCH: tokenizers differ, so 8,000 Gemini tokens is not 8,000 Claude tokens, and at high thinking the model may spend the cap on thinking; such a reply is status \"incomplete\" and fails exactly like a reply cut at max_tokens (no retry, no choice kept)",
+   "reasoning": "Anthropic: the model's default reasoning, no setting. Gemini: generation_config.thinking_level \"high\" (the highest of low / medium / high; the coordinator's pre-registered choice). CANNOT MATCH: the two are different mechanisms; \"high\" is the closest to \"as much reasoning as the model will do\"",
+   "thought text": "generation_config.thinking_summaries \"none\": no thought summary is requested, so none is billed beyond the thinking tokens, and none could enter the stored reply (`raw` is model_output text only)",
+   "temperature": "not set for either (the provider default); Gemini 4 Argon documents no temperature setting, so none is sent and --temperature is refused",
+   "other sampling": "top_p, top_k, seed, stop sequences: not set",
+   "retries": "none: one request per call; a failed request is a failed call (the budget wrapper charges its full worst case and the batch is incomplete)",
+   "streaming": "none: one synchronous request; the 65,536 synchronous output limit is above the 8,000 cap",
+   "storage": "store false: Google keeps no interaction",
+   "price": "USD per 1M tokens, input / output including thinking: 2 / 10 through 2026-11-30, 4 / 20 from 2026-12-01 (Standard tier); the budget reserves every call at 4 / 20; the cached-input discount is ignored",
+   "finish": "stop_reason is \"end_turn\" only for status \"completed\"; anything else (\"incomplete\", \"failed\", \"cancelled\", ...) is stored as \"gemini:<status>\" and is never an intact answer"
+  },
+  "sources": [
+   "https://ai.google.dev/gemini-api/docs/models",
+   "https://ai.google.dev/gemini-api/docs/pricing",
+   "https://ai.google.dev/gemini-api/docs/thinking",
+   "https://ai.google.dev/gemini-api/docs/interactions",
+   "https://ai.google.dev/api/interactions-api"
+  ]
+ },
  "source_sha256": {
-  "rl/ai_judge/judge.py": "0e469e3ee64d1d1bde313b2dd1159ee33048aa989da30006adb8fb3419ff7b38",
-  "rl/ai_judge/formal.py": "513c81e4851e86da70ff49d40bce349dfc5ca827b223d3944fadf54b8b3a0923",
+  "rl/ai_judge/judge.py": "6a9933e78fa6e2dd398cb96436a970147d7499d08d1ddb5a7e67bc5497216ed2",
+  "rl/ai_judge/formal.py": "40c6cf0de96e862919f5b6533869e731c1a7462fd9fccc959ad5220ccd3fb070",
   "rl/ai_judge/analysis.py": "5529ddc45abcbff8820fcf2723f71e94aa80f286a7d0b6a39dc1bca50d4482ae",
+  "rl/ai_judge/providers.py": "b0a887b3e7f260bcecc40b4694fc7d4d67b5a52a15b1b50e8c9e8ccad400cb29",
+  "rl/ai_judge/budget_judge.py": "4b7769d1a3ed39402564830d877085cf655cbc7877389637999958596bef6a9c",
   "rl/ai_judge/validate_baseline.py": "855c1fca1366684a9c88bc5a8766d1d476dafe4705bed74c5412b24cd1abf752",
-  "rl/ai_judge/freeze_identity.py": "f3cce1b35c413b316778faabdfd962e9bbfb85ea7d85a16e96912019ea70e753",
+  "rl/ai_judge/freeze_identity.py": "3e052367bbd0443f309df6674207d2487927d7abb9e8ef8b8c6707fba61ab6de",
   "rl/ai_judge/plans/src/main.rs": "73830a21c34f806299f7a1ec4e42fc2c6025d82e11a0be47bf31f51aaac460ce",
   "rl/ai_judge/plans/Cargo.lock": "e183002a2e1a040cc761d2d9f81575259d710ea6a2f2a55054bc75485b8d0a7c",
-  "rl/ai_judge/tests/test_formal.py": "b98d88a84c99f1912c2723c80e2f6c26d83159b8d3c7d6ff5621dcee65f63654",
+  "rl/ai_judge/tests/test_formal.py": "551bf6f3d8a6652c831781902341bfc11222741b3ab103964c3b1744b0d264f5",
   "rl/ai_judge/tests/test_analysis.py": "583d537292ba962f8e8d2f393a5e55a6d2ab66d33f5c4e9000b037503bda7cad",
+  "rl/ai_judge/tests/test_gemini.py": "0e19aa319ed2b48adc149d5e86cab56c7b111460d8d6b4b47bd0e62f8b2b3348",
+  "rl/ai_judge/tests/test_budget.py": "0bab81c8574bff2aabc3c813098dc4ea5618820d814afea1e5542fe353b994f1",
   "lib/card.py": "73e6f2a8dbf10b9c4f7b877564e1fdb91dc8015744e7e82f873bfbae837cea4c",
   "lib/deckgym-database.json": "2f48cb72966c23ba3794f437aa94312e4eadcb2703c32893411ee27fc63b11d9",
   "rl/results/pause_games_decisions_2026-10-02/harness/pgd_patch.py": "904b9e86ab058d4d379b3f323ad5dd2bbeb4d5ebf03e5bc2db63257b325b3279",
@@ -57,5 +114,5 @@
   "validation": "rl/ai_judge/validation/baseline_printer_validation.json",
   "reproduced": "a second build from scratch with rl/ai_judge/build_baseline.sh gave the identical sha256"
  },
- "note": "prompt v1 text and every frozen setting unchanged from frozen-2 and frozen-3 (same fingerprint). New since frozen-3: plan numbers are checked against the current plan list (identity hash, key, replay, prompt and reply re-derivation), the explicit eligibility selection with filtered references, prefix / full-plan / diagnostic reporting, the game-clustered analysis (analysis.py), strict row identity and flags, report provenance, compare checks the code fingerprint and the sources. Judge rows now record max_tokens and temperature; a missing REASON line is parse_warning. The plan lister and the baseline (pg_pos) were REBUILT: ChooseRetreatEnergy takes the Name#JSON label (it dropped the Energy paid), Energy lists are sorted in canonical labels, and replay prunes a dead alternative instead of abandoning the list."
+ "note": "Provider change only: the judge is Gemini 4 Argon (gemini-4-argon, thinking level high, 8,000 output tokens including thinking) through the Interactions API, chosen by the coordinator before any build (run 1 on claude-sonnet-5-5 did not pass against km3). The prompt (fingerprint 0cb24215...), judge.FROZEN (the Anthropic freeze's settings, inside the fingerprint), the parser, the invalid-label handling, the no-retry policy, the plan lister and the baseline (engine 70652fff) are exactly the frozen-4 ones. New: providers.py, budget_judge.py (hard spend bound, $15 total), the judge block of this record (provider, settings, prices, mapping and its sources), compare checks each judge row against it. Prices: $2 / $10 per 1M tokens through 2026-11-30, $4 / $20 after; reservations at $4 / $20. The Anthropic freeze (frozen-4) stays valid for its own rows."
 }

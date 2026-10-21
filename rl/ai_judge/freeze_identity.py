@@ -14,8 +14,10 @@ sys.path.insert(0, HERE)
 import judge  # noqa: E402
 
 HARNESS = 'rl/results/pause_games_decisions_2026-10-02/harness'
-SOURCES = ['rl/ai_judge/judge.py', 'rl/ai_judge/formal.py', 'rl/ai_judge/analysis.py', 'rl/ai_judge/validate_baseline.py', 'rl/ai_judge/freeze_identity.py', 'rl/ai_judge/plans/src/main.rs', 'rl/ai_judge/plans/Cargo.lock',
-           'rl/ai_judge/tests/test_formal.py', 'rl/ai_judge/tests/test_analysis.py', 'lib/card.py', 'lib/deckgym-database.json',  # the card texts the prompt quotes
+SOURCES = ['rl/ai_judge/judge.py', 'rl/ai_judge/formal.py', 'rl/ai_judge/analysis.py', 'rl/ai_judge/providers.py', 'rl/ai_judge/budget_judge.py', 'rl/ai_judge/validate_baseline.py',
+           'rl/ai_judge/freeze_identity.py', 'rl/ai_judge/plans/src/main.rs', 'rl/ai_judge/plans/Cargo.lock',
+           'rl/ai_judge/tests/test_formal.py', 'rl/ai_judge/tests/test_analysis.py', 'rl/ai_judge/tests/test_gemini.py', 'rl/ai_judge/tests/test_budget.py',
+           'lib/card.py', 'lib/deckgym-database.json',  # the card texts the prompt quotes
            f'{HARNESS}/pgd_patch.py', f'{HARNESS}/dg_patch.py', f'{HARNESS}/pg_pos.rs']
 PLANS_BIN = judge.PLANS_BIN
 BASELINE_BIN = judge.PG_POS_BIN
@@ -34,7 +36,7 @@ def engine_tree():
 
 
 def current():
-    return {'fingerprint': judge.fingerprint(), 'settings': judge.FROZEN, 'source_sha256': source_hashes(), 'engine_tree': engine_tree()}
+    return {'fingerprint': judge.fingerprint(), 'settings': judge.FROZEN, 'judge': judge.frozen_judge_block(), 'source_sha256': source_hashes(), 'engine_tree': engine_tree()}
 
 
 def check(frozen):
@@ -45,6 +47,8 @@ def check(frozen):
         diffs.append('prompt fingerprint differs')
     if cur['settings'] != frozen['settings']:
         diffs.append('settings differ')
+    if 'judge' in frozen and cur['judge'] != frozen['judge']:  # the judge provider, model, thinking level, prices and mapping (frozen-5 on); frozen-4 and earlier have none
+        diffs.append('the judge block (provider, model, thinking level, prices, mapping) differs')
     for p, h in frozen['source_sha256'].items():
         if cur['source_sha256'].get(p) != h:
             diffs.append(f'source changed since the freeze: {p}')

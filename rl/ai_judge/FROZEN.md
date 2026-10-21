@@ -197,3 +197,51 @@ fallback) and its step reads "Pay the retreat cost of X (switching with Y) by di
   `lib/deckgym-database.json` (now part of the source hashes and recorded in the report); a card id missing from the database gets no text, silently.
 - Not changed, by decision: a position the lister cannot build stops `compare` before any comparison (exit 1), also when it is an unselected one (drop it from `--ids`);
   a run that dies leaves a `did_not_finish` / `failed` stub at `--out`, never an older result.
+
+---
+# Superseding freeze `judge-prompt-frozen-5` (Oct 21, the live Sonnet worker; the judge is Gemini 4 Argon)
+
+**Why.** Run 1 (frozen-4, `claude-sonnet-5-5`) did not pass against km3 (aggregate only: `RUN1_OUTCOME.md` on main). Dustin wants to try a different model as the judge, out
+of curiosity, with about $10-15 of his Google API credits. The coordinator pre-registered ONE model before any build: **Gemini 4 Argon at high reasoning effort**. The prompt
+is unchanged; only the model and the provider change.
+
+**What did not change** (checked by `tests/test_frozen.py` and `tests/test_gemini.py`): the prompt fingerprint `0cb24215...` (the same as frozen-2, -3 and -4), `judge.FROZEN`
+(still the Anthropic freeze's settings: the dict is inside the fingerprint, so the Gemini settings live in `providers.py` and in the new `judge` block of `FROZEN.json`),
+the parser (`parse_choice`), the invalid-label handling (a reply with no PLAN line, two numbers, or a number outside the list keeps no choice), the no-retry policy, the plan
+lister and the baseline executable (the same hashes, engine tree `70652fff`: the exam was built on them), and the formal comparison and the analysis.
+
+**What is new.**
+1. `providers.py`: the Gemini provider (Interactions API, `POST https://generativelanguage.googleapis.com/v1beta/interactions`, key in the `x-goog-api-key` header),
+   its request builder, response parser, prices and key loader. `judge.judge_one(..., provider='gemini', thinking_level=...)` sends exactly the frozen system and user
+   text; a Gemini row also records `provider`, `thinking_level` and `thinking_summaries`, which `compare` checks against the `judge` block of `FROZEN.json` (a frozen-4
+   row against this freeze fails every setting; the Anthropic rows keep their old shape and are checked against the old settings when the record has no `judge` block).
+2. `budget_judge.py`: the hard spend bound for the scored run (Astra's exam-run-1 design, ported): every call's worst case is reserved before it is sent at the
+   conservative price ($4 / $20 per 1M tokens, the higher published price), settled at the price in force, a failed call charged in full, one ledger shared by the primary and
+   the repeat run (`--total-usd 15`).
+3. `freeze_identity.py` records and checks the `judge` block and the new sources (`providers.py`, `budget_judge.py`, `tests/test_gemini.py`, `tests/test_budget.py`).
+
+**Model and price (Google's own pages, read Oct 21, 2026, not memory).**
+- Model id `gemini-4-argon` (Stable; thinking levels low / medium / high; 65,536 output tokens synchronous; context 1,048,576): https://ai.google.dev/gemini-api/docs/models
+- Price, Standard tier, USD per 1M tokens, input / output **including thinking tokens**: **$2 / $10 through 2026-11-30, $4 / $20 from 2026-12-01**, no prompt-length tiers
+  listed; not on the free tier: https://ai.google.dev/gemini-api/docs/pricing
+- Thinking (`generation_config.thinking_level`; `max_output_tokens` is "the combined total of thinking tokens and output tokens"; thinking is billed as output; a run that
+  hits the limit while reasoning ends "incomplete"): https://ai.google.dev/gemini-api/docs/thinking
+- The Interactions API: https://ai.google.dev/gemini-api/docs/interactions and https://ai.google.dev/api/interactions-api
+
+**Settings mapping (each is also in `FROZEN.json` -> `judge.mapping`).**
+
+| frozen-4 (Anthropic) | frozen-5 (Gemini) | matches? |
+|---|---|---|
+| system text, user text | `system_instruction`, `input` (identical text; same `prompt_sha256`) | yes |
+| `max_tokens` 8,000, reasoning counted as output | `generation_config.max_output_tokens` 8,000, documented as thinking + answer | same meaning; **tokenizers differ**, so 8,000 Gemini tokens are not 8,000 Claude tokens, and at high thinking the cap may be spent on thinking: an "incomplete" reply keeps no choice, like a reply cut at `max_tokens` |
+| the model's default reasoning (no setting) | `thinking_level` "high" (highest of low / medium / high) | **no**: different mechanisms; "high" is the closest to "as much as it will do" |
+| thought text | `thinking_summaries` "none": none requested, none stored | n/a |
+| temperature not set | not set (none documented for this model; `--temperature` is refused) | yes |
+| no retry | no retry | yes |
+| finish | `stop_reason` "end_turn" only for status "completed"; any other status is stored `gemini:<status>` and keeps no choice | same rule |
+
+**Not verified until a live call.** The documents give the request fields and the response's `steps` / `usage` fields but not the error body, so the parser is tolerant (it
+reads `model_output` text only, treats a missing usage block as unknown cost and charges the worst case) and the one live smoke test (at most $0.50, two old positions)
+is what confirms the call and the parse. The Standard price ends its introductory rate after Nov 30; the reservation always uses the higher one.
+
+**Disclosure.** No exam position, reference, answer or RESULTS file was opened for this freeze; no live call was made while writing it (mocks only); no main merge.

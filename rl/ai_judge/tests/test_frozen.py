@@ -20,16 +20,26 @@ class Frozen(unittest.TestCase):
 
     def test_the_sources_and_executables_are_the_frozen_ones(self):
         import freeze_identity
-        self.assertEqual(self.frozen['tag'], 'judge-prompt-frozen-4')
+        self.assertEqual(self.frozen['tag'], 'judge-prompt-frozen-5')
         # the sources, the engine tree and (where built) the lister and baseline executables must equal FROZEN.json
         self.assertEqual(freeze_identity.check(self.frozen), [])
 
     def test_earlier_freezes_are_recorded_as_superseded_not_rewritten(self):
         tags = [s['tag'] for s in self.frozen['supersedes']]
-        self.assertEqual(tags, ['judge-prompt-frozen-3', 'judge-prompt-frozen-2', 'judge-prompt-frozen-1'])
-        self.assertEqual(self.frozen['supersedes'][0]['fingerprint'], self.frozen['fingerprint'])  # the prompt is the one frozen-3 and frozen-2 froze
-        self.assertEqual(self.frozen['supersedes'][1]['fingerprint'], self.frozen['fingerprint'])
-        self.assertEqual(self.frozen['supersedes'][0]['commit'], '316f3577142238083c8c0ca222d2cc06afdd67ff')
+        self.assertEqual(tags, ['judge-prompt-frozen-4', 'judge-prompt-frozen-3', 'judge-prompt-frozen-2', 'judge-prompt-frozen-1'])
+        for s in self.frozen['supersedes'][:3]:  # the prompt is the one frozen-2, -3 and -4 froze
+            self.assertEqual(s['fingerprint'], self.frozen['fingerprint'])
+        self.assertEqual(self.frozen['supersedes'][0]['commit'], '72eea776ea745be837be94320068402eb81fa11a')
+        self.assertEqual(self.frozen['supersedes'][1]['commit'], '316f3577142238083c8c0ca222d2cc06afdd67ff')
+
+    def test_frozen_5_changes_the_judge_not_the_lister_the_baseline_or_the_prompt(self):
+        self.assertEqual(self.frozen['fingerprint'], '0cb2421552661b563bdb49fca31aca53f468d0853661908fbbf7730fcb5ba762')
+        self.assertEqual(self.frozen['plans_binary_sha256'], 'bd4eeb6e4579f88c12b5a889178af2f34071a1bca9b1675552b4e47b418ea00b')
+        self.assertEqual(self.frozen['baseline']['binary_sha256'], 'f35a1a99188806c7713cc40dd8fff65172c21a15d5449174f1cd3c1cfc40ad36')
+        self.assertEqual(self.frozen['baseline']['engine_tree'], '70652fff03af511e32a169e16209e158a998dda6')
+        block = self.frozen['judge']
+        self.assertEqual((block['provider'], block['settings']['model'], block['settings']['thinking_level'], block['settings']['max_tokens']), ('gemini', 'gemini-4-argon', 'high', 8000))
+        self.assertEqual(block, json.loads(json.dumps(judge.frozen_judge_block())))
 
     def test_the_prompt_and_its_layout_code_are_the_frozen_ones(self):
         self.assertEqual(judge.fingerprint(), self.frozen['fingerprint'],

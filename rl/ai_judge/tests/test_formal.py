@@ -21,6 +21,21 @@ DECKS = os.path.join(HERE, 'fixtures', 'decks')
 HAVE_BIN = os.path.exists(judge.PLANS_BIN)
 
 
+def made_judge_row(pid, positions, recs, order, reply_text, stop_reason='end_turn', model=None):
+    """One judge row exactly as judge_one makes it, for the judge of the CURRENT freeze (FROZEN.json: Anthropic up to frozen-4, Gemini from frozen-5), with the provider's call
+    replaced by a fixed reply (no key, no network). stop_reason 'max_tokens' is a reply cut by the output cap."""
+    import providers
+    if judge.judge_expectation(judge.frozen_identity())[0] == 'gemini':
+        done = stop_reason == 'end_turn'
+        reply = (reply_text, {'input_tokens': 1, 'output_tokens': 1, 'thought_tokens': 0, 'answer_tokens': 1, 'cached_tokens': 0}, 0.1, 'gemini-4-argon',
+                 {'stop_reason': 'end_turn' if done else 'gemini:incomplete', 'content_types': ['model_output'], 'status': 'completed' if done else 'incomplete', 'usage_missing': False})
+        with mock.patch.object(providers, 'call_gemini', return_value=reply):
+            return judge.judge_one(pid, positions, recs, order, True, model or 'gemini-4-argon', decks_dir=DECKS, provider='gemini')
+    reply = (reply_text, {'input_tokens': 1, 'output_tokens': 1}, 0.1, judge.MODEL, {'stop_reason': stop_reason, 'content_types': ['text']})
+    with mock.patch.object(judge, 'call_claude', return_value=reply):
+        return judge.judge_one(pid, positions, recs, order, True, model or judge.MODEL, decks_dir=DECKS)
+
+
 # ---------------------------------------------------------------------------------------------------------------------------------- pure logic
 def mk_rec(pid, n=2):
     return {'id': pid, 'capped': False, 'start': {'position': pid}, 'plans': [{'n': i, 'key': f'{pid}-key{i}', 'labels': [f'{pid}-move{i}'], 'end': 'end_turn'} for i in range(1, n + 1)]}
@@ -838,9 +853,7 @@ class CommandLinePath(unittest.TestCase):
         for i, pid in enumerate(cls.ids):
             n = choose(i)
             shown = {p['n']: k for k, p in judge.render_prompt(cls.positions[pid], cls.recs[pid], judge.FROZEN['order'], DECKS)[2].items()}
-            reply = (f'PLAN: {shown[n]}\nREASON: x', {'input_tokens': 1, 'output_tokens': 1}, 0.1, judge.MODEL, {'stop_reason': 'end_turn', 'content_types': ['text']})
-            with mock.patch.object(judge, 'call_claude', return_value=reply):
-                r, _, _ = judge.judge_one(pid, cls.positions, cls.recs, judge.FROZEN['order'], True, model or judge.MODEL, decks_dir=DECKS)
+            r, _, _ = made_judge_row(pid, cls.positions, cls.recs, judge.FROZEN['order'], f'PLAN: {shown[n]}\nREASON: x', model=model)
             r['repeat'], r['tag'] = repeat, None
             rows.append(json.loads(json.dumps(r)))
         return rows
@@ -1064,15 +1077,31 @@ class CommandLinePath(unittest.TestCase):
         # the prompt is re-rendered under the FROZEN order: a row answered from a forward-ordered prompt fails on the prompt hash whatever `frozen` says
         fwd = self.make_judge_rows(lambda i: self.blow[0]['n'])
         shown_forward = {p['n']: k for k, p in judge.render_prompt(self.positions[self.ids[0]], self.recs[self.ids[0]], 'forward', DECKS)[2].items()}
-        reply = (f"PLAN: {shown_forward[self.blow[0]['n']]}\nREASON: x", {'input_tokens': 1, 'output_tokens': 1}, 0.1, judge.MODEL, {'stop_reason': 'end_turn', 'content_types': ['text']})
-        with mock.patch.object(judge, 'call_claude', return_value=reply):
-            r, _, _ = judge.judge_one(self.ids[0], self.positions, self.recs, 'forward', True, judge.MODEL, decks_dir=DECKS)
+        r, _, _ = made_judge_row(self.ids[0], self.positions, self.recs, 'forward', f"PLAN: {shown_forward[self.blow[0]['n']]}\nREASON: x")
         r['repeat'], r['tag'], r['frozen'] = 0, None, True
         fwd[0] = json.loads(json.dumps(r))
         d, rf, qf, ef = self.files([dict(x) for x in self.km3_rows_ok] + fwd)
         code, out, err = self.cli(self.argv(rf, qf, ef))
         self.assertEqual(code, 2)
         self.assertTrue('prompt_mismatch' in err or 'shown_mismatch' in err, err)
+
+    def test_frozen_4_rows_of_the_anthropic_judge_are_refused_under_a_gemini_freeze(self):
+        if judge.judge_expectation(judge.frozen_identity())[0] != 'gemini':
+            self.skipTest('the current freeze is not a Gemini freeze')
+        rows = []
+        for i, pid in enumerate(self.ids):
+            n = self.blow[1 if i in (2, 5, 8) else 0]['n']
+            shown = {p['n']: k for k, p in judge.render_prompt(self.positions[pid], self.recs[pid], judge.FROZEN['order'], DECKS)[2].items()}
+            reply = (f'PLAN: {shown[n]}\nREASON: x', {'input_tokens': 1, 'output_tokens': 1}, 0.1, judge.MODEL, {'stop_reason': 'end_turn', 'content_types': ['text']})
+            with mock.patch.object(judge, 'call_claude', return_value=reply):
+                r, _, _ = judge.judge_one(pid, self.positions, self.recs, judge.FROZEN['order'], True, judge.MODEL, decks_dir=DECKS)
+            r['repeat'], r['tag'] = 0, None
+            rows.append(json.loads(json.dumps(r)))
+        d, rf, qf, ef = self.files([dict(x) for x in self.km3_rows_ok] + rows)
+        code, out, err = self.cli(self.argv(rf, qf, ef))
+        self.assertEqual(code, 2)
+        self.assertIn('not_frozen', err)
+        self.assertIn("provider='<missing>'", err)
 
     # --- request options and malformed inputs: clean failures, never a traceback
     def test_judge_repeats_and_seeds_and_contrasts_are_wired_through(self):
@@ -1355,9 +1384,7 @@ class CommandLinePath(unittest.TestCase):
     def test_a_cut_reply_with_a_plan_line_is_not_a_choice(self):
         pid = self.ids[0]
         shown = {p['n']: k for k, p in judge.render_prompt(self.positions[pid], self.recs[pid], judge.FROZEN['order'], DECKS)[2].items()}
-        reply = (f"PLAN: {shown[self.blow[0]['n']]}\nREASON: x", {'input_tokens': 1, 'output_tokens': 1}, 0.1, judge.MODEL, {'stop_reason': 'max_tokens', 'content_types': ['text']})
-        with mock.patch.object(judge, 'call_claude', return_value=reply):
-            r, _, _ = judge.judge_one(pid, self.positions, self.recs, judge.FROZEN['order'], True, judge.MODEL, decks_dir=DECKS)
+        r, _, _ = made_judge_row(pid, self.positions, self.recs, judge.FROZEN['order'], f"PLAN: {shown[self.blow[0]['n']]}\nREASON: x", stop_reason='max_tokens')
         self.assertIsNone(r['plan_number'])
         self.assertIn('cut at max_tokens', r['parse_error'])
 

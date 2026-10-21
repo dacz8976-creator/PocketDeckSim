@@ -13,7 +13,7 @@ listed plan. Here nothing is left out and no number is taken on trust:
     whole-number `repeat` (judge, no `seed`);
   * a row is a problem when it is missing, appears twice, was not expected, has no listed plan (an unfollowable or AMBIGUOUS move list, a parse failure), is not
     an object with a text `position` and `bot`, or (judge) is not exactly `dry_run: false` / `frozen: true`, was made with another model, token cap or
-    temperature than the freeze, or used a capped (incomplete) plan list;
+    temperature than the freeze (and, from frozen-5, another provider or thinking level), or used a capped (incomplete) plan list;
   * a row with a plan number is checked against the CURRENT plan list, not believed:
       - the number must be a whole number inside the list (bool, float, text and 0 are not numbers; 999 in a two-plan list is a problem);
       - a row that carries a plan number AND a match_error or parse_error contradicts itself;
@@ -214,8 +214,9 @@ def check_chosen_plan(row, bot, rec, list_hash, expect_judge, require_frozen):
             out.append(('labels_mismatch', f"the row's moves {row.get('plan')!r} are not the labels of plan {n}"))
         if row.get('cut') != plan['end']:
             out.append(('cut_mismatch', f"the row says its plan ends with {row.get('cut')!r} but plan {n} of the current list ends with {plan['end']!r} (the end decides whether a complete plan exists)"))
-        if row.get('stop_reason') == 'max_tokens':
-            out.append(('truncated_reply', 'the reply was cut at the output cap: the stored choice is not an intact answer'))
+        sr = row.get('stop_reason')
+        if sr == 'max_tokens' or (isinstance(sr, str) and sr.startswith('gemini:')):  # Gemini rows carry 'end_turn' only for status "completed", else 'gemini:<status>'
+            out.append(('truncated_reply', f'the reply did not finish (stop reason {sr!r}; the output cap includes thinking): the stored choice is not an intact answer'))
     else:
         pf = row.get('plan_full')
         if not isinstance(pf, list) or not pf or not all(isinstance(x, str) for x in pf):
@@ -426,7 +427,7 @@ def compare(rows, ids, bots, seeds, judge_repeats, references, recs, match, elig
             read_problems=(), position_games=None):
     """The whole path. Returns the report; raises BatchFailed (exit code 2) for on_problem='fail' when anything is unresolved.
     expect_judge(point, row) -> {'prompt_sha256', 'shown': {number printed in the prompt: plan number}, 'parse': reply text -> number or None,
-    'settings': {model, max_tokens, temperature}} (or {'error': text}) is required whenever the judge is a bot: it is how a judge row is tied to the prompt and
+    'settings': {model, max_tokens, temperature, plus provider / thinking_level / thinking_summaries for a Gemini freeze}} (or {'error': text}) is required whenever the judge is a bot: it is how a judge row is tied to the prompt and
     reply it was answered from. `full_match(row_labels, ref_labels, rec)` -> bool (the remainder after a chance event, label by label) is required for the full-plan
     agreement of the full-scope points.
     `position_games` = {point: game} from the positions file, cross-checked against the eligibility file's games."""

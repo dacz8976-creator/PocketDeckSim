@@ -3,7 +3,7 @@
 Oct 18-19, 2026 (Sonnet 5.5 session "Opus agents progress", for the coordinator). Built, shaped and tested on the OLD positions only (stage A's 92 and the
 diagnostic's 14). The laptop's exam folder and branch were not opened. No engine rules changed: `plans/` is a separate crate that calls the engine
 by path (like `rl/strength`), and `engine/` is untouched. **The prompt and settings are frozen since Oct 19**; the current freeze is tag
-`judge-prompt-frozen-4` (frozen-1, -2 and -3 are kept; the prompt is the same in all four, the identity, the formal comparison path and the analysis differ, see `FROZEN.md`).
+`judge-prompt-frozen-5` (frozen-1 to -4 are kept; the prompt is the same in frozen-2 to -5; frozen-5 changes only the judge model and provider to Gemini 4 Argon, see `FROZEN.md`).
 Nothing here has been scored on fresh positions.
 
 ## What is here
@@ -13,6 +13,7 @@ Nothing here has been scored on fresh positions.
 | `plans/` (Rust, `judge_plans`) | Lists the engine's legal **whole-turn plans** of a pg_pos position; replays a bot's or a recording's move list into the same list |
 | `judge.py` | Prompt, parser, API call, cost record, bot runner (`km3` through the frozen baseline executable, `judge`; the playout pilot kx3 is not played by it), shared result format, scoring against recorded plans, the `compare` command |
 | `formal.py` | The formal paired comparison: every expected row accounted for and proven to be the choice it claims (plan number, plan-list identity, replay, prompt and reply), the references filtered to the explicit selection; any problem fails the batch or makes the comparison inconclusive |
+| `providers.py`, `budget_judge.py` | The Gemini provider (request, response parser, prices, key loader) and the hard spend bound around the judge's calls (frozen-5) |
 | `analysis.py` | The game-clustered analysis: prefix agreement for the primary points, full-plan agreement for the full-scope subset, a descriptive diagnostic block for the rest |
 | `tests/` | About 150 tests: parser, prompt whitelist, cost, the plan list (count, dedupe, chance cut-off, no leakage, cap, replay, Stadium, Field Blower and random-evolution targets, label key order), the formal path (logic, negative controls and command line), the selection / filtering of the references, the analysis (estimates, clustering, repeats), the baseline printer at runtime, the freeze identity |
 | `FROZEN.md`, `FROZEN.json` | The frozen prompt and settings, the measurements behind them, and the identity (fingerprint, source hashes, executables) the freeze tests check |
@@ -50,6 +51,19 @@ The key is read from `ANTHROPIC_API_KEY` or the last `export ANTHROPIC_API_KEY=`
 The model is fixed at `claude-sonnet-5-5` (`--model` exists for experiments and makes the record `frozen: false`). With no flags, `judge` and `run --bot judge`
 use the frozen settings (`FROZEN.md`); `--repeat N` asks the same prompt N times, `--workers W` runs calls side by side, `--stop-usd X` stops starting calls at
 X dollars, `judge.py spend FILE...` totals the recorded cost.
+
+**The Gemini judge (frozen-5).** `--provider gemini` sends the same frozen prompt to `gemini-4-argon` (Interactions API, thinking level high, 8,000 output tokens including
+thinking; `providers.py`). Its key is `GEMINI_API_KEY`, from the environment or the last `export GEMINI_API_KEY=` line of `~/.bashrc` (read as text, never executed, never
+printed, logged or stored). The scored run goes through the spend bound, not through `judge judge`:
+
+```bash
+python3 budget_judge.py --positions P --decks D --ids ID ... --max-calls N --repeat 1 --workers 4 --tag T --out rows.jsonl \
+    --ledger ledger.json --total-usd 15 --run-cap-usd 8 --live      # --mock: a fixed reply, no key, nothing sent
+```
+
+It reserves every call's worst case at $4 / $20 per 1M tokens before sending, settles at the price in force ($2 / $10 through 2026-11-30), charges a failed call its whole
+worst case and stops, and shares one ledger between the primary and the repeat run. `compare` reads the freeze's judge (`FROZEN.json` -> `judge`) and checks each row's
+provider, model, token cap, temperature and thinking level against it.
 
 ## The formal comparison (nothing unresolved is left out)
 

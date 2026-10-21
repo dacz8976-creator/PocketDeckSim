@@ -15,7 +15,7 @@ Design rules (rl/results/weekly_review_2026-10-18/PLAN.md, step 2):
   * dry run by default: nothing leaves the machine unless --live is given.
 """
 import argparse, hashlib, inspect, json, os, re, subprocess, sys, threading, time, urllib.request, urllib.error
-import analysis, formal
+import analysis, formal, providers
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 REPO = os.path.abspath(os.path.join(HERE, '..', '..'))
@@ -443,6 +443,48 @@ def cost_of(model, usage):
             'cache_read_input_tokens': usage.get('cache_read_input_tokens', 0), 'usd': round(usd, 5), 'price_per_mtok': [pin, pout], 'price_note': PRICE_NOTE}
 
 
+def gemini_cost_of(usage, est_input_tokens, max_tokens, today=None):
+    """The cost of one Gemini call at the price in force. Input is charged in full (cached input is not discounted), output includes thinking. When the response carried no
+    usable usage block the cost is UNKNOWN: it is then charged at its worst case (the estimated prompt plus the whole output cap, at the higher published price) and says so."""
+    pin, pout = providers.gemini_price(today)
+    missing = usage.get('input_tokens') is None
+    if missing:
+        rin, rout = providers.gemini_reserve_price()
+        usd = est_input_tokens * rin / 1e6 + max_tokens * rout / 1e6
+        tin, tout = est_input_tokens, max_tokens
+    else:
+        tin, tout = usage['input_tokens'], usage.get('output_tokens', 0)
+        usd = tin * pin / 1e6 + tout * pout / 1e6
+    return {'input_tokens': usage.get('input_tokens'), 'output_tokens': usage.get('output_tokens'), 'thought_tokens': usage.get('thought_tokens'), 'answer_tokens': usage.get('answer_tokens'),
+            'cached_tokens': usage.get('cached_tokens'), 'cache_creation_input_tokens': 0, 'cache_read_input_tokens': 0, 'usd': round(usd, 5), 'price_per_mtok': [pin, pout],
+            'price_note': providers.GEMINI_PRICE_NOTE, 'usd_is_worst_case': missing}
+
+
+def judge_settings(provider='anthropic'):
+    """The frozen judge settings of a provider as a row records them (compare checks every key): provider-less rows are the Anthropic freeze's (frozen-4 and earlier)."""
+    if provider == 'gemini':
+        return {k: providers.GEMINI_FROZEN[k] for k in ('provider', 'model', 'max_tokens', 'temperature', 'thinking_level', 'thinking_summaries')}
+    if provider == 'anthropic':
+        return {'model': FROZEN['model'], 'max_tokens': FROZEN['max_tokens'], 'temperature': FROZEN['temperature']}
+    raise ValueError(f'unknown provider {provider!r}')
+
+
+def frozen_judge_block():
+    """The `judge` block FROZEN.json records for a Gemini freeze (frozen-5): provider, settings, endpoint, prices, the settings mapping and its sources. Not inside FROZEN (that
+    dict is part of the prompt fingerprint, which must stay unchanged)."""
+    return {'provider': 'gemini', 'settings': judge_settings('gemini'), 'endpoint': providers.GEMINI_ENDPOINT, 'api': 'Interactions API (POST /v1beta/interactions)',
+            'price_per_mtok': {'through_2026-11-30': list(providers.GEMINI_PRICE_INTRO), 'from_2026-12-01': list(providers.GEMINI_PRICE_STANDARD), 'reservation': list(providers.gemini_reserve_price())},
+            'price_note': providers.GEMINI_PRICE_NOTE, 'mapping': providers.GEMINI_MAPPING, 'sources': providers.GEMINI_SOURCES}
+
+
+def judge_expectation(ident):
+    """(provider, expected row settings) of a freeze record: the `judge` block of FROZEN.json when it has one (frozen-5), else the Anthropic settings."""
+    block = ident.get('judge')
+    if not block:
+        return 'anthropic', judge_settings('anthropic')
+    return block['provider'], dict(block['settings'])
+
+
 # ---------------------------------------------------------------------------------------------------------------------------------- records
 def file_sha256(path):
     h = hashlib.sha256()
@@ -471,32 +513,53 @@ def record(position, bot, plan, cut, **extra):
     return r
 
 
-def judge_one(pid, positions, recs, order, live, model, temperature=None, decks_dir=DEFAULT_DECKS, compact_above=COMPACT_ABOVE, max_tokens=MAX_TOKENS, prompt_version='v1', allow_capped=False):
+def judge_one(pid, positions, recs, order, live, model, temperature=None, decks_dir=DEFAULT_DECKS, compact_above=COMPACT_ABOVE, max_tokens=MAX_TOKENS, prompt_version='v1', allow_capped=False,
+              provider='anthropic', thinking_level=None):
+    if provider not in ('anthropic', 'gemini'):
+        raise ValueError(f'unknown provider {provider!r}')
+    if provider == 'gemini':
+        thinking_level = thinking_level or providers.GEMINI_FROZEN['thinking_level']
+    elif thinking_level is not None:
+        raise ValueError('thinking_level is a Gemini setting; the Anthropic freeze sets no thinking level')
     pos, rec = positions[pid], recs[pid]
     if live and rec['capped'] and not allow_capped:
         raise SystemExit(f"{pid}: the plan list is capped ({rec['n_plans']} of at least {rec['total_found']} plans): it is not every legal choice, so a formal judge call is refused "
                          "(--allow-capped only for experiments; such a record is never `frozen`)")
     system, user, shown = render_prompt(pos, rec, order, decks_dir, compact_above, prompt_version)
     est = estimate_tokens(system, user, 'compact' if len(shown) > compact_above else 'full')
-    frozen = (model == FROZEN['model'] and prompt_version == FROZEN['prompt_version'] and order == FROZEN['order'] and compact_above == FROZEN['compact_above']
-              and max_tokens == FROZEN['max_tokens'] and temperature == FROZEN['temperature'] and not rec['capped']
+    if provider == 'gemini':
+        want = judge_settings('gemini')
+        frozen_settings = (model == want['model'] and max_tokens == want['max_tokens'] and temperature == want['temperature'] and thinking_level == want['thinking_level'])
+    else:
+        frozen_settings = model == FROZEN['model'] and max_tokens == FROZEN['max_tokens'] and temperature == FROZEN['temperature']
+    frozen = (frozen_settings and prompt_version == FROZEN['prompt_version'] and order == FROZEN['order'] and compact_above == FROZEN['compact_above'] and not rec['capped']
               and rec.get('world_seed') == FROZEN['plan_world_seed']
               and rec.get('limits') == {k: FROZEN[k] for k in ('max_plans', 'max_nodes', 'max_steps')})
     base = dict(order=order, n_plans=len(shown), capped=rec['capped'], total_plans_found=rec['total_found'], model=model, max_tokens=max_tokens, temperature=temperature,
                 prompt_tokens_estimate=est, dry_run=not live,
                 prompt_form='compact' if len(shown) > compact_above else 'full', prompt_version=prompt_version, frozen=frozen,
                 prompt_sha256=prompt_hash(system, user), plan_list_sha256=plan_list_sha256(rec))
+    if provider == 'gemini':  # Anthropic rows keep the shape of frozen-4 (no provider field); a Gemini row names its provider and thinking settings, which compare checks
+        base.update(provider='gemini', thinking_level=thinking_level, thinking_summaries=providers.GEMINI_FROZEN['thinking_summaries'])
     if not live:
         return record(pid, 'judge', None, None, plan_number=None, reason=None, cost=None, **base), system, user
-    text, usage, secs, model_used, extra = call_claude(system, user, model, max_tokens=max_tokens, temperature=temperature)
+    if provider == 'gemini':
+        text, usage, secs, model_used, extra = providers.call_gemini(system, user, model, max_tokens=max_tokens, temperature=temperature,
+                                                                      thinking={'thinking_level': thinking_level, 'thinking_summaries': providers.GEMINI_FROZEN['thinking_summaries']})
+        cost = gemini_cost_of(usage, est, max_tokens)
+    else:
+        text, usage, secs, model_used, extra = call_claude(system, user, model, max_tokens=max_tokens, temperature=temperature)
+        cost = cost_of(model_used, usage)
     parsed = parse_choice(text, len(shown))
-    if extra.get('stop_reason') == 'max_tokens':  # a reply cut by the cap is never an intact answer, even when a PLAN line made it in: no choice is kept
-        parsed = {'ok': False, 'plan': None, 'reason': parsed['reason'], 'error': f"the reply was cut at max_tokens={max_tokens} (reasoning used it up): raise --max-tokens"
-                  + ('' if parsed['ok'] else f"; {parsed['error']}")}
+    stop = extra.get('stop_reason')
+    if stop == 'max_tokens' or (provider == 'gemini' and stop != 'end_turn'):  # a reply cut by the cap (or, for Gemini, any status but "completed") is never an intact answer, even when a PLAN line made it in: no choice is kept
+        why = (f"the reply was cut at max_tokens={max_tokens} (reasoning used it up): raise --max-tokens" if stop in ('max_tokens', 'gemini:incomplete')
+               else f"the reply did not finish ({stop})")
+        parsed = {'ok': False, 'plan': None, 'reason': parsed['reason'], 'error': why + ('' if parsed['ok'] else f"; {parsed['error']}")}
     plan = shown[parsed['plan']] if parsed['ok'] else None
     r = record(pid, 'judge', plan['labels'] if plan else None, plan['end'] if plan else None, plan_number=plan['n'] if plan else None, shown_number=parsed['plan'],
                plan_key=plan['key'] if plan else None, reason=parsed['reason'], parse_error=parsed['error'], parse_warning=parsed.get('warning'), raw=text, seconds=secs,
-               cost=cost_of(model_used, usage), **extra, **base)
+               cost=cost, **extra, **base)
     return r, system, user
 
 
@@ -919,6 +982,7 @@ def _run_compare(a, positions, ids):
     recs = list_plans(ids, a.positions, a.decks, a.world_seed, a.max_plans)
     rendered = {}
     compact_above = a.compact_above if a.allow_unfrozen else FROZEN['compact_above']
+    judge_provider, judge_expected = judge_expectation(ident)  # the freeze's judge: the `judge` block of FROZEN.json (frozen-5), else the Anthropic settings of frozen-4 and earlier
 
     def expect_judge(pid, row):
         """The prompt and reply the judge row must have been answered from, re-rendered now: the frozen settings, or (experiments, --allow-unfrozen) the row's own
@@ -932,14 +996,14 @@ def _run_compare(a, positions, ids):
                 n = len(shown)
                 rendered[k] = {'prompt_sha256': prompt_hash(system, user), 'shown': {i: p['n'] for i, p in shown.items()},
                                'parse': (lambda raw, n=n: (lambda r: r['plan'] if r['ok'] else None)(parse_choice(raw, n))),
-                               'settings': {'model': FROZEN['model'], 'max_tokens': FROZEN['max_tokens'], 'temperature': FROZEN['temperature']}}
+                               'settings': dict(judge_expected)}
             except Exception as e:  # SystemExit from an unknown order, or whatever a malformed order / version does: a prompt_mismatch problem, never a crash
                 rendered[k] = {'error': f'order {order!r}, prompt version {version!r}: {type(e).__name__}: {e}'}
         return rendered[k]
 
     db = card_database_path()
     run_info = {'formal': not experiment, 'experiment_switches': experiment,
-                'freeze': {'tag': ident['tag'], 'fingerprint_now': fingerprint(), 'fingerprint_frozen': ident['fingerprint']},
+                'freeze': {'tag': ident['tag'], 'fingerprint_now': fingerprint(), 'fingerprint_frozen': ident['fingerprint'], 'judge_provider': judge_provider, 'judge_settings': dict(judge_expected)},
                 'executables': {'plans_binary_sha256': file_sha256(PLANS_BIN), 'baseline_sha256_required': baseline_sha},
                 'inputs': {'positions_sha256': file_sha256(a.positions), 'references_sha256': file_sha256(a.references), 'eligibility_sha256': file_sha256(a.eligibility),
                            'results_sha256': results_sha, 'decks_sha256': dir_sha256(a.decks), 'card_database': {'path': db, 'sha256': file_sha256(db) if db else None}},
@@ -1021,7 +1085,9 @@ def main(argv=None):
     p.add_argument('--order', default=FROZEN['order'])
     p.add_argument('--live', action='store_true', help='really call the API (default: dry run)')
     p.add_argument('--max-calls', type=int, default=1, help='hard cap on API calls in this invocation')
-    p.add_argument('--model', default=MODEL)
+    p.add_argument('--model', default=None, help=f'default: {MODEL} (anthropic) or {providers.GEMINI_FROZEN["model"]} (gemini)')
+    p.add_argument('--provider', choices=['anthropic', 'gemini'], default='anthropic', help='the frozen-5 judge is gemini (budget_judge.py is the formal way to run it)')
+    p.add_argument('--thinking-level', choices=['low', 'medium', 'high'], help=f'gemini only (default: {providers.GEMINI_FROZEN["thinking_level"]})')
     p.add_argument('--temperature', type=float)
     p.add_argument('--max-tokens', type=int, default=MAX_TOKENS, help='output cap per call, reasoning included')
     p.add_argument('--repeat', type=int, default=1, help='calls per position (the same prompt again: a measure of the judge\'s own variability)')
@@ -1045,7 +1111,9 @@ def main(argv=None):
     p.add_argument('--order', default=FROZEN['order'])
     p.add_argument('--live', action='store_true')
     p.add_argument('--max-calls', type=int, default=1)
-    p.add_argument('--model', default=MODEL)
+    p.add_argument('--model', default=None)
+    p.add_argument('--provider', choices=['anthropic', 'gemini'], default='anthropic')
+    p.add_argument('--thinking-level', choices=['low', 'medium', 'high'])
     p.add_argument('--out')
     p = sub.add_parser('score', help='development check on old positions: agreement with the recorded plan; FAILS (exit 2) on any unresolved row unless --lenient')
     p.add_argument('--results', required=True)
@@ -1071,8 +1139,16 @@ def main(argv=None):
     a = ap.parse_args(argv)
 
     if a.cmd == 'fingerprint':
-        print(json.dumps({'fingerprint': fingerprint(), 'settings': FROZEN}, indent=1))
+        print(json.dumps({'fingerprint': fingerprint(), 'settings': FROZEN, 'judge': judge_expectation(frozen_identity())[1]}, indent=1))
         return 0
+
+    if a.cmd in ('judge', 'run'):
+        if a.model is None:
+            a.model = providers.GEMINI_FROZEN['model'] if a.provider == 'gemini' else MODEL
+        if a.provider == 'gemini' and getattr(a, 'temperature', None) is not None:
+            sys.exit('--temperature: not a documented setting of gemini-4-argon; the frozen judge sets none')
+        if a.provider != 'gemini' and a.thinking_level is not None:
+            sys.exit('--thinking-level is a Gemini setting')
 
     if a.cmd == 'spend':
         n = usd = tin = tout = 0
@@ -1208,7 +1284,8 @@ def main(argv=None):
             with lock:
                 if a.live and stop_usd is not None and total >= stop_usd:
                     return None
-            r, _, _ = judge_one(i, positions, recs, a.order, a.live, a.model, getattr(a, 'temperature', None), a.decks, a.compact_above, a.max_tokens, a.prompt, a.allow_capped)
+            r, _, _ = judge_one(i, positions, recs, a.order, a.live, a.model, getattr(a, 'temperature', None), a.decks, a.compact_above, a.max_tokens, a.prompt, a.allow_capped,
+                                a.provider, a.thinking_level)
             r['repeat'] = k
             r['tag'] = getattr(a, 'tag', None)
             with lock:
@@ -1222,7 +1299,7 @@ def main(argv=None):
             from concurrent.futures import ThreadPoolExecutor
             with ThreadPoolExecutor(max_workers=max(1, getattr(a, 'workers', 1))) as ex:
                 done = list(ex.map(one, tasks))
-            print(f'{calls} call(s), about ${total:.4f} ({PRICE_NOTE})', file=sys.stderr)
+            print(f'{calls} call(s), about ${total:.4f} ({providers.GEMINI_PRICE_NOTE if a.provider == "gemini" else PRICE_NOTE})', file=sys.stderr)
             skipped = sum(r is None for r in done)
             failed = [r for r in done if r is not None and r['plan_number'] is None]
             if skipped or failed:
