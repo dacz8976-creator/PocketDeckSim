@@ -1,0 +1,14 @@
+The slow report's pin tests at f6f898338e1199801c2295342b419e1034e137f7 (laptop/new-slow-pin-2026-10-20), run 2026-10-21T07:15:51Z in a detached worktree of that commit,
+with KX_RUNS_DIR unset, in a foreground shell (the signal tests need it), nice 19; /home/dacz8976/slowpin_run_tests.sh
+(the nine modules, 4 at a time) and test_slow_report_paired after them. Per module: rc, seconds, the last lines.
+
+test_slow_report rc=0 secs=214 Ran 492 tests in 213.574s  OK 
+test_slow_report_existing rc=0 secs=1 Ran 42 tests in 0.753s  OK 
+test_slow_report_page rc=0 secs=20 Ran 201 tests in 19.792s  OK 
+test_slow_report_paired rc=0 secs=5 Ran 69 tests in 4.854s  OK 
+test_slow_report_process rc=0 secs=10 Ran 115 tests in 9.149s  OK 
+test_slow_report_registration rc=0 secs=63 Ran 244 tests in 62.779s  OK 
+test_slow_report_runloop rc=0 secs=14 Ran 78 tests in 14.396s  OK 
+test_split_collect rc=0 secs=1 stamped /tmp/tmp71yvq2hx/w1: manifest 0492fe662c19, program 9a3a45d01531, slice (all) sealed /tmp/tmp71yvq2hx/w1: 1 games, games.jsonl 6c2cc7350822, program 9a3
+test_strength_prereg_use rc=0 secs=31 Ran 121 tests in 30.593s  OK 
+test_strength_report rc=0 secs=2 Ran 18 tests in 1.909s  OK 
