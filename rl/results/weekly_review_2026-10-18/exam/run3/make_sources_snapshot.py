@@ -131,7 +131,9 @@ def main():
             if t and ws < t <= we:
                 key = SR.search(row['Video']).group(0).replace(' ', '_') if SR.search(row['Video']) else row['Video']
                 if not any(key.replace('_', ' ') in n.replace('_', ' ') for n in seen_names):
-                    stray.append({'video': row['Video'], 'status': row.get('Status'), 'start_utc': t.strftime('%Y-%m-%dT%H:%M:%SZ'),
+                    # a camera .MOV is never named here (owner ruling, coordinator-023); his games are screen recordings
+                    video = '(a .MOV, name withheld)' if row['Video'].lower().endswith('.mov') else row['Video']
+                    stray.append({'video': video, 'status': row.get('Status'), 'start_utc': t.strftime('%Y-%m-%dT%H:%M:%SZ'),
                                   'note': 'in the review index, no packet folder in the given evidence directories'})
     out = {'what': "exam v2's window record (make_sources_snapshot.py); sources copied to run3/sources/<packet>/, hash-checked against the packets' pins",
            'window_start_exclusive': a.window_start, 'window_end_inclusive': a.window_end, 'evidence': a.evidence,
