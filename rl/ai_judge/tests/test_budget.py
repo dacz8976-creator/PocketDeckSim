@@ -11,7 +11,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path.insert(0, ROOT)
 import budget_judge as bj, judge, providers  # noqa: E402
-from test_gemini import PID, fake_rec, generate_content, interaction  # noqa: E402
+from test_gemini import PID, PROJECT, fake_rec, generate_content, interaction  # noqa: E402
 
 SYS, USER = 'S' * 1000, 'U' * 9000
 INTRO = (2.0, 10.0)
@@ -438,11 +438,13 @@ class Wrapper(unittest.TestCase):
         p = mock.patch.object(judge, 'list_plans', side_effect=lambda ids, *a, **k: {i: fake_rec() for i in ids})
         p.start()
         self.addCleanup(p.stop)
+        self.addCleanup(providers.set_vertex_project, None)  # the wrapper's --vertex-project flag sets a module-level value
         self.d = tmp()
 
-    def argv(self, *extra, total='15', cap='8', mode='--mock', out='rows.jsonl', ledger='ledger.json', repeat='1'):
+    def argv(self, *extra, total='15', cap='8', mode='--mock', out='rows.jsonl', ledger='ledger.json', repeat='1', project=True):
         return ['--positions', judge.DEFAULT_POSITIONS, '--decks', judge.DEFAULT_DECKS, '--ids', PID, '--max-calls', '3', '--repeat', repeat, '--workers', '1', '--tag', 'T',
-                '--out', os.path.join(self.d, out), '--ledger', os.path.join(self.d, ledger), '--total-usd', total, '--run-cap-usd', cap, '--provider', self.PROVIDER, mode, *extra]
+                '--out', os.path.join(self.d, out), '--ledger', os.path.join(self.d, ledger), '--total-usd', total, '--run-cap-usd', cap, '--provider', self.PROVIDER,
+                *(['--vertex-project', PROJECT] if (self.PROVIDER == 'gemini-vertex' and project) else []), mode, *extra]
 
     def run_main(self, argv):
         err = io.StringIO()
@@ -599,6 +601,30 @@ class WrapperVertex(Wrapper):
         code, err = self.run_main(argv)
         self.assertEqual(code, 0, err)
         self.assertEqual(self.rows()[0]['provider'], 'gemini-vertex')
+
+    def test_a_missing_project_stops_a_live_run_before_any_ledger_or_call(self):
+        home = tmp()
+        with mock.patch.dict(os.environ, {'HOME': home, 'VERTEX_API_KEY': 'k-not-a-real-key'}), mock.patch.object(providers, '_post_json') as post:
+            os.environ.pop('VERTEX_PROJECT', None)
+            with self.assertRaises(SystemExit) as cm:
+                self.run_main(self.argv(mode='--live', project=False))
+        self.assertIn('VERTEX_PROJECT', str(cm.exception))
+        post.assert_not_called()
+        self.assertFalse(os.path.exists(os.path.join(self.d, 'ledger.json')))
+
+    def test_a_mock_run_ignores_an_unusable_ambient_project(self):
+        with mock.patch.dict(os.environ, {'VERTEX_PROJECT': 'My First Project'}):
+            code, err = self.run_main(self.argv(project=False))
+        self.assertEqual(code, 0, err)
+        self.assertIsNone(self.rows()[0]['vertex_project'])
+
+    def test_the_project_reaches_the_url_and_the_row(self):
+        with mock.patch.dict(os.environ, {'VERTEX_API_KEY': 'k-not-a-real-key'}), mock.patch.object(providers, '_post_json', return_value=generate_content()) as post:
+            code, err = self.run_main(self.argv(mode='--live', total='2', cap='2'))
+        self.assertEqual(code, 0, err)
+        self.assertIn(f'/projects/{PROJECT}/locations/global/publishers/google/models/gemini-4-argon:generateContent', post.call_args.args[0])
+        row = self.rows()[0]
+        self.assertEqual((row['vertex_project'], row['location']), (PROJECT, 'global'))
 
     def test_a_reply_cut_at_the_cap_is_written_without_a_choice_and_the_batch_is_incomplete(self):
         cut = generate_content(finish='MAX_TOKENS')

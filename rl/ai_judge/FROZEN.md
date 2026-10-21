@@ -246,6 +246,62 @@ is what confirms the call and the parse. The Standard price ends its introductor
 
 **Disclosure.** No exam position, reference, answer or RESULTS file was opened for this freeze; no live call was made while writing it (mocks only); no main merge.
 
+**What happened next (live, Oct 21).** The one smoke test of frozen-6 (5 old positions, a $2 ledger) made one call and got HTTP 404 NOT_FOUND for
+`projects/<project number>/locations/us-central1/publishers/google/models/gemini-4-argon`: the key authenticated and the `x-goog-api-key` header was accepted, but the project-less
+URL of the express-mode form pins location us-central1, where the model is not served. frozen-6 is therefore superseded by frozen-7 (kept, not moved).
+
+---
+# Superseding freeze `judge-prompt-frozen-7` (Oct 21, the live Sonnet worker; the Vertex URL names the project and the location, and failed judge rows can count as misses)
+
+**Prompt, parser, lister, baseline and engine are unchanged** (fingerprint `0cb24215...`; lister sha256 `bd4eeb6e...`; baseline `f35a1a99...`; engine tree `70652fff`). Same judge as frozen-6:
+`gemini-4-argon` on Vertex AI, GenerateContent, thinkingLevel HIGH, maxOutputTokens 32,768, text parts only, finishReason STOP = an answer, no retry, key `VERTEX_API_KEY` in the
+`x-goog-api-key` header. frozen-5 and frozen-6 are kept, not moved. Two changes, both asked for by the coordinator:
+
+1. **The URL names the project and the location** (`providers.VERTEX_URL`): `POST https://aiplatform.googleapis.com/v1/projects/{project}/locations/global/publishers/google/models/gemini-4-argon:generateContent`.
+   A `countTokens` probe with the same key and header on exactly this URL answered HTTP 200 (a free call, Oct 21), so a service-account-bound API key is accepted on the
+   project-scoped path (Google documents that path only with a Bearer token). The location `global` is a **frozen setting**: every Vertex row records `location`, and `compare`
+   refuses another. The **project** (id or number; not a secret) is NOT in the freeze: it comes from `VERTEX_PROJECT` (environment) or the run kit's `--vertex-project` flag
+   (`judge.py judge|run`, `budget_judge.py`), is validated (a project id or number, nothing that could change the path), is recorded in every row as `vertex_project` and listed in
+   the compare report (`run.judge_vertex_projects`, with a warning when rows come from more than one). A live run without a project stops before any ledger exists.
+2. **Failed judge rows (pre-registered for run 2; explicit, recorded, default OFF).** `judge.py compare --failed-judge-rows {abort,miss}`, recorded in `FROZEN.json` -> `judge.failed_judge_rows`
+   and in the report (`run.request.failed_judge_rows`, `failed_judge_rows`, `analysis.method`). `abort` (the default, and the behaviour of run 1 and of frozen-4 to frozen-6): a
+   judge row without a valid choice is an `unresolved` problem and stops the compare. `miss`: such a row counts as a MISS (agreement 0) in the prefix scoring and, at a full-scope
+   point, in the full-scope scoring (never "not comparable": the judge produced no plan), so one bad reply cannot void a paid run.
+   - *Which rows:* a JUDGE row with no plan number: an invalid label ("PLAN: 4 or 7", a number outside the list, no PLAN line), a reply cut at the cap, a blocked prompt, any finish
+     but STOP. It must still be a row that is **consistent with being a failed reply and nothing else** (rows are not authenticated: this is what the row's own fields can show), or
+     the compare stops as before (`formal.check_no_choice_row`): it says why (`parse_error`), carries no plan / cut / shown number / plan key / match error (falsy values included),
+     carries the identity of the plan list used now, is the answer to the prompt re-rendered under the frozen settings (prompt hash and every frozen setting, location included),
+     carries its stored reply, its stop reason agrees with the finish fields recorded beside it (`vertex:X` needs finish_reason X, a block needs its block_reason, `end_turn` needs
+     STOP, `gemini:S` needs status S), and the reply really holds no valid choice (it did not finish, or its text parses to no choice: a finished reply that names a valid plan cannot
+     be turned into a miss). `dry_run`, `capped`, `frozen`, mock rows and every other row-level check apply unchanged, and a row that has another problem is unresolved, never a miss.
+     A step-bot row without a plan, a missing row and a duplicate still stop the compare.
+   - *Reported plainly:* the console line `JUDGE ROWS WITHOUT A VALID CHOICE ... N at primary points, M at diagnostic points, of K primary judge rows: position repeat (stop reason:
+     reason); ...`; a WARNING (stderr and `run.warnings`) when more than 20% of the primary judge decisions failed (a systematic fault, such as a cap that is too small, would
+     otherwise read as "the judge lost"; it stays a warning, not an abort); `report.failed_judge_rows` (policy, counts, every row with position, repeat, stop reason and reason; present on
+     every report, zeros included); `report.n_no_choice_rows`; the row account has a `no_choice` state; every report row says `state: no_choice`, `agrees: false` (and `null` while the
+     batch has any problem: with a problem there are no numbers at all).
+   - *Where it counts:* primary points (repeat 0 is the predefined call). A failed repeat > 0 only enters the repeat sensitivity block (as a miss; two empty repeats are not "the same
+     plan"). A failed row at a point outside the primary selection is counted apart (diagnostic block, descriptive) and never moves a primary number.
+   - *What it can and cannot do (corrected after review):* it can only lower the judge's RATE and the whole prefix block relative to the same run with those decisions answered
+     (checked on 1,700 random replacements: never higher). In the full-scope block the contrast is not strictly monotone: an answered plan that stops at a chance event is "not
+     comparable" there and its pair is dropped, whereas a miss is a pair that counts, so the full-scope contrast can move toward zero. To keep a failed reply from opening the
+     min-games gate, a game that exists in the full-scope contrast only because of a miss does NOT count toward the gate (`n_games_gate`, with the reason in the verdict text); the
+     verdict rules, the bootstrap and the sign-flip test are otherwise unchanged. A high failure rate shows as a low score, which is why the count is printed, stored and warned about.
+     The laptop adds `--failed-judge-rows miss` to PREREG_RUN2 before the run.
+
+**Tests (mocks and the real CLI on synthetic rows):** the miss policy with the pure comparison (each kind of failed reply qualifies; 28 ways a row is NOT a consistent failed reply still stop
+the compare; missing / duplicate / step-bot rows still stop it; prefix and full-scope rates; diagnostic and repeat handling; the default is unchanged) and through `judge.py compare` with
+rows written by the real writer (rates drop by exactly one decision; the console line; the report fields; tampered rows refused; the flag only takes `abort` or `miss`); the Vertex URL, the
+project setting and its validation, the row fields (`location`, `vertex_project`), the wrapper's `--vertex-project` and the missing-project stop.
+
+**Review before the tag** (2 agents, wf_aefd9b8b-3c5; 45 mutants of the new code, 39 killed, the survivors are now covered; 2,000 randomized default-policy scenarios gave reports
+identical to frozen-6's apart from the documented additions): fixed in this commit: the min-games gate rule above and its wording; a stop reason is cross-checked against the finish fields;
+`early_failure` reports carry `failed_judge_rows` and `n_no_choice_rows` too; the console line shows the finish and the reason; the 20% warning; a project setting that is not a project id
+(for example an API key pasted into it) is refused WITHOUT echoing it, and an unusable ambient `VERTEX_PROJECT` no longer stops a dry run, a mock run or the test suite (only a live call);
+the real project id and number are no longer in a frozen test file; stale text (frozen-6 as current, "never a miss", the checked settings) corrected.
+
+**Disclosure.** No exam position, reference, answer or RESULTS file was opened for this freeze. One live call besides the frozen-6 smoke test: the free `countTokens` probe above.
+
 ---
 # Superseding freeze `judge-prompt-frozen-6` (Oct 21, the live Sonnet worker; the same judge model served by Vertex AI)
 

@@ -6,7 +6,7 @@ user text to a model and brings back (text, usage, seconds, model, extra) in the
     extra = {'stop_reason': 'end_turn' for an answer that finished, anything else for one that did not, 'content_types': [...]}
 
 Anthropic (Messages API) lives in judge.call_claude and is unchanged. This module adds Google Gemini: `gemini-4-argon` through the Gemini Developer API's Interactions API
-(provider "gemini", frozen-5) and through Vertex AI / Gemini Enterprise Agent Platform's GenerateContent API (provider "gemini-vertex", frozen-6: the free-trial credits pay
+(provider "gemini", frozen-5) and through Vertex AI / Gemini Enterprise Agent Platform's GenerateContent API (provider "gemini-vertex", frozen-6 and -7: the free-trial credits pay
 for this one, not for the Developer API; see FROZEN.md).
 
 Sources (read on 2026-10-21; Google's own pages, not memory):
@@ -27,8 +27,10 @@ Vertex AI (read 2026-10-21, Google's own pages):
   guide: https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/guides/gemini-4-argon : generateContent REST with generationConfig.thinkingConfig.thinkingLevel;
       "65,536 output tokens, or 32,768 for non-streaming direct HTTP requests", output counted with thinking; finishReason STOP, MAX_TOKENS, CONTINUATION (long decode, v1beta1 only)
   key + URL: https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/start/api-keys?usertype=standard (a standard API key bound to a service account) and the API quickstart
-      (models/start?usertype=apikey): POST https://aiplatform.googleapis.com/v1/publishers/google/models/MODEL:generateContent, no project or location in the path. The quickstart's curl
-      passes the key as ?key=; the x-goog-api-key HEADER (used here, so the key is never in a URL) is documented by the express-mode REST reference
+      (models/start?usertype=apikey): POST https://aiplatform.googleapis.com/v1/publishers/google/models/MODEL:generateContent with no project or location in the path (frozen-6; it pins
+      us-central1, where gemini-4-argon is not served: HTTP 404 NOT_FOUND on the live call). frozen-7 uses the project-scoped form of the model guide's REST example,
+      /v1/projects/PROJECT/locations/global/publishers/google/models/MODEL:generateContent (the guide shows it with a Bearer token; a countTokens probe with the key and the header
+      answered 200). The quickstart's curl passes the key as ?key=; the x-goog-api-key HEADER (used here, so the key is never in a URL) is documented by the express-mode REST reference
       (https://docs.cloud.google.com/vertex-ai/generative-ai/docs/start/express-mode/vertex-ai-express-mode-api-reference) and https://docs.cloud.google.com/docs/authentication/api-keys-use ;
       that a service-account-bound key accepts it is confirmed only by a live call
   price: the Google Cloud announcement https://cloud.google.com/blog/products/ai-machine-learning/gemini-4-argon-available-on-google-cloud : $2 / $10 per 1M input / output tokens through
@@ -57,11 +59,16 @@ GEMINI_KEY_VAR = 'GEMINI_API_KEY'
 GEMINI_FROZEN = {'provider': 'gemini', 'model': 'gemini-4-argon', 'max_tokens': 8000, 'temperature': None, 'thinking_level': 'high', 'thinking_summaries': 'none'}
 GEMINI_MODELS = {'gemini-4-argon'}
 
-# Vertex AI (frozen-6): the same model, GenerateContent API, a key in the x-goog-api-key header. maxOutputTokens 32,768 is the most a non-streaming direct HTTP call allows
-# (documented), chosen so that high thinking does not use the cap up (a cut reply has no choice and aborts the formal comparison). The level is sent as written ("HIGH").
-VERTEX_URL = 'https://aiplatform.googleapis.com/v1/publishers/google/models/{model}:generateContent'
+# Vertex AI (frozen-6, frozen-7): the same model, GenerateContent API, a key in the x-goog-api-key header. maxOutputTokens 32,768 is the most a non-streaming direct HTTP call allows
+# (documented), chosen so that high thinking does not use the cap up (a cut reply has no choice). The level is sent as written ("HIGH").
+# frozen-7: the URL names the PROJECT and the LOCATION. The project-less URL of frozen-6 (the express-mode form) pins location us-central1, where gemini-4-argon is not served (the one
+# smoke call of frozen-6 got HTTP 404 NOT_FOUND there); a countTokens probe on the project-scoped global URL with the same key and header answered 200 (Oct 21). The project id is not a
+# secret: it comes from the VERTEX_PROJECT setting (environment, or the run kit's --vertex-project flag), is not stored in the freeze, and is recorded in every row.
+VERTEX_URL = 'https://aiplatform.googleapis.com/v1/projects/{project}/locations/{location}/publishers/google/models/{model}:generateContent'
 VERTEX_KEY_VAR = 'VERTEX_API_KEY'
-VERTEX_FROZEN = {'provider': 'gemini-vertex', 'model': 'gemini-4-argon', 'max_tokens': 32768, 'temperature': None, 'thinking_level': 'HIGH'}
+VERTEX_PROJECT_VAR = 'VERTEX_PROJECT'
+VERTEX_FROZEN = {'provider': 'gemini-vertex', 'model': 'gemini-4-argon', 'location': 'global', 'max_tokens': 32768, 'temperature': None, 'thinking_level': 'HIGH'}
+_VERTEX_PROJECT = [None]  # a run kit's --vertex-project flag (set_vertex_project); the environment variable is the fallback
 GEMINI_PROVIDERS = ('gemini', 'gemini-vertex')  # the two Gemini providers: same price table, same unfinished-reply rule (stop_reason 'end_turn' or 'gemini:<status>' / 'vertex:<reason>')
 
 # USD per million tokens (input, output incl. thinking). ACTUAL = the price in force; RESERVE = the higher price (a conservative price for the budget's worst-case reservation).
@@ -104,7 +111,7 @@ VERTEX_SOURCES = ['https://docs.cloud.google.com/gemini-enterprise-agent-platfor
                   'https://docs.cloud.google.com/vertex-ai/generative-ai/docs/start/express-mode/vertex-ai-express-mode-api-reference', 'https://docs.cloud.google.com/docs/authentication/api-keys-use',
                   'https://ai.google.dev/api/generate-content', 'https://ai.google.dev/gemini-api/docs/pricing', 'https://ai.google.dev/gemini-api/docs/billing', 'https://docs.cloud.google.com/free/docs/free-cloud-features']
 
-# How each frozen-4 (Anthropic) judge setting maps to Vertex AI, and what cannot match. Recorded in FROZEN.json (frozen-6).
+# How each frozen-4 (Anthropic) judge setting maps to Vertex AI, and what cannot match. Recorded in FROZEN.json (frozen-6, frozen-7).
 VERTEX_MAPPING = {
     'prompt': 'identical: the frozen system text goes in `systemInstruction` (one text part), the user text in `contents` (one user turn, one text part); the prompt fingerprint and every row\'s '
               'prompt_sha256 are the same as for the Anthropic judge and for frozen-5',
@@ -119,6 +126,10 @@ VERTEX_MAPPING = {
     'retries': 'none: one request per call; a failed request is a failed call (the budget wrapper charges its full worst case and the batch is incomplete)',
     'streaming': 'none: one synchronous generateContent request on v1 (no long decode: it needs v1beta1; a finishReason CONTINUATION would keep no choice)',
     'serving': 'the same model id as frozen-5 but the Vertex AI serving stack, not the Gemini Developer API; identical outputs are not guaranteed',
+    'location': 'global, in the URL path (projects/PROJECT/locations/global/publishers/google/models/gemini-4-argon:generateContent): the project-less key URL of frozen-6 pins us-central1, where '
+                'the model is not served; every row records its location, and `compare` refuses another',
+    'project': 'the Google Cloud project the key bills to (not a secret): the VERTEX_PROJECT setting (environment, or the run kit\'s --vertex-project flag); it is in the URL, recorded in every '
+               'row as vertex_project and listed in the compare report, and NOT part of the freeze (the freeze names the setting, not the value)',
     'price': 'USD per 1M tokens, input / output including thinking: 2 / 10 through 2026-11-30, 4 / 20 from 2026-12-01 (Google Cloud announcement; the Vertex pricing tables could not be read); the budget '
              'reserves every call at 4 / 20; the cached-input discount is ignored',
     'finish': 'stop_reason is "end_turn" only for finishReason STOP; any other finishReason (MAX_TOKENS, SAFETY, CONTINUATION, ...), a candidate without a finishReason, no candidate, or a blocked '
@@ -294,11 +305,47 @@ def call_gemini(system, user, model=GEMINI_FROZEN['model'], max_tokens=GEMINI_FR
 
 
 # ---------------------------------------------------------------------------------------------------------------------------------- Vertex AI
-def vertex_url(model):
-    """The generateContent URL of a publisher model: the model id must be a plain model name (nothing that could change the path)."""
+_PROJECT_ID = re.compile(r'[a-z][a-z0-9\-]{4,28}[a-z0-9]')  # a Google Cloud project id: 6-30 lowercase letters, digits and hyphens
+_PROJECT_NUMBER = re.compile(r'[0-9]{6,20}')
+
+
+def valid_project(project):
+    return isinstance(project, str) and bool(_PROJECT_ID.fullmatch(project) or _PROJECT_NUMBER.fullmatch(project))
+
+
+def set_vertex_project(project):
+    """The run kit's --vertex-project flag: wins over the environment. A malformed value stops the run (the message names the setting; the project id is not a secret)."""
+    if project is not None and not valid_project(project):
+        sys.exit(f'--vertex-project is not a Google Cloud project id (6-30 lowercase letters, digits and hyphens) or number (6-20 digits); its value is not shown')
+    _VERTEX_PROJECT[0] = project
+
+
+def vertex_project(required=True, strict=True):
+    """The Google Cloud project the key bills to: set_vertex_project, else the VERTEX_PROJECT environment variable. None when it is not set and not `required`. A value that is not a
+    project id or number stops the run (strict), naming the setting and never the value (the validator cannot know it is not an API key pasted in the wrong place); with strict=False
+    (a dry run, a mock run, a row's provenance) it is treated as not set."""
+    p = (_VERTEX_PROJECT[0] or os.environ.get(VERTEX_PROJECT_VAR) or '').strip()
+    if not p:
+        if required:
+            sys.exit(f'no {VERTEX_PROJECT_VAR} (environment) and no --vertex-project: the Vertex AI URL names the project')
+        return None
+    if not valid_project(p):
+        if strict:
+            sys.exit(f'{VERTEX_PROJECT_VAR} is not a Google Cloud project id (6-30 lowercase letters, digits and hyphens) or number (6-20 digits); its value is not shown')
+        return None
+    return p
+
+
+def vertex_url(model, project, location=None):
+    """The generateContent URL of a publisher model in a project and location: the model id, the project and the location must be plain names (nothing that could change the path)."""
+    location = location or VERTEX_FROZEN['location']
     if not isinstance(model, str) or not re.fullmatch(r'[a-z0-9][a-z0-9.\-]*', model):
         raise ValueError(f'not a model id: {model!r}')
-    return VERTEX_URL.format(model=model)
+    if not valid_project(project):
+        raise ValueError('not a project id or number')  # the value is not echoed: it may be an API key pasted in the wrong place
+    if not isinstance(location, str) or not re.fullmatch(r'[a-z0-9][a-z0-9\-]*', location):
+        raise ValueError(f'not a location: {location!r}')
+    return VERTEX_URL.format(project=project, location=location, model=model)
 
 
 def build_vertex_request(system, user, max_tokens, thinking_level):
@@ -342,7 +389,7 @@ def call_vertex(system, user, model=VERTEX_FROZEN['model'], max_tokens=VERTEX_FR
     if temperature is not None:
         raise ValueError('a custom temperature is ignored by gemini-4-argon on Vertex AI: the frozen judge sets none')
     thinking = thinking or {'thinking_level': VERTEX_FROZEN['thinking_level']}
-    url = vertex_url(model)
+    url = vertex_url(model, vertex_project(), VERTEX_FROZEN['location'])
     key = load_key(VERTEX_KEY_VAR)
     t0 = time.time()
     j = _send(url, key, build_vertex_request(system, user, max_tokens, thinking['thinking_level']), timeout)

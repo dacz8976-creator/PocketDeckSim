@@ -382,6 +382,63 @@ class SelectionAndScopes(unittest.TestCase):
         self.assertEqual(kinds(ids=ids, references=refs, e={**ok, 'games': {'p1': 'a', 'p2': 'a'}}, min_games=2), ['too_few_games'])
 
 
+class FailedRepliesDoNotOpenTheGate(unittest.TestCase):
+    """Policy 'miss': a judge reply that failed is scored as a miss. An ANSWERED plan that stops at a chance event is not comparable in the full-scope block and its pair is dropped; a miss
+    is a pair that counts. So a game that exists only because of a miss must not count toward the min-games gate (a failed reply must not turn 'inconclusive' into a direction)."""
+
+    def spec(self):
+        return {f'g{g:02d}': [{'judge': [True], 'km3': [False], 'full': {'judge': [True], 'km3': [False]}}] for g in range(10)}  # 10 games, one full-scope decision each
+
+    def run10(self, last):
+        rows, elig = make_rows(self.spec())
+        j = [r for r in rows if r['bot'] == 'judge' and r['position'] == 'g09-d0'][0]
+        j.update(last)
+        return analysis.analyse(rows, elig, ['km3', 'judge'], 1, resamples=RES, min_games=10, failed_judge_rows='miss' if j['state'] == 'no_choice' else 'abort')
+
+    def test_an_answered_plan_that_stops_at_a_chance_event_leaves_nine_games(self):
+        a = self.run10({'full_agrees': None})  # answered, not comparable: dropped from the full-scope pairs
+        fs = a['full_scope']['contrasts'][0]
+        self.assertEqual((fs['n_games'], fs['n_pairs_dropped'], fs['verdict']), (9, 1, 'inconclusive'))
+        self.assertTrue(fs['reason'].startswith('9 games < 10'))
+        self.assertEqual(prefix(a)['verdict'], 'judge higher')  # the prefix block has all ten games
+
+    def test_the_same_decision_as_a_failed_reply_does_not_open_the_gate(self):
+        a = self.run10({'state': 'no_choice', 'plan_number': None, 'accepted': [], 'agrees': False, 'full_agrees': False})
+        fs = a['full_scope']['contrasts'][0]
+        self.assertEqual((fs['n_games'], fs['n_games_gate'], fs['n_pairs_dropped']), (10, 9, 0))  # the pair counts in the estimate...
+        self.assertAlmostEqual(fs['estimate'], 0.9, places=5)
+        self.assertEqual(fs['verdict'], 'inconclusive')  # ...but not toward the gate
+        self.assertTrue(fs['reason'].startswith('9 games < 10') and 'failed reply' in fs['reason'])
+        self.assertAlmostEqual(a['prefix']['rates']['judge']['estimate'], 0.9, places=5)  # the failed reply is a miss in the prefix too
+        self.assertEqual(a['method']['failed_judge_rows'][:4], 'miss')
+
+    def test_with_no_failed_reply_nothing_changes(self):
+        rows, elig = make_rows(self.spec())
+        a = analysis.analyse(rows, elig, ['km3', 'judge'], 1, resamples=RES, min_games=10, failed_judge_rows='miss')
+        fs = a['full_scope']['contrasts'][0]
+        self.assertNotIn('n_games_gate', fs)
+        self.assertEqual((fs['n_games'], fs['verdict']), (10, 'judge higher'))
+
+    def test_a_miss_at_a_game_with_other_answered_decisions_keeps_the_gate(self):
+        spec = {f'g{g:02d}': [{'judge': [True], 'km3': [False], 'full': {'judge': [True], 'km3': [False]}}, {'judge': [True], 'km3': [False], 'full': {'judge': [True], 'km3': [False]}}] for g in range(10)}
+        rows, elig = make_rows(spec)
+        j = [r for r in rows if r['bot'] == 'judge' and r['position'] == 'g09-d0'][0]
+        j.update({'state': 'no_choice', 'plan_number': None, 'accepted': [], 'agrees': False, 'full_agrees': False})
+        a = analysis.analyse(rows, elig, ['km3', 'judge'], 1, resamples=RES, min_games=10, failed_judge_rows='miss')
+        fs = a['full_scope']['contrasts'][0]
+        self.assertEqual((fs['n_games'], fs['n_games_gate']), (10, 10))  # game g09 still has an answered decision
+
+    def test_two_failed_repeats_are_not_the_same_plan(self):
+        spec = {f'g{g:02d}': [{'judge': [True, True], 'km3': [False]}] for g in range(10)}
+        rows, elig = make_rows(spec)
+        for r in rows:
+            if r['bot'] == 'judge' and r['position'] == 'g00-d0':
+                r.update({'state': 'no_choice', 'plan_number': None, 'accepted': [], 'agrees': False, 'full_agrees': None})
+        a = analysis.analyse(rows, elig, ['km3', 'judge'], 2, resamples=RES, min_games=10, failed_judge_rows='miss')
+        rc = a['prefix']['sensitivity']['repeat_consistency']
+        self.assertEqual((rc['decisions_with_the_same_plan_in_every_repeat'], rc['pairwise_same_plan']), (9, 0.9))
+
+
 class Reproducibility(unittest.TestCase):
     def test_the_same_seed_gives_the_same_report_bit_for_bit(self):
         spec = games_of(12, 2, lambda g, k: [1 if (g + k) % 3 else 0], lambda g, k: [1 if (g * k) % 2 else 0])

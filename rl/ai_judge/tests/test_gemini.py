@@ -14,6 +14,7 @@ import formal, judge, providers  # noqa: E402
 
 FINGERPRINT = '0cb2421552661b563bdb49fca31aca53f468d0853661908fbbf7730fcb5ba762'  # the prompt fingerprint of frozen-2, -3, -4: the prompt did not change for Gemini
 FAKE_KEY = 'AIzaFAKEFAKEFAKEFAKEFAKEFAKE1234567'
+PROJECT = 'project-test-1234'  # a Vertex project id for the tests (not a secret)
 PID = 'KW-261013_010837000-t07'
 
 

@@ -116,11 +116,11 @@ def complete_rows(with_p3=False):
 
 def run(rows, refs=REFS, answers=ANSWERS, replays=None, on_problem='fail', recs=RECS, require_frozen=True, elig=ELIG, expect_judge=expect_identity, min_games=2,
         ids=('P1', 'P2'), bots=('km3', 'judge'), seeds=(1, 2), judge_repeats=1, baseline_sha256=None, contrasts=None, resamples=200, matcher=None, fmatch=full_match,
-        position_games=None):
+        position_games=None, failed_judge_rows='abort'):
     claims = {f"{r.get('position')}|{r.get('bot')}|{r.get('seed')}": r.get('plan_number') for r in rows if isinstance(r, dict) and r.get('bot') != 'judge'}
     m = matcher or Matcher(answers, replays, claims)
     return formal.compare(rows, list(ids), list(bots), list(seeds), judge_repeats, refs, recs, m, elig, on_problem, require_frozen, baseline_sha256, expect_judge, contrasts,
-                          min_games, resamples, fmatch, None, (), (), position_games)
+                          min_games, resamples, fmatch, None, (), (), position_games, failed_judge_rows)
 
 
 def kinds(rep_or_exc):
@@ -810,6 +810,192 @@ class JudgeHelpers(unittest.TestCase):
             self.assertEqual((v['ambiguous'], v['unfollowable'], v['unique']), (0, 0, v['n_plans']), pid)
 
 
+# ---------------------------------------------------------------------------------------------------------------------------------- failed judge rows (policy 'miss')
+def no_choice_row(pid, repeat=0, **kw):
+    """A judge row the way judge_one writes one when the reply gave no valid choice: no plan, a parse_error, the stored reply."""
+    r = judge_row(pid, repeat, 1, plan_number=None, shown_number=None, plan=None, cut=None, plan_key=None, parse_error='no PLAN line', raw='I cannot decide', stop_reason='end_turn')
+    r.update(kw)
+    return r
+
+
+class FailedJudgeRows(unittest.TestCase):
+    """`--failed-judge-rows miss` (pre-registered for run 2): a primary judge row without a valid choice counts as a MISS instead of aborting the compare, but only if it is
+    otherwise a proven failed reply; the default 'abort' is run 1's behaviour."""
+
+    def rows_with(self, bad, extra=()):
+        return [r for r in complete_rows(with_p3=bool(extra)) if not (r['bot'] == 'judge' and r['position'] == bad['position'] and r['repeat'] == bad['repeat'])] + [bad]
+
+    def test_the_default_aborts_exactly_as_before(self):
+        with self.assertRaises(formal.BatchFailed) as cm:
+            run(self.rows_with(no_choice_row('P1')))
+        self.assertEqual(kinds(cm.exception), ['unresolved'])
+        rep = cm.exception.report
+        self.assertEqual((rep['failed_judge_rows']['policy'], rep['failed_judge_rows']['n_primary'], rep['failed_judge_rows']['rows']), ('abort', 0, []))
+        self.assertIsNone(rep['analysis'])
+
+    def test_with_miss_the_row_is_scored_as_a_miss_in_the_prefix_and_the_full_scope_numbers(self):
+        good = run(complete_rows())
+        rep = run(self.rows_with(no_choice_row('P1')), failed_judge_rows='miss')  # P1 is the full-scope point of the fixture
+        self.assertEqual(rep['status'], 'complete')
+        self.assertEqual(formal.exit_code(rep), 0)
+        row = [r for r in rep['rows'] if r['bot'] == 'judge' and r['position'] == 'P1'][0]
+        self.assertEqual((row['state'], row['plan_number'], row['accepted'], row['agrees'], row['full_agrees']), ('no_choice', None, [], False, False))
+        self.assertEqual(rep['n_no_choice_rows'], 1)
+        self.assertEqual(rep['n_resolved_rows'], good['n_resolved_rows'] - 1)
+        self.assertEqual(rep['row_account']['per_bot_state_counts']['judge'], {'no_choice': 1, 'ok': 1})
+        # the judge agreed at P1 and not at P2 (rate 0.5): a miss at P1 makes it 0.0; it can only go down
+        self.assertAlmostEqual(good['analysis']['prefix']['rates']['judge']['estimate'], 0.5, places=5)
+        self.assertAlmostEqual(rep['analysis']['prefix']['rates']['judge']['estimate'], 0.0, places=5)
+        self.assertAlmostEqual(good['analysis']['full_scope']['rates']['judge']['estimate'], 1.0, places=5)
+        self.assertAlmostEqual(rep['analysis']['full_scope']['rates']['judge']['estimate'], 0.0, places=5)
+        self.assertEqual(rep['analysis']['full_scope']['not_comparable']['judge'], [])  # a miss is not "not comparable": the judge produced no plan at all
+        self.assertTrue(rep['analysis']['method']['failed_judge_rows'].startswith('miss'))
+        # the km3 numbers do not move
+        self.assertEqual(rep['analysis']['prefix']['rates']['km3'], good['analysis']['prefix']['rates']['km3'])
+
+    def test_the_count_is_reported_plainly(self):
+        rep = run(self.rows_with(no_choice_row('P1', stop_reason='vertex:MAX_TOKENS', finish_reason='MAX_TOKENS', parse_error='the reply was cut at max_tokens=32768', raw='PLAN: 1\nREASON: cut')),
+                  failed_judge_rows='miss')
+        fj = rep['failed_judge_rows']
+        self.assertEqual((fj['policy'], fj['n_judge_rows_primary'], fj['n_primary'], fj['n_primary_decisions'], fj['n_diagnostic']), ('miss', 2, 1, 1, 0))
+        self.assertEqual(fj['rows'], [{'position': 'P1', 'run': 0, 'primary': True, 'game': 'g1', 'stop_reason': 'vertex:MAX_TOKENS', 'reason': 'the reply was cut at max_tokens=32768'}])
+        self.assertEqual(fj['what'], formal.FAILED_JUDGE_ROWS_DOC['miss'])
+        clean = run(complete_rows(), failed_judge_rows='miss')
+        self.assertEqual((clean['failed_judge_rows']['n_primary'], clean['failed_judge_rows']['rows']), (0, []))
+
+    def test_every_kind_of_failed_reply_qualifies(self):
+        for label, kw in (('invalid label', {'parse_error': 'the PLAN line names several plans', 'raw': 'PLAN: one or two'}), ('no PLAN line', {}),
+                          ('cut at the cap', {'stop_reason': 'max_tokens', 'raw': 'PLAN: 1\nREASON: cut'}), ('gemini unfinished', {'stop_reason': 'gemini:incomplete', 'raw': 'PLAN: 1'}),
+                          ('vertex blocked', {'stop_reason': 'vertex:BLOCKED_SAFETY', 'finish_reason': None, 'block_reason': 'SAFETY', 'raw': '',
+                                              'parse_error': 'the reply did not finish (vertex:BLOCKED_SAFETY); no PLAN line'}),
+                          ('vertex no candidate', {'stop_reason': 'vertex:NO_CANDIDATE', 'finish_reason': None, 'raw': ''}),
+                          ('vertex no finish reason', {'stop_reason': 'vertex:NO_FINISH_REASON', 'finish_reason': None, 'raw': 'PLAN: 1'}),
+                          ('vertex a finished reply with no PLAN line', {'stop_reason': 'end_turn', 'finish_reason': 'STOP'}),
+                          ('vertex safety with a plan line', {'stop_reason': 'vertex:SAFETY', 'finish_reason': 'SAFETY', 'raw': 'PLAN: 2\nREASON: x'})):
+            rep = run(self.rows_with(no_choice_row('P1', **kw)), failed_judge_rows='miss')
+            self.assertEqual(rep['failed_judge_rows']['n_primary'], 1, label)
+
+    def test_a_row_that_is_not_a_proven_failed_reply_still_stops_the_compare(self):
+        cases = {
+            'no reason': ({'parse_error': None}, 'no_reason'),
+            'a blank reason': ({'parse_error': '  '}, 'no_reason'),
+            'another plan list': ({'plan_list_sha256': 'not-the-list'}, 'list_mismatch'),
+            'no plan-list identity': ({'plan_list_sha256': None}, 'list_mismatch'),
+            'another prompt': ({'prompt_sha256': 'prompt-other'}, 'prompt_mismatch'),
+            'another model': ({'model': 'not-the-frozen-model'}, 'not_frozen'),
+            'another cap': ({'max_tokens': 123}, 'not_frozen'),
+            'frozen false': ({'frozen': False}, 'not_frozen'),
+            'a setting not recorded': ({'temperature': 0.5}, 'not_frozen'),
+            'a finished reply that names a valid plan': ({'raw': 'PLAN: 1\nREASON: it did finish', 'parse_error': 'it did not parse'}, 'reply_mismatch'),
+            'no stored reply': ({'raw': None}, 'reply_mismatch'),
+            'a plan beside no plan number': ({'plan': ['P1-move1']}, 'contradictory'),
+            'an empty plan list beside no plan number': ({'plan': []}, 'contradictory'),
+            'a cut beside no plan number': ({'cut': 'end_turn'}, 'contradictory'),
+            'an empty cut': ({'cut': ''}, 'contradictory'),
+            'a shown number': ({'shown_number': 1}, 'contradictory'),
+            'a shown number 0': ({'shown_number': 0}, 'contradictory'),
+            'a plan key': ({'plan_key': 'P1-key1'}, 'contradictory'),
+            'an empty plan key': ({'plan_key': ''}, 'contradictory'),
+            'a match error': ({'match_error': 'ambiguous'}, 'contradictory'),
+            'a forged cut: the stop reason says cut, the finish says STOP': ({'stop_reason': 'vertex:MAX_TOKENS', 'finish_reason': 'STOP', 'raw': 'PLAN: 1'}, 'reply_mismatch'),
+            'a vertex stop reason with no finish recorded': ({'stop_reason': 'vertex:MAX_TOKENS', 'raw': 'PLAN: 1'}, 'reply_mismatch'),
+            'a stop reason end_turn beside a cut finish': ({'stop_reason': 'end_turn', 'finish_reason': 'MAX_TOKENS'}, 'reply_mismatch'),
+            'a block that names no block': ({'stop_reason': 'vertex:BLOCKED_SAFETY', 'finish_reason': None, 'raw': ''}, 'reply_mismatch'),
+            'a gemini status that disagrees': ({'stop_reason': 'gemini:incomplete', 'status': 'completed', 'raw': 'PLAN: 1'}, 'reply_mismatch'),
+            'a dry run': ({'dry_run': True}, 'dry_run'),
+            'a capped list': ({'capped': True}, 'capped'),
+            'a mock row': ({'mock': True}, 'mock_row'),
+        }
+        for label, (kw, kind) in cases.items():
+            with self.assertRaises(formal.BatchFailed, msg=label) as cm:
+                run(self.rows_with(no_choice_row('P1', **kw)), failed_judge_rows='miss')
+            self.assertIn(kind, kinds(cm.exception), label)
+            self.assertIsNone(cm.exception.report['analysis'], label)
+
+    def test_a_missing_or_duplicate_judge_row_and_a_step_bot_without_a_plan_still_stop_it(self):
+        rows = [r for r in complete_rows() if not (r['bot'] == 'judge' and r['position'] == 'P1')]
+        with self.assertRaises(formal.BatchFailed) as cm:
+            run(rows, failed_judge_rows='miss')
+        self.assertEqual(kinds(cm.exception), ['missing'])  # a miss is a row that EXISTS and failed, not an absent one
+        with self.assertRaises(formal.BatchFailed) as cm:
+            run(complete_rows() + [no_choice_row('P1')], failed_judge_rows='miss')
+        self.assertEqual(kinds(cm.exception), ['duplicate'])
+        rows = complete_rows()
+        rows[0] = step_row('P1', 'km3', 1, None, match_error='ambiguous: fits several plans', plan_number=None)
+        with self.assertRaises(formal.BatchFailed) as cm:
+            run(rows, failed_judge_rows='miss')
+        self.assertIn('ambiguous', kinds(cm.exception))  # only JUDGE rows can be failed replies
+
+    def test_a_failed_reply_at_a_point_outside_the_selection_is_counted_apart_and_never_stops_anything(self):
+        rep = run(self.rows_with(no_choice_row('P3'), extra=(1,)), ids=('P1', 'P2', 'P3'), failed_judge_rows='miss')
+        fj = rep['failed_judge_rows']
+        self.assertEqual((rep['status'], fj['n_primary'], fj['n_diagnostic'], fj['rows'][0]['primary']), ('complete', 0, 1, False))
+        self.assertEqual(rep['n_no_choice_rows'], 0)  # the primary rows are all ok
+        self.assertEqual(rep['diagnostic_excluded']['per_bot']['judge'], {'decisions_resolved': 1, 'agreement_sum': 0.0})  # counted as an unsuccessful decision, descriptively
+        base = run(complete_rows(with_p3=True), ids=('P1', 'P2', 'P3'), failed_judge_rows='miss')
+        self.assertEqual(rep['analysis'], base['analysis'])  # the primary numbers are untouched
+
+    def test_a_failed_repeat_is_a_miss_in_the_sensitivity_only_and_two_failed_repeats_are_not_the_same_plan(self):
+        rows = complete_rows() + [judge_row('P1', 1, 1), judge_row('P2', 1, 1)]
+        base = run(rows, judge_repeats=2, failed_judge_rows='miss')
+        self.assertEqual(base['analysis']['prefix']['sensitivity']['repeat_consistency']['decisions_with_the_same_plan_in_every_repeat'], 2)
+        bad = [r for r in rows if not (r['bot'] == 'judge' and r['position'] == 'P1' and r['repeat'] == 1)] + [no_choice_row('P1', repeat=1)]
+        rep = run(bad, judge_repeats=2, failed_judge_rows='miss')
+        self.assertEqual(rep['analysis']['prefix']['rates']['judge'], base['analysis']['prefix']['rates']['judge'])  # the primary call (repeat 0) decides
+        self.assertLess(rep['analysis']['prefix']['sensitivity']['judge_rate']['estimate'], base['analysis']['prefix']['sensitivity']['judge_rate']['estimate'])
+        rc = rep['analysis']['prefix']['sensitivity']['repeat_consistency']
+        self.assertEqual((rc['decisions_with_the_same_plan_in_every_repeat'], rc['pairwise_same_plan']), (1, 0.5))
+        both = [r for r in bad if not (r['bot'] == 'judge' and r['position'] == 'P1' and r['repeat'] == 0)] + [no_choice_row('P1', repeat=0)]
+        rc = run(both, judge_repeats=2, failed_judge_rows='miss')['analysis']['prefix']['sensitivity']['repeat_consistency']
+        self.assertEqual((rc['decisions_with_the_same_plan_in_every_repeat'], rc['pairwise_same_plan']), (1, 0.5))  # two empty replies are not "the same plan"
+
+    def test_a_miss_carries_no_agreement_when_the_batch_is_incomplete(self):
+        rows = [r for r in self.rows_with(no_choice_row('P1')) if not (r['bot'] == 'km3' and r['position'] == 'P2' and r['seed'] == 2)]  # a km3 row is missing: the batch has a problem
+        rep = run(rows, failed_judge_rows='miss', on_problem='inconclusive')
+        self.assertEqual((rep['status'], rep['n_no_choice_rows']), ('inconclusive', 1))
+        self.assertIsNone(rep['analysis'])
+        self.assertTrue(all(r['agrees'] is None and r['full_agrees'] is None for r in rep['rows']))  # with any problem the comparison has no numbers, a miss row included
+        with self.assertRaises(formal.BatchFailed) as cm:
+            run(rows, failed_judge_rows='miss')
+        self.assertTrue(all(r['agrees'] is None and r['full_agrees'] is None for r in cm.exception.report['rows']))
+        self.assertEqual(cm.exception.report['n_no_choice_rows'], 1)
+
+    def test_a_failed_reply_that_has_another_problem_is_not_a_miss_at_a_primary_or_a_diagnostic_point(self):
+        for pid, extra in (('P1', ()), ('P3', (1,))):
+            rows = self.rows_with(no_choice_row(pid, capped=True), extra=extra)
+            rep = run(rows, ids=('P1', 'P2', 'P3') if extra else ('P1', 'P2'), failed_judge_rows='miss', on_problem='inconclusive')
+            self.assertEqual((rep['failed_judge_rows']['n_primary'], rep['failed_judge_rows']['n_diagnostic'], rep['failed_judge_rows']['rows']), (0, 0, []), pid)
+            states = [r['state'] for r in rep['rows'] if r['position'] == pid and r['bot'] == 'judge']
+            self.assertTrue(states == ['unresolved'] or not states, (pid, states))  # primary: unresolved; diagnostic rows are not in the primary list
+            seen = kinds(rep) if not extra else sorted(p['kind'] for p in rep['diagnostic_excluded']['problems'])  # a diagnostic problem is listed apart
+            self.assertIn('capped', seen, pid)
+
+    def test_the_method_text_names_the_policy_either_way(self):
+        self.assertTrue(run(complete_rows())['analysis']['method']['failed_judge_rows'].startswith('abort: such a row stops the comparison'))
+        text = run(complete_rows(), failed_judge_rows='miss')['analysis']['method']['failed_judge_rows']
+        self.assertTrue(text.startswith('miss: a judge row without a valid choice') and 'scores 0 in the prefix and in the full-scope numbers' in text)
+
+    def test_a_request_that_cannot_start_still_reports_the_policy_and_zero_counts(self):
+        rep = run(complete_rows(), ids=('P1', 'P1'), failed_judge_rows='miss', on_problem='inconclusive')  # a point named twice: refused before any row is read
+        self.assertEqual(rep['status'], 'inconclusive')
+        self.assertEqual((rep['failed_judge_rows']['policy'], rep['failed_judge_rows']['n_primary'], rep['failed_judge_rows']['rows'], rep['n_no_choice_rows']), ('miss', 0, [], 0))
+        with self.assertRaises(formal.BatchFailed) as cm:
+            run(complete_rows(), ids=('P1', 'P1'))
+        self.assertEqual(cm.exception.report['failed_judge_rows']['policy'], 'abort')
+
+    def test_a_policy_that_is_not_abort_or_miss_is_refused(self):
+        with self.assertRaises(ValueError):
+            run(complete_rows(), failed_judge_rows='ignore')
+
+    def test_check_no_choice_row_on_its_own(self):
+        rec = RECS['P1']
+        h = formal.plan_list_sha256(rec)
+        self.assertEqual(formal.check_no_choice_row(no_choice_row('P1'), rec, h, expect_identity, True), [])
+        self.assertEqual([k for k, _ in formal.check_no_choice_row(no_choice_row('P1', parse_error=None), rec, h, expect_identity, True)], ['no_reason'])
+        self.assertEqual([k for k, _ in formal.check_no_choice_row(no_choice_row('P1', model='x'), rec, h, expect_identity, False)], [])  # require_frozen=False: an experiment
+        self.assertEqual([k for k, _ in formal.check_no_choice_row(no_choice_row('P1'), rec, h, None, True)], ['prompt_mismatch'])  # no expectation supplied: not provable
+
+
 # ---------------------------------------------------------------------------------------------------------------------------------- the command line
 FAKE_PG_POS = '''#!/usr/bin/env python3
 import json, sys
@@ -990,6 +1176,154 @@ class CommandLinePath(unittest.TestCase):
         self.cli(self.argv(rf, qf, ef, extra=['--out', out, '--resamples', '2000']))
         with open(out) as f:
             self.assertTrue(any('not by the frozen model' in w for w in json.load(f)['run']['warnings']))
+
+    # --- failed judge rows: the pre-registered 'miss' policy through the real CLI, with rows written by the real writer
+    def failed_rows(self, rows, i, reply='PLAN: 4 or 7\nREASON: x', stop='end_turn', repeat=0, mutate=None):
+        """The judge row of point i (and repeat) replaced by what judge_one really writes for a reply that gave no valid choice."""
+        pid = self.ids[i]
+        r, _, _ = made_judge_row(pid, self.positions, self.recs, judge.FROZEN['order'], reply, stop_reason=stop)
+        r['repeat'], r['tag'] = repeat, None
+        r = json.loads(json.dumps(r))
+        self.assertIsNone(r['plan_number'])  # the writer itself kept no choice
+        if mutate:
+            mutate(r)
+        return [x for x in rows if not (x['bot'] == 'judge' and x['position'] == pid and x['repeat'] == repeat)] + [r]
+
+    def miss_cli(self, rows, *extra, policy='miss'):
+        d, rf, qf, ef = self.files(rows)
+        out = os.path.join(d, 'rep.json')
+        code, so, err = self.cli(self.argv(rf, qf, ef, extra=['--failed-judge-rows', policy, '--out', out, '--resamples', '2000', *extra]))
+        with open(out) as f:
+            return code, so, err, json.load(f)
+
+    def test_the_default_still_aborts_on_a_failed_reply_and_the_report_says_the_policy(self):
+        rows = self.failed_rows(self.good_rows(), 0, stop='max_tokens', reply='PLAN: 1\nREASON: x')
+        code, so, err, rep = self.miss_cli(rows, policy='abort')
+        self.assertEqual(code, 2)
+        self.assertIn('unresolved', err)
+        self.assertEqual((rep['status'], rep['failed_judge_rows']['policy'], rep['run']['request']['failed_judge_rows']), ('failed', 'abort', 'abort'))
+        code, so, err = self.cli(self.argv(*self.files(rows)[1:]))  # no --failed-judge-rows at all: the default
+        self.assertEqual(code, 2)
+
+    def test_the_miss_policy_scores_a_cut_reply_as_a_miss_and_says_so_plainly(self):
+        good, _, _ = self.good_report()
+        rows = self.failed_rows(self.good_rows(), 0, stop='max_tokens', reply='PLAN: 1\nREASON: x')  # BLW-00: a full-scope point where the judge had agreed
+        code, so, err, rep = self.miss_cli(rows)
+        self.assertEqual(code, 0, err)
+        self.assertEqual(rep['status'], 'complete')
+        row = [r for r in rep['rows'] if r['bot'] == 'judge' and r['position'] == self.ids[0]][0]
+        self.assertEqual((row['state'], row['plan_number'], row['agrees'], row['full_agrees'], row['full_scope']), ('no_choice', None, False, False, True))
+        fj = rep['failed_judge_rows']
+        self.assertEqual((fj['policy'], fj['n_primary'], fj['n_primary_decisions'], fj['n_diagnostic'], fj['n_judge_rows_primary']), ('miss', 1, 1, 0, len(self.primary)))
+        self.assertEqual(rep['n_no_choice_rows'], 1)
+        self.assertEqual(rep['row_account']['per_bot_state_counts']['judge'], {'ok': len(self.primary) - 1, 'no_choice': 1})
+        self.assertIn('JUDGE ROWS WITHOUT A VALID CHOICE', so)  # on the console, not only in the file
+        self.assertIn(f"1 at primary points, 0 at diagnostic points, of {len(self.primary)} primary judge rows", so)
+        r0 = fj['rows'][0]
+        self.assertIn(f"({r0['stop_reason']}: {r0['reason'][:70]})", so)  # both the finish and the reason
+        self.assertEqual(rep['run']['request']['failed_judge_rows'], 'miss')
+        self.assertTrue(rep['analysis']['method']['failed_judge_rows'].startswith('miss'))
+        g, m = good['analysis'], rep['analysis']
+        self.assertAlmostEqual(g['prefix']['rates']['judge']['estimate'] - m['prefix']['rates']['judge']['estimate'], 1 / len(self.primary), places=5)  # one decision of the eleven fewer agreed
+        self.assertAlmostEqual(g['full_scope']['rates']['judge']['estimate'] - m['full_scope']['rates']['judge']['estimate'], 1 / 4, places=5)
+        self.assertEqual(g['prefix']['rates']['km3'], m['prefix']['rates']['km3'])
+
+    def test_a_share_of_failed_decisions_above_twenty_percent_warns(self):
+        rows = self.good_rows()
+        for i in (0, 1, 3):  # 3 of the 11 primary decisions = 27%
+            rows = self.failed_rows(rows, i)
+        code, so, err, rep = self.miss_cli(rows)
+        self.assertEqual(code, 0, err)  # a warning, not an abort: the count is the point
+        self.assertIn('WARNING: 3 of 11 primary judge decisions had no valid choice', err)
+        self.assertTrue(any('3 of 11 primary judge decisions' in w for w in rep['run']['warnings']))
+        rows = self.failed_rows(self.failed_rows(self.good_rows(), 0), 1)  # 2 of 11 = 18%: no warning
+        code, so, err, rep = self.miss_cli(rows)
+        self.assertEqual(code, 0, err)
+        self.assertNotIn('had no valid choice and were scored', err)
+        self.assertFalse(any('no valid choice' in w for w in rep['run']['warnings']))
+
+    def test_every_kind_of_failed_reply_the_writer_makes_counts_as_a_miss(self):
+        for label, kw in (('an invalid label', {}), ('an out-of-range plan', {'reply': 'PLAN: 99\nREASON: x'}), ('no PLAN line', {'reply': 'I would play the second plan.'}),
+                          ('cut at the cap', {'reply': 'PLAN: 1\nREASON: x', 'stop': 'max_tokens'})):
+            code, so, err, rep = self.miss_cli(self.failed_rows(self.good_rows(), 3, **kw))
+            self.assertEqual((code, rep['failed_judge_rows']['n_primary']), (0, 1), (label, err))
+
+    def test_a_blocked_prompt_counts_as_a_miss_too(self):
+        if judge.judge_expectation(judge.frozen_identity())[0] != 'gemini-vertex':
+            self.skipTest('only the Vertex freeze has a blocked-prompt answer')
+        import providers
+        pid = self.ids[1]
+        body = {'promptFeedback': {'blockReason': 'SAFETY'}, 'usageMetadata': {'promptTokenCount': 100, 'totalTokenCount': 100}}
+        with mock.patch.dict(os.environ, {'VERTEX_API_KEY': 'k-not-a-real-key', 'VERTEX_PROJECT': 'project-test-1234'}), mock.patch.object(providers, '_post_json', return_value=body):
+            r, _, _ = judge.judge_one(pid, self.positions, self.recs, judge.FROZEN['order'], True, 'gemini-4-argon', decks_dir=DECKS, provider='gemini-vertex', max_tokens=32768)
+        r['repeat'], r['tag'] = 0, None
+        r = json.loads(json.dumps(r))
+        self.assertEqual((r['plan_number'], r['stop_reason']), (None, 'vertex:BLOCKED_SAFETY'))
+        rows = [x for x in self.good_rows() if not (x['bot'] == 'judge' and x['position'] == pid)] + [r]
+        code, so, err, rep = self.miss_cli(rows)
+        self.assertEqual((code, rep['failed_judge_rows']['n_primary'], rep['failed_judge_rows']['rows'][0]['stop_reason']), (0, 1, 'vertex:BLOCKED_SAFETY'), err)
+
+    def test_a_row_that_is_not_a_proven_failed_reply_still_stops_the_compare_through_the_cli(self):
+        def tamper(**kw):
+            return lambda r: r.update(kw)
+
+        def no_raw(r):
+            del r['raw']
+        cases = {
+            'no reason': (tamper(parse_error=None), 'no_reason'),
+            'another prompt hash': (tamper(prompt_sha256='0' * 16), 'prompt_mismatch'),
+            'another plan list': (tamper(plan_list_sha256='1' * 64), 'list_mismatch'),
+            'another cap': (tamper(max_tokens=8000), 'not_frozen'),
+            'another thinking level': (tamper(thinking_level='LOW'), 'not_frozen'),
+            'another location': (tamper(location='us'), 'not_frozen'),
+            'a finished reply that names a valid plan': (tamper(raw='PLAN: 1\nREASON: x', stop_reason='end_turn'), 'reply_mismatch'),
+            'no stored reply': (no_raw, 'reply_mismatch'),
+            'a mock row': (tamper(mock=True), 'mock_row'),
+            'a plan beside no plan number': (tamper(plan=['Play:Field Blower']), 'contradictory'),
+        }
+        provider = judge.judge_expectation(judge.frozen_identity())[0]
+        for label, (fn, kind) in cases.items():
+            if provider == 'anthropic' and kind == 'not_frozen' and label in ('another thinking level', 'another location'):
+                continue  # an Anthropic row carries neither
+            code, so, err, rep = self.miss_cli(self.failed_rows(self.good_rows(), 2, mutate=fn))
+            self.assertEqual(code, 2, label)
+            self.assertIn(kind, err, label)
+            self.assertIsNone(rep['analysis'], label)
+
+    def test_a_missing_judge_row_and_a_step_bot_without_a_plan_still_stop_the_compare_under_miss(self):
+        rows = [r for r in self.good_rows() if not (r['bot'] == 'judge' and r['position'] == self.ids[0])]
+        code, so, err, rep = self.miss_cli(rows)
+        self.assertEqual(code, 2)
+        self.assertIn('missing', err)
+        rows = self.good_rows()
+        k = [r for r in rows if r['bot'] == 'km3'][0]
+        k.update(plan_number=None, match_error='ambiguous: the move list fits several plans')
+        code, so, err, rep = self.miss_cli(rows)
+        self.assertEqual(code, 2)
+        self.assertIn('ambiguous', err)
+
+    def test_a_failed_reply_at_the_diagnostic_point_is_counted_apart(self):
+        rows = self.failed_rows(self.good_rows(), len(self.ids) - 1)  # BLW-11 is outside the primary selection
+        code, so, err, rep = self.miss_cli(rows)
+        self.assertEqual(code, 0, err)
+        fj = rep['failed_judge_rows']
+        self.assertEqual((fj['n_primary'], fj['n_diagnostic'], fj['rows'][0]['position'], fj['rows'][0]['primary']), (0, 1, self.EXPOSED, False))
+        base, _, _ = self.good_report()
+        for block in ('prefix', 'full_scope'):
+            self.assertEqual(rep['analysis'][block], base['analysis'][block])  # nothing primary moved (only the method note names the policy)
+
+    def test_a_failed_repeat_through_the_cli(self):
+        rows = self.good_rows() + [json.loads(json.dumps(r)) for r in self.make_judge_rows(lambda i: self.blow[1 if i in (2, 5, 8) else 0]['n'], repeat=1)]
+        rows = self.failed_rows(rows, 0, repeat=1)
+        code, so, err, rep = self.miss_cli(rows, '--judge-repeats', '2')
+        self.assertEqual(code, 0, err)
+        self.assertEqual((rep['failed_judge_rows']['n_primary'], rep['failed_judge_rows']['n_primary_decisions']), (1, 0))  # a repeat row: no primary decision failed
+        rc = rep['analysis']['prefix']['sensitivity']['repeat_consistency']
+        self.assertEqual(rc['decisions_with_the_same_plan_in_every_repeat'], len(self.primary) - 1)
+
+    def test_the_policy_flag_only_takes_abort_or_miss(self):
+        with self.assertRaises(SystemExit):
+            self.miss_cli(self.good_rows(), policy='ignore')
 
     def test_unselected_points_cannot_change_a_primary_number_even_when_their_rows_are_garbage(self):
         base, _, _ = self.good_report()

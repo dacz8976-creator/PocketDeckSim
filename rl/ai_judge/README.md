@@ -3,8 +3,8 @@
 Oct 18-19, 2026 (Sonnet 5.5 session "Opus agents progress", for the coordinator). Built, shaped and tested on the OLD positions only (stage A's 92 and the
 diagnostic's 14). The laptop's exam folder and branch were not opened. No engine rules changed: `plans/` is a separate crate that calls the engine
 by path (like `rl/strength`), and `engine/` is untouched. **The prompt and settings are frozen since Oct 19**; the current freeze is tag
-`judge-prompt-frozen-6` (frozen-1 to -5 are kept; the prompt is the same in frozen-2 to -6; frozen-5 and -6 change only the judge to Gemini 4 Argon, through the Developer API and
-through Vertex AI with a 32,768-token cap; see `FROZEN.md`).
+`judge-prompt-frozen-7` (frozen-1 to -6 are kept; the prompt is the same in frozen-2 to -7; frozen-5 to -7 change only the judge to Gemini 4 Argon: through the Developer API, through
+Vertex AI with a 32,768-token cap, and (frozen-7) through the project-scoped Vertex URL with the pre-registered `--failed-judge-rows` setting; see `FROZEN.md`).
 Nothing here has been scored on fresh positions.
 
 ## What is here
@@ -14,7 +14,7 @@ Nothing here has been scored on fresh positions.
 | `plans/` (Rust, `judge_plans`) | Lists the engine's legal **whole-turn plans** of a pg_pos position; replays a bot's or a recording's move list into the same list |
 | `judge.py` | Prompt, parser, API call, cost record, bot runner (`km3` through the frozen baseline executable, `judge`; the playout pilot kx3 is not played by it), shared result format, scoring against recorded plans, the `compare` command |
 | `formal.py` | The formal paired comparison: every expected row accounted for and proven to be the choice it claims (plan number, plan-list identity, replay, prompt and reply), the references filtered to the explicit selection; any problem fails the batch or makes the comparison inconclusive |
-| `providers.py`, `budget_judge.py` | The Gemini providers (Developer API, Vertex AI: request, response parser, prices, key loader) and the hard spend bound around the judge's calls (frozen-5, frozen-6) |
+| `providers.py`, `budget_judge.py` | The Gemini providers (Developer API, Vertex AI: request, response parser, prices, key loader) and the hard spend bound around the judge's calls (frozen-5 to frozen-7) |
 | `analysis.py` | The game-clustered analysis: prefix agreement for the primary points, full-plan agreement for the full-scope subset, a descriptive diagnostic block for the rest |
 | `tests/` | About 370 tests (the providers, the spend bound and the freeze identity included): parser, prompt whitelist, cost, the plan list (count, dedupe, chance cut-off, no leakage, cap, replay, Stadium, Field Blower and random-evolution targets, label key order), the formal path (logic, negative controls and command line), the selection / filtering of the references, the analysis (estimates, clustering, repeats), the baseline printer at runtime, the freeze identity |
 | `FROZEN.md`, `FROZEN.json` | The frozen prompt and settings, the measurements behind them, and the identity (fingerprint, source hashes, executables) the freeze tests check |
@@ -37,7 +37,7 @@ cd rl/ai_judge
 python3 judge.py plans --set diag14                       # how many whole-turn plans each position has (also --set stageA, --ids ...)
 python3 judge.py prompt --id KW-261012_225319000-t06 --show      # the prompt and its token estimate; nothing is sent
 python3 judge.py judge --set diag14 --out out.jsonl       # DRY RUN: prints prompt sizes, sends nothing
-python3 judge.py judge --id <ID> --live --max-calls 1 --out out.jsonl     # a real call with the ANTHROPIC judge (frozen-4's); --live is required, --max-calls caps them. The frozen-6 judge is --provider gemini-vertex, and the scored run is budget_judge.py (below)
+python3 judge.py judge --id <ID> --live --max-calls 1 --out out.jsonl     # a real call with the ANTHROPIC judge (frozen-4's); --live is required, --max-calls caps them. The frozen-7 judge is --provider gemini-vertex, and the scored run is budget_judge.py (below)
 python3 judge.py run --bot km3 --set diag14 --seeds 1,2,3 --out out.jsonl # any bot through pg_pos (PG_POS_BIN), same result format
 python3 judge.py run --bot judge --set diag14 --out out.jsonl             # the judge through the same runner
 python3 judge.py coverage --set stageA                     # is each recorded plan one of the listed plans? (completeness check)
@@ -53,14 +53,15 @@ The Anthropic model is fixed at `claude-sonnet-5-5` (`--model` exists for experi
 use the frozen-4 (Anthropic) settings (`FROZEN.md`); `frozen: true` in a row only says it matches ITS OWN provider's settings, and `compare` accepts only the current freeze's judge (below); `--repeat N` asks the same prompt N times, `--workers W` runs calls side by side, `--stop-usd X` stops starting calls at
 X dollars, `judge.py spend FILE...` totals the recorded cost.
 
-**The Gemini judge (frozen-6).** `--provider gemini-vertex` sends the same frozen prompt to `gemini-4-argon` on Vertex AI (GenerateContent API, thinking level HIGH, 32,768 output
-tokens including thinking; `providers.py`). Its key is `VERTEX_API_KEY`, from the environment or the last `export VERTEX_API_KEY=` line of `~/.bashrc` (read as text, never executed,
-never printed, logged or stored; sent only in the `x-goog-api-key` header). `--provider gemini` is the frozen-5 Developer API provider (`GEMINI_API_KEY`, 8,000 tokens), kept in the
+**The Gemini judge (frozen-7).** `--provider gemini-vertex` sends the same frozen prompt to `gemini-4-argon` on Vertex AI (GenerateContent API, location global, thinking level HIGH,
+32,768 output tokens including thinking; `providers.py`). Its key is `VERTEX_API_KEY`, from the environment or the last `export VERTEX_API_KEY=` line of `~/.bashrc` (read as text,
+never executed, never printed, logged or stored; sent only in the `x-goog-api-key` header). The Google Cloud project it bills to (an id or number; not a secret) is named in the URL:
+give it with `--vertex-project PROJECT` (also on `budget_judge.py`) or the `VERTEX_PROJECT` environment variable; it is recorded in every row. `--provider gemini` is the frozen-5 Developer API provider (`GEMINI_API_KEY`, 8,000 tokens), kept in the
 code; the trial credits of Dustin's Google Cloud account pay for Vertex AI, not for the Developer API. The scored run goes through the spend bound, not through `judge judge`:
 
 ```bash
 python3 budget_judge.py --positions P --decks D --ids ID ... --max-calls N --repeat 1 --workers 4 --tag T --out rows.jsonl \
-    --ledger ledger.json --total-usd 15 --run-cap-usd 15 --live      # --mock: a fixed reply, no key, nothing sent (its rows say `mock: true`); default --provider gemini-vertex
+    --ledger ledger.json --total-usd 15 --run-cap-usd 15 --vertex-project PROJECT --live      # --mock: a fixed reply, no key, nothing sent (its rows say `mock: true`); default --provider gemini-vertex
 ```
 
 It reserves every call's worst case at $4 / $20 per 1M tokens before sending (about $0.7 for a typical prompt at 32,768 output tokens; a call that fits only once the calls in flight
@@ -68,7 +69,9 @@ have settled waits for them), settles at the price in force ($2 / $10 through 20
 and shares one ledger between the primary and the repeat run (the run cap is per invocation: set it to the total for the primary run; a run that is killed is charged for the
 calls it had out when the ledger is next opened). `compare` reads the freeze's judge
 (`FROZEN.json` -> `judge`) and checks each row's provider, model, token cap, temperature and thinking level against it. A judge row WITHOUT a choice (an invalid label, a reply
-cut at the cap, any unfinished reply) is a problem that stops the formal comparison (`unresolved`, exit 2); it is never counted as a miss.
+cut at the cap, a blocked prompt, any unfinished reply) is by default a problem that stops the formal comparison (`unresolved`, exit 2). With `compare --failed-judge-rows miss`
+(pre-registered for run 2, recorded in `FROZEN.json` and the report; default `abort`) a row that is a proven failed reply and nothing else counts as a MISS in the prefix and
+full-scope scoring and the count is printed and stored (`failed_judge_rows` in the report); see `FROZEN.md`.
 
 ## The formal comparison (nothing unresolved is left out)
 
@@ -81,8 +84,8 @@ cut at the cap, any unfinished reply) is a problem that stops the formal compari
   duplicated, unexpected, malformed, has no listed plan (an unfollowable or **ambiguous** move list, a parse failure), or does not hold up against the CURRENT plan list:
   plan number out of range or not a whole number, a number beside an error, a plan-list identity (`plan_list_sha256`) or `plan_key` that is not the current one, a
   step bot's `plan_full` that does not replay to that plan, a judge row whose answer does not map to that plan in the re-rendered prompt, whose prompt hash, labels or
-  stored reply do not match, that was not made under the frozen model / token cap / temperature, or was played by another baseline executable.
-* **Results.** With any problem at a primary point there are no numbers at all: `--on-problem fail` (default) exits 2, `--on-problem inconclusive` writes a report with
+  stored reply do not match, that was not made under the frozen model / token cap / temperature / thinking level / location, or was played by another baseline executable.
+* **Results.** With any problem at a primary point (a failed judge reply under `--failed-judge-rows miss` is not one) there are no numbers at all: `--on-problem fail` (default) exits 2, `--on-problem inconclusive` writes a report with
   every expected primary row and its state and exits 3. A clean batch exits 0 and carries: **prefix agreement** for all primary points (rates and judge-vs-bot
   contrasts, game-clustered bootstrap interval, sign-flip test, verdict `<bot> higher` or `inconclusive`); **full-plan agreement** (complete turns only: the same
   listed plan as an accepted move list, plus what follows a chance event equal label by label; a judge plan that stops at a chance event, and a bot turn pg_pos cut

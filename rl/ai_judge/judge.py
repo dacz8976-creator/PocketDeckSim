@@ -461,7 +461,8 @@ def gemini_cost_of(usage, est_input_tokens, max_tokens, today=None, note=None, u
             'price_note': note or providers.GEMINI_PRICE_NOTE, 'usd_is_worst_case': missing}
 
 
-FREEZE_JUDGE_PROVIDER = 'gemini-vertex'  # the judge of the current freeze (frozen-6); frozen-5 was 'gemini', frozen-4 and earlier 'anthropic'
+FREEZE_JUDGE_PROVIDER = 'gemini-vertex'  # the judge of the current freeze (frozen-7); frozen-5 was 'gemini', frozen-4 and earlier 'anthropic'
+FAILED_SHARE_WARNING = 0.2  # policy 'miss': a WARNING when more than this share of the primary judge decisions had no valid choice
 
 
 def judge_settings(provider='anthropic'):
@@ -469,7 +470,7 @@ def judge_settings(provider='anthropic'):
     if provider == 'gemini':
         return {k: providers.GEMINI_FROZEN[k] for k in ('provider', 'model', 'max_tokens', 'temperature', 'thinking_level', 'thinking_summaries')}
     if provider == 'gemini-vertex':
-        return {k: providers.VERTEX_FROZEN[k] for k in ('provider', 'model', 'max_tokens', 'temperature', 'thinking_level')}
+        return {k: providers.VERTEX_FROZEN[k] for k in ('provider', 'model', 'location', 'max_tokens', 'temperature', 'thinking_level')}
     if provider == 'anthropic':
         return {'model': FROZEN['model'], 'max_tokens': FROZEN['max_tokens'], 'temperature': FROZEN['temperature']}
     raise ValueError(f'unknown provider {provider!r}')
@@ -480,12 +481,14 @@ def provider_price_note(provider):
 
 
 def frozen_judge_block(provider=FREEZE_JUDGE_PROVIDER):
-    """The `judge` block FROZEN.json records for a Gemini freeze (frozen-5: 'gemini', frozen-6: 'gemini-vertex'): provider, settings, endpoint, prices, the settings mapping and its
+    """The `judge` block FROZEN.json records for a Gemini freeze (frozen-5: 'gemini', frozen-6 and frozen-7: 'gemini-vertex'): provider, settings, endpoint, prices, the settings mapping and its
     sources. Not inside FROZEN (that dict is part of the prompt fingerprint, which must stay unchanged)."""
     prices = {'through_2026-11-30': list(providers.GEMINI_PRICE_INTRO), 'from_2026-12-01': list(providers.GEMINI_PRICE_STANDARD), 'reservation': list(providers.gemini_reserve_price())}
     if provider == 'gemini-vertex':
-        return {'provider': provider, 'settings': judge_settings(provider), 'endpoint': providers.VERTEX_URL, 'api': 'Vertex AI GenerateContent API (POST /v1/publishers/google/models/MODEL:generateContent)',
-                'key_variable': providers.VERTEX_KEY_VAR, 'price_per_mtok': prices, 'price_note': providers.VERTEX_PRICE_NOTE, 'mapping': providers.VERTEX_MAPPING, 'sources': providers.VERTEX_SOURCES}
+        return {'provider': provider, 'settings': judge_settings(provider), 'endpoint': providers.VERTEX_URL,
+                'api': 'Vertex AI GenerateContent API (POST /v1/projects/PROJECT/locations/LOCATION/publishers/google/models/MODEL:generateContent)',
+                'key_variable': providers.VERTEX_KEY_VAR, 'project_variable': providers.VERTEX_PROJECT_VAR, 'failed_judge_rows': formal.FAILED_JUDGE_ROWS_DOC,
+                'price_per_mtok': prices, 'price_note': providers.VERTEX_PRICE_NOTE, 'mapping': providers.VERTEX_MAPPING, 'sources': providers.VERTEX_SOURCES}
     if provider == 'gemini':
         return {'provider': provider, 'settings': judge_settings(provider), 'endpoint': providers.GEMINI_ENDPOINT, 'api': 'Interactions API (POST /v1beta/interactions)',
                 'price_per_mtok': prices, 'price_note': providers.GEMINI_PRICE_NOTE, 'mapping': providers.GEMINI_MAPPING, 'sources': providers.GEMINI_SOURCES}
@@ -493,7 +496,7 @@ def frozen_judge_block(provider=FREEZE_JUDGE_PROVIDER):
 
 
 def judge_expectation(ident):
-    """(provider, expected row settings) of a freeze record: the `judge` block of FROZEN.json when it has one (frozen-5, frozen-6), else the Anthropic settings."""
+    """(provider, expected row settings) of a freeze record: the `judge` block of FROZEN.json when it has one (frozen-5 on), else the Anthropic settings."""
     block = ident.get('judge')
     if not block:
         return 'anthropic', judge_settings('anthropic')
@@ -559,6 +562,8 @@ def judge_one(pid, positions, recs, order, live, model, temperature=None, decks_
         base.update(provider=provider, thinking_level=thinking_level)
         if provider == 'gemini':
             base['thinking_summaries'] = providers.GEMINI_FROZEN['thinking_summaries']
+        else:  # Vertex: the location is a frozen setting (compare checks it), the project is provenance (not a secret, not part of the freeze)
+            base.update(location=providers.VERTEX_FROZEN['location'], vertex_project=providers.vertex_project(required=False, strict=False))  # a dry run or a mock run needs no project
     if not live:
         return record(pid, 'judge', None, None, plan_number=None, reason=None, cost=None, **base), system, user
     if provider == 'gemini':
@@ -1033,7 +1038,7 @@ def _run_compare(a, positions, ids):
                 'plan_list_sha256': {pid: plan_list_sha256(recs[pid]) for pid in ids},
                 'generation': {'world_seed': a.world_seed, 'limits': {k: recs[ids[0]]['limits'][k] for k in ('max_plans', 'max_nodes', 'max_steps')}},
                 'request': {'bots': a.bots, 'seeds': seeds, 'judge_repeats': a.judge_repeats, 'contrasts': a.contrasts, 'on_problem': a.on_problem,
-                            'min_games': a.min_games, 'resamples': a.resamples}}
+                            'min_games': a.min_games, 'resamples': a.resamples, 'failed_judge_rows': a.failed_judge_rows}}
     ambiguous = {pid: v for pid, v in label_roundtrip(recs, a.positions, a.decks).items() if v['ambiguous'] or v['unfollowable']}
     run_info['plan_list_label_check'] = {'what': 'positions where some plans\' own labels do not name them (fit several plans or cannot be followed): a bot or recorded move '
                                                  'list using such a label is AMBIGUOUS, and the judge is shown plans that look identical', 'positions': ambiguous}
@@ -1052,6 +1057,10 @@ def _run_compare(a, positions, ids):
         warnings.append(f'the judge rows were answered by more than one model version: {returned}')
     elif returned and not returned[0].startswith(judge_expected.get('model', '')):
         warnings.append(f"the judge rows were answered by {returned[0]!r}, not by the frozen model {judge_expected.get('model')!r}")
+    projects = sorted({r['vertex_project'] for r in rows if isinstance(r, dict) and r.get('bot') == 'judge' and isinstance(r.get('vertex_project'), str)})
+    run_info['judge_vertex_projects'] = projects  # provenance (Vertex rows only): the Google Cloud project that answered; not part of the freeze
+    if len(projects) > 1:
+        warnings.append(f'the judge rows were made under more than one Google Cloud project: {projects}')
     run_info['warnings'] = warnings
     for w in warnings:
         print('WARNING: ' + w, file=sys.stderr)
@@ -1061,7 +1070,7 @@ def _run_compare(a, positions, ids):
     try:
         report = formal.compare(rows, ids, a.bots.split(','), seeds, a.judge_repeats, references, recs, lambda items, r: match_plans(items, r, a.positions, a.decks), eligibility,
                                 a.on_problem, not a.allow_unfrozen, baseline_sha, expect_judge, contrasts, a.min_games, a.resamples, full_match, run_info, seed_problems,
-                                read_problems, position_games)
+                                read_problems, position_games, a.failed_judge_rows)
     except formal.BatchFailed as e:
         report = e.report
         report.setdefault('run', run_info)
@@ -1073,6 +1082,12 @@ def _run_compare(a, positions, ids):
         return formal.exit_code(report)
     report.setdefault('run', run_info)
     report.setdefault('formal', run_info['formal'])
+    fj = report.get('failed_judge_rows') or {}
+    if fj.get('policy') == 'miss' and report['status'] == 'complete' and fj.get('n_judge_decisions_primary') and fj['n_primary_decisions'] / fj['n_judge_decisions_primary'] > FAILED_SHARE_WARNING:
+        msg = (f"{fj['n_primary_decisions']} of {fj['n_judge_decisions_primary']} primary judge decisions had no valid choice and were scored as misses: the judge's score is deflated by them "
+               f"(more than {int(FAILED_SHARE_WARNING * 100)}%: look for a systematic fault, for example a cap that is too small or blocked prompts)")
+        report['run'].setdefault('warnings', []).append(msg)
+        print('WARNING: ' + msg, file=sys.stderr)
     if a.out:
         _write_report(a.out, report)
     if report['status'] != 'complete':
@@ -1080,6 +1095,10 @@ def _run_compare(a, positions, ids):
         formal.print_problems(report['problems'])
     else:
         print_analysis(report)
+        fj = report.get('failed_judge_rows') or {}
+        if fj.get('policy') == 'miss':  # said plainly, not only in the file: how many judge rows had no valid choice and were scored as misses
+            print(f"JUDGE ROWS WITHOUT A VALID CHOICE (policy 'miss', counted as misses): {fj['n_primary']} at primary points, {fj['n_diagnostic']} at diagnostic points, of "
+                  f"{fj['n_judge_rows_primary']} primary judge rows" + (': ' + '; '.join(f"{r['position']} repeat {r['run']} ({r['stop_reason']}: {str(r['reason'])[:70]})" for r in fj['rows'][:20]) if fj['rows'] else ''))
         dp = (report.get('diagnostic_excluded') or {}).get('problems') or []
         if dp:
             print(f'{len(dp)} problem(s) at points outside the primary selection (they do not affect the numbers above):', file=sys.stderr)
@@ -1116,8 +1135,9 @@ def main(argv=None):
     p.add_argument('--live', action='store_true', help='really call the API (default: dry run)')
     p.add_argument('--max-calls', type=int, default=1, help='hard cap on API calls in this invocation')
     p.add_argument('--model', default=None, help=f'default: {MODEL} (anthropic) or {providers.GEMINI_FROZEN["model"]} (gemini)')
-    p.add_argument('--provider', choices=['anthropic', 'gemini', 'gemini-vertex'], default='anthropic', help='the frozen-6 judge is gemini-vertex (budget_judge.py is the formal way to run it)')
+    p.add_argument('--provider', choices=['anthropic', 'gemini', 'gemini-vertex'], default='anthropic', help='the frozen-7 judge is gemini-vertex (budget_judge.py is the formal way to run it)')
     p.add_argument('--thinking-level', choices=['low', 'medium', 'high'], help='gemini and gemini-vertex only (default: the freeze\'s high)')
+    p.add_argument('--vertex-project', help='gemini-vertex: the Google Cloud project id or number the key bills to (default: the VERTEX_PROJECT environment variable)')
     p.add_argument('--temperature', type=float)
     p.add_argument('--max-tokens', type=int, default=None, help=f'output cap per call, reasoning included (default: {MAX_TOKENS}, or {providers.VERTEX_FROZEN["max_tokens"]} with --provider gemini-vertex)')
     p.add_argument('--repeat', type=int, default=1, help='calls per position (the same prompt again: a measure of the judge\'s own variability)')
@@ -1144,6 +1164,7 @@ def main(argv=None):
     p.add_argument('--model', default=None)
     p.add_argument('--provider', choices=['anthropic', 'gemini', 'gemini-vertex'], default='anthropic')
     p.add_argument('--thinking-level', choices=['low', 'medium', 'high'])
+    p.add_argument('--vertex-project')
     p.add_argument('--out')
     p = sub.add_parser('score', help='development check on old positions: agreement with the recorded plan; FAILS (exit 2) on any unresolved row unless --lenient')
     p.add_argument('--results', required=True)
@@ -1163,6 +1184,8 @@ def main(argv=None):
                    'clusters is not trustworthy); a lower value marks the report as an experiment')
     p.add_argument('--resamples', type=int, default=analysis.RESAMPLES, help='game-bootstrap resamples (recorded in the report with the seed; fewer than 5000 marks it as an experiment)')
     p.add_argument('--on-problem', choices=['fail', 'inconclusive'], default='fail')
+    p.add_argument('--failed-judge-rows', choices=list(formal.FAILED_JUDGE_ROWS), default='abort', help="what a judge row WITHOUT a valid choice does: 'abort' = stop the compare (exit 2; the default, "
+                   "the behaviour of run 1), 'miss' = count it as a miss in the prefix and full-scope scoring and report the count (pre-registered for run 2; see FROZEN.md)")
     p.add_argument('--allow-unfrozen', action='store_true', help='experiments only: accept judge rows not produced under the frozen settings')
     p.add_argument('--allow-other-binaries', action='store_true', help='experiments only: accept a plan lister or baseline executable other than the frozen ones (FROZEN.json)')
     p.add_argument('--out', help='write the report here (also written when the batch fails)')
@@ -1184,6 +1207,10 @@ def main(argv=None):
             sys.exit('--thinking-level is a Gemini setting')
         if a.provider == 'gemini-vertex' and a.thinking_level is not None:
             a.thinking_level = a.thinking_level.upper()  # Vertex writes the levels LOW / MEDIUM / HIGH
+        if a.vertex_project is not None:
+            if a.provider != 'gemini-vertex':
+                sys.exit('--vertex-project is a gemini-vertex setting')
+            providers.set_vertex_project(a.vertex_project)
 
     if a.cmd == 'spend':
         n = usd = tin = tout = 0

@@ -1,7 +1,12 @@
 {
  "frozen_on": "2026-10-21",
- "tag": "judge-prompt-frozen-6",
+ "tag": "judge-prompt-frozen-7",
  "supersedes": [
+  {
+   "tag": "judge-prompt-frozen-6",
+   "commit": "3783c9ab16d27cd9ff9dcc071bea20bada5a8fe0",
+   "fingerprint": "0cb2421552661b563bdb49fca31aca53f468d0853661908fbbf7730fcb5ba762"
+  },
   {
    "tag": "judge-prompt-frozen-5",
    "commit": "544d80ff891b8277aa5eb8f189b10e3a56ac86e6",
@@ -46,13 +51,26 @@
   "settings": {
    "provider": "gemini-vertex",
    "model": "gemini-4-argon",
+   "location": "global",
    "max_tokens": 32768,
    "temperature": null,
    "thinking_level": "HIGH"
   },
-  "endpoint": "https://aiplatform.googleapis.com/v1/publishers/google/models/{model}:generateContent",
-  "api": "Vertex AI GenerateContent API (POST /v1/publishers/google/models/MODEL:generateContent)",
+  "endpoint": "https://aiplatform.googleapis.com/v1/projects/{project}/locations/{location}/publishers/google/models/{model}:generateContent",
+  "api": "Vertex AI GenerateContent API (POST /v1/projects/PROJECT/locations/LOCATION/publishers/google/models/MODEL:generateContent)",
   "key_variable": "VERTEX_API_KEY",
+  "project_variable": "VERTEX_PROJECT",
+  "failed_judge_rows": {
+   "flag": "--failed-judge-rows",
+   "values": [
+    "abort",
+    "miss"
+   ],
+   "default": "abort",
+   "preregistered_for_run_2": "miss",
+   "abort": "a judge row without a valid choice (an invalid label, a reply cut at the output cap, a blocked prompt, any finish but STOP) is an `unresolved` problem and stops the compare: exit 2, no numbers (the behaviour of frozen-4 to frozen-6 and of run 1)",
+   "miss": "such a row counts as a MISS (agreement 0) in the prefix and in the full-scope scoring, but only if it is otherwise a consistent row (settings, plan-list identity, prompt hash, a stop reason that agrees with the finish fields recorded beside it, a stored reply that really holds no valid choice: rows are not authenticated, this is what the row's own fields can show); the count and the rows are reported plainly (report.failed_judge_rows) and a WARNING is printed when more than 20% of the primary judge decisions failed. It can only lower the judge's rate and the prefix score; in the full-scope CONTRAST a miss pair is kept where an answered plan that stops at a chance event would have been dropped, so the contrast can move toward zero, and a game that exists only because of a miss does not count toward the min-games gate. A step-bot row without a plan, a missing row or any other problem still stops the compare"
+  },
   "price_per_mtok": {
    "through_2026-11-30": [
     2.0,
@@ -78,6 +96,8 @@
    "retries": "none: one request per call; a failed request is a failed call (the budget wrapper charges its full worst case and the batch is incomplete)",
    "streaming": "none: one synchronous generateContent request on v1 (no long decode: it needs v1beta1; a finishReason CONTINUATION would keep no choice)",
    "serving": "the same model id as frozen-5 but the Vertex AI serving stack, not the Gemini Developer API; identical outputs are not guaranteed",
+   "location": "global, in the URL path (projects/PROJECT/locations/global/publishers/google/models/gemini-4-argon:generateContent): the project-less key URL of frozen-6 pins us-central1, where the model is not served; every row records its location, and `compare` refuses another",
+   "project": "the Google Cloud project the key bills to (not a secret): the VERTEX_PROJECT setting (environment, or the run kit's --vertex-project flag); it is in the URL, recorded in every row as vertex_project and listed in the compare report, and NOT part of the freeze (the freeze names the setting, not the value)",
    "price": "USD per 1M tokens, input / output including thinking: 2 / 10 through 2026-11-30, 4 / 20 from 2026-12-01 (Google Cloud announcement; the Vertex pricing tables could not be read); the budget reserves every call at 4 / 20; the cached-input discount is ignored",
    "finish": "stop_reason is \"end_turn\" only for finishReason STOP; any other finishReason (MAX_TOKENS, SAFETY, CONTINUATION, ...), a candidate without a finishReason, no candidate, or a blocked prompt is stored as \"vertex:<reason>\" (NO_FINISH_REASON, NO_CANDIDATE, BLOCKED_<blockReason>) and is never an intact answer",
    "usage": "input = promptTokenCount (cached input charged in full); output = totalTokenCount - promptTokenCount when the total is consistent, else candidatesTokenCount + thoughtsTokenCount",
@@ -99,20 +119,20 @@
   ]
  },
  "source_sha256": {
-  "rl/ai_judge/judge.py": "f4a6e17cf0488af26047fd4f82767cd66be165e2c886c5251f6069144a3e9506",
-  "rl/ai_judge/formal.py": "10381f4c19f7db862aa3953061b4eaded4108437bc85e9c5166df7f7d8ce2740",
-  "rl/ai_judge/analysis.py": "5529ddc45abcbff8820fcf2723f71e94aa80f286a7d0b6a39dc1bca50d4482ae",
-  "rl/ai_judge/providers.py": "23f7efcb64b8abfacd54bfdbad7fa6ac803fe3adb599ca064cbbaec914a77d2f",
-  "rl/ai_judge/budget_judge.py": "57e79793e37f5ff26532c10efc0e67097f1d25d06fe355b2e62d362aaba7fdb8",
+  "rl/ai_judge/judge.py": "08dc333fdddfb18aa60bbe4524cb50ff97a2c119aacfd66aa114902e7ca98bba",
+  "rl/ai_judge/formal.py": "eba10cc17d17e4100941a8d400dfc5129ac3480db56fe743060fad6e189a3ef0",
+  "rl/ai_judge/analysis.py": "64f78cbd7f6d1bbf991387f9779b6e41dbf2c6fa8da44e2aad29bbb869f176fa",
+  "rl/ai_judge/providers.py": "fa85137ebd9258c7be114b5e53a6a99856b8a6457beb3cbda8a369a70309cdb0",
+  "rl/ai_judge/budget_judge.py": "3679043e02339066907fa426e711cc8f3e9fd7f1b07d5dd8e8b7489e28b548a7",
   "rl/ai_judge/validate_baseline.py": "855c1fca1366684a9c88bc5a8766d1d476dafe4705bed74c5412b24cd1abf752",
   "rl/ai_judge/freeze_identity.py": "e932c931caa6d1fd940ce7c6530d4ba2b65b580bb5d6b3c206e7ac8a211dd555",
   "rl/ai_judge/plans/src/main.rs": "73830a21c34f806299f7a1ec4e42fc2c6025d82e11a0be47bf31f51aaac460ce",
   "rl/ai_judge/plans/Cargo.lock": "e183002a2e1a040cc761d2d9f81575259d710ea6a2f2a55054bc75485b8d0a7c",
-  "rl/ai_judge/tests/test_formal.py": "bad62dc7a20c9c25b457f171b5dcbf8f907acc514b7e0523bc435416c39dbacb",
-  "rl/ai_judge/tests/test_analysis.py": "583d537292ba962f8e8d2f393a5e55a6d2ab66d33f5c4e9000b037503bda7cad",
-  "rl/ai_judge/tests/test_gemini.py": "85cc1268839a803c0a074b8d6523113c035cb0cd921e88f0f9f50cd7151cd998",
-  "rl/ai_judge/tests/test_vertex.py": "706cef4b261649befd8ef0758d723d93c3c5dddb09e7c61f8cc37bbf3e8fc592",
-  "rl/ai_judge/tests/test_budget.py": "ab62b0a6d032259fb5003bf4437dd722f23f839fbfd9da5973eb5e19beaa6c76",
+  "rl/ai_judge/tests/test_formal.py": "e2e6befd8ba291cab6ce03dde2c06c7ae14787e07b5c33cf06ae3e2fa841def8",
+  "rl/ai_judge/tests/test_analysis.py": "7f1e306997c11abc277741872a04fa3461acde96c0419b2b6e0e63c763a1a1c4",
+  "rl/ai_judge/tests/test_gemini.py": "f69637f2b2cdba6a91aa69dd513a67bc407e8f4d551f19e98a4ee215be622796",
+  "rl/ai_judge/tests/test_vertex.py": "4b1b38fb34d60daacd93337352842266b83e80cfda0f0c0385d3f362b8874000",
+  "rl/ai_judge/tests/test_budget.py": "141f24715ad34c9b37120214251ff30adb95b4b243046d21e5e640ac07be51f4",
   "lib/card.py": "73e6f2a8dbf10b9c4f7b877564e1fdb91dc8015744e7e82f873bfbae837cea4c",
   "lib/deckgym-database.json": "2f48cb72966c23ba3794f437aa94312e4eadcb2703c32893411ee27fc63b11d9",
   "rl/results/pause_games_decisions_2026-10-02/harness/pgd_patch.py": "904b9e86ab058d4d379b3f323ad5dd2bbeb4d5ebf03e5bc2db63257b325b3279",
@@ -129,5 +149,5 @@
   "validation": "rl/ai_judge/validation/baseline_printer_validation.json",
   "reproduced": "a second build from scratch with rl/ai_judge/build_baseline.sh gave the identical sha256"
  },
- "note": "Provider change only: the judge is Gemini 4 Argon (gemini-4-argon, thinking level HIGH, 32,768 output tokens including thinking) through the Vertex AI GenerateContent API (Dustin's Google Cloud trial credits pay for Vertex AI, not for the Gemini Developer API), key in VERTEX_API_KEY sent only in the x-goog-api-key header. The output cap is 32,768 (the most a non-streaming HTTP call allows) instead of frozen-5's 8,000 so that high thinking does not cut a reply off: a judge row without a choice aborts the formal comparison. The prompt (fingerprint 0cb24215...), judge.FROZEN (the Anthropic freeze's settings, inside the fingerprint), the parser, the invalid-label handling, the no-retry policy, the plan lister and the baseline (engine 70652fff) are exactly the frozen-4 / frozen-5 ones; the Developer API provider of frozen-5 stays in the code. Prices: $2 / $10 per 1M tokens through 2026-11-30, $4 / $20 after; reservations at $4 / $20 (the Vertex pricing tables could not be read: the Google Cloud announcement is the source)."
+ "note": "The judge is Gemini 4 Argon (gemini-4-argon, thinking level HIGH, 32,768 output tokens including thinking) on Vertex AI, as in frozen-6, with two changes. (1) The URL names the project and the location: POST /v1/projects/PROJECT/locations/global/publishers/google/models/gemini-4-argon:generateContent. The project-less URL of frozen-6 pins location us-central1, where the model is not served (the one live smoke call got HTTP 404 NOT_FOUND); a countTokens probe on the project-scoped global URL with the same key and header answered 200. The project id (not a secret) comes from the VERTEX_PROJECT setting (environment or --vertex-project) and is recorded in every row, not in the freeze; the location \"global\" is a frozen setting that every row records. (2) A pre-registered, explicit, default-OFF setting for failed judge rows: `compare --failed-judge-rows miss` counts a primary judge row without a valid choice (cut, blocked, any finish but STOP, an invalid label) as a MISS in the prefix and the full-scope scoring instead of aborting the compare, only if the row is otherwise proven; the count is reported plainly; default `abort` keeps run 1's behaviour. The prompt (fingerprint 0cb24215...), judge.FROZEN, the parser, the invalid-label handling, the no-retry policy, the plan lister, the baseline and engine 70652fff are exactly the frozen-4 ones; frozen-5 and frozen-6 are kept, not moved. Prices: $2 / $10 per 1M tokens through 2026-11-30, $4 / $20 after; reservations at $4 / $20."
 }

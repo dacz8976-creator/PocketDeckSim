@@ -11,9 +11,9 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 ROOT = os.path.dirname(HERE)
 sys.path.insert(0, ROOT)
 import formal, judge, providers  # noqa: E402
-from test_gemini import FAKE_KEY, FINGERPRINT, PID, fake_rec, generate_content, interaction  # noqa: E402
+from test_gemini import FAKE_KEY, FINGERPRINT, PID, PROJECT, fake_rec, generate_content, interaction  # noqa: E402
 
-URL = 'https://aiplatform.googleapis.com/v1/publishers/google/models/gemini-4-argon:generateContent'
+URL = f'https://aiplatform.googleapis.com/v1/projects/{PROJECT}/locations/global/publishers/google/models/gemini-4-argon:generateContent'
 
 
 class Parsing(unittest.TestCase):
@@ -107,11 +107,63 @@ class Request(unittest.TestCase):
             self.assertNotIn(absent, text)
 
     def test_the_url_is_the_documented_endpoint_and_a_model_id_cannot_change_the_path(self):
-        self.assertEqual(providers.vertex_url('gemini-4-argon'), URL)
-        self.assertEqual(providers.VERTEX_URL.format(model='gemini-4-argon'), URL)
+        self.assertEqual(providers.vertex_url('gemini-4-argon', PROJECT, 'global'), URL)
+        self.assertEqual(providers.vertex_url('gemini-4-argon', PROJECT), URL)  # the location defaults to the frozen one
+        self.assertEqual(providers.VERTEX_URL.format(project=PROJECT, location='global', model='gemini-4-argon'), URL)
         for bad in ('', None, 'a/b', '../x', 'a:b', 'A', 'a b', 'a?b', 7, 'a\n'):
             with self.assertRaises(ValueError, msg=repr(bad)):
-                providers.vertex_url(bad)
+                providers.vertex_url(bad, PROJECT)
+        for bad in ('', None, 'a/b', '../x', 'p:1', 'UPPER', 'a b', 'x?y', 'short', 7, 'project-ab12cd34-ef56-7890-abc\n', '12345', 'p' * 31, 'ends-with-', '-starts'):
+            with self.assertRaises(ValueError, msg=repr(bad)):
+                providers.vertex_url('gemini-4-argon', bad)  # nothing but a project id or number can reach the path
+        for bad in ('a/b', '../x', 'US', 'a b', 'x?y', 7, '-x', 'a\n'):
+            with self.assertRaises(ValueError, msg=repr(bad)):
+                providers.vertex_url('gemini-4-argon', PROJECT, bad)
+        self.assertEqual(providers.vertex_url('gemini-4-argon', 'project-ab12cd34-ef56-7890-abc', 'global').split('/')[4:7], ['projects', 'project-ab12cd34-ef56-7890-abc', 'locations'])
+        self.assertTrue(providers.vertex_url('gemini-4-argon', '123456789012', 'us').endswith('/projects/123456789012/locations/us/publishers/google/models/gemini-4-argon:generateContent'))
+
+    def test_an_invalid_project_setting_never_stops_a_dry_run_and_its_value_is_never_echoed(self):
+        key = 'AQ.Ab8RN6exampleexampleexampleexample'  # an API key pasted into the project setting by mistake
+        for bad in ('My First Project', key):
+            with mock.patch.dict(os.environ, {'VERTEX_PROJECT': bad}):
+                self.assertIsNone(providers.vertex_project(required=False, strict=False))
+                r, _, _ = judge.judge_one(PID, judge.load_positions(), {PID: fake_rec()}, judge.FROZEN['order'], False, 'gemini-4-argon', provider='gemini-vertex', max_tokens=32768)
+                self.assertIsNone(r['vertex_project'])  # a dry run (and a mock run) needs no project: an unusable value is treated as not set
+                for call in (providers.vertex_project, lambda: providers.call_vertex('S', 'U')):
+                    with self.assertRaises(SystemExit) as cm:
+                        call()  # a live call does stop, and says which setting, never what it held
+                    self.assertIn('VERTEX_PROJECT', str(cm.exception))
+                    self.assertNotIn(bad[:8], str(cm.exception))
+            with self.assertRaises(SystemExit) as cm:
+                providers.set_vertex_project(bad)
+            self.assertNotIn(bad[:8], str(cm.exception))
+            with self.assertRaises(ValueError) as cm:
+                providers.vertex_url('gemini-4-argon', bad)
+            self.assertNotIn(bad[:8], str(cm.exception))
+        providers.set_vertex_project(None)
+
+    def test_the_project_comes_from_the_flag_then_the_environment_and_a_missing_one_stops_the_run(self):
+        try:
+            with mock.patch.dict(os.environ, {'VERTEX_PROJECT': 'from-env-12345'}):
+                self.assertEqual(providers.vertex_project(), 'from-env-12345')
+                providers.set_vertex_project('from-flag-12345')
+                self.assertEqual(providers.vertex_project(), 'from-flag-12345')  # the run kit's flag wins over the environment
+                providers.set_vertex_project(None)
+                self.assertEqual(providers.vertex_project(), 'from-env-12345')
+            with mock.patch.dict(os.environ, {}):
+                os.environ.pop('VERTEX_PROJECT', None)
+                self.assertIsNone(providers.vertex_project(required=False))
+                with self.assertRaises(SystemExit) as cm:
+                    providers.vertex_project()
+                self.assertIn('VERTEX_PROJECT', str(cm.exception))
+                with self.assertRaises(SystemExit):
+                    providers.call_vertex('S', 'U')  # no project: no call (and no key needed to find that out)
+            with mock.patch.dict(os.environ, {'VERTEX_PROJECT': 'NOT A PROJECT'}), self.assertRaises(SystemExit):
+                providers.vertex_project()
+            with self.assertRaises(SystemExit):
+                providers.set_vertex_project('bad/project')
+        finally:
+            providers.set_vertex_project(None)
 
     def test_one_request_the_key_in_the_header_only_and_nothing_else_sent(self):
         seen = {}
@@ -119,7 +171,7 @@ class Request(unittest.TestCase):
         def post(url, headers, body, timeout):
             seen.update(url=url, headers=headers, body=body, timeout=timeout)
             return generate_content()
-        with mock.patch.dict(os.environ, {'VERTEX_API_KEY': FAKE_KEY}), mock.patch.object(providers, '_post_json', side_effect=post) as m:
+        with mock.patch.dict(os.environ, {'VERTEX_API_KEY': FAKE_KEY, 'VERTEX_PROJECT': PROJECT}), mock.patch.object(providers, '_post_json', side_effect=post) as m:
             text, usage, secs, model, extra = providers.call_vertex('SYS', 'USER')
         self.assertEqual(m.call_count, 1)  # no retry
         self.assertEqual(seen['url'], URL)
@@ -136,13 +188,13 @@ class Request(unittest.TestCase):
             providers.call_vertex('S', 'U', temperature=0.5)
 
     def test_the_frozen_settings_are_the_ones_the_coordinator_pre_registered(self):
-        self.assertEqual(providers.VERTEX_FROZEN, {'provider': 'gemini-vertex', 'model': 'gemini-4-argon', 'max_tokens': 32768, 'temperature': None, 'thinking_level': 'HIGH'})
-        self.assertEqual(providers.VERTEX_KEY_VAR, 'VERTEX_API_KEY')
+        self.assertEqual(providers.VERTEX_FROZEN, {'provider': 'gemini-vertex', 'model': 'gemini-4-argon', 'location': 'global', 'max_tokens': 32768, 'temperature': None, 'thinking_level': 'HIGH'})
+        self.assertEqual((providers.VERTEX_KEY_VAR, providers.VERTEX_PROJECT_VAR), ('VERTEX_API_KEY', 'VERTEX_PROJECT'))
         self.assertEqual(providers.GEMINI_FROZEN['max_tokens'], 8000)  # frozen-5's cap is untouched
 
     def test_an_http_error_stops_the_call_once_and_never_shows_the_key(self):
         err = urllib.error.HTTPError('u', 429, 'quota', {}, io.BytesIO(json.dumps({'error': {'message': f'key {FAKE_KEY} is over quota'}}).encode()))
-        with mock.patch.dict(os.environ, {'VERTEX_API_KEY': FAKE_KEY}), mock.patch.object(providers, '_post_json', side_effect=err) as m:
+        with mock.patch.dict(os.environ, {'VERTEX_API_KEY': FAKE_KEY, 'VERTEX_PROJECT': PROJECT}), mock.patch.object(providers, '_post_json', side_effect=err) as m:
             with self.assertRaises(SystemExit) as cm:
                 providers.call_vertex('S', 'U')
         self.assertEqual(m.call_count, 1)  # a 429 is not retried
@@ -156,7 +208,7 @@ class SharedRequestHandling(unittest.TestCase):
     def call(self, effect, which):
         fn = providers.call_vertex if which == 'vertex' else providers.call_gemini
         var = 'VERTEX_API_KEY' if which == 'vertex' else 'GEMINI_API_KEY'
-        with mock.patch.dict(os.environ, {var: FAKE_KEY}), mock.patch.object(providers, '_post_json', side_effect=effect if isinstance(effect, BaseException) else None,
+        with mock.patch.dict(os.environ, {var: FAKE_KEY, 'VERTEX_PROJECT': PROJECT}), mock.patch.object(providers, '_post_json', side_effect=effect if isinstance(effect, BaseException) else None,
                                                                               return_value=None if isinstance(effect, BaseException) else effect):
             with self.assertRaises(SystemExit) as cm:
                 fn('S', 'U')
@@ -280,14 +332,15 @@ class JudgeRows(unittest.TestCase):
         args = dict(provider='gemini-vertex', thinking_level=None, max_tokens=32768)
         args.update(kw)
         model = args.pop('model', 'gemini-4-argon')
-        with mock.patch.dict(os.environ, {'VERTEX_API_KEY': FAKE_KEY}), mock.patch.object(providers, '_post_json', return_value=body or generate_content()):
+        with mock.patch.dict(os.environ, {'VERTEX_API_KEY': FAKE_KEY, 'VERTEX_PROJECT': PROJECT}), mock.patch.object(providers, '_post_json', return_value=body or generate_content()):
             return judge.judge_one(PID, self.positions, self.rec, judge.FROZEN['order'], True, model, **args)
 
     def test_a_frozen_row_records_its_settings_and_the_prompt_is_unchanged(self):
         self.assertEqual(judge.fingerprint(), FINGERPRINT)
         r, system, user = self.run_one()
         self.assertTrue(r['frozen'])
-        self.assertEqual({k: r[k] for k in ('provider', 'model', 'max_tokens', 'temperature', 'thinking_level')}, judge.judge_settings('gemini-vertex'))
+        self.assertEqual({k: r[k] for k in ('provider', 'model', 'location', 'max_tokens', 'temperature', 'thinking_level')}, judge.judge_settings('gemini-vertex'))
+        self.assertEqual(r['vertex_project'], PROJECT)  # provenance: the project that answered (not a secret, not part of the freeze)
         self.assertNotIn('thinking_summaries', r)
         self.assertEqual((r['stop_reason'], r['finish_reason'], r['parse_error']), ('end_turn', 'STOP', None))
         self.assertIsNotNone(r['plan_number'])
@@ -368,7 +421,7 @@ class CompareSeesVertexRows(unittest.TestCase):
         self.assertEqual(self.check({}), [])
 
     def test_a_row_with_other_settings_is_not_frozen(self):
-        for extra in ({'thinking_level': 'LOW'}, {'thinking_level': 'high'}, {'max_tokens': 8000}, {'model': 'gemini-4-other'}, {'provider': 'gemini'}, {'temperature': 0.7}):
+        for extra in ({'thinking_level': 'LOW'}, {'thinking_level': 'high'}, {'max_tokens': 8000}, {'model': 'gemini-4-other'}, {'provider': 'gemini'}, {'temperature': 0.7}, {'location': 'us'}):
             self.assertEqual(self.check(extra), ['not_frozen'], extra)
 
     def test_frozen_5_rows_of_the_developer_api_are_refused_under_the_vertex_freeze(self):
@@ -395,8 +448,21 @@ class CommandLine(unittest.TestCase):
         return json.loads([l for l in out.splitlines() if l.startswith('{')][0])
 
     def test_a_vertex_dry_run_defaults_to_the_frozen_settings(self):
-        r = self.row(['judge', '--ids', PID, '--provider', 'gemini-vertex'])
-        self.assertEqual((r['provider'], r['model'], r['max_tokens'], r['thinking_level'], r['temperature'], r['frozen']), ('gemini-vertex', 'gemini-4-argon', 32768, 'HIGH', None, True))
+        with mock.patch.dict(os.environ, {}):
+            os.environ.pop('VERTEX_PROJECT', None)
+            r = self.row(['judge', '--ids', PID, '--provider', 'gemini-vertex'])
+        self.assertEqual((r['provider'], r['model'], r['location'], r['max_tokens'], r['thinking_level'], r['temperature'], r['frozen']),
+                         ('gemini-vertex', 'gemini-4-argon', 'global', 32768, 'HIGH', None, True))
+        self.assertIsNone(r['vertex_project'])  # a dry run needs no project
+        try:
+            r = self.row(['judge', '--ids', PID, '--provider', 'gemini-vertex', '--vertex-project', 'project-test-1234'])
+            self.assertEqual(r['vertex_project'], 'project-test-1234')
+        finally:
+            providers.set_vertex_project(None)
+        with self.assertRaises(SystemExit):
+            self.run_main(['judge', '--ids', PID, '--vertex-project', 'project-test-1234'])  # a Vertex setting on another provider
+        with self.assertRaises(SystemExit):
+            self.run_main(['judge', '--ids', PID, '--provider', 'gemini-vertex', '--vertex-project', 'bad/one'])
 
     def test_the_other_defaults_are_unchanged(self):
         self.assertEqual((lambda r: (r['model'], r['max_tokens'], 'provider' in r))(self.row(['judge', '--ids', PID])), (judge.MODEL, 8000, False))
@@ -468,8 +534,8 @@ class Wire(unittest.TestCase):
         return srv, seen
 
     def env(self, srv):
-        url = f'http://127.0.0.1:{srv.server_port}/v1/publishers/google/models/{{model}}:generateContent'
-        return mock.patch.dict(os.environ, {'VERTEX_API_KEY': FAKE_KEY, 'no_proxy': '127.0.0.1', 'NO_PROXY': '127.0.0.1'}), mock.patch.object(providers, 'VERTEX_URL', url)
+        url = f'http://127.0.0.1:{srv.server_port}/v1/projects/{{project}}/locations/{{location}}/publishers/google/models/{{model}}:generateContent'
+        return mock.patch.dict(os.environ, {'VERTEX_API_KEY': FAKE_KEY, 'VERTEX_PROJECT': PROJECT, 'no_proxy': '127.0.0.1', 'NO_PROXY': '127.0.0.1'}), mock.patch.object(providers, 'VERTEX_URL', url)
 
     def test_the_real_request_is_a_json_post_with_the_key_in_the_header_and_the_given_settings(self):
         srv, seen = self.serve()
@@ -477,7 +543,7 @@ class Wire(unittest.TestCase):
         with e1, e2:
             text, usage, secs, model, extra = providers.call_vertex('SYS é中', 'USER', max_tokens=8000, thinking={'thinking_level': 'LOW'})
         self.assertEqual(seen['methods'], ['POST'])
-        self.assertEqual(seen['path'], '/v1/publishers/google/models/gemini-4-argon:generateContent')
+        self.assertEqual(seen['path'], f'/v1/projects/{PROJECT}/locations/global/publishers/google/models/gemini-4-argon:generateContent')
         h = seen['headers'][0]
         self.assertEqual(h['x-goog-api-key'], FAKE_KEY)
         self.assertEqual(h['content-type'], 'application/json')  # urllib's default for a POST body is x-www-form-urlencoded
@@ -531,7 +597,7 @@ class SettingsGivenAreSettingsSent(unittest.TestCase):
         def post(url, headers, body, timeout):
             seen['body'] = body
             return generate_content()
-        with mock.patch.dict(os.environ, {'VERTEX_API_KEY': FAKE_KEY}), mock.patch.object(providers, '_post_json', side_effect=post):
+        with mock.patch.dict(os.environ, {'VERTEX_API_KEY': FAKE_KEY, 'VERTEX_PROJECT': PROJECT}), mock.patch.object(providers, '_post_json', side_effect=post):
             r, _, _ = judge.judge_one(PID, judge.load_positions(), {PID: fake_rec()}, judge.FROZEN['order'], True, 'gemini-4-argon', provider='gemini-vertex', max_tokens=8000, thinking_level='LOW')
         self.assertFalse(r['frozen'])
         self.assertEqual((r['max_tokens'], r['thinking_level']), (8000, 'LOW'))
@@ -551,7 +617,7 @@ class RowFlags(unittest.TestCase):
     def test_a_reply_with_an_input_count_but_no_output_count_is_a_worst_case_row(self):
         j = generate_content()
         j['usageMetadata'] = {'promptTokenCount': 5000}
-        with mock.patch.dict(os.environ, {'VERTEX_API_KEY': FAKE_KEY}), mock.patch.object(providers, '_post_json', return_value=j):
+        with mock.patch.dict(os.environ, {'VERTEX_API_KEY': FAKE_KEY, 'VERTEX_PROJECT': PROJECT}), mock.patch.object(providers, '_post_json', return_value=j):
             r, _, _ = judge.judge_one(PID, self.positions, {PID: fake_rec()}, judge.FROZEN['order'], True, 'gemini-4-argon', provider='gemini-vertex', max_tokens=32768)
         self.assertTrue(r['usage_missing'])
         self.assertTrue(r['cost']['usd_is_worst_case'])
@@ -560,7 +626,7 @@ class RowFlags(unittest.TestCase):
     def test_a_gemini_row_records_the_model_the_service_says_answered(self):
         j = generate_content()
         j['modelVersion'] = 'gemini-4-argon-20261013'
-        with mock.patch.dict(os.environ, {'VERTEX_API_KEY': FAKE_KEY}), mock.patch.object(providers, '_post_json', return_value=j):
+        with mock.patch.dict(os.environ, {'VERTEX_API_KEY': FAKE_KEY, 'VERTEX_PROJECT': PROJECT}), mock.patch.object(providers, '_post_json', return_value=j):
             r, _, _ = judge.judge_one(PID, self.positions, {PID: fake_rec()}, judge.FROZEN['order'], True, 'gemini-4-argon', provider='gemini-vertex', max_tokens=32768)
         self.assertEqual((r['model'], r['model_returned']), ('gemini-4-argon', 'gemini-4-argon-20261013'))
         self.assertTrue(r['frozen'])  # the freeze names the alias; the version is the evidence, not part of the comparison
@@ -630,12 +696,15 @@ class Identity(unittest.TestCase):
         self.assertEqual(judge.FREEZE_JUDGE_PROVIDER, 'gemini-vertex')
         b = judge.frozen_judge_block()
         self.assertEqual(b, judge.frozen_judge_block('gemini-vertex'))
-        self.assertEqual((b['provider'], b['settings']), ('gemini-vertex', {'provider': 'gemini-vertex', 'model': 'gemini-4-argon', 'max_tokens': 32768, 'temperature': None, 'thinking_level': 'HIGH'}))
-        self.assertEqual(b['key_variable'], 'VERTEX_API_KEY')
-        self.assertTrue(b['endpoint'].startswith('https://aiplatform.googleapis.com/v1/publishers/google/models/'))
+        self.assertEqual((b['provider'], b['settings']), ('gemini-vertex', {'provider': 'gemini-vertex', 'model': 'gemini-4-argon', 'location': 'global', 'max_tokens': 32768, 'temperature': None,
+                                                                          'thinking_level': 'HIGH'}))
+        self.assertEqual((b['key_variable'], b['project_variable']), ('VERTEX_API_KEY', 'VERTEX_PROJECT'))
+        self.assertEqual(b['endpoint'], 'https://aiplatform.googleapis.com/v1/projects/{project}/locations/{location}/publishers/google/models/{model}:generateContent')  # the project value is NOT in the freeze
+        self.assertEqual(b['failed_judge_rows'], formal.FAILED_JUDGE_ROWS_DOC)
+        self.assertEqual((b['failed_judge_rows']['default'], b['failed_judge_rows']['preregistered_for_run_2'], b['failed_judge_rows']['values']), ('abort', 'miss', ['abort', 'miss']))
         self.assertEqual(b['price_per_mtok'], {'through_2026-11-30': [2.0, 10.0], 'from_2026-12-01': [4.0, 20.0], 'reservation': [4.0, 20.0]})
         self.assertTrue(all(u.startswith(('https://docs.cloud.google.com/', 'https://cloud.google.com/', 'https://ai.google.dev/')) for u in b['sources']))
-        for k in ('prompt', 'output cap', 'reasoning', 'thought text', 'temperature', 'retries', 'serving', 'price', 'finish', 'usage', 'key'):
+        for k in ('prompt', 'output cap', 'reasoning', 'thought text', 'temperature', 'retries', 'serving', 'location', 'project', 'price', 'finish', 'usage', 'key'):
             self.assertIn(k, b['mapping'])
         self.assertIn('CANNOT MATCH', b['mapping']['output cap'])
         self.assertIn('32,768', b['mapping']['output cap'])

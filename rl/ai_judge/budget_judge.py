@@ -1,5 +1,5 @@
 #!/usr/bin/env python3
-"""The judge runs with a HARD spend bound (the formal way to run the frozen-6 Gemini judge on Vertex AI; Astra's exam-run-1 design, ported to a provider-aware wrapper).
+"""The judge runs with a HARD spend bound (the formal way to run the frozen-7 Gemini judge on Vertex AI; Astra's exam-run-1 design, ported to a provider-aware wrapper).
 
 judge.py's own scheduling loop (`judge.py judge`) is replaced; every call, prompt, parser and record field is exactly what judge.judge_one makes (the FROZEN settings of the
 provider). The bound: before a call is SENT, its worst-case cost is reserved:
@@ -17,7 +17,7 @@ opened. So accrued + reserved never exceeds the total, whatever the concurrency.
 only gets what the ledger has left); a call reserves about $0.7 at 32,768 output tokens, so workers x 0.7 of the cap is always in flight.
 
 usage:
-  budget_judge.py --positions P --decks D --ids ID... --max-calls N --repeat 1 --workers 4 --tag T --out F --ledger L --total-usd 15 --run-cap-usd 15 (--live | --mock) [--provider gemini-vertex]
+  budget_judge.py --positions P --decks D --ids ID... --max-calls N --repeat 1 --workers 4 --tag T --out F --ledger L --total-usd 15 --run-cap-usd 15 --vertex-project PROJECT (--live | --mock)
 --mock replaces the API call with a fixed reply (no key read, nothing sent), for dry runs and the tests; its rows carry `mock: true` and formal.py refuses them. Exit 0 = every task made
 a usable choice; 2 = some task was not made (the bound or an earlier failure), a call failed, or a call gave no usable choice (the file holds every row that was made); 1 = a usage
 error. --provider gemini is the frozen-5 Developer API judge (GEMINI_API_KEY, 8,000 tokens); the default, gemini-vertex, reads VERTEX_API_KEY."""
@@ -225,7 +225,8 @@ def main(argv=None):
     p.add_argument('--ledger', required=True)
     p.add_argument('--total-usd', type=float, required=True)
     p.add_argument('--run-cap-usd', type=float, required=True)
-    p.add_argument('--provider', choices=['gemini-vertex', 'gemini', 'anthropic'], default='gemini-vertex', help='the judge of the current freeze (frozen-6) is gemini-vertex')
+    p.add_argument('--provider', choices=['gemini-vertex', 'gemini', 'anthropic'], default='gemini-vertex', help='the judge of the current freeze (frozen-7) is gemini-vertex')
+    p.add_argument('--vertex-project', help='gemini-vertex: the Google Cloud project id or number the key bills to (default: the VERTEX_PROJECT environment variable; not a secret)')
     mode = p.add_mutually_exclusive_group(required=True)
     mode.add_argument('--live', action='store_true')
     mode.add_argument('--mock', action='store_true')
@@ -242,9 +243,14 @@ def main(argv=None):
     if len(tasks) > a.max_calls:
         sys.exit(f'{len(tasks)} calls asked for but --max-calls is {a.max_calls}: raise it on purpose')
     recs = judge.list_plans(ids, a.positions, a.decks, F['plan_world_seed'], None)
-    if a.live:  # a missing key stops the run HERE (the message names the variable, never a value), before any ledger or reservation exists
+    if a.vertex_project is not None:
+        if a.provider != 'gemini-vertex':
+            sys.exit('--vertex-project is a gemini-vertex setting')
+        providers.set_vertex_project(a.vertex_project)
+    if a.live:  # a missing key (or, for Vertex, project) stops the run HERE (the message names the variable, never a value), before any ledger or reservation exists
         if a.provider == 'gemini-vertex':
             providers.load_key(providers.VERTEX_KEY_VAR)
+            providers.vertex_project()
         else:
             (providers.load_key if a.provider == 'gemini' else judge.load_key)()
     ledger = Ledger(a.ledger, a.total_usd, a.run_cap_usd, label=f"{a.provider}:{S['model']}")

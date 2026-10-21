@@ -198,7 +198,8 @@ def verdict(a, b, point, lo, hi, p_flip, n_games, min_games=MIN_GAMES, all_games
 
 # ---------------------------------------------------------------------------------------------------------------------------------- per-decision values
 def decision_values(rows, bots, judge_repeats, key='agrees'):
-    """{bot: {position: (primary, sensitivity, [plan numbers by run])}} from the report rows (all state 'ok' in a complete batch); `key` is the row field that holds
+    """{bot: {position: (primary, sensitivity, [plan numbers by run])}} from the report rows (state 'ok' in a complete batch, or 'no_choice' = a judge miss under the policy 'miss',
+    which arrives with agrees False); `key` is the row field that holds
     the agreement flag (True / False / None = not comparable). judge: primary = repeat 0 only; sensitivity = mean over all repeats (None if any is not comparable
     or there is a single call). step bots: primary = mean over all expected seeds. A primary of None means 'no comparable value for this decision'."""
     by = {}
@@ -223,8 +224,10 @@ def decision_values(rows, bots, judge_repeats, key='agrees'):
 
 
 # ---------------------------------------------------------------------------------------------------------------------------------- blocks
-def _block(pids, games, vals, bots, judge_repeats, contrasts, resamples, seed, min_games, sensitivity=True, verdicts=True):
-    """The clustered comparison of one scope (`pids`, all with a game). vals = decision_values output restricted to the scope."""
+def _block(pids, games, vals, bots, judge_repeats, contrasts, resamples, seed, min_games, sensitivity=True, verdicts=True, miss_points=None):
+    """The clustered comparison of one scope (`pids`, all with a game). vals = decision_values output restricted to the scope. `miss_points` (full-scope block, policy 'miss'): the
+    points where the judge's predefined call was a failed reply scored as a miss. A miss is a pair that counts in every estimate, but where an answered plan that stops at a chance event
+    would have been DROPPED from the full-scope pairs, so a game that exists only because of a miss does not count toward the min-games gate (a failed reply must not open the gate)."""
     game_list = sorted({games[p] for p in pids})
     pos_by_game = {g: [p for p in pids if games[p] == g] for g in game_list}
 
@@ -276,11 +279,17 @@ def _block(pids, games, vals, bots, judge_repeats, contrasts, resamples, seed, m
         gcounts = [c for c in counts if c]
         n_games = len(gsums)
         blk = {'a': a, 'b': b, **interval(name), 'n_pairs_dropped': len(pids) - defined[name]}
+        gate_games = n_games
+        if miss_points:
+            gate_games = len({games[p] for p in pids if p not in miss_points and get(a, p, 0) is not None and get(b, p, 0) is not None})
+            blk['n_games_gate'] = gate_games
         if gsums and point is not None:
             p_flip, how = sign_flip_p(gsums, seed)
             blk['sign_flip_p'], blk['sign_flip'] = round(p_flip, 6), how
             if with_verdict:
-                blk['verdict'], blk['reason'] = verdict(a, b, point, lo, hi, p_flip, n_games, min_games, max(gsums) - min(gsums) <= 1e-12 and len(set(gcounts)) == 1)
+                blk['verdict'], blk['reason'] = verdict(a, b, point, lo, hi, p_flip, gate_games, min_games, max(gsums) - min(gsums) <= 1e-12 and len(set(gcounts)) == 1)
+                if gate_games < n_games and blk['reason'].startswith(f'{gate_games} games <'):
+                    blk['reason'] += f' (games with an answered decision; {n_games} counting games that exist only because of a failed reply, which do not open the gate)'
         elif with_verdict:
             blk['verdict'], blk['reason'] = 'inconclusive', 'no decision is comparable for both bots'
         if prefix == 'diff':
@@ -304,12 +313,12 @@ def _block(pids, games, vals, bots, judge_repeats, contrasts, resamples, seed, m
         same_all = pairwise = pairs = 0
         for p in pids:
             nums = vals['judge'][p][2]
-            if len(set(nums)) == 1:
+            if None not in nums and len(set(nums)) == 1:  # a repeat without a choice (None) is no plan: two of them are not "the same plan"
                 same_all += 1
             for i in range(len(nums)):
                 for j in range(i + 1, len(nums)):
                     pairs += 1
-                    pairwise += nums[i] == nums[j]
+                    pairwise += nums[i] is not None and nums[i] == nums[j]
         out['sensitivity'] = {
             'what': 'the judge\'s per-decision mean over all its repeats against the same other bots (no verdict is drawn from it); the primary result is the one predefined call. '
                     'Repeats are not extra samples and no run is chosen.',
@@ -320,10 +329,11 @@ def _block(pids, games, vals, bots, judge_repeats, contrasts, resamples, seed, m
     return out
 
 
-def analyse(rows, eligibility, bots, judge_repeats, contrasts=None, resamples=RESAMPLES, seed=SEED, min_games=MIN_GAMES):
+def analyse(rows, eligibility, bots, judge_repeats, contrasts=None, resamples=RESAMPLES, seed=SEED, min_games=MIN_GAMES, failed_judge_rows='abort'):
     """The clustered comparison over a complete batch. `rows` = the report rows of the PRIMARY points only (fields: position, bot, run, state, plan_number, agrees,
     full_agrees); `eligibility` = the parsed eligibility file; contrasts = [(a, b)] (default: the judge against every other bot). Returns the analysis block:
-    {'method', 'prefix': <block over all primary points>, 'full_scope': <block over the full-scope subset> or None}."""
+    {'method', 'prefix': <block over all primary points>, 'full_scope': <block over the full-scope subset> or None}. A judge row in state 'no_choice' (policy 'miss') arrives with
+    agrees False (and full_agrees False at a full-scope point): it is scored like any other disagreement."""
     primary = sorted(eligibility['primary_ids'])
     full = sorted(eligibility.get('full_scope_ids', []))
     games = eligibility['games']
@@ -349,12 +359,16 @@ def analyse(rows, eligibility, bots, judge_repeats, contrasts=None, resamples=RE
                                        'full_plan': 'full-scope points only, complete turns only: the same listed plan as an accepted move list AND what follows a chance event equal label by label; '
                                                     'a judge plan that stops at a chance event, and a step-bot turn pg_pos cut at a draw card, are not comparable'},
                          'sign_flip': f'exact test over games up to {SIGN_FLIP_EXACT_MAX_GAMES} games, seeded Monte Carlo ({SIGN_FLIP_DRAWS} draws) beyond; a direction needs p < {1.0 - CONFIDENCE:.2f} as well',
+                         'failed_judge_rows': (f"{failed_judge_rows}: " + ('a judge row without a valid choice (an invalid label, a reply cut at the cap, a blocked prompt, any finish but STOP) '
+                                               'scores 0 in the prefix and in the full-scope numbers, never "not comparable"; the count is in report.failed_judge_rows' if failed_judge_rows == 'miss'
+                                               else 'such a row stops the comparison (it is a problem, not a score)')),
                          'min_games': min_games, 'contrasts': [f'{a}:{b}' for a, b in contrasts],
                          'multiplicity': 'no adjustment for several contrasts (with the two default contrasts the chance of at least one false direction is about 5%)'}}
     result['prefix'] = _block(primary, games, pv, bots, judge_repeats, contrasts, resamples, seed, min_games)
     if full:
         fv = decision_values(rows, bots, judge_repeats, 'full_agrees')
-        fb = _block(full, games, fv, bots, judge_repeats, contrasts, resamples, seed, min_games, sensitivity=False)
+        misses = {r['position'] for r in rows if r['bot'] == 'judge' and r['run'] == PRIMARY_JUDGE_RUN and r.get('state') == 'no_choice'}
+        fb = _block(full, games, fv, bots, judge_repeats, contrasts, resamples, seed, min_games, sensitivity=False, miss_points=misses)
         fb['not_comparable'] = {b: sorted(p for p in full if fv[b][p][0] is None) for b in bots}
         result['full_scope'] = fb
     else:
@@ -369,7 +383,7 @@ def diagnostic_block(rows, ids, reasons, bots, judge_repeats):
     for b in bots:
         vs = []
         for p in ids:
-            rs = [r for r in rows if r['position'] == p and r['bot'] == b and r['state'] == 'ok' and r.get('agrees') is not None
+            rs = [r for r in rows if r['position'] == p and r['bot'] == b and r['state'] in ('ok', 'no_choice') and r.get('agrees') is not None
                   and (b != 'judge' or r['run'] == PRIMARY_JUDGE_RUN)]  # the judge's one predefined call; a step bot's seeds averaged
             if rs:
                 vs.append(sum(1.0 if r['agrees'] else 0.0 for r in rs) / len(rs))

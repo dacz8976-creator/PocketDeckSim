@@ -13,8 +13,10 @@ listed plan. Here nothing is left out and no number is taken on trust:
     whole-number `repeat` (judge, no `seed`);
   * a row is a problem when it is missing, appears twice, was not expected, has no listed plan (an unfollowable or AMBIGUOUS move list, a parse failure), is not
     an object with a text `position` and `bot`, or (judge) is not exactly `dry_run: false` / `frozen: true`, was made with another model, token cap or
-    temperature than the freeze (and, from frozen-5, another provider or thinking level), or used a capped (incomplete) plan list; a judge row WITHOUT a usable choice (an invalid
-    label, a reply cut at the output cap, any unfinished status) is `unresolved` and stops the comparison, never a miss;
+    temperature than the freeze (and, from frozen-5, another provider or thinking level; from frozen-7, another location), or used a capped (incomplete) plan list; a judge row WITHOUT a
+    usable choice (an invalid label, a reply cut at the output cap, a blocked prompt, any unfinished status) is `unresolved` and stops the comparison, UNLESS the explicit policy
+    `--failed-judge-rows miss` (pre-registered for run 2, default `abort`) applies: then a row that is consistent with being a failed reply and nothing else (check_no_choice_row) counts as a
+    MISS and the count is reported (report.failed_judge_rows); every other problem still stops the comparison;
   * a row with a plan number is checked against the CURRENT plan list, not believed:
       - the number must be a whole number inside the list (bool, float, text and 0 are not numbers; 999 in a two-plan list is a problem);
       - a row that carries a plan number AND a match_error or parse_error contradicts itself;
@@ -29,7 +31,7 @@ listed plan. Here nothing is left out and no number is taken on trust:
     aggregation, the bootstrap or the full-scope block. Points of the batch outside the primary selection are reported apart, as a descriptive diagnostic block,
     and their problems never stop the primary comparison;
   * the accepted moves of every primary point are mapped to listed plans the same way; one that cannot be mapped to exactly one plan is a problem;
-  * with any problem the comparison has no numbers at all: `--on-problem fail` (the default) stops with exit code 2, `--on-problem inconclusive`
+  * with any problem (a failed judge reply under the policy `miss` is not a problem) the comparison has no numbers at all: `--on-problem fail` (the default) stops with exit code 2, `--on-problem inconclusive`
     writes a report with status "inconclusive", every expected primary row listed with its state, and exits with code 3. Only a clean batch exits 0 and carries
     the game-clustered analysis (analysis.py). Exit code 3 means a DATA problem; a clean batch whose interval includes 0 exits 0 with the verdict "inconclusive".
 
@@ -46,6 +48,18 @@ import analysis
 
 SCHEMA = 'ai_judge_paired_comparison_v2'
 UNFINISHED_PREFIXES = ('gemini:', 'vertex:')  # a judge row's stop_reason that starts so is a Gemini reply that did not finish ('end_turn' otherwise); judge_one keeps no choice for it
+FAILED_JUDGE_ROWS = ('abort', 'miss')  # `compare --failed-judge-rows`: what a judge row WITHOUT a valid choice does to the comparison
+FAILED_JUDGE_ROWS_DOC = {
+    'flag': '--failed-judge-rows', 'values': list(FAILED_JUDGE_ROWS), 'default': 'abort', 'preregistered_for_run_2': 'miss',
+    'abort': 'a judge row without a valid choice (an invalid label, a reply cut at the output cap, a blocked prompt, any finish but STOP) is an `unresolved` problem and stops the compare: exit 2, '
+             'no numbers (the behaviour of frozen-4 to frozen-6 and of run 1)',
+    'miss': 'such a row counts as a MISS (agreement 0) in the prefix and in the full-scope scoring, but only if it is otherwise a consistent row (settings, plan-list identity, prompt hash, a stop '
+            'reason that agrees with the finish fields recorded beside it, a stored reply that really holds no valid choice: rows are not authenticated, this is what the row\'s own fields can '
+            'show); the count and the rows are reported plainly (report.failed_judge_rows) and a WARNING is printed when more than 20% of the primary judge decisions failed. It can only lower '
+            'the judge\'s rate and the prefix score; in the full-scope CONTRAST a miss pair is kept where an answered plan that stops at a chance event would have been dropped, so the contrast '
+            'can move toward zero, and a game that exists only because of a miss does not count toward the min-games gate. A step-bot row without a plan, a missing row or any other problem '
+            'still stops the compare',
+}
 COMPLETE_CUTS = ('end of turn', 'game over')  # pg_pos_cut values of a step-bot turn that was played through; 'first draw' stops it at a draw card (not a complete plan)
 
 
@@ -226,8 +240,77 @@ def check_chosen_plan(row, bot, rec, list_hash, expect_judge, require_frozen):
     return out
 
 
-def check_rows(rows, expected, recs, require_frozen=True, baseline_sha256=None, expect_judge=None):
-    """Returns (by_key, problems): by_key maps each expected key to its single row (or None), problems is a list of dicts {kind, position, bot, run, detail}."""
+def stop_reason_problem(row):
+    """None, or why a judge row's `stop_reason` contradicts the finish fields the writer recorded beside it (finish_reason, block_reason, n_candidates, status): a row that says its reply was
+    cut must also say how, and the two must agree. Anthropic rows carry no finish fields and are not checked here."""
+    sr = row.get('stop_reason')
+    if isinstance(sr, str) and sr.startswith('vertex:'):
+        if 'finish_reason' not in row:
+            return f'the stop reason {sr!r} names a Vertex finish but the row records no finish_reason'
+        reason, fin, block = sr[len('vertex:'):], row.get('finish_reason'), row.get('block_reason')
+        if reason.startswith('BLOCKED_'):
+            ok = fin is None and block == reason[len('BLOCKED_'):]
+        elif reason in ('NO_CANDIDATE', 'NO_FINISH_REASON'):
+            ok = fin is None and not block
+        else:
+            ok = fin == reason
+        if not ok:
+            return f'the stop reason {sr!r} contradicts the recorded finish_reason {fin!r} / block_reason {block!r}'
+    elif sr == 'end_turn' and 'finish_reason' in row and row.get('finish_reason') != 'STOP':
+        return f"the stop reason 'end_turn' contradicts the recorded finish_reason {row.get('finish_reason')!r}"
+    elif isinstance(sr, str) and sr.startswith('gemini:') and 'status' in row and sr != f"gemini:{row.get('status')}":
+        return f"the stop reason {sr!r} contradicts the recorded status {row.get('status')!r}"
+    return None
+
+
+def check_no_choice_row(row, rec, list_hash, expect_judge, require_frozen):
+    """A judge row WITHOUT a plan number that may count as a MISS (`--failed-judge-rows miss`) must still be a row that is CONSISTENT with being a failed reply (rows are not authenticated:
+    this is what the row's own fields can show): returns [(kind, detail)] for everything that does not hold, [] = it is a failed reply and nothing else. It must say why (`parse_error`),
+    carry no plan, cut, shown number or plan key, no match_error; carry the identity of the plan list used now; be the answer to the prompt re-rendered under the frozen settings (prompt
+    hash, every frozen setting); carry its stored reply (`raw`, possibly empty: a blocked prompt); its stop reason must agree with the finish fields recorded beside it (stop_reason_problem);
+    and the reply must really hold no valid choice: either it did not finish (stop_reason 'max_tokens', 'gemini:...', 'vertex:...') or its text parses to no choice. A finished reply that
+    DOES name a valid plan cannot be turned into a miss."""
+    out = []
+    stop_problem = stop_reason_problem(row)
+    if stop_problem:
+        out.append(('reply_mismatch', stop_problem))
+    why = row.get('parse_error')
+    if not (isinstance(why, str) and why.strip()):
+        out.append(('no_reason', 'the row has no plan number and no `parse_error` saying why: it cannot be counted as a failed reply'))
+    for k in ('plan', 'cut', 'shown_number', 'plan_key'):
+        if row.get(k) is not None:
+            out.append(('contradictory', f'the row has no plan number but carries `{k}` = {row.get(k)!r}'))
+    if row.get('match_error'):
+        out.append(('contradictory', f'the row has no plan number and a match_error: {row.get("match_error")}'))
+    if row.get('plan_list_sha256') is None:
+        out.append(('list_mismatch', 'the row carries no plan-list identity (`plan_list_sha256`): it cannot be tied to the list used now'))
+    elif row['plan_list_sha256'] != list_hash:
+        out.append(('list_mismatch', f"the row was made from a different plan list (identity {str(row['plan_list_sha256'])[:12]}, current {list_hash[:12]})"))
+    exp = expect_judge(row['position'], row) if expect_judge is not None else {'error': 'no expectation of the prompt was supplied, so the judge row cannot be checked'}
+    if exp.get('error'):
+        out.append(('prompt_mismatch', f"the prompt cannot be re-rendered: {exp['error']}"))
+        return out
+    if row.get('prompt_sha256') != exp['prompt_sha256']:
+        out.append(('prompt_mismatch', f"the row's prompt hash {str(row.get('prompt_sha256'))[:12]} is not the hash of the prompt re-rendered now ({exp['prompt_sha256'][:12]})"))
+    if require_frozen:
+        for k, v in (exp.get('settings') or {}).items():
+            if k not in row or row[k] != v:
+                out.append(('not_frozen', f"the row records {k}={row.get(k, '<missing>')!r}, the freeze says {v!r}"))
+    raw = row.get('raw')
+    if not isinstance(raw, str):
+        out.append(('reply_mismatch', 'the row carries no stored reply (`raw`), so its failure cannot be re-derived'))
+    else:
+        sr = row.get('stop_reason')
+        unfinished = sr == 'max_tokens' or (isinstance(sr, str) and sr.startswith(UNFINISHED_PREFIXES))
+        if not unfinished and exp.get('parse') is not None and exp['parse'](raw) is not None:
+            out.append(('reply_mismatch', f'the reply finished (stop reason {sr!r}) and its text names a valid plan, so the row cannot be a failed reply'))
+    return out
+
+
+def check_rows(rows, expected, recs, require_frozen=True, baseline_sha256=None, expect_judge=None, no_choice=None):
+    """Returns (by_key, problems): by_key maps each expected key to its single row (or None), problems is a list of dicts {kind, position, bot, run, detail}.
+    `no_choice` (a set, or None): with a set, a JUDGE row without a plan number that check_no_choice_row proves to be a failed reply is NOT a problem: its key is added to the set (the
+    caller scores it as a miss); every other row without a plan number is `unresolved` as before."""
     problems = []
     seen = {}
     exp = set(expected)
@@ -258,8 +341,16 @@ def check_rows(rows, expected, recs, require_frozen=True, baseline_sha256=None, 
         by_key[key] = row
         if row.get('plan_number') is None:
             why = row.get('match_error') or row.get('parse_error') or 'no listed plan'
-            kind = 'ambiguous' if str(why).startswith('ambiguous') else 'unresolved'
-            problems.append({**base, 'kind': kind, 'detail': str(why)})
+            if no_choice is not None and bot == 'judge' and pid in recs and isinstance(recs[pid].get('plans'), list):
+                proof = check_no_choice_row(row, recs[pid], hashes[pid], expect_judge, require_frozen)
+                if not proof:
+                    no_choice.add(key)  # a proven failed reply: scored as a miss by the caller, reported plainly
+                else:
+                    problems.append({**base, 'kind': 'unresolved', 'detail': str(why)})
+                    problems += [{**base, 'kind': kind, 'detail': detail} for kind, detail in proof]
+            else:
+                kind = 'ambiguous' if str(why).startswith('ambiguous') else 'unresolved'
+                problems.append({**base, 'kind': kind, 'detail': str(why)})
         elif pid in recs and isinstance(recs[pid].get('plans'), list):
             for kind, detail in check_chosen_plan(row, bot, recs[pid], hashes[pid], expect_judge, require_frozen):
                 problems.append({**base, 'kind': kind, 'detail': detail})
@@ -361,8 +452,8 @@ def full_plan_agreement(row, bot, plan_end, cands, rec, full_match):
         return None, f'a move label cannot be read: {e}'
 
 
-def _states(expected, by_key, problems):
-    """{key: state}: missing / duplicate / unresolved (a problem names the row) / ok."""
+def _states(expected, by_key, problems, no_choice=()):
+    """{key: state}: missing / duplicate / unresolved (a problem names the row) / no_choice (a proven failed judge reply, policy 'miss': scored as a miss) / ok."""
     st = {}
     pos_bad = {p['position'] for p in problems if p.get('position') and not p.get('bot')}
     kinds = {}
@@ -377,12 +468,16 @@ def _states(expected, by_key, problems):
             st[key] = 'missing'
         elif k or key[0] in pos_bad:
             st[key] = 'unresolved'
+        elif key in no_choice:
+            st[key] = 'no_choice'
         else:
             st[key] = 'ok'
     return st
 
 
 def _rows(scope_ids, expected, by_key, states, accepted, games, full_scope, full_agree, complete):
+    """The report rows of a scope. A row in state 'no_choice' (a proven failed judge reply under `--failed-judge-rows miss`) is a MISS: agrees False, and, at a full-scope point,
+    full_agrees False (not "not comparable": the judge produced no plan at all)."""
     rows = []
     for key in expected:
         pid, bot, run = key
@@ -390,17 +485,25 @@ def _rows(scope_ids, expected, by_key, states, accepted, games, full_scope, full
             continue
         row = by_key.get(key)
         n = None if row is None else row.get('plan_number')
-        acc = [rid for rid, num in accepted.get(pid, {}).items() if complete and states[key] == 'ok' and num == n]
+        ok = complete and states[key] == 'ok'
+        miss = complete and states[key] == 'no_choice'
+        acc = [rid for rid, num in accepted.get(pid, {}).items() if ok and num == n]
         rows.append({'position': pid, 'game': (games or {}).get(pid), 'bot': bot, 'run': run, 'state': states[key], 'plan_number': n, 'accepted': acc,
-                     'agrees': (bool(acc) if (complete and states[key] == 'ok') else None), 'full_scope': pid in full_scope,
-                     'full_agrees': (full_agree.get(key) if (complete and states[key] == 'ok' and pid in full_scope) else None)})
+                     'agrees': (bool(acc) if ok else (False if miss else None)), 'full_scope': pid in full_scope,
+                     'full_agrees': (full_agree.get(key) if (ok and pid in full_scope) else (False if (miss and pid in full_scope) else None))})
     return rows
 
 
-def early_failure(problems, on_problem, run_info=None):
+def no_failed_rows(policy, n_primary_decisions=0):
+    """The `failed_judge_rows` block of a report that counted none (or could not start)."""
+    return {'policy': policy, 'what': FAILED_JUDGE_ROWS_DOC[policy], 'n_judge_rows_primary': 0, 'n_judge_decisions_primary': n_primary_decisions, 'n_primary': 0, 'n_primary_decisions': 0,
+            'n_diagnostic': 0, 'rows': []}
+
+
+def early_failure(problems, on_problem, run_info=None, failed_judge_rows='abort'):
     """The report of a request that cannot even start (bad request, malformed selection): raises BatchFailed, or returns the inconclusive report."""
-    report = {'schema': SCHEMA, 'status': 'inconclusive' if on_problem == 'inconclusive' else 'failed', 'n_expected_rows': 0, 'n_present_rows': 0, 'n_resolved_rows': 0,
-              'problems': problems, 'rows': [], 'row_account': None, 'analysis': None, 'selection': None, 'diagnostic_excluded': None}
+    report = {'schema': SCHEMA, 'status': 'inconclusive' if on_problem == 'inconclusive' else 'failed', 'n_expected_rows': 0, 'n_present_rows': 0, 'n_resolved_rows': 0, 'n_no_choice_rows': 0,
+              'problems': problems, 'rows': [], 'row_account': None, 'analysis': None, 'selection': None, 'diagnostic_excluded': None, 'failed_judge_rows': no_failed_rows(failed_judge_rows)}
     if run_info is not None:
         report['run'] = run_info
     if on_problem == 'inconclusive':
@@ -428,8 +531,10 @@ def game_conflicts(eligibility, position_games):
 
 def compare(rows, ids, bots, seeds, judge_repeats, references, recs, match, eligibility, on_problem='fail', require_frozen=True, baseline_sha256=None,
             expect_judge=None, contrasts=None, min_games=analysis.MIN_GAMES, resamples=analysis.RESAMPLES, full_match=None, run_info=None, extra_problems=(),
-            read_problems=(), position_games=None):
+            read_problems=(), position_games=None, failed_judge_rows='abort'):
     """The whole path. Returns the report; raises BatchFailed (exit code 2) for on_problem='fail' when anything is unresolved.
+    `failed_judge_rows`: 'abort' (default) = a judge row without a valid choice is an `unresolved` problem; 'miss' = such a row, if check_no_choice_row proves it to be a failed reply
+    and nothing else, is scored as a miss (state 'no_choice') and listed in report['failed_judge_rows'] (see FAILED_JUDGE_ROWS_DOC).
     expect_judge(point, row) -> {'prompt_sha256', 'shown': {number printed in the prompt: plan number}, 'parse': reply text -> number or None,
     'settings': the freeze's judge settings, every key of which the row must record equal: {model, max_tokens, temperature} for the Anthropic freeze, plus provider and thinking_level
     (and thinking_summaries for the Developer API) for a Gemini freeze} (or {'error': text}) is required whenever the judge is a bot: it is how a judge row is tied to the prompt and
@@ -438,6 +543,8 @@ def compare(rows, ids, bots, seeds, judge_repeats, references, recs, match, elig
     `position_games` = {point: game} from the positions file, cross-checked against the eligibility file's games."""
     if 'judge' in bots and expect_judge is None:
         raise ValueError('compare: the judge rows can only be checked with expect_judge (the prompt re-rendered under the frozen settings)')
+    if failed_judge_rows not in FAILED_JUDGE_ROWS:
+        raise ValueError(f'compare: failed_judge_rows must be one of {FAILED_JUDGE_ROWS}, not {failed_judge_rows!r}')
     problems = list(extra_problems) + request_problems(ids, bots, seeds, judge_repeats, contrasts, min_games, resamples)
     if not isinstance(references, dict):
         problems.append(_prob('reference_malformed', 'the references must be an object {point: [{"id", "labels"}]}'))
@@ -445,7 +552,7 @@ def compare(rows, ids, bots, seeds, judge_repeats, references, recs, match, elig
     if not problems and position_games is not None:
         problems += game_conflicts(eligibility, position_games)
     if problems:
-        return early_failure(problems, on_problem, run_info)
+        return early_failure(problems, on_problem, run_info, failed_judge_rows)
     ids = sorted(ids)  # the report does not depend on the order the points were named in
     primary = sorted(eligibility['primary_ids'])
     pset, full_scope = set(primary), set(eligibility.get('full_scope_ids', []))
@@ -456,7 +563,8 @@ def compare(rows, ids, bots, seeds, judge_repeats, references, recs, match, elig
     games = eligibility['games']
     expected = expected_rows(ids, bots, seeds, judge_repeats)
     problems = list_integrity_problems(recs, ids)
-    by_key, row_problems = check_rows(rows, expected, recs, require_frozen, baseline_sha256, expect_judge)
+    no_choice = set()
+    by_key, row_problems = check_rows(rows, expected, recs, require_frozen, baseline_sha256, expect_judge, no_choice if failed_judge_rows == 'miss' else None)
     problems += row_problems
     problems += list(read_problems)  # lines of the results files that did not parse: the batch fails, with every expected row still accounted for
     integrity_bad = {p['position'] for p in problems if p['kind'] == 'list_integrity'}
@@ -483,7 +591,7 @@ def compare(rows, ids, bots, seeds, judge_repeats, references, recs, match, elig
     diag_problems = [p for p in problems if p.get('position') in dset]
     complete = not batch_problems
     status = 'complete' if complete else ('inconclusive' if on_problem == 'inconclusive' else 'failed')
-    states = _states(expected, by_key, problems)
+    states = _states(expected, by_key, problems, no_choice)
     prim_expected = [k for k in expected if k[0] in pset]
     report_rows = _rows(pset, expected, by_key, states, accepted, games, full_scope, full_agree, complete)
     account = {}
@@ -494,7 +602,8 @@ def compare(rows, ids, bots, seeds, judge_repeats, references, recs, match, elig
     reasons = eligibility.get('excluded_reasons', {})
     primary_games = {games[p] for p in primary}
     report = {'schema': SCHEMA, 'status': status, 'n_expected_rows': len(prim_expected), 'n_present_rows': sum(1 for k in prim_expected if by_key.get(k) is not None),
-              'n_resolved_rows': sum(1 for r in report_rows if r['state'] == 'ok'), 'problems': batch_problems, 'rows': report_rows,
+              'n_resolved_rows': sum(1 for r in report_rows if r['state'] == 'ok'), 'n_no_choice_rows': sum(1 for r in report_rows if r['state'] == 'no_choice'),
+              'problems': batch_problems, 'rows': report_rows,
               'row_account': {'what': 'row accounting only (primary points; every repeat and seed is a row): not an agreement figure', 'per_bot_state_counts': account},
               'selection': {'primary_ids': len(primary), 'full_scope_ids': len(full_scope), 'diagnostic_ids': list(diag_ids), 'references_in_file': len(references),
                             'references_used': len([p for p in ids if p in references]), 'references_ignored': n_ignored},
@@ -506,10 +615,18 @@ def compare(rows, ids, bots, seeds, judge_repeats, references, recs, match, elig
         report['diagnostic_excluded']['per_bot'] = None  # with any problem the comparison shows no numbers, the excluded points' included
         for r in report['diagnostic_excluded']['rows']:
             r['agrees'], r['accepted'] = None, []
+    failed = [k for k in expected if states[k] == 'no_choice']
+    report['failed_judge_rows'] = {
+        'policy': failed_judge_rows, 'what': FAILED_JUDGE_ROWS_DOC[failed_judge_rows],
+        'n_judge_rows_primary': len([k for k in prim_expected if k[1] == 'judge']), 'n_judge_decisions_primary': len(primary),
+        'n_primary': sum(1 for k in failed if k[0] in pset), 'n_primary_decisions': sum(1 for k in failed if k[0] in pset and k[2] == analysis.PRIMARY_JUDGE_RUN),
+        'n_diagnostic': sum(1 for k in failed if k[0] in dset),
+        'rows': [{'position': k[0], 'run': k[2], 'primary': k[0] in pset, 'game': games.get(k[0]), 'stop_reason': by_key[k].get('stop_reason'),
+                  'reason': str(by_key[k].get('parse_error'))[:200]} for k in failed]}
     if run_info is not None:
         report['run'] = run_info
     if complete:
-        report['analysis'] = analysis.analyse(report_rows, eligibility, bots, judge_repeats, contrasts, resamples, min_games=min_games)
+        report['analysis'] = analysis.analyse(report_rows, eligibility, bots, judge_repeats, contrasts, resamples, min_games=min_games, failed_judge_rows=failed_judge_rows)
     if batch_problems and on_problem != 'inconclusive':
         err = BatchFailed(batch_problems)
         err.report = report
