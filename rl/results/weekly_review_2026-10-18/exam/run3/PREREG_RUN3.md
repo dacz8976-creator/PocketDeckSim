@@ -170,3 +170,108 @@ The coordinator accepted the five choices reported in laptop-021, and added the 
 **C4. Sources:**
 - Exam v2 cites a hash-checked snapshot of the accepted packets, taken at the cutoff, on this branch (`run3/sources/`). Each top-level REVIEW.md must equal the hash its packet pins.
 - Main's importer is unchanged for now. Its silent skip of the new layout is logged by the coordinator as a separate fix.
+
+
+## Addendum 3 (Oct 21, 2026; the coordinator's ruling on the exact deck lists, coordinator-024 (mailbox id 20261021T2315Z), before any selection)
+Nothing has been selected, built or run. The window is still open.
+
+**D1. The exact-list rule, as run 3 applies it.** This spells out section 1's "no exact deck list (QR-verified, or matched card for card to a list in the repository)". It adds no route.
+- **QR-verified:** a game's list is exact when all three hold:
+  - a deck code (QR) filmed in that game's own recording, before the battle, decodes to a full 20-card list (card entities, quantities and Energy);
+  - the footage from the code to matchmaking shows that this list is the one played: no card editing and no deck change in between;
+  - the accepted full review's visible cards agree with it.
+- **Or matched:** the game is matched card for card to a list in the repository.
+  - No game uses this route so far. Before one does, the laptop asks the coordinator, with the match and its evidence.
+  - `make_sources_snapshot.py --extra-decks` only checks that the named deck file is in `decks/DECKS.json` with its recorded hash, and that it agrees with any filmed or exact-list code. The card-for-card match itself is a judgement, not a script check.
+- **A list Dustin supplies counts only through one of these two routes.** Any other route needs the coordinator's ruling before selection.
+- **A code names the card, not the printing** (artwork, rarity). The deck file writes each card as one printing in the frozen tree's database: the printing the repository's decks use most, else the first released (`make_v2_decks.py`). Printings of one card play the same.
+- **A binding with a recorded limit** counts as exact when the coordinator rules so, before any selection. The limit is written with the game (`decks/RULINGS.json`, carried into `window.json`).
+
+**D2. The ruling, verbatim (coordinator-024):** "all seven count as EXACT lists under run 3's deck rule. That includes 21-57-12, with its limit recorded in the record: "decoded QR plus continuous footage of Cancel, the saved rename and selection; the saved list was not reopened"."
+- **The seven.** At Dustin's request, Codex read the pre-game QR codes of the six Oct 16-17 games and of 21-57-12. Its findings, as relayed by Dustin, verbatim (recording names in Chicago time):
+  - "Oct 16 13:46:35 and 15:05:34: the same list, including Regigigas."
+  - "Oct 17 09:51:04 and 10:01:14: the same list, 2 Hoopa ex and 1 Claydol."
+  - "Oct 17 10:05:09: changed to 1 Hoopa ex and 2 Claydol."
+  - "Oct 17 10:13:06: no Regigigas; includes X Speed, Poison Barb and Cyrus."
+  - "The six Oct 16-17 lists are linked to the played decks by continuous selection footage, with no mismatch seen."
+  - "Oct 19 21:57:12: the exact "Muk it up" list was decoded. The footage shows Cancel on the discard prompt, then loading, the saved rename and the selection of "Muk it up". No full saved list is reopened afterward."
+- **The effect:** the six Oct 16-17 games are no longer excluded for want of an exact list. 21-57-12 keeps its list, with the limit recorded.
+
+**D3. The sources.** At the cutoff, the snapshot copies into `sources/QR_EXACT_LISTS_2026-10-21/`:
+- per recording, the seven text files of Codex's targeted addendum, where present: QR_DECODE, BINDING, LEAD_ACCEPTANCE, INDEPENDENT, ADDENDUM, REVIEW and SOURCE (from `BattleLogsData/Evidence/QR_EXACT_LISTS_2026-10-21/<drive id>/`);
+- six named files of their summary folder (`Battle Logs/Recording_QA/QR_EXACT_LISTS_2026-10-21/`), under `_summary/`.
+
+These text files carry no sha256 pin of their own. So `make_sources_snapshot.py` checks them and stops on any mismatch:
+- **The run needs all three inputs:** `--exact-lists`, `--exact-summary` and `--rulings`. A run without them would record the six Oct 16-17 games as having no exact list.
+- **The summary:**
+  - SUMMARY_DRIVE_VERIFICATION.json names exactly the two Drive copies Dustin linked, under his Drive ids, marked verified;
+  - the local EXACT_DECKS.json and EXACT_DECK_LISTS.md have the md5 and size Codex recorded there for those copies. The check is against Codex's record of the Drive copies; nothing reads Drive itself.
+- **The recording folders** are exactly EXACT_DECKS.json's recordings.
+- **Per recording:**
+  - the folder name is QR_DECODE's Drive id;
+  - the QR payload equals EXACT_DECKS's;
+  - the video's sha256 is one value in QR_DECODE, LEAD_ACCEPTANCE, SOURCE and EXACT_DECKS, and equals the reviewed packet's own SOURCE.json and LEAD_ACCEPTANCE (both required), so each list belongs to the reviewed game;
+  - BINDING.json equals BINDINGS.json's entry;
+  - the QR image's sha256 equals the filmed frame's (evidence/QR_NATIVE.jpg);
+  - the game's deck (its code in `decks/DECKS.json`) is that QR's code.
+- **The ruling** (`decks/RULINGS.json`) must cover exactly these recordings, as exact, with Codex's list letter and the packet's recording name. It carries the one limit coordinator-024 records, in the ruling's words, on 21-57-12.
+- **The snapshot also stops when:**
+  - a deck from a targeted addendum is used without these checks;
+  - a game has two lists;
+  - an `--extra-decks` entry matches no game or no recorded deck file;
+  - a drive id or a video's sha256 is in two packets (one game counted twice);
+  - a clip of a battle recorded in several clips is in the window (D6);
+  - the output folder isn't fresh.
+- Every copied file's sha256 is recorded in `window.json`. A stop can leave a partial copy in the worktree, and nothing is committed after a stop.
+
+**D4. The deck files** (`decks/`, from `make_v2_decks.py`):
+- The seven codes decode with the deck journal. Every card has a printing in the frozen tree's database (70652fff), and each file's 20 cards and Energy equal its code's.
+- **4 new files:**
+  - `v2deck_5cef509bea` (Oct 16, both games: Codex's list A);
+  - `v2deck_03c584b95c` (Oct 17 09:51 and 10:01: B);
+  - `v2deck_9d2c3c7ccf` (10:05: C);
+  - `v2deck_5c3566c961` (10:13: D).
+- 21-57-12's code from Codex (E) equals the one its own packet already gave (`v2deck_438090ee3c`). That file's `weak` flag repeats its first QR file's own note; this ruling, not the flag, decides that it is exact.
+- **In all:** 12 deck files, 12 distinct lists, for the 24 games with packets in the three batches so far. The 8 earlier files are unchanged byte for byte.
+- One synthetic position per deck file loads in `pg_legal_v14` with no position problem (`build/smoke_v2.py`). The only new chance card is Mesagoza, whose coin is v1.6's UseStadium rule.
+- **The snapshot's dry run** (Oct 21, into /tmp only, on DRIVE_INBOX_2026-10-20, DRIVE_LADDER_2026-10-19 and DRIVE_LADDER_REMAINING_2026-10-19): 24 packets in the window, 24 in, 0 excluded.
+  - At that time the review index listed 10 Oct 20 recordings in the window with no packet in those three batches:
+    - 2 (17-23-26, 17-54-38) are a linked computer rules test, not ranked. Their packets are in the LUXRAY_ESPATHRA_* folders.
+    - 8 are in a new batch, `DRIVE_INBOX_2026-10-21`, under review then.
+  - Later on Oct 21 the metadata (LEAD_ACCEPTANCE, SOURCE, QR_ID; no review was read) shows:
+    - 4 standalone ranked games, each with an accepted full review and a decoded QR (21-09-16, 22-09-39, 22-11-41, 22-17-16);
+    - one ranked battle recorded in two clips, 21-00-59 and 21-07-01 (D6), with an accepted full review of the whole linked battle;
+    - one linked pair, 22-23-24 and 22-26-30, with a partial review only.
+  - The cutoff run passes every batch that holds his ranked games, `DRIVE_INBOX_2026-10-21` included.
+
+**D5. Reads, recorded** (C1: not exposure).
+- **The laptop session, Oct 21:**
+  - Codex's exact-list files: the QR payloads, bindings, acceptance records, SOURCE files and the summary folder;
+  - the decoded card lists;
+  - `DRIVE_INBOX_2026-10-21`'s metadata (LEAD_ACCEPTANCE, SOURCE, QR_ID status, whether RELATED_SOURCES exists);
+  - the index rows of Oct 20.
+- **The read-only verification workflow `wf_5a33f406-b62`** (Oct 21; 19 agents: five checks and an adversarial verifier per should-fix finding, 14 in all):
+  - It read the same exact-list files, the original packets' SOURCE.json, LEAD_ACCEPTANCE.json and QR_ID.json, the deck files and the dry-run window records.
+  - It ran copies of the scripts on the evidence read only, with changed inputs copied.
+- **The read-only re-check `wf_db42117b-1bf`** (Oct 21, 9 agents):
+  - It read the same kinds of files, plus `DRIVE_INBOX_2026-10-21`'s LEAD_ACCEPTANCE, SOURCE, QR_ID and RELATED_SOURCES and the index rows.
+  - Its runs hashed, but did not open or copy, that batch's REVIEW.md and FINDINGS for the pin check.
+- Both workflows were told not to read any window packet's REVIEW.md or FINDINGS.
+- None of these readers is the judge's developer, and none can alter frozen-7.
+
+**D6. Open, for the coordinator before the cutoff: one battle recorded in several clips.**
+- **The case:** section 1 counts recordings, and v1.6 excluded "a clip that starts mid-game". `DRIVE_INBOX_2026-10-21` now holds a ranked battle split across two recordings:
+  - 21-00-59 is the opening clip, with the QR;
+  - 21-07-01 continues it, with no QR of its own;
+  - Codex reviewed them together as one game (SOURCE.json battle_id `drive-inbox-20261021-game01`, clip_order 1 and 2; LEAD_ACCEPTANCE "Whole linked ranked battle").
+- **Neither mechanical reading is right:**
+  - counting both clips makes one battle two games (two clusters);
+  - dropping the second clip as having "no exact list" gives a false reason.
+- **Until the coordinator rules,** both scripts stop on such a clip: `make_v2_decks.py` on a QR file with only a linked payload, and `make_sources_snapshot.py` on a battle_id, a clip_order or a RELATED_SOURCES.json.
+- **The laptop's proposal is in laptop-023:** one game per linked battle, made of its clips, with:
+  - the opening clip's QR as its list (a continuation's linked payload must equal it);
+  - its points drawn from the whole linked review;
+  - the battle as the cluster;
+  - the first clip's start time as its time.
+  
+  A linked battle whose review is only partial stays excluded ("no accepted full review").

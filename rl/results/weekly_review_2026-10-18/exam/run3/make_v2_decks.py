@@ -12,7 +12,12 @@ Read only: each packet's QR_ID.json or QR_DECODE.json `payload` (the filmed code
 - write `run3/decks/v2deck_<first 10 hex of sha256(payload)>.txt` in the deck format (journal.list_lines);
 - check that the file encodes back to the same code: code_cards(file) == decode_payload(payload), 20 cards.
 `DECKS.json` maps each deck file to its payload, the games that filmed it, the QR file's schema and any weakness the packet records
-(e.g. battle_full20_proven = false). Games without a filmed code get no deck file here (they wait for Dustin's exact list)."""
+(e.g. battle_full20_proven = false). Games without a filmed code get no deck file here (they need an exact list under PREREG_RUN3
+section 1 and addendum 3, D1).
+A game is one Drive recording (its drive id: the packet folder's name before "_ScreenRecording", or the whole name of a targeted
+addendum folder such as Codex's QR_EXACT_LISTS_2026-10-21/<drive id>/). A game with two QR sources is listed once, the second under
+`also_from`; two sources with different payloads stop the script. Deck files whose card lines are identical (two codes for one list)
+name each other in `same_list_as`."""
 import argparse, collections, glob, hashlib, json, os, sys
 
 REPO = '/home/dacz8976/pincand'
@@ -39,7 +44,10 @@ def release_key(cid):
 def repo_usage(ref):
     """How often each printing appears in the repository's deck files at `ref` (decks/**/*.txt)."""
     import re, subprocess
-    names = subprocess.run(['git', '-C', REPO, 'ls-tree', '-r', '--name-only', ref, 'decks/'], capture_output=True, text=True).stdout.split()
+    ls = subprocess.run(['git', '-C', REPO, 'ls-tree', '-r', '--name-only', ref, 'decks/'], capture_output=True, text=True)
+    if ls.returncode or not ls.stdout.strip():
+        sys.exit(f'git ls-tree {ref} decks/ failed or is empty: {ls.stderr.strip()}')
+    names = ls.stdout.split()
     line = re.compile(r'^\s*(\d+)\s+.+?\s+((?:P-[AB])|(?:[AB]\d[a-z]?))\s+(\d{1,3})\s*$')
     use = collections.Counter()
     for n in names:
@@ -63,19 +71,43 @@ def main():
     printings = collections.defaultdict(list)
     for cid, rec in encode_qr.BYID.items():
         printings[norm_key(rec['entity_key'])].append(cid)
-    payloads = {}
+    payloads, by_drive = {}, {}
     for ev in a.evidence:
         for d in sorted(glob.glob(os.path.join(ev, '*'))):
+            qr_pays = {}
             for f in ('QR_ID.json', 'QR_DECODE.json'):
                 p = os.path.join(d, f)
                 if os.path.exists(p):
-                    q = json.load(open(p, encoding='utf-8-sig'))
-                    pay = next((q[k] for k in ('payload', 'qr_payload', 'decoded_payload') if isinstance(q.get(k), str) and q[k]), None)
+                    with open(p, encoding='utf-8-sig') as fh:
+                        qq = json.load(fh)
+                    qr_pays[f] = next((qq[k] for k in ('payload', 'qr_payload', 'decoded_payload') if isinstance(qq.get(k), str) and qq[k]), None)
+            if len(set(qr_pays.values())) > 1:
+                sys.exit(f'{d}: QR_ID.json and QR_DECODE.json give different payloads')
+            for f in ('QR_ID.json', 'QR_DECODE.json'):
+                p = os.path.join(d, f)
+                if os.path.exists(p):
+                    with open(p, encoding='utf-8-sig') as fh:
+                        q = json.load(fh)
+                    pay = qr_pays[f]
+                    if not pay and (q.get('linked_payload') or q.get('status') == 'not_visible_in_this_clip'):
+                        sys.exit(f'{p}: a clip of a linked battle, with no QR of its own: the rule for a battle across several recordings '
+                                 f'is pending (PREREG_RUN3 addendum 3, D6)')
                     if not pay:
                         sys.exit(f'{p}: no payload')
                     weak = {k: q[k] for k in ('battle_full20_proven', 'unsaved_changes_prompt', 'notes') if k in q}
-                    payloads.setdefault(pay, []).append({'packet': os.path.basename(d), 'batch': os.path.basename(ev), 'qr_file': f,
-                                                         'schema': q.get('schema'), 'filename': q.get('filename'), 'weak': weak})
+                    src = {'packet': os.path.basename(d), 'batch': os.path.basename(ev), 'qr_file': f,
+                           'schema': q.get('schema'), 'filename': q.get('filename') or q.get('source_filename'), 'weak': weak}
+                    # one game = one Drive recording: a packet folder is "<drive id>_ScreenRecording_..." or, for a targeted addendum, "<drive id>"
+                    drive = os.path.basename(d).split('_ScreenRecording')[0]
+                    if drive in by_drive:
+                        first_pay, first = by_drive[drive]
+                        if first_pay != pay:
+                            sys.exit(f'{drive}: two QR sources with different payloads ({first["packet"]}, {src["packet"]})')
+                        first.setdefault('also_from', []).append({k: src[k] for k in ('packet', 'batch', 'qr_file', 'schema', 'weak')})
+                        break
+                    game = dict(src, drive_id=drive)
+                    by_drive[drive] = (pay, game)
+                    payloads.setdefault(pay, []).append(game)
                     break
     os.makedirs(a.out, exist_ok=True)
     index = {}
@@ -101,16 +133,30 @@ def main():
         path = os.path.join(a.out, key + '.txt')
         with open(path, 'w', encoding='utf-8', newline='\n') as fh:
             fh.write('\n'.join(lines) + '\n')
+        with open(path, 'rb') as fh:
+            fsha = hashlib.sha256(fh.read()).hexdigest()
+        weak = any(s['weak'].get('battle_full20_proven') is False for g in games for s in [g, *g.get('also_from', [])])
         index[key] = {'file': key + '.txt', 'payload': pay, 'payload_sha256': hashlib.sha256(pay.encode()).hexdigest(),
-                      'file_sha256': hashlib.sha256(open(path, 'rb').read()).hexdigest(), 'energy': lines[0], 'n_cards': 20,
-                      'encodes_back': True, 'games': games, 'printing_choices': choices,
-                      'weak': any(g['weak'].get('battle_full20_proven') is False for g in games)}
-        print(f"{key}: {len(games)} game(s), {lines[0]}, encodes back OK{'; WEAK QR (battle_full20_proven=false)' if index[key]['weak'] else ''}")
-    json.dump({'what': "exam v2's deck files from the filmed deck codes (make_v2_decks.py); per card, the printing the repo's decks use most, else the first released, among the frozen database's",
-               'decks_ref': a.decks_ref,
+                      'file_sha256': fsha, 'energy': lines[0], 'n_cards': 20,
+                      'encodes_back': True, 'games': games, 'printing_choices': choices, 'weak': weak}
+        print(f"{key}: {len(games)} game(s), {lines[0]}, encodes back OK{'; WEAK QR (battle_full20_proven=false)' if weak else ''}")
+    # two different codes can spell one list (slot order): say so, so a reader never counts them as different lists
+    by_content = collections.defaultdict(list)
+    for key, v in index.items():
+        with open(os.path.join(a.out, v['file']), 'rb') as fh:
+            by_content[fh.read()].append(key)
+    for keys in by_content.values():
+        for k in keys:
+            index[k]['same_list_as'] = sorted(x for x in keys if x != k)
+    print(f'{len(by_content)} distinct lists')
+    import subprocess
+    ref_commit = subprocess.run(['git', '-C', REPO, 'rev-parse', a.decks_ref + '^{commit}'], capture_output=True, text=True).stdout.strip()
+    json.dump({'what': "exam v2's deck files from the filmed deck codes (make_v2_decks.py); per card, the printing the repo's decks use most, else the first released, among the frozen database's. "
+                       "`weak` repeats a source QR file's own flag (battle_full20_proven = false); whether a list counts as exact is the coordinator's ruling (RULINGS.json, PREREG_RUN3 addendum 3), not this flag",
+               'decks_ref': a.decks_ref, 'decks_ref_commit': ref_commit,
                'frozen_db_sha256': hashlib.sha256(open(a.frozen_db, 'rb').read()).hexdigest(), 'decks': index},
               open(os.path.join(a.out, 'DECKS.json'), 'w', encoding='utf-8'), indent=1, ensure_ascii=False)
-    print(f'{len(index)} deck files from {sum(len(g) for g in payloads.values())} packets with a filmed code')
+    print(f'{len(index)} deck files from {sum(len(g) for g in payloads.values())} games with a filmed code')
 
 
 if __name__ == '__main__':

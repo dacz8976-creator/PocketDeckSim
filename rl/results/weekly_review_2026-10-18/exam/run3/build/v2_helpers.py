@@ -21,7 +21,7 @@ import json, os, re
 
 EXAM_V2 = os.path.expanduser('~/exam_v2')
 DECKS_JSON = os.path.join(EXAM_V2, 'decks', 'DECKS.json')
-EXTRA_DECKS = {}  # deck key -> 'Energy: ...' line, for lists Dustin confirms (filled only with his word)
+EXTRA_DECKS = {}  # deck key -> 'Energy: ...' line, for a list matched under PREREG_RUN3 section 1's repository route (addendum 3, D1)
 
 EN = {'G': 'Grass', 'W': 'Water', 'R': 'Fire', 'L': 'Lightning', 'P': 'Psychic', 'F': 'Fighting', 'D': 'Darkness', 'M': 'Metal', 'N': 'Dragon', 'C': 'Colorless'}
 LETTER = {v: k for k, v in EN.items()}
