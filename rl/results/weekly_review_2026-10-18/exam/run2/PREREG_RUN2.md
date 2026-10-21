@@ -82,3 +82,63 @@ Does the frozen-4 judge prompt, answered by **one** pre-registered model, Gemini
 2. Sonnet: the frozen-5 adapter, developed and tested on the old positions (≤5 live calls), then the tag. The coordinator reviews it.
 3. The laptop: a dry run with the mocked judge, then the live run after the coordinator's go, in a kit under `run2/` (run 1's `run_exam.sh` with the km3 step replaced by the copy and check of section 3).
 4. The results go to the coordinator only, then to Dustin. The laptop writes RESULTS_run2.md on this branch.
+
+
+---
+
+## Addendum 1 (Oct 21, 2026, about 20:00Z; committed before any exam call)
+Written by the laptop session from the coordinator's notes 021 (19:00Z) and 022 (19:40Z) and its go of about 19:55Z. The coordinator had reviewed Sonnet's freeze and smoke report (mailbox `coordinator__20261021T1953Z-sonnet-006`). The sections above stay as written. Where this addendum differs, it replaces them for run 2. The model and the prompt don't change. Every change below comes from the transport and from settings, and none from any reply on the exam: none has been made.
+
+**A1. The freeze is `judge-prompt-frozen-7`** (commit 712593a1b77b203ec23fb15589c158c6bddb2bf2, annotated tag object 11e8b2d7).
+- **Why Vertex AI:** Dustin chose his Google Cloud trial credits (verbatim: "Use the trial credits: build the Vertex AI version, and send me the steps to make that key"). The trial credits don't pay for AI Studio's Gemini API, so the same model is called through Vertex AI generateContent.
+- **The two earlier freezes never ran on the exam:**
+  - frozen-5 (544d80ff) was the AI Studio version;
+  - frozen-6 (3783c9ab) called a URL without a project, which pins us-central1, where the model isn't served (HTTP 404, no charge).
+- **Provider and model:** provider `gemini-vertex`, model `gemini-4-argon`, location `global` (a frozen setting every row records and the compare checks), thinking level HIGH.
+- **Output and temperature:** **maxOutputTokens 32,768** (instead of the 8,000 of section 2's plan); temperature left at the provider's default.
+- **Key:** `VERTEX_API_KEY`, taken from the environment, or else from the last export line of `~/.bashrc`. It is read as text, never printed, never stored.
+- **Project:** passed as `--vertex-project project-45583ef0-ed57-426c-bde`. It is Dustin's project id, not a secret, and is recorded in every row. It isn't part of the freeze.
+- **Price** (FROZEN.json, as Sonnet cited it): $2 / $10 per million input / output tokens through Nov 30, 2026, then $4 / $20. Reasoning tokens are billed as output. The budget wrapper reserves at the higher price.
+- **Unchanged, checked by `freeze_identity.py --check` on the tag:**
+  - the prompt fingerprint `0cb2421552661b563bdb49fca31aca53f468d0853661908fbbf7730fcb5ba762`;
+  - the lister bd4eeb6e…;
+  - the baseline f35a1a99… and its engine tree 70652fff;
+  - the plan settings.
+- **Section 2's "only the adapter" doesn't fully hold.** `git diff 72eea776 712593a1` also changes `formal.py` and `analysis.py`: the failed-rows setting (A3) and the game gate behind it. The setting is off by default (`abort`, run 1's behaviour). Sonnet compared the reports with frozen-6's on 2,000 randomized scenarios: they are byte-identical apart from the new report fields.
+- **Why 32,768:** the smoke test's largest call, on old positions, used 11,799 output tokens (11,750 of them thinking). Under 8,000 it would have been cut off with no choice.
+
+**A2. The smoke test** (Sonnet, OLD positions only, never the exam): 5 calls, all finished STOP with a parsed choice, $0.4234 in all at the introductory price, on its own $2 ledger.
+
+**A3. Failed primary rows count as misses.**
+- The primary compare runs with `judge.py compare --failed-judge-rows miss`. A primary judge row with no valid choice counts as a MISS (agreement 0) in the prefix and the full-scope scoring, instead of failing the batch. That covers a reply cut at the output cap, a blocked prompt, any finish but STOP, and an invalid label.
+- The count of such rows, and the rows themselves, are reported.
+- Any other problem still fails the batch: a missing row, a duplicate, a row that doesn't hold together, or a km3 row that can't be accounted for. In that case there is no verdict.
+- This replaces, for this one case, section 4's "any problem at a primary point fails the batch".
+- **The reporting rule:** if MORE than 20% of the 49 primary decisions have no valid choice (10 or more), a result that isn't a pass is reported as **"inconclusive about skill: too many failed replies"**, not as evidence about the model. A pass stays a pass, because misses can only lower the judge's prefix score.
+- **Sonnet's caveats, recorded:**
+  - (a) In the full-scope CONTRAST, a miss pair is kept where an answered plan that stops at a chance event would have been dropped. So that contrast can move toward zero. A game that exists only because of a miss doesn't count toward the 10-game gate. The full-scope block isn't the pass rule.
+  - (b) Rows aren't authenticated. A hit hand-edited into a "failed reply" could only lower the score.
+  - (c) If every judge row failed, the compare would still finish ("km3 higher"). The 20% rule above reports that as inconclusive, not as evidence.
+
+**A4. Resending replaces section 6's rule.**
+- A call that got NO model reply may be sent again ONCE, with the identical request, into a NEW `--out` file on the same ledger. That means a network or HTTP error, which `budget_judge.py` reports as exit 2, an incomplete batch.
+- A model reply, including one that was cut or invalid, is NEVER asked again. The first reply counts, and A3 decides how it's scored.
+- If a primary decision still has no row after that one resend, the batch is incomplete and run 2 has no verdict. That is reported as such.
+
+**A5. The budget replaces section 6's pre-run check.** That check required the worst case of all 51 primary calls to fit. At 32,768 output tokens, that worst case is about $17-18, more than the cap. So the bound is the ledger's per-call reservation:
+- each call's worst case is reserved before it is sent;
+- a call is sent only while spent + reserved + its worst case stays within the cap;
+- the reservation becomes the actual cost when the reply arrives.
+
+The amounts:
+- **The ledger:** the coordinator's go sets a $15 ledger. Section 6 says "$15 in all", and the smoke's $0.4234 was spent on its own ledger. So this run's ledger is **$14.57**: `--total-usd 14.57 --run-cap-usd 14.57` for the primary, on one ledger.
+- **The repeat** gets what remains, under the same flags. If the bound stops it short, it is reported as incomplete (sensitivity only).
+- **If the bound refuses a primary call,** the primary is incomplete: no verdict, and the cap is not raised.
+- **Spend reporting:** actual spend (the provider's usage fields at the cited price) is reported apart from the reservations and from the estimate made before the run.
+
+**A6. Who and when.** The coordinator gave the go for run 2 after this addendum is committed. API calls only, so daytime is fine. The laptop runs it:
+1. a dry run first, mocked (`budget_judge.py --mock`: no key, no call);
+2. then live;
+3. then the formal compare with run 1's reused km3 rows, after the same freeze-identity and input-hash checks as run 1.
+
+Results go to the coordinator only.
