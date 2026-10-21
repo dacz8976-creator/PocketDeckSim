@@ -144,3 +144,29 @@ The coordinator accepted the five choices reported in laptop-021, and added the 
 - Dustin's answers to its unclear spots are folded in before the freeze.
 
 **B4. The selection check** (section 3) is a SEPARATE fresh credit-worker job. The laptop drafts its prompt and the coordinator launches it.
+
+
+## Addendum 2 (Oct 21, 2026, about 21:20Z; the coordinator's decisions on laptop-022, before any selection)
+**C1. Exposure, worded as decided by the coordinator.** This replaces section 2's "anyone who builds or runs the judge".
+- Exposure means the judge's developer (Sonnet), or anyone who could alter the judge. frozen-7 can't be changed by the run.
+- The builder's and runner's reads of the reviews are recorded, not exposure.
+- A game whose answer material reaches the judge's developer is excluded from the primary, as in v1.6.
+
+**C2. Reads of the candidate games' reviews before this addendum, recorded.** None of these readers is the judge's developer, and none can alter frozen-7.
+- **Oct 20-21, the brew 07 read** (mailbox `coordinator__20261021T0125Z-laptop-016`, the coordinator's side job: a read of his brew 07 games plus notes on his other decks).
+  - The laptop session and its workflow agents read Codex's REVIEW.md of all 18 Oct 19 games (DRIVE_INBOX_2026-10-20): the 9 brew-07 games, the 7 "Muk it up" games and the 2 Dragonite/Goodra games.
+  - That read checked six of his brew-07 decision points against what he could see and the point race, and found no misplay.
+- **Oct 21, the read-only inventory** (workflow wf_e56c132e-175, mailbox laptop-022):
+  - the games agent read the packets of all 24 candidate games (REVIEW.md, FINDINGS, LEAD_ACCEPTANCE, LADDER_ENTRY, QR, COVERAGE, UNCERTAINTIES and SOURCE);
+  - the yield agent read all 24 REVIEW.md files in full and estimated usable turns per game, without recording which turns;
+  - the import-path agent opened 2-3 packets from each batch;
+  - the cross-check read the packets of 21-57-12 (its full FINDINGS timeline), 10-01-14 and 13-46-35.
+- **Oct 21, the laptop session itself:**
+  - read the card lists in the 18 Oct 19 QR files, and printed part of one (19-08-57);
+  - listed the packet folders.
+
+**C3. The usability coding is a third fresh credit-worker job** (`jobs/INV_JOB.md`), approved by the coordinator. Under section 2's no-picking rule it decides the points, so it isn't done by the laptop session. The three jobs (usability coding, labelling, selection check) and `jobs/ADJUDICATION_RULES.md` are reviewed by the coordinator at launch, after the cutoff.
+
+**C4. Sources:**
+- Exam v2 cites a hash-checked snapshot of the accepted packets, taken at the cutoff, on this branch (`run3/sources/`). Each top-level REVIEW.md must equal the hash its packet pins.
+- Main's importer is unchanged for now. Its silent skip of the new layout is logged by the coordinator as a separate fix.
