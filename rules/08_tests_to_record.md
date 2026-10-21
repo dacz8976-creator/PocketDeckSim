@@ -50,11 +50,11 @@ Shuriken (`02` §4; engine ✓). Left open with no further test planned (Dustin,
 Mimikyu (T14) and the lethal Blessed Salt case (T3).
 
 **Oct 19 rule tests** (computer battles; Codex reviews with an independent check and lead acceptance, in `Battle Logs/Recording_QA/DRIVE_RULE_TESTS_2026-10-19/`; none go in the Ladder Log):
-- **Growl_weakness_test:** T7 above. An attack cut to 0 by Growl does 0 and gets no Weakness, and its Bench hit is cut to 0 too (`05` #11, `02` §1/§3). The engine gave 20 for the Active hit; the fix is on branch `claude/growl-zero-no-weakness`.
-- **Boundedfield_hitback_test:** under Bounded Field, Spike Armor's hit back did "Weakness 80" (40 × 2) on the Water-weak Heatran. It fired after Heatran's attack had knocked Sandslash out (`02` §1-§2; engine ✓, test on the same branch).
+- **Growl_weakness_test:** T7 above. An attack cut to 0 by Growl does 0 and gets no Weakness, and its Bench hit is cut to 0 too (`05` #11, `02` §1/§3). The engine gave 20 for the Active hit; fixed in main-4d48844 (Oct 21).
+- **Boundedfield_hitback_test:** under Bounded Field, Spike Armor's hit back did "Weakness 80" (40 × 2) on the Water-weak Heatran. It fired after Heatran's attack had knocked Sandslash out (`02` §1-§2; engine ✓, already right on main-c045ede; its test `a_hit_back_fires_from_a_knocked_out_holder_and_is_doubled_under_bounded_field` (`engine/src/hooks/core.rs`) is in the engine since main-4d48844, 501fc1dd).
 
 **Oct 20 (Dustin's rulings, and one recording):**
-- **Settled, no test needed:** the hit back left by an attack is damage from an attack for the Attacking Pokémon's own cards too: its Rocky Helmet, its cuts and attack-damage prevention (`02` §4, `05` #31). Heavy Helmet's cut was already seen (Oct 9). Engine: not yet.
+- **Settled, no test needed:** the hit back left by an attack is damage from an attack for the Attacking Pokémon's own cards too: its Rocky Helmet, its cuts and attack-damage prevention (`02` §4, `05` #31). Heavy Helmet's cut was already seen (Oct 9). Engine ✓ since main-4d48844 (Oct 21).
 - **Recorded:** Shot List row `cut-to-zero-plus-x`, the Luxray/Espathra retry (`Recording_QA/LUXRAY_ESPATHRA_RETRY_2026-10-20/`): an attack cut to 0 stays 0 under a defender-side "+X" (Flop 20 into a Luxray with Intimidating Fang and Lumina Crash's +50: 0), and when the cut leaves damage the +X lands (Draining Kiss 50: 80) (`05` #11, `02` §1).
 
 Already settled, no test needed: Rough Skin vs Prickly Powder (official JP FAQ), Clemont's Backpack on the Bench
