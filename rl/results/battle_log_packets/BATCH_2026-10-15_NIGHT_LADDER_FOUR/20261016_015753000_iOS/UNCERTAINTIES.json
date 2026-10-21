@@ -1,0 +1,23 @@
+{
+  "source_filename": "20261016_015753000_iOS.MP4",
+  "source_sha256": "365da4f239709a8512e425fbeb8a3fff9b90cb7b9f5ba208e51ca9679c4f8fe3",
+  "uncertainties": [
+    {
+      "topic": "hidden information and exact lists",
+      "impact": "none on result",
+      "finding": "Partial opening deck grid and played cards do not prove either complete 20-card list. Hidden draws/search selections are not reconstructed."
+    },
+    {
+      "topic": "Mesagoza coin at 124-130 seconds",
+      "impact": "none on score or first attacks",
+      "finding": "Black coin face and no acquired Pokemon observed; literal result text not retained, so do not assert an unqualified tails outcome."
+    },
+    {
+      "topic": "opponent Lucky Ice Pop during global turn 6",
+      "impact": "none on HP reconciliation",
+      "finding": "Jolteon ex 120 to 140 heal is visible; exact flip outcome not fixed by retained frames."
+    }
+  ],
+  "unreviewed_battle_phases": [],
+  "consequential_open_questions": []
+}

@@ -8,6 +8,8 @@ anything that resolves quickly (Checkup, promotions). The move itself is usually
 
 The attack preview ("Expected damage") shows damage without attacking, so damage questions don't need a real attack.
 
+**Dustin, Oct 20, 2026:** "Any open rules that need video proof should be added to the shot list artifact". So an open rule that needs a recording gets a Shot List row as well as its entry here.
+
 ---
 
 ## 1. Tests, highest value first
@@ -20,7 +22,7 @@ The attack preview ("Expected damage") shows damage without attacking, so damage
 | **T4** | Who promotes first when both Actives are Knocked Out in the same Checkup (`05` #21) | Friend / lucky ladder | Both Actives Poisoned or Burned and on lethal HP at the same Checkup | Which player is asked to promote first. One source says the player whose turn is **next** |
 | **T5** | Hand full when an effect returns cards (`05` #9) | Solo | Hold 10 cards including Ilima. Play Ilima (9 left) on a **damaged, evolved** Colorless Stage 1 (2 cards come back = 11) | Where the 11th card goes: stays in play, discard, or deck. Also whether Ilima can be played at all in that spot |
 | **T6 ✅ ANSWERED 2026-09-22** | Who picks discarded Energy (engine M7) | One look | (a) Retreat a Pokémon with two **different** Energy types attached and Retreat Cost 1. (b) Gouging Fire's Scorching Interruption or Walking Wake's Sweeping Billow with mixed Energy | Does a "choose Energy to discard" picker appear? Yes → the engine should let the player choose |
-| **T7** | Weakness when an attacker-side debuff takes the attack to 0 (`05` #11) | One look (preview) | Your attacker under "attacks do −20 damage", 20-damage attack, defender weak to it | Preview shows 0 or 20 |
+| **T7 ✅ DONE 2026-10-19** (`Growl_weakness_test`: 0, no Weakness; the Bench hit cut to 0 too) | Weakness when an attacker-side debuff takes the attack to 0 (`05` #11) | One look (preview) | Your attacker under "attacks do −20 damage", 20-damage attack, defender weak to it | Preview shows 0 or 20 |
 | **T8** — DONE 2026-09-25 (`heavyhelmet_test.MP4`: no −20 under Plaza) | Heavy Helmet with a changed Retreat Cost (`05` #19) | One look (preview) | Heavy Helmet on a Retreat-3 Psychic Pokémon with Peculiar Plaza in play (Retreat becomes 1); get attacked, or check the opponent's preview | Is the −20 still applied? |
 | **T9 ✅ ANSWERED** | Heal targets (engine low item) | One look | Two eligible Pokémon, only one damaged. Play Potion, Erika or Lillie | Can the undamaged one be selected, or is it greyed out? |
 | **T10 ✅ DONE 2026-09-22** | A second, different Stadium in the same turn (engine M6) | One look | Two different Stadiums in hand | Expect "You can't use any more Stadium cards this turn" |
@@ -46,6 +48,14 @@ Poncho blocks Bench attack damage, Clear Veil doesn't block damage (`02` §3–�
 the Confusion coin (`04` §9; **engine mismatch**, open bug on `09`); 204425 — T13 above, Harden doesn't stop Water
 Shuriken (`02` §4; engine ✓). Left open with no further test planned (Dustin, Sept 29: hard to replicate exactly):
 Mimikyu (T14) and the lethal Blessed Salt case (T3).
+
+**Oct 19 rule tests** (computer battles; Codex reviews with an independent check and lead acceptance, in `Battle Logs/Recording_QA/DRIVE_RULE_TESTS_2026-10-19/`; none go in the Ladder Log):
+- **Growl_weakness_test:** T7 above. An attack cut to 0 by Growl does 0 and gets no Weakness, and its Bench hit is cut to 0 too (`05` #11, `02` §1/§3). The engine gave 20 for the Active hit; the fix is on branch `claude/growl-zero-no-weakness`.
+- **Boundedfield_hitback_test:** under Bounded Field, Spike Armor's hit back did "Weakness 80" (40 × 2) on the Water-weak Heatran. It fired after Heatran's attack had knocked Sandslash out (`02` §1-§2; engine ✓, test on the same branch).
+
+**Oct 20 (Dustin's rulings; no recording):**
+- **Settled, no test needed:** the hit back left by an attack is damage from an attack for the Attacking Pokémon's own cards too: its Rocky Helmet, its cuts and attack-damage prevention (`02` §4, `05` #31). Heavy Helmet's cut was already seen (Oct 9). Engine: not yet.
+- **Open, on the Shot List:** row `cut-to-zero-plus-x`, a defender-side "+X" after the attacker's side cuts an attack to 0 (`05` #11). Taken as 0, the plain reading by analogy, until a recording shows otherwise.
 
 Already settled, no test needed: Rough Skin vs Prickly Powder (official JP FAQ), Clemont's Backpack on the Bench
 (two recordings), one Stadium per turn (in-game text; T10 only confirms the message).

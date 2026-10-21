@@ -1,0 +1,45 @@
+{
+  "accepted": true,
+  "reviewer": "/root/check_late_231006",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "source_filename": "20261014_231006000_iOS.MP4",
+  "source_sha256": "60f6a6c04e3f6e8c989b867b9dd41c536d4d0ac853b40603575a4ce3829faeee",
+  "source_bytes_stat": 866074163,
+  "source_duration_seconds_from_bound_probe": 472.021667,
+  "source_binding": "Reused coordinator-verified SHA256 and SOURCE/PROBE metadata; current source stat agrees. No redundant media rehash.",
+  "frozen_manifest_sha256": "c08c702eff3cd76101bbef5fb886db0c4bd2cad42ad841f747108049b208c6be",
+  "frozen_files_match": true,
+  "frozen_files_checked": 288,
+  "primary_unchanged": true,
+  "scope": "Bounded independent semantic acceptance of the frozen full review, coverage, source and summary. This is not a repeated full primary pass or continuous playback.",
+  "workflow_read": ["START_HERE_VIDEO_REVIEW.md", "Review_Log/README.md"],
+  "packet_files_read": ["SOURCE.json", "REVIEW.md", "COVERAGE.md", "SUMMARY.json", "UNCERTAINTIES.json", "REVIEW_PACKET_HASHES.json"],
+  "inspected_native_evidence_seconds": [3,18,105,107,110,113,114,128,132,138,162,174,188,190,192,235,242,244,245,246,250,258,260,264,268,272,325,327,329,344,346,354,359,361,366,368,372,374,424,455,457,463,471.8],
+  "inspected_path_pattern": "evidence/tSSSS.ss.jpg, for each exact second listed above",
+  "new_decisive_evidence": [{"path":"independent_sol/t0243.00.jpg", "source_seconds":243, "reason":"Retained 242 and 244 bracketed second attack but did not show its damage number. One additional native frame confirms Weakness 100."}],
+  "ordinary_samples": [
+    {"seconds":[105,107,128,132], "finding":"Professor's Research first enlarges as the turn draw, then is present in hand at107. It is actually played later at128 after evolution;132 shows the resulting Poke Ball and Rattata hand and Research discard. Primary correctly separates draw from play."},
+    {"seconds":[107,110,113,114,132], "finding":"First Team Rocket's Raticate ex evolution and Thieving Incisors transfer are supported. Active Entei begins with two Fire; later it has one and Raticate has one Fire. This is transfer to Raticate, not Energy discard."},
+    {"seconds":[138,235,361,368], "finding":"Water attachment samples support initial Ninetales development and later Water to each Raticate reserve. At368 both Raticate have Fire plus Water."},
+    {"seconds":[264,268,272,325,327,329], "finding":"Charmander is Active with Fire and Ninetales110. Opponent's benched Entei reaches three Fire. Charmander subsequently retreats into that Entei;329 shows Charmander benched without Fire and Entei Active with three Fire."},
+    {"seconds":[354,359,361], "finding":"Second illustrated Team Rocket's Raticate ex is legible, including Thieving Incisors and Boost Dash70. It is not Bibarel. Entei has two Fire and new Raticate one after the transfer."},
+    {"seconds":[258,260,264,368,372,374], "finding":"Soothing Shore triggers and before/after HP support two20 heals:90 to110, then50 to70."}
+  ],
+  "decisive_findings": [
+    "3s shows explicit Ranked Match, Deck13-A, SeasonB4bSP, UltraBallRank4. Sampled gameplay contains no Auto control; human-ranked classification is supported together with primary full coverage.",
+    "162s explicitly shows owner turn/global5 with opponent1 point.188s names first Binding Snow,190s shows Weakness100,192s shows Entei40 and Active Energy Zone attachment prohibition. This is owner ownT3, not globalT3.",
+    "Three Binding Snow100 attacks reconcile exactly to final300 damage: first190, second independently extracted243, third366. Second attack removes Entei and250 explicitly awards owner2 points. Third leaves remaining Entei40.",
+    "Ninetales150 to90, Shore110, later50, Shore70 account is consistent with sampled states and terminal70. Animation-intermediate HP344 is not treated as settled final HP.",
+    "424s makes Mega Charizard Y ex220HP and CrimsonDive250 legible.455 and457 support its Active switch followed by owner global11 with Ninetales still70. It never attacks in the recorded final sequence.",
+    "463s explicitly states Your opponent conceded, with Cyrus and Elegant Cape still in hand.471.8s explicitly gives Victory vs.Zeno, went first,11 turns, owner2 points, opponent1, damage300. Actual result2-1 is correctly preserved; no inferred third point, fourth owner attack or final KO."
+  ],
+  "note_prefix_verified": "1st | Alolan Ninetales ex T3 | opp 1 pts",
+  "material_discrepancies": [],
+  "limits": [
+    "Independent check is bounded to the stated native samples and readback of the full primary coverage record. Hash agreement alone is not semantic acceptance.",
+    "Exact late opponent Fire allocation and switch payment remain unknown as honestly documented in primary. No precise Mega Energy total or concealed payment reconstructed.",
+    "Hidden cards, exact20-card lists, and opponent motive remain unknown. Cyrus line is an unplayed visible option, not an observed action.",
+    "No shared event, index, external log, source move or Boss mirror performed by this reviewer. Coordinator retains final registration and archive responsibility."
+  ]
+}

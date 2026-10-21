@@ -1,0 +1,68 @@
+{
+  "checked_utc": "2026-10-15T22:02:13.324601+00:00",
+  "requested_games": 2,
+  "review_and_ladder_logging_complete": true,
+  "archive_complete": true,
+  "sources": [
+    {
+      "source": "20261015_205332000_iOS.MP4",
+      "source_sha256": "2d0b8e0c42714b0572556faeaeacae13f8d3210b822290f9a528d291bb220d3a",
+      "result": "win",
+      "opponent": "Fxllenboy.exe",
+      "review_complete": true,
+      "independently_accepted": true,
+      "registered": true,
+      "archived": true,
+      "external_saved": true,
+      "fresh_reload_verified": true,
+      "cloud_metadata": {
+        "logical_bytes": 1187378094,
+        "allocated_bytes": 1187378094,
+        "attributes": 525344,
+        "placeholder_state": 1,
+        "cloud_placeholder": true,
+        "in_sync": false,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "storage_complete": false
+    },
+    {
+      "source": "20261015_210617000_iOS.MP4",
+      "source_sha256": "f1c9f16ca8fca83bc466aa8698fabb6297ceba504284a8bf6a8ee3be9d273cea",
+      "result": "win",
+      "opponent": "C'est mo",
+      "review_complete": true,
+      "independently_accepted": true,
+      "registered": true,
+      "archived": true,
+      "external_saved": true,
+      "fresh_reload_verified": true,
+      "cloud_metadata": {
+        "logical_bytes": 1282633262,
+        "allocated_bytes": 1282633262,
+        "attributes": 525344,
+        "placeholder_state": 1,
+        "cloud_placeholder": true,
+        "in_sync": false,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "storage_complete": false
+    }
+  ],
+  "live_verified_current_season": {
+    "wins": 11,
+    "losses": 17,
+    "games": 28
+  },
+  "unrelated_index_rows_preserved": 216,
+  "storage_pending": [
+    "20261015_205332000_iOS.MP4",
+    "20261015_210617000_iOS.MP4"
+  ],
+  "external_pending": [],
+  "review_pending": []
+}

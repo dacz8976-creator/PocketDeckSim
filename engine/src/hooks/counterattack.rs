@@ -29,8 +29,8 @@ pub(crate) fn get_counterattack_damage(state: &State, card: &PlayedCard) -> u32 
 }
 
 /// The part of a Pokémon's return damage that an attack left (`CardEffect::Counterattack`: Cursed Jewel, Spike Armor,
-/// Bristling Spikes, Needle Lariat, Shell Trap). It is the attack's damage, so it takes Weakness
-/// (`attack_return_weakness_extra`); Rocky Helmet's and an Ability's stay flat.
+/// Bristling Spikes, Needle Lariat, Shell Trap). It is the attack's damage in every situation (Dustin, Oct 20), so it
+/// takes Weakness and the receiver's own protection (`attack_hit_back_damage`); Rocky Helmet's and an Ability's stay flat.
 pub(crate) fn attack_counterattack_damage(card: &PlayedCard) -> u32 {
     card.get_active_effects()
         .iter()

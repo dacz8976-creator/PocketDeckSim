@@ -1,0 +1,44 @@
+{
+  "game_id": "20260929_020916000",
+  "preprocessing_receipt": "LOCATOR_PREPROCESSING.json",
+  "retained_locator_rate_fps": 1,
+  "nominal_sample_seconds": [
+    0,
+    489
+  ],
+  "sample_count": 490,
+  "grid_count": 25,
+  "producer_inspected_grid_count": 25,
+  "new_locator_decode": false,
+  "opened_discard_panels_observed": [],
+  "material_prompt_anchors": [
+    {
+      "evidence_id": "F0141.50",
+      "requested_source_seconds": 141.5,
+      "measured_pts_seconds": 141.502,
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0141.50.jpg"
+    },
+    {
+      "evidence_id": "F0467.00",
+      "requested_source_seconds": 467,
+      "measured_pts_seconds": 467.002,
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_020916000\\turn_evidence\\t0467.00.jpg"
+    }
+  ],
+  "preview_no_effect_observation": {
+    "turn": 7,
+    "window_seconds": [
+      361,
+      364
+    ],
+    "native_evidence_ids": [
+      "F0361.00",
+      "F0364.00"
+    ],
+    "result": "Sabrina preview closes, unchanged hand5; later actualplay366"
+  },
+  "limitations": [
+    "All 490 retained 1fps reduced samples (25 grids, nominal 0 through489 seconds) screened as action/prompt/discard locators. This does not inspect every instant; subsecond prompts or inputs can fall between samples.",
+    "No opened discard panel was observed in this sampled scan or85 native views. Periodic top-of-pile views establish only the visible top card, not full pile contents."
+  ]
+}

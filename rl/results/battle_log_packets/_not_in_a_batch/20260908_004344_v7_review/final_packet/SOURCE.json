@@ -1,0 +1,553 @@
+{
+  "filename": "20260908_004344000_iOS.MP4",
+  "source_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20260908_004344000_iOS.MP4",
+  "sha256": "0B248F4D8B67F9D907B1142EC23949F806267E21B36FA4C2E460AD5FC92B85F2",
+  "bytes": 483433381,
+  "duration_seconds": 258.978,
+  "review_status": "full_battle_review_complete_and_lead_accepted",
+  "reviewer_attribution": "Gemini v7 two-pass primary, Sol selective reviewer, Astra narrow clarification, Codex lead correction",
+  "recording_type": "screen_recording",
+  "relationships": [
+    {
+      "path": "prior_evidence/COMFEY_DECISION_REVIEW.md",
+      "scope": "Prior focused review of the 01:25-02:04 Comfey decision interval; corroboration only"
+    }
+  ],
+  "index_update_performed": true,
+  "media_move_performed": true,
+  "battle_identity": {
+    "version": 1,
+    "opponent_label": {
+      "state": "observed",
+      "value": "Opponent",
+      "timestamp_seconds": 18.0,
+      "observation": "The opponent label 'Opponent' is visible; no AI badge was established"
+    },
+    "opening_player": {
+      "state": "observed",
+      "value": "Team Rocket's Rattata",
+      "timestamp_seconds": 16.2,
+      "observation": "Player's opening Active is Team Rocket's Rattata with 40 HP"
+    },
+    "opening_opponent": {
+      "state": "observed",
+      "value": "Team Rocket's Koffing",
+      "timestamp_seconds": 18.0,
+      "observation": "Opponent's opening Active is Team Rocket's Koffing with 60 HP"
+    },
+    "outcome": {
+      "state": "observed",
+      "value": "opponent_win",
+      "timestamp_seconds": 257.0,
+      "observation": "Opponent reaches 3 points after knocking out player's Team Rocket's Raticate ex"
+    },
+    "result_text": {
+      "state": "observed",
+      "value": "Defeat",
+      "timestamp_seconds": 258.95,
+      "observation": "'Defeat' is visible in the final fraction of the recording"
+    }
+  },
+  "evidence_audit": {
+    "version": 1,
+    "opponent_label": "Opponent",
+    "match_mode": {
+      "value": "unknown",
+      "evidence": [],
+      "uncertainty_id": "U1"
+    },
+    "opponent_ai": {
+      "value": "unknown",
+      "evidence": [],
+      "uncertainty_id": "U1"
+    },
+    "auto": {
+      "value": "on",
+      "evidence": [
+        {
+          "timestamp": "00:09.400",
+          "observation": "Auto toggle button is highlighted green with a checkmark"
+        }
+      ],
+      "uncertainty_id": null
+    },
+    "terminal": {
+      "outcome": "opponent_win",
+      "outcome_evidence": [
+        {
+          "timestamp": "04:17.000",
+          "observation": "Opponent score indicator increments to 3 points (+2 points animation)"
+        }
+      ],
+      "result_text": "Defeat",
+      "result_text_evidence": [
+        {
+          "timestamp": "04:18.950",
+          "observation": "Red defeat banner reading 'Defeat' appears over darkened board"
+        }
+      ],
+      "last_frame": {
+        "timestamp": "04:18.950",
+        "observation": "Final frame showing Defeat banner"
+      },
+      "uncertainty_id": null
+    },
+    "pokemon": [
+      {
+        "id": "player-1",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:12.200",
+          "observation": "Team Rocket's Rattata placed into Active Spot with 0 attached energy"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "04:18.800",
+          "observation": "Team Rocket's Raticate ex remains on the player's bench with 0 attached energy"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "player-2",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:14.000",
+          "observation": "Comfey placed onto player's bench with 0 attached energy"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "02:01.000",
+          "observation": "Comfey is knocked out and moved to the discard pile"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "player-3",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "01:21.600",
+          "observation": "Second Team Rocket's Rattata benched with 0 attached energy"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "04:14.000",
+          "observation": "Team Rocket's Raticate ex is knocked out and sent to the discard pile"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "player-4",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "01:26.400",
+          "observation": "Team Rocket's Drowzee benched with 0 attached energy"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "03:23.400",
+          "observation": "Team Rocket's Hypno is knocked out by Poison and moved to discard"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "player-5",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "02:32.500",
+          "observation": "A second Team Rocket's Drowzee is visible on the player's Bench with no attached Energy"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "04:12.600",
+          "observation": "The additional Benched Drowzee remains visible with no attached Energy"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-1",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:16.200",
+          "observation": "Opponent reveals Team Rocket's Koffing in Active Spot with 0 attached energy"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "04:18.800",
+          "observation": "Team Rocket's Weezing ex sits on opponent bench with 0 attached energy"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-2",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:36.600",
+          "observation": "Team Rocket's Magmar placed on opponent bench with 0 attached energy"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "03:46.400",
+          "observation": "Team Rocket's Magmar is knocked out and sent to the discard pile"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-3",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:52.400",
+          "observation": "Second Team Rocket's Koffing placed on opponent bench with 0 attached energy"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "04:18.800",
+          "observation": "Second Team Rocket's Weezing ex remains on opponent bench with 0 attached energy"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-4",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "00:53.200",
+          "observation": "Happiny placed on opponent bench with 0 attached energy"
+        },
+        "final": {},
+        "final_evidence": {
+          "timestamp": "04:18.800",
+          "observation": "Happiny remains on opponent bench with 0 attached energy"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-5",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {
+          "timestamp": "03:56.400",
+          "observation": "Second Team Rocket's Magmar benched with 0 attached energy"
+        },
+        "final": {
+          "Darkness": 1
+        },
+        "final_evidence": {
+          "timestamp": "04:18.800",
+          "observation": "Second Team Rocket's Magmar active with 1 Darkness Energy attached"
+        },
+        "uncertainty_id": null
+      }
+    ],
+    "energy_events": [
+      {
+        "turn": 2,
+        "pokemon_id": "opp-1",
+        "kind": "manual",
+        "attachment_evidence": "movement_and_attached_icons",
+        "before": {},
+        "after": {
+          "Darkness": 1
+        },
+        "before_evidence": {
+          "timestamp": "00:54.000",
+          "observation": "Active Koffing has no attached energy"
+        },
+        "action_evidence": {
+          "timestamp": "00:54.600",
+          "observation": "Darkness energy moves from zone to active Koffing"
+        },
+        "after_evidence": {
+          "timestamp": "00:55.200",
+          "observation": "Active Koffing shows 1 Darkness energy attached"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "turn": 3,
+        "pokemon_id": "player-4",
+        "kind": "manual",
+        "attachment_evidence": "movement_and_attached_icons",
+        "before": {},
+        "after": {
+          "Psychic": 1
+        },
+        "before_evidence": {
+          "timestamp": "01:29.600",
+          "observation": "Benched Drowzee has no attached energy"
+        },
+        "action_evidence": {
+          "timestamp": "01:30.800",
+          "observation": "Psychic energy moves from player zone to benched Drowzee"
+        },
+        "after_evidence": {
+          "timestamp": "01:31.200",
+          "observation": "Benched Drowzee displays 1 Psychic energy attached"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "turn": 4,
+        "pokemon_id": "opp-2",
+        "kind": "manual",
+        "attachment_evidence": "movement_and_attached_icons",
+        "before": {},
+        "after": {
+          "Darkness": 1
+        },
+        "before_evidence": {
+          "timestamp": "01:34.000",
+          "observation": "Benched Magmar has no attached energy"
+        },
+        "action_evidence": {
+          "timestamp": "01:34.800",
+          "observation": "Darkness Energy moves from opponent zone to benched Magmar"
+        },
+        "after_evidence": {
+          "timestamp": "01:35.200",
+          "observation": "Benched Magmar displays 1 Darkness Energy attached"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "turn": 5,
+        "pokemon_id": "opp-2",
+        "kind": "effect",
+        "before": {
+          "Darkness": 1
+        },
+        "after": {},
+        "before_evidence": {
+          "timestamp": "02:23.500",
+          "observation": "Active Magmar has 1 Darkness Energy"
+        },
+        "action_evidence": {
+          "timestamp": "02:29.600",
+          "observation": "Thieving Incisors is visibly named before the Energy transfer from Magmar"
+        },
+        "after_evidence": {
+          "timestamp": "02:31.200",
+          "observation": "Active Magmar now has 0 energy attached"
+        },
+        "cause": "Thieving Incisors",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 5,
+        "pokemon_id": "player-3",
+        "kind": "effect",
+        "before": {},
+        "after": {
+          "Darkness": 1
+        },
+        "before_evidence": {
+          "timestamp": "02:23.500",
+          "observation": "Benched Raticate ex has 0 energy attached"
+        },
+        "action_evidence": {
+          "timestamp": "02:30.400",
+          "observation": "Thieving Incisors transfer flash moves the Darkness Energy to this Raticate ex"
+        },
+        "after_evidence": {
+          "timestamp": "02:31.200",
+          "observation": "Benched Raticate ex displays 1 Darkness Energy attached"
+        },
+        "cause": "Thieving Incisors",
+        "uncertainty_id": null
+      },
+      {
+        "turn": 5,
+        "pokemon_id": "player-4",
+        "kind": "manual",
+        "attachment_evidence": "movement_and_attached_icons",
+        "before": {
+          "Psychic": 1
+        },
+        "after": {
+          "Psychic": 2
+        },
+        "before_evidence": {
+          "timestamp": "02:37.000",
+          "observation": "Active Hypno has 1 Psychic energy attached"
+        },
+        "action_evidence": {
+          "timestamp": "02:38.000",
+          "observation": "Psychic energy moves from zone to active Hypno"
+        },
+        "after_evidence": {
+          "timestamp": "02:38.600",
+          "observation": "Active Hypno displays 2 Psychic energy attached"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "turn": 6,
+        "pokemon_id": "opp-1",
+        "kind": "retreat",
+        "before": {
+          "Darkness": 1
+        },
+        "after": {},
+        "before_evidence": {
+          "timestamp": "03:09.800",
+          "observation": "Active Weezing ex has 1 Darkness energy attached"
+        },
+        "action_evidence": {
+          "timestamp": "03:10.400",
+          "observation": "Weezing ex pays 1 Darkness energy (reduced by X Speed) to retreat to bench"
+        },
+        "after_evidence": {
+          "timestamp": "03:11.000",
+          "observation": "Weezing ex on bench now has 0 attached energy"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "turn": 6,
+        "pokemon_id": "opp-2",
+        "kind": "manual",
+        "attachment_evidence": "movement_and_attached_icons",
+        "before": {},
+        "after": {
+          "Darkness": 1
+        },
+        "before_evidence": {
+          "timestamp": "03:11.800",
+          "observation": "Active Magmar has 0 energy attached"
+        },
+        "action_evidence": {
+          "timestamp": "03:12.400",
+          "observation": "Darkness energy moves from zone to active Magmar"
+        },
+        "after_evidence": {
+          "timestamp": "03:12.800",
+          "observation": "Active Magmar displays 1 Darkness energy attached"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "turn": 6,
+        "pokemon_id": "player-4",
+        "kind": "discard",
+        "before": {
+          "Psychic": 2
+        },
+        "after": {},
+        "before_evidence": {
+          "timestamp": "03:18.000",
+          "observation": "Active Hypno has 2 Psychic energy attached before KO"
+        },
+        "action_evidence": {
+          "timestamp": "03:23.400",
+          "observation": "Hypno is knocked out by Poison and moved to discard pile"
+        },
+        "after_evidence": {
+          "timestamp": "03:24.000",
+          "observation": "Hypno is in discard pile with 0 energy remaining on field"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "turn": 7,
+        "pokemon_id": "player-3",
+        "kind": "manual",
+        "attachment_evidence": "movement_and_attached_icons",
+        "before": {
+          "Darkness": 1
+        },
+        "after": {
+          "Darkness": 1,
+          "Psychic": 1
+        },
+        "before_evidence": {
+          "timestamp": "03:37.600",
+          "observation": "Active Raticate ex has 1 Darkness Energy attached"
+        },
+        "action_evidence": {
+          "timestamp": "03:37.800",
+          "observation": "Psychic energy moves from zone to active Raticate ex"
+        },
+        "after_evidence": {
+          "timestamp": "03:38.400",
+          "observation": "Active Raticate ex displays 1 Darkness and 1 Psychic Energy attached"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "turn": 7,
+        "pokemon_id": "opp-2",
+        "kind": "discard",
+        "before": {
+          "Darkness": 1
+        },
+        "after": {},
+        "before_evidence": {
+          "timestamp": "03:41.000",
+          "observation": "Active Magmar has 1 Darkness energy before KO"
+        },
+        "action_evidence": {
+          "timestamp": "03:46.400",
+          "observation": "Magmar is knocked out by Boost Dash and discarded"
+        },
+        "after_evidence": {
+          "timestamp": "03:47.000",
+          "observation": "Magmar is in discard pile with 0 attached energy"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "turn": 8,
+        "pokemon_id": "opp-5",
+        "kind": "manual",
+        "attachment_evidence": "movement_and_attached_icons",
+        "before": {},
+        "after": {
+          "Darkness": 1
+        },
+        "before_evidence": {
+          "timestamp": "04:08.000",
+          "observation": "Active second Magmar has 0 energy attached"
+        },
+        "action_evidence": {
+          "timestamp": "04:08.800",
+          "observation": "Darkness energy moves from zone to active Magmar"
+        },
+        "after_evidence": {
+          "timestamp": "04:09.200",
+          "observation": "Active Magmar displays 1 Darkness energy attached"
+        },
+        "uncertainty_id": null
+      },
+      {
+        "turn": 8,
+        "pokemon_id": "player-3",
+        "kind": "discard",
+        "before": {
+          "Darkness": 1,
+          "Psychic": 1
+        },
+        "after": {},
+        "before_evidence": {
+          "timestamp": "04:10.000",
+          "observation": "Active Raticate ex has 1 Darkness and 1 Psychic Energy"
+        },
+        "action_evidence": {
+          "timestamp": "04:13.400",
+          "observation": "Raticate ex is knocked out and discarded"
+        },
+        "after_evidence": {
+          "timestamp": "04:14.200",
+          "observation": "Raticate ex is removed from the field"
+        },
+        "uncertainty_id": null
+      }
+    ]
+  }
+}

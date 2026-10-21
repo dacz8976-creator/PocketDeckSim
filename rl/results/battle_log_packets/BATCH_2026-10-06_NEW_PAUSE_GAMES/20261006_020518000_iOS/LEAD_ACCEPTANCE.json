@@ -1,0 +1,48 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-06T21:10:26.591834+00:00",
+  "source_video": "20261006_020518000_iOS.MP4",
+  "source_sha256": "64968acf700ddfecc51cc5bcb01014db7afa855545057bd6934226afd35a53e7",
+  "scope": "Whole supplied continuous battle: setup, all turns, terminal sequence and source ending",
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 17,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261006_020518000_iOS\\independent_sol\\CORRECTION_RECHECK.json",
+  "basis": "Whole-source Sol review and coverage; separately commissioned bounded Sol checks of opening, ordinary turns/first moves, draws/searches, hands, both boards/Energy Zones, fans, decisive outcome; all frozen repairs independently verified. Root reconciled reports and inspected consequential boundary frames. Structure checked separately.",
+  "source_limits": [
+    "Matching exact20 list is absent from retrieved live Pause Games deck snapshot; QR establishes filmed semantic entities and Energy, not an existing live log version.",
+    "Opponent normal draws, May search/shuffle identities and hidden hand faces are unknown.",
+    "Neither discard pile is opened anywhere. Full pile content/order cannot be established.",
+    "QR functional entities do not encode exact artwork/rarity. Hitmonchan ex artwork printing remains qualified.",
+    "Frame times are source-local requested seek values; actual decoded presentation timestamps were not measured.",
+    "This is the first-pass packet. Independent visual acceptance, duplicate check, registration and external save verification belong to the lead."
+  ],
+  "outcome": {
+    "result": "win",
+    "owner": "Dacz8976",
+    "opponent": "Adgbag",
+    "points_owner": 3,
+    "points_opponent": 2,
+    "turns": 17,
+    "basis": "Third knockout of opponent Copperajah by Hitmonchan ex Quick Straight, then owner third point, Victory vs Adgbag.",
+    "evidence_ids": [
+      "f0573_00",
+      "f0574_00",
+      "f0577_00",
+      "f0578_00",
+      "f0579_00",
+      "f0582_00",
+      "f0583_00",
+      "f0590_00",
+      "f0591_00",
+      "f0594_00"
+    ],
+    "concession": "none established",
+    "mode": "Deluxe Pack: Mega Emblem Event human matchmaking",
+    "ranked_status": "not established as ranked; event menu visible",
+    "auto_control": "No Auto control/option visible during setup, all battle turns or result. Human matchmaking shown."
+  },
+  "external_status": "Prepared for Pause Games; no new live deck or game save claimed. Missing matching current live list is preserved, filmed QR definitions prepared separately.",
+  "archive_authorization": "Completed local review may be safely archived after verified CLI registration; original bytes/name preserved."
+}

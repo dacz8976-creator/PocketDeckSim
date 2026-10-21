@@ -1,0 +1,17 @@
+{
+  "accepted": true,
+  "accepted_utc": "2026-09-22T02:53:55.3928347Z",
+  "video": "20260908_010207000_iOS.MP4",
+  "primary_reviewer": "Gemini v7 two-pass API review",
+  "routine_verifier": "Codex Sol subagent /root/sol_verifier_150630",
+  "clarification_verifier": null,
+  "lead_reviewer": "Codex root",
+  "scope": "Complete battle from setup through all 11 turns and the terminal 3-1 defeat",
+  "source_identity_verified": true,
+  "unresolved_gameplay_intervals": false,
+  "every_decoded_frame_reviewed": false,
+  "gemini_candidate_accepted_without_correction": false,
+  "gemini_candidate_disposition": "accepted as the primary outline after targeted corrections to Turn 6 ordering, Turn 9 timing, going-second evidence, filename date, final healing and structured parser fields",
+  "parser_validation_after_correction": "passed with no evidence-contract or identity errors",
+  "disposition": "COMPLETE and accepted"
+}

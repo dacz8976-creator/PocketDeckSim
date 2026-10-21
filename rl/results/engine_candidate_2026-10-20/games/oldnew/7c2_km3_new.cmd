@@ -1,0 +1,2 @@
+cwd /home/dacz8976/pincand_work/N/engine
+nice -n 19 ionice -c3 /home/dacz8976/pincand_work/programs/N/legality_scan --pairs /home/dacz8976/pincand/rl/results/engine_switch_rules2_2026-10/pairs_7c2.tsv --root /home/dacz8976/pincand --seed-base 23300000000 --bot km3 --pairings 0,1,2,3,4,5,6,7,8,9,10,11,12,13,14,15,16,17,18,19,20,21,22,23 --games 60 --games-out /home/dacz8976/pincand_work/games/oldnew/7c2_km3_new.jsonl

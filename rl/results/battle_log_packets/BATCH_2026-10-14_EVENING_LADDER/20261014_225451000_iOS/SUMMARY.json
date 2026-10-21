@@ -1,0 +1,78 @@
+{
+  "source_filename": "20261014_225451000_iOS.MP4",
+  "source_sha256": "42d70079e0c431c59af4c4c1475494fc718a4499e5bc73f8bcf6ea8bacde7582",
+  "reviewer": "/root/evening_225451",
+  "review_date": "2026-10-14",
+  "battle_complete": true,
+  "match_count": 1,
+  "full_source_review_complete": true,
+  "mode": {
+    "classification": "human_ranked_ladder",
+    "auto_option_seen": false,
+    "queue_evidence": "details/t0004.00.jpg",
+    "queue_label": "Season B4b SP, Ultra Ball Rank 4"
+  },
+  "deck": {
+    "label": "Deck 13-A",
+    "core": [
+      "Alolan Vulpix",
+      "Alolan Ninetales ex",
+      "Team Rocket's Rattata",
+      "Team Rocket's Raticate ex"
+    ],
+    "main_attacker": "Alolan Ninetales ex",
+    "complete_20_card_list_known": false,
+    "evidence": "details/t0000.00.jpg"
+  },
+  "opponent": {
+    "name": "ろっき",
+    "core": [
+      "Rotom ex"
+    ],
+    "visible_pokemon_count": 2,
+    "evidence": "details/t0012.00.jpg"
+  },
+  "result": "win",
+  "result_method": "opponent_concession",
+  "score": {
+    "owner": 0,
+    "opponent": 0
+  },
+  "order": "second",
+  "global_turns_played": 6,
+  "damage_done": 100,
+  "first_main_attack": {
+    "attacker": "Alolan Ninetales ex",
+    "attack": "Binding Snow",
+    "own_turn": 2,
+    "global_turn": 4,
+    "time_seconds": 116,
+    "opponent_points_before_attack": 0,
+    "damage": 80,
+    "evidence": [
+      "details/t0114.00.jpg",
+      "details/t0116.00.jpg",
+      "details/t0118.00.jpg",
+      "details/t0121.00.jpg"
+    ]
+  },
+  "exact_three_item_note_prefix": "2nd | Alolan Ninetales ex T2 | opp 0 pts",
+  "match_date": "2026-10-14",
+  "concession_time_seconds": 161,
+  "key_evidence_paths": {
+    "deck": "details/t0000.00.jpg",
+    "ranked_queue": "details/t0004.00.jpg",
+    "first_main_attack": "details/t0116.00.jpg",
+    "before_first_attack": "details/t0114.00.jpg",
+    "global_turn_after_first_attack": "details/t0121.00.jpg",
+    "concession": "details/t0162.00.jpg",
+    "result_order_score": "details/t0171.30.jpg",
+    "opponent_energy_route_before_transfer": "details/t0144.00.jpg",
+    "opponent_attack": "details/t0152.00.jpg"
+  },
+  "uncertainties_file": "UNCERTAINTIES.json",
+  "coverage_file": "COVERAGE.md",
+  "review_file": "REVIEW.md",
+  "lead_acceptance": "pending_separate_lead_check",
+  "external_log_updated": false
+}

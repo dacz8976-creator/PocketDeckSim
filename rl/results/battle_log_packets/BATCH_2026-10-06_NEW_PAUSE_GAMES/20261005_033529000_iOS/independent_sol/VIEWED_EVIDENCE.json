@@ -1,0 +1,1032 @@
+{
+  "schema": "independent_native_evidence/v1",
+  "checked_utc": "2026-10-06T19:26:18.956433+00:00",
+  "source_video": "20261005_033529000_iOS.MP4",
+  "source_sha256": "e272b0c74f6a863c68811a235d7b9611b14994611365e58694028f323afaea3d",
+  "checked_input_sha256": {
+    "SOURCE.json": "56d71b28e2ab32d50f49f3f9605c4ce237c1c0a84c0a0c462c5b339218a92f3c",
+    "REVIEW.md": "5ca9d96b6c238d1cd05cb86ce8c8a36072d2c421e051ee4575b5c85c409d67b1",
+    "COVERAGE.md": "bc6c454f7af7d6216be3f012ff28536049e20434f4e772c45f99e181c5f44d53",
+    "SUMMARY.json": "07befd117da8f9e2e636d9e547ae43db4e559af41e1d168c09e574f132f7ee38",
+    "UNCERTAINTIES.json": "793752dd3a0994d5df46c314e294846eb592b31e8b5a28db18f91913b677e141",
+    "PAUSE_GAME.json": "6d90d48cb92a81043ca11379b3c332bf97b16dde8edbcaadc509a7fde6db8ba1",
+    "DECK_USED.json": "c3ad95f578eecfcbe334bb917f11908f114fb53b0a51f4626d0dfe3b03afa58c",
+    "TURN_LEDGER.json": "99ba14aa0e106f81f1d76414d1c333980d9f97f4c90265017db41c863c89e3e6",
+    "TURN_EVIDENCE.json": "770b6f189ca24c9da49f550b18a66a5c42e5537041a38b572a803b6a0f11e2ff",
+    "QR_DECODE_RECEIPT.json": "5a674d1fa13643b87c6868326f860ad3a5f599614d7fc3187c5fc95886090fdd"
+  },
+  "inspection_scope": "Bounded independent acceptance samples of retained native evidence, not a second routine full visual pass. Listed files were actually visually inspected. Every indexed crop was structurally checked for existence, native dimensions, bounds and exact pixels. No source-media reread, hash or new extraction.",
+  "native_frame_count_visually_inspected": 109,
+  "inspected_native_evidence": [
+    {
+      "evidence_id": "f_0003_00",
+      "timestamp_seconds": 3,
+      "full_frame_path": "turn_evidence/t0003.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0004_00",
+      "timestamp_seconds": 4,
+      "full_frame_path": "turn_evidence/t0004.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0005_00",
+      "timestamp_seconds": 5,
+      "full_frame_path": "turn_evidence/t0005.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0026_00",
+      "timestamp_seconds": 26,
+      "full_frame_path": "turn_evidence/t0026.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0034_00",
+      "timestamp_seconds": 34,
+      "full_frame_path": "turn_evidence/t0034.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0040_00",
+      "timestamp_seconds": 40,
+      "full_frame_path": "turn_evidence/t0040.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0042_00",
+      "timestamp_seconds": 42,
+      "full_frame_path": "turn_evidence/t0042.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0042_80",
+      "timestamp_seconds": 42.8,
+      "full_frame_path": "turn_evidence/t0042.80.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0043_50",
+      "timestamp_seconds": 43.5,
+      "full_frame_path": "turn_evidence/t0043.50.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0044_00",
+      "timestamp_seconds": 44,
+      "full_frame_path": "turn_evidence/t0044.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0046_00",
+      "timestamp_seconds": 46,
+      "full_frame_path": "turn_evidence/t0046.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0049_00",
+      "timestamp_seconds": 49,
+      "full_frame_path": "turn_evidence/t0049.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0078_00",
+      "timestamp_seconds": 78,
+      "full_frame_path": "turn_evidence/t0078.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0079_00",
+      "timestamp_seconds": 79,
+      "full_frame_path": "turn_evidence/t0079.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0081_00",
+      "timestamp_seconds": 81,
+      "full_frame_path": "turn_evidence/t0081.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0081_50",
+      "timestamp_seconds": 81.5,
+      "full_frame_path": "turn_evidence/t0081.50.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0082_00",
+      "timestamp_seconds": 82,
+      "full_frame_path": "turn_evidence/t0082.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0082_50",
+      "timestamp_seconds": 82.5,
+      "full_frame_path": "turn_evidence/t0082.50.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0084_50",
+      "timestamp_seconds": 84.5,
+      "full_frame_path": "turn_evidence/t0084.50.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0087_00",
+      "timestamp_seconds": 87,
+      "full_frame_path": "turn_evidence/t0087.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0087_50",
+      "timestamp_seconds": 87.5,
+      "full_frame_path": "turn_evidence/t0087.50.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0088_00",
+      "timestamp_seconds": 88,
+      "full_frame_path": "turn_evidence/t0088.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0089_40",
+      "timestamp_seconds": 89.4,
+      "full_frame_path": "turn_evidence/t0089.40.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0090_00",
+      "timestamp_seconds": 90,
+      "full_frame_path": "turn_evidence/t0090.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0093_00",
+      "timestamp_seconds": 93,
+      "full_frame_path": "turn_evidence/t0093.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0100_00",
+      "timestamp_seconds": 100,
+      "full_frame_path": "turn_evidence/t0100.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0105_00",
+      "timestamp_seconds": 105,
+      "full_frame_path": "turn_evidence/t0105.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0109_00",
+      "timestamp_seconds": 109,
+      "full_frame_path": "turn_evidence/t0109.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0112_00",
+      "timestamp_seconds": 112,
+      "full_frame_path": "turn_evidence/t0112.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0125_00",
+      "timestamp_seconds": 125,
+      "full_frame_path": "turn_evidence/t0125.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0128_00",
+      "timestamp_seconds": 128,
+      "full_frame_path": "turn_evidence/t0128.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0129_00",
+      "timestamp_seconds": 129,
+      "full_frame_path": "turn_evidence/t0129.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0130_50",
+      "timestamp_seconds": 130.5,
+      "full_frame_path": "turn_evidence/t0130.50.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0131_50",
+      "timestamp_seconds": 131.5,
+      "full_frame_path": "turn_evidence/t0131.50.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0132_50",
+      "timestamp_seconds": 132.5,
+      "full_frame_path": "turn_evidence/t0132.50.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0134_50",
+      "timestamp_seconds": 134.5,
+      "full_frame_path": "turn_evidence/t0134.50.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0137_50",
+      "timestamp_seconds": 137.5,
+      "full_frame_path": "turn_evidence/t0137.50.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0139_00",
+      "timestamp_seconds": 139,
+      "full_frame_path": "turn_evidence/t0139.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0140_00",
+      "timestamp_seconds": 140,
+      "full_frame_path": "turn_evidence/t0140.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0145_00",
+      "timestamp_seconds": 145,
+      "full_frame_path": "turn_evidence/t0145.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0152_00",
+      "timestamp_seconds": 152,
+      "full_frame_path": "turn_evidence/t0152.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0158_00",
+      "timestamp_seconds": 158,
+      "full_frame_path": "turn_evidence/t0158.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0160_00",
+      "timestamp_seconds": 160,
+      "full_frame_path": "turn_evidence/t0160.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0163_00",
+      "timestamp_seconds": 163,
+      "full_frame_path": "turn_evidence/t0163.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0173_00",
+      "timestamp_seconds": 173,
+      "full_frame_path": "turn_evidence/t0173.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0175_00",
+      "timestamp_seconds": 175,
+      "full_frame_path": "turn_evidence/t0175.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0180_00",
+      "timestamp_seconds": 180,
+      "full_frame_path": "turn_evidence/t0180.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0181_00",
+      "timestamp_seconds": 181,
+      "full_frame_path": "turn_evidence/t0181.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0182_00",
+      "timestamp_seconds": 182,
+      "full_frame_path": "turn_evidence/t0182.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0183_00",
+      "timestamp_seconds": 183,
+      "full_frame_path": "turn_evidence/t0183.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0184_00",
+      "timestamp_seconds": 184,
+      "full_frame_path": "turn_evidence/t0184.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0186_00",
+      "timestamp_seconds": 186,
+      "full_frame_path": "turn_evidence/t0186.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0191_00",
+      "timestamp_seconds": 191,
+      "full_frame_path": "turn_evidence/t0191.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0194_00",
+      "timestamp_seconds": 194,
+      "full_frame_path": "turn_evidence/t0194.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0195_00",
+      "timestamp_seconds": 195,
+      "full_frame_path": "turn_evidence/t0195.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0200_00",
+      "timestamp_seconds": 200,
+      "full_frame_path": "turn_evidence/t0200.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0204_00",
+      "timestamp_seconds": 204,
+      "full_frame_path": "turn_evidence/t0204.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0208_00",
+      "timestamp_seconds": 208,
+      "full_frame_path": "turn_evidence/t0208.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0210_00",
+      "timestamp_seconds": 210,
+      "full_frame_path": "turn_evidence/t0210.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0216_00",
+      "timestamp_seconds": 216,
+      "full_frame_path": "turn_evidence/t0216.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0226_00",
+      "timestamp_seconds": 226,
+      "full_frame_path": "turn_evidence/t0226.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0228_00",
+      "timestamp_seconds": 228,
+      "full_frame_path": "turn_evidence/t0228.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0229_00",
+      "timestamp_seconds": 229,
+      "full_frame_path": "turn_evidence/t0229.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0230_00",
+      "timestamp_seconds": 230,
+      "full_frame_path": "turn_evidence/t0230.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0232_00",
+      "timestamp_seconds": 232,
+      "full_frame_path": "turn_evidence/t0232.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0232_80",
+      "timestamp_seconds": 232.8,
+      "full_frame_path": "turn_evidence/t0232.80.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0233_80",
+      "timestamp_seconds": 233.8,
+      "full_frame_path": "turn_evidence/t0233.80.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0235_80",
+      "timestamp_seconds": 235.8,
+      "full_frame_path": "turn_evidence/t0235.80.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0238_80",
+      "timestamp_seconds": 238.8,
+      "full_frame_path": "turn_evidence/t0238.80.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0241_00",
+      "timestamp_seconds": 241,
+      "full_frame_path": "turn_evidence/t0241.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0247_00",
+      "timestamp_seconds": 247,
+      "full_frame_path": "turn_evidence/t0247.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0248_00",
+      "timestamp_seconds": 248,
+      "full_frame_path": "turn_evidence/t0248.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0253_00",
+      "timestamp_seconds": 253,
+      "full_frame_path": "turn_evidence/t0253.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0257_00",
+      "timestamp_seconds": 257,
+      "full_frame_path": "turn_evidence/t0257.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0263_00",
+      "timestamp_seconds": 263,
+      "full_frame_path": "turn_evidence/t0263.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0264_00",
+      "timestamp_seconds": 264,
+      "full_frame_path": "turn_evidence/t0264.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0268_00",
+      "timestamp_seconds": 268,
+      "full_frame_path": "turn_evidence/t0268.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0273_00",
+      "timestamp_seconds": 273,
+      "full_frame_path": "turn_evidence/t0273.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0274_00",
+      "timestamp_seconds": 274,
+      "full_frame_path": "turn_evidence/t0274.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0277_00",
+      "timestamp_seconds": 277,
+      "full_frame_path": "turn_evidence/t0277.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0297_00",
+      "timestamp_seconds": 297,
+      "full_frame_path": "turn_evidence/t0297.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0298_00",
+      "timestamp_seconds": 298,
+      "full_frame_path": "turn_evidence/t0298.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0302_00",
+      "timestamp_seconds": 302,
+      "full_frame_path": "turn_evidence/t0302.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0307_00",
+      "timestamp_seconds": 307,
+      "full_frame_path": "turn_evidence/t0307.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0308_00",
+      "timestamp_seconds": 308,
+      "full_frame_path": "turn_evidence/t0308.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0310_00",
+      "timestamp_seconds": 310,
+      "full_frame_path": "turn_evidence/t0310.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0310_80",
+      "timestamp_seconds": 310.8,
+      "full_frame_path": "turn_evidence/t0310.80.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0311_80",
+      "timestamp_seconds": 311.8,
+      "full_frame_path": "turn_evidence/t0311.80.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0313_80",
+      "timestamp_seconds": 313.8,
+      "full_frame_path": "turn_evidence/t0313.80.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0316_80",
+      "timestamp_seconds": 316.8,
+      "full_frame_path": "turn_evidence/t0316.80.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0324_00",
+      "timestamp_seconds": 324,
+      "full_frame_path": "turn_evidence/t0324.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0329_00",
+      "timestamp_seconds": 329,
+      "full_frame_path": "turn_evidence/t0329.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0332_00",
+      "timestamp_seconds": 332,
+      "full_frame_path": "turn_evidence/t0332.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0340_00",
+      "timestamp_seconds": 340,
+      "full_frame_path": "turn_evidence/t0340.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0344_20",
+      "timestamp_seconds": 344.2,
+      "full_frame_path": "turn_evidence/t0344.20.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0350_00",
+      "timestamp_seconds": 350,
+      "full_frame_path": "turn_evidence/t0350.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0351_00",
+      "timestamp_seconds": 351,
+      "full_frame_path": "turn_evidence/t0351.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0355_00",
+      "timestamp_seconds": 355,
+      "full_frame_path": "turn_evidence/t0355.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0357_00",
+      "timestamp_seconds": 357,
+      "full_frame_path": "turn_evidence/t0357.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0360_00",
+      "timestamp_seconds": 360,
+      "full_frame_path": "turn_evidence/t0360.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0363_00",
+      "timestamp_seconds": 363,
+      "full_frame_path": "turn_evidence/t0363.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0368_00",
+      "timestamp_seconds": 368,
+      "full_frame_path": "turn_evidence/t0368.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0372_00",
+      "timestamp_seconds": 372,
+      "full_frame_path": "turn_evidence/t0372.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0373_00",
+      "timestamp_seconds": 373,
+      "full_frame_path": "turn_evidence/t0373.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0374_00",
+      "timestamp_seconds": 374,
+      "full_frame_path": "turn_evidence/t0374.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0378_00",
+      "timestamp_seconds": 378,
+      "full_frame_path": "turn_evidence/t0378.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0379_00",
+      "timestamp_seconds": 379,
+      "full_frame_path": "turn_evidence/t0379.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0380_50",
+      "timestamp_seconds": 380.5,
+      "full_frame_path": "turn_evidence/t0380.50.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "evidence_id": "f_0390_00",
+      "timestamp_seconds": 390,
+      "full_frame_path": "turn_evidence/t0390.00.jpg",
+      "native_dimensions": [
+        1170,
+        2532
+      ]
+    }
+  ],
+  "additional_native_evidence": [
+    {
+      "path": "qr_intake/t0001.00.png",
+      "timestamp_seconds": 1.0,
+      "role": "Filmed QR visually inspected and image hash structurally compared with receipt",
+      "sha256": "50d5ee546d9bb6b8152395e7b19d0262094d4ebe940a281982e66cee88838af6"
+    }
+  ],
+  "crop_inspection": "All 770 indexed top/hand crops structurally match native full frames; native full-frame samples above visually include the same hand and fan areas.",
+  "structural_checks": {
+    "retained_native_frames": 385,
+    "crop_files": 770,
+    "asset_bounds_dimensions_pixel_equivalence": "passed",
+    "unresolved_evidence_references": 0,
+    "source_identity": "Frozen CLI SOURCE metadata structurally agrees with all four structured documents and native frame index; source media not reread or rehashed.",
+    "qr_exact_20": "Prepared filmed-qr-b599dd4e7e1c entity counts exactly match all 20 filmed semantic slots; native QR image hash and frozen decode receipt agree. Printing limits retained.",
+    "live_snapshot": "Retained intake snapshot hash verified; absent matching live 20-card version remains explicit; no new-deck external save claimed.",
+    "full_source_coverage": "REVIEW/COVERAGE report the complete 0-400.856667 interval, dense event captures and explicit limits; bounded independent native samples included ordinary owner T3 and ordinary opponent T4 beyond flagged events."
+  },
+  "supplemental_checked_sha256": {
+    "LIVE_DECK_SNAPSHOT_AT_INTAKE.json": "f886698321bbdf67c06a17fe4d54a4ef2e1d464f02d972690383c64826432a28",
+    "qr_intake/QR_DECODE_0001.00.json": "5a674d1fa13643b87c6868326f860ad3a5f599614d7fc3187c5fc95886090fdd",
+    "../NEW_DECK_ENTRIES.json": "e3a946d41a06fa301b6f7da92cc173335a232c6eb24098607fb9a67f9ad49900"
+  },
+  "findings": [
+    "R1 current Energy timing at five start boundaries",
+    "R2 explicit observed absence for null Tool/Stadium fields"
+  ],
+  "coverage_limit": "No assertion that all 385 retained frames were visually reviewed by this independent checker."
+}

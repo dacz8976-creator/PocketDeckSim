@@ -1,0 +1,142 @@
+{
+  "source": "C:/Users/dacz8/Projects/Pocket Deck Lab/deckgym-database.json",
+  "basis": "Local catalog corroboration of native printed effects; not an engine replay or external primary-source verification",
+  "cards": [
+    {
+      "Trainer": {
+        "id": "B1 217",
+        "trainer_card_type": "Item",
+        "name": "Flame Patch",
+        "effect": "Attach a [R] Energy from your discard pile to your Active [R] Pokémon.",
+        "rarity": "◊◊",
+        "booster_pack": "Mega Rising (B1)"
+      }
+    },
+    {
+      "Trainer": {
+        "id": "B2 153",
+        "trainer_card_type": "Stadium",
+        "name": "Training Area",
+        "effect": "Attacks used by Stage 1 Pokémon in play (both yours and your opponent's) do +10 damage to the opponent's Active Pokémon.",
+        "rarity": "◊◊",
+        "booster_pack": "Fantastical Parade (B2)"
+      }
+    },
+    {
+      "Pokemon": {
+        "id": "B2b 047",
+        "name": "Mega Scizor ex",
+        "stage": 1,
+        "evolves_from": "Scyther",
+        "hp": 200,
+        "energy_type": "Metal",
+        "ability": null,
+        "attacks": [
+          {
+            "energy_required": [
+              "Metal",
+              "Metal",
+              "Colorless"
+            ],
+            "title": "Bullet Slugger",
+            "fixed_damage": 100,
+            "effect": "If this Pokémon moved from your Bench to the Active Spot this turn, this attack does 50 more damage."
+          }
+        ],
+        "weakness": "Fire",
+        "retreat_cost": [
+          "Colorless",
+          "Colorless"
+        ],
+        "rarity": "◊◊◊◊",
+        "booster_pack": "Mega Shine (B2b)"
+      }
+    },
+    {
+      "Pokemon": {
+        "id": "B3 023",
+        "name": "Mega Camerupt ex",
+        "stage": 1,
+        "evolves_from": "Numel",
+        "hp": 210,
+        "energy_type": "Fire",
+        "ability": null,
+        "attacks": [
+          {
+            "energy_required": [
+              "Fire",
+              "Fire",
+              "Fire",
+              "Colorless"
+            ],
+            "title": "Volcanic Kaboom",
+            "fixed_damage": 0,
+            "effect": "1 of your opponent's Pokémon is chosen at random. Do 160 damage to it."
+          }
+        ],
+        "weakness": "Water",
+        "retreat_cost": [
+          "Colorless",
+          "Colorless",
+          "Colorless",
+          "Colorless"
+        ],
+        "rarity": "◊◊◊◊",
+        "booster_pack": "Pulsing Aura (B3)"
+      }
+    },
+    {
+      "Trainer": {
+        "id": "B3 155",
+        "trainer_card_type": "Stadium",
+        "name": "Bounded Field",
+        "effect": "When applying the opponent's Active Pokémon's Weakness to damage from attacks used by Pokémon in play (both yours and your opponent's) that aren't Mega Evolution Pokémon ex, apply Weakness as ×2.",
+        "rarity": "◊◊",
+        "booster_pack": "Pulsing Aura (B3)"
+      }
+    },
+    {
+      "Trainer": {
+        "id": "B3b 065",
+        "trainer_card_type": "Tool",
+        "name": "Elegant Cape",
+        "effect": "The Stage 1 Pokémon this card is attached to gets +30 HP.",
+        "rarity": "◊◊",
+        "booster_pack": "Everyday Wonders (B3b)"
+      }
+    },
+    {
+      "Pokemon": {
+        "id": "B4 074",
+        "name": "Wynaut",
+        "stage": 0,
+        "evolves_from": null,
+        "hp": 30,
+        "energy_type": "Psychic",
+        "ability": null,
+        "attacks": [
+          {
+            "energy_required": [],
+            "title": "Stompy Jammer",
+            "fixed_damage": 10,
+            "effect": "During your opponent's next turn, attacks used by the Defending Pokémon cost 1 [C] more."
+          }
+        ],
+        "weakness": null,
+        "retreat_cost": [],
+        "rarity": "◊◊◊",
+        "booster_pack": "Ruler of the Skies (B4)"
+      }
+    },
+    {
+      "Trainer": {
+        "id": "B4 152",
+        "trainer_card_type": "Supporter",
+        "name": "Skyla",
+        "effect": "Switch your Active Stage 1 Pokémon with 1 of your Benched Pokémon.",
+        "rarity": "◊◊",
+        "booster_pack": "Ruler of the Skies (B4)"
+      }
+    }
+  ]
+}

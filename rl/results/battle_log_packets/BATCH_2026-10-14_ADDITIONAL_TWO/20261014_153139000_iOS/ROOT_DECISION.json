@@ -1,0 +1,42 @@
+{
+  "section": "d12",
+  "deck_name": "Ariados / Whimsicott / Ogerpon",
+  "energy": "Grass",
+  "opponent": "Chacho",
+  "opponent_deck": "Magnemite / Magneton / Magnezone",
+  "result": "loss",
+  "note_prefix": "1st | Whimsicott ex T4 (missed) | opp 0 pts",
+  "note": "1st | Whimsicott ex T4 (missed) | opp 0 pts | vs Chacho | recorded 2026-10-14 10:31:39 CDT | 20261014_153139000_iOS.MP4 | Grass Knot T4 failed confusion; first landed T5. Defeat1-3 at07:00.9.",
+  "scope": "Whole one-game ranked ladder source; all12turns and terminal defeat; failed first main attack explicitly qualified; independent source checks and root acceptance",
+  "registration_notes": "Independent source checker and root accepted. Deck12 loss1-3 versus Chacho; first; Whimsicott ex declared first Grass Knot ownT4/global7 with opponent0, but confusion tails caused no effect. First landed ownT5/global9. Hidden cards stay uncertain. External save/readback is separate.",
+  "observations": [
+    {
+      "path": "evidence/t0003.00.jpg",
+      "finding": "Ranked Match and Deck12 selected.",
+      "directly_viewed_by_root": true
+    },
+    {
+      "path": "evidence/t0238.00.jpg",
+      "finding": "Whimsicott ex Active; Grass Knot selected; opponent Chacho has0points before the first declared main attack.",
+      "directly_viewed_by_root": true
+    },
+    {
+      "path": "evidence/t0245.00.jpg",
+      "finding": "The attack did nothing following confusion tails; opponent remains0points. First attack attempt is explicitly qualified as missed.",
+      "directly_viewed_by_root": true
+    },
+    {
+      "path": "evidence/t0420.90.jpg",
+      "finding": "Defeat versus Chacho; went first;12turns;owner1/opponent3;260damage.",
+      "directly_viewed_by_root": true
+    }
+  ],
+  "source_filename": "20261014_153139000_iOS.MP4",
+  "source_sha256": "dde0bb5dbbc34e46973dc7b09498faa6f67c142c7be0023054b612f090800fae",
+  "checked_utc": "2026-10-14T17:03:02.268256+00:00",
+  "lead": "/root",
+  "battle_complete": true,
+  "root_read_full_timeline_and_coverage": true,
+  "auto_option_seen": false,
+  "clarifications": []
+}

@@ -1,0 +1,29 @@
+{
+  "accepted": true,
+  "source_filename": "20261016_015753000_iOS.MP4",
+  "source_sha256": "365da4f239709a8512e425fbeb8a3fff9b90cb7b9f5ba208e51ca9679c4f8fe3",
+  "reviewer": "/root/independent_last_night",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "source_first_observations_saved_before_primary_read": true,
+  "full_timeline_coverage_read": true,
+  "frozen_manifest_sha256": "25fce618c469b7196a3d33916ebd4ca2494960d87f501ba7046d33ef4c274890",
+  "frozen_files_count": 187,
+  "frozen_files_match": true,
+  "primary_unchanged": true,
+  "materialcorrections": [],
+  "material_corrections": [],
+  "outcome": "loss",
+  "owner_points": 2,
+  "opponent_points": 3,
+  "opponent": "てる",
+  "owner_turns": 5,
+  "terminal_global_turn": 10,
+  "first_or_second": "first",
+  "exact_three_item_note_prefix": "First | Kingambit first attacked on own turn 4; Glimmora on own turn 2; Glimmet on own turn 5 | Opponent points at those first attacks: Kingambit 1; Glimmora 0; Glimmet 2",
+  "limitations": [
+    "Bounded independent evidence check; entire primary prose read, not a second full source decode.",
+    "Primary explicit hidden-card and nonconsequential flip uncertainties preserved."
+  ],
+  "checker_checkpoint_correction": "SOURCE_FIRST.md conflated Wall20 plus Rocky Helmet20 as Helmet40. Primary correctly separates them; no primary correction."
+}

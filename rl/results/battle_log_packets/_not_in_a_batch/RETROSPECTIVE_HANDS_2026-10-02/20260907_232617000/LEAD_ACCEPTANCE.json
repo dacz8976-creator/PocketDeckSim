@@ -1,0 +1,38 @@
+{
+  "schema": "retrospective-hand-lead-acceptance-v1",
+  "source": "20260907_232617000_iOS.MP4",
+  "source_sha256": "0114215B1DF4E6D6DD2B21C47616B9F9486788F815BC48B978DBA06D68490166",
+  "accepted_at_utc": "2026-10-02T21:17:59.587733+00:00",
+  "lead": "Codex retrospective lead",
+  "worker_model": "gpt-6.1-sol",
+  "worker_effort": "high",
+  "independent_model": "gpt-6.1-sol",
+  "independent_effort": "high",
+  "verdict": "accepted_with_recording_limits",
+  "target_turns": [
+    2,
+    4,
+    6,
+    8,
+    10
+  ],
+  "original_full_battle_status": "Reviewed; preserved",
+  "scope": "Setup and recorded-turn field additions; accepted battle outcome preserved",
+  "independent_check": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\independent_ladder\\20260907_232617000\\SOURCE_CHECKS_REPAIR_ACCEPTANCE.json",
+  "structure_check": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260907_232617000\\STRUCTURE_CHECK.json",
+  "capture_status": "complete_with_recording_limits",
+  "source_read_basis": "Frozen accepted binding plus one authorized original SHA256 verification (SOURCE_ACCESS.json); exact match",
+  "shared_registration": "complete",
+  "accepted_packet_hashes": {
+    "REVIEW_SUPPLEMENT.md": "c7c526a96665a4fe3c5f2c4fe9f7b379b1215ce15749220004c37d1692f4c46e",
+    "HAND_SUPPLEMENT.json": "e5e5d200f26df07eef45b07671c1471f3c01488efcd2cf76af2c56835857e209",
+    "TURN_EVIDENCE.json": "fb8e56d97919bef54365bfa18540a6ff668224b535d3ffb85a8d68bf0ac4b227",
+    "UNCERTAINTIES.json": "4ce257dec585fa563ccdd3e1aca51c5ba42bf1574ff1f8a4b39c5a9a1cd3d147",
+    "DECK_USED.json": "a97f7082e81a8e70e3d3c8535c904d0b8f29878ad41f7974430c563a8b6b9eac",
+    "PAUSE_GAME.json": "a31c425b0c13fd36e993a4ded3ccc01863ac4a33f888d804f11bec0f87776273",
+    "TURN_LEDGER.json": "86f822faccf871c05e17ba68f65de69e109d179cca9df4130db725cfc4b1465e"
+  },
+  "retained_evidence_only": false,
+  "shared_event": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Review_Log\\events\\2026-10-02T211802.805411_0000_565ac610-5053-4801-bc03-e3e8912e4f06.json",
+  "registration_identity_provenance": "verified_by_cli_sha256"
+}

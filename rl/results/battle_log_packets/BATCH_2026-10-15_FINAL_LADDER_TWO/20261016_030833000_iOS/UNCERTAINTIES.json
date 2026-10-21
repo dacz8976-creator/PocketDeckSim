@@ -1,0 +1,30 @@
+{
+  "source_filename": "20261016_030833000_iOS.MP4",
+  "source_sha256": "6b96796ba0645aab33f131c8bd6b62a23951406662a33f456911e20f2d51e541",
+  "unreviewed_battle_intervals": [],
+  "unresolved": [
+    {
+      "topic": "Terminal mechanism",
+      "source_seconds": [359.0, 359.4],
+      "observed": "Last normal board0-2 with Regigigas60HP and benched Alolan Grimer70HP; blurred transition then explicit Defeat",
+      "limit": "No third knockout or give-up confirmation is displayed. Concession is possible but unconfirmed.",
+      "effect_on_result": "None: loss versus アヤカ is explicit. Preserve last observed0-2 rather than invent final3point score.",
+      "evidence": ["evidence/t0359.00.jpg", "evidence/t0359.20.jpg", "evidence/t0359.40.jpg", "evidence/t0365.00.jpg"]
+    },
+    {
+      "topic": "Complete deck identities and counts",
+      "limit": "Only visible cards and actions establish the core. Neither full20card list is supplied. Kingambit, Alolan Muk and all unshown cards/copy counts remain unknown.",
+      "effect_on_result": "None; do not infer missing evolutions or deck inventory routing from Pawniard/Grimer alone."
+    },
+    {
+      "topic": "Exact coin outcomes on every repeated Lucky Ice Pop",
+      "limit": "Owner early returned item, opponent first heal explicitly heads, and later repeated heals/hand/discard changes are visible. Do not assign an unseen coin-face label when only the resulting returned/discarded state is clear.",
+      "effect_on_result": "HP changes and the consequential Shattering Crystal tails are clear."
+    },
+    {
+      "topic": "Additional queue/season detail",
+      "limit": "Master Ball Rank labels and no Auto are visible; ordinary ladder classification follows owner instructions. No additional named season or queue is guessed.",
+      "effect_on_result": "Eligible ladder loss under the owner's routing rule."
+    }
+  ]
+}

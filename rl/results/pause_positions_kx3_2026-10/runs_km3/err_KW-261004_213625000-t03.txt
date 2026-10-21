@@ -1,0 +1,792 @@
+PGSTEP KW-261004_213625000-t03 seed 1 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGCAND Play:Quick-Grow Extract
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=8
+PGDUMP         92.099999999999994 EndTurn
+PGDUMP       1641.099999999999909 UseStadium
+PGDUMP      11111.200000000000728 Attach:1Grass@0 zone
+PGDUMP       1001.600000000000023 Attach:1Grass@1 zone
+PGDUMP        931.600000000000023 Attach:1Grass@2 zone
+PGDUMP       1001.600000000000023 Attach:1Grass@3 zone
+PGDUMP      11111.200000000000728 Play:Quick-Grow Extract
+PGDUMP       1770.599999999999909 Play:Lucky Ice Pop
+PGSTEP KW-261004_213625000-t03 seed 1 free 1
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGDUMP actor=0 candidates=4
+PGDUMP      11111.200000000000728 ChooseRandomEvolutionTarget
+PGDUMP       1001.600000000000023 ChooseRandomEvolutionTarget
+PGDUMP       1081.099999999999909 ChooseRandomEvolutionTarget
+PGDUMP       1001.600000000000023 ChooseRandomEvolutionTarget
+PGSTEP KW-261004_213625000-t03 seed 1 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP        971.100000000000023 EndTurn
+PGDUMP      11111.200000000000728 UseStadium
+PGDUMP      11140.700000000000728 Attach:1Grass@0 zone
+PGDUMP        860.600000000000023 Attach:1Grass@1 zone
+PGDUMP        130.599999999999994 Attach:1Grass@2 zone
+PGDUMP        860.600000000000023 Attach:1Grass@3 zone
+PGDUMP      11140.700000000000728 Play:Lucky Ice Pop
+PGSTEP KW-261004_213625000-t03 seed 1 free 3
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       1090.099999999999909 EndTurn
+PGDUMP      11140.200000000000728 UseStadium
+PGDUMP      11140.200000000000728 Attach:1Grass@0 zone
+PGDUMP        860.100000000000023 Attach:1Grass@1 zone
+PGDUMP        130.099999999999994 Attach:1Grass@2 zone
+PGDUMP        860.100000000000023 Attach:1Grass@3 zone
+PGSTEP KW-261004_213625000-t03 seed 1 free 4
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attack:Ram
+PGDUMP actor=0 candidates=3
+PGDUMP       1770.099999999999909 EndTurn
+PGDUMP      11140.200000000000728 UseStadium
+PGDUMP      11140.200000000000728 Attack:Ram
+PGSTEP KW-261004_213625000-t03 seed 2 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGCAND Play:Quick-Grow Extract
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=8
+PGDUMP         92.099999999999994 EndTurn
+PGDUMP       1641.099999999999909 UseStadium
+PGDUMP      11111.200000000000728 Attach:1Grass@0 zone
+PGDUMP       1001.600000000000023 Attach:1Grass@1 zone
+PGDUMP        931.600000000000023 Attach:1Grass@2 zone
+PGDUMP       1001.600000000000023 Attach:1Grass@3 zone
+PGDUMP      11111.200000000000728 Play:Quick-Grow Extract
+PGDUMP       1770.599999999999909 Play:Lucky Ice Pop
+PGSTEP KW-261004_213625000-t03 seed 2 free 1
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGDUMP actor=0 candidates=4
+PGDUMP      11111.200000000000728 ChooseRandomEvolutionTarget
+PGDUMP       1001.600000000000023 ChooseRandomEvolutionTarget
+PGDUMP       1081.099999999999909 ChooseRandomEvolutionTarget
+PGDUMP       1001.600000000000023 ChooseRandomEvolutionTarget
+PGSTEP KW-261004_213625000-t03 seed 2 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP        971.100000000000023 EndTurn
+PGDUMP      11111.200000000000728 UseStadium
+PGDUMP      11140.700000000000728 Attach:1Grass@0 zone
+PGDUMP        860.600000000000023 Attach:1Grass@1 zone
+PGDUMP        130.599999999999994 Attach:1Grass@2 zone
+PGDUMP        860.600000000000023 Attach:1Grass@3 zone
+PGDUMP      11140.700000000000728 Play:Lucky Ice Pop
+PGSTEP KW-261004_213625000-t03 seed 2 free 3
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       1091.099999999999909 EndTurn
+PGDUMP      11141.200000000000728 UseStadium
+PGDUMP      11141.200000000000728 Attach:1Grass@0 zone
+PGDUMP        861.100000000000023 Attach:1Grass@1 zone
+PGDUMP        131.099999999999994 Attach:1Grass@2 zone
+PGDUMP        861.100000000000023 Attach:1Grass@3 zone
+PGSTEP KW-261004_213625000-t03 seed 2 free 4
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attack:Ram
+PGDUMP actor=0 candidates=3
+PGDUMP       1771.099999999999909 EndTurn
+PGDUMP      11141.200000000000728 UseStadium
+PGDUMP      11141.200000000000728 Attack:Ram
+PGSTEP KW-261004_213625000-t03 seed 3 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGCAND Play:Quick-Grow Extract
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=8
+PGDUMP         92.099999999999994 EndTurn
+PGDUMP       1641.099999999999909 UseStadium
+PGDUMP      11111.200000000000728 Attach:1Grass@0 zone
+PGDUMP       1001.600000000000023 Attach:1Grass@1 zone
+PGDUMP        931.600000000000023 Attach:1Grass@2 zone
+PGDUMP       1001.600000000000023 Attach:1Grass@3 zone
+PGDUMP      11111.200000000000728 Play:Quick-Grow Extract
+PGDUMP       1770.599999999999909 Play:Lucky Ice Pop
+PGSTEP KW-261004_213625000-t03 seed 3 free 1
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGDUMP actor=0 candidates=4
+PGDUMP      11111.200000000000728 ChooseRandomEvolutionTarget
+PGDUMP       1001.600000000000023 ChooseRandomEvolutionTarget
+PGDUMP       1081.099999999999909 ChooseRandomEvolutionTarget
+PGDUMP       1001.600000000000023 ChooseRandomEvolutionTarget
+PGSTEP KW-261004_213625000-t03 seed 3 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP        971.100000000000023 EndTurn
+PGDUMP      11111.200000000000728 UseStadium
+PGDUMP      11140.700000000000728 Attach:1Grass@0 zone
+PGDUMP        860.600000000000023 Attach:1Grass@1 zone
+PGDUMP        130.599999999999994 Attach:1Grass@2 zone
+PGDUMP        860.600000000000023 Attach:1Grass@3 zone
+PGDUMP      11140.700000000000728 Play:Lucky Ice Pop
+PGSTEP KW-261004_213625000-t03 seed 3 free 3
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       1091.099999999999909 EndTurn
+PGDUMP      11141.200000000000728 UseStadium
+PGDUMP      11141.200000000000728 Attach:1Grass@0 zone
+PGDUMP        861.100000000000023 Attach:1Grass@1 zone
+PGDUMP        131.099999999999994 Attach:1Grass@2 zone
+PGDUMP        861.100000000000023 Attach:1Grass@3 zone
+PGSTEP KW-261004_213625000-t03 seed 3 free 4
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attack:Ram
+PGDUMP actor=0 candidates=3
+PGDUMP       1771.099999999999909 EndTurn
+PGDUMP      11141.200000000000728 UseStadium
+PGDUMP      11141.200000000000728 Attack:Ram
+PGSTEP KW-261004_213625000-t03 seed 4 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGCAND Play:Quick-Grow Extract
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=8
+PGDUMP         92.099999999999994 EndTurn
+PGDUMP       1641.099999999999909 UseStadium
+PGDUMP      11111.200000000000728 Attach:1Grass@0 zone
+PGDUMP       1001.600000000000023 Attach:1Grass@1 zone
+PGDUMP        931.600000000000023 Attach:1Grass@2 zone
+PGDUMP       1001.600000000000023 Attach:1Grass@3 zone
+PGDUMP      11111.200000000000728 Play:Quick-Grow Extract
+PGDUMP       1770.599999999999909 Play:Lucky Ice Pop
+PGSTEP KW-261004_213625000-t03 seed 4 free 1
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGDUMP actor=0 candidates=4
+PGDUMP      11111.200000000000728 ChooseRandomEvolutionTarget
+PGDUMP       1001.600000000000023 ChooseRandomEvolutionTarget
+PGDUMP       1081.099999999999909 ChooseRandomEvolutionTarget
+PGDUMP       1001.600000000000023 ChooseRandomEvolutionTarget
+PGSTEP KW-261004_213625000-t03 seed 4 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP        971.100000000000023 EndTurn
+PGDUMP      11111.200000000000728 UseStadium
+PGDUMP      11140.700000000000728 Attach:1Grass@0 zone
+PGDUMP        860.600000000000023 Attach:1Grass@1 zone
+PGDUMP        130.599999999999994 Attach:1Grass@2 zone
+PGDUMP        860.600000000000023 Attach:1Grass@3 zone
+PGDUMP      11140.700000000000728 Play:Lucky Ice Pop
+PGSTEP KW-261004_213625000-t03 seed 4 free 3
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       1090.099999999999909 EndTurn
+PGDUMP      11140.200000000000728 UseStadium
+PGDUMP      11140.200000000000728 Attach:1Grass@0 zone
+PGDUMP        860.100000000000023 Attach:1Grass@1 zone
+PGDUMP        130.099999999999994 Attach:1Grass@2 zone
+PGDUMP        860.100000000000023 Attach:1Grass@3 zone
+PGSTEP KW-261004_213625000-t03 seed 4 free 4
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attack:Ram
+PGDUMP actor=0 candidates=3
+PGDUMP       1770.099999999999909 EndTurn
+PGDUMP      11140.200000000000728 UseStadium
+PGDUMP      11140.200000000000728 Attack:Ram
+PGSTEP KW-261004_213625000-t03 seed 5 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGCAND Play:Quick-Grow Extract
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=8
+PGDUMP         92.099999999999994 EndTurn
+PGDUMP       1641.099999999999909 UseStadium
+PGDUMP      11111.200000000000728 Attach:1Grass@0 zone
+PGDUMP       1001.600000000000023 Attach:1Grass@1 zone
+PGDUMP        931.600000000000023 Attach:1Grass@2 zone
+PGDUMP       1001.600000000000023 Attach:1Grass@3 zone
+PGDUMP      11111.200000000000728 Play:Quick-Grow Extract
+PGDUMP       1770.599999999999909 Play:Lucky Ice Pop
+PGSTEP KW-261004_213625000-t03 seed 5 free 1
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGDUMP actor=0 candidates=4
+PGDUMP      11111.200000000000728 ChooseRandomEvolutionTarget
+PGDUMP       1001.600000000000023 ChooseRandomEvolutionTarget
+PGDUMP       1081.099999999999909 ChooseRandomEvolutionTarget
+PGDUMP       1001.600000000000023 ChooseRandomEvolutionTarget
+PGSTEP KW-261004_213625000-t03 seed 5 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP        971.100000000000023 EndTurn
+PGDUMP      11111.200000000000728 UseStadium
+PGDUMP      11140.700000000000728 Attach:1Grass@0 zone
+PGDUMP        860.600000000000023 Attach:1Grass@1 zone
+PGDUMP        130.599999999999994 Attach:1Grass@2 zone
+PGDUMP        860.600000000000023 Attach:1Grass@3 zone
+PGDUMP      11140.700000000000728 Play:Lucky Ice Pop
+PGSTEP KW-261004_213625000-t03 seed 5 free 3
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       1090.099999999999909 EndTurn
+PGDUMP      11140.200000000000728 UseStadium
+PGDUMP      11140.200000000000728 Attach:1Grass@0 zone
+PGDUMP        860.100000000000023 Attach:1Grass@1 zone
+PGDUMP        130.099999999999994 Attach:1Grass@2 zone
+PGDUMP        860.100000000000023 Attach:1Grass@3 zone
+PGSTEP KW-261004_213625000-t03 seed 5 free 4
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attack:Ram
+PGDUMP actor=0 candidates=3
+PGDUMP       1770.099999999999909 EndTurn
+PGDUMP      11140.200000000000728 UseStadium
+PGDUMP      11140.200000000000728 Attack:Ram
+PGSTEP KW-261004_213625000-t03 seed 6 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGCAND Play:Quick-Grow Extract
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=8
+PGDUMP         92.099999999999994 EndTurn
+PGDUMP       1641.099999999999909 UseStadium
+PGDUMP      11111.200000000000728 Attach:1Grass@0 zone
+PGDUMP       1001.600000000000023 Attach:1Grass@1 zone
+PGDUMP        931.600000000000023 Attach:1Grass@2 zone
+PGDUMP       1001.600000000000023 Attach:1Grass@3 zone
+PGDUMP      11111.200000000000728 Play:Quick-Grow Extract
+PGDUMP       1770.599999999999909 Play:Lucky Ice Pop
+PGSTEP KW-261004_213625000-t03 seed 6 free 1
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGDUMP actor=0 candidates=4
+PGDUMP      11111.200000000000728 ChooseRandomEvolutionTarget
+PGDUMP       1001.600000000000023 ChooseRandomEvolutionTarget
+PGDUMP       1081.099999999999909 ChooseRandomEvolutionTarget
+PGDUMP       1001.600000000000023 ChooseRandomEvolutionTarget
+PGSTEP KW-261004_213625000-t03 seed 6 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP        971.100000000000023 EndTurn
+PGDUMP      11111.200000000000728 UseStadium
+PGDUMP      11140.700000000000728 Attach:1Grass@0 zone
+PGDUMP        860.600000000000023 Attach:1Grass@1 zone
+PGDUMP        130.599999999999994 Attach:1Grass@2 zone
+PGDUMP        860.600000000000023 Attach:1Grass@3 zone
+PGDUMP      11140.700000000000728 Play:Lucky Ice Pop
+PGSTEP KW-261004_213625000-t03 seed 6 free 3
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       1090.099999999999909 EndTurn
+PGDUMP      11140.200000000000728 UseStadium
+PGDUMP      11140.200000000000728 Attach:1Grass@0 zone
+PGDUMP        860.100000000000023 Attach:1Grass@1 zone
+PGDUMP        130.099999999999994 Attach:1Grass@2 zone
+PGDUMP        860.100000000000023 Attach:1Grass@3 zone
+PGSTEP KW-261004_213625000-t03 seed 6 free 4
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attack:Ram
+PGDUMP actor=0 candidates=3
+PGDUMP       1770.099999999999909 EndTurn
+PGDUMP      11140.200000000000728 UseStadium
+PGDUMP      11140.200000000000728 Attack:Ram
+PGSTEP KW-261004_213625000-t03 seed 7 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGCAND Play:Quick-Grow Extract
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=8
+PGDUMP         92.099999999999994 EndTurn
+PGDUMP       1641.099999999999909 UseStadium
+PGDUMP      11111.200000000000728 Attach:1Grass@0 zone
+PGDUMP       1001.600000000000023 Attach:1Grass@1 zone
+PGDUMP        931.600000000000023 Attach:1Grass@2 zone
+PGDUMP       1001.600000000000023 Attach:1Grass@3 zone
+PGDUMP      11111.200000000000728 Play:Quick-Grow Extract
+PGDUMP       1770.599999999999909 Play:Lucky Ice Pop
+PGSTEP KW-261004_213625000-t03 seed 7 free 1
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGDUMP actor=0 candidates=4
+PGDUMP      11111.200000000000728 ChooseRandomEvolutionTarget
+PGDUMP       1001.600000000000023 ChooseRandomEvolutionTarget
+PGDUMP       1081.099999999999909 ChooseRandomEvolutionTarget
+PGDUMP       1001.600000000000023 ChooseRandomEvolutionTarget
+PGSTEP KW-261004_213625000-t03 seed 7 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP        971.100000000000023 EndTurn
+PGDUMP      11111.200000000000728 UseStadium
+PGDUMP      11140.700000000000728 Attach:1Grass@0 zone
+PGDUMP        860.600000000000023 Attach:1Grass@1 zone
+PGDUMP        130.599999999999994 Attach:1Grass@2 zone
+PGDUMP        860.600000000000023 Attach:1Grass@3 zone
+PGDUMP      11140.700000000000728 Play:Lucky Ice Pop
+PGSTEP KW-261004_213625000-t03 seed 7 free 3
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       1090.099999999999909 EndTurn
+PGDUMP      11140.200000000000728 UseStadium
+PGDUMP      11140.200000000000728 Attach:1Grass@0 zone
+PGDUMP        860.100000000000023 Attach:1Grass@1 zone
+PGDUMP        130.099999999999994 Attach:1Grass@2 zone
+PGDUMP        860.100000000000023 Attach:1Grass@3 zone
+PGSTEP KW-261004_213625000-t03 seed 7 free 4
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attack:Ram
+PGDUMP actor=0 candidates=3
+PGDUMP       1770.099999999999909 EndTurn
+PGDUMP      11140.200000000000728 UseStadium
+PGDUMP      11140.200000000000728 Attack:Ram
+PGSTEP KW-261004_213625000-t03 seed 8 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGCAND Play:Quick-Grow Extract
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=8
+PGDUMP         92.099999999999994 EndTurn
+PGDUMP       1641.099999999999909 UseStadium
+PGDUMP      11111.200000000000728 Attach:1Grass@0 zone
+PGDUMP       1001.600000000000023 Attach:1Grass@1 zone
+PGDUMP        931.600000000000023 Attach:1Grass@2 zone
+PGDUMP       1001.600000000000023 Attach:1Grass@3 zone
+PGDUMP      11111.200000000000728 Play:Quick-Grow Extract
+PGDUMP       1770.599999999999909 Play:Lucky Ice Pop
+PGSTEP KW-261004_213625000-t03 seed 8 free 1
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGDUMP actor=0 candidates=4
+PGDUMP      11111.200000000000728 ChooseRandomEvolutionTarget
+PGDUMP       1001.600000000000023 ChooseRandomEvolutionTarget
+PGDUMP       1081.099999999999909 ChooseRandomEvolutionTarget
+PGDUMP       1001.600000000000023 ChooseRandomEvolutionTarget
+PGSTEP KW-261004_213625000-t03 seed 8 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP        971.100000000000023 EndTurn
+PGDUMP      11111.200000000000728 UseStadium
+PGDUMP      11140.700000000000728 Attach:1Grass@0 zone
+PGDUMP        860.600000000000023 Attach:1Grass@1 zone
+PGDUMP        130.599999999999994 Attach:1Grass@2 zone
+PGDUMP        860.600000000000023 Attach:1Grass@3 zone
+PGDUMP      11140.700000000000728 Play:Lucky Ice Pop
+PGSTEP KW-261004_213625000-t03 seed 8 free 3
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       1090.099999999999909 EndTurn
+PGDUMP      11140.200000000000728 UseStadium
+PGDUMP      11140.200000000000728 Attach:1Grass@0 zone
+PGDUMP        860.100000000000023 Attach:1Grass@1 zone
+PGDUMP        130.099999999999994 Attach:1Grass@2 zone
+PGDUMP        860.100000000000023 Attach:1Grass@3 zone
+PGSTEP KW-261004_213625000-t03 seed 8 free 4
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attack:Ram
+PGDUMP actor=0 candidates=3
+PGDUMP       1770.099999999999909 EndTurn
+PGDUMP      11140.200000000000728 UseStadium
+PGDUMP      11140.200000000000728 Attack:Ram
+PGSTEP KW-261004_213625000-t03 seed 9 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGCAND Play:Quick-Grow Extract
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=8
+PGDUMP         92.099999999999994 EndTurn
+PGDUMP       1641.099999999999909 UseStadium
+PGDUMP      11111.200000000000728 Attach:1Grass@0 zone
+PGDUMP       1001.600000000000023 Attach:1Grass@1 zone
+PGDUMP        931.600000000000023 Attach:1Grass@2 zone
+PGDUMP       1001.600000000000023 Attach:1Grass@3 zone
+PGDUMP      11111.200000000000728 Play:Quick-Grow Extract
+PGDUMP       1770.599999999999909 Play:Lucky Ice Pop
+PGSTEP KW-261004_213625000-t03 seed 9 free 1
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGDUMP actor=0 candidates=4
+PGDUMP      11111.200000000000728 ChooseRandomEvolutionTarget
+PGDUMP       1001.600000000000023 ChooseRandomEvolutionTarget
+PGDUMP       1081.099999999999909 ChooseRandomEvolutionTarget
+PGDUMP       1001.600000000000023 ChooseRandomEvolutionTarget
+PGSTEP KW-261004_213625000-t03 seed 9 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP        971.100000000000023 EndTurn
+PGDUMP      11111.200000000000728 UseStadium
+PGDUMP      11140.700000000000728 Attach:1Grass@0 zone
+PGDUMP        860.600000000000023 Attach:1Grass@1 zone
+PGDUMP        130.599999999999994 Attach:1Grass@2 zone
+PGDUMP        860.600000000000023 Attach:1Grass@3 zone
+PGDUMP      11140.700000000000728 Play:Lucky Ice Pop
+PGSTEP KW-261004_213625000-t03 seed 9 free 3
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       1091.099999999999909 EndTurn
+PGDUMP      11141.200000000000728 UseStadium
+PGDUMP      11141.200000000000728 Attach:1Grass@0 zone
+PGDUMP        861.100000000000023 Attach:1Grass@1 zone
+PGDUMP        131.099999999999994 Attach:1Grass@2 zone
+PGDUMP        861.100000000000023 Attach:1Grass@3 zone
+PGSTEP KW-261004_213625000-t03 seed 9 free 4
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attack:Ram
+PGDUMP actor=0 candidates=3
+PGDUMP       1771.099999999999909 EndTurn
+PGDUMP      11141.200000000000728 UseStadium
+PGDUMP      11141.200000000000728 Attack:Ram
+PGSTEP KW-261004_213625000-t03 seed 10 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGCAND Play:Quick-Grow Extract
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=8
+PGDUMP         92.099999999999994 EndTurn
+PGDUMP       1641.099999999999909 UseStadium
+PGDUMP      11111.200000000000728 Attach:1Grass@0 zone
+PGDUMP       1001.600000000000023 Attach:1Grass@1 zone
+PGDUMP        931.600000000000023 Attach:1Grass@2 zone
+PGDUMP       1001.600000000000023 Attach:1Grass@3 zone
+PGDUMP      11111.200000000000728 Play:Quick-Grow Extract
+PGDUMP       1770.599999999999909 Play:Lucky Ice Pop
+PGSTEP KW-261004_213625000-t03 seed 10 free 1
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGDUMP actor=0 candidates=4
+PGDUMP      11111.200000000000728 ChooseRandomEvolutionTarget
+PGDUMP       1001.600000000000023 ChooseRandomEvolutionTarget
+PGDUMP       1081.099999999999909 ChooseRandomEvolutionTarget
+PGDUMP       1001.600000000000023 ChooseRandomEvolutionTarget
+PGSTEP KW-261004_213625000-t03 seed 10 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP        971.100000000000023 EndTurn
+PGDUMP      11111.200000000000728 UseStadium
+PGDUMP      11140.700000000000728 Attach:1Grass@0 zone
+PGDUMP        860.600000000000023 Attach:1Grass@1 zone
+PGDUMP        130.599999999999994 Attach:1Grass@2 zone
+PGDUMP        860.600000000000023 Attach:1Grass@3 zone
+PGDUMP      11140.700000000000728 Play:Lucky Ice Pop
+PGSTEP KW-261004_213625000-t03 seed 10 free 3
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       1091.099999999999909 EndTurn
+PGDUMP      11141.200000000000728 UseStadium
+PGDUMP      11141.200000000000728 Attach:1Grass@0 zone
+PGDUMP        861.100000000000023 Attach:1Grass@1 zone
+PGDUMP        131.099999999999994 Attach:1Grass@2 zone
+PGDUMP        861.100000000000023 Attach:1Grass@3 zone
+PGSTEP KW-261004_213625000-t03 seed 10 free 4
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attack:Ram
+PGDUMP actor=0 candidates=3
+PGDUMP       1771.099999999999909 EndTurn
+PGDUMP      11141.200000000000728 UseStadium
+PGDUMP      11141.200000000000728 Attack:Ram
+PGSTEP KW-261004_213625000-t03 seed 11 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGCAND Play:Quick-Grow Extract
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=8
+PGDUMP         92.099999999999994 EndTurn
+PGDUMP       1641.099999999999909 UseStadium
+PGDUMP      11111.200000000000728 Attach:1Grass@0 zone
+PGDUMP       1001.600000000000023 Attach:1Grass@1 zone
+PGDUMP        931.600000000000023 Attach:1Grass@2 zone
+PGDUMP       1001.600000000000023 Attach:1Grass@3 zone
+PGDUMP      11111.200000000000728 Play:Quick-Grow Extract
+PGDUMP       1770.599999999999909 Play:Lucky Ice Pop
+PGSTEP KW-261004_213625000-t03 seed 11 free 1
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGDUMP actor=0 candidates=4
+PGDUMP      11111.200000000000728 ChooseRandomEvolutionTarget
+PGDUMP       1001.600000000000023 ChooseRandomEvolutionTarget
+PGDUMP       1081.099999999999909 ChooseRandomEvolutionTarget
+PGDUMP       1001.600000000000023 ChooseRandomEvolutionTarget
+PGSTEP KW-261004_213625000-t03 seed 11 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP        971.100000000000023 EndTurn
+PGDUMP      11111.200000000000728 UseStadium
+PGDUMP      11140.700000000000728 Attach:1Grass@0 zone
+PGDUMP        860.600000000000023 Attach:1Grass@1 zone
+PGDUMP        130.599999999999994 Attach:1Grass@2 zone
+PGDUMP        860.600000000000023 Attach:1Grass@3 zone
+PGDUMP      11140.700000000000728 Play:Lucky Ice Pop
+PGSTEP KW-261004_213625000-t03 seed 11 free 3
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       1091.099999999999909 EndTurn
+PGDUMP      11141.200000000000728 UseStadium
+PGDUMP      11141.200000000000728 Attach:1Grass@0 zone
+PGDUMP        861.100000000000023 Attach:1Grass@1 zone
+PGDUMP        131.099999999999994 Attach:1Grass@2 zone
+PGDUMP        861.100000000000023 Attach:1Grass@3 zone
+PGSTEP KW-261004_213625000-t03 seed 11 free 4
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attack:Ram
+PGDUMP actor=0 candidates=3
+PGDUMP       1771.099999999999909 EndTurn
+PGDUMP      11141.200000000000728 UseStadium
+PGDUMP      11141.200000000000728 Attack:Ram
+PGSTEP KW-261004_213625000-t03 seed 12 free 0
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGCAND Play:Quick-Grow Extract
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=8
+PGDUMP         92.099999999999994 EndTurn
+PGDUMP       1641.099999999999909 UseStadium
+PGDUMP      11111.200000000000728 Attach:1Grass@0 zone
+PGDUMP       1001.600000000000023 Attach:1Grass@1 zone
+PGDUMP        931.600000000000023 Attach:1Grass@2 zone
+PGDUMP       1001.600000000000023 Attach:1Grass@3 zone
+PGDUMP      11111.200000000000728 Play:Quick-Grow Extract
+PGDUMP       1770.599999999999909 Play:Lucky Ice Pop
+PGSTEP KW-261004_213625000-t03 seed 12 free 1
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGCAND ChooseRandomEvolutionTarget
+PGDUMP actor=0 candidates=4
+PGDUMP      11111.200000000000728 ChooseRandomEvolutionTarget
+PGDUMP       1001.600000000000023 ChooseRandomEvolutionTarget
+PGDUMP       1081.099999999999909 ChooseRandomEvolutionTarget
+PGDUMP       1001.600000000000023 ChooseRandomEvolutionTarget
+PGSTEP KW-261004_213625000-t03 seed 12 free 2
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGCAND Play:Lucky Ice Pop
+PGDUMP actor=0 candidates=7
+PGDUMP        971.100000000000023 EndTurn
+PGDUMP      11111.200000000000728 UseStadium
+PGDUMP      11140.700000000000728 Attach:1Grass@0 zone
+PGDUMP        860.600000000000023 Attach:1Grass@1 zone
+PGDUMP        130.599999999999994 Attach:1Grass@2 zone
+PGDUMP        860.600000000000023 Attach:1Grass@3 zone
+PGDUMP      11140.700000000000728 Play:Lucky Ice Pop
+PGSTEP KW-261004_213625000-t03 seed 12 free 3
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attach:1Grass@0 zone
+PGCAND Attach:1Grass@1 zone
+PGCAND Attach:1Grass@2 zone
+PGCAND Attach:1Grass@3 zone
+PGDUMP actor=0 candidates=6
+PGDUMP       1090.099999999999909 EndTurn
+PGDUMP      11140.200000000000728 UseStadium
+PGDUMP      11140.200000000000728 Attach:1Grass@0 zone
+PGDUMP        860.100000000000023 Attach:1Grass@1 zone
+PGDUMP        130.099999999999994 Attach:1Grass@2 zone
+PGDUMP        860.100000000000023 Attach:1Grass@3 zone
+PGSTEP KW-261004_213625000-t03 seed 12 free 4
+PGCAND EndTurn
+PGCAND UseStadium
+PGCAND Attack:Ram
+PGDUMP actor=0 candidates=3
+PGDUMP       1770.099999999999909 EndTurn
+PGDUMP      11140.200000000000728 UseStadium
+PGDUMP      11140.200000000000728 Attack:Ram

@@ -1,0 +1,23 @@
+{
+  "unresolved_starting_hand_identities": [],
+  "consequential_astra_questions": [],
+  "nonconsequential_limits": [
+    {
+      "topic": "timing",
+      "detail": "Approximate sampled draw settlement and card-removal bounds; actual PTS not measured."
+    },
+    {
+      "topic": "Copycat",
+      "detail": "Ending names directly observed; full reveal order/times not newly reviewed because accepted draw account stands."
+    },
+    {
+      "topic": "before-end",
+      "detail": "Turn7 t0241 has attack-card zoom; end hand clear at242/246."
+    },
+    {
+      "topic": "current deck",
+      "detail": "Live20-card snapshot supplied by lead; exact historical game version qualified."
+    }
+  ],
+  "prohibited_rework": "No review of other turns, accepted outcome/boards, simulator or external logs."
+}

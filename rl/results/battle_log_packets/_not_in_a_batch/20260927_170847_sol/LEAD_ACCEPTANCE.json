@@ -1,0 +1,25 @@
+{
+  "accepted": true,
+  "accepted_utc": "2026-09-27T17:36:56Z",
+  "video": "20260927_170847000_iOS.MP4",
+  "first_pass_reviewer": "/root/sep27_new_video (Sol)",
+  "lead_reviewer": "/root",
+  "source_sha256_verified": "22b3acf9d34122ba915baf9b1fdd9f2c2737cd62bf33eb7169419329277adbf7",
+  "scope": "One complete silent battle from setup through all 16 visible turns, three player points, and the terminal Victory screen",
+  "lead_source_checks": [
+    "Opening and terminal contact sheets checked against the source timeline",
+    "t0145.jpg: opponent first point after Rattata knockout",
+    "t0230.jpg: player first point",
+    "t0430.jpg: player second point",
+    "t0529.jpg and t0544.jpg: Raticate ex damage is on opponent turn before the player switch",
+    "t0546.jpg and t0603.jpg: Raging Bolt promotion and Professor Sada selection",
+    "t0624.jpg: late Auto indicator and Raging Bolt at 140 HP",
+    "t0643_point3.jpg and t0645_victory.jpg: player third point and explicit Victory"
+  ],
+  "point_reconciliation": "Opponent earns one point; player earns three separate points from Diglett, Varoom, and Herdier knockouts.",
+  "audio": "Full-file AAC check is effectively silent, with no speech to transcribe.",
+  "remaining_uncertainty": "The first opponent Item and exact turn-12 switch path are not legible; neither changes coverage or outcome.",
+  "unreviewed_gameplay_intervals": false,
+  "lead_check_scope": "Targeted source-frame checks, coverage and source identity reconciliation; not a second full visual pass",
+  "disposition": "full_battle_review_complete"
+}

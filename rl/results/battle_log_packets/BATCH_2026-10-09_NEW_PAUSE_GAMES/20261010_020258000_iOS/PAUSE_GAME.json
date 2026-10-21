@@ -1,0 +1,127 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "pause-20261009-020258",
+  "review_date": "2026-10-09 America/Chicago",
+  "sources": [
+    {
+      "video_basename": "20261010_020258000_iOS.MP4",
+      "sha256": "c5e7732cf212bd836fbcafc107b0f0d92ff43d8a8cd2f5b9f222b4fd466e5640",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "deck_name": "Kingdra ex / Team Rocket's Weezing ex",
+  "opening": {
+    "source_video": "20261010_020258000_iOS.MP4",
+    "timestamp_seconds": 36.5,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Hiking Trail",
+        "variant": null,
+        "basis": "direct visible hand, left to right",
+        "evidence_ids": [
+          "F0036.50"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Team Rocket’s Koffing",
+        "variant": null,
+        "basis": "direct visible hand, left to right",
+        "evidence_ids": [
+          "F0036.50"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Kingdra ex",
+        "variant": null,
+        "basis": "direct visible hand, left to right",
+        "evidence_ids": [
+          "F0036.50"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Sabrina",
+        "variant": null,
+        "basis": "direct visible hand, left to right",
+        "evidence_ids": [
+          "F0036.50"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Copycat",
+        "variant": null,
+        "basis": "direct visible hand, left to right",
+        "evidence_ids": [
+          "F0036.50"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Team Rocket’s Koffing",
+      "opening_position": 2,
+      "source_video": "20261010_020258000_iOS.MP4",
+      "timestamp_seconds": 38,
+      "evidence_ids": [
+        "F0038.00"
+      ]
+    },
+    "redraw_or_replacement": "none observed",
+    "before_active_placement": true,
+    "status": "observed",
+    "evidence_ids": [
+      "F0036.50",
+      "F0038.00"
+    ],
+    "limit_reason": null
+  },
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "classification": "human_matchmaking_battle_no_Auto_visible",
+  "match_date": "2026-10-09",
+  "match_date_basis": "../RECORDING_DATE_VERIFICATION.json; filmed clock9:03PM to9:08PM local",
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "full_battle_review_complete",
+  "outcome": {
+    "result": "win",
+    "opponent": "Pikachu",
+    "method": "opponent concession",
+    "last_points": {
+      "owner": 2,
+      "opponent": 1
+    },
+    "evidence_ids": [
+      "F0330.00",
+      "F0340.00",
+      "F0342.00"
+    ]
+  },
+  "limits": [
+    "Opponent hand faces and hidden searches not fully revealed.",
+    "Neither player opens a discard pile; visible discard tops cannot establish full contents.",
+    "Normal draw end located to about0.2–0.8s precision; action timestamps approximate.",
+    "T4 mobile notification obscures upper clock and part of hand fan; three backs remain countable.",
+    "Several +3/+6 candidates show action after first play; clear earlier native selection retained.",
+    "Sabrina ends through concession with no replacement or final attack.",
+    "QR/log list functional identity verified; artwork/rarity aliases in the log do not prove filmed exact printings."
+  ],
+  "lead_checked": true,
+  "lead_acceptance": "LEAD_ACCEPTANCE.json"
+}

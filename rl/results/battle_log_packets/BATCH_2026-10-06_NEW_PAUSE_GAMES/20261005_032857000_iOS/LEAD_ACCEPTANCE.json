@@ -1,0 +1,38 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-06T19:02:15.371147+00:00",
+  "source_video": "20261005_032857000_iOS.MP4",
+  "source_sha256": "a7aa71ededa0f2372282f5ba1ff0620b1fed9cedec8bb71101aee1db6eba297e",
+  "scope": "Whole supplied continuous battle: setup, all turns, terminal sequence and source ending",
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 9,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_032857000_iOS\\independent_sol\\CHECK_RESULT.json",
+  "basis": "Whole-source Sol review and coverage; separately commissioned bounded Sol checks of opening, ordinary turns/first moves, draws/searches, hands, both boards/Energy Zones, fans, decisive outcome; all frozen repairs independently verified. Root reconciled reports and inspected consequential boundary frames. Structure checked separately.",
+  "source_limits": [
+    "Full live-log20card snapshot of this new Metal revision remains unavailable in initial snapshot, while filmedQR20 is exact.",
+    "Discard capture limited to owner278s; opponent pile never opened.",
+    "All timestamps are source-local native requested seeks, not measured PTS."
+  ],
+  "outcome": {
+    "owner_result": "loss",
+    "screen_result": "Defeat",
+    "opponent": "Friendlike_Andy",
+    "owner_points": 0,
+    "opponent_points": 2,
+    "turns_played": 9,
+    "damage_done_displayed": 220,
+    "cause_observed": "Last owner Pokemon knocked out; Active and all Bench slots empty.",
+    "evidence_ids": [
+      "E0287_00",
+      "E0288_00",
+      "E0292_00",
+      "E0297_00",
+      "E0298_00",
+      "E0304_00"
+    ]
+  },
+  "external_status": "Prepared for Pause Games; no new live deck or game save claimed. Missing matching current live list is preserved, filmed QR definitions prepared separately.",
+  "archive_authorization": "Completed local review may be safely archived after verified CLI registration; original bytes/name preserved."
+}

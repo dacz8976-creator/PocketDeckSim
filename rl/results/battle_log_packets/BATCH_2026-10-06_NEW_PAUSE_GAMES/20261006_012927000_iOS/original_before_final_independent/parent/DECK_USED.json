@@ -1,0 +1,272 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "sources": [
+    {
+      "video_basename": "20261006_012927000_iOS.MP4",
+      "sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "deck_name_in_log": null,
+  "filmed_deck_name": "New deck 6",
+  "source_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "captured_at": null,
+  "log_list_version": null,
+  "expected_card_count": 20,
+  "cards_in_log_order": null,
+  "counts_by_name_and_variant": null,
+  "energy_configuration_from_log": null,
+  "actual_card_count": 20,
+  "capture_source_text_or_image": null,
+  "conflicts_with_filmed_cards": [],
+  "exact_list_status": "missing_live_log_snapshot",
+  "limits": [
+    "Worker cannot claim the current live Pause Games20-card snapshot or an external save. QR identifies semantic entity, not exact printing/artwork."
+  ],
+  "game_id": "20261006_012927000_iOS_game_01",
+  "game_version_binding_basis": "QR at1; deck20/20 at3; Save and continuous selection/queue/setup without edit before game1.",
+  "source_deck_status": "exact_semantic20_source_bound",
+  "source_cards_in_qr_order": [
+    {
+      "position": 1,
+      "name": "Poké Ball",
+      "semantic_entity_id": 30,
+      "entity_kind": "trainer"
+    },
+    {
+      "position": 2,
+      "name": "Poké Ball",
+      "semantic_entity_id": 30,
+      "entity_kind": "trainer"
+    },
+    {
+      "position": 3,
+      "name": "Lucky Ice Pop",
+      "semantic_entity_id": 1060,
+      "entity_kind": "trainer"
+    },
+    {
+      "position": 4,
+      "name": "Lucky Ice Pop",
+      "semantic_entity_id": 1060,
+      "entity_kind": "trainer"
+    },
+    {
+      "position": 5,
+      "name": "Field Blower",
+      "semantic_entity_id": 1280,
+      "entity_kind": "trainer"
+    },
+    {
+      "position": 6,
+      "name": "Professor’s Research",
+      "semantic_entity_id": 40,
+      "entity_kind": "trainer"
+    },
+    {
+      "position": 7,
+      "name": "Professor’s Research",
+      "semantic_entity_id": 40,
+      "entity_kind": "trainer"
+    },
+    {
+      "position": 8,
+      "name": "Cyrus",
+      "semantic_entity_id": 320,
+      "entity_kind": "trainer"
+    },
+    {
+      "position": 9,
+      "name": "Copycat",
+      "semantic_entity_id": 990,
+      "entity_kind": "trainer"
+    },
+    {
+      "position": 10,
+      "name": "Snorlax ex",
+      "semantic_entity_id": 8490,
+      "entity_kind": "pokemon"
+    },
+    {
+      "position": 11,
+      "name": "Meowth",
+      "semantic_entity_id": 14900,
+      "entity_kind": "pokemon"
+    },
+    {
+      "position": 12,
+      "name": "Meowth",
+      "semantic_entity_id": 1960,
+      "entity_kind": "pokemon"
+    },
+    {
+      "position": 13,
+      "name": "Persian",
+      "semantic_entity_id": 1970,
+      "entity_kind": "pokemon"
+    },
+    {
+      "position": 14,
+      "name": "Persian",
+      "semantic_entity_id": 1970,
+      "entity_kind": "pokemon"
+    },
+    {
+      "position": 15,
+      "name": "Terapagos ex",
+      "semantic_entity_id": 18830,
+      "entity_kind": "pokemon"
+    },
+    {
+      "position": 16,
+      "name": "Terapagos ex",
+      "semantic_entity_id": 18830,
+      "entity_kind": "pokemon"
+    },
+    {
+      "position": 17,
+      "name": "Type: Null",
+      "semantic_entity_id": 7940,
+      "entity_kind": "pokemon"
+    },
+    {
+      "position": 18,
+      "name": "Type: Null",
+      "semantic_entity_id": 7940,
+      "entity_kind": "pokemon"
+    },
+    {
+      "position": 19,
+      "name": "Silvally",
+      "semantic_entity_id": 7950,
+      "entity_kind": "pokemon"
+    },
+    {
+      "position": 20,
+      "name": "Silvally",
+      "semantic_entity_id": 7950,
+      "entity_kind": "pokemon"
+    }
+  ],
+  "source_counts_by_semantic_entity": [
+    {
+      "name": "Poké Ball",
+      "variant": "Poké Ball",
+      "count": 2,
+      "entity_kind": "trainer",
+      "entity_id": 30,
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Lucky Ice Pop",
+      "variant": "Lucky Ice Pop",
+      "count": 2,
+      "entity_kind": "trainer",
+      "entity_id": 1060,
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Field Blower",
+      "variant": "Field Blower",
+      "count": 1,
+      "entity_kind": "trainer",
+      "entity_id": 1280,
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Professor’s Research",
+      "variant": "Professor’s Research",
+      "count": 2,
+      "entity_kind": "trainer",
+      "entity_id": 40,
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Cyrus",
+      "variant": "Cyrus",
+      "count": 1,
+      "entity_kind": "trainer",
+      "entity_id": 320,
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Copycat",
+      "variant": "Copycat",
+      "count": 1,
+      "entity_kind": "trainer",
+      "entity_id": 990,
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Snorlax ex",
+      "variant": "Snorlax ex",
+      "count": 1,
+      "entity_kind": "pokemon",
+      "entity_id": 8490,
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Meowth",
+      "variant": "Meowth",
+      "count": 1,
+      "entity_kind": "pokemon",
+      "entity_id": 14900,
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Meowth",
+      "variant": "Meowth",
+      "count": 1,
+      "entity_kind": "pokemon",
+      "entity_id": 1960,
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Persian",
+      "variant": "Persian",
+      "count": 2,
+      "entity_kind": "pokemon",
+      "entity_id": 1970,
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Terapagos ex",
+      "variant": "Terapagos ex",
+      "count": 2,
+      "entity_kind": "pokemon",
+      "entity_id": 18830,
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Type: Null",
+      "variant": "Type: Null",
+      "count": 2,
+      "entity_kind": "pokemon",
+      "entity_id": 7940,
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Silvally",
+      "variant": "Silvally",
+      "count": 2,
+      "entity_kind": "pokemon",
+      "entity_id": 7950,
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    }
+  ],
+  "source_energy_configuration": [
+    "Grass",
+    "Darkness",
+    "Metal"
+  ],
+  "source_proof_files": [
+    "qr_intake/QR_DECODE_0001.00.json",
+    "qr_intake/t0001.00.png"
+  ],
+  "source_proof_evidence_ids": [
+    "f0003_00",
+    "f0010_00",
+    "f0026_00"
+  ]
+}

@@ -1,0 +1,23 @@
+{
+  "accepted": true,
+  "decision_stage": "Root source reconciliation; completion registration remains gated on separate independent acceptance",
+  "source_filename": "20261014_230328000_iOS.MP4",
+  "source_sha256": "3b50f97739c3b2154ba1135c3ec15b46336d8a1b62c2b3cf58412e2814254c18",
+  "auto_option_seen": false,
+  "full_timeline_and_coverage_read": true,
+  "section": "d13",
+  "opponent": "TA28",
+  "opponent_deck": "Entei ex / Charmander / Charmeleon / Mega Charizard ex; Mega form and full list unknown",
+  "result": "loss",
+  "note_prefix": "1st | Alolan Ninetales ex T3 | opp 1 pt",
+  "note": "1st | Alolan Ninetales ex T3 | opp 1 pt | vs TA28 | 2026-10-14 18:03:28 CDT | 20261014_230328000_iOS.MP4 | Deck 13-A: Alolan Ninetales ex / Team Rocket's Raticate ex. Loss 0-3; final screen at 377.2s confirms went first, 8 turns and 100 damage. First Binding Snow at about 258s on own T3/global 5 with opponent 1 point, 100 damage including Water weakness. Own T4 ends despite available-attack warning at 321.2s, with Ninetales 60 HP/2 Water opposite Entei 40 HP/0 Energy. Final Entei attack KOs Ninetales. Human battle treated as ladder by owner default; exact queue/rank and Mega Charizard form remain unverified.",
+  "scope": "Whole one-game human battle treated as ladder under owner default: deck/setup, all 8 global turns, terminal knockout and final statistics; full timeline and coverage reconciled with separate independent source checks and explicit mode erratum",
+  "registration_notes": "Fresh Sol/high full review, separate independent Sol/high acceptance and root source reconciliation. Frozen primary preserved. LEAD_CLARIFICATION corrects unverified current rank/queue wording; human game and no visible Auto supported. Loss 0-3 and own-turn main-attack prefix verified. Available attack decline observed without inferring intent or a guaranteed alternative win. No Pause Games supplement.",
+  "direct_source_observations": [
+    {"path": "evidence/t0258.00.jpg", "directly_viewed_by_root": true, "finding": "Binding Snow attack animation and TA28 at 1 point before first main attack."},
+    {"path": "evidence/t0318.00.jpg", "directly_viewed_by_root": true, "finding": "Ninetales is at 60 HP with two Water and Cape; opposing Active Entei has 40 HP and no Energy. Benched Vulpix has one Water and Raticate one Fire."},
+    {"path": "evidence/t0321.20.jpg", "directly_viewed_by_root": true, "finding": "End-turn confirmation explicitly warns An attack can be used; the subsequent source timeline records confirmation and no attack."},
+    {"path": "evidence/t0377.20.jpg", "directly_viewed_by_root": true, "finding": "Final screen states Defeat versus TA28, went first, 8 turns, owner 0 points, opponent 3 and damage 100."}
+  ],
+  "clarifications": ["LEAD_CLARIFICATION.md"]
+}

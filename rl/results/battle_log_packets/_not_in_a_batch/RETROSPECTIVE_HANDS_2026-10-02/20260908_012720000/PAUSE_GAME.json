@@ -1,0 +1,138 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20260908_012720000",
+  "review_date": "2026-10-02T21:20:53.770008+00:00",
+  "sources": [
+    {
+      "video_basename": "20260908_012720000_iOS.MP4",
+      "sha256": "b9e76626643d8950cb7a4277487da2262b5fa96faf9e87454495ebe896d47085",
+      "source_json": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_012720_v7_review\\final_packet\\SOURCE.json"
+    }
+  ],
+  "destination": null,
+  "deck_name": "Historical Ogerpon / Whimsicott visible core",
+  "opening": {
+    "source_video": "20260908_012720000_iOS.MP4",
+    "timestamp_seconds": 10,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Whimsicott ex",
+        "basis": "native full-width hand crop",
+        "evidence_ids": [
+          "F0010.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Leaf Cape",
+        "basis": "native full-width hand crop",
+        "evidence_ids": [
+          "F0010.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Teal Mask Ogerpon ex",
+        "basis": "native full-width hand crop",
+        "evidence_ids": [
+          "F0010.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Ariados (green artwork; Trap Territory/Pierce)",
+        "basis": "native full-width hand crop",
+        "evidence_ids": [
+          "F0010.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Team Rocket's Goo-zooka",
+        "basis": "native full-width hand crop",
+        "evidence_ids": [
+          "F0010.00"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Teal Mask Ogerpon ex",
+      "opening_position": 3,
+      "source_video": "20260908_012720000_iOS.MP4",
+      "timestamp_seconds": 12,
+      "evidence_ids": [
+        "F0012.00"
+      ]
+    },
+    "redraw_or_replacement": null,
+    "before_active_placement": true,
+    "status": "observed",
+    "evidence_ids": [
+      "F0010.00",
+      "F0012.00"
+    ],
+    "limit_reason": "No redraw observed in retained setup anchors; continuous input/absence not certified.",
+    "setup_prompt": {
+      "text": "Waiting for opponent to set up...",
+      "evidence_ids": [
+        "F0012.00"
+      ],
+      "response": "Automatic wait notification; no manual-input authorship established"
+    }
+  },
+  "packet_files": {
+    "prose": "REVIEW_SUPPLEMENT.md",
+    "coverage": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_012720_v7_review\\final_packet\\COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "capture_status_allowed_after_review": [
+    "complete",
+    "complete_with_recording_limits",
+    "incomplete_review"
+  ],
+  "battle_review_status": "Reviewed; accepted full review preserved",
+  "outcome": {
+    "basis": "inherited_accepted_review",
+    "result": "owner_win",
+    "displayed_score": [
+      3,
+      2
+    ],
+    "native_result_evidence_ids": [
+      "F0272.00",
+      "F0276.50"
+    ],
+    "preserved_accepted_outcome": true
+  },
+  "limits": [
+    "One-second locator sampling screened the complete recorded interval; subsecond panels/prompts between samples cannot be excluded. No opened discard panel or visible decline dialog appears in the283 inspected samples. Full hidden pile contents remain unknown; no every-instant absence claim.",
+    "Historical exact20-card deck unavailable; hidden opponent faces unknown; requested frame seek time distinct from unmeasured actualPTS."
+  ],
+  "lead_checked": false,
+  "classification": "computer_battle",
+  "excluded_from_ladder": true,
+  "classification_basis": "Owner clarification relayed by lead: any visible Auto control, even an off option, identifies a computer opponent and excludes recording from ladder.",
+  "mode_observation": "AUTO: enabled in the checked footage against an AI opponent; individual action authorship is not certified.",
+  "mode_evidence": [
+    "F0004.40",
+    "F0010.00",
+    "F0041.00",
+    "F0212.50",
+    "F0259.50"
+  ],
+  "astra_mode_check": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\astra_checks\\20260908_012720000\\MODE_CHECK.json",
+  "independent_acceptance_status": "pending",
+  "source_audit": "LOCATOR_SCAN.json"
+}

@@ -1,0 +1,74 @@
+{
+  "source": "20261002_023418000_iOS.MP4",
+  "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_023418000_iOS_competitive_sol\\REVIEW.md",
+  "accepted_review_sha256": "456b7b12460b2d4b0860f451b3a082a944596915bb53e99cae15d2acca1e97cc",
+  "rows": [
+    {
+      "turn_number": 1,
+      "accepted_source_line": 27,
+      "verbatim_accepted_row": "| Turn 1, about 53-75 | Owner draws Professor's Research, attaches Heavy Helmet to Wailmer, benches Indeedee ex, then plays Research and draws Pokémon Center Lady and Soothing Shore. End turn without Energy or attack. Wailmer remains 100, Indeedee 130. Score 0-0. The large cards at 55.50 and 71.00 are drawn-card reveals, not immediate play times. | Overview sheet 3; native 55.50, 65.00, 71.00 |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 2,
+      "accepted_source_line": 28,
+      "verbatim_accepted_row": "| Turn 2, about 75-118 | Opponent uses two Poké Ball around 84-94; benches two Riolu around 95-97; plays Research around 98-100; attaches Fighting to middle Riolu around 105; places Small Balloon on left Riolu at 108.50. Bonsly uses Teary Attack at 113.50. Wailmer loses no HP with Heavy Helmet; a next-turn attack reduction of 30 appears. | Overview sheets 3-5; turn2_gap sheets 1-4; native 110,115 |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 3,
+      "accepted_source_line": 29,
+      "verbatim_accepted_row": "| Turn 3, about 118-133 | Owner draws Lucky Ice Pop, evolves Wailmer to non-ex Wailord, 200 HP, plays Soothing Shore and attaches first Water to Wailord. No attack; four Energy are required. Helmet stays attached. | Overview sheet 5; native 120,131 |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 4,
+      "accepted_source_line": 30,
+      "verbatim_accepted_row": "| Turn 4, about 133-166 | Opponent benches Hitmonchan, 80 HP, and attaches second Fighting to middle Riolu. Bonsly remains Active. Opponent ends without attacking; the targeted 158-168 contact sheet confirms this transition. All HP remain unchanged. | Overview sheet 6; turn4_gap sheets 1-2; native166 |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 5,
+      "accepted_source_line": 31,
+      "verbatim_accepted_row": "| Turn 5, about 166-180 | Owner draws and uses Poké Ball, obtains second Wailmer and benches it. Attaches second Water to Wailord, then ends without attack. | Overview sheet 7 |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 6,
+      "accepted_source_line": 32,
+      "verbatim_accepted_row": "| Turn 6, about 180-231 | Opponent evolves middle Riolu to Mega Lucario ex, 190 HP, and left Riolu to non-ex Lucario, 100 HP. Fighting Coach's +20 damage banner appears. Bonsly retreats at no visible Energy cost, Mega becomes Active, third Fighting is attached to Mega. Sabrina at 210 forces owner to switch. Owner chooses unenergized Wailmer rather than Indeedee ex. Mega uses Fighting Pulse at217.50, KOs Wailmer at220.50, earns1 point at223.50. Owner promotes Wailord by229.50. Wailord retains200 HP, Helmet and2 Water. | Overview sheets 8-9; native193,199,208.50,210,217.50 |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 7,
+      "accepted_source_line": 33,
+      "verbatim_accepted_row": "| Turn 7, about 231-241 | Owner draws second Indeedee ex and benches it, attaches third Water to Wailord, ends without attack. Both Indeedee have130 HP and no Energy. Score owner0, opponent1. | Overview sheet9 |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 8,
+      "accepted_source_line": 34,
+      "verbatim_accepted_row": "| Turn 8, about 241-250 | Opponent attaches first Fighting to bench Lucario. Mega attacks Wailord with Fighting Pulse. Wailord200 becomes60, matching140 net damage with extra-Fighting bonus, Fighting Coach and Helmet. | Overview sheet10; native247.50,254 |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 9,
+      "accepted_source_line": 35,
+      "verbatim_accepted_row": "| Turn 9, about 250-314 | Owner draws Wailord ex but leaves it in hand. Uses both Indeedee Watch Over abilities: Wailord60 to80 to100. Uses Lucky Ice Pop four times, healing100 to120 to140 to160 to180. Four heads return the same item to hand; first, second and fourth Heads labels and intermediate returns are retained. Attaches fourth Water to Wailord. First owner attack is Whale Pump,100 damage, at307: Mega190 to90. Soothing Shore heals Wailord180 to200 at owner end turn. Score stays0-1. | Overview sheets10-12; native254,270,273,282,300,307,311,316 |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 10,
+      "accepted_source_line": 36,
+      "verbatim_accepted_row": "| Turn 10, about314-343 | Opponent uses Lucky Ice Pop on Mega,90 to110, and flips tails. Uses X Speed, then freely retreats Mega, whose printed retreat cost is1; all3 Fighting remain. Bonsly becomes Active. Opponent attaches second Fighting to bench Lucario after the retreat. Bonsly Teary Attack, boosted by Fighting Coach and reduced by Helmet, makes Wailord200 to190 and gives Wailord next-turn attacks minus30. | Overview sheets12-13; native316,325,329,333,337,340,343 |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 11,
+      "accepted_source_line": 37,
+      "verbatim_accepted_row": "| Turn 11, about343-363 | Owner draws second Soothing Shore, uses one Watch Over to restore Wailord190 to200, attaches fifth Water, then plays Cyrus to bring damaged Mega Lucario ex,110 HP, Active. Owner does not attack before opponent concedes. The downward reduction icon remains on Wailord at the concession frame. | Overview sheets13-14; native343,351,354,356,359,362 |",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    }
+  ],
+  "limits": "Only explicitly turn-numbered accepted prose is copied. Zero rows means format unavailable, not zero game turns. This is reference scaffolding, not a completed capture ledger."
+}

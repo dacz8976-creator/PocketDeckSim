@@ -1,0 +1,20 @@
+# Bounded independent acceptance
+
+Accepted: **true**. Reviewer /root/independent_final_two, GPT-6.1-sol, high effort. This is a bounded independent source check and complete report audit, not a second whole-video decode.
+
+Source: 20261016_030833000_iOS.MP4; SHA-256 6b96796ba0645aab33f131c8bd6b62a23951406662a33f456911e20f2d51e541; 681,167,398 bytes; 367.816667 seconds. SOURCE.json, PROBE.json and LOCAL_METADATA.json provide the source binding. No rehash or change of media was performed by this reviewer.
+
+Before primary prose was available, I examined contact_01 through contact_04 and native frames 21, 27, 92, 186, 357, 359, 359.6 and 365 seconds. Observations were saved in SOURCE_FIRST.md before reading the primary report. I subsequently read the entire REVIEW.md, COVERAGE.md, SUMMARY.json, UNCERTAINTIES.json, EVIDENCE_USED.json and freeze helper. The full timeline accounts for setup, all ten global turns and terminal result, without a missing interval. It coherently separates five owner turns from opponent turns and preserves the abrupt ending limitation.
+
+Reconciliation additionally inspected native frames 52, 127, 179, 182, 224, 229, 310, 319, 323, 335, 343 and 347 seconds. These were reused from the stable manifest. No dense auxiliary frame 67 or later and no excluded dense sheet was used. No new extraction was needed.
+
+- Ranked Master Ball presentation, opponent アヤカ, owner Dacz8976 and second-player setup independently agree. No Auto option appears in inspected material; primary states none anywhere in its full review. Ladder routing is supported.
+- The Glimmet attack occurs on owner's first turn after one Darkness attachment. Native127 shows 20 damage to Mega Absol ex, both scores zero. Native179/182 establish Glimmora Venomous Hit on the next owner turn, 30 damage and poison, still opponent zero. The exact requested prefix agrees: `second | Glimmora first attack own turn 2; Glimmet first attack own turn 1 | opponent points 0 at both first attacks`.
+- The primary's HP sequence is coherent: Deceptive Needle 60 to 50, early healing back to 60, evolution to 90, Glimmora knockout; Zoroark Giant Cape 170 to 140 then 130 poison; repeated heals and poison explain later HP. Native224 explicitly shows Shattering Crystal tails and native229 point 1.
+- Regigigas retains one Energy and its attack prohibition; it never attacks. Native310 confirms Regigigas healed to 60 with Pawniard benched and the owner turn active; native319 shows Pawniard with two Energy. Sabrina occurs on opponent global9, not an owner retreat. Native335 shows Darkrai Nightmare Aura after Pawniard is Active; native343 shows Pawniard zero HP with two Energy and Helmet, while Regigigas remains benched 60; native347 explicitly awards point 2. No contradiction in Energy, damage or point progression was found.
+- The final board is owner zero points, opponent two, Regigigas 60 and benched Alolan Grimer 70. Native359.6 and 365 prove loss versus アヤカ. Terminal cause is unshown. The report correctly avoids a confirmed concession, 0-3 score or third knockout.
+- Visible owner/opponent cores, unknown full deck lists and absent evolution identities are appropriately qualified. No added hidden cards or unsupported deck completion is needed.
+
+Material corrections: **none required**. The preliminary source-first coarse wording that Regigigas was 130 by 285 is refined by the primary: Nightmare Aura takes it 150 to 130, Brutal Bash then takes it to 40, and the owner next heals to 60. This resolves a coarse overview observation, not a correction to the primary. Initial uncertainty about terminal cause remains preserved.
+
+Frozen primary manifest: REVIEW_PACKET_HASHES.json, SHA-256 5396260ff31e6b9f29eabbdf8fa7ecbeb56b9d7c78ee55ed3baee0f19e7bc9a4. All 219 listed files matched before independent writes and are checked again afterward in CHECK_RESULT.json. Independent output is outside the frozen primary. No shared log/index/location record or external artifact was changed by this reviewer.

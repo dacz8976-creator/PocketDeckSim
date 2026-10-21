@@ -1,0 +1,18 @@
+The new harness (pg_pos.rs dfcd968259ce93ea, Special Conditions and the knock-out count; main 28df6315), for PART 2 (the Oct 13 set):
+pg_pos_F_cond sha256 5c4859949a88a28b0688fd0aad284c49110f92f14c7bcf1c86c4d85a6e5f3ac0 (cd20a97a; engine tree 4ebb30a9; pgd_patch 01b17932001c57f0)
+pg_pos_C_cond sha256 6e36ae1847a19850c36bcc4890e3b55b16b779f399160dd64f9391fc02e177eb (9a0bc5ac; engine tree 5d557d35; pgd_patch 01b17932001c57f0)
+Gates on the laptop (Oct 13-14): km3 at seeds 1-12 equal to the committed runs_km3 on 034953 t02/t04/t08/t10/t16 (5/5, C_cond), and equal to
+Sonnet's committed v2/runs_km3 on the 8 positions of shards/S8.txt (8/8 for each build), in RUN_BRIEF_MA.md's exact commands.
+
+Oct 14 (the laptop): the runners for the Oct 12-13 set (positions v3, main 358562b2). main's pg_pos.rs (60cc67d3: the Stadium before the board; sha256 224888a8bc6867dc) and
+pgd_patch.py with the typed AttachTypedFromDiscard:<Type>@<slot> label (sha256 fb2d3e26ad6e6852); script ~/runs/build_cond2.sh (launch_detached cond2):
+pg_pos_F_cond2 sha256 3fa982e50eac60ccd74145526c4107363622634fc93b81478f4d3a7d45ae662e (cd20a97a; engine tree 4ebb30a9)
+pg_pos_C_cond2 sha256 b268fea3e0941e53eb348b9b14937bcef6b657d3f129cbfc92c727ba18d2291c (9a0bc5ac; engine tree 5d557d35)
+Gates (km3, seeds 1-12):
+- the old study's 5 check positions (034953 t02/t04/t08/t10/t16) equal to the committed runs_km3, both runners;
+- F_cond2 on all 92 v3 positions v v3's committed runs_km3 (made with pg_pos_F_cond): 88 identical; 030351 t09/t11/t13/t15 plans identical, only the
+  printed board differs (the Starting Plains HP fix) and t15's typed labels;
+- C_cond2 v F_cond2 on shards/S8.txt: 8 of 8 identical;
+- the forced replay of 022530 t09 reaches Attack:Frenzied Blade (km3 makes his Fighting choice and his attack in 12 of 12 seeds);
+- test_pg_pos.py 13 of 13 on both.
+v2/scripts (run_km3.sh, forced_runs.py) still pin pg_pos_F_cond (5c485994): a re-run of that chain on the new runner needs their pin moved to 3fa982e5.

@@ -1,0 +1,28 @@
+{
+  "schema": "battle-review-evidence/v1",
+  "source_sha256": "0B248F4D8B67F9D907B1142EC23949F806267E21B36FA4C2E460AD5FC92B85F2",
+  "scope": "Complete recorded battle, 00:00.000-04:18.978",
+  "primary_method": "Gemini v7 high-resolution two-pass video review covering setup, all eight turns, visible battle-state transitions and terminal outcome",
+  "routine_verification": "Sol targeted source checks of setup, every turn boundary, knockouts, scoring, Energy changes and terminal outcome",
+  "clarification_method": "Astra native-resolution checks limited to disputed identity, Energy-symbol, omitted Bench and last-frame evidence",
+  "prior_evidence": {
+    "file": "prior_evidence/COMFEY_DECISION_REVIEW.md",
+    "sha256": "A8CD0A77A0FE2D3FD7D6B21421D0226D509DFE78DCE5383BA79AF3888A2BCFC3",
+    "scope": "Focused corroboration for approximately 01:25-02:04 only"
+  },
+  "gemini_archive": {
+    "directory": "submission-history/gemini-v7",
+    "download_zip_sha256": "E02197262C75DBA4C47375B009D85E11DEC7A2DD9BC163DE7AEB19ED223BA886"
+  },
+  "final_files": [
+    "REVIEW.md",
+    "COVERAGE.md",
+    "SOURCE.json",
+    "UNCERTAINTIES.json",
+    "SOL_VERIFICATION.md",
+    "ASTRA_CLARIFICATION.md",
+    "GEMINI_V7_RECONCILIATION.md",
+    "SOURCE_VERIFICATION.json",
+    "LEAD_ACCEPTANCE.json"
+  ]
+}

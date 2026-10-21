@@ -1,0 +1,213 @@
+﻿
+######## case 3: KW-261013_010837000-t07
+   board: [(0, 'Regigigas', 0, 30, []), (1, 'Pawniard', 1, 50, []), (2, 'Glimmet', 0, 60, []), (3, 'Alolan Muk', 0, 110, [])] hand: ['Kingambit', 'Rare Candy']
+   km3    12/12 cut=end of turn: Play:Rare Candy > Evolve:Kingambit@1 > Attach:1Darkness@1 zone > EndTurn
+   kmbc3  12/12 cut=end of turn: Play:Rare Candy > Evolve:Kingambit@1 > Attach:1Darkness@1 zone > EndTurn
+   kmbd3  12/12 cut=end of turn: Play:Rare Candy > Evolve:Kingambit@1 > Attach:1Darkness@1 zone > EndTurn
+
+######## case 4: KW-261012_225319000-t06
+   board: [(0, 'Pawniard', 0, 50, ['Heavy Helmet']), (1, 'Alolan Grimer', 0, 70, [])] hand: ['Kingambit', 'Lucky Ice Pop']
+   km3     8/12 cut=end of turn: Attach:1Darkness@0 zone > UseStadium > Attack:Slash > EndTurn
+   km3     2/12 cut=end of turn: Attach:1Darkness@0 zone > UseStadium > Evolve:Alolan Muk@1 > Attack:Slash > EndTurn
+   km3     2/12 cut=end of turn: Attach:1Darkness@0 zone > UseStadium > Place:Regigigas@3 > Attack:Slash > EndTurn
+   kmbc3   8/12 cut=end of turn: Attach:1Darkness@0 zone > UseStadium > Attack:Slash > EndTurn
+   kmbc3   2/12 cut=end of turn: Attach:1Darkness@0 zone > UseStadium > Evolve:Alolan Muk@1 > Attack:Slash > EndTurn
+   kmbc3   2/12 cut=end of turn: Attach:1Darkness@0 zone > UseStadium > Place:Regigigas@3 > Attack:Slash > EndTurn
+   kmbd3   8/12 cut=end of turn: Attach:1Darkness@0 zone > UseStadium > Attack:Slash > EndTurn
+   kmbd3   2/12 cut=end of turn: Attach:1Darkness@0 zone > UseStadium > Evolve:Alolan Muk@1 > Attack:Slash > EndTurn
+   kmbd3   2/12 cut=end of turn: Attach:1Darkness@0 zone > UseStadium > Place:Regigigas@3 > Attack:Slash > EndTurn
+
+######## case 5: KW-261013_014423000-t07
+   board: [(0, 'Regigigas', 0, 50, ['Heavy Helmet']), (1, 'Pawniard', 1, 50, []), (2, 'Glimmet', 1, 60, [])] hand: ['Glimmora', 'Glimmora']
+   km3    12/12 cut=end of turn: Evolve:Glimmora@2 > Attach:1Darkness@0 zone > EndTurn
+   kmbc3  12/12 cut=end of turn: Evolve:Glimmora@2 > Attach:1Darkness@0 zone > EndTurn
+   kmbd3  12/12 cut=end of turn: Evolve:Glimmora@2 > Attach:1Darkness@0 zone > EndTurn
+
+######## case 6: KW-261013_015659000-t05
+   board: [(0, 'Regigigas', 1, 30, []), (1, 'Glimmora', 0, 90, []), (2, 'Glimmet', 0, 60, [])] hand: ['Alolan Muk', 'Glimmora', 'Pawniard']
+   km3    12/12 cut=end of turn: Place:Pawniard@3 > Evolve:Glimmora@2 > Attach:1Darkness@0 zone > EndTurn
+   kmbc3  12/12 cut=end of turn: Place:Pawniard@3 > Evolve:Glimmora@2 > Attach:1Darkness@0 zone > EndTurn
+   kmbd3  12/12 cut=end of turn: Place:Pawniard@3 > Evolve:Glimmora@2 > Attach:1Darkness@0 zone > EndTurn
+
+######## case 7: KW-261013_010837000-t09
+   board: [(0, 'Glimmet', 1, 20, []), (1, 'Kingambit', 1, 140, []), (2, 'Alolan Muk', 0, 110, [])] hand: ['Lucky Ice Pop']
+   km3    12/12 cut=end of turn: Retreat:1 > Attach:1Darkness@0 zone > Attack:Overlord's Blade > EndTurn
+   kmbc3  12/12 cut=end of turn: Retreat:1 > Attach:1Darkness@0 zone > Attack:Overlord's Blade > EndTurn
+   kmbd3  12/12 cut=end of turn: Retreat:1 > Attach:1Darkness@0 zone > Attack:Overlord's Blade > EndTurn
+
+######## case 9: KW-261012_210041000-t06
+   board: [(0, 'Regigigas', 0, 40, []), (1, 'Glimmet', 0, 60, []), (2, 'Alolan Muk', 0, 110, []), (3, 'Pawniard', 0, 50, [])] hand: ['Ilima', 'Kingambit', 'Lucky Ice Pop']
+   km3    12/12 cut=end of turn: Play:Ilima > ReturnPokemonToHand > Promote:0@3 > Place:Regigigas@3 > Attach:1Darkness@0 zone > Attack:Slash > EndTurn
+   kmbc3   4/12 cut=end of turn: Play:Lucky Ice Pop > Play:Lucky Ice Pop > Attach:1Darkness@0 zone > EndTurn
+   kmbc3   3/12 cut=end of turn: Play:Lucky Ice Pop > Play:Ilima > ReturnPokemonToHand > Promote:0@1 > Place:Regigigas@1 > Attach:1Darkness@0 zone > Attack:Hang Down > EndTurn
+   kmbc3   3/12 cut=end of turn: Play:Lucky Ice Pop > Play:Lucky Ice Pop > Play:Lucky Ice Pop > Play:Lucky Ice Pop > Play:Lucky Ice Pop > Play:Lucky Ice Pop > Attach:1Darkness@0 zone > EndTurn
+   kmbc3   2/12 cut=end of turn: Play:Lucky Ice Pop > Play:Lucky Ice Pop > Play:Lucky Ice Pop > Play:Lucky Ice Pop > Attach:1Darkness@0 zone > EndTurn
+   kmbd3  12/12 cut=end of turn: Play:Ilima > ReturnPokemonToHand > Promote:0@3 > Place:Regigigas@3 > Attach:1Darkness@0 zone > Attack:Slash > EndTurn
+
+######## case 10: KW-261012_203719000-t07
+   board: [(0, 'Regigigas', 1, 10, []), (1, 'Alolan Muk', 0, 110, []), (2, 'Glimmora', 0, 90, []), (3, 'Pawniard', 1, 50, [])] hand: ['Glimmet', 'Ilima', 'Kingambit', 'Rare Candy']
+   km3    12/12 cut=end of turn: Play:Rare Candy > Evolve:Kingambit@3 > Play:Ilima > ReturnPokemonToHand > Promote:0@3 > Place:Regigigas@3 > Attach:1Darkness@0 zone > UseStadium > Attack:Overlord's Blade > EndTurn
+   kmbc3  12/12 cut=end of turn: Play:Rare Candy > Evolve:Kingambit@3 > Play:Ilima > ReturnPokemonToHand > Promote:0@2 > Place:Regigigas@2 > Attach:1Darkness@0 zone > UseStadium > Attack:Venomous Hit > EndTurn
+   kmbd3  12/12 cut=end of turn: Play:Rare Candy > Evolve:Kingambit@3 > Play:Ilima > ReturnPokemonToHand > Promote:0@3 > Place:Regigigas@3 > Attach:1Darkness@0 zone > UseStadium > Attack:Overlord's Blade > EndTurn
+
+######## case 11: KW-261012_210823000-t08
+   board: [(0, 'Regigigas', 0, 50, []), (1, 'Glimmora', 0, 90, []), (2, 'Alolan Muk', 0, 110, []), (3, 'Kingambit', 1, 140, [])] hand: ['Glimmet', 'Glimmora', 'Ilima', 'Lucky Ice Pop', 'Lucky Ice Pop']
+   km3    12/12 cut=end of turn: Play:Ilima > ReturnPokemonToHand > Promote:0@3 > Place:Regigigas@3 > Attach:1Darkness@0 zone > Attack:Overlord's Blade > EndTurn
+   kmbc3  12/12 cut=end of turn: Play:Ilima > ReturnPokemonToHand > Promote:0@1 > Place:Regigigas@1 > Attach:1Darkness@0 zone > Attack:Venomous Hit > EndTurn
+   kmbd3  12/12 cut=end of turn: Play:Ilima > ReturnPokemonToHand > Promote:0@3 > Place:Regigigas@3 > Attach:1Darkness@0 zone > Attack:Overlord's Blade > EndTurn
+
+######## case 12: KW-261012_010706000-t11
+   board: [(0, 'Alolan Muk', 1, 110, []), (1, 'Kingambit', 0, 140, []), (2, 'Regigigas', 3, 150, [])] hand: ['Glimmora', 'Heavy Helmet', 'Ilima', 'Lucky Ice Pop']
+   km3    12/12 cut=end of turn: Play:Heavy Helmet > Tool:Heavy Helmet@0 > Attach:1Darkness@0 zone > EndTurn
+   kmbc3  12/12 cut=end of turn: Play:Heavy Helmet > Tool:Heavy Helmet@0 > Attach:1Darkness@0 zone > EndTurn
+   kmbd3  12/12 cut=end of turn: Play:Heavy Helmet > Tool:Heavy Helmet@0 > Attach:1Darkness@0 zone > EndTurn
+
+######## case 13: KW-261013_010837000-t05
+   board: [(0, 'Regigigas', 0, 150, []), (1, 'Pawniard', 0, 50, []), (2, 'Alolan Grimer', 0, 70, [])] hand: ['Alolan Muk', 'Glimmet', 'Kingambit']
+   km3    12/12 cut=end of turn: Place:Glimmet@3 > Evolve:Alolan Muk@2 > Attach:1Darkness@0 zone > EndTurn
+   kmbc3  12/12 cut=end of turn: Place:Glimmet@3 > Evolve:Alolan Muk@2 > Attach:1Darkness@0 zone > EndTurn
+   kmbd3  12/12 cut=end of turn: Place:Glimmet@3 > Evolve:Alolan Muk@2 > Attach:1Darkness@0 zone > EndTurn
+
+######## case 14: KW-261013_014423000-t03
+   board: [(0, 'Alolan Grimer', 0, 70, []), (1, 'Pawniard', 0, 50, []), (2, 'Regigigas', 0, 150, [])] hand: ['Copycat', 'Glimmora', 'Glimmora', 'Lucky Ice Pop', 'Rare Candy']
+   km3     4/12 cut=end of turn: Attach:1Darkness@0 zone > EndTurn
+   km3     4/12 cut=first draw: Attach:1Darkness@0 zone > Play:Copycat
+   km3     2/12 cut=first draw: Play:Copycat
+   km3     1/12 cut=first draw: Attach:1Darkness@1 zone > Play:Copycat
+   km3     1/12 cut=first draw: Attach:1Darkness@2 zone > Play:Copycat
+   kmbc3   4/12 cut=first draw: Play:Copycat
+   kmbc3   3/12 cut=end of turn: Attach:1Darkness@1 zone > EndTurn
+   kmbc3   3/12 cut=first draw: Attach:1Darkness@1 zone > Play:Copycat
+   kmbc3   1/12 cut=first draw: Attach:1Darkness@0 zone > Play:Copycat
+   kmbc3   1/12 cut=first draw: Attach:1Darkness@2 zone > Play:Copycat
+   kmbd3   4/12 cut=end of turn: Attach:1Darkness@0 zone > EndTurn
+   kmbd3   4/12 cut=first draw: Attach:1Darkness@0 zone > Play:Copycat
+   kmbd3   2/12 cut=first draw: Play:Copycat
+   kmbd3   1/12 cut=first draw: Attach:1Darkness@1 zone > Play:Copycat
+   kmbd3   1/12 cut=first draw: Attach:1Darkness@2 zone > Play:Copycat
+
+######## case 15: KW-261012_203719000-t11
+   board: [(0, 'Regigigas', 0, 10, []), (1, 'Alolan Muk', 1, 110, []), (2, 'Glimmora', 1, 90, []), (3, 'Kingambit', 1, 140, [])] hand: ['Glimmet', 'Glimmora', 'Heavy Helmet']
+   km3    12/12 cut=end of turn: Attach:1Darkness@3 zone > Play:Heavy Helmet > Tool:Heavy Helmet@0 > UseStadium > EndTurn
+   kmbc3  12/12 cut=end of turn: Attach:1Darkness@0 zone > Play:Heavy Helmet > Tool:Heavy Helmet@0 > UseStadium > EndTurn
+   kmbd3  12/12 cut=end of turn: Attach:1Darkness@3 zone > Play:Heavy Helmet > Tool:Heavy Helmet@0 > UseStadium > EndTurn
+
+######## case keep RC: KW-261012_010706000-t05
+   board: [(0, 'Glimmora', 1, 90, []), (1, 'Pawniard', 0, 50, []), (2, 'Regigigas', 0, 150, []), (3, 'Alolan Muk', 0, 110, [])] hand: ['Glimmora', 'Kingambit', 'Lucky Ice Pop', 'Rare Candy']
+   km3    12/12 cut=end of turn: Play:Rare Candy > Evolve:Kingambit@1 > Attach:1Darkness@2 zone > Attack:Venomous Hit > EndTurn
+   kmbc3  12/12 cut=end of turn: Play:Rare Candy > Evolve:Kingambit@1 > Attach:1Darkness@2 zone > Attack:Venomous Hit > EndTurn
+   kmbd3  12/12 cut=end of turn: Play:Rare Candy > Evolve:Kingambit@1 > Attach:1Darkness@2 zone > Attack:Venomous Hit > EndTurn
+
+######## case keep RC: KW-261012_210823000-t06
+   board: [(0, 'Regigigas', 0, 150, []), (1, 'Glimmora', 0, 90, []), (2, 'Alolan Muk', 0, 110, []), (3, 'Pawniard', 0, 50, [])] hand: ['Glimmet', 'Glimmora', 'Ilima', 'Kingambit', 'Lucky Ice Pop', 'Rare Candy']
+   km3    12/12 cut=end of turn: Play:Rare Candy > Evolve:Kingambit@3 > Attach:1Darkness@3 zone > UseStadium > EndTurn
+   kmbc3  12/12 cut=end of turn: Play:Rare Candy > Evolve:Kingambit@3 > Attach:1Darkness@0 zone > UseStadium > EndTurn
+   kmbd3  12/12 cut=end of turn: Play:Rare Candy > Evolve:Kingambit@3 > Attach:1Darkness@3 zone > UseStadium > EndTurn
+
+######## case keep RC: KW-261012_230258000-t09
+   board: [(0, 'Regigigas', 2, 80, ['Heavy Helmet']), (1, 'Pawniard', 0, 50, []), (2, 'Glimmora', 0, 90, [])] hand: ['Alolan Muk', 'Ilima', 'Kingambit', 'Lucky Ice Pop', 'Lucky Ice Pop', 'Rare Candy']
+   km3     4/12 cut=end of turn: Play:Lucky Ice Pop > Play:Lucky Ice Pop > Play:Lucky Ice Pop > Play:Rare Candy > Evolve:Kingambit@1 > Play:Lucky Ice Pop > Attach:1Darkness@0 zone > UseStadium > Place:Alolan Grimer@3 > EndTurn
+   km3     2/12 cut=end of turn: Play:Lucky Ice Pop > Play:Lucky Ice Pop > Play:Rare Candy > Evolve:Kingambit@1 > Play:Lucky Ice Pop > Attach:1Darkness@0 zone > UseStadium > EndTurn
+   km3     2/12 cut=end of turn: Play:Lucky Ice Pop > Play:Lucky Ice Pop > Play:Rare Candy > Evolve:Kingambit@1 > Play:Lucky Ice Pop > Attach:1Darkness@0 zone > UseStadium > Place:Alolan Grimer@3 > EndTurn
+   km3     1/12 cut=end of turn: Play:Lucky Ice Pop > Play:Rare Candy > Evolve:Kingambit@1 > Play:Lucky Ice Pop > Attach:1Darkness@0 zone > UseStadium > Place:Alolan Grimer@3 > EndTurn
+   km3     1/12 cut=end of turn: Play:Lucky Ice Pop > Play:Rare Candy > Evolve:Kingambit@1 > Play:Lucky Ice Pop > Attach:1Darkness@0 zone > UseStadium > EndTurn
+   km3     1/12 cut=end of turn: Play:Lucky Ice Pop > Play:Lucky Ice Pop > Play:Lucky Ice Pop > Play:Rare Candy > Evolve:Kingambit@1 > Play:Lucky Ice Pop > Attach:1Darkness@0 zone > UseStadium > EndTurn
+   km3     1/12 cut=end of turn: Play:Lucky Ice Pop > Play:Rare Candy > Evolve:Kingambit@1 > Play:Lucky Ice Pop > Play:Lucky Ice Pop > Attach:1Darkness@0 zone > UseStadium > EndTurn
+   kmbc3   5/12 cut=end of turn: Play:Lucky Ice Pop > Play:Lucky Ice Pop > Play:Lucky Ice Pop > Play:Rare Candy > Evolve:Kingambit@1 > Play:Lucky Ice Pop > Attach:1Darkness@0 zone > UseStadium > EndTurn
+   kmbc3   4/12 cut=end of turn: Play:Lucky Ice Pop > Play:Lucky Ice Pop > Play:Rare Candy > Evolve:Kingambit@1 > Play:Lucky Ice Pop > Attach:1Darkness@0 zone > UseStadium > EndTurn
+   kmbc3   2/12 cut=end of turn: Play:Lucky Ice Pop > Play:Rare Candy > Evolve:Kingambit@1 > Play:Lucky Ice Pop > Attach:1Darkness@0 zone > UseStadium > EndTurn
+   kmbc3   1/12 cut=end of turn: Play:Lucky Ice Pop > Play:Rare Candy > Evolve:Kingambit@1 > Play:Lucky Ice Pop > Play:Lucky Ice Pop > Attach:1Darkness@0 zone > UseStadium > EndTurn
+   kmbd3   4/12 cut=end of turn: Play:Lucky Ice Pop > Play:Lucky Ice Pop > Play:Lucky Ice Pop > Play:Lucky Ice Pop > Play:Rare Candy > Evolve:Kingambit@1 > Attach:1Darkness@0 zone > UseStadium > Place:Alolan Grimer@3 > EndTurn
+   kmbd3   3/12 cut=end of turn: Play:Lucky Ice Pop > Play:Lucky Ice Pop > Play:Lucky Ice Pop > Play:Rare Candy > Evolve:Kingambit@1 > Attach:1Darkness@0 zone > UseStadium > EndTurn
+   kmbd3   2/12 cut=end of turn: Play:Lucky Ice Pop > Play:Lucky Ice Pop > Play:Lucky Ice Pop > Play:Rare Candy > Evolve:Kingambit@1 > Attach:1Darkness@0 zone > UseStadium > Place:Alolan Grimer@3 > EndTurn
+   kmbd3   1/12 cut=end of turn: Play:Lucky Ice Pop > Play:Lucky Ice Pop > Play:Rare Candy > Evolve:Kingambit@1 > Attach:1Darkness@0 zone > UseStadium > Place:Alolan Grimer@3 > EndTurn
+   kmbd3   1/12 cut=end of turn: Play:Lucky Ice Pop > Play:Lucky Ice Pop > Play:Rare Candy > Evolve:Kingambit@1 > Attach:1Darkness@0 zone > UseStadium > EndTurn
+   kmbd3   1/12 cut=end of turn: Play:Lucky Ice Pop > Play:Lucky Ice Pop > Play:Lucky Ice Pop > Play:Lucky Ice Pop > Play:Rare Candy > Evolve:Kingambit@1 > Attach:1Darkness@0 zone > UseStadium > EndTurn
+
+######## case keep line: KW-261012_203719000-t13
+   board: [(0, 'Glimmora', 1, 90, []), (1, 'Alolan Muk', 2, 110, []), (2, 'Kingambit', 1, 140, ['Heavy Helmet'])] hand: ['Glimmet', 'Glimmora', 'Lucky Ice Pop']
+   km3    12/12 cut=end of turn: Place:Glimmet@3 > Attach:1Darkness@2 zone > Attack:Venomous Hit > EndTurn
+   kmbc3  12/12 cut=end of turn: Attach:1Darkness@2 zone > Attack:Venomous Hit > EndTurn
+   kmbd3  12/12 cut=end of turn: Place:Glimmet@3 > Attach:1Darkness@2 zone > Attack:Venomous Hit > EndTurn
+
+######## case other: KW-261012_010706000-t13
+   board: [(0, 'Alolan Muk', 1, 110, []), (1, 'Kingambit', 1, 140, ['Heavy Helmet']), (2, 'Regigigas', 3, 150, [])] hand: ['Glimmet', 'Glimmora', 'Ilima', 'Lucky Ice Pop']
+   km3    12/12 cut=end of turn: Place:Glimmet@3 > Attach:1Darkness@0 zone > EndTurn
+   kmbc3  12/12 cut=end of turn: Attach:1Darkness@0 zone > EndTurn
+   kmbd3  12/12 cut=end of turn: Place:Glimmet@3 > Attach:1Darkness@0 zone > EndTurn
+
+######## case other: KW-261012_203719000-t09
+   board: [(0, 'Regigigas', 0, 80, []), (1, 'Alolan Muk', 0, 110, []), (2, 'Glimmora', 1, 90, []), (3, 'Kingambit', 1, 140, [])] hand: ['Glimmet', 'Glimmora']
+   km3    12/12 cut=end of turn: Attach:1Darkness@3 zone > UseStadium > EndTurn
+   kmbc3  12/12 cut=end of turn: Attach:1Darkness@0 zone > UseStadium > EndTurn
+   kmbd3  12/12 cut=end of turn: Attach:1Darkness@3 zone > UseStadium > EndTurn
+
+######## case other: KW-261012_225319000-t04
+   board: [(0, 'Pawniard', 1, 50, []), (1, 'Alolan Grimer', 0, 70, [])] hand: ['Copycat', 'Glimmora', 'Heavy Helmet', 'Ilima', 'Rare Candy']
+   km3     3/12 cut=first draw: Play:Copycat
+   km3     1/12 cut=first draw: UseStadium > Attach:1Darkness@0 zone > Play:Heavy Helmet > Tool:Heavy Helmet@0 > Play:Copycat
+   km3     1/12 cut=first draw: UseStadium > Attach:1Darkness@0 zone > Play:Copycat
+   km3     1/12 cut=end of turn: Attach:1Darkness@0 zone > UseStadium > Play:Heavy Helmet > Tool:Heavy Helmet@0 > Attack:Slash > EndTurn
+   km3     1/12 cut=first draw: UseStadium > Play:Copycat
+   km3     1/12 cut=end of turn: UseStadium > Attach:1Darkness@0 zone > Play:Heavy Helmet > Tool:Heavy Helmet@0 > Attack:Slash > EndTurn
+   km3     1/12 cut=first draw: UseStadium > Place:Regigigas@3 > Attach:1Darkness@0 zone > Play:Heavy Helmet > Tool:Heavy Helmet@0 > Play:Copycat
+   km3     1/12 cut=first draw: UseStadium > Play:Rare Candy > Evolve:Kingambit@0 > Play:Copycat
+   km3     1/12 cut=first draw: UseStadium > Evolve:Alolan Muk@1 > Attach:1Darkness@0 zone > Play:Copycat
+   km3     1/12 cut=first draw: UseStadium > Play:Rare Candy > Evolve:Kingambit@0 > Attach:1Darkness@0 zone > Play:Copycat
+   kmbc3   3/12 cut=first draw: Attach:1Darkness@0 zone > UseStadium > Play:Copycat
+   kmbc3   3/12 cut=first draw: Play:Copycat
+   kmbc3   2/12 cut=first draw: Attach:1Darkness@0 zone > Play:Copycat
+   kmbc3   2/12 cut=end of turn: Attach:1Darkness@0 zone > UseStadium > Play:Heavy Helmet > Tool:Heavy Helmet@0 > Attack:Slash > EndTurn
+   kmbc3   1/12 cut=first draw: Attach:1Darkness@0 zone > UseStadium > Place:Regigigas@3 > Play:Heavy Helmet > Tool:Heavy Helmet@0 > Play:Copycat
+   kmbc3   1/12 cut=first draw: Attach:1Darkness@0 zone > UseStadium > Play:Rare Candy > Evolve:Kingambit@0 > Play:Heavy Helmet > Tool:Heavy Helmet@0 > Play:Copycat
+   kmbd3   3/12 cut=first draw: Play:Copycat
+   kmbd3   1/12 cut=first draw: UseStadium > Attach:1Darkness@0 zone > Play:Heavy Helmet > Tool:Heavy Helmet@0 > Play:Copycat
+   kmbd3   1/12 cut=first draw: UseStadium > Attach:1Darkness@0 zone > Play:Copycat
+   kmbd3   1/12 cut=end of turn: Attach:1Darkness@0 zone > UseStadium > Play:Heavy Helmet > Tool:Heavy Helmet@0 > Attack:Slash > EndTurn
+   kmbd3   1/12 cut=first draw: UseStadium > Play:Copycat
+   kmbd3   1/12 cut=end of turn: UseStadium > Attach:1Darkness@0 zone > Play:Heavy Helmet > Tool:Heavy Helmet@0 > Attack:Slash > EndTurn
+   kmbd3   1/12 cut=first draw: UseStadium > Place:Regigigas@3 > Attach:1Darkness@0 zone > Play:Heavy Helmet > Tool:Heavy Helmet@0 > Play:Copycat
+   kmbd3   1/12 cut=first draw: UseStadium > Play:Rare Candy > Evolve:Kingambit@0 > Play:Copycat
+   kmbd3   1/12 cut=first draw: UseStadium > Evolve:Alolan Muk@1 > Attach:1Darkness@0 zone > Play:Copycat
+   kmbd3   1/12 cut=first draw: UseStadium > Play:Rare Candy > Evolve:Kingambit@0 > Attach:1Darkness@0 zone > Play:Copycat
+
+######## case other: KW-261013_015659000-t03
+   board: [(0, 'Regigigas', 0, 120, []), (1, 'Glimmet', 0, 60, []), (2, 'Glimmet', 0, 60, [])] hand: ['Alolan Muk', 'Glimmora', 'Lucky Ice Pop', 'Pawniard']
+   km3     9/12 cut=end of turn: Play:Lucky Ice Pop > Play:Lucky Ice Pop > Place:Pawniard@3 > Evolve:Glimmora@2 > Attach:1Darkness@0 zone > EndTurn
+   km3     3/12 cut=end of turn: Play:Lucky Ice Pop > Place:Pawniard@3 > Evolve:Glimmora@2 > Attach:1Darkness@0 zone > EndTurn
+   kmbc3   9/12 cut=end of turn: Place:Pawniard@3 > Play:Lucky Ice Pop > Play:Lucky Ice Pop > Evolve:Glimmora@2 > Attach:1Darkness@0 zone > EndTurn
+   kmbc3   3/12 cut=end of turn: Place:Pawniard@3 > Play:Lucky Ice Pop > Evolve:Glimmora@2 > Attach:1Darkness@0 zone > EndTurn
+   kmbd3   9/12 cut=end of turn: Place:Pawniard@3 > Play:Lucky Ice Pop > Play:Lucky Ice Pop > Evolve:Glimmora@2 > Attach:1Darkness@0 zone > EndTurn
+   kmbd3   3/12 cut=end of turn: Place:Pawniard@3 > Play:Lucky Ice Pop > Evolve:Glimmora@2 > Attach:1Darkness@0 zone > EndTurn
+
+######## case other: KW-261012_203719000-t03
+   board: [(0, 'Regigigas', 0, 150, []), (1, 'Alolan Grimer', 0, 70, []), (2, 'Pawniard', 0, 50, [])] hand: ['Alolan Muk', 'Copycat', 'Glimmora', 'Kingambit', 'Poké Ball']
+   km3    11/12 cut=first draw: Play:Poké Ball
+   km3     1/12 cut=first draw: Play:Copycat
+   kmbc3  12/12 cut=first draw: Play:Poké Ball
+   kmbd3  11/12 cut=first draw: Play:Poké Ball
+   kmbd3   1/12 cut=first draw: Play:Copycat
+
+######## case other: KW-261012_210823000-t04
+   board: [(0, 'Alolan Grimer', 1, 70, []), (1, 'Glimmet', 0, 60, [])] hand: ['Alolan Muk', 'Copycat', 'Lucky Ice Pop', 'Pawniard', 'Regigigas']
+   km3    12/12 cut=first draw: Place:Regigigas@3 > Place:Pawniard@2 > Evolve:Alolan Muk@0 > Play:Copycat
+   kmbc3  10/12 cut=first draw: Place:Regigigas@3 > Place:Pawniard@2 > Evolve:Alolan Muk@0 > Play:Copycat
+   kmbc3   2/12 cut=first draw: Place:Regigigas@3 > Place:Pawniard@2 > Play:Copycat
+   kmbd3  10/12 cut=first draw: Place:Regigigas@3 > Place:Pawniard@2 > Evolve:Alolan Muk@0 > Play:Copycat
+   kmbd3   2/12 cut=first draw: Place:Regigigas@3 > Place:Pawniard@2 > Play:Copycat
+
+######## case other: KW-261013_020824000-t05
+   board: [(0, 'Glimmora', 1, 10, []), (1, 'Pawniard', 0, 50, ['Heavy Helmet']), (2, 'Alolan Muk', 0, 110, [])] hand: ['Ilima', 'Kingambit', "Professor's Research"]
+   km3     9/12 cut=first draw: Play:Professor's Research
+   km3     3/12 cut=first draw: UseStadium > Play:Professor's Research
+   kmbc3   7/12 cut=first draw: Play:Professor's Research
+   kmbc3   5/12 cut=first draw: UseStadium > Play:Professor's Research
+   kmbd3   9/12 cut=first draw: Play:Professor's Research
+   kmbd3   3/12 cut=first draw: UseStadium > Play:Professor's Research
+
+######## case other: KW-261012_210041000-t08
+   board: [(0, 'Glimmet', 0, 60, []), (1, 'Alolan Muk', 0, 110, []), (2, 'Pawniard', 1, 50, [])] hand: ['Copycat', 'Ilima', 'Kingambit', 'Lucky Ice Pop']
+   km3    12/12 cut=first draw: Play:Copycat
+   kmbc3  12/12 cut=first draw: Play:Copycat
+   kmbd3  10/12 cut=first draw: Play:Copycat
+   kmbd3   2/12 cut=first draw: Attach:1Darkness@0 zone > Play:Copycat

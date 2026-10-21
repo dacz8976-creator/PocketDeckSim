@@ -1,0 +1,131 @@
+{
+  "source_filename": "20261015_201850000_iOS.MP4",
+  "source_sha256": "877668e7f12e0619f4cd1a372cba29d9c1e45af52f98ca4a0274d1f026c215cb",
+  "reviewer": "/root/ladder_201850",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "battle_complete": true,
+  "available_recording_review_complete": true,
+  "match_count": 1,
+  "opponent_identifier": "Dresseur Zuin",
+  "match_date_local": "2026-10-15",
+  "source_creation_local": "2026-10-15T15:18:50-05:00",
+  "owner_visible_core": [
+    "Alolan Grimer",
+    "Alolan Muk",
+    "Glimmet",
+    "Glimmora",
+    "Pawniard",
+    "Kingambit",
+    "Regigigas"
+  ],
+  "opponent_visible_core": [
+    "Dratini",
+    "Dragonair",
+    "Gible",
+    "Gabite",
+    "Garchomp",
+    "Mega Garchomp ex"
+  ],
+  "owner_selected_deck_name": "New deck 16",
+  "suggested_existing_deck_id": "DECK01",
+  "deck_routing_limit": "Visible core supports existing Muk/Glimmora/Kingambit/Regigigas grouping; exact20-card list unestablished. Lead checks live duplicate and routing.",
+  "outcome": "win",
+  "score": {
+    "owner": 3,
+    "opponent": 2
+  },
+  "first_or_second": "second",
+  "turns_global": 22,
+  "owner_turns": 11,
+  "result_damage_done": 270,
+  "main_attacker_first_attack_own_turn": {
+    "Glimmora": 3,
+    "Regigigas": 9,
+    "Kingambit": 11
+  },
+  "main_attacker_first_attack_opponent_points": {
+    "Glimmora": 0,
+    "Regigigas": 1,
+    "Kingambit": 2
+  },
+  "first_attacks": [
+    {
+      "pokemon": "Glimmora",
+      "role": "early pressure",
+      "owner_turn": 3,
+      "global_turn": 6,
+      "source_seconds_approx": 262,
+      "opponent_points": 0,
+      "attack": "Venomous Hit",
+      "attack_damage": 30
+    },
+    {
+      "pokemon": "Regigigas",
+      "role": "supporting attack with Energy effect",
+      "owner_turn": 9,
+      "global_turn": 18,
+      "source_seconds_approx": 645,
+      "opponent_points": 1,
+      "attack": "Giga Turbo",
+      "attack_damage_dealt": 0,
+      "reason_observed": "Mach Stealth shield animation",
+      "effect_observed": "Colorless Energy added to Muk"
+    },
+    {
+      "pokemon": "Kingambit",
+      "role": "finisher",
+      "owner_turn": 11,
+      "global_turn": 22,
+      "source_seconds_approx": 780,
+      "opponent_points": 2,
+      "attack": "Overlord's Blade",
+      "attack_damage": 180
+    }
+  ],
+  "mode": "ranked human match; native4 explicitly Ranked Match SeasonB4bSP MasterBall759",
+  "auto_option_seen": false,
+  "auto_control_owner_choices": "No Auto option observed; manual UI interactions visible.",
+  "exact_three_item_note_prefix": "2nd | Glimmora T3; Kingambit T11 | opp 0; 2 pts respectively",
+  "decisive_evidence": [
+    "native/t0004.00.jpg",
+    "native/t0262.00.jpg",
+    "native/t0326.00.jpg",
+    "native/t0528.30.jpg",
+    "native/t0605.00.jpg",
+    "native/t0645.00.jpg",
+    "native/t0685.00.jpg",
+    "native/t0755.00.jpg",
+    "native/t0770.00.jpg",
+    "native/t0774.00.jpg",
+    "native/t0780.00.jpg",
+    "native/t0801.00.jpg"
+  ],
+  "score_progression": [
+    {
+      "seconds_approx": 628,
+      "owner": 0,
+      "opponent": 1,
+      "event": "Second Glimmora KO; Shattering Crystal does not prevent point"
+    },
+    {
+      "seconds_approx": 695,
+      "owner": 0,
+      "opponent": 2,
+      "event": "Regigigas KO"
+    },
+    {
+      "seconds_approx": 766,
+      "owner": 0,
+      "opponent": 2,
+      "event": "First Glimmora KO; Shattering Crystal heads prevents point"
+    },
+    {
+      "seconds_approx": 789,
+      "owner": 3,
+      "opponent": 2,
+      "event": "Kingambit KOs Mega Garchomp ex; +3 points"
+    }
+  ],
+  "independent_acceptance": "Pending lead integration, primary worker does not register shared completion."
+}

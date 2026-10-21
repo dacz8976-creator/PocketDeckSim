@@ -1,0 +1,175 @@
+{
+  "schema": "bounded_correction_recheck_v1",
+  "reviewer": "/root/independent_grass_psychic",
+  "model": "gpt-6.1-sol",
+  "checked_utc": "2026-10-06T18:40:07.369240+00:00",
+  "source_video": "20261005_003547000_iOS.MP4",
+  "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+  "scope": "Only C1-C4 repaired fields and native evidence; original independent whole-game bounded report remains frozen. No original-media action or shared/external write.",
+  "status": "accepted",
+  "accepted": true,
+  "lead_acceptance": false,
+  "repairs_checked": [
+    "C1",
+    "C2",
+    "C3",
+    "C4"
+  ],
+  "remaining_repairs": [],
+  "checks": [
+    "C1 actual intact five-card67.5 hand and native crops inspected; Ball absent68/70, flags false, action interval67.5-68, Carvanha reveal71/resolved72. Both hand/board references and prose corrected.",
+    "C2 native83 face-up Shore with three prior cards;84 face-up Wallace with Shore already below;85 resolved five. Ordered reveals and prose corrected; arithmetic3+2=5 remains.",
+    "C3 six transition frames128/224/335/360/454/528 inspected; displayed3/5/7/8/11/14 separate from concluded chronological row. Other display fields null with reasons,14 row order retained.360 inspected at original resolution due fading label.",
+    "C4 actual UTF-8 deck values now correct. Recursive comparison to preserved deck shows exactly six name changes, no entity IDs, quantities or slot changes. Original QR receipt unchanged per preserved correction provenance."
+  ],
+  "deck_diff_json_paths": [
+    "/filmed_cards_20_slots/0/name",
+    "/filmed_cards_20_slots/1/name",
+    "/filmed_cards_20_slots/3/name",
+    "/filmed_cards_20_slots/4/name",
+    "/filmed_counts/0/name",
+    "/filmed_counts/2/name"
+  ],
+  "checked_input_sha256": {
+    "SOURCE.json": "78e9fdbbf4011e39defb0464336658e7fe228d4987e1f755c21982688821e618",
+    "TURN_LEDGER.json": "9867b2d1515da2d5f916b6918869e533136028bd1dfb962a4633e8d6cdd737f2",
+    "TURN_EVIDENCE.json": "01df8749f6946081b5479c0c5fa51a678b09b40dbfded088c20950f98ed587ee",
+    "REVIEW.md": "845cda69d1255563e0a331a817c0663ba4cb1aefc45b79b92584957ab9c266ea",
+    "DECK_USED.json": "903cdfb46dde19d212f02a247394c379aa2a46c1dc4e3769563a8de0fbd5582f",
+    "INDEPENDENT_CORRECTIONS.json": "b3d524de7fa41534773f734eea715029c0fea33f2eb16f8bfaa1c9d5a867decc",
+    "QR_DECODE.json": "ef04a9bc6b3b1bbe5e2a11af53ede4ce629024da79f2c7cad8337a6b90acb183",
+    "independent_sol/CHECK_RESULT.json": "9ad75089c23e466f79955eebd5f4148e41805a51487059cfefdc3c0a3c59098a"
+  },
+  "viewed_evidence": [
+    {
+      "path": "turn_evidence/t0067.50.jpg",
+      "sha256": "7ba936faa72d01061714c99bd58b5638314c9fd72ad5424c5f1dc1dce10476ba",
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "turn_evidence/t0067.50_bottom.png",
+      "sha256": "bde4f3954b6c1900b4fe624a110620738affc5ed36ef4a3a3f0b9014e26aaccb",
+      "dimensions": [
+        1170,
+        507
+      ]
+    },
+    {
+      "path": "turn_evidence/t0067.50_top.png",
+      "sha256": "37d9376869b2e4c4a6d75b8e3b0c80ba2f1c359c8a2205d62d3d1e8a493c4c46",
+      "dimensions": [
+        1170,
+        700
+      ]
+    },
+    {
+      "path": "turn_evidence/t0068.00_bottom.png",
+      "sha256": "fe9bb2041f135e1cb8bc8dfe4f70ae096225d171906de9592afe0a4abff21b23",
+      "dimensions": [
+        1170,
+        507
+      ]
+    },
+    {
+      "path": "turn_evidence/t0070.00_bottom.png",
+      "sha256": "f01b83392a35d2743369f1cdd738ca26a530689ba25dabc8308c0a612d9a4874",
+      "dimensions": [
+        1170,
+        507
+      ]
+    },
+    {
+      "path": "turn_evidence/t0071.00.jpg",
+      "sha256": "4ebabaf7420d32eca298e41ee2d2e17d7674e065e5035e9f6d63d0f7bb51ab3f",
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "turn_evidence/t0072.00_bottom.png",
+      "sha256": "3d08cd2e60e81440074e105cf933677a1c700a9c352517a8a5d45ab8e4da14fa",
+      "dimensions": [
+        1170,
+        507
+      ]
+    },
+    {
+      "path": "turn_evidence/t0083.00.jpg",
+      "sha256": "08d2530f84cf93f0e1b43cdb26fdb50f883ad4c7a10c6aab6c403728a4986873",
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "turn_evidence/t0084.00.jpg",
+      "sha256": "a98c1eae199ff9901c59a1b31dcf8d1f16de6a8904f7a9737dfd79d49e301e09",
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "turn_evidence/t0085.00_bottom.png",
+      "sha256": "802c4b37fabe1cdfad5638663b86f59c00a6c16babbe2730b36e331f7f6c930b",
+      "dimensions": [
+        1170,
+        507
+      ]
+    },
+    {
+      "path": "turn_evidence/t0128.00.jpg",
+      "sha256": "81c581d7cc7543e94006a3efafdfe0a383856fe95a63e96524fcc83cf44e81c5",
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "turn_evidence/t0224.00.jpg",
+      "sha256": "ea8e9532aba01248e806d8227fd2fae290e567fd0544c5256797d95194b6cfb4",
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "turn_evidence/t0335.00.jpg",
+      "sha256": "25a7e8f93d536a772e25a27f94e263f9dd1279e330a0a6147af67588e485b70b",
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "turn_evidence/t0360.00.jpg",
+      "sha256": "0df28e3a824f0ae6663b12abf87fdc138ad7c70454194ff350b2732e0110812e",
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "turn_evidence/t0454.00.jpg",
+      "sha256": "6f372cb55a6cda3dec757abbaa0f63d341e22b2d8192665955dd146ee73cc3a3",
+      "dimensions": [
+        1170,
+        2532
+      ]
+    },
+    {
+      "path": "turn_evidence/t0528.00.jpg",
+      "sha256": "3c395478f4a6ad42c5a48098ad923df2015c30b9b417676f9a438e527e969d12",
+      "dimensions": [
+        1170,
+        2532
+      ]
+    }
+  ],
+  "original_rejection_preserved": true,
+  "astra_escalation_required": false
+}

@@ -1,0 +1,155 @@
+{
+  "source": "20260909_032418000_iOS.MP4",
+  "source_sha256": "750514530d208e76a8fbd8fc968aa6900ef08b0a0c84d5c00ce48c656f1f9672",
+  "checker": "sol_retro_ladder_012720",
+  "checked_utc": "2026-10-02T22:53:30.074381+00:00",
+  "producer_frozen_utc": "2026-10-02T22:48:26.987072+00:00",
+  "verdict": "accepted_with_recording_limits",
+  "required_repairs": [],
+  "consequential_unresolved_items": [],
+  "submitted_file_count": 17,
+  "submitted_hash_checks": [
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_032418000\\ASSIGNMENT.json",
+      "expected_sha256": "12847cbf4f5bc440a3e82b55a97de6d5c8898d3be4c8e9247b989111b2350e80",
+      "actual_sha256": "12847cbf4f5bc440a3e82b55a97de6d5c8898d3be4c8e9247b989111b2350e80"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_032418000\\DECK_USED.json",
+      "expected_sha256": "c66dad0437969b93273d74c5ca0daf6b928649c873ec974f3abbea29d37cc6b2",
+      "actual_sha256": "c66dad0437969b93273d74c5ca0daf6b928649c873ec974f3abbea29d37cc6b2"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_032418000\\HAND_SUPPLEMENT.json",
+      "expected_sha256": "bd164bd84e3217fa40dd6e13058588f0310927780d298a2337f06563fa023ac4",
+      "actual_sha256": "bd164bd84e3217fa40dd6e13058588f0310927780d298a2337f06563fa023ac4"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_032418000\\INHERITED_TURNS.json",
+      "expected_sha256": "58ff7a166361e7fd97bb5a397d18a04ab0c0d8174d3e6decc9a57a892dc137bd",
+      "actual_sha256": "58ff7a166361e7fd97bb5a397d18a04ab0c0d8174d3e6decc9a57a892dc137bd"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_032418000\\METRICS.json",
+      "expected_sha256": "be141b1d19ac9ddc9ba02913c4dc6a695326dce9b8b0197fcd8b2c97d731e548",
+      "actual_sha256": "be141b1d19ac9ddc9ba02913c4dc6a695326dce9b8b0197fcd8b2c97d731e548"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_032418000\\MODE_CHECK.json",
+      "expected_sha256": "1b08aa39e34bb0064853c3e255563b3c0c9a28a526cbade0676012a71ab263cd",
+      "actual_sha256": "1b08aa39e34bb0064853c3e255563b3c0c9a28a526cbade0676012a71ab263cd"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_032418000\\MODE_PRECHECK.json",
+      "expected_sha256": "fa2dc6e7dfd18c0fd7cda00b7b2ceb5b96872f654e358bf2b6da33f8ce104501",
+      "actual_sha256": "fa2dc6e7dfd18c0fd7cda00b7b2ceb5b96872f654e358bf2b6da33f8ce104501"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_032418000\\PACKET_VALIDATION.json",
+      "expected_sha256": "551eeccd305d18bfff9ee16aff089fdb3201639b352c0a04376553dc71a6d8fa",
+      "actual_sha256": "551eeccd305d18bfff9ee16aff089fdb3201639b352c0a04376553dc71a6d8fa"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_032418000\\PAUSE_GAME.json",
+      "expected_sha256": "d57aa80f52eb57b42fc32f96ca9b3833f545edfff163ab7d8b41d72e013e6216",
+      "actual_sha256": "d57aa80f52eb57b42fc32f96ca9b3833f545edfff163ab7d8b41d72e013e6216"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_032418000\\REVIEW_SUPPLEMENT.json",
+      "expected_sha256": "6fe395a483c20958559d6a7334f2fce1dd0bfadf88dee1067e1ce3ce4283a82b",
+      "actual_sha256": "6fe395a483c20958559d6a7334f2fce1dd0bfadf88dee1067e1ce3ce4283a82b"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_032418000\\SOURCE_REFERENCE.json",
+      "expected_sha256": "388ac0f65a102eee05b6a53f9ae29b15a1cee8da2d8b640e123b46c1f8ac55e0",
+      "actual_sha256": "388ac0f65a102eee05b6a53f9ae29b15a1cee8da2d8b640e123b46c1f8ac55e0"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_032418000\\SOURCE_VERIFICATION.json",
+      "expected_sha256": "b11f22973c81d8bc69385085b02d7e76d76441fa75c89562bd7454825a9f0664",
+      "actual_sha256": "b11f22973c81d8bc69385085b02d7e76d76441fa75c89562bd7454825a9f0664"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_032418000\\TURN_EVIDENCE.json",
+      "expected_sha256": "e786ed42dddccddab690911094671b8888e46bb808b5be4de0f805153386ac2c",
+      "actual_sha256": "e786ed42dddccddab690911094671b8888e46bb808b5be4de0f805153386ac2c"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_032418000\\TURN_LEDGER.json",
+      "expected_sha256": "d94885adcc5b083e6efeee8e40f009de9e4a278ded5ed7a2fb24135657af59bb",
+      "actual_sha256": "d94885adcc5b083e6efeee8e40f009de9e4a278ded5ed7a2fb24135657af59bb"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_032418000\\UNCERTAINTIES.json",
+      "expected_sha256": "05b96b6fb5e9a4dd955c962f6ebfae26099e2031a89d1858e0e28ef2979b23f1",
+      "actual_sha256": "05b96b6fb5e9a4dd955c962f6ebfae26099e2031a89d1858e0e28ef2979b23f1"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_032418000\\REVIEW_SUPPLEMENT.md",
+      "expected_sha256": "1accf4f62f7d773ebd03623dcb43367eeb55e9c22b0ff8d7cab986f82ca72ea5",
+      "actual_sha256": "1accf4f62f7d773ebd03623dcb43367eeb55e9c22b0ff8d7cab986f82ca72ea5"
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_032418000\\COVERAGE.md",
+      "expected_sha256": "780a0c82a814815d3eb06fc11c9a54c3b96245084c062c7a562fd9221afdaef6",
+      "actual_sha256": "780a0c82a814815d3eb06fc11c9a54c3b96245084c062c7a562fd9221afdaef6"
+    }
+  ],
+  "turn_rows": 10,
+  "owner_hand_turns": [
+    1,
+    3,
+    5,
+    7,
+    9
+  ],
+  "source_hash_reads": 0,
+  "new_native_frames": 0,
+  "producer_files_modified": false,
+  "native_inspection_manifest": "INSPECTED_NATIVE.json",
+  "checks": [
+    {
+      "field": "opening and all owner hands",
+      "result": "Five opening identities and left-to-right duplicates confirmed; owner start/end counts 5/4,5/0,1/0,1/0,1/0. T9 sole Ice Pop identity visible in inspection overlay, with clean-view limit correctly retained."
+    },
+    {
+      "field": "draw timing",
+      "result": "Dense preplay start anchors and about +1/+3/+6 candidates retained; source seek labels are requested times, actual PTS remains null rather than invented."
+    },
+    {
+      "field": "opponent fans",
+      "result": "Final version owner starts 4,3,4,5,6. T2 preboundary4, after-normal-draw5, ending3. Counts agree across canonical rows and owner hands."
+    },
+    {
+      "field": "actions/no effect/declines",
+      "result": "Native prompts plus action/board endpoints support both Hammers, Luxury Coin declined/used qualification, Order Pad failed search, two uses of same returned Ice Pop, Energy placement/retreat, poison and preaward empty owner board."
+    },
+    {
+      "field": "discard",
+      "result": "Native189.5 and255 views support visible Items and one Lightning at255; panel layouts are not chronological. Hidden opponent pile contents remain unknown."
+    },
+    {
+      "field": "mode",
+      "result": "No Auto option seen in inspected unoccluded controls. Candidate classification remains qualified; enabled state and individual authorship are unknown. Owner Auto-option rule preserved."
+    },
+    {
+      "field": "source/outcome",
+      "result": "Source-bound retained frames reused with completed producer verification receipt; no video hash/read/decode repeated. Historical0-3loss preserved;337.5 is explicitly preaward, not final score proof."
+    }
+  ],
+  "nonblocking_notes": [
+    {
+      "field": "HAND_SUPPLEMENT.owner_turns[4].before_end_hand.evidence_ids",
+      "note": "Lists t0314.00 boundary after attack, while before_end_evidence_ids correctly points to t0305.00 before attack. Both directly show the same empty hand. Phase distinction is recorded here; no identity/count correction needed."
+    },
+    {
+      "field": "earlier working-version concerns",
+      "note": "Initial check saw stale fan/reference data. Latest22:48:26 freeze already corrected counts and registers r0035.00. Root performed no repair. Only latest17-file hashes govern this verdict."
+    }
+  ],
+  "limits": [
+    "Checker inspected selected native anchors, not every movie instant or every retained image. Producer systematic345sample1fps coverage audit was read; locator decode was not repeated.",
+    "Hidden opponent draws/refills and unopened pile identities remain null. Exact historical20-card deck absent; visible core does not substitute current deck.",
+    "Requested source seconds and approximate draw endpoints are not measured decoded PTS."
+  ]
+}

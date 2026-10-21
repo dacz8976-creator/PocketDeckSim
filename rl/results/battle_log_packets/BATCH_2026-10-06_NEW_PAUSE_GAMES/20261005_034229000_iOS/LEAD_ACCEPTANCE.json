@@ -1,0 +1,38 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-06T19:59:02.192418+00:00",
+  "source_video": "20261005_034229000_iOS.MP4",
+  "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+  "scope": "Whole supplied continuous battle: setup, all turns, terminal sequence and source ending",
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 8,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_034229000_iOS\\independent_sol\\CORRECTION_RECHECK.json",
+  "basis": "Whole-source Sol review and coverage; separately commissioned bounded Sol checks of opening, ordinary turns/first moves, draws/searches, hands, both boards/Energy Zones, fans, decisive outcome; all frozen repairs independently verified. Root reconciled reports and inspected consequential boundary frames. Structure checked separately.",
+  "source_limits": [
+    "Opponent draw/search identities are hidden and remain unnamed.",
+    "No full discard pile is opened or scrolled; top previews and visible KO transfers do not establish the whole pile.",
+    "No QR, deck list or deck selection is filmed in this source. Nearby-source QR is a candidate only; the unrecorded gap does not establish unchanged twenty cards.",
+    "Times are requested source-local seeks; decoded actual presentation timestamps were not measured. Input brackets are separate from card reveals/resolution.",
+    "No Auto control is visible in the reviewed source. Online opponent identity is visible, but ranked/casual queue is not filmed.",
+    "Selected board/hand frames often omit the Current turn label; those snapshots record null with a reason. Actual turns are established by alternating transition labels and final eight-turn screen."
+  ],
+  "outcome": {
+    "owner": "Dacz8976",
+    "opponent": "Tideisrising91",
+    "result": "loss",
+    "points_owner": 0,
+    "points_opponent": 3,
+    "turns": 8,
+    "owner_went_first": true,
+    "damage_done": 110,
+    "evidence_ids": [
+      "f_0361_00",
+      "f_0364_00",
+      "f_0374_00"
+    ]
+  },
+  "external_status": "Prepared for Pause Games; no new live deck or game save claimed. Missing matching current live list is preserved, filmed QR definitions prepared separately.",
+  "archive_authorization": "Completed local review may be safely archived after verified CLI registration; original bytes/name preserved."
+}

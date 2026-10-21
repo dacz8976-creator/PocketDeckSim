@@ -1,0 +1,19 @@
+# Independent Wailord022135 source check
+
+Verdict: **needs_repair**, one narrow provenance correction. Opening and owner turns1,3,5,7,9,11 otherwise pass with recording limits. No battle outcome or board re-review was performed.
+
+The retained native image **f_0052.00**, requested52s, directly shows an enlarged **Pokémon Center Lady** draw reveal, with **Poké Ball** already in the fan alongside the two Lucky Ice Pops. The packet currently describes Center Lady as transaction-reconciled from54s and says no isolated readable second reveal exists. Update the T1 Research second-card basis, evidence ID and requested timestamp in HAND_SUPPLEMENT and TURN_LEDGER, plus the repeated limit in both files, TURN_EVIDENCE, PAUSE_GAME, UNCERTAINTIES and the prose. The exact field paths are in SOURCE_CHECKS.json. Names, order and counts remain correct. A useful f_0052.00 observation would identify the direct reveal rather than repeat the generic first-turn fan limit.
+
+Opening21s is Lucky Ice Pop, Heavy Helmet, Professor's Research, Lucky Ice Pop and Wailmer before placement. All six start and end card lists match native evidence. Normal draws are Indeedee ex, Poké Ball, Heavy Helmet, Indeedee ex, Irida and Soothing Shore. Ending counts are3/4/4/3/3/3, and opponent start fans3/2/1/1/3/4. Turn1 correctly distinguishes four observed fan positions from a directly named incoming Indeedee ex whose settled physical fifth position is unavailable. Turns7/11 correctly disclose the arriving card at the fan edge. Turn1 Ball finds Wailmer at57s; turn9 Ball has no observed addition and the three-card ending hand persists.
+
+Frozen source metadata, the delivered hash receipt and accepted REVIEW hash agree. The30 inherited turn contexts and approximate intervals exactly match INHERITED_TURNS; later hands, outcomes and boards remain inherited. Historical exact20-card deck version is unavailable and is not substituted from the current list. Hidden opponent cards and unopened discard lists remain unknown.
+
+Under the owner's clarified mode rule, any visible Auto option, even OFF, would identify a computer opponent and exclude the game from ladder. No Auto control is visible in selected unoccluded native control views. f_0242.00 shows the menu and EndTurn controls clearly; f_0089.00 and f_0236.35 support that bounded observation. This does not establish every instant, unopened menus, exact queue or opponent type. Notification/other overlays were not used to infer absence.
+
+An initial encoding concern is withdrawn: explicit UTF8 reads show correct names and exact inherited context. No initial hash or modification time was recorded to establish a file change. No source of a supposed change is inferred. Final verdict binds to current file hashes and modification times recorded in SOURCE_CHECKS.json.
+
+Metrics:27 native image submissions;173 retained image hash/size/dimension checks;55 native dimensions and requested-seek/unknownPTS checks;110 exact pixel crop comparisons;30 inherited row comparisons. All integrity checks pass. Zero original-video reads, extractions, packet edits or shared index/event edits. The55 frames are retained samples, not continuous coverage. INTEGRITY_CHECK.json contains the detailed integrity result.
+
+## Focused repair acceptance
+
+Verdict: **accepted_with_recording_limits**. All six preserved files match the initial checked hashes. The only changes clarify T1 Research provenance: Center Lady directly enlarged at f_0052.00, Ball directly identified in the fan, and Ball-first order supported by append state. The repeated false inference-only limit is removed and the frame observation now names the reveal. No unrelated changes were found; all30 inherited contexts and intervals remain exact. No new images, original-video reads, extractions or packet edits were needed. Initial needs_repair report is preserved; repaired hashes and exact changes are in SOURCE_CHECKS_REPAIR_ACCEPTANCE.json.

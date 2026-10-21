@@ -1,0 +1,37 @@
+2026-10-15T18:58:43Z m3 driver start
+2026-10-15T22:03:44Z 17:00 Central passed: building
+   b395d782..f4484777  claude/slow-reports-runner-xlsxu0 -> origin/claude/slow-reports-runner-xlsxu0
+2026-10-15T22:03:51Z ky3-pilot b8ab8f4c7cee, main 36f4dd62ed26
+2026-10-15T22:03:51Z deck files against both manifests
+strength_2026-10-08_kx3_combined decks: all equal
+strength_2026-10-03_kx3_dev decks: all equal
+    Finished `release` profile [optimized] target(s) in 2m 55s
+2026-10-15T22:06:48Z combined: commit 172cbe9ce0f2, engine tree 69a5a4419da2, skip_replay ff78a1e9ff7543a3
+    Finished `release` profile [optimized] target(s) in 2m 34s
+2026-10-15T22:09:23Z frozen: commit d513e37b473f, engine tree 31dbd2e6e8ec, skip_replay db6d1be3e46efcb7
+2026-10-15T22:09:23Z pg_pos on main's engine (36f4dd62ed26)
+patched /home/dacz8976/m3_work/pgbuild/engine/src/players/expectiminimax_player.rs eol CRLF
+pg_label added /home/dacz8976/m3_work/pgbuild/engine/src/players/expectiminimax_player.rs
+    Finished `release` profile [optimized] target(s) in 2m 37s
+2026-10-15T22:12:05Z pg_pos main engine 70652fff03af, sha 8e9f02481e4930e4
+2026-10-15T22:12:05Z the requested games only
+comb 17 games for 17 keys
+dev 8 games for 8 keys
+2026-10-15T22:12:05Z export: combined run on the combined build
+export: 17 positions written, 0 requests dropped
+skip_replay: arm X: 17 games, replayed exactly 17; 503 deck-side decisions; 0 board records
+2026-10-15T22:12:37Z export: development run on the frozen build
+export: 8 positions written, 0 requests dropped
+skip_replay: arm X: 8 games, replayed exactly 8; 273 deck-side decisions; 0 board records
+comb 17 games, 17 replayed exactly
+dev 8 games, 8 replayed exactly
+25 positions exported
+2026-10-15T22:12:39Z km3 on the current engine, 12 seeds
+skip_positions: 22 kept, 3 dropped (of 25)
+id	key	decision	reason
+id	key	decision	reason
+id	reason
+C-09vAltaria-1|0-t4	km3 on the current engine makes the recorded Retreat:2 in 6 of 12 seeds (it needs 7 of 12); its moves: ["Play:Professor's Research", 'Retreat:2']
+C-06vAltaria-4|1-t2	km3 on the current engine makes the recorded Play:Poké Ball in 5 of 12 seeds (it needs 7 of 12); its moves: ['Play:Copycat', 'Play:Poké Ball']
+C-06vBlaziken-0|0-t3	km3 on the current engine makes the recorded Play:Poké Ball in 4 of 12 seeds (it needs 7 of 12); its moves: ['Attach:1Fire@0 zone', 'Play:Copycat', 'Play:Poké Ball', "Play:Professor's Research"]
+2026-10-15T22:12:48Z driver finished

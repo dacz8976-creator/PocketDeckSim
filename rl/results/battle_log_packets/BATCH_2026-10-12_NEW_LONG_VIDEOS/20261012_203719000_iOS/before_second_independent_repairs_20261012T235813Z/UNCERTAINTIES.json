@@ -1,0 +1,51 @@
+{
+  "review_complete": true,
+  "unreviewed_intervals": [],
+  "uncertainties": [
+    {
+      "id": "U1",
+      "kind": "hidden_faces",
+      "finding": "Opponent normal draws and most searched/drawn faces hidden. No identities reconstructed."
+    },
+    {
+      "id": "U2",
+      "kind": "discard_views",
+      "finding": "No opened discard view for either player in the complete source."
+    },
+    {
+      "id": "U3",
+      "kind": "external_snapshot",
+      "finding": "Exact live-log list absent. Verified filmed QR list has separate provenance."
+    },
+    {
+      "id": "U4",
+      "kind": "fan_overlap",
+      "finding": "Turns 7, 9, 11, 13 opponent fan edge overlap preserves 3 to 4 range."
+    },
+    {
+      "id": "U5",
+      "kind": "turn14_no_target",
+      "finding": "No eligible target message at 488 to 491 s clearly observed. Trigger label uncertain; kept unknown."
+    },
+    {
+      "id": "U6",
+      "kind": "retreat_cost",
+      "finding": "Turn 20 Drampa displayed Fire disappears; effective cost explanation not established by zoom."
+    },
+    {
+      "id": "U7",
+      "kind": "timestamp_precision",
+      "finding": "Seek times are requested local positions, actual frame PTS not measured; draw ends approximate within inspected windows."
+    },
+    {
+      "id": "U8",
+      "kind": "turn6_coin",
+      "finding": "Mesagoza use and no added Pokémon recorded, exact coin face uncertain."
+    },
+    {
+      "id": "U9",
+      "kind": "boundary_energy_visibility",
+      "finding": "Zones use directly audited frame values. Early hand views may precede generation; empty slots are type null/count0/availablefalse. White glow or message-obscured current/preview values remain null. Preview availability is unknown; no game-rule default is used."
+    }
+  ]
+}

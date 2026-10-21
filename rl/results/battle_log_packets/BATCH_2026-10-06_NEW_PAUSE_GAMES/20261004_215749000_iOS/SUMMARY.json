@@ -1,0 +1,47 @@
+{
+  "video_basename": "20261004_215749000_iOS.MP4",
+  "source_sha256": "2015607dfe613e8bf71f4637d5d26ed625d8a451b0541b93b3a82bf0457126af",
+  "reviewer": "/root/pause_20261004_215749000_iOS",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "review_status": "full_source_review_submitted_for_independent_acceptance",
+  "capture_status": "complete_with_recording_limits",
+  "game_count": 1,
+  "recorded_turn_count": 6,
+  "classification": "human",
+  "auto_control_observed": false,
+  "queue_label": "Online opponent matchmaking; precise ranked/private queue label not established",
+  "match_date_local": "2026-10-04",
+  "match_date_basis": "RECORDING_METADATA.json embedded UTC creation time converted to America/Chicago",
+  "owner": "Dacz8976",
+  "opponent": "Sherwin",
+  "visible_deck_core": [
+    "Torchic",
+    "Combusken",
+    "Castform Sunny Form",
+    "Mega Blaziken ex drawn at end turn5"
+  ],
+  "owner_result": "win",
+  "outcome_evidence": [
+    {
+      "seconds": 244,
+      "text": "Your opponent conceded"
+    },
+    {
+      "seconds": 256,
+      "text": "vs. Sherwin Victory!"
+    }
+  ],
+  "points_at_concession": {
+    "owner": 1,
+    "opponent": 0
+  },
+  "continuity": "One source, continuous setup through victory; no observed recording cut",
+  "QR_times": [
+    1
+  ],
+  "deck_version_conflict": "Live Mega Blaziken list has Rare Candy2; filmed QR instead has Combusken2. Both20-slot snapshots retained.",
+  "external_writes_performed": false,
+  "source_moved": false,
+  "independent_acceptance_pending": true
+}

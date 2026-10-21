@@ -1,0 +1,105 @@
+{
+  "game_id": "pause-20261012-210041",
+  "video_basename": "20261012_210041000_iOS.MP4",
+  "source_sha256": "6e8f59764ede0e890ac012fd4ccdd08fc7bfd480bbaae7721bd1f8046031fcc6",
+  "reviewer": "/root/added_210041",
+  "registered_assignment_alias": "/root/pause_20261012_210041000_iOS",
+  "review_date": "2026-10-12",
+  "scope": "One full game, entire source 0 to 443.56s; queue, setup, all14 turns, concession and result",
+  "match_date": "2026-10-12",
+  "local_recording_start": "2026-10-12T16:00:41-05:00",
+  "game_count": 1,
+  "turn_count": 14,
+  "owner_turn_count": 7,
+  "opponent": "万丈目サンダー",
+  "queue": "Deluxe Pack: Mega Emblem Event",
+  "classification": "human_event_battle",
+  "auto_control_visible": false,
+  "auto_enabled": null,
+  "owner_choice_authorship": "Manual visible selections; no Auto control is shown",
+  "owner_deck_core": [
+    "Alolan Muk",
+    "Glimmora",
+    "Kingambit",
+    "Regigigas"
+  ],
+  "opponent_visible_core": [
+    "Mega Lucario ex",
+    "Hitmonchan ex",
+    "Riolu (Punch)",
+    "Tyrogue"
+  ],
+  "outcome": {
+    "owner": "loss",
+    "owner_result": "loss",
+    "method": "owner_concession",
+    "last_board_points": {
+      "owner": 0,
+      "opponent": 2
+    },
+    "final_displayed_points": null,
+    "score_limit": "The final result page shows Defeat and opponent, not numeric final statistics. Last playable board is separately preserved as0-2.",
+    "concession_basis": "Concede menu, explicit confirmation, confirmation disappearance, then Defeat. No pointer/button tap is shown.",
+    "result_evidence": {
+      "source_video": "20261012_210041000_iOS.MP4",
+      "concede_menu_seconds": 432.6,
+      "confirmation_dialog_seconds": [
+        433.2,
+        433.5
+      ],
+      "confirmation_disappearance_seconds": 433.8,
+      "defeat_banner_seconds": 434,
+      "result_page_seconds": 440,
+      "evidence_ids": [
+        "N0432_60",
+        "N0433_20",
+        "N0433_50",
+        "N0433_80",
+        "N0434_00",
+        "N0440_00",
+        "N0443_00"
+      ]
+    }
+  },
+  "capture_status": "complete_with_recording_limits",
+  "review_status": "full_source_review_submitted_for_independent_acceptance",
+  "external_writes": false,
+  "lead_acceptance": false,
+  "deck_binding": "Verified filmed QR20 slots and uninterrupted deck-to-game continuity; current live snapshot unavailable",
+  "limitations": [
+    {
+      "id": "L1",
+      "topic": "Current live deck snapshot",
+      "reason": "Exact20-card filmed QR is verified, but the lead found this new list absent from the current live artifact deck choices. No verified live-log snapshot is available.",
+      "evidence": [
+        "QR_DECODE.json",
+        "../PREPARED_FILMED_DECK.json"
+      ]
+    },
+    {
+      "id": "L2",
+      "topic": "Discard pile views",
+      "reason": "Neither player opens a discard pile anywhere in this source. Full contents, duplicates and scroll coverage stay null.",
+      "evidence": [
+        "TURN_EVIDENCE.json"
+      ]
+    },
+    {
+      "id": "L3",
+      "topic": "Opponent hidden information",
+      "reason": "Unrevealed normal and Research draws plus remaining hand/deck identities are hidden. Fans are counted only at owner starts.",
+      "evidence": [
+        "TURN_LEDGER.json"
+      ]
+    },
+    {
+      "id": "L4",
+      "topic": "Timing and fast first plays",
+      "reason": "Native seeks preserve requested source-local time; measured frame presentation time is unavailable. On turns 2,4,10,12 rapid plays/selection make some scheduled candidates unsuitable; earlier actual pre-play views are retained. Turn 14 +6 is already Defeat.",
+      "evidence": [
+        "TURN_EVIDENCE.json"
+      ]
+    }
+  ],
+  "auto_visible": false
+}

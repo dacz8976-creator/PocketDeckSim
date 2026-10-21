@@ -1,0 +1,48 @@
+{
+  "game_id": "20261002_205230000_iOS_game1",
+  "source_video": "20261002_205230000_iOS.MP4",
+  "source_sha256": "5e1e5a7a8d7c8a2e9d1e8f69f978d49f2f772fbba3a7fd2c884ae997a3fa1d8c",
+  "consequential_unresolved": [],
+  "recording_limits": [
+    {
+      "topic": "Opponent hands",
+      "status": "hidden",
+      "detail": "Every normal draw and both T1 searches remain unnamed. Only publicly played cards establish identities."
+    },
+    {
+      "topic": "Discard piles",
+      "status": "not_shown",
+      "detail": "Neither pile is opened anywhere. Eight periodic unavailable snapshots and eight partial top-card observations retained."
+    },
+    {
+      "topic": "Timing",
+      "status": "approximate_event_boundary",
+      "detail": "Action and draw-end values approximately one second; decoded native frame PTS measured separately."
+    },
+    {
+      "topic": "Auto authorship",
+      "status": "enabled_observed",
+      "detail": "No toggle or takeover seen. Retained sampling cannot exclude every unseen input."
+    },
+    {
+      "topic": "Difficulty",
+      "status": "owner_screenshot_confirmed",
+      "detail": "Advanced Step-Up Battle category via batch receipt. Category absent on this recording setup screen; no separate selector."
+    },
+    {
+      "topic": "Physical printings",
+      "status": "not_established",
+      "detail": "Deck snapshot variant labels belong to log; filmed artwork may differ."
+    },
+    {
+      "topic": "Board boundaries",
+      "status": "carried_forward_attributes",
+      "detail": "Both boards tracked by physical instance from native endpoints and actions. Some labels obscured by animations; attribute provenance is combined, not all directly visible at each boundary."
+    },
+    {
+      "topic": "Sampling",
+      "status": "full_source_locator_coverage",
+      "detail": "All one-fps locator grids inspected; native details checked selectively. Not a frame-by-frame review."
+    }
+  ]
+}

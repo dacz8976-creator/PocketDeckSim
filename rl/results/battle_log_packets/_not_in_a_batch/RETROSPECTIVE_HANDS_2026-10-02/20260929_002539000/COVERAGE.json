@@ -1,0 +1,58 @@
+{
+  "game_id": "20260929_002539000",
+  "source_sha256": "a951746c8a5226b0f575405e985c72cc3af249da0a757e0712b621d82b85aa06",
+  "source_interval_seconds": [
+    0,
+    419.068
+  ],
+  "locator_preprocessing": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\LOCATOR_PREPROCESSING.json",
+  "all_419_samples_visually_inspected": true,
+  "sampling_rate_nominal_fps": 1,
+  "sample_nominal_seconds_range": [
+    0,
+    418
+  ],
+  "grids_visually_inspected": [
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\locator_scan\\grid_000_019.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\locator_scan\\grid_020_039.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\locator_scan\\grid_040_059.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\locator_scan\\grid_060_079.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\locator_scan\\grid_080_099.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\locator_scan\\grid_100_119.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\locator_scan\\grid_120_139.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\locator_scan\\grid_140_159.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\locator_scan\\grid_160_179.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\locator_scan\\grid_180_199.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\locator_scan\\grid_200_219.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\locator_scan\\grid_220_239.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\locator_scan\\grid_240_259.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\locator_scan\\grid_260_279.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\locator_scan\\grid_280_299.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\locator_scan\\grid_300_319.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\locator_scan\\grid_320_339.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\locator_scan\\grid_340_359.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\locator_scan\\grid_360_379.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\locator_scan\\grid_380_399.jpg",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260929_002539000\\locator_scan\\grid_400_418.jpg"
+  ],
+  "grid_count": 21,
+  "card_identities_read_from_locators": false,
+  "actual_locator_frame_pts": null,
+  "locator_pts_limit": "Nominalfpsindex; actual PTS unmeasured, potential half-second outputphase. No claim ofexactlocator event PTS.",
+  "source_screening": [
+    "Setup/matchintro",
+    "All11turns and5ownerboundary/drawwindows",
+    "Cardinspections/prompts/coin/choiceanimations",
+    "Periodiccloseddiscardtops",
+    "Concession/result"
+  ],
+  "opened_discard_panel_located": false,
+  "no_effect_warning_or_decline_located": "No explicit warning/no-effect/No-response located in sampledintervals; normaltargetchoice/Cave Yes No/coinprompts captured. Do not interpret unplayedinspectedcards as visibledeclines.",
+  "sampling_limits": [
+    "Subsecondintervals between samples uninspected",
+    "Oldactual PTS unknown",
+    "Identityboard fields usefull native andacceptedprovenance; no identity from reduced cells"
+  ],
+  "source_work_status": "complete_with_recording_limits",
+  "independent_acceptance": "pending"
+}

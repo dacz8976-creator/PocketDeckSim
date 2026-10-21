@@ -1,0 +1,86 @@
+{
+  "video_basename": "20261001_025606000_iOS.MP4",
+  "reviewer": "sol_auto_evening_025606000",
+  "uncovered_intervals": [],
+  "outcome_uncertain": false,
+  "material_unresolved_events": [],
+  "observation_limits": [
+    {
+      "kind": "hidden_information",
+      "detail": "Full deck lists and hidden opponent hand contents are not reconstructed. Gholdengo ex is in the challenge title but never played visibly."
+    },
+    {
+      "kind": "printing_identity",
+      "detail": "Mechanically relevant attacks/abilities/HP/costs are readable natively; exact catalog IDs and alternate-art identifiers remain unspecified."
+    },
+    {
+      "kind": "recording_clock",
+      "detail": "Source name uses October 1; local review/upload is September 30 America/Chicago. Filename clock basis is unknown."
+    },
+    {
+      "kind": "alternate_line",
+      "seconds": [
+        250,
+        273
+      ],
+      "detail": "A hypothetical Mega Scizor attack into Rocky Helmet and simultaneous-knockout adjudication were not observed. No hypothetical result is asserted."
+    },
+    {
+      "kind": "cadence",
+      "detail": "Narrative phase boundaries are approximate overview ranges; native frame names carry exact source seek timestamps."
+    }
+  ],
+  "resolved_native_gaps": [
+    {
+      "seconds": [
+        74,
+        94
+      ],
+      "resolution": "Ignition Fire to Active plus subsequent ordinary Fire to Charmeleon; settled two/one/zero Fire owner state confirmed."
+    },
+    {
+      "seconds": [
+        114,
+        125
+      ],
+      "resolution": "Charmeleon second Fire and Rocky Helmet; three-head Fury Swipes120 confirmed."
+    },
+    {
+      "seconds": [
+        194,
+        205
+      ],
+      "resolution": "Flame Patch is drawn and retained. Rainbow Cave is played over Training Area and activated; Fire is regenerated as Fire."
+    },
+    {
+      "seconds": [
+        236,
+        246
+      ],
+      "resolution": "Victini is turn12 draw and then bench play; enlarged card is not a second Rainbow Cave. No coin reroll on Slash."
+    },
+    {
+      "seconds": [
+        254,
+        260
+      ],
+      "resolution": "Skyla at255.00 is the switch mechanism, not retreat. Mega keeps three Metal; Aegislash has two on switch and three after attachment."
+    },
+    {
+      "seconds": [
+        264,
+        272
+      ],
+      "resolution": "Superb Shield80 knocks Charmeleon out. Rocky Helmet20 hits Aegislash140 to120, not benched Mega20."
+    },
+    {
+      "seconds": [
+        280.9,
+        281.5
+      ],
+      "resolution": "Final result fields shown: defeat, second,13 turns,2-3 points,410 damage, Simisear Card of the Game."
+    }
+  ],
+  "lead_acceptance": "accepted",
+  "current_status": "full_battle_review_complete"
+}

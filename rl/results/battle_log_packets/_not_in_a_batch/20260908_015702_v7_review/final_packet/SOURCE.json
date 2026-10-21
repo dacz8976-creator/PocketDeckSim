@@ -1,0 +1,391 @@
+{
+  "filename": "20260908_015702000_iOS.MP4",
+  "source_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260908_015702000_iOS.MP4",
+  "sha256": "3FBD29A85A17B5F4B4F7DDD3D7EE15B2177503FF3E15C56314DE9CC60EDCFB2D",
+  "bytes": 507514203,
+  "duration_seconds": 272.803,
+  "review_status": "full_battle_review_complete",
+  "index_update_performed": true,
+  "media_move_performed": true,
+  "model": "Gemini 3.8 Flash primary; Sol routine review; Codex lead reconciliation",
+  "reviewer": "Lead accepted after selective frame verification",
+  "recording_type": "linked_continuation",
+  "relationships": [
+    {
+      "type": "continues",
+      "filename": "20260908_015201000_iOS.MP4",
+      "observation": "The prior clip's final board and this clip's opening board match exactly on Opponent Turn 3."
+    }
+  ],
+  "battle_identity": {
+    "opponent_label": {
+      "state": "observed",
+      "value": "Opponent",
+      "timestamp_seconds": 0.8,
+      "observation": "Opponent nameplate shows Opponent."
+    },
+    "opening_player": {
+      "state": "observed",
+      "value": "Duraludon",
+      "timestamp_seconds": 0.0,
+      "observation": "Player active is Duraludon with 100 HP and 1 Metal Energy."
+    },
+    "opening_opponent": {
+      "state": "observed",
+      "value": "Team Rocket's Rattata",
+      "timestamp_seconds": 0.0,
+      "observation": "Opponent active is Team Rocket's Rattata with 40 HP."
+    },
+    "outcome": {
+      "state": "observed",
+      "value": "player_win",
+      "timestamp_seconds": 269.0,
+      "observation": "Final knockout awards two points and the player's displayed score reaches the three-point cap."
+    },
+    "result_text": {
+      "state": "not_shown",
+      "value": null,
+      "timestamp_seconds": 272.803,
+      "observation": "The recording ends on a white transition before a literal result banner appears."
+    },
+    "version": 1
+  },
+  "evidence_audit": {
+    "version": 1,
+    "opponent_label": "Opponent",
+    "match_mode": {
+      "value": "unknown",
+      "evidence": [
+        {
+          "timestamp": "00:00.800",
+          "observation": "The visible nameplate says Opponent but no mode label is shown."
+        }
+      ],
+      "uncertainty_id": "U1"
+    },
+    "opponent_ai": {
+      "value": "unknown",
+      "evidence": [
+        {
+          "timestamp": "00:00.800",
+          "observation": "No reliable pilot-type label is visible."
+        }
+      ],
+      "uncertainty_id": "U1"
+    },
+    "auto": {
+      "value": "on",
+      "evidence": [
+        {
+          "timestamp": "00:54.000",
+          "observation": "The player toggles Auto on and the green checked state is visible."
+        }
+      ],
+      "uncertainty_id": null
+    },
+    "terminal": {
+      "outcome": "player_win",
+      "outcome_evidence": [
+        {
+          "timestamp": "04:29.000",
+          "observation": "The plus-two animation resolves and the player's displayed score reaches 3 while the opponent remains at 2."
+        }
+      ],
+      "result_text": null,
+      "result_text_evidence": [
+        {
+          "timestamp": "04:32.600",
+          "observation": "The screen is fully white; no literal result text is visible."
+        }
+      ],
+      "last_frame": {
+        "timestamp": "04:32.803",
+        "observation": "Final frame is the white transition."
+      },
+      "uncertainty_id": null
+    },
+    "pokemon": [
+      {
+        "id": "player-1",
+        "owner": "player",
+        "initial": {"Metal": 1},
+        "initial_evidence": {"timestamp": "00:00.000", "observation": "Duraludon visibly has 1 Metal Energy."},
+        "final": {},
+        "final_evidence": {"timestamp": "01:31.600", "observation": "Duraludon is knocked out and no longer has attached Energy."},
+        "uncertainty_id": null
+      },
+      {
+        "id": "player-2",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {"timestamp": "00:00.000", "observation": "Bench Axew has no attached Energy."},
+        "final": {"Metal": 2},
+        "final_evidence": {"timestamp": "04:21.000", "observation": "Active Haxorus visibly has 2 Metal Energy after Dragon's Blessing."},
+        "uncertainty_id": null
+      },
+      {
+        "id": "player-3",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {"timestamp": "00:00.000", "observation": "First bench Dratini has no attached Energy."},
+        "final": {},
+        "final_evidence": {"timestamp": "03:30.000", "observation": "This Dratini is knocked out from the Bench with no attached Energy."},
+        "uncertainty_id": null
+      },
+      {
+        "id": "player-4",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {"timestamp": "00:43.000", "observation": "Second Dratini is benched with no attached Energy."},
+        "final": {},
+        "final_evidence": {"timestamp": "04:31.000", "observation": "Its evolved Dragonair remains on the Bench with no attached Energy."},
+        "uncertainty_id": null
+      },
+      {
+        "id": "player-5",
+        "owner": "player",
+        "initial": {},
+        "initial_evidence": {"timestamp": "02:44.200", "observation": "Second Axew is benched with no attached Energy."},
+        "final": {},
+        "final_evidence": {"timestamp": "04:31.000", "observation": "Axew remains on the Bench with no attached Energy."},
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-1",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {"timestamp": "00:00.000", "observation": "Initially active Team Rocket's Rattata has no attached Energy."},
+        "final": {},
+        "final_evidence": {"timestamp": "03:13.000", "observation": "After evolving into Team Rocket's Raticate ex, it shows no attached Energy."},
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-2",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {"timestamp": "00:00.000", "observation": "Bench Chien-Pao ex has no attached Energy."},
+        "final": {},
+        "final_evidence": {"timestamp": "04:26.600", "observation": "Chien-Pao ex is knocked out and no longer has attached Energy."},
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-3",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {"timestamp": "00:00.000", "observation": "First Corphish has no attached Energy."},
+        "final": {},
+        "final_evidence": {"timestamp": "02:54.600", "observation": "Its evolved Crawdaunt is knocked out and no longer has attached Energy."},
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-4",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {"timestamp": "00:00.000", "observation": "Second bench Team Rocket's Rattata has no attached Energy."},
+        "final": {"Fighting": 1},
+        "final_evidence": {"timestamp": "04:31.000", "observation": "Its evolved Team Rocket's Raticate ex retains the Fighting Energy taken from Dratini."},
+        "uncertainty_id": null
+      },
+      {
+        "id": "opp-5",
+        "owner": "opponent",
+        "initial": {},
+        "initial_evidence": {"timestamp": "03:22.800", "observation": "Second Corphish is benched with no attached Energy."},
+        "final": {},
+        "final_evidence": {"timestamp": "04:31.000", "observation": "Its evolved Crawdaunt remains on the Bench with no attached Energy."},
+        "uncertainty_id": null
+      }
+    ],
+    "energy_events": [
+      {
+        "turn": 3, "pokemon_id": "opp-2", "kind": "manual", "before": {}, "after": {"Water": 1},
+        "before_evidence": {"timestamp": "00:06.000", "observation": "Active Chien-Pao ex has no Energy."},
+        "action_evidence": {"timestamp": "00:07.000", "observation": "Water Energy moves from the Energy Zone to Chien-Pao ex."},
+        "after_evidence": {"timestamp": "00:07.400", "observation": "Chien-Pao ex shows 1 Water Energy."},
+        "attachment_evidence": "movement_and_attached_icons", "uncertainty_id": null
+      },
+      {
+        "turn": 4, "pokemon_id": "player-1", "kind": "manual", "before": {"Metal": 1}, "after": {"Fighting": 1, "Metal": 1},
+        "before_evidence": {"timestamp": "00:46.000", "observation": "Duraludon shows 1 Metal Energy."},
+        "action_evidence": {"timestamp": "00:47.000", "observation": "Fighting Energy moves to Duraludon."},
+        "after_evidence": {"timestamp": "00:48.200", "observation": "Duraludon shows 1 Fighting and 1 Metal Energy."},
+        "attachment_evidence": "movement_and_attached_icons", "uncertainty_id": null
+      },
+      {
+        "turn": 5, "pokemon_id": "player-1", "kind": "effect", "cause": "Crawdaunt's Unruly Claw", "before": {"Fighting": 1, "Metal": 1}, "after": {"Fighting": 1},
+        "before_evidence": {"timestamp": "00:58.800", "observation": "Duraludon shows 1 Fighting and 1 Metal Energy."},
+        "action_evidence": {"timestamp": "00:59.400", "observation": "Unruly Claw activates and removes the Metal Energy."},
+        "after_evidence": {"timestamp": "01:00.600", "observation": "Duraludon visibly retains only 1 Fighting Energy."},
+        "uncertainty_id": null
+      },
+      {
+        "turn": 5, "pokemon_id": "opp-2", "kind": "manual", "before": {"Water": 1}, "after": {"Water": 2},
+        "before_evidence": {"timestamp": "01:01.000", "observation": "Chien-Pao ex shows 1 Water Energy."},
+        "action_evidence": {"timestamp": "01:02.000", "observation": "A second Water Energy moves to Chien-Pao ex."},
+        "after_evidence": {"timestamp": "01:02.400", "observation": "Chien-Pao ex shows 2 Water Energy."},
+        "attachment_evidence": "movement_and_attached_icons", "uncertainty_id": null
+      },
+      {
+        "turn": 6, "pokemon_id": "player-1", "kind": "manual", "before": {"Fighting": 1}, "after": {"Fighting": 1, "Metal": 1},
+        "before_evidence": {"timestamp": "01:12.400", "observation": "Duraludon shows 1 Fighting Energy."},
+        "action_evidence": {"timestamp": "01:13.000", "observation": "Metal Energy moves to Duraludon."},
+        "after_evidence": {"timestamp": "01:13.400", "observation": "Duraludon shows 1 Fighting and 1 Metal Energy."},
+        "attachment_evidence": "movement_and_attached_icons", "uncertainty_id": null
+      },
+      {
+        "turn": 7, "pokemon_id": "opp-2", "kind": "manual", "before": {"Water": 2}, "after": {"Water": 3},
+        "before_evidence": {"timestamp": "01:20.400", "observation": "Chien-Pao ex shows 2 Water Energy."},
+        "action_evidence": {"timestamp": "01:21.000", "observation": "A third Water Energy moves to Chien-Pao ex."},
+        "after_evidence": {"timestamp": "01:21.400", "observation": "Chien-Pao ex shows 3 Water Energy."},
+        "attachment_evidence": "movement_and_attached_icons", "uncertainty_id": null
+      },
+      {
+        "turn": 7, "pokemon_id": "opp-2", "kind": "discard", "before": {"Water": 3}, "after": {},
+        "before_evidence": {"timestamp": "01:26.400", "observation": "Chien-Pao ex shows 3 Water Energy."},
+        "action_evidence": {"timestamp": "01:26.800", "observation": "Diving Icicles discards all attached Water Energy."},
+        "after_evidence": {"timestamp": "01:30.000", "observation": "Chien-Pao ex shows no attached Energy."},
+        "uncertainty_id": null
+      },
+      {
+        "turn": 7, "pokemon_id": "player-1", "kind": "discard", "before": {"Fighting": 1, "Metal": 1}, "after": {},
+        "before_evidence": {"timestamp": "01:28.000", "observation": "Duraludon shows 1 Fighting and 1 Metal Energy."},
+        "action_evidence": {"timestamp": "01:29.400", "observation": "Duraludon is knocked out."},
+        "after_evidence": {"timestamp": "01:31.400", "observation": "Duraludon and its attached Energy leave play."},
+        "uncertainty_id": null
+      },
+      {
+        "turn": 8, "pokemon_id": "player-3", "kind": "manual", "before": {}, "after": {"Fighting": 1},
+        "before_evidence": {"timestamp": "01:39.000", "observation": "Active Dratini has no Energy."},
+        "action_evidence": {"timestamp": "01:48.400", "observation": "Fighting Energy moves to active Dratini."},
+        "after_evidence": {"timestamp": "01:49.000", "observation": "Dratini shows 1 Fighting Energy."},
+        "attachment_evidence": "movement_and_attached_icons", "uncertainty_id": null
+      },
+      {
+        "turn": 9, "pokemon_id": "player-3", "kind": "effect", "cause": "Team Rocket's Raticate ex's Thieving Incisors", "before": {"Fighting": 1}, "after": {},
+        "before_evidence": {"timestamp": "01:57.600", "observation": "Active Dratini shows 1 Fighting Energy."},
+        "action_evidence": {"timestamp": "01:58.800", "observation": "Thieving Incisors moves Dratini's Fighting Energy away."},
+        "after_evidence": {"timestamp": "01:59.400", "observation": "Dratini shows no attached Energy."},
+        "uncertainty_id": null
+      },
+      {
+        "turn": 9, "pokemon_id": "opp-4", "kind": "effect", "cause": "Team Rocket's Raticate ex's Thieving Incisors", "before": {}, "after": {"Fighting": 1},
+        "before_evidence": {"timestamp": "01:57.600", "observation": "Newly evolved Team Rocket's Raticate ex has no Energy."},
+        "action_evidence": {"timestamp": "01:58.800", "observation": "Thieving Incisors moves the Fighting Energy to Raticate ex."},
+        "after_evidence": {"timestamp": "01:59.400", "observation": "Raticate ex shows 1 Fighting Energy."},
+        "uncertainty_id": null
+      },
+      {
+        "turn": 9, "pokemon_id": "opp-2", "kind": "manual", "before": {}, "after": {"Water": 1},
+        "before_evidence": {"timestamp": "01:59.600", "observation": "Active Chien-Pao ex has no Energy."},
+        "action_evidence": {"timestamp": "02:00.000", "observation": "Water Energy moves to active Chien-Pao ex."},
+        "after_evidence": {"timestamp": "02:00.400", "observation": "Chien-Pao ex shows 1 Water Energy."},
+        "attachment_evidence": "movement_and_attached_icons", "uncertainty_id": null
+      },
+      {
+        "turn": 10, "pokemon_id": "player-2", "kind": "manual", "before": {}, "after": {"Fighting": 1},
+        "before_evidence": {"timestamp": "02:08.800", "observation": "Bench Haxorus has no Energy."},
+        "action_evidence": {"timestamp": "02:09.400", "observation": "Fighting Energy moves to Haxorus."},
+        "after_evidence": {"timestamp": "02:10.000", "observation": "Haxorus shows 1 Fighting Energy."},
+        "attachment_evidence": "movement_and_attached_icons", "uncertainty_id": null
+      },
+      {
+        "turn": 11, "pokemon_id": "opp-3", "kind": "manual", "before": {}, "after": {"Water": 1},
+        "before_evidence": {"timestamp": "02:12.600", "observation": "Active Crawdaunt has no Energy."},
+        "action_evidence": {"timestamp": "02:13.200", "observation": "Water Energy moves to Crawdaunt."},
+        "after_evidence": {"timestamp": "02:13.600", "observation": "Crawdaunt shows 1 Water Energy."},
+        "attachment_evidence": "movement_and_attached_icons", "uncertainty_id": null
+      },
+      {
+        "turn": 12, "pokemon_id": "player-3", "kind": "manual", "before": {}, "after": {"Metal": 1},
+        "before_evidence": {"timestamp": "02:19.750", "observation": "Active Dratini shows no attached Energy."},
+        "action_evidence": {"timestamp": "02:20.250", "observation": "Metal Energy moves to active Dratini."},
+        "after_evidence": {"timestamp": "02:20.500", "observation": "Dratini visibly shows 1 Metal Energy before Slam."},
+        "attachment_evidence": "movement_and_attached_icons", "uncertainty_id": null
+      },
+      {
+        "turn": 14, "pokemon_id": "player-3", "kind": "retreat", "before": {"Metal": 1}, "after": {},
+        "before_evidence": {"timestamp": "02:42.000", "observation": "Active Dratini visibly retains 1 Metal Energy."},
+        "action_evidence": {"timestamp": "02:42.500", "observation": "Dratini pays its Metal Energy to retreat."},
+        "after_evidence": {"timestamp": "02:43.000", "observation": "Dratini is on the Bench with no attached Energy and Haxorus is Active."},
+        "uncertainty_id": null
+      },
+      {
+        "turn": 14, "pokemon_id": "player-2", "kind": "manual", "before": {"Fighting": 1}, "after": {"Fighting": 2},
+        "before_evidence": {"timestamp": "02:44.800", "observation": "Active Haxorus shows 1 Fighting Energy."},
+        "action_evidence": {"timestamp": "02:45.400", "observation": "A second Fighting Energy moves to Haxorus."},
+        "after_evidence": {"timestamp": "02:45.800", "observation": "Haxorus shows 2 Fighting Energy."},
+        "attachment_evidence": "movement_and_attached_icons", "uncertainty_id": null
+      },
+      {
+        "turn": 14, "pokemon_id": "opp-3", "kind": "discard", "before": {"Water": 1}, "after": {},
+        "before_evidence": {"timestamp": "02:51.600", "observation": "Crawdaunt shows 1 Water Energy."},
+        "action_evidence": {"timestamp": "02:52.400", "observation": "Frenzied Blade knocks out Crawdaunt."},
+        "after_evidence": {"timestamp": "02:54.600", "observation": "Crawdaunt and its attached Energy leave play."},
+        "uncertainty_id": null
+      },
+      {
+        "turn": 15, "pokemon_id": "opp-2", "kind": "manual", "before": {"Water": 1}, "after": {"Water": 2},
+        "before_evidence": {"timestamp": "03:02.400", "observation": "Active Chien-Pao ex visibly retains 1 Water Energy from Turn 9."},
+        "action_evidence": {"timestamp": "03:06.200", "observation": "A second Water Energy moves to Chien-Pao ex."},
+        "after_evidence": {"timestamp": "03:06.600", "observation": "Chien-Pao ex shows 2 Water Energy."},
+        "attachment_evidence": "movement_and_attached_icons", "uncertainty_id": null
+      },
+      {
+        "turn": 15, "pokemon_id": "player-2", "kind": "discard", "before": {"Fighting": 2}, "after": {},
+        "before_evidence": {"timestamp": "03:13.000", "observation": "Haxorus visibly retains 2 Fighting Energy."},
+        "action_evidence": {"timestamp": "03:20.000", "observation": "Team Rocket Grunt's two heads remove both attached Fighting Energy."},
+        "after_evidence": {"timestamp": "03:22.000", "observation": "Haxorus shows no attached Energy."},
+        "uncertainty_id": null
+      },
+      {
+        "turn": 15, "pokemon_id": "opp-2", "kind": "discard", "before": {"Water": 2}, "after": {},
+        "before_evidence": {"timestamp": "03:26.400", "observation": "Chien-Pao ex shows 2 Water Energy."},
+        "action_evidence": {"timestamp": "03:26.800", "observation": "Diving Icicles discards both attached Water Energy."},
+        "after_evidence": {"timestamp": "03:30.000", "observation": "Chien-Pao ex shows no attached Energy."},
+        "uncertainty_id": null
+      },
+      {
+        "turn": 16, "pokemon_id": "player-2", "kind": "effect", "cause": "Dragonair's Dragon's Blessing", "before": {}, "after": {"Metal": 1},
+        "before_evidence": {"timestamp": "03:41.000", "observation": "Haxorus shows no attached Energy."},
+        "action_evidence": {"timestamp": "03:41.500", "observation": "Dragonair activates Dragon's Blessing and selects Metal from the discard pile."},
+        "after_evidence": {"timestamp": "03:45.000", "observation": "Haxorus shows 1 Metal Energy from Dragon's Blessing."},
+        "uncertainty_id": null
+      },
+      {
+        "turn": 16, "pokemon_id": "player-2", "kind": "manual", "before": {"Metal": 1}, "after": {"Metal": 2},
+        "before_evidence": {"timestamp": "03:45.000", "observation": "Haxorus shows 1 Metal Energy."},
+        "action_evidence": {"timestamp": "03:45.750", "observation": "A second Metal Energy moves from the Energy Zone to Haxorus."},
+        "after_evidence": {"timestamp": "03:46.250", "observation": "Haxorus shows 2 Metal Energy."},
+        "attachment_evidence": "movement_and_attached_icons", "uncertainty_id": null
+      },
+      {
+        "turn": 17, "pokemon_id": "opp-2", "kind": "manual", "before": {}, "after": {"Water": 1},
+        "before_evidence": {"timestamp": "03:53.600", "observation": "Chien-Pao ex shows no attached Energy."},
+        "action_evidence": {"timestamp": "03:54.400", "observation": "Water Energy moves to Chien-Pao ex."},
+        "after_evidence": {"timestamp": "03:54.800", "observation": "Chien-Pao ex shows 1 Water Energy."},
+        "attachment_evidence": "movement_and_attached_icons", "uncertainty_id": null
+      },
+      {
+        "turn": 17, "pokemon_id": "player-2", "kind": "effect", "cause": "Crawdaunt's Unruly Claw", "before": {"Metal": 2}, "after": {"Metal": 1},
+        "before_evidence": {"timestamp": "03:55.200", "observation": "Haxorus shows 2 Metal Energy."},
+        "action_evidence": {"timestamp": "03:56.200", "observation": "Crawdaunt's Unruly Claw removes 1 Metal Energy from Haxorus."},
+        "after_evidence": {"timestamp": "03:57.200", "observation": "Haxorus visibly retains 1 Metal Energy."},
+        "uncertainty_id": null
+      },
+      {
+        "turn": 18, "pokemon_id": "player-2", "kind": "effect", "cause": "Dragonair's Dragon's Blessing", "before": {"Metal": 1}, "after": {"Metal": 2},
+        "before_evidence": {"timestamp": "04:18.200", "observation": "Haxorus shows 1 Metal Energy."},
+        "action_evidence": {"timestamp": "04:19.000", "observation": "Dragon's Blessing attaches Metal Energy from the discard pile to Haxorus."},
+        "after_evidence": {"timestamp": "04:20.000", "observation": "Haxorus shows 2 Metal Energy."},
+        "uncertainty_id": null
+      },
+      {
+        "turn": 18, "pokemon_id": "opp-2", "kind": "discard", "before": {"Water": 1}, "after": {},
+        "before_evidence": {"timestamp": "04:24.000", "observation": "Chien-Pao ex shows 1 Water Energy."},
+        "action_evidence": {"timestamp": "04:24.400", "observation": "Frenzied Blade knocks out Chien-Pao ex."},
+        "after_evidence": {"timestamp": "04:26.600", "observation": "Chien-Pao ex and its attached Energy leave play."},
+        "uncertainty_id": null
+      }
+    ]
+  }
+}

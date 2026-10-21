@@ -1,0 +1,878 @@
+PGSTEP KW-261005_032857000-t06 seed 1 free 0
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1621.366666666666788 EndTurn
+PGDUMP       -561.866666666666788 Attach:1Metal@0 zone
+PGDUMP      -2180.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -561.866666666666788 Play:Lucky Ice Pop
+PGDUMP      -1285.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2180.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 1 free 1
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=5
+PGDUMP      -1542.366666666666788 EndTurn
+PGDUMP       -562.366666666666788 Attach:1Metal@0 zone
+PGDUMP      -2161.366666666666788 Attach:1Metal@1 zone
+PGDUMP      -1086.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2161.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 1 free 2
+PGCAND EndTurn
+PGCAND Attack:Slicing Blade
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=4
+PGDUMP      -1195.700000000000045 EndTurn
+PGDUMP       -562.366666666666788 Attack:Slicing Blade
+PGDUMP       -453.366666666666674 Play:Metal Core Barrier
+PGDUMP      -2965.699999999999818 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 1 free 3
+PGCAND Tool:Metal Core Barrier@0
+PGCAND Tool:Metal Core Barrier@1
+PGDUMP actor=0 candidates=2
+PGDUMP       -453.366666666666674 Tool:Metal Core Barrier@0
+PGDUMP       -563.366666666666788 Tool:Metal Core Barrier@1
+PGSTEP KW-261005_032857000-t06 seed 1 free 4
+PGCAND EndTurn
+PGCAND Attack:Slicing Blade
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=3
+PGDUMP      -1086.700000000000045 EndTurn
+PGDUMP       -453.366666666666674 Attack:Slicing Blade
+PGDUMP      -2975.699999999999818 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 1 free 5
+PGSTEP KW-261005_032857000-t06 seed 2 free 0
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1621.366666666666788 EndTurn
+PGDUMP       -561.866666666666788 Attach:1Metal@0 zone
+PGDUMP      -2180.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -561.866666666666788 Play:Lucky Ice Pop
+PGDUMP      -1285.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2180.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 2 free 1
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1541.366666666666788 EndTurn
+PGDUMP       -461.866666666666674 Attach:1Metal@0 zone
+PGDUMP      -2160.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -461.866666666666674 Play:Lucky Ice Pop
+PGDUMP      -1085.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2160.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 2 free 2
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1461.366666666666788 EndTurn
+PGDUMP       -361.866666666666617 Attach:1Metal@0 zone
+PGDUMP      -2132.116666666666788 Attach:1Metal@1 zone
+PGDUMP       -361.866666666666617 Play:Lucky Ice Pop
+PGDUMP       -985.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2140.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 2 free 3
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1381.366666666666788 EndTurn
+PGDUMP       -161.866666666666646 Attach:1Metal@0 zone
+PGDUMP      -2041.866666666666788 Attach:1Metal@1 zone
+PGDUMP       -161.866666666666646 Play:Lucky Ice Pop
+PGDUMP       -885.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2120.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 2 free 4
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=5
+PGDUMP      -1201.366666666666788 EndTurn
+PGDUMP       -161.366666666666646 Attach:1Metal@0 zone
+PGDUMP      -2000.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -785.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2000.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 2 free 5
+PGCAND EndTurn
+PGCAND Attack:Slicing Blade
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=4
+PGDUMP       -794.700000000000045 EndTurn
+PGDUMP       -161.366666666666646 Attack:Slicing Blade
+PGDUMP       -152.366666666666646 Play:Metal Core Barrier
+PGDUMP      -2744.699999999999818 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 2 free 6
+PGCAND Tool:Metal Core Barrier@0
+PGCAND Tool:Metal Core Barrier@1
+PGDUMP actor=0 candidates=2
+PGDUMP       -152.366666666666646 Tool:Metal Core Barrier@0
+PGDUMP       -162.366666666666646 Tool:Metal Core Barrier@1
+PGSTEP KW-261005_032857000-t06 seed 2 free 7
+PGCAND EndTurn
+PGCAND Attack:Slicing Blade
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=3
+PGDUMP       -785.700000000000045 EndTurn
+PGDUMP       -152.366666666666646 Attack:Slicing Blade
+PGDUMP      -2754.699999999999818 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 2 free 8
+PGSTEP KW-261005_032857000-t06 seed 3 free 0
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1621.366666666666788 EndTurn
+PGDUMP       -561.866666666666788 Attach:1Metal@0 zone
+PGDUMP      -2180.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -561.866666666666788 Play:Lucky Ice Pop
+PGDUMP      -1285.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2180.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 3 free 1
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1541.366666666666788 EndTurn
+PGDUMP       -461.866666666666674 Attach:1Metal@0 zone
+PGDUMP      -2160.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -461.866666666666674 Play:Lucky Ice Pop
+PGDUMP      -1085.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2160.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 3 free 2
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1461.366666666666788 EndTurn
+PGDUMP       -361.866666666666617 Attach:1Metal@0 zone
+PGDUMP      -2132.116666666666788 Attach:1Metal@1 zone
+PGDUMP       -361.866666666666617 Play:Lucky Ice Pop
+PGDUMP       -985.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2140.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 3 free 3
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1381.366666666666788 EndTurn
+PGDUMP       -161.866666666666646 Attach:1Metal@0 zone
+PGDUMP      -2041.866666666666788 Attach:1Metal@1 zone
+PGDUMP       -161.866666666666646 Play:Lucky Ice Pop
+PGDUMP       -885.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2120.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 3 free 4
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=5
+PGDUMP      -1201.366666666666788 EndTurn
+PGDUMP       -161.366666666666646 Attach:1Metal@0 zone
+PGDUMP      -2000.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -785.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2000.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 3 free 5
+PGCAND EndTurn
+PGCAND Attack:Slicing Blade
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=4
+PGDUMP       -794.700000000000045 EndTurn
+PGDUMP       -161.366666666666646 Attack:Slicing Blade
+PGDUMP       -152.366666666666646 Play:Metal Core Barrier
+PGDUMP      -2744.699999999999818 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 3 free 6
+PGCAND Tool:Metal Core Barrier@0
+PGCAND Tool:Metal Core Barrier@1
+PGDUMP actor=0 candidates=2
+PGDUMP       -152.366666666666646 Tool:Metal Core Barrier@0
+PGDUMP       -162.366666666666646 Tool:Metal Core Barrier@1
+PGSTEP KW-261005_032857000-t06 seed 3 free 7
+PGCAND EndTurn
+PGCAND Attack:Slicing Blade
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=3
+PGDUMP       -785.700000000000045 EndTurn
+PGDUMP       -152.366666666666646 Attack:Slicing Blade
+PGDUMP      -2754.699999999999818 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 3 free 8
+PGSTEP KW-261005_032857000-t06 seed 4 free 0
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1621.366666666666788 EndTurn
+PGDUMP       -561.866666666666788 Attach:1Metal@0 zone
+PGDUMP      -2180.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -561.866666666666788 Play:Lucky Ice Pop
+PGDUMP      -1285.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2180.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 4 free 1
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=5
+PGDUMP      -1542.366666666666788 EndTurn
+PGDUMP       -562.366666666666788 Attach:1Metal@0 zone
+PGDUMP      -2161.366666666666788 Attach:1Metal@1 zone
+PGDUMP      -1086.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2161.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 4 free 2
+PGCAND EndTurn
+PGCAND Attack:Slicing Blade
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=4
+PGDUMP      -1195.700000000000045 EndTurn
+PGDUMP       -562.366666666666788 Attack:Slicing Blade
+PGDUMP       -453.366666666666674 Play:Metal Core Barrier
+PGDUMP      -2965.699999999999818 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 4 free 3
+PGCAND Tool:Metal Core Barrier@0
+PGCAND Tool:Metal Core Barrier@1
+PGDUMP actor=0 candidates=2
+PGDUMP       -453.366666666666674 Tool:Metal Core Barrier@0
+PGDUMP       -563.366666666666788 Tool:Metal Core Barrier@1
+PGSTEP KW-261005_032857000-t06 seed 4 free 4
+PGCAND EndTurn
+PGCAND Attack:Slicing Blade
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=3
+PGDUMP      -1086.700000000000045 EndTurn
+PGDUMP       -453.366666666666674 Attack:Slicing Blade
+PGDUMP      -2975.699999999999818 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 4 free 5
+PGSTEP KW-261005_032857000-t06 seed 5 free 0
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1621.366666666666788 EndTurn
+PGDUMP       -561.866666666666788 Attach:1Metal@0 zone
+PGDUMP      -2180.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -561.866666666666788 Play:Lucky Ice Pop
+PGDUMP      -1285.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2180.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 5 free 1
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1541.366666666666788 EndTurn
+PGDUMP       -461.866666666666674 Attach:1Metal@0 zone
+PGDUMP      -2160.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -461.866666666666674 Play:Lucky Ice Pop
+PGDUMP      -1085.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2160.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 5 free 2
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1461.366666666666788 EndTurn
+PGDUMP       -361.866666666666617 Attach:1Metal@0 zone
+PGDUMP      -2132.116666666666788 Attach:1Metal@1 zone
+PGDUMP       -361.866666666666617 Play:Lucky Ice Pop
+PGDUMP       -985.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2140.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 5 free 3
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1381.366666666666788 EndTurn
+PGDUMP       -161.866666666666646 Attach:1Metal@0 zone
+PGDUMP      -2041.866666666666788 Attach:1Metal@1 zone
+PGDUMP       -161.866666666666646 Play:Lucky Ice Pop
+PGDUMP       -885.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2120.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 5 free 4
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=5
+PGDUMP      -1202.366666666666788 EndTurn
+PGDUMP       -162.366666666666646 Attach:1Metal@0 zone
+PGDUMP      -2001.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -786.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2001.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 5 free 5
+PGCAND EndTurn
+PGCAND Attack:Slicing Blade
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=4
+PGDUMP       -795.700000000000045 EndTurn
+PGDUMP       -162.366666666666646 Attack:Slicing Blade
+PGDUMP       -153.366666666666646 Play:Metal Core Barrier
+PGDUMP      -2745.699999999999818 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 5 free 6
+PGCAND Tool:Metal Core Barrier@0
+PGCAND Tool:Metal Core Barrier@1
+PGDUMP actor=0 candidates=2
+PGDUMP       -153.366666666666646 Tool:Metal Core Barrier@0
+PGDUMP       -163.366666666666646 Tool:Metal Core Barrier@1
+PGSTEP KW-261005_032857000-t06 seed 5 free 7
+PGCAND EndTurn
+PGCAND Attack:Slicing Blade
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=3
+PGDUMP       -786.700000000000045 EndTurn
+PGDUMP       -153.366666666666646 Attack:Slicing Blade
+PGDUMP      -2755.699999999999818 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 5 free 8
+PGSTEP KW-261005_032857000-t06 seed 6 free 0
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1621.366666666666788 EndTurn
+PGDUMP       -561.866666666666788 Attach:1Metal@0 zone
+PGDUMP      -2180.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -561.866666666666788 Play:Lucky Ice Pop
+PGDUMP      -1285.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2180.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 6 free 1
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1541.366666666666788 EndTurn
+PGDUMP       -461.866666666666674 Attach:1Metal@0 zone
+PGDUMP      -2160.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -461.866666666666674 Play:Lucky Ice Pop
+PGDUMP      -1085.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2160.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 6 free 2
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=5
+PGDUMP      -1462.366666666666788 EndTurn
+PGDUMP       -462.366666666666674 Attach:1Metal@0 zone
+PGDUMP      -2141.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -986.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2141.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 6 free 3
+PGCAND EndTurn
+PGCAND Attack:Slicing Blade
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=4
+PGDUMP      -1095.700000000000045 EndTurn
+PGDUMP       -462.366666666666674 Attack:Slicing Blade
+PGDUMP       -353.366666666666674 Play:Metal Core Barrier
+PGDUMP      -2925.699999999999818 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 6 free 4
+PGCAND Tool:Metal Core Barrier@0
+PGCAND Tool:Metal Core Barrier@1
+PGDUMP actor=0 candidates=2
+PGDUMP       -353.366666666666674 Tool:Metal Core Barrier@0
+PGDUMP       -463.366666666666674 Tool:Metal Core Barrier@1
+PGSTEP KW-261005_032857000-t06 seed 6 free 5
+PGCAND EndTurn
+PGCAND Attack:Slicing Blade
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=3
+PGDUMP       -986.700000000000045 EndTurn
+PGDUMP       -353.366666666666674 Attack:Slicing Blade
+PGDUMP      -2935.699999999999818 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 6 free 6
+PGSTEP KW-261005_032857000-t06 seed 7 free 0
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1621.366666666666788 EndTurn
+PGDUMP       -561.866666666666788 Attach:1Metal@0 zone
+PGDUMP      -2180.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -561.866666666666788 Play:Lucky Ice Pop
+PGDUMP      -1285.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2180.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 7 free 1
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1541.366666666666788 EndTurn
+PGDUMP       -461.866666666666674 Attach:1Metal@0 zone
+PGDUMP      -2160.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -461.866666666666674 Play:Lucky Ice Pop
+PGDUMP      -1085.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2160.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 7 free 2
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1461.366666666666788 EndTurn
+PGDUMP       -361.866666666666617 Attach:1Metal@0 zone
+PGDUMP      -2132.116666666666788 Attach:1Metal@1 zone
+PGDUMP       -361.866666666666617 Play:Lucky Ice Pop
+PGDUMP       -985.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2140.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 7 free 3
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1381.366666666666788 EndTurn
+PGDUMP       -161.866666666666646 Attach:1Metal@0 zone
+PGDUMP      -2041.866666666666788 Attach:1Metal@1 zone
+PGDUMP       -161.866666666666646 Play:Lucky Ice Pop
+PGDUMP       -885.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2120.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 7 free 4
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=5
+PGDUMP      -1202.366666666666788 EndTurn
+PGDUMP       -162.366666666666646 Attach:1Metal@0 zone
+PGDUMP      -2001.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -786.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2001.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 7 free 5
+PGCAND EndTurn
+PGCAND Attack:Slicing Blade
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=4
+PGDUMP       -795.700000000000045 EndTurn
+PGDUMP       -162.366666666666646 Attack:Slicing Blade
+PGDUMP       -153.366666666666646 Play:Metal Core Barrier
+PGDUMP      -2745.699999999999818 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 7 free 6
+PGCAND Tool:Metal Core Barrier@0
+PGCAND Tool:Metal Core Barrier@1
+PGDUMP actor=0 candidates=2
+PGDUMP       -153.366666666666646 Tool:Metal Core Barrier@0
+PGDUMP       -163.366666666666646 Tool:Metal Core Barrier@1
+PGSTEP KW-261005_032857000-t06 seed 7 free 7
+PGCAND EndTurn
+PGCAND Attack:Slicing Blade
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=3
+PGDUMP       -786.700000000000045 EndTurn
+PGDUMP       -153.366666666666646 Attack:Slicing Blade
+PGDUMP      -2755.699999999999818 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 7 free 8
+PGSTEP KW-261005_032857000-t06 seed 8 free 0
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1621.366666666666788 EndTurn
+PGDUMP       -561.866666666666788 Attach:1Metal@0 zone
+PGDUMP      -2180.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -561.866666666666788 Play:Lucky Ice Pop
+PGDUMP      -1285.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2180.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 8 free 1
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1541.366666666666788 EndTurn
+PGDUMP       -461.866666666666674 Attach:1Metal@0 zone
+PGDUMP      -2160.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -461.866666666666674 Play:Lucky Ice Pop
+PGDUMP      -1085.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2160.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 8 free 2
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=5
+PGDUMP      -1462.366666666666788 EndTurn
+PGDUMP       -462.366666666666674 Attach:1Metal@0 zone
+PGDUMP      -2141.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -986.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2141.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 8 free 3
+PGCAND EndTurn
+PGCAND Attack:Slicing Blade
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=4
+PGDUMP      -1095.700000000000045 EndTurn
+PGDUMP       -462.366666666666674 Attack:Slicing Blade
+PGDUMP       -353.366666666666674 Play:Metal Core Barrier
+PGDUMP      -2925.699999999999818 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 8 free 4
+PGCAND Tool:Metal Core Barrier@0
+PGCAND Tool:Metal Core Barrier@1
+PGDUMP actor=0 candidates=2
+PGDUMP       -353.366666666666674 Tool:Metal Core Barrier@0
+PGDUMP       -463.366666666666674 Tool:Metal Core Barrier@1
+PGSTEP KW-261005_032857000-t06 seed 8 free 5
+PGCAND EndTurn
+PGCAND Attack:Slicing Blade
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=3
+PGDUMP       -986.700000000000045 EndTurn
+PGDUMP       -353.366666666666674 Attack:Slicing Blade
+PGDUMP      -2935.699999999999818 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 8 free 6
+PGSTEP KW-261005_032857000-t06 seed 9 free 0
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1621.366666666666788 EndTurn
+PGDUMP       -561.866666666666788 Attach:1Metal@0 zone
+PGDUMP      -2180.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -561.866666666666788 Play:Lucky Ice Pop
+PGDUMP      -1285.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2180.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 9 free 1
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=5
+PGDUMP      -1542.366666666666788 EndTurn
+PGDUMP       -562.366666666666788 Attach:1Metal@0 zone
+PGDUMP      -2161.366666666666788 Attach:1Metal@1 zone
+PGDUMP      -1086.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2161.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 9 free 2
+PGCAND EndTurn
+PGCAND Attack:Slicing Blade
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=4
+PGDUMP      -1195.700000000000045 EndTurn
+PGDUMP       -562.366666666666788 Attack:Slicing Blade
+PGDUMP       -453.366666666666674 Play:Metal Core Barrier
+PGDUMP      -2965.699999999999818 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 9 free 3
+PGCAND Tool:Metal Core Barrier@0
+PGCAND Tool:Metal Core Barrier@1
+PGDUMP actor=0 candidates=2
+PGDUMP       -453.366666666666674 Tool:Metal Core Barrier@0
+PGDUMP       -563.366666666666788 Tool:Metal Core Barrier@1
+PGSTEP KW-261005_032857000-t06 seed 9 free 4
+PGCAND EndTurn
+PGCAND Attack:Slicing Blade
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=3
+PGDUMP      -1086.700000000000045 EndTurn
+PGDUMP       -453.366666666666674 Attack:Slicing Blade
+PGDUMP      -2975.699999999999818 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 9 free 5
+PGSTEP KW-261005_032857000-t06 seed 10 free 0
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1621.366666666666788 EndTurn
+PGDUMP       -561.866666666666788 Attach:1Metal@0 zone
+PGDUMP      -2180.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -561.866666666666788 Play:Lucky Ice Pop
+PGDUMP      -1285.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2180.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 10 free 1
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1541.366666666666788 EndTurn
+PGDUMP       -461.866666666666674 Attach:1Metal@0 zone
+PGDUMP      -2160.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -461.866666666666674 Play:Lucky Ice Pop
+PGDUMP      -1085.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2160.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 10 free 2
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1461.366666666666788 EndTurn
+PGDUMP       -361.866666666666617 Attach:1Metal@0 zone
+PGDUMP      -2132.116666666666788 Attach:1Metal@1 zone
+PGDUMP       -361.866666666666617 Play:Lucky Ice Pop
+PGDUMP       -985.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2140.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 10 free 3
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1381.366666666666788 EndTurn
+PGDUMP       -161.866666666666646 Attach:1Metal@0 zone
+PGDUMP      -2041.866666666666788 Attach:1Metal@1 zone
+PGDUMP       -161.866666666666646 Play:Lucky Ice Pop
+PGDUMP       -885.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2120.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 10 free 4
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=5
+PGDUMP      -1201.366666666666788 EndTurn
+PGDUMP       -161.366666666666646 Attach:1Metal@0 zone
+PGDUMP      -2000.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -785.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2000.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 10 free 5
+PGCAND EndTurn
+PGCAND Attack:Slicing Blade
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=4
+PGDUMP       -794.700000000000045 EndTurn
+PGDUMP       -161.366666666666646 Attack:Slicing Blade
+PGDUMP       -152.366666666666646 Play:Metal Core Barrier
+PGDUMP      -2744.699999999999818 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 10 free 6
+PGCAND Tool:Metal Core Barrier@0
+PGCAND Tool:Metal Core Barrier@1
+PGDUMP actor=0 candidates=2
+PGDUMP       -152.366666666666646 Tool:Metal Core Barrier@0
+PGDUMP       -162.366666666666646 Tool:Metal Core Barrier@1
+PGSTEP KW-261005_032857000-t06 seed 10 free 7
+PGCAND EndTurn
+PGCAND Attack:Slicing Blade
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=3
+PGDUMP       -785.700000000000045 EndTurn
+PGDUMP       -152.366666666666646 Attack:Slicing Blade
+PGDUMP      -2754.699999999999818 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 10 free 8
+PGSTEP KW-261005_032857000-t06 seed 11 free 0
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1621.366666666666788 EndTurn
+PGDUMP       -561.866666666666788 Attach:1Metal@0 zone
+PGDUMP      -2180.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -561.866666666666788 Play:Lucky Ice Pop
+PGDUMP      -1285.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2180.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 11 free 1
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1541.366666666666788 EndTurn
+PGDUMP       -461.866666666666674 Attach:1Metal@0 zone
+PGDUMP      -2160.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -461.866666666666674 Play:Lucky Ice Pop
+PGDUMP      -1085.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2160.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 11 free 2
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=5
+PGDUMP      -1462.366666666666788 EndTurn
+PGDUMP       -462.366666666666674 Attach:1Metal@0 zone
+PGDUMP      -2141.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -986.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2141.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 11 free 3
+PGCAND EndTurn
+PGCAND Attack:Slicing Blade
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=4
+PGDUMP      -1095.700000000000045 EndTurn
+PGDUMP       -462.366666666666674 Attack:Slicing Blade
+PGDUMP       -353.366666666666674 Play:Metal Core Barrier
+PGDUMP      -2925.699999999999818 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 11 free 4
+PGCAND Tool:Metal Core Barrier@0
+PGCAND Tool:Metal Core Barrier@1
+PGDUMP actor=0 candidates=2
+PGDUMP       -353.366666666666674 Tool:Metal Core Barrier@0
+PGDUMP       -463.366666666666674 Tool:Metal Core Barrier@1
+PGSTEP KW-261005_032857000-t06 seed 11 free 5
+PGCAND EndTurn
+PGCAND Attack:Slicing Blade
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=3
+PGDUMP       -986.700000000000045 EndTurn
+PGDUMP       -353.366666666666674 Attack:Slicing Blade
+PGDUMP      -2935.699999999999818 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 11 free 6
+PGSTEP KW-261005_032857000-t06 seed 12 free 0
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1621.366666666666788 EndTurn
+PGDUMP       -561.866666666666788 Attach:1Metal@0 zone
+PGDUMP      -2180.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -561.866666666666788 Play:Lucky Ice Pop
+PGDUMP      -1285.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2180.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 12 free 1
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Lucky Ice Pop
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=6
+PGDUMP      -1541.366666666666788 EndTurn
+PGDUMP       -461.866666666666674 Attach:1Metal@0 zone
+PGDUMP      -2160.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -461.866666666666674 Play:Lucky Ice Pop
+PGDUMP      -1085.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2160.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 12 free 2
+PGCAND EndTurn
+PGCAND Attach:1Metal@0 zone
+PGCAND Attach:1Metal@1 zone
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=5
+PGDUMP      -1462.366666666666788 EndTurn
+PGDUMP       -462.366666666666674 Attach:1Metal@0 zone
+PGDUMP      -2141.366666666666788 Attach:1Metal@1 zone
+PGDUMP       -986.700000000000045 Play:Metal Core Barrier
+PGDUMP      -2141.366666666666788 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 12 free 3
+PGCAND EndTurn
+PGCAND Attack:Slicing Blade
+PGCAND Play:Metal Core Barrier
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=4
+PGDUMP      -1095.700000000000045 EndTurn
+PGDUMP       -462.366666666666674 Attack:Slicing Blade
+PGDUMP       -353.366666666666674 Play:Metal Core Barrier
+PGDUMP      -2925.699999999999818 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 12 free 4
+PGCAND Tool:Metal Core Barrier@0
+PGCAND Tool:Metal Core Barrier@1
+PGDUMP actor=0 candidates=2
+PGDUMP       -353.366666666666674 Tool:Metal Core Barrier@0
+PGDUMP       -463.366666666666674 Tool:Metal Core Barrier@1
+PGSTEP KW-261005_032857000-t06 seed 12 free 5
+PGCAND EndTurn
+PGCAND Attack:Slicing Blade
+PGCAND Retreat:1
+PGDUMP actor=0 candidates=3
+PGDUMP       -986.700000000000045 EndTurn
+PGDUMP       -353.366666666666674 Attack:Slicing Blade
+PGDUMP      -2935.699999999999818 Retreat:1
+PGSTEP KW-261005_032857000-t06 seed 12 free 6

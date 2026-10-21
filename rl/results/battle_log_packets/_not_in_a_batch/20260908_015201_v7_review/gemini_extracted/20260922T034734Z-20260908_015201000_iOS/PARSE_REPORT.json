@@ -1,0 +1,63 @@
+{
+  "parser_version": "4.0",
+  "complete": true,
+  "ready_for_independent_review": true,
+  "review_status": "partial",
+  "semantic_verification_performed": false,
+  "completion_verified": true,
+  "end_marker_present": true,
+  "evidence_contract_valid": true,
+  "identity_crosscheck_verified": true,
+  "identity_errors": [],
+  "response_sha256": "27D0E5CA401A9608D7234384D61CC4AADC003283759B0786D2820F62AE7BECF2",
+  "packet_directory": "/home/dacz8976/Gemini_API_Pilot/runs/20260922T034734Z-20260908_015201000_iOS/candidate_packet",
+  "source_binding_verified": true,
+  "files": {
+    "SOURCE.json": {
+      "method": "filename_label",
+      "start_line": 3,
+      "end_line": 238,
+      "valid": true,
+      "transformations": [
+        "Added the omitted battle_identity schema version 1; no evidence claim changed."
+      ],
+      "path": "/home/dacz8976/Gemini_API_Pilot/runs/20260922T034734Z-20260908_015201000_iOS/candidate_packet/SOURCE.json",
+      "bytes": 6976,
+      "sha256": "E259547C24815AFEA4084420566E5BBFBE13E310EF7C38D4F31877EF93C8F0B6"
+    },
+    "COVERAGE.md": {
+      "method": "filename_label",
+      "start_line": 243,
+      "end_line": 283,
+      "valid": true,
+      "transformations": [],
+      "path": "/home/dacz8976/Gemini_API_Pilot/runs/20260922T034734Z-20260908_015201000_iOS/candidate_packet/COVERAGE.md",
+      "bytes": 2996,
+      "sha256": "3344BB81E2A91F5DA8FD280DC7D19A4F60D064E716722C64B5EAA3596B0B9F69"
+    },
+    "REVIEW.md": {
+      "method": "filename_label",
+      "start_line": 288,
+      "end_line": 372,
+      "valid": true,
+      "transformations": [],
+      "path": "/home/dacz8976/Gemini_API_Pilot/runs/20260922T034734Z-20260908_015201000_iOS/candidate_packet/REVIEW.md",
+      "bytes": 3959,
+      "sha256": "12339A40016147F627999637F7B09ABBF733EAEDEBA2F67F8CD7A3422EAC7E03"
+    },
+    "UNCERTAINTIES.json": {
+      "method": "filename_label",
+      "start_line": 377,
+      "end_line": 387,
+      "valid": true,
+      "transformations": [],
+      "path": "/home/dacz8976/Gemini_API_Pilot/runs/20260922T034734Z-20260908_015201000_iOS/candidate_packet/UNCERTAINTIES.json",
+      "bytes": 618,
+      "sha256": "9536945185F103437584C1758EB4B052D4094EBE5CEBED0E655630A516D9231C"
+    }
+  },
+  "errors": [],
+  "warnings": [],
+  "note": "Complete means four files pass structure and evidence-consistency checks, not factual correctness or acceptance. Handoff also requires source binding, normal completion and blind identity agreement.",
+  "report_path": "/home/dacz8976/Gemini_API_Pilot/runs/20260922T034734Z-20260908_015201000_iOS/PARSE_REPORT.json"
+}

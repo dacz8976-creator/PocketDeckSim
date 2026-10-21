@@ -1,0 +1,33 @@
+{
+  "source_filename": "20261016_020517000_iOS.MP4",
+  "checked_utc": "2026-10-16T03:06:57.504090+00:00",
+  "exists_locally": true,
+  "visual_review_started": false,
+  "sha256": null,
+  "duration_seconds": null,
+  "before": {
+    "logical_bytes": 270715753,
+    "allocated_bytes": 0,
+    "attributes": 4199968,
+    "placeholder_state": 57,
+    "cloud_placeholder": true,
+    "in_sync": true,
+    "pinned": false,
+    "unpinned": false,
+    "online_only": true
+  },
+  "hydration_exit_code": 1,
+  "stdout": "",
+  "stderr": "Traceback (most recent call last):\n  File \"<string>\", line 1, in <module>\n  File \"C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\hydrate_competitive_source.py\", line 24, in hydrate\n    raise RuntimeError(f'Cloud hydration did not succeed: HRESULT 0x{result & 0xffffffff:08X}')\nRuntimeError: Cloud hydration did not succeed: HRESULT 0x8007018B\n",
+  "after": {
+    "logical_bytes": 270715753,
+    "allocated_bytes": 270715753,
+    "attributes": 1056,
+    "placeholder_state": 9,
+    "cloud_placeholder": true,
+    "in_sync": true,
+    "pinned": false,
+    "unpinned": false,
+    "online_only": false
+  }
+}

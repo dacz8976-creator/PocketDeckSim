@@ -1,0 +1,151 @@
+{
+  "video_basename": "20261002_023418000_iOS.MP4",
+  "source_sha256": "e2cd84acd3e1ef962ad0f2bcdf3f40345e4facb41fdbd142054bf3d4a0a0e1f5",
+  "source_bytes": 688881204,
+  "duration_seconds": 371.495,
+  "reviewer": "sol_competitive_20261002_023418000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "review_status": "full_battle_review_complete",
+  "complete_available_footage_review": true,
+  "battle_complete": true,
+  "outcome": "win",
+  "outcome_type": "win_by_concession",
+  "turn_order": "owner_first",
+  "turn_order_evidence": {
+    "timestamp_seconds": 22.5,
+    "frame": "overview/sheet_01.jpg",
+    "text": "You are going first"
+  },
+  "owner_name": "Dacz8976",
+  "owner_deck_core": [
+    "Wailmer x2 visible",
+    "Wailord non-ex, 200 HP, Whale Pump, played",
+    "Wailord ex, 250 HP, in hand",
+    "Indeedee ex x2, 130 HP, Watch Over, benched"
+  ],
+  "owner_visible_energy": "Water only",
+  "likely_artifact_deck_name": "Wailord / Indeedee wall",
+  "artifact_deck_match_basis": "Visible core match, not proof of the entire list",
+  "opponent_name": "KO歐~YOU",
+  "opponent_name_evidence": "native/t0007.50.jpg; wave separator transcribed as tilde",
+  "opponent_deck_core": [
+    "Bonsly, 30 HP, Teary Attack",
+    "Riolu x2",
+    "Lucario non-ex, 100 HP, Fighting Coach",
+    "Mega Lucario ex, 190 HP, Fighting Pulse",
+    "Hitmonchan, 80 HP, Jab"
+  ],
+  "mode_evidence": {
+    "visible": "PvP matchmaking, named opponent, separate player clocks and alternating opponent turns",
+    "owner_testimony": "Competitive battles requested for Pause Games artifact",
+    "ranked_label_visible": false,
+    "ranked_ladder_eligible": false,
+    "requested_log": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd"
+  },
+  "auto_intervals": [
+    {
+      "start_seconds": 0,
+      "end_seconds": 371.495,
+      "owner_auto_indicator": "not_visible",
+      "owner_interaction": "Visible card, ability, Energy and Pokémon selections",
+      "opponent_auto_state": "unknown"
+    }
+  ],
+  "final_score": {
+    "owner_actual_points": 0,
+    "opponent_actual_points": 1,
+    "basis": "Last visible gameplay score before concession; no knockout award manufactured for concession"
+  },
+  "point_progression": [
+    {
+      "timestamp_seconds": 52.5,
+      "owner": 0,
+      "opponent": 0
+    },
+    {
+      "timestamp_seconds": 223.5,
+      "owner": 0,
+      "opponent": 1,
+      "cause": "Mega Lucario ex KOs forced-in Wailmer"
+    },
+    {
+      "timestamp_seconds": 361.5,
+      "owner": 0,
+      "opponent": 1,
+      "cause": "Opponent concedes before further attack"
+    }
+  ],
+  "decisive_evidence": [
+    {
+      "timestamp_seconds": 210,
+      "frame": "native/t0210.00.jpg",
+      "observation": "Opponent Sabrina forces owner switch"
+    },
+    {
+      "timestamp_seconds": 217.5,
+      "frame": "native/t0217.50.jpg",
+      "observation": "Mega Lucario ex Fighting Pulse attacks Wailmer"
+    },
+    {
+      "timestamp_seconds": 223.5,
+      "frame": "overview/sheet_09.jpg",
+      "observation": "Opponent earns first actual point after Wailmer knockout"
+    },
+    {
+      "timestamp_seconds": 307,
+      "frame": "native/t0307.00.jpg",
+      "observation": "Owner's first attack, Whale Pump, deals100 to Mega Lucario ex"
+    },
+    {
+      "timestamp_seconds": 343,
+      "frame": "native/t0343.00.jpg",
+      "observation": "Turn11 starts with attacks minus30 banner and Wailord190 HP"
+    },
+    {
+      "timestamp_seconds": 356,
+      "frame": "native/t0356.00.jpg",
+      "observation": "Cyrus played with Wailord200 HP and5 Water, Mega110 benched"
+    },
+    {
+      "timestamp_seconds": 362,
+      "frame": "native/t0362.00.jpg",
+      "observation": "Your opponent conceded; Mega110 Active, Wailord reduction icon persists"
+    },
+    {
+      "timestamp_seconds": 370.5,
+      "frame": "overview/sheet_14.jpg",
+      "observation": "Victory versus same opponent; Wailord Card of the Game"
+    }
+  ],
+  "key_findings": [
+    "Owner first attacks on turn9 after regular Water attachments on turns3,5,7,9; no acceleration used",
+    "Heavy Helmet and Indeedee wall preserve Wailord while an unenergized Wailmer is lost to Sabrina",
+    "Turn9 recovery includes40 from two Indeedee,80 from four Lucky Ice Pop uses with four heads and20 end-turn Soothing Shore healing",
+    "Owner uses Cyrus on turn11 and opponent concedes before attack; existing Bonsly reduction means guaranteed lethal must not be assumed",
+    "This single win by concession does not quantify consistency or prove alternate Energy, Sharpedo or Misty plans"
+  ],
+  "limitations": [
+    "No ranked label or Auto setting visible; opponent automation unknown",
+    "Full deck lists and hidden cards remain unknown",
+    "Exact animation onset not measured; timestamps identify retained snapshots",
+    "Filename timezone inferred; match date carried from assignment"
+  ],
+  "astra_tactical_resolution": "Astra confirms Bonsly reduction stays on the affected Wailord because Cyrus switches only the opponent. Five-Water Whale Pump would do110-30=80 and leave Mega Lucario ex at30HP. No attack was executed; the actual result is concession at0-1, not a demonstrated lethal knockout.",
+  "lead_reconciliation_notes": [
+    "Raw first-pass files preserved in worker_submission. Astra clarifications appended; outcome unchanged."
+  ],
+  "worker_status_at_submission": "complete_first_pass_pending_independent_lead_acceptance",
+  "status": "full_battle_review_complete",
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "source_archived": true,
+  "source_modified": false,
+  "global_registration_complete": true,
+  "ranked_ladder_eligible": false,
+  "requested_log": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "external_log_saved": true,
+  "archive_receipt": "MOVE_RECEIPT.20261002_023418000_iOS.MP4.json",
+  "archive_completion_event_id": "2c9f46c7-6b10-4414-8cb9-cf622d59e7d4",
+  "worker_submission_path": "worker_submission"
+}

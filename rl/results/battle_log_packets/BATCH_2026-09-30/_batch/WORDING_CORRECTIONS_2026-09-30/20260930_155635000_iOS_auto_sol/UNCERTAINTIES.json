@@ -1,0 +1,51 @@
+{
+  "source_filename": "20260930_155635000_iOS.MP4",
+  "source_sha256": "a2bccb37d07e74872afe49c51c5ee5a6ad9199703d25a6cde6f97701ef25ff9a",
+  "reviewer": "sol_auto_155635000",
+  "unreviewed_intervals": [],
+  "material_outcome_ambiguities": [],
+  "uncertainties": [
+    {
+      "id": "hidden_cards",
+      "times_seconds": [0, 204.473333],
+      "detail": "Full deck lists, opponent hand/draw/search identities and unexposed cards remain unknown. The named AI challenge deck is visible on the results page but does not prove Mega Blaziken entered play.",
+      "impact": "Prevents an exact replay or full hidden-information strategy evaluation; does not affect result or covered public actions."
+    },
+    {
+      "id": "printing_identifiers",
+      "times_seconds": [13.5, 204.4],
+      "detail": "Relevant Pokemon versions are identified by visible names, maximum HP and attacks/abilities. Exact collector numbers and some cosmetic print identifiers were not reliably legible and are not asserted.",
+      "impact": "No material mechanics ambiguity remains for the observed attack and knockout chain."
+    },
+    {
+      "id": "fine_timing",
+      "times_seconds": [0, 204.473333],
+      "detail": "Overview labels follow the helper's approximate fps midpoint convention. Phase boundaries and within-animation ordering are approximate; targets are direct seeks. Routine frames between samples were not all individually inspected.",
+      "impact": "This is a complete meaningful-action review, not a frame-exact transcript."
+    },
+    {
+      "id": "juliana_selection",
+      "times_seconds": [23, 26],
+      "detail": "Juliana's random Stage 2 search is observed, but the searched card remains face down. Later Typhlosion play does not independently identify that searched copy.",
+      "impact": "No inference of a specific hidden card in hand is made."
+    },
+    {
+      "id": "random_energy_selection_order",
+      "times_seconds": [89, 100],
+      "detail": "Mega Swampert's attack text specifies two random Energy discards across both sides. The before/after public state supports removal of two owner Water, leaving one. The order of the two random selections was not reconstructed.",
+      "impact": "Net Energy transition is reconciled; an exact random-seed replay is unavailable."
+    },
+    {
+      "id": "strategy_counterfactual",
+      "times_seconds": [61, 186],
+      "detail": "The visible Auto behavior leaves Slowpoke/Mega Slowbro and Red unused and powers only the Active. Hidden deck cards, unavailable future draws and policy objectives prevent declaring a guaranteed alternative win.",
+      "impact": "Strategic observations are bounded and are not a verified simulator defect or a claim about Dustin's manual choices."
+    },
+    {
+      "id": "final_tail",
+      "times_seconds": [204.4, 204.473333],
+      "detail": "Last direct seek is 0.073333 seconds before the authoritative duration, in the already established opponent Card of the Game page. The terminal result and complete summary precede this tail.",
+      "impact": "No missing battle phase or outcome uncertainty."
+    }
+  ]
+}

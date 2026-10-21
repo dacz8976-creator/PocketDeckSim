@@ -1,0 +1,5 @@
+# Game 2 coverage
+
+Source-local interval 622–719.001667, original SHA cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2. Parent covers the full source and 420–622 interlude. Child covers queue, opponent たこ, five-card opening at 644 before Snorlax placement at 646, literal turn-1 banner at 653, both actual turns, concession at 710, Victory at 718 and ending.
+
+Native hand656 is intact before the first Poké Ball consumption bounded656-657. The face-up card display658 is separate from that consuming input. Draw-end+1/+3/+6 and before-End 687 are retained; before-End is a placement zoom and is labeled accordingly, with full board 688. Opponent fan 4 at owner turn start is literal. Opponent normal draw completes within690-692;692 shows five settled backs and current Lightning.694 is a detached played-card back with four remaining fan backs. Research’s two hidden arrivals and Order Pad tails are separately retained. No full discard window exists. Original deck QR plus continuous filmed editing establishes the separate source semantic 20; live-log capture is still unavailable to worker.

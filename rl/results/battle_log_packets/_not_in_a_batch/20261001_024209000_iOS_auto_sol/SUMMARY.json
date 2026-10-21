@@ -1,0 +1,201 @@
+{
+  "schema": "auto_battle_visual_first_pass_v1",
+  "video_basename": "20261001_024209000_iOS.MP4",
+  "source_sha256": "145b0061eda9ea365e096da97065f9dc704555a6f396282ad76fa6b76f5cf272",
+  "duration_seconds": 227.535,
+  "reviewer": "sol_auto_evening_024209000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "review_date_utc": "2026-10-01",
+  "scope": "Full one-battle visual first pass, setup through completed terminal results",
+  "status": "full_battle_review_complete",
+  "lead_accepted": true,
+  "source_preserved": true,
+  "source_json_preserved": true,
+  "ladder_eligible": false,
+  "ladder_action": "excluded_by_owner_instruction_no_write",
+  "mode": "Solo computer challenge; Auto checked with manual Rainbow Cave interval and brief card-detail gray Auto state",
+  "auto_observations": [
+    {
+      "time_seconds": 15,
+      "state": "checked"
+    },
+    {
+      "time_seconds": 94,
+      "state": "checked"
+    },
+    {
+      "time_seconds": 96,
+      "state": "off_with_End_Turn_control"
+    },
+    {
+      "time_seconds": 103.5,
+      "state": "off_manual_Rainbow_Cave_effect_prompt",
+      "time_basis": "overview midpoint"
+    },
+    {
+      "time_seconds": 107,
+      "state": "checked"
+    },
+    {
+      "time_seconds": 204,
+      "state": "checked"
+    },
+    {
+      "time_seconds": 205,
+      "state": "gray_unchecked_during_card_detail",
+      "interpretation_limit": "Brief UI state does not establish a manual tactical change"
+    },
+    {
+      "time_seconds": 207,
+      "state": "checked"
+    }
+  ],
+  "owner": "Dacz8976",
+  "owner_visible_core": [
+    "Victini (Victory Star, V-Flame 40)",
+    "Numel (Knock Away 20+)",
+    "Mega Camerupt ex (210 HP, Volcanic Kaboom)"
+  ],
+  "owner_other_visible_cards": [
+    "Second Victini",
+    "Second Numel",
+    "Second Mega Camerupt ex",
+    "Two Simisear (Fury Swipes 40x)",
+    "Pansear (Beat 10)",
+    "Professor's Research",
+    "Bounded Field (hand only)",
+    "Rainbow Cave",
+    "Flame Patch"
+  ],
+  "opponent_challenge": "Mega Scizor ex & Gholdengo ex Deck (Deluxe Pack: Mega)",
+  "opponent_visible_core": [
+    "Scyther (U-turn 10)",
+    "Wynaut (Stompy Jammer 10)",
+    "Honedge (Pierce 20)",
+    "Doublade (Slash 40)",
+    "Mega Scizor ex (200 HP, Bullet Slugger 100+)"
+  ],
+  "opponent_trainers": [
+    "Poke Ball",
+    "Training Area",
+    "Skyla"
+  ],
+  "outcome": "defeat",
+  "owner_points": 2,
+  "opponent_points": 3,
+  "last_turn": 13,
+  "went_second": true,
+  "damage_done_displayed": 510,
+  "result_statistics_evidence": "terminal/t0227.40.jpg",
+  "point_chain": [
+    {
+      "turn": 8,
+      "owner_points": 1,
+      "opponent_points": 0,
+      "event": "Random Volcanic Kaboom160 knocks out original benched Scyther70"
+    },
+    {
+      "turn": 10,
+      "owner_points": 2,
+      "opponent_points": 0,
+      "event": "Random Volcanic Kaboom190 knocks out original active Doublade90"
+    },
+    {
+      "turn": 12,
+      "owner_points": 2,
+      "opponent_points": 0,
+      "event": "Random Volcanic Kaboom160 leaves benched Mega Scizor200 at40"
+    },
+    {
+      "turn": 13,
+      "owner_points": 2,
+      "opponent_points": 3,
+      "event": "Newly promoted Mega Scizor Bullet Slugger160 knocks out Mega Camerupt150; explicit +3 points"
+    }
+  ],
+  "important_findings": [
+    "Volcanic Kaboom randomly selects one opposing Pokemon; three targets were Scyther Bench, Doublade Active and Mega Scizor Bench.",
+    "Training Area and active Fire weakness explain the190 Doublade hit; bench hits160 have no active weakness/Stadium addition.",
+    "Final Bullet Slugger displays160: base100 plus same-turn Bench promotion50 plus Training Area10.",
+    "Turn8 Flame Patch is actually played to active Victini, enabling its retreat; normal turn Energy then raises promoted Mega Camerupt to four Fire.",
+    "Turn10 Energy goes to reserve Numel. Turn12 Energy raises Mega Camerupt four to five Fire under Wynaut's extra attack cost.",
+    "Late Flame Patch closeup is a draw/inspection; the card remains in hand through terminal and is not a second observed play.",
+    "Skyla visibly switches active Stage1 Mega Scizor back to Wynaut, retaining two Metal before the next-turn promotion.",
+    "Results510 equals160+190+160 including overkill, not actual HP removed.",
+    "Victory Star notices occur without an observed attack-coin reroll; no healing, Tools or special-condition damage is observed."
+  ],
+  "coverage": {
+    "all_turns": true,
+    "setup": true,
+    "terminal": true,
+    "reviewed_interval_seconds": [
+      0,
+      227.535
+    ],
+    "overview_step_seconds": 3,
+    "overview_sheets_inspected": 9,
+    "native_targeted_evidence": true,
+    "material_unreviewed_intervals": []
+  },
+  "lead_check_times_seconds": {
+    "opening": [
+      15
+    ],
+    "ordinary_phase": [
+      83
+    ],
+    "manual_resource_chain": [
+      96,
+      103,
+      104,
+      105,
+      107,
+      115,
+      118,
+      121,
+      122
+    ],
+    "knockouts": [
+      127,
+      130,
+      160,
+      161,
+      162
+    ],
+    "Skyla": [
+      179.5,
+      182
+    ],
+    "decisive_random_hit": [
+      189,
+      191,
+      192,
+      193,
+      194,
+      197,
+      198
+    ],
+    "terminal": [
+      207,
+      209,
+      213,
+      214,
+      219,
+      227.4
+    ]
+  },
+  "uncertainties_file": "UNCERTAINTIES.json",
+  "worker_actions_at_submission": {
+    "global_finalization_performed": false
+  },
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "lead_acceptance_pending": false,
+  "source_archived": true,
+  "source_modified": false,
+  "archive_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20261001_024209000_iOS.MP4",
+  "archive_receipt": "MOVE_RECEIPT.20261001_024209000_iOS.MP4.json",
+  "archive_completion_event_id": "5651de49-5ec2-4ecd-92d9-926e33d331a9",
+  "global_registration_complete": true
+}

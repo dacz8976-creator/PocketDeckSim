@@ -1,0 +1,11 @@
+{
+  "source_video": "20261012_004435000_iOS.MP4",
+  "attempt_utc": "2026-10-12T01:54:19.213440+00:00",
+  "operation": "full Cloud Files hydration with FILE_READ_ATTRIBUTES handle",
+  "source_contents_modified": false,
+  "source_sha256": null,
+  "documentation": "https://learn.microsoft.com/en-us/windows/win32/api/cfapi/nf-cfapi-cfhydrateplaceholder",
+  "exit_code": 1,
+  "stdout": "Opening attribute handle\nRequesting complete local bytes",
+  "stderr": "Traceback (most recent call last):\n  File \"C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-11_NEW_PAUSE_GAMES\\retry_attribute_handle.py\", line 33, in <module>\n    raise RuntimeError(f'Cloud hydration failed: HRESULT 0x{result & 0xffffffff:08X}')\nRuntimeError: Cloud hydration failed: HRESULT 0x80070183"
+}

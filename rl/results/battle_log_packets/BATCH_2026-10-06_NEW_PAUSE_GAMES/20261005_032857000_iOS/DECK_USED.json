@@ -1,0 +1,432 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261005_032857000_iOS",
+  "sources": [
+    {
+      "video_basename": "20261005_032857000_iOS.MP4",
+      "sha256": "a7aa71ededa0f2372282f5ba1ff0620b1fed9cedec8bb71101aee1db6eba297e",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "deck_name_in_log": null,
+  "prepared_import_name": "Aegislash / Team Rocket's Tinkaton",
+  "filmed_deck_label": "New deck 6",
+  "source_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "captured_at": "2026-10-06T18:50:01.641947+00:00",
+  "log_list_version": null,
+  "expected_card_count": 20,
+  "cards_in_log_order": null,
+  "counts_by_name_and_variant": null,
+  "energy_configuration_from_log": null,
+  "actual_card_count": null,
+  "capture_source_text_or_image": "../LIVE_DECK_SNAPSHOT.json (nine initial live lists); qr_intake/QR_DECODE_0001.00.json (separate filmed source)",
+  "game_version_binding_basis": "Continuous QR1s -> deck edit closes2s -> Save -> New deck6 selected in event4s -> matchmaking6s -> single game. No intervening deck edit seen. Gameplay and two revealed Rocket Tinkaton agree with QR revision.",
+  "conflicts_with_filmed_cards": [],
+  "exact_list_status": "initial_live_snapshot_lacks_this_deck; exact_filmed_QR_verified",
+  "filmed_qr_exact_card_count": 20,
+  "filmed_qr_energy_configuration": [
+    "Metal"
+  ],
+  "filmed_qr_cards_in_encoded_entity_order": [
+    {
+      "name": "Poké Ball",
+      "entity_id": 30,
+      "variant": [
+        "A2b 111",
+        "P-A 005"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Poké Ball",
+      "entity_id": 30,
+      "variant": [
+        "A2b 111",
+        "P-A 005"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Rare Candy",
+      "entity_id": 480,
+      "variant": [
+        "A3 144",
+        "A4b 314",
+        "A4b 315",
+        "A4b 379"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Rare Candy",
+      "entity_id": 480,
+      "variant": [
+        "A3 144",
+        "A4b 314",
+        "A4b 315",
+        "A4b 379"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Lucky Ice Pop",
+      "entity_id": 1060,
+      "variant": [
+        "B2 145"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Lucky Ice Pop",
+      "entity_id": 1060,
+      "variant": [
+        "B2 145"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Metal Core Barrier",
+      "entity_id": 1090,
+      "variant": [
+        "B2 148",
+        "B2b 117"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Metal Core Barrier",
+      "entity_id": 1090,
+      "variant": [
+        "B2 148",
+        "B2b 117"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Professor’s Research",
+      "entity_id": 40,
+      "variant": [
+        "A4b 373",
+        "P-A 007"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Professor’s Research",
+      "entity_id": 40,
+      "variant": [
+        "A4b 373",
+        "P-A 007"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Honedge",
+      "entity_id": 12520,
+      "variant": [
+        "B1 170"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Honedge",
+      "entity_id": 12520,
+      "variant": [
+        "B1 170"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Doublade",
+      "entity_id": 12530,
+      "variant": [
+        "B1 171"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Aegislash",
+      "entity_id": 12540,
+      "variant": [
+        "B1 172",
+        "B1a 102"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Aegislash",
+      "entity_id": 14860,
+      "variant": [
+        "B2 120"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Tinkatuff",
+      "entity_id": 15820,
+      "variant": [
+        "B2a 073",
+        "B2a 124"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Team Rocket’s Tinkatink",
+      "entity_id": 21610,
+      "variant": [
+        "B4a 048"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Team Rocket’s Tinkatink",
+      "entity_id": 21610,
+      "variant": [
+        "B4a 048"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Team Rocket’s Tinkaton",
+      "entity_id": 21630,
+      "variant": [
+        "B4a 050",
+        "B4a 075"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "name": "Team Rocket’s Tinkaton",
+      "entity_id": 21630,
+      "variant": [
+        "B4a 050",
+        "B4a 075"
+      ],
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    }
+  ],
+  "filmed_qr_counts": [
+    {
+      "entity_kind": "trainer",
+      "entity_id": 30,
+      "count": 2,
+      "name": "Poké Ball",
+      "name_candidates": [
+        "Poké Ball"
+      ],
+      "functional_ids": [
+        "1b20901befde"
+      ],
+      "printing_aliases": [
+        "A2b 111",
+        "P-A 005"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 480,
+      "count": 2,
+      "name": "Rare Candy",
+      "name_candidates": [
+        "Rare Candy"
+      ],
+      "functional_ids": [
+        "87829fe1a8c1"
+      ],
+      "printing_aliases": [
+        "A3 144",
+        "A4b 314",
+        "A4b 315",
+        "A4b 379"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 1060,
+      "count": 2,
+      "name": "Lucky Ice Pop",
+      "name_candidates": [
+        "Lucky Ice Pop"
+      ],
+      "functional_ids": [
+        "15c19aaaf9a4"
+      ],
+      "printing_aliases": [
+        "B2 145"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 1090,
+      "count": 2,
+      "name": "Metal Core Barrier",
+      "name_candidates": [
+        "Metal Core Barrier"
+      ],
+      "functional_ids": [
+        "7a91147d1f38"
+      ],
+      "printing_aliases": [
+        "B2 148",
+        "B2b 117"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 40,
+      "count": 2,
+      "name": "Professor’s Research",
+      "name_candidates": [
+        "Professor’s Research"
+      ],
+      "functional_ids": [
+        "c0015440f616"
+      ],
+      "printing_aliases": [
+        "A4b 373",
+        "P-A 007"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 12520,
+      "count": 2,
+      "name": "Honedge",
+      "name_candidates": [
+        "Honedge"
+      ],
+      "functional_ids": [
+        "eb882c5645d4"
+      ],
+      "printing_aliases": [
+        "B1 170"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 12530,
+      "count": 1,
+      "name": "Doublade",
+      "name_candidates": [
+        "Doublade"
+      ],
+      "functional_ids": [
+        "2a3ec132a111"
+      ],
+      "printing_aliases": [
+        "B1 171"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 12540,
+      "count": 1,
+      "name": "Aegislash",
+      "name_candidates": [
+        "Aegislash"
+      ],
+      "functional_ids": [
+        "defd7e79be5e"
+      ],
+      "printing_aliases": [
+        "B1 172",
+        "B1a 102"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 14860,
+      "count": 1,
+      "name": "Aegislash",
+      "name_candidates": [
+        "Aegislash"
+      ],
+      "functional_ids": [
+        "16869cb2ead0"
+      ],
+      "printing_aliases": [
+        "B2 120"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 15820,
+      "count": 1,
+      "name": "Tinkatuff",
+      "name_candidates": [
+        "Tinkatuff"
+      ],
+      "functional_ids": [
+        "60788660b301"
+      ],
+      "printing_aliases": [
+        "B2a 073",
+        "B2a 124"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 21610,
+      "count": 2,
+      "name": "Team Rocket’s Tinkatink",
+      "name_candidates": [
+        "Team Rocket’s Tinkatink"
+      ],
+      "functional_ids": [
+        "a25c192a3085"
+      ],
+      "printing_aliases": [
+        "B4a 048"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 21630,
+      "count": 2,
+      "name": "Team Rocket’s Tinkaton",
+      "name_candidates": [
+        "Team Rocket’s Tinkaton"
+      ],
+      "functional_ids": [
+        "5c04e6dd2e6b"
+      ],
+      "printing_aliases": [
+        "B4a 050",
+        "B4a 075"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    }
+  ],
+  "filmed_qr_receipt": "qr_intake/QR_DECODE_0001.00.json",
+  "filmed_qr_payload": "CpiWnpiWnpiYYJiYYJiapJiapJiawpiawpiWqJiWqAoAMOgAMOgAMPIAMPwAOgwAPcwAVGoAVGoAVH4AVH4BCA==",
+  "filmed_qr_image_sha256": "f9f7825500ab6eed2d07afd11cc0eed247232540d2ffda8791d1a7a111661b1c",
+  "limits": [
+    "Initial live Pause Games snapshot does not contain this Metal deck; prepared NEW_DECK_ENTRIES is not proof of live saving. Root can append a separately verified saved-list receipt.",
+    "QR resolves exact20semantic entities and Metal configuration; artwork/rarity cannot be determined from QR.",
+    "This is the two Rocket Tinkaton/no Tinkatonex revision, distinct from earlier032023."
+  ]
+}

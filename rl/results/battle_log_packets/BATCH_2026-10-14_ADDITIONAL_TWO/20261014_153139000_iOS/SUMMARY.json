@@ -1,0 +1,132 @@
+{
+  "reviewer": "/root/ladder_153139",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "source_filename": "20261014_153139000_iOS.MP4",
+  "source_sha256": "dde0bb5dbbc34e46973dc7b09498faa6f67c142c7be0023054b612f090800fae",
+  "source_creation_utc": "2026-10-14T15:31:39.000000Z",
+  "match_date_local": "2026-10-14",
+  "recording_duration_seconds": 421.308333,
+  "battle_complete": true,
+  "match_count": 1,
+  "review_scope": "Full primary review through setup, all12displayedturns and terminal result; independent and lead acceptance not claimed",
+  "owner_identifier": "Dacz8976",
+  "opponent_identifier": "Chacho",
+  "mode": "ranked ladder",
+  "mode_evidence_paths": [
+    "evidence/t0003.00.jpg"
+  ],
+  "auto_option_visible": false,
+  "auto_limit": "No Auto control or option observed anywhere in inspected footage",
+  "selected_deck_label": "Deck 12",
+  "selected_deck_evidence_paths": [
+    "evidence/t0003.00.jpg"
+  ],
+  "owner_visible_deck_core": [
+    "Cottonee",
+    "Whimsicott ex (Grass Knot 40+)",
+    "Spinarak",
+    "Ariados (Trap Territory)",
+    "Teal Mask Ogerpon ex (Soothing Wind)"
+  ],
+  "opponent_visible_deck_core": [
+    "Magnemite (Electro Ball30)",
+    "Magneton (Volt Charge / Spinning Attack60)",
+    "Magnezone (Mirror Shot90)"
+  ],
+  "outcome": "loss",
+  "terminal_score": {
+    "owner": 1,
+    "opponent": 3
+  },
+  "terminal_timestamp_seconds": 413,
+  "terminal_evidence_paths": [
+    "evidence/t0405.00.jpg",
+    "evidence/t0409.00.jpg",
+    "evidence/t0413.00.jpg",
+    "evidence/t0420.90.jpg"
+  ],
+  "turns_played_displayed": 12,
+  "owner_turn_count": 6,
+  "damage_done": 260,
+  "first_or_second": "first",
+  "first_or_second_evidence_timestamps_seconds": [
+    40,
+    420.9
+  ],
+  "first_or_second_evidence_paths": [
+    "evidence/t0040.00.jpg",
+    "evidence/t0420.90.jpg"
+  ],
+  "first_main_attacker_attack": {
+    "pokemon": "Whimsicott ex",
+    "attack_name": "Grass Knot",
+    "own_turn_number": 4,
+    "global_displayed_turn": 7,
+    "source_time_seconds": 238,
+    "opponent_points_before_attack": 0,
+    "owner_points_before_attack": 0,
+    "attempted": true,
+    "landed": false,
+    "result": "Mirror Shot coin tails; attack did nothing; turn ended",
+    "displayed_expected_damage": 160,
+    "evidence_paths": [
+      "evidence/t0229.00.jpg",
+      "evidence/t0238.00.jpg",
+      "evidence/t0241.00.jpg",
+      "evidence/t0243.00.jpg",
+      "evidence/t0245.00.jpg",
+      "evidence/t0247.00.jpg"
+    ]
+  },
+  "first_landed_main_attacker_attack": {
+    "pokemon": "Whimsicott ex",
+    "attack_name": "Grass Knot",
+    "own_turn_number": 5,
+    "global_displayed_turn": 9,
+    "source_time_seconds": 304,
+    "opponent_points_before_attack": 0,
+    "damage": 130,
+    "evidence_paths": [
+      "evidence/t0279.00.jpg",
+      "evidence/t0303.00.jpg",
+      "evidence/t0304.00.jpg",
+      "evidence/t0308.00.jpg",
+      "evidence/t0311.00.jpg"
+    ]
+  },
+  "main_attacker_interpretation": "Whimsicott ex is the main attacker: both landed attacks and every owner attack attempt are Grass Knot. Two Whimsicott ex copies act; neither Ariados nor Ogerpon attacks. T4 counts first declared attempt even though it misses; T5 separately first landed.",
+  "recommended_ladder_section": "Deck 12 Ariados / Whimsicott / Ogerpon",
+  "exact_three_item_note_prefix": "1st | Whimsicott ex T4 (missed) | opp 0 pts",
+  "uncertainties": [
+    {
+      "topic": "Hidden information",
+      "limit": "No exact full deck lists, all hidden draws, or full opponent hand contents are inferred."
+    },
+    {
+      "topic": "Opponent Tool title",
+      "timestamps": [
+        72,
+        73,
+        74,
+        75
+      ],
+      "limit": "Blue cape-shaped Tool and +20 HP effect/persistence are clear; title not separately captured legibly."
+    },
+    {
+      "topic": "Timing",
+      "limit": "Turn intervals are approximate transition bounds. First attack attempt selected at238s, condition coin at241-243s and failure at245s; exact millisecond onset is not claimed."
+    },
+    {
+      "topic": "Phone notification",
+      "timestamps": [
+        305,
+        308,
+        309
+      ],
+      "limit": "Top overlay during T5 coin; heads visible at308 and130damage/HP visible at311."
+    }
+  ],
+  "independent_acceptance": false,
+  "lead_acceptance": false
+}

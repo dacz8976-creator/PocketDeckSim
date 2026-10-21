@@ -1,0 +1,69 @@
+{
+  "operation": "OneDrive online-only request",
+  "created_at_utc": "2026-10-13T04:54:11.237197+00:00",
+  "videos": 2,
+  "online_only": 2,
+  "allocated_bytes_before": 2203304193,
+  "allocated_bytes_after": 0,
+  "local_bytes_reclaimed": 2203304193,
+  "files_deleted": 0,
+  "method": "Microsoft-documented attrib +U -P; only in-sync cloud placeholders are changed",
+  "verification": "Cloud placeholder metadata and actual allocated disk bytes; video contents are never read",
+  "documentation": "https://learn.microsoft.com/en-us/sharepoint/files-on-demand-windows",
+  "entries": [
+    {
+      "video": "20261013_022530000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20261013_022530000_iOS.MP4",
+      "before": {
+        "logical_bytes": 1037304261,
+        "allocated_bytes": 1037304261,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": true,
+      "after": {
+        "logical_bytes": 1037304261,
+        "allocated_bytes": 0,
+        "attributes": 5248544,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": true
+      }
+    },
+    {
+      "video": "20261013_030351000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20261013_030351000_iOS.MP4",
+      "before": {
+        "logical_bytes": 1165999932,
+        "allocated_bytes": 1165999932,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": true,
+      "after": {
+        "logical_bytes": 1165999932,
+        "allocated_bytes": 0,
+        "attributes": 5248032,
+        "placeholder_state": 25,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": true
+      }
+    }
+  ]
+}

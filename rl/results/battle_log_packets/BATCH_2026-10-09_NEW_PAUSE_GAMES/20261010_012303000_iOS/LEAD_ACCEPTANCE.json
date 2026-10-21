@@ -1,0 +1,38 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-10T04:44:40.086715+00:00",
+  "source_video": "20261010_012303000_iOS.MP4",
+  "source_sha256": "0e00fad4af7232b8b50c5cd9b946fdef9a1ac3e873166667e57ac3bce15bcc3e",
+  "scope": "Whole supplied continuous battle: setup, all turns, terminal sequence and source ending",
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 11,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-09_NEW_PAUSE_GAMES\\20261010_012303000_iOS\\independent_sol\\CHECK_RESULT.json",
+  "basis": "Whole-source Sol review and coverage; separately commissioned bounded Sol checks of opening, ordinary turns/first moves, draws/searches, hands, both boards/Energy Zones, fans, decisive outcome; all frozen repairs independently verified. Root reconciled reports and inspected consequential boundary frames. Structure checked separately.",
+  "source_limits": [
+    "No discard pile opened; periodic pile-content snapshots unavailable.",
+    "Opponent hidden draws and full deck remain unknown.",
+    "Exact artwork/rarity not encoded by QR; deck snapshot preserves log variant labels.",
+    "Final results loading continues to398.13s; terminal3point/Victory already clear388-390s.",
+    "Source timestamps are local seeks; frame PTS not separately measured."
+  ],
+  "outcome": {
+    "owner_result": "win",
+    "owner_points": 3,
+    "opponent_points": 2,
+    "terminal_turn": 11,
+    "result_evidence_seconds": [
+      375,
+      388,
+      390
+    ],
+    "evidence_ids": [
+      "F037500",
+      "F038800",
+      "F039000"
+    ]
+  },
+  "external_status": "Source-qualified live deck definitions have been saved and read back. This game save is pending; dated deck retrieval and any unverified earlier version are preserved in DECK_USED.json.",
+  "archive_authorization": "Completed local review may be safely archived after verified CLI registration; original bytes/name preserved."
+}

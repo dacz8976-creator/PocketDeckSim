@@ -1,0 +1,1 @@
+nice -n 19 ionice -c3 python3 /home/dacz8976/pincand/rl/results/engine_switch_rules2_2026-10/floor_with.py /home/dacz8976/pincand_work/programs/N/deckgym 245e11e8cf939da7ba12a50fbb18630c67b1fb2231a692dd0c259c4a01556745 /home/dacz8976/pincand/decks/screen/floor.py decks/dustin/06-mega-blaziken-tournament-list.txt --out /home/dacz8976/pincand_work/games/new/floor_06

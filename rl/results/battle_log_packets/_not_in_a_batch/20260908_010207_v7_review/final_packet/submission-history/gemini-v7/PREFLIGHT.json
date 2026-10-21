@@ -1,0 +1,49 @@
+{
+  "source_identity": {
+    "filename": "20260908_010207000_iOS.MP4",
+    "sha256": "F4956D25FDC445C48FEC9D6705DE40A4721E37367BECE727AA0D7E50E09CCC1F",
+    "bytes": 448053217,
+    "duration_seconds": 240.595011
+  },
+  "completion": {
+    "finish_reasons": [
+      "STOP"
+    ],
+    "prompt_block_reason": null,
+    "automatic_retry_performed": false
+  },
+  "response_sha256": "B49BA1C91A7AEC8A292DCD91900672D00065C9188B81F1AB4B77994EE3388412",
+  "battle_identity": {
+    "version": 1,
+    "opponent_label": {
+      "state": "observed",
+      "value": "Opponent",
+      "timestamp_seconds": 4.5,
+      "observation": "Opponent nametag displays 'Opponent' with AI badge."
+    },
+    "opening_player": {
+      "state": "observed",
+      "value": "Team Rocket's Rattata",
+      "timestamp_seconds": 14.0,
+      "observation": "Player's active Pokemon card is Team Rocket's Rattata."
+    },
+    "opening_opponent": {
+      "state": "observed",
+      "value": "Popplio",
+      "timestamp_seconds": 14.0,
+      "observation": "Opponent's active Pokemon card is Popplio."
+    },
+    "outcome": {
+      "state": "observed",
+      "value": "opponent_win",
+      "timestamp_seconds": 240.0,
+      "observation": "Opponent reaches 3 points, winning the battle."
+    },
+    "result_text": {
+      "state": "not_shown",
+      "value": null,
+      "timestamp_seconds": 240.5,
+      "observation": "Video ends on point acquisition banner before Victory/Defeat screen."
+    }
+  }
+}

@@ -1,0 +1,43 @@
+{
+  "game_id": "pause-20261012-210041",
+  "source_video": "20261012_210041000_iOS.MP4",
+  "source_sha256": "6e8f59764ede0e890ac012fd4ccdd08fc7bfd480bbaae7721bd1f8046031fcc6",
+  "unresolved_facts": [
+    {
+      "id": "L1",
+      "topic": "Current live deck snapshot",
+      "reason": "Exact20-card filmed QR is verified, but the lead found this new list absent from the current live artifact deck choices. No verified live-log snapshot is available.",
+      "evidence": [
+        "QR_DECODE.json",
+        "../PREPARED_FILMED_DECK.json"
+      ]
+    },
+    {
+      "id": "L2",
+      "topic": "Discard pile views",
+      "reason": "Neither player opens a discard pile anywhere in this source. Full contents, duplicates and scroll coverage stay null.",
+      "evidence": [
+        "TURN_EVIDENCE.json"
+      ]
+    },
+    {
+      "id": "L3",
+      "topic": "Opponent hidden information",
+      "reason": "Unrevealed normal and Research draws plus remaining hand/deck identities are hidden. Fans are counted only at owner starts.",
+      "evidence": [
+        "TURN_LEDGER.json"
+      ]
+    },
+    {
+      "id": "L4",
+      "topic": "Timing and fast first plays",
+      "reason": "Native seeks preserve requested source-local time; measured frame presentation time is unavailable. On turns 2,4,10,12 rapid plays/selection make some scheduled candidates unsuitable; earlier actual pre-play views are retained. Turn 14 +6 is already Defeat.",
+      "evidence": [
+        "TURN_EVIDENCE.json"
+      ]
+    }
+  ],
+  "unreviewed_intervals": [],
+  "needs_higher_reasoning_ambiguity": [],
+  "result_uncertain": false
+}

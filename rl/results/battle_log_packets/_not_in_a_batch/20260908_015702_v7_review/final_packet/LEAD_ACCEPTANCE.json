@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "status": "accepted",
+  "scope": "complete linked battle across 20260908_015201000_iOS.MP4 and 20260908_015702000_iOS.MP4",
+  "primary_processor": "Gemini 3.8 Flash API",
+  "routine_reviewer": "Sol",
+  "lead_review": "Codex",
+  "astra_used": false,
+  "battle_turns": 18,
+  "final_score": {"player": 3, "opponent": 2},
+  "outcome": "player_win",
+  "acceptance_basis": [
+    "exact cross-file continuity",
+    "corrected turn boundaries",
+    "reconciled Energy ledger",
+    "verified damage, knockouts, scoring, and terminal sequence"
+  ],
+  "nonessential_metadata": {
+    "ai_or_human_pilot": "unknown"
+  }
+}

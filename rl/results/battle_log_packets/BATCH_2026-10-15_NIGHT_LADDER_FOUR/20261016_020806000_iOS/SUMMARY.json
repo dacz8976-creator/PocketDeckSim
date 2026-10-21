@@ -1,0 +1,43 @@
+{
+  "source_filename": "20261016_020806000_iOS.MP4",
+  "source_sha256": "3500dda99e8c7174a9fdaeebe13678fc17793a2c728db0728f903b5d6f4a0066",
+  "battle_complete": true,
+  "match_count": 1,
+  "exact_three_item_note_prefix": "First | Kingambit no attack; Glimmora first attack own T2; Regigigas first attack own T5 | Opp points at first attack: Kingambit N/A; Glimmora 0; Regigigas 0",
+  "outcome": "loss",
+  "outcome_evidence": "Owner opens Concede at 548 seconds during global turn 13, with visible points 1-1; Defeat versus Miki follows at 553-558 seconds.",
+  "opponent_identifier": "Miki",
+  "owner_identifier": "Dacz8976",
+  "match_date_local": "2026-10-15",
+  "recording_creation_local": "2026-10-15T21:08:06-05:00",
+  "mode": "Ranked Match, Season B4b SP; Master Ball Rank",
+  "Auto": {
+    "control_or_option_visible": false,
+    "enabled_observed": false,
+    "owner_choices_attributed_to_auto": false,
+    "classification": "human ranked ladder",
+    "limitation": "No Auto option was visible anywhere in this reviewed source."
+  },
+  "visible_cores": {
+    "owner": ["Pawniard", "Kingambit", "Glimmet", "Glimmora", "Alolan Grimer", "Alolan Muk", "Regigigas"],
+    "opponent": ["Drampa", "Mega Rayquaza ex", "Dratini", "Dragonair"],
+    "exact_twenty_card_lists_known": false,
+    "selected_deck_label": "New deck 16"
+  },
+  "first_or_second": "first",
+  "owner_turns": 7,
+  "global_terminal_turn": 13,
+  "visible_score_at_concession": {"owner": 1, "opponent": 1},
+  "first_attacks_by_core": {
+    "Kingambit": {"attacked": false, "owner_turn": null, "global_turn": null, "opponent_points": null, "note": "Evolved and attached one Darkness on owner turn 7; no attack before concession."},
+    "Glimmora": {"attacked": true, "owner_turn": 2, "global_turn": 3, "source_seconds_approx": [113,116], "attack": "Venomous Hit", "opponent_points": 0},
+    "Regigigas": {"attacked": true, "owner_turn": 5, "global_turn": 9, "source_seconds_approx": [385,389], "attack": "Giga Turbo", "opponent_points": 0},
+    "second_Glimmora": {"attacked": true, "owner_turn": 6, "global_turn": 11, "source_seconds_approx": [461,467], "attack": "Venomous Hit", "opponent_points": 0},
+    "Alolan_Muk": {"attacked": false, "owner_turn": null, "global_turn": null, "opponent_points": null, "note": "Bench ability support only."}
+  },
+  "decisive_native_evidence": ["native/t0174.00.jpg", "native/t0265.00.jpg", "native/t0386.00.jpg", "native/t0392.00.jpg", "native/t0515.00.jpg", "native/t0524.00.jpg", "native/t0528.00.jpg", "native/t0548.00.jpg", "native/t0557.00.jpg", "native/t0558.00.jpg"],
+  "reviewer": "/root/ladder_020806",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "acceptance_status": "primary review ready for independent and lead checks"
+}

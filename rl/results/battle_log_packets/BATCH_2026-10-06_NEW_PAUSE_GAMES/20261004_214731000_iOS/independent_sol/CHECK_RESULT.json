@@ -1,0 +1,131 @@
+{
+  "schema": "independent-pause-games-acceptance-v1",
+  "source_video": "20261004_214731000_iOS.MP4",
+  "source_sha256": "d363bdd1c3f4aafc5ad9423764e706f8944407d68a04c82d72317592d7e7e198",
+  "reviewer": "/root/independent_214731",
+  "model": "gpt-6.1-sol",
+  "checked_utc": "2026-10-06T17:52:59.212858+00:00",
+  "scope": "Bounded independent acceptance of submitted whole-game first pass; not a second whole visual pass. No external/shared edits.",
+  "status": "accepted_gameplay_pending_narrow_packet_repairs",
+  "independent_capture_acceptance": false,
+  "gameplay_outcome_verified": {
+    "owner": "Dacz8976",
+    "opponent": "CloutDemon",
+    "win": true,
+    "points": [
+      3,
+      0
+    ],
+    "turns": 8,
+    "damage_done_displayed": 200
+  },
+  "checks": [
+    {
+      "check": "opening and placement",
+      "status": "pass",
+      "details": "Native24.5 establishes5cards left-to-right Accelgor, Lucky Ice Pop, Caterpie, Research, Metapod; overview26/30 establishes Caterpie selected Active."
+    },
+    {
+      "check": "ordinary owner first move and T2 draws/searches",
+      "status": "pass",
+      "details": "95 intact5hand; first Fragrant Forest at96/98; effect103 finds Caterpie106 and bench visible121; Research reveals Ball114 then Accelgor115; Ball finds Shelmet121.134 shows4ending cards and143 board confirms Ram/Helmet HP150/60."
+    },
+    {
+      "check": "ordinary opponent turn3 beyond flagged issues",
+      "status": "pass",
+      "details": "Retained144-181 evidence establishes concealed normal draw, Dragonair evolution, Research public-top plus2concealed draws, Fire attachment, noattack and unchangedHP;181 TimeLimit0 observation is not an established timeoutcause."
+    },
+    {
+      "check": "T6 healing/retreat/attack shuffle/Trail nesting",
+      "status": "pass_gameplay_repair_metadata",
+      "details": "Heads263 returns first Pop, second Pop266 heals to50 then tails271; Grass paid for retreat from prior1Grass Butterfree, middleAccelgor promoted;278 establishes2Grass on Accelgor. DeckAndCover50/conditions/shuffle precedes Butterfree promotion290; Trail replenishes Pop293,Shelmet294,Extract295 then poison297; endinghand3. No general rules assertion from absence of Helmet animation."
+    },
+    {
+      "check": "T7/T8 terminal consequences",
+      "status": "pass_gameplay_repair_boundary",
+      "details": "329 establishesRay20 and paralysisclears; T8 Extract evolves rightBenchMetapod directly, currentGrass goes ActiveButterfree; SunnyWind60, heal20 from50to70, Helmet20to50;359 threepoints and374 explicit victoryCloutDemon,8turns,200displayeddamage."
+    },
+    {
+      "check": "owner hands and opponent fans",
+      "status": "pass",
+      "details": "Selected preplay hands5,5,3,4; ownerending4,2,3afterTrail,2. Opponentfans2,3,3,3 confirmed distinctbacks native selected views. Transaction arithmetic agrees; Pop returns samecard, no extra draw; Extract evolution bypasses hand."
+    },
+    {
+      "check": "both boards / Energy Zones / turn rows",
+      "status": "pass_subject_to_R2_R3",
+      "details": "Eight ordered alternatingrows, bothplayers Active/BenchHP, attachedEnergy, Tools, conditions, Stadium/points and this/next zone lines represented. Selected nativeboundaries agree with core state/zone changes. Terminal and nextturn display labels require precision repairs."
+    },
+    {
+      "check": "native evidence integrity and draw candidates",
+      "status": "pass_subject_to_R1_R4",
+      "details": "252 full frames measured1170x2532, bottom1170x507 at[0,2025,1170,2532], top1170x760 at[0,0,1170,760]; all ledger refsresolve, source/hashconsistent; four ownerturns have+1/+3/+6, selectedpreplay andbefore-end evidence. Two suitability flags require repairs."
+    },
+    {
+      "check": "source/deck/discard limitations",
+      "status": "pass_with_limits",
+      "details": "Frozen CLI sourceidentity accepted without repeatedmediahash. No new full sourcepass; bounded source-bound retainedevidence reused. Workerwholecoverage and explicit noQR/noAuto claims reviewed against selected gameplay/matchmaking. No openeddiscardpileviews is explicit inspectedworkerlimit. Exact20-card filmedGrasslist absentfrom9live lists remains missing, not substituted or guessed; laterleadsupplement required for exactdeckbinding."
+    }
+  ],
+  "required_repairs": [
+    {
+      "id": "R1",
+      "file": "TURN_EVIDENCE.json",
+      "field": "frames[e_0278.00].unzoomed / suitability_or_limit",
+      "finding": "278 is an Accelgor attack zoom, yet unzoomed is true and the description says last clear hand. Empty hand is established, but label the zoom substitution accurately or select retained273 for a clear empty-hand view.",
+      "evidence_ids": [
+        "e_0278.00"
+      ],
+      "severity": "capture_metadata"
+    },
+    {
+      "id": "R2",
+      "file": "TURN_LEDGER.json",
+      "field": "turns[8].board_after and terminal evidence/time basis",
+      "finding": "355 shows Rayquaza being removed and owner displayed points still0; structured board keeps the KO Rayquaza Active with2Energy/Helmet/Poison and points3, all labelled observed from355. Distinguish last pre-removal KO state from post-KO terminal state, and cite359/374 for awarded points. A resolved post-KO Active must be empty with removed attachments/conditions.",
+      "evidence_ids": [
+        "e_0355.00",
+        "e_0354.00",
+        "e_0359.00",
+        "e_0374.00"
+      ],
+      "severity": "board_boundary"
+    },
+    {
+      "id": "R3",
+      "file": "TURN_LEDGER.json",
+      "field": "turns[6].board_after.turn_number_displayed; turns[7].board_after.turn_number_displayed",
+      "finding": "298 displays Current turn7 and329 displays Current turn8; fields currently say6 and7. Preserve row/concluded turn separately from observed next-turn boundary display.",
+      "evidence_ids": [
+        "e_0298.00",
+        "e_0329.00"
+      ],
+      "severity": "capture_metadata"
+    },
+    {
+      "id": "R4",
+      "file": "TURN_EVIDENCE.json",
+      "field": "frames[e_0245.00].before_first_play / suitability_or_limit",
+      "finding": "Native245 already has only Accelgor and Lucky Ice Pop in hand; Hiking Trail has left the fan during play although prior Forest is still visible. It is not a hand3-intact pre-play candidate. Mark play in progress, before_first_play=false; selected244 correctly preserves intact3-card hand. Clarify the first move input/animation window245-246 rather than treating246 as exact earliest input.",
+      "evidence_ids": [
+        "e_0244.00",
+        "e_0245.00"
+      ],
+      "severity": "capture_metadata"
+    }
+  ],
+  "consequential_gameplay_uncertainty": null,
+  "astra_escalation_needed": false,
+  "preserved_limits": [
+    "Exact20-card live-log deckbinding missing at submission",
+    "Openeddiscard piles absent per fullworker sourceinspection",
+    "Opponentconcealed identities unknown",
+    "Seek labels are not measuredframePTS/exactinputs",
+    "Exactqueue and printingIDs unavailable"
+  ],
+  "lead_only_remaining_actions": [
+    "Preservefirstpass and repairR1-R4",
+    "Bounded repair verification before capture acceptance",
+    "Decksource-qualified supplement as leadresolves live list",
+    "Leadacceptance/registration/externalentry/archive remain outside thischeck"
+  ]
+}

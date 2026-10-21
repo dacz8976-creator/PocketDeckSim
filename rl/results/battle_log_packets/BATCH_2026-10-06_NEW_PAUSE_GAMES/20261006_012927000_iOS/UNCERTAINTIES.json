@@ -1,0 +1,34 @@
+{
+  "is_template": false,
+  "game_id": "20261006_012927000_iOS_game_01",
+  "uncertainties": [
+    {
+      "id": "live-log-snapshot",
+      "status": "recording_limit",
+      "impact": "External exact20 log snapshot must be taken by lead; no worker claim of live save."
+    },
+    {
+      "id": "opponent-hidden",
+      "status": "recording_limit",
+      "impact": "Draw/search identities not face-up stay unknown."
+    },
+    {
+      "id": "discard",
+      "status": "recording_limit",
+      "impact": "Only top previews; no complete owner/opponent discard lists."
+    },
+    {
+      "id": "time",
+      "status": "bounded",
+      "impact": "Seek targets approximate displayed events; exact touch/PTS not measured."
+    },
+    {
+      "id": "opponent-turn9-fan-phase",
+      "status": "recording_limit",
+      "impact": "Literal completed fans3 at294 and2 at334/339 retained; transitional postplay counts unknown. No invented hidden extra action."
+    }
+  ],
+  "resolved_corrections": [
+    "Typed retreat payment and current-vs-next Energy corrected by native phase inspection."
+  ]
+}

@@ -1,0 +1,17 @@
+{
+  "recorded_utc": "2026-10-03T00:07:40.627908+00:00",
+  "owner_choice": "Local batch and index only (Recommended)",
+  "owner_rule": "The pause log is for games against other humans. No games where the auto pilot mode is shown, should be logged there",
+  "classification_rule": "Any visible Auto option, even OFF, identifies a computer battle. Process locally; exclude from human Pause Games and ladder results.",
+  "actual_destination": "local_review_batch_and_BATTLE_REVIEW_INDEX",
+  "batch_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD",
+  "online_game_entry_requested": false,
+  "human_pause_games_eligible": false,
+  "ranked_ladder_eligible": false,
+  "capture_protocol": "PAUSE_GAMES_REVIEW_PROTOCOL.md explicitly requested for this local computer comparison.",
+  "deck_snapshot_source_url": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "prior_intake_routing_limit": "Root initially assigned the Pause Games URL as a tentative destination. Preserved SOURCE/ASSIGNMENT or frozen first passes may retain that URL. This direct owner routing decision supersedes those destination fields; the URL remains valid only as the exact deck-list source.",
+  "external_writes_for_this_batch": 0,
+  "scope": "All eight new October2 Draft A computer comparison games.",
+  "packet_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210612000_iOS_auto_sol"
+}

@@ -1,0 +1,109 @@
+{
+  "completed_utc": "2026-10-13T01:03:57.536643+00:00",
+  "owner_authorization": "Yes please finish. There are actually two more videos as well.",
+  "external_saved": true,
+  "fresh_public_readback_verified": true,
+  "four_games_unique": true,
+  "new_deck_20_slots_verified": true,
+  "prior_games_and_decks_preserved": true,
+  "accepted_eight_file_packets_unchanged": true,
+  "appended_deck_log_snapshots": 4,
+  "game_count": 43,
+  "deck_count": 26,
+  "wins": 25,
+  "losses": 18,
+  "opponent_concession_wins": 15,
+  "mirrored_all_added_and_updated_files": true,
+  "changes": [
+    {
+      "path": "README.md",
+      "previous_sha256": "ca09a33e4cf7ae40f50bcd679941d403e8a76134b4fa464069a2648d2ea2a88a",
+      "current_sha256": "41dea56d6b2e2c40bedd307fa66980bdc112b3c923b5ec1f34a1587d62d38472",
+      "preserved_previous": "README.before_external_save.md"
+    },
+    {
+      "path": "BATCH_COMPLETION_CHECK.json",
+      "previous_sha256": "86eb9076cbea3a7e7ac1819bd307d18a8fa86a498961b1c7e24b05af079ef087",
+      "current_sha256": "01232717fa0818a99e5c8f2f37d31a2354520faf181a6f9cb4dc230aef3e5806",
+      "preserved_previous": "BATCH_COMPLETION_CHECK.before_external_save.json"
+    },
+    {
+      "path": "PAUSE_GAMES_BATCH_IMPORT.json",
+      "previous_sha256": "18b943a11117f7496460422279c844f3849e639008f23eb113d42fe91aead3be",
+      "current_sha256": "ad1421b6d332a01b4ae6c1ff8f6558f33f11969e5de4cf2c7538bae9225ee024",
+      "preserved_previous": "PAUSE_GAMES_BATCH_IMPORT.before_external_save.json"
+    }
+  ],
+  "copies": [
+    {
+      "path": "complete_external_status.py",
+      "sha256": "851c44502db14540f0410f1ca2bbb59004871165567c93534f1ab115d295de33",
+      "bytes": 4175
+    },
+    {
+      "path": "LIVE_SAVE_VERIFICATION.json",
+      "sha256": "2bb33a69bfa8a48782f730916a3d3a35252704a42f1f3c6cd45dbcb6b2040ccf",
+      "bytes": 91318
+    },
+    {
+      "path": "LIVE_SAVE_SUMMARY.png",
+      "sha256": "40832dc5ef7f62a3900538410f08bff76d7e720a584d337f9b7b6520228e7a2e",
+      "bytes": 53739
+    },
+    {
+      "path": "LIVE_DECK_SNAPSHOT.json",
+      "sha256": "27083db3f611232792d8befbc28569c59f50ed437607ee744b203d4a9289cdac",
+      "bytes": 3959
+    },
+    {
+      "path": "README.md",
+      "sha256": "41dea56d6b2e2c40bedd307fa66980bdc112b3c923b5ec1f34a1587d62d38472",
+      "bytes": 1992
+    },
+    {
+      "path": "README.before_external_save.md",
+      "sha256": "ca09a33e4cf7ae40f50bcd679941d403e8a76134b4fa464069a2648d2ea2a88a",
+      "bytes": 1893
+    },
+    {
+      "path": "BATCH_COMPLETION_CHECK.json",
+      "sha256": "01232717fa0818a99e5c8f2f37d31a2354520faf181a6f9cb4dc230aef3e5806",
+      "bytes": 3853
+    },
+    {
+      "path": "BATCH_COMPLETION_CHECK.before_external_save.json",
+      "sha256": "86eb9076cbea3a7e7ac1819bd307d18a8fa86a498961b1c7e24b05af079ef087",
+      "bytes": 3936
+    },
+    {
+      "path": "PAUSE_GAMES_BATCH_IMPORT.json",
+      "sha256": "ad1421b6d332a01b4ae6c1ff8f6558f33f11969e5de4cf2c7538bae9225ee024",
+      "bytes": 11010
+    },
+    {
+      "path": "PAUSE_GAMES_BATCH_IMPORT.before_external_save.json",
+      "sha256": "18b943a11117f7496460422279c844f3849e639008f23eb113d42fe91aead3be",
+      "bytes": 10883
+    },
+    {
+      "path": "20261012_010706000_iOS/DECK_LOG_SNAPSHOT.json",
+      "sha256": "10e32638990c5b5351dac00e47953b587220ac7e705443352e458d5dbf7d5b81",
+      "bytes": 4223
+    },
+    {
+      "path": "20261012_203719000_iOS/DECK_LOG_SNAPSHOT.json",
+      "sha256": "a27a336b76906f1ad1261e7a2a46d957b574e76dd6f84123783dc1d5bff233af",
+      "bytes": 4224
+    },
+    {
+      "path": "20261012_210041000_iOS/DECK_LOG_SNAPSHOT.json",
+      "sha256": "deff5c82cc4cc57134e16df03020f1815703bd88f744faf905b3e7534f281748",
+      "bytes": 4216
+    },
+    {
+      "path": "20261012_210823000_iOS/DECK_LOG_SNAPSHOT.json",
+      "sha256": "e45554665420b12729626ffc2dd2fe598b5ed30304bb54822380652535e7689b",
+      "bytes": 4222
+    }
+  ]
+}

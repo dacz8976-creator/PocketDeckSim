@@ -1,0 +1,44 @@
+{
+  "computer_use_reason": "Could not verify the current browser URL on Windows with enough confidence to enforce policy",
+  "remaining_source_reviews": [
+    "20261014_230328000_iOS.MP4",
+    "20261014_231006000_iOS.MP4"
+  ],
+  "computer_use_stopped": true,
+  "review_and_archive_complete": false,
+  "reviewed_games": 0,
+  "saved_games": 0,
+  "previous_four_live_saves_pending": true,
+  "shared_index_changes_for_new_sources": 0,
+  "requested_games": 2,
+  "source_rows": [
+    {
+      "sha256": null,
+      "external_saved": false,
+      "source": "20261014_230328000_iOS.MP4",
+      "archived": false,
+      "pending_reason": "Cloud Files hydration timed out after 35 seconds; child stopped",
+      "last_hydration_attempt_utc": "2026-10-14T18:39:52.496513-05:00",
+      "allocated_bytes": 0,
+      "review_complete": false,
+      "logical_bytes": 695885571,
+      "duration_seconds": null,
+      "source_claimed": false
+    },
+    {
+      "sha256": null,
+      "external_saved": false,
+      "source": "20261014_231006000_iOS.MP4",
+      "archived": false,
+      "pending_reason": "Cloud Files hydration timed out after 35 seconds; child stopped",
+      "last_hydration_attempt_utc": "2026-10-14T18:40:27.625291-05:00",
+      "allocated_bytes": 0,
+      "review_complete": false,
+      "logical_bytes": 866074163,
+      "duration_seconds": null,
+      "source_claimed": false
+    }
+  ],
+  "source_contents_modified": false,
+  "checked_utc": "2026-10-14T23:42:02.8716501Z"
+}

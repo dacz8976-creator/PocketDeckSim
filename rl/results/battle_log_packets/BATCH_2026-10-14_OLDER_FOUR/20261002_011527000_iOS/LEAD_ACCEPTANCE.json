@@ -1,0 +1,29 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-14T15:26:43.665045+00:00",
+  "source_video": "20261002_011527000_iOS.MP4",
+  "source_sha256": "7cbaa7c16071389d66d14ad9fcbf55f5991b2f7703f14d85eb0af4a68ef9d778",
+  "source_game_count": 1,
+  "all_source_games_accepted": true,
+  "battle_complete": true,
+  "archive_eligible": true,
+  "scope": "Entire 404.598333-second recording; setup, all 14 turns and terminal victory; one computer battle",
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-14_OLDER_FOUR\\20261002_011527000_iOS\\independent_sol\\CORRECTION_RECHECK.json",
+  "independent_model_configuration": "gpt-6.1-sol/high, fresh compact independent task per applicable review cost instructions",
+  "independent_acceptance_sha256": "3cc350ca7f2031bf4cc5228fc6dd932c47102ea42f498911bcb57b053df55231",
+  "accepted_input_sha256": {
+    "SOURCE.json": "ed9ad578d481aa4c7be66cedb0d27f9fc0cfa2723023e52ba1e05cac7117e92d",
+    "ASSIGNMENT.json": "1213b0b6c37f787c5b50d833f2110727b07a2baa1ebea407d42418252880df1e",
+    "REVIEW.md": "a51a5573cbb13819d7edea8859bf18df062a6c1e01483bc47286144862eac08d",
+    "COVERAGE.md": "332d10e45d154fd66f2382f5bfd3bb26203f677ad9112f002ee74d295a8818e8",
+    "SUMMARY.json": "d10b7a94162568f949dfb264d6496542fa697d72605c5691f85f0478ce66c696",
+    "UNCERTAINTIES.json": "622a99d3dbccb89c190ad8d5e9105ebe69d6de2fe5a23cf9e9a2522dcfbeca93",
+    "EVENTS.json": "524eabc455aacf9de65c0c76597c68bef27ae64dedb261ec85a040f24ba6d679",
+    "EVIDENCE.json": "c10788b3ece773d32d990d0b31ca4f9cb678337a0158824daa7a2dc353e9b96e",
+    "REVIEW_PACKET_HASHES.json": "9d09187309227d689067883b3c70fbe0498815a2e1e79609d55f9798d129f9b2"
+  },
+  "root_checks": "SOURCE_CHECKS.json",
+  "notes": "Independent Sol acceptance after narrowly corrected Auto timing and root native-source checks. Computer battle, win3-2. Mixed AutoOFF-ON-OFF: OFF318s, ON321-341s, OFF342s. Frame338 hides control, so cannot establish OFF. Choice authorship remains limited. Excluded from Ladder Log and Pause Games. Rejected draft preserved; LEAD_ACCEPTANCE is authoritative after primary freeze."
+}

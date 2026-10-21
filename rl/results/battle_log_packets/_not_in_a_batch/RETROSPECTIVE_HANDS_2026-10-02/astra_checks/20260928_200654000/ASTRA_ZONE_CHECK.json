@@ -1,0 +1,1013 @@
+{
+  "game_id": "20260928_200654000",
+  "source_sha256": "d4d0dd51f309c05abcdb6b1f04a75c036ca3e59b4abee3f6ce542b2d56149fd6",
+  "reviewer": "/root/astra_entei_020916",
+  "assigned_role": "Astra narrow Energy Zone phase check",
+  "completed_at_utc": "2026-10-02T23:19:35.357296+00:00",
+  "status": "narrow_check_complete_provenance_repairs_supported",
+  "scope": "R3 only, 13 start-Zone fields. Independent inspection of 19 existing native frames; does not replace full Sol acceptance. R1/R2/R4 integration remains with lead.",
+  "source_identity_basis": "Reused root-verified SHA and existing TURN_EVIDENCE source binding; source movie not read or hashed.",
+  "read_document_hashes": {
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\TURN_LEDGER.json": "235701fe56da5d461ab1a7db72c1bb6a36081c797566092c918473ecda788435",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\TURN_EVIDENCE.json": "4224e2eb224ce115ac1312d8f3452cc5ab4bb097ce851b776bb4063313bc370e",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\independent_ladder\\20260928_200654000\\CHECK_RESULT.json": "b2968efeb43e44ae6ac6f92afc3e7115d5c2a5d5c58467aba7dcaa64dfd81aaf"
+  },
+  "inspected_native_count": 19,
+  "inspected_native_paths_and_hashes": [
+    {
+      "evidence_id": "F0055.00",
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0055.00.jpg",
+      "sha256": "e7cef25e4c0082567f8a1fc7c5c5336390950365d31ee7e84497184ad6fe617c",
+      "bytes": 395132,
+      "requested_source_seconds": 55.0,
+      "measured_pts_seconds": 55.01,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "inspection": "full native image at original detail",
+      "direct_observation": "Owner large current slot empty; upcoming small Darkness not visible in this frame. Opponent empty current with small Metal preview."
+    },
+    {
+      "evidence_id": "F0057.00",
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0057.00.jpg",
+      "sha256": "fa4487b39e9b5529d62981ae8d7019764f550919fd3f2c564e24ffb2192de39a",
+      "bytes": 375786,
+      "requested_source_seconds": 57.0,
+      "measured_pts_seconds": 57.01,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "inspection": "full native image at original detail",
+      "direct_observation": "Owner large current Darkness orb and separate small Darkness preview visible. Later than normal draw and first Poke Ball consumption."
+    },
+    {
+      "evidence_id": "F0139.00",
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0139.00.jpg",
+      "sha256": "978b14f5365d77865e1603a557869b139fbcbd84994b8c026ee0eaac61fbe57a",
+      "bytes": 493027,
+      "requested_source_seconds": 139.0,
+      "measured_pts_seconds": 139.0,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "inspection": "full native image at original detail",
+      "direct_observation": "Owner large current slot empty; small Darkness preview visible during Lillie reveal."
+    },
+    {
+      "evidence_id": "F0141.00",
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0141.00.jpg",
+      "sha256": "3e286c1930b208c646d86f1b2fbccf5de69653b838c736445162bc006629a6a3",
+      "bytes": 523872,
+      "requested_source_seconds": 141.0,
+      "measured_pts_seconds": 141.0,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "inspection": "full native image at original detail",
+      "direct_observation": "Owner large current Darkness orb visible; separate Next Energy generated message shows Darkness preview in animation. Exact animation completion not measured."
+    },
+    {
+      "evidence_id": "F0200.00",
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0200.00.jpg",
+      "sha256": "aef524becb12ede8d72a7ee012e01985e2c6a2bd93cf38985d5161f16997c099",
+      "bytes": 526038,
+      "requested_source_seconds": 200.0,
+      "measured_pts_seconds": 200.012,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "inspection": "full native image at original detail",
+      "direct_observation": "Owner large current slot empty; small preview not visible at this instant."
+    },
+    {
+      "evidence_id": "F0201.00",
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0201.00.jpg",
+      "sha256": "83179ddc5416390d40da72753dfe75d0f6f277d1cd54688120167dd85968b06d",
+      "bytes": 574013,
+      "requested_source_seconds": 201.0,
+      "measured_pts_seconds": 201.013,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "inspection": "full native image at original detail",
+      "direct_observation": "Owner large current Darkness orb visible below enlarged Hydreigon; preview/generation overlay partly obscured. Do not claim this frame independently proves every next-field component."
+    },
+    {
+      "evidence_id": "F0399.50",
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0399.50.jpg",
+      "sha256": "ae8a3199bf444d777da48f33716783e48dbdf53f792c2e17c410b3cb6ace8caa",
+      "bytes": 508351,
+      "requested_source_seconds": 399.5,
+      "measured_pts_seconds": 399.51,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "inspection": "full native image at original detail",
+      "direct_observation": "Owner large current slot empty with small Darkness preview. Opponent current slot empty with small Metal preview; Arceus Active with three Metal."
+    },
+    {
+      "evidence_id": "F0402.00",
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0402.00.jpg",
+      "sha256": "7d6f032c4dcb1decd8f56ef67b30b78983e7a9643ce25f8c62491e926da332fd",
+      "bytes": 542548,
+      "requested_source_seconds": 402.0,
+      "measured_pts_seconds": 402.012,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "inspection": "full native image at original detail",
+      "direct_observation": "Owner large current Darkness orb and small Darkness preview visible after Deino bench placement; opponent large current slot remains empty."
+    },
+    {
+      "evidence_id": "R_evidence_t0522.0",
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0522.0.jpg",
+      "sha256": "96305feb41c929d19a686d91b1548fc5c18fa18b73a05f7f2d7aca7616eaed7c",
+      "bytes": 585559,
+      "requested_source_seconds": 522.0,
+      "measured_pts_seconds": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt.",
+      "inspection": "full native image at original detail",
+      "direct_observation": "Turn13 banner. Opponent large current slot empty with small Metal preview; owner large current slot empty with small Darkness preview. Second Dialga one Metal badge is visible; banner limits other attributes."
+    },
+    {
+      "evidence_id": "F0547.00",
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0547.00.jpg",
+      "sha256": "ad7589dc2fb5f47ec09bd61c25906fcd8579077ca801bdff27489aa51a1a4244",
+      "bytes": 466752,
+      "requested_source_seconds": 547.0,
+      "measured_pts_seconds": 547.015,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "inspection": "full native image at original detail",
+      "direct_observation": "Owner large current slot empty with small Darkness preview before T14 generation. Opponent current slot empty and small Metal preview; second Dialga now has two Metal."
+    },
+    {
+      "evidence_id": "F0550.00",
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0550.00.jpg",
+      "sha256": "32646707eff14cf5d80a628829dd622aeabd0ef06dd60b1fda28ada690ff9314",
+      "bytes": 492187,
+      "requested_source_seconds": 550.0,
+      "measured_pts_seconds": 550.0,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "inspection": "full native image at original detail",
+      "direct_observation": "Owner large current Darkness orb plus small Darkness preview visible; opponent current slot empty plus small Metal preview."
+    },
+    {
+      "evidence_id": "R_evidence_t0120.0",
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0120.0.jpg",
+      "sha256": "b6b54f529ac11f4df2c66d9a0de0d8e505de04bc1084dbf3336c6ffcc556856f",
+      "bytes": 668296,
+      "requested_source_seconds": 120.0,
+      "measured_pts_seconds": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt.",
+      "inspection": "full native image at original detail",
+      "direct_observation": "Opponent large current Metal orb plus separate small Metal preview visible during T3."
+    },
+    {
+      "evidence_id": "R_evidence_t0168.0",
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0168.0.jpg",
+      "sha256": "220ff1b2752e59aa7ea55ed3cc944ece70cc37390eec0469abd5feb57682fb9e",
+      "bytes": 596182,
+      "requested_source_seconds": 168.0,
+      "measured_pts_seconds": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt.",
+      "inspection": "full native image at original detail",
+      "direct_observation": "Opponent large current Metal orb plus small Metal preview visible during Research animation in T5."
+    },
+    {
+      "evidence_id": "F0250.00",
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0250.00.jpg",
+      "sha256": "64620f901e529becadb01e2d3f022945f3f2582519ade396ac66ce5690251363",
+      "bytes": 643420,
+      "requested_source_seconds": 250.0,
+      "measured_pts_seconds": 250.015,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "inspection": "full native image at original detail",
+      "direct_observation": "Opponent large current Metal orb plus small Metal preview visible during T7 card animation."
+    },
+    {
+      "evidence_id": "F0285.00",
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0285.00.jpg",
+      "sha256": "383d9924dedfdf4f718f0b5879cbaf1f3d86f840c37f745e304201a482f69a6a",
+      "bytes": 492336,
+      "requested_source_seconds": 285.0,
+      "measured_pts_seconds": 285.012,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "inspection": "full native image at original detail",
+      "direct_observation": "Owner large current Darkness orb plus small Darkness preview visible during T8 hand/card transition."
+    },
+    {
+      "evidence_id": "R_evidence_t0456.0",
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260928_200654000_iOS_sol\\evidence\\t0456.0.jpg",
+      "sha256": "2d1f243f88a66fa1aaac189bf4bd3038c903dd1d808f0492625a6ec0cf358165",
+      "bytes": 688979,
+      "requested_source_seconds": 456.0,
+      "measured_pts_seconds": null,
+      "timestamp_basis": "Prior source-relative filename time; decodedPTS not provided. Bound by exact old SOURCE SHA and current matching root receipt.",
+      "inspection": "full native image at original detail",
+      "direct_observation": "Opponent large current Metal orb plus small Metal preview visible during T11 after Helmet. This later phase supports generated availability, not the turn-ending consumed state."
+    },
+    {
+      "evidence_id": "F0467.00",
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0467.00.jpg",
+      "sha256": "02da3d78dc0874b8321065f95c278fd8e54f33290039c382b163375f7dca5e94",
+      "bytes": 551840,
+      "requested_source_seconds": 467.0,
+      "measured_pts_seconds": 467.015,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "inspection": "full native image at original detail",
+      "direct_observation": "Owner large Darkness orb visible with generation glow during T12; exact stable-generation completion not measured. Opponent current slot empty with small Metal preview."
+    },
+    {
+      "evidence_id": "F0328.00",
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0328.00.jpg",
+      "sha256": "0c60e4d64287565b9802f621d423423fe085f6bd5c7b8466bd30542d3338bf5f",
+      "bytes": 537102,
+      "requested_source_seconds": 328.0,
+      "measured_pts_seconds": 328.003,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "inspection": "full native image at original detail",
+      "direct_observation": "Prior owner T8 pre-attack endpoint: opponent Arceus Bench with two Metal; opponent current slot empty and small Metal preview. This precedes the T9 generated phase."
+    },
+    {
+      "evidence_id": "F0373.00",
+      "full_native_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260928_200654000\\turn_evidence\\t0373.00.jpg",
+      "sha256": "350981ce62c632799746e64ecbaecbd7f58944d9fb630485888697b5487ff3de",
+      "bytes": 617376,
+      "requested_source_seconds": 373.0,
+      "measured_pts_seconds": 373.003,
+      "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded framePTS; source stream start recorded in decode log",
+      "inspection": "full native image at original detail",
+      "direct_observation": "T9 after Arceus promotion: Active Arceus has three Metal. No-target banner obscures opponent Energy Zone, so not used as a direct empty-current reading."
+    }
+  ],
+  "overall_verdict": "All 13 numerical generated-phase values may remain. Eleven are directly supported by later visible large orbs; T9/T13 are supported as explicitly endpoint-derived generated phases using the independently reviewed normal attachments. Earlier empty/pending displays must remain separate. No unsupported numeric value identified within this scope.",
+  "phase_rules": [
+    "this_turn describes a selected generated pre-attachment phase. It must not be called direct at an earlier banner, draw or previous-turn endpoint.",
+    "next describes the small upcoming preview or its explicit animation; count1 does not add to current available Energy and available remains false.",
+    "An empty large slot at the earliest inspected frame is a direct phase observation, not by itself proof of no later generation or a missed attachment.",
+    "Inactive availability null is not changed. Do not infer unspent Energy merely from an inactive empty slot.",
+    "A field-level composite can combine separate phases only when labeled. Later anchors may follow other plays; they do not certify an exact full start-board screenshot.",
+    "At F0201/F0467 generation animation limits complete simultaneous preview observation and exact availability onset. Retain explicit direct-current versus inherited/composite-preview basis."
+  ],
+  "field_recommendations": [
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[1].board_at_start.owner.energy_zone",
+      "turn_number": 2,
+      "side": "owner",
+      "verdict": "supported_direct_later_orb_with_composite_phase",
+      "numeric_this_turn_change_required": false,
+      "preserve_this_turn": {
+        "type": "Darkness",
+        "count": 1,
+        "available": true
+      },
+      "preserve_next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false
+      },
+      "proposed_zone": {
+        "this_turn": {
+          "type": "Darkness",
+          "count": 1,
+          "available": true
+        },
+        "next": {
+          "type": "Darkness",
+          "count": 1,
+          "available": false
+        },
+        "basis": "Composite generated pre-attachment phase: one large current Darkness orb directly visible at F0057.00. Earlier start-board refs may precede generation or other actions; do not attribute available=true to those earlier frames. Upcoming preview is a separate field.",
+        "evidence_ids": [
+          "R_evidence_t0048.0",
+          "F0057.00"
+        ],
+        "limit_reason": "This is a field-specific later generated phase, not an exact simultaneous snapshot with the earliest start-board frame. Exact generation completion and attachment input PTS are not certified. The small upcoming icon is not additional currently usable Energy.",
+        "phase": "generated_pre_attachment_composite",
+        "attribute_basis": {
+          "this_turn": {
+            "basis": "direct later native orb within composite phase",
+            "evidence_ids": [
+              "F0057.00"
+            ],
+            "detail": "Owner large current Darkness orb and separate small Darkness preview visible. Later than normal draw and first Poke Ball consumption."
+          },
+          "next": {
+            "basis": "Small upcoming preview directly visible at the listed later anchor; count1 identifies one preview, not a second usable Energy.",
+            "evidence_ids": [
+              "F0057.00"
+            ]
+          }
+        },
+        "earlier_display_observations": [
+          {
+            "evidence_id": "F0055.00",
+            "large_current_slot_count": 0,
+            "large_current_slot_type": null,
+            "basis": "direct visible empty slot at earlier phase; not a claim that the later generated phase has zero or the whole turn lacks Energy",
+            "detail": "Owner large current slot empty; upcoming small Darkness not visible in this frame. Opponent empty current with small Metal preview."
+          }
+        ]
+      },
+      "synchronization": "Apply equivalent provenance qualification to mirrored canonical board field if one exists; no simulator change."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[2].board_at_start.opponent.energy_zone",
+      "turn_number": 3,
+      "side": "opponent",
+      "verdict": "supported_direct_later_orb_with_composite_phase",
+      "numeric_this_turn_change_required": false,
+      "preserve_this_turn": {
+        "type": "Metal",
+        "count": 1,
+        "available": true
+      },
+      "preserve_next": {
+        "type": "Metal",
+        "count": 1,
+        "available": false
+      },
+      "proposed_zone": {
+        "this_turn": {
+          "type": "Metal",
+          "count": 1,
+          "available": true
+        },
+        "next": {
+          "type": "Metal",
+          "count": 1,
+          "available": false
+        },
+        "basis": "Composite generated pre-attachment phase: one large current Metal orb directly visible at R_evidence_t0120.0. Earlier start-board refs may precede generation or other actions; do not attribute available=true to those earlier frames. Upcoming preview is a separate field.",
+        "evidence_ids": [
+          "R_evidence_t0096.0",
+          "R_evidence_t0108.0",
+          "R_evidence_t0120.0"
+        ],
+        "limit_reason": "This is a field-specific later generated phase, not an exact simultaneous snapshot with the earliest start-board frame. Exact generation completion and attachment input PTS are not certified. The small upcoming icon is not additional currently usable Energy.",
+        "phase": "generated_pre_attachment_composite",
+        "attribute_basis": {
+          "this_turn": {
+            "basis": "direct later native orb within composite phase",
+            "evidence_ids": [
+              "R_evidence_t0120.0"
+            ],
+            "detail": "Opponent large current Metal orb plus separate small Metal preview visible during T3."
+          },
+          "next": {
+            "basis": "Small upcoming preview directly visible at the listed later anchor; count1 identifies one preview, not a second usable Energy.",
+            "evidence_ids": [
+              "R_evidence_t0120.0"
+            ]
+          }
+        }
+      },
+      "synchronization": "Apply equivalent provenance qualification to mirrored canonical board field if one exists; no simulator change."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[3].board_at_start.owner.energy_zone",
+      "turn_number": 4,
+      "side": "owner",
+      "verdict": "supported_direct_later_orb_with_composite_phase",
+      "numeric_this_turn_change_required": false,
+      "preserve_this_turn": {
+        "type": "Darkness",
+        "count": 1,
+        "available": true
+      },
+      "preserve_next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false
+      },
+      "proposed_zone": {
+        "this_turn": {
+          "type": "Darkness",
+          "count": 1,
+          "available": true
+        },
+        "next": {
+          "type": "Darkness",
+          "count": 1,
+          "available": false
+        },
+        "basis": "Composite generated pre-attachment phase: one large current Darkness orb directly visible at F0141.00. Earlier start-board refs may precede generation or other actions; do not attribute available=true to those earlier frames. Upcoming preview is a separate field.",
+        "evidence_ids": [
+          "F0136.00",
+          "F0139.00",
+          "F0141.00"
+        ],
+        "limit_reason": "This is a field-specific later generated phase, not an exact simultaneous snapshot with the earliest start-board frame. Exact generation completion and attachment input PTS are not certified. The small upcoming icon is not additional currently usable Energy.",
+        "phase": "generated_pre_attachment_composite",
+        "attribute_basis": {
+          "this_turn": {
+            "basis": "direct later native orb within composite phase",
+            "evidence_ids": [
+              "F0141.00"
+            ],
+            "detail": "Owner large current Darkness orb visible; separate Next Energy generated message shows Darkness preview in animation. Exact animation completion not measured."
+          },
+          "next": {
+            "basis": "Darkness preview visible as small upcoming icon at F0139.00 and separately in the Next Energy generated animation at F0141.00; exact settled animation time unmeasured.",
+            "evidence_ids": [
+              "F0139.00",
+              "F0141.00"
+            ]
+          }
+        },
+        "earlier_display_observations": [
+          {
+            "evidence_id": "F0139.00",
+            "large_current_slot_count": 0,
+            "large_current_slot_type": null,
+            "basis": "direct visible empty slot at earlier phase; not a claim that the later generated phase has zero or the whole turn lacks Energy",
+            "detail": "Owner large current slot empty; small Darkness preview visible during Lillie reveal."
+          }
+        ]
+      },
+      "synchronization": "Apply equivalent provenance qualification to mirrored canonical board field if one exists; no simulator change."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[4].board_at_start.opponent.energy_zone",
+      "turn_number": 5,
+      "side": "opponent",
+      "verdict": "supported_direct_later_orb_with_composite_phase",
+      "numeric_this_turn_change_required": false,
+      "preserve_this_turn": {
+        "type": "Metal",
+        "count": 1,
+        "available": true
+      },
+      "preserve_next": {
+        "type": "Metal",
+        "count": 1,
+        "available": false
+      },
+      "proposed_zone": {
+        "this_turn": {
+          "type": "Metal",
+          "count": 1,
+          "available": true
+        },
+        "next": {
+          "type": "Metal",
+          "count": 1,
+          "available": false
+        },
+        "basis": "Composite generated pre-attachment phase: one large current Metal orb directly visible at R_evidence_t0168.0. Earlier start-board refs may precede generation or other actions; do not attribute available=true to those earlier frames. Upcoming preview is a separate field.",
+        "evidence_ids": [
+          "F0152.00",
+          "R_evidence_t0168.0"
+        ],
+        "limit_reason": "This is a field-specific later generated phase, not an exact simultaneous snapshot with the earliest start-board frame. Exact generation completion and attachment input PTS are not certified. The small upcoming icon is not additional currently usable Energy.",
+        "phase": "generated_pre_attachment_composite",
+        "attribute_basis": {
+          "this_turn": {
+            "basis": "direct later native orb within composite phase",
+            "evidence_ids": [
+              "R_evidence_t0168.0"
+            ],
+            "detail": "Opponent large current Metal orb plus small Metal preview visible during Research animation in T5."
+          },
+          "next": {
+            "basis": "Small upcoming preview directly visible at the listed later anchor; count1 identifies one preview, not a second usable Energy.",
+            "evidence_ids": [
+              "R_evidence_t0168.0"
+            ]
+          }
+        }
+      },
+      "synchronization": "Apply equivalent provenance qualification to mirrored canonical board field if one exists; no simulator change."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[5].board_at_start.owner.energy_zone",
+      "turn_number": 6,
+      "side": "owner",
+      "verdict": "supported_direct_later_orb_with_composite_phase",
+      "numeric_this_turn_change_required": false,
+      "preserve_this_turn": {
+        "type": "Darkness",
+        "count": 1,
+        "available": true
+      },
+      "preserve_next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false
+      },
+      "proposed_zone": {
+        "this_turn": {
+          "type": "Darkness",
+          "count": 1,
+          "available": true
+        },
+        "next": {
+          "type": "Darkness",
+          "count": 1,
+          "available": false
+        },
+        "basis": "Composite generated pre-attachment phase: one large current Darkness orb directly visible at F0201.00. Earlier start-board refs may precede generation or other actions; do not attribute available=true to those earlier frames. Upcoming preview is a separate field.",
+        "evidence_ids": [
+          "R_evidence_t0198.0",
+          "F0200.00",
+          "F0201.00"
+        ],
+        "limit_reason": "This is a field-specific later generated phase, not an exact simultaneous snapshot with the earliest start-board frame. Exact generation completion and attachment input PTS are not certified. The small upcoming icon is not additional currently usable Energy.",
+        "phase": "generated_pre_attachment_composite",
+        "attribute_basis": {
+          "this_turn": {
+            "basis": "direct later native orb within composite phase",
+            "evidence_ids": [
+              "F0201.00"
+            ],
+            "detail": "Owner large current Darkness orb visible below enlarged Hydreigon; preview/generation overlay partly obscured. Do not claim this frame independently proves every next-field component."
+          },
+          "next": {
+            "basis": "Upcoming Darkness is retained from the producer composite and neighboring owner-preview observations, not independently visible as a settled small icon in this selected generation-animation anchor. Keep next.available=false; do not claim simultaneous complete Zone observation.",
+            "evidence_ids": [
+              "R_evidence_t0198.0",
+              "F0200.00"
+            ]
+          }
+        },
+        "earlier_display_observations": [
+          {
+            "evidence_id": "F0200.00",
+            "large_current_slot_count": 0,
+            "large_current_slot_type": null,
+            "basis": "direct visible empty slot at earlier phase; not a claim that the later generated phase has zero or the whole turn lacks Energy",
+            "detail": "Owner large current slot empty; small preview not visible at this instant."
+          }
+        ]
+      },
+      "synchronization": "Apply equivalent provenance qualification to mirrored canonical board field if one exists; no simulator change."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[6].board_at_start.opponent.energy_zone",
+      "turn_number": 7,
+      "side": "opponent",
+      "verdict": "supported_direct_later_orb_with_composite_phase",
+      "numeric_this_turn_change_required": false,
+      "preserve_this_turn": {
+        "type": "Metal",
+        "count": 1,
+        "available": true
+      },
+      "preserve_next": {
+        "type": "Metal",
+        "count": 1,
+        "available": false
+      },
+      "proposed_zone": {
+        "this_turn": {
+          "type": "Metal",
+          "count": 1,
+          "available": true
+        },
+        "next": {
+          "type": "Metal",
+          "count": 1,
+          "available": false
+        },
+        "basis": "Composite generated pre-attachment phase: one large current Metal orb directly visible at F0250.00. Earlier start-board refs may precede generation or other actions; do not attribute available=true to those earlier frames. Upcoming preview is a separate field.",
+        "evidence_ids": [
+          "R_evidence_t0228.0",
+          "F0250.00"
+        ],
+        "limit_reason": "This is a field-specific later generated phase, not an exact simultaneous snapshot with the earliest start-board frame. Exact generation completion and attachment input PTS are not certified. The small upcoming icon is not additional currently usable Energy.",
+        "phase": "generated_pre_attachment_composite",
+        "attribute_basis": {
+          "this_turn": {
+            "basis": "direct later native orb within composite phase",
+            "evidence_ids": [
+              "F0250.00"
+            ],
+            "detail": "Opponent large current Metal orb plus small Metal preview visible during T7 card animation."
+          },
+          "next": {
+            "basis": "Small upcoming preview directly visible at the listed later anchor; count1 identifies one preview, not a second usable Energy.",
+            "evidence_ids": [
+              "F0250.00"
+            ]
+          }
+        }
+      },
+      "synchronization": "Apply equivalent provenance qualification to mirrored canonical board field if one exists; no simulator change."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[7].board_at_start.owner.energy_zone",
+      "turn_number": 8,
+      "side": "owner",
+      "verdict": "supported_direct_later_orb_with_composite_phase",
+      "numeric_this_turn_change_required": false,
+      "preserve_this_turn": {
+        "type": "Darkness",
+        "count": 1,
+        "available": true
+      },
+      "preserve_next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false
+      },
+      "proposed_zone": {
+        "this_turn": {
+          "type": "Darkness",
+          "count": 1,
+          "available": true
+        },
+        "next": {
+          "type": "Darkness",
+          "count": 1,
+          "available": false
+        },
+        "basis": "Composite generated pre-attachment phase: one large current Darkness orb directly visible at F0285.00. Earlier start-board refs may precede generation or other actions; do not attribute available=true to those earlier frames. Upcoming preview is a separate field.",
+        "evidence_ids": [
+          "F0264.00",
+          "F0285.00"
+        ],
+        "limit_reason": "This is a field-specific later generated phase, not an exact simultaneous snapshot with the earliest start-board frame. Exact generation completion and attachment input PTS are not certified. The small upcoming icon is not additional currently usable Energy.",
+        "phase": "generated_pre_attachment_composite",
+        "attribute_basis": {
+          "this_turn": {
+            "basis": "direct later native orb within composite phase",
+            "evidence_ids": [
+              "F0285.00"
+            ],
+            "detail": "Owner large current Darkness orb plus small Darkness preview visible during T8 hand/card transition."
+          },
+          "next": {
+            "basis": "Small upcoming preview directly visible at the listed later anchor; count1 identifies one preview, not a second usable Energy.",
+            "evidence_ids": [
+              "F0285.00"
+            ]
+          }
+        }
+      },
+      "synchronization": "Apply equivalent provenance qualification to mirrored canonical board field if one exists; no simulator change."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[8].board_at_start.opponent.energy_zone",
+      "turn_number": 9,
+      "side": "opponent",
+      "verdict": "supported_endpoint_derived_generated_phase",
+      "numeric_this_turn_change_required": false,
+      "preserve_this_turn": {
+        "type": "Metal",
+        "count": 1,
+        "available": true
+      },
+      "preserve_next": {
+        "type": "Metal",
+        "count": 1,
+        "available": false
+      },
+      "proposed_zone": {
+        "this_turn": {
+          "type": "Metal",
+          "count": 1,
+          "available": true
+        },
+        "next": {
+          "type": "Metal",
+          "count": 1,
+          "available": false
+        },
+        "basis": "Endpoint-derived generated pre-attachment composite phase. T8 endpoint F0328.00 has Arceus two Metal; after the recorded T9 normal attachment, F0373.00 shows Arceus three Metal, and F0399.50 shows the opponent current slot empty. Together with the independently reviewed T9 attachment sequence, these endpoints support one generated Metal before attachment. No selected native frame directly displays that available orb; no exact generation time is established.",
+        "evidence_ids": [
+          "F0328.00",
+          "R_evidence_t0336.0",
+          "F0373.00",
+          "F0399.50"
+        ],
+        "limit_reason": "This is a field-specific later generated phase, not an exact simultaneous snapshot with the earliest start-board frame. Exact generation completion and attachment input PTS are not certified. The small upcoming icon is not additional currently usable Energy.",
+        "phase": "generated_pre_attachment_composite",
+        "attribute_basis": {
+          "this_turn": {
+            "basis": "endpoint-derived plus independently reviewed normal attachment; no direct available-orb native anchor",
+            "evidence_ids": [
+              "F0328.00",
+              "F0373.00",
+              "F0399.50"
+            ],
+            "detail": "T8 endpoint F0328.00 has Arceus two Metal; after the recorded T9 normal attachment, F0373.00 shows Arceus three Metal, and F0399.50 shows the opponent current slot empty. Together with the independently reviewed T9 attachment sequence, these endpoints support one generated Metal before attachment. No selected native frame directly displays that available orb; no exact generation time is established."
+          },
+          "next": {
+            "basis": "Direct small Metal preview at inspected unoccluded endpoints; available=false because preview is upcoming and separate from current Energy.",
+            "evidence_ids": [
+              "F0399.50"
+            ]
+          }
+        }
+      },
+      "synchronization": "Apply equivalent provenance qualification to mirrored canonical board field if one exists; no simulator change."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[9].board_at_start.owner.energy_zone",
+      "turn_number": 10,
+      "side": "owner",
+      "verdict": "supported_direct_later_orb_with_composite_phase",
+      "numeric_this_turn_change_required": false,
+      "preserve_this_turn": {
+        "type": "Darkness",
+        "count": 1,
+        "available": true
+      },
+      "preserve_next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false
+      },
+      "proposed_zone": {
+        "this_turn": {
+          "type": "Darkness",
+          "count": 1,
+          "available": true
+        },
+        "next": {
+          "type": "Darkness",
+          "count": 1,
+          "available": false
+        },
+        "basis": "Composite generated pre-attachment phase: one large current Darkness orb directly visible at F0402.00. Earlier start-board refs may precede generation or other actions; do not attribute available=true to those earlier frames. Upcoming preview is a separate field.",
+        "evidence_ids": [
+          "F0373.00",
+          "R_evidence_t0396.0",
+          "F0399.50",
+          "F0402.00"
+        ],
+        "limit_reason": "This is a field-specific later generated phase, not an exact simultaneous snapshot with the earliest start-board frame. Exact generation completion and attachment input PTS are not certified. The small upcoming icon is not additional currently usable Energy.",
+        "phase": "generated_pre_attachment_composite",
+        "attribute_basis": {
+          "this_turn": {
+            "basis": "direct later native orb within composite phase",
+            "evidence_ids": [
+              "F0402.00"
+            ],
+            "detail": "Owner large current Darkness orb and small Darkness preview visible after Deino bench placement; opponent large current slot remains empty."
+          },
+          "next": {
+            "basis": "Small upcoming preview directly visible at the listed later anchor; count1 identifies one preview, not a second usable Energy.",
+            "evidence_ids": [
+              "F0402.00"
+            ]
+          }
+        },
+        "earlier_display_observations": [
+          {
+            "evidence_id": "F0399.50",
+            "large_current_slot_count": 0,
+            "large_current_slot_type": null,
+            "basis": "direct visible empty slot at earlier phase; not a claim that the later generated phase has zero or the whole turn lacks Energy",
+            "detail": "Owner large current slot empty with small Darkness preview. Opponent current slot empty with small Metal preview; Arceus Active with three Metal."
+          }
+        ]
+      },
+      "synchronization": "Apply equivalent provenance qualification to mirrored canonical board field if one exists; no simulator change."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[10].board_at_start.opponent.energy_zone",
+      "turn_number": 11,
+      "side": "opponent",
+      "verdict": "supported_direct_later_orb_with_composite_phase",
+      "numeric_this_turn_change_required": false,
+      "preserve_this_turn": {
+        "type": "Metal",
+        "count": 1,
+        "available": true
+      },
+      "preserve_next": {
+        "type": "Metal",
+        "count": 1,
+        "available": false
+      },
+      "proposed_zone": {
+        "this_turn": {
+          "type": "Metal",
+          "count": 1,
+          "available": true
+        },
+        "next": {
+          "type": "Metal",
+          "count": 1,
+          "available": false
+        },
+        "basis": "Composite generated pre-attachment phase: one large current Metal orb directly visible at R_evidence_t0456.0. Earlier start-board refs may precede generation or other actions; do not attribute available=true to those earlier frames. Upcoming preview is a separate field.",
+        "evidence_ids": [
+          "F0422.00",
+          "R_evidence_t0426.0",
+          "R_evidence_t0456.0"
+        ],
+        "limit_reason": "This is a field-specific later generated phase, not an exact simultaneous snapshot with the earliest start-board frame. Exact generation completion and attachment input PTS are not certified. The small upcoming icon is not additional currently usable Energy.",
+        "phase": "generated_pre_attachment_composite",
+        "attribute_basis": {
+          "this_turn": {
+            "basis": "direct later native orb within composite phase",
+            "evidence_ids": [
+              "R_evidence_t0456.0"
+            ],
+            "detail": "Opponent large current Metal orb plus small Metal preview visible during T11 after Helmet. This later phase supports generated availability, not the turn-ending consumed state."
+          },
+          "next": {
+            "basis": "Small upcoming preview directly visible at the listed later anchor; count1 identifies one preview, not a second usable Energy.",
+            "evidence_ids": [
+              "R_evidence_t0456.0"
+            ]
+          }
+        }
+      },
+      "synchronization": "Apply equivalent provenance qualification to mirrored canonical board field if one exists; no simulator change."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[11].board_at_start.owner.energy_zone",
+      "turn_number": 12,
+      "side": "owner",
+      "verdict": "supported_direct_later_orb_with_composite_phase",
+      "numeric_this_turn_change_required": false,
+      "preserve_this_turn": {
+        "type": "Darkness",
+        "count": 1,
+        "available": true
+      },
+      "preserve_next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false
+      },
+      "proposed_zone": {
+        "this_turn": {
+          "type": "Darkness",
+          "count": 1,
+          "available": true
+        },
+        "next": {
+          "type": "Darkness",
+          "count": 1,
+          "available": false
+        },
+        "basis": "Composite generated pre-attachment phase: one large current Darkness orb directly visible at F0467.00. Earlier start-board refs may precede generation or other actions; do not attribute available=true to those earlier frames. Upcoming preview is a separate field.",
+        "evidence_ids": [
+          "F0452.00",
+          "R_evidence_t0456.0",
+          "R_evidence_t0462.0",
+          "F0467.00"
+        ],
+        "limit_reason": "This is a field-specific later generated phase, not an exact simultaneous snapshot with the earliest start-board frame. Exact generation completion and attachment input PTS are not certified. The small upcoming icon is not additional currently usable Energy.",
+        "phase": "generated_pre_attachment_composite",
+        "attribute_basis": {
+          "this_turn": {
+            "basis": "direct later native orb within composite phase",
+            "evidence_ids": [
+              "F0467.00"
+            ],
+            "detail": "Owner large Darkness orb visible with generation glow during T12; exact stable-generation completion not measured. Opponent current slot empty with small Metal preview."
+          },
+          "next": {
+            "basis": "Upcoming Darkness is retained from the producer composite and neighboring owner-preview observations, not independently visible as a settled small icon in this selected generation-animation anchor. Keep next.available=false; do not claim simultaneous complete Zone observation.",
+            "evidence_ids": [
+              "F0452.00",
+              "R_evidence_t0456.0",
+              "R_evidence_t0462.0",
+              "F0467.00"
+            ]
+          }
+        }
+      },
+      "synchronization": "Apply equivalent provenance qualification to mirrored canonical board field if one exists; no simulator change."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[12].board_at_start.opponent.energy_zone",
+      "turn_number": 13,
+      "side": "opponent",
+      "verdict": "supported_endpoint_derived_generated_phase",
+      "numeric_this_turn_change_required": false,
+      "preserve_this_turn": {
+        "type": "Metal",
+        "count": 1,
+        "available": true
+      },
+      "preserve_next": {
+        "type": "Metal",
+        "count": 1,
+        "available": false
+      },
+      "proposed_zone": {
+        "this_turn": {
+          "type": "Metal",
+          "count": 1,
+          "available": true
+        },
+        "next": {
+          "type": "Metal",
+          "count": 1,
+          "available": false
+        },
+        "basis": "Endpoint-derived generated pre-attachment composite phase. T13 banner R_evidence_t0522.0 shows current slot empty/pending with small Metal preview and second Dialga one Metal. F0547.00 shows that Dialga two Metal and the opponent current slot empty. Together with the independently reviewed normal attachment, this supports one generated Metal before attachment. Its available phase is derived, not directly shown by these native endpoints.",
+        "evidence_ids": [
+          "R_evidence_t0516.0",
+          "R_evidence_t0522.0",
+          "F0547.00"
+        ],
+        "limit_reason": "This is a field-specific later generated phase, not an exact simultaneous snapshot with the earliest start-board frame. Exact generation completion and attachment input PTS are not certified. The small upcoming icon is not additional currently usable Energy.",
+        "phase": "generated_pre_attachment_composite",
+        "attribute_basis": {
+          "this_turn": {
+            "basis": "endpoint-derived plus independently reviewed normal attachment; no direct available-orb native anchor",
+            "evidence_ids": [
+              "R_evidence_t0522.0",
+              "F0547.00"
+            ],
+            "detail": "T13 banner R_evidence_t0522.0 shows current slot empty/pending with small Metal preview and second Dialga one Metal. F0547.00 shows that Dialga two Metal and the opponent current slot empty. Together with the independently reviewed normal attachment, this supports one generated Metal before attachment. Its available phase is derived, not directly shown by these native endpoints."
+          },
+          "next": {
+            "basis": "Direct small Metal preview at inspected unoccluded endpoints; available=false because preview is upcoming and separate from current Energy.",
+            "evidence_ids": [
+              "R_evidence_t0522.0",
+              "F0547.00"
+            ]
+          }
+        },
+        "earlier_display_observations": [
+          {
+            "evidence_id": "R_evidence_t0522.0",
+            "large_current_slot_count": 0,
+            "large_current_slot_type": null,
+            "basis": "direct visible empty slot at earlier phase; not a claim that the later generated phase has zero or the whole turn lacks Energy",
+            "detail": "Turn13 banner. Opponent large current slot empty with small Metal preview; owner large current slot empty with small Darkness preview. Second Dialga one Metal badge is visible; banner limits other attributes."
+          }
+        ]
+      },
+      "synchronization": "Apply equivalent provenance qualification to mirrored canonical board field if one exists; no simulator change."
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "jsonpath": "$.turns[13].board_at_start.owner.energy_zone",
+      "turn_number": 14,
+      "side": "owner",
+      "verdict": "supported_direct_later_orb_with_composite_phase",
+      "numeric_this_turn_change_required": false,
+      "preserve_this_turn": {
+        "type": "Darkness",
+        "count": 1,
+        "available": true
+      },
+      "preserve_next": {
+        "type": "Darkness",
+        "count": 1,
+        "available": false
+      },
+      "proposed_zone": {
+        "this_turn": {
+          "type": "Darkness",
+          "count": 1,
+          "available": true
+        },
+        "next": {
+          "type": "Darkness",
+          "count": 1,
+          "available": false
+        },
+        "basis": "Composite generated pre-attachment phase: one large current Darkness orb directly visible at F0550.00. Earlier start-board refs may precede generation or other actions; do not attribute available=true to those earlier frames. Upcoming preview is a separate field.",
+        "evidence_ids": [
+          "R_evidence_t0540.0",
+          "F0547.00",
+          "F0550.00"
+        ],
+        "limit_reason": "This is a field-specific later generated phase, not an exact simultaneous snapshot with the earliest start-board frame. Exact generation completion and attachment input PTS are not certified. The small upcoming icon is not additional currently usable Energy.",
+        "phase": "generated_pre_attachment_composite",
+        "attribute_basis": {
+          "this_turn": {
+            "basis": "direct later native orb within composite phase",
+            "evidence_ids": [
+              "F0550.00"
+            ],
+            "detail": "Owner large current Darkness orb plus small Darkness preview visible; opponent current slot empty plus small Metal preview."
+          },
+          "next": {
+            "basis": "Small upcoming preview directly visible at the listed later anchor; count1 identifies one preview, not a second usable Energy.",
+            "evidence_ids": [
+              "F0550.00"
+            ]
+          }
+        },
+        "earlier_display_observations": [
+          {
+            "evidence_id": "F0547.00",
+            "large_current_slot_count": 0,
+            "large_current_slot_type": null,
+            "basis": "direct visible empty slot at earlier phase; not a claim that the later generated phase has zero or the whole turn lacks Energy",
+            "detail": "Owner large current slot empty with small Darkness preview before T14 generation. Opponent current slot empty and small Metal preview; second Dialga now has two Metal."
+          }
+        ]
+      },
+      "synchronization": "Apply equivalent provenance qualification to mirrored canonical board field if one exists; no simulator change."
+    }
+  ],
+  "limits": [
+    "No original video, locator decode or new capture used.",
+    "No exact generation completion, touch time or hidden UI input established.",
+    "T9/T13 normal attachment ordering is inherited from the separate Sol source check; this narrow check directly verifies supporting endpoints, not every intervening action.",
+    "T6/T12 upcoming preview retained as composite/inherited where the selected generated-orb frame does not display a settled separate small preview.",
+    "Source-relative filenames on old retained R_ evidence are not measured PTS; measured timing remains null for those frames."
+  ],
+  "new_captures": 0,
+  "original_movie_reads": 0,
+  "shared_or_producer_edits": false,
+  "full_acceptance_granted": false
+}

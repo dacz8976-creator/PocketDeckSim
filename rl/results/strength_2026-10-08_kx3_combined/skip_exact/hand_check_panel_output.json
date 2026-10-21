@@ -1,0 +1,860 @@
+{
+  "summary": "Hand-check skip turns from the boards: was passing up the attack a mistake? Two independent readers per turn, then a synthesis",
+  "agentCount": 9,
+  "logs": [],
+  "result": {
+    "judged": [
+      {
+        "key": "cand_prereg",
+        "readers": [
+          {
+            "turns": [
+              {
+                "bot": "candidate",
+                "key": "03-wailord-indeedee-wall|t-blaziken|3|1|X",
+                "turn": "8",
+                "legal_attack": "Wondrous Waves (WWWW, 100) from Wailord ex 220/250 with 4 Water, decision 11: forecast expected_damage 70.0, ko_chance 1.0 against Castform Sunny Form 70/70 (1 Fire, Rocky Helmet).",
+                "did_instead": "Retreat:3 at d11, which swapped Wailord ex for the benched Wailord (B1 057, 200/200, energy []). With 0 Energy on the new Active the turn ended. km3_move = Attack:Wondrous Waves.",
+                "facts": "lib/card.py gives Wailord ex a retreat cost of 4, so the Retreat threw away all 4 Water. The decision log agrees: Wondrous Waves was not legal again until t16 (attaches @3 at t10, @3 at t12, @0 at t14, @0 at t16). Attacking would have scored a sure KO for 1 point (0-0 to 1-0) and removed the Castform, which Burns while our Soothing Shore (played at d9) is in play. Cost of attacking: 20 from Rocky Helmet. KO threat next turn if we attack: their benched Mega Blaziken ex (2 Fire) can Mega Burning for 120 plus Burn. Wailord ex would be at 200 after the Helmet and 220 after Soothing Shore's heal, so it survives; it was not in KO range. The Retreat brought no setup value: it put a 0-Energy body in front and cost four turns of attachments. The opponent later KO'd that Wailord (t13, 0-1). The deck still won 3-1.",
+                "verdict": "MISTAKE",
+                "reason": "The bot gave up a guaranteed KO (ko_chance 1.0) and kept none of its 4 attached Energy, for a Retreat that discarded all of them. Wailord ex was not in danger next turn, so nothing on the board pays for that."
+              },
+              {
+                "bot": "candidate",
+                "key": "05-indeedee-stoutland|t-suicune|0|1|X",
+                "turn": "12",
+                "legal_attack": "Sharp Fang (CC, 70) from Stoutland (A3a 056, 140/140, 2 Psychic), decision 31: forecast 70.0, ko_chance 0.0 against Baxcalibur 140/140.",
+                "did_instead": "EndTurn at d31, after Professor's Research, Watch Over x2 and Attach Psychic@0. km3_move = Attack:Sharp Fang.",
+                "facts": "The attack costs nothing: no discard, no recoil, and Baxcalibur has no Tool. It ends the turn exactly as EndTurn does. Their Active Baxcalibur has energy []. Buster Tail costs WWW, and Stoutland's Guard Dog Visage adds C while Stoutland is Active, so 4 in all. Zone plus Ice Maker gives at most 2 next turn, so Baxcalibur cannot attack. Its retreat of 3 can only be paid with an Inflatable Boat (making it 2). Seventy now plus 70 next turn is 140, a KO worth 1 point. The damage also makes it a Cyrus target (Cyrus is in our hand) if it does get out. Points 0-1, deck count 0. The deck won 3-1.",
+                "verdict": "MISTAKE",
+                "reason": "Attacking strictly beats EndTurn here: free damage against an Active that cannot hit back next turn, setting up an exact 140 KO."
+              },
+              {
+                "bot": "candidate",
+                "key": "06-mega-blaziken-tournament-list|t-blaziken|0|0|X",
+                "turn": "3",
+                "legal_attack": "Sunny Scorching (R, 30; Burns the opponent's Active if a Stadium is in play) from Castform Sunny Form 70/70 with 1 Fire, decisions 5 and 7: forecast 30.0, ko_chance 0.0 against Heatmor (B1 044) 80/80.",
+                "did_instead": "Play:Field Blower at d5 (km3 proposed the same), then DiscardToolFromPokemon at d6 to remove their Rocky Helmet, then EndTurn at d7. km3_move at d7 = Attack:Sunny Scorching.",
+                "facts": "A Stadium was in play (DiscardActiveStadium was legal at d6), so the attack would also have Burned. The Helmet was already gone (theirs.active.tools [] at d7), so there was no recoil. Their Heatmor's Tongue Whip only hits the Bench (forecast 0 against our Active), so attacking changes no threat. That makes 30 damage plus Burn for free, but no KO. Low stakes: Mega Burning (120) KO'd the Heatmor at t5 anyway. Clearing the Helmet only makes sense if you then attack. The deck won 4-1.",
+                "verdict": "MISTAKE",
+                "reason": "The attack had no cost and was the follow-through on the Field Blower just played. Attacking weakly dominates EndTurn, though the stakes in this game were small."
+              },
+              {
+                "bot": "candidate",
+                "key": "06-mega-blaziken-tournament-list|t-hydreigon|1|0|X",
+                "turn": "5",
+                "legal_attack": "Tongue Whip (R; 30 damage to 1 of the opponent's Benched Pokémon) from Heatmor 10/80 with 1 Fire, legal at d9 and d10. The record's forecast (0.0, ko 0.0) is uninformative because it reads only their Active, which this attack cannot hit. By card text it KOs their benched Deino at 30/60 (with Deceptive Needle): 30 damage, and no Weakness on the Bench.",
+                "did_instead": "At d10, Retreat:2 (Heatmor to the Bench, discarding its Fire), then Play:Cyrus (pulled the 30-HP Deino into the Active) and Play:Rare Candy (Torchic in the Active to Mega Blaziken ex), then the turn ended. km3 proposed Attach@3 and then Attack:Tongue Whip at d10.",
+                "facts": "The attack meant a KO now for 1 point, and fewer Deino for their Hydreigon line. Next-turn threat: Bombirdier (1 Darkness) has Dark Cutter forecast at ko_chance 1.0 against our 10-HP Heatmor. Retreating did not save it: a damaged benched Heatmor stays a Cyrus target, and the opponent did take 1 point at t6 (Promote:0@3 at 0-1). Rare Candy could have gone onto the benched Torchic before attacking. So the line taken scored 0 and lost the Heatmor anyway; the attack line scores 1 and risks the same Heatmor. The deck won 4-2.",
+                "verdict": "MISTAKE",
+                "reason": "A sure 1-point KO on a benched Deino was available. The alternative scored nothing, and its only aim (saving the 10-HP Heatmor) failed against their Cyrus."
+              },
+              {
+                "bot": "candidate",
+                "key": "09-mega-manectric-heliolisk|t-sceptile|4|0|X",
+                "turn": "11",
+                "legal_attack": "Electrispark (L, 40; also 10 to each opponent's Benched Pokémon) from Heliolisk (B4 061) 60/80 with 1 Lightning, d26 and d27: forecast 40.0, ko_chance 0.0 against Butterfree (B3b) 120/130. Lightning Accelerator (110) was legal at d24-25 from Mega Manectric ex; km3 did not propose it.",
+                "did_instead": "Matched km3 exactly through d26: Evolve Heliolisk@3, Retreat:3 of the 50/210 Mega Manectric ex (retreat cost 0), Attach@2. Then EndTurn at d27, where km3_move = Attack:Electrispark.",
+                "facts": "Retreating the Mega was correct: Sunny Wind (60, ko_chance 1.0) on a 50-HP Mega ex would have given up 3 points and the game. After that, Electrispark costs nothing. The Heliolisk dies next turn either way (Sunny Wind 60 against 60 HP, ko 1.0), and it was KO'd at t12. Concrete threshold: Butterfree heals 20 when it uses Sunny Wind. With Electrispark it drops to 80, then heals to 100, which is inside Lightning Accelerator's 110 (80 + 30 × 1 point) at t13. Without it, Butterfree heals to 130, out of reach. At t13 the bot (and km3) indeed could not KO and retreated again. Caterpie on the Bench would also drop from 40 to 30. Points 1-0. The deck won 3-2.",
+                "verdict": "MISTAKE",
+                "reason": "A free 40 would have put Butterfree inside Mega Manectric ex's KO range for the next turn. The bot ended the turn with no attack instead."
+              },
+              {
+                "bot": "candidate",
+                "key": "10-xatu-oricorio-tr-weezing|t-suicune|4|1|X",
+                "turn": "3",
+                "legal_attack": "Peck (C, 10) from Natu (B1 097) 60/60 with 1 Psychic and Poison Barb, d5: forecast 10.0, ko_chance 0.0 against Suicune ex 160/160 (Giant Cape, 1 Water).",
+                "did_instead": "Evolve:Xatu@0 at d5. Xatu (A4 082, 80 HP) has only Life Drain, which costs PP, so with 1 Psychic no attack remained and the turn ended. km3_move = Attack:Peck.",
+                "facts": "Our Bench is empty (ours.bench []) and the hand holds no Basic, so a KO on our Active loses the game on the spot. Their Suicune ex needs one more Water to Crystal Waltz: 20 for each Benched Pokémon on both sides. That is 20 now (Frigibax) and 60 if they bench two more, exactly Natu's 60 HP. Xatu's 80 survives it. Evolving now costs no tempo: the Psychic stays through evolution, so Life Drain is ready at t5 either way (it was used at t5). Peck's 10 on a 160-HP ex is nearly worthless, because Life Drain sets the remaining HP to 10 regardless. Xatu survived t4. The game was lost 0-3 at t12 for other reasons.",
+                "verdict": "DEFENSIBLE",
+                "reason": "Evolving buys 20 HP against a possible 60-damage Crystal Waltz while the bot has no Bench (a KO here loses the game). The 10 damage given up has almost no value next to Life Drain."
+              },
+              {
+                "bot": "candidate",
+                "key": "10-xatu-oricorio-tr-weezing|t-vespiquen|1|1|X",
+                "turn": "4",
+                "legal_attack": "Supernatural Feather (P, 50; discard a card from your hand, or the attack does nothing) from Oricorio (B4 078) 80/80 with 1 Psychic, legal d11-d16: forecast 50.0, ko_chance 0.0 against Vespiquen ex 120/170 (Leaf Cape, 1 Grass).",
+                "did_instead": "Matched km3 through d15 (Evolve Xatu@3, Place Natu@1, Professor's Research, Poké Ball, Attach@3), then EndTurn at d16, where km3_move = Attack:Supernatural Feather.",
+                "facts": "Hand at d16: Will, Copycat, Oricorio. Professor's Research was already played this turn, so neither Supporter (Will, Copycat) can be played now, and only one can be played next turn. Copycat is spare fuel for the discard. The Bench is full (3), so Oricorio can't be benched. Our Hiking Trail (played t2) is probably still in play (no Fragrant Forest UseStadium was offered), so the hand refills to 3 at end of turn and the discard costs about nothing. The 50 would put their only charged attacker, a 2-point ex, at 70; t-vespiquen has no healing. Two more Feathers then KO it instead of three, and the plan survives a Life Drain tails. Next-turn threat: Chase Order does 70, or 140 if they discard a Benched Basic Grass (Ogerpon ex or Shuckle ex). Our choice changes neither. Low stakes in this game: Will plus Life Drain set Vespiquen to 10 at t6 and Feather finished it at t8 (the deck won with the opponent out of Pokémon), so the 50 would not have changed the result.",
+                "verdict": "MISTAKE",
+                "reason": "Fifty permanent damage on their only attacker, for discarding a Supporter that couldn't be played this turn (and probably redrawn at end of turn). EndTurn gained nothing. The stakes were small in this game."
+              },
+              {
+                "bot": "candidate",
+                "key": "draft-A-shark-tempo|t-blaziken|0|0|X",
+                "turn": "2",
+                "legal_attack": "Gnaw (W, 20) from Alolan Vulpix (B2 028) 60/60 with 1 Water, d5: forecast 40.0 (20 plus 20 Weakness; Castform is weak to Water), ko_chance 0.0 against Castform Sunny Form 70/70 with Rocky Helmet and energy [].",
+                "did_instead": "EndTurn at d5, after Poké Ball, Place Vulpix@3, Misty@3 (no Energy gained) and Attach@0. km3_move = Attack:Gnaw.",
+                "facts": "Attacking triggers Rocky Helmet (theirs.active.tools), doing 20 to our only charged Pokémon (60 to 40). Their Castform needs one attach to use Sunny Scorching (forecast 30), which also Burns (20 at Checkup) if a Stadium is in play; their list has Hiking Trail. Gnaw, Helmet, Scorching and Burn add up to 50 against a 40-HP Vulpix, so it could be KO'd before it evolves. Without Gnaw it ends at 10-30 HP. The 40 damage buys little: next turn Binding Snow (80 + 20 Weakness = 100) KOs a 70-HP Castform anyway, and it did at t4 (1-0). It would also KO a Torchic if Castform retreated. The deck won 4-2.",
+                "verdict": "DEFENSIBLE",
+                "reason": "The attack's damage is not needed for next turn's KO, and its Rocky Helmet recoil can put the Vulpix in KO range before it evolves. Whether a Stadium was in play at t2 (not in the record) would settle how big that risk was; the verdict holds either way."
+              }
+            ],
+            "notes": "I judged all 8 of the candidate's pre-registered skip turns: 6 are mistakes and 2 are defensible. I listed them from skip_turns.tsv (bot = candidate, km3_attacked = yes; 8 rows, matching the Oct 12 table) and read the boards from skip_boards.jsonl (pilot ending in zs3_m64). For what happened next I used the game logs in games.jsonl and decisions_candidate.jsonl.gz. All card text came from lib/card.py; that Copycat, Will and Professor's Research are Supporters came from lib/deckgym-database.json. Rules came from RULES_FOR_AGENTS.md.\n\n**Overall:**\n- **Clear, costly mistakes (4):**\n  - 03 Wailord: gave up a sure KO and discarded 4 Energy to Retreat.\n  - 06 vs Hydreigon: missed a bench KO on a 30-HP Deino.\n  - 09 Manectric: a free Electrispark would have put Butterfree inside next turn's KO range.\n  - 05 Stoutland: free 70 against an Active that couldn't attack next turn.\n- **Mistakes with small stakes (2):**\n  - 06 vs Blaziken: free 30 plus Burn, right after spending a Field Blower to clear the Helmet.\n  - 10 vs Vespiquen: 50 on their only attacker for a Supporter that couldn't be played this turn.\n- **Defensible (2):**\n  - 10 vs Suicune: evolving gave +20 HP while the bot had no Bench, against a possible exactly-lethal 60.\n  - draft-A: Gnaw would have taken 20 back from Rocky Helmet, for damage that next turn's Binding Snow KO doesn't need.\n\n**Pattern:** in 5 of the 8 turns the bot's last move was EndTurn while the attack was still legal. In 4 of those the attack cost nothing at all (05, 06 vs Blaziken, 09, 10 vs Vespiquen), so attacking weakly dominated. The fifth (draft-A) had a real cost and is the defensible one. The deck won 7 of these 8 games anyway (10 vs Suicune was lost 0-3), so these mistakes rarely decided a game. That fits the Oct 12 finding that this measure can't show the skip bar working.\n\n**A forecast limit:** Tongue Whip in the 06 vs Hydreigon game shows expected_damage 0.0 because the forecast reads only their Active. That turn's verdict comes from card text and the benched Deino's 30/60, not from the forecast.\n\n**Housekeeping:** I wrote nothing in the repository. My scripts and outputs are in C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\skiphc\\r1cand\\. Another process, probably the other reader, overwrote C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\skiphc\\extract.py while I worked. I didn't touch that file and used my own subfolder from then on."
+          },
+          {
+            "turns": [
+              {
+                "bot": "candidate",
+                "key": "03-wailord-indeedee-wall|t-blaziken|3|1|X",
+                "turn": "8 (decisions 8-11; km3 proposed the attack at dec 11)",
+                "legal_attack": "Attack:Wondrous Waves ([WWWW], printed 100). Record forecast at dec 11: expected_damage 70, ko_chance 1.0 against their Active, Castform Sunny Form 70/70.",
+                "did_instead": "Retreat:3. Wailord ex (220/250, 4 Water, retreat 4 per card.py) swapped with the just-evolved Wailord (B1 057, 200/200, 0 Energy). The Retreat Cost threw away all 4 Water. The later log agrees: Wailord ex was given 4 more Water (t10, t12, t14, t16) before its next attack at t16.",
+                "facts": "Points 0-0. The attack was a certain KO for 1 point. Its only cost was Castform's Rocky Helmet (20 damage to Wailord ex, 220 to 200), and the Soothing Shore played this turn heals 20 at end of turn from Pokémon with Water attached, so that 20 comes back. No KO threat next turn: their Active's Sunny Scorching does 30 (forecast 30, ko 0). Their Mega Blaziken ex (2 Fire, benched) does Mega Burning 120 plus Burn, which leaves Wailord ex at about 100, and Wondrous Waves cures conditions. The skip gave up the point and all 4 Energy on the deck's only built attacker, to wall with a 0-Energy Wailord that was KO'd at t13 (opponent's 1 point). The frozen kx3 and km3 reached the identical position and attacked; both won 4-0 by turn 12. The candidate won 3-1 at turn 18.",
+                "verdict": "MISTAKE",
+                "reason": "Clear. The board offered a certain KO at almost no cost and no danger to Wailord ex next turn. The move taken instead discarded 4 Energy, gave up the point and set the deck's offense back about four turns."
+              },
+              {
+                "bot": "candidate",
+                "key": "05-indeedee-stoutland|t-suicune|0|1|X",
+                "turn": "12 (decisions 27-31; km3 proposed the attack at dec 31)",
+                "legal_attack": "Attack:Sharp Fang ([CC] 70, Stoutland A3a 056). Forecast at dec 31: expected_damage 70, ko_chance 0 against Baxcalibur 140/140.",
+                "did_instead": "EndTurn, right after attaching the second Psychic to Stoutland at dec 30. Earlier it used Watch Over twice on a Stoutland already at full HP (140/140).",
+                "facts": "Points 0-1. The Active stays Stoutland whether it attacks or ends the turn, so exposure is identical. Their Baxcalibur has 0 Energy. Buster Tail costs [WWW], and Stoutland's Guard Dog Visage adds 1 [C]. Zone plus Ice Maker gives at most 2, so Baxcalibur cannot attack next turn either way (the record's forecast of 90 ignores Energy). No Rocky Helmet or recoil. 70 damage would leave Baxcalibur at 70. At t14 the candidate retreated to Indeedee ex and used Psychic (30 + 30 per Energy on their Active) with no KO, and the first point came only after t16. With Baxcalibur already at 70, that t14 attack (or a second Sharp Fang) would very likely have KO'd it two turns earlier. Our deck_count is 0, which doesn't matter: Pocket has no deck-out loss.",
+                "verdict": "MISTAKE",
+                "reason": "Attacking strictly dominated ending the turn: 70 free damage, no cost, no change in exposure, and it set up a KO next turn. Skipping gained nothing."
+              },
+              {
+                "bot": "candidate",
+                "key": "06-mega-blaziken-tournament-list|t-hydreigon|1|0|X",
+                "turn": "5 (decisions 9-12; km3 proposed the attack at dec 10)",
+                "legal_attack": "Attack:Tongue Whip (Heatmor B1 044, [R]: 30 damage to 1 of the opponent's Benched Pokémon). The record's forecast (expected_damage 0, ko_chance 0) reads only their Active, so it misses the real effect: their benched Deino is at 30/60 (with Deceptive Needle), and 30 to it is a certain KO for 1 point. Weakness never applies on the Bench.",
+                "did_instead": "Retreat:2 (Heatmor 10/80 to the Bench, discarding its Fire), then Play:Cyrus to drag the damaged Deino into their Active, then Play:Rare Candy (Torchic to Mega Blaziken ex as the Active, 0 Energy). No attack.",
+                "facts": "Points 0-0. Our Heatmor is at 10 HP and Bombirdier's Dark Cutter (forecast 10, ko_chance 1.0) KOs it next turn if it stays Active. An attacking line was available: Rare Candy on the benched Torchic first, then Tongue Whip KOs Deino. That gives +1 point, removes a Hydreigon pre-evolution and its Needle, and keeps Mega Blaziken ex safe on the Bench. The cost is likely losing Heatmor (1 point) next turn. The candidate's Cyrus trap is undone for free: Bombirdier (B3 115) on their Bench gives their Active [D] Pokémon −1 Retreat Cost, so Deino retreats for 0. The skip spent our only Cyrus and a Fire Energy for no point. Heatmor (10 HP, benched) was then pulled up with their Cyrus and KO'd anyway: the next decision is a Promote at t6 with points 0-1.",
+                "verdict": "MISTAKE",
+                "reason": "A certain 1-point bench KO, plus the chance to slow the Hydreigon line, beat a setup whose trap the opponent could escape for free. The record's forecast understates this attack because it measures only the Active."
+              },
+              {
+                "bot": "candidate",
+                "key": "09-mega-manectric-heliolisk|t-sceptile|4|0|X",
+                "turn": "11 (decisions 24-27; km3 proposed Electrispark at dec 27)",
+                "legal_attack": "At dec 27: Attack:Electrispark (Heliolisk B4 061, [L] 40, plus 10 to each opposing Benched Pokémon). Forecast: expected_damage 40, ko_chance 0 against Butterfree 120/130. Also legal earlier: Lightning Accelerator, forecast 110, no KO. Leaving the Mega there was correctly avoided by both bots.",
+                "did_instead": "EndTurn, with Heliolisk (60/80, 1 Lightning) Active. Decisions 24-26 matched km3: evolve Heliolisk, retreat Mega Manectric ex (50 HP) for free, attach to Electrike.",
+                "facts": "Points 1-0. Heliolisk dies next turn either way: Sunny Wind (60, heals 20) has forecast 60 and ko_chance 1.0 against it. So attacking cost nothing. Electrispark puts Butterfree at 80 and Caterpie at 30/40. After Sunny Wind's heal, Butterfree would be at 100, inside Lightning Accelerator's 110 (80 + 30 × 1 point; no Training Area bonus is in the forecast). Without the damage it heals to 130/130, out of range. In the game, at t13 the candidate had Mega Manectric ex back Active, could not KO Butterfree, and retreated again without attacking.",
+                "verdict": "MISTAKE",
+                "reason": "Free damage from a Pokémon that was going to be KO'd regardless. It would have made next turn's Lightning Accelerator a KO on Butterfree."
+              },
+              {
+                "bot": "candidate",
+                "key": "10-xatu-oricorio-tr-weezing|t-vespiquen|1|1|X",
+                "turn": "4 (decisions 11-16; km3 proposed the attack at dec 16)",
+                "legal_attack": "Attack:Supernatural Feather (Oricorio B4 078, [P] 50; you must discard a card from hand or it does nothing). Forecast at dec 16: expected_damage 50, ko_chance 0 against Vespiquen ex 120/170.",
+                "did_instead": "EndTurn, holding Will, Copycat and Oricorio. Decisions 11-15 matched km3 (Evolve Xatu, Place Natu, Professor's Research, Poké Ball, attach Psychic to the benched Xatu).",
+                "facts": "Points 0-0. Oricorio is equally exposed either way. Chase Order is 70, or 140 if they discard a benched Basic [G] (they have Ogerpon ex and Shuckle ex), and the forecast of 70 ignores that option. The attack's cost is one hand card; Copycat is the cheap one, since Will was the Supporter needed for t6's Life Drain. Hiking Trail was very likely in play, so the hand would be refilled to 3 at end of turn. Deck arithmetic says Hiking Trail drew 2 at the end of t2 (deck 11 after Poké Ball, 8 at dec 11). No UseStadium is offered at t4, so Fragrant Forest hadn't replaced it; only a t3 Field Blower could have removed it, and the record has no stadium field. t-vespiquen has no healing, so 50 damage (120 to 70) sticks on their only attacker. In this game Will plus Life Drain set its HP to 10 at t6, which made the damage redundant. The frozen kx3, from the identical position, attacked here and won with the damage mattering at t8.",
+                "verdict": "MISTAKE",
+                "reason": "Minor to moderate. 50 lasting damage on the opponent's only attacker, for a low-value discard that Hiking Trail probably refunded. Skipping kept nothing the attack line couldn't also keep (Will and Oricorio). The actual continuation made the loss small."
+              },
+              {
+                "bot": "candidate",
+                "key": "06-mega-blaziken-tournament-list|t-blaziken|0|0|X",
+                "turn": "3 (decisions 1-7; km3 proposed the attack at dec 7)",
+                "legal_attack": "Attack:Sunny Scorching (Castform Sunny Form, [R] 30; Burns only if a Stadium is in play). Forecast at dec 7: expected_damage 30, ko_chance 0 against Heatmor 80/80.",
+                "did_instead": "EndTurn, right after using Field Blower (decisions 5-6, as km3 also chose) to discard the Rocky Helmet from their Heatmor.",
+                "facts": "Points 0-0. With the Helmet gone the attack has no cost and no recoil, and Castform stays Active either way. Their next attack, Tongue Whip, only hits our Bench, so exposure is unchanged. The upside is small: next turn's Rare Candy into Mega Blaziken ex and Mega Burning (120) KOs an 80-HP Heatmor anyway, which happened at t5. The 30 matters only if Heatmor leaves the Active spot (then it is a damaged Cyrus or Tongue Whip target) or if a Stadium makes the attack Burn. The record doesn't say whether a Stadium was in play. The frozen kx3 attacked at this identical position.",
+                "verdict": "MISTAKE",
+                "reason": "Minor. Attacking weakly dominated ending the turn: free damage with nothing gained by skipping. The practical cost was probably near zero because next turn's 120 KOs Heatmor regardless."
+              },
+              {
+                "bot": "candidate",
+                "key": "10-xatu-oricorio-tr-weezing|t-suicune|4|1|X",
+                "turn": "3 (decisions 3-5; km3 proposed Peck at dec 5)",
+                "legal_attack": "Attack:Peck (Natu B1 097, [C] 10). Forecast at dec 5: expected_damage 10, ko_chance 0 against Suicune ex 160/160 (Giant Cape).",
+                "did_instead": "Evolve:Xatu@0 (Xatu A4 082, 80 HP). Xatu's only attack, Life Drain, costs [PP] and it has 1 Psychic, so no attack could follow. It was attack or evolve this turn, not both.",
+                "facts": "Points 0-0. Natu is our only Pokémon in play: the record shows no Bench, and the hand (Xatu, Poison Barb, Cyrus, Professor's Research, TR Weezing ex) has no Basic. Losing it loses the game, because a player with no Pokémon left in play loses. Their Suicune ex has 1 Water plus next turn's zone Energy, enough for Crystal Waltz [WW]: 20 per Benched Pokémon on both sides. Our Bench is 0 and theirs can reach 3, so up to 60, exactly Natu's 60 HP, but short of Xatu's 80. Peck's 10 on a 160-HP ex is negligible, and Life Drain sets the target's remaining HP to 10 anyway. Evolving now doesn't delay Life Drain, which needs next turn's Energy in both lines. In the actual deal they didn't reach 3 benched (km3's and frozen's Natu survived t4), but that can't be seen from the board.",
+                "verdict": "DEFENSIBLE",
+                "reason": "Arguably the better play. It gave up 10 meaningless damage to take our only Pokémon out of a possible game-ending KO range (60 to 80 HP against a Crystal Waltz maximum of 60)."
+              },
+              {
+                "bot": "candidate",
+                "key": "draft-A-shark-tempo|t-blaziken|0|0|X",
+                "turn": "2 (decisions 0-5; km3 proposed Gnaw at dec 5)",
+                "legal_attack": "Attack:Gnaw (Alolan Vulpix B2 028, [W] 20). Forecast at dec 5: expected_damage 40 (Castform is weak to Water), ko_chance 0 against Castform Sunny Form 70/70 holding Rocky Helmet.",
+                "did_instead": "EndTurn, after Poké Ball, placing a second Vulpix, Misty (0 heads) and attaching Water to the Active Vulpix. The frozen kx3 made the identical skip.",
+                "facts": "Points 0-0, our first turn. Rocky Helmet would do 20 to our Active Vulpix (60 to 40). That Vulpix is the only Pokémon with Energy and evolves next turn into Alolan Ninetales ex, keeping the damage. Their reply: Sunny Scorching 30 (forecast 30), Burned if any Stadium is in play (t-blaziken runs Hiking Trail). From 40 that is 10 HP plus a 20 Burn check, a KO. From 60 the Vulpix survives. The 40 damage is mostly redundant: next turn Binding Snow (80) KOs a 70-HP Castform whether damaged or not, and it did, for points 1-0 by t6. km3's own game on this deal (ref arm) Gnawed at t2 and its Active was KO'd on t3 (Promote at t3, 0-1). That game had diverged slightly by then (Lapras benched, no Misty), so it is suggestive, not proof.",
+                "verdict": "DEFENSIBLE",
+                "reason": "Skipping kept the future Ninetales ex 20 HP healthier and out of a Burn-KO line. Attacking would have added only damage that next turn's Binding Snow made unnecessary."
+              }
+            ],
+            "notes": "I judged all 8 of the candidate's pre-registered skip turns: 6 MISTAKE and 2 DEFENSIBLE. The 8 come from the skip_turns.tsv rows with bot=candidate and km3_attacked=yes, and the boards from skip_boards.jsonl records whose pilot contains _zs3.\n\n- **Clear mistakes (4):** 03 v Blaziken t8, 05 v Suicune t12, 06 v Hydreigon t5, 09 v Sceptile t11.\n  - 03 t8 is the worst: it gave up a certain KO and discarded all 4 Energy from Wailord ex.\n- **Minor mistakes (2):** 06 v Blaziken t3 and 10 v Vespiquen t4. Attacking was free or nearly free, but the damage changed little in the game as played.\n- **Defensible (2):**\n  - 10 v Suicune t3: evolving took our only Pokémon out of a Crystal Waltz KO that would have lost the game.\n  - draft A v Blaziken t2: Rocky Helmet recoil would have put the future Ninetales ex in reach of Sunny Scorching plus Burn, for damage that next turn's Binding Snow made unnecessary.\n\n**Limits of the record that affected these calls:**\n1. `our_attacks` forecasts read only their Active, so bench attacks show 0. Tongue Whip in 06 v Hydreigon t5 was in fact a certain 1-point KO on a 30/60 benched Deino.\n2. `their_active_attacks` forecasts ignore Energy and optional boosts:\n   - Baxcalibur had 0 Energy and couldn't pay Buster Tail through Stoutland's Guard Dog Visage.\n   - Chase Order's optional discard makes it 140, not the 70 shown.\n3. There is no Stadium field. This mattered for Castform's Burn and for Hiking Trail's refill in 10 v Vespiquen t4, which I worked out from deck counts and from UseStadium being absent.\n\n**About the evidence:**\n- The km3 'ref' arm and the frozen kx3 games are the same deal. Where the laptop review lists a turn as an identical position (03 t8, 06 v Blaziken t3, 10 v Vespiquen t4), those games show what attacking would have led to there. Elsewhere they had diverged earlier, so I treated them as hints only.\n- I looked up all card text with lib/card.py, checked rules against RULES_FOR_AGENTS.md, and wrote nothing in the repository. Helper scripts are in C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\skiphc\\ and the session scratchpad."
+          }
+        ]
+      },
+      {
+        "key": "frozen_prereg",
+        "readers": [
+          {
+            "turns": [
+              {
+                "bot": "frozen kx3",
+                "key": "01-muk-glimmora-kingambit-regigigas|t-hydreigon|0|1|X",
+                "turn": "9 (decisions 23-27; km3 proposed the attack at dec 25 and 27)",
+                "legal_attack": "Attack:Giga Turbo (Regigigas [CCC] 100; it also attaches a [C] Energy from the Zone to a Benched Pokemon). Forecast at dec 25-27: expected_damage 100, ko_chance 0.0 (Hydreigon 140/150 to 40).",
+                "did_instead": "Play:Copycat at dec 25. The opponent had 1 card, so this shuffled Rare Candy, Pawniard and Kingambit away for 1 card (deck 5 to 7). Then Play:Poke Ball for Pawniard, then EndTurn at dec 27. At dec 27 legal was only ['EndTurn','Attack:Giga Turbo'] (bench full).",
+                "facts": "Ours: Regigigas 140/150 with 3 Darkness and Heavy Helmet. It can attack because Alolan Muk (B2 097, Power of Alchemy) on the Bench turns off Basic Abilities, so Seal of Antiquity is off; the engine lists Giga Turbo as legal. Theirs: Hydreigon 140/150 with 3 Darkness and Deceptive Needle. Their threat is Hyper Ray 130 minus 20 from Heavy Helmet (retreat 4) = 110, forecast_against_ours 110, ko 0.0, plus 10 from Needle; Regigigas survives at about 20 either way. With 100 damage now, Hydreigon (non-ex, 1 point) is at 40, so next turn's Giga Turbo KOs it. Skipping leaves it at 140, so two more hits are needed. The attack has no self-cost (no Rocky Helmet; no discard of our Energy). It also gives a free Energy to the Bench.",
+                "verdict": "MISTAKE",
+                "reason": "The last choice was EndTurn against Giga Turbo, with nothing else legal. Attacking does 100 (KO next turn instead of in two turns) and adds an Energy to the Bench. It has no downside on this board: our Active survives Hyper Ray either way, and the attack discards nothing. Skipping was strictly worse. (Same deal, ref arm: km3 attacked here at t9. That is one game, so the outcome is not evidence.)"
+              },
+              {
+                "bot": "frozen kx3",
+                "key": "03-wailord-indeedee-wall|t-vespiquen|4|0|X",
+                "turn": "8 (decisions 15-20; km3 proposed the attack at dec 20)",
+                "legal_attack": "Attack:Wondrous Waves (Wailord ex [WWWW] 100). Forecast at dec 20: expected_damage 100, ko_chance 0.0 (Vespiquen ex 140/140 to 40).",
+                "did_instead": "Retreat:3 at dec 20. Wailord ex (retreat 4) discarded all 4 Water to put Wailord (B1 057, 200/200, 0 Energy) Active. Earlier that turn: Irida, Watch Over x2, benched a second Indeedee ex, attached the 4th Water.",
+                "facts": "Ours: Wailord ex 90/250 with 4 Water; Bench: Indeedee ex x2 (0 E; Psychic [PP] can never be paid in this Water-only deck) and Wailord 200/200. Soothing Shore is in hand but not legal to play, so a Soothing Shore is almost surely in play. That means end-of-our-turn +20 to Wailord ex, giving 110. Theirs: Vespiquen ex 140 with GG; Bench: Teal Mask Ogerpon ex (Basic Grass). their_active_attacks shows Chase Order expected 70, ko 0.0. But the forecast resolves the optional discard with the first choice offered. Card text: 'You may discard 1 of your Benched Basic [G] Pokemon. If you do, +70', so the real threat is 140, which is at least 110 and KOs Wailord ex for 2 points. Attacking does not KO (100 vs 140). After a KO, our only Energy would be gone and nothing else of ours can attack soon. The opponent would sit on 2 of 3 points. The retreat puts a 200-HP non-ex in front, which takes 70 or 140, and costs no points. Their deck has no Bench damage, so the benched Wailord ex is safe. The cost is real: 4 Energy, meaning about 4 turns of offense lost.",
+                "verdict": "DEFENSIBLE",
+                "reason": "The record's forecast under-reads the threat. With the Ogerpon discard, Chase Order does 140 and KOs the 90-110 HP Wailord ex, giving 2 of the 3 points. Attacking for a non-KO 100 leaves that KO available. The retreat into the 200-HP Wailord is the only legal move that denies those 2 points. Losing 4 Energy is a heavy price but smaller than handing over 2 points with no powered attacker behind. Only if the opponent passed on the discard would attacking win clearly, and a searching opponent should find the 2-point KO."
+              },
+              {
+                "bot": "frozen kx3",
+                "key": "05-indeedee-stoutland|t-lucario|3|0|X",
+                "turn": "5 (decisions 9-12; km3 proposed the attack at dec 12)",
+                "legal_attack": "Attack:Psychic (Indeedee ex [PP] 30 +30 per Energy on their Active). Forecast at dec 12: expected_damage 30 (capped at Bonsly's 30 HP), ko_chance 1.0.",
+                "did_instead": "EndTurn at dec 12 (legal: EndTurn, Attack:Psychic, Retreat:2, Retreat:3). Before that it played the Psychic Supporter, which moved Hitmonlee's Fighting Energy onto Bonsly (dec 9 to 10 shows Bonsly E=[] to ['Fighting']). Then Watch Over and attached the 2nd Psychic.",
+                "facts": "Ours: Indeedee ex 110/130 with 2 Psychic; Bench: Lillipup, Stoutland 110/140 (0 E). Theirs: Bonsly 30/30 with 1 Fighting, so Psychic does 30+30 = 60, a sure KO (1 point). Bonsly has retreat 0, so leaving it Active has no stall value. Their Bench (Hitmonlee 80, Mega Lucario ex 190) has 0 Energy, so whatever they promote cannot attack big next turn. Bonsly's Teary Attack (10; our attacks -30 next turn) is the only threat if it survives. Attacking costs nothing.",
+                "verdict": "MISTAKE",
+                "reason": "A certain KO (ko_chance 1.0, 60 damage vs 30 HP) for a point, with no cost. The bot spent its Supporter for the turn to set up exactly this attack and then ended the turn. EndTurn is strictly worse than Attack:Psychic. (Same deal, ref arm: km3 attacked and scored at t5.)"
+              },
+              {
+                "bot": "frozen kx3",
+                "key": "06-mega-blaziken-tournament-list|t-lucario|4|1|X",
+                "turn": "3 (decisions 7-10; km3 proposed the attack at dec 9)",
+                "legal_attack": "Attack:Peck (Torchic [R] 20). Forecast at dec 8-9: expected_damage 20, ko_chance 0.0 (Hitmonlee 80 to 60).",
+                "did_instead": "Retreat:2 at dec 9: Torchic (retreat 1) discarded its only Fire, and Heatmor (80/80, 0 E, cannot attack this turn) went Active. Then Play:Hiking Trail and the turn ended.",
+                "facts": "Ours: Torchic 60/60 with 1 Fire and Rocky Helmet; Bench: Heatmor (B1 044, Tongue Whip: 30 to a Benched Pokemon) and Castform Sunny Form 40/70. Hand after Copycat: Mega Blaziken ex x2, Hiking Trail, Copycat; Rare Candy is in the deck (8 cards). Theirs: Hitmonlee (A1 154, Stretch Kick: 30 to a Benched Pokemon only; forecast vs our Active 0) with 1 Fighting; Riolu (0 E). Nothing of theirs can damage our Active next turn, so Torchic Active is safe. On the Bench, Torchic is exposed to Stretch Kick. Torchic is the Rare Candy base for Mega Blaziken ex. Energy left on it carries into Mega Burning [RR]. Retreating next turn costs that same single Fire, so 'attack now, retreat next turn if Heatmor is wanted' reaches the same turn-5 board as the bot's line, plus 20 damage. Hiking Trail could be played before the attack too.",
+                "verdict": "MISTAKE",
+                "reason": "Peck now and retreat next turn gives the same turn-5 board as the bot's line, plus 20 damage. Meanwhile the Rare Candy into Mega Blaziken ex line with a Fire already on Torchic stays open, and Torchic sits out of Stretch Kick's reach. Retreating early gains nothing the attack line lacks, so it is a mistake. The stakes are small (20 chip damage and option value)."
+              },
+              {
+                "bot": "frozen kx3",
+                "key": "09-mega-manectric-heliolisk|t-hydreigon|4|0|X",
+                "turn": "2 (our first turn; decisions 0-6; km3 proposed the attack at dec 6)",
+                "legal_attack": "Attack:Thunder Shock (Helioptile B1a 028 [L] 10; flip, heads = Paralyzed). Forecast at dec 6: expected_damage 10, ko_chance 0.0 (Deino 60/60).",
+                "did_instead": "EndTurn at dec 6 (legal: EndTurn, Thunder Shock, Clemont's Backpack, Retreat:2/3) after Copycat, two Poke Balls, two Basics benched and the Lightning attached.",
+                "facts": "Ours: Helioptile 60/60 with 1 Lightning; Bench: Helioptile, Electrike. Hand: Professor's Research, Cyrus, Clemont's Backpack, Clemont (Supporter already used via Copycat). Theirs: Deino 60/60, 0 Energy, with no Bench at all. Headbutt [D] 20 is forecast 20 vs ours, ko 0.0. Thunder Shock discards nothing. Paralysis (50%) would stop Deino attacking or retreating next turn, unless they Rare Candy it into Hydreigon (evolving clears conditions). Their deck has Rare Candy x2 and Hydreigon x2 and no Zweilous. The board shows no way attacking could hurt us. Next turn they did KO the Helioptile (t3, points [0,1]), most likely by evolving, which would have cleared any Paralysis.",
+                "verdict": "MISTAKE",
+                "reason": "Attacking is weakly dominant: 10 damage and a 50% chance to deny their next attack, at no cost (Energy stays, Helioptile stays Active either way). Correct direction, but small stakes: if they had Rare Candy and Hydreigon, the Paralysis would not have mattered. (Same deal, ref arm: km3 attacked and also lost 0-3.)"
+              },
+              {
+                "bot": "frozen kx3",
+                "key": "09-mega-manectric-heliolisk|t-suicune|4|1|X",
+                "turn": "4 (decisions 6-10; km3 proposed the attack at dec 10)",
+                "legal_attack": "Attack:Lightning Accelerator (Mega Manectric ex [LL] 80 +30 per point we have; 0 points). Forecast at dec 10: expected_damage 80, ko_chance 0.0 (Baxcalibur 160/160 incl. Giant Cape, to 80). Attack:Quick Attack was legal at dec 6 before evolving.",
+                "did_instead": "Retreat:2 at dec 10. Mega Manectric ex (retreat 0, no Energy lost) went to the Bench and Heliolisk (B4 061, 80/80, 0 E) went Active; the turn then ended. In the log, Heliolisk was KO'd next turn (t5, points [0,1], Promote).",
+                "facts": "Ours: Mega Manectric ex 180/180 with 2 Lightning; Bench: Heliolisk 80/80, second Mega Manectric ex 180/180 (0 E). Theirs: Baxcalibur 160/160 with 2 Water (Ice Maker gives it a 3rd); Bench: Suicune ex, Frigibax, Chien-Pao ex, all with 0 E. Buster Tail [WWW] 90 is forecast vs ours 90, ko 0.0. Nothing in their list boosts damage. Chien-Pao and Suicune cannot be powered in one turn, so 180-HP MMex cannot be KO'd next turn. Heliolisk at 80 HP is KO'd by Buster Tail's 90. MMex is a 3-point Mega, and Buster Tail 2HKOs it (180 = 90+90). But its 0 retreat cost means attacking now does not commit it: next turn it can still dodge into Heliolisk if Baxcalibur survives (e.g. after a Pokemon Center Lady heal).",
+                "verdict": "MISTAKE",
+                "reason": "The retreat handed over a sure point (Buster Tail 90 vs Heliolisk 80) and delayed our damage a turn, to protect a Pokemon that was not in KO range. Attacking deals 80 now. MMex survives at 90. Baxcalibur dies to the next Lightning Accelerator if unhealed, and if it is healed, MMex can retreat for free then. Any way I play the attack line out, it is at least the bot's line a turn earlier, with 80 more damage and one point fewer for them. Caveat: in the same-deal ref game, km3 attacked here, then left the 90-HP MMex in at t6 and lost 0-3 at t7. That was a later error, not this decision."
+              },
+              {
+                "bot": "frozen kx3",
+                "key": "10-xatu-oricorio-tr-weezing|t-altaria|2|0|X",
+                "turn": "3 (decisions 5-10; km3 proposed the attack at dec 10)",
+                "legal_attack": "Attack:Supernatural Feather (Oricorio B4 078 [P] 50; discard a card from hand, or the attack does nothing). Forecast at dec 10: expected_damage 50, ko_chance 0.0 (Darkrai 100/100 to 50); hand is ['Oricorio'], so that is the discard.",
+                "did_instead": "EndTurn at dec 10 (legal: EndTurn, Supernatural Feather, Retreat:1/2/3). Earlier: evolved both Natu to Xatu, Poke Ball (got Oricorio), played Will (its 'first flip is heads' only lasts this turn, and no coin was flipped), attached Psychic to Oricorio.",
+                "facts": "Ours: Oricorio 80/80 with 1 Psychic; Bench full (Xatu, TR Koffing, Xatu), so the Oricorio in hand cannot be benched now. Theirs: Darkrai (B2b 040) 100/100 with 0 Energy. Dark Slumber costs [CCC], so it cannot attack next turn even though the forecast lists 60 vs ours. Bench: Swablu x2, one with 1 Psychic. Two Supernatural Feathers KO Darkrai (non-ex, 1 point). Attacking now makes that turn 5 instead of turn 7. The only cost is discarding the second Oricorio, which has no immediate use; Xatu x2 and Koffing are the follow-ups. We draw each turn, so there will normally be a card to discard next turn.",
+                "verdict": "MISTAKE",
+                "reason": "Free 50 damage that moves the Darkrai KO forward a full turn, against an Active that cannot hit back next turn (0 Energy vs a CCC cost). The price is a card that cannot be played now. Ending the turn also wasted the Will Supporter. (Same deal, ref arm: identical through dec 9, km3 attacked, KO'd Darkrai by t5 and won 4-1, while the frozen kx3 lost 1-3. That is one game, so it only illustrates.)"
+              },
+              {
+                "bot": "frozen kx3",
+                "key": "draft-A-shark-tempo|t-blaziken|0|0|X",
+                "turn": "2 (our first turn; decisions 0-5; km3 proposed the attack at dec 5)",
+                "legal_attack": "Attack:Gnaw (Alolan Vulpix B2 028 [W] 20). Forecast at dec 5: expected_damage 40 (Castform Sunny Form is weak to Water, +20), ko_chance 0.0 (70 to 30).",
+                "did_instead": "EndTurn at dec 5 (legal: EndTurn, Gnaw, Retreat:3) after Poke Ball, benching a second Vulpix, Misty (0 heads; the benched Vulpix stays E=[]) and attaching Water to the Active Vulpix.",
+                "facts": "Ours: Alolan Vulpix 60/60 with 1 Water; Bench: Alolan Vulpix (0 E). Hand: Alolan Ninetales ex, Lucky Ice Pop, Professor's Research. Theirs: Castform Sunny Form 70/70 with Rocky Helmet, 0 E; Bench: Torchic x2. Rocky Helmet hits the attacker for 20 when it is damaged, and our forecast does not show this: Gnaw costs our Vulpix 20 HP, and that damage carries onto Ninetales ex. Their threat: Sunny Scorching 30 (forecast 30, ko 0.0), which Burns if a Stadium is in play. Their list has 1 Hiking Trail. After Gnaw plus Rocky Helmet (Vulpix at 40), Scorching and the Burn checkup would KO the Vulpix; after a skip, Vulpix ends at 10. Next turn, Ninetales ex (Vulpix has 1 W, plus the attach, gives WW) Binding Snow does 80+20 Weakness = 100 and KOs a 70-HP Castform with or without the chip. Energy is single-type Water, so WW is certain.",
+                "verdict": "DEFENSIBLE",
+                "reason": "The 40 chip cannot KO, and next turn's Binding Snow (100 vs 70) KOs Castform anyway if it stays Active, so in the main line the chip is redundant. Attacking costs 20 lasting HP through Rocky Helmet on the Pokemon that becomes Ninetales ex. It also opens a small KO risk (Scorching plus Burn if they find their one Stadium) that would wreck the turn-4 Binding Snow plan. Close call: the chip only pays if they pull Castform out of the Active Spot before turn 4, and Lucky Ice Pop can partly heal the 20. A play-out from this board would settle it."
+              }
+            ],
+            "notes": "My count for the frozen kx3's 8 turns is 6 MISTAKE and 2 DEFENSIBLE.\n- MISTAKE: 01 v Hydreigon t9, 05 v Lucario t5, 06 v Lucario t3, 09 v Hydreigon t2, 09 v Suicune t4, 10 v Altaria t3. The two clearest are 01 and 05. In 01 the final choice was EndTurn or Giga Turbo and the bot chose EndTurn. In 05 the bot set up a sure KO with its Supporter and then ended the turn. Two have small stakes: 06 (20 chip) and 09 v Hydreigon (10 damage and a coin flip).\n- DEFENSIBLE: 03 v Vespiquen t8 and draft A v Blaziken t2.\n\nTwo record limits affected the verdicts:\n1. In 03, their_active_attacks shows Chase Order at 70 with ko 0.0, because the forecast resolves the optional discard with the first option. The card text gives 140 with the Ogerpon discard, which KOs the Wailord ex.\n2. In draft A, our_attacks does not include the 20 Rocky Helmet damage back to the attacker.\n\nHow I checked:\n- Card text came only from lib/card.py and the printings in the deck files in decks/dustin, decks/brews and decks/screen/opponents.\n- Rules came from RULES_FOR_AGENTS.md.\n- For context I used skip_boards.jsonl (pilot == 'kx3') and the game logs in ../strength_2026-10-03_kx3_dev/games.jsonl (the X and ref arms on the same deal).\n- None of these 8 turns is among the laptop review's 13 identical-position turns.\n- Ref-arm outcomes are single games. I cite them as illustration only.\n\nHousekeeping: I wrote nothing in the repository, but I may have overwritten another reader's script. My first Write went to the shared C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\skiphc\\extract.py, which already existed (the tool reported 'updated'), so another reader's helper there may have been overwritten. Their out.txt and fz2_* files were not touched. All my later scripts and outputs are in C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\skiphc\\fz1\\."
+          },
+          {
+            "turns": [
+              {
+                "bot": "frozen kx3 (pilot 'kx3')",
+                "key": "01-muk-glimmora-kingambit-regigigas|t-hydreigon|0|1|X",
+                "turn": "game turn 9, decisions 23-27 (skip settled at d27)",
+                "legal_attack": "Attack:Giga Turbo (CCC, 100). Forecast at d24-d27: expected_damage 100, ko_chance 0. Their Hydreigon goes from 140/150 to 40. Giga Turbo also attaches a [C] Energy from the Zone to a Benched Pokemon. Regigigas B3 134's Seal of Antiquity is switched off by our benched Alolan Muk B2 097 (Power of Alchemy), so the attack is genuinely legal.",
+                "did_instead": "d24 UseStadium (Mesagoza). d25 Play:Copycat (km3 proposed Giga Turbo here): shuffled Rare Candy, Pawniard and Kingambit into the deck and drew 1 card. d26 Play:Poke Ball, which found Pawniard. At d27 the legal moves were only EndTurn and Attack:Giga Turbo. Pawniard couldn't be benched because the Bench was full (Glimmet, Glimmora, Alolan Muk), and the bot chose EndTurn.",
+                "facts": "Ours: Regigigas 140/150 with 3 Darkness Energy and Heavy Helmet (-20, retreat 4). Theirs: Hydreigon 140/150 with 3 Darkness Energy and Deceptive Needle; bench Deino, Mega Absol ex 170 (2 Darkness), Bombirdier 50/70. Points 0-0. No KO is available now. Their threat next turn: Hyper Ray, forecast 110 (130 minus Helmet's 20) against Regigigas at 140, so ko_chance 0 (plus Deceptive Needle's 10 at the end of their turn). That threat is the same whether we attack or not. Attacking costs nothing: Regigigas stays Active either way, nothing on Hydreigon punishes an attacker, and the turn had nothing else left to do.",
+                "verdict": "MISTAKE",
+                "reason": "At d27 the only choice was a free 100-damage attack or passing. Attacking brings Hydreigon to 40, where next turn's Giga Turbo KOs it, and it adds an Energy to the Bench. Passing gains nothing on this board. Stakes are high: a full turn of damage plus Energy acceleration. (Playing Copycat and Poke Ball first was fine because the attack was still available afterwards. The error is EndTurn at d27.)"
+              },
+              {
+                "bot": "frozen kx3 (pilot 'kx3')",
+                "key": "03-wailord-indeedee-wall|t-vespiquen|4|0|X",
+                "turn": "game turn 8, decisions 15-20 (skip at d20)",
+                "legal_attack": "Attack:Wondrous Waves (WWWW, 100). Forecast at d20: expected_damage 100, ko_chance 0. Their Vespiquen ex goes from 140/140 to 40.",
+                "did_instead": "Retreat:3 at d20 (km3 proposed Wondrous Waves). Wailord ex went to the Bench and the non-ex Wailord B1 057 (200/200, no Energy) came in. Wailord ex's retreat cost is 4, so all 4 of its Water Energy were discarded.",
+                "facts": "Ours: Wailord ex 90/250 with 4 Water and no Tool; bench Indeedee ex 130, Indeedee ex 130, Wailord 200. Soothing Shore is in play: we played it at t2 (d6), and 'Play:Soothing Shore' is absent from the legal moves although it is in hand, so the active Wailord ex would end our turn at 110. Theirs: Vespiquen ex 140/140 with 2 Grass; bench Teal Mask Ogerpon ex 130 (a Basic Grass Pokemon). Points 0-0. Chase Order's card text says the attacker 'may discard 1 of your Benched Basic [G] Pokemon' for +70. That makes 140 with Ogerpon as the discard, the cost GG is already paid, and 140 is at least the 110 Wailord ex would have, so it is a 2-point KO next turn. The record's forecast (expected 70, ko_chance 0 at d19/d20) misses this, because a queued choice is resolved with the first option. Attacking does not KO. Our deck is Water-only, so Indeedee ex can't pay [PP]. With Wailord at 0 Energy, losing Wailord ex would leave us with no attacker for about 4 turns while they sat on 2 points.",
+                "verdict": "DEFENSIBLE",
+                "reason": "Attacking deals 100 but leaves a 90/110-HP Wailord ex in front of a certain 140 Chase Order: a 2-point KO of our only powered attacker. Retreating into the 200-HP non-ex Wailord denies that KO at the price of 4 Energy. Against an opponent who takes the KO (the candidate's Wailord ex in the same game was KO'd for 2 at t9), the retreat line is better. Caveats: their deck has 1 Cyrus, which could still pull the damaged benched Wailord ex in; and if they declined the discard, attacking would have set up a KO next turn. A play-out from d20 would settle the margin."
+              },
+              {
+                "bot": "frozen kx3 (pilot 'kx3')",
+                "key": "05-indeedee-stoutland|t-lucario|3|0|X",
+                "turn": "game turn 5, decisions 9-12 (skip at d12)",
+                "legal_attack": "Attack:Psychic (PP, 30 plus 30 for each Energy on their Active). Forecast at d12: expected_damage 30 (capped at Bonsly's 30 HP), ko_chance 1.0. A sure Knock Out, 1 point.",
+                "did_instead": "d9 Play:Psychic (Trainer): moved a Fighting Energy from Hitmonlee onto their Active Bonsly. d10 Watch Over. d11 attached the second Psychic Energy to Indeedee ex, which made the attack legal. d12 EndTurn (km3 proposed Attack:Psychic).",
+                "facts": "Ours: Indeedee ex 110/130 with 2 Psychic; bench Lillipup, Stoutland 110/140. Theirs: Bonsly 30/30 with 1 Fighting; bench Hitmonlee 80 (no Energy after the move), Mega Lucario ex 190 (no Energy). Points 0-0. Their threat: Teary Attack, 10 (ko_chance 0), plus -30 to our next attack. After a KO they would have to promote a Pokemon with no Energy, and Bonsly's retreat cost of 0 means leaving it alive walls nothing.",
+                "verdict": "MISTAKE",
+                "reason": "The bot set up exactly this KO (the Psychic Trainer to load Bonsly, then the second Energy) and then passed a 100% KO worth a point. Skipping also lets Bonsly's Teary Attack weaken our next attack. There is no downside to attacking on this board. High stakes."
+              },
+              {
+                "bot": "frozen kx3 (pilot 'kx3')",
+                "key": "06-mega-blaziken-tournament-list|t-lucario|4|1|X",
+                "turn": "game turn 3, decisions 7-10 (skip settled at d9)",
+                "legal_attack": "Attack:Peck (R, 20). Forecast at d8/d9: expected_damage 20, ko_chance 0. Their Hitmonlee goes from 80 to 60.",
+                "did_instead": "d8 Copycat. d9 Retreat:2 (km3 proposed Peck): Torchic, retreat cost 1, discarded its only Fire Energy, and Heatmor (80/80, no Energy) came in. d10 played Hiking Trail and the turn ended with no attack possible.",
+                "facts": "Ours: Torchic 60/60 with 1 Fire and Rocky Helmet; bench Heatmor 80 (Tongue Whip, which only hits the Bench), Castform Sunny Form 40/70. Hand: Mega Blaziken ex x2, Hiking Trail, Copycat. Theirs: Hitmonlee A1 154 80/80 with 1 Fighting (Stretch Kick does 30 to a Benched Pokemon only; forecast against our Active 0); bench Riolu 60. Points 0-0. There is no threat to our Active either way. Retreating moved Torchic, our Mega Blaziken ex base, onto the Bench where Stretch Kick can hit it. The d10 record confirms Torchic on the Bench with Energy [].",
+                "verdict": "MISTAKE",
+                "reason": "Peck was free. Hiking Trail could still be played before it, and next turn's switch to Heatmor for Tongue Whip was just as available after attacking (retreat then attach). Attacking weakly dominates: +20 damage, Torchic keeps its Energy for a possible Rare Candy into Mega Blaziken ex with Mega Burning ([RR]) next turn, and Torchic stays out of Stretch Kick range. Low-to-medium stakes."
+              },
+              {
+                "bot": "frozen kx3 (pilot 'kx3')",
+                "key": "09-mega-manectric-heliolisk|t-hydreigon|4|0|X",
+                "turn": "game turn 2 (our first turn), decisions 0-6 (skip at d6)",
+                "legal_attack": "Attack:Thunder Shock (Helioptile B1a 028; L, 10; heads means Paralyzed). Forecast at d6: expected_damage 10, ko_chance 0, branches 2. Their Deino goes from 60 to 50, with a 50% chance of Paralysis.",
+                "did_instead": "EndTurn at d6 (km3 proposed Thunder Shock). The Supporter was already spent (Copycat at d0). The other legal moves were Clemont's Backpack (only boosts Magneton/Heliolisk) and retreats.",
+                "facts": "Ours: Helioptile 60/60 with 1 Lightning; bench Helioptile, Electrike. Theirs: Deino 60/60 with no Energy and an empty Bench. Points 0-0. Their threat: Headbutt 20 (ko_chance 0). Attacking costs nothing (no discard, no recoil). With their Bench empty, chip damage on Deino moves toward a 'no Pokemon left' win. (In the game they Rare Candied into Hydreigon at t3 and KO'd Helioptile. Evolving would have cured a Paralysis, but the 10 damage would have stayed.)",
+                "verdict": "MISTAKE",
+                "reason": "A free attack with only upside (10 damage and a coin for Paralysis) against passing with nothing left to do. Clearly better, but the stakes are small."
+              },
+              {
+                "bot": "frozen kx3 (pilot 'kx3')",
+                "key": "09-mega-manectric-heliolisk|t-suicune|4|1|X",
+                "turn": "game turn 4, decisions 6-10 (skip at d10)",
+                "legal_attack": "Attack:Lightning Accelerator (LL, 80, +30 per point we have; we have 0). Forecast at d10: expected_damage 80, ko_chance 0. Their Baxcalibur goes from 160/160 (Giant Cape) to 80.",
+                "did_instead": "Retreat:2 at d10 (km3 proposed Lightning Accelerator). Mega Manectric ex (retreat cost 0) went to the Bench and Heliolisk B4 061 (80/80, no Energy) became Active. The turn ended without an attack.",
+                "facts": "Ours: Mega Manectric ex 180/180 with 2 Lightning; bench Heliolisk 80, a second Mega Manectric ex 180 with no Energy. Theirs: Baxcalibur 160/160 with 2 Water and Giant Cape (Ice Maker attaches Water to their Active Water Pokemon); bench Suicune ex, Frigibax, Chien-Pao ex, all without Energy. Points 0-0. Their threat: Buster Tail 90, forecast against the Mega 90 with ko_chance 0 (180 HP). Against the Heliolisk the bot put in, 90 is at least its 80 HP, so that is a KO, and Baxcalibur reaches WWW with Ice Maker plus their attach. That KO happened: t5 Promote with points [0,1].",
+                "verdict": "MISTAKE",
+                "reason": "Attacking puts 80 on Baxcalibur, setting up a KO next turn, while the Mega survives Buster Tail (90 against 180). The retreat dealt nothing and handed them a certain 1-point KO on Heliolisk. Its only gain was keeping the Mega undamaged one turn longer, which merely delays the same exchange (the Mega took Buster Tails later anyway). Retreating to the second Mega instead would at least have conceded no point. Medium-high stakes. One residual risk in the attack line, a heal (they have 1 Pokemon Center Lady and 1 Soothing Shore), does not outweigh a free point."
+              },
+              {
+                "bot": "frozen kx3 (pilot 'kx3')",
+                "key": "10-xatu-oricorio-tr-weezing|t-altaria|2|0|X",
+                "turn": "game turn 3, decisions 5-10 (skip at d10)",
+                "legal_attack": "Attack:Supernatural Feather (Oricorio B4 078; P, 50; you must discard a card from your hand, or the attack does nothing). Forecast at d10: expected_damage 50, ko_chance 0. Their Darkrai goes from 100 to 50. The only card in hand to discard was Oricorio.",
+                "did_instead": "Evolved both Natu into Xatu, Poke Ball (found Oricorio, which couldn't be benched because the Bench was full), played Will (only useful for a coin flip this turn), attached Psychic to Oricorio, then EndTurn at d10 (km3 proposed Supernatural Feather).",
+                "facts": "Ours: Oricorio 80/80 with 1 Psychic; bench Xatu, Team Rocket's Koffing, Xatu, none with Energy. Hand: Oricorio only. Theirs: Darkrai B2b 040 100/100 with 0 Energy (Dark Slumber needs CCC; Bad Dreams); bench Swablu, Swablu (1 Psychic). Points 0-0. No KO now, and no attack threat from Darkrai next turn (0 Energy; the forecast against us of 60, ko_chance 0, assumes the Energy is there). Attacking costs our second Oricorio, a future attacker and Feather fodder. Not attacking keeps it, but Darkrai's KO comes one turn later (in the game it fell at t7 after Feathers at t5 and t7, instead of at t5).",
+                "verdict": "UNCLEAR",
+                "reason": "This is not a free attack: 50 damage, half a 1-point KO, against the only card in hand, a Basic attacker. The deck is built to pay Feather's discard, and the bench is full, so I lean towards attacking. But Darkrai can't attack for 2+ turns anyway, and an early KO only frees their active spot for Mega Altaria ex sooner. What would settle it: a paired play-out from d10 (Feather against EndTurn), or knowing whether the opponent holds Small Balloon or Energy to retreat Darkrai, and whether the second Oricorio is needed later."
+              },
+              {
+                "bot": "frozen kx3 (pilot 'kx3'; the candidate made the identical turn)",
+                "key": "draft-A-shark-tempo|t-blaziken|0|0|X",
+                "turn": "game turn 2 (our first turn), decisions 0-5 (skip at d5)",
+                "legal_attack": "Attack:Gnaw (Alolan Vulpix B2 028; W, 20). Forecast at d5: expected_damage 40 (Castform Sunny Form is weak to Water, +20), ko_chance 0. Their Castform goes from 70 to 30.",
+                "did_instead": "Poke Ball, benched a second Vulpix, Misty (0 heads), attached Water to the Active Vulpix, then EndTurn at d5 (km3 proposed Gnaw).",
+                "facts": "Ours: Alolan Vulpix 60/60 with 1 Water; bench Vulpix with no Energy. Hand: Alolan Ninetales ex, Lucky Ice Pop, Professor's Research. Theirs: Castform Sunny Form 70/70 with Rocky Helmet and 0 Energy; bench Torchic x2. Points 0-0. Rocky Helmet would deal 20 to our attacking Vulpix (60 down to 40). Their threat: Sunny Scorching 30 (forecast 30, ko_chance 0 from 60 HP), which also Burns (20 at Pokemon Checkup) if a Stadium is in play; their list has Hiking Trail. Attack line: 40, minus 30, minus a possible 20 means Vulpix can be KO'd. Skip line: 60, minus 30, minus 20 leaves 10, so it survives. Next turn Ninetales ex (in hand) evolves onto the 1-Energy Vulpix and Binding Snow does 80 + 20 Weakness = 100, at least 70, KOing Castform whether or not Gnaw landed. That is what happened: t4 Binding Snow, points [1,0] by t6.",
+                "verdict": "DEFENSIBLE",
+                "reason": "Gnaw's 40 doesn't change next turn's KO math (Binding Snow KOs a full-HP Castform). Attacking costs 20 Rocky Helmet damage that carries onto Ninetales ex, and with a Stadium-enabled Burn it turns their Sunny Scorching into a KO on the Vulpix we need to evolve. Skipping was as good or better. Gnaw would only matter if Castform left the Active Spot before our next attack."
+              }
+            ],
+            "notes": "I judged the 8 turns where km3 proposed an attack and the frozen kx3 made none. They are the frozen rows in skip_exact/skip_turns.tsv with km3_attacked = yes. Frozen board records are the pilot 'kx3' rows in skip_boards.jsonl; for draft-A v Blaziken 0|0 the candidate rows (same key) show the identical turn. Card text comes from lib/card.py, using the printings in the deck files (decks/dustin, decks/brews/drafts_2026-10-01, decks/screen/opponents). Rules come from RULES_FOR_AGENTS.md. Context comes from ../strength_2026-10-03_kx3_dev/games.jsonl. I wrote nothing in the repository; my scripts are in C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\skiphc\\fz2_*.\n\nTally: 5 MISTAKE, 2 DEFENSIBLE, 1 UNCLEAR.\n- MISTAKE: 01 v Hydreigon t9, 05 v Lucario t5, 06 v Lucario t3, 09 v Hydreigon t2, 09 v Suicune t4.\n- DEFENSIBLE: 03 v Vespiquen t8, draft-A v Blaziken t2.\n- UNCLEAR: 10 v Altaria t3.\n\nStakes of the mistakes:\n- High: 05 t5, a 100% KO for a point that the bot itself set up, then passed. 01 t9, a free 100 damage when EndTurn was the only alternative.\n- Medium-high: 09 v Suicune t4, a retreat that handed them a 1-point KO on Heliolisk.\n- Low: 06 t3 (20 damage and a discarded Energy) and 09 v Hydreigon t2 (10 damage and a Paralysis coin).\n\nOne caution about the forecast fields: their_active_attacks resolves an attack's optional choice with the first option. For Vespiquen ex's Chase Order (03 t8) that gives 70 with ko_chance 0. The card allows +70 by discarding a benched Basic Grass, and Ogerpon ex was there, which makes 140 and a 2-point KO on the 90-HP Wailord ex (110 after Soothing Shore). That missing threat is what makes the retreat defensible. Similarly, Burn and Rocky Helmet recoil are not in the damage forecasts and matter in draft-A t2.\n\nOutcomes, which I did not use for the verdicts: the frozen kx3 won 5 of these 8 games (01, 03, 06, 09 v Suicune, draft-A)."
+          }
+        ]
+      },
+      {
+        "key": "identical_1",
+        "readers": [
+          {
+            "turns": [
+              {
+                "bot": "candidate",
+                "key": "03-wailord-indeedee-wall|t-blaziken|3|1|X",
+                "turn": "8",
+                "legal_attack": "dec 11: Attack:Wondrous Waves (WWWW, printed 100). Forecast vs Castform Sunny Form 70/70: expected_damage 70, ko_chance 1.0. Castform is weak to Water, so the hit is 120. km3_move at dec 11 = Attack:Wondrous Waves, so this is one of the candidate's 8 pre-registered turns.",
+                "did_instead": "Evolve:Wailord@3, Play:Soothing Shore, Attach:1Water@0 (Wailord ex now has 4 Water), then Retreat:3 at dec 11. That swapped Wailord ex 220/250 out for a Wailord 200/200 with no Energy.",
+                "facts": "Wailord ex's retreat cost is 4, so the retreat threw away all 4 Water. decisions_candidate confirms it: Water went back onto Wailord ex at t10, t12, t14 and t16, and Wondrous Waves was not legal again until dec 30 (t16). The Wailord with no Energy could not attack and was Knocked Out at t13, giving the opponent a point. If the bot had attacked: Rocky Helmet does 20 back, and Soothing Shore heals 20 at the end of our turn because Water is attached, so the net cost is 0. Their best answer is the benched Mega Blaziken ex (2 Fire): Mega Burning 120 plus Burn does not Knock Out a 220-HP Wailord ex, and Wondrous Waves cures conditions. Points 0-0. The frozen kx3 attacked here and at t10 and t12, and won 4-0 in 12 turns. The candidate won 3-1 in 18 turns.",
+                "verdict": "MISTAKE",
+                "reason": "A sure Knock Out for 1 point at no net cost was passed up, and the move chosen instead threw away 4 attached Energy. The bot's main attacker lost four turns of Energy and a Pokémon with no Energy was left in front to be Knocked Out. Nothing on the board makes retreating better. This is the clearest error in the set."
+              },
+              {
+                "bot": "candidate",
+                "key": "06-mega-blaziken-tournament-list|t-altaria|4|0|X",
+                "turn": "5",
+                "legal_attack": "Attack:Sunny Scorching (R, 30) at decs 7, 8 and 10 by Castform Sunny Form (1 Fire, from Flame Patch). Forecast vs Darkrai 100/100: expected_damage 30, ko_chance 0.",
+                "did_instead": "dec 6 Flame Patch onto Castform; dec 7 Play:Copycat with the second Flame Patch still in hand; dec 8 Rare Candy; dec 9 Evolve:Mega Blaziken ex@2 (on the Bench); dec 10 Retreat:2 (Castform pays its Fire); dec 11 attach the turn's Fire to Mega Blaziken ex (now 1 Fire). No attack was possible after that.",
+                "facts": "Points 1-1. At dec 6 the hand is Mega Blaziken ex, Flame Patch x2, Copycat. The frozen kx3 left the same dec-7 position like this: Retreat:2, which puts Castform's Fire in the discard pile; Flame Patch onto Torchic; Copycat; Rare Candy; Evolve Mega Blaziken ex@0; attach; Mega Burning 120. That Knocked Out Darkrai (100 HP), and the frozen kx3 was at 2-1 by t7. The candidate's Copycat at dec 7 shuffled the second Flame Patch back into the deck. Copycat then did draw Rare Candy (dec 8 hand), but Mega Blaziken ex could only reach 1 Fire. Threat next turn: Darkrai has 1 Energy and Dark Slumber costs CCC; Mega Altaria ex on the Bench has 1 Psychic; Darkrai's retreat costs 2. So the opponent most likely could not attack next turn. Even at dec 10, attaching the Fire to the benched Mega Blaziken ex and using Sunny Scorching keeps the same Mega Burning turn (t7, Castform retreats with its own Fire) and adds 30 damage. Candidate won 4-2 at t11. Frozen kx3 won 5-1 at t9.",
+                "verdict": "MISTAKE",
+                "reason": "Retreating and playing Flame Patch before Copycat costs nothing and gives a Knock Out whenever Copycat finds Rare Candy. About 45% from the board (2 Rare Candy in about 12 cards, 3 draws), and the real draw did contain it. The candidate's order closed that off. At its last choice, the small attack was also at least as good as moving Mega Blaziken ex forward. The error is in the order of plays at dec 7 more than in the 30-damage attack it finally passed up."
+              },
+              {
+                "bot": "candidate",
+                "key": "06-mega-blaziken-tournament-list|t-altaria|4|1|X",
+                "turn": "2",
+                "legal_attack": "dec 3: Attack:Peck (Torchic, 1 Fire). Forecast vs Espeon 90/90: expected_damage 20, ko 0. At dec 4, Play:Flame Patch (a Fire was in the discard after the retreat) would have made Attack:Sunny Scorching (30) legal. The frozen kx3 did exactly that.",
+                "did_instead": "Poké Ball, Place Castform@2, Attach Fire to Torchic, Retreat:2 (km3 also proposed it), then EndTurn at dec 4. It kept Flame Patch and Copycat in hand, and Castform with no Energy stayed Active.",
+                "facts": "Candidate's first turn, 0-0. Their Espeon (B3a, Hypnoblast P 40 plus Asleep) has 0 Energy, and Eevee is on the Bench. Their list has 2 Darkrai with Bad Dreams (20 at the end of each turn while our Active is Asleep). Hypnoblast plus one Bad Dreams is 60, exactly Torchic's HP, so keeping Torchic Active to Peck was risky. Retreating it was sound, and both bots and km3 did it. The question is dec 4. Flame Patch plus Sunny Scorching costs no card except Flame Patch. Castform keeps the Fire, so it can pay its own retreat next turn. I checked the next-turn branches (Castform awake or asleep), and in none does holding Flame Patch let Mega Blaziken ex attack sooner. In fact the candidate spent Flame Patch at t4 on a sleeping Castform (dec 7, and no attack was legal at t4). Then came the Sleep lock: Castform asleep at t4, Mega Blaziken ex unable to attack at t6, first Mega Burning at t8. Candidate won 3-2. Frozen kx3 lost 2-5.",
+                "verdict": "MISTAKE",
+                "reason": "A small one. The retreat at dec 3 was right because of the Bad Dreams risk. But ending the turn at dec 4 passed up a free 30 (Flame Patch, then Sunny Scorching) and gained nothing from holding Flame Patch. Copycat could be held either way, which protects Rare Candy and Mega Blaziken ex."
+              },
+              {
+                "bot": "candidate",
+                "key": "06-mega-blaziken-tournament-list|t-blaziken|0|0|X",
+                "turn": "3",
+                "legal_attack": "Attack:Sunny Scorching (R, 30) at decs 5 and 7 by Castform 70/70 with 1 Fire. Forecast vs Heatmor 80/80: expected_damage 30, ko 0. km3_move at dec 7 = Attack:Sunny Scorching, so this is one of the candidate's 8 pre-registered turns.",
+                "did_instead": "Poké Ball, Place Torchic@3, Professor's Research, attach Fire to Castform, then Field Blower at dec 5 to remove Rocky Helmet from Heatmor (dec 6, DiscardToolFromPokemon). Then EndTurn at dec 7, when the only legal moves were EndTurn, Attack and Retreat:3.",
+                "facts": "0-0. A Stadium was in play (DiscardActiveStadium was a legal choice at dec 6), so Sunny Scorching would also have Burned Heatmor: 80 to 50, then 20 more at Checkup. With Rocky Helmet gone, there was no recoil. Attacking spends no Energy, so the next-turn plan was unchanged: Rare Candy on the Torchic placed this turn, retreat Castform with its Fire, Flame Patch plus attach, Mega Burning. The candidate played exactly that at t5. Their threat is Tongue Whip (30 to one benched Pokémon), and attacking does not change it. The frozen kx3 attacked. The candidate won 4-1, and the frozen kx3 won 4-2.",
+                "verdict": "MISTAKE",
+                "reason": "Pure dominance. At dec 7 attacking costs nothing and adds 30 damage plus a Burn. The bot even spent Field Blower to clear the Rocky Helmet that would have punished the attack, then did not attack. The damage is small but there was no reason to pass it up."
+              },
+              {
+                "bot": "candidate",
+                "key": "06-mega-blaziken-tournament-list|t-hydreigon|1|1|X",
+                "turn": "2",
+                "legal_attack": "dec 1: Attack:Peck (Torchic, 1 Fire). Forecast vs Bombirdier 70/70: expected_damage 20, ko 0.",
+                "did_instead": "Attached Fire to Torchic (dec 0), then EndTurn (dec 1). It kept Copycat, Rocky Helmet, Mega Blaziken ex, Rare Candy and Flame Patch in hand. km3 proposed Play:Copycat at dec 1.",
+                "facts": "Candidate's first turn, 0-0. Torchic 50/60 is our only Pokémon. Bombirdier (B3, Dark Cutter D 30) has 0 Energy and Deceptive Needle (10 to our Active at the end of their turn). The most it can do next turn is 30 + 10, so Torchic survives at 10, and Peck neither adds nor removes that risk. Next turn, Rare Candy then Mega Burning (120) Knocks Out a 70-HP Bombirdier with or without Peck's 20. The candidate did exactly that at t4. The 20 matters only if Bombirdier retreats and sits damaged on the Bench (a target for Cyrus or Tongue Whip). The frozen kx3 played Copycat (shuffling away Rare Candy and Mega Blaziken ex), then Peck, and lost 1-3. The candidate won 4-2.",
+                "verdict": "MISTAKE",
+                "reason": "A minor one, probably with no effect on the game. Peck was free (attacking spends no Energy and the turn had nothing else to do), so ending the turn was weakly worse. The real decision this turn, not playing Copycat, was correct, and much better than what the frozen kx3 did."
+              },
+              {
+                "bot": "candidate",
+                "key": "06-mega-blaziken-tournament-list|t-lucario|4|0|X",
+                "turn": "4",
+                "legal_attack": "dec 4: Attack:Peck (Torchic, 1 Fire). Forecast vs Lucario 80/100: expected_damage 20, ko 0. After Rare Candy, attaching the turn's Fire at dec 6 (Attach:1Fire@0 zone was legal) would have given Mega Blaziken ex 2 Fire and made Mega Burning (RR, 120) legal.",
+                "did_instead": "dec 4 Rare Candy, dec 5 Evolve:Mega Blaziken ex@0, then dec 6 EndTurn without attaching the turn's Energy. Unattached Energy is lost at the end of the turn.",
+                "facts": "0-0. Mega Blaziken ex 210/210 with 1 Fire, and it is our only Pokémon. Their Lucario (A2 092) is at 80/100 with 1 Fighting; Mega Lucario ex 190 and Hitmonlee 80 are on the Bench with no Energy. Attach then Mega Burning would do 120 into 80 HP: a Knock Out for 1 point, plus a Burn. Their threat next turn is Submarine Blow, forecast 60 with Fighting Coach against Mega Blaziken ex (ko 0), so there was no danger in attacking. The frozen kx3 attached and used Mega Burning this turn and won 4-0 by t8. The candidate's first Mega Burning came at t6, and it won 3-0 at t10.",
+                "verdict": "MISTAKE",
+                "reason": "A clear and large one. One free attach turns the turn into a Knock Out. Instead the bot threw away the turn's Energy and gave the opponent a turn. There is nothing to weigh on the other side."
+              },
+              {
+                "bot": "candidate",
+                "key": "09-mega-manectric-heliolisk|t-altaria|0|0|X",
+                "turn": "3",
+                "legal_attack": "Attack:Quick Attack (Electrike, 1 Lightning: 10, plus 30 on heads) at decs 6-8. Forecast vs Darkrai 100/100: expected_damage 25, 2 branches, ko 0. km3 proposed setup moves at those decisions, not an attack.",
+                "did_instead": "dec 5 attach Lightning to the Active Electrike; Place Helioptile@1; Evolve Heliolisk@2; Evolve Mega Manectric ex@0 (it keeps the Lightning); Retreat:1 (Mega Manectric ex has retreat 0) so Helioptile with no Energy is Active; Clemont's Backpack (wasted); Copycat; Evolve Mega Manectric ex@3; EndTurn.",
+                "facts": "0-0. Their Darkrai (Bad Dreams, Dark Slumber CCC) has 1 Psychic and Small Balloon; a second Darkrai is on the Bench. From the record's forecast alone, the opponent cannot attack next turn. But their list has Eevee B1 184 (Boosted Evolution) into Espeon (Hypnoblast 40 plus Asleep), Igglybuff and Swablu (Sleep), and two Bad Dreams Darkrai at 20 each. Same deal and same opponent hand: the opponent Knocked Out the candidate's 60-HP Helioptile at t4, and the frozen kx3's 80-HP Heliolisk at t4. The candidate's line puts a Pokémon with no Energy in front and keeps the Lightning on a benched Mega Manectric ex, which came up for free at t5. Quick Attack instead would have left Electrike (60 HP) Active with the Lightning. If it is Knocked Out, that Lightning is lost. If not, it could Mega Evolve and use Lightning Accelerator 80 next turn, and a heads (40) would set up a Darkrai Knock Out. The frozen kx3 attached to Heliolisk instead and used Electrispark with two Backpacks (80 to Darkrai), then lost Heliolisk at t4 and lost the game 2-5. The candidate won 3-2.",
+                "verdict": "UNCLEAR",
+                "reason": "The attack passed up is a coin flip for 10 or 40 with no Knock Out. Its value depends on whether the opponent can Knock Out a 60-HP Active next turn, which turns on their hidden hand. If they can (what both games suggest), keeping the Energy on the Bench behind a Helioptile with no Energy is as good or better. If they cannot, Quick Attack plus next turn's Mega Evolution is clearly better. What would settle it: the opponent's hand at t3 and t4 (whether Espeon plus Bad Dreams was available), or a play-out from dec 6 comparing the two lines over the hands the opponent could have. It leans DEFENSIBLE on what happened at t4."
+              }
+            ],
+            "notes": "Reader 1. These are the first 7 of the 13 hand-check turns in REVIEW_SKIP_EXACT_laptop.md, all judged for the candidate. I wrote nothing in the repository. My scripts are in my session scratchpad (r1_extract.py, r1_games.py, r1_dec.py, r1_cards.sh). The folder C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\skiphc\\ already held another reader's extract.py and out.txt; I did not open them. Every card was looked up with lib/card.py, and the rules come from RULES_FOR_AGENTS.md.\n\nTally: 6 MISTAKE and 1 UNCLEAR.\n- Two large: 03 v Blaziken 3|1 t8 retreated Wailord ex, which threw away 4 Water, instead of a sure Knock Out; 06 v Lucario 4|0 t4 did not attach the free Energy that made Mega Burning a Knock Out.\n- One medium: 06 v Altaria 4|0 t5, where Copycat shuffled away the second Flame Patch; the frozen kx3's order from the same position Knocked Out Darkrai.\n- Three small: 06 v Altaria 4|1 t2, 06 v Blaziken 0|0 t3 and 06 v Hydreigon 1|1 t2 each passed up 20-30 free damage. In Hydreigon 1|1 the main choice that turn (holding Copycat) was right.\n- 09 v Altaria 0|0 t3 is UNCLEAR, leaning DEFENSIBLE. It depends on the opponent's hidden hand.\n\nTwo of my turns are among the candidate's 8 pre-registered turns (km3_move was an attack): 03 v Blaziken 3|1 t8 dec 11 and 06 v Blaziken 0|0 t3 dec 7. Both are MISTAKE.\n\nRecurring pattern in the candidate: a setup or retreat move followed by EndTurn when attacking was free, including after spending Field Blower to clear Rocky Helmet. Twice it threw away resources: 4 Energy by retreat, and an unattached Energy.\n\nLimits of the record:\n- skip_boards.jsonl does not show the Stadium in play (I inferred one from DiscardActiveStadium being a legal choice), the discard pile or the opponent's hand.\n- their_active_attacks covers only their current Active, is made from the board as it stands, and leaves out the end-of-turn Ability damage from Bad Dreams and Deceptive Needle. Fighting Coach does appear in Lucario's 60.\n- The UNCLEAR turn and the size estimate for 06 v Altaria 4|0 (about 45% chance that Copycat finds Rare Candy) depend on hidden information. I used the frozen and candidate game logs (games.jsonl points and Promote lines, and decisions_*.jsonl.gz) only as context for what happened next."
+          },
+          {
+            "turns": [
+              {
+                "bot": "candidate",
+                "key": "03-wailord-indeedee-wall|t-blaziken|3|1|X",
+                "turn": "8 (decisions 8-11)",
+                "legal_attack": "Decision 11: Attack:Wondrous Waves (Wailord ex, 4 Water). Forecast expected_damage 70.0 (capped at Castform's 70 HP), ko_chance 1.0, printed 100. Castform Sunny Form is weak to Water, so the hit is 120.",
+                "did_instead": "Retreat:3. Wailord ex (retreat cost 4) went to the Bench and discarded all 4 Water. Wailord (200 HP, 0 Energy) became the Active and the turn ended. km3_move was Attack:Wondrous Waves, so this is one of the 8 pre-registered turns.",
+                "facts": "Score 0-0. Ours: Wailord ex 220/250 with Water x4; Bench Wailord 200/200 with 0 Energy. Theirs: Castform 70/70 with Rocky Helmet (20 back to the attacker, which Soothing Shore heals at the end of our turn); Bench Mega Blaziken ex 210 with Fire x2, Heatmor and Torchic. Their attack Sunny Scorching forecasts 30, ko 0. An attack would have scored a sure point and kept 4 Energy on the 250-HP attacker. Mega Blaziken ex is also weak to Water, so two Wondrous Waves (120 each) knock it out. The retreat cost all 4 Energy: the log shows Wailord ex needed attaches on t10, t12, t14 and t16 before it attacked again on t16. The 0-Energy Wailord was knocked out on t13 for their point. Frozen kx3 and km3 attacked here and won 4-0 by t12. The candidate won 3-1 on t18.",
+                "verdict": "MISTAKE",
+                "reason": "It passed up a certain KO (ko_chance 1.0, one point) and paid 4 Energy to put a 0-Energy Wailord in front. Nothing on the board made the retreat better. Wailord ex at 220 HP survives a 120 Mega Burning, and its Water hits knock out Mega Blaziken ex in two attacks. This is the clearest case of the seven."
+              },
+              {
+                "bot": "candidate",
+                "key": "06-mega-blaziken-tournament-list|t-altaria|4|0|X",
+                "turn": "5 (decisions 6-11)",
+                "legal_attack": "Attack:Sunny Scorching (Castform, 1 Fire) at decisions 7, 8 and 10: expected_damage 30, ko_chance 0 against Darkrai 100/100.",
+                "did_instead": "Flame Patch on Castform, Copycat (drew Rare Candy, Mega Blaziken ex, Mega Blaziken ex), Rare Candy onto the Benched Torchic, Retreat:2 (Castform's Fire discarded), then attached Fire to the Active Mega Blaziken ex (1 Fire). km3 chose the same moves (km3_move Copycat at decision 7, Rare Candy at 8, Retreat:2 at 10).",
+                "facts": "Score 1-1. Theirs: Darkrai 100 with 1 Psychic (Dark Slumber needs CCC, so no attack next turn); Bench Mega Altaria ex 190 with 1 Psychic. After the draw, only Sunny Scorching was possible: 30 damage with no KO. Mega Burning (120) knocks out Darkrai next turn either way. Attacking would have left Castform, worth 1 point, exposed at 1-1, where a knockout puts them on 2. Not attacking put the 210-HP Mega in front instead. Frozen kx3 attacked with Mega Burning, from a different order at decision 7: Retreat, then the second Flame Patch onto Torchic, then Copycat. That order needed Copycat to draw both Rare Candy and Mega Blaziken ex: 36 of 220 three-card draws from its 12-card deck (about 16%). The candidate played Copycat while still holding Flame Patch, which left about a 1.4% chance (it needed Rare Candy, Mega Blaziken ex and Flame Patch). Frozen kx3 knocked out Darkrai and won 5-1. The candidate won 4-2.",
+                "verdict": "DEFENSIBLE",
+                "reason": "The attack it actually passed up was 30 damage with no KO, which doesn't change next turn's Mega Burning KO. Passing it kept the 1-point Castform out of the Active spot at 1-1, and the Mega attacks next turn either way. The real difference from frozen kx3 is a sequencing choice at decision 7, which km3 shared. Frozen's order gave about a 16% chance (against about 1.4%) of a turn-5 Mega Burning KO."
+              },
+              {
+                "bot": "candidate",
+                "key": "06-mega-blaziken-tournament-list|t-altaria|4|1|X",
+                "turn": "2 (decisions 0-4; our first turn, opponent went first)",
+                "legal_attack": "Decision 3 only: Attack:Peck (Torchic, 1 Fire), expected_damage 20, ko_chance 0 against Espeon 90/90. At decision 4 no attack was legal (Castform had 0 Energy).",
+                "did_instead": "Retreat:2 at decision 3 (km3_move also Retreat:2; frozen kx3 did the same). This discarded Torchic's Fire. EndTurn at decision 4, with Flame Patch, Copycat, Mega Blaziken ex and Rare Candy still in hand.",
+                "facts": "Score 0-0. Their Espeon (Hypnoblast 40 plus Asleep, P cost) has 0 Energy; Eevee is on their Bench. Torchic is the only Rare Candy target in play. Frozen kx3 and km3 both retreated too; the split comes at decision 4. They played Flame Patch, then Copycat (shuffling Rare Candy and Mega Blaziken ex back into the deck), then Sunny Scorching for 30. Playing Flame Patch and attacking without Copycat would have added 30 damage on Espeon (plus Burn only if a Stadium was in play; skip_boards doesn't record Stadiums). Keeping Flame Patch had a use. If Castform left the Active spot on t3 (a knockout, or the Sabrina in their deck), Flame Patch on the promoted Torchic/Mega Blaziken ex allows a t4 Mega Burning. In the actual game Castform was still Active and asleep on t4 (decisions 7-8 list no attack or retreat), so that use never came up. Frozen kx3 and km3 lost 2-5; the candidate won 3-2.",
+                "verdict": "DEFENSIBLE",
+                "reason": "The skip it alone made (EndTurn instead of Flame Patch plus Sunny Scorching) gave up only 30 damage with no KO. In return it kept a Flame Patch that could have powered a turn-4 Mega Burning if Castform left the Active spot. The legal Peck was skipped by all three bots. The stakes are small either way."
+              },
+              {
+                "bot": "candidate",
+                "key": "06-mega-blaziken-tournament-list|t-blaziken|0|0|X",
+                "turn": "3 (decisions 1-7)",
+                "legal_attack": "Attack:Sunny Scorching (Castform, 1 Fire) at decisions 5 and 7: expected_damage 30, ko_chance 0 against Heatmor 80/80. A Stadium was in play (DiscardActiveStadium was among Field Blower's options at decision 6), so the card text adds a Burn that the forecast does not count.",
+                "did_instead": "Played Field Blower and discarded the Rocky Helmet from their Heatmor (decision 6), then took EndTurn at decision 7. km3_move at decision 7 was Attack:Sunny Scorching, so this is a pre-registered turn.",
+                "facts": "Score 0-0. Ours: Castform 70/70 with 1 Fire; Bench Torchic, placed this turn. Theirs: Heatmor 80 with 1 Fire, no Tool after Field Blower (Tongue Whip only hits the Bench; forecast against our Active 0); Bench Torchic x2 and Castform. Attacking costs nothing: the attack ends the turn, and so did EndTurn. Hiking Trail draws nothing, since we held 6 cards. The candidate removed the Helmet, which only matters when we attack, then didn't attack. km3 attacked here and then played the same t5 moves as the candidate, so the attack would not have changed the plan. The candidate won 4-1; km3 lost 2-4.",
+                "verdict": "MISTAKE",
+                "reason": "Attacking was free and strictly better: 30 damage plus a Burn on Heatmor, with the Rocky Helmet already gone, and no cost to energy, cards or position. Small (no KO), but unambiguous."
+              },
+              {
+                "bot": "candidate",
+                "key": "06-mega-blaziken-tournament-list|t-hydreigon|1|1|X",
+                "turn": "2 (decisions 0-1; our first turn)",
+                "legal_attack": "Decision 1: Attack:Peck (Torchic 50/60, 1 Fire), expected_damage 20, ko_chance 0 against Bombirdier 70/70.",
+                "did_instead": "EndTurn, keeping Copycat, Rocky Helmet, Mega Blaziken ex, Rare Candy and Flame Patch. km3_move was Play:Copycat (km3 then pecked); frozen kx3 played Copycat and then Peck.",
+                "facts": "Score 0-0. Theirs: Bombirdier 70 with Deceptive Needle and 0 Energy (Dark Cutter 30 forecast against Torchic, ko 0); Bench Mega Absol ex 170 and Deino, both with 0 Energy. Torchic stays Active either way. On t4 the candidate used Rare Candy into Mega Blaziken ex, attached and Mega Burned. Holding the hand (not playing Copycat) was the right part: frozen kx3's Copycat shuffled away Rare Candy and Mega Blaziken ex, and it lost 1-3. But Peck needs no Copycat and costs nothing. It adds 20 damage, which also lets Cyrus (in our deck) pull Bombirdier back later.",
+                "verdict": "MISTAKE",
+                "reason": "Minor. Peck was free: no Energy spent, Torchic stays Active, and the hand stays whole. So EndTurn was strictly worse, by 20 damage with no KO. The candidate's real gain over frozen kx3 came from not playing Copycat, not from skipping the attack."
+              },
+              {
+                "bot": "candidate",
+                "key": "06-mega-blaziken-tournament-list|t-lucario|4|0|X",
+                "turn": "4 (decisions 4-6)",
+                "legal_attack": "Decision 4: Attack:Peck (Torchic, 1 Fire), expected_damage 20, ko_chance 0 against Lucario 80/100. After Rare Candy, Mega Burning (RR, 120 plus Burn) was one Energy attach away: Attach:1Fire@0 zone was legal at decision 6. With it, 120 against 80 HP is a sure KO.",
+                "did_instead": "Rare Candy, then evolved the Active Torchic into Mega Blaziken ex (210 HP, 1 Fire), then EndTurn at decision 6 without attaching the turn's Fire, which was lost.",
+                "facts": "Score 0-0. Theirs: Lucario 80/100 with 1 Fighting, whose Fighting Coach adds +20 to their attacks; Submarine Blow forecasts 60 against Mega Blaziken ex, ko 0. Bench: Hitmonlee 80, and Mega Lucario ex 190 with 0 Energy. Nothing on the board punishes attaching or attacking (Lucario has no Tool, and no attack of theirs scales with our Energy). Frozen kx3 and km3 attached and Mega Burned here, knocking out Lucario, and won 4-0 by t8. The candidate attached and attacked on t6 instead and won 3-0 on t10. km3 was not asked at decision 6, because no attack was legal before the attach, so the pre-registered measure can't see this turn.",
+                "verdict": "MISTAKE",
+                "reason": "It gave up a certain KO (one point, and Fighting Coach removed) by not making the turn's free Energy attach. Skipping the attach has no upside, since unattached Energy is lost at end of turn. The recorded legal attack (Peck 20) understates this: the real loss is Mega Burning 120 against an 80-HP Lucario."
+              },
+              {
+                "bot": "candidate",
+                "key": "09-mega-manectric-heliolisk|t-altaria|0|0|X",
+                "turn": "3 (decisions 5-13)",
+                "legal_attack": "Decisions 6-8: Attack:Quick Attack (Electrike, 1 Lightning), expected_damage 25 (10, or 40 on heads), ko_chance 0 against Darkrai 100/100.",
+                "did_instead": "Attached Lightning to the Active Electrike first (decision 5). Then it placed Helioptile, evolved Heliolisk, Mega Evolved the Active Electrike into Mega Manectric ex (180 HP, 1 Lightning), and retreated it for free (retreat 0, Energy kept) behind the new Helioptile (60 HP, 0 Energy). Then it played Backpack and Copycat, evolved the second Electrike into Mega Manectric ex, and ended the turn. km3 agreed with Place, Evolve and Mega Evolve at decisions 6-8.",
+                "facts": "Score 0-0. Theirs: Darkrai 100 with 1 Psychic and Small Balloon (Dark Slumber needs CCC; forecast 40 against ours); Bench Darkrai 100 with 0 Energy. Quick Attack would leave a 60-HP Electrike holding the only Lightning in front, where it is likely to be knocked out. Skipping it put that Lightning on a hidden 3-point Mega, so Lightning Accelerator (LL) is one attach from ready. Frozen kx3's attack came from a different first move at decision 5. It evolved Heliolisk, Mega Evolved and retreated for free to Heliolisk, played Backpack, attached to Heliolisk and used Electrispark. With the one Backpack in hand that is 60 to the Active Darkrai and 30 to the Benched one; frozen drew a second Backpack, for 80/50. Both lines lost a 1-point Pokémon on t4 (frozen kx3's Heliolisk, the candidate's Helioptile). The candidate won 3-2; frozen kx3 lost 2-5 and km3 lost 1-4.",
+                "verdict": "UNCLEAR",
+                "reason": "Skipping the legal attack (Quick Attack, expected 25, no KO) to bank Energy on a benched Mega is defensible. Frozen kx3's alternative, chosen at decision 5 before any attack was legal, trades that banked Energy and a safe Heliolisk for about 90 damage across both Darkrai. The board doesn't settle it. That would take knowing whether they can knock out an 80-HP Heliolisk against a 60-HP Helioptile on t4 (Eevee to Espeon, Bad Dreams, Mega Altaria ex, whether Training Area is in play), or play-outs of both plans from decision 5."
+              }
+            ],
+            "notes": "I was reader 2 and judged the first 7 of the 13 hand-check turns. Result: 4 MISTAKE, 2 DEFENSIBLE, 1 UNCLEAR.\n- Two mistakes threw away a sure KO: 03 v Blaziken 3|1 t8 and 06 v Lucario 4|0 t6.\n- The other two mistakes were free damage left unused: 06 v Blaziken 0|0 t3 (30 plus Burn) and 06 v Hydreigon 1|1 t2 (20).\n- Only 2 of the 7 are pre-registered turns where km3 proposed an attack (03 v Blaziken t8, 06 v Blaziken t3).\n- 06 v Lucario t4 is a forgone KO that the pre-registered measure can't see. Mega Burning only became legal after an Energy attach the candidate never made, so km3 was never asked there.\n- In 2 turns (06 v Altaria 4|0 t5, 09 v Altaria 0|0 t3), frozen kx3's attack came from a different order of earlier moves in the turn, not from attacking where the candidate didn't. In 06 v Altaria 4|0 t5, km3 chose the same moves as the candidate.\n\nLimits of the records:\n- skip_boards.jsonl doesn't record the Stadium in play. That matters for Sunny Scorching's Burn. For 06 v Blaziken I inferred a Stadium from Field Blower's DiscardActiveStadium option.\n- Forecasts leave out Burn and checkup damage.\n- Bench entries leave out empty slots, so slot numbers come from the legal moves.\n\nCard text came from lib/card.py, matched to the printings in decks/dustin and decks/screen/opponents. Rules came from RULES_FOR_AGENTS.md. Nothing was written in the repository.\n\nMy scripts are in C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\skiphc\\r2b\\ (r2b_games.py, r2b_dec.py), with the card lookups in skiphc\\cards.sh and cards2.sh. Another agent overwrote my scratchpad file games.py while I was working, likely the other reader sharing the scratchpad, so I moved my files to r2b."
+          }
+        ]
+      },
+      {
+        "key": "identical_2",
+        "readers": [
+          {
+            "turns": [
+              {
+                "bot": "candidate",
+                "key": "09-mega-manectric-heliolisk|t-altaria|1|0|X",
+                "turn": "4 (decisions 7-11)",
+                "legal_attack": "At d7, Quick Attack from the Active Electrike: expected 25, ko_chance 0 against Darkrai at 100/100 (our_attacks). From d10 the stronger attack was one step away. 'Attach:1Lightning@0 zone' put the Energy on the Active Heliolisk (B4 061), which made Electrispark (L) legal. Card text: 40 to the Active and 10 to each Benched Pokemon, plus 20 to each with the Clemont's Backpack in hand. That is 60 to the Active Darkrai (to 40) and 30 to the Benched Darkrai (to 70). The record has no forecast for Electrispark, because it never became legal.",
+                "did_instead": "d7 Retreat:2 (km3 proposed the same), d8 Evolve:Heliolisk@0, d9 Professor's Research (drew Field Blower and Clemont's Backpack). d10 Attach:1Lightning@3, which put the Energy on the Benched Electrike 60/60, not the Heliolisk. d11 EndTurn while still holding Backpack and Clemont.",
+                "facts": "Points [1,0]. Their Active Darkrai 100/100 has 1 Psychic and the Benched Darkrai has none. Dark Slumber costs CCC, so they cannot attack next turn (2 Energy at most). The forecast_against_ours ko_chance 1.0 ignores the Energy they have. We had no KO this turn, and no attack threatens us next turn. Moving the 10-HP Electrike out (d7 Retreat) was right. Resources: the deck has 0 Heliolisk and 1 Backpack left, so the t6 Clemont fetches the same Backpack in every line. Electrispark without the Backpack costs only where the turn's Energy goes: on the Heliolisk now and the bench at t6, or the reverse, which ends t6 with the same Energy in play. No t-altaria attack scales with our Energy. The frozen kx3 reached the same d10 board (same Research draws) and played Backpack, Attach@0, Electrispark. The candidate won 3-0 at t6 and the frozen lost 2-3, but that is outcome, not board.",
+                "verdict": "MISTAKE",
+                "reason": "Attaching to the Active Heliolisk and using Electrispark beats the chosen line even with the Backpack held: +40 to the Active Darkrai and +10 to each Benched Pokemon now, for nothing. The t6 double-Backpack burst (90 to the Active, 50 to the Bench) is still there, and it would then KO the Darkrai (60 left) instead of leaving it at 10. The skip left no damage and gained only 1 Energy on a benched Electrike, with no Mega Manectric ex in hand."
+              },
+              {
+                "bot": "candidate",
+                "key": "10-xatu-oricorio-tr-weezing|t-altaria|1|0|X",
+                "turn": "7 (decisions 16-18)",
+                "legal_attack": "Life Drain (PP) from the Active Xatu: expected_damage 0.0, ko_chance 0.0. Darkrai is already at 10/100 and Life Drain sets the remaining HP to 10. Supernatural Feather was reachable (Place Oricorio, Retreat, Attach) but the hand was empty after placing Oricorio (d17 hand: []). Its text says it does nothing if no card can be discarded.",
+                "did_instead": "d16 Place:Oricorio@1 (= km3), d17 Retreat:1, so the Oricorio with 0 Energy became Active (km3 proposed Attach:1Psychic@1 zone). d18 Attach:1Psychic@1 to the Benched Xatu, which now has PP. The turn ended with no legal attack.",
+                "facts": "Points [0,0]. Their Active Darkrai 10/100 has 0 Energy. Their Bench: Darkrai 100/100, Swablu 10/50, Mega Altaria ex 190/190 with PP. Hand at d16: only Oricorio. No KO was possible this turn. Natu Peck could have taken the 10 HP, but no Natu was in play. Weezing ex needs DD and this is a Psychic deck. The frozen kx3 took the same route and 'attacked' with Supernatural Feather on an empty hand. The attack did nothing: no DiscardOwnCards followed, the points stayed [0,0] into t9, and its t9 Feather scored the point. Next turn's threat is the same in both lines: Mega Harmony 40 + 30 per Benched Pokemon if they get Mega Altaria ex Active, enough to KO either 80-HP Active.",
+                "verdict": "DEFENSIBLE",
+                "reason": "No attack available this turn could do any damage: Life Drain forecasts 0, and Feather has no card to discard. Skipping cost nothing. The real choice was where the Energy went (the Benched Xatu, ready for Life Drain, against the frozen's Oricorio), and neither is clearly better."
+              },
+              {
+                "bot": "candidate",
+                "key": "10-xatu-oricorio-tr-weezing|t-vespiquen|1|1|X",
+                "turn": "4 (decisions 11-16)",
+                "legal_attack": "Supernatural Feather (P) from the Active Oricorio at every decision: expected_damage 50.0, ko_chance 0.0 against Vespiquen ex 120/170 (Leaf Cape).",
+                "did_instead": "Every setup move matched km3: Evolve Xatu@3, Place Natu@1, Research, Poké Ball, Attach to the Benched Xatu@3. Then at d16 it chose EndTurn where km3 proposed Attack:Supernatural Feather. This is one of the pre-registered 'km3 proposed, none followed' turns (km3_attacked yes).",
+                "facts": "Points [0,0]. Hand at d16: Will, Copycat, Oricorio (3 cards to discard from). Their Vespiquen ex has 1 G. Next turn Chase Order (GG) does 70, or 140 if they discard a Benched Basic G (Ogerpon ex or Shuckle ex), so our 80-HP Oricorio faces a KO whether or not we attack. Ogerpon's Soothing Wind keeps Vespiquen (it has Energy) free of conditions. The candidate's plan: t6 Will + Life Drain (HP to 10), t8 Feather KO. Copycat was never played (Will took t6's Supporter slot). If Hiking Trail (played t2) was still in play, the discard was refilled at end of turn. The deck count shows it refilled at the end of t2, but the record does not show the Stadium at t4.",
+                "verdict": "MISTAKE",
+                "reason": "Attacking was free: 50 to the opponent's only attacker, a 2-point ex. The cost was a near-dead Copycat, and a smaller hand also weakens their Copycat. Skipping gained nothing on the board. It is low-stakes: with Will guaranteeing Life Drain, the chip did not speed up the KO in the line that was played. It was still a fallback if Life Drain or Xatu failed, and it would make a switched-out Vespiquen a target for Cyrus. km3 and the frozen kx3 both attacked."
+              },
+              {
+                "bot": "candidate",
+                "key": "10-xatu-oricorio-tr-weezing|t-vespiquen|4|0|X",
+                "turn": "6 (decisions 12-15)",
+                "legal_attack": "Supernatural Feather (P) from the Active Oricorio (1 P): expected_damage 50.0, ko_chance 0.0 against Vespiquen ex 160/170 (Poisoned, Leaf Cape).",
+                "did_instead": "d12 Play:Poké Ball (km3 proposed Attach@2), which fetched Team Rocket's Koffing. d13 Play:Copycat shuffled that Koffing back and drew Cyrus, Hiking Trail, Poison Barb and Will. d14 Attach:1Psychic@2 to the Benched Xatu (= km3). d15 EndTurn (km3 proposed Play:Hiking Trail). Hiking Trail and Poison Barb were also legal and left unplayed.",
+                "facts": "Points [0,1]. Their Bench is only Shuckle ex 120/120, undamaged, so Cyrus had no target and was a free discard. Ogerpon is gone, so Vespiquen's Poison stays. Next turn: Chase Order 70, or 140 if they discard Shuckle, against our 80-HP Oricorio. Their reply does not change with our attack. Our Bench was the Xatu alone (b=1). The realized win came from t8 Will + Life Drain (HP to 10) with Poison finishing it at Checkup. 50 more damage now would not have changed that timing. The frozen kx3 built its Bench and then attacked with Feather.",
+                "verdict": "MISTAKE",
+                "reason": "Feather discarding Cyrus was +50 on the 2-point ex at no real cost. The skip used the turn for nothing else either: Hiking Trail and Poison Barb stayed in hand. Low-stakes, since the Life Drain + Poison plan makes earlier damage partly redundant. But attacking was strictly at least as good, and better if Life Drain failed or Xatu was KO'd first."
+              },
+              {
+                "bot": "candidate",
+                "key": "draft-A-shark-tempo|t-blaziken|0|0|X",
+                "turn": "6 (decisions 17-21)",
+                "legal_attack": "Binding Snow (WW) from the Active Alolan Ninetales ex 130/150 with WW: expected_damage 60.0, ko_chance 1.0 against Torchic 60/60 (80 printed, and Torchic is weak to Water).",
+                "did_instead": "d17 Retreat:3, paying both Water to bring in the other Ninetales ex 150/150 with 0 Energy (km3 proposed Attach:1Water@3 zone, as the frozen did before attacking). Then Copycat, Poké Ball, Place Carvanha@1, and Attach 1 Water to the new Active. No attack was legal after the retreat.",
+                "facts": "Points [1,0], so a certain KO of the non-ex Torchic makes it 2 of 3. Their board: Torchic Active with 0 Energy, Bench Torchic 60/60 and Heatmor 80/80 with 1 R. Binding Snow would also stop them attaching from the Energy Zone to their next Active. Their threat next turn is small: Peck 20 forecast, or Heatmor's Tongue Whip 30 to our Bench. The retreat cost 2 Water and only moved a Ninetales ex with 20 damage to the Bench. The frozen kx3 attached to the Bench and used Binding Snow for the KO. The candidate then also skipped at t8 and lost its Ninetales ex at t9 (points went 1-0 to 1-2).",
+                "verdict": "MISTAKE",
+                "reason": "The forecast's ko_chance is 1.0 for the second point, and Binding Snow slows their next Active too. Instead the bot gave up the KO and threw away 2 Energy to move a lightly damaged attacker. That is the clearest error in this set."
+              },
+              {
+                "bot": "candidate",
+                "key": "draft-A-shark-tempo|t-lucario|3|0|X",
+                "turn": "2 (decisions 0-6; attack legal only at d6)",
+                "legal_attack": "Gnaw (W) from the Active Alolan Vulpix (B2 028) with 1 W: expected_damage 20.0, ko_chance 0.0 against Riolu 60/60.",
+                "did_instead": "d6 Retreat:3 (km3 proposed the same). The Vulpix paid its 1 Water and the Lapras (A3 044, 110 HP) with WW from Misty became Active. Surf costs WWC, so no attack followed.",
+                "facts": "Points [0,0], our first turn (they went first). Their side: Riolu (B3 079) Active with 0 Energy, Bench Hitmonlee 80/80 and Riolu 60/60. Next turn they get 1 F at most, so the threat is Fighting Fist 10, or 30 if a Benched Riolu becomes Lucario (Fighting Coach). Neither of our Pokemon is ex, so the +30 does not apply and neither can be KO'd. The Energy cost is the same either way: with Gnaw, the Vulpix's Water is paid at t4 to retreat into Lapras for Surf, so the end of t4 looks alike. Gnaw adds 20 on Riolu and keeps the Vulpix's Energy, so a Ninetales ex drawn at t4 could Binding Snow at once. The retreat now means the 110-HP Lapras takes t3's 10-30 instead of the Vulpix, the future 150-HP ex. The frozen is not a comparator: it played Misty first, onto the Vulpix, so its d6 board was different.",
+                "verdict": "UNCLEAR",
+                "reason": "The trade is close: 20 chip damage plus a little flexibility against moving t3's small hit onto Lapras. Against this deck's HP (Riolu 60, Lucario 100, Mega Lucario ex 190) the 20 changes the number of hits only in some branches. For example, a chipped Lucario at 80 falls to one Binding Snow. What would settle it: their t3 evolution (Lucario, Mega Lucario ex, or none), our t4 draw (Ninetales ex or not), or paired play-outs from this exact board. I lean slightly toward Gnaw, but not clearly."
+              }
+            ],
+            "notes": "I used the boards in skip_exact/skip_boards.jsonl, with the candidate's and frozen kx3's logs from games.jsonl and decisions_*.jsonl.gz for the turns around each skip. Card text came from lib/card.py and rules from RULES_FOR_AGENTS.md. Summary: 4 MISTAKE (A 09 v Altaria t4, C 10 v Vespiquen 1|1 t4, D 10 v Vespiquen 4|0 t6, E draft A v Blaziken t6), 1 DEFENSIBLE (B 10 v Altaria t7), 1 UNCLEAR (F draft A v Lucario t2).\n\nHow strong each verdict is:\n- E is clear: the forecast KO chance is 1.0 for the second point, and the bot threw away 2 Water instead.\n- A is clear but rests on card text, not a forecast. The missed attack (Electrispark after attaching to the Active Heliolisk) never became legal, so the record has no forecast for it. The frozen kx3 played it from the same d10 board.\n- C and D are small. The attack was free, but the Life Drain plan (plus Poison in D) made the extra 50 redundant in the games as played.\n\nCaveats:\n- In B the frozen's 'attack' was a Supernatural Feather on an empty hand and did nothing (no DiscardOwnCards followed, and the 10-HP Darkrai was still there to KO at t9). So 'frozen attacked' is nominal there.\n- In F the frozen's d6 board was not the candidate's, because the frozen played Misty first onto the Vulpix.\n- Only C is a pre-registered turn (km3_attacked yes). In A, B, D, E and F, km3 proposed no attack at the decisions it was asked about. In E it proposed attaching first, as the frozen did before its KO.\n- The record holds no Stadium, so whether Hiking Trail refilled the discard in C is unknown.\n\nScratch scripts are in C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\skiphc\\r1last6\\ and the session scratchpad. Nothing was written in the repository."
+          },
+          {
+            "turns": [
+              {
+                "bot": "candidate",
+                "key": "09-mega-manectric-heliolisk|t-altaria|1|0|X",
+                "turn": "4",
+                "legal_attack": "Quick Attack (Electrike, cost L), legal only at decision 7. Forecast (our_attacks): expected_damage 25.0, ko_chance 0.0 against Darkrai 100/100. Electrispark (Heliolisk, cost L: 40 damage plus 10 to each of their Benched Pokemon) was one move away: Attach:1Lightning@0 zone was legal at decision 10. The record has no forecast for it because no attack was legal at a recorded decision. Electrispark is the attack the frozen kx3 made from this position, after playing Clemont's Backpack, and km3 made it in its own game.",
+                "did_instead": "Retreat:2 (sent the 10/60 Electrike to the Bench and discarded its only L) > Evolve:Heliolisk@0 > Professor's Research > Attach:1Lightning@3 zone (onto the benched Electrike 60/60) > EndTurn. It kept Clemont's Backpack in hand (hand at decision 10: Heliolisk, Clemont, Field Blower, Clemont's Backpack).",
+                "facts": "Points [1,0]. Their Active Darkrai (B2b 040) is 100/100 with 1 Psychic. Dark Slumber costs CCC, and t-altaria has no Energy acceleration, so Darkrai cannot attack next turn even after its zone attach. The their_active_attacks forecast (40 against Heliolisk) is made 'as if now' and ignores the missing Energy. Darkrai is weak to Grass, so no Weakness applies. Electrispark would do 40 to the Active and 10 to the benched Darkrai. With Backpack (+20 to 'your opponent's Pokemon', which reaches the Bench under RULES_FOR_AGENTS) it would do 60 and 30. The candidate's setup alternative was 1 L on a benched Electrike. Mega Manectric ex needs LL, and it can only reach the Active if Heliolisk retreats, which costs 1 Energy Heliolisk did not have. At t6 the candidate attached to Heliolisk and used Electrispark anyway, so the L on Electrike sat idle until the game ended.",
+                "verdict": "MISTAKE",
+                "reason": "Passing up the listed Quick Attack was right: the 10-HP Electrike should leave the Active. The mistake is the attach target at decision 10. Attach@0 followed by Electrispark (even keeping Backpack for t6) gave up nothing that Attach@3 gained. It deals 40-60 to their Active and 10-30 to their Bench, and nothing on their side can attack back next turn. Electrike's single L had no payoff before the game ended. The candidate won 3-0 and the frozen kx3 lost, but that outcome does not change the board judgement."
+              },
+              {
+                "bot": "candidate",
+                "key": "10-xatu-oricorio-tr-weezing|t-altaria|1|0|X",
+                "turn": "7",
+                "legal_attack": "Life Drain (Xatu A4 082, cost PP), legal at decisions 16-17. Forecast: expected_damage 0.0, ko_chance 0.0 (2 branches) against Darkrai 10/100. Card text: on heads, their Active's remaining HP becomes 10.",
+                "did_instead": "Place:Oricorio@1 > Retreat:1 (Xatu to the Bench, paying 1 P) > Attach:1Psychic@1 zone (back onto the benched Xatu, which now has PP). Oricorio is Active with 0 Energy and the hand is empty.",
+                "facts": "Points [0,0]. Darkrai is already at 10 HP, so Life Drain does nothing on either coin result. After Place:Oricorio the hand is [] (decision 17: hand []). Supernatural Feather says 'Discard a card from your hand. If you can't, this attack does nothing', so it was also a no-op. The frozen kx3's 'attack' here (Attach@0 then Supernatural Feather, with no DiscardOwnCards logged at t7) did nothing. Weezing ex needs DD, which a Psychic-only deck cannot pay. No legal or reachable attack could change the board. Their side cannot attack next turn either: Darkrai has 0 Energy, and Mega Altaria ex (PP) is on the Bench behind a retreat-2 Darkrai.",
+                "verdict": "DEFENSIBLE",
+                "reason": "Every attack available that turn was a no-op: Life Drain against a 10-HP target, and Feather with an empty hand. Skipping lost nothing. Keeping PP on the benched Xatu loses nothing either. The frozen kx3's attack at this position did zero damage, so it is no evidence against the candidate."
+              },
+              {
+                "bot": "candidate",
+                "key": "10-xatu-oricorio-tr-weezing|t-vespiquen|1|1|X",
+                "turn": "4",
+                "legal_attack": "Supernatural Feather (Oricorio B4 078, cost P, Oricorio has 1 P), legal at all six decisions 11-16. Forecast: expected_damage 50.0, ko_chance 0.0 against Vespiquen ex 120/170 (Leaf Cape). km3 proposed it at decision 16, so this is one of the 8 pre-registered turns.",
+                "did_instead": "Evolve:Xatu@3 > Place:Natu@1 (Bench now full) > Professor's Research > Poke Ball > Attach:1Psychic@3 zone (onto Xatu) > EndTurn. It ended with Oricorio still Active and hand Will, Copycat, Oricorio.",
+                "facts": "Points [0,0]. Their Vespiquen ex has 1 G. Next turn it has GG for Chase Order: 70, or 140 if they discard a benched Basic Grass. Teal Mask Ogerpon ex and Shuckle ex are both on their Bench, so Oricorio (80) could be KO'd whether or not it attacked, and it was (t6 points [0,1]). The attack's only cost was one discarded card. The Oricorio card in hand could not be played with the Bench full, and the candidate did not use Copycat at t6. If Hiking Trail (played at t2) was still in play, the discard came back at end of turn; the record has no stadium field. The attack would take Vespiquen from 120 to 70. Xatu's Life Drain sets HP to 10 regardless, so in the line that happened (Will + Life Drain at t6, Feather KO at t8) the 50 would have been redundant.",
+                "verdict": "MISTAKE",
+                "reason": "Ending the turn gained nothing: the legal moves at decision 16 were only EndTurn, attack or retreat, and Oricorio stayed Active facing a likely KO. Attacking costs a spare card (Copycat) and is at least as good in every continuation. It is strictly better if Life Drain is unavailable, fails, or Vespiquen leaves the Active. The size is small, because Life Drain made the damage redundant in the actual game."
+              },
+              {
+                "bot": "candidate",
+                "key": "10-xatu-oricorio-tr-weezing|t-vespiquen|4|0|X",
+                "turn": "6",
+                "legal_attack": "Supernatural Feather (Oricorio, 1 P), legal at decisions 12-15. Forecast: expected_damage 50.0, ko_chance 0.0 against Vespiquen ex 160/170 (Poisoned, GG, Leaf Cape). km3 did not propose an attack at any of these decisions (at decision 15 it proposed Play:Hiking Trail), so this is not a pre-registered turn.",
+                "did_instead": "Poke Ball (got Team Rocket's Koffing) > Copycat (shuffled Koffing back and drew Cyrus, Hiking Trail, Poison Barb, Will) > Attach:1Psychic@2 zone (onto the benched Xatu) > EndTurn. It ended with 4 cards in hand.",
+                "facts": "Points [0,1], so we are behind. Cyrus was a dead card: their only benched Pokemon, Shuckle ex, is undamaged at 120/120. Discarding it for Feather costs nothing, and the attach to Xatu was already made at decision 14, so attacking did not compete with the Xatu plan. Their threat next turn is Chase Order 70 (Oricorio survives at 10), or 140 if they discard Shuckle ex, their only Bench. The attack would leave Vespiquen at 110, then about 90 by our t8 after Poison, instead of about 140. That matters if Oricorio survives and has to Feather again. It would have been redundant in the line that happened: they discarded Shuckle to KO Oricorio, and Xatu used Will + Life Drain and Poison to win. Holding 4 cards also feeds their Copycat (t-vespiquen runs 2).",
+                "verdict": "MISTAKE",
+                "reason": "There was free damage on a 2-point ex for a dead card (Cyrus), with no effect on what the opponent could do next turn and no conflict with the Xatu setup. Skipping gained nothing; attacking was better in every line, though only by insurance in the line that happened."
+              },
+              {
+                "bot": "candidate",
+                "key": "draft-A-shark-tempo|t-blaziken|0|0|X",
+                "turn": "6",
+                "legal_attack": "Binding Snow (Alolan Ninetales ex B2 029, cost WW, the Active had WW), legal at decision 17. Forecast: expected_damage 60.0 (capped at the HP left), ko_chance 1.0 against Torchic 60/60. Torchic is weak to Water. Card text: during their next turn they cannot attach Energy from the Energy Zone to their Active.",
+                "did_instead": "Retreat:3 (the 130/150 Ninetales ex went to the Bench and discarded both W; retreat cost 2) > Copycat > Poke Ball > Place:Carvanha@1 > Attach:1Water@0 zone (onto the fresh Active Ninetales ex 150/150, which then had only 1 W and could not attack). km3 proposed Attach:1Water@3 zone at decision 17.",
+                "facts": "Points [1,0], so the KO makes it [2,0]. Their board: Torchic 60/60 (0 E) Active; Torchic and Heatmor (1 R) on the Bench. The only real threat to the 130-HP Ninetales is Mega Blaziken ex via Rare Candy (Mega Burning RR 120 plus Burn). With the skip, Torchic stays Active and can be Rare Candied with a normal zone attach. After a KO plus Binding Snow, the promoted Pokemon cannot take a zone Energy. They would need Rare Candy on a benched Torchic with a zone R, a retreat into it, and Flame Patch to reach RR. Copycat, Poke Ball, Carvanha and an attach to the Bench could all have been played before attacking. The frozen kx3 took this KO.",
+                "verdict": "MISTAKE",
+                "reason": "A certain KO for a point, putting us one point from winning, plus an Energy lock on their next Active, was given up for a retreat that discarded 2 W and dealt nothing. The opponent's Rare Candy line was left open. Nothing gained by the skip needed the turn to end without the attack. This is the clearest of the six."
+              },
+              {
+                "bot": "candidate",
+                "key": "draft-A-shark-tempo|t-lucario|3|0|X",
+                "turn": "2",
+                "legal_attack": "Gnaw (Alolan Vulpix B2 028, cost W), legal only at decision 6, after Attach:1Water@0 zone at decision 5. Forecast: expected_damage 20.0, ko_chance 0.0 against Riolu 60/60.",
+                "did_instead": "Retreat:3: paid Vulpix's only W to bring up Lapras 110/110, which already had WW from Misty at decisions 2-3. Surf costs WWC, so Lapras could not attack and the turn ended. km3 also proposed Retreat:3 at decision 6.",
+                "facts": "This was our first turn (the opponent went first), points [0,0]. Their Riolu has 0 Energy. The most it can do to our Active next turn is Fighting Fist 10, plus 20 if they evolve the benched Riolu into Lucario (Fighting Coach); the +30 applies only against an ex. That KOs neither Vulpix 60 nor Lapras 110. The retreat costs 1 W whether paid now or at t4, so the Gnaw line could still Surf at t4 (retreat, then attach the third W). It also adds 20 damage and keeps the option of evolving Vulpix into Ninetales ex for Binding Snow. But 20 changes no Surf KO count: Surf 70 KOs Riolu 60 anyway, Lucario 100 needs two Surfs either way, and Mega Lucario ex 190 needs three either way. The real trade is which Pokemon takes up to 30 at t3. One option is Vulpix, the base of Ninetales ex; once damaged on the Bench it becomes a target for their Cyrus. The other is Lapras, the Surf attacker, whose full 110 HP matters against Fighting Pulse 90.",
+                "verdict": "UNCLEAR",
+                "reason": "The extra 20 damage and the retreat flexibility favour Gnaw. Keeping Vulpix undamaged and off their Cyrus list favours the retreat, and km3 agreed with the retreat. The board does not settle which matters more. Rollouts of both lines through the opponent's t3 replies (evolve to Lucario or Mega Lucario ex, Fighting Coach, a later Cyrus on a damaged Vulpix) would settle it. Leaning DEFENSIBLE, because the 20 changes no KO threshold for Surf."
+              }
+            ],
+            "notes": "I judged the last 6 of the 13 hand-check turns in REVIEW_SKIP_EXACT_laptop.md: 09 v Altaria 1|0 t4, 10 v Altaria 1|0 t7, 10 v Vespiquen 1|1 t4 and 4|0 t6, draft A v Blaziken 0|0 t6, draft A v Lucario 3|0 t2. Sources were skip_exact/skip_boards.jsonl (the candidate's records), skip_turns.tsv, games.jsonl for both the combined and dev runs, card text from lib/card.py by the deck files' ids, and RULES_FOR_AGENTS.md. I wrote nothing in the repository; the only scripts are in my scratchpad.\n\nTotals: 4 MISTAKE, 1 DEFENSIBLE, 1 UNCLEAR.\n- **Clear mistake:** draft A v Blaziken t6 gave up a certain KO (ko_chance 1.0) plus the Binding Snow lock, for a 2-Energy retreat.\n- **Mistake through the attach target, not the listed attack:** 09 v Altaria t4. The listed attack, Quick Attack from a 10-HP Electrike, was rightly passed up. But at decision 10, Attach@0 would have allowed Electrispark (40, or 60 with Backpack, plus Bench damage), which is what the frozen kx3 did. The opponent's Darkrai could not attack back.\n- **Two small mistakes:** both Vespiquen Oricorio turns passed up 50 free damage on a 2-point ex for one spare card. In both games Xatu's Life Drain (which sets HP to 10) later made that damage redundant, so the loss is insurance, not a point.\n- **Defensible:** 10 v Altaria t7. Every possible attack was a no-op: Life Drain against a Darkrai already at 10 HP, and Supernatural Feather with an empty hand. The frozen kx3's 'attack' at that position did nothing.\n- **Unclear:** draft A v Lucario t2. Gnaw for 20 against retreating into Lapras; km3 also chose the retreat.\n\nThings the other reader and the integrator should know:\n1. \"The frozen kx3 attacked at the identical position\" does not always mean it dealt damage. In 10 v Altaria t7 its Feather was a no-op. In 09 v Altaria t4 it used a different attack (Electrispark) from the one listed in skip_turns.tsv (Quick Attack).\n2. The boards record attacks only when they are legal at the current decision, so attacks one attach away (Electrispark here) carry no forecast.\n3. Their-attack forecasts are 'as if now' and ignore missing Energy: Darkrai's KO chance 1.0 against Electrike could not happen next turn.\n4. The records have no stadium field, so I could not check whether Hiking Trail was still in play at 1|1 t4.\n\nThe candidate won all six games; I did not use outcomes in the verdicts."
+          }
+        ]
+      }
+    ],
+    "synth": "# Skip hand check: comparison of the two readers' verdicts\n\n29 turns were judged by two readers each. The readers agree on 26 and disagree on 3. M means MISTAKE, D means DEFENSIBLE and U means UNCLEAR.\n\n## Set 1: cand_prereg (the candidate's 8 pre-registered skips)\n\n| Turn | R1 | R2 | Result |\n|---|---|---|---|\n| 03 Wailord v Blaziken 3\\|1 t8 | M | M | agree M (large) |\n| 05 Stoutland v Suicune 0\\|1 t12 | M | M | agree M (large) |\n| 06 v Blaziken 0\\|0 t3 | M | M | agree M (small) |\n| 06 v Hydreigon 1\\|0 t5 | M | M | agree M (large) |\n| 09 v Sceptile 4\\|0 t11 | M | M | agree M (large) |\n| 10 v Suicune 4\\|1 t3 | D | D | agree D |\n| 10 v Vespiquen 1\\|1 t4 | M | M | agree M (small) |\n| draft-A v Blaziken 0\\|0 t2 | D | D | agree D |\n\n- **Fact difference, verdict unchanged:** in 06 v Blaziken t3, R1 infers a Stadium was in play because DiscardActiveStadium was legal at d6. R2 says the record doesn't show one. R1's inference is better supported, and both identical_1 readers made the same inference.\n- **Tally (agreed):** 6 M, 2 D, 0 U.\n- **What kind of skips:**\n  - 4 turns: the bot ended the turn while an attack that cost nothing (or one spare card) was still legal (05, 06 v Blaziken, 09, 10 v Vespiquen).\n  - 2 turns: the bot used a retreat or setup line instead of a sure KO.\n    - 03: the retreat threw away 4 Energy instead of a certain KO.\n    - 06 v Hydreigon: Retreat, Cyrus and Rare Candy instead of a certain KO on a benched Deino, and the Heatmor was lost anyway.\n  - The 2 defensible turns protected a key Pokémon:\n    - evolving the lone Natu out of a possible 60-damage Crystal Waltz;\n    - not taking Rocky Helmet recoil on the future Ninetales ex.\n\n## Set 2: frozen_prereg (the frozen kx3's 8 pre-registered skips)\n\n| Turn | R1 | R2 | Result |\n|---|---|---|---|\n| 01 v Hydreigon 0\\|1 t9 | M | M | agree M (large) |\n| 03 v Vespiquen 4\\|0 t8 | D | D | agree D |\n| 05 v Lucario 3\\|0 t5 | M | M | agree M (large) |\n| 06 v Lucario 4\\|1 t3 | M | M | agree M (small) |\n| 09 v Hydreigon 4\\|0 t2 | M | M | agree M (small) |\n| 09 v Suicune 4\\|1 t4 | M | M | agree M (medium-high) |\n| 10 v Altaria 2\\|0 t3 | M | U | disagree, lean M |\n| draft-A v Blaziken 0\\|0 t2 | D | D | agree D |\n\n**Why 10 v Altaria t3 leans M (R1's reason is better supported).** Both readers cite the same facts:\n- The only card in hand, a second Oricorio, could not be benched because the Bench was full.\n- Darkrai had 0 Energy against Dark Slumber's CCC cost, so it could not attack next turn.\n- Two Feathers KO Darkrai, so attacking now moves that KO from t7 to t5.\n\nR2 rests U on two points that neither record shows: that the second Oricorio is needed later, and that an earlier KO lets Mega Altaria ex in sooner. Both readers list the opponent's Bench as only Swablu x2. R2 itself leans toward attacking. Stakes are moderate.\n\n- **Tally:** agreed 5 M, 2 D, 0 U. With the lean accepted: 6 M, 2 D.\n- **What kind of skips:**\n  - Ended the turn with a free attack still legal:\n    - 01: Giga Turbo, when EndTurn was the only other choice;\n    - 05: a sure KO the bot had set up itself;\n    - 09 v Hydreigon: Thunder Shock;\n    - 10 v Altaria (disputed).\n  - Retreated instead of attacking:\n    - 06 v Lucario: discarded Torchic's only Fire;\n    - 09 v Suicune: a free retreat that put an 80-HP Heliolisk in front of a sure 90-damage KO.\n  - Defensible:\n    - 03: retreated away from a real 140-damage Chase Order. The forecast showed 70.\n    - draft-A: the same Rocky Helmet reasoning as the candidate's turn.\n\n## Candidate v frozen kx3, pre-registered skips: about the same\n\n| | MISTAKE | DEFENSIBLE |\n|---|---|---|\n| Candidate | 6 (4 large, 2 small), all agreed | 2 |\n| Frozen kx3 | 5 agreed (3 large or medium-high, 2 small) plus 1 leaning M (moderate) | 2 |\n\n- Both bots make the same two kinds of skip: a free attack left unused, and a retreat chosen over an attack.\n- The one turn both bots share (draft-A t2) is D from all 4 readers.\n- Each bot has one Wailord ex retreat that discarded 4 Energy:\n  - the candidate's had no threat behind it (M, and the worst turn in its set);\n  - the frozen's dodged a 2-point KO (D).\n- Nothing in these records shows the candidate's skips as fewer or better. Eight turns each can't separate the two bots.\n- Game results, which the readers did not use for verdicts: the candidate's deck won 7 of its 8 games and the frozen kx3 won 5 of its 8. These are single games.\n\n## Set 3: identical_1 (candidate turns where the frozen kx3 attacked; first 7 of 13)\n\n| Turn | R1 | R2 | Result |\n|---|---|---|---|\n| 03 Wailord v Blaziken 3\\|1 t8 | M | M | agree M (large; pre-registered) |\n| 06 v Altaria 4\\|0 t5 | M | D | disagree, lean M (small) |\n| 06 v Altaria 4\\|1 t2 | M | D | disagree, lean D (small; close to U) |\n| 06 v Blaziken 0\\|0 t3 | M | M | agree M (small; pre-registered) |\n| 06 v Hydreigon 1\\|1 t2 | M | M | agree M (small) |\n| 06 v Lucario 4\\|0 t4 | M | M | agree M (large; km3 was never asked, so the measure can't see it) |\n| 09 v Altaria 0\\|0 t3 | U | U | agree U (R1 leans D; depends on the opponent's hidden hand) |\n\n**Why 06 v Altaria 4|0 t5 leans M.**\n- R2's reason for D is that skipping kept the 1-point Castform out of the Active spot. Both readers, however, say Darkrai could not attack next turn (1 Energy against a CCC cost), and R2 agrees that Mega Burning KOs Darkrai next turn either way. So the 30 damage was free: a small M, by the same standard both readers use for other free chip damage.\n- The bigger gap is the order of plays at dec 7, which km3 shared:\n  - R2's figures are about 16% (36 of 220 three-card draws) against about 1.4% for a turn-5 KO. They account for Copycat also shuffling the Mega Blaziken ex in hand back into the deck.\n  - R1's \"about 45%\" counts only Rare Candy, so it is overstated.\n\n**Why 06 v Altaria 4|1 t2 leans D.**\n- R1 says holding Flame Patch never lets Mega Blaziken ex attack sooner, but it checked only the branches where Castform is awake or asleep.\n- R2 names a branch R1 didn't check: Castform leaves the Active spot on t3 (their deck has Sabrina), and the held Flame Patch then enables a t4 Mega Burning.\n- The attack given up was 30 damage with no KO. Neither reader sizes how likely that branch is.\n\n**Labeling note:** R2's notes call the 06 v Lucario turn \"t6\" once. Its turn field says 4.\n\n- **Tally:** agreed 4 M, 0 D, 1 U. With the leans: 5 M, 1 D, 1 U.\n- **What kind of skips:**\n  - Small free damage passed up, mostly right after setup moves (06 v Blaziken: Field Blower, then EndTurn; 06 v Hydreigon; 06 v Altaria 4|0).\n  - Two resource throwaways:\n    - 03: 4 Energy discarded;\n    - 06 v Lucario: the turn's Energy was left unattached, which cost a sure KO.\n  - One call that depends on the opponent's hidden hand (09 v Altaria 0|0).\n- Both readers say the main choice in 06 v Hydreigon t2 (not playing Copycat) was right, and better than the frozen kx3's.\n\n## Set 4: identical_2 (last 6 of 13)\n\n| Turn | R1 | R2 | Result |\n|---|---|---|---|\n| 09 v Altaria 1\\|0 t4 | M | M | agree M (wrong attach target; Electrispark never became legal, so it has no forecast) |\n| 10 v Altaria 1\\|0 t7 | D | D | agree D (every attack did nothing; the frozen kx3's \"attack\" did nothing too) |\n| 10 v Vespiquen 1\\|1 t4 | M | M | agree M (small; pre-registered) |\n| 10 v Vespiquen 4\\|0 t6 | M | M | agree M (small) |\n| draft-A v Blaziken 0\\|0 t6 | M | M | agree M (large; a sure KO plus 2 Energy thrown away) |\n| draft-A v Lucario 3\\|0 t2 | U | U | agree U (the readers lean opposite ways: R1 slightly toward Gnaw, R2 toward D) |\n\n- **Tally (agreed):** 4 M, 1 D, 1 U.\n- **What kind of skips:**\n  - An attack one move away was missed because the Energy went to the wrong Pokémon (09 v Altaria).\n  - Free Feather damage was passed up twice. It was small, because Life Drain later made the damage redundant.\n  - One retreat gave up a sure KO (draft-A t6).\n  - One turn had no attack that could do anything (10 v Altaria t7), and one was a close call (draft-A v Lucario).\n\n## The 13 identical-position turns together\n\n- **Tally:** agreed 8 M, 1 D, 2 U. With the leans: 9 M, 2 D, 2 U. Only 3 of the 13 are pre-registered turns.\n- **\"The frozen kx3 attacked here\" overstates things in 5 turns:**\n  - its attack came from a different earlier order of plays: 06 v Altaria 4|0 and 09 v Altaria 0|0;\n  - it used a different attack: 09 v Altaria 1|0 (Electrispark, not Quick Attack);\n  - its attack did nothing: 10 v Altaria t7;\n  - its board was different: draft-A v Lucario.\n\n## Consistency across the separate reader pairs\n\nFour turns were judged by two independent pairs. All four verdicts are unanimous, 4 of 4:\n- 03 Wailord t8: M\n- 06 v Blaziken t3: M\n- 10 v Vespiquen 1|1 t4: M\n- draft-A v Blaziken t2: D\n\n## Record limits several readers named\n\n- The attack forecasts read only the opponent's Active, so attacks that hit the Bench show 0 (Tongue Whip).\n- The forecasts of the opponent's attacks ignore missing Energy, and take the first option of any optional choice. Chase Order shows 70 when it can really do 140.\n- There is no Stadium field in the records.\n- Rocky Helmet recoil and Burn are not in the damage forecasts.\n- An attack that needs an Energy attach first has no forecast, and km3 is never asked about it. This hid 06 v Lucario t4. In draft-A t6, km3 proposed the attach rather than the attack.\n\n## Housekeeping\n\n- No reader wrote anything in the repository.\n- Three readers report files overwritten in the shared folder `C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\skiphc\\` (`extract.py` and `games.py`). Each then moved to its own subfolder.\n- Candidate reader 1's facts match candidate reader 2's turn for turn, so the overwrite did not show up in its readings."
+  },
+  "workflowProgress": [
+    {
+      "type": "workflow_phase",
+      "index": 1,
+      "title": "Judge"
+    },
+    {
+      "type": "workflow_phase",
+      "index": 2,
+      "title": "Synthesize"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 1,
+      "label": "judge:cand_prereg:1",
+      "phaseIndex": 1,
+      "phaseTitle": "Judge",
+      "agentId": "a7654a26d63d84de1",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1791840325844,
+      "queuedAt": 1791840325801,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "I judged all 8 of the candidate's pre-registered skip turns…",
+      "promptPreview": "Context (PocketDeckSim, Pokemon TCG Pocket simulator). In a 560-game run, three bots (the \"candidate\" kx3, the \"frozen\" kx3, and km3) played Dustin's\ndecks. Some turns are \"skip turns\": an attack was legal and the bot made no attack that turn. The question for you is not whether skips happen but\nwhether a given skip was a MISTAKE, judged from the board. Files (read-only), in C:\\Users\\dacz8\\Project…",
+      "promptFramed": true,
+      "lastProgressAt": 1791840974733,
+      "tokens": 192590,
+      "toolCalls": 33,
+      "durationMs": 648888,
+      "resultPreview": "{\"turns\":[{\"bot\":\"candidate\",\"key\":\"03-wailord-indeedee-wall|t-blaziken|3|1|X\",\"turn\":\"8\",\"legal_attack\":\"Wondrous Waves (WWWW, 100) from Wailord ex 220/250 with 4 Water, decision 11: forecast expected_damage 70.0, ko_chance 1.0 against Castform Sunny Form 70/70 (1 Fire, Rocky Helmet).\",\"did_instead\":\"Retreat:3 at d11, which swapped Wailord ex for the benched Wailord (B1 057, 200/200, energy []). …"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 2,
+      "label": "judge:cand_prereg:2",
+      "phaseIndex": 1,
+      "phaseTitle": "Judge",
+      "agentId": "a58d49573b4310516",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1791840325844,
+      "queuedAt": 1791840325802,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "I judged all 8 of the candidate's pre-registered skip turns…",
+      "promptPreview": "Context (PocketDeckSim, Pokemon TCG Pocket simulator). In a 560-game run, three bots (the \"candidate\" kx3, the \"frozen\" kx3, and km3) played Dustin's\ndecks. Some turns are \"skip turns\": an attack was legal and the bot made no attack that turn. The question for you is not whether skips happen but\nwhether a given skip was a MISTAKE, judged from the board. Files (read-only), in C:\\Users\\dacz8\\Project…",
+      "promptFramed": true,
+      "lastProgressAt": 1791840966938,
+      "tokens": 197444,
+      "toolCalls": 38,
+      "durationMs": 640292,
+      "resultPreview": "{\"turns\":[{\"bot\":\"candidate\",\"key\":\"03-wailord-indeedee-wall|t-blaziken|3|1|X\",\"turn\":\"8 (decisions 8-11; km3 proposed the attack at dec 11)\",\"legal_attack\":\"Attack:Wondrous Waves ([WWWW], printed 100). Record forecast at dec 11: expected_damage 70, ko_chance 1.0 against their Active, Castform Sunny Form 70/70.\",\"did_instead\":\"Retreat:3. Wailord ex (220/250, 4 Water, retreat 4 per card.py) swapped…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 3,
+      "label": "judge:frozen_prereg:1",
+      "phaseIndex": 1,
+      "phaseTitle": "Judge",
+      "agentId": "a0d38784346cfaca7",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1791840325899,
+      "queuedAt": 1791840325895,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "My count for the frozen kx3's 8 turns is 6 MISTAKE and 2 DE…",
+      "promptPreview": "Context (PocketDeckSim, Pokemon TCG Pocket simulator). In a 560-game run, three bots (the \"candidate\" kx3, the \"frozen\" kx3, and km3) played Dustin's\ndecks. Some turns are \"skip turns\": an attack was legal and the bot made no attack that turn. The question for you is not whether skips happen but\nwhether a given skip was a MISTAKE, judged from the board. Files (read-only), in C:\\Users\\dacz8\\Project…",
+      "promptFramed": true,
+      "lastProgressAt": 1791841051231,
+      "tokens": 156245,
+      "toolCalls": 40,
+      "durationMs": 724584,
+      "resultPreview": "{\"turns\":[{\"bot\":\"frozen kx3\",\"key\":\"01-muk-glimmora-kingambit-regigigas|t-hydreigon|0|1|X\",\"turn\":\"9 (decisions 23-27; km3 proposed the attack at dec 25 and 27)\",\"legal_attack\":\"Attack:Giga Turbo (Regigigas [CCC] 100; it also attaches a [C] Energy from the Zone to a Benched Pokemon). Forecast at dec 25-27: expected_damage 100, ko_chance 0.0 (Hydreigon 140/150 to 40).\",\"did_instead\":\"Play:Copycat …"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 4,
+      "label": "judge:frozen_prereg:2",
+      "phaseIndex": 1,
+      "phaseTitle": "Judge",
+      "agentId": "aa9fc62497fcb2510",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1791840325899,
+      "queuedAt": 1791840325895,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "I judged the 8 turns where km3 proposed an attack and the f…",
+      "promptPreview": "Context (PocketDeckSim, Pokemon TCG Pocket simulator). In a 560-game run, three bots (the \"candidate\" kx3, the \"frozen\" kx3, and km3) played Dustin's\ndecks. Some turns are \"skip turns\": an attack was legal and the bot made no attack that turn. The question for you is not whether skips happen but\nwhether a given skip was a MISTAKE, judged from the board. Files (read-only), in C:\\Users\\dacz8\\Project…",
+      "promptFramed": true,
+      "lastProgressAt": 1791840928152,
+      "tokens": 209326,
+      "toolCalls": 32,
+      "durationMs": 601504,
+      "resultPreview": "{\"turns\":[{\"bot\":\"frozen kx3 (pilot 'kx3')\",\"key\":\"01-muk-glimmora-kingambit-regigigas|t-hydreigon|0|1|X\",\"turn\":\"game turn 9, decisions 23-27 (skip settled at d27)\",\"legal_attack\":\"Attack:Giga Turbo (CCC, 100). Forecast at d24-d27: expected_damage 100, ko_chance 0. Their Hydreigon goes from 140/150 to 40. Giga Turbo also attaches a [C] Energy from the Zone to a Benched Pokemon. Regigigas B3 134's…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 5,
+      "label": "judge:identical_1:1",
+      "phaseIndex": 1,
+      "phaseTitle": "Judge",
+      "agentId": "a6218d30e6c0019d0",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1791840325902,
+      "queuedAt": 1791840325899,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "Reader 1. These are the first 7 of the 13 hand-check turns …",
+      "promptPreview": "Context (PocketDeckSim, Pokemon TCG Pocket simulator). In a 560-game run, three bots (the \"candidate\" kx3, the \"frozen\" kx3, and km3) played Dustin's\ndecks. Some turns are \"skip turns\": an attack was legal and the bot made no attack that turn. The question for you is not whether skips happen but\nwhether a given skip was a MISTAKE, judged from the board. Files (read-only), in C:\\Users\\dacz8\\Project…",
+      "promptFramed": true,
+      "lastProgressAt": 1791841138385,
+      "tokens": 208358,
+      "toolCalls": 42,
+      "durationMs": 811737,
+      "resultPreview": "{\"turns\":[{\"bot\":\"candidate\",\"key\":\"03-wailord-indeedee-wall|t-blaziken|3|1|X\",\"turn\":\"8\",\"legal_attack\":\"dec 11: Attack:Wondrous Waves (WWWW, printed 100). Forecast vs Castform Sunny Form 70/70: expected_damage 70, ko_chance 1.0. Castform is weak to Water, so the hit is 120. km3_move at dec 11 = Attack:Wondrous Waves, so this is one of the candidate's 8 pre-registered turns.\",\"did_instead\":\"Evolv…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 6,
+      "label": "judge:identical_1:2",
+      "phaseIndex": 1,
+      "phaseTitle": "Judge",
+      "agentId": "a4ae5e7caf9c4a2fc",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1791840325903,
+      "queuedAt": 1791840325899,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "I was reader 2 and judged the first 7 of the 13 hand-check …",
+      "promptPreview": "Context (PocketDeckSim, Pokemon TCG Pocket simulator). In a 560-game run, three bots (the \"candidate\" kx3, the \"frozen\" kx3, and km3) played Dustin's\ndecks. Some turns are \"skip turns\": an attack was legal and the bot made no attack that turn. The question for you is not whether skips happen but\nwhether a given skip was a MISTAKE, judged from the board. Files (read-only), in C:\\Users\\dacz8\\Project…",
+      "promptFramed": true,
+      "lastProgressAt": 1791841108480,
+      "tokens": 213877,
+      "toolCalls": 34,
+      "durationMs": 781832,
+      "resultPreview": "{\"turns\":[{\"bot\":\"candidate\",\"key\":\"03-wailord-indeedee-wall|t-blaziken|3|1|X\",\"turn\":\"8 (decisions 8-11)\",\"legal_attack\":\"Decision 11: Attack:Wondrous Waves (Wailord ex, 4 Water). Forecast expected_damage 70.0 (capped at Castform's 70 HP), ko_chance 1.0, printed 100. Castform Sunny Form is weak to Water, so the hit is 120.\",\"did_instead\":\"Retreat:3. Wailord ex (retreat cost 4) went to the Bench a…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 7,
+      "label": "judge:identical_2:1",
+      "phaseIndex": 1,
+      "phaseTitle": "Judge",
+      "agentId": "a7638c0b0b2f709e0",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1791840325907,
+      "queuedAt": 1791840325903,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "I used the boards in skip_exact/skip_boards.jsonl, with the…",
+      "promptPreview": "Context (PocketDeckSim, Pokemon TCG Pocket simulator). In a 560-game run, three bots (the \"candidate\" kx3, the \"frozen\" kx3, and km3) played Dustin's\ndecks. Some turns are \"skip turns\": an attack was legal and the bot made no attack that turn. The question for you is not whether skips happen but\nwhether a given skip was a MISTAKE, judged from the board. Files (read-only), in C:\\Users\\dacz8\\Project…",
+      "promptFramed": true,
+      "lastProgressAt": 1791840981625,
+      "tokens": 197821,
+      "toolCalls": 34,
+      "durationMs": 654976,
+      "resultPreview": "{\"turns\":[{\"bot\":\"candidate\",\"key\":\"09-mega-manectric-heliolisk|t-altaria|1|0|X\",\"turn\":\"4 (decisions 7-11)\",\"legal_attack\":\"At d7, Quick Attack from the Active Electrike: expected 25, ko_chance 0 against Darkrai at 100/100 (our_attacks). From d10 the stronger attack was one step away. 'Attach:1Lightning@0 zone' put the Energy on the Active Heliolisk (B4 061), which made Electrispark (L) legal. Ca…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 8,
+      "label": "judge:identical_2:2",
+      "phaseIndex": 1,
+      "phaseTitle": "Judge",
+      "agentId": "a3fc776c07e05bf7d",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1791840325907,
+      "queuedAt": 1791840325903,
+      "attempt": 1,
+      "lastToolName": "StructuredOutput",
+      "lastToolSummary": "I judged the last 6 of the 13 hand-check turns in REVIEW_SK…",
+      "promptPreview": "Context (PocketDeckSim, Pokemon TCG Pocket simulator). In a 560-game run, three bots (the \"candidate\" kx3, the \"frozen\" kx3, and km3) played Dustin's\ndecks. Some turns are \"skip turns\": an attack was legal and the bot made no attack that turn. The question for you is not whether skips happen but\nwhether a given skip was a MISTAKE, judged from the board. Files (read-only), in C:\\Users\\dacz8\\Project…",
+      "promptFramed": true,
+      "lastProgressAt": 1791840892296,
+      "tokens": 152982,
+      "toolCalls": 22,
+      "durationMs": 565646,
+      "resultPreview": "{\"turns\":[{\"bot\":\"candidate\",\"key\":\"09-mega-manectric-heliolisk|t-altaria|1|0|X\",\"turn\":\"4\",\"legal_attack\":\"Quick Attack (Electrike, cost L), legal only at decision 7. Forecast (our_attacks): expected_damage 25.0, ko_chance 0.0 against Darkrai 100/100. Electrispark (Heliolisk, cost L: 40 damage plus 10 to each of their Benched Pokemon) was one move away: Attach:1Lightning@0 zone was legal at decis…"
+    },
+    {
+      "type": "workflow_agent",
+      "index": 9,
+      "label": "synthesis",
+      "phaseIndex": 2,
+      "phaseTitle": "Synthesize",
+      "agentId": "a2b4ad4a9a7996bd0",
+      "model": "claude-opus-5-5",
+      "state": "done",
+      "startedAt": 1791841138395,
+      "queuedAt": 1791841138390,
+      "attempt": 1,
+      "promptPreview": "You compare two independent readers' verdicts on the same skip turns (four sets), from a PocketDeckSim hand check of bot attack\nskips. For each set and each turn: do the two readers agree (MISTAKE / DEFENSIBLE / UNCLEAR)? Where they disagree, say which reason is better supported\nby the facts both cite, or mark UNCLEAR. Then summarize per set: counts of MISTAKE / DEFENSIBLE / UNCLEAR (agreed), and …",
+      "promptFramed": true,
+      "lastProgressAt": 1791841353611,
+      "tokens": 104261,
+      "toolCalls": 0,
+      "durationMs": 215214,
+      "resultPreview": "# Skip hand check: comparison of the two readers' verdicts\n\n29 turns were judged by two readers each. The readers agree on 26 and disagree on 3. M means MISTAKE, D means DEFENSIBLE and U means UNCLEAR.\n\n## Set 1: cand_prereg (the candidate's 8 pre-registered skips)\n\n| Turn | R1 | R2 | Result |\n|---|---|---|---|\n| 03 Wailord v Blaziken 3\\|1 t8 | M | M | agree M (large) |\n| 05 Stoutland v Suicune 0\\…"
+    }
+  ],
+  "totalTokens": 1632904,
+  "totalToolCalls": 275
+}

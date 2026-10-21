@@ -1,0 +1,173 @@
+{
+  "created_utc": "2026-10-06T20:42:41.501470+00:00",
+  "frames": 385,
+  "crops": 770,
+  "all_files_decode_and_bounds_pass": true,
+  "source_media_rehashed": false,
+  "native_dimensions": [
+    1170,
+    2532
+  ],
+  "reference_and_source_binding_errors": [],
+  "crop_pixel_comparisons": 58,
+  "all_compared_crop_pixels_equal": true,
+  "ledger_turn_count": 11,
+  "turn_numbers": [
+    1,
+    2,
+    3,
+    4,
+    5,
+    6,
+    7,
+    8,
+    9,
+    10,
+    11
+  ],
+  "exact20_arithmetic_and_qr_or_edited_counts_pass": true,
+  "catalog_sha256": "162dd23a116cabc87bc4404a643d7bad37480d4d44c057c5093aa114b8e45017",
+  "edited_semantic_mapping": [
+    {
+      "entity_key": "pokemon:8490",
+      "functional_id_matches": true,
+      "names": [
+        "Snorlax ex"
+      ],
+      "count": 1,
+      "printing_claim_is_null": true
+    },
+    {
+      "entity_key": "pokemon:21710",
+      "functional_id_matches": true,
+      "names": [
+        "Team Rocket’s Meowth"
+      ],
+      "count": 2,
+      "printing_claim_is_null": true
+    },
+    {
+      "entity_key": "pokemon:21720",
+      "functional_id_matches": true,
+      "names": [
+        "Team Rocket’s Persian"
+      ],
+      "count": 2,
+      "printing_claim_is_null": true
+    },
+    {
+      "entity_key": "pokemon:7940",
+      "functional_id_matches": true,
+      "names": [
+        "Type: Null"
+      ],
+      "count": 2,
+      "printing_claim_is_null": true
+    },
+    {
+      "entity_key": "pokemon:21050",
+      "functional_id_matches": true,
+      "names": [
+        "Silvally"
+      ],
+      "count": 1,
+      "printing_claim_is_null": true
+    },
+    {
+      "entity_key": "pokemon:7950",
+      "functional_id_matches": true,
+      "names": [
+        "Silvally"
+      ],
+      "count": 1,
+      "printing_claim_is_null": true
+    },
+    {
+      "entity_key": "trainer:30",
+      "functional_id_matches": true,
+      "names": [
+        "Poké Ball"
+      ],
+      "count": 2,
+      "printing_claim_is_null": true
+    },
+    {
+      "entity_key": "trainer:1060",
+      "functional_id_matches": true,
+      "names": [
+        "Lucky Ice Pop"
+      ],
+      "count": 2,
+      "printing_claim_is_null": true
+    },
+    {
+      "entity_key": "trainer:1280",
+      "functional_id_matches": true,
+      "names": [
+        "Field Blower"
+      ],
+      "count": 1,
+      "printing_claim_is_null": true
+    },
+    {
+      "entity_key": "trainer:40",
+      "functional_id_matches": true,
+      "names": [
+        "Professor’s Research"
+      ],
+      "count": 2,
+      "printing_claim_is_null": true
+    },
+    {
+      "entity_key": "trainer:320",
+      "functional_id_matches": true,
+      "names": [
+        "Cyrus"
+      ],
+      "count": 1,
+      "printing_claim_is_null": true
+    },
+    {
+      "entity_key": "trainer:990",
+      "functional_id_matches": true,
+      "names": [
+        "Copycat"
+      ],
+      "count": 1,
+      "printing_claim_is_null": true
+    },
+    {
+      "entity_key": "trainer:1580",
+      "functional_id_matches": true,
+      "names": [
+        "Soothing Shore"
+      ],
+      "count": 2,
+      "printing_claim_is_null": true
+    }
+  ],
+  "checked_input_sha256": {
+    "SOURCE.json": "349cbbc3c86cd70047aee5ac616e4120518a2d3003640af4c57ba7e3989b5ebf",
+    "REVIEW.md": "4dad64ab6438b22c537a220f1c735f597ebb5b96860c28cd8e89834d25dec1d0",
+    "COVERAGE.md": "be7c1e7e943ef381fcd01279c9747089c14d24f7df559b9fe041fdc78836f171",
+    "SUMMARY.json": "3445bb15210ec7a842a7a4dd74e7d39502a60d701b2666ad2e14ca069c309afa",
+    "UNCERTAINTIES.json": "782554964652d09fd15d349825a902e4e139a63eeabfaf671021ef684df49431",
+    "PAUSE_GAME.json": "85d54a60e2150c2877b64138bc28c21e586fa30963e1ff4e668fb298d3f326d6",
+    "DECK_USED.json": "7bfe4f644477dad7342747b694c4d9520488aeac62e8ca3b79c8c825bfec5c7d",
+    "TURN_LEDGER.json": "cf0b3a449b80c9b37c24840e9bd7e5df7fd70effff21d8dd9184200fc20607b2",
+    "TURN_EVIDENCE.json": "5a94f906f34713298cd16d7c053e046223e4e3d1c802157141c30e013a0d6ebf"
+  },
+  "checked_supplemental_sha256": {
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261006_012927000_iOS\\DECK_EDIT_LEDGER.json": "1ea0245a67e5f6f64f0fc715495f8b8dd0ff7c8f982fbf5953ff3dae864dca5d",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261006_012927000_iOS\\CORRECTION_LEDGER.json": "c739e3c83a0d1e8232033c88b02c55e9e58acf4659bb3dca8a0364c82c1171f8",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261006_012927000_iOS\\RELATED_GAME_PACKETS.json": "0ad9b2a4c4f9ccccca194fbc74943b3be68f81ed07b275e772b7840f521bf373",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261006_012927000_iOS\\HANDOFF.md": "32953a877e3a302d0835fc9f7d53d9d3de8e8fbc0fe449cac5042d9d9eb0c9d0",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261006_012927000_iOS\\RECORDING_METADATA.json": "26d076bfc8b3d95634537f08653831d06980bef6bd64142b53803b24b28b704f",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\EDITED_DECK_ENTRY.json": "82ce26b526bf0194036254de227924f70e349be56a332a5983a011fa9f44148d",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261006_012927000_iOS\\qr_intake\\QR_DECODE_0001.00.json": "5b549be9679473191e956216cbc4124e59371868ebcfa4bd5bc238954d8d1b4e",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261006_012927000_iOS\\qr_intake\\t0001.00.png": "7eb570c1e05b021817895f636067288f4a5e1752316909d347d4bff24b41a82d",
+    "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\s216_card_catalog_v1.json": "162dd23a116cabc87bc4404a643d7bad37480d4d44c057c5093aa114b8e45017"
+  },
+  "limit": "Structural decoding, crop binding and count checks are separate from source visual acceptance.",
+  "reference_scope_limit": "Child source deck proof IDs resolve in parent TURN_EVIDENCE through ../DECK_EDIT_LEDGER.json, same frozen source SHA and local timebase."
+}

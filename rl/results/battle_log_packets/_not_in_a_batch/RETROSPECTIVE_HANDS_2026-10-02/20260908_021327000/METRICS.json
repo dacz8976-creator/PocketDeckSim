@@ -1,0 +1,30 @@
+{
+  "reviewer": "/root/sol_retro_ladder_021327",
+  "model": "gpt-6.1-sol",
+  "reasoning": "high",
+  "wall_seconds": 1337.83,
+  "retained_native_fullframe_count": 108,
+  "retained_crop_count": 221,
+  "locator_or_comparison_count": 11,
+  "retained_image_bytes": 98308013,
+  "new_extraction_count": 108,
+  "worker_original_seek_read_invocations": 8,
+  "worker_original_sha256_reads": 0,
+  "root_original_content_verification_reads": 1,
+  "cached_archive_used": true,
+  "cloud_download_attempts_worker": 0,
+  "tokens": null,
+  "dollar_usage": null,
+  "usage_reason": "Not measured",
+  "initial_cap": 80,
+  "approved_final_cap": 108,
+  "capture_status": "complete_with_recording_limits",
+  "remaining_work": [
+    "Bounded Astra reconciliation",
+    "Independent Sol acceptance"
+  ],
+  "worker_original_sequential_locator_reads": 1,
+  "cue_locator_sample_count": 410,
+  "cue_locator_grid_count": 12,
+  "cue_locator_image_bytes": 30216047
+}

@@ -1,0 +1,46 @@
+{
+  "source": "20261015_015320000_iOS.MP4",
+  "utc": "2026-10-15T02:34:10.297612+00:00",
+  "before": {
+    "logical_bytes": 858013310,
+    "allocated_bytes": 858013310,
+    "attributes": 1056,
+    "placeholder_state": 9,
+    "cloud_placeholder": true,
+    "in_sync": true,
+    "pinned": false,
+    "unpinned": false,
+    "online_only": false
+  },
+  "contents_modified": false,
+  "local_availability_preference_refreshed": [
+    {
+      "flags": [
+        "-P",
+        "-U"
+      ],
+      "exit_code": 0
+    },
+    {
+      "flags": [
+        "+P",
+        "-U"
+      ],
+      "exit_code": 0
+    }
+  ],
+  "exit_code": 0,
+  "stdout": "S_OK\n",
+  "stderr": "",
+  "after": {
+    "logical_bytes": 858013310,
+    "allocated_bytes": 858013310,
+    "attributes": 525344,
+    "placeholder_state": 9,
+    "cloud_placeholder": true,
+    "in_sync": true,
+    "pinned": true,
+    "unpinned": false,
+    "online_only": false
+  }
+}

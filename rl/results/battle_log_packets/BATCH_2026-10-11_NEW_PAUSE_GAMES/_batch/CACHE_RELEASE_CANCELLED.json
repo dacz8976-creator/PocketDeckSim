@@ -1,0 +1,9 @@
+{
+  "utc": "2026-10-12T02:24:07.4916171Z",
+  "operation": "cancel stalled archive-cache API request",
+  "process_id": 22784,
+  "source_video": "20261012_004128000_iOS.MP4",
+  "cache_release_confirmed": false,
+  "reason": "Standard OneDrive requests freed the other verified archives; no reason to keep this stalled request holding a file handle.",
+  "files_deleted": 0
+}

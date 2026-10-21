@@ -1,0 +1,50 @@
+{
+  "accepted": true,
+  "accepted_utc": "2026-10-02T00:40:23.850936+00:00",
+  "source_video": "20261001_214736000_iOS.MP4",
+  "source_sha256": "fed3727e102145e326fd09847e5062ae37321f45310e885333ddfb6b2cd2d02a",
+  "reviewer": "/root",
+  "first_pass": "sol_rules_20261001_214736000",
+  "first_pass_model": "gpt-6.1-sol",
+  "first_pass_effort": "high",
+  "completion_status": "full_battle_review_complete",
+  "scope": "Entire 363.465-second rules-test battle, loading and setup through all 11 turns, Victory and final loading",
+  "coverage_checked": true,
+  "remaining_coverage_gaps": [],
+  "unverified_material_claims": [],
+  "ladder_eligible": false,
+  "outcome_description": "Victory, 3-2 points, after Greninja Water Shuriken knocked out Typhlosion ex; 11 global turns",
+  "key_findings": [
+    "Destructive Inferno effect coins and Victory Star resolved after Gabite displayed zero HP and before the knockout point. Original tails became two heads then tails.",
+    "Against the initially zero-Energy Froakie, tails again became two heads then tails. The No Energy attached message appeared after its Active spot was empty.",
+    "The surviving Garchomp took 110 once, then original and replacement tails left both Water and Fighting Energy attached.",
+    "Gible evolution cleared Burned while preserving 20 damage. Lucky Ice Pop then healed 20 and was discarded after tails.",
+    "Greninja Water Shuriken dealt 20 to selected targets; its final knockout of an ex awarded two points and the win.",
+    "Gabite Linear Attack dealt 50 to Active Quilava. Dragon Gabite did not match Water weakness, so this does not establish a weakness-bypass rule."
+  ],
+  "limitations": [
+    "The lethal two-head result equaled all two attached Energy. Their disappearance cannot be independently attributed to attack discard versus knockout cleanup.",
+    "Random Energy selection and positive-head discard from a surviving target were not tested.",
+    "Explicit Solo/PvP mode, opponent automation and full hidden decks remain unknown. The final Battle Results page was not supplied, but Victory and 3-2 points were established."
+  ],
+  "lead_evidence": [
+    "LEAD_LETHAL_CHECK.jpg",
+    "LEAD_CHECK_1.jpg",
+    "LEAD_CHECK_2.jpg"
+  ],
+  "lead_checks": [
+    "Read whole REVIEW/COVERAGE/SUMMARY/UNCERTAINTIES and reconciled all 11 turns and supplied ending, including corrected Torchic turn8 and Meowth turn10 attachments.",
+    "16 setup and Auto off; 53/65 Gible60 to40 Burned; 69/70 evolution Gabite60 and recovery; 92 tails/93 healed80 independently inspected.",
+    "148 printed Water Shuriken/menu and Water+Fighting Gabite; 153 bench20 and 165 Active Quilava80 to30 verified.",
+    "170 printed Destructive Inferno110; 177 Gabite0 with two Energy, 180 originalT, 182 VictoryStar, 188 HHT, 188.90 two icons and189.30 zero icons while card remains, 194 point independently verified.",
+    "231.5 Torchic one Fire, 322.2 Torchic and Meowth one each with zone empty independently verified; no two-ordinary-attachment assertion.",
+    "246 HHT, 248 empty Active with No Energy attached; 300 Shearing text, 308 discarded hand Stadium with field Stadium retained, 315 Typhlosion10 verified.",
+    "326 Garchomp30/two Energy; 336 replacementT and342 same state; 342 Auto off/343 on; 348 final20, 353 three versus two points and358 Victory independently verified."
+  ],
+  "astra_check": {
+    "report": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-01_RULES\\ASTRA_CHECK.md",
+    "model": "gpt-6-astra",
+    "effort": "high",
+    "decision": "Lethal secondary-effect procedure supported; discard attribution unresolved and preserved. No Energy message follows empty Active. Dragon attack is not a matching-weakness test."
+  }
+}

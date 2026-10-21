@@ -1,0 +1,35 @@
+{
+  "lead": "/root",
+  "shared_writer": "/root",
+  "primary_review_model": "gpt-6.1-sol",
+  "primary_reasoning_effort": "high",
+  "independent_review_model": "gpt-6.1-sol",
+  "independent_reasoning_effort": "high",
+  "sources": [
+    {
+      "video": "20261012_010706000_iOS.MP4",
+      "registered_intake_reviewer_alias": "/root/pause_20261012_010706000_iOS",
+      "actual_primary_worker": "/root/long_010706",
+      "independent_worker": "/root/check_010706"
+    },
+    {
+      "video": "20261012_203719000_iOS.MP4",
+      "registered_intake_reviewer_alias": "/root/pause_20261012_203719000_iOS",
+      "actual_primary_worker": "/root/long_203719",
+      "independent_worker": "/root/check_203719"
+    },
+    {
+      "video": "20261012_210041000_iOS.MP4",
+      "registered_intake_reviewer_alias": "/root/pause_20261012_210041000_iOS",
+      "actual_primary_worker": "/root/added_210041",
+      "independent_worker": "/root/check_210041"
+    },
+    {
+      "video": "20261012_210823000_iOS.MP4",
+      "registered_intake_reviewer_alias": "/root/pause_20261012_210823000_iOS",
+      "actual_primary_worker": "/root/added_210823",
+      "independent_worker": "/root/check_210823"
+    }
+  ],
+  "scope": "The original two uploads plus the two later sources explicitly added by the owner. No older accepted recording or paused backlog reopened."
+}

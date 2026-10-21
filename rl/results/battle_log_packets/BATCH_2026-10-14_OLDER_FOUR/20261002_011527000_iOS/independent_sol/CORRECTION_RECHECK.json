@@ -1,0 +1,91 @@
+{
+  "schema_version": 1,
+  "accepted": true,
+  "decision": "accepted_after_narrow_auto_timing_repair",
+  "reviewer": "/root/check_older_011527",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "checked_utc": "2026-10-14T15:25:19.828184+00:00",
+  "source": {
+    "filename": "20261002_011527000_iOS.MP4",
+    "sha256": "7cbaa7c16071389d66d14ad9fcbf55f5991b2f7703f14d85eb0af4a68ef9d778"
+  },
+  "initial_input_hashes": {
+    "SOURCE.json": "ed9ad578d481aa4c7be66cedb0d27f9fc0cfa2723023e52ba1e05cac7117e92d",
+    "ASSIGNMENT.json": "1213b0b6c37f787c5b50d833f2110727b07a2baa1ebea407d42418252880df1e",
+    "REVIEW.md": "a51a5573cbb13819d7edea8859bf18df062a6c1e01483bc47286144862eac08d",
+    "COVERAGE.md": "332d10e45d154fd66f2382f5bfd3bb26203f677ad9112f002ee74d295a8818e8",
+    "SUMMARY.json": "d10b7a94162568f949dfb264d6496542fa697d72605c5691f85f0478ce66c696",
+    "UNCERTAINTIES.json": "622a99d3dbccb89c190ad8d5e9105ebe69d6de2fe5a23cf9e9a2522dcfbeca93",
+    "EVENTS.json": "524eabc455aacf9de65c0c76597c68bef27ae64dedb261ec85a040f24ba6d679",
+    "EVIDENCE.json": "c10788b3ece773d32d990d0b31ca4f9cb678337a0158824daa7a2dc353e9b96e",
+    "REVIEW_PACKET_HASHES.json": "9d09187309227d689067883b3c70fbe0498815a2e1e79609d55f9798d129f9b2"
+  },
+  "final_input_hashes": {
+    "SOURCE.json": "ed9ad578d481aa4c7be66cedb0d27f9fc0cfa2723023e52ba1e05cac7117e92d",
+    "ASSIGNMENT.json": "1213b0b6c37f787c5b50d833f2110727b07a2baa1ebea407d42418252880df1e",
+    "REVIEW.md": "a51a5573cbb13819d7edea8859bf18df062a6c1e01483bc47286144862eac08d",
+    "COVERAGE.md": "332d10e45d154fd66f2382f5bfd3bb26203f677ad9112f002ee74d295a8818e8",
+    "SUMMARY.json": "d10b7a94162568f949dfb264d6496542fa697d72605c5691f85f0478ce66c696",
+    "UNCERTAINTIES.json": "622a99d3dbccb89c190ad8d5e9105ebe69d6de2fe5a23cf9e9a2522dcfbeca93",
+    "EVENTS.json": "524eabc455aacf9de65c0c76597c68bef27ae64dedb261ec85a040f24ba6d679",
+    "EVIDENCE.json": "c10788b3ece773d32d990d0b31ca4f9cb678337a0158824daa7a2dc353e9b96e",
+    "REVIEW_PACKET_HASHES.json": "9d09187309227d689067883b3c70fbe0498815a2e1e79609d55f9798d129f9b2"
+  },
+  "inputs_stable": true,
+  "prior_rejected_receipt": {
+    "path": "independent_sol/CHECK_RESULT.json",
+    "sha256": "b1a0abbd9b9026b553a7fc31e007e9081b49543be2fef60cddf5804dbf0c1c1b",
+    "preserved": true
+  },
+  "prior_input_snapshot": {
+    "path": "before_correction/2026-10-14T15-20-44Z_auto_timing",
+    "all_nine_prior_inputs_exact": true,
+    "per_file_exact": {
+      "SOURCE.json": true,
+      "ASSIGNMENT.json": true,
+      "REVIEW.md": true,
+      "COVERAGE.md": true,
+      "SUMMARY.json": true,
+      "UNCERTAINTIES.json": true,
+      "EVENTS.json": true,
+      "EVIDENCE.json": true,
+      "REVIEW_PACKET_HASHES.json": true
+    }
+  },
+  "manifest_check": {
+    "sha256": "9d09187309227d689067883b3c70fbe0498815a2e1e79609d55f9798d129f9b2",
+    "file_count": 370,
+    "changed_paths": [
+      "COVERAGE.md",
+      "EVENTS.json",
+      "REVIEW.md",
+      "SUMMARY.json",
+      "UNCERTAINTIES.json"
+    ],
+    "remaining_365_paths_identical": true,
+    "mismatches": []
+  },
+  "method": "Read complete unified diffs for all five changed documents and verified the corrected narrative, structured Auto observations, disable interval, uncertainty and evidence references. Reused previously inspected native frames at 341 and 342 seconds; all evidence bytes remain unchanged. No new source seek or redundant full pass.",
+  "resolved_finding": {
+    "id": "auto_disable_time",
+    "finding": "Auto remains visibly ON through 341 seconds during Water Shuriken damage resolution, then first visibly OFF at 342. Frame 338 hides the control. The repair correctly bounds the disable transition to 341-342 and retains physical operator and queued-action uncertainty.",
+    "native_evidence": [
+      "native/t0338.00.jpg",
+      "native/t0339.00.jpg",
+      "native/t0340.00.jpg",
+      "native/t0341.00.jpg",
+      "native/t0342.00.jpg"
+    ]
+  },
+  "acceptance_basis": "The five document changes fully address the sole blocking finding. Prior bounded source-bound checks of coverage, ordinary decisions, classification, HP and Energy progression, T8 skip, terminal targets and Victory 3-2 with 490 damage remain applicable because all other packet evidence bytes are identical.",
+  "blocking_findings": [],
+  "scope_limits": [
+    "Bounded independent acceptance of the full first-pass review, not a second whole-video playback.",
+    "Computer-only classification excludes both human game logs; no external write authorized."
+  ],
+  "primary_edits": false,
+  "shared_registration": false,
+  "source_moved": false,
+  "external_writes": false
+}

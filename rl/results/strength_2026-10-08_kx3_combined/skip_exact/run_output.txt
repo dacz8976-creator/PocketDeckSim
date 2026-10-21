@@ -1,0 +1,40 @@
+== the deck files against both manifests (by sha256)
+strength_2026-10-08_kx3_combined decks: all equal
+strength_2026-10-03_kx3_dev decks: all equal
+== builds
+    Finished `release` profile [optimized] target(s) in 3m 00s
+combined: commit 172cbe9ce0f2, engine tree 69a5a4419da2, skip_replay sha256 b71f2af08e21497f
+    Finished `release` profile [optimized] target(s) in 2m 52s
+frozen: commit d513e37b473f, engine tree 31dbd2e6e8ec, skip_replay sha256 00d0ec4665fb4bb5
+== replays
+skip_replay: arm X: 560 games, replayed exactly 560; 15825 deck-side decisions; 0 board records
+skip_replay: arm ref: 560 games, replayed exactly 560; 15355 deck-side decisions; 0 board records
+skip_replay: arm X: 560 games, replayed exactly 560; 15603 deck-side decisions; 0 board records
+== also: the development run's km3 games on the frozen build (they equal this run's arm ref)
+skip_replay: arm ref: 560 games, replayed exactly 560; 15355 deck-side decisions; 0 board records
+the km3 decisions are the same on both builds
+== negative controls (the laptop's review, item c): each record below is changed one way and must fail the identity check
+42 records, each changed three ways (seed, opponent pilot, one label): 21 deck-and-arm cells, 2 records each
+skip_replay: arm X: 14 games, replayed exactly 0; 82 deck-side decisions; 0 board records
+skip_replay: arm ref: 14 games, replayed exactly 0; 60 deck-side decisions; 0 board records
+skip_replay: arm X: 14 games, replayed exactly 0; 108 deck-side decisions; 0 board records
+skip_replay: arm X: 14 games, replayed exactly 0; 316 deck-side decisions; 0 board records
+skip_replay: arm ref: 14 games, replayed exactly 0; 278 deck-side decisions; 0 board records
+skip_replay: arm X: 14 games, replayed exactly 3; 299 deck-side decisions; 0 board records
+skip_replay: arm X: 14 games, replayed exactly 0; 272 deck-side decisions; 0 board records
+skip_replay: arm ref: 14 games, replayed exactly 0; 277 deck-side decisions; 0 board records
+skip_replay: arm X: 14 games, replayed exactly 0; 246 deck-side decisions; 0 board records
+Negative controls (Oct 12): 2 records per deck and arm (candidate, km3, frozen kx3), each changed one way; every one must fail.
+a wrong seed (+1): 42 records, caught 42, not caught 0 []
+a wrong opponent pilot (km2): 42 records, caught 39, not caught 3 ['05-indeedee-stoutland|t-lucario|2|1|X', '10-xatu-oricorio-tr-weezing|t-weezing|1|0|X', 'draft-A-shark-tempo|t-blaziken|3|0|X']
+one logged move replaced by another label of the same game: 42 records, caught 42, not caught 0 []
+== the comparison
+the skip turns are the first run's, row for row
+== the boards at the skip turns (a second pass over the same games, reading this run's skip_turns.tsv)
+skip_replay: arm X: 560 games, replayed exactly 560; 15825 deck-side decisions; 531 board records
+skip_replay: arm ref: 560 games, replayed exactly 560; 15355 deck-side decisions; 232 board records
+skip_replay: arm X: 560 games, replayed exactly 560; 15603 deck-side decisions; 376 board records
+skip_boards.jsonl: 1139 records (531 candidate, 376 frozen, 232 km3), replayed exactly 1139
+candidate: 560 games, 560 replayed exactly
+frozen: 560 games, 560 replayed exactly
+km3: 560 games, 560 replayed exactly

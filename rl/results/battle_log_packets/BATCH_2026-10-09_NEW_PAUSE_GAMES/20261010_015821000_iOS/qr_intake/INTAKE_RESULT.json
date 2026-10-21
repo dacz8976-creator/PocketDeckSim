@@ -1,0 +1,14 @@
+{
+  "source": "20261010_015821000_iOS.MP4",
+  "source_sha256": "8d64e896d3125e504b7186754cbf2c21c0b5fcbc61f65524f6de27a2effd2a38",
+  "scope": "Automated early QR intake; game/deck binding requires whole-source visual review",
+  "attempts": [
+    {
+      "seconds": 1,
+      "native_frame": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-09_NEW_PAUSE_GAMES\\20261010_015821000_iOS\\qr_intake\\t0001.00.jpg",
+      "exit_code": 0,
+      "stdout": "{\"output\": \"C:\\\\Users\\\\dacz8\\\\OneDrive\\\\Desktop\\\\Battle Logs\\\\Recording_QA\\\\BATCH_2026-10-09_NEW_PAUSE_GAMES\\\\20261010_015821000_iOS\\\\qr_intake\\\\QR_DECODE_0001.00.json\", \"card_slots\": 20, \"all_entities_resolved\": true, \"energy\": [{\"value\": 3, \"name\": \"Water\", \"selectable\": true}], \"roundtrip\": true}",
+      "stderr": ""
+    }
+  ]
+}

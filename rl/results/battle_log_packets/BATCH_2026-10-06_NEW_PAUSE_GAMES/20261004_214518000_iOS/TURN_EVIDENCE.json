@@ -1,0 +1,989 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261004_214518000_iOS_game1",
+  "sources": [
+    {
+      "video_basename": "20261004_214518000_iOS.MP4",
+      "sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "default_capture_policy": {
+    "owner_turn_offsets_after_draw_seconds": [
+      1,
+      3,
+      6
+    ],
+    "before_end_action_required": true,
+    "native_resolution_required": true,
+    "bottom_crop_height_fraction": 0.2,
+    "fixed_grid_is_turn_start_evidence": false
+  },
+  "frames": [
+    {
+      "evidence_id": "f0000_00",
+      "role": "setup_or_terminal",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261004_214518000_iOS.MP4",
+      "source_sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 0,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0000.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0000.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0000.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          620
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Event lobby: Deluxe Pack: Mega Emblem Event, Wins 3, New deck 24.",
+      "suitability_or_limit": "Setup/result evidence, not a draw-timed turn frame. No game turn occurred."
+    },
+    {
+      "evidence_id": "f0009_00",
+      "role": "setup_or_terminal",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261004_214518000_iOS.MP4",
+      "source_sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 9,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0009.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0009.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0009.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          620
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Matched opponent profile: level 60, ゆうぜん.",
+      "suitability_or_limit": "Setup/result evidence, not a draw-timed turn frame. No game turn occurred."
+    },
+    {
+      "evidence_id": "f0017_00",
+      "role": "setup_or_terminal",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261004_214518000_iOS.MP4",
+      "source_sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 17,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0017.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0017.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0017.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          620
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Versus introduction: ゆうぜん against Dacz8976.",
+      "suitability_or_limit": "Setup/result evidence, not a draw-timed turn frame. No game turn occurred."
+    },
+    {
+      "evidence_id": "f0022_00",
+      "role": "setup_or_terminal",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261004_214518000_iOS.MP4",
+      "source_sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 22,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0022.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0022.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0022.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          620
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Opening deal animation; setup only.",
+      "suitability_or_limit": "Setup/result evidence, not a draw-timed turn frame. No game turn occurred."
+    },
+    {
+      "evidence_id": "f0023_00",
+      "role": "setup_or_terminal",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261004_214518000_iOS.MP4",
+      "source_sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 23,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0023.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0023.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0023.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          620
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": true,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "All five owner opening cards before Active placement; five opponent card backs.",
+      "suitability_or_limit": "Setup/result evidence, not a draw-timed turn frame. No game turn occurred."
+    },
+    {
+      "evidence_id": "f0024_00",
+      "role": "setup_or_terminal",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261004_214518000_iOS.MP4",
+      "source_sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 24,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0024.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0024.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0024.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          620
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Original fourth opening slot Caterpie selected, card zoom; Active prompt.",
+      "suitability_or_limit": "Setup/result evidence, not a draw-timed turn frame. No game turn occurred."
+    },
+    {
+      "evidence_id": "f0025_00",
+      "role": "setup_or_terminal",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261004_214518000_iOS.MP4",
+      "source_sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 25,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0025.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0025.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0025.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          620
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Caterpie placed Active; four cards remain in owner hand.",
+      "suitability_or_limit": "Setup/result evidence, not a draw-timed turn frame. No game turn occurred."
+    },
+    {
+      "evidence_id": "f0026_00",
+      "role": "setup_or_terminal",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261004_214518000_iOS.MP4",
+      "source_sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 26,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0026.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0026.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0026.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          620
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Active Caterpie 40 HP; Bench setup prompt and four-card owner hand.",
+      "suitability_or_limit": "Setup/result evidence, not a draw-timed turn frame. No game turn occurred."
+    },
+    {
+      "evidence_id": "f0027_00",
+      "role": "setup_or_terminal",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261004_214518000_iOS.MP4",
+      "source_sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 27,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0027.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0027.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0027.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          620
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Second Caterpie placement on left Bench; three owner cards remain.",
+      "suitability_or_limit": "Setup/result evidence, not a draw-timed turn frame. No game turn occurred."
+    },
+    {
+      "evidence_id": "f0028_00",
+      "role": "setup_or_terminal",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261004_214518000_iOS.MP4",
+      "source_sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 28,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0028.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0028.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0028.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          620
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Bench Caterpie placement animation.",
+      "suitability_or_limit": "Setup/result evidence, not a draw-timed turn frame. No game turn occurred."
+    },
+    {
+      "evidence_id": "f0029_00",
+      "role": "setup_or_terminal",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261004_214518000_iOS.MP4",
+      "source_sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 29,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0029.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0029.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0029.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          620
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Bench Caterpie placement animation resolving.",
+      "suitability_or_limit": "Setup/result evidence, not a draw-timed turn frame. No game turn occurred."
+    },
+    {
+      "evidence_id": "f0030_00",
+      "role": "setup_or_terminal",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261004_214518000_iOS.MP4",
+      "source_sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 30,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0030.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0030.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0030.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          620
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Ready setup with Active and left Bench Caterpie, each 40 HP; Start Battle highlighted.",
+      "suitability_or_limit": "Setup/result evidence, not a draw-timed turn frame. No game turn occurred."
+    },
+    {
+      "evidence_id": "f0044_00",
+      "role": "setup_or_terminal",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261004_214518000_iOS.MP4",
+      "source_sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 44,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0044.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0044.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0044.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          620
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Waiting in setup: Active and left Bench Caterpie 40 HP; owner three-card hand; opponent five backs.",
+      "suitability_or_limit": "Setup/result evidence, not a draw-timed turn frame. No game turn occurred."
+    },
+    {
+      "evidence_id": "f0044_50",
+      "role": "setup_or_terminal",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261004_214518000_iOS.MP4",
+      "source_sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 44.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0044.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0044.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0044.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          620
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Setup board clearing animation; Caterpie cards return toward the hand.",
+      "suitability_or_limit": "Setup/result evidence, not a draw-timed turn frame. No game turn occurred."
+    },
+    {
+      "evidence_id": "f0045_00",
+      "role": "setup_or_terminal",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261004_214518000_iOS.MP4",
+      "source_sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 45,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0045.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0045.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0045.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          620
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Connection is unstable overlay; blurred setup board.",
+      "suitability_or_limit": "Setup/result evidence, not a draw-timed turn frame. No game turn occurred."
+    },
+    {
+      "evidence_id": "f0045_50",
+      "role": "setup_or_terminal",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261004_214518000_iOS.MP4",
+      "source_sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 45.5,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0045.50.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0045.50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0045.50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          620
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Connection is unstable overlay; no game turn established.",
+      "suitability_or_limit": "Setup/result evidence, not a draw-timed turn frame. No game turn occurred."
+    },
+    {
+      "evidence_id": "f0046_00",
+      "role": "setup_or_terminal",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261004_214518000_iOS.MP4",
+      "source_sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 46,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0046.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0046.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0046.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          620
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": true,
+      "hand_spread": true,
+      "observation": "Opponent face-down Active placement during terminal transition; owner five-card hand restored.",
+      "suitability_or_limit": "Setup/result evidence, not a draw-timed turn frame. No game turn occurred."
+    },
+    {
+      "evidence_id": "f0047_00",
+      "role": "setup_or_terminal",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261004_214518000_iOS.MP4",
+      "source_sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 47,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0047.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0047.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0047.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          620
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Terminal transition white frame.",
+      "suitability_or_limit": "Setup/result evidence, not a draw-timed turn frame. No game turn occurred."
+    },
+    {
+      "evidence_id": "f0048_00",
+      "role": "setup_or_terminal",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261004_214518000_iOS.MP4",
+      "source_sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 48,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0048.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0048.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0048.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          620
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Victory animation beginning; Accelgor 80 HP shown.",
+      "suitability_or_limit": "Setup/result evidence, not a draw-timed turn frame. No game turn occurred."
+    },
+    {
+      "evidence_id": "f0049_00",
+      "role": "setup_or_terminal",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261004_214518000_iOS.MP4",
+      "source_sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 49,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0049.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0049.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0049.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          620
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Dacz8976 Victory animation with Accelgor; this card was not played.",
+      "suitability_or_limit": "Setup/result evidence, not a draw-timed turn frame. No game turn occurred."
+    },
+    {
+      "evidence_id": "f0053_00",
+      "role": "setup_or_terminal",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261004_214518000_iOS.MP4",
+      "source_sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 53,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0053.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0053.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0053.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          620
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Results header: Victory versus ゆうぜん.",
+      "suitability_or_limit": "Setup/result evidence, not a draw-timed turn frame. No game turn occurred."
+    },
+    {
+      "evidence_id": "f0054_00",
+      "role": "setup_or_terminal",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261004_214518000_iOS.MP4",
+      "source_sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 54,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0054.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0054.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0054.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          620
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Results: Victory versus ゆうぜん, turns played 0, damage done 0, Card of the Game None.",
+      "suitability_or_limit": "Setup/result evidence, not a draw-timed turn frame. No game turn occurred."
+    },
+    {
+      "evidence_id": "f0055_00",
+      "role": "setup_or_terminal",
+      "turn_number": null,
+      "who_played": null,
+      "source_video": "20261004_214518000_iOS.MP4",
+      "source_sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+      "draw_animation_end_seconds": null,
+      "requested_source_seconds": 55,
+      "actual_frame_seconds_if_measured": null,
+      "offset_after_draw_seconds": null,
+      "full_frame_path": "turn_evidence/t0055.00.jpg",
+      "native_dimensions": {
+        "width": 1170,
+        "height": 2532
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/t0055.00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ]
+      },
+      "top_crop": {
+        "path": "turn_evidence/t0055.00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          620
+        ]
+      },
+      "selected_for_start_hand": false,
+      "before_first_play": false,
+      "unzoomed": false,
+      "hand_spread": false,
+      "observation": "Final results: Victory versus ゆうぜん, went first, turns played 0, points 0-0, damage 0.",
+      "suitability_or_limit": "Setup/result evidence, not a draw-timed turn frame. No game turn occurred."
+    }
+  ],
+  "discard_snapshots": [
+    {
+      "snapshot_id": "discard-owner-unavailable",
+      "pile_owner": "owner",
+      "cards_in_view": null,
+      "scroll_coverage": null,
+      "full_pile_established": null,
+      "limit_reason": "Discard pile was never opened; no turn or discard action occurred."
+    },
+    {
+      "snapshot_id": "discard-opponent-unavailable",
+      "pile_owner": "opponent",
+      "cards_in_view": null,
+      "scroll_coverage": null,
+      "full_pile_established": null,
+      "limit_reason": "Discard pile was never opened; no turn or discard action occurred."
+    }
+  ],
+  "scheduled_capture_limits": [
+    "No normal game-turn draw occurred, so +1/+3/+6 and before-End-Turn captures are inapplicable. Native opening/setup/terminal frames and crops are retained."
+  ]
+}

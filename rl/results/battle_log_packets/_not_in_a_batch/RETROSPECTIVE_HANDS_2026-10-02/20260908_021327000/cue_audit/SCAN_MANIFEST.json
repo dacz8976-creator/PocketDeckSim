@@ -1,0 +1,15 @@
+{
+  "source": "20260908_021327000_iOS.MP4",
+  "sha256": "95df14af59472ec02a077b5a5804f1a44e6c02048179952934b68c56eee1e387",
+  "purpose": "Prompt and discard locator, not native hand evidence or outcome re-review",
+  "sampling": "ffmpeg fps=1; source-local approximate midpoint labels; PTS not independently measured",
+  "sample_count": 410,
+  "native_evidence": false,
+  "width": 234,
+  "source_duration_seconds": 410.492,
+  "covered_interval_seconds": [
+    0,
+    410.492
+  ],
+  "limitations": "One sample per second does not examine every instant; brief events between samples can be missed."
+}

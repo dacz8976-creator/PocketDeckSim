@@ -1,0 +1,328 @@
+[
+ {
+  "scope": "blockers",
+  "recheck": {
+   "items": [
+    {
+     "item": "Blocker 1: 015011 t01/t03 Benches on both sides (Grimer at t01; Regigigas and Grimer plus the opponent's Tyrogue at t03; implied deck counts 14 and 10)",
+     "status": "FIXED",
+     "evidence": "I re-ran the whole pipeline from the raw Recording_QA packets with the branch's normalize_ledger.py and ledger_to_positions.py (copy in scratchpad v3chk/blockers/gen_v3). It reproduces the committed v3 positions_all.json for all 92 positions, and every deck file. Raw ledger BATCH_2026-10-13_REMAINING_SIX/20261013_015011000_iOS, turn 1 board_at_start: owner bench {position 3, pokemon: Alolan Grimer 'Sludge Toss 30' 70/70}. v3 KW-261013_015011000-t01 me.board = [Pawniard B3a 041 hp 50, Alolan Grimer A3 110 hp 70] (v2 had Pawniard only). Turn 3 board_at_start: owner bench {pos 2 Regigigas 150/150, pos 3 Alolan Grimer 70/70}; opponent bench {pos 1 Tyrogue 'Slippy Knuckles 20' 30/30}. v3 t03 me.board = [Pawniard 50, Regigigas B3 134 150, Alolan Grimer A3 110 70]. v3 t03 opp.board = [Falinks B2 092 70 [Fighting], Tyrogue A4 101 30]. Tyrogue has one function (A4 101 / B2 223), so its printing is not in doubt. Implied deck counts: t01 is 20 - 4 hand - 2 board = 14; t03 is 20 - 5 hand - 3 board - 2 discard = 10. No card of his is used more often than the deck file allows. No other field in 015011 changed. Both the normalised 015011 ledger and the deck file are identical to main's. I scanned every TURN_LEDGER.json in Recording_QA: the nested {position, pokemon} Bench form appears only in 015011 turns 1-3. In the converter, every Bench read now goes through instances(), which calls bench_entry(). The t03 plan is empty, but that is correct: the ledger has no plays in turn 3, because the game ended on the opponent's timeout before his first move."
+    },
+    {
+     "item": "Blocker 2: 030351 opponent Darkrai = B2b 040 at t09/t11/t13/t15 and still at t03-t07; how opp_pick handles Stadium/Tool HP; any other opponent printing changed by the new rule in the 92 or the 125 Oct 12 positions",
+     "status": "FIXED",
+     "evidence": "The ledger (BATCH_2026-10-13_NEWEST_TWO/20261013_030351000_iOS) writes every Darkrai as 'Bad Dreams / Dark Slumber 40; printed 100 HP'. It shows 100/100 up to turn 7 and 120/120 from turn 8, when the opponent played Starting Plains. In v3, opp.board is Darkrai B2b 040 at t03 (hp 100), t05 (100, F), t07 (100, FF), t09 (120, FFF), t11 (120, FFFF) and at t13/t15 (both copies, 120: FFFF+F and FFFF+FF). opp_ambiguous is []. v2 had B1 154 at t09-t15. How opp_pick works now: cardlib.hp_boost() reads the '+N HP' text of the Tool on the Pokemon and of the Stadium in play from the database. Only five cards carry such text: Giant Cape (any Pokemon +20), Leaf Cape ([G] +30), Elegant Cape (Stage 1 +30), Starting Plains (stage 0 +20) and Ancient Booster Energy Capsule (never applied). cardlib.HP.score gives 2 when printed HP + boost equals the shown HP, and 1 when printed HP equals the shown HP although a boost applied. opp_pick keeps the score-2 cards, else the score-1 cards, else all cards. It then narrows by any 'printed N HP' in the ledger text and ranks by attack/Ability titles. The Stadium comes from the row's board_at_start (030351 t09: Starting Plains). For Darkrai at 120: B2b 040 is 100+20 (score 2), B1 154 is 120 with a boost (score 1) and A2 109 scores 0, so B2b 040 is the pick, which the 'printed 100 HP' text confirms. Other printing changes: comparing every card id in hand, discard, board, behind and tools, main to v3 over all 92 positions, the only opponent change the HP rule causes is these Darkrai (1 at t09, 1 at t11, 2 at t13, 2 at t15). The other opponent changes have other causes: Tyrogue A4 101 added at 015011 t03 (Bench unwrap), Meowth B2 124 replacing Alolan Meowth A3 108 in 210823 (recorded correction), Elegant Cape B3b 065 replacing Giant Cape A2 147 in 022530 t03-t11 (correction), and Rare Candy removed from the opponent's discard at 015659 t05-t13 (correction). Oct 12 set: regenerating all 38 games with main's converter and with v3's gives 0 of 125 Oct 12 positions differing (JSON-equal), and all 24 Oct 12 deck files are unchanged. I also listed every Pokemon in all 217 positions' ledgers that has a boost Tool or sits under Starting Plains. They are: Mega Diancie ex, Suicune ex, Baxcalibur, Vespiquen ex, Scyther, Mega Scizor ex, Greavard, Houndstone, Finizen, Bulbasaur B1a 001, Ivysaur B1a 002, Mega Venusaur ex, Mega Sharpedo ex, Slowpoke, Igglybuff, Darkrai, and his own Druddigon, Axew, Haxorus and Dragonair. Each pick fits its ledger text; for example, Bulbasaur at 90 with Leaf Cape is the 60-HP B1a 001, as its 'printed 60' text says. Finally, I wrapped opp_pick across all 870 calls in the 217 positions: no pick contradicts the ledger's titles, and none contradicts a 'printed N HP' text."
+    },
+    {
+     "item": "Blocker 3: 022530 Dratini = B4 116 in the deck file and on the board/under Dragonair in all 6 positions; the new deck-building path changed no other game's deck file wrongly",
+     "status": "FIXED",
+     "evidence": "The deck file v2/decks/KW261013_022530000.txt now lists '2 Dratini B4 116'; that is the only line that changed. All 20 cards (name, count, printing) equal DECK_LOG_SNAPSHOT.json (Dratini B4 116, Dragonair B4 117, ...) and fit QR_DECODE.json: entity 20770 has only the alias B4 116, and every printing is inside its entity's aliases. Energy is Fighting + Metal. DECK_USED.filmed_cards_in_QR_order agrees by name, and its 'semantic entity N' strings match the QR entities. Board: t03 me.board[1] Dratini B4 116 (60). t05 and t07 board[2] Dratini B4 116, board[3] Dragonair B4 117 behind ['Dratini B4 116']. t09 board[1] Dratini B4 116, board[2] Dragonair behind B4 116. t11 board[2] Dratini B4 116, board[3] Dragonair behind B4 116. At t01 there is no Dratini at the turn start: the ledger's turn 1 board_at_start has Druddigon only, and Dratini is fetched by Poké Ball and benched during the turn (plan 'Place:Dratini'). A3b 051 no longer appears anywhere in 022530's positions, and the report_convert note is gone. Card conservation holds in all 6 positions. Other games: I checked all 14 v3 deck files against their packets. QR_DECODE names, counts and aliases match wherever the file has a cards list (12 of 14). DECK_LOG_SNAPSHOT exact printings match in all 10 packets that have one (including the 'rows' formats of 010003 and 010837). The DECK_USED lists that carry printings match in every packet that has one. The regenerated deck files of main and v3 differ only in KW261013_022530000.txt, across all 38 games. deck_from_qr_check.txt gains only the 022530 AGREE line, so no other packet switched to the QR + snapshot path. The normalised DECK_USED and TURN_LEDGER of 015011 and 030351 are identical to main's."
+    }
+   ],
+   "new_findings": [
+    {
+     "fid": "blockers-n1",
+     "severity": "minor",
+     "summary": "Latent: in opp_pick, the new HP filter still overrules the ledger's own text. The 'printed N HP' filter and the title scoring both work only inside the HP-filtered set, so a ledger that wrote unboosted printed HP under a boost would get the wrong printing silently.",
+     "evidence": "rl/results/pause_games_new_2026-10-12/harness/ledger_to_positions.py, opp_pick (around lines 513-527): by_hp = score-2 cards, else score-1 cards, else all. Then 'by_hp = [i for i in by_hp if hp in printed] or by_hp' falls back to by_hp, and score_text ranks only within by_hp. Example: under Starting Plains, a ledger showing 'Shadow Cage; printed 120 HP' at hp_max 120 would still give B2b 040 (100+20 scores 2), which contradicts both the title and the printed-HP text, and with no opp_ambiguous entry. It has no effect on any current position: my wrapper over all 870 opp_pick calls in the 217 positions found 0 picks that contradict titles or printed-HP text. The same family of latent issue: evidence_texts() and his knocked-out cards (around line 928) pair a board_after HP with the board_at_start Stadium. No current turn changes a boost Stadium mid-turn on his side, so this also has no current effect.",
+     "fix": "Apply the 'printed N HP' text first, as a hard filter over all candidates, before the boost-based HP filter. When the HP filter would drop a candidate whose titles score higher, keep both and record them in opp_ambiguous rather than picking silently.",
+     "positions": []
+    }
+   ],
+   "notes": "All three blockers are fixed. I checked them from the raw ledgers and my own regeneration, not from check_review_fixes.py.\n\n**How I checked:**\n- My copy (scratchpad v3chk/blockers/v3, from origin/sonnet/positions-v3-2026-10-14 at cfc143fb) regenerated all 38 games from read-only Recording_QA. It reproduces the committed v3 positions_all.json (92 of 92) and all 14 deck files.\n- I ran main's 373b41a6 pipeline the same way. It reproduces main's 92, and gives 125 Oct 12 positions equal to v3's.\n- v3 and main differ in 52 positions, all of them in the 92.\n- Tests in my copy: converter 143 OK, normaliser 28 OK.\n- The 015011 and 030351 normalised ledgers are unchanged from main. 022530 changes only in DECK_USED (QR + snapshot list) and the Elegant Cape correction.\n\n**Field changes in the blocker games, each with a review reason:**\n- 015011: Benches (blocker 1).\n- 030351: Darkrai (blocker 2), plus AttachTypedFromDiscard:Metal@0 steps at t05-t15 (major 7). These match the ledger's Dragon's Blessing rows: Metal from the discard onto the Active, in ledger order.\n- 022530: Dratini (blocker 3), Elegant Cape tool and correction notes in all 6 positions (major 9), and the Fighting step at t09 (major 7).\n\n**Pre-existing issues, not caused by v3:**\n- The committed Oct 12 positions_all.json is stale against main's current converter. It lacks me.knockouts (all 125) and conditions (16 board entries), and 15 notes still say conditions are not represented. Main's and v3's converters agree on those 125, so this is not a v3 change. It does mean that the repo's Oct 12 file is not what either converter now writes.\n- 015011 t03 has an empty plan and is marked usable. That is correct per the ledger (the opponent timed out before his first move), but its km3 'first move' comparison has nothing of his to compare against.\n\n**Out of scope:** the runner HP bug in pg_pos.rs and 030351's phantom Igglybuff Fighting are untouched, as the task said. With B2b 040 now picked, the undamaged 120-HP Darkrai come out right even under the old runner. The damaged Basics in 030351 t11-t15 still need main's 60cc67d3 runner fix.\n\n**Key paths:**\n- C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\v3chk\\blockers\\ — gen_v3/, gen_main/, and the scripts printdiff.py, deckchk.py, snap2.py, boostscan.py, pickaudit.py, cons.py, normcmp.py.\n- Branch files: rl/results/pause_games_new_2026-10-12/harness/ledger_to_positions.py (opp_pick, bench_entry, shown_hp), harness/cardlib.py (hp_boost, HP), harness/deckspec.py (entry_entity), rl/results/pause_games_new_2026-10-13/v2/scripts/normalize_ledger.py (needs_packet_list, inst)."
+  },
+  "verify": null
+ },
+ {
+  "scope": "majors1",
+  "recheck": {
+   "items": [
+    {
+     "item": "Major 1: opponent energy_next in the 18 positions, and no other position's opp.energy_next changed wrongly",
+     "status": "FIXED",
+     "evidence": "Main 373b41a6 v v3: exactly 18 positions changed opp.energy_next, and they are the 18 the review names. 010706 t01-t21 went from Darkness to Psychic. The opponent's zone is null on every one of his rows; every opponent row (T02-T20) attaches Psychic. t21 is the last row and takes the game-wide single type, Psychic. 010003 v3 = t01 Lightning, t03 Water, t05 Water, t07 Lightning, t09 Water, t11 Water. Each comes from board_after.opponent.energy_zone.next on his row, and each matches the next opponent row's attachment: T02 Lightning, T04 Water, T06 Water, T08 Lightning, T10 Water. t11 also matches T10's next = Water. 203719 t17 went from Darkness to Lightning. Its start zone is 'obscured', board_after next = Lightning, and T18 attaches Lightning. Across all 92, every v3 value equals the type the opponent attaches (or its this_turn circle) on the next opponent row: 0 mismatches. No position falls back to his deck's Energy (0 fallback notes). I reran main's converter and the v3 converter on the same v3-normalised ledgers for all 42 games (217 positions). energy_next differs only in these 18. The 125 Oct 12 positions are identical between the two converters on every field."
+    },
+    {
+     "item": "Major 2: Ilima turns 203719 t07, 210823 t08, 020824 t11 (Promote step, later slots, attack label)",
+     "status": "FIXED",
+     "evidence": "How the engine behaves: ilima_effect pushes one ReturnPokemonToHand per damaged [C] Pokémon. Here Regigigas is the only one each time, so pg_pos applies it by itself ('auto' step). apply_return_pokemon_to_hand empties slot 0 and calls trigger_promotion_or_declare_winner, which offers Promote{0,j} for each benched slot. Promote runs apply_activate, which swaps slot 0 with slot j and leaves slot j empty. Place is offered for every empty slot; forced_runs takes the first legal one, the lowest, which is the converter's place(). \n\n203719 t07: board [Regigigas 10/150, Alolan Muk@1, Glimmora@2, Pawniard@3]. Ledger: 'Promote Glimmora', 'Rebench Regigigas' (bench middle), Darkness to active Glimmora, 'Glimmora: Venomous Hit'. v3: [...UseStadium, Play:Ilima, Promote:0@2, Place:Regigigas (resolves to @2), Attach:1Darkness@0 zone, Attack:Venomous Hit]. Main had no Promote step and 'Attack:Giga Turbo'.\n\n210823 t08: board [Regigigas 50/150, Glimmora@1, Muk@2, Kingambit@3]. Ledger: 'promotes full-art Glimmora', Glimmet to the left slot, Darkness to Active Glimmora, 'Venomous Hit deals 30'. v3: [Play:Ilima, Promote:0@1, Place:Glimmet (@1), Attach:1Darkness@0 zone, Attack:Venomous Hit]. Main had Attach@1 and Giga Turbo.\n\n020824 t11: board [Regigigas 80/150, Pawniard@1, Muk@2]. Ledger: Ilima returns Regigigas; prompt 'Choose Pawniard as replacement Active'; Regigigas benched; Pawniard retreats so Regigigas becomes Active; Darkness to Regigigas. v3: [Lucky Ice Pop, Ilima, Promote:0@1, Place:Regigigas (@1, Pawniard's emptied slot), Retreat:1, Attach:1Darkness@0 zone]. plan_truncated_at went from 4 to null.\n\nForced replays, seed 1, all three ok=True to the last step: 8, 5 and 6 steps."
+    },
+    {
+     "item": "Major 3: stadium_activation Mesagoza -> UseStadium (210041 t08, 210823 t02, t04)",
+     "status": "FIXED",
+     "evidence": "nk() now maps 'stadium_activation' to 'ability', and the Stadium branch writes UseStadium. 210041 t08: ledger order 5 is 'Play Mesagoza', order 6 is the stadium_activation (tails), order 7 is the attach. v3: ...Play:Mesagoza, UseStadium, Attach:1Darkness@0 zone, Attack:Hang Down. 210823 t02: order 4 is the Mesagoza play, order 5 the activation, order 6 the attach. v3: ...Play:Mesagoza, UseStadium, Attach:1Darkness@0 zone. 210823 t04: order 1 benches Regigigas, order 2 is the activation, order 3 the attach. v3: Place:Regigigas, UseStadium, Attach..., Retreat:2, Evolve:Alolan Muk@2, Place:Pawniard, Play:Copycat, Evolve:Glimmora@1. Every Stadium use on his rows in the 14 ledgers (24 of them, across the stadium_activation / stadium_ability / stadium_effect / ability spellings) now has exactly one UseStadium in its position (21 before). The forced replay of 210823 t04 accepts UseStadium as step 1, so the steps line up again."
+    },
+    {
+     "item": "Major 4: Giga Turbo fx target (010706 t09, 230258 t11, 010003 t09)",
+     "status": "FIXED",
+     "evidence": "Giga Turbo, Regigigas B3 134: 'Take a [C] Energy from your Energy Zone and attach it to 1 of your Benched Pokémon'. 010706 t09: board [Regigigas, Kingambit@1, Alolan Muk@2]; ledger 'attach 1 Colorless ... to Alolan Muk', and board_after shows Muk with Colorless 1. v3 adds 'Attach:1Colorless@2 fx'. The forced replay accepts that exact engine label at step 4 (km3 agrees 12/12). 230258 t11: board [Regigigas, Alolan Grimer@1 (evolved to Muk this turn), Kingambit@2, Glimmora@3]; ledger 'attach to Alolan Muk Bench 1'. v3: '@1 fx'. 010003 t09: board [Regigigas, Glimmet@1, Alolan Grimer@2 (to Muk)]; ledger 'attached to Bench Alolan Muk'. v3: '@2 fx'. These are the only three Giga Turbo attacks on his rows in the 14 ledgers."
+    },
+    {
+     "item": "Major 7 / scope item 5: Dragon's Blessing choice step (022530 t09; 030351 t05-t15) and what the harness does with it",
+     "status": "PARTLY",
+     "evidence": "Done: the plan step is right in all 7 positions, and these are all 7 Dragon's Blessing uses in the ledgers. 022530 t09: 'Fighting selected', destination Active Haxorus, so 'AttachTypedFromDiscard:Fighting@0' after 'Ability', before Frenzied Blade. 030351: t05 Metal onto Active Dragonair-1; t07 Metal onto Active Haxorus-1; t09 Metal onto Druddigon-1 (Active after Retreat:1); t11 Metal onto Druddigon-1, placed before 'Attach:1Fighting@1 zone' as in the ledger order; t13 Metal onto Druddigon-1; t15 Metal onto Haxorus-2 (Active, before the retreat). All are '@0'. The engine always uses in_play_idx 0 and offers one AttachTypedFromDiscard{0, type, 1} per distinct type in his discard (apply_abilities_action.rs 387-409).\n\nNot done (declared out of scope): the typed harness label. pg_label (pgd_patch.py line 47) and rl/strength/src/main.rs label() line 70 both name every such choice with the bare 'AttachTypedFromDiscard'. So the typed step never matches a legal label. In 022530 t09 the legal list is ['AttachTypedFromDiscard','AttachTypedFromDiscard']: forced_runs cuts the line after Ability@2, and Frenzied Blade is still not replayed. In 030351 t05 and t15 there is a single type: pg_pos applies it by itself (the typed want differs from the bare label), and forced_runs drops the step. In t07 it is applied by itself and the turn ends. In t09, t11 and t13 the forced line is cut earlier (the Lucky Ice Pop coin, Poké Ball, Research). In the free runs, kw_report compares his typed step with km3's bare label (see majors1-n1)."
+    }
+   ],
+   "new_findings": [
+    {
+     "fid": "majors1-n1",
+     "severity": "minor",
+     "summary": "kw_report.py's norm() leaves the new typed step 'AttachTypedFromDiscard:<Type>@0' alone. In the free-run comparison his Dragon's Blessing step therefore never equals km3's bare 'AttachTypedFromDiscard', and the 'what differs' text shows a difference that isn't there.",
+     "evidence": "rl/results/pause_games_new_2026-10-12/harness/kw_report.py norm() (lines 21-23, unchanged on the branch) strips only Ability and Place suffixes. In v3 km3_summary.json / km3_TABLES.md: 030351 t15 desc reads 'his [AttachTypedFromDiscard:Metal@0, Retreat:1, Attach:1Fighting@1 zone, Play:Iris] ↔ km3 [AttachTypedFromDiscard]'. 030351 t05 reads 'his [Ability, AttachTypedFromDiscard:Metal@0] ↔ km3 [Promote:0@1, FinishPokemonCheckup]', and km3's modal plan there contains 'Ability, AttachTypedFromDiscard'. Counts are unchanged today: same_plan is 0/12 in 030351 t05, t07, t09, t15 and 022530 t09 both before and after. A seed that played his exact Blessing line would still be counted as a different plan.",
+     "fix": "Until the Rust label carries the type, have norm() map r'^AttachTypedFromDiscard(:.*)?$' to 'AttachTypedFromDiscard', or apply the same normalisation to both sides.",
+     "positions": [
+      "KW-261013_030351000-t05",
+      "KW-261013_030351000-t07",
+      "KW-261013_030351000-t09",
+      "KW-261013_030351000-t15",
+      "KW-261013_022530000-t09"
+     ]
+    },
+    {
+     "fid": "majors1-n2",
+     "severity": "minor",
+     "summary": "forced_runs.py handles the engine's own single-type Dragon's Blessing choice inconsistently. In 030351 t07 the typed step stays in `force` but is never asked, the summary note is empty, and V3_CHANGES names only t05 and t15. pg_pos also applies the lone choice without checking that its type is his.",
+     "evidence": "runs_forced/forced_summary.json, 030351 t07: force ends with 'AttachTypedFromDiscard:Metal@0' and the note is ''. Seed-1 steps: Ability@2, then 'auto AttachTypedFromDiscard', 'auto EndTurn', 'the turn is over'. t05 and t15 instead drop the step with the note 'taken by the engine itself'. pg_pos.rs line 456 applies any single legal action whose label differs from the wanted one; with the bare label that means any lone type. In the current data that type is Metal, which is his choice, so there is no count effect: t07's first deviation is step 1.",
+     "fix": "Make forced_runs.py record auto-resolved typed steps the same way in every case (drop and note), or compare the type once the label is typed.",
+     "positions": [
+      "KW-261013_030351000-t07"
+     ]
+    }
+   ],
+   "notes": "I checked every item myself from the raw Recording_QA ledgers, the v3 positions, the engine source and the forced/free run outputs. I did not rely on check_review_fixes.py. No frames or videos were opened. Nothing in the repository or in Recording_QA was edited, and no DECKGYM_* variable was set.\\n\\nRegeneration (my copy, origin/sonnet/positions-v3-2026-10-14 cfc143fb):\\n- I normalised the 14 new games with v3's normalize_ledger.py and ran v3's converter on all 42 games. The committed v3 positions_all.json is reproduced exactly: 0 of 92 differ.\\n- Main's converter on the same inputs gives the same 125 Oct 12 positions on every field.\\n- On the 14 new games, the only differences between the two converters are the expected ones: energy_next 18, his_plan 17, opp.board 5 (030351 Darkrai), me.board 2 (015011), plan_truncated_at 1 (020824 t11), notes 27.\\n\\nTests in my copy:\\n- Normaliser: 28/28.\\n- Converter: 142/143. The one error comes from my extract leaving out ../position_list.json (test_audit_183108), not from the code.\\n\\nAll 17 his_plan changes are explained by review items. The Ilima and Giga Turbo slot indices agree with the engine: Promote swaps slot 0 with slot j, and Place is offered on each empty slot with the first one taken. Forced replays of the three Ilima turns run ok=True to the end, with ReturnPokemonToHand applied by itself.\\n\\nOutside my scope, seen but not pursued (unchanged by v3, so not a regression): 030351 t05 has me.discard_energy [] although the ledger's T03 Rainbow Cave 'discard generated Metal' should leave 1 Metal there. t07 and t09 also look one Metal short, t11 does not. This belongs with the review's Rainbow Cave discard minors.\\n\\nScratch folder: C:\\\\Users\\\\dacz8\\\\AppData\\\\Local\\\\Temp\\\\claude\\\\C--Users-dacz8-Projects\\\\1b119d13-736d-4588-ba63-0e9ef1756970\\\\scratchpad\\\\v3chk\\\\majors1\\\\ (a1.py-a13.py, regen.sh; regen/ holds the regenerated positions, a1.out the zone-by-row dump).\""
+  },
+  "verify": {
+   "verdicts": [
+    {
+     "id": "Major 7 / scope item 5: Dragon's Blessing choice step (022530 t09; 030351 t05-t15) and what the harness does with it",
+     "real": true,
+     "corrected_severity": "major",
+     "reason": "PARTLY is right: the plan step is fixed, but the typed harness label is not.\n\nThe plan step, re-derived from the raw ledgers:\n- He used Dragon's Blessing exactly 7 times: 022530 t09 and 030351 t05, t07, t09, t11, t13 and t15.\n- The ledgers' other Blessing plays are the opponent's (203719 opponent turns 4-20, 010003 opponent turns 4 and 6). None of them is in a plan. Across all 92 v3 positions the typed step appears in exactly these 7.\n- 022530 t09: ledger play 4 is an ability, Fighting, destination 'Active Haxorus', nested 'Fighting selected at 414'. v3 his_plan has '...Ability, AttachTypedFromDiscard:Fighting@0, Attack:Frenzied Blade'.\n- 030351: the ledger gives Metal each time, always onto the Active of that moment, and v3 has 'AttachTypedFromDiscard:Metal@0' every time:\n  - t05: Dragonair-1;\n  - t07: Haxorus-1;\n  - t09: Druddigon-1, after Retreat:1;\n  - t11: Druddigon-1, ledger order 3, before the Fighting attach at order 4, as in the plan;\n  - t13: Druddigon-1;\n  - t15: Haxorus-2, order 1, before the retreat.\n- These match the engine (apply_abilities_action.rs 387-409): one AttachTypedFromDiscard{in_play_idx: 0, type, 1} per distinct type in his discard. The card text (B4 117) also says the Energy goes to the Active.\n\nNot fixed: the label. pgd_patch.py line 47 (pg_label) and rl/strength/src/main.rs line 70 both reduce the choice to the bare 'AttachTypedFromDiscard'.\n- 022530 t09: in all 12 seeds the legal list is ['AttachTypedFromDiscard','AttachTypedFromDiscard']. Metal is at the turn start and Rainbow Cave adds Fighting. The forced line is cut after Ability@2 and Frenzied Blade is still not replayed, so the review's stated consequence remains.\n- 030351 t05 and t15: pg_pos auto-applies the single option (lines 456-459) and forced_runs pops the step. Clean in all 12 seeds.\n- t09, t11 and t13: the forced line is cut earlier, at the Lucky Ice Pop coin, Poké Ball and Research, as claimed.\n- Free runs: kw_report's norm() does not strip the type, so his typed step is compared with km3's bare label. The counts are unchanged from v2 (same_first and same_plan are identical in all 7). Only the desc text changed.\n\nOne detail of the claim is wrong. 't07: applied by itself and the turn ends' holds only in seeds 1, 4 and 9.\n\nNew minor regression from v3 (030351 t07):\n- forced_runs decides from seed 1 only, where the Lucky Ice Pop coin was tails. So the typed step stays in the force.\n- In seeds 2, 3, 5-8 and 10-12 the coin returned Lucky Ice Pop to hand. After the auto-attach, legal = [EndTurn, Play:Lucky Ice Pop], and step 4 ends with error '0 different legal actions carry that label' (ok=False).\n- v2 recorded next_choice_km3 'Play:Lucky Ice Pop' in those 9 seeds. v3's summary has next_choice_km3 {} and an empty note. No count changes, because rows 0-3 are identical.\n\nAlso minor: test_ledger_to_positions.py line 1369 asserts 'AttachTypedFromDiscard:Metal@1' (onto a Benched Dratini). Neither the card nor the engine allows that; no real position uses it.\n\nThe item stays major, because the forced line of 022530 t09 is still cut before Frenzied Blade."
+    }
+   ]
+  }
+ },
+ {
+  "scope": "majors2",
+  "recheck": {
+   "items": [
+    {
+     "item": "(6) 210823: opponent left-Bench 'Alolan Meowth' -> Meowth B2 124 / B2 204 in all six positions (type, HP 50, no phantom damage, switch-2 flag)",
+     "status": "FIXED",
+     "evidence": "v3 positions_all.json, opp.board slot of the left-Bench Pokemon: t02 [1], t04 [1], t06 [1], t08 [1], t10 [1], t12 [1] = {card 'Meowth B2 124', hp 50}, with no energy, tool or condition (base: 'Alolan Meowth A3 108' hp 50, and A3 108 is printed 60, so 10 phantom damage). Raw TURN_LEDGER 210823, every owner turn t02-t12: name 'Alolan Meowth', bench_position 1, hp_now 50, hp_max 50, damage 0, energy 0, tool none. So v3 matches the ledger on HP, damage and Energy. lib/card.py: Meowth [B2 124, B2 204] is Colorless, HP 50, weak to Fighting, Carefree Steps / Feelin' Fine. The slot order matches the ledger (t08: Mega Pidgeot ex, Meowth (renamed), Meowth, Mega Pidgeot ex). opp_ambiguous no longer lists Alolan Meowth (only the Pidgey rows remain), and 'Alolan Meowth' appears nowhere in the 210823 positions outside the notes. position_list.tsv: switch2_flag = yes in all six, switch2_opponent_board 'Meowth B2 124 [Ability Carefree Steps]'. That flag is still right: both Meowths now carry Carefree Steps. engine_comparison.txt: 210823 t02-t12 are 12/12 IDENTICAL. The normaliser log says '210823-meowth-left-bench (rename_pokemon, 24 changes)': 23 board readings plus the opponent's turn-1 play."
+    },
+    {
+     "item": "(7) 015659: opponent hand 6/7/6 at t05/t07/t09; no Rare Candy in the opponent discard t05-t13; t11",
+     "status": "FIXED",
+     "evidence": "v3 opp.hand_count: t05 6, t07 7, t09 6 (base 5/6/5; raw ledger counts 5/6/5, basis 'observed', so the correction's was={5:5,7:6,9:5} matches the raw ledger). v3 opp.discard: t05 and t07 ['Professor's Research A4b 373'], t09 [Research, Pokemon Center Lady A2b 070], t13 [Research, PCL, Lucky Ice Pop, Poke Ball]. Base had 'Rare Candy A3 144' in all four; it is now in none of the 015659 positions (I walked every field outside notes). Raw turn 4 (opponent): order 1 Research, order 2 card_play 'Rare Candy' target 'Active Riolu' ('choose Mega Lucario ex; evolve Riolu directly'), order 3 Fighting attach, order 4 attack. There is no separate evolution play, so replacing order 2 with an evolution into Mega Lucario ex does not evolve twice. The board is unchanged (Mega Lucario ex B3 081 with Riolu B3 079 behind). t01/t03/t13 hand counts are unchanged (4/5/2; t13's 2 is observed in the raw ledger). t11 is still left out: report_convert.json 'opponent hand count missing'; raw t11 count null, inferred_count 2, basis unavailable. Nothing was built for it."
+    },
+    {
+     "item": "(8) 010706 t15: the 'No Basic found' Poke Ball removed from his plan; no other Poke Ball wrongly removed (all owner Poke Ball plays in the 14 ledgers)",
+     "status": "FIXED",
+     "evidence": "v3 his_plan t15 = [Evolve:Glimmora@2, Attach:1Darkness@0 zone, Attack:Sludge Bomb] (base started with Play:Poke Ball). New note: 'a Poke Ball that found nothing is left out of his plan'. me.hand still holds Poke Ball A2b 111, which is right because it was in his hand at the turn start. Normalised result text: 'No Basic found. The Ball is revealed around 560 s...', and its draws_and_searches entry is empty. I scanned all 25 owner Poke Ball plays in the 14 normalised ledgers. Under the new pattern only 010706 t15 changes. 210041 t08 ('No eligible cards ... no card found') was already out and stays out. The other 23 each have a named search result (Regigigas, Glimmet, Pawniard, Alolan Grimer, Dratini, Axew) and keep exactly one Play:Poke Ball in both base and v3 (015011 t01, kind 'item', included). The new 'no\\s+basic' alternative is only applied when the card is a Poke Ball (ledger_to_positions.py lines 882 and 1261), and the discard path still adds the Poke Ball to his discard."
+    },
+    {
+     "item": "(9) 022530: opponent Tool = Elegant Cape B3b 065 on Scyther and Mega Scizor ex, HP 70 and 230 consistent",
+     "status": "FIXED",
+     "evidence": "v3 opp.board: t03 Scyther B2b 001 hp 70, tools [Elegant Cape B3b 065]. t05 Scyther 70 + Elegant Cape, and Mega Scizor ex B2b 047 hp 230 + Elegant Cape. t07 the same (70 / 230). t09 Mega Scizor ex 190 and Scyther 70. t11 Mega Scizor ex 40 and Scyther 70. Each has Elegant Cape; base had Giant Cape A2 147. t01 has no Tool, as in the ledger (the Cape was played at opponent turn 2). Raw ledger: 'Cape attached; Scyther is Basic so HP remains 70'; 'Evolve Scyther ... Mega Scizor ex, printed HP 200, effective 230 from Cape'. card.py: Elegant Cape gives a Stage 1 +30; Scyther B2b 001 is a Basic with 70 HP; Mega Scizor ex is a Stage 1 with 200 HP. So 70 and 230 are consistent, and 190/40 mean 40 and 190 damage. Engine side: played_card.rs adds +30 for Elegant Cape only when stage==1, and the pinned c045ede has the same line. pg_pos.rs pk() sets attached_tools before with_remaining_hp, which subtracts from the effective HP including the Tool, so no clamp and no phantom damage. 'Giant Cape' appears in no 022530 position outside the notes."
+    },
+    {
+     "item": "ledger_corrections.json values and positions v the review's frame-only facts table",
+     "status": "FIXED",
+     "evidence": "Raw ledger -> normalised copy -> v3 opp.hand_count:\n- 010706 t03/t05/t07: raw 5, 6, [7,8] -> 6/7/8 (review 6/7/8). The was {3:5, 5:6, 7:[7,8]} matches the raw ledger.\n- 203719 t07/t09/t11/t13: raw [3,4] each -> 4/3/4/4 (review 4/3/4/4; base gave 3/3/3/3).\n- 225319 t08: raw [5,6] -> 4 (review 4).\n- 015659 t05/t07/t09: 6/7/6, and no turn-4 Rare Candy.\n- 210823: the Meowth rename.\n- 022530: Elegant Cape.\nEach correction lands only in its own positions; neighbouring turns are unchanged (010706 t01/t09+, 203719 t01-t05/t15/t17, 225319 t02-t06). The old 'lower end is used' notes are gone where a count was set. I regenerated with the branch's own convert.sh from the real Recording_QA (TMPDIR in my scratch folder): positions_all.json, games_meta.json, position_list.tsv/json, report_convert.json, deck_from_qr_check.txt and the decks came out byte-identical to cfc143fb. Across the 92 positions, 52 differ from base and 40 are identical."
+    },
+    {
+     "item": "the `was` check guards against applying a correction to a changed ledger",
+     "status": "PARTLY",
+     "evidence": "I ran apply_corrections on edited in-memory copies of the raw ledgers.\nRefused, as intended:\n- 015659 t05 count already 6\n- 010706 t07 range [8,9]\n- 210823 Meowth already renamed\n- 022530 Cape already Elegant\n- 015659 Rare Candy already replaced (the replace_play 'expect' guard)\nApplied silently:\n- 203719 with turn 13 removed: 3 of 4 changes, no error\n- 015659 with turn 9 relabelled as an opponent turn: 2 of 3\n- 210823 where one turn's 'Alolan Meowth' was re-read as 60 HP: renamed anyway; it would then resolve to Meowth A1 196\nWhy: set_opponent_hand skips a listed turn it cannot find, and rename_pokemon / rename_tool have no `was` at all (their only guard is 'changed nothing'). So the _about line 'an op is refused on a ledger that says something else' overclaims. No effect on the current ledgers: every correction applies in full to the ledgers as they are."
+    },
+    {
+     "item": "corrections touch only the normaliser's copy; raw Recording_QA files untouched",
+     "status": "FIXED",
+     "evidence": "normalize_ledger.py reads the source with json.load and writes only DST/DECK_USED.json and DST/TURN_LEDGER.json. convert.sh puts DST under mktemp; the tests use tempfile.mkdtemp. The 288 JSON files of the 14 packets: the newest mtime is 2026-10-13 14:47, before the branch's commits (2026-10-14 16:06 -0500). My sha256 + mtime list taken before and after my own regenerate run is identical ('QA UNCHANGED'). Each normalised copy carries its `corrections` list, and the raw ledgers do not."
+    }
+   ],
+   "new_findings": [
+    {
+     "fid": "majors2-n1",
+     "severity": "minor",
+     "summary": "The correction guards are weaker than the file claims. rename_pokemon and rename_tool have no `was`: their only guard is 'changed nothing'. set_opponent_hand applies part of a correction without error when a listed turn is missing or is no longer one of his turns.",
+     "evidence": "Tests on edited copies of the raw ledgers:\n- 203719 with turn 13 removed: '203719-opponent-hands (set_opponent_hand, 3 changes)', no error.\n- 015659 with turn 9 relabelled as an opponent turn: 2 changes, no error.\n- 210823 with one turn's Alolan Meowth re-read as hp_max 60 / 'Scratch 20': still renamed (24 changes). Its hp_max stays 60, so the converter would pick Meowth A1 196 in that turn.\nledger_corrections.json `_about` says an op 'is refused on a ledger that says something else'. No effect on the current ledgers or positions.",
+     "fix": "In set_opponent_hand, require every turn in `counts` to be found and to be one of his turns. Give the rename ops a `was`, such as the expected number of matches or the expected variant/hp_max per reading, and refuse on a mismatch.",
+     "positions": [
+      "v2/scripts/normalize_ledger.py:222-262",
+      "v2/scripts/ledger_corrections.json:2"
+     ]
+    },
+    {
+     "fid": "majors2-n2",
+     "severity": "minor",
+     "summary": "rename_tool renames the Tool on the board readings but not the opponent's two Tool plays. The normalised 022530 ledger still has opponent plays named 'Giant Cape' at turns 2 and 4.",
+     "evidence": "In the normalised copy, turn 2 (opponent) has a play with card_name 'Giant Cape' ('Cape attached; Scyther is Basic so HP remains 70'), and turn 4 (opponent) has one too ('Second Cape attached'). No position field is affected: in the 022530 positions, 'Giant Cape' appears only in the correction note.",
+     "fix": "Also rename the card_name of the plays on that side, as rename_pokemon already does.",
+     "positions": [
+      "v2/scripts/normalize_ledger.py:236-244"
+     ]
+    },
+    {
+     "fid": "majors2-n3",
+     "severity": "minor",
+     "summary": "Corrections with turns:null put their note into every position of the game, including those before the corrected event. Positions whose hand is unchanged say 'his hand is one card larger'.",
+     "evidence": "015659 t01 and t03, both before turn 4, carry the note 'the opponent played no Rare Candy at his turn 4 ... his hand is one card larger'. t13 carries it too, and its hand stays 2. 022530 t01 carries the Elegant Cape note although no Cape is in play until the opponent's turn 2. Notes only.",
+     "fix": "Give 015659-no-rare-candy-turn-4 turns [5,7,9,13] and 022530-elegant-cape turns [3,5,7,9,11]. Or drop the hand clause from the Rare Candy note, since the hand correction has its own note.",
+     "positions": [
+      "v2/scripts/ledger_corrections.json:27-29",
+      "v2/scripts/ledger_corrections.json:33",
+      "harness/ledger_to_positions.py:859-861"
+     ]
+    },
+    {
+     "fid": "majors2-n4",
+     "severity": "minor",
+     "summary": "V3_CHANGES.md swaps whose hand the 015659 correction is about.",
+     "evidence": "V3_CHANGES.md line 35 reads '015659-opponent-hands | his hand at the opponent's turns 5 / 7 / 9 is 6 / 7 / 6'. The correction (and its note in the positions) is the opponent's hand at his turns 5 / 7 / 9.",
+     "fix": "Reword it as 'the opponent's hand at his turns 5 / 7 / 9 is 6 / 7 / 6'.",
+     "positions": [
+      "v2/V3_CHANGES.md:35"
+     ]
+    }
+   ],
+   "notes": "Work folder: C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\v3chk\\majors2 (git archive of cfc143fb into v3\\, of 373b41a6 into base\\; regenerated copy in regen\\; normalised ledgers in tmp\\tmp.*\\norm\\).\n\nOnly Git action: fetching the branch. Nothing was edited in the repository or in Recording_QA.\n\nTest runs on my extracted copy:\n- Normaliser: 28/28 pass.\n- Converter: 142 of 143 pass. The 1 error (test_audit_183108...) needs ../position_list.json from pause_games_new_2026-10-12, which I did not extract, so it is my setup, not a code defect.\n\nNot defects, for the record:\n- 010706 t09 keeps the low end 7 of Codex's [7,8], while t07 is now 8 from the frames. The review gives no frame fact for t09, so v3 leaves it alone.\n- Each 015659 correction note says 'his turn 4' for the opponent's game turn 4.\n\ncheck_review_fixes.py covers majors 5/6/8/9 only by name, hand and Tool presence. It does not check the corrected hands of 010706, 203719 and 225319, or the 70/230 HP of the Cape holders; I checked those myself above."
+  },
+  "verify": {
+   "verdicts": [
+    {
+     "id": "the `was` check guards against applying a correction to a changed ledger",
+     "real": true,
+     "corrected_severity": "minor",
+     "reason": "Re-derived from normalize_ledger.py on cfc143fb (apply_corrections, lines 215-271) and the real Recording_QA ledgers, run through normalize_plays + restore_checkup_knockouts first as the pipeline does. Every refusal in the claim holds: 015659 t05 set to 6 is refused by `was` (wants 5); 010706 t07 range [8,9] is refused (raw ledger says count None, range [7,8]); a second run of 210823's Meowth rename, 022530's Cape rename and 015659's replace_play each fail with 'changed nothing'. The silent cases also reproduce. Dropping turn 13 from 203719 applies 3 changes with no error. Relabelling 015659 turn 9 (raw who_played 'owner') as 'opponent' applies 2 hand changes plus the Rare Candy replace, again with no error. Cause: set_opponent_hand only loops over turns that are present and are 'owner' turns, `was` is checked only on those, and the only check after the loop is n==0. rename_pokemon and rename_tool have no `was` or HP check at all. When I set one 210823 'Alolan Meowth' reading to hp_max 60, it was renamed anyway (24 changes, the same as as-is). The converter's opp_pick('Meowth', 60, ...) then returns A1 196 (Pay Day, 60 HP), even with the corrected variant text; at 50 HP it returns B2 124. Nothing else guards this: ledger_to_positions.py only turns led['corrections'] into notes (line 859), and normalize() checks nothing further. In the 203719 case, turn 13 would still be listed in the correction's `turns`. So the _about line 'an op is refused on a ledger that says something else' claims more than the code does. On the current ledgers every correction applies in full: 010706 3/3 turns, 203719 4/4, 225319 1/1, 015659 3/3 plus the replace_play, 210823 24 changes, 022530 38. So no v3 position is affected. The gap only matters if Codex re-reads a ledger: minor."
+    }
+   ]
+  }
+ },
+ {
+  "scope": "regress",
+  "recheck": {
+   "items": [
+    {
+     "item": "(a) v2 (373b41a6) against v3 (cfc143fb), all 92 positions field by field",
+     "status": "FIXED",
+     "evidence": "I wrote my own field diff (regress/jdiff.py, output in regress/v2v3_diff.txt). It finds 52 changed and 40 identical positions, the same 52 ids as v3_position_changes.txt. Changed fields, counted per position: his_plan 17, notes 27, opp.energy_next 18, opp.hand_count 10, opp.discard 4, opp.board 22 entry changes (13 cards + 9 Tools), me.board 7 positions, opp_ambiguous 6, plan_truncated_at 1. I checked every change against the raw TURN_LEDGER and each one has a review item or a recorded correction behind it.\n- Blocker 1: 015011 t01 me.board[1] is Alolan Grimer A3 110, 70 HP (ledger Bench pos 3, 70/70). At t03 Regigigas B3 134 (150) and Grimer are back, and the opponent's Tyrogue A4 101 (30) is in place (ledger pos 1, 30/30).\n- Blocker 2: 030351 t09 and t11 board[1], and t13 and t15 board[1] and [3], are Darkrai B2b 040. The ledger has 120/120 under Starting Plains and says 'printed 100 HP'. Only one Darkrai is on the board at t09 and t11, which is why only board[1] changes there.\n- Blocker 3: 022530 t03-t11 board and behind entries are Dratini B4 116. The deck file changes only that line, and the list matches QR_DECODE (entity 20770, B4 116).\n- Major 1: 010706 x11 are Psychic (every opponent row has this_turn=Psychic). 010003 t01 L, t03 W, t05 W, t07 L, t09 W, t11 W each match the next opponent row's this_turn, or board_after next at t11. 203719 t17 is Lightning (t18 this_turn=Lightning).\n- Major 2: in 203719 t07, Ilima's text 'Promote Glimmora' becomes Promote:0@2, Regigigas is re-benched in the middle, and Venomous Hit is right per the ledger's 'Glimmora: Venomous Hit'. In 210823 t08 the plan is Promote:0@1 Glimmora, Glimmet to the vacated slot, Attach@0, Venomous Hit. In 020824 t11 the prompt 'Choose Pawniard' gives Promote:0@1, Regigigas goes to slot 1, and Retreat:1 makes Regigigas Active ('Regigigas becomes Active'), then Attach@0.\n- Major 3: UseStadium sits at the ledger's stadium_activation order: 210041 t08 order 6, 210823 t02 order 5, 210823 t04 order 2 (that is, step 1).\n- Major 4: the fx targets are Alolan Muk in all three. 010706 t09 board[2] is Muk. 230258 t11 has 'Muk Bench 1' (@1). 010003 t09 has Grimer at board[2] evolved to Muk (@2).\n- Major 8: in 010706 t15 the ledger's 'No Basic found' Poké Ball is dropped.\n- Hand counts match the review's frame table: 010706 6/7/8, 203719 4/3/4/4, 225319 4, 015659 6/7/6.\n- 015659: Rare Candy A3 144 is gone from the opponent's discard at t05, t07, t09 and t13. The t13 hand stays 2 (the ledger says 'observed').\n- 210823: all 6 positions have Meowth B2 124. The opp_ambiguous changes only drop the Alolan Meowth entry.\n- 022530: all 9 Giant Cape entries are now Elegant Cape B3b 065. No Giant Cape, Alolan Meowth (210823), Darkrai B1 154 (030351) or Dratini A3b 051 (022530) remains in any v3 position.\n- One change goes beyond the review's own list. AttachTypedFromDiscard:Metal@0 appears in 030351 t05, t07, t09, t11, t13 and t15. It is right per the ledger: Dragon's Blessing puts Metal on the Active Dragon each time. The step sits right after the Ability row, which comes before the zone attach at t11 and before the retreat at t15. No v3 plan has a '?' step, and none uses the deck-Energy fallback note."
+    },
+    {
+     "item": "(b1) Branch convert step re-run, read-only on Recording_QA, reproduces the committed v3 files",
+     "status": "FIXED",
+     "evidence": "I copied the branch with git archive into regress/br and regress/regen, then ran scripts/convert.sh with TMPDIR inside my folder. These come out byte-identical (cmp) to the committed branch files: positions_all.json, games_meta.json, position_list.tsv, position_list.json, report_convert.json, deck_from_qr_check.txt and decks/ (diff -r). scripts/check_review_fixes.py, re-run on the regenerated v2, gives '67 of 67' and its output is byte-identical to the committed review_fixes_check.txt. No JSON file in the 14 packet folders has an mtime from today."
+    },
+    {
+     "item": "(b2) The 125 Oct 12 positions regenerate byte-identical to main's committed rl/results/pause_games_new_2026-10-12/positions_all.json",
+     "status": "PARTLY",
+     "evidence": "The branch converter and main's converter (373b41a6) give byte-identical output on the same 28 packet folders: 125 positions, 6 left out, the same report_convert.json and the same 24 deck files. The 125 Oct 12 positions inside the 38-game combined run are also identical (125/125). The committed file on main (unchanged at 60cc67d3) is different: cmp first differs at byte 524. That file was last written at 2eff1be6, before 28df6315 and f6be4fd7. All 125 committed positions lack me.knockouts, and 36 of them should be 1 or 2 (24 at 1, 12 at 2). 16 opponent and 3 of his board entries lack conditions, and 15 notes differ. This is drift that was already on main, not something v3 introduced."
+    },
+    {
+     "item": "(c) Converter tests (143) and normaliser tests (28) on the branch copy",
+     "status": "FIXED",
+     "evidence": "The harness copy gives 'Ran 143 tests ... OK'. v2/scripts gives 'Ran 28 tests ... OK', and that includes the 2 tests against the real ledgers (AgainstTheRealLedgers), which ran rather than skipped. As a control, the branch's 143-test file run against main's 373b41a6 harness gives FAILED (failures=33, errors=3). That is 36 failing. V3_CHANGES says 35 of the first 44 (31F/4E) plus 2 added later, so the split differs slightly but the order of magnitude matches."
+    },
+    {
+     "item": "(d) V3_CHANGES.md and v3_position_changes.txt accurate and complete",
+     "status": "PARTLY",
+     "evidence": "v3_position_changes.txt lists exactly the 52 positions and every changed field that my independent diff finds, so it is complete on field names. The V3_CHANGES table rows (blockers 1-3, majors 1-9, Not done) are accurate against the ledger, and so are the 52/40 split and the 030351 Metal-step note. Five problems, all minor (regress-n1..n5):\n- the 'By field' counts mix units and mislabel one category;\n- the Oct 12 'byte-for-byte as they were' wording only holds against main's converter, not main's committed file;\n- the claim of a 'was' check on every correction holds for only 5 of 7 entries;\n- notes values in v3_position_changes.txt are cut at about 150 characters, so removed notes are invisible;\n- correction notes land on positions before the corrected event."
+    },
+    {
+     "item": "(e) Branch changes nothing outside harness/ and v2/",
+     "status": "FIXED",
+     "evidence": "`git diff --name-only main...cfc143fb` (merge base 373b41a6) gives 99 paths, all under rl/results/pause_games_new_2026-10-12/harness/ (cardlib.py, deckspec.py, ledger_to_positions.py, test_ledger_to_positions.py) or rl/results/pause_games_new_2026-10-13/v2/. None of them overlap with main's later commits 373b41a6..60cc67d3 (exam workers, pause_games_decisions harness). All script modes are 100644 before and after. engine/database.json and lib/ are unchanged."
+    },
+    {
+     "item": "Review Major 7 (Dragon's Blessing choice: plan step + typed harness label)",
+     "status": "PARTLY",
+     "evidence": "The plan step is fixed. 022530 t09 is now [... 'Ability', 'AttachTypedFromDiscard:Fighting@0', 'Attack:Frenzied Blade'], which matches ledger order 5 ('recovers 1 Fighting from discard onto Haxorus') before the order 6 attack. The typed label in rl/strength/src/main.rs is not done, by design (it is a Rust change)."
+    }
+   ],
+   "new_findings": [
+    {
+     "fid": "regress-n1",
+     "severity": "minor",
+     "summary": "The 'By field' counts in V3_CHANGES.md mix units, mislabel a category, and leave two changed fields out",
+     "evidence": "V3_CHANGES says 'opponent Bench cards 22, his board 11'. Those numbers count changed board entries, not positions. The 22 is 13 card changes (including Active entries such as 022530 t09 board[0]) plus 9 Tool changes (Giant to Elegant Cape). The 11 covers only 7 positions (015011 t01, t03; 022530 t03-t11). The summary also leaves out opp_ambiguous (6 positions, 210823) and plan_truncated_at (1, 020824 t11), although v3_position_changes.txt lists both.",
+     "fix": "State the counts per position (or say they are entry counts), call the category 'opponent board cards and Tools', and add opp_ambiguous 6 and plan_truncated_at 1.",
+     "positions": [
+      "KW-261012_210823000-t02..t12",
+      "KW-261013_020824000-t11",
+      "KW-261013_022530000-t03..t11"
+     ]
+    },
+    {
+     "fid": "regress-n2",
+     "severity": "minor",
+     "summary": "V3_CHANGES's 'the 125 Oct 12 positions stay byte-for-byte as they were' only holds against main's converter output. Main's committed Oct 12 positions_all.json is stale and differs in all 125 positions.",
+     "evidence": "My re-run with the branch converter matches main's converter 373b41a6 exactly (0/125 differ; report and 24 decks identical). Against rl/results/pause_games_new_2026-10-12/positions_all.json as committed (2eff1be6, unchanged at 60cc67d3), all 125 differ: me.knockouts is absent everywhere, and 36 positions should be 1-2. Conditions are missing in 19 board entries and notes differ in 15. This was already on main before v3 (28df6315/f6be4fd7 never regenerated that file).",
+     "fix": "Reword the claim to 'identical to main's converter output'. Separately, Dustin or the laptop should decide whether to regenerate the committed Oct 12 file, because its 36 positions with knock-outs read 0 in pg_pos.",
+     "positions": [
+      "Oct 12 set: 125 positions"
+     ]
+    },
+    {
+     "fid": "regress-n3",
+     "severity": "minor",
+     "summary": "Correction notes with turns:null are copied into every position of the game, including positions before the corrected event and one where the corrected count was not applied",
+     "evidence": "015659 t01 and t03 (before the opponent's turn 4) carry 'the opponent played no Rare Candy at his turn 4 ... his hand is one card larger'. t13 carries the same note, but its hand stays at the ledger's observed 2. That is right per the review, but the note says otherwise. 022530 t01 carries the Elegant Cape note, but no Cape is in play until the opponent's turn 2.",
+     "fix": "Give 015659-no-rare-candy-turn-4 turns [5,7,9,13] and reword it so the hand part names only t05-t09. Give 022530-elegant-cape turns [3,5,7,9,11].",
+     "positions": [
+      "KW-261013_015659000-t01",
+      "KW-261013_015659000-t03",
+      "KW-261013_015659000-t13",
+      "KW-261013_022530000-t01"
+     ]
+    },
+    {
+     "fid": "regress-n4",
+     "severity": "minor",
+     "summary": "Only 5 of the 7 recorded corrections check what the ledger said before; the two rename corrections check nothing, and rename_tool leaves the opponent's Tool plays unrenamed",
+     "evidence": "ledger_corrections.json _about and V3_CHANGES say an op is refused on a ledger that says something else ('was'). In fact `was` exists only on the 4 set_opponent_hand entries; replace_play has `expect`. 210823-meowth-left-bench (rename_pokemon) and 022530-elegant-cape (rename_tool) check only that something changed. rename_tool edits board readings only, so the opponent's turn-2 and turn-4 plays with card_name 'Giant Cape' stay in the normalised ledger. No v3 position is affected: a scan finds no 'Giant Cape' in any 022530 position.",
+     "fix": "Add a `was`/`expect` (for example the hp_now/hp_max pairs, or the variant text 'Nasty Plot') to both rename entries, and rename the Tool plays too, or say why not.",
+     "positions": [
+      "KW-261012_210823000-*",
+      "KW-261013_022530000-*"
+     ]
+    },
+    {
+     "fid": "regress-n5",
+     "severity": "minor",
+     "summary": "v3_position_changes.txt cuts note values at about 150 characters, so the note changes themselves cannot be seen",
+     "evidence": "For example, 203719 t07 and 210823 t08 drop 'attack title of Regigigas not named in the ledger: the last printed attack is used'. 010706 t07, 203719 t07-t13 and 225319 t08 drop 'opponent hand range [...]: the lower end is used'. In the file, both sides of these lines show the same truncated prefix ('Alolan Muk stack taken from ...').",
+     "fix": "Print notes as a sentence-level diff (removed / added) instead of truncated old -> new strings.",
+     "positions": [
+      "KW-261012_203719000-t07",
+      "KW-261012_210823000-t08",
+      "KW-261012_010706000-t07"
+     ]
+    }
+   ],
+   "notes": "I found no blocker or major introduced by v3, and no field that changed without a reason. Every one of the 52 changed positions matches the raw ledger, or the review's frame table where a correction applies (I did not open any frame).\n\nWorth passing on (outside the regression scope):\n1. In the 15 positions where only opp.energy_next changed (or energy_next plus his plan), v3's own km3 re-runs are byte-identical to v2. That covers both out_ and err_ files, including every PGDUMP score: 010706 t01, t09, t11-t21, all 6 of 010003, and 203719 t17. run_km3.sh always re-runs everything. So the Major 1 fix moved no km3 score anywhere, even though pg_pos.rs:278 does read opp energy_next. The review's stated effect (for example Mega Burst at 203719 t17) does not show for km3. Whether kx3 differs is untested.\n2. Main's committed Oct 12 positions_all.json is stale against main's own converter (regress-n2): 36 positions should carry knock-out counts of 1-2, and 19 board entries are missing their conditions. This was already there before v3.\n3. The fixes left in place by design were confirmed in v3, not fixed:\n   - 030351's phantom Fighting on Igglybuff-1/-2 at t13 and t15;\n   - Pidgey printings in 210823 (still A1 186 with B1 180 as an alternative);\n   - the pg_pos Starting Plains HP fix.\n\nFiles are in C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\v3chk\\regress\\:\n- v2v3_diff.txt is my field diff; plans.txt is the plan and note diff.\n- br\\ and m\\ hold the branch and main copies; regen\\ is the regenerated branch output.\n- oct12\\ and oct12m\\ hold the Oct 12 regenerations by the branch and main converters.\n- tmp\\ holds the normalised ledgers.\n- The scripts are jdiff.py, led.py and ez.py.\n\nThe repository working tree and Recording_QA were only read. The one git write was the instructed `git fetch origin sonnet/positions-v3-2026-10-14` (FETCH_HEAD)."
+  },
+  "verify": {
+   "verdicts": [
+    {
+     "id": "(b2) The 125 Oct 12 positions regenerate byte-identical to main's committed rl/results/pause_games_new_2026-10-12/positions_all.json",
+     "real": true,
+     "corrected_severity": "minor",
+     "reason": "PARTLY holds, with one miscount.\n\nWhat I re-ran: main's converter (373b41a6, the same as origin/main 60cc67d3 for this file) and the v3 converter, both on the 28 packet folders of BATCH_2026-10-06/09/11 (24 games give positions), with PG_CARD_DB set to 373b41a6's engine/database.json.\n\nWhat matches:\n- The two converters give byte-identical positions_all.json (125 positions, 6 left out), report_convert.json and the same 24 KW*.txt files.\n- In my own 38-game combined run (the v3 normaliser, then the converter, then split_new), the 125 Oct 12 positions are identical 125/125, for v3 and for base alike.\n- That combined run also reproduces the branch's v2/positions_all.json and report_convert.json byte for byte.\n\nWhat differs: the committed file (blob 93a41667, the same at 373b41a6, main and the branch; last written at 2eff1be6 on Oct 12, before 28df6315 and f6be4fd7 on Oct 13).\n- cmp first differs at byte 524, line 29: the first position has no \"knockouts\": 0.\n- All 125 committed positions lack me.knockouts. Regenerated, 89 are 0, 24 are 1 and 12 are 2, so 36 are non-zero.\n- 15 notes differ. Each only drops a '(not represented: the harness has no condition field)' phrase.\n\nCorrection: 16 board entries lack `conditions`, but they are 13 opponent entries plus 3 of his, not '16 opponent and 3 of his'. The 16 on the opponent's side is a count of condition labels: 9 Poisoned, 2x[Poisoned, Asleep], 1 Confused, 1 [Poisoned, Burned].\n\nThe committed Oct 12 report_convert.json and all 24 committed deck files are byte-identical to the regenerated ones.\n\nSo this is drift that was already on main, and v3 introduced none of it. For v3 it is a wording issue (minor). Separately, main's committed Oct 12 file is stale on knock-out counts (36 positions) and conditions (16 entries). That needs a regenerate outside this branch."
+    },
+    {
+     "id": "(d) V3_CHANGES.md and v3_position_changes.txt accurate and complete",
+     "real": true,
+     "corrected_severity": "minor",
+     "reason": "PARTLY confirmed. I diffed 373b41a6's v2/positions_all.json against the branch's myself.\n\nWhat holds:\n- Exactly 52 positions changed and 40 are identical, the same IDs and the same field paths as v3_position_changes.txt.\n- Every changed field traces to a review item or a recorded correction. The position_list switch-2 flags are unchanged (14 yes).\n- The table's 'positions that changed' columns match: 010706 x11, 010003 x6 and 203719 t17 (18); the Ilima trio; the 3 Mesagoza positions; the 3 Giga Turbo positions; 015011 t01/t03; 030351 t09-t15 Darkrai; 022530 Dratini and Cape.\n- The 030351 Metal-step note is right: the ledger has Dragon's Blessing on the Active (slot 0) with Metal at t05, t07, t09 (after the retreat, Druddigon), t11, t13 and t15.\n- The km3 counts are right: 55/28/5 -> 57/26/5 of 88 comparable, and 29 -> 31.\n- The forced counts are right: 51 deviate before and after; 210823 t08 goes out and 010706 t15 comes in.\n- Tests: v3 runs 143 converter tests and 28 normaliser tests, all OK.\n\nThe five minor problems are real:\n- n1: The 'By field' numbers are field-line counts: opp.board 22 lines in 16 positions, me.board 11 in 7. Other fields count one line per position. 'Opponent Bench cards' also covers Tool renames, an Active entry (022530 t09 opp.board[0].tools) and 015011 t03's whole board. opp_ambiguous (6) and plan_truncated_at (1) are left out.\n- n2: 'byte-for-byte as they were' holds against main's converter, not main's committed Oct 12 file (see b2).\n- n3: Only the 4 set_opponent_hand entries carry `was`. replace_play has `expect`, which makes 5. The two renames (Meowth, Elegant Cape) are guarded only by 'changed nothing is an error'.\n- n4: compare_positions.short() cuts every value at 140 characters. Removed note fragments are invisible, for example 'opponent hand range [7, 8]...' at 010706 t07 and 'attack title of Regigigas not named...' at 203719 t07 and 210823 t08. His plans are cut too: 203719 t07 'Attack:V...' hides the change from Giga Turbo to Venomous Hit. Its docstring says the correction text is left out of the notes comparison; the code does not do that.\n- n5: Correction notes land on positions before the event: 015659 t01/t03 (the turn-4 Rare Candy, 'his hand is one card larger'), and 022530 t01 (Elegant Cape and 'Mega Scizor ex is 230', while the opponent's board there is Orthworm and Scyther with no Tool).\n\nSmall additions:\n- Main's converter fails 36 of the 46 new tests (33 failures, 3 errors). That is not exactly '31 failures, 4 errors' plus 2 later tests, and it can't be settled: all 143 tests are already in the first branch commit 693fa874.\n- The 'Not done: pg_pos Starting Plains' line doesn't mention that main 60cc67d3 landed 9 minutes before the branch commits."
+    },
+    {
+     "id": "Review Major 7 (Dragon's Blessing choice: plan step + typed harness label)",
+     "real": true,
+     "corrected_severity": "minor",
+     "reason": "PARTLY confirmed.\n\nThe plan step is fixed:\n- v3 022530 t09 his_plan is [Place:Axew, Play:Rainbow Cave, UseStadium, Attach:1Fighting@3 zone, Ability, AttachTypedFromDiscard:Fighting@0, Attack:Frenzied Blade].\n- Raw ledger turn 9: order 5 is Dragon's Blessing, energy type Fighting, destination 'Active Haxorus' (Haxorus is board[0]), with 'Fighting selected at 414'. It comes before order 6, Frenzied Blade.\n- The discard at turn start is [Metal], and Rainbow Cave (order 3) adds a Fighting, so the choice is real.\n- Card text (lib/card.py): Dragonair B4 117's Dragon's Blessing attaches an Energy from the discard to the Active [N] Pokémon. So slot 0 is right.\n\nThe typed label is not done:\n- rl/strength is unchanged on the branch (the diff touches only rl/results).\n- label() in rl/strength/src/main.rs has no AttachTypedFromDiscard arm. It falls to the default Debug-name split and gives a bare 'AttachTypedFromDiscard'.\n- So the 022530 t09 forced replay is still cut at step 5, before Frenzied Blade, as in v2. forced_summary notes this.\n\nThe mismatch also reaches the free-run comparison, which V3_CHANGES doesn't mention. km3_summary 'desc' now lists his 'AttachTypedFromDiscard:Metal@0' against km3's untyped 'AttachTypedFromDiscard' as a difference in 030351 t05, t07 and t15, even where km3 makes the same choice. same_first and same_plan don't change, because they were already 0 there.\n\nThe positions are right. What remains is a harness limitation (Rust), documented, and it now affects only the replay and description output. Hence minor."
+    }
+   ]
+  }
+ }
+]

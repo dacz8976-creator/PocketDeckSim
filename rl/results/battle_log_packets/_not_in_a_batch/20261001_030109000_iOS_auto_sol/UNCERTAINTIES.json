@@ -1,0 +1,29 @@
+{
+  "status": "full_battle_review_complete",
+  "blocking_coverage_gaps": [],
+  "uncertainties": [
+    {
+      "topic": "Hidden deck and hand contents",
+      "impact": "Cannot establish complete lists or alternative cards available. Gholdengo challenge name does not establish draw/play.",
+      "requires_owner_input": false
+    },
+    {
+      "topic": "Exact catalog/set IDs",
+      "impact": "Mechanically relevant names, HP, attacks, costs and effects are native-verified; numerical catalog IDs not claimed.",
+      "requires_owner_input": false
+    },
+    {
+      "topic": "Filename date/clock basis",
+      "impact": "Filename starts20261001 while request/upload is September30 America/Chicago; actual local match date not independently established.",
+      "requires_owner_input": false
+    },
+    {
+      "topic": "Exact subsecond onset and opponent private logic",
+      "impact": "Native timestamps cite observed states, not exact action starts; strategy alternatives remain conditional.",
+      "requires_owner_input": false
+    }
+  ],
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "worker_status_at_submission": "finished_first_pass_awaiting_independent_lead_acceptance"
+}

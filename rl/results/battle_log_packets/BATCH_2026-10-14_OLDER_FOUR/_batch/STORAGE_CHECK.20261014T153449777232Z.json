@@ -1,0 +1,131 @@
+{
+  "checked_utc": "2026-10-14T15:34:49.777232+00:00",
+  "applied": true,
+  "videos": 4,
+  "online_only": 0,
+  "allocated_bytes": 1776398998,
+  "files_deleted": 0,
+  "video_contents_read": false,
+  "method": "Existing Cloud Files metadata query; documented attrib +U -P only for in-sync placeholders; explicit owner approval binds exactly two excerpt exceptions",
+  "entries": [
+    {
+      "video": "20261002_011527000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20261002_011527000_iOS.MP4",
+      "source_sha256_from_verified_move": "7cbaa7c16071389d66d14ad9fcbf55f5991b2f7703f14d85eb0af4a68ef9d778",
+      "owner_excerpt_exception": false,
+      "before": {
+        "logical_bytes": 748640119,
+        "allocated_bytes": 748640119,
+        "attributes": 525344,
+        "placeholder_state": 1,
+        "cloud_placeholder": true,
+        "in_sync": false,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "pending_reason": "Waiting for OneDrive sync; original contents retained",
+      "after": {
+        "logical_bytes": 748640119,
+        "allocated_bytes": 748640119,
+        "attributes": 525344,
+        "placeholder_state": 1,
+        "cloud_placeholder": true,
+        "in_sync": false,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20261002_012229000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20261002_012229000_iOS.MP4",
+      "source_sha256_from_verified_move": "d767c42f6e9a4e8677ae45020e7fccc2a0e9954009faf699abada5ef6c4d49c5",
+      "owner_excerpt_exception": false,
+      "before": {
+        "logical_bytes": 570862799,
+        "allocated_bytes": 570862799,
+        "attributes": 1049632,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": false
+      },
+      "requested_online_only": true,
+      "after": {
+        "logical_bytes": 570862799,
+        "allocated_bytes": 570862799,
+        "attributes": 1049632,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260926_211809000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260926_211809000_iOS.MP4",
+      "source_sha256_from_verified_move": "f5b6c67fbe006c8485056d8b959a52146289cf8b95c32705b2149135b6bb6a49",
+      "owner_excerpt_exception": true,
+      "before": {
+        "logical_bytes": 79586530,
+        "allocated_bytes": 79586530,
+        "attributes": 525344,
+        "placeholder_state": 1,
+        "cloud_placeholder": true,
+        "in_sync": false,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "pending_reason": "Waiting for OneDrive sync; original contents retained",
+      "after": {
+        "logical_bytes": 79586530,
+        "allocated_bytes": 79586530,
+        "attributes": 525344,
+        "placeholder_state": 1,
+        "cloud_placeholder": true,
+        "in_sync": false,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    },
+    {
+      "video": "20260926_212155000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260926_212155000_iOS.MP4",
+      "source_sha256_from_verified_move": "258066407acbc779da233b4ee92a6fd49b6260f35534b0e5dd84e6d9c3102683",
+      "owner_excerpt_exception": true,
+      "before": {
+        "logical_bytes": 377309550,
+        "allocated_bytes": 377309550,
+        "attributes": 525344,
+        "placeholder_state": 1,
+        "cloud_placeholder": true,
+        "in_sync": false,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": false,
+      "pending_reason": "Waiting for OneDrive sync; original contents retained",
+      "after": {
+        "logical_bytes": 377309550,
+        "allocated_bytes": 377309550,
+        "attributes": 525344,
+        "placeholder_state": 1,
+        "cloud_placeholder": true,
+        "in_sync": false,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      }
+    }
+  ]
+}

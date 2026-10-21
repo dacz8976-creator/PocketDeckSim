@@ -1,0 +1,41 @@
+{
+  "video_basename": "20261001_203626000_iOS.MP4",
+  "sha256": "4e6dd60d8827f7818f028cb29757200061ab9ace7dde2e772a5358d7a0c0c6fa",
+  "reviewer": "sol_rules_20261001_203626000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "status": "Finished first pass awaiting independent lead acceptance.",
+  "recording_type": "one_complete_solo_battle_for_rules_testing",
+  "complete_available_footage_review": true,
+  "reviewed_intervals_seconds": [[0, 365.95]],
+  "battle_complete": true,
+  "battle_count": 1,
+  "proposed_completion_status": "full_battle_review_complete",
+  "ladder_eligible": false,
+  "mode": "Solo versus Random Battle (Intermediate), established by results screen",
+  "owner_auto": "off throughout; no visible change",
+  "outcomes": [{"owner": "Dacz8976", "result": "win", "points": 3, "opponent_points": 1, "turns": 12, "went_second": true, "displayed_damage_done": 250}],
+  "key_findings": [
+    "Will's initial guaranteed Heads is consumed before Victory Star; replacement first coin is visibly Tails.",
+    "Victory Star replaces both Double Smash flips; only one accepted reroll occurs despite two Victini in play.",
+    "Zangoose Counterattack does not trigger after zero damage and still resolves after a lethal attack, producing a double knockout and one point each.",
+    "Bounded Field doubles one-Head Double Smash from40 to80 against Fire-weak Celebi and Sunkern.",
+    "Hoppip evolution clears visible Confusion; Skiploom Bounce deals30 then switches.",
+    "Master Plan's two Trainer coins are Heads, with no Victory Star prompt; its tails branch and Confusion attacks remain untested.",
+    "Results damage250 includes overkill and reconciles with10+40+0+40+80+80."
+  ],
+  "independent_check_times": {
+    "opening": [16.5, 21],
+    "ordinary_development": [106.5, 114, 155, 165],
+    "first_victory_star_and_counterattack": [120, 121.5, 129, 134, 139.5],
+    "zero_damage": [171, 172.5, 180.5],
+    "double_knockout": [220.5, 226.5, 229.5, 232.5, 235.5, 238.5, 241.5],
+    "bounded_field": [210, 289.5, 298, 300.9, 350],
+    "master_plan": [58.5, 62, 271.5, 277.5],
+    "will_victory_star": [327, 336.3, 338, 340.5, 345.5, 346.5, 347, 350],
+    "ending": [355.5, 364.5, 365.8]
+  },
+  "remaining_coverage_gaps": [],
+  "independently_accepted": false
+}
+

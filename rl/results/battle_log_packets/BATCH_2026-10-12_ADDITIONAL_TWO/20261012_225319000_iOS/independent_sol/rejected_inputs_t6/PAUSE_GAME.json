@@ -1,0 +1,120 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261012_225319000_iOS",
+  "review_date": "2026-10-12",
+  "sources": [
+    {
+      "video_basename": "20261012_225319000_iOS.MP4",
+      "sha256": "10908103247750567923e0899770318a2e53821055d7a2d464ab8d8a2b12dd70",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "deck_name": "Glimmora / Alolan Muk / Kingambit / Regigigas",
+  "opening": {
+    "source_video": "20261012_225319000_iOS.MP4",
+    "timestamp_seconds": 28,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Rare Candy",
+        "variant": null,
+        "basis": "visible title/art, not deck inference",
+        "evidence_ids": [
+          "f0028.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Pawniard",
+        "variant": null,
+        "basis": "visible title/art, not deck inference",
+        "evidence_ids": [
+          "f0028.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Ilima",
+        "variant": null,
+        "basis": "visible title/art, not deck inference",
+        "evidence_ids": [
+          "f0028.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Professor’s Research",
+        "variant": null,
+        "basis": "visible title/art, not deck inference",
+        "evidence_ids": [
+          "f0028.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Heavy Helmet",
+        "variant": null,
+        "basis": "visible title/art, not deck inference",
+        "evidence_ids": [
+          "f0028.00"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Pawniard",
+      "opening_position": 2,
+      "source_video": "20261012_225319000_iOS.MP4",
+      "timestamp_seconds": 36,
+      "evidence_ids": [
+        "f0028.00"
+      ]
+    },
+    "redraw_or_replacement": "none observed",
+    "before_active_placement": true,
+    "status": "observed",
+    "evidence_ids": [
+      "f0028.00"
+    ],
+    "limit_reason": null
+  },
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "full_battle_review_complete_pending_independent_acceptance",
+  "outcome": {
+    "owner": "defeat",
+    "opponent": "Job",
+    "ending": "owner concession",
+    "owner_points": 0,
+    "opponent_points": 2,
+    "turns_played": 9,
+    "damage_done": 50,
+    "evidence_ids": [
+      "f0426.00",
+      "f0429.00",
+      "f0438.00"
+    ]
+  },
+  "limits": [
+    "No opened discard pile views in footage.",
+    "Opponent hidden draw and search identities remain unknown; later plays do not identify prior search backs.",
+    "Opponent fan2 overlaps support3-4 atT2 and5-6 atT8.",
+    "Encoded frame PTS not measured; requested source seeks and animation-end estimates retained.",
+    "Exact semantic20-card snapshot bound by QR; artwork and rarity unverified."
+  ],
+  "lead_checked": false
+}

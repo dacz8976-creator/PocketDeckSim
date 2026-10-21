@@ -1,0 +1,151 @@
+{
+  "source": "20260908_022627000_iOS.MP4",
+  "accepted_review": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\Boss Folder\\wsl-review-campaign-2026-09-22\\battle-20260908-022627\\REVIEW.md",
+  "rows": [
+    {
+      "turn_number": 1,
+      "accepted_source_line": 20,
+      "verbatim_accepted_section": "| 1 — `00:39–01:04` | Dacz8976 | Repeatedly previews and cancels Professor's Research; it is **not played**. Plays Team Rocket's Researcher. The flip sequence is heads, heads, tails, putting Team Rocket's Raticate ex and Team Rocket's Hypno into hand. | Comfey remains Active at 70; Bench empty; no Energy attached; no attack. Score 0–0. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation",
+      "actions": "Repeatedly previews and cancels Professor's Research; it is **not played**. Plays Team Rocket's Researcher. The flip sequence is heads, heads, tails, putting Team Rocket's Raticate ex and Team Rocket's Hypno into hand.",
+      "exit_state": "Comfey remains Active at 70; Bench empty; no Energy attached; no attack. Score 0–0."
+    },
+    {
+      "turn_number": 2,
+      "accepted_source_line": 21,
+      "verbatim_accepted_section": "| 2 — `01:04–01:34` | hyp | Attaches Darkness Energy to Skorupi, benches Mega Absol ex, and plays Professor's Research to draw two cards. Skorupi uses Bug Bite for 20. | Comfey 70→50; Skorupi remains Active; Mega Absol ex on Bench. Score 0–0. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation",
+      "actions": "Attaches Darkness Energy to Skorupi, benches Mega Absol ex, and plays Professor's Research to draw two cards. Skorupi uses Bug Bite for 20.",
+      "exit_state": "Comfey 70→50; Skorupi remains Active; Mega Absol ex on Bench. Score 0–0."
+    },
+    {
+      "turn_number": 3,
+      "accepted_source_line": 22,
+      "verbatim_accepted_section": "| 3 — `01:34–02:18` | Dacz8976 | Benches Team Rocket's Rattata. Plays Poké Ball; Team Rocket's Drowzee is the publicly shown Basic obtained, then benched. Attaches Psychic Energy to Drowzee. Retreats zero-cost Comfey and promotes Drowzee. | Active Drowzee 60 with 1 Psychic; Bench Comfey 50 and Rattata 40; score 0–0. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation",
+      "actions": "Benches Team Rocket's Rattata. Plays Poké Ball; Team Rocket's Drowzee is the publicly shown Basic obtained, then benched. Attaches Psychic Energy to Drowzee. Retreats zero-cost Comfey and promotes Drowzee.",
+      "exit_state": "Active Drowzee 60 with 1 Psychic; Bench Comfey 50 and Rattata 40; score 0–0."
+    },
+    {
+      "turn_number": 4,
+      "accepted_source_line": 23,
+      "verbatim_accepted_section": "| 4 — `02:18–02:23` | hyp | Skorupi uses Bug Bite. Drowzee's Darkness weakness adds 20, so the displayed damage is 40. | Drowzee 60→20; score 0–0. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation",
+      "actions": "Skorupi uses Bug Bite. Drowzee's Darkness weakness adds 20, so the displayed damage is 40.",
+      "exit_state": "Drowzee 60→20; score 0–0."
+    },
+    {
+      "turn_number": 5,
+      "accepted_source_line": 24,
+      "verbatim_accepted_section": "| 5 — `02:23–03:47` | Dacz8976 | Evolves Rattata into Team Rocket's Raticate ex and accepts Thieving Incisors, moving one random Darkness Energy from the opposing Active Skorupi to Raticate ex. Evolves Drowzee into Team Rocket's Hypno, preserving 40 damage (50 HP remaining). Attaches Elegant Cape to Raticate ex, raising it to 150 HP. Plays Copycat, shuffling the hand into the deck and drawing to the opponent's hand count. Benches a second Team Rocket's Rattata from the new hand. Team Rocket's Goo-zooka is previewed only. Attaches Psychic Energy to Active Hypno, which now has two Psychic Energy. | Active Hypno 50/90 with 2 Psychic; Bench Raticate ex 150 with Cape and 1 stolen Darkness, Comfey 50, Rattata 40. Skorupi has no Energy. Score 0–0. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation",
+      "actions": "Evolves Rattata into Team Rocket's Raticate ex and accepts Thieving Incisors, moving one random Darkness Energy from the opposing Active Skorupi to Raticate ex. Evolves Drowzee into Team Rocket's Hypno, preserving 40 damage (50 HP remaining). Attaches Elegant Cape to Raticate ex, raising it to 150 HP. Plays Copycat, shuffling the hand into the deck and drawing to the opponent's hand count. Benches a second Team Rocket's Rattata from the new hand. Team Rocket's Goo-zooka is previewed only. Attaches Psychic Energy to Active Hypno, which now has two Psychic Energy.",
+      "exit_state": "Active Hypno 50/90 with 2 Psychic; Bench Raticate ex 150 with Cape and 1 stolen Darkness, Comfey 50, Rattata 40. Skorupi has no Energy. Score 0–0."
+    },
+    {
+      "turn_number": 6,
+      "accepted_source_line": 25,
+      "verbatim_accepted_section": "| 6 — `03:47–04:28` | hyp | Reattaches Darkness Energy to Skorupi and uses Bug Bite. Weakness again makes the damage 40. | Skorupi has 1 Darkness; Hypno 50→10; no KO; score 0–0. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation",
+      "actions": "Reattaches Darkness Energy to Skorupi and uses Bug Bite. Weakness again makes the damage 40.",
+      "exit_state": "Skorupi has 1 Darkness; Hypno 50→10; no KO; score 0–0."
+    },
+    {
+      "turn_number": 7,
+      "accepted_source_line": 26,
+      "verbatim_accepted_section": "| 7 — `04:28–05:17` | Dacz8976 | Plays Poké Ball; the system reports no valid card in the deck. Plays Sightseer, views the top three cards, and publicly takes Team Rocket's Raticate ex. Evolves the second Rattata into the gold-art Team Rocket's Raticate ex; Thieving Incisors moves the reattached Darkness Energy from Active Skorupi to it. Plays Team Rocket's Goo-zooka, making the opponent's Active Retreat Cost one higher through the next turn. Hypno uses Entrap, switches benched Mega Absol ex Active, and deals 50. | Mega Absol ex 170→120 Active; Skorupi benched with no Energy. Dacz board: Hypno 10 Active; Raticate ex 150/Cape, Comfey 50, Raticate ex 120 on Bench. Score 0–0. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation",
+      "actions": "Plays Poké Ball; the system reports no valid card in the deck. Plays Sightseer, views the top three cards, and publicly takes Team Rocket's Raticate ex. Evolves the second Rattata into the gold-art Team Rocket's Raticate ex; Thieving Incisors moves the reattached Darkness Energy from Active Skorupi to it. Plays Team Rocket's Goo-zooka, making the opponent's Active Retreat Cost one higher through the next turn. Hypno uses Entrap, switches benched Mega Absol ex Active, and deals 50.",
+      "exit_state": "Mega Absol ex 170→120 Active; Skorupi benched with no Energy. Dacz board: Hypno 10 Active; Raticate ex 150/Cape, Comfey 50, Raticate ex 120 on Bench. Score 0–0."
+    },
+    {
+      "turn_number": 8,
+      "accepted_source_line": 27,
+      "verbatim_accepted_section": "| 8 — `05:17–05:45` | hyp | Evolves the benched, Energy-free Skorupi into Drapion. Attaches one Darkness Energy to Active Mega Absol ex. Plays Professor's Research and draws two. Uses Potion to heal Mega Absol ex by 20. No attack is observed. | Mega Absol ex 120→140 Active with 1 Darkness; Drapion 130 benched with no Energy. Score 0–0. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation",
+      "actions": "Evolves the benched, Energy-free Skorupi into Drapion. Attaches one Darkness Energy to Active Mega Absol ex. Plays Professor's Research and draws two. Uses Potion to heal Mega Absol ex by 20. No attack is observed.",
+      "exit_state": "Mega Absol ex 120→140 Active with 1 Darkness; Drapion 130 benched with no Energy. Score 0–0."
+    },
+    {
+      "turn_number": 9,
+      "accepted_source_line": 28,
+      "verbatim_accepted_section": "| 9 — `05:45–06:20` | Dacz8976 | Previews Pokémon Flute but does **not** play it; it remains in hand later. Attaches Psychic Energy to the Cape-equipped Raticate ex. Hypno uses Entrap, switching Drapion Active and dealing 50. | Drapion 130→80 Active; Mega Absol ex 140 benched. Hypno remains at 10. Score 0–0. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation",
+      "actions": "Previews Pokémon Flute but does **not** play it; it remains in hand later. Attaches Psychic Energy to the Cape-equipped Raticate ex. Hypno uses Entrap, switching Drapion Active and dealing 50.",
+      "exit_state": "Drapion 130→80 Active; Mega Absol ex 140 benched. Hypno remains at 10. Score 0–0."
+    },
+    {
+      "turn_number": 10,
+      "accepted_source_line": 29,
+      "verbatim_accepted_section": "| 10 — `06:20–06:48` | hyp | Benches Deino and attaches one Darkness Energy to Active Drapion. No attack or damage is observed. | Drapion 80 Active with 1 Darkness; Bench Mega Absol ex 140 with 1 Darkness and Deino 60. Score 0–0. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation",
+      "actions": "Benches Deino and attaches one Darkness Energy to Active Drapion. No attack or damage is observed.",
+      "exit_state": "Drapion 80 Active with 1 Darkness; Bench Mega Absol ex 140 with 1 Darkness and Deino 60. Score 0–0."
+    },
+    {
+      "turn_number": 11,
+      "accepted_source_line": 30,
+      "verbatim_accepted_section": "| 11 — `06:48–07:20` | Dacz8976 | Draws Professor's Research but does not play it. Attaches Psychic Energy to the gold-art Raticate ex. Hypno uses Entrap, switching Mega Absol ex Active and dealing 50. | Mega Absol ex 140→90 Active; Drapion 80 and Deino 60 benched. Hypno remains 10. Score 0–0. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation",
+      "actions": "Draws Professor's Research but does not play it. Attaches Psychic Energy to the gold-art Raticate ex. Hypno uses Entrap, switching Mega Absol ex Active and dealing 50.",
+      "exit_state": "Mega Absol ex 140→90 Active; Drapion 80 and Deino 60 benched. Hypno remains 10. Score 0–0."
+    },
+    {
+      "turn_number": 12,
+      "accepted_source_line": 31,
+      "verbatim_accepted_section": "| 12 — `07:20–08:19` | hyp | Uses Lucky Ice Pop to heal Mega Absol ex by 20, 90→110; the flip is heads, so the same Item returns to hand. Uses Rare Candy to evolve Deino directly into Hydreigon. Attaches a second Darkness Energy to Mega Absol ex. Mega Absol ex uses Darkness Claw: 80 plus 20 Darkness weakness deals 100 to the 10-HP Hypno. Darkness Claw reveals Dacz8976's hand and discards Cyrus. | First Hypno is KO'd; `hyp` receives +1 at `08:12–08:13`, score 1–0. Dacz8976 promotes the Cape-equipped Raticate ex at 150 HP. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation",
+      "actions": "Uses Lucky Ice Pop to heal Mega Absol ex by 20, 90→110; the flip is heads, so the same Item returns to hand. Uses Rare Candy to evolve Deino directly into Hydreigon. Attaches a second Darkness Energy to Mega Absol ex. Mega Absol ex uses Darkness Claw: 80 plus 20 Darkness weakness deals 100 to the 10-HP Hypno. Darkness Claw reveals Dacz8976's hand and discards Cyrus.",
+      "exit_state": "First Hypno is KO'd; `hyp` receives +1 at `08:12–08:13`, score 1–0. Dacz8976 promotes the Cape-equipped Raticate ex at 150 HP."
+    },
+    {
+      "turn_number": 13,
+      "accepted_source_line": 32,
+      "verbatim_accepted_section": "| 13 — `08:19–08:34` | Dacz8976 | Start-of-turn draw fails with the visible prompt “No cards left in deck; unable to draw cards.” Benches Team Rocket's Drowzee and attaches Psychic Energy to it. Cape-equipped Raticate ex uses Boost Dash for 70. | Mega Absol ex 110→40; Drowzee 60 with 1 Psychic on Bench; score remains 1–0. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation",
+      "actions": "Start-of-turn draw fails with the visible prompt “No cards left in deck; unable to draw cards.” Benches Team Rocket's Drowzee and attaches Psychic Energy to it. Cape-equipped Raticate ex uses Boost Dash for 70.",
+      "exit_state": "Mega Absol ex 110→40; Drowzee 60 with 1 Psychic on Bench; score remains 1–0."
+    },
+    {
+      "turn_number": 14,
+      "accepted_source_line": 33,
+      "verbatim_accepted_section": "| 14 — `08:34–09:50` | hyp | Replays the same Lucky Ice Pop, healing Mega Absol ex 40→60; heads returns it to hand again. Retreats Mega Absol ex for 1 Darkness, leaving it with 1, and promotes Drapion. Attaches a second Darkness Energy to Drapion, which then uses Stun Poison for 50; the status coin is tails, so no Poison or Paralysis is applied. | Cape-equipped Raticate ex 150→100; Drapion 80 Active with 2 Darkness; score 1–0. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation",
+      "actions": "Replays the same Lucky Ice Pop, healing Mega Absol ex 40→60; heads returns it to hand again. Retreats Mega Absol ex for 1 Darkness, leaving it with 1, and promotes Drapion. Attaches a second Darkness Energy to Drapion, which then uses Stun Poison for 50; the status coin is tails, so no Poison or Paralysis is applied.",
+      "exit_state": "Cape-equipped Raticate ex 150→100; Drapion 80 Active with 2 Darkness; score 1–0."
+    },
+    {
+      "turn_number": 15,
+      "accepted_source_line": 34,
+      "verbatim_accepted_section": "| 15 — `09:50–10:16` | Dacz8976 | Draw again fails because the deck is empty. Retreats the Cape-equipped Raticate ex for 2 Energy, discarding its stolen Darkness and attached Psychic, and promotes the benched Drowzee. Evolves it into a second Team Rocket's Hypno, attaches another Psychic Energy, then uses Entrap. Entrap switches Mega Absol ex Active and deals 50. | Mega Absol ex 60→10 Active with 1 Darkness; second Hypno 90 Active for Dacz8976 with 2 Psychic; score 1–0. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation",
+      "actions": "Draw again fails because the deck is empty. Retreats the Cape-equipped Raticate ex for 2 Energy, discarding its stolen Darkness and attached Psychic, and promotes the benched Drowzee. Evolves it into a second Team Rocket's Hypno, attaches another Psychic Energy, then uses Entrap. Entrap switches Mega Absol ex Active and deals 50.",
+      "exit_state": "Mega Absol ex 60→10 Active with 1 Darkness; second Hypno 90 Active for Dacz8976 with 2 Psychic; score 1–0."
+    },
+    {
+      "turn_number": 16,
+      "accepted_source_line": 35,
+      "verbatim_accepted_section": "| 16 — `10:16–11:10` | hyp | Benches another Deino. Retreats Mega Absol ex for its remaining 1 Darkness and promotes Hydreigon. Attaches one Darkness Energy normally. Uses Roar in Unison: takes two more Darkness Energy from the Energy Zone, attaches them to Hydreigon, then deals 30 self-damage, 150→120. Uses Lucky Ice Pop to heal 20, 120→140; tails sends the Item to the discard pile. Hydreigon uses Hyper Ray for 130 plus 20 Darkness weakness = 150 and discards all 3 attached Energy. | Second Hypno 90→0 and is KO'd. `hyp` receives +1 at `11:02–11:03`, visible score 2–0. Dacz8976 promotes the gold-art Raticate ex at 120 HP. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation",
+      "actions": "Benches another Deino. Retreats Mega Absol ex for its remaining 1 Darkness and promotes Hydreigon. Attaches one Darkness Energy normally. Uses Roar in Unison: takes two more Darkness Energy from the Energy Zone, attaches them to Hydreigon, then deals 30 self-damage, 150→120. Uses Lucky Ice Pop to heal 20, 120→140; tails sends the Item to the discard pile. Hydreigon uses Hyper Ray for 130 plus 20 Darkness weakness = 150 and discards all 3 attached Energy.",
+      "exit_state": "Second Hypno 90→0 and is KO'd. `hyp` receives +1 at `11:02–11:03`, visible score 2–0. Dacz8976 promotes the gold-art Raticate ex at 120 HP."
+    },
+    {
+      "turn_number": 17,
+      "accepted_source_line": 36,
+      "verbatim_accepted_section": "| 17 — `11:10–11:25` | Dacz8976 | Draw fails because the deck is empty. A Psychic Energy is generated but left unused. Dacz8976 briefly opens and closes the menu without confirming Concede. Gold-art Raticate ex uses Boost Dash for 70. | Hydreigon 140→70; player Active Raticate ex remains 120 with its previously acquired Darkness and Psychic Energy. Visible score 2–0. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation",
+      "actions": "Draw fails because the deck is empty. A Psychic Energy is generated but left unused. Dacz8976 briefly opens and closes the menu without confirming Concede. Gold-art Raticate ex uses Boost Dash for 70.",
+      "exit_state": "Hydreigon 140→70; player Active Raticate ex remains 120 with its previously acquired Darkness and Psychic Energy. Visible score 2–0."
+    },
+    {
+      "turn_number": 18,
+      "accepted_source_line": 37,
+      "verbatim_accepted_section": "| 18 — `11:25–12:01` | hyp | Plays Lillie, healing 60 from the Stage 2 Hydreigon, 70→130. Attaches one Darkness Energy normally, then uses Roar in Unison to attach two more and self-damage 30, 130→100. Hydreigon uses Hyper Ray for 130 and discards all its Energy. | Gold-art Team Rocket's Raticate ex 120→0. The UI awards **+2 points** for the Pokémon ex KO at `11:59–12:00`; the third visible victory circle fills. The recording ends during that completed award animation. |",
+      "basis": "inherited_accepted_review_not_new_visual_observation",
+      "actions": "Plays Lillie, healing 60 from the Stage 2 Hydreigon, 70→130. Attaches one Darkness Energy normally, then uses Roar in Unison to attach two more and self-damage 30, 130→100. Hydreigon uses Hyper Ray for 130 and discards all its Energy.",
+      "exit_state": "Gold-art Team Rocket's Raticate ex 120→0. The UI awards **+2 points** for the Pokémon ex KO at `11:59–12:00`; the third visible victory circle fills. The recording ends during that completed award animation."
+    }
+  ],
+  "accepted_status": "Reviewed; latest completion event supersedes stale prosepending status"
+}

@@ -1,0 +1,16 @@
+{
+  "source_filename": "20261015_020931000_iOS.MP4",
+  "source_sha256": "a8e539e31976ed5591bba0a2cfba3db3a44168b61191e259b5cd55bf05e37060",
+  "reviewer": "/root/night_020931",
+  "material_unresolved_findings": [],
+  "recording_complete": true,
+  "apparent_recording_gaps": [],
+  "limits": [
+    {"topic": "hidden_information", "timestamps_seconds": [0, 132.836667], "finding": "Exact owner 20-card composition and hidden opponent deck/hand cards are not established. Shared code is retained but not decoded."},
+    {"topic": "concession_reason", "timestamps_seconds": [119, 123], "finding": "Opponent concession is explicit; their reason and possible unseen recovery options are unknown."},
+    {"topic": "postmatch_rank", "timestamps_seconds": [124, 132.836667], "finding": "No updated rank or earned rank-point gain is shown. Prequeue Master Ball Rank 758 pts and Unranked standing are visible at 2.00."},
+    {"topic": "touch_timing", "timestamps_seconds": [101, 111], "finding": "Exact Yes touch instant is bracketed by the Thieving Incisors prompt and successful Energy transfer; acceptance and outcome are established."}
+  ],
+  "acceptance_status": "First pass complete; separate independent checker and lead acceptance pending.",
+  "administrative_addendum": "JSON companion requested by lead immediately after initial freeze, derived from frozen UNCERTAINTIES.md. The original REVIEW_PACKET_HASHES.json was briefly regenerated, then restored byte-for-byte from preserved REVIEW_PACKET_HASHES_INITIAL.json on lead instruction. No original mapped file, prose review claim, or evidence image changed. This sidecar and the preserved initial manifest are bound separately by SUPPLEMENT_HASHES.json."
+}

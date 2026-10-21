@@ -1,0 +1,175 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261002_211613000_iOS_auto_sol",
+  "sources": [
+    {
+      "video_basename": "20261002_211613000_iOS.MP4",
+      "sha256": "8eec16e93f6e3bc1322e31bb5ff85c95a364ffb8bc14dd53427626226f1e3fd4",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "request_source": "C:\\Users\\dacz8\\Projects\\CODEX_REQUEST_pause_games.md",
+  "addendum": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\GUIDE_UPDATE_REQUIREMENTS.md",
+  "status": "complete_with_recording_limits",
+  "integrated_in_first_pass": true,
+  "source_observed_owner_start_boards": [
+    {
+      "turn_number": 1,
+      "ledger_pointer": "TURN_LEDGER.json#/turns/0/board_at_start",
+      "fresh_native_evidence_ids": [
+        "F0024.80"
+      ],
+      "evolution_stack_basis": "Same-source witnessed evolution; hidden current stacks not directly opened"
+    },
+    {
+      "turn_number": 3,
+      "ledger_pointer": "TURN_LEDGER.json#/turns/2/board_at_start",
+      "fresh_native_evidence_ids": [
+        "F0045.80"
+      ],
+      "evolution_stack_basis": "Same-source witnessed evolution; hidden current stacks not directly opened"
+    },
+    {
+      "turn_number": 5,
+      "ledger_pointer": "TURN_LEDGER.json#/turns/4/board_at_start",
+      "fresh_native_evidence_ids": [
+        "F0093.20"
+      ],
+      "evolution_stack_basis": "Same-source witnessed evolution; hidden current stacks not directly opened"
+    },
+    {
+      "turn_number": 7,
+      "ledger_pointer": "TURN_LEDGER.json#/turns/6/board_at_start",
+      "fresh_native_evidence_ids": [
+        "F0137.80"
+      ],
+      "evolution_stack_basis": "Same-source witnessed evolution; hidden current stacks not directly opened"
+    },
+    {
+      "turn_number": 9,
+      "ledger_pointer": "TURN_LEDGER.json#/turns/8/board_at_start",
+      "fresh_native_evidence_ids": [
+        "F0167.20"
+      ],
+      "evolution_stack_basis": "Same-source witnessed evolution; hidden current stacks not directly opened"
+    },
+    {
+      "turn_number": 11,
+      "ledger_pointer": "TURN_LEDGER.json#/turns/10/board_at_start",
+      "fresh_native_evidence_ids": [
+        "F0208.80"
+      ],
+      "evolution_stack_basis": "Same-source witnessed evolution; hidden current stacks not directly opened"
+    }
+  ],
+  "owner_choices_during_opponent_turns": [],
+  "choice_absence_basis": "Full timeline inspected: owner never takes damage, never loses an Active, no Sabrina/forced-switch prompt, and no owner choice screen during opponent turns.",
+  "opponent_own_KO_promotions": [
+    {
+      "whose_choice": "computer opponent",
+      "source_video": "20261002_211613000_iOS.MP4",
+      "timestamp_seconds": 74.5,
+      "options": [
+        "Frigibax left Bench",
+        "Squirtle right Bench"
+      ],
+      "selected": "Squirtle right to Active",
+      "evidence_ids": [
+        "F0068.00",
+        "F0074.50"
+      ]
+    },
+    {
+      "whose_choice": "computer opponent",
+      "source_video": "20261002_211613000_iOS.MP4",
+      "timestamp_seconds": 156.5,
+      "options": [
+        "Baxcalibur left Bench only"
+      ],
+      "selected": "Baxcalibur to Active",
+      "choice_kind": "mandatory single-option replacement",
+      "evidence_ids": [
+        "F0148.50",
+        "F0156.50"
+      ]
+    }
+  ],
+  "seen_inventory_file": "SEEN_CARD_INVENTORY.json",
+  "per_owner_turn_decision_maker": [
+    {
+      "turn_number": 1,
+      "decision_maker": "game Auto",
+      "visible_status": "Auto green checked enabled",
+      "evidence_ids": [
+        "F0024.80",
+        "F0025.50"
+      ],
+      "change_evidence": [],
+      "limit": "No recorded toggle/override; invisible input cannot be certified from footage"
+    },
+    {
+      "turn_number": 3,
+      "decision_maker": "game Auto",
+      "visible_status": "Auto green checked enabled",
+      "evidence_ids": [
+        "F0045.80",
+        "F0074.50"
+      ],
+      "change_evidence": [],
+      "limit": "No recorded toggle/override; invisible input cannot be certified from footage"
+    },
+    {
+      "turn_number": 5,
+      "decision_maker": "game Auto",
+      "visible_status": "Auto green checked enabled",
+      "evidence_ids": [
+        "F0093.20",
+        "F0121.50"
+      ],
+      "change_evidence": [],
+      "limit": "No recorded toggle/override; invisible input cannot be certified from footage"
+    },
+    {
+      "turn_number": 7,
+      "decision_maker": "game Auto",
+      "visible_status": "Auto green checked enabled",
+      "evidence_ids": [
+        "F0137.80",
+        "F0156.50"
+      ],
+      "change_evidence": [],
+      "limit": "No recorded toggle/override; invisible input cannot be certified from footage"
+    },
+    {
+      "turn_number": 9,
+      "decision_maker": "game Auto",
+      "visible_status": "Auto green checked enabled",
+      "evidence_ids": [
+        "F0167.20",
+        "F0186.50"
+      ],
+      "change_evidence": [],
+      "limit": "No recorded toggle/override; invisible input cannot be certified from footage"
+    },
+    {
+      "turn_number": 11,
+      "decision_maker": "game Auto",
+      "visible_status": "Auto green checked enabled",
+      "evidence_ids": [
+        "F0208.80",
+        "F0222.50"
+      ],
+      "change_evidence": [],
+      "limit": "No recorded toggle/override; invisible input cannot be certified from footage"
+    }
+  ],
+  "routing": "local only",
+  "limits": [
+    "Concealed opponent draws/searches not identifiable from the known deck.",
+    "Neither discard pile opened or scrolled; only visible top cards and separately labelled public discard events.",
+    "Covered evolution stacks are same-recording witnessed history; direct hidden stack reading remains unavailable.",
+    "Native candidates certify captured instants; reduced one-fps whole-timeline locators can miss subsecond invisible input.",
+    "Exact filmed collector numbers not transcribed; generic deck snapshot versions remain distinct from visible art."
+  ]
+}

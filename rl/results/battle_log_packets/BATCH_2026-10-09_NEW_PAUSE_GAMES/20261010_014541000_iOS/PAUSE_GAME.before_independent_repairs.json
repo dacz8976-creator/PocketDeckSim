@@ -1,0 +1,132 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261010_014541000_iOS_game1",
+  "review_date": "2026-10-10T03:50:53.678905+00:00",
+  "sources": [
+    {
+      "video_basename": "20261010_014541000_iOS.MP4",
+      "sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "deck_name": "Filmed selection: New deck13; visible Kingdra ex / Team Rocket's Weezing ex core",
+  "opening": {
+    "source_video": "20261010_014541000_iOS.MP4",
+    "timestamp_seconds": 39,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Horsea",
+        "variant": null,
+        "basis": "Visible source hand or individual draw reveal, not deck inference",
+        "evidence_ids": [
+          "f_0039.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Team Rocket's Koffing",
+        "variant": null,
+        "basis": "Visible source hand or individual draw reveal, not deck inference",
+        "evidence_ids": [
+          "f_0039.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Sabrina",
+        "variant": null,
+        "basis": "Visible source hand or individual draw reveal, not deck inference",
+        "evidence_ids": [
+          "f_0039.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Small Balloon",
+        "variant": null,
+        "basis": "Visible source hand or individual draw reveal, not deck inference",
+        "evidence_ids": [
+          "f_0039.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Kingdra ex",
+        "variant": null,
+        "basis": "Visible source hand or individual draw reveal, not deck inference",
+        "evidence_ids": [
+          "f_0039.00"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Horsea",
+      "opening_position": 1,
+      "source_video": "20261010_014541000_iOS.MP4",
+      "timestamp_seconds": 43,
+      "evidence_ids": [
+        "f_0039.00"
+      ]
+    },
+    "benched_during_setup": [
+      {
+        "name": "Team Rocket's Koffing",
+        "opening_position": 2,
+        "bench_position": 1,
+        "timestamp_seconds": 47
+      }
+    ],
+    "redraw_or_replacement": [],
+    "before_active_placement": true,
+    "status": "observed",
+    "evidence_ids": [
+      "f_0039.00"
+    ],
+    "limit_reason": "Kingdra ex name partly clipped in opening frame; native55 subsequently confirms same retained card"
+  },
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "first_pass_complete_pending_independent_acceptance",
+  "outcome": {
+    "owner": "loss",
+    "opponent": "Max Ketchum",
+    "method": "Knockouts; final Suicune ex attack",
+    "owner_points": 0,
+    "opponent_points_displayed": 3,
+    "terminal_turn": 12,
+    "evidence_ids": [
+      "f_0486.00",
+      "f_0489.00",
+      "f_0501.00"
+    ]
+  },
+  "limits": [
+    "The named live snapshot has23decks but lacks this Kingdra/Team Rocket's Weezing deck; exact20-card game version unverified",
+    "No opened discard piles appear",
+    "Opponent draws/search faces hidden",
+    "Source-local draw-end estimates approximately0.5s; actual extracted-frame PTS not measured"
+  ],
+  "lead_checked": false,
+  "lead_live_deck_refresh": {
+    "snapshot": "../LIVE_NEW_DECKS_VERIFIED.json",
+    "current_live_list_saved": true,
+    "exact_earlier_game_binding": false,
+    "visible_conflict": "Elegant Cape in earlier game is absent from later QR20."
+  }
+}

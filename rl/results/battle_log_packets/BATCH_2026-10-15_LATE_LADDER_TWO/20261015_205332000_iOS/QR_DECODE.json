@@ -1,0 +1,339 @@
+{
+  "schema": "pause_batch_retained_qr_v1",
+  "decoded_at_utc": "2026-10-15T23:38:17.297602+00:00",
+  "source_video": "20261015_205332000_iOS.MP4",
+  "source_seconds": 0.0,
+  "source_sha256": "2d0b8e0c42714b0572556faeaeacae13f8d3210b822290f9a528d291bb220d3a",
+  "retained_image": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-15_LATE_LADDER_TWO\\20261015_205332000_iOS\\evidence\\t0000.00.jpg",
+  "retained_image_sha256": "152c064f45f85ca07060f97e3d965ad909ff6cbf91dda1b41e480dc1e46bfec4",
+  "native_dimensions": [
+    1170,
+    2532
+  ],
+  "scan_crop_xyxy": null,
+  "read_method": "zxingcpp_native_image",
+  "payload": "C5iWnpiWnpiYYJiapJiapJiaIpiWqJiWqJiYkpiaXpibRAkAGv4AOSYASJ4ASJ4ASKgASKgASIAASJQARkYBBw==",
+  "payload_ascii_sha256": "d8a7167db33be1cf609573af6916200ebb07829ab36e516c03a2839e3c4b06e0",
+  "decoded": {
+    "trainerIds": [
+      30,
+      30,
+      480,
+      1060,
+      1060,
+      930,
+      40,
+      40,
+      530,
+      990,
+      1220
+    ],
+    "pokemonIds": [
+      6910,
+      14630,
+      18590,
+      18590,
+      18600,
+      18600,
+      18560,
+      18580,
+      17990
+    ],
+    "energyTypes": [
+      7
+    ],
+    "energy": [
+      {
+        "value": 7,
+        "name": "Darkness",
+        "selectable": true
+      }
+    ],
+    "roundtrip": true,
+    "roundtrip_limit": null
+  },
+  "card_slot_count": 20,
+  "cards": [
+    {
+      "entity_kind": "trainer",
+      "entity_id": 30,
+      "count": 2,
+      "name": "Poké Ball",
+      "name_candidates": [
+        "Poké Ball"
+      ],
+      "functional_ids": [
+        "1b20901befde"
+      ],
+      "printing_aliases": [
+        "A2b 111",
+        "P-A 005"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 480,
+      "count": 1,
+      "name": "Rare Candy",
+      "name_candidates": [
+        "Rare Candy"
+      ],
+      "functional_ids": [
+        "87829fe1a8c1"
+      ],
+      "printing_aliases": [
+        "A3 144",
+        "A4b 314",
+        "A4b 315",
+        "A4b 379"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 1060,
+      "count": 2,
+      "name": "Lucky Ice Pop",
+      "name_candidates": [
+        "Lucky Ice Pop"
+      ],
+      "functional_ids": [
+        "15c19aaaf9a4"
+      ],
+      "printing_aliases": [
+        "B2 145"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 930,
+      "count": 1,
+      "name": "Heavy Helmet",
+      "name_candidates": [
+        "Heavy Helmet"
+      ],
+      "functional_ids": [
+        "4736637c37b6"
+      ],
+      "printing_aliases": [
+        "B1 219"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 40,
+      "count": 2,
+      "name": "Professor’s Research",
+      "name_candidates": [
+        "Professor’s Research"
+      ],
+      "functional_ids": [
+        "c0015440f616"
+      ],
+      "printing_aliases": [
+        "A4b 373",
+        "P-A 007"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 530,
+      "count": 1,
+      "name": "Ilima",
+      "name_candidates": [
+        "Ilima"
+      ],
+      "functional_ids": [
+        "e8a17640cf76"
+      ],
+      "printing_aliases": [
+        "A3 149",
+        "A3 191"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 990,
+      "count": 1,
+      "name": "Copycat",
+      "name_candidates": [
+        "Copycat"
+      ],
+      "functional_ids": [
+        "d5d2b111c197"
+      ],
+      "printing_aliases": [
+        "B1 225",
+        "B1 270"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 1220,
+      "count": 1,
+      "name": "Mesagoza",
+      "name_candidates": [
+        "Mesagoza"
+      ],
+      "functional_ids": [
+        "e97b0353a45b"
+      ],
+      "printing_aliases": [
+        "B2a 093"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 6910,
+      "count": 1,
+      "name": "Alolan Grimer",
+      "name_candidates": [
+        "Alolan Grimer"
+      ],
+      "functional_ids": [
+        "d4571c7e3793"
+      ],
+      "printing_aliases": [
+        "A3 110",
+        "A4b 233",
+        "A4b 234"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 14630,
+      "count": 1,
+      "name": "Alolan Muk",
+      "name_candidates": [
+        "Alolan Muk"
+      ],
+      "functional_ids": [
+        "ce682a336398"
+      ],
+      "printing_aliases": [
+        "B2 097",
+        "B2 173"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 18590,
+      "count": 2,
+      "name": "Glimmet",
+      "name_candidates": [
+        "Glimmet"
+      ],
+      "functional_ids": [
+        "0be5488aa17d"
+      ],
+      "printing_aliases": [
+        "B3a 044"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 18600,
+      "count": 2,
+      "name": "Glimmora",
+      "name_candidates": [
+        "Glimmora"
+      ],
+      "functional_ids": [
+        "14a99bef5245"
+      ],
+      "printing_aliases": [
+        "B3a 045",
+        "B3a 078"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 18560,
+      "count": 1,
+      "name": "Pawniard",
+      "name_candidates": [
+        "Pawniard"
+      ],
+      "functional_ids": [
+        "353e41d88e9f"
+      ],
+      "printing_aliases": [
+        "B3a 041"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 18580,
+      "count": 1,
+      "name": "Kingambit",
+      "name_candidates": [
+        "Kingambit"
+      ],
+      "functional_ids": [
+        "856dae2408c2"
+      ],
+      "printing_aliases": [
+        "B3a 043"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 17990,
+      "count": 1,
+      "name": "Regigigas",
+      "name_candidates": [
+        "Regigigas"
+      ],
+      "functional_ids": [
+        "03327d687c45"
+      ],
+      "printing_aliases": [
+        "B3 134"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    }
+  ],
+  "all_entities_resolved": true,
+  "dependencies": {
+    "codec": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\third_party\\s216\\tcgp-deck-qr-102d75e\\src\\payload.js",
+    "codec_sha256": "7a08a1b85ba5b6044d173d7f1de3b7c21bbbdbab7b9f87e56eb109d278e12fb1",
+    "reader": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\lib\\decode_qr.py",
+    "reader_sha256": "f375891a38c3289f3fd994b62cf1a7289eb42398b54d47524619ffcbe824a603",
+    "catalog": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\s216_card_catalog_v1.json",
+    "catalog_sha256": "162dd23a116cabc87bc4404a643d7bad37480d4d44c057c5093aa114b8e45017",
+    "catalog_provenance": "pinned community-derived catalog, not an official complete card export",
+    "opencv": "5.0.0"
+  },
+  "limits": [
+    "QR is a filmed deck source, not a substitute for the required dated Pause Games log snapshot.",
+    "A deck QR does not establish hidden draws, the opening hand, or that this deck was used throughout a battle."
+  ]
+}

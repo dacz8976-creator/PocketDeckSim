@@ -1,0 +1,5 @@
+# Independent lead check
+
+Lead read the entire source review, coverage, summary and uncertainty packet, reconciling all visible turns7-15 and the60+30+30+0+160+80=360 attack-damage ledger. Independently inspected ordinary overview sheets01 and04, start0s public continuity, Combusken KO27s and Victini30 damage56s, snipe target86s, named Carefree Steps87s, prevention prompt89s, explicit heads91s, shield and unchanged Meowth50HP94s. Auto is off105s and on106s; terminal227.6s explicitly names the computer deck and Victory3-1, first,15turns,360damage. Astra independently confirms the defender prevention context. Tongue Whip is the filmed example of the intended snipe class; no separate Linear Attack trial was requested. Comparison with repair B is conditional on owner-provided code context, not a running-engine audit. Entire available source accepted as one continuation, missing cut interval retained, battle_complete false, no Pause Games or Ladder Log entry.
+
+The two files represent one owner-declared test battle. This completed test is excluded from Pause Games and Ladder Log. No simulator change, repair pinning or training occurred.

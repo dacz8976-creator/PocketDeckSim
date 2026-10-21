@@ -1,0 +1,660 @@
+PGSTEP KW-261010_015452000-t03 seed 1 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@2
+PGCAND Play:Rare Candy
+PGDUMP actor=0 candidates=7
+PGDUMP        588.100000000000023 EndTurn
+PGDUMP       1661.099999999999909 Attach:1Water@0 zone
+PGDUMP        767.100000000000023 Attach:1Water@1 zone
+PGDUMP        767.100000000000023 Attach:1Water@2 zone
+PGDUMP       1167.099999999999909 Evolve:Team Rocket's Weezing ex@1
+PGDUMP       1167.099999999999909 Evolve:Team Rocket's Weezing ex@2
+PGDUMP       1661.099999999999909 Play:Rare Candy
+PGSTEP KW-261010_015452000-t03 seed 1 free 1
+PGSTEP KW-261010_015452000-t03 seed 1 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@2
+PGDUMP actor=0 candidates=6
+PGDUMP        541.100000000000023 EndTurn
+PGDUMP       2140.099999999999909 Attach:1Water@0 zone
+PGDUMP       1020.100000000000023 Attach:1Water@1 zone
+PGDUMP       1020.100000000000023 Attach:1Water@2 zone
+PGDUMP       2140.099999999999909 Evolve:Team Rocket's Weezing ex@1
+PGDUMP       2140.099999999999909 Evolve:Team Rocket's Weezing ex@2
+PGSTEP KW-261010_015452000-t03 seed 1 free 3
+PGCAND Noop
+PGCAND Ability@2
+PGDUMP actor=0 candidates=2
+PGDUMP       2140.099999999999909 Noop
+PGDUMP       2200.099999999999909 Ability@2
+PGSTEP KW-261010_015452000-t03 seed 1 free 4
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGDUMP actor=0 candidates=4
+PGDUMP       1380.099999999999909 EndTurn
+PGDUMP       2200.099999999999909 Attach:1Water@0 zone
+PGDUMP       1380.099999999999909 Attach:1Water@1 zone
+PGDUMP       1380.099999999999909 Attach:1Water@2 zone
+PGSTEP KW-261010_015452000-t03 seed 1 free 5
+PGCAND EndTurn
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=3
+PGDUMP       2200.099999999999909 EndTurn
+PGDUMP        955.100000000000023 Retreat:1
+PGDUMP       1374.099999999999909 Retreat:2
+PGSTEP KW-261010_015452000-t03 seed 2 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@2
+PGCAND Play:Rare Candy
+PGDUMP actor=0 candidates=7
+PGDUMP        588.100000000000023 EndTurn
+PGDUMP       1661.099999999999909 Attach:1Water@0 zone
+PGDUMP        767.100000000000023 Attach:1Water@1 zone
+PGDUMP        767.100000000000023 Attach:1Water@2 zone
+PGDUMP       1167.099999999999909 Evolve:Team Rocket's Weezing ex@1
+PGDUMP       1167.099999999999909 Evolve:Team Rocket's Weezing ex@2
+PGDUMP       1661.099999999999909 Play:Rare Candy
+PGSTEP KW-261010_015452000-t03 seed 2 free 1
+PGSTEP KW-261010_015452000-t03 seed 2 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@2
+PGDUMP actor=0 candidates=6
+PGDUMP        541.100000000000023 EndTurn
+PGDUMP       2140.099999999999909 Attach:1Water@0 zone
+PGDUMP       1020.100000000000023 Attach:1Water@1 zone
+PGDUMP       1020.100000000000023 Attach:1Water@2 zone
+PGDUMP       2140.099999999999909 Evolve:Team Rocket's Weezing ex@1
+PGDUMP       2140.099999999999909 Evolve:Team Rocket's Weezing ex@2
+PGSTEP KW-261010_015452000-t03 seed 2 free 3
+PGCAND Noop
+PGCAND Ability@2
+PGDUMP actor=0 candidates=2
+PGDUMP       2140.099999999999909 Noop
+PGDUMP       2200.099999999999909 Ability@2
+PGSTEP KW-261010_015452000-t03 seed 2 free 4
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGDUMP actor=0 candidates=4
+PGDUMP       1380.099999999999909 EndTurn
+PGDUMP       2200.099999999999909 Attach:1Water@0 zone
+PGDUMP       1380.099999999999909 Attach:1Water@1 zone
+PGDUMP       1380.099999999999909 Attach:1Water@2 zone
+PGSTEP KW-261010_015452000-t03 seed 2 free 5
+PGCAND EndTurn
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=3
+PGDUMP       2200.099999999999909 EndTurn
+PGDUMP        955.100000000000023 Retreat:1
+PGDUMP       1374.099999999999909 Retreat:2
+PGSTEP KW-261010_015452000-t03 seed 3 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@2
+PGCAND Play:Rare Candy
+PGDUMP actor=0 candidates=7
+PGDUMP        588.100000000000023 EndTurn
+PGDUMP       1661.099999999999909 Attach:1Water@0 zone
+PGDUMP        767.100000000000023 Attach:1Water@1 zone
+PGDUMP        767.100000000000023 Attach:1Water@2 zone
+PGDUMP       1167.099999999999909 Evolve:Team Rocket's Weezing ex@1
+PGDUMP       1167.099999999999909 Evolve:Team Rocket's Weezing ex@2
+PGDUMP       1661.099999999999909 Play:Rare Candy
+PGSTEP KW-261010_015452000-t03 seed 3 free 1
+PGSTEP KW-261010_015452000-t03 seed 3 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@2
+PGDUMP actor=0 candidates=6
+PGDUMP        541.100000000000023 EndTurn
+PGDUMP       2140.099999999999909 Attach:1Water@0 zone
+PGDUMP       1020.100000000000023 Attach:1Water@1 zone
+PGDUMP       1020.100000000000023 Attach:1Water@2 zone
+PGDUMP       2140.099999999999909 Evolve:Team Rocket's Weezing ex@1
+PGDUMP       2140.099999999999909 Evolve:Team Rocket's Weezing ex@2
+PGSTEP KW-261010_015452000-t03 seed 3 free 3
+PGCAND Noop
+PGCAND Ability@2
+PGDUMP actor=0 candidates=2
+PGDUMP       2140.099999999999909 Noop
+PGDUMP       2200.099999999999909 Ability@2
+PGSTEP KW-261010_015452000-t03 seed 3 free 4
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGDUMP actor=0 candidates=4
+PGDUMP       1380.099999999999909 EndTurn
+PGDUMP       2200.099999999999909 Attach:1Water@0 zone
+PGDUMP       1380.099999999999909 Attach:1Water@1 zone
+PGDUMP       1380.099999999999909 Attach:1Water@2 zone
+PGSTEP KW-261010_015452000-t03 seed 3 free 5
+PGCAND EndTurn
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=3
+PGDUMP       2200.099999999999909 EndTurn
+PGDUMP        955.100000000000023 Retreat:1
+PGDUMP       1374.099999999999909 Retreat:2
+PGSTEP KW-261010_015452000-t03 seed 4 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@2
+PGCAND Play:Rare Candy
+PGDUMP actor=0 candidates=7
+PGDUMP        588.100000000000023 EndTurn
+PGDUMP       1661.099999999999909 Attach:1Water@0 zone
+PGDUMP        767.100000000000023 Attach:1Water@1 zone
+PGDUMP        767.100000000000023 Attach:1Water@2 zone
+PGDUMP       1167.099999999999909 Evolve:Team Rocket's Weezing ex@1
+PGDUMP       1167.099999999999909 Evolve:Team Rocket's Weezing ex@2
+PGDUMP       1661.099999999999909 Play:Rare Candy
+PGSTEP KW-261010_015452000-t03 seed 4 free 1
+PGSTEP KW-261010_015452000-t03 seed 4 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@2
+PGDUMP actor=0 candidates=6
+PGDUMP        541.100000000000023 EndTurn
+PGDUMP       2140.099999999999909 Attach:1Water@0 zone
+PGDUMP       1020.100000000000023 Attach:1Water@1 zone
+PGDUMP       1020.100000000000023 Attach:1Water@2 zone
+PGDUMP       2140.099999999999909 Evolve:Team Rocket's Weezing ex@1
+PGDUMP       2140.099999999999909 Evolve:Team Rocket's Weezing ex@2
+PGSTEP KW-261010_015452000-t03 seed 4 free 3
+PGCAND Noop
+PGCAND Ability@2
+PGDUMP actor=0 candidates=2
+PGDUMP       2140.099999999999909 Noop
+PGDUMP       2200.099999999999909 Ability@2
+PGSTEP KW-261010_015452000-t03 seed 4 free 4
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGDUMP actor=0 candidates=4
+PGDUMP       1380.099999999999909 EndTurn
+PGDUMP       2200.099999999999909 Attach:1Water@0 zone
+PGDUMP       1380.099999999999909 Attach:1Water@1 zone
+PGDUMP       1380.099999999999909 Attach:1Water@2 zone
+PGSTEP KW-261010_015452000-t03 seed 4 free 5
+PGCAND EndTurn
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=3
+PGDUMP       2200.099999999999909 EndTurn
+PGDUMP        955.100000000000023 Retreat:1
+PGDUMP       1374.099999999999909 Retreat:2
+PGSTEP KW-261010_015452000-t03 seed 5 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@2
+PGCAND Play:Rare Candy
+PGDUMP actor=0 candidates=7
+PGDUMP        588.100000000000023 EndTurn
+PGDUMP       1661.099999999999909 Attach:1Water@0 zone
+PGDUMP        767.100000000000023 Attach:1Water@1 zone
+PGDUMP        767.100000000000023 Attach:1Water@2 zone
+PGDUMP       1167.099999999999909 Evolve:Team Rocket's Weezing ex@1
+PGDUMP       1167.099999999999909 Evolve:Team Rocket's Weezing ex@2
+PGDUMP       1661.099999999999909 Play:Rare Candy
+PGSTEP KW-261010_015452000-t03 seed 5 free 1
+PGSTEP KW-261010_015452000-t03 seed 5 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@2
+PGDUMP actor=0 candidates=6
+PGDUMP        541.100000000000023 EndTurn
+PGDUMP       2140.099999999999909 Attach:1Water@0 zone
+PGDUMP       1020.100000000000023 Attach:1Water@1 zone
+PGDUMP       1020.100000000000023 Attach:1Water@2 zone
+PGDUMP       2140.099999999999909 Evolve:Team Rocket's Weezing ex@1
+PGDUMP       2140.099999999999909 Evolve:Team Rocket's Weezing ex@2
+PGSTEP KW-261010_015452000-t03 seed 5 free 3
+PGCAND Noop
+PGCAND Ability@2
+PGDUMP actor=0 candidates=2
+PGDUMP       2140.099999999999909 Noop
+PGDUMP       2200.099999999999909 Ability@2
+PGSTEP KW-261010_015452000-t03 seed 5 free 4
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGDUMP actor=0 candidates=4
+PGDUMP       1380.099999999999909 EndTurn
+PGDUMP       2200.099999999999909 Attach:1Water@0 zone
+PGDUMP       1380.099999999999909 Attach:1Water@1 zone
+PGDUMP       1380.099999999999909 Attach:1Water@2 zone
+PGSTEP KW-261010_015452000-t03 seed 5 free 5
+PGCAND EndTurn
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=3
+PGDUMP       2200.099999999999909 EndTurn
+PGDUMP        955.100000000000023 Retreat:1
+PGDUMP       1374.099999999999909 Retreat:2
+PGSTEP KW-261010_015452000-t03 seed 6 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@2
+PGCAND Play:Rare Candy
+PGDUMP actor=0 candidates=7
+PGDUMP        588.100000000000023 EndTurn
+PGDUMP       1661.099999999999909 Attach:1Water@0 zone
+PGDUMP        767.100000000000023 Attach:1Water@1 zone
+PGDUMP        767.100000000000023 Attach:1Water@2 zone
+PGDUMP       1167.099999999999909 Evolve:Team Rocket's Weezing ex@1
+PGDUMP       1167.099999999999909 Evolve:Team Rocket's Weezing ex@2
+PGDUMP       1661.099999999999909 Play:Rare Candy
+PGSTEP KW-261010_015452000-t03 seed 6 free 1
+PGSTEP KW-261010_015452000-t03 seed 6 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@2
+PGDUMP actor=0 candidates=6
+PGDUMP        541.100000000000023 EndTurn
+PGDUMP       2140.099999999999909 Attach:1Water@0 zone
+PGDUMP       1020.100000000000023 Attach:1Water@1 zone
+PGDUMP       1020.100000000000023 Attach:1Water@2 zone
+PGDUMP       2140.099999999999909 Evolve:Team Rocket's Weezing ex@1
+PGDUMP       2140.099999999999909 Evolve:Team Rocket's Weezing ex@2
+PGSTEP KW-261010_015452000-t03 seed 6 free 3
+PGCAND Noop
+PGCAND Ability@2
+PGDUMP actor=0 candidates=2
+PGDUMP       2140.099999999999909 Noop
+PGDUMP       2200.099999999999909 Ability@2
+PGSTEP KW-261010_015452000-t03 seed 6 free 4
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGDUMP actor=0 candidates=4
+PGDUMP       1380.099999999999909 EndTurn
+PGDUMP       2200.099999999999909 Attach:1Water@0 zone
+PGDUMP       1380.099999999999909 Attach:1Water@1 zone
+PGDUMP       1380.099999999999909 Attach:1Water@2 zone
+PGSTEP KW-261010_015452000-t03 seed 6 free 5
+PGCAND EndTurn
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=3
+PGDUMP       2200.099999999999909 EndTurn
+PGDUMP        955.100000000000023 Retreat:1
+PGDUMP       1374.099999999999909 Retreat:2
+PGSTEP KW-261010_015452000-t03 seed 7 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@2
+PGCAND Play:Rare Candy
+PGDUMP actor=0 candidates=7
+PGDUMP        588.100000000000023 EndTurn
+PGDUMP       1661.099999999999909 Attach:1Water@0 zone
+PGDUMP        767.100000000000023 Attach:1Water@1 zone
+PGDUMP        767.100000000000023 Attach:1Water@2 zone
+PGDUMP       1167.099999999999909 Evolve:Team Rocket's Weezing ex@1
+PGDUMP       1167.099999999999909 Evolve:Team Rocket's Weezing ex@2
+PGDUMP       1661.099999999999909 Play:Rare Candy
+PGSTEP KW-261010_015452000-t03 seed 7 free 1
+PGSTEP KW-261010_015452000-t03 seed 7 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@2
+PGDUMP actor=0 candidates=6
+PGDUMP        541.100000000000023 EndTurn
+PGDUMP       2140.099999999999909 Attach:1Water@0 zone
+PGDUMP       1020.100000000000023 Attach:1Water@1 zone
+PGDUMP       1020.100000000000023 Attach:1Water@2 zone
+PGDUMP       2140.099999999999909 Evolve:Team Rocket's Weezing ex@1
+PGDUMP       2140.099999999999909 Evolve:Team Rocket's Weezing ex@2
+PGSTEP KW-261010_015452000-t03 seed 7 free 3
+PGCAND Noop
+PGCAND Ability@2
+PGDUMP actor=0 candidates=2
+PGDUMP       2140.099999999999909 Noop
+PGDUMP       2200.099999999999909 Ability@2
+PGSTEP KW-261010_015452000-t03 seed 7 free 4
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGDUMP actor=0 candidates=4
+PGDUMP       1380.099999999999909 EndTurn
+PGDUMP       2200.099999999999909 Attach:1Water@0 zone
+PGDUMP       1380.099999999999909 Attach:1Water@1 zone
+PGDUMP       1380.099999999999909 Attach:1Water@2 zone
+PGSTEP KW-261010_015452000-t03 seed 7 free 5
+PGCAND EndTurn
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=3
+PGDUMP       2200.099999999999909 EndTurn
+PGDUMP        955.100000000000023 Retreat:1
+PGDUMP       1374.099999999999909 Retreat:2
+PGSTEP KW-261010_015452000-t03 seed 8 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@2
+PGCAND Play:Rare Candy
+PGDUMP actor=0 candidates=7
+PGDUMP        588.100000000000023 EndTurn
+PGDUMP       1661.099999999999909 Attach:1Water@0 zone
+PGDUMP        767.100000000000023 Attach:1Water@1 zone
+PGDUMP        767.100000000000023 Attach:1Water@2 zone
+PGDUMP       1167.099999999999909 Evolve:Team Rocket's Weezing ex@1
+PGDUMP       1167.099999999999909 Evolve:Team Rocket's Weezing ex@2
+PGDUMP       1661.099999999999909 Play:Rare Candy
+PGSTEP KW-261010_015452000-t03 seed 8 free 1
+PGSTEP KW-261010_015452000-t03 seed 8 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@2
+PGDUMP actor=0 candidates=6
+PGDUMP        541.100000000000023 EndTurn
+PGDUMP       2140.099999999999909 Attach:1Water@0 zone
+PGDUMP       1020.100000000000023 Attach:1Water@1 zone
+PGDUMP       1020.100000000000023 Attach:1Water@2 zone
+PGDUMP       2140.099999999999909 Evolve:Team Rocket's Weezing ex@1
+PGDUMP       2140.099999999999909 Evolve:Team Rocket's Weezing ex@2
+PGSTEP KW-261010_015452000-t03 seed 8 free 3
+PGCAND Noop
+PGCAND Ability@2
+PGDUMP actor=0 candidates=2
+PGDUMP       2140.099999999999909 Noop
+PGDUMP       2200.099999999999909 Ability@2
+PGSTEP KW-261010_015452000-t03 seed 8 free 4
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGDUMP actor=0 candidates=4
+PGDUMP       1380.099999999999909 EndTurn
+PGDUMP       2200.099999999999909 Attach:1Water@0 zone
+PGDUMP       1380.099999999999909 Attach:1Water@1 zone
+PGDUMP       1380.099999999999909 Attach:1Water@2 zone
+PGSTEP KW-261010_015452000-t03 seed 8 free 5
+PGCAND EndTurn
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=3
+PGDUMP       2200.099999999999909 EndTurn
+PGDUMP        955.100000000000023 Retreat:1
+PGDUMP       1374.099999999999909 Retreat:2
+PGSTEP KW-261010_015452000-t03 seed 9 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@2
+PGCAND Play:Rare Candy
+PGDUMP actor=0 candidates=7
+PGDUMP        588.100000000000023 EndTurn
+PGDUMP       1661.099999999999909 Attach:1Water@0 zone
+PGDUMP        767.100000000000023 Attach:1Water@1 zone
+PGDUMP        767.100000000000023 Attach:1Water@2 zone
+PGDUMP       1167.099999999999909 Evolve:Team Rocket's Weezing ex@1
+PGDUMP       1167.099999999999909 Evolve:Team Rocket's Weezing ex@2
+PGDUMP       1661.099999999999909 Play:Rare Candy
+PGSTEP KW-261010_015452000-t03 seed 9 free 1
+PGSTEP KW-261010_015452000-t03 seed 9 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@2
+PGDUMP actor=0 candidates=6
+PGDUMP        541.100000000000023 EndTurn
+PGDUMP       2140.099999999999909 Attach:1Water@0 zone
+PGDUMP       1020.100000000000023 Attach:1Water@1 zone
+PGDUMP       1020.100000000000023 Attach:1Water@2 zone
+PGDUMP       2140.099999999999909 Evolve:Team Rocket's Weezing ex@1
+PGDUMP       2140.099999999999909 Evolve:Team Rocket's Weezing ex@2
+PGSTEP KW-261010_015452000-t03 seed 9 free 3
+PGCAND Noop
+PGCAND Ability@2
+PGDUMP actor=0 candidates=2
+PGDUMP       2140.099999999999909 Noop
+PGDUMP       2200.099999999999909 Ability@2
+PGSTEP KW-261010_015452000-t03 seed 9 free 4
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGDUMP actor=0 candidates=4
+PGDUMP       1380.099999999999909 EndTurn
+PGDUMP       2200.099999999999909 Attach:1Water@0 zone
+PGDUMP       1380.099999999999909 Attach:1Water@1 zone
+PGDUMP       1380.099999999999909 Attach:1Water@2 zone
+PGSTEP KW-261010_015452000-t03 seed 9 free 5
+PGCAND EndTurn
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=3
+PGDUMP       2200.099999999999909 EndTurn
+PGDUMP        955.100000000000023 Retreat:1
+PGDUMP       1374.099999999999909 Retreat:2
+PGSTEP KW-261010_015452000-t03 seed 10 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@2
+PGCAND Play:Rare Candy
+PGDUMP actor=0 candidates=7
+PGDUMP        588.100000000000023 EndTurn
+PGDUMP       1661.099999999999909 Attach:1Water@0 zone
+PGDUMP        767.100000000000023 Attach:1Water@1 zone
+PGDUMP        767.100000000000023 Attach:1Water@2 zone
+PGDUMP       1167.099999999999909 Evolve:Team Rocket's Weezing ex@1
+PGDUMP       1167.099999999999909 Evolve:Team Rocket's Weezing ex@2
+PGDUMP       1661.099999999999909 Play:Rare Candy
+PGSTEP KW-261010_015452000-t03 seed 10 free 1
+PGSTEP KW-261010_015452000-t03 seed 10 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@2
+PGDUMP actor=0 candidates=6
+PGDUMP        541.100000000000023 EndTurn
+PGDUMP       2140.099999999999909 Attach:1Water@0 zone
+PGDUMP       1020.100000000000023 Attach:1Water@1 zone
+PGDUMP       1020.100000000000023 Attach:1Water@2 zone
+PGDUMP       2140.099999999999909 Evolve:Team Rocket's Weezing ex@1
+PGDUMP       2140.099999999999909 Evolve:Team Rocket's Weezing ex@2
+PGSTEP KW-261010_015452000-t03 seed 10 free 3
+PGCAND Noop
+PGCAND Ability@2
+PGDUMP actor=0 candidates=2
+PGDUMP       2140.099999999999909 Noop
+PGDUMP       2200.099999999999909 Ability@2
+PGSTEP KW-261010_015452000-t03 seed 10 free 4
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGDUMP actor=0 candidates=4
+PGDUMP       1380.099999999999909 EndTurn
+PGDUMP       2200.099999999999909 Attach:1Water@0 zone
+PGDUMP       1380.099999999999909 Attach:1Water@1 zone
+PGDUMP       1380.099999999999909 Attach:1Water@2 zone
+PGSTEP KW-261010_015452000-t03 seed 10 free 5
+PGCAND EndTurn
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=3
+PGDUMP       2200.099999999999909 EndTurn
+PGDUMP        955.100000000000023 Retreat:1
+PGDUMP       1374.099999999999909 Retreat:2
+PGSTEP KW-261010_015452000-t03 seed 11 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@2
+PGCAND Play:Rare Candy
+PGDUMP actor=0 candidates=7
+PGDUMP        588.100000000000023 EndTurn
+PGDUMP       1661.099999999999909 Attach:1Water@0 zone
+PGDUMP        767.100000000000023 Attach:1Water@1 zone
+PGDUMP        767.100000000000023 Attach:1Water@2 zone
+PGDUMP       1167.099999999999909 Evolve:Team Rocket's Weezing ex@1
+PGDUMP       1167.099999999999909 Evolve:Team Rocket's Weezing ex@2
+PGDUMP       1661.099999999999909 Play:Rare Candy
+PGSTEP KW-261010_015452000-t03 seed 11 free 1
+PGSTEP KW-261010_015452000-t03 seed 11 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@2
+PGDUMP actor=0 candidates=6
+PGDUMP        541.100000000000023 EndTurn
+PGDUMP       2140.099999999999909 Attach:1Water@0 zone
+PGDUMP       1020.100000000000023 Attach:1Water@1 zone
+PGDUMP       1020.100000000000023 Attach:1Water@2 zone
+PGDUMP       2140.099999999999909 Evolve:Team Rocket's Weezing ex@1
+PGDUMP       2140.099999999999909 Evolve:Team Rocket's Weezing ex@2
+PGSTEP KW-261010_015452000-t03 seed 11 free 3
+PGCAND Noop
+PGCAND Ability@2
+PGDUMP actor=0 candidates=2
+PGDUMP       2140.099999999999909 Noop
+PGDUMP       2200.099999999999909 Ability@2
+PGSTEP KW-261010_015452000-t03 seed 11 free 4
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGDUMP actor=0 candidates=4
+PGDUMP       1380.099999999999909 EndTurn
+PGDUMP       2200.099999999999909 Attach:1Water@0 zone
+PGDUMP       1380.099999999999909 Attach:1Water@1 zone
+PGDUMP       1380.099999999999909 Attach:1Water@2 zone
+PGSTEP KW-261010_015452000-t03 seed 11 free 5
+PGCAND EndTurn
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=3
+PGDUMP       2200.099999999999909 EndTurn
+PGDUMP        955.100000000000023 Retreat:1
+PGDUMP       1374.099999999999909 Retreat:2
+PGSTEP KW-261010_015452000-t03 seed 12 free 0
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@2
+PGCAND Play:Rare Candy
+PGDUMP actor=0 candidates=7
+PGDUMP        588.100000000000023 EndTurn
+PGDUMP       1661.099999999999909 Attach:1Water@0 zone
+PGDUMP        767.100000000000023 Attach:1Water@1 zone
+PGDUMP        767.100000000000023 Attach:1Water@2 zone
+PGDUMP       1167.099999999999909 Evolve:Team Rocket's Weezing ex@1
+PGDUMP       1167.099999999999909 Evolve:Team Rocket's Weezing ex@2
+PGDUMP       1661.099999999999909 Play:Rare Candy
+PGSTEP KW-261010_015452000-t03 seed 12 free 1
+PGSTEP KW-261010_015452000-t03 seed 12 free 2
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGCAND Evolve:Team Rocket's Weezing ex@1
+PGCAND Evolve:Team Rocket's Weezing ex@2
+PGDUMP actor=0 candidates=6
+PGDUMP        541.100000000000023 EndTurn
+PGDUMP       2140.099999999999909 Attach:1Water@0 zone
+PGDUMP       1020.100000000000023 Attach:1Water@1 zone
+PGDUMP       1020.100000000000023 Attach:1Water@2 zone
+PGDUMP       2140.099999999999909 Evolve:Team Rocket's Weezing ex@1
+PGDUMP       2140.099999999999909 Evolve:Team Rocket's Weezing ex@2
+PGSTEP KW-261010_015452000-t03 seed 12 free 3
+PGCAND Noop
+PGCAND Ability@2
+PGDUMP actor=0 candidates=2
+PGDUMP       2140.099999999999909 Noop
+PGDUMP       2200.099999999999909 Ability@2
+PGSTEP KW-261010_015452000-t03 seed 12 free 4
+PGCAND EndTurn
+PGCAND Attach:1Water@0 zone
+PGCAND Attach:1Water@1 zone
+PGCAND Attach:1Water@2 zone
+PGDUMP actor=0 candidates=4
+PGDUMP       1380.099999999999909 EndTurn
+PGDUMP       2200.099999999999909 Attach:1Water@0 zone
+PGDUMP       1380.099999999999909 Attach:1Water@1 zone
+PGDUMP       1380.099999999999909 Attach:1Water@2 zone
+PGSTEP KW-261010_015452000-t03 seed 12 free 5
+PGCAND EndTurn
+PGCAND Retreat:1
+PGCAND Retreat:2
+PGDUMP actor=0 candidates=3
+PGDUMP       2200.099999999999909 EndTurn
+PGDUMP        955.100000000000023 Retreat:1
+PGDUMP       1374.099999999999909 Retreat:2

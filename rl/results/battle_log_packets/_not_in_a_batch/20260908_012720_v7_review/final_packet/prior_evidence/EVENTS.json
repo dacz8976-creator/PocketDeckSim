@@ -1,0 +1,82 @@
+{
+  "schema": "pdl-video-focused-events/v1",
+  "source": {
+    "path": "/mnt/c/Users/dacz8/OneDrive/Desktop/Battle Logs/20260908_012720000_iOS.MP4",
+    "sha256": "b9e76626643d8950cb7a4277487da2262b5fa96faf9e87454495ebe896d47085"
+  },
+  "events": [
+    {
+      "time_seconds": 188.0,
+      "event": "Opponent displays Cyrus; text selects a damaged opposing Benched Pokemon for the Active Spot.",
+      "frame": "frames/t_188.jpg"
+    },
+    {
+      "time_seconds": 189.0,
+      "event": "Whimsicott ex is Active at 140 HP; Ogerpon ex is Benched at 40 HP.",
+      "frame": "frames/native_189.0.jpg"
+    },
+    {
+      "time_seconds": 192.5,
+      "event": "Switch settled: Ogerpon ex Active at 40 HP; Whimsicott ex Benched at 140 HP.",
+      "frame": "frames/native_192.5.jpg"
+    },
+    {
+      "time_seconds": 193.5,
+      "event": "Pre-attack state: Weezing ex 140 HP/two Darkness Energy; Ogerpon ex 40 HP/one Grass Energy/Leaf Cape attached.",
+      "frame": "frames/native_193.5.jpg"
+    },
+    {
+      "time_seconds": 195.5,
+      "event": "Team Rocket’s Weezing ex displays Confusion Gas, 60 damage plus Confusion.",
+      "frame": "frames/native_195.5.jpg"
+    },
+    {
+      "time_seconds": 196.0,
+      "event": "60 damage is displayed over the 40-HP Ogerpon.",
+      "frame": "frames/t_196.jpg"
+    },
+    {
+      "time_seconds": 197.0,
+      "event": "Ogerpon HP display reaches 0.",
+      "frame": "frames/t_197.jpg"
+    },
+    {
+      "time_seconds": 198.5,
+      "event": "During removal animation, callout says Ogerpon did not become Confused.",
+      "frame": "frames/native_198.5.jpg"
+    },
+    {
+      "time_seconds": 201.5,
+      "event": "Opponent point-award animation begins after removal.",
+      "frame": "frames/native_201.5.jpg"
+    },
+    {
+      "time_seconds": 202.0,
+      "event": "+2 points is displayed.",
+      "frame": "frames/t_202.jpg"
+    },
+    {
+      "time_seconds": 204.0,
+      "event": "Post-resolution board: Ogerpon absent; opponent has 2 points.",
+      "frame": "frames/t_204.jpg"
+    }
+  ],
+  "conclusion": "Visible order is Cyrus gust, lethal 60 damage to 40-HP Ogerpon, Soothing Wind's failed-Confusion result during removal, Ogerpon removal, then +2 points. Leaf Cape is independently identified as the attached HP-only Tool, so it does not confound attribution. No Energy-attachment recovery is shown.",
+  "supporting_modifier_evidence": [
+    {
+      "time_seconds": 24.0,
+      "event": "Leaf Cape is readable in the owner's hand; Ogerpon has 130 HP and no Tool thumbnail.",
+      "frame": "frames/t_24_toolcheck.jpg"
+    },
+    {
+      "time_seconds": 48.0,
+      "event": "Leaf Cape has left the hand; its green thumbnail appears attached to Ogerpon while a +30 HP callout is displayed.",
+      "frame": "frames/t_48_toolcheck.jpg"
+    },
+    {
+      "time_seconds": 52.0,
+      "event": "Ogerpon displays 150 HP after the +30 HP attachment effect.",
+      "frame": "frames/t_52_toolcheck.jpg"
+    }
+  ]
+}

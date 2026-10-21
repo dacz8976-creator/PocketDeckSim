@@ -1,0 +1,45 @@
+{
+  "accepted": true,
+  "accepted_utc": "2026-10-06T22:52:06.638301+00:00",
+  "lead_reviewer": "root-rules-return-damage-20261006",
+  "source_video": "20261006_220700000_iOS.MP4",
+  "source_sha256": "11377b477a0595ff959bef125207e083a3cf4420243254a933de73133ccfcb1f",
+  "completion_status": "full_battle_review_complete",
+  "coverage_checked": true,
+  "scope": "Complete computer rules-test battle: entire 480.843333-second source, setup, all 16 turns, five Ability return tests, ordinary attack controls and terminal result",
+  "first_pass": {
+    "reviewer": "return_damage_sol",
+    "model": "gpt-6.1-sol",
+    "reasoning_effort": "high"
+  },
+  "independent_review": {
+    "reviewer": "/root/return_damage_verify",
+    "model": "gpt-6.1-sol",
+    "reasoning_effort": "high",
+    "decision": "ACCEPT",
+    "scope": "Bounded independent source checks and whole-packet reconciliation"
+  },
+  "lead_direct_source_checks": [
+    "evidence/175.000s_mimikyu_weakness_before.png",
+    "evidence/183.300s_sequence.png",
+    "evidence/185.000s_sequence.png",
+    "evidence/348.000s_sequence.png"
+  ],
+  "lead_notes": "The first Mimikyu return resolves 120 to 100; intermediate 110 is animation. Native 348 shows normal attack 90 with Darkness Weakness. All five returns agree between independent and primary reports. Normal attacks 500 plus Ability returns 100 plus seven Needle hits 70 reconcile to displayed total 670; score progression ends 3-2. Auto wording qualified to visible state. Hidden cards, exact draws and immediate generated Energy allocation remain explicit source limits.",
+  "remaining_coverage_gaps": [],
+  "unverified_material_claims": [],
+  "ladder_eligible": false,
+  "pause_games_eligible": false,
+  "simulator_changes_authorized": false,
+  "accepted_evidence": [
+    "SOURCE.json",
+    "RULE_FINDING.md",
+    "REVIEW.md",
+    "COVERAGE.md",
+    "FINDINGS.json",
+    "independent_sol/VERIFICATION.md",
+    "independent_sol/VERIFICATION.json",
+    "LEAD_ACCEPTANCE.json"
+  ],
+  "registration_notes": "Owner-requested computer rules check, excluded from Ladder Log and Pause Games. Fresh Sol complete first pass and independent Sol source checks accepted by lead. Five Automated Combat returns each deal printed 20 without Darkness Weakness; normal attack controls receive +20. Earlier Mega Sableye observation remains separate owner testimony. No simulator change or external game entry."
+}

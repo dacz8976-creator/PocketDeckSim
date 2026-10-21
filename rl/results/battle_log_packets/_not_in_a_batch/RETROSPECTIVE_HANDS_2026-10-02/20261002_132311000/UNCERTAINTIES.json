@@ -1,0 +1,57 @@
+{
+  "status": "worker_complete_pending_independent_acceptance",
+  "target_identity_ambiguities": [],
+  "astra_question": null,
+  "items": [
+    {
+      "kind": "timestamp_precision",
+      "turns": [
+        5,
+        11
+      ],
+      "draw_end_brackets_seconds": [
+        [
+          163,
+          163.7
+        ],
+        [
+          358,
+          359
+        ]
+      ],
+      "reason": "Draw completion and first play are sampled transitions; source-local seek time retained, actual exact presentation timestamp not separately measured",
+      "material_identity_gap": false
+    },
+    {
+      "kind": "printing",
+      "reason": "Exact physical printing of every carried-over fan card not resolved; names observed; deck snapshot printing is current-log evidence only"
+    },
+    {
+      "kind": "before_ending_action",
+      "turns": [
+        5,
+        11
+      ],
+      "reason": "Use latest retained clear unzoomed hand before attack, at190s and378s; End Turn is replaced by accepted attack. Turn11 attack selection379.5s and animation381s show why later frame is unsuitable."
+    },
+    {
+      "kind": "historical_deck_version",
+      "reason": "Current20-slot live snapshot saved, historical exact game deck-version identity qualified"
+    }
+  ],
+  "resolved_access_gaps": {
+    "status": "resolved",
+    "receipt": "LOCAL_SOURCE_VERIFICATION.json",
+    "frozen_sha_verified": true
+  },
+  "new_frame_cap_reached": 20,
+  "scope_exclusions": [
+    "Opening",
+    "Other owner turns",
+    "Opponent turn reconstruction",
+    "Accepted boards/outcome/action rereview",
+    "Media move",
+    "External log",
+    "Simulator"
+  ]
+}

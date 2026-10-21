@@ -1,0 +1,42 @@
+{
+  "game_id": "20261002_210612000_iOS_auto_sol",
+  "source_video": "20261002_210612000_iOS.MP4",
+  "reviewer": "/root/drafta_auto_210612",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "complete_first_pass": true,
+  "frozen_utc": "2026-10-03T00:00:49.014937+00:00",
+  "status": "submitted_first_pass_pending_independent_acceptance",
+  "source_sha256": "9dcc8b0fab462433546cc35161d2a5e92ada7a571f4bbff6020ad99fbb72ad03",
+  "files": {
+    "SOURCE.json": "6ef36e57a524dc127306dbc11771ee042781a0915774bbe13352d7408757e456",
+    "ASSIGNMENT.json": "aba9d13a1576f0d8d380dc95a1926f36c4da67b6685884a591bb829beb729499",
+    "ASSIGNMENT.md": "f4054a97bbae25fc64c9819bb8ee259c8b0529c5e0c1e9b2d99af04302fc6dd3",
+    "REVIEW.md": "84c46211c9763625afc06e66acf0c0d33ae8f5ae1243c81bc193691036c50bd1",
+    "COVERAGE.md": "8d5742051bbc2b3ff6676fb7c02cf487e677fbb989cfee8761b13c1bd54f5f38",
+    "SUMMARY.json": "1fdfddb91d1b0e034d6c4a454eda3c3444190cebf94a9cf1beee9e78ff2590fc",
+    "UNCERTAINTIES.json": "157b58b7aa6f657e105be4d73cb2d3f896ef0231cdd3bfac2aa43b20dbb6ec03",
+    "PAUSE_GAME.json": "de686c069ec4fe7f800c844ef416c692b160c060642693088b3685d652cd60a4",
+    "DECK_USED.json": "37d6b47986bf68668bff6a2ab0c36f33ca8147ab323ced10cad8af3f0343455c",
+    "TURN_LEDGER.json": "1cdca835b65a226c8362ee079813456bdf1175ad67ff5aa04cc49346d6e0e600",
+    "TURN_EVIDENCE.json": "42349fbf3e289fd7ce85b6da922dfd769819053a1b641a94fca000b0d02f2be0",
+    "TURN_TABLE.md": "1b4d4c9cfeeb26c75835df6e7f86e5efad8631d348a8f9eb1e14766afcac7032",
+    "METRICS.json": "ae94de757349d0acb75f04d33334115d0ba798b84bcd2902dc91b478a6f9bd3f",
+    "EXTRACTION_MANIFEST.json": "d651c488cc0adb5f09fb1728d5e475cc46be8a78ffd7906d4b5f225b0f86fe30",
+    "LOCATOR_PREPROCESSING.json": "f76b8c1b6334548c8adad551443c3f789013fa3f9e9a840d91e6d836e8b3d043",
+    "REPAIR_RECEIPT.json": "18393703afc212a14fccf342dd6c9deba188420e84b19946ca46224e92bc2741"
+  },
+  "native_evidence_binding": "EXTRACTION_MANIFEST.json includes each fullframe/crop hash and measured PTS",
+  "lead_only_followups": [
+    "acceptance",
+    "shared registration",
+    "external log",
+    "archive",
+    "cloud space release"
+  ],
+  "submitted_utc": "2026-10-03T00:25:40.910838+00:00",
+  "review_status": "repaired_pending_independent_recheck",
+  "original_submission_manifest": "worker_submission/SUBMISSION.json",
+  "original_submission_manifest_sha256": "9489c54b6a89b2387ab1a988555385358a6ab5f4d097ce70562577a44637bd5b",
+  "repair_receipt": "REPAIR_RECEIPT.json"
+}

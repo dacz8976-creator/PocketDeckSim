@@ -1,0 +1,77 @@
+{
+  "schema": "battle-review-summary-v1",
+  "game_id": "pause-20261005-123812",
+  "source_video": "20261005_123812000_iOS.MP4",
+  "source_sha256": "3fb3dc25ac96c6e742f9467ba14abdbf91aff403ef2a5bdc62c7f414e775e5a0",
+  "duration_seconds": 336.981928,
+  "local_match_date": "2026-10-05",
+  "local_recording_start": "2026-10-05T07:38:12-05:00",
+  "classification": "human_match",
+  "auto_control_observed": false,
+  "queue": null,
+  "owner": "Dacz8976",
+  "opponent": "Sofii",
+  "result": "loss",
+  "result_reason": "Owner selected Concede at325; Defeat327/result336",
+  "last_earned_score": "1-2",
+  "turn_count": 9,
+  "whole_source_reviewed": true,
+  "opening_captured": true,
+  "qr_bound": true,
+  "exact_filmed_semantic_deck_count": 20,
+  "live_deck_snapshot_matches": false,
+  "sol_first_pass_complete": true,
+  "independent_acceptance": false,
+  "external_registration_status": "pending root",
+  "suggested_independent_targets": [
+    {
+      "seconds": [
+        0,
+        40
+      ],
+      "purpose": "QR/version continuity and opening"
+    },
+    {
+      "seconds": [
+        43,
+        64
+      ],
+      "purpose": "Ordinary first move; Needle target/End Turn"
+    },
+    {
+      "seconds": [
+        64,
+        108
+      ],
+      "purpose": "Opponent full turn including short Research82 and hidden Lead search"
+    },
+    {
+      "seconds": [
+        180,
+        192
+      ],
+      "purpose": "Immediate Poke Ball and intact hand183.2"
+    },
+    {
+      "seconds": [
+        210,
+        248
+      ],
+      "purpose": "Fantasia KO and3 Psychic right Diancie"
+    },
+    {
+      "seconds": [
+        249,
+        281
+      ],
+      "purpose": "Intact hand before generation, draw order, retreat payment, new attachment"
+    },
+    {
+      "seconds": [
+        313,
+        336
+      ],
+      "purpose": "Poke Ball no-effect, menu Concede and Defeat"
+    }
+  ]
+}

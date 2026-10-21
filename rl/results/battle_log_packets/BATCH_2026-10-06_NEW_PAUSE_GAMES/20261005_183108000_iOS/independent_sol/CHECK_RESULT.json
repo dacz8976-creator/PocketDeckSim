@@ -1,0 +1,428 @@
+{
+  "schema": "bounded-independent-sol-acceptance-v1",
+  "reviewer": "/root/independent_183108",
+  "review_model": "gpt-6.1-sol",
+  "review_role": "Fresh separate Sol bounded independent acceptance, not the full-review worker",
+  "checked_at_utc": "2026-10-06T21:06:45.329304+00:00",
+  "source_video": "20261005_183108000_iOS.MP4",
+  "source_sha256": "94bd9d0e127291765928cc7cf4fc69a0ca5d1b21189622ed98bd2f1e14fb5f95",
+  "source_duration_seconds": 403.317007,
+  "media_rehashed": false,
+  "identity_basis": "Frozen CLI SOURCE.json binding; retained native evidence checked and hashed. No original media decoding or mutation.",
+  "status": "rejected_pending_surgical_repairs",
+  "stable_inputs": true,
+  "checked_input_sha256": {
+    "SOURCE.json": "fc4a2dadc8036bf30868c012a66bb6525f9fc9ac719ab900685d201e8d309a05",
+    "REVIEW.md": "d25101139ef17cacc5b36bfc2d07d32d767f5c1935878cd6a8dd6d162148a580",
+    "COVERAGE.md": "68d52bf173620db6e2ae9b1dadbbe032e85e580fbf8e1a5ee45501fc21e7a911",
+    "SUMMARY.json": "bb449e237404fdcae45fb2f9d6fea15bfafab30bb7e4add72bf0ca234e5dd3b0",
+    "UNCERTAINTIES.json": "a9ade470133dbda11870c8740aa78df69030434c418b2906c9ecfaeeb92fa28d",
+    "PAUSE_GAME.json": "6bda95996c780a0af5ad16d6ed40f2727260153124207badb7c95ca5e9ee9512",
+    "DECK_USED.json": "442834dbdb6b104d555e2da390242164544598039c1669b5ac9c722b561b09e3",
+    "TURN_LEDGER.json": "a3951a9c10cd5d62f8781b2fa597545f601a9f2fe01873c376b2053b6de8660b",
+    "TURN_EVIDENCE.json": "18c8cac3edba832939d0241890630eb1b642ede97ebd5c5ee08f3f0b63a18e8a"
+  },
+  "supplemental_checked_input_sha256": {
+    "ASSIGNMENT.json": "ebb601bb8fbfbbd44c3ac90f94989ede40c73bea687ea6c9aa6200bc714dda30",
+    "ASSIGNMENT.md": "f4054a97bbae25fc64c9819bb8ee259c8b0529c5e0c1e9b2d99af04302fc6dd3",
+    "RECORDING_METADATA.json": "ee2a7888ed9c86124a8b88e28a07e00eaa28d57916a9812642ca5b8d5b81f99b",
+    "qr_intake/QR_DECODE_0001.00.json": "46b9462c53a360b4b166b979847c9b56ccce9f73d6a69937158e31b0a44942fd",
+    "qr_intake/INTAKE_RESULT.json": "f7db7916e2108967276aa7b19ab815c19a945b8f2ee59ac284d43085b13422cb",
+    "qr_intake/t0001.00.png": "094e5bffe741a905afc18805147bd8b71352e43b2384dfc22284a01747866000",
+    "astra_gap/CHECK_RESULT.json": "f64f18ef65ff364ede751155df7383ed3b3556dbd15e5b3c113edb375ce709f0",
+    "astra_gap/VIEWED_EVIDENCE.json": "a1b080c06eaef19a98bc9d5887962767649fbdc4b8e480b946d3c972a88fcc5e",
+    "../STANDARD_WORKER_ASSIGNMENT.md": "3cf4d00e75a204a914bdbf3d87a6fbd4f036323e899ec3d2f006a300e832f257",
+    "../LIVE_DECK_SNAPSHOT.json": "f886698321bbdf67c06a17fe4d54a4ef2e1d464f02d972690383c64826432a28",
+    "../NEW_DECK_ENTRIES.json": "e3a946d41a06fa301b6f7da92cc173335a232c6eb24098607fb9a67f9ad49900",
+    "../PAUSE_DECKS_IMPORT.json": "278fcaa5baffebd347323bb5f13283bbd87cc21b385924bf989a9d20efc21355",
+    "../OWNER_CONTEXT.json": "8ef5b39f6c94b3f4b307869ad52ca13a3f4b0da19f4073d0cfbfb79eae1db4ac",
+    "independent_sol/CAPTURE_CHECK.json": "aa58c3bc79276280e811f0df0d23d85314613405e4956dd2321c3d84989e17f3",
+    "independent_sol/QR_RECHECK.json": "9d1cea5a4ff73d8e2f2b93003cb1c9661cec0dd2644c3853a87e23b20ccfaa38",
+    "independent_sol/VIEWED_EVIDENCE.json": "cf1440ba9984dd7066a59ece20042d95482eb39c2b705ad4cfafabe3fec65643"
+  },
+  "independent_acceptance": false,
+  "whole_source_second_pass_claim": false,
+  "scope": "Bounded independent acceptance against complete first-pass source packet; opening, ordinary owner T1/T3 and full ordinary opponent T2 independently checked beyond worker flagged ambiguity, all scheduled owner captures inspected, consequential sequences and terminal checked.",
+  "required_repairs": [
+    {
+      "id": "R1_T6_DRAW_COUNT",
+      "location": "TURN_LEDGER.json turn6.draws_and_searches[0]",
+      "rejected_claim": {
+        "hand_count_before": 3,
+        "hand_count_after": 4
+      },
+      "supported_replacement": {
+        "hand_count_before": 4,
+        "hand_count_after": 5
+      },
+      "evidence_ids": [
+        "F_0203_00",
+        "F_0205_00"
+      ],
+      "reason": "Native top fan has4 backs at203,5 at205 and before connection refresh,3 at219.5 after two Pokemon cards leave. Astra agrees independently.",
+      "required_action": "Correct counts and cite203/205; preserve unknown identities, unknown buffered mutual order, and no invented extra draw."
+    },
+    {
+      "id": "R2_KNOWN_ABSENCE_SCALARS",
+      "location": "TURN_LEDGER.json observed living Pokemon Tool fields and absent Stadium fields",
+      "rejected_claim": "Null for observed no Tool/no Stadium, without absence status or reason.",
+      "required_action": "Use none or explicit observed_absent status for established absence. Keep null for truly unknown values and for not-applicable empty Pokemon slots; do not fill hidden values.",
+      "affected_locations": [
+        "turn1.board_at_start.stadium",
+        "turn1.board_at_start.owner.active.tool",
+        "turn1.board_at_start.opponent.active.tool",
+        "turn1.board_after.stadium",
+        "turn1.board_after.owner.active.tool",
+        "turn1.board_after.opponent.active.tool",
+        "turn2.board_at_start.stadium",
+        "turn2.board_at_start.owner.active.tool",
+        "turn2.board_at_start.opponent.active.tool",
+        "turn2.board_after.owner.active.tool",
+        "turn2.board_after.opponent.active.tool",
+        "turn2.board_after.opponent.bench[1].tool",
+        "turn3.board_at_start.owner.active.tool",
+        "turn3.board_at_start.opponent.active.tool",
+        "turn3.board_at_start.opponent.bench[1].tool",
+        "turn3.board_after.owner.active.tool",
+        "turn3.board_after.owner.bench[1].tool",
+        "turn3.board_after.opponent.active.tool",
+        "turn3.board_after.opponent.bench[1].tool",
+        "turn4.board_at_start.owner.active.tool",
+        "turn4.board_at_start.owner.bench[1].tool",
+        "turn4.board_at_start.opponent.active.tool",
+        "turn4.board_at_start.opponent.bench[1].tool",
+        "turn4.board_after.owner.active.tool",
+        "turn4.board_after.owner.bench[1].tool",
+        "turn4.board_after.opponent.active.tool",
+        "turn4.board_after.opponent.bench[1].tool",
+        "turn4.board_after.opponent.bench[2].tool",
+        "turn5.board_at_start.owner.active.tool",
+        "turn5.board_at_start.owner.bench[1].tool",
+        "turn5.board_at_start.opponent.active.tool",
+        "turn5.board_at_start.opponent.bench[1].tool",
+        "turn5.board_at_start.opponent.bench[2].tool",
+        "turn5.board_after.owner.active.tool",
+        "turn5.board_after.opponent.active.tool",
+        "turn5.board_after.opponent.bench[1].tool",
+        "turn5.board_after.opponent.bench[2].tool",
+        "turn6.board_at_start.owner.active.tool",
+        "turn6.board_at_start.opponent.active.tool",
+        "turn6.board_at_start.opponent.bench[1].tool",
+        "turn6.board_at_start.opponent.bench[2].tool",
+        "turn6.board_after.opponent.active.tool",
+        "turn6.board_after.opponent.bench[0].tool",
+        "turn6.board_after.opponent.bench[1].tool",
+        "turn6.board_after.opponent.bench[2].tool",
+        "turn7.board_at_start.opponent.active.tool",
+        "turn7.board_at_start.opponent.bench[0].tool",
+        "turn7.board_at_start.opponent.bench[1].tool",
+        "turn7.board_at_start.opponent.bench[2].tool",
+        "turn7.board_after.opponent.active.tool",
+        "turn7.board_after.opponent.bench[0].tool",
+        "turn7.board_after.opponent.bench[2].tool",
+        "turn8.board_at_start.opponent.active.tool",
+        "turn8.board_at_start.opponent.bench[0].tool",
+        "turn8.board_at_start.opponent.bench[2].tool",
+        "turn8.board_after.opponent.active.tool",
+        "turn8.board_after.opponent.bench[0].tool",
+        "turn8.board_after.opponent.bench[2].tool",
+        "turn9.board_at_start.opponent.active.tool",
+        "turn9.board_at_start.opponent.bench[0].tool",
+        "turn9.board_at_start.opponent.bench[2].tool",
+        "turn9.board_after.owner.bench[1].tool",
+        "turn9.board_after.opponent.active.tool",
+        "turn9.board_after.opponent.bench[2].tool",
+        "turn10.board_at_start.owner.bench[1].tool",
+        "turn10.board_at_start.opponent.active.tool",
+        "turn10.board_at_start.opponent.bench[2].tool",
+        "turn10.board_after.owner.bench[1].tool",
+        "turn10.board_after.opponent.active.tool",
+        "turn10.board_after.opponent.bench[2].tool"
+      ],
+      "evidence_ids": [
+        "F_0051_00",
+        "F_0053_00",
+        "F_0093_50",
+        "F_0176_00",
+        "F_0248_00",
+        "F_0314_00",
+        "F_0368_00",
+        "F_0389_00"
+      ],
+      "reason": "Protocol and STANDARD_WORKER_ASSIGNMENT distinguish known absence from unknown. Existing visibly_empty positional Bench objects are valid."
+    },
+    {
+      "id": "R3_CAPTURE_QUALIFICATIONS",
+      "location": "TURN_EVIDENCE.json draw-offset candidates and F_0196_50; TURN_LEDGER turn5.owner_hand_end.basis",
+      "rejected_claim": "All postplay candidates get unzoomed:false/hand_spread:false regardless of actual view; F_0196_50 claims unzoomed:true and intact unzoomed ending hand.",
+      "required_action": "Correct each independent flag based on actual frame, preserving before_first_play:false and unsuitability for postplay candidates. At196.5 label the large Scolipede attack zoom; the two ending cards Copycat/Scolipede remain readable and count2 is supported. Either retain that witnessed ending hand with accurate zoom limitation, or select another retained clear preattack view. Do not replace it with a postattack view.",
+      "supported_unzoomed_hand_spread_by_requested_seconds": {
+        "53": {
+          "unzoomed": true,
+          "hand_spread": true
+        },
+        "56": {
+          "unzoomed": true,
+          "hand_spread": true
+        },
+        "94.5": {
+          "unzoomed": true,
+          "hand_spread": true
+        },
+        "96.5": {
+          "unzoomed": true,
+          "hand_spread": true
+        },
+        "99.5": {
+          "unzoomed": false,
+          "hand_spread": true
+        },
+        "177": {
+          "unzoomed": false,
+          "hand_spread": true
+        },
+        "179": {
+          "unzoomed": true,
+          "hand_spread": true
+        },
+        "182": {
+          "unzoomed": true,
+          "hand_spread": true
+        },
+        "253": {
+          "unzoomed": true,
+          "hand_spread": true
+        },
+        "315": {
+          "unzoomed": true,
+          "hand_spread": true
+        },
+        "317": {
+          "unzoomed": true,
+          "hand_spread": true
+        },
+        "320": {
+          "unzoomed": false,
+          "hand_spread": false
+        },
+        "196.5": {
+          "unzoomed": false,
+          "hand_spread": true
+        }
+      },
+      "reason": "A spread, unzoomed changed hand is still unsuitable for the initial preplay hand; suitability must not overwrite independent factual capture properties. At320 coin modal blurs the hand and neither property is supported."
+    },
+    {
+      "id": "R4_TERMINAL_COMPOSITE_EVIDENCE",
+      "location": "TURN_LEDGER.json turn10.board_after and knockout_removal evidence",
+      "rejected_claim": "Entire terminal typed board directly observed from392 alone.",
+      "required_action": "Bind the board/mon/Zone fields to clean389 postremoval evidence and the opponent awarded total3 to392. Add explicit composite phase/basis with389 prior1 and392 point award3. Cite389 for owner empty Active and no terminal promotion; retain386/387 retaliation and388 removal animation separately.",
+      "evidence_ids": [
+        "F_0386_00",
+        "F_0387_00",
+        "F_0388_00",
+        "F_0389_00",
+        "F_0392_00",
+        "F_0402_00"
+      ],
+      "supported_board_389": {
+        "owner_active": "visibly empty",
+        "owner_bench_center": "Mega Sableye ex170/170,Darkness1,noTool",
+        "opponent_active": "Houndstone60/130,Psychic2,noTool",
+        "opponent_right_bench": "Meloetta10/70,noEnergy,noTool",
+        "stadium": "Peculiar Plaza",
+        "points_before_award": [
+          2,
+          1
+        ]
+      },
+      "reason": "392 +3 point overlay obscures both Active slots.389 cleanly supports postremoval board before the overlay, whereas388 is still bright removal animation."
+    }
+  ],
+  "ordinary_and_consequential_anchors": [
+    {
+      "scope": "opening/setup",
+      "seconds": [
+        1,
+        4,
+        8,
+        16,
+        32,
+        40
+      ],
+      "finding": "One human Event setup, filmed New deck6 slot11. Five opening slots Copycat,Wally,Whirlipede,Scolipede,Venipede; Venipede placed Active."
+    },
+    {
+      "scope": "ordinary ownerT1",
+      "seconds": [
+        49,
+        51,
+        51.5,
+        52,
+        53,
+        56
+      ],
+      "finding": "Normal Scolipede draw; five-card selected/end hand at51. No Energy/card play. End Turn warning A Supporter card can be used shown51.5/52; accepted into Current turn2 by53."
+    },
+    {
+      "scope": "ordinary full opponentT2",
+      "seconds": [
+        53,
+        56,
+        60,
+        63,
+        65,
+        67,
+        69,
+        72.5,
+        79,
+        85,
+        89,
+        91,
+        93.5
+      ],
+      "finding": "Hidden normal draw; Research two hidden draws; Plaza; Meloetta bench; free Pumpkaboo retreat to center Bench and Meloetta Active;Psychic attached to benchedPumpkaboo. No attack. Names, typed targets, ordering and final board match."
+    },
+    {
+      "scope": "ordinary ownerT3",
+      "seconds": [
+        93.5,
+        93.8,
+        94,
+        94.5,
+        95,
+        96.5,
+        99.5,
+        103,
+        104,
+        116
+      ],
+      "finding": "Six-card intact preplay hand ends Mega Sableye ex; first voluntary move benches Mega; later Whirlipede evolution thenDarkness toActive. Current Zone empty at93.5 before generation; hand4 at104, Poison/40 andcheckup10 reconciled in full account."
+    },
+    {
+      "scope": "ownerT5",
+      "seconds": [
+        174.5,
+        175.5,
+        176,
+        176.5,
+        177.5,
+        180.5,
+        181,
+        184,
+        186,
+        189,
+        190,
+        194,
+        196.5,
+        198,
+        203
+      ],
+      "finding": "Normal Needle draw then preplay5 at176; rapid Scolipede evolution preserves70damage;WallyColorless toScolipede;Needle andnormalDarkness tobenchedMega. Owner endinghand2. Zoom qualification needsR3."
+    },
+    {
+      "scope": "T6buffer",
+      "seconds": [
+        203,
+        205,
+        219.5
+      ],
+      "finding": "Independent top crops confirm4→5normaldraw, then3postbuffer. Astra19nativeframe clarification independently supports changed boards and unknown mutual order; accepted unknown order preserved."
+    },
+    {
+      "scope": "Copycat",
+      "seconds": [
+        248,
+        250,
+        253,
+        255,
+        256,
+        257,
+        261,
+        262,
+        263,
+        265,
+        285
+      ],
+      "finding": "First Darkness toActiveMega thenCopycat;Scolipede/Cyrus returned todeck, drawsCyrus firstthenLuckyIcePop to matchfan2. Endinghand2; attack100,GourgeistKO,+1,promotionMeloetta20,Needle10 thenCurrentturn8."
+    },
+    {
+      "scope": "two Pop uses and T9 resolution",
+      "seconds": [
+        312,
+        313.5,
+        314,
+        315,
+        318,
+        321,
+        323,
+        325,
+        327,
+        330,
+        332,
+        334,
+        336,
+        340.5,
+        342,
+        344.5,
+        345.5,
+        349.5,
+        351,
+        356,
+        358,
+        364,
+        368
+      ],
+      "finding": "Mega normaldraw;two separateuses sameLuckyIcePop40→60Headsreturned then60→80Tailsdiscarded. SecondMega bench,Darkness toBench notActive;Cyrus onlyendhand1. Attack100,HoundstoneKO,+1total2,promotedGreavard70→60Needle;Supporterwarningaccepted."
+    },
+    {
+      "scope": "terminalT10",
+      "seconds": [
+        370,
+        372,
+        378,
+        382,
+        384,
+        386,
+        388,
+        389,
+        392,
+        394,
+        402,
+        403
+      ],
+      "finding": "Greavard evolveswith10damage toHoundstone120;secondPsychic;LastRespects170 dropsMega80→0;retaliation60 dropsHoundstone120→60 beforeMega removal. Owner Activeempty andBenchMega survives. +3points,Defeat,10turns,owner2/opponent3,470damage. Composite evidence needsR4."
+    }
+  ],
+  "supported_outcome": {
+    "classification": "human_event",
+    "opponent": "ぐー、",
+    "owner_outcome": "loss",
+    "owner_points": 2,
+    "opponent_points": 3,
+    "turns": 10,
+    "damage_dealt": 470
+  },
+  "captured_deck_status": "Exact20 filmed QR independently re-read and entity-count matched; live save pending lead.",
+  "turn_rows": 10,
+  "crop_verification": "391native full/782 crops correct dimensions and bounds;22special captures exact pixel comparisons and hashes in CAPTURE_CHECK.json.",
+  "preserve_limits": [
+    "T6 internal buffered action order and remote input times unavailable; do not reconstruct.",
+    "Opponent hidden draws/search identities remain unknown.",
+    "No full opened/scroll discard pile available; periodic snapshots explicitly limited.",
+    "Native seek times are requested local timestamps; actual PTS and exact touch timing not measured.",
+    "Opponent name image transcription is supported; no underlying account ID assertion.",
+    "Prepared filmed deck definition is not a saved-live-log claim."
+  ],
+  "recheck_scope": "After lead applies one surgical repair, rehash nine inputs and narrowly recheckR1-R4 and affected cross-file consistency. Do not rerun whole builder/fulldecode or modify frozen rejected receipt.",
+  "canonical_files_modified": false,
+  "external_written": false,
+  "registration_or_media_changes": false,
+  "files_written": [
+    "independent_sol/FROZEN_INPUT_SHA256.json",
+    "independent_sol/CAPTURE_CHECK.json",
+    "independent_sol/QR_RECHECK.json",
+    "independent_sol/VIEWED_EVIDENCE.json",
+    "independent_sol/CHECK_RESULT.json"
+  ]
+}

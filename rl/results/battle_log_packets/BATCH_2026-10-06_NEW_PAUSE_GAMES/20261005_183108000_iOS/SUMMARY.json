@@ -1,0 +1,92 @@
+{
+  "source_video": "20261005_183108000_iOS.MP4",
+  "source_sha256": "94bd9d0e127291765928cc7cf4fc69a0ca5d1b21189622ed98bd2f1e14fb5f95",
+  "game_id": "20261005_183108000_iOS_game_1",
+  "review_status": "fresh_full_visual_first_pass_complete_pending_independent_acceptance",
+  "source_coverage_seconds": [
+    0,
+    403.317007
+  ],
+  "games_in_source": 1,
+  "classification": "human_event",
+  "auto_control_observed": false,
+  "match_date": "2026-10-05",
+  "owner": "Dacz8976",
+  "opponent": "ぐー、",
+  "owner_deck_core": "Venipede / Whirlipede / Scolipede / Mega Sableye ex",
+  "opponent_deck_core": "Pumpkaboo / Gourgeist, Meloetta, Greavard / Houndstone, Chingling discard",
+  "outcome": "loss",
+  "result_evidence_ids": [
+    "F_0392_00",
+    "F_0394_00",
+    "F_0402_00",
+    "F_0403_00"
+  ],
+  "final_points_owner_opponent": [
+    2,
+    3
+  ],
+  "total_turns": 10,
+  "damage_dealt": 470,
+  "external_written": false,
+  "independent_acceptance": false,
+  "capture_status": "complete_with_recording_limits",
+  "suggested_independent_targets": [
+    {
+      "seconds": [
+        32,
+        40
+      ],
+      "purpose": "Five-card opening and placement"
+    },
+    {
+      "seconds": [
+        53,
+        91
+      ],
+      "purpose": "Ordinary full opponent turn Research/Stadium/bench/retreat/attachment ordering"
+    },
+    {
+      "seconds": [
+        93.5,
+        104
+      ],
+      "purpose": "Ordinary first owner move, exact preplay six-card hand and later generation"
+    },
+    {
+      "seconds": [
+        173,
+        198
+      ],
+      "purpose": "Needle normal draw, rapid evolution, Wally Colorless target, Tool/normalEnergy targets"
+    },
+    {
+      "seconds": [
+        217,
+        224
+      ],
+      "purpose": "Consequential bufferedT6 order limit"
+    },
+    {
+      "seconds": [
+        255,
+        263
+      ],
+      "purpose": "Copycat consumption vs reveal and named order"
+    },
+    {
+      "seconds": [
+        312,
+        368
+      ],
+      "purpose": "Two distinct Ice Pop uses, Energy toBench, attack/KO/promotion/Needle"
+    },
+    {
+      "seconds": [
+        370,
+        403
+      ],
+      "purpose": "Final evolution, attack170, retaliation60, removedActive,+3points,loss"
+    }
+  ]
+}

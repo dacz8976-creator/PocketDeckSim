@@ -102,6 +102,13 @@ impl Deck {
             return false;
         }
 
+        // Upstream #344 (narrow): the Energy Zone can't generate Dragon or Colorless Energy, so a
+        // deck declaring either is not buildable. An empty list is not rejected here: the
+        // hidden-information templates clear the opponent's Energy on purpose.
+        if !self.energy_types.iter().all(EnergyType::is_selectable) {
+            return false;
+        }
+
         // Check that no card name appears more than twice
         let mut card_counts = std::collections::HashMap::new();
         for card in &self.cards {

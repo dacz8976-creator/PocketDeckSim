@@ -1,0 +1,192 @@
+{
+  "video_basename": "20260930_142105000_iOS.MP4",
+  "reviewer": "sol_auto_142105000",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "source_sha256": "33aa21f00544ea03546d97ebc5f0007832cf8c151a5dbc5a5de7106ea4331ee6",
+  "mode": "autopilot_vs_computer",
+  "mode_evidence": [
+    "AI label on versus screen at approximately 4.5s",
+    "Auto enabled at setup and throughout gameplay",
+    "Owner testimony for September 30 uploads"
+  ],
+  "ladder_eligible": false,
+  "outcome": "owner_win",
+  "owner": "Dacz8976",
+  "opponent": "AI Opponent",
+  "points": {
+    "owner": 3,
+    "opponent": 0
+  },
+  "point_progression": [
+    {
+      "turn": 5,
+      "defeated": "Victini",
+      "owner_points": 1,
+      "opponent_points": 0,
+      "evidence": "evidence/t0093.00.jpg"
+    },
+    {
+      "turn": 7,
+      "defeated": "Crocalor",
+      "owner_points": 2,
+      "opponent_points": 0,
+      "evidence": "evidence/t0123.00.jpg"
+    },
+    {
+      "turn": 9,
+      "defeated": "Numel",
+      "owner_points": 3,
+      "opponent_points": 0,
+      "evidence": "evidence/t0147.00.jpg"
+    }
+  ],
+  "terminal_evidence": "evidence/t0152.00.jpg",
+  "scope": "Complete single battle from setup through every visible turn and terminal Victory",
+  "coverage": {
+    "duration_seconds": 159.021667,
+    "reviewed_interval_seconds": [
+      0,
+      159.021667
+    ],
+    "turns_reviewed": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "overview_sheets_inspected": 6,
+    "targeted_full_resolution_frames": 60,
+    "detail_sheets_inspected": 7,
+    "unreviewed_intervals": []
+  },
+  "visible_owner_core": [
+    "Alolan Vulpix",
+    "Alolan Ninetales ex",
+    "Team Rocket's Rattata",
+    "Team Rocket's Raticate ex",
+    "Elegant Cape"
+  ],
+  "final_visible_owner_state": {
+    "active": {
+      "pokemon": "Alolan Ninetales ex",
+      "hp_remaining": 140,
+      "max_hp_with_tool": 180,
+      "water_energy": 2,
+      "tool": "Elegant Cape"
+    },
+    "bench": [
+      {
+        "pokemon": "Team Rocket's Raticate ex",
+        "hp_remaining": 120,
+        "water_energy": 1
+      }
+    ]
+  },
+  "findings": [
+    "Three Binding Snow attacks exploit Water weakness for one-point knockouts.",
+    "Active Energy Zone attachment prohibition remains after each knockout/promotion while bench attachment succeeds.",
+    "Elegant Cape raises Ninetales from 150 to 180 HP; Victini's only V-Flame deals 40, leaving 140.",
+    "Sightseer reveals no Stage 1 in its top four cards and adds none.",
+    "Raticate evolves against a zero-Energy Crocalor; no theft is established, and a Water attachment develops the backup."
+  ],
+  "uncertainties": [
+    "Hidden deck/hand/search details and bot intent",
+    "Approximate phase boundaries",
+    "Late phone notifications partly obscure opponent hand/header"
+  ],
+  "consequential_ambiguities_requiring_escalation": [],
+  "worker_status": "full_visual_review_complete",
+  "ladder_log_written": false,
+  "reports": [
+    "REVIEW.md",
+    "COVERAGE.md",
+    "UNCERTAINTIES.json",
+    "SUMMARY.json"
+  ],
+  "independent_check_targets": {
+    "opening_ai": {
+      "time_seconds_approx": 4.5,
+      "evidence": "overview/sample_frames/00002.jpg"
+    },
+    "opening_auto_first_player": {
+      "time_seconds_approx": 10.5,
+      "evidence": "overview/sample_frames/00004.jpg"
+    },
+    "ordinary_turn_3": {
+      "times_seconds": [
+        47,
+        51,
+        60,
+        62
+      ],
+      "evidence": [
+        "evidence/t0047.00.jpg",
+        "evidence/t0051.00.jpg",
+        "evidence/t0060.00.jpg",
+        "evidence/t0062.00.jpg"
+      ],
+      "claims": "Ninetales evolution, first Water, Cape raising HP to 180, Sightseer miss"
+    },
+    "victini_knockout": {
+      "times_seconds": [
+        87,
+        89,
+        93
+      ],
+      "evidence": [
+        "evidence/t0087.00.jpg",
+        "evidence/t0089.00.jpg",
+        "evidence/t0093.00.jpg"
+      ]
+    },
+    "crocalor_knockout": {
+      "times_seconds": [
+        113,
+        117,
+        123
+      ],
+      "evidence": [
+        "evidence/t0113.00.jpg",
+        "evidence/t0117.00.jpg",
+        "evidence/t0123.00.jpg"
+      ]
+    },
+    "numel_knockout_and_victory": {
+      "times_seconds": [
+        138,
+        140,
+        141,
+        147,
+        152
+      ],
+      "evidence": [
+        "evidence/t0138.00.jpg",
+        "evidence/t0140.00.jpg",
+        "evidence/t0141.00.jpg",
+        "evidence/t0147.00.jpg",
+        "evidence/t0152.00.jpg"
+      ]
+    }
+  },
+  "worker_actions_at_submission": {
+    "source_moved": false,
+    "global_registration_performed": false
+  },
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "lead_acceptance_pending": false,
+  "source_archived": true,
+  "source_modified": false,
+  "archive_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260930_142105000_iOS.MP4",
+  "archive_receipt": "MOVE_RECEIPT.20260930_142105000_iOS.MP4.json",
+  "archive_completion_event_id": "dfedb1c2-b443-48c9-84e3-e0b392ca0402",
+  "global_registration_complete": true,
+  "current_review_event_id": "17273c47-bce0-4b3f-bb20-98a8dc53b1c0",
+  "post_acceptance_corrections": "POST_ACCEPTANCE_CORRECTIONS.md"
+}

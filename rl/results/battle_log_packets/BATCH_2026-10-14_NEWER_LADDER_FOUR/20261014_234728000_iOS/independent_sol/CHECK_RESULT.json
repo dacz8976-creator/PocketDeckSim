@@ -1,0 +1,214 @@
+{
+  "accepted": true,
+  "acceptance_scope": "Bounded independent semantic acceptance of the reconciled full primary review, including the explicit global-turn-4 correction below. This is not a second full-video pass.",
+  "source_filename": "20261014_234728000_iOS.MP4",
+  "source_sha256": "3f7d921a16db1c3c5df0af58e3b598163a33ddd359e9e10738924035aecc5c72",
+  "source_bytes": 755824311,
+  "source_duration_seconds": 407.985,
+  "frozen_manifest_sha256": "b45af4231a26f8232ccd1f482d3deda4c63b44ad69d0d5838ab95811e1a844d7",
+  "frozen_files_match": true,
+  "primary_unchanged": true,
+  "frozen_file_count": 299,
+  "native_frame_count": 260,
+  "hash_checks": {
+    "before": "independent_sol/HASH_CHECK_BEFORE.json",
+    "after": "independent_sol/HASH_CHECK_AFTER.json",
+    "before_mismatches": [],
+    "after_mismatches": [],
+    "manifest_digest_unchanged": true
+  },
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "reviewer": "/root/check_newer_234728",
+  "review_date_local": "2026-10-14",
+  "inspected_paths": [
+    "START_HERE_VIDEO_REVIEW.md",
+    "Review_Log/README.md",
+    "SOURCE.json",
+    "REVIEW.md",
+    "COVERAGE.md",
+    "SUMMARY.json",
+    "UNCERTAINTIES.json",
+    "REVIEW_PACKET_HASHES.json",
+    "evidence/f_0002.00.jpg",
+    "evidence/f_0018.00.jpg",
+    "evidence/f_0022.00.jpg",
+    "evidence/f_0042.00.jpg",
+    "evidence/f_0050.00.jpg",
+    "evidence/f_0052.00.jpg",
+    "evidence/f_0108.00.jpg",
+    "evidence/f_0114.00.jpg",
+    "evidence/f_0154.00.jpg",
+    "evidence/f_0158.00.jpg",
+    "evidence/f_0165.00.jpg",
+    "evidence/f_0169.00.jpg",
+    "evidence/f_0174.00.jpg",
+    "evidence/f_0176.00.jpg",
+    "evidence/f_0178.00.jpg",
+    "evidence/f_0184.00.jpg",
+    "evidence/f_0149.00.jpg",
+    "evidence/f_0204.00.jpg",
+    "evidence/f_0216.00.jpg",
+    "evidence/f_0220.00.jpg",
+    "evidence/f_0240.00.jpg",
+    "evidence/f_0246.00.jpg",
+    "evidence/f_0320.00.jpg",
+    "evidence/f_0338.00.jpg",
+    "evidence/f_0342.00.jpg",
+    "evidence/f_0346.00.jpg",
+    "evidence/f_0350.00.jpg",
+    "evidence/f_0376.00.jpg",
+    "evidence/f_0380.00.jpg",
+    "evidence/f_0382.00.jpg",
+    "evidence/f_0386.00.jpg",
+    "evidence/f_0392.00.jpg",
+    "evidence/f_0393.00.jpg",
+    "evidence/f_0398.00.jpg",
+    "evidence/f_0407.00.jpg",
+    "evidence/f_0054.00.jpg",
+    "evidence/f_0091.00.jpg",
+    "evidence/f_0116.00.jpg",
+    "evidence/f_0148.00.jpg",
+    "evidence/f_0214.00.jpg",
+    "evidence/f_0244.00.jpg",
+    "evidence/f_0128.00.jpg",
+    "evidence/f_0129.00.jpg",
+    "evidence/f_0130.00.jpg",
+    "evidence/f_0131.00.jpg",
+    "evidence/f_0132.00.jpg",
+    "evidence/f_0133.00.jpg",
+    "evidence/f_0134.00.jpg",
+    "evidence/f_0135.00.jpg",
+    "evidence/f_0136.00.jpg",
+    "evidence/f_0138.00.jpg",
+    "evidence/f_0140.00.jpg",
+    "evidence/f_0142.00.jpg",
+    "evidence/f_0144.00.jpg",
+    "evidence/f_0146.00.jpg"
+  ],
+  "native_frames_inspected": 55,
+  "coverage_check": {
+    "primary_complete_end_to_end": true,
+    "global_turns_documented": 11,
+    "owner_turns_started": 6,
+    "opponent_turns_started": 5,
+    "unreviewed_intervals_primary": [],
+    "setup_and_terminal_present": true,
+    "meaningful_state_progression_reconciled": true,
+    "scope_limit": "Primary full coverage was checked against its account/checklist and bounded retained-frame evidence. The independent reviewer did not replay every turn or inspect all retained frames."
+  },
+  "ordinary_samples": [
+    {
+      "topic": "Early Poke Ball and Bench",
+      "evidence": [
+        "evidence/f_0050.00.jpg",
+        "evidence/f_0052.00.jpg",
+        "evidence/f_0054.00.jpg"
+      ],
+      "observed": "Second Alolan Vulpix appears in hand then left Bench; Poke Ball appears in discard. Rattata stays right Bench. No Energy or attack on own turn 1."
+    },
+    {
+      "topic": "Sabrina replacement",
+      "evidence": [
+        "evidence/f_0108.00.jpg",
+        "evidence/f_0114.00.jpg",
+        "evidence/f_0116.00.jpg"
+      ],
+      "observed": "Sabrina is played, Dratini replaces Capsule Gouging Fire in Active, and owner Ninetales has one Water. No attack before global turn 4."
+    },
+    {
+      "topic": "Field Blower and Copycat",
+      "evidence": [
+        "evidence/f_0154.00.jpg",
+        "evidence/f_0158.00.jpg",
+        "evidence/f_0165.00.jpg",
+        "evidence/f_0174.00.jpg"
+      ],
+      "observed": "Shell Balloon moves to opponent discard while Capsule remains and Gouging Fire stays 150 HP. Copycat shuffles remaining Cyrus; opponent has two cards and resulting owner hand is Soothing Shore plus Professor's Research."
+    },
+    {
+      "topic": "Research and Stage 1 Cape",
+      "evidence": [
+        "evidence/f_0214.00.jpg",
+        "evidence/f_0216.00.jpg",
+        "evidence/f_0220.00.jpg",
+        "evidence/f_0240.00.jpg"
+      ],
+      "observed": "Research resolves, Elegant Cape is inspected, second Ninetales evolves from benched Vulpix, and Cape raises that Stage 1 to 180 HP. Active remains 150 HP."
+    },
+    {
+      "topic": "Water allocation and held Raticate",
+      "evidence": [
+        "evidence/f_0338.00.jpg",
+        "evidence/f_0346.00.jpg",
+        "evidence/f_0392.00.jpg",
+        "evidence/f_0398.00.jpg"
+      ],
+      "observed": "Water attaches to Rattata. Backup Ninetales retains one Water when promoted. Both Raticate ex remain in hand at concession; no Raticate evolution, ability or attack established."
+    }
+  ],
+  "findings": [
+    {
+      "type": "accepted_identity",
+      "detail": "Deck 13-A, Water Energy and visible Vulpix/Ninetales/Rattata/Raticate core are shown at 2 seconds. Both introduction ranks show Ultra Ball Rank 4 at 18. Going first is explicit at 22. No Auto option appears in inspected frames; primary records none throughout. Same opponent name is visible on board and Victory page."
+    },
+    {
+      "type": "accepted_first_main_attack",
+      "detail": "First Binding Snow is 175-178 seconds, owner own turn 3/global 5, with opponent 0 points. It deals 80 to 80-HP Dragonair and owner receives point 1 at 184. Early turn banners and Energy/HP states support no preceding supporting attack.",
+      "exact_note_prefix": "1st | Alolan Ninetales ex T3 | opp 0 pts",
+      "evidence": [
+        "evidence/f_0042.00.jpg",
+        "evidence/f_0054.00.jpg",
+        "evidence/f_0091.00.jpg",
+        "evidence/f_0116.00.jpg",
+        "evidence/f_0176.00.jpg",
+        "evidence/f_0178.00.jpg",
+        "evidence/f_0184.00.jpg"
+      ]
+    },
+    {
+      "type": "narrow_correction_required_in_reconciled_account",
+      "status": "accepted_with_explicit_correction",
+      "detail": "The frozen global-turn-4 row misidentifies 129-131 as Dragon's Blessing glow and places second Fire too early. Corrected account: opponent Poke Ball resolves at 129-133, with Poke Ball readable atop discard at 133; a card moves into hand during the resolution, but its identity is not independently established at the hidden draw. Second Gouging Fire is placed at 135 and settled on Bench at 136. Rayquaza still has one Fire at 136, then receives second Fire around 144, visible at 146. No Dragon's Blessing activation is established. Preserve primary and append this correction; lead explicitly agreed to add LEAD_CLARIFICATION.",
+      "evidence": [
+        "evidence/f_0128.00.jpg",
+        "evidence/f_0129.00.jpg",
+        "evidence/f_0130.00.jpg",
+        "evidence/f_0131.00.jpg",
+        "evidence/f_0132.00.jpg",
+        "evidence/f_0133.00.jpg",
+        "evidence/f_0135.00.jpg",
+        "evidence/f_0136.00.jpg",
+        "evidence/f_0144.00.jpg",
+        "evidence/f_0146.00.jpg"
+      ],
+      "effect": "Does not change first-attack timing, points, restriction mechanics, final board, or result."
+    },
+    {
+      "type": "accepted_exchange",
+      "detail": "Three Binding Snow attacks reconcile: Dragonair 80-HP KO for point 1, Capsule Gouging Fire 150 to 70, then KO for point 2. Benched Rayquaza builds two Fire plus one Lightning despite the Active attachment restriction. Mega Burst text at 380 discards Fire/Lightning for 50 each; all three disappear, unCaped Ninetales goes 150 to 0, opponent receives two points. Cape Ninetales 180 is promoted with one Water. Remaining bench Gouging Fire has Fire plus Lightning."
+    },
+    {
+      "type": "accepted_terminal",
+      "detail": "Actual preconcession board is 2-2 at 392; turn banner 11 is explicit at 393; 'Your opponent conceded' appears at 398; Victory against カビゴンです is readable at 407. No third owner point is invented. Final detailed statistics table is not shown before recording end.",
+      "evidence": [
+        "evidence/f_0392.00.jpg",
+        "evidence/f_0393.00.jpg",
+        "evidence/f_0398.00.jpg",
+        "evidence/f_0407.00.jpg"
+      ]
+    }
+  ],
+  "limits": [
+    "Only retained native frames were used; no decoding or second full pass was performed.",
+    "Full hidden opponent hand, exact complete deck lists and card printings remain unknown.",
+    "Final detailed statistics table is absent; global turn 11 comes from banner, 2-2 from board, with no guessed final-damage statistics.",
+    "No opponent motive, optimal future line or guaranteed win after concession is inferred.",
+    "Source identity was checked against SOURCE and frozen manifest; no independent rehash of original media was performed by this bounded checker.",
+    "Acceptance applies to the complete account reconciled with the explicit narrow correction. Frozen primary files remain unchanged; root is responsible for lead addendum and all registration, external logging and archive actions."
+  ],
+  "external_writes": false,
+  "shared_index_or_event_writes": false,
+  "source_moved": false,
+  "boss_mirror_written": false
+}

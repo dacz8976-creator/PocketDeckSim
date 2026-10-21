@@ -1,0 +1,32 @@
+{
+  "unreviewed_turns": [],
+  "items": [
+    {
+      "id": "matchmaking_and_control_label",
+      "status": "bounded_observation",
+      "detail": "Manual choices, clocks, named opponent and waiting messages are visible. No Auto control is present in inspected gameplay; this is not an observed OFF toggle. Exact matchmaking category and a separate AI classification are not established. No Solo/AI claim is inferred."
+    },
+    {
+      "id": "opponent_poke_ball_result",
+      "interval": "01:48-01:54",
+      "status": "hidden_identity",
+      "detail": "Opponent Poke Ball is directly readable at01:48.100-01:48.700 and a card goes into hand. Riolu is Benched later at01:54, but the search result itself is not publicly named in the reviewed animation; do not assume the card drawn was Riolu."
+    },
+    {
+      "id": "terminal_point_representation",
+      "interval": "07:17-07:21.538",
+      "status": "explicit_ui_limit_not_outcome_uncertainty",
+      "detail": "Opponent had two points and receives a +2 points award for Jolteon ex; UI shows only markers1,2,3 filled, followed by Defeat. Record displayed score1-3 and the +2 award separately. No fourth point marker or post-battle numeric score/statistics page is shown."
+    },
+    {
+      "id": "hidden_state_print_ids_intent",
+      "status": "outside_observable_scope",
+      "detail": "Hidden opponent hand/deck identities, complete deck composition/order, exact cosmetic collector IDs and strategic intent are not reconstructed. Visible names/HP/attacks/effects suffice for this action record. No optimal-play or alternative-action legality judgment is made."
+    },
+    {
+      "id": "timestamp_precision",
+      "status": "approximate_event_boundaries",
+      "detail": "Frame filenames specify requested elapsed seconds; first decoded frame at or after each was saved. Coverage uses overview plus dense action intervals and subsecond checks, not every video frame. Broad event ranges are approximate and animations' intermediate HP values are not treated as settled states."
+    }
+  ]
+}

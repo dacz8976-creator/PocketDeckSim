@@ -1,0 +1,67 @@
+{
+  "game_id": "20261010_021629000_iOS",
+  "sources": [
+    {
+      "video_basename": "20261010_021629000_iOS.MP4",
+      "sha256": "c6780bc6ef6fe89e7db6ccee1f4d06e3ff3b0bc8a9db488a76345b5a46ee185d",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "items": [
+    {
+      "id": "L1",
+      "scope": "whole source",
+      "limit": "Review uses explicit bounded sought frames and every-turn four-second overview, with native targeted transitions. No continuous real-time playback or sub-frame timing was measured. Requested source seeks are approximate timestamps; actual decoded presentation timestamps are unset."
+    },
+    {
+      "id": "L2",
+      "scope": "hidden information",
+      "limit": "Opponent hand names, normal draw identities and search results are hidden. Counted backs are direct fan observations, not identities. No complete discard pile was opened; top cards and recorded plays cannot establish an exhaustive pile."
+    },
+    {
+      "id": "L3",
+      "scope": "turn 4 start",
+      "limit": "Poké Ball normal draw is identifiable in animation but is played before a clear unzoomed six-card fan. Five retained cards plus this named draw establish composition and count; sixth fan position is not claimed from a clear view."
+    },
+    {
+      "id": "L4",
+      "scope": "turns 6,8,12,14,16,18",
+      "limit": "First voluntary move follows the draw within about one second. Required +1/+3/+6 captures therefore include played or zoomed hands. Earlier native pre-move frames are separately selected. The grid alone is not start-hand evidence."
+    },
+    {
+      "id": "L5",
+      "scope": "turns 20,22,24 and late opponent turns",
+      "limit": "Empty-deck notice appears; there is no successful normal draw and no draw-animation-end timestamp. Captures are instead tied to the visible turn-start notice. No card identity is fabricated."
+    },
+    {
+      "id": "L6",
+      "scope": "turn 17",
+      "limit": "Network waiting message and Lucky Ice Pop coin remain on screen approximately 584-644s. No unrecorded action is reconstructed. Turn ends after waiting without a visible attack; intent to decline attack or manually End Turn is unknown."
+    },
+    {
+      "id": "L7",
+      "scope": "opponent turn 1 / Lucky Ice Pop",
+      "limit": "First Professor’s Research is established by its visible discard top at 61-67s and two back-only draw animations early in turn 1. Exact click time and opponent draw identities are unknown. Lucky Ice Pop coin face/return on turn 15 is not securely established; turn 17 ends with it visible on the discard top."
+    },
+    {
+      "id": "L8",
+      "scope": "board phases",
+      "limit": "board_after is the resolved post-checkup state before the next draw, rather than the attack impact alone. Printed effects and action events separately preserve transient Burn, Sleep and healing. Exact first-turn opponent generated Energy availability is visibly empty."
+    },
+    {
+      "id": "L9",
+      "scope": "deck identity",
+      "limit": "Live log has the exact 20 slots and printed set identifiers. Filmed QR matches semantic identities and Water Energy. In-game artwork differs for some copies; set/artwork variants are not inferred from QR and no unshown opponent deck slots are guessed."
+    }
+  ],
+  "blocking_for_outcome": false,
+  "blocking_for_full_hidden_state": true,
+  "unknowns_not_guessed": [
+    "opponent exact20",
+    "opponent hidden hand/draw/search identities",
+    "unshown discard contents",
+    "Lucky Ice Pop turn15 coin result",
+    "precise decoded frame presentation timestamps",
+    "unranked/ranked selector"
+  ]
+}

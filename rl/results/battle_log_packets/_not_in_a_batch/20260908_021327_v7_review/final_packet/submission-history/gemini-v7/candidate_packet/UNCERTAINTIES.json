@@ -1,0 +1,11 @@
+[
+  {
+    "id": "U1",
+    "start_timestamp": "00:00.000",
+    "end_timestamp": "06:50.492",
+    "claim_or_question": "Is Auto mode enabled or disabled during this match?",
+    "why_uncertain": "The battle is conducted in PvP matchmaking where the Auto toggle button is not displayed on the screen interface.",
+    "consequence_if_wrong": "None for gameplay, rules reconciliation, or match outcome; metadata classification only.",
+    "recommended_sol_check": "Confirm that PvP mode inherently disables Auto and verify whether protocol requires marking Auto as 'off' or 'unknown'."
+  }
+]

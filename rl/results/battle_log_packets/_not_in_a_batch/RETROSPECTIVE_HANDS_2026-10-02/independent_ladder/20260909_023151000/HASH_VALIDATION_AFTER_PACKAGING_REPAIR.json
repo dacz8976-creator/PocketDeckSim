@@ -1,0 +1,171 @@
+{
+  "completed_utc": "2026-10-02T23:25:12.390034+00:00",
+  "manifest": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\SUBMISSION_AFTER_PACKAGING_REPAIR.json",
+  "manifest_sha256": "664b312fa376968df0de418060f9644236edf14bbc4ef05c8c89682a9b08aa9a",
+  "effective_submitted_file_count": 26,
+  "all_effective_hashes_match": true,
+  "changed_relative_to_original_freeze": [
+    "HAND_SUPPLEMENT.json",
+    "SOURCE_REFERENCE.json"
+  ],
+  "files": [
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\ASSIGNMENT.json",
+      "expected_sha256": "50bf1d8209f54f1c4e6289dcc200048c1e54fa2af0647bf37aff1b2c1ed19235",
+      "actual_sha256": "50bf1d8209f54f1c4e6289dcc200048c1e54fa2af0647bf37aff1b2c1ed19235",
+      "matched": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\CAPTURE_RECEIPT_1.json",
+      "expected_sha256": "0ad9216d7ab43b64a9cb10dde00123390e6baebe697cc5c8cdae970ed299bd5c",
+      "actual_sha256": "0ad9216d7ab43b64a9cb10dde00123390e6baebe697cc5c8cdae970ed299bd5c",
+      "matched": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\CAPTURE_RECEIPT_2.json",
+      "expected_sha256": "94e6c1bac55e841b50e853748913d0db6c8e953b6a93324d1632d2e0310d2a1a",
+      "actual_sha256": "94e6c1bac55e841b50e853748913d0db6c8e953b6a93324d1632d2e0310d2a1a",
+      "matched": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\CAPTURE_RECEIPT_3.json",
+      "expected_sha256": "417c581237dbcc1e363e6f0b02585a355b0a4bf25a90a76ae46b6a62ac941b17",
+      "actual_sha256": "417c581237dbcc1e363e6f0b02585a355b0a4bf25a90a76ae46b6a62ac941b17",
+      "matched": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\CAPTURE_RECEIPT_4.json",
+      "expected_sha256": "a75624811bece8f91ca07015f9d5c0ebc2018f31b51d77658bade2be4a0c6450",
+      "actual_sha256": "a75624811bece8f91ca07015f9d5c0ebc2018f31b51d77658bade2be4a0c6450",
+      "matched": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\CUE_AUDIT.json",
+      "expected_sha256": "6edac42f501dfda2060d940e4babcf6de5a7cb05802ac87beecb7eb3ff71614e",
+      "actual_sha256": "6edac42f501dfda2060d940e4babcf6de5a7cb05802ac87beecb7eb3ff71614e",
+      "matched": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\DECK_USED.json",
+      "expected_sha256": "660bf53ac84e11f17bafaf41fe4095e813557e6b3d5caaa6b5f2b046fadc2e4a",
+      "actual_sha256": "660bf53ac84e11f17bafaf41fe4095e813557e6b3d5caaa6b5f2b046fadc2e4a",
+      "matched": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\HAND_SUPPLEMENT.json",
+      "expected_sha256": "69cb1609d3635aad4e6941f7a05b4ada10c17bc75624351943fc434eeaa91ec4",
+      "actual_sha256": "69cb1609d3635aad4e6941f7a05b4ada10c17bc75624351943fc434eeaa91ec4",
+      "matched": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\INHERITED_TURNS.json",
+      "expected_sha256": "4d72808ac1f7c48870f97f812a9a95d439a416b931810a054f3186dfcd7d3264",
+      "actual_sha256": "4d72808ac1f7c48870f97f812a9a95d439a416b931810a054f3186dfcd7d3264",
+      "matched": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\LOCAL_DELIVERY_REQUEST.json",
+      "expected_sha256": "ce7c7330534764c5a79fe30e9463925c0dee28ad49377accad9269203e958a59",
+      "actual_sha256": "ce7c7330534764c5a79fe30e9463925c0dee28ad49377accad9269203e958a59",
+      "matched": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\LOCATOR_PREPROCESSING.json",
+      "expected_sha256": "9c0e384dc04f96d7977492de3d705d0b00f6ba04cea257afca792679e7fc5166",
+      "actual_sha256": "9c0e384dc04f96d7977492de3d705d0b00f6ba04cea257afca792679e7fc5166",
+      "matched": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\METRICS.json",
+      "expected_sha256": "4bee2443242d6126cb633883398a86fd73a75cc4549e84f72515f534ae1c6227",
+      "actual_sha256": "4bee2443242d6126cb633883398a86fd73a75cc4549e84f72515f534ae1c6227",
+      "matched": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\MODE_CHECK.json",
+      "expected_sha256": "e4d0e4fa45655772db929b786808a4bf04e7b6b6db409afa17b79c5ed344651c",
+      "actual_sha256": "e4d0e4fa45655772db929b786808a4bf04e7b6b6db409afa17b79c5ed344651c",
+      "matched": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\PACKET_VALIDATION.json",
+      "expected_sha256": "51c0822cf18287f172c8c4a71af0b28a95010544c83091cb27f1c3554ef865f4",
+      "actual_sha256": "51c0822cf18287f172c8c4a71af0b28a95010544c83091cb27f1c3554ef865f4",
+      "matched": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\PAUSE_GAME.json",
+      "expected_sha256": "b783682a06a177ac4c1e42f095f54a8b104357818537753e60bd1f198c9207b5",
+      "actual_sha256": "b783682a06a177ac4c1e42f095f54a8b104357818537753e60bd1f198c9207b5",
+      "matched": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\REVIEW_SUPPLEMENT.json",
+      "expected_sha256": "d75b54e894641ed94b2857749a1fd6b1657f5863881e9349b3bb392711e15ce8",
+      "actual_sha256": "d75b54e894641ed94b2857749a1fd6b1657f5863881e9349b3bb392711e15ce8",
+      "matched": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\ROOT_SOURCE_VERIFICATION.json",
+      "expected_sha256": "27cdb6e106634c41bce7a5cf7a946a689e34d7e8ac805aa0de75bab3e653b9b0",
+      "actual_sha256": "27cdb6e106634c41bce7a5cf7a946a689e34d7e8ac805aa0de75bab3e653b9b0",
+      "matched": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\ROOT_SOURCE_VERIFICATION_ATTEMPT_1.json",
+      "expected_sha256": "7f9b59c7ff852d7692d721b558887953f19c97d2ed160e422757317d66ac0585",
+      "actual_sha256": "7f9b59c7ff852d7692d721b558887953f19c97d2ed160e422757317d66ac0585",
+      "matched": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\ROOT_SOURCE_VERIFICATION_ATTEMPT_2.json",
+      "expected_sha256": "dc4f71bc8afb4dbd0a06afd1ea9d851f4a5bf541acf0f0d359e1ec3c3f728521",
+      "actual_sha256": "dc4f71bc8afb4dbd0a06afd1ea9d851f4a5bf541acf0f0d359e1ec3c3f728521",
+      "matched": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\SOURCE_REFERENCE.json",
+      "expected_sha256": "74448229e18d91edcc1022e8a65782d4ef83ce0a61aaa42edfb4c9e07b5b3991",
+      "actual_sha256": "74448229e18d91edcc1022e8a65782d4ef83ce0a61aaa42edfb4c9e07b5b3991",
+      "matched": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\TURN_EVIDENCE.json",
+      "expected_sha256": "effe9d3136319a71fdb9605fa8ac7e515918ba0442a78e8b6d7b1d92f3b49d9f",
+      "actual_sha256": "effe9d3136319a71fdb9605fa8ac7e515918ba0442a78e8b6d7b1d92f3b49d9f",
+      "matched": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\TURN_LEDGER.json",
+      "expected_sha256": "7bb4aa31ad2e16695e85feb67bd74543f49b0b570da1eb9446ca4d8b1e922ef2",
+      "actual_sha256": "7bb4aa31ad2e16695e85feb67bd74543f49b0b570da1eb9446ca4d8b1e922ef2",
+      "matched": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\UNCERTAINTIES.json",
+      "expected_sha256": "3227c4c0671147ba07e0aee8d4edc73b5dea132029da78085490f4691979dabe",
+      "actual_sha256": "3227c4c0671147ba07e0aee8d4edc73b5dea132029da78085490f4691979dabe",
+      "matched": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\WINDOWS_DELIVERY_REQUEST.json",
+      "expected_sha256": "dd86eccff6e4f83c579d2d56d31c13364af9aa1409fcb17ed103cc01d1ec6374",
+      "actual_sha256": "dd86eccff6e4f83c579d2d56d31c13364af9aa1409fcb17ed103cc01d1ec6374",
+      "matched": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\REVIEW_SUPPLEMENT.md",
+      "expected_sha256": "737916cc4fe29fd32894fa5936e67e88daedb5dc1c5c8b0b80e9dcba84417dc6",
+      "actual_sha256": "737916cc4fe29fd32894fa5936e67e88daedb5dc1c5c8b0b80e9dcba84417dc6",
+      "matched": true
+    },
+    {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260909_023151000\\COVERAGE.md",
+      "expected_sha256": "769c3dca06d1a18070b05813190e11ca207b06d74f784d008a8c55d4025ff67c",
+      "actual_sha256": "769c3dca06d1a18070b05813190e11ca207b06d74f784d008a8c55d4025ff67c",
+      "matched": true
+    }
+  ],
+  "original_check_sha256": "3fbaa35626077c13b22f21243bfafb41b9d1d38cacc7bfd51f098741a0579789",
+  "source_movie_read_or_hashed": false
+}

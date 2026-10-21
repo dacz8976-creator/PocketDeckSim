@@ -1,0 +1,20 @@
+{
+  "source_filename": "20261016_020806000_iOS.MP4",
+  "source_sha256": "3500dda99e8c7174a9fdaeebe13678fc17793a2c728db0728f903b5d6f4a0066",
+  "battle_complete": true,
+  "match_count": 1,
+  "exact_three_item_note_prefix": "First | Kingambit no attack; Glimmora first attack own T2; Regigigas first attack own T5 | Opp points at first attack: Kingambit N/A; Glimmora 0; Regigigas 0",
+  "unreviewed_intervals": [],
+  "outcome_uncertain": false,
+  "open_factual_limits": [
+    {"scope": "Hidden information", "detail": "Exact 20-card lists and hidden opponent hand/search results are not reconstructed."},
+    {"scope": "Minor animation ordering", "detail": "Some opponent attachment subordering and individual Mesagoza coin faces are not separately enumerated; meaningful board, HP, Energy and point transitions are covered."},
+    {"scope": "Concession judgment", "detail": "The footage proves concession and loss at a 1-1 visible point score. It does not prove the position was a forced loss."},
+    {"scope": "Notification banners", "detail": "Temporary banners obscure the top margin at several timestamps. Surrounding native frames resolve the consequential events and terminal outcome."}
+  ],
+  "resolved_questions": [
+    {"question": "Opening switch method", "resolution": "Miki played Repel, which forced the owner's Basic switch to Glimmet; this was not a paid Pawniard retreat.", "evidence": ["native/t0071.00.jpg", "native/opponent_item_crop_116.png"]},
+    {"question": "Can Regigigas attack without the three other Regis?", "resolution": "Alolan Muk disables Basic Pokemon abilities; the on-screen message explicitly confirms the effect. Regigigas's Seal of Antiquity is suppressed.", "evidence": ["native/t0174.00.jpg", "native/t0384.00.jpg"]},
+    {"question": "Why did the first Glimmora KO give no point while the second did?", "resolution": "The first Shattering Crystal flip is Heads and denies the point. The second is Tails and awards Miki one point. Glimmora is Stage 1, so Muk's Basic-ability suppression does not remove it.", "evidence": ["native/t0265.00.jpg", "action/contact_05.jpg", "native/t0524.00.jpg", "native/t0528.00.jpg"]}
+  ]
+}

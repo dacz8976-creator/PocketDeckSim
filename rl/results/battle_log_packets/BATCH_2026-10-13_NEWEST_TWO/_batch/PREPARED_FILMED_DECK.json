@@ -1,0 +1,111 @@
+{
+  "prepared_utc": "2026-10-13T04:04:59.584231+00:00",
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "external_saved": false,
+  "initial_live_catalog_count": 26,
+  "initial_live_status": "Identical payload absent from every expanded live deck.",
+  "deck": {
+    "id": "filmed-qr-324c9e740140",
+    "name": "Haxorus / Dragonair / Druddigon",
+    "energy": "Fighting + Metal",
+    "tag": "Filmed QR",
+    "deck_code": "C5iWnpiWnpiYYJiYYJiapJiXrJiWqJiWqJiaXpibYpictgkACoIAQMQAQMQAPp4APp4AUSIAUSIAUSwAUSwCBgg=",
+    "cards": [
+      {
+        "n": 1,
+        "name": "Druddigon",
+        "kind": "Pokémon",
+        "id": "A1a 056"
+      },
+      {
+        "n": 2,
+        "name": "Axew",
+        "kind": "Pokémon",
+        "id": "B2b 054"
+      },
+      {
+        "n": 2,
+        "name": "Haxorus",
+        "kind": "Pokémon",
+        "id": "B2b 056"
+      },
+      {
+        "n": 2,
+        "name": "Dratini",
+        "kind": "Pokémon",
+        "id": "B4 116"
+      },
+      {
+        "n": 2,
+        "name": "Dragonair",
+        "kind": "Pokémon",
+        "id": "B4 117"
+      },
+      {
+        "n": 2,
+        "name": "Poké Ball",
+        "kind": "Trainer",
+        "id": "A2b 111"
+      },
+      {
+        "n": 2,
+        "name": "Rare Candy",
+        "kind": "Trainer",
+        "id": "A3 144"
+      },
+      {
+        "n": 1,
+        "name": "Lucky Ice Pop",
+        "kind": "Trainer",
+        "id": "B2 145"
+      },
+      {
+        "n": 1,
+        "name": "Rocky Helmet",
+        "kind": "Trainer",
+        "id": "A2 148"
+      },
+      {
+        "n": 2,
+        "name": "Professor’s Research",
+        "kind": "Trainer",
+        "id": "A4b 373"
+      },
+      {
+        "n": 1,
+        "name": "Copycat",
+        "kind": "Trainer",
+        "id": "B1 225"
+      },
+      {
+        "n": 1,
+        "name": "Iris",
+        "kind": "Trainer",
+        "id": "B2b 067"
+      },
+      {
+        "n": 1,
+        "name": "Rainbow Cave",
+        "kind": "Trainer",
+        "id": "B4 155"
+      }
+    ],
+    "sources": [
+      {
+        "video": "20261013_022530000_iOS.MP4",
+        "sha256": "02714096351099424338ac83d3f529ef4f0e6979a978a50f48c5ff505a2b6cb7",
+        "qr_receipt": "20261013_022530000_iOS/independent_sol/QR_CHECK.json",
+        "payload_identical": true
+      },
+      {
+        "video": "20261013_030351000_iOS.MP4",
+        "sha256": "d0a221cd236c620f467bbf34ad8078fd59c72323a7dca71a4af344f0489c6c7f",
+        "qr_receipt": "20261013_030351000_iOS/QR_DECODE.json",
+        "payload_identical": true
+      }
+    ],
+    "semantic_versions_only": true,
+    "printing_note": "References identify representative playable versions. Exact filmed artwork and rarity remain unverified.",
+    "game_binding_status": "Both native QR payloads match; full-source acceptance remains pending."
+  }
+}

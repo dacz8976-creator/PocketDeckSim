@@ -1,0 +1,122 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261013_010003000_iOS_game_1",
+  "review_date": "2026-10-13",
+  "sources": [
+    {
+      "video_basename": "20261013_010003000_iOS.MP4",
+      "sha256": "3e2fc4897a2f9de4f03899a643a0c32e3bf46b5cc1f56a87d182dff9ceb9072b",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "source_video": "20261013_010003000_iOS.MP4",
+  "source_sha256": "3e2fc4897a2f9de4f03899a643a0c32e3bf46b5cc1f56a87d182dff9ceb9072b",
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "deck_name": "New deck16: Glimmora / Alolan Muk / Regigigas",
+  "opening": {
+    "source_video": "20261013_010003000_iOS.MP4",
+    "timestamp_seconds": 27,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Regigigas",
+        "variant": null,
+        "basis": "Native visible card names and positions",
+        "evidence_ids": [
+          "f0027_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Mesagoza",
+        "variant": null,
+        "basis": "Native visible card names and positions",
+        "evidence_ids": [
+          "f0027_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Rare Candy",
+        "variant": null,
+        "basis": "Native visible card names and positions",
+        "evidence_ids": [
+          "f0027_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Glimmet",
+        "variant": null,
+        "basis": "Native visible card names and positions",
+        "evidence_ids": [
+          "f0027_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Glimmora",
+        "variant": null,
+        "basis": "Native visible card names and positions",
+        "evidence_ids": [
+          "f0027_00"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Glimmet",
+      "opening_position": 4,
+      "source_video": "20261013_010003000_iOS.MP4",
+      "timestamp_seconds": 30,
+      "evidence_ids": [
+        "f0030_00"
+      ]
+    },
+    "redraw_or_replacement": "No redraw shown",
+    "before_active_placement": true,
+    "status": "observed",
+    "evidence_ids": [
+      "f0027_00"
+    ],
+    "limit_reason": null
+  },
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "full_source_review_submitted_for_independent_acceptance",
+  "outcome": {
+    "result": "win",
+    "method": "opponent_concession",
+    "opponent": "gimt",
+    "points_owner": 2,
+    "points_opponent": 0,
+    "turn_count": 11,
+    "evidence_ids": [
+      "f0452_00",
+      "f0456_00",
+      "f0472_00"
+    ]
+  },
+  "limits": [
+    "No opened discard pile, no complete discard scroll for either player.",
+    "Opponent drawn/searched card identities stay hidden except publicly played cards.",
+    "Exact artwork/rarity unverified; filmed QR establishes semantic entities only.",
+    "Fresh live Pause Games deck snapshot pending root retrieval; filmed exact20 is separate.",
+    "Some draw candidates occur after an immediate first play; denser pre-play anchors retained.",
+    "Turn11 ends by opponent concession; before-end hand uses post-heal/pre-concession view, not End Turn."
+  ],
+  "lead_checked": false
+}

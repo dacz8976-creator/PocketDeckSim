@@ -1,0 +1,161 @@
+{
+  "video_basename": "20260930_153142000_iOS.MP4",
+  "reviewer": "sol_auto_153142000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "scope": "One complete battle, opening and setup through Victory, all 10 turns and meaningful actions",
+  "visual_review_complete": true,
+  "lead_acceptance": "accepted",
+  "registered_completion_by_this_reviewer": false,
+  "source_sha256": "7b2083a31e6949035824d9c9a71605a9b48fb4f5c5d7695aa8eed4b30f42d601",
+  "source_bytes": 305240430,
+  "duration_seconds": 166.923855,
+  "owner": "Dacz8976",
+  "opponent": "AI",
+  "opponent_deck_label": "Raticate Deck (Deluxe Pack: Mega)",
+  "mode": "autopilot_vs_computer",
+  "mode_evidence": {
+    "ai_intro": "keyframes/t0004.50.jpg",
+    "auto_setup": "keyframes/t0018.00.jpg",
+    "auto_late_battle": "keyframes/t0149.00.jpg",
+    "mode_changes_observed": false
+  },
+  "turn_order": "owner second",
+  "turns_played": 10,
+  "outcome": "owner victory",
+  "owner_points": 3,
+  "opponent_points": 0,
+  "damage_done_displayed": 270,
+  "card_of_game": "Hitmonchan ex",
+  "visible_owner_core": [
+    "Hitmonchan ex",
+    "Cubone: Bone Beatdown",
+    "Cubone: Beat",
+    "Marowak ex",
+    "Drilbur",
+    "Excadrill",
+    "Toxicroak: Poison Jab",
+    "Pokemon Flute"
+  ],
+  "visible_opponent_cards": [
+    "Eevee: Boosted Evolution",
+    "Ducklett",
+    "Rookidee",
+    "Corvisquire",
+    "Buneary",
+    "Rattata",
+    "Professor's Research: Professor Oak",
+    "Poke Ball"
+  ],
+  "knockouts": [
+    {
+      "turn": 2,
+      "target": "Eevee",
+      "attack": "Quick Straight",
+      "damage": 50,
+      "owner_points_after": 1
+    },
+    {
+      "turn": 6,
+      "target": "Ducklett",
+      "attack": "Quick Straight",
+      "damage": 50,
+      "owner_points_after": 2
+    },
+    {
+      "turn": 10,
+      "target": "Buneary",
+      "attack": "Mud Shot",
+      "damage": 70,
+      "owner_points_after": 3
+    }
+  ],
+  "owner_hp_reconciliation": {
+    "pokemon": "Hitmonchan ex",
+    "sequence": [
+      130,
+      100,
+      60,
+      40
+    ],
+    "final_state": "benched, 40 HP, no Energy"
+  },
+  "coin_results": [
+    {
+      "turn": 7,
+      "attack": "Double Kick",
+      "heads": 2,
+      "tails": 0,
+      "damage": 40,
+      "evidence": "keyframes/t0101.50.jpg"
+    },
+    {
+      "turn": 9,
+      "attack": "Double Kick",
+      "heads": 1,
+      "tails": 1,
+      "observed_order": "tails then heads",
+      "damage": 20,
+      "evidence": "keyframes/t0138.00.jpg"
+    }
+  ],
+  "final_owner_board": {
+    "active": {
+      "pokemon": "Excadrill",
+      "hp": 110,
+      "fighting_energy": 1
+    },
+    "bench": [
+      {
+        "pokemon": "Cubone: Bone Beatdown",
+        "hp": 60,
+        "fighting_energy": 1
+      },
+      {
+        "pokemon": "Hitmonchan ex",
+        "hp": 40,
+        "fighting_energy": 0
+      },
+      {
+        "pokemon": "Marowak ex",
+        "hp": 140,
+        "fighting_energy": 2
+      }
+    ]
+  },
+  "consequential_unresolved_questions": [],
+  "astra_clarification_requested": false,
+  "ladder_eligible": false,
+  "ladder_action": "excluded by explicit owner instruction; no Ladder Log write",
+  "source_moved_by_this_reviewer": false,
+  "evidence_for_lead": {
+    "opening": [
+      "keyframes/t0004.50.jpg",
+      "keyframes/t0018.00.jpg"
+    ],
+    "ordinary_turn": [
+      "keyframes/t0066.00.jpg",
+      "keyframes/t0071.00.jpg",
+      "overview/sheet_03.jpg"
+    ],
+    "decisive_sequence": [
+      "keyframes/t0146.00.jpg",
+      "keyframes/t0149.00.jpg",
+      "keyframes/t0150.00.jpg",
+      "keyframes/t0153.00.jpg",
+      "keyframes/t0155.00.jpg"
+    ],
+    "victory": "keyframes/t0166.50.jpg"
+  },
+  "worker_actions_at_submission": {},
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance_pending": false,
+  "source_archived": true,
+  "source_modified": false,
+  "archive_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260930_153142000_iOS.MP4",
+  "archive_receipt": "MOVE_RECEIPT.20260930_153142000_iOS.MP4.json",
+  "archive_completion_event_id": "533e0442-b1d6-4977-8ecb-8debbc3abd7f",
+  "global_registration_complete": true,
+  "current_review_event_id": "8c576308-4d02-4fe7-b102-23e25950abfc",
+  "post_acceptance_corrections": "POST_ACCEPTANCE_CORRECTIONS.md"
+}

@@ -1,0 +1,60 @@
+{
+  "source_filename": "20261014_225802000_iOS.MP4",
+  "source_sha256": "393e8bf370f120ecd45a80b17da3a0e97777ed646c0d4505588f66a67f9dad28",
+  "reviewer": "/root/evening_225802",
+  "review_date": "2026-10-14",
+  "match_date": "2026-10-14",
+  "battle_complete": true,
+  "match_count": 1,
+  "review_scope": "Full source: deck/queue, setup, all four global turns, owner concession, terminal results",
+  "independent_acceptance_pending": true,
+  "mode": {
+    "classification": "human_ranked_ladder",
+    "visible_queue_label": "Ranked Match, Season B4b SP",
+    "auto_option_seen": false,
+    "auto_enabled": null,
+    "owner_choices": "visible manual interaction",
+    "human_log_eligible": true
+  },
+  "deck": {
+    "label": "Deck 13-A",
+    "visible_core": ["Alolan Vulpix", "Alolan Ninetales ex", "Team Rocket's Rattata", "Team Rocket's Raticate ex"],
+    "visible_pokemon_counts_in_deck_screen": {"Alolan Vulpix": 2, "Alolan Ninetales ex": 2, "Team Rocket's Rattata": 2, "Team Rocket's Raticate ex": 2},
+    "main_attacker": "Alolan Ninetales ex",
+    "full_twenty_card_list_known": false,
+    "visible_energy": "Water"
+  },
+  "opponent": {"name": "Bruno Wik", "visible_core": ["Suicune ex", "Frigibax", "Baxcalibur", "Chien-Pao ex"], "full_deck_known": false},
+  "result": "loss",
+  "ending": "owner_concession",
+  "score": {"owner": 0, "opponent": 1, "basis": "terminal results panel at156.00 seconds"},
+  "order": "second",
+  "global_turns_played": 4,
+  "owner_turns_played": 2,
+  "first_main_attack": {
+    "pokemon": "Alolan Ninetales ex",
+    "status": "not_occurred",
+    "own_turn": null,
+    "global_turn": null,
+    "source_seconds": null,
+    "opponent_points_before": null,
+    "explanation": "Never entered play or attacked; both copies remained in hand by ownerT2. Values are not applicable, not unobserved recorded attacks."
+  },
+  "first_owner_attack": {"pokemon": "Team Rocket's Rattata", "attack": "Ambush", "own_turn": 1, "global_turn": 2, "selection_source_seconds_approx": 67, "resolution_source_seconds_approx": 73, "opponent_points_before": 0, "damage": 40},
+  "exact_three_item_note_prefix": "2nd | Alolan Ninetales ex no attack | opp N/A",
+  "key_evidence_paths": {
+    "deck": "evidence/t0001.50.jpg",
+    "ranked": "evidence/t0000.00.jpg",
+    "order": "evidence/t0029.00.jpg",
+    "owner_attack_sequence": "dense/contact_02.jpg",
+    "owner_attack_result": "dense/contact_03.jpg",
+    "opponent_attack": "evidence/t0120.00.jpg",
+    "opponent_damage": "evidence/t0122.00.jpg",
+    "concession": "evidence/t0148.50.jpg",
+    "terminal_result": "evidence/t0156.00.jpg"
+  },
+  "remaining_limits": ["Full deck and hidden opponent hand/search identities unknown", "Owner concession reason unknown", "Actions timestamped approximately from retained source frames"],
+  "shared_writes_performed": false,
+  "source_moved": false,
+  "external_updates_performed": false
+}

@@ -1,0 +1,11 @@
+{
+  "accepted": true,
+  "source_video": "20260929_194920000_iOS.MP4",
+  "source_sha256": "32be06b2efa4437bdaaf2fc745bdf7abc818a2f04f9ffd87fda64985516be43d",
+  "scope": "Entire 69.26-second deliberate rule test; no ladder entry",
+  "first_pass": "Sol high /root/sol_eevee_194920",
+  "lead_checks": "Read SOURCE, REVIEW and COVERAGE. Independently inspected t11,t19,t23,t44,t47,t50,t53,t68: owner goes first, Active Boosted Evolution Eevee text/announcement, Rattata newly played to Bench, matching Raticate ex in hand and Unable to evolve, final first-turn board.",
+  "finding": "Self-referential ability text supports Active Eevee-only permission. Recorded non-Eevee evolution attempt is refused while Eevee Active.",
+  "limitation": "Rattata was newly played that turn, so refusal does not isolate first-turn restriction from same-turn placement restriction. No positive Eevee evolution tested; simulator and upstream implementation not inspected.",
+  "accepted_scope_clarification": "SCOPE_CLARIFICATION.md supersedes earlier inconclusive framing: observed evolution refusal supports that Active Eevee permission does not spread to Benched Rattata; isolating the internal rejection mechanism was outside the intended test."
+}

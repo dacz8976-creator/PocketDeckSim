@@ -1,0 +1,156 @@
+   Compiling libc v0.2.176
+   Compiling proc-macro2 v1.0.101
+   Compiling quote v1.0.41
+   Compiling unicode-ident v1.0.19
+   Compiling autocfg v1.5.0
+   Compiling cfg-if v1.0.3
+   Compiling memchr v2.7.6
+   Compiling serde_core v1.0.228
+   Compiling crossbeam-utils v0.8.21
+   Compiling num-traits v0.2.19
+   Compiling zerocopy v0.8.27
+   Compiling aho-corasick v1.1.3
+   Compiling serde v1.0.228
+   Compiling syn v2.0.106
+   Compiling utf8parse v0.2.2
+   Compiling regex-syntax v0.8.6
+   Compiling anstyle-parse v0.2.7
+   Compiling crossbeam-epoch v0.9.18
+   Compiling is_terminal_polyfill v1.70.1
+   Compiling itoa v1.0.15
+   Compiling anstyle v1.0.13
+   Compiling serde_json v1.0.145
+   Compiling either v1.15.0
+   Compiling anstyle-query v1.1.4
+   Compiling rayon-core v1.13.0
+   Compiling colorchoice v1.0.4
+   Compiling anstream v0.6.20
+   Compiling crossbeam-deque v0.8.6
+   Compiling getrandom v0.2.16
+   Compiling regex-automata v0.4.11
+   Compiling indexmap v1.9.3
+   Compiling ryu v1.0.20
+   Compiling serde_derive v1.0.228
+   Compiling getrandom v0.3.3
+   Compiling heck v0.5.0
+   Compiling portable-atomic v1.11.1
+   Compiling rand_core v0.6.4
+   Compiling ppv-lite86 v0.2.21
+   Compiling half v2.6.0
+   Compiling once_cell v1.21.3
+   Compiling ciborium-io v0.2.2
+   Compiling plotters-backend v0.3.7
+   Compiling strsim v0.11.1
+   Compiling log v0.4.28
+   Compiling regex v1.11.3
+   Compiling clap_lex v0.7.5
+   Compiling os_str_bytes v6.6.1
+   Compiling hashbrown v0.12.3
+   Compiling unicode-width v0.2.2
+   Compiling clap_lex v0.2.4
+   Compiling env_filter v0.1.3
+   Compiling console v0.16.1
+   Compiling clap_builder v4.5.48
+   Compiling plotters-svg v0.3.7
+   Compiling ciborium-ll v0.2.2
+   Compiling rand_chacha v0.3.1
+   Compiling rayon v1.11.0
+   Compiling clap_derive v4.5.47
+   Compiling itertools v0.10.5
+   Compiling textwrap v0.16.2
+   Compiling hashbrown v0.16.0
+   Compiling arrayvec v0.7.6
+   Compiling bitflags v1.3.2
+   Compiling same-file v1.0.6
+   Compiling iana-time-zone v0.1.64
+   Compiling jiff v0.2.15
+   Compiling equivalent v1.0.2
+   Compiling unit-prefix v0.5.1
+   Compiling lazy_static v1.5.0
+   Compiling cast v0.3.0
+   Compiling indicatif v0.18.2
+   Compiling indexmap v2.11.4
+   Compiling criterion-plot v0.5.0
+   Compiling chrono v0.4.42
+   Compiling num-format v0.4.4
+   Compiling walkdir v2.5.0
+   Compiling clap v3.2.25
+   Compiling env_logger v0.11.8
+   Compiling clap v4.5.48
+   Compiling uuid v1.18.1
+   Compiling rand v0.8.5
+   Compiling plotters v0.3.7
+   Compiling ciborium v0.2.2
+   Compiling tinytemplate v1.2.1
+   Compiling strum_macros v0.27.2
+   Compiling atty v0.2.14
+   Compiling humantime v2.3.0
+   Compiling strum v0.27.2
+   Compiling colored v3.0.0
+   Compiling anes v0.1.6
+   Compiling oorandom v11.1.5
+   Compiling criterion v0.4.0
+   Compiling deckgym v0.1.0-pdl.rules4 (/home/dacz8976/stageA/src_kg/engine)
+warning: unused import: `TrainerType`
+  --> src/players/value_functions.rs:21:76
+   |
+21 | ...PlayedCard, StatusCondition, TrainerType, BASIC_STAGE};
+   |                                 ^^^^^^^^^^^
+   |
+   = note: `#[warn(unused_imports)]` (part of `#[warn(unused)]`) on by default
+
+warning: variable does not need to be mutable
+   --> src/actions/energy_moves.rs:187:9
+    |
+187 |     let mut take = |pools: &mut Vec<(usize, Vec<EnergyType>)>,
+    |         ----^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+    = note: `#[warn(unused_mut)]` (part of `#[warn(unused)]`) on by default
+
+warning: variable does not need to be mutable
+    --> src/players/value_functions.rs:2136:9
+     |
+2136 |     let mut punch_victim = |victim: &PlayedCard| {
+     |         ----^^^^^^^^^^^^
+     |         |
+     |         help: remove this `mut`
+
+warning: associated function `geometric_until_tails` is never used
+   --> src/actions/attack_outcome.rs:487:12
+    |
+311 | impl AttackOutcomes {
+    | ------------------- associated function in this implementation
+...
+487 |     pub fn geometric_until_tails(
+    |            ^^^^^^^^^^^^^^^^^^^^^
+    |
+    = note: `#[warn(dead_code)]` (part of `#[warn(unused)]`) on by default
+
+warning: function `kt_clock_stadium` is never used
+    --> src/players/value_functions.rs:1819:4
+     |
+1819 | fn kt_clock_stadium(
+     |    ^^^^^^^^^^^^^^^^
+
+warning: function `kt_clock_punch` is never used
+    --> src/players/value_functions.rs:1923:4
+     |
+1923 | fn kt_clock_punch(
+     |    ^^^^^^^^^^^^^^
+
+warning: function `estimated_attack_damage` is never used
+    --> src/players/value_functions.rs:2724:4
+     |
+2724 | fn estimated_attack_damage(attack: &Attack, slot: &PlayedCard, state: ...
+     |    ^^^^^^^^^^^^^^^^^^^^^^^
+
+warning: function `best_attack_value` is never used
+    --> src/players/value_functions.rs:3020:4
+     |
+3020 | fn best_attack_value(slot: &PlayedCard, form: &Card, state: &State, pl...
+     |    ^^^^^^^^^^^^^^^^^
+
+warning: `deckgym` (lib) generated 8 warnings (run `cargo fix --lib -p deckgym` to apply 3 suggestions)
+    Finished `release` profile [optimized] target(s) in 8m 08s

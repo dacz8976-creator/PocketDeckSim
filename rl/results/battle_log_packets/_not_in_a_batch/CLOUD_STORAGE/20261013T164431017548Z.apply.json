@@ -1,0 +1,69 @@
+{
+  "operation": "OneDrive online-only request",
+  "created_at_utc": "2026-10-13T16:44:31.016502+00:00",
+  "videos": 2,
+  "online_only": 2,
+  "allocated_bytes_before": 1726486932,
+  "allocated_bytes_after": 0,
+  "local_bytes_reclaimed": 1726486932,
+  "files_deleted": 0,
+  "method": "Microsoft-documented attrib +U -P; only in-sync cloud placeholders are changed",
+  "verification": "Cloud placeholder metadata and actual allocated disk bytes; video contents are never read",
+  "documentation": "https://learn.microsoft.com/en-us/sharepoint/files-on-demand-windows",
+  "entries": [
+    {
+      "video": "20261013_015659000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20261013_015659000_iOS.MP4",
+      "before": {
+        "logical_bytes": 727722112,
+        "allocated_bytes": 727722112,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": true,
+      "after": {
+        "logical_bytes": 727722112,
+        "allocated_bytes": 0,
+        "attributes": 5248544,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": true
+      }
+    },
+    {
+      "video": "20261013_020824000_iOS.MP4",
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20261013_020824000_iOS.MP4",
+      "before": {
+        "logical_bytes": 998764820,
+        "allocated_bytes": 998764820,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "requested_online_only": true,
+      "after": {
+        "logical_bytes": 998764820,
+        "allocated_bytes": 0,
+        "attributes": 5248544,
+        "placeholder_state": 57,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": false,
+        "unpinned": true,
+        "online_only": true
+      }
+    }
+  ]
+}

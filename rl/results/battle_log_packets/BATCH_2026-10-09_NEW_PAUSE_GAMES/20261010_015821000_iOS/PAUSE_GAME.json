@@ -1,0 +1,137 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261010_015821000_iOS-game1",
+  "sources": [
+    {
+      "video_basename": "20261010_015821000_iOS.MP4",
+      "sha256": "8d64e896d3125e504b7186754cbf2c21c0b5fcbc61f65524f6de27a2effd2a38",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "review_date": "2026-10-09",
+  "match_date": "2026-10-09",
+  "date_basis": "Parent verified filename creationUTC conversion to America/Chicago; batch RECORDING_DATE_VERIFICATION",
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "deck_name": "Kingdra ex / Team Rocket's Weezing ex",
+  "opening": {
+    "source_video": "20261010_015821000_iOS.MP4",
+    "timestamp_seconds": 26.5,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Professor’s Research",
+        "basis": "Native pre-Active opening fan",
+        "evidence_ids": [
+          "F0026_50",
+          "F0026_80",
+          "F0027_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Rare Candy",
+        "basis": "Native pre-Active opening fan",
+        "evidence_ids": [
+          "F0026_50",
+          "F0026_80",
+          "F0027_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Team Rocket’s Koffing",
+        "basis": "Native pre-Active opening fan",
+        "evidence_ids": [
+          "F0026_50",
+          "F0026_80",
+          "F0027_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Team Rocket’s Weezing ex",
+        "basis": "Native pre-Active opening fan",
+        "evidence_ids": [
+          "F0026_50",
+          "F0026_80",
+          "F0027_00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Small Balloon",
+        "basis": "Native pre-Active opening fan",
+        "evidence_ids": [
+          "F0026_50",
+          "F0026_80",
+          "F0027_00"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "selected_active": {
+      "name": "Team Rocket’s Koffing",
+      "opening_position": 3,
+      "source_video": "20261010_015821000_iOS.MP4",
+      "timestamp_seconds": 28,
+      "evidence_ids": [
+        "F0027_00",
+        "F0028_00"
+      ]
+    },
+    "redraw_or_replacement": "None shown",
+    "before_active_placement": true,
+    "status": "observed_complete_five",
+    "evidence_ids": [
+      "F0026_50",
+      "F0026_80",
+      "F0027_00"
+    ],
+    "limit_reason": null
+  },
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "full_battle_review_complete",
+  "outcome": {
+    "result": "win",
+    "reason": "opponent conceded",
+    "opponent": "よこっぴ",
+    "owner": "Dacz8976",
+    "mode": "Deluxe Pack: Mega Emblem Event",
+    "battle_type": "human",
+    "visible_auto": "No Auto control or option observed",
+    "went_first": true,
+    "turns_played": 6,
+    "points_owner": 1,
+    "points_opponent": 0,
+    "damage_done": 120,
+    "evidence_ids": [
+      "F0003_00",
+      "F0242_00",
+      "F0253_00"
+    ]
+  },
+  "limits": [
+    "Opponent hand identities and hidden normal/Research/Poké Ball/Legendary Pulse draws are unavailable. A later Basic play does not identify an earlier search result.",
+    "No discard-pile window or scrolling was opened. Public top cards and known transactions do not establish either complete discard pile.",
+    "Normal draw-end anchors are visually estimated source seconds. Actual decoded frame PTS was not measured; requested seek times remain separate.",
+    "The +1/+3/+6 candidates sometimes follow the first voluntary play. Dense earlier native frames supply the owner start hand; no future hand is substituted.",
+    "Notifications temporarily cover upper-screen information around112–118,149–156 and175–176 seconds. Clear adjacent frames establish the cited board and actions.",
+    "Filmed QR and log establish semantic deck composition; exact artwork/rarity of every hidden card is not established. No hidden identities were supplied from the deck."
+  ],
+  "lead_checked": true,
+  "lead_acceptance": "LEAD_ACCEPTANCE.json"
+}

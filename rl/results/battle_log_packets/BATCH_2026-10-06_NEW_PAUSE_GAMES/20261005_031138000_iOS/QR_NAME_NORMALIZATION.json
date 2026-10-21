@@ -1,0 +1,10 @@
+{
+  "original_receipt": "QR_DECODE.json",
+  "original_receipt_unchanged": true,
+  "normalization_basis": "Original correct UTF-8 source labels were initially read with the Windows default codec by the authored-copy script, creating mojibake in an intermediate DECK_USED. Fixed explicit UTF-8 reads; ASCII card aliases used consistently for authored packet, backed by semantic trainer IDs and visible cards",
+  "corrected_names_by_trainer_entity_id": {
+    "30": "Poke Ball",
+    "40": "Professor's Research"
+  },
+  "scope": "DECK_USED copy only; preserves entity IDs, counts, functional IDs, payload and all receipt hashes"
+}

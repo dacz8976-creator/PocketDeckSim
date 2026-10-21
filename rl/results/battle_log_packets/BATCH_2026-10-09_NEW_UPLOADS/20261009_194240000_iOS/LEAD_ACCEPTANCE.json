@@ -1,0 +1,44 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "accepted_at_utc": "2026-10-10T01:46:10.230296+00:00",
+  "lead": "/root",
+  "source_filename": "20261009_194240000_iOS.MP4",
+  "source_sha256": "eaf837456911cdebf75c99c2b09a1f3f68bab9b2e8bfd4990cc3d4d3b648d630",
+  "source_bytes": 117061306,
+  "duration_seconds": 67.645624,
+  "first_pass_model": "gpt-6-sol",
+  "first_pass_reasoning_effort": "high",
+  "independent_model": "gpt-6-sol",
+  "independent_reasoning_effort": "high",
+  "primary_files_read_and_checked_by_lead": [
+    "REVIEW.md",
+    "COVERAGE.md",
+    "FINDINGS.json"
+  ],
+  "independent_verification": "independent_sol/VERIFICATION.json",
+  "verified_primary_hashes": {
+    "REVIEW.md": "b33461fbc4f44c80661b2d19f26b1b3ac4ca64d99082b079f8e0509699c7be60",
+    "COVERAGE.md": "f34467dd30a183db58c273e540a544c3720670d622703eb10d3aebc364870a58",
+    "FINDINGS.json": "fbd4ace3e8762509211afd5318fabe25b981234b2990f97283e4bfdeb56d0f70"
+  },
+  "lead_direct_visual_checks": [
+    "evidence/draw_mega_manectric.jpg",
+    "evidence/coin_heads.jpg",
+    "evidence/results.jpg"
+  ],
+  "full_source_and_turn_coverage_accepted": true,
+  "classification_and_outcome_reconciled": true,
+  "source_limits_preserved": true,
+  "outcome": {
+    "owner_result": "victory",
+    "opponent_label": "Greninja ex Deck (Deluxe Pack: Mega)",
+    "turns_played": 2,
+    "owner_points": 1,
+    "opponent_points": 0,
+    "damage_done": 60,
+    "decisive_event": "Electrike Quick Attack heads, 60 weakness damage knocks out the lone 60 HP Froakie"
+  },
+  "external_log_routing": "Computer battle excluded from Ladder and Pause Games",
+  "archive_identity_and_registration": "Required next; acceptance alone does not claim movement"
+}

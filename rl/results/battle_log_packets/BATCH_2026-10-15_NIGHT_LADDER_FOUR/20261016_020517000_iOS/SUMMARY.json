@@ -1,0 +1,104 @@
+{
+  "source_filename": "20261016_020517000_iOS.MP4",
+  "source_sha256": "4d98de32a83b926897d5da49926e7a313fdbc2f78608a2f2b14d91ae39dd9821",
+  "reviewer": "/root/ladder_020517",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "battle_complete": true,
+  "available_source_review_complete": true,
+  "match_count": 1,
+  "opponent_identifier": "つちのこ",
+  "owner_identifier": "Dacz8976",
+  "match_date_local": "2026-10-15",
+  "source_creation_local": "2026-10-15T21:05:17-05:00",
+  "owner_visible_core": {
+    "played": [
+      "Regigigas",
+      "Glimmet",
+      "Glimmora",
+      "Alolan Grimer"
+    ],
+    "hand_only": [
+      "Alolan Muk",
+      "Kingambit",
+      "second Glimmora"
+    ],
+    "opening_deck_display_additional": [
+      "Pawniard",
+      "second Glimmet"
+    ]
+  },
+  "opponent_visible_core": [
+    "Bonsly"
+  ],
+  "opponent_trainers_seen": [
+    "Repel",
+    "Copycat"
+  ],
+  "outcome": "win",
+  "outcome_method": "opponent concession",
+  "score": {
+    "owner": 0,
+    "opponent": 0,
+    "basis": "No KOs; zero point pips before concession"
+  },
+  "knockouts": {
+    "owner": 0,
+    "opponent": 0
+  },
+  "first_or_second": "second",
+  "owner_turns": 2,
+  "global_terminal_turn": 4,
+  "first_attacks": {
+    "Glimmora": {
+      "owner_turn": null,
+      "opponent_points": null,
+      "status": "never attacked"
+    },
+    "Regigigas": {
+      "owner_turn": null,
+      "opponent_points": null,
+      "status": "never attacked"
+    },
+    "Kingambit": {
+      "owner_turn": null,
+      "opponent_points": null,
+      "status": "visible in hand only; never attacked"
+    },
+    "Alolan Grimer": {
+      "owner_turn": null,
+      "opponent_points": null,
+      "status": "never attacked"
+    },
+    "Alolan Muk": {
+      "owner_turn": null,
+      "opponent_points": null,
+      "status": "visible in hand only; never attacked"
+    }
+  },
+  "all_owner_attacks_absent": true,
+  "mode": "ranked human-opponent battle",
+  "mode_evidence": "150s Victory Master Ball Rank775pts, pts gained1; matchmaking and two profiles",
+  "auto_option_seen": false,
+  "auto_owner_choice_authorship": "No Auto option seen; manual choices visible",
+  "exact_three_item_note_prefix": "2nd | Glimmora no attack | opp N/A",
+  "rank_result": {
+    "rank": "Master Ball",
+    "points": 775,
+    "points_gained": 1
+  },
+  "decisive_evidence": [
+    "evidence/t0136.00.jpg",
+    "evidence/t0138.00.jpg",
+    "evidence/t0150.00.jpg"
+  ],
+  "external_entry_written_by_worker": false,
+  "completion_registered_by_worker": false,
+  "source_moved_by_worker": false,
+  "uncertainties": [
+    "Hidden opponent hand and full deck unknown",
+    "Owner full exact20-card deck unshown",
+    "Concession motive unknown",
+    "Timestamps approximate to frame spacing"
+  ]
+}

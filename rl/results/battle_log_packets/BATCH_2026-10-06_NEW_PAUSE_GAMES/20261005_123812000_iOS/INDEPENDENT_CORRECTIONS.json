@@ -1,0 +1,20 @@
+{
+  "applied_utc": "2026-10-06T20:15:32.119171+00:00",
+  "applied_by": "/root",
+  "repair_ids": [
+    "R1",
+    "R2",
+    "R3",
+    "R4"
+  ],
+  "original_inputs": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261005_123812000_iOS\\original_before_R1_R4",
+  "initial_rejection": "independent_sol/CHECK_RESULT.json",
+  "native_evidence_reused": true,
+  "required_independent_recheck": true,
+  "changes": {
+    "R1": "Visible event queue corrected; unstated ranked status remains unknown.",
+    "R2": "Named face times and Lead fan expansion corrected; hidden draw results bounded; impact separated from HP resolution.",
+    "R3": "Retained discard94 now accurately records Research; full pile remains unestablished.",
+    "R4": "Consuming input windows explicit;317 intact zoom inspection qualified separately."
+  }
+}

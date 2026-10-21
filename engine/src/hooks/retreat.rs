@@ -131,6 +131,18 @@ pub(crate) fn get_board_retreat_cost_at(
     get_retreat_cost_for_player_internal(state, player, card, false, is_active)
 }
 
+/// As [`get_board_retreat_cost_at`], but the cost right now: this turn's discounts (X Speed, Leaf: "your Active Pokémon")
+/// count for the Active while it is `player`'s turn. For an effect read during its owner's own turn: Heavy Helmet against
+/// a hit back (`attack_hit_back_damage`).
+pub(crate) fn get_current_retreat_cost_at(
+    state: &State,
+    player: usize,
+    card: &PlayedCard,
+    is_active: bool,
+) -> Vec<EnergyType> {
+    get_retreat_cost_for_player_internal(state, player, card, is_active, is_active)
+}
+
 fn get_retreat_cost_for_player_internal(
     state: &State,
     player: usize,

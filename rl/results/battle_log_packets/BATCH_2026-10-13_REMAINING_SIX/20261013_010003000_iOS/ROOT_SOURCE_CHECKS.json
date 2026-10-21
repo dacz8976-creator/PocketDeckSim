@@ -1,0 +1,89 @@
+{
+  "lead": "/root",
+  "source_sha256": "3e2fc4897a2f9de4f03899a643a0c32e3bf46b5cc1f56a87d182dff9ceb9072b",
+  "updated_utc": "2026-10-13T15:07:40.811107+00:00",
+  "full_second_pass": false,
+  "checks": [
+    {
+      "path": "turn_evidence/t0027.00.jpg",
+      "sha256": "b43e94b659a89f9b41e9853b469b9a3652d0d654f0f685b0d8a35e2de99e0cf9",
+      "observed": "Five opening faces before Active: Regigigas,Mesagoza,RareCandy,Glimmet,Glimmora. Owner going first. Names partly overlap but faces distinguishable, no hidden slot inferred."
+    },
+    {
+      "path": "turn_evidence/t0112.00_bottom.jpg",
+      "sha256": "07a72ff1728400cf70bde9d851dbf73fb612fcde32cca8aa9b66b0922bf2bba3",
+      "observed": "Owner ordinary preplay hand RareCandy/Glimmora/LuckyIcePop/AlolanMuk/HeavyHelmet, five cards."
+    },
+    {
+      "path": "turn_evidence/t0114.00.jpg",
+      "sha256": "c0844b6bfad5c85466f5a0bb13cb483ee2848c568f4e5b58253dc120d7e593c7",
+      "observed": "Glimmora evolution is first move; four remaining hand cards, Regigigas still attack restricted."
+    },
+    {
+      "path": "turn_evidence/t0134.00_bottom.jpg",
+      "sha256": "361faeb308041cc9ecffb5ee8fbd6109bb12fe462d05608bb3eff34f429f0162",
+      "observed": "Ending four-card hand RareCandy/Muk/HeavyHelmet/returnedLuckyIcePop. Consistent start5 minus evolution and netzero healing item after heads."
+    },
+    {
+      "path": "turn_evidence/t0214.00.jpg",
+      "sha256": "bca8a77738c334ea81729fd6724f0aa8871326ca35824eb7d74e23bf7631aaca",
+      "observed": "PokeBall played, four remaining cards visible; search is separate from normal draw."
+    },
+    {
+      "path": "turn_evidence/t0216.00.jpg",
+      "sha256": "305333c74ed3ab2905ca693eaeccdd0abd1309661147007c467a4f3a2a338695",
+      "observed": "Search reveals Glimmet and appends it to four-card hand."
+    },
+    {
+      "path": "turn_evidence/t0380.00.jpg",
+      "sha256": "85a175d5b31f09e34f18969c92248804f0dded032722ed9766d16585c3c7c1e9",
+      "observed": "Literal AlolanMuk Power of Alchemy: all Basic Pokemon in play on both sides have no Abilities. Stage1 Dragonair unaffected. Regigigas attack restriction can therefore be suppressed."
+    },
+    {
+      "path": "turn_evidence/t0387.50.jpg",
+      "sha256": "20bbc215c5fce12f993048e51b39b65dfde3947a98429233c540e48365dad4b4",
+      "observed": "First Research draw Ilima visible; RareCandy/LuckyIcePop remain in hand."
+    },
+    {
+      "path": "turn_evidence/t0388.50.jpg",
+      "sha256": "f5edb7e2a7b396b977c301cb8e381758a8373e3ebbe3d20318fdeecca4a5d873",
+      "observed": "Second Research draw Kingambit visible; Ilima now in hand, confirming order."
+    },
+    {
+      "path": "turn_evidence/t0449.00_bottom.jpg",
+      "sha256": "09a81b5418457759d90796927933089cdad67416db2926c259175b82be09ac08",
+      "observed": "Final hand five RareCandy/LuckyIcePop/Ilima/Kingambit/secondLuckyIcePop; displayed owner points2. Returned heal remains in hand."
+    },
+    {
+      "path": "turn_evidence/t0453.00.jpg",
+      "sha256": "86f2eb6aaa71073a0e74a7af70f22895989c4a06995d2ac66917c07a63c90844",
+      "observed": "Explicit Your opponent conceded. Regigigas Active with3Darkness andHelmet; MukBench showsDarkness+Colorless. Owner hand5; opponent Dragonair40 and Dratini60."
+    },
+    {
+      "path": "turn_evidence/t0472.00.jpg",
+      "sha256": "477cf4f9fa82fd2a928936c27af90dd81760562772522fb4a795bda931266370",
+      "observed": "Victory vs gimt, went first,11turns,2-0points,damage190; literal Regigigas Seal preventsATTACK notattachment."
+    },
+    {
+      "path": "turn_evidence/t0286.00.jpg",
+      "sha256": "108dbf35d9e642d9a648208778d2c85a0bd620cf7ec872f45bf8542083fd0826",
+      "observed": "Root directly saw fifth Alolan Grimer added to hand after PokeBall search; corrected actual arrival286. Earlier284 was unresolved search."
+    },
+    {
+      "path": "turn_evidence/t0449.25.jpg",
+      "sha256": "cebb9714f9c5ed05d58651ccecb8ad216188016d14b8d5805d57eb69439226fc",
+      "observed": "Root directly saw Darkness orb travelling toward Bench Muk; earlier449 Zone selected and Muk onlyColorless. Hand five cards unchanged."
+    },
+    {
+      "path": "turn_evidence/t0449.50.jpg",
+      "sha256": "0c6a02f4b71067d3aeb9ab1a4f26b4bf4d484f7a31b1e2d71d36c438be4f092a",
+      "observed": "Root directly saw continuing attachment orb on Bench Muk; already viewed453 final board has Darkness1+Colorless1,total2 and consumed Zone. This supports repaired numbered regular attachment, not merely tool inspection."
+    }
+  ],
+  "pending_primary_repairs": [],
+  "original_findings_preserved": [
+    "T7 AlolanGrimer search must use actual286 arrival, not284 resolving search",
+    "T11 omitted Darkness attachment to Muk and final mixed Darkness/Colorless board"
+  ],
+  "repair_resolution": "Independent corrected-input recheck accepted all eight current hashes; root retained direct source observations and reconciled repaired actions, timing and board state. Rejected bytes remain preserved."
+}

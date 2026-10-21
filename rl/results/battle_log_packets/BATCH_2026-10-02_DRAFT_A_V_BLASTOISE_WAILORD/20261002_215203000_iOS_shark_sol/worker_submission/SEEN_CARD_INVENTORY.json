@@ -1,0 +1,3225 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261002_215203000_iOS_shark_sol",
+  "sources": [
+    {
+      "video_basename": "20261002_215203000_iOS.MP4",
+      "sha256": "d0e031e9a27c358ad0e1590621014f2758bf80138b83c0776f9961ca34c88b7c",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "owner_cards": [
+    {
+      "name": "Misty",
+      "minimum_distinct_copies_observed": 1,
+      "directly_visible_simultaneous_minimum": 1,
+      "observations": [
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 14.01,
+          "context": "opening",
+          "evidence_ids": [
+            "F0014.00"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 43.5067,
+          "context": "held",
+          "evidence_ids": [
+            "F0043.50"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 56.9067,
+          "context": "discard top",
+          "evidence_ids": [
+            "F0056.90"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        }
+      ],
+      "simultaneous_duplicate_evidence": [],
+      "distinct_copy_basis": "One held then publicly played copy",
+      "exact_deck_count_basis": "Exact supplied log 20 not used to raise seen minimum",
+      "limits": "Repeated observations after shuffle are not new copies; covered lower faces explicitly unknown directly."
+    },
+    {
+      "name": "Lucky Ice Pop",
+      "minimum_distinct_copies_observed": 1,
+      "directly_visible_simultaneous_minimum": 1,
+      "observations": [
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 14.01,
+          "context": "opening",
+          "evidence_ids": [
+            "F0014.00"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 56.9067,
+          "context": "held",
+          "evidence_ids": [
+            "F0056.90"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 78.0067,
+          "context": "returned by Copycat",
+          "evidence_ids": [
+            "F0078.00"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 197.51,
+          "context": "Research reveal",
+          "evidence_ids": [
+            "F0197.50"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 226.212,
+          "context": "held",
+          "evidence_ids": [
+            "F0226.20"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        }
+      ],
+      "simultaneous_duplicate_evidence": [],
+      "distinct_copy_basis": "Original shuffled back; later draw can be same physical copy, not second",
+      "exact_deck_count_basis": "Exact supplied log 20 not used to raise seen minimum",
+      "limits": "Repeated observations after shuffle are not new copies; covered lower faces explicitly unknown directly."
+    },
+    {
+      "name": "Carvanha",
+      "minimum_distinct_copies_observed": 1,
+      "directly_visible_simultaneous_minimum": 1,
+      "observations": [
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 14.01,
+          "context": "opening",
+          "evidence_ids": [
+            "F0014.00"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 25.5083,
+          "context": "right Bench",
+          "evidence_ids": [
+            "F0025.50"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 86.0067,
+          "context": "evolution under Sharpedo",
+          "evidence_ids": [
+            "F0086.00"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        }
+      ],
+      "simultaneous_duplicate_evidence": [],
+      "distinct_copy_basis": "One Basic evolved on witnessed physical instance; covered lower face later unknown directly",
+      "exact_deck_count_basis": "Exact supplied log 20 not used to raise seen minimum",
+      "limits": "Repeated observations after shuffle are not new copies; covered lower faces explicitly unknown directly."
+    },
+    {
+      "name": "Lapras",
+      "minimum_distinct_copies_observed": 1,
+      "directly_visible_simultaneous_minimum": 1,
+      "observations": [
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 14.01,
+          "context": "opening",
+          "evidence_ids": [
+            "F0014.00"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 22.0067,
+          "context": "chosen Active",
+          "evidence_ids": [
+            "F0022.00"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 56.9067,
+          "context": "Active 2 Water",
+          "evidence_ids": [
+            "F0056.90"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 96.505,
+          "context": "Active 3 Water",
+          "evidence_ids": [
+            "F0096.50"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 139.507,
+          "context": "right Bench after retreat 1 Water",
+          "evidence_ids": [
+            "F0139.50"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 211.51,
+          "context": "right Bench 2 Water",
+          "evidence_ids": [
+            "F0211.50"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        }
+      ],
+      "simultaneous_duplicate_evidence": [],
+      "distinct_copy_basis": "One continuously tracked instance",
+      "exact_deck_count_basis": "Exact supplied log 20 not used to raise seen minimum",
+      "limits": "Repeated observations after shuffle are not new copies; covered lower faces explicitly unknown directly."
+    },
+    {
+      "name": "Alolan Ninetales ex",
+      "minimum_distinct_copies_observed": 2,
+      "directly_visible_simultaneous_minimum": 2,
+      "observations": [
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 14.01,
+          "context": "white illustrated opening",
+          "evidence_ids": [
+            "F0014.00"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 78.0067,
+          "context": "white returned",
+          "evidence_ids": [
+            "F0078.00"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 80.5067,
+          "context": "white Copycat reveal",
+          "evidence_ids": [
+            "F0080.50"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 130.51,
+          "context": "white evolved",
+          "evidence_ids": [
+            "F0130.50"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 163.505,
+          "context": "pink illustrated draw",
+          "evidence_ids": [
+            "F0163.50"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 164.805,
+          "context": "white Bench and pink held",
+          "evidence_ids": [
+            "F0164.80"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 226.212,
+          "context": "white Active and pink held",
+          "evidence_ids": [
+            "F0226.20"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        }
+      ],
+      "simultaneous_duplicate_evidence": [
+        {
+          "source_seconds": 164.805,
+          "evidence_ids": [
+            "F0164.80"
+          ],
+          "basis": "Two different copies directly simultaneous: white board and pink hand"
+        }
+      ],
+      "distinct_copy_basis": "Two different copies directly simultaneous: white board and pink hand",
+      "exact_deck_count_basis": "Exact supplied log 20 not used to raise seen minimum",
+      "limits": "Repeated observations after shuffle are not new copies; covered lower faces explicitly unknown directly."
+    },
+    {
+      "name": "Copycat",
+      "minimum_distinct_copies_observed": 1,
+      "directly_visible_simultaneous_minimum": 1,
+      "observations": [
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 42.0067,
+          "context": "normal draw",
+          "evidence_ids": [
+            "F0042.00"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 74.0067,
+          "context": "held beforeplay",
+          "evidence_ids": [
+            "F0074.00"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 76.0067,
+          "context": "played",
+          "evidence_ids": [
+            "F0076.00"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 96.505,
+          "context": "discard top",
+          "evidence_ids": [
+            "F0096.50"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        }
+      ],
+      "simultaneous_duplicate_evidence": [],
+      "distinct_copy_basis": "One held then played copy",
+      "exact_deck_count_basis": "Exact supplied log 20 not used to raise seen minimum",
+      "limits": "Repeated observations after shuffle are not new copies; covered lower faces explicitly unknown directly."
+    },
+    {
+      "name": "Alolan Vulpix",
+      "minimum_distinct_copies_observed": 2,
+      "directly_visible_simultaneous_minimum": 1,
+      "observations": [
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 69.5067,
+          "context": "regular draw",
+          "evidence_ids": [
+            "F0069.50"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 71.0067,
+          "context": "regular left Bench",
+          "evidence_ids": [
+            "F0071.00"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 130.51,
+          "context": "regular evolves under Ninetales",
+          "evidence_ids": [
+            "F0130.50"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 203.01,
+          "context": "stamped search face",
+          "evidence_ids": [
+            "F0203.00"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 204.51,
+          "context": "stamped center Bench",
+          "evidence_ids": [
+            "F0204.50"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 226.212,
+          "context": "stamped center; regular covered beneath white Ninetales by witnessed history",
+          "evidence_ids": [
+            "F0226.20"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        }
+      ],
+      "simultaneous_duplicate_evidence": [],
+      "distinct_copy_basis": "Regular Basic remains under evolved white Ninetales; distinct stamped Basic later searched/benched. Underface history-derived, not directly visible simultaneous pair",
+      "exact_deck_count_basis": "Exact supplied log 20 not used to raise seen minimum",
+      "limits": "Repeated observations after shuffle are not new copies; covered lower faces explicitly unknown directly."
+    },
+    {
+      "name": "Mega Sharpedo ex",
+      "minimum_distinct_copies_observed": 2,
+      "directly_visible_simultaneous_minimum": 2,
+      "observations": [
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 81.5067,
+          "context": "fiery Copycat reveal",
+          "evidence_ids": [
+            "F0081.50"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 86.0067,
+          "context": "fiery evolution",
+          "evidence_ids": [
+            "F0086.00"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 126.003,
+          "context": "regular draw",
+          "evidence_ids": [
+            "F0126.00"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 128.507,
+          "context": "fiery right Bench plus regular held",
+          "evidence_ids": [
+            "F0128.50"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 226.212,
+          "context": "fiery left Bench plus regular held",
+          "evidence_ids": [
+            "F0226.20"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        }
+      ],
+      "simultaneous_duplicate_evidence": [
+        {
+          "source_seconds": 128.507,
+          "evidence_ids": [
+            "F0128.50"
+          ],
+          "basis": "Two directly simultaneous copies: fiery board and regular hand"
+        }
+      ],
+      "distinct_copy_basis": "Two directly simultaneous copies: fiery board and regular hand",
+      "exact_deck_count_basis": "Exact supplied log 20 not used to raise seen minimum",
+      "limits": "Repeated observations after shuffle are not new copies; covered lower faces explicitly unknown directly."
+    },
+    {
+      "name": "Cyrus",
+      "minimum_distinct_copies_observed": 1,
+      "directly_visible_simultaneous_minimum": 1,
+      "observations": [
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 82.5067,
+          "context": "Copycat reveal",
+          "evidence_ids": [
+            "F0082.50"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 96.505,
+          "context": "held",
+          "evidence_ids": [
+            "F0096.50"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 226.212,
+          "context": "held",
+          "evidence_ids": [
+            "F0226.20"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        }
+      ],
+      "simultaneous_duplicate_evidence": [],
+      "distinct_copy_basis": "Same retained copy; no Cyrus play",
+      "exact_deck_count_basis": "Exact supplied log 20 not used to raise seen minimum",
+      "limits": "Repeated observations after shuffle are not new copies; covered lower faces explicitly unknown directly."
+    },
+    {
+      "name": "Elegant Cape",
+      "minimum_distinct_copies_observed": 1,
+      "directly_visible_simultaneous_minimum": 1,
+      "observations": [
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 83.5067,
+          "context": "Copycat reveal",
+          "evidence_ids": [
+            "F0083.50"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 93.505,
+          "context": "Tool attachment",
+          "evidence_ids": [
+            "F0093.50"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 96.505,
+          "context": "attached Cape and 220 HP",
+          "evidence_ids": [
+            "F0096.50"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 226.212,
+          "context": "still on Sharpedo",
+          "evidence_ids": [
+            "F0226.20"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        }
+      ],
+      "simultaneous_duplicate_evidence": [],
+      "distinct_copy_basis": "One hand→Tool copy",
+      "exact_deck_count_basis": "Exact supplied log 20 not used to raise seen minimum",
+      "limits": "Repeated observations after shuffle are not new copies; covered lower faces explicitly unknown directly."
+    },
+    {
+      "name": "Professor's Research",
+      "minimum_distinct_copies_observed": 2,
+      "directly_visible_simultaneous_minimum": 1,
+      "observations": [
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 193.508,
+          "context": "illustrated normal draw",
+          "evidence_ids": [
+            "F0193.50"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 194.608,
+          "context": "illustrated consumed/discarded",
+          "evidence_ids": [
+            "F0194.60"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 225.512,
+          "context": "different regular normal draw",
+          "evidence_ids": [
+            "F0225.50"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 226.212,
+          "context": "regular held; original illustrated remains in unopened discard history",
+          "evidence_ids": [
+            "F0226.20"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        }
+      ],
+      "simultaneous_duplicate_evidence": [],
+      "distinct_copy_basis": "Illustrated played/discarded after last shuffle; distinct regular drawn later, no recovery filmed. Distinct source artwork and public discard history, not direct simultaneous exposed pair",
+      "exact_deck_count_basis": "Exact supplied log 20 not used to raise seen minimum",
+      "limits": "Repeated observations after shuffle are not new copies; covered lower faces explicitly unknown directly."
+    },
+    {
+      "name": "Poké Ball",
+      "minimum_distinct_copies_observed": 1,
+      "directly_visible_simultaneous_minimum": 1,
+      "observations": [
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 198.508,
+          "context": "Research reveal",
+          "evidence_ids": [
+            "F0198.50"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 200.51,
+          "context": "played",
+          "evidence_ids": [
+            "F0200.50"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 211.51,
+          "context": "discard top",
+          "evidence_ids": [
+            "F0211.50"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        },
+        {
+          "source_video": "20261002_215203000_iOS.MP4",
+          "source_seconds": 226.212,
+          "context": "discard top",
+          "evidence_ids": [
+            "F0226.20"
+          ],
+          "observation_kind": "direct visible event/fan/board; explicit hidden lower stack is history-derived where stated"
+        }
+      ],
+      "simultaneous_duplicate_evidence": [],
+      "distinct_copy_basis": "One draw→play→discard copy",
+      "exact_deck_count_basis": "Exact supplied log 20 not used to raise seen minimum",
+      "limits": "Repeated observations after shuffle are not new copies; covered lower faces explicitly unknown directly."
+    }
+  ],
+  "minimum_distinct_owner_cards_observed": 16,
+  "exact_whole_deck_visually_recovered": false,
+  "why_not": "Minimum 16 seen physical copies, not full 20. Unexposed counts including Sabrina remain supplied-list information only.",
+  "observed_owner_stadium_cards": [],
+  "shared_stadium_observation": {
+    "name": "Soothing Shore",
+    "played_by": "opponent",
+    "counts_as_owner_card": false,
+    "evidence_ids": [
+      "F0221.00",
+      "F0222.50"
+    ]
+  },
+  "owner_discard_opened": false,
+  "opponent_discard_opened": false,
+  "all_owner_hand_contexts": [
+    {
+      "turn_number": 2,
+      "start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Misty",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0043.50"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 2,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0043.50"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 3,
+            "name": "Alolan Ninetales ex",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0043.50"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 4,
+            "name": "Copycat",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0043.50"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          }
+        ],
+        "count": 4,
+        "basis": "Direct visible native fan, left to right",
+        "evidence_ids": [
+          "F0043.50"
+        ],
+        "source_video": "20261002_215203000_iOS.MP4",
+        "source_seconds": 43.5067,
+        "status": "observed",
+        "limit_reason": null
+      },
+      "end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0056.90"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 2,
+            "name": "Alolan Ninetales ex",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0056.90"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 3,
+            "name": "Copycat",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0056.90"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          }
+        ],
+        "count": 3,
+        "basis": "Direct visible native fan, left to right",
+        "evidence_ids": [
+          "F0056.90"
+        ],
+        "source_video": "20261002_215203000_iOS.MP4",
+        "source_seconds": 56.9067,
+        "status": "observed",
+        "limit_reason": null
+      }
+    },
+    {
+      "turn_number": 4,
+      "start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0070.20"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 2,
+            "name": "Alolan Ninetales ex",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0070.20"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 3,
+            "name": "Copycat",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0070.20"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 4,
+            "name": "Alolan Vulpix",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0070.20"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          }
+        ],
+        "count": 4,
+        "basis": "Direct visible native fan, left to right",
+        "evidence_ids": [
+          "F0070.20"
+        ],
+        "source_video": "20261002_215203000_iOS.MP4",
+        "source_seconds": 70.2067,
+        "status": "observed",
+        "limit_reason": null
+      },
+      "end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Alolan Ninetales ex",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0096.50"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 2,
+            "name": "Cyrus",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0096.50"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          }
+        ],
+        "count": 2,
+        "basis": "Direct visible native fan, left to right",
+        "evidence_ids": [
+          "F0096.50"
+        ],
+        "source_video": "20261002_215203000_iOS.MP4",
+        "source_seconds": 96.505,
+        "status": "observed",
+        "limit_reason": null
+      }
+    },
+    {
+      "turn_number": 6,
+      "start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Alolan Ninetales ex",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0128.50"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 2,
+            "name": "Cyrus",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0128.50"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 3,
+            "name": "Mega Sharpedo ex",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0128.50"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          }
+        ],
+        "count": 3,
+        "basis": "Direct visible native fan, left to right",
+        "evidence_ids": [
+          "F0128.50"
+        ],
+        "source_video": "20261002_215203000_iOS.MP4",
+        "source_seconds": 128.507,
+        "status": "observed",
+        "limit_reason": null
+      },
+      "end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Cyrus",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0140.50"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 2,
+            "name": "Mega Sharpedo ex",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0140.50"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          }
+        ],
+        "count": 2,
+        "basis": "Direct visible native fan, left to right",
+        "evidence_ids": [
+          "F0140.50"
+        ],
+        "source_video": "20261002_215203000_iOS.MP4",
+        "source_seconds": 140.508,
+        "status": "observed",
+        "limit_reason": null
+      }
+    },
+    {
+      "turn_number": 8,
+      "start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Cyrus",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0164.80"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 2,
+            "name": "Mega Sharpedo ex",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0164.80"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 3,
+            "name": "Alolan Ninetales ex",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0164.80"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          }
+        ],
+        "count": 3,
+        "basis": "Direct visible native fan, left to right",
+        "evidence_ids": [
+          "F0164.80"
+        ],
+        "source_video": "20261002_215203000_iOS.MP4",
+        "source_seconds": 164.805,
+        "status": "observed",
+        "limit_reason": null
+      },
+      "end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Cyrus",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0171.50"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 2,
+            "name": "Mega Sharpedo ex",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0171.50"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 3,
+            "name": "Alolan Ninetales ex",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0171.50"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          }
+        ],
+        "count": 3,
+        "basis": "Direct visible native fan, left to right",
+        "evidence_ids": [
+          "F0171.50"
+        ],
+        "source_video": "20261002_215203000_iOS.MP4",
+        "source_seconds": 171.505,
+        "status": "observed",
+        "limit_reason": null
+      }
+    },
+    {
+      "turn_number": 10,
+      "start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Cyrus",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0193.80"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 2,
+            "name": "Mega Sharpedo ex",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0193.80"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 3,
+            "name": "Alolan Ninetales ex",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0193.80"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 4,
+            "name": "Professor's Research",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0193.80"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          }
+        ],
+        "count": 4,
+        "basis": "Direct visible native fan, left to right",
+        "evidence_ids": [
+          "F0193.80"
+        ],
+        "source_video": "20261002_215203000_iOS.MP4",
+        "source_seconds": 193.808,
+        "status": "observed",
+        "limit_reason": null
+      },
+      "end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Cyrus",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0206.50"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 2,
+            "name": "Mega Sharpedo ex",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0206.50"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 3,
+            "name": "Alolan Ninetales ex",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0206.50"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 4,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0206.50"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          }
+        ],
+        "count": 4,
+        "basis": "Direct visible native fan, left to right",
+        "evidence_ids": [
+          "F0206.50"
+        ],
+        "source_video": "20261002_215203000_iOS.MP4",
+        "source_seconds": 206.51,
+        "status": "observed",
+        "limit_reason": null
+      }
+    },
+    {
+      "turn_number": 12,
+      "start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Cyrus",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0226.20"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 2,
+            "name": "Mega Sharpedo ex",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0226.20"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 3,
+            "name": "Alolan Ninetales ex",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0226.20"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 4,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0226.20"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 5,
+            "name": "Professor's Research",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0226.20"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          }
+        ],
+        "count": 5,
+        "basis": "Direct visible native fan, left to right",
+        "evidence_ids": [
+          "F0226.20"
+        ],
+        "source_video": "20261002_215203000_iOS.MP4",
+        "source_seconds": 226.212,
+        "status": "observed",
+        "limit_reason": null
+      },
+      "end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Cyrus",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0226.20"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 2,
+            "name": "Mega Sharpedo ex",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0226.20"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 3,
+            "name": "Alolan Ninetales ex",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0226.20"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 4,
+            "name": "Lucky Ice Pop",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0226.20"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          },
+          {
+            "position": 5,
+            "name": "Professor's Research",
+            "variant": null,
+            "visible_art_description": null,
+            "basis": "Native visible name/art; exact collector number not transcribed",
+            "evidence_ids": [
+              "F0226.20"
+            ],
+            "limit_reason": "The supplied log printing is separate from observed alternate art."
+          }
+        ],
+        "count": 5,
+        "basis": "Direct 226.2 five-card preattack fan; unchanged through terminal attack",
+        "evidence_ids": [
+          "F0226.20"
+        ],
+        "source_video": "20261002_215203000_iOS.MP4",
+        "source_seconds": 226.212,
+        "status": "observed",
+        "limit_reason": null
+      }
+    }
+  ],
+  "all_owner_board_contexts": [
+    {
+      "turn_number": 2,
+      "starting_board": {
+        "active": {
+          "instance_id": "O1",
+          "name": "Lapras",
+          "variant": null,
+          "visible_art_description": null,
+          "bench_position": "active",
+          "hp_now": 110,
+          "hp_max": 110,
+          "hp_max_basis": "Printed top-card HP and displayed settled HP",
+          "damage": 0,
+          "attached_energy": {
+            "total": 0,
+            "by_type": {
+              "Water": 0
+            },
+            "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+          },
+          "tool": "none",
+          "special_conditions": [],
+          "active_effects": [],
+          "evolution_stack_under_top": [],
+          "evolution_stack_order": "bottom to top excluding current top",
+          "evolution_stack_directly_readable": [],
+          "evolution_stack_basis": "Observed Basic; no prior evolution in this source",
+          "evolution_stack_evidence_ids": [
+            "F0043.50"
+          ],
+          "evidence_ids": [
+            "F0043.50"
+          ],
+          "status": "observed_with_explicit_attribute_provenance",
+          "attribute_provenance": {
+            "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+            "tool": "Native icon and earlier attachment event when present",
+            "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+          },
+          "limit_reason": "Collector number and hidden lower-card art remain unknown."
+        },
+        "bench_in_position_order": [
+          {
+            "instance_id": "O2",
+            "name": "Carvanha",
+            "variant": null,
+            "visible_art_description": null,
+            "bench_position": "right",
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "Printed top-card HP and displayed settled HP",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {
+                "Water": 0
+              },
+              "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_under_top": [],
+            "evolution_stack_order": "bottom to top excluding current top",
+            "evolution_stack_directly_readable": [],
+            "evolution_stack_basis": "Observed Basic; no prior evolution in this source",
+            "evolution_stack_evidence_ids": [
+              "F0043.50"
+            ],
+            "evidence_ids": [
+              "F0043.50"
+            ],
+            "status": "observed_with_explicit_attribute_provenance",
+            "attribute_provenance": {
+              "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+              "tool": "Native icon and earlier attachment event when present",
+              "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+            },
+            "limit_reason": "Collector number and hidden lower-card art remain unknown."
+          }
+        ],
+        "empty_bench_positions": [
+          "left",
+          "center"
+        ],
+        "energy_zone": {
+          "this_turn": {
+            "type": "Water",
+            "count": 1,
+            "available": true,
+            "phase": "generated visible"
+          },
+          "next": {
+            "type": "Water",
+            "count": 1,
+            "available": null,
+            "phase": "Water preview; not available this turn"
+          },
+          "basis": "Fresh visible current slot and upcoming small Water preview; settled usage separately traced",
+          "evidence_ids": [
+            "F0043.50"
+          ],
+          "limit_reason": "Inactive upcoming icon does not establish a usable current Energy. Handoff snapshots may already belong to next turn."
+        },
+        "points": 0,
+        "board_effects": [],
+        "evidence_ids": [
+          "F0043.50"
+        ],
+        "status": "source_observed_boundary",
+        "limit_reason": "Evolution genealogy is history-derived. Any composite combines cited measured anchors; not a claimed single exact instant."
+      },
+      "ending_board": {
+        "active": {
+          "instance_id": "O1",
+          "name": "Lapras",
+          "variant": null,
+          "visible_art_description": null,
+          "bench_position": "active",
+          "hp_now": 110,
+          "hp_max": 110,
+          "hp_max_basis": "Printed top-card HP and displayed settled HP",
+          "damage": 0,
+          "attached_energy": {
+            "total": 2,
+            "by_type": {
+              "Water": 2
+            },
+            "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+          },
+          "tool": "none",
+          "special_conditions": [],
+          "active_effects": [],
+          "evolution_stack_under_top": [],
+          "evolution_stack_order": "bottom to top excluding current top",
+          "evolution_stack_directly_readable": [],
+          "evolution_stack_basis": "Observed Basic; no prior evolution in this source",
+          "evolution_stack_evidence_ids": [
+            "F0059.50"
+          ],
+          "evidence_ids": [
+            "F0059.50"
+          ],
+          "status": "observed_with_explicit_attribute_provenance",
+          "attribute_provenance": {
+            "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+            "tool": "Native icon and earlier attachment event when present",
+            "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+          },
+          "limit_reason": "Collector number and hidden lower-card art remain unknown."
+        },
+        "bench_in_position_order": [
+          {
+            "instance_id": "O2",
+            "name": "Carvanha",
+            "variant": null,
+            "visible_art_description": null,
+            "bench_position": "right",
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "Printed top-card HP and displayed settled HP",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {
+                "Water": 0
+              },
+              "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_under_top": [],
+            "evolution_stack_order": "bottom to top excluding current top",
+            "evolution_stack_directly_readable": [],
+            "evolution_stack_basis": "Observed Basic; no prior evolution in this source",
+            "evolution_stack_evidence_ids": [
+              "F0059.50"
+            ],
+            "evidence_ids": [
+              "F0059.50"
+            ],
+            "status": "observed_with_explicit_attribute_provenance",
+            "attribute_provenance": {
+              "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+              "tool": "Native icon and earlier attachment event when present",
+              "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+            },
+            "limit_reason": "Collector number and hidden lower-card art remain unknown."
+          }
+        ],
+        "empty_bench_positions": [
+          "left",
+          "center"
+        ],
+        "energy_zone": {
+          "this_turn": {
+            "type": null,
+            "count": 0,
+            "available": false,
+            "phase": "inactive/used current slot empty"
+          },
+          "next": {
+            "type": "Water",
+            "count": 1,
+            "available": null,
+            "phase": "Water preview; not available this turn"
+          },
+          "basis": "Fresh visible current slot and upcoming small Water preview; settled usage separately traced",
+          "evidence_ids": [
+            "F0059.50"
+          ],
+          "limit_reason": "Inactive upcoming icon does not establish a usable current Energy. Handoff snapshots may already belong to next turn."
+        },
+        "points": 0,
+        "board_effects": [],
+        "evidence_ids": [
+          "F0059.50"
+        ],
+        "status": "source_observed_boundary",
+        "limit_reason": "Evolution genealogy is history-derived. Any composite combines cited measured anchors; not a claimed single exact instant."
+      },
+      "source_seconds": null,
+      "evidence_frame_seconds_range": [
+        59.5067,
+        59.5067
+      ],
+      "limit": "Ending composite provenance range is not an exact instant; earliest native can precede final-state attribute"
+    },
+    {
+      "turn_number": 4,
+      "starting_board": {
+        "active": {
+          "instance_id": "O1",
+          "name": "Lapras",
+          "variant": null,
+          "visible_art_description": null,
+          "bench_position": "active",
+          "hp_now": 110,
+          "hp_max": 110,
+          "hp_max_basis": "Printed top-card HP and displayed settled HP",
+          "damage": 0,
+          "attached_energy": {
+            "total": 2,
+            "by_type": {
+              "Water": 2
+            },
+            "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+          },
+          "tool": "none",
+          "special_conditions": [],
+          "active_effects": [],
+          "evolution_stack_under_top": [],
+          "evolution_stack_order": "bottom to top excluding current top",
+          "evolution_stack_directly_readable": [],
+          "evolution_stack_basis": "Observed Basic; no prior evolution in this source",
+          "evolution_stack_evidence_ids": [
+            "F0070.20"
+          ],
+          "evidence_ids": [
+            "F0070.20"
+          ],
+          "status": "observed_with_explicit_attribute_provenance",
+          "attribute_provenance": {
+            "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+            "tool": "Native icon and earlier attachment event when present",
+            "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+          },
+          "limit_reason": "Collector number and hidden lower-card art remain unknown."
+        },
+        "bench_in_position_order": [
+          {
+            "instance_id": "O2",
+            "name": "Carvanha",
+            "variant": null,
+            "visible_art_description": null,
+            "bench_position": "right",
+            "hp_now": 50,
+            "hp_max": 50,
+            "hp_max_basis": "Printed top-card HP and displayed settled HP",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {
+                "Water": 0
+              },
+              "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_under_top": [],
+            "evolution_stack_order": "bottom to top excluding current top",
+            "evolution_stack_directly_readable": [],
+            "evolution_stack_basis": "Observed Basic; no prior evolution in this source",
+            "evolution_stack_evidence_ids": [
+              "F0070.20"
+            ],
+            "evidence_ids": [
+              "F0070.20"
+            ],
+            "status": "observed_with_explicit_attribute_provenance",
+            "attribute_provenance": {
+              "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+              "tool": "Native icon and earlier attachment event when present",
+              "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+            },
+            "limit_reason": "Collector number and hidden lower-card art remain unknown."
+          }
+        ],
+        "empty_bench_positions": [
+          "left",
+          "center"
+        ],
+        "energy_zone": {
+          "this_turn": {
+            "type": null,
+            "count": 0,
+            "available": false,
+            "phase": "generation pending at selected preplay view; Water subsequently available",
+            "subsequent_generated_evidence_ids": [
+              "F0071.00"
+            ]
+          },
+          "next": {
+            "type": "Water",
+            "count": 1,
+            "available": null,
+            "phase": "Water preview; not available this turn"
+          },
+          "basis": "Fresh visible current slot and upcoming small Water preview; settled usage separately traced",
+          "evidence_ids": [
+            "F0070.20"
+          ],
+          "limit_reason": "Inactive upcoming icon does not establish a usable current Energy. Handoff snapshots may already belong to next turn."
+        },
+        "points": 0,
+        "board_effects": [],
+        "evidence_ids": [
+          "F0070.20"
+        ],
+        "status": "source_observed_boundary",
+        "limit_reason": "Evolution genealogy is history-derived. Any composite combines cited measured anchors; not a claimed single exact instant."
+      },
+      "ending_board": {
+        "active": {
+          "instance_id": "O1",
+          "name": "Lapras",
+          "variant": null,
+          "visible_art_description": null,
+          "bench_position": "active",
+          "hp_now": 110,
+          "hp_max": 110,
+          "hp_max_basis": "Printed top-card HP and displayed settled HP",
+          "damage": 0,
+          "attached_energy": {
+            "total": 3,
+            "by_type": {
+              "Water": 3
+            },
+            "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+          },
+          "tool": "none",
+          "special_conditions": [],
+          "active_effects": [],
+          "evolution_stack_under_top": [],
+          "evolution_stack_order": "bottom to top excluding current top",
+          "evolution_stack_directly_readable": [],
+          "evolution_stack_basis": "Observed Basic; no prior evolution in this source",
+          "evolution_stack_evidence_ids": [
+            "F0114.50"
+          ],
+          "evidence_ids": [
+            "F0114.50"
+          ],
+          "status": "observed_with_explicit_attribute_provenance",
+          "attribute_provenance": {
+            "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+            "tool": "Native icon and earlier attachment event when present",
+            "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+          },
+          "limit_reason": "Collector number and hidden lower-card art remain unknown."
+        },
+        "bench_in_position_order": [
+          {
+            "instance_id": "O3",
+            "name": "Alolan Vulpix",
+            "variant": null,
+            "visible_art_description": "regular sky art",
+            "bench_position": "left",
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "Printed top-card HP and displayed settled HP",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {
+                "Water": 0
+              },
+              "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_under_top": [],
+            "evolution_stack_order": "bottom to top excluding current top",
+            "evolution_stack_directly_readable": [],
+            "evolution_stack_basis": "Observed Basic; no prior evolution in this source",
+            "evolution_stack_evidence_ids": [
+              "F0114.50"
+            ],
+            "evidence_ids": [
+              "F0114.50"
+            ],
+            "status": "observed_with_explicit_attribute_provenance",
+            "attribute_provenance": {
+              "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+              "tool": "Native icon and earlier attachment event when present",
+              "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+            },
+            "limit_reason": "Collector number and hidden lower-card art remain unknown."
+          },
+          {
+            "instance_id": "O2",
+            "name": "Mega Sharpedo ex",
+            "variant": null,
+            "visible_art_description": "fiery illustrated",
+            "bench_position": "right",
+            "hp_now": 220,
+            "hp_max": 220,
+            "hp_max_basis": "Printed top-card maximum and fresh displayed HP; witnessed Elegant Cape +30 on Stage 1",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {
+                "Water": 0
+              },
+              "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+            },
+            "tool": "Elegant Cape",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_under_top": [
+              "Carvanha"
+            ],
+            "evolution_stack_order": "bottom to top excluding current top",
+            "evolution_stack_directly_readable": null,
+            "evolution_stack_basis": "Same-source witnessed evolution onto this physical instance; covered lower faces not independently opened/read in current view",
+            "evolution_stack_evidence_ids": [
+              "F0086.00"
+            ],
+            "evidence_ids": [
+              "F0114.50"
+            ],
+            "status": "observed_with_explicit_attribute_provenance",
+            "attribute_provenance": {
+              "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+              "tool": "Native icon and earlier attachment event when present",
+              "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+            },
+            "limit_reason": "Collector number and hidden lower-card art remain unknown."
+          }
+        ],
+        "empty_bench_positions": [
+          "center"
+        ],
+        "energy_zone": {
+          "this_turn": {
+            "type": null,
+            "count": 0,
+            "available": false,
+            "phase": "inactive/used current slot empty"
+          },
+          "next": {
+            "type": "Water",
+            "count": 1,
+            "available": null,
+            "phase": "Water preview; not available this turn"
+          },
+          "basis": "Fresh visible current slot and upcoming small Water preview; settled usage separately traced",
+          "evidence_ids": [
+            "F0114.50"
+          ],
+          "limit_reason": "Inactive upcoming icon does not establish a usable current Energy. Handoff snapshots may already belong to next turn."
+        },
+        "points": 1,
+        "board_effects": [],
+        "evidence_ids": [
+          "F0114.50"
+        ],
+        "status": "source_observed_boundary",
+        "limit_reason": "Evolution genealogy is history-derived. Any composite combines cited measured anchors; not a claimed single exact instant."
+      },
+      "source_seconds": null,
+      "evidence_frame_seconds_range": [
+        114.507,
+        114.507
+      ],
+      "limit": "Ending composite provenance range is not an exact instant; earliest native can precede final-state attribute"
+    },
+    {
+      "turn_number": 6,
+      "starting_board": {
+        "active": {
+          "instance_id": "O1",
+          "name": "Lapras",
+          "variant": null,
+          "visible_art_description": null,
+          "bench_position": "active",
+          "hp_now": 110,
+          "hp_max": 110,
+          "hp_max_basis": "Printed top-card HP and displayed settled HP",
+          "damage": 0,
+          "attached_energy": {
+            "total": 3,
+            "by_type": {
+              "Water": 3
+            },
+            "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+          },
+          "tool": "none",
+          "special_conditions": [],
+          "active_effects": [],
+          "evolution_stack_under_top": [],
+          "evolution_stack_order": "bottom to top excluding current top",
+          "evolution_stack_directly_readable": [],
+          "evolution_stack_basis": "Observed Basic; no prior evolution in this source",
+          "evolution_stack_evidence_ids": [
+            "F0127.50"
+          ],
+          "evidence_ids": [
+            "F0127.50",
+            "F0128.50"
+          ],
+          "status": "observed_with_explicit_attribute_provenance",
+          "attribute_provenance": {
+            "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+            "tool": "Native icon and earlier attachment event when present",
+            "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+          },
+          "limit_reason": "Collector number and hidden lower-card art remain unknown."
+        },
+        "bench_in_position_order": [
+          {
+            "instance_id": "O3",
+            "name": "Alolan Vulpix",
+            "variant": null,
+            "visible_art_description": "regular sky art",
+            "bench_position": "left",
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "Printed top-card HP and displayed settled HP",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {
+                "Water": 0
+              },
+              "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_under_top": [],
+            "evolution_stack_order": "bottom to top excluding current top",
+            "evolution_stack_directly_readable": [],
+            "evolution_stack_basis": "Observed Basic; no prior evolution in this source",
+            "evolution_stack_evidence_ids": [
+              "F0127.50"
+            ],
+            "evidence_ids": [
+              "F0127.50",
+              "F0128.50"
+            ],
+            "status": "observed_with_explicit_attribute_provenance",
+            "attribute_provenance": {
+              "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+              "tool": "Native icon and earlier attachment event when present",
+              "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+            },
+            "limit_reason": "Collector number and hidden lower-card art remain unknown."
+          },
+          {
+            "instance_id": "O2",
+            "name": "Mega Sharpedo ex",
+            "variant": null,
+            "visible_art_description": "fiery illustrated",
+            "bench_position": "right",
+            "hp_now": 220,
+            "hp_max": 220,
+            "hp_max_basis": "Printed top-card maximum and fresh displayed HP; witnessed Elegant Cape +30 on Stage 1",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {
+                "Water": 0
+              },
+              "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+            },
+            "tool": "Elegant Cape",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_under_top": [
+              "Carvanha"
+            ],
+            "evolution_stack_order": "bottom to top excluding current top",
+            "evolution_stack_directly_readable": null,
+            "evolution_stack_basis": "Same-source witnessed evolution onto this physical instance; covered lower faces not independently opened/read in current view",
+            "evolution_stack_evidence_ids": [
+              "F0086.00"
+            ],
+            "evidence_ids": [
+              "F0127.50",
+              "F0128.50"
+            ],
+            "status": "observed_with_explicit_attribute_provenance",
+            "attribute_provenance": {
+              "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+              "tool": "Native icon and earlier attachment event when present",
+              "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+            },
+            "limit_reason": "Collector number and hidden lower-card art remain unknown."
+          }
+        ],
+        "empty_bench_positions": [
+          "center"
+        ],
+        "energy_zone": {
+          "this_turn": {
+            "type": "Water",
+            "count": 1,
+            "available": true,
+            "phase": "generated visible"
+          },
+          "next": {
+            "type": "Water",
+            "count": 1,
+            "available": null,
+            "phase": "Water preview; not available this turn"
+          },
+          "basis": "Fresh visible current slot and upcoming small Water preview; settled usage separately traced",
+          "evidence_ids": [
+            "F0127.50",
+            "F0128.50"
+          ],
+          "limit_reason": "Inactive upcoming icon does not establish a usable current Energy. Handoff snapshots may already belong to next turn."
+        },
+        "points": 1,
+        "board_effects": [],
+        "evidence_ids": [
+          "F0127.50",
+          "F0128.50"
+        ],
+        "status": "source_observed_boundary",
+        "limit_reason": "Evolution genealogy is history-derived. Any composite combines cited measured anchors; not a claimed single exact instant."
+      },
+      "ending_board": {
+        "active": {
+          "instance_id": "O2",
+          "name": "Mega Sharpedo ex",
+          "variant": null,
+          "visible_art_description": "fiery illustrated",
+          "bench_position": "active",
+          "hp_now": 220,
+          "hp_max": 220,
+          "hp_max_basis": "Printed top-card maximum and fresh displayed HP; witnessed Elegant Cape +30 on Stage 1",
+          "damage": 0,
+          "attached_energy": {
+            "total": 1,
+            "by_type": {
+              "Water": 1
+            },
+            "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+          },
+          "tool": "Elegant Cape",
+          "special_conditions": [],
+          "active_effects": [],
+          "evolution_stack_under_top": [
+            "Carvanha"
+          ],
+          "evolution_stack_order": "bottom to top excluding current top",
+          "evolution_stack_directly_readable": null,
+          "evolution_stack_basis": "Same-source witnessed evolution onto this physical instance; covered lower faces not independently opened/read in current view",
+          "evolution_stack_evidence_ids": [
+            "F0086.00"
+          ],
+          "evidence_ids": [
+            "F0148.50"
+          ],
+          "status": "observed_with_explicit_attribute_provenance",
+          "attribute_provenance": {
+            "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+            "tool": "Native icon and earlier attachment event when present",
+            "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+          },
+          "limit_reason": "Collector number and hidden lower-card art remain unknown."
+        },
+        "bench_in_position_order": [
+          {
+            "instance_id": "O3",
+            "name": "Alolan Ninetales ex",
+            "variant": null,
+            "visible_art_description": "white illustrated",
+            "bench_position": "left",
+            "hp_now": 150,
+            "hp_max": 150,
+            "hp_max_basis": "Printed top-card HP and displayed settled HP",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              },
+              "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_under_top": [
+              "Alolan Vulpix"
+            ],
+            "evolution_stack_order": "bottom to top excluding current top",
+            "evolution_stack_directly_readable": null,
+            "evolution_stack_basis": "Same-source witnessed evolution onto this physical instance; covered lower faces not independently opened/read in current view",
+            "evolution_stack_evidence_ids": [
+              "F0130.50"
+            ],
+            "evidence_ids": [
+              "F0148.50"
+            ],
+            "status": "observed_with_explicit_attribute_provenance",
+            "attribute_provenance": {
+              "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+              "tool": "Native icon and earlier attachment event when present",
+              "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+            },
+            "limit_reason": "Collector number and hidden lower-card art remain unknown."
+          },
+          {
+            "instance_id": "O1",
+            "name": "Lapras",
+            "variant": null,
+            "visible_art_description": null,
+            "bench_position": "right",
+            "hp_now": 110,
+            "hp_max": 110,
+            "hp_max_basis": "Printed top-card HP and displayed settled HP",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              },
+              "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_under_top": [],
+            "evolution_stack_order": "bottom to top excluding current top",
+            "evolution_stack_directly_readable": [],
+            "evolution_stack_basis": "Observed Basic; no prior evolution in this source",
+            "evolution_stack_evidence_ids": [
+              "F0148.50"
+            ],
+            "evidence_ids": [
+              "F0148.50"
+            ],
+            "status": "observed_with_explicit_attribute_provenance",
+            "attribute_provenance": {
+              "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+              "tool": "Native icon and earlier attachment event when present",
+              "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+            },
+            "limit_reason": "Collector number and hidden lower-card art remain unknown."
+          }
+        ],
+        "empty_bench_positions": [
+          "center"
+        ],
+        "energy_zone": {
+          "this_turn": {
+            "type": null,
+            "count": 0,
+            "available": false,
+            "phase": "inactive/used current slot empty"
+          },
+          "next": {
+            "type": "Water",
+            "count": 1,
+            "available": null,
+            "phase": "Water preview; not available this turn"
+          },
+          "basis": "Fresh visible current slot and upcoming small Water preview; settled usage separately traced",
+          "evidence_ids": [
+            "F0148.50"
+          ],
+          "limit_reason": "Inactive upcoming icon does not establish a usable current Energy. Handoff snapshots may already belong to next turn."
+        },
+        "points": 1,
+        "board_effects": [],
+        "evidence_ids": [
+          "F0148.50"
+        ],
+        "status": "source_observed_boundary",
+        "limit_reason": "Evolution genealogy is history-derived. Any composite combines cited measured anchors; not a claimed single exact instant."
+      },
+      "source_seconds": null,
+      "evidence_frame_seconds_range": [
+        148.502,
+        148.502
+      ],
+      "limit": "Ending composite provenance range is not an exact instant; earliest native can precede final-state attribute"
+    },
+    {
+      "turn_number": 8,
+      "starting_board": {
+        "active": {
+          "instance_id": "O2",
+          "name": "Mega Sharpedo ex",
+          "variant": null,
+          "visible_art_description": "fiery illustrated",
+          "bench_position": "active",
+          "hp_now": 220,
+          "hp_max": 220,
+          "hp_max_basis": "Printed top-card maximum and fresh displayed HP; witnessed Elegant Cape +30 on Stage 1",
+          "damage": 0,
+          "attached_energy": {
+            "total": 1,
+            "by_type": {
+              "Water": 1
+            },
+            "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+          },
+          "tool": "Elegant Cape",
+          "special_conditions": [],
+          "active_effects": [],
+          "evolution_stack_under_top": [
+            "Carvanha"
+          ],
+          "evolution_stack_order": "bottom to top excluding current top",
+          "evolution_stack_directly_readable": null,
+          "evolution_stack_basis": "Same-source witnessed evolution onto this physical instance; covered lower faces not independently opened/read in current view",
+          "evolution_stack_evidence_ids": [
+            "F0086.00"
+          ],
+          "evidence_ids": [
+            "F0164.80"
+          ],
+          "status": "observed_with_explicit_attribute_provenance",
+          "attribute_provenance": {
+            "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+            "tool": "Native icon and earlier attachment event when present",
+            "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+          },
+          "limit_reason": "Collector number and hidden lower-card art remain unknown."
+        },
+        "bench_in_position_order": [
+          {
+            "instance_id": "O3",
+            "name": "Alolan Ninetales ex",
+            "variant": null,
+            "visible_art_description": "white illustrated",
+            "bench_position": "left",
+            "hp_now": 150,
+            "hp_max": 150,
+            "hp_max_basis": "Printed top-card HP and displayed settled HP",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              },
+              "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_under_top": [
+              "Alolan Vulpix"
+            ],
+            "evolution_stack_order": "bottom to top excluding current top",
+            "evolution_stack_directly_readable": null,
+            "evolution_stack_basis": "Same-source witnessed evolution onto this physical instance; covered lower faces not independently opened/read in current view",
+            "evolution_stack_evidence_ids": [
+              "F0130.50"
+            ],
+            "evidence_ids": [
+              "F0164.80"
+            ],
+            "status": "observed_with_explicit_attribute_provenance",
+            "attribute_provenance": {
+              "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+              "tool": "Native icon and earlier attachment event when present",
+              "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+            },
+            "limit_reason": "Collector number and hidden lower-card art remain unknown."
+          },
+          {
+            "instance_id": "O1",
+            "name": "Lapras",
+            "variant": null,
+            "visible_art_description": null,
+            "bench_position": "right",
+            "hp_now": 110,
+            "hp_max": 110,
+            "hp_max_basis": "Printed top-card HP and displayed settled HP",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              },
+              "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_under_top": [],
+            "evolution_stack_order": "bottom to top excluding current top",
+            "evolution_stack_directly_readable": [],
+            "evolution_stack_basis": "Observed Basic; no prior evolution in this source",
+            "evolution_stack_evidence_ids": [
+              "F0164.80"
+            ],
+            "evidence_ids": [
+              "F0164.80"
+            ],
+            "status": "observed_with_explicit_attribute_provenance",
+            "attribute_provenance": {
+              "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+              "tool": "Native icon and earlier attachment event when present",
+              "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+            },
+            "limit_reason": "Collector number and hidden lower-card art remain unknown."
+          }
+        ],
+        "empty_bench_positions": [
+          "center"
+        ],
+        "energy_zone": {
+          "this_turn": {
+            "type": null,
+            "count": 0,
+            "available": false,
+            "phase": "generation pending at selected preplay view; Water subsequently available",
+            "subsequent_generated_evidence_ids": [
+              "F0165.50"
+            ]
+          },
+          "next": {
+            "type": "Water",
+            "count": 1,
+            "available": null,
+            "phase": "Water preview; not available this turn"
+          },
+          "basis": "Fresh visible current slot and upcoming small Water preview; settled usage separately traced",
+          "evidence_ids": [
+            "F0164.80"
+          ],
+          "limit_reason": "Inactive upcoming icon does not establish a usable current Energy. Handoff snapshots may already belong to next turn."
+        },
+        "points": 1,
+        "board_effects": [],
+        "evidence_ids": [
+          "F0164.80"
+        ],
+        "status": "source_observed_boundary",
+        "limit_reason": "Evolution genealogy is history-derived. Any composite combines cited measured anchors; not a claimed single exact instant."
+      },
+      "ending_board": {
+        "active": {
+          "instance_id": "O3",
+          "name": "Alolan Ninetales ex",
+          "variant": null,
+          "visible_art_description": "white illustrated",
+          "bench_position": "active",
+          "hp_now": 150,
+          "hp_max": 150,
+          "hp_max_basis": "Printed top-card HP and displayed settled HP",
+          "damage": 0,
+          "attached_energy": {
+            "total": 2,
+            "by_type": {
+              "Water": 2
+            },
+            "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+          },
+          "tool": "none",
+          "special_conditions": [],
+          "active_effects": [],
+          "evolution_stack_under_top": [
+            "Alolan Vulpix"
+          ],
+          "evolution_stack_order": "bottom to top excluding current top",
+          "evolution_stack_directly_readable": null,
+          "evolution_stack_basis": "Same-source witnessed evolution onto this physical instance; covered lower faces not independently opened/read in current view",
+          "evolution_stack_evidence_ids": [
+            "F0130.50"
+          ],
+          "evidence_ids": [
+            "F0176.50"
+          ],
+          "status": "observed_with_explicit_attribute_provenance",
+          "attribute_provenance": {
+            "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+            "tool": "Native icon and earlier attachment event when present",
+            "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+          },
+          "limit_reason": "Collector number and hidden lower-card art remain unknown."
+        },
+        "bench_in_position_order": [
+          {
+            "instance_id": "O2",
+            "name": "Mega Sharpedo ex",
+            "variant": null,
+            "visible_art_description": "fiery illustrated",
+            "bench_position": "left",
+            "hp_now": 220,
+            "hp_max": 220,
+            "hp_max_basis": "Printed top-card maximum and fresh displayed HP; witnessed Elegant Cape +30 on Stage 1",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              },
+              "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+            },
+            "tool": "Elegant Cape",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_under_top": [
+              "Carvanha"
+            ],
+            "evolution_stack_order": "bottom to top excluding current top",
+            "evolution_stack_directly_readable": null,
+            "evolution_stack_basis": "Same-source witnessed evolution onto this physical instance; covered lower faces not independently opened/read in current view",
+            "evolution_stack_evidence_ids": [
+              "F0086.00"
+            ],
+            "evidence_ids": [
+              "F0176.50"
+            ],
+            "status": "observed_with_explicit_attribute_provenance",
+            "attribute_provenance": {
+              "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+              "tool": "Native icon and earlier attachment event when present",
+              "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+            },
+            "limit_reason": "Collector number and hidden lower-card art remain unknown."
+          },
+          {
+            "instance_id": "O1",
+            "name": "Lapras",
+            "variant": null,
+            "visible_art_description": null,
+            "bench_position": "right",
+            "hp_now": 110,
+            "hp_max": 110,
+            "hp_max_basis": "Printed top-card HP and displayed settled HP",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              },
+              "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_under_top": [],
+            "evolution_stack_order": "bottom to top excluding current top",
+            "evolution_stack_directly_readable": [],
+            "evolution_stack_basis": "Observed Basic; no prior evolution in this source",
+            "evolution_stack_evidence_ids": [
+              "F0176.50"
+            ],
+            "evidence_ids": [
+              "F0176.50"
+            ],
+            "status": "observed_with_explicit_attribute_provenance",
+            "attribute_provenance": {
+              "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+              "tool": "Native icon and earlier attachment event when present",
+              "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+            },
+            "limit_reason": "Collector number and hidden lower-card art remain unknown."
+          }
+        ],
+        "empty_bench_positions": [
+          "center"
+        ],
+        "energy_zone": {
+          "this_turn": {
+            "type": null,
+            "count": 0,
+            "available": false,
+            "phase": "inactive/used current slot empty"
+          },
+          "next": {
+            "type": "Water",
+            "count": 1,
+            "available": null,
+            "phase": "Water preview; not available this turn"
+          },
+          "basis": "Fresh visible current slot and upcoming small Water preview; settled usage separately traced",
+          "evidence_ids": [
+            "F0176.50"
+          ],
+          "limit_reason": "Inactive upcoming icon does not establish a usable current Energy. Handoff snapshots may already belong to next turn."
+        },
+        "points": 1,
+        "board_effects": [],
+        "evidence_ids": [
+          "F0176.50"
+        ],
+        "status": "source_observed_boundary",
+        "limit_reason": "Evolution genealogy is history-derived. Any composite combines cited measured anchors; not a claimed single exact instant."
+      },
+      "source_seconds": null,
+      "evidence_frame_seconds_range": [
+        176.507,
+        176.507
+      ],
+      "limit": "Ending composite provenance range is not an exact instant; earliest native can precede final-state attribute"
+    },
+    {
+      "turn_number": 10,
+      "starting_board": {
+        "active": {
+          "instance_id": "O3",
+          "name": "Alolan Ninetales ex",
+          "variant": null,
+          "visible_art_description": "white illustrated",
+          "bench_position": "active",
+          "hp_now": 150,
+          "hp_max": 150,
+          "hp_max_basis": "Printed top-card HP and displayed settled HP",
+          "damage": 0,
+          "attached_energy": {
+            "total": 2,
+            "by_type": {
+              "Water": 2
+            },
+            "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+          },
+          "tool": "none",
+          "special_conditions": [],
+          "active_effects": [],
+          "evolution_stack_under_top": [
+            "Alolan Vulpix"
+          ],
+          "evolution_stack_order": "bottom to top excluding current top",
+          "evolution_stack_directly_readable": null,
+          "evolution_stack_basis": "Same-source witnessed evolution onto this physical instance; covered lower faces not independently opened/read in current view",
+          "evolution_stack_evidence_ids": [
+            "F0130.50"
+          ],
+          "evidence_ids": [
+            "F0193.80"
+          ],
+          "status": "observed_with_explicit_attribute_provenance",
+          "attribute_provenance": {
+            "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+            "tool": "Native icon and earlier attachment event when present",
+            "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+          },
+          "limit_reason": "Collector number and hidden lower-card art remain unknown."
+        },
+        "bench_in_position_order": [
+          {
+            "instance_id": "O2",
+            "name": "Mega Sharpedo ex",
+            "variant": null,
+            "visible_art_description": "fiery illustrated",
+            "bench_position": "left",
+            "hp_now": 220,
+            "hp_max": 220,
+            "hp_max_basis": "Printed top-card maximum and fresh displayed HP; witnessed Elegant Cape +30 on Stage 1",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              },
+              "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+            },
+            "tool": "Elegant Cape",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_under_top": [
+              "Carvanha"
+            ],
+            "evolution_stack_order": "bottom to top excluding current top",
+            "evolution_stack_directly_readable": null,
+            "evolution_stack_basis": "Same-source witnessed evolution onto this physical instance; covered lower faces not independently opened/read in current view",
+            "evolution_stack_evidence_ids": [
+              "F0086.00"
+            ],
+            "evidence_ids": [
+              "F0193.80"
+            ],
+            "status": "observed_with_explicit_attribute_provenance",
+            "attribute_provenance": {
+              "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+              "tool": "Native icon and earlier attachment event when present",
+              "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+            },
+            "limit_reason": "Collector number and hidden lower-card art remain unknown."
+          },
+          {
+            "instance_id": "O1",
+            "name": "Lapras",
+            "variant": null,
+            "visible_art_description": null,
+            "bench_position": "right",
+            "hp_now": 110,
+            "hp_max": 110,
+            "hp_max_basis": "Printed top-card HP and displayed settled HP",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              },
+              "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_under_top": [],
+            "evolution_stack_order": "bottom to top excluding current top",
+            "evolution_stack_directly_readable": [],
+            "evolution_stack_basis": "Observed Basic; no prior evolution in this source",
+            "evolution_stack_evidence_ids": [
+              "F0193.80"
+            ],
+            "evidence_ids": [
+              "F0193.80"
+            ],
+            "status": "observed_with_explicit_attribute_provenance",
+            "attribute_provenance": {
+              "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+              "tool": "Native icon and earlier attachment event when present",
+              "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+            },
+            "limit_reason": "Collector number and hidden lower-card art remain unknown."
+          }
+        ],
+        "empty_bench_positions": [
+          "center"
+        ],
+        "energy_zone": {
+          "this_turn": {
+            "type": null,
+            "count": 0,
+            "available": false,
+            "phase": "generation pending at selected preplay view; Water subsequently available",
+            "subsequent_generated_evidence_ids": [
+              "F0195.50"
+            ]
+          },
+          "next": {
+            "type": "Water",
+            "count": 1,
+            "available": null,
+            "phase": "Water preview; not available this turn"
+          },
+          "basis": "Fresh visible current slot and upcoming small Water preview; settled usage separately traced",
+          "evidence_ids": [
+            "F0193.80"
+          ],
+          "limit_reason": "Inactive upcoming icon does not establish a usable current Energy. Handoff snapshots may already belong to next turn."
+        },
+        "points": 1,
+        "board_effects": [],
+        "evidence_ids": [
+          "F0193.80"
+        ],
+        "status": "source_observed_boundary",
+        "limit_reason": "Evolution genealogy is history-derived. Any composite combines cited measured anchors; not a claimed single exact instant."
+      },
+      "ending_board": {
+        "active": {
+          "instance_id": "O3",
+          "name": "Alolan Ninetales ex",
+          "variant": null,
+          "visible_art_description": "white illustrated",
+          "bench_position": "active",
+          "hp_now": 150,
+          "hp_max": 150,
+          "hp_max_basis": "Printed top-card HP and displayed settled HP",
+          "damage": 0,
+          "attached_energy": {
+            "total": 2,
+            "by_type": {
+              "Water": 2
+            },
+            "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+          },
+          "tool": "none",
+          "special_conditions": [],
+          "active_effects": [],
+          "evolution_stack_under_top": [
+            "Alolan Vulpix"
+          ],
+          "evolution_stack_order": "bottom to top excluding current top",
+          "evolution_stack_directly_readable": null,
+          "evolution_stack_basis": "Same-source witnessed evolution onto this physical instance; covered lower faces not independently opened/read in current view",
+          "evolution_stack_evidence_ids": [
+            "F0130.50"
+          ],
+          "evidence_ids": [
+            "F0211.50"
+          ],
+          "status": "observed_with_explicit_attribute_provenance",
+          "attribute_provenance": {
+            "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+            "tool": "Native icon and earlier attachment event when present",
+            "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+          },
+          "limit_reason": "Collector number and hidden lower-card art remain unknown."
+        },
+        "bench_in_position_order": [
+          {
+            "instance_id": "O2",
+            "name": "Mega Sharpedo ex",
+            "variant": null,
+            "visible_art_description": "fiery illustrated",
+            "bench_position": "left",
+            "hp_now": 220,
+            "hp_max": 220,
+            "hp_max_basis": "Printed top-card maximum and fresh displayed HP; witnessed Elegant Cape +30 on Stage 1",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              },
+              "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+            },
+            "tool": "Elegant Cape",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_under_top": [
+              "Carvanha"
+            ],
+            "evolution_stack_order": "bottom to top excluding current top",
+            "evolution_stack_directly_readable": null,
+            "evolution_stack_basis": "Same-source witnessed evolution onto this physical instance; covered lower faces not independently opened/read in current view",
+            "evolution_stack_evidence_ids": [
+              "F0086.00"
+            ],
+            "evidence_ids": [
+              "F0211.50"
+            ],
+            "status": "observed_with_explicit_attribute_provenance",
+            "attribute_provenance": {
+              "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+              "tool": "Native icon and earlier attachment event when present",
+              "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+            },
+            "limit_reason": "Collector number and hidden lower-card art remain unknown."
+          },
+          {
+            "instance_id": "O4",
+            "name": "Alolan Vulpix",
+            "variant": null,
+            "visible_art_description": "stamped",
+            "bench_position": "center",
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "Printed top-card HP and displayed settled HP",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {
+                "Water": 0
+              },
+              "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_under_top": [],
+            "evolution_stack_order": "bottom to top excluding current top",
+            "evolution_stack_directly_readable": [],
+            "evolution_stack_basis": "Observed Basic; no prior evolution in this source",
+            "evolution_stack_evidence_ids": [
+              "F0211.50"
+            ],
+            "evidence_ids": [
+              "F0211.50"
+            ],
+            "status": "observed_with_explicit_attribute_provenance",
+            "attribute_provenance": {
+              "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+              "tool": "Native icon and earlier attachment event when present",
+              "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+            },
+            "limit_reason": "Collector number and hidden lower-card art remain unknown."
+          },
+          {
+            "instance_id": "O1",
+            "name": "Lapras",
+            "variant": null,
+            "visible_art_description": null,
+            "bench_position": "right",
+            "hp_now": 110,
+            "hp_max": 110,
+            "hp_max_basis": "Printed top-card HP and displayed settled HP",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              },
+              "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_under_top": [],
+            "evolution_stack_order": "bottom to top excluding current top",
+            "evolution_stack_directly_readable": [],
+            "evolution_stack_basis": "Observed Basic; no prior evolution in this source",
+            "evolution_stack_evidence_ids": [
+              "F0211.50"
+            ],
+            "evidence_ids": [
+              "F0211.50"
+            ],
+            "status": "observed_with_explicit_attribute_provenance",
+            "attribute_provenance": {
+              "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+              "tool": "Native icon and earlier attachment event when present",
+              "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+            },
+            "limit_reason": "Collector number and hidden lower-card art remain unknown."
+          }
+        ],
+        "empty_bench_positions": [],
+        "energy_zone": {
+          "this_turn": {
+            "type": null,
+            "count": 0,
+            "available": false,
+            "phase": "inactive/used current slot empty"
+          },
+          "next": {
+            "type": "Water",
+            "count": 1,
+            "available": null,
+            "phase": "Water preview; not available this turn"
+          },
+          "basis": "Fresh visible current slot and upcoming small Water preview; settled usage separately traced",
+          "evidence_ids": [
+            "F0211.50"
+          ],
+          "limit_reason": "Inactive upcoming icon does not establish a usable current Energy. Handoff snapshots may already belong to next turn."
+        },
+        "points": 1,
+        "board_effects": [],
+        "evidence_ids": [
+          "F0211.50"
+        ],
+        "status": "source_observed_boundary",
+        "limit_reason": "Evolution genealogy is history-derived. Any composite combines cited measured anchors; not a claimed single exact instant."
+      },
+      "source_seconds": null,
+      "evidence_frame_seconds_range": [
+        211.51,
+        211.51
+      ],
+      "limit": "Ending composite provenance range is not an exact instant; earliest native can precede final-state attribute"
+    },
+    {
+      "turn_number": 12,
+      "starting_board": {
+        "active": {
+          "instance_id": "O3",
+          "name": "Alolan Ninetales ex",
+          "variant": null,
+          "visible_art_description": "white illustrated",
+          "bench_position": "active",
+          "hp_now": 150,
+          "hp_max": 150,
+          "hp_max_basis": "Printed top-card HP and displayed settled HP",
+          "damage": 0,
+          "attached_energy": {
+            "total": 2,
+            "by_type": {
+              "Water": 2
+            },
+            "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+          },
+          "tool": "none",
+          "special_conditions": [],
+          "active_effects": [],
+          "evolution_stack_under_top": [
+            "Alolan Vulpix"
+          ],
+          "evolution_stack_order": "bottom to top excluding current top",
+          "evolution_stack_directly_readable": null,
+          "evolution_stack_basis": "Same-source witnessed evolution onto this physical instance; covered lower faces not independently opened/read in current view",
+          "evolution_stack_evidence_ids": [
+            "F0130.50"
+          ],
+          "evidence_ids": [
+            "F0226.20"
+          ],
+          "status": "observed_with_explicit_attribute_provenance",
+          "attribute_provenance": {
+            "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+            "tool": "Native icon and earlier attachment event when present",
+            "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+          },
+          "limit_reason": "Collector number and hidden lower-card art remain unknown."
+        },
+        "bench_in_position_order": [
+          {
+            "instance_id": "O2",
+            "name": "Mega Sharpedo ex",
+            "variant": null,
+            "visible_art_description": "fiery illustrated",
+            "bench_position": "left",
+            "hp_now": 220,
+            "hp_max": 220,
+            "hp_max_basis": "Printed top-card maximum and fresh displayed HP; witnessed Elegant Cape +30 on Stage 1",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              },
+              "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+            },
+            "tool": "Elegant Cape",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_under_top": [
+              "Carvanha"
+            ],
+            "evolution_stack_order": "bottom to top excluding current top",
+            "evolution_stack_directly_readable": null,
+            "evolution_stack_basis": "Same-source witnessed evolution onto this physical instance; covered lower faces not independently opened/read in current view",
+            "evolution_stack_evidence_ids": [
+              "F0086.00"
+            ],
+            "evidence_ids": [
+              "F0226.20"
+            ],
+            "status": "observed_with_explicit_attribute_provenance",
+            "attribute_provenance": {
+              "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+              "tool": "Native icon and earlier attachment event when present",
+              "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+            },
+            "limit_reason": "Collector number and hidden lower-card art remain unknown."
+          },
+          {
+            "instance_id": "O4",
+            "name": "Alolan Vulpix",
+            "variant": null,
+            "visible_art_description": "stamped",
+            "bench_position": "center",
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "Printed top-card HP and displayed settled HP",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {
+                "Water": 0
+              },
+              "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_under_top": [],
+            "evolution_stack_order": "bottom to top excluding current top",
+            "evolution_stack_directly_readable": [],
+            "evolution_stack_basis": "Observed Basic; no prior evolution in this source",
+            "evolution_stack_evidence_ids": [
+              "F0226.20"
+            ],
+            "evidence_ids": [
+              "F0226.20"
+            ],
+            "status": "observed_with_explicit_attribute_provenance",
+            "attribute_provenance": {
+              "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+              "tool": "Native icon and earlier attachment event when present",
+              "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+            },
+            "limit_reason": "Collector number and hidden lower-card art remain unknown."
+          },
+          {
+            "instance_id": "O1",
+            "name": "Lapras",
+            "variant": null,
+            "visible_art_description": null,
+            "bench_position": "right",
+            "hp_now": 110,
+            "hp_max": 110,
+            "hp_max_basis": "Printed top-card HP and displayed settled HP",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              },
+              "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_under_top": [],
+            "evolution_stack_order": "bottom to top excluding current top",
+            "evolution_stack_directly_readable": [],
+            "evolution_stack_basis": "Observed Basic; no prior evolution in this source",
+            "evolution_stack_evidence_ids": [
+              "F0226.20"
+            ],
+            "evidence_ids": [
+              "F0226.20"
+            ],
+            "status": "observed_with_explicit_attribute_provenance",
+            "attribute_provenance": {
+              "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+              "tool": "Native icon and earlier attachment event when present",
+              "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+            },
+            "limit_reason": "Collector number and hidden lower-card art remain unknown."
+          }
+        ],
+        "empty_bench_positions": [],
+        "energy_zone": {
+          "this_turn": {
+            "type": null,
+            "count": 0,
+            "available": false,
+            "phase": "generation pending at selected preplay view; Water subsequently available",
+            "subsequent_generated_evidence_ids": [
+              "F0232.50"
+            ]
+          },
+          "next": {
+            "type": "Water",
+            "count": 1,
+            "available": null,
+            "phase": "Water preview; not available this turn"
+          },
+          "basis": "Fresh visible current slot and upcoming small Water preview; settled usage separately traced",
+          "evidence_ids": [
+            "F0226.20"
+          ],
+          "limit_reason": "Inactive upcoming icon does not establish a usable current Energy. Handoff snapshots may already belong to next turn."
+        },
+        "points": 1,
+        "board_effects": [],
+        "evidence_ids": [
+          "F0226.20"
+        ],
+        "status": "source_observed_boundary",
+        "limit_reason": "Evolution genealogy is history-derived. Any composite combines cited measured anchors; not a claimed single exact instant."
+      },
+      "ending_board": {
+        "active": {
+          "instance_id": "O3",
+          "name": "Alolan Ninetales ex",
+          "variant": null,
+          "visible_art_description": "white illustrated",
+          "bench_position": "active",
+          "hp_now": 150,
+          "hp_max": 150,
+          "hp_max_basis": "Printed top-card HP and displayed settled HP",
+          "damage": 0,
+          "attached_energy": {
+            "total": 2,
+            "by_type": {
+              "Water": 2
+            },
+            "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+          },
+          "tool": "none",
+          "special_conditions": [],
+          "active_effects": [],
+          "evolution_stack_under_top": [
+            "Alolan Vulpix"
+          ],
+          "evolution_stack_order": "bottom to top excluding current top",
+          "evolution_stack_directly_readable": null,
+          "evolution_stack_basis": "Same-source witnessed evolution onto this physical instance; covered lower faces not independently opened/read in current view",
+          "evolution_stack_evidence_ids": [
+            "F0130.50"
+          ],
+          "evidence_ids": [
+            "F0232.50",
+            "F0239.00",
+            "F0247.00"
+          ],
+          "status": "observed_with_explicit_attribute_provenance",
+          "attribute_provenance": {
+            "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+            "tool": "Native icon and earlier attachment event when present",
+            "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+          },
+          "limit_reason": "Collector number and hidden lower-card art remain unknown."
+        },
+        "bench_in_position_order": [
+          {
+            "instance_id": "O2",
+            "name": "Mega Sharpedo ex",
+            "variant": null,
+            "visible_art_description": "fiery illustrated",
+            "bench_position": "left",
+            "hp_now": 220,
+            "hp_max": 220,
+            "hp_max_basis": "Printed top-card maximum and fresh displayed HP; witnessed Elegant Cape +30 on Stage 1",
+            "damage": 0,
+            "attached_energy": {
+              "total": 1,
+              "by_type": {
+                "Water": 1
+              },
+              "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+            },
+            "tool": "Elegant Cape",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_under_top": [
+              "Carvanha"
+            ],
+            "evolution_stack_order": "bottom to top excluding current top",
+            "evolution_stack_directly_readable": null,
+            "evolution_stack_basis": "Same-source witnessed evolution onto this physical instance; covered lower faces not independently opened/read in current view",
+            "evolution_stack_evidence_ids": [
+              "F0086.00"
+            ],
+            "evidence_ids": [
+              "F0232.50",
+              "F0239.00",
+              "F0247.00"
+            ],
+            "status": "observed_with_explicit_attribute_provenance",
+            "attribute_provenance": {
+              "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+              "tool": "Native icon and earlier attachment event when present",
+              "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+            },
+            "limit_reason": "Collector number and hidden lower-card art remain unknown."
+          },
+          {
+            "instance_id": "O4",
+            "name": "Alolan Vulpix",
+            "variant": null,
+            "visible_art_description": "stamped",
+            "bench_position": "center",
+            "hp_now": 60,
+            "hp_max": 60,
+            "hp_max_basis": "Printed top-card HP and displayed settled HP",
+            "damage": 0,
+            "attached_energy": {
+              "total": 0,
+              "by_type": {
+                "Water": 0
+              },
+              "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_under_top": [],
+            "evolution_stack_order": "bottom to top excluding current top",
+            "evolution_stack_directly_readable": [],
+            "evolution_stack_basis": "Observed Basic; no prior evolution in this source",
+            "evolution_stack_evidence_ids": [
+              "F0232.50"
+            ],
+            "evidence_ids": [
+              "F0232.50",
+              "F0239.00",
+              "F0247.00"
+            ],
+            "status": "observed_with_explicit_attribute_provenance",
+            "attribute_provenance": {
+              "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+              "tool": "Native icon and earlier attachment event when present",
+              "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+            },
+            "limit_reason": "Collector number and hidden lower-card art remain unknown."
+          },
+          {
+            "instance_id": "O1",
+            "name": "Lapras",
+            "variant": null,
+            "visible_art_description": null,
+            "bench_position": "right",
+            "hp_now": 110,
+            "hp_max": 110,
+            "hp_max_basis": "Printed top-card HP and displayed settled HP",
+            "damage": 0,
+            "attached_energy": {
+              "total": 2,
+              "by_type": {
+                "Water": 2
+              },
+              "basis": "Individual Water icons counted on this Pokemon; collapsed Mega Blastoise 5 icon read separately"
+            },
+            "tool": "none",
+            "special_conditions": [],
+            "active_effects": [],
+            "evolution_stack_under_top": [],
+            "evolution_stack_order": "bottom to top excluding current top",
+            "evolution_stack_directly_readable": [],
+            "evolution_stack_basis": "Observed Basic; no prior evolution in this source",
+            "evolution_stack_evidence_ids": [
+              "F0232.50"
+            ],
+            "evidence_ids": [
+              "F0232.50",
+              "F0239.00",
+              "F0247.00"
+            ],
+            "status": "observed_with_explicit_attribute_provenance",
+            "attribute_provenance": {
+              "HP_energy_position": "Fresh individual visible board attributes in cited native boundary frames; boundary composites are explicitly labelled",
+              "tool": "Native icon and earlier attachment event when present",
+              "under_cards": "Witnessed same-source evolution history; hidden present lower faces unknown"
+            },
+            "limit_reason": "Collector number and hidden lower-card art remain unknown."
+          }
+        ],
+        "empty_bench_positions": [],
+        "energy_zone": {
+          "this_turn": {
+            "type": "Water",
+            "count": 1,
+            "available": true,
+            "phase": "unused at terminal attack",
+            "evidence_ids": [
+              "F0232.50"
+            ]
+          },
+          "next": {
+            "type": "Water",
+            "count": 1,
+            "available": null,
+            "phase": "Water preview; not available this turn"
+          },
+          "basis": "Fresh visible current slot and upcoming small Water preview; settled usage separately traced",
+          "evidence_ids": [
+            "F0232.50",
+            "F0239.00",
+            "F0247.00"
+          ],
+          "limit_reason": "Inactive upcoming icon does not establish a usable current Energy. Handoff snapshots may already belong to next turn."
+        },
+        "points": 3,
+        "board_effects": [],
+        "evidence_ids": [
+          "F0232.50",
+          "F0239.00",
+          "F0247.00"
+        ],
+        "status": "source_observed_boundary",
+        "limit_reason": "Evolution genealogy is history-derived. Any composite combines cited measured anchors; not a claimed single exact instant."
+      },
+      "source_seconds": null,
+      "evidence_frame_seconds_range": [
+        232.512,
+        247.015
+      ],
+      "limit": "Ending composite provenance range is not an exact instant; earliest native can precede final-state attribute"
+    }
+  ],
+  "owner_public_discards": [
+    {
+      "card": "Misty",
+      "turn": 2,
+      "evidence_ids": [
+        "F0054.50",
+        "F0056.90"
+      ]
+    },
+    {
+      "card": "Copycat",
+      "turn": 4,
+      "evidence_ids": [
+        "F0076.00",
+        "F0096.50"
+      ]
+    },
+    {
+      "card": "Professor's Research",
+      "art": "illustrated",
+      "turn": 10,
+      "evidence_ids": [
+        "F0194.60"
+      ]
+    },
+    {
+      "card": "Poké Ball",
+      "turn": 10,
+      "evidence_ids": [
+        "F0200.50",
+        "F0211.50"
+      ]
+    }
+  ],
+  "limits": [
+    "Hidden opponent draws/search faces remain null; supplied deck is not evidence of held card names.",
+    "Both discard piles stay unopened/unscrolled; only visible top faces and separately public played/KO events, not a complete pile census.",
+    "Covered lower evolution faces are unknown directly; same source witnessed genealogy is identified explicitly.",
+    "All one-fps source locator cells inspected plus 137 native views; no claim of every unrecorded subsecond input.",
+    "Exact collector numbers not transcribed; visible art differences do not change separate supplied 20-card log snapshot.",
+    "Auto OFF plus visible manual choice screens supports owner manual decisions; touch/input telemetry is not recorded.",
+    "Composite boundary states have source_seconds null and separate measured anchor ranges; earliest anchor may precede some final attributes and does not establish an exact state instant."
+  ]
+}

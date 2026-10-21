@@ -1,0 +1,19 @@
+{
+  "schema": "bounded-lead-provenance-repair-v1",
+  "utc": "2026-10-02T21:38:59.963925+00:00",
+  "source": "20260908_012720000_iOS.MP4",
+  "changed_files": [
+    "TURN_LEDGER.json",
+    "HAND_SUPPLEMENT.json",
+    "OBSERVATIONS.json",
+    "ACTION_QUESTIONS.json",
+    "REVIEW_SUPPLEMENT.md",
+    "UNCERTAINTIES.json"
+  ],
+  "prior_versions": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_012720000\\before_independent_provenance_repair",
+  "new_original_video_reads": 0,
+  "new_frames": 0,
+  "scope": "Independent three required provenance corrections plus explicit retained-locator ordering basis.",
+  "old_packet_unchanged": true,
+  "independent_recheck_pending": true
+}

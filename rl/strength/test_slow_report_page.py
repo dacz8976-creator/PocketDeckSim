@@ -52,7 +52,7 @@ import test_slow_report_existing as TE  # noqa: E402  (synthetic development and
 
 PANEL, SC, BLOCK, STEP = T.PANEL, T.SC, T.BLOCK, T.STEP
 read, write, jsonl, wilson95, pc = T.read, T.write, T.jsonl, T.wilson95, T.pc
-TAG = '[kx3 (d513e37b) on my-list v km3 on the public panel] '
+TAG = f'[{T.PILOT_LABEL} on my-list v km3 on the public panel] '
 PASS_OR_FAIL = 'no pass or fail line'  # the one way the word pass may appear: saying there is none
 PAGE_QUESTION = 'Question: how does my-list do when kx3 plays it against the 8 public lists, and is that better than when km3 plays the same deck on the same deals?'
 PAGE_QUESTION_ALONE = 'Question: how does my-list do when kx3 plays it against the 8 public lists?'
@@ -302,7 +302,7 @@ BASELINE_ON = 'and how much better {pilot} plays this deck than {ref} on the sam
 BASELINE_OFF = 'without the comparison with {ref} on the same deals (--no-paired: the {ref} games are still played, about a second each, and left out of the page)'
 
 
-def question(paired=True, headline='kx3 (d513e37b) on my-list v km3 on the public panel', deck='my-list', pilot='kx3', ref='km3', deals=5):
+def question(paired=True, headline=f'{T.PILOT_LABEL} on my-list v km3 on the public panel', deck='my-list', pilot='kx3', ref='km3', deals=5):
     """The registered question, word for word, as the registration must carry it (the number of deals pluralised: 1 deal, 5 deals)."""
     baseline = (BASELINE_ON if paired else BASELINE_OFF).format(pilot=pilot, ref=ref)
     return QUESTION.format(headline=headline, deck=deck, pilot=pilot, ref=ref, deals=f'{deals} deal' + ('' if deals == 1 else 's'), baseline=baseline)
@@ -357,7 +357,7 @@ class RegisteredQuestion(T.World):
             self.assertEqual(man['question'], want)
             self.assertEqual(man['slow_report']['paired'], paired)
             self.assertIn('\n' + want + '\n', read(os.path.join(self.rundir(), 'PREREGISTRATION.md')))
-            self.assertIn(f"**kx3 (d513e37b) on my-list v km3 on the public panel**. Stage use. {deals} deal" + ('' if deals == 1 else 's')
+            self.assertIn(f"**{T.PILOT_LABEL} on my-list v km3 on the public panel**. Stage use. {deals} deal" + ('' if deals == 1 else 's')
                           + ' x 2 seats against each of the eight public lists. No pass or fail line; not development evidence.\n', read(os.path.join(self.rundir(), 'PREREGISTRATION.md')))
 
     def test_each_pilots_provenance_text_stays_with_that_pilot(self):
@@ -1573,7 +1573,7 @@ class WhatWasRunEndToEnd(T.World):
         self.assertEqual(sum(1 for l in lines if l.startswith('- Self-check of') and f'({HOW_GIVEN})' in l), 2, lines)
         self.assertIn(f'- Harness source sha256 `{here[:12]}` (what rl/strength/build.sh prints); the checkout this run was registered from has the same.', lines)
         self.assertIn('- School-morning rule: off (chosen at registration, for a machine that is not the laptop).', lines)
-        self.assertIn(f"- Pilots: kx3 (d513e37b) on the deck, km3 on the public panel. Program `{self.program}` sha256 `{self.pin['program_sha256'][:12]}`.", lines)
+        self.assertIn(f"- Pilots: {T.PILOT_LABEL} on the deck, km3 on the public panel. Program `{self.program}` sha256 `{self.pin['program_sha256'][:12]}`.", lines)
         self.assertEqual([l for l in lines if l.startswith('- Pin ')],
                          [f"- Pin `{self.pin_path}` sha256 `{T.sha(self.pin_path)[:12]}`: **NOT the committed pin** (HEAD has no rl/strength/slow_report_pin.json in {self.repo} (not a git repository, "
                           f'no commit, or the file is not committed){T.git_said(self.repo)}; allowed by SLOW_REPORT_ALLOW_UNCOMMITTED_PIN (test use)): what this page says about the program rests on '
@@ -1627,7 +1627,7 @@ class WhatWasRunEndToEnd(T.World):
         self.assertEqual(code, 0, out + err)
         lines = self.page().splitlines()
         host = socket.gethostname()
-        self.assertIn(f"- Pilots: kx3 (d513e37b) on the deck, km3 on the public panel. Program `{self.program}` sha256 `{T.sha(self.program)[:12]}`.", lines)
+        self.assertIn(f"- Pilots: {T.PILOT_LABEL} on the deck, km3 on the public panel. Program `{self.program}` sha256 `{T.sha(self.program)[:12]}`.", lines)
         self.assertIn(rebuild_paragraph(host=f' ({host})', digests=FILE_DIGESTS, pinned='/cloud/pinned/strength', sha12='555555555555'), lines)
         self.assertIn(f"- Build record `fake_kx3_strength.build.json` sha256 `{T.sha(self.program + '.build.json')[:12]}`: engine {rec['engine_arg']} -> tree as archived "
                       f"`{pin['engine_tree'][:12]}` (the pin's is `{pin['engine_tree'][:12]}`), harness source `{here[:12]}`, rustc 1.90.0 (fake), cargo 1.90.0 (fake), built 2026-10-09T22:00:00Z "
@@ -2292,7 +2292,7 @@ def gate_3_changes(rows):
 
 class ExistingRuns(TE.Sources):
     """The two source runs of slow_report_existing, rebuilt with whatever data a test asks for (Sources.go and Sources.page then work as they do in test_slow_report_existing)."""
-    TAG = '[kx3 (d513e37b) on 03-wailord-indeedee-wall v km3 on the public panel; existing development evidence, not a fresh test] '
+    TAG = f'[{T.PILOT_LABEL} on 03-wailord-indeedee-wall v km3 on the public panel; existing development evidence, not a fresh test] '
 
     def setUp(self):
         self.tmp = tempfile.mkdtemp()

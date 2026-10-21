@@ -1,0 +1,26 @@
+{
+  "accepted": true,
+  "source_filename": "20261015_201850000_iOS.MP4",
+  "source_sha256": "877668e7f12e0619f4cd1a372cba29d9c1e45af52f98ca4a0274d1f026c215cb",
+  "full_timeline_and_coverage_read": true,
+  "auto_option_seen": false,
+  "section": "d01",
+  "opponent": "Dresseur Zuin",
+  "opponent_deck": "Mega Garchomp ex / Garchomp / Gabite / Gible / Dragonair / Dratini; full list unknown",
+  "result": "win",
+  "note_prefix": "2nd | Glimmora T3; Kingambit T11 | opp 0; 2 pts respectively",
+  "note": "2nd | Glimmora T3; Kingambit T11 | opp 0; 2 pts respectively | vs Dresseur Zuin | 2026-10-15 15:18:50 CDT | 20261015_201850000_iOS.MP4 | Muk/Glimmora/Kingambit/Regigigas visible core; full list unknown. Victory3-2 at801s, second,22turns,270damage. First Venomous Hit ownT3/global6 at262s with opponent0. Regigigas Giga Turbo ownT9/opp1 is blocked for0damage but gives Muk Colorless Energy. Second Glimmora knockout triggers Shattering Crystal heads at755s, leaving opponent2 despite three owner KOs. Rare Candy into Kingambit; first Overlord's Blade180 on ownT11/global22 at780s KOs Mega Garchomp ex170HP for all3points. Memory Light enables Garchomp bench attacks and Take Down; Ilima inspected but never played. Ranked Master Ball; no Auto seen; hidden cards unknown.",
+  "scope": "Whole single-game ladder source: setup, all22global turns, all11owner turns and terminal3-2victory; separate independent source checks and lead acceptance.",
+  "registration_notes": "Win3-2 versus Dresseur Zuin; second; Glimmora ownT3/opp0 and Kingambit ownT11/opp2. Regigigas blocked attack and Energy gain retained. Three owner KOs give only two points due successful Shattering Crystal. Full review independently and lead accepted; external save/readback separate.",
+  "clarifications": [
+    "Existing Deck 01 matches the four observed core lines. This groups the visible core without asserting an exact20-card variant.",
+    "Glimmora early pressure and Kingambit finisher first attacks are recorded separately. Regigigas's zero-damage attack is retained as an actual attack with an observed Energy effect.",
+    "Small Muk/Regigigas ability text and exact causal chain remain uncertain; observed board changes are preserved without inventing a rules explanation."
+  ],
+  "direct_source_observations": [
+    {"path": "native/t0262.00.jpg", "directly_viewed_by_root": true, "finding": "Glimmora Active with Darkness and70HP opposite Dragonair80; both players zero points before the first recorded Venomous Hit."},
+    {"path": "native/t0758.00.jpg", "directly_viewed_by_root": true, "finding": "After Glimmora knockout, owner Active empty, opponent still two points; Mega Garchomp ex180HP before next poison tick."},
+    {"path": "native/t0780.00.jpg", "directly_viewed_by_root": true, "finding": "Kingambit Overlord's Blade animation into Active Mega Garchomp ex; opponent has two points and owner zero."},
+    {"path": "native/t0801.00.jpg", "directly_viewed_by_root": true, "finding": "Victory versus Dresseur Zuin; wentsecond,22turns,owner3opponent2,270damage; Kingambit Card of Game."}
+  ]
+}

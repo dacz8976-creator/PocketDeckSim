@@ -1,5 +1,7 @@
 # km's reading (Sept 30): **adopted as the working pilot in the tables, "unconfirmed"**, replacing kta3, through the fallback
 
+**km3's B2e reference since rules switch 2 (a note added at its pin, Oct 12, main-c045ede).** For B2e pairings 32-39 (h-whimsicott) and 80-87 (deck 12), the 16 rows with two Ariados, km3's reference is no longer `1f6319e_b2e_km3.jsonl` here. It is step 9's replay on the new engine, `../engine_switch_rules2_2026-10/08a9b3a_cov_b2e_km3.jsonl` (sha256 84247fb4…, the same 96 pairings and deals). Those rows changed in 1,044 of their 8,000 deals, through each Ariados now adding 1 to the Retreat Cost, and step 8c accounted for every one. The other 80 pairings are equal to this folder's. Dustin accepted the new reference in advance, Oct 9 ("1-3 sure", his answer to the switch's questions 1-3; question 3a in `../engine_switch_rules2_2026-10/PLAN.md` section 9). This reading is unchanged and stays a reading on its own programs (B = 1f6319e). Its mixed B2e table (`1f6319e_mixed_b2e_km3_first`) isn't replayed: a later km reading that uses those 16 rows replays them on the new engine first.
+
 **What was read:** km's registration, `../trainer_pricing_2026-09-28/REGISTRATION_DRAFT.md`, as registered Sept 29 on Dustin's word. It is read with two amendments:
 - **Amendment 1** (3aed736, Dustin's choice B) re-issues km on kta. km3 is kta3 plus N2, the lasting Stadium damage bonus counted in the threat clock, and it is read against kta3 in every test.
 - **Amendment 2** (e308a65) writes in the Stadium thresholds.

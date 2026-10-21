@@ -1,0 +1,34 @@
+#!/bin/bash
+# The whole chain of this folder, from the recordings to the tables (77 seconds; the older-engine build, build_older_engine_cond.sh, is separate). Nothing here runs kx3.
+#   1 convert the 14 games (convert.sh)      2 km3 on pg_pos_F_cond, seeds 1-12 (run_km3.sh)       3 the table of his line v km3 (kw_report.py of the Oct 12 harness)
+#   4 km3 step by step along his line (forced_runs.py)     5 km3 on the older engine for the positions flagged for rules switch 2 (and the comparison)     6 the state check, the deck check, the position cards (position_cards.py) and the table (make_table.py)
+set -euo pipefail
+HERE=$(cd "$(dirname "$0")" && pwd)
+OUT=$(dirname "$HERE")
+H=$OUT/../../pause_games_new_2026-10-12/harness
+QA=${QA:-"/mnt/c/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA"}
+cd "$OUT"
+bash "$HERE/convert.sh"
+python3 -c "import json; print('\n'.join(p['id'] for p in json.load(open('positions_all.json'))))" > run_ids.txt
+rm -rf runs_km3 runs_forced runs_km3_older_engine
+bash "$HERE/run_km3.sh" positions_all.json decks runs_km3 run_ids.txt
+python3 -B "$H/kw_report.py" positions_all.json runs_km3 km3 km3 games_meta.json > report_out.txt
+python3 -B "$HERE/forced_runs.py" positions_all.json decks runs_forced
+python3 - <<'EOF'
+import csv
+rows = list(csv.DictReader(open('position_list.tsv', encoding='utf-8'), delimiter='\t'))
+open('run_ids_switch2.txt', 'w').write('\n'.join(r['position_id'] for r in rows if r['switch2_flag'] != 'no') + '\n')
+EOF
+# the older engine with main's new reader (build_older_engine_cond.sh); the old pg_pos of that engine does not read `knockouts` and would not be like for like
+if [ -x /home/dacz8976/pgx/pg_pos_D_cond ]; then
+  BIN=/home/dacz8976/pgx/pg_pos_D_cond SKIP_SHA=1 bash "$HERE/run_km3.sh" positions_all.json decks runs_km3_older_engine run_ids_switch2.txt
+  python3 -B "$HERE/compare_engines.py" > engine_comparison.txt
+fi
+python3 -B "$HERE/check_state_dump.py" positions_all.json decks > state_dump_check.txt
+python3 -B "$HERE/check_deck_assumption.py" positions_all.json decks "$QA" > deck_assumption_check.txt
+python3 -B "$HERE/position_cards.py" positions_all.json km3_summary.json runs_km3 position_list.json "$QA" > position_cards.txt
+python3 -B "$HERE/make_table.py"
+# v3: the laptop's list (REVIEW_POSITIONS_laptop.md) as a check on the positions just made; exit status 1 if a line fails
+python3 -B "$HERE/check_review_fixes.py" > review_fixes_check.txt || { cat review_fixes_check.txt; exit 1; }
+tail -1 review_fixes_check.txt
+echo done

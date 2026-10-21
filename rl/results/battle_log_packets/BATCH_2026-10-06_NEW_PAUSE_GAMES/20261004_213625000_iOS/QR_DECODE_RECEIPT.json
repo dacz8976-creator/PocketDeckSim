@@ -1,0 +1,267 @@
+{
+  "schema": "pause_batch_retained_qr_v1",
+  "decoded_at_utc": "2026-10-06T17:47:34.425299+00:00",
+  "source_video": "20261004_213625000_iOS.MP4",
+  "source_seconds": 2.0,
+  "source_sha256": "aa7e935b335a2dfe11e43783f260698997845f7c85de8d6b1db976b7bf794225",
+  "retained_image": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261004_213625000_iOS\\turn_evidence\\t0002.00.png",
+  "retained_image_sha256": "5f4d35b7c9b9540399e3559baf7eece189dde89d8c44619653887993ff6301a6",
+  "native_dimensions": [
+    1170,
+    2532
+  ],
+  "scan_crop_xyxy": null,
+  "read_method": "zxingcpp_native_image",
+  "payload": "CpiWnpiWnpiafJiafJiapJiapJiWqJiWqJibdpibvAoASmAASmAASmoASmoASnQASnQATRwATRwATSYATSYBAQ==",
+  "payload_ascii_sha256": "5e446b56ff0c809744f2c0f843be5f3d3d0f5f627e8b5b1874fcc26e80590be0",
+  "decoded": {
+    "trainerIds": [
+      30,
+      30,
+      1020,
+      1020,
+      1060,
+      1060,
+      40,
+      40,
+      1270,
+      1340
+    ],
+    "pokemonIds": [
+      19040,
+      19040,
+      19050,
+      19050,
+      19060,
+      19060,
+      19740,
+      19740,
+      19750,
+      19750
+    ],
+    "energyTypes": [
+      1
+    ],
+    "energy": [
+      {
+        "value": 1,
+        "name": "Grass",
+        "selectable": true
+      }
+    ],
+    "roundtrip": true,
+    "roundtrip_limit": null
+  },
+  "card_slot_count": 20,
+  "cards": [
+    {
+      "entity_kind": "trainer",
+      "entity_id": 30,
+      "count": 2,
+      "name": "Poké Ball",
+      "name_candidates": [
+        "Poké Ball"
+      ],
+      "functional_ids": [
+        "1b20901befde"
+      ],
+      "printing_aliases": [
+        "A2b 111",
+        "P-A 005"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 1020,
+      "count": 2,
+      "name": "Quick-Grow Extract",
+      "name_candidates": [
+        "Quick-Grow Extract"
+      ],
+      "functional_ids": [
+        "de4bec7df49e"
+      ],
+      "printing_aliases": [
+        "B1a 067",
+        "B1a 103"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 1060,
+      "count": 2,
+      "name": "Lucky Ice Pop",
+      "name_candidates": [
+        "Lucky Ice Pop"
+      ],
+      "functional_ids": [
+        "15c19aaaf9a4"
+      ],
+      "printing_aliases": [
+        "B2 145"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 40,
+      "count": 2,
+      "name": "Professor’s Research",
+      "name_candidates": [
+        "Professor’s Research"
+      ],
+      "functional_ids": [
+        "c0015440f616"
+      ],
+      "printing_aliases": [
+        "A4b 373",
+        "P-A 007"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 1270,
+      "count": 1,
+      "name": "Hiking Trail",
+      "name_candidates": [
+        "Hiking Trail"
+      ],
+      "functional_ids": [
+        "a2d79d4fdf89"
+      ],
+      "printing_aliases": [
+        "B2b 069"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "trainer",
+      "entity_id": 1340,
+      "count": 1,
+      "name": "Fragrant Forest",
+      "name_candidates": [
+        "Fragrant Forest"
+      ],
+      "functional_ids": [
+        "32d2313752ce"
+      ],
+      "printing_aliases": [
+        "B3 153"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 19040,
+      "count": 2,
+      "name": "Caterpie",
+      "name_candidates": [
+        "Caterpie"
+      ],
+      "functional_ids": [
+        "d78653281449"
+      ],
+      "printing_aliases": [
+        "B3b 001",
+        "B3b 091"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 19050,
+      "count": 2,
+      "name": "Metapod",
+      "name_candidates": [
+        "Metapod"
+      ],
+      "functional_ids": [
+        "c8ff712128ed"
+      ],
+      "printing_aliases": [
+        "B3b 002",
+        "B3b 092"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 19060,
+      "count": 2,
+      "name": "Butterfree",
+      "name_candidates": [
+        "Butterfree"
+      ],
+      "functional_ids": [
+        "c5ef01a8ac41"
+      ],
+      "printing_aliases": [
+        "B3b 003",
+        "B3b 093"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 19740,
+      "count": 2,
+      "name": "Shelmet",
+      "name_candidates": [
+        "Shelmet"
+      ],
+      "functional_ids": [
+        "6564d5e5b4f3"
+      ],
+      "printing_aliases": [
+        "B4 013"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    },
+    {
+      "entity_kind": "pokemon",
+      "entity_id": 19750,
+      "count": 2,
+      "name": "Accelgor",
+      "name_candidates": [
+        "Accelgor"
+      ],
+      "functional_ids": [
+        "cdbdb9be8a11"
+      ],
+      "printing_aliases": [
+        "B4 014",
+        "B4 159"
+      ],
+      "resolution": "resolved_semantic_entity",
+      "printing_limit": "QR does not specify artwork, rarity or exact printing"
+    }
+  ],
+  "all_entities_resolved": true,
+  "dependencies": {
+    "codec": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\third_party\\s216\\tcgp-deck-qr-102d75e\\src\\payload.js",
+    "codec_sha256": "7a08a1b85ba5b6044d173d7f1de3b7c21bbbdbab7b9f87e56eb109d278e12fb1",
+    "reader": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\lib\\decode_qr.py",
+    "reader_sha256": "f375891a38c3289f3fd994b62cf1a7289eb42398b54d47524619ffcbe824a603",
+    "catalog": "C:\\Users\\dacz8\\Projects\\Pocket Deck Lab\\s216_card_catalog_v1.json",
+    "catalog_sha256": "162dd23a116cabc87bc4404a643d7bad37480d4d44c057c5093aa114b8e45017",
+    "catalog_provenance": "pinned community-derived catalog, not an official complete card export",
+    "opencv": "5.0.0"
+  },
+  "limits": [
+    "QR is a filmed deck source, not a substitute for the required dated Pause Games log snapshot.",
+    "A deck QR does not establish hidden draws, the opening hand, or that this deck was used throughout a battle."
+  ]
+}

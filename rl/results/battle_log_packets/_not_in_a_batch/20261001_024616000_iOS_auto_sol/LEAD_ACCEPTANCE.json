@@ -1,0 +1,42 @@
+{
+  "scope": "Complete ten-turn 192.775-second Auto AI battle, setup through zero-Energy Wynaut knockout and named Defeat",
+  "lead_checks": "Read full narrative, source, all-turn coverage, summary and uncertainties. Independently inspected exact-time retained frames in LEAD_CONTACT.jpg/LEAD_CONTACT_2.jpg:13s opening Victini and Auto checked;87s ordinary Numel bench placement;93s Victini two Fire and Gholdengo90HP;128s unchecked Auto with End Turn and Mega170HP;133s Auto checked again with Bounded Field in play;141s two recovered Fire settled before normal attachment;152s Spending Rush160;162.50s Mega Kaboom Weakness180 while owner has10HP;176s Wynaut zero-Energy Stompy Jammer printed10;178s Mega0;184s explicit+3 award;192.74s named Defeat and Card of Game with no numeric statistics. Bounded independent checks supplement the worker complete visual review.",
+  "lead_evidence": [
+    "LEAD_CONTACT.jpg",
+    "LEAD_CONTACT_2.jpg",
+    "native/t0013.00.jpg",
+    "native/t0087.00.jpg",
+    "native/t0093.00.jpg",
+    "native/t0128.00.jpg",
+    "native/t0133.00.jpg",
+    "native/t0141.00.jpg",
+    "native/t0152.00.jpg",
+    "native/t0162.50.jpg",
+    "native/t0176.00.jpg",
+    "native/t0178.00.jpg",
+    "native/t0184.00.jpg",
+    "native/t0192.74.jpg"
+  ],
+  "outcome": "owner_loss",
+  "final_points": {
+    "owner": 2,
+    "opponent": 3
+  },
+  "result_display": "Loss 2-3 circles; opponent received 5 awarded points",
+  "owner_visible_core": "Victini / Pansear / Mega Camerupt ex",
+  "opponent": "AI Mega Scizor ex & Gholdengo ex Deck (Deluxe Pack: Mega)",
+  "last_turn": 10,
+  "useful_finding": "Spending Rush knocks out Pansear, then Victini, and leaves Mega at10HP. Two Flame Patch recover Victini Fire. Bounded Field is played during Auto off and excludes Mega attackers; Kaboom displays180 with ordinary weakness. Wynaut then uses its zero-Energy10 attack for the three-point Mega knockout.",
+  "limitations": "Hidden decks, exact toggle instants, input intent, cosmetic IDs and filename clock basis remain unknown. No numerical results statistics are shown. Manual Stadium play is not attributed to Auto policy.",
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "source_video": "20261001_024616000_iOS.MP4",
+  "source_sha256": "b41bc6025bbc0db40e43a821626dfeb4f544842880a33c153938a1724af1a4bc",
+  "first_pass": "gpt-6.1-sol/high /root/auto_024616",
+  "unreviewed_intervals": [],
+  "material_unresolved": [],
+  "ladder_eligible": false,
+  "ladder_action": "No Ladder Log entry; owner-declared Auto AI game",
+  "astra_consulted": false,
+  "astra_reason": "Source checks resolved consequential questions; no additional consultation required"
+}

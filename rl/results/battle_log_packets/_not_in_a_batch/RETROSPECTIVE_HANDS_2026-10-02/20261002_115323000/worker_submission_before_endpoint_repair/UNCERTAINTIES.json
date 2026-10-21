@@ -1,0 +1,26 @@
+{
+  "target_card_identity_resolved": true,
+  "target_starting_hand_resolved": true,
+  "unresolved_facts": [
+    {
+      "field": "exact_draw_end_frame_pts",
+      "reason": "Normal draw reveal at seek 460, settled fan at seek 461; exact transition not measured.",
+      "material_to_card_identity": false
+    },
+    {
+      "field": "opponent_hand_identities",
+      "reason": "Only two card backs are shown; identities hidden.",
+      "material_to_card_identity": false
+    }
+  ],
+  "specific_astra_question": null,
+  "excluded_scope": [
+    "Other turns",
+    "Accepted boards, points, results and remaining plays",
+    "External artifacts",
+    "Index/events",
+    "Simulator"
+  ],
+  "capture_status": "complete_with_recording_limits",
+  "lead_acceptance_pending": true
+}

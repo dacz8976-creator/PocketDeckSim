@@ -1,0 +1,16 @@
+{
+  "capture_status": "complete_with_recording_limits",
+  "independent_acceptance_status": "pending_separate_source_check",
+  "recording_limits": [
+    "Opponent hands/draw identities remain hidden card backs.",
+    "Unopened discard contents cannot be enumerated; periodic closed-pile views inspected.",
+    "One-second reduced scan may miss subsecond panels; native exact anchors resolve discovered material prompts.",
+    "Historical20-card list and deck version are unavailable.",
+    "Old native requested timestamps lack measured decodedPTS; current native timestamps have showinfoPTS. Locator sample phase can differ within about1s; no timestamp drift asserted.",
+    "Terminal award overlay obscures final board, and no later result splash is recorded. Accepted loss remains.",
+    "Some exact Energy input times are bounded transitions between native endpoints rather than directly sampled orb trajectories.",
+    "No Auto visible in inspected unoccluded anchors; opponent type and individual input authorship unestablished."
+  ],
+  "old_prose_conflicts": "ASTRA_QUESTIONS.json",
+  "source_access_status": "Verified exact source is accessible; delivery attempt1error preserved, retry2matched. These are recording/visibility limits, not uninspected accessible fields."
+}

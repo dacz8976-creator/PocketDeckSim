@@ -1,0 +1,85 @@
+{
+  "SUMMARY.json": [
+    [
+      "/second_independent_repairs",
+      null,
+      {
+        "prior_files": "before_second_independent_repairs_20261012T235813Z",
+        "turn_3_later_next": "Null at 107.5 s; small marker absent or obscured",
+        "turn_9_start_next": "Null at 358 s; small marker absent or obscured",
+        "turn_19_attachment_proof": [
+          "f722_00",
+          "f732_00"
+        ],
+        "supported_hands_actions_outcome_unchanged": true
+      }
+    ]
+  ],
+  "TURN_LEDGER.json": [
+    [
+      "/turns/2/board_at_start/owner/energy_zone/later_within_turn_observation/limit_reason",
+      null,
+      "At 107.5 s, the current Darkness token is visible but the small next marker is absent or obscured. No next type, count or availability is inferred."
+    ],
+    [
+      "/turns/2/board_at_start/owner/energy_zone/later_within_turn_observation/next/count",
+      1,
+      null
+    ],
+    [
+      "/turns/2/board_at_start/owner/energy_zone/later_within_turn_observation/next/visibility",
+      null,
+      "absent_or_obscured"
+    ],
+    [
+      "/turns/2/board_at_start/owner/energy_zone/later_within_turn_observation/next/type",
+      "Darkness",
+      null
+    ],
+    [
+      "/turns/8/board_at_start/owner/energy_zone/limit_reason",
+      null,
+      "At 358 s, the current Darkness token is visible during generation animation, but the small next marker is absent or obscured. Its type, count and availability remain unknown. The small next marker is absent or obscured in this frame; its type/count are not inferred."
+    ],
+    [
+      "/turns/8/board_at_start/owner/energy_zone/next/count",
+      1,
+      null
+    ],
+    [
+      "/turns/8/board_at_start/owner/energy_zone/next/visibility",
+      "visible_preview_icon",
+      "absent_or_obscured"
+    ],
+    [
+      "/turns/8/board_at_start/owner/energy_zone/next/type",
+      "Darkness",
+      null
+    ],
+    [
+      "/turns/12/board_at_start/owner/energy_zone/later_within_turn_observation/next/visibility",
+      null,
+      "visible_preview_icon"
+    ],
+    [
+      "/turns/18/plays_in_order/0/evidence_ids",
+      [
+        "f722_00"
+      ],
+      [
+        "f722_00",
+        "f732_00"
+      ]
+    ],
+    [
+      "/turns/18/plays_in_order/0/result_observed_at_source_seconds",
+      null,
+      732
+    ],
+    [
+      "/turns/18/plays_in_order/0/basis",
+      "Observed source sequence",
+      "Attachment action at about 723 s, with preplay board at 722 s and resulting board at 732 s clearly showing three Darkness on Kingambit. The 732 s observation is later than the attachment, not its exact resolution timestamp."
+    ]
+  ]
+}

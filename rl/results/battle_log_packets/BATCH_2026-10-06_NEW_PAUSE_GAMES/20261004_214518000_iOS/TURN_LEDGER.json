@@ -1,0 +1,37 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261004_214518000_iOS_game1",
+  "sources": [
+    {
+      "video_basename": "20261004_214518000_iOS.MP4",
+      "sha256": "55de49ce96ee9aa524c81f86245cf9af455700f6cd59d5146fe97e2f58b4cf0e",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "turns": [],
+  "recorded_game_turn_count": 0,
+  "empty_ledger_basis": "Results at 54-55 s explicitly show Turns played 0. All observed owner actions belong to opening setup. No turn 0 or fabricated turn 1 is inserted.",
+  "setup_record": "PAUSE_GAME.json",
+  "terminal": {
+    "outcome": "win",
+    "turns_played": 0,
+    "points": {
+      "owner": 0,
+      "opponent": 0
+    },
+    "damage_done": 0,
+    "evidence_ids": [
+      "f0054_00",
+      "f0055_00"
+    ]
+  },
+  "limits": [
+    "The game awarded Victory before a turn began. Results explicitly show 0 turns played and 0 damage. There are no owner/opponent game-turn rows or draw-relative captures to create.",
+    "Connection instability is directly visible before Victory. Its exact server cause, and whether any player deliberately conceded, are not shown.",
+    "Opponent Pokemon identities are never revealed. One face-down Active appears during the terminal transition.",
+    "No opened discard piles or battle-log scroll are shown. No in-turn card play, search, normal draw, attachment or attack occurs.",
+    "No deck QR or complete list is shown in this source. A same-label earlier source QR is a candidate only; no uninterrupted recording proves the list was unchanged across sources.",
+    "Seek times are source-local requested positions. Exact decoded frame PTS has not been measured."
+  ]
+}

@@ -1,0 +1,155 @@
+{
+  "source_filename": "20261016_024253000_iOS.MP4",
+  "source_sha256": "f9c112be78ea4a2f0c8c72b8b47d529fad49001efde34780b3562f4c8a69441b",
+  "source_bytes": 1613329420,
+  "source_duration_seconds": 863.128333,
+  "reviewer": "/root/ladder_024253",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "match_count": 1,
+  "battle_complete": true,
+  "primary_review_complete": true,
+  "match_date": "2026-10-15",
+  "source_creation_utc": "2026-10-16T02:42:53Z",
+  "source_creation_local": "2026-10-15T21:42:53-05:00",
+  "owner_identifier": "Dacz8976",
+  "opponent_identifier": "暗黑掌門人",
+  "outcome": "win",
+  "mode": "ranked ladder; Master Ball rank confirmed on result screen",
+  "Auto": {
+    "visible_control_or_option": false,
+    "observed_enabled": false,
+    "owner_choices_by_auto_observed": false,
+    "classification": "human ladder eligible"
+  },
+  "auto_visible": false,
+  "computer_battle": false,
+  "first_or_second": "first",
+  "owner_turns": 10,
+  "terminal_global_turn": 19,
+  "terminalglobalturn": 19,
+  "final_points": {
+    "owner": 3,
+    "opponent": 2
+  },
+  "damage_done_displayed": 540,
+  "rank_result": {
+    "rank": "Master Ball",
+    "points": 776,
+    "points_gained": 1
+  },
+  "visible_owner_core": [
+    "Glimmet",
+    "Glimmora (90 HP, Shattering Crystal, Venomous Hit 30)",
+    "Pawniard",
+    "Kingambit (140 HP, Overlord’s Blade 60+)",
+    "Regigigas",
+    "Alolan Grimer",
+    "Alolan Muk (110 HP, Power of Alchemy; not ex)"
+  ],
+  "visible_opponent_core": [
+    "Mega Rayquaza ex (two revealed, 180 HP, Mega Burst 50x)",
+    "Dratini",
+    "Dragonair (80 HP, Dragon’s Blessing)",
+    "Gouging Fire (two revealed, 110 HP, Scorching Interruption 100)"
+  ],
+  "exact_full_decks_known": false,
+  "first_attacks": [
+    {
+      "core": "Kingambit",
+      "attacked": true,
+      "owner_turn": 8,
+      "global_turn": 15,
+      "source_seconds": 691,
+      "opponent_points": 2,
+      "attack": "Overlord’s Blade",
+      "damage_displayed": 150,
+      "target": "first Gouging Fire 150 HP; KO"
+    },
+    {
+      "core": "Glimmora",
+      "attacked": true,
+      "owner_turn": 2,
+      "global_turn": 3,
+      "source_seconds": 158,
+      "opponent_points": 0,
+      "attack": "Venomous Hit",
+      "damage_displayed": 30,
+      "target": "Mega Rayquaza ex; poisoned"
+    },
+    {
+      "core": "Regigigas",
+      "attacked": false,
+      "owner_turn": null,
+      "global_turn": null,
+      "opponent_points": null,
+      "note": "no attack / opp N/A"
+    },
+    {
+      "core": "Alolan Muk",
+      "attacked": false,
+      "owner_turn": null,
+      "global_turn": null,
+      "opponent_points": null,
+      "note": "no attack / opp N/A"
+    }
+  ],
+  "exact_three_item_note_prefix": "first | Kingambit first attack own turn 8; Glimmora own turn 2; Regigigas/Alolan Muk no attack | opponent points at first attack: Kingambit 2, Glimmora 0; Regigigas/Alolan Muk N/A",
+  "decisive_result_evidence": [
+    {
+      "file": "evidence/native/t0839.00.jpg",
+      "fact": "Kingambit survives Mega Burst at 10 HP with Heavy Helmet; score2-2"
+    },
+    {
+      "file": "evidence/native/t0842.00.jpg",
+      "fact": "owner final attack selected,180; King10HP; deck empty"
+    },
+    {
+      "file": "evidence/native/t0846.00.jpg",
+      "fact": "180 damage hits180HP Mega Rayquaza ex"
+    },
+    {
+      "file": "evidence/native/t0860.00.jpg",
+      "fact": "Victory, first,19turns,3-2,540damage"
+    },
+    {
+      "file": "evidence/turnscan/contact_15.jpg",
+      "fact": "Victory and MasterBall776points,+1"
+    }
+  ],
+  "external_write_performed": false,
+  "shared_completion_registered": false,
+  "source_moved": false,
+  "remaining": "independent acceptance and lead completion/log/archive workflow",
+  "coverage": {
+    "full_source_start": 0,
+    "full_source_end": 863.128333,
+    "all_global_turns": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9,
+      10,
+      11,
+      12,
+      13,
+      14,
+      15,
+      16,
+      17,
+      18,
+      19
+    ],
+    "unreviewed_battle_intervals": []
+  },
+  "limitations": [
+    "Hidden hand and exact full deck lists remain unknown.",
+    "Short Energy-selection animations are described using visible end states; no hidden draw identities invented.",
+    "Turn-boundary timestamps approximate; native image timestamps are exact requested source offsets."
+  ]
+}

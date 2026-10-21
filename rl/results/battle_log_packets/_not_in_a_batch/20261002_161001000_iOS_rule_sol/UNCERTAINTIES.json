@@ -1,0 +1,50 @@
+{
+  "video_basename": "20261002_161001000_iOS.MP4",
+  "material_evidence_missing_for_filmed_rule_test": false,
+  "rule_test_conclusive_in_combined_review": true,
+  "uncertainties": [
+    {
+      "topic": "Recording interruption",
+      "status": "unresolved",
+      "effect": "Gap duration and unseen actions cannot be established. Public-board continuity does not remove this limit."
+    },
+    {
+      "topic": "Hand at split",
+      "status": "not reconstructed",
+      "effect": "A visible hand difference is not labeled as an unseen draw or other action."
+    },
+    {
+      "topic": "Defense tails or other cases",
+      "status": "unfilmed",
+      "effect": "No generalization to tails, Linear Attack, Absol, Hypno or damage from an Ability."
+    },
+    {
+      "topic": "Current simulator behavior",
+      "status": "owner claim not independently verified",
+      "effect": "Comparison is to supplied prediction only; no code audit or repair confirmation."
+    },
+    {
+      "topic": "Meowth light-blue hexagon",
+      "status": "Special Condition identity not established",
+      "effect": "Do not call it Sleep. Carefree Steps identity relies on named text."
+    }
+  ],
+  "source_specific_limit": "This source ends before the conclusive test and terminal result; counterpart supplies both.",
+  "recommended_status": "rule_test_review_complete",
+  "lead_check_complete": true,
+  "material_claims_reconciled": true,
+  "astra_reports": [
+    "ASTRA_CAREFREE_CHECK.md"
+  ],
+  "worker_status_at_submission": "finished_first_pass",
+  "status": "rule_test_review_complete",
+  "current_status": "rule_test_review_complete",
+  "lead_acceptance": "accepted",
+  "lead_acceptance_pending": false,
+  "source_archived": true,
+  "source_modified": false,
+  "ladder_eligible": false,
+  "global_registration_complete": true,
+  "archive_receipt": "MOVE_RECEIPT.20261002_161001000_iOS.MP4.json",
+  "archive_completion_event_id": "2c01b172-3e4c-43c3-8d6e-420fd8db8fed"
+}

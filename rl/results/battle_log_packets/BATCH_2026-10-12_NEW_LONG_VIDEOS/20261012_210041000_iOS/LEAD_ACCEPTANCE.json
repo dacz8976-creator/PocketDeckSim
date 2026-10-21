@@ -1,0 +1,108 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-12T23:45:57.700580+00:00",
+  "source_game_count": 1,
+  "all_source_games_accepted": true,
+  "source_video": "20261012_210041000_iOS.MP4",
+  "source_sha256": "6e8f59764ede0e890ac012fd4ccdd08fc7bfd480bbaae7721bd1f8046031fcc6",
+  "scope": "Entire supplied recording, one human event battle, opening, all 14 turns and terminal result",
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 14,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-12_NEW_LONG_VIDEOS\\20261012_210041000_iOS\\independent_sol\\CORRECTION_RECHECK.json",
+  "accepted_input_sha256": {
+    "REVIEW.md": "e738c3e7f988787c2a0a353db0a3d34a6708d35337a127ad8a27870ab98ca6bb",
+    "COVERAGE.md": "52a86f3eace5398c9c68bcbd59866103e59ea1c8c54b7238d04de7815030cc1d",
+    "SUMMARY.json": "bb3737486cdc789f2c4c11375113539126fef6ec899529eacc85b1532fd82faa",
+    "UNCERTAINTIES.json": "7891abada6e47880c5b155e9f5df297998fb40106c560dec5600381f37da8d95",
+    "PAUSE_GAME.json": "784cbd733c8242ba95ea0e6271b1a941a0a7652274e4cda66f9970dbfea2dfe9",
+    "DECK_USED.json": "e8c812d17c3485b8936eac3f57a3befe5ec4889074a6ba44985fe611cf86a187",
+    "TURN_LEDGER.json": "a0d1b640a00818b10d50b5cbb88c00c69b7c40cff4d5c974b10267ff4b13bccd",
+    "TURN_EVIDENCE.json": "8ad73e46582d3da70eb03bbf25301796aa63df3034fada8768b62f41bea973dd"
+  },
+  "basis": "Whole-source Sol review, separately bounded Sol checks against source frames, and lead reconciliation of coverage, ordinary decisions, draws/searches, hand arithmetic, point progression, decisive sequences and terminal outcome. Structural integrity checked separately.",
+  "administrative_fields_changed_after_independent_freeze": [
+    "lead_checked",
+    "battle_review_status",
+    "lead_acceptance"
+  ],
+  "source_limits": [
+    {
+      "id": "L1",
+      "topic": "Current live deck snapshot",
+      "reason": "Exact20-card filmed QR is verified, but the lead found this new list absent from the current live artifact deck choices. No verified live-log snapshot is available.",
+      "evidence": [
+        "QR_DECODE.json",
+        "../PREPARED_FILMED_DECK.json"
+      ]
+    },
+    {
+      "id": "L2",
+      "topic": "Discard pile views",
+      "reason": "Neither player opens a discard pile anywhere in this source. Full contents, duplicates and scroll coverage stay null.",
+      "evidence": [
+        "TURN_EVIDENCE.json"
+      ]
+    },
+    {
+      "id": "L3",
+      "topic": "Opponent hidden information",
+      "reason": "Unrevealed normal and Research draws plus remaining hand/deck identities are hidden. Fans are counted only at owner starts.",
+      "evidence": [
+        "TURN_LEDGER.json"
+      ]
+    },
+    {
+      "id": "L4",
+      "topic": "Timing and fast first plays",
+      "reason": "Native seeks preserve requested source-local time; measured frame presentation time is unavailable. On turns 2,4,10,12 rapid plays/selection make some scheduled candidates unsuitable; earlier actual pre-play views are retained. Turn 14 +6 is already Defeat.",
+      "evidence": [
+        "TURN_EVIDENCE.json"
+      ]
+    },
+    {
+      "id": "L5",
+      "topic": "Turn 1 opponent search acquisitions",
+      "reason": "Poké Ball adds one face-down Basic Pokémon and Serena adds one face-down Mega Evolution Pokémon ex. Bounded dense native source inspection confirms no named acquired face is exposed. Later bench/evolution identities do not prove which search acquired them.",
+      "evidence": [
+        "TURN_LEDGER.json",
+        "TURN_EVIDENCE.json"
+      ]
+    }
+  ],
+  "outcome": {
+    "owner": "loss",
+    "owner_result": "loss",
+    "method": "owner_concession",
+    "last_board_points": {
+      "owner": 0,
+      "opponent": 2
+    },
+    "final_displayed_points": null,
+    "score_limit": "The final result page shows Defeat and opponent, not numeric final statistics. Last playable board is separately preserved as0-2.",
+    "concession_basis": "Concede menu, explicit confirmation, confirmation disappearance, then Defeat. No pointer/button tap is shown.",
+    "result_evidence": {
+      "source_video": "20261012_210041000_iOS.MP4",
+      "concede_menu_seconds": 432.6,
+      "confirmation_dialog_seconds": [
+        433.2,
+        433.5
+      ],
+      "confirmation_disappearance_seconds": 433.8,
+      "defeat_banner_seconds": 434,
+      "result_page_seconds": 440,
+      "evidence_ids": [
+        "N0432_60",
+        "N0433_20",
+        "N0433_50",
+        "N0433_80",
+        "N0434_00",
+        "N0440_00",
+        "N0443_00"
+      ]
+    }
+  },
+  "deck_status": "Exact filmed 20-card QR list independently bound; matching new live deck entry is not yet available.",
+  "external_status": "Prepared deck and game import pending; no external save claimed."
+}

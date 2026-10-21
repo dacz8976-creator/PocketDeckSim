@@ -1,0 +1,38 @@
+{
+  "source_video": "20261005_031138000_iOS.MP4",
+  "source_sha256": "15ab9ced3d29c711ffe0ed069480cf549180d1acad56439ff31e1c51f9e4d66e",
+  "unreviewed_intervals": [],
+  "uncertainties": [
+    {
+      "id": "hidden_opponent",
+      "status": "recording_limit",
+      "reason": "Unrevealed opposing hand/deck identities hidden; only public cards transcribed"
+    },
+    {
+      "id": "failed_attack_name",
+      "status": "recording_limit",
+      "time_seconds": 173,
+      "reason": "Confusion check fails before attack-name animation; attempted attack name unknown"
+    },
+    {
+      "id": "discard_views",
+      "status": "not_shown",
+      "reason": "No opened discard-pile UI across entire inspected footage. Public plays are a separate history."
+    },
+    {
+      "id": "printing",
+      "status": "source_limit",
+      "reason": "QR resolves semantic entities, not artwork/rarity/printing"
+    },
+    {
+      "id": "external_snapshot",
+      "status": "lead_write_pending",
+      "reason": "Prepared new deck entry copied locally; root must verify live save and then update deck receipt"
+    },
+    {
+      "id": "frame_pts",
+      "status": "measurement_limit",
+      "reason": "Requested FFmpeg seek times known; exact decoded frame PTS not measured"
+    }
+  ]
+}

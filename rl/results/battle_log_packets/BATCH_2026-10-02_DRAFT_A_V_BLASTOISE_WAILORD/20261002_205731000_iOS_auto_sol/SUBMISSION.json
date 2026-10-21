@@ -1,0 +1,35 @@
+{
+  "source_video": "20261002_205731000_iOS.MP4",
+  "source_sha256": "f1ce8e51bc351fc008563c73a72aa7915f0389707375437068c998afd0190199",
+  "reviewer": "/root/drafta_auto_205731",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "complete_first_pass": true,
+  "submitted_utc": "2026-10-02T23:57:09.292332+00:00",
+  "review_status": "first_pass_complete_pending_independent_acceptance",
+  "files": {
+    "SOURCE.json": "29e9eba892891b7d3885f9460fa691c4079d74898e747fb48dc5fd84556ffbf3",
+    "ASSIGNMENT.json": "dd0afb40c9b284189bf8157fdc184e8654b0646a8bd38e0199c35deb5935109d",
+    "ASSIGNMENT.md": "f4054a97bbae25fc64c9819bb8ee259c8b0529c5e0c1e9b2d99af04302fc6dd3",
+    "REVIEW.md": "492f5aa964f039de7fbc591e42b94e49696893880852375040b8072646b642d9",
+    "COVERAGE.md": "245b7ad79a9c24974cba2f75ec1e99a063cf96df0986bd8c22823d20df3dde34",
+    "SUMMARY.json": "145c785f8eb60eb2e9dd2b11f9af11d6a01b294dc7b2ae3b802f7e751b9699bc",
+    "UNCERTAINTIES.json": "6d9d42cc1e0e4785dae7cbeec83ba4b342f0039386344dc20a1b2abe64b3902a",
+    "PAUSE_GAME.json": "7a6155c187268e56f208ec00b96b3db2843b71f6bdd3fd307691f6ece2c5566f",
+    "DECK_USED.json": "c63bccd87e093d6eb50bc55f18940236da5e42789a0afb5213c647635c4b8a08",
+    "TURN_LEDGER.json": "5dd51a9bfa639cc270b09a7d68abee7b63b28e7b38a90740a6c283b2fec42b3d",
+    "TURN_EVIDENCE.json": "b7184e2476260efb32ba62d868378a57e92b7e9b6b7d6fd7d5854fbbad800ed0",
+    "TURN_TABLE.md": "c9e63333565da945dcd57fa785d457f56b7fe296bb4fed2c0954d9decfbecabe",
+    "METRICS.json": "8f27248822215388c7656becd0fe6b2a0ed2c2cffb2003e61693b663aa3ef764",
+    "EXTRACTION_MANIFEST.json": "c8fda63adf7da149892b89268d6b71e9ba21938499fda951a10f20e8b04cc351",
+    "LOCATOR_PREPROCESSING.json": "720a430bb45e90adeca1c175787515a2b324b6f6883627bbc8b0c2a79ba8ae8c"
+  },
+  "limits": [
+    "Concealed opponent normal/Research/Meowth draws and Poké Ball searches have unknown identities.",
+    "No opened discard pile; partial visible top snapshots only.",
+    "Original encoded movie was covered using all371 retained1fps locator samples and118 targeted native captures, not an assertion of every encoded frame inspection.",
+    "Action timestamps approximate; native selected-frame PTS remains measured.",
+    "Source selection shows AI deck and Auto On but lacks Advanced category label; Advanced is bound to separate owner-supplied category screenshot receipt.",
+    "No independent input telemetry; Auto checked UI and automatic sequence support authorship."
+  ]
+}

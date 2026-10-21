@@ -1,0 +1,45 @@
+{
+  "game_id": "20261013_030351000_iOS_game_1",
+  "video_basename": "20261013_030351000_iOS.MP4",
+  "source_sha256": "d0a221cd236c620f467bbf34ad8078fd59c72323a7dca71a4af344f0489c6c7f",
+  "source_game_count": 1,
+  "classification": "human",
+  "auto_option_visible": false,
+  "queue_label": null,
+  "owner": "Dacz8976",
+  "opponent": "ヒロ",
+  "deck": "Haxorus / Dragonair / Druddigon",
+  "opponent_visible_core": [
+    "Igglybuff Sleepy Lullaby",
+    "Darkrai Bad Dreams (two copies)",
+    "Koraidon ex Legendary Drive / World Wrecker"
+  ],
+  "match_date_local": "2026-10-12",
+  "date_provenance": "SOURCE_TIME.json",
+  "outcome": "loss",
+  "concession": false,
+  "owner_points": 2,
+  "opponent_points": 3,
+  "turns_played": 16,
+  "damage_done": 230,
+  "scope": "Full single battle including QR, matchmaking, opening, all 16 turns, terminal results",
+  "reviewer": "/root/pause_20261013_030351000_iOS",
+  "actual_worker": "/root/newest_030351",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "capture_status": "complete_with_recording_limits",
+  "review_status": "ready_for_independent_acceptance",
+  "result_evidence": [
+    "f0626.00"
+  ],
+  "required_packet_files": [
+    "REVIEW.md",
+    "COVERAGE.md",
+    "SUMMARY.json",
+    "UNCERTAINTIES.json",
+    "PAUSE_GAME.json",
+    "DECK_USED.json",
+    "TURN_LEDGER.json",
+    "TURN_EVIDENCE.json"
+  ]
+}

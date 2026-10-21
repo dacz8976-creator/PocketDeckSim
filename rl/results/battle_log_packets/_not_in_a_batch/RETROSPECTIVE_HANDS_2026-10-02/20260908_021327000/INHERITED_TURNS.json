@@ -1,0 +1,80 @@
+{
+  "source": "20260908_021327000_iOS.MP4",
+  "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260908_021327_v7_review\\final_packet\\REVIEW.md",
+  "accepted_review_sha256": "645ee71f68763f8551da41283c0e148a2f613a980cb6c2038642fcaed8005ff0",
+  "rows": [
+    {
+      "turn_number": 1,
+      "accepted_source_line": 20,
+      "verbatim_accepted_section": "### Turn 1 (Opponent), about 00:30-00:47\n\nThe opponent plays Poké Ball and benches a second Jigglypuff. No Energy is attached and no attack occurs.",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 2,
+      "accepted_source_line": 24,
+      "verbatim_accepted_section": "### Turn 2 (Player), about 00:48-01:32\n\nThe player draws Team Rocket's Raticate ex, then benches Team Rocket's Rattata, Comfey, and a second Team Rocket's Rattata. Professor's Research is played. Pokémon Flute is inspected but not played. The player manually attaches Psychic Energy to active Drowzee (0 to 1) and ends the turn without attacking. Comfey's Flower Shield is now protecting the player's Pokémon from Special Conditions.",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 3,
+      "accepted_source_line": 28,
+      "verbatim_accepted_section": "### Turn 3 (Opponent), about 01:33-01:39\n\nThe opponent manually attaches Psychic Energy to active Jigglypuff (0 to 1) and passes.",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 4,
+      "accepted_source_line": 32,
+      "verbatim_accepted_section": "### Turn 4 (Player), about 01:40-02:09\n\nThe center benched Rattata evolves into Team Rocket's Raticate ex. Thieving Incisors moves Jigglypuff's Psychic Energy to that Raticate ex, leaving Jigglypuff with none and Raticate ex with one. Team Rocket's Researcher flips tails and finds no card. The player manually attaches a second Psychic Energy to Drowzee (1 to 2). Mumble deals 40 damage, reducing Jigglypuff from 60 HP to 20 HP.",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 5,
+      "accepted_source_line": 36,
+      "verbatim_accepted_section": "### Turn 5 (Opponent), about 02:10-02:31\n\nThe opponent manually attaches Psychic Energy to active Jigglypuff (0 to 1) and then passes without attacking.",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 6,
+      "accepted_source_line": 40,
+      "verbatim_accepted_section": "### Turn 6 (Player), about 02:32-03:10\n\nThe right benched Rattata evolves into a second Team Rocket's Raticate ex. Its Thieving Incisors moves Jigglypuff's Psychic Energy to the right Raticate ex. Professor's Research is played. The player manually attaches Psychic Energy to the center Raticate ex (1 to 2). Drowzee's Mumble deals 40 damage and knocks out Jigglypuff at about 03:02-03:04. The player gains one point at about 03:07, and the opponent promotes the remaining Jigglypuff. Score: 1-0.",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 7,
+      "accepted_source_line": 44,
+      "verbatim_accepted_section": "### Turn 7 (Opponent), about 03:11-03:28\n\nPoké Ball finds Mewtwo ex, which is benched. The opponent manually attaches Psychic Energy to Mewtwo ex (0 to 1). No attack occurs.",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 8,
+      "accepted_source_line": 48,
+      "verbatim_accepted_section": "### Turn 8 (Player), about 03:29-04:20\n\nSightseer looks at the top four cards and takes Team Rocket's Hypno. Drowzee evolves into Hypno. Pokémon Flute returns the knocked-out Jigglypuff from the opponent's discard pile to the Bench. The player manually attaches Psychic Energy to the right Raticate ex (1 to 2). Hypno uses Entrap, moving Mewtwo ex to the Active Spot and dealing 50 damage, reducing it from 150 HP to 100 HP. Hypno retains its two Psychic Energy.",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 9,
+      "accepted_source_line": 52,
+      "verbatim_accepted_section": "### Turn 9 (Opponent), about 04:21-04:58\n\nThe opponent manually attaches a second Psychic Energy to Mewtwo ex. A Supporter attempts to confuse Hypno and Mewtwo ex. Flower Shield prevents Hypno from becoming Confused, while the opponent's self-check is tails and Mewtwo ex becomes Confused. Leftovers is attached. Mewtwo ex attempts Psychic Sphere, but the confusion check fails and the attack does no damage. Leftovers heals 10 damage, raising Mewtwo ex from 100 HP to 110 HP. The Supporter's printed name is the only unresolved battle-text detail; the visible effect and result are clear.",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 10,
+      "accepted_source_line": 56,
+      "verbatim_accepted_section": "### Turn 10 (Player), about 04:59-05:52\n\nTeam Rocket's Goo-zooka increases the opponent's Retreat Cost by one for the turn. The first Poké Ball finds Drowzee. The second Poké Ball reports that there are no eligible cards in the deck. Hypno retreats and discards its two attached Psychic Energy. The center Raticate ex becomes Active. The player manually attaches a third Psychic Energy to the right benched Raticate ex (2 to 3), attaches Elegant Cape to the active center Raticate ex, and raises its maximum HP from 120 to 150. Boost Dash deals 70 damage, reducing Mewtwo ex from 110 HP to 40 HP.",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 11,
+      "accepted_source_line": 60,
+      "verbatim_accepted_section": "### Turn 11 (Opponent), about 05:53-06:19\n\nThe opponent manually attaches a third Psychic Energy to active Mewtwo ex (2 to 3), benches Team Rocket's Slowpoke (80 HP), and uses Potion to heal 20 damage, raising Mewtwo ex from 40 HP to 60 HP. No attack occurs. Leftovers heals another 10 damage, raising Mewtwo ex to 70 HP. Score remains 1-0.",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 12,
+      "accepted_source_line": 64,
+      "verbatim_accepted_section": "### Turn 12 (Player), about 06:20-06:48\n\nThe active center Raticate ex has Elegant Cape and 150 maximum HP. The opponent's active Mewtwo ex is Confused, has 70 HP remaining, three Psychic Energy, and Leftovers. The player inspects Cyrus at about 06:40, but no switching effect resolves because every opposing Benched Pokémon is undamaged. No attack or score change occurs. The opponent concedes at about 06:47-06:48, and the screen states, \"Your opponent conceded.\"",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    }
+  ],
+  "limits": "Only explicitly turn-numbered accepted prose is copied. Zero rows means format unavailable, not zero game turns. This is reference scaffolding, not a completed capture ledger."
+}

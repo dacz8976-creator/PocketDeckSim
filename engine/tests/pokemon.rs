@@ -70,6 +70,8 @@ mod charmeleon_ignition_test;
 mod chatot_mimic_test;
 #[path = "pokemon/claydol_heal_block_test.rs"]
 mod claydol_heal_block_test;
+#[path = "pokemon/coalossal_coal_drop_test.rs"]
+mod coalossal_coal_drop_test;
 #[path = "pokemon/coin_flip_cant_attack_next_turn_test.rs"]
 mod coin_flip_cant_attack_next_turn_test;
 #[path = "pokemon/coin_flip_remove_active_test.rs"]
@@ -268,6 +270,8 @@ mod mega_rayquaza_ex_mega_burst_test;
 mod mega_sceptile_terminating_tail_test;
 #[path = "pokemon/mega_steelix_adamantine_rolling_test.rs"]
 mod mega_steelix_adamantine_rolling_test;
+#[path = "pokemon/meganium_bloomshine_test.rs"]
+mod meganium_bloomshine_test;
 #[path = "pokemon/meowstic_test.rs"]
 mod meowstic_test;
 #[path = "pokemon/meowth_carefree_steps_test.rs"]
@@ -352,6 +356,8 @@ mod salamence_test;
 mod sawk_test;
 #[path = "pokemon/shinx_hide_test.rs"]
 mod shinx_hide_test;
+#[path = "pokemon/silcoon_cascoon_cocoon_collector_test.rs"]
+mod silcoon_cascoon_cocoon_collector_test;
 #[path = "pokemon/slither_wing_test.rs"]
 mod slither_wing_test;
 #[path = "pokemon/slowking_litter_test.rs"]

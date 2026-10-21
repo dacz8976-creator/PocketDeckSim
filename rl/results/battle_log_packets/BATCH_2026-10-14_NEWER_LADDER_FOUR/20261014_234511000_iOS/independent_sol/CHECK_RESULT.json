@@ -1,0 +1,136 @@
+{
+  "schema_version": 1,
+  "accepted": true,
+  "source_filename": "20261014_234511000_iOS.MP4",
+  "source_sha256": "5d79d17a888d0dc2acc400855121979258efe11177b2254ebaae5e9c7a39784a",
+  "source_bytes": 202763297,
+  "duration_seconds": 114.868333,
+  "reviewer": "/root/check_newer_234511",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "scope": "Bounded independent semantic acceptance of frozen full-review packet using retained native frames, complete timeline/coverage reconciliation and decisive plus ordinary samples. No second full video pass or decoding.",
+  "frozen_manifest_sha256": "2bfea6d166b22a478e8628455b3a6872469620aa83b3f7ded9a0fbfba170b5ed",
+  "frozen_file_count": 90,
+  "frozen_files_match": true,
+  "frozen_files_match_before": true,
+  "frozen_files_match_after": true,
+  "manifest_digest_unchanged": true,
+  "primary_unchanged": true,
+  "inspected_paths": [
+    "START_HERE_VIDEO_REVIEW.md",
+    "Review_Log/README.md",
+    "SOURCE.json",
+    "REVIEW.md",
+    "COVERAGE.md",
+    "SUMMARY.json",
+    "UNCERTAINTIES.json",
+    "REVIEW_PACKET_HASHES.json",
+    "LEAD_CLARIFICATION.md",
+    "ROOT_DECISION.json",
+    "evidence/native_000.00.jpg",
+    "evidence/native_010.50.jpg",
+    "evidence/native_028.50.jpg",
+    "evidence/native_043.00.jpg",
+    "evidence/native_053.00.jpg",
+    "evidence/native_058.50.jpg",
+    "evidence/native_063.00.jpg",
+    "evidence/native_067.00.jpg",
+    "evidence/native_071.00.jpg",
+    "evidence/native_074.00.jpg",
+    "evidence/native_078.00.jpg",
+    "evidence/native_081.00.jpg",
+    "evidence/native_084.00.jpg",
+    "evidence/native_085.50.jpg",
+    "evidence/native_088.00.jpg",
+    "evidence/native_092.50.jpg",
+    "evidence/native_097.00.jpg",
+    "evidence/native_101.00.jpg",
+    "evidence/native_105.00.jpg",
+    "evidence/native_114.70.jpg"
+  ],
+  "ordinary_samples": [
+    {
+      "seconds": [
+        28.5,
+        43
+      ],
+      "finding": "Opening five are Copycat, Team Rocket's Rattata, Ilima, Poke Ball and Team Rocket's Raticate ex. Explicit going second. Rattata is placed Active at 40 HP with no Bench, four remaining hand cards and setup wait."
+    },
+    {
+      "seconds": [
+        63,
+        67,
+        71,
+        74
+      ],
+      "finding": "Sightseer is the normal draw, before the Poke Ball play. Poke Ball retrieves Alolan Vulpix into hand; it is subsequently placed on the rightmost Bench at 60 HP. Rattata and Articuno remain at full HP."
+    },
+    {
+      "seconds": [
+        78,
+        81,
+        84
+      ],
+      "finding": "Sightseer is later played as a separate action. Its displayed top four are numbered Poke Ball, Elegant Cape, Alolan Vulpix and Sabrina. Zero Stage 1 cards; no cards gained. After resolution the hand contains Copycat, Ilima and Raticate ex. Cape is revealed, not attached."
+    },
+    {
+      "seconds": [
+        85.5,
+        88
+      ],
+      "finding": "One Water is attached to the benched Vulpix. Active Rattata has none. Global turn 3 begins with all three Pokemon at full HP and scores 0-0, consistent with the owner ending without an attack."
+    }
+  ],
+  "findings": [
+    {
+      "topic": "decisive outcome",
+      "accepted": true,
+      "evidence": [
+        "evidence/native_105.00.jpg",
+        "evidence/native_114.70.jpg"
+      ],
+      "detail": "Explicit Your opponent conceded at 105s. Final Victory versus グズマ推し shows Went second, 3 turns, actual 0-0 points, damage done 0 and Card of the Game None. No fabricated concession points."
+    },
+    {
+      "topic": "Misty and Energy",
+      "accepted": true,
+      "evidence": [
+        "evidence/native_053.00.jpg",
+        "evidence/native_058.50.jpg",
+        "evidence/native_092.50.jpg",
+        "evidence/native_097.00.jpg",
+        "evidence/native_105.00.jpg"
+      ],
+      "detail": "Two distinct Misty plays each show 0 heads and 1 tail. No accelerated Water appears on Articuno, and final board still has no attached Energy on Articuno. Opponent turn-2 Water remains in its Energy Zone."
+    },
+    {
+      "topic": "Stadium and no attacks",
+      "accepted": true,
+      "evidence": [
+        "evidence/native_101.00.jpg",
+        "evidence/native_105.00.jpg",
+        "evidence/native_114.70.jpg"
+      ],
+      "detail": "Soothing Shore is played. Full-HP Rattata 40, Vulpix 60 and Articuno 130 persist through concession. No damage/healing transition or attack is supported. Neither player attacks, coherent with the primary account, Energy states and final statistics."
+    },
+    {
+      "topic": "coverage",
+      "accepted": true,
+      "detail": "The full primary account and adjoining coverage intervals cover 0-114.868333s without a missing phase: prebattle/matchmaking, opening/setup, opponent T1, owner T1, opponent T2, concession and final statistics. Selected ordinary and terminal native evidence coheres with that chronology. One complete game. This acceptance is bounded and does not claim a second whole-source visual pass."
+    },
+    {
+      "topic": "mode and deck routing",
+      "accepted": true,
+      "detail": "No Auto control is visible in the inspected native evidence; complete primary reports none across its pass. Human battle routed as ladder by owner default, exact queue/rank unknown. Source visibly supports Rattata/Raticate ex/Alolan Vulpix core. Accept d13 family routing and contextual 2nd | Alolan Ninetales ex no attack | opp N/A prefix only with LEAD_CLARIFICATION limits; exact variant and Ninetales presence are unverified."
+    }
+  ],
+  "limits": [
+    "The source does not independently prove exact Deck 13-A variant or Ninetales presence. Ninetales main-attacker identity/prefix is coordinating context, not a source-observed card or attack. No readable deck label exists in inspected opening overlay.",
+    "Full 20-card lists/counts, hidden opponent draws/hand, exact ranked queue/rank and player intent remain unknown.",
+    "Source identity is the frozen SOURCE/manifest and coordinator-supplied verified binding. This bounded checker did not decode or independently rehash the media file.",
+    "Only retained original-resolution native evidence was visually inspected. Primary complete review and coverage were reconciled; no claim of frame-by-frame or second whole-video inspection.",
+    "No shared index/events, external artifact, media move, Boss mirror or frozen primary modification was performed. Root remains sole finalizer."
+  ],
+  "checked_utc": "2026-10-15T01:12:25.2667225+00:00",
+  "after_hash_mismatches": []
+}

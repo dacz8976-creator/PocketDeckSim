@@ -1,0 +1,49 @@
+{
+  "schema": "video-review/summary-v1",
+  "is_template": false,
+  "game_id": "20261006_012927000_iOS_game_02",
+  "source_video": "20261006_012927000_iOS.MP4",
+  "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+  "game_number_within_source": 2,
+  "source_interval_seconds": [
+    622,
+    719.001667
+  ],
+  "external_duplicate_key": "20261006_012927000_iOS.MP4 :: game_02 :: 622-719.001667s",
+  "match_date": "2026-10-05",
+  "match_date_basis": "RECORDING_METADATA.json embedded creation UTC converted to America/Chicago",
+  "owner": "Dacz8976",
+  "opponent": "たこ",
+  "outcome": "win",
+  "result": "win",
+  "turn_count": 2,
+  "turns_played": 2,
+  "owner_went_first": true,
+  "points_owner": 0,
+  "points_opponent": 0,
+  "classification": "human_battle",
+  "mode": "Deluxe Pack: Mega Emblem Event",
+  "queue_basis": "Filmed event page420; continuous return to same event battle queue. Not ranked established.",
+  "auto_control_observed": false,
+  "auto_limit": "No in-battle Auto control observed; deck editor Auto-build is not a battle Auto control.",
+  "full_review_status": "complete_with_recording_limits",
+  "capture_status": "complete_with_recording_limits",
+  "independent_acceptance": "pending",
+  "external_saved": false,
+  "result_evidence_ids": [
+    "f0710_00",
+    "f0718_00"
+  ],
+  "deck_core": [
+    "Snorlax ex",
+    "Team Rocket’s Meowth",
+    "Team Rocket’s Persian",
+    "Type: Null",
+    "Silvally"
+  ],
+  "limits": [
+    "Exact live log list is worker-unavailable; source deck proof is retained separately.",
+    "Remote opponent touches and hidden card identities are unavailable.",
+    "No full discard-pile views filmed."
+  ]
+}

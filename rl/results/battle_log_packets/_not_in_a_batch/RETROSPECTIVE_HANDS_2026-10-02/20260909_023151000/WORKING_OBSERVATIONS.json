@@ -1,0 +1,16 @@
+{
+ "status":"in_progress_not_final",
+ "source_sha256":"3df25a8532bd7df253638e23c3a6cfd711e4b7607992463ca5663e8abbff367a",
+ "locator_screen":{"samples_inspected":344,"grids_inspected":18,"all_samples_screened_once":true,"timestamp_basis":"nominal source seconds, actual PTS unmeasured","subsecond_inputs_not_fully_observed":true,"auto_option_observed":false,"opened_discard_panels_detected":false},
+ "opening_left_to_right":["Elegant Cape","Poké Ball","Heliolisk","Electrike","Clemont's Backpack"],
+ "opening_active_position":4,
+ "owner_draws":{"1":"Mega Manectric ex","3":"Electrike","5":"Training Area","7":"Poké Ball","9":"Professor's Research"},
+ "draw_end_approx_seconds":{"1":46.7,"3":114.4,"5":181.2,"7":234.2,"9":329.4},
+ "selected_start_candidates":{"1":46.8,"3":114.6,"5":181.2,"7":234.2,"9":329.4},
+ "candidate_qualifiers":{"3":"Five cards are together in unzoomed lower hand, but automatic draw-reveal remnant remains above hand and Energy generation follows.","5":"Unzoomed three-card hand before Stadium leaves hand; Energy generation follows.","7":"Sole centered Poké Ball is the lower hand view, not large center-screen draw overlay."},
+ "owner_ending_cards":{"1":["Elegant Cape","Heliolisk","Clemont's Backpack","Mega Manectric ex"],"2":["Elegant Cape","Heliolisk","Clemont's Backpack","Mega Manectric ex"],"3":["Clemont's Backpack","Mega Manectric ex"],"4":["Clemont's Backpack","Mega Manectric ex"],"5":[],"6":[],"7":["Helioptile"],"8":["Helioptile"],"9":["Helioptile","Professor's Research"]},
+ "action_locators":{"1":["Ball48","findHeli50","bench53","end59-60"],"2":["Research82","draws83-85","Ball91","findEntei99","benchEntei99-100","benchTorkoal103","FireTorchic104-105","Peck108"],"3":["benchElectrike115","evolveHeliolisk119-120","Lightningspare122-124","Cape125-127","end129"],"4":["Combusken151","Fire155","HighJumpKick167","KO169-171","point173","Helioliskpromotion175-177"],"5":["TrainingArea182-184","Mega188-189","Backpack191-193","LightningHeliolisk194-195","Electrispark198-200","resolved203"],"6":["Torchic220","FireEntei222","HighJumpKick228","resolved230"],"7":["Ball235-236","findHeli238","LightningMega239-240","Electrispark241-243","spread246","point250","Enteipromotion270-272"],"8":["RareCandy287-289","MegaBlaziken296-299","FireEntei303-304","BlazingBeatdown310","KO313-315","point317","MegaPromotion320-322","LegendaryPulse323-325"],"9":["Researchdraw328-329","attackselection330-331","unusedSupporter/Energywarning332","OKinferredfromattack333","damage335","resolved342"]},
+ "new_native_frames":31,
+ "new_native_cap":60,
+ "native_inspection_remaining":"19 draw-timed crop candidates plus retained identities/actions/boards/fans; then serialized packet and reference checks."
+}

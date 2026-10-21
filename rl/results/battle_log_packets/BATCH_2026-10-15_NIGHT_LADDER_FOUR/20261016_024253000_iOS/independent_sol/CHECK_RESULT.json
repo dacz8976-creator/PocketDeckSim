@@ -1,0 +1,41 @@
+{
+  "reviewer": "/root/independent_night_four",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "checked_utc": "2026-10-16T03:46:18.3835041Z",
+  "source_filename": "20261016_024253000_iOS.MP4",
+  "source_sha256": "f9c112be78ea4a2f0c8c72b8b47d529fad49001efde34780b3562f4c8a69441b",
+  "frozen_manifest_sha256": "1849a0fea72f39cc739c050d811fa40c3714751472d367830b710dff3bfad5f3",
+  "frozen_file_count": 329,
+  "frozen_files_match": true,
+  "primary_unchanged": true,
+  "full_timeline_coverage_read": true,
+  "source_first_observations": "SOURCE_OBSERVATIONS.md",
+  "primary_files_read": [
+    "REVIEW.md",
+    "COVERAGE.md",
+    "SUMMARY.json",
+    "UNCERTAINTIES.json",
+    "SOURCE.json",
+    "REVIEW_PACKET_HASHES.json"
+  ],
+  "accepted": true,
+  "material_primary_corrections": [],
+  "independent_observation_corrections": [
+    "Oricorio/Froslass overview misread superseded by native Dratini60/Dragonair80 evidence",
+    "fresh Regigigas impression resolved by Ilima recycle"
+  ],
+  "checks": [
+    "full19globalturn account reconciled",
+    "native identities Dratini210/Dragonair335",
+    "first Glimmora own2 opp0; first Kingambit own8 opp2",
+    "three owner KOs but two opponent points; three Kingambit attacks and540damage",
+    "HeavyHelmet King10HP; final180 RayKO; win3-2 first19turns",
+    "all329frozen hashes match before and after checker write"
+  ],
+  "boundaries": [
+    "bounded independent checks, no second full visual pass",
+    "exact decks and hidden hand unknown",
+    "no shared records, browser, source moves, cloud-original or simulator change"
+  ]
+}

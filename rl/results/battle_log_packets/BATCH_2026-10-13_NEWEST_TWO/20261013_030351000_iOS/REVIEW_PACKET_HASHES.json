@@ -1,0 +1,49 @@
+{
+  "schema": "review-packet-hashes-v1",
+  "source_video": "20261013_030351000_iOS.MP4",
+  "source_sha256": "d0a221cd236c620f467bbf34ad8078fd59c72323a7dca71a4af344f0489c6c7f",
+  "frozen_at_utc": "2026-10-13T04:44:46.783746+00:00",
+  "status": "final_eight_frozen_pending_independent_acceptance",
+  "files": [
+    {
+      "file": "REVIEW.md",
+      "sha256": "9f1ab44628569c6d02e2f2c058926bd3861671f66ef067ac9b7ecdafe3ca2e6d",
+      "bytes": 15786
+    },
+    {
+      "file": "COVERAGE.md",
+      "sha256": "3ccf5fdfd3284ea02374b711ba9ba8e86cf2f70bb0e92073755e05d4e9ddf747",
+      "bytes": 2938
+    },
+    {
+      "file": "SUMMARY.json",
+      "sha256": "2e72fe83246a2d906baf9d02bc1a5432a232fc7f5da2ee90823e9a56163da5aa",
+      "bytes": 1410
+    },
+    {
+      "file": "UNCERTAINTIES.json",
+      "sha256": "bc1b4f317258eb8d39177342a2866c9a5c725bc142ba57b51c68021dbfc20156",
+      "bytes": 2101
+    },
+    {
+      "file": "PAUSE_GAME.json",
+      "sha256": "8839544c044ab517716cd5e4daf459b114a1eda1296b972ee0ffd3c763f01c6e",
+      "bytes": 3820
+    },
+    {
+      "file": "DECK_USED.json",
+      "sha256": "31aa412c2d23d9c47b95de955e45ca8854c15cd3c9972968d11e76fac123ee07",
+      "bytes": 10901
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "sha256": "98593e65bf74a607abd946d4e526a06f6bfdff253f699502f47b81fdd26795b3",
+      "bytes": 386739
+    },
+    {
+      "file": "TURN_EVIDENCE.json",
+      "sha256": "5458f80bb5f80156a507739cdeb10b3bee4a6d458785957bdb4e86d85bb71660",
+      "bytes": 550807
+    }
+  ]
+}

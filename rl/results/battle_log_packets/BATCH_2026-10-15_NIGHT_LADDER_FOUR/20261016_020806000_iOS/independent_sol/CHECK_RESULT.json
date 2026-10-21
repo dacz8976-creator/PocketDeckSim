@@ -1,0 +1,36 @@
+{
+  "accepted": true,
+  "source_filename": "20261016_020806000_iOS.MP4",
+  "source_sha256": "3500dda99e8c7174a9fdaeebe13678fc17793a2c728db0728f903b5d6f4a0066",
+  "full_timeline_coverage_read": true,
+  "frozen_manifest_sha256": "80c54ea3fcc20c04f2caf839b08090959d17e2dde880c5881b939badbae28b11",
+  "frozen_files_match": true,
+  "frozen_file_count": 248,
+  "primary_unchanged": true,
+  "material_corrections": [
+    {
+      "scope": "Global T9 Giga Turbo",
+      "primary_claim": "No Energy transfer because normal Energy Zone empty; optional",
+      "corrected_observation": "One Colorless Energy attached to benched Alolan Muk; Regigigas retains three Darkness",
+      "evidence": [
+        "native/t0379.00.jpg",
+        "native/t0386.00.jpg",
+        "native/t0389.00.jpg",
+        "native/t0392.00.jpg",
+        "native/t0440.00.jpg"
+      ],
+      "supersedes_primary": true
+    }
+  ],
+  "minor_corrections": [
+    "Ranked opening evidence is action/early01.jpg at about 2.5 seconds, not native/t0001.00.jpg which shows a deck QR share screen."
+  ],
+  "acceptance_basis": "Complete primary coverage accepted with explicit correction incorporated by independent_sol/CHECK.md",
+  "reviewer": "/root/independent_020806",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "first_attacks_verified": true,
+  "mode": "human ranked ladder",
+  "auto_control_observed": false,
+  "primary_files_changed": []
+}

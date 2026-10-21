@@ -1,0 +1,48 @@
+{
+  "accepted": true,
+  "reviewer": "/root/check_offline_161324",
+  "model": "gpt-6.1-sol",
+  "effort": "high",
+  "reasoning_effort": "high",
+  "review_date": "2026-10-14",
+  "source_filename": "20261014_161324000_iOS.MP4",
+  "source_sha256": "d058d4cff7c50e4813f9bebacfc895ac0227bec97a941be0e08289787aff94e6",
+  "source_rehashed": true,
+  "source_bytes": 594052100,
+  "frozen_manifest_sha256": "51e22b67156b3d632e15003ce358986385bfa285d2b7340cb63a150881e49639",
+  "frozen_files_match": true,
+  "frozen_files_checked": 246,
+  "frozen_mismatches": [],
+  "primary_unchanged": true,
+  "scope": "Bounded independent source acceptance of frozen full account, coverage, consequential log facts and three independently selected ordinary turns; no second full visual pass.",
+  "inspected_native_paths": ["native/t0002.00.jpg", "native/t0020.00.jpg", "native/t0022.00.jpg", "native/t0072.00.jpg", "native/t0079.00.jpg", "native/t0083.00.jpg", "native/t0088.00.jpg", "native/t0091.00.jpg", "native/t0096.00.jpg", "native/t0100.00.jpg", "native/t0107.00.jpg", "native/t0112.00.jpg", "native/t0118.00.jpg", "native/t0124.00.jpg", "native/t0147.00.jpg", "native/t0150.00.jpg", "native/t0153.00.jpg", "native/t0160.00.jpg", "native/t0164.00.jpg", "native/t0168.00.jpg", "native/t0176.00.jpg", "native/t0184.00.jpg", "native/t0187.00.jpg", "native/t0236.00.jpg", "native/t0239.00.jpg", "native/t0245.00.jpg", "native/t0266.00.jpg", "native/t0268.50.jpg", "native/t0270.00.jpg", "native/t0274.00.jpg", "native/t0288.00.jpg", "native/t0293.00.jpg", "native/t0301.00.jpg", "native/t0304.00.jpg", "native/t0308.00.jpg", "native/t0309.00.jpg", "native/t0310.00.jpg", "native/t0315.00.jpg", "native/t0325.50.jpg"],
+  "inspected_source_timestamps_seconds": [2,20,22,72,79,83,88,91,96,100,107,112,118,124,147,150,153,160,164,168,176,184,187,236,239,245,266,268.5,270,274,288,293,301,304,308,309,310,315,325.5],
+  "fresh_extractions": [
+    {"path": "independent_sol/fresh_79.jpg", "source_time_seconds": 79, "sha256": "28817539982632465155f3d2088bf3f208494864d74d966a9ea884f3aac0bfad", "matches_retained_native_bytes": true, "visually_inspected": true},
+    {"path": "independent_sol/fresh_187.jpg", "source_time_seconds": 187, "sha256": "5700cb7e0c60673a0ce762ea4df9e2e6ca28f12e79262054b8ffded5ab5af0da", "matches_retained_native_bytes": true, "visually_inspected": true},
+    {"path": "independent_sol/fresh_309.jpg", "source_time_seconds": 309, "sha256": "b8856b269c8867f67eeb27d55059832fff5e05437d322ebb87a7d37b97d9d647", "matches_retained_native_bytes": true, "visually_inspected": true}
+  ],
+  "independently_selected_ordinary_checks": [
+    {"turn": "opponent T1/global2", "timestamps_seconds": [72,79,83,88,91], "supported": true, "finding": "Poké Ball discard by79, Fire attachment, Combustion20 with weakness leaves Spinarak10; score0-0. Hidden search result unknown."},
+    {"turn": "owner T2/global3", "timestamps_seconds": [91,96,100,107,112,118,124], "supported": true, "finding": "Ariados evolution retains damage at50HP, Trap Territory, Lisia/two Cottonee, bench one, Grass and Pierce30; next bannerglobal4."},
+    {"turn": "owner T3/global5", "timestamps_seconds": [160,164,168,176,184,187,236], "supported": true, "finding": "Research, Whimsicott evolution, Cottonee bench, Leaf Cape170, one Grass to bench, X Speed held, unenergized Spinarak ends with no attack or retreat; Goo-zooka held afterward."}
+  ],
+  "coverage_check": {"complete_account_supported": true, "source_interval_seconds": [0,325.745], "owner_turns": 4, "opponent_turns": 4, "combined_turns": 8, "unaccounted_intervals": [], "second_full_visual_pass_claimed": false},
+  "accepted_log_facts": {
+    "owner": "Dacz8976", "opponent": "ヤンチャ", "match_date": "2026-10-14", "mode": "owner-designated ladder, rank intro supports; exact queue page unseen", "auto_option_visible_in_inspected_interfaces": false,
+    "recommended_ladder_section": "Deck 12: Ariados / Whimsicott / Ogerpon", "full_twenty_card_list_established": false,
+    "outcome": "loss", "displayed_terminal_score": {"owner": 1,"opponent": 3}, "first_or_second": "first",
+    "main_attacker": "Whimsicott ex", "first_main_attack": "Grass Knot", "own_turn_number": 4, "global_turn": 7,
+    "global_turn_basis": "Sequence-derived from first-player order, global4 then ownerglobal5, following opponent knockout, next owner attack and final8 combined turns; exact7 banner not retained.",
+    "attack_time_seconds": 268.5, "opponent_points_before_attack": 2,
+    "exact_three_item_note_prefix": "First | Whimsicott ex first attack T4 | Opponent points before attack: 2"
+  },
+  "material_corrections": [],
+  "nonmaterial_corrections": [{"claim": "Opponent T1 Poké Ball visible in discard by72 seconds", "reconciliation": "Inspected native72 has no opposing discard card; native79 clearly shows Poké Ball. Use79 for this specific citation. Action/turn/result/note unchanged.", "evidence": ["native/t0072.00.jpg", "native/t0079.00.jpg", "independent_sol/fresh_79.jpg"]}],
+  "remaining_uncertainties": ["Canonical OneDrive placeholder identity remains unverified.", "Hidden opponent hand/draw/search results and complete decks unknown.", "Exact queue-selection page and hidden Auto/menu controls unshown; no Auto observed in independently inspected interfaces.", "Exact global7 banner absent; ownT4/global7 supported by ordered sequence.", "Some touch timings and notification-covered UI are bounded.", "Second Ice Pop tails remains qualified first-pass inference, not independently rechecked; healed80HP and consequential progression are supported."],
+  "reconciliation_status": "Accepted after explicit nonmaterial citation timing reconciliation recorded here; frozen primary preserved.",
+  "shared_writes_performed": false,
+  "source_move_performed": false,
+  "external_entry_written": false,
+  "lead_acceptance_claimed": false
+}

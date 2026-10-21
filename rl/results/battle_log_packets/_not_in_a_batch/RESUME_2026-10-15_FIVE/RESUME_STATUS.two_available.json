@@ -1,0 +1,149 @@
+{
+  "checked_utc": "2026-10-16T03:51:15.864678+00:00",
+  "selected_sources_count": 5,
+  "completed_this_pass": [
+    "20261016_024253000_iOS.MP4",
+    "20261016_030833000_iOS.MP4"
+  ],
+  "already_completed_prior_source": "20261016_020517000_iOS.MP4",
+  "combined_six_sources_complete": false,
+  "review_pending": [
+    "20261016_015753000_iOS.MP4",
+    "20261016_020806000_iOS.MP4",
+    "20261016_031512000_iOS.MP4"
+  ],
+  "download_pending": [
+    "20261016_015753000_iOS.MP4",
+    "20261016_020806000_iOS.MP4",
+    "20261016_031512000_iOS.MP4"
+  ],
+  "states": [
+    {
+      "source": "20261016_015753000_iOS.MP4",
+      "review_complete": false,
+      "external_saved": false,
+      "cloud_metadata": {
+        "logical_bytes": 781475086,
+        "allocated_bytes": 781475086,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "sha256": null,
+      "duration_seconds": null,
+      "remaining": "Local OneDrive download/readability, source binding, full review, independent acceptance, live log/readback, archive.",
+      "blocker": "Cloud-file access denied; full normal local read also failed. No source identity or review claim."
+    },
+    {
+      "source": "20261016_020806000_iOS.MP4",
+      "review_complete": false,
+      "external_saved": false,
+      "cloud_metadata": {
+        "logical_bytes": 1039108871,
+        "allocated_bytes": 1039108871,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "sha256": null,
+      "duration_seconds": null,
+      "remaining": "Local OneDrive download/readability, source binding, full review, independent acceptance, live log/readback, archive.",
+      "blocker": "Cloud-file access denied; full normal local read also failed. No source identity or review claim."
+    },
+    {
+      "source": "20261016_024253000_iOS.MP4",
+      "review_complete": true,
+      "independently_accepted": true,
+      "registered": true,
+      "archived": true,
+      "external_saved": true,
+      "fresh_reload_verified": true,
+      "sha256": "f9c112be78ea4a2f0c8c72b8b47d529fad49001efde34780b3562f4c8a69441b",
+      "result": "win",
+      "opponent": "暗黑掌門人",
+      "cloud_metadata": {
+        "logical_bytes": 1613329420,
+        "allocated_bytes": 1613329420,
+        "attributes": 525344,
+        "placeholder_state": 1,
+        "cloud_placeholder": true,
+        "in_sync": false,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "storage_complete": false
+    },
+    {
+      "source": "20261016_030833000_iOS.MP4",
+      "review_complete": true,
+      "independently_accepted": true,
+      "registered": true,
+      "archived": true,
+      "external_saved": true,
+      "fresh_reload_verified": true,
+      "sha256": "6b96796ba0645aab33f131c8bd6b62a23951406662a33f456911e20f2d51e541",
+      "result": "loss",
+      "opponent": "アヤカ",
+      "cloud_metadata": {
+        "logical_bytes": 681167398,
+        "allocated_bytes": 681167398,
+        "attributes": 525344,
+        "placeholder_state": 1,
+        "cloud_placeholder": true,
+        "in_sync": false,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "storage_complete": false
+    },
+    {
+      "source": "20261016_031512000_iOS.MP4",
+      "review_complete": false,
+      "external_saved": false,
+      "cloud_metadata": {
+        "logical_bytes": 536481462,
+        "allocated_bytes": 536481462,
+        "attributes": 525344,
+        "placeholder_state": 9,
+        "cloud_placeholder": true,
+        "in_sync": true,
+        "pinned": true,
+        "unpinned": false,
+        "online_only": false
+      },
+      "sha256": null,
+      "duration_seconds": null,
+      "remaining": "Local OneDrive download/readability, source binding, full review, independent acceptance, live log/readback, archive.",
+      "blocker": "Cloud-file access denied; full normal local read also failed. No source identity or review claim."
+    }
+  ],
+  "live_verified_totals": {
+    "wins": 13,
+    "losses": 18,
+    "games": 31
+  },
+  "deck01_totals": {
+    "wins": 5,
+    "losses": 2,
+    "games": 7
+  },
+  "unrelated_index_rows_preserved": 219,
+  "prior_current_season_notes_preserved": 29,
+  "chrome_downloads_used_this_pass": false,
+  "videos_deleted": 0,
+  "storage_pending": [
+    "20261016_024253000_iOS.MP4",
+    "20261016_030833000_iOS.MP4"
+  ],
+  "pending_question": "Owner asked whether OneDrive tray shows paused sync or an error; no response yet."
+}

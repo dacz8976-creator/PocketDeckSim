@@ -1,0 +1,120 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261002_021402000_iOS.MP4",
+  "review_date": "2026-10-02",
+  "sources": [
+    {
+      "video_basename": "20261002_021402000_iOS.MP4",
+      "sha256": "5b9bcc18507ea541f35741ed451edb58c743300be366db7f8d4fc88856b36759",
+      "source_json": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_021402000_iOS_competitive_sol\\SOURCE.json"
+    }
+  ],
+  "deck_name": "Wailord / Indeedee wall",
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "mode_flag": "Dustin's own play",
+  "mode_basis": "inherited accepted review, online versus with no Auto activation visible",
+  "went_first": true,
+  "opening": {
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Poké Ball",
+        "variant": null,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0018.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 2,
+        "name": "Pokémon Center Lady",
+        "variant": null,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0018.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 3,
+        "name": "Heavy Helmet",
+        "variant": null,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0018.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 4,
+        "name": "Wailmer",
+        "variant": null,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0018.00"
+        ],
+        "limit_reason": null
+      },
+      {
+        "position": 5,
+        "name": "Irida",
+        "variant": null,
+        "basis": "direct_native_frame_observation",
+        "evidence_ids": [
+          "f0018.00"
+        ],
+        "limit_reason": null
+      }
+    ],
+    "count": 5,
+    "basis": "direct_native_frame_observation",
+    "evidence_ids": [
+      "f0018.00"
+    ],
+    "status": "observed",
+    "limit_reason": null,
+    "source_video": "20261002_021402000_iOS.MP4",
+    "timestamp_seconds": 18,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "selected_active": {
+      "name": "Wailmer",
+      "opening_position": 4,
+      "source_video": "20261002_021402000_iOS.MP4",
+      "timestamp_seconds": 19,
+      "evidence_ids": [
+        "f0019.00"
+      ],
+      "basis": "direct_selection_frame; placement inherited accepted setup"
+    },
+    "before_active_placement": true,
+    "redraw_or_replacement": null,
+    "redraw_limit_reason": "No redraw established; not inferred."
+  },
+  "packet_files": {
+    "prose": "REVIEW_SUPPLEMENT.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json",
+    "hands": "HAND_SUPPLEMENT.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "capture_scope": "Only opening and first six owner hands (game turns1,3,5,7,9,11); all fourteen ledger turns carry inherited accepted context.",
+  "battle_review_status": "Reviewed, unchanged",
+  "outcome": {
+    "result": "loss",
+    "owner_points": 0,
+    "opponent_points": 3,
+    "basis": "inherited accepted review, not freshly re-reviewed"
+  },
+  "limits": [
+    "Draw-end timestamps are bounded estimates and actual video-frame PTS unmeasured. Rapid first plays make later candidates unsuitable for start hands; selected dense pre-play frames are used.",
+    "Opponent fan at turns5/7 remains range7-8 because of overlapping backs.",
+    "Opened discard piles absent from retained target evidence; no new whole-turn pile audit.",
+    "All boards and accepted actions are inherited; ownerturn13 outside target.",
+    "DECK_USED is the supplied current live20-slot snapshot with historical version limits preserved."
+  ],
+  "lead_checked": false
+}

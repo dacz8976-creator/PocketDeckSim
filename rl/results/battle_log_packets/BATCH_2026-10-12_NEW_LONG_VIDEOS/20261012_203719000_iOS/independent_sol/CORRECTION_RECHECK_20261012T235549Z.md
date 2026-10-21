@@ -1,0 +1,13 @@
+# Correction recheck: rejected pending three narrow repairs
+
+Checked 2026-10-12T23:55:49.074136+00:00 by /root/check_203719. The corrected eight files match REVIEW_PACKET_HASHES.json and remained unchanged during this audit. All eight checked hashes are frozen in CORRECTION_RECHECK.json and its dated copy. The initial CHECK_RESULT.json remains intact.
+
+The original turn 13 repair is supported: the clean 466.9 s hand has Glimmet, Glimmora and Lucky Ice Pop before the selection visible at 467.1 to 467.2 s. Independent fresh source extraction confirms it. The original turn 3 correction is also supported: 107.2 s is empty during generation, while 107.5 s shows the generated Darkness after Poké Ball selection has begun. The hand and board are now separate from that later observation.
+
+Related changes are sound: turn 17 now uses the clean two-Ice-Pop fan at 628 s before the first play; turns 19 and 21 use clear empty-hand views at 722 and 786 s. Board identities, HP, attachments, Tools, conditions, Stadium and point progression did not receive unintended factual changes. The 21-row source timeline, named owner draws/searches and concession outcome remain consistent across the eight files. The exact filmed QR list remains separately sourced from the missing live-log snapshot, and all stated recording limits remain explicit.
+
+I visually compared all 84 player-Zone observations across 42 start/end boundaries using native crops. Empty slots and genuinely obscured values are now substantially corrected. Two remaining preview values lack visible evidence: turn 3 later observation at 107.5 s and turn 9 start at 358 s both report next Darkness/count 1 although the small preview marker is absent. They must be null with a visibility limit or use separately timed actual preview evidence.
+
+The turn 19 attachment action reference was changed too broadly: plays_in_order[0] now cites only f722_00, which shows the empty Zone and pre-play board. Keep that frame for the hand/start board, but link the attachment to native action or resulting-board evidence showing Kingambit's third Darkness. This is separate from the correct empty-hand timing repair.
+
+All referenced evidence IDs resolve, and all listed native frames and top/bottom crops exist. This audit went beyond structural checks by inspecting the repaired source views, both player Zones and the related hand timing changes. Source freshness was checked with two new seeks rather than rehashing or decoding the whole original. No shared logging, external writes or archival occurred. Final acceptance requires the three narrow repairs and another frozen-eight-file receipt.

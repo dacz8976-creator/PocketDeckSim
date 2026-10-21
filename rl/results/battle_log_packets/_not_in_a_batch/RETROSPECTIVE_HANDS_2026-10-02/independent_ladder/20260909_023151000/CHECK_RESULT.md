@@ -1,0 +1,7 @@
+# Independent Manectric 023151 check
+
+Substantive source fields accepted with recording limits. Three minor packaging repairs are required before final packet acceptance: add HAND_SUPPLEMENT target_rows, target_turn_numbers and capture_status aliases; add SOURCE_REFERENCE.sha256; qualify the Turn7 attack-selection overlay or use the existing clean240.00 before-end anchor. Count and identity remain one Helioptile.
+
+All26 submitted hashes match. All59 catalogued full native frames were independently viewed (40 new,19 reused). All five owner starts, ending inventories and draw-offset candidates agree. All nine rows, typed Energy targets, Cape/Mega HP, Backpack and Stadium effects, damage endpoints, fan transitions and settled3–2 terminal points reconcile. T2 Ball find stays concealed/null. T9 warning text is direct and OK acceptance remains inferred. No consequential disagreement or further capture needed.
+
+No Auto option was observed in inspected native anchors; sampled absence and unknown action authorship remain qualified. Exact historical20 and concealed opponent identities/piles remain unknown. Root verification was reused. No source movie read/hash/decode, repeated locator pass, producer edits or shared registration changes were performed. Seven existing reduced cues were checked for phase only. See CHECK_RESULT.json and SCOPE_VALIDATION.json for exact evidence and frozen hash validation.

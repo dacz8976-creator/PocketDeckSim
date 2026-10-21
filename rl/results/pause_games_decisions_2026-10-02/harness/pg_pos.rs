@@ -7,8 +7,18 @@
 //!   {"kind":"forced", ...} the position's "force" line is applied step by step; at every step km3 (on a fresh game from the same state) says what
 //!                          it would play, and after the last forced action the next real choice (e.g. Turbo Shark's Bench target) is asked once more
 //! and, on stderr, PGSTEP markers followed by the patched search's PGDUMP lines (every root candidate's score).
+//! Oct 13 (Fable via Sonnet's read of the Oct 13 games; the output above is unchanged):
+//!   - a board entry may carry "conditions": ["Asleep" | "Paralyzed" | "Confused" | "Poisoned" | "Burned", ...], set on that Pokemon
+//!     with the engine's own `with_status_condition` (a name the engine doesn't have is a position problem);
+//!   - "me" and "opp" may carry "knockouts": how many of that side's own Pokemon were Knocked Out earlier in the game (Kingambit's
+//!     Overlord's Blade: 40 more per knock-out), set with `set_own_knockouts_this_game` before the bot moves; without it, 0 as before;
+//!   - `--dump-state` adds one {"kind":"state", ...} line per position after its "position" line: the knock-out counts and every
+//!     condition as the built engine state holds them (for the tests, test_pg_pos.py). Without the flag nothing is added.
+//! Oct 14 (the laptop's review of the Oct 12-13 positions): the Stadium is set before the board, and each recorded "hp" is applied once
+//! the board's HP bonuses are in place, so a damaged Basic under Starting Plains keeps the HP the game showed (it used to gain 20 when
+//! the engine refreshed its bonuses). The state line also gives "hp": each Pokemon's HP after the engine's own refresh.
 use deckgym::actions::{Action, SimpleAction};
-use deckgym::models::{Card, EnergyType, PlayedCard};
+use deckgym::models::{Card, EnergyType, PlayedCard, StatusCondition};
 use deckgym::players::expectiminimax_player::pg_label;
 use deckgym::players::{create_players, parse_player_code};
 use deckgym::state::EnergyZone;
@@ -37,8 +47,13 @@ fn energies(v: &Value) -> Vec<EnergyType> {
     v.as_array().map(|a| a.iter().map(|x| energy(x.as_str().unwrap())).collect()).unwrap_or_default()
 }
 
+/// A Special Condition by its engine name ("Asleep", ...); None for a name the engine doesn't have.
+fn condition(s: &str) -> Option<StatusCondition> {
+    serde_json::from_value(Value::String(s.to_string())).ok()
+}
+
 /// One in-play Pokemon from its JSON; also returns every card it carries (for the unseen-deck bookkeeping).
-fn pk(v: &Value) -> (PlayedCard, Vec<Card>) {
+fn pk(v: &Value, problems: &mut Vec<String>) -> (PlayedCard, Vec<Card>) {
     let c = card(v["card"].as_str().expect("card"));
     let base_hp = match &c {
         Card::Pokemon(p) => p.hp,
@@ -53,6 +68,12 @@ fn pk(v: &Value) -> (PlayedCard, Vec<Card>) {
     p.attached_tools = tools;
     if let Some(h) = v.get("hp").and_then(|h| h.as_u64()) {
         p = p.with_remaining_hp(h as u32);
+    }
+    for c in v.get("conditions").and_then(|x| x.as_array()).into_iter().flatten() {
+        match c.as_str().and_then(condition) {
+            Some(sc) => p = p.with_status_condition(sc),
+            None => problems.push(format!("{}: condition {c} is not one the engine has (Asleep, Paralyzed, Confused, Poisoned, Burned)", p.get_name())),
+        }
     }
     (p, carried)
 }
@@ -111,7 +132,7 @@ fn build(pos: &Value, deck_me: &Deck, deck_filler: &Deck, shuffle_seed: u64) -> 
     let mut board_me = Vec::new();
     let mut known_me: Vec<Card> = hand_me.iter().cloned().chain(discard_me.iter().cloned()).collect();
     for p in me["board"].as_array().unwrap() {
-        let (pc, carried) = pk(p);
+        let (pc, carried) = pk(p, &mut problems);
         board_me.push(pc);
         known_me.extend(carried);
     }
@@ -119,7 +140,7 @@ fn build(pos: &Value, deck_me: &Deck, deck_filler: &Deck, shuffle_seed: u64) -> 
     let mut opp_carried = 0usize;
     let mut opp_seen: Vec<Card> = Vec::new();
     for p in opp["board"].as_array().unwrap() {
-        let (pc, carried) = pk(p);
+        let (pc, carried) = pk(p, &mut problems);
         board_opp.push(pc);
         opp_carried += carried.len();
         opp_seen.extend(carried);
@@ -196,7 +217,27 @@ fn build(pos: &Value, deck_me: &Deck, deck_filler: &Deck, shuffle_seed: u64) -> 
         unseen = t;
     }
 
+    // the Stadium first, so the board's HP bonuses (Starting Plains: +20 to every Basic) are in place when the board is set
+    match stadium {
+        Some(s) => {
+            st.active_stadium = Some(card(s["card"].as_str().unwrap()));
+            st.active_stadium_owner = stadium_owner;
+        }
+        None => {
+            st.active_stadium = None;
+            st.active_stadium_owner = None;
+        }
+    }
     st.set_board(board_me, board_opp);
+    // each Pokemon's recorded HP is the HP the game showed, bonuses included: set it now that set_board has refreshed them (pk() could only
+    // set it against the printed HP)
+    for (side, spec) in [(0usize, me), (1usize, opp)] {
+        for (i, p) in spec["board"].as_array().unwrap().iter().enumerate() {
+            if let Some(h) = p.get("hp").and_then(|h| h.as_u64()) {
+                st.in_play_pokemon[side][i] = st.in_play_pokemon[side][i].take().map(|c| c.with_remaining_hp(h as u32));
+            }
+        }
+    }
     st.hands[0] = hand_me;
     st.decks[0].cards = unseen.clone();
     st.discard_piles[0] = discard_me;
@@ -228,16 +269,6 @@ fn build(pos: &Value, deck_me: &Deck, deck_filler: &Deck, shuffle_seed: u64) -> 
     st.discard_piles[1] = discard_opp;
     st.discard_energies[1] = energies(&opp["discard_energy"]);
 
-    match stadium {
-        Some(s) => {
-            st.active_stadium = Some(card(s["card"].as_str().unwrap()));
-            st.active_stadium_owner = stadium_owner;
-        }
-        None => {
-            st.active_stadium = None;
-            st.active_stadium_owner = None;
-        }
-    }
     st.points = [pos["points"][0].as_u64().unwrap() as u8, pos["points"][1].as_u64().unwrap() as u8];
     st.turn_count = pos["turn_count"].as_u64().unwrap() as u8;
     st.current_player = 0;
@@ -272,7 +303,17 @@ fn build(pos: &Value, deck_me: &Deck, deck_filler: &Deck, shuffle_seed: u64) -> 
             val[k] = v.clone();
         }
     }
-    let st: State = serde_json::from_value(val).expect("json back to state");
+    let mut st: State = serde_json::from_value(val).expect("json back to state");
+    // each side's own knock-outs earlier in the game (Kingambit's Overlord's Blade), before the bot moves
+    for (side, spec) in [(0usize, me), (1usize, opp)] {
+        match spec.get("knockouts") {
+            None | Some(Value::Null) => {}
+            Some(k) => match k.as_u64() {
+                Some(n) => st.set_own_knockouts_this_game(side, n as u32),
+                None => problems.push(format!("knockouts {k} is not a count")),
+            },
+        }
+    }
 
     let describe = |side: usize| -> Value {
         let slots: Vec<Value> = st.in_play_pokemon[side]
@@ -334,6 +375,35 @@ fn main() {
         let deck_filler = decks.get(pos["filler"].as_str().unwrap_or(pos["deck"].as_str().unwrap())).expect("filler key").clone();
         let first = build(pos, &deck_me, &deck_filler, 1);
         println!("{}", json!({"kind": "position", "id": id, "summary": first.summary, "problems": first.problems}));
+        if args.iter().any(|a| a == "--dump-state") {
+            let raw = serde_json::to_value(&first.state).expect("state to json");
+            let conds = |side: usize| -> Value {
+                let mut m = serde_json::Map::new();
+                for (i, p) in first.state.in_play_pokemon[side].iter().enumerate() {
+                    let Some(p) = p else { continue };
+                    let on: Vec<&str> = [(p.is_asleep(), "Asleep"), (p.is_paralyzed(), "Paralyzed"), (p.is_confused(), "Confused"),
+                                         (p.is_poisoned(), "Poisoned"), (p.is_burned(), "Burned")]
+                        .iter()
+                        .filter(|(b, _)| *b)
+                        .map(|(_, n)| *n)
+                        .collect();
+                    if !on.is_empty() {
+                        m.insert(i.to_string(), json!(on));
+                    }
+                }
+                Value::Object(m)
+            };
+            // each Pokemon's HP as the engine will use it: the engine's own bonus refresh (set_board) run on a copy
+            let mut refreshed = first.state.clone();
+            let boards: Vec<Vec<PlayedCard>> = (0..2).map(|p| refreshed.in_play_pokemon[p].iter().flatten().cloned().collect()).collect();
+            refreshed.set_board(boards[0].clone(), boards[1].clone());
+            let hps = |side: usize| -> Value {
+                Value::Object(refreshed.in_play_pokemon[side].iter().enumerate()
+                    .filter_map(|(i, p)| p.as_ref().map(|p| (i.to_string(), json!(p.get_remaining_hp())))).collect())
+            };
+            println!("{}", json!({"kind": "state", "id": id, "knockouts": raw["own_knockouts_this_game"], "conditions": {"me": conds(0), "opp": conds(1)},
+                                  "hp": {"me": hps(0), "opp": hps(1)}}));
+        }
         if !first.problems.is_empty() {
             continue;
         }

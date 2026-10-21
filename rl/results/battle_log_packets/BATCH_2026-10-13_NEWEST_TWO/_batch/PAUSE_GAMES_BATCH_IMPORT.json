@@ -1,0 +1,144 @@
+{
+  "prepared_utc": "2026-10-13T04:48:05.226758+00:00",
+  "existing_artifact": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "existing_authoring_task": "https://claude.ai/cowork/cse_01RtxfTEtHtFkw97BA1cpD4b",
+  "external_saved": false,
+  "sent_to_claude": false,
+  "authority": "Continuing the same review and import workflow to the same destination approved by the owner with Yes please finish; latest request retries these two newly uploaded sources.",
+  "deck_documents": [
+    {
+      "document_id": "filmed-qr-324c9e740140",
+      "fields": {
+        "name": "Haxorus / Dragonair / Druddigon",
+        "energy": "Fighting + Metal",
+        "group": "filmed",
+        "status": "active",
+        "tag": "Filmed QR",
+        "order": 201,
+        "note": "Same native QR in both October 12 Chicago evening games. Exact semantic 20-card list and Fighting/Metal Energy verified; filmed artwork and rarity unverified.",
+        "code": "C5iWnpiWnpiYYJiYYJiapJiXrJiWqJiWqJiaXpibYpictgkACoIAQMQAQMQAPp4APp4AUSIAUSIAUSwAUSwCBgg=",
+        "source": "Two source-bound native QR captures at 0 seconds; provenance in PREPARED_FILMED_DECK.json.",
+        "cards": [
+          {
+            "n": 1,
+            "name": "Druddigon",
+            "kind": "Pokémon",
+            "id": "A1a 056"
+          },
+          {
+            "n": 2,
+            "name": "Axew",
+            "kind": "Pokémon",
+            "id": "B2b 054"
+          },
+          {
+            "n": 2,
+            "name": "Haxorus",
+            "kind": "Pokémon",
+            "id": "B2b 056"
+          },
+          {
+            "n": 2,
+            "name": "Dratini",
+            "kind": "Pokémon",
+            "id": "B4 116"
+          },
+          {
+            "n": 2,
+            "name": "Dragonair",
+            "kind": "Pokémon",
+            "id": "B4 117"
+          },
+          {
+            "n": 2,
+            "name": "Poké Ball",
+            "kind": "Trainer",
+            "id": "A2b 111"
+          },
+          {
+            "n": 2,
+            "name": "Rare Candy",
+            "kind": "Trainer",
+            "id": "A3 144"
+          },
+          {
+            "n": 1,
+            "name": "Lucky Ice Pop",
+            "kind": "Trainer",
+            "id": "B2 145"
+          },
+          {
+            "n": 1,
+            "name": "Rocky Helmet",
+            "kind": "Trainer",
+            "id": "A2 148"
+          },
+          {
+            "n": 2,
+            "name": "Professor’s Research",
+            "kind": "Trainer",
+            "id": "A4b 373"
+          },
+          {
+            "n": 1,
+            "name": "Copycat",
+            "kind": "Trainer",
+            "id": "B1 225"
+          },
+          {
+            "n": 1,
+            "name": "Iris",
+            "kind": "Trainer",
+            "id": "B2b 067"
+          },
+          {
+            "n": 1,
+            "name": "Rainbow Cave",
+            "kind": "Trainer",
+            "id": "B4 155"
+          }
+        ]
+      }
+    }
+  ],
+  "game_documents": [
+    {
+      "source_video": "20261013_022530000_iOS.MP4",
+      "source_sha256": "02714096351099424338ac83d3f529ef4f0e6979a978a50f48c5ff505a2b6cb7",
+      "game_number_in_source": 1,
+      "game_id": "20261013_022530000_iOS-game1",
+      "exact_game_deck_binding": true,
+      "deck_choice_basis": "Identical native filmed QR at 0 seconds in both clips; semantic 20-card list and Fighting/Metal Energy independently checked.",
+      "result_evidence": "Explicit opponent concession at 544 seconds, Victory at 550, final result at 559: 12 turns, 2-1, 480 damage, went first.",
+      "fields": {
+        "deck": "filmed-qr-324c9e740140",
+        "deckName": "Haxorus / Dragonair / Druddigon",
+        "date": "2026-10-12",
+        "result": "concession",
+        "first": "first",
+        "opp": "Mega Scizor ex, Orthworm, Scyther, Revavroom",
+        "ratings": {},
+        "note": "Source: 20261013_022530000_iOS.MP4; game 1; opponent: sadao. Owner win; Explicit opponent concession at 544 seconds, Victory at 550, final result at 559: 12 turns, 2-1, 480 damage, went first. Full review: 12 turns. Review and capture limits: Recording_QA/BATCH_2026-10-13_NEWEST_TWO/20261013_022530000_iOS/REVIEW.md; PAUSE_GAME.json and TURN_LEDGER.json beside it. Native QR verifies exact 20-card Haxorus / Dragonair / Druddigon deck and Fighting/Metal Energy. Date is October 12 in Chicago, confirmed by recording creation metadata; filename retains UTC date. Hidden cards, unopened discard contents and any unresolved arrival order remain explicit in the packet. Ratings unassigned."
+      }
+    },
+    {
+      "source_video": "20261013_030351000_iOS.MP4",
+      "source_sha256": "d0a221cd236c620f467bbf34ad8078fd59c72323a7dca71a4af344f0489c6c7f",
+      "game_number_in_source": 1,
+      "game_id": "20261013_030351000_iOS_game_1",
+      "exact_game_deck_binding": true,
+      "deck_choice_basis": "Identical native filmed QR at 0 seconds in both clips; semantic 20-card list and Fighting/Metal Energy independently checked.",
+      "result_evidence": "Cyrus brings the damaged Haxorus Active, Koraidon ex gathers Fighting Energy with Legendary Drive, and World Wrecker knocks it out. Defeat at 625-626: 16 turns, 2-3, 230 damage, went first. The Igglybuff knockout earned one point plus the additional Iris point, taking the owner from 0 to 2.",
+      "fields": {
+        "deck": "filmed-qr-324c9e740140",
+        "deckName": "Haxorus / Dragonair / Druddigon",
+        "date": "2026-10-12",
+        "result": "loss",
+        "first": "first",
+        "opp": "Darkrai, Igglybuff, Koraidon ex",
+        "ratings": {},
+        "note": "Source: 20261013_030351000_iOS.MP4; game 1; opponent: ヒロ. Owner loss; Cyrus brings the damaged Haxorus Active, Koraidon ex gathers Fighting Energy with Legendary Drive, and World Wrecker knocks it out. Defeat at 625-626: 16 turns, 2-3, 230 damage, went first. The Igglybuff knockout earned one point plus the additional Iris point, taking the owner from 0 to 2. Full review: 16 turns. Review and capture limits: Recording_QA/BATCH_2026-10-13_NEWEST_TWO/20261013_030351000_iOS/REVIEW.md; PAUSE_GAME.json and TURN_LEDGER.json beside it. Native QR verifies exact 20-card Haxorus / Dragonair / Druddigon deck and Fighting/Metal Energy. Date is October 12 in Chicago, confirmed by recording creation metadata; filename retains UTC date. Hidden cards, unopened discard contents and any unresolved arrival order remain explicit in the packet. Ratings unassigned."
+      }
+    }
+  ]
+}

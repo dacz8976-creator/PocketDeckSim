@@ -1,0 +1,318 @@
+{
+  "scope": "bounded_visual_intake_only",
+  "status": "finished_bounded_intake_with_three_access_blockers",
+  "reviewer": "/root/new_upload_intake",
+  "source_identity_owner": "root intake.py, per-source SOURCE.json and PROBE.json for five accessible sources",
+  "classification_limit": "No completed reviews, registry writes, moves, or external logging. Sparse samples do not establish full coverage, exhaustive match count, or hidden cards.",
+  "accessible_classified_count": 5,
+  "access_blocked_no_visual_intake_count": 3,
+  "records": [
+    {
+      "video_basename": "20261009_193905000_iOS.MP4",
+      "recording_type": "single_computer_battle_candidate",
+      "mode": "computer",
+      "auto_observation": {
+        "visible": true,
+        "status_at_samples": "On at setup"
+      },
+      "opponent": "Mega Charizard X ex Deck (Deluxe Pack: Mega)",
+      "visible_owner_core": [
+        "Carvanha",
+        "Alolan Ninetales ex"
+      ],
+      "owner_deck_label": "Draft A: Shark Tempo",
+      "opening_available": "prebattle AI selection at 0.000s; initial board at20.000s",
+      "ending_available": "Victory result at175.924s",
+      "sampled_result": "Victory",
+      "relationships": [],
+      "evidence": [
+        {
+          "time_seconds": 0,
+          "file": "0_0.000s.jpg",
+          "observation": "AI opponent selection and Auto On"
+        },
+        {
+          "time_seconds": 20,
+          "file": "1_20.000s.jpg",
+          "observation": "Carvanha against Torkoal and benched Charmander;0–0"
+        },
+        {
+          "time_seconds": 88.462,
+          "file": "2_88.462s.jpg",
+          "observation": "Misty coin effect, battle in progress"
+        },
+        {
+          "time_seconds": 175.924,
+          "file": "3_175.924s.jpg",
+          "observation": "Victory vs same AI deck;Alolan Ninetales ex Card of Game"
+        }
+      ],
+      "limitations": [
+        "Sparse intake establishes start/result availability, not full coverage or absence of additional matches."
+      ]
+    },
+    {
+      "video_basename": "20261009_194240000_iOS.MP4",
+      "recording_type": "single_computer_battle_candidate_with_deck_share_intro",
+      "mode": "computer",
+      "auto_observation": {
+        "visible": true,
+        "status_at_samples": "checked Auto at16.911s and33.823s"
+      },
+      "opponent": "Greninja ex Deck (Deluxe Pack: Mega)",
+      "visible_owner_core": [
+        "Electrike",
+        "Heliolisk"
+      ],
+      "opening_available": "deck QR share at0s, initial empty board/5-card hand at16.911s",
+      "ending_available": "Victory result at66.646s",
+      "sampled_result": "Victory, result panel shows turns played2, points1–0, damage60",
+      "relationships": [
+        {
+          "related_video": "20261009_193905000_iOS.MP4",
+          "relationship": "appears separate rather than continuation",
+          "basis": "different owner core and AI opponent; fresh opening board then its own result"
+        }
+      ],
+      "evidence": [
+        {
+          "time_seconds": 0,
+          "file": "0_0.000s.jpg",
+          "observation": "Share With2D Pattern Code modal over deck screen"
+        },
+        {
+          "time_seconds": 16.911,
+          "file": "1_16.911s.jpg",
+          "observation": "empty opening board, five visible owner cards, Auto checked"
+        },
+        {
+          "time_seconds": 33.823,
+          "file": "2_33.823s.jpg",
+          "observation": "Electrike vs Froakie with Soothing Shore;Auto checked"
+        },
+        {
+          "time_seconds": 66.646,
+          "file": "3_66.646s.jpg",
+          "observation": "Victory vs Greninja ex deck, turns played2, points1–0"
+        }
+      ],
+      "limitations": [
+        "No sampled battle-log scroll. Whole clip and short terminal sequence still require review."
+      ]
+    },
+    {
+      "video_basename": "20261009_194445000_iOS.MP4",
+      "recording_type": "single_computer_battle_candidate_with_deck_share_intro",
+      "mode": "computer_from_named_AI_deck_result",
+      "auto_observation": {
+        "visible": false,
+        "status_at_samples": "not established in four samples (effects/modal obscure UI)"
+      },
+      "opponent": "Miraidon ex Deck (Deluxe Pack: Mega)",
+      "visible_owner_core": [
+        "Hitmonchan ex",
+        "Sandslash",
+        "Conkeldurr"
+      ],
+      "opening_available": "deck QR share at0s; Hitmonchan ex opening placement animation at20s",
+      "ending_available": "Defeat result at270.550s",
+      "sampled_result": "Defeat, result panel shows turns played13, points2–3, damage440",
+      "relationships": [],
+      "evidence": [
+        {
+          "time_seconds": 0,
+          "file": "0_0.000s.jpg",
+          "observation": "deck sharing QR modal"
+        },
+        {
+          "time_seconds": 20,
+          "file": "1_20.000s.jpg",
+          "observation": "Hitmonchan ex placement animation at start"
+        },
+        {
+          "time_seconds": 135.775,
+          "file": "2_135.775s.jpg",
+          "observation": "Lucky Ice Pop tails effect; board in progress"
+        },
+        {
+          "time_seconds": 270.55,
+          "file": "3_270.550s.jpg",
+          "observation": "Defeat vs named AI Miraidon ex deck, Conkeldurr Card of Game"
+        }
+      ],
+      "limitations": [
+        "Sparse samples do not establish coverage or Auto enabled state. Named Solo AI deck result provides computer context."
+      ]
+    },
+    {
+      "video_basename": "20261009_195029000_iOS.MP4",
+      "recording_type": "single_computer_battle_candidate",
+      "mode": "computer",
+      "auto_observation": {
+        "visible": true,
+        "status_at_samples": "checked Auto at95.488s"
+      },
+      "opponent": "Miraidon ex Deck (Deluxe Pack: Mega)",
+      "visible_owner_core": [
+        "Hitmonchan ex",
+        "Sandshrew",
+        "Sandslash",
+        "Timburr",
+        "Conkeldurr"
+      ],
+      "opening_available": "loading at0s; initial full-HP0–0 board at20s",
+      "ending_available": "Defeat result at189.976s",
+      "sampled_result": "Defeat",
+      "relationships": [
+        {
+          "related_video": "20261009_194445000_iOS.MP4",
+          "relationship": "similar matchup/core, appears fresh separate battle",
+          "basis": "new loading and full-HP0–0 initial board after earlier clip's completed result; different Conkeldurr version visible in hand"
+        }
+      ],
+      "evidence": [
+        {
+          "time_seconds": 0,
+          "file": "0_0.000s.jpg",
+          "observation": "loading screen"
+        },
+        {
+          "time_seconds": 20,
+          "file": "1_20.000s.jpg",
+          "observation": "full-HP Hitmonchan ex vs Iron Thorns,0–0"
+        },
+        {
+          "time_seconds": 95.488,
+          "file": "2_95.488s.jpg",
+          "observation": "checked Auto;Hitmonchan ex50HP,benched Timburr/Sandshrew/Timburr against Iron Thorns/Magnemite"
+        },
+        {
+          "time_seconds": 189.976,
+          "file": "3_189.976s.jpg",
+          "observation": "Defeat vs Miraidon ex AI deck; opponent Iron Thorns Card of Game"
+        }
+      ],
+      "limitations": [
+        "Opening setup and match count need full-pass verification."
+      ]
+    },
+    {
+      "video_basename": "20261009_195432000_iOS.MP4",
+      "recording_type": "unknown_no_visual_intake",
+      "mode": "unknown",
+      "auto_observation": {
+        "visible": null,
+        "status_at_samples": "no frames available"
+      },
+      "opponent": null,
+      "visible_owner_core": [],
+      "opening_available": "unknown",
+      "ending_available": "unknown",
+      "sampled_result": null,
+      "relationships": [],
+      "evidence": [
+        {
+          "file": "INTAKE_ERROR.json",
+          "observation": "root's ffprobe timed out after45s; root confirmed source access/probe blockage and instructed no retry"
+        }
+      ],
+      "limitations": [
+        "Source access/probe blocked. No video frame inspected; no corruption diagnosis or match classification inferred."
+      ]
+    },
+    {
+      "video_basename": "20261009_195808000_iOS.MP4",
+      "recording_type": "single_computer_battle_candidate_with_deck_share_intro",
+      "mode": "computer",
+      "auto_observation": {
+        "visible": true,
+        "status_at_samples": "checked Auto at20.000s and121.114s"
+      },
+      "opponent": "Mega Gardevoir ex Deck (Deluxe Pack: Mega)",
+      "visible_owner_core": [
+        "Regigigas",
+        "Glimmet",
+        "Glimmora",
+        "Pawniard",
+        "Kingambit"
+      ],
+      "opening_available": "deck QR share at0s; initial placement board at20s",
+      "ending_available": "Defeat result at241.227s",
+      "sampled_result": "Defeat",
+      "relationships": [],
+      "evidence": [
+        {
+          "time_seconds": 0,
+          "file": "0_0.000s.jpg",
+          "observation": "deck sharing QR modal"
+        },
+        {
+          "time_seconds": 20,
+          "file": "1_20.000s.jpg",
+          "observation": "opening placement with Auto checked;Regigigas/Ilima in owner hand"
+        },
+        {
+          "time_seconds": 121.114,
+          "file": "2_121.114s.jpg",
+          "observation": "Auto checked;Glimmora/Glimmet/Pawniard vs Mega Gardevoir ex/Mega Diancie ex;Peculiar Plaza"
+        },
+        {
+          "time_seconds": 241.227,
+          "file": "3_241.227s.jpg",
+          "observation": "Defeat vs named Mega Gardevoir ex AI deck;Kingambit Card of Game"
+        }
+      ],
+      "limitations": [
+        "Sparse samples do not establish full coverage or exhaustive match count.195432 relation unknown due access blockage."
+      ]
+    },
+    {
+      "video_basename": "20261009_222100000_iOS.MP4",
+      "recording_type": "unknown_no_visual_intake",
+      "mode": "unknown",
+      "auto_observation": {
+        "visible": null,
+        "status_at_samples": "no frames available"
+      },
+      "opponent": null,
+      "visible_owner_core": [],
+      "opening_available": "unknown",
+      "ending_available": "unknown",
+      "sampled_result": null,
+      "relationships": [],
+      "evidence": [
+        {
+          "file": "INTAKE_ERROR.json",
+          "observation": "root confirmed ffprobe timeout while reading OneDrive source; no SOURCE or frames created"
+        }
+      ],
+      "limitations": [
+        "Source access/probe blocked. No video frame inspected; no corruption diagnosis or match classification inferred."
+      ]
+    },
+    {
+      "video_basename": "20261009_222740000_iOS.MP4",
+      "recording_type": "unknown_no_visual_intake",
+      "mode": "unknown",
+      "auto_observation": {
+        "visible": null,
+        "status_at_samples": "no frames available"
+      },
+      "opponent": null,
+      "visible_owner_core": [],
+      "opening_available": "unknown",
+      "ending_available": "unknown",
+      "sampled_result": null,
+      "relationships": [],
+      "evidence": [
+        {
+          "file": "parent_message",
+          "observation": "root confirmed stalling source access with cloud recall attributes; no SOURCE or frames yet"
+        }
+      ],
+      "limitations": [
+        "Source access stalled. No video frame inspected; no corruption diagnosis or match classification inferred. Root may later update if source becomes available."
+      ]
+    }
+  ]
+}

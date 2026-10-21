@@ -1,0 +1,51 @@
+{
+  "source_video": "20261002_020315000_iOS.MP4",
+  "source_sha256": "52b7fa2fb75ddd5924d13f0cf22833d83c83118fc31a5e87be30b4949ca37fc7",
+  "source_bytes": 627828243,
+  "accepted": true,
+  "coverage_checked": true,
+  "completion_status": "full_battle_review_complete",
+  "scope": "Entire 341.141667-second competitive battle: pregame deck selection, setup, all 11 turns, final knockout, Defeat and available results",
+  "requested_log": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "ranked_ladder_eligible": false,
+  "accepted_at_utc": "2026-10-02T03:27:10.335086+00:00",
+  "reviewer": "root independent lead",
+  "first_pass_reviewer": "sol_competitive_20261002_020315000",
+  "lead_evidence": [
+    "LEAD_CHECK.jpg",
+    "overview/sheet_02.jpg",
+    "overview/progress_05.jpg",
+    "overview/progress_06.jpg",
+    "native/t0001.50.jpg",
+    "native/t0223.50.jpg",
+    "native/t0292.50.jpg",
+    "native/t0311.00.jpg",
+    "native/t0334.50.jpg"
+  ],
+  "independent_checks": [
+    "Read and reconciled full REVIEW, COVERAGE, SUMMARY and UNCERTAINTIES, all 11 turns and complete supplied 0-341.141667s coverage",
+    "Verified source-bound name, deck core and Water setting, owner going second, opponent identity and PvP evidence",
+    "Independently checked ordinary turn5/6 development, Wave Splash and the first Storm, active healing/development and decisive Cyrus/Indeedee/Storm sequence",
+    "Verified owner first point, opponent three-point terminal progression and explicit Defeat",
+    "Integrated Astra printed-card clarifications; rank badges narrowed to observable badges without claiming exact ranked mode"
+  ],
+  "outcome_description": "Loss, owner 1 versus opponent 3 points, against るか; no concession; owner went second",
+  "key_findings": [
+    "Owner first attacks on own third turn after three ordinary Water attachments; the first Storm then removes that Wailmer and all three Energy.",
+    "Replacement Wailord has one Energy on global turn8 and two on turn10, never reaches four-Energy Whale Pump before game ends.",
+    "Two Indeedee ex heal Active Wailord fully after Slash, while both remain damaged on Bench from first Storm; Cyrus selects one for terminal two-point knockout.",
+    "Baxcalibur evolves via Rare Candy on global turn3 and visibly uses Ice Maker on turns5,7,9,11; Milotic ex also uses Aqua Charge on turn9.",
+    "Non-ex Wailord has four Colorless cost and bonus damage per Water; Indeedee ex attack requires two Psychic. Water-only configuration uses Indeedee healing without its attack.",
+    "Alternate Energy and Sharpedo/Misty ramp remain owner proposals, untested in this recording; no subjective numerical ratings assigned."
+  ],
+  "limitations": [
+    "Source identity adopted from supplied bound manifest and lead assignment; worker did not duplicate full-source hashing.",
+    "Three-second overview sampling makes some action boundaries approximate; consequential actions and states have targeted native evidence.",
+    "Opponent hidden cards and exact full deck lists remain unknown.",
+    "No opponent Auto state or separately opened exact mode label.",
+    "Post-battle card presentation unfinished at recording end after explicit Defeat.",
+    "Local match date October1,2026 follows assignment testimony/upload basis; exact filename timezone inferred, not printed."
+  ],
+  "remaining_coverage_gaps": [],
+  "unverified_material_claims": []
+}

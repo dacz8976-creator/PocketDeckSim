@@ -1,0 +1,60 @@
+{
+  "source_video": "20261006_020518000_iOS.MP4",
+  "source_sha256": "64968acf700ddfecc51cc5bcb01014db7afa855545057bd6934226afd35a53e7",
+  "consequential_unresolved_visual_ambiguities": [],
+  "bounded_resolved": [
+    {
+      "issue": "Second Lucky Ice Pop coin",
+      "resolution": "Native214.7 clearly Heads; return observed218"
+    },
+    {
+      "issue": "Wally Energy type",
+      "resolution": "Native342text and344symbols showColorless; later normal Fighting distinct"
+    },
+    {
+      "issue": "Copperajah attachment order turn6",
+      "resolution": "Native179alreadyCopperajah; Stakataka secondMetal animation181"
+    },
+    {
+      "issue": "Research reveal order turn15",
+      "resolution": "Poké Ball490, thenTimburr491"
+    },
+    {
+      "issue": "Copperajah third Metal timing on turn12",
+      "resolution": "Unused large current Metal through376; third attached and current empty by378, before May380."
+    }
+  ],
+  "remaining_recording_or_external_limits": [
+    {
+      "issue": "Matching exact20 list is absent from retrieved live Pause Games deck snapshot; QR establishes filmed semantic entities and Energy, not an existing live log version.",
+      "status": "explicit_limit",
+      "resolution": "Do not infer unavailable fact"
+    },
+    {
+      "issue": "Opponent normal draws, May search/shuffle identities and hidden hand faces are unknown.",
+      "status": "explicit_limit",
+      "resolution": "Do not infer unavailable fact"
+    },
+    {
+      "issue": "Neither discard pile is opened anywhere. Full pile content/order cannot be established.",
+      "status": "explicit_limit",
+      "resolution": "Do not infer unavailable fact"
+    },
+    {
+      "issue": "QR functional entities do not encode exact artwork/rarity. Hitmonchan ex artwork printing remains qualified.",
+      "status": "explicit_limit",
+      "resolution": "Do not infer unavailable fact"
+    },
+    {
+      "issue": "Frame times are source-local requested seek values; actual decoded presentation timestamps were not measured.",
+      "status": "explicit_limit",
+      "resolution": "Do not infer unavailable fact"
+    },
+    {
+      "issue": "This is the first-pass packet. Independent visual acceptance, duplicate check, registration and external save verification belong to the lead.",
+      "status": "explicit_limit",
+      "resolution": "Do not infer unavailable fact"
+    }
+  ],
+  "astra_escalation": "Not needed: consequential candidate ambiguities resolved by bounded native inspection; hidden identities and absent external version remain limits."
+}

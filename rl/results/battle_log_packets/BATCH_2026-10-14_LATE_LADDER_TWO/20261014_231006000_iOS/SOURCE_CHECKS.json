@@ -1,0 +1,33 @@
+{
+  "lead": "/root",
+  "checked_utc": "2026-10-15T00:46:32.585895+00:00",
+  "source_filename": "20261014_231006000_iOS.MP4",
+  "source_sha256": "60f6a6c04e3f6e8c989b867b9dd41c536d4d0ac853b40603575a4ce3829faeee",
+  "observations": [
+    {
+      "path": "evidence/t0188.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Alolan Ninetales ex uses Binding Snow; opponent Zeno has 1 point before the first main attack.",
+      "sha256": "2f24c2b0a842d486338e823319f615bfde84667c3707c6a8174e03bac99d4b1e"
+    },
+    {
+      "path": "evidence/t0192.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Entei ex has 40 HP after the attack, confirming 100 damage from 140; the Active Energy Zone attachment restriction is displayed.",
+      "sha256": "92e951ee4b16f81a641e88db72b78865ce4be821ceb73b59663443c6df00bf45"
+    },
+    {
+      "path": "evidence/t0463.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "The source explicitly displays Your opponent conceded, establishing the terminal method.",
+      "sha256": "9c4ad5ba565e1deb30cfea3dbf387a39a60e2a496a3d811aa95407a2bd647176"
+    },
+    {
+      "path": "evidence/t0471.80.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Final statistics show Victory, went first, 11 turns, actual score 2-1 and 300 damage.",
+      "sha256": "6935d77486968e15dea1078b702d66c57a42f9cc27963c5e01d1a13583c63460"
+    }
+  ],
+  "coverage_reconciliation": "Root read full timeline and turn/phase coverage; separate Sol reviewer checked decisive sequences and ordinary turns against retained source evidence."
+}

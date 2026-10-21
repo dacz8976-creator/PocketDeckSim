@@ -1,0 +1,16 @@
+upstream main c3083a3f; looking at the 13 change(s) since 9044ff6d
+hint  | what | files (engine/tests/data/tooling) | new cards | our cards mentioned
+LOOK  | #384 2026-10-04 bcollazo: Consume stale EndFirstTurnAttachEnergyToSelf ability choices instead of panicking | 1/0/0/0 | - | -
+maybe | #385 2026-10-04 bcollazo: Don't offer optional on-play abilities during setup or on the opponent's turn | 1/1/0/0 | - | -
+maybe | #386 2026-10-04 bcollazo: Resolve a pending promotion before a queued EndTurn | 1/0/0/0 | - | -
+skip  | #387 2026-10-04 bcollazo: viewer: bench-sized stadium card and visible attached Tool cards | 0/0/0/4 | - | -
+LOOK  | #390 2026-10-07 bcollazo: Fix exponential Spending Rush enumeration; add opt-in perf_watch for combinatorial blowups | 5/1/0/1 | - | -
+maybe | #391 2026-10-07 bcollazo: Record per-action player scores in replays and show them in the viewer | 2/0/0/17 | - | -
+maybe | #392 2026-10-07 bcollazo: Cap search forecasts at 20 branches; group perf_watch incidents by cause | 3/1/0/1 | - | -
+LOOK  | #389 2026-10-07 bcollazo: Don't trigger Caterpie's Quick Growth when setup ends | 1/1/0/0 | - | Caterpie, Metapod
+skip  | #393 2026-10-07 bcollazo: Upgrade pyo3 to 0.29 and add from_py_object to pyclass macros | 0/0/0/4 | - | -
+LOOK  | #394 2026-10-08 bcollazo: Limit actions per turn to 100 (turn timer), ending the two-Dusknoir Shadow Void loop | 3/1/0/0 | - | -
+LOOK  | #395 2026-10-09 rook-productions: Key Trainer logic by effect text so reprints need no code (closes #166) | 4/2/0/1 | - | Cheren, Clemont, Copycat, Cynthia, Flame Patch, Gladion, Jasmine, Korrina (+14 more)
+skip  | #400 2026-10-16 bcollazo: Fix unreachable 'et' player code in parse_player_code | 0/0/0/1 | - | -
+LOOK  | #383 2026-10-16 dacz8976-creator: Limit Heavy Helmet, Harden, Hide and Blocking Shell to damage from attacks | 1/2/0/0 | - | Darkrai, Deceptive Needle, Heavy Helmet, Metal Core Barrier, Psychic, Rocky Helmet, Steel Apron
+(187 card names in our decks; names under 6 letters are not matched by name: Absol, Axew, Cyrus, Deino, Eevee, Erika, Gible, Guzma, Ilima, Irida, Iris, Lisia, Magby, Mars...)

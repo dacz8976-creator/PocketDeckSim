@@ -1,0 +1,17 @@
+{
+  "accepted": true,
+  "accepted_utc": "2026-09-22T02:06:18.6352217Z",
+  "video": "20260908_004344000_iOS.MP4",
+  "primary_reviewer": "Gemini v7 two-pass API review",
+  "routine_verifier": "Codex Sol subagent /root/sol_verifier_150630",
+  "clarification_verifier": "Codex Astra subagent /root/astra_review_152812",
+  "lead_reviewer": "Codex root",
+  "scope": "Complete battle from setup through all eight turns and the terminal 3-1 defeat",
+  "source_identity_verified": true,
+  "unresolved_gameplay_intervals": false,
+  "every_decoded_frame_reviewed": false,
+  "gemini_candidate_accepted_without_correction": false,
+  "gemini_candidate_disposition": "accepted as the primary outline after targeted corrections to opening hand, Energy type, omitted Benched Drowzee, terminal timestamp and unsupported match metadata",
+  "parser_validation_after_correction": "passed with no evidence-contract errors",
+  "disposition": "COMPLETE and accepted"
+}

@@ -1,0 +1,45 @@
+Input #0, mov,mp4,m4a,3gp,3g2,mj2, from 'C:\Users\dacz8\OneDrive\Desktop\Battle Logs\20261002_205230000_iOS.MP4':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 1
+    compatible_brands: isommp41mp42
+    creation_time   : 2026-10-02T20:52:30.000000Z
+  Duration: 00:04:38.24, start: 0.000000, bitrate: 14813 kb/s
+  Stream #0:0[0x1](und): Video: hevc (Main) (hvc1 / 0x31637668), yuvj420p(pc, bt709, progressive), 1170x2532, 14801 kb/s, 59.59 fps, 60 tbr, 600 tbn (default)
+    Metadata:
+      creation_time   : 2026-10-02T20:52:30.000000Z
+      handler_name    : Core Media Video
+      vendor_id       : [0][0][0][0]
+  Stream #0:1[0x2](und): Audio: aac (LC) (mp4a / 0x6134706D), 44100 Hz, stereo, fltp, 2 kb/s (default)
+    Metadata:
+      creation_time   : 2026-10-02T20:52:30.000000Z
+      handler_name    : Core Media Audio
+      vendor_id       : [0][0][0][0]
+Stream mapping:
+  Stream #0:0 -> #0:0 (hevc (native) -> mjpeg (native))
+Press [q] to stop, [?] for help
+[Parsed_showinfo_0 @ 00000213bf8d3080] config in time_base: 1/600, frame_rate: 60/1
+[Parsed_showinfo_0 @ 00000213bf8d3080] config out time_base: 0/0, frame_rate: 0/0
+[Parsed_showinfo_0 @ 00000213bf8d3080] n:   0 pts:  73506 pts_time:122.51  duration:     10 duration_time:0.0166667 pos:228649417 fmt:yuvj420p sar:0/1 s:1170x2532 i:P iskey:0 type:B checksum:1102C12D plane_checksum:[3A772086 1C2E670F F4A23998] mean:[174 142 116] stdev:[50.9 23.2 33.0]
+[Parsed_showinfo_0 @ 00000213bf8d3080] color_range:pc color_space:bt709 color_primaries:bt709 color_trc:bt709
+Output #0, image2, to 'C:\Users\dacz8\OneDrive\Desktop\Battle Logs\Recording_QA\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\20261002_205230000_iOS_auto_sol\turn_evidence\t0122.50.jpg':
+  Metadata:
+    major_brand     : mp42
+    minor_version   : 1
+    compatible_brands: isommp41mp42
+    encoder         : Lavf60.3.100
+  Stream #0:0(und): Video: mjpeg, yuvj420p(pc, bt709, progressive), 1170x2532, q=2-31, 200 kb/s, 60 fps, 60 tbn (default)
+    Metadata:
+      creation_time   : 2026-10-02T20:52:30.000000Z
+      handler_name    : Core Media Video
+      vendor_id       : [0][0][0][0]
+      encoder         : Lavc60.3.100 mjpeg
+    Side data:
+      cpb: bitrate max/min/avg: 0/0/200000 buffer size: 0 vbv_delay: N/A
+frame=    0 fps=0.0 q=2.0 size=       0kB time=00:00:00.00 bitrate=N/A speed=   0x    
+[image2 @ 00000213c19c27c0] The specified filename 'C:\Users\dacz8\OneDrive\Desktop\Battle Logs\Recording_QA\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\20261002_205230000_iOS_auto_sol\turn_evidence\t0122.50.jpg' does not contain an image sequence pattern or a pattern is invalid.
+[image2 @ 00000213c19c27c0] Use a pattern such as %03d for an image sequence or use the -update option (with -frames:v 1 if needed) to write a single image.
+[Parsed_showinfo_0 @ 00000213bf8d3080] n:   1 pts:  73516 pts_time:122.527 duration:     10 duration_time:0.0166667 pos:228675896 fmt:yuvj420p sar:0/1 s:1170x2532 i:P iskey:0 type:B checksum:E018CF10 plane_checksum:[BB525BA4 ACBE2ECE AA7E449E] mean:[174 142 116] stdev:[50.9 23.2 33.1]
+[Parsed_showinfo_0 @ 00000213bf8d3080] color_range:pc color_space:bt709 color_primaries:bt709 color_trc:bt709
+frame=    1 fps=0.0 q=2.0 Lsize=N/A time=00:00:00.00 bitrate=N/A speed=   0x    
+video:546kB audio:0kB subtitle:0kB other streams:0kB global headers:0kB muxing overhead: unknown

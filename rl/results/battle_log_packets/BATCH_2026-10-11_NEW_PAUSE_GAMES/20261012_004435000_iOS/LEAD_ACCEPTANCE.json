@@ -1,0 +1,43 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-12T03:05:02.205835+00:00",
+  "source_game_count": 1,
+  "all_source_games_accepted": true,
+  "source_video": "20261012_004435000_iOS.MP4",
+  "source_sha256": "7326d0f49952bda981acb67765fb118375963a485c52161e693cb7cf85be37fe",
+  "scope": "Whole supplied continuous battle: setup, all turns, terminal sequence and source ending",
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 10,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-11_NEW_PAUSE_GAMES\\20261012_004435000_iOS\\independent_sol\\CHECK_RESULT.json",
+  "basis": "Whole-source Sol review and coverage; separate bounded Sol verification of opening, ordinary turns/first moves, draws/searches, hands, both boards/Energy Zones, fans and outcome. Root reconciled reports and checked the terminal frame. Structure checked separately. Only lead_checked, lead_acceptance and battle_review_status administrative fields are updated after the frozen independent input.",
+  "source_limits": [
+    "Opponent deck list and hand identities not filmed; hidden draws remain null.",
+    "No full discard-pile screens; only partial board-side top cards.",
+    "Mega Blaster mills3 owner cards, but only final top Soothing Shore is face-up; other2 identities and reveal-slot assignment unknown.",
+    "Exact queue subtype/ranked status unestablished; human match classification from matchmaking and absence of Auto throughout coverage.",
+    "Source creation time/date verified by parent; source SOURCE.json remains frozen.",
+    "T10 Research inspected; no resolved play/draw2 before concession."
+  ],
+  "outcome": {
+    "owner_result": "win",
+    "method": "opponent_concession",
+    "opponent_name": "Chuaryzard",
+    "opponent_level": 47,
+    "concession_source_seconds": 451,
+    "evidence_ids": [
+      "n0451.00",
+      "n0452.00",
+      "n0462.00"
+    ],
+    "points": {
+      "owner": 0,
+      "opponent": 0
+    },
+    "turns_displayed": 10,
+    "result_screen_owner_damage": 90
+  },
+  "external_status": "Live deck snapshot retrieved for this batch. This game save is pending; dated deck retrieval and filmed QR binding are preserved in DECK_USED.json.",
+  "archive_authorization": "Completed local review may be safely archived after verified CLI registration; original bytes/name preserved."
+}

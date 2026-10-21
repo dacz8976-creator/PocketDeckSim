@@ -1,0 +1,65 @@
+{
+  "schema": "video-review-summary-v1",
+  "source_video": "20261010_013009000_iOS.MP4",
+  "source_sha256": "80615dfc9c1e28f95434e3b4712f0540e6efc34392aef816419b6f82a0257329",
+  "duration_seconds": 565.725,
+  "reviewer": "/root/pause_013009",
+  "reviewer_model": "gpt-6.1-sol",
+  "review_scope": "Complete source from filmed deck/setup through final results; one game;16 turns",
+  "status": "review_complete_pending_independent_acceptance",
+  "capture_status": "complete_with_recording_limits",
+  "games": [
+    {
+      "game_id": "20261010_013009000_iOS_game1",
+      "mode": {
+        "classification": "human_random_matchmaking",
+        "basis": "Searching for opponent screen8s; opponent found identity28s; no Auto option visible in reviewed source",
+        "auto_option_observed": false,
+        "auto_enabled": null,
+        "precise_queue": null,
+        "precise_queue_limit": "Ranked/casual selection screen not recorded"
+      },
+      "opponent": "立花宗茂",
+      "owner": "Dacz8976",
+      "outcome": {
+        "owner": "Dacz8976",
+        "opponent": "立花宗茂",
+        "result": "loss",
+        "owner_points": 0,
+        "opponent_points": 3,
+        "turns": 16,
+        "went_first": true,
+        "damage_dealt": 140,
+        "KO_seconds": 550,
+        "third_point_seconds": 554,
+        "result_screen_seconds": 565,
+        "evidence_ids": [
+          "f_0550_00",
+          "f_0554_00",
+          "f_0565_00"
+        ]
+      },
+      "match_date": {
+        "date": "2026-10-09",
+        "timezone": "America/Chicago",
+        "basis": "ffprobe format creation_time2026-10-10T01:30:09.000000Z converted using provided environment timezone; visible phone8:30 agrees",
+        "creation_time_utc": "2026-10-10T01:30:09.000000Z",
+        "local_recording_start": "2026-10-09T20:30:09-05:00",
+        "filename_clock": "UTC date supported by matching creation_time"
+      },
+      "deck_core": "Timburr / Gurdurr / Conkeldurr / Nacli / Naclstack / Garganacl",
+      "opponent_core": "Dialga ex / Team Rocket Tinkatink-Tinkaton / Varoom-Revavroom",
+      "deck_provenance": "filmed_qr_and_current_live20_verified",
+      "owner_ratings": {
+        "fun": null,
+        "competitive": null,
+        "basis": "Not supplied by owner"
+      }
+    }
+  ],
+  "coverage_file": "COVERAGE.md",
+  "uncertainties_file": "UNCERTAINTIES.json",
+  "external_log_modified_by_reviewer": false,
+  "source_modified_or_moved": false,
+  "lead_checked": false
+}

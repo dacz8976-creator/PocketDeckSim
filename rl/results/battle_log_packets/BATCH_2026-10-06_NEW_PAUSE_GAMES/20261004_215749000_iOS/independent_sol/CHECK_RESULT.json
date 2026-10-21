@@ -1,0 +1,89 @@
+{
+  "schema": "independent-pause-packet-check-v1",
+  "reviewer": "/root/independent_215749",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "checked_utc": "2026-10-06T17:45:36.591Z",
+  "source_video": "20261004_215749000_iOS.MP4",
+  "source_sha256": "2015607dfe613e8bf71f4637d5d26ed625d8a451b0541b93b3a82bf0457126af",
+  "status": "rejected",
+  "accepted": false,
+  "scope": "Bounded independent source checks and packet-contract review, not a second full-battle visual pass.",
+  "summary": "Visual outcome and consequential gameplay claims are supported. Packet needs source-reference and encoding corrections before acceptance.",
+  "findings": [
+    {
+      "id": "F1",
+      "severity": "required_correction",
+      "location": "TURN_LEDGER.json turn5 draws_and_searches Stadium draw, automatic_events_in_order, owner_hand_end, board_after; REVIEW.md; COVERAGE.md; TURN_EVIDENCE.json scheduled_capture_limits; UNCERTAINTIES.json end_turn_draw",
+      "finding": "The exact225-second image is a blurred Connection is unstable overlay with two owner cards. It does not visibly establish Mega Blaziken ex, a three-card hand, Meltan promotion, or a stable resolved boundary. The clear226-second frame supports the resolved hand and board. The Stadium draw claim is supported by the visible end-turn text, two-card pre-attack hand, and three-card resolved hand, but its reveal onset is obscured and must remain bounded.",
+      "evidence": [
+        "native/t0206.00.jpg",
+        "native/t0177.00.jpg",
+        "native/t0224.00.jpg",
+        "native/t0225.00.jpg",
+        "native/t0226.00.jpg"
+      ],
+      "needed": "Use226s/f0226.00 for direct observed final hand and resolved board. Preserve the225 overlay and bounded reveal timing as a recording limit. Do not assert a direct225 reveal or exact Trail-versus-replacement order without denser source evidence."
+    },
+    {
+      "id": "F2",
+      "severity": "required_correction",
+      "location": "TURN_LEDGER.json owner turn1 named hand/draw/search/action strings and turn3/5 attachment descriptions",
+      "finding": "Actual JSON strings contain Pok\\u00c3\\u00a9 Ball instead of Pok\\u00e9 Ball, and turn\\u00e2\\u20ac\\u2122s instead of a normal apostrophe. These are stored character corruption, independently confirmed by ensure_ascii JSON output, rather than terminal display corruption.",
+      "evidence": [
+        "TURN_LEDGER.json",
+        "DECK_USED.json",
+        "independent_sol/QR_RECHECK.json",
+        "native/t0055.00.jpg"
+      ],
+      "needed": "Normalize the affected text to correct Unicode or plain ASCII card names and apostrophes. Preserve card identity and counts."
+    },
+    {
+      "id": "F3",
+      "severity": "contract_correction",
+      "location": "TURN_LEDGER.json board states",
+      "finding": "Known absent Stadium and Tool scalars are encoded null while every Pokemon is marked observed; the template contract reserves null for unknown with a reason and requests 'none' for observed absent scalars. Empty Bench slots also use null without an empty-slot label. This does not alter the visually supported gameplay, but the known-absent versus unknown distinction is not explicit.",
+      "evidence": [
+        "Review_Log/templates/pause_games/README.md",
+        "TURN_LEDGER.json",
+        "native/t0055.00.jpg",
+        "native/t0130.00.jpg",
+        "native/t0244.00.jpg"
+      ],
+      "needed": "Represent observed absent Stadium/Tools as 'none' or add explicit absence status/basis. Preserve null for actual uncertainty. Document null Bench slots as visibly empty positions."
+    },
+    {
+      "id": "F4",
+      "severity": "contract_correction",
+      "location": "TURN_LEDGER.json turn1 board_after.turn_number_displayed",
+      "finding": "The primary f0074.00 evidence shows Current turn:2, while board_after stores turn_number_displayed:1. It can describe the resolved end-of-turn1 board, but the field must not claim1 was displayed in that image.",
+      "evidence": [
+        "native/t0074.00.jpg",
+        "TURN_LEDGER.json"
+      ],
+      "needed": "Use a suitable pre-transition stable board reference or distinguish game turn being resolved from displayed transition turn."
+    }
+  ],
+  "verified_checks": [
+    "Five opening cards at30s and Torchic selection31s agree with prose and opening JSON.",
+    "Owner first move is Poke Ball at56s, searches Castform by60s. Three opponent backs at55s are visually countable.",
+    "Red Card replacement hand Flame Patch, ordinary Research, full-art Research corroborated at94s; later106s shows normal Combusken draw before first evolution107s.",
+    "Turn3 Research draws Torchic118s then Field Blower120s; ending hand three at130s, Active Combusken60/80 Fire1 Helmet; no retreat.",
+    "Opponent turn4 Potion heals Tinkatink before Metal attachment to benched Meltan;154/155/157s show healed60HP, unspent Metal and then attached Metal.",
+    "Turn5 normal Copycat hand170s; Research first Combusken176s then Hiking Trail177/178s; retreat paid Fire1 and promoted Castform; current Fire attaches to healthy Bench2 Combusken200s; Flame Patch201/204/206s attaches retreat Fire to Active Castform.",
+    "Pre-attack hand206s is Field Blower and Copycat, count2. Resolved226s and concession244s show those plus Mega Blaziken ex, count3. Hand arithmetic reconciles3,3,2 then3 across owner turns.",
+    "Both final boards, HP, bench positions, typed Energy, Helmet and Stadium match206/226/244s. Opponent current Metal remains unused at concession. Owner point1 and opponent0 shown.",
+    "Opponent fan at owner turns1/3/5 is three countable backs from retained top crops.235s after opponent Research has five backs; identities remain hidden.",
+    "Draw-end+1/+3/+6 frames retained for all three owner turns, dense55/106 selected where first plays are immediate,170 selected for turn5; before-end72/130/206 crops retained.",
+    "Turn1 supporter warning appears at overview73.5s and turn2 transition74s supports acceptance to end. No unshown decline is invented.",
+    "Retained frames are native1170x2532 with bottom1170x507 and top1170x650 crops at declared bounds.",
+    "Independent QR decode from native1s matches saved payload, roundtrips, totals20 cards, Fire, Combusken2. Current live snapshot totals20 with RareCandy2 instead; version conflict is correctly preserved.",
+    "Source setup and selected coverage/ending sheets corroborate single human online match and no visible Auto in inspected evidence. Exact queue remains unknown.",
+    "Six JSON turn rows match the prose coverage. Absent opened discard piles and hidden opponent identities are explicit recording limits; bounded independent inspection found no contrary pile view.",
+    "Structural checker passes with six rows and zero issues. This is separate from the rejected semantic/evidence disposition."
+  ],
+  "astrascope": "No unresolved card identity or decisive Energy target remains. If exact ordering across225s is needed, use224/225/226s native frames and a bounded additional seek; otherwise preserve a source limit.",
+  "media_actions": false,
+  "shared_writes": false,
+  "external_writes": false
+}

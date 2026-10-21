@@ -1,0 +1,56 @@
+old	08a9b3a_10_cli_k3	240	9	SAME	Player 0 won: 150 (62.50%) | Player 1 won: 90 (37.50%) | Draws: 0 (0.00%)
+old	08a9b3a_10_cli_kp3	240	12	SAME	Player 0 won: 144 (60.00%) | Player 1 won: 96 (40.00%) | Draws: 0 (0.00%)
+old	08a9b3a_10_cli_kog3	240	11	SAME	Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%)
+old	08a9b3a_10_cli_kta3	240	12	SAME	Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%)
+old	08a9b3a_10_cli_km3	240	12	SAME	Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%)
+old	08a9b3a_10_goldfish	0	0	SAME	page =, coverage =
+old	08a9b3a_10_run_screen	3840	278	SAME	run_screen: /home/dacz8976/pincand_work/games/old/08a9b3a_10_run_screen.txt v engine_switch_rules2_2026-10/08a9b3a_10_run_screen.txt: 20 of 20 lines equal (2 decks; the header's engine path aside)
+old	08a9b3a_table_kd3_40	1120	118	SAME	0 differing deals of 1120; rules page: /home/dacz8976/pincand_work/games/old/08a9b3a_table_kd3_40.txt: no RULE finding
+new	08a9b3a_10_cli_k3	240	9	SAME	Player 0 won: 150 (62.50%) | Player 1 won: 90 (37.50%) | Draws: 0 (0.00%)
+new	08a9b3a_10_cli_kp3	240	12	SAME	Player 0 won: 144 (60.00%) | Player 1 won: 96 (40.00%) | Draws: 0 (0.00%)
+new	08a9b3a_10_cli_kog3	240	11	SAME	Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%)
+new	08a9b3a_10_cli_kta3	240	11	SAME	Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%)
+new	08a9b3a_10_cli_km3	240	13	SAME	Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%)
+new	08a9b3a_10_goldfish	0	0	SAME	page =, coverage =
+new	08a9b3a_10_run_screen	3840	320	SAME	run_screen: /home/dacz8976/pincand_work/games/new/08a9b3a_10_run_screen.txt v engine_switch_rules2_2026-10/08a9b3a_10_run_screen.txt: 20 of 20 lines equal (2 decks; the header's engine path aside)
+new	floor:14	1920	398	SAME	  coverage program: recorded rl/engine-2026-10-02/goldfish (sha256 cecc76fbe51b3327..), replayed rl/engine-2026-10-12/goldfish (sha256 d8cfb7799770e166..) (set aside in the page by --allow-coverage-program: the page names the goldfish floor.py used; the coverage file itself is compared above)
+new	floor:10	1920	283	SAME	  coverage program: recorded rl/engine-2026-10-02/goldfish (sha256 cecc76fbe51b3327..), replayed rl/engine-2026-10-12/goldfish (sha256 d8cfb7799770e166..) (set aside in the page by --allow-coverage-program: the page names the goldfish floor.py used; the coverage file itself is compared above)
+new	floor:06	1920	238	SAME	  coverage program: recorded rl/engine-2026-10-02/goldfish (sha256 cecc76fbe51b3327..), replayed rl/engine-2026-10-12/goldfish (sha256 d8cfb7799770e166..) (set aside in the page by --allow-coverage-program: the page names the goldfish floor.py used; the coverage file itself is compared above)
+new	floor:02	1920	334	SAME	  coverage program: recorded rl/engine-2026-10-02/goldfish (sha256 cecc76fbe51b3327..), replayed rl/engine-2026-10-12/goldfish (sha256 d8cfb7799770e166..) (set aside in the page by --allow-coverage-program: the page names the goldfish floor.py used; the coverage file itself is compared above)
+new	floor:08	1920	436	SAME	  coverage program: recorded rl/engine-2026-10-02/goldfish (sha256 cecc76fbe51b3327..), replayed rl/engine-2026-10-12/goldfish (sha256 d8cfb7799770e166..) (set aside in the page by --allow-coverage-program: the page names the goldfish floor.py used; the coverage file itself is compared above)
+new	floor:D_root	1920	418	SAME	  allowed: line 24, the row of B3 025, its engine cell only: recorded "engine: Implemented with unverified rule boundaries; Victory Star supports printed attack-effect coin batches. After a Confusion heads the attack's own coins are offered for a reroll, with no second Confusion check (rules/04 §9, 
+new	floor:D_amended	1920	405	SAME	  allowed: line 24, the row of B3 025, its engine cell only: recorded "engine: Implemented with unverified rule boundaries; Victory Star supports printed attack-effect coin batches. After a Confusion heads the attack's own coins are offered for a reroll, with no second Confusion check (rules/04 §9, 
+new	08a9b3a_new17_k3	8500	1142	DIFFERS	8 differing deals of 8500; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_new17_k3.txt: no RULE finding
+new	08a9b3a_new17_kp3	8500	1283	DIFFERS	7 differing deals of 8500; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_new17_kp3.txt: no RULE finding
+new	08a9b3a_dev_km3_new17	8500	927	DIFFERS	7 differing deals of 8500; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_dev_km3_new17.txt: no RULE finding
+new	08a9b3a_cov_var_v-lucario_2_km3	3500	206	SAME	0 differing deals of 3500; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_cov_var_v-lucario_2_km3.txt: no RULE finding
+new	08a9b3a_table_k3	14000	806	SAME	0 differing deals of 14000; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_table_k3.txt: no RULE finding
+new	08a9b3a_table_kp3	14000	945	SAME	0 differing deals of 14000; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_table_kp3.txt: no RULE finding
+new	08a9b3a_dev_km3_table	14000	975	SAME	0 differing deals of 14000; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_dev_km3_table.txt: no RULE finding
+new	08a9b3a_table_kd3_40	1120	94	SAME	0 differing deals of 1120; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_table_kd3_40.txt: no RULE finding
+new	08a9b3a_table_kpr3_40	1120	98	SAME	0 differing deals of 1120; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_table_kpr3_40.txt: no RULE finding
+new	08a9b3a_new17_kog3	8500	654	DIFFERS	7 differing deals of 8500; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_new17_kog3.txt: no RULE finding
+new	08a9b3a_table_kog3	14000	945	SAME	0 differing deals of 14000; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_table_kog3.txt: no RULE finding
+new	08a9b3a_table_kq3	14000	1146	SAME	0 differing deals of 14000; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_table_kq3.txt: no RULE finding
+new	08a9b3a_cov_var_v-suicune_2_km3	3500	295	SAME	0 differing deals of 3500; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_cov_var_v-suicune_2_km3.txt: no RULE finding
+new	08a9b3a_cov_var_v-weezing_2_km3	3500	255	SAME	0 differing deals of 3500; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_cov_var_v-weezing_2_km3.txt: no RULE finding
+new	08a9b3a_cov_scizor_km3	4000	317	SAME	0 differing deals of 4000; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_cov_scizor_km3.txt: no RULE finding
+new	08a9b3a_cov_var_l-charizardy_km3	4000	344	SAME	0 differing deals of 4000; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_cov_var_l-charizardy_km3.txt: no RULE finding
+new	08a9b3a_dev_kta3_new17	8500	695	DIFFERS	7 differing deals of 8500; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_dev_kta3_new17.txt: no RULE finding
+new	08a9b3a_fresh_kta3_new17	8500	685	DIFFERS	1 differing deals of 8500; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_fresh_kta3_new17.txt: no RULE finding
+new	08a9b3a_dev_kta3_table	14000	986	SAME	0 differing deals of 14000; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_dev_kta3_table.txt: no RULE finding
+new	08a9b3a_fresh_kta3_table	14000	986	SAME	0 differing deals of 14000; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_fresh_kta3_table.txt: no RULE finding
+new	08a9b3a_cov_b2e_km3	48000	3554	SAME	0 differing deals of 48000; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_cov_b2e_km3.txt: no RULE finding
+new	08a9b3a_8b_cloud_new_k3	240	31	SAME	0 differing deals of 240; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_8b_cloud_new_k3.txt: no RULE finding
+new	08a9b3a_8b_cloud_new_km3	240	37	SAME	0 differing deals of 240; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_8b_cloud_new_km3.txt: no RULE finding
+new	08a9b3a_8b_new2_new_k3	280	33	SAME	0 differing deals of 280; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_8b_new2_new_k3.txt: no RULE finding
+new	08a9b3a_8b_new2_new_km3	280	35	SAME	0 differing deals of 280; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_8b_new2_new_km3.txt: no RULE finding
+new	08a9b3a_8_will_new_k3	750	42	SAME	0 differing deals of 750; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_8_will_new_k3.txt: no RULE finding
+new	08a9b3a_8_will_new_km3	1500	108	SAME	0 differing deals of 1500; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_8_will_new_km3.txt: no RULE finding
+new	08a9b3a_8_new_k3	8000	854	SAME	0 differing deals of 8000; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_8_new_k3.txt: no RULE finding
+new	08a9b3a_8_new_km3	16000	1939	DIFFERS	1 differing deals of 16000; rules page: /home/dacz8976/pincand_work/games/new/08a9b3a_8_new_km3.txt: no RULE finding
+oldnew	7c_km3	1920	349	SAME	0 differing deals of 1920 (new v old, both played tonight)
+oldnew	7c2_km3	1440	279	SAME	0 differing deals of 1440 (new v old, both played tonight)
+oldnew	dray_dev_km3	4000	803	DIFFERS	629 differing deals of 4000 (new v old, both played tonight)
+oldnew	dray_dev_kta3	4000	818	DIFFERS	621 differing deals of 4000 (new v old, both played tonight)
+oldnew	dray_dev_k3	4000	721	DIFFERS	10 differing deals of 4000 (new v old, both played tonight)

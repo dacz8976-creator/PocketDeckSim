@@ -1,0 +1,33 @@
+{
+  "schema": "battle-review-evidence/v1",
+  "source_sha256": "65B404F8EC8CB712EF9D19FA5BC87E051EDC80050067BC179E8387AE404CE258",
+  "scope": "All footage in linked part 1, 00:00.000-01:08.120, plus verified exact continuity to part 2, which completes the battle",
+  "primary_method": "Gemini v7 high-resolution two-pass video review covering setup, both complete turns, visible battle-state transitions and the recording cutoff",
+  "routine_verification": "Sol targeted source checks of setup, both complete turns, Rainbow Cave and Energy handling, board state, score and the missing terminal outcome",
+  "clarification_method": "No Astra clarification was needed because selective Sol verification resolved the only material wording issue",
+  "prior_evidence": [
+    {
+      "file": "prior_evidence/INTAKE_FINDINGS.json",
+      "sha256": "FB90AB5F0B0C74CC20C503A550CF75DF64C3EBE3C5DDFF41759F0D9DD82B3E55",
+      "scope": "Original intake record and incomplete-battle flag"
+    }
+  ],
+  "gemini_archive": {
+    "directory": "submission-history/gemini-v7",
+    "download_zip_sha256": "D8F625DF5A153FD6CDB3DEFFA0758CA97C48CB6235C8303E5FDD16F983B17A9E"
+  },
+  "initial_preflight_archive": {
+    "directory": "submission-history/gemini-v7-initial-incomplete-preflight",
+    "download_zip_sha256": "5F7C3E8BE02877C69126403D1B7CE9F1CFD2139212BC19600B31B1E5160C88E4"
+  },
+  "final_files": [
+    "REVIEW.md",
+    "COVERAGE.md",
+    "SOURCE.json",
+    "UNCERTAINTIES.json",
+    "SOL_VERIFICATION.md",
+    "GEMINI_V7_RECONCILIATION.md",
+    "SOURCE_VERIFICATION.json",
+    "LEAD_ACCEPTANCE.json"
+  ]
+}

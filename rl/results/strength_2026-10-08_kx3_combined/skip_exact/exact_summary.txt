@@ -1,0 +1,52 @@
+## decision level: attack chances (decisions with an attack legal) and the share where the move taken was not an attack
+
+| rows | games | candidate points / skips / share % | frozen points / skips / share % | km3 points / skips / share % | cand − frozen | cand − km3 | frozen − km3 |
+|---|---:|---|---|---|---|---|---|
+| all | 560 | 5523 / 3590 / 65.0 ± 1.0 | 5241 / 3333 / 63.6 ± 1.0 | 5049 / 3200 / 63.4 ± 1.0 | +1.4 ± 0.8 | +1.6 ± 1.0 | +0.2 ± 0.8 |
+| group fast | 240 | 2107 / 1322 / 62.7 ± 1.7 | 2087 / 1280 / 61.3 ± 1.7 | 2106 / 1305 / 62.0 ± 1.7 | +1.4 ± 1.3 | +0.8 ± 1.4 | -0.6 ± 1.0 |
+| group setup | 240 | 2388 / 1595 / 66.8 ± 1.4 | 2195 / 1436 / 65.4 ± 1.5 | 2073 / 1350 / 65.1 ± 1.6 | +1.4 ± 1.2 | +1.7 ± 1.5 | +0.3 ± 1.3 |
+| group middle | 80 | 1028 / 673 / 65.5 ± 1.9 | 959 / 617 / 64.3 ± 2.0 | 870 / 545 / 62.6 ± 2.2 | +1.1 ± 1.8 | +2.8 ± 2.5 | +1.7 ± 2.1 |
+| deck 09-mega-manectric-heliolisk | 80 | 654 / 376 / 57.5 ± 3.4 | 655 / 371 / 56.6 ± 3.5 | 594 / 332 / 55.9 ± 3.7 | +0.9 ± 2.4 | +1.6 ± 3.1 | +0.7 ± 2.5 |
+| deck 06-mega-blaziken-tournament-list | 80 | 770 / 487 / 63.2 ± 2.6 | 771 / 483 / 62.6 ± 2.5 | 793 / 502 / 63.3 ± 2.5 | +0.6 ± 2.0 | -0.1 ± 2.3 | -0.7 ± 1.5 |
+| deck 10-xatu-oricorio-tr-weezing | 80 | 683 / 459 / 67.2 ± 2.5 | 661 / 426 / 64.4 ± 2.6 | 719 / 471 / 65.5 ± 2.4 | +2.8 ± 2.2 | +1.7 ± 2.2 | -1.1 ± 1.3 |
+| deck 03-wailord-indeedee-wall | 80 | 837 / 571 / 68.2 ± 2.5 | 740 / 487 / 65.8 ± 2.6 | 740 / 487 / 65.8 ± 2.4 | +2.4 ± 2.3 | +2.4 ± 2.2 | +0.0 ± 1.9 |
+| deck 01-muk-glimmora-kingambit-regigigas | 80 | 703 / 455 / 64.7 ± 3.0 | 643 / 402 / 62.5 ± 3.3 | 590 / 362 / 61.4 ± 3.7 | +2.2 ± 2.2 | +3.4 ± 3.4 | +1.2 ± 3.0 |
+| deck 05-indeedee-stoutland | 80 | 848 / 569 / 67.1 ± 2.0 | 812 / 547 / 67.4 ± 1.8 | 743 / 501 / 67.4 ± 2.3 | -0.3 ± 1.8 | -0.3 ± 2.1 | -0.1 ± 2.0 |
+| deck draft-A-shark-tempo | 80 | 1028 / 673 / 65.5 ± 1.9 | 959 / 617 / 64.3 ± 2.0 | 870 / 545 / 62.6 ± 2.2 | +1.1 ± 1.8 | +2.8 ± 2.5 | +1.7 ± 2.1 |
+
+## turn level: turns with an attack chance and the share with no attack taken that turn (skip turns)
+
+| rows | games | candidate turns / skip_turns / share % | frozen turns / skip_turns / share % | km3 turns / skip_turns / share % | cand − frozen | cand − km3 | frozen − km3 |
+|---|---:|---|---|---|---|---|---|
+| all | 560 | 2034 / 101 / 5.0 ± 1.0 | 1981 / 73 / 3.7 ± 0.8 | 1892 / 43 / 2.3 ± 0.7 | +1.3 ± 1.1 | +2.7 ± 1.1 | +1.4 ± 0.8 |
+| group fast | 240 | 823 / 38 / 4.6 ± 1.5 | 829 / 22 / 2.7 ± 1.2 | 814 / 13 / 1.6 ± 0.8 | +2.0 ± 1.5 | +3.0 ± 1.6 | +1.1 ± 1.3 |
+| group setup | 240 | 848 / 55 / 6.5 ± 1.8 | 798 / 39 / 4.9 ± 1.4 | 749 / 26 / 3.5 ± 1.3 | +1.6 ± 1.9 | +3.0 ± 1.9 | +1.4 ± 1.2 |
+| group middle | 80 | 363 / 8 / 2.2 ± 1.6 | 354 / 12 / 3.4 ± 1.9 | 329 / 4 / 1.2 ± 1.2 | -1.2 ± 1.9 | +1.0 ± 2.1 | +2.2 ± 2.0 |
+| deck 09-mega-manectric-heliolisk | 80 | 287 / 9 / 3.1 ± 2.3 | 288 / 4 / 1.4 ± 1.3 | 263 / 1 / 0.4 ± 0.7 | +1.7 ± 2.4 | +2.8 ± 2.4 | +1.0 ± 1.5 |
+| deck 06-mega-blaziken-tournament-list | 80 | 297 / 14 / 4.7 ± 2.5 | 298 / 10 / 3.4 ± 2.3 | 298 / 7 / 2.3 ± 1.7 | +1.4 ± 2.9 | +2.4 ± 2.9 | +1.0 ± 2.8 |
+| deck 10-xatu-oricorio-tr-weezing | 80 | 239 / 15 / 6.3 ± 3.1 | 243 / 8 / 3.3 ± 2.4 | 253 / 5 / 2.0 ± 1.6 | +3.0 ± 2.7 | +4.3 ± 3.2 | +1.3 ± 2.1 |
+| deck 03-wailord-indeedee-wall | 80 | 276 / 10 / 3.6 ± 3.3 | 257 / 4 / 1.6 ± 1.5 | 254 / 1 / 0.4 ± 0.8 | +2.1 ± 3.5 | +3.2 ± 3.2 | +1.2 ± 1.3 |
+| deck 01-muk-glimmora-kingambit-regigigas | 80 | 260 / 12 / 4.6 ± 2.5 | 250 / 9 / 3.6 ± 2.1 | 233 / 5 / 2.1 ± 1.8 | +1.0 ± 2.2 | +2.5 ± 2.9 | +1.5 ± 2.5 |
+| deck 05-indeedee-stoutland | 80 | 312 / 33 / 10.6 ± 3.3 | 291 / 26 / 8.9 ± 3.0 | 262 / 20 / 7.6 ± 3.1 | +1.6 ± 3.5 | +2.9 ± 3.6 | +1.3 ± 2.4 |
+| deck draft-A-shark-tempo | 80 | 363 / 8 / 2.2 ± 1.6 | 354 / 12 / 3.4 ± 1.9 | 329 / 4 / 1.2 ± 1.2 | -1.2 ± 1.9 | +1.0 ± 2.1 | +2.2 ± 2.0 |
+
+## pre-registered level: turns where km3, asked at the same decision, proposed an attack, and the share with no attack taken that turn (the pre-registration's measure; km3's own column is 0 by construction)
+
+| rows | games | candidate km3_turns / km3_skip_turns / share % | frozen km3_turns / km3_skip_turns / share % | km3 km3_turns / km3_skip_turns / share % | cand − frozen | cand − km3 | frozen − km3 |
+|---|---:|---|---|---|---|---|---|
+| all | 560 | 1892 / 8 / 0.4 ± 0.3 | 1896 / 8 / 0.4 ± 0.3 | 1849 / 0 / 0.0 ± 0.0 | +0.0 ± 0.4 | +0.4 ± 0.3 | +0.4 ± 0.3 |
+| group fast | 240 | 768 / 5 / 0.7 ± 0.6 | 799 / 4 / 0.5 ± 0.5 | 801 / 0 / 0.0 ± 0.0 | +0.2 ± 0.7 | +0.7 ± 0.6 | +0.5 ± 0.5 |
+| group setup | 240 | 777 / 2 / 0.3 ± 0.4 | 757 / 3 / 0.4 ± 0.4 | 723 / 0 / 0.0 ± 0.0 | -0.1 ± 0.6 | +0.3 ± 0.4 | +0.4 ± 0.4 |
+| group middle | 80 | 347 / 1 / 0.3 ± 0.6 | 340 / 1 / 0.3 ± 0.6 | 325 / 0 / 0.0 ± 0.0 | -0.0 ± 0.0 | +0.3 ± 0.6 | +0.3 ± 0.6 |
+| deck 09-mega-manectric-heliolisk | 80 | 273 / 1 / 0.4 ± 0.7 | 283 / 2 / 0.7 ± 1.0 | 262 / 0 / 0.0 ± 0.0 | -0.3 ± 1.2 | +0.4 ± 0.7 | +0.7 ± 1.0 |
+| deck 06-mega-blaziken-tournament-list | 80 | 277 / 2 / 0.7 ± 1.0 | 284 / 1 / 0.4 ± 0.7 | 291 / 0 / 0.0 ± 0.0 | +0.4 ± 1.2 | +0.7 ± 1.0 | +0.4 ± 0.7 |
+| deck 10-xatu-oricorio-tr-weezing | 80 | 218 / 2 / 0.9 ± 1.2 | 232 / 1 / 0.4 ± 0.8 | 248 / 0 / 0.0 ± 0.0 | +0.5 ± 1.5 | +0.9 ± 1.2 | +0.4 ± 0.8 |
+| deck 03-wailord-indeedee-wall | 80 | 263 / 1 / 0.4 ± 0.7 | 254 / 1 / 0.4 ± 0.8 | 253 / 0 / 0.0 ± 0.0 | -0.0 ± 1.1 | +0.4 ± 0.7 | +0.4 ± 0.8 |
+| deck 01-muk-glimmora-kingambit-regigigas | 80 | 243 / 0 / 0.0 ± 0.0 | 239 / 1 / 0.4 ± 0.8 | 228 / 0 / 0.0 ± 0.0 | -0.4 ± 0.8 | +0.0 ± 0.0 | +0.4 ± 0.8 |
+| deck 05-indeedee-stoutland | 80 | 271 / 1 / 0.4 ± 0.7 | 264 / 1 / 0.4 ± 0.7 | 242 / 0 / 0.0 ± 0.0 | -0.0 ± 1.0 | +0.4 ± 0.7 | +0.4 ± 0.7 |
+| deck draft-A-shark-tempo | 80 | 347 / 1 / 0.3 ± 0.6 | 340 / 1 / 0.3 ± 0.6 | 325 / 0 / 0.0 ± 0.0 | -0.0 ± 0.0 | +0.3 ± 0.6 | +0.3 ± 0.6 |
+
+- candidate: games with one or more skip turns 83 of 560; skip turns per game 0.180
+- frozen: games with one or more skip turns 67 of 560; skip turns per game 0.130
+- km3: games with one or more skip turns 42 of 560; skip turns per game 0.077
+- km3 identity: in km3's own games, km3 was asked at 15355 decisions and proposed a move other than the one it played at 0

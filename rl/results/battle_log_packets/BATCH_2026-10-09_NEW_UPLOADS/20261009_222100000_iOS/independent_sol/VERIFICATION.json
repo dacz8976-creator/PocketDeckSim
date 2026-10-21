@@ -1,0 +1,32 @@
+{
+  "decision": "ACCEPT",
+  "reviewer": "resumed_verify_222100",
+  "model": "gpt-6-sol",
+  "effort": "High",
+  "source_filename": "20261009_222100000_iOS.MP4",
+  "source_sha256": "859e3f21a9966e99716f8b137f1eaadecf46aa097316ac082ffcae3d2f6b286a",
+  "source_bytes": 328393746,
+  "outcome": {
+    "owner_result": "Defeat",
+    "owner_points": 0,
+    "opponent_points": 2,
+    "turns": 7,
+    "owner_damage_done": 0,
+    "match_count": 1,
+    "game_type": "computer",
+    "auto_option_visible": true,
+    "auto_enabled_observed": false
+  },
+  "primary_files_read_and_reconciled": {
+    "REVIEW.md": "fc0696359817d1413496f9d2194430fecf1cee0ab7f3fb3c7dbb5623a9edb702",
+    "COVERAGE.md": "7472022a2124f1d096798948ad5f28fdd46326aa8fd4689fe860432500e9f11c",
+    "FINDINGS.json": "dda8032b68174952326afbbfb796871063c06bff2d2236fe2aeb00365a4a51ea"
+  },
+  "required_changes": [],
+  "uncertainties_preserved": [
+    "opponent Tool identity",
+    "opponent Poke Ball result",
+    "exact final input and delay after Concede dialog"
+  ],
+  "external_logs_eligible": false
+}

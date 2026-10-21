@@ -1,0 +1,2857 @@
+{
+  "schema": "bounded-independent-sol-acceptance-v1",
+  "reviewer": "/root/independent_183108",
+  "review_model": "gpt-6.1-sol",
+  "review_role": "Fresh separate Sol bounded independent acceptance, not the full-review worker",
+  "checked_at_utc": "2026-10-06T21:06:45.329304+00:00",
+  "source_video": "20261005_183108000_iOS.MP4",
+  "source_sha256": "94bd9d0e127291765928cc7cf4fc69a0ca5d1b21189622ed98bd2f1e14fb5f95",
+  "source_duration_seconds": 403.317007,
+  "media_rehashed": false,
+  "identity_basis": "Frozen CLI SOURCE.json binding; retained native evidence checked and hashed. No original media decoding or mutation.",
+  "inspected_retained_source_times": [
+    1,
+    4.0,
+    8.0,
+    16.0,
+    32.0,
+    40.0,
+    51.0,
+    51.5,
+    52.0,
+    53.0,
+    56.0,
+    60.0,
+    63.0,
+    65.0,
+    67.0,
+    69.0,
+    72.5,
+    79.0,
+    85.0,
+    89.0,
+    91.0,
+    93.5,
+    93.8,
+    94,
+    94.5,
+    95,
+    96.5,
+    99.5,
+    103.0,
+    104.0,
+    116.0,
+    174.5,
+    175.5,
+    176.0,
+    176.5,
+    177.0,
+    177.5,
+    179.0,
+    180.5,
+    181.0,
+    182.0,
+    184.0,
+    186.0,
+    189.0,
+    190.0,
+    194.0,
+    196.5,
+    198.0,
+    203.0,
+    205.0,
+    219.5,
+    248.0,
+    250.0,
+    253.0,
+    255.0,
+    256.0,
+    257.0,
+    261.0,
+    262.0,
+    263.0,
+    265.0,
+    285.0,
+    312.0,
+    313.5,
+    314.0,
+    315.0,
+    317.0,
+    318.0,
+    320.0,
+    321.0,
+    323.0,
+    325.0,
+    327.0,
+    330.0,
+    332.0,
+    334.0,
+    336.0,
+    340.5,
+    342.0,
+    344.5,
+    345.5,
+    349.5,
+    351.0,
+    356.0,
+    358.0,
+    364.0,
+    368.0,
+    370.0,
+    372.0,
+    378.0,
+    382.0,
+    384.0,
+    386.0,
+    388.0,
+    389,
+    390.0,
+    392.0,
+    394.0,
+    402.0,
+    403.0
+  ],
+  "retained_frame_records": [
+    {
+      "evidence_id": "F_0004_00",
+      "requested_source_seconds": 4.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0004.00.jpg",
+      "full_frame_sha256": "335d20f1890eff5912e4ef117a95165f822c81d2d7542041840667a7b6aefb44",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0004_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "1e0c24b2aeea120f121f7cd26f8a9bfe6d0518adfb525c45d30ba67beab71637"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0004_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "1a5fa28d3441cdb0462e8bc7ec471a8274a917027f5d304cf74462c9a9c7b8ba"
+      }
+    },
+    {
+      "evidence_id": "F_0008_00",
+      "requested_source_seconds": 8.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0008.00.jpg",
+      "full_frame_sha256": "cfc51e3ce80f2e89ce9a493c24ea9b91610d6db17ff08995fecadc4961c2a1e2",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0008_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "4a2f0b8266de78b2c04dadb2217c88b520b1472ad61a5a4b20ec9ba1e7cfb9b1"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0008_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "0061ec10088d39f43589c86ae488645ea31c911722278ca3f586f2a5f68e6bb3"
+      }
+    },
+    {
+      "evidence_id": "F_0016_00",
+      "requested_source_seconds": 16.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0016.00.jpg",
+      "full_frame_sha256": "20e2a786d265ea328cc7154365365bc9141e0649ea52c3ae01f17edd45e83b9b",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0016_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "197c242ccdcf0047ceb2cb6652d1858bd5ef03eba1d09eda257411b8b8ef8f2d"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0016_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "dc4f5b808c267d2142143a4c9b6ddf08eaaa6d71560efc50e80fcd26081f034c"
+      }
+    },
+    {
+      "evidence_id": "F_0032_00",
+      "requested_source_seconds": 32.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0032.00.jpg",
+      "full_frame_sha256": "630c38107fc2aa652e34fd980acb758ad517d1bac167e4bcfd1f460b49430020",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0032_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "bea09f0e70fcf2d9b613a495e11163aa9b2ca00119adcd4b97b95e3fdd810382"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0032_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "f256f94f450bc2962c975006a4dcd1a84e6da4d11ca5d753dca6eb2788acfc6e"
+      }
+    },
+    {
+      "evidence_id": "F_0040_00",
+      "requested_source_seconds": 40.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0040.00.jpg",
+      "full_frame_sha256": "becb9465194765c505dc95dd2bc3d58130c89f617cbf8c83525557166f9fb5e0",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0040_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "9147d42a97074686c60ba6cd8f0448166f54c51778951c88d3d87fd22e24962a"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0040_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "346921a55a5f374cacd83dfd7abbd6e783dc398fa455905f4de406d059df3591"
+      }
+    },
+    {
+      "evidence_id": "F_0051_00",
+      "requested_source_seconds": 51.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0051.00.jpg",
+      "full_frame_sha256": "5b4755d6293f3e94b8f67192cb48cd9a41f880daf9621583921e3997a092d505",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0051_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "99214de735aee7c584272b5ea255fe7108b77a309f9d7c9f0a183e65569423b7"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0051_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "7f851b8812d528e6e9dc43f7bf8befa4385ba3bd3a29a79169d7347904e95b89"
+      }
+    },
+    {
+      "evidence_id": "F_0051_50",
+      "requested_source_seconds": 51.5,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0051.50.jpg",
+      "full_frame_sha256": "d4037c9689078ddf401a85f87953abdf0ef63f8e9b66ec859bf9f632b8eddf9d",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0051_50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "50052fa6e6b57b87469b7d90006c60f09e6ead823b71a7e9fcc2f0b137232b69"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0051_50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "deed2ebbbbf15d33642e08833959e0aa36da27cf6f97823fdd3155bde82e8248"
+      }
+    },
+    {
+      "evidence_id": "F_0052_00",
+      "requested_source_seconds": 52.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0052.00.jpg",
+      "full_frame_sha256": "2796694b1b573c53fa7a52c4f8c5b168ca48d381a42791000a8130dfb4c8f876",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0052_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "c2005ee959e869d86d24f2bc528cabd256c3be7c2a4397d3e8c498f583a2111d"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0052_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "dc342a882c4c1de7fb46208abb7aebf5e2a06e63b1c5fe5e0fbe5d63c9bc2528"
+      }
+    },
+    {
+      "evidence_id": "F_0053_00",
+      "requested_source_seconds": 53.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0053.00.jpg",
+      "full_frame_sha256": "94b56315905360262d194f5c0ae89dd81cca662f342f346b5666cd68962d66f2",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0053_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "e088b76ffed876fa9ab09761b67846016e25b28a1516c9db32fb055224b01103"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0053_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "7aa6013060d8e59f5c198fd11295a3de10b63ab467a1b644522b92aa50d5a587"
+      }
+    },
+    {
+      "evidence_id": "F_0056_00",
+      "requested_source_seconds": 56.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0056.00.jpg",
+      "full_frame_sha256": "f75e84a805b2196269970fa3fba3105b9e8fb4fe78896887dbebb9bfbf0dc25d",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0056_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "5a9d60cf844fa854c88da734444366ed6ecfe6bd422ab2de334d5eeda007f292"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0056_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "10bdf11e68dc08bb4b204c171641f3f2ef94efe1484ce26923bb9e9c7c31543b"
+      }
+    },
+    {
+      "evidence_id": "F_0060_00",
+      "requested_source_seconds": 60.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0060.00.jpg",
+      "full_frame_sha256": "c438e56cae904a07ce03f03dbfb17c0a44091b12f0157c77a1846a46adf6afb3",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0060_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "aecfe8672740ef46ce3ef0d57bd3157f3ae054ce8fbc920b803a10d4dd959dcf"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0060_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "b9ef87db6fd62d3b88aebd993bfeb80feb4fae2a20c490af8a3b347c42f53f60"
+      }
+    },
+    {
+      "evidence_id": "F_0063_00",
+      "requested_source_seconds": 63.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0063.00.jpg",
+      "full_frame_sha256": "a78111ef28c7adffb77f7873cbbe2f6f9e4143e8b4607b430c32ed1dc489c926",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0063_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "b00ebb81fdbfc63be707830f4292dfc5327a3baae4aae9d762515c0902014c26"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0063_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "5d654c338f104114074696ff7ac48a0c4c74378c876775409599814272f30c0c"
+      }
+    },
+    {
+      "evidence_id": "F_0065_00",
+      "requested_source_seconds": 65.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0065.00.jpg",
+      "full_frame_sha256": "ea9c7564419e5a6c622b2a8e3d3f3875b6af4152a424ae4fe7174a724da2c2fc",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0065_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "a9af0dcc5de444dc782f49fb5cfaa8b352f48feac20e73f3502a57aba999f796"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0065_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "b18f5abbc8b9b5f53a430c78d8d4ad66fc8db4788e9ad15e2794f3910ce6a2e4"
+      }
+    },
+    {
+      "evidence_id": "F_0067_00",
+      "requested_source_seconds": 67.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0067.00.jpg",
+      "full_frame_sha256": "4ee73fe0beaf7bde10a8cc841bcb3f5c83e0a3ec8f38dd11e8c3d51c5a4e87c6",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0067_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "c0732fc2e48b1be1deb622e0aadcddb95d996250899557ef2209401b17f933ae"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0067_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "0b36c31cba7a60a91d75ea69cdd50788276bce48b62d02a6ebd127fa29620968"
+      }
+    },
+    {
+      "evidence_id": "F_0069_00",
+      "requested_source_seconds": 69.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0069.00.jpg",
+      "full_frame_sha256": "7f2db21a8ebd6b3670c9effabc4c005bfde51d20d6af9c7bfa313aa700b895ab",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0069_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "0fd97caf8affb2d0ef7ffac2e665858a285b54ea0febfbb9223b32d007ade6ea"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0069_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "fd9a8a1463d0498fb0bbe64e4024ab7304a825453c3d6b40bd26e4ceb319c0dd"
+      }
+    },
+    {
+      "evidence_id": "F_0072_50",
+      "requested_source_seconds": 72.5,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0072.50.jpg",
+      "full_frame_sha256": "11768fe5191886decc6732b55fe26ac2e1e8786c9ed4002af2534ee01332e460",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0072_50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "b6f4b775299769c507316b594a769ec0d13c63644bcc4a4e3f5452d09c2bb63e"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0072_50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "4037e041258e5e358f3e1fc9b676506adb82f589b00d06363f92046ead5455c6"
+      }
+    },
+    {
+      "evidence_id": "F_0079_00",
+      "requested_source_seconds": 79.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0079.00.jpg",
+      "full_frame_sha256": "591f7324bb82f0769afd602c616a64baf4089d8eca527cef57c7fa68e27113bf",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0079_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "7be64d8b75013fb3811c4699f99af0cca5ba69bffa1dfd7580e1d77584fe6c1e"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0079_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "eb0190a34b45998d2f7da96b701b0269b2e5a2815ab872fbafbe538b2862231a"
+      }
+    },
+    {
+      "evidence_id": "F_0085_00",
+      "requested_source_seconds": 85.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0085.00.jpg",
+      "full_frame_sha256": "dc7be68528bb2e931ad170af05cefcd7b1df5b85683b6b006f97dad78dae5f6e",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0085_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "d2162b3a0b439670555238d28becaa7bed4da1c1878b17272259729c1e6ac7be"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0085_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "e887ba82a5cdd1bebeded9ea5a726f4a9592ddadcd898a955dd5f35cde4b6a8c"
+      }
+    },
+    {
+      "evidence_id": "F_0089_00",
+      "requested_source_seconds": 89.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0089.00.jpg",
+      "full_frame_sha256": "d82deca964b5b2021d4de18ae42f0d8d7a8457a16ecb22d9512a68ac91601518",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0089_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "9f2de2a0e06627bdca9d62ad44b251c5540b29c75219e932ff25ecc79218de7a"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0089_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "56370826b8fc483059be7d49455ea0ea57810687a427018c0b0f8b25fac2fca6"
+      }
+    },
+    {
+      "evidence_id": "F_0091_00",
+      "requested_source_seconds": 91.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0091.00.jpg",
+      "full_frame_sha256": "261d9a566201b5a8cca64746bcd184056ace6ba7dd95e998dd28b12ae7b757df",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0091_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "6bf81f5331399fd462318ea494ddaa4cb918ec2de51f086ef8e524ea20aa1f0c"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0091_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "2858b308e259c870ba149a07f44b89ad0f60d5953d8f0959e016abfb1810eda5"
+      }
+    },
+    {
+      "evidence_id": "F_0093_50",
+      "requested_source_seconds": 93.5,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0093.50.jpg",
+      "full_frame_sha256": "0b2cd6619f4543a1a7b13257c44e4ba945b8176c893b0c08b6b4d65156166e2e",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0093_50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "150b118a313e724e8c9fc5405f81f1a3e062f61458db29429b912c39905ce350"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0093_50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "c343791221001f7b3e706c9bc9e19819c2594447ffa0e482012b9c74e3cc0cc8"
+      }
+    },
+    {
+      "evidence_id": "F_0093_80",
+      "requested_source_seconds": 93.8,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0093.80.jpg",
+      "full_frame_sha256": "059d9e452303fc410b3915cb8ae7c642fefe46f4fc5641ba4e90bfe9027f89bb",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0093_80_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "3a31d8a753a480d0563fde03f475de5fa6ffef3414f74ae7af14a7cc4fd28d0a"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0093_80_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "aa26c76bf0e4cdec7f7529c936d7f6012a39d444adc1787c6b86e58264d4fb5e"
+      }
+    },
+    {
+      "evidence_id": "F_0094_00",
+      "requested_source_seconds": 94.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0094.00.jpg",
+      "full_frame_sha256": "d90e276ec729d2c88196472c497c33bb1a7957362f180df5947968fe7002f1b0",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0094_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "55bb7c0a400608b241fd44732a1f4744c32a76b9cbed05f33de893a9cdf11cf2"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0094_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "b1a63e62db9e88fe9693e5fcd401ac08fa2f5229441476e193bcc05137ad90a0"
+      }
+    },
+    {
+      "evidence_id": "F_0094_50",
+      "requested_source_seconds": 94.5,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0094.50.jpg",
+      "full_frame_sha256": "eca28ef1afbab78a64b040d8b85a535b3266b4391454f3f64e6377cd71b5da53",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0094_50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "00276428f9ad58922ba437762a20dbd76ad5f8bbc1eefc6614fb2d2ec04b0427"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0094_50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "f3928a797f5ed96f92c7c4f6bfcaf904349026d86909a258a2123befd3c5b0c2"
+      }
+    },
+    {
+      "evidence_id": "F_0095_00",
+      "requested_source_seconds": 95.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0095.00.jpg",
+      "full_frame_sha256": "6db84a9ee257394ecf72d38ee58951de438d22009fc2073037309838e126aa2c",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0095_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "91a95d5ee7e77d7fb346843412534d16cf7e9ecd7462e989e2110cbe472f3dc2"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0095_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "fb6ca23712ee0be9daaede73f59ea586a4796cb74c18e58ad2850312bb0aac58"
+      }
+    },
+    {
+      "evidence_id": "F_0096_50",
+      "requested_source_seconds": 96.5,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0096.50.jpg",
+      "full_frame_sha256": "218aa79c18c2c698abfc60e5c0d692a607e95aaedd7b52ecb4c37fa901055d26",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0096_50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "fa4d705089b53f8e1bb23fad8f657f4274353525158a39a4ff432ac79aff0bba"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0096_50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "f8a4ab66cac57bcc5718174906bc79d534685a6f4b0cb86ac2e105d9b8bbc940"
+      }
+    },
+    {
+      "evidence_id": "F_0099_50",
+      "requested_source_seconds": 99.5,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0099.50.jpg",
+      "full_frame_sha256": "b9f2f857e1370249ead243739295ef70219f7a47f9c0d21d07404281458a70a9",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0099_50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "e16e2ee9f8ed256b74c339d95ce1fe1a032caff4530bc02f28d9122cff25b309"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0099_50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "ddaad89b6f4d78195d56ac1f8ea7cc05e44cfbac571d3cd6a8c0fee08515ce86"
+      }
+    },
+    {
+      "evidence_id": "F_0103_00",
+      "requested_source_seconds": 103.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0103.00.jpg",
+      "full_frame_sha256": "d092d85d90fb2cfb593836b67156c563e97fa0247c354e1243b0d86765cbe50e",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0103_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "3ffa083ed947ca59c3d93fd23206c9cff2f817356a8584a215bea79c02fef380"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0103_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "46c6cdb5cf0c05d267d6aeeda561fe82f856f3dbdbce7f1287fbc6812759a979"
+      }
+    },
+    {
+      "evidence_id": "F_0104_00",
+      "requested_source_seconds": 104.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0104.00.jpg",
+      "full_frame_sha256": "264f514e99df16ab4395a2a9f50ccc6ca4b87b44f83ce7d00355a968d9518865",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0104_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "e498edebc3c9f343d6357ade25a5261bd449b501833883758a709053adf72319"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0104_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "e09eee733bf0cd6fd0035af51c1f8c1ea1e253d17b9b8cdff6af63d7fb0ba276"
+      }
+    },
+    {
+      "evidence_id": "F_0116_00",
+      "requested_source_seconds": 116.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0116.00.jpg",
+      "full_frame_sha256": "cc1d163ff767a8d65e6a09613acaad8dccf4eaf33662a964316f9332b66f53a7",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0116_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "16881c5d6e1ba032a7b6cfc6e2b72ec998609efb43328ec1bb7e152f7ecd6d05"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0116_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "2ed5280181f07aa8eaeeb0a8575f61cdb846f0148de926249fa896fe8d322bbb"
+      }
+    },
+    {
+      "evidence_id": "F_0174_50",
+      "requested_source_seconds": 174.5,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0174.50.jpg",
+      "full_frame_sha256": "20703eec647a1678f67050d32fd2a1c1a6e1b44416aa8b0dd7b596c454f030ff",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0174_50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "6b77da4048c69474b4ac227507bdeb47b8dc3490bfaecf9d14f2545b1afea8c3"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0174_50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "0060cb7a309f8d7d540870990527fe29c1d45d77391df15ea52cd6beb8be752c"
+      }
+    },
+    {
+      "evidence_id": "F_0175_50",
+      "requested_source_seconds": 175.5,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0175.50.jpg",
+      "full_frame_sha256": "78d8799051c80f91ad9ded540879a3110dea897bbba52045546587db8c7bb4ed",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0175_50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "ccfc137187ed8c99e79e421afed09c9c09dbe81762f5537c50c2fe77e17be0fc"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0175_50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "c933e1a703032fd1a17af72db0ee6a4b44cb58d7981d64edff717d64fa9f6c86"
+      }
+    },
+    {
+      "evidence_id": "F_0176_00",
+      "requested_source_seconds": 176.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0176.00.jpg",
+      "full_frame_sha256": "396e426776decd171f9e4f9ab2ada687f2c46ac3dfff4f831a3d3c2384e3e361",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0176_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "d36620f75ad229f380919f0c1c4afec878c64f3f75ec629bf06b44759d205c5a"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0176_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "d8755e3fc90aac34444ef60f64403d54648cbfefe3d698b556fe18c05cd94525"
+      }
+    },
+    {
+      "evidence_id": "F_0176_50",
+      "requested_source_seconds": 176.5,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0176.50.jpg",
+      "full_frame_sha256": "3c6392a55e85632139c26620615fb73868cf724559cc6bd61bf667dc92f841be",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0176_50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "364a6d7ebcaa3f82e0da7d57ce647797309dc70be2363df71eb0f2ac78189bcb"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0176_50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "e5df5bf881bfb6a4e8fe3f4aae3e63ee0926b4be95c3a1a5f0dd81ac7ea77d4d"
+      }
+    },
+    {
+      "evidence_id": "F_0177_00",
+      "requested_source_seconds": 177.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0177.00.jpg",
+      "full_frame_sha256": "9bdd44b85f8e218b10ed0ffe62bca240884c38ce7e69445dbb41467098c590ac",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0177_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "2e0391942577a71f08dea8b3f65001519e62e4c3d7bef54f552db97448e7d0d4"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0177_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "b11f6d98ebb7f3ac03dac0b4a1f60adab7060e47b3561c4b834feb309a7b3e67"
+      }
+    },
+    {
+      "evidence_id": "F_0177_50",
+      "requested_source_seconds": 177.5,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0177.50.jpg",
+      "full_frame_sha256": "1f3b169a1f8556fd071e7cd230c77b3a0abfc37e7417e43efb08fee84f908ac8",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0177_50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "11c0c05e196e49f490ab586e9ea3a28068b5b6de0660a72130aa2f1b119e3a83"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0177_50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "66b91670d2ed9921624ddce9fdea687411680672a8d237605df0cddf169e9ccb"
+      }
+    },
+    {
+      "evidence_id": "F_0179_00",
+      "requested_source_seconds": 179.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0179.00.jpg",
+      "full_frame_sha256": "8d82c70aba3e54321e4fd27b7a0d11d41f3b6701bdbd1b940d4b4f2edf2ba337",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0179_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "86b967514ab4f85072b69ae0ab6f71238fb2e85317d3ecfcb425ec2568d92b51"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0179_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "d5e2e88556c888ac7cfc2e39ec6fd4d8e8ff03f86b2f284e1d0fa2d3fc89b800"
+      }
+    },
+    {
+      "evidence_id": "F_0180_50",
+      "requested_source_seconds": 180.5,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0180.50.jpg",
+      "full_frame_sha256": "d4d887bd74db3c40bc7be42dc9ccf8b5c4bbd0c4f2e11941ba5bd8938dade71c",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0180_50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "960e7bc2e534a86a9d96c44964fac6e657026554c4502f6131aaf67c27572a88"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0180_50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "ba328c5ddca74cfa4a0642316a92625cea372ddae9ec7559c40ddcb06e3bc768"
+      }
+    },
+    {
+      "evidence_id": "F_0181_00",
+      "requested_source_seconds": 181.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0181.00.jpg",
+      "full_frame_sha256": "505ae632e31ce3b8d4cd11e1c73b5645cbfe2645c70701c762a8c584b9dc4d35",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0181_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "a00c11b7e89043babd8e4af9975e580ce7ce553a4819774723e7609ec8e54239"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0181_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "4195c19bd8af97b63e2283eb0fbc92e229b3842441987f1ff82e8739f0697bea"
+      }
+    },
+    {
+      "evidence_id": "F_0182_00",
+      "requested_source_seconds": 182.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0182.00.jpg",
+      "full_frame_sha256": "36e4ed838e61428c0b819c7d1a205a5bdeb42dddffc915ff312e2bc23381aaa0",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0182_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "0a2044a9dffb3135ebd96f4b7dd2bd4be3747ffefde60440fc3f0dc199d7402e"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0182_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "17d6724f08c8e1f84ff2c904f82b38ddfc1a399225f411c410771127eb9d9aef"
+      }
+    },
+    {
+      "evidence_id": "F_0184_00",
+      "requested_source_seconds": 184.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0184.00.jpg",
+      "full_frame_sha256": "d21c8f8cca0c053db71c31d542a4115d4e9f62789d9a5147c03a4951559f20c8",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0184_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "8d5a22cd7522a5ed456dde32a9d1aeb2a9245bb7c5d0a59c66974a2cf997ab32"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0184_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "c4ed36b34e603554a5709ebe94a93a66a8814ca6a4c4b997feacf40e3fd818d4"
+      }
+    },
+    {
+      "evidence_id": "F_0186_00",
+      "requested_source_seconds": 186.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0186.00.jpg",
+      "full_frame_sha256": "ba466e646c12872f1859c8598f4a1cb294621254b67f389b2419ea066a585983",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0186_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "8ff5ce81d7a6d730049f3979afe9cf7e9a07d319f43294f02cda852733f1589e"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0186_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "50a0b7593e0a766f9ddff5d00cb4ba78f0945b4362bf30efd2e8da9b5ff05cff"
+      }
+    },
+    {
+      "evidence_id": "F_0189_00",
+      "requested_source_seconds": 189.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0189.00.jpg",
+      "full_frame_sha256": "38e6ae4dc676cc48ed97cc7abfb729e5693ec8974fb4c18d327c737f33ba40e7",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0189_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "89ba0eb060680dd3b7c871f66c5d0ca8950f088314604735e70204d082bbbc81"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0189_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "aa6b4565f0385959c219a3f189db7aeb40dce10c3daaa413715a0fbdeb71519c"
+      }
+    },
+    {
+      "evidence_id": "F_0190_00",
+      "requested_source_seconds": 190.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0190.00.jpg",
+      "full_frame_sha256": "2e64f1da4587195f2b0fd126eece9a3f706953d05fbc02ddee2c53d4424d3642",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0190_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "f346ddf556c16160ca73d422bad1fcd423c605d531033856b2f7546ab31f4777"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0190_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "75bcca6a65b0949d767ac3dca2bc9146a62809fe671aad720341fde43bfc3c7d"
+      }
+    },
+    {
+      "evidence_id": "F_0194_00",
+      "requested_source_seconds": 194.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0194.00.jpg",
+      "full_frame_sha256": "a6114cf6b680fb45e4d2cb114dfe79af13247c93415a7b4275e6d2efb4a000c9",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0194_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "bdfd8e19434ba0e92f96d39351415663757cc57276dfc172e558a4ca8a0380d9"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0194_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "b1613e65e95a3424a3a190c5bc76888536ffbf8893e6b8fb94112bdd732ef96f"
+      }
+    },
+    {
+      "evidence_id": "F_0196_50",
+      "requested_source_seconds": 196.5,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0196.50.jpg",
+      "full_frame_sha256": "3ad7b37dacea6104bfcbe321e54911d17c924df9a504e3785e727b140bf4a46d",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0196_50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "e05b5c8b61d023df851531fa04b4b63ef3b3f0891b56056bba77a815b2db07ef"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0196_50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "ceaf9ed466a432725001a6a14360272daa6fcd048c47f5323d45345f889f67f8"
+      }
+    },
+    {
+      "evidence_id": "F_0198_00",
+      "requested_source_seconds": 198.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0198.00.jpg",
+      "full_frame_sha256": "ef284de5b09228fe4fd0d00d7d1454566b1ff7a8ea6b95375f873ae073cae71b",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0198_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "bfd88c52555dc15f72d9e60275850899778349c96295ccdebb4e1051c09e2773"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0198_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "522c7da76a7dfd04968e922a99a6976f60527ccc3583c87f28f705995adb7a5a"
+      }
+    },
+    {
+      "evidence_id": "F_0203_00",
+      "requested_source_seconds": 203.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0203.00.jpg",
+      "full_frame_sha256": "e800c6b0a04a191dd93ae21568b5f4d6cf90e6bcd8d76ea33dfa757f57c249a6",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0203_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "8ce28c3b97b5cc9c496cc3851311bfb86ccdb30a18a192050851d460b5f3181a"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0203_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "d2ca5d6e27532dff0e442d99227bbe56eee3afc95b096b586dc79bdaeecfe4fc"
+      }
+    },
+    {
+      "evidence_id": "F_0205_00",
+      "requested_source_seconds": 205.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0205.00.jpg",
+      "full_frame_sha256": "4f61d748e7c54f3ccfde2a200a250ca4e1fff378128c761a5873b973b738647c",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0205_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "4498e383f72e928e70cf17474f3362bf31733489872fee4aed214f7df5d97db2"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0205_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "b33bf9a3476da5d83aad249ca865550684660067ee8828b030d74f43c728610a"
+      }
+    },
+    {
+      "evidence_id": "F_0219_50",
+      "requested_source_seconds": 219.5,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0219.50.jpg",
+      "full_frame_sha256": "7b434fad114308a6244a0ba3c4aa9f8f3195fa23d1e20eedfa14c444428e85a4",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0219_50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "28761dcb42449b81ce5203154739052ee9ef703e32e57c76cac7f181d6e0ff73"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0219_50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "ae81694bc548b98514e8c204636fdc13819dbb4ebf5b5ad69994a7812dd2062c"
+      }
+    },
+    {
+      "evidence_id": "F_0248_00",
+      "requested_source_seconds": 248.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0248.00.jpg",
+      "full_frame_sha256": "7b1e5507769cadc4c3865c5daef8e8df0e66ce1104d136272117e8c20e07fe11",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0248_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "2a3c8060ece7dea89dbaaab59c4a74252a27d435c5454dabd711168669810857"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0248_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "2387c04e5f845e983c4deffc3d39845bdd2ba86f9b41dab2c46325d4308055b5"
+      }
+    },
+    {
+      "evidence_id": "F_0250_00",
+      "requested_source_seconds": 250.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0250.00.jpg",
+      "full_frame_sha256": "51884dd1551279526d35ec09170a126d42fb97ed5108d7d442fbc3ea6bfdbe03",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0250_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "63207f9d2d7af48d3c3b7149ff5804df7821fadd07a0ed37f9915760a5ac9d82"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0250_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "ac3798fbe7c96b9329a34eca0fa70143a45d0c8e96bc7779f7799c6a4f0e6abb"
+      }
+    },
+    {
+      "evidence_id": "F_0253_00",
+      "requested_source_seconds": 253.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0253.00.jpg",
+      "full_frame_sha256": "393ef0adc76fc6927382071e73cc07f0f7307f094cbb73cf366760d80902b90a",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0253_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "c81838954cccd6607fc0498b13e75fd50e992be8e91fc5d12e04a09ec5353a31"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0253_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "a6f2ed06f3ce205e00b8d0931963e783595e8fa6ece9d80e3cc82c3e472acb2d"
+      }
+    },
+    {
+      "evidence_id": "F_0255_00",
+      "requested_source_seconds": 255.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0255.00.jpg",
+      "full_frame_sha256": "2c8cfc0c428850bf1dfb250567b6b56f17325189e772dace1701db6ce1c84126",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0255_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "bbf46bf5495e4c686c58547103dca16424026b845eea1ea10b0ce347bbc28eee"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0255_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "c14cecda6a39ecee4b39bf74bdc3e95df9eb23b6a6686ae7c2505b392a6b58c9"
+      }
+    },
+    {
+      "evidence_id": "F_0256_00",
+      "requested_source_seconds": 256.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0256.00.jpg",
+      "full_frame_sha256": "fbf8aac28d26671cc1d9f8ba7ff0500d815ddba5b049682a2ca845330bd86d1f",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0256_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "e62235ba0be7c4b3bb0d54ff5cf5f3621f90fc647b60f5e8609cea3ba3f9fd85"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0256_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "1daeedd5b7082b88b65faf06852af9487e5c9035d3b1e42bc432f322ce46945a"
+      }
+    },
+    {
+      "evidence_id": "F_0257_00",
+      "requested_source_seconds": 257.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0257.00.jpg",
+      "full_frame_sha256": "15dfbbe0ea12200fd36b5b32112296bf8809fffe0369b3135de97e36436c4c33",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0257_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "d3654ce19adb1a870a2924036c22f7b22a81a18396cfbdc5b66f5deacb21ecbc"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0257_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "16eec538d0f775ce3de632ad8eae0ec9f2d040fe7ac9b4b05ac2600fa2d009e3"
+      }
+    },
+    {
+      "evidence_id": "F_0261_00",
+      "requested_source_seconds": 261.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0261.00.jpg",
+      "full_frame_sha256": "09798ec3629c5f6dc41e106c5ada05ba5b8f88b6d7038736ab00206006370d6c",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0261_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "31cfcbaeccbbc8de48afb83c2c086704e713e7c11b9280ef8667ce6bb31a61d2"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0261_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "dc229dd4197556be19924198ca4b21a799e7bd393ed77deb0a968ad93d72a27b"
+      }
+    },
+    {
+      "evidence_id": "F_0262_00",
+      "requested_source_seconds": 262.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0262.00.jpg",
+      "full_frame_sha256": "c65a6affe52bb6521c73662b95a73e6080426e46f4fa01ef74d6dcf346d17033",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0262_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "1f236e40d1e4bf67195a99b971ab55aecfd7db94690df4fa66818717c4407e37"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0262_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "9283c8aefa96e120a700fe8c00f6230f0e41b3d278ca16390f35a29a8ffb34b1"
+      }
+    },
+    {
+      "evidence_id": "F_0263_00",
+      "requested_source_seconds": 263.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0263.00.jpg",
+      "full_frame_sha256": "2270e0ba600f5e03f5c4e7e89fb2b3f15cf669c1dc2f8378894c4137c0e56148",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0263_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "6a913ee3aaee91a34b58a413e33c76cd461c00af4dc0ce9a0eae62c10ffc1f44"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0263_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "a2a753869eded5facf45085977fe91e6bcaec938f0f382b7eb3dca12c2454ca3"
+      }
+    },
+    {
+      "evidence_id": "F_0265_00",
+      "requested_source_seconds": 265.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0265.00.jpg",
+      "full_frame_sha256": "bfd2c2dd8188af7b7a6f946838a1cfa96889246dafa4ead89bc1e3bd4a520978",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0265_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "bb42f05745016bb91977bd36080746246b70914ea110be98a24f11a9b84c2433"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0265_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "e918e2b8a86a95b95382e2953f49938622601dd7e76308e5d152b8b40628505b"
+      }
+    },
+    {
+      "evidence_id": "F_0285_00",
+      "requested_source_seconds": 285.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0285.00.jpg",
+      "full_frame_sha256": "804643dc7bafe06654ff4171ca13363f5d15cc25d4e565dd6bb1a75ea5da697c",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0285_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "907056565e1639048671517a1f0faaac065b5af2376c0f3eda8be19c9309f81b"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0285_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "0715dc76b7f8dea91ef890e54b4b2d7f731d5fa329087d6809f0694bc86e55e9"
+      }
+    },
+    {
+      "evidence_id": "F_0312_00",
+      "requested_source_seconds": 312.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0312.00.jpg",
+      "full_frame_sha256": "2e3461275bdc85fae415e9fe49bcd77180a70b8f945fdb119d7dddb1b40b04cc",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0312_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "485ec35d1cf493eb4b3a296c6d2d97fdbf968291ea326173f242ff532f9ab155"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0312_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "22a40b85cf927051b9770cf9dc8d23a4ea5aece007c965299d8e9ed36da34edc"
+      }
+    },
+    {
+      "evidence_id": "F_0313_50",
+      "requested_source_seconds": 313.5,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0313.50.jpg",
+      "full_frame_sha256": "ef0b16b55341dfe56195669dbe7cdabc22210415f09e01bb46189922a2dd09fd",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0313_50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "ddb337adfb193baff56526fe9b318b7a0843cd8b6a5cdc24a62acf71b13d3aea"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0313_50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "55fa1c21bf8eacc789ddcafdd36fe15b5980f798afb37e9f4006b4d8fcf6f476"
+      }
+    },
+    {
+      "evidence_id": "F_0314_00",
+      "requested_source_seconds": 314.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0314.00.jpg",
+      "full_frame_sha256": "8b7b8bd9a5f749f3bb6dc282661edab272881f901e19479e96d5aaf76449e3f3",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0314_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "96c161cbe5eaa908c61b66bacfa920615b74ad48aab39ece7f9ed60ac7ddf789"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0314_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "d60c228d0ad75ad9f16098f9df4e06095e72e67b261b0d710e9a0340bdf2aa19"
+      }
+    },
+    {
+      "evidence_id": "F_0315_00",
+      "requested_source_seconds": 315.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0315.00.jpg",
+      "full_frame_sha256": "113ea454af0b3ef393b250f45b5ce75dba64a2c7950cecfc7a18c788dd5ac742",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0315_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "32833abe061f9e5c5f7c874d090e0e6e04c5e758fb97204e2b05072f93fa4851"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0315_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "b8857f24c80ae7f6b3949e9ddbef874cf8cb8a6bc0ea962de674d8b79e470040"
+      }
+    },
+    {
+      "evidence_id": "F_0317_00",
+      "requested_source_seconds": 317.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0317.00.jpg",
+      "full_frame_sha256": "669dacbb98aa91145cb6b8c0c86d7ba029005214a2f882248f5648c9cc8ed82b",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0317_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "6c8493319fda93bc8d58acd1df7123bc902f273307f757eaafd61405986e496f"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0317_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "5be65bbffd24c1802a73e40e5a025d0a680dd2befca119f8b54ce86a83b7d481"
+      }
+    },
+    {
+      "evidence_id": "F_0318_00",
+      "requested_source_seconds": 318.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0318.00.jpg",
+      "full_frame_sha256": "4e84021d7cc857bbab90823d52169bbc01793826c34e6c6bd3449199a957a6d3",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0318_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "0c05b5647d423f343f42f4a82e726f2f1948e3f8c2c88da59f3711a402f41ab3"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0318_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "579f456df962d99d27e0f27416bca98724b009b34d3149852e0d6567ae518b3c"
+      }
+    },
+    {
+      "evidence_id": "F_0320_00",
+      "requested_source_seconds": 320.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0320.00.jpg",
+      "full_frame_sha256": "cb1dc85768358bf532fb0ab25a8981118b1aa458ae76ea436518e025ecd56f9c",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0320_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "49b19e64fd3e7537d1c53cb8356658c710350640dcc340903aaa9888a850bbba"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0320_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "127673a4a7c83128fbb0e01b5795f499c23f40e3932b4f5b263f2530c3e59f09"
+      }
+    },
+    {
+      "evidence_id": "F_0321_00",
+      "requested_source_seconds": 321.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0321.00.jpg",
+      "full_frame_sha256": "b6b86558eac1377942f03a00bfa3549962a08aa94e3e1b92a4312365d1d1490d",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0321_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "0b01983ddc8839a5ecfc207ae95a3ca3111a8aafaad32e6c278afeb502ed4386"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0321_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "1718e002edd64a2a81eaed2ad3761ae42e238d79efa2c075a3ef2476566d49ad"
+      }
+    },
+    {
+      "evidence_id": "F_0323_00",
+      "requested_source_seconds": 323.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0323.00.jpg",
+      "full_frame_sha256": "a8674d433c87839ce952b7c61b1386142cfd11dc029221729045a82624171663",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0323_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "df2b3c17b116934ef357c21d767a1a02f034028c7fb27e8e6d3ca1419f06837d"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0323_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "0170fde067d2b71ee939988e35a9aa99e4cc0497a49671afa4bcf5d31d46bd2b"
+      }
+    },
+    {
+      "evidence_id": "F_0325_00",
+      "requested_source_seconds": 325.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0325.00.jpg",
+      "full_frame_sha256": "86abf4ca5e9ecdf2ff9d294e30a4bd6940698737165c0c6f939daef2d78e0f7e",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0325_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "9199189f90ba82aa922155abc81aa900bef09938ad978f7a96cbc9d5eea79b68"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0325_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "e622b4d71167ad116cf77c6848cd75526f9df63fcf35ba6f86c1855f25ab945c"
+      }
+    },
+    {
+      "evidence_id": "F_0327_00",
+      "requested_source_seconds": 327.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0327.00.jpg",
+      "full_frame_sha256": "bb574cceb2b336a24e4d74b4318f8ff042e88af03877e8f3a7c32028b145be07",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0327_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "71d8b75dea7f3b25026ff5e599d87081b064902d8b05741e3cff92294dde4e5d"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0327_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "d0086bc9a6c1dd0003dff8b7dba8017f7026d24539c104e1c2c244edcd6edae0"
+      }
+    },
+    {
+      "evidence_id": "F_0330_00",
+      "requested_source_seconds": 330.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0330.00.jpg",
+      "full_frame_sha256": "2bebcb7213db9072807a6e29ff3eef6a018a4960619a98544465884b6c6ed48e",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0330_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "b7dc078e2a42f0c74c2c42bb6a5e87b268995e769f12038638a7a97d9ef60a23"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0330_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "f69269cbe6a99f52fb7219b0a1284dba3e5bcaaf93a2fa5e74301a3acefdb19e"
+      }
+    },
+    {
+      "evidence_id": "F_0332_00",
+      "requested_source_seconds": 332.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0332.00.jpg",
+      "full_frame_sha256": "072997641701d02b59e2291df0f6eff6dd2a22c6bdf604f58ffd0fb0136cba68",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0332_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "c2f43773f124cf67fdf607f146830ca821ef7f844fb70526456dfc1177dae990"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0332_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "4d256fda1776debed502d68110474479c6eb4d982a6c5dd928e89767ba147405"
+      }
+    },
+    {
+      "evidence_id": "F_0334_00",
+      "requested_source_seconds": 334.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0334.00.jpg",
+      "full_frame_sha256": "427f39783e5bd50b3adc15555d03bfd38a6bf4cf17a31d02a8f0cbec1dae813d",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0334_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "acf8b6dcaed52ed783eff350c0894e9778b27519b2f6020fbac2ec12b0ad2ba5"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0334_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "50826f24e29b3102a5de5658ca82c19d093f9e9ca1b41fbb3ec5ba0827acf4ea"
+      }
+    },
+    {
+      "evidence_id": "F_0336_00",
+      "requested_source_seconds": 336,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0336.00.jpg",
+      "full_frame_sha256": "e4ea5660907122e3129e90ebfad3dde35a5a8616ed3c467594999e7ef14dd71c",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0336_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "1a2de6ffd7cb9751df89775e3a69832b5b848ae35664c4e60043e92b3bbac60d"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0336_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "1f306abd4add1752e69ada4c845f0d3172a66143b5015cd50b364bd91a4d2616"
+      }
+    },
+    {
+      "evidence_id": "F_0340_50",
+      "requested_source_seconds": 340.5,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0340.50.jpg",
+      "full_frame_sha256": "5fa9ebb560593a1403fce95a02480842e68acd02722f835c3565c6cee9316a26",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0340_50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "29319636dda0119879eba437a35b6d30f94535ee6a8c6cb2110d99c8036c6e29"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0340_50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "2d8b447a344f35769edebf7cbe77c1c6bdf3e527cbc9a795d3afa3f3d0e1d3f2"
+      }
+    },
+    {
+      "evidence_id": "F_0342_00",
+      "requested_source_seconds": 342.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0342.00.jpg",
+      "full_frame_sha256": "2146dbf2eaf35fd727f9604c46546435261757f048fd60cf600a89a456fb011e",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0342_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "b580c7664a4b48e59c3f532ce7b7c2ee7dad006e53042f7a9cebe32826638eb3"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0342_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "58c1004024cb7174ab9c9704694531cdc61d1c9921ed954c922d09ecb16b568a"
+      }
+    },
+    {
+      "evidence_id": "F_0344_50",
+      "requested_source_seconds": 344.5,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0344.50.jpg",
+      "full_frame_sha256": "6f3dbf9d92f9f463ecabc9b219ca6d7257cc01b714bb84658d599ad7e53c1684",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0344_50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "9f552a30b2641245a5e6bba7bf2c3cf597b3a836bae8370350f72a3f2f77cbd2"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0344_50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "9f0db64a9a3233d557584994f6261a4b4849dde5d867ea1ffeb4cbfb45372e8b"
+      }
+    },
+    {
+      "evidence_id": "F_0345_50",
+      "requested_source_seconds": 345.5,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0345.50.jpg",
+      "full_frame_sha256": "b96802099a1269c551e5fddbfa1dc6795e8d593a3b3c7b5d81d3a2e0f333597b",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0345_50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "99f3d293eb76fdb10bf7cc894a26f572e75f66ca3f3853a5e88e6cdbf75379a4"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0345_50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "180aa7d40113e011adfd852c1f69f030d2fe7ad288fcd030456bb96089ce3b8b"
+      }
+    },
+    {
+      "evidence_id": "F_0349_50",
+      "requested_source_seconds": 349.5,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0349.50.jpg",
+      "full_frame_sha256": "abddcbd7ce9242918374fefca9855391c7ebb489f0d69da98b4f71d26f59db20",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0349_50_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "6f965a731f0f83ddc1814e74397a068418a533abab63fefa49559bdf87b281a8"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0349_50_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "19a6321fcd23463ad89f5e3fe6465f31480607ac3d229608ffa80bde898ec866"
+      }
+    },
+    {
+      "evidence_id": "F_0351_00",
+      "requested_source_seconds": 351.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0351.00.jpg",
+      "full_frame_sha256": "9ea0ec0945e27d334b3474e01e0887726e59465abd2b9d8105cec8411c43befe",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0351_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "633e3919176a8a1cdb3503d57e5db23fe2e2823e0c7cceb8f6e803317acf600e"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0351_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "cd1e71670a6c8d12b41633fa026a203cb580cd0c18208108abce7c27dd5ffef3"
+      }
+    },
+    {
+      "evidence_id": "F_0356_00",
+      "requested_source_seconds": 356.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0356.00.jpg",
+      "full_frame_sha256": "a107e896e1d5be47d532c57c23bfd4194b1b3db3a2cb3efa8e569b8f18b2fe76",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0356_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "5be0a8c3a458fb8a9c4a213830e9ef30c0ca07923211dea756111f85acb60efc"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0356_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "f814f4c37075f0eefcb071590b2b1a922d80420cd3ee6e0e4725377e61830621"
+      }
+    },
+    {
+      "evidence_id": "F_0358_00",
+      "requested_source_seconds": 358.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0358.00.jpg",
+      "full_frame_sha256": "3168ee8412cce6291503b69f03ce8c097174c1c3b0cf217c7bd69f2ff681d43c",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0358_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "ba8ab9b7c01ca870852deb9e2d4d1bc3bdf8c8fd7c7a264255a8eba7aea217ea"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0358_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "35d110695e0a2e0239b4938b1d372355870e7640143b2ac18c79561b311ba66c"
+      }
+    },
+    {
+      "evidence_id": "F_0364_00",
+      "requested_source_seconds": 364.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0364.00.jpg",
+      "full_frame_sha256": "8c17429960cc31e38e23a42e9d52198089418f29285cf8110ccd5ff0c36096a1",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0364_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "e3645a0e7750aa9ae1d958fc4633bd2eddb07c6b40b7f0f2aa08aab32dc32e86"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0364_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "273f13f94a4cc77a3d3067495ad01b2d8e91a09383a1268928306fc45083a5da"
+      }
+    },
+    {
+      "evidence_id": "F_0368_00",
+      "requested_source_seconds": 368.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0368.00.jpg",
+      "full_frame_sha256": "086fc367d209bf3ac58a40f59b55f0357ff9140a58ce7e46ee253c8698caa171",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0368_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "3bedf7107c073bfdc130d7428cf50a9de2d0d92a11f52ca57d161824f458cfed"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0368_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "aada2f9db16068c07c90fc0746f7ae5fc1471961a38bf6a22d3b8e5919bf9524"
+      }
+    },
+    {
+      "evidence_id": "F_0370_00",
+      "requested_source_seconds": 370.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0370.00.jpg",
+      "full_frame_sha256": "73a0ee8719d8bc7005696244c812816ac33e3bba151e6c56ad3c71db152b47ad",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0370_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "ee7d3f272bfe19e2128796c5f53ae8508bcd09fc72587f02b1a917c2bfe46d88"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0370_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "56bf9ffd43f4e8b445b3ff2418f94b7328a8bf5c8e93347056584bb40c822de3"
+      }
+    },
+    {
+      "evidence_id": "F_0372_00",
+      "requested_source_seconds": 372.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0372.00.jpg",
+      "full_frame_sha256": "601c670c9c06c818aad945f072bcef293e526d8e223fd47b0b3f325d36bfbab2",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0372_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "89797caa3e0aec9b6fc690819e036ed0740cbf21ee5e7268071dcec82a4917c5"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0372_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "5d4b172cd0adcd8854dcfafbb42b71ad1eb86e66d1efaa760e86d60c44566f43"
+      }
+    },
+    {
+      "evidence_id": "F_0378_00",
+      "requested_source_seconds": 378.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0378.00.jpg",
+      "full_frame_sha256": "c538cad55e592d1a8279776be6523040992d8d700814bfa4c9ebd1515a7fe6f8",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0378_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "9c4324146f09ab0574bf514b3f52f8335b4ff935515bdd1cded5153ffd5a096d"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0378_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "28cf1a333aa69f735ef04a38671a22d5136aa87944b5c727b0469458e242963d"
+      }
+    },
+    {
+      "evidence_id": "F_0382_00",
+      "requested_source_seconds": 382.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0382.00.jpg",
+      "full_frame_sha256": "592ea886b57108fc074d26a34538d6fd51d51608e70ffbaefa4f995e72b1e8ea",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0382_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "501450481d6467a21c1a66419fee4cf5978ecfe958307b5ef6d0e13f099c3522"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0382_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "a421f5707f485f4ca0fec7b7884ba21e3f55296b58713b53d83f76f1885c72d7"
+      }
+    },
+    {
+      "evidence_id": "F_0384_00",
+      "requested_source_seconds": 384.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0384.00.jpg",
+      "full_frame_sha256": "8b5dc32fe2b4264ea1f3066f4cbf39d1900e8f618c14e8f2f69f43d0145de289",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0384_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "fcb6a09be784dde5432daf5ab70076b197597f6c8f39e5954957d76bbe7ddbc4"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0384_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "04f3701093c83976335387fd1a53c0a26b837bc8d5c3e8785c89d940700195c0"
+      }
+    },
+    {
+      "evidence_id": "F_0386_00",
+      "requested_source_seconds": 386.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0386.00.jpg",
+      "full_frame_sha256": "b2d80d46139282c134aa2c12cf295e1c937e95ff498b2c4f4de37a9b099dad46",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0386_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "f0f1e37d9381841fc305a363112fe37a3c7da1a67bda0572dbf06843ceb56d63"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0386_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "0d3ed79f4bc37109cba39440ecbade647a3637326b19a76f6fd2599a8d0c4dfe"
+      }
+    },
+    {
+      "evidence_id": "F_0388_00",
+      "requested_source_seconds": 388.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0388.00.jpg",
+      "full_frame_sha256": "bc7a1f96c31e4c6c4b67bde901ca85bdc5d061f4b930705dd749ca9a1e149d34",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0388_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "44511f638387e24e75cf34eab674b721ab00227d291f436f05b7b9a06c06cae4"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0388_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "774cad3cfddc3035aad085280a87eea30092fc3b0d9aa0c505783fa1b49c2aec"
+      }
+    },
+    {
+      "evidence_id": "F_0389_00",
+      "requested_source_seconds": 389.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0389.00.jpg",
+      "full_frame_sha256": "5037eeb19f43cf3a129a13ca8f4950636292c56193f975aeea29dddee1018704",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0389_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "e4f62d1d6c1b793b0b83f28cad6456d0358ef8390f8e63b498a1aeaf2aecbe7f"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0389_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "110a0d2bf3fc9896a2cc0b4d657a96bdbec255703661ec844164c01f080a17bc"
+      }
+    },
+    {
+      "evidence_id": "F_0390_00",
+      "requested_source_seconds": 390.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0390.00.jpg",
+      "full_frame_sha256": "5088bb69d513bf4fce2743b802f68aad2904b984e278ad211ea41022be3f3c25",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0390_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "c74a89e57bf58ff9daaf6809beed1d2a5a584f7d1b76505527fd6a0fe94b058d"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0390_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "e3b09f11d9f8cdb7296286da13af15cb474ad2f295bf1cd8eee92c86f86f03bf"
+      }
+    },
+    {
+      "evidence_id": "F_0392_00",
+      "requested_source_seconds": 392.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0392.00.jpg",
+      "full_frame_sha256": "a6dd93a4138df134e61f1b89396c0dc83f5deef7f4a13dd155b7b8ade0c76e05",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0392_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "3acf954d8e1b2a3924aa4966bc6c29715c1436c6131125b8f9ad59d202444720"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0392_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "4eba58685c6c939eb3ddfe0380d2a083ace5462603d81b79166eeb97f6570bb2"
+      }
+    },
+    {
+      "evidence_id": "F_0394_00",
+      "requested_source_seconds": 394.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0394.00.jpg",
+      "full_frame_sha256": "a260fb7aeb6ccb1013a6c6255d266d7732bbb507a48e94366a0e277c70785461",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0394_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "57f7c8ad6554b4aa947cea46c48439ecad777e5bb923fb4fe4e34b5545702493"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0394_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "8d9db1feb82fadaeb27bd9c1b576be97667e5b8854ed53b16b87c21cb9af456d"
+      }
+    },
+    {
+      "evidence_id": "F_0402_00",
+      "requested_source_seconds": 402.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0402.00.jpg",
+      "full_frame_sha256": "727e0d4dc614b7959bd4cb6571f5245b7fa74e3aa37c338ac07815251618768d",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0402_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "d4d85820ef397568f81a7bdec6e168f9d49bff9706a304c6feecc6f54b2598d3"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0402_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "80bb11980c92eac7b6f5b23277e67521df60ad8fbab54040937e63872d76aa62"
+      }
+    },
+    {
+      "evidence_id": "F_0403_00",
+      "requested_source_seconds": 403.0,
+      "actual_frame_pts": null,
+      "full_frame_path": "turn_evidence/t0403.00.jpg",
+      "full_frame_sha256": "fdf40f24e476101fd2a27c4376bd13397eb61af9236fa350b20b6c909e7554cf",
+      "top_crop": {
+        "path": "turn_evidence/crops/F_0403_00_top.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          0,
+          1170,
+          720
+        ],
+        "sha256": "0eed36188fc25ed2ce236a39322e89a55c7fc6f43ce0a05eaf3fee5cb59e6fcc"
+      },
+      "bottom_crop": {
+        "path": "turn_evidence/crops/F_0403_00_bottom.png",
+        "pixel_bounds_x0_y0_x1_y1": [
+          0,
+          2025,
+          1170,
+          2532
+        ],
+        "sha256": "b2954b34b9ccdce2d03b07ae18a1ba93d851135aeb3023fdff53dcaa5e0da5cf"
+      }
+    }
+  ],
+  "viewing_method": "Native full frames and native-resolution unchanged crop/board tiles used for names/counts/state. Reduced locator derivatives were used to inspect public sequence and select native detail witnesses; they are not substitutes for retained native captures.",
+  "review_images": [
+    {
+      "path": "board_184_190_194_198_261_262.png",
+      "sha256": "0c2272df3494b66623be2cf205da6daa996b58f3313dc180351c369419ae5918"
+    },
+    {
+      "path": "board_318_323_327_332_342_368.png",
+      "sha256": "12c8d752d6a516ec852f79bf4ce3491fad5cc3e5db23e2ca218dc4535b43e2d6"
+    },
+    {
+      "path": "board_378_382_384_386_388_390.png",
+      "sha256": "e308795b3135c3ea6d52a880f019696a53292f35da7445e5898e1057d77908de"
+    },
+    {
+      "path": "board_51_93.5_116_176_203_248_285_314_368_392.png",
+      "sha256": "d667a3f21d58cfd590ac5b2183d3e1cc02495288b2303084c678f8e2434dc4b3"
+    },
+    {
+      "path": "board_63_65_72.5_79_85_89.png",
+      "sha256": "ba2fb5800ed54170f8d15d3a1fa92640857c7871cced425d3dcbffd62485ada6"
+    },
+    {
+      "path": "bottom_177_179_182_196.5_248_250_253_265_314_315_317_320_344.5.png",
+      "sha256": "b1ab59f263674504efdf75374d070ce0336afd2581568d6737654d9debbe61a1"
+    },
+    {
+      "path": "bottom_32_51_93.5_94.5_96.5_99.5_104_176.png",
+      "sha256": "4e6061f342b2b5c2531f3d421a8359a3567a42bc5da825273180c110f91c6e7c"
+    },
+    {
+      "path": "locator_174.5_175.5_176.5_177.5_180.5_181_184_186_189_190_194_198_255_256_257_261_262_263.png",
+      "sha256": "39d0490c17f04d1041fab56a60b195686d7419adc69941b5af31aec102186cf8"
+    },
+    {
+      "path": "locator_312_313.5_315_318_321_323_325_327_330_332_334_336_340.5_342_344.5_345.5_349.5_351_356_358_364_368.png",
+      "sha256": "6cb2f64fef89db19a06b3456900ec681921405ed36d62c7e599824702f9210a7"
+    },
+    {
+      "path": "locator_318_321_323_327_330_332_349.5_351.png",
+      "sha256": "8d21bf38348813ac4bb6f5b0b78ac2c4cef39f5b228e0f6918544335b1d65f4e"
+    },
+    {
+      "path": "locator_370_372_378_382_384_386_388_392_394_402_403.png",
+      "sha256": "e669af4caabfaf8b5b10973a8f2128ce55d6877efc371aa61e1836e12a7dca18"
+    },
+    {
+      "path": "locator_4_8_16_32_40_51.5_52_53.png",
+      "sha256": "d9c11c37424fa9ef5d5d7ae804772310554423fc535a77ecd667f11553162991"
+    },
+    {
+      "path": "locator_53_56_94.5_96.5_99.5_177_179_182_253_315_317_320.png",
+      "sha256": "37a82d2432e0f8c5b2269194420df32d8d03a25a9e947815edb9f65ead049564"
+    },
+    {
+      "path": "locator_56_60_67_69_72.5_79_85_89_91_94.5_99.5_103.png",
+      "sha256": "0912fc38ceaa35cfeda6e4b8ceee848641fca2d6e723f1e002023cfe28c0921a"
+    },
+    {
+      "path": "top_51_93.5_176_248_314_203_205_219.5.png",
+      "sha256": "447214a7986307db68dc1529bb94fef3840ea74f8a376a58cc2da7a421ec52b1"
+    }
+  ],
+  "outside_packet_view": {
+    "path": "qr_intake/t0001.00.png",
+    "sha256": "094e5bffe741a905afc18805147bd8b71352e43b2384dfc22284a01747866000"
+  },
+  "limits": "Requested source-local seeks only; actual PTS and exact touch/remote input not asserted."
+}

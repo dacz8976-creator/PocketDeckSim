@@ -1,0 +1,26 @@
+id	key	decision	run	role	skip_turns_bots
+F-01vHydreigon-0|1-t9	01-muk-glimmora-kingambit-regigigas|t-hydreigon|0|1|X	23	dev	A positive	frozen
+F-05vLucario-3|0-t5	05-indeedee-stoutland|t-lucario|3|0|X	9	dev	A positive; _expo negative later	frozen
+F-06vLucario-4|1-t3	06-mega-blaziken-tournament-list|t-lucario|4|1|X	7	dev	A positive	frozen
+F-09vHydreigon-4|0-t2	09-mega-manectric-heliolisk|t-hydreigon|4|0|X	0	dev	A positive	frozen
+F-09vSuicune-4|1-t4	09-mega-manectric-heliolisk|t-suicune|4|1|X	6	dev	A positive	frozen
+F-10vAltaria-2|0-t3	10-xatu-oricorio-tr-weezing|t-altaria|2|0|X	5	dev	A report only	frozen
+F-03vVespiquen-4|0-t8	03-wailord-indeedee-wall|t-vespiquen|4|0|X	15	dev	C negative	frozen
+F-draftAvBlaziken-0|0-t2	draft-A-shark-tempo|t-blaziken|0|0|X	0	dev	C negative	candidate,frozen
+C-05vSuicune-0|1-t12	05-indeedee-stoutland|t-suicune|0|1|X	27	comb	A measure F first	candidate
+C-06vHydreigon-1|0-t5	06-mega-blaziken-tournament-list|t-hydreigon|1|0|X	9	comb	A measure F first	candidate
+C-09vSceptile-4|0-t11	09-mega-manectric-heliolisk|t-sceptile|4|0|X	24	comb	A measure F first	candidate
+C-10vSuicune-4|1-t3	10-xatu-oricorio-tr-weezing|t-suicune|4|1|X	3	comb	C negative	candidate
+C-03vBlaziken-3|1-t8	03-wailord-indeedee-wall|t-blaziken|3|1|X	8	comb	B same-position	candidate
+C-06vAltaria-4|0-t5	06-mega-blaziken-tournament-list|t-altaria|4|0|X	6	comb	B same-position (split)	candidate
+C-06vAltaria-4|1-t2	06-mega-blaziken-tournament-list|t-altaria|4|1|X	0	comb	B same-position (split)	candidate
+C-06vBlaziken-0|0-t3	06-mega-blaziken-tournament-list|t-blaziken|0|0|X	1	comb	B same-position	candidate
+C-06vHydreigon-1|1-t2	06-mega-blaziken-tournament-list|t-hydreigon|1|1|X	0	comb	B same-position	candidate
+C-06vLucario-4|0-t4	06-mega-blaziken-tournament-list|t-lucario|4|0|X	4	comb	B same-position (attach first)	candidate
+C-09vAltaria-0|0-t3	09-mega-manectric-heliolisk|t-altaria|0|0|X	5	comb	D reported	candidate
+C-09vAltaria-1|0-t4	09-mega-manectric-heliolisk|t-altaria|1|0|X	7	comb	B same-position	candidate
+C-10vAltaria-1|0-t7	10-xatu-oricorio-tr-weezing|t-altaria|1|0|X	16	comb	C negative	candidate
+C-10vVespiquen-1|1-t4	10-xatu-oricorio-tr-weezing|t-vespiquen|1|1|X	11	comb	B same-position	candidate
+C-10vVespiquen-4|0-t6	10-xatu-oricorio-tr-weezing|t-vespiquen|4|0|X	12	comb	B same-position	candidate
+C-draftAvBlaziken-0|0-t6	draft-A-shark-tempo|t-blaziken|0|0|X	17	comb	B same-position	candidate
+C-draftAvLucario-3|0-t2	draft-A-shark-tempo|t-lucario|3|0|X	0	comb	D reported	candidate

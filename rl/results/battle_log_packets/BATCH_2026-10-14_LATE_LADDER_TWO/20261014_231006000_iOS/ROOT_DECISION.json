@@ -1,0 +1,23 @@
+{
+  "accepted": true,
+  "decision_stage": "Root source reconciliation; completion registration remains gated on separate independent acceptance",
+  "source_filename": "20261014_231006000_iOS.MP4",
+  "source_sha256": "60f6a6c04e3f6e8c989b867b9dd41c536d4d0ac853b40603575a4ce3829faeee",
+  "auto_option_seen": false,
+  "full_timeline_and_coverage_read": true,
+  "section": "d13",
+  "opponent": "Zeno",
+  "opponent_deck": "Entei ex / Charmander / Charmeleon / Mega Charizard Y ex; full list unknown",
+  "result": "win",
+  "note_prefix": "1st | Alolan Ninetales ex T3 | opp 1 pts",
+  "note": "1st | Alolan Ninetales ex T3 | opp 1 pts | vs Zeno | 2026-10-14 18:10:06 CDT | 20261014_231006000_iOS.MP4 | Deck 13-A: Alolan Ninetales ex / Team Rocket's Raticate ex. Opponent Entei ex / Mega Charizard Y ex core; full lists unknown. Win by explicit opponent concession at 463s, actual score 2-1. Final screen at 471.8s confirms went first, 11 turns and 300 damage. First Binding Snow at about 188s on own T3/global 5 with opponent 1 point; 100 damage with Water weakness. Human ranked queue; no Auto option seen. Late opponent Fire allocation and switch payment remain uncertain.",
+  "scope": "Whole one-game ranked ladder source: setup, all 11 global turns, explicit opponent concession and final statistics; full timeline and coverage reconciled with independent source checks",
+  "registration_notes": "Fresh Sol/high full review, separate independent Sol/high acceptance and root source reconciliation. Actual concession score 2-1 preserved. Main attacker first attack uses own-turn numbering. Hidden cards and precise late opponent Fire allocation/switch payment remain unknown. No Pause Games supplement.",
+  "direct_source_observations": [
+    {"path": "evidence/t0188.00.jpg", "directly_viewed_by_root": true, "finding": "Alolan Ninetales ex uses Binding Snow; opponent Zeno has 1 point before the first main attack."},
+    {"path": "evidence/t0192.00.jpg", "directly_viewed_by_root": true, "finding": "Entei ex has 40 HP after the attack, confirming 100 damage from 140; the Active Energy Zone attachment restriction is displayed."},
+    {"path": "evidence/t0463.00.jpg", "directly_viewed_by_root": true, "finding": "The source explicitly displays Your opponent conceded, establishing the terminal method."},
+    {"path": "evidence/t0471.80.jpg", "directly_viewed_by_root": true, "finding": "Final statistics show Victory, went first, 11 turns, actual score 2-1 and 300 damage."}
+  ],
+  "clarifications": []
+}

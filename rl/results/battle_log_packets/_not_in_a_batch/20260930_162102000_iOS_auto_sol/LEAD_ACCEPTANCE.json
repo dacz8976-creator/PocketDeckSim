@@ -1,0 +1,26 @@
+{
+  "scope": "Complete seven-turn 157.04-second autopilot computer battle, setup through Copycat draws, tools, healing, Stadium/Supporter damage, Helmet retaliation, empty-field loss and explicit Defeat",
+  "first_pass": "gpt-6.1-sol/high /root/sol_auto_162102",
+  "lead_checks": "Read full review, coverage, summary and uncertainties. Independently inspected complete opening AI/second/Auto sheet,65-second ordinary Heliolisk/Mega Manectric development and sole ownerPassimian,98-second Stage1+30HP/210 tool effect and Helmet text,123-second Arena in play,126-second Korrina use,129-second Fighting+30 caption,132-second explicit130-damage popup,144-second owner0HP with Helmet resolving,147-second owneremptyfield/Mega40,150-second opponent+2 and finalvisible1-2,152-second explicitDefeat. Astra independently checked Stadium/Supporter eligibility, damage and bounded post-KO Helmet/terminal conclusions; misleading time anchors corrected.",
+  "outcome": "owner_loss",
+  "final_points": {
+    "owner": 1,
+    "opponent": 2
+  },
+  "result_display": "Loss 1-2; no Pokemon remaining",
+  "owner_visible_core": "Passimian ex / Rocky Helmet; Mega Lucario ex and Gabite held",
+  "opponent": "AI; visible Heliolisk / Mega Manectric ex / Bellibolt ex",
+  "last_turn": 7,
+  "useful_finding": "Arena, Korrina and weakness raise Seismic Toss from60 to130, but the boosted Mega Manectric survives at60HP. Its next80damage knocks out the sole Passimian; Helmet still reduces the attacker to40. The owner loses with1-2 points because no Pokemon remains in play.",
+  "limitations": "Root and Astra verification is bounded. Exact cape title and terminal named deck/rewards page are absent or unreadable. The recorded Helmet retaliation and final empty field do not establish every engine queue detail or generalized rule priority.",
+  "astra_consulted": true,
+  "astra_reason": "Conflicting Stadium eligibility, damage anchors and consequential terminal Helmet/empty-field interpretation independently checked in ASTRA_CHECK.md",
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "source_video": "20260930_162102000_iOS.MP4",
+  "source_sha256": "e23850f05a3e9a8b1b838c190a17cecfd88a50e7359013ffaee15c8c9a2758a5",
+  "unreviewed_intervals": [],
+  "material_unresolved": [],
+  "ladder_eligible": false,
+  "ladder_action": "No Ladder Log entry; excluded by owner instruction"
+}

@@ -1,0 +1,40 @@
+{
+  "checked_at_utc": "2026-10-13T04:35:51.509023+00:00",
+  "reviewer": "/root/check_newest_030351",
+  "model": "gpt-6.1-sol",
+  "scope": "Bounded independent source checks, not second full pass",
+  "source_video": "20261013_030351000_iOS.MP4",
+  "source_sha256": "d0a221cd236c620f467bbf34ad8078fd59c72323a7dca71a4af344f0489c6c7f",
+  "accepted": false,
+  "preserved_inputs": "rejected_01",
+  "checked_file_sha256": {
+    "REVIEW.md": "014e167f296e3fc36fbfbb3a58b5b2bda7d3c4fef4f4f2419273bfa689286da7",
+    "COVERAGE.md": "a23a57661b7deebece354acebf7e98e34d3d30a9db68eba6f620816e7029f5cc",
+    "SUMMARY.json": "7b99e28261ff86c633b55a100ac8d7cf84d129cc469c282d66a5199ff6824bf7",
+    "UNCERTAINTIES.json": "a6395b3fb64e631ebf021b6be9582517e2e8361fd2f7b27636b3d90f01c27f99",
+    "PAUSE_GAME.json": "6de603d675df99ee967383398826116148173083cac0208e2374023909d93197",
+    "DECK_USED.json": "ed1db41f01e4eb98abf61487779a25ffa1129d85114c56d53737d692f13f9451",
+    "TURN_LEDGER.json": "16ea06f435667eaa649b9628955733a89d1e860275b4bd3d708a14f36ca1d2e6",
+    "TURN_EVIDENCE.json": "105499077e9343e60f0bfe8a4c1f78204218ffccc05a122e4d9b1c9138a89342"
+  },
+  "required_repairs": [
+    "Copycat arrivals: Poke Ball59.5, Dragonair60.5;59.0 is Research",
+    "T3 118.5 is Dratini inspection, not first bench play;121.0 shows actual rightBench Dratini with two remaining cards",
+    "T3Research arrives RareCandy126,Haxorus127;128.5/129 are already after arrival",
+    "Authored mojibake card names require Unicode repair",
+    "Evolved Haxorus/Dragonair maxHP basis must not imply Basic-only StartingPlains modifier",
+    "Five missing evidence catalog refs f0072.00,f0169.00,f0220.00,f0390.00,f0420.00",
+    "T11 supporter warning430 followed by OK/end must be recorded;431 is turn12transition, not beforeEnd",
+    "T9chosen322 has LuckyIcePopinspectionzoom; must use dense genuine preplay hand or accurately document zoomlimit"
+  ],
+  "source_visual_support": [
+    "Native32 openingfive beforeActiveplacement",
+    "Independently selected ordinaryT11:412.5 Iris/PokeBall genuine preplay;414 PokeBall;416Axewarrival;431Irisendingcount1",
+    "Native568 Iris extra-point literal effect owner0opponent2;583 owner2opponent2",
+    "Native594Koraidonexprinted150;608effective1707Fighting with bothDarkrai depleted",
+    "Native626 defeat2-3,first,16turns,230damage",
+    "Native296ownerdiscard7cards3Metal; opponentpileunshown",
+    "TopnativeownerturnsT5,T7,T9 fan5;T11,T13 fan6;T15fan7",
+    "IndependentnativeQRdecoder byteequal;20semantic slots; initialcatalog26absence; printingqualified"
+  ]
+}

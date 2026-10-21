@@ -1,0 +1,69 @@
+{
+  "schema": "bounded_timing_adjudication_v1",
+  "checked_utc": "2026-10-06T20:33:19.7554278Z",
+  "reviewer": "astra_124532_timing",
+  "source_video": "20261005_124532000_iOS.MP4",
+  "source_sha256": "d224f481fc02e3d5c6b3589ebbe89bfe839318a862d1883ce85554b9073cae75",
+  "scope": "Only independent_sol R2 disputed owner T1/T3 preview-versus-consumption timing/count. Not whole-source acceptance.",
+  "status": "resolved_with_requested_seek_timing_limits",
+  "checked_inputs": [
+    {
+      "sha256": "11657b7496873ca1bfc45374184b7ef8e4036b29402041c7ad9f2d00088c1fdd",
+      "path": "independent_sol/CHECK_RESULT.json"
+    },
+    {
+      "sha256": "ed4625730a47da31a60485e1461dab90adbbfa2ac20f593b219a679269096731",
+      "path": "TURN_EVIDENCE.json"
+    }
+  ],
+  "findings": [
+    {
+      "turn": 1,
+      "disposition": "R2 distinction between preview and consumption upheld",
+      "preview_evidence_ids": [
+        "f0053p60",
+        "f0053p80",
+        "f0054p00"
+      ],
+      "consumed_evidence_ids": [
+        "f0055p00"
+      ],
+      "requested_seek_transition_window_seconds": [
+        54,
+        55
+      ],
+      "exact_consuming_touch_seconds": null,
+      "actual_decoded_pts_measured": false,
+      "correction": "53.8 and 54.0 show four cards with Poison Barb preview, not committed consumption. Consumption/attachment animation and three-card hand visible at requested55. Use approximate requested-seek transition54-55, without precise touch claim. 53.8 unsuitable unzoomed hand candidate because of card preview, not because the card was already consumed."
+    },
+    {
+      "turn": 3,
+      "disposition": "R2 claim that requested90.2 again shows four highlighted cards is rejected",
+      "preview_evidence_ids": [
+        "f0089p60"
+      ],
+      "consumed_or_play_in_progress_evidence_ids": [
+        "f0090p00",
+        "f0090p20",
+        "f0091p00"
+      ],
+      "requested_seek_transition_window_seconds": [
+        89.6,
+        90.0
+      ],
+      "exact_consuming_touch_seconds": null,
+      "actual_decoded_pts_measured": false,
+      "correction": "Requested89.6 shows four cards including highlighted Research. Requested90.0 shows Research detached over a green play area and three cards remaining; requested90.2 has the same three-card hand with no Research. Requested91.0 shows Research effect/reveal overlay and three remaining cards. No apparent count reversal exists. Retain90.2 post-play label; do not replace it with intact preview. Describe approximate transition89.6-90.0 based on requested seeks; do not claim exact consuming input time."
+    }
+  ],
+  "recommended_lead_action": "Correct timing and preview language for T1/T3 and append this adjudication as correction to the narrow R2 finding. Preserve prior independent receipt and source frames. Root remains sole packet repair writer.",
+  "limits": [
+    "Actual decoded PTS and exact physical touch/release telemetry were not measured.",
+    "Window endpoints are extraction request labels, not independently measured frame presentation timestamps.",
+    "Detached card at90.0 establishes hand removal/play motion; alone it does not locate the exact irreversible input instant.",
+    "No new extraction, original-media read, shared review index/event write, external log write, or canonical packet repair performed.",
+    "No findings outside bounded R2 adjudicated."
+  ],
+  "viewed_evidence_receipt": "astra_timing/VIEWED_EVIDENCE.json",
+  "viewed_evidence_sha256": "53b5f81b49740165a001c0e94250ec4fd8fb089e962c0e5f7fb66e86f869133f"
+}

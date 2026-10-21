@@ -1,0 +1,77 @@
+{
+  "source_filename": "20261016_015753000_iOS.MP4",
+  "source_sha256": "365da4f239709a8512e425fbeb8a3fff9b90cb7b9f5ba208e51ca9679c4f8fe3",
+  "battle_complete": true,
+  "match_count": 1,
+  "exact_three_item_note_prefix": "First | Kingambit first attacked on own turn 4; Glimmora on own turn 2; Glimmet on own turn 5 | Opponent points at those first attacks: Kingambit 1; Glimmora 0; Glimmet 2",
+  "outcome": "loss",
+  "opponent_identifier": "てる",
+  "owner_identifier": "Dacz8976",
+  "mode": "ranked ladder; Season B4b SP; Master Ball Rank",
+  "Auto": {
+    "visible": false,
+    "enabled": "not shown",
+    "classification": "human ladder under owner rule"
+  },
+  "visible_cores": {
+    "owner": "Glimmora / Kingambit, with Glimmet and Alolan Grimer",
+    "opponent": "Jolteon ex / Eevee, plus Eevee ex"
+  },
+  "opening_deck_name": "New deck 16",
+  "full_decks_known": false,
+  "first_or_second": "first",
+  "ownerturns": 5,
+  "terminalglobalturn": 10,
+  "firstattacks": {
+    "Kingambit": {
+      "own_turn": 4,
+      "global_turn": 7,
+      "opponent_points": 1,
+      "seconds": 314
+    },
+    "Glimmora": {
+      "own_turn": 2,
+      "global_turn": 3,
+      "opponent_points": 0,
+      "seconds": 156
+    },
+    "Glimmet": {
+      "own_turn": 5,
+      "global_turn": 9,
+      "opponent_points": 2,
+      "seconds": 382
+    },
+    "Pawniard": {
+      "own_turn": null,
+      "note": "no attack",
+      "opponent_points": null
+    },
+    "Alolan Grimer": {
+      "own_turn": null,
+      "note": "no attack",
+      "opponent_points": null
+    }
+  },
+  "final_points": {
+    "owner": 2,
+    "opponent": 3
+  },
+  "terminal_method": "Eevee ex Bite knocks out Glimmet for third point",
+  "match_date_local": "2026-10-15",
+  "source_creation_utc": "2026-10-16T01:57:53Z",
+  "local_creation_time": "2026-10-15T20:57:53-05:00",
+  "result_evidence": [
+    "evidence/native/t0406.00.jpg",
+    "evidence/native/t0408.00.jpg",
+    "evidence/native/t0412.00.jpg",
+    "evidence/native/t0416.00.jpg",
+    "evidence/native/t0422.00.jpg",
+    "evidence/native/t0424.00.jpg"
+  ],
+  "reviewer": "/root/ladder_015753",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "primary_review_complete": true,
+  "independent_acceptance": "pending lead checker",
+  "external_write_performed": false
+}

@@ -1,0 +1,25 @@
+{
+  "updated_utc": "2026-10-13T04:54:43.412311+00:00",
+  "lead": "/root",
+  "lead_role": "Single shared writer, bounded direct source reconciliation, acceptance, registration, move, external verification and mirror.",
+  "sources": [
+    {
+      "source": "20261013_022530000_iOS.MP4",
+      "registered_reviewer": "/root/pause_20261013_022530000_iOS",
+      "actual_worker": "/root/newest_022530",
+      "independent_worker": "/root/check_newest_022530",
+      "model": "gpt-6.1-sol",
+      "effort": "high",
+      "current_status": "accepted_registered_archived_live_verified_and_online_only"
+    },
+    {
+      "source": "20261013_030351000_iOS.MP4",
+      "registered_reviewer": "/root/pause_20261013_030351000_iOS",
+      "actual_worker": "/root/newest_030351",
+      "independent_worker": "/root/check_newest_030351",
+      "model": "gpt-6.1-sol",
+      "effort": "high",
+      "current_status": "accepted_registered_archived_live_verified_and_online_only"
+    }
+  ]
+}

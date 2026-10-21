@@ -1,0 +1,33 @@
+{
+  "lead": "/root",
+  "checked_utc": "2026-10-15T02:59:09.671827+00:00",
+  "source_filename": "20261015_021533000_iOS.MP4",
+  "source_sha256": "79e90e086586b39d1d9b7e674227d321a1c37f77b21e0054e5725d8dddf79996",
+  "observations": [
+    {
+      "path": "evidence/t0215.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Alolan Ninetales ex Binding Snow80 attack card is displayed while opponent has one point and owner zero.",
+      "sha256": "1d0544e0ade1762bd3df2d01063d28902d2a330184dcbe980ee6b084567a1523"
+    },
+    {
+      "path": "evidence/t0296.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "The decisive Item is explicitly Repel, with readable Active Basic switch text. Raticate ex remains in hand and Ninetales is on Bench.",
+      "sha256": "8b9629cd657c735e82354a64637dad3634e127768042d19665eb578f7071adce"
+    },
+    {
+      "path": "evidence/t0305.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Mega Venusaur ex Critical Bloom deals120 to the70-HP Active Ninetales; opponent still has one point before the terminal award.",
+      "sha256": "103072ec2a66e15ea47435c5899f848e16150fcf85d91d5a24c3426c151a8e8b"
+    },
+    {
+      "path": "evidence/t0323.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Defeat panel versus single-dot name confirms went first, ten turns, owner0/opponent3 and damage140.",
+      "sha256": "ab0ffedf136641f1c3510cf95fa1befe7f80abbcf960368708070231400eaa26"
+    }
+  ],
+  "coverage_reconciliation": "Root read full timeline and turn/phase coverage; separate Sol reviewer checked decisive sequences and ordinary turns against retained source evidence."
+}

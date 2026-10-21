@@ -1,0 +1,41 @@
+{
+  "parser_version": "2.1",
+  "complete": false,
+  "ready_for_independent_review": false,
+  "review_status": "partial",
+  "semantic_verification_performed": false,
+  "response_sha256": "0EC572AA7C3E8AB314A6C04E2F8C33CA50CF3E050CE29A48F35BD089E9432C69",
+  "packet_directory": "/home/dacz8976/Gemini_API_Pilot/runs/20260921T230500Z-20260921_152812000_iOS/candidate_packet",
+  "source_binding_verified": true,
+  "files": {
+    "SOURCE.json": {
+      "method": "filename_label",
+      "start_line": 3,
+      "end_line": 16,
+      "valid": true,
+      "transformations": [],
+      "path": "/home/dacz8976/Gemini_API_Pilot/runs/20260921T230500Z-20260921_152812000_iOS/candidate_packet/SOURCE.json",
+      "bytes": 482,
+      "sha256": "B8D0FF430C3FA635A56E89DC5C21377FEE1CBC6B062F6153F1E97EB093985790"
+    },
+    "COVERAGE.md": {
+      "method": "filename_label",
+      "start_line": 21,
+      "end_line": 135,
+      "valid": true,
+      "transformations": [],
+      "path": "/home/dacz8976/Gemini_API_Pilot/runs/20260921T230500Z-20260921_152812000_iOS/candidate_packet/COVERAGE.md",
+      "bytes": 10873,
+      "sha256": "F57CBE8923E6308F8E5F476FFAD857BD6885BF26FE0E8E55B58F117DEF1A0D8B"
+    }
+  },
+  "errors": [
+    "Unclosed code fence at line 139; content not recovered.",
+    "Section REVIEW.md has no complete body.",
+    "REVIEW.md: expected one section; found 0. No section selected.",
+    "UNCERTAINTIES.json: expected one section; found 0. No section selected."
+  ],
+  "warnings": [],
+  "note": "Complete means four structurally valid files, not factual correctness or acceptance.",
+  "report_path": "/home/dacz8976/Gemini_API_Pilot/runs/20260921T230500Z-20260921_152812000_iOS/PARSE_REPORT.json"
+}

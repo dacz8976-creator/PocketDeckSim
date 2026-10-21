@@ -1,0 +1,221 @@
+{
+  "schema": "pause-games/independent-viewed-evidence-v1",
+  "game_id": "20261005_032857000_iOS",
+  "source_sha256": "a7aa71ededa0f2372282f5ba1ff0620b1fed9cedec8bb71101aee1db6eba297e",
+  "reviewer": "/root/independent_metal",
+  "method": "Bounded independent visual inspection of retained native images at original dimensions; no second full pass, media read/hash, extraction or external action.",
+  "groups": [
+    {
+      "purpose": "Deck QR and human event binding",
+      "seconds": [
+        2,
+        4,
+        6
+      ],
+      "additional_paths": [
+        "qr_intake/t0001.00.png"
+      ],
+      "observations": "Native QR receipt binds exact20 semantic entities, Metal, two Rocket Tinkaton/no Tinkaton ex. Same New deck6 shown in deck edit and Deluxe Pack: Mega Emblem Event then matchmaking. Prepared filmed-qr-1dd251acfd4e matches payload and entity counts. No current live save claimed.",
+      "native_paths": [
+        "turn_evidence/t0002.00.jpg",
+        "turn_evidence/t0004.00.jpg",
+        "turn_evidence/t0006.00.jpg"
+      ]
+    },
+    {
+      "purpose": "Original five and setup",
+      "seconds": [
+        26,
+        32
+      ],
+      "observations": "Five original cards and Honedge Active placement match opening ledger; went second.",
+      "native_paths": [
+        "turn_evidence/t0026.00.jpg",
+        "turn_evidence/t0032.00.jpg"
+      ]
+    },
+    {
+      "purpose": "Ordinary owner T2 first decision, scheduled candidates and end",
+      "seconds": [
+        70.25,
+        70.5,
+        70.75,
+        72.75,
+        74.25,
+        74.75,
+        75.75,
+        79,
+        81,
+        84
+      ],
+      "observations": "70.25 intact4; current glow obscures Energy, Metal visible70.5. Research raised70.75, bounds70.5-70.75 credible. Candy then Barrier reveals. +1/+3/+6 are post-selection/resolution/draw and correctly unsuitable. Ending5 =4-1+2; Pierce20 changes Bulbasaur90 to70. Both boards and opponent fan4 match.",
+      "native_paths": [
+        "turn_evidence/t0070.25.jpg",
+        "turn_evidence/t0070.50.jpg",
+        "turn_evidence/t0070.75.jpg",
+        "turn_evidence/t0072.75.jpg",
+        "turn_evidence/t0074.25.jpg",
+        "turn_evidence/t0074.75.jpg",
+        "turn_evidence/t0075.75.jpg",
+        "turn_evidence/t0079.00.jpg",
+        "turn_evidence/t0081.00.jpg",
+        "turn_evidence/t0084.00.jpg"
+      ]
+    },
+    {
+      "purpose": "Ordinary opponent T3 search, attack and settled board",
+      "seconds": [
+        102.25,
+        111,
+        114
+      ],
+      "observations": "Quick-Grow Extract deck evolution then Ivysaur Synthesis2Grass; settled3Grass/130HP with Leaf Cape, empty opponent Bench, Honedge60/1Metal and Rocket Tinkatink60. Opponent fan4. Hidden deck selection information remains limited.",
+      "native_paths": [
+        "turn_evidence/t0102.25.jpg",
+        "turn_evidence/t0111.00.jpg",
+        "turn_evidence/t0114.00.jpg"
+      ]
+    },
+    {
+      "purpose": "T4 intact selected hand and candidates",
+      "seconds": [
+        118.25,
+        120.25,
+        123.25,
+        142
+      ],
+      "observations": "Six-card intact +1/+3 before input. +6 central Rare Candy zoom after play is correctly unsuitable. Ending3 =6-2 Candy/evolution-1 Barrier; Aegislash140/2Metal/Barrier, Tinkatink60, Ivysaur130/3Grass. End without attack.",
+      "native_paths": [
+        "turn_evidence/t0118.25.jpg",
+        "turn_evidence/t0120.25.jpg",
+        "turn_evidence/t0123.25.jpg",
+        "turn_evidence/t0142.00.jpg"
+      ]
+    },
+    {
+      "purpose": "T6 timing, scheduled candidates, return/replay arithmetic",
+      "seconds": [
+        183.5,
+        183.75,
+        184,
+        184.5,
+        186.5,
+        189.5,
+        192,
+        202,
+        210,
+        218
+      ],
+      "observations": "183.5 intact4 current ring empty,nextMetal; automatic highlights183.75 then selected Pop184. +1/+3 after input, +6 coin display unsuitable. Heads192 returns same Pop; tails202 discards replay. End2 =4-1 Pop-1 Barrier. HP60+20+20=100 then poison90; Mega270 to170, final3Metal visible218. Both boards/fan5 match.",
+      "native_paths": [
+        "turn_evidence/t0183.50.jpg",
+        "turn_evidence/t0183.75.jpg",
+        "turn_evidence/t0184.00.jpg",
+        "turn_evidence/t0184.50.jpg",
+        "turn_evidence/t0186.50.jpg",
+        "turn_evidence/t0189.50.jpg",
+        "turn_evidence/t0192.00.jpg",
+        "turn_evidence/t0202.00.jpg",
+        "turn_evidence/t0210.00.jpg",
+        "turn_evidence/t0218.00.jpg"
+      ]
+    },
+    {
+      "purpose": "Sabrina switch and later Barrier expiry",
+      "seconds": [
+        223.25,
+        230,
+        248
+      ],
+      "observations": "Sabrina visible; Tinkatink becomes Active, Aegislash90/3Metal moves Bench and poison clears. Later Aegislash sole survivor without Barrier, point1.",
+      "native_paths": [
+        "turn_evidence/t0223.25.jpg",
+        "turn_evidence/t0230.00.jpg",
+        "turn_evidence/t0248.00.jpg"
+      ]
+    },
+    {
+      "purpose": "T8 intact hand, generation, scheduled candidates, named draws, end and decline",
+      "seconds": [
+        253.5,
+        253.75,
+        254,
+        254.5,
+        256.5,
+        257.25,
+        258.25,
+        259.5,
+        269,
+        272,
+        274
+      ],
+      "observations": "253.5 intact3,currentempty,nextMetal; automatic highlights253.75, Research selected254. +1/+3/+6 all after input, accurately unsuitable as start. Pop then second Rocket Tinkaton draws. Tails269; end3 =3-1 Research+2-1 Pop. Aegislash110/3Metal, opponent170/fiveGrass/LeafCape, both Benches empty. Unused Metal warning accepted.",
+      "native_paths": [
+        "turn_evidence/t0253.50.jpg",
+        "turn_evidence/t0253.75.jpg",
+        "turn_evidence/t0254.00.jpg",
+        "turn_evidence/t0254.50.jpg",
+        "turn_evidence/t0256.50.jpg",
+        "turn_evidence/t0257.25.jpg",
+        "turn_evidence/t0258.25.jpg",
+        "turn_evidence/t0259.50.jpg",
+        "turn_evidence/t0269.00.jpg",
+        "turn_evidence/t0272.00.jpg",
+        "turn_evidence/t0274.00.jpg"
+      ]
+    },
+    {
+      "purpose": "Opened discard and terminal",
+      "seconds": [
+        278,
+        287,
+        292,
+        297,
+        298,
+        304
+      ],
+      "observations": "Full owner eight-card discard agrees ordered ledger; no discarded Energy.120 hits Aegislash110 then removal/empty entire owner board; opponent point2. Defeat298/results304 loss0-2,9turns,220damage vsFriendlike_Andy.",
+      "native_paths": [
+        "turn_evidence/t0278.00.jpg",
+        "turn_evidence/t0287.00.jpg",
+        "turn_evidence/t0292.00.jpg",
+        "turn_evidence/t0297.00.jpg",
+        "turn_evidence/t0298.00.jpg",
+        "turn_evidence/t0304.00.jpg"
+      ]
+    }
+  ],
+  "viewed_native_crops": [
+    "turn_evidence/t0070.25_bottom.jpg",
+    "turn_evidence/t0070.25_top.jpg",
+    "turn_evidence/t0183.50_bottom.jpg",
+    "turn_evidence/t0253.50_top.jpg"
+  ],
+  "mechanical": {
+    "frames": 160,
+    "crops": 320,
+    "errors": [],
+    "missing_ledger_evidence_ids": [],
+    "crop_RGB_MAE_max": 1.5950426226560348,
+    "turn_numbers": [
+      1,
+      2,
+      3,
+      4,
+      5,
+      6,
+      7,
+      8,
+      9
+    ],
+    "QR_retained_image_hash_matches": true,
+    "prepared_id": "filmed-qr-1dd251acfd4e",
+    "prepared_QR_payload_matches": true,
+    "counts_match": true
+  },
+  "limits": [
+    "Requested seek times are source-local; exact output PTS was not independently measured.",
+    "QR image and receipt binding plus prepared payload/counts checked. Reader module unavailable, so no independent QR decoding claim.",
+    "JPEG crops are native-sized crops with small recompression differences, not lossless pixel-identical files."
+  ]
+}

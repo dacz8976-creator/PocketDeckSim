@@ -1,0 +1,64 @@
+{
+  "game_id": "pause-20261005-123812",
+  "source_video": "20261005_123812000_iOS.MP4",
+  "source_sha256": "3fb3dc25ac96c6e742f9467ba14abdbf91aff403ef2a5bdc62c7f414e775e5a0",
+  "uncertainties": [
+    {
+      "id": "U1",
+      "severity": "registration",
+      "topic": "Exact live deck snapshot",
+      "observation": "This filmed20 not in initial nine-list snapshot.",
+      "resolution": "Filmed QR fully decoded and continuous to game; prepared distinct revision exists. Root must save/register and snapshot live exact list.",
+      "status": "pending_root"
+    },
+    {
+      "id": "U2",
+      "severity": "source_limit",
+      "topic": "Opponent draws/searches",
+      "observation": "Card backs conceal identities; counts reconciled.",
+      "resolution": "Null identity in ordered draw slots, no reconstruction from later plays.",
+      "status": "bounded"
+    },
+    {
+      "id": "U3",
+      "severity": "source_limit",
+      "topic": "Discard piles",
+      "observation": "No pile opened throughout source; top previews only.",
+      "resolution": "Periodic preview snapshots; full_pile_established false.",
+      "status": "bounded"
+    },
+    {
+      "id": "U4",
+      "severity": "source_limit",
+      "topic": "Printing",
+      "observation": "Artwork seen, QR semantic IDs do not select rarity/printing.",
+      "resolution": "Visible functional variants distinguished, no exact printing claim.",
+      "status": "bounded"
+    },
+    {
+      "id": "U5",
+      "severity": "source_limit",
+      "topic": "Current Energy in selected hand frame",
+      "observation": "T1/T3/T7 large current spheres empty despite Darkness next preview. T9 selected316 generation glow obscures current.",
+      "resolution": "Absent current recorded at1/3/7; unknown glow9, later Darkness not backfilled.",
+      "status": "bounded"
+    },
+    {
+      "id": "U6",
+      "severity": "source_limit",
+      "topic": "Input timing",
+      "observation": "Native requested seeks, not measured PTS or touch telemetry.",
+      "resolution": "Selection/play inputs bounded separately from face reveals and resolution.",
+      "status": "bounded"
+    },
+    {
+      "id": "U7",
+      "severity": "source_limit",
+      "topic": "Concession reason and unstated ranked status",
+      "observation": "Concede filmed; reason not stated. Deluxe Pack: Mega Emblem Event is visible at4-5.",
+      "resolution": "Human event loss by concession; no concession reason or ranked inference.",
+      "status": "bounded"
+    }
+  ],
+  "consequential_unresolved_source_identity_or_result": false
+}

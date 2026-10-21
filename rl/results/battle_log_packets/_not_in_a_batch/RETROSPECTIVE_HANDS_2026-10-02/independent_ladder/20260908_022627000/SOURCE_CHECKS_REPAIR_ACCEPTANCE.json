@@ -1,0 +1,431 @@
+{
+  "schema": "independent-retrospective-repair-acceptance-v1",
+  "game_id": "20260908_022627000",
+  "reviewer": "Sol /root/sol_retro_ladder_021327",
+  "producer": "different Sol /root/sol_retro_ladder_012720",
+  "status": "accepted_with_recording_limits",
+  "independent_acceptance": true,
+  "completed_utc": "2026-10-02T22:38:55.146961+00:00",
+  "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+  "accepted_submission": "SUBMISSION_AFTER_BOUNDARY_REPAIR.json",
+  "supersedes_decision_only": "SOURCE_CHECKS.json needs_repair; historical check preserved",
+  "scope": "Whole-packet18turn/9owner-hand acceptance after three bounded repairs; follows60-native independent check and six bounded Astra findings. No additional native views, original reads or extraction in this recheck.",
+  "repair_checks": [
+    {
+      "id": "BOUNDARY_PROVENANCE",
+      "status": "resolved",
+      "basis": "All36start/end board objects and every non-null Pokémon explicitly marked inferred/composite with per-attribute basis, pooled native-anchor inventories and boundary limits. Specific end7/9/15/17 derivations correctly separate observed304/339.3,394,602/640and681states from represented boundaries. The70HP Hydreigon end17 is explicit140minus accepted Boost Dash70, without682adopted as direct proof. Prose no longer asserts exact simultaneous boundary snapshots."
+    },
+    {
+      "id": "T15_HAND_PHASE",
+      "status": "resolved",
+      "basis": "Hand/ledger text identifies593as pre-switch and596as post-switch/evolution in progress, consistent with the native frames previously inspected. Target hand content is unchanged."
+    },
+    {
+      "id": "HAND_CANDIDATE_INVENTORY",
+      "status": "resolved",
+      "basis": "Existing103/105turn3and174turn5candidates are listed with exact requested times, producer-measuredPTS, actual offset ranges and post-play qualifications; dense preplay anchors remain separate."
+    }
+  ],
+  "values_unchanged": {
+    "all_board_numeric_card_tool_condition_values": true,
+    "all_hand_and_draw_card_values": true,
+    "energy_zone_values_and_qualifications": true,
+    "inherited_old_prose_and_owner_loss": true
+  },
+  "frozen_file_checks": [
+    {
+      "file": "ASSIGNMENT.json",
+      "effective_expected_sha256": "7799dbbb50b236363c130fa234fd21b6a4922c1a9398efbc83c8e2a56e284710",
+      "actual_sha256": "7799dbbb50b236363c130fa234fd21b6a4922c1a9398efbc83c8e2a56e284710",
+      "match": true
+    },
+    {
+      "file": "PAUSE_GAME.json",
+      "effective_expected_sha256": "9f4c41626e0d8fa3627b49c20731186655270861eb68d45ba6a60a888643e60f",
+      "actual_sha256": "9f4c41626e0d8fa3627b49c20731186655270861eb68d45ba6a60a888643e60f",
+      "match": true
+    },
+    {
+      "file": "TURN_LEDGER.json",
+      "effective_expected_sha256": "4ac38404ec04c711ffde69ac1b299e3dca21e41ab4dc377a91ab20f5122826dd",
+      "actual_sha256": "4ac38404ec04c711ffde69ac1b299e3dca21e41ab4dc377a91ab20f5122826dd",
+      "match": true
+    },
+    {
+      "file": "HAND_SUPPLEMENT.json",
+      "effective_expected_sha256": "2eb3b0d50c9960806696a32811d61c1aef65b14d031eb163f18ba5897c91aec5",
+      "actual_sha256": "2eb3b0d50c9960806696a32811d61c1aef65b14d031eb163f18ba5897c91aec5",
+      "match": true
+    },
+    {
+      "file": "SOURCE_REFERENCE.json",
+      "effective_expected_sha256": "61b77e7d7783b1e585bafd7d05ad9635f2bb0e6ee4246204a4b23e50c63fc3d8",
+      "actual_sha256": "61b77e7d7783b1e585bafd7d05ad9635f2bb0e6ee4246204a4b23e50c63fc3d8",
+      "match": true
+    },
+    {
+      "file": "TURN_EVIDENCE.json",
+      "effective_expected_sha256": "68131799d5e4ff5c8e833c9340760c13d1b8c6fbba70b97e18ef995d1ea6e04d",
+      "actual_sha256": "68131799d5e4ff5c8e833c9340760c13d1b8c6fbba70b97e18ef995d1ea6e04d",
+      "match": true
+    },
+    {
+      "file": "REVIEW_SUPPLEMENT.md",
+      "effective_expected_sha256": "c629f45ff5e06505eb251600ae0ffda81f9144f0c2735cc6b9d2579fe3ba8057",
+      "actual_sha256": "c629f45ff5e06505eb251600ae0ffda81f9144f0c2735cc6b9d2579fe3ba8057",
+      "match": true
+    },
+    {
+      "file": "UNCERTAINTIES.json",
+      "effective_expected_sha256": "f4987ddcbf173ccf122b69483d261bbf6cf72596f8c5aa37c32513cfe9090b3c",
+      "actual_sha256": "f4987ddcbf173ccf122b69483d261bbf6cf72596f8c5aa37c32513cfe9090b3c",
+      "match": true
+    },
+    {
+      "file": "DECK_USED.json",
+      "effective_expected_sha256": "a736d5fdbb974d25fa87b6764a07bcb75f0e9b7976a9d21da5afacdcbc7565bc",
+      "actual_sha256": "a736d5fdbb974d25fa87b6764a07bcb75f0e9b7976a9d21da5afacdcbc7565bc",
+      "match": true
+    },
+    {
+      "file": "METRICS.json",
+      "effective_expected_sha256": "645ab2501412256653ca0333e03659c2884505d69d5ea002c3e88f75e2529fb9",
+      "actual_sha256": "645ab2501412256653ca0333e03659c2884505d69d5ea002c3e88f75e2529fb9",
+      "match": true
+    },
+    {
+      "file": "MODE_QUESTION.json",
+      "effective_expected_sha256": "a83954fc1fceaa62bc839dc0d5ae05305e15bbd1c6df45cbbd26521edb256894",
+      "actual_sha256": "a83954fc1fceaa62bc839dc0d5ae05305e15bbd1c6df45cbbd26521edb256894",
+      "match": true
+    },
+    {
+      "file": "ASTRA_QUESTIONS.json",
+      "effective_expected_sha256": "35094dc10b728daeace2be7f51f8ac2503f171b2b0878c35afa5e6adf814364e",
+      "actual_sha256": "35094dc10b728daeace2be7f51f8ac2503f171b2b0878c35afa5e6adf814364e",
+      "match": true
+    },
+    {
+      "file": "LOCATOR_SCAN.json",
+      "effective_expected_sha256": "7bd8c9054dd9469783514697d11f3fde4d73dc999de9af55b2146bc2f239f317",
+      "actual_sha256": "7bd8c9054dd9469783514697d11f3fde4d73dc999de9af55b2146bc2f239f317",
+      "match": true
+    },
+    {
+      "file": "SOURCE_VERIFICATION.json",
+      "effective_expected_sha256": "238e9f3138e13f1985e00605cd6ea0829d86f8a37b85624408db063702fb0bcc",
+      "actual_sha256": "238e9f3138e13f1985e00605cd6ea0829d86f8a37b85624408db063702fb0bcc",
+      "match": true
+    },
+    {
+      "file": "PACKET_VALIDATION.json",
+      "effective_expected_sha256": "52a804d1bde61cf8dd5ad9d2366bd458752a44c60e5a7809d03f3282b88d6a75",
+      "actual_sha256": "52a804d1bde61cf8dd5ad9d2366bd458752a44c60e5a7809d03f3282b88d6a75",
+      "match": true
+    }
+  ],
+  "board_qualifications": [
+    {
+      "turn": 1,
+      "boundary": "board_at_start",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 1,
+      "boundary": "board_after",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 2,
+      "boundary": "board_at_start",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 2,
+      "boundary": "board_after",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 3,
+      "boundary": "board_at_start",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 3,
+      "boundary": "board_after",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 4,
+      "boundary": "board_at_start",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 4,
+      "boundary": "board_after",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 5,
+      "boundary": "board_at_start",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 5,
+      "boundary": "board_after",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 6,
+      "boundary": "board_at_start",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 6,
+      "boundary": "board_after",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 7,
+      "boundary": "board_at_start",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 7,
+      "boundary": "board_after",
+      "qualified": true,
+      "specific_derivations": {
+        "observations": [
+          {
+            "id": "F0304.00",
+            "phase": "Before Entrap in owner7",
+            "observed": "Skorupi Active60/D1; Mega Absol Bench170/E0."
+          },
+          {
+            "id": "F0339.30",
+            "phase": "Opponent8 after evolution and normal attachment, during Giant Cape reveal",
+            "observed": "Drapion Bench130/D1; Mega Absol Active120 with Darkness attached; Giant Cape reveal."
+          }
+        ],
+        "derived_fields": {
+          "opponent.active.name_and_position": "Mega Absol becomes Active through recorded Entrap after304;339.3 is later corroboration, not the exact end7 position image.",
+          "opponent.active.hp_now_damage": "End7 HP120 and50damage derive from170 minus recorded Entrap50; later339.3 shows120 before Cape bonus resolves.",
+          "opponent.active.attached_energy": "End7 E0 uses pre-Entrap Mega E0 at304 and no owner7 attachment to it; opponent8 Darkness belongs to the later turn and is not imported backward.",
+          "opponent.active.tool_and_hp_max": "End7 has no Tool and maximum170; the Giant Cape play/+20 belongs to opponent8.",
+          "opponent.bench_in_position_order": "Skorupi60/D1 is direct at304 while Active; its Bench placement at end7 follows the recorded Entrap switch.339.3 shows later evolution to Drapion, not end7 Skorupi."
+        }
+      }
+    },
+    {
+      "turn": 8,
+      "boundary": "board_at_start",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 8,
+      "boundary": "board_after",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 9,
+      "boundary": "board_at_start",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 9,
+      "boundary": "board_after",
+      "qualified": true,
+      "specific_derivations": {
+        "observations": [
+          {
+            "id": "F0394.00",
+            "phase": "Opponent10 after first Deino bench",
+            "observed": "Drapion Active80/D1; Mega Absol Bench140/D1; Deino60 already Bench2."
+          }
+        ],
+        "derived_fields": {
+          "opponent.active.name_position_hp_energy": "Earlier end9 Drapion Active80/D1 combines recorded Entrap/switch chronology with394 later corroboration;394 is not an exact end9 still.",
+          "opponent.bench_in_position_order": "End9 Mega Absol Bench140/D1 is corroborated later. First Deino is excluded from end9 because its recorded bench play occurs in opponent10; its absence is chronological reconstruction, not direct observation at394."
+        }
+      }
+    },
+    {
+      "turn": 10,
+      "boundary": "board_at_start",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 10,
+      "boundary": "board_after",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 11,
+      "boundary": "board_at_start",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 11,
+      "boundary": "board_after",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 12,
+      "boundary": "board_at_start",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 12,
+      "boundary": "board_after",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 13,
+      "boundary": "board_at_start",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 13,
+      "boundary": "board_after",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 14,
+      "boundary": "board_at_start",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 14,
+      "boundary": "board_after",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 15,
+      "boundary": "board_at_start",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 15,
+      "boundary": "board_after",
+      "qualified": true,
+      "specific_derivations": {
+        "observations": [
+          {
+            "id": "F0602.00",
+            "phase": "Before owner15 Entrap, second Hypno Psychic attachment in flight",
+            "observed": "Drapion Active80/D3; Mega Absol Bench60/D1; Hydreigon Bench150/E0."
+          },
+          {
+            "id": "R0640.00",
+            "phase": "Opponent16 after second Deino bench, promotion and Roar",
+            "observed": "Hydreigon Active120/D3; Mega Absol Bench2 10/E0; Drapion Bench1 80/D3; second Deino Bench3 60/E0."
+          }
+        ],
+        "derived_fields": {
+          "opponent.active.name_and_position": "End15 Mega Absol Active is derived from recorded Entrap selecting it; neither602 nor640 directly shows that boundary position.",
+          "opponent.active.hp_now_damage": "End15 Absol10 derives from60 at602 minus recorded Entrap50;640 corroborates10 after opponent16 retreat.",
+          "opponent.active.attached_energy": "End15 AbsolD1 is visible before the switch at602 and remains until its opponent16 retreat payment;640 E0 is the later paid-retreat state, not end15.",
+          "opponent.bench_drapion": "Drapion80/D3 is source-observed at602 Active and640 Bench; end15 Bench1 follows the Entrap switch.",
+          "opponent.bench_hydreigon": "End15 Hydreigon150/E0 is observed before Entrap at602, with no intervening owner15 action affecting it.640 shows the later promotion/attachment/Roar120/D3 state.",
+          "opponent.bench_membership": "Second Deino is excluded at end15 from recorded opponent16 bench chronology;640 includes it and is not an earlier absence image."
+        }
+      }
+    },
+    {
+      "turn": 16,
+      "boundary": "board_at_start",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 16,
+      "boundary": "board_after",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 17,
+      "boundary": "board_at_start",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 17,
+      "boundary": "board_after",
+      "qualified": true,
+      "specific_derivations": {
+        "observations": [
+          {
+            "id": "F0681.00",
+            "phase": "Owner17 before Boost Dash",
+            "observed": "Hydreigon140/E0; Comfey50/P1 after the attachment."
+          }
+        ],
+        "derived_fields": {
+          "opponent.active.hp_now_damage": "End17 Hydreigon70 derives from140 at681 minus recorded Boost Dash70.681 directly supports140, not70; no uninspected682 endpoint is adopted as direct proof.",
+          "owner.comfey.attached_energy": "ComfeyP1 is directly visible at681 before the attack and retained at the derived end17 boundary."
+        }
+      }
+    },
+    {
+      "turn": 18,
+      "boundary": "board_at_start",
+      "qualified": true,
+      "specific_derivations": null
+    },
+    {
+      "turn": 18,
+      "boundary": "board_after",
+      "qualified": true,
+      "specific_derivations": null
+    }
+  ],
+  "unknown_evidence_refs": [],
+  "remaining_required_repairs": [],
+  "acceptance_limits": [
+    "Boundary boards are composite source-derived states, not every-attribute simultaneous native snapshots. Recorded accepted action chronology supplies some transitions and arithmetic. This qualification does not independently prove exact input times.",
+    "Acceptance retains prior60-native bounded inspection and27-native consequential Astra check, not an every-instant replay. Producer721reduced1fps locator screening was not repeated independently.",
+    "Opponent identities/piles hidden behind card backs or closed piles, exact historical20-card list and unsampled Settings remain unknown.",
+    "NoAutooptionseen in inspected anchors, including679menu; ladder is presumed, opponent type uncertain. Any visibleAutoevenOFFrequires computer classification and exclusion.",
+    "Native requested source times stay separate from producer-measuredPTS, with reusedPTSnull.",
+    "Outcome remains inherited accepted owner loss; terminal board implications are qualified because final overlay obscures settled board."
+  ],
+  "preservation": {
+    "original_reads": 0,
+    "original_hashes": 0,
+    "new_extractions": 0,
+    "new_visual_native_views": 0,
+    "primary_packet_edits": 0,
+    "old_packet_edits": 0,
+    "registry_edits": 0,
+    "external_artifact_edits": 0
+  }
+}

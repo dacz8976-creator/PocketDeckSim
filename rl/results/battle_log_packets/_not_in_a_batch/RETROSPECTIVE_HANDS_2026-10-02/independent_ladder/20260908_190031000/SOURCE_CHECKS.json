@@ -1,0 +1,80 @@
+{
+  "verdict": "needs_repair",
+  "source": "20260908_190031000_iOS.MP4",
+  "source_sha256": "2f68b969662a26fd6a79844ad00d7a3eb97ebde0bf790a25c273ff34d7d8cbf5",
+  "reviewer": "Sol independent different producer",
+  "packet": "Recording_QA/RETROSPECTIVE_HANDS_2026-10-02/20260908_190031000",
+  "scope": "Supplement fields and submitted evidence only. Accepted result inherited, no new outcome audit.",
+  "source_binding": "SOURCE_REFERENCE and primary SOURCE_VERIFICATION match frozen source SHA and logical bytes. No independent original-video read.",
+  "encoding": "All submitted JSON read explicitly with utf-8-sig; raw byte hashes saved in BINDING_CHECK.json.",
+  "passed": [
+    "43 native fullframes 1170x2532 and86 crops match declared bounds; maximum mean absolute JPEG difference1.188420798282731, no errors.",
+    "Native23 opening Small Balloon, Copycat, Professor's Research, Poke Ball, Eevee left to right before Active placement; owner goes second.",
+    "OwnerT2 native51/52 untouched5 cards; later54/57 have already played Poke Ball and cannot replace the start.",
+    "OwnerT4 native133 untouched4 cards;134 has Field Blower moving and later candidates are after play.",
+    "Normal Mega Altaria ex/Field Blower draws, Poke Ball Darkrai find, Research Swablu then Training Area supported.",
+    "Swablu then Darkrai Bench sequence supported by native70/74 and locator69.5/71.5; free Eevee retreat with Small Balloon, Psychic attachment to Swablu, Sing/Bad Dreams chain supported.",
+    "Both boards, typed Energy, Heavy Helmet inactive on Bulbasaur and active on Ivysaur, Sleep removal, Synthesis, Stadium, final Mega Altaria190 Psychic2/Eevee50 Small Balloon/Darkrai100/no opposing Pokemon supported.",
+    "Native155 Supporter warning and highlighted OK, Copycat unplayed, are explicit.",
+    "All168 reduced locator samples screened through five grids; bounded no-panel/no-Auto summary is consistent. Match mode stays uncertain; any visible Auto evenOFF would exclude ladder.",
+    "Hidden opponent identities, unshown full piles/decks, exact historical20 list, unmeasuredPTS and unsampledsubsecond limits remain qualified."
+  ],
+  "repairs_required": [
+    {
+      "path": "TURN_LEDGER.json/turns/0..3/owner_hand_end",
+      "problem": "Canonical end-hand fields remain all-null/status not_reviewed/limit_reason null while packet declares complete_with_recording_limits and accessible_uninspected_required_fields empty.",
+      "supported_repair": "Fill four observed ending hands with evidence: T1 Small Balloon,Copycat,Professor's Research,Poke Ball at48; T2 Copycat,Mega Altaria ex,Training Area at102; T3 same3 at130; T4 Copycat at165.5. Synchronize duplicate submitted turn copies and completion metadata. Existing before-end hand fields already pass."
+    },
+    {
+      "path": "TURN_LEDGER.json/turns/2/plays_in_order/2 and synchronized copies/readable row",
+      "problem": "Quick-Grow Extract evolving Bulbasaur/removingSleep is attributed to native116.5 only, which still shows unevolved sleepingBulbasaur and no Quick-Grow face or resolution.",
+      "supported_repair": "Use native120 for Ivysaur/recovery and126 for evolved board/closed Quick-Grow discard, with locator117.5-120.5 ordering. Keep116.5 only as preceding board anchor; requested time is approximate, not independently measured input/PTS."
+    }
+  ],
+  "native_fullframe_seconds_inspected": [
+    23,
+    38,
+    48,
+    51,
+    54,
+    57,
+    64,
+    65,
+    70,
+    74,
+    87,
+    94,
+    102,
+    112,
+    116.5,
+    126,
+    133,
+    134,
+    139,
+    148,
+    153,
+    155,
+    165.5,
+    52,
+    120,
+    154,
+    130
+  ],
+  "native_top_crops_inspected_seconds": [
+    38,
+    51,
+    133
+  ],
+  "locator_grids_inspected": [
+    1,
+    2,
+    3,
+    4,
+    5
+  ],
+  "original_video_reads": 0,
+  "new_extractions": 0,
+  "packet_edits": 0,
+  "shared_log_changes": 0,
+  "binding_file": "BINDING_CHECK.json"
+}

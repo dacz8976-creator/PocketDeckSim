@@ -1,0 +1,39 @@
+{
+  "lead": "/root",
+  "checked_utc": "2026-10-16T03:46:33.406067+00:00",
+  "source_filename": "20261016_030833000_iOS.MP4",
+  "source_sha256": "6b96796ba0645aab33f131c8bd6b62a23951406662a33f456911e20f2d51e541",
+  "observations": [
+    {
+      "path": "evidence/t0127.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Hang Down20 damage into Mega Absol ex; owner Glimmet60HP and opponent0points.",
+      "sha256": "d455ffe506c925fb42979cba9d2d3de52d7409509b338767d9a632ff0125c7cd"
+    },
+    {
+      "path": "evidence/t0182.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Zoroark ex140HP is explicitly Poisoned after Glimmora attack; opponent0points.",
+      "sha256": "70d08b651e41d99221166da22eada64d91031b95dcfb625851570ac52dda85f1"
+    },
+    {
+      "path": "evidence/t0357.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Preterminal board owner0/opponent2; Regigigas60HP Active, Alolan Grimer70HP Bench.",
+      "sha256": "d283f02505c068a75720271d3e72543fb8df0d0db29e0677c5bdb3e820819f91"
+    },
+    {
+      "path": "evidence/t0359.40.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Explicit Defeat banner; no third KO demonstrated.",
+      "sha256": "fd7fbab27b5fe75a0be83bade6f600779902ec45e7684bff4d26f00cf5c22c35"
+    },
+    {
+      "path": "evidence/t0365.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Defeat versus アヤカ; Glimmora Card of the Game; detailed final statistics not shown.",
+      "sha256": "795e155c123e0c0d7a33f4bfadfc2c80c8a702b14ef63fa1758dbc1cb5108671"
+    }
+  ],
+  "coverage_reconciliation": "Lead read full timeline and turn/phase coverage. A separate Sol reviewer checked ordinary turns and decisive evidence against retained source frames."
+}

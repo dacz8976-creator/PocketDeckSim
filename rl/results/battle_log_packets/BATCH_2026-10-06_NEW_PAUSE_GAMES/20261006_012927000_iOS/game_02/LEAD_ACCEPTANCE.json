@@ -1,0 +1,28 @@
+{
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "lead": "/root",
+  "accepted_utc": "2026-10-06T20:55:04.476889+00:00",
+  "source_video": "20261006_012927000_iOS.MP4",
+  "source_sha256": "cb7c3274234f72eb516a7e706f606816e40d6d9e7eccf53ff3edab65ee2833d2",
+  "scope": "Game 2 of 2 in the fully reviewed source; all games and intervening deck edits checked before source registration.",
+  "game_number_in_source": 2,
+  "source_game_count": 2,
+  "all_source_games_accepted": true,
+  "game_packet_paths": [
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261006_012927000_iOS",
+    "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261006_012927000_iOS\\game_02"
+  ],
+  "source_total_turn_rows": 13,
+  "capture_status": "complete_with_recording_limits",
+  "turn_rows": 2,
+  "independent_acceptance": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-06_NEW_PAUSE_GAMES\\20261006_012927000_iOS\\game_02\\independent_sol\\CORRECTION_RECHECK.json",
+  "basis": "Full Sol accounts of every game and source interlude; separate bounded independent checks including ordinary turns, captures, draws/searches, both boards and decisive result. All repairs verified. Root reconciled reports and inspected source evidence.",
+  "source_limits": [
+    "Live Pause Games exact20 snapshot has not been captured by worker.",
+    "Face-down opponent cards and unrecorded discard windows remain unknown."
+  ],
+  "outcome": "win",
+  "external_status": "Prepared for Pause Games; no live deck or game save claimed; exact deck limits retained.",
+  "archive_authorization": "All games and interludes complete; archive only after verified source CLI registration."
+}

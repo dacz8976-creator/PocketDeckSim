@@ -1,0 +1,150 @@
+{
+  "video_basename": "20261001_022015000_iOS.MP4",
+  "reviewer": "sol_auto_evening_022015000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "status": "full_battle_review_complete",
+  "scope": "complete single battle, setup through terminal result",
+  "coverage_complete_first_pass": true,
+  "unreviewed_intervals": [],
+  "mode": "autopilot_vs_computer_with_opening_auto_pause",
+  "ladder_eligible": false,
+  "owner": "Dacz8976",
+  "outcome": "loss",
+  "last_turn": 8,
+  "challenge": "Mega Lucario ex & Crustle ex Deck (Deluxe Pack: Mega)",
+  "displayed_points": {
+    "owner": 1,
+    "opponent": 3
+  },
+  "award_totals": {
+    "owner": 1,
+    "opponent": 5
+  },
+  "visible_owner_core": [
+    "Mew ex",
+    "Gastly",
+    "Haunter",
+    "Gengar ex in hand",
+    "Mega Diancie ex"
+  ],
+  "visible_opponent_core": [
+    "Falinks x2",
+    "Dwebble",
+    "Riolu",
+    "Mega Lucario ex"
+  ],
+  "not_observed_in_play": [
+    "Crustle ex"
+  ],
+  "auto_pause": {
+    "last_checked_sample": 38.5,
+    "unchecked_native_time": 39,
+    "unchecked_with_manual_end_turn_native_time": 43,
+    "checked_again_by_sample": 47.5,
+    "actions_during_pause": [
+      "Rocky Helmet attached to Mew ex",
+      "Bounded Field played"
+    ]
+  },
+  "knockouts": [
+    {
+      "turn": 5,
+      "victim": "opponent Falinks",
+      "attack": "Mew ex Psyshot",
+      "shown_damage": 20,
+      "hp_before": 10,
+      "award_to": "owner",
+      "points": 1,
+      "evidence_times": [
+        150,
+        154
+      ]
+    },
+    {
+      "turn": 6,
+      "victim": "owner Mew ex",
+      "attack": "Mega Lucario ex Fighting Pulse",
+      "damage": 110,
+      "hp_before": 110,
+      "award_to": "opponent",
+      "points": 2,
+      "evidence_times": [
+        171,
+        173,
+        176,
+        182
+      ]
+    },
+    {
+      "turn": 8,
+      "victim": "owner Mega Diancie ex",
+      "attack": "Mega Lucario ex Fighting Pulse",
+      "damage": 190,
+      "hp_before": 170,
+      "award_to": "opponent",
+      "points": 3,
+      "evidence_times": [
+        202,
+        207,
+        208.5,
+        214
+      ]
+    }
+  ],
+  "key_findings": [
+    "Final 190 = printed90 + extra FightingEnergy50 + Arena20 + Korrina30; no Fighting weakness on Mega Diancie.",
+    "Korrina is explicitly played at202.00; without Korrina final attack160 would leave10HP.",
+    "Lucky Ice Pop heals80 over4 applications; turn3 Tails, turn5 Heads/Heads/Tails.",
+    "Rocky Helmet deals60 total and triggers after Mew reaches0HP.",
+    "Mega Diancie gets only2Energy and never attacks; Gengar ex remains in hand.",
+    "Opening Helmet and Bounded Field plays happen during visible Auto pause."
+  ],
+  "result_statistics": {
+    "total_damage": "not shown",
+    "completed_task": "Psychic-type attack knocks out opponent Active Pokemon once, 1/1"
+  },
+  "lead_anchor_times": {
+    "opening": [
+      25,
+      43
+    ],
+    "ordinary_turn": [
+      68,
+      74,
+      81.5,
+      85
+    ],
+    "decisive": [
+      170,
+      173,
+      176,
+      182,
+      197.5,
+      202,
+      207,
+      208.5,
+      214
+    ],
+    "terminal": [
+      216,
+      223,
+      224.5
+    ]
+  },
+  "source_sha256_from_immutable_intake": "a6d5a3c7d4920eaa0b55ccd8dbb376f49c6a9ee5104613e867e97ce44738e5e0",
+  "worker_rehashed_source": false,
+  "source_bytes_checked": 407819912,
+  "local_catalog_consulted": "C:/Users/dacz8/Projects/Pocket Deck Lab/s216_card_catalog_v1.json (Mega Lucario and Mega Diancie attack text corroboration); native card text is controlling evidence",
+  "created_utc": "2026-10-01T04:16:15.368114+00:00",
+  "worker_actions_at_submission": {},
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "lead_acceptance_pending": false,
+  "source_archived": true,
+  "source_modified": false,
+  "archive_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20261001_022015000_iOS.MP4",
+  "archive_receipt": "MOVE_RECEIPT.20261001_022015000_iOS.MP4.json",
+  "archive_completion_event_id": "28b41be6-64bf-4397-a45c-3a278bb0875a",
+  "global_registration_complete": true
+}

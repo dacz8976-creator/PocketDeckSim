@@ -1,0 +1,16 @@
+[old v new, the v2 read's ledgers (restore step on): expect identical]
+  positions: A 217  B 217  only in A: []  only in B: []
+  positions that differ: 0 of 217; fields: {}
+[old v new, ledgers without the restore step: expect only 030351 t07-t15]
+  positions: A 217  B 217  only in A: []  only in B: []
+  positions that differ: 5 of 217; fields: {'me.discard': 5, 'me.discard_energy': 5, 'me.knockouts': 5, 'notes': 2}
+    KW-261013_030351000-t07 ['me.discard', 'me.discard_energy', 'me.knockouts', 'notes']
+    KW-261013_030351000-t09 ['me.discard', 'me.discard_energy', 'me.knockouts']
+    KW-261013_030351000-t11 ['me.discard', 'me.discard_energy', 'me.knockouts']
+    KW-261013_030351000-t13 ['me.discard', 'me.discard_energy', 'me.knockouts']
+    KW-261013_030351000-t15 ['me.discard', 'me.discard_energy', 'me.knockouts', 'notes']
+[new converter, restore step on v off: expect Energy count and note wording only]
+  positions: A 217  B 217  only in A: []  only in B: []
+  positions that differ: 2 of 217; fields: {'notes': 2, 'me.discard_energy': 1}
+    KW-261013_030351000-t07 ['notes']
+    KW-261013_030351000-t15 ['me.discard_energy', 'notes']

@@ -1,0 +1,21 @@
+{
+  "recorded_utc": "2026-10-16T03:54:33.940474+00:00",
+  "supersedes": "Earlier pending-download and sync-question states for015753,020806,031512. Historical receipts remain unchanged.",
+  "download_blockers_resolved": true,
+  "sources": [
+    "20261016_015753000_iOS.MP4",
+    "20261016_020806000_iOS.MP4",
+    "20261016_031512000_iOS.MP4"
+  ],
+  "full_reads_hashes_durations_verified": true,
+  "user_verification_record": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\ONEDRIVE_DOWNLOAD_DIAG_20261015\\READABILITY_20261016T035114Z.json",
+  "copied_receipt_sha256": "9179082c435f0180e09b11f1639b4bf0428815e65bd4a89a678db046629c8f42",
+  "registration_hashes_and_durations_match": true,
+  "exact_error_cause": "unconfirmed",
+  "diagnostic_actions_required": {
+    "pause": false,
+    "restart": false,
+    "browser_download": false
+  },
+  "interpretation_limit": "Files finished locally during the checks. This does not establish the transient cloud-provider error cause, or establish a restart as necessary."
+}

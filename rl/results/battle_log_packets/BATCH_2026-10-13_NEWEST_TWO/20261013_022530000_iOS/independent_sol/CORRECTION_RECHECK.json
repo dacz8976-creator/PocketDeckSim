@@ -1,0 +1,57 @@
+{
+  "accepted": true,
+  "reviewer": "/root/check_newest_022530",
+  "checked_utc": "2026-10-13T04:43:28.585214+00:00",
+  "source_video": "20261013_022530000_iOS.MP4",
+  "source_sha256": "02714096351099424338ac83d3f529ef4f0e6979a978a50f48c5ff505a2b6cb7",
+  "frozen_primary_utc": "2026-10-13T04:37:21.578101+00:00",
+  "accepted_input_sha256": {
+    "REVIEW.md": "87ee48ef12eec36b50878f067ace9c02f7c83dc0428a60587a19a76af11c1019",
+    "COVERAGE.md": "953f26c7c6f972a85f5d6ad6d0654f2c7c0fa6ced453fc7feffc5f0dd6cc8a10",
+    "SUMMARY.json": "25c9e5b104317c7330898231510809148cb543d2b7b972aff91cabe878efd2b1",
+    "UNCERTAINTIES.json": "1dba92fb728e5f18719af13d26501e055832d4d250e6a2ad7435d455f5731bdf",
+    "PAUSE_GAME.json": "223cb33008819517617e602a59064e5cb4bee68a9c035536a5e243da0bce60bb",
+    "DECK_USED.json": "ef2953bd2cc3534ede7a28791ed9b4a7904ac2acbe53e06b91f87f4d81e6518e",
+    "TURN_LEDGER.json": "bfe1284d950d3cab8f276babeb22dda4b8dd5e52f1afff8114e16b789ec3ab59",
+    "TURN_EVIDENCE.json": "a6b55fb0065612361e8d92e8d192e60de0ef1e683f3fa36694987513bcf989e6"
+  },
+  "checked_input_sha256": {
+    "REVIEW.md": "87ee48ef12eec36b50878f067ace9c02f7c83dc0428a60587a19a76af11c1019",
+    "COVERAGE.md": "953f26c7c6f972a85f5d6ad6d0654f2c7c0fa6ced453fc7feffc5f0dd6cc8a10",
+    "SUMMARY.json": "25c9e5b104317c7330898231510809148cb543d2b7b972aff91cabe878efd2b1",
+    "UNCERTAINTIES.json": "1dba92fb728e5f18719af13d26501e055832d4d250e6a2ad7435d455f5731bdf",
+    "PAUSE_GAME.json": "223cb33008819517617e602a59064e5cb4bee68a9c035536a5e243da0bce60bb",
+    "DECK_USED.json": "ef2953bd2cc3534ede7a28791ed9b4a7904ac2acbe53e06b91f87f4d81e6518e",
+    "TURN_LEDGER.json": "bfe1284d950d3cab8f276babeb22dda4b8dd5e52f1afff8114e16b789ec3ab59",
+    "TURN_EVIDENCE.json": "a6b55fb0065612361e8d92e8d192e60de0ef1e683f3fa36694987513bcf989e6"
+  },
+  "all_eight_current_hashes_match_primary_freeze": true,
+  "prior_rejection_receipt": "rejected_r1/CHECK_RESULT.json",
+  "prior_rejected_bytes_preserved": true,
+  "semantic_corrections_verified": [
+    "Copycat post-resolution hand at native145 identifies Haxorus, Poke Ball and Dratini; second and third arrival times/order explicitly unknown. Native141 is not used as readable named hand.",
+    "Ordinary prose spacing restored.",
+    "Turn6 native296 Rocky Helmet banner and297 additional20 overlay before Orthworm removal while HP remains0.",
+    "Final corrected Research Helmet then Haxorus, turn5 Metal to Axew, turn9 Rainbow Cave Fighting to Fighting and regular Fighting to Axew plus Blessing Fighting to Haxorus remain consistent.",
+    "Mega Scizor ex version, human classification and12-turn opponent-concession win2-1 with480damage remain source-bound."
+  ],
+  "structural_validation": {
+    "packet": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-13_NEWEST_TWO\\20261013_022530000_iOS",
+    "structural_pass": true,
+    "turn_rows": 12,
+    "issues": [],
+    "visual_acceptance": false,
+    "limit": "Integrity/template checks do not establish battle coverage or semantic correctness."
+  },
+  "semantic_validation_limit": "Bounded independent correction recheck supplements the retained independent source checks; structural pass alone does not establish semantic correctness.",
+  "recording_limits_preserved": [
+    "Copycat second/third actual arrival order/timing unavailable",
+    "Turn11 unzoomed spread preplay hand unavailable",
+    "Opponent discard pile not opened; owner only518",
+    "Artwork and rarity unverified",
+    "Source-local seeks approximate, actual PTS not measured",
+    "Match date qualified from UTC-looking filename and visible clock",
+    "Initial26-deck catalog has no exact QR; live deck supplement remains lead responsibility"
+  ],
+  "remaining_material_repairs": []
+}

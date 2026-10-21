@@ -1,0 +1,69 @@
+Pairs: 480 (6 decks x 8 opponents x 5 deals x 2 seats); seeds identical across all four arms on every key.
+
+WIN RATE (score per 100 games) per arm: frozen 53.8, candidate 58.3, m32 58.1, m16 54.2
+
+== m16 - frozen (PRIMARY for m16 and m32)
+  pooled: +0.4 +- 1.4 (n 480); every deck weighted equally +0.4
+  group fast: +0.8 +- 1.6 (n 240)
+  group setup: +0.6 +- 3.2 (n 160)
+  group middle: -1.2 +- 2.4 (n 80)
+  deck 09-mega-manectric-heliolisk: +1.2 +- 2.4 (n 80)
+  deck 06-mega-blaziken-tournament-list: +1.2 +- 2.4 (n 80)
+  deck 10-xatu-oricorio-tr-weezing: +0.0 +- 3.5 (n 80)
+  deck 01-muk-glimmora-kingambit-regigigas: +0.0 +- 3.5 (n 80)
+  deck 05-indeedee-stoutland: +1.2 +- 5.5 (n 80)
+  deck draft-A-shark-tempo: -1.2 +- 2.4 (n 80)
+== m32 - frozen (PRIMARY for m16 and m32)
+  pooled: +4.4 +- 3.1 (n 480); every deck weighted equally +4.4
+  group fast: +5.0 +- 4.3 (n 240)
+  group setup: +0.6 +- 5.4 (n 160)
+  group middle: +10.0 +- 8.3 (n 80)
+  deck 09-mega-manectric-heliolisk: +3.8 +- 7.3 (n 80)
+  deck 06-mega-blaziken-tournament-list: +6.2 +- 8.1 (n 80)
+  deck 10-xatu-oricorio-tr-weezing: +5.0 +- 6.9 (n 80)
+  deck 01-muk-glimmora-kingambit-regigigas: -1.2 +- 8.2 (n 80)
+  deck 05-indeedee-stoutland: +2.5 +- 7.0 (n 80)
+  deck draft-A-shark-tempo: +10.0 +- 8.3 (n 80)
+== candidate - frozen (PRIMARY for m16 and m32)
+  pooled: +4.6 +- 3.4 (n 480); every deck weighted equally +4.6
+  group fast: +4.6 +- 4.4 (n 240)
+  group setup: +3.8 +- 6.5 (n 160)
+  group middle: +6.2 +- 8.8 (n 80)
+  deck 09-mega-manectric-heliolisk: +7.5 +- 6.8 (n 80)
+  deck 06-mega-blaziken-tournament-list: +0.0 +- 7.8 (n 80)
+  deck 10-xatu-oricorio-tr-weezing: +6.2 +- 8.1 (n 80)
+  deck 01-muk-glimmora-kingambit-regigigas: +3.8 +- 10.1 (n 80)
+  deck 05-indeedee-stoutland: +3.8 +- 8.1 (n 80)
+  deck draft-A-shark-tempo: +6.2 +- 8.8 (n 80)
+== m16 - candidate (what the cheaper setting loses)
+  pooled: -4.2 +- 3.4 (n 480)
+  group fast: -3.8 +- 4.4 (n 240)
+  group setup: -3.1 +- 6.8 (n 160)
+  group middle: -7.5 +- 8.4 (n 80)
+== m32 - candidate (what the cheaper setting loses)
+  pooled: -0.2 +- 3.0 (n 480)
+  group fast: +0.4 +- 3.7 (n 240)
+  group setup: -3.1 +- 6.1 (n 160)
+  group middle: +3.8 +- 7.3 (n 80)
+== m32 - m16
+  pooled: +4.0 +- 3.1 (n 480)
+
+PACE (mean over the 480 games): turns per game; the deck's first-attack own turn (games with an attack)
+  frozen: turns 10.46, first attack own turn 2.29 (467 games)
+  candidate: turns 10.55, first attack own turn 2.34 (466 games)
+  m32: turns 10.57, first attack own turn 2.26 (466 games)
+  m16: turns 10.46, first attack own turn 2.28 (465 games)
+
+TIME per kx3 game (wall_s): frozen and candidate on the laptop; m32 and m16 in 4-core Managed Agents sandboxes at --threads 2
+  frozen: mean 186 s, median 124 s
+  candidate: mean 548 s, median 380 s
+  m32: mean 780 s, median 522 s; laptop-equivalent estimate (/2.7) 289 s
+  m16: mean 490 s, median 337 s; laptop-equivalent estimate (/2.7) 182 s
+  deck 09-mega-manectric-heliolisk: frozen 96, candidate 314, m32 354, m16 255
+  deck 06-mega-blaziken-tournament-list: frozen 87, candidate 287, m32 408, m16 189
+  deck 10-xatu-oricorio-tr-weezing: frozen 124, candidate 349, m32 537, m16 355
+  deck 01-muk-glimmora-kingambit-regigigas: frozen 313, candidate 997, m32 1293, m16 867
+  deck 05-indeedee-stoutland: frozen 335, candidate 888, m32 1458, m16 842
+  deck draft-A-shark-tempo: frozen 159, candidate 451, m32 627, m16 434
+
+READING (fixed in PLAN.md): the cheapest setting whose S - frozen interval is entirely above zero: m32

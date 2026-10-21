@@ -1,0 +1,65 @@
+{
+  "source_video": "20261010_013009000_iOS.MP4",
+  "source_sha256": "80615dfc9c1e28f95434e3b4712f0540e6efc34392aef816419b6f82a0257329",
+  "uncertainties": [
+    {
+      "id": "queue",
+      "severity": "nonblocking",
+      "description": "Human random-matchmaking visible; exact ranked/casual queue not shown",
+      "evidence_ids": [
+        "f_0008_00",
+        "f_0028_00"
+      ]
+    },
+    {
+      "id": "live_deck_version",
+      "severity": "resolved_log_provenance",
+      "description": "Initial23-deck absence resolved: root added source-qualified QR20 variant and verified saved rendered card rows/Fighting Energy. DECK_USED.json and ../LIVE_NEW_DECKS_VERIFIED.json retain dated retrieval.",
+      "evidence_ids": [
+        "f_0001_00"
+      ]
+    },
+    {
+      "id": "opponent_hidden",
+      "severity": "recording_limit",
+      "description": "All normal opponent draws, Research cards, Transceiver result, both Poké Ball results, Order Pad Item and Copycat replacement are hidden. Later play does not establish which draw supplied it"
+    },
+    {
+      "id": "discard",
+      "severity": "recording_limit",
+      "description": "Neither pile expanded or scrolled. Visible top cards support particular plays, not full pile contents"
+    },
+    {
+      "id": "t4_fan",
+      "severity": "recording_limit",
+      "description": "Research starts immediately after normal draw; fan2 visible once Research removed and fan4 after draws. Start3 is arithmetic inference, kept separate from visually established count"
+    },
+    {
+      "id": "fast_start",
+      "severity": "recording_limit",
+      "description": "T9/T13/T15 first action occurs before or within+1. Earlier native selected hand exists; T9 notification covers opposing fan until331.1. Scheduled offsets still saved, never used as pre-play hand"
+    },
+    {
+      "id": "timing",
+      "severity": "nonblocking",
+      "description": "Requested source seek seconds retained. Actual extracted frame PTS not measured; action times are approximate within cited sequence"
+    },
+    {
+      "id": "printing",
+      "severity": "nonblocking",
+      "description": "QR semantic entities and visibly shown attacks distinguish two Conkeldurr functions; unplayed Guts Conkeldurr is deck-only evidence. QR does not uniquely specify artwork or rarity"
+    },
+    {
+      "id": "ratings",
+      "severity": "owner_input_not_supplied",
+      "description": "Numerical fun and competitive ratings remain null"
+    },
+    {
+      "id": "t9_preplay_fade",
+      "severity": "recording_limit",
+      "description": "Earliest retained pre-play328.1 hand has three readable slots but drawn-card fade overlays centre. No fully settled unzoomed pre-play frame claimed; evolution visible328.5."
+    }
+  ],
+  "unreviewed_source_intervals": [],
+  "source_unreadable": false
+}

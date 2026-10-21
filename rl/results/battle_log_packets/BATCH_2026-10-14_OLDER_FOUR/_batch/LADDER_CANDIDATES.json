@@ -1,0 +1,79 @@
+{
+  "artifact_url": "https://claude.ai/artifact/GHSfGSCzNiWNj8SFPXV3R1",
+  "prepared_date": "2026-10-14",
+  "status": "prepared_pending_browser_availability",
+  "live_source_filename_duplicate_check": "pending_browser_access",
+  "external_write_performed": false,
+  "browser_block": "Fresh retry authorized and inventory succeeded; Chrome activation access denied and one bounded recovery timed out; no live duplicate check/save",
+  "computer_sources_excluded": [
+    "20261002_011527000_iOS.MP4",
+    "20261002_012229000_iOS.MP4"
+  ],
+  "candidates": [
+    {
+      "source_filename": "20260926_211809000_iOS.MP4",
+      "source_sha256": "f5b6c67fbe006c8485056d8b959a52146289cf8b95c32705b2149135b6bb6a49",
+      "match_date": "2026-09-26",
+      "date_basis": "Embedded source creation21:18:09UTC converted to America/Chicago16:18:09; actual battle start is not recorded",
+      "owner": "Dacz8976",
+      "opponent": "XaBy8",
+      "visible_deck_core": [
+        "Galarian Obstagoon",
+        "Galarian Zigzagoon",
+        "Mega Sableye ex"
+      ],
+      "outcome": "win",
+      "method": "opponent_concession",
+      "last_visible_points": {
+        "owner": 2,
+        "opponent": 0
+      },
+      "result_evidence": "Explicit Your opponent conceded at source38/40s and named Dacz8976 Victory at43.4s",
+      "result_evidence_paths": [
+        "20260926_211809000_iOS/evidence/native_38p000s.jpg",
+        "20260926_211809000_iOS/evidence/native_43p400s.jpg"
+      ],
+      "scope_limit": "Late-match43.463333s excerpt; setup, earlier turns and first owner point absent. Full20-card list unknown.",
+      "mode": "actual_queue_unknown_no_auto_observed_owner_default_ladder_route"
+    },
+    {
+      "source_filename": "20260926_212155000_iOS.MP4",
+      "source_sha256": "258066407acbc779da233b4ee92a6fd49b6260f35534b0e5dd84e6d9c3102683",
+      "match_date": "2026-09-26",
+      "date_basis": "Embedded source creation21:21:55UTC converted to America/Chicago16:21:55",
+      "owner": "Dacz8976",
+      "opponent": "StefaGo",
+      "visible_deck_core": [
+        "Hydreigon",
+        "Deino",
+        "Galarian Zigzagoon"
+      ],
+      "outcome": "win",
+      "method": "opponent_concession",
+      "last_visible_points": {
+        "owner": 2,
+        "opponent": 1
+      },
+      "result_evidence": "Explicit Your opponent conceded at199.5-201s; named Dacz8976 Victory at203.5/204s",
+      "result_evidence_paths": [
+        "20260926_212155000_iOS/evidence/t0200.00.jpg",
+        "20260926_212155000_iOS/evidence/t0203.50.jpg"
+      ],
+      "scope_limit": "All205.771927s reviewed; setup and beginning of initial owner turn absent. No entirely missing completed turn established. Full20-card list unknown.",
+      "mode": "actual_queue_unknown_no_auto_observed_owner_default_ladder_route",
+      "historical_correction": "Earlier report missed recorded concession and Victory; this source establishes an owner win"
+    }
+  ],
+  "required_external_completion": [
+    "Open fresh live Ladder Log",
+    "Find each source filename before adding to avoid duplicates",
+    "Save only absent candidate entries",
+    "Reload and verify saved entries and totals"
+  ],
+  "prior_historical_ladder_capture": {
+    "path": "Recording_QA/RETROSPECTIVE_HANDS_2026-10-02/LADDER_LOG_CAPTURE.txt",
+    "limitation": "Limited dated capture; absence there is not current complete duplicate proof"
+  },
+  "owner_authorized_browser_retry": true,
+  "external_status_receipt": "EXTERNAL_STATUS.json"
+}

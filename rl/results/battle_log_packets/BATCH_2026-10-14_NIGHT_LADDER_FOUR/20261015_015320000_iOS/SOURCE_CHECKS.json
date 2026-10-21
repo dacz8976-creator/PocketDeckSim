@@ -1,0 +1,39 @@
+{
+  "lead": "/root",
+  "checked_utc": "2026-10-15T02:52:30.744097+00:00",
+  "source_filename": "20261015_015320000_iOS.MP4",
+  "source_sha256": "9a1e0725ad0ac4b3dd3fc8c445e08b3c16be7edbbd9dd9d7b1f7c1333b30c953",
+  "observations": [
+    {
+      "path": "evidence/t0312.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Current turn8 banner with opponent two points and Active Alolan Ninetales ex. Going second makes this owner turn4.",
+      "sha256": "32d27ab19dd74e05be97819a6a27c313ccf3b4a4fd9319a96b5edf38ee375e9a"
+    },
+    {
+      "path": "evidence/t0320.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Alolan Ninetales ex Binding Snow animation deals80 while opponent remains at two points; supporting Raticate ex copies are in hand.",
+      "sha256": "1df4b3edc4357aed8d8ae0178684255d7725278fb06b7187b9319e5775ee33c8"
+    },
+    {
+      "path": "evidence/t0447.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Opponent Mega Rayquaza ex deals200 to the owner's caped180-HP Ninetales; preterminal score2-2.",
+      "sha256": "0a4361a6a14affa94fe731333e8eef043b29d102b8d170c95f2f3ec78bb49fb0"
+    },
+    {
+      "path": "evidence/t0452.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Terminal opponent display shows three filled points, owner two.",
+      "sha256": "755f526b4c251012407251d0860ff559152ea972797b28eede8367b940214e13"
+    },
+    {
+      "path": "evidence/t0462.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Defeat screen identifies opponent 脳筋 and Mega Rayquaza ex Card of the Game; no detailed final stats table shown.",
+      "sha256": "48cb39864b42886c8944d90950758b884246ce775bc467085b621781f5e66d96"
+    }
+  ],
+  "coverage_reconciliation": "Root read full timeline and turn/phase coverage; separate Sol reviewer checked decisive sequences and ordinary turns against retained source evidence."
+}

@@ -1,0 +1,36 @@
+{
+  "source_video": "20261005_003547000_iOS.MP4",
+  "source_sha256": "20f27902935290f6d8515f7852594dac30cb94d53fb1ee4d8ba5c5c3eee535a6",
+  "items": [
+    {
+      "type": "recording_or_destination_limit",
+      "description": "Neither player opens a full discard pile. Only changing top-card pile previews and visible attack discards are filmed; periodic full-pile snapshots are unavailable."
+    },
+    {
+      "type": "recording_or_destination_limit",
+      "description": "Opponent normal draws and both Poké Ball finds are concealed. No hidden identities inferred."
+    },
+    {
+      "type": "recording_or_destination_limit",
+      "description": "Owner first plays on turns5 and7 occur during or before scheduled+1 candidate; dense settled pre-play frames227.5 and337.5 preserve the starting hand."
+    },
+    {
+      "type": "recording_or_destination_limit",
+      "description": "Turns11 and13 have deck-empty normal-draw failures, so draw-animation end is null and diagnostic candidates use the failure message anchor instead."
+    },
+    {
+      "type": "recording_or_destination_limit",
+      "description": "The exact filmed QR deck is absent from all nine current Pause Games log lists. DECK_USED retains the conflict and filmed20-slot semantic list separately."
+    },
+    {
+      "type": "recording_or_destination_limit",
+      "description": "All source-local timestamps are requested seeks. Exact decoded presentation timestamps were not measured."
+    },
+    {
+      "type": "recording_or_destination_limit",
+      "description": "No visible supporter-warning decline or zero-effect voluntary card play occurs. Card inspection zooms are not counted as plays."
+    }
+  ],
+  "unreviewed_intervals": [],
+  "consequential_question_for_independent_review": "Verify attack-retreat-Energy transitions and terminal Cyrus/Last Respects130. Deck log binding requires a separate exact filmed-version list, not substituting an existing live deck."
+}

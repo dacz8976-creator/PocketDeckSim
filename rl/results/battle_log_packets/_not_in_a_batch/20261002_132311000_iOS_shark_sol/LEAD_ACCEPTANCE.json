@@ -1,0 +1,24 @@
+{
+  "source_video": "20261002_132311000_iOS.MP4",
+  "source_sha256": "f3d3765ca22feb385bd540c90c916d1b039382418a0e53711bfeccbe3e240a33",
+  "accepted": true,
+  "decision": "accepted_full_battle_review",
+  "coverage_checked": true,
+  "completion_status": "full_battle_review_complete",
+  "requested_log": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "ranked_ladder_eligible": false,
+  "remaining_coverage_gaps": [],
+  "unverified_material_claims": [],
+  "scope": "Entire 486.048333-second recording: setup, every supplied turn, meaningful state changes and terminal outcome",
+  "lead_evidence": [
+    "overview/sheet_02.jpg",
+    "LEAD_SEQUENCE_CONTACT.jpg",
+    "gaps_t13_terminal/t0471.00.jpg",
+    "gaps_t13_terminal/t0485.00.jpg"
+  ],
+  "astra_reports": [],
+  "lead_notes": "Lead inspected ordinary opening draw, bench and end-turn choices; eight exact early and middle attack, free-retreat, Energy and KO states; and the explicit opponent-return timeout and full Victory stats. Fourteen-turn coverage, HP and Water ledgers, Furfrou and Shaymin point awards and 390 damage reconcile. Flygon remains alive at 20 HP, so the accepted outcome is a 2-0 opponent-return timeout win, without concession attribution or an invented third point. Early Lucky Ice Pop reuse remains a bounded inference and hidden responses stay unknown.",
+  "checked_at": "2026-10-02T16:08:10.921372+00:00",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high"
+}

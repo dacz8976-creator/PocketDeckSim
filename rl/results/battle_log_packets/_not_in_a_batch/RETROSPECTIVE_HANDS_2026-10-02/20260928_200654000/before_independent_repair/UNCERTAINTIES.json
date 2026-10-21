@@ -1,0 +1,113 @@
+{
+  "game_id": "20260928_200654000",
+  "capture_status": "complete_with_recording_limits",
+  "independent_acceptance_status": "pending_separate_source_check",
+  "items": [
+    {
+      "field": "opponent_hidden_hand_draws_search",
+      "value": null,
+      "reason": "Opponent faces hidden by recording perspective; no deck-based guessing"
+    },
+    {
+      "field": "exact_historical20carddeck",
+      "value": null,
+      "reason": "No source-bound historical snapshot supplied; visible minimum only"
+    },
+    {
+      "field": "full_opponent_discard",
+      "value": null,
+      "reason": "No opened opponent pile located in all5951fpssamples or inspectednative windows; closed top only; subsecond panels could fall between samples"
+    },
+    {
+      "field": "complete_owner_discard",
+      "value": null,
+      "reason": "One partial owner panel472, no fullscrollcensus"
+    },
+    {
+      "field": "inputPTS_authorship",
+      "value": null,
+      "reason": "Touch input not separately instrumented; exact action timestamps bounded, framePTS separate"
+    },
+    {
+      "field": "T5IcePopcoin",
+      "value": "heads endpoint inference",
+      "reason": "Native191spinning; 1fpsresult locator+returnedcard/HPendpointreconciliation supportheads, not selectedstill alone"
+    },
+    {
+      "field": "T9secondIcePopcoin",
+      "value": "tails endpoint inference",
+      "reason": "Native360blackcoin+discard/fanendpoint; selectednative does not show fullwordTails"
+    },
+    {
+      "field": "stadium_conditions",
+      "value": "none visible",
+      "reason": "No visible Stadium or special condition icon in inspectedboardviews; sampledabsencequalified"
+    },
+    {
+      "field": "Auto",
+      "value": null,
+      "reason": "Master Ball badge is direct; queue selection is not separately established. Sampled screening does not certify absence every instant; no inspected source evidence triggers Auto-option exclusion."
+    },
+    {
+      "field": "newprose_vsaccepted",
+      "value": [
+        {
+          "topic": "Turn1namedactions",
+          "old_quote": "| 1 opponent, ~00:36–00:48 | Opponent has Arceus ex Active and passes development without visible damage. The game's turn-1 banner is at 00:36. [Turn 1](evidence/t0036.0.jpg), [board](evidence/t0048.0.jpg). |",
+          "new": "Poké Ball and Professor Research shown45/46; search/research card identities hidden",
+          "basis": [
+            "F0045.00",
+            "F0046.00",
+            "R_evidence_t0048.0"
+          ]
+        },
+        {
+          "topic": "SecondDialgaplacement",
+          "old_quote": "| 11 opponent, ~07:24–07:48 | Opponent develops the second Dialga ex and Arceus ex's Ultimate Force deals 130 to Obstagoon, leaving it at 20. [Pre-attack](evidence/t0456.0.jpg), [130 damage](evidence/t0462.0.jpg), [20 HP](evidence/t0468.0.jpg). |",
+          "new": "SecondDialga placed375–378 in turn9; turn11RockyHelmet attaches to already-benched secondDialga",
+          "basis": [
+            "F0373.00",
+            "R_evidence_t0384.0",
+            "F0399.50",
+            "F0452.00",
+            "R_evidence_t0456.0"
+          ]
+        },
+        {
+          "topic": "Turn10damage",
+          "old_quote": "| 10 owner, ~06:36–07:24 | Owner plays Lillie to heal Stage 2 Obstagoon from 100 to 150. A 10-damage event lowers Arceus ex from 140 to 130, then opponent healing restores it to 140. The sampled frame does not establish that this was Merciless Strike. [Lillie](evidence/t0414.0.jpg), [150 HP](evidence/t0420.0.jpg), [10 damage](evidence/t0426.0.jpg). |",
+          "new": "Owner ends withoutattack at1D; automaticNeedle deals10after EndTurn. Lillie actualheal50,max150.",
+          "basis": [
+            "F0422.00",
+            "R_evidence_t0426.0"
+          ]
+        },
+        {
+          "topic": "TwoTools",
+          "old_quote": "| 2 owner, ~00:48–01:48 | Owner uses Poké Ball and benches Deino and another Galarian Zigzagoon, attaches Darkness Energy and Deceptive Needle. Active Zigzagoon's Tackle deals 10, then Deceptive Needle deals another 10 to Arceus ex (140 to 120). No point is awarded. [Poké Ball](evidence/t0066.0.jpg), [Tackle damage](evidence/t0100.0.jpg), [Needle damage](evidence/t0104.0.jpg), [Arceus 120](evidence/t0108.0.jpg). |",
+          "new": "TwoNeedles attachto differentZigzagoon: regularActive, goldbench2; Researchreveals secondTool84–85",
+          "basis": [
+            "F0076.00",
+            "R_evidence_t0084.0",
+            "F0085.00",
+            "F0093.00",
+            "R_evidence_t0096.0"
+          ]
+        },
+        {
+          "topic": "DeckownerIcePopattribution",
+          "old_quote": "Deceptive Needle, Rare Candy, Lillie, Piers and Lucky Ice Pop appear in the line.",
+          "accepted_source_line": 8,
+          "new": "This old wording is ambiguous about card ownership. Source-visible Ice Pop actions are opponent; owner list cannot claim a copy from those events. This does not prove an unseen owner copy absent.",
+          "basis": [
+            "F0127.00",
+            "F0244.80",
+            "F0351.80",
+            "F0360.00"
+          ]
+        }
+      ],
+      "reason": "Exact old rows retained in INHERITED_TURNS; only separate added fields corrected"
+    }
+  ]
+}

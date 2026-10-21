@@ -1,0 +1,72 @@
+{
+  "source_basename": "20261009_222740000_iOS.MP4",
+  "source_sha256": "8b43e46373858a9dd0bed106fedab96d8b96d058f09c8d5152850f86c4fc7295",
+  "duration_seconds": 264.625,
+  "classification": {
+    "type": "computer_battle",
+    "opponent": "Melmetal Deck (Eevee Grove)",
+    "opponent_kind": "AI",
+    "auto_option_visible": true,
+    "auto_enabled_observed": false,
+    "owner_choice_authorship": "not inferred from Auto setting",
+    "ladder_eligible": false,
+    "pause_games_eligible": false,
+    "evidence": ["native_proof/0s.jpg", "native_proof/209s.jpg"]
+  },
+  "recording_scope": {
+    "complete_setup_to_terminal_result": true,
+    "displayed_turns": 12,
+    "games_visible": 1,
+    "second_game_visible": false
+  },
+  "result": {
+    "owner_result": "victory",
+    "turn_order": "went second",
+    "owner_points": 3,
+    "opponent_points": 0,
+    "owner_damage_done": 300,
+    "card_of_the_game": "Wailord ex",
+    "evidence": ["intake_frames/3_263.625s.jpg", "native_proof/result_263.625s_native_crop.png"]
+  },
+  "owner_visible_core": ["Wailmer", "Wailord ex", "Indeedee ex", "Heavy Helmet", "Water Energy"],
+  "owner_full_deck": "unknown",
+  "key_card": {
+    "name": "Wailord ex",
+    "hp": 250,
+    "attack_name": "Wondrous Waves",
+    "attack_cost": "four Water Energy",
+    "attack_damage": 100,
+    "attack_effect": "This Pokemon recovers from all Special Conditions.",
+    "printed_ability": null,
+    "evidence": ["native_proof/179s.jpg", "native_proof/wailord_ex_card_179s_native_crop.png"]
+  },
+  "owner_turns": [
+    {"global_turn": 2, "actions": ["drew Wailmer", "Poké Ball revealed Indeedee ex", "benched Wailmer and purple-art Indeedee ex only; middle Bench slot empty at 61s", "Heavy Helmet to active Wailmer", "Professor's Research", "first Water to active Wailmer by turn end"], "attack": null, "evidence": ["native_proof/38s.jpg", "native_proof/42s.jpg", "native_proof/46s.jpg", "native_proof/51s.jpg", "native_proof/57s.jpg", "native_proof/59s.jpg", "native_proof/61s.jpg", "native_proof/68s.jpg"]},
+    {"global_turn": 4, "actions": ["turn-opening draw of light-art Indeedee ex visible at 84s", "benched light-art Indeedee ex in previously empty middle slot by 87s", "evolved active Wailmer to Wailord ex", "Copycat hand shuffle and refresh around 98-103s; Copycat atop discard by 123s", "later Poké Ball play at about 120-123s had no eligible deck target", "second Water to Wailord ex"], "attack": null, "evidence": ["native_proof/61s.jpg", "native_proof/84s.jpg", "native_proof/87s.jpg", "native_proof/89s.jpg", "native_proof/98s.jpg", "native_proof/99s.jpg", "native_proof/100s.jpg", "native_proof/103s.jpg", "native_proof/123s.jpg", "native_proof/131s.jpg"]},
+    {"global_turn": 6, "actions": ["drew Irida", "third Water to Wailord ex", "ended after Supporter reminder without Supporter"], "attack": null, "evidence": ["native_proof/142s.jpg", "native_proof/145s.jpg", "native_proof/151s.jpg"]},
+    {"global_turn": 8, "actions": ["Heavy Helmet to benched Wailmer", "fourth Water to Wailord ex", "Pokémon Center Lady cleared Confusion on Wailord ex"], "attack": {"name": "Wondrous Waves", "damage": 100, "knockout": "Chatot", "owner_points_after": 1}, "evidence": ["native_proof/164s.jpg", "native_proof/169s.jpg", "native_proof/171s.jpg", "native_proof/174s.jpg", "native_proof/179s.jpg", "native_proof/184s.jpg"]},
+    {"global_turn": 10, "actions": ["drew Lucky Ice Pop and kept it", "attached first Water to benched Wailmer", "right dark-art Indeedee ex used Watch Over; 10 actual HP restored to active Wailord ex"], "attack": {"name": "Wondrous Waves", "damage": 100, "knockout": "Mawile", "owner_points_after": 2}, "evidence": ["native_proof/203s.jpg", "native_proof/204s.jpg", "native_proof/205s.jpg", "native_proof/208s.jpg", "native_proof/209s.jpg", "native_proof/215s.jpg", "native_proof/219s.jpg"]},
+    {"global_turn": 12, "actions": ["drew Cyrus and kept it", "same right dark-art Indeedee ex used Watch Over on a later turn; 20 actual HP restored to active Wailord ex", "attached Water to benched Wailmer, now two Water"], "attack": {"name": "Wondrous Waves", "damage": 100, "knockout": "Cinccino", "owner_points_after": 3}, "evidence": ["native_proof/238s.jpg", "native_proof/241s.jpg", "native_proof/246s.jpg", "native_proof/249s.jpg", "intake_frames/3_263.625s.jpg"]}
+  ],
+  "opponent_energy_development": [
+    {"global_turn": 1, "target": "opponent board", "metal_energy_after": 0, "observation": "none visible by end of turn", "evidence": ["native_proof/35s.jpg"]},
+    {"global_turn": 3, "target": "active Chatot", "metal_energy_after": 1, "attachment_window_seconds": [68, 75], "evidence": ["native_proof/68s.jpg", "native_proof/75s.jpg"]},
+    {"global_turn": 5, "target": "rightmost benched Mawile", "metal_energy_after": 1, "attachment_window_seconds": [131, 138], "evidence": ["native_proof/131s.jpg", "native_proof/138s.jpg"]},
+    {"global_turn": 7, "target": "rightmost benched Mawile", "metal_energy_after": 2, "attachment_window_seconds": [151, 164], "timing_limit": "second attachment is bounded by board views across this opponent turn", "evidence": ["native_proof/151s.jpg", "native_proof/164s.jpg"]},
+    {"global_turn": 9, "target": "benched Minccino", "metal_energy_after": 1, "observed_by_seconds": 196, "timing_limit": "exact attachment moment obscured in bench arrival sequence", "evidence": ["native_proof/184s.jpg", "native_proof/196s.jpg"]},
+    {"global_turn": 11, "target": "benched Togedemaru", "metal_energy_after": 1, "attachment_window_seconds": [227, 230], "evidence": ["native_proof/227s.jpg", "native_proof/230s.jpg"]}
+  ],
+  "opponent_attack_reconciliation": [
+    {"global_turn": 3, "attacker": "Chatot", "attack": "Tone-Deaf", "base_damage": 10, "heavy_helmet_reduction": 20, "actual_damage": 0, "status": "Confused", "evidence": ["native_proof/75s.jpg", "native_proof/84s.jpg"]},
+    {"global_turn": 5, "attacker": "Chatot", "attack": "Tone-Deaf", "base_damage": 10, "heavy_helmet_reduction": 20, "actual_damage": 0, "status": "Confused", "evidence": ["native_proof/138s.jpg"]},
+    {"global_turn": 7, "attacker": "Chatot", "attack": "Tone-Deaf", "base_damage": 10, "heavy_helmet_reduction": 20, "actual_damage": 0, "status": "Confused", "evidence": ["native_proof/151s.jpg", "native_proof/164s.jpg"]},
+    {"global_turn": 9, "attacker": "Mawile", "attack": "Powerful Vise", "base_damage": 30, "heavy_helmet_reduction": 20, "actual_damage": 10, "wailord_hp_after": 240, "coin": "Tails", "evidence": ["native_proof/196s.jpg", "native_proof/200s.jpg"]},
+    {"global_turn": 11, "attacker": "Cinccino", "attack": "Slap", "base_damage": 40, "heavy_helmet_reduction": 20, "actual_damage": 20, "wailord_hp_after": 230, "evidence": ["native_proof/232s.jpg", "native_proof/234s.jpg"]}
+  ],
+  "healing_reconciliation": [
+    {"global_turn": 10, "user": "right dark-art Indeedee ex", "ability": "Watch Over", "printed_max_heal": 20, "actual_heal": 10, "active_hp_before": 240, "active_hp_after": 250, "evidence": ["native_proof/208s.jpg", "native_proof/209s.jpg"]},
+    {"global_turn": 12, "user": "same right dark-art Indeedee ex on later turn", "ability": "Watch Over", "printed_max_heal": 20, "actual_heal": 20, "active_hp_before": 230, "active_hp_after": 250, "evidence": ["native_proof/238s.jpg", "native_proof/241s.jpg", "native_proof/242s.jpg"]}
+  ],
+  "limits": ["Hidden hand and full deck identities are unknown", "A benched card's acquisition is not inferred solely from its appearance", "Auto Off does not prove authorship of every choice", "No external game entry is authorized for this computer battle"],
+  "packet_status": "local full review complete; pending independent acceptance and registration"
+}

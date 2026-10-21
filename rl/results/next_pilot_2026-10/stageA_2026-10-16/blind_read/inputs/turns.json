@@ -1,0 +1,1732 @@
+[
+ {
+  "turn": "T1",
+  "position": {
+   "me": {
+    "hand": [
+     "Kingambit B3a 043",
+     "Glimmet B3a 044",
+     "Alolan Muk B2 097"
+    ],
+    "discard": [
+     "Pok\u00e9 Ball A2b 111",
+     "Professor's Research A4b 373",
+     "Copycat B1 225",
+     "Pok\u00e9 Ball A2b 111",
+     "Glimmora B3a 045",
+     "Glimmet B3a 044"
+    ],
+    "discard_energy": [
+     "Darkness"
+    ],
+    "board": [
+     {
+      "card": "Regigigas B3 134",
+      "hp": 150
+     },
+     {
+      "card": "Pawniard B3a 041",
+      "hp": 50
+     },
+     {
+      "card": "Alolan Grimer A3 110",
+      "hp": 70
+     }
+    ],
+    "energy_now": "Darkness",
+    "energy_next": "Darkness",
+    "knockouts": 1
+   },
+   "opp": {
+    "hand_count": 4,
+    "discard": [
+     "Professor's Research A4b 373",
+     "Pok\u00e9 Ball A2b 111"
+    ],
+    "discard_energy": [],
+    "board": [
+     {
+      "card": "Mega Kangaskhan ex B2 127",
+      "hp": 180,
+      "energy": [
+       "Lightning",
+       "Metal",
+       "Metal"
+      ]
+     },
+     {
+      "card": "Pichu A4 066",
+      "hp": 30
+     },
+     {
+      "card": "Team Rocket's Rattata B4a 058",
+      "hp": 40
+     },
+     {
+      "card": "Team Rocket's Rattata B4a 058",
+      "hp": 40
+     }
+    ],
+    "energy_next": "Metal"
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": null,
+   "turn_count": 5,
+   "turn_effects": [],
+   "his_plan": [
+    "Evolve:Alolan Muk@2",
+    "Place:Glimmet",
+    "Attach:1Darkness@1 zone"
+   ],
+   "his_plan_ended": true,
+   "his_turn": 3,
+   "approximate": true,
+   "approximate_reason": "opponent's list unknown"
+  },
+  "km3_plans_12_seeds": [
+   {
+    "seed": 1,
+    "plan": [
+     "Place:Glimmet@3",
+     "Evolve:Alolan Muk@2",
+     "Attach:1Darkness@0 zone",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 2,
+    "plan": [
+     "Place:Glimmet@3",
+     "Evolve:Alolan Muk@2",
+     "Attach:1Darkness@0 zone",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 3,
+    "plan": [
+     "Place:Glimmet@3",
+     "Evolve:Alolan Muk@2",
+     "Attach:1Darkness@0 zone",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 4,
+    "plan": [
+     "Place:Glimmet@3",
+     "Evolve:Alolan Muk@2",
+     "Attach:1Darkness@0 zone",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 5,
+    "plan": [
+     "Place:Glimmet@3",
+     "Evolve:Alolan Muk@2",
+     "Attach:1Darkness@0 zone",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 6,
+    "plan": [
+     "Place:Glimmet@3",
+     "Evolve:Alolan Muk@2",
+     "Attach:1Darkness@0 zone",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 7,
+    "plan": [
+     "Place:Glimmet@3",
+     "Evolve:Alolan Muk@2",
+     "Attach:1Darkness@0 zone",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 8,
+    "plan": [
+     "Place:Glimmet@3",
+     "Evolve:Alolan Muk@2",
+     "Attach:1Darkness@0 zone",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 9,
+    "plan": [
+     "Place:Glimmet@3",
+     "Evolve:Alolan Muk@2",
+     "Attach:1Darkness@0 zone",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 10,
+    "plan": [
+     "Place:Glimmet@3",
+     "Evolve:Alolan Muk@2",
+     "Attach:1Darkness@0 zone",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 11,
+    "plan": [
+     "Place:Glimmet@3",
+     "Evolve:Alolan Muk@2",
+     "Attach:1Darkness@0 zone",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 12,
+    "plan": [
+     "Place:Glimmet@3",
+     "Evolve:Alolan Muk@2",
+     "Attach:1Darkness@0 zone",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   }
+  ]
+ },
+ {
+  "turn": "T2",
+  "position": {
+   "me": {
+    "hand": [
+     "Ilima A3 149",
+     "Glimmora B3a 045",
+     "Lucky Ice Pop B2 145",
+     "Glimmet B3a 044",
+     "Lucky Ice Pop B2 145"
+    ],
+    "discard": [
+     "Professor's Research A4b 373",
+     "Pok\u00e9 Ball A2b 111",
+     "Copycat B1 225",
+     "Rare Candy A3 144",
+     "Mesagoza B2a 093"
+    ],
+    "discard_energy": [
+     "Darkness",
+     "Darkness"
+    ],
+    "board": [
+     {
+      "card": "Regigigas B3 134",
+      "hp": 50
+     },
+     {
+      "card": "Glimmora B3a 045",
+      "hp": 90,
+      "behind": [
+       "Glimmet B3a 044"
+      ]
+     },
+     {
+      "card": "Alolan Muk B2 097",
+      "hp": 110,
+      "behind": [
+       "Alolan Grimer A3 110"
+      ]
+     },
+     {
+      "card": "Kingambit B3a 043",
+      "hp": 140,
+      "energy": [
+       "Darkness"
+      ],
+      "behind": [
+       "Pawniard B3a 041"
+      ]
+     }
+    ],
+    "energy_now": "Darkness",
+    "energy_next": "Darkness",
+    "knockouts": 0
+   },
+   "opp": {
+    "hand_count": 2,
+    "discard": [
+     "Professor's Research A4b 373",
+     "Pok\u00e9 Ball A2b 111",
+     "Rare Candy A3 144",
+     "Copycat B1 225",
+     "Rare Candy A3 144"
+    ],
+    "discard_energy": [
+     "Darkness"
+    ],
+    "board": [
+     {
+      "card": "Mega Pidgeot ex P-B 006",
+      "hp": 210,
+      "energy": [
+       "Darkness",
+       "Darkness",
+       "Colorless"
+      ],
+      "behind": [
+       "Pidgey A1 186"
+      ]
+     },
+     {
+      "card": "Meowth B2 124",
+      "hp": 50
+     },
+     {
+      "card": "Meowth B2 124",
+      "hp": 50
+     },
+     {
+      "card": "Mega Pidgeot ex P-B 006",
+      "hp": 210,
+      "behind": [
+       "Pidgey A1 186"
+      ]
+     }
+    ],
+    "energy_next": "Darkness"
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": {
+    "card": "Soothing Shore B4 154",
+    "owner": 1
+   },
+   "turn_count": 8,
+   "turn_effects": [],
+   "his_plan": [
+    "Play:Ilima",
+    "Promote:0@1",
+    "Place:Glimmet",
+    "Attach:1Darkness@0 zone",
+    "Attack:Venomous Hit"
+   ],
+   "his_plan_ended": true,
+   "his_turn": 4,
+   "approximate": true,
+   "approximate_reason": "opponent's list unknown"
+  },
+  "km3_plans_12_seeds": [
+   {
+    "seed": 1,
+    "plan": [
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "Attack:Overlord's Blade",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 2,
+    "plan": [
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "Attack:Overlord's Blade",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 3,
+    "plan": [
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "Attack:Overlord's Blade",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 4,
+    "plan": [
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "Attack:Overlord's Blade",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 5,
+    "plan": [
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "Attack:Overlord's Blade",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 6,
+    "plan": [
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "Attack:Overlord's Blade",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 7,
+    "plan": [
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "Attack:Overlord's Blade",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 8,
+    "plan": [
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "Attack:Overlord's Blade",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 9,
+    "plan": [
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "Attack:Overlord's Blade",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 10,
+    "plan": [
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "Attack:Overlord's Blade",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 11,
+    "plan": [
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "Attack:Overlord's Blade",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 12,
+    "plan": [
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "Attack:Overlord's Blade",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   }
+  ]
+ },
+ {
+  "turn": "T3",
+  "position": {
+   "me": {
+    "hand": [
+     "Glimmet B3a 044",
+     "Ilima A3 149",
+     "Kingambit B3a 043",
+     "Rare Candy A3 144"
+    ],
+    "discard": [
+     "Professor's Research A4b 373",
+     "Pok\u00e9 Ball A2b 111",
+     "Pok\u00e9 Ball A2b 111",
+     "Copycat B1 225",
+     "Professor's Research A4b 373"
+    ],
+    "discard_energy": [],
+    "board": [
+     {
+      "card": "Regigigas B3 134",
+      "hp": 10,
+      "energy": [
+       "Darkness"
+      ]
+     },
+     {
+      "card": "Alolan Muk B2 097",
+      "hp": 110,
+      "behind": [
+       "Alolan Grimer A3 110"
+      ]
+     },
+     {
+      "card": "Glimmora B3a 045",
+      "hp": 90,
+      "behind": [
+       "Glimmet B3a 044"
+      ]
+     },
+     {
+      "card": "Pawniard B3a 041",
+      "hp": 50,
+      "energy": [
+       "Darkness"
+      ]
+     }
+    ],
+    "energy_now": "Darkness",
+    "energy_next": "Darkness",
+    "knockouts": 0
+   },
+   "opp": {
+    "hand_count": 4,
+    "discard": [
+     "Copycat B1 225",
+     "Pok\u00e9 Ball A2b 111"
+    ],
+    "discard_energy": [],
+    "board": [
+     {
+      "card": "Drampa B4 124",
+      "hp": 100,
+      "energy": [
+       "Lightning"
+      ]
+     },
+     {
+      "card": "Drampa B4 124",
+      "hp": 100
+     },
+     {
+      "card": "Mega Rayquaza ex B4 120",
+      "hp": 180,
+      "energy": [
+       "Fire",
+       "Lightning"
+      ]
+     },
+     {
+      "card": "Dragonair B4 117",
+      "hp": 80,
+      "behind": [
+       "Dratini A1 183"
+      ]
+     }
+    ],
+    "energy_next": "Fire"
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": {
+    "card": "Mesagoza B2a 093",
+    "owner": 0
+   },
+   "turn_count": 7,
+   "turn_effects": [],
+   "his_plan": [
+    "Play:Rare Candy",
+    "Evolve:Kingambit@3",
+    "UseStadium",
+    "Play:Ilima",
+    "Promote:0@2",
+    "Place:Regigigas",
+    "Attach:1Darkness@0 zone",
+    "Attack:Venomous Hit"
+   ],
+   "his_plan_ended": true,
+   "his_turn": 4,
+   "approximate": true,
+   "approximate_reason": "opponent's list unknown"
+  },
+  "km3_plans_12_seeds": [
+   {
+    "seed": 1,
+    "plan": [
+     "Play:Rare Candy",
+     "Evolve:Kingambit@3",
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "UseStadium",
+     "Attack:Overlord's Blade",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 2,
+    "plan": [
+     "Play:Rare Candy",
+     "Evolve:Kingambit@3",
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "UseStadium",
+     "Attack:Overlord's Blade",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 3,
+    "plan": [
+     "Play:Rare Candy",
+     "Evolve:Kingambit@3",
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "UseStadium",
+     "Attack:Overlord's Blade",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 4,
+    "plan": [
+     "Play:Rare Candy",
+     "Evolve:Kingambit@3",
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "UseStadium",
+     "Attack:Overlord's Blade",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 5,
+    "plan": [
+     "Play:Rare Candy",
+     "Evolve:Kingambit@3",
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "UseStadium",
+     "Attack:Overlord's Blade",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 6,
+    "plan": [
+     "Play:Rare Candy",
+     "Evolve:Kingambit@3",
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "UseStadium",
+     "Attack:Overlord's Blade",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 7,
+    "plan": [
+     "Play:Rare Candy",
+     "Evolve:Kingambit@3",
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "UseStadium",
+     "Attack:Overlord's Blade",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 8,
+    "plan": [
+     "Play:Rare Candy",
+     "Evolve:Kingambit@3",
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "UseStadium",
+     "Attack:Overlord's Blade",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 9,
+    "plan": [
+     "Play:Rare Candy",
+     "Evolve:Kingambit@3",
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "UseStadium",
+     "Attack:Overlord's Blade",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 10,
+    "plan": [
+     "Play:Rare Candy",
+     "Evolve:Kingambit@3",
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "UseStadium",
+     "Attack:Overlord's Blade",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 11,
+    "plan": [
+     "Play:Rare Candy",
+     "Evolve:Kingambit@3",
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "UseStadium",
+     "Attack:Overlord's Blade",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 12,
+    "plan": [
+     "Play:Rare Candy",
+     "Evolve:Kingambit@3",
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "UseStadium",
+     "Attack:Overlord's Blade",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   }
+  ]
+ },
+ {
+  "turn": "T4",
+  "position": {
+   "me": {
+    "hand": [
+     "Ilima A3 149",
+     "Kingambit B3a 043",
+     "Lucky Ice Pop B2 145"
+    ],
+    "discard": [
+     "Pok\u00e9 Ball A2b 111"
+    ],
+    "discard_energy": [
+     "Darkness",
+     "Darkness"
+    ],
+    "board": [
+     {
+      "card": "Regigigas B3 134",
+      "hp": 40
+     },
+     {
+      "card": "Glimmet B3a 044",
+      "hp": 60
+     },
+     {
+      "card": "Alolan Muk B2 097",
+      "hp": 110,
+      "behind": [
+       "Alolan Grimer A3 110"
+      ]
+     },
+     {
+      "card": "Pawniard B3a 041",
+      "hp": 50
+     }
+    ],
+    "energy_now": "Darkness",
+    "energy_next": "Darkness",
+    "knockouts": 0
+   },
+   "opp": {
+    "hand_count": 3,
+    "discard": [
+     "Pok\u00e9 Ball A2b 111",
+     "Serena B1a 069",
+     "Professor's Research A4b 373",
+     "Pok\u00e9 Ball A2b 111"
+    ],
+    "discard_energy": [],
+    "board": [
+     {
+      "card": "Mega Lucario ex B3 081",
+      "hp": 190,
+      "energy": [
+       "Fighting",
+       "Fighting"
+      ],
+      "behind": [
+       "Riolu A2b 042"
+      ]
+     },
+     {
+      "card": "Hitmonchan ex B1 124",
+      "hp": 130
+     },
+     {
+      "card": "Riolu A2b 042",
+      "hp": 70
+     },
+     {
+      "card": "Tyrogue A4 101",
+      "hp": 30
+     }
+    ],
+    "energy_next": "Fighting"
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": null,
+   "turn_count": 6,
+   "turn_effects": [],
+   "his_plan": [
+    "Attach:1Darkness@3 zone"
+   ],
+   "his_plan_ended": true,
+   "his_turn": 3,
+   "approximate": true,
+   "approximate_reason": "opponent's list unknown"
+  },
+  "km3_plans_12_seeds": [
+   {
+    "seed": 1,
+    "plan": [
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "Attack:Slash",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 2,
+    "plan": [
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "Attack:Slash",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 3,
+    "plan": [
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "Attack:Slash",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 4,
+    "plan": [
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "Attack:Slash",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 5,
+    "plan": [
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "Attack:Slash",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 6,
+    "plan": [
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "Attack:Slash",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 7,
+    "plan": [
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "Attack:Slash",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 8,
+    "plan": [
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "Attack:Slash",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 9,
+    "plan": [
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "Attack:Slash",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 10,
+    "plan": [
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "Attack:Slash",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 11,
+    "plan": [
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "Attack:Slash",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 12,
+    "plan": [
+     "Play:Ilima",
+     "ReturnPokemonToHand",
+     "Promote:0@3",
+     "Place:Regigigas@3",
+     "Attach:1Darkness@0 zone",
+     "Attack:Slash",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   }
+  ]
+ },
+ {
+  "turn": "T5",
+  "position": {
+   "me": {
+    "hand": [
+     "Glimmet B3a 044",
+     "Glimmora B3a 045",
+     "Heavy Helmet B1 219"
+    ],
+    "discard": [
+     "Professor's Research A4b 373",
+     "Pok\u00e9 Ball A2b 111",
+     "Pok\u00e9 Ball A2b 111",
+     "Copycat B1 225",
+     "Professor's Research A4b 373",
+     "Rare Candy A3 144",
+     "Ilima A3 149"
+    ],
+    "discard_energy": [],
+    "board": [
+     {
+      "card": "Regigigas B3 134",
+      "hp": 10
+     },
+     {
+      "card": "Alolan Muk B2 097",
+      "hp": 110,
+      "energy": [
+       "Darkness"
+      ],
+      "behind": [
+       "Alolan Grimer A3 110"
+      ]
+     },
+     {
+      "card": "Glimmora B3a 045",
+      "hp": 90,
+      "energy": [
+       "Darkness"
+      ],
+      "behind": [
+       "Glimmet B3a 044"
+      ]
+     },
+     {
+      "card": "Kingambit B3a 043",
+      "hp": 140,
+      "energy": [
+       "Darkness"
+      ],
+      "behind": [
+       "Pawniard B3a 041"
+      ]
+     }
+    ],
+    "energy_now": "Darkness",
+    "energy_next": "Darkness",
+    "knockouts": 0
+   },
+   "opp": {
+    "hand_count": 4,
+    "discard": [
+     "Copycat B1 225",
+     "Pok\u00e9 Ball A2b 111",
+     "Lucky Ice Pop B2 145",
+     "Cyrus A2 150"
+    ],
+    "discard_energy": [],
+    "board": [
+     {
+      "card": "Drampa B4 124",
+      "hp": 90,
+      "energy": [
+       "Lightning"
+      ],
+      "conditions": [
+       "Poisoned"
+      ]
+     },
+     {
+      "card": "Drampa B4 124",
+      "hp": 100,
+      "energy": [
+       "Fire",
+       "Fire"
+      ]
+     },
+     {
+      "card": "Mega Rayquaza ex B4 120",
+      "hp": 180,
+      "energy": [
+       "Fire",
+       "Lightning"
+      ]
+     },
+     {
+      "card": "Dragonair B4 117",
+      "hp": 80,
+      "behind": [
+       "Dratini A1 183"
+      ]
+     }
+    ],
+    "energy_next": "Lightning"
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": {
+    "card": "Mesagoza B2a 093",
+    "owner": 0
+   },
+   "turn_count": 11,
+   "turn_effects": [],
+   "his_plan": [
+    "Play:Heavy Helmet",
+    "Tool:Heavy Helmet@3",
+    "Attach:1Darkness@1 zone"
+   ],
+   "his_plan_ended": true,
+   "his_turn": 6,
+   "approximate": true,
+   "approximate_reason": "opponent's list unknown"
+  },
+  "km3_plans_12_seeds": [
+   {
+    "seed": 1,
+    "plan": [
+     "Attach:1Darkness@3 zone",
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "UseStadium",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 2,
+    "plan": [
+     "Attach:1Darkness@3 zone",
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "UseStadium",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 3,
+    "plan": [
+     "Attach:1Darkness@3 zone",
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "UseStadium",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 4,
+    "plan": [
+     "Attach:1Darkness@3 zone",
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "UseStadium",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 5,
+    "plan": [
+     "Attach:1Darkness@3 zone",
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "UseStadium",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 6,
+    "plan": [
+     "Attach:1Darkness@3 zone",
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "UseStadium",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 7,
+    "plan": [
+     "Attach:1Darkness@3 zone",
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "UseStadium",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 8,
+    "plan": [
+     "Attach:1Darkness@3 zone",
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "UseStadium",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 9,
+    "plan": [
+     "Attach:1Darkness@3 zone",
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "UseStadium",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 10,
+    "plan": [
+     "Attach:1Darkness@3 zone",
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "UseStadium",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 11,
+    "plan": [
+     "Attach:1Darkness@3 zone",
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "UseStadium",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 12,
+    "plan": [
+     "Attach:1Darkness@3 zone",
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "UseStadium",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   }
+  ]
+ },
+ {
+  "turn": "T6",
+  "position": {
+   "me": {
+    "hand": [
+     "Lucky Ice Pop B2 145",
+     "Glimmora B3a 045",
+     "Ilima A3 149",
+     "Heavy Helmet B1 219"
+    ],
+    "discard": [
+     "Professor's Research A4b 373",
+     "Pok\u00e9 Ball A2b 111",
+     "Professor's Research A4b 373",
+     "Rare Candy A3 144",
+     "Glimmora B3a 045",
+     "Glimmet B3a 044",
+     "Mesagoza B2a 093"
+    ],
+    "discard_energy": [
+     "Darkness"
+    ],
+    "board": [
+     {
+      "card": "Alolan Muk B2 097",
+      "hp": 110,
+      "energy": [
+       "Colorless"
+      ],
+      "behind": [
+       "Alolan Grimer A3 110"
+      ]
+     },
+     {
+      "card": "Kingambit B3a 043",
+      "hp": 140,
+      "behind": [
+       "Pawniard B3a 041"
+      ]
+     },
+     {
+      "card": "Regigigas B3 134",
+      "hp": 150,
+      "energy": [
+       "Darkness",
+       "Darkness",
+       "Darkness"
+      ]
+     }
+    ],
+    "energy_now": "Darkness",
+    "energy_next": "Darkness",
+    "knockouts": 1
+   },
+   "opp": {
+    "hand_count": 5,
+    "discard": [
+     "Professor's Research A4b 373",
+     "Pok\u00e9 Ball A2b 111",
+     "Ralts A1 130",
+     "Pok\u00e9 Ball A2b 111",
+     "Lucky Ice Pop B2 145",
+     "Potion P-A 001",
+     "Sabrina A1 225"
+    ],
+    "discard_energy": [
+     "Psychic"
+    ],
+    "board": [
+     {
+      "card": "Indeedee ex B1 121",
+      "hp": 130
+     },
+     {
+      "card": "Mega Diancie ex B3b 032",
+      "hp": 40,
+      "energy": [
+       "Psychic",
+       "Psychic",
+       "Psychic",
+       "Psychic"
+      ],
+      "tools": [
+       "Giant Cape A2 147"
+      ]
+     }
+    ],
+    "energy_next": "Psychic"
+   },
+   "points": [
+    1,
+    0
+   ],
+   "stadium": {
+    "card": "Peculiar Plaza B2 155",
+    "owner": 1
+   },
+   "turn_count": 11,
+   "turn_effects": [],
+   "his_plan": [
+    "Play:Heavy Helmet",
+    "Tool:Heavy Helmet@1",
+    "Attach:1Darkness@1 zone"
+   ],
+   "his_plan_ended": true,
+   "his_turn": 6,
+   "approximate": true,
+   "approximate_reason": "opponent's list unknown"
+  },
+  "km3_plans_12_seeds": [
+   {
+    "seed": 1,
+    "plan": [
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "Attach:1Darkness@0 zone",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 2,
+    "plan": [
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "Attach:1Darkness@0 zone",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 3,
+    "plan": [
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "Attach:1Darkness@0 zone",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 4,
+    "plan": [
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "Attach:1Darkness@0 zone",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 5,
+    "plan": [
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "Attach:1Darkness@0 zone",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 6,
+    "plan": [
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "Attach:1Darkness@0 zone",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 7,
+    "plan": [
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "Attach:1Darkness@0 zone",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 8,
+    "plan": [
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "Attach:1Darkness@0 zone",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 9,
+    "plan": [
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "Attach:1Darkness@0 zone",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 10,
+    "plan": [
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "Attach:1Darkness@0 zone",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 11,
+    "plan": [
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "Attach:1Darkness@0 zone",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 12,
+    "plan": [
+     "Play:Heavy Helmet",
+     "Tool:Heavy Helmet@0",
+     "Attach:1Darkness@0 zone",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   }
+  ]
+ },
+ {
+  "turn": "T7",
+  "position": {
+   "me": {
+    "hand": [
+     "Copycat B1 225",
+     "Glimmora B3a 045",
+     "Rare Candy A3 144",
+     "Lucky Ice Pop B2 145",
+     "Glimmora B3a 045"
+    ],
+    "discard": [
+     "Pok\u00e9 Ball A2b 111",
+     "Professor's Research A4b 373"
+    ],
+    "discard_energy": [],
+    "board": [
+     {
+      "card": "Alolan Grimer A3 110",
+      "hp": 70
+     },
+     {
+      "card": "Pawniard B3a 041",
+      "hp": 50
+     },
+     {
+      "card": "Regigigas B3 134",
+      "hp": 150
+     }
+    ],
+    "energy_now": "Darkness",
+    "energy_next": "Darkness",
+    "knockouts": 0
+   },
+   "opp": {
+    "hand_count": 1,
+    "discard": [
+     "Pok\u00e9 Ball A2b 111",
+     "Copycat B1 225"
+    ],
+    "discard_energy": [],
+    "board": [
+     {
+      "card": "Dedenne ex B3b 024",
+      "hp": 120,
+      "energy": [
+       "Lightning"
+      ],
+      "tools": [
+       "Electrical Cord A3a 065"
+      ]
+     },
+     {
+      "card": "Emolga B3b 023",
+      "hp": 70
+     },
+     {
+      "card": "Dedenne ex B3b 024",
+      "hp": 120,
+      "tools": [
+       "Rocky Helmet A2 148"
+      ]
+     },
+     {
+      "card": "Zeraora A3a 021",
+      "hp": 90,
+      "energy": [
+       "Lightning"
+      ],
+      "tools": [
+       "Small Balloon B3b 064"
+      ]
+     }
+    ],
+    "energy_next": "Lightning"
+   },
+   "points": [
+    0,
+    0
+   ],
+   "stadium": null,
+   "turn_count": 3,
+   "turn_effects": [],
+   "his_plan": [
+    "Attach:1Darkness@1 zone"
+   ],
+   "his_plan_ended": true,
+   "his_turn": 2,
+   "approximate": true,
+   "approximate_reason": "opponent's list unknown"
+  },
+  "km3_plans_12_seeds": [
+   {
+    "seed": 1,
+    "plan": [
+     "Attach:1Darkness@1 zone",
+     "Play:Copycat"
+    ],
+    "cut": "first draw"
+   },
+   {
+    "seed": 2,
+    "plan": [
+     "Attach:1Darkness@0 zone",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 3,
+    "plan": [
+     "Attach:1Darkness@0 zone",
+     "Play:Copycat"
+    ],
+    "cut": "first draw"
+   },
+   {
+    "seed": 4,
+    "plan": [
+     "Attach:1Darkness@0 zone",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 5,
+    "plan": [
+     "Attach:1Darkness@0 zone",
+     "Play:Copycat"
+    ],
+    "cut": "first draw"
+   },
+   {
+    "seed": 6,
+    "plan": [
+     "Play:Copycat"
+    ],
+    "cut": "first draw"
+   },
+   {
+    "seed": 7,
+    "plan": [
+     "Attach:1Darkness@0 zone",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 8,
+    "plan": [
+     "Attach:1Darkness@0 zone",
+     "Play:Copycat"
+    ],
+    "cut": "first draw"
+   },
+   {
+    "seed": 9,
+    "plan": [
+     "Attach:1Darkness@2 zone",
+     "Play:Copycat"
+    ],
+    "cut": "first draw"
+   },
+   {
+    "seed": 10,
+    "plan": [
+     "Attach:1Darkness@0 zone",
+     "EndTurn"
+    ],
+    "cut": "end of turn"
+   },
+   {
+    "seed": 11,
+    "plan": [
+     "Play:Copycat"
+    ],
+    "cut": "first draw"
+   },
+   {
+    "seed": 12,
+    "plan": [
+     "Attach:1Darkness@0 zone",
+     "Play:Copycat"
+    ],
+    "cut": "first draw"
+   }
+  ]
+ }
+]

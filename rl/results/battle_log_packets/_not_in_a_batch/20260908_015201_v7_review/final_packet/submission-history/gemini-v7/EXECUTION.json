@@ -1,0 +1,26 @@
+{
+  "started_utc": "2026-09-22T03:47:35.421989+00:00",
+  "sdk_version": "2.24.0",
+  "backend": "gemini-enterprise-agent-platform",
+  "project": "project-45583ef0-ed57-426c-bde",
+  "location": "global",
+  "gcs_uri": "gs://gemini-battle-pilot-117856882604/20260908_015201000_iOS.MP4",
+  "model": "gemini-3.8-flash",
+  "request_count": 2,
+  "responses_received": 2,
+  "automatic_retries_by_script": 0,
+  "independent_review_required": true,
+  "ready_for_independent_review": true,
+  "phase": "main",
+  "candidate_packet_extracted": true,
+  "candidate_packet_directory": "/home/dacz8976/Gemini_API_Pilot/runs/20260922T034734Z-20260908_015201000_iOS/candidate_packet",
+  "parse_report_path": "/home/dacz8976/Gemini_API_Pilot/runs/20260922T034734Z-20260908_015201000_iOS/PARSE_REPORT.json",
+  "response_completion": {
+    "finish_reasons": [
+      "STOP"
+    ],
+    "prompt_block_reason": null,
+    "automatic_retry_performed": false
+  },
+  "completed_utc": "2026-09-22T03:50:21.342275+00:00"
+}

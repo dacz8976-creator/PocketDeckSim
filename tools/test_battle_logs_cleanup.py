@@ -1,0 +1,2826 @@
+#!/usr/bin/env python3
+"""Tests for tools/battle_logs_cleanup.py, on made-up folder trees and throwaway git repos (nothing here touches the real Battle Logs).
+
+  cd tools && python3 -B -m unittest -v test_battle_logs_cleanup"""
+import contextlib, datetime, io, json, os, shutil, signal, subprocess, sys, tempfile, unittest
+from unittest import mock
+
+HERE = os.path.dirname(os.path.abspath(__file__))
+sys.path.insert(0, HERE)
+import battle_logs_cleanup as bl  # noqa: E402
+
+AUDIT = bl.AUDIT_LIST
+META = 'rl/results/pause_games_new_2026-10-12/games_meta.json'
+VIDEO_BYTES = 1000
+DIGEST = 'ab' * 32            # the sha256 of a game's reviewed positions, as the audit entries and the made-up index carry it
+HAVE_GIT = bool(shutil.which('git'))
+
+
+def write(path, data=b'x'):
+    os.makedirs(os.path.dirname(path), exist_ok=True)
+    with open(path, 'wb') as f:
+        f.write(data if isinstance(data, bytes) else data.encode())
+
+
+def read(path):
+    with open(path, 'rb') as f:
+        return f.read()
+
+
+class Tree:
+    """a made-up Battle Logs folder: Battle Logs/Recording_QA/BATCH_*/<game packets> and their source videos, plus things that must never be touched"""
+
+    def __init__(self, test):
+        self.root = tempfile.mkdtemp()
+        test.addCleanup(shutil.rmtree, self.root, True)
+        self.logs = os.path.join(self.root, 'Battle Logs')
+        self.qa = os.path.join(self.logs, 'Recording_QA')
+        os.makedirs(self.qa)
+
+    def game(self, batch, name, text=True, frames=3, video='logs'):
+        gp = os.path.join(self.qa, batch, name)
+        os.makedirs(gp, exist_ok=True)
+        if text:
+            for t in bl.TEXT_REQUIRED:
+                write(os.path.join(gp, t), '{"ok": 1}' if t.endswith('.json') else '# review')
+        vname = name.split('_iOS')[0] + '_iOS.MP4'
+        write(os.path.join(gp, 'SOURCE.json'), json.dumps({'video_basename': vname, 'bytes': VIDEO_BYTES}))
+        if video == 'logs':
+            write(os.path.join(self.logs, vname), b'v' * VIDEO_BYTES)
+        elif video == 'reviewed':
+            write(os.path.join(self.logs, 'Reviewed', vname), b'v' * VIDEO_BYTES)
+        write(os.path.join(gp, 'notes.txt'), 'notes')
+        write(os.path.join(gp, 'extract_seek.py'), 'print(1)')
+        for i in range(frames):
+            write(os.path.join(gp, 'turn_evidence', f't{i:04d}.jpg'), b'j' * 100)
+        write(os.path.join(gp, 'comparison.JPG'), b'J' * 50)
+        write(os.path.join(gp, 'independent_sol', 'deep', 'f0.png'), b'p' * 70)
+        write(os.path.join(gp, 'overview', 'o.jpeg'), b'e' * 30)
+        return gp
+
+    def second_game(self, gp, how='related', frames=3):
+        """a second game recorded in the same packet, in game_02/"""
+        sub = os.path.join(gp, 'game_02')
+        for t in bl.TEXT_REQUIRED:
+            write(os.path.join(sub, t), '{"g": 2}' if t.endswith('.json') else '# review 2')
+        write(os.path.join(sub, 'SUMMARY.json'), json.dumps({'game_id': 'x_game_02'}))
+        for i in range(frames):
+            write(os.path.join(sub, 'crops', f'c{i}.png'), b'c' * 40)
+        if how == 'related':
+            write(os.path.join(gp, 'RELATED_GAME_PACKETS.json'), json.dumps({'game_count': 2, 'game_packets': [{'path': '.'}, {'path': 'game_02'}]}))
+        return sub
+
+    def extras(self, batch):
+        write(os.path.join(self.qa, batch, 'qr_support', 'q.png'), b'q' * 10)         # a sub-folder that is not a game packet
+        write(os.path.join(self.qa, batch, 'LIVE_SAVE_SUMMARY.png'), b's' * 10)        # an image at the batch level
+        write(os.path.join(self.qa, batch, 'README.md'), '# batch')
+        write(os.path.join(self.qa, batch, 'DOWNLOAD_SUCCESS.json'), '{}')
+
+    def outside(self):
+        write(os.path.join(self.logs, 'Reviewed', 'game.MP4'), b'v' * 1000)
+        write(os.path.join(self.logs, 'Reviewed', 'frame.jpg'), b'f' * 20)
+        write(os.path.join(self.logs, '20261014_160506000_iOS.MP4'), b'v' * 1000)
+        write(os.path.join(self.logs, 'MEDIA_LOCATIONS.json'), '{}')
+        write(os.path.join(self.qa, '20260926_old_sol', 'f.png'), b'o' * 5)            # a non-BATCH folder inside Recording_QA
+        write(os.path.join(self.qa, 'compression_check.png'), b'c' * 5)                # an image at the top of Recording_QA
+
+    def videos(self):
+        return bl.video_index(self.logs)
+
+    def scan(self):
+        return bl.scan_qa(self.qa, self.videos())
+
+    def files(self):
+        out = {}
+        for root, _, fs in os.walk(self.root):
+            for f in fs:
+                p = os.path.join(root, f)
+                out[os.path.relpath(p, self.root)] = os.path.getsize(p)
+        return out
+
+    def contents(self):
+        out = {}
+        for root, _, fs in os.walk(self.root):
+            for f in fs:
+                p = os.path.join(root, f)
+                out[os.path.relpath(p, self.root)] = read(p)
+        return out
+
+
+def accept(games, by='Dustin via the laptop', date='2026-10-14'):
+    return {'by': by, 'date': date, 'games_sha256': bl.games_hash(games)}
+
+
+def index(folders, games=None, pending=None, accepted=True, found=True, meta=META, positions=5):
+    """a RepoIndex: `folders` are 'BATCH/game' names that are in the repo; `games` the audited ones (default: all of them); `accepted`: True = a valid acceptance of `games`, or the value to put in 'confirmed'"""
+    hits = {f: (f'kw-{f.split("/")[1][2:].replace("_iOS", "")}', meta, positions, DIGEST) for f in folders}
+    if games is None:
+        games = {v[0]: {'folder': f, 'games_meta': meta, 'positions': positions, 'positions_sha256': DIGEST} for f, v in hits.items()}
+    audit = {'games': games, 'pending': pending or {}}
+    if accepted is True:
+        audit['confirmed'] = accept(games)
+    else:
+        audit['confirmed'] = accepted
+    return bl.RepoIndex(hits, audit if found else {}, found)
+
+
+def no_default(test):
+    """the tool also looks for videos in C:/Users/dacz8/OneDrive/Desktop/Battle Logs: not in a test"""
+    p = mock.patch.object(bl, 'BATTLE_LOGS_DEFAULT', os.path.join(tempfile.gettempdir(), 'no_such_default_battle_logs'))
+    p.start()
+    test.addCleanup(p.stop)
+
+
+def decide_for(tree, idx):
+    return bl.decide(tree.scan(), idx)
+
+
+class DecisionRule(unittest.TestCase):
+    def setUp(self):
+        self.t = Tree(self)
+        self.t.game('BATCH_A', '20261001_000000001_iOS')
+        self.t.game('BATCH_A', '20261001_000000002_iOS')
+
+    def one(self, idx):
+        return decide_for(self.t, idx)[0]
+
+    def both(self):
+        return ['BATCH_A/20261001_000000001_iOS', 'BATCH_A/20261001_000000002_iOS']
+
+    def test_a_batch_whose_every_game_is_in_the_repo_audited_and_has_its_text_and_video_is_marked_delete(self):
+        d = self.one(index(self.both()))
+        self.assertTrue(d.delete, d.why)
+        self.assertEqual(d.frames, 2 * 6)
+        self.assertIn('all 2 game packets', d.why)
+
+    def test_a_game_not_in_a_committed_games_meta_stays_and_makes_the_batch_partial(self):
+        d = self.one(index(self.both()[:1]))
+        self.assertFalse(d.delete)
+        self.assertEqual(d.verdict, 'PARTIAL')
+        bad = [g for g in d.games if not g.ok]
+        self.assertEqual([g.game.name for g in bad], ['20261001_000000002_iOS'])
+        self.assertIn('not in the repo', bad[0].reasons[0])
+        self.assertIn('1 of 2 game packets held back', d.why)
+        self.assertEqual((d.frames, d.kept_frames), (6, 6))
+
+    def test_a_batch_where_no_game_passes_is_keep(self):
+        d = self.one(index([]))
+        self.assertEqual((d.verdict, d.frames, d.kept_frames), ('keep', 0, 12))
+
+    def test_a_game_in_the_repo_but_not_in_the_audit_list_is_not_deleted(self):
+        keys = {'kw-261001_000000001': {'folder': 'BATCH_A/20261001_000000001_iOS', 'games_meta': META, 'positions': 5, 'positions_sha256': DIGEST}}
+        d = self.one(index(self.both(), games=keys))
+        self.assertFalse(d.delete)
+        self.assertIn('not audited', ' '.join(d.games[1].reasons))
+
+    def test_a_game_the_list_only_proposes_is_not_deleted_and_the_reason_is_shown(self):
+        keys = {'kw-261001_000000001': {'folder': 'BATCH_A/20261001_000000001_iOS', 'games_meta': META, 'positions': 5, 'positions_sha256': DIGEST}}
+        d = self.one(index(self.both(), games=keys, pending={'kw-261001_000000002': {'why': 'no panel compared it'}}))
+        self.assertFalse(d.delete)
+        self.assertIn('pending', ' '.join(d.games[1].reasons))
+        self.assertIn('no panel compared it', ' '.join(d.games[1].reasons))
+
+    def test_an_audit_entry_that_names_another_folder_does_not_count(self):
+        keys = {'kw-261001_000000001': {'folder': 'BATCH_A/20261001_000000001_iOS', 'games_meta': META, 'positions': 5, 'positions_sha256': DIGEST},
+                'kw-261001_000000002': {'folder': 'BATCH_Z/20261001_000000002_iOS', 'games_meta': META, 'positions': 5, 'positions_sha256': DIGEST}}
+        d = self.one(index(self.both(), games=keys))
+        self.assertFalse(d.delete)
+        self.assertIn('not here', ' '.join(d.games[1].reasons))
+
+    def test_an_audit_entry_is_held_when_the_reviewed_positions_or_games_meta_are_no_longer_what_the_repo_has(self):
+        # the review vouched for 5 positions in one games_meta; a later commit names the game in another file or with another number of positions
+        for kw in ({'meta': 'rl/results/pause_games_new_2026-11-01/games_meta.json'}, {'positions': 6}, {'digest': 'cd' * 32}):
+            idx = index(self.both())
+            for f, (k, m, n, h) in list(idx.folders.items()):
+                idx.folders[f] = (k, kw.get('meta', m), kw.get('positions', n), kw.get('digest', h))
+            d = self.one(idx)
+            self.assertFalse(d.delete, kw)
+            self.assertIn('not audited as it is now', ' '.join(d.games[0].reasons))
+
+    def test_a_game_with_no_positions_in_the_repo_is_not_deleted_even_if_the_list_names_it(self):
+        keys = {'kw-261001_000000001': {'folder': 'BATCH_A/20261001_000000001_iOS', 'games_meta': META, 'positions': 5, 'positions_sha256': DIGEST}}
+        d = self.one(index(self.both()[1:], games=keys))
+        self.assertEqual(d.verdict, 'keep')
+
+    def test_with_no_audit_list_committed_nothing_is_deleted(self):
+        d = self.one(index(self.both(), found=False))
+        self.assertFalse(d.delete)
+        self.assertIn('not committed', ' '.join(d.games[0].reasons))
+
+    def test_a_game_missing_one_of_its_text_outputs_is_kept(self):
+        os.remove(os.path.join(self.t.qa, 'BATCH_A', '20261001_000000002_iOS', 'TURN_LEDGER.json'))
+        d = self.one(index(self.both()))
+        self.assertFalse(d.delete)
+        self.assertIn('TURN_LEDGER.json missing', ' '.join(d.games[1].reasons))
+
+    def test_an_empty_text_output_counts_as_missing(self):
+        write(os.path.join(self.t.qa, 'BATCH_A', '20261001_000000001_iOS', 'REVIEW.md'), b'')
+        d = self.one(index(self.both()))
+        self.assertFalse(d.delete)
+        self.assertIn('REVIEW.md missing or empty', ' '.join(d.games[0].reasons))
+
+    def test_a_batch_with_no_game_packets_is_kept(self):
+        write(os.path.join(self.t.qa, 'BATCH_EMPTY', 'README.md'), 'x')
+        d = [x for x in decide_for(self.t, index(self.both())) if x.batch.name == 'BATCH_EMPTY'][0]
+        self.assertFalse(d.delete)
+        self.assertIn('no game packets', d.why)
+
+    def test_sub_folders_that_are_not_game_packets_and_batch_level_images_do_not_decide_and_are_counted(self):
+        self.t.extras('BATCH_A')
+        d = self.one(index(self.both()))
+        self.assertTrue(d.delete)
+        self.assertEqual((d.batch.support_frames, d.batch.root_frames), (1, 1))
+        self.assertEqual(len(d.games), 2)
+
+    def test_only_directories_named_like_game_packets_are_games(self):
+        for name in ('__pycache__', 'STALLED_INTAKE_LOCK_17244', 'LIVE_UPDATE_20261013', 'qr_support'):
+            os.makedirs(os.path.join(self.t.qa, 'BATCH_A', name))
+        self.assertEqual(len(self.one(index(self.both())).games), 2)
+
+
+class SourceVideo(unittest.TestCase):
+    """the frames can be cut again from the video: a packet whose video is not in Battle Logs is held back"""
+
+    def setUp(self):
+        self.t = Tree(self)
+
+    def verdict(self, **kw):
+        self.t.game('BATCH_A', '20261001_000000001_iOS', **kw)
+        d = decide_for(self.t, index(['BATCH_A/20261001_000000001_iOS']))[0]
+        return d, ' '.join(d.games[0].reasons)
+
+    def test_a_video_at_the_top_of_battle_logs_or_in_reviewed_passes(self):
+        for where in ('logs', 'reviewed'):
+            d, why = self.verdict(video=where)
+            self.assertTrue(d.delete, (where, why))
+            shutil.rmtree(self.t.root)
+            self.t = Tree(self)
+
+    def test_a_missing_video_holds_the_packet_back_and_says_which(self):
+        d, why = self.verdict(video=None)
+        self.assertFalse(d.delete)
+        self.assertIn('source video 20261001_000000001_iOS.MP4 not found in Battle Logs', why)
+
+    def test_a_video_with_another_size_than_the_packet_recorded_holds_it_back(self):
+        self.t.game('BATCH_A', '20261001_000000001_iOS')
+        write(os.path.join(self.t.logs, '20261001_000000001_iOS.MP4'), b'v' * 7)
+        d = decide_for(self.t, index(['BATCH_A/20261001_000000001_iOS']))[0]
+        self.assertFalse(d.delete)
+        self.assertIn('has 7 bytes', ' '.join(d.games[0].reasons))
+
+    def write_source(self, gp, **fields):
+        write(os.path.join(gp, 'SOURCE.json'), json.dumps(dict({'video_basename': '20261001_000000001_iOS.MP4'}, **fields)))
+
+    def test_a_size_that_is_missing_zero_text_or_a_boolean_holds_the_packet_back(self):
+        # a copy cannot be told from a truncated one without the recorded size
+        for bad in (None, 0, -5, '1000', True, 1000.0):
+            self.t = Tree(self)
+            gp = self.t.game('BATCH_A', '20261001_000000001_iOS')
+            self.write_source(gp, **({} if bad is None else {'bytes': bad}))
+            d = decide_for(self.t, index(['BATCH_A/20261001_000000001_iOS']))[0]
+            self.assertFalse(d.delete, repr(bad))
+            self.assertIn('does not record a usable size', ' '.join(d.games[0].reasons), repr(bad))
+
+    def test_any_copy_with_the_recorded_size_will_do_and_a_truncated_copy_elsewhere_does_not_hide_it(self):
+        gp = self.t.game('BATCH_A', '20261001_000000001_iOS', video=None)
+        write(os.path.join(self.t.logs, '20261001_000000001_iOS.MP4'), b'v' * 7)
+        write(os.path.join(self.t.logs, 'Reviewed', '20261001_000000001_iOS.MP4'), b'v' * 1000)
+        self.assertEqual(len(self.t.videos()['20261001_000000001_ios.mp4']), 2)
+        self.assertTrue(decide_for(self.t, index(['BATCH_A/20261001_000000001_iOS']))[0].delete)
+
+    def test_the_check_before_a_deletion_asks_the_file_system_again(self):
+        gp = self.t.game('BATCH_A', '20261001_000000001_iOS')
+        vids = self.t.videos()
+        game = bl.scan_qa(self.t.qa, vids)[0].games[0]
+        path = os.path.join(self.t.logs, '20261001_000000001_iOS.MP4')
+        self.assertTrue(bl.check_video(game, vids, fresh=True)[0])
+        write(path, b'v' * 5)
+        self.assertTrue(bl.check_video(game, vids)[0], 'the old index still says 1000 bytes')
+        ok, why = bl.check_video(game, vids, fresh=True)
+        self.assertFalse(ok)
+        self.assertIn('has 5 bytes', why)
+        os.remove(path)
+        self.assertIn('not found', bl.check_video(game, vids, fresh=True)[1])
+
+    def test_a_packet_that_records_no_video_is_held_back(self):
+        gp = self.t.game('BATCH_A', '20261001_000000001_iOS')
+        write(os.path.join(gp, 'SOURCE.json'), '{}')
+        d = decide_for(self.t, index(['BATCH_A/20261001_000000001_iOS']))[0]
+        self.assertFalse(d.delete)
+        self.assertIn('not recorded', ' '.join(d.games[0].reasons))
+
+
+class SecondGameInsideAPacket(unittest.TestCase):
+    """the laptop's blocker, twice: packet 012927 records two games, game 2 in game_02/ AND, as its own evidence files cite, in the packet root's shared native/ folder (Codex's
+    RELATED_GAME_PACKETS.json: root_is_only_shared_writer_and_media_mover). A packet that records more than one game is held back WHOLE unless every game in it passes on its own."""
+    FOLDER = 'BATCH_A/20261001_000000001_iOS'
+
+    def setUp(self):
+        self.t = Tree(self)
+        self.gp = self.t.game('BATCH_A', '20261001_000000001_iOS')
+        for name in ('t0622.00.jpg', 't0650.00.jpg'):
+            write(os.path.join(self.gp, 'native', name), b'n' * 60)            # shared media of both games, in the root
+        self.idx = index([self.FOLDER])
+
+    def one(self):
+        return decide_for(self.t, self.idx)[0]
+
+    def why(self):
+        return ' '.join(self.one().games[0].reasons)
+
+    def related(self, **kw):
+        write(os.path.join(self.gp, 'RELATED_GAME_PACKETS.json'), json.dumps(kw))
+
+    def test_a_packet_that_lists_a_second_game_is_held_back_whole_including_its_shared_native_frames(self):
+        self.t.second_game(self.gp, how='related', frames=3)
+        d = self.one()
+        self.assertFalse(d.delete)
+        self.assertEqual((d.verdict, d.frames, d.bytes), ('keep', 0, 0))
+        self.assertEqual(d.kept_frames, 8 + 3, 'the first game\'s 6 frames, the 2 native frames, the 3 of game_02: nothing goes')
+        self.assertIn('holds 2 games', self.why())
+        self.assertIn('game_02 (3 frames) is not audited', self.why())
+        self.assertIn('so none of its frames go', self.why())
+        self.assertEqual(list(d.games[0].game.nested), ['game_02'])
+
+    def test_apply_deletes_nothing_from_such_a_packet_not_even_the_native_folder(self):
+        self.t.second_game(self.gp, how='related', frames=3)
+        before = self.t.contents()
+        res = bl.apply_deletions(decide_for(self.t, self.idx), self.t.qa, self.idx, confirm=lambda *a: True, out=io.StringIO())
+        self.assertEqual(tuple(res)[:3], (0, 0, 0))
+        self.assertEqual(self.t.contents(), before)
+
+    def test_the_other_layout_of_the_related_file_is_read_too(self):
+        # 20261010_021629000 writes games[{game_number, packet}] and game_count
+        self.related(source_video='x.MP4', game_count=2, games=[{'game_number': 1, 'packet': '.'}, {'game_number': 2, 'packet': 'second_recording'}], other_games_found=True)
+        write(os.path.join(self.gp, 'second_recording', 'crops', 'c.png'), b'c')
+        d = self.one()
+        self.assertFalse(d.delete)
+        self.assertEqual(list(d.games[0].game.nested), ['second_recording'])
+        self.assertIn('second_recording (1 frames) is not audited', self.why())
+
+    def test_a_declared_second_game_with_no_folder_to_be_found_holds_the_packet(self):
+        for label, kw in (('RELATED game_count', {'game_count': 2}), ('RELATED games entries', {'games': [{'packet': '.'}, {'packet': 'elsewhere'}]}), ('other_games_found', {'other_games_found': True})):
+            self.related(**kw)
+            self.assertIn('records 2 games but only 0 second-game folders could be found', self.why(), label)
+
+    def test_the_root_summary_that_says_two_games_holds_the_packet(self):
+        write(os.path.join(self.gp, 'SUMMARY.json'), json.dumps({'game_id': 'x_game_01', 'source_game_count': 2}))
+        self.assertIn('records 2 games', self.why())
+
+    def test_a_packet_that_says_it_holds_one_game_passes_and_all_its_frames_go(self):
+        self.related(game_count=1, games=[{'game_number': 1, 'packet': '.'}], other_games_found=False)
+        write(os.path.join(self.gp, 'SUMMARY.json'), json.dumps({'game_id': 'x_game_01', 'source_game_count': 1}))
+        d = self.one()
+        self.assertTrue(d.delete, self.why())
+        self.assertEqual(d.frames, 8)
+
+    def test_a_game_folder_with_no_declaration_at_all_is_found_by_its_name_and_holds_the_packet(self):
+        self.t.second_game(self.gp, how='name')
+        self.assertIn('holds 2 games', self.why())
+
+    def test_a_game_folder_is_found_by_its_own_ledger_with_another_game_id(self):
+        write(os.path.join(self.gp, 'SUMMARY.json'), json.dumps({'game_id': 'x_game_01'}))
+        sub = os.path.join(self.gp, 'second_recording')
+        write(os.path.join(sub, 'TURN_LEDGER.json'), '{}')
+        write(os.path.join(sub, 'SUMMARY.json'), json.dumps({'game_id': 'x_game_02'}))
+        write(os.path.join(sub, 'crops', 'c.png'), b'c')
+        self.assertEqual(list(self.one().games[0].game.nested), ['second_recording'])
+        self.assertIn('holds 2 games', self.why())
+
+    def test_a_backup_copy_of_the_same_game_is_not_a_second_game_and_goes_with_the_packet(self):
+        write(os.path.join(self.gp, 'SUMMARY.json'), json.dumps({'game_id': 'x_game_01'}))
+        bk = os.path.join(self.gp, 'original_before_final_independent')
+        write(os.path.join(bk, 'TURN_LEDGER.json'), '{}')
+        write(os.path.join(bk, 'SUMMARY.json'), json.dumps({'game_id': 'x_game_01'}))
+        write(os.path.join(bk, 'crop.png'), b'c')
+        d = self.one()
+        self.assertTrue(d.delete, self.why())
+        self.assertIn(os.path.join(bk, 'crop.png'), [p for p, _ in d.games[0].game.frames])
+
+    def test_a_game_folder_inside_a_backup_folder_keeps_its_frames_and_does_not_hold_a_one_game_packet(self):
+        # 012927 has original_before_final_independent/game_02 (0 frames there); in a packet that says it holds one game it must neither block it nor be deleted
+        write(os.path.join(self.gp, 'original_before_final_independent', 'game_02', 'old.png'), b'o' * 9)
+        d = self.one()
+        self.assertTrue(d.delete, self.why())
+        self.assertEqual(d.frames, 8)
+        self.assertEqual(d.kept_frames, 1)
+        self.assertEqual(list(d.games[0].game.nested), ['original_before_final_independent/game_02'])
+        bl.apply_deletions(decide_for(self.t, self.idx), self.t.qa, self.idx, confirm=lambda *a: True, out=io.StringIO())
+        self.assertTrue(os.path.exists(os.path.join(self.gp, 'original_before_final_independent', 'game_02', 'old.png')))
+        self.assertFalse(os.path.exists(os.path.join(self.gp, 'native', 't0622.00.jpg')))
+
+    def related_file(self, content):
+        write(os.path.join(self.gp, 'RELATED_GAME_PACKETS.json'), content if isinstance(content, str) else json.dumps(content))
+
+    def test_other_layouts_of_the_related_file_hold_the_packet_too(self):
+        # the review workflow's S3: the second game was found only in the two layouts Codex has written so far
+        cases = {'a list at the top': [{'path': '.'}, {'path': 'second_recording'}],
+                 'a dict keyed by path': {'game_packets': {'.': {}, 'second_recording': {}}},
+                 'an unknown key that holds a list of paths': {'packets': [{'path': '.'}, {'path': 'second_recording'}]},
+                 'only the second game listed': {'game_packets': [{'path': 'second_recording'}]},
+                 'the count written as a string': {'game_count': '2'},
+                 'bare path strings': {'related_games': ['.', 'second_recording']},
+                 'entries with no path at all': {'games': [{'game_number': 1}, {'game_number': 2}]}}
+        for label, content in cases.items():
+            self.related_file(content)
+            self.assertIn('records 2 games', self.why(), label)
+
+    def test_a_list_of_words_under_another_key_is_not_a_list_of_games(self):
+        self.related_file({'game_count': 1, 'other_games_found': False, 'notes': ['checked twice', 'by hand'], 'tags': [{'x': 1}]})
+        self.assertTrue(self.one().delete, self.why())
+
+    def test_summary_counts_in_any_of_their_spellings_hold_the_packet(self):
+        for summ in ({'game_count': 2}, {'games_in_source': '2'}, {'match_count': 2}, {'games': [{}, {}]}, {'games': 2}, {'source_game_count': '2'}):
+            write(os.path.join(self.gp, 'SUMMARY.json'), json.dumps(dict(summ, game_id='x_game_01')))
+            self.assertIn('records 2 games', self.why(), summ)
+        write(os.path.join(self.gp, 'SUMMARY.json'), json.dumps({'game_id': 'x', 'game_count': 1, 'games_in_source': 1, 'match_count': '1', 'games': [{}], 'source_game_count': 1}))
+        self.assertTrue(self.one().delete, self.why())
+
+    def test_a_related_file_that_cannot_be_read_or_does_not_say_how_many_games_holds_the_packet(self):
+        self.related_file('{not json')
+        self.assertIn('RELATED_GAME_PACKETS.json cannot be read', self.why())
+        self.related_file({'source_video': 'x.MP4', 'note': 'nothing about how many games'})
+        self.assertIn('does not say how many games the packet holds', self.why())
+        for explicit in ({'game_count': 1}, {'game_count': '1'}, {'other_games_found': False}, {'game_packets': [{'path': '.'}]}, [{'path': '.'}]):
+            self.related_file(explicit)
+            self.assertTrue(self.one().delete, (explicit, self.why()))
+        os.remove(os.path.join(self.gp, 'RELATED_GAME_PACKETS.json'))
+        write(os.path.join(self.gp, 'SUMMARY.json'), '{broken')
+        self.assertIn('SUMMARY.json cannot be read', self.why())
+
+    def test_folders_named_game2_or_game_2_are_second_games_too(self):
+        for name in ('game2', 'game_2', 'x_game_03'):
+            sub = os.path.join(self.gp, name)
+            write(os.path.join(sub, 'crops', 'c.png'), b'c')
+            self.assertEqual([os.path.basename(p) for p in bl.nested_game_dirs(self.gp)], [name])
+            self.assertIn('holds 2 games', self.why())
+            shutil.rmtree(sub)
+
+    def test_the_same_folder_spelled_two_ways_on_a_case_insensitive_drive_is_one_second_game(self):
+        self.t.second_game(self.gp, how='name')
+        self.related_file({'game_count': 2, 'game_packets': [{'path': '.'}, {'path': 'Game_02'}]})
+        real_isdir = os.path.isdir
+        with mock.patch.object(bl.os.path, 'isdir', lambda p: real_isdir(p) or real_isdir(p.replace('Game_02', 'game_02'))):
+            nested = bl.nested_game_dirs(self.gp)
+        self.assertEqual(nested, [os.path.abspath(os.path.join(self.gp, 'game_02'))], 'one folder, in the spelling on the disk')
+
+    def audit_second_game(self, accepted=True, pending=False):
+        key, folder = 'kw-261001_000000001_game_02', self.FOLDER + '/game_02'
+        self.idx.folders[folder] = (key, META, 4, DIGEST)
+        if not pending:
+            self.idx.audit['games'][key] = {'folder': folder, 'games_meta': META, 'positions': 4, 'positions_sha256': DIGEST}
+        else:
+            self.idx.audit['pending'][key] = {'why': 'no panel yet'}
+        self.idx.audit['confirmed'] = accept(self.idx.audit['games']) if accepted else None
+
+    def test_the_packet_goes_when_the_second_game_is_in_the_repo_and_audited_under_its_own_folder(self):
+        sub = self.t.second_game(self.gp, how='related', frames=3)
+        self.audit_second_game()
+        d = self.one()
+        self.assertTrue(d.delete, self.why())
+        self.assertEqual((d.frames, d.kept_frames), (8 + 3, 0))
+        bl.apply_deletions(decide_for(self.t, self.idx), self.t.qa, self.idx, confirm=lambda *a: True, out=io.StringIO())
+        self.assertEqual(os.listdir(os.path.join(sub, 'crops')), [])
+        self.assertEqual(os.listdir(os.path.join(self.gp, 'native')), [])
+
+    def test_a_second_game_without_its_own_text_outputs_holds_the_packet_even_when_audited(self):
+        sub = self.t.second_game(self.gp, how='related', frames=3)
+        self.audit_second_game()
+        self.assertTrue(self.one().delete, self.why())
+        os.remove(os.path.join(sub, 'REVIEW.md'))
+        write(os.path.join(sub, 'DECK_USED.json'), b'')
+        self.assertFalse(self.one().delete)
+        self.assertIn('game_02 has no text output REVIEW.md, DECK_USED.json (missing or empty)', self.why())
+
+    def test_a_second_games_ledger_that_disappears_while_the_question_is_open_leaves_the_whole_packet(self):
+        sub = self.t.second_game(self.gp, how='related', frames=3)
+        self.audit_second_game()
+
+        def meanwhile(*a):
+            os.remove(os.path.join(sub, 'TURN_LEDGER.json'))
+            return True
+        out = io.StringIO()
+        with self.assertRaises(SystemExit) as cm:           # (the integrity check also notices the vanished file)
+            bl.apply_deletions(decide_for(self.t, self.idx), self.t.qa, self.idx, confirm=meanwhile, out=out)
+        self.assertIn('INTEGRITY CHECK FAILED', str(cm.exception))
+        self.assertIn('SKIPPED BATCH_A/20261001_000000001_iOS', out.getvalue())
+        self.assertIn('game_02/TURN_LEDGER.json', out.getvalue())
+        self.assertEqual(len(os.listdir(os.path.join(sub, 'crops'))), 3)
+        self.assertTrue(os.path.exists(os.path.join(self.gp, 'native', 't0622.00.jpg')))
+
+    def test_a_second_game_the_list_only_proposes_still_holds_the_packet(self):
+        self.t.second_game(self.gp, how='related', frames=3)
+        self.audit_second_game(pending=True)
+        d = self.one()
+        self.assertFalse(d.delete)
+        self.assertIn('game_02 (3 frames) is not audited: not audited: proposed, pending a decision (no panel yet)', self.why())
+
+    def test_the_plan_refuses_a_frame_of_a_second_game_that_did_not_pass(self):
+        write(os.path.join(self.gp, 'original_before_final_independent', 'game_02', 'old.png'), b'o' * 9)
+        decisions = decide_for(self.t, self.idx)
+        decisions[0].games[0].game.frames.append((os.path.join(self.gp, 'original_before_final_independent', 'game_02', 'old.png'), 9))
+        with self.assertRaises(SystemExit) as cm:
+            bl.deletion_plan(decisions, self.t.qa)
+        self.assertIn('not a frame file inside a game packet that passes', str(cm.exception))
+
+    def test_the_dry_run_says_why_the_packet_is_held_and_which_folder_stays_in_a_packet_that_goes(self):
+        self.t.second_game(self.gp, how='related', frames=3)
+        out = io.StringIO()
+        bl.report(decide_for(self.t, self.idx), bl.RepoView('.', no_git=True), self.t.qa, self.idx, out=out)
+        self.assertIn('stays 20261001_000000001_iOS: holds 2 games; game_02 (3 frames) is not audited', out.getvalue())
+        shutil.rmtree(os.path.join(self.gp, 'game_02'))
+        os.remove(os.path.join(self.gp, 'RELATED_GAME_PACKETS.json'))
+        write(os.path.join(self.gp, 'before_x', 'game_02', 'old.png'), b'o' * 9)
+        out = io.StringIO()
+        bl.report(decide_for(self.t, self.idx), bl.RepoView('.', no_git=True), self.t.qa, self.idx, out=out)
+        self.assertIn('stays 20261001_000000001_iOS/before_x/game_02: a folder that keeps an earlier state of a game: 1 frames', out.getvalue())
+
+
+class Acceptance(unittest.TestCase):
+    GAMES = {'kw-1': {'folder': 'BATCH_A/g1', 'games_meta': META, 'positions': 5, 'positions_sha256': DIGEST}}
+
+    def idx(self, confirmed, games=None):
+        return bl.RepoIndex({}, {'confirmed': confirmed, 'games': games or self.GAMES}, True)
+
+    def test_a_valid_acceptance_names_who_when_and_the_games_it_covers(self):
+        acc, why = bl.acceptance(self.idx(accept(self.GAMES, by='Dustin via the laptop')))
+        self.assertIsNone(why)
+        self.assertEqual(acc['by'], 'Dustin via the laptop')
+
+    def test_strings_that_say_no_or_not_yet_are_not_an_acceptance(self):
+        for value in ('no', 'NO', 'pending', 'false', 'not yet - waiting for Dustin', 'unconfirmed', 'laptop, 2026-10-14', 'yes'):
+            acc, why = bl.acceptance(self.idx(value))
+            self.assertIsNone(acc, value)
+            self.assertIn('must be {', why)
+
+    def test_empty_and_json_booleans_are_not_an_acceptance(self):
+        for value in (None, '', '  ', False, True, 0, [], {}):
+            self.assertIsNone(bl.acceptance(self.idx(value))[0], repr(value))
+
+    def test_a_structured_acceptance_with_a_negation_for_a_name_or_a_bad_date_is_refused(self):
+        h = bl.games_hash(self.GAMES)
+        for c in ({'by': 'no', 'date': '2026-10-14', 'games_sha256': h}, {'by': 'pending', 'date': '2026-10-14', 'games_sha256': h}, {'by': 'x', 'date': '2026-10-14', 'games_sha256': h},
+                  {'by': 'Dustin', 'date': 'soon', 'games_sha256': h}, {'by': 'Dustin', 'date': '2026-13-45', 'games_sha256': h}, {'by': 'Dustin', 'date': '2026-10-14'},
+                  {'date': '2026-10-14', 'games_sha256': h}):
+            self.assertIsNone(bl.acceptance(self.idx(c))[0], c)
+
+    def test_placeholders_and_not_yet_wording_anywhere_in_the_name_are_refused_but_real_names_pass(self):
+        # the laptop's second review: only the start of "by" was checked, so "awaiting Dustin" and the template's "<who>" passed
+        h = bl.games_hash(self.GAMES)
+        for by in ('<who>', '<a name>', 'awaiting Dustin', 'laptop (unconfirmed)', 'Dustin - NOT accepted yet', 'waiting for the laptop', 'TBD', 'n/a', 'name', 'who',
+                   'Dustin (withdrawn)', 'Dustin, revoked', 'Dustin TBC', 'Dustin cancelled', 'Dustin canceled', 'Dustin - draft', 'Dustin (test)', 'Dustin to confirm', 'Dustin needs to review',
+                   'Dustin \u2013 yes', 'Dustin \u2717', 'Dustin?'.replace('?', ' replace'), 'Dustin ask'):
+            acc, why = bl.acceptance(self.idx({'by': by, 'date': '2026-10-14', 'games_sha256': h}))
+            self.assertIsNone(acc, by)
+            self.assertIn('must be Dustin', why)
+        for by in ('Dustin', 'Dustin via the laptop', 'Dustin (laptop session)', 'Dustin, relayed by the laptop session', ' Dustin '):
+            self.assertIsNotNone(bl.acceptance(self.idx({'by': by, 'date': '2026-10-14', 'games_sha256': h}))[0], by)
+
+    def test_the_retention_decision_is_dustins_so_another_name_is_not_an_acceptance(self):
+        # the laptop's recheck: any name passed; "by" now has to be Dustin's (the laptop may write it down for him)
+        h = bl.games_hash(self.GAMES)
+        for by in ('laptop', 'Noah', 'Una', 'Nora Holden', 'Fable', 'the laptop session', 'Not Dustin', 'Mr Dustin'):
+            acc, why = bl.acceptance(self.idx({'by': by, 'date': '2026-10-14', 'games_sha256': h}))
+            self.assertIsNone(acc, by)
+            self.assertIn('must be Dustin', why)
+
+    def test_an_acceptance_with_any_other_key_is_taken_to_be_withdrawn_or_unfinished(self):
+        h = bl.games_hash(self.GAMES)
+        good = {'by': 'Dustin', 'date': '2026-10-14', 'games_sha256': h}
+        for extra in ({'withdrawn': True}, {'note': 'ok'}, {'status': 'revoked'}, {'confirmed': False}):
+            acc, why = bl.acceptance(self.idx(dict(good, **extra)))
+            self.assertIsNone(acc, extra)
+            self.assertIn('exactly by, date and games_sha256', why)
+        for key in good:
+            acc, why = bl.acceptance(self.idx({k: v for k, v in good.items() if k != key}))
+            self.assertIsNone(acc, key)
+            self.assertIn('exactly by, date and games_sha256', why)
+        self.assertIsNotNone(bl.acceptance(self.idx(good))[0])
+
+    def test_a_date_before_the_list_existed_or_in_the_future_is_not_the_day_it_was_accepted(self):
+        h = bl.games_hash(self.GAMES)
+        for date in ('1970-01-01', '2026-10-13', '2099-12-31'):
+            acc, why = bl.acceptance(self.idx({'by': 'Dustin', 'date': date, 'games_sha256': h}))
+            self.assertIsNone(acc, date)
+            self.assertIn('cannot be the day', why)
+        today = datetime.datetime.now(datetime.timezone.utc).date().isoformat()
+        self.assertIsNotNone(bl.acceptance(self.idx({'by': 'Dustin', 'date': today, 'games_sha256': h}))[0])
+
+    def test_the_acceptance_covers_the_digest_of_the_reviewed_positions_too(self):
+        c = accept(self.GAMES)
+        regenerated = {'kw-1': dict(self.GAMES['kw-1'], positions_sha256='cd' * 32)}
+        acc, why = bl.acceptance(self.idx(c, games=regenerated))
+        self.assertIsNone(acc)
+        self.assertIn('needs a new acceptance', why)
+
+    def test_an_acceptance_stops_covering_the_games_the_moment_the_list_changes(self):
+        c = accept(self.GAMES)
+        more = dict(self.GAMES, **{'kw-2': {'folder': 'BATCH_A/g2', 'games_meta': META, 'positions': 3, 'positions_sha256': DIGEST}})
+        acc, why = bl.acceptance(self.idx(c, games=more))
+        self.assertIsNone(acc)
+        self.assertIn('needs a new acceptance', why)
+        changed = {'kw-1': dict(self.GAMES['kw-1'], positions=6)}
+        self.assertIsNone(bl.acceptance(self.idx(c, games=changed))[0])
+
+    def test_editing_only_the_evidence_text_does_not_void_it(self):
+        c = accept(self.GAMES)
+        games = {'kw-1': dict(self.GAMES['kw-1'], evidence=['new note'], tier='A')}
+        self.assertIsNotNone(bl.acceptance(self.idx(c, games=games))[0])
+
+    def test_pending_entries_are_not_covered_so_moving_one_into_games_needs_a_new_acceptance(self):
+        c = accept(self.GAMES)
+        moved = dict(self.GAMES, **{'kw-9': {'folder': 'BATCH_B/g9', 'games_meta': META, 'positions': 2, 'positions_sha256': DIGEST}})
+        self.assertIsNone(bl.acceptance(self.idx(c, games=moved))[0])
+
+    def test_apply_refuses_without_a_valid_acceptance_and_deletes_nothing(self):
+        t = Tree(self)
+        t.game('BATCH_A', '20261001_000000001_iOS')
+        before = t.contents()
+        for bad in (None, 'no', 'pending', {'by': 'Dustin', 'date': '2026-10-14', 'games_sha256': 'stale'}):
+            idx = index(['BATCH_A/20261001_000000001_iOS'], accepted=bad)
+            with self.assertRaises(SystemExit):
+                bl.apply_deletions(decide_for(t, idx), t.qa, idx, confirm=lambda *a: True, out=io.StringIO())
+        self.assertEqual(t.contents(), before)
+
+    def test_the_report_says_who_accepted_or_why_it_is_not_accepted(self):
+        t = Tree(self)
+        t.game('BATCH_A', '20261001_000000001_iOS')
+        for accepted, expect in ((True, 'acceptance: Dustin via the laptop, 2026-10-14'), ('no', 'acceptance: NO'), (None, 'acceptance: NO')):
+            idx = index(['BATCH_A/20261001_000000001_iOS'], accepted=accepted)
+            out = io.StringIO()
+            bl.report(decide_for(t, idx), bl.RepoView('.', no_git=True), t.qa, idx, out=out)
+            self.assertIn(expect, out.getvalue())
+
+
+class ReportLines(unittest.TestCase):
+    def setUp(self):
+        self.t = Tree(self)
+        self.t.game('BATCH_A', '20261001_000000001_iOS')
+        self.idx = index(['BATCH_A/20261001_000000001_iOS'])
+
+    def text(self, **kw):
+        out = io.StringIO()
+        bl.report(decide_for(self.t, self.idx), bl.RepoView('.', no_git=True), self.t.qa, self.idx, out=out, **kw)
+        return out.getvalue()
+
+    def test_warnings_are_printed_where_they_are_seen(self):
+        self.assertIn('WARNING: BATTLE_LOGS_LOCATION.json is unusable', self.text(warnings=['BATTLE_LOGS_LOCATION.json is unusable']))
+
+    def test_a_committed_state_line_says_when_origin_was_not_asked(self):
+        view = mock.Mock(describe=lambda: 'origin/main (abc12345, committed 2026-10-14T10:00:00-05:00)', no_git=False)
+        for asked, expect in ((False, 'origin was NOT asked'), (True, None)):
+            out = io.StringIO()
+            bl.report(decide_for(self.t, self.idx), view, self.t.qa, self.idx, out=out, asked_origin=asked)
+            if expect:
+                self.assertIn(expect, out.getvalue())
+            else:
+                self.assertNotIn('NOT asked', out.getvalue())
+
+
+class VideoFolders(unittest.TestCase):
+    def setUp(self):
+        self.t = Tree(self)
+        no_default(self)
+        self.other = os.path.join(self.t.root, 'Elsewhere')
+        os.makedirs(self.other)
+        self.loc = os.path.join(self.t.qa, bl.LOCATION_FILE)
+
+    def test_the_folder_recording_qa_is_in_is_the_default(self):
+        self.assertEqual(bl.video_dirs(self.t.qa), ([(self.t.logs, 'the folder Recording_QA is in')], []))
+
+    def test_videos_names_the_one_folder_to_look_in(self):
+        self.assertEqual(bl.video_dirs(self.t.qa, self.other), ([(self.other, '--videos')], []))
+
+    def test_the_recorded_location_comes_first_and_a_folder_is_listed_once(self):
+        write(self.loc, json.dumps({'battle_logs': self.other}))
+        dirs, warns = bl.video_dirs(self.t.qa)
+        self.assertEqual([d for d, _ in dirs], [self.other, self.t.logs])
+        write(self.loc, json.dumps({'battle_logs': self.t.logs}))
+        self.assertEqual(len(bl.video_dirs(self.t.qa)[0]), 1)
+
+    def test_a_location_file_that_cannot_be_used_is_a_warning_and_the_run_goes_on(self):
+        for content in ('[]', '{}', json.dumps({'battle_logs': 5}), json.dumps({'battle_logs': 'relative/dir'}), json.dumps({'battle_logs': ['a']})):
+            write(self.loc, content)
+            dirs, warns = bl.video_dirs(self.t.qa)
+            self.assertEqual([d for d, _ in dirs], [self.t.logs], content)
+            self.assertTrue(warns and 'unusable' in warns[0], content)
+        write(self.loc, '{not json')
+        dirs, warns = bl.video_dirs(self.t.qa)
+        self.assertTrue(warns and 'cannot be read' in warns[0])
+
+    def test_a_location_that_names_a_folder_that_is_not_there_is_a_warning(self):
+        write(self.loc, json.dumps({'battle_logs': os.path.join(self.t.root, 'gone')}))
+        dirs, warns = bl.video_dirs(self.t.qa)
+        self.assertEqual([d for d, _ in dirs], [self.t.logs])
+        self.assertTrue(warns and 'not a folder here' in warns[0])
+
+    def test_copies_in_several_folders_are_all_kept_in_the_index(self):
+        write(os.path.join(self.other, 'v_iOS.MP4'), b'a' * 3)
+        write(os.path.join(self.t.logs, 'v_iOS.MP4'), b'b' * 9)
+        idx = bl.video_index_all([(self.other, 'x'), (self.t.logs, 'y')])
+        self.assertEqual(sorted(s for s, _ in idx['v_ios.mp4']), [3, 9])
+
+
+class AuditListShape(unittest.TestCase):
+    def commit_audit(self, w, text):
+        write(os.path.join(w.repo, AUDIT), text)
+        w.commit('the audit list')
+
+    @unittest.skipUnless(HAVE_GIT, 'git not installed')
+    def test_a_malformed_audit_list_is_a_refusal_with_a_reason_not_a_traceback(self):
+        for text, expect in (('[]', 'must be a JSON object'), ('{"games": []}', 'malformed'), ('{"games": {"k": 5}}', 'malformed'), ('{"pending": 3}', 'malformed'), ('{not json', 'not valid JSON')):
+            w = GitWorld(self, ['BATCH_A/20261001_000000001_iOS'])
+            self.commit_audit(w, text)
+            with self.assertRaises(SystemExit) as cm:
+                bl.build_index(bl.RepoView(w.repo))
+            self.assertIn(expect, str(cm.exception), text)
+
+    @unittest.skipUnless(HAVE_GIT, 'git not installed')
+    def test_a_games_meta_that_is_not_json_is_a_refusal_too(self):
+        w = GitWorld(self, ['BATCH_A/20261001_000000001_iOS'])
+        write(os.path.join(w.repo, META), '{broken')
+        w.commit('broken')
+        with self.assertRaises(SystemExit) as cm:
+            bl.build_index(bl.RepoView(w.repo))
+        self.assertIn('not valid JSON', str(cm.exception))
+
+    @unittest.skipUnless(HAVE_GIT, 'git not installed')
+    def test_two_games_meta_files_that_name_one_folder_for_different_games_hold_it_back(self):
+        w = GitWorld(self, ['BATCH_A/20261001_000000001_iOS'])
+        other = 'rl/results/pause_games_other_2026-10-15/'
+        write(os.path.join(w.repo, other + 'games_meta.json'), json.dumps({'kw-other': {'folder': 'BATCH_A/20261001_000000001_iOS'}}))
+        write(os.path.join(w.repo, other + 'positions_all.json'), json.dumps([{'game': 'kw-other'}]))
+        w.commit('a second claim')
+        idx = bl.build_index(bl.RepoView(w.repo))
+        self.assertEqual(idx.conflicts, {'BATCH_A/20261001_000000001_iOS': ['kw-261001_000000001', 'kw-other']})
+        t = Tree(self)
+        t.game('BATCH_A', '20261001_000000001_iOS')
+        d = decide_for(t, idx)[0]
+        self.assertFalse(d.delete)
+        self.assertIn('several games_meta files name this folder for different games', ' '.join(d.games[0].reasons))
+
+    @unittest.skipUnless(HAVE_GIT, 'git not installed')
+    def test_a_folder_claimed_by_two_games_meta_files_is_judged_by_the_one_the_audit_list_reviewed(self):
+        # the first real dry run at the tip that released the 13 games: v1 and v2 of the same games both name the folder, with the same count and different positions; the first file won
+        folder = 'BATCH_A/20261001_000000001_iOS'
+        w = GitWorld(self, [folder])                        # the audit list reviews META (the later file in sorted order)
+        earlier = 'rl/results/pause_games_aaa_earlier/'
+        write(os.path.join(w.repo, earlier + 'games_meta.json'), json.dumps({'kw-261001_000000001': {'folder': folder}}))
+        write(os.path.join(w.repo, earlier + 'positions_all.json'), json.dumps([{'game': 'kw-261001_000000001', 'older': True}]))
+        w.commit('an earlier version of the same game')
+        idx = bl.build_index(bl.RepoView(w.repo))
+        self.assertEqual(idx.folders[folder][1], META, 'the claim the audit list reviewed, not the earlier file')
+        self.assertEqual(idx.conflicts, {}, 'the same game twice is not a conflict')
+        tree = Tree(self)
+        tree.game('BATCH_A', '20261001_000000001_iOS')
+        self.assertTrue(decide_for(tree, idx)[0].delete, ' '.join(decide_for(tree, idx)[0].games[0].reasons))
+        # the reviewed file changed after the review: held back, with the reason that names the digest
+        write(os.path.join(w.repo, os.path.dirname(META), 'positions_all.json'), json.dumps([{'game': 'kw-261001_000000001', 'changed': True}]))
+        w.commit('the reviewed positions changed')
+        idx = bl.build_index(bl.RepoView(w.repo))
+        self.assertEqual(idx.folders[folder][1], META)
+        self.assertIn('their sha256 differs', ' '.join(decide_for(tree, idx)[0].games[0].reasons))
+        # no audit entry for the folder: the claim with most positions decides, the earlier file on a tie
+        w.accepted = None
+        os.remove(os.path.join(w.repo, AUDIT))
+        w.commit('no audit list')
+        idx = bl.build_index(bl.RepoView(w.repo))
+        self.assertEqual(idx.folders[folder][1], earlier + 'games_meta.json')
+
+    @unittest.skipUnless(HAVE_GIT, 'git not installed')
+    def test_a_git_replace_cannot_change_what_origin_main_says(self):
+        w = GitWorld(self, ['BATCH_A/20261001_000000001_iOS'])
+        accepted_commit = w.g('rev-parse', 'HEAD').strip()
+        w.accepted = None
+        w.write()
+        write(os.path.join(w.repo, 'rl/results/pause_games_extra/games_meta.json'), '{}')         # (a file only the replacement has: listing the replaced tree would find it)
+        w.g('add', '-A')
+        w.g('commit', '-q', '-m', 'not accepted')                          # (origin/main stays at the accepted commit)
+        w.g('replace', accepted_commit, w.g('rev-parse', 'HEAD').strip())
+        idx = bl.build_index(bl.RepoView(w.repo))
+        self.assertIsNotNone(bl.acceptance(idx)[0], 'the replacement object was not honoured')
+
+
+class IndexFromTheRepo(unittest.TestCase):
+    def repo(self):
+        self.repo_dir = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, self.repo_dir, True)
+        base = os.path.join(self.repo_dir, 'rl', 'results', 'pause_games_new_2026-10-12')
+        write(os.path.join(base, 'games_meta.json'), json.dumps({
+            'kw-261001_000000001': {'folder': 'BATCH_A/20261001_000000001_iOS', 'has_ledger': True},
+            'kw-261001_000000002': {'folder': 'BATCH_A/20261001_000000002_iOS', 'has_ledger': True}}))
+        write(os.path.join(base, 'positions_all.json'), json.dumps([{'game': 'kw-261001_000000001', 'id': 'p1'}]))      # no position for the second game
+        write(os.path.join(self.repo_dir, AUDIT), json.dumps({'confirmed': None, 'games': {}}))
+
+    def test_a_game_counts_only_when_its_positions_are_in_the_positions_file_next_to_the_meta(self):
+        self.repo()
+        idx = bl.build_index(bl.RepoView(self.repo_dir, no_git=True))
+        self.assertEqual(sorted(idx.folders), ['BATCH_A/20261001_000000001_iOS'])
+        self.assertEqual(idx.folders['BATCH_A/20261001_000000001_iOS'][:3], ('kw-261001_000000001', META, 1))
+        self.assertEqual(idx.folders['BATCH_A/20261001_000000001_iOS'][3], bl.positions_digest([{'game': 'kw-261001_000000001', 'id': 'p1'}]))
+        self.assertTrue(idx.audit_path_found)
+
+    def test_only_pause_games_result_folders_are_read(self):
+        self.repo()
+        other = os.path.join(self.repo_dir, 'rl', 'results', 'something_else')
+        write(os.path.join(other, 'games_meta.json'), json.dumps({'kw-x': {'folder': 'BATCH_B/g'}}))
+        write(os.path.join(other, 'positions_all.json'), json.dumps([{'game': 'kw-x'}]))
+        self.assertNotIn('BATCH_B/g', bl.build_index(bl.RepoView(self.repo_dir, no_git=True)).folders)
+
+    @unittest.skipUnless(HAVE_GIT, 'git not installed')
+    def test_with_git_a_file_that_is_only_in_the_working_tree_is_not_in_the_repo_and_the_commit_is_read_once(self):
+        self.repo()
+        g = lambda *a: subprocess.run(['git', '-C', self.repo_dir, '-c', 'user.name=t', '-c', 'user.email=t@t', *a], check=True, capture_output=True, text=True).stdout
+        g('init', '-q', '-b', 'main')
+        g('add', 'rl/results/pause_games_new_2026-10-12')
+        g('commit', '-q', '-m', 'games, but not the audit list')
+        view = bl.RepoView(self.repo_dir, ref='main')
+        first = view.commit_full
+        idx = bl.build_index(view)
+        self.assertFalse(idx.audit_path_found)
+        self.assertIn('BATCH_A/20261001_000000001_iOS', idx.folders)
+        self.assertIn(first[:8], view.describe())
+        self.assertRegex(view.describe(), r'committed \d{4}-\d{2}-\d{2}T')
+        g('add', AUDIT)
+        g('commit', '-q', '-m', 'audit list')
+        # the same view keeps reading the commit it resolved at the start, whatever main does afterwards
+        self.assertFalse(bl.build_index(view).audit_path_found)
+        self.assertTrue(bl.build_index(bl.RepoView(self.repo_dir, ref='main')).audit_path_found)
+
+    @unittest.skipUnless(HAVE_GIT, 'git not installed')
+    def test_a_ref_git_cannot_read_is_refused(self):
+        self.repo()
+        subprocess.run(['git', '-C', self.repo_dir, 'init', '-q'], check=True)
+        with self.assertRaises(SystemExit) as cm:
+            bl.RepoView(self.repo_dir, ref='origin/main')
+        self.assertIn('refused', str(cm.exception))
+        self.assertNotIn('--no-git', str(cm.exception))
+
+
+class DeleteScope(unittest.TestCase):
+    def setUp(self):
+        self.t = Tree(self)
+        self.g1 = self.t.game('BATCH_A', '20261001_000000001_iOS')
+        self.g2 = self.t.game('BATCH_A', '20261001_000000002_iOS')
+        self.k = self.t.game('BATCH_KEEP', '20261001_000000003_iOS')
+        self.t.extras('BATCH_A')
+        self.t.extras('BATCH_KEEP')
+        self.t.outside()
+        self.idx = index(['BATCH_A/20261001_000000001_iOS', 'BATCH_A/20261001_000000002_iOS'])
+        self.before = self.t.files()
+
+    def apply(self, **kw):
+        decisions = decide_for(self.t, self.idx)
+        out = io.StringIO()
+        return bl.apply_deletions(decisions, self.t.qa, kw.pop('index', self.idx), confirm=kw.pop('confirm', lambda *a: True), out=out, **kw), out.getvalue()
+
+    def removed(self):
+        after = self.t.files()
+        return sorted(p for p in set(self.before) - set(after))
+
+    def test_every_frame_of_the_delete_batchs_game_packets_goes_at_any_depth_and_in_any_case(self):
+        (deleted, failed, freed, log), _ = self.apply()
+        gone = self.removed()
+        frames = [p for p in self.before if p.lower().endswith(bl.FRAME_EXT) and ('BATCH_A' + os.sep + '2026') in p]
+        self.assertEqual(sorted(gone), sorted(frames))
+        self.assertEqual(deleted, len(frames))
+        self.assertEqual((failed, freed), (0, sum(self.before[p] for p in frames)))
+        self.assertTrue(any(p.endswith('comparison.JPG') for p in gone) and any(p.endswith('f0.png') for p in gone) and any(p.endswith('o.jpeg') for p in gone))
+
+    def test_nothing_but_frames_is_ever_removed_not_json_txt_md_py_or_the_video(self):
+        self.apply()
+        for p in self.removed():
+            self.assertTrue(p.lower().endswith(bl.FRAME_EXT), p)
+        after = self.t.files()
+        for p in self.before:
+            if not p.lower().endswith(bl.FRAME_EXT):
+                self.assertIn(p, after, p)
+        self.assertTrue(all(p in after for p in self.before if p.endswith('.MP4')))
+
+    def test_a_batch_marked_keep_loses_nothing(self):
+        self.apply()
+        self.assertFalse([p for p in self.removed() if 'BATCH_KEEP' in p])
+
+    def test_images_in_non_game_sub_folders_and_at_the_batch_level_of_a_delete_batch_stay(self):
+        self.apply()
+        after = self.t.files()
+        self.assertIn(os.path.join('Battle Logs', 'Recording_QA', 'BATCH_A', 'qr_support', 'q.png'), after)
+        self.assertIn(os.path.join('Battle Logs', 'Recording_QA', 'BATCH_A', 'LIVE_SAVE_SUMMARY.png'), after)
+
+    def test_nothing_outside_the_batch_folders_is_touched(self):
+        self.apply()
+        after = self.t.files()
+        for p in self.before:
+            if os.sep + 'BATCH_A' + os.sep not in p:
+                self.assertIn(p, after, p)
+
+    def test_empty_folders_are_left_in_place(self):
+        self.apply()
+        self.assertTrue(os.path.isdir(os.path.join(self.g1, 'turn_evidence')))
+
+    @unittest.skipIf(os.name == 'nt', 'symlinks need privileges on Windows')
+    def test_a_link_to_a_folder_outside_is_not_followed_and_its_frames_are_not_deleted(self):
+        outside = os.path.join(self.t.root, 'elsewhere')
+        write(os.path.join(outside, 'precious.png'), b'p')
+        os.symlink(outside, os.path.join(self.g1, 'linked_frames'))
+        write(os.path.join(self.t.root, 'target.jpg'), b't')
+        os.symlink(os.path.join(self.t.root, 'target.jpg'), os.path.join(self.g1, 'link.jpg'))
+        _, out = self.apply()
+        self.assertTrue(os.path.exists(os.path.join(outside, 'precious.png')))
+        self.assertTrue(os.path.exists(os.path.join(self.t.root, 'target.jpg')))
+
+    def test_the_plan_refuses_a_path_that_is_not_a_frame_inside_a_game_packet_of_a_delete_batch(self):
+        decisions = decide_for(self.t, self.idx)
+        d = [x for x in decisions if x.delete][0]
+        victim = os.path.join(self.t.logs, 'Reviewed', 'frame.jpg')
+        d.games[0].game.frames.append((victim, 20))
+        with self.assertRaises(SystemExit) as cm:
+            bl.deletion_plan(decisions, self.t.qa)
+        self.assertIn('not a frame file inside a game packet', str(cm.exception))
+        d.games[0].game.frames.pop()
+        d.games[0].game.frames.append((os.path.join(self.g1, 'notes.txt'), 5))
+        with self.assertRaises(SystemExit):
+            bl.deletion_plan(decisions, self.t.qa)
+        d.games[0].game.frames.pop()
+        d.games[0].game.frames.append((os.path.join(self.t.qa, 'BATCH_A', 'qr_support', 'q.png'), 10))
+        with self.assertRaises(SystemExit):
+            bl.deletion_plan(decisions, self.t.qa)
+        self.assertTrue(os.path.exists(victim))
+
+    def test_a_no_to_the_question_deletes_nothing(self):
+        with self.assertRaises(SystemExit):
+            self.apply(confirm=lambda *a: False)
+        self.assertEqual(self.removed(), [])
+
+    def test_the_question_names_what_will_be_deleted(self):
+        seen = []
+        self.apply(confirm=lambda n, size, batches: seen.append((n, size, batches)) or True)
+        self.assertEqual(seen[0][2], ['BATCH_A'])
+        self.assertEqual(seen[0][0], 2 * 6)
+
+    def test_only_limits_the_deletion_and_a_batch_not_marked_delete_cannot_be_named(self):
+        self.t.game('BATCH_B', '20261001_000000004_iOS')
+        self.idx = index(['BATCH_A/20261001_000000001_iOS', 'BATCH_A/20261001_000000002_iOS', 'BATCH_B/20261001_000000004_iOS'])
+        self.before = self.t.files()
+        self.apply(only={'BATCH_B'})
+        self.assertTrue(all('BATCH_B' in p for p in self.removed()))
+        with self.assertRaises(SystemExit) as cm:
+            self.apply(only={'BATCH_KEEP'})
+        self.assertIn('nothing to delete', str(cm.exception))
+
+    def test_in_a_partial_batch_only_the_packets_that_pass_lose_their_frames(self):
+        self.idx = index(['BATCH_A/20261001_000000001_iOS'])        # the second game is not in the repo
+        (deleted, _, _, _), _ = self.apply()
+        gone = self.removed()
+        self.assertTrue(gone and all('20261001_000000001_iOS' in p for p in gone))
+        self.assertTrue(all(p.lower().endswith(bl.FRAME_EXT) for p in gone))
+        self.assertEqual(deleted, 6)
+        self.assertTrue(os.path.exists(os.path.join(self.g2, 'turn_evidence', 't0000.jpg')))
+
+    def test_whole_batches_only_leaves_a_partial_batch_alone_and_takes_a_whole_one(self):
+        self.t.game('BATCH_B', '20261001_000000004_iOS')
+        self.idx = index(['BATCH_A/20261001_000000001_iOS', 'BATCH_B/20261001_000000004_iOS'])      # BATCH_A is partial, BATCH_B whole
+        self.before = self.t.files()
+        self.apply(whole_batches_only=True)
+        self.assertTrue(self.removed() and all('BATCH_B' in p for p in self.removed()))
+        with self.assertRaises(SystemExit):
+            self.apply(whole_batches_only=True, only={'BATCH_A'})
+
+    def test_nothing_to_delete_is_said_and_not_confirmed(self):
+        idx = index([])
+        out = io.StringIO()
+        res = bl.apply_deletions(decide_for(self.t, idx), self.t.qa, idx, confirm=lambda *a: self.fail('asked'), out=out)
+        self.assertEqual(res[0], 0)
+        self.assertIn('nothing to delete', out.getvalue())
+
+
+class TheLog(unittest.TestCase):
+    def setUp(self):
+        self.t = Tree(self)
+        self.t.game('BATCH_A', '20261001_000000001_iOS')
+        self.t.game('BATCH_A', '20261001_000000002_iOS')
+        self.idx = index(['BATCH_A/20261001_000000001_iOS', 'BATCH_A/20261001_000000002_iOS'])
+
+    def run_apply(self, **kw):
+        out = io.StringIO()
+        res = bl.apply_deletions(decide_for(self.t, self.idx), self.t.qa, self.idx, confirm=lambda *a: True, out=out, **kw)
+        return res, out.getvalue()
+
+    def lines(self, log):
+        with open(log, encoding='utf-8') as f:
+            return [json.loads(l) for l in f]
+
+    def test_the_log_lists_every_removed_file_and_ends_with_a_clean_integrity_line(self):
+        (deleted, _, _, log), out = self.run_apply()
+        lines = self.lines(log)
+        self.assertEqual(sum(1 for l in lines if 'removed' in l), deleted)
+        self.assertTrue(lines[-1]['done'])
+        self.assertEqual((lines[-1]['non_frame_files_missing_after'], lines[-1]['non_frame_files_changed']), ([], []))
+        self.assertIn('same SHA-256', out)
+        self.assertTrue(os.path.basename(log).startswith('CLEANUP_LOG_'))
+
+    def test_the_log_header_says_which_commit_authorised_it_and_names_each_packet_with_its_key_and_games_meta(self):
+        view = mock.Mock(commit_full='abc123def456', describe=lambda: 'origin/main (abc123de, committed 2026-10-14T10:00:00-05:00)')
+        (_, _, _, log), _ = self.run_apply(view=view)
+        head = self.lines(log)[0]
+        self.assertEqual(head['commit'], 'abc123def456')
+        self.assertIn('committed 2026-10-14', head['committed_state'])
+        self.assertEqual(head['acceptance']['by'], 'Dustin via the laptop')
+        self.assertEqual({p['folder'] for p in head['packets']}, {'BATCH_A/20261001_000000001_iOS', 'BATCH_A/20261001_000000002_iOS'})
+        self.assertTrue(all(p['key'].startswith('kw-') and p['games_meta'] == META and p['positions'] == 5 for p in head['packets']))
+
+    def test_the_log_is_written_line_by_line_while_the_deletion_runs(self):
+        real, seen = os.remove, []
+
+        def spy(p, **kw):
+            if len(seen) == 3:      # at the fourth removal: what is in the file already?
+                with open(glob_log(self.t.qa), encoding='utf-8') as f:
+                    seen.append(f.read().count('"removed"'))
+            else:
+                seen.append(None)
+            real(p, **kw)
+
+        def glob_log(d):
+            return os.path.join(d, [f for f in os.listdir(d) if f.startswith('CLEANUP_LOG_')][0])
+        with mock.patch.object(bl.os, 'remove', spy):
+            self.run_apply()
+        self.assertEqual([s for s in seen if s is not None], [3], 'the three earlier removals were already in the log file')
+
+    def test_progress_is_printed_every_n_files(self):
+        (_, _, _, _), out = self.run_apply(progress_every=4)
+        self.assertIn('removed 4 of 12', out)
+        self.assertIn('removed 8 of 12', out)
+
+    def test_a_sigterm_during_the_deletion_closes_the_log_with_an_interrupted_line_and_exits_130(self):
+        real, state = os.remove, {'n': 0}
+
+        def killer(p, **kw):
+            state['n'] += 1
+            if state['n'] == 3:
+                os.kill(os.getpid(), signal.SIGTERM)
+            real(p, **kw)
+        before = signal.getsignal(signal.SIGTERM)
+        with mock.patch.object(bl.os, 'remove', killer):
+            with self.assertRaises(SystemExit) as cm:
+                self.run_apply()
+        self.assertEqual(cm.exception.code, 130)
+        self.assertIs(signal.getsignal(signal.SIGTERM), before, 'the old handler is back')
+        log = os.path.join(self.t.qa, [f for f in os.listdir(self.t.qa) if f.startswith('CLEANUP_LOG_')][0])
+        lines = self.lines(log)
+        # the signal arrives while the third file is being removed: that file is finished, counted and logged, then the run stops between files
+        self.assertEqual(sum(1 for l in lines if 'removed' in l), 3)
+        self.assertEqual(lines[-1]['interrupted'], 'SIGTERM')
+        self.assertEqual(lines[-1]['deleted'], 3)
+        self.assertNotIn('done', lines[-1])
+        self.assertEqual(self.gone_frames(), 3)
+
+    def gone_frames(self):
+        return 12 - sum(1 for r, _, fs in os.walk(self.t.qa) for f in fs if f.lower().endswith(bl.FRAME_EXT))
+
+    def test_the_last_file_removed_before_a_signal_is_always_in_the_log_and_the_count(self):
+        # the laptop's residual: in about 1 of 2 interruptions the handler raised right after os.remove returned, before the count and the log line
+        for sig in (signal.SIGTERM, signal.SIGHUP):
+            for n in (1, 2, 5, 11):
+                t = Tree(self)
+                t.game('BATCH_A', '20261001_000000001_iOS')
+                t.game('BATCH_A', '20261001_000000002_iOS')
+                idx = index(['BATCH_A/20261001_000000001_iOS', 'BATCH_A/20261001_000000002_iOS'])
+                real, state = os.remove, {'n': 0}
+
+                def killer(p, **kw):
+                    real(p, **kw)
+                    state['n'] += 1
+                    if state['n'] == n:
+                        os.kill(os.getpid(), sig)          # right after the file is gone
+                with mock.patch.object(bl.os, 'remove', killer):
+                    with self.assertRaises(SystemExit) as cm:
+                        bl.apply_deletions(decide_for(t, idx), t.qa, idx, confirm=lambda *a: True, out=io.StringIO())
+                self.assertEqual(cm.exception.code, 130)
+                log = os.path.join(t.qa, [f for f in os.listdir(t.qa) if f.startswith('CLEANUP_LOG_')][0])
+                lines = self.lines(log)
+                gone = 12 - sum(1 for r, _, fs in os.walk(t.qa) for f in fs if f.lower().endswith(bl.FRAME_EXT))
+                self.assertEqual((gone, sum(1 for l in lines if 'removed' in l), lines[-1]['deleted']), (n, n, n), (sig.name, n))
+
+    def test_a_signal_during_the_integrity_check_is_logged_as_such_and_the_deletions_stay_in_the_log(self):
+        # the review workflow's S5 (a): the handlers were put back before the final pass, so a SIGTERM there killed the run with no closing line
+        real, state = bl.text_inventory, {'n': 0}
+
+        def inventory(paths, check=None):
+            state['n'] += 1
+            if state['n'] == 2:
+                os.kill(os.getpid(), signal.SIGTERM)
+            return real(paths, check)
+        with mock.patch.object(bl, 'text_inventory', inventory):
+            with self.assertRaises(SystemExit) as cm:
+                self.run_apply()
+        self.assertEqual(cm.exception.code, 130)
+        self.assertIn('integrity check', str(cm.exception))
+        log = os.path.join(self.t.qa, [f for f in os.listdir(self.t.qa) if f.startswith('CLEANUP_LOG_')][0])
+        lines = self.lines(log)
+        self.assertEqual(sum(1 for l in lines if 'removed' in l), 12)
+        self.assertEqual((lines[-1]['interrupted'], lines[-1]['during'], lines[-1]['deleted']), ('SIGTERM', 'checking', 12))
+        self.assertNotIn('done', lines[-1])
+
+    @unittest.skipUnless(hasattr(signal, 'SIGHUP'), 'posix')
+    def test_a_hangup_that_was_set_to_be_ignored_stays_ignored_so_a_nohup_run_goes_on(self):
+        old = signal.signal(signal.SIGHUP, signal.SIG_IGN)
+        self.addCleanup(signal.signal, signal.SIGHUP, old)
+        real, state = os.remove, {'n': 0}
+
+        def hup(p, **kw):
+            state['n'] += 1
+            if state['n'] == 3:
+                os.kill(os.getpid(), signal.SIGHUP)
+            real(p, **kw)
+        with mock.patch.object(bl.os, 'remove', hup):
+            res, out = self.run_apply()
+        self.assertEqual((res[0], res[1]), (12, 0))
+        self.assertIs(signal.getsignal(signal.SIGHUP), signal.SIG_IGN)
+
+    def test_ctrl_c_is_logged_the_same_way(self):
+        real, state = os.remove, {'n': 0}
+
+        def ctrl_c(p, **kw):
+            state['n'] += 1
+            if state['n'] == 2:
+                raise KeyboardInterrupt
+            real(p, **kw)
+        with mock.patch.object(bl.os, 'remove', ctrl_c):
+            with self.assertRaises(SystemExit) as cm:
+                self.run_apply()
+        self.assertEqual(cm.exception.code, 130)
+        log = os.path.join(self.t.qa, [f for f in os.listdir(self.t.qa) if f.startswith('CLEANUP_LOG_')][0])
+        self.assertIn('interrupted', self.lines(log)[-1])
+
+    def test_a_frame_that_cannot_be_deleted_is_counted_logged_and_makes_the_run_incomplete(self):
+        real = os.remove
+
+        def locked(p, **kw):
+            if p.endswith('t0001.jpg'):
+                raise PermissionError(13, 'locked by another process')
+            real(p, **kw)
+        with mock.patch.object(bl.os, 'remove', locked):
+            (deleted, failed, _, log), out = self.run_apply()
+        self.assertEqual(failed, 2)
+        self.assertIn('INCOMPLETE: 2 frames could not be deleted', out)
+        self.assertEqual(sum(1 for l in self.lines(log) if 'failed' in l and 'error' in l), 2)
+
+
+class RacesBetweenThePlanAndTheDeletion(unittest.TestCase):
+    def setUp(self):
+        self.t = Tree(self)
+        self.g1 = self.t.game('BATCH_A', '20261001_000000001_iOS')
+        self.g2 = self.t.game('BATCH_A', '20261001_000000002_iOS')
+        self.idx = index(['BATCH_A/20261001_000000001_iOS', 'BATCH_A/20261001_000000002_iOS'])
+
+    def apply(self, confirm):
+        out = io.StringIO()
+        res = bl.apply_deletions(decide_for(self.t, self.idx), self.t.qa, self.idx, confirm=confirm, out=out)
+        return res, out.getvalue()
+
+    def test_a_packet_whose_ledger_disappears_while_the_question_is_open_is_skipped_and_logged(self):
+        def meanwhile(*a):
+            os.remove(os.path.join(self.g1, 'TURN_LEDGER.json'))
+            return True
+        out = io.StringIO()
+        with self.assertRaises(SystemExit) as cm:      # the vanished ledger is also seen by the integrity check, which says so loudly
+            bl.apply_deletions(decide_for(self.t, self.idx), self.t.qa, self.idx, confirm=meanwhile, out=out)
+        self.assertIn('SKIPPED BATCH_A/20261001_000000001_iOS', out.getvalue())
+        self.assertIn('INTEGRITY CHECK FAILED', str(cm.exception))
+        self.assertTrue(os.path.exists(os.path.join(self.g1, 'turn_evidence', 't0000.jpg')), 'its frames were kept')
+        self.assertFalse(os.path.exists(os.path.join(self.g2, 'turn_evidence', 't0000.jpg')))
+        log = os.path.join(self.t.qa, [f for f in os.listdir(self.t.qa) if f.startswith('CLEANUP_LOG_')][0])
+        with open(log, encoding='utf-8') as f:
+            self.assertIn('skipped_packet', f.read())
+
+    def apply_with_videos(self, confirm):
+        vids = self.t.videos()
+        out = io.StringIO()
+        res = bl.apply_deletions(decide_for(self.t, self.idx), self.t.qa, self.idx, confirm=confirm, out=out, video_check=lambda game: bl.check_video(game, vids, fresh=True))
+        return res, out.getvalue()
+
+    def test_a_source_video_cut_short_or_removed_while_the_question_is_open_leaves_that_packets_frames(self):
+        for how in ('truncated', 'removed'):
+            with self.subTest(how):
+                self.tearDownTree()
+                video = os.path.join(self.t.logs, '20261001_000000001_iOS.MP4')
+
+                def meanwhile(*a):
+                    if how == 'truncated':
+                        write(video, b'v' * 5)
+                    else:
+                        os.remove(video)
+                    return True
+                res, out = self.apply_with_videos(meanwhile)
+                self.assertEqual(res.skipped, 1)
+                self.assertIn('SKIPPED BATCH_A/20261001_000000001_iOS', out)
+                self.assertIn('checked again just before deletion', out)
+                self.assertTrue(os.path.exists(os.path.join(self.g1, 'turn_evidence', 't0000.jpg')), 'its frames were kept')
+                self.assertFalse(os.path.exists(os.path.join(self.g2, 'turn_evidence', 't0000.jpg')), 'the other packet was cleaned')
+                log = os.path.join(self.t.qa, [f for f in os.listdir(self.t.qa) if f.startswith('CLEANUP_LOG_')][0])
+                with open(log, encoding='utf-8') as f:
+                    self.assertIn('source video, checked again', f.read())
+
+    def test_a_text_output_rewritten_with_the_same_size_during_the_run_is_caught_by_its_hash(self):
+        def meanwhile(*a):
+            return True
+        real = os.remove
+        state = {'n': 0}
+
+        def rewrite(p, **kw):
+            state['n'] += 1
+            if state['n'] == 2:
+                write(os.path.join(self.g2, 'notes.txt'), 'NOTES')          # same length as 'notes'
+            real(p, **kw)
+        with mock.patch.object(bl.os, 'remove', rewrite):
+            with self.assertRaises(SystemExit) as cm:
+                self.apply(meanwhile)
+        self.assertIn('INTEGRITY CHECK FAILED', str(cm.exception))
+
+    def test_the_inventory_is_taken_before_the_question_so_a_file_removed_while_it_is_open_is_noticed(self):
+        def meanwhile(*a):
+            os.remove(os.path.join(self.g2, 'notes.txt'))
+            return True
+        with self.assertRaises(SystemExit) as cm:
+            self.apply(meanwhile)
+        self.assertIn('INTEGRITY CHECK FAILED', str(cm.exception))
+
+    @unittest.skipIf(os.name == 'nt', 'symlinks need privileges on Windows')
+    def test_a_folder_swapped_for_a_link_while_the_question_is_open_does_not_send_the_deletion_outside(self):
+        outside = os.path.join(self.t.root, 'elsewhere')
+        for name in ('t0000.jpg', 't0001.jpg', 't0002.jpg'):
+            write(os.path.join(outside, name), b'precious')
+
+        def swap(*a):
+            shutil.rmtree(os.path.join(self.g1, 'turn_evidence'))
+            os.symlink(outside, os.path.join(self.g1, 'turn_evidence'))
+            return True
+        (deleted, failed, _, log), out = self.apply(swap)
+        self.assertEqual(sorted(os.listdir(outside)), ['t0000.jpg', 't0001.jpg', 't0002.jpg'], 'nothing outside the packet was deleted')
+        self.assertGreaterEqual(failed, 3)
+        self.assertIn('INCOMPLETE', out)
+
+    def outside_with_the_same_names(self):
+        outside = os.path.join(self.t.root, 'elsewhere')
+        for name in ('t0000.jpg', 't0001.jpg', 't0002.jpg'):
+            write(os.path.join(outside, name), b'precious')
+        return outside
+
+    def swap_after_the_first_frame_of_turn_evidence(self, outside):
+        """os.remove wrapper: once one frame of g1's turn_evidence is gone, the folder is replaced by a link to `outside`"""
+        real, state = os.remove, {'done': False}
+
+        def remove(p, **kw):
+            real(p, **kw)
+            if not state['done'] and os.path.basename(p).startswith('t000'):
+                state['done'] = True
+                shutil.rmtree(os.path.join(self.g1, 'turn_evidence'))
+                os.symlink(outside, os.path.join(self.g1, 'turn_evidence'))
+        return remove
+
+    @unittest.skipIf(os.name == 'nt', 'symlinks need privileges on Windows')
+    def test_a_folder_swapped_for_a_link_in_the_middle_of_the_run_does_not_send_the_next_deletions_outside(self):
+        # the laptop's scope-n4 (b): realpath was cached per folder, so after one frame was gone the swapped folder was trusted
+        for dir_fd_ok in (True, False):
+            with self.subTest(dir_fd=dir_fd_ok):
+                self.tearDownTree()
+                outside = self.outside_with_the_same_names()
+                with mock.patch.object(bl, 'DIR_FD_OK', dir_fd_ok), mock.patch.object(bl.os, 'remove', self.swap_after_the_first_frame_of_turn_evidence(outside)):
+                    (deleted, failed, _, log), out = self.apply(lambda *a: True)
+                self.assertEqual(sorted(os.listdir(outside)), ['t0000.jpg', 't0001.jpg', 't0002.jpg'], 'nothing outside the packet was deleted')
+                self.assertGreaterEqual(failed, 1)
+
+    def tearDownTree(self):
+        shutil.rmtree(self.t.root, True)
+        self.setUp()
+
+    @unittest.skipIf(os.name == 'nt', 'symlinks need privileges on Windows')
+    def test_a_packet_replaced_by_a_link_to_a_look_alike_packet_is_skipped_and_the_look_alikes_frames_stay(self):
+        # scope-n4 (c): the packet was re-resolved through the link and the look-alike's frames were deleted (its text files were byte-identical, so the integrity check passed)
+        for dir_fd_ok in (True, False):
+            with self.subTest(dir_fd=dir_fd_ok):
+                self.tearDownTree()
+                look = os.path.join(self.t.root, 'lookalike')
+                shutil.copytree(self.g2, look)
+
+                def swap(*a):
+                    shutil.move(self.g2, self.g2 + '_real')
+                    os.symlink(look, self.g2)
+                    return True
+                with mock.patch.object(bl, 'DIR_FD_OK', dir_fd_ok):
+                    res, out = self.apply(swap)
+                self.assertEqual(res.skipped, 1)
+                self.assertIn('SKIPPED BATCH_A/20261001_000000002_iOS', out)
+                self.assertIn('INCOMPLETE', out)
+                self.assertEqual(sorted(os.listdir(os.path.join(look, 'turn_evidence'))), ['t0000.jpg', 't0001.jpg', 't0002.jpg'], 'the look-alike keeps its frames')
+                self.assertEqual(sorted(os.listdir(os.path.join(self.g2 + '_real', 'turn_evidence'))), ['t0000.jpg', 't0001.jpg', 't0002.jpg'], 'the real packet was left alone too')
+                self.assertFalse(os.path.exists(os.path.join(self.g1, 'turn_evidence', 't0000.jpg')), 'the other packet was cleaned')
+
+    KINDS = (('handles on a native file system', None), ('checked by path, as on a mounted Windows drive', '9p'))
+
+    def kind(self, fs):
+        return mock.patch.object(bl, 'fs_type', lambda p: fs) if fs else mock.patch.object(bl, 'fs_type', lambda p: 'ext4')
+
+    @unittest.skipIf(os.name == 'nt', 'posix side')
+    def test_a_folder_moved_out_of_the_packet_during_the_run_is_not_emptied_wherever_it_went(self):
+        # the review workflow's S7 (a cached handle followed the moved folder) and S1 (a swap on the Windows drive)
+        for label, fs in self.KINDS:
+            with self.subTest(label):
+                self.tearDownTree()
+                moved = os.path.join(self.t.root, 'MOVED_OUT')
+                real, state = os.remove, {'done': False}
+
+                def remove(p, **kw):
+                    real(p, **kw)
+                    if not state['done'] and os.path.basename(p).startswith('t000'):
+                        state['done'] = True
+                        os.rename(os.path.join(self.g1, 'turn_evidence'), moved)
+                with self.kind(fs), mock.patch.object(bl.os, 'remove', remove):
+                    (deleted, failed, _, _), out = self.apply(lambda *a: True)
+                self.assertEqual(len(os.listdir(moved)), 2, 'the two frames that were left in the moved folder are still there')
+                self.assertGreaterEqual(failed, 2)
+
+    @unittest.skipIf(os.name == 'nt', 'symlinks need privileges on Windows')
+    def test_a_folder_replaced_by_a_link_after_it_was_opened_is_not_followed_in_either_mode(self):
+        for label, fs in self.KINDS:
+            with self.subTest(label):
+                self.tearDownTree()
+                outside = self.outside_with_the_same_names()
+                with self.kind(fs), mock.patch.object(bl.os, 'remove', self.swap_after_the_first_frame_of_turn_evidence(outside)):
+                    (deleted, failed, _, _), out = self.apply(lambda *a: True)
+                self.assertEqual(sorted(os.listdir(outside)), ['t0000.jpg', 't0001.jpg', 't0002.jpg'])
+                self.assertGreaterEqual(failed, 2)
+
+    @unittest.skipUnless(shutil.which('cmd.exe') and shutil.which('wslpath') and bl.fs_type(tempfile.gettempdir()) == '9p',
+                         'needs a Windows drive as the temporary folder (TMPDIR=/mnt/c/...) and cmd.exe: a real junction, which is what the review workflow\'s S1 used')
+    def test_a_folder_swapped_for_a_real_windows_junction_after_it_was_opened_is_not_followed(self):
+        outside = self.outside_with_the_same_names()
+        real, state = os.remove, {'done': False}
+
+        def windows(path):
+            return subprocess.check_output(['wslpath', '-w', path], text=True).strip()
+
+        def remove(p, **kw):
+            real(p, **kw)
+            if not state['done'] and os.path.basename(p).startswith('t000'):
+                state['done'] = True
+                os.rename(os.path.join(self.g1, 'turn_evidence'), os.path.join(self.g1, 'turn_evidence_renamed'))
+                subprocess.run(['cmd.exe', '/c', 'mklink', '/J', windows(os.path.join(self.g1, 'turn_evidence')), windows(outside)], check=True, capture_output=True, cwd='/mnt/c')
+        with mock.patch.object(bl.os, 'remove', remove):
+            (deleted, failed, _, _), out = self.apply(lambda *a: True)
+        self.assertEqual(sorted(os.listdir(outside)), ['t0000.jpg', 't0001.jpg', 't0002.jpg'], 'nothing outside Recording_QA was deleted')
+        self.assertGreaterEqual(failed, 2)
+
+    @unittest.skipIf(os.name == 'nt', 'symlinks need privileges on Windows')
+    def test_a_recording_qa_replaced_by_a_link_while_the_question_is_open_is_not_followed(self):
+        # the review workflow's S4: the root was resolved again after the answer, so a look-alike tree was cleaned instead
+        for label, fs in self.KINDS:
+            with self.subTest(label):
+                self.tearDownTree()
+                decoy = os.path.join(self.t.root, 'decoy')
+                shutil.copytree(self.t.qa, os.path.join(decoy, 'Recording_QA'))
+                frames = lambda root: sum(1 for r, _, fs_ in os.walk(root) for f in fs_ if f.lower().endswith(bl.FRAME_EXT))
+                n = frames(os.path.join(decoy, 'Recording_QA'))
+
+                def swap(*a):
+                    os.rename(self.t.qa, self.t.qa + '_real')
+                    os.symlink(os.path.join(decoy, 'Recording_QA'), self.t.qa)
+                    return True
+                with self.kind(fs):
+                    res, out = self.apply(swap)
+                self.assertEqual(res.skipped, 2)
+                self.assertEqual(frames(os.path.join(decoy, 'Recording_QA')), n, 'the look-alike keeps its frames')
+                self.assertEqual(frames(self.t.qa + '_real'), n, 'the real folder was left alone too')
+                self.assertIn('Recording_QA is not the folder that was checked', out)
+
+    @unittest.skipUnless(os.path.isdir('/proc/self/fd'), 'needs /proc')
+    def test_a_packet_with_many_folders_does_not_keep_a_handle_open_for_each(self):
+        for i in range(40):
+            for n in ('a.png', 'b.png'):
+                write(os.path.join(self.g1, 'many', f'd{i}', n), b'x')
+        real, seen = os.remove, []
+
+        def spy(p, **kw):
+            seen.append(len(os.listdir('/proc/self/fd')))
+            real(p, **kw)
+        base = len(os.listdir('/proc/self/fd'))
+        with self.kind(None), mock.patch.object(bl.os, 'remove', spy):
+            (deleted, failed, _, _), _ = self.apply(lambda *a: True)
+        self.assertEqual(failed, 0)
+        self.assertGreater(deleted, 80)
+        self.assertLess(max(seen) - base, 12, 'only the handles of the folder being emptied (and its parents) are open')
+
+    def test_this_system_has_the_directory_handle_calls_the_tool_relies_on(self):
+        # (it was found from a run where os.remove was wrongly believed unsupported and every test ran the slower fallback)
+        if os.name != 'nt':
+            self.assertTrue(bl.DIR_FD_OK)
+
+    def test_the_fallback_without_directory_handles_deletes_the_same_frames(self):
+        # native Windows Python has no dir_fd: every file re-resolves its folder, uncached
+        before = self.t.files()
+        with mock.patch.object(bl, 'DIR_FD_OK', False):
+            (deleted, failed, _, _), out = self.apply(lambda *a: True)
+        gone = set(before) - set(self.t.files())
+        self.assertEqual((deleted, failed), (12, 0))
+        self.assertTrue(all(p.lower().endswith(bl.FRAME_EXT) for p in gone if 'CLEANUP_LOG' not in p))
+
+    def test_directory_handles_are_closed_after_each_packet(self):
+        def open_fds():
+            return len(os.listdir('/proc/self/fd')) if os.path.isdir('/proc/self/fd') else None
+        n = open_fds()
+        self.apply(lambda *a: True)
+        if n is not None:
+            self.assertEqual(open_fds(), n)
+
+
+class FileSystemKind(unittest.TestCase):
+    MOUNTS = 'rootfs / ext4 rw 0 0\ndrvfs /mnt/c 9p rw 0 0\n/dev/sdd /mnt/data\\040disk ext4 rw 0 0\nnone /tmp tmpfs rw 0 0\n'
+
+    def test_the_longest_mount_point_decides(self):
+        with mock.patch('builtins.open', mock.mock_open(read_data=self.MOUNTS)):
+            self.assertEqual(bl.fs_type('/mnt/c/Users/x/Recording_QA'), '9p')
+            self.assertEqual(bl.fs_type('/mnt/data disk/q'), 'ext4')
+            self.assertEqual(bl.fs_type('/home/x'), 'ext4')
+            self.assertEqual(bl.fs_type('/tmp/a'), 'tmpfs')
+            self.assertEqual(bl.fs_type('/mnt/cc/x'), 'ext4', 'a name that only starts like a mount point')
+
+    def test_handles_are_used_only_on_native_file_systems(self):
+        for fs, expect in (('9p', False), (None, False), ('ntfs', False), ('ext4', bl.DIR_FD_OK), ('tmpfs', bl.DIR_FD_OK)):
+            with mock.patch.object(bl, 'fs_type', lambda p, fs=fs: fs):
+                self.assertEqual(bl.use_dir_handles('/x'), expect, fs)
+        with mock.patch.object(bl, 'DIR_FD_OK', False), mock.patch.object(bl, 'fs_type', lambda p: 'ext4'):
+            self.assertFalse(bl.use_dir_handles('/x'))
+
+
+class MovingRecordingQA(unittest.TestCase):
+    """--move-to moves ONLY Recording_QA: the videos and the rest of Battle Logs stay where they are (in OneDrive)"""
+
+    def setUp(self):
+        self.t = Tree(self)
+        self.t.game('BATCH_A', '20261001_000000001_iOS')
+        self.t.outside()
+        no_default(self)
+        self.base = os.path.join(self.t.root, 'BattleLogs')              # does not exist yet: its parent, the temp root, does
+        self.target = os.path.join(self.base, 'Recording_QA')
+
+    def move(self, **kw):
+        out = io.StringIO()
+        return bl.move_recording_qa(kw.pop('source', self.t.qa), kw.pop('target', self.target), out=out, **kw), out.getvalue()
+
+    def test_only_recording_qa_is_renamed_and_the_new_path_is_printed(self):
+        before = self.t.files()
+        new, out = self.move(confirm=lambda t: True)
+        self.assertEqual(new, self.target)
+        self.assertIn('Codex should now use as its Recording_QA', out)
+        self.assertFalse(os.path.exists(self.t.qa))
+        moved = {os.path.relpath(os.path.join(r, f), self.target): os.path.getsize(os.path.join(r, f)) for r, _, fs in os.walk(self.target) for f in fs}
+        self.assertIn(bl.LOCATION_FILE, moved)
+        moved.pop(bl.LOCATION_FILE)                       # the one file the move adds: where the videos stayed
+        want = {os.path.relpath(p, os.path.join('Battle Logs', 'Recording_QA')): s for p, s in before.items() if p.startswith(os.path.join('Battle Logs', 'Recording_QA') + os.sep)}
+        self.assertEqual(moved, want)
+
+    def test_the_videos_and_every_other_file_of_battle_logs_stay_where_they_are(self):
+        before = self.t.files()
+        self.move(confirm=lambda t: True)
+        after = {os.path.relpath(os.path.join(r, f), self.t.root): os.path.getsize(os.path.join(r, f)) for r, _, fs in os.walk(self.t.logs) for f in fs}
+        stay = {p: s for p, s in before.items() if not p.startswith(os.path.join('Battle Logs', 'Recording_QA') + os.sep)}
+        self.assertEqual(after, stay)
+        self.assertTrue(any(p.endswith('.MP4') for p in after))
+
+    def test_the_output_says_what_stays_and_what_leaves_onedrive(self):
+        _, out = self.move(dry=True)
+        self.assertIn('STAYS where it is, in OneDrive', out)
+        self.assertIn('The videos are not moved', out)
+        self.assertIn('video file', out)
+        self.assertIn('Reviewed', out)
+        self.assertIn('text outputs', out)
+
+    def test_the_confirmation_is_asked_with_the_target(self):
+        seen = []
+        self.move(confirm=lambda target: seen.append(target) or True)
+        self.assertEqual(seen, [bl.to_windows(self.target)])
+
+    def test_a_folder_that_is_not_recording_qa_is_never_moved(self):
+        with self.assertRaises(SystemExit) as cm:
+            self.move(source=self.t.logs, confirm=lambda t: True)
+        self.assertIn('not a folder named Recording_QA', str(cm.exception))
+        self.assertTrue(os.path.isdir(self.t.logs) and not os.path.exists(self.base))
+
+    def test_a_target_that_exists_is_refused_even_when_empty(self):
+        os.makedirs(self.target)
+        with self.assertRaises(SystemExit) as cm:
+            self.move(confirm=lambda t: True)
+        self.assertIn('already exists', str(cm.exception))
+        self.assertTrue(os.path.isdir(self.t.qa))
+
+    def test_a_target_inside_recording_qa_is_refused_whatever_the_case(self):
+        for target in (os.path.join(self.t.qa, 'inner', 'Recording_QA'), os.path.join(self.t.qa.upper(), 'inner', 'Recording_QA'), os.path.join(self.t.qa.replace('Recording_QA', 'recording_qa'), 'inner', 'Recording_QA')):
+            with self.assertRaises(SystemExit) as cm:
+                self.move(target=target, confirm=lambda t: True)
+            self.assertIn('inside', str(cm.exception))
+        self.assertFalse(os.path.exists(os.path.join(self.t.qa, 'inner')))
+
+    def test_a_relative_target_is_refused(self):
+        with self.assertRaises(SystemExit) as cm:
+            self.move(target='BattleLogs/Recording_QA', confirm=lambda t: True)
+        self.assertIn('not an absolute path', str(cm.exception))
+
+    def test_a_target_directly_in_a_drive_root_is_refused(self):
+        for target in ('/mnt/c/Recording_QA', '/Recording_QA'):
+            with self.assertRaises(SystemExit) as cm:
+                self.move(target=target, confirm=lambda t: True)
+            self.assertIn('root of a drive', str(cm.exception))
+
+    def test_a_target_that_does_not_end_in_recording_qa_is_refused_which_is_what_a_lost_separator_makes_of_it(self):
+        # the laptop's platform-n3: C:/Users/dacz8/BattleLogs\\Recording_QA reaches the tool as C:/Users/dacz8/BattleLogsRecording_QA, and C:/Users/dacz8\\BattleLogs\\Recording_QA as C:/Users/dacz8BattleLogsRecording_QA
+        for target in (os.path.join(self.t.root, 'BattleLogsRecording_QA'), os.path.join(self.t.root, 'Moved'), os.path.join(self.t.root, 'dacz8BattleLogsRecording_QA'), '/mnt/c/Usersdacz8BattleLogsRecording_QA'):
+            with self.assertRaises(SystemExit) as cm:
+                self.move(target=target, confirm=lambda t: True)
+            self.assertIn('does not end in Recording_QA', str(cm.exception), target)
+        self.assertTrue(os.path.isdir(self.t.qa))
+        self.assertFalse(os.path.exists(os.path.join(self.t.root, 'BattleLogsRecording_QA')))
+
+    def test_the_move_records_where_the_videos_stayed_in_the_moved_folder_and_the_hint_names_it(self):
+        _, out = self.move(confirm=lambda t: True)
+        rec = json.loads(read(os.path.join(self.target, bl.LOCATION_FILE)))
+        self.assertEqual(os.path.abspath(bl.to_local(rec['battle_logs'])), os.path.abspath(self.t.logs))
+        self.assertIn(bl.LOCATION_FILE, out)
+        self.assertIn('--videos', out)
+
+    def test_the_hint_quotes_a_path_with_a_space(self):
+        self.assertEqual(bl.quoted('C:/Users/dacz8/Battle Logs'), '"C:/Users/dacz8/Battle Logs"')
+        self.assertEqual(bl.quoted('C:/Users/dacz8/BattleLogs'), 'C:/Users/dacz8/BattleLogs')
+        _, out = self.move(confirm=lambda t: True)
+        self.assertIn('--videos "' + bl.to_forward(self.t.logs) + '"', out)       # (the made-up Battle Logs folder has a space)
+
+    def test_the_dry_run_after_the_move_still_finds_the_videos_through_the_recorded_location(self):
+        # the laptop's platform-n1: after the documented --move-to every packet was held back as "source video not found"
+        self.t.game('BATCH_B', '20261001_000000002_iOS')
+        idx = index(['BATCH_A/20261001_000000001_iOS', 'BATCH_B/20261001_000000002_iOS'])
+        self.assertEqual([d.verdict for d in bl.decide(bl.scan_qa(self.t.qa, self.t.videos()), idx)], ['DELETE', 'DELETE'])
+        self.move(confirm=lambda t: True)
+        vdirs, warns = bl.video_dirs(self.target)
+        self.assertEqual((vdirs[0][1], warns), (bl.LOCATION_FILE, []))
+        decisions = bl.decide(bl.scan_qa(self.target, bl.video_index_all(vdirs)), idx)
+        self.assertEqual([d.verdict for d in decisions], ['DELETE', 'DELETE'], [g.reasons for d in decisions for g in d.games])
+        # and without the recorded location the reason names where it looked and what to give
+        os.remove(os.path.join(self.target, bl.LOCATION_FILE))
+        again = bl.decide(bl.scan_qa(self.target, bl.video_index_all(bl.video_dirs(self.target)[0]), 'somewhere'), idx)
+        self.assertIn('not found in Battle Logs (looked in somewhere; --videos PATH names the folder)', ' '.join(again[0].games[0].reasons))
+        # --videos names the folder
+        viaflag = bl.decide(bl.scan_qa(self.target, bl.video_index_all(bl.video_dirs(self.target, self.t.logs)[0])), idx)
+        self.assertEqual([d.verdict for d in viaflag], ['DELETE', 'DELETE'])
+
+    def test_a_dry_run_move_with_the_working_tree_check_says_the_import_is_not_checked_against_git(self):
+        new, out = self.move(dry=True, import_check=lambda: [], import_label='present in the working tree of the checkout (NOT checked against git: a real move would be refused)')
+        self.assertIsNone(new)
+        self.assertIn('import check: every text output of Recording_QA is present in the working tree', out)
+        self.assertIn('NOT checked against git', out)
+
+    def test_a_target_two_levels_below_a_missing_folder_is_refused(self):
+        with self.assertRaises(SystemExit) as cm:
+            self.move(target=os.path.join(self.t.root, 'nope', 'deeper', 'Recording_QA'), confirm=lambda t: True)
+        self.assertIn('neither', str(cm.exception))
+        self.assertFalse(os.path.exists(os.path.join(self.t.root, 'nope')))
+
+    def test_one_missing_parent_folder_is_created_and_said(self):
+        _, out = self.move(confirm=lambda t: True)
+        self.assertTrue(os.path.isdir(self.base))
+        self.assertIn('is created first', out)
+
+    def test_an_existing_parent_is_not_announced_as_created(self):
+        os.makedirs(self.base)
+        _, out = self.move(confirm=lambda t: True)
+        self.assertNotIn('is created first', out)
+        self.assertTrue(os.path.isdir(self.target))
+
+    def test_the_dry_run_moves_nothing_creates_nothing_and_does_not_ask(self):
+        new, out = self.move(dry=True, confirm=lambda t: self.fail('asked'))
+        self.assertIsNone(new)
+        self.assertIn('dry run', out)
+        self.assertTrue(os.path.isdir(self.t.qa))
+        self.assertFalse(os.path.exists(self.base))
+
+    def test_a_no_moves_nothing(self):
+        with self.assertRaises(SystemExit):
+            self.move(confirm=lambda t: False)
+        self.assertTrue(os.path.isdir(self.t.qa))
+        self.assertFalse(os.path.exists(self.base))
+
+    def test_a_rename_that_fails_leaves_everything_where_it_was_and_removes_the_folder_it_made(self):
+        with mock.patch.object(bl.os, 'rename', side_effect=PermissionError('in use')):
+            with self.assertRaises(SystemExit) as cm:
+                self.move(confirm=lambda t: True)
+        self.assertIn('nothing was changed', str(cm.exception))
+        self.assertTrue(os.path.isdir(self.t.qa))
+        self.assertFalse(os.path.exists(self.base))
+
+    def test_files_in_recording_qa_that_name_the_old_path_or_a_file_that_stays_are_listed_not_edited(self):
+        script = os.path.join(self.t.qa, 'intake.py')
+        write(script, r"BASE = r'C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs'" + "\\nopen('../MEDIA_LOCATIONS.json')")
+        write(os.path.join(self.t.qa, 'BATCH_A', 'accept.py'), "x = 'media_locations.json'")
+        _, out = self.move(dry=True)
+        self.assertIn('intake.py', out)
+        self.assertIn('BATCH_A/accept.py', out)
+        self.assertIn('relative', out)
+        self.assertIn('OneDrive', read(script).decode())
+
+    def test_a_target_inside_onedrive_is_refused_unless_it_is_said_to_be_meant(self):
+        os.makedirs(os.path.join(self.t.root, 'OneDrive'))
+        target = os.path.join(self.t.root, 'OneDrive', 'Recording_QA')
+        with self.assertRaises(SystemExit) as cm:
+            self.move(target=target, dry=True)
+        self.assertIn('inside a OneDrive folder', str(cm.exception))
+        self.assertIn('--allow-target-in-onedrive', str(cm.exception))
+        self.assertTrue(os.path.isdir(self.t.qa))
+        _, out = self.move(target=target, dry=True, allow_onedrive_target=True)
+        self.assertIn('still inside a OneDrive folder', out)
+
+    def test_the_move_is_refused_while_the_text_outputs_are_not_all_committed(self):
+        with self.assertRaises(SystemExit) as cm:
+            self.move(confirm=lambda t: True, import_check=lambda: ['12 text files of Recording_QA are not at origin/main'])
+        self.assertIn('not all committed', str(cm.exception))
+        self.assertIn('battle_logs_import_packets', str(cm.exception))
+        self.assertTrue(os.path.isdir(self.t.qa))
+        self.assertFalse(os.path.exists(self.base))
+
+    def test_the_move_goes_ahead_when_the_import_is_current_and_says_so(self):
+        new, out = self.move(confirm=lambda t: True, import_check=lambda: [])
+        self.assertEqual(new, self.target)
+        self.assertIn('import check: every text output', out)
+
+    def test_the_dry_run_shows_what_is_not_current_without_refusing(self):
+        new, out = self.move(dry=True, import_check=lambda: ['3 text files differ'])
+        self.assertIsNone(new)
+        self.assertIn('IMPORT NOT CURRENT: 3 text files differ', out)
+        self.assertIn('would be refused', out)
+
+    def test_the_import_check_runs_again_after_the_answer_and_a_change_in_between_stops_the_move(self):
+        calls = []
+
+        def check():
+            calls.append(1)
+            return [] if len(calls) == 1 else ['2 text files of Recording_QA are not at origin/main']
+        with self.assertRaises(SystemExit) as cm:
+            self.move(confirm=lambda t: True, import_check=check)
+        self.assertEqual(len(calls), 2)
+        self.assertIn('changed while the question was open', str(cm.exception))
+        self.assertTrue(os.path.isdir(self.t.qa))
+        self.assertFalse(os.path.exists(self.base))
+
+    def test_a_declined_question_does_not_run_the_check_a_second_time(self):
+        calls = []
+        with self.assertRaises(SystemExit):
+            self.move(confirm=lambda t: False, import_check=lambda: calls.append(1) or [])
+        self.assertEqual(len(calls), 1)
+
+    def test_files_that_are_neither_text_outputs_nor_images_are_said_to_leave_the_cloud_without_a_copy(self):
+        _, out = self.move(dry=True, import_check=lambda: [], import_info={'uncopied': ['11 x not a text output: .zip (40.0 MB)']})
+        self.assertIn('WARNING', out)
+        self.assertIn('11 x not a text output: .zip (40.0 MB)', out)
+        self.assertIn('not copied into git', out)
+
+    def test_the_commit_the_import_check_read_is_printed(self):
+        _, out = self.move(dry=True, import_check=lambda: [], import_where='committed state read from origin/main (abc12345)')
+        self.assertIn('committed state read from origin/main (abc12345)', out)
+
+    @unittest.skipIf(os.name == 'nt', 'symlinks need privileges on Windows')
+    def test_a_link_in_place_of_recording_qa_is_refused_because_renaming_it_would_leave_the_data_behind(self):
+        other = os.path.join(self.t.root, 'links')
+        os.makedirs(other)
+        link = os.path.join(other, 'Recording_QA')
+        os.symlink(self.t.qa, link)
+        with self.assertRaises(SystemExit) as cm:
+            self.move(source=link, confirm=lambda t: True)
+        self.assertIn('is a link', str(cm.exception))
+        self.assertTrue(os.path.islink(link) and os.path.isdir(self.t.qa))
+        self.assertFalse(os.path.exists(self.base))
+
+    def test_a_new_parent_folder_that_is_an_existing_folder_with_letters_stuck_on_is_refused(self):
+        # C:/Users/dacz8\\BattleLogs\\Recording_QA arriving as C:/Users/dacz8BattleLogs/Recording_QA would create a folder next to dacz8
+        os.makedirs(os.path.join(self.t.root, 'Users'))
+        with self.assertRaises(SystemExit) as cm:
+            self.move(target=os.path.join(self.t.root, 'UsersBattleLogs', 'Recording_QA'), confirm=lambda t: True)
+        self.assertIn('lost backslash', str(cm.exception))
+        self.assertFalse(os.path.exists(os.path.join(self.t.root, 'UsersBattleLogs')))
+        self.assertTrue(os.path.isdir(self.t.qa))
+
+    def test_a_second_move_keeps_the_record_of_where_the_videos_are_and_videos_names_another_folder(self):
+        self.move(confirm=lambda t: True)
+        second = os.path.join(self.t.root, 'Again', 'Recording_QA')
+        self.move(source=self.target, target=second, confirm=lambda t: True)
+        rec = json.loads(read(os.path.join(second, bl.LOCATION_FILE)))
+        self.assertEqual(os.path.abspath(bl.to_local(rec['battle_logs'])), os.path.abspath(self.t.logs), 'the videos are still where they were, not in the folder Recording_QA was just in')
+        elsewhere = os.path.join(self.t.root, 'Videos')
+        os.makedirs(elsewhere)
+        third = os.path.join(self.t.root, 'Third', 'Recording_QA')
+        self.move(source=second, target=third, confirm=lambda t: True, videos_dir=elsewhere)
+        rec = json.loads(read(os.path.join(third, bl.LOCATION_FILE)))
+        self.assertEqual(os.path.abspath(bl.to_local(rec['battle_logs'])), os.path.abspath(elsewhere))
+
+    def test_two_recording_qa_folders_at_the_default_places_are_not_guessed_between(self):
+        a, b = (os.path.join(self.t.root, d, 'Recording_QA') for d in ('a', 'b'))
+        os.makedirs(a)
+        os.makedirs(b)
+        with mock.patch.object(bl, 'QA_CANDIDATES', [a, b]):
+            with self.assertRaises(SystemExit) as cm:
+                bl.find_qa_root()
+            self.assertIn('more than one Recording_QA', str(cm.exception))
+            self.assertEqual(bl.find_qa_root(b), os.path.abspath(b))
+        with mock.patch.object(bl, 'QA_CANDIDATES', [a, os.path.join(self.t.root, 'nope', 'Recording_QA')]):
+            self.assertEqual(bl.find_qa_root(), os.path.abspath(a))
+
+
+class Paths(unittest.TestCase):
+    @unittest.skipIf(os.name == 'nt', 'posix side')
+    def test_windows_paths_become_mnt_paths_in_wsl_and_back(self):
+        self.assertEqual(bl.to_local('C:/Users/dacz8/BattleLogs'), '/mnt/c/Users/dacz8/BattleLogs')
+        self.assertEqual(bl.to_local(r'C:\Users\dacz8\BattleLogs'), '/mnt/c/Users/dacz8/BattleLogs')
+        self.assertEqual(bl.to_local('D:/x/y'), '/mnt/d/x/y')
+        self.assertEqual(bl.to_windows('/mnt/c/Users/dacz8/BattleLogs/Recording_QA'), r'C:\Users\dacz8\BattleLogs\Recording_QA')
+        self.assertEqual(bl.to_forward('/mnt/c/Users/dacz8/BattleLogs/Recording_QA'), 'C:/Users/dacz8/BattleLogs/Recording_QA')
+        self.assertEqual(bl.to_windows('/tmp/x'), '/tmp/x')
+
+    def test_a_windows_path_that_lost_its_backslashes_on_the_way_through_wsl_is_refused_not_guessed(self):
+        # what the tool receives for C:\Users\dacz8\BattleLogs\Recording_QA typed after `wsl` in PowerShell
+        for p in ('C:Usersdacz8BattleLogsRecording_QA', 'D:Foo'):
+            with self.assertRaises(SystemExit) as cm:
+                bl.to_local(p)
+            self.assertIn('lost its backslashes', str(cm.exception))
+        with self.assertRaises(SystemExit):
+            bl.find_qa_root('C:Usersdacz8BattleLogsRecording_QA')
+
+    def test_the_hints_use_forward_slashes_and_not_the_environment_variable(self):
+        with open(os.path.join(HERE, 'battle_logs_cleanup.py'), encoding='utf-8') as f:
+            src = f.read()
+        self.assertNotIn('BATTLE_LOGS_QA', src)
+        self.assertNotIn('--no-git" or', src)
+
+    def test_fold_ignores_case_the_way_ntfs_does(self):
+        self.assertEqual(bl.fold('/mnt/c/Users/X/Recording_QA'), bl.fold('/mnt/C/users/x/RECORDING_qa'))
+
+    def test_a_qa_root_that_is_not_there_is_refused(self):
+        with self.assertRaises(SystemExit):
+            bl.find_qa_root(os.path.join(tempfile.gettempdir(), 'no_such_battle_logs_folder'))
+
+
+class GitWorld:
+    """a throwaway repo with committed games_meta/positions/audit list and an origin/main ref, as the tool reads them"""
+
+    def __init__(self, test, folders, accepted=True, pending=None):
+        self.repo = tempfile.mkdtemp()
+        test.addCleanup(shutil.rmtree, self.repo, True)
+        self.folders = folders
+        self.accepted = accepted
+        self.pending = pending or {}
+        self.write()
+        self.g('init', '-q', '-b', 'main')
+        self.commit('games and the audit list')
+
+    def g(self, *a, cwd=None):
+        return subprocess.run(['git', '-C', cwd or self.repo, '-c', 'user.name=t', '-c', 'user.email=t@t', *a], check=True, capture_output=True, text=True).stdout
+
+    def write(self):
+        base = os.path.join(self.repo, os.path.dirname(META))
+        meta, pos, games = {}, [], {}
+        for f in self.folders:
+            key = 'kw-' + f.split('/')[1][2:].replace('_iOS', '')
+            meta[key] = {'folder': f}
+            pos.append({'game': key})
+            games[key] = {'folder': f, 'games_meta': META, 'positions': 1, 'positions_sha256': bl.positions_digest([{'game': key}])}
+        write(os.path.join(base, 'games_meta.json'), json.dumps(meta))
+        write(os.path.join(base, 'positions_all.json'), json.dumps(pos))
+        self.games = games
+        audit = {'games': games, 'pending': self.pending, 'confirmed': accept(games) if self.accepted is True else self.accepted}
+        write(os.path.join(self.repo, AUDIT), json.dumps(audit))
+
+    def commit(self, msg):
+        self.g('add', '-A')
+        self.g('commit', '-q', '-m', msg)
+        self.g('update-ref', 'refs/remotes/origin/main', 'HEAD')
+
+    def delete_word(self):
+        """what --apply asks to be typed: DELETE and the first 8 hex digits of the games hash the acceptance covers"""
+        return 'DELETE ' + bl.games_hash(self.games)[:8]
+
+
+@unittest.skipUnless(HAVE_GIT, 'git not installed')
+class CommandLine(unittest.TestCase):
+    FOLDERS = ['BATCH_A/20261001_000000001_iOS']
+
+    def setUp(self):
+        self.t = Tree(self)
+        self.t.game('BATCH_A', '20261001_000000001_iOS')
+        self.t.game('BATCH_B', '20261001_000000002_iOS')
+        no_default(self)
+
+    def run_main(self, world, *argv, offline=True):
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out):
+            code = bl.main(['--qa-root', self.t.qa, '--repo', world.repo, *(['--allow-offline'] if offline else []), *argv])
+        return code, out.getvalue()
+
+    def main_raises(self, world, *argv, offline=True):
+        with self.assertRaises(SystemExit) as cm, contextlib.redirect_stdout(io.StringIO()):
+            bl.main(['--qa-root', self.t.qa, '--repo', world.repo, *(['--allow-offline'] if offline else []), *argv])
+        return str(cm.exception)
+
+    def test_the_default_is_a_dry_run_that_changes_nothing_and_says_why(self):
+        w = GitWorld(self, self.FOLDERS)
+        before = self.t.contents()
+        code, out = self.run_main(w)
+        self.assertEqual(code, 0)
+        self.assertEqual(self.t.contents(), before)
+        self.assertRegex(out, r'BATCH_A\s+DELETE')
+        self.assertRegex(out, r'BATCH_B\s+keep')
+        self.assertIn('not in the repo', out)
+        self.assertIn('acceptance: Dustin via the laptop, 2026-10-14', out)
+        self.assertIn('moves ONLY Recording_QA', out)
+        self.assertIn('videos and the rest of Battle Logs stay', out)
+        self.assertRegex(out, r'origin/main \([0-9a-f]{8}, committed \d{4}-')
+
+    def test_apply_deletes_the_passing_games_frames_from_the_committed_state_and_writes_the_log(self):
+        w = GitWorld(self, self.FOLDERS)
+        before = self.t.contents()
+        code, out = self.run_main(w, '--apply', '--yes')
+        after = self.t.contents()
+        gone = sorted(set(before) - set(after))
+        self.assertEqual(code, 0)
+        self.assertTrue(gone and all('BATCH_A' in p and p.lower().endswith(bl.FRAME_EXT) for p in gone))
+        self.assertIn('same SHA-256', out)
+        self.assertTrue([p for p in after if os.path.basename(p).startswith('CLEANUP_LOG_')])
+        self.assertIn('WARNING: origin could not be asked', out)
+
+    def test_apply_refuses_no_git_even_with_yes_and_a_confirmation_only_in_the_working_tree(self):
+        w = GitWorld(self, self.FOLDERS, accepted=None)                     # committed: not accepted
+        w.accepted = True
+        w.write()                                                           # accepted in the working tree only, never committed
+        before = self.t.contents()
+        self.assertIn('committed state of origin/main', self.main_raises(w, '--no-git', '--apply', '--yes'))
+        self.assertEqual(self.t.contents(), before)
+        self.main_raises(w, '--apply', '--yes')
+        self.assertEqual(self.t.contents(), before)
+
+    def test_apply_refuses_another_ref_unless_overridden_and_a_dry_run_may_read_any_ref(self):
+        w = GitWorld(self, self.FOLDERS)
+        before = self.t.contents()
+        self.assertIn('reads only the committed state of origin/main, not main', self.main_raises(w, '--ref', 'main', '--apply', '--yes'))
+        self.assertEqual(self.t.contents(), before)
+        code, out = self.run_main(w, '--ref', 'main', '--apply', '--yes', '--dry-run')
+        self.assertEqual((code, self.t.contents()), (0, before))
+        code, out = self.run_main(w, '--ref', 'main', '--apply', '--yes', '--allow-ref-other-than-origin-main')
+        self.assertEqual(code, 0)
+        self.assertNotEqual(self.t.contents(), before)
+
+    def test_apply_refuses_a_confirmed_string_that_says_no_even_through_git(self):
+        for value in ('no', 'pending', 'not yet - waiting for Dustin'):
+            w = GitWorld(self, self.FOLDERS, accepted=value)
+            before = self.t.contents()
+            self.assertIn('not an acceptance', self.main_raises(w, '--apply', '--yes'))
+            self.assertEqual(self.t.contents(), before)
+
+    def test_apply_refuses_when_the_games_changed_after_the_acceptance(self):
+        w = GitWorld(self, self.FOLDERS)
+        w.folders = self.FOLDERS + ['BATCH_B/20261001_000000002_iOS']
+        accepted_then = accept({'kw-261001_000000001': {'folder': self.FOLDERS[0], 'games_meta': META, 'positions': 1, 'positions_sha256': DIGEST}})
+        w.accepted = accepted_then
+        w.write()
+        w.commit('a game added to the list without a new acceptance')
+        before = self.t.contents()
+        self.assertIn('needs a new acceptance', self.main_raises(w, '--apply', '--yes'))
+        self.assertEqual(self.t.contents(), before)
+
+    def test_apply_refuses_when_origin_has_a_newer_main_than_the_local_origin_main(self):
+        w = GitWorld(self, self.FOLDERS)
+        bare = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, bare, True)
+        subprocess.run(['git', 'init', '-q', '--bare', '-b', 'main', bare], check=True)
+        w.g('remote', 'add', 'origin', bare)
+        w.g('push', '-q', 'origin', 'main')
+        w.g('fetch', '-q', 'origin')
+        other = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, other, True)
+        subprocess.run(['git', 'clone', '-q', bare, other], check=True, capture_output=True)
+        write(os.path.join(other, 'revocation.txt'), 'the audit list was revoked')
+        w.g('add', '-A', cwd=other)
+        w.g('commit', '-q', '-m', 'revoke', cwd=other)
+        w.g('push', '-q', 'origin', 'main', cwd=other)
+        before = self.t.contents()
+        self.assertIn('git fetch origin', self.main_raises(w, '--apply', '--yes'))
+        self.assertEqual(self.t.contents(), before)
+        w.g('fetch', '-q', 'origin')       # after fetching, the audit list is as committed and the run goes ahead
+        code, out = self.run_main(w, '--apply', '--yes')
+        self.assertEqual(code, 0)
+        self.assertNotIn('could not be asked', out)
+
+    def test_an_unreadable_apply_exits_non_zero_when_a_frame_could_not_be_deleted(self):
+        w = GitWorld(self, self.FOLDERS)
+        real = os.remove
+
+        def locked(p, **kw):
+            if p.endswith('t0001.jpg'):
+                raise PermissionError(13, 'locked')
+            real(p, **kw)
+        with mock.patch.object(bl.os, 'remove', locked):
+            code, out = self.run_main(w, '--apply', '--yes')
+        self.assertEqual(code, 1)
+        self.assertIn('INCOMPLETE', out)
+
+    def test_only_previews_that_batch_with_a_dry_run_and_an_unknown_batch_is_an_error(self):
+        w = GitWorld(self, self.FOLDERS + ['BATCH_B/20261001_000000002_iOS'])
+        before = self.t.contents()
+        code, out = self.run_main(w, '--apply', '--only', 'BATCH_A', '--dry-run')
+        self.assertEqual((code, self.t.contents()), (0, before))
+        self.assertIn('BATCH_A', out)
+        self.assertNotIn('BATCH_B ', out)
+        with self.assertRaises(SystemExit) as cm, contextlib.redirect_stdout(io.StringIO()):
+            bl.main(['--qa-root', self.t.qa, '--repo', w.repo, '--only', 'BATCH_NOPE'])
+        self.assertIn('do not exist', str(cm.exception))
+
+    def test_audit_hash_prints_what_an_acceptance_must_carry(self):
+        w = GitWorld(self, self.FOLDERS)
+        code, out = self.run_main(w, '--audit-hash')
+        want = bl.games_hash({'kw-261001_000000001': {'folder': self.FOLDERS[0], 'games_meta': META, 'positions': 1, 'positions_sha256': bl.positions_digest([{'game': 'kw-261001_000000001'}])}})
+        self.assertEqual(out.split()[0], want)
+        self.assertRegex(out, r'of the 1 games listed in .* at origin/main \([0-9a-f]{8}, committed ')
+
+    def test_apply_and_move_cannot_be_combined(self):
+        w = GitWorld(self, self.FOLDERS)
+        with self.assertRaises(SystemExit):
+            bl.main(['--qa-root', self.t.qa, '--repo', w.repo, '--apply', '--move-to', os.path.join(self.t.root, 'x', 'Recording_QA')])
+
+    def test_apply_without_a_terminal_or_yes_refuses(self):
+        w = GitWorld(self, self.FOLDERS)
+        before = self.t.contents()
+        with mock.patch.object(sys, 'stdin', io.StringIO('')), self.assertRaises(SystemExit) as cm, contextlib.redirect_stdout(io.StringIO()):
+            bl.main(['--qa-root', self.t.qa, '--repo', w.repo, '--allow-offline', '--apply'])
+        self.assertIn('no terminal', str(cm.exception))
+        self.assertEqual(self.t.contents(), before)
+
+    def test_move_to_moves_only_recording_qa_after_a_yes_when_the_import_check_is_skipped(self):
+        w = GitWorld(self, self.FOLDERS)
+        write(os.path.join(self.t.logs, 'MEDIA_LOCATIONS.json'), '{}')
+        target = os.path.join(self.t.root, 'Moved', 'Recording_QA')
+        code, out = self.run_main(w, '--move-to', target, '--yes', '--no-import-check')
+        self.assertEqual(code, 0)
+        self.assertTrue(os.path.isdir(os.path.join(target, 'BATCH_A')))
+        self.assertFalse(os.path.exists(self.t.qa))
+        self.assertTrue(os.path.exists(os.path.join(self.t.logs, 'MEDIA_LOCATIONS.json')))
+        self.assertIn('Codex should now use as its Recording_QA', out)
+
+    def test_move_to_refuses_without_a_current_import_and_moves_nothing(self):
+        w = GitWorld(self, self.FOLDERS)
+        before = self.t.contents()
+        self.assertIn('not all committed', self.main_raises(w, '--move-to', os.path.join(self.t.root, 'Moved', 'Recording_QA'), '--yes'))
+        self.assertEqual(self.t.contents(), before)
+
+    def test_move_to_goes_ahead_once_the_import_is_committed(self):
+        import battle_logs_import_packets as imp
+        w = GitWorld(self, self.FOLDERS)
+        with contextlib.redirect_stdout(io.StringIO()):
+            imp.run(self.t.logs, w.repo)
+        w.commit('the import')
+        target = os.path.join(self.t.root, 'Moved', 'Recording_QA')
+        code, out = self.run_main(w, '--move-to', target, '--yes')
+        self.assertEqual(code, 0)
+        self.assertIn('import check: every text output', out)
+        self.assertTrue(os.path.isdir(os.path.join(target, 'BATCH_A')))
+
+    # ---- the laptop's second review: freshness, the offline flag, the move's import check, the videos after a move
+    def with_remote(self, w):
+        """give the throwaway repo a bare origin that has its main; -> (bare path, a second clone to push from)"""
+        bare = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, bare, True)
+        subprocess.run(['git', 'init', '-q', '--bare', '-b', 'main', bare], check=True)
+        w.g('remote', 'add', 'origin', bare)
+        w.g('push', '-q', 'origin', 'main')
+        w.g('fetch', '-q', 'origin')
+        other = tempfile.mkdtemp()
+        self.addCleanup(shutil.rmtree, other, True)
+        subprocess.run(['git', 'clone', '-q', bare, other], check=True, capture_output=True)
+        return bare, other
+
+    def push_revocation(self, w, other):
+        write(os.path.join(other, 'revocation.txt'), 'the audit list was revoked')
+        w.g('add', '-A', cwd=other)
+        w.g('commit', '-q', '-m', 'revoke', cwd=other)
+        w.g('push', '-q', 'origin', 'main', cwd=other)
+
+    def test_apply_refuses_when_origin_cannot_be_asked_unless_it_is_told_to_go_on_offline(self):
+        # gating-n1: a failing `git ls-remote` was only a warning, so a withdrawn acceptance still deleted
+        w = GitWorld(self, self.FOLDERS)
+        before = self.t.contents()
+        msg = self.main_raises(w, '--apply', '--yes', offline=False)
+        self.assertIn('origin cannot be asked', msg)
+        self.assertIn('--allow-offline', msg)
+        self.assertEqual(self.t.contents(), before)
+        bare, other = self.with_remote(w)
+        os.rename(bare, bare + '_gone')
+        self.addCleanup(lambda: os.path.exists(bare + '_gone') and shutil.rmtree(bare + '_gone', True))
+        self.assertIn('origin cannot be asked', self.main_raises(w, '--apply', '--yes', offline=False))
+        self.assertEqual(self.t.contents(), before)
+        code, out = self.run_main(w, '--apply', '--yes')                                  # told to go on: it warns and deletes
+        self.assertEqual(code, 0)
+        self.assertIn('WARNING: origin could not be asked', out)
+        self.assertNotEqual(self.t.contents(), before)
+
+    def test_the_question_to_origin_never_waits_for_a_password(self):
+        w = GitWorld(self, self.FOLDERS)
+        seen = {}
+        real = subprocess.run
+
+        def spy(cmd, *a, **kw):
+            if 'ls-remote' in cmd:
+                seen['env'], seen['cmd'] = kw.get('env'), cmd
+            return real(cmd, *a, **kw)
+        with mock.patch.object(bl.subprocess, 'run', spy):
+            bl.RepoView(w.repo).remote_main()
+        self.assertEqual(seen['env']['GIT_TERMINAL_PROMPT'], '0')
+        self.assertEqual(seen['cmd'][-2:], ['origin', 'refs/heads/main'])
+
+    def test_a_revocation_pushed_while_the_delete_question_is_open_is_seen_after_the_answer(self):
+        w = GitWorld(self, self.FOLDERS)
+        bare, other = self.with_remote(w)
+        before = self.t.contents()
+
+        def answer(prompt):
+            self.push_revocation(w, other)                 # pushed while the question is open
+            return w.delete_word()
+        fake_stdin = mock.Mock()
+        fake_stdin.isatty.return_value = True
+        with mock.patch.object(sys, 'stdin', fake_stdin), mock.patch('builtins.input', answer):
+            msg = self.main_raises(w, '--apply')
+        self.assertIn('git fetch origin', msg)
+        self.assertEqual(self.t.contents(), before, 'nothing was deleted')
+
+    def test_origin_is_asked_for_refs_heads_main_only_so_a_branch_that_ends_in_main_cannot_stand_in_for_it(self):
+        # gating-n2: `git ls-remote origin main` matched backup/main too and took the first line
+        w = GitWorld(self, self.FOLDERS)
+        bare, other = self.with_remote(w)
+        stale = w.g('rev-parse', 'HEAD').strip()
+        w.g('push', '-q', 'origin', 'HEAD:refs/heads/backup/main')                 # a snapshot branch at the accepted commit
+        self.push_revocation(w, other)                                              # main moves on with a revocation; this clone has not fetched
+        self.assertEqual(bl.RepoView(w.repo).remote_main()[0], w.g('ls-remote', 'origin', 'refs/heads/main').split()[0])
+        self.assertNotEqual(bl.RepoView(w.repo).remote_main()[0], stale)
+        before = self.t.contents()
+        self.assertIn('git fetch origin', self.main_raises(w, '--apply', '--yes'))
+        self.assertEqual(self.t.contents(), before)
+
+    def test_a_local_branch_named_origin_main_does_not_stand_in_for_the_remote_tracking_ref(self):
+        w = GitWorld(self, self.FOLDERS)
+        first = w.g('rev-parse', 'HEAD').strip()
+        write(os.path.join(w.repo, 'later.txt'), 'later')
+        w.commit('a later commit (origin/main moves here)')
+        w.g('branch', 'origin/main', first)                                         # a local branch with the remote-tracking ref's short name
+        self.assertEqual(bl.RepoView(w.repo).commit_full, w.g('rev-parse', 'refs/remotes/origin/main').strip())
+        self.assertNotEqual(bl.RepoView(w.repo).commit_full, first)
+
+    def test_audit_hash_refuses_when_the_list_is_not_committed_at_the_ref_and_needs_no_recording_qa(self):
+        # gating-n5: it printed the hash of an empty list (sha256 of "{}") and needed Recording_QA
+        w = GitWorld(self, self.FOLDERS)
+        w.g('rm', '-q', AUDIT)
+        w.commit('the audit list removed')
+        with self.assertRaises(SystemExit) as cm, contextlib.redirect_stdout(io.StringIO()):
+            bl.main(['--qa-root', os.path.join(self.t.root, 'nowhere'), '--repo', w.repo, '--audit-hash'])
+        self.assertIn('is not committed at', str(cm.exception))
+        w2 = GitWorld(self, self.FOLDERS)
+        out = io.StringIO()
+        with contextlib.redirect_stdout(out):
+            self.assertEqual(bl.main(['--qa-root', os.path.join(self.t.root, 'nowhere'), '--repo', w2.repo, '--audit-hash']), 0)
+        self.assertRegex(out.getvalue(), r'^[0-9a-f]{64}  \(games_sha256 of the 1 games')
+
+    def test_main_exits_1_when_a_packet_was_skipped_even_though_nothing_failed(self):
+        # platform-4: apply_deletions printed INCOMPLETE but main() returned 0 because only failed deletions counted
+        w = GitWorld(self, self.FOLDERS)
+        ledger = os.path.join(self.t.qa, 'BATCH_A', '20261001_000000001_iOS', 'TURN_LEDGER.json')
+        real = bl.check_fresh
+        calls = []
+
+        def vanish(*a, **kw):
+            real(*a, **kw)
+            calls.append(1)
+            if len(calls) == 1:
+                os.remove(ledger)                          # between the scan and the inventory
+        with mock.patch.object(bl, 'check_fresh', vanish):
+            code, out = self.run_main(w, '--apply', '--yes')
+        self.assertEqual(code, 1)
+        self.assertIn('SKIPPED BATCH_A/20261001_000000001_iOS', out)
+        self.assertIn('INCOMPLETE: 0 frames could not be deleted and 1 packets were skipped', out)
+        self.assertTrue(os.path.exists(os.path.join(self.t.qa, 'BATCH_A', '20261001_000000001_iOS', 'turn_evidence', 't0000.jpg')))
+
+    def test_videos_names_the_folder_and_a_name_that_is_not_a_folder_is_refused(self):
+        w = GitWorld(self, self.FOLDERS)
+        elsewhere = os.path.join(self.t.root, 'elsewhere videos')
+        os.makedirs(os.path.join(elsewhere, 'Reviewed'))
+        shutil.move(os.path.join(self.t.logs, '20261001_000000001_iOS.MP4'), os.path.join(elsewhere, 'Reviewed', '20261001_000000001_iOS.MP4'))
+        code, out = self.run_main(w)
+        self.assertRegex(out, r'BATCH_A\s+keep')
+        self.assertIn('--videos PATH names the folder', out)
+        code, out = self.run_main(w, '--videos', elsewhere)
+        self.assertRegex(out, r'BATCH_A\s+DELETE')
+        self.assertIn('Source videos looked for in: ' + elsewhere + ' (--videos)', out)
+        self.assertIn('is not a folder', self.main_raises(w, '--videos', os.path.join(self.t.root, 'nope')))
+
+    def test_after_the_move_the_tool_still_finds_the_videos_and_the_next_round_can_run(self):
+        # platform-n1 / scope-n2 through the command line
+        w = GitWorld(self, self.FOLDERS)
+        target = os.path.join(self.t.root, 'Moved', 'Recording_QA')
+        code, out = self.run_main(w, '--move-to', target, '--yes', '--no-import-check')
+        self.assertEqual(code, 0)
+        self.assertIn(bl.LOCATION_FILE, out)
+        moved_out = io.StringIO()
+        with contextlib.redirect_stdout(moved_out):
+            bl.main(['--qa-root', target, '--repo', w.repo, '--allow-offline'])
+        self.assertRegex(moved_out.getvalue(), r'BATCH_A\s+DELETE')
+        self.assertIn(bl.LOCATION_FILE, moved_out.getvalue())
+
+    def test_move_to_refuses_no_git_and_another_ref_like_apply_does_and_a_dry_run_says_what_it_did_not_check(self):
+        # platform-n2: the import check passed on an import that was only in the working tree, and the tool said "committed"
+        import battle_logs_import_packets as imp
+        w = GitWorld(self, self.FOLDERS)
+        with contextlib.redirect_stdout(io.StringIO()):
+            imp.run(self.t.logs, w.repo)                      # written into the working tree, never committed
+        target = os.path.join(self.t.root, 'Moved', 'Recording_QA')
+        before = self.t.contents()
+        self.assertIn('--move-to (its import check) reads only the committed state of origin/main', self.main_raises(w, '--move-to', target, '--yes', '--no-git'))
+        self.assertIn('not main', self.main_raises(w, '--move-to', target, '--yes', '--ref', 'main'))
+        self.assertEqual(self.t.contents(), before)
+        self.assertFalse(os.path.exists(os.path.join(self.t.root, 'Moved')))
+        code, out = self.run_main(w, '--move-to', target, '--dry-run', '--no-git')
+        self.assertEqual(code, 0)
+        self.assertIn('present in the working tree of the checkout (NOT checked against git', out)
+        self.assertNotIn('is committed, byte for byte', out)
+        self.assertEqual(self.t.contents(), before)
+
+    def test_move_to_refuses_when_origin_has_a_newer_main_than_this_checkout(self):
+        import battle_logs_import_packets as imp
+        w = GitWorld(self, self.FOLDERS)
+        with contextlib.redirect_stdout(io.StringIO()):
+            imp.run(self.t.logs, w.repo)
+        w.commit('the import')
+        bare, other = self.with_remote(w)
+        w.g('push', '-q', 'origin', 'main')
+        w.g('fetch', '-q', 'origin')
+        self.push_revocation(w, other)
+        before = self.t.contents()
+        self.assertIn('git fetch origin', self.main_raises(w, '--move-to', os.path.join(self.t.root, 'Moved', 'Recording_QA'), '--yes'))
+        self.assertEqual(self.t.contents(), before)
+
+    def test_the_dry_run_counts_links_it_did_not_examine(self):
+        if os.name == 'nt':
+            self.skipTest('symlinks need privileges on Windows')
+        w = GitWorld(self, self.FOLDERS)
+        os.symlink(self.t.root, os.path.join(self.t.qa, 'BATCH_A', '20261001_000000001_iOS', 'a_link'))
+        code, out = self.run_main(w)
+        self.assertIn('links or unreadable entries NOT examined', out)
+
+
+@unittest.skipUnless(HAVE_GIT, 'git not installed')
+class MoreOnTheCommandLine(unittest.TestCase):
+    FOLDERS = CommandLine.FOLDERS
+    setUp = CommandLine.setUp
+    run_main = CommandLine.run_main
+    main_raises = CommandLine.main_raises
+    with_remote = CommandLine.with_remote
+    push_revocation = CommandLine.push_revocation
+
+    def typing(self, w, answers, *argv):
+        """run main() as if at a terminal that is answered with `answers` (a list of what is typed, in turn); -> (exit code or message, the prompts shown)"""
+        prompts, replies = [], list(answers)
+
+        def fake_input(prompt):
+            prompts.append(prompt)
+            return replies.pop(0)
+        fake_stdin = mock.Mock()
+        fake_stdin.isatty.return_value = True
+        out = io.StringIO()
+        with mock.patch.object(sys, 'stdin', fake_stdin), mock.patch('builtins.input', fake_input), contextlib.redirect_stdout(out):
+            try:
+                code = bl.main(['--qa-root', self.t.qa, '--repo', w.repo, '--allow-offline', *argv])
+            except SystemExit as e:
+                code = str(e)
+        return code, prompts, out.getvalue()
+
+    def test_delete_needs_the_word_with_the_first_digits_of_the_hash_the_acceptance_covers(self):
+        w = GitWorld(self, self.FOLDERS)
+        before = self.t.contents()
+        for wrong in ('DELETE', 'delete', 'yes', 'DELETE 00000000', 'DELETE ' + bl.games_hash(w.games)[:7], ''):
+            code, prompts, _ = self.typing(w, [wrong], '--apply')
+            self.assertIn('not confirmed', str(code), wrong)
+            self.assertEqual(self.t.contents(), before, wrong)
+        self.assertIn('Type ' + w.delete_word() + ' to go ahead', prompts[0])
+        self.assertIn('Accepted by Dustin via the laptop on 2026-10-14', prompts[0])
+        self.assertIn('games_sha256 ' + bl.games_hash(w.games)[:8], prompts[0])
+        code, prompts, out = self.typing(w, [w.delete_word()], '--apply')
+        self.assertEqual(code, 0)
+        self.assertNotEqual(self.t.contents(), before)
+
+    def test_origin_that_pushes_somewhere_else_than_it_fetches_from_is_refused(self):
+        w = GitWorld(self, self.FOLDERS)
+        bare, other = self.with_remote(w)
+        w.g('remote', 'set-url', '--push', 'origin', bare + '_elsewhere')
+        before = self.t.contents()
+        self.assertIn('fetched from one place and pushed to another', self.main_raises(w, '--apply', '--yes'))
+        self.assertEqual(self.t.contents(), before)
+
+    def test_origin_answers_count_only_when_the_ref_is_exactly_refs_heads_main(self):
+        w = GitWorld(self, self.FOLDERS)
+        done = mock.Mock(stdout='a' * 40 + '\trefs/heads/mainx\n', returncode=0, stderr='')
+        with mock.patch.object(bl.subprocess, 'run', return_value=done):
+            self.assertIsNone(bl.RepoView(w.repo).remote_main()[0])
+        done.stdout = 'a' * 40 + '\trefs/heads/main\n'
+        with mock.patch.object(bl.subprocess, 'run', return_value=done):
+            self.assertEqual(bl.RepoView(w.repo).remote_main(), ('a' * 40, None))
+
+    def test_a_source_video_that_goes_while_the_delete_question_is_open_costs_only_that_packet(self):
+        w = GitWorld(self, self.FOLDERS + ['BATCH_B/20261001_000000002_iOS'])
+        video = os.path.join(self.t.logs, '20261001_000000001_iOS.MP4')
+        word = w.delete_word()
+
+        def answers():
+            os.remove(video)
+            return word
+        fake_stdin = mock.Mock()
+        fake_stdin.isatty.return_value = True
+        out = io.StringIO()
+        with mock.patch.object(sys, 'stdin', fake_stdin), mock.patch('builtins.input', lambda p: answers()), contextlib.redirect_stdout(out):
+            code = bl.main(['--qa-root', self.t.qa, '--repo', w.repo, '--allow-offline', '--apply'])
+        self.assertEqual(code, 1, 'a skipped packet is an incomplete run')
+        self.assertIn('SKIPPED BATCH_A/20261001_000000001_iOS', out.getvalue())
+        self.assertTrue(os.path.exists(os.path.join(self.t.qa, 'BATCH_A', '20261001_000000001_iOS', 'turn_evidence', 't0000.jpg')))
+        self.assertFalse(os.path.exists(os.path.join(self.t.qa, 'BATCH_B', '20261001_000000002_iOS', 'turn_evidence', 't0000.jpg')))
+
+    def test_the_move_dry_run_says_which_commit_its_import_check_read_and_that_origin_was_not_asked(self):
+        w = GitWorld(self, self.FOLDERS)
+        code, out = self.run_main(w, '--move-to', os.path.join(self.t.root, 'Moved', 'Recording_QA'), '--dry-run')
+        self.assertEqual(code, 0)
+        self.assertRegex(out, r'committed state read from origin/main \([0-9a-f]{8}, committed \d{4}-.*origin was NOT asked')
+        self.assertIn('git fetch origin', out)
+
+
+class ArchiveBase(unittest.TestCase):
+    NAME = '20261001_000000001_iOS.MP4'
+    PACKET = 'BATCH_A/20261001_000000001_iOS'
+    BODY = b'v' * VIDEO_BYTES
+
+    def setUp(self):
+        self.t = Tree(self)
+        self.t.game('BATCH_A', '20261001_000000001_iOS', video=None)
+        self.sha = __import__('hashlib').sha256(self.BODY).hexdigest()
+        self.cache = os.path.join(self.t.root, 'Cache', 'raw')
+        self.stub_dir = os.path.join(self.t.root, 'stub')
+        write(os.path.join(self.stub_dir, 'mode'), 'ok')
+        write(os.path.join(self.stub_dir, 'check.py'), STUB)
+        self.cmd = f'{sys.executable} {os.path.join(self.stub_dir, "check.py")} {{id}}'
+
+    def mode(self, m):
+        write(os.path.join(self.stub_dir, 'mode'), m)
+
+    def record(self, **kw):
+        r = {'filename': self.NAME, 'bytes': VIDEO_BYTES, 'sha256': self.sha,
+             'google_drive_archive': {'file_id': 'FID123', 'original_retained': False, 'provider_checksums': {'sha256': self.sha, 'md5': 'md5md5'}}}
+        r.update(kw)
+        return r
+
+    def archive(self, records=None, cmd=None, timeout=5):
+        recs = {self.NAME.lower(): records if records is not None else [self.record()]}
+        return bl.Archive(recs, self.cache, cmd, timeout)
+
+    def put_cache(self, body=None, sha=None):
+        write(os.path.join(self.cache, sha or self.sha, self.NAME), self.BODY if body is None else body)
+
+    def verdict(self, archive, fresh=False):
+        game = bl.scan_qa(self.t.qa, self.t.videos(), '', archive)[0].games[0]
+        return game.video if not fresh else bl.check_video(game, self.t.videos(), fresh=True, archive=archive)
+
+
+class ArchivedVideos(ArchiveBase):
+    """a video that is no longer in Battle Logs: found in the download cache (size and SHA-256), or in Google Drive only with a live check right before the deletion"""
+    # --- the cache
+    def test_a_cache_copy_with_the_recorded_size_and_sha256_counts(self):
+        self.put_cache()
+        self.assertEqual(self.verdict(self.archive()), (True, ''))
+        d = bl.decide(bl.scan_qa(self.t.qa, self.t.videos(), '', self.archive()), index([self.PACKET]))[0]
+        self.assertTrue(d.delete)
+
+    def test_a_cache_copy_with_the_wrong_sha256_does_not(self):
+        self.put_cache(body=b'w' * VIDEO_BYTES)             # right size, other content
+        ok, why = self.verdict(self.archive())
+        self.assertFalse(ok)
+        self.assertIn('has SHA-256', why)
+
+    def test_a_cache_copy_with_the_wrong_size_does_not(self):
+        self.put_cache(body=self.BODY[:-1])
+        ok, why = self.verdict(self.archive())
+        self.assertFalse(ok)
+        self.assertIn('has 999 bytes', why)
+
+    def test_a_record_that_points_nowhere_does_not_count(self):
+        ok, why = self.verdict(self.archive([self.record(google_drive_archive=None)]))
+        self.assertFalse(ok)
+        self.assertIn('not in the cache', why)
+        ok, why = self.verdict(self.archive([]))              # no record at all: the old message
+        self.assertIn('not found in Battle Logs', why)
+
+    def test_a_record_with_another_size_than_the_packet_gives_no_cache_hit(self):
+        self.put_cache()
+        self.assertFalse(self.verdict(self.archive([self.record(bytes=VIDEO_BYTES + 1)]))[0])
+
+    def test_a_sha256_in_source_json_must_agree_with_the_record(self):
+        self.put_cache()
+        gp = os.path.join(self.t.qa, 'BATCH_A', '20261001_000000001_iOS')
+        write(os.path.join(gp, 'SOURCE.json'), json.dumps({'video_basename': self.NAME, 'bytes': VIDEO_BYTES, 'sha256': 'cd' * 32}))
+        self.assertFalse(self.verdict(self.archive())[0])
+        write(os.path.join(gp, 'SOURCE.json'), json.dumps({'video_basename': self.NAME, 'bytes': VIDEO_BYTES, 'sha256': self.sha}))
+        self.assertTrue(self.verdict(self.archive())[0])
+
+    def test_a_linked_cache_file_does_not_count(self):
+        write(os.path.join(self.t.root, 'elsewhere', self.NAME), self.BODY)
+        os.makedirs(os.path.join(self.cache, self.sha))
+        os.symlink(os.path.join(self.t.root, 'elsewhere', self.NAME), os.path.join(self.cache, self.sha, self.NAME))
+        self.assertIn('link', self.verdict(self.archive())[1])
+
+    def test_a_local_copy_still_counts_without_any_archive(self):
+        write(os.path.join(self.t.logs, self.NAME), self.BODY)
+        self.assertTrue(self.verdict(self.archive([]))[0])
+        self.assertTrue(self.verdict(None)[0])
+
+    # --- Drive
+    def test_a_drive_only_video_with_no_command_is_never_confirmed_and_the_dry_run_says_so(self):
+        ok, why = self.verdict(self.archive())
+        self.assertFalse(ok)
+        self.assertIn('no live Drive check is configured', why)
+        self.assertIn('a record alone never counts', why)
+        d = bl.decide(bl.scan_qa(self.t.qa, self.t.videos(), '', self.archive()), index([self.PACKET]))
+        out = io.StringIO()
+        bl.report(d, FakeView(), self.t.qa, index([self.PACKET]), verbose=True, out=out, archive=self.archive())
+        self.assertIn('NOT configured', out.getvalue())
+        self.assertIn('stays 20261001_000000001_iOS', out.getvalue())
+
+    def test_a_live_check_that_finds_it_in_drive_not_trashed_with_the_size_counts(self):
+        self.assertEqual(self.verdict(self.archive(cmd=self.cmd)), (True, ''))
+
+    def test_the_id_is_appended_when_the_template_has_no_placeholder(self):
+        a = self.archive(cmd=f'{sys.executable} {os.path.join(self.stub_dir, "check.py")}')
+        self.assertTrue(self.verdict(a)[0])
+
+    def test_a_trashed_or_missing_or_resized_or_unsure_file_is_held(self):
+        for m, word in (('trashed', 'Trash'), ('gone', 'does not exist'), ('size', 'bytes'), ('md5', 'md5'), ('notrashedfield', 'Trash'), ('trashstring', 'Trash'),
+                        ('otherid', 'another file'), ('nosize', 'bytes'), ('sizebool', 'bytes')):
+            with self.subTest(m):
+                self.mode(m)
+                ok, why = self.verdict(self.archive(cmd=self.cmd))
+                self.assertFalse(ok)
+                self.assertIn(word, why)
+
+    def test_a_check_that_fails_hangs_or_prints_rubbish_is_not_a_confirmation(self):
+        for m, word in (('error', 'failed'), ('badjson', 'did not print JSON'), ('list', 'unexpected shape'), ('empty', 'did not print JSON'), ('timeout', 'more than 1 s')):
+            with self.subTest(m):
+                self.mode(m)
+                ok, why = self.verdict(self.archive(cmd=self.cmd, timeout=1))
+                self.assertFalse(ok)
+                self.assertIn(word, why)
+        ok, why = self.verdict(self.archive(cmd=os.path.join(self.t.root, 'no_such_program') + ' {id}'))
+        self.assertFalse(ok)
+        self.assertIn('could not be run', why)
+
+    def test_a_drive_record_with_another_size_than_the_packet_is_held_without_asking(self):
+        self.assertFalse(self.verdict(self.archive([self.record(bytes=5)], cmd=self.cmd))[0])
+
+    def test_the_scan_asks_drive_once_per_file_but_the_check_before_a_deletion_asks_every_time(self):
+        a = self.archive(cmd=self.cmd)
+        calls = []
+        real = a._live_check
+        a._live_check = lambda *x: calls.append(1) or real(*x)
+        self.verdict(a)
+        self.verdict(a)
+        self.assertEqual(len(calls), 1, 'the scan remembers the answer for a file id')
+        game = bl.scan_qa(self.t.qa, self.t.videos(), '', a)[0].games[0]
+        bl.check_video(game, self.t.videos(), fresh=True, archive=a)
+        bl.check_video(game, self.t.videos(), fresh=True, archive=a)
+        self.assertEqual(len(calls), 3, 'the check before a deletion asks Drive every time')
+
+    # --- right before the deletion
+    def apply(self, archive, confirm):
+        idx = index([self.PACKET])
+        vids = self.t.videos()
+        d = bl.decide(bl.scan_qa(self.t.qa, vids, '', archive), idx)
+        out = io.StringIO()
+        res = bl.apply_deletions(d, self.t.qa, idx, confirm=confirm, out=out, video_check=lambda g: bl.check_video(g, vids, fresh=True, archive=archive))
+        return res, out.getvalue(), os.path.join(self.t.qa, 'BATCH_A', '20261001_000000001_iOS', 'turn_evidence', 't0000.jpg')
+
+    def test_a_cache_file_that_vanishes_while_the_question_is_open_leaves_the_frames(self):
+        self.put_cache()
+
+        def meanwhile(*a):
+            os.remove(os.path.join(self.cache, self.sha, self.NAME))
+            return True
+        res, out, frame = self.apply(self.archive(), meanwhile)
+        self.assertEqual(res.skipped, 1)
+        self.assertIn('checked again just before deletion', out)
+        self.assertTrue(os.path.exists(frame))
+
+    def test_a_cache_file_changed_while_the_question_is_open_leaves_the_frames(self):
+        self.put_cache()
+
+        def meanwhile(*a):
+            write(os.path.join(self.cache, self.sha, self.NAME), b'w' * VIDEO_BYTES)
+            return True
+        res, out, frame = self.apply(self.archive(), meanwhile)
+        self.assertEqual(res.skipped, 1)
+        self.assertTrue(os.path.exists(frame))
+
+    def test_a_drive_file_that_goes_to_trash_while_the_question_is_open_leaves_the_frames(self):
+        def meanwhile(*a):
+            self.mode('trashed')
+            return True
+        res, out, frame = self.apply(self.archive(cmd=self.cmd), meanwhile)
+        self.assertEqual(res.skipped, 1)
+        self.assertIn('Trash', out)
+        self.assertTrue(os.path.exists(frame))
+
+    def test_with_the_cache_or_drive_still_good_the_frames_go(self):
+        res, out, frame = self.apply(self.archive(cmd=self.cmd), lambda *a: True)
+        self.assertEqual(res.skipped, 0)
+        self.assertFalse(os.path.exists(frame))
+
+    def test_the_options_reach_the_tool_and_a_dry_run_with_no_command_says_drive_only_is_not_confirmed(self):
+        self.put_cache()
+        ml = os.path.join(self.t.logs, bl.MEDIA_LOCATIONS)
+        write(ml, json.dumps({'moved': [self.record()]}))
+        a = bl.Archive.load([ml], self.cache, None)
+        self.assertEqual(len(a.records[self.NAME.lower()]), 1)
+        self.assertTrue(self.verdict(a)[0])
+        write(ml, '{not json')
+        self.assertTrue(bl.Archive.load([ml], self.cache).warnings)
+
+
+HELPER_STUB = r"""
+import argparse, json, os, sys, time
+here = os.path.dirname(os.path.abspath(__file__))
+mode = open(os.path.join(here, 'mode')).read().strip()
+sha = open(os.path.join(here, 'sha')).read().strip()
+open(os.path.join(here, 'calls'), 'a').write('x')
+p = argparse.ArgumentParser()
+p.add_argument('action'); p.add_argument('--file-id', required=True); p.add_argument('--parent-id', required=True)
+a = p.parse_args()
+j = {'provider': 'google_drive', 'file_id': a.file_id, 'filename': '20261001_000000001_iOS.MP4', 'bytes': 1000, 'mime_type': 'video/mp4', 'parent_ids': [a.parent_id],
+     'provider_checksums': {'md5Checksum': 'md5md5', 'sha256Checksum': sha}}
+if mode == 'error': sys.stderr.write('Drive media error: boom\n'); sys.exit(2)
+elif mode == 'badjson': print('{oops'); sys.exit(0)
+elif mode == 'list': print('[]'); sys.exit(0)
+elif mode == 'empty': sys.exit(0)
+elif mode == 'timeout': time.sleep(10)
+elif mode == 'otherfile': j['file_id'] = 'OTHER'
+elif mode == 'noparent': j['parent_ids'] = ['SOMEWHERE_ELSE']
+elif mode == 'parentstr': j['parent_ids'] = a.parent_id
+elif mode == 'bytes': j['bytes'] = 999
+elif mode == 'bytesstr': j['bytes'] = '1000'
+elif mode == 'name': j['filename'] = 'other.MP4'
+elif mode == 'md5': j['provider_checksums']['md5Checksum'] = 'other'
+elif mode == 'sha': j['provider_checksums']['sha256Checksum'] = 'c' * 64
+elif mode == 'nosums': j['provider_checksums'] = {}
+elif mode == 'nosumsfield': del j['provider_checksums']
+elif mode == 'md5only': del j['provider_checksums']['sha256Checksum']
+elif mode == 'shaonly': del j['provider_checksums']['md5Checksum']
+print(json.dumps(j))
+"""
+
+
+class ArchiveHardening(ArchiveBase):
+    """Astra's findings of Oct 19: a fresh cache check hashes again and sees one steady file, Drive fallbacks refuse a conflicting identity, Drive-native records count like archive ones,
+    and the live check is Codex's metadata helper through a fail-closed adapter"""
+    PARENT = 'PARENT123'
+
+    def setUp(self):
+        super().setUp()
+        write(os.path.join(self.stub_dir, 'sha'), self.sha)
+        write(os.path.join(self.stub_dir, 'helper.py'), HELPER_STUB)
+        self.helper = ([sys.executable, os.path.join(self.stub_dir, 'helper.py'), 'metadata'], None)
+
+    def record(self, **kw):
+        r = super().record(**kw)
+        if r.get('google_drive_archive'):
+            r['google_drive_archive']['parent_id'] = self.PARENT
+        return r
+
+    def harchive(self, records=None, timeout=5, cmd=None):
+        recs = {self.NAME.lower(): records if records is not None else [self.record()]}
+        return bl.Archive(recs, self.cache, cmd, timeout, helper=self.helper)
+
+    def set_source(self, **kw):
+        write(os.path.join(self.t.qa, 'BATCH_A', '20261001_000000001_iOS', 'SOURCE.json'), json.dumps({'video_basename': self.NAME, 'bytes': VIDEO_BYTES, **kw}))
+
+    def calls(self):
+        p = os.path.join(self.stub_dir, 'calls')
+        if not os.path.exists(p):
+            return 0
+        with open(p) as f:
+            return len(f.read())
+
+    # --- 1: a fresh check hashes again, and sees one steady file
+    def swap(self, body):
+        fp = os.path.join(self.cache, self.sha, self.NAME)
+        st = os.stat(fp)
+        tmp = fp + '.new'
+        write(tmp, body)
+        os.utime(tmp, ns=(st.st_atime_ns, st.st_mtime_ns))
+        os.replace(tmp, fp)                     # another inode, the same size and modification time
+        self.assertEqual((os.stat(fp).st_size, os.stat(fp).st_mtime_ns), (st.st_size, st.st_mtime_ns))
+
+    def test_a_cache_file_replaced_with_the_same_size_and_mtime_is_caught_by_the_fresh_check(self):
+        self.put_cache()
+        a = self.archive()
+        game = bl.scan_qa(self.t.qa, self.t.videos(), '', a)[0].games[0]
+        self.assertEqual(game.video, (True, ''))
+        self.swap(b'w' * VIDEO_BYTES)
+        ok, why = bl.check_video(game, self.t.videos(), fresh=True, archive=a)
+        self.assertFalse(ok)
+        self.assertIn('has SHA-256', why)
+
+    def test_a_cache_file_rewritten_in_place_with_the_same_size_and_mtime_is_caught_by_the_fresh_check(self):
+        self.put_cache()
+        a = self.archive()
+        game = bl.scan_qa(self.t.qa, self.t.videos(), '', a)[0].games[0]
+        fp = os.path.join(self.cache, self.sha, self.NAME)
+        st = os.stat(fp)
+        with open(fp, 'r+b') as f:
+            f.write(b'w' * VIDEO_BYTES)
+        os.utime(fp, ns=(st.st_atime_ns, st.st_mtime_ns))       # the same inode, size and modification time: only hashing again can tell
+        self.assertFalse(bl.check_video(game, self.t.videos(), fresh=True, archive=a)[0])
+
+    def test_the_fresh_check_hashes_every_time_and_the_scan_remembers(self):
+        self.put_cache()
+        a, n = self.archive(), []
+        real = bl.hashlib.sha256
+        bl.hashlib.sha256 = lambda *x: n.append(1) or real(*x)
+        try:
+            a.cache_check(self.NAME, VIDEO_BYTES)
+            a.cache_check(self.NAME, VIDEO_BYTES)
+            self.assertEqual(len(n), 1)
+            a.cache_check(self.NAME, VIDEO_BYTES, fresh=True)
+            a.cache_check(self.NAME, VIDEO_BYTES, fresh=True)
+            self.assertEqual(len(n), 3)
+        finally:
+            bl.hashlib.sha256 = real
+
+    def test_a_file_that_changes_while_it_is_read_is_not_confirmed(self):
+        self.put_cache()
+        a, real, done = self.archive(), bl.hashlib.sha256, []
+
+        def sneaky(*x):
+            h = real(*x)
+            if not done:
+                done.append(1)
+                self.swap(b'v' * VIDEO_BYTES)               # the same bytes, but a different file
+            return h
+        bl.hashlib.sha256 = sneaky
+        try:
+            ok, why = a.cache_check(self.NAME, VIDEO_BYTES, fresh=True)
+        finally:
+            bl.hashlib.sha256 = real
+        self.assertFalse(ok)
+        self.assertIn('cannot be read steadily', why)
+
+    def test_a_file_that_grows_or_is_touched_while_it_is_read_is_not_confirmed(self):
+        self.put_cache()
+        a, real, done = self.archive(), bl.hashlib.sha256, []
+        fp = os.path.join(self.cache, self.sha, self.NAME)
+
+        def sneaky(*x):
+            if not done:
+                done.append(1)
+                os.utime(fp, ns=(1, 1))
+            return real(*x)
+        bl.hashlib.sha256 = sneaky
+        try:
+            self.assertFalse(a.cache_check(self.NAME, VIDEO_BYTES, fresh=True)[0])
+        finally:
+            bl.hashlib.sha256 = real
+
+    # --- 2: a conflicting SOURCE.json sha256 refuses every fallback
+    def conflict_record(self):
+        b = 'b' * 64
+        return self.record(sha256=b, google_drive_archive={'file_id': 'FID123', 'parent_id': self.PARENT, 'provider_checksums': {'sha256': b, 'md5': 'md5md5'}})
+
+    def test_a_source_sha256_that_conflicts_with_the_registry_and_a_live_checker_that_agrees_with_the_registry_is_held(self):
+        self.set_source(sha256=self.sha)                    # SOURCE.json says A, the registry, the provider record and the live check say B
+        self.mode('sha_b')
+        for fresh in (False, True):
+            ok, why = self.verdict(self.archive([self.conflict_record()], cmd=self.cmd), fresh=fresh)
+            self.assertFalse(ok, fresh)
+            self.assertIn('sha256 differs', why)
+        self.set_source(sha256='b' * 64)                    # control: all agree
+        self.assertTrue(self.verdict(self.archive([self.conflict_record()], cmd=self.cmd), fresh=True)[0])
+
+    def test_a_conflict_inside_the_record_is_held_without_asking_drive(self):
+        calls = []
+        r = self.record(google_drive_archive={'file_id': 'FID123', 'parent_id': self.PARENT, 'provider_checksums': {'sha256': 'b' * 64}})      # top level A, provider B
+        a = self.archive([r], cmd=self.cmd)
+        a._live_check = lambda *x: calls.append(1) or (True, '')
+        ok, why = self.verdict(a, fresh=True)
+        self.assertFalse(ok)
+        self.assertIn('sha256 differs', why)
+        self.assertEqual(calls, [])
+
+    def test_a_live_sha256_that_differs_from_source_json_is_held_even_if_the_record_says_nothing(self):
+        self.set_source(sha256=self.sha)
+        r = self.record()
+        del r['sha256']
+        r['google_drive_archive'] = {'file_id': 'FID123', 'parent_id': self.PARENT}
+        self.mode('sha_b')
+        ok, why = self.verdict(self.archive([r], cmd=self.cmd), fresh=True)
+        self.assertFalse(ok)
+        self.assertIn('sha256', why)
+
+    def test_a_conflict_also_stops_the_cache_fallback(self):
+        self.put_cache()
+        self.set_source(sha256=self.sha)
+        ok, why = self.verdict(self.archive([self.conflict_record()]), fresh=True)      # the record's sha B has no cache file; SOURCE's A may not be used with it
+        self.assertFalse(ok)
+        self.assertIn('sha256 differs', why)
+
+    # --- 3: google_drive_source records
+    def source_record(self):
+        r = self.record()
+        r['google_drive_source'] = r.pop('google_drive_archive')
+        return r
+
+    def test_a_drive_native_record_counts_like_an_archive_record(self):
+        self.assertEqual(self.verdict(self.archive([self.source_record()], cmd=self.cmd), fresh=True), (True, ''))
+        self.assertEqual(self.verdict(self.harchive([self.source_record()]), fresh=True), (True, ''))
+
+    def test_a_record_with_both_a_source_and_an_archive_registration_is_refused(self):
+        r = self.record()
+        r['google_drive_source'] = dict(r['google_drive_archive'])
+        for a in (self.archive([r], cmd=self.cmd), self.harchive([r])):
+            ok, why = self.verdict(a, fresh=True)
+            self.assertFalse(ok)
+            self.assertIn('conflict', why)
+
+    def test_other_identity_conflicts_inside_a_record_are_refused(self):
+        def with_(**kw):
+            r = self.record()
+            r['google_drive_archive'].update(kw)
+            return r
+        cases = {'stored metadata names another file': with_(metadata={'file_id': 'ELSE', 'bytes': VIDEO_BYTES}),
+                 'stored parent not registered': with_(metadata={'file_id': 'FID123', 'parent_ids': ['ELSE']}),
+                 'stored size differs': with_(metadata={'file_id': 'FID123', 'bytes': 5}),
+                 'stored sha differs': with_(metadata={'file_id': 'FID123', 'provider_checksums': {'sha256Checksum': 'd' * 64}}),
+                 'md5 differs': with_(metadata={'file_id': 'FID123', 'provider_checksums': {'md5Checksum': 'other'}})}
+        cases['source_identity names another file'] = {**self.record(), 'source_identity': f'google_drive:ELSE:sha256:{self.sha}'}
+        cases['source_identity sha differs'] = {**self.record(), 'source_identity': f'google_drive:FID123:sha256:{"e" * 64}'}
+        for label, r in cases.items():
+            with self.subTest(label):
+                self.assertFalse(self.verdict(self.archive([r], cmd=self.cmd), fresh=True)[0])
+        ok = {**self.record(), 'source_identity': f'google_drive:FID123:sha256:{self.sha}'}
+        self.assertTrue(self.verdict(self.archive([ok], cmd=self.cmd), fresh=True)[0])
+
+    def test_two_drive_records_for_one_file_name_are_refused(self):
+        self.assertIn('duplicate', self.verdict(self.archive([self.record(), self.record()], cmd=self.cmd), fresh=True)[1])
+
+    # --- 5: the metadata helper, through the fail-closed adapter
+    def test_the_helper_is_the_default_live_check_and_gets_the_registered_ids(self):
+        self.assertEqual(self.verdict(self.harchive()), (True, ''))
+        self.assertEqual(self.calls(), 1)
+        self.assertEqual(self.verdict(self.harchive(), fresh=True), (True, ''))
+
+    def test_the_scan_asks_the_helper_once_per_file_and_the_check_before_a_deletion_every_time(self):
+        a = self.harchive()
+        self.verdict(a)
+        self.verdict(a)
+        self.assertEqual(self.calls(), 1)
+        self.verdict(a, fresh=True)
+        self.verdict(a, fresh=True)
+        self.assertEqual(self.calls(), 3)
+
+    def test_every_helper_failure_or_odd_answer_is_not_a_confirmation(self):
+        for m, word in (('error', 'failed (exit 2)'), ('badjson', 'did not print JSON'), ('list', 'unexpected shape'), ('empty', 'did not print JSON'), ('timeout', 'more than 1 s'),
+                        ('otherfile', 'another file'), ('noparent', 'registered parent'), ('parentstr', 'registered parent'), ('bytes', '999 bytes'), ('bytesstr', "'1000' bytes"),
+                        ('name', 'is named'), ('md5', 'md5'), ('sha', 'sha256'), ('nosums', 'no checksum'), ('nosumsfield', 'no checksums')):
+            with self.subTest(m):
+                self.mode(m)
+                ok, why = self.verdict(self.harchive(timeout=1), fresh=True)
+                self.assertFalse(ok)
+                self.assertIn(word, why)
+
+    def test_one_matching_checksum_is_enough_but_a_stored_record_is_never_the_answer(self):
+        for m in ('md5only', 'shaonly'):
+            self.mode(m)
+            self.assertTrue(self.verdict(self.harchive(), fresh=True)[0], m)
+        ok, why = self.verdict(bl.Archive({self.NAME.lower(): [self.record()]}, self.cache, None, 5, helper=([os.path.join(self.t.root, 'no_such_program')], None)), fresh=True)
+        self.assertFalse(ok)
+        self.assertIn('could not be run', why)
+
+    def test_a_helper_answer_is_checked_against_source_json_too(self):
+        self.set_source(sha256='f' * 64)
+        self.assertFalse(self.verdict(self.harchive(), fresh=True)[0])
+
+    def test_the_helper_needs_a_registered_parent_and_its_own_ids(self):
+        r = self.record()
+        del r['google_drive_archive']['parent_id']
+        ok, why = self.verdict(self.harchive([r]), fresh=True)
+        self.assertFalse(ok)
+        self.assertIn('parent folder id', why)
+        r['google_drive_archive']['parent_id'] = 'FID123'
+        self.assertFalse(self.verdict(self.harchive([r]), fresh=True)[0])
+
+    def test_a_drive_check_command_overrides_the_helper(self):
+        self.mode('sha_b')                                      # the command's answer is the one that counts: it disagrees on sha256
+        self.assertFalse(self.verdict(self.harchive(cmd=self.cmd), fresh=True)[0])
+        self.assertEqual(self.calls(), 0)
+
+    def test_a_helper_that_is_missing_means_a_record_alone_never_counts(self):
+        ok, why = self.verdict(self.archive(), fresh=True)
+        self.assertFalse(ok)
+        self.assertIn('no live Drive check is configured', why)
+
+    def test_the_helper_must_be_able_to_stop_the_deletion_right_before_it(self):
+        def meanwhile(*a):
+            self.mode('noparent')                               # the file left its registered folder while the question was open
+            return True
+        arch = self.harchive()
+        idx = index([self.PACKET])
+        vids = self.t.videos()
+        d = bl.decide(bl.scan_qa(self.t.qa, vids, '', arch), idx)
+        self.assertTrue(d[0].delete)
+        out = io.StringIO()
+        res = bl.apply_deletions(d, self.t.qa, idx, confirm=meanwhile, out=out, video_check=lambda g: bl.check_video(g, vids, fresh=True, archive=arch))
+        self.assertEqual(res.skipped, 1)
+        self.assertTrue(os.path.exists(os.path.join(self.t.qa, 'BATCH_A', '20261001_000000001_iOS', 'turn_evidence', 't0000.jpg')))
+
+    # --- config
+    def test_the_cache_folder_comes_from_codex_data_locations_and_the_override_wins(self):
+        bl_dir = os.path.join(self.t.root, 'BL')
+        cache = os.path.join(self.t.root, 'Data', 'Cache')
+        write(os.path.join(bl_dir, 'Review_Log', 'LOCAL_DATA_LOCATIONS.json'), json.dumps({'current_root': os.path.join(self.t.root, 'Data'), 'directories': {'Cache': cache}}))
+        self.assertEqual(bl.data_config([bl_dir]), (os.path.join(cache, 'raw'), []))
+        self.assertEqual(bl.data_config([bl_dir], os.path.join(self.t.root, 'Other')), (os.path.join(self.t.root, 'Other', 'raw'), []))
+
+    def test_an_unreadable_data_locations_file_falls_back_with_a_plain_warning(self):
+        bl_dir = os.path.join(self.t.root, 'BL')
+        for body in (None, '{nope', json.dumps({'current_root': 'C:/x', 'directories': {'Cache': 'D:/elsewhere'}}), json.dumps([])):
+            if body is not None:
+                write(os.path.join(bl_dir, 'Review_Log', 'LOCAL_DATA_LOCATIONS.json'), body)
+            root, warns = bl.data_config([bl_dir])
+            self.assertTrue(root.endswith(os.path.join('BattleLogsData', 'Cache', 'raw')))
+            self.assertEqual(len(warns), 1)
+            self.assertIn('built-in cache folder', warns[0])
+
+    def test_no_helper_is_found_without_codexs_script(self):
+        self.assertIsNone(bl.find_helper([os.path.join(self.t.root, 'BL')]))
+
+    # --- 6: only reads
+    def test_checks_never_write_to_the_cache_or_battle_logs(self):
+        self.put_cache()
+        write(os.path.join(self.t.logs, 'MEDIA_LOCATIONS.json'), json.dumps({'moved': [self.record()]}))
+
+        def snap():
+            out = {}
+            for root in (self.cache, self.t.logs):
+                for dp, dn, fn in os.walk(root):
+                    for n in dn + fn:
+                        p = os.path.join(dp, n)
+                        st = os.lstat(p)
+                        out[p] = (st.st_size, st.st_mtime_ns, st.st_ino)
+            return out
+        before = snap()
+        for a in (self.archive(), self.harchive(), self.archive(cmd=self.cmd)):
+            self.verdict(a)
+            self.verdict(a, fresh=True)
+        self.assertEqual(before, snap())
+
+
+class FakeView:
+    no_git, ref, commit = True, 'x', None
+
+    def describe(self):
+        return 'fake'
+
+
+STUB = r"""
+import json, os, sys, time
+mode = open(os.path.join(os.path.dirname(os.path.abspath(__file__)), 'mode')).read().strip()
+fid = sys.argv[1]
+j = {'id': fid, 'exists': True, 'trashed': False, 'size': 1000, 'md5': 'md5md5'}
+if mode == 'trashed': j['trashed'] = True
+elif mode == 'gone': j['exists'] = False
+elif mode == 'size': j['size'] = 999
+elif mode == 'md5': j['md5'] = 'other'
+elif mode == 'sha_b': j['sha256'] = 'b' * 64
+elif mode == 'notrashedfield': del j['trashed']
+elif mode == 'trashstring': j['trashed'] = 'false'
+elif mode == 'otherid': j['id'] = 'OTHER'
+elif mode == 'nosize': del j['size']
+elif mode == 'sizebool': j['size'] = True
+elif mode == 'error': sys.exit(3)
+elif mode == 'badjson': print('{oops'); sys.exit(0)
+elif mode == 'list': print('[]'); sys.exit(0)
+elif mode == 'empty': sys.exit(0)
+elif mode == 'timeout': time.sleep(10)
+print(json.dumps(j))
+"""
+
+
+if __name__ == '__main__':
+    unittest.main()

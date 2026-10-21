@@ -1,0 +1,467 @@
+{
+  "schema_version": 1,
+  "reviewer": "/root/verify_193905",
+  "review_role": "bounded independent Sol verification",
+  "model": "gpt-6-sol",
+  "reasoning_effort": "high",
+  "model_provenance": "lead supplied actual spawn settings",
+  "verified_utc": "2026-10-10T01:39:04.780753+00:00",
+  "decision": "ACCEPT",
+  "source_filename": "20261009_193905000_iOS.MP4",
+  "source_sha256": "bade03dea4b20d3b08476f78cf677487ea803905503968aef31ceb60286ecc77",
+  "source_bytes": 324765990,
+  "source_duration_seconds": 176.924377,
+  "required_changes": [],
+  "primary_files_read_and_reconciled": {
+    "REVIEW.md": "cbff706c10ac99ba14a63555f9f6a032a69b7668a6e1798208c3988b0d8ac3ca",
+    "COVERAGE.md": "8c197809f6c4439647a029502a80f7318104442e84ce5794311a3f394ffa12a2",
+    "FINDINGS.json": "f7ff2d75403b92f797477b7dbb4a89a7a5160237ff34d40e041a8ec8d89bba0b"
+  },
+  "checks": [
+    {
+      "check": "Source binding",
+      "status": "PASS",
+      "finding": "SOURCE.json matches assigned basename, bytes, duration and SHA-256; lead performed original source verification. Independent check reused source-bound extracted frames without a second full decode or media rehash."
+    },
+    {
+      "check": "Setup and classification",
+      "status": "PASS",
+      "seconds": [
+        0,
+        21
+      ],
+      "finding": "Native action_001 shows matchup title, Draft A: Shark Tempo, AI and Auto On. Versus screen confirms AI. Computer battle excluded from both human logs."
+    },
+    {
+      "check": "All knockouts and score transitions",
+      "status": "PASS",
+      "seconds": [
+        62,
+        169
+      ],
+      "finding": "Carvanha 50 HP is knocked out by Flamethrower 70 for AI point 1. Binding Snow knocks out two 100-HP Torkoal then 70-HP Charmander, owner points 1, 2, 3. Final score 3-1, no other point transition."
+    },
+    {
+      "check": "All searches and consequential draw resources",
+      "status": "PASS",
+      "seconds": [
+        23.6,
+        156.4
+      ],
+      "finding": "Owner T1 Poke Ball explicitly returns Alolan Vulpix. AI T2 Poke Ball result stays face-down, subsequent benched Torkoal is correctly qualified. T2 Copycat, T4 Research, T6 Research and owner visible draw reveals agree. No Irida search is performed."
+    },
+    {
+      "check": "Misty ordering and coins",
+      "status": "PASS",
+      "seconds": [
+        80.2,
+        94
+      ],
+      "finding": "Ninetales evolves with zero Energy. Misty gives 1 head then 1 tail; first Water visible at92.013s. Normal Water remains in Zone and attaches afterward at93.013s, yielding 2 before Binding Snow."
+    },
+    {
+      "check": "Damage, HP and Energy routes",
+      "status": "PASS",
+      "seconds": [
+        40.4,
+        165
+      ],
+      "finding": "Rainbow Cave and Flame Patch produce T2 attack resources. T4 Fire goes to Bench while Active Torkoal has none. T5 Ninetales gains third Water. T6 Flame Patch adds second active Fire from discard under Energy Zone lock; Rainbow Cave and normal Bench attachment follow. Flame Tail 30 reduces Ninetales 150 to 120. Three Binding Snow KOs match80 plus Water weakness 20; final100 displayed explicitly. No heal or fourth Water attachment."
+    },
+    {
+      "check": "Independently selected ordinary turn",
+      "status": "PASS",
+      "turn": 1,
+      "seconds": [
+        21,
+        37
+      ],
+      "finding": "Selected owner turn 1 independently before primary documents existed. Mega Sharpedo draw, Poke Ball/Vulpix, bench placement, Research/Ninetales/Cyrus draws, no attachment or attack checked in complete action and dense sequence."
+    },
+    {
+      "check": "Ending",
+      "status": "PASS",
+      "seconds": [
+        159,
+        176.924377
+      ],
+      "finding": "Final Charmander KO, owner third point, final board and explicit Victory at175.005s checked. Ninetales is Card of the Game at176.005s."
+    },
+    {
+      "check": "Primary file reconciliation",
+      "status": "PASS",
+      "finding": "Read complete REVIEW.md, COVERAGE.md and FINDINGS.json after source checks, compared seven-turn coverage, classification, hidden-information limits, all decisive claims and result. No material correction required."
+    }
+  ],
+  "outcome": {
+    "winner": "Dacz8976",
+    "result": "Victory",
+    "owner_points": 3,
+    "opponent_points": 1,
+    "turns": 7,
+    "computer_battle": true,
+    "auto_enabled": true,
+    "eligible_ladder_log": false,
+    "eligible_pause_games": false
+  },
+  "limits": [
+    "Bounded independent review, not a second full-battle first pass.",
+    "No independent source media rehash or full decode; source identity checked against lead-verified metadata and shared frame indexes.",
+    "Hidden AI draws and face-down search result, exact 20-card decks and catalog printing IDs remain unknown.",
+    "Phone notification obscures part of T4 opponent fan.",
+    "Lead registration, movement, archive integrity and cloud-space release outside this verification."
+  ],
+  "native_evidence": [
+    {
+      "file": "evidence/action_001.jpg",
+      "source_seconds": 0.0,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "3d2b42002253b19136e7d652b1f3061c4910039eb51bc7f6c473c816ab7ac887"
+    },
+    {
+      "file": "evidence/action_025.jpg",
+      "source_seconds": 24.031667,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "c7d69505ff85a4915c336ceadc2dd6561c2cca53cbf54ef0c69d8f4edc728e6e"
+    },
+    {
+      "file": "evidence/action_027.jpg",
+      "source_seconds": 26.031667,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "9297f13d5ce8838168cf49f91df30583e3b5514a51ff56c12d1129fc2cecaafb"
+    },
+    {
+      "file": "evidence/action_029.jpg",
+      "source_seconds": 28.033333,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "08239f9c07d7fbdb6b30c5c4946281e529ec37199140c4dab53c2d834c5d1304"
+    },
+    {
+      "file": "evidence/action_032.jpg",
+      "source_seconds": 31.033333,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "f410c074e1e202db535d627153c1571d8277d4683487db7e41109431887c60b5"
+    },
+    {
+      "file": "evidence/action_033.jpg",
+      "source_seconds": 32.033333,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "2d4178df7969a6d914c4a7301bae4b646864481e5c20aa4f7cf6ad1543550f74"
+    },
+    {
+      "file": "evidence/action_035.jpg",
+      "source_seconds": 34.033333,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "95d4f2552c7e7e32ae9e1d9085e1140907ab0164b584561000ab503e3c64113a"
+    },
+    {
+      "file": "evidence/action_036.jpg",
+      "source_seconds": 35.033333,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "3fdc59f11b0cdee5aa30e2bfb23c5ebf976345713612a101c4692b0029cf734b"
+    },
+    {
+      "file": "evidence/action_057.jpg",
+      "source_seconds": 58.011667,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "cafce032e72a802351907c31698aae53096b6c675117cb2fd13aaa7325400952"
+    },
+    {
+      "file": "evidence/action_061.jpg",
+      "source_seconds": 62.015,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "c5e8d7991d7aec18646108dc9b85edde255db3b127d5870246c3d73eb94266fe"
+    },
+    {
+      "file": "evidence/action_063.jpg",
+      "source_seconds": 64.015,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "bca5c04eae0e3ead7ee516289166e47dacb89ce28e11d1bc2edf6d016d1fa256"
+    },
+    {
+      "file": "evidence/action_064.jpg",
+      "source_seconds": 65.015,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "735831a95eae9abaf0c9a446783693589e76b54307d8ef5cce52c0b74874f45f"
+    },
+    {
+      "file": "evidence/action_068.jpg",
+      "source_seconds": 69.016667,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "c599263b32b2035f8cec4415e7d7f5478e41d1a5b946a1e9825987cc3849b0eb"
+    },
+    {
+      "file": "evidence/action_085.jpg",
+      "source_seconds": 90.011667,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "924daf60ca9379ecd1a0617ad9817f53b979a165d9bf164268c063cf0ec31985"
+    },
+    {
+      "file": "evidence/action_087.jpg",
+      "source_seconds": 92.011667,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "adb24e93763080d19ad4a10ded88e72ccd364a27e8024245d66df19762679e16"
+    },
+    {
+      "file": "evidence/action_088.jpg",
+      "source_seconds": 93.013333,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "ca1ca6a97ceb521cf60ec1bc251ce676d742807dc1d8eb58c2dc189ce6cb4f84"
+    },
+    {
+      "file": "evidence/action_093.jpg",
+      "source_seconds": 98.015,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "259ee597ade28699567975cdfebc21d12c9b66f04bc98a4e3eaeb4c9a95d7288"
+    },
+    {
+      "file": "evidence/action_098.jpg",
+      "source_seconds": 103.015,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "b0b26d98493e259e04a318656f4ff0bcc284f921b28ecd79bd3f7626bcbd919e"
+    },
+    {
+      "file": "evidence/action_117.jpg",
+      "source_seconds": 124.008333,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "7611b334a8e0b4117ea96e2c45d5afba37d2e52462a4bd2c9f7c045b01ce30ae"
+    },
+    {
+      "file": "evidence/action_120.jpg",
+      "source_seconds": 127.01,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "c8642c55fe23c993439f68e741544f168837efa710610be4c55a644e3e50c420"
+    },
+    {
+      "file": "evidence/action_122.jpg",
+      "source_seconds": 129.011667,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "e8e62ebfd7f7395630ea024694149379f4315b9969739139962ac1adb348afdf"
+    },
+    {
+      "file": "evidence/action_141.jpg",
+      "source_seconds": 151.046667,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "aa5a77a91f4c4a0eb8f78a42c9c819d2c7074bd7f6c9a0ee4fbdb7e45badec37"
+    },
+    {
+      "file": "evidence/action_143.jpg",
+      "source_seconds": 153.048333,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "02e1da7dae4cdcd77daedebc839d2adad9a409e16ed69a41c72e4f696991175e"
+    },
+    {
+      "file": "evidence/action_144.jpg",
+      "source_seconds": 154.048333,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "b979f375202e28c9c6168b861ce83ef71309493d3010a1b8d2608b213b718d88"
+    },
+    {
+      "file": "evidence/action_150.jpg",
+      "source_seconds": 160.053333,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "f4b74bcce699ef537f637c35721c5045de443832957c0a9cc65b0ffc26f36384"
+    },
+    {
+      "file": "evidence/action_151.jpg",
+      "source_seconds": 161.053333,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "2247f5a32d0a809fd3c4dcbfe040cf61c247a478ff9e9d58148dcd67f2375ce4"
+    },
+    {
+      "file": "evidence/action_156.jpg",
+      "source_seconds": 166.055,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "310786e99bba281ca6b3ebc0eaec13122cd47df31241e5d4c37a37a32d61ace4"
+    },
+    {
+      "file": "evidence/action_157.jpg",
+      "source_seconds": 167.055,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "6194a0222e860efdf071186490503f37f6168740454ab9ca394bb897fc31a7ab"
+    },
+    {
+      "file": "evidence/action_159.jpg",
+      "source_seconds": 169.055,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "6ba2119fd237460eaf42c6a3fb2380f3967fe3ca6f6276633d2b52c9780880a5"
+    },
+    {
+      "file": "evidence/action_160.jpg",
+      "source_seconds": 175.005,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "3003712db8104532856e1dbfc1231251e0d4ea20e0a893de99ff4393d57c7492"
+    },
+    {
+      "file": "evidence/action_161.jpg",
+      "source_seconds": 176.005,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "953fc216f057cb4d9a6dd87049006f6201ac98643319b9233db1213ab7a0c3c5"
+    },
+    {
+      "file": "evidence/dense_051.jpg",
+      "source_seconds": 40.403333,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "9c4292f616cc04e8cf694b20359ab3ba44bb60fab258ed513af3f60362c4eed9"
+    },
+    {
+      "file": "evidence/dense_065.jpg",
+      "source_seconds": 43.205,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "579583b3f678fefedc3c1e65915898edb16cf226f716deb8a56ae0681da40324"
+    },
+    {
+      "file": "evidence/dense_080.jpg",
+      "source_seconds": 48.208333,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "793fd4387e199f9e19ee57d3bfb52cc3e84b5ec5d4d8f62296cc3b59e9b72a92"
+    },
+    {
+      "file": "evidence/dense_151.jpg",
+      "source_seconds": 82.408333,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "d8b445db17d133c8aef19cf1eb2d7d688c586978997ad993b144795930172b88"
+    },
+    {
+      "file": "evidence/dense_208.jpg",
+      "source_seconds": 110.803333,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "ad022af22eaefd5d8fadfe17e98c7648ec940074e15ec5c6e470bd9ac3d1900a"
+    },
+    {
+      "file": "evidence/dense_220.jpg",
+      "source_seconds": 113.205,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "7052465cc4d58bee11050702b04ec1d2320b376fe0080754bb2a7650d055d663"
+    },
+    {
+      "file": "evidence/dense_283.jpg",
+      "source_seconds": 138.833333,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "a2add77e3d8851f7f9380b38ec79e32935602c0bae9ce5ac9a2cc67f55d58a21"
+    },
+    {
+      "file": "evidence/dense_302.jpg",
+      "source_seconds": 142.636667,
+      "native_resolution": [
+        1170,
+        2532
+      ],
+      "sha256": "ca9b1dfb186b6d93d8a1c3a02360a80ce66f24da9fe6dcbc8fcc4daf8cbe85b7"
+    }
+  ]
+}

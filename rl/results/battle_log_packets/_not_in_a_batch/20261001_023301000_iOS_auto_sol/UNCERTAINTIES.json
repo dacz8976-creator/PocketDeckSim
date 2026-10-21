@@ -1,0 +1,76 @@
+{
+  "status": "full_battle_review_complete",
+  "video_basename": "20261001_023301000_iOS.MP4",
+  "uncertainties": [
+    {
+      "id": "hidden_cards",
+      "interval_seconds": [
+        0,
+        195.268333
+      ],
+      "question": "Complete deck lists, hidden opponent draws and Poké Ball search targets are not shown.",
+      "impact": "Do not infer complete lists, possession or precise printing IDs.",
+      "material_to_outcome": false
+    },
+    {
+      "id": "final_discard",
+      "interval_seconds": [
+        177,
+        189
+      ],
+      "question": "The identity of the final World Wrecker top-card discard is not established.",
+      "evidence": [
+        "target/t0180.00.jpg",
+        "overview/sheet_07.jpg"
+      ],
+      "impact": "Printed discard text is confirmed; no final discarded-card identity is claimed.",
+      "material_to_outcome": false
+    },
+    {
+      "id": "auto_pause_input",
+      "interval_seconds": [
+        111.5,
+        128
+      ],
+      "question": "Auto is off during Legendary Drive prompt/switch; reason and input provenance are not visible.",
+      "evidence": [
+        "target/t0114.50.jpg",
+        "target/t0122.00.jpg",
+        "target/t0128.00.jpg"
+      ],
+      "impact": "Do not attribute paused-interval selections to Auto or assert who selected them.",
+      "material_to_outcome": false
+    },
+    {
+      "id": "recording_clock",
+      "interval_seconds": null,
+      "question": "Filename October 1 clock basis is unverified while request/review occurs September 30 America/Chicago.",
+      "impact": "Preserve source name and date qualification.",
+      "material_to_outcome": false
+    }
+  ],
+  "resolved_visual_questions": [
+    {
+      "question": "Does Zygarde retain all three Energy after Legendary Drive?",
+      "resolution": "No. Transitional 122s renders old badges; settled128s Zygarde has0, Koraidon3. Later normal attachments produce Zygarde1 by131s and2 by177s.",
+      "evidence": [
+        "target/bench_energy_check.jpg",
+        "target/t0128.00.jpg",
+        "target/t0131.00.jpg",
+        "target/t0177.00.jpg"
+      ]
+    },
+    {
+      "question": "Is the turn6 draw Phanpy?",
+      "resolution": "No. Full-resolution66s enlarged card positively identifies Meditite60 with Trip Over10+.",
+      "evidence": [
+        "target/t0066.00.jpg"
+      ]
+    }
+  ],
+  "unreviewed_battle_intervals": [],
+  "external_rules_lookup": "Not required: all material ability, attack and Stadium effects were readable on source cards. No current card catalog or web claim was substituted for the footage.",
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "worker_status_at_submission": "first_pass_complete_awaiting_lead_acceptance"
+}

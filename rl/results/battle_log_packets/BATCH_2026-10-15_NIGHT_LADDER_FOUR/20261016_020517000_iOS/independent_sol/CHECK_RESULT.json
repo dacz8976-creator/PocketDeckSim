@@ -1,0 +1,36 @@
+{
+  "reviewer": "/root/independent_night_four",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "checked_utc": "2026-10-16T03:20:05.5609880Z",
+  "source_filename": "20261016_020517000_iOS.MP4",
+  "source_sha256": "4d98de32a83b926897d5da49926e7a313fdbc2f78608a2f2b14d91ae39dd9821",
+  "frozen_manifest_sha256": "3d1f06d46336c85717d046cb041de0592b0a08bc4898ed3c73d289886b65a872",
+  "frozen_file_count": 117,
+  "frozen_files_match": true,
+  "primary_unchanged": true,
+  "full_timeline_coverage_read": true,
+  "source_first_observations": "SOURCE_OBSERVATIONS.md",
+  "primary_files_read": [
+    "REVIEW.md",
+    "COVERAGE.md",
+    "SUMMARY.json",
+    "UNCERTAINTIES.json",
+    "SOURCE.json",
+    "REVIEW_PACKET_HASHES.json"
+  ],
+  "accepted": true,
+  "material_corrections": [],
+  "checks": [
+    "setup/order/opponent and visible core",
+    "selected ordinary events and Energy allocation",
+    "all primary timeline and coverage intervals reconciled",
+    "concession, score, first-attack note and ranked result",
+    "all frozen file hashes match before and after checker write"
+  ],
+  "boundaries": [
+    "bounded independent source check, not second full visual pass",
+    "hidden hand and exact decks unknown",
+    "no external log, shared records, source move or cloud-original access"
+  ]
+}

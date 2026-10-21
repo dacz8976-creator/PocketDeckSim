@@ -1,0 +1,236 @@
+[
+  {
+    "evidence_id": "independent_sol:F0253.30",
+    "source_video": "20261002_210952000_iOS.MP4",
+    "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+    "requested_source_seconds": 253.3,
+    "actual_frame_seconds_if_measured": 253.303,
+    "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded frame PTS; source start recorded in decode log",
+    "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0253.30.jpg",
+    "full_frame_sha256": "d256ef682b9ec19a0088bcc5c01b0ee7d60bd241ca72c2a23a99effb5e8d1cca",
+    "native_dimensions": {
+      "width": 1170,
+      "height": 2532
+    },
+    "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\independent_sol\\decode_logs\\t0253.30.txt",
+    "bottom_crop": {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0253.30_bottom.png",
+      "pixel_bounds_x0_y0_x1_y1": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "sha256": "35bfb0ff6396913d9895ab99ef2230c98a1d03986e1d103715a50b5b1beee8e5",
+      "parent_sha256": "d256ef682b9ec19a0088bcc5c01b0ee7d60bd241ca72c2a23a99effb5e8d1cca",
+      "lossless": true
+    },
+    "top_crop": {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0253.30_top.png",
+      "pixel_bounds_x0_y0_x1_y1": [
+        0,
+        0,
+        1170,
+        550
+      ],
+      "sha256": "f6f9cde9ddd410fdf3d08da22fbb765e7e004f6fea81864d880ef6c446320aef",
+      "parent_sha256": "d256ef682b9ec19a0088bcc5c01b0ee7d60bd241ca72c2a23a99effb5e8d1cca",
+      "lossless": true
+    }
+  },
+  {
+    "evidence_id": "independent_sol:F0253.00",
+    "source_video": "20261002_210952000_iOS.MP4",
+    "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+    "requested_source_seconds": 253.0,
+    "actual_frame_seconds_if_measured": 253.003,
+    "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded frame PTS; source start recorded in decode log",
+    "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0253.00.jpg",
+    "full_frame_sha256": "6c3d61b5366bd86408a6caba4ed4b5e76778d848b35e1fd8b97bd7e22930cb7c",
+    "native_dimensions": {
+      "width": 1170,
+      "height": 2532
+    },
+    "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\independent_sol\\decode_logs\\t0253.00.txt",
+    "bottom_crop": {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0253.00_bottom.png",
+      "pixel_bounds_x0_y0_x1_y1": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "sha256": "c88560d4a15d08c7817f625f721a47172ce5c82efdef2b599ec59c76bbcd8bd7",
+      "parent_sha256": "6c3d61b5366bd86408a6caba4ed4b5e76778d848b35e1fd8b97bd7e22930cb7c",
+      "lossless": true
+    },
+    "top_crop": {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0253.00_top.png",
+      "pixel_bounds_x0_y0_x1_y1": [
+        0,
+        0,
+        1170,
+        550
+      ],
+      "sha256": "a6a82e6550a6624c4ed78c64db5af6264290d9b4477cf9b32dc4d273a985f57d",
+      "parent_sha256": "6c3d61b5366bd86408a6caba4ed4b5e76778d848b35e1fd8b97bd7e22930cb7c",
+      "lossless": true
+    }
+  },
+  {
+    "evidence_id": "independent_sol:F0253.15",
+    "source_video": "20261002_210952000_iOS.MP4",
+    "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+    "requested_source_seconds": 253.15,
+    "actual_frame_seconds_if_measured": 253.153,
+    "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded frame PTS; source start recorded in decode log",
+    "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0253.15.jpg",
+    "full_frame_sha256": "984270c4a93987027d4ca91c2f6b2c7179b5f3799188f973e1956f4180c45cc1",
+    "native_dimensions": {
+      "width": 1170,
+      "height": 2532
+    },
+    "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\independent_sol\\decode_logs\\t0253.15.txt",
+    "bottom_crop": {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0253.15_bottom.png",
+      "pixel_bounds_x0_y0_x1_y1": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "sha256": "5d0e297d90da8c481fe4264f675a7180dbbb3c5aabfc824f92962166bc1f1530",
+      "parent_sha256": "984270c4a93987027d4ca91c2f6b2c7179b5f3799188f973e1956f4180c45cc1",
+      "lossless": true
+    },
+    "top_crop": {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0253.15_top.png",
+      "pixel_bounds_x0_y0_x1_y1": [
+        0,
+        0,
+        1170,
+        550
+      ],
+      "sha256": "6977e6e30f698497486a227c8cb33024cbdac13bc367e7b5768f11d0b4369a87",
+      "parent_sha256": "984270c4a93987027d4ca91c2f6b2c7179b5f3799188f973e1956f4180c45cc1",
+      "lossless": true
+    }
+  },
+  {
+    "evidence_id": "independent_sol:F0253.50",
+    "source_video": "20261002_210952000_iOS.MP4",
+    "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+    "requested_source_seconds": 253.5,
+    "actual_frame_seconds_if_measured": 253.503,
+    "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded frame PTS; source start recorded in decode log",
+    "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0253.50.jpg",
+    "full_frame_sha256": "9a00689f5fe88c1912ff2606b4e6b556fe7ea0b3c190db0bd21aef8dacda9916",
+    "native_dimensions": {
+      "width": 1170,
+      "height": 2532
+    },
+    "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\independent_sol\\decode_logs\\t0253.50.txt",
+    "bottom_crop": {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0253.50_bottom.png",
+      "pixel_bounds_x0_y0_x1_y1": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "sha256": "cce5e189ba4b7ed98878aed09042177176cf7e49f9283564aac799fea0fee388",
+      "parent_sha256": "9a00689f5fe88c1912ff2606b4e6b556fe7ea0b3c190db0bd21aef8dacda9916",
+      "lossless": true
+    },
+    "top_crop": {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0253.50_top.png",
+      "pixel_bounds_x0_y0_x1_y1": [
+        0,
+        0,
+        1170,
+        550
+      ],
+      "sha256": "466057fb9bcaacdc25e6446e520a849643dd019d78c752242ebeebc335a736ce",
+      "parent_sha256": "9a00689f5fe88c1912ff2606b4e6b556fe7ea0b3c190db0bd21aef8dacda9916",
+      "lossless": true
+    }
+  },
+  {
+    "evidence_id": "independent_sol:F0035.50",
+    "source_video": "20261002_210952000_iOS.MP4",
+    "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+    "requested_source_seconds": 35.5,
+    "actual_frame_seconds_if_measured": 35.515,
+    "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded frame PTS; source start recorded in decode log",
+    "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0035.50.jpg",
+    "full_frame_sha256": "571be99d0b28429ca40b9dc9d8db52a4ad08f2ef0d0ede668e0c4d38d86cab3a",
+    "native_dimensions": {
+      "width": 1170,
+      "height": 2532
+    },
+    "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\independent_sol\\decode_logs\\t0035.50.txt",
+    "bottom_crop": {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0035.50_bottom.png",
+      "pixel_bounds_x0_y0_x1_y1": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "sha256": "10a98c5938a6b9c60571f1464dbd1345e94f46cdc3063fbc0a23a8e640426512",
+      "parent_sha256": "571be99d0b28429ca40b9dc9d8db52a4ad08f2ef0d0ede668e0c4d38d86cab3a",
+      "lossless": true
+    },
+    "top_crop": {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0035.50_top.png",
+      "pixel_bounds_x0_y0_x1_y1": [
+        0,
+        0,
+        1170,
+        550
+      ],
+      "sha256": "4f1f70599319766859d5d654d884d70f8e739a025c3e6d6d13644e21a27b1057",
+      "parent_sha256": "571be99d0b28429ca40b9dc9d8db52a4ad08f2ef0d0ede668e0c4d38d86cab3a",
+      "lossless": true
+    }
+  },
+  {
+    "evidence_id": "independent_sol:F0041.00",
+    "source_video": "20261002_210952000_iOS.MP4",
+    "source_sha256": "8dc56261d95966327b98d5e3964d7858d3e35afe64302fab8d79e598e41e9a4d",
+    "requested_source_seconds": 41.0,
+    "actual_frame_seconds_if_measured": 41.015,
+    "timestamp_basis": "FFmpeg -copyts showinfo first selected decoded frame PTS; source start recorded in decode log",
+    "full_frame_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0041.00.jpg",
+    "full_frame_sha256": "fd7ef8074da4f7235de0715ff84c631e148fb75bd2d9225b40cf909ad35bfe7d",
+    "native_dimensions": {
+      "width": 1170,
+      "height": 2532
+    },
+    "decode_log": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\independent_sol\\decode_logs\\t0041.00.txt",
+    "bottom_crop": {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0041.00_bottom.png",
+      "pixel_bounds_x0_y0_x1_y1": [
+        0,
+        2025,
+        1170,
+        2532
+      ],
+      "sha256": "30cf9ce33a24a7a31bb5f716c45ee1d3c03f92f8a9464d693c8a910504439909",
+      "parent_sha256": "fd7ef8074da4f7235de0715ff84c631e148fb75bd2d9225b40cf909ad35bfe7d",
+      "lossless": true
+    },
+    "top_crop": {
+      "path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\BATCH_2026-10-02_DRAFT_A_V_BLASTOISE_WAILORD\\20261002_210952000_iOS_auto_sol\\independent_sol\\turn_evidence\\t0041.00_top.png",
+      "pixel_bounds_x0_y0_x1_y1": [
+        0,
+        0,
+        1170,
+        550
+      ],
+      "sha256": "8d07a064f97d543320faa7bfaec4b7b405f0fe4d891810b8147101d636671530",
+      "parent_sha256": "fd7ef8074da4f7235de0715ff84c631e148fb75bd2d9225b40cf909ad35bfe7d",
+      "lossless": true
+    }
+  }
+]

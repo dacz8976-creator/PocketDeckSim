@@ -1,0 +1,42 @@
+{
+  "schema": "retrospective-hand-lead-acceptance-v1",
+  "source": "20260908_022627000_iOS.MP4",
+  "source_sha256": "5689a2c45eda9b0629d7a2616852beef6fedb8396bdfe34c080b4c136e4e364e",
+  "accepted_at_utc": "2026-10-02T22:40:02.313651+00:00",
+  "lead": "Codex retrospective lead",
+  "worker_model": "gpt-6.1-sol",
+  "worker_effort": "high",
+  "independent_model": "gpt-6.1-sol",
+  "independent_effort": "high",
+  "verdict": "accepted_with_recording_limits",
+  "target_turns": [
+    1,
+    3,
+    5,
+    7,
+    9,
+    11,
+    13,
+    15,
+    17
+  ],
+  "original_full_battle_status": "Reviewed; preserved",
+  "scope": "Setup and recorded-turn field additions; accepted battle outcome preserved",
+  "independent_check": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\independent_ladder\\20260908_022627000\\SOURCE_CHECKS_REPAIR_ACCEPTANCE.json",
+  "structure_check": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\RETROSPECTIVE_HANDS_2026-10-02\\20260908_022627000\\STRUCTURE_CHECK.json",
+  "capture_status": "complete_with_recording_limits",
+  "source_read_basis": null,
+  "shared_registration": "complete",
+  "accepted_packet_hashes": {
+    "REVIEW_SUPPLEMENT.md": "c629f45ff5e06505eb251600ae0ffda81f9144f0c2735cc6b9d2579fe3ba8057",
+    "HAND_SUPPLEMENT.json": "2eb3b0d50c9960806696a32811d61c1aef65b14d031eb163f18ba5897c91aec5",
+    "TURN_EVIDENCE.json": "68131799d5e4ff5c8e833c9340760c13d1b8c6fbba70b97e18ef995d1ea6e04d",
+    "UNCERTAINTIES.json": "f4987ddcbf173ccf122b69483d261bbf6cf72596f8c5aa37c32513cfe9090b3c",
+    "DECK_USED.json": "a736d5fdbb974d25fa87b6764a07bcb75f0e9b7976a9d21da5afacdcbc7565bc",
+    "PAUSE_GAME.json": "9f4c41626e0d8fa3627b49c20731186655270861eb68d45ba6a60a888643e60f",
+    "TURN_LEDGER.json": "4ac38404ec04c711ffde69ac1b299e3dca21e41ab4dc377a91ab20f5122826dd"
+  },
+  "retained_evidence_only": false,
+  "shared_event": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Review_Log\\events\\2026-10-02T224004.189238_0000_f59f5630-6a52-40bb-b8e9-fb443dca22fc.json",
+  "registration_identity_provenance": "verified_by_cli_sha256"
+}

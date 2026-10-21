@@ -1,0 +1,223 @@
+{
+  "accepted": true,
+  "reviewer": "/root/check_offline_164328",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "checked_utc": "2026-10-14T20:11:36.010936+00:00",
+  "source_filename": "20261014_164328000_iOS.MP4",
+  "source_sha256": "7ee7c78dead4c3365ea94114d00eb97e8444ff6c62560f7e6a0464fd82284a74",
+  "source_bytes": 756684936,
+  "frozen_manifest_sha256": "2a77b7ecfd0cbbd7aeecb91d013b572145a9c0e075278f15c9cc642d6094ac48",
+  "frozen_file_count": 230,
+  "frozen_files_match": true,
+  "primary_unchanged": true,
+  "inspected_evidence": [
+    {
+      "path": "evidence/t0020.00.jpg",
+      "source_timestamp_seconds": 20,
+      "kind": "retained native"
+    },
+    {
+      "path": "evidence/t0030.00.jpg",
+      "source_timestamp_seconds": 30,
+      "kind": "retained native"
+    },
+    {
+      "path": "evidence/t0066.00.jpg",
+      "source_timestamp_seconds": 66,
+      "kind": "retained native"
+    },
+    {
+      "path": "evidence/t0078.00.jpg",
+      "source_timestamp_seconds": 78,
+      "kind": "retained native"
+    },
+    {
+      "path": "evidence/t0088.00.jpg",
+      "source_timestamp_seconds": 88,
+      "kind": "retained native"
+    },
+    {
+      "path": "evidence/t0140.00.jpg",
+      "source_timestamp_seconds": 140,
+      "kind": "retained native"
+    },
+    {
+      "path": "evidence/t0145.00.jpg",
+      "source_timestamp_seconds": 145,
+      "kind": "retained native"
+    },
+    {
+      "path": "evidence/t0184.00.jpg",
+      "source_timestamp_seconds": 184,
+      "kind": "retained native"
+    },
+    {
+      "path": "evidence/t0186.00.jpg",
+      "source_timestamp_seconds": 186,
+      "kind": "retained native"
+    },
+    {
+      "path": "evidence/t0203.00.jpg",
+      "source_timestamp_seconds": 203,
+      "kind": "retained native"
+    },
+    {
+      "path": "evidence/t0231.00.jpg",
+      "source_timestamp_seconds": 231,
+      "kind": "retained native"
+    },
+    {
+      "path": "evidence/t0240.00.jpg",
+      "source_timestamp_seconds": 240,
+      "kind": "retained native"
+    },
+    {
+      "path": "evidence/t0248.00.jpg",
+      "source_timestamp_seconds": 248,
+      "kind": "retained native"
+    },
+    {
+      "path": "evidence/t0328.00.jpg",
+      "source_timestamp_seconds": 328,
+      "kind": "retained native"
+    },
+    {
+      "path": "evidence/t0332.00.jpg",
+      "source_timestamp_seconds": 332,
+      "kind": "retained native"
+    },
+    {
+      "path": "evidence/t0338.00.jpg",
+      "source_timestamp_seconds": 338,
+      "kind": "retained native"
+    },
+    {
+      "path": "evidence/t0362.00.jpg",
+      "source_timestamp_seconds": 362,
+      "kind": "retained native"
+    },
+    {
+      "path": "evidence/t0368.00.jpg",
+      "source_timestamp_seconds": 368,
+      "kind": "retained native"
+    },
+    {
+      "path": "evidence/t0396.00.jpg",
+      "source_timestamp_seconds": 396,
+      "kind": "retained native"
+    },
+    {
+      "path": "evidence/t0400.00.jpg",
+      "source_timestamp_seconds": 400,
+      "kind": "retained native"
+    },
+    {
+      "path": "evidence/t0411.50.jpg",
+      "source_timestamp_seconds": 411.5,
+      "kind": "retained native"
+    },
+    {
+      "path": "independent_sol/fresh_78.jpg",
+      "source_timestamp_seconds": 78,
+      "kind": "fresh source native"
+    },
+    {
+      "path": "independent_sol/fresh_240.jpg",
+      "source_timestamp_seconds": 240,
+      "kind": "fresh source native"
+    },
+    {
+      "path": "independent_sol/fresh_368.jpg",
+      "source_timestamp_seconds": 368,
+      "kind": "fresh source native"
+    }
+  ],
+  "independently_selected_ordinary_checks": [
+    {
+      "global_turn": 2,
+      "own_turn": "T1",
+      "selected_independently": true,
+      "timestamps_seconds": [
+        66,
+        78,
+        88
+      ],
+      "claims_checked": "Ogerpon and Spinarak development, Hiking Trail, Cottonee supporting damage; fresh source78 verifies retained alignment. Ogerpon130/Spinarak50 remain benched, Cottonee Grass/RazorLeaf20 reduces Chien-Pao130 to110. Score0-0.",
+      "supported": true
+    },
+    {
+      "global_turn": 5,
+      "own_turn": null,
+      "selected_independently": true,
+      "timestamps_seconds": [
+        231,
+        240,
+        248
+      ],
+      "claims_checked": "Baxcalibur attacks Buster Tail; second Chien-Pao appears benched, Float Stone and three Water visible in resolved state. Whimsicott140 to50, owner2/opponent1 unchanged. Fresh source240 directly verifies attack banner.",
+      "supported": true
+    },
+    {
+      "global_turn": 7,
+      "own_turn": null,
+      "selected_independently": true,
+      "timestamps_seconds": [
+        338,
+        362,
+        368
+      ],
+      "claims_checked": "Opponent replaces Hiking Trail with Soothing Shore, benches Suicune ex140 and retreats Baxcalibur to second Chien-Pao ex130. Float Stone Baxcalibur moves central Bench with Water removed. Fresh source368 verifies resolved board. Score2-1 before terminal attack.",
+      "supported": true
+    }
+  ],
+  "material_corrections": [],
+  "nonmaterial_corrections": [],
+  "remaining_uncertainties": [
+    "Canonical OneDrive placeholder identity remains unverified; acceptance binds only hashed Offline_Inbox source.",
+    "Hidden cards, full20 lists and exact hidden draw provenance remain unknown.",
+    "Owner T3 end-turn tap versus timeout remains unestablished. No attack and near-expired countdown supported.",
+    "Rank display and owner designation support ladder routing. A separate explicit queue-name screen was not independently read.",
+    "No Auto option/control appears in inspected native samples; absence is bounded observation plus primary full coverage, not a new full visual pass.",
+    "Minor animation/action boundaries approximate; retained files are source-local native1170x2532 JPEGs, displayed with viewer resizing."
+  ],
+  "supported_log_facts": {
+    "owner": "Dacz8976",
+    "opponent": "Roncaufeu",
+    "outcome": "loss",
+    "terminal_score": {
+      "owner": 2,
+      "opponent": 3
+    },
+    "turn_order": "second",
+    "turns_played": 7,
+    "main_attacker": "Whimsicott ex",
+    "first_main_attack": "Grass Knot",
+    "first_main_attack_own_turn": 2,
+    "first_main_attack_global_turn": 4,
+    "first_main_attack_seconds": 186,
+    "opponent_points_before_first_main_attack": 1,
+    "recommended_ladder_section": "Deck12: Ariados / Whimsicott / Ogerpon",
+    "note_prefix": "Second | T2 | 1",
+    "owner_visible_core": [
+      "Cottonee",
+      "Whimsicott ex",
+      "Spinarak",
+      "Ariados",
+      "Teal Mask Ogerpon ex"
+    ],
+    "opponent_visible_core": [
+      "Chien-Pao ex",
+      "Frigibax",
+      "Baxcalibur",
+      "Suicune ex"
+    ]
+  },
+  "coverage_assessment": "Primary COVERAGE and REVIEW cover setup0-38, globals1-7 38-402, result402-412.853333 continuously. Native spot checks and score progression agree; no omitted phase or contradictory visible state found in bounded acceptance check. This is not a second full pass.",
+  "source_metadata_verification": {
+    "duration_seconds": 412.853333,
+    "creation_utc": "2026-10-14T16:43:28.000000Z",
+    "method": "fresh ffprobe"
+  },
+  "initial_rejection": false
+}

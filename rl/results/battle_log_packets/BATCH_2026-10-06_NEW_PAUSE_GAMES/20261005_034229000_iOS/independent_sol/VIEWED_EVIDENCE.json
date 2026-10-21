@@ -1,0 +1,917 @@
+{
+  "game_id": "20261005_034229000_iOS",
+  "source_video": "20261005_034229000_iOS.MP4",
+  "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+  "checked_at_utc": "2026-10-06T19:41:21.749666+00:00",
+  "checked_input_sha256": {
+    "SOURCE.json": "b31e89789db63fbbe9ec64ff20df069733742765591c2bf81b22b495bebe085a",
+    "REVIEW.md": "7d63cda3a22b6eb04dbf643bd007549bb4014cdf9d6f031d575b68bdca27e6f2",
+    "COVERAGE.md": "08e8ca2fa98981a9c14c7d96c7be0ba06f2d31ce47fd0c2ccc780f63eadbab6d",
+    "SUMMARY.json": "e8d09f6c9911ae85bed215ed142bda07649074f10eec1077e24ee48ce06e5b77",
+    "UNCERTAINTIES.json": "53e64e2a854de67ddd2e5cf5c49720158860530d85b163d97b1d7fab3d60ed3a",
+    "PAUSE_GAME.json": "dd91a480943091aa1ecc06cfb15331854a38bb1abbac57a0837c3d3cb7fd2d23",
+    "DECK_USED.json": "d6477769fab59ae75c3f058f69558b473ab1038a2b4f161f1e0ced18174540f2",
+    "TURN_LEDGER.json": "169bef5cdf8c3fd1050bd9ee016e366c2051e941be5f08b8b1abf4a02d4add2b",
+    "TURN_EVIDENCE.json": "cf676cb82035a1394a585f707d3008109bf9964616775bf443d4cfe6a057560a"
+  },
+  "supplemental_checked_input_sha256": {
+    "RECORDING_METADATA.json": "2938ea58a0ca11616734e03ead15ea67e1e86b058c09ac8c3d0835a943064ed4",
+    "../NEW_DECK_ENTRIES.json": "e3a946d41a06fa301b6f7da92cc173335a232c6eb24098607fb9a67f9ad49900"
+  },
+  "scope": "Bounded independent acceptance sample of the completed source-wide first pass. No routine second full visual pass, source media hash reread or duplicate extraction.",
+  "accepted": false,
+  "status": "bounded_inspection_complete_repairs_required",
+  "required_repairs": [
+    "R1",
+    "R2",
+    "R3",
+    "R4"
+  ],
+  "native_full_frames_actually_viewed": [
+    {
+      "evidence_id": "f_0024_80",
+      "requested_source_seconds": 24.8,
+      "native_full_frame_path": "turn_evidence/t0024.80.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0046_20",
+      "requested_source_seconds": 46.2,
+      "native_full_frame_path": "turn_evidence/t0046.20.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0046_50",
+      "requested_source_seconds": 46.5,
+      "native_full_frame_path": "turn_evidence/t0046.50.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0046_80",
+      "requested_source_seconds": 46.8,
+      "native_full_frame_path": "turn_evidence/t0046.80.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0047_20",
+      "requested_source_seconds": 47.2,
+      "native_full_frame_path": "turn_evidence/t0047.20.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0049_20",
+      "requested_source_seconds": 49.2,
+      "native_full_frame_path": "turn_evidence/t0049.20.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0050_00",
+      "requested_source_seconds": 50,
+      "native_full_frame_path": "turn_evidence/t0050.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0052_20",
+      "requested_source_seconds": 52.2,
+      "native_full_frame_path": "turn_evidence/t0052.20.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0054_00",
+      "requested_source_seconds": 54,
+      "native_full_frame_path": "turn_evidence/t0054.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0060_50",
+      "requested_source_seconds": 60.5,
+      "native_full_frame_path": "turn_evidence/t0060.50.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0061_50",
+      "requested_source_seconds": 61.5,
+      "native_full_frame_path": "turn_evidence/t0061.50.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0062_50",
+      "requested_source_seconds": 62.5,
+      "native_full_frame_path": "turn_evidence/t0062.50.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0067_00",
+      "requested_source_seconds": 67,
+      "native_full_frame_path": "turn_evidence/t0067.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0078_00",
+      "requested_source_seconds": 78,
+      "native_full_frame_path": "turn_evidence/t0078.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0081_00",
+      "requested_source_seconds": 81,
+      "native_full_frame_path": "turn_evidence/t0081.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0086_00",
+      "requested_source_seconds": 86,
+      "native_full_frame_path": "turn_evidence/t0086.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0093_00",
+      "requested_source_seconds": 93,
+      "native_full_frame_path": "turn_evidence/t0093.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0103_00",
+      "requested_source_seconds": 103,
+      "native_full_frame_path": "turn_evidence/t0103.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0107_00",
+      "requested_source_seconds": 107,
+      "native_full_frame_path": "turn_evidence/t0107.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0111_00",
+      "requested_source_seconds": 111,
+      "native_full_frame_path": "turn_evidence/t0111.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0112_00",
+      "requested_source_seconds": 112,
+      "native_full_frame_path": "turn_evidence/t0112.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0114_00",
+      "requested_source_seconds": 114,
+      "native_full_frame_path": "turn_evidence/t0114.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0117_00",
+      "requested_source_seconds": 117,
+      "native_full_frame_path": "turn_evidence/t0117.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0119_30",
+      "requested_source_seconds": 119.3,
+      "native_full_frame_path": "turn_evidence/t0119.30.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0125_00",
+      "requested_source_seconds": 125,
+      "native_full_frame_path": "turn_evidence/t0125.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0127_00",
+      "requested_source_seconds": 127,
+      "native_full_frame_path": "turn_evidence/t0127.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0213_70",
+      "requested_source_seconds": 213.7,
+      "native_full_frame_path": "turn_evidence/t0213.70.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0283_00",
+      "requested_source_seconds": 283,
+      "native_full_frame_path": "turn_evidence/t0283.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0044_00",
+      "requested_source_seconds": 44,
+      "native_full_frame_path": "turn_evidence/t0044.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0064_00",
+      "requested_source_seconds": 64,
+      "native_full_frame_path": "turn_evidence/t0064.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0108_00",
+      "requested_source_seconds": 108,
+      "native_full_frame_path": "turn_evidence/t0108.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0128_00",
+      "requested_source_seconds": 128,
+      "native_full_frame_path": "turn_evidence/t0128.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0211_00",
+      "requested_source_seconds": 211,
+      "native_full_frame_path": "turn_evidence/t0211.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0229_00",
+      "requested_source_seconds": 229,
+      "native_full_frame_path": "turn_evidence/t0229.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0280_00",
+      "requested_source_seconds": 280,
+      "native_full_frame_path": "turn_evidence/t0280.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0327_00",
+      "requested_source_seconds": 327,
+      "native_full_frame_path": "turn_evidence/t0327.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0214_50",
+      "requested_source_seconds": 214.5,
+      "native_full_frame_path": "turn_evidence/t0214.50.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0216_50",
+      "requested_source_seconds": 216.5,
+      "native_full_frame_path": "turn_evidence/t0216.50.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0219_50",
+      "requested_source_seconds": 219.5,
+      "native_full_frame_path": "turn_evidence/t0219.50.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0227_50",
+      "requested_source_seconds": 227.5,
+      "native_full_frame_path": "turn_evidence/t0227.50.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0283_80",
+      "requested_source_seconds": 283.8,
+      "native_full_frame_path": "turn_evidence/t0283.80.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0285_80",
+      "requested_source_seconds": 285.8,
+      "native_full_frame_path": "turn_evidence/t0285.80.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0288_80",
+      "requested_source_seconds": 288.8,
+      "native_full_frame_path": "turn_evidence/t0288.80.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0294_00",
+      "requested_source_seconds": 294,
+      "native_full_frame_path": "turn_evidence/t0294.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0303_00",
+      "requested_source_seconds": 303,
+      "native_full_frame_path": "turn_evidence/t0303.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0312_00",
+      "requested_source_seconds": 312,
+      "native_full_frame_path": "turn_evidence/t0312.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0320_00",
+      "requested_source_seconds": 320,
+      "native_full_frame_path": "turn_evidence/t0320.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0326_00",
+      "requested_source_seconds": 326,
+      "native_full_frame_path": "turn_evidence/t0326.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0063_00",
+      "requested_source_seconds": 63,
+      "native_full_frame_path": "turn_evidence/t0063.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0063_50",
+      "requested_source_seconds": 63.5,
+      "native_full_frame_path": "turn_evidence/t0063.50.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0126_00",
+      "requested_source_seconds": 126,
+      "native_full_frame_path": "turn_evidence/t0126.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0132_00",
+      "requested_source_seconds": 132,
+      "native_full_frame_path": "turn_evidence/t0132.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0232_00",
+      "requested_source_seconds": 232,
+      "native_full_frame_path": "turn_evidence/t0232.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0330_00",
+      "requested_source_seconds": 330,
+      "native_full_frame_path": "turn_evidence/t0330.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0260_00",
+      "requested_source_seconds": 260,
+      "native_full_frame_path": "turn_evidence/t0260.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0274_00",
+      "requested_source_seconds": 274,
+      "native_full_frame_path": "turn_evidence/t0274.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0334_00",
+      "requested_source_seconds": 334,
+      "native_full_frame_path": "turn_evidence/t0334.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0349_00",
+      "requested_source_seconds": 349,
+      "native_full_frame_path": "turn_evidence/t0349.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0352_00",
+      "requested_source_seconds": 352,
+      "native_full_frame_path": "turn_evidence/t0352.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0355_00",
+      "requested_source_seconds": 355,
+      "native_full_frame_path": "turn_evidence/t0355.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0356_00",
+      "requested_source_seconds": 356,
+      "native_full_frame_path": "turn_evidence/t0356.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0357_00",
+      "requested_source_seconds": 357,
+      "native_full_frame_path": "turn_evidence/t0357.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0358_00",
+      "requested_source_seconds": 358,
+      "native_full_frame_path": "turn_evidence/t0358.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0359_00",
+      "requested_source_seconds": 359,
+      "native_full_frame_path": "turn_evidence/t0359.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0361_00",
+      "requested_source_seconds": 361,
+      "native_full_frame_path": "turn_evidence/t0361.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0364_00",
+      "requested_source_seconds": 364,
+      "native_full_frame_path": "turn_evidence/t0364.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0374_00",
+      "requested_source_seconds": 374,
+      "native_full_frame_path": "turn_evidence/t0374.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0083_00",
+      "requested_source_seconds": 83,
+      "native_full_frame_path": "turn_evidence/t0083.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0090_00",
+      "requested_source_seconds": 90,
+      "native_full_frame_path": "turn_evidence/t0090.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0096_00",
+      "requested_source_seconds": 96,
+      "native_full_frame_path": "turn_evidence/t0096.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0150_00",
+      "requested_source_seconds": 150,
+      "native_full_frame_path": "turn_evidence/t0150.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0169_00",
+      "requested_source_seconds": 169,
+      "native_full_frame_path": "turn_evidence/t0169.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0174_00",
+      "requested_source_seconds": 174,
+      "native_full_frame_path": "turn_evidence/t0174.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0181_00",
+      "requested_source_seconds": 181,
+      "native_full_frame_path": "turn_evidence/t0181.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0185_00",
+      "requested_source_seconds": 185,
+      "native_full_frame_path": "turn_evidence/t0185.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0188_00",
+      "requested_source_seconds": 188,
+      "native_full_frame_path": "turn_evidence/t0188.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0195_00",
+      "requested_source_seconds": 195,
+      "native_full_frame_path": "turn_evidence/t0195.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0200_00",
+      "requested_source_seconds": 200,
+      "native_full_frame_path": "turn_evidence/t0200.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0203_00",
+      "requested_source_seconds": 203,
+      "native_full_frame_path": "turn_evidence/t0203.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0207_00",
+      "requested_source_seconds": 207,
+      "native_full_frame_path": "turn_evidence/t0207.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0209_00",
+      "requested_source_seconds": 209,
+      "native_full_frame_path": "turn_evidence/t0209.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0212_00",
+      "requested_source_seconds": 212,
+      "native_full_frame_path": "turn_evidence/t0212.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0222_00",
+      "requested_source_seconds": 222,
+      "native_full_frame_path": "turn_evidence/t0222.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0225_00",
+      "requested_source_seconds": 225,
+      "native_full_frame_path": "turn_evidence/t0225.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0298_00",
+      "requested_source_seconds": 298,
+      "native_full_frame_path": "turn_evidence/t0298.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0307_00",
+      "requested_source_seconds": 307,
+      "native_full_frame_path": "turn_evidence/t0307.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0310_00",
+      "requested_source_seconds": 310,
+      "native_full_frame_path": "turn_evidence/t0310.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0313_00",
+      "requested_source_seconds": 313,
+      "native_full_frame_path": "turn_evidence/t0313.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0315_00",
+      "requested_source_seconds": 315,
+      "native_full_frame_path": "turn_evidence/t0315.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    },
+    {
+      "evidence_id": "f_0321_00",
+      "requested_source_seconds": 321,
+      "native_full_frame_path": "turn_evidence/t0321.00.jpg",
+      "source_sha256": "0bb007528bcaa32a3ee7abbbbf8f5dfaeeb976140d3aaedd774de3e73ee681b2",
+      "method": "Direct view_image inspection of retained native1170x2532 full frame"
+    }
+  ],
+  "asset_inspection": "All202native frame and404crop assets read structurally; allcrop content compared numerically with matching source-region decoded pixels allowing JPEG recompression. Ninety native full frames visually inspected, not all202.",
+  "failed_noninspection_attempts": [
+    {
+      "requested_seconds": 297,
+      "reason": "No retained t0297.00.jpg; no image inspected and no extraction performed."
+    }
+  ],
+  "visual_facts": {
+    "displayed_labels_confirmed": {
+      "1": 44,
+      "3": 108,
+      "4": 128,
+      "5": 211,
+      "6": 229,
+      "7": 280,
+      "8": 327
+    },
+    "label2_at64": "not displayed; R3",
+    "current_energy_empty_starts": [
+      111,
+      213.7,
+      283
+    ],
+    "later_generated_metal_seen": [
+      112,
+      214.5,
+      283.8
+    ],
+    "terminal_points_after_removal": true
+  },
+  "correction_rechecks": [
+    {
+      "report": "CORRECTION_RECHECK.json",
+      "accepted": true,
+      "checked_at_utc": "2026-10-06T19:57:39.644583+00:00",
+      "checked_input_sha256": {
+        "SOURCE.json": "b31e89789db63fbbe9ec64ff20df069733742765591c2bf81b22b495bebe085a",
+        "REVIEW.md": "e374b9bccea300b5bb1ac4164b9f3408c57ffff1520941ea425092713e0cbe40",
+        "COVERAGE.md": "753eeece139c1b34656e19062b050ee10cd568674ddc495dd747d845dc9b59f7",
+        "SUMMARY.json": "e8d09f6c9911ae85bed215ed142bda07649074f10eec1077e24ee48ce06e5b77",
+        "UNCERTAINTIES.json": "53e64e2a854de67ddd2e5cf5c49720158860530d85b163d97b1d7fab3d60ed3a",
+        "PAUSE_GAME.json": "dd91a480943091aa1ecc06cfb15331854a38bb1abbac57a0837c3d3cb7fd2d23",
+        "DECK_USED.json": "d6477769fab59ae75c3f058f69558b473ab1038a2b4f161f1e0ced18174540f2",
+        "TURN_LEDGER.json": "916bbf77e98eef237f9973cdb9a6ad4e1f7d4b157366948511c9aa5b0c4aa1c0",
+        "TURN_EVIDENCE.json": "f20457cde7336e203a833a8c0d649300f29f756f3a74f36f49afbfc0db036a74"
+      },
+      "native_full_frames_actually_viewed": [
+        {
+          "evidence_id": "f_0083_00",
+          "source_seconds": 83.0,
+          "path": "turn_evidence/t0083.00.jpg",
+          "native_dimensions": {
+            "width": 1170,
+            "height": 2532
+          }
+        },
+        {
+          "evidence_id": "f_0090_00",
+          "source_seconds": 90.0,
+          "path": "turn_evidence/t0090.00.jpg",
+          "native_dimensions": {
+            "width": 1170,
+            "height": 2532
+          }
+        },
+        {
+          "evidence_id": "f_0096_00",
+          "source_seconds": 96.0,
+          "path": "turn_evidence/t0096.00.jpg",
+          "native_dimensions": {
+            "width": 1170,
+            "height": 2532
+          }
+        },
+        {
+          "evidence_id": "f_0111_00",
+          "source_seconds": 111.0,
+          "path": "turn_evidence/t0111.00.jpg",
+          "native_dimensions": {
+            "width": 1170,
+            "height": 2532
+          }
+        },
+        {
+          "evidence_id": "f_0112_00",
+          "source_seconds": 112.0,
+          "path": "turn_evidence/t0112.00.jpg",
+          "native_dimensions": {
+            "width": 1170,
+            "height": 2532
+          }
+        },
+        {
+          "evidence_id": "f_0213_70",
+          "source_seconds": 213.7,
+          "path": "turn_evidence/t0213.70.jpg",
+          "native_dimensions": {
+            "width": 1170,
+            "height": 2532
+          }
+        },
+        {
+          "evidence_id": "f_0214_50",
+          "source_seconds": 214.5,
+          "path": "turn_evidence/t0214.50.jpg",
+          "native_dimensions": {
+            "width": 1170,
+            "height": 2532
+          }
+        },
+        {
+          "evidence_id": "f_0283_00",
+          "source_seconds": 283.0,
+          "path": "turn_evidence/t0283.00.jpg",
+          "native_dimensions": {
+            "width": 1170,
+            "height": 2532
+          }
+        },
+        {
+          "evidence_id": "f_0283_80",
+          "source_seconds": 283.8,
+          "path": "turn_evidence/t0283.80.jpg",
+          "native_dimensions": {
+            "width": 1170,
+            "height": 2532
+          }
+        },
+        {
+          "evidence_id": "f_0313_00",
+          "source_seconds": 313.0,
+          "path": "turn_evidence/t0313.00.jpg",
+          "native_dimensions": {
+            "width": 1170,
+            "height": 2532
+          }
+        },
+        {
+          "evidence_id": "f_0315_00",
+          "source_seconds": 315.0,
+          "path": "turn_evidence/t0315.00.jpg",
+          "native_dimensions": {
+            "width": 1170,
+            "height": 2532
+          }
+        },
+        {
+          "evidence_id": "f_0318_00",
+          "source_seconds": 318.0,
+          "path": "turn_evidence/t0318.00.jpg",
+          "native_dimensions": {
+            "width": 1170,
+            "height": 2532
+          }
+        },
+        {
+          "evidence_id": "f_0065_00",
+          "source_seconds": 65.0,
+          "path": "root_turn2_banner/t0065.00.jpg",
+          "native_dimensions": {
+            "width": 1170,
+            "height": 2532
+          }
+        },
+        {
+          "evidence_id": "f_0090_50",
+          "source_seconds": 90.5,
+          "path": "root_action_windows/t0090.50.jpg",
+          "native_dimensions": {
+            "width": 1170,
+            "height": 2532
+          }
+        },
+        {
+          "evidence_id": "f_0091_50",
+          "source_seconds": 91.5,
+          "path": "root_action_windows/t0091.50.jpg",
+          "native_dimensions": {
+            "width": 1170,
+            "height": 2532
+          }
+        },
+        {
+          "evidence_id": "f_0092_50",
+          "source_seconds": 92.5,
+          "path": "root_action_windows/t0092.50.jpg",
+          "native_dimensions": {
+            "width": 1170,
+            "height": 2532
+          }
+        },
+        {
+          "evidence_id": "f_0097_00",
+          "source_seconds": 97.0,
+          "path": "root_action_windows/t0097.00.jpg",
+          "native_dimensions": {
+            "width": 1170,
+            "height": 2532
+          }
+        },
+        {
+          "evidence_id": "f_0098_00",
+          "source_seconds": 98.0,
+          "path": "root_action_windows/t0098.00.jpg",
+          "native_dimensions": {
+            "width": 1170,
+            "height": 2532
+          }
+        },
+        {
+          "evidence_id": "f_0099_00",
+          "source_seconds": 99.0,
+          "path": "root_action_windows/t0099.00.jpg",
+          "native_dimensions": {
+            "width": 1170,
+            "height": 2532
+          }
+        },
+        {
+          "evidence_id": "f_0151_00",
+          "source_seconds": 151.0,
+          "path": "root_action_windows/t0151.00.jpg",
+          "native_dimensions": {
+            "width": 1170,
+            "height": 2532
+          }
+        },
+        {
+          "evidence_id": "f_0153_00",
+          "source_seconds": 153.0,
+          "path": "root_action_windows/t0153.00.jpg",
+          "native_dimensions": {
+            "width": 1170,
+            "height": 2532
+          }
+        },
+        {
+          "evidence_id": "f_0313_50",
+          "source_seconds": 313.5,
+          "path": "root_action_windows/t0313.50.jpg",
+          "native_dimensions": {
+            "width": 1170,
+            "height": 2532
+          }
+        }
+      ],
+      "new_asset_checks": {
+        "new_native_frames": 10,
+        "new_crops": 20,
+        "decoded_dimensions_bounds_sha256_pass": true,
+        "crop_correspondence_max_MAE": 1.1622830234270076,
+        "all_current_evidence_references_resolve": true
+      }
+    }
+  ]
+}

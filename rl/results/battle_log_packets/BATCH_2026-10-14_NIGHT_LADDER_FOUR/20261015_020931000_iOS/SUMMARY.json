@@ -1,0 +1,89 @@
+{
+  "source_filename": "20261015_020931000_iOS.MP4",
+  "source_sha256": "a8e539e31976ed5591bba0a2cfba3db3a44168b61191e259b5cd55bf05e37060",
+  "source_bytes": 234200478,
+  "duration_seconds": 132.836667,
+  "reviewer": "/root/night_020931",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "scope": "Complete supplied recording: prequeue, setup, all three global turns, concession, results",
+  "first_pass_complete": true,
+  "independent_acceptance": "pending separate checker and lead",
+  "battle_complete": true,
+  "match_count": 1,
+  "match_date": "2026-10-14",
+  "match_timezone": "America/Chicago",
+  "exact_three_item_note_prefix": "1st | Alolan Ninetales ex no attack | opp N/A",
+  "owner": "Dacz8976",
+  "opponent": "Rogshamosh",
+  "opponent_level": 40,
+  "results": {
+    "owner_outcome": "win",
+    "reason": "opponent conceded",
+    "terminal_evidence": "evidence/t0119.00.jpg",
+    "victory_evidence": "evidence/t0132.00.jpg",
+    "owner_points": 0,
+    "opponent_points": 0,
+    "owner_damage_done": 0,
+    "global_turns_played": 3,
+    "owner_turn_at_end": 2
+  },
+  "score": {
+    "owner": 0,
+    "opponent": 0,
+    "points_awarded_by_concession": 0
+  },
+  "mode": {
+    "queue": "Ranked Match",
+    "season": "B4b SP",
+    "computer": false,
+    "auto_option_observed": false,
+    "pre_match_rank": "Master Ball Rank",
+    "pre_match_rank_points": 758,
+    "pre_match_standing": "Unranked",
+    "post_match_rank_points": null,
+    "evidence": "evidence/t0002.00.jpg"
+  },
+  "deck": {
+    "selected_name": "Deck 13-A",
+    "visible_core": [
+      "Alolan Ninetales ex",
+      "Alolan Vulpix",
+      "Team Rocket’s Rattata",
+      "Team Rocket’s Raticate ex"
+    ],
+    "main_attacker": "Alolan Ninetales ex",
+    "exact_20_card_list_verified": false,
+    "observed_opponent_core": [
+      "Bonsly (30 HP, Teary Attack)"
+    ],
+    "observed_opponent_other_cards": [
+      "Professor’s Research",
+      "Giant Cape"
+    ],
+    "hidden_opponent_cards": "unknown"
+  },
+  "going_order": "first",
+  "firstmainattack": {
+    "pokemon": "Alolan Ninetales ex",
+    "attacked": false,
+    "own_turn": null,
+    "global_turn": null,
+    "opponent_points_before_attack": null,
+    "note": "No Alolan Ninetales ex attack; none is put into play. Owner deals zero damage and never attacks."
+  },
+  "supporting_attacks": [],
+  "recording_limits": [
+    "No apparent recording gap; whole match and terminal outcome are present.",
+    "Full hidden decks and opponent hand identities are not established.",
+    "Rank after the victory is outside the recording.",
+    "Opening share-code image retained but not decoded."
+  ],
+  "primary_files": [
+    "SOURCE.json",
+    "REVIEW.md",
+    "COVERAGE.md",
+    "UNCERTAINTIES.md",
+    "SUMMARY.json"
+  ]
+}

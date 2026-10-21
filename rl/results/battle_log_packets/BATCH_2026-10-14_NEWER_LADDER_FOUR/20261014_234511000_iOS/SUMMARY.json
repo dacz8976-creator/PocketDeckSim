@@ -1,0 +1,89 @@
+{
+  "schema_version": 1,
+  "video_basename": "20261014_234511000_iOS.MP4",
+  "source_sha256": "5d79d17a888d0dc2acc400855121979258efe11177b2254ebaae5e9c7a39784a",
+  "source_bytes": 202763297,
+  "duration_seconds": 114.868333,
+  "match_date": "2026-10-14",
+  "source_creation_utc": "2026-10-14T23:45:11.000000Z",
+  "reviewed_utc": "2026-10-15T01:06:03.508409+00:00",
+  "reviewer": "/root/newer_234511",
+  "claim_reviewer": "/root/evening_234511",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "scope": "Complete source setup through terminal statistics",
+  "review_complete": true,
+  "battle_complete": true,
+  "match_count": 1,
+  "mode": "ladder_by_owner_default_exact_queue_unconfirmed",
+  "auto_option_seen": false,
+  "auto_enabled": null,
+  "owner": "Dacz8976",
+  "opponent": "グズマ推し",
+  "opponent_level": 60,
+  "turn_order": "second",
+  "owner_turns_observed": 1,
+  "opponent_turns_observed": 2,
+  "global_turns_played": 3,
+  "result": "win",
+  "result_reason": "opponent_concession",
+  "result_evidence": {
+    "concession_seconds": [
+      105,
+      106
+    ],
+    "final_stats_seconds": 114.7,
+    "paths": [
+      "evidence/native_105.00.jpg",
+      "evidence/native_114.70.jpg"
+    ]
+  },
+  "score": {
+    "owner": 0,
+    "opponent": 0,
+    "actual_concession_points": true
+  },
+  "damage_done": 0,
+  "card_of_game": "None",
+  "deck": {
+    "context_label": "Deck13-A",
+    "context_main_attacker": "Alolan Ninetales ex",
+    "context_main_attacker_visible": false,
+    "visible_core": [
+      "Team Rocket's Rattata",
+      "Team Rocket's Raticate ex",
+      "Alolan Vulpix"
+    ],
+    "other_revealed_owner_cards": [
+      "Copycat",
+      "Ilima",
+      "Poké Ball",
+      "Sightseer",
+      "Elegant Cape",
+      "Sabrina"
+    ],
+    "full_list_known": false
+  },
+  "opponent_visible_core": [
+    "Team Rocket's Articuno ex"
+  ],
+  "opponent_other_revealed": [
+    "Misty (two plays)",
+    "Soothing Shore"
+  ],
+  "main_first_attack": {
+    "attacker": "Alolan Ninetales ex",
+    "attacked": false,
+    "owner_own_turn": null,
+    "global_turn": null,
+    "timestamp_seconds": null,
+    "opponent_points_before_attack": null,
+    "note": "no attack; opp N/A; identity established by lead context"
+  },
+  "supporting_first_attack": null,
+  "any_owner_attack": false,
+  "any_opponent_attack": false,
+  "exact_three_item_note_prefix": "2nd | Alolan Ninetales ex no attack | opp N/A",
+  "independent_acceptance_pending": true,
+  "source_filename": "20261014_234511000_iOS.MP4"
+}

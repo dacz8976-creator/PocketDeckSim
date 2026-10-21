@@ -1,0 +1,35 @@
+{
+  "reviewer": "/root/independent_ladder_two",
+  "model": "gpt-6.1-sol",
+  "effort": "high (inherited)",
+  "checked_utc": "2026-10-15T21:28:02.7850787Z",
+  "source_filename": null,
+  "source_sha256": "877668e7f12e0619f4cd1a372cba29d9c1e45af52f98ca4a0274d1f026c215cb",
+  "accepted": true,
+  "scope": "Bounded independent source and frozen primary acceptance, not a second full review",
+  "checks": [
+    "Initial source observations before primary reports",
+    "Ranked setup and opponent second",
+    "Independently selected ordinary switch evolution attack windows",
+    "First Glimmora ownT3 opponent0; Kingambit ownT11 opponent2",
+    "Sabrina and Cyrus direct evidence distinct; Ilima inspected not played",
+    "Regigigas ownT9 opponent1 Giga Turbo zero damage and Energy effect",
+    "Three owner KOs but only two opponent points due Shattering Heads",
+    "Kingambit Rare Candy180 into Mega170 and +3",
+    "Victory3-2 wentsecond22turns270damage",
+    "Full22turn primary reports coverage uncertainties read",
+    "All frozen files match and unchanged"
+  ],
+  "boundaries": [
+    "Exact20-card lists and hidden cards unknown",
+    "Small ability causal wording uncertainty retained",
+    "No original media rehash or duplicate decode",
+    "No shared log registration moves or external writes"
+  ],
+  "frozen_manifest_sha256": "e913b398d6fa1d007908a1da61a789d2bfee2c00a72169c0a41558287b76431b",
+  "frozen_file_count": 336,
+  "frozen_files_match": true,
+  "primary_unchanged": true,
+  "mismatches": [],
+  "after_check_changes": []
+}

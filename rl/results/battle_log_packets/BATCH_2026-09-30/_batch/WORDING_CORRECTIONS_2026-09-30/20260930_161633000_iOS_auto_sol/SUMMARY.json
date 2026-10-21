@@ -1,0 +1,88 @@
+{
+  "video_basename": "20260930_161633000_iOS.MP4",
+  "source_path_at_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\20260930_161633000_iOS.MP4",
+  "sha256": "0795e24efb0f71c3461d23b5860a736a30755cf2071a3047eb4b90a731193a79",
+  "bytes": 306539344,
+  "duration_seconds": 169.925,
+  "reviewer": "sol_auto_161633000",
+  "review_model": "gpt-6.1-sol",
+  "review_date": "2026-09-30",
+  "review_scope": "Fresh full visual battle review: setup, numbered turns1-9, terminal defeat; root acceptance pending",
+  "review_status": "full_review_packet_ready_for_lead_acceptance",
+  "meaningful_phase_coverage_complete": true,
+  "mode": "autopilot_vs_computer",
+  "mode_basis": [
+    "Owner testimony in SOURCE.json",
+    "CheckedAuto from10.50s",
+    "Namedcomputerdeck onDefeatterminal"
+  ],
+  "ladder_eligible": false,
+  "ladder_action": "excluded_by_owner_instruction; no Ladder Log write",
+  "owner": "Dacz8976",
+  "opponent": "Mega Manectric ex & Bellibolt ex Deck (Deluxe Pack: Mega)",
+  "result": "loss",
+  "owner_points": 0,
+  "opponent_points": 3,
+  "terminal_evidence": {
+    "seconds": [
+      157.5,
+      160.5,
+      169,
+      169.5
+    ],
+    "observed": "FinalDrilbur0HP,opponentthirdpoint,explicitDefeatcomputerdeckscreen",
+    "files": [
+      "overview/sample_frames/00053.jpg",
+      "overview/sample_frames/00054.jpg",
+      "targets/t0169.00.jpg",
+      "overview/sample_frames/00057.jpg"
+    ]
+  },
+  "root_check_anchors": {
+    "opening_auto": {
+      "seconds": 10.5,
+      "file": "overview/sample_frames/00004.jpg",
+      "check": "CheckedAuto;setupinprogress"
+    },
+    "ordinary": {
+      "seconds": 39,
+      "file": "targets/t0039.00.jpg",
+      "check": "Riolu60oneFighting,ScratchDrilbur60Bench;Headbuttversionheld;Tadbulb50andHelioptile60"
+    },
+    "decisive": {
+      "seconds": 157,
+      "file": "targets/t0157.00.jpg",
+      "check": "Bellibolt20withTool;HighVoltageCannon70hitsfinalDrilbur;animationcounterisnotsettledHP"
+    },
+    "terminal": {
+      "seconds": 169,
+      "file": "targets/t0169.00.jpg",
+      "check": "ExplicitDefeatandnamedcomputerdeck"
+    }
+  },
+  "important_findings": [
+    "Riolu10base+20weaknessdeals30toTadbulb;versusex10+30bonus+20weaknessdeals60.",
+    "ToolStage1+30HP leavesBellibolt160afterevolutioncarrying30damage;later60,30,50damageleave20.",
+    "BothEvoshockandElectricGeneratorflipTails;noeffectattachmentorparalysiscredited.",
+    "ThreeBellibolt70damageattacksKOthree60HPbasicsforopponentpoints1,2,3.",
+    "LuckyIcePopandArenaofAntiquityaredrawnandheld,notplayed;Arena alternativeunexecuted.",
+    "NoownerGarchomp,Gabite,orMegaLucarioevolutionplayed;fulldeckunknown."
+  ],
+  "astra_consult_required": false,
+  "packet_files": [
+    "SOURCE.json",
+    "REVIEW.md",
+    "COVERAGE.md",
+    "UNCERTAINTIES.json",
+    "SUMMARY.json"
+  ],
+  "integrity_basis": "Registered SOURCE.json identity eventdb060422-6eb4-4635-9536-ab78265d0629; no separate reviewer hash pass",
+  "source_modified": false,
+  "shared_log_or_index_modified_by_reviewer": false,
+  "lead_astra_consultation": {
+    "consulted": true,
+    "model": "gpt-6-astra/high",
+    "scope": "Bounded Arena eligibility, damage/counterfactual and terminal Helmet interpretation",
+    "evidence": "ASTRA_CHECK.md"
+  }
+}

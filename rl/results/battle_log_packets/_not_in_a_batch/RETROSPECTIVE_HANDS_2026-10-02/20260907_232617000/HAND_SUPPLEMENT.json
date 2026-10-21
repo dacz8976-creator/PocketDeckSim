@@ -1,0 +1,1328 @@
+{
+  "schema": "retrospective-hand-supplement/v1",
+  "game_id": "20260907_232617000",
+  "source": "20260907_232617000_iOS.MP4",
+  "source_sha256": "0114215B1DF4E6D6DD2B21C47616B9F9486788F815BC48B978DBA06D68490166",
+  "turns": [
+    {
+      "turn_number": 2,
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Professor's Research",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f52.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Professor's Research",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f52.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Team Rocket's Goo-zooka",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f52.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Lisia",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f52.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Sabrina",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f52.000"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "direct_native_hand_observation",
+        "evidence_ids": [
+          "f52.000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Professor's Research",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f96.000"
+            ]
+          },
+          {
+            "position": 2,
+            "name": "Professor's Research",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f96.000"
+            ]
+          },
+          {
+            "position": 3,
+            "name": "Team Rocket's Goo-zooka",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f96.000"
+            ]
+          },
+          {
+            "position": 4,
+            "name": "Sabrina",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f96.000"
+            ]
+          }
+        ],
+        "count": 4,
+        "basis": "direct_native_hand_observation",
+        "evidence_ids": [
+          "f96.000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "draw_animation_end_seconds": 51,
+      "draw_end_supported_interval_seconds": [
+        50,
+        51
+      ],
+      "selected_frame_seconds": 52,
+      "first_voluntary_selection_seconds": 53,
+      "candidate_evidence_ids": [
+        "f52.000",
+        "f54.000",
+        "f57.000"
+      ],
+      "before_end_evidence_id": "f96.000",
+      "opponent_fan": {
+        "count": 4,
+        "supported_range": null,
+        "count_method": "Count distinct card backs/leading card edges in native top crop; score dots excluded",
+        "basis": "direct_native_fan_observation",
+        "evidence_ids": [
+          "f52.000"
+        ],
+        "limit_reason": "Overlapping fan; no identities inferred"
+      },
+      "target_status": "observed"
+    },
+    {
+      "turn_number": 4,
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Professor's Research",
+            "basis": "direct_native_untouched_postdraw_fan",
+            "evidence_ids": [
+              "n137.300"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Professor's Research",
+            "basis": "direct_native_untouched_postdraw_fan",
+            "evidence_ids": [
+              "n137.300"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Team Rocket's Goo-zooka",
+            "basis": "direct_native_untouched_postdraw_fan",
+            "evidence_ids": [
+              "n137.300"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Sabrina",
+            "basis": "direct_native_untouched_postdraw_fan",
+            "evidence_ids": [
+              "n137.300"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Pokemon Center Lady",
+            "basis": "direct_native_untouched_postdraw_fan",
+            "evidence_ids": [
+              "n137.300"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "direct_native_hand_observation",
+        "evidence_ids": [
+          "n137.300"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Professor's Research",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f154.000"
+            ]
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Goo-zooka",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f154.000"
+            ]
+          },
+          {
+            "position": 3,
+            "name": "Sabrina",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f154.000"
+            ]
+          },
+          {
+            "position": 4,
+            "name": "Pokemon Center Lady",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f154.000"
+            ]
+          },
+          {
+            "position": 5,
+            "name": "Jolteon ex",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f154.000"
+            ]
+          }
+        ],
+        "count": 5,
+        "basis": "direct_native_hand_observation",
+        "evidence_ids": [
+          "f154.000"
+        ],
+        "status": "observed",
+        "limit_reason": "T4 last readable fan is 154s; 156-157s blur during attack/coin overlay, no hand removals after154s in accepted review"
+      },
+      "draw_animation_end_seconds": 137.3,
+      "draw_end_supported_interval_seconds": [
+        137,
+        137.3
+      ],
+      "selected_frame_seconds": 137.3,
+      "first_voluntary_selection_seconds": 138,
+      "candidate_evidence_ids": [
+        "n137.300",
+        "f138.000",
+        "f139.000",
+        "f141.000",
+        "f144.000"
+      ],
+      "before_end_evidence_id": "f154.000",
+      "opponent_fan": {
+        "count": 3,
+        "supported_range": null,
+        "count_method": "Count distinct card backs/leading card edges in native top crop; score dots excluded",
+        "basis": "direct_native_fan_observation",
+        "evidence_ids": [
+          "n137.300"
+        ],
+        "limit_reason": "Overlapping fan; no identities inferred"
+      },
+      "target_status": "observed",
+      "draw_end_basis": "Upper bound: card center at137s, in fan by137.3s; approximate, not measured PTS"
+    },
+    {
+      "turn_number": 6,
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Professor's Research",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f215.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Goo-zooka",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f215.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Sabrina",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f215.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Pokemon Center Lady",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f215.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Jolteon ex",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f215.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 6,
+            "name": "Copycat",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f215.000"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 6,
+        "basis": "direct_native_hand_observation",
+        "evidence_ids": [
+          "f215.000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Sabrina",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f236.000"
+            ]
+          },
+          {
+            "position": 2,
+            "name": "Pokemon Center Lady",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f236.000"
+            ]
+          },
+          {
+            "position": 3,
+            "name": "Jolteon ex",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f236.000"
+            ]
+          },
+          {
+            "position": 4,
+            "name": "Copycat",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f236.000"
+            ]
+          },
+          {
+            "position": 5,
+            "name": "Jolteon ex",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f236.000"
+            ]
+          }
+        ],
+        "count": 5,
+        "basis": "direct_native_hand_observation",
+        "evidence_ids": [
+          "f236.000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "draw_animation_end_seconds": 214,
+      "draw_end_supported_interval_seconds": [
+        213,
+        214
+      ],
+      "selected_frame_seconds": 215,
+      "first_voluntary_selection_seconds": 219,
+      "candidate_evidence_ids": [
+        "f215.000",
+        "f217.000",
+        "f220.000"
+      ],
+      "before_end_evidence_id": "f236.000",
+      "opponent_fan": {
+        "count": 3,
+        "supported_range": null,
+        "count_method": "Count distinct card backs/leading card edges in native top crop; score dots excluded",
+        "basis": "direct_native_fan_observation",
+        "evidence_ids": [
+          "f215.000"
+        ],
+        "limit_reason": "Overlapping fan; no identities inferred"
+      },
+      "target_status": "observed"
+    },
+    {
+      "turn_number": 8,
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Sabrina",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f265.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Pokemon Center Lady",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f265.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Jolteon ex",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f265.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Copycat",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f265.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Jolteon ex",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f265.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 6,
+            "name": "Team Rocket's Raticate ex",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f265.000"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 6,
+        "basis": "direct_native_hand_observation",
+        "evidence_ids": [
+          "f265.000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Team Rocket's Raticate ex",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f313.000"
+            ]
+          },
+          {
+            "position": 2,
+            "name": "Pokemon Center Lady",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f313.000"
+            ]
+          },
+          {
+            "position": 3,
+            "name": "Ilima",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f313.000"
+            ]
+          }
+        ],
+        "count": 3,
+        "basis": "direct_native_hand_observation",
+        "evidence_ids": [
+          "f313.000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "draw_animation_end_seconds": 264,
+      "draw_end_supported_interval_seconds": [
+        263,
+        264
+      ],
+      "selected_frame_seconds": 265,
+      "first_voluntary_selection_seconds": 267,
+      "candidate_evidence_ids": [
+        "f265.000",
+        "f267.000",
+        "f270.000"
+      ],
+      "before_end_evidence_id": "f313.000",
+      "opponent_fan": {
+        "count": 4,
+        "supported_range": null,
+        "count_method": "Count distinct card backs/leading card edges in native top crop; score dots excluded",
+        "basis": "direct_native_fan_observation",
+        "evidence_ids": [
+          "f265.000"
+        ],
+        "limit_reason": "Overlapping fan; no identities inferred"
+      },
+      "target_status": "observed"
+    },
+    {
+      "turn_number": 10,
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Team Rocket's Raticate ex",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f360.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Pokemon Center Lady",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f360.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Ilima",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f360.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Jolteon ex",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f360.000"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "direct_native_hand_observation",
+        "evidence_ids": [
+          "f360.000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Team Rocket's Raticate ex",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f390.000"
+            ]
+          },
+          {
+            "position": 2,
+            "name": "Pokemon Center Lady",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f390.000"
+            ]
+          },
+          {
+            "position": 3,
+            "name": "Ilima",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f390.000"
+            ]
+          },
+          {
+            "position": 4,
+            "name": "Jolteon ex",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f390.000"
+            ]
+          }
+        ],
+        "count": 4,
+        "basis": "direct_native_hand_observation",
+        "evidence_ids": [
+          "f390.000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "draw_animation_end_seconds": null,
+      "draw_end_supported_interval_seconds": [
+        358,
+        360
+      ],
+      "selected_frame_seconds": 360,
+      "first_voluntary_selection_seconds": 386,
+      "candidate_evidence_ids": [
+        "f360.000",
+        "f365.000"
+      ],
+      "before_end_evidence_id": "f390.000",
+      "opponent_fan": {
+        "count": 3,
+        "supported_range": null,
+        "count_method": "Count distinct card backs/leading card edges in native top crop; score dots excluded",
+        "basis": "direct_native_fan_observation",
+        "evidence_ids": [
+          "f360.000"
+        ],
+        "limit_reason": "Overlapping fan; no identities inferred"
+      },
+      "target_status": "observed_with_timing_limit"
+    }
+  ],
+  "target_owner_turn_count": 5,
+  "names_observed_all_owner_hands": true,
+  "status": "submitted_for_independent_check",
+  "limits": [
+    "Exact historical20-card deck list unavailable from captured log/pre-season history",
+    "Hidden opponent draw/search identities remain unknown",
+    "Old/new frame names record requested source seeks; exact decoded PTS not measured",
+    "Normal draw completion is bounded by inspected frames; timing estimates not exact",
+    "T10 retained+3 candidate unavailable;360s and365s show unchanged preplay hand",
+    "One opened owner discard view at111s: Lisia, no discarded Energy; no opponent opened inventory found in retained381-frame overview; sampling does not certify absence between frames",
+    "Terminal blur conceals Energy Zone detail; final board/points inherit accepted full review"
+  ],
+  "capture_status": "complete_with_recording_limits",
+  "target_turn_numbers": [
+    2,
+    4,
+    6,
+    8,
+    10
+  ],
+  "target_rows": [
+    {
+      "turn_number": 2,
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Professor's Research",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f52.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Professor's Research",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f52.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Team Rocket's Goo-zooka",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f52.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Lisia",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f52.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Sabrina",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f52.000"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "direct_native_hand_observation",
+        "evidence_ids": [
+          "f52.000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Professor's Research",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f96.000"
+            ]
+          },
+          {
+            "position": 2,
+            "name": "Professor's Research",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f96.000"
+            ]
+          },
+          {
+            "position": 3,
+            "name": "Team Rocket's Goo-zooka",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f96.000"
+            ]
+          },
+          {
+            "position": 4,
+            "name": "Sabrina",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f96.000"
+            ]
+          }
+        ],
+        "count": 4,
+        "basis": "direct_native_hand_observation",
+        "evidence_ids": [
+          "f96.000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "draw_animation_end_seconds": 51,
+      "draw_end_supported_interval_seconds": [
+        50,
+        51
+      ],
+      "selected_frame_seconds": 52,
+      "first_voluntary_selection_seconds": 53,
+      "candidate_evidence_ids": [
+        "f52.000",
+        "f54.000",
+        "f57.000"
+      ],
+      "before_end_evidence_id": "f96.000",
+      "opponent_fan": {
+        "count": 4,
+        "supported_range": null,
+        "count_method": "Count distinct card backs/leading card edges in native top crop; score dots excluded",
+        "basis": "direct_native_fan_observation",
+        "evidence_ids": [
+          "f52.000"
+        ],
+        "limit_reason": "Overlapping fan; no identities inferred"
+      },
+      "target_status": "observed"
+    },
+    {
+      "turn_number": 4,
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Professor's Research",
+            "basis": "direct_native_untouched_postdraw_fan",
+            "evidence_ids": [
+              "n137.300"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Professor's Research",
+            "basis": "direct_native_untouched_postdraw_fan",
+            "evidence_ids": [
+              "n137.300"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Team Rocket's Goo-zooka",
+            "basis": "direct_native_untouched_postdraw_fan",
+            "evidence_ids": [
+              "n137.300"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Sabrina",
+            "basis": "direct_native_untouched_postdraw_fan",
+            "evidence_ids": [
+              "n137.300"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Pokemon Center Lady",
+            "basis": "direct_native_untouched_postdraw_fan",
+            "evidence_ids": [
+              "n137.300"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 5,
+        "basis": "direct_native_hand_observation",
+        "evidence_ids": [
+          "n137.300"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Professor's Research",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f154.000"
+            ]
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Goo-zooka",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f154.000"
+            ]
+          },
+          {
+            "position": 3,
+            "name": "Sabrina",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f154.000"
+            ]
+          },
+          {
+            "position": 4,
+            "name": "Pokemon Center Lady",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f154.000"
+            ]
+          },
+          {
+            "position": 5,
+            "name": "Jolteon ex",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f154.000"
+            ]
+          }
+        ],
+        "count": 5,
+        "basis": "direct_native_hand_observation",
+        "evidence_ids": [
+          "f154.000"
+        ],
+        "status": "observed",
+        "limit_reason": "T4 last readable fan is 154s; 156-157s blur during attack/coin overlay, no hand removals after154s in accepted review"
+      },
+      "draw_animation_end_seconds": 137.3,
+      "draw_end_supported_interval_seconds": [
+        137,
+        137.3
+      ],
+      "selected_frame_seconds": 137.3,
+      "first_voluntary_selection_seconds": 138,
+      "candidate_evidence_ids": [
+        "n137.300",
+        "f138.000",
+        "f139.000",
+        "f141.000",
+        "f144.000"
+      ],
+      "before_end_evidence_id": "f154.000",
+      "opponent_fan": {
+        "count": 3,
+        "supported_range": null,
+        "count_method": "Count distinct card backs/leading card edges in native top crop; score dots excluded",
+        "basis": "direct_native_fan_observation",
+        "evidence_ids": [
+          "n137.300"
+        ],
+        "limit_reason": "Overlapping fan; no identities inferred"
+      },
+      "target_status": "observed",
+      "draw_end_basis": "Upper bound: card center at137s, in fan by137.3s; approximate, not measured PTS"
+    },
+    {
+      "turn_number": 6,
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Professor's Research",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f215.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Team Rocket's Goo-zooka",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f215.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Sabrina",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f215.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Pokemon Center Lady",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f215.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Jolteon ex",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f215.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 6,
+            "name": "Copycat",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f215.000"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 6,
+        "basis": "direct_native_hand_observation",
+        "evidence_ids": [
+          "f215.000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Sabrina",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f236.000"
+            ]
+          },
+          {
+            "position": 2,
+            "name": "Pokemon Center Lady",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f236.000"
+            ]
+          },
+          {
+            "position": 3,
+            "name": "Jolteon ex",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f236.000"
+            ]
+          },
+          {
+            "position": 4,
+            "name": "Copycat",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f236.000"
+            ]
+          },
+          {
+            "position": 5,
+            "name": "Jolteon ex",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f236.000"
+            ]
+          }
+        ],
+        "count": 5,
+        "basis": "direct_native_hand_observation",
+        "evidence_ids": [
+          "f236.000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "draw_animation_end_seconds": 214,
+      "draw_end_supported_interval_seconds": [
+        213,
+        214
+      ],
+      "selected_frame_seconds": 215,
+      "first_voluntary_selection_seconds": 219,
+      "candidate_evidence_ids": [
+        "f215.000",
+        "f217.000",
+        "f220.000"
+      ],
+      "before_end_evidence_id": "f236.000",
+      "opponent_fan": {
+        "count": 3,
+        "supported_range": null,
+        "count_method": "Count distinct card backs/leading card edges in native top crop; score dots excluded",
+        "basis": "direct_native_fan_observation",
+        "evidence_ids": [
+          "f215.000"
+        ],
+        "limit_reason": "Overlapping fan; no identities inferred"
+      },
+      "target_status": "observed"
+    },
+    {
+      "turn_number": 8,
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Sabrina",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f265.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Pokemon Center Lady",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f265.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Jolteon ex",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f265.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Copycat",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f265.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 5,
+            "name": "Jolteon ex",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f265.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 6,
+            "name": "Team Rocket's Raticate ex",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f265.000"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 6,
+        "basis": "direct_native_hand_observation",
+        "evidence_ids": [
+          "f265.000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Team Rocket's Raticate ex",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f313.000"
+            ]
+          },
+          {
+            "position": 2,
+            "name": "Pokemon Center Lady",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f313.000"
+            ]
+          },
+          {
+            "position": 3,
+            "name": "Ilima",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f313.000"
+            ]
+          }
+        ],
+        "count": 3,
+        "basis": "direct_native_hand_observation",
+        "evidence_ids": [
+          "f313.000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "draw_animation_end_seconds": 264,
+      "draw_end_supported_interval_seconds": [
+        263,
+        264
+      ],
+      "selected_frame_seconds": 265,
+      "first_voluntary_selection_seconds": 267,
+      "candidate_evidence_ids": [
+        "f265.000",
+        "f267.000",
+        "f270.000"
+      ],
+      "before_end_evidence_id": "f313.000",
+      "opponent_fan": {
+        "count": 4,
+        "supported_range": null,
+        "count_method": "Count distinct card backs/leading card edges in native top crop; score dots excluded",
+        "basis": "direct_native_fan_observation",
+        "evidence_ids": [
+          "f265.000"
+        ],
+        "limit_reason": "Overlapping fan; no identities inferred"
+      },
+      "target_status": "observed"
+    },
+    {
+      "turn_number": 10,
+      "hand_at_start": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Team Rocket's Raticate ex",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f360.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 2,
+            "name": "Pokemon Center Lady",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f360.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 3,
+            "name": "Ilima",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f360.000"
+            ],
+            "limit_reason": null
+          },
+          {
+            "position": 4,
+            "name": "Jolteon ex",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f360.000"
+            ],
+            "limit_reason": null
+          }
+        ],
+        "count": 4,
+        "basis": "direct_native_hand_observation",
+        "evidence_ids": [
+          "f360.000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "owner_hand_end": {
+        "cards_left_to_right": [
+          {
+            "position": 1,
+            "name": "Team Rocket's Raticate ex",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f390.000"
+            ]
+          },
+          {
+            "position": 2,
+            "name": "Pokemon Center Lady",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f390.000"
+            ]
+          },
+          {
+            "position": 3,
+            "name": "Ilima",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f390.000"
+            ]
+          },
+          {
+            "position": 4,
+            "name": "Jolteon ex",
+            "basis": "direct_native_hand_observation",
+            "evidence_ids": [
+              "f390.000"
+            ]
+          }
+        ],
+        "count": 4,
+        "basis": "direct_native_hand_observation",
+        "evidence_ids": [
+          "f390.000"
+        ],
+        "status": "observed",
+        "limit_reason": null
+      },
+      "draw_animation_end_seconds": null,
+      "draw_end_supported_interval_seconds": [
+        358,
+        360
+      ],
+      "selected_frame_seconds": 360,
+      "first_voluntary_selection_seconds": 386,
+      "candidate_evidence_ids": [
+        "f360.000",
+        "f365.000"
+      ],
+      "before_end_evidence_id": "f390.000",
+      "opponent_fan": {
+        "count": 3,
+        "supported_range": null,
+        "count_method": "Count distinct card backs/leading card edges in native top crop; score dots excluded",
+        "basis": "direct_native_fan_observation",
+        "evidence_ids": [
+          "f360.000"
+        ],
+        "limit_reason": "Overlapping fan; no identities inferred"
+      },
+      "target_status": "observed_with_timing_limit"
+    }
+  ]
+}

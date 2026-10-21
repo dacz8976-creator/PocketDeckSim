@@ -1,0 +1,78 @@
+{
+  "source_filename": "20261015_022206000_iOS.MP4",
+  "source_sha256": "80e5fb7c964c1c6025f5f4ffb7adacda937878442e00c01db8104292784dc5dd",
+  "source_bytes": 451082547,
+  "source_duration_seconds": 249.658333,
+  "battle_complete": true,
+  "match_count": 1,
+  "first_pass_complete": true,
+  "independent_acceptance": "pending_lead",
+  "reviewer": "/root/night_022206",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "exact_three_item_note_prefix": "1st | Alolan Ninetales ex no attack | opp N/A",
+  "match_date_local": "2026-10-14",
+  "timezone": "America/Chicago",
+  "result": "loss",
+  "score": {
+    "owner": 0,
+    "opponent": 3,
+    "source": "explicit final results"
+  },
+  "turns_played": 6,
+  "damage_done": 0,
+  "deck": {
+    "selection_label": "Deck 13-A",
+    "visible_core": [
+      "Alolan Vulpix",
+      "Alolan Ninetales ex",
+      "Team Rocket's Rattata",
+      "Team Rocket's Raticate ex"
+    ],
+    "full_list_established": false,
+    "main_attacker": "Alolan Ninetales ex"
+  },
+  "mode": {
+    "classification": "ranked human ladder",
+    "rank_tier": "Master Ball Rank",
+    "auto_option_visible": false,
+    "owner_choices_auto_made": false,
+    "basis": "Ranked launch and versus screen; no Auto option in reviewed footage"
+  },
+  "opponent": {
+    "name": "le-0702-on",
+    "visible_core": [
+      "Igglybuff",
+      "Eevee",
+      "Espeon",
+      "Darkrai (two non-ex, 100 HP)"
+    ]
+  },
+  "turn_order": "first",
+  "first_main_attack": {
+    "occurred": false,
+    "pokemon": "Alolan Ninetales ex",
+    "own_turn_number": null,
+    "global_turn_number": null,
+    "opponent_points_before": null,
+    "note": "No main attack; first two-Energy opportunity on owner own turn3 was asleep. No supporting owner attacks either."
+  },
+  "terminal": {
+    "type": "knockout",
+    "time_range_seconds": [
+      222,
+      240
+    ],
+    "evidence": [
+      "evidence/t0225.00.jpg",
+      "evidence/t0227.00.jpg",
+      "evidence/t0231.00.jpg",
+      "evidence/t0234.00.jpg",
+      "evidence/t0239.00.jpg",
+      "evidence/t0249.60.jpg"
+    ],
+    "detail": "Hypnoblast40 plus two Bad Dreams20 triggers KOs Ninetales ex; +2 points reaches3."
+  },
+  "external_write_performed": false,
+  "shared_index_or_move_performed": false
+}

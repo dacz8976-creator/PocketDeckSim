@@ -1,7 +1,8 @@
 # PocketDeckSim
 
-A simulator and bots for Pokémon TCG Pocket, used to find decks that hold up in real play.
-The simulator's matchup table is scored against real tournament results from Limitless.
+**Help Dustin improve decks he enjoys playing so they carry out their plan reliably and perform better against the opponents he actually faces.**
+
+PocketDeckSim provides a Pokémon TCG Pocket engine, bots and deck-comparison tools in service of that mission. Start with a deck Dustin likes, identify recurring problems, and explain concrete changes with their evidence and tradeoffs. Read [the standing mission and daily work check](START_HERE.md#mission-clarified-by-dustin-oct-14-2026) before choosing work.
 
 ## What's where
 

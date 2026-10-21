@@ -1,0 +1,46 @@
+{
+  "source_video": "20261010_014541000_iOS.MP4",
+  "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+  "recording_limits": [
+    {
+      "issue": "Exact20-card game deck version",
+      "evidence": "No matching current23deck live snapshot; filmed New deck13 selection only; later QR does not establish earlier continuity Later015452QR candidate excludes visibly drawn/played Elegant Cape, per root candidate comparison.",
+      "status": "unresolved_version_binding"
+    },
+    {
+      "issue": "Opened discard snapshots",
+      "evidence": "Neither pile opened in full source",
+      "status": "unavailable_from_recording"
+    },
+    {
+      "issue": "Hidden opponent cards and exact print identifiers",
+      "evidence": "Card backs and small game views",
+      "status": "kept_unknown"
+    },
+    {
+      "issue": "Specific queue type",
+      "evidence": "Human matchmaking seen, no specific ranked/private label retained",
+      "status": "unknown"
+    }
+  ],
+  "resolved_native_followups": [
+    {
+      "issue": "Turn12 healing card exact name",
+      "times": [
+        473.3
+      ],
+      "resolution": "Irida clearly named;40healing130→170"
+    },
+    {
+      "issue": "Sharpedo retreat and Shore eligibility",
+      "times": [
+        180,
+        414,
+        417,
+        429
+      ],
+      "resolution": "Visible printed retreat row has no cost; free retreat keeps one Water, matching Shore healing"
+    }
+  ],
+  "bounded_followup_checks": []
+}

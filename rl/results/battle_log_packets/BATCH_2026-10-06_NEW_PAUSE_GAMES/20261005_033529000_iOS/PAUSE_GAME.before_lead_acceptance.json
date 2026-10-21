@@ -1,0 +1,141 @@
+{
+  "is_template": false,
+  "schema": "pause-games/turn-capture-v1",
+  "game_id": "20261005_033529000_iOS",
+  "sources": [
+    {
+      "video_basename": "20261005_033529000_iOS.MP4",
+      "sha256": "e272b0c74f6a863c68811a235d7b9611b14994611365e58694028f323afaea3d",
+      "source_json": "SOURCE.json"
+    }
+  ],
+  "review_date": "2026-10-06",
+  "destination": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "deck_name": "New deck 6 (filmed label)",
+  "owner": "Dacz8976",
+  "opponent": "ゆぬ",
+  "mode": "Deluxe Pack: Mega Emblem Event",
+  "computer_battle": false,
+  "computer_basis": "Human opponent search and event lobby visible; no Auto control visible anywhere reviewed.",
+  "opening": {
+    "source_video": "20261005_033529000_iOS.MP4",
+    "timestamp_seconds": 26,
+    "expected_card_slots": 5,
+    "recorded_card_count": 5,
+    "cards_left_to_right": [
+      {
+        "position": 1,
+        "name": "Doublade",
+        "basis": "Visible original opening fan, before placement",
+        "evidence_ids": [
+          "f_0026_00",
+          "f_0028_00"
+        ],
+        "limit_reason": "Artwork description is not exact printing"
+      },
+      {
+        "position": 2,
+        "name": "Skarmory ex (green artwork)",
+        "basis": "Visible original opening fan, before placement",
+        "evidence_ids": [
+          "f_0026_00",
+          "f_0028_00"
+        ],
+        "limit_reason": "Artwork description is not exact printing"
+      },
+      {
+        "position": 3,
+        "name": "Aegislash (Cursed Metal / Slicing Blade)",
+        "basis": "Visible original opening fan, before placement",
+        "evidence_ids": [
+          "f_0026_00",
+          "f_0028_00"
+        ],
+        "limit_reason": "Artwork description is not exact printing"
+      },
+      {
+        "position": 4,
+        "name": "Lucky Ice Pop",
+        "basis": "Visible original opening fan, before placement",
+        "evidence_ids": [
+          "f_0026_00",
+          "f_0028_00"
+        ],
+        "limit_reason": "Artwork description is not exact printing"
+      },
+      {
+        "position": 5,
+        "name": "Skarmory ex (silver artwork)",
+        "basis": "Visible original opening fan, before placement",
+        "evidence_ids": [
+          "f_0026_00",
+          "f_0028_00"
+        ],
+        "limit_reason": "Artwork description is not exact printing"
+      }
+    ],
+    "selected_active": {
+      "name": "Skarmory ex (green artwork)",
+      "opening_position": 2,
+      "source_video": "20261005_033529000_iOS.MP4",
+      "timestamp_seconds": 31,
+      "selection_bounds_seconds": [
+        28,
+        34
+      ],
+      "evidence_ids": [
+        "f_0028_00",
+        "f_0034_00"
+      ]
+    },
+    "selected_bench": [
+      {
+        "name": "Skarmory ex (silver artwork)",
+        "opening_position": 5,
+        "position": "center",
+        "timestamp_seconds": 34,
+        "evidence_ids": [
+          "f_0034_00"
+        ]
+      }
+    ],
+    "redraw_or_replacement": "No opening redraw observed",
+    "before_active_placement": true,
+    "status": "observed",
+    "evidence_ids": [
+      "f_0026_00",
+      "f_0028_00",
+      "f_0034_00"
+    ],
+    "limit_reason": null
+  },
+  "packet_files": {
+    "prose": "REVIEW.md",
+    "coverage": "COVERAGE.md",
+    "deck": "DECK_USED.json",
+    "turns": "TURN_LEDGER.json",
+    "evidence": "TURN_EVIDENCE.json"
+  },
+  "capture_status": "complete_with_recording_limits",
+  "battle_review_status": "worker_complete_pending_independent_acceptance",
+  "outcome": {
+    "result": "loss",
+    "owner_points": 1,
+    "opponent_points": 3,
+    "turns": 10,
+    "damage_done": 270,
+    "evidence_ids": [
+      "f_0379_00",
+      "f_0390_00",
+      "f_0395_00"
+    ],
+    "basis": "Final board plus Defeat results screen shows 1–3, Turns 10, Damage done 270"
+  },
+  "limits": [
+    "Exact matching live Pause Games list/version unavailable.",
+    "Opponent hidden hand identities and full discard views not filmed.",
+    "Exact PTS not measured.",
+    "No external action, registration, acceptance or archival performed."
+  ],
+  "lead_checked": false
+}

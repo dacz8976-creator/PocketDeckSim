@@ -1,0 +1,21 @@
+{
+  "version": 1,
+  "verified_at_utc": "2026-09-22T06:20:00Z",
+  "sources": [
+    {
+      "filename": "20260908_021327000_iOS.MP4",
+      "bytes": 767232143,
+      "sha256": "95DF14AF59472EC02A077B5A5804F1A44E6C02048179952934B68C56EEE1E387",
+      "duration_seconds": 410.492,
+      "role": "complete_battle_source"
+    },
+    {
+      "filename": "Gemini_Result_20260908_021327_v7.zip",
+      "sha256": "16CABF7606A132578A84DAA635BAAE8ED601698C9947729D138D37F0E5E90233",
+      "role": "gemini_primary_result_rejected_after_identity_mismatch"
+    }
+  ],
+  "identity_guard_triggered": true,
+  "gemini_main_candidate_accepted": false,
+  "full_battle_outcome": "player_win_by_opponent_concession_at_1_to_0"
+}

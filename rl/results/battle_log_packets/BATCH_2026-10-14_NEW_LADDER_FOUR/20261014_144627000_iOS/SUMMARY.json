@@ -1,0 +1,149 @@
+{
+  "reviewer": "/root/ladder_144627",
+  "model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "review_date": "2026-10-14",
+  "source_filename": "20261014_144627000_iOS.MP4",
+  "source_sha256": "87622e2457ff364815731b3994b09685127c8dbb12a44d3077e9a9c4bddfa385",
+  "source_creation_utc": "2026-10-14T14:46:27.000000Z",
+  "recording_duration_seconds": 468.806667,
+  "battle_complete": true,
+  "match_count": 1,
+  "owner_identifier": "Dacz8976",
+  "opponent_identifier": "へいちょー",
+  "owner_visible_deck_core": [
+    "Spinarak",
+    "Ariados (Trap Territory / Pierce)",
+    "Cottonee",
+    "Whimsicott ex (Grass Knot)",
+    "Teal Mask Ogerpon ex (Soothing Wind / Energized Leaves)"
+  ],
+  "selected_deck": "Deck 12",
+  "opponent_visible_deck_core": [
+    "Zeraora (Thunderclap Flash / Lightning Claw)",
+    "Magnemite",
+    "Magneton (Volt Charge)",
+    "Magnezone (Mirror Shot)",
+    "Miraidon ex (Legendary Drive / Overdrive)"
+  ],
+  "classification": "owner-designated ladder; no Auto option observed",
+  "auto_option_observed": false,
+  "outcome": "loss",
+  "terminal_score": {
+    "owner": 2,
+    "opponent": 3
+  },
+  "terminal_timestamp_seconds": 452,
+  "terminal_evidence_paths": [
+    "native/t0445.00.jpg",
+    "native/t0452.00.jpg",
+    "native/t0456.00.jpg",
+    "native/t0467.00.jpg"
+  ],
+  "terminal_description": "Miraidon ex Overdrive120 knocks out the damaged Leaf-Cape Whimsicott ex at120HP; +2points produces capped3. Defeat results show2-3.",
+  "first_or_second": "second",
+  "first_or_second_evidence_timestamps": [
+    23,
+    38,
+    467
+  ],
+  "first_or_second_evidence_paths": [
+    "native/t0023.00.jpg",
+    "native/t0038.00.jpg",
+    "native/t0467.00.jpg"
+  ],
+  "first_main_attacker_attack": {
+    "pokemon": "Whimsicott ex",
+    "attack_name": "Grass Knot",
+    "own_turn_number": 2,
+    "global_displayed_turn": 4,
+    "source_time_seconds": 166,
+    "opponent_points_before_attack": 1,
+    "evidence_paths": [
+      "native/t0164.00.jpg",
+      "native/t0166.00.jpg",
+      "native/t0168.00.jpg"
+    ],
+    "effect": "First main attacker attack knocks out 90-HP Zeraora; owner reaches 1 point."
+  },
+  "main_attacker_interpretation": "Whimsicott ex is the selected Deck12 Grass Knot attacker supported by Ariados retreat-cost increase. Ariados and Ogerpon attack later; no earlier support attack is substituted.",
+  "recommended_ladder_section": "deck 12 (Ariados / Whimsicott / Ogerpon)",
+  "exact_three_item_note_prefix": "2nd | Whimsicott ex T2 | opp 1 pt",
+  "source_date_local": "2026-10-14",
+  "point_progression": [
+    {
+      "time": 138,
+      "owner": 0,
+      "opponent": 1,
+      "event": "Zeraora knocks out Cottonee"
+    },
+    {
+      "time": 175,
+      "owner": 1,
+      "opponent": 1,
+      "event": "Whimsicott ex knocks out first Zeraora"
+    },
+    {
+      "time": 376,
+      "owner": 1,
+      "opponent": 2,
+      "event": "Zeraora knocks out Ariados"
+    },
+    {
+      "time": 412,
+      "owner": 2,
+      "opponent": 2,
+      "event": "Ogerpon ex knocks out second Zeraora"
+    },
+    {
+      "time": 456,
+      "owner": 2,
+      "opponent": 3,
+      "event": "Miraidon ex knocks out Whimsicott ex"
+    }
+  ],
+  "damage_reconciliation": {
+    "attacks": [
+      100,
+      30,
+      30,
+      60
+    ],
+    "total": 220,
+    "result_screen": 220
+  },
+  "uncertainties": [
+    {
+      "category": "hidden_information",
+      "status": "unresolved",
+      "description": "Opponent hidden cards and exact full deck lists are not asserted."
+    },
+    {
+      "category": "trainer_identity",
+      "status": "unresolved",
+      "source_timestamps": [
+        212,
+        216,
+        218,
+        220
+      ],
+      "description": "Team Rocket Supporter title is not readable in the inspected full-screen action frames. The effect explicitly Confuses Whimsicott ex; heads leaves opponent Active unconfused."
+    },
+    {
+      "category": "timing_precision",
+      "status": "qualified",
+      "description": "Turn boundaries are approximate source intervals; attack animation at166 and knockout at168 are exact retained seeks, rather than a claimed exact tap frame."
+    },
+    {
+      "category": "energy_detail",
+      "status": "qualified",
+      "description": "Repeated Volt Charge and stacked bench Lightning buildup are established, but every intermediate attachment count is not transcribed. Terminal Miraidon ex numeric12 is directly visible."
+    },
+    {
+      "category": "queue_label",
+      "status": "qualified",
+      "description": "Owner designation is ladder. Matchmaking/named opponent visible and no Auto option observed; specific ranked queue/rank label is not independently readable in retained setup."
+    }
+  ],
+  "acceptance_status": "first_pass_frozen_for_independent_and_lead_check"
+}

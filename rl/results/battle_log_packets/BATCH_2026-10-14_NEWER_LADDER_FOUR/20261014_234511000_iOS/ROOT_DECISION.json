@@ -1,0 +1,22 @@
+{
+  "accepted": true,
+  "decision_stage": "Root source reconciliation; registration gated on separate independent acceptance",
+  "source_filename": "20261014_234511000_iOS.MP4",
+  "source_sha256": "5d79d17a888d0dc2acc400855121979258efe11177b2254ebaae5e9c7a39784a",
+  "auto_option_seen": false,
+  "full_timeline_and_coverage_read": true,
+  "section": "d13",
+  "opponent": "グズマ推し",
+  "opponent_deck": "Team Rocket's Articuno ex; full list unknown",
+  "result": "win",
+  "note_prefix": "2nd | Alolan Ninetales ex no attack | opp N/A",
+  "note": "2nd | Alolan Ninetales ex no attack | opp N/A | vs グズマ推し | 2026-10-14 18:45:11 CDT | 20261014_234511000_iOS.MP4 | Visible owner core: Team Rocket's Rattata / Raticate ex / Alolan Vulpix. Routed to the Ninetales/Raticate deck family from matching core and batch context; exact variant and Ninetales card presence are unverified in this source. Explicit opponent concession at 105s; Victory stats at 114.7s show second, 3 turns, actual0-0 and damage0. Neither player attacks. Both Misty first flips are tails; Sightseer finds no Stage1 among the shown four. No Auto seen; exact queue/rank and full lists unknown.",
+  "scope": "Whole one-game human source treated as ladder under owner default: matchmaking/setup, all 3 global turns, explicit opponent concession and complete final statistics; independent source check and root reconciliation with deck-context limit preserved",
+  "registration_notes": "Fresh Sol/high full review, separate independent Sol/high acceptance and root source reconciliation. Actual0-0 concession result,second,3turns,damage0. Neither player attacks. LEAD_CLARIFICATION preserves source-limited deck identity and contextual Ninetales prefix. Exact queue/rank and full lists unknown. No Pause Games supplement.",
+  "direct_source_observations": [
+    {"path":"evidence/native_000.00.jpg","directly_viewed_by_root":true,"finding":"Opening Share With2DPatternCode overlay obscures deck label; no exact source deck label is asserted."},
+    {"path":"evidence/native_105.00.jpg","directly_viewed_by_root":true,"finding":"Your opponent conceded explicitly displayed. Team Rocket's Articuno ex130, Rattata40 and benched Vulpix60 withWater visible, all at fullHP."},
+    {"path":"evidence/native_114.70.jpg","directly_viewed_by_root":true,"finding":"Victory versusグズマ推し,second,3turns,0-0,damage0,CardoftheGameNone."}
+  ],
+  "clarifications": ["LEAD_CLARIFICATION.md"]
+}

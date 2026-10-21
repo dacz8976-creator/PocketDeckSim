@@ -1,0 +1,92 @@
+{
+  "source": "20261002_132311000_iOS.MP4",
+  "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20261002_132311000_iOS_shark_sol\\REVIEW.md",
+  "accepted_review_sha256": "3fcfa4516fb3d8a504e18762b39cb1c019a9b3b8fd533c5bff9979a7a3285933",
+  "rows": [
+    {
+      "turn_number": 1,
+      "accepted_source_line": 23,
+      "verbatim_accepted_section": "### Turn 1, Owner, 34-57 seconds\n\nDraw Cyrus, use Poke Ball to find and bench the second Carvanha, and use Professor's Research. End without an attack or Energy attachment. Both Carvanha remain 50 HP.\n\nEvidence: overview/sheet_02.jpg.",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 2,
+      "accepted_source_line": 29,
+      "verbatim_accepted_section": "### Turn 2, hk2, 57-92 seconds\n\nUse Professor's Research, bench Furfrou, attach Fighting to Shaymin, then retreat Shaymin into Furfrou. Fighting is no longer on Shaymin afterward. No attack. Furfrou is 70 HP, Shaymin 60.\n\nEvidence: native/t0079.00.jpg; native/t0090.00.jpg.",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 3,
+      "accepted_source_line": 35,
+      "verbatim_accepted_section": "### Turn 3, Owner, 92-120 seconds\n\nDraw Irida and evolve Active Carvanha directly into Mega Sharpedo ex (190 HP). Attach Water, then Turbo Shark for 70 printed damage, reduced to 50 by Fur Coat: Furfrou 70 to 20. Attach the attack-generated Water to benched Carvanha. A Supporter-available end-turn warning appears; no Supporter is played. Score 0-0.\n\nEvidence: native/t0101.00.jpg; native/t0119.00.jpg; overview/sheet_04.jpg.",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 4,
+      "accepted_source_line": 41,
+      "verbatim_accepted_section": "### Turn 4, hk2, 120-162 seconds\n\nAttach Grass to Furfrou. Shaymin heals it 20 to 30. Lucky Ice Pop heals 30 to 50 and returns; reuse heals 50 to 70, then tails/discard. Double Headbutt gets two heads for 60: Mega Sharpedo 190 to 130.\n\nEvidence: native_extra/t0140.00.jpg; native_extra/t0148.00.jpg; overview/sheet_05.jpg.",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 5,
+      "accepted_source_line": 47,
+      "verbatim_accepted_section": "### Turn 5, Owner, 162-199 seconds\n\nEvolve benched Carvanha into the second Mega Sharpedo ex. Lucky Ice Pop heals the Active 130 to 150, heads, then 150 to 170 before discard. Attach a second Water to the Active. Turbo Shark deals 50 after Fur Coat: Furfrou 70 to 20; its Water goes to the second Mega, now two Water. Score stays 0-0.\n\nEvidence: native/t0190.00.jpg; native_extra/t0189.00.jpg; overview/sheet_06.jpg.",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 6,
+      "accepted_source_line": 53,
+      "verbatim_accepted_section": "### Turn 6, hk2, 199-234 seconds\n\nAttach Fighting to benched Shaymin. Shaymin heals Furfrou 20 to 30. Play Rainbow Cave. Double Headbutt gets one head and one tail for 30: Active Mega 170 to 140.\n\nEvidence: native/t0210.00.jpg; native/t0218.00.jpg; overview/sheet_07.jpg.",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 7,
+      "accepted_source_line": 59,
+      "verbatim_accepted_section": "### Turn 7, Owner, 234-277 seconds\n\nUse Professor's Research and Poke Ball, bench Alolan Vulpix (Gnaw, 60 HP), and attach Water to it. Free-retreat the 140-HP Mega into the fresh 190-HP Mega without losing its two Water. Turbo Shark deals 50 after Fur Coat and KOs the 30-HP Furfrou. Its extra Water goes to Vulpix, now two Water. First point, 1-0. Opponent promotes Shaymin.\n\nEvidence: native/t0246.00.jpg; native/t0258.00.jpg; native/t0268.00.jpg; overview/sheet_08.jpg.",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 8,
+      "accepted_source_line": 65,
+      "verbatim_accepted_section": "### Turn 8, hk2, 277-298 seconds\n\nPlay May, make the search/hand selection, then bench Trapinch (60 HP). Attach Fighting to Trapinch. Shaymin already has one Fighting from turn 6. No attack or HP change. Score 1-0.\n\nEvidence: gaps_t8/sheet_01.jpg; gaps_t8/sheet_02.jpg; gaps_t8/sheet_03.jpg; native/opponent_search_trainer_crop.png.",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 9,
+      "accepted_source_line": 71,
+      "verbatim_accepted_section": "### Turn 9, Owner, 298-337 seconds\n\nDraw Copycat. Evolve Vulpix into Alolan Ninetales ex (150 HP), attach a third Water to it, and free-retreat Mega into Ninetales. Binding Snow costs two Water and deals 80, KOing Shaymin from 60 HP. Second point, 2-0. The screen confirms next-turn Active Energy attachment restriction. Opponent promotes Trapinch with one Fighting.\n\nEvidence: native/t0305.00.jpg; native/t0315.00.jpg; native/t0326.00.jpg; overview/sheet_10.jpg.",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 10,
+      "accepted_source_line": 77,
+      "verbatim_accepted_section": "### Turn 10, hk2, 337-356 seconds\n\nUse Rare Candy on the previously benched Trapinch to evolve into Flygon ex (180 HP, one Fighting). No attachment to Active and no attack. At checkup Sand Slammer deals 10 to each owner Pokemon: Ninetales 150 to 140; original Mega 140 to 130; fresh Mega 190 to 180.\n\nEvidence: native_extra/t0341.00.jpg; native/t0346.00.jpg; native/t0356.00.jpg.",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 11,
+      "accepted_source_line": 83,
+      "verbatim_accepted_section": "### Turn 11, Owner, 356-390 seconds\n\nDraw and attach Elegant Cape to Ninetales, raising maximum HP by 30. Use Irida, whose visible text heals 40 for each Pokemon with Water: Ninetales 140 to 180; original Mega 130 to 170; fresh Mega 180 to 190 (capped). Bench the second Alolan Vulpix and attach one Water to it. Binding Snow hits Flygon 180 to 100 and renews the restriction. Sand Slammer at checkup reduces owner HP to Ninetales 170, original Mega 160, Vulpix 50, fresh Mega 180.\n\nEvidence: native/t0366.00.jpg; native/t0372.00.jpg; native/t0378.00.jpg; native/t0386.00.jpg; overview/sheet_11.jpg.",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 12,
+      "accepted_source_line": 89,
+      "verbatim_accepted_section": "### Turn 12, hk2, 390-406 seconds\n\nBench the second Furfrou (70 HP) and attach Grass to it. Flygon remains one Fighting; no attack. Sand Slammer at checkup reduces owner HP to Ninetales 160, original Mega 150, Vulpix 40, fresh Mega 170. Score 2-0.\n\nEvidence: overview/sheet_12.jpg; native/t0410.00.jpg.",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 13,
+      "accepted_source_line": 95,
+      "verbatim_accepted_section": "### Turn 13, Owner, 406-434 seconds\n\nDraw Lapras (Surf 70, 110 HP). Play Copycat, reshuffle and draw three cards, ending with Misty, Cyrus and Lapras. Misty is inspected but remains in hand, with no coin-flip play. Attach a second Water to benched Vulpix. Binding Snow deals 80: Flygon 100 to 20; restriction renewed. Sand Slammer reduces owner HP to Ninetales 150, original Mega 140, Vulpix 30, fresh Mega 160. Waiting-for-opponent-to-return indicator begins during this turn.\n\nEvidence: gaps_t13_terminal/t0413.00.jpg; native_extra/t0417.00.jpg; gaps_t13_terminal/t0423.00.jpg; native/t0430.00.jpg; native/t0472.00.jpg.",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    },
+    {
+      "turn_number": 14,
+      "accepted_source_line": 101,
+      "verbatim_accepted_section": "### Turn 14, hk2, 434-471 seconds\n\nNo visible action during the disconnected waiting interval. Flygon remains 20 HP with one Fighting; Furfrou is 70 HP with one Grass. Owner remains ahead 2-0.\n\nEvidence: overview/sheet_13.jpg; native/t0472.00.jpg.",
+      "basis": "inherited_accepted_review_not_new_visual_observation"
+    }
+  ],
+  "limits": "Only explicitly turn-numbered accepted prose is copied. Zero rows means format unavailable, not zero game turns. This is reference scaffolding, not a completed capture ledger."
+}

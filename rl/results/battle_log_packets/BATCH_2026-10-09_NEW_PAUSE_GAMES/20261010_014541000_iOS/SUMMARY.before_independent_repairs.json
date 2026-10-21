@@ -1,0 +1,84 @@
+{
+  "reviewer": "/root/pause_014541",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "game_id": "20261010_014541000_iOS_game1",
+  "source_video": "20261010_014541000_iOS.MP4",
+  "source_sha256": "f23cff1b9c79032374130dfdb2488b086b45d08ac5c6f734f6cc392a8a6330ae",
+  "source_duration_seconds": 504.478333,
+  "creation_time_utc": "2026-10-10T01:45:41.000000Z",
+  "creation_time_local": "2026-10-09T20:45:41-05:00",
+  "match_date_local": "2026-10-09",
+  "review_scope": "Entire supplied source, setup through terminal result; all12recorded turns",
+  "game_count": 1,
+  "turn_count": 12,
+  "mode": "human battle; no Auto control visible in inspected source",
+  "specific_queue": null,
+  "opponent": "Max Ketchum",
+  "owner_result": "loss",
+  "owner_points": 0,
+  "opponent_points_displayed": 3,
+  "concession": false,
+  "result_evidence": [
+    {
+      "seconds": 324,
+      "event": "Mega Sharpedo ex Turbo Shark70 KOs Kingdra ex"
+    },
+    {
+      "seconds": 336,
+      "event": "Opponent2point award"
+    },
+    {
+      "seconds": 483,
+      "event": "Suicune ex Crystal Waltz100 against Weezing ex100HP"
+    },
+    {
+      "seconds": 486,
+      "event": "Weezing displayed0HP"
+    },
+    {
+      "seconds": 489,
+      "event": "Opponent terminal3point display"
+    },
+    {
+      "seconds": 501,
+      "event": "Defeat vs Max Ketchum"
+    }
+  ],
+  "deck_core": [
+    "Horsea",
+    "Kingdra ex",
+    "Team Rocket's Koffing",
+    "Team Rocket's Weezing ex"
+  ],
+  "opponent_core": [
+    "Feebas",
+    "Milotic",
+    "Carvanha",
+    "Mega Sharpedo ex",
+    "Suicune ex"
+  ],
+  "deck_qr_in_source": false,
+  "exact_deck20_verified": false,
+  "first_pass_status": "complete_pending_independent_lead_acceptance",
+  "capture_status": "complete_with_recording_limits",
+  "external_writes_performed": false,
+  "archive_moves_performed": false,
+  "packet_files": [
+    "SOURCE.json",
+    "REVIEW.md",
+    "COVERAGE.md",
+    "SUMMARY.json",
+    "UNCERTAINTIES.json",
+    "PAUSE_GAME.json",
+    "DECK_USED.json",
+    "TURN_LEDGER.json",
+    "TURN_EVIDENCE.json"
+  ],
+  "lead_live_deck_refresh": {
+    "snapshot": "../LIVE_NEW_DECKS_VERIFIED.json",
+    "current_live_list_saved": true,
+    "exact_earlier_game_binding": false,
+    "visible_conflict": "Elegant Cape in earlier game is absent from later QR20."
+  }
+}

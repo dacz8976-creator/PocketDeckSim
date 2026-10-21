@@ -1,0 +1,39 @@
+{
+  "lead": "/root",
+  "checked_utc": "2026-10-16T04:09:58.373311+00:00",
+  "source_filename": "20261016_015753000_iOS.MP4",
+  "source_sha256": "365da4f239709a8512e425fbeb8a3fff9b90cb7b9f5ba208e51ca9679c4f8fe3",
+  "observations": [
+    {
+      "path": "evidence/native/t0318.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Post first Kingambit attack: Jolteon ex30HP poisoned, opponent1point, RockyHelmet retaliation displayed.",
+      "sha256": "7d788d3e05715c9c997fbd1ce39453df1f3ec1b58440ca4311d25e26780fb250"
+    },
+    {
+      "path": "evidence/native/t0394.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Owner explicitly receives2points after Jolteon ex KO; opposing points2.",
+      "sha256": "9ae229196b344e81eca3d6f3a7cdb657f13cc153fc619f77eb4d69ce777f9729"
+    },
+    {
+      "path": "evidence/native/t0406.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Eevee ex Bite30 displayed with both sides at2points before terminalKO.",
+      "sha256": "afd30bd7bc8a647422221148ea858b5a27e6817250ff0d7effc93cbee9f99703"
+    },
+    {
+      "path": "evidence/native/t0412.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Opponent てる receives third point; owner2points.",
+      "sha256": "05a75b6b3c2050074939bf0e12c7cd34ebc5bb8936e015b8689fdddb5b936e0f"
+    },
+    {
+      "path": "evidence/native/t0422.00.jpg",
+      "directly_viewed_by_root": true,
+      "finding": "Explicit Defeat versus てる.",
+      "sha256": "568ac9f5ef0dc9cc73e6e6c8a285ddc4e30b66e105e9057a5b07e30b63a936a0"
+    }
+  ],
+  "coverage_reconciliation": "Lead read full timeline and turn/phase coverage. A separate Sol reviewer checked ordinary turns and decisive evidence against retained source frames."
+}

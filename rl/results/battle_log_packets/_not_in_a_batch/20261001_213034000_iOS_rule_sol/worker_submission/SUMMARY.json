@@ -1,0 +1,50 @@
+{
+  "video_basename": "20261001_213034000_iOS.MP4",
+  "reviewer": "sol_rules_20261001_213034000",
+  "review_model": "gpt-6.1-sol",
+  "reasoning_effort": "high",
+  "status": "Finished first pass awaiting independent lead acceptance.",
+  "independent_lead_acceptance": "pending",
+  "recording_type": "rules_test_one_complete_AI_battle",
+  "complete_available_footage_review": true,
+  "reviewed_interval_seconds": [0, 212.071667],
+  "battle_complete": true,
+  "battle_count": 1,
+  "proposed_completion_status": "full_battle_review_complete",
+  "ladder_eligible": false,
+  "mode": "AI Solo; owner Auto visibly checked throughout playable phases",
+  "outcomes": [
+    {
+      "owner": "Dacz8976",
+      "opponent": "Whimsicott ex Deck (Deluxe Pack: Mega)",
+      "result": "Victory",
+      "turns": 8,
+      "turn_order": "went_second",
+      "visible_final_point_circles": {"owner": 3, "opponent": 2},
+      "observed_awarded_points": {"owner": 4, "opponent": 2},
+      "results_damage_done": 320,
+      "result_evidence": ["native/t0199.00.jpg", "native/t0203.00.jpg", "ending_dense/sample_frames/00012.jpg", "ending_dense/sample_frames/00013.jpg"]
+    }
+  ],
+  "key_findings": [
+    "Two Heat Charged uses each produce one heads and two tails. With ordinary attachments split between Moltres and Monferno, Moltres settles at three Fire and Monferno at one Fire before turn five.",
+    "Two benched Ariados each add one retreat-cost unit. Grass Knot displays 160 against Moltres, matching 40 + 30 x (printed retreat two + one + one). No actual paid retreat occurs.",
+    "Quick-Grow Extract evolves previously established Active Cottonee into Whimsicott ex. First-turn and newly-played restrictions are not tested.",
+    "Fragrant Forest is played and activated before the opponent benches a searched Cottonee.",
+    "Infernape ex uses two-Fire Flare Blitz for 140 plus20 Fire Weakness, displaying 160 on each Whimsicott knockout and discarding all Fire after each attack.",
+    "Turn eight uses one Flame Patch plus the regular attachment to restore two Fire. A second Patch is drawn and stays in hand, not played.",
+    "Each owner knockout awards +2 points, for four awarded points total; visible circles cap at three. Results damage 320 includes overkill against two 140-HP targets.",
+    "AI identity is explicit at opening. Owner Auto remains checked. This rules test creates no Ladder Log entry or simulator training input."
+  ],
+  "independent_check_times": [
+    {"scope": "opening_AI_setup", "seconds": [4.5, 13, 19], "evidence": ["native/t0004.50.jpg", "native/t0013.00.jpg", "native/t0019.00.jpg"]},
+    {"scope": "ordinary_draw_play_and_Heat_Charged", "seconds": [31.5, 35, 43.5, 51, 52.5, 88.5, 98, 100], "evidence": ["native/t0031.50.jpg", "native/t0035.00.jpg", "native/t0043.50.jpg", "native/t0051.00.jpg", "native/t0052.50.jpg", "native/t0088.50.jpg", "native/t0098.00.jpg", "native/t0100.00.jpg"]},
+    {"scope": "first_Ariados_and_Quick_Grow", "seconds": [55.5, 56, 58.5, 64.5, 67.5, 70], "evidence": ["native/t0055.50.jpg", "native/t0056.00.jpg", "native/t0058.50.jpg", "native/t0064.50.jpg", "native/t0067.50.jpg", "native/t0070.00.jpg"]},
+    {"scope": "second_Ariados_Grass_Knot_KO", "seconds": [105, 106.5, 108.5, 117, 120, 122, 124], "evidence": ["native/t0105.00.jpg", "native/t0106.50.jpg", "native/t0108.50.jpg", "native/t0117.00.jpg", "native/t0120.00.jpg", "native/t0122.00.jpg", "native/t0124.00.jpg"]},
+    {"scope": "Fragrant_Forest", "seconds": [109.5, 112, 114, 115, 116], "evidence": ["native/t0109.50.jpg", "native/t0112.00.jpg", "native/t0114.00.jpg", "native/t0115.00.jpg", "native/t0116.00.jpg"]},
+    {"scope": "first_Flare_Blitz_and_discard", "seconds": [148, 157.5, 159, 163, 166], "evidence": ["native/t0148.00.jpg", "native/t0157.50.jpg", "native/t0159.00.jpg", "native/t0163.00.jpg", "native/t0166.00.jpg"]},
+    {"scope": "Patch_regular_attachment_terminal_attack", "seconds": [183, 186, 188, 189, 190, 191.5, 192.5, 195, 199, 203], "evidence": ["native/t0183.00.jpg", "native/t0186.00.jpg", "native/t0188.00.jpg", "native/t0189.00.jpg", "native/t0190.00.jpg", "native/t0191.50.jpg", "native/t0192.50.jpg", "native/t0195.00.jpg", "native/t0199.00.jpg", "native/t0203.00.jpg"]},
+    {"scope": "results_and_source_end", "seconds": [211, 211.7, 212.02], "additional_interval_seconds": [211.2, 211.6], "evidence": ["native/t0211.00.jpg", "native/t0211.70.jpg", "native/t0212.02.jpg", "ending_dense/sample_frames/00012.jpg", "ending_dense/sample_frames/00013.jpg"]}
+  ],
+  "limitations": ["Hidden opponent cards and deck order remain unknown.", "No paid-retreat, Leaf, X Speed, Tool, healing, Special Condition, Stadium replacement or Netherwing test occurs.", "First-pass completion requires independent lead acceptance before registration or archiving."]
+}

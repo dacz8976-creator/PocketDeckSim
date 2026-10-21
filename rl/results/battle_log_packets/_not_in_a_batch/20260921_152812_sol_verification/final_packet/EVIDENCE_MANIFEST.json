@@ -1,0 +1,26 @@
+{
+  "schema": "battle-review-evidence/v1",
+  "source_sha256": "5FEF7F20302FADC695346ED277CEF892E523CCC73DFF67F2907F4448EE10CDB0",
+  "method": "Complete-timeline source-frame review with denser full-resolution extraction for setup, Energy movement, searches, healing, attacks, knockouts, promotions, score changes, retreat, and the terminal point award.",
+  "retained_frame_count": 147,
+  "retained_frame_directory": "frames",
+  "scope": "Full recorded battle, 00:00.000-05:04.803",
+  "representative_frames": [
+    {"time": "00:06.400", "file": "frames/006.400.jpg", "reason": "Going-second result"},
+    {"time": "00:20.200", "file": "frames/020.200.jpg", "reason": "Starting board and Turn 1 boundary"},
+    {"time": "00:55.600", "file": "frames/055.600.jpg", "reason": "Lightning shown only as next-Energy preview"},
+    {"time": "01:09.000", "file": "frames/069.000.jpg", "reason": "First Dragonite after its sole Turn 3 Water attachment"},
+    {"time": "02:02.000", "file": "frames/122.000.jpg", "reason": "Turn 5 Lightning attachment and two-Energy state"},
+    {"time": "03:08.000", "file": "frames/188.000.jpg", "reason": "Irida healing result at 100 HP"},
+    {"time": "03:15.000", "file": "frames/195.000.jpg", "reason": "Turn 7 Water attachment and three-Energy state"},
+    {"time": "04:04.800", "file": "frames/244.800.jpg", "reason": "First Dragonite knockout"},
+    {"time": "04:08.400", "file": "frames/248.400.jpg", "reason": "Second player point before promotion"},
+    {"time": "04:11.500", "file": "frames/251.500.jpg", "reason": "Second Dragonite promotion"},
+    {"time": "04:14.000", "file": "frames/254.000.jpg", "reason": "Hiking Trail activation"},
+    {"time": "04:16.000", "file": "frames/256.000.jpg", "reason": "Sightseer revealed as the Stadium draw"},
+    {"time": "04:49.500", "file": "frames/289.500.jpg", "reason": "Missed Turn 12 fourth Water attachment"},
+    {"time": "04:52.400", "file": "frames/292.400.jpg", "reason": "Retreat selection after fourth attachment"},
+    {"time": "04:58.800", "file": "frames/298.800.jpg", "reason": "Final Dragonite at zero HP"},
+    {"time": "05:04.750", "file": "frames/304.750.jpg", "reason": "All three player points visible; no literal Victory screen"}
+  ]
+}

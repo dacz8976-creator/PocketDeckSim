@@ -1,0 +1,70 @@
+{
+  "video_basename": "20261002_115323000_iOS.MP4",
+  "source_sha256": "0a3c7a2dbd87adb74f2eea2d61723f5e68fd71a74f0ab80d7486a9ee1d6c6be0",
+  "unreviewed_available_intervals": [],
+  "outcome_uncertain": false,
+  "items": [
+    {
+      "id": "strategy_turn13_single_prize",
+      "material": true,
+      "status": "resolved_as_conditional_survival_alternative",
+      "classification": "proposed_tactical_alternative",
+      "question": "At turn 13, was leaving the new two-Energy Vulpix unevolved, retreating the Mega into Vulpix and using Gnaw 20 a materially better survival line than Ninetales ex, given a precharged second Skull Fossil and a visible 150-damage Arena threshold? Do not call it a forced win without accounting for opponent switches and hidden hand.",
+      "visible_state": "Scores 1 to 1. Mega at 70 with one Water/free retreat, fresh Vulpix at 60 with two Water, earlier Vulpix at 60 with one Water before the turn 13 regular attachment; active Rampardos at 30 with one Fighting; opposing Bench Rowlet60, Snorlax130, SkullFossil40 with Fighting. Cyrus in hand has no visibly damaged Bench target.",
+      "evidence": [
+        "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_115323000_iOS_shark_sol/native/t0454.00.jpg",
+        "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_115323000_iOS_shark_sol/native/t0458.00.jpg",
+        "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_115323000_iOS_shark_sol/native/t0470.00.jpg",
+        "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_115323000_iOS_shark_sol/native/t0478.00.jpg",
+        "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_115323000_iOS_shark_sol/native/t0498.00.jpg",
+        "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_115323000_iOS_shark_sol/native/t0510.00.jpg"
+      ],
+      "bounded_rule_question": "If 10-HP Rampardos KOs a single-prize Vulpix with Head Smash, its 50 self-damage also KOs it. Score would approach 2 to 2 under that route, not establish owner victory. Confirm exact simultaneous point timing only if needed for recommendation.",
+      "resolution": "Astra finds a credible single-point Vulpix survival line, not a forced win or definite blunder. Either Vulpix can pay Gnaw. Rampardos at its original 30 HP is already below the 50 conditional self-damage threshold, so Gnaw does not create fatal recoil. Against a direct Head Smash KO, one point each would likely bring the score to 2-2; precise simultaneous point timing is not verified. The precharged second Fossil and hidden responses remain threats.",
+      "resolution_report": "../BATCH_2026-10-02_SHARK_TEMPO/ASTRA_RAMPARDOS_CHECK.md"
+    },
+    {
+      "id": "exact_queue",
+      "material": false,
+      "status": "unknown",
+      "classification": "hidden_information",
+      "question": "Ranked, casual or private queue not visible; owner directs Pause Games exclusion."
+    },
+    {
+      "id": "hidden_responses",
+      "material": false,
+      "status": "unknown",
+      "classification": "hidden_information",
+      "question": "Unseen opponent hand and full lists prevent a forced counterfactual line."
+    },
+    {
+      "id": "order_pad_fetch",
+      "material": false,
+      "status": "unknown",
+      "classification": "hidden_information",
+      "question": "Heads face visible, but exact random Item fetched is not revealed; subsequent Poke Ball is not assumed to be the fetch.",
+      "evidence": [
+        "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_115323000_iOS_shark_sol/gaps/t0100.00.jpg",
+        "C:/Users/dacz8/OneDrive/Desktop/Battle Logs/Recording_QA/20261002_115323000_iOS_shark_sol/gaps/t0108.00.jpg"
+      ]
+    }
+  ],
+  "lead_check_complete": true,
+  "material_claims_reconciled": true,
+  "astra_reports": [
+    "ASTRA_RAMPARDOS_CHECK.md"
+  ],
+  "worker_status_at_submission": "complete_first_pass",
+  "status": "full_battle_review_complete",
+  "review_status": "full_battle_review_complete",
+  "current_status": "full_battle_review_complete",
+  "lead_acceptance": "accepted",
+  "source_archived": true,
+  "source_modified": false,
+  "global_registration_complete": true,
+  "ranked_ladder_eligible": false,
+  "requested_log": "https://claude.ai/artifact/Ruet4Bkb87ufEW4sYKUpyd",
+  "external_log_saved": true,
+  "archive_receipt": "MOVE_RECEIPT.20261002_115323000_iOS.MP4.json",
+  "archive_completion_event_id": "c5864d82-a26f-4a42-b020-8b1288c69fbe"
+}

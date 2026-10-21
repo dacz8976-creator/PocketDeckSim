@@ -1,0 +1,25 @@
+{
+  "source_video": "20260907_232617000_iOS.MP4",
+  "sha256": "0114215B1DF4E6D6DD2B21C47616B9F9486788F815BC48B978DBA06D68490166",
+  "bytes": 824157596,
+  "duration_seconds": 441.538333,
+  "current_path": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Reviewed\\20260907_232617000_iOS.MP4",
+  "frozen_source_json": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260907_232617_v5_review\\final_packet\\SOURCE.json",
+  "accepted_review": "C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\20260907_232617_v5_review\\final_packet\\REVIEW.md",
+  "accepted_review_sha256": "e55ea7759a3cf502123c8d5ef460b1fcc160c3f71b9150aa21168c46d09b63b6",
+  "frame_timestamp_convention": "frames/SSS.sss.jpg identifies requested elapsed seconds; first decoded frame at or after each request. Event boundaries are approximate.",
+  "source_identity_basis": "Frozen accepted binding plus one authorized original SHA256 verification (SOURCE_ACCESS.json); exact match",
+  "mode": "manual interaction observed, with selection/confirmation prompts and turn clocks; no Auto control visible",
+  "exact_matchmaking_category": null,
+  "opponent_ai_status": "not established",
+  "shared_latest_event": "Review_Log/events/2026-09-22T012725.041193_0000_e3a3fea1-978c-4301-bf1a-556d49b38514.json",
+  "scope": "Separate owner-authorized retrospective supplement; original accepted packet and Reviewed status preserved",
+  "native_frame_dimensions_verified": {
+    "count": 381,
+    "dimensions": [
+      1170,
+      2532
+    ],
+    "verification": "PIL metadata read of all retained native frames"
+  }
+}

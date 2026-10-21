@@ -1,0 +1,25 @@
+{
+  "checked_utc": "2026-10-16T03:58:47.942035+00:00",
+  "only_completed_archives": true,
+  "original_media_read": false,
+  "results": [
+    {
+      "source": "20261016_020517000_iOS.MP4",
+      "exit_code": 0,
+      "stdout": "{\n  \"operation\": \"OneDrive online-only request\",\n  \"created_at_utc\": \"2026-10-16T03:58:05.804970+00:00\",\n  \"videos\": 1,\n  \"online_only\": 0,\n  \"allocated_bytes_before\": 270715753,\n  \"allocated_bytes_after\": 270715753,\n  \"local_bytes_reclaimed\": 0,\n  \"files_deleted\": 0,\n  \"method\": \"Microsoft-documented attrib +U -P; only in-sync cloud placeholders are changed\",\n  \"verification\": \"Cloud placeholder metadata and actual allocated disk bytes; video contents are never read\",\n  \"documentation\": \"https://learn.microsoft.com/en-us/sharepoint/files-on-demand-windows\"\n}\nStill local: 1; details in C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\CLOUD_STORAGE\\20261016T035805806998Z.apply.json\n",
+      "stderr": ""
+    },
+    {
+      "source": "20261016_024253000_iOS.MP4",
+      "exit_code": 0,
+      "stdout": "{\n  \"operation\": \"OneDrive online-only request\",\n  \"created_at_utc\": \"2026-10-16T03:58:26.955824+00:00\",\n  \"videos\": 1,\n  \"online_only\": 0,\n  \"allocated_bytes_before\": 1613329420,\n  \"allocated_bytes_after\": 1613329420,\n  \"local_bytes_reclaimed\": 0,\n  \"files_deleted\": 0,\n  \"method\": \"Microsoft-documented attrib +U -P; only in-sync cloud placeholders are changed\",\n  \"verification\": \"Cloud placeholder metadata and actual allocated disk bytes; video contents are never read\",\n  \"documentation\": \"https://learn.microsoft.com/en-us/sharepoint/files-on-demand-windows\"\n}\nStill local: 1; details in C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\CLOUD_STORAGE\\20261016T035826958346Z.apply.json\n",
+      "stderr": ""
+    },
+    {
+      "source": "20261016_030833000_iOS.MP4",
+      "exit_code": 0,
+      "stdout": "{\n  \"operation\": \"OneDrive online-only request\",\n  \"created_at_utc\": \"2026-10-16T03:58:47.857874+00:00\",\n  \"videos\": 1,\n  \"online_only\": 0,\n  \"allocated_bytes_before\": 681167398,\n  \"allocated_bytes_after\": 681167398,\n  \"local_bytes_reclaimed\": 0,\n  \"files_deleted\": 0,\n  \"method\": \"Microsoft-documented attrib +U -P; only in-sync cloud placeholders are changed\",\n  \"verification\": \"Cloud placeholder metadata and actual allocated disk bytes; video contents are never read\",\n  \"documentation\": \"https://learn.microsoft.com/en-us/sharepoint/files-on-demand-windows\"\n}\nStill local: 1; details in C:\\Users\\dacz8\\OneDrive\\Desktop\\Battle Logs\\Recording_QA\\CLOUD_STORAGE\\20261016T035847858876Z.apply.json\n",
+      "stderr": ""
+    }
+  ]
+}
