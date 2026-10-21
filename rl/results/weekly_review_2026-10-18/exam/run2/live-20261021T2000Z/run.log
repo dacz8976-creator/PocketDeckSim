@@ -1,0 +1,32 @@
+2026-10-21T20:00:39Z mode=live ref=judge-prompt-frozen-7 exam=5518fd604760edb40b41d1406723f14cd8343b78 km3 rows reused (run 1) out=/home/dacz8976/exam_run2/live-20261021T2000Z
+2026-10-21T20:00:42Z judge ref 712593a1b77b203ec23fb15589c158c6bddb2bf2
+2026-10-21T20:00:42Z freeze_identity --check: pass
+2026-10-21T20:01:10Z harness tests: Ran 406 tests in 28.037s OK
+inputs ready: 51 positions (49 primary, 2 diagnostic), 19 full-scope; references 12e0e997620f19b2, meta 6adca41edaf46031, exam 3766b5960342bd48
+2026-10-21T20:01:11Z inputs: positions, references and eligibility equal run 1's (sha256)
+estimate: 51 prompts, 689336 input tokens (estimated), about $2.91 per judge run at $2/$10 (the ledger: $14.57)
+2026-10-21T20:01:18Z km3 rows: 153 (run 1's, sha256 3cc523d32f72)
+2026-10-21T20:06:45Z judge_primary: exit 2; 3 call(s) returned, 2 failed; this run $2.3578 (cap $14.57); ledger $2.3578 of $14.57 (peak accrued+reserved $3.5440); 46 refused by the bound (Gemini 4 Argon on Vertex AI (Gemini Enterprise Agent Platform): $2 / $10 per 1M input / output tokens through 2026-11-30, $4 / $20 from 2026-12-01, per the Google Cloud announcement cloud.google.com/blog/products/ai-machine-learning/gemini-4-argon-available-on-google-cloud (read 2026-10-21; the Vertex pricing page tables could not be read, so verify in the billing console); thinking tokens are billed as output (the model guide: every token processed is billed, thinking included; ai.google.dev/gemini-api/docs/pricing); input charged in full (the cached-input discount is ignored: a conservative upper bound))
+2026-10-21T20:06:45Z judge_primary: 48 decision(s) without a row (no model reply): one resend
+2026-10-21T20:20:29Z judge_primary resend: 48 call(s) returned, 0 failed; this run $2.6533 (cap $14.57); ledger $5.0111 of $14.57 (peak accrued+reserved $7.6344); 0 refused by the bound (Gemini 4 Argon on Vertex AI (Gemini Enterprise Agent Platform): $2 / $10 per 1M input / output tokens through 2026-11-30, $4 / $20 from 2026-12-01, per the Google Cloud announcement cloud.google.com/blog/products/ai-machine-learning/gemini-4-argon-available-on-google-cloud (read 2026-10-21; the Vertex pricing page tables could not be read, so verify in the billing console); thinking tokens are billed as output (the model guide: every token processed is billed, thinking included; ai.google.dev/gemini-api/docs/pricing); input charged in full (the cached-input discount is ignored: a conservative upper bound))
+2026-10-21T20:20:29Z judge primary rows: 51
+2026-10-21T20:20:35Z compare (primary) exit 0
+2026-10-21T20:31:33Z judge_repeat_raw: exit 0; 51 call(s) returned, 0 failed; this run $2.6558 (cap $14.57); ledger $7.6669 of $14.57 (peak accrued+reserved $10.3984); 0 refused by the bound (Gemini 4 Argon on Vertex AI (Gemini Enterprise Agent Platform): $2 / $10 per 1M input / output tokens through 2026-11-30, $4 / $20 from 2026-12-01, per the Google Cloud announcement cloud.google.com/blog/products/ai-machine-learning/gemini-4-argon-available-on-google-cloud (read 2026-10-21; the Vertex pricing page tables could not be read, so verify in the billing console); thinking tokens are billed as output (the model guide: every token processed is billed, thinking included; ai.google.dev/gemini-api/docs/pricing); input charged in full (the cached-input discount is ignored: a conservative upper bound))
+51 rows relabelled to repeat 1
+2026-10-21T20:31:39Z compare (sensitivity) exit 0
+deck_kinds
+  Bench preparation           judge: 0.633 (n=30)  km3: 0.433 (n=30)
+  control and combinations    judge: 0.485 (n=33)  km3: 0.414 (n=33)
+  evolution and setup         judge: 0.536 (n=28)  km3: 0.429 (n=28)
+  fast pressure               judge: 0.571 (n=7)  km3: 0.429 (n=7)
+  sacrifice and recovery      judge: 0.571 (n=7)  km3: 0.524 (n=7)
+answer_kind
+  attack now                  judge: 0.591 (n=22)  km3: 0.364 (n=22)
+  prepare                     judge: 0.636 (n=22)  km3: 0.5 (n=22)
+  sacrifice                   judge: 0.6 (n=5)  km3: 0.6 (n=5)
+deck
+  12-ariados-whimsicott-ogerponjudge: 0.643 (n=14)  km3: 0.429 (n=14)
+  13-a-ninetales-raticate     judge: 0.522 (n=23)  km3: 0.377 (n=23)
+  kingambit_list_A            judge: 0.75 (n=12)  km3: 0.611 (n=12)
+Gemini v run 1's Sonnet (descriptive): Gemini 30/49, Sonnet 11/49, km3 mean 22.0/49; both 10, Gemini only 20, Sonnet only 1, neither 18; Gemini rows without a choice 0
+2026-10-21T20:31:40Z done: 102 calls, 861,088 input tokens, 391,643 output tokens, $5.639 at the assumed prices (assumed list price per million tokens; verify in the console)

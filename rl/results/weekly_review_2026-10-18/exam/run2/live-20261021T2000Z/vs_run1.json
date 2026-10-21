@@ -1,0 +1,39 @@
+{
+ "what": "DESCRIPTIVE only: Gemini 4 Argon (run 2, frozen-7) v claude-sonnet-5-5 (run 1, frozen-4), prefix agreement of the primary judge call on the 49 primary points; no interval, no p-value, no verdict (PREREG_RUN2 section 5)",
+ "n_points": 49,
+ "gemini_agrees": 30,
+ "sonnet_run1_agrees": 11,
+ "km3_mean_agrees": 22.0,
+ "paired_difference_gemini_minus_sonnet": 0.3878,
+ "both_agree": 10,
+ "gemini_only": 20,
+ "sonnet_only": 1,
+ "neither": 18,
+ "gemini_no_choice_rows": 0,
+ "points_gemini_only": [
+  "LAD-20261014_153908000_iOS-t4",
+  "LAD-20261014_153908000_iOS-t6",
+  "LAD-20261014_143111000_iOS-t10",
+  "LAD-20261014_144627000_iOS-t2",
+  "LAD-20261014_145449000_iOS-t4",
+  "LAD-20261014_161324000_iOS-t5",
+  "LAD-20261014_161324000_iOS-t7",
+  "LAD-20261014_231006000_iOS-t3",
+  "LAD-20261014_231006000_iOS-t9",
+  "LAD-20261015_015320000_iOS-t4",
+  "LAD-20261015_201201000_iOS-t7",
+  "LAD-20261016_030833000_iOS-t2",
+  "LAD-20261016_031512000_iOS-t2",
+  "LAD-20261016_020517000_iOS-t2",
+  "LAD-20261016_024253000_iOS-t1",
+  "LAD-20261014_234728000_iOS-t5",
+  "LAD-20261014_215114000_iOS-t10",
+  "LAD-20261014_143111000_iOS-t6",
+  "LAD-20261014_214436000_iOS-t4",
+  "LAD-20261014_215114000_iOS-t4"
+ ],
+ "points_sonnet_only": [
+  "LAD-20261014_143111000_iOS-t8"
+ ],
+ "points_gemini_no_choice": []
+}

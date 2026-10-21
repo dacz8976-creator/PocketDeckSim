@@ -1,0 +1,67 @@
+TASK FAILED LAD-20261014_142546000_iOS-t7 repeat 0: API error 429: {
+  "error": {
+    "code": 429,
+    "message": "TPM quota exhausted. No spare capacity is currently available to serve over-limit requests. Please try again later, reduce your request rate or contact the sales team to discuss limit increase options. Details: https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/standard-paygo.",
+    "status": "RESOURCE_EXHAUSTED"
+  }
+}
+
+NOT SENT LAD-20261014_144627000_iOS-t2 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261014_145449000_iOS-t4 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261014_160506000_iOS-t6 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261014_160506000_iOS-t10 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261014_161324000_iOS-t5 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261014_161324000_iOS-t7 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261014_164328000_iOS-t4 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261014_214436000_iOS-t6 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261014_214436000_iOS-t10 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261014_215114000_iOS-t6 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261014_215114000_iOS-t12 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261014_225451000_iOS-t4 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261014_230328000_iOS-t3 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261014_233402000_iOS-t5 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261014_233402000_iOS-t9 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261014_231006000_iOS-t3 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261014_231006000_iOS-t9 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261014_234728000_iOS-t7 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261014_234728000_iOS-t9 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261015_015320000_iOS-t4 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261015_015320000_iOS-t8 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261015_015320000_iOS-t10 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261015_020931000_iOS-t3 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261015_021533000_iOS-t5 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261015_022206000_iOS-t3 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261015_201201000_iOS-t3 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261015_201201000_iOS-t7 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261015_205332000_iOS-t5 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261015_205332000_iOS-t9 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261016_030833000_iOS-t2 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261016_031512000_iOS-t2 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261016_031512000_iOS-t8 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261016_015753000_iOS-t5 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261016_015753000_iOS-t7 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261016_015753000_iOS-t9 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261016_020517000_iOS-t2 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261016_024253000_iOS-t1 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261014_234728000_iOS-t5 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261014_215114000_iOS-t10 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261014_142546000_iOS-t3 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261014_143111000_iOS-t6 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261014_214436000_iOS-t4 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261014_215114000_iOS-t4 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261014_233402000_iOS-t7 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261015_210617000_iOS-t2 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261015_210617000_iOS-t6 repeat 0: a call failed: no further call is sent
+TASK FAILED LAD-20261014_153908000_iOS-t6 repeat 0: API error 429: {
+  "error": {
+    "code": 429,
+    "message": "TPM quota exhausted. No spare capacity is currently available to serve over-limit requests. Please try again later, reduce your request rate or contact the sales team to discuss limit increase options. Details: https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/standard-paygo.",
+    "status": "RESOURCE_EXHAUSTED"
+  }
+}
+
+3 call(s) returned, 2 failed; this run $2.3578 (cap $14.57); ledger $2.3578 of $14.57 (peak accrued+reserved $3.5440); 46 refused by the bound (Gemini 4 Argon on Vertex AI (Gemini Enterprise Agent Platform): $2 / $10 per 1M input / output tokens through 2026-11-30, $4 / $20 from 2026-12-01, per the Google Cloud announcement cloud.google.com/blog/products/ai-machine-learning/gemini-4-argon-available-on-google-cloud (read 2026-10-21; the Vertex pricing page tables could not be read, so verify in the billing console); thinking tokens are billed as output (the model guide: every token processed is billed, thinking included; ai.google.dev/gemini-api/docs/pricing); input charged in full (the cached-input discount is ignored: a conservative upper bound))
+INCOMPLETE BATCH: 46 call(s) not made (the spend bound or an earlier failure), 2 task(s) failed or refused and 0 without a usable choice; the file has every row that was made
+LAD-20261014_153908000_iOS-t4 judge plan 13 -> ['Play:Poké Ball']
+LAD-20261014_143111000_iOS-t10 judge plan 1 -> ["Play:Professor's Research"]
+LAD-20261014_143111000_iOS-t8 judge plan 3 -> ['Attach:1Grass@1 zone', 'Retreat:1', 'Attack:Pierce']

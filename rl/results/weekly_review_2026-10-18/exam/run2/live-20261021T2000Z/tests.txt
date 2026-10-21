@@ -1,0 +1,127 @@
+...../home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_ai_judge.py:179: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/../../results/pause_games_decisions_2026-10-02/harness/pgd_patch.py' mode='r' encoding='utf-8'>
+  src = open(os.path.join(HERE, '..', '..', 'results', 'pause_games_decisions_2026-10-02', 'harness', 'pgd_patch.py'), encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_ai_judge.py:181: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/../plans/src/main.rs' mode='r' encoding='utf-8'>
+  rs = open(os.path.join(HERE, '..', 'plans', 'src', 'main.rs'), encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.../home/dacz8976/exam_run2/live-20261021T2000Z/repo/lib/card.py:22: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/dacz8976/exam_run2/live-20261021T2000Z/repo/lib/deckgym-database.json' mode='r' encoding='utf-8'>
+  return [next(iter(e.items())) for e in json.load(io.open(p, encoding='utf-8'))]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+................./home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_ai_judge.py:402: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/fixtures/mini_positions.json' mode='r' encoding='UTF-8'>
+  positions['MINI-DRAW'] = json.load(open(POS))[0]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+...................................................................................................................................../home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1023: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/fixtures/mini_positions.json' mode='r' encoding='UTF-8'>
+  blower = next(p for p in json.load(open(POS)) if p['id'] == 'MINI-BLOWER')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+...../home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1377: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpnr8i2gyh/rep.json' mode='r' encoding='UTF-8'>
+  rep = json.load(open(os.path.join(d, 'rep.json')))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+./home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1725: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpdaz6walr/positions.json' mode='r' encoding='UTF-8'>
+  clones = json.load(open(self.positions_path))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1737: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpweb9piya/rep.json' mode='r' encoding='UTF-8'>
+  self.assertEqual(len(json.load(open(out))['run']['warnings']), 1)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+./home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1377: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpelvoalyt/rep.json' mode='r' encoding='UTF-8'>
+  rep = json.load(open(os.path.join(d, 'rep.json')))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1377: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpsdwotqpw/rep.json' mode='r' encoding='UTF-8'>
+  rep = json.load(open(os.path.join(d, 'rep.json')))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1377: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmp0miakfgo/rep.json' mode='r' encoding='UTF-8'>
+  rep = json.load(open(os.path.join(d, 'rep.json')))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1377: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmppk_9958u/rep.json' mode='r' encoding='UTF-8'>
+  rep = json.load(open(os.path.join(d, 'rep.json')))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+../home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1377: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpic3pddpy/rep.json' mode='r' encoding='UTF-8'>
+  rep = json.load(open(os.path.join(d, 'rep.json')))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1377: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpj1kdtys5/rep.json' mode='r' encoding='UTF-8'>
+  rep = json.load(open(os.path.join(d, 'rep.json')))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1377: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpw4tdq8dg/rep.json' mode='r' encoding='UTF-8'>
+  rep = json.load(open(os.path.join(d, 'rep.json')))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+./home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1377: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmp8yqzw7rq/rep.json' mode='r' encoding='UTF-8'>
+  rep = json.load(open(os.path.join(d, 'rep.json')))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1377: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmp3arwkrzp/rep.json' mode='r' encoding='UTF-8'>
+  rep = json.load(open(os.path.join(d, 'rep.json')))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+./home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1377: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpnet9vmsl/rep.json' mode='r' encoding='UTF-8'>
+  rep = json.load(open(os.path.join(d, 'rep.json')))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1377: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpz0rflhb6/rep.json' mode='r' encoding='UTF-8'>
+  rep = json.load(open(os.path.join(d, 'rep.json')))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+../home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1377: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmp0ql4s62t/rep.json' mode='r' encoding='UTF-8'>
+  rep = json.load(open(os.path.join(d, 'rep.json')))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1377: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmp5koazp7e/rep.json' mode='r' encoding='UTF-8'>
+  rep = json.load(open(os.path.join(d, 'rep.json')))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.../home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1377: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmp_hh0l_5b/rep.json' mode='r' encoding='UTF-8'>
+  rep = json.load(open(os.path.join(d, 'rep.json')))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+./home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1672: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpt4lmi0wr/rep.json' mode='r' encoding='UTF-8'>
+  rep = json.load(open(out))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.../home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1559: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpq4wq8qot/rep.json' mode='r' encoding='UTF-8'>
+  rep = json.load(open(os.path.join(d, 'rep.json')))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1563: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpq4wq8qot/rep2.json' mode='r' encoding='UTF-8'>
+  rep = json.load(open(os.path.join(d, 'rep2.json')))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+./home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1688: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmphxidcz4l/rep.json' mode='r' encoding='UTF-8'>
+  rep = json.load(open(out))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1696: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmphxidcz4l/rep.json' mode='r' encoding='UTF-8'>
+  self.assertEqual(json.load(open(out))['status'], 'did_not_finish')  # replaced at the start: a run that died is never mistaken for the earlier result
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+./home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1502: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmp5sssranb/rep.json' mode='r' encoding='UTF-8'>
+  self.assertEqual(json.load(open(out))['status'], 'failed')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+..../home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1480: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpdvjizcog/rep.json' mode='r' encoding='UTF-8'>
+  rep = json.load(open(out))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+./home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1516: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpzfngpzse/rep.json' mode='r' encoding='UTF-8'>
+  self.assertEqual(json.load(open(out))['status'], 'failed')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+............./home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1606: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpw3f9sgxq/rows.jsonl' mode='r' encoding='UTF-8'>
+  row = json.loads(open(out).read().splitlines()[0])  # the row is still written, so the failure is visible in the file
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1613: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmphzre5krk/rows.jsonl' mode='r' encoding='UTF-8'>
+  row = json.loads(open(out).read().splitlines()[0])
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/usr/lib/python3.14/traceback.py:270: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmphzre5krk/rows.jsonl' mode='a' encoding='utf-8'>
+  tb.tb_frame.clear()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+../home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1719: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpudvfi_t7/rep.json' mode='r' encoding='UTF-8'>
+  self.assertEqual(json.load(open(out))['status'], 'did_not_finish', what)
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+./home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1438: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmprat3ken0/rep.json' mode='r' encoding='UTF-8'>
+  rep = json.load(open(out_path))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+./home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:1338: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpgrrdwqcd/rep.json' mode='r' encoding='UTF-8'>
+  rep = json.load(open(out))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.........................................................................../home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_formal.py:806: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/fixtures/mini_positions.json' mode='r' encoding='UTF-8'>
+  pids = [p['id'] for p in json.load(open(POS))]
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+....../home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_frozen.py:80: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/judge.py' mode='r' encoding='utf-8'>
+  src = open(os.path.join(ROOT, 'judge.py'), encoding='utf-8').read()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+...../home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_frozen.py:155: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpzyvr8cf5/fake_pg_pos.sh' mode='w' encoding='UTF-8'>
+  open(bad, 'w').write('#!/bin/bash\necho \'{"kind":"free","id":"KW-261013_010837000-t07","seed":1,"plan":[],"cut":"end of turn"}\'\nexit 3\n')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/dacz8976/exam_run2/live-20261021T2000Z/repo/rl/ai_judge/tests/test_frozen.py:161: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpzyvr8cf5/short.sh' mode='w' encoding='UTF-8'>
+  open(short, 'w').write('#!/bin/bash\necho \'{"kind":"free","id":"KW-261013_010837000-t07","seed":1,"plan":[],"cut":"x"}\'\n')
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+................................................................................................/usr/lib/python3.14/tempfile.py:484: ResourceWarning: Implicitly cleaning up <HTTPError 429: 'quota'>
+  _warnings.warn(self.warn_message, ResourceWarning)
+......................
+----------------------------------------------------------------------
+Ran 406 tests in 28.037s
+
+OK

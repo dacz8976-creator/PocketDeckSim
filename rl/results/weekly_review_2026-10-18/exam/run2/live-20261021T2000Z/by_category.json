@@ -1,0 +1,127 @@
+{
+ "what": "DESCRIPTIVE: prefix agreement per decision on the 49 primary points, grouped; points of one game are not independent and a point counts in each of its deck kinds; no interval or verdict here (see report_primary.json)",
+ "source_rows": "/rows",
+ "agreement_field": "agrees",
+ "bots": [
+  "judge",
+  "km3"
+ ],
+ "table": {
+  "deck_kinds": {
+   "Bench preparation": {
+    "judge": {
+     "n_decisions": 30,
+     "agreement": 0.633
+    },
+    "km3": {
+     "n_decisions": 30,
+     "agreement": 0.433
+    }
+   },
+   "control and combinations": {
+    "judge": {
+     "n_decisions": 33,
+     "agreement": 0.485
+    },
+    "km3": {
+     "n_decisions": 33,
+     "agreement": 0.414
+    }
+   },
+   "evolution and setup": {
+    "judge": {
+     "n_decisions": 28,
+     "agreement": 0.536
+    },
+    "km3": {
+     "n_decisions": 28,
+     "agreement": 0.429
+    }
+   },
+   "fast pressure": {
+    "judge": {
+     "n_decisions": 7,
+     "agreement": 0.571
+    },
+    "km3": {
+     "n_decisions": 7,
+     "agreement": 0.429
+    }
+   },
+   "sacrifice and recovery": {
+    "judge": {
+     "n_decisions": 7,
+     "agreement": 0.571
+    },
+    "km3": {
+     "n_decisions": 7,
+     "agreement": 0.524
+    }
+   }
+  },
+  "answer_kind": {
+   "attack now": {
+    "judge": {
+     "n_decisions": 22,
+     "agreement": 0.591
+    },
+    "km3": {
+     "n_decisions": 22,
+     "agreement": 0.364
+    }
+   },
+   "prepare": {
+    "judge": {
+     "n_decisions": 22,
+     "agreement": 0.636
+    },
+    "km3": {
+     "n_decisions": 22,
+     "agreement": 0.5
+    }
+   },
+   "sacrifice": {
+    "judge": {
+     "n_decisions": 5,
+     "agreement": 0.6
+    },
+    "km3": {
+     "n_decisions": 5,
+     "agreement": 0.6
+    }
+   }
+  },
+  "deck": {
+   "12-ariados-whimsicott-ogerpon": {
+    "judge": {
+     "n_decisions": 14,
+     "agreement": 0.643
+    },
+    "km3": {
+     "n_decisions": 14,
+     "agreement": 0.429
+    }
+   },
+   "13-a-ninetales-raticate": {
+    "judge": {
+     "n_decisions": 23,
+     "agreement": 0.522
+    },
+    "km3": {
+     "n_decisions": 23,
+     "agreement": 0.377
+    }
+   },
+   "kingambit_list_A": {
+    "judge": {
+     "n_decisions": 12,
+     "agreement": 0.75
+    },
+    "km3": {
+     "n_decisions": 12,
+     "agreement": 0.611
+    }
+   }
+  }
+ }
+}

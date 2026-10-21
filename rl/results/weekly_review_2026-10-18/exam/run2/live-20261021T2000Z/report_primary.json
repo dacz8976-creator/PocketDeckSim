@@ -1,0 +1,3010 @@
+{
+ "schema": "ai_judge_paired_comparison_v2",
+ "status": "complete",
+ "n_expected_rows": 196,
+ "n_present_rows": 196,
+ "n_resolved_rows": 196,
+ "n_no_choice_rows": 0,
+ "problems": [],
+ "rows": [
+  {
+   "position": "LAD-20261014_142546000_iOS-t3",
+   "game": "20261014_142546000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 23,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_142546000_iOS-t3",
+   "game": "20261014_142546000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 23,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_142546000_iOS-t3",
+   "game": "20261014_142546000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 23,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_142546000_iOS-t3",
+   "game": "20261014_142546000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 73,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_142546000_iOS-t7",
+   "game": "20261014_142546000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 242,
+   "accepted": [
+    "alt0"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_142546000_iOS-t7",
+   "game": "20261014_142546000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 242,
+   "accepted": [
+    "alt0"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_142546000_iOS-t7",
+   "game": "20261014_142546000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 242,
+   "accepted": [
+    "alt0"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_142546000_iOS-t7",
+   "game": "20261014_142546000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 237,
+   "accepted": [
+    "alt1"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_143111000_iOS-t10",
+   "game": "20261014_143111000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 1,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_143111000_iOS-t10",
+   "game": "20261014_143111000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 1,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_143111000_iOS-t10",
+   "game": "20261014_143111000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 1,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_143111000_iOS-t10",
+   "game": "20261014_143111000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 1,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_143111000_iOS-t6",
+   "game": "20261014_143111000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 6,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_143111000_iOS-t6",
+   "game": "20261014_143111000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 6,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_143111000_iOS-t6",
+   "game": "20261014_143111000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 6,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_143111000_iOS-t6",
+   "game": "20261014_143111000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 6,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_143111000_iOS-t8",
+   "game": "20261014_143111000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 2,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261014_143111000_iOS-t8",
+   "game": "20261014_143111000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 2,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261014_143111000_iOS-t8",
+   "game": "20261014_143111000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 2,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261014_143111000_iOS-t8",
+   "game": "20261014_143111000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 3,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261014_144627000_iOS-t2",
+   "game": "20261014_144627000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 5,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_144627000_iOS-t2",
+   "game": "20261014_144627000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 5,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_144627000_iOS-t2",
+   "game": "20261014_144627000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 5,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_144627000_iOS-t2",
+   "game": "20261014_144627000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 5,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_145449000_iOS-t4",
+   "game": "20261014_145449000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 38,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_145449000_iOS-t4",
+   "game": "20261014_145449000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 38,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_145449000_iOS-t4",
+   "game": "20261014_145449000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 38,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_145449000_iOS-t4",
+   "game": "20261014_145449000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 37,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_153908000_iOS-t4",
+   "game": "20261014_153908000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 17,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_153908000_iOS-t4",
+   "game": "20261014_153908000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 17,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_153908000_iOS-t4",
+   "game": "20261014_153908000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 17,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_153908000_iOS-t4",
+   "game": "20261014_153908000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 13,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_153908000_iOS-t6",
+   "game": "20261014_153908000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 11,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_153908000_iOS-t6",
+   "game": "20261014_153908000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 11,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_153908000_iOS-t6",
+   "game": "20261014_153908000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 11,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_153908000_iOS-t6",
+   "game": "20261014_153908000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 11,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_160506000_iOS-t10",
+   "game": "20261014_160506000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 150,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261014_160506000_iOS-t10",
+   "game": "20261014_160506000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 150,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261014_160506000_iOS-t10",
+   "game": "20261014_160506000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 150,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261014_160506000_iOS-t10",
+   "game": "20261014_160506000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 127,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261014_160506000_iOS-t6",
+   "game": "20261014_160506000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 27,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_160506000_iOS-t6",
+   "game": "20261014_160506000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 27,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_160506000_iOS-t6",
+   "game": "20261014_160506000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 27,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_160506000_iOS-t6",
+   "game": "20261014_160506000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 61,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_161324000_iOS-t5",
+   "game": "20261014_161324000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 37,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_161324000_iOS-t5",
+   "game": "20261014_161324000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 23,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_161324000_iOS-t5",
+   "game": "20261014_161324000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 23,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_161324000_iOS-t5",
+   "game": "20261014_161324000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 20,
+   "accepted": [
+    "recorded",
+    "alt0"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_161324000_iOS-t7",
+   "game": "20261014_161324000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 18,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_161324000_iOS-t7",
+   "game": "20261014_161324000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 18,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_161324000_iOS-t7",
+   "game": "20261014_161324000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 18,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_161324000_iOS-t7",
+   "game": "20261014_161324000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 22,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_164328000_iOS-t4",
+   "game": "20261014_164328000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 13,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_164328000_iOS-t4",
+   "game": "20261014_164328000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 13,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_164328000_iOS-t4",
+   "game": "20261014_164328000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 13,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_164328000_iOS-t4",
+   "game": "20261014_164328000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 48,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_214436000_iOS-t10",
+   "game": "20261014_214436000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 55,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_214436000_iOS-t10",
+   "game": "20261014_214436000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 55,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_214436000_iOS-t10",
+   "game": "20261014_214436000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 55,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_214436000_iOS-t10",
+   "game": "20261014_214436000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 55,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_214436000_iOS-t4",
+   "game": "20261014_214436000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 9,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_214436000_iOS-t4",
+   "game": "20261014_214436000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 9,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_214436000_iOS-t4",
+   "game": "20261014_214436000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 9,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_214436000_iOS-t4",
+   "game": "20261014_214436000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 5,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_214436000_iOS-t6",
+   "game": "20261014_214436000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 2,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261014_214436000_iOS-t6",
+   "game": "20261014_214436000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 2,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261014_214436000_iOS-t6",
+   "game": "20261014_214436000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 2,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261014_214436000_iOS-t6",
+   "game": "20261014_214436000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 2,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261014_215114000_iOS-t10",
+   "game": "20261014_215114000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 18,
+   "accepted": [
+    "key"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_215114000_iOS-t10",
+   "game": "20261014_215114000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 18,
+   "accepted": [
+    "key"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_215114000_iOS-t10",
+   "game": "20261014_215114000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 18,
+   "accepted": [
+    "key"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_215114000_iOS-t10",
+   "game": "20261014_215114000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 18,
+   "accepted": [
+    "key"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_215114000_iOS-t12",
+   "game": "20261014_215114000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 19,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261014_215114000_iOS-t12",
+   "game": "20261014_215114000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 19,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261014_215114000_iOS-t12",
+   "game": "20261014_215114000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 19,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261014_215114000_iOS-t12",
+   "game": "20261014_215114000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 19,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261014_215114000_iOS-t4",
+   "game": "20261014_215114000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 4,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_215114000_iOS-t4",
+   "game": "20261014_215114000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 4,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_215114000_iOS-t4",
+   "game": "20261014_215114000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 6,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_215114000_iOS-t4",
+   "game": "20261014_215114000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 4,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_215114000_iOS-t6",
+   "game": "20261014_215114000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 7,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_215114000_iOS-t6",
+   "game": "20261014_215114000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 7,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_215114000_iOS-t6",
+   "game": "20261014_215114000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 7,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_215114000_iOS-t6",
+   "game": "20261014_215114000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 10,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_225451000_iOS-t4",
+   "game": "20261014_225451000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 15,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261014_225451000_iOS-t4",
+   "game": "20261014_225451000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 15,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261014_225451000_iOS-t4",
+   "game": "20261014_225451000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 15,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261014_225451000_iOS-t4",
+   "game": "20261014_225451000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 84,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_230328000_iOS-t3",
+   "game": "20261014_230328000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 4,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_230328000_iOS-t3",
+   "game": "20261014_230328000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 4,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_230328000_iOS-t3",
+   "game": "20261014_230328000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 4,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_230328000_iOS-t3",
+   "game": "20261014_230328000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 12,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_231006000_iOS-t3",
+   "game": "20261014_231006000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 9,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_231006000_iOS-t3",
+   "game": "20261014_231006000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 9,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_231006000_iOS-t3",
+   "game": "20261014_231006000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 9,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_231006000_iOS-t3",
+   "game": "20261014_231006000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 5,
+   "accepted": [
+    "alt0"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_231006000_iOS-t9",
+   "game": "20261014_231006000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 18,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261014_231006000_iOS-t9",
+   "game": "20261014_231006000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 18,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261014_231006000_iOS-t9",
+   "game": "20261014_231006000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 18,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261014_231006000_iOS-t9",
+   "game": "20261014_231006000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 18,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_233402000_iOS-t5",
+   "game": "20261014_233402000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 9,
+   "accepted": [
+    "recorded",
+    "alt0"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261014_233402000_iOS-t5",
+   "game": "20261014_233402000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 9,
+   "accepted": [
+    "recorded",
+    "alt0"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261014_233402000_iOS-t5",
+   "game": "20261014_233402000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 9,
+   "accepted": [
+    "recorded",
+    "alt0"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261014_233402000_iOS-t5",
+   "game": "20261014_233402000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 24,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_233402000_iOS-t7",
+   "game": "20261014_233402000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 3,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261014_233402000_iOS-t7",
+   "game": "20261014_233402000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 3,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261014_233402000_iOS-t7",
+   "game": "20261014_233402000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 3,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261014_233402000_iOS-t7",
+   "game": "20261014_233402000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 3,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261014_233402000_iOS-t9",
+   "game": "20261014_233402000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 3,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261014_233402000_iOS-t9",
+   "game": "20261014_233402000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 3,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261014_233402000_iOS-t9",
+   "game": "20261014_233402000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 3,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261014_233402000_iOS-t9",
+   "game": "20261014_233402000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 3,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261014_234728000_iOS-t5",
+   "game": "20261014_234728000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 4,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_234728000_iOS-t5",
+   "game": "20261014_234728000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 4,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_234728000_iOS-t5",
+   "game": "20261014_234728000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 4,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_234728000_iOS-t5",
+   "game": "20261014_234728000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 13,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_234728000_iOS-t7",
+   "game": "20261014_234728000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 49,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_234728000_iOS-t7",
+   "game": "20261014_234728000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 49,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_234728000_iOS-t7",
+   "game": "20261014_234728000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 49,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_234728000_iOS-t7",
+   "game": "20261014_234728000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 45,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_234728000_iOS-t9",
+   "game": "20261014_234728000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 27,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_234728000_iOS-t9",
+   "game": "20261014_234728000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 27,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_234728000_iOS-t9",
+   "game": "20261014_234728000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 27,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261014_234728000_iOS-t9",
+   "game": "20261014_234728000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 25,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261015_015320000_iOS-t10",
+   "game": "20261015_015320000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 9,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261015_015320000_iOS-t10",
+   "game": "20261015_015320000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 9,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261015_015320000_iOS-t10",
+   "game": "20261015_015320000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 9,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261015_015320000_iOS-t10",
+   "game": "20261015_015320000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 18,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261015_015320000_iOS-t4",
+   "game": "20261015_015320000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 24,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261015_015320000_iOS-t4",
+   "game": "20261015_015320000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 24,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261015_015320000_iOS-t4",
+   "game": "20261015_015320000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 24,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261015_015320000_iOS-t4",
+   "game": "20261015_015320000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 12,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261015_015320000_iOS-t8",
+   "game": "20261015_015320000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 2,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261015_015320000_iOS-t8",
+   "game": "20261015_015320000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 2,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261015_015320000_iOS-t8",
+   "game": "20261015_015320000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 2,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261015_015320000_iOS-t8",
+   "game": "20261015_015320000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 1,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261015_020931000_iOS-t3",
+   "game": "20261015_020931000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 4,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261015_020931000_iOS-t3",
+   "game": "20261015_020931000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 4,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261015_020931000_iOS-t3",
+   "game": "20261015_020931000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 6,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261015_020931000_iOS-t3",
+   "game": "20261015_020931000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 7,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261015_021533000_iOS-t5",
+   "game": "20261015_021533000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 99,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261015_021533000_iOS-t5",
+   "game": "20261015_021533000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 99,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261015_021533000_iOS-t5",
+   "game": "20261015_021533000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 99,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261015_021533000_iOS-t5",
+   "game": "20261015_021533000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 106,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261015_022206000_iOS-t3",
+   "game": "20261015_022206000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 5,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261015_022206000_iOS-t3",
+   "game": "20261015_022206000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 5,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261015_022206000_iOS-t3",
+   "game": "20261015_022206000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 5,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261015_022206000_iOS-t3",
+   "game": "20261015_022206000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 12,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261015_201201000_iOS-t3",
+   "game": "20261015_201201000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 1,
+   "accepted": [
+    "alt0"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261015_201201000_iOS-t3",
+   "game": "20261015_201201000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 1,
+   "accepted": [
+    "alt0"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261015_201201000_iOS-t3",
+   "game": "20261015_201201000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 1,
+   "accepted": [
+    "alt0"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261015_201201000_iOS-t3",
+   "game": "20261015_201201000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 61,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261015_201201000_iOS-t7",
+   "game": "20261015_201201000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 13,
+   "accepted": [
+    "alt0"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261015_201201000_iOS-t7",
+   "game": "20261015_201201000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 13,
+   "accepted": [
+    "alt0"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261015_201201000_iOS-t7",
+   "game": "20261015_201201000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 13,
+   "accepted": [
+    "alt0"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261015_201201000_iOS-t7",
+   "game": "20261015_201201000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 13,
+   "accepted": [
+    "alt0"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261015_205332000_iOS-t5",
+   "game": "20261015_205332000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 9,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261015_205332000_iOS-t5",
+   "game": "20261015_205332000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 9,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261015_205332000_iOS-t5",
+   "game": "20261015_205332000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 9,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261015_205332000_iOS-t5",
+   "game": "20261015_205332000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 3,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261015_205332000_iOS-t9",
+   "game": "20261015_205332000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 1,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261015_205332000_iOS-t9",
+   "game": "20261015_205332000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 1,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261015_205332000_iOS-t9",
+   "game": "20261015_205332000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 1,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261015_205332000_iOS-t9",
+   "game": "20261015_205332000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 1,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261016_015753000_iOS-t5",
+   "game": "20261016_015753000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 3,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261016_015753000_iOS-t5",
+   "game": "20261016_015753000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 3,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261016_015753000_iOS-t5",
+   "game": "20261016_015753000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 3,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261016_015753000_iOS-t5",
+   "game": "20261016_015753000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 3,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261016_015753000_iOS-t7",
+   "game": "20261016_015753000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 9,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261016_015753000_iOS-t7",
+   "game": "20261016_015753000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 9,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261016_015753000_iOS-t7",
+   "game": "20261016_015753000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 9,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261016_015753000_iOS-t7",
+   "game": "20261016_015753000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 10,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261016_015753000_iOS-t9",
+   "game": "20261016_015753000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 4,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261016_015753000_iOS-t9",
+   "game": "20261016_015753000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 4,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261016_015753000_iOS-t9",
+   "game": "20261016_015753000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 4,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": true,
+   "full_agrees": false
+  },
+  {
+   "position": "LAD-20261016_015753000_iOS-t9",
+   "game": "20261016_015753000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 2,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261016_020517000_iOS-t2",
+   "game": "20261016_020517000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 2,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261016_020517000_iOS-t2",
+   "game": "20261016_020517000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 2,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261016_020517000_iOS-t2",
+   "game": "20261016_020517000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 2,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261016_020517000_iOS-t2",
+   "game": "20261016_020517000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 1,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261016_024253000_iOS-t1",
+   "game": "20261016_024253000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 1,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261016_024253000_iOS-t1",
+   "game": "20261016_024253000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 2,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261016_024253000_iOS-t1",
+   "game": "20261016_024253000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 1,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261016_024253000_iOS-t1",
+   "game": "20261016_024253000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 1,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261016_030833000_iOS-t2",
+   "game": "20261016_030833000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 5,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261016_030833000_iOS-t2",
+   "game": "20261016_030833000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 3,
+   "accepted": [],
+   "agrees": false,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261016_030833000_iOS-t2",
+   "game": "20261016_030833000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 5,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261016_030833000_iOS-t2",
+   "game": "20261016_030833000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 5,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261016_031512000_iOS-t2",
+   "game": "20261016_031512000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 2,
+   "accepted": [
+    "key"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261016_031512000_iOS-t2",
+   "game": "20261016_031512000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 2,
+   "accepted": [
+    "key"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261016_031512000_iOS-t2",
+   "game": "20261016_031512000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 2,
+   "accepted": [
+    "key"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261016_031512000_iOS-t2",
+   "game": "20261016_031512000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 2,
+   "accepted": [
+    "key"
+   ],
+   "agrees": true,
+   "full_scope": false,
+   "full_agrees": null
+  },
+  {
+   "position": "LAD-20261016_031512000_iOS-t8",
+   "game": "20261016_031512000_iOS",
+   "bot": "km3",
+   "run": 25100000001,
+   "state": "ok",
+   "plan_number": 2,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261016_031512000_iOS-t8",
+   "game": "20261016_031512000_iOS",
+   "bot": "km3",
+   "run": 25100000002,
+   "state": "ok",
+   "plan_number": 2,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261016_031512000_iOS-t8",
+   "game": "20261016_031512000_iOS",
+   "bot": "km3",
+   "run": 25100000003,
+   "state": "ok",
+   "plan_number": 2,
+   "accepted": [
+    "recorded"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  },
+  {
+   "position": "LAD-20261016_031512000_iOS-t8",
+   "game": "20261016_031512000_iOS",
+   "bot": "judge",
+   "run": 0,
+   "state": "ok",
+   "plan_number": 3,
+   "accepted": [
+    "alt0"
+   ],
+   "agrees": true,
+   "full_scope": true,
+   "full_agrees": true
+  }
+ ],
+ "row_account": {
+  "what": "row accounting only (primary points; every repeat and seed is a row): not an agreement figure",
+  "per_bot_state_counts": {
+   "km3": {
+    "ok": 147
+   },
+   "judge": {
+    "ok": 49
+   }
+  }
+ },
+ "selection": {
+  "primary_ids": 49,
+  "full_scope_ids": 19,
+  "diagnostic_ids": [
+   "LAD-20261015_210617000_iOS-t2",
+   "LAD-20261015_210617000_iOS-t6"
+  ],
+  "references_in_file": 51,
+  "references_used": 51,
+  "references_ignored": 0
+ },
+ "analysis": {
+  "schema": "ai_judge_clustered_analysis_v2",
+  "status": "complete",
+  "method": {
+   "unit": "decision (point)",
+   "cluster": "game",
+   "bots": [
+    "km3",
+    "judge"
+   ],
+   "judge_repeats": 1,
+   "interval": "95% nominal percentile interval of a game-level bootstrap (whole games drawn with replacement); simulated coverage is about 89-94% at 10-17 games",
+   "resamples": 20000,
+   "seed": 20261019,
+   "estimator": "sum of per-decision values / number of decisions (every decision weighs the same)",
+   "primary": "judge: the one call per decision (repeat 0); step bots: mean over all predefined seeds",
+   "agreement": {
+    "prefix": "all primary points: the move list agrees with an accepted one up to the plan's own end (first chance event, attack or end of turn)",
+    "full_plan": "full-scope points only, complete turns only: the same listed plan as an accepted move list AND what follows a chance event equal label by label; a judge plan that stops at a chance event, and a step-bot turn pg_pos cut at a draw card, are not comparable"
+   },
+   "sign_flip": "exact test over games up to 16 games, seeded Monte Carlo (100000 draws) beyond; a direction needs p < 0.05 as well",
+   "failed_judge_rows": "miss: a judge row without a valid choice (an invalid label, a reply cut at the cap, a blocked prompt, any finish but STOP) scores 0 in the prefix and in the full-scope numbers, never \"not comparable\"; the count is in report.failed_judge_rows",
+   "min_games": 10,
+   "contrasts": [
+    "judge:km3"
+   ],
+   "multiplicity": "no adjustment for several contrasts (with the two default contrasts the chance of at least one false direction is about 5%)"
+  },
+  "prefix": {
+   "population": {
+    "n_games": 26,
+    "n_decisions": 49,
+    "decisions_per_game": {
+     "20261014_142546000_iOS": 2,
+     "20261014_143111000_iOS": 3,
+     "20261014_144627000_iOS": 1,
+     "20261014_145449000_iOS": 1,
+     "20261014_153908000_iOS": 2,
+     "20261014_160506000_iOS": 2,
+     "20261014_161324000_iOS": 2,
+     "20261014_164328000_iOS": 1,
+     "20261014_214436000_iOS": 3,
+     "20261014_215114000_iOS": 4,
+     "20261014_225451000_iOS": 1,
+     "20261014_230328000_iOS": 1,
+     "20261014_231006000_iOS": 2,
+     "20261014_233402000_iOS": 3,
+     "20261014_234728000_iOS": 3,
+     "20261015_015320000_iOS": 3,
+     "20261015_020931000_iOS": 1,
+     "20261015_021533000_iOS": 1,
+     "20261015_022206000_iOS": 1,
+     "20261015_201201000_iOS": 2,
+     "20261015_205332000_iOS": 2,
+     "20261016_015753000_iOS": 3,
+     "20261016_020517000_iOS": 1,
+     "20261016_024253000_iOS": 1,
+     "20261016_030833000_iOS": 1,
+     "20261016_031512000_iOS": 2
+    }
+   },
+   "rates": {
+    "km3": {
+     "estimate": 0.44898,
+     "ci_low": 0.276596,
+     "ci_high": 0.621212,
+     "n_decisions": 49,
+     "n_games": 26
+    },
+    "judge": {
+     "estimate": 0.612245,
+     "ci_low": 0.490909,
+     "ci_high": 0.725,
+     "n_decisions": 49,
+     "n_games": 26
+    }
+   },
+   "contrasts": [
+    {
+     "a": "judge",
+     "b": "km3",
+     "estimate": 0.163265,
+     "ci_low": -0.014184,
+     "ci_high": 0.346939,
+     "n_decisions": 49,
+     "n_games": 26,
+     "n_pairs_dropped": 0,
+     "sign_flip_p": 0.108869,
+     "sign_flip": "monte-carlo",
+     "verdict": "inconclusive",
+     "reason": "the interval includes 0"
+    }
+   ],
+   "sensitivity": null
+  },
+  "full_scope": {
+   "population": {
+    "n_games": 13,
+    "n_decisions": 19,
+    "decisions_per_game": {
+     "20261014_143111000_iOS": 1,
+     "20261014_160506000_iOS": 1,
+     "20261014_214436000_iOS": 1,
+     "20261014_215114000_iOS": 1,
+     "20261014_225451000_iOS": 1,
+     "20261014_231006000_iOS": 1,
+     "20261014_233402000_iOS": 3,
+     "20261015_015320000_iOS": 3,
+     "20261015_021533000_iOS": 1,
+     "20261015_201201000_iOS": 1,
+     "20261015_205332000_iOS": 2,
+     "20261016_015753000_iOS": 2,
+     "20261016_031512000_iOS": 1
+    }
+   },
+   "rates": {
+    "km3": {
+     "estimate": 0.421053,
+     "ci_low": 0.2,
+     "ci_high": 0.631579,
+     "n_decisions": 19,
+     "n_games": 13
+    },
+    "judge": {
+     "estimate": 0.6,
+     "ci_low": 0.357143,
+     "ci_high": 0.8125,
+     "n_decisions": 15,
+     "n_games": 11
+    }
+   },
+   "contrasts": [
+    {
+     "a": "judge",
+     "b": "km3",
+     "estimate": 0.2,
+     "ci_low": -0.125,
+     "ci_high": 0.473684,
+     "n_decisions": 15,
+     "n_games": 11,
+     "n_pairs_dropped": 4,
+     "sign_flip_p": 0.5,
+     "sign_flip": "exact",
+     "verdict": "inconclusive",
+     "reason": "the interval includes 0; computed on 15 of 19 decisions, 4 not comparable for both bots (dropped, not scored)",
+     "matched_rates": {
+      "judge": 0.6,
+      "km3": 0.4
+     },
+     "discordant": {
+      "both": 5,
+      "judge_only": 4,
+      "km3_only": 1,
+      "neither": 5
+     }
+    }
+   ],
+   "sensitivity": null,
+   "not_comparable": {
+    "km3": [],
+    "judge": [
+     "LAD-20261014_225451000_iOS-t4",
+     "LAD-20261014_231006000_iOS-t9",
+     "LAD-20261014_233402000_iOS-t5",
+     "LAD-20261016_015753000_iOS-t5"
+    ]
+   }
+  }
+ },
+ "formal": true,
+ "diagnostic_excluded": {
+  "what": "points outside the primary selection: descriptive counts only, no interval, no verdict, not part of any primary or full-scope number",
+  "points": [
+   {
+    "position": "LAD-20261015_210617000_iOS-t2",
+    "reason": "2026-10-19: developer exposure. Sonnet (the judge harness's developer) read one answer-key example from this game in a review message not addressed to it. Decided by the coordinator on Astra's recommendation. This game's points keep their labels and stay in the file, but are reported separately as diagnostic/sensitivity only, never in the primary result."
+   },
+   {
+    "position": "LAD-20261015_210617000_iOS-t6",
+    "reason": "2026-10-19: developer exposure. Sonnet (the judge harness's developer) read one answer-key example from this game in a review message not addressed to it. Decided by the coordinator on Astra's recommendation. This game's points keep their labels and stay in the file, but are reported separately as diagnostic/sensitivity only, never in the primary result."
+   }
+  ],
+  "per_bot": {
+   "km3": {
+    "decisions_resolved": 2,
+    "agreement_sum": 0.333333
+   },
+   "judge": {
+    "decisions_resolved": 2,
+    "agreement_sum": 0.0
+   }
+  },
+  "problems": [],
+  "shares_a_game_with_a_primary_point": [],
+  "n_expected_rows": 8,
+  "rows": [
+   {
+    "position": "LAD-20261015_210617000_iOS-t2",
+    "game": "20261015_210617000_iOS",
+    "bot": "km3",
+    "run": 25100000001,
+    "state": "ok",
+    "plan_number": 4,
+    "accepted": [],
+    "agrees": false,
+    "full_scope": false,
+    "full_agrees": null
+   },
+   {
+    "position": "LAD-20261015_210617000_iOS-t2",
+    "game": "20261015_210617000_iOS",
+    "bot": "km3",
+    "run": 25100000002,
+    "state": "ok",
+    "plan_number": 4,
+    "accepted": [],
+    "agrees": false,
+    "full_scope": false,
+    "full_agrees": null
+   },
+   {
+    "position": "LAD-20261015_210617000_iOS-t2",
+    "game": "20261015_210617000_iOS",
+    "bot": "km3",
+    "run": 25100000003,
+    "state": "ok",
+    "plan_number": 6,
+    "accepted": [
+     "recorded"
+    ],
+    "agrees": true,
+    "full_scope": false,
+    "full_agrees": null
+   },
+   {
+    "position": "LAD-20261015_210617000_iOS-t2",
+    "game": "20261015_210617000_iOS",
+    "bot": "judge",
+    "run": 0,
+    "state": "ok",
+    "plan_number": 4,
+    "accepted": [],
+    "agrees": false,
+    "full_scope": false,
+    "full_agrees": null
+   },
+   {
+    "position": "LAD-20261015_210617000_iOS-t6",
+    "game": "20261015_210617000_iOS",
+    "bot": "km3",
+    "run": 25100000001,
+    "state": "ok",
+    "plan_number": 15,
+    "accepted": [],
+    "agrees": false,
+    "full_scope": false,
+    "full_agrees": null
+   },
+   {
+    "position": "LAD-20261015_210617000_iOS-t6",
+    "game": "20261015_210617000_iOS",
+    "bot": "km3",
+    "run": 25100000002,
+    "state": "ok",
+    "plan_number": 15,
+    "accepted": [],
+    "agrees": false,
+    "full_scope": false,
+    "full_agrees": null
+   },
+   {
+    "position": "LAD-20261015_210617000_iOS-t6",
+    "game": "20261015_210617000_iOS",
+    "bot": "km3",
+    "run": 25100000003,
+    "state": "ok",
+    "plan_number": 15,
+    "accepted": [],
+    "agrees": false,
+    "full_scope": false,
+    "full_agrees": null
+   },
+   {
+    "position": "LAD-20261015_210617000_iOS-t6",
+    "game": "20261015_210617000_iOS",
+    "bot": "judge",
+    "run": 0,
+    "state": "ok",
+    "plan_number": 3,
+    "accepted": [],
+    "agrees": false,
+    "full_scope": false,
+    "full_agrees": null
+   }
+  ]
+ },
+ "failed_judge_rows": {
+  "policy": "miss",
+  "what": "such a row counts as a MISS (agreement 0) in the prefix and in the full-scope scoring, but only if it is otherwise a consistent row (settings, plan-list identity, prompt hash, a stop reason that agrees with the finish fields recorded beside it, a stored reply that really holds no valid choice: rows are not authenticated, this is what the row's own fields can show); the count and the rows are reported plainly (report.failed_judge_rows) and a WARNING is printed when more than 20% of the primary judge decisions failed. It can only lower the judge's rate and the prefix score; in the full-scope CONTRAST a miss pair is kept where an answered plan that stops at a chance event would have been dropped, so the contrast can move toward zero, and a game that exists only because of a miss does not count toward the min-games gate. A step-bot row without a plan, a missing row or any other problem still stops the compare",
+  "n_judge_rows_primary": 49,
+  "n_judge_decisions_primary": 49,
+  "n_primary": 0,
+  "n_primary_decisions": 0,
+  "n_diagnostic": 0,
+  "rows": []
+ },
+ "run": {
+  "formal": true,
+  "experiment_switches": [],
+  "freeze": {
+   "tag": "judge-prompt-frozen-7",
+   "fingerprint_now": "0cb2421552661b563bdb49fca31aca53f468d0853661908fbbf7730fcb5ba762",
+   "fingerprint_frozen": "0cb2421552661b563bdb49fca31aca53f468d0853661908fbbf7730fcb5ba762",
+   "judge_provider": "gemini-vertex",
+   "judge_settings": {
+    "provider": "gemini-vertex",
+    "model": "gemini-4-argon",
+    "location": "global",
+    "max_tokens": 32768,
+    "temperature": null,
+    "thinking_level": "HIGH"
+   }
+  },
+  "executables": {
+   "plans_binary_sha256": "bd4eeb6e4579f88c12b5a889178af2f34071a1bca9b1675552b4e47b418ea00b",
+   "baseline_sha256_required": "f35a1a99188806c7713cc40dd8fff65172c21a15d5449174f1cd3c1cfc40ad36"
+  },
+  "inputs": {
+   "positions_sha256": "17bea6e345667f765ea6d78fd427f091ed6671c4a5e0ef923ed80f30f6cb02c1",
+   "references_sha256": "12e0e997620f19b241597e2fac80f530e278daedb6af1aabc27953197cc809fd",
+   "eligibility_sha256": "6199ddeffd8ad084a726c0e6e356abb908112724068eb2985ce9cae2344daac2",
+   "results_sha256": {
+    "/home/dacz8976/exam_run2/live-20261021T2000Z/km3.jsonl": "3cc523d32f7290780881f79b5ec67d7945843c72af92bd0d0a8dab34a1f76fab",
+    "/home/dacz8976/exam_run2/live-20261021T2000Z/judge_primary.jsonl": "701d4bf46a17a97cb8f32c088a30069764cb4a4930e5241a3b9b6231e0009903",
+    "/home/dacz8976/exam_run2/live-20261021T2000Z/judge_primary_resend.jsonl": "abc537d114d94fcba01879ef983719823443266cf0f96adee1c69bfddc948823"
+   },
+   "decks_sha256": "ea2cae7fcaa1dc404ce7d625acc38be74ac5da6b6bd0cd859f23f503d89b2d0c",
+   "card_database": {
+    "path": "/home/dacz8976/exam_run2/live-20261021T2000Z/repo/lib/deckgym-database.json",
+    "sha256": "2f48cb72966c23ba3794f437aa94312e4eadcb2703c32893411ee27fc63b11d9"
+   }
+  },
+  "plan_list_sha256": {
+   "LAD-20261014_153908000_iOS-t4": "62dcca9c9fc5c26478a980879059a8a0a99fa73e27085e9e04385463ee9c9bb5",
+   "LAD-20261014_153908000_iOS-t6": "848206991d5845994c52b34b292184251e3f3a8bd2a665d5c87a440b2b6815dc",
+   "LAD-20261014_142546000_iOS-t7": "f1dfce5994c1d0d572c937744af11bbd1ca69aabac019b5d26acf8d727ba2498",
+   "LAD-20261014_143111000_iOS-t8": "f29ad459ab2a0f0a681d18c9a59bfd6cb481d1a2c94e0d5c8ec007263b4bb2ab",
+   "LAD-20261014_143111000_iOS-t10": "1dce4e5d0dcb9e0119f12fc2d42ca5d83f55adc05f6be6d1ba0fdd85a1b50c81",
+   "LAD-20261014_144627000_iOS-t2": "b536b91a24a0cd5f0392555704ec4ca2d0afb43825b86e4461322d77073f9dc5",
+   "LAD-20261014_145449000_iOS-t4": "ab9efbe3a09e15b4843512e24a8d91f2a4e02f6b2b7e9483c5072ee254e4010c",
+   "LAD-20261014_160506000_iOS-t6": "44b7b630a14a254741a1555cd14d92f2128d94e49bfe6189220fd2cf6a372ada",
+   "LAD-20261014_160506000_iOS-t10": "16cf814a68903d5e9d87ef18f3c93d0587b853475454865acaf60cafe3b7081e",
+   "LAD-20261014_161324000_iOS-t5": "371f870d6661c65fed7fe657de1a8631ac1bac62ba9c6a8e21b96b6cb8a5c2d7",
+   "LAD-20261014_161324000_iOS-t7": "94957da1e939cf8ae73ec2849ff2f9ab4f325008eb14633ed7f5e01f834979ae",
+   "LAD-20261014_164328000_iOS-t4": "74c84a6c1146b16217cf09c521a00493711f834cd87102991bf4a055e7f99e72",
+   "LAD-20261014_214436000_iOS-t6": "b9062e87f33f4644580cb389711e1cfd3c602ed5f5078af0ae8abece89e8f465",
+   "LAD-20261014_214436000_iOS-t10": "0f3f45018773b23c42d7954ee740290abca4a6d5b6e6380f098a3322f2b03b21",
+   "LAD-20261014_215114000_iOS-t6": "dc8f7d68eabd2ab60baccd5dc3fb12902503c86f5807b3f62865ad90cb0ed84c",
+   "LAD-20261014_215114000_iOS-t12": "d2e90015f4403d0afe02b0f7a09025333c689cf6190104879df8b9d42eec5a7f",
+   "LAD-20261014_225451000_iOS-t4": "a721dad6bf7b56c54d8ab8bb362af0a6ff14122855a94abda0a377803ca7aa44",
+   "LAD-20261014_230328000_iOS-t3": "7adc1fdcaac45dc0e43a9bbd8d623bbc1fb26bb4d1a9cd01544810f980f7bde3",
+   "LAD-20261014_233402000_iOS-t5": "25a93d26e10a7b70489ecbbfa0e0dafd47fa65792e7372a26c85416d85d8dc7b",
+   "LAD-20261014_233402000_iOS-t9": "b5cd127a98fb73d41a70fc1cad888efdb248aaf92f8de56cdfb9ffae42cd83d8",
+   "LAD-20261014_231006000_iOS-t3": "1eab73204f4100ff2b569fcb8c799e323dd2a8e0179ae57bd6e39859fd42608a",
+   "LAD-20261014_231006000_iOS-t9": "9291e35d161d1edc41ff991ec904e83cf35167bb7c26bd2053c6ec2a3e1f973c",
+   "LAD-20261014_234728000_iOS-t7": "f0a52b087a033af787edbf09119efa950d5d524c20617731653136dcc8f42e74",
+   "LAD-20261014_234728000_iOS-t9": "3b4ef7ccbe48268809c57fda055bea89bc17ad455fa896ab0857cbd4261d1b2a",
+   "LAD-20261015_015320000_iOS-t4": "2752115e9b0e308ebd9a66838b7942e024ed4793518227a07c1732ab12b0bc70",
+   "LAD-20261015_015320000_iOS-t8": "f4c5de6ca6671fed48e110746bca52cd286f1e3eed1a0ce659fde0d38aab7841",
+   "LAD-20261015_015320000_iOS-t10": "d022f4cd638d9595322d9ea5eb52f18ba22ac44c6f084ac875d5118d268449dc",
+   "LAD-20261015_020931000_iOS-t3": "137550da2df51f701553a18e8f545e97c296c3c74db4a5e961a9dd2954dedcbc",
+   "LAD-20261015_021533000_iOS-t5": "4b1c8be5b5f3594577a38a3ed9f2b143e2bc41a3cc84c336edcec75b9389c0af",
+   "LAD-20261015_022206000_iOS-t3": "63c5756e1783c51da1063345b5e6abf94a4aeaf7d74a807c97109fac095bf0eb",
+   "LAD-20261015_201201000_iOS-t3": "b9cf46b74aab118de37a86d2d35c6a1d972fb204cf5130a7bb4dfd007ec77dd3",
+   "LAD-20261015_201201000_iOS-t7": "72ce01c241465d6c3061929818efaa1d34e934246a77ab95c01c557bdd792e6a",
+   "LAD-20261015_205332000_iOS-t5": "f985c4b707f4b80ae19db05c1c4ada7cc74593c3049125d22fd9295724429193",
+   "LAD-20261015_205332000_iOS-t9": "bab17b06608c4c948aa33e5d0ce333e10bcf43dd49228aba557854a6bf3b2ef2",
+   "LAD-20261016_030833000_iOS-t2": "204edce432d3ac0cff77baab686a34b3721e9ecfec53cff8f18161a0cc11654e",
+   "LAD-20261016_031512000_iOS-t2": "61691b5454931d4cfbcf205e10375879dfa4c45d21a13ec5b7241f9bfbb6923e",
+   "LAD-20261016_031512000_iOS-t8": "d98e112b4f8923ab143effad41c20ac0363fcabc01ded10de029523648ba9ba9",
+   "LAD-20261016_015753000_iOS-t5": "5ec3717c35419c4b05739d3300347f89ae32a49f1cac5ac7ab22587b36b55a5e",
+   "LAD-20261016_015753000_iOS-t7": "3a9ebab2a0c4e2d98e08bc4b5c201e311341a8e1dcef300a5c008d21919b787a",
+   "LAD-20261016_015753000_iOS-t9": "ce8f307e32527b40d3af66081ef2ea00cfa4c74b461adbc4219a2000e5c592ad",
+   "LAD-20261016_020517000_iOS-t2": "8a7d98422f0b925fffb0f3a5eab85d30ccb2ab54618414e65f5120d3d1413e72",
+   "LAD-20261016_024253000_iOS-t1": "76f6ad98583d445ddfb83263c39d893b9868025005a085371802aed0cb9ee2ef",
+   "LAD-20261014_234728000_iOS-t5": "b470b2deb4e0993f245a4c6d2e757ab0f62eb4e110a70955512cf86ff76a6670",
+   "LAD-20261014_215114000_iOS-t10": "c0849d696e7206cde698d3e7eca91f39926781ea39590e53a588c262a3ff0271",
+   "LAD-20261014_142546000_iOS-t3": "b5ad28163a10a888cee8f316ac50da8333d3188689d379f5a7fc5fea6131d1f6",
+   "LAD-20261014_143111000_iOS-t6": "f36b6a033177a41862c591f9919fb6a65a6ee805d2f88e278d432b386a6e33fa",
+   "LAD-20261014_214436000_iOS-t4": "0cfa38b1e45915398f3ddafbcf150a496f176d32fb753d42bebe5be72c563ef7",
+   "LAD-20261014_215114000_iOS-t4": "24defaa80dfa588cafdc4ecb3ab7eddc31371337c46f5acc52dc1521d213287d",
+   "LAD-20261014_233402000_iOS-t7": "a91f278a1602a7db3cf403dec8c40d83a43a4593b3364e7665d823dc2cd89811",
+   "LAD-20261015_210617000_iOS-t2": "2b5b7685a39d653d339a94d16ef013287f15f642ba7d92592f5b62aa3350b64f",
+   "LAD-20261015_210617000_iOS-t6": "1ac04cb8120f9982eb48666afa43368a30a8dbd152e7b383193b685ffb25de24"
+  },
+  "generation": {
+   "world_seed": 1,
+   "limits": {
+    "max_plans": 2000,
+    "max_nodes": 200000,
+    "max_steps": 30
+   }
+  },
+  "request": {
+   "bots": "km3,judge",
+   "seeds": [
+    25100000001,
+    25100000002,
+    25100000003
+   ],
+   "judge_repeats": 1,
+   "contrasts": null,
+   "on_problem": "fail",
+   "min_games": 10,
+   "resamples": 20000,
+   "failed_judge_rows": "miss"
+  },
+  "plan_list_label_check": {
+   "what": "positions where some plans' own labels do not name them (fit several plans or cannot be followed): a bot or recorded move list using such a label is AMBIGUOUS, and the judge is shown plans that look identical",
+   "positions": {}
+  },
+  "judge_models_returned": [
+   "gemini-4-argon"
+  ],
+  "judge_vertex_projects": [
+   "project-45583ef0-ed57-426c-bde"
+  ],
+  "warnings": []
+ }
+}
