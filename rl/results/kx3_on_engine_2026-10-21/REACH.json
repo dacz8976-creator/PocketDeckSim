@@ -1,0 +1,372 @@
+{
+ "what": "Read-only reach check of main-4d48844s six changes over the 6 decks x 8 panel lists (workflow wf_4fc27e7e-462, Oct 21; three agents, one per change group, then a merge with spot checks).",
+ "result": {
+  "groups": [
+   {
+    "key": "C1-C4",
+    "r": {
+     "rows": [
+      {
+       "deck": "decks/dustin/10-xatu-oricorio-tr-weezing.txt",
+       "opponent": "decks/screen/opponents/t-lucario.txt",
+       "change": "C1",
+       "cards": "Opponent: Bonsly B3 078 (Teary Attack, -30 on the Defending Pokemon's next-turn attacks). Targets: Riolu B3 079, Mega Lucario ex B3 081, Lucario A2 092 and Hitmonlee A1 154, all weak to Psychic. Bot: Natu B1 097 (Psychic, Peck 10), plus Cyrus A2 150, Poison Barb A3 146 and Team Rocket's Weezing ex B4a 043 (Boiler Smog) for the routes.",
+       "how": "Bonsly's Teary Attack hits an Active Natu, and on its next turn Natu Pecks a Psychic-weak Active: 10 - 30 = 0, which used to be 0 + 20 Weakness = 20 and is now 0. Bonsly is the opponent's Active at that point and has no Weakness, so the weak target has to arrive by Cyrus on a damaged benched Riolu, Lucario, Mega Lucario ex or Hitmonlee, or by Bonsly being knocked out by Poison/Burn at the checkup and a weak Pokemon being promoted; this can happen in real play or in km3's search and kx3's play-outs (Oricorio's 50 - 30 = 20 + 20 is unchanged; Xatu's Life Drain does 0 and is unaffected).",
+       "confidence": "possible"
+      },
+      {
+       "deck": "decks/dustin/05-indeedee-stoutland.txt",
+       "opponent": "decks/screen/opponents/t-lucario.txt",
+       "change": "C1",
+       "cards": "Opponent: Bonsly B3 078 (Teary Attack -30). Targets: Riolu B3 079, Hitmonlee A1 154, Lucario A2 092 and Mega Lucario ex B3 081 (weak to Psychic). Bot: Indeedee ex B1 121 (Psychic type; its 'Psychic' attack does 30 + 30 per Energy on the opponent's Active) and Cyrus A2 150.",
+       "how": "After Bonsly's Teary Attack hits an Active Indeedee ex, its next attack into a Psychic-weak Active with no Energy is 30 - 30 = 0, which used to be 20 and is now 0. Since Bonsly stays Active and D05 has no Poison or Burn, the weak target must be a damaged, Energy-less benched Riolu, Hitmonlee or Lucario pulled in by Cyrus; this is reachable in play or in the bots' search and play-outs (the dev run's ref game 05|t-lucario|0|1 does play Cyrus then Psychic at turn 10, though the logs can't show whether the cut was on Indeedee).",
+       "confidence": "possible"
+      }
+     ],
+     "cannot_act": [
+      "C1, rows against t-lucario for decks 09, 06, 01 and draft A (4 rows): Bonsly's -30 can cut these decks' small attacks to 0. Examples: Helioptile 10, Electrike 10, Torchic 20, Castform 30, Glimmet 20, Glimmora 30, Pawniard 30, Alolan Grimer 20, Carvanha 30, Alolan Vulpix 20, and Heliolisk 40 + Backpack 20 + Training Area 10 at most 70 (not 0). But their types (Lightning, Fire, Darkness, Colorless, Water) hit no Weakness in t-lucario, whose Pokemon are weak only to Psychic, and Bonsly has none. No list holds a defender-side +X, so the old engine also gave 0 here.",
+      "C1, Bench hits in every t-lucario row (Heliolisk's Electrispark 10 to each Benched Pokemon, Heatmor's Tongue Whip 30): a Bench hit cut to 0 was already 0 on the old engine, because Weakness and vulnerability apply only Active-to-Active (get_weakness_application and get_increased_vulnerability_modifiers return nothing unless is_active_to_active). No change.",
+      "C1, the 42 rows against t-altaria, t-blaziken, t-hydreigon, t-sceptile, t-suicune, t-vespiquen and t-weezing: Bonsly B3 078 is the only attacker-side cut card in the 14 lists, and it is in t-lucario only. Neither text that maps to ReducedAttackDamage (-20 or -30) appears in any other list. No list holds an Intimidating Fang-type Ability (ReduceOpponentActiveDamage), so the persistent_defender_damage half of 501fc1dd (it reads only Fang) can't act anywhere either. No list holds any of the 4 IncreasedVulnerability (+X) texts. Frigibax P-B 037's Stiffen, Shuckle ex's Solid Shell, Heavy Helmet and Cheren are defender-side cuts and are not read by C1.",
+      "C1 through kx3's look-ahead in other rows: kx3's REALISTIC pool (playout_pool.rs at 87a7f340) holds only the same 8 t-* lists (the research duplicates are removed). A list is drawn only if its Energy types include what the opponent's Energy Zone shows, which is public from the first decision, so t-lucario (the only Fighting list) is never drawn against a non-Fighting opponent. The dev config has KX_EXTRA_LISTS unset. km3 gets the real opponent list, and the players/ code never calls modify_damage outside tests. So Bonsly can't enter any other row's search.",
+      "C4 (#390), all 48 rows: 75343578 changes only enumerate_random_damage_outcomes, whose only callers are Mega Ampharos ex's Lightning Lancer, RandomSpreadDamage and RandomDamageToOpponentPokemonPerSelfEnergy. None of the 10 engine texts mapped to those mechanics (27 printings in database.json) is in the 14 lists or the kx3 pool, and no list has a 'chosen at random' damage text. Shuckle ex's Triple Slap (3 coins, 20 per heads) is a coin-flip multi-hit on a different path, untouched. The other 'random' cards (Poke Ball, Clemont, Mesagoza, Fragrant Forest, Quick-Grow Extract, Quick Growth, the Psychic Supporter) are not damage. This fits the Oct 12 identical replay: the old HashMap order wasn't reproducible, so a random multi-hit in play or in a play-out would likely have shown up."
+     ],
+     "method": "Read-only throughout: no games, no cargo, no writes to git.\n\n1. Read the diffs at 4d488449 for 501fc1dd (hooks/core.rs) and 75343578 (apply_attack_action.rs), plus PLAN.md with its Oct 20 addendum, RESULT.md and RELEASE_NOTES.md (from the pin commit 93806ec3).\n\n2. Read the final modify_damage and persistent_defender_damage. C1 returns 0 when base > 0 and base + attacker boosts - Intimidating Fang - carried ReducedAttackDamage reaches 0. The old code then added Weakness (+20 only Active-to-Active, x2 of 0 is 0) and defender-side IncreasedVulnerability. So C1 changes damage only when an Active-to-Active attack is cut to 0 by an attacker-side effect and either Weakness applies or a +X is present. Bench hits were already 0.\n\n3. Pulled from effect_mechanic_map.rs and effect_ability_mechanic_map.rs every text that maps to ReducedAttackDamage, IncreasedVulnerability, ReduceOpponentActiveDamage and the three random-damage mechanics. These are the only callers of enumerate_random_damage_outcomes, found by grep.\n\n4. Scanned all 14 lists against engine/database.json with a script (scratchpad reachx/scan.py and dump_cards.py) for those exact texts, plus a keyword scan. database.json is the same at c045ede and 4d488449.\n\n5. Did the type and Weakness pairing by hand from the card dump: t-lucario's Pokemon are weak to Psychic and Bonsly has no Weakness. The bot-side Psychic attackers that can be cut to 0 are Natu (10) and Indeedee ex (30 with no Energy on the target).\n\n6. Checked where the bots look. players/ calls modify_damage only in tests, so the bots see C1 only through engine play in km3's search and kx3's play-outs. kx3's REALISTIC pool (87a7f340) is the same 8 lists, filtered by Energy-zone type. The dev config has KX_EXTRA_LISTS unset. The replay sample (kx3_on_rules2 SPEC) is deals 0-1 of each pair, 4 games per arm per row, plus deck 10 v t-weezing.\n\n7. Read the dev-run logs for D10 and D05 v t-lucario, deals 0-1. Natu never attacks in D10's 8 games. Indeedee ex attacks often, and one ref game plays Cyrus then Psychic. The logs record no opponent moves, so whether the cut fired is unknown.\n\nConfidence: both C1 rows are 'possible'. The cards and situation are legal and can reach the bots' search, but each needs a chain (Teary Attack on that Pokemon, then a Psychic-weak Active via Cyrus or a checkup KO). Assumption: tonight's replay uses the dev config's decks and pool unchanged, with KX_EXTRA_LISTS unset."
+    }
+   },
+   {
+    "key": "C2-C3",
+    "r": {
+     "rows": [],
+     "cannot_act": [
+      "C2 (hit back as attack damage, a1d3a714 + 4d488449) acts in none of the 48 rows. Why: the new code in handle_attack_retaliation / attack_hit_back_damage only does something different when attack_counterattack_damage(target) > 0. That requires a CardEffect::Counterattack on the damaged Pokémon. In the engine at 4d488449, the only things that create it are four attack texts in effect_mechanic_map.rs (\"During your opponent's next turn, if this Pokémon is damaged by an attack, do 20/30/40/80 damage to the Attacking Pokémon\"); every other construction is in a test. database.json and database.rs (unchanged between c045ede and 4d488449) have 8 such printings: Mega Sableye ex Cursed Jewel, Alolan Sandslash Spike Armor, Togedemaru Bristling Spikes, Chesnaught Needle Lariat, Turtonator Shell Trap. None of them is in any of the 14 lists, or in the research/* duplicates that kx3's playout pool also holds. None of the 14 lists has an attack copier either (Mew ex Genome Hacking, Ditto, Mimikyu Try to Imitate, Clefairy Mini-Metronome are absent). So there is no holder on either seat, and none in any world kx3 samples. The receiving-side cards in the lists stay out of play because there is no holder: Rocky Helmet A2 148 (deck 06, t-blaziken), Poison Barb A3 146 (deck 10), Heavy Helmet B1 219 (deck 01; Muk, Kingambit and Regigigas have Retreat 3 or more), Protective Poncho B2 147 (deck 05, t-lucario), Shuckle ex A4 021 Solid Shell (t-vespiquen). For a Tool's flat return damage, I checked the code line by line: when the attack part is 0, the new code applies the same flat damage and the same Poison as the old one, and no answer. That covers deck 06 v t-blaziken, where both sides hold Rocky Helmet: the Helmet's 20 answers nothing in either engine. players/ is unchanged, so the bots price nothing new.",
+      "C3 (upstream #385, 9c51453b) acts in none of the 48 rows. Why: the change is one early return at the top of on_bench_from_hand (turn_count == 0 or actor != current_player). That function's only bodies are the arms for AbilityMechanic::LegendaryDrive, AncientRoar and HealActiveTypedOnBenchFromHand; every other card falls through to a no-op in both engines. Those mechanics are keyed by exact Ability text, one map.insert each in effect_ability_mechanic_map.rs. In the database only Miraidon ex / Koraidon ex (Legendary Drive), Roaring Moon (Ancient Roar) and Poltchageist B4 017 (Hospitality) carry those texts. Misdreavus's Infiltrating Inspection is handled in apply_place_card before the guard and is not in any list. None of these cards is in any of the 14 lists, or in kx3's pool. Team Rocket's Boss B4a 071 is in t-suicune, and setup placements happen in every game, so the situations the guard targets do arise. But no Basic in the six bot decks has one of those Abilities, so the old and new code do the same thing (nothing). The guard has no other effect."
+     ],
+     "method": "Read-only. I read the whole engine/src diff from c045ede0 to 4d488449 (saved under the scratchpad's reachx folder), plus the commits a1d3a714 (C2) and 9c51453b (C3), PLAN.md with its Oct 20 addendum, RESULT.md, classify.py and the earlier reach_scan report (release/tools/reach_report.txt).\n\nC2: I compared the old and new handle_attack_retaliation line by line. When attack_counterattack_damage == 0 they behave the same: same flat damage, same Poison, no Disguise, no answer, and the new retreat function is not called. I then found every source of CardEffect::Counterattack in engine/src at 4d488449: four attack texts in effect_mechanic_map.rs. The only other construction outside tests is in players/public_reply.rs, through the same map.\n\nC3: I read on_bench_from_hand at 4d488449. The guard can only change something for the three mechanics it matches. I found their ability texts in effect_ability_mechanic_map.rs, one each.\n\nThen I ran scan.py (in the scratchpad's reachx folder) over all 14 lists by set id, using engine/database.json and the engine's database.rs. database.json, database.rs and card_ids.rs have no diff between c045ede and 4d488449. The scan looked for hit-back attack texts, on-bench-from-hand Ability texts, attack copiers and trainers that bench onto the opponent. Only Team Rocket's Boss turned up, in t-suicune.\n\nThe bots' look-ahead: players/ is unchanged. km3 searches the real state. kx3 samples the opponent's hidden cards from playout_pool.rs POOL, which holds only the 8 t-lists and their research/* copies with the same cards (verified on origin/laptop/kx3-on-engine-candidate-2026-10-20, 87a7f340). So no position any bot considers can hold a holder or an on-bench Ability card.\n\nOne assumption: KX_EXTRA_LISTS stays unset tonight, as in the dev run's config.json. If it is set, those extra lists need the same scan. My result agrees with the earlier reach_report, which also found no holder in these 14 lists."
+    }
+   },
+   {
+    "key": "C5-C6",
+    "r": {
+     "rows": [],
+     "cannot_act": [
+      "C5 (#401 Fossil, 42d2dd8e) cannot act in any of the 48 rows (6 bot decks x 8 opponents). The diff only touches generate_ability_actions in move_generation_abilities.rs. Before the change, a Fossil in play pushed a second DiscardFossil there. After it, Fossils are skipped and generate_discard_fossil_actions in move_generation/mod.rs:238 still offers one. Non-Fossil cards take exactly the same branch as before (UseAbility when can_use_ability). So the change acts only when a card with trainer_card_type Fossil is in play. database.json has 14 such printings: Helix Fossil A1 216, Dome Fossil A1 217, Old Amber A1 218 / A1a 063 / A4b 312 / A4b 313, Skull Fossil A2 144, Armor Fossil A2 145, Plume Fossil B1 214, Cover Fossil B1 216, Jaw Fossil B2 144, Sail Fossil B2 146, Claw Fossil B4 146 and Root Fossil B4 147. None of them is in any of the 14 lists. I checked every id, and all 14 files still match the sha256 recorded in the dev run's manifest.json. None of the look-ahead paths can bring a Fossil in either. km3's search fills the opponent's hidden cards with Card::Unknown or with the opponent's actual list (observation.rs:56-57, 166-229). kx3's REALISTIC play-outs sample from playout_pool.rs POOL, which is 16 embedded lists. They reduce to the 8 t-* lists, because each research/X twin has the same card multiset and Energy as t-X. I checked the copy in pincand_work/K, which is byte-identical to /home/dacz8976/kx/src, and none of those lists holds a Fossil. KX_EXTRA_LISTS was unset in the dev run (config.json), and no engine_candidate or release driver script sets it.",
+      "C6 (#344, 764f7459) cannot act in any of the 48 rows. The new check reads energy_types in Deck::is_valid; is_selectable rejects Dragon and Colorless. Deck::is_valid is called only from optimize, cli_preflight, card_test and temp_deck_generator, never by the km3/kx3 search. get_color in game.rs now names the panic, where it used to hit todo!(). Every one of the 14 lists declares exactly one selectable type. Bot decks: 09 Lightning, 06 Fire, 10 Psychic, 01 Darkness, 05 Psychic, draft-A Water. Opponents: t-altaria Psychic, t-blaziken Fire, t-hydreigon Darkness, t-lucario Fighting, t-sceptile Grass, t-suicune Water, t-vespiquen Grass, t-weezing Darkness. So all 14 lists stay valid on the new engine, and the Pokemon-type fallback, which applies only when the Energy line is missing, never applies. Note that 01 (Regigigas), 05 (Lillipup/Stoutland) and t-altaria (Swablu/Eevee/Igglybuff) would derive Colorless if their Energy line were deleted. In kx3 play-outs, Game::play_tick calls get_color, and the opponent's energy_types there is set from the sampled pool list (observation.rs:230). Those are the same 8 Energy lines, all selectable. A km3 search template clears the opponent's Energy (observation.rs:60) but never reaches get_color or is_valid. Nothing adds Energy types to a deck at run time. Also, a Dragon or Colorless type at energy_types[0] would already have hit todo!() on the old engine, and the Oct 12 replay ran clean."
+     ],
+     "method": "Read only; nothing was written in the repo. I read the diffs 42d2dd8e and 764f7459, and checked that git diff c045ede..4d488449 -- engine/src has no other Fossil, energy_types or is_valid change. I also confirmed that the tonight build tree /home/dacz8976/pincand_work/K carries both changes. I parsed all 14 lists against engine/database.json with scratchpad script C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\reachx\\c5c6.py, flagging trainer_card_type == Fossil by id and listing every Energy line. All 14 files match the sha256 values in rl/results/strength_2026-10-03_kx3_dev/manifest.json. I traced the look-ahead card sources: km3 uses observation.rs (Unknown cards, or the actual opponent list); kx3 uses the playout_pool.rs POOL, which I checked with C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\reachx\\pool.py (16 lists reducing to the 8 t-* lists, no Fossil, all Energy selectable). classify.py exists. I did not run its main(), because that writes games/classify.tsv. Instead I imported it and ran its reach() on each of the 14 lists. It tags no 'fossil' and no 'energy' on any of them, which agrees with my reading. The only tag it raises is 'growl' on t-lucario (Bonsly B3 078, in its CUT set), which belongs to the C1 group. Two gaps in classify.py, neither of which matters for these 14 lists: (1) its 'fossil' tag matches 'fossil' in the card name, so it misses Old Amber (A1 218, A1a 063, A4b 312, A4b 313), which is a Fossil-type trainer; (2) its 'energy' tag reads only the Energy line, so it misses a deck with no Energy line that derives Colorless or Dragon from its Pokemon. RESULT.md names two such research files."
+    }
+   }
+  ],
+  "merged": {
+   "table": [
+    {
+     "deck": "09-mega-manectric-heliolisk",
+     "opponent": "t-altaria",
+     "changes": [],
+     "note": "none: neither list has a cut card, a hit-back holder, an on-bench Ability, a random multi-hit attack or a Fossil, and both Energy lines are valid. kx3's play-outs draw only Psychic lists here."
+    },
+    {
+     "deck": "09-mega-manectric-heliolisk",
+     "opponent": "t-blaziken",
+     "changes": [],
+     "note": "none (t-blaziken's Rocky Helmet does flat damage, which is unchanged when there is no hit back)"
+    },
+    {
+     "deck": "09-mega-manectric-heliolisk",
+     "opponent": "t-hydreigon",
+     "changes": [],
+     "note": "none"
+    },
+    {
+     "deck": "09-mega-manectric-heliolisk",
+     "opponent": "t-lucario",
+     "changes": [],
+     "note": "none: Bonsly's -30 can cut Helioptile/Electrike 10, or Electrispark's Bench 10 (+20 Backpack), to 0. But Lightning hits no Weakness in t-lucario (its Pokemon are weak only to Psychic), and there is no +X, so the old engine also gave 0. Bench hits get no Weakness."
+    },
+    {
+     "deck": "09-mega-manectric-heliolisk",
+     "opponent": "t-sceptile",
+     "changes": [],
+     "note": "none"
+    },
+    {
+     "deck": "09-mega-manectric-heliolisk",
+     "opponent": "t-suicune",
+     "changes": [],
+     "note": "none: Team Rocket's Boss benches deck 09's Basics, but none has an on-bench Ability, so the #385 guard has nothing to block"
+    },
+    {
+     "deck": "09-mega-manectric-heliolisk",
+     "opponent": "t-vespiquen",
+     "changes": [],
+     "note": "none (Shuckle ex's Solid Shell would only matter against a hit back, and there is no hit-back holder; Triple Slap is a coin attack, not on the #390 path)"
+    },
+    {
+     "deck": "09-mega-manectric-heliolisk",
+     "opponent": "t-weezing",
+     "changes": [],
+     "note": "none"
+    },
+    {
+     "deck": "06-mega-blaziken-tournament-list",
+     "opponent": "t-altaria",
+     "changes": [],
+     "note": "none"
+    },
+    {
+     "deck": "06-mega-blaziken-tournament-list",
+     "opponent": "t-blaziken",
+     "changes": [],
+     "note": "none: both sides hold Rocky Helmet. With no attack hit back (attack_part 0) the new handle_attack_retaliation does the same flat 20 and same Poison, with no answer."
+    },
+    {
+     "deck": "06-mega-blaziken-tournament-list",
+     "opponent": "t-hydreigon",
+     "changes": [],
+     "note": "none"
+    },
+    {
+     "deck": "06-mega-blaziken-tournament-list",
+     "opponent": "t-lucario",
+     "changes": [],
+     "note": "none: Torchic 20 / Castform 30 cut to 0, and Heatmor's Bench 30 cut to 0, were 0 on the old engine too (Fire hits no Weakness here, and there is no +X)"
+    },
+    {
+     "deck": "06-mega-blaziken-tournament-list",
+     "opponent": "t-sceptile",
+     "changes": [],
+     "note": "none"
+    },
+    {
+     "deck": "06-mega-blaziken-tournament-list",
+     "opponent": "t-suicune",
+     "changes": [],
+     "note": "none (Team Rocket's Boss: no on-bench Ability in deck 06)"
+    },
+    {
+     "deck": "06-mega-blaziken-tournament-list",
+     "opponent": "t-vespiquen",
+     "changes": [],
+     "note": "none"
+    },
+    {
+     "deck": "06-mega-blaziken-tournament-list",
+     "opponent": "t-weezing",
+     "changes": [],
+     "note": "none"
+    },
+    {
+     "deck": "10-xatu-oricorio-tr-weezing",
+     "opponent": "t-altaria",
+     "changes": [],
+     "note": "none"
+    },
+    {
+     "deck": "10-xatu-oricorio-tr-weezing",
+     "opponent": "t-blaziken",
+     "changes": [],
+     "note": "none (Poison Barb answers only a hit back, and there is no holder)"
+    },
+    {
+     "deck": "10-xatu-oricorio-tr-weezing",
+     "opponent": "t-hydreigon",
+     "changes": [],
+     "note": "none"
+    },
+    {
+     "deck": "10-xatu-oricorio-tr-weezing",
+     "opponent": "t-lucario",
+     "changes": [
+      "C1"
+     ],
+     "note": "POSSIBLE. Bonsly's Teary Attack (-30) hits an Active Natu. On the bot's next turn Natu's Peck (10) into a Psychic-weak Active (Riolu, Lucario, Mega Lucario ex, Hitmonlee) did 0+20 = 20 on the old engine and does 0 now. The weak target has to be brought in by Cyrus on a damaged benched Pokemon, or appear after Bonsly is knocked out at the checkup (Poison Barb's Poison). Oricorio (50-30 = 20, +20) and Xatu (0 base) are unchanged. The rule is also in reach of km3's search and of kx3's km3-v-km3 play-outs, since the pool draws t-lucario/research-lucario here."
+    },
+    {
+     "deck": "10-xatu-oricorio-tr-weezing",
+     "opponent": "t-sceptile",
+     "changes": [],
+     "note": "none"
+    },
+    {
+     "deck": "10-xatu-oricorio-tr-weezing",
+     "opponent": "t-suicune",
+     "changes": [],
+     "note": "none (Team Rocket's Boss: no on-bench Ability in deck 10)"
+    },
+    {
+     "deck": "10-xatu-oricorio-tr-weezing",
+     "opponent": "t-vespiquen",
+     "changes": [],
+     "note": "none"
+    },
+    {
+     "deck": "10-xatu-oricorio-tr-weezing",
+     "opponent": "t-weezing",
+     "changes": [],
+     "note": "none (this is the extra 5-deal Will row; Boiler Smog is an on-evolve Ability and Nightmare Aura/Deceptive Needle are non-attack damage, all unchanged)"
+    },
+    {
+     "deck": "01-muk-glimmora-kingambit-regigigas",
+     "opponent": "t-altaria",
+     "changes": [],
+     "note": "none (Heavy Helmet's new use applies only to a hit back)"
+    },
+    {
+     "deck": "01-muk-glimmora-kingambit-regigigas",
+     "opponent": "t-blaziken",
+     "changes": [],
+     "note": "none"
+    },
+    {
+     "deck": "01-muk-glimmora-kingambit-regigigas",
+     "opponent": "t-hydreigon",
+     "changes": [],
+     "note": "none"
+    },
+    {
+     "deck": "01-muk-glimmora-kingambit-regigigas",
+     "opponent": "t-lucario",
+     "changes": [],
+     "note": "none: Glimmet/Alolan Grimer 20 and Glimmora/Pawniard 30 cut to 0 were 0 on the old engine too (Darkness and Colorless hit no Weakness here, and there is no +X)"
+    },
+    {
+     "deck": "01-muk-glimmora-kingambit-regigigas",
+     "opponent": "t-sceptile",
+     "changes": [],
+     "note": "none"
+    },
+    {
+     "deck": "01-muk-glimmora-kingambit-regigigas",
+     "opponent": "t-suicune",
+     "changes": [],
+     "note": "none (Team Rocket's Boss: no on-bench Ability in deck 01)"
+    },
+    {
+     "deck": "01-muk-glimmora-kingambit-regigigas",
+     "opponent": "t-vespiquen",
+     "changes": [],
+     "note": "none"
+    },
+    {
+     "deck": "01-muk-glimmora-kingambit-regigigas",
+     "opponent": "t-weezing",
+     "changes": [],
+     "note": "none"
+    },
+    {
+     "deck": "05-indeedee-stoutland",
+     "opponent": "t-altaria",
+     "changes": [],
+     "note": "none"
+    },
+    {
+     "deck": "05-indeedee-stoutland",
+     "opponent": "t-blaziken",
+     "changes": [],
+     "note": "none"
+    },
+    {
+     "deck": "05-indeedee-stoutland",
+     "opponent": "t-hydreigon",
+     "changes": [],
+     "note": "none"
+    },
+    {
+     "deck": "05-indeedee-stoutland",
+     "opponent": "t-lucario",
+     "changes": [
+      "C1"
+     ],
+     "note": "POSSIBLE. After Teary Attack (-30) on an Active Indeedee ex, its Psychic attack (30 + 30 per Energy on the target) into a Psychic-weak Active with no Energy did 0+20 = 20 on the old engine and does 0 now. Bonsly stays Active and deck 05 has no Poison or Burn, so the only route is Cyrus on a damaged, Energy-less benched Riolu, Lucario, Hitmonlee or Mega Lucario ex. The rule is in reach of km3's search and of kx3's play-outs (the pool draws t-lucario here). Cheren and Protective Poncho are defender-side and unaffected."
+    },
+    {
+     "deck": "05-indeedee-stoutland",
+     "opponent": "t-sceptile",
+     "changes": [],
+     "note": "none"
+    },
+    {
+     "deck": "05-indeedee-stoutland",
+     "opponent": "t-suicune",
+     "changes": [],
+     "note": "none (Team Rocket's Boss: Indeedee ex and Lillipup have no on-bench Ability)"
+    },
+    {
+     "deck": "05-indeedee-stoutland",
+     "opponent": "t-vespiquen",
+     "changes": [],
+     "note": "none"
+    },
+    {
+     "deck": "05-indeedee-stoutland",
+     "opponent": "t-weezing",
+     "changes": [],
+     "note": "none"
+    },
+    {
+     "deck": "draft-A-shark-tempo",
+     "opponent": "t-altaria",
+     "changes": [],
+     "note": "none"
+    },
+    {
+     "deck": "draft-A-shark-tempo",
+     "opponent": "t-blaziken",
+     "changes": [],
+     "note": "none"
+    },
+    {
+     "deck": "draft-A-shark-tempo",
+     "opponent": "t-hydreigon",
+     "changes": [],
+     "note": "none"
+    },
+    {
+     "deck": "draft-A-shark-tempo",
+     "opponent": "t-lucario",
+     "changes": [],
+     "note": "none: Alolan Vulpix 20 and Carvanha 30 cut to 0 were 0 on the old engine too (Water hits no Weakness here, and there is no +X)"
+    },
+    {
+     "deck": "draft-A-shark-tempo",
+     "opponent": "t-sceptile",
+     "changes": [],
+     "note": "none"
+    },
+    {
+     "deck": "draft-A-shark-tempo",
+     "opponent": "t-suicune",
+     "changes": [],
+     "note": "none (Team Rocket's Boss: no on-bench Ability in draft A)"
+    },
+    {
+     "deck": "draft-A-shark-tempo",
+     "opponent": "t-vespiquen",
+     "changes": [],
+     "note": "none"
+    },
+    {
+     "deck": "draft-A-shark-tempo",
+     "opponent": "t-weezing",
+     "changes": [],
+     "note": "none"
+    }
+   ],
+   "spot_checks": [
+    "C2 (the highest-stakes code change), from the diff c045ede..4d488449. In handle_attack_retaliation, when attack_counterattack_damage(target) == 0: hit_back = 0, flat_part = get_counterattack_damage (the old counter_damage), and Poison is the same. Disguise and the receiver's answer both require hit_back > 0. So Rocky Helmet (deck 06, t-blaziken), Poison Barb (deck 10), Heavy Helmet (deck 01), Protective Poncho and Solid Shell behave exactly as before. CardEffect::Counterattack comes only from the four 'During your opponent's next turn, if this Pokemon is damaged by an attack, do 20/30/40/80 damage to the Attacking Pokemon' texts in effect_mechanic_map.rs (lines 526-547 and 2537). No card in the 14 lists has that text: I dumped every attack and Ability with reachx/dump_cards.py. That covers the bot deck as holder too. get_current_retreat_cost_at (retreat.rs) is used only by attack_hit_back_damage.",
+    "C1 (Bonsly), from modify_damage read fresh at 4d488449 (core.rs 1938-2219). The new early return fires only when base > 0 and base + attacker boosts - Fang - carried ReducedAttackDamage reaches 0. Before, that case went on to Flat(20) Weakness (active-to-active only, get_weakness_application line 1483) plus IncreasedVulnerability (also active-to-active only, line 1189), minus the defender's cuts. ReducedAttackDamage is built only from the two 'attacks used by the Defending Pokemon do -20/-30 damage' texts (map lines 498-511). Bonsly B3 078's Teary Attack matches the -30 text exactly, and it is in t-lucario only. The single Intimidating Fang text (ability map line 33) and the four +X texts are in none of the 14 lists. t-lucario's Riolu, Mega Lucario ex, Lucario and Hitmonlee are weak to Psychic, and Bonsly has no Weakness. The bot attackers that can be cut to exactly 0 and are Psychic: Natu Peck 10 (deck 10) and Indeedee ex Psychic 30 at 0 Energy (deck 05). Oricorio 50 stays 40 and Xatu has 0 base. The other four decks have no Psychic attacker, and no bot deck holds a cut card.",
+    "Bots' reach. engine/src/players is unchanged c045ede..4d488449. The kx3 overlay (playout_player.rs, playout_pool.rs, players/mod.rs) is byte-identical between the Oct 12 build (origin/laptop/kx3-on-rules2 cd20a97a) and tonight's (87a7f340 = 4d488449 + overlay; git diff 4d488449 87a7f340 touches only those files and tests). players/ calls modify_damage only in tests. persistent_defender_damage (kd clock) changed only for Fang, which is in no list. public_reply.rs:564 calls handle_attack_retaliation, which is unchanged without a holder. kx3 REALISTIC sample_list (playout_player.rs) prefers lists consistent with the Energy Zone. The true opponent list (or its research twin) always scores (0,0), so t-lucario (Fighting) is never drawn against a non-Fighting opponent. The dev config.json records KX_EXTRA_LISTS unset.",
+    "C3, C5, C6 and C4 re-read. on_bench_from_hand at 4d488449 (core.rs 323-385) acts only for LegendaryDrive, AncientRoar and HealActiveTypedOnBenchFromHand, and none of the Basics in the 14 lists has those Abilities. generate_ability_actions is identical for non-Fossils, and no list holds a Fossil. Deck::is_valid and get_color change only for Dragon or Colorless; the Energy lines are Lightning, Fire, Psychic, Darkness, Psychic, Water and Psychic, Fire, Darkness, Fighting, Grass, Water, Grass, Darkness. enumerate_random_damage_outcomes is called from 3 sites only: Lightning Lancer, RandomDamageToOpponentPokemonPerSelfEnergy and RandomSpreadDamage. The 'random' texts in the lists (Poke Ball, Clemont, Mesagoza, Quick-Grow Extract, Fragrant Forest, Quick Growth, the Psychic Supporter) are not damage. The only HashMap->BTreeMap change in apply_attack_action.rs is in that function.",
+    "Build provenance. I compared blob hashes with reachx/ktree_cmp.py and ktree_which.py. /home/dacz8976/kx_r3_build/tree (the r3 kx3 build; self-check digest 31d638dbc818b0fa) matches 87a7f340 in every changed engine file and the overlay. /home/dacz8976/pincand_work/F matches 4d488449. RESULT.md also bears on this. In the candidate pass, the one cell where Bonsly's cut met a weak target (g-mega_altaria_greninja v t-hydreigon) changed 7 of 500 games per bot. Floor pages for decks 06 and 10, including their t-lucario rows, replayed the same, though only summary fields were compared."
+   ],
+   "gaps": [
+    "/home/dacz8976/pincand_work/K, which the C5-C6 agent called 'the tonight build tree', is NOT the 4d488449 build. Its hooks/core.rs matches c1670e81 (the Oct 20 candidate, before C2 a1d3a714 and the 4d488449 follow-up), plus the kx3 overlay. In these 48 rows C2 can't act, so games would come out the same either way, but tonight's run should use the 87a7f340 build (/home/dacz8976/kx_r3_build) or another build of 87a7f340, not strength_target_K, or the record will name the wrong engine.",
+    "The dev run's logs hold no opponent moves and no look-ahead. So I can't tell from them whether Teary Attack ever hit Natu or Indeedee ex, or whether the cut attack ever met a weak Active. If a t-lucario row differs tonight, the cause can be attributed the way U was: replay that row on 4d488449 with only 501fc1dd reverted, or with a trace.",
+    "The kx3 arm of the two t-lucario rows is more exposed than the km3 arm. Each kx3 decision plays every candidate move out to the end of the game several times, km3 v km3, with t-lucario/research-lucario (both hold Bonsly) drawn for the opponent. So the rule can enter many more positions than the games themselves reach. Earlier evidence never measured kx3 on t-lucario rows: RESULT.md says only kx3's self-check digest (t-altaria v t-suicune) was run.",
+    "The odds that a row actually changes are estimated, not measured. The sample is deals 0-1 x 2 seats = 4 games per arm per row (D10 v t-weezing has 5 deals). The chains need Cyrus on a damaged benched Psychic-weak Pokemon, or a checkup knockout of Bonsly. The closest measured case, the Bonsly cell in the candidate pass, changed about 1.4% of games, and that cell had more frequent weak-target attacks than these rows.",
+    "This assumes tonight's replay uses the dev run's decks (the C5-C6 agent matched the sha256 in manifest.json) and KX_EXTRA_LISTS unset, as config.json records. If extra lists are added, they need the same scan.",
+    "For hooks/core.rs I read the full functions fresh from git show 4d488449, but read the attack_hit_back_damage hunk from the prior agent's saved reachx/full.diff, which matches the diff stat's hunks. The other files' diffs I read directly from git."
+   ],
+   "summary": "I agree with the three agents after checking their claims myself. Of the six changes, only C1 (Growl-to-0) can act in tonight's 48 rows, and only in two of them: 10-xatu-oricorio-tr-weezing v t-lucario (Natu's Peck 10 cut to 0 by Bonsly's Teary Attack) and 05-indeedee-stoutland v t-lucario (Indeedee ex's Psychic, 30 at 0 Energy, cut to 0). In both, an attack into a Psychic-weak Riolu, Lucario, Mega Lucario ex or Hitmonlee did 20 (Weakness) on the old engine and does 0 now. Both rows are 'possible', not expected. Each needs a chain: Teary Attack on that Pokemon, then a weak Active brought in by Cyrus on a damaged benched Pokemon, or by a checkup knockout of Bonsly. km3's search and kx3's play-outs can also reach these positions, and the kx3 arm is the more exposed because each decision plays full km3-v-km3 games against t-lucario-type lists.\n\nNo change can act anywhere else:\n- C1 against t-lucario for decks 09, 06, 01 and draft A: their cut-to-0 attacks hit no Weakness (t-lucario is weak only to Psychic) and there is no +X, so the old engine also gave 0.\n- C2: there is no hit-back holder on either side, the bot decks included, and the code is identical without one.\n- C3: Team Rocket's Boss is in t-suicune, but no Basic in the bot decks has an on-bench Ability.\n- C4: no random multi-hit attack in any list.\n- C5: no Fossil in any list.\n- C6: every Energy line is valid.\n- kx3's pool draws t-lucario only against a Fighting opponent, so Bonsly can't enter other rows' look-ahead.\n\nRows that may change, per deck: 09: 0 of 8; 06: 0 of 8; 10: 1 of 8 (t-lucario); 01: 0 of 8; 05: 1 of 8 (t-lucario); draft A: 0 of 8. That is 2 of 48 in all. The most likely number of rows that actually change tonight is 0: each row has only 4 games per arm, and the closest measured case changed about 1.4% of games. A difference in any of the other 46 rows would point to a cause outside the six changes: the build, the inputs, the thread count or the config.\n\nOne provenance problem: /home/dacz8976/pincand_work/K is the Oct 20 candidate tree (c1670e81, without C2). The correct kx3 build is 87a7f340, in /home/dacz8976/kx_r3_build. My check scripts are in C:\\Users\\dacz8\\AppData\\Local\\Temp\\claude\\C--Users-dacz8-Projects\\1b119d13-736d-4588-ba63-0e9ef1756970\\scratchpad\\reachx\\ (ktree_cmp.py, ktree_which.py, core_4d.rs)."
+  }
+ }
+}
