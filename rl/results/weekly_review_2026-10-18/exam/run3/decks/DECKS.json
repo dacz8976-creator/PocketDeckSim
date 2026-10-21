@@ -1,0 +1,1318 @@
+{
+ "what": "exam v2's deck files from the filmed deck codes (make_v2_decks.py); per card, the printing the repo's decks use most, else the first released, among the frozen database's",
+ "decks_ref": "origin/main",
+ "frozen_db_sha256": "b5e68fc82f1ae5633aab4ceed6a7fbdc5658649a2eb3a5434fbc068698baee27",
+ "decks": {
+  "v2deck_06ee642b71": {
+   "file": "v2deck_06ee642b71.txt",
+   "payload": "C5iWnpiWnpibgJicypiccJiccJiWqJiWqJiXwJiaXpia/gkAGv4AOSYAD0YAUKAAS74AVC4AVDgAHfYAHgABBw==",
+   "payload_sha256": "06ee642b71c45e69c6f986a3878f31e0fc059934b29cfe331b9ea6212253ec85",
+   "file_sha256": "526d77c3b5082b38bfafecc30c3a68a5965d389578397dd107897e6b20dc1873",
+   "energy": "Energy: Darkness",
+   "n_cards": 20,
+   "encodes_back": true,
+   "games": [
+    {
+     "packet": "139UGwqm5pFq0SJpIFBb5fLCdnInPEh5N_ScreenRecording_10-19-2026_19-08-57_1.mp4",
+     "batch": "DRIVE_INBOX_2026-10-20",
+     "qr_file": "QR_ID.json",
+     "schema": "battle-qr-id/v1",
+     "filename": "ScreenRecording_10-19-2026 19-08-57_1.mp4",
+     "weak": {}
+    },
+    {
+     "packet": "16GP7iAkOS8TAsLby4-O-S_3z1U8pTG30_ScreenRecording_10-19-2026_19-17-14_1.mp4",
+     "batch": "DRIVE_INBOX_2026-10-20",
+     "qr_file": "QR_ID.json",
+     "schema": "battle-qr-id/v1",
+     "filename": "ScreenRecording_10-19-2026 19-17-14_1.mp4",
+     "weak": {}
+    },
+    {
+     "packet": "1EAyUw1rnpojOJmM4k90kpVonVLl8Fy2x_ScreenRecording_10-19-2026_19-02-38_1.mp4",
+     "batch": "DRIVE_INBOX_2026-10-20",
+     "qr_file": "QR_ID.json",
+     "schema": "battle-qr-id/v1",
+     "filename": "ScreenRecording_10-19-2026 19-02-38_1.mp4",
+     "weak": {}
+    },
+    {
+     "packet": "1Exgek174hMSLhdhYK2V4RadpgOuuHACM_ScreenRecording_10-19-2026_17-22-11_1.mp4",
+     "batch": "DRIVE_INBOX_2026-10-20",
+     "qr_file": "QR_ID.json",
+     "schema": "battle-deck-qr/v1",
+     "filename": null,
+     "weak": {}
+    },
+    {
+     "packet": "1mlXhSGkZTiXMqfvBEm9dFOmJ5jeAk2gn_ScreenRecording_10-19-2026_17-18-40_1.mp4",
+     "batch": "DRIVE_INBOX_2026-10-20",
+     "qr_file": "QR_ID.json",
+     "schema": "battle-qr-id/v1",
+     "filename": "ScreenRecording_10-19-2026 17-18-40_1.mp4",
+     "weak": {}
+    },
+    {
+     "packet": "1uGpF3pYZhLwyNdKl243uXogTvdrY03LY_ScreenRecording_10-19-2026_17-34-00_1.mp4",
+     "batch": "DRIVE_INBOX_2026-10-20",
+     "qr_file": "QR_ID.json",
+     "schema": "battle-qr/v1",
+     "filename": "ScreenRecording_10-19-2026 17-34-00_1.mp4",
+     "weak": {}
+    },
+    {
+     "packet": "1uNWGxGmFyoz_qX3SqpmR3Cy9bVs7l9ae_ScreenRecording_10-19-2026_17-42-22_1.mp4",
+     "batch": "DRIVE_INBOX_2026-10-20",
+     "qr_file": "QR_ID.json",
+     "schema": "battle-qr/v1",
+     "filename": "ScreenRecording_10-19-2026 17-42-22_1.mp4",
+     "weak": {}
+    },
+    {
+     "packet": "1yAT6NI7Ttly0PyIt5cvnOwW9P3zlVfwy_ScreenRecording_10-19-2026_17-39-18_1.mp4",
+     "batch": "DRIVE_INBOX_2026-10-20",
+     "qr_file": "QR_ID.json",
+     "schema": "battle-qr/v1",
+     "filename": "ScreenRecording_10-19-2026 17-39-18_1.mp4",
+     "weak": {}
+    }
+   ],
+   "printing_choices": {
+    "pokemon:003910": {
+     "picked": "A2 110",
+     "printings": [
+      "P-A 042",
+      "A2 110",
+      "A2 187",
+      "A2 202",
+      "A4b 245",
+      "A4b 378"
+     ],
+     "repo_uses": 5,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:006910": {
+     "picked": "A3 110",
+     "printings": [
+      "A3 110",
+      "A4b 233",
+      "A4b 234"
+     ],
+     "repo_uses": 1,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:007670": {
+     "picked": "A3a 030",
+     "printings": [
+      "A3a 030"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "pokemon:007680": {
+     "picked": "A3a 031",
+     "printings": [
+      "A3a 031"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "pokemon:014630": {
+     "picked": "B2 097",
+     "printings": [
+      "B2 097",
+      "B2 173"
+     ],
+     "repo_uses": 2,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:019390": {
+     "picked": "B3b 041",
+     "printings": [
+      "B3b 041",
+      "B3b 081",
+      "B3b 088"
+     ],
+     "repo_uses": 3,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:020640": {
+     "picked": "B4 103",
+     "printings": [
+      "B4 103",
+      "B4 186",
+      "B4 199"
+     ],
+     "repo_uses": 12,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:021550": {
+     "picked": "B4a 042",
+     "printings": [
+      "B4a 042"
+     ],
+     "repo_uses": 10,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:021560": {
+     "picked": "B4a 043",
+     "printings": [
+      "B4a 043",
+      "B4a 083",
+      "B4a 092"
+     ],
+     "repo_uses": 10,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000030": {
+     "picked": "P-A 005",
+     "printings": [
+      "P-A 005",
+      "A2b 111"
+     ],
+     "repo_uses": 112,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000040": {
+     "picked": "P-A 007",
+     "printings": [
+      "P-A 007",
+      "A4b 373"
+     ],
+     "repo_uses": 120,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000320": {
+     "picked": "A2 150",
+     "printings": [
+      "A2 150",
+      "A2 190",
+      "A4b 326",
+      "A4b 327"
+     ],
+     "repo_uses": 47,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000990": {
+     "picked": "B1 225",
+     "printings": [
+      "B1 225",
+      "B1 270"
+     ],
+     "repo_uses": 79,
+     "why": "used most in the repo decks"
+    },
+    "trainer:001150": {
+     "picked": "B2 154",
+     "printings": [
+      "B2 154"
+     ],
+     "repo_uses": 8,
+     "why": "used most in the repo decks"
+    },
+    "trainer:001280": {
+     "picked": "B3 147",
+     "printings": [
+      "B3 147"
+     ],
+     "repo_uses": 22,
+     "why": "used most in the repo decks"
+    },
+    "trainer:001520": {
+     "picked": "B4 148",
+     "printings": [
+      "B4 148"
+     ],
+     "repo_uses": 15,
+     "why": "used most in the repo decks"
+    },
+    "trainer:001610": {
+     "picked": "B4a 068",
+     "printings": [
+      "B4a 068",
+      "B4a 110"
+     ],
+     "repo_uses": 7,
+     "why": "used most in the repo decks"
+    }
+   },
+   "weak": false
+  },
+  "v2deck_b1999cc10f": {
+   "file": "v2deck_b1999cc10f.txt",
+   "payload": "DZiWnpiWnpiapJiapJibgJiccJiccJiWqJiWqJiXwJiYLpiaXpia/gcAGv4AOSYAD0YAUKAAS74AHfYAHgABBw==",
+   "payload_sha256": "b1999cc10fb643cf4b2d592bb0b59500caef512011ca954465f4ffcef34e94a7",
+   "file_sha256": "3d8890cc6d3db050e7e8752a6c85233ac07de44e4ee3c6b20d3b8bc484a4c92b",
+   "energy": "Energy: Darkness",
+   "n_cards": 20,
+   "encodes_back": true,
+   "games": [
+    {
+     "packet": "1A8JUR6VDaJ405exSK2XH9tDto9LlgS0E_ScreenRecording_10-19-2026_17-12-18_1.mp4",
+     "batch": "DRIVE_INBOX_2026-10-20",
+     "qr_file": "QR_DECODE.json",
+     "schema": "source-qr-decode/v1",
+     "filename": null,
+     "weak": {}
+    }
+   ],
+   "printing_choices": {
+    "pokemon:003910": {
+     "picked": "A2 110",
+     "printings": [
+      "P-A 042",
+      "A2 110",
+      "A2 187",
+      "A2 202",
+      "A4b 245",
+      "A4b 378"
+     ],
+     "repo_uses": 5,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:006910": {
+     "picked": "A3 110",
+     "printings": [
+      "A3 110",
+      "A4b 233",
+      "A4b 234"
+     ],
+     "repo_uses": 1,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:007670": {
+     "picked": "A3a 030",
+     "printings": [
+      "A3a 030"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "pokemon:007680": {
+     "picked": "A3a 031",
+     "printings": [
+      "A3a 031"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "pokemon:014630": {
+     "picked": "B2 097",
+     "printings": [
+      "B2 097",
+      "B2 173"
+     ],
+     "repo_uses": 2,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:019390": {
+     "picked": "B3b 041",
+     "printings": [
+      "B3b 041",
+      "B3b 081",
+      "B3b 088"
+     ],
+     "repo_uses": 3,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:020640": {
+     "picked": "B4 103",
+     "printings": [
+      "B4 103",
+      "B4 186",
+      "B4 199"
+     ],
+     "repo_uses": 12,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000030": {
+     "picked": "P-A 005",
+     "printings": [
+      "P-A 005",
+      "A2b 111"
+     ],
+     "repo_uses": 112,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000040": {
+     "picked": "P-A 007",
+     "printings": [
+      "P-A 007",
+      "A4b 373"
+     ],
+     "repo_uses": 120,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000320": {
+     "picked": "A2 150",
+     "printings": [
+      "A2 150",
+      "A2 190",
+      "A4b 326",
+      "A4b 327"
+     ],
+     "repo_uses": 47,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000430": {
+     "picked": "A2b 070",
+     "printings": [
+      "A2b 070",
+      "A2b 089"
+     ],
+     "repo_uses": 20,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000990": {
+     "picked": "B1 225",
+     "printings": [
+      "B1 225",
+      "B1 270"
+     ],
+     "repo_uses": 79,
+     "why": "used most in the repo decks"
+    },
+    "trainer:001060": {
+     "picked": "B2 145",
+     "printings": [
+      "B2 145"
+     ],
+     "repo_uses": 24,
+     "why": "used most in the repo decks"
+    },
+    "trainer:001150": {
+     "picked": "B2 154",
+     "printings": [
+      "B2 154"
+     ],
+     "repo_uses": 8,
+     "why": "used most in the repo decks"
+    },
+    "trainer:001280": {
+     "picked": "B3 147",
+     "printings": [
+      "B3 147"
+     ],
+     "repo_uses": 22,
+     "why": "used most in the repo decks"
+    },
+    "trainer:001520": {
+     "picked": "B4 148",
+     "printings": [
+      "B4 148"
+     ],
+     "repo_uses": 15,
+     "why": "used most in the repo decks"
+    }
+   },
+   "weak": false
+  },
+  "v2deck_5469f7747f": {
+   "file": "v2deck_5469f7747f.txt",
+   "payload": "CpiWnpiWnpiYYJiYYJiYdJiYdJiccJiWqJiWqJiaXgoAGv4AORwAGwgAOSYATKQATKQATMwATMwAHfYAHgABBw==",
+   "payload_sha256": "5469f7747f5b7c2a71b1025d3486fe68aab794eac80c39ae343df3b3d7e46d0c",
+   "file_sha256": "2ef709aba5599899e93df8f7c4f185af97deef1571b5b40576b3b66c769134ec",
+   "energy": "Energy: Darkness",
+   "n_cards": 20,
+   "encodes_back": true,
+   "games": [
+    {
+     "packet": "1H7LcerefMGNv215KJNv0yU8NbBUlpxFe_ScreenRecording_10-19-2026_22-47-56_1.mp4",
+     "batch": "DRIVE_INBOX_2026-10-20",
+     "qr_file": "QR_ID.json",
+     "schema": "battle-qr-id/v1",
+     "filename": "ScreenRecording_10-19-2026 22-47-56_1.mp4",
+     "weak": {}
+    },
+    {
+     "packet": "1Ieg-HdBYwn9xxIv0UBCoSans8fMEOey0_ScreenRecording_10-19-2026_22-45-01_1.mp4",
+     "batch": "DRIVE_INBOX_2026-10-20",
+     "qr_file": "QR_ID.json",
+     "schema": "battle-qr-id/v1",
+     "filename": "ScreenRecording_10-19-2026 22-45-01_1.mp4",
+     "weak": {}
+    }
+   ],
+   "printing_choices": {
+    "pokemon:006910": {
+     "picked": "A3 110",
+     "printings": [
+      "A3 110",
+      "A4b 233",
+      "A4b 234"
+     ],
+     "repo_uses": 1,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:006920": {
+     "picked": "A3 111",
+     "printings": [
+      "A3 111",
+      "A3 188",
+      "A3 206",
+      "A4b 235"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "pokemon:007670": {
+     "picked": "A3a 030",
+     "printings": [
+      "A3a 030"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "pokemon:007680": {
+     "picked": "A3a 031",
+     "printings": [
+      "A3a 031"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "pokemon:014620": {
+     "picked": "B2 096",
+     "printings": [
+      "B2 096"
+     ],
+     "repo_uses": 1,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:014630": {
+     "picked": "B2 097",
+     "printings": [
+      "B2 097",
+      "B2 173"
+     ],
+     "repo_uses": 2,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:019620": {
+     "picked": "B4 001",
+     "printings": [
+      "B4 001",
+      "B4 156"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "pokemon:019660": {
+     "picked": "B4 005",
+     "printings": [
+      "B4 005"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "trainer:000030": {
+     "picked": "P-A 005",
+     "printings": [
+      "P-A 005",
+      "A2b 111"
+     ],
+     "repo_uses": 112,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000040": {
+     "picked": "P-A 007",
+     "printings": [
+      "P-A 007",
+      "A4b 373"
+     ],
+     "repo_uses": 120,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000480": {
+     "picked": "A3 144",
+     "printings": [
+      "A3 144",
+      "A4b 314",
+      "A4b 315",
+      "A4b 379"
+     ],
+     "repo_uses": 34,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000500": {
+     "picked": "A3 146",
+     "printings": [
+      "A3 146"
+     ],
+     "repo_uses": 3,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000990": {
+     "picked": "B1 225",
+     "printings": [
+      "B1 225",
+      "B1 270"
+     ],
+     "repo_uses": 79,
+     "why": "used most in the repo decks"
+    },
+    "trainer:001520": {
+     "picked": "B4 148",
+     "printings": [
+      "B4 148"
+     ],
+     "repo_uses": 15,
+     "why": "used most in the repo decks"
+    }
+   },
+   "weak": false
+  },
+  "v2deck_d94ace1e28": {
+   "file": "v2deck_d94ace1e28.txt",
+   "payload": "CJiWnpiWnpiYdJiYdJiccJiWqJiWqJiaXgwAGv4AORwAGwgAOSYAVBoAVBoAVCQAVCQAVC4AVDgAHfYAHgABBw==",
+   "payload_sha256": "d94ace1e28dc9206eb5670db893db8f82d0237a30eb8f4a92bb84b09036b539a",
+   "file_sha256": "647b989f8c0ee513256b1a669509254d3e0eab8d480def9cb454500d58e90c93",
+   "energy": "Energy: Darkness",
+   "n_cards": 20,
+   "encodes_back": true,
+   "games": [
+    {
+     "packet": "1KkZzRVXNNRg2v0rV0mB40sjV2zuO6aWa_ScreenRecording_10-19-2026_22-11-28_1.mp4",
+     "batch": "DRIVE_INBOX_2026-10-20",
+     "qr_file": "QR_ID.json",
+     "schema": "battle-qr-id/v1",
+     "filename": "ScreenRecording_10-19-2026 22-11-28_1.mp4",
+     "weak": {}
+    }
+   ],
+   "printing_choices": {
+    "pokemon:006910": {
+     "picked": "A3 110",
+     "printings": [
+      "A3 110",
+      "A4b 233",
+      "A4b 234"
+     ],
+     "repo_uses": 1,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:006920": {
+     "picked": "A3 111",
+     "printings": [
+      "A3 111",
+      "A3 188",
+      "A3 206",
+      "A4b 235"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "pokemon:007670": {
+     "picked": "A3a 030",
+     "printings": [
+      "A3a 030"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "pokemon:007680": {
+     "picked": "A3a 031",
+     "printings": [
+      "A3a 031"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "pokemon:014620": {
+     "picked": "B2 096",
+     "printings": [
+      "B2 096"
+     ],
+     "repo_uses": 1,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:014630": {
+     "picked": "B2 097",
+     "printings": [
+      "B2 097",
+      "B2 173"
+     ],
+     "repo_uses": 2,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:021530": {
+     "picked": "B4a 040",
+     "printings": [
+      "B4a 040"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "pokemon:021540": {
+     "picked": "B4a 041",
+     "printings": [
+      "B4a 041"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "pokemon:021550": {
+     "picked": "B4a 042",
+     "printings": [
+      "B4a 042"
+     ],
+     "repo_uses": 10,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:021560": {
+     "picked": "B4a 043",
+     "printings": [
+      "B4a 043",
+      "B4a 083",
+      "B4a 092"
+     ],
+     "repo_uses": 10,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000030": {
+     "picked": "P-A 005",
+     "printings": [
+      "P-A 005",
+      "A2b 111"
+     ],
+     "repo_uses": 112,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000040": {
+     "picked": "P-A 007",
+     "printings": [
+      "P-A 007",
+      "A4b 373"
+     ],
+     "repo_uses": 120,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000500": {
+     "picked": "A3 146",
+     "printings": [
+      "A3 146"
+     ],
+     "repo_uses": 3,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000990": {
+     "picked": "B1 225",
+     "printings": [
+      "B1 225",
+      "B1 270"
+     ],
+     "repo_uses": 79,
+     "why": "used most in the repo decks"
+    },
+    "trainer:001520": {
+     "picked": "B4 148",
+     "printings": [
+      "B4 148"
+     ],
+     "repo_uses": 15,
+     "why": "used most in the repo decks"
+    }
+   },
+   "weak": false
+  },
+  "v2deck_9633a01781": {
+   "file": "v2deck_9633a01781.txt",
+   "payload": "C5iWnpiWnpiYYJiYYJiapJiapJiaIpiWqJiWqJiXwJiaXgkAUSIAUSIAUSwAUSwAUTYAMS4AMS4ATBgATBgDAwQI",
+   "payload_sha256": "9633a017812706986e97f5b925f4ad83de2176f45419206557e9116dad62da2f",
+   "file_sha256": "40af176f1cc32097940aecc3e1a54a89f7fec3565b83065ee97e2ad16b65ad5b",
+   "energy": "Energy: Water, Lightning, Metal",
+   "n_cards": 20,
+   "encodes_back": true,
+   "games": [
+    {
+     "packet": "1V3NVp-yULRz7x2tS7YBn3-78JwGHXVLD_ScreenRecording_10-19-2026_22-54-43_1.mp4",
+     "batch": "DRIVE_INBOX_2026-10-20",
+     "qr_file": "QR_ID.json",
+     "schema": "battle-qr-id/v1",
+     "filename": "ScreenRecording_10-19-2026 22-54-43_1.mp4",
+     "weak": {}
+    },
+    {
+     "packet": "1yxM3fp5gIPHQEpJjIGbLlteuskpFjogk_ScreenRecording_10-19-2026_23-02-17_1.mp4",
+     "batch": "DRIVE_INBOX_2026-10-20",
+     "qr_file": "QR_ID.json",
+     "schema": "battle-qr-id/v1",
+     "filename": "ScreenRecording_10-19-2026 23-02-17_1.mp4",
+     "weak": {}
+    }
+   ],
+   "printing_choices": {
+    "pokemon:012590": {
+     "picked": "B1 177",
+     "printings": [
+      "B1 177",
+      "B1 247"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "pokemon:019480": {
+     "picked": "B3b 050",
+     "printings": [
+      "B3b 050"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "pokemon:020770": {
+     "picked": "B4 116",
+     "printings": [
+      "B4 116"
+     ],
+     "repo_uses": 2,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:020780": {
+     "picked": "B4 117",
+     "printings": [
+      "B4 117",
+      "B4 175",
+      "B4 233"
+     ],
+     "repo_uses": 4,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:020790": {
+     "picked": "B4 118",
+     "printings": [
+      "B4 118"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "trainer:000030": {
+     "picked": "P-A 005",
+     "printings": [
+      "P-A 005",
+      "A2b 111"
+     ],
+     "repo_uses": 112,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000040": {
+     "picked": "P-A 007",
+     "printings": [
+      "P-A 007",
+      "A4b 373"
+     ],
+     "repo_uses": 120,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000320": {
+     "picked": "A2 150",
+     "printings": [
+      "A2 150",
+      "A2 190",
+      "A4b 326",
+      "A4b 327"
+     ],
+     "repo_uses": 47,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000480": {
+     "picked": "A3 144",
+     "printings": [
+      "A3 144",
+      "A4b 314",
+      "A4b 315",
+      "A4b 379"
+     ],
+     "repo_uses": 34,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000930": {
+     "picked": "B1 219",
+     "printings": [
+      "B1 219"
+     ],
+     "repo_uses": 4,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000990": {
+     "picked": "B1 225",
+     "printings": [
+      "B1 225",
+      "B1 270"
+     ],
+     "repo_uses": 79,
+     "why": "used most in the repo decks"
+    },
+    "trainer:001060": {
+     "picked": "B2 145",
+     "printings": [
+      "B2 145"
+     ],
+     "repo_uses": 24,
+     "why": "used most in the repo decks"
+    }
+   },
+   "weak": false
+  },
+  "v2deck_0a80817331": {
+   "file": "v2deck_0a80817331.txt",
+   "payload": "CJiWnpiWnpiYdJiYdJiccJiWqJiWqJiaXgwAGv4AORwAGwgAOSYATKQATKQATMIATMIATMwATMwAHfYAHgABBw==",
+   "payload_sha256": "0a808173315f6306012409ab4a4a081eb628afe7cd8716dfc4d5d2623180644d",
+   "file_sha256": "4d18369118256199162d23b6ec97cd7cc4ec6ddb45727b83eeaa1ac0cb804434",
+   "energy": "Energy: Darkness",
+   "n_cards": 20,
+   "encodes_back": true,
+   "games": [
+    {
+     "packet": "1XH-pnOI64D12ud4tS8Rrbcu5XRxUtyIg_ScreenRecording_10-19-2026_22-41-23_1.mp4",
+     "batch": "DRIVE_INBOX_2026-10-20",
+     "qr_file": "QR_ID.json",
+     "schema": "battle-qr-id/v1",
+     "filename": "ScreenRecording_10-19-2026 22-41-23_1.mp4",
+     "weak": {}
+    }
+   ],
+   "printing_choices": {
+    "pokemon:006910": {
+     "picked": "A3 110",
+     "printings": [
+      "A3 110",
+      "A4b 233",
+      "A4b 234"
+     ],
+     "repo_uses": 1,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:006920": {
+     "picked": "A3 111",
+     "printings": [
+      "A3 111",
+      "A3 188",
+      "A3 206",
+      "A4b 235"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "pokemon:007670": {
+     "picked": "A3a 030",
+     "printings": [
+      "A3a 030"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "pokemon:007680": {
+     "picked": "A3a 031",
+     "printings": [
+      "A3a 031"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "pokemon:014620": {
+     "picked": "B2 096",
+     "printings": [
+      "B2 096"
+     ],
+     "repo_uses": 1,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:014630": {
+     "picked": "B2 097",
+     "printings": [
+      "B2 097",
+      "B2 173"
+     ],
+     "repo_uses": 2,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:019620": {
+     "picked": "B4 001",
+     "printings": [
+      "B4 001",
+      "B4 156"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "pokemon:019650": {
+     "picked": "B4 004",
+     "printings": [
+      "B4 004"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "pokemon:019660": {
+     "picked": "B4 005",
+     "printings": [
+      "B4 005"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "trainer:000030": {
+     "picked": "P-A 005",
+     "printings": [
+      "P-A 005",
+      "A2b 111"
+     ],
+     "repo_uses": 112,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000040": {
+     "picked": "P-A 007",
+     "printings": [
+      "P-A 007",
+      "A4b 373"
+     ],
+     "repo_uses": 120,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000500": {
+     "picked": "A3 146",
+     "printings": [
+      "A3 146"
+     ],
+     "repo_uses": 3,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000990": {
+     "picked": "B1 225",
+     "printings": [
+      "B1 225",
+      "B1 270"
+     ],
+     "repo_uses": 79,
+     "why": "used most in the repo decks"
+    },
+    "trainer:001520": {
+     "picked": "B4 148",
+     "printings": [
+      "B4 148"
+     ],
+     "repo_uses": 15,
+     "why": "used most in the repo decks"
+    }
+   },
+   "weak": false
+  },
+  "v2deck_d5e2757125": {
+   "file": "v2deck_d5e2757125.txt",
+   "payload": "CJiWnpiWnpiYdJiYdJiccJiWqJiWqJiaXgwAGv4AORwAGwgAOSYASJ4ASJ4ASKgASKgAVC4AVDgAHfYAHgABBw==",
+   "payload_sha256": "d5e2757125b85bba36cbdd064240af5cbb8c80c405da2d7c7da57a787ccca231",
+   "file_sha256": "926bc764d284f2d6a77147966e8c074458b9e75c7ecee7536c89aa79b2846e07",
+   "energy": "Energy: Darkness",
+   "n_cards": 20,
+   "encodes_back": true,
+   "games": [
+    {
+     "packet": "1adYJh8g7wtlX4JpLDgXNP4nO8j_4_UhV_ScreenRecording_10-19-2026_22-24-24_1.mp4",
+     "batch": "DRIVE_INBOX_2026-10-20",
+     "qr_file": "QR_ID.json",
+     "schema": "battle-qr-id/v1",
+     "filename": "ScreenRecording_10-19-2026 22-24-24_1.mp4",
+     "weak": {}
+    },
+    {
+     "packet": "1gOVXXGlQaPQAkVNNtSOqgdMRha00RFBr_ScreenRecording_10-19-2026_22-31-56_1.mp4",
+     "batch": "DRIVE_INBOX_2026-10-20",
+     "qr_file": "QR_ID.json",
+     "schema": "battle-qr-id/v1",
+     "filename": "ScreenRecording_10-19-2026 22-31-56_1.mp4",
+     "weak": {}
+    }
+   ],
+   "printing_choices": {
+    "pokemon:006910": {
+     "picked": "A3 110",
+     "printings": [
+      "A3 110",
+      "A4b 233",
+      "A4b 234"
+     ],
+     "repo_uses": 1,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:006920": {
+     "picked": "A3 111",
+     "printings": [
+      "A3 111",
+      "A3 188",
+      "A3 206",
+      "A4b 235"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "pokemon:007670": {
+     "picked": "A3a 030",
+     "printings": [
+      "A3a 030"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "pokemon:007680": {
+     "picked": "A3a 031",
+     "printings": [
+      "A3a 031"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "pokemon:014620": {
+     "picked": "B2 096",
+     "printings": [
+      "B2 096"
+     ],
+     "repo_uses": 1,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:014630": {
+     "picked": "B2 097",
+     "printings": [
+      "B2 097",
+      "B2 173"
+     ],
+     "repo_uses": 2,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:018590": {
+     "picked": "B3a 044",
+     "printings": [
+      "B3a 044"
+     ],
+     "repo_uses": 4,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:018600": {
+     "picked": "B3a 045",
+     "printings": [
+      "B3a 045",
+      "B3a 078"
+     ],
+     "repo_uses": 4,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:021550": {
+     "picked": "B4a 042",
+     "printings": [
+      "B4a 042"
+     ],
+     "repo_uses": 10,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:021560": {
+     "picked": "B4a 043",
+     "printings": [
+      "B4a 043",
+      "B4a 083",
+      "B4a 092"
+     ],
+     "repo_uses": 10,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000030": {
+     "picked": "P-A 005",
+     "printings": [
+      "P-A 005",
+      "A2b 111"
+     ],
+     "repo_uses": 112,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000040": {
+     "picked": "P-A 007",
+     "printings": [
+      "P-A 007",
+      "A4b 373"
+     ],
+     "repo_uses": 120,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000500": {
+     "picked": "A3 146",
+     "printings": [
+      "A3 146"
+     ],
+     "repo_uses": 3,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000990": {
+     "picked": "B1 225",
+     "printings": [
+      "B1 225",
+      "B1 270"
+     ],
+     "repo_uses": 79,
+     "why": "used most in the repo decks"
+    },
+    "trainer:001520": {
+     "picked": "B4 148",
+     "printings": [
+      "B4 148"
+     ],
+     "repo_uses": 15,
+     "why": "used most in the repo decks"
+    }
+   },
+   "weak": false
+  },
+  "v2deck_438090ee3c": {
+   "file": "v2deck_438090ee3c.txt",
+   "payload": "CJiWnpiWnpiYdJiYdJiccJiWqJiWqJiaXgwAGv4AORwAGwgAOSYANLIAUCgANLwABtYAVBoAVBoAVCQAVCQBBw==",
+   "payload_sha256": "438090ee3c5e24196c9323e0b6d867c19d335fef5837a68ee15ec2cea8c6f2ce",
+   "file_sha256": "9f36c664814b4fe6e1a35768a61192f04e6e23f20445e99fc8fca6c51a298fc0",
+   "energy": "Energy: Darkness",
+   "n_cards": 20,
+   "encodes_back": true,
+   "games": [
+    {
+     "packet": "1wvU9NNdUNTX2vulAgVFC6y3ivM0bbV3T_ScreenRecording_10-19-2026_21-57-12_1.mp4",
+     "batch": "DRIVE_INBOX_2026-10-20",
+     "qr_file": "QR_ID.json",
+     "schema": "battle-qr-id/v1",
+     "filename": "ScreenRecording_10-19-2026 21-57-12_1.mp4",
+     "weak": {
+      "battle_full20_proven": false
+     }
+    }
+   ],
+   "printing_choices": {
+    "pokemon:001750": {
+     "picked": "A1 175",
+     "printings": [
+      "A1 175"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "pokemon:006910": {
+     "picked": "A3 110",
+     "printings": [
+      "A3 110",
+      "A4b 233",
+      "A4b 234"
+     ],
+     "repo_uses": 1,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:006920": {
+     "picked": "A3 111",
+     "printings": [
+      "A3 111",
+      "A3 188",
+      "A3 206",
+      "A4b 235"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "pokemon:013490": {
+     "picked": "B1a 045",
+     "printings": [
+      "B1a 045",
+      "B3 215"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "pokemon:013500": {
+     "picked": "B1a 046",
+     "printings": [
+      "B1a 046",
+      "B3 216"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "pokemon:014620": {
+     "picked": "B2 096",
+     "printings": [
+      "B2 096"
+     ],
+     "repo_uses": 1,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:014630": {
+     "picked": "B2 097",
+     "printings": [
+      "B2 097",
+      "B2 173"
+     ],
+     "repo_uses": 2,
+     "why": "used most in the repo decks"
+    },
+    "pokemon:020520": {
+     "picked": "B4 091",
+     "printings": [
+      "B4 091"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "pokemon:021530": {
+     "picked": "B4a 040",
+     "printings": [
+      "B4a 040"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "pokemon:021540": {
+     "picked": "B4a 041",
+     "printings": [
+      "B4a 041"
+     ],
+     "repo_uses": 0,
+     "why": "first released"
+    },
+    "trainer:000030": {
+     "picked": "P-A 005",
+     "printings": [
+      "P-A 005",
+      "A2b 111"
+     ],
+     "repo_uses": 112,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000040": {
+     "picked": "P-A 007",
+     "printings": [
+      "P-A 007",
+      "A4b 373"
+     ],
+     "repo_uses": 120,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000500": {
+     "picked": "A3 146",
+     "printings": [
+      "A3 146"
+     ],
+     "repo_uses": 3,
+     "why": "used most in the repo decks"
+    },
+    "trainer:000990": {
+     "picked": "B1 225",
+     "printings": [
+      "B1 225",
+      "B1 270"
+     ],
+     "repo_uses": 79,
+     "why": "used most in the repo decks"
+    },
+    "trainer:001520": {
+     "picked": "B4 148",
+     "printings": [
+      "B4 148"
+     ],
+     "repo_uses": 15,
+     "why": "used most in the repo decks"
+    }
+   },
+   "weak": true
+  }
+ }
+}
