@@ -53,9 +53,9 @@ Mimikyu (T14) and the lethal Blessed Salt case (T3).
 - **Growl_weakness_test:** T7 above. An attack cut to 0 by Growl does 0 and gets no Weakness, and its Bench hit is cut to 0 too (`05` #11, `02` §1/§3). The engine gave 20 for the Active hit; the fix is on branch `claude/growl-zero-no-weakness`.
 - **Boundedfield_hitback_test:** under Bounded Field, Spike Armor's hit back did "Weakness 80" (40 × 2) on the Water-weak Heatran. It fired after Heatran's attack had knocked Sandslash out (`02` §1-§2; engine ✓, test on the same branch).
 
-**Oct 20 (Dustin's rulings; no recording):**
+**Oct 20 (Dustin's rulings, and one recording):**
 - **Settled, no test needed:** the hit back left by an attack is damage from an attack for the Attacking Pokémon's own cards too: its Rocky Helmet, its cuts and attack-damage prevention (`02` §4, `05` #31). Heavy Helmet's cut was already seen (Oct 9). Engine: not yet.
-- **Open, on the Shot List:** row `cut-to-zero-plus-x`, a defender-side "+X" after the attacker's side cuts an attack to 0 (`05` #11). Taken as 0, the plain reading by analogy, until a recording shows otherwise.
+- **Recorded:** Shot List row `cut-to-zero-plus-x`, the Luxray/Espathra retry (`Recording_QA/LUXRAY_ESPATHRA_RETRY_2026-10-20/`): an attack cut to 0 stays 0 under a defender-side "+X" (Flop 20 into a Luxray with Intimidating Fang and Lumina Crash's +50: 0), and when the cut leaves damage the +X lands (Draining Kiss 50: 80) (`05` #11, `02` §1).
 
 Already settled, no test needed: Rough Skin vs Prickly Powder (official JP FAQ), Clemont's Backpack on the Bench
 (two recordings), one Stadium per turn (in-game text; T10 only confirms the message).
