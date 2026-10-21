@@ -119,3 +119,28 @@ Written by the laptop session on the coordinator's instruction of Oct 21, from D
    - then the freeze: exam v2, references, eligibility and the pooling script, committed.
 5. **The runs:** km3 rows (new seed block); then the judge (API only); then the formal compare on run 3, the pooled primary and the secondaries.
 6. Results to the coordinator only, as `RESULTS_run3.md` here.
+
+
+---
+
+## Addendum 1 (Oct 21, 2026, about 21:00Z; the coordinator's review of the above, before any selection)
+The coordinator accepted the five choices reported in laptop-021, and added the following. Nothing has been selected, built or run.
+
+**B1. What the pooled result is about.** The pooled population mixes v1.6's curated points (run 2's 49, chosen with v1.6's quotas) with run 3's all-usable points. So the pooled contrast is about that mixture, not about either selection alone. The run-3-alone secondary (section 5) is the clean replication. The comparison stays paired within points and clustered by game.
+
+**B2. Reported next to run 2's** (descriptive, with the result and with the selection check):
+- the category mix (deck, answer kind);
+- the chance-ending share;
+- the number of points per game.
+
+**B3. The labelling job** replaces section 2's "a fresh worker":
+- It is a fresh credit-worker job (`claude -p`, the coordinator's API credits). The laptop drafts its prompt and the coordinator launches it.
+- **It gets only:**
+  - v1.6's adjudication rules: the inventory brief, the label brief, and the key-line, accepted-alternative, rejection, draw-first and segment rules, restated without any of v1.6's point answers;
+  - run 3's positions with the engine's legal lists;
+  - Dustin's recorded plays;
+  - the games' reviews and his deck lists.
+- **Off-limits:** run 1's and run 2's results, any other references, the exam branch's results folders and the judge's files.
+- Dustin's answers to its unclear spots are folded in before the freeze.
+
+**B4. The selection check** (section 3) is a SEPARATE fresh credit-worker job. The laptop drafts its prompt and the coordinator launches it.
