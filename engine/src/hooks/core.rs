@@ -3836,6 +3836,18 @@ mod attack_cut_to_zero_and_hit_back_tests {
         // Shell Trap's 20 goes to 0: no damage, so Luxray's Rocky Helmet doesn't answer.
         let luxray = mon(CardId::A3a015Luxray).with_tool(get_card_by_enum(CardId::A2148RockyHelmet));
         assert_eq!(retaliate(mon(CardId::B1047Turtonator), 20, luxray, 0, false), (0, 110));
+        // The order. No printed Luxray is weak to a holder's type, so the test gives it one. Weak to Fire: Shell Trap's 20
+        // is cut to 0 before Weakness and does nothing (Weakness first would give 20 + 20 - 20 = 20). Weak to Water, under
+        // Bounded Field: Spike Armor's 40 is cut to 20 and then doubled, 40 (Weakness first would give 80 - 20 = 60).
+        let weak_to = |energy: EnergyType| {
+            let mut luxray = mon(CardId::A3a015Luxray);
+            if let Card::Pokemon(pokemon) = &mut luxray.card {
+                pokemon.weakness = Some(energy);
+            }
+            luxray
+        };
+        assert_eq!(retaliate(mon(CardId::B1047Turtonator), 20, weak_to(EnergyType::Fire), 0, false), (0, 110));
+        assert_eq!(retaliate(mon(CardId::A3039AlolanSandslash), 40, weak_to(EnergyType::Water), 0, true), (40, 100));
     }
 
     #[test]
@@ -3868,10 +3880,16 @@ mod attack_cut_to_zero_and_hit_back_tests {
         togedemaru.add_effect(CardEffect::Counterattack { amount: 30 }, 1);
         let mut state = State::default();
         state.set_board(vec![togedemaru], vec![mon(CardId::B2073MimikyuEx)]);
-        crate::actions::handle_attack_retaliation(&mut state, (1, 0), &[(0, 0)]);
+        // P2's switch pinned on, so the numbers hold under DECKGYM_FLAT_RETURN_DAMAGE or DECKGYM_ROUND2_OFF too.
+        let retaliate = |state: &mut State| {
+            crate::actions::with_return_weakness(true, || {
+                crate::actions::handle_attack_retaliation(state, (1, 0), &[(0, 0)])
+            })
+        };
+        retaliate(&mut state);
         assert_eq!(state.get_active(1).get_remaining_hp(), 120);
         assert!(state.get_active(1).prevent_first_attack_damage_used);
-        crate::actions::handle_attack_retaliation(&mut state, (1, 0), &[(0, 0)]);
+        retaliate(&mut state);
         assert_eq!(state.get_active(1).get_remaining_hp(), 90);
     }
 }

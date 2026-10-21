@@ -266,27 +266,31 @@ fn hit_back_once(row: &Row, attacker: PlayedCard, attack: &str, p0_bench: Vec<Pl
 /// X flat to every attacker.
 #[test]
 fn each_attack_hits_back_with_weakness_on_a_weak_attacker() {
-    for row in rows() {
-        let state = hit_back_once(&row, row.weak_attacker.clone(), row.weak_attack, vec![]);
-        assert_eq!(hp(&state, 1, 0), row.holder_hp - row.weak_damage, "{}", row.title);
-        assert_eq!(
-            hp(&state, 0, 0),
-            row.weak_attacker_hp - row.amount - 20,
-            "{}: the hit back takes +20 on an attacker weak to the holder",
-            row.title
-        );
-    }
+    on(|| {
+        for row in rows() {
+            let state = hit_back_once(&row, row.weak_attacker.clone(), row.weak_attack, vec![]);
+            assert_eq!(hp(&state, 1, 0), row.holder_hp - row.weak_damage, "{}", row.title);
+            assert_eq!(
+                hp(&state, 0, 0),
+                row.weak_attacker_hp - row.amount - 20,
+                "{}: the hit back takes +20 on an attacker weak to the holder",
+                row.title
+            );
+        }
+    })
 }
 
 /// The same five attacks against Snorlax (Colorless, weak Fighting): no holder is Fighting, so the hit
 /// back stays X. Unchanged from the old engine; it guards the flat case.
 #[test]
 fn each_attack_hits_back_flat_on_an_attacker_not_weak_to_it() {
-    for row in rows() {
-        let state = hit_back_once(&row, snorlax(), "Rollout", vec![]);
-        assert_eq!(hp(&state, 1, 0), row.holder_hp - 70, "{}", row.title);
-        assert_eq!(hp(&state, 0, 0), 150 - row.amount, "{}: no Weakness, flat", row.title);
-    }
+    on(|| {
+        for row in rows() {
+            let state = hit_back_once(&row, snorlax(), "Rollout", vec![]);
+            assert_eq!(hp(&state, 1, 0), row.holder_hp - 70, "{}", row.title);
+            assert_eq!(hp(&state, 0, 0), 150 - row.amount, "{}: no Weakness, flat", row.title);
+        }
+    })
 }
 
 /// Weakness decides the Knock Out: a weak attacker at X + 20 HP is Knocked Out by the hit back (the
@@ -294,35 +298,37 @@ fn each_attack_hits_back_flat_on_an_attacker_not_weak_to_it() {
 /// at 1, which pins the extra at exactly 20. The old engine left it at 20 HP.
 #[test]
 fn weakness_decides_the_knockout_by_the_hit_back() {
-    for row in rows() {
-        let at = |remaining: u32| row.weak_attacker.clone().with_remaining_hp(remaining);
+    on(|| {
+        for row in rows() {
+            let at = |remaining: u32| row.weak_attacker.clone().with_remaining_hp(remaining);
 
-        let state = hit_back_once(
-            &row,
-            at(row.amount + 20),
-            row.weak_attack,
-            vec![PlayedCard::from_id(CardId::A1130Ralts)],
-        );
-        assert!(state.in_play_pokemon[0][0].is_none(), "{}: Knocked Out", row.title);
-        assert_eq!(state.points, [0, 1], "{}", row.title);
-        assert_eq!(state.winner, None, "{}", row.title);
-        let (actor, choices) = state.generate_possible_actions();
-        assert_eq!(actor, 0, "{}", row.title);
-        assert!(
-            choices
-                .iter()
-                .all(|choice| matches!(choice.action, SimpleAction::Promote { player: 0, .. })),
-            "{}: player 0 must promote: {choices:?}",
-            row.title
-        );
+            let state = hit_back_once(
+                &row,
+                at(row.amount + 20),
+                row.weak_attack,
+                vec![PlayedCard::from_id(CardId::A1130Ralts)],
+            );
+            assert!(state.in_play_pokemon[0][0].is_none(), "{}: Knocked Out", row.title);
+            assert_eq!(state.points, [0, 1], "{}", row.title);
+            assert_eq!(state.winner, None, "{}", row.title);
+            let (actor, choices) = state.generate_possible_actions();
+            assert_eq!(actor, 0, "{}", row.title);
+            assert!(
+                choices
+                    .iter()
+                    .all(|choice| matches!(choice.action, SimpleAction::Promote { player: 0, .. })),
+                "{}: player 0 must promote: {choices:?}",
+                row.title
+            );
 
-        let state = hit_back_once(&row, at(row.amount + 21), row.weak_attack, vec![]);
-        assert_eq!(hp(&state, 0, 0), 1, "{}: +20 exactly", row.title);
+            let state = hit_back_once(&row, at(row.amount + 21), row.weak_attack, vec![]);
+            assert_eq!(hp(&state, 0, 0), 1, "{}: +20 exactly", row.title);
 
-        let state = hit_back_once(&row, at(row.amount + 20), row.weak_attack, vec![]);
-        assert!(state.in_play_pokemon[0][0].is_none(), "{}", row.title);
-        assert_eq!(state.winner, Some(GameOutcome::Win(1)), "{}: no Bench", row.title);
-    }
+            let state = hit_back_once(&row, at(row.amount + 20), row.weak_attack, vec![]);
+            assert!(state.in_play_pokemon[0][0].is_none(), "{}", row.title);
+            assert_eq!(state.winner, Some(GameOutcome::Win(1)), "{}: no Bench", row.title);
+        }
+    })
 }
 
 fn houndstone_last_respects(remaining_hp: u32) -> PlayedCard {
@@ -359,9 +365,11 @@ fn recording_t8() -> State {
 
 #[test]
 fn recording_183108_t8_cursed_jewel_returns_60() {
-    let state = recording_t8();
-    assert_eq!(hp(&state, 1, 0), 40);
-    assert_eq!(hp(&state, 0, 0), 70);
+    on(|| {
+        let state = recording_t8();
+        assert_eq!(hp(&state, 1, 0), 40);
+        assert_eq!(hp(&state, 0, 0), 70);
+    })
 }
 
 /// 183108 turn 10, @384-386: Houndstone at 120/130 Knocks Out the Mega at 80 HP and ends at 60/130: the
@@ -387,11 +395,13 @@ fn recording_t10() -> State {
 
 #[test]
 fn recording_183108_t10_hit_back_lands_when_the_holder_is_knocked_out() {
-    let state = recording_t10();
-    assert!(state.in_play_pokemon[1][0].is_none());
-    assert_eq!(state.points, [3, 0]);
-    assert_eq!(state.winner, Some(GameOutcome::Win(0)));
-    assert_eq!(hp(&state, 0, 0), 60);
+    on(|| {
+        let state = recording_t10();
+        assert!(state.in_play_pokemon[1][0].is_none());
+        assert_eq!(state.points, [3, 0]);
+        assert_eq!(state.winner, Some(GameOutcome::Win(0)));
+        assert_eq!(hp(&state, 0, 0), 60);
+    })
 }
 
 /// Turtonator at 40 HP with Shell Trap armed; Bulbasaur at 40 HP Knocks it Out with Vine Whip and the
@@ -418,20 +428,22 @@ fn double_knockout() -> State {
 
 #[test]
 fn double_knockout_by_the_hit_back_the_attacker_promotes_first() {
-    let state = double_knockout();
-    assert_eq!(
-        state.in_play_pokemon[0][0].as_ref().map(|p| p.get_remaining_hp()),
-        None,
-        "Bulbasaur (40 HP, weak Fire) is Knocked Out by Shell Trap's 20 + 20"
-    );
-    assert!(state.in_play_pokemon[1][0].is_none(), "Turtonator is Knocked Out by Vine Whip");
-    assert_eq!(state.points, [1, 1]);
-    assert_eq!(state.winner, None);
-    let (actor, choices) = state.generate_possible_actions();
-    assert_eq!(actor, 0);
-    assert!(choices
-        .iter()
-        .all(|choice| matches!(choice.action, SimpleAction::Promote { player: 0, .. })));
+    on(|| {
+        let state = double_knockout();
+        assert_eq!(
+            state.in_play_pokemon[0][0].as_ref().map(|p| p.get_remaining_hp()),
+            None,
+            "Bulbasaur (40 HP, weak Fire) is Knocked Out by Shell Trap's 20 + 20"
+        );
+        assert!(state.in_play_pokemon[1][0].is_none(), "Turtonator is Knocked Out by Vine Whip");
+        assert_eq!(state.points, [1, 1]);
+        assert_eq!(state.winner, None);
+        let (actor, choices) = state.generate_possible_actions();
+        assert_eq!(actor, 0);
+        assert!(choices
+            .iter()
+            .all(|choice| matches!(choice.action, SimpleAction::Promote { player: 0, .. })));
+    })
 }
 
 /// Rocky Helmet: "If the Pokémon this card is attached to is in the Active Spot and is damaged by an
@@ -440,19 +452,21 @@ fn double_knockout_by_the_hit_back_the_attacker_promotes_first() {
 /// times (the second after a Potion). A Tool's return damage stays flat, in all three printings.
 #[test]
 fn rocky_helmet_stays_flat_on_a_weak_attacker() {
-    for helmet in [
-        CardId::A2148RockyHelmet,
-        CardId::A4b322RockyHelmet,
-        CardId::A4b323RockyHelmet,
-    ] {
-        let torchic = PlayedCard::from_id(CardId::B1033Torchic).with_tool(get_card_by_enum(helmet));
-        let tinkatink = with_energy(CardId::A2b052Tinkatink, &[EnergyType::Metal]);
-        let mut game = game_with_board(vec![tinkatink], vec![torchic], 0, SEED);
-        apply_attack(&mut game, "Corkscrew Punch");
-        let state = game.get_state_clone();
-        assert_eq!(hp(&state, 1, 0), 40, "{helmet:?}");
-        assert_eq!(hp(&state, 0, 0), 40, "{helmet:?}: flat 20");
-    }
+    on(|| {
+        for helmet in [
+            CardId::A2148RockyHelmet,
+            CardId::A4b322RockyHelmet,
+            CardId::A4b323RockyHelmet,
+        ] {
+            let torchic = PlayedCard::from_id(CardId::B1033Torchic).with_tool(get_card_by_enum(helmet));
+            let tinkatink = with_energy(CardId::A2b052Tinkatink, &[EnergyType::Metal]);
+            let mut game = game_with_board(vec![tinkatink], vec![torchic], 0, SEED);
+            apply_attack(&mut game, "Corkscrew Punch");
+            let state = game.get_state_clone();
+            assert_eq!(hp(&state, 1, 0), 40, "{helmet:?}");
+            assert_eq!(hp(&state, 0, 0), 40, "{helmet:?}: flat 20");
+        }
+    })
 }
 
 /// "If this Pokémon is in the Active Spot and is damaged by an attack from your opponent's Pokémon, do 20
@@ -462,46 +476,48 @@ fn rocky_helmet_stays_flat_on_a_weak_attacker() {
 /// Weakness.
 #[test]
 fn ability_return_damage_stays_flat() {
-    use EnergyType::*;
-    // Iron Jugulis (Darkness) against Mewtwo ex (weak Darkness): Psychic Sphere 50.
-    let mut game = game_with_board(
-        vec![with_energy(CardId::A1129MewtwoEx, &[Psychic, Colorless])],
-        vec![PlayedCard::from_id(CardId::B3a046IronJugulis)],
-        0,
-        SEED,
-    );
-    apply_attack(&mut game, "Psychic Sphere");
-    let state = game.get_state_clone();
-    assert_eq!(hp(&state, 1, 0), 50);
-    assert_eq!(hp(&state, 0, 0), 130, "Automated Combat stays a flat 20");
+    on(|| {
+        use EnergyType::*;
+        // Iron Jugulis (Darkness) against Mewtwo ex (weak Darkness): Psychic Sphere 50.
+        let mut game = game_with_board(
+            vec![with_energy(CardId::A1129MewtwoEx, &[Psychic, Colorless])],
+            vec![PlayedCard::from_id(CardId::B3a046IronJugulis)],
+            0,
+            SEED,
+        );
+        apply_attack(&mut game, "Psychic Sphere");
+        let state = game.get_state_clone();
+        assert_eq!(hp(&state, 1, 0), 50);
+        assert_eq!(hp(&state, 0, 0), 130, "Automated Combat stays a flat 20");
 
-    // Ferrothorn (Metal) against Snover (weak Metal): Corkscrew Punch 30.
-    let mut game = game_with_board(
-        vec![with_energy(CardId::A2a020Snover, &[Water, Colorless])],
-        vec![PlayedCard::from_id(CardId::A3a052Ferrothorn)],
-        0,
-        SEED,
-    );
-    apply_attack(&mut game, "Corkscrew Punch");
-    let state = game.get_state_clone();
-    assert_eq!(hp(&state, 1, 0), 80);
-    assert_eq!(hp(&state, 0, 0), 50, "Steel Spikes stays a flat 20");
+        // Ferrothorn (Metal) against Snover (weak Metal): Corkscrew Punch 30.
+        let mut game = game_with_board(
+            vec![with_energy(CardId::A2a020Snover, &[Water, Colorless])],
+            vec![PlayedCard::from_id(CardId::A3a052Ferrothorn)],
+            0,
+            SEED,
+        );
+        apply_attack(&mut game, "Corkscrew Punch");
+        let state = game.get_state_clone();
+        assert_eq!(hp(&state, 1, 0), 80);
+        assert_eq!(hp(&state, 0, 0), 50, "Steel Spikes stays a flat 20");
 
-    // Druddigon (Dragon) against a Snorlax given a Dragon Weakness: Rollout 70.
-    let mut dragon_weak = snorlax();
-    if let Card::Pokemon(card) = &mut dragon_weak.card {
-        card.weakness = Some(Dragon);
-    }
-    let mut game = game_with_board(
-        vec![dragon_weak],
-        vec![PlayedCard::from_id(CardId::A1a056Druddigon)],
-        0,
-        SEED,
-    );
-    apply_attack(&mut game, "Rollout");
-    let state = game.get_state_clone();
-    assert_eq!(hp(&state, 1, 0), 30);
-    assert_eq!(hp(&state, 0, 0), 130, "Rough Skin stays a flat 20");
+        // Druddigon (Dragon) against a Snorlax given a Dragon Weakness: Rollout 70.
+        let mut dragon_weak = snorlax();
+        if let Card::Pokemon(card) = &mut dragon_weak.card {
+            card.weakness = Some(Dragon);
+        }
+        let mut game = game_with_board(
+            vec![dragon_weak],
+            vec![PlayedCard::from_id(CardId::A1a056Druddigon)],
+            0,
+            SEED,
+        );
+        apply_attack(&mut game, "Rollout");
+        let state = game.get_state_clone();
+        assert_eq!(hp(&state, 1, 0), 30);
+        assert_eq!(hp(&state, 0, 0), 130, "Rough Skin stays a flat 20");
+    })
 }
 
 /// A Mega Sableye ex holding a Rocky Helmet arms Cursed Jewel. Each source keeps its own rule: against a
@@ -526,8 +542,10 @@ fn helmet_and_cursed_jewel(houndstone: bool) -> State {
 
 #[test]
 fn tool_and_attack_return_on_one_defender_each_by_its_own_rule() {
-    assert_eq!(hp(&helmet_and_cursed_jewel(true), 0, 0), 50, "Spooky Shot");
-    assert_eq!(hp(&helmet_and_cursed_jewel(false), 0, 0), 90, "Rollout");
+    on(|| {
+        assert_eq!(hp(&helmet_and_cursed_jewel(true), 0, 0), 50, "Spooky Shot");
+        assert_eq!(hp(&helmet_and_cursed_jewel(false), 0, 0), 90, "Rollout");
+    })
 }
 
 /// Constructed: an Iron Jugulis carrying both its Ability and an attack's `Counterattack { amount: 40 }`.
@@ -548,9 +566,11 @@ fn jugulis_with_cursed_effect() -> State {
 
 #[test]
 fn ability_and_attack_return_on_one_defender() {
-    let state = jugulis_with_cursed_effect();
-    assert_eq!(hp(&state, 1, 0), 50);
-    assert_eq!(hp(&state, 0, 0), 70);
+    on(|| {
+        let state = jugulis_with_cursed_effect();
+        assert_eq!(hp(&state, 1, 0), 50);
+        assert_eq!(hp(&state, 0, 0), 70);
+    })
 }
 
 /// The held-back path (`ResolveAttackRetaliation`): Gardevoir's Psy Turbo ("Take 2 [P] Energy from your
@@ -588,9 +608,11 @@ fn held_back() -> State {
 
 #[test]
 fn held_back_hit_back_takes_weakness() {
-    let state = held_back();
-    assert_eq!(hp(&state, 0, 0), 70);
-    assert_eq!(hp(&state, 1, 0), 110);
+    on(|| {
+        let state = held_back();
+        assert_eq!(hp(&state, 0, 0), 70);
+        assert_eq!(hp(&state, 1, 0), 110);
+    })
 }
 
 /// The `ApplyDamage` path (`handle_damage`): a constructed 10-damage attack hit from Houndstone's Active
@@ -614,9 +636,11 @@ fn apply_damage_path() -> State {
 
 #[test]
 fn apply_damage_path_takes_weakness() {
-    let state = apply_damage_path();
-    assert_eq!(hp(&state, 1, 0), 160);
-    assert_eq!(hp(&state, 0, 0), 70);
+    on(|| {
+        let state = apply_damage_path();
+        assert_eq!(hp(&state, 1, 0), 160);
+        assert_eq!(hp(&state, 0, 0), 70);
+    })
 }
 
 /// Weakness applies only to the Active Pokémon (`rules/02` section 2, [OFFICIAL] "Don't apply Weakness
@@ -649,10 +673,12 @@ fn benched_attacker() -> State {
 
 #[test]
 fn hit_back_on_a_benched_attacker_stays_flat() {
-    let state = benched_attacker();
-    assert_eq!(hp(&state, 1, 0), 100);
-    assert_eq!(state.get_active(0).get_name(), "Bulbasaur");
-    assert_eq!(hp(&state, 0, 1), 50, "Benched: flat 20");
+    on(|| {
+        let state = benched_attacker();
+        assert_eq!(hp(&state, 1, 0), 100);
+        assert_eq!(state.get_active(0).get_name(), "Bulbasaur");
+        assert_eq!(hp(&state, 0, 1), 50, "Benched: flat 20");
+    })
 }
 
 /// Steelix's Metal Defender: "During your opponent's next turn, this Pokémon has no Weakness." The effect
@@ -670,9 +696,11 @@ fn metal_defender() -> State {
 
 #[test]
 fn metal_defender_does_not_shield_its_own_hit_back() {
-    let state = metal_defender();
-    assert_eq!(hp(&state, 1, 0), 10);
-    assert_eq!(hp(&state, 0, 0), 110);
+    on(|| {
+        let state = metal_defender();
+        assert_eq!(hp(&state, 1, 0), 10);
+        assert_eq!(hp(&state, 0, 0), 110);
+    })
 }
 
 /// Ledian's Swift: "This attack's damage isn't affected by Weakness or by any effects on your opponent's
@@ -688,9 +716,11 @@ fn swift() -> State {
 
 #[test]
 fn swift_does_not_shield_the_hit_back() {
-    let state = swift();
-    assert_eq!(hp(&state, 1, 0), 70);
-    assert_eq!(hp(&state, 0, 0), 40);
+    on(|| {
+        let state = swift();
+        assert_eq!(hp(&state, 1, 0), 70);
+        assert_eq!(hp(&state, 0, 0), 40);
+    })
 }
 
 /// Bounded Field: "When applying the opponent's Active Pokémon's Weakness to damage from attacks used by
@@ -717,14 +747,16 @@ fn bounded_field() -> State {
 
 #[test]
 fn bounded_field_doubles_the_hit_back_x2() {
-    let state = bounded_field();
-    assert_eq!(hp(&state, 1, 0), 70);
-    assert_eq!(
-        state.in_play_pokemon[0][0].as_ref().map(|p| p.get_remaining_hp()),
-        None,
-        "Needle Lariat's 80 x2 = 160 under Bounded Field Knocks Out Stonjourner (120 HP); the flat +20 left it at 20"
-    );
-    assert_eq!(state.points[1], 1, "the Knock Out's point goes to Chesnaught's side");
+    on(|| {
+        let state = bounded_field();
+        assert_eq!(hp(&state, 1, 0), 70);
+        assert_eq!(
+            state.in_play_pokemon[0][0].as_ref().map(|p| p.get_remaining_hp()),
+            None,
+            "Needle Lariat's 80 x2 = 160 under Bounded Field Knocks Out Stonjourner (120 HP); the flat +20 left it at 20"
+        );
+        assert_eq!(state.points[1], 1, "the Knock Out's point goes to Chesnaught's side");
+    })
 }
 
 /// The Mega ex exception: Bounded Field doubles Weakness only for attacks used by Pokémon that aren't Mega
@@ -732,14 +764,16 @@ fn bounded_field_doubles_the_hit_back_x2() {
 /// Field: 40 + 20 = 60 to Darkness-weak Houndstone (130 HP), not 80.
 #[test]
 fn bounded_field_keeps_plus_20_for_a_mega_ex_holder() {
-    use EnergyType::*;
-    let sableye = with_energy(CardId::B3b041MegaSableyeEx, &[Darkness, Darkness]);
-    let houndstone = with_energy(CardId::B3a024Houndstone, &[Psychic, Psychic, Psychic]);
-    let mut game = armed_against(sableye, "Cursed Jewel", 40, houndstone, vec![], vec![], Some(CardId::B3155BoundedField));
-    apply_attack(&mut game, "Spooky Shot");
-    let state = game.get_state_clone();
-    assert_eq!(hp(&state, 1, 0), 170 - 70);
-    assert_eq!(hp(&state, 0, 0), 130 - 60, "40 + 20 under Bounded Field: the holder is a Mega ex");
+    on(|| {
+        use EnergyType::*;
+        let sableye = with_energy(CardId::B3b041MegaSableyeEx, &[Darkness, Darkness]);
+        let houndstone = with_energy(CardId::B3a024Houndstone, &[Psychic, Psychic, Psychic]);
+        let mut game = armed_against(sableye, "Cursed Jewel", 40, houndstone, vec![], vec![], Some(CardId::B3155BoundedField));
+        apply_attack(&mut game, "Spooky Shot");
+        let state = game.get_state_clone();
+        assert_eq!(hp(&state, 1, 0), 170 - 70);
+        assert_eq!(hp(&state, 0, 0), 130 - 60, "40 + 20 under Bounded Field: the holder is a Mega ex");
+    })
 }
 
 /// The Perish Body branch of `ApplyDamage` (coin outcomes). Constructed: a Galarian Cursola (Psychic;
@@ -780,10 +814,12 @@ fn perish_body_branch() -> Vec<Option<u32>> {
 
 #[test]
 fn perish_body_branch_hit_back_takes_weakness() {
-    let tauros = perish_body_branch();
-    let tails: Vec<u32> = tauros.iter().flatten().copied().collect();
-    assert!(!tails.is_empty() && tails.len() < tauros.len(), "both coins seen: {tauros:?}");
-    assert!(tails.iter().all(|&hp| hp == 40), "{tauros:?}");
+    on(|| {
+        let tauros = perish_body_branch();
+        let tails: Vec<u32> = tauros.iter().flatten().copied().collect();
+        assert!(!tails.is_empty() && tails.len() < tauros.len(), "both coins seen: {tauros:?}");
+        assert!(tails.iter().all(|&hp| hp == 40), "{tauros:?}");
+    })
 }
 
 // ---- P2's off-switch (rules switch 2, PLAN (e); the coordinator via Dustin, Oct 9). Off is the engine before P2: the
@@ -791,6 +827,12 @@ fn perish_body_branch_hit_back_takes_weakness() {
 
 fn off<R>(f: impl FnOnce() -> R) -> R {
     with_return_weakness(false, f)
+}
+
+/// P2's switch on, for one test: the switch-on tests above pin it, so their numbers hold whatever
+/// `DECKGYM_FLAT_RETURN_DAMAGE` or `DECKGYM_ROUND2_OFF` say.
+fn on<R>(f: impl FnOnce() -> R) -> R {
+    with_return_weakness(true, f)
 }
 
 /// With the switch off, each attack's hit back on a weak attacker is X flat again, and the Knock Out it decided is gone.
