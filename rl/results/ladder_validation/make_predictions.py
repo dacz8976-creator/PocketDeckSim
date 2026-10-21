@@ -63,7 +63,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 # of the bot comparison. Each bot also records its engine key, so a reading made after the next pin can tell them apart.
 CURRENT_ENGINE = {
     "label": "main-4d48844 (Growl-to-0, the hit back as attack damage, upstream fixes; pinned @@PIN_DATE_SHORT@@)",
-    "harness_engine_trees": [],                         # slow reports / exams: "engine tree <12 hex>" in manifest.json (none until the slow report's re-pin)
+    "harness_engine_trees": ["64de03e2c3c2"],          # slow reports / exams: "engine tree <12 hex>" in manifest.json (kx3 on main-4d48844)
     "floor_engines": ["rl/engine-2026-10-21/deckgym"],  # floor pages: "- Engine: <path>"
 }
 # The Oct 12 pin's value. Deck 12's self-test reads files written under it, so it runs with this one.
