@@ -12,3 +12,16 @@ test_slow_report_runloop rc=0 secs=15 Ran 78 tests in 14.234s  OK
 test_split_collect rc=0 secs=0 stamped /tmp/tmp6o_bf_vm/w1: manifest 9ae0129da01c, program 9a3a45d01531, slice (all) sealed /tmp/tmp6o_bf_vm/w1: 1 games, games.jsonl 6c2cc7350822, program 9a3
 test_strength_prereg_use rc=0 secs=33 Ran 121 tests in 32.722s  OK 
 test_strength_report rc=0 secs=2 Ran 18 tests in 2.264s  OK 
+
+Re-run at ed0b20cf656807a8f7f6f8c2795402e67bc61466 (the wording child: README, RUN5 and CERT text only), 2026-10-22T09:28:09Z to 2026-10-22T09:32:11Z, the same way:
+
+test_slow_report rc=0 secs=234 Ran 492 tests in 227.583s  OK 
+test_slow_report_existing rc=0 secs=1 Ran 42 tests in 0.990s  OK 
+test_slow_report_page rc=0 secs=32 Ran 201 tests in 23.938s  OK 
+test_slow_report_paired rc=0 secs=6 Ran 69 tests in 5.135s  OK 
+test_slow_report_process rc=0 secs=18 Ran 115 tests in 10.224s  OK 
+test_slow_report_registration rc=0 secs=77 Ran 244 tests in 68.281s  OK 
+test_slow_report_runloop rc=0 secs=15 Ran 78 tests in 14.328s  OK 
+test_split_collect rc=0 secs=0 stamped /tmp/tmpgkp_ngso/w1: manifest 89af0ad9bbf1, program 9a3a45d01531, slice (all) sealed /tmp/tmpgkp_ngso/w1: 1 games, games.jsonl 6c2cc7350822, program 9a3
+test_strength_prereg_use rc=0 secs=31 Ran 121 tests in 31.279s  OK 
+test_strength_report rc=0 secs=2 Ran 18 tests in 1.903s  OK 
