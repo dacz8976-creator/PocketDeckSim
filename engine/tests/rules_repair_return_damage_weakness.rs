@@ -829,10 +829,17 @@ fn off<R>(f: impl FnOnce() -> R) -> R {
     with_return_weakness(false, f)
 }
 
-/// P2's switch on, for one test: the switch-on tests above pin it, so their numbers hold whatever
-/// `DECKGYM_FLAT_RETURN_DAMAGE` or `DECKGYM_ROUND2_OFF` say.
+/// The current rules, for one test: every round-2 gate on, P2's return-damage Weakness included (`with_round2(true, ..)`).
+/// The switch-on tests above pin it, so their numbers hold whatever `DECKGYM_FLAT_RETURN_DAMAGE` or `DECKGYM_ROUND2_OFF`
+/// say (Perish Body's branch also needs the round's queued-hit gate, which `DECKGYM_ROUND2_OFF` turns off).
 fn on<R>(f: impl FnOnce() -> R) -> R {
-    with_return_weakness(true, f)
+    deckgym::actions::with_round2(true, f)
+}
+
+/// What the engine reads from the process environment (`=1` or `true`, apply_action_helpers.rs): either variable turns
+/// P2 off by default.
+fn env_flag(name: &str) -> bool {
+    std::env::var(name).is_ok_and(|v| v == "1" || v.eq_ignore_ascii_case("true"))
 }
 
 /// With the switch off, each attack's hit back on a weak attacker is X flat again, and the Knock Out it decided is gone.
@@ -904,20 +911,22 @@ fn switch_changes_nothing_where_p2_does_not_act() {
     assert_eq!(with_return_weakness(true, helmet_and_ability), off(helmet_and_ability));
 }
 
-/// The switch is on by default, an inner call overrides an outer one for its length, the setting comes back after a
-/// return and after a panic, and another thread keeps its own setting.
+/// The switch is on by default (off by default when `DECKGYM_FLAT_RETURN_DAMAGE` or `DECKGYM_ROUND2_OFF` is set for the
+/// process), an inner call overrides an outer one for its length, the setting comes back after a return and after a panic,
+/// and another thread keeps its own setting.
 #[test]
 fn switch_scoping() {
     let houndstone = || hp(&recording_t8(), 0, 0);
-    assert_eq!(houndstone(), 70, "on by default");
+    let default = if env_flag("DECKGYM_FLAT_RETURN_DAMAGE") || env_flag("DECKGYM_ROUND2_OFF") { 90 } else { 70 };
+    assert_eq!(houndstone(), default, "the default");
     assert_eq!(off(|| with_return_weakness(true, houndstone)), 70, "inner on");
     assert_eq!(off(|| (houndstone(), with_return_weakness(true, houndstone), houndstone())), (90, 70, 90));
-    assert_eq!(houndstone(), 70, "restored after a return");
+    assert_eq!(houndstone(), default, "restored after a return");
     let caught = std::panic::catch_unwind(|| off(|| -> u32 { panic!("inside the switch") }));
     assert!(caught.is_err());
-    assert_eq!(houndstone(), 70, "restored after a panic");
+    assert_eq!(houndstone(), default, "restored after a panic");
     off(|| {
-        assert_eq!(std::thread::spawn(houndstone).join().unwrap(), 70, "another thread keeps the default");
+        assert_eq!(std::thread::spawn(houndstone).join().unwrap(), default, "another thread keeps the default");
         assert_eq!(houndstone(), 90);
     });
 }
