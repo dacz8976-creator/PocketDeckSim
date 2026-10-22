@@ -13,7 +13,7 @@ import json, os, sys, glob, copy, subprocess, importlib.util, collections
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from label_adapter import to_engine
-from v2_helpers import DRAW, cut, chance_steps, Uncertain
+from v2_helpers import DRAW, RANDOM_EVOLUTION_PLAYS, cut, chance_steps, Uncertain
 E2 = os.path.expanduser('~/exam_v2')
 BIN = os.path.expanduser('~/exam/bin/pg_legal_v14')
 with open(f'{E2}/bin/decks.args') as f:
@@ -101,7 +101,7 @@ def main(exam_json, out_dir):
             if k not in ch:
                 keep.append(lab); continue
             base = lab.split('{')[0]
-            hit = next((e for e in pool if not e[2] and (e[0] == lab or e[0] == base or (base.startswith('ChooseRandom') and e[0].startswith('Play:Quick-Grow')))), None)
+            hit = next((e for e in pool if not e[2] and (e[0] == lab or e[0] == base or (base.startswith('ChooseRandom') and e[0].startswith(RANDOM_EVOLUTION_PLAYS)))), None)
             if lab.startswith('ChooseRandom'):
                 continue
             if hit is None:

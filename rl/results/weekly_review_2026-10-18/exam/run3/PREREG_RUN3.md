@@ -275,3 +275,93 @@ These text files carry no sha256 pin of their own. So `make_sources_snapshot.py`
   - the first clip's start time as its time.
   
   A linked battle whose review is only partial stays excluded ("no accepted full review").
+
+
+## Addendum 4 (Oct 22, 2026; the coordinator's ruling on a battle recorded in several clips, coordinator-027 (mailbox id 20261022T1310Z), before any selection)
+Nothing has been selected, built or run. The window is still open. This settles addendum 3's open item D6.
+
+**E1. The ruling (coordinator-027), verbatim in the parts that set the rule:**
+- "one game per linked battle (Codex's battle_id), made of its clips;"
+- "the opening clip's QR is its list, and each continuation's linked payload must equal it;"
+- "its points come from the whole linked review;"
+- "the battle is the cluster;"
+- "the first clip's start time is its time."
+- "The change: a recording that ENDS early still counts. The 22-23-24 + 22-26-30 battle ends before the finish, but its opening is recorded. Include it, and let its turns go through the same per-turn usability rule (board, hand and move known, and a real choice); the missing ending only removes later turns."
+- "v1.6's exclusion was for a clip that STARTS mid-game, where the state is unknown, and that stays."
+- "A battle with NO recorded opening, or no exact list, stays excluded as before."
+
+**E2. How the scripts apply it.**
+- **A battle:**
+  - is the clips that one battle_id names; the scripts read the battle id from SOURCE.json, its recording_relationships or RELATED_SOURCES.json (Codex uses all three so far), and the clip list from RELATED_SOURCES.json;
+  - makes ONE game, in clip order;
+  - takes its start time, its packet name and its list from the opening clip (clip 1).
+- **The run stops when:**
+  - a recording shows a clip relationship (a clip order, a linked or not-visible QR, a LINKED_*_QR_ID.json, or RELATED_SOURCES.json) but names no battle;
+  - the clips' listings differ, or a clip's order isn't a whole number;
+  - the clip orders are not 1..n, or the clips don't start in that order;
+  - the packets naming a battle are not exactly its listed clips (a listed clip missing from the given batches, or a stray packet);
+  - a present clip is not the recording its listing names (video sha256);
+  - a game or continuation that DECKS.json knows isn't placed in the window record as a game's opening or a later clip of its battle.
+- **A continuation's code:**
+  - its linked code (`linked_payload`, or the linked QR file it names, `LINKED_*_QR_ID.json`) must equal the opening clip's own code (`make_v2_decks.py`, which then lists it under the opening's game in DECKS.json);
+  - the snapshot stops unless DECKS.json ties exactly the battle's other clips to the opening's game;
+  - a continuation is never a game of its own.
+- **The review:**
+  - every clip must be accepted and ranked;
+  - a clip's review is complete or partial (Codex marks it partial when the footage misses part of the battle; here, the ending);
+  - a game with a partial review counts when its opening is recorded. The scripts take the first clip carrying its own filmed deck code as the sign that the opening is recorded. The game is flagged in the record (`partial_review_note`), and per-turn usability later removes the turns the recording lacks;
+  - without a recorded opening it is excluded as "a recording that starts mid-game".
+- **The record:** `window.json` lists a battle's clips with each clip's copied files and their sha256, and the duplicate checks cover every clip. RELATED_SOURCES.json and any LINKED_*_QR_ID.json are copied with the other text files.
+- **The laptop's reading, for the coordinator to confirm before the cutoff:** the ruling names a recording that ends early. The scripts apply the same test (opening recorded; usability removes the rest) to any accepted partial review. Every such game is flagged for the selection check. So far the only partial game is the 22-23-24 battle, which is the ruled case.
+
+**E3. The case record.**
+- **`drive-inbox-20261021-game01`** (DRIVE_INBOX_2026-10-21):
+  - clip 1 is 21-00-59 (1Pe3…, its own opening QR);
+  - clip 2 is 21-07-01 (11nTG…, `linked_payload` equal to clip 1's code);
+  - one accepted full review of the whole linked battle.
+  
+  It is one game: deck `v2deck_5309993874` (Darkness), start 2026-10-21T02:00:59Z.
+- **`DRIVE_INBOX_2026-10-21-game06`:**
+  - clip 1 is 22-23-24 (1oPEd…, its own opening QR);
+  - clip 2 is 22-26-30 (1RlG7…; its LINKED_CLIP07_QR_ID.json holds clip 1's code);
+  - an accepted partial review ("confirmed win with genuinely unrecorded later gameplay").
+  
+  It is one game: deck `v2deck_4fa967805c` (Mega Sharpedo ex / Wailord / Claydol), start 2026-10-21T03:23:24Z, flagged partial.
+- These are two different battles. For each, both clips' packets are copied into the snapshot, and the usability coding reads them as one game.
+
+**E4. The window so far.** This is a dry run (Oct 22, into /tmp only) with all five batches that hold his ranked games: DRIVE_INBOX_2026-10-20, DRIVE_LADDER_2026-10-19, DRIVE_LADDER_REMAINING_2026-10-19, DRIVE_INBOX_2026-10-21 and DRIVE_LADDER_2026-10-21_EVENING.
+- 38 games (40 recordings; 2 linked battles): 38 in, 0 excluded.
+- 14 deck files, 14 distinct lists. The 12 earlier files are unchanged byte for byte.
+- **The 2 new lists:**
+  - `v2deck_5309993874`: Darkness, 2 games, Oct 20 evening Central time (02:00-02:09Z Oct 21): the game01 battle and 21-09-16;
+  - `v2deck_4fa967805c`: Water, Mega Sharpedo ex / Wailord / Claydol, 12 games: 4 on Oct 20 evening (03:09-03:23Z Oct 21) and 8 on Oct 21 (20:47-22:56Z).
+- Every card is in the frozen database, and all 14 deck files load in `pg_legal_v14`. They were built against main b78c8997's deck files (the printing choice) and copied into the builder's `~/exam_v2/decks`. At the cutoff, the rebuilt files must equal these byte for byte, except for any new list.
+- **A new chance card:** Wallace (B3b 068). In the frozen engine it works as Quick-Grow Extract does: playing it isn't the chance; its ChooseRandomEvolutionTarget is. So the cut already stops there, and `build/v2_helpers.py` adds `Play:Wallace` beside `Play:Quick-Grow` for the after-chance check.
+- The review index's in-window rows without a packet are only the two Oct 20 rules-test recordings (17-23-26, 17-54-38), which are not ranked.
+- The cutoff run passes every batch that holds his ranked games, the later ones included.
+
+**E5. Tests.** `test_snapshot_guards.py` has 14 tests, all OK. The new ones:
+- a linked battle is one game;
+- a battle missing a clip stops the run;
+- DECKS.json must tie the continuations;
+- a partial game without a recorded opening is excluded;
+- a continuation with another code stops `make_v2_decks.py`;
+- a battle whose RELATED_SOURCES.json is gone stops the run;
+- a stray packet naming a battle stops the run.
+
+`build/test_v2_helpers.py` has 11 tests (Wallace added), all OK.
+
+**E6. Reads, recorded** (C1: not exposure). None of these readers is the judge's developer, and none can alter frozen-7.
+- **The laptop session, Oct 22:**
+  - the new batches' metadata: LEAD_ACCEPTANCE, SOURCE, RELATED_SOURCES and the QR files. The RELATED_SOURCES and continuation QR files of both linked battles hold some battle text: the board, hand and score at the clip boundary, game06's binding note and its missing-ending note. That text was printed and read.
+  - the deck read's per-game extracts (Claydol facts) and its draft.
+- **The read-only verification workflow `wf_f62c03bf-cba`** (Oct 22, 9 agents):
+  - read the same metadata, the deck files, the window record, coordinator-027 and the frozen engine's source;
+  - read Codex's QR_EXACT_LISTS BINDINGS.json lines;
+  - ran copies of the scripts on copies of the inputs (metadata and pin files only);
+  - was told not to read any REVIEW.md, FINDINGS or COVERAGE.
+- **The Mega Sharpedo deck read** (coordinator-026; workflow `wf_294c1154-42e`, Oct 22, 6 agents: three readers, a drafter, an exam-safety check and a fact check):
+  - The readers read the 12 Mega Sharpedo games' packets (REVIEW.md, FINDINGS.json, COVERAGE.md, LADDER_ENTRY.json, LEAD_ACCEPTANCE.json; both clips of the 22-23-24 battle) and extracted deck-level facts only.
+  - The fact check reopened some of those REVIEW.md files to confirm counts.
+  - They were told never to judge a decision of his, and the exam-safety check removed every phrase that could steer a label.
+  - The read itself (to the coordinator, laptop-025) gives deck-level counts and card swaps only, with no turn-by-turn assessment.

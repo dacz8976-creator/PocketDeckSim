@@ -8,7 +8,9 @@ Changes from v1.6:
   game showed: P(..., ez_now='W', ez_next='L'); a one-type deck keeps v1.6's rule (now = next = its type);
 - the chance-step rule lives here once (DRAW, cut), for every v2 build, repair and validation script, and it adds the v2 decks' chance actions:
   * Trainers: the v2 lists' draw / search / coin Trainers are Professor's Research, Poké Ball, Copycat and Lucky Ice Pop, all already in v1.6's
-    tuple (the tuple is kept whole, so a confirmed list with Lisia, Sightseer or Quick-Grow Extract still cuts);
+    tuple (the tuple is kept whole, so a confirmed list with Lisia, Sightseer or Quick-Grow Extract still cuts); Wallace (B3b 068, in the
+    Mega Sharpedo list, Oct 22) works like Quick-Grow Extract in the frozen engine: playing it is not the chance, its
+    ChooseRandomEvolutionTarget is (cut there, as v1.6 did for Quick-Grow), and the after-chance check removes both;
   * Abilities: Dustox B4 005's Variety Powder picks a Special Condition at random, so using it is a chance step (the frozen plan lister stops at
     any action whose engine forecast has more than one branch). Its label is 'Ability@<slot>' and names no card, so cut() follows the slots
     through the line (Place, Evolve, Retreat). If a slot move it can't follow comes before an 'Ability@' while a chance-Ability Pokemon could
@@ -27,8 +29,11 @@ EN = {'G': 'Grass', 'W': 'Water', 'R': 'Fire', 'L': 'Lightning', 'P': 'Psychic',
 LETTER = {v: k for k, v in EN.items()}
 
 # the chance-step rule (v1.6's DRAW tuple, unchanged, plus the Abilities below)
-DRAW = ("Play:Professor's Research", 'Play:Poké Ball', 'Play:Copycat', 'Play:Lisia', 'Play:Sightseer', 'Play:Lucky Ice Pop', 'ChooseRandomEvolutionTarget', 'Play:Quick-Grow')
-CUTD = DRAW[:7]  # Quick-Grow itself is not the cut: its ChooseRandomEvolutionTarget is
+DRAW = ("Play:Professor's Research", 'Play:Poké Ball', 'Play:Copycat', 'Play:Lisia', 'Play:Sightseer', 'Play:Lucky Ice Pop', 'ChooseRandomEvolutionTarget', 'Play:Quick-Grow',
+        'Play:Wallace')
+CUTD = DRAW[:7]  # Quick-Grow and Wallace themselves are not the cut: their ChooseRandomEvolutionTarget is (the frozen engine's
+                 # random_typed_evolution_outcomes: the player picks the visible target, then the evolution card is random)
+RANDOM_EVOLUTION_PLAYS = ('Play:Quick-Grow', 'Play:Wallace')
 CHANCE_ABILITY = ('Dustox',)  # Variety Powder: a Special Condition chosen at random
 
 

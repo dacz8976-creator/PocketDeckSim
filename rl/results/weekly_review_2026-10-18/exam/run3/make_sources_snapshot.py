@@ -10,8 +10,15 @@ and the window record the selection check reads.
 Read only on the sources. A packet folder's recording start time comes from its name: "ScreenRecording_MM-DD-YYYY_HH-MM-SS" is Chicago local time
 (America/Chicago), an iOS name "YYYYMMDD_HHMMSSmmm_iOS" is UTC (both shown by byte-equal twins, laptop-022). In the window means strictly after
 --window-start (exam v1.6's last game, 20261016_031512000_iOS) and at or before --window-end (Oct 25, 11:59 PM Central, or Dual Fusion's release).
-For each packet in the window:
-- acceptance and ranked eligibility from LEAD_ACCEPTANCE.json only (accepted, ladder_eligible, completion_status full_battle_review_complete);
+A game is one battle (PREREG_RUN3 addendum 4): a battle recorded in several clips (SOURCE.json battle_id, or RELATED_SOURCES.json's
+battle_id and its clip list) is ONE game, made of its clips in clip order; its opening clip (clip 1) gives its start time, its packet name and
+its list (each continuation's linked code must be the opening's, checked in make_v2_decks.py and tied here through DECKS.json); every clip
+its listing names must be in the given batches and be the recording it names (video sha256). Any other packet is a game of its own.
+For each game whose start is in the window:
+- acceptance and ranked eligibility from LEAD_ACCEPTANCE.json only, for every clip (accepted, ladder_eligible); a review is complete
+  (full_battle_review_complete) or partial (the recording ends early or misses turns): a partial game counts when its opening is recorded
+  (its first clip has its own pre-game code), and per-turn usability later removes the turns it lacks; without a recorded opening it is
+  excluded as a recording that starts mid-game;
 - the exact list (PREREG_RUN3 section 1, addendum 3 D1): a deck file in DECKS.json that this game's filmed code made (matched by drive id,
   so a targeted addendum's QR counts for its game), or a list in the repository matched card for card (--extra-decks {packet name or
   drive id: deck file key}; it must name a deck file, match an in-window packet and agree with any filmed code). A deck that comes from
@@ -19,19 +26,18 @@ For each packet in the window:
   exact_lists()), each tied to its game by the video's sha256 (the window packet's SOURCE.json and LEAD_ACCEPTANCE). --exact-lists
   needs --rulings: the coordinator's ruling must cover exactly those recordings, with Codex's list letter and the packet's recording
   name, and is attached to the game's record (e.g. 21-57-12's recorded limit);
-- one game per recording: a drive id or a video sha256 in two packets stops the run; a clip of a battle recorded in several clips
-  (SOURCE.json battle_id / clip_order, or RELATED_SOURCES.json) stops it too, until that case is pre-registered (addendum 3, D6);
+- one game counted once: a packet name in two batches, or a drive id or a video sha256 in two packets (across all clips), stops the run;
 - OUT must be empty and WINDOW_OUT new (a stop can leave a partial copy there; nothing is committed after a stop);
 - the text files below are copied, and every copied file that some pin names (LEAD_ACCEPTANCE's independent.candidate_sha256, CANDIDATE_FREEZE,
   FIRST_PASS_FREEZE, independent/VERIFICATION.json: any path -> sha256 pair in them) must equal a pinned hash; REVIEW.md must be pinned. A mismatch stops.
-- its status: "in", or "excluded" with the written reason (no accepted full review; not ranked; no exact list).
+- its status: "in", or "excluded" with the written reason (no accepted review; not ranked; opening not recorded; no exact list).
 Every review-index row whose recording time is in the window but that no packet folder matches is listed too, for the selection check."""
 import argparse, csv, datetime, hashlib, json, os, re, shutil, sys
 from zoneinfo import ZoneInfo
 
 TEXT = ['REVIEW.md', 'LEAD_ACCEPTANCE.json', 'LADDER_ENTRY.json', 'LADDER_SAVED.json', 'QR_ID.json', 'QR_DECODE.json', 'UNCERTAINTIES.json', 'SOURCE.json',
         'FINDINGS.json', 'COVERAGE.md', 'CANDIDATE_FREEZE.json', 'FIRST_PASS_FREEZE.json', 'REVIEW_METRICS.json', 'NATIVE_EVIDENCE.json', 'READY.json',
-        'ROOT_TEXT_CORRECTION.json', 'independent/VERIFICATION.json']
+        'ROOT_TEXT_CORRECTION.json', 'independent/VERIFICATION.json', 'RELATED_SOURCES.json']
 PIN_FILES = ['LEAD_ACCEPTANCE.json', 'CANDIDATE_FREEZE.json', 'FIRST_PASS_FREEZE.json', 'independent/VERIFICATION.json']
 # owner rulings about recordings outside the packets, recorded as given (coordinator-023, Oct 21)
 NOTES = ['Oct 18 .MOV: not a game (owner confirmed)']
@@ -217,83 +223,168 @@ def main():
     if len(lims) != 1 or any(f'"{lim}"' not in rulings.get('ruling_verbatim', '') for _, lim in lims):
         sys.exit(f'{a.rulings}: the recorded limit must be the one the ruling quotes, on one game (found {len(lims)}): stop')
     used_extra, rec, seen_names = set(), [], set()
+    # every packet of the given batches, then the units: one game per battle (addendum 4), else one per recording
+    pk = {}
     for ev in a.evidence:
         for name in sorted(os.listdir(ev)):
             d = os.path.join(ev, name)
-            if not os.path.isdir(d):
-                continue
             t = start_utc(name)
-            if t is None or not (ws < t <= we):
+            if not os.path.isdir(d) or t is None:
                 continue
-            seen_names.add(SR.search(name).group(0) if SR.search(name) else name)
-            dr = drive_of(name)
-            r = {'packet': name, 'drive_id': dr, 'batch': os.path.basename(ev), 'start_utc': t.strftime('%Y-%m-%dT%H:%M:%SZ'), 'files': {}}
-            la_p = os.path.join(d, 'LEAD_ACCEPTANCE.json')
-            la = load(la_p) if os.path.exists(la_p) else {}
-            full = la.get('accepted') is True and la.get('completion_status') == 'full_battle_review_complete'
-            ranked = la.get('ladder_eligible') is True
-            src_p = os.path.join(d, 'SOURCE.json')
-            src = load(src_p) if os.path.exists(src_p) else {}
-            # one battle recorded in several clips: how it counts (one game? which clip?) is not pre-registered yet (laptop-023), so stop
-            if src.get('battle_id') or src.get('clip_order') or os.path.exists(os.path.join(d, 'RELATED_SOURCES.json')):
-                sys.exit(f"{name}: a clip of a linked battle (battle_id {src.get('battle_id')}, clip {src.get('clip_order')}, "
-                         f"RELATED_SOURCES.json {os.path.exists(os.path.join(d, 'RELATED_SOURCES.json'))}): the rule for a battle across "
-                         f"several recordings is pending (PREREG_RUN3 addendum 3, D6): stop")
-            r['video_sha256'] = src.get('sha256') or la.get('source_sha256')
-            ek = name if name in extra else (dr if dr in extra else None)
-            if ek:
-                used_extra.add(ek)
-            g = game_of.get(dr)
-            filmed = by_drive.get(dr)
-            deck = extra[ek] if ek else filmed
-            if ek and filmed and decks[extra[ek]]['payload'] != decks[filmed]['payload']:
-                sys.exit(f'{name}: --extra-decks gives {extra[ek]}, but its filmed code made {filmed}: two lists for one game: stop')
-            r.update(accepted_full_review=full, ranked=ranked, deck=deck,
-                     deck_source=(f"filmed code ({g['batch']}/{g['packet']}/{g['qr_file']}"
-                                  + ''.join(f"; also {s['batch']}/{s['packet']}/{s['qr_file']}" for s in g.get('also_from', [])) + ')')
-                     if g else ('a repository list matched card for card (--extra-decks)' if ek else None))
-            # a deck from a targeted addendum (a folder named by the drive id alone) counts only with that addendum checked here
-            if g and any('_ScreenRecording' not in s['packet'] for s in [g, *g.get('also_from', [])]) and dr not in exact:
-                sys.exit(f'{name}: its deck {filmed} comes from a targeted addendum; pass --exact-lists and --exact-summary so it is checked: stop')
-            x = exact.get(dr)
-            if x:
-                if not deck:
-                    sys.exit(f'{name}: has an exact-list packet ({x["folder"]}) but no deck file: rebuild DECKS.json with that folder: stop')
-                if src.get('sha256') != x['video_sha256'] or la.get('source_sha256') != x['video_sha256']:
-                    sys.exit(f"{name}: the exact-list packet {x['folder']} is for another video ({x['video_sha256'][:10]} v "
-                             f"SOURCE {str(r['video_sha256'])[:10]}, LEAD_ACCEPTANCE {str(la.get('source_sha256'))[:10]}): stop")
-                if decks[deck]['payload'] != x['payload']:
-                    sys.exit(f"{name}: its deck file {deck} is not the exact-list QR's code: stop")
-                r['exact_list'] = {k: v for k, v in x.items() if k != 'payload'}
-            if dr in rulings.get('games', {}):
-                ru = rulings['games'][dr]
-                m = SR.search(name)
-                if not m or ru.get('recording', '').replace(' ', '_') != m.group(0).replace(' ', '_'):
-                    sys.exit(f"{a.rulings}: {dr}'s recording {ru.get('recording')} is not this packet's ({name}): stop")
-                r['deck_ruling'] = dict(ru, ruling=rulings.get('ruling_ref'))
-            if not full:
-                r['status'], r['reason'] = 'excluded', 'no accepted full review (LEAD_ACCEPTANCE.json)'
-            elif not ranked:
-                r['status'], r['reason'] = 'excluded', 'not ranked (LEAD_ACCEPTANCE.json ladder_eligible is not true)'
-            elif not deck:
-                r['status'], r['reason'] = 'excluded', 'no exact deck list (no filmed code, no repository list matched)'
-            else:
-                r['status'] = 'in'
-            pins = pins_of(d)
-            if 'REVIEW.md' not in pins:
-                sys.exit(f'{name}: REVIEW.md is pinned nowhere')
-            dst = os.path.join(a.out, name)
-            for f in TEXT:
-                src = os.path.join(d, f)
-                if not os.path.exists(src):
+            src = load(os.path.join(d, 'SOURCE.json')) if os.path.exists(os.path.join(d, 'SOURCE.json')) else {}
+            rel = load(os.path.join(d, 'RELATED_SOURCES.json')) if os.path.exists(os.path.join(d, 'RELATED_SOURCES.json')) else {}
+            rr = src.get('recording_relationships') if isinstance(src.get('recording_relationships'), dict) else {}
+            qr = load(os.path.join(d, 'QR_ID.json')) if os.path.exists(os.path.join(d, 'QR_ID.json')) else {}
+            clips_listed = rel.get('sources') or rel.get('clips') or []
+            if any(not isinstance(c.get('clip_order'), int) for c in clips_listed):
+                sys.exit(f'{name}: RELATED_SOURCES.json has a clip without a whole-number clip_order: stop')
+            info = {'name': name, 'dir': d, 'batch': os.path.basename(ev), 't': t, 'drive': drive_of(name), 'src': src,
+                    'la': load(os.path.join(d, 'LEAD_ACCEPTANCE.json')) if os.path.exists(os.path.join(d, 'LEAD_ACCEPTANCE.json')) else {},
+                    # Codex writes the battle id in three places so far: SOURCE.json, its recording_relationships, RELATED_SOURCES.json
+                    'battle': src.get('battle_id') or rr.get('battle_id') or rel.get('battle_id'),
+                    'listed': sorted((c.get('clip_order'), c.get('drive_file_id'), c.get('sha256')) for c in clips_listed)}
+            # any sign that this recording is one clip of a longer battle; such a clip must end up in a battle (checked below)
+            info['clip_signs'] = [s for s, on in (('clip_order', src.get('clip_order') is not None or rr.get('clip_order') is not None),
+                                                   ('a linked or not-visible QR', bool(qr.get('linked_payload') or qr.get('linked_qr_metadata')
+                                                                                       or qr.get('status') == 'not_visible_in_this_clip')),
+                                                   ('a LINKED_*_QR_ID.json', any(f.startswith('LINKED_') and f.endswith('QR_ID.json') for f in os.listdir(d))),
+                                                   ('RELATED_SOURCES.json', bool(rel))) if on]
+            if info['clip_signs'] and not info['battle']:
+                sys.exit(f"{name}: shows a clip relationship ({', '.join(info['clip_signs'])}) but names no battle: stop")
+            if name in pk:
+                sys.exit(f"{name} is in two batches ({pk[name]['batch']}, {info['batch']}): one game counted twice: stop")
+            pk[name] = info
+    by_drive_pk = {}
+    for i in pk.values():
+        if i['drive'] in by_drive_pk:
+            sys.exit(f"drive id {i['drive']} is in two packets ({by_drive_pk[i['drive']]['name']}, {i['name']}): one game counted twice: stop")
+        by_drive_pk[i['drive']] = i
+    battles = {}
+    for i in pk.values():
+        if i['battle']:
+            battles.setdefault(i['battle'], []).append(i)
+    units = [[i] for i in pk.values() if not i['battle']]
+    for bid, clips in sorted(battles.items()):
+        listed = {tuple(c['listed']) for c in clips}
+        if len(listed) != 1 or not clips[0]['listed']:
+            sys.exit(f'battle {bid}: its clips do not list the same recordings (RELATED_SOURCES.json): stop')
+        listing = clips[0]['listed']
+        if [o for o, _, _ in listing] != list(range(1, len(listing) + 1)):
+            sys.exit(f'battle {bid}: clip orders {[o for o, _, _ in listing]} are not 1..n: stop')
+        if {c['drive'] for c in clips} != {drv for _, drv, _ in listing}:
+            sys.exit(f"battle {bid}: packets naming it {sorted(c['name'][:12] for c in clips)} are not exactly its listed clips "
+                     f"{sorted(drv[:12] for _, drv, _ in listing)}: stop")
+        ordered = []
+        for o, drv, vsha in listing:
+            c = by_drive_pk.get(drv)
+            if c is None:
+                sys.exit(f'battle {bid}: its clip {o} ({drv}) is in none of the given batches: pass every batch that holds his games: stop')
+            if c['battle'] != bid or (c['src'].get('sha256') or c['la'].get('source_sha256')) != vsha:
+                sys.exit(f"battle {bid}: clip {o} ({c['name']}) is not the recording its listing names: stop")
+            ordered.append(c)
+        if any(x['t'] >= y['t'] for x, y in zip(ordered, ordered[1:])):
+            sys.exit(f'battle {bid}: its clips do not start in clip order: stop')
+        units.append(ordered)
+    units.sort(key=lambda u: u[0]['t'])
+    for unit in units:
+        opening = unit[0]
+        inside = [ws < c['t'] <= we for c in unit]
+        if not inside[0]:
+            if any(inside):
+                sys.exit(f"battle {opening['battle']}: its opening is outside the window and a later clip inside it: stop")
+            continue
+        name, d, t = opening['name'], opening['dir'], opening['t']
+        for c in unit:
+            seen_names.add(SR.search(c['name']).group(0) if SR.search(c['name']) else c['name'])
+        dr = drive_of(name)
+        r = {'packet': name, 'drive_id': dr, 'batch': opening['batch'], 'start_utc': t.strftime('%Y-%m-%dT%H:%M:%SZ'), 'files': {}}
+        if opening['battle']:
+            r['battle_id'] = opening['battle']
+            r['clips'] = [{'clip_order': k + 1, 'packet': c['name'], 'batch': c['batch'], 'drive_id': c['drive'],
+                           'start_utc': c['t'].strftime('%Y-%m-%dT%H:%M:%SZ'), 'video_sha256': c['src'].get('sha256') or c['la'].get('source_sha256'),
+                           'review_completion': c['la'].get('completion_status'), 'files': {}} for k, c in enumerate(unit)]
+        la, src = opening['la'], opening['src']
+        accepted = all(c['la'].get('accepted') is True for c in unit)
+        completion = [c['la'].get('completion_status') for c in unit]
+        known = all(x in ('full_battle_review_complete', 'partial') for x in completion)
+        ranked = all(c['la'].get('ladder_eligible') is True for c in unit)
+        r['video_sha256'] = src.get('sha256') or la.get('source_sha256')
+        ek = name if name in extra else (dr if dr in extra else None)
+        if ek:
+            used_extra.add(ek)
+        g = game_of.get(dr)
+        filmed = by_drive.get(dr)
+        deck = extra[ek] if ek else filmed
+        if ek and filmed and decks[extra[ek]]['payload'] != decks[filmed]['payload']:
+            sys.exit(f'{name}: --extra-decks gives {extra[ek]}, but its filmed code made {filmed}: two lists for one game: stop')
+        if g and g.get('continuations') and not opening['battle']:
+            sys.exit(f"{name}: DECKS.json ties continuations to this game, but no battle here holds them: stop")
+        if g and opening['battle']:
+            # the deck file's game must carry exactly this battle's continuation clips (their linked code = the opening's code)
+            conts = sorted(s['drive_id'] for s in g.get('continuations', []))
+            if conts != sorted(c['drive'] for c in unit[1:]):
+                sys.exit(f"{name}: DECKS.json ties continuations {conts} to this game, not the battle's clips "
+                         f"{sorted(c['drive'] for c in unit[1:])}: rebuild DECKS.json from every batch: stop")
+        own_code = bool(g)  # the opening clip's own filmed code (its packet's QR, or Codex's addendum of that recording); a continuation makes no game
+        r.update(accepted_review=accepted, review_completion=completion if opening['battle'] else completion[0], ranked=ranked, deck=deck,
+                 deck_source=(f"filmed code ({g['batch']}/{g['packet']}/{g['qr_file']}"
+                              + ''.join(f"; also {s['batch']}/{s['packet']}/{s['qr_file']}" for s in g.get('also_from', [])) + ')')
+                 if g else ('a repository list matched card for card (--extra-decks)' if ek else None))
+        # a deck from a targeted addendum (a folder named by the drive id alone) counts only with that addendum checked here
+        if g and any('_ScreenRecording' not in s['packet'] for s in [g, *g.get('also_from', [])]) and dr not in exact:
+            sys.exit(f'{name}: its deck {filmed} comes from a targeted addendum; pass --exact-lists and --exact-summary so it is checked: stop')
+        x = exact.get(dr)
+        if x:
+            if not deck:
+                sys.exit(f'{name}: has an exact-list packet ({x["folder"]}) but no deck file: rebuild DECKS.json with that folder: stop')
+            if src.get('sha256') != x['video_sha256'] or la.get('source_sha256') != x['video_sha256']:
+                sys.exit(f"{name}: the exact-list packet {x['folder']} is for another video ({x['video_sha256'][:10]} v "
+                         f"SOURCE {str(r['video_sha256'])[:10]}, LEAD_ACCEPTANCE {str(la.get('source_sha256'))[:10]}): stop")
+            if decks[deck]['payload'] != x['payload']:
+                sys.exit(f"{name}: its deck file {deck} is not the exact-list QR's code: stop")
+            r['exact_list'] = {k: v for k, v in x.items() if k != 'payload'}
+        if dr in rulings.get('games', {}):
+            ru = rulings['games'][dr]
+            m = SR.search(name)
+            if not m or ru.get('recording', '').replace(' ', '_') != m.group(0).replace(' ', '_'):
+                sys.exit(f"{a.rulings}: {dr}'s recording {ru.get('recording')} is not this packet's ({name}): stop")
+            r['deck_ruling'] = dict(ru, ruling=rulings.get('ruling_ref'))
+        partial = 'partial' in completion
+        if partial:
+            r['partial_review_note'] = ('the recording ends early or misses turns: the game counts when its opening is recorded, and '
+                                        'per-turn usability removes the turns it lacks (PREREG_RUN3 addendum 4)')
+        if not accepted:
+            r['status'], r['reason'] = 'excluded', 'no accepted review (LEAD_ACCEPTANCE.json)'
+        elif not known:
+            r['status'], r['reason'] = 'excluded', f'review neither complete nor partial ({completion})'
+        elif not ranked:
+            r['status'], r['reason'] = 'excluded', 'not ranked (LEAD_ACCEPTANCE.json ladder_eligible is not true)'
+        elif partial and not own_code:
+            r['status'], r['reason'] = 'excluded', 'the opening is not recorded (no pre-game code in its first clip): a recording that starts mid-game'
+        elif not deck:
+            r['status'], r['reason'] = 'excluded', 'no exact deck list (no filmed code, no repository list matched)'
+        else:
+            r['status'] = 'in'
+        for k, c in enumerate(unit):
+            pins = pins_of(c['dir'])
+            if 'REVIEW.md' not in pins or not os.path.exists(os.path.join(c['dir'], 'REVIEW.md')):
+                sys.exit(f"{c['name']}: REVIEW.md is missing or pinned nowhere: stop")
+            dst = os.path.join(a.out, c['name'])
+            linked_qr = sorted(f for f in os.listdir(c['dir']) if f.startswith('LINKED_') and f.endswith('QR_ID.json'))
+            files = r['files'] if k == 0 else r['clips'][k]['files']
+            for f in TEXT + linked_qr:
+                src_f = os.path.join(c['dir'], f)
+                if not os.path.exists(src_f):
                     continue
-                h = sha(src)
+                h = sha(src_f)
                 if f in pins and h not in pins[f]:
-                    sys.exit(f'{name}/{f}: sha256 {h[:12]} is not the pinned one ({sorted(x[:12] for x in pins[f])}): stop')
+                    sys.exit(f"{c['name']}/{f}: sha256 {h[:12]} is not the pinned one ({sorted(x[:12] for x in pins[f])}): stop")
                 os.makedirs(os.path.dirname(os.path.join(dst, f)), exist_ok=True)
-                shutil.copyfile(src, os.path.join(dst, f))
-                r['files'][f] = {'sha256': h, 'pinned': f in pins}
-            rec.append(r)
+                shutil.copyfile(src_f, os.path.join(dst, f))
+                files[f] = {'sha256': h, 'pinned': f in pins}
+            if opening['battle']:
+                r['clips'][k]['files'] = files
+        rec.append(r)
     stray = []
     with open(a.index, encoding='utf-8-sig', newline='') as fh:
         for row in csv.DictReader(fh):
@@ -310,27 +401,39 @@ def main():
         sys.exit(f'exact-list packets for no game in the window: {unused}: stop')
     if set(extra) - used_extra:
         sys.exit(f'--extra-decks keys that match no packet in the window: {sorted(set(extra) - used_extra)}: stop')
+    # every game and continuation DECKS.json knows must be placed: as a game's opening, or as a later clip of its battle
+    openings = {r['drive_id'] for r in rec}
+    later_clips = {c['drive_id'] for r in rec for c in (r.get('clips') or [])[1:]}
+    for dr, g in game_of.items():
+        if dr not in openings:
+            sys.exit(f"DECKS.json game {g['packet'][:40]} is not a game in this window record (batch not passed, or outside the window): stop")
+        for c in g.get('continuations', []):
+            if c['drive_id'] not in later_clips or c['drive_id'] in openings:
+                sys.exit(f"DECKS.json continuation {c['packet'][:40]} is not a later clip of a battle here: stop")
     # one game per recording: a packet twice (two batches), or one video under two names (byte-equal twins), would count its points twice
     for key in ('drive_id', 'video_sha256'):
         seen = {}
         for r in rec:
-            v = r.get(key)
-            if v is None:
-                continue
-            if v in seen:
-                sys.exit(f"{key} {str(v)[:16]} is in two packets ({seen[v]}, {r['batch']}/{r['packet']}): one game counted twice: stop")
-            seen[v] = f"{r['batch']}/{r['packet']}"
+            for c in r.get('clips') or [r]:
+                v = c.get(key)
+                if v is None:
+                    continue
+                if v in seen:
+                    sys.exit(f"{key} {str(v)[:16]} is in two packets ({seen[v]}, {c['batch']}/{c['packet']}): one game counted twice: stop")
+                seen[v] = f"{c['batch']}/{c['packet']}"
     out = {'what': "exam v2's window record (make_sources_snapshot.py); sources copied to run3/sources/<packet>/, hash-checked against the packets' pins",
            'window_start_exclusive': a.window_start, 'window_end_inclusive': a.window_end, 'evidence': a.evidence,
            'exact_lists': exact_meta, 'rulings': {'file': a.rulings, 'sha256': sha(a.rulings)},
            'packets': rec, 'index_rows_without_packet': stray, 'notes': NOTES,
-           'counts': {'in_window': len(rec), 'in': sum(r['status'] == 'in' for r in rec), 'excluded': sum(r['status'] == 'excluded' for r in rec)}}
+           'counts': {'in_window': len(rec), 'in': sum(r['status'] == 'in' for r in rec), 'excluded': sum(r['status'] == 'excluded' for r in rec),
+                      'recordings': sum(len(r.get('clips') or [r]) for r in rec), 'linked_battles': sum(1 for r in rec if r.get('clips'))}}
     with open(a.window_out, 'w', encoding='utf-8') as f:
         json.dump(out, f, indent=1, ensure_ascii=False)
     print(json.dumps(out['counts']), '| index rows without a packet:', len(stray), '| exact-list packets:', len(exact))
     for r in rec:
         print(f"{r['start_utc']} {r['status']:8s} {r.get('deck') or '-':18s} {r['packet'][:60]} {r.get('reason', '')}"
-              f"{' [exact list ' + str(r['exact_list']['list_id']) + ']' if r.get('exact_list') else ''}{' [ruling]' if r.get('deck_ruling') else ''}")
+              f"{' [exact list ' + str(r['exact_list']['list_id']) + ']' if r.get('exact_list') else ''}{' [ruling]' if r.get('deck_ruling') else ''}"
+              f"{' [battle of ' + str(len(r['clips'])) + ' clips]' if r.get('clips') else ''}{' [partial review]' if r.get('partial_review_note') else ''}")
 
 
 if __name__ == '__main__':

@@ -71,7 +71,7 @@ def main():
     printings = collections.defaultdict(list)
     for cid, rec in encode_qr.BYID.items():
         printings[norm_key(rec['entity_key'])].append(cid)
-    payloads, by_drive = {}, {}
+    payloads, by_drive, continuations = {}, {}, []
     for ev in a.evidence:
         for d in sorted(glob.glob(os.path.join(ev, '*'))):
             qr_pays = {}
@@ -89,14 +89,35 @@ def main():
                     with open(p, encoding='utf-8-sig') as fh:
                         q = json.load(fh)
                     pay = qr_pays[f]
-                    if not pay and (q.get('linked_payload') or q.get('status') == 'not_visible_in_this_clip'):
-                        sys.exit(f'{p}: a clip of a linked battle, with no QR of its own: the rule for a battle across several recordings '
-                                 f'is pending (PREREG_RUN3 addendum 3, D6)')
+                    if not pay and (q.get('linked_payload') or q.get('linked_qr_metadata') or q.get('status') == 'not_visible_in_this_clip'):
+                        # a continuation clip of a linked battle (PREREG_RUN3 addendum 4): no code of its own; its link names the
+                        # opening clip and that clip's code, which must equal the opening clip's own code (checked after the scan)
+                        linked = q.get('linked_payload')
+                        linked_file = f'{f}:linked_payload' if linked else None
+                        opening = (q.get('linked_opening_source') or q.get('linked_source') or {}).get('drive_file_id')
+                        if not linked and q.get('linked_qr_metadata'):
+                            lp = os.path.join(d, os.path.basename(q['linked_qr_metadata']))
+                            if not os.path.exists(lp):
+                                sys.exit(f'{p}: its linked QR file {q["linked_qr_metadata"]} is missing')
+                            with open(lp, encoding='utf-8-sig') as fh:
+                                lq = json.load(fh)
+                            linked = next((lq[k] for k in ('payload', 'qr_payload', 'decoded_payload') if isinstance(lq.get(k), str) and lq[k]), None)
+                            linked_file = os.path.basename(q['linked_qr_metadata'])
+                            if opening and lq.get('drive_file_id') and lq['drive_file_id'] != opening:
+                                sys.exit(f'{lp}: names opening {lq["drive_file_id"]}, but {f} names {opening}')
+                            opening = opening or lq.get('drive_file_id')
+                        if not linked or not opening:
+                            sys.exit(f'{p}: a clip with no code of its own and no linked code / opening clip')
+                        continuations.append({'packet': os.path.basename(d), 'batch': os.path.basename(ev), 'qr_file': f,
+                                              'drive_id': os.path.basename(d).split('_ScreenRecording')[0], 'opening_drive_id': opening,
+                                              'linked_payload': linked, 'linked_qr_file': linked_file})
+                        break
                     if not pay:
                         sys.exit(f'{p}: no payload')
                     weak = {k: q[k] for k in ('battle_full20_proven', 'unsaved_changes_prompt', 'notes') if k in q}
                     src = {'packet': os.path.basename(d), 'batch': os.path.basename(ev), 'qr_file': f,
-                           'schema': q.get('schema'), 'filename': q.get('filename') or q.get('source_filename'), 'weak': weak}
+                           'schema': q.get('schema'), 'weak': weak,
+                           'filename': q.get('filename') or q.get('source_filename') or (q.get('source') if isinstance(q.get('source'), dict) else {}).get('filename')}
                     # one game = one Drive recording: a packet folder is "<drive id>_ScreenRecording_..." or, for a targeted addendum, "<drive id>"
                     drive = os.path.basename(d).split('_ScreenRecording')[0]
                     if drive in by_drive:
@@ -109,6 +130,16 @@ def main():
                     by_drive[drive] = (pay, game)
                     payloads.setdefault(pay, []).append(game)
                     break
+    # each continuation joins its opening clip's game: one game per battle; its linked code must be the opening clip's own code
+    for c in continuations:
+        if c['drive_id'] in by_drive:
+            sys.exit(f"{c['packet']}: a continuation that also has a code of its own")
+        if c['opening_drive_id'] not in by_drive:
+            sys.exit(f"{c['packet']}: its opening clip {c['opening_drive_id']} has no code of its own in the given evidence")
+        opay, ogame = by_drive[c['opening_drive_id']]
+        if c['linked_payload'] != opay:
+            sys.exit(f"{c['packet']}: its linked code is not its opening clip's code ({ogame['packet']})")
+        ogame.setdefault('continuations', []).append({k: c[k] for k in ('packet', 'batch', 'qr_file', 'drive_id', 'linked_qr_file')})
     os.makedirs(a.out, exist_ok=True)
     index = {}
     for pay, games in sorted(payloads.items(), key=lambda kv: kv[1][0]['packet']):

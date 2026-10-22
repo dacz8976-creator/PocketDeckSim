@@ -61,6 +61,12 @@ class Helpers(unittest.TestCase):
         # without a chance-Ability Pokemon in play and the slots followed, an Ability is plain
         self.assertEqual(H.cut(['Ability@1', 'EndTurn'], pos(['Dragonite B4 118', 'Dragonair B4 117'])), ['Ability@1', 'EndTurn'])
 
+    def test_wallace_cuts_at_its_random_evolution(self):
+        line = ['Play:Wallace', 'ChooseRandomEvolutionTarget{in_play_idx:1,energy_type:Water}', 'Attach:1Water@0 zone', 'EndTurn']
+        b = pos(['Mega Sharpedo ex B4 035', 'Carvanha B4 034'])
+        self.assertEqual(H.cut(line, b), line[:2])
+        self.assertEqual(H.chance_steps(line, b), [0, 1])
+
     def test_chance_steps_lists_all(self):
         line = ['Play:Quick-Grow Extract', 'ChooseRandomEvolutionTarget{in_play_idx:1,energy_type:Grass}', "Play:Professor's Research", 'EndTurn']
         self.assertEqual(H.chance_steps(line, pos(['Alolan Grimer A3 110'])), [0, 1, 2])
