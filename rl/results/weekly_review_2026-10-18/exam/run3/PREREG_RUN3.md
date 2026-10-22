@@ -365,3 +365,10 @@ Nothing has been selected, built or run. The window is still open. This settles 
   - The fact check reopened some of those REVIEW.md files to confirm counts.
   - They were told never to judge a decision of his, and the exam-safety check removed every phrase that could steer a label.
   - The read itself (to the coordinator, laptop-025) gives deck-level counts and card swaps only, with no turn-by-turn assessment.
+
+**E7. E2's reading, resolved (coordinator-028, mailbox id 20261022T1730Z, before any selection), verbatim:**
+- "Any accepted partial review whose OPENING is recorded counts. Per-turn usability (board, hand and move known, and a real choice) removes whatever turns the gap or the missing ending leaves unknown."
+- "The turns right after a mid-game gap are usable only if the coder can establish the full state at that turn, including any lasting turn effects and the Supporter/Energy/retreat use so far that turn. Otherwise they're not usable."
+- "Each such game is flagged for the selection check, as you have it."
+
+The scripts already apply the first and third points (E2). The second is a rule for the usability coding: it goes into the usability job's prompt (`jobs/INV_JOB.md`) at its launch.
