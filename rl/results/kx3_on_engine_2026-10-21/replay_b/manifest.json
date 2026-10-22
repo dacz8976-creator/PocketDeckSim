@@ -1,0 +1,124 @@
+{
+ "name": "kx3_replay_engine_2026_10_21_b",
+ "question": "THE SLOW REPORT'S RE-PIN CHECK after main-4d48844's pin (rl/results/kx3_on_engine_2026-10-21/SPEC.md): do the frozen kx3's development-run games replay exactly on the new engine, except where one of main-4d48844's six changes acts (SPEC.md section 3 names the rows), and does every changed game show that change acting? This registration: 01-muk-glimmora-kingambit-regigigas, 05-indeedee-stoutland, draft-A-shark-tempo v the 8 panel lists, deals 0-1, seed_base 24440000000 (each key the development run's own seed).",
+ "repo_commit": "0b4117ce6eedf1ca52c1ffcd23e5af365621f372",
+ "selfcheck": {
+  "km3": "selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1",
+  "kx3": "selfcheck pilot=kx3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=138 digest=31d638dbc818b0fa"
+ },
+ "selfcheck_source": {
+  "km3": "run by strength_prereg.py",
+  "kx3": "run by strength_prereg.py"
+ },
+ "created_at": "2026-10-22T02:00:25Z",
+ "stage": "dev",
+ "repo_root": ".",
+ "pilot": "kx3",
+ "reference": "km3",
+ "decks": [
+  {
+   "name": "01-muk-glimmora-kingambit-regigigas",
+   "path": "decks/dustin/01-muk-glimmora-kingambit-regigigas.txt",
+   "sha256": "49d135c6e09e375a531e5e82e7d1c3887f9c8f1b9a9c988e587623d0bde35785"
+  },
+  {
+   "name": "05-indeedee-stoutland",
+   "path": "decks/dustin/05-indeedee-stoutland.txt",
+   "sha256": "0524e3595c49ded4c55380c72726890d8d730bf1eeb035cdc460f26b30f4339c"
+  },
+  {
+   "name": "draft-A-shark-tempo",
+   "path": "decks/brews/drafts_2026-10-01/draft-A-shark-tempo.txt",
+   "sha256": "3f39092ba6680cc5b8013b961e2f5a0f07bc779816ade7a6891983082b2e7417"
+  }
+ ],
+ "opponents": [
+  {
+   "name": "t-altaria",
+   "path": "decks/screen/opponents/t-altaria.txt",
+   "sha256": "c3a57b9c835be77ba864514e2636645885c4f22d75028c5f29e2686edcbe171f"
+  },
+  {
+   "name": "t-blaziken",
+   "path": "decks/screen/opponents/t-blaziken.txt",
+   "sha256": "d88a70e56dae8f8500d539348223b5fee5eaba705667578a8fcbca95963fd7ed"
+  },
+  {
+   "name": "t-hydreigon",
+   "path": "decks/screen/opponents/t-hydreigon.txt",
+   "sha256": "18688bd9ab09f2638538006590767a5750abe763572c0fb636c47eec93155f3b"
+  },
+  {
+   "name": "t-lucario",
+   "path": "decks/screen/opponents/t-lucario.txt",
+   "sha256": "76ad71c4d932da51fddc8c3082f184f8012c86e1f1e15c5858e055190560f634"
+  },
+  {
+   "name": "t-sceptile",
+   "path": "decks/screen/opponents/t-sceptile.txt",
+   "sha256": "fe0b7fc4de2f9dff0268a65d30dd39bfd5b73e7e5115b48e59f3975777018cd2"
+  },
+  {
+   "name": "t-suicune",
+   "path": "decks/screen/opponents/t-suicune.txt",
+   "sha256": "639778c3cdc056130278fa13984b1bb1c508226032334d54b7a01a25d3187783"
+  },
+  {
+   "name": "t-vespiquen",
+   "path": "decks/screen/opponents/t-vespiquen.txt",
+   "sha256": "8356844fd2d143a44c547356ff5a32b74977478fbb1f9fc2a716a7f2233f8255"
+  },
+  {
+   "name": "t-weezing",
+   "path": "decks/screen/opponents/t-weezing.txt",
+   "sha256": "26cb869fe5f2c7cd79f8b974bf7667f802837bdb6ec9442db5360aef490ce5a1"
+  }
+ ],
+ "deals": 2,
+ "seats": [
+  0,
+  1
+ ],
+ "seed_base": 24440000000,
+ "pair_stride": 10000,
+ "threads": 2,
+ "log_level": "deck",
+ "ext_timeout_s": null,
+ "heldout_decks": [
+  "02-arceus-crobat",
+  "04-absol-hoopa-darkrai",
+  "07-skarmory-stall",
+  "08-garchomp-toolbox",
+  "11-archaludon-haxorus-dragonair",
+  "12-ariados-whimsicott-ogerpon",
+  "13-a-ninetales-raticate",
+  "14-comfey-raticate-hypno",
+  "15-jolteon-oricorio-raticate",
+  "draft-C-meowstic-hatterene-v2",
+  "draft-D-entei-grimhound"
+ ],
+ "heldout_locked": true,
+ "heldout_registry": [
+  "02-arceus-crobat",
+  "04-absol-hoopa-darkrai",
+  "07-skarmory-stall",
+  "08-garchomp-toolbox",
+  "11-archaludon-haxorus-dragonair",
+  "12-ariados-whimsicott-ogerpon",
+  "13-a-ninetales-raticate",
+  "14-comfey-raticate-hypno",
+  "15-jolteon-oricorio-raticate",
+  "draft-C-meowstic-hatterene-v2",
+  "draft-D-entei-grimhound"
+ ],
+ "heldout_in_run": [],
+ "intended_lines": "rl/strength/intended_lines.json",
+ "intended_lines_sha256": "80778f3c4a58aa11d8a10fd96196110177dcc20d240d24f9351798eda4dae5a1",
+ "program": "/home/dacz8976/kx_r3/strength",
+ "program_sha256": "7d046b6f9c1dcd9a9a834c2995bad256bc784e804ea08d351878e035cb24d319",
+ "engine": "laptop/kx3-on-engine-candidate-2026-10-20 87a7f3404263e1bfe76e8765ba8dd94695e19cfe engine tree 64de03e2c3c25b8371e9b87c5727d1f93ec70c30 (the frozen kx3's players, d513e37b, on main-4d48844's engine: built commit 4d4884492aa85496acf9bafdae18b22739f56647), built on the laptop Oct 21 with rl/strength/build.sh (harness bf9c5d68, STRENGTH_JOBS=2); self-checks measured on this program Oct 21: km3 81b572198c04d5d1 and kx3 31d638dbc818b0fa, equal to the slow-report pin's",
+ "pilot_provenance": "kx3 from claude/playout-pilot@d513e37b (frozen Oct 4-5), its players byte for byte on main-4d48844's engine",
+ "reference_provenance": "km3 in the same build; its self-check is the pinned km3's (81b572198c04d5d1)",
+ "planned_pairs": 24,
+ "planned_games": 192
+}

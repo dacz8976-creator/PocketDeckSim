@@ -1,0 +1,38 @@
+{
+ "reference": "km3",
+ "seats": [
+  0,
+  1
+ ],
+ "pair_stride": 10000,
+ "threads": 2,
+ "log_level": "deck",
+ "ext_timeout_s": null,
+ "intended_lines": "rl/strength/intended_lines.json",
+ "name": "kx3_replay_engine_2026_10_21_a",
+ "question": "THE SLOW REPORT'S RE-PIN CHECK after main-4d48844's pin (rl/results/kx3_on_engine_2026-10-21/SPEC.md): do the frozen kx3's development-run games replay exactly on the new engine, except where one of main-4d48844's six changes acts (SPEC.md section 3 names the rows), and does every changed game show that change acting? This registration: 09-mega-manectric-heliolisk, 06-mega-blaziken-tournament-list, 10-xatu-oricorio-tr-weezing v the 8 panel lists, deals 0-1, seed_base 24400000000 (each key the development run's own seed).",
+ "pilot": "kx3",
+ "stage": "dev",
+ "decks": [
+  "09-mega-manectric-heliolisk",
+  "06-mega-blaziken-tournament-list",
+  "10-xatu-oricorio-tr-weezing"
+ ],
+ "opponents": [
+  "t-altaria",
+  "t-blaziken",
+  "t-hydreigon",
+  "t-lucario",
+  "t-sceptile",
+  "t-suicune",
+  "t-vespiquen",
+  "t-weezing"
+ ],
+ "deals": 2,
+ "seed_base": 24400000000,
+ "program": "/home/dacz8976/kx_r3/strength",
+ "program_sha256": "7d046b6f9c1dcd9a9a834c2995bad256bc784e804ea08d351878e035cb24d319",
+ "engine": "laptop/kx3-on-engine-candidate-2026-10-20 87a7f3404263e1bfe76e8765ba8dd94695e19cfe engine tree 64de03e2c3c25b8371e9b87c5727d1f93ec70c30 (the frozen kx3's players, d513e37b, on main-4d48844's engine: built commit 4d4884492aa85496acf9bafdae18b22739f56647), built on the laptop Oct 21 with rl/strength/build.sh (harness bf9c5d68, STRENGTH_JOBS=2); self-checks measured on this program Oct 21: km3 81b572198c04d5d1 and kx3 31d638dbc818b0fa, equal to the slow-report pin's",
+ "pilot_provenance": "kx3 from claude/playout-pilot@d513e37b (frozen Oct 4-5), its players byte for byte on main-4d48844's engine",
+ "reference_provenance": "km3 in the same build; its self-check is the pinned km3's (81b572198c04d5d1)"
+}
