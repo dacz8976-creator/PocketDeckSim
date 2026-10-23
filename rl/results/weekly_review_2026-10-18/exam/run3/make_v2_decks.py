@@ -96,16 +96,24 @@ def main():
                         linked_file = f'{f}:linked_payload' if linked else None
                         opening = (q.get('linked_opening_source') or q.get('linked_source') or {}).get('drive_file_id')
                         if not linked and q.get('linked_qr_metadata'):
-                            lp = os.path.join(d, os.path.basename(q['linked_qr_metadata']))
+                            # a file in this packet ("LINKED_CLIP07_QR_ID.json") or, by an absolute Windows path, the opening packet's
+                            # own QR_ID.json ("C:\...\Evidence\<batch>\<opening packet>\QR_ID.json"): resolved by packet folder name
+                            parts = q['linked_qr_metadata'].replace('\\', '/').rstrip('/').split('/')
+                            if len(parts) == 1 or parts[-2] == os.path.basename(d):
+                                lp = os.path.join(d, parts[-1])
+                            else:
+                                lp = next((os.path.join(e2, parts[-2], parts[-1]) for e2 in [ev, *a.evidence]
+                                           if os.path.exists(os.path.join(e2, parts[-2], parts[-1]))), os.path.join(ev, parts[-2], parts[-1]))
                             if not os.path.exists(lp):
                                 sys.exit(f'{p}: its linked QR file {q["linked_qr_metadata"]} is missing')
                             with open(lp, encoding='utf-8-sig') as fh:
                                 lq = json.load(fh)
                             linked = next((lq[k] for k in ('payload', 'qr_payload', 'decoded_payload') if isinstance(lq.get(k), str) and lq[k]), None)
-                            linked_file = os.path.basename(q['linked_qr_metadata'])
-                            if opening and lq.get('drive_file_id') and lq['drive_file_id'] != opening:
-                                sys.exit(f'{lp}: names opening {lq["drive_file_id"]}, but {f} names {opening}')
-                            opening = opening or lq.get('drive_file_id')
+                            linked_file = '/'.join(parts[-2:]) if len(parts) > 1 and parts[-2] != os.path.basename(d) else parts[-1]
+                            lq_drive = lq.get('drive_file_id') or (lq.get('source') if isinstance(lq.get('source'), dict) else {}).get('drive_file_id')
+                            if opening and lq_drive and lq_drive != opening:
+                                sys.exit(f'{lp}: names opening {lq_drive}, but {f} names {opening}')
+                            opening = opening or lq_drive
                         if not linked or not opening:
                             sys.exit(f'{p}: a clip with no code of its own and no linked code / opening clip')
                         continuations.append({'packet': os.path.basename(d), 'batch': os.path.basename(ev), 'qr_file': f,

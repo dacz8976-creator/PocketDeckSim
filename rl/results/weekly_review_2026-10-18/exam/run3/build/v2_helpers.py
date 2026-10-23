@@ -34,6 +34,12 @@ DRAW = ("Play:Professor's Research", 'Play:Poké Ball', 'Play:Copycat', 'Play:Li
 CUTD = DRAW[:7]  # Quick-Grow and Wallace themselves are not the cut: their ChooseRandomEvolutionTarget is (the frozen engine's
                  # random_typed_evolution_outcomes: the player picks the visible target, then the evolution card is random)
 RANDOM_EVOLUTION_PLAYS = ('Play:Quick-Grow', 'Play:Wallace')
+# Stadiums whose use (UseStadium) is a chance step while they are in play: Mesagoza's coin (v1.6), Fragrant Forest's random Basic [G]
+# from the deck (Oct 23 lists; the frozen engine searches the deck, which the lister and pg_legal_v14 both stop at)
+CHANCE_STADIUMS = ('Mesagoza', 'Fragrant Forest')
+# Lusamine (Oct 23 lists): playing it is deterministic; its AttachFromDiscard ("2 random Energy from your discard pile") branches in the
+# frozen engine's forecast only when the discard holds 3+ Energy of 2+ types (forecast_attach_from_discard); chance_steps judges that
+# from the position's discard at the start of the turn (a retreat earlier in the same line is not counted: the label check catches it)
 CHANCE_ABILITY = ('Dustox',)  # Variety Powder: a Special Condition chosen at random
 
 
@@ -122,14 +128,16 @@ def chance_steps(line, position, labels=DRAW, first_only=False):
     """Indices of every chance step in the line: a label starting with one of `labels`, UseStadium while Mesagoza is the Stadium, or a chance
     Ability by the slot it names. validate's after-chance variant uses all of them (DRAW, with Quick-Grow); cut() uses the first (CUTD)."""
     stadium = position.get('stadium')
-    mesa = 'Mesagoza' in json.dumps(stadium or '')
+    mesa = any(s in json.dumps(stadium or '') for s in CHANCE_STADIUMS)
     board = [_base(b['card']) for b in position['me']['board']]
+    discard_energy = list(position['me'].get('discard_energy') or [])
     followed = True
     out = []
     for i, l in enumerate(line):
-        if l == 'Play:Mesagoza':
+        if l in tuple(f'Play:{s}' for s in CHANCE_STADIUMS):
             mesa = True
-        if l.startswith(labels) or (l == 'UseStadium' and mesa):
+        random_attach = l == 'AttachFromDiscard' and len(discard_energy) > 2 and len(set(discard_energy)) > 1
+        if l.startswith(labels) or (l == 'UseStadium' and mesa) or random_attach:
             out.append(i)
             if first_only:
                 return out

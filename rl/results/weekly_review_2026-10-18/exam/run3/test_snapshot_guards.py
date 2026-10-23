@@ -7,11 +7,13 @@ import copy, json, os, shutil, subprocess, sys, tempfile, unittest
 HERE = os.path.dirname(os.path.abspath(__file__))
 EV, QA, INDEX, DECKS, RULINGS = (sys.argv.pop(1) for _ in range(5)) if len(sys.argv) >= 6 else (None,) * 5
 BATCHES = ['DRIVE_INBOX_2026-10-20', 'DRIVE_LADDER_2026-10-19', 'DRIVE_LADDER_REMAINING_2026-10-19', 'DRIVE_INBOX_2026-10-21',
-           'DRIVE_LADDER_2026-10-21_EVENING']
+           'DRIVE_LADDER_2026-10-21_EVENING', 'DRIVE_LADDER_2026-10-23']
 FROZEN_DB = '/tmp/frozen_db_70652fff.json'
 # the two linked battles of DRIVE_INBOX_2026-10-21 (addendum 4's case record)
 GAME01 = ('1Pe3YcccL4MVTmDWeyHnG7Uz5ZXTl5DEN', '11nTG081XdYLHpPHN9UFE6rFnq7ujo27e')
 GAME06 = ('1oPEdAUQDKkSl3G4-3TgMpkOJtlaSq9eJ', '1RlG7rzxAZoBwA8OJv2khC3QNRXTob8V6')
+# DRIVE_LADDER_2026-10-23's battle (battle_key + chronological_sources; the continuation links the opening's QR_ID.json by path)
+BATTLE23 = ('1J23vw2SNQNk8OoacLpGX8IT01_12HEb-', '1-JWdPEk8S84x_vHmazpGcS4NthzEQhw1')
 EXACT = 'QR_EXACT_LISTS_2026-10-21'
 TEXT = ['REVIEW.md', 'LEAD_ACCEPTANCE.json', 'LADDER_ENTRY.json', 'LADDER_SAVED.json', 'QR_ID.json', 'QR_DECODE.json', 'UNCERTAINTIES.json',
         'SOURCE.json', 'FINDINGS.json', 'COVERAGE.md', 'CANDIDATE_FREEZE.json', 'FIRST_PASS_FREEZE.json', 'REVIEW_METRICS.json',
@@ -83,15 +85,15 @@ class Guards(unittest.TestCase):
                                 'decoded QR plus continuous footage of Cancel, the saved rename and selection; the saved list was not reopened')])
         self.assertEqual(sum(1 for p in w['packets'] if p.get('exact_list')), 7)
         battles = {p['drive_id']: p for p in w['packets'] if p.get('clips')}
-        self.assertEqual(set(battles), {GAME01[0], GAME06[0]})
-        for opening, cont in (GAME01, GAME06):
+        self.assertEqual(set(battles), {GAME01[0], GAME06[0], BATTLE23[0]})
+        for opening, cont in (GAME01, GAME06, BATTLE23):
             b = battles[opening]
             self.assertEqual([c['drive_id'] for c in b['clips']], [opening, cont])
             self.assertEqual(b['start_utc'], b['clips'][0]['start_utc'])
             self.assertEqual(b['status'], 'in')
         self.assertIn('partial_review_note', battles[GAME06[0]])
         self.assertNotIn('partial_review_note', battles[GAME01[0]])
-        self.assertFalse({GAME01[1], GAME06[1]} & {p['drive_id'] for p in w['packets']}, 'a continuation is never a game of its own')
+        self.assertFalse({GAME01[1], GAME06[1], BATTLE23[1]} & {p['drive_id'] for p in w['packets']}, 'a continuation is never a game of its own')
 
     def test_1_the_exact_lists_and_the_ruling_are_required(self):
         self.stops('required', no_exact=True)

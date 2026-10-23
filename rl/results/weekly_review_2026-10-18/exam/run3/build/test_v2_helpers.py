@@ -67,6 +67,18 @@ class Helpers(unittest.TestCase):
         self.assertEqual(H.cut(line, b), line[:2])
         self.assertEqual(H.chance_steps(line, b), [0, 1])
 
+    def test_fragrant_forest_and_lusamine(self):
+        ff = pos(['Buzzwole ex A3a 043'], stadium={'card': 'Fragrant Forest B3 153'})
+        self.assertEqual(H.cut(['UseStadium', 'Attach:1Grass@0 zone'], ff), ['UseStadium'])
+        self.assertEqual(H.cut(['Play:Fragrant Forest', 'UseStadium', 'EndTurn'], pos(['Buzzwole ex A3a 043'])), ['Play:Fragrant Forest', 'UseStadium'])
+        mixed = dict(pos(['Celesteela A3a 062']), me={'board': [{'card': 'Celesteela A3a 062', 'hp': 50}], 'discard_energy': ['Grass', 'Grass', 'Fighting']})
+        same = dict(pos(['Celesteela A3a 062']), me={'board': [{'card': 'Celesteela A3a 062', 'hp': 50}], 'discard_energy': ['Grass', 'Grass', 'Grass']})
+        two = dict(pos(['Celesteela A3a 062']), me={'board': [{'card': 'Celesteela A3a 062', 'hp': 50}], 'discard_energy': ['Grass', 'Fighting']})
+        line = ['Play:Lusamine', 'AttachFromDiscard', 'EndTurn']
+        self.assertEqual(H.cut(line, mixed), line[:2])
+        self.assertEqual(H.cut(line, same), line)
+        self.assertEqual(H.cut(line, two), line)
+
     def test_chance_steps_lists_all(self):
         line = ['Play:Quick-Grow Extract', 'ChooseRandomEvolutionTarget{in_play_idx:1,energy_type:Grass}', "Play:Professor's Research", 'EndTurn']
         self.assertEqual(H.chance_steps(line, pos(['Alolan Grimer A3 110'])), [0, 1, 2])

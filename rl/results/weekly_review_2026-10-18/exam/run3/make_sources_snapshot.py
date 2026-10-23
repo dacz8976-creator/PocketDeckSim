@@ -236,12 +236,16 @@ def main():
             rr = src.get('recording_relationships') if isinstance(src.get('recording_relationships'), dict) else {}
             qr = load(os.path.join(d, 'QR_ID.json')) if os.path.exists(os.path.join(d, 'QR_ID.json')) else {}
             clips_listed = rel.get('sources') or rel.get('clips') or []
+            if not clips_listed and isinstance(rel.get('chronological_sources'), list):
+                # Oct 23's layout: the clips in recording order, with no clip numbers
+                clips_listed = [dict(c, clip_order=k + 1) for k, c in enumerate(rel['chronological_sources'])]
             if any(not isinstance(c.get('clip_order'), int) for c in clips_listed):
                 sys.exit(f'{name}: RELATED_SOURCES.json has a clip without a whole-number clip_order: stop')
             info = {'name': name, 'dir': d, 'batch': os.path.basename(ev), 't': t, 'drive': drive_of(name), 'src': src,
                     'la': load(os.path.join(d, 'LEAD_ACCEPTANCE.json')) if os.path.exists(os.path.join(d, 'LEAD_ACCEPTANCE.json')) else {},
-                    # Codex writes the battle id in three places so far: SOURCE.json, its recording_relationships, RELATED_SOURCES.json
-                    'battle': src.get('battle_id') or rr.get('battle_id') or rel.get('battle_id'),
+                    # Codex writes the battle id in four ways so far: SOURCE.json's battle_id, its recording_relationships' battle_id,
+                    # RELATED_SOURCES.json's battle_id, or its battle_key (Oct 23)
+                    'battle': src.get('battle_id') or rr.get('battle_id') or rel.get('battle_id') or rel.get('battle_key'),
                     'listed': sorted((c.get('clip_order'), c.get('drive_file_id'), c.get('sha256')) for c in clips_listed)}
             # any sign that this recording is one clip of a longer battle; such a clip must end up in a battle (checked below)
             info['clip_signs'] = [s for s, on in (('clip_order', src.get('clip_order') is not None or rr.get('clip_order') is not None),
