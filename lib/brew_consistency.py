@@ -27,6 +27,9 @@ from collections import Counter
 from math import comb
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+if HERE not in sys.path:
+    sys.path.insert(0, HERE)
+import card as cardlib  # noqa: E402  (lib/card.py: single_type, the one reader of a card's type set)
 TYPE_LETTER = {"Grass": "G", "Fire": "R", "Water": "W", "Lightning": "L", "Psychic": "P", "Fighting": "F",
                "Darkness": "D", "Metal": "M", "Colorless": "C", "Dragon": "N"}
 
@@ -261,7 +264,10 @@ class Solitaire:
                     if s["kind"] == "coin_pokemon" and rng.random() < 0.5:
                         take(lambda x: x["kind"] == "Pokemon")
                     elif s["kind"] == "basic_type":
-                        take(lambda x: is_basic(x) and x.get("energy_type") == s["type"])
+                        # TODO(dual-type): is a dual-type Basic a Basic [type] Pokémon here (any of its
+                        # printed types?). No rule yet: single_type refuses one, never guesses.
+                        take(lambda x: is_basic(x) and cardlib.single_type(
+                            x, f"lib/brew_consistency.py's {stadium} search (a Basic {s['type']} Pokémon)") == s["type"])
                     elif s["kind"] == "arcade" and rng.random() < 0.125:
                         draw(max(0, 7 - len(hand)))
                 for c in [c for c in hand if is_basic(c)]:

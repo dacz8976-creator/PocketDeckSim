@@ -107,7 +107,7 @@ fn trainer_recovery(trainer: &TrainerCard) -> Option<Recovery> {
 fn card_qualifies(card: &Card, target: RecoveryTarget) -> bool {
     let Card::Pokemon(pokemon) = card else { return false };
     match target {
-        RecoveryTarget::ActiveOfType(energy_type) => pokemon.energy_type == energy_type,
+        RecoveryTarget::ActiveOfType(energy_type) => pokemon.has_printed_type(energy_type),
         RecoveryTarget::Holder => false,
         RecoveryTarget::Ancient => is_ancient_pokemon(&pokemon.name),
         RecoveryTarget::UltraBeast => is_ultra_beast(&pokemon.name),
@@ -394,6 +394,22 @@ mod tests {
         board(&mut state, 0, &[CardId::A1033Charmander]);
         state.decks[0].cards.push(get_card_by_enum(CardId::B1217FlamePatch));
         assert_eq!(fuel_credit(&state, 0, true, &[FIRE]), 15.0);
+    }
+
+    /// Dual-type seam: Flame Patch's "[R] Pokémon" target among the own remaining cards is read over the card's
+    /// printed types. Squirtle in play is no target; the only candidate is a Bulbasaur in the own deck. Single-type
+    /// ([G]) it is no target, as before; with [R] as its second printed type it is.
+    #[test]
+    fn flame_patch_counts_a_remaining_target_by_its_second_printed_type() {
+        let mut state = fresh();
+        board(&mut state, 0, &[CardId::A1053Squirtle]);
+        state.hands[0].push(get_card_by_enum(CardId::B1217FlamePatch));
+        state.decks[0].cards.push(get_card_by_enum(CardId::A1001Bulbasaur));
+        assert_eq!(fuel_credit(&state, 0, true, &[FIRE]), 0.0, "a single-type [G] Bulbasaur");
+        let Card::Pokemon(mut dual) = get_card_by_enum(CardId::A1001Bulbasaur) else { unreachable!() };
+        dual.secondary_energy_type = Some(FIRE);
+        state.decks[0].cards = vec![Card::Pokemon(dual)];
+        assert_eq!(fuel_credit(&state, 0, true, &[FIRE]), 15.0, "a [G]/[R] Bulbasaur");
     }
 
     /// Lusamine needs the opponent to have a point; Combust moves [R] onto its holder.

@@ -4609,9 +4609,7 @@ fn benched_basic_indices_of_type(
 ) -> Vec<usize> {
     state
         .enumerate_bench_pokemon(player)
-        .filter(|(_, pokemon)| {
-            pokemon.card.is_basic() && pokemon.get_energy_type() == Some(energy_type)
-        })
+        .filter(|(_, pokemon)| pokemon.card.is_basic() && pokemon.has_printed_type(energy_type))
         .map(|(in_play_idx, _)| in_play_idx)
         .collect()
 }
@@ -4855,10 +4853,9 @@ fn extra_damage_if_defender_type(
 ) -> AttackOutcomes {
     let opponent = (state.current_player + 1) % 2;
     let opponent_active = state.get_active(opponent);
-    let matches = opponent_active
-        .card
-        .get_type()
-        .is_some_and(|energy_type| energy_types.contains(&energy_type));
+    let matches = energy_types
+        .iter()
+        .any(|energy_type| opponent_active.has_printed_type(*energy_type));
     let damage = if matches {
         base_damage + extra_damage
     } else {
@@ -5187,7 +5184,7 @@ fn extra_damage_if_opponent_has_type_in_play(
     let opponent = (state.current_player + 1) % 2;
     let has_type = state
         .enumerate_in_play_pokemon(opponent)
-        .any(|(_, pokemon)| pokemon.card.get_type() == Some(energy_type));
+        .any(|(_, pokemon)| pokemon.has_printed_type(energy_type));
     let damage = if has_type {
         base_damage + extra_damage
     } else {
@@ -5634,7 +5631,7 @@ fn discard_top_self_deck_extra_damage_if_type(
     let top_matches = state.decks[state.current_player]
         .cards
         .first()
-        .is_some_and(|card| card.get_type() == Some(energy_type));
+        .is_some_and(|card| card.is_type(energy_type));
     let damage = if top_matches {
         base_damage + extra_damage
     } else {
@@ -7099,7 +7096,7 @@ fn extra_damage_per_pokemon_type_in_discard_attack(
 ) -> AttackOutcomes {
     let pokemon_count = state.discard_piles[state.current_player]
         .iter()
-        .filter(|card| matches!(card, Card::Pokemon(pokemon) if pokemon.energy_type == energy_type))
+        .filter(|card| card.is_type(energy_type))
         .count() as u32;
     let total_damage = base_damage + (pokemon_count * damage_per_pokemon);
     active_damage_doutcome(total_damage)

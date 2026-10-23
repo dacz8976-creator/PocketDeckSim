@@ -130,6 +130,8 @@ fn find_card_by_name(name: &str) -> Option<Card> {
     None
 }
 
+// TODO(dual-type): both callers pass the primary printed type; should a dual-type card's
+// fallback Energy line name both of its types?
 /// Get a valid fallback energy type (Water if Colorless or Dragon).
 fn get_valid_fallback_energy(energy_type: EnergyType) -> EnergyType {
     if energy_type == EnergyType::Colorless || energy_type == EnergyType::Dragon {

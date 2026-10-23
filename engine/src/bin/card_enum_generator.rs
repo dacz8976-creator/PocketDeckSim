@@ -29,6 +29,53 @@ struct Args {
     incremental_ability_map: bool,
 }
 
+/// The fields `PokemonCard` reads, in every accepted printed-type shape (see `PokemonCardWire` in
+/// models/card.rs).
+const KNOWN_POKEMON_FIELDS: [&str; 14] = [
+    "id",
+    "name",
+    "stage",
+    "evolves_from",
+    "hp",
+    "energy_type",
+    "secondary_energy_type",
+    "energy_types",
+    "ability",
+    "attacks",
+    "weakness",
+    "retreat_cost",
+    "rarity",
+    "booster_pack",
+];
+
+/// serde drops a field the card model does not read, silently. For a Pokémon that could be a
+/// printed type under a new name (upstream issue #429 has not settled the shape), so refuse any
+/// unknown Pokémon field here, loudly, before generating anything.
+fn check_pokemon_fields(json_string: &str) {
+    let entries: Vec<serde_json::Value> =
+        serde_json::from_str(json_string).expect("database.json should be a list of cards");
+    let mut unknown: Vec<String> = Vec::new();
+    for entry in &entries {
+        let Some(pokemon) = entry.get("Pokemon").and_then(|pokemon| pokemon.as_object()) else {
+            continue;
+        };
+        for key in pokemon.keys() {
+            if !KNOWN_POKEMON_FIELDS.contains(&key.as_str()) {
+                let id = pokemon.get("id").and_then(|id| id.as_str()).unwrap_or("?");
+                unknown.push(format!("{id}: {key}"));
+            }
+        }
+    }
+    if !unknown.is_empty() {
+        panic!(
+            "database.json has {} Pokémon field(s) the card model would drop silently (first: {:?}). \
+             Teach PokemonCard (models/card.rs) to read them, or confirm they can be dropped, first.",
+            unknown.len(),
+            &unknown[..unknown.len().min(10)]
+        );
+    }
+}
+
 /// A CLI program to generate card_ids.rs and database.rs from the database.json file.
 fn main() {
     let args = Args::parse();
@@ -38,6 +85,7 @@ fn main() {
     let mut json_string = String::new();
     file.read_to_string(&mut json_string)
         .expect("Unable to read string");
+    check_pokemon_fields(&json_string);
     let deserialized_cards: Vec<Card> = serde_json::from_str(&json_string).unwrap();
 
     // Generate the Enum Names
@@ -169,6 +217,10 @@ fn print_card_insert(enum_name: &str, card: &Card) {
             println!(
                 "            energy_type: EnergyType::{},",
                 pokemon_card.energy_type
+            );
+            println!(
+                "            secondary_energy_type: {},",
+                to_rust_energy(pokemon_card.secondary_energy_type)
             );
             println!(
                 "            ability: {},",

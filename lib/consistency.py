@@ -68,7 +68,7 @@ LETTER = {v: k for k, v in SYM.items()}
 # ----------------------------------------------------------------------------------------------
 
 class Card:
-    __slots__ = ('id', 'name', 'kind', 'stage', 'frm', 'hp', 'etype', 'attacks', 'ability',
+    __slots__ = ('id', 'name', 'kind', 'stage', 'frm', 'hp', '_etype', 'etypes', 'attacks', 'ability',
                  'ttype', 'text', 'is_basic', 'ex', 'retreat')
 
     def __init__(self, kind, v):
@@ -78,7 +78,9 @@ class Card:
         self.stage = v.get('stage') if self.kind == 'P' else None
         self.frm = v.get('evolves_from')
         self.hp = v.get('hp') or 0
-        self.etype = v.get('energy_type')
+        # printed type set, primary first (() for a Trainer); ValueError on malformed type data
+        self.etypes = tuple(cardlib.printed_types(v)) if self.kind == 'P' else ()
+        self._etype = self.etypes[0] if self.etypes else v.get('energy_type')
         self.attacks = [dict(cost=list(a.get('energy_required') or []), title=a['title'],
                              dmg=a.get('fixed_damage') or 0, effect=a.get('effect') or '')
                         for a in (v.get('attacks') or [])]
@@ -89,6 +91,19 @@ class Card:
         self.is_basic = self.kind == 'P' and self.stage == 0   # Fossils are Trainers: never Basic
         self.ex = self.name.endswith(' ex')
         self.retreat = len(v.get('retreat_cost') or [])
+
+    @property
+    def etype(self):
+        """The one printed type (None for a Trainer), as every rule here reads it: [X] searches
+        (fmatch), evolve-from-deck, Flame Patch's Active target, Zone acceleration to an Active
+        of a type. None of them has a dual-type rule yet, so reading it on a dual-type Pokémon
+        raises card.DualTypeUnsupported instead of guessing; a single-type card is unchanged."""
+        # TODO(dual-type): is a dual-type Pokémon an [X] Pokémon for these rules (any of its printed types?)
+        if len(self.etypes) > 1:
+            raise cardlib.DualTypeUnsupported(cardlib.dual_type_message(
+                self.name, self.id, self.etypes, "lib/consistency.py's solitaire model ([X] searches, "
+                'evolve-from-deck, Flame Patch, Zone acceleration to an Active of a type)'))
+        return self._etype
 
 
 _DB = None

@@ -13,6 +13,11 @@ decks.json: {"deck name": {"energy": [...], "cards": {"B1 036": 2, ...}}, ...}
 """
 import json, re, sys, math, collections, os
 
+HERE = os.path.dirname(os.path.abspath(__file__))
+if HERE not in sys.path:
+    sys.path.insert(0, HERE)
+import card as cardlib  # noqa: E402  (lib/card.py: printed_types / single_type, the one reader of a card's type set)
+
 # ---------------------------------------------------------------- card layer
 FAMILY_RULES = [  # (family, regex on lowercased effect text)
     ("STATUS_INFLICT", r"(opponent's active pokémon|defending pokémon|new active pokémon)[^.]*is now (poisoned|burned|asleep|paralyzed|confused)|make your opponent's active pokémon (poisoned|burned|asleep|paralyzed|confused)|both active pokémon are now|is chosen at random, and your opponent's active"),
@@ -50,8 +55,12 @@ def load_cards(db_path):
         kind, c = next(iter(e.items()))
         rec = {"id": c["id"], "name": c["name"], "kind": kind, "texts": []}
         if kind == "Pokemon":
-            rec.update(energy_type=c["energy_type"], stage=c["stage"], hp=c["hp"], retreat=len(c["retreat_cost"]),
+            types = cardlib.printed_types(c)  # printed type set, primary first; ValueError if malformed
+            rec.update(energy_type=types[0], stage=c["stage"], hp=c["hp"], retreat=len(c["retreat_cost"]),
                        ex=" ex" in c["name"] or c["name"].endswith(" ex"), evolves_from=c.get("evolves_from"))
+            rec["energy_types"] = types
+            if len(types) > 1:
+                del rec["energy_type"]  # no one type to give: read it through pokemon_type(), which refuses
             rec["attacks"] = [{"cost": [x[0] for x in a["energy_required"]], "dmg": a.get("fixed_damage") or 0,
                                "effect": a.get("effect") or ""} for a in c["attacks"]]
             if c.get("ability"): rec["texts"].append(("ability", c["ability"]["effect"]))
@@ -64,6 +73,12 @@ def load_cards(db_path):
         if rec["kind"] == "Pokemon" and any(a["dmg"] >= 100 for a in rec["attacks"]): rec["families"].add("BIG_HIT")
         cards[rec["id"]] = rec
     return cards
+
+def pokemon_type(rec):
+    """A Pokémon record's one printed type, for suggest_for_deck's "same energy type" rule. That
+    rule has no answer for a dual-type Pokémon yet: refuse (card.DualTypeUnsupported), never guess."""
+    # TODO(dual-type): does a dual-type Pokémon fit a deck when ANY of its types is the deck's Energy?
+    return cardlib.single_type(rec, "lib/deck_classifier.py's suggest_for_deck (same energy type as the deck)")
 
 def load_engine_coverage(src_dir):
     """effect text -> mechanic name from the fork's maps (implemented-ness signal only)."""
@@ -188,7 +203,7 @@ def suggest_for_deck(deck, cards, per=5):
         for g, why in COMPLEMENTS.get(f, []):
             if fam.get(g, 0) >= 2: continue  # already has that role
             pool = [x for x in cards.values() if g in x["families"] and x["name"] not in have_names
-                    and (x["kind"] != "Pokemon" or x["energy_type"] in energy or x["energy_type"] == "Colorless")]
+                    and (x["kind"] != "Pokemon" or pokemon_type(x) in energy or pokemon_type(x) == "Colorless")]
             seen = set(); uniq = []
             for x in sorted(pool, key=lambda x: (-set_rank(x["id"]), x["id"])):
                 if x["name"] in seen: continue

@@ -1129,12 +1129,12 @@ fn gather_bench_energy_onto_active(
 
 /// Fishing Net's target predicate: "a random Basic [W] Pokémon from your discard pile".
 fn is_basic_water_pokemon(card: &Card) -> bool {
-    card.is_basic() && card.get_type() == Some(EnergyType::Water)
+    card.is_basic() && card.is_type(EnergyType::Water)
 }
 
 /// Fisher's target predicate: "a [W] Pokémon ... from your discard pile" (any stage).
 fn is_water_pokemon(card: &Card) -> bool {
-    matches!(card, Card::Pokemon(_)) && card.get_type() == Some(EnergyType::Water)
+    matches!(card, Card::Pokemon(_)) && card.is_type(EnergyType::Water)
 }
 
 /// Penny: "Look at a random Supporter card that's not Penny from your opponent's deck and shuffle
@@ -1859,7 +1859,7 @@ fn professor_oak_effect(_: &mut StdRng, state: &mut State, action: &Action) {
 fn mythical_slab_effect(_: &mut StdRng, state: &mut State, action: &Action) {
     // Look at the top card of your deck. If that card is a Psychic Pokemon,\n        put it in your hand. If it is not a Psychic Pokemon, put it on the\n        bottom of your deck.
     if let Some(card) = state.decks[action.actor].cards.first() {
-        if matches!(card, Card::Pokemon(pokemon) if pokemon.energy_type == EnergyType::Psychic) {
+        if matches!(card, Card::Pokemon(pokemon) if pokemon.has_printed_type(EnergyType::Psychic)) {
             state.hands[action.actor].push(card.clone());
             state.decks[action.actor].cards.remove(0);
         } else {
@@ -2475,7 +2475,7 @@ pub(crate) fn random_typed_evolution_outcomes(
         .cards
         .iter()
         .filter(|card| {
-            matches!(card, Card::Pokemon(pokemon) if pokemon.energy_type == energy_type)
+            matches!(card, Card::Pokemon(pokemon) if pokemon.has_printed_type(energy_type))
                 && can_evolve_into(state, card, target)
         })
         .cloned()
@@ -2495,7 +2495,7 @@ pub(crate) fn random_typed_evolution_outcomes(
                 let still_legal = state.in_play_pokemon[player][in_play_idx]
                     .as_ref()
                     .is_some_and(|target| {
-                        matches!(&evolution_card, Card::Pokemon(pokemon) if pokemon.energy_type == energy_type)
+                        matches!(&evolution_card, Card::Pokemon(pokemon) if pokemon.has_printed_type(energy_type))
                             && can_evolve_into(state, &evolution_card, target)
                     })
                     && state.decks[player].cards.contains(&evolution_card);

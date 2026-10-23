@@ -1141,7 +1141,7 @@ fn can_play_pokemon_flute(state: &State, trainer_card: &TrainerCard) -> Option<V
 fn can_play_fisher(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
     let has_target = state.discard_piles[state.current_player]
         .iter()
-        .any(|card| matches!(card, Card::Pokemon(_)) && card.get_type() == Some(EnergyType::Water));
+        .any(|card| matches!(card, Card::Pokemon(_)) && card.is_type(EnergyType::Water));
     if has_target {
         can_play_trainer(state, trainer_card)
     } else {
@@ -1153,7 +1153,7 @@ fn can_play_fisher(state: &State, trainer_card: &TrainerCard) -> Option<Vec<Simp
 fn can_play_fishing_net(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
     let has_target = state.discard_piles[state.current_player]
         .iter()
-        .any(|card| card.is_basic() && card.get_type() == Some(EnergyType::Water));
+        .any(|card| card.is_basic() && card.is_type(EnergyType::Water));
     if has_target {
         can_play_trainer(state, trainer_card)
     } else {

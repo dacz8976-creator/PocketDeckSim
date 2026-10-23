@@ -590,7 +590,7 @@ fn apply_deceptive_needle_damage(player_ending_turn: usize, state: &mut State) {
     };
     if active.is_knocked_out()
         || !has_tool(active, CardId::B4148DeceptiveNeedle)
-        || active.get_energy_type() != Some(EnergyType::Darkness)
+        || !active.has_printed_type(EnergyType::Darkness)
     {
         return;
     }
@@ -1506,6 +1506,9 @@ fn weakness_application_against(
 
 /// The printed Weakness rule: +20 when `receiving`'s Weakness is one of the attacker's types, or x2 of the total
 /// under Bounded Field for an attacker that isn't a Mega ex.
+// TODO(dual-type): a printed card keeps ONE Weakness (`PokemonCard::weakness`), a printed
+// dual-type card included; the attacker side is already any-of over its types (below). Two
+// printed Weaknesses on one card (if the Dual Fusion rules ever print one) are not supported.
 fn printed_weakness_application(
     state: &State,
     receiving: &PlayedCard,
