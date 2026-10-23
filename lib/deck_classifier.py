@@ -189,26 +189,42 @@ SET_ORDER = ["P-A","A1","A1a","A2","A2a","A2b","A3","A3a","A3b","A4","A4a","A4b"
 def set_rank(cid): 
     s = cid.split(" ")[0]; return SET_ORDER.index(s) if s in SET_ORDER else -1
 
+def is_dual_type(rec):
+    return rec["kind"] == "Pokemon" and len(rec.get("energy_types", ())) > 1
+
 def suggest_for_deck(deck, cards, per=5):
     """For each identity family the deck already has, list complement cards it could add:
-    same energy type (or Colorless / Trainer), not already in the deck, newest sets first."""
+    same energy type (or Colorless / Trainer), not already in the deck, newest sets first.
+    A dual-type Pokémon candidate is left out, and a printed line says how many (coordinator,
+    Oct 23: refusing would break suggestions for every deck once Dual Fusion data loads)."""
     energy = set(deck.get("energy", [])); have = set(deck["cards"]); have_names = {cards[c]["name"] for c in have if c in cards}
     fam = collections.Counter()
     for cid, n in deck["cards"].items():
         if cid in cards:
             for f in cards[cid]["families"]: fam[f] += n
     out = []
+    dual_left_out = set()
     for f, _ in fam.most_common():
         if f in GENERIC: continue
         for g, why in COMPLEMENTS.get(f, []):
             if fam.get(g, 0) >= 2: continue  # already has that role
-            pool = [x for x in cards.values() if g in x["families"] and x["name"] not in have_names
-                    and (x["kind"] != "Pokemon" or pokemon_type(x) in energy or pokemon_type(x) == "Colorless")]
+            pool = []
+            for x in cards.values():
+                if g not in x["families"] or x["name"] in have_names: continue
+                if is_dual_type(x):
+                    # TODO(dual-type): does it fit a deck when ANY of its types is the deck's Energy?
+                    dual_left_out.add(x["id"]); continue
+                if x["kind"] != "Pokemon" or pokemon_type(x) in energy or pokemon_type(x) == "Colorless":
+                    pool.append(x)
             seen = set(); uniq = []
             for x in sorted(pool, key=lambda x: (-set_rank(x["id"]), x["id"])):
                 if x["name"] in seen: continue
                 seen.add(x["name"]); uniq.append(x)
             if uniq: out.append((f, g, why, [f"{x['name']} {x['id']}" for x in uniq[:per]]))
+    if dual_left_out:
+        ids = sorted(dual_left_out)
+        print(f"   ({len(ids)} dual-type candidates left out until the dual-type rules are settled: "
+              f"{', '.join(ids[:8])}{' ...' if len(ids) > 8 else ''})")
     return out
 
 # ---------------------------------------------------------------- main

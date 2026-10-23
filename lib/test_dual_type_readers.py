@@ -444,22 +444,30 @@ class DeckClassifier(unittest.TestCase):
         cards = self.load([{'Pokemon': real('A1 001')}, {'Pokemon': cand}])
         cards['A1 001']['families'] = {'HEAL'}
         cards['ZZ 002']['families'] = {'DMG_REDUCE'}
-        out = deck_classifier.suggest_for_deck({'energy': ['Grass'], 'cards': {'A1 001': 2}}, cards)
-        return [(f, g, hits) for f, g, _, hits in out]
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            out = deck_classifier.suggest_for_deck({'energy': ['Grass'], 'cards': {'A1 001': 2}}, cards)
+        return [(f, g, hits) for f, g, _, hits in out], buf.getvalue()
 
     def test_suggest_for_deck_same_type_rule(self):
         want = [('HEAL', 'DMG_REDUCE', ['Synthetic Wall ZZ 002'])]
-        self.assertEqual(self.suggest(['Grass']), want)                         # control: same type
-        self.assertEqual(self.suggest(['Colorless']), want)                     # control: Colorless
-        self.assertEqual(self.suggest(['Fire']), [])                            # control: other type
+        self.assertEqual(self.suggest(['Grass']), (want, ''))                   # control: same type
+        self.assertEqual(self.suggest(['Colorless']), (want, ''))               # control: Colorless
+        self.assertEqual(self.suggest(['Fire']), ([], ''))                      # control: other type
         # main: Psychic/Grass silently not suggested (only its SECOND type is Grass), Grass/Psychic
-        # silently suggested as Grass
+        # silently suggested as Grass. Now: left out of the suggestions, and a printed line says so.
         for types in (['Psychic', 'Grass'], ['Grass', 'Psychic']):
             with self.subTest(types=types):
-                with self.assertRaises(card.DualTypeUnsupported) as cm:
-                    self.suggest(types)
-                self.assertIn('Synthetic Wall [ZZ 002]', str(cm.exception))
-                self.assertIn('suggest_for_deck', str(cm.exception))
+                out, printed = self.suggest(types)
+                self.assertEqual(out, [])
+                self.assertIn('1 dual-type candidates left out until the dual-type rules are settled', printed)
+                self.assertIn('ZZ 002', printed)
+
+    def test_pokemon_type_still_refuses_a_dual_type_card(self):
+        cards = self.load([{'Pokemon': dual('A1 001', 'Psychic', 'Grass', id='ZZ 002')}])
+        with self.assertRaises(card.DualTypeUnsupported) as cm:
+            deck_classifier.pokemon_type(cards['ZZ 002'])
+        self.assertIn('suggest_for_deck', str(cm.exception))
 
 
 if __name__ == '__main__':
