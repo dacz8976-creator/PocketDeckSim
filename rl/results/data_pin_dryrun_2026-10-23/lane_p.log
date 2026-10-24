@@ -1,0 +1,77 @@
+2026-10-23T17:44:38Z lane_p armed (pgid 2914648); waiting for /home/dacz8976/pincand_work/dual/replays_D.done
+2026-10-23T19:10:11Z lane_p armed (pgid 2930411); waiting for /home/dacz8976/pincand_work/dual/replays_D.done
+2026-10-23T23:36:13Z lane_p start: P=95eedb3dddf9d1336f773caa0387a05c29924c58
+2026-10-23T23:45:50Z build_P OK: BUILD OK in 577 s
+2026-10-23T23:45:50Z gen_P ids: rc=0, DIFFERS from src/card_ids.rs
+3a4
+> use strum_macros::EnumIter;
+6d6
+< use strum_macros::EnumIter;
+4328a4329
+> 
+8654a8656
+> 
+2026-10-23T23:45:50Z gen_P database: rc=0, DIFFERS from src/database.rs
+51,53c51
+<     map.insert(
+<         CardId::A1001Bulbasaur,
+<         Card::Pokemon(PokemonCard {
+---
+>     map.insert(CardId::A1001Bulbasaur, Card::Pokemon(PokemonCard {
+61,62c59,61
+<             attacks: vec![Attack {
+<                 energy_required: vec![EnergyType::Grass, EnergyType::Colorless],
+---
+>             attacks: vec![
+>                 Attack {
+>                     energy_required: vec![EnergyType::Grass,EnergyType::Colorless,],
+66c65,66
+<             }],
+---
+>                 },
+>             ],
+68c68
+<             retreat_cost: vec![EnergyType::Colorless],
+2026-10-23T23:45:51Z gen_P incremental-attack-map: rc=0, 0 output lines (expected 0)
+2026-10-23T23:45:51Z gen_P incremental-ability-map: rc=0, 2 output lines (expected 0)
+    // map.insert("Once during your turn, you may switch out your opponent's Active Basic Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)", todo_implementation);
+    // map.insert("Once during your turn, you may switch out your opponent's Active Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)", todo_implementation);
+2026-10-23T23:45:51Z card_status rc=0
+card_status: all 4317 new (B4b, P-B 09x) 439
+  new by status: {'Complete': 393, 'MissingTrainer': 46}
+  MissingTrainer: Arven ['B4b 222', 'B4b 388', 'B4b 423']
+  MissingTrainer: Calem ['B4b 215', 'B4b 381']
+  MissingTrainer: Clemont ['B4b 218', 'B4b 384']
+  MissingTrainer: Copycat ['B4b 225', 'B4b 391', 'B4b 424']
+  MissingTrainer: Diantha ['B4b 214', 'B4b 380']
+  MissingTrainer: Electric Generator ['B4b 199', 'B4b 365']
+  MissingTrainer: Elesa ['B4b 422']
+  MissingTrainer: Field Blower ['B4b 202', 'B4b 368']
+  MissingTrainer: Flame Patch ['B4b 203', 'B4b 369']
+  MissingTrainer: Iris ['B4b 212', 'B4b 378', 'B4b 421']
+  MissingTrainer: Juliana ['B4b 213', 'B4b 379']
+  MissingTrainer: Korrina ['B4b 217', 'B4b 383']
+  MissingTrainer: Lisia ['B4b 226', 'B4b 392']
+  MissingTrainer: Lucky Ice Pop ['B4b 198', 'B4b 364']
+  MissingTrainer: May ['B4b 220', 'B4b 386']
+  MissingTrainer: Order Pad ['B4b 200', 'B4b 366']
+  MissingTrainer: Puppy-Loving Girl ['B4b 216', 'B4b 382']
+  MissingTrainer: Quick-Grow Extract ['B4b 201', 'B4b 367']
+  MissingTrainer: Serena ['B4b 219', 'B4b 385']
+  MissingTrainer: Skyla ['B4b 221', 'B4b 387']
+  MissingTrainer: Wallace ['B4b 223', 'B4b 389']
+  MissingTrainer: Wally ['B4b 224', 'B4b 390']
+2026-10-23T23:58:33Z suite_P rc=101 in 762 s: passed 2150 failed 2 compile_errors 2 failing ['incomplete_inventory_does_not_hide_unverified_cards', 'inventory_includes_new_printings_and_explicit_rule_boundaries']
+2026-10-23T23:58:34Z replay p 08a9b3a_10_cli_k3
+2026-10-23T23:58:43Z replay p 08a9b3a_10_cli_kp3
+2026-10-23T23:58:55Z replay p 08a9b3a_10_cli_kog3
+2026-10-23T23:59:06Z replay p 08a9b3a_10_cli_kta3
+2026-10-23T23:59:17Z replay p 08a9b3a_10_cli_km3
+2026-10-23T23:59:28Z replay p 08a9b3a_table_k3
+p	08a9b3a_10_cli_k3	240	9	SAME	Player 0 won: 150 (62.50%) | Player 1 won: 90 (37.50%) | Draws: 0 (0.00%) | v f: SAME
+p	08a9b3a_10_cli_kp3	240	11	SAME	Player 0 won: 144 (60.00%) | Player 1 won: 96 (40.00%) | Draws: 0 (0.00%) | v f: SAME
+p	08a9b3a_10_cli_kog3	240	11	SAME	Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%) | v f: SAME
+p	08a9b3a_10_cli_kta3	240	11	SAME	Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%) | v f: SAME
+p	08a9b3a_10_cli_km3	240	10	SAME	Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%) | v f: SAME
+p	08a9b3a_table_k3	14000	861	SAME	0 differing deals of 14000 | v f: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/p/08a9b3a_table_k3.txt: no RULE finding
+2026-10-24T00:13:52Z lane_p end: done
