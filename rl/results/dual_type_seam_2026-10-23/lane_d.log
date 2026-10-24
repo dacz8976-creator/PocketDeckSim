@@ -1,0 +1,77 @@
+2026-10-23T17:42:04Z lane_d armed (pgid 2914226)
+2026-10-23T19:09:30Z lane_d armed (pgid 2930121)
+2026-10-23T19:09:30Z lane_d start: D=e57d8678f25cda3c4ac9316550801dd8ab9a09ff (engine tree b1daf33d73409105bc5f0669bb888f54680a4146)
+2026-10-23T19:14:44Z build_D OK: BUILD OK in 314 s; 7122ec5cb6da804d f13d6d2134dd2928 f73beb86f97e560b 
+2026-10-23T19:16:52Z gen_D: src/card_ids.rs DIFFERS from the generator's output
+3a4
+> use strum_macros::EnumIter;
+6d6
+< use strum_macros::EnumIter;
+3890a3891
+> 
+7778a7780
+> 
+2026-10-23T19:16:52Z gen_D: src/database.rs DIFFERS from the generator's output
+48,50c48
+<     map.insert(
+<         CardId::A1001Bulbasaur,
+<         Card::Pokemon(PokemonCard {
+---
+>     map.insert(CardId::A1001Bulbasaur, Card::Pokemon(PokemonCard {
+59,60c57,59
+<             attacks: vec![Attack {
+<                 energy_required: vec![EnergyType::Grass, EnergyType::Colorless],
+---
+>             attacks: vec![
+>                 Attack {
+>                     energy_required: vec![EnergyType::Grass,EnergyType::Colorless,],
+64c63,64
+<             }],
+---
+>                 },
+>             ],
+66c66
+<             retreat_cost: vec![EnergyType::Colorless],
+2026-10-23T19:16:52Z gen_D FAILED: generated files differ
+2026-10-23T19:16:52Z suite_D: cargo test --release --features test-utils --locked --no-fail-fast (RUST_TEST_THREADS 2)
+2026-10-23T19:27:08Z suite_D rc=0 in 616 s: passed 2223 failed 0 ignored 0 compile_errors 0 failing []
+2026-10-23T19:27:08Z replay f 08a9b3a_table_kp3
+2026-10-23T19:41:52Z replay f 08a9b3a_table_kog3
+2026-10-23T19:57:07Z replay f 08a9b3a_dev_kta3_table
+2026-10-23T20:12:51Z replay d 08a9b3a_10_cli_k3
+2026-10-23T20:12:59Z replay d 08a9b3a_10_cli_kp3
+2026-10-23T20:13:10Z replay d 08a9b3a_10_cli_kog3
+2026-10-23T20:13:20Z replay d 08a9b3a_10_cli_kta3
+2026-10-23T20:13:31Z replay d 08a9b3a_10_cli_km3
+2026-10-23T20:13:41Z replay d 08a9b3a_10_goldfish
+2026-10-23T20:13:41Z replay d 08a9b3a_table_k3
+2026-10-23T20:26:05Z replay d 08a9b3a_table_kp3
+2026-10-23T20:40:29Z replay d 08a9b3a_table_kog3
+2026-10-23T20:54:48Z replay d 08a9b3a_dev_km3_table
+2026-10-23T21:09:57Z replay d 08a9b3a_dev_kta3_table
+2026-10-23T21:24:50Z replay d 08a9b3a_10_run_screen
+2026-10-23T21:28:35Z replay d 08a9b3a_new17_k3
+2026-10-23T21:37:27Z replay d 08a9b3a_dev_km3_new17
+2026-10-23T21:47:53Z replay d 08a9b3a_8b_cloud_new_k3
+2026-10-23T21:48:13Z replay d 08a9b3a_8b_cloud_new_km3
+2026-10-23T21:48:38Z replay d 08a9b3a_8_new_km3
+2026-10-23T22:18:15Z replay d 08a9b3a_cov_b2e_km3
+d	08a9b3a_10_cli_k3	240	8	SAME	Player 0 won: 150 (62.50%) | Player 1 won: 90 (37.50%) | Draws: 0 (0.00%) | v f: SAME
+d	08a9b3a_10_cli_kp3	240	10	SAME	Player 0 won: 144 (60.00%) | Player 1 won: 96 (40.00%) | Draws: 0 (0.00%) | v f: SAME
+d	08a9b3a_10_cli_kog3	240	10	SAME	Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%) | v f: SAME
+d	08a9b3a_10_cli_kta3	240	10	SAME	Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%) | v f: SAME
+d	08a9b3a_10_cli_km3	240	10	SAME	Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%) | v f: SAME
+d	08a9b3a_10_goldfish	0	0	SAME	page =, coverage =
+d	08a9b3a_table_k3	14000	743	SAME	0 differing deals of 14000 | v f: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/d/08a9b3a_table_k3.txt: no RULE finding
+d	08a9b3a_table_kp3	14000	861	SAME	0 differing deals of 14000 | v f: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/d/08a9b3a_table_kp3.txt: no RULE finding
+d	08a9b3a_table_kog3	14000	858	SAME	0 differing deals of 14000 | v f: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/d/08a9b3a_table_kog3.txt: no RULE finding
+d	08a9b3a_dev_km3_table	14000	908	SAME	0 differing deals of 14000 | v f: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/d/08a9b3a_dev_km3_table.txt: no RULE finding
+d	08a9b3a_dev_kta3_table	14000	891	SAME	0 differing deals of 14000 | v f: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/d/08a9b3a_dev_kta3_table.txt: no RULE finding
+d	08a9b3a_10_run_screen	3840	225	SAME	run_screen: /home/dacz8976/pincand_work/games/d/08a9b3a_10_run_screen.txt v engine_switch_rules2_2026-10/08a9b3a_10_run_screen.txt: 20 of 20 lines equal (2 decks; the header's engine path aside) | v f: SAME
+d	08a9b3a_new17_k3	8500	530	DIFFERS	8 differing deals of 8500 | v f: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/d/08a9b3a_new17_k3.txt: no RULE finding
+d	08a9b3a_dev_km3_new17	8500	625	DIFFERS	7 differing deals of 8500 | v f: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/d/08a9b3a_dev_km3_new17.txt: no RULE finding
+d	08a9b3a_8b_cloud_new_k3	240	19	SAME	0 differing deals of 240 | v f: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/d/08a9b3a_8b_cloud_new_k3.txt: no RULE finding
+d	08a9b3a_8b_cloud_new_km3	240	24	SAME	0 differing deals of 240 | v f: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/d/08a9b3a_8b_cloud_new_km3.txt: no RULE finding
+d	08a9b3a_8_new_km3	16000	1773	DIFFERS	1 differing deals of 16000 | v f: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/d/08a9b3a_8_new_km3.txt: no RULE finding
+d	08a9b3a_cov_b2e_km3	48000	4638	SAME	0 differing deals of 48000 | v f: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/d/08a9b3a_cov_b2e_km3.txt: no RULE finding
+2026-10-23T23:35:39Z lane_d end: done
