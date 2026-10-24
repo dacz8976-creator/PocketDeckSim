@@ -34,14 +34,13 @@ Source: exam v1.6 (commit 5518fd60), `exam/README.md` (scoring and the v1.2-v1.6
   - `UseStadium` while Fragrant Forest is the Stadium;
   - Lusamine's AttachFromDiscard when the discard holds 3+ Energy of 2+ types;
   - using Dustox's Variety Powder;
-  - (proposed, R1) using Team Rocket's Raticate ex's Thieving Incisors.
+  - using Team Rocket's Raticate ex's Thieving Incisors (R1).
   - Quick-Grow and Wallace: the player picks the target, and the evolution card is random. The segment ends at the pick.
   - Playing a Stadium is never a chance action. Using a deterministic Stadium isn't one either.
-  - Big Malasada is NOT a chance action, although its text removes "a random Special Condition": the frozen engine forecasts one outcome and picks inside it, so neither the plan lister nor the legal-moves tool stops there (addendum 5, M1; the laptop session's reading, for the coordinator to confirm).
-- **The first segment** of a line is its actions up to and including its first chance action, or the whole turn if it has none.
-  - (Proposed, R1; in force once the coordinator accepts it) It also ends at the first action after which the OPPONENT must act (Sabrina; a knockout during the turn, after which he picks a new Active), whichever comes first.
-  - Under R1 the first segment is exactly where frozen-7's plan lister ends the plan the line reaches. `run3/check_lister_v2.py` reports it for every accepted line before the freeze.
-  - If R1 is not accepted, the opponent's-choice stop and Raticate's Ability are taken out of the rule again.
+  - Big Malasada is NOT a chance action, although its text removes "a random Special Condition". This follows from R1: the frozen plan lister forecasts one outcome there and doesn't stop (addendum 5, M1 and G13).
+- **The first segment** of a line is its actions up to and including its first chance action, or its first action after which the OPPONENT must act (Sabrina; a knockout during the turn, after which he picks a new Active), whichever comes first; the whole turn if it has neither.
+  - This is R1, ACCEPTED by the coordinator on Oct 24 (coordinator-038, mailbox id 20261024T0210Z; addendum 5, G13): the first segment is exactly where frozen-7's plan lister ends the plan the line reaches.
+  - `run3/check_lister_v2.py` reports it for every accepted line before the freeze. Where cut() differs, the lister's segment is recorded and used.
 - **Draw-first orders:** where a line's draw could legally come first, the draw-first order is accepted for Research, Poké Ball and Lucky Ice Pop, and not for Copycat (the cards played first would be shuffled away). It applies only where the draw is in that turn's legal list.
 - **Scope** (`segment_scope`) is set by the shortest accepted segment:
   - "full" only if every accepted line's first segment holds all of that line's strategic actions;
@@ -51,5 +50,5 @@ Source: exam v1.6 (commit 5518fd60), `exam/README.md` (scoring and the v1.2-v1.6
 - **Matching** is by replay: both segments are applied to the position and the states compared up to the chance boundary. Label matching is a reported fallback only.
 - **Validation:** every recorded, key and accepted line must be legal step by step in the legal-moves-only tool, with no unmatched action and no search (no PGDUMP line).
   - A point is dropped ONLY with the verbatim tool output that forces it (addendum 5, G1).
-  - Proposed, for the coordinator to confirm: an accepted ALTERNATIVE that fails is removed from that point, with its output recorded; the point keeps its key.
+  - An accepted ALTERNATIVE that fails is removed from that point, with its output recorded; the point keeps its key line. This was accepted by the coordinator on Oct 24 (coordinator-038; addendum 5, G13): an illegal alternative can't be picked by either bot, so the rule is symmetric.
 - **Exposure:** a game whose answer material reached the judge's developer is excluded from the primary, kept and reported separately with a dated reason.

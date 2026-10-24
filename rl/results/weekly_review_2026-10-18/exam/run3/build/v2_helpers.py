@@ -134,6 +134,58 @@ class AnswerLeak(Exception):
     pass
 
 
+# The position's free-text fields (coordinator-038, decision 6): game FACTS only, in the builder's words. They may not carry an
+# evaluative or advisory word; card names are taken out first ("Team Rocket's Master Plan", "Safeguard" are names, not advice).
+FREE_TEXT_FIELDS = ('opp_ambiguous', 'turn_effects', 'stadium')  # and every board Pokemon's 'effects'
+BANNED_WORDS = ('should', 'better', 'best', 'mistake', 'misplay', 'threat', 'lethal', 'plan', 'intend', 'want', 'correct', 'wrong',
+                'risky', 'safe', 'good', 'bad', 'optimal', 'ideal', 'blunder', 'must', 'needs to', 'ought')
+_BANNED = re.compile(r'\b(?:' + '|'.join(re.escape(w) for w in BANNED_WORDS) + r')(?:s|d|ed|ing|ly|er|est|ned|ning)?\b', re.I)
+_CARD_NAMES = None
+
+
+def card_names():
+    """Every card name, Ability name and attack name in the card database (longest first), to take out of a free text before the
+    banned-word check ("Safeguard" is an Ability, "Team Rocket's Master Plan" a card)."""
+    global _CARD_NAMES
+    if _CARD_NAMES is None:
+        here = os.path.dirname(os.path.abspath(__file__))
+        for p in (os.path.join(here, *(['..'] * 6), 'lib', 'deckgym-database.json'), os.path.expanduser('~/pincand/lib/deckgym-database.json')):
+            if os.path.exists(p):
+                with open(p, encoding='utf-8') as f:
+                    names = set()
+                    for e in json.load(f):
+                        v = next(iter(e.values()))
+                        names.add(v['name'])
+                        if v.get('ability'):
+                            names.add(v['ability']['title'])
+                        names.update(a['title'] for a in v.get('attacks') or [])
+                    _CARD_NAMES = sorted((n for n in names if n), key=len, reverse=True)
+                break
+        else:
+            raise FileNotFoundError('lib/deckgym-database.json not found: the free-text check needs the card names')
+    return _CARD_NAMES
+
+
+def free_text_problems(view):
+    """[(field path, the banned word, the text)] for every evaluative or advisory word in the position's free-text fields."""
+    texts = []
+    for f in FREE_TEXT_FIELDS:
+        texts += [(f, s) for s in _strings(view.get(f))]
+    for side in ('me', 'opp'):
+        for k, b in enumerate((view.get(side) or {}).get('board') or []):
+            texts += [(f'{side}.board[{k}].effects', s) for s in _strings(b.get('effects') if isinstance(b, dict) else None)]
+    out = []
+    names = card_names()
+    for path, s in texts:
+        bare = s
+        for n in names:
+            if n in bare:
+                bare = bare.replace(n, ' ')
+        for m in _BANNED.finditer(bare):
+            out.append((path, m.group(0), s))
+    return out
+
+
 def _key_paths(x, path=''):
     if isinstance(x, dict):
         for k, v in x.items():
@@ -168,6 +220,9 @@ def check_candidate(view, built=None, allowed=CANDIDATE_FIELDS):
     extra = sorted(set(view) - set(allowed))
     if extra:
         raise AnswerLeak(f'{view.get("id")}: fields outside the allowed fields in the candidate view: {extra}')
+    banned = free_text_problems(view)
+    if banned:
+        raise AnswerLeak(f'{view.get("id")}: evaluative or advisory words in the position\'s free-text facts: {banned[:5]}')
     if built is not None:
         texts = list(_strings(view))
         for label in built.get('force') or []:

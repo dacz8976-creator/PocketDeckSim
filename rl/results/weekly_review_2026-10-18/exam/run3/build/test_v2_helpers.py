@@ -198,6 +198,26 @@ class Helpers(unittest.TestCase):
                 H.check_candidate(c, dict(b, force=['EndTurn', 'Attach:1Darkness@0 zone']))
         H.check_candidate(dict(good, opp_ambiguous=['whether he could EndTurn early']), dict(b, force=['EndTurn']))
 
+    def test_free_text_facts_carry_no_evaluative_word(self):
+        """coordinator-038 decision 6: the position's free-text fields state facts only. An evaluative or advisory word is refused; a card,
+        Ability or attack name that contains one is not."""
+        b = self.built()
+        good = H.candidate_view(b)
+        for c in (dict(good, opp_ambiguous=['whether the Bench Glimmet is a threat']),
+                  dict(good, turn_effects=['a good draw last turn']),
+                  dict(good, stadium={'card': 'Mesagoza B2a 093', 'note': 'the safe play'}),
+                  dict(good, turn_effects=[{'effect': 'he planned to retreat'}])):
+            with self.assertRaises(H.AnswerLeak):
+                H.check_candidate(c, b)
+        nested = json.loads(json.dumps(good)); nested['opp']['board'][0]['effects'] = ['Lethal pressure next turn']
+        with self.assertRaises(H.AnswerLeak):
+            H.check_candidate(nested, b)
+        for fine in (dict(good, turn_effects=["Team Rocket's Master Plan was played this turn"]),
+                     dict(good, opp_ambiguous=['whether Oricorio has Safeguard active']),
+                     dict(good, opp_ambiguous=['Hisuian Goodra used Securely Sheltered'])):
+            H.check_candidate(fine, b)
+        self.assertEqual(H.free_text_problems(good), [])
+
     def test_label_view_gives_his_move_and_no_builder_text(self):
         b = self.built()
         v = H.label_view(b)

@@ -378,7 +378,7 @@ Nothing has been selected, built or run. The window is still open through Oct 25
 - **The review:** the advisor (Fable) reviewed run 3's labelling and selection machinery at exam tip 9c85ac8d, read-only and blind. Apart from the disclosure in G0, it saw no references, no run 1 or run 2 results and no move lists.
 - **The verdict:** no blocker in the design.
 - **The coordinator accepted all ten findings (F1-F10).** This addendum records how each is applied (G1-G10), records the mechanics added since addendum 4 (M1), and PROPOSES one rule (R1).
-- **Before filing,** this work had an independent read-only review (two agents) and a re-check (two agents), and their findings were fixed. The laptop session's own items are marked "proposed": they are in force only once the coordinator accepts them.
+- **Before filing,** this work had an independent read-only review (two agents) and a re-check (two agents), and their findings were fixed. The laptop session's own items were marked "proposed"; the coordinator accepted all of them on Oct 24 (G13).
 
 **G0. Exposure record** (worded as C1 and C2; not exposure: the advisor is not the judge's developer and can't alter frozen-7).
 - The advisor read `../README.md`'s v1.5 table. That table names five v1.6 points (Dustin's five answered questions) and their keys.
@@ -389,7 +389,7 @@ Nothing has been selected, built or run. The window is still open through Oct 25
 - **Since 9c85ac8d** (Oct 23):
   - Fragrant Forest's `UseStadium` is a chance step (the frozen engine searches the deck);
   - Lusamine's `AttachFromDiscard` is a chance step when the discard holds 3+ Energy of 2+ types (the frozen engine's forecast_attach_from_discard branches);
-  - Big Malasada is NOT a chance step, although its text removes "a random Special Condition": the engine forecasts one outcome and picks inside it, so neither frozen-7's lister nor pg_legal_v14 stops there. This is the laptop session's reading, for the coordinator to confirm.
+  - Big Malasada is NOT a chance step, although its text removes "a random Special Condition": the engine forecasts one outcome and picks inside it, so neither frozen-7's lister nor pg_legal_v14 stops there. Accepted as a consequence of R1 (G13, item 5).
 - **Wallace** is as recorded in addendum 4 (E4).
 - **The Oct 23 batch** (DRIVE_LADDER_2026-10-23, 15 games, 16 recordings; 9c85ac8d) brought two new layouts, now read:
   - a continuation's `linked_qr_metadata` given as an absolute Windows path to the opening's QR_ID.json;
@@ -409,7 +409,7 @@ Nothing has been selected, built or run. The window is still open through Oct 25
 
 A summary of the lister-check evidence (problem types and step counts, never a label) goes to the selection check as `lister_drops/<point id>.txt`. There are no other discretionary drops. Section 2's "a point that can't be built cleanly is dropped" now means exactly this.
 - **The drop count** is reported next to v1.6's, in the selection check's mix and in RESULTS_run3. v1.6 dropped 3 at build (`../build/BUILD.md`, "Points dropped, and why"): one for a list problem, and two because their "cost [was] judged too high", which G1 no longer allows.
-- **An accepted ALTERNATIVE that fails** is removed from its point, with its output recorded; the point keeps its key. That covers a lister-check failure (no_plan, ambiguous or unreadable on an alternative's line), which is settled this way. It also covers a pg_legal validation failure, which is proposed (ADJUDICATION_RULES section 3) for the coordinator to confirm.
+- **An accepted ALTERNATIVE that fails** is removed from its point, with its output recorded; the point keeps its key. That covers a lister-check failure (no_plan, ambiguous or unreadable on an alternative's line), which is settled this way. It also covers a pg_legal validation failure (ADJUDICATION_RULES section 3; accepted, G13 item 2).
 - **A line `cut()` can't follow** (v2_helpers.Uncertain) is never cut by hand. Under R1 its first segment is the lister's, from its check row.
 - **`validate_v2.py`'s `stop_differs`** is reported only, never a drop reason.
 
@@ -448,7 +448,7 @@ A summary of the lister-check evidence (problem types and step counts, never a l
   - The PRIMARY prefix result of runs 1 and 2 doesn't depend on the first segment. frozen-7's formal.py (`map_references`; `full_plan_agreement`, lines 440-443: "order of moves up to the plan's own end not mattering: that is prefix agreement") matches each line to its plan by plan identity, and all 67 lines reached their plan.
   - On those 4 points the first segment affects only their scope label (full/partial/none) in the secondary full-scope reading. v1.6 stays frozen and nothing is re-scored. The coordinator decides whether run 2's record notes it.
 
-**R1 (PROPOSED by the laptop session, Oct 24 UTC; in force once the coordinator accepts it, by mailbox id). The first segment follows frozen-7's lister.**
+**R1 (proposed by the laptop session, Oct 24 UTC; ACCEPTED by the coordinator, G13). The first segment follows frozen-7's lister.**
 - **The rule:** the scored first segment of an accepted line is exactly where frozen-7's plan lister ends the plan that line reaches. That is at its first chance event (the lister's own test: a forecast with more than one branch, hidden information, or a change to his own deck) or at its first step after which the OPPONENT must act (Sabrina's new Active; a promotion after a knockout during the turn, for example by Darkrai ex's Nightmare Aura). Otherwise it is the whole turn.
 - **How it is applied:**
   - `check_lister_v2.py` computes the segment for every accepted line from frozen-7's own replay;
@@ -475,7 +475,7 @@ A summary of the lister-check evidence (problem types and step counts, never a l
   - an included game that a written reason excludes is excluded with that reason;
   - a confirmed turn-list problem (Part A's `turn_list_problems`, checked by Part B) is fixed in the turn list, and both codings code that turn.
 - **Anything else** that would need judgement goes to a fresh job that hasn't seen run 2's per-point results, or the point is dropped by rule.
-- **Proposed:** the coordinator may rule a GAME-level window question (in span, ranked, linked, list) from metadata alone, as in addenda 3 and 4.
+- **Game-level window questions** (in span, ranked, linked, list) are ruled by the coordinator from metadata only (G13, item 3).
 
 **G4. Dustin's answers (F4).**
 - For v2, `certified_by` allows only `dustin` and `coordinator_decision_from_his_words`; there is no `coordinator_interpretation`.
@@ -491,7 +491,7 @@ A summary of the lister-check evidence (problem types and step counts, never a l
   - keeps `CANDIDATE_FIELDS`, drops `ANSWER_FIELDS`, and refuses a field in neither list;
   - `check_candidate()` reads the view as it will be written (a JSON round trip). It refuses an answer key at any depth (run 1's and run 2's LEAK_KEYS, these fields, and the answer file's own field names), and refuses his move's labels or the builder's text in any text of the view. A label without `:`, `@` or `#`, such as EndTurn, counts only as a whole text.
 - **Before the freeze,** `build/validate_v2.py` re-runs `check_candidate(exam position, build record)` on every point. It stops on any leak, and on any point without a build record.
-- **A residual, for the coordinator to confirm:** `opp_ambiguous`, `turn_effects`, the board's `effects` and `stadium` hold facts of the position from the review, written in the builder's words. `check_candidate` refuses his move's labels and the builder's notes in them, but their wording is the builder's; the alternative is a fixed vocabulary.
+- **A residual, accepted with two guards (G13, item 6):** `opp_ambiguous`, `turn_effects`, the board's `effects` and `stadium` hold facts of the position from the review, written in the builder's words. `check_candidate` refuses his move's labels and the builder's notes in them, but their wording is the builder's; the alternative is a fixed vocabulary.
 - **The labelling job** sees `label_view(built)`: the candidate view plus `his_move`, never the builder's `notes`, `approximate_reason` or `kind`. The builder, the laptop session, has seen run 2's per-point results.
 - **The change from v1.6:** v1.6's candidate view kept `notes` and `approximate_reason`; v2's drops them, and `approximate` stays as a flag. frozen-7's judge code reads none of the three fields. This is one more difference between run 2's and run 3's inputs, which addendum 1's B1 mixture caveat covers.
 - **Tests** (`build/test_v2_helpers.py`): the view has exactly `CANDIDATE_FIELDS`; every field P() writes is classified; each injected leak is refused, including in a tuple, under an answer-file name, inside a quoted text, or as a whole-text bare label; `label_view`; all 51 v1.6 positions pass.
@@ -533,7 +533,7 @@ A summary of the lister-check evidence (problem types and step counts, never a l
   - An entry must cover every flag found (same file, flag and value), or the run stops.
   - "in" lets the game in, with `weak_qr_ruling` recorded. "excluded" excludes it with the reason "no exact deck list: weak source QR (<flags>): excluded by ruling <ruling>", one of section 1's written reasons.
 - **Without an entry:**
-  - a game with an addendum 3 game ruling stays in, and `weak_qr_covered_by` records that the game ruling covers the flags found. This is proposed, for the coordinator to confirm;
+  - a game with an addendum 3 game ruling stays in, and `weak_qr_covered_by` records that the game ruling covers the flags found. Accepted (G13, item 4);
   - with neither, the run stops, and its message asks the coordinator to rule in the `weak_qr` section.
 - **Today** only 21-57-12 carries one (`battle_full20_proven: false`). Its addendum 3 ruling covers it, so it stays in.
 
@@ -566,3 +566,21 @@ A summary of the lister-check evidence (problem types and step counts, never a l
   - they were told never to open exam answer material, any run 1 or run 2 live folder, any REVIEW.md text, or any .MOV;
   - they read the machinery and documents, and ran the snapshot guards' tests, which read the batches' metadata files.
 - **The review workflow `wf_615680e2-99c` and the re-check `wf_d86e2956-3af`** (2 agents each), under the same exclusions: they read the machinery, the documents, frozen-7's code and the test logs, and ran nothing.
+
+**G13. The coordinator's decisions (coordinator-038, mailbox id 20261024T0210Z, Oct 24, 2026 UTC), recorded as ACCEPTED.** The items marked "proposed" above are settled as follows; where this section and an earlier "proposed" line differ, this section rules.
+1. **R1: ACCEPTED.** The first segment follows frozen-7's lister: it ends where the lister ends the plan the line reaches, at a chance event, where the opponent must act, or at the end of the turn.
+   - The coordinator's reason, verbatim: "both bots and the judge choose among the lister's plans, so labels must end where those plans end. Otherwise a correct pick can't match."
+   - cut() predicts the known cases; the check records the lister's segment where they differ. Nothing is decided per point. This amends section 2's "chance rules are v1.6's".
+   - **Run 2's record:** a dated note sits beside RESULTS_run2, at `../run2/ADDENDUM_2026-10-24_first_segments.md`; the results are not edited.
+2. **An alternative failing pg_legal: ACCEPTED.** That alternative is removed, and the point keeps its key line. "An illegal alternative can't be picked by either bot, so this is symmetric."
+3. **Game-level window rulings: ACCEPTED, with a limit.**
+   - The coordinator rules game-level window questions (in span, ranked, linked, deck list) from METADATA ONLY: filenames, times, QR/list identity, review status and linkage. Never from moves or move content.
+   - Each ruling is recorded with the metadata it rests on.
+   - Point-level ties stay under F3 (G3), never with pattern-aware people.
+4. **Weak deck flags: ACCEPTED as G8 has them.**
+   - 21-57-12 stays in through addendum 3's ruling (`weak_qr_covered_by`).
+   - A NEW weak game without a ruling stops the snapshot until the coordinator rules "in" or "excluded" from metadata, as in item 3.
+5. **Big Malasada is not a chance step: ACCEPTED, as a consequence of R1, not a separate judgment.** The first segment follows the frozen lister, which forecasts one outcome there.
+6. **Free-text position facts** (`opp_ambiguous`, `turn_effects`, board `effects`, `stadium`): ACCEPTED, with two guards.
+   - **(a) Facts only.** `build/v2_helpers.check_candidate` refuses an evaluative or advisory word in those fields, using `BANNED_WORDS`: should, better, best, mistake, misplay, threat, lethal, plan, intend, want, correct, wrong, risky, safe, good, bad, optimal, ideal, blunder, must, needs to, ought, and their inflections. Card, Ability and attack names are taken out first, so "Team Rocket's Master Plan" and "Safeguard" pass. It is tested in `build/test_v2_helpers.py`, and all 51 v1.6 positions pass it.
+   - **(b) Blind review.** The selection check's Part B reads every point's free-text fields (`position_facts.json`, those fields only) beside the review, and reports any hint of the answer. A flag is `fix_first`. A flagged text is rewritten to the review's own factual wording, or removed.

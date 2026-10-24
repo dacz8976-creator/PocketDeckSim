@@ -72,6 +72,7 @@ Write `selcode_out/coding.json`: `{"format": "pds-exam-v2-selcode", "turns": {"<
 - `lister_drops/<point id>.txt`: for every point where frozen-7's lister check found a problem, its problem types and step counts (check_lister_v2.py `--drops-out`; no labels).
 - `sources/<game>/REVIEW.md`: the hash-checked snapshot, one folder per game, clips in order with `CLIPS.json`.
 - `labels_summary.json`: per point, its answer kind, its deck, and how its accepted first segment ends: at a chance action, at an opponent's choice (addendum 5, R1), or at the end of the turn. Counts only; no answers.
+- `position_facts.json`: per point id, ONLY the position's free-text fact fields from the candidate view: `opp_ambiguous`, `turn_effects`, `stadium` and each board Pokémon's `effects` (addendum 5, G5; coordinator-038, decision 6). No move, no label.
 - `run2_mix.json`: run 2's AGGREGATE mix only:
   - points by deck (13-A 23, deck 12 14, Kingambit 12);
   - points by kind (prepare 22, attack now 22, sacrifice 5);
@@ -133,6 +134,12 @@ You are an independent checker for Dustin's PocketDeckSim project (Pokémon TCG 
    - the scope split if `labels_summary.json` has it.
 
    Describe the differences in plain words. They are not a reason to change the selection.
+5. **The free-text facts** (`position_facts.json`; addendum 5, G5). These fields must state facts of the position only, in the review's own terms. Read every point's fields beside its review, and report any wording that:
+   - hints at what he did or should do;
+   - judges a play;
+   - says more than the review states.
+
+   Give the point id, the field and the words. Don't rewrite anything yourself: a flagged text is rewritten to the review's own factual wording, or removed.
 
 Write `selcheck_out/SELECTION_CHECK.md` and `selcheck_out/selection_check.json`:
 
@@ -140,6 +147,7 @@ Write `selcheck_out/SELECTION_CHECK.md` and `selcheck_out/selection_check.json`:
      "coding_disagreements": [{"point_id", "field", "first", "second"}],
      "turn_list_problems": [...],
      "selection_vs_rule": [...],
+     "free_text_flags": [{"point_id", "field", "words", "why"}],
      "picking_problems": [...], "mix": {...}, "verdict": "clean" | "fix_first", "summary": "..."}
 
-`fix_first` means at least one window problem, a confirmed turn-list problem, a selection that doesn't follow the two-codings rule, or a picking problem. A coding disagreement is not fixed by anyone: the rule settles it. Report it, but don't call it fix_first. Finish by printing the verdict and the counts.
+`fix_first` means at least one window problem, a confirmed turn-list problem, a selection that doesn't follow the two-codings rule, a picking problem, or a free-text flag. A coding disagreement is not fixed by anyone: the rule settles it. Report it, but don't call it fix_first. Finish by printing the verdict and the counts.
