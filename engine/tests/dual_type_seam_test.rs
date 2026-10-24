@@ -48,6 +48,13 @@ fn pokemon_card(card_id: CardId) -> PokemonCard {
 }
 
 /// A real database card made dual-type by giving it `secondary` as its second printed type.
+///
+/// The synthetic card is a clone mutated in place: these tests assume every site reads the
+/// in-play Pokémon's own `card` (or the hand / deck / discard card itself), never the database
+/// again by id (`get_card_by_enum(card.get_card_id())`). A site that re-reads the database would
+/// see the real single-type card and pass these tests wrongly; such a site would need its own test.
+/// The case of a printed second type together with Double Type is pinned below
+/// (`double_type_ability_still_replaces_the_printed_set`).
 fn dual_type_card(card_id: CardId, secondary: EnergyType) -> Card {
     let mut card = pokemon_card(card_id);
     card.secondary_energy_type = Some(secondary);

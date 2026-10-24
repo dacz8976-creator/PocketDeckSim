@@ -81,6 +81,19 @@ questions #19–#28 came from the full engine audit (`07_engine_audit_2026-09-22
 
 **22. Turn-limit timing.** (New.) Settled: 30 turns counting both players' turns → tie [OFFICIAL tie; COMMUNITY number; an X post quoting the in-app rules text: "Games … can last a maximum of 30 turns. If you reach the limit, the duel ends in a tie."]. Solo is 50 per Game8 JP, disputed by one Yahoo answer ("30"). Unknown: does the 30th turn's end-of-turn step and Checkup still happen, and can a KO there still win? Engine: it runs the final Checkup, and a Checkup win stands; the tie applies only when turn 31 would begin (`state/mod.rs` `advance_turn`, `if self.turn_count > 30`). Rare in practice. Dustin (2026-09-25): "I would think it would be a tie, but almost never happens in real life"; recorded against the engine and dropped as too rare to matter.
 
+**32. Dual-type Pokémon (Dual Fusion, live Oct 28, 6 pm PDT = Oct 29, 01:00Z) — FAN-SOURCED, UNVERIFIED.** (New, Oct 24.)
+- **Official so far:** only that Mega Mewtwo X ex is Psychic- and Fighting-type, and Mega Greninja ex is Water- and Darkness-type.
+- **Fan sources** (GameWith JP, Wargamer, Pokémon GO Hub, outof.games; collected by the coordinator, Oct 23):
+  - each revealed dual-type card prints ONE Weakness;
+  - an attacker matches a Weakness with EITHER of its types (+20 once);
+  - "[X] Pokémon" effects (Korrina, Peculiar Plaza, Gardevoir; Mew ex's "Benched [P] Pokémon") count either type.
+- **The engine branch `laptop/dual-type-seam-2026-10-23`** builds in the any-of reading for EVERY printed-type check: Fisher, Fishing Net, Mythical Slab, typed deck searches, Forest Breath, Psychic Connect, Wash Out, Leaf Cape, Jungle Totem, the Chase Order bench filter, the defender-type and opponent-type bonuses, and Flame Patch. One printed Weakness, applied once.
+- **Unknown:**
+  - whether a dual-type card can ever print two Weaknesses;
+  - whether a dual-type card changes which Energy a deck registers (the engine's deck-Energy inference keeps one type, with a TODO);
+  - how a printed second type combines with a Double Type-style Ability (the engine lets the Ability replace the printed set).
+- **Test:** once he has a dual-type card, the shot-list row the coordinator adds after release: Weakness either way, and one "[X] Pokémon" effect on each type.
+
 ## Low impact / settled enough
 
 - **30. A Bench-only attack when the opponent's Bench is empty** (e.g. Hitmonlee's Stretch Kick, "does 30 damage to 1 of your opponent's Benched Pokémon"). (New, 2026-09-27, from Dustin's quiz 2 Q02 question.) Can it be used at all? The engine allows it and it does nothing (`apply_attack_action.rs` `push_direct_damage_choices`: no target, nothing queued). With a Bench it does the 30 (kp3's Q02 game; `tests/s180_e1_fixtures.rs` C8/C10a). The game blocks Trainers and Abilities whose condition can't be met (`04`), but nothing is recorded for attacks. **Dropped (Dustin, 2026-09-27): "Ending your turn or using an attack that does nothing is the same result."**
