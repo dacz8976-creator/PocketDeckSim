@@ -238,10 +238,10 @@ pub fn trainer_move_generation_implementation(
         | CardId::A3b107EeveeBag
         | CardId::A4b308EeveeBag
         | CardId::A4b309EeveeBag => can_play_eevee_bag(state, trainer_card),
-        CardId::B1217FlamePatch | CardId::B1331FlamePatch => {
+        CardId::B1217FlamePatch | CardId::B1331FlamePatch | CardId::B4b203FlamePatch | CardId::B4b369FlamePatch => {
             can_play_flame_patch(state, trainer_card)
         }
-        CardId::B1225Copycat | CardId::B1270Copycat => can_play_trainer(state, trainer_card),
+        CardId::B1225Copycat | CardId::B1270Copycat | CardId::B4b225Copycat | CardId::B4b391Copycat | CardId::B4b424Copycat => can_play_trainer(state, trainer_card),
         CardId::A2b069Iono
         | CardId::A2b088Iono
         | CardId::A4b340Iono
@@ -249,11 +249,11 @@ pub fn trainer_move_generation_implementation(
         | CardId::B2a089Iono
         | CardId::B2a106Iono => can_play_trainer(state, trainer_card),
         CardId::B1221Marlon | CardId::B1266Marlon => can_play_marlon(state, trainer_card),
-        CardId::B1223May | CardId::B1268May => {
+        CardId::B1223May | CardId::B1268May | CardId::B4b220May | CardId::B4b386May => {
             can_search_nonempty_deck(state, trainer_card)
         }
         CardId::B1224Fantina | CardId::B1269Fantina => can_play_trainer(state, trainer_card),
-        CardId::B1226Lisia | CardId::B1271Lisia => {
+        CardId::B1226Lisia | CardId::B1271Lisia | CardId::B4b226Lisia | CardId::B4b392Lisia => {
             can_search_nonempty_deck(state, trainer_card)
         }
         CardId::A2a073CelesticTownElder | CardId::A2a088CelesticTownElder => {
@@ -261,23 +261,23 @@ pub fn trainer_move_generation_implementation(
         }
         CardId::A2a074Barry | CardId::A2a089Barry => can_play_trainer(state, trainer_card),
         CardId::A2a075Adaman | CardId::A2a090Adaman => can_play_trainer(state, trainer_card),
-        CardId::B2149Diantha | CardId::B2190Diantha => can_play_diantha(state, trainer_card),
+        CardId::B2149Diantha | CardId::B2190Diantha | CardId::B4b214Diantha | CardId::B4b380Diantha => can_play_diantha(state, trainer_card),
         CardId::B2152Piers | CardId::B2193Piers => can_play_piers(state, trainer_card),
         CardId::B1a066ClemontsBackpack => can_play_trainer(state, trainer_card),
-        CardId::B1a068Clemont | CardId::B1a081Clemont => {
+        CardId::B1a068Clemont | CardId::B1a081Clemont | CardId::B4b218Clemont | CardId::B4b384Clemont => {
             can_search_nonempty_deck(state, trainer_card)
         }
-        CardId::B1a067QuickGrowExtract | CardId::B1a103QuickGrowExtract => {
+        CardId::B1a067QuickGrowExtract | CardId::B1a103QuickGrowExtract | CardId::B4b201QuickGrowExtract | CardId::B4b367QuickGrowExtract => {
             can_play_quick_grow_extract(state, trainer_card)
         }
-        CardId::B1a069Serena | CardId::B1a082Serena => {
+        CardId::B1a069Serena | CardId::B1a082Serena | CardId::B4b219Serena | CardId::B4b385Serena => {
             can_search_nonempty_deck(state, trainer_card)
         }
         CardId::B2a090Nemona | CardId::B2a107Nemona => can_play_trainer(state, trainer_card),
-        CardId::B2a091Arven | CardId::B2a108Arven | CardId::B2a115Arven => {
+        CardId::B2a091Arven | CardId::B2a108Arven | CardId::B2a115Arven | CardId::B4b222Arven | CardId::B4b388Arven | CardId::B4b423Arven => {
             can_search_nonempty_deck(state, trainer_card)
         }
-        CardId::B2a086ElectricGenerator | CardId::B2a131ElectricGenerator => {
+        CardId::B2a086ElectricGenerator | CardId::B2a131ElectricGenerator | CardId::B4b199ElectricGenerator | CardId::B4b365ElectricGenerator => {
             can_play_electric_generator(state, trainer_card)
         }
         CardId::B2a088TeamStarGrunt | CardId::B2a105TeamStarGrunt => {
@@ -293,10 +293,10 @@ pub fn trainer_move_generation_implementation(
         | CardId::A4b313OldAmber
         | CardId::B1214PlumeFossil
         | CardId::B1216CoverFossil => can_play_fossil(state, trainer_card),
-        CardId::B2145LuckyIcePop => can_play_lucky_ice_pop(state, trainer_card),
+        CardId::B2145LuckyIcePop | CardId::B4b198LuckyIcePop | CardId::B4b364LuckyIcePop => can_play_lucky_ice_pop(state, trainer_card),
         CardId::B2b066Maintenance => can_play_maintenance(state, trainer_card),
-        CardId::B2b067Iris | CardId::B2b081Iris => can_play_trainer(state, trainer_card),
-        CardId::B2b068Calem | CardId::B2b082Calem => can_play_trainer(state, trainer_card),
+        CardId::B2b067Iris | CardId::B2b081Iris | CardId::B4b212Iris | CardId::B4b378Iris | CardId::B4b421Iris => can_play_trainer(state, trainer_card),
+        CardId::B2b068Calem | CardId::B2b082Calem | CardId::B4b215Calem | CardId::B4b381Calem => can_play_trainer(state, trainer_card),
         CardId::B2b065NastyNotice => can_play_trainer(state, trainer_card),
         CardId::A3b068Hau | CardId::A3b085Hau => can_play_trainer(state, trainer_card),
         CardId::A3142BigMalasada => can_play_big_malasada(state, trainer_card),
@@ -306,15 +306,15 @@ pub fn trainer_move_generation_implementation(
         CardId::A2b072TeamRocketGrunt | CardId::A2b091TeamRocketGrunt => {
             can_play_team_rocket_grunt(state, trainer_card)
         }
-        CardId::B3147FieldBlower => can_play_field_blower(state, trainer_card),
-        CardId::B3149Korrina | CardId::B3190Korrina => can_play_trainer(state, trainer_card),
+        CardId::B3147FieldBlower | CardId::B4b202FieldBlower | CardId::B4b368FieldBlower => can_play_field_blower(state, trainer_card),
+        CardId::B3149Korrina | CardId::B3190Korrina | CardId::B4b217Korrina | CardId::B4b383Korrina => can_play_trainer(state, trainer_card),
         CardId::B3150Cabbie | CardId::B3191Cabbie => {
             can_search_nonempty_deck(state, trainer_card)
         }
         CardId::B3152ParasolLady | CardId::B3193ParasolLady => {
             can_play_parasol_lady(state, trainer_card)
         }
-        CardId::B3a071Juliana | CardId::B3a086Juliana => {
+        CardId::B3a071Juliana | CardId::B3a086Juliana | CardId::B4b213Juliana | CardId::B4b379Juliana => {
             can_search_nonempty_deck(state, trainer_card)
         }
         CardId::B3a072ProfessorSada | CardId::B3a087ProfessorSada => {
@@ -323,14 +323,14 @@ pub fn trainer_move_generation_implementation(
         CardId::B3a073ProfessorTuro | CardId::B3a088ProfessorTuro => {
             can_play_professor_turo(state, trainer_card)
         }
-        CardId::B3b066Elesa | CardId::B3b083Elesa => can_play_trainer(state, trainer_card),
-        CardId::B3b067PuppyLovingGirl | CardId::B3b084PuppyLovingGirl => {
+        CardId::B3b066Elesa | CardId::B3b083Elesa | CardId::B4b422Elesa => can_play_trainer(state, trainer_card),
+        CardId::B3b067PuppyLovingGirl | CardId::B3b084PuppyLovingGirl | CardId::B4b216PuppyLovingGirl | CardId::B4b382PuppyLovingGirl => {
             can_search_nonempty_deck(state, trainer_card)
         }
-        CardId::B3b068Wallace | CardId::B3b085Wallace => can_play_wallace(state, trainer_card),
-        CardId::B4145OrderPad => can_search_nonempty_deck(state, trainer_card),
-        CardId::B4152Skyla | CardId::B4192Skyla => can_play_skyla(state, trainer_card),
-        CardId::B4153Wally | CardId::B4193Wally => can_play_wally(state, trainer_card),
+        CardId::B3b068Wallace | CardId::B3b085Wallace | CardId::B4b223Wallace | CardId::B4b389Wallace => can_play_wallace(state, trainer_card),
+        CardId::B4145OrderPad | CardId::B4b200OrderPad | CardId::B4b366OrderPad => can_search_nonempty_deck(state, trainer_card),
+        CardId::B4152Skyla | CardId::B4192Skyla | CardId::B4b221Skyla | CardId::B4b387Skyla => can_play_skyla(state, trainer_card),
+        CardId::B4153Wally | CardId::B4193Wally | CardId::B4b224Wally | CardId::B4b390Wally => can_play_wally(state, trainer_card),
         CardId::B4150Psychic | CardId::B4190Psychic => can_play_psychic(state, trainer_card),
         CardId::B4151Drayden | CardId::B4191Drayden => can_play_trainer(state, trainer_card),
         CardId::B4a067TeamRocketsThievingMachine => {
