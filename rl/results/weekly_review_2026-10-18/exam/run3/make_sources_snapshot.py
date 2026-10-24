@@ -18,7 +18,8 @@ For each game whose start is in the window:
 - acceptance and ranked eligibility from LEAD_ACCEPTANCE.json only, for every clip (accepted, ladder_eligible); a review is complete
   (full_battle_review_complete) or partial (the recording ends early or misses turns): a partial game counts when its opening is recorded
   (its first clip has its own pre-game code), and per-turn usability later removes the turns it lacks; without a recorded opening it is
-  excluded as a recording that starts mid-game;
+  excluded as a recording that starts mid-game; a partial game whose list comes by the repository route (--extra-decks) has no own
+  filmed code to show its opening, and is excluded for that reason (addendum 4, E2 and E7);
 - the exact list (PREREG_RUN3 section 1, addendum 3 D1): a deck file in DECKS.json that this game's filmed code made (matched by drive id,
   so a targeted addendum's QR counts for its game), or a list in the repository matched card for card (--extra-decks {packet name or
   drive id: deck file key}; it must name a deck file, match an in-window packet and agree with any filmed code). A deck that comes from
@@ -26,11 +27,22 @@ For each game whose start is in the window:
   exact_lists()), each tied to its game by the video's sha256 (the window packet's SOURCE.json and LEAD_ACCEPTANCE). --exact-lists
   needs --rulings: the coordinator's ruling must cover exactly those recordings, with Codex's list letter and the packet's recording
   name, and is attached to the game's record (e.g. 21-57-12's recorded limit);
+- a weak source QR (battle_full20_proven not true, or an unsaved-changes prompt recorded) never passes silently: wherever the flag sits
+  (the game's sources in DECKS.json, its own and also_from, or a clip's own QR files) it is written in the record (weak_qr), and for a
+  game that would count the ruling decides, not the flag (addendum 3, D1 and D4): an entry in RULINGS.json's optional weak_qr section
+  {"<the game's drive id (a battle's opening clip)>": {"decision": "in" | "excluded", "flags": {"<file, as weak_qr names it:
+  batch/packet/file>": {"<flag>": <value>}}, "ruling": "<the coordinator's mailbox id or words>"}} must name every flag found (same
+  file, flag and value; else stop) and then decides (in: weak_qr_ruling is recorded; excluded: the reason names the flags and the
+  ruling); without one, the game's addendum-3 ruling in RULINGS.json's games covers its flags (weak_qr_covered_by says so, for the
+  coordinator to confirm); with neither the run stops. The section is checked strictly when present (only the game drive ids of the
+  window; exactly decision, flags and ruling; flags that are weak flags; a ruling in words), and an entry for a game with no weak flag
+  found stops too;
 - one game counted once: a packet name in two batches, or a drive id or a video sha256 in two packets (across all clips), stops the run;
 - OUT must be empty and WINDOW_OUT new (a stop can leave a partial copy there; nothing is committed after a stop);
 - the text files below are copied, and every copied file that some pin names (LEAD_ACCEPTANCE's independent.candidate_sha256, CANDIDATE_FREEZE,
   FIRST_PASS_FREEZE, independent/VERIFICATION.json: any path -> sha256 pair in them) must equal a pinned hash; REVIEW.md must be pinned. A mismatch stops.
-- its status: "in", or "excluded" with the written reason (no accepted review; not ranked; opening not recorded; no exact list).
+- its status: "in", or "excluded" with the written reason (no accepted review; not ranked; opening not recorded; a partial game whose
+  list comes by the repository route; no exact list; a weak source QR the coordinator's weak_qr ruling excludes).
 Every review-index row whose recording time is in the window but that no packet folder matches is listed too, for the selection check."""
 import argparse, csv, datetime, hashlib, json, os, re, shutil, sys
 from zoneinfo import ZoneInfo
@@ -101,6 +113,61 @@ def md5(p):
 
 def drive_of(name):
     return name.split('_ScreenRecording')[0]
+
+
+def weak_of(q):
+    """A source QR file's weak flags (make_v2_decks.py repeats them per source in DECKS.json as `weak`): battle_full20_proven present and
+    not true (the list is not proven to be the one played), or unsaved_changes_prompt set (true, or any text or value but false/empty)."""
+    q = q if isinstance(q, dict) else {}
+    out = {}
+    if 'battle_full20_proven' in q and q['battle_full20_proven'] is not True:
+        out['battle_full20_proven'] = q['battle_full20_proven']
+    if q.get('unsaved_changes_prompt') not in (None, False, ''):
+        out['unsaved_changes_prompt'] = q['unsaved_changes_prompt']
+    return out
+
+
+def flags_text(weak):
+    """{file: {flag: value}} in words: 'file: flag = value, flag = value; file: ...'."""
+    return '; '.join(f'{p}: ' + ', '.join(f'{k} = {json.dumps(v)}' for k, v in fl.items()) for p, fl in weak.items())
+
+
+def not_covered(found, ruled):
+    """The weak flags found that a weak_qr entry's flags do not name with the same file, the same flag and the same value (compared as
+    JSON, so false is not 0); {} when the entry covers them all."""
+    out = {}
+    for p, fl in found.items():
+        miss = {k: v for k, v in fl.items()
+                if k not in ruled.get(p, {}) or json.dumps(ruled[p][k], sort_keys=True) != json.dumps(v, sort_keys=True)}
+        if miss:
+            out[p] = miss
+    return out
+
+
+def check_weak_rulings(path, rulings):
+    """RULINGS.json's optional weak_qr section, checked strictly (the drive ids are checked against the window in main): {drive id:
+    {"decision": "in" | "excluded", "flags": {file: {flag: value}} (non-empty, each a weak flag as weak_of reads it), "ruling": text}}.
+    Returns the section ({} when absent); stops on anything malformed."""
+    if 'weak_qr' not in rulings:
+        return {}
+    sec = rulings['weak_qr']
+    bad = lambda why: sys.exit(f'{path}: weak_qr: {why}: stop')
+    if not isinstance(sec, dict):
+        bad(f'is a {type(sec).__name__}, not a map of drive id -> entry')
+    for dr, e in sec.items():
+        if not isinstance(e, dict) or set(e) != {'decision', 'flags', 'ruling'}:
+            bad(f"{dr}: an entry holds exactly decision, flags and ruling (found {sorted(e) if isinstance(e, dict) else type(e).__name__})")
+        if not isinstance(e['decision'], str) or e['decision'] not in ('in', 'excluded'):
+            bad(f"{dr}: decision {json.dumps(e['decision'])} is not \"in\" or \"excluded\"")
+        if not isinstance(e['ruling'], str) or not e['ruling'].strip():
+            bad(f"{dr}: no ruling (the coordinator's mailbox id or words)")
+        if not isinstance(e['flags'], dict) or not e['flags']:
+            bad(f'{dr}: flags is empty or not a map of file -> {{flag: value}}')
+        for f, kv in e['flags'].items():
+            if not f.strip() or not isinstance(kv, dict) or not kv or weak_of(kv) != kv:
+                bad(f'{dr}: flags {json.dumps(f)}: {json.dumps(kv)} is not a set of weak flags (battle_full20_proven not true, '
+                    f'unsaved_changes_prompt set)')
+    return sec
 
 
 def exact_lists(exact_dir, summary_dir, out_dir):
@@ -183,7 +250,8 @@ def main():
     # required for run 3 (addendum 3): a run without them would record the six Oct 16-17 games as having no exact list
     ap.add_argument('--exact-lists', required=True, help="Codex's targeted QR addenda (BattleLogsData/Evidence/QR_EXACT_LISTS_2026-10-21)")
     ap.add_argument('--exact-summary', required=True, help='their summary folder (Battle Logs/Recording_QA/QR_EXACT_LISTS_2026-10-21)')
-    ap.add_argument('--rulings', required=True, help='run3/decks/RULINGS.json: the coordinator\'s deck-list rulings, attached per game')
+    ap.add_argument('--rulings', required=True, help='run3/decks/RULINGS.json: the coordinator\'s deck-list rulings, attached per game, '
+                                                     'and its optional weak_qr section (rulings on weak source QRs)')
     ap.add_argument('--window-start', default='2026-10-16T03:15:12Z')
     ap.add_argument('--window-end', default='2026-10-26T04:59:59Z')
     ap.add_argument('--out', required=True)
@@ -222,6 +290,8 @@ def main():
     lims = [(dr, ru['limit']) for dr, ru in rg.items() if ru.get('limit')]
     if len(lims) != 1 or any(f'"{lim}"' not in rulings.get('ruling_verbatim', '') for _, lim in lims):
         sys.exit(f'{a.rulings}: the recorded limit must be the one the ruling quotes, on one game (found {len(lims)}): stop')
+    # the coordinator's rulings on weak source QRs (optional section; its drive ids are checked against the window below)
+    wq_all = check_weak_rulings(a.rulings, rulings)
     used_extra, rec, seen_names = set(), [], set()
     # every packet of the given batches, then the units: one game per battle (addendum 4), else one per recording
     pk = {}
@@ -290,6 +360,13 @@ def main():
             sys.exit(f'battle {bid}: its clips do not start in clip order: stop')
         units.append(ordered)
     units.sort(key=lambda u: u[0]['t'])
+    # a weak_qr entry names a game of this window by its drive id (a battle by its opening clip's), before any game is read
+    window_games = {u[0]['drive'] for u in units if ws < u[0]['t'] <= we}
+    later_drives = {c['drive'] for u in units for c in u[1:]}
+    for dr in wq_all:
+        if dr not in window_games:
+            sys.exit(f"{a.rulings}: weak_qr: {dr}: " + ("a later clip of a battle: key the entry by the battle's opening clip's drive id"
+                                                       if dr in later_drives else 'no game in the window has this drive id') + ': stop')
     for unit in units:
         opening = unit[0]
         inside = [ws < c['t'] <= we for c in unit]
@@ -353,6 +430,37 @@ def main():
             if not m or ru.get('recording', '').replace(' ', '_') != m.group(0).replace(' ', '_'):
                 sys.exit(f"{a.rulings}: {dr}'s recording {ru.get('recording')} is not this packet's ({name}): stop")
             r['deck_ruling'] = dict(ru, ruling=rulings.get('ruling_ref'))
+        # (F8) a weak source QR (addendum 3, D1 and D4): the coordinator's ruling decides, not the flag. The flag can sit in any of the
+        # game's sources in DECKS.json (its own and also_from) or in a QR file make_v2_decks.py did not record (it keeps one QR file per
+        # packet), so both are read; it is written in the record, and a game that would count without a ruling stops below
+        weak = {}
+
+        def note_weak(label, q):
+            if weak_of(q):
+                weak.setdefault(label, {}).update(weak_of(q))
+        for s in ([g, *g.get('also_from', [])] if g else []):
+            note_weak(f"{s['batch']}/{s['packet']}/{s['qr_file']}", s.get('weak'))
+        qr_places = [(c['batch'], c['name'], c['dir'], f) for c in unit for f in ['QR_ID.json', 'QR_DECODE.json'] +
+                     sorted(lf for lf in os.listdir(c['dir']) if lf.startswith('LINKED_') and lf.endswith('QR_ID.json'))]
+        if x:
+            qr_places.append((exact_meta['folder'], dr, os.path.join(a.exact_lists, dr), 'QR_DECODE.json'))
+        for b, n, qd, f in qr_places:
+            if os.path.exists(os.path.join(qd, f)):
+                note_weak(f'{b}/{n}/{f}', load(os.path.join(qd, f)))
+        if weak:
+            r['weak_qr'] = weak
+        # the coordinator's weak_qr ruling for this game must name every flag found (file, flag and value); it decides below
+        wq = wq_all.get(dr)
+        if wq is not None:
+            if not weak:
+                sys.exit(f"{name}: {a.rulings}'s weak_qr entry for {dr} rules on weak flags ({flags_text(wq['flags'])}), but no weak flag "
+                         f"is found on this game: the entry is not for what the sources show: stop")
+            miss = not_covered(weak, wq['flags'])
+            if miss:
+                sys.exit(f"{name}: its source QR's weak flags are not all covered by {a.rulings}'s weak_qr entry for {dr} (not covered: "
+                         f"{flags_text(miss)}; the entry rules on: {flags_text(wq['flags'])}): the coordinator rules on the flags found "
+                         f"(same file, flag and value): stop")
+            r['weak_qr_ruling'] = dict(wq)
         partial = 'partial' in completion
         if partial:
             r['partial_review_note'] = ('the recording ends early or misses turns: the game counts when its opening is recorded, and '
@@ -364,10 +472,24 @@ def main():
         elif not ranked:
             r['status'], r['reason'] = 'excluded', 'not ranked (LEAD_ACCEPTANCE.json ladder_eligible is not true)'
         elif partial and not own_code:
-            r['status'], r['reason'] = 'excluded', 'the opening is not recorded (no pre-game code in its first clip): a recording that starts mid-game'
+            # (F9) addendum 4 (E2) and E7: a partial game counts only when its opening is recorded, shown by its first clip's own code;
+            # a list by the repository route shows no opening, which is not the same as an opening known to be missing
+            r['status'], r['reason'] = 'excluded', (
+                'the list comes by the repository route (--extra-decks), so no own filmed code shows the opening: a partial review counts '
+                'only when its opening is recorded with its own pre-game code (PREREG_RUN3 addendum 4, E2; E7)' if ek else
+                'the opening is not recorded (no pre-game code in its first clip): a recording that starts mid-game')
         elif not deck:
             r['status'], r['reason'] = 'excluded', 'no exact deck list (no filmed code, no repository list matched)'
+        elif wq is not None and wq['decision'] == 'excluded':
+            r['status'], r['reason'] = 'excluded', f"no exact deck list: weak source QR ({flags_text(weak)}): excluded by ruling {wq['ruling']}"
         else:
+            if weak and wq is None:
+                if dr not in rg:
+                    sys.exit(f"{name}: its list's source QR carries a weak flag ({flags_text(weak)}) and {a.rulings} has no ruling for {dr} "
+                             f"(no weak_qr entry, no game ruling): the coordinator rules: add an entry to RULINGS.json's weak_qr section "
+                             f"(decision in or excluded): stop")
+                # one of the seven exact-list rulings (addendum 3, D2) covers its flags, as before; the coordinator is to confirm it
+                r['weak_qr_covered_by'] = 'game ruling (addendum 3 D2; to be confirmed by the coordinator)'
             r['status'] = 'in'
         for k, c in enumerate(unit):
             pins = pins_of(c['dir'])
@@ -436,7 +558,7 @@ def main():
     print(json.dumps(out['counts']), '| index rows without a packet:', len(stray), '| exact-list packets:', len(exact))
     for r in rec:
         print(f"{r['start_utc']} {r['status']:8s} {r.get('deck') or '-':18s} {r['packet'][:60]} {r.get('reason', '')}"
-              f"{' [exact list ' + str(r['exact_list']['list_id']) + ']' if r.get('exact_list') else ''}{' [ruling]' if r.get('deck_ruling') else ''}"
+              f"{' [exact list ' + str(r['exact_list']['list_id']) + ']' if r.get('exact_list') else ''}{' [ruling]' if r.get('deck_ruling') else ''}{' [weak QR]' if r.get('weak_qr') else ''}"
               f"{' [battle of ' + str(len(r['clips'])) + ' clips]' if r.get('clips') else ''}{' [partial review]' if r.get('partial_review_note') else ''}")
 
 

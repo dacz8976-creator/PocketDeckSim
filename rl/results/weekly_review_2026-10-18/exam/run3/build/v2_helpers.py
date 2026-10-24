@@ -14,12 +14,23 @@ Changes from v1.6:
   * Abilities: Dustox B4 005's Variety Powder picks a Special Condition at random, so using it is a chance step (the frozen plan lister stops at
     any action whose engine forecast has more than one branch). Its label is 'Ability@<slot>' and names no card, so cut() follows the slots
     through the line (Place, Evolve, Retreat). If a slot move it can't follow comes before an 'Ability@' while a chance-Ability Pokemon could
-    be in play, cut() raises Uncertain: that line is cut by hand and noted. The other v2 Abilities that are used (Dragonair's Dragon's Blessing)
+    be in play, cut() raises Uncertain: that line is never cut by hand; its first segment is frozen-7's lister's (addendum 5, G1 and R1,
+    from check_lister_v2.py). The other v2 Abilities that are used (Dragonair's Dragon's Blessing)
     or trigger (Darkrai ex's Nightmare Aura, Team Rocket's Weezing ex's Boiler Smog) are fixed outcomes, not chance.
   The plan-list label check of the formal compare is the safety net: every accepted first segment must be one of the frozen lister's plans.
 - game ids: a Drive recording "ScreenRecording_MM-DD-YYYY HH-MM-SS" (Chicago time) becomes game_id(start_utc) = 'YYYYMMDD_HHMMSS000_SR' from
-  run3/window.json's UTC start (v1.6's iOS ids are 'YYYYMMDD_HHMMSSmmm_iOS', also UTC), so ids sort by time and say where they came from."""
-import json, os, re
+  run3/window.json's UTC start (v1.6's iOS ids are 'YYYYMMDD_HHMMSSmmm_iOS', also UTC), so ids sort by time and say where they came from.
+- the candidate view (advisor finding F5, Oct 23; PREREG_RUN3 addendum 5): P() keeps build-only and answer fields on the built position
+  (kind, force, _draws, _vpatch, notes, approximate_reason). The v2 assembly (not yet written) must write every exam position as
+  candidate_view(built), and validate_v2.py re-checks each exam position against its build record before the freeze. candidate_view keeps
+  CANDIDATE_FIELDS, drops ANSWER_FIELDS and refuses any other field; check_candidate() refuses an answer field at any
+  depth or the text of his move or of the builder's notes anywhere in the view. v1.6's view kept `notes` and `approximate_reason`; v2's
+  does not (`approximate` stays, as a flag).
+- cut() follows frozen-7's plan lister (addendum 5, R1): it also ends the first segment at a play after which the opponent chooses
+  (Sabrina) and at Team Rocket's Raticate ex's Thieving Incisors. The F2 lister check (../check_lister_v2.py) asserts the agreement on
+  every accepted line before the freeze; on v1.6 it now passes all 67 lines (v1.6's own cut differed on 4 points).
+- certified_by (addendum 5, F4): only 'dustin' or 'coordinator_decision_from_his_words' (check_certified_by)."""
+import copy, json, os, re
 
 EXAM_V2 = os.path.expanduser('~/exam_v2')
 DECKS_JSON = os.path.join(EXAM_V2, 'decks', 'DECKS.json')
@@ -40,7 +51,14 @@ CHANCE_STADIUMS = ('Mesagoza', 'Fragrant Forest')
 # Lusamine (Oct 23 lists): playing it is deterministic; its AttachFromDiscard ("2 random Energy from your discard pile") branches in the
 # frozen engine's forecast only when the discard holds 3+ Energy of 2+ types (forecast_attach_from_discard); chance_steps judges that
 # from the position's discard at the start of the turn (a retreat earlier in the same line is not counted: the label check catches it)
-CHANCE_ABILITY = ('Dustox',)  # Variety Powder: a Special Condition chosen at random
+# Dustox: Variety Powder, a Special Condition chosen at random. Team Rocket's Raticate ex (v1.6's 13-A list; in no v2 list today):
+# Thieving Incisors moves a random Energy from the opponent's Active; frozen-7's lister stops at its use even when that Active holds one
+# Energy (seen in the F2 check's trial on v1.6), so it is a chance step whenever used (addendum 5, R1).
+CHANCE_ABILITY = ('Dustox', "Team Rocket's Raticate ex")
+# Plays after which the OPPONENT chooses (Sabrina: "Your opponent chooses the new Active Pokemon"): frozen-7's plan lister ends the plan
+# there ('opponent_choice'), so cut() ends the first segment there too (PREREG_RUN3 addendum 5, R1; found by the F2 lister check's trial on
+# v1.6, where cut() had no such stop). It is not a chance step: chance_steps() leaves it out.
+OPPONENT_CHOICE_PLAYS = ('Play:Sabrina',)
 
 
 class Uncertain(Exception):
@@ -101,6 +119,110 @@ def P(game, tc, his, pts, me, opp, force, deck, kind, stadium=None, approx=None,
     return pos
 
 
+# the fields of a built position (P) that a candidate may see, and the ones it may never see
+CANDIDATE_FIELDS = ('id', 'game', 'his_turn', 'deck', 'turn_count', 'points', 'me', 'opp', 'stadium', 'turn_effects', 'hand_source',
+                    'decision_maker', 'approximate', 'opp_ambiguous', 'heldout', 'usable')
+ANSWER_FIELDS = ('kind', 'force', '_draws', '_vpatch', 'notes', 'approximate_reason')
+# run 1's and run 2's prep_inputs.py refused these keys at input time, and the answer file's own field names are added; check_candidate refuses
+# them at any depth
+LEAK_KEYS = frozenset({'force', 'his_plan', 'his_plan_ended', 'answer', 'answer_kind', 'kind', 'milestones', 'build_notes'} | set(ANSWER_FIELDS)
+                      | {'his_move', 'key_line', 'first_segment', 'acceptable', 'rejected_alternatives', 'pending_alternatives', 'why_his',
+                         'recorded_move_acceptable', 'segment_scope', 'dustin_answer', 'ambiguous', 'references', 'lister_segments'})
+
+
+class AnswerLeak(Exception):
+    pass
+
+
+def _key_paths(x, path=''):
+    if isinstance(x, dict):
+        for k, v in x.items():
+            p = f'{path}.{k}' if path else k
+            yield p, k
+            yield from _key_paths(v, p)
+    elif isinstance(x, list):
+        for i, v in enumerate(x):
+            yield from _key_paths(v, f'{path}[{i}]')
+
+
+def _strings(x):
+    if isinstance(x, str):
+        yield x
+    elif isinstance(x, dict):
+        for k, v in x.items():
+            yield k
+            yield from _strings(v)
+    elif isinstance(x, list):
+        for v in x:
+            yield from _strings(v)
+
+
+def check_candidate(view, built=None, allowed=CANDIDATE_FIELDS):
+    """Raise AnswerLeak when the candidate view holds an answer key at any depth or a field outside `allowed`, or, given the built position,
+    any of his move's labels or the builder's notes / approximate_reason text in any of its texts. The view is checked as it will be written
+    (a JSON round trip, so a tuple counts as a list); a label with no ':', '@' or '#' (EndTurn, UseStadium) must equal a whole text to count."""
+    view = json.loads(json.dumps(view, ensure_ascii=False))
+    bad = sorted(p for p, k in _key_paths(view) if k in LEAK_KEYS)
+    if bad:
+        raise AnswerLeak(f'{view.get("id")}: answer fields in the candidate view: {bad}')
+    extra = sorted(set(view) - set(allowed))
+    if extra:
+        raise AnswerLeak(f'{view.get("id")}: fields outside the allowed fields in the candidate view: {extra}')
+    if built is not None:
+        texts = list(_strings(view))
+        for label in built.get('force') or []:
+            if not label:
+                continue
+            bare = not any(ch in label for ch in ':@#')
+            if any((t == label) if bare else (label in t) for t in texts):
+                raise AnswerLeak(f'{view.get("id")}: his move\'s label {label!r} appears in the candidate view')
+        for field in ('notes', 'approximate_reason'):
+            s = built.get(field)
+            if isinstance(s, str) and s.strip() and any(s in t for t in texts):
+                raise AnswerLeak(f'{view.get("id")}: the built position\'s {field} text appears in the candidate view')
+
+
+# who may certify a rejected alternative or a pending one (advisor finding F4; PREREG_RUN3 addendum 5): Dustin himself, or the coordinator
+# deciding from his recorded words. v1.6's `coordinator_interpretation` is not allowed in v2.
+CERTIFIED_BY = ('dustin', 'coordinator_decision_from_his_words')
+
+
+def check_certified_by(points):
+    """points: {point id: answer dict}. Raise ValueError naming every rejected or pending alternative whose certified_by is not allowed."""
+    bad = []
+    for pid, a in points.items():
+        for field in ('rejected_alternatives', 'pending_alternatives'):
+            for k, alt in enumerate(a.get(field) or []):
+                if 'certified_by' in alt and alt['certified_by'] not in CERTIFIED_BY:
+                    bad.append(f"{pid} {field}[{k}]: {alt['certified_by']!r}")
+                elif field == 'rejected_alternatives' and 'certified_by' not in alt:
+                    bad.append(f'{pid} {field}[{k}]: no certified_by')
+    if bad:
+        raise ValueError(f'certified_by must be one of {CERTIFIED_BY}: {bad}')
+
+
+def candidate_view(built):
+    """What a candidate (the judge, km3, the plan lister) may see of a built position: CANDIDATE_FIELDS only. Refuses a field that is in
+    neither CANDIDATE_FIELDS nor ANSWER_FIELDS (a new field must be classified before it can be built), then checks the view."""
+    unknown = sorted(set(built) - set(CANDIDATE_FIELDS) - set(ANSWER_FIELDS))
+    if unknown:
+        raise AnswerLeak(f'{built.get("id")}: unclassified fields {unknown}: add each to CANDIDATE_FIELDS or ANSWER_FIELDS first')
+    view = {k: copy.deepcopy(v) for k, v in built.items() if k in CANDIDATE_FIELDS}
+    check_candidate(view, built)
+    return view
+
+
+def label_view(built):
+    """What the labelling job sees of a built position (addendum 5, G5): the candidate view plus `his_move` (the built position's `force`, his
+    recorded whole turn). Never the builder's `notes`, `approximate_reason` or `kind`: the builder (the laptop session) has seen run 2's
+    per-point results."""
+    view = candidate_view(built)
+    out = dict(view, his_move=list(built.get('force') or []))
+    for k in ('notes', 'approximate_reason', 'kind', '_draws', '_vpatch'):
+        assert k not in out
+    return out
+
+
 def game_id(start_utc):
     """'2026-10-19T22:12:18Z' (run3/window.json) -> '20261019_221218000_SR'."""
     m = re.fullmatch(r'(\d{4})-(\d{2})-(\d{2})T(\d{2}):(\d{2}):(\d{2})Z', start_utc)
@@ -119,9 +241,38 @@ def is_chance_ability(card):
 
 
 def cut(line, position):
-    """The line up to and including its first chance step (v1.6's rule, plus a chance Ability by the slot it names); the whole line if none."""
-    steps = chance_steps(line, position, CUTD, first_only=True)
-    return line[:steps[0] + 1] if steps else list(line)
+    """The line up to and including its first chance step (v1.6's rule, plus a chance Ability by the slot it names) or its first play after
+    which the opponent chooses (addendum 5, R1), whichever comes first; the whole line if neither."""
+    stop = next((i for i, l in enumerate(line) if l.startswith(OPPONENT_CHOICE_PLAYS)), None)
+    head = list(line) if stop is None else list(line[:stop + 1])  # nothing after the opponent's choice is scanned (its slots need no following)
+    steps = chance_steps(head, position, CUTD, first_only=True)
+    return head[:steps[0] + 1] if steps else head
+
+
+def tool_stop_agrees(line, seg, position, matched, tool_stopped_at_chance, unmatched, from_lister=False):
+    """validate_v2's shipped check: does pg_legal's stop agree with the first segment `seg`? `seg` is cut(line), or, under R1, frozen-7's
+    lister's segment recorded by the assembly (`from_lister`). `matched` actions were matched before the tool stopped (at a hidden draw or coin
+    when `tool_stopped_at_chance`). The tool stops exactly at the segment's end, or the segment ends EARLIER, at an opponent's choice or a
+    chance Ability the tool does not stop at (any earlier stop, for a lister segment), and the tool then stops at a later chance step of the
+    same line with nothing unmatched. With no chance stop, the whole line (or all of it but a closing EndTurn) must match."""
+    if not tool_stopped_at_chance:
+        return matched == len(line) or (matched == len(line) - 1 and line[-1] == 'EndTurn')
+    if matched == len(seg):
+        return True
+    if unmatched or not 0 < matched <= len(line):
+        return False
+    # pg_legal stops only at a hidden draw or coin, never at an Ability, so its stop is judged by its label alone (no slot following,
+    # which could raise Uncertain): a draw / search / coin Trainer, a random evolution, or UseStadium on a chance Stadium
+    stop = line[matched - 1]
+    stadium_named = any(s in json.dumps(position.get('stadium') or '') for s in CHANCE_STADIUMS) or \
+        any(l in tuple(f'Play:{s}' for s in CHANCE_STADIUMS) for l in line[:matched - 1])
+    tool_stop_is_chance = stop.startswith(CUTD) or (stop == 'UseStadium' and stadium_named)
+    if matched > len(seg):
+        early = len(seg) < len(line) and (from_lister or seg[-1].startswith(OPPONENT_CHOICE_PLAYS) or seg[-1].startswith('Ability'))
+        return early and tool_stop_is_chance
+    # matched < len(seg): only a lister segment (R1) may run past the tool's stop, at a draw the lister does not count as a chance step;
+    # the after-chance variant then checks the rest of the line
+    return from_lister and tool_stop_is_chance
 
 
 def chance_steps(line, position, labels=DRAW, first_only=False):

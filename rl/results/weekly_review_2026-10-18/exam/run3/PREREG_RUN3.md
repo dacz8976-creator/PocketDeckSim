@@ -372,3 +372,197 @@ Nothing has been selected, built or run. The window is still open. This settles 
 - "Each such game is flagged for the selection check, as you have it."
 
 The scripts already apply the first and third points (E2). The second is a rule for the usability coding: it goes into the usability job's prompt (`jobs/INV_JOB.md`) at its launch.
+
+## Addendum 5 (Oct 24, 2026 UTC; the advisor's blind review of run 3's machinery, coordinator-034 (mailbox id 20261023T2230Z), before any selection and before the position build)
+Nothing has been selected, built or run. The window is still open through Oct 25, 11:59 PM CT (04:59Z Oct 26).
+- **The review:** the advisor (Fable) reviewed run 3's labelling and selection machinery at exam tip 9c85ac8d, read-only and blind. Apart from the disclosure in G0, it saw no references, no run 1 or run 2 results and no move lists.
+- **The verdict:** no blocker in the design.
+- **The coordinator accepted all ten findings (F1-F10).** This addendum records how each is applied (G1-G10), records the mechanics added since addendum 4 (M1), and PROPOSES one rule (R1).
+- **Before filing,** this work had an independent read-only review (two agents) and a re-check (two agents), and their findings were fixed. The laptop session's own items are marked "proposed": they are in force only once the coordinator accepts them.
+
+**G0. Exposure record** (worded as C1 and C2; not exposure: the advisor is not the judge's developer and can't alter frozen-7).
+- The advisor read `../README.md`'s v1.5 table. That table names five v1.6 points (Dustin's five answered questions) and their keys.
+- Those are v1.6 points, not run 3's. Run 3's games, positions and labels don't exist yet.
+
+**M1. The mechanics added since addendum 4, recorded here for the first time.** All were set before any v2 position exists.
+- **Dustox B4 005's Variety Powder** is a chance step, followed by slot (build/v2_helpers.py since aaa40b5c, Oct 21).
+- **Since 9c85ac8d** (Oct 23):
+  - Fragrant Forest's `UseStadium` is a chance step (the frozen engine searches the deck);
+  - Lusamine's `AttachFromDiscard` is a chance step when the discard holds 3+ Energy of 2+ types (the frozen engine's forecast_attach_from_discard branches);
+  - Big Malasada is NOT a chance step, although its text removes "a random Special Condition": the engine forecasts one outcome and picks inside it, so neither frozen-7's lister nor pg_legal_v14 stops there. This is the laptop session's reading, for the coordinator to confirm.
+- **Wallace** is as recorded in addendum 4 (E4).
+- **The Oct 23 batch** (DRIVE_LADDER_2026-10-23, 15 games, 16 recordings; 9c85ac8d) brought two new layouts, now read:
+  - a continuation's `linked_qr_metadata` given as an absolute Windows path to the opening's QR_ID.json;
+  - RELATED_SOURCES.json with `battle_key` and `chronological_sources`.
+- **Its six new lists** took the deck files from addendum 4's 14 to 20:
+  - v2deck_589bb9927a (Water, 4 games);
+  - 4af97d2795 (Water, 2);
+  - 693850eaa5 (Water, 1; the third linked battle);
+  - f5671a4e7f (Water, 1);
+  - 6328cc45fe (Grass, 3);
+  - ba2eca5816 (Grass and Fighting, 3).
+- **That dry run:** 53 games, 56 recordings, 3 linked battles, 53 in.
+
+**G1. Drops only with evidence (F1).** A point is dropped ONLY with verbatim tool output that forces it. The evidence is either:
+- the pg_legal output (at build: an illegal recorded action, or a label it can't match), saved as `build_drops/<point id>.txt`; or
+- frozen-7's lister-check row on the point's KEY line (G2: the line reaches no single listed plan, matches ambiguously or can't be read), or a capped plan list.
+
+A summary of the lister-check evidence (problem types and step counts, never a label) goes to the selection check as `lister_drops/<point id>.txt`. There are no other discretionary drops. Section 2's "a point that can't be built cleanly is dropped" now means exactly this.
+- **The drop count** is reported next to v1.6's, in the selection check's mix and in RESULTS_run3. v1.6 dropped 3 at build (`../build/BUILD.md`, "Points dropped, and why"): one for a list problem, and two because their "cost [was] judged too high", which G1 no longer allows.
+- **An accepted ALTERNATIVE that fails** is removed from its point, with its output recorded; the point keeps its key. That covers a lister-check failure (no_plan, ambiguous or unreadable on an alternative's line), which is settled this way. It also covers a pg_legal validation failure, which is proposed (ADJUDICATION_RULES section 3) for the coordinator to confirm.
+- **A line `cut()` can't follow** (v2_helpers.Uncertain) is never cut by hand. Under R1 its first segment is the lister's, from its check row.
+- **`validate_v2.py`'s `stop_differs`** is reported only, never a drop reason.
+
+**G2. The frozen-lister check before the freeze (F2).** `check_lister_v2.py` runs on EVERY v2 point.
+- **Identity:**
+  - frozen-7's `freeze_identity.py --check` must pass in a checkout of the tag judge-prompt-frozen-7;
+  - then the checkout's commit must be the tag's, FROZEN.json must name the tag and frozen-7's prompt fingerprint (0cb24215…), and the lister binary that judge.py runs must have FROZEN.json's sha256 (bd4eeb6e…), the formal compare's own test.
+- **What it runs:** frozen-7's own plan lister and frozen-7's own replay matching (`judge.match_plans`, the function the formal compare uses). It runs on the candidate view only (G5).
+- **What it checks**, for every accepted line, the key included:
+  - the line must reach exactly one listed plan, and no list may be capped;
+  - the lister's segment is the line up to the step that is that plan's own last step (labels compared as the lister compares them; a step the engine forces is allowed);
+  - `cut(line)` must equal that segment: when the plan stops inside the turn, `cut()` stops at the same step; when the plan ends the turn, `cut()` keeps the whole line.
+- **The verdicts**, per accepted line:
+  - pass;
+  - `resolved_by_R1` (cut_differs or uncertain_cut: R1 gives the segment);
+  - `remove_alternative` (a failure on an alternative's line, G1);
+  - `drop` (a failure on the KEY line, whose reference id is `recorded`, `key` or `his`; or a capped list).
+- **It refuses** a point with no references, a reference with no labels, a duplicate position, and a point whose references hold no key line (exit 1).
+- **The order of the steps.** These replace section 10's steps 3-4: Dustin's answers now come after the selection check.
+  1. build;
+  2. labels;
+  3. the lister check, first pass;
+  4. the selection check, Part A then Part B (G3);
+  5. Dustin's answers folded in;
+  6. the lister check re-run on the final references;
+  7. `build/validate_v2.py` on the assembled exam, which needs the final answers and any lister segments;
+  8. the freeze.
+
+  A drop found at step 6 or 7 reaches no selection check, so it is reported with its verbatim row in RESULTS_run3.
+- **The report** holds accepted lines (answer material). It is kept with the frozen references, and is never staged to a worker; only `--drops-out` summaries are.
+- **A failing point** is resolved by R1 (if accepted) or dropped by G1. Nothing is fixed by judgement, and nothing at all is fixed after any km3 or judge row exists.
+- **Trial on v1.6** (machinery only; nothing scored; 3 s; this paragraph stays out of every excerpt staged to a worker):
+  - 51 points, 67 accepted lines; the identity gate passes. All 67 lines reach a listed plan.
+  - With v1.6's own `cut()`, 5 lines on 4 points stopped later than the lister: at Sabrina (where the opponent must choose a new Active, which the lister ends as "opponent_choice") and at Team Rocket's Raticate ex's Thieving Incisors (a random Energy; the lister stops at it even with one Energy on the opponent's Active).
+  - With the present `cut()`, all 67 pass.
+  - The PRIMARY prefix result of runs 1 and 2 doesn't depend on the first segment. frozen-7's formal.py (`map_references`; `full_plan_agreement`, lines 440-443: "order of moves up to the plan's own end not mattering: that is prefix agreement") matches each line to its plan by plan identity, and all 67 lines reached their plan.
+  - On those 4 points the first segment affects only their scope label (full/partial/none) in the secondary full-scope reading. v1.6 stays frozen and nothing is re-scored. The coordinator decides whether run 2's record notes it.
+
+**R1 (PROPOSED by the laptop session, Oct 24 UTC; in force once the coordinator accepts it, by mailbox id). The first segment follows frozen-7's lister.**
+- **The rule:** the scored first segment of an accepted line is exactly where frozen-7's plan lister ends the plan that line reaches. That is at its first chance event (the lister's own test: a forecast with more than one branch, hidden information, or a change to his own deck) or at its first step after which the OPPONENT must act (Sabrina's new Active; a promotion after a knockout during the turn, for example by Darkrai ex's Nightmare Aura). Otherwise it is the whole turn.
+- **How it is applied:**
+  - `check_lister_v2.py` computes the segment for every accepted line from frozen-7's own replay;
+  - `build/v2_helpers.cut()` predicts it for the known cases (v1.6's rule, M1's cards, Sabrina in 4 of the 20 v2 lists, Raticate's Ability);
+  - where the two differ, the assembly records the lister's segment for that line in `answer.lister_segments`. It is keyed `his` / `key` / `alt<i>`; the assembly maps the references' ids to these (v1.6 calls his move `recorded`). `validate_v2.py` checks each entry is a non-empty prefix of its line, and checks the stops against it. The field is in LEAK_KEYS, so it can never reach a candidate. There is no judgement and no per-point decision.
+- **If R1 is not accepted:** `cut()` reverts to v1.6's rule plus M1 (`OPPONENT_CHOICE_PLAYS` empty, Raticate out of `CHANCE_ABILITY`), and the check's cut_differs and uncertain_cut rows become G1 drop evidence.
+- **The basis:** the v1.6 trial (G2) and a card-text audit of the 20 v2 lists (every Ability and Trainer text). No v2 game data, position or label exists.
+- **What it amends:** section 2's "the chance-first and free-chance rules ... are v1.6's" and ADJUDICATION_RULES section 3. v1.6's first segment had no opponent's-choice stop and didn't know Raticate's Ability.
+- **Its effect on the secondaries:**
+  - a segment that ends at an opponent's choice is NOT chance-ending (section 5's stratum counts chance events only);
+  - in every pooled secondary, run 2's points keep v1.6's recorded segments and scope labels.
+
+**G3. The disagreement rule (F3).** A turn is usable ONLY if BOTH the usability job (`jobs/INV_JOB.md`) and an independent second coding call it usable. The rule is symmetric and conservative.
+- **The second coding is blind:** the selection check is now two jobs (`jobs/SELCHECK_JOB.md`).
+  - Part A codes every one of his turns from the reviews and a bare turn list, and sees neither the first coding, the selection, the labels nor any mix.
+  - Part B checks the window, the selection and the mix, with both codings.
+- **Ties and disputes** never go to anyone who has seen run 2's per-point results: not the laptop session, and not the coordinator as decider of a point.
+- **The mechanical rules** for the selection check's other findings:
+  - a turn both codings call usable that is missing is built;
+  - a turn not called usable by both is not a point;
+  - a drop without its G1 evidence is reinstated and built;
+  - a missing in-span ranked game is added;
+  - an exclusion that doesn't hold gets its written section 1 rule applied;
+  - an included game that a written reason excludes is excluded with that reason;
+  - a confirmed turn-list problem (Part A's `turn_list_problems`, checked by Part B) is fixed in the turn list, and both codings code that turn.
+- **Anything else** that would need judgement goes to a fresh job that hasn't seen run 2's per-point results, or the point is dropped by rule.
+- **Proposed:** the coordinator may rule a GAME-level window question (in span, ranked, linked, list) from metadata alone, as in addenda 3 and 4.
+
+**G4. Dustin's answers (F4).**
+- For v2, `certified_by` allows only `dustin` and `coordinator_decision_from_his_words`; there is no `coordinator_interpretation`.
+  - `build/v2_helpers.check_certified_by` refuses anything else, including a rejected alternative without `certified_by`;
+  - `build/validate_v2.py` runs it on every answer;
+  - `jobs/ADJUDICATION_RULES.md` says the same.
+- His answers are collected before anyone describes run 2's or run 3's per-decision patterns to him. The coordinator holds to that.
+
+**G5. Answer fields never reach a candidate (F5).**
+- `build/v2_helpers.P` keeps build-only and answer fields on the built position: `kind`, `force`, `_draws`, `_vpatch`, `notes`, `approximate_reason`.
+- **A requirement on the v2 assembly**, which is not yet written: every exam position is written as `candidate_view(built)`, and every answer passes `check_certified_by`.
+- `candidate_view()`:
+  - keeps `CANDIDATE_FIELDS`, drops `ANSWER_FIELDS`, and refuses a field in neither list;
+  - `check_candidate()` reads the view as it will be written (a JSON round trip). It refuses an answer key at any depth (run 1's and run 2's LEAK_KEYS, these fields, and the answer file's own field names), and refuses his move's labels or the builder's text in any text of the view. A label without `:`, `@` or `#`, such as EndTurn, counts only as a whole text.
+- **Before the freeze,** `build/validate_v2.py` re-runs `check_candidate(exam position, build record)` on every point. It stops on any leak, and on any point without a build record.
+- **A residual, for the coordinator to confirm:** `opp_ambiguous`, `turn_effects`, the board's `effects` and `stadium` hold facts of the position from the review, written in the builder's words. `check_candidate` refuses his move's labels and the builder's notes in them, but their wording is the builder's; the alternative is a fixed vocabulary.
+- **The labelling job** sees `label_view(built)`: the candidate view plus `his_move`, never the builder's `notes`, `approximate_reason` or `kind`. The builder, the laptop session, has seen run 2's per-point results.
+- **The change from v1.6:** v1.6's candidate view kept `notes` and `approximate_reason`; v2's drops them, and `approximate` stays as a flag. frozen-7's judge code reads none of the three fields. This is one more difference between run 2's and run 3's inputs, which addendum 1's B1 mixture caveat covers.
+- **Tests** (`build/test_v2_helpers.py`): the view has exactly `CANDIDATE_FIELDS`; every field P() writes is classified; each injected leak is refused, including in a tuple, under an answer-file name, inside a quoted text, or as a whole-text bare label; `label_view`; all 51 v1.6 positions pass.
+
+**G6. Linked battles and E7 in the job prompts (F6).**
+- **The staging:** `jobs/INV_JOB.md`, `jobs/LABEL_JOB.md` and `jobs/SELCHECK_JOB.md` (both parts) stage ONE folder per game: a battle's clips in order (`clip01_…`, `clip02_…`) with `CLIPS.json`. The laptop builds CLIPS.json from the snapshot's metadata alone (clip order, packets, start times). The usability worker records each turn's clip and each clip's turn range.
+- **The turn count:** each prompt carries the same "Turns and ids" text: ONE global turn count for every game (the game's own turn counter, both players' turns, as v1.6's `source.global_turn`), which never restarts in a later clip. Every turn is keyed by its point id `LAD-<game>-t<n>`, so ids can't collide or mis-order.
+- **E7's second rule** is in INV_JOB's prompt and in Part A's, in the same words: a turn right after a gap is usable only if the full state there, turn effects included, is established.
+- **The launch checklists:** each job's checklist has a line for each of these rules.
+- **What the workers may open:** every prompt bars the other folders of `/home/dacz8976/exam_v2/`, where the builder's files live.
+
+**G7. pool_runs.py, two distinct runs (F7).** `pool_runs.py` is unchanged; no defect was found. `test_pool_runs.py` gains 9 tests (22 in all) that pool two distinct SYNTHETIC runs.
+- **The runs:**
+  - run A: 7 points in 5 games, km3 seeds 101-103, 1 failed reply;
+  - run B: 6 points in 5 games, seeds 201-203, 1 failed reply;
+  - each with a self-consistent report made by frozen-7's own `analysis.analyse`.
+- **Checked by hand:**
+  - the pooled estimate, 11/39 = 0.282051 over 13 decisions and 10 games (not 0.281746 with run-equal weighting, nor 13/33 with failed replies dropped instead of missed);
+  - the rates;
+  - the failed-reply share;
+  - the sign-flip p, 128/1024 = 0.125;
+  - each run alone.
+- **The interval** equals frozen-7's `game_bootstrap` on the hand-pooled game clusters, at 0.975 and at 0.95.
+- **Degenerate pair:** a pair where every game gives the same difference collapses the interval to the point and takes the PASS branch.
+- **Order:** pooling equals one batch of both runs, in either order.
+- **Refusals:**
+  - a game id, a point id or a km3 seed in both runs;
+  - a second run with another model, or with no model list (pooling OFF, exit 3);
+  - a second run with the wrong freeze tag, a self-report number the script doesn't reproduce, a wrong failed-reply count, or the first run's eligibility file.
+
+**G8. Weak deck flags (F8).** `make_sources_snapshot.py` collects a source QR's weak flags: `battle_full20_proven` present and not true, or `unsaved_changes_prompt` set.
+- **Where it looks:**
+  - DECKS.json's sources (the game's own and every `also_from`);
+  - each clip's QR_ID.json, QR_DECODE.json and LINKED_*_QR_ID.json, read directly;
+  - the exact-list folder's QR_DECODE.json.
+- It records them as `weak_qr`. A game that would count and carries a weak flag needs a ruling, or the run STOPS.
+- **The ruling:** RULINGS.json may carry an optional `weak_qr` section: {the opening clip's drive id: {"decision": "in" | "excluded", "flags": {file: {flag: value}}, "ruling": "<the coordinator's mailbox id or words>"}}.
+  - It is checked strictly: games in the window, opening clips only, exactly those three keys, nothing empty, and only weak flags.
+  - An entry must cover every flag found (same file, flag and value), or the run stops.
+  - "in" lets the game in, with `weak_qr_ruling` recorded. "excluded" excludes it with the reason "no exact deck list: weak source QR (<flags>): excluded by ruling <ruling>", one of section 1's written reasons.
+- **Without an entry:**
+  - a game with an addendum 3 game ruling stays in, and `weak_qr_covered_by` records that the game ruling covers the flags found. This is proposed, for the coordinator to confirm;
+  - with neither, the run stops, and its message asks the coordinator to rule in the `weak_qr` section.
+- **Today** only 21-57-12 carries one (`battle_full20_proven: false`). Its addendum 3 ruling covers it, so it stays in.
+
+**G9. The exclusion reason (F9).** The rule is unchanged: a partial review counts only when its opening is recorded, and the scripts take the opening clip's own filmed deck code as the sign of that (addendum 4, E2; E7). Only the reason is corrected.
+- **A partial game whose list comes by the repository route** (`--extra-decks`) is still excluded, now with the true reason, quoted in full: "the list comes by the repository route (--extra-decks), so no own filmed code shows the opening: a partial review counts only when its opening is recorded with its own pre-game code (PREREG_RUN3 addendum 4, E2; E7)".
+- **A true mid-game start** keeps its reason, word for word (tested).
+
+**G10. The freeze is off the clock (F10).** Unanswered ambiguous points stay pending and unscored, as in v1.2. No point is rushed to make Monday.
+- A point still pending at the freeze is frozen with status `pending` and kept out of the eligibility file until it is answered.
+- `validate_v2.py` checks its position and its his, key and accepted lines, never its pending ones, and lists it as pending.
+
+**G11. Tests and dry runs.**
+- **Tests** (E5's counts replaced; all OK):
+  - `test_snapshot_guards.py`: 22;
+  - `build/test_v2_helpers.py`: 23. v1.6's 51 points are cut as v1.6 did on 47; the other 4 differ only by R1, at Sabrina and at Raticate's Ability;
+  - `test_pool_runs.py`: 22;
+  - `test_check_lister_v2.py`: 13.
+- **The dry snapshot** (scratch folders only):
+  - on the six batches above: 53 games, 53 in, 0 excluded;
+  - with the newer DRIVE_LADDER_2026-10-23_EVENING (10 recordings, Oct 23 Central time) added: 63 games, 63 in, 0 excluded. No new list (still 20 deck files, byte-identical) and no new layout. The review index's in-window rows without a packet are down to the two Oct 20 rules-test recordings.
+- DECKS.json is rebuilt from every batch at the cutoff.
+
+**G12. Reads, recorded** (C1: not exposure).
+- **The laptop session, Oct 23-24 (UTC):**
+  - the Oct 23 batch's metadata, to read its two new layouts (M1): the QR_ID files, the continuation's `linked_qr_metadata` path, RELATED_SOURCES.json's `battle_key` and `chronological_sources`, and the SOURCE.json keys. No REVIEW.md;
+  - v1.6's positions, references and exam file, for the G2 trial and the v1.6 tests (v1.6 material it had already seen);
+  - the Ability and Trainer texts of the 20 v2 deck lists (R1's audit; deck-level, card text only);
+  - the folder names of DRIVE_LADDER_2026-10-23_EVENING, and its QR files through `make_v2_decks.py` (dry run, scratch output).
+- **The fix workflows** `wf_994857d9-f7e` (2 agents: F7, F8/F9) and `wf_f23c665b-a7b` (1 agent: the weak-flag rulings):
+  - they were told never to open exam answer material, any run 1 or run 2 live folder, any REVIEW.md text, or any .MOV;
+  - they read the machinery and documents, and ran the snapshot guards' tests, which read the batches' metadata files.
+- **The review workflow `wf_615680e2-99c` and the re-check `wf_d86e2956-3af`** (2 agents each), under the same exclusions: they read the machinery, the documents, frozen-7's code and the test logs, and ran nothing.
