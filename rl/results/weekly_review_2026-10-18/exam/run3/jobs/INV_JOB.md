@@ -1,5 +1,7 @@
 # DRAFT (proposed, for the coordinator to accept or not): the exam v2 usability-coding job
 
+**Staged Oct 25 in three parts:** see `LAUNCH_2026-10-25.md`. Its launch lines, folders and flags supersede the launch line below; the prompt's rules are unchanged.
+
 **Why a job:** under PREREG_RUN3 section 2, every USABLE turn is a point, so this coding decides the points. v1.6's coding was also a credit job (INV_BRIEF.md). A fresh job keeps the laptop session, which has seen run 2's per-point results, out of that judgment. The selection check (SELCHECK_JOB.md) then re-checks it.
 
 **Launch** (the coordinator, its own API credits, after the window closes and the laptop stages the snapshot):

@@ -1,5 +1,7 @@
 # DRAFT (for the coordinator to review and launch): the exam v2 independent selection check, in two jobs
 
+**Part A staged Oct 25 in three parts:** see `LAUNCH_2026-10-25.md`. Its launch lines, folders and flags supersede Part A's launch line below. Part A runs right after the usability coding (PREREG_RUN3 addendum 6, H6), not after the build and the labels. Part B is unchanged.
+
 Under PREREG_RUN3 addendum 5 (G3), a turn becomes a point ONLY if BOTH the usability job (`INV_JOB.md`) and an independent second coding say it is usable. That second coding must be blind to the first, so the check runs as TWO fresh credit-worker jobs:
 - **Part A:** the blind second coding. It sees the reviews and the list of his turns, never the first coding, the selection, the labels or any mix.
 - **Part B:** the selection check itself, which also gets Part A's coding.
