@@ -860,3 +860,6 @@ Nothing has been selected, built or run for exam v2. This addendum is committed 
 - `D_FIXES.json` `74297a5d78e8a8c5f91a25b078e5f7d38aded0e472e58fec372cbce85df7725f`, unchanged
 - build record `g20261021_224410000_SR.py` `300f4897c2989c9f00253d7095bd7ea22ae08b298412dca3618f3df5155c3e28`
 - QUESTIONS.json, regenerated from assembly3 into a check folder, is byte-identical to the quiz (`360361e1…`).
+- **Reads, recorded** (C1: not exposure). The laptop session's check workflow wf_7cc49a28-d9c ran four agents:
+  - two Sonnet frame checks read only the 224410 frames and the time windows, with no positions and no answers;
+  - two Opus reviewers read the old-to-new printing-note table, and one of them also opened assembly2's draft read-only to check each pair against its own position.
