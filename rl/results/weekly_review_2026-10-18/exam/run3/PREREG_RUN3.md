@@ -863,3 +863,35 @@ Nothing has been selected, built or run for exam v2. This addendum is committed 
 - **Reads, recorded** (C1: not exposure). The laptop session's check workflow wf_7cc49a28-d9c ran four agents:
   - two Sonnet frame checks read only the 224410 frames and the time windows, with no positions and no answers;
   - two Opus reviewers read the old-to-new printing-note table, and one of them also opened assembly2's draft read-only to check each pair against its own position.
+
+**K18. The quiz while he answers: Q10, card text on the page, the wording scan** (notes 049, and the coordinator's messages after it).
+- **Q10 (LAD-20261023_000150000_SR-t5).**
+  - **His report, mid-quiz:** "Dragon's blessing only works if the dragonair is on the bench. You can't use it on yourself so their line isn't possible in real life."
+  - **Not an engine finding.** The coordinator checked main b78c8997. The card text: "if this Pokémon is on your Bench, you may attach an Energy from your discard pile to your Active [N] Pokémon". The engine's gate requires the user not to be Active, and the Energy goes to the Active.
+  - **The alternative is legal:** Retreat:2 brings the OLDER Dragonair Active, and Ability@1 is the Dragonair just evolved from Dratini, which stays on the Bench.
+  - **The cause is twin wording.** "bringing Dragonair (80 HP, on the Bench) into the Active Spot" fitted both 80-HP Dragonair, and "Use Dragonair (evolved from Dratini this turn)'s Ability" did not say that Dragonair was on the Bench.
+  - **The coordinator's clarification, in chat (its core):** "Your older Dragonair, already on the Bench, is the one that goes Active when Trapinch retreats. The Dragonair you'd evolve from Dratini that turn stays on the Bench, and it uses Dragon's Blessing to put the Grass (discarded to pay Trapinch's retreat) onto the Active Dragonair. So no Dragonair uses it on itself." It said nothing about any bot or judge.
+  - **His reply:** "You're right, I misunderstood the set up and thought I still had a dratini and a dragonair, when I actually had two dragonair. I see now."
+  - Q10's answer was re-saved after the clarification (db version 2).
+- **Card text on the quiz page** (artifact version 3, published about 20 minutes after note 049, at his request: "The more it resembles real life, the easier it is for me to envision and answer them").
+  - **What it shows:** each Pokémon in play with its type, stage, Weakness, retreat cost, Ability and attacks; Tool and Stadium text; and the hand cards, which he taps to read.
+  - **Where the text comes from:** the engine database on main b78c8997, by exact printing id. Tools, Stadiums and hand cards are matched by name. No text is shown for Squirtle and Stoutland in the hand, which have more than one printing.
+  - **Why it is allowed:** this is text he can read in a real game by tapping a card, so it is not hindsight. The page has no bot or judge content.
+  - **The files:** the card map is `cards.json`, sha256 `e978ef911270c882d169dc5a4e2822012dad3fd7e9b9f333346da1fa27e5a59e`. The page sources are in `~/exam_v2/questions/quiz_page/`.
+  - **Timing:** questions 1-10 were answered before card text was shown (db versions then: all 1, and Q10 at 2); questions 11-23 have it. A later re-save of questions 1-10 shows as a higher version, and the coordinator reports it with the answers.
+- **QUESTIONS.json is unchanged:** `360361e1…`.
+- **The wording scan of all 23 questions** (report only; the live file is not changed). A mechanical re-derivation of every step and an independent read-through agree: **13 steps in 5 questions** name a Pokémon whose same-name twin is in play without saying which. In each case:
+  - **Q4** (034756-t6), his move, step 3, "Alolan Grimer (80 HP, on the Bench)": it means the older Grimer, already on the Bench. Step 1 benched a second 80-HP one.
+  - **Q9** (235420-t4), step 2 of both lines, "Trapinch (60 HP, on the Bench)": it means the leftmost Bench Trapinch. The two are identical: 60 HP, no Energy, no Tools.
+  - **Q10** (000150-t5), alternative 1, steps 3 and 4: the case above. Step 3 means the older Dragonair; step 4 means the one evolved from Dratini, on the Bench.
+  - **Q19** (165202-t9), steps 1 and 2 of both lines, "Indeedee ex (150 HP, on the Bench)" twice: step 1 is the first from the left and step 2 the second, so each uses Watch Over once. The same words twice can read as one Indeedee ex using it twice.
+  - **Q23** (182453-t8), steps 3 and 4 of both lines, "Mega Sharpedo ex (the one the random evolution just made)": it means the one Wallace just made from Carvanha, on the Bench. The step does not say so, and the Active one is its twin. In step 4 the retreat implies the Bench.
+  - **Not counted:** Q10's his-move step 3, "Trapinch (the one just benched from the hand)", where "benched" says the place.
+  - **No step names an opponent's Pokémon that has a twin.**
+- **A second, smaller gap the read-through found, outside twin wording:** in Q23's shared point 182453-t12, steps 2-3 of both lines and step 4 of alternative 1 quote start-of-turn HP (Active 120, Bench 170). Irida in step 1 heals 40 from each Pokémon with Water Energy, so at those steps the two are at 160 and 190. The Pokémon are still named correctly.
+- **The coordinator clarifies hits to him in chat,** and each clarification is recorded here as Q10's is.
+- **The writer is fixed for future quizzes** in a separate commit (`make_questions.py`):
+  - a twin is always named with its place;
+  - with what tells it apart: how it got there this turn, "the older one", HP "at the start of the turn", or its place on the Bench counted from the left;
+  - the Active one is named without HP.
+- **The live quiz stays as generated by the earlier writer.** Regenerated now, 31 step texts would change (and nothing else), so the freeze records the live file `360361e1…`, not a regeneration.
