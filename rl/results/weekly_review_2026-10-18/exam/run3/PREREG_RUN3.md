@@ -796,3 +796,67 @@ Nothing has been selected, built or run for exam v2. This addendum is committed 
 - **Reads, recorded** (C1: not exposure):
   - the laptop session read the labels and the fix jobs' outputs, for the mechanical assembly and the questions;
   - its check workflows (wf_3d47f9e5-b0a, wf_fb19d31e-a29) read the staged inputs, the questions and the draft for their checks.
+
+**K13. The quiz file and the coordinator's rulings on K11** (notes 047, 048; laptop-038).
+- **The `video` field:** each of the 23 questions and the 2 shared points now has `video: {file, at, clip}`.
+  - `file` is the recording's name as Dustin knows it (his review index).
+  - `at` is the earliest start time on that turn's own label in the review, as m:ss in whole seconds. The reviews' times are approximate to about 1 s.
+  - `clip` is the clip of a linked battle and null otherwise (addendum 7).
+  - The field comes from `video_refs.py`, which `make_questions.py` calls. With the field removed, the file equals K11's `f84ce10a…`; nothing else changed.
+- **K11's sha256 is superseded.** QUESTIONS.json, the quiz as published (https://claude.ai/artifact/RLNHNAwm55DpVLe1JniuJC), has sha256 `360361e1cbfcd794887be18135e8d126ee1a54e5291c152bcfb4451f96dcd591`. QUESTIONS.md's is `7fd3fd70c12431a25450e99e3e2fba7ec69ceaf519a4d12972e765029531c1cf`.
+  - The file is now frozen as the quiz. Any later change goes to the coordinator first.
+  - His answers are read from the quiz's db collection `answers`: one document per question, doc id = point_id, fields `choice`, `note`, `answered_at`, `question`.
+  - The shared question is stored once, under 182453-t8, and K11's mapping applies it to t10 and t12.
+- **The 10 question-text edits** (K11, D_FIXES `set_question`) are ACCEPTED (note 047).
+- **"Not sure"** is recorded as K11 states it (note 047): the alternative is left out and never counts, his move stays the key, and the point is scored.
+
+**K14. Part B's result** (the coordinator launched it at 18:17:48Z: six confined jobs on claude-sonnet-5-5, caps $10 + 5 × $5; all rc=0, ending 18:21:15Z).
+- **Main: clean.** The coordinator's `partb_gaps.py` (sha256 `ec8476c8…`, reading selcheck_in only) closed its two gaps:
+  - the 261 turns usable in both codings equal the 261 candidates, both ways;
+  - first-coding-only: 27 (p1 1, p2 12, p3 14), each given the second coding's reason. All are ordinary not-usable reasons;
+  - second-coding-only: 19;
+  - selection's 258 points equal labels_summary's `points`. The script's own last line compares the file's top-level keys and prints False; the corrected comparison prints True.
+  - The output is kept locally until the freeze, as `PARTB_GAPS_2026-10-25.txt`.
+- **Facts: 258 of 258 checked; 116 flags on 104 points, all in `opp_ambiguous`.** Under the merge rule this is **fix_first**, and K15 is the fix.
+
+**K15. The opponent's printing notes** (note 048, decided by the coordinator).
+- **Every `opp_ambiguous` printing note in all 258 points is rewritten,** not only the 104 flagged, as "Opponent's <name>: the position uses printing <set number>."
+  - **The reason:** the old notes' evidence clauses ("chosen by HP / attack title / Ability title", lists of other printings) can cite what the review first shows after the point's turn, or an HP the review never states.
+  - The printing itself is visible to the player by tapping the in-play card (Part B item (c)), so each printing choice is kept as it was.
+- **How:** `printing_notes.py`, applied by `assemble_v2.py --printing-notes` to the built positions before anything reads them.
+  - The set number is read from the position, and it must be one the old note names.
+  - A note listing several cards becomes one sentence per card.
+  - A Tool whose name was not read keeps "its name was not shown".
+  - The review's 'Silver Pad' becomes Order Pad B4 145.
+  - One Electrike note was settled by hand: two Electrike are in play, the Active one B2b 026 and the first one A2a 027.
+  - Two notes keep a fact of an earlier play as their own sentence: Brock's two Fighting Energy on Onix, and the Team Rocket Grunt's Confusion. Both plays come before every point that carries them. Part B's facts job for part 5 checked these points and flagged only their attack-title clauses, which are gone.
+  - Notes not about a printing are unchanged: one card in his hand that the review does not identify, and the opponent's reconstructed Lightning on Oricorio.
+- **The counts:** 866 old notes became 944 new notes, in 251 positions (7 positions have none). 254 built positions changed, counting the 3 G1 drops.
+- **The mechanical check:**
+  - 0 texts contain "chosen by", "attack title", "Ability title" or "printings have";
+  - 0 contain any attack or Ability name (raw word match);
+  - 0 name a global turn at or after the point's own turn;
+  - the positions are identical before and after, except that field;
+  - the answers, references.json, the lister's 339 verdicts and validate_v2's summary are identical.
+- **Two independent reviewers** read all 297 distinct old-to-new pairs, one checking fidelity and one checking evidence, hindsight and lost facts. They found no errors besides the two lost facts, which are now kept.
+- **Runs 1 and 2 carried the same kind of note.** Their one positions file (sha256 `17bea6e3…`, 51 positions) holds 24 printing notes in 24 positions. 22 of them have a "chosen by" evidence clause, and 2 of those name attack titles. Those notes were not rewritten, and whether any of them cites a later turn was not checked.
+
+**K16. One position fact: 20261021_224410000_SR t9, t11 and t13** (note 048 item 4; none is a quiz point).
+- **The note removed:** "His Benched Mega Sharpedo ex: one Water is listed on it; the review says its retreat on global 7 paid that Water, but the card's Retreat Cost is 0".
+- **The frames settle it.** Two independent Sonnet checks agree with high confidence. They used frames only, from the recording whose sha256 equals the review's (`01d08f65…`). The frames show:
+  - one Water on the Active Mega Sharpedo ex before the retreat (230-237.9 s);
+  - no Energy discard step, only the switch-in prompt (236-237.9 s);
+  - one Water on it on the Bench from 241.7 s, and at the starts of globals 9, 11 and 13 (285.5-287 s, 309-311 s, 359-361 s).
+- **The position already carried that Water and is unchanged.** `check_game.py` reports all OK.
+- **No line uses that Water.** All three points are final, and each has only his move: no accepted or pending line.
+
+**K17. The files after K13-K16.** These stay local until the freeze; `assembly2` is kept as the pre-048 assembly.
+- `assembly3/exam_v2_draft.json` `440a594a570ce4cce2814e7b643e8a95cf17862526abb28d913a4ed9c45498e7`
+- `assembly3/references.json` `60e7bcf5308f8ce504e643c5de6472c591030682de69103f4695394940bd1a6f`, equal to assembly2's
+- `assembly3/positions.json` `b75c02e129307b7bce70d0c7fed242b8c504bd0ea15c851ea59643110b80edaa`
+- `assembly3/lister_report.json` `7c9a80c97ae8dfb446c54883ed96489f8350e9e7dbf7efed54da5aa7c31eb626`
+- `assembly3/printing_notes.json` `ce83a1878c8c4f4c07547753d58a78b212890cce16a814d26d16599eb05eca15`
+- `assembly3/validate/VALIDATION_v2.json` `2304d9441db2c79fd1e5bfbbc761bdda54898362ee0e737ff527c53daa77ffaa`
+- `D_FIXES.json` `74297a5d78e8a8c5f91a25b078e5f7d38aded0e472e58fec372cbce85df7725f`, unchanged
+- build record `g20261021_224410000_SR.py` `300f4897c2989c9f00253d7095bd7ea22ae08b298412dca3618f3df5155c3e28`
+- QUESTIONS.json, regenerated from assembly3 into a check folder, is byte-identical to the quiz (`360361e1…`).

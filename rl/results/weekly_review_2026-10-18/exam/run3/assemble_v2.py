@@ -3,6 +3,7 @@
 check on every accepted and pending line before any question goes to Dustin.
 
   assemble_v2.py RUN3_DIR EXAM_V2_DIR JUDGE_DIR OUT_DIR [--relink LABELS.json] [--second LABELS.json ...] [--fixes D_FIXES.json]
+                 [--printing-notes]
 
 1. The labels: label_out_p1..5/labels.json (format pds-exam-v2-labels). With --relink (note 044 A), that file's labels REPLACE the first pass's
    for its points (the three games recorded in two clips); the first pass's labels of those points are not read. Every built point (G1 drops
@@ -24,6 +25,9 @@ check on every accepted and pending line before any question goes to Dustin.
    (remove_alternative removes the line, resolved_by_R1 records lister_segments by the FINAL acceptable order, drop on his line drops the
    point). first_segment, status (pending while a pending line remains). A question whose pending lines all failed is withdrawn.
 7. The question cap: at most 6 questions per labelling part (addendum 8, K7); a shared question counts once. Over the cap stops the run.
+8. --printing-notes (coordinator-048, Part B facts): each built position's opp_ambiguous printing notes are rewritten without their evidence
+   clauses (printing_notes.py; each printing choice kept), before anything else reads the positions; every old note and its rewrite go to
+   OUT_DIR/printing_notes.json. A note the rewrite cannot settle stops the run.
 Writes OUT_DIR/exam_v2_draft.json, references.json, references_lister.json, positions.json, lister_report.json, lister_drops/, ASSEMBLY.md.
 Refuses to overwrite OUT_DIR."""
 import argparse, collections, glob, importlib.util, json, os, re, subprocess, sys
@@ -97,6 +101,7 @@ def main():
     ap = argparse.ArgumentParser()
     ap.add_argument('run3'); ap.add_argument('e2'); ap.add_argument('judge'); ap.add_argument('out')
     ap.add_argument('--relink'); ap.add_argument('--second', nargs='*', default=[]); ap.add_argument('--fixes')
+    ap.add_argument('--printing-notes', action='store_true')
     a = ap.parse_args()
     run3, e2, judge, out = a.run3, a.e2, a.judge, a.out
     if os.path.exists(out):
@@ -116,6 +121,18 @@ def main():
             sys.exit('relink labels: wrong format: stop')
         relink = R['points']
     labels, deck_kinds, problems, record = {}, {}, collections.defaultdict(list), collections.defaultdict(list)
+    pnotes = {}
+    if a.printing_notes:  # coordinator-048: the opponent's printing notes lose their evidence clauses (printing_notes.py); positions else unchanged
+        import printing_notes as PN
+        for pid, q in built.items():
+            try:
+                new, rec = PN.rewrite(q, e2)
+            except PN.Unsettled as e:
+                sys.exit(f'{pid}: printing note not settled: {e}: stop')
+            pnotes[pid] = rec
+            if new != (q.get('opp_ambiguous') or []):
+                record['printing_notes_rewritten'].append(pid)
+            q['opp_ambiguous'] = new
     for k in range(1, 6):
         L = json.load(open(f'{e2}/label_out_p{k}/labels.json', encoding='utf-8'))
         if L.get('format') != 'pds-exam-v2-labels':
@@ -297,6 +314,8 @@ def main():
     refs = {pid: [{'id': 'his', 'labels': ans['his_move']}] + [{'id': f'alt{i}', 'labels': x['line']} for i, x in enumerate(ans['acceptable'])]
             + [{'id': f'pend{i}', 'labels': x['line']} for i, x in enumerate(ans['pending_alternatives'])] for pid, ans in answers.items()}
     os.makedirs(out)
+    if pnotes:
+        json.dump({pid: pnotes[pid] for pid in sorted(want)}, open(f'{out}/printing_notes.json', 'w', encoding='utf-8'), indent=1, ensure_ascii=False)
     json.dump([views[pid] for pid in sorted(want)], open(f'{out}/positions.json', 'w'), ensure_ascii=False)
     json.dump(refs, open(f'{out}/references_lister.json', 'w'), ensure_ascii=False)
     r = subprocess.run([sys.executable, '-B', f'{run3}/check_lister_v2.py', judge, f'{out}/positions.json', f'{e2}/decks', f'{out}/references_lister.json',

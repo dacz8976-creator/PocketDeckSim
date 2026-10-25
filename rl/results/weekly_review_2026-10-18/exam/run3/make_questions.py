@@ -1,10 +1,11 @@
 #!/usr/bin/env python3
 """Dustin's questions on exam v2 (PREREG_RUN3 addendum 5, G4): one entry per question of the assembled draft, for the coordinator's quiz.
 
-  make_questions.py EXAM_V2_DIR [DRAFT_JSON]
+  make_questions.py EXAM_V2_DIR [DRAFT_JSON [OUT_DIR]]
 
 Writes ~/exam_v2/questions/QUESTIONS.json and QUESTIONS.md. Each entry holds:
   - the point id and its labelling part; the question, verbatim from the draft; the points a shared question also covers (also_applies_to);
+  - where to watch each turn (video: the file, the turn's start in it from the review's own labels, the clip of a linked battle; video_refs.py);
   - his recorded move and each pending alternative, in plain words, step by step (slots followed through the line; a Pokemon with a twin in
     play is named with its HP or how it got there; a random evolution named from the build's record of the review), plus the raw labels;
   - the position: the turn and who went first, the points, both Energy zones, both Actives and Benches (HP, printed HP and the HP bonuses in
@@ -16,6 +17,7 @@ import collections, copy, glob, importlib.util, json, os, re, sys
 
 E2 = sys.argv[1] if len(sys.argv) > 1 else '/home/dacz8976/exam_v2'
 DRAFT = sys.argv[2] if len(sys.argv) > 2 else f'{E2}/assembly/exam_v2_draft.json'
+QDIR = sys.argv[3] if len(sys.argv) > 3 else f'{E2}/questions'  # another folder: a check run that leaves the live quiz file alone (note 048)
 DB = {v['id']: v for e in json.load(open(f'{E2}/bin/frozen_db_b5e68fc8.json', encoding='utf-8')) for v in e.values()}
 SET = re.compile(r'\s+((?:P-[AB]|[AB]\d[a-z]?)\s+\d{1,3})$')
 HP_BONUS = re.compile(r'\+(\d+)\s*HP|(\d+)\s*more HP|gets \+(\d+) HP', re.I)
@@ -273,6 +275,16 @@ MAPPING = {
 }
 
 
+def video(pid):
+    """Where to watch the turn: the recording as Dustin knows it (its name in his review index), the time the turn starts in that file from the
+    review's own turn labels (null if the review gives none), and the clip of a linked battle (null for a one-recording game)."""
+    import video_refs
+    v, in_index, _, _ = video_refs.ref(pid)
+    if not in_index:
+        raise SystemExit(f'{pid}: {v["file"]} is not in the review index')
+    return v
+
+
 def lines_of(p, built):
     a, pos = p['answer'], p['position']
     evos = random_evolutions(pos, built)
@@ -299,11 +311,12 @@ def main():
         for q in d['points']:
             if q['answer'].get('same_question_as') == p['id']:
                 h2, a2 = lines_of(q, built.get(q['id']))
-                also.append({'point_id': q['id'], 'his_move': h2, 'alternatives': a2, 'position': position(q, built.get(q['id']))})
-        qs.append({'point_id': p['id'], 'part': a['part'], 'question': a['ambiguous'], 'his_move': his, 'alternatives': alts,
+                also.append({'point_id': q['id'], 'video': video(q['id']), 'his_move': h2, 'alternatives': a2,
+                             'position': position(q, built.get(q['id']))})
+        qs.append({'point_id': p['id'], 'part': a['part'], 'question': a['ambiguous'], 'video': video(p['id']), 'his_move': his, 'alternatives': alts,
                    'position': position(p, built.get(p['id'])), **({'also_applies_to': also} if also else {})})
-    os.makedirs(f'{E2}/questions', exist_ok=True)
-    with open(f'{E2}/questions/QUESTIONS.json', 'w', encoding='utf-8') as f:
+    os.makedirs(QDIR, exist_ok=True)
+    with open(f'{QDIR}/QUESTIONS.json', 'w', encoding='utf-8') as f:
         json.dump({'what': "Questions for Dustin about his own ranked turns: for each, his move and the other line asked about, with the position "
                    'as reconstructed from his game review at the start of that turn. His answers are recorded in his own words.',
                    'answer_options': ANSWER_OPTIONS, 'optional_note': 'Your thinking in the moment (optional)',
@@ -330,12 +343,16 @@ def main():
         out += [f'**Alternative {j}:** ' + '; '.join(s.strip() for s in alt['steps']) for j, alt in enumerate(alts, 1)]
         return out
 
+    def watch(v):
+        return (f"**Video:** {v['file']}" + (f", clip {v['clip']}" if v['clip'] else '') +
+                (f", from {v['at']}" if v['at'] else ' (the review gives no time for this turn)'))
+
     for i, q in enumerate(qs, 1):
-        md += [f"## {i}. {q['point_id']} (part {q['part']})", '', f"**Question:** {q['question']}", '']
+        md += [f"## {i}. {q['point_id']} (part {q['part']})", '', f"**Question:** {q['question']}", '', watch(q['video']), '']
         md += block(q['point_id'], q['position'], q['his_move'], q['alternatives']) + ['']
         for x in q.get('also_applies_to') or []:
-            md += [f"**The same question at {x['point_id']}:**", ''] + block(x['point_id'], x['position'], x['his_move'], x['alternatives']) + ['']
-    with open(f'{E2}/questions/QUESTIONS.md', 'w', encoding='utf-8') as f:
+            md += [f"**The same question at {x['point_id']}:**", '', watch(x['video']), ''] + block(x['point_id'], x['position'], x['his_move'], x['alternatives']) + ['']
+    with open(f'{QDIR}/QUESTIONS.md', 'w', encoding='utf-8') as f:
         f.write('\n'.join(md) + '\n')
     unknown = sum(1 for q in qs for s in [*q['his_move']['steps'], *[x for a in q['alternatives'] for x in a['steps']]] if s.startswith('['))
     print(f"{len(qs)} questions ({sum(len(q.get('also_applies_to') or []) for q in qs)} shared points); steps not in plain words: {unknown}")
