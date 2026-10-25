@@ -584,3 +584,44 @@ A summary of the lister-check evidence (problem types and step counts, never a l
 6. **Free-text position facts** (`opp_ambiguous`, `turn_effects`, board `effects`, `stadium`): ACCEPTED, with two guards.
    - **(a) Facts only.** `build/v2_helpers.check_candidate` refuses an evaluative or advisory word in those fields, using `BANNED_WORDS`: should, better, best, mistake, misplay, threat, lethal, plan, intend, want, correct, wrong, risky, safe, good, bad, optimal, ideal, blunder, must, needs to, ought, and their inflections. Card, Ability and attack names are taken out first, so "Team Rocket's Master Plan" and "Safeguard" pass. It is tested in `build/test_v2_helpers.py`, and all 51 v1.6 positions pass it.
    - **(b) Blind review.** The selection check's Part B reads every point's free-text fields (`position_facts.json`, those fields only) beside the review, and reports any hint of the answer. A flag is `fix_first`. A flagged text is rewritten to the review's own factual wording, or removed.
+
+## Addendum 6 (Oct 25, 2026 UTC; the window closes early on the owner's direction, the coordinator's message of Oct 25, before any selection, any position build and any bot or judge output)
+Nothing has been selected, built or run for exam v2. This addendum is committed BEFORE the real snapshot, and its commit time is the cutoff.
+
+**H1. The owner's direction**, relayed by the coordinator on Oct 25, verbatim: "more games have been added to the ladder log if you want to include them. Also our usage is basically 50% so we can do things today, rather than wait until tomorrow. Nothing is magical about monday".
+
+**H2. The new cutoff: 2026-10-25T15:19:32Z,** this commit's author and committer time. It replaces section 1's end (Sunday Oct 25, 11:59 PM Central, 04:59Z Oct 26) and section 10's step 2.
+- The coordinator's words, verbatim: "It's moved earlier on the owner's direction, decided before any selection or bot output and without regard to any game's content."
+- The laptop set the time when it committed. It had read no review, no move and no result of any window game (H5 lists what it read).
+- Dual Fusion's release (Oct 29, 01:00Z) comes later, so it doesn't bind.
+
+**H3. The window: every ranked game recorded before the cutoff that Codex has reviewed.** Section 1 and addenda 3-5 apply unchanged.
+- **"Reviewed"** means an accepted review in the Evidence batches when the real snapshot runs, right after this commit. The snapshot reads the nine ranked batches:
+  - DRIVE_INBOX_2026-10-20, DRIVE_LADDER_2026-10-19, DRIVE_LADDER_REMAINING_2026-10-19, DRIVE_INBOX_2026-10-21, DRIVE_LADDER_2026-10-21_EVENING, DRIVE_LADDER_2026-10-23 and DRIVE_LADDER_2026-10-23_EVENING;
+  - the two new batches: DRIVE_LADDER_2026-10-24 (16 games, 20 QR_ID files) and DRIVE_LADDER_2026-10-25 (11 games, 16 QR_ID files). Both FINAL_QA files show 0 older recordings queued (the coordinator's read).
+  - DRIVE_RULE_TESTS_2026-10-19 holds rules tests, not ranked games.
+- **Later games:** a game recorded at or after the cutoff is out of run 3, without exception. So is a game recorded before it whose review is not in those batches at the snapshot.
+- **The snapshot's `--window-end`** is 2026-10-25T15:19:31Z (inclusive), one second before the cutoff.
+
+**H4. New lists and weak flags.**
+- **New lists** are card-checked against the frozen tree as before: every printing must be in the frozen database (`make_v2_decks.py --frozen-db`, tree 70652fff), and every list must load in `pg_legal_v14` (`smoke_v2.py`).
+- **A new weak deck flag** stops the snapshot until the coordinator rules "in" or "excluded" from metadata only (G13, items 3 and 4).
+
+**H5. The dry run and reads before this commit, recorded** (C1: not exposure).
+- **The dry run** (Oct 25, 15:10-15:20Z, scratch folders only): `make_v2_decks.py`, the card check and the snapshot, over the nine batches with the default end.
+  - **Games:** 90 games (93 recordings, 3 linked battles), 90 in, 0 excluded. The earliest starts 2026-10-16T18:46:35Z and the latest 2026-10-24T20:36:08Z.
+  - **Lists:** 27, and the 20 committed deck files are byte-identical. Every list encodes back to its code, and all 27 load in `pg_legal_v14`.
+  - **The 7 new lists** (the number of window games with each list, by Energy type): v2deck_2c68a379f5 (Fighting+Metal, 4), v2deck_7907f1e146 (Water, 10), v2deck_8561e086a0 (Grass+Darkness+Metal, 1), v2deck_995ac0891e (Water, 6), v2deck_a75894a903 (Lightning, 3), v2deck_bac3c8a158 (Darkness, 1), v2deck_c4ac51db37 (Psychic, 2).
+  - **Weak flags:** none new. The only weak game is still 21-57-12, in through addendum 3's ruling.
+  - **No new layout.** The review index's in-window rows without a packet are still the two Oct 20 rules-test recordings.
+- **What the laptop read:**
+  - the two new batches' folder names and QR_ID file counts;
+  - their QR and metadata files, through the two scripts;
+  - the window record's metadata (counts, start times, statuses, the layout of the folders and the review files' byte sizes);
+  - the 27 lists' smoke lines (deck-level).
+- **What it did not read:** any REVIEW.md text, any move or result, and any .MOV (Oct 18 .MOV: not a game (owner confirmed)).
+
+**H6. What follows, in section 10's order:**
+1. The real snapshot: `decks/` rebuilt from the nine batches (the committed files unchanged), then `sources/` and `window.json`, committed.
+2. The usability coding (INV_JOB) and the selection check's Part A (the blind second coding), both launched by the coordinator on the credit worker.
+3. The labels, the build, the lister checks, Part B, Dustin's questions and the freeze. The freeze stays off the clock (G10). km3 rows and other heavy work run at night.
