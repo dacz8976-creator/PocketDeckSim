@@ -35,7 +35,8 @@ def sha(b):
 
 os.makedirs(os.path.join(OUT, 'decks'), exist_ok=True)
 man = {'freeze_commit': FREEZE, 'exam_tip': TIP, 'judge_ref': REF,
-       'judge_ref_commit': subprocess.run(['git', '-C', REPO, 'rev-parse', REF], capture_output=True, text=True, check=True).stdout.strip(), 'files': {}}
+       'judge_ref_commit': subprocess.run(['git', '-C', REPO, 'rev-parse', f'{REF}^{{commit}}'], capture_output=True, text=True, check=True).stdout.strip(),
+       'files': {}}
 mraw = show(FREEZE, f'{FZ}/FREEZE_MANIFEST.json')
 if sha(mraw) != MANIFEST_SHA:
     sys.exit(f'FREEZE_MANIFEST.json: sha256 {sha(mraw)[:16]} is not K19\'s: stop')
@@ -72,9 +73,12 @@ for deck in sorted({q['deck'] for q in pos}):
     b = show(FREEZE, f'{RUN3}/decks/{deck}.txt')
     open(os.path.join(OUT, 'decks', f'{deck}.txt'), 'wb').write(b)
     man['files'][f'deck:{deck}'] = sha(b)
-cats = {p['id']: {'deck': p['deck'], 'deck_kinds': (exam.get('deck_kinds') or {}).get(p['deck'], []), 'answer_kind': p['answer']['answer_kind'],
+dk = exam.get('deck_kinds') or {}  # v2: {deck: {'deck_kinds': [...], 'why': {...}}}
+cats = {p['id']: {'deck': p['deck'], 'deck_kinds': list((dk.get(p['deck']) or {}).get('deck_kinds') or []), 'answer_kind': p['answer']['answer_kind'],
                   'scope': p['answer']['segment_scope'], 'primary': True} for p in exam['points']}
-open(os.path.join(OUT, 'categories.json'), 'w').write(json.dumps(cats, ensure_ascii=False, indent=1))
+if any(not c['deck_kinds'] for c in cats.values()):
+    sys.exit('a point has no deck kinds: stop')
+open(os.path.join(OUT, 'categories.json'), 'w', encoding='utf-8').write(json.dumps(cats, ensure_ascii=False, indent=1))
 for s in ('stratum_chance_run3.txt', 'stratum_chance_pooled.txt'):
     b = show(TIP, f'{RUN3}/strata/{s}')
     open(os.path.join(OUT, s), 'wb').write(b)
@@ -82,6 +86,10 @@ for s in ('stratum_chance_run3.txt', 'stratum_chance_pooled.txt'):
 s3 = [l.strip() for l in open(os.path.join(OUT, 'stratum_chance_run3.txt')) if l.strip()]
 if not set(s3) <= set(ids):
     sys.exit('the run 3 stratum names points outside the exam: stop')
+e2 = json.loads(show(TIP, 'rl/results/weekly_review_2026-10-18/exam/run2/live-20261021T2000Z/in/eligibility.json'))
+sp = [l.strip() for l in open(os.path.join(OUT, 'stratum_chance_pooled.txt')) if l.strip()]
+if not (set(sp) <= set(ids) | set(e2['primary_ids'])) or not set(s3) <= set(sp):
+    sys.exit('the pooled stratum names points outside runs 2 and 3, or leaves out run 3\'s: stop')
 for f in ('positions.json', 'references.json', 'eligibility.json', 'ids.txt', 'categories.json'):
     man['files'][f'in:{f}'] = sha(open(os.path.join(OUT, f), 'rb').read())
 json.dump(man, open(os.path.join(OUT, 'inputs_manifest.json'), 'w'), indent=1)

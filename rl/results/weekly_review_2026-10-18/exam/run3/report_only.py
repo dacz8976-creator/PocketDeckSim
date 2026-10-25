@@ -30,7 +30,8 @@ for pid, q in POINTS.items():
     res.append({'point': pid, 'question': q, 'his_choice': a['dustin_answer']['choice'], 'his_note': a['dustin_answer']['words'],
                 'his_move': a['his_move'], 'key': a.get('key_line') or a['his_move'],
                 'judge': [{'plan': r.get('plan'), 'plan_number': r.get('plan_number'), 'cut': r.get('cut'), 'reason': r.get('reason'),
-                           'state': 'no_choice' if r.get('plan') is None else 'chose'} for r in jr],
+                           'state': 'no_choice' if r.get('plan') is None else 'chose', 'stop_reason': r.get('stop_reason'),
+                           'parse_error': r.get('parse_error')} for r in jr],
                 'km3': [{'seed': r.get('seed'), 'plan': r.get('plan'), 'plan_full': r.get('plan_full'), 'cut': r.get('cut')}
                         for r in sorted((r for r in km3 if r['position'] == pid), key=lambda r: r.get('seed') or 0)],
                 **({'engine_note': NOTE_Q11} if q == 'Q11' else {})})

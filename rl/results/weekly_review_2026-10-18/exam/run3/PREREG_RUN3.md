@@ -959,3 +959,36 @@ Nothing has been selected, built or run for exam v2. This addendum is committed 
 - **From here:**
   - nothing in the frozen files changes after any km3 or judge row exists (G2);
   - the runs (km3 rows at night, from the new seed block registered first; then the judge, ledger $75, primary cap $40) wait for the coordinator's go.
+
+**K20. The run's scheduling and kit, registered before any run 3 row** (the coordinator's GO of Oct 25 and its decision on the laptop's rate-limit question; no km3 or judge row exists for exam v2 when this is committed).
+- **The risk:** in run 2's first primary pass, 2 of the first 5 calls got HTTP 429 (TPM quota). frozen-7's `budget_judge.py` stops sending after any failed call, so 46 tasks were NOT SENT; the one resend recovered them. Run 3 sends 258 calls (about 3.2M input tokens), so one 429 inside a single resend could leave never-sent tasks, and A4 would then give no verdict.
+- **(a) Workers: 2** instead of 4. This is scheduling only: frozen-7's judge settings are unchanged.
+- **(b) The passes** (`next_pass.py`):
+  - Pass 0 sends every decision. Up to **3 later passes** follow, **120 s** apart.
+  - **NOT SENT** covers only a task the harness's own record shows was never issued as an HTTP request: budget_judge printed `NOT SENT <id>` for it in that pass, with no `TASK FAILED <id>` line. Such a task may go in a later pass.
+  - **Anything ambiguous counts as SENT** and gets run 2's A4 single resend: a TASK FAILED line (an API error, a timeout, a connection reset, a refusal inside judge_one), or a task in a pass's send list with no line at all. A decision issued twice without a row is never sent again.
+  - **A task that got a reply (a row) is never asked again,** in any pass.
+  - **Every pass uses the identical frozen-7 config;** only the scheduling differs. Each pass is logged with tasks asked, sent, NOT SENT and failed, those still without a row, and spend.
+  - **The $40 primary cap covers all the primary's passes and resends together.** Never-sent tasks left after pass 3 stop the run (STATUS STOP; no verdict; reported). There is no 4th pass.
+  - **The repeat follows the same rule** within the ledger's remainder. If it is incomplete after its passes, there is no sensitivity comparison and the run ends STOP. Nothing changes for run 2's rows.
+- **Stops:**
+  - the run stops for the coordinator on any unregistered event;
+  - failed judge replies above 20% (A3): the registered primary and strata are computed (no API call), then the run stops before the repeat;
+  - pooling OFF (section 7, a different model): it stops before the repeat;
+  - an unexpected exit is written as STATUS STOP.
+- **The kit** (`run_exam3.sh`, `prep_inputs_v2.py`, `next_pass.py`, `report_only.py`; the strata in `strata/`, fixed at 39c47136):
+  - **Two independent reviewers** (wf_59f4d4d1-cd4) found 2 blockers in the first kit, both now fixed:
+    - a one-line id list would have made every batch resend all 258 decisions;
+    - the dry run's mocked judge never ran.
+  - **Also fixed:**
+    - a STOP status on every exit;
+    - every branch file fetched before any spend;
+    - the kit pinned (`KIT_COMMIT`, the exam tip must equal it; pool_runs.py, its test, the frozen files and the decks must equal the freeze's);
+    - the pooled primary and strata computed before the repeat;
+    - calls in flight counted in the primary cap;
+    - budget_judge usage errors stopped, not resent;
+    - the categories' deck kinds read from v2's format;
+    - the runs labelled in pool_runs' output.
+  - **The dry run checks:** the mocked judge on 3 points (3 rows, no later pass), `missing_ids` on a row taken out and on a one-line list, and `next_pass.py` on fixtures. It plays no km3 and makes no comparison.
+- **The seeds** (START_HERE, Oct 21): km3 at 25,101,000,001-003. km3 plays in the night window (02:00-12:50Z), at nice 19.
+- **The launch record** (RESULTS_run3 and the run's manifest) names this commit as `KIT_COMMIT`.
