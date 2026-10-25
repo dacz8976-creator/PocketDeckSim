@@ -99,8 +99,16 @@ def random_evolutions(pos, built):
     return out
 
 
+ORDINAL = ('first', 'second', 'third', 'fourth')
+
+
 class Board:
-    """His side, slot by slot, with how each Pokemon got there this turn (to tell twins apart)."""
+    """His side, slot by slot, with how each Pokemon got there this turn. A Pokemon with a same-name twin in play is always named with its
+    place (the Active one, or on the Bench) and with what tells it apart from the twins in the same place: how it got there this turn
+    ("evolved from Dratini this turn"), else "the older one" when each such twin got there this turn, else its HP when that differs (said
+    as "at the start of the turn": a step earlier in the line can heal it, as Irida does), else its place on the Bench counted from the left
+    (the build's Bench is compacted). The Active one needs no HP. coordinator-049: quiz Q10's "Dragonair (80 HP, on the Bench)" fitted both
+    Dragonair, and "Dragonair (evolved from Dratini this turn)" did not say it was the one on the Bench."""
     def __init__(self, pos):
         self.slots = [{'name': name(b['card']), 'hp': b.get('hp'), 'how': None} for b in pos['me']['board']]
 
@@ -108,13 +116,23 @@ class Board:
         if not (isinstance(k, int) and 0 <= k < len(self.slots)):
             return f'the Pokémon in slot {k}'
         s = self.slots[k]
-        twin = sum(1 for x in self.slots if x['name'] == s['name']) > 1
-        where = 'the Active ' if k == 0 else ''
-        if not twin:
-            return f"{where}{s['name']}"
-        if s['how']:
-            return f"{where}{s['name']} ({s['how']})"
-        return f"{where}{s['name']} ({s['hp']} HP{', on the Bench' if k else ''})"
+        twins = [j for j, x in enumerate(self.slots) if x['name'] == s['name'] and j != k]
+        if not twins:
+            return f"{'the Active ' if k == 0 else ''}{s['name']}"
+        if k == 0:
+            return f"the Active {s['name']}" + (f" ({s['how']})" if s['how'] else '')
+        bench = [j for j in twins if j != 0]
+        if not bench:
+            return f"{s['name']} on the Bench" + (f" ({s['how']})" if s['how'] else '')
+        if s['how'] and all(self.slots[j]['how'] != s['how'] for j in bench):
+            tag = s['how']
+        elif not s['how'] and all(self.slots[j]['how'] for j in bench):
+            tag = 'the older one'
+        elif s['hp'] and all(self.slots[j]['hp'] and self.slots[j]['hp'] != s['hp'] for j in bench):
+            tag = f"{s['hp']} HP at the start of the turn"
+        else:
+            tag = f"{ORDINAL[min(k, 4) - 1]} from the left"
+        return f"{s['name']} on the Bench ({tag})"
 
 
 def plain(line, pos, evos=()):
