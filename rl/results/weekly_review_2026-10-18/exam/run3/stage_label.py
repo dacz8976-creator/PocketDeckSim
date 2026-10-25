@@ -93,7 +93,7 @@ def main():
     ap.add_argument('run3')
     ap.add_argument('exam_v2')
     ap.add_argument('--parts', type=int, default=5)
-    ap.add_argument('--questions-per-part', type=int, default=1)
+    ap.add_argument('--questions-per-part', type=int, default=6)  # v1.6's cap per part (addendum 8, K7)
     ap.add_argument('--dry', help='stage into this folder instead (a test; no prompts, no record)')
     ap.add_argument('--dry-build-glob', default='g*.py', help='with --dry: the build files to read')
     a = ap.parse_args()
@@ -227,8 +227,8 @@ def main():
                       'read the clips in order as one game. Its count continues across clips and never restarts.\n'
                       "- A linked battle's `CLIPS.json` says whether its clips' folders carry ONE review of the whole battle; if they do, "
                       'read that review once.')
-             .replace('(at most 6 in the whole exam)', f'(at most {a.questions_per_part} in this part: the exam is labelled in {len(parts)} parts, '
-                      'and the rules allow at most 6 questions in all)')
+             .replace('(at most 6 in the whole exam)', f"(at most {a.questions_per_part} in this part (each part is about v1.6's size, "
+                      "and v1.6 allowed 6))")
              .replace('**For each deck** in `' + L + 'decks/`', '**For each deck named in** `' + L + 'DECK_KINDS_FOR.txt` (and only those)'))
         for must in (L + 'FILES.txt', L + 'CARDS.md', 'DECK_KINDS_FOR.txt', f'at most {a.questions_per_part} in this part', LO + 'labels.json'):
             if must not in p:

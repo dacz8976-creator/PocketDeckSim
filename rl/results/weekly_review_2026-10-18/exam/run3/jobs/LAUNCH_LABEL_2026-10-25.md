@@ -30,7 +30,7 @@ They are LABEL_JOB.md's prompt. The differences:
 - **`FILES.txt`:** the confined worker has no search, listing or shell tool, so the file list is named in the prompt.
 - **Card text** comes from `CARDS.md` instead of `lib/card.py`, which the worker can't run.
 - **The linked-battle line** (one whole-battle review, read once).
-- **The question cap:** "at most 1 in this part". ADJUDICATION_RULES allows at most 6 in the whole exam, and 5 parts × 1 stays within it. **The coordinator may change it.**
+- **The question cap: at most 6 in this part** (each part is about v1.6's size, and v1.6 allowed 6), so at most 30 in all. This is the coordinator's change, made with ADJUDICATION_RULES' v2 copy (PREREG_RUN3 addendum 8, K7). The first staging said "at most 1 in this part"; those jobs were stopped at 17:25Z, and their outputs are set aside unread.
 - **`deck_kinds`** is asked only for the decks in `DECK_KINDS_FOR.txt`. Each of the 24 decks is in exactly one part, the one holding most of its points, so the parts can't disagree.
 
 ## Confinement
@@ -45,7 +45,8 @@ Parts 2-5: the same with `p2`…`p5` in the three places.
 **For the coordinator to decide:**
 - **Model.** The laptop's recommendation is `claude-opus-5-5`, because the labels are the exam's answer key: the acceptable alternatives decide what a bot gets credit for. `claude-sonnet-5-5` is cheaper. Use one model for all five parts.
 - **Budget.** $15 per part, LABEL_JOB.md's figure for one job: at most $75 in all.
-- **The question cap** (1 per part), as above.
+
+The coordinator's choices: opus and $15 per part. The cap was changed to 6 per part (K7) before the relaunch.
 
 ## After the labels (the assembly, mechanical)
 - Every accepted line is cut after its Attack, as his line is (frozen-7's rule; addendum 8, K3).

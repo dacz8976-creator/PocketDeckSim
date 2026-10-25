@@ -18,7 +18,7 @@ Source: exam v1.6 (commit 5518fd60), `exam/README.md` (scoring and the v1.2-v1.6
   - Write each line in the engine's legal labels (`Name#{json}` form for actions with arguments).
 - **Rejected alternatives** are lines ruled out by Dustin's words or by the coordinator's decision from them. Each carries `certified_by`: `dustin` or `coordinator_decision_from_his_words`, nothing else (PREREG_RUN3 addendum 5, G4: v1.6's `coordinator_interpretation` is not used in v2). They never count.
 - **Ambiguous:** when the labeller genuinely can't tell whether his move or an alternative is better, the point gets ONE plain question for Dustin.
-  - Aim for a handful in total, at most 6.
+  - Aim for a handful: at most 6 in this part (each part is about v1.6's size, and v1.6 allowed 6). The exam is labelled in 5 parts, so at most 30 in all (PREREG_RUN3 addendum 8, K7).
   - The alternative is held as pending (it doesn't count) until he answers. His words are stored verbatim.
 - **answer_kind**, one of:
   - prepare: get something ready for a later turn;

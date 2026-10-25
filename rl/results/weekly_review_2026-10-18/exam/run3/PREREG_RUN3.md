@@ -704,3 +704,14 @@ Nothing has been selected, built or run for exam v2. This addendum is committed 
 - No one has written or seen a label for these points.
 
 **K6. Next, in G2's order:** the labels (LABEL_JOB, staged in 5 parts: `jobs/LAUNCH_LABEL_2026-10-25.md`), the lister check, Part B, Dustin's answers, the lister check again, `validate_v2.py`, the freeze.
+
+**K7. The question cap, changed before any label was read** (Oct 25, 2026 UTC; the coordinator's message of about 17:30Z).
+- **What happened.** The five label jobs were launched with "at most 1 question in this part", which kept the rules' flat "at most 6" for the whole exam. The coordinator stopped them at 17:25Z, about 2 minutes in.
+- **Their partial outputs** were moved aside UNREAD to `~/exam_v2/label_out_p<k>.aborted_20261025T172559Z`. Nobody opens them, and they are never used. The out-folders were recreated empty.
+- **Dustin's question** (as the coordinator relayed it): whether a flat cap of 6 questions makes sense for 258 points.
+- **The coordinator's reason:**
+  - v1.6 allowed 6 questions for 51 points; a flat 6 over 258 is about 5 times stricter. Unsure alternatives would be dropped instead of asked, which is a different labelling regime from v1.6's, and the pooling assumes they are the same (the advisor's trap 1).
+  - It could also tilt the comparison toward the bot that plays the "standard" line.
+- **The change: at most 6 questions PER PART, at most 30 in all.** Each part (48-54 points) is about v1.6's size (51).
+  - It is made in ADJUDICATION_RULES' v2 copy (`jobs/ADJUDICATION_RULES.md`, section 2) and in the five prompts.
+  - Nothing else changed. The re-staging's hashes (`jobs/LABEL_STAGING_2026-10-25.json`) differ from the first staging's only in ADJUDICATION_RULES.md and the prompts.
