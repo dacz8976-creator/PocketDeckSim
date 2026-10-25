@@ -6,8 +6,10 @@ import copy, json, os, shutil, subprocess, sys, tempfile, unittest
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 EV, QA, INDEX, DECKS, RULINGS = (sys.argv.pop(1) for _ in range(5)) if len(sys.argv) >= 6 else (None,) * 5
+# every ranked batch DECKS.json is built from (PREREG_RUN3 addendum 6): the snapshot stops on a DECKS.json game whose batch isn't passed
 BATCHES = ['DRIVE_INBOX_2026-10-20', 'DRIVE_LADDER_2026-10-19', 'DRIVE_LADDER_REMAINING_2026-10-19', 'DRIVE_INBOX_2026-10-21',
-           'DRIVE_LADDER_2026-10-21_EVENING', 'DRIVE_LADDER_2026-10-23']
+           'DRIVE_LADDER_2026-10-21_EVENING', 'DRIVE_LADDER_2026-10-23', 'DRIVE_LADDER_2026-10-23_EVENING', 'DRIVE_LADDER_2026-10-24',
+           'DRIVE_LADDER_2026-10-25']
 FROZEN_DB = '/tmp/frozen_db_70652fff.json'
 # the two linked battles of DRIVE_INBOX_2026-10-21 (addendum 4's case record)
 GAME01 = ('1Pe3YcccL4MVTmDWeyHnG7Uz5ZXTl5DEN', '11nTG081XdYLHpPHN9UFE6rFnq7ujo27e')
