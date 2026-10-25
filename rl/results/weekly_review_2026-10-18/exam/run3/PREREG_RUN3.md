@@ -625,3 +625,22 @@ Nothing has been selected, built or run for exam v2. This addendum is committed 
 1. The real snapshot: `decks/` rebuilt from the nine batches (the committed files unchanged), then `sources/` and `window.json`, committed.
 2. The usability coding (INV_JOB) and the selection check's Part A (the blind second coding), both launched by the coordinator on the credit worker.
 3. The labels, the build, the lister checks, Part B, Dustin's questions and the freeze. The freeze stays off the clock (G10). km3 rows and other heavy work run at night.
+
+## Addendum 7 (Oct 25, 2026 UTC; two field shapes in part 1 of the usability coding, by the coordinator's ruling of Oct 25, before any label, build, bot or judge output)
+- **What happened.** The coding jobs ran 15:54-16:13Z (coordinator-040), staged as `jobs/LAUNCH_2026-10-25.md` records.
+  - `make_turns.py` refused INV part 1's inventory, as designed: it names the global turn count `gt`, a name the script did not accept.
+  - Parts 2 and 3 passed. Part A part 1 has not run.
+- **The coordinator's ruling, verbatim:** "NO re-run of INV p1. Picking between two codings after seeing them would be discretion. Map the key mechanically instead". The record line it set: "INV p1 named the field `gt`; mapped mechanically as an alias; no re-run; no content read".
+- **The change for `gt`.** `make_turns.py` accepts `gt` as one more name for the global turn count. A turn carrying two of the names with different values still stops the run. No coding is changed, and nothing is re-run.
+- **A second shape, found by the dry run; the coordinator rules it.** Two turns of the linked battle 20261021_032324000_SR carry `clip: null`; the first coding placed no clip there. The first is LAD-20261021_032324000_SR-t6. This is the battle whose recording ends early (addendum 4).
+  - `make_turns.py` used to crash there. It now stops with a clear message.
+  - The flag `--null-clip` passes such a clip through as null and lists those turns in `TURNS_RECORD_p1.json`.
+  - Without the flag, part 1 stops. With it, part 1 gives 145 turns from 30 games and passes 2 null clips through.
+  - The turn list's clip only tells Part A where a turn sits. Part A codes each turn by its point id from the one whole-battle review (`CLIPS.json`).
+  - Using the flag or not is the coordinator's ruling, recorded here when made.
+- **`test_make_turns.py`:** 19 OK. Seven tests are new: the alias in part 1's shape, a conflicting and an agreeing pair, and four for null clips.
+- **Reads, recorded** (C1: not exposure). The laptop read the KEY NAMES of `inv_out_p1/inventory.json` and no value:
+  - top level: games and totals;
+  - game level: game, clips, deck_id, deck_name, deck_cards, result, ladder_eligible, turns and clip_note;
+  - turn level: id, gt, clip, board_known, hand_known, move_known, real_choice, kind, line, usable and reason.
+  - Two dry runs of the changed script ran on a scratch copy, which was then deleted. Each printed only its last line, quoted above.

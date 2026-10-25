@@ -29,10 +29,10 @@ class T(unittest.TestCase):
         t.update(coded)
         return t
 
-    def run_mt(self, inv):
+    def run_mt(self, inv, *flags):
         with open(os.path.join(self.d, 'inv_out_p1', 'inventory.json'), 'w') as f:
             json.dump(inv, f)
-        return subprocess.run([sys.executable, '-B', os.path.join(HERE, 'make_turns.py'), self.d, '1'], capture_output=True, text=True)
+        return subprocess.run([sys.executable, '-B', os.path.join(HERE, 'make_turns.py'), self.d, '1', *flags], capture_output=True, text=True)
 
     def good(self):
         return [{'game': G1, 'turns': [self.turn(G1, 2), self.turn(G1, 4)]},
@@ -103,6 +103,58 @@ class T(unittest.TestCase):
         g = self.good()
         g[0]['turns'][0]['global_turn_count'] = 5
         self.stops(g, 'two different values')
+
+    def test_gt_alias(self):
+        """INV p1's shape (addendum 7): the point id under 'id', the global turn under 'gt'."""
+        g = self.good()
+        for gm in g:
+            for t in gm['turns']:
+                t['id'] = t.pop('point_id')
+                t['gt'] = t.pop('global_turn')
+        r = self.run_mt(g)
+        self.assertEqual(r.returncode, 0, r.stderr)
+        out = json.load(open(os.path.join(self.d, 'selcode_in_p1', 'turns.json')))
+        self.assertEqual([(t['point_id'], t['global_turn']) for t in out['turns']],
+                         [(f'LAD-{G1}-t2', 2), (f'LAD-{G1}-t4', 4), (f'LAD-{G2}-t1', 1), (f'LAD-{G2}-t9', 9)])
+        self.assertNotIn('"gt"', open(os.path.join(self.d, 'selcode_in_p1', 'turns.json')).read())
+
+    def test_gt_conflicting_with_global_turn(self):
+        g = self.good()
+        g[0]['turns'][0]['gt'] = 3
+        self.stops(g, 'two different values')
+
+    def test_gt_agreeing_with_global_turn(self):
+        g = self.good()
+        g[0]['turns'][0]['gt'] = 2
+        self.assertEqual(self.run_mt(g).returncode, 0)
+
+    def test_null_clip_in_linked_battle_stops_by_default(self):
+        g = self.good()
+        g[1]['turns'][0]['clip'] = None
+        self.stops(g, 'null clip')
+
+    def test_null_clip_passed_through_with_the_flag(self):
+        g = self.good()
+        g[1]['turns'][0]['clip'] = None
+        r = self.run_mt(g, '--null-clip')
+        self.assertEqual(r.returncode, 0, r.stderr)
+        out = json.load(open(os.path.join(self.d, 'selcode_in_p1', 'turns.json')))
+        self.assertEqual([t['clip'] for t in out['turns'] if t['game'] == G2], [None, 2])
+        rec = json.load(open(os.path.join(self.d, 'TURNS_RECORD_p1.json')))
+        self.assertEqual(rec['null_clip_passed_through'], [f'LAD-{G2}-t1'])
+
+    def test_null_clip_flag_keeps_other_checks(self):
+        g = self.good()
+        g[1]['turns'][1]['clip'] = 3
+        r = self.run_mt(g, '--null-clip')
+        self.assertNotEqual(r.returncode, 0)
+        self.assertIn('outside 1..2', r.stderr)
+
+    def test_null_clip_in_one_clip_game_is_clip_1(self):
+        g = self.good()
+        g[0]['turns'][0]['clip'] = None
+        r = self.run_mt(g)
+        self.assertEqual(r.returncode, 0, r.stderr)
 
     def test_refuses_existing(self):
         self.assertEqual(self.run_mt(self.good()).returncode, 0)

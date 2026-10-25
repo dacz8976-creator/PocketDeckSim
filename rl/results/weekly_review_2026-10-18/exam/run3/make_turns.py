@@ -1,20 +1,23 @@
 #!/usr/bin/env python3
 """Part A's turn list from the first coding (SELCHECK_JOB.md Part A): selcode_in_p<k>/turns.json from inv_out_p<k>/inventory.json.
 
-  make_turns.py EXAM_V2_DIR PART
+  make_turns.py EXAM_V2_DIR PART [--null-clip]
 
 Mechanical: for every game of inv_in_p<k>/window.json, every one of his turns the usability job listed, as
 {"point_id": "LAD-<game>-t<global turn>", "game", "global_turn", "clip"}, and NOTHING else (no *_known, real_choice, usable, kind,
 one-line or reason). Stops on: a game of the part missing from the inventory or one not in the part; a turn whose point id isn't
 LAD-<game>-t<global turn>; a repeated point id; a field shape it can't read unambiguously; an existing turns.json.
 The inventory's field names are the worker's; the accepted spellings are listed below, and anything else stops the run.
+A turn of a linked battle whose clip is null (the first coding placed no clip) stops the run, unless --null-clip passes it through
+as null; that is the coordinator's ruling to make (PREREG_RUN3 addendum 7), and the record counts such turns.
 """
-import hashlib, json, os, stat, sys
+import argparse, hashlib, json, os, stat, sys
 
 GAME_KEYS = ('game', 'game_id', 'id')
 TURNS_KEYS = ('turns', 'his_turns')
 PID_KEYS = ('point_id', 'id')
-GT_KEYS = ('global_turn', 'global_turn_count', 'source_global_turn')
+# 'gt': INV p1's name for the global turn count, mapped as an alias by the coordinator's ruling (PREREG_RUN3 addendum 7; no re-run)
+GT_KEYS = ('global_turn', 'global_turn_count', 'source_global_turn', 'gt')
 CLIP_KEYS = ('clip', 'clip_index', 'clip_order')
 
 
@@ -44,7 +47,12 @@ def clip_no(v, what):
 
 
 def main():
-    e2, k = sys.argv[1], int(sys.argv[2])
+    ap = argparse.ArgumentParser()
+    ap.add_argument('exam_v2')
+    ap.add_argument('part', type=int)
+    ap.add_argument('--null-clip', action='store_true', help="pass a linked battle's null clip through as null (the coordinator's ruling)")
+    a = ap.parse_args()
+    e2, k = a.exam_v2, a.part
     out = os.path.join(e2, f'selcode_in_p{k}', 'turns.json')
     if os.path.exists(out):
         sys.exit(f'{out} exists already: stop')
@@ -54,7 +62,7 @@ def main():
     games = inv if isinstance(inv, list) else one(inv, ('games',), 'inventory.json')
     if isinstance(games, dict):  # keyed by game id
         games = [dict(v, game=g) if 'game' not in v else v for g, v in games.items()]
-    seen_games, turns, ids = set(), [], set()
+    seen_games, turns, ids, null_clips = set(), [], set(), []
     for g in games:
         gid = one(g, GAME_KEYS, 'a game')
         if gid not in want:
@@ -76,6 +84,11 @@ def main():
             c = clip_no(one(t, CLIP_KEYS, f'turn {pid}', required=multi), pid)
             if not multi:
                 c = 1 if c in (None, 1) else sys.exit(f'{pid}: clip {c} in a one-clip game: stop')
+            elif c is None:
+                if not a.null_clip:
+                    sys.exit(f'{pid}: a turn of a linked battle ({want[gid]["clips"]} clips) with a null clip (the first coding placed '
+                             f'no clip): stop; the coordinator rules (--null-clip passes it through as null)')
+                null_clips.append(pid)
             elif not 1 <= c <= want[gid]['clips']:
                 sys.exit(f'{pid}: clip {c} outside 1..{want[gid]["clips"]}: stop')
             turns.append({'point_id': pid, 'game': gid, 'global_turn': gt, 'clip': c})
@@ -100,9 +113,10 @@ def main():
     rec = os.path.join(e2, f'TURNS_RECORD_p{k}.json')
     with open(rec, 'w', encoding='utf-8') as f:
         json.dump({'turns_json': out, 'sha256': hashlib.sha256(open(out, 'rb').read()).hexdigest(), 'turns': len(turns),
-                   'games': len(seen_games), 'from': {'inventory': os.path.join(e2, f'inv_out_p{k}', 'inventory.json'),
+                   'games': len(seen_games), 'null_clip_passed_through': null_clips,
+                   'from': {'inventory': os.path.join(e2, f'inv_out_p{k}', 'inventory.json'),
                    'sha256': hashlib.sha256(open(os.path.join(e2, f'inv_out_p{k}', 'inventory.json'), 'rb').read()).hexdigest()}}, f, indent=1)
-    print(f'part {k}: {len(turns)} turns from {len(seen_games)} games -> {out} (record {rec})')
+    print(f'part {k}: {len(turns)} turns from {len(seen_games)} games, {len(null_clips)} null clips passed through -> {out} (record {rec})')
 
 
 if __name__ == '__main__':
