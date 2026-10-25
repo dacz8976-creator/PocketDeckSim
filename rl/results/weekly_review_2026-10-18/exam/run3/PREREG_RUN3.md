@@ -644,3 +644,63 @@ Nothing has been selected, built or run for exam v2. This addendum is committed 
   - game level: game, clips, deck_id, deck_name, deck_cards, result, ladder_eligible, turns and clip_note;
   - turn level: id, gt, clip, board_known, hand_known, move_known, real_choice, kind, line, usable and reason.
   - Two dry runs of the changed script ran on a scratch copy, which was then deleted. Each printed only its last line, quoted above.
+
+## Addendum 8 (Oct 25, 2026 UTC; the usable set and the build, before any label, bot or judge output)
+**K1. The usable set** (`select_v2.py`; addendum 5, G3), mechanical:
+- **The rule's reading:** a coding "calls a turn usable" when its four fields are all "yes" (section 2) AND its own `usable` verdict is true. It is symmetric and conservative.
+- **The table** (turns; both usable / first only / second only / neither):
+  - part 1: 145; 80 / 1 / 1 / 63;
+  - part 2: 177; 107 / 12 / 16 / 42;
+  - part 3: 154; 74 / 14 / 2 / 64;
+  - all: 476; 261 / 27 / 19 / 169.
+- No coding's verdict differs from its fields, and every listed turn was coded once by each coding.
+- **261 candidates from 76 games.** The two codings' fields and reasons are copied per turn into the local `~/exam_v2/select/agreement.json`, for Part B.
+
+**K2. The build** (section 2; addendum 5, G1 and G5).
+- **The tools**, in `~/exam_v2/build/`:
+  - `BUILD_BRIEF.md`: the conventions;
+  - `check_game.py`: validate_v2's checks, game by game, plus the candidate list;
+  - `cards.py`: the frozen database, b5e68fc8.
+- **The pilot** game 20261017_150114000_SR settled the conventions:
+  - the Bench is compacted, and `Place` takes the lowest empty slot (the lister matches `Place` without its slot);
+  - a hidden search counts +1 in the opponent's hand;
+  - a printing that can't be told apart is the first listed;
+  - the opponent's next Energy comes only from the review at or before the turn.
+- **Ten builders** (workflow wf_b0c2c0d9-ae0), one per batch of whole games in time order, then a fresh verifier per batch:
+  - each verifier re-derived every position from its review and changed 32 fields, each with the review's words;
+  - the build records are `~/exam_v2/build/g/g<game>.py`, kept local until the freeze, as v1.6's were.
+- **Result:** 258 points pass, and 3 are dropped under G1 with verbatim pg_legal output (`build/drops/`).
+  - The 3: LAD-20261023_001330000_SR-t10, LAD-20261023_005124000_SR-t6 and LAD-20261023_005124000_SR-t12.
+  - The cause: the frozen engine's card data doesn't make Buzzwole B2 014 an Ultra Beast, which the game did. So his recorded Lusamine and Ultra Thrusters plays are illegal in the engine.
+  - The builder and the verifier both confirmed the drops. The same data gap narrows the legal lists at the kept points 20261023_005124000_SR-t2/-t4/-t8 and 20261023_001330000_SR-t8.
+
+**K3. Machinery corrections the build found** (none changes a rule; tests: `build/test_v2_helpers.py` 24 OK):
+1. **His line ends at his Attack.** This is frozen-7's own rule: `judge.py` `normalize_full` and `full_match` end a plan at its Attack, and what follows is bookkeeping.
+   - `P()` cuts `force` after the first `Attack:` label, dropping a target, a pending fx attach, ApplyQueuedAttackDamage or a new Active. The build's notes keep what the review shows.
+   - The first brief said to write attack targets after the Attack. Doing so would have left one line unreadable to frozen-7 (`ApplyDamage{…}`).
+2. **No zone Energy on global turn 1** (the first player's first turn): `P()` sets `energy_now` to None there. Before, the engine listed a zone attach on that turn.
+3. **New chance actions:**
+   - `Play:Cabbie` joins `DRAW` and `CUTD`: it searches the deck, so it is a chance action under ADJUDICATION_RULES section 3 ("any other card whose effect draws, searches, flips a coin or picks at random");
+   - Area Zero joins `CHANCE_STADIUMS`: its use shuffles and draws.
+4. **Wallace's random evolution.** `v2_helpers.tool_steps` reads pg_legal_v14's stop at a random evolution ('hidden random choice') as that chance step, matched. The tool leaves the label unmatched although that step's legal list holds it. `check_game.py` and `validate_v2.py` both use it. Before, every line whose first chance step was Wallace read as unmatched.
+5. **Tool notes** (`check_game.py`, reported, never silent): the tool stops before his line ends at 4 points, so the rest of the line is not checked by the tool there:
+   - an opponent's choice inside his turn: LAD-20261022_004518000_SR-t6 (Sabrina) and LAD-20261024_164318000_SR-t4 (Ancient Roar);
+   - a non-chance return to hand: LAD-20261023_011134000_SR-t14 (Parasol Lady);
+   - a label that names two cards only in the after-chance variant: LAD-20261024_180942000_SR-t1.
+   Each verifier ran those rests in scratch, and they applied. A hidden stop at a line's last label (an attack that moves deck cards: Dragon Pulse, Mega Blaster) is accepted, because nothing of his move comes after it.
+6. **Known gaps, not changed:**
+   - Misty's coins are not in `DRAW`; one line holds Misty, after an earlier Poké Ball, so the first segment there is the Poké Ball's.
+   - The lasting attack boost of a Mega Mawile ex at LAD-20261024_175131000_SR-t6 is not set.
+   R1's lister segment rules the first segment in all such cases.
+
+**K4. A dry run of G2 on his lines** (frozen-7's lister and replay matching; the identity gate passed; no labels exist): 258 of 258 key lines reach exactly one listed plan. 7 differ from `cut()` and are settled by R1 (the lister's segment). The real G2 runs after the labels, on every accepted line.
+
+**K5. Reads, recorded** (C1: not exposure).
+- **The builders and verifiers** (laptop subagents, briefed with no run 2 result) read the reviews of the 76 games with candidates, as the build requires.
+- **The laptop session** read:
+  - the codings' key names only, to compute K1 by script;
+  - the build agents' reports, which hold review details;
+  - the check and lister outputs.
+- No one has written or seen a label for these points.
+
+**K6. Next, in G2's order:** the labels (LABEL_JOB, staged in 5 parts: `jobs/LAUNCH_LABEL_2026-10-25.md`), the lister check, Part B, Dustin's answers, the lister check again, `validate_v2.py`, the freeze.

@@ -17,7 +17,7 @@ import json, os, sys, glob, copy, subprocess, importlib.util, collections
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
 from label_adapter import to_engine
-from v2_helpers import DRAW, RANDOM_EVOLUTION_PLAYS, cut, chance_steps, check_candidate, check_certified_by, tool_stop_agrees, Uncertain
+from v2_helpers import DRAW, RANDOM_EVOLUTION_PLAYS, cut, chance_steps, check_candidate, check_certified_by, tool_steps, tool_stop_agrees, Uncertain
 E2 = os.path.expanduser('~/exam_v2')
 BIN = os.path.expanduser('~/exam/bin/pg_legal_v14')
 with open(f'{E2}/bin/decks.args') as f:
@@ -102,8 +102,7 @@ def main(exam_json, out_dir):
         o = out1[f"{x['pid']}|{x['tag']}"]
         probs = o['position']['problems']
         steps = o['legal']['steps']; stopped = o['legal']['stopped']
-        matched = [s for s in steps if s.get('forced') is not None and s.get('matched') is not None]
-        unmatched = [s for s in steps if s.get('forced') is not None and s.get('matched') is None]
+        matched, unmatched = tool_steps(steps, stopped)  # a random evolution's own stop counts as its matched chance step
         chance_stop = stopped.startswith('hidden')
         n = len(matched)
         if x['seg'] is None:  # a record line cut() can't follow: its legality is checked, its segment is not scored (report only)
@@ -171,8 +170,8 @@ def main(exam_json, out_dir):
     for vid, (r, note, n) in meta.items():
         o = out2[vid]
         probs = o['position']['problems']; st = o['legal']['stopped']; steps = o['legal']['steps']
-        um = [s for s in steps if s.get('forced') is not None and s.get('matched') is None]
-        m = len([s for s in steps if s.get('matched') is not None])
+        mt, um = tool_steps(steps, st)
+        m = len(mt)
         if probs:
             r['after_chance'] = f'variant position problems: {probs}'
         elif um or st.startswith('unmatched'):

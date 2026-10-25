@@ -41,13 +41,15 @@ LETTER = {v: k for k, v in EN.items()}
 
 # the chance-step rule (v1.6's DRAW tuple, unchanged, plus the Abilities below)
 DRAW = ("Play:Professor's Research", 'Play:Poké Ball', 'Play:Copycat', 'Play:Lisia', 'Play:Sightseer', 'Play:Lucky Ice Pop', 'ChooseRandomEvolutionTarget', 'Play:Quick-Grow',
-        'Play:Wallace')
-CUTD = DRAW[:7]  # Quick-Grow and Wallace themselves are not the cut: their ChooseRandomEvolutionTarget is (the frozen engine's
+        'Play:Wallace', 'Play:Cabbie')
+CUTD = DRAW[:7] + ('Play:Cabbie',)  # Quick-Grow and Wallace themselves are not the cut: their ChooseRandomEvolutionTarget is (the frozen engine's
                  # random_typed_evolution_outcomes: the player picks the visible target, then the evolution card is random)
+# Cabbie (Oct 25 build): it searches his deck for a Stadium, a chance action under ADJUDICATION_RULES section 3 ("any other card whose effect
+# draws, searches, flips a coin or picks at random"); pg_legal_v14 stops there whenever a Stadium is left in his deck
 RANDOM_EVOLUTION_PLAYS = ('Play:Quick-Grow', 'Play:Wallace')
 # Stadiums whose use (UseStadium) is a chance step while they are in play: Mesagoza's coin (v1.6), Fragrant Forest's random Basic [G]
 # from the deck (Oct 23 lists; the frozen engine searches the deck, which the lister and pg_legal_v14 both stop at)
-CHANCE_STADIUMS = ('Mesagoza', 'Fragrant Forest')
+CHANCE_STADIUMS = ('Mesagoza', 'Fragrant Forest', 'Area Zero')  # Area Zero (Oct 25 build): its use shuffles and draws (pg_legal_v14 stops there)
 # Lusamine (Oct 23 lists): playing it is deterministic; its AttachFromDiscard ("2 random Energy from your discard pile") branches in the
 # frozen engine's forecast only when the discard holds 3+ Energy of 2+ types (forecast_attach_from_discard); chance_steps judges that
 # from the position's discard at the start of the turn (a retreat earlier in the same line is not counted: the label check catches it)
@@ -108,6 +110,13 @@ def P(game, tc, his, pts, me, opp, force, deck, kind, stadium=None, approx=None,
         now, nxt = ez_now, ez_next
     m = {"hand": me["hand"], "discard": me.get("disc", []), "discard_energy": energies(me.get("dene", "")), "board": me["board"],
          "energy_now": EN[now], "energy_next": EN[nxt], "knockouts": me.get("ko", 0)}
+    if tc == 1:
+        m["energy_now"] = None  # the first player gets no Energy on the game's first turn (Oct 25 build: the engine listed a zone attach there)
+    # his move ends at his attack: frozen-7's plans end at the Attack, and what follows (a target, a pending fx attach, ApplyQueuedAttackDamage,
+    # a new Active) is the engine's bookkeeping there (judge.py normalize_full / full_match); the build's notes keep what the review shows
+    at = next((i for i, l in enumerate(force) if l.startswith('Attack:')), None)
+    if at is not None:
+        force = list(force[:at + 1])
     o = {"hand_count": opp["hand_count"], "discard": opp.get("disc", []), "discard_energy": energies(opp.get("dene", "")), "board": opp["board"],
          "energy_next": EN[opp.get("zone", 'C')] if opp.get("zone") else None, "knockouts": opp.get("ko", 0)}
     if o["energy_next"] is None: del o["energy_next"]
@@ -328,6 +337,20 @@ def tool_stop_agrees(line, seg, position, matched, tool_stopped_at_chance, unmat
     # matched < len(seg): only a lister segment (R1) may run past the tool's stop, at a draw the lister does not count as a chance step;
     # the after-chance variant then checks the rest of the line
     return from_lister and tool_stop_is_chance
+
+
+def tool_steps(steps, stopped):
+    """(matched steps, unmatched steps) of a pg_legal_v14 legal line. At a random evolution the tool stops with 'hidden random choice (...)' and
+    leaves the forced ChooseRandomEvolutionTarget unmatched although that step's own legal list holds it (bare, or with its arguments): that
+    step IS the chance step, so it counts as matched (Oct 25 build; it was the only tool reading that blocked every Wallace line)."""
+    matched = [s for s in steps if s.get('forced') is not None and s.get('matched') is not None]
+    unmatched = [s for s in steps if s.get('forced') is not None and s.get('matched') is None]
+    if stopped.startswith('hidden random choice') and len(unmatched) == 1 and unmatched[0] is steps[-1]:
+        f, legal = unmatched[0]['forced'], unmatched[0].get('legal') or []
+        if f.startswith('ChooseRandomEvolutionTarget') and any(l == f or l.startswith(f) or f.startswith(l) for l in legal
+                                                                if l.startswith('ChooseRandomEvolutionTarget')):
+            return matched + unmatched, []
+    return matched, unmatched
 
 
 def chance_steps(line, position, labels=DRAW, first_only=False):
