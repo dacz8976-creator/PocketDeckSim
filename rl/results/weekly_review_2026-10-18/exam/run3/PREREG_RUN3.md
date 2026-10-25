@@ -644,6 +644,10 @@ Nothing has been selected, built or run for exam v2. This addendum is committed 
   - game level: game, clips, deck_id, deck_name, deck_cards, result, ladder_eligible, turns and clip_note;
   - turn level: id, gt, clip, board_known, hand_known, move_known, real_choice, kind, line, usable and reason.
   - Two dry runs of the changed script ran on a scratch copy, which was then deleted. Each printed only its last line, quoted above.
+- **The coordinator's ruling on the null clips** (coordinator-041, mailbox id 20261025T1620Z), verbatim in its first sentence: "PASS THROUGH the 2 null clips (20261021_032324000_SR, from t6, the battle whose recording ends early)."
+  - Its reason: the clip only locates a turn, and Part A codes by point id from the one whole-battle review.
+  - The coordinator ran `make_turns.py ~/exam_v2 1 --null-clip`. It made 145 turns from 30 games, with the 2 null clips passed through and listed in `TURNS_RECORD_p1.json`.
+  - Part A part 1 ran 16:17-16:23Z, with 0 turn-list problems.
 
 ## Addendum 8 (Oct 25, 2026 UTC; the usable set and the build, before any label, bot or judge output)
 **K1. The usable set** (`select_v2.py`; addendum 5, G3), mechanical:
@@ -715,3 +719,80 @@ Nothing has been selected, built or run for exam v2. This addendum is committed 
 - **The change: at most 6 questions PER PART, at most 30 in all.** Each part (48-54 points) is about v1.6's size (51).
   - It is made in ADJUDICATION_RULES' v2 copy (`jobs/ADJUDICATION_RULES.md`, section 2) and in the five prompts.
   - Nothing else changed. The re-staging's hashes (`jobs/LABEL_STAGING_2026-10-25.json`) differ from the first staging's only in ADJUDICATION_RULES.md and the prompts.
+
+**K8. The coordinator's job decisions and the judge budget** (notes 040, 042, 043 and 046; the "$" figures as note 046 restates them).
+- **The coding jobs** (note 040): $8 per part, so at most $48 for INV plus Part A.
+- **The labels** (note 043):
+  - claude-opus-5-5 for all five parts, "they're the answer key";
+  - $15 per part, at most $75;
+  - deck_kinds as staged, each deck in exactly one part.
+  - The cap of 1 question per part was changed to 6 per part by K7.
+- **The fix jobs** (note 046): relink $5; the second pass $8 per part (p3, p5).
+- **THE JUDGE BUDGET** (note 042, decided before any judge call; it replaces section 9's $15 ledger and changes no analysis rule):
+  - a total ledger of $75, with a primary run cap of $40 and the repeat taking what remains;
+  - from Dustin's Google trial credits (about $287 left), under his standing OK ("you can use it for anything that could be helpful");
+  - run before Nov 30 (the introductory price). The 20% no-choice and resend rules repeat.
+  - The reason: about 261 primary plus 261 repeat calls are likely to cost about $25-35 actual, plus headroom for the wrapper's worst-case reservations.
+
+**K9. Five alternatives kept past an unverifiable chance step** (the coordinator's ruling of Oct 25, after laptop-036's pre-validation).
+- **The five:** LAD-20261020_033156000_SR-t2, LAD-20261023_115617000_SR-t3, LAD-20261023_122720000_SR-t1, LAD-20261021_225620000_SR-t3 and LAD-20261022_000850000_SR-t8. `validate_v2.py`'s after-chance variant cannot confirm them past their chance step.
+- **KEEP them.** The scored part, the first segment up to the chance step, is legal and reaches exactly one plan. What follows a chance step depends on draws or random results that never happened, so under G13 item 2 it is report-only, not "fails validation".
+- In the full-scope (secondary) reading their post-chance remainder is unverified: the result note lists them by id in its full-scope caveat. The primary is unaffected.
+
+**K10. The advisor's audit of the answer key, and the fixes** (note 044, mailbox id 20261025T1830Z; clarified in note 046 and the coordinator's note on the A/C outputs). The advisor, read-only, saw the answer key; it builds no bot.
+- **A. Re-label of the 3 games recorded in two clips** (20261021_020059000_SR, 20261021_032324000_SR, 20261022_004518000_SR; 8 points).
+  - A fresh job (opus, $5, the same rules and confinement) had each game's clip reviews merged, byte for byte, as one whole-battle review read once.
+  - Its labels replace the first pass's for those points; the assembly does not read the first pass's labels for them.
+  - Result: 1 accepted line and 1 question.
+- **B. The chance-first rule,** decided by the assembly for every point (v1.6's draw-first rule extended).
+  - His own line, with its first chance action moved to the front, is accepted when that action is Professor's Research, Poké Ball, Lucky Ice Pop, Wallace, Quick-Grow Extract (each with its random-evolution step) or UseStadium under Fragrant Forest, it is legal at the root, and nothing before it feeds it:
+    - Wallace / Quick-Grow: no Place, Evolve or Retreat before it;
+    - Lucky Ice Pop: no change of his own Active before it;
+    - Research, Poké Ball, Fragrant Forest: nothing feeds them.
+  - Copycat, Lusamine and every other card stay out. **Deterministic actions before the draw when his line drew first stay unaccepted, as in v1.6.**
+  - Result: 27 chance-first variants, all passing the lister check.
+  - Every labeller-written order variant of his own move (the same set of actions in another order) is stripped. That is 12: the two the note names (221937-t2 and 224410-t1) and 10 from the second pass.
+  - So is 175131-t6, the same Water on the same Pokémon moved before the chance step his line played first. It was found by a scan of every accepted line and is the only one.
+- **C. A second, independent alternatives pass over parts 3 and 5** (opus, $8 per part; the trigger is structural: 5/48 and 0/51 accepted, against 6-10 per part elsewhere and v1.6's 16/51).
+  - The union with the first pass, each line passing the lister check and pg_legal:
+    - added as accepted: 4 (152239-t5, 152239-t7, 181948-t6, 182453-t10);
+    - already accepted or equal to a pending line: 6;
+    - new questions: 3 (part 3: 235420-t4, 000150-t5, 005124-t8);
+    - merged with the first pass's question: 1 (165202-t9).
+  - **The rule for a stronger line** (the coordinator's note on the A/C outputs): a second-pass line its labeller called at least as strong as his move goes to Dustin as PENDING with a neutral question, within the part's cap, not to ACCEPTED (finding 4). 180350-t5 is pending; 181948-t8 is already a question (D3).
+- **D. Question fixes:**
+  - D1: 034501-t3's "Evolve Alolan Muk ex first" moved from accepted to pending, with a neutral question.
+  - D2: two new questions, 235420-t10 (Cyrus on the Riolu) and 204548-t7 (Water on Oricorio, then Retreat, built in his order: note 046).
+  - D3: four questions de-led to "..., or was your line the better play?": 221218-t5, 165202-t9, 181948-t8 and 221617-t3.
+  - D4: the part 5 question at 182453-t8 also covers t10 and t12. Each now carries its own pending line (Turbo Shark in place of ending the turn), and one answer applies to all three.
+- **E.** LAD-20261021_213653000_SR-t9: the frozen engine accepts his Wallace line (lister: one plan; pg_legal: legal to the random step; after-chance validated), so his move stays the key. Both Wallace label forms pass the lister.
+- **The fixes file** is `~/exam_v2/D_FIXES.json` (sha256 74297a5d78e8a8c5f91a25b078e5f7d38aded0e472e58fec372cbce85df7725f), kept local with the answer key until the freeze.
+
+**K11. Dustin's questions, the answer options and their mapping, set BEFORE he answers** (note 045, mailbox id 20261025T1845Z).
+- **Dustin, verbatim (note 045):** "I'm by no means perfect and can make a mistake and I'm not above admitting it if you show me. I can give you my thinking in the moment, but just like in my clinical practice, we have to make decisions off of imperfect information sometimes and sometimes in the moment we make the wrong decision."
+- **What he sees:** only what he could see at that moment: the start-of-turn position, his move and the line asked about. Nothing from later turns. The builder's approximation and uncertain-reading texts are left out, because they can cite later turns.
+  - Ten question texts were edited, each recorded in the fixes file with its reason. Four are D3's de-leads. The others remove hindsight ("let it fall to 0-2", "let the 60-HP Active fall", "was lost either way", the opponent's later hit on Stoutland, "Eiscue isn't knocked out"), correct facts ("Mega Blaster"; Alolan Muk ex not yet in his hand; the Espeon's start-of-turn HP), or de-lead a tail ("or as the better one").
+- **The answer options**, the same for every question, plus an optional note for his thinking in the moment:
+  1. **"The alternative was better (my play was a mistake)"**: the alternative becomes the key (`key_line`), `recorded_move_acceptable` is false, and his recorded move becomes a rejected alternative with his words (`rejected_because`, `certified_by: dustin`). This is v1.6's precedent: LAD-20261016_031512000_iOS-t2, "Not attacking was a mistake".
+  2. **"Both were fine"**: the alternative is accepted, with his words and `certified_by: dustin`; his move stays the key.
+  3. **"My play was better"**: the alternative becomes a rejected alternative with his words and `certified_by: dustin`, and never counts; his move stays the key (v1.6, e.g. LAD-20261014_161324000_iOS-t5).
+  4. **"Not sure"**: the alternative is left out. It is not accepted and never counts, and it is recorded with his answer. His move stays the key.
+  - His note is stored verbatim with the point (`dustin_answer.words`).
+  - A shared question's one answer applies to each point it covers, each to its own pending line.
+  - A question unanswered at the freeze leaves its point pending and unscored (G10).
+- **The questions:** `~/exam_v2/questions/QUESTIONS.json` (sha256 f84ce10a767299daca90f29af3be2d90cdc57d599705bd59a8f76b7537414c5c): 23 questions (part 1: 4, part 2: 2, part 3: 6, part 4: 5, part 5: 6), plus 2 points sharing one question. Each part is within K7's cap of 6.
+
+**K12. The assembly after A-E, and the selection check's Part B as staged** (`assemble_v2.py`; draft `~/exam_v2/assembly2/exam_v2_draft.json`, sha256 583f0853a9337ce4eaa41a7f1cd550c4649931131b88f8255b948f0ae946852f).
+- **Points:** 258, of which 233 are final and 25 pending.
+  - Accepted alternatives: 56. Pending lines: 25. Lines removed with their record: 13.
+  - Answer kinds: prepare 151, attack now 92, sacrifice 15.
+- **The lister check on all 339 lines** (his, accepted and pending): 334 pass, 5 resolved by R1 (3 points), 0 removed, 0 drops.
+- **`validate_v2.py`** (pre-freeze run): 314 accepted lines; 0 unmatched, 0 position problems, 0 PGDUMP. 311 of 314 tool stops equal the first segment; the other 3 are K3's tool notes. After the chance step, the rows are K9's five and K3's two tool notes.
+- **Part B, staged as six confined jobs** (`stage_partb.py`; record `jobs/SELCHECK_STAGING_2026-10-25.json`).
+  - **One main job** for items 1-4: the window, the two codings, no picking and the mix. It holds the reviews of the two games with a build drop, for item 3.
+  - **Five facts jobs** for item 5, one per labelling part, each with its points' reviews: one session cannot read 258 points beside about 1 MB of reviews.
+  - **The merge rule:** Part B's verdict is fix_first if the main verdict is, if any facts job flags a text, if any facts job's `checked` does not equal its points, or if a job does not finish. Merged flags are reported with their part.
+  - **The facts prompts** narrow one spec sentence for printing notes. The choice of printing among those matching the shown facts is flagged only if it hints at his move or judges a play. Every fact such a note cites is still checked against the review. This takes effect only with the coordinator's approval (`jobs/LAUNCH_SELCHECK_B_2026-10-25.md`).
+- **Reads, recorded** (C1: not exposure):
+  - the laptop session read the labels and the fix jobs' outputs, for the mechanical assembly and the questions;
+  - its check workflows (wf_3d47f9e5-b0a, wf_fb19d31e-a29) read the staged inputs, the questions and the draft for their checks.
