@@ -1,0 +1,2647 @@
+{
+ "what": "exam v2 candidates: every turn both codings call usable (select_v2.py; PREREG_RUN3 addendum 5, G3)",
+ "rule": "a coding calls a turn usable when its four fields are all \"yes\" and its own usable verdict is true",
+ "table": {
+  "p1": {
+   "neither": 63,
+   "both_usable": 80,
+   "first_only": 1,
+   "second_only": 1,
+   "turns": 145
+  },
+  "p2": {
+   "both_usable": 107,
+   "neither": 42,
+   "first_only": 12,
+   "second_only": 16,
+   "turns": 177
+  },
+  "p3": {
+   "neither": 64,
+   "both_usable": 74,
+   "first_only": 14,
+   "second_only": 2,
+   "turns": 154
+  },
+  "all": {
+   "neither": 169,
+   "both_usable": 261,
+   "first_only": 27,
+   "second_only": 19,
+   "turns": 476
+  }
+ },
+ "notes": [],
+ "candidates": [
+  {
+   "point_id": "LAD-20261017_150114000_SR-t2",
+   "game": "20261017_150114000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261017_150114000_SR",
+   "deck": "v2deck_03c584b95c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261017_150114000_SR-t4",
+   "game": "20261017_150114000_SR",
+   "global_turn": 4,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261017_150114000_SR",
+   "deck": "v2deck_03c584b95c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261017_150509000_SR-t2",
+   "game": "20261017_150509000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261017_150509000_SR",
+   "deck": "v2deck_9d2c3c7ccf",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261017_150509000_SR-t4",
+   "game": "20261017_150509000_SR",
+   "global_turn": 4,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261017_150509000_SR",
+   "deck": "v2deck_9d2c3c7ccf",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261017_150509000_SR-t6",
+   "game": "20261017_150509000_SR",
+   "global_turn": 6,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261017_150509000_SR",
+   "deck": "v2deck_9d2c3c7ccf",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261017_150509000_SR-t8",
+   "game": "20261017_150509000_SR",
+   "global_turn": 8,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261017_150509000_SR",
+   "deck": "v2deck_9d2c3c7ccf",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261017_151306000_SR-t2",
+   "game": "20261017_151306000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261017_151306000_SR",
+   "deck": "v2deck_5c3566c961",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261017_151306000_SR-t4",
+   "game": "20261017_151306000_SR",
+   "global_turn": 4,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261017_151306000_SR",
+   "deck": "v2deck_5c3566c961",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261017_151306000_SR-t6",
+   "game": "20261017_151306000_SR",
+   "global_turn": 6,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261017_151306000_SR",
+   "deck": "v2deck_5c3566c961",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261019_221218000_SR-t1",
+   "game": "20261019_221218000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261019_221218000_SR",
+   "deck": "v2deck_b1999cc10f",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261019_221218000_SR-t3",
+   "game": "20261019_221218000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261019_221218000_SR",
+   "deck": "v2deck_b1999cc10f",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261019_221218000_SR-t5",
+   "game": "20261019_221218000_SR",
+   "global_turn": 5,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261019_221218000_SR",
+   "deck": "v2deck_b1999cc10f",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261019_222211000_SR-t1",
+   "game": "20261019_222211000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261019_222211000_SR",
+   "deck": "v2deck_06ee642b71",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261019_222211000_SR-t3",
+   "game": "20261019_222211000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261019_222211000_SR",
+   "deck": "v2deck_06ee642b71",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261019_222211000_SR-t5",
+   "game": "20261019_222211000_SR",
+   "global_turn": 5,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261019_222211000_SR",
+   "deck": "v2deck_06ee642b71",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261019_223400000_SR-t1",
+   "game": "20261019_223400000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261019_223400000_SR",
+   "deck": "v2deck_06ee642b71",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261019_223400000_SR-t3",
+   "game": "20261019_223400000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261019_223400000_SR",
+   "deck": "v2deck_06ee642b71",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261019_223918000_SR-t1",
+   "game": "20261019_223918000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261019_223918000_SR",
+   "deck": "v2deck_06ee642b71",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261019_223918000_SR-t3",
+   "game": "20261019_223918000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261019_223918000_SR",
+   "deck": "v2deck_06ee642b71",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261019_224222000_SR-t1",
+   "game": "20261019_224222000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261019_224222000_SR",
+   "deck": "v2deck_06ee642b71",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261019_224222000_SR-t3",
+   "game": "20261019_224222000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261019_224222000_SR",
+   "deck": "v2deck_06ee642b71",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261019_224222000_SR-t5",
+   "game": "20261019_224222000_SR",
+   "global_turn": 5,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261019_224222000_SR",
+   "deck": "v2deck_06ee642b71",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261019_224222000_SR-t7",
+   "game": "20261019_224222000_SR",
+   "global_turn": 7,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261019_224222000_SR",
+   "deck": "v2deck_06ee642b71",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261019_224222000_SR-t9",
+   "game": "20261019_224222000_SR",
+   "global_turn": 9,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261019_224222000_SR",
+   "deck": "v2deck_06ee642b71",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261019_224222000_SR-t11",
+   "game": "20261019_224222000_SR",
+   "global_turn": 11,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261019_224222000_SR",
+   "deck": "v2deck_06ee642b71",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261019_224222000_SR-t13",
+   "game": "20261019_224222000_SR",
+   "global_turn": 13,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261019_224222000_SR",
+   "deck": "v2deck_06ee642b71",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_000238000_SR-t1",
+   "game": "20261020_000238000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_000238000_SR",
+   "deck": "v2deck_06ee642b71",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_000238000_SR-t3",
+   "game": "20261020_000238000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_000238000_SR",
+   "deck": "v2deck_06ee642b71",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_000238000_SR-t5",
+   "game": "20261020_000238000_SR",
+   "global_turn": 5,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_000238000_SR",
+   "deck": "v2deck_06ee642b71",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_000238000_SR-t7",
+   "game": "20261020_000238000_SR",
+   "global_turn": 7,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_000238000_SR",
+   "deck": "v2deck_06ee642b71",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_000857000_SR-t1",
+   "game": "20261020_000857000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_000857000_SR",
+   "deck": "v2deck_06ee642b71",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_000857000_SR-t3",
+   "game": "20261020_000857000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_000857000_SR",
+   "deck": "v2deck_06ee642b71",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_001714000_SR-t2",
+   "game": "20261020_001714000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_001714000_SR",
+   "deck": "v2deck_06ee642b71",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_032424000_SR-t1",
+   "game": "20261020_032424000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_032424000_SR",
+   "deck": "v2deck_d5e2757125",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_032424000_SR-t3",
+   "game": "20261020_032424000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_032424000_SR",
+   "deck": "v2deck_d5e2757125",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_032424000_SR-t5",
+   "game": "20261020_032424000_SR",
+   "global_turn": 5,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_032424000_SR",
+   "deck": "v2deck_d5e2757125",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_032424000_SR-t7",
+   "game": "20261020_032424000_SR",
+   "global_turn": 7,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_032424000_SR",
+   "deck": "v2deck_d5e2757125",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_032424000_SR-t9",
+   "game": "20261020_032424000_SR",
+   "global_turn": 9,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_032424000_SR",
+   "deck": "v2deck_d5e2757125",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_033156000_SR-t2",
+   "game": "20261020_033156000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_033156000_SR",
+   "deck": "v2deck_d5e2757125",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_033156000_SR-t4",
+   "game": "20261020_033156000_SR",
+   "global_turn": 4,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_033156000_SR",
+   "deck": "v2deck_d5e2757125",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_034123000_SR-t4",
+   "game": "20261020_034123000_SR",
+   "global_turn": 4,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_034123000_SR",
+   "deck": "v2deck_0a80817331",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_034123000_SR-t6",
+   "game": "20261020_034123000_SR",
+   "global_turn": 6,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_034123000_SR",
+   "deck": "v2deck_0a80817331",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_034501000_SR-t1",
+   "game": "20261020_034501000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_034501000_SR",
+   "deck": "v2deck_5469f7747f",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_034501000_SR-t3",
+   "game": "20261020_034501000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_034501000_SR",
+   "deck": "v2deck_5469f7747f",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_034756000_SR-t2",
+   "game": "20261020_034756000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_034756000_SR",
+   "deck": "v2deck_5469f7747f",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_034756000_SR-t4",
+   "game": "20261020_034756000_SR",
+   "global_turn": 4,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_034756000_SR",
+   "deck": "v2deck_5469f7747f",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_034756000_SR-t6",
+   "game": "20261020_034756000_SR",
+   "global_turn": 6,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_034756000_SR",
+   "deck": "v2deck_5469f7747f",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_034756000_SR-t8",
+   "game": "20261020_034756000_SR",
+   "global_turn": 8,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_034756000_SR",
+   "deck": "v2deck_5469f7747f",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_035443000_SR-t2",
+   "game": "20261020_035443000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_035443000_SR",
+   "deck": "v2deck_9633a01781",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_035443000_SR-t4",
+   "game": "20261020_035443000_SR",
+   "global_turn": 4,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_035443000_SR",
+   "deck": "v2deck_9633a01781",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_035443000_SR-t6",
+   "game": "20261020_035443000_SR",
+   "global_turn": 6,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_035443000_SR",
+   "deck": "v2deck_9633a01781",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_035443000_SR-t8",
+   "game": "20261020_035443000_SR",
+   "global_turn": 8,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_035443000_SR",
+   "deck": "v2deck_9633a01781",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_035443000_SR-t10",
+   "game": "20261020_035443000_SR",
+   "global_turn": 10,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_035443000_SR",
+   "deck": "v2deck_9633a01781",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_035443000_SR-t12",
+   "game": "20261020_035443000_SR",
+   "global_turn": 12,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_035443000_SR",
+   "deck": "v2deck_9633a01781",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_040217000_SR-t1",
+   "game": "20261020_040217000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_040217000_SR",
+   "deck": "v2deck_9633a01781",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_040217000_SR-t3",
+   "game": "20261020_040217000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_040217000_SR",
+   "deck": "v2deck_9633a01781",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_040217000_SR-t5",
+   "game": "20261020_040217000_SR",
+   "global_turn": 5,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_040217000_SR",
+   "deck": "v2deck_9633a01781",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261020_040217000_SR-t7",
+   "game": "20261020_040217000_SR",
+   "global_turn": 7,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261020_040217000_SR",
+   "deck": "v2deck_9633a01781",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_020059000_SR-t8",
+   "game": "20261021_020059000_SR",
+   "global_turn": 8,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261021_020059000_SR",
+   "deck": "v2deck_5309993874",
+   "clips_in_game": 2
+  },
+  {
+   "point_id": "LAD-20261021_020916000_SR-t1",
+   "game": "20261021_020916000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261021_020916000_SR",
+   "deck": "v2deck_5309993874",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_020916000_SR-t3",
+   "game": "20261021_020916000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261021_020916000_SR",
+   "deck": "v2deck_5309993874",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_020916000_SR-t5",
+   "game": "20261021_020916000_SR",
+   "global_turn": 5,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261021_020916000_SR",
+   "deck": "v2deck_5309993874",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_020916000_SR-t7",
+   "game": "20261021_020916000_SR",
+   "global_turn": 7,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261021_020916000_SR",
+   "deck": "v2deck_5309993874",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_020916000_SR-t9",
+   "game": "20261021_020916000_SR",
+   "global_turn": 9,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261021_020916000_SR",
+   "deck": "v2deck_5309993874",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_020916000_SR-t11",
+   "game": "20261021_020916000_SR",
+   "global_turn": 11,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261021_020916000_SR",
+   "deck": "v2deck_5309993874",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_020916000_SR-t13",
+   "game": "20261021_020916000_SR",
+   "global_turn": 13,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261021_020916000_SR",
+   "deck": "v2deck_5309993874",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_020916000_SR-t15",
+   "game": "20261021_020916000_SR",
+   "global_turn": 15,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261021_020916000_SR",
+   "deck": "v2deck_5309993874",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_030939000_SR-t2",
+   "game": "20261021_030939000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261021_030939000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_031141000_SR-t1",
+   "game": "20261021_031141000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261021_031141000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_031141000_SR-t3",
+   "game": "20261021_031141000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261021_031141000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_031141000_SR-t5",
+   "game": "20261021_031141000_SR",
+   "global_turn": 5,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261021_031141000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_031141000_SR-t7",
+   "game": "20261021_031141000_SR",
+   "global_turn": 7,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261021_031141000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_031716000_SR-t1",
+   "game": "20261021_031716000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261021_031716000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_031716000_SR-t3",
+   "game": "20261021_031716000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261021_031716000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_031716000_SR-t5",
+   "game": "20261021_031716000_SR",
+   "global_turn": 5,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261021_031716000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_031716000_SR-t7",
+   "game": "20261021_031716000_SR",
+   "global_turn": 7,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261021_031716000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_031716000_SR-t9",
+   "game": "20261021_031716000_SR",
+   "global_turn": 9,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261021_031716000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_031716000_SR-t11",
+   "game": "20261021_031716000_SR",
+   "global_turn": 11,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261021_031716000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_032324000_SR-t2",
+   "game": "20261021_032324000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261021_032324000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 2
+  },
+  {
+   "point_id": "LAD-20261021_032324000_SR-t4",
+   "game": "20261021_032324000_SR",
+   "global_turn": 4,
+   "clip": 1,
+   "part": 1,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p1/sources/20261021_032324000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 2
+  },
+  {
+   "point_id": "LAD-20261021_204724000_SR-t2",
+   "game": "20261021_204724000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_204724000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_204724000_SR-t4",
+   "game": "20261021_204724000_SR",
+   "global_turn": 4,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_204724000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_204724000_SR-t6",
+   "game": "20261021_204724000_SR",
+   "global_turn": 6,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_204724000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_204724000_SR-t8",
+   "game": "20261021_204724000_SR",
+   "global_turn": 8,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_204724000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_212621000_SR-t1",
+   "game": "20261021_212621000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_212621000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_212621000_SR-t3",
+   "game": "20261021_212621000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_212621000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_212621000_SR-t5",
+   "game": "20261021_212621000_SR",
+   "global_turn": 5,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_212621000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_212621000_SR-t11",
+   "game": "20261021_212621000_SR",
+   "global_turn": 11,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_212621000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_212621000_SR-t13",
+   "game": "20261021_212621000_SR",
+   "global_turn": 13,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_212621000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_212621000_SR-t15",
+   "game": "20261021_212621000_SR",
+   "global_turn": 15,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_212621000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_213653000_SR-t1",
+   "game": "20261021_213653000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_213653000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_213653000_SR-t3",
+   "game": "20261021_213653000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_213653000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_213653000_SR-t5",
+   "game": "20261021_213653000_SR",
+   "global_turn": 5,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_213653000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_213653000_SR-t7",
+   "game": "20261021_213653000_SR",
+   "global_turn": 7,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_213653000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_213653000_SR-t9",
+   "game": "20261021_213653000_SR",
+   "global_turn": 9,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_213653000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_213653000_SR-t11",
+   "game": "20261021_213653000_SR",
+   "global_turn": 11,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_213653000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_221937000_SR-t2",
+   "game": "20261021_221937000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_221937000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_221937000_SR-t4",
+   "game": "20261021_221937000_SR",
+   "global_turn": 4,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_221937000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_222413000_SR-t1",
+   "game": "20261021_222413000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_222413000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_224410000_SR-t1",
+   "game": "20261021_224410000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_224410000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_224410000_SR-t3",
+   "game": "20261021_224410000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_224410000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_224410000_SR-t5",
+   "game": "20261021_224410000_SR",
+   "global_turn": 5,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_224410000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_224410000_SR-t7",
+   "game": "20261021_224410000_SR",
+   "global_turn": 7,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_224410000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_224410000_SR-t9",
+   "game": "20261021_224410000_SR",
+   "global_turn": 9,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_224410000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_224410000_SR-t11",
+   "game": "20261021_224410000_SR",
+   "global_turn": 11,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_224410000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_224410000_SR-t13",
+   "game": "20261021_224410000_SR",
+   "global_turn": 13,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_224410000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_225131000_SR-t1",
+   "game": "20261021_225131000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_225131000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_225131000_SR-t3",
+   "game": "20261021_225131000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_225131000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_225131000_SR-t9",
+   "game": "20261021_225131000_SR",
+   "global_turn": 9,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_225131000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_225620000_SR-t1",
+   "game": "20261021_225620000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_225620000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261021_225620000_SR-t3",
+   "game": "20261021_225620000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261021_225620000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261022_000850000_SR-t2",
+   "game": "20261022_000850000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261022_000850000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261022_000850000_SR-t4",
+   "game": "20261022_000850000_SR",
+   "global_turn": 4,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261022_000850000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261022_000850000_SR-t6",
+   "game": "20261022_000850000_SR",
+   "global_turn": 6,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261022_000850000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261022_000850000_SR-t8",
+   "game": "20261022_000850000_SR",
+   "global_turn": 8,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261022_000850000_SR",
+   "deck": "v2deck_4fa967805c",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261022_004518000_SR-t2",
+   "game": "20261022_004518000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261022_004518000_SR",
+   "deck": "v2deck_693850eaa5",
+   "clips_in_game": 2
+  },
+  {
+   "point_id": "LAD-20261022_004518000_SR-t4",
+   "game": "20261022_004518000_SR",
+   "global_turn": 4,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261022_004518000_SR",
+   "deck": "v2deck_693850eaa5",
+   "clips_in_game": 2
+  },
+  {
+   "point_id": "LAD-20261022_004518000_SR-t6",
+   "game": "20261022_004518000_SR",
+   "global_turn": 6,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261022_004518000_SR",
+   "deck": "v2deck_693850eaa5",
+   "clips_in_game": 2
+  },
+  {
+   "point_id": "LAD-20261022_004518000_SR-t8",
+   "game": "20261022_004518000_SR",
+   "global_turn": 8,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261022_004518000_SR",
+   "deck": "v2deck_693850eaa5",
+   "clips_in_game": 2
+  },
+  {
+   "point_id": "LAD-20261022_004518000_SR-t10",
+   "game": "20261022_004518000_SR",
+   "global_turn": 10,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261022_004518000_SR",
+   "deck": "v2deck_693850eaa5",
+   "clips_in_game": 2
+  },
+  {
+   "point_id": "LAD-20261022_130806000_SR-t3",
+   "game": "20261022_130806000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261022_130806000_SR",
+   "deck": "v2deck_f5671a4e7f",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261022_130806000_SR-t5",
+   "game": "20261022_130806000_SR",
+   "global_turn": 5,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261022_130806000_SR",
+   "deck": "v2deck_f5671a4e7f",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261022_233003000_SR-t2",
+   "game": "20261022_233003000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261022_233003000_SR",
+   "deck": "v2deck_4af97d2795",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261022_233003000_SR-t4",
+   "game": "20261022_233003000_SR",
+   "global_turn": 4,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261022_233003000_SR",
+   "deck": "v2deck_4af97d2795",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261022_233003000_SR-t8",
+   "game": "20261022_233003000_SR",
+   "global_turn": 8,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261022_233003000_SR",
+   "deck": "v2deck_4af97d2795",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261022_233003000_SR-t10",
+   "game": "20261022_233003000_SR",
+   "global_turn": 10,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261022_233003000_SR",
+   "deck": "v2deck_4af97d2795",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261022_234030000_SR-t7",
+   "game": "20261022_234030000_SR",
+   "global_turn": 7,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261022_234030000_SR",
+   "deck": "v2deck_4af97d2795",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261022_235420000_SR-t2",
+   "game": "20261022_235420000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261022_235420000_SR",
+   "deck": "v2deck_ba2eca5816",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261022_235420000_SR-t4",
+   "game": "20261022_235420000_SR",
+   "global_turn": 4,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261022_235420000_SR",
+   "deck": "v2deck_ba2eca5816",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261022_235420000_SR-t6",
+   "game": "20261022_235420000_SR",
+   "global_turn": 6,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261022_235420000_SR",
+   "deck": "v2deck_ba2eca5816",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261022_235420000_SR-t8",
+   "game": "20261022_235420000_SR",
+   "global_turn": 8,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261022_235420000_SR",
+   "deck": "v2deck_ba2eca5816",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261022_235420000_SR-t10",
+   "game": "20261022_235420000_SR",
+   "global_turn": 10,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261022_235420000_SR",
+   "deck": "v2deck_ba2eca5816",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_000150000_SR-t1",
+   "game": "20261023_000150000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_000150000_SR",
+   "deck": "v2deck_ba2eca5816",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_000150000_SR-t3",
+   "game": "20261023_000150000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_000150000_SR",
+   "deck": "v2deck_ba2eca5816",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_000150000_SR-t5",
+   "game": "20261023_000150000_SR",
+   "global_turn": 5,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_000150000_SR",
+   "deck": "v2deck_ba2eca5816",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_000634000_SR-t2",
+   "game": "20261023_000634000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_000634000_SR",
+   "deck": "v2deck_ba2eca5816",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_001330000_SR-t2",
+   "game": "20261023_001330000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_001330000_SR",
+   "deck": "v2deck_6328cc45fe",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_001330000_SR-t4",
+   "game": "20261023_001330000_SR",
+   "global_turn": 4,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_001330000_SR",
+   "deck": "v2deck_6328cc45fe",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_001330000_SR-t6",
+   "game": "20261023_001330000_SR",
+   "global_turn": 6,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_001330000_SR",
+   "deck": "v2deck_6328cc45fe",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_001330000_SR-t8",
+   "game": "20261023_001330000_SR",
+   "global_turn": 8,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_001330000_SR",
+   "deck": "v2deck_6328cc45fe",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_001330000_SR-t10",
+   "game": "20261023_001330000_SR",
+   "global_turn": 10,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_001330000_SR",
+   "deck": "v2deck_6328cc45fe",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_005124000_SR-t2",
+   "game": "20261023_005124000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_005124000_SR",
+   "deck": "v2deck_6328cc45fe",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_005124000_SR-t4",
+   "game": "20261023_005124000_SR",
+   "global_turn": 4,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_005124000_SR",
+   "deck": "v2deck_6328cc45fe",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_005124000_SR-t6",
+   "game": "20261023_005124000_SR",
+   "global_turn": 6,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_005124000_SR",
+   "deck": "v2deck_6328cc45fe",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_005124000_SR-t8",
+   "game": "20261023_005124000_SR",
+   "global_turn": 8,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_005124000_SR",
+   "deck": "v2deck_6328cc45fe",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_005124000_SR-t10",
+   "game": "20261023_005124000_SR",
+   "global_turn": 10,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_005124000_SR",
+   "deck": "v2deck_6328cc45fe",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_005124000_SR-t12",
+   "game": "20261023_005124000_SR",
+   "global_turn": 12,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_005124000_SR",
+   "deck": "v2deck_6328cc45fe",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_010556000_SR-t2",
+   "game": "20261023_010556000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_010556000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_010556000_SR-t4",
+   "game": "20261023_010556000_SR",
+   "global_turn": 4,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_010556000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_010556000_SR-t6",
+   "game": "20261023_010556000_SR",
+   "global_turn": 6,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_010556000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_010556000_SR-t8",
+   "game": "20261023_010556000_SR",
+   "global_turn": 8,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_010556000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_011134000_SR-t2",
+   "game": "20261023_011134000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_011134000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_011134000_SR-t4",
+   "game": "20261023_011134000_SR",
+   "global_turn": 4,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_011134000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_011134000_SR-t6",
+   "game": "20261023_011134000_SR",
+   "global_turn": 6,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_011134000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_011134000_SR-t8",
+   "game": "20261023_011134000_SR",
+   "global_turn": 8,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_011134000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_011134000_SR-t10",
+   "game": "20261023_011134000_SR",
+   "global_turn": 10,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_011134000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_011134000_SR-t14",
+   "game": "20261023_011134000_SR",
+   "global_turn": 14,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_011134000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_012243000_SR-t1",
+   "game": "20261023_012243000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_012243000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_012910000_SR-t2",
+   "game": "20261023_012910000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_012910000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_012910000_SR-t4",
+   "game": "20261023_012910000_SR",
+   "global_turn": 4,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_012910000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_012910000_SR-t10",
+   "game": "20261023_012910000_SR",
+   "global_turn": 10,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_012910000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_012910000_SR-t12",
+   "game": "20261023_012910000_SR",
+   "global_turn": 12,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_012910000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_012910000_SR-t14",
+   "game": "20261023_012910000_SR",
+   "global_turn": 14,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_012910000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_115617000_SR-t3",
+   "game": "20261023_115617000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_115617000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_115617000_SR-t5",
+   "game": "20261023_115617000_SR",
+   "global_turn": 5,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_115617000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_115617000_SR-t7",
+   "game": "20261023_115617000_SR",
+   "global_turn": 7,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_115617000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_115617000_SR-t9",
+   "game": "20261023_115617000_SR",
+   "global_turn": 9,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_115617000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_115617000_SR-t11",
+   "game": "20261023_115617000_SR",
+   "global_turn": 11,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_115617000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_115617000_SR-t13",
+   "game": "20261023_115617000_SR",
+   "global_turn": 13,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_115617000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_115617000_SR-t15",
+   "game": "20261023_115617000_SR",
+   "global_turn": 15,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_115617000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_120935000_SR-t1",
+   "game": "20261023_120935000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_120935000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_122720000_SR-t1",
+   "game": "20261023_122720000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_122720000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_122720000_SR-t3",
+   "game": "20261023_122720000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_122720000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_122720000_SR-t5",
+   "game": "20261023_122720000_SR",
+   "global_turn": 5,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_122720000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_122720000_SR-t7",
+   "game": "20261023_122720000_SR",
+   "global_turn": 7,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_122720000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_122720000_SR-t9",
+   "game": "20261023_122720000_SR",
+   "global_turn": 9,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_122720000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_122720000_SR-t11",
+   "game": "20261023_122720000_SR",
+   "global_turn": 11,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_122720000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_204548000_SR-t1",
+   "game": "20261023_204548000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_204548000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_204548000_SR-t3",
+   "game": "20261023_204548000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_204548000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_204548000_SR-t5",
+   "game": "20261023_204548000_SR",
+   "global_turn": 5,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_204548000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_204548000_SR-t7",
+   "game": "20261023_204548000_SR",
+   "global_turn": 7,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_204548000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_204548000_SR-t9",
+   "game": "20261023_204548000_SR",
+   "global_turn": 9,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_204548000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_204548000_SR-t11",
+   "game": "20261023_204548000_SR",
+   "global_turn": 11,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_204548000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_213639000_SR-t1",
+   "game": "20261023_213639000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_213639000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_213639000_SR-t3",
+   "game": "20261023_213639000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_213639000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_213639000_SR-t5",
+   "game": "20261023_213639000_SR",
+   "global_turn": 5,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_213639000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_213639000_SR-t7",
+   "game": "20261023_213639000_SR",
+   "global_turn": 7,
+   "clip": 1,
+   "part": 2,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p2/sources/20261023_213639000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_215109000_SR-t3",
+   "game": "20261023_215109000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261023_215109000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_215109000_SR-t5",
+   "game": "20261023_215109000_SR",
+   "global_turn": 5,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261023_215109000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_215109000_SR-t7",
+   "game": "20261023_215109000_SR",
+   "global_turn": 7,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261023_215109000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_220413000_SR-t3",
+   "game": "20261023_220413000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261023_220413000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_220413000_SR-t5",
+   "game": "20261023_220413000_SR",
+   "global_turn": 5,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261023_220413000_SR",
+   "deck": "v2deck_589bb9927a",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_221617000_SR-t3",
+   "game": "20261023_221617000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261023_221617000_SR",
+   "deck": "v2deck_c4ac51db37",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_222318000_SR-t2",
+   "game": "20261023_222318000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261023_222318000_SR",
+   "deck": "v2deck_c4ac51db37",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_224156000_SR-t2",
+   "game": "20261023_224156000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261023_224156000_SR",
+   "deck": "v2deck_8561e086a0",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_224156000_SR-t4",
+   "game": "20261023_224156000_SR",
+   "global_turn": 4,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261023_224156000_SR",
+   "deck": "v2deck_8561e086a0",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_224156000_SR-t6",
+   "game": "20261023_224156000_SR",
+   "global_turn": 6,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261023_224156000_SR",
+   "deck": "v2deck_8561e086a0",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_225646000_SR-t3",
+   "game": "20261023_225646000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261023_225646000_SR",
+   "deck": "v2deck_995ac0891e",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_225646000_SR-t5",
+   "game": "20261023_225646000_SR",
+   "global_turn": 5,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261023_225646000_SR",
+   "deck": "v2deck_995ac0891e",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_225646000_SR-t7",
+   "game": "20261023_225646000_SR",
+   "global_turn": 7,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261023_225646000_SR",
+   "deck": "v2deck_995ac0891e",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_225646000_SR-t9",
+   "game": "20261023_225646000_SR",
+   "global_turn": 9,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261023_225646000_SR",
+   "deck": "v2deck_995ac0891e",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_225646000_SR-t11",
+   "game": "20261023_225646000_SR",
+   "global_turn": 11,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261023_225646000_SR",
+   "deck": "v2deck_995ac0891e",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261023_231312000_SR-t2",
+   "game": "20261023_231312000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261023_231312000_SR",
+   "deck": "v2deck_995ac0891e",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_003120000_SR-t3",
+   "game": "20261024_003120000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_003120000_SR",
+   "deck": "v2deck_995ac0891e",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_003120000_SR-t5",
+   "game": "20261024_003120000_SR",
+   "global_turn": 5,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_003120000_SR",
+   "deck": "v2deck_995ac0891e",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_003120000_SR-t7",
+   "game": "20261024_003120000_SR",
+   "global_turn": 7,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_003120000_SR",
+   "deck": "v2deck_995ac0891e",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_003927000_SR-t2",
+   "game": "20261024_003927000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_003927000_SR",
+   "deck": "v2deck_995ac0891e",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_003927000_SR-t4",
+   "game": "20261024_003927000_SR",
+   "global_turn": 4,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_003927000_SR",
+   "deck": "v2deck_995ac0891e",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_003927000_SR-t6",
+   "game": "20261024_003927000_SR",
+   "global_turn": 6,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_003927000_SR",
+   "deck": "v2deck_995ac0891e",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_003927000_SR-t10",
+   "game": "20261024_003927000_SR",
+   "global_turn": 10,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_003927000_SR",
+   "deck": "v2deck_995ac0891e",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_143157000_SR-t2",
+   "game": "20261024_143157000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_143157000_SR",
+   "deck": "v2deck_2c68a379f5",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_143157000_SR-t4",
+   "game": "20261024_143157000_SR",
+   "global_turn": 4,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_143157000_SR",
+   "deck": "v2deck_2c68a379f5",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_152239000_SR-t1",
+   "game": "20261024_152239000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_152239000_SR",
+   "deck": "v2deck_2c68a379f5",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_152239000_SR-t3",
+   "game": "20261024_152239000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_152239000_SR",
+   "deck": "v2deck_2c68a379f5",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_152239000_SR-t5",
+   "game": "20261024_152239000_SR",
+   "global_turn": 5,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_152239000_SR",
+   "deck": "v2deck_2c68a379f5",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_152239000_SR-t7",
+   "game": "20261024_152239000_SR",
+   "global_turn": 7,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_152239000_SR",
+   "deck": "v2deck_2c68a379f5",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_163813000_SR-t1",
+   "game": "20261024_163813000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_163813000_SR",
+   "deck": "v2deck_2c68a379f5",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_163813000_SR-t3",
+   "game": "20261024_163813000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_163813000_SR",
+   "deck": "v2deck_2c68a379f5",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_163813000_SR-t5",
+   "game": "20261024_163813000_SR",
+   "global_turn": 5,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_163813000_SR",
+   "deck": "v2deck_2c68a379f5",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_163813000_SR-t7",
+   "game": "20261024_163813000_SR",
+   "global_turn": 7,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_163813000_SR",
+   "deck": "v2deck_2c68a379f5",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_164318000_SR-t4",
+   "game": "20261024_164318000_SR",
+   "global_turn": 4,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_164318000_SR",
+   "deck": "v2deck_2c68a379f5",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_164318000_SR-t6",
+   "game": "20261024_164318000_SR",
+   "global_turn": 6,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_164318000_SR",
+   "deck": "v2deck_2c68a379f5",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_164318000_SR-t8",
+   "game": "20261024_164318000_SR",
+   "global_turn": 8,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_164318000_SR",
+   "deck": "v2deck_2c68a379f5",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_164318000_SR-t10",
+   "game": "20261024_164318000_SR",
+   "global_turn": 10,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_164318000_SR",
+   "deck": "v2deck_2c68a379f5",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_165202000_SR-t1",
+   "game": "20261024_165202000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_165202000_SR",
+   "deck": "v2deck_a75894a903",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_165202000_SR-t3",
+   "game": "20261024_165202000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_165202000_SR",
+   "deck": "v2deck_a75894a903",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_165202000_SR-t5",
+   "game": "20261024_165202000_SR",
+   "global_turn": 5,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_165202000_SR",
+   "deck": "v2deck_a75894a903",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_165202000_SR-t7",
+   "game": "20261024_165202000_SR",
+   "global_turn": 7,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_165202000_SR",
+   "deck": "v2deck_a75894a903",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_165202000_SR-t9",
+   "game": "20261024_165202000_SR",
+   "global_turn": 9,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_165202000_SR",
+   "deck": "v2deck_a75894a903",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_165913000_SR-t2",
+   "game": "20261024_165913000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_165913000_SR",
+   "deck": "v2deck_a75894a903",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_172633000_SR-t2",
+   "game": "20261024_172633000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_172633000_SR",
+   "deck": "v2deck_bac3c8a158",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_172633000_SR-t4",
+   "game": "20261024_172633000_SR",
+   "global_turn": 4,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_172633000_SR",
+   "deck": "v2deck_bac3c8a158",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_175131000_SR-t2",
+   "game": "20261024_175131000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_175131000_SR",
+   "deck": "v2deck_7907f1e146",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_175131000_SR-t4",
+   "game": "20261024_175131000_SR",
+   "global_turn": 4,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_175131000_SR",
+   "deck": "v2deck_7907f1e146",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_175131000_SR-t6",
+   "game": "20261024_175131000_SR",
+   "global_turn": 6,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_175131000_SR",
+   "deck": "v2deck_7907f1e146",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_175606000_SR-t1",
+   "game": "20261024_175606000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_175606000_SR",
+   "deck": "v2deck_7907f1e146",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_175606000_SR-t3",
+   "game": "20261024_175606000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_175606000_SR",
+   "deck": "v2deck_7907f1e146",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_180105000_SR-t1",
+   "game": "20261024_180105000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_180105000_SR",
+   "deck": "v2deck_7907f1e146",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_180350000_SR-t1",
+   "game": "20261024_180350000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_180350000_SR",
+   "deck": "v2deck_7907f1e146",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_180350000_SR-t3",
+   "game": "20261024_180350000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_180350000_SR",
+   "deck": "v2deck_7907f1e146",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_180350000_SR-t5",
+   "game": "20261024_180350000_SR",
+   "global_turn": 5,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_180350000_SR",
+   "deck": "v2deck_7907f1e146",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_180749000_SR-t1",
+   "game": "20261024_180749000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_180749000_SR",
+   "deck": "v2deck_7907f1e146",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_180942000_SR-t1",
+   "game": "20261024_180942000_SR",
+   "global_turn": 1,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_180942000_SR",
+   "deck": "v2deck_7907f1e146",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_180942000_SR-t3",
+   "game": "20261024_180942000_SR",
+   "global_turn": 3,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_180942000_SR",
+   "deck": "v2deck_7907f1e146",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_180942000_SR-t5",
+   "game": "20261024_180942000_SR",
+   "global_turn": 5,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_180942000_SR",
+   "deck": "v2deck_7907f1e146",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_180942000_SR-t7",
+   "game": "20261024_180942000_SR",
+   "global_turn": 7,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_180942000_SR",
+   "deck": "v2deck_7907f1e146",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_180942000_SR-t9",
+   "game": "20261024_180942000_SR",
+   "global_turn": 9,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_180942000_SR",
+   "deck": "v2deck_7907f1e146",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_181948000_SR-t2",
+   "game": "20261024_181948000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_181948000_SR",
+   "deck": "v2deck_7907f1e146",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_181948000_SR-t4",
+   "game": "20261024_181948000_SR",
+   "global_turn": 4,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_181948000_SR",
+   "deck": "v2deck_7907f1e146",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_181948000_SR-t6",
+   "game": "20261024_181948000_SR",
+   "global_turn": 6,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_181948000_SR",
+   "deck": "v2deck_7907f1e146",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_181948000_SR-t8",
+   "game": "20261024_181948000_SR",
+   "global_turn": 8,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_181948000_SR",
+   "deck": "v2deck_7907f1e146",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_182453000_SR-t2",
+   "game": "20261024_182453000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_182453000_SR",
+   "deck": "v2deck_7907f1e146",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_182453000_SR-t4",
+   "game": "20261024_182453000_SR",
+   "global_turn": 4,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_182453000_SR",
+   "deck": "v2deck_7907f1e146",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_182453000_SR-t6",
+   "game": "20261024_182453000_SR",
+   "global_turn": 6,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_182453000_SR",
+   "deck": "v2deck_7907f1e146",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_182453000_SR-t8",
+   "game": "20261024_182453000_SR",
+   "global_turn": 8,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_182453000_SR",
+   "deck": "v2deck_7907f1e146",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_182453000_SR-t10",
+   "game": "20261024_182453000_SR",
+   "global_turn": 10,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_182453000_SR",
+   "deck": "v2deck_7907f1e146",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_182453000_SR-t12",
+   "game": "20261024_182453000_SR",
+   "global_turn": 12,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_182453000_SR",
+   "deck": "v2deck_7907f1e146",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_182453000_SR-t14",
+   "game": "20261024_182453000_SR",
+   "global_turn": 14,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_182453000_SR",
+   "deck": "v2deck_7907f1e146",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_202943000_SR-t2",
+   "game": "20261024_202943000_SR",
+   "global_turn": 2,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_202943000_SR",
+   "deck": "v2deck_7907f1e146",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_202943000_SR-t4",
+   "game": "20261024_202943000_SR",
+   "global_turn": 4,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_202943000_SR",
+   "deck": "v2deck_7907f1e146",
+   "clips_in_game": 1
+  },
+  {
+   "point_id": "LAD-20261024_202943000_SR-t6",
+   "game": "20261024_202943000_SR",
+   "global_turn": 6,
+   "clip": 1,
+   "part": 3,
+   "folder": "/home/dacz8976/exam_v2/inv_in_p3/sources/20261024_202943000_SR",
+   "deck": "v2deck_7907f1e146",
+   "clips_in_game": 1
+  }
+ ]
+}

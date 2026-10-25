@@ -3,7 +3,7 @@
 check on every accepted and pending line before any question goes to Dustin.
 
   assemble_v2.py RUN3_DIR EXAM_V2_DIR JUDGE_DIR OUT_DIR [--relink LABELS.json] [--second LABELS.json ...] [--fixes D_FIXES.json]
-                 [--printing-notes]
+                 [--printing-notes] [--answers ANSWERS.json --questions QUESTIONS.json [--chance-first-key]]
 
 1. The labels: label_out_p1..5/labels.json (format pds-exam-v2-labels). With --relink (note 044 A), that file's labels REPLACE the first pass's
    for its points (the three games recorded in two clips); the first pass's labels of those points are not read. Every built point (G1 drops
@@ -28,9 +28,16 @@ check on every accepted and pending line before any question goes to Dustin.
 8. --printing-notes (coordinator-048, Part B facts): each built position's opp_ambiguous printing notes are rewritten without their evidence
    clauses (printing_notes.py; each printing choice kept), before anything else reads the positions; every old note and its rewrite go to
    OUT_DIR/printing_notes.json. A note the rewrite cannot settle stops the run.
+9. --answers (coordinator-050): Dustin's quiz answers, by K11's mapping, before the chance-first rule and the lister check (G2 order). The
+   answers must name this QUESTIONS.json's sha256, cover exactly its questions, and the quiz's lines must equal the draft's. "The alternative
+   was better": the alternative is the key (key_line), his move is rejected (certified_by dustin) and so is its chance-first order
+   (certified_by coordinator_decision_from_his_words); the key's own chance-first order is accepted with --chance-first-key (the
+   coordinator's decision of Oct 25, before the freeze: rule B belongs to the key line). "Both were fine": the alternative is accepted. "My play was better": it is
+   rejected. "Not sure": it is left out (removed_alternatives). His note is stored verbatim (dustin_answer.words). The lister then checks
+   the key line (reference id 'key' where the key changed, else 'his') and every accepted line.
 Writes OUT_DIR/exam_v2_draft.json, references.json, references_lister.json, positions.json, lister_report.json, lister_drops/, ASSEMBLY.md.
 Refuses to overwrite OUT_DIR."""
-import argparse, collections, glob, importlib.util, json, os, re, subprocess, sys
+import argparse, collections, glob, hashlib, importlib.util, json, os, re, subprocess, sys
 
 E2 = sys.argv[2]
 sys.path.insert(0, os.path.join(E2, 'build'))
@@ -102,6 +109,7 @@ def main():
     ap.add_argument('run3'); ap.add_argument('e2'); ap.add_argument('judge'); ap.add_argument('out')
     ap.add_argument('--relink'); ap.add_argument('--second', nargs='*', default=[]); ap.add_argument('--fixes')
     ap.add_argument('--printing-notes', action='store_true')
+    ap.add_argument('--answers'); ap.add_argument('--questions'); ap.add_argument('--chance-first-key', action='store_true')
     a = ap.parse_args()
     run3, e2, judge, out = a.run3, a.e2, a.judge, a.out
     if os.path.exists(out):
@@ -293,7 +301,67 @@ def main():
             else:
                 keep.append(z)
         ans['acceptable'] = keep
-    # note 044 B: the chance-first rule (his own line)
+    # Dustin's answers (PREREG_RUN3 K11's mapping, set before he answered; coordinator-050): each answered question's pending line is decided
+    # by his choice, his note stored verbatim. A shared question's one answer applies to each point it covers.
+    if a.answers:
+        AN = json.load(open(a.answers, encoding='utf-8'))
+        qraw = open(a.questions, 'rb').read()
+        if AN.get('questions_sha256') != hashlib.sha256(qraw).hexdigest():
+            sys.exit('the answers were not given to this QUESTIONS.json: stop')
+        QQ = json.loads(qraw)
+        quiz = {q['point_id']: (q, q) for q in QQ['questions']}
+        quiz.update({x['point_id']: (x, q) for q in QQ['questions'] for x in q.get('also_applies_to') or []})
+        by_q = {x['point_id']: x for x in AN['answers']}
+        if set(by_q) != {q['point_id'] for q in QQ['questions']}:
+            sys.exit('the answers do not cover exactly the quiz questions: stop')
+        src = f"Dustin's quiz answer (ANSWERS_RUN3.json sha256 {hashlib.sha256(open(a.answers, 'rb').read()).hexdigest()[:16]}; K11 mapping)"
+        for pid, ans in answers.items():
+            if not ans['pending_alternatives']:
+                continue
+            if pid not in quiz:
+                sys.exit(f'{pid}: pending lines but no quiz question: stop')
+            entry, q = quiz[pid]
+            x = by_q[q['point_id']]
+            if x['choice'] not in QQ['answer_options']:
+                sys.exit(f"{pid}: choice {x['choice']!r} is not an answer option: stop")
+            if entry['his_move']['labels'] != ans['his_move'] or [z['labels'] for z in entry['alternatives']] != [z['line'] for z in ans['pending_alternatives']]:
+                sys.exit(f'{pid}: the quiz showed other lines than the draft holds: stop')
+            if len(ans['pending_alternatives']) != 1:
+                sys.exit(f'{pid}: {len(ans["pending_alternatives"])} pending lines under one answer: stop')
+            pend = ans['pending_alternatives'].pop()
+            words = x.get('note') or ''
+            ans['dustin_answer'] = {'choice': x['choice'], 'words': words, 'answered_at': x.get('answered_at'), 'version': x.get('version'),
+                                    'card_text_shown': x.get('card_text_shown'), 'question': ans['ambiguous'], 'question_number': x['n'],
+                                    'source': src + (f"; the question shared from {q['point_id']}" if q['point_id'] != pid else '')}
+            ch = x['choice']
+            if ch == 'The alternative was better (my play was a mistake)':
+                ans['key_line'] = pend['line']
+                ans['key_source'] = src
+                ans['recorded_move_acceptable'] = False
+                ans.setdefault('rejected_alternatives', []).append({'line': ans['his_move'], 'reason': 'his recorded move',
+                                                                    'rejected_because': f'Dustin: {ch!r}', 'certified_by': 'dustin'})
+                record['answer_key_is_the_alternative'].append(pid)
+            elif ch == 'Both were fine':
+                ans['acceptable'].append({'line': pend['line'], 'reason': pend.get('reason'), 'source': f"{src}: 'Both were fine'",
+                                          'certified_by': 'dustin'})
+                ans['recorded_move_acceptable'] = True
+                record['answer_alternative_accepted'].append(pid)
+            elif ch == 'My play was better':
+                ans.setdefault('rejected_alternatives', []).append({'line': pend['line'], 'reason': pend.get('reason'),
+                                                                    'rejected_because': f'Dustin: {ch!r}', 'certified_by': 'dustin'})
+                ans['recorded_move_acceptable'] = True
+                record['answer_alternative_rejected'].append(pid)
+            elif ch == 'Not sure':
+                ans['removed_alternatives'].append({'from': 'pending_alternatives', 'line': pend['line'], 'reason': pend.get('reason'),
+                                                    'why': "Dustin's answer 'Not sure' (K11): left out, never counts"})
+                ans['recorded_move_acceptable'] = True
+                record['answer_not_sure_left_out'].append(pid)
+            else:
+                sys.exit(f'{pid}: no mapping for {ch!r}: stop')
+            ans['question_answered'] = ans['ambiguous']
+            ans['ambiguous'] = None
+    # note 044 B: the chance-first rule (his own line; where his answer makes the alternative the key, his move and so its chance-first order
+    # are rejected, and the key's own chance-first order is accepted only with --chance-first-key)
     roots = {}
     for k in range(1, 6):
         for l in open(f'{e2}/label_in_p{k}/legal.jsonl', encoding='utf-8'):
@@ -303,15 +371,26 @@ def main():
     for pid in sorted(want):
         ans = answers[pid]
         v, why = chance_first_variant(ans['his_move'], views[pid], [to_judge(x) for x in roots.get(pid, [])])
+        if v is not None and ans.get('key_line'):
+            # coordinator's decision (Oct 25, before the freeze and any run): he rejected his move, not this order; it goes with his move
+            ans['rejected_alternatives'].append({'line': v, 'reason': 'the chance-first order of his recorded move (note 044 B)',
+                                                 'rejected_because': "Dustin's answer rejects his recorded move, and this is the same set of actions",
+                                                 'certified_by': 'coordinator_decision_from_his_words'})
+            record['chance_first_of_his_rejected_move'].append(pid)
+            v, why = (chance_first_variant(ans['key_line'], views[pid], [to_judge(x) for x in roots.get(pid, [])]) if a.chance_first_key
+                      else (None, 'his move is not the key; --chance-first-key not given'))
         ans['chance_first'] = {'accepted': v is not None, 'reason': why}
         if v is not None:
             if any(same_line(v, z['line']) for z in ans['acceptable']):
                 record['chance_first_already_accepted'].append(pid)
             else:
-                ans['acceptable'].append({'line': v, 'reason': 'chance-first order of his own line (note 044 B; settled before any candidate output)',
+                ans['acceptable'].append({'line': v, 'reason': ('chance-first order of the key line (note 044 B applied to the key)' if ans.get('key_line')
+                                                                else 'chance-first order of his own line (note 044 B; settled before any candidate output)'),
                                           'source': 'chance-first rule'})
                 record['chance_first_added'].append(pid)
-    refs = {pid: [{'id': 'his', 'labels': ans['his_move']}] + [{'id': f'alt{i}', 'labels': x['line']} for i, x in enumerate(ans['acceptable'])]
+    keytag = lambda ans: 'key' if ans.get('key_line') else 'his'
+    keyline = lambda ans: ans['key_line'] if ans.get('key_line') else ans['his_move']
+    refs = {pid: [{'id': keytag(ans), 'labels': keyline(ans)}] + [{'id': f'alt{i}', 'labels': x['line']} for i, x in enumerate(ans['acceptable'])]
             + [{'id': f'pend{i}', 'labels': x['line']} for i, x in enumerate(ans['pending_alternatives'])] for pid, ans in answers.items()}
     os.makedirs(out)
     if pnotes:
@@ -328,7 +407,7 @@ def main():
     exam_points, g1_drops, withdrawn = [], [], []
     for pid in sorted(want):
         ans = answers[pid]
-        if rows[(pid, 'his')]['verdict'] == 'drop':
+        if rows[(pid, keytag(ans))]['verdict'] == 'drop':
             g1_drops.append(pid)
             continue
         keep = {'acceptable': [], 'pending_alternatives': []}
@@ -344,14 +423,15 @@ def main():
         ans['acceptable'] = [x for x, _ in keep['acceptable']]
         ans['pending_alternatives'] = [x for x, _ in keep['pending_alternatives']]
         segs = {}
-        if rows[(pid, 'his')]['verdict'] == 'resolved_by_R1':
-            segs['his'] = rows[(pid, 'his')]['lister_segment']
+        kt = keytag(ans)
+        if rows[(pid, kt)]['verdict'] == 'resolved_by_R1':
+            segs[kt] = rows[(pid, kt)]['lister_segment']
         for j, (x, row) in enumerate(keep['acceptable']):
             if row['verdict'] == 'resolved_by_R1':
                 segs[f'alt{j}'] = row['lister_segment']
         if segs:
             ans['lister_segments'] = segs
-        ans['first_segment'] = segs.get('his') or H.cut(ans['his_move'], views[pid])
+        ans['first_segment'] = segs.get(kt) or H.cut(keyline(ans), views[pid])
         if ans['ambiguous'] and not ans['pending_alternatives']:
             withdrawn.append(pid)
             ans['ambiguous_withdrawn'] = ans['ambiguous']
@@ -378,7 +458,7 @@ def main():
                                   'their remainder past the chance step depends on draws that never happened and is unverified in the full-scope reading'},
             'record': {k: sorted(set(v)) for k, v in record.items()}}
     json.dump(exam, open(f'{out}/exam_v2_draft.json', 'w'), indent=1, ensure_ascii=False)
-    json.dump({p['id']: [{'id': 'his', 'labels': p['answer']['his_move']}] +
+    json.dump({p['id']: [{'id': keytag(p['answer']), 'labels': keyline(p['answer'])}] +
                [{'id': f'alt{i}', 'labels': x['line']} for i, x in enumerate(p['answer']['acceptable'])] for p in exam_points},
               open(f'{out}/references.json', 'w'), ensure_ascii=False)
     st = collections.Counter(p['answer']['status'] for p in exam_points)

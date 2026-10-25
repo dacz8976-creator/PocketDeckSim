@@ -1,0 +1,289 @@
+{"format": "pds-exam-v2-labels",
+ "points": {
+  "LAD-20261021_225131000_SR-t1": {
+   "his_move": ["Play:Poké Ball", "Place:Carvanha@1", "Play:Wallace", "ChooseRandomEvolutionTarget", "Play:Elegant Cape", "Tool:Elegant Cape@1", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "On the first turn, with no Energy, Poké Ball finds a Carvanha, Wallace turns it straight into Mega Sharpedo ex, and Elegant Cape takes it to 220 HP as a Bench reserve."
+  },
+  "LAD-20261021_225131000_SR-t3": {
+   "his_move": ["Evolve:Wailord@0", "Play:Heavy Helmet", "Tool:Heavy Helmet@0", "Attach:1Water@0 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Evolves the Active into 200-HP Wailord, gives it Heavy Helmet (Retreat Cost 4, so it takes 20 less from attacks) and starts the four Energy Whale Pump needs."
+  },
+  "LAD-20261021_225131000_SR-t9": {
+   "his_move": ["Evolve:Claydol@2", "Attach:1Water@0 zone", "Attack:Whale Pump"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "The fourth Water lets Wailord use Whale Pump for 100 on the opponent's Mega Sharpedo ex (190 to 90), and Claydol's Heal Block stops the opponent healing that damage."
+  },
+  "LAD-20261021_225620000_SR-t1": {
+   "his_move": ["Play:Professor's Research", "Play:Elegant Cape", "Tool:Elegant Cape@1", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "He goes first, so no Energy and no evolving: he draws 2 and puts the Cape on the Benched Carvanha before it becomes a Stage 1 Mega Sharpedo ex."
+  },
+  "LAD-20261021_225620000_SR-t3": {
+   "his_move": ["Evolve:Mega Sharpedo ex@0", "Play:Wallace", "ChooseRandomEvolutionTarget", "Attach:1Water@0 zone", "Attack:Turbo Shark"],
+   "acceptable": [
+    {"line": ["Play:Wallace", "ChooseRandomEvolutionTarget{in_play_idx:0,energy_type:Water}", "Evolve:Mega Sharpedo ex@1", "Attach:1Water@0 zone", "Attack:Turbo Shark"],
+     "reason": "The same board in the other order: Wallace evolves the Asleep Active Carvanha (max HP 50; evolving removes Sleep; the deck's only Water evolution of Carvanha is the second Mega Sharpedo ex), the Mega Sharpedo ex from his hand goes on the Caped Benched Carvanha, and Turbo Shark knocks out Swablu all the same."}
+   ],
+   "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Evolving the Asleep Active removes Sleep, Wallace makes a second (Caped, 220-HP) Mega Sharpedo ex, and Turbo Shark's 70 knocks out the 50-HP Swablu for the first point while adding a Water to the Bench."
+  },
+  "LAD-20261022_000850000_SR-t2": {
+   "his_move": ["Play:Poké Ball", "Place:Wailmer@1", "Attach:1Water@0 zone", "Attack:Sharp Fang"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Sharp Fang's 30 knocks out the 30-HP Igglybuff for a point, and Poké Ball adds a Wailmer to the Bench."
+  },
+  "LAD-20261022_000850000_SR-t4": {
+   "his_move": ["Play:Professor's Research", "Place:Wailmer@2", "Place:Carvanha@3", "Evolve:Wailord@1", "Attach:1Water@2 zone", "Play:Elegant Cape", "Tool:Elegant Cape@1", "Attack:Sharp Fang"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "The 10-HP Carvanha uses Sharp Fang to knock out the second 30-HP Igglybuff (2-0); after drawing first he fills the Bench, makes a 230-HP Caped Wailord and starts Energy on the new Wailmer."
+  },
+  "LAD-20261022_000850000_SR-t6": {
+   "his_move": ["Play:Professor's Research", "Evolve:Wailord@2", "Attach:1Water@2 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "His Active Wailord is Asleep with no Energy, so it can't attack or retreat; he draws, evolves the Benched Wailmer that has Energy, and gives it a second Water toward Whale Pump."
+  },
+  "LAD-20261022_000850000_SR-t8": {
+   "his_move": ["Play:Wallace", "ChooseRandomEvolutionTarget{in_play_idx:1,energy_type:Water}", "Evolve:Mega Sharpedo ex@3", "Attach:1Water@2 zone", "EndTurn"],
+   "acceptable": [
+    {"line": ["Play:Wallace", "ChooseRandomEvolutionTarget{in_play_idx:3,energy_type:Water}", "Evolve:Mega Sharpedo ex@1", "Attach:1Water@2 zone", "EndTurn"],
+     "reason": "The same end board: Wallace on the other Carvanha (both have max HP 50 and have been in play since an earlier turn) and the Mega Sharpedo ex from his hand on the first one. The deck holds only one Mega Sharpedo ex, so the result is identical."}
+   ],
+   "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "The Asleep 10-HP Active Wailord can't be saved (it can't retreat and he has no switch), so he makes both Carvanha into Mega Sharpedo ex and gives the Benched Wailord its third Water for the next turns."
+  },
+  "LAD-20261022_130806000_SR-t3": {
+   "his_move": ["Place:Goldeen@1", "Evolve:Wailord@0", "Play:Wallace", "ChooseRandomEvolutionTarget", "Attach:1Water@0 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Evolves the Active into 200-HP Wailord with its first Water, and Wallace turns the newly Benched Goldeen into Seaking at once (Aqua Bullet is a Water attack, and the opposing Entei ex is weak to Water)."
+  },
+  "LAD-20261022_130806000_SR-t5": {
+   "his_move": ["Place:Baltoy@2", "Play:Copycat", "Play:Poké Ball", "Place:Carvanha@3", "Play:Poké Ball", "Attach:1Water@0 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Benches Baltoy before Copycat so it isn't shuffled away, then Copycat refills his hand to the opponent's 6 cards; he fills the Bench and gives Wailord a second Water."
+  },
+  "LAD-20261022_233003000_SR-t2": {
+   "his_move": ["Place:Wailmer@1", "Play:Poké Ball", "Place:Baltoy@2", "Play:Big Malasada", "Attach:1Water@0 zone", "Attack:Sharp Fang"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Benches Wailmer and Baltoy (for Wailord and Claydol), uses Big Malasada before his own Claydol blocks healing, and chips Darkrai ex for 30 with Sharp Fang."
+  },
+  "LAD-20261022_233003000_SR-t4": {
+   "his_move": ["Play:Professor's Research", "Evolve:Mega Sharpedo ex@1", "Evolve:Claydol@2", "Evolve:Wailord@0", "Play:Elegant Cape", "Tool:Elegant Cape@1", "Attach:1Water@0 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Draws, then evolves all three lines (Mega Sharpedo ex with Cape, Claydol for Heal Block, Wailord) and starts Wailord's four-Water charge."
+  },
+  "LAD-20261022_233003000_SR-t8": {
+   "his_move": ["Play:Cyrus", "Attach:1Water@0 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Cyrus drags the damaged Darkrai ex, which has no Energy, into the Active Spot to stall Hoopa ex's Shadow Bullet while Wailord gets its third Water; Carvanha stays in hand rather than becoming a 50-HP Bench target."
+  },
+  "LAD-20261022_233003000_SR-t10": {
+   "his_move": ["Play:Copycat", "Place:Wailmer@3", "Play:Heavy Helmet", "Tool:Heavy Helmet@0", "Attach:1Water@0 zone", "Attack:Whale Pump"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "The fourth Water lets Wailord use Whale Pump for 100 on Darkrai ex (130 to 30) for a knockout next turn; Copycat first finds Heavy Helmet and a Wailmer."
+  },
+  "LAD-20261022_234030000_SR-t7": {
+   "his_move": ["Play:Wallace", "ChooseRandomEvolutionTarget", "Attach:1Water@1 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Wallace turns the Caped Carvanha into a 220-HP Mega Sharpedo ex, and the Water goes to the Benched Wailmer that already has one, building a charged replacement."
+  },
+  "LAD-20261022_235420000_SR-t2": {
+   "his_move": ["Play:Poké Ball", "Play:Poké Ball", "Play:Professor's Research", "Attach:1Fighting@0 zone", "Place:Goomy@2", "Place:Trapinch@3", "Attack:Slam"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Searches and draws to fill the Bench with Goomy and a second Trapinch for Rare Candy, then Slams the 30-HP Happiny for a chance to knock it out."
+  },
+  "LAD-20261022_235420000_SR-t4": {
+   "his_move": ["Play:Rare Candy", "Evolve:Flygon ex@1", "Play:Professor's Research", "Play:Hiking Trail", "Attach:1Fighting@1 zone", "Attack:Slam"],
+   "acceptable": [
+    {"line": ["Play:Rare Candy", "Evolve:Flygon ex@3", "Play:Professor's Research", "Play:Hiking Trail", "Attach:1Fighting@3 zone", "Attack:Slam"],
+     "reason": "The same play with the other Benched Trapinch (in play since an earlier turn, so Rare Candy may target it): an identical board apart from the slot."}
+   ],
+   "pending_alternatives": [
+    {"line": ["Play:Rare Candy", "Evolve:Flygon ex@1", "Retreat:1", "Attach:1Fighting@0 zone", "Play:Professor's Research", "EndTurn"],
+     "reason": "Dratini pays its Retreat Cost of 1 with the Fighting it already has, so Flygon ex is the Active at the Checkup. Sand Slammer's 10 then knocks out the 10-HP Happiny for sure (Slam needs a heads) and hits both Riolu, while the 20-HP Dratini goes safely to the Bench; the discarded Fighting can come back later through Dragonair. The review says he looked at this retreat and cancelled it."}
+   ],
+   "answer_kind": "prepare",
+   "ambiguous": "At 0-0, with the 20-HP Dratini Active (one Fighting) and Happiny down to 10 HP: after Rare Candy into Flygon ex, would retreating Dratini so that Flygon ex is Active also be a good play? Sand Slammer would knock out Happiny for sure at the Checkup, where Slam only gets it on a heads, but Flygon ex is then exposed early.",
+   "why_his": "Rare Candy makes Flygon ex on the Bench with its first Energy, Research and Hiking Trail refill his hand, and Dratini Slams for a chance at the 10-HP Happiny."
+  },
+  "LAD-20261022_235420000_SR-t6": {
+   "his_move": ["Place:Dratini@3", "Attach:1Grass@1 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Goomy stays Active so opposing attacks cost one more, Flygon ex gets the Grass it needs (now Grass and Fighting), and a Dratini is Benched for Dragonair."
+  },
+  "LAD-20261022_235420000_SR-t8": {
+   "his_move": ["Evolve:Dragonair@3", "Play:X Speed", "Retreat:1", "Ability@3", "Attach:1Fighting@2 zone", "Attack:Dragon Pulse"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "X Speed lets Goomy retreat for free, Dragonair's Dragon's Blessing gives Flygon ex its third Energy from the discard, Dragon Pulse knocks out Happiny (1-1), and the turn's Energy charges the next Trapinch."
+  },
+  "LAD-20261022_235420000_SR-t10": {
+   "his_move": ["Attach:1Grass@2 zone", "Attack:Dragon Pulse"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Dragon Pulse's 140 takes Mega Lucario ex from 170 to 30 (20 after Sand Slammer), and the Grass charges the Benched Trapinch."
+  },
+  "LAD-20261023_000150000_SR-t1": {
+   "his_move": ["Play:Poké Ball", "Place:Trapinch@2", "Play:Copycat", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "On the first turn he Benches a Trapinch, then Copycat trades his last two cards (X Speed and Flygon ex, which is dead without Rare Candy) for three new ones."
+  },
+  "LAD-20261023_000150000_SR-t3": {
+   "his_move": ["Evolve:Dragonair@2", "Play:Professor's Research", "Play:Poké Ball", "Place:Dratini@3", "Attach:1Grass@1 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Evolves a Dragonair, draws and searches into another Dratini, and puts Grass on the Benched Trapinch for a future Flygon ex while Goomy taxes Mega Sharpedo ex's attack."
+  },
+  "LAD-20261023_000150000_SR-t5": {
+   "his_move": ["Place:Trapinch@3", "Evolve:Dragonair@1", "Attach:1Fighting@3 zone", "Attack:Mud-Slap"],
+   "acceptable": [], "pending_alternatives": [
+    {"line": ["Place:Trapinch@3", "Evolve:Dragonair@1", "Retreat:2", "Ability@1", "Attach:1Fighting@0 zone", "Attack:Draconic Whip"],
+     "reason": "Trapinch retreats for its one Grass, and the older Dragonair (80 HP, no Weakness) comes in. The new Benched Dragonair's Dragon's Blessing returns that Grass and the turn's Fighting is the second Energy, so Draconic Whip does 40 now. Turbo Shark's 70 then fails to knock out the Active (80 HP), so the opponent doesn't get an easy second point off a 60-HP Trapinch."}
+   ],
+   "answer_kind": "sacrifice",
+   "ambiguous": "At 0-1, facing a Mega Sharpedo ex with two Water: is retreating the Active Trapinch into the older Dragonair also a good play? Dragon's Blessing would return the Grass, the turn's Fighting is the second Energy, and Draconic Whip does 40; Dragonair's 80 HP survives Turbo Shark. You instead put the Fighting on a new Benched Trapinch, chipped with Mud-Slap and let the 60-HP Active fall.",
+   "why_his": "Keeps the turn's Fighting on a fresh Benched Trapinch, where it survives, and evolves a second Dragonair; the Active Trapinch (with Grass) chips 10 and is left to fall to Turbo Shark."
+  },
+  "LAD-20261023_000634000_SR-t2": {
+   "his_move": ["Play:Poké Ball", "Play:Professor's Research", "Place:Goomy@1", "Place:Trapinch@2", "Attach:1Fighting@0 zone", "Attack:Mud-Slap"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Searches and draws to Bench Goomy and a second Trapinch (for Rare Candy into Flygon ex) and chips Suicune ex for 10 with Mud-Slap."
+  },
+  "LAD-20261023_001330000_SR-t2": {
+   "his_move": ["Play:Poké Ball", "Place:Celesteela@1", "Play:Leaf Cape", "Tool:Leaf Cape@0", "Play:Sabrina", "Ability@1", "Attach:1Grass@1 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Finds Celesteela, Caps Buzzwole ex to 170 HP, then Ultra Thrusters puts Celesteela in front as a shield while Buzzwole ex starts charging on the Bench."
+  },
+  "LAD-20261023_001330000_SR-t4": {
+   "his_move": ["Play:Starting Plains", "Attach:1Grass@1 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Starting Plains adds 20 HP to Celesteela and Buzzwole ex (the opposing Charmeleon are Stage 1 and get nothing), and Buzzwole ex goes to two Grass while Celesteela keeps absorbing hits."
+  },
+  "LAD-20261023_001330000_SR-t6": {
+   "his_move": ["Play:Fragrant Forest", "UseStadium", "Place:Pheromosa@2", "Ability@0", "Activate:0@1", "Attach:1Grass@0 zone", "Attack:Big Beat"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Fragrant Forest finds Pheromosa to attack during Big Beat's lock next turn, Ultra Thrusters brings in Buzzwole ex, and its third Grass gives Big Beat 120 to knock out Charmeleon (1-0)."
+  },
+  "LAD-20261023_001330000_SR-t8": {
+   "his_move": ["UseStadium", "Place:Buzzwole@3", "Ability@1", "Activate:0@2", "Attach:1Grass@0 zone", "Attack:Jump Blues"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "sacrifice",
+   "ambiguous": null,
+   "why_his": "Big Beat is locked, so Buzzwole ex goes to the Bench and Pheromosa attacks: Jump Blues puts Chandelure at exactly 120 for next turn's Big Beat. Pheromosa is left to take Chandelure's hit, and the point that gives the opponent turns Lusamine on."
+  },
+  "LAD-20261023_005124000_SR-t2": {
+   "his_move": ["Play:Professor's Research", "Place:Pheromosa@1", "Place:Buzzwole@2", "Ability@0", "Attach:1Grass@0 zone", "Play:Fragrant Forest", "UseStadium", "Place:Buzzwole ex@3", "Play:Leaf Cape", "Tool:Leaf Cape@3", "Attack:Jump Blues"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Draws and fills the Bench (Fragrant Forest finds Buzzwole ex, which gets Leaf Cape), swaps Pheromosa in with Ultra Thrusters, and chips Caterpie with Jump Blues."
+  },
+  "LAD-20261023_005124000_SR-t4": {
+   "his_move": ["Play:Sabrina", "Attach:1Grass@3 zone", "Attack:Jump Blues"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "sacrifice", "ambiguous": null,
+   "why_his": "The 10-HP Pheromosa makes one last Jump Blues (20 to Treecko and 20 to Butterfree after Sabrina) instead of hiding behind Celesteela, while Buzzwole ex gets its first Grass on the Bench."
+  },
+  "LAD-20261023_005124000_SR-t8": {
+   "his_move": ["Play:Lusamine", "AttachFromDiscard{in_play_idx:2,num_random_energies:1}", "Attach:1Grass@3 zone", "Attack:Jump Blues"],
+   "acceptable": [],
+   "pending_alternatives": [
+    {"line": ["Play:Lusamine", "AttachFromDiscard{in_play_idx:2,num_random_energies:1}", "Attach:1Grass@2 zone", "Ability@1", "Activate:0@2", "Attack:Big Beat"],
+     "reason": "Lusamine plus the turn's Grass gives Buzzwole ex three Grass now. Ultra Thrusters brings it in and Big Beat takes Butterfree from 130 to 10, while the 10-HP Pheromosa stays safe on the Bench, the opponent stays at 1 point and Buzzwole's Ground Beat bonus stays on. The cost is that the 2-point ex is exposed."}
+   ],
+   "answer_kind": "sacrifice",
+   "ambiguous": "At 0-1: is it also good to use Lusamine and the turn's Grass on Buzzwole ex, switch it in and Big Beat Butterfree (130 to 10)? That keeps the 10-HP Pheromosa alive and the opponent at 1 point, but exposes the ex. You instead chipped with Pheromosa and let it fall to 0-2.",
+   "why_his": "Keeps Buzzwole ex safe on the Bench while charging it (Lusamine returns the discarded Grass) and the non-ex Buzzwole; the doomed 10-HP Pheromosa chips 20 into Butterfree and 20 into Mega Sceptile ex."
+  },
+  "LAD-20261023_005124000_SR-t10": {
+   "his_move": ["Play:Starting Plains", "Play:Cyrus", "Attach:1Grass@0 zone", "Attack:Big Beat"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Starting Plains replaces the opponent's Fragrant Forest and adds 20 HP to his Basics, Cyrus pulls the damaged Mega Sceptile ex Active, and the third Grass gives Big Beat 120 (170 to 50) on the 3-point target."
+  },
+  "LAD-20261023_010556000_SR-t2": {
+   "his_move": ["Play:Copycat", "Play:Poké Ball", "Attach:1Water@0 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Copycat draws 6 against the opponent's 6-card hand (better than Research's 2), Poké Ball finds a Squirtle to keep in hand away from Stretch Kick, and Eiscue starts charging Ram."
+  },
+  "LAD-20261023_010556000_SR-t4": {
+   "his_move": ["Place:Oricorio@2", "Place:Squirtle@3", "Attach:1Water@0 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "After Sabrina pulled in the uncharged Eiscue, he restarts its Ram charge and Benches Oricorio and Squirtle to develop."
+  },
+  "LAD-20261023_010556000_SR-t6": {
+   "his_move": ["Evolve:Wartortle@3", "Play:Professor's Research", "Play:Poké Ball", "Attach:1Water@0 zone", "Attack:Ram"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Evolves the damaged Squirtle into Wartortle (Shell Shield protects it on the Bench), draws, and the second Water lets Eiscue Ram Hitmonlee for 50."
+  },
+  "LAD-20261023_010556000_SR-t8": {
+   "his_move": ["Attach:1Water@2 zone", "Play:Soothing Shore", "Attack:Ram"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Ram takes Hitmonlee from 70 to 20, while a Water on the Stretch-Kicked Oricorio plus Soothing Shore heals it 20 each turn."
+  },
+  "LAD-20261023_011134000_SR-t2": {
+   "his_move": ["Play:Poké Ball", "Play:Professor's Research", "Place:Eiscue@1", "Attach:1Water@0 zone", "Retreat:1", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Finds an Eiscue and uses the turn's Water to retreat Squirtle behind it, so the Mega Blastoise line develops safely behind an Ice Face wall."
+  },
+  "LAD-20261023_011134000_SR-t4": {
+   "his_move": ["Play:Professor's Research", "Place:Oricorio@2", "Attach:1Water@1 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Draws, Benches Oricorio (Safeguard against ex attackers) and charges the Benched Squirtle while the full-HP Eiscue walls."
+  },
+  "LAD-20261023_011134000_SR-t6": {
+   "his_move": ["Play:Soothing Shore", "Attach:1Water@1 zone", "Play:Copycat", "Evolve:Wartortle@1", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Plays Soothing Shore before it would be shuffled away, gives Squirtle its second Water, then Copycat refreshes his hand and finds Wartortle to evolve."
+  },
+  "LAD-20261023_011134000_SR-t8": {
+   "his_move": ["Evolve:Mega Blastoise ex@1", "Play:Poké Ball", "Place:Squirtle@3", "Play:Copycat", "Attach:1Water@1 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Evolves into Mega Blastoise ex on the Bench with its third Water, Benches a second Squirtle and refreshes his hand, all behind the full-HP Eiscue."
+  },
+  "LAD-20261023_011134000_SR-t10": {
+   "his_move": ["Evolve:Wartortle@3", "Attach:1Water@1 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Keeps building Mega Blastoise ex toward six Water (three extra are needed for the Bench damage) and evolves the second Squirtle into a Bench-immune Wartortle."
+  },
+  "LAD-20261023_011134000_SR-t14": {
+   "his_move": ["Play:Parasol Lady", "ReturnPokemonToHand{in_play_idx:0}", "Promote:0@1", "Play:Soothing Shore", "Attach:1Water@0 zone", "Attack:Triple Bombardment"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Parasol Lady returns the damaged Eiscue and promotes Mega Blastoise ex for free, Soothing Shore removes the HP bonus Starting Plains gave the Basics, and the sixth Water makes Triple Bombardment do 130 to Mega Audino ex plus 50 to each Brambleghast."
+  }
+ },
+ "decks": {}
+}

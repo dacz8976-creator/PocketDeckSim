@@ -1,0 +1,4434 @@
+{
+ "what": "Questions for Dustin about his own ranked turns: for each, his move and the other line asked about, with the position as reconstructed from his game review at the start of that turn. His answers are recorded in his own words.",
+ "answer_options": [
+  "The alternative was better (my play was a mistake)",
+  "Both were fine",
+  "My play was better",
+  "Not sure"
+ ],
+ "optional_note": "Your thinking in the moment (optional)",
+ "mapping_for_the_record": {
+  "The alternative was better (my play was a mistake)": "The alternative becomes the key (key_line); recorded_move_acceptable is false; his recorded move becomes a rejected alternative with his words (rejected_because) and certified_by 'dustin'. This is v1.6's precedent (LAD-20261016_031512000_iOS-t2, 'Not attacking was a mistake').",
+  "Both were fine": "The alternative is accepted (acceptable), with his words and certified_by 'dustin'; his recorded move stays the key.",
+  "My play was better": "The alternative becomes a rejected alternative with his words (rejected_because) and certified_by 'dustin', and never counts; his recorded move stays the key. This is v1.6's precedent (e.g. LAD-20261014_161324000_iOS-t5).",
+  "Not sure": "The alternative is left out: it is not accepted and never counts (it is recorded with his answer); his recorded move stays the key.",
+  "his note": "His optional note (his thinking in the moment) is stored verbatim with the point (dustin_answer.words), whatever option he picks.",
+  "a shared question": "One answer applies to each point the question covers (also_applies_to), each to its own pending line.",
+  "no answer": "A question not answered by the freeze leaves its point pending and unscored (PREREG_RUN3 addendum 5, G10)."
+ },
+ "n": 23,
+ "questions": [
+  {
+   "point_id": "LAD-20261019_221218000_SR-t5",
+   "part": 1,
+   "question": "At 221218 global turn 5, Mega Sableye ex was Active with 1 Energy. Would attaching a second Energy and attacking with Cursed Jewel (80) have been as good as retreating into Hoopa ex for Shadow Bullet, or was your line the better play?",
+   "video": {
+    "file": "ScreenRecording_10-19-2026 17-12-18_1.mp4",
+    "at": "2:31",
+    "clip": null
+   },
+   "his_move": {
+    "steps": [
+     "Play Poké Ball",
+     "Bench Baltoy from your hand",
+     "Retreat the Active Mega Sableye ex, bringing Hoopa ex into the Active Spot",
+     "Play Copycat",
+     "Play Field Blower",
+     "  (discard Ancient Booster Energy Capsule from the opponent's Active Gouging Fire)",
+     "Attach Darkness Energy from the Energy Zone to the Active Hoopa ex",
+     "Attack with the Active Hoopa ex: Shadow Bullet"
+    ],
+    "labels": [
+     "Play:Poké Ball",
+     "Place:Baltoy@3",
+     "Retreat:1",
+     "Play:Copycat",
+     "Play:Field Blower",
+     "DiscardToolFromPokemon#{\"in_play_idx\":0,\"player\":1,\"tool_idx\":0}",
+     "Attach:1Darkness@0 zone",
+     "Attack:Shadow Bullet"
+    ]
+   },
+   "alternatives": [
+    {
+     "steps": [
+      "Play Poké Ball",
+      "Bench Baltoy from your hand",
+      "Play Copycat",
+      "Attach Darkness Energy from the Energy Zone to the Active Mega Sableye ex",
+      "Attack with the Active Mega Sableye ex: Cursed Jewel"
+     ],
+     "labels": [
+      "Play:Poké Ball",
+      "Place:Baltoy@3",
+      "Play:Copycat",
+      "Attach:1Darkness@0 zone",
+      "Attack:Cursed Jewel"
+     ]
+    }
+   ],
+   "position": {
+    "turn": 5,
+    "his_turn": 3,
+    "went_first": "Dustin",
+    "points": {
+     "dustin": 0,
+     "opponent": 0
+    },
+    "energy_zone": {
+     "dustin_this_turn": "Darkness",
+     "dustin_next_turn": "Darkness",
+     "opponent_next_turn": null
+    },
+    "dustin": {
+     "active": {
+      "card": "Mega Sableye ex",
+      "printing": "Mega Sableye ex B3b 041",
+      "hp_now": 170,
+      "printed_hp": 170,
+      "hp_bonuses_in_play": [],
+      "energy": [
+       "Darkness"
+      ],
+      "tools": [
+       "Deceptive Needle"
+      ],
+      "conditions": [],
+      "cards_underneath": []
+     },
+     "bench": [
+      {
+       "card": "Hoopa ex",
+       "printing": "Hoopa ex B4 103",
+       "hp_now": 150,
+       "printed_hp": 150,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [
+        "Deceptive Needle"
+       ],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Alolan Grimer",
+       "printing": "Alolan Grimer A3 110",
+       "hp_now": 70,
+       "printed_hp": 70,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand": [
+      "Claydol",
+      "Lucky Ice Pop (Item)",
+      "Lucky Ice Pop (Item)",
+      "Copycat (Supporter)",
+      "Poké Ball (Item)"
+     ],
+     "discard": [
+      "Poké Ball",
+      "Professor's Research",
+      "Professor's Research"
+     ],
+     "discarded_energy": [],
+     "deck_count": 7,
+     "cards_left_in_deck": [
+      "1 Alolan Muk",
+      "1 Baltoy",
+      "1 Cyrus",
+      "1 Darkrai ex",
+      "1 Field Blower",
+      "1 Pokémon Center Lady",
+      "1 Starting Plains"
+     ],
+     "his_pokemon_knocked_out_so_far": 0
+    },
+    "opponent": {
+     "active": {
+      "card": "Gouging Fire",
+      "printing": "Gouging Fire B3a 054",
+      "hp_now": 130,
+      "printed_hp": 110,
+      "hp_bonuses_in_play": [
+       "Ancient Booster Energy Capsule: The Ancient Pokémon this card is attached to gets +40 HP."
+      ],
+      "energy": [
+       "Fire"
+      ],
+      "tools": [
+       "Ancient Booster Energy Capsule"
+      ],
+      "conditions": [],
+      "cards_underneath": []
+     },
+     "bench": [
+      {
+       "card": "Dragonair",
+       "printing": "Dragonair B4 117",
+       "hp_now": 80,
+       "printed_hp": 80,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": [
+        "Dratini"
+       ]
+      },
+      {
+       "card": "Mega Rayquaza ex",
+       "printing": "Mega Rayquaza ex B4 120",
+       "hp_now": 180,
+       "printed_hp": 180,
+       "hp_bonuses_in_play": [],
+       "energy": [
+        "Lightning"
+       ],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand_count": 3,
+     "discard_seen": [
+      "Professor's Research",
+      "Poké Ball"
+     ],
+     "discarded_energy": [],
+     "opponent_pokemon_knocked_out_so_far": 0
+    },
+    "stadium": null,
+    "note": "Reconstructed from your game review, as it stood at the start of this turn; a few details (for example the opponent's hand size or a card's exact printing) may be estimates."
+   }
+  },
+  {
+   "point_id": "LAD-20261019_224222000_SR-t5",
+   "part": 1,
+   "question": "At 224222 global turn 5, you played Cyrus, pulling the 80-HP Darkrai (with 1 of the 3 Energy it needs) into the Active Spot. Would leaving the Espeon Active instead (40 HP, 20 after this turn's Nightmare Aura, so your next Nightmare Aura would knock it out) also be acceptable, or was your line the better play?",
+   "video": {
+    "file": "ScreenRecording_10-19-2026 17-42-22_1.mp4",
+    "at": "2:30",
+    "clip": null
+   },
+   "his_move": {
+    "steps": [
+     "Attach Darkness Energy from the Energy Zone to Darkrai ex",
+     "Bench Mega Sableye ex from your hand",
+     "Play Cyrus",
+     "End the turn"
+    ],
+    "labels": [
+     "Attach:1Darkness@2 zone",
+     "Place:Mega Sableye ex@3",
+     "Play:Cyrus",
+     "EndTurn"
+    ]
+   },
+   "alternatives": [
+    {
+     "steps": [
+      "Attach Darkness Energy from the Energy Zone to Darkrai ex",
+      "Bench Mega Sableye ex from your hand",
+      "End the turn"
+     ],
+     "labels": [
+      "Attach:1Darkness@2 zone",
+      "Place:Mega Sableye ex@3",
+      "EndTurn"
+     ]
+    }
+   ],
+   "position": {
+    "turn": 5,
+    "his_turn": 3,
+    "went_first": "Dustin",
+    "points": {
+     "dustin": 0,
+     "opponent": 0
+    },
+    "energy_zone": {
+     "dustin_this_turn": "Darkness",
+     "dustin_next_turn": "Darkness",
+     "opponent_next_turn": null
+    },
+    "dustin": {
+     "active": {
+      "card": "Hoopa ex",
+      "printing": "Hoopa ex B4 103",
+      "hp_now": 30,
+      "printed_hp": 150,
+      "hp_bonuses_in_play": [],
+      "energy": [
+       "Darkness"
+      ],
+      "tools": [],
+      "conditions": [
+       "Asleep"
+      ],
+      "cards_underneath": []
+     },
+     "bench": [
+      {
+       "card": "Alolan Grimer",
+       "printing": "Alolan Grimer A3 110",
+       "hp_now": 70,
+       "printed_hp": 70,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Darkrai ex",
+       "printing": "Darkrai ex A2 110",
+       "hp_now": 140,
+       "printed_hp": 140,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand": [
+      "Cyrus (Supporter)",
+      "Mega Sableye ex",
+      "Team Rocket's Weezing ex",
+      "Claydol"
+     ],
+     "discard": [
+      "Field Blower"
+     ],
+     "discarded_energy": [],
+     "deck_count": 12,
+     "cards_left_in_deck": [
+      "1 Alolan Muk",
+      "1 Baltoy",
+      "1 Copycat",
+      "1 Starting Plains",
+      "1 Team Rocket's Goo-zooka",
+      "1 Team Rocket's Koffing",
+      "2 Deceptive Needle",
+      "2 Poké Ball",
+      "2 Professor's Research"
+     ],
+     "his_pokemon_knocked_out_so_far": 0
+    },
+    "opponent": {
+     "active": {
+      "card": "Espeon",
+      "printing": "Espeon B3a 020",
+      "hp_now": 40,
+      "printed_hp": 90,
+      "hp_bonuses_in_play": [],
+      "energy": [
+       "Psychic"
+      ],
+      "tools": [],
+      "conditions": [],
+      "cards_underneath": [
+       "Eevee"
+      ]
+     },
+     "bench": [
+      {
+       "card": "Darkrai",
+       "printing": "Darkrai B2b 040",
+       "hp_now": 80,
+       "printed_hp": 100,
+       "hp_bonuses_in_play": [],
+       "energy": [
+        "Psychic"
+       ],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Swablu",
+       "printing": "Swablu A4a 064",
+       "hp_now": 50,
+       "printed_hp": 50,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Eevee",
+       "printing": "Eevee B1 184",
+       "hp_now": 50,
+       "printed_hp": 50,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand_count": 3,
+     "discard_seen": [
+      "Poké Ball",
+      "Small Balloon",
+      "Copycat",
+      "Poké Ball"
+     ],
+     "discarded_energy": [],
+     "opponent_pokemon_knocked_out_so_far": 0
+    },
+    "stadium": null,
+    "note": "Reconstructed from your game review, as it stood at the start of this turn; a few details (for example the opponent's hand size or a card's exact printing) may be estimates."
+   }
+  },
+  {
+   "point_id": "LAD-20261020_034501000_SR-t3",
+   "part": 1,
+   "question": "At turn 3 of the Skarmory/Cosmog game (20261020_034501), you attached Darkness to Alolan Grimer and ended the turn, with Alolan Muk ex in hand. Would evolving Grimer into Alolan Muk ex first, then the same attachment, also be acceptable, or was your line the better play?",
+   "video": {
+    "file": "ScreenRecording_10-19-2026 22-45-01_1.mp4",
+    "at": "1:27",
+    "clip": null
+   },
+   "his_move": {
+    "steps": [
+     "Attach Darkness Energy from the Energy Zone to the Active Alolan Grimer",
+     "End the turn"
+    ],
+    "labels": [
+     "Attach:1Darkness@0 zone",
+     "EndTurn"
+    ]
+   },
+   "alternatives": [
+    {
+     "steps": [
+      "Evolve the Active Alolan Grimer into Alolan Muk ex",
+      "Attach Darkness Energy from the Energy Zone to the Active Alolan Muk ex",
+      "End the turn"
+     ],
+     "labels": [
+      "Evolve:Alolan Muk ex@0",
+      "Attach:1Darkness@0 zone",
+      "EndTurn"
+     ]
+    }
+   ],
+   "position": {
+    "turn": 3,
+    "his_turn": 2,
+    "went_first": "Dustin",
+    "points": {
+     "dustin": 0,
+     "opponent": 0
+    },
+    "energy_zone": {
+     "dustin_this_turn": "Darkness",
+     "dustin_next_turn": "Darkness",
+     "opponent_next_turn": null
+    },
+    "dustin": {
+     "active": {
+      "card": "Alolan Grimer",
+      "printing": "Alolan Grimer B2 096",
+      "hp_now": 80,
+      "printed_hp": 80,
+      "hp_bonuses_in_play": [],
+      "energy": [],
+      "tools": [
+       "Poison Barb"
+      ],
+      "conditions": [],
+      "cards_underneath": []
+     },
+     "bench": [],
+     "hand": [
+      "Alolan Muk",
+      "Deceptive Needle (Tool)",
+      "Poison Barb (Tool)",
+      "Alolan Muk ex",
+      "Rare Candy (Item)"
+     ],
+     "discard": [],
+     "discarded_energy": [],
+     "deck_count": 13,
+     "cards_left_in_deck": [
+      "1 Alolan Grimer",
+      "1 Baltoy",
+      "1 Claydol",
+      "1 Copycat",
+      "1 Rare Candy",
+      "2 Dustox",
+      "2 Poké Ball",
+      "2 Professor's Research",
+      "2 Wurmple"
+     ],
+     "his_pokemon_knocked_out_so_far": 0
+    },
+    "opponent": {
+     "active": {
+      "card": "Skarmory",
+      "printing": "Skarmory A2 111",
+      "hp_now": 80,
+      "printed_hp": 80,
+      "hp_bonuses_in_play": [],
+      "energy": [],
+      "tools": [
+       "Rocky Helmet"
+      ],
+      "conditions": [],
+      "cards_underneath": []
+     },
+     "bench": [
+      {
+       "card": "Cosmog",
+       "printing": "Cosmog A3 085",
+       "hp_now": 60,
+       "printed_hp": 60,
+       "hp_bonuses_in_play": [],
+       "energy": [
+        "Metal"
+       ],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Skarmory",
+       "printing": "Skarmory A2 111",
+       "hp_now": 80,
+       "printed_hp": 80,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand_count": 3,
+     "discard_seen": [
+      "Poké Ball",
+      "Professor's Research"
+     ],
+     "discarded_energy": [],
+     "opponent_pokemon_knocked_out_so_far": 0
+    },
+    "stadium": null,
+    "note": "Reconstructed from your game review, as it stood at the start of this turn; a few details (for example the opponent's hand size or a card's exact printing) may be estimates."
+   }
+  },
+  {
+   "point_id": "LAD-20261020_034756000_SR-t6",
+   "part": 1,
+   "question": "At 034756 global turn 6, Dustox (60 HP, 1 Energy) faced a Poisoned and Confused Butterfree at 120. You put the Energy on the benched Alolan Grimer (80 HP). Would attaching to Dustox and attacking with Cutting Wind for 60 instead also be acceptable, or was your line the better play?",
+   "video": {
+    "file": "ScreenRecording_10-19-2026 22-47-56_1.mp4",
+    "at": "3:18",
+    "clip": null
+   },
+   "his_move": {
+    "steps": [
+     "Bench Alolan Grimer from your hand",
+     "Use the Active Dustox's Ability (Variety Powder)",
+     "Attach Darkness Energy from the Energy Zone to Alolan Grimer (80 HP, on the Bench)",
+     "End the turn"
+    ],
+    "labels": [
+     "Place:Alolan Grimer@3",
+     "Ability@0",
+     "Attach:1Darkness@2 zone",
+     "EndTurn"
+    ]
+   },
+   "alternatives": [
+    {
+     "steps": [
+      "Bench Alolan Grimer from your hand",
+      "Use the Active Dustox's Ability (Variety Powder)",
+      "Attach Darkness Energy from the Energy Zone to the Active Dustox",
+      "Attack with the Active Dustox: Cutting Wind"
+     ],
+     "labels": [
+      "Place:Alolan Grimer@3",
+      "Ability@0",
+      "Attach:1Darkness@0 zone",
+      "Attack:Cutting Wind"
+     ]
+    }
+   ],
+   "position": {
+    "turn": 6,
+    "his_turn": 3,
+    "went_first": "the opponent",
+    "points": {
+     "dustin": 0,
+     "opponent": 1
+    },
+    "energy_zone": {
+     "dustin_this_turn": "Darkness",
+     "dustin_next_turn": "Darkness",
+     "opponent_next_turn": null
+    },
+    "dustin": {
+     "active": {
+      "card": "Dustox",
+      "printing": "Dustox B4 005",
+      "hp_now": 60,
+      "printed_hp": 120,
+      "hp_bonuses_in_play": [],
+      "energy": [
+       "Darkness"
+      ],
+      "tools": [],
+      "conditions": [],
+      "cards_underneath": [
+       "Wurmple"
+      ]
+     },
+     "bench": [
+      {
+       "card": "Wurmple",
+       "printing": "Wurmple B4 001",
+       "hp_now": 60,
+       "printed_hp": 60,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Alolan Grimer",
+       "printing": "Alolan Grimer B2 096",
+       "hp_now": 80,
+       "printed_hp": 80,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand": [
+      "Dustox",
+      "Alolan Muk",
+      "Alolan Grimer"
+     ],
+     "discard": [
+      "Baltoy",
+      "Poison Barb",
+      "Poké Ball",
+      "Rare Candy"
+     ],
+     "discarded_energy": [
+      "Darkness"
+     ],
+     "deck_count": 9,
+     "cards_left_in_deck": [
+      "1 Alolan Muk ex",
+      "1 Claydol",
+      "1 Copycat",
+      "1 Deceptive Needle",
+      "1 Poison Barb",
+      "1 Poké Ball",
+      "1 Rare Candy",
+      "2 Professor's Research"
+     ],
+     "his_pokemon_knocked_out_so_far": 1
+    },
+    "opponent": {
+     "active": {
+      "card": "Butterfree",
+      "printing": "Butterfree B3b 003",
+      "hp_now": 120,
+      "printed_hp": 130,
+      "hp_bonuses_in_play": [],
+      "energy": [
+       "Grass"
+      ],
+      "tools": [],
+      "conditions": [
+       "Poisoned",
+       "Confused"
+      ],
+      "cards_underneath": [
+       "Metapod",
+       "Caterpie"
+      ]
+     },
+     "bench": [
+      {
+       "card": "Treecko",
+       "printing": "Treecko B3 005",
+       "hp_now": 60,
+       "printed_hp": 60,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Metapod",
+       "printing": "Metapod A1 006",
+       "hp_now": 80,
+       "printed_hp": 80,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": [
+        "Caterpie"
+       ]
+      }
+     ],
+     "hand_count": 4,
+     "discard_seen": [],
+     "discarded_energy": [],
+     "opponent_pokemon_knocked_out_so_far": 0
+    },
+    "stadium": {
+     "card": "Fragrant Forest",
+     "owner": "the opponent"
+    },
+    "note": "Reconstructed from your game review, as it stood at the start of this turn; a few details (for example the opponent's hand size or a card's exact printing) may be estimates."
+   }
+  },
+  {
+   "point_id": "LAD-20261021_020916000_SR-t9",
+   "part": 2,
+   "question": "In the Igri$ game (20261021_020916), turn 9: you used Cyrus to pull up the 10-HP Flutter Mane and knock it out. Would knocking out the Active 40-HP Carbink with Cursed Jewel instead (keeping Cyrus) have been an equally good play?",
+   "video": {
+    "file": "ScreenRecording_10-20-2026 21-09-16_1.mp4",
+    "at": "5:38",
+    "clip": null
+   },
+   "his_move": {
+    "steps": [
+     "Play Cyrus",
+     "Attach Darkness Energy from the Energy Zone to Baltoy",
+     "Attack with the Active Mega Sableye ex: Cursed Jewel"
+    ],
+    "labels": [
+     "Play:Cyrus",
+     "Attach:1Darkness@1 zone",
+     "Attack:Cursed Jewel"
+    ]
+   },
+   "alternatives": [
+    {
+     "steps": [
+      "Attach Darkness Energy from the Energy Zone to Baltoy",
+      "Attack with the Active Mega Sableye ex: Cursed Jewel"
+     ],
+     "labels": [
+      "Attach:1Darkness@1 zone",
+      "Attack:Cursed Jewel"
+     ]
+    }
+   ],
+   "position": {
+    "turn": 9,
+    "his_turn": 5,
+    "went_first": "Dustin",
+    "points": {
+     "dustin": 0,
+     "opponent": 1
+    },
+    "energy_zone": {
+     "dustin_this_turn": "Darkness",
+     "dustin_next_turn": "Darkness",
+     "opponent_next_turn": null
+    },
+    "dustin": {
+     "active": {
+      "card": "Mega Sableye ex",
+      "printing": "Mega Sableye ex B3b 041",
+      "hp_now": 190,
+      "printed_hp": 170,
+      "hp_bonuses_in_play": [
+       "Starting Plains (Stadium): Each Basic Pokémon in play (both yours and your opponent's) gets +20 HP."
+      ],
+      "energy": [
+       "Darkness",
+       "Darkness"
+      ],
+      "tools": [
+       "Deceptive Needle"
+      ],
+      "conditions": [],
+      "cards_underneath": []
+     },
+     "bench": [
+      {
+       "card": "Baltoy",
+       "printing": "Baltoy A3a 030",
+       "hp_now": 80,
+       "printed_hp": 60,
+       "hp_bonuses_in_play": [
+        "Starting Plains (Stadium): Each Basic Pokémon in play (both yours and your opponent's) gets +20 HP."
+       ],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand": [
+      "X Speed (Item)",
+      "Team Rocket's Weezing ex",
+      "Cyrus (Supporter)"
+     ],
+     "discard": [
+      "Poké Ball",
+      "Field Blower",
+      "Poké Ball",
+      "Alolan Grimer",
+      "Deceptive Needle",
+      "Team Rocket's Goo-zooka"
+     ],
+     "discarded_energy": [
+      "Darkness"
+     ],
+     "deck_count": 8,
+     "cards_left_in_deck": [
+      "1 Alolan Muk",
+      "1 Claydol",
+      "1 Copycat",
+      "1 Hoopa ex",
+      "1 Poison Barb",
+      "1 Team Rocket's Koffing",
+      "2 Professor's Research"
+     ],
+     "his_pokemon_knocked_out_so_far": 1
+    },
+    "opponent": {
+     "active": {
+      "card": "Carbink",
+      "printing": "Carbink B3b 031",
+      "hp_now": 40,
+      "printed_hp": 50,
+      "hp_bonuses_in_play": [
+       "Starting Plains (Stadium): Each Basic Pokémon in play (both yours and your opponent's) gets +20 HP."
+      ],
+      "energy": [
+       "Psychic"
+      ],
+      "tools": [],
+      "conditions": [],
+      "cards_underneath": []
+     },
+     "bench": [
+      {
+       "card": "Mega Diancie ex",
+       "printing": "Mega Diancie ex B3b 032",
+       "hp_now": 190,
+       "printed_hp": 170,
+       "hp_bonuses_in_play": [
+        "Starting Plains (Stadium): Each Basic Pokémon in play (both yours and your opponent's) gets +20 HP."
+       ],
+       "energy": [
+        "Psychic",
+        "Psychic",
+        "Psychic"
+       ],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Flutter Mane",
+       "printing": "Flutter Mane B3b 035",
+       "hp_now": 10,
+       "printed_hp": 80,
+       "hp_bonuses_in_play": [
+        "Starting Plains (Stadium): Each Basic Pokémon in play (both yours and your opponent's) gets +20 HP."
+       ],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Mega Diancie ex",
+       "printing": "Mega Diancie ex B3b 032",
+       "hp_now": 190,
+       "printed_hp": 170,
+       "hp_bonuses_in_play": [
+        "Starting Plains (Stadium): Each Basic Pokémon in play (both yours and your opponent's) gets +20 HP."
+       ],
+       "energy": [
+        "Psychic",
+        "Psychic",
+        "Psychic"
+       ],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand_count": 6,
+     "discard_seen": [
+      "Professor's Research",
+      "Giant Cape",
+      "Copycat",
+      "Poké Ball",
+      "Professor's Research"
+     ],
+     "discarded_energy": [
+      "Psychic",
+      "Psychic",
+      "Psychic"
+     ],
+     "opponent_pokemon_knocked_out_so_far": 0
+    },
+    "stadium": {
+     "card": "Starting Plains",
+     "owner": "the opponent"
+    },
+    "note": "Reconstructed from your game review, as it stood at the start of this turn; a few details (for example the opponent's hand size or a card's exact printing) may be estimates."
+   }
+  },
+  {
+   "point_id": "LAD-20261021_031141000_SR-t7",
+   "part": 2,
+   "question": "In the えのき game (20261021_031141), turn 7: you put Water on Baltoy and retreated your 80-HP Mega Sharpedo ex. Would attaching to it and using Turbo Shark to knock out the 70-HP Vespiquen ex for 2 points also be acceptable, or was your line the better play?",
+   "video": {
+    "file": "ScreenRecording_10-20-2026 22-11-41_1.mp4",
+    "at": "4:06",
+    "clip": null
+   },
+   "his_move": {
+    "steps": [
+     "Attach Water Energy from the Energy Zone to Baltoy",
+     "Retreat the Active Mega Sharpedo ex, bringing Baltoy into the Active Spot",
+     "End the turn"
+    ],
+    "labels": [
+     "Attach:1Water@1 zone",
+     "Retreat:1",
+     "EndTurn"
+    ]
+   },
+   "alternatives": [
+    {
+     "steps": [
+      "Attach Water Energy from the Energy Zone to the Active Mega Sharpedo ex",
+      "Attack with the Active Mega Sharpedo ex: Turbo Shark"
+     ],
+     "labels": [
+      "Attach:1Water@0 zone",
+      "Attack:Turbo Shark"
+     ]
+    }
+   ],
+   "position": {
+    "turn": 7,
+    "his_turn": 4,
+    "went_first": "Dustin",
+    "points": {
+     "dustin": 0,
+     "opponent": 1
+    },
+    "energy_zone": {
+     "dustin_this_turn": "Water",
+     "dustin_next_turn": "Water",
+     "opponent_next_turn": null
+    },
+    "dustin": {
+     "active": {
+      "card": "Mega Sharpedo ex",
+      "printing": "Mega Sharpedo ex B4 035",
+      "hp_now": 80,
+      "printed_hp": 190,
+      "hp_bonuses_in_play": [
+       "Elegant Cape: The Stage 1 Pokémon this card is attached to gets +30 HP."
+      ],
+      "energy": [
+       "Water"
+      ],
+      "tools": [
+       "Elegant Cape"
+      ],
+      "conditions": [],
+      "cards_underneath": [
+       "Carvanha"
+      ]
+     },
+     "bench": [
+      {
+       "card": "Baltoy",
+       "printing": "Baltoy A3a 030",
+       "hp_now": 60,
+       "printed_hp": 60,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand": [
+      "Mega Sharpedo ex",
+      "Wallace (Supporter)",
+      "Wailord"
+     ],
+     "discard": [
+      "Poké Ball",
+      "Copycat",
+      "Wailmer",
+      "Heavy Helmet"
+     ],
+     "discarded_energy": [
+      "Water"
+     ],
+     "deck_count": 9,
+     "cards_left_in_deck": [
+      "1 Carvanha",
+      "1 Claydol",
+      "1 Cyrus",
+      "1 Elegant Cape",
+      "1 Poké Ball",
+      "1 Wailmer",
+      "1 Wailord",
+      "2 Professor's Research"
+     ],
+     "his_pokemon_knocked_out_so_far": 1
+    },
+    "opponent": {
+     "active": {
+      "card": "Vespiquen ex",
+      "printing": "Vespiquen ex B4 011",
+      "hp_now": 70,
+      "printed_hp": 140,
+      "hp_bonuses_in_play": [],
+      "energy": [
+       "Grass",
+       "Grass"
+      ],
+      "tools": [],
+      "conditions": [],
+      "cards_underneath": [
+       "Combee"
+      ]
+     },
+     "bench": [
+      {
+       "card": "Shuckle ex",
+       "printing": "Shuckle ex A4 021",
+       "hp_now": 120,
+       "printed_hp": 120,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Vespiquen ex",
+       "printing": "Vespiquen ex B4 011",
+       "hp_now": 140,
+       "printed_hp": 140,
+       "hp_bonuses_in_play": [],
+       "energy": [
+        "Grass"
+       ],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": [
+        "Combee"
+       ]
+      }
+     ],
+     "hand_count": 2,
+     "discard_seen": [
+      "Professor's Research",
+      "Sightseer",
+      "Budew",
+      "Copycat",
+      "Budew"
+     ],
+     "discarded_energy": [],
+     "opponent_pokemon_knocked_out_so_far": 0
+    },
+    "stadium": {
+     "card": "Fragrant Forest",
+     "owner": "the opponent"
+    },
+    "note": "Reconstructed from your game review, as it stood at the start of this turn; a few details (for example the opponent's hand size or a card's exact printing) may be estimates."
+   }
+  },
+  {
+   "point_id": "LAD-20261022_004518000_SR-t2",
+   "part": 3,
+   "question": "On your first turn against Mantyke and two Gible, with Mega Sharpedo ex already in hand, would you also accept keeping it (Poké Ball twice, bench both Carvanha, Water on Wailmer, no Copycat) instead of playing Copycat, which shuffles that only Mega Sharpedo back for 4 new cards?",
+   "video": {
+    "file": "ScreenRecording_10-21-2026 19-45-18_1.mp4",
+    "at": "1:11",
+    "clip": 1
+   },
+   "his_move": {
+    "steps": [
+     "Play Poké Ball",
+     "Play Poké Ball",
+     "Bench Carvanha from your hand",
+     "Play Copycat",
+     "Bench Baltoy from your hand",
+     "Bench Alolan Grimer from your hand",
+     "Attach Water Energy from the Energy Zone to the Active Wailmer",
+     "End the turn"
+    ],
+    "labels": [
+     "Play:Poké Ball",
+     "Play:Poké Ball",
+     "Place:Carvanha@1",
+     "Play:Copycat",
+     "Place:Baltoy@2",
+     "Place:Alolan Grimer@3",
+     "Attach:1Water@0 zone",
+     "EndTurn"
+    ]
+   },
+   "alternatives": [
+    {
+     "steps": [
+      "Play Poké Ball",
+      "Play Poké Ball",
+      "Bench Carvanha from your hand",
+      "Bench Carvanha from your hand",
+      "Attach Water Energy from the Energy Zone to the Active Wailmer",
+      "End the turn"
+     ],
+     "labels": [
+      "Play:Poké Ball",
+      "Play:Poké Ball",
+      "Place:Carvanha@1",
+      "Place:Carvanha@2",
+      "Attach:1Water@0 zone",
+      "EndTurn"
+     ]
+    }
+   ],
+   "position": {
+    "turn": 2,
+    "his_turn": 1,
+    "went_first": "the opponent",
+    "points": {
+     "dustin": 0,
+     "opponent": 0
+    },
+    "energy_zone": {
+     "dustin_this_turn": "Water",
+     "dustin_next_turn": "Water",
+     "opponent_next_turn": null
+    },
+    "dustin": {
+     "active": {
+      "card": "Wailmer",
+      "printing": "Wailmer B4 036",
+      "hp_now": 100,
+      "printed_hp": 100,
+      "hp_bonuses_in_play": [],
+      "energy": [],
+      "tools": [],
+      "conditions": [],
+      "cards_underneath": []
+     },
+     "bench": [],
+     "hand": [
+      "Cyrus (Supporter)",
+      "Copycat (Supporter)",
+      "Poké Ball (Item)",
+      "Mega Sharpedo ex",
+      "Poké Ball (Item)"
+     ],
+     "discard": [],
+     "discarded_energy": [],
+     "deck_count": 14,
+     "cards_left_in_deck": [
+      "1 Alolan Grimer",
+      "1 Alolan Muk",
+      "1 Baltoy",
+      "1 Claydol",
+      "1 Elegant Cape",
+      "1 Heavy Helmet",
+      "1 Sabrina",
+      "1 Wailord",
+      "1 Wallace",
+      "1 X Speed",
+      "2 Carvanha",
+      "2 Professor's Research"
+     ],
+     "his_pokemon_knocked_out_so_far": 0
+    },
+    "opponent": {
+     "active": {
+      "card": "Mantyke",
+      "printing": "Mantyke A4a 023",
+      "hp_now": 30,
+      "printed_hp": 30,
+      "hp_bonuses_in_play": [],
+      "energy": [],
+      "tools": [],
+      "conditions": [],
+      "cards_underneath": []
+     },
+     "bench": [
+      {
+       "card": "Gible",
+       "printing": "Gible B4a 052",
+       "hp_now": 60,
+       "printed_hp": 60,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [
+        "Small Balloon"
+       ],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Gible",
+       "printing": "Gible B4a 052",
+       "hp_now": 60,
+       "printed_hp": 60,
+       "hp_bonuses_in_play": [],
+       "energy": [
+        "Water"
+       ],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand_count": 4,
+     "discard_seen": [
+      "Copycat"
+     ],
+     "discarded_energy": [],
+     "opponent_pokemon_knocked_out_so_far": 0
+    },
+    "stadium": null,
+    "note": "Reconstructed from your game review, as it stood at the start of this turn; a few details (for example the opponent's hand size or a card's exact printing) may be estimates."
+   }
+  },
+  {
+   "point_id": "LAD-20261022_235420000_SR-t10",
+   "part": 3,
+   "question": "At turn 10 of the Mega Lucario game (20261022_235420), you attached Grass to Trapinch and attacked Mega Lucario ex with Flygon ex's Dragon Pulse. Would playing Cyrus to bring up the damaged 50-HP Riolu and knocking it out with Dragon Pulse (1 point) also be acceptable, or was your line the better play?",
+   "video": {
+    "file": "ScreenRecording_10-22-2026 18-54-20_1.mp4",
+    "at": "6:29",
+    "clip": null
+   },
+   "his_move": {
+    "steps": [
+     "Attach Grass Energy from the Energy Zone to Trapinch",
+     "Attack with the Active Flygon ex: Dragon Pulse"
+    ],
+    "labels": [
+     "Attach:1Grass@2 zone",
+     "Attack:Dragon Pulse"
+    ]
+   },
+   "alternatives": [
+    {
+     "steps": [
+      "Play Cyrus",
+      "Attach Grass Energy from the Energy Zone to Trapinch",
+      "Attack with the Active Flygon ex: Dragon Pulse"
+     ],
+     "labels": [
+      "Play:Cyrus",
+      "Attach:1Grass@2 zone",
+      "Attack:Dragon Pulse"
+     ]
+    }
+   ],
+   "position": {
+    "turn": 10,
+    "his_turn": 5,
+    "went_first": "the opponent",
+    "points": {
+     "dustin": 1,
+     "opponent": 1
+    },
+    "energy_zone": {
+     "dustin_this_turn": "Grass",
+     "dustin_next_turn": "Grass",
+     "opponent_next_turn": null
+    },
+    "dustin": {
+     "active": {
+      "card": "Flygon ex",
+      "printing": "Flygon ex B3 126",
+      "hp_now": 10,
+      "printed_hp": 180,
+      "hp_bonuses_in_play": [],
+      "energy": [
+       "Grass",
+       "Fighting",
+       "Fighting"
+      ],
+      "tools": [],
+      "conditions": [],
+      "cards_underneath": [
+       "Trapinch"
+      ]
+     },
+     "bench": [
+      {
+       "card": "Goomy",
+       "printing": "Goomy B1 177",
+       "hp_now": 40,
+       "printed_hp": 40,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Trapinch",
+       "printing": "Trapinch B3 076",
+       "hp_now": 60,
+       "printed_hp": 60,
+       "hp_bonuses_in_play": [],
+       "energy": [
+        "Fighting"
+       ],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Dragonair",
+       "printing": "Dragonair B4 117",
+       "hp_now": 80,
+       "printed_hp": 80,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": [
+        "Dratini"
+       ]
+      }
+     ],
+     "hand": [
+      "Cyrus (Supporter)",
+      "Dragonair",
+      "Cyrus (Supporter)",
+      "Rare Candy (Item)"
+     ],
+     "discard": [
+      "Poké Ball",
+      "Poké Ball",
+      "Professor's Research",
+      "Rare Candy",
+      "Professor's Research",
+      "Dratini",
+      "X Speed",
+      "Copycat"
+     ],
+     "discarded_energy": [],
+     "deck_count": 1,
+     "cards_left_in_deck": [
+      "1 Flygon ex"
+     ],
+     "his_pokemon_knocked_out_so_far": 1
+    },
+    "opponent": {
+     "active": {
+      "card": "Mega Lucario ex",
+      "printing": "Mega Lucario ex B3 081",
+      "hp_now": 170,
+      "printed_hp": 190,
+      "hp_bonuses_in_play": [],
+      "energy": [
+       "Fighting",
+       "Fighting",
+       "Fighting"
+      ],
+      "tools": [
+       "Small Balloon"
+      ],
+      "conditions": [],
+      "cards_underneath": [
+       "Riolu"
+      ]
+     },
+     "bench": [
+      {
+       "card": "Riolu",
+       "printing": "Riolu A2b 042",
+       "hp_now": 50,
+       "printed_hp": 70,
+       "hp_bonuses_in_play": [],
+       "energy": [
+        "Fighting"
+       ],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand_count": 3,
+     "discard_seen": [
+      "Repel",
+      "Pokémon Center Lady",
+      "Happiny",
+      "Korrina"
+     ],
+     "discarded_energy": [],
+     "opponent_pokemon_knocked_out_so_far": 1
+    },
+    "stadium": {
+     "card": "Hiking Trail",
+     "owner": "Dustin"
+    },
+    "note": "Reconstructed from your game review, as it stood at the start of this turn; a few details (for example the opponent's hand size or a card's exact printing) may be estimates."
+   }
+  },
+  {
+   "point_id": "LAD-20261022_235420000_SR-t4",
+   "part": 3,
+   "question": "At 0-0, with the 20-HP Dratini Active (one Fighting) and Happiny down to 10 HP: after Rare Candy into Flygon ex, would retreating Dratini so that Flygon ex is Active also be a good play? Sand Slammer would knock out Happiny for sure at the Checkup, where Slam only gets it on a heads, but Flygon ex is then exposed early.",
+   "video": {
+    "file": "ScreenRecording_10-22-2026 18-54-20_1.mp4",
+    "at": "2:24",
+    "clip": null
+   },
+   "his_move": {
+    "steps": [
+     "Play Rare Candy",
+     "Evolve Trapinch (60 HP, on the Bench) into Flygon ex",
+     "Play Professor's Research",
+     "Play Hiking Trail",
+     "Attach Fighting Energy from the Energy Zone to Flygon ex",
+     "Attack with the Active Dratini: Slam"
+    ],
+    "labels": [
+     "Play:Rare Candy",
+     "Evolve:Flygon ex@1",
+     "Play:Professor's Research",
+     "Play:Hiking Trail",
+     "Attach:1Fighting@1 zone",
+     "Attack:Slam"
+    ]
+   },
+   "alternatives": [
+    {
+     "steps": [
+      "Play Rare Candy",
+      "Evolve Trapinch (60 HP, on the Bench) into Flygon ex",
+      "Retreat the Active Dratini, bringing Flygon ex into the Active Spot",
+      "Attach Fighting Energy from the Energy Zone to the Active Flygon ex",
+      "Play Professor's Research",
+      "End the turn"
+     ],
+     "labels": [
+      "Play:Rare Candy",
+      "Evolve:Flygon ex@1",
+      "Retreat:1",
+      "Attach:1Fighting@0 zone",
+      "Play:Professor's Research",
+      "EndTurn"
+     ]
+    }
+   ],
+   "position": {
+    "turn": 4,
+    "his_turn": 2,
+    "went_first": "the opponent",
+    "points": {
+     "dustin": 0,
+     "opponent": 0
+    },
+    "energy_zone": {
+     "dustin_this_turn": "Fighting",
+     "dustin_next_turn": "Grass",
+     "opponent_next_turn": null
+    },
+    "dustin": {
+     "active": {
+      "card": "Dratini",
+      "printing": "Dratini B4 116",
+      "hp_now": 20,
+      "printed_hp": 60,
+      "hp_bonuses_in_play": [],
+      "energy": [
+       "Fighting"
+      ],
+      "tools": [],
+      "conditions": [],
+      "cards_underneath": []
+     },
+     "bench": [
+      {
+       "card": "Trapinch",
+       "printing": "Trapinch B3 076",
+       "hp_now": 60,
+       "printed_hp": 60,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Goomy",
+       "printing": "Goomy B1 177",
+       "hp_now": 40,
+       "printed_hp": 40,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Trapinch",
+       "printing": "Trapinch B3 076",
+       "hp_now": 60,
+       "printed_hp": 60,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand": [
+      "Professor's Research (Supporter)",
+      "Rare Candy (Item)",
+      "Cyrus (Supporter)",
+      "Flygon ex"
+     ],
+     "discard": [
+      "Poké Ball",
+      "Poké Ball",
+      "Professor's Research"
+     ],
+     "discarded_energy": [],
+     "deck_count": 9,
+     "cards_left_in_deck": [
+      "1 Copycat",
+      "1 Cyrus",
+      "1 Dratini",
+      "1 Flygon ex",
+      "1 Hiking Trail",
+      "1 Rare Candy",
+      "1 X Speed",
+      "2 Dragonair"
+     ],
+     "his_pokemon_knocked_out_so_far": 0
+    },
+    "opponent": {
+     "active": {
+      "card": "Happiny",
+      "printing": "Happiny B4a 063",
+      "hp_now": 10,
+      "printed_hp": 30,
+      "hp_bonuses_in_play": [],
+      "energy": [],
+      "tools": [],
+      "conditions": [],
+      "cards_underneath": []
+     },
+     "bench": [
+      {
+       "card": "Riolu",
+       "printing": "Riolu A2b 042",
+       "hp_now": 70,
+       "printed_hp": 70,
+       "hp_bonuses_in_play": [],
+       "energy": [
+        "Fighting"
+       ],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Riolu",
+       "printing": "Riolu A2b 042",
+       "hp_now": 70,
+       "printed_hp": 70,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand_count": 3,
+     "discard_seen": [
+      "Repel"
+     ],
+     "discarded_energy": [],
+     "opponent_pokemon_knocked_out_so_far": 0
+    },
+    "stadium": null,
+    "note": "Reconstructed from your game review, as it stood at the start of this turn; a few details (for example the opponent's hand size or a card's exact printing) may be estimates."
+   }
+  },
+  {
+   "point_id": "LAD-20261023_000150000_SR-t5",
+   "part": 3,
+   "question": "At 0-1, facing a Mega Sharpedo ex with two Water: is retreating the Active Trapinch into the older Dragonair also a good play? Dragon's Blessing would return the Grass, the turn's Fighting is the second Energy, and Draconic Whip does 40; Dragonair's 80 HP survives Turbo Shark. You instead benched a new Trapinch, put the Fighting on it and attacked with Mud-Slap.",
+   "video": {
+    "file": "ScreenRecording_10-22-2026 19-01-50_1.mp4",
+    "at": "3:09",
+    "clip": null
+   },
+   "his_move": {
+    "steps": [
+     "Bench Trapinch from your hand",
+     "Evolve Dratini into Dragonair",
+     "Attach Fighting Energy from the Energy Zone to Trapinch (the one just benched from the hand)",
+     "Attack with the Active Trapinch (60 HP): Mud-Slap"
+    ],
+    "labels": [
+     "Place:Trapinch@3",
+     "Evolve:Dragonair@1",
+     "Attach:1Fighting@3 zone",
+     "Attack:Mud-Slap"
+    ]
+   },
+   "alternatives": [
+    {
+     "steps": [
+      "Bench Trapinch from your hand",
+      "Evolve Dratini into Dragonair",
+      "Retreat the Active Trapinch (60 HP), bringing Dragonair (80 HP, on the Bench) into the Active Spot",
+      "Use Dragonair (evolved from Dratini this turn)'s Ability (Dragon's Blessing)",
+      "Attach Fighting Energy from the Energy Zone to the Active Dragonair (80 HP)",
+      "Attack with the Active Dragonair (80 HP): Draconic Whip"
+     ],
+     "labels": [
+      "Place:Trapinch@3",
+      "Evolve:Dragonair@1",
+      "Retreat:2",
+      "Ability@1",
+      "Attach:1Fighting@0 zone",
+      "Attack:Draconic Whip"
+     ]
+    }
+   ],
+   "position": {
+    "turn": 5,
+    "his_turn": 3,
+    "went_first": "Dustin",
+    "points": {
+     "dustin": 0,
+     "opponent": 1
+    },
+    "energy_zone": {
+     "dustin_this_turn": "Fighting",
+     "dustin_next_turn": "Fighting",
+     "opponent_next_turn": null
+    },
+    "dustin": {
+     "active": {
+      "card": "Trapinch",
+      "printing": "Trapinch B3 076",
+      "hp_now": 60,
+      "printed_hp": 60,
+      "hp_bonuses_in_play": [],
+      "energy": [
+       "Grass"
+      ],
+      "tools": [],
+      "conditions": [],
+      "cards_underneath": []
+     },
+     "bench": [
+      {
+       "card": "Dratini",
+       "printing": "Dratini B4 116",
+       "hp_now": 60,
+       "printed_hp": 60,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Dragonair",
+       "printing": "Dragonair B4 117",
+       "hp_now": 80,
+       "printed_hp": 80,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": [
+        "Dratini"
+       ]
+      }
+     ],
+     "hand": [
+      "Dragonair",
+      "Rare Candy (Item)",
+      "Trapinch",
+      "Cyrus (Supporter)"
+     ],
+     "discard": [
+      "Poké Ball",
+      "Copycat",
+      "Professor's Research",
+      "Poké Ball",
+      "Goomy"
+     ],
+     "discarded_energy": [],
+     "deck_count": 7,
+     "cards_left_in_deck": [
+      "1 Cyrus",
+      "1 Hiking Trail",
+      "1 Professor's Research",
+      "1 Rare Candy",
+      "1 X Speed",
+      "2 Flygon ex"
+     ],
+     "his_pokemon_knocked_out_so_far": 1
+    },
+    "opponent": {
+     "active": {
+      "card": "Mega Sharpedo ex",
+      "printing": "Mega Sharpedo ex B4 035",
+      "hp_now": 190,
+      "printed_hp": 190,
+      "hp_bonuses_in_play": [],
+      "energy": [
+       "Water",
+       "Water"
+      ],
+      "tools": [],
+      "conditions": [],
+      "cards_underneath": [
+       "Carvanha"
+      ]
+     },
+     "bench": [
+      {
+       "card": "Chien-Pao ex",
+       "printing": "Chien-Pao ex B2a 037",
+       "hp_now": 130,
+       "printed_hp": 130,
+       "hp_bonuses_in_play": [],
+       "energy": [
+        "Water"
+       ],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Magikarp",
+       "printing": "Magikarp A1 077",
+       "hp_now": 30,
+       "printed_hp": 30,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Carvanha",
+       "printing": "Carvanha B4 034",
+       "hp_now": 50,
+       "printed_hp": 50,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand_count": 3,
+     "discard_seen": [
+      "Wallace",
+      "Poké Ball",
+      "Professor's Research"
+     ],
+     "discarded_energy": [],
+     "opponent_pokemon_knocked_out_so_far": 0
+    },
+    "stadium": null,
+    "note": "Reconstructed from your game review, as it stood at the start of this turn; a few details (for example the opponent's hand size or a card's exact printing) may be estimates."
+   }
+  },
+  {
+   "point_id": "LAD-20261023_005124000_SR-t8",
+   "part": 3,
+   "question": "At 0-1: is it also good to use Lusamine and the turn's Grass on Buzzwole ex, switch it in and Big Beat Butterfree (130 to 10)? That keeps the 10-HP Pheromosa alive and the opponent at 1 point, but exposes the ex. You instead attacked with Pheromosa.",
+   "video": {
+    "file": "ScreenRecording_10-22-2026 19-51-24_1.mp4",
+    "at": "5:54",
+    "clip": null
+   },
+   "his_move": {
+    "steps": [
+     "Play Lusamine",
+     "  (attach Energy from the discard pile)",
+     "Attach Grass Energy from the Energy Zone to Buzzwole",
+     "Attack with the Active Pheromosa: Jump Blues"
+    ],
+    "labels": [
+     "Play:Lusamine",
+     "AttachFromDiscard#{\"in_play_idx\":2,\"num_random_energies\":1}",
+     "Attach:1Grass@3 zone",
+     "Attack:Jump Blues"
+    ]
+   },
+   "alternatives": [
+    {
+     "steps": [
+      "Play Lusamine",
+      "  (attach Energy from the discard pile)",
+      "Attach Grass Energy from the Energy Zone to Buzzwole ex",
+      "Use Celesteela's Ability (Ultra Thrusters)",
+      "  (Buzzwole ex comes into the Active Spot, the Active Pheromosa goes to the Bench)",
+      "Attack with the Active Buzzwole ex: Big Beat"
+     ],
+     "labels": [
+      "Play:Lusamine",
+      "AttachFromDiscard#{\"in_play_idx\":2,\"num_random_energies\":1}",
+      "Attach:1Grass@2 zone",
+      "Ability@1",
+      "Activate:0@2",
+      "Attack:Big Beat"
+     ]
+    }
+   ],
+   "position": {
+    "turn": 8,
+    "his_turn": 4,
+    "went_first": "the opponent",
+    "points": {
+     "dustin": 0,
+     "opponent": 1
+    },
+    "energy_zone": {
+     "dustin_this_turn": "Grass",
+     "dustin_next_turn": "Grass",
+     "opponent_next_turn": null
+    },
+    "dustin": {
+     "active": {
+      "card": "Pheromosa",
+      "printing": "Pheromosa A3a 007",
+      "hp_now": 10,
+      "printed_hp": 70,
+      "hp_bonuses_in_play": [],
+      "energy": [
+       "Grass"
+      ],
+      "tools": [],
+      "conditions": [],
+      "cards_underneath": []
+     },
+     "bench": [
+      {
+       "card": "Celesteela",
+       "printing": "Celesteela A3a 062",
+       "hp_now": 120,
+       "printed_hp": 120,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Buzzwole ex",
+       "printing": "Buzzwole ex A3a 006",
+       "hp_now": 170,
+       "printed_hp": 140,
+       "hp_bonuses_in_play": [
+        "Leaf Cape: The [G] Pokémon this card is attached to gets +30 HP."
+       ],
+       "energy": [
+        "Grass"
+       ],
+       "tools": [
+        "Leaf Cape"
+       ],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Buzzwole",
+       "printing": "Buzzwole B2 014",
+       "hp_now": 110,
+       "printed_hp": 110,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand": [
+      "Lusamine (Supporter)",
+      "Lusamine (Supporter)",
+      "Professor's Research (Supporter)",
+      "Cyrus (Supporter)"
+     ],
+     "discard": [
+      "Professor's Research",
+      "Sabrina",
+      "Pheromosa",
+      "Copycat",
+      "Fragrant Forest",
+      "Field Blower"
+     ],
+     "discarded_energy": [
+      "Grass"
+     ],
+     "deck_count": 5,
+     "cards_left_in_deck": [
+      "1 Celesteela",
+      "1 Rocky Helmet",
+      "1 Starting Plains",
+      "2 Poké Ball"
+     ],
+     "his_pokemon_knocked_out_so_far": 1
+    },
+    "opponent": {
+     "active": {
+      "card": "Butterfree",
+      "printing": "Butterfree B3b 003",
+      "hp_now": 130,
+      "printed_hp": 130,
+      "hp_bonuses_in_play": [],
+      "energy": [
+       "Grass"
+      ],
+      "tools": [],
+      "conditions": [],
+      "cards_underneath": [
+       "Metapod",
+       "Caterpie"
+      ]
+     },
+     "bench": [
+      {
+       "card": "Mega Sceptile ex",
+       "printing": "Mega Sceptile ex B3 008",
+       "hp_now": 190,
+       "printed_hp": 210,
+       "hp_bonuses_in_play": [],
+       "energy": [
+        "Grass"
+       ],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": [
+        "Grovyle",
+        "Treecko"
+       ]
+      },
+      {
+       "card": "Metapod",
+       "printing": "Metapod A1 006",
+       "hp_now": 80,
+       "printed_hp": 80,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": [
+        "Caterpie"
+       ]
+      }
+     ],
+     "hand_count": 3,
+     "discard_seen": [],
+     "discarded_energy": [],
+     "opponent_pokemon_knocked_out_so_far": 0
+    },
+    "stadium": {
+     "card": "Fragrant Forest",
+     "owner": "the opponent"
+    },
+    "note": "Reconstructed from your game review, as it stood at the start of this turn; a few details (for example the opponent's hand size or a card's exact printing) may be estimates."
+   }
+  },
+  {
+   "point_id": "LAD-20261023_010556000_SR-t8",
+   "part": 3,
+   "question": "On turn 8 vs Hitmonlee you put the Water on the damaged Oricorio so Soothing Shore heals it. Would Water on the damaged benched Wartortle (Mega Blastoise line, also healed by Shore) be just as good?",
+   "video": {
+    "file": "ScreenRecording_10-22-2026 20-05-56_1.mp4",
+    "at": "4:06",
+    "clip": null
+   },
+   "his_move": {
+    "steps": [
+     "Attach Water Energy from the Energy Zone to Oricorio",
+     "Play Soothing Shore",
+     "Attack with the Active Eiscue (80 HP): Ram"
+    ],
+    "labels": [
+     "Attach:1Water@2 zone",
+     "Play:Soothing Shore",
+     "Attack:Ram"
+    ]
+   },
+   "alternatives": [
+    {
+     "steps": [
+      "Attach Water Energy from the Energy Zone to Wartortle",
+      "Play Soothing Shore",
+      "Attack with the Active Eiscue (80 HP): Ram"
+     ],
+     "labels": [
+      "Attach:1Water@3 zone",
+      "Play:Soothing Shore",
+      "Attack:Ram"
+     ]
+    }
+   ],
+   "position": {
+    "turn": 8,
+    "his_turn": 4,
+    "went_first": "the opponent",
+    "points": {
+     "dustin": 0,
+     "opponent": 0
+    },
+    "energy_zone": {
+     "dustin_this_turn": "Water",
+     "dustin_next_turn": "Water",
+     "opponent_next_turn": null
+    },
+    "dustin": {
+     "active": {
+      "card": "Eiscue",
+      "printing": "Eiscue B1 080",
+      "hp_now": 80,
+      "printed_hp": 80,
+      "hp_bonuses_in_play": [],
+      "energy": [
+       "Water",
+       "Water"
+      ],
+      "tools": [],
+      "conditions": [],
+      "cards_underneath": []
+     },
+     "bench": [
+      {
+       "card": "Eiscue",
+       "printing": "Eiscue B1 080",
+       "hp_now": 80,
+       "printed_hp": 80,
+       "hp_bonuses_in_play": [],
+       "energy": [
+        "Water"
+       ],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Oricorio",
+       "printing": "Oricorio A3 066",
+       "hp_now": 40,
+       "printed_hp": 70,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Wartortle",
+       "printing": "Wartortle B1a 018",
+       "hp_now": 60,
+       "printed_hp": 90,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": [
+        "Squirtle"
+       ]
+      }
+     ],
+     "hand": [
+      "Soothing Shore (Stadium)",
+      "Lucky Ice Pop (Item)",
+      "Squirtle",
+      "Cyrus (Supporter)"
+     ],
+     "discard": [
+      "Copycat",
+      "Poké Ball",
+      "Professor's Research",
+      "Poké Ball"
+     ],
+     "discarded_energy": [],
+     "deck_count": 7,
+     "cards_left_in_deck": [
+      "1 Copycat",
+      "1 Lillie",
+      "1 Mega Blastoise ex",
+      "1 Parasol Lady",
+      "1 Professor's Research",
+      "1 Soothing Shore",
+      "1 Wartortle"
+     ],
+     "his_pokemon_knocked_out_so_far": 0
+    },
+    "opponent": {
+     "active": {
+      "card": "Hitmonlee",
+      "printing": "Hitmonlee A1 154",
+      "hp_now": 70,
+      "printed_hp": 80,
+      "hp_bonuses_in_play": [],
+      "energy": [
+       "Fighting",
+       "Fighting",
+       "Fighting"
+      ],
+      "tools": [],
+      "conditions": [],
+      "cards_underneath": []
+     },
+     "bench": [],
+     "hand_count": 7,
+     "discard_seen": [
+      "Professor's Research",
+      "Sabrina",
+      "Red Card"
+     ],
+     "discarded_energy": [],
+     "opponent_pokemon_knocked_out_so_far": 0
+    },
+    "stadium": null,
+    "note": "Reconstructed from your game review, as it stood at the start of this turn; a few details (for example the opponent's hand size or a card's exact printing) may be estimates."
+   }
+  },
+  {
+   "point_id": "LAD-20261023_012910000_SR-t12",
+   "part": 4,
+   "question": "At turn 12 of the Mega Lucario game you evolved Mega Blastoise ex, put the Water on Oricorio and passed, so next turn you could attack with 6 Water and Bench damage. Would attacking right away also have been fine? That means retreating Oricorio and using Triple Bombardment with 5 Water for 130 to the caped Mega Lucario, with no Bench damage.",
+   "video": {
+    "file": "ScreenRecording_10-22-2026 20-29-10_1.mp4",
+    "at": "4:05",
+    "clip": null
+   },
+   "his_move": {
+    "steps": [
+     "Evolve Wartortle into Mega Blastoise ex",
+     "Attach Water Energy from the Energy Zone to the Active Oricorio",
+     "End the turn"
+    ],
+    "labels": [
+     "Evolve:Mega Blastoise ex@1",
+     "Attach:1Water@0 zone",
+     "EndTurn"
+    ]
+   },
+   "alternatives": [
+    {
+     "steps": [
+      "Evolve Wartortle into Mega Blastoise ex",
+      "Attach Water Energy from the Energy Zone to the Active Oricorio",
+      "Retreat the Active Oricorio, bringing Mega Blastoise ex into the Active Spot",
+      "Attack with the Active Mega Blastoise ex: Triple Bombardment"
+     ],
+     "labels": [
+      "Evolve:Mega Blastoise ex@1",
+      "Attach:1Water@0 zone",
+      "Retreat:1",
+      "Attack:Triple Bombardment"
+     ]
+    }
+   ],
+   "position": {
+    "turn": 12,
+    "his_turn": 6,
+    "went_first": "the opponent",
+    "points": {
+     "dustin": 0,
+     "opponent": 0
+    },
+    "energy_zone": {
+     "dustin_this_turn": "Water",
+     "dustin_next_turn": "Water",
+     "opponent_next_turn": null
+    },
+    "dustin": {
+     "active": {
+      "card": "Oricorio",
+      "printing": "Oricorio A3 066",
+      "hp_now": 70,
+      "printed_hp": 70,
+      "hp_bonuses_in_play": [],
+      "energy": [],
+      "tools": [],
+      "conditions": [],
+      "cards_underneath": []
+     },
+     "bench": [
+      {
+       "card": "Wartortle",
+       "printing": "Wartortle B1a 018",
+       "hp_now": 90,
+       "printed_hp": 90,
+       "hp_bonuses_in_play": [],
+       "energy": [
+        "Water",
+        "Water",
+        "Water",
+        "Water",
+        "Water"
+       ],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": [
+        "Squirtle"
+       ]
+      },
+      {
+       "card": "Eiscue",
+       "printing": "Eiscue B1 080",
+       "hp_now": 80,
+       "printed_hp": 80,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Eiscue",
+       "printing": "Eiscue B1 080",
+       "hp_now": 80,
+       "printed_hp": 80,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand": [
+      "Lillie (Supporter)",
+      "Soothing Shore (Stadium)",
+      "Mega Blastoise ex",
+      "Squirtle",
+      "Cyrus (Supporter)"
+     ],
+     "discard": [
+      "Poké Ball",
+      "Professor's Research",
+      "Professor's Research",
+      "Poké Ball",
+      "Copycat",
+      "Copycat"
+     ],
+     "discarded_energy": [],
+     "deck_count": 3,
+     "cards_left_in_deck": [
+      "1 Lucky Ice Pop",
+      "1 Parasol Lady",
+      "1 Wartortle"
+     ],
+     "his_pokemon_knocked_out_so_far": 0
+    },
+    "opponent": {
+     "active": {
+      "card": "Mega Lucario ex",
+      "printing": "Mega Lucario ex B3 081",
+      "hp_now": 220,
+      "printed_hp": 190,
+      "hp_bonuses_in_play": [
+       "Elegant Cape: The Stage 1 Pokémon this card is attached to gets +30 HP."
+      ],
+      "energy": [
+       "Fighting",
+       "Fighting",
+       "Fighting",
+       "Fighting"
+      ],
+      "tools": [
+       "Elegant Cape"
+      ],
+      "conditions": [],
+      "cards_underneath": [
+       "Riolu"
+      ]
+     },
+     "bench": [
+      {
+       "card": "Mega Lucario ex",
+       "printing": "Mega Lucario ex B3 081",
+       "hp_now": 190,
+       "printed_hp": 190,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": [
+        "Riolu"
+       ]
+      },
+      {
+       "card": "Hitmonchan ex",
+       "printing": "Hitmonchan ex B1 124",
+       "hp_now": 150,
+       "printed_hp": 130,
+       "hp_bonuses_in_play": [
+        "Giant Cape: The Pokémon this card is attached to gets +20 HP."
+       ],
+       "energy": [
+        "Fighting"
+       ],
+       "tools": [
+        "Giant Cape"
+       ],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand_count": 4,
+     "discard_seen": [
+      "Professor's Research",
+      "Professor's Research",
+      "Copycat",
+      "Leaf",
+      "X Speed"
+     ],
+     "discarded_energy": [],
+     "opponent_pokemon_knocked_out_so_far": 0
+    },
+    "stadium": {
+     "card": "Soothing Shore",
+     "owner": "Dustin"
+    },
+    "note": "Reconstructed from your game review, as it stood at the start of this turn; a few details (for example the opponent's hand size or a card's exact printing) may be estimates."
+   }
+  },
+  {
+   "point_id": "LAD-20261023_115617000_SR-t5",
+   "part": 4,
+   "question": "At turn 5 of the first Mega Lucario/Bonsly game your Eiscue was at 30 HP in front of a Mega Lucario ex. Would it also have been fine to put the Water on Eiscue and retreat it to Oricorio (whose Safeguard blocks damage from ex attackers)? You put the Water on Wartortle and left Eiscue Active.",
+   "video": {
+    "file": "ScreenRecording_10-23-2026 06-56-17_1.mp4",
+    "at": "2:25",
+    "clip": null
+   },
+   "his_move": {
+    "steps": [
+     "Play Soothing Shore",
+     "Attach Water Energy from the Energy Zone to Wartortle",
+     "Play Lucky Ice Pop",
+     "End the turn"
+    ],
+    "labels": [
+     "Play:Soothing Shore",
+     "Attach:1Water@1 zone",
+     "Play:Lucky Ice Pop",
+     "EndTurn"
+    ]
+   },
+   "alternatives": [
+    {
+     "steps": [
+      "Play Soothing Shore",
+      "Attach Water Energy from the Energy Zone to the Active Eiscue",
+      "Retreat the Active Eiscue, bringing Oricorio into the Active Spot",
+      "Bench Eiscue from your hand",
+      "End the turn"
+     ],
+     "labels": [
+      "Play:Soothing Shore",
+      "Attach:1Water@0 zone",
+      "Retreat:2",
+      "Place:Eiscue@3",
+      "EndTurn"
+     ]
+    }
+   ],
+   "position": {
+    "turn": 5,
+    "his_turn": 3,
+    "went_first": "Dustin",
+    "points": {
+     "dustin": 0,
+     "opponent": 0
+    },
+    "energy_zone": {
+     "dustin_this_turn": "Water",
+     "dustin_next_turn": "Water",
+     "opponent_next_turn": null
+    },
+    "dustin": {
+     "active": {
+      "card": "Eiscue",
+      "printing": "Eiscue B1 080",
+      "hp_now": 30,
+      "printed_hp": 80,
+      "hp_bonuses_in_play": [],
+      "energy": [],
+      "tools": [],
+      "conditions": [],
+      "cards_underneath": []
+     },
+     "bench": [
+      {
+       "card": "Wartortle",
+       "printing": "Wartortle B1a 018",
+       "hp_now": 90,
+       "printed_hp": 90,
+       "hp_bonuses_in_play": [],
+       "energy": [
+        "Water"
+       ],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": [
+        "Squirtle"
+       ]
+      },
+      {
+       "card": "Oricorio",
+       "printing": "Oricorio A3 066",
+       "hp_now": 70,
+       "printed_hp": 70,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand": [
+      "Soothing Shore (Stadium)",
+      "Cyrus (Supporter)",
+      "Eiscue",
+      "Lucky Ice Pop (Item)"
+     ],
+     "discard": [
+      "Professor's Research",
+      "Copycat",
+      "Poké Ball",
+      "Soothing Shore"
+     ],
+     "discarded_energy": [],
+     "deck_count": 8,
+     "cards_left_in_deck": [
+      "1 Copycat",
+      "1 Lillie",
+      "1 Mega Blastoise ex",
+      "1 Parasol Lady",
+      "1 Poké Ball",
+      "1 Professor's Research",
+      "1 Squirtle",
+      "1 Wartortle"
+     ],
+     "his_pokemon_knocked_out_so_far": 0
+    },
+    "opponent": {
+     "active": {
+      "card": "Mega Lucario ex",
+      "printing": "Mega Lucario ex B3 081",
+      "hp_now": 190,
+      "printed_hp": 190,
+      "hp_bonuses_in_play": [],
+      "energy": [
+       "Fighting",
+       "Fighting"
+      ],
+      "tools": [
+       "Rocky Helmet"
+      ],
+      "conditions": [],
+      "cards_underneath": [
+       "Riolu"
+      ]
+     },
+     "bench": [
+      {
+       "card": "Hitmonchan ex",
+       "printing": "Hitmonchan ex B1 124",
+       "hp_now": 130,
+       "printed_hp": 130,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Bonsly",
+       "printing": "Bonsly B3 078",
+       "hp_now": 30,
+       "printed_hp": 30,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand_count": 2,
+     "discard_seen": [
+      "Professor's Research",
+      "Poké Ball"
+     ],
+     "discarded_energy": [],
+     "opponent_pokemon_knocked_out_so_far": 0
+    },
+    "stadium": {
+     "card": "Arena of Antiquity",
+     "owner": "the opponent"
+    },
+    "note": "Reconstructed from your game review, as it stood at the start of this turn; a few details (for example the opponent's hand size or a card's exact printing) may be estimates."
+   }
+  },
+  {
+   "point_id": "LAD-20261023_204548000_SR-t7",
+   "part": 4,
+   "question": "At turn 7 of the Muk/Mega Kangaskhan game (20261023_204548), you played Poké Ball, put the Water on the benched Wartortle and benched Eiscue, leaving Oricorio Active. Would putting the Water on Oricorio and retreating it into Wartortle instead also be acceptable, or was your line the better play?",
+   "video": {
+    "file": "ScreenRecording_10-23-2026 15-45-48_1.mp4",
+    "at": "3:09",
+    "clip": null
+   },
+   "his_move": {
+    "steps": [
+     "Play Poké Ball",
+     "Attach Water Energy from the Energy Zone to Wartortle",
+     "Bench Eiscue from your hand",
+     "End the turn"
+    ],
+    "labels": [
+     "Play:Poké Ball",
+     "Attach:1Water@1 zone",
+     "Place:Eiscue@2",
+     "EndTurn"
+    ]
+   },
+   "alternatives": [
+    {
+     "steps": [
+      "Play Poké Ball",
+      "Attach Water Energy from the Energy Zone to the Active Oricorio",
+      "Retreat the Active Oricorio, bringing Wartortle into the Active Spot",
+      "Bench Eiscue from your hand",
+      "End the turn"
+     ],
+     "labels": [
+      "Play:Poké Ball",
+      "Attach:1Water@0 zone",
+      "Retreat:1",
+      "Place:Eiscue@2",
+      "EndTurn"
+     ]
+    }
+   ],
+   "position": {
+    "turn": 7,
+    "his_turn": 4,
+    "went_first": "Dustin",
+    "points": {
+     "dustin": 0,
+     "opponent": 1
+    },
+    "energy_zone": {
+     "dustin_this_turn": "Water",
+     "dustin_next_turn": "Water",
+     "opponent_next_turn": null
+    },
+    "dustin": {
+     "active": {
+      "card": "Oricorio",
+      "printing": "Oricorio A3 066",
+      "hp_now": 70,
+      "printed_hp": 70,
+      "hp_bonuses_in_play": [],
+      "energy": [],
+      "tools": [],
+      "conditions": [],
+      "cards_underneath": []
+     },
+     "bench": [
+      {
+       "card": "Wartortle",
+       "printing": "Wartortle B1a 018",
+       "hp_now": 90,
+       "printed_hp": 90,
+       "hp_bonuses_in_play": [],
+       "energy": [
+        "Water"
+       ],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": [
+        "Squirtle"
+       ]
+      }
+     ],
+     "hand": [
+      "Lucky Ice Pop (Item)",
+      "Squirtle",
+      "Soothing Shore (Stadium)",
+      "Cyrus (Supporter)",
+      "Poké Ball (Item)"
+     ],
+     "discard": [
+      "Poké Ball",
+      "Professor's Research",
+      "Eiscue"
+     ],
+     "discarded_energy": [
+      "Water"
+     ],
+     "deck_count": 8,
+     "cards_left_in_deck": [
+      "1 Eiscue",
+      "1 Lillie",
+      "1 Mega Blastoise ex",
+      "1 Parasol Lady",
+      "1 Professor's Research",
+      "1 Wartortle",
+      "2 Copycat"
+     ],
+     "his_pokemon_knocked_out_so_far": 1
+    },
+    "opponent": {
+     "active": {
+      "card": "Alolan Muk",
+      "printing": "Alolan Muk B2 097",
+      "hp_now": 110,
+      "printed_hp": 110,
+      "hp_bonuses_in_play": [],
+      "energy": [
+       "Darkness",
+       "Darkness",
+       "Darkness"
+      ],
+      "tools": [],
+      "conditions": [],
+      "cards_underneath": [
+       "Alolan Grimer"
+      ]
+     },
+     "bench": [
+      {
+       "card": "Alolan Muk",
+       "printing": "Alolan Muk B2 097",
+       "hp_now": 110,
+       "printed_hp": 110,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": [
+        "Alolan Grimer"
+       ]
+      },
+      {
+       "card": "Mega Kangaskhan ex",
+       "printing": "Mega Kangaskhan ex B2 127",
+       "hp_now": 180,
+       "printed_hp": 180,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand_count": 5,
+     "discard_seen": [
+      "Professor's Research",
+      "Professor's Research"
+     ],
+     "discarded_energy": [],
+     "opponent_pokemon_knocked_out_so_far": 0
+    },
+    "stadium": {
+     "card": "Soothing Shore",
+     "owner": "Dustin"
+    },
+    "note": "Reconstructed from your game review, as it stood at the start of this turn; a few details (for example the opponent's hand size or a card's exact printing) may be estimates."
+   }
+  },
+  {
+   "point_id": "LAD-20261023_221617000_SR-t3",
+   "part": 4,
+   "question": "At turn 3 of the Entei ex game, after Rare Candy into Stoutland, you kept Cheren in your hand. Would playing Cheren that same turn also have been fine, or was your line the better play?",
+   "video": {
+    "file": "ScreenRecording_10-23-2026 17-16-17_1.mp4",
+    "at": "1:45",
+    "clip": null
+   },
+   "his_move": {
+    "steps": [
+     "Play Rare Candy",
+     "Evolve the Active Lillipup (60 HP) into Stoutland",
+     "Attach Psychic Energy from the Energy Zone to the Active Stoutland",
+     "End the turn"
+    ],
+    "labels": [
+     "Play:Rare Candy",
+     "Evolve:Stoutland@0",
+     "Attach:1Psychic@0 zone",
+     "EndTurn"
+    ]
+   },
+   "alternatives": [
+    {
+     "steps": [
+      "Play Rare Candy",
+      "Evolve the Active Lillipup (60 HP) into Stoutland",
+      "Attach Psychic Energy from the Energy Zone to the Active Stoutland",
+      "Play Cheren",
+      "End the turn"
+     ],
+     "labels": [
+      "Play:Rare Candy",
+      "Evolve:Stoutland@0",
+      "Attach:1Psychic@0 zone",
+      "Play:Cheren",
+      "EndTurn"
+     ]
+    }
+   ],
+   "position": {
+    "turn": 3,
+    "his_turn": 2,
+    "went_first": "Dustin",
+    "points": {
+     "dustin": 0,
+     "opponent": 0
+    },
+    "energy_zone": {
+     "dustin_this_turn": "Psychic",
+     "dustin_next_turn": "Psychic",
+     "opponent_next_turn": null
+    },
+    "dustin": {
+     "active": {
+      "card": "Lillipup",
+      "printing": "Lillipup A3a 054",
+      "hp_now": 60,
+      "printed_hp": 60,
+      "hp_bonuses_in_play": [],
+      "energy": [],
+      "tools": [],
+      "conditions": [],
+      "cards_underneath": []
+     },
+     "bench": [
+      {
+       "card": "Indeedee ex",
+       "printing": "Indeedee ex B1 121",
+       "hp_now": 130,
+       "printed_hp": 130,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Lillipup",
+       "printing": "Lillipup A3a 054",
+       "hp_now": 60,
+       "printed_hp": 60,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand": [
+      "Rare Candy (Item)",
+      "Psychic (Supporter)",
+      "Cheren (Supporter)",
+      "Lillie (Supporter)",
+      "Stoutland"
+     ],
+     "discard": [
+      "Professor's Research"
+     ],
+     "discarded_energy": [],
+     "deck_count": 11,
+     "cards_left_in_deck": [
+      "1 Cyrus",
+      "1 Field Blower",
+      "1 Indeedee ex",
+      "1 Professor's Research",
+      "1 Protective Poncho",
+      "1 Rare Candy",
+      "1 Stoutland",
+      "2 Copycat",
+      "2 Poké Ball"
+     ],
+     "his_pokemon_knocked_out_so_far": 0
+    },
+    "opponent": {
+     "active": {
+      "card": "Entei ex",
+      "printing": "Entei ex A4a 010",
+      "hp_now": 140,
+      "printed_hp": 140,
+      "hp_bonuses_in_play": [],
+      "energy": [
+       "Fire"
+      ],
+      "tools": [],
+      "conditions": [],
+      "cards_underneath": []
+     },
+     "bench": [
+      {
+       "card": "Charmander",
+       "printing": "Charmander B2b 007",
+       "hp_now": 90,
+       "printed_hp": 70,
+       "hp_bonuses_in_play": [
+        "Giant Cape: The Pokémon this card is attached to gets +20 HP."
+       ],
+       "energy": [],
+       "tools": [
+        "Giant Cape"
+       ],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Entei ex",
+       "printing": "Entei ex A4a 010",
+       "hp_now": 140,
+       "printed_hp": 140,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand_count": 4,
+     "discard_seen": [
+      "Poké Ball",
+      "Copycat"
+     ],
+     "discarded_energy": [],
+     "opponent_pokemon_knocked_out_so_far": 0
+    },
+    "stadium": {
+     "card": "Rainbow Cave",
+     "owner": "the opponent"
+    },
+    "note": "Reconstructed from your game review, as it stood at the start of this turn; a few details (for example the opponent's hand size or a card's exact printing) may be estimates."
+   }
+  },
+  {
+   "point_id": "LAD-20261023_224156000_SR-t6",
+   "part": 4,
+   "question": "At turn 6 of the Weezing ex game you benched Snorlax ex and started Energy on it, with two Terapagos ex in hand. Would benching Terapagos ex instead also have been fine? It needs 3 Energy instead of 4 and gets +20 for each Energy type.",
+   "video": {
+    "file": "ScreenRecording_10-23-2026 17-41-56_1.mp4",
+    "at": "3:41",
+    "clip": null
+   },
+   "his_move": {
+    "steps": [
+     "Bench Snorlax ex from your hand",
+     "Play Lucky Ice Pop",
+     "Attach Metal Energy from the Energy Zone to Snorlax ex",
+     "End the turn"
+    ],
+    "labels": [
+     "Place:Snorlax ex@3",
+     "Play:Lucky Ice Pop",
+     "Attach:1Metal@3 zone",
+     "EndTurn"
+    ]
+   },
+   "alternatives": [
+    {
+     "steps": [
+      "Bench Terapagos ex from your hand",
+      "Play Lucky Ice Pop",
+      "Attach Metal Energy from the Energy Zone to Terapagos ex",
+      "End the turn"
+     ],
+     "labels": [
+      "Place:Terapagos ex@3",
+      "Play:Lucky Ice Pop",
+      "Attach:1Metal@3 zone",
+      "EndTurn"
+     ]
+    }
+   ],
+   "position": {
+    "turn": 6,
+    "his_turn": 3,
+    "went_first": "the opponent",
+    "points": {
+     "dustin": 0,
+     "opponent": 1
+    },
+    "energy_zone": {
+     "dustin_this_turn": "Metal",
+     "dustin_next_turn": "Darkness",
+     "opponent_next_turn": null
+    },
+    "dustin": {
+     "active": {
+      "card": "Persian",
+      "printing": "Persian A1 197",
+      "hp_now": 50,
+      "printed_hp": 90,
+      "hp_bonuses_in_play": [],
+      "energy": [],
+      "tools": [],
+      "conditions": [],
+      "cards_underneath": [
+       "Meowth"
+      ]
+     },
+     "bench": [
+      {
+       "card": "Silvally",
+       "printing": "Silvally A3a 061",
+       "hp_now": 110,
+       "printed_hp": 110,
+       "hp_bonuses_in_play": [],
+       "energy": [
+        "Grass"
+       ],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": [
+        "Type: Null"
+       ]
+      },
+      {
+       "card": "Type: Null",
+       "printing": "Type: Null A3a 060",
+       "hp_now": 80,
+       "printed_hp": 80,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand": [
+      "Terapagos ex",
+      "Lucky Ice Pop (Item)",
+      "Terapagos ex",
+      "Snorlax ex"
+     ],
+     "discard": [
+      "Poké Ball",
+      "Professor's Research",
+      "Meowth",
+      "Poké Ball"
+     ],
+     "discarded_energy": [
+      "Metal"
+     ],
+     "deck_count": 7,
+     "cards_left_in_deck": [
+      "1 Copycat",
+      "1 Cyrus",
+      "1 Field Blower",
+      "1 Lucky Ice Pop",
+      "1 Persian",
+      "1 Professor's Research",
+      "1 Silvally"
+     ],
+     "his_pokemon_knocked_out_so_far": 1
+    },
+    "opponent": {
+     "active": {
+      "card": "Bombirdier",
+      "printing": "Bombirdier B3 115",
+      "hp_now": 70,
+      "printed_hp": 70,
+      "hp_bonuses_in_play": [],
+      "energy": [
+       "Darkness"
+      ],
+      "tools": [
+       "Deceptive Needle"
+      ],
+      "conditions": [],
+      "cards_underneath": []
+     },
+     "bench": [
+      {
+       "card": "Nihilego",
+       "printing": "Nihilego A3a 042",
+       "hp_now": 70,
+       "printed_hp": 70,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Team Rocket's Weezing ex",
+       "printing": "Team Rocket's Weezing ex B4a 043",
+       "hp_now": 140,
+       "printed_hp": 140,
+       "hp_bonuses_in_play": [],
+       "energy": [
+        "Darkness"
+       ],
+       "tools": [
+        "Poison Barb"
+       ],
+       "conditions": [],
+       "cards_underneath": [
+        "Team Rocket's Koffing"
+       ]
+      }
+     ],
+     "hand_count": 3,
+     "discard_seen": [
+      "Professor's Research"
+     ],
+     "discarded_energy": [],
+     "opponent_pokemon_knocked_out_so_far": 0
+    },
+    "stadium": null,
+    "note": "Reconstructed from your game review, as it stood at the start of this turn; a few details (for example the opponent's hand size or a card's exact printing) may be estimates."
+   }
+  },
+  {
+   "point_id": "LAD-20261024_143157000_SR-t4",
+   "part": 5,
+   "question": "Hoopa ex game, your turn 2 (global 4): you retreated the 30-HP Axew to Goomy (discarding its Fighting), attached Fighting to the benched Axew and Rare Candied it to Haxorus. Would keeping Axew Active, attaching the Fighting to it and Rare Candying it into Haxorus in the Active Spot (Haxorus at 110 HP with 2 Energy, Goomy stays benched) also be acceptable?",
+   "video": {
+    "file": "ScreenRecording_10-24-2026 09-31-57_1.mp4",
+    "at": "2:05",
+    "clip": null
+   },
+   "his_move": {
+    "steps": [
+     "Retreat the Active Axew, bringing Goomy into the Active Spot",
+     "Attach Fighting Energy from the Energy Zone to Axew",
+     "Play Rare Candy",
+     "Evolve Axew into Haxorus",
+     "End the turn"
+    ],
+    "labels": [
+     "Retreat:1",
+     "Attach:1Fighting@1 zone",
+     "Play:Rare Candy",
+     "Evolve:Haxorus@1",
+     "EndTurn"
+    ]
+   },
+   "alternatives": [
+    {
+     "steps": [
+      "Attach Fighting Energy from the Energy Zone to the Active Axew",
+      "Play Rare Candy",
+      "Evolve the Active Axew into Haxorus",
+      "End the turn"
+     ],
+     "labels": [
+      "Attach:1Fighting@0 zone",
+      "Play:Rare Candy",
+      "Evolve:Haxorus@0",
+      "EndTurn"
+     ]
+    }
+   ],
+   "position": {
+    "turn": 4,
+    "his_turn": 2,
+    "went_first": "the opponent",
+    "points": {
+     "dustin": 0,
+     "opponent": 0
+    },
+    "energy_zone": {
+     "dustin_this_turn": "Fighting",
+     "dustin_next_turn": "Metal",
+     "opponent_next_turn": null
+    },
+    "dustin": {
+     "active": {
+      "card": "Axew",
+      "printing": "Axew B2b 054",
+      "hp_now": 30,
+      "printed_hp": 70,
+      "hp_bonuses_in_play": [],
+      "energy": [
+       "Fighting"
+      ],
+      "tools": [],
+      "conditions": [],
+      "cards_underneath": []
+     },
+     "bench": [
+      {
+       "card": "Goomy",
+       "printing": "Goomy B1 177",
+       "hp_now": 20,
+       "printed_hp": 40,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand": [
+      "Rare Candy (Item)",
+      "Rare Candy (Item)",
+      "Iris (Supporter)",
+      "Iris (Supporter)",
+      "Cyrus (Supporter)",
+      "Haxorus"
+     ],
+     "discard": [
+      "Poké Ball",
+      "Professor's Research"
+     ],
+     "discarded_energy": [],
+     "deck_count": 10,
+     "cards_left_in_deck": [
+      "1 Axew",
+      "1 Goomy",
+      "1 Happiny",
+      "1 Haxorus",
+      "1 Poké Ball",
+      "1 Professor's Research",
+      "1 Roaring Moon",
+      "1 Small Balloon",
+      "2 Copycat"
+     ],
+     "his_pokemon_knocked_out_so_far": 0
+    },
+    "opponent": {
+     "active": {
+      "card": "Hoopa ex",
+      "printing": "Hoopa ex B4 103",
+      "hp_now": 150,
+      "printed_hp": 150,
+      "hp_bonuses_in_play": [],
+      "energy": [
+       "Darkness"
+      ],
+      "tools": [
+       "Deceptive Needle"
+      ],
+      "conditions": [],
+      "cards_underneath": []
+     },
+     "bench": [],
+     "hand_count": 4,
+     "discard_seen": [
+      "Poké Ball",
+      "Copycat",
+      "Professor's Research",
+      "Repel"
+     ],
+     "discarded_energy": [],
+     "opponent_pokemon_knocked_out_so_far": 0
+    },
+    "stadium": null,
+    "note": "Reconstructed from your game review, as it stood at the start of this turn; a few details (for example the opponent's hand size or a card's exact printing) may be estimates."
+   }
+  },
+  {
+   "point_id": "LAD-20261024_165202000_SR-t9",
+   "part": 5,
+   "question": "Hydreigon game, your turn 5 (global 9): you healed Dedenne ex twice, retreated it to Oricorio and passed. Dede-Circuit would have done 160 to the 60-HP Hydreigon (a 1-point KO, Rocky Helmet leaving Dedenne at 30). Is healing and attacking with Dedenne also acceptable, or was your line the better play?",
+   "video": {
+    "file": "ScreenRecording_10-24-2026 11-52-02_1.mp4",
+    "at": "5:37",
+    "clip": null
+   },
+   "his_move": {
+    "steps": [
+     "Use Indeedee ex (150 HP, on the Bench)'s Ability (Watch Over)",
+     "Use Indeedee ex (150 HP, on the Bench)'s Ability (Watch Over)",
+     "Retreat the Active Dedenne ex, bringing Oricorio into the Active Spot",
+     "Attach Lightning Energy from the Energy Zone to Dedenne ex",
+     "End the turn"
+    ],
+    "labels": [
+     "Ability@1",
+     "Ability@2",
+     "Retreat:3",
+     "Attach:1Lightning@3 zone",
+     "EndTurn"
+    ]
+   },
+   "alternatives": [
+    {
+     "steps": [
+      "Use Indeedee ex (150 HP, on the Bench)'s Ability (Watch Over)",
+      "Use Indeedee ex (150 HP, on the Bench)'s Ability (Watch Over)",
+      "Attach Lightning Energy from the Energy Zone to Oricorio",
+      "Attack with the Active Dedenne ex: Dede-Circuit"
+     ],
+     "labels": [
+      "Ability@1",
+      "Ability@2",
+      "Attach:1Lightning@3 zone",
+      "Attack:Dede-Circuit"
+     ]
+    }
+   ],
+   "position": {
+    "turn": 9,
+    "his_turn": 5,
+    "went_first": "Dustin",
+    "points": {
+     "dustin": 1,
+     "opponent": 1
+    },
+    "energy_zone": {
+     "dustin_this_turn": "Lightning",
+     "dustin_next_turn": "Lightning",
+     "opponent_next_turn": null
+    },
+    "dustin": {
+     "active": {
+      "card": "Dedenne ex",
+      "printing": "Dedenne ex B3b 024",
+      "hp_now": 10,
+      "printed_hp": 120,
+      "hp_bonuses_in_play": [
+       "Giant Cape: The Pokémon this card is attached to gets +20 HP.",
+       "Starting Plains (Stadium): Each Basic Pokémon in play (both yours and your opponent's) gets +20 HP."
+      ],
+      "energy": [
+       "Lightning",
+       "Lightning"
+      ],
+      "tools": [
+       "Giant Cape"
+      ],
+      "conditions": [],
+      "cards_underneath": []
+     },
+     "bench": [
+      {
+       "card": "Indeedee ex",
+       "printing": "Indeedee ex B1 121",
+       "hp_now": 150,
+       "printed_hp": 130,
+       "hp_bonuses_in_play": [
+        "Starting Plains (Stadium): Each Basic Pokémon in play (both yours and your opponent's) gets +20 HP."
+       ],
+       "energy": [],
+       "tools": [
+        "Clear Veil"
+       ],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Indeedee ex",
+       "printing": "Indeedee ex B1 121",
+       "hp_now": 150,
+       "printed_hp": 130,
+       "hp_bonuses_in_play": [
+        "Starting Plains (Stadium): Each Basic Pokémon in play (both yours and your opponent's) gets +20 HP."
+       ],
+       "energy": [],
+       "tools": [
+        "Clear Veil"
+       ],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Oricorio",
+       "printing": "Oricorio A3 066",
+       "hp_now": 110,
+       "printed_hp": 70,
+       "hp_bonuses_in_play": [
+        "Giant Cape: The Pokémon this card is attached to gets +20 HP.",
+        "Starting Plains (Stadium): Each Basic Pokémon in play (both yours and your opponent's) gets +20 HP."
+       ],
+       "energy": [],
+       "tools": [
+        "Giant Cape"
+       ],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand": [
+      "Small Balloon (Tool)",
+      "Dedenne ex",
+      "Cyrus (Supporter)"
+     ],
+     "discard": [
+      "Copycat",
+      "Poké Ball",
+      "Copycat",
+      "Oricorio",
+      "Small Balloon",
+      "Professor's Research",
+      "Poké Ball",
+      "Professor's Research"
+     ],
+     "discarded_energy": [
+      "Lightning"
+     ],
+     "deck_count": 0,
+     "cards_left_in_deck": [],
+     "his_pokemon_knocked_out_so_far": 1
+    },
+    "opponent": {
+     "active": {
+      "card": "Hydreigon",
+      "printing": "Hydreigon B1 157",
+      "hp_now": 60,
+      "printed_hp": 150,
+      "hp_bonuses_in_play": [],
+      "energy": [],
+      "tools": [
+       "Rocky Helmet"
+      ],
+      "conditions": [],
+      "cards_underneath": [
+       "Deino"
+      ]
+     },
+     "bench": [
+      {
+       "card": "Deino",
+       "printing": "Deino B1 155",
+       "hp_now": 80,
+       "printed_hp": 60,
+       "hp_bonuses_in_play": [
+        "Starting Plains (Stadium): Each Basic Pokémon in play (both yours and your opponent's) gets +20 HP."
+       ],
+       "energy": [
+        "Darkness",
+        "Darkness",
+        "Darkness"
+       ],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand_count": 3,
+     "discard_seen": [
+      "Poké Ball",
+      "Copycat",
+      "Rare Candy",
+      "Bombirdier",
+      "Rocky Helmet"
+     ],
+     "discarded_energy": [
+      "Darkness",
+      "Darkness",
+      "Darkness",
+      "Darkness",
+      "Darkness",
+      "Darkness",
+      "Darkness"
+     ],
+     "opponent_pokemon_knocked_out_so_far": 1
+    },
+    "stadium": {
+     "card": "Starting Plains",
+     "owner": "Dustin"
+    },
+    "note": "Reconstructed from your game review, as it stood at the start of this turn; a few details (for example the opponent's hand size or a card's exact printing) may be estimates."
+   }
+  },
+  {
+   "point_id": "LAD-20261024_175606000_SR-t1",
+   "part": 5,
+   "question": "Sharpedo vs Magby/Fidough, your turn 1: you put Elegant Cape on the lone Carvanha, then Copycat shuffled away Mega Sharpedo ex and Mega Gyarados ex to draw 2 cards. Would keeping your hand (Cape only, then pass), so Mega Sharpedo ex is certain next turn, also be acceptable?",
+   "video": {
+    "file": "ScreenRecording_10-24-2026 12-56-06_1.mp4",
+    "at": "0:45",
+    "clip": null
+   },
+   "his_move": {
+    "steps": [
+     "Play Elegant Cape",
+     "  (attach Elegant Cape to the Active Carvanha)",
+     "Play Copycat",
+     "End the turn"
+    ],
+    "labels": [
+     "Play:Elegant Cape",
+     "Tool:Elegant Cape@0",
+     "Play:Copycat",
+     "EndTurn"
+    ]
+   },
+   "alternatives": [
+    {
+     "steps": [
+      "Play Elegant Cape",
+      "  (attach Elegant Cape to the Active Carvanha)",
+      "End the turn"
+     ],
+     "labels": [
+      "Play:Elegant Cape",
+      "Tool:Elegant Cape@0",
+      "EndTurn"
+     ]
+    }
+   ],
+   "position": {
+    "turn": 1,
+    "his_turn": 1,
+    "went_first": "Dustin",
+    "points": {
+     "dustin": 0,
+     "opponent": 0
+    },
+    "energy_zone": {
+     "dustin_this_turn": null,
+     "dustin_next_turn": "Water",
+     "opponent_next_turn": null
+    },
+    "dustin": {
+     "active": {
+      "card": "Carvanha",
+      "printing": "Carvanha P-B 081",
+      "hp_now": 50,
+      "printed_hp": 50,
+      "hp_bonuses_in_play": [],
+      "energy": [],
+      "tools": [],
+      "conditions": [],
+      "cards_underneath": []
+     },
+     "bench": [],
+     "hand": [
+      "Mega Sharpedo ex",
+      "Mega Gyarados ex",
+      "Elegant Cape (Tool)",
+      "Copycat (Supporter)",
+      "Elegant Cape (Tool)"
+     ],
+     "discard": [],
+     "discarded_energy": [],
+     "deck_count": 14,
+     "cards_left_in_deck": [
+      "1 Cabbie",
+      "1 Carvanha",
+      "1 Copycat",
+      "1 Feebas",
+      "1 Irida",
+      "1 Lisia",
+      "1 Magikarp",
+      "1 Mega Sharpedo ex",
+      "1 Milotic ex",
+      "1 Poké Ball",
+      "2 Soothing Shore",
+      "2 Wallace"
+     ],
+     "his_pokemon_knocked_out_so_far": 0
+    },
+    "opponent": {
+     "active": {
+      "card": "Magby",
+      "printing": "Magby A4 032",
+      "hp_now": 30,
+      "printed_hp": 30,
+      "hp_bonuses_in_play": [],
+      "energy": [],
+      "tools": [],
+      "conditions": [],
+      "cards_underneath": []
+     },
+     "bench": [
+      {
+       "card": "Fidough",
+       "printing": "Fidough B3b 034",
+       "hp_now": 40,
+       "printed_hp": 40,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Rockruff",
+       "printing": "Rockruff B3b 038",
+       "hp_now": 60,
+       "printed_hp": 60,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand_count": 2,
+     "discard_seen": [],
+     "discarded_energy": [],
+     "opponent_pokemon_knocked_out_so_far": 0
+    },
+    "stadium": null,
+    "note": "Reconstructed from your game review, as it stood at the start of this turn; a few details (for example the opponent's hand size or a card's exact printing) may be estimates."
+   }
+  },
+  {
+   "point_id": "LAD-20261024_180350000_SR-t5",
+   "part": 5,
+   "question": "At turn 5 of this game (20261024_180350), you put Elegant Cape on the benched Carvanha, then played Copycat, benched Magikarp, evolved Carvanha into Mega Sharpedo ex, attached Water and attacked with Water Pulse. Would putting Elegant Cape on the Active Milotic ex instead (the rest the same) also be acceptable, or was your line the better play?",
+   "video": {
+    "file": "ScreenRecording_10-24-2026 13-03-50_1.mp4",
+    "at": "2:27",
+    "clip": null
+   },
+   "his_move": {
+    "steps": [
+     "Play Elegant Cape",
+     "  (attach Elegant Cape to Carvanha)",
+     "Play Copycat",
+     "Bench Magikarp from your hand",
+     "Evolve Carvanha into Mega Sharpedo ex",
+     "Attach Water Energy from the Energy Zone to Magikarp",
+     "Use the Active Milotic ex's Ability (Aqua Charge)",
+     "Attack with the Active Milotic ex: Water Pulse"
+    ],
+    "labels": [
+     "Play:Elegant Cape",
+     "Tool:Elegant Cape@1",
+     "Play:Copycat",
+     "Place:Magikarp@2",
+     "Evolve:Mega Sharpedo ex@1",
+     "Attach:1Water@2 zone",
+     "Ability@0",
+     "Attack:Water Pulse"
+    ]
+   },
+   "alternatives": [
+    {
+     "steps": [
+      "Play Elegant Cape",
+      "  (attach Elegant Cape to the Active Milotic ex)",
+      "Play Copycat",
+      "Bench Magikarp from your hand",
+      "Evolve Carvanha into Mega Sharpedo ex",
+      "Attach Water Energy from the Energy Zone to Magikarp",
+      "Use the Active Milotic ex's Ability (Aqua Charge)",
+      "Attack with the Active Milotic ex: Water Pulse"
+     ],
+     "labels": [
+      "Play:Elegant Cape",
+      "Tool:Elegant Cape@0",
+      "Play:Copycat",
+      "Place:Magikarp@2",
+      "Evolve:Mega Sharpedo ex@1",
+      "Attach:1Water@2 zone",
+      "Ability@0",
+      "Attack:Water Pulse"
+     ]
+    }
+   ],
+   "position": {
+    "turn": 5,
+    "his_turn": 3,
+    "went_first": "Dustin",
+    "points": {
+     "dustin": 1,
+     "opponent": 0
+    },
+    "energy_zone": {
+     "dustin_this_turn": "Water",
+     "dustin_next_turn": "Water",
+     "opponent_next_turn": null
+    },
+    "dustin": {
+     "active": {
+      "card": "Milotic ex",
+      "printing": "Milotic ex B3b 015",
+      "hp_now": 100,
+      "printed_hp": 140,
+      "hp_bonuses_in_play": [],
+      "energy": [
+       "Water",
+       "Water",
+       "Water"
+      ],
+      "tools": [],
+      "conditions": [],
+      "cards_underneath": [
+       "Feebas"
+      ]
+     },
+     "bench": [
+      {
+       "card": "Carvanha",
+       "printing": "Carvanha B4 034",
+       "hp_now": 50,
+       "printed_hp": 50,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand": [
+      "Copycat (Supporter)",
+      "Mega Gyarados ex",
+      "Elegant Cape (Tool)"
+     ],
+     "discard": [
+      "Wallace",
+      "Soothing Shore",
+      "Cabbie"
+     ],
+     "discarded_energy": [],
+     "deck_count": 10,
+     "cards_left_in_deck": [
+      "1 Carvanha",
+      "1 Copycat",
+      "1 Elegant Cape",
+      "1 Irida",
+      "1 Lisia",
+      "1 Magikarp",
+      "1 Poké Ball",
+      "1 Wallace",
+      "2 Mega Sharpedo ex"
+     ],
+     "his_pokemon_knocked_out_so_far": 0
+    },
+    "opponent": {
+     "active": {
+      "card": "Ursaring",
+      "printing": "Ursaring B3 132",
+      "hp_now": 130,
+      "printed_hp": 110,
+      "hp_bonuses_in_play": [
+       "Giant Cape: The Pokémon this card is attached to gets +20 HP."
+      ],
+      "energy": [
+       "Grass",
+       "Grass"
+      ],
+      "tools": [
+       "Giant Cape"
+      ],
+      "conditions": [],
+      "cards_underneath": [
+       "Teddiursa"
+      ]
+     },
+     "bench": [],
+     "hand_count": 2,
+     "discard_seen": [
+      "May",
+      "Fragrant Forest",
+      "Teddiursa"
+     ],
+     "discarded_energy": [],
+     "opponent_pokemon_knocked_out_so_far": 1
+    },
+    "stadium": {
+     "card": "Soothing Shore",
+     "owner": "Dustin"
+    },
+    "note": "Reconstructed from your game review, as it stood at the start of this turn; a few details (for example the opponent's hand size or a card's exact printing) may be estimates."
+   }
+  },
+  {
+   "point_id": "LAD-20261024_181948000_SR-t8",
+   "part": 5,
+   "question": "Zapdos/Greninja game, your turn 4 (global 8): you evolved the 30-HP Carvanha into Mega Sharpedo and Turbo Sharked Zapdos ex (140 to 70), giving Gyarados its 4th Water. Instead you could attach the Water to Gyarados (4 Energy), switch it in with the free-retreat Sharpedo and use Mega Blaster on the 140-HP Zapdos ex for a 2-point KO. Is that line also acceptable, or was your line the better play?",
+   "video": {
+    "file": "ScreenRecording_10-24-2026 13-19-48_1.mp4",
+    "at": "3:54",
+    "clip": null
+   },
+   "his_move": {
+    "steps": [
+     "Evolve the Active Carvanha into Mega Sharpedo ex",
+     "Attach Water Energy from the Energy Zone to the Active Mega Sharpedo ex",
+     "Attack with the Active Mega Sharpedo ex: Turbo Shark"
+    ],
+    "labels": [
+     "Evolve:Mega Sharpedo ex@0",
+     "Attach:1Water@0 zone",
+     "Attack:Turbo Shark"
+    ]
+   },
+   "alternatives": [
+    {
+     "steps": [
+      "Evolve the Active Carvanha into Mega Sharpedo ex",
+      "Attach Water Energy from the Energy Zone to Mega Gyarados ex",
+      "Retreat the Active Mega Sharpedo ex, bringing Mega Gyarados ex into the Active Spot",
+      "Attack with the Active Mega Gyarados ex: Mega Blaster"
+     ],
+     "labels": [
+      "Evolve:Mega Sharpedo ex@0",
+      "Attach:1Water@1 zone",
+      "Retreat:1",
+      "Attack:Mega Blaster"
+     ]
+    }
+   ],
+   "position": {
+    "turn": 8,
+    "his_turn": 4,
+    "went_first": "the opponent",
+    "points": {
+     "dustin": 0,
+     "opponent": 0
+    },
+    "energy_zone": {
+     "dustin_this_turn": "Water",
+     "dustin_next_turn": "Water",
+     "opponent_next_turn": null
+    },
+    "dustin": {
+     "active": {
+      "card": "Carvanha",
+      "printing": "Carvanha P-B 081",
+      "hp_now": 30,
+      "printed_hp": 50,
+      "hp_bonuses_in_play": [],
+      "energy": [],
+      "tools": [],
+      "conditions": [],
+      "cards_underneath": []
+     },
+     "bench": [
+      {
+       "card": "Mega Gyarados ex",
+       "printing": "Mega Gyarados ex B1 052",
+       "hp_now": 180,
+       "printed_hp": 210,
+       "hp_bonuses_in_play": [
+        "Elegant Cape: The Stage 1 Pokémon this card is attached to gets +30 HP."
+       ],
+       "energy": [
+        "Water",
+        "Water",
+        "Water"
+       ],
+       "tools": [
+        "Elegant Cape"
+       ],
+       "conditions": [],
+       "cards_underneath": [
+        "Magikarp"
+       ]
+      }
+     ],
+     "hand": [
+      "Mega Sharpedo ex",
+      "Mega Sharpedo ex",
+      "Wallace (Supporter)"
+     ],
+     "discard": [
+      "Wallace",
+      "Copycat",
+      "Soothing Shore",
+      "Cabbie"
+     ],
+     "discarded_energy": [],
+     "deck_count": 8,
+     "cards_left_in_deck": [
+      "1 Carvanha",
+      "1 Copycat",
+      "1 Elegant Cape",
+      "1 Feebas",
+      "1 Irida",
+      "1 Lisia",
+      "1 Milotic ex",
+      "1 Poké Ball"
+     ],
+     "his_pokemon_knocked_out_so_far": 0
+    },
+    "opponent": {
+     "active": {
+      "card": "Team Rocket's Zapdos ex",
+      "printing": "Team Rocket's Zapdos ex B4a 021",
+      "hp_now": 140,
+      "printed_hp": 120,
+      "hp_bonuses_in_play": [
+       "Giant Cape: The Pokémon this card is attached to gets +20 HP."
+      ],
+      "energy": [
+       "Lightning",
+       "Water"
+      ],
+      "tools": [
+       "Giant Cape"
+      ],
+      "conditions": [],
+      "cards_underneath": []
+     },
+     "bench": [
+      {
+       "card": "Greninja",
+       "printing": "Greninja A1 089",
+       "hp_now": 120,
+       "printed_hp": 120,
+       "hp_bonuses_in_play": [],
+       "energy": [
+        "Water"
+       ],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": [
+        "Froakie"
+       ]
+      },
+      {
+       "card": "Team Rocket's Zapdos ex",
+       "printing": "Team Rocket's Zapdos ex B4a 021",
+       "hp_now": 120,
+       "printed_hp": 120,
+       "hp_bonuses_in_play": [],
+       "energy": [
+        "Lightning"
+       ],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand_count": 1,
+     "discard_seen": [
+      "Copycat",
+      "Poké Ball",
+      "Rare Candy",
+      "Hiking Trail",
+      "Electric Generator",
+      "Cyrus"
+     ],
+     "discarded_energy": [],
+     "opponent_pokemon_knocked_out_so_far": 0
+    },
+    "stadium": {
+     "card": "Soothing Shore",
+     "owner": "Dustin"
+    },
+    "note": "Reconstructed from your game review, as it stood at the start of this turn; a few details (for example the opponent's hand size or a card's exact printing) may be estimates."
+   }
+  },
+  {
+   "point_id": "LAD-20261024_182453000_SR-t8",
+   "part": 5,
+   "question": "Oricorio (Safeguard) game, your turn 4 (global 8, and the same choice on globals 10 and 12): you swapped Mega Sharpedos and ended the turn without attacking because Turbo Shark does 0 to Oricorio. Should you still attack with Turbo Shark there for its free Water to the Bench, so that line is acceptable too, or was not attacking right?",
+   "video": {
+    "file": "ScreenRecording_10-24-2026 13-24-53_1.mp4",
+    "at": "5:19",
+    "clip": null
+   },
+   "his_move": {
+    "steps": [
+     "Play Wallace",
+     "  (random evolution: Carvanha became Mega Sharpedo ex)",
+     "Attach Water Energy from the Energy Zone to Mega Sharpedo ex (the one the random evolution just made)",
+     "Retreat the Active Mega Sharpedo ex (150 HP), bringing Mega Sharpedo ex (the one the random evolution just made) into the Active Spot",
+     "End the turn"
+    ],
+    "labels": [
+     "Play:Wallace",
+     "ChooseRandomEvolutionTarget",
+     "Attach:1Water@1 zone",
+     "Retreat:1",
+     "EndTurn"
+    ]
+   },
+   "alternatives": [
+    {
+     "steps": [
+      "Play Wallace",
+      "  (random evolution: Carvanha became Mega Sharpedo ex)",
+      "Attach Water Energy from the Energy Zone to Mega Sharpedo ex (the one the random evolution just made)",
+      "Retreat the Active Mega Sharpedo ex (150 HP), bringing Mega Sharpedo ex (the one the random evolution just made) into the Active Spot",
+      "Attack with the Active Mega Sharpedo ex (the one the random evolution just made): Turbo Shark"
+     ],
+     "labels": [
+      "Play:Wallace",
+      "ChooseRandomEvolutionTarget",
+      "Attach:1Water@1 zone",
+      "Retreat:1",
+      "Attack:Turbo Shark"
+     ]
+    }
+   ],
+   "position": {
+    "turn": 8,
+    "his_turn": 4,
+    "went_first": "the opponent",
+    "points": {
+     "dustin": 0,
+     "opponent": 2
+    },
+    "energy_zone": {
+     "dustin_this_turn": "Water",
+     "dustin_next_turn": "Water",
+     "opponent_next_turn": null
+    },
+    "dustin": {
+     "active": {
+      "card": "Mega Sharpedo ex",
+      "printing": "Mega Sharpedo ex B4 035",
+      "hp_now": 150,
+      "printed_hp": 190,
+      "hp_bonuses_in_play": [
+       "Elegant Cape: The Stage 1 Pokémon this card is attached to gets +30 HP."
+      ],
+      "energy": [
+       "Water",
+       "Water"
+      ],
+      "tools": [
+       "Elegant Cape"
+      ],
+      "conditions": [],
+      "cards_underneath": [
+       "Carvanha"
+      ]
+     },
+     "bench": [
+      {
+       "card": "Carvanha",
+       "printing": "Carvanha P-B 081",
+       "hp_now": 50,
+       "printed_hp": 50,
+       "hp_bonuses_in_play": [
+        "Elegant Cape: The Stage 1 Pokémon this card is attached to gets +30 HP."
+       ],
+       "energy": [
+        "Water"
+       ],
+       "tools": [
+        "Elegant Cape"
+       ],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand": [
+      "Wallace (Supporter)",
+      "Wallace (Supporter)",
+      "Mega Gyarados ex",
+      "Soothing Shore (Stadium)",
+      "Lisia (Supporter)"
+     ],
+     "discard": [
+      "Poké Ball",
+      "Cabbie",
+      "Magikarp",
+      "Copycat",
+      "Feebas",
+      "Copycat"
+     ],
+     "discarded_energy": [
+      "Water"
+     ],
+     "deck_count": 3,
+     "cards_left_in_deck": [
+      "1 Irida",
+      "1 Mega Sharpedo ex",
+      "1 Milotic ex"
+     ],
+     "his_pokemon_knocked_out_so_far": 2
+    },
+    "opponent": {
+     "active": {
+      "card": "Oricorio",
+      "printing": "Oricorio A3 066",
+      "hp_now": 90,
+      "printed_hp": 70,
+      "hp_bonuses_in_play": [
+       "Giant Cape: The Pokémon this card is attached to gets +20 HP."
+      ],
+      "energy": [
+       "Lightning",
+       "Lightning"
+      ],
+      "tools": [
+       "Giant Cape"
+      ],
+      "conditions": [],
+      "cards_underneath": []
+     },
+     "bench": [
+      {
+       "card": "Sylveon",
+       "printing": "Sylveon B3b 030",
+       "hp_now": 100,
+       "printed_hp": 100,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [
+        "Protective Poncho"
+       ],
+       "conditions": [],
+       "cards_underneath": [
+        "Eevee"
+       ]
+      },
+      {
+       "card": "Furfrou",
+       "printing": "Furfrou B3b 061",
+       "hp_now": 50,
+       "printed_hp": 70,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      },
+      {
+       "card": "Shinx",
+       "printing": "Shinx A2 058",
+       "hp_now": 60,
+       "printed_hp": 60,
+       "hp_bonuses_in_play": [],
+       "energy": [],
+       "tools": [],
+       "conditions": [],
+       "cards_underneath": []
+      }
+     ],
+     "hand_count": 3,
+     "discard_seen": [
+      "Poké Ball",
+      "Professor's Research",
+      "Copycat"
+     ],
+     "discarded_energy": [
+      "Lightning"
+     ],
+     "opponent_pokemon_knocked_out_so_far": 0
+    },
+    "stadium": {
+     "card": "Soothing Shore",
+     "owner": "Dustin"
+    },
+    "note": "Reconstructed from your game review, as it stood at the start of this turn; a few details (for example the opponent's hand size or a card's exact printing) may be estimates."
+   },
+   "also_applies_to": [
+    {
+     "point_id": "LAD-20261024_182453000_SR-t10",
+     "video": {
+      "file": "ScreenRecording_10-24-2026 13-24-53_1.mp4",
+      "at": "6:12",
+      "clip": null
+     },
+     "his_move": {
+      "steps": [
+       "Play Lisia",
+       "Attach Water Energy from the Energy Zone to the Active Mega Sharpedo ex (150 HP)",
+       "Retreat the Active Mega Sharpedo ex (150 HP), bringing Mega Sharpedo ex (170 HP, on the Bench) into the Active Spot",
+       "End the turn"
+      ],
+      "labels": [
+       "Play:Lisia",
+       "Attach:1Water@0 zone",
+       "Retreat:1",
+       "EndTurn"
+      ]
+     },
+     "alternatives": [
+      {
+       "steps": [
+        "Play Lisia",
+        "Attach Water Energy from the Energy Zone to the Active Mega Sharpedo ex (150 HP)",
+        "Retreat the Active Mega Sharpedo ex (150 HP), bringing Mega Sharpedo ex (170 HP, on the Bench) into the Active Spot",
+        "Attack with the Active Mega Sharpedo ex (170 HP): Turbo Shark"
+       ],
+       "labels": [
+        "Play:Lisia",
+        "Attach:1Water@0 zone",
+        "Retreat:1",
+        "Attack:Turbo Shark"
+       ]
+      }
+     ],
+     "position": {
+      "turn": 10,
+      "his_turn": 5,
+      "went_first": "the opponent",
+      "points": {
+       "dustin": 0,
+       "opponent": 2
+      },
+      "energy_zone": {
+       "dustin_this_turn": "Water",
+       "dustin_next_turn": "Water",
+       "opponent_next_turn": null
+      },
+      "dustin": {
+       "active": {
+        "card": "Mega Sharpedo ex",
+        "printing": "Mega Sharpedo ex B4 035",
+        "hp_now": 150,
+        "printed_hp": 190,
+        "hp_bonuses_in_play": [
+         "Elegant Cape: The Stage 1 Pokémon this card is attached to gets +30 HP."
+        ],
+        "energy": [
+         "Water",
+         "Water"
+        ],
+        "tools": [
+         "Elegant Cape"
+        ],
+        "conditions": [],
+        "cards_underneath": [
+         "Carvanha"
+        ]
+       },
+       "bench": [
+        {
+         "card": "Mega Sharpedo ex",
+         "printing": "Mega Sharpedo ex B4 035",
+         "hp_now": 170,
+         "printed_hp": 190,
+         "hp_bonuses_in_play": [
+          "Elegant Cape: The Stage 1 Pokémon this card is attached to gets +30 HP."
+         ],
+         "energy": [
+          "Water",
+          "Water"
+         ],
+         "tools": [
+          "Elegant Cape"
+         ],
+         "conditions": [],
+         "cards_underneath": [
+          "Carvanha"
+         ]
+        }
+       ],
+       "hand": [
+        "Wallace (Supporter)",
+        "Mega Gyarados ex",
+        "Soothing Shore (Stadium)",
+        "Lisia (Supporter)",
+        "Milotic ex"
+       ],
+       "discard": [
+        "Poké Ball",
+        "Cabbie",
+        "Magikarp",
+        "Copycat",
+        "Feebas",
+        "Copycat",
+        "Wallace"
+       ],
+       "discarded_energy": [
+        "Water"
+       ],
+       "deck_count": 1,
+       "cards_left_in_deck": [
+        "1 Irida"
+       ],
+       "his_pokemon_knocked_out_so_far": 2
+      },
+      "opponent": {
+       "active": {
+        "card": "Oricorio",
+        "printing": "Oricorio A3 066",
+        "hp_now": 90,
+        "printed_hp": 70,
+        "hp_bonuses_in_play": [
+         "Giant Cape: The Pokémon this card is attached to gets +20 HP."
+        ],
+        "energy": [
+         "Lightning",
+         "Lightning"
+        ],
+        "tools": [
+         "Giant Cape"
+        ],
+        "conditions": [],
+        "cards_underneath": []
+       },
+       "bench": [
+        {
+         "card": "Sylveon",
+         "printing": "Sylveon B3b 030",
+         "hp_now": 100,
+         "printed_hp": 100,
+         "hp_bonuses_in_play": [],
+         "energy": [],
+         "tools": [
+          "Protective Poncho"
+         ],
+         "conditions": [],
+         "cards_underneath": [
+          "Eevee"
+         ]
+        },
+        {
+         "card": "Furfrou",
+         "printing": "Furfrou B3b 061",
+         "hp_now": 70,
+         "printed_hp": 70,
+         "hp_bonuses_in_play": [],
+         "energy": [],
+         "tools": [],
+         "conditions": [],
+         "cards_underneath": []
+        },
+        {
+         "card": "Shinx",
+         "printing": "Shinx A2 058",
+         "hp_now": 60,
+         "printed_hp": 60,
+         "hp_bonuses_in_play": [],
+         "energy": [
+          "Lightning"
+         ],
+         "tools": [],
+         "conditions": [],
+         "cards_underneath": []
+        }
+       ],
+       "hand_count": 4,
+       "discard_seen": [
+        "Poké Ball",
+        "Professor's Research",
+        "Copycat"
+       ],
+       "discarded_energy": [
+        "Lightning"
+       ],
+       "opponent_pokemon_knocked_out_so_far": 0
+      },
+      "stadium": {
+       "card": "Soothing Shore",
+       "owner": "Dustin"
+      },
+      "note": "Reconstructed from your game review, as it stood at the start of this turn; a few details (for example the opponent's hand size or a card's exact printing) may be estimates."
+     }
+    },
+    {
+     "point_id": "LAD-20261024_182453000_SR-t12",
+     "video": {
+      "file": "ScreenRecording_10-24-2026 13-24-53_1.mp4",
+      "at": "6:52",
+      "clip": null
+     },
+     "his_move": {
+      "steps": [
+       "Play Irida",
+       "Attach Water Energy from the Energy Zone to the Active Mega Sharpedo ex (120 HP)",
+       "Retreat the Active Mega Sharpedo ex (120 HP), bringing Mega Sharpedo ex (170 HP, on the Bench) into the Active Spot",
+       "End the turn"
+      ],
+      "labels": [
+       "Play:Irida",
+       "Attach:1Water@0 zone",
+       "Retreat:1",
+       "EndTurn"
+      ]
+     },
+     "alternatives": [
+      {
+       "steps": [
+        "Play Irida",
+        "Attach Water Energy from the Energy Zone to the Active Mega Sharpedo ex (120 HP)",
+        "Retreat the Active Mega Sharpedo ex (120 HP), bringing Mega Sharpedo ex (170 HP, on the Bench) into the Active Spot",
+        "Attack with the Active Mega Sharpedo ex (170 HP): Turbo Shark"
+       ],
+       "labels": [
+        "Play:Irida",
+        "Attach:1Water@0 zone",
+        "Retreat:1",
+        "Attack:Turbo Shark"
+       ]
+      }
+     ],
+     "position": {
+      "turn": 12,
+      "his_turn": 6,
+      "went_first": "the opponent",
+      "points": {
+       "dustin": 0,
+       "opponent": 2
+      },
+      "energy_zone": {
+       "dustin_this_turn": "Water",
+       "dustin_next_turn": "Water",
+       "opponent_next_turn": null
+      },
+      "dustin": {
+       "active": {
+        "card": "Mega Sharpedo ex",
+        "printing": "Mega Sharpedo ex B4 035",
+        "hp_now": 120,
+        "printed_hp": 190,
+        "hp_bonuses_in_play": [
+         "Elegant Cape: The Stage 1 Pokémon this card is attached to gets +30 HP."
+        ],
+        "energy": [
+         "Water",
+         "Water"
+        ],
+        "tools": [
+         "Elegant Cape"
+        ],
+        "conditions": [],
+        "cards_underneath": [
+         "Carvanha"
+        ]
+       },
+       "bench": [
+        {
+         "card": "Mega Sharpedo ex",
+         "printing": "Mega Sharpedo ex B4 035",
+         "hp_now": 170,
+         "printed_hp": 190,
+         "hp_bonuses_in_play": [
+          "Elegant Cape: The Stage 1 Pokémon this card is attached to gets +30 HP."
+         ],
+         "energy": [
+          "Water",
+          "Water",
+          "Water"
+         ],
+         "tools": [
+          "Elegant Cape"
+         ],
+         "conditions": [],
+         "cards_underneath": [
+          "Carvanha"
+         ]
+        }
+       ],
+       "hand": [
+        "Wallace (Supporter)",
+        "Mega Gyarados ex",
+        "Soothing Shore (Stadium)",
+        "Milotic ex",
+        "Irida (Supporter)"
+       ],
+       "discard": [
+        "Poké Ball",
+        "Cabbie",
+        "Magikarp",
+        "Copycat",
+        "Feebas",
+        "Copycat",
+        "Wallace",
+        "Lisia"
+       ],
+       "discarded_energy": [
+        "Water"
+       ],
+       "deck_count": 0,
+       "cards_left_in_deck": [],
+       "his_pokemon_knocked_out_so_far": 2
+      },
+      "opponent": {
+       "active": {
+        "card": "Oricorio",
+        "printing": "Oricorio A3 066",
+        "hp_now": 90,
+        "printed_hp": 70,
+        "hp_bonuses_in_play": [
+         "Giant Cape: The Pokémon this card is attached to gets +20 HP."
+        ],
+        "energy": [
+         "Lightning",
+         "Lightning"
+        ],
+        "tools": [
+         "Giant Cape"
+        ],
+        "conditions": [],
+        "cards_underneath": []
+       },
+       "bench": [
+        {
+         "card": "Sylveon",
+         "printing": "Sylveon B3b 030",
+         "hp_now": 100,
+         "printed_hp": 100,
+         "hp_bonuses_in_play": [],
+         "energy": [],
+         "tools": [
+          "Protective Poncho"
+         ],
+         "conditions": [],
+         "cards_underneath": [
+          "Eevee"
+         ]
+        },
+        {
+         "card": "Furfrou",
+         "printing": "Furfrou B3b 061",
+         "hp_now": 70,
+         "printed_hp": 70,
+         "hp_bonuses_in_play": [],
+         "energy": [],
+         "tools": [],
+         "conditions": [],
+         "cards_underneath": []
+        },
+        {
+         "card": "Shinx",
+         "printing": "Shinx A2 058",
+         "hp_now": 60,
+         "printed_hp": 60,
+         "hp_bonuses_in_play": [],
+         "energy": [
+          "Lightning",
+          "Lightning"
+         ],
+         "tools": [],
+         "conditions": [],
+         "cards_underneath": []
+        }
+       ],
+       "hand_count": 5,
+       "discard_seen": [
+        "Poké Ball",
+        "Professor's Research",
+        "Copycat"
+       ],
+       "discarded_energy": [
+        "Lightning"
+       ],
+       "opponent_pokemon_knocked_out_so_far": 0
+      },
+      "stadium": {
+       "card": "Soothing Shore",
+       "owner": "Dustin"
+      },
+      "note": "Reconstructed from your game review, as it stood at the start of this turn; a few details (for example the opponent's hand size or a card's exact printing) may be estimates."
+     }
+    }
+   ]
+  }
+ ]
+}

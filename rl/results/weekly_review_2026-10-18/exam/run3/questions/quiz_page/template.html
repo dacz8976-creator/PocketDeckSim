@@ -1,0 +1,413 @@
+<title>Your Move, Exam Questions</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Atkinson+Hyperlegible:wght@400;700&family=Barlow+Semi+Condensed:wght@500;600;700&family=JetBrains+Mono:wght@500&display=swap">
+<style>
+  /* Layout: one question at a time; the table (opponent above, you below), your hand, then your play beside the other line, then four answers. Same tokens as the Your Move quizzes. */
+  :root {
+    --ground: #eef1f5; --table: #dfe5ec; --surface: #ffffff; --surface-2: #f3f5f8; --ink: #151b23; --muted: #5a6473;
+    --line: #cfd6df; --accent: #1f5fd1; --accent-ink: #ffffff; --you: #1f5fd1; --opp: #b3402a; --good: #1c7a43;
+    --hp: #2f9e5b; --hp-low: #d4552e; --focus: #1f5fd1;
+    --e-grass: #3d9b48; --e-fire: #d9482b; --e-water: #2f7fd6; --e-lightning: #e0b21a; --e-psychic: #8f4fc9;
+    --e-fighting: #b86a2e; --e-darkness: #3b3f4a; --e-metal: #8a949e; --e-dragon: #b8912a; --e-colorless: #c9cdd2;
+    --display: "Barlow Semi Condensed", "Arial Narrow", system-ui, sans-serif;
+    --body: "Atkinson Hyperlegible", "Segoe UI", system-ui, sans-serif;
+    --mono: "JetBrains Mono", ui-monospace, Consolas, monospace;
+  }
+  @media (prefers-color-scheme: dark) {
+    :root:not([data-theme="light"]) {
+      color-scheme: dark;
+      --ground: #0f141b; --table: #151c26; --surface: #1b2330; --surface-2: #212b3a; --ink: #e6ebf2; --muted: #98a3b3;
+      --line: #2c3748; --accent: #7aa7ff; --accent-ink: #0b1526; --you: #7aa7ff; --opp: #ff8f73; --good: #6fd29a;
+      --hp: #4cc47c; --hp-low: #ff7a55; --focus: #9cc0ff; --e-darkness: #8b93a3; --e-colorless: #aeb4bb;
+    }
+  }
+  :root[data-theme="dark"] {
+    color-scheme: dark;
+    --ground: #0f141b; --table: #151c26; --surface: #1b2330; --surface-2: #212b3a; --ink: #e6ebf2; --muted: #98a3b3;
+    --line: #2c3748; --accent: #7aa7ff; --accent-ink: #0b1526; --you: #7aa7ff; --opp: #ff8f73; --good: #6fd29a;
+    --hp: #4cc47c; --hp-low: #ff7a55; --focus: #9cc0ff; --e-darkness: #8b93a3; --e-colorless: #aeb4bb;
+  }
+  body { background: var(--ground); color: var(--ink); font: 15px/1.45 var(--body); padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px)); padding-block: 16px 56px; }
+  .wrap { max-width: 880px; margin: 0 auto; display: grid; gap: 16px; }
+  .wrap > *, main { min-width: 0; }
+  main { display: grid; gap: 14px; }
+  header.top { display: grid; gap: 8px; }
+  h1 { font: 700 30px/1 var(--display); letter-spacing: .01em; margin: 0; text-wrap: balance; }
+  .lede { margin: 0; color: var(--muted); max-width: 66ch; }
+  .bar { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .meter { flex: 1 1 180px; height: 8px; background: var(--table); border-radius: 99px; overflow: hidden; }
+  .meter span { display: block; height: 100%; width: 0; background: var(--good); }
+  .count { font: 500 13px/1 var(--mono); color: var(--muted); font-variant-numeric: tabular-nums; }
+  button { font: 700 14px/1 var(--body); border-radius: 8px; border: 1px solid var(--line); background: var(--surface); color: var(--ink); padding: 10px 14px; cursor: pointer; }
+  button.primary { background: var(--accent); color: var(--accent-ink); border-color: var(--accent); }
+  button[disabled] { opacity: .45; cursor: default; }
+  button:focus-visible, input:focus-visible, textarea:focus-visible, summary:focus-visible { outline: 3px solid var(--focus); outline-offset: 2px; }
+  .notice { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 12px 14px; }
+  details.box { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; }
+  details.box summary { cursor: pointer; font-weight: 700; }
+  .howlist { margin: 8px 0 0; padding-left: 18px; display: grid; gap: 6px; max-width: 66ch; }
+  .jump { display: flex; flex-wrap: wrap; gap: 4px; }
+  .jump button { padding: 6px 0; width: 34px; font: 500 12px/1 var(--mono); }
+  .jump button.answered { background: var(--surface-2); border-color: var(--good); color: var(--good); }
+  .jump button[aria-current="true"] { outline: 2px solid var(--accent); }
+  .q-head { display: flex; flex-wrap: wrap; justify-content: space-between; gap: 8px; align-items: baseline; }
+  .q-head h2 { font: 700 24px/1.1 var(--display); margin: 0; }
+  .score { font: 600 18px/1 var(--display); display: flex; gap: 14px; }
+  .score .you { color: var(--you); } .score .opp { color: var(--opp); }
+  .meta { color: var(--muted); font-size: 14px; }
+  .meta code, .vid code { font: 500 12px/1.4 var(--mono); overflow-wrap: anywhere; }
+  .vid { font-size: 14px; color: var(--muted); }
+  .ask { background: var(--surface); border: 1px solid var(--line); border-left: 4px solid var(--accent); border-radius: 8px; padding: 12px 14px; font: 400 17px/1.45 var(--body); max-width: 72ch; }
+  .table { background: var(--table); border-radius: 14px; padding: 12px; display: grid; gap: 12px; }
+  .side { display: grid; gap: 8px; }
+  .side-label { display: flex; flex-wrap: wrap; gap: 6px 14px; align-items: center; font: 700 13px/1.2 var(--display); letter-spacing: .08em; text-transform: uppercase; }
+  .side-label.you { color: var(--you); } .side-label.opp { color: var(--opp); }
+  .side-label .facts { font: 500 12px/1.2 var(--mono); letter-spacing: 0; text-transform: none; color: var(--muted); }
+  .row { display: grid; grid-template-columns: repeat(auto-fill, minmax(190px, 1fr)); gap: 8px; }
+  .ctext { display: grid; gap: 5px; font: 400 13px/1.35 var(--body); border-top: 1px solid var(--line); padding-top: 6px; overflow-wrap: anywhere; }
+  .cline { color: var(--muted); font: 600 11px/1.3 var(--display); letter-spacing: .05em; text-transform: uppercase; }
+  .catk { display: grid; gap: 2px; }
+  .catk-h { display: flex; align-items: center; gap: 6px; flex-wrap: wrap; }
+  .catk-h b { font: 700 14px/1.2 var(--display); }
+  .cost { display: inline-flex; gap: 2px; }
+  .cost .pip { min-width: 15px; height: 15px; font-size: 8px; }
+  .cost .free { font: 500 11px/1 var(--mono); color: var(--muted); }
+  .dmg { margin-left: auto; font: 700 15px/1 var(--display); font-variant-numeric: tabular-nums; }
+  .catk-t { color: var(--muted); font-size: 13px; }
+  .stadium { display: grid; gap: 2px; }
+  details.hcard { padding: 0; }
+  details.hcard summary { cursor: pointer; padding: 7px 10px; list-style: none; }
+  details.hcard summary::-webkit-details-marker { display: none; }
+  details.hcard[open] { flex: 1 1 100%; }
+  details.hcard .ctext { margin: 0 10px 8px; }
+  .mon { background: var(--surface); border: 1px solid var(--line); border-radius: 10px; padding: 8px 10px; display: grid; gap: 5px; align-content: start; min-width: 0; }
+  .mon.active { border-width: 2px; }
+  .side.you .mon.active { border-color: var(--you); } .side.opp .mon.active { border-color: var(--opp); }
+  .mon .where { font: 700 10px/1 var(--display); letter-spacing: .1em; text-transform: uppercase; color: var(--muted); }
+  .mon .name { font: 700 16px/1.15 var(--display); overflow-wrap: anywhere; }
+  .mon .print { font: 500 11px/1.2 var(--mono); color: var(--muted); }
+  .hpline { display: flex; flex-wrap: wrap; align-items: center; gap: 4px 6px; font: 500 12px/1.2 var(--mono); font-variant-numeric: tabular-nums; }
+  .hpbar { flex: 1 1 48px; min-width: 48px; height: 6px; border-radius: 99px; background: var(--surface-2); overflow: hidden; }
+  .hpbar span { display: block; height: 100%; background: var(--hp); }
+  .hpbar span.low { background: var(--hp-low); }
+  .pips { display: flex; flex-wrap: wrap; gap: 3px; }
+  .pip { min-width: 18px; height: 18px; border-radius: 50%; display: inline-grid; place-items: center; font: 700 9px/1 var(--display); color: #fff; border: 1px solid rgba(0,0,0,.15); }
+  .pip.colorless { color: #222; }
+  .chips { display: flex; flex-wrap: wrap; gap: 4px; }
+  .chipx { font: 700 10px/1.2 var(--display); letter-spacing: .05em; text-transform: uppercase; padding: 4px 6px; border-radius: 5px; background: var(--surface-2); color: var(--muted); overflow-wrap: anywhere; }
+  .chipx.cond { color: var(--opp); }
+  .zone { display: flex; gap: 8px 10px; flex-wrap: wrap; align-items: center; font-size: 13px; color: var(--muted); }
+  .handrow { display: flex; flex-wrap: wrap; gap: 6px; }
+  .hcard { background: var(--surface); border: 1px solid var(--line); border-radius: 8px; padding: 7px 10px; font: 700 14px/1.2 var(--display); }
+  .hcard small { display: block; font: 500 11px/1.2 var(--body); color: var(--muted); }
+  .extras { display: grid; gap: 6px; font-size: 14px; }
+  .lists { display: grid; grid-template-columns: repeat(auto-fit, minmax(220px, 1fr)); gap: 8px; }
+  .lists details { min-width: 0; }
+  .lists ul { margin: 8px 0 0; padding-left: 18px; font-size: 14px; display: grid; gap: 2px; }
+  form.answer { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 14px; display: grid; gap: 12px; }
+  form.answer h3 { margin: 0; font: 700 20px/1.1 var(--display); }
+  .plans { display: grid; grid-template-columns: repeat(auto-fit, minmax(240px, 1fr)); gap: 10px; }
+  .plan { border: 1px solid var(--line); border-radius: 10px; padding: 10px 12px; background: var(--surface-2); display: grid; gap: 6px; align-content: start; min-width: 0; }
+  .plan h4 { margin: 0; font: 700 18px/1 var(--display); letter-spacing: .02em; }
+  .plan.yours h4 { color: var(--you); }
+  .plan ol { margin: 0; padding-left: 20px; display: grid; gap: 4px; }
+  .plan .sub { color: var(--muted); font-size: 14px; }
+  .options { display: grid; grid-template-columns: repeat(auto-fit, minmax(190px, 1fr)); gap: 6px; }
+  .opt { display: flex; gap: 10px; align-items: center; padding: 10px 12px; border: 1px solid var(--line); border-radius: 8px; cursor: pointer; background: var(--surface-2); font-weight: 700; }
+  .opt input { accent-color: var(--accent); }
+  .opt:has(input:checked) { border-color: var(--accent); background: var(--surface); box-shadow: inset 3px 0 0 var(--accent); }
+  fieldset { border: 0; margin: 0; padding: 0; min-width: 0; }
+  legend { font: 700 12px/1.2 var(--display); letter-spacing: .08em; text-transform: uppercase; color: var(--muted); margin-bottom: 6px; }
+  textarea { font: 15px/1.4 var(--body); color: var(--ink); background: var(--ground); border: 1px solid var(--line); border-radius: 8px; padding: 9px 10px; width: 100%; box-sizing: border-box; min-height: 70px; resize: vertical; }
+  .actions { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
+  .msg { font-size: 14px; color: var(--muted); }
+  .msg.err { color: var(--opp); }
+  .done-panel { background: var(--surface); border: 1px solid var(--line); border-radius: 12px; padding: 18px; display: grid; gap: 8px; }
+  .done-panel h2 { margin: 0; font: 700 22px/1.1 var(--display); }
+  @media (prefers-reduced-motion: reduce) { * { scroll-behavior: auto !important; } }
+</style>
+
+<div class="wrap">
+  <header class="top">
+    <h1>Your Move, Exam Questions</h1>
+    <p class="lede">These spots come from your ranked games of Oct 16-24. Each one shows the board at the start of that turn, what you played, and another line someone thought might be just as good. Judge it with only what you could see at that moment, the way you would have in the game. "My play was a mistake" is a perfectly good answer, and so is "Not sure".</p>
+    <details class="box">
+      <summary>How each answer counts</summary>
+      <ul class="howlist">
+        <li><b>The other line was better (my play was a mistake):</b> the other line becomes the right answer for that spot.</li>
+        <li><b>Both were fine:</b> either line counts as right.</li>
+        <li><b>My play was better:</b> only your line counts.</li>
+        <li><b>Not sure:</b> only your line counts, and the other line is left out.</li>
+        <li>A note on your thinking is optional and is kept with your answer. A question you skip leaves that spot out of the test.</li>
+      </ul>
+    </details>
+    <div class="bar"><div class="meter" aria-hidden="true"><span id="meter"></span></div><span class="count" id="count">loading…</span></div>
+    <div class="jump" id="jump" aria-label="Go to question"></div>
+  </header>
+  <div id="notice" class="notice" hidden></div>
+  <main id="main"><p class="meta">The questions load here.</p></main>
+</div>
+
+<script>
+(function () {
+  "use strict";
+  const DATA = /*__DATA__*/null;
+  const CARDS = /*__CARDS__*/null;
+  const S = { db: null, qs: [], answers: {}, i: 0, readOnly: false };
+  const $ = (id) => document.getElementById(id);
+  const TYPES = { grass: "G", fire: "R", water: "W", lightning: "L", psychic: "P", fighting: "F", darkness: "D", metal: "M", dragon: "N", colorless: "C" };
+  const OPTIONS = DATA && Array.isArray(DATA.answer_options) && DATA.answer_options.length === 4 ? DATA.answer_options
+    : ["The alternative was better (my play was a mistake)", "Both were fine", "My play was better", "Not sure"];
+  function el(tag, attrs, ...kids) {
+    const n = document.createElement(tag);
+    if (attrs) for (const [k, v] of Object.entries(attrs)) {
+      if (v == null || v === false) continue;
+      if (k === "class") n.className = v; else if (k === "text") n.textContent = v; else n.setAttribute(k, v === true ? "" : v);
+    }
+    for (const k of kids) if (k != null) n.append(k);
+    return n;
+  }
+  const str = (v) => (v == null ? "" : typeof v === "string" ? v : typeof v === "number" ? String(v) : JSON.stringify(v));
+  const arr = (v) => (Array.isArray(v) ? v : v == null ? [] : [v]);
+  const answered = (id) => !!(S.answers[id] && S.answers[id].choice);
+  function notice(t) { $("notice").textContent = t || ""; $("notice").hidden = !t; }
+  function pip(type) {
+    const t = str(type).toLowerCase();
+    const key = Object.keys(TYPES).find((k) => t.startsWith(k)) || "colorless";
+    return el("span", { class: "pip" + (key === "colorless" ? " colorless" : ""), style: "background: var(--e-" + key + ")", title: str(type), text: TYPES[key] });
+  }
+  function gameLabel(pid) {
+    const m = /^LAD-(\d{4})(\d{2})(\d{2})_(\d{2})(\d{2})(\d{2})\d*_[A-Za-z]+-t(\d+)$/.exec(str(pid));
+    if (!m) return str(pid);
+    const t = new Date(Date.UTC(+m[1], +m[2] - 1, +m[3], +m[4], +m[5], +m[6]));
+    try { return "Game from " + t.toLocaleString("en-US", { timeZone: "America/Chicago", weekday: "short", month: "short", day: "numeric", hour: "numeric", minute: "2-digit" }); }
+    catch (e) { return "Game from " + m[2] + "/" + m[3]; }
+  }
+  const turnOf = (pid) => { const m = /-t(\d+)$/.exec(str(pid)); return m ? m[1] : str(pid); };
+  const SYM = { G: "Grass", R: "Fire", W: "Water", L: "Lightning", P: "Psychic", F: "Fighting", D: "Darkness", M: "Metal", N: "Dragon", C: "Colorless" };
+  const sym = (t) => str(t).replace(/\[([GRWLPFDMNC])\]/g, (_, k) => SYM[k]);
+  const cleanName = (n) => str(n).replace(/’/g, "'").replace(/\s*\([^)]*\)\s*$/, "").trim();
+  function cardFor(p) {
+    if (!CARDS) return null;
+    const m = /(\S+ \d+)$/.exec(str(p.printing));
+    return (m && CARDS.by_id[m[1]]) || CARDS.by_name[cleanName(p.card)] || null;
+  }
+  const cardByName = (n) => (CARDS && CARDS.by_name[cleanName(n)]) || null;
+  function costPips(cost) {
+    const w = el("span", { class: "cost", "aria-label": "Cost: " + (arr(cost).length ? arr(cost).map(str).join(", ") : "none") });
+    if (!arr(cost).length) w.append(el("span", { class: "free", text: "no cost" }));
+    arr(cost).forEach((e) => w.append(pip(e)));
+    return w;
+  }
+  function pokeText(c) {
+    const box = el("div", { class: "ctext" });
+    const stage = c.stage ? "Stage " + c.stage + (c.from ? " from " + c.from : "") : "Basic";
+    box.append(el("div", { class: "cline", text: [str(c.type), stage, "Weakness " + (c.weak ? str(c.weak) : "none"), "Retreat " + arr(c.retreat).length].join(" · ") }));
+    if (c.ability) box.append(el("div", null, el("b", { text: "Ability: " + str(c.ability.title) + ". " }), el("span", { text: sym(c.ability.effect) })));
+    arr(c.attacks).forEach((a) => box.append(el("div", { class: "catk" },
+      el("div", { class: "catk-h" }, costPips(a.cost), el("b", { text: str(a.name) }), a.dmg ? el("span", { class: "dmg", text: String(a.dmg) }) : null),
+      a.text ? el("div", { class: "catk-t", text: sym(a.text) }) : null)));
+    return box;
+  }
+  function trainerText(c, label) {
+    return el("div", { class: "ctext" }, el("div", { class: "cline", text: label || str(c.kind) }), el("div", { text: sym(c.text) }));
+  }
+  function mon(p, where) {
+    if (!p) return null;
+    const box = el("div", { class: "mon" + (where === "Active" ? " active" : "") });
+    box.append(el("div", { class: "where", text: where }), el("div", { class: "name", text: str(p.card) }));
+    if (p.printing && str(p.printing) !== str(p.card)) box.append(el("div", { class: "print", text: str(p.printing) }));
+    const hp = Number(p.hp_now), max = Number(p.printed_hp);
+    if (!Number.isNaN(hp)) {
+      const bonus = arr(p.hp_bonuses_in_play).length;
+      const full = bonus ? Math.max(hp, max) : max;
+      const frac = full > 0 ? Math.max(0, Math.min(1, hp / full)) : 1;
+      box.append(el("div", { class: "hpline" }, el("span", { text: hp + " HP" + (max && max !== hp ? " (printed " + max + ")" : "") }),
+        el("span", { class: "hpbar", "aria-hidden": "true" }, el("span", { class: frac <= 0.34 ? "low" : null, style: "width:" + Math.round(frac * 100) + "%" }))));
+    }
+    const en = arr(p.energy);
+    if (en.length) { const pw = el("div", { class: "pips", "aria-label": "Energy: " + en.map(str).join(", ") }); en.forEach((e) => pw.append(pip(e))); box.append(pw); }
+    const chips = el("div", { class: "chips" });
+    arr(p.tools).forEach((t) => chips.append(el("span", { class: "chipx", text: "Tool: " + str(t) })));
+    arr(p.conditions).forEach((c) => chips.append(el("span", { class: "chipx cond", text: str(c) })));
+    arr(p.hp_bonuses_in_play).forEach((b) => chips.append(el("span", { class: "chipx", text: "HP bonus: " + str(b).split(":")[0] })));
+    if (arr(p.cards_underneath).length) chips.append(el("span", { class: "chipx", text: "Evolved from " + arr(p.cards_underneath).map(str).join(", ") }));
+    if (chips.childNodes.length) box.append(chips);
+    const c = cardFor(p);
+    if (c && c.kind === "Pokemon") box.append(pokeText(c));
+    arr(p.tools).forEach((t) => { const tc = cardByName(t); if (tc) box.append(trainerText(tc, "Tool: " + str(t))); });
+    return box;
+  }
+  function side(d, who) {
+    const isYou = who === "you";
+    const s = el("section", { class: "side " + (isYou ? "you" : "opp"), "aria-label": isYou ? "Your side" : "Opponent's side" });
+    const facts = [];
+    if (isYou && d.deck_count != null) facts.push("deck " + str(d.deck_count));
+    if (!isYou && d.hand_count != null) facts.push("hand " + str(d.hand_count));
+    const ko = isYou ? d.his_pokemon_knocked_out_so_far : d.opponent_pokemon_knocked_out_so_far;
+    if (ko != null) facts.push("knocked out so far " + str(ko));
+    s.append(el("div", { class: "side-label " + (isYou ? "you" : "opp") }, el("span", { text: isYou ? "You" : "Opponent" }), el("span", { class: "facts", text: facts.join(" · ") })));
+    const row = el("div", { class: "row" });
+    const act = mon(d.active, "Active"); if (act) row.append(act);
+    arr(d.bench).forEach((b, k) => { const m = mon(b, "Bench " + (k + 1)); if (m) row.append(m); });
+    if (!row.childNodes.length) row.append(el("div", { class: "meta", text: "No Pokémon in play" }));
+    s.append(row);
+    return s;
+  }
+  function listBox(title, items) {
+    const it = arr(items).map(str).filter(Boolean);
+    return el("details", { class: "box" }, el("summary", { text: title + " (" + it.length + ")" }),
+      it.length ? el("ul", null, ...it.map((x) => el("li", { text: x }))) : el("p", { class: "meta", text: "None" }));
+  }
+  function planBox(title, plan, yours) {
+    const ol = el("ol");
+    arr(plan && plan.steps).forEach((s) => {
+      const t = str(s);
+      if (/^\s+\(/.test(t) && ol.lastElementChild) ol.lastElementChild.append(el("div", { class: "sub", text: t.trim() }));
+      else ol.append(el("li", { text: t.trim() }));
+    });
+    return el("section", { class: "plan" + (yours ? " yours" : ""), "aria-label": title }, el("h4", { text: title }), ol);
+  }
+  function progress() {
+    const n = S.qs.length, done = S.qs.filter((q) => answered(q.point_id)).length;
+    $("count").textContent = n ? done + " of " + n + " answered" : "no questions";
+    $("meter").style.width = n ? Math.round(100 * done / n) + "%" : "0";
+    const j = $("jump"); j.replaceChildren();
+    S.qs.forEach((q, k) => {
+      const b = el("button", { type: "button", class: answered(q.point_id) ? "answered" : null, "aria-current": k === S.i ? "true" : null, "aria-label": "Question " + (k + 1), text: String(k + 1) });
+      b.addEventListener("click", () => go(k));
+      j.append(b);
+    });
+  }
+  function go(k) { S.i = Math.max(0, Math.min(S.qs.length - 1, k)); render(); window.scrollTo({ top: 0 }); }
+  function render() {
+    progress();
+    const main = $("main"); main.replaceChildren();
+    if (!S.qs.length) return;
+    const q = S.qs[S.i], p = q.position || {}, pts = p.points || {};
+    main.append(el("div", { class: "q-head" }, el("h2", { text: "Question " + (S.i + 1) + " of " + S.qs.length }),
+      el("div", { class: "score" }, el("span", { class: "you", text: "You " + str(pts.dustin) }), el("span", { class: "opp", text: "Opp " + str(pts.opponent) }))));
+    const went = p.went_first ? (str(p.went_first) === "Dustin" ? "you went first" : "you went second") : "";
+    main.append(el("div", { class: "meta", text: [gameLabel(q.point_id), "turn " + str(p.turn) + (p.his_turn != null ? " (your turn " + str(p.his_turn) + ")" : ""), went].filter(Boolean).join(" · ") }));
+    const v = q.video;
+    if (v && v.file) main.append(el("div", { class: "vid" }, "Video: ", el("code", { text: str(v.file) }), v.at ? " at " + str(v.at) : "", v.clip ? " (clip " + str(v.clip) + ")" : ""));
+    main.append(el("div", { class: "ask", text: str(q.question) }));
+    const also = arr(q.also_applies_to).filter((a) => a && typeof a === "object");
+    if (also.length) main.append(el("p", { class: "meta", text: "The same choice came up again on turn " + also.map((a) => turnOf(a.point_id)).join(" and turn ") + " of this game, so this one answer counts for those turns too. Their lines are listed below your play." }));
+    const tbl = el("div", { class: "table" });
+    tbl.append(side(p.opponent || {}, "opp"));
+    const ex = el("div", { class: "extras" });
+    if (p.stadium) {
+      const sn = typeof p.stadium === "object" ? str(p.stadium.card || p.stadium.name) : str(p.stadium);
+      const sc = cardByName(sn);
+      ex.append(el("div", { class: "stadium" }, el("b", { text: "Stadium: " + sn }), sc ? el("div", { class: "catk-t", text: sym(sc.text) }) : null));
+    }
+    const ez = p.energy_zone || {};
+    const zone = el("div", { class: "zone" });
+    if (ez.dustin_this_turn) zone.append(el("span", { text: "Your Energy this turn:" }), pip(ez.dustin_this_turn), el("span", { text: str(ez.dustin_this_turn) }));
+    if (ez.dustin_next_turn) zone.append(el("span", { text: "· next turn:" }), pip(ez.dustin_next_turn), el("span", { text: str(ez.dustin_next_turn) }));
+    if (ez.opponent_next_turn) zone.append(el("span", { text: "· opponent's next:" }), pip(ez.opponent_next_turn), el("span", { text: str(ez.opponent_next_turn) }));
+    if (zone.childNodes.length) ex.append(zone);
+    if (ex.childNodes.length) tbl.append(ex);
+    tbl.append(side(p.dustin || {}, "you"));
+    main.append(tbl);
+    const me = p.dustin || {};
+    const hand = el("div", { class: "handrow", role: "list", "aria-label": "Your hand" });
+    arr(me.hand).forEach((c) => {
+      const t = str(c), m = /^(.*?)\s*\(([^)]+)\)\s*$/.exec(t);
+      const cc = cardByName(t);
+      const body = !cc ? el("div", { class: "ctext" }, el("div", { class: "catk-t", text: "More than one printing of this card exists, so its text isn't shown." }))
+        : cc.kind === "Pokemon" ? pokeText(cc) : trainerText(cc);
+      hand.append(el("details", { class: "hcard", role: "listitem" }, el("summary", null, m ? m[1] : t, m ? el("small", { text: m[2] }) : el("small", { text: cc && cc.kind === "Pokemon" ? (cc.hp ? cc.hp + " HP" : "Pokémon") : "" })), body));
+    });
+    main.append(el("section", { "aria-label": "Your hand", class: "side" }, el("div", { class: "side-label you" }, el("span", { text: "Your hand at the start of the turn (" + arr(me.hand).length + "), tap a card to read it" })), hand));
+    const opp = p.opponent || {};
+    main.append(el("div", { class: "lists" },
+      listBox("Cards left in your deck", me.cards_left_in_deck),
+      listBox("Your discard pile", arr(me.discard).concat(arr(me.discarded_energy).map((e) => "Energy: " + str(e)))),
+      listBox("Opponent's discard you've seen", arr(opp.discard_seen).concat(arr(opp.discarded_energy).map((e) => "Energy: " + str(e))))));
+    if (p.note) main.append(el("p", { class: "meta", text: str(p.note) }));
+    main.append(answerForm(q));
+  }
+  function answerForm(q) {
+    const ans = S.answers[q.point_id] || {};
+    const f = el("form", { class: "answer" });
+    f.append(el("h3", { text: "Which was the better play, with what you could see then?" }));
+    const plans = el("div", { class: "plans" });
+    plans.append(planBox("What you played", q.his_move, true));
+    const alts = arr(q.alternatives);
+    alts.forEach((a, k) => plans.append(planBox(alts.length > 1 ? "The other line " + (k + 1) : "The other line", a, false)));
+    f.append(plans);
+    arr(q.also_applies_to).filter((a) => a && typeof a === "object").forEach((a) => {
+      const v = a.video, more = el("div", { class: "plans" });
+      more.append(planBox("What you played", a.his_move, true));
+      arr(a.alternatives).forEach((b) => more.append(planBox("The other line", b, false)));
+      f.append(el("details", { class: "box" }, el("summary", { text: "Turn " + turnOf(a.point_id) + ": the same choice" + (v && v.at ? " (video at " + str(v.at) + ")" : "") }), more));
+    });
+    const opts = el("fieldset", { class: "options" }, el("legend", { text: "Your answer" }));
+    OPTIONS.forEach((o, k) => {
+      const idv = "a-" + S.i + "-" + k;
+      const inp = el("input", { type: "radio", name: "choice", value: str(o), id: idv });
+      if (ans.choice === str(o)) inp.checked = true;
+      opts.append(el("label", { class: "opt", for: idv }, inp, el("span", { text: str(o).replace(/^The alternative/, "The other line") })));
+    });
+    f.append(opts);
+    const note = el("textarea", { id: "note-" + S.i, name: "note", placeholder: "Optional: what you were thinking in the moment" });
+    note.value = str(ans.note);
+    f.append(el("label", { for: "note-" + S.i, class: "meta" }, el("span", { text: "Your thinking in the moment (optional)" }), note));
+    const prev = el("button", { type: "button", text: "Back" });
+    const save = el("button", { type: "submit", class: "primary", text: S.i < S.qs.length - 1 ? "Save and next" : "Save" });
+    const msg = el("span", { class: "msg", role: "status" });
+    if (ans.answered_at) msg.textContent = "Saved";
+    if (S.i === 0) prev.disabled = true;
+    prev.addEventListener("click", () => go(S.i - 1));
+    f.append(el("div", { class: "actions" }, prev, save, msg));
+    if (S.readOnly || !S.db) { f.querySelectorAll("input,textarea,button[type=submit]").forEach((x) => (x.disabled = true)); msg.textContent = S.db ? "Read-only for you" : "Answers save when this page is open in Claude."; }
+    f.addEventListener("submit", async (ev) => {
+      ev.preventDefault();
+      const fd = new FormData(f);
+      const choice = fd.get("choice");
+      if (choice == null) { msg.className = "msg err"; msg.textContent = "Pick one of the four answers first."; return; }
+      const body = { choice: str(choice), note: str(fd.get("note")).trim().slice(0, 3000), answered_at: new Date().toISOString(), question: str(q.question).slice(0, 600) };
+      save.disabled = true; msg.className = "msg"; msg.textContent = "Saving…";
+      try {
+        await S.db.doc("answers/" + q.point_id).set(body);
+        S.answers[q.point_id] = body;
+        if (S.i < S.qs.length - 1) go(S.i + 1); else { render(); finished(); }
+      } catch (e) {
+        msg.className = "msg err";
+        if (e && (e.code === "invalid_argument" || e.code === "permission_denied" || e.code === "not_granted")) { S.readOnly = true; msg.textContent = "You can view these questions but not save answers."; }
+        else msg.textContent = "Couldn't save just now. Try again in a moment.";
+        save.disabled = false;
+      }
+    });
+    return f;
+  }
+  function finished() {
+    if (!S.qs.every((q) => answered(q.point_id))) return;
+    $("main").prepend(el("div", { class: "done-panel" }, el("h2", { text: "All answered. Thank you." }),
+      el("p", { class: "lede", text: "Claude reads your answers from here. You can still go back and change any of them until the test is frozen." })));
+  }
+  S.qs = DATA && Array.isArray(DATA.questions) ? DATA.questions : [];
+  render();
+  (async function start() {
+    let db = null;
+    try { db = window.claude && window.claude.use ? await window.claude.use("db") : null; } catch (e) { db = null; }
+    if (!db) { notice("Answers save when this page is open in Claude, signed in."); render(); return; }
+    S.db = db;
+    try {
+      const as = await db.collection("answers").get();
+      for (const d of as.docs) S.answers[d.id] = d.data();
+      const firstOpen = S.qs.findIndex((q) => !answered(q.point_id));
+      S.i = firstOpen < 0 ? 0 : firstOpen;
+      render();
+      if (firstOpen < 0) finished();
+    } catch (e) {
+      notice("Your saved answers couldn't load. Reopen the page to try again.");
+      render();
+    }
+  })();
+})();
+</script>

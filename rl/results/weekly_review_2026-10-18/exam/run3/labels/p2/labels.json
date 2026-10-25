@@ -1,0 +1,462 @@
+{"format": "pds-exam-v2-labels",
+ "points": {
+  "LAD-20261020_040217000_SR-t1": {
+   "his_move": ["Play:Poké Ball", "Place:Goomy@1", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "prepare",
+   "ambiguous": null,
+   "why_his": "Going first with no Energy and only Dratini in play, Poké Ball is the only useful play; it found Goomy, which he benches as a second body and future Sticky Membrane Active."
+  },
+  "LAD-20261020_040217000_SR-t3": {
+   "his_move": ["Place:Goomy@2", "Attach:1Metal@0 zone", "Retreat:1", "Evolve:Dragonair@1", "Ability@1", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "prepare",
+   "ambiguous": null,
+   "why_his": "Attaching Metal to Dratini pays its retreat, Goomy goes Active so Sticky Membrane taxes Moltres ex, and the benched Dratini evolves to Dragonair whose Dragon's Blessing puts the discarded Metal back on Goomy: no Energy lost."
+  },
+  "LAD-20261020_040217000_SR-t5": {
+   "his_move": ["Attach:1Lightning@1 zone", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "prepare",
+   "ambiguous": null,
+   "why_his": "Goomy can't use Ram (needs Water+Psychic), so he banks the Lightning on benched Dragonair for its later Dragonite (Hyper Ray needs Water+Lightning+Colorless) while keeping Dragonair's Dragon's Blessing on the Bench and Goomy's tax up."
+  },
+  "LAD-20261020_040217000_SR-t7": {
+   "his_move": ["Play:Professor's Research", "Play:Rare Candy", "Evolve:Hisuian Goodra@0", "Attach:1Lightning@0 zone", "Ability@1", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "prepare",
+   "ambiguous": null,
+   "why_his": "Research before committing anything finds Hisuian Goodra; Rare Candy turns Active Goomy into 150-HP Goodra, and the zone Lightning plus Dragon's Blessing Metal start its three-Energy Heavy Impact."
+  },
+  "LAD-20261021_020059000_SR-t8": {
+   "his_move": ["Attach:1Darkness@0 zone", "Play:Field Blower", "DiscardToolFromPokemon{player:1,in_play_idx:1,tool_idx:0}", "Play:Copycat", "Place:Team Rocket's Koffing@1", "Place:Baltoy@2", "Attack:Dynamite Punch"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "attack now",
+   "ambiguous": null,
+   "why_his": "Third Darkness enables Dynamite Punch; Field Blower is used on the benched Entei's Clear Veil before Copycat would shuffle it away; Copycat refills three cards to bench Koffing and Baltoy, then 100 damage plus Needle leaves the Active Entei ex at 30."
+  },
+  "LAD-20261021_020916000_SR-t1": {
+   "his_move": ["Play:Deceptive Needle", "Tool:Deceptive Needle@0", "Play:Poké Ball", "Place:Baltoy@1", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "prepare",
+   "ambiguous": null,
+   "why_his": "Needle on the Active Darkness Grimer starts 10 chip damage each of his turns on Carbink, and Poké Ball finds Baltoy for the Bench (no Energy on the first turn)."
+  },
+  "LAD-20261021_020916000_SR-t3": {
+   "his_move": ["Play:Field Blower", "DiscardToolFromPokemon{player:1,in_play_idx:1,tool_idx:0}", "Attach:1Darkness@0 zone", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "prepare",
+   "ambiguous": null,
+   "why_his": "Field Blower strips Giant Cape from the Mega Diancie ex (190 back to 170) and the Darkness goes on Grimer toward Sludge Toss; Needle keeps chipping Carbink."
+  },
+  "LAD-20261021_020916000_SR-t5": {
+   "his_move": ["Play:Poké Ball", "Place:Mega Sableye ex@2", "Attach:1Darkness@2 zone", "Play:Deceptive Needle", "Tool:Deceptive Needle@2", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "prepare",
+   "ambiguous": null,
+   "why_his": "Poké Ball finds Mega Sableye ex, his main attacker; he benches it, gives it its first Darkness and the second Needle so it is ready when Grimer falls."
+  },
+  "LAD-20261021_020916000_SR-t7": {
+   "his_move": ["Attach:1Darkness@0 zone", "Play:Team Rocket's Goo-zooka", "Attack:Cursed Jewel"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "attack now",
+   "ambiguous": null,
+   "why_his": "Second Darkness lets Sableye use Cursed Jewel (80, plus 40 retaliation armed) on Flutter Mane, Needle brings it to 10, and Goo-zooka makes its escape cost both its Energy."
+  },
+  "LAD-20261021_020916000_SR-t9": {
+   "his_move": ["Play:Cyrus", "Attach:1Darkness@1 zone", "Attack:Cursed Jewel"],
+   "acceptable": [],
+   "pending_alternatives": [
+    {"line": ["Attach:1Darkness@1 zone", "Attack:Cursed Jewel"], "reason": "Cursed Jewel (80) also knocks out the Active 40-HP Carbink, the opponent's Energy engine, for the same one point while keeping Cyrus; held until Dustin answers."}
+   ],
+   "answer_kind": "attack now",
+   "ambiguous": "In the Igri$ game (20261021_020916), turn 9: you used Cyrus to pull up the 10-HP Flutter Mane and knock it out. Would knocking out the Active 40-HP Carbink with Cursed Jewel instead (keeping Cyrus) have been an equally good play?",
+   "why_his": "Cyrus drags the 10-HP Flutter Mane (no Energy left after Goo-zooka) Active and Cursed Jewel knocks it out for a point; Baltoy gets its first Darkness toward Claydol."
+  },
+  "LAD-20261021_020916000_SR-t11": {
+   "his_move": ["Play:X Speed", "Play:Copycat", "Attach:1Darkness@1 zone", "Evolve:Claydol@1", "Place:Team Rocket's Koffing@2", "Retreat:1", "Play:Poison Barb", "Tool:Poison Barb@0", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "prepare",
+   "ambiguous": null,
+   "why_his": "X Speed first (Copycat would shuffle it away) makes Sableye's retreat free; Copycat draws six, Claydol (Heal Block) with Poison Barb goes Active and Sableye, a 3-point Mega, hides on the Bench from Brilliant Storm while Koffing is benched for Weezing ex."
+  },
+  "LAD-20261021_020916000_SR-t13": {
+   "his_move": ["Play:Professor's Research", "Place:Hoopa ex@3", "Attach:1Darkness@0 zone", "Attack:Power Beam"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "attack now",
+   "ambiguous": null,
+   "why_his": "Research draws the last card (Hoopa ex, benched); the third Darkness on Claydol pays Power Beam, which knocks out the 30-HP Carbink for the 2-1 lead."
+  },
+  "LAD-20261021_020916000_SR-t15": {
+   "his_move": ["Evolve:Team Rocket's Weezing ex@1", "Ability@1", "Attach:1Darkness@2 zone", "Attack:Cursed Jewel"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "attack now",
+   "ambiguous": null,
+   "why_his": "At 2-2 with no knockout reachable, Weezing ex's Boiler Smog poisons and burns the Active Diancie and Cursed Jewel plus Needle and checkup damage take it from 200 to 80, with 40 retaliation armed; Hoopa gets an Energy."
+  },
+  "LAD-20261021_030939000_SR-t2": {
+   "his_move": ["Play:Poké Ball", "Place:Carvanha@1", "Play:Wallace", "ChooseRandomEvolutionTarget{in_play_idx:0,energy_type:Water}", "Attach:1Water@0 zone", "Attack:Turbo Shark"],
+   "acceptable": [
+    {"line": ["Play:Wallace", "ChooseRandomEvolutionTarget", "Attach:1Water@0 zone", "Attack:Turbo Shark"], "reason": "Same winning attack without the Poké Ball: Wallace makes the Active Carvanha Mega Sharpedo ex and Turbo Shark (70+20 Weakness) knocks out the lone 70-HP Slugma, whose Bench is empty, so the game ends this turn either way."}
+   ],
+   "pending_alternatives": [],
+   "answer_kind": "attack now",
+   "ambiguous": null,
+   "why_his": "Wallace evolves the Active Carvanha into Mega Sharpedo ex and Turbo Shark does 90 into Water-weak Slugma, a lethal hit on a lone Pokémon; Poké Ball first adds a benched Carvanha."
+  },
+  "LAD-20261021_031141000_SR-t1": {
+   "his_move": ["Play:Poké Ball", "Place:Carvanha@2", "Play:Elegant Cape", "Tool:Elegant Cape@2", "Play:Copycat", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "prepare",
+   "ambiguous": null,
+   "why_his": "Poké Ball finds Carvanha, which gets Elegant Cape so it becomes a 220-HP Mega Sharpedo ex next turn; Copycat turns his one remaining card into two."
+  },
+  "LAD-20261021_031141000_SR-t3": {
+   "his_move": ["Evolve:Mega Sharpedo ex@2", "Play:Heavy Helmet", "Tool:Heavy Helmet@0", "Attach:1Water@0 zone", "EndTurn"],
+   "acceptable": [
+    {"line": ["Evolve:Mega Sharpedo ex@2", "Play:Heavy Helmet", "Tool:Heavy Helmet@0", "Attach:1Water@2 zone", "EndTurn"], "reason": "Same wall-and-build turn with the Water on the benched Mega Sharpedo ex instead: Wailmer can't retreat (3) and is far from Wave Splash, while one Water lets the Mega use Turbo Shark the moment it is promoted."}
+   ],
+   "pending_alternatives": [],
+   "answer_kind": "prepare",
+   "ambiguous": null,
+   "why_his": "Evolves the caped Carvanha into a 220-HP Mega Sharpedo ex on the Bench and puts Heavy Helmet (-20, retreat 3) and the Water on the Active Wailmer wall."
+  },
+  "LAD-20261021_031141000_SR-t5": {
+   "his_move": ["Attach:1Water@0 zone", "Attack:Turbo Shark"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "attack now",
+   "ambiguous": null,
+   "why_his": "One Water powers Turbo Shark for 70 on the Active Vespiquen ex (140 to 70); Wallace has no target and is held."
+  },
+  "LAD-20261021_031141000_SR-t7": {
+   "his_move": ["Attach:1Water@1 zone", "Retreat:1", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [
+    {"line": ["Attach:1Water@0 zone", "Attack:Turbo Shark"], "reason": "Turbo Shark (70) knocks out the 70-HP Active Vespiquen ex for 2 points now; held until Dustin answers, since the benched second Vespiquen ex could then knock out the 80-HP Mega for 3."}
+   ],
+   "answer_kind": "sacrifice",
+   "ambiguous": "In the えのき game (20261021_031141), turn 7: you put Water on Baltoy and retreated your 80-HP Mega Sharpedo ex instead of attaching to it and using Turbo Shark to knock out the 70-HP Vespiquen ex for 2 points. Was retreating your intended best play, or should the Turbo Shark knockout also count as a good answer (or as the better one)?",
+   "why_his": "He keeps the damaged 3-point Mega Sharpedo ex off the Active spot (free retreat) and puts a powered Baltoy in front to take the next hit instead."
+  },
+  "LAD-20261021_031716000_SR-t1": {
+   "his_move": ["Play:Poké Ball", "Place:Carvanha@1", "Play:Elegant Cape", "Tool:Elegant Cape@1", "Play:Wallace", "ChooseRandomEvolutionTarget", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "prepare",
+   "ambiguous": null,
+   "why_his": "Poké Ball finds Carvanha; Cape then Wallace make it a 220-HP Mega Sharpedo ex on the Bench on turn 1 behind the Wailmer wall."
+  },
+  "LAD-20261021_031716000_SR-t3": {
+   "his_move": ["Play:Professor's Research", "Evolve:Wailord@0", "Attach:1Water@0 zone", "Play:Elegant Cape", "Tool:Elegant Cape@0", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "prepare",
+   "ambiguous": null,
+   "why_his": "Research draws Wailord and a Cape: the damaged Active Wailmer becomes a 190-HP caped Wailord and starts charging Whale Pump."
+  },
+  "LAD-20261021_031716000_SR-t5": {
+   "his_move": ["Play:Professor's Research", "Place:Baltoy@2", "Attach:1Water@0 zone", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "prepare",
+   "ambiguous": null,
+   "why_his": "Research (Copycat against a one-card hand would be weak) finds Baltoy and Claydol; Baltoy is benched for Heal Block and Wailord gets its second Water."
+  },
+  "LAD-20261021_031716000_SR-t7": {
+   "his_move": ["Place:Wailmer@3", "Evolve:Claydol@2", "Attach:1Water@0 zone", "Play:Copycat", "Play:Heavy Helmet", "Tool:Heavy Helmet@3", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "prepare",
+   "ambiguous": null,
+   "why_his": "Benches a second Wailmer, evolves Claydol (Heal Block), gives Wailord its third Water for next turn's Whale Pump, and Copycat turns the spare Mega into Heavy Helmet for the new Wailmer."
+  },
+  "LAD-20261021_031716000_SR-t9": {
+   "his_move": ["Evolve:Wailord@3", "Attach:1Water@0 zone", "Attack:Whale Pump"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "attack now",
+   "ambiguous": null,
+   "why_his": "Fourth Water makes Whale Pump 100, knocking out the 70-HP Electrode for the first point (taking Rocky Helmet and Destiny Burst); the helmeted Wailmer evolves into a second Wailord."
+  },
+  "LAD-20261021_031716000_SR-t11": {
+   "his_move": ["Attach:1Water@0 zone", "Attack:Whale Pump"],
+   "acceptable": [
+    {"line": ["Attach:1Water@3 zone", "Attack:Whale Pump"], "reason": "Same attack with the Water on the benched helmeted Wailord: Whale Pump still does 100 (Luxray to 30, no knockout either way, and Heal Block stops any healing), while the backup attacker starts charging."}
+   ],
+   "pending_alternatives": [],
+   "answer_kind": "attack now",
+   "ambiguous": null,
+   "why_his": "Fifth Water makes Whale Pump 110, leaving the Energy-less Luxray at 20; Cyrus has no damaged benched target."
+  },
+  "LAD-20261021_032324000_SR-t2": {
+   "his_move": ["Play:Poké Ball", "Place:Wailmer@1", "Play:Heavy Helmet", "Tool:Heavy Helmet@1", "Play:Professor's Research", "Attach:1Water@0 zone", "Play:Elegant Cape", "Tool:Elegant Cape@0", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "prepare",
+   "ambiguous": null,
+   "why_his": "Poké Ball finds Wailmer (benched with Heavy Helmet), Research digs, and Baltoy gets Water and a Cape: a non-ex attacker that can hit Safeguard Oricorio."
+  },
+  "LAD-20261021_032324000_SR-t4": {
+   "his_move": ["Play:Poké Ball", "Place:Carvanha@2", "Play:Wallace", "ChooseRandomEvolutionTarget", "Play:Elegant Cape", "Tool:Elegant Cape@2", "Attach:1Water@0 zone", "Attack:Spinning Attack"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "attack now",
+   "ambiguous": null,
+   "why_his": "Poké Ball and Wallace build a 220-HP caped Mega Sharpedo ex on the Bench, and Baltoy's second Water pays Spinning Attack for 50 into the Fighting-weak Oricorio, which Safeguard protects from ex attacks."
+  },
+  "LAD-20261021_204724000_SR-t2": {
+   "his_move": ["Place:Wailmer@2", "Attach:1Water@0 zone", "Attack:Sharp Fang"],
+   "acceptable": [
+    {"line": ["Place:Wailmer@2", "Play:Elegant Cape", "Tool:Elegant Cape@0", "Attach:1Water@0 zone", "Attack:Sharp Fang"], "reason": "Same turn plus Elegant Cape put on Carvanha now; it becomes the planned Mega Sharpedo ex next turn and the Cape then gives +30, as Dustin does in several other games."}
+   ],
+   "pending_alternatives": [],
+   "answer_kind": "attack now",
+   "ambiguous": null,
+   "why_his": "Benches Wailmer for later Turbo Shark Energy, and Carvanha's Sharp Fang does 50 into the Water-weak Torchic (60 to 10)."
+  },
+  "LAD-20261021_204724000_SR-t4": {
+   "his_move": ["Play:Professor's Research", "Play:Poké Ball", "Place:Carvanha@3", "Evolve:Claydol@1", "Evolve:Mega Sharpedo ex@0", "Play:Elegant Cape", "Tool:Elegant Cape@0", "Attach:1Water@2 zone", "Attack:Turbo Shark"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "attack now",
+   "ambiguous": null,
+   "why_his": "Research and Poké Ball add a second Carvanha; Claydol and a caped 220-HP Mega Sharpedo ex come in, the zone Water goes to Wailmer, and Turbo Shark knocks out the 10-HP Torchic while adding a second Water to Wailmer."
+  },
+  "LAD-20261021_204724000_SR-t6": {
+   "his_move": ["Play:Professor's Research", "Evolve:Wailord@2", "Evolve:Mega Sharpedo ex@3", "Attach:1Water@2 zone", "Attack:Turbo Shark"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "attack now",
+   "ambiguous": null,
+   "why_his": "Research finds Wailord; Wailord and a second Mega evolve, Wailord gets its third Water, and Turbo Shark (90 with Weakness) knocks out Castform while giving Wailord a fourth Water."
+  },
+  "LAD-20261021_204724000_SR-t8": {
+   "his_move": ["Retreat:2", "Play:Copycat", "Play:Poké Ball", "Play:Heavy Helmet", "Tool:Heavy Helmet@0", "Play:Elegant Cape", "Tool:Elegant Cape@3", "Attach:1Water@0 zone", "Attack:Whale Pump"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "attack now",
+   "ambiguous": null,
+   "why_his": "The burned 50-HP Mega Sharpedo ex (a 3-point loss to Mega Burning) retreats for free and is cured; Copycat refills, Wailord gets Heavy Helmet and a fifth Water and Whale Pump hits Mega Blaziken ex for 130."
+  },
+  "LAD-20261021_212621000_SR-t1": {
+   "his_move": ["Play:Poké Ball", "Place:Carvanha@1", "Play:Elegant Cape", "Tool:Elegant Cape@0", "Play:Copycat", "Place:Wailmer@2", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "prepare",
+   "ambiguous": null,
+   "why_his": "Poké Ball benches Carvanha, Cape goes on the Active Wailmer for a 230-HP Wailord later, and Copycat draws four, giving a second Wailmer for the Bench."
+  },
+  "LAD-20261021_212621000_SR-t3": {
+   "his_move": ["Evolve:Mega Sharpedo ex@1", "Evolve:Wailord@0", "Play:Elegant Cape", "Tool:Elegant Cape@1", "Attach:1Water@1 zone", "EndTurn"],
+   "acceptable": [
+    {"line": ["Evolve:Mega Sharpedo ex@1", "Evolve:Wailord@0", "Play:Elegant Cape", "Tool:Elegant Cape@1", "Attach:1Water@0 zone", "EndTurn"], "reason": "Same development with the Water on the Active 230-HP Wailord instead: it can't retreat (4) and is the attacker that needs four Water for Whale Pump, while the benched Mega can't reach the Active spot soon."}
+   ],
+   "pending_alternatives": [],
+   "answer_kind": "prepare",
+   "ambiguous": null,
+   "why_his": "Evolves a 230-HP caped Wailord in front and a caped 220-HP Mega Sharpedo ex on the Bench, and gives the Mega its Turbo Shark Water."
+  },
+  "LAD-20261021_212621000_SR-t5": {
+   "his_move": ["Play:Professor's Research", "Play:Heavy Helmet", "Tool:Heavy Helmet@2", "Attach:1Water@0 zone", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "prepare",
+   "ambiguous": null,
+   "why_his": "Research finds Heavy Helmet for the benched Wailmer (a future Wailord) and the Active Wailord gets its first Water toward Whale Pump."
+  },
+  "LAD-20261021_212621000_SR-t11": {
+   "his_move": ["Play:Poké Ball", "Place:Baltoy@3", "Attach:1Water@0 zone", "Attack:Whale Pump"],
+   "acceptable": [
+    {"line": ["Place:Baltoy@3", "Attach:1Water@0 zone", "Attack:Whale Pump"], "reason": "Same turn without the Poké Ball, which visibly can't find anything (both Wailmer and one Carvanha are in play, the other Carvanha and Baltoy are in hand); the board ends the same."}
+   ],
+   "pending_alternatives": [],
+   "answer_kind": "attack now",
+   "ambiguous": null,
+   "why_his": "Fourth Water makes Whale Pump 100, knocking out the 80-HP Absol that had been sniping his benched Mega; Baltoy fills the last Bench slot for Claydol."
+  },
+  "LAD-20261021_212621000_SR-t13": {
+   "his_move": ["Evolve:Wailord@2", "Attach:1Water@2 zone", "Attack:Whale Pump"],
+   "acceptable": [
+    {"line": ["Evolve:Wailord@2", "Evolve:Claydol@3", "Attach:1Water@2 zone", "Attack:Whale Pump"], "reason": "Same turn plus evolving Baltoy into Claydol now (100 HP instead of 60 and Heal Block up a turn earlier); nothing in his deck heals, so it costs nothing."}
+   ],
+   "pending_alternatives": [],
+   "answer_kind": "attack now",
+   "ambiguous": null,
+   "why_his": "Helmeted Wailmer becomes the backup Wailord and gets the Water, while the Active Wailord's 100 Whale Pump knocks out the 60-HP Deino."
+  },
+  "LAD-20261021_212621000_SR-t15": {
+   "his_move": ["Evolve:Claydol@3", "Attach:1Water@2 zone", "Attack:Whale Pump"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "attack now",
+   "ambiguous": null,
+   "why_his": "The poisoned Active Wailord will fall, so the Water goes to the backup Wailord; Whale Pump takes Mega Absol ex to 70 and Claydol's Heal Block arrives."
+  },
+  "LAD-20261021_213653000_SR-t1": {
+   "his_move": ["Place:Wailmer@1", "Play:Poké Ball", "Place:Carvanha@2", "Play:Heavy Helmet", "Tool:Heavy Helmet@1", "Play:Copycat", "Play:Elegant Cape", "Tool:Elegant Cape@0", "Play:Elegant Cape", "Tool:Elegant Cape@2", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "prepare",
+   "ambiguous": null,
+   "why_his": "Fills the Bench with Wailmer and Carvanha, Helmet on the benched Wailmer, then Copycat draws four and both Capes go on the future Stage 1s."
+  },
+  "LAD-20261021_213653000_SR-t3": {
+   "his_move": ["Evolve:Mega Sharpedo ex@2", "Attach:1Water@2 zone", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "prepare",
+   "ambiguous": null,
+   "why_his": "The caped Carvanha becomes a 220-HP Mega Sharpedo ex with its Turbo Shark Water while the unpowered Wailmer stays in front."
+  },
+  "LAD-20261021_213653000_SR-t5": {
+   "his_move": ["Play:Professor's Research", "Play:Poké Ball", "Place:Baltoy@3", "Evolve:Wailord@0", "Attach:1Water@1 zone", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "prepare",
+   "ambiguous": null,
+   "why_his": "Research and Poké Ball add Baltoy; the damaged Active Wailmer becomes a caped Wailord wall and the helmeted Wailmer starts charging."
+  },
+  "LAD-20261021_213653000_SR-t7": {
+   "his_move": ["Evolve:Claydol@3", "Attach:1Water@1 zone", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "prepare",
+   "ambiguous": null,
+   "why_his": "Binding Snow blocks Energy to the Active, so Claydol comes in and the Water goes to the helmeted Wailmer; the stuck 80-HP Wailord walls."
+  },
+  "LAD-20261021_213653000_SR-t9": {
+   "his_move": ["Place:Carvanha@3", "Play:Wallace", "ChooseRandomEvolutionTarget", "Attach:1Water@3 zone", "Attack:Turbo Shark"],
+   "acceptable": [
+    {"line": ["Place:Carvanha@3", "Attach:1Water@3 zone", "Attack:Turbo Shark"], "reason": "Same turn without Wallace, which visibly can't evolve anything (one Mega Sharpedo ex in play, the other in hand, none left in the deck); the board ends the same and Wallace is kept."}
+   ],
+   "pending_alternatives": [],
+   "answer_kind": "attack now",
+   "ambiguous": null,
+   "why_his": "Turbo Shark (80 with Training Area) takes Ninetales ex to 70 and adds a Water to Wailmer; the zone Water, blocked from the Active, goes on the newly benched Carvanha."
+  },
+  "LAD-20261021_213653000_SR-t11": {
+   "his_move": ["Evolve:Mega Sharpedo ex@3", "Attach:1Water@3 zone", "Retreat:3", "Attack:Turbo Shark"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "attack now",
+   "ambiguous": null,
+   "why_his": "His Active Mega lost its Water and can't take zone Energy, so the powered benched Carvanha becomes a second Mega and gets a second Water, free retreat brings it in, and Turbo Shark (80) knocks out the 70-HP Ninetales ex."
+  },
+  "LAD-20261021_221937000_SR-t2": {
+   "his_move": ["Place:Carvanha@1", "Play:Wallace", "ChooseRandomEvolutionTarget{in_play_idx:0,energy_type:Water}", "Attach:1Water@0 zone", "Attack:Turbo Shark"],
+   "acceptable": [
+    {"line": ["Play:Wallace", "ChooseRandomEvolutionTarget", "Place:Carvanha@1", "Attach:1Water@0 zone", "Attack:Turbo Shark"], "reason": "The same actions with Wallace played before benching the second Carvanha; it reaches the same board and the same knockout."}
+   ],
+   "pending_alternatives": [],
+   "answer_kind": "attack now",
+   "ambiguous": null,
+   "why_his": "Wallace turns the 20-HP Active Carvanha into Mega Sharpedo ex (160 HP), and Turbo Shark knocks out Igglybuff while powering the benched Carvanha."
+  },
+  "LAD-20261021_221937000_SR-t4": {
+   "his_move": ["Play:Professor's Research", "Place:Wailmer@2", "Play:Heavy Helmet", "Tool:Heavy Helmet@2", "Attach:1Water@2 zone", "Attack:Turbo Shark"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "attack now",
+   "ambiguous": null,
+   "why_his": "Research finds two Wailmer; one is benched with Helmet and the zone Water, and Turbo Shark hits Espeon for 70 and gives that Wailmer a second Water."
+  },
+  "LAD-20261021_222413000_SR-t1": {
+   "his_move": ["Play:Professor's Research", "Play:Elegant Cape", "Tool:Elegant Cape@0", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "prepare",
+   "ambiguous": null,
+   "why_his": "Research draws two Capes; one goes on the Active Carvanha so next turn's Mega Sharpedo ex has 220 HP."
+  },
+  "LAD-20261021_224410000_SR-t1": {
+   "his_move": ["Play:Elegant Cape", "Tool:Elegant Cape@0", "Play:Wallace", "ChooseRandomEvolutionTarget", "EndTurn"],
+   "acceptable": [
+    {"line": ["Play:Wallace", "ChooseRandomEvolutionTarget", "Play:Elegant Cape", "Tool:Elegant Cape@0", "EndTurn"], "reason": "The same two plays in the other order: the Cape goes on the Mega Sharpedo ex after Wallace, reaching the same 220-HP Active."}
+   ],
+   "pending_alternatives": [],
+   "answer_kind": "prepare",
+   "ambiguous": null,
+   "why_his": "Cape plus Wallace give a 220-HP Mega Sharpedo ex Active on turn 1, ready to Turbo Shark next turn."
+  },
+  "LAD-20261021_224410000_SR-t3": {
+   "his_move": ["Place:Carvanha@1", "Attach:1Water@0 zone", "Attack:Turbo Shark"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "attack now",
+   "ambiguous": null,
+   "why_his": "Benches Carvanha so Turbo Shark has a Water target, then hits the Active Treecko for 70 and powers Carvanha."
+  },
+  "LAD-20261021_224410000_SR-t5": {
+   "his_move": ["Play:Professor's Research", "Play:Poké Ball", "Place:Wailmer@2", "Attach:1Water@2 zone", "Attack:Turbo Shark"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "attack now",
+   "ambiguous": null,
+   "why_his": "Research and Poké Ball find Wailmer, which gets the zone Water; Turbo Shark knocks out the 60-HP Treecko and gives Wailmer a second Water."
+  },
+  "LAD-20261021_224410000_SR-t7": {
+   "his_move": ["Evolve:Wailord@2", "Play:Professor's Research", "Play:Poké Ball", "Play:Heavy Helmet", "Tool:Heavy Helmet@2", "Retreat:1", "Attach:1Water@2 zone", "Place:Wailmer@3", "Attack:Sharp Fang"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "sacrifice",
+   "ambiguous": null,
+   "why_his": "The poisoned 40-HP Mega Sharpedo ex (3 points) retreats for free and is cured; Carvanha goes in front as the 1-point sacrifice while the helmeted Wailord gets its third Water."
+  },
+  "LAD-20261021_224410000_SR-t9": {
+   "his_move": ["Evolve:Wailord@0", "Attach:1Water@2 zone", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "prepare",
+   "ambiguous": null,
+   "why_his": "The unpowered Active Wailmer becomes a 200-HP Wailord wall and the helmeted benched Wailord gets its fourth Water, ready for Whale Pump."
+  },
+  "LAD-20261021_224410000_SR-t11": {
+   "his_move": ["Play:Copycat", "Place:Baltoy@3", "Play:Elegant Cape", "Tool:Elegant Cape@0", "Attach:1Water@2 zone", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "sacrifice",
+   "ambiguous": null,
+   "why_his": "The poisoned, unretreatable Active Wailord is left in front to absorb the next attack while Copycat draws four, Baltoy is benched for Claydol and the backup Wailord reaches five Water."
+  },
+  "LAD-20261021_224410000_SR-t13": {
+   "his_move": ["Attach:1Water@0 zone", "Evolve:Claydol@2", "Attack:Whale Pump"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "attack now",
+   "ambiguous": null,
+   "why_his": "The sixth Water makes Whale Pump 120 into Mega Sceptile ex (240 to 120), and Claydol's Heal Block stops the opponent healing it back."
+  }
+ },
+ "decks": {
+  "v2deck_4fa967805c": {
+   "deck_kinds": ["evolution and setup", "Bench preparation", "sacrifice and recovery", "fast pressure"],
+   "why": {
+    "evolution and setup": "Every attacker is a Stage 1 (Mega Sharpedo ex from Carvanha, Wailord from Wailmer, Claydol from Baltoy); Wallace evolves a 50-HP Water Basic straight from the deck and Elegant Cape gives +30 HP only to Stage 1s.",
+    "Bench preparation": "Turbo Shark puts zone Water on a Benched Water Pokémon and Whale Pump gets +10 per Water, so Wailord is charged on the Bench; Capes and Heavy Helmet go on benched Basics before they evolve.",
+    "sacrifice and recovery": "Mega Sharpedo ex is a 3-point Mega with retreat 0, so it is pulled back when damaged, and walls (Wailmer/Wailord, retreat 3-4, with Heavy Helmet's -20) or Carvanha/Baltoy take 1-point knockouts in front.",
+    "fast pressure": "Wallace can make Mega Sharpedo ex on turn 1-2, and Turbo Shark does 70 for a single Water, so it hits from the first turn it has Energy."
+   }
+  },
+  "v2deck_5309993874": {
+   "deck_kinds": ["control and combinations", "evolution and setup"],
+   "why": {
+    "control and combinations": "Damage and denial come from combos: Deceptive Needle's end-of-turn 10, Poison Barb, Weezing ex's Boiler Smog (Poison+Burn), Goo-zooka's retreat tax, Alolan Muk's Basic-Ability lock, Claydol's Heal Block, Cursed Jewel's retaliation, Cyrus and Field Blower.",
+    "evolution and setup": "Alolan Muk, Team Rocket's Weezing ex (ability only when evolving) and Claydol are Stage 1s that must be benched and evolved, while Mega Sableye ex and Hoopa ex need two or three Darkness built up."
+   }
+  }
+ }
+}

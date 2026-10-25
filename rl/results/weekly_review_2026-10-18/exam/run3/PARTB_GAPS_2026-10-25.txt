@@ -1,0 +1,39 @@
+turn keys equal: True 476 476
+both usable: 261 | candidates: 261 | equal sets: True
+  in both but not a candidate: []
+  candidate but not both-usable: []
+first only: 27 by part {1: 1, 2: 12, 3: 14}
+    20261019_222211000_SR-t7 | second says: board partly: opponent Energy per Weezing/Mega not fully established
+    20261021_212621000_SR-t7 | second says: no real choice: routine Water attach, nothing else to do
+    20261021_212621000_SR-t9 | second says: no real choice: routine Water attach, nothing else to do
+    20261021_225131000_SR-t5 | second says: no real choice: Water attach and pass, nothing else playable
+    20261021_225131000_SR-t7 | second says: no real choice: Poke Ball, bench, Water attach; no attack possible
+    20261022_233003000_SR-t6 | second says: real choice unclear: Poke Ball, Water on Wailord, Carvanha kept in hand; no attack possible
+    20261022_234030000_SR-t5 | second says: real choice unclear: evolve Wailord and Water on a benched Wailmer, no attack
+    20261022_234030000_SR-t9 | second says: no real choice: Water attach and pass (Malasada blocked by Heal Block)
+    20261023_000634000_SR-t4 | second says: no real choice: only a Fighting attach to the benched Trapinch, Goomy Active has no attack
+    20261023_002102000_SR-t3 | second says: hand partly: unreconciled Rocky Helmet at t1; Copycat redraw at t3 is then not named
+    20261023_011134000_SR-t12 | second says: no real choice: empty deck, Water attach and pass
+    20261023_012243000_SR-t3 | second says: real choice unclear: evolve and one Water attach, opponent idle
+    20261023_012243000_SR-t5 | second says: real choice unclear: second Water and Ram, nothing else sensible
+    20261023_220413000_SR-t1 | second says: first-turn setup; no clear alternative line
+    20261023_224156000_SR-t10 | second says: opposing Bombirdier's Energy after retreat not stated
+    20261023_224156000_SR-t12 | second says: opposing Bombirdier's Energy after retreat not stated
+    20261023_224156000_SR-t8 | second says: opposing Bombirdier's Energy after its retreat not stated
+    20261023_225646000_SR-t1 | second says: first-turn setup; no clear alternative line
+    20261023_225646000_SR-t15 | second says: opponent Psychic placement not fully established
+    20261024_003927000_SR-t8 | second says: forced: empty hand but one drawn Squirtle, nothing else sensible
+    20261024_172633000_SR-t10 | second says: hand partly known
+    20261024_172633000_SR-t12 | second says: hand partly known; HP/heal tracking not exact
+    20261024_172633000_SR-t14 | second says: hand partly known; HP/heal tracking not exact
+    20261024_172633000_SR-t16 | second says: hand partly known; HP/heal tracking not exact
+    20261024_172633000_SR-t8 | second says: hand partly known
+    20261024_202943000_SR-t10 | second says: hand ledger unclear after t6
+    20261024_202943000_SR-t8 | second says: hand ledger unclear after t6 (Magikarp counted twice: Copycat draw and Poke Ball)
+second only: 19 by part {1: 1, 2: 16, 3: 2}
+non-boolean usable values: []
+candidate status: {'point': 258, 'dropped at build (G1): see build_drops/': 3}
+labels_summary type dict entries 3
+points == labels_summary ids: False | points not in labels: ['LAD-20261017_150114000_SR-t2', 'LAD-20261017_150114000_SR-t4', 'LAD-20261017_150509000_SR-t2', 'LAD-20261017_150509000_SR-t4', 'LAD-20261017_150509000_SR-t6'] | labels not points: ['counts', 'points', 'what']
+labels_summary['points'] type dict entries 258 | counts: {'answer_kind': {'attack now': 92, 'prepare': 151, 'sacrifice': 15}, 'first_segment_ends': {'chance': 168, 'end_of_turn': 88, 'opponent_choice': 2}}
+selection points == labels_summary['points']: True | only in selection: [] | only in labels: []

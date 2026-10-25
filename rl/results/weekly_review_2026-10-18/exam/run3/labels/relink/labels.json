@@ -1,0 +1,75 @@
+{"format": "pds-exam-v2-labels",
+ "points": {
+  "LAD-20261021_020059000_SR-t8": {
+   "his_move": ["Attach:1Darkness@0 zone", "Play:Field Blower", "DiscardToolFromPokemon{player:1,in_play_idx:1,tool_idx:0}", "Play:Copycat", "Place:Team Rocket's Koffing@1", "Place:Baltoy@2", "Attack:Dynamite Punch"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "attack now",
+   "ambiguous": null,
+   "why_his": "With Hoopa ex alone in play, Copycat (3 cards, after Field Blower so it isn't shuffled away; it strips the benched Entei's Clear Veil) finds two Bench bodies so a Hoopa KO doesn't lose on the spot, and Dynamite Punch with the third Darkness plus Needle takes the Active Entei ex from 140 to 30."
+  },
+  "LAD-20261021_032324000_SR-t2": {
+   "his_move": ["Play:Poké Ball", "Place:Wailmer@1", "Play:Heavy Helmet", "Tool:Heavy Helmet@1", "Play:Professor's Research", "Attach:1Water@0 zone", "Play:Elegant Cape", "Tool:Elegant Cape@0", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "prepare",
+   "ambiguous": null,
+   "why_his": "Benches Wailmer with Heavy Helmet (retreat 3, takes -20), digs with Research, and puts the first Water on Baltoy, the non-ex attacker whose Spinning Attack gets through Oricorio's Safeguard and hits its Fighting weakness. The Cape goes on Baltoy for a later Claydol."
+  },
+  "LAD-20261021_032324000_SR-t4": {
+   "his_move": ["Play:Poké Ball", "Place:Carvanha@2", "Play:Wallace", "ChooseRandomEvolutionTarget", "Play:Elegant Cape", "Tool:Elegant Cape@2", "Attach:1Water@0 zone", "Attack:Spinning Attack"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "attack now",
+   "ambiguous": null,
+   "why_his": "Poké Ball, then Wallace, turns a fresh Carvanha into Mega Sharpedo ex (220 with Cape) at once, and Baltoy's second Water lets Spinning Attack hit Safeguard Oricorio for 30+20 weakness (70 to 20); an ex couldn't damage it."
+  },
+  "LAD-20261022_004518000_SR-t10": {
+   "his_move": ["Play:Professor's Research", "Attach:1Water@0 zone", "Retreat:2", "Place:Carvanha@3", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "sacrifice",
+   "ambiguous": null,
+   "why_his": "Mach Stealth makes Garchomp immune this turn, so Turbo Shark would do 0. He powers Mega Sharpedo ex, retreats it for free behind Alolan Muk (which can't attack with Water only) so Land Crush takes a 1-point non-ex instead of the 2-point ex, keeps Baltoy for Claydol, and benches Carvanha."
+  },
+  "LAD-20261022_004518000_SR-t2": {
+   "his_move": ["Play:Poké Ball", "Play:Poké Ball", "Place:Carvanha@1", "Play:Copycat", "Place:Baltoy@2", "Place:Alolan Grimer@3", "Attach:1Water@0 zone", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [
+    {"line": ["Play:Poké Ball", "Play:Poké Ball", "Place:Carvanha@1", "Place:Carvanha@2", "Attach:1Water@0 zone", "EndTurn"],
+     "reason": "Keeps the Mega Sharpedo ex already in hand (the deck's only copy), so it is sure to evolve on Carvanha next turn. Copycat would shuffle it back and redraw it only 4 times in 15."}
+   ],
+   "answer_kind": "prepare",
+   "ambiguous": "On your first turn against Mantyke and two Gible, with Mega Sharpedo ex already in hand, would you also accept keeping it (Poké Ball twice, bench both Carvanha, Water on Wailmer, no Copycat) instead of playing Copycat, which shuffles that only Mega Sharpedo back for 4 new cards?",
+   "why_his": "Two Poké Balls find Carvanha. Copycat turns a 3-card hand into 4 fresh cards against the opponent's 4, filling the Bench with Baltoy and Alolan Grimer, and the first Water starts Wailmer's 3-Water Wave Splash."
+  },
+  "LAD-20261022_004518000_SR-t4": {
+   "his_move": ["Attach:1Water@0 zone", "Evolve:Alolan Muk@3", "Evolve:Mega Sharpedo ex@1", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "prepare",
+   "ambiguous": null,
+   "why_his": "Wailmer is stuck Active (retreat 3), so the second Water goes on it toward Wave Splash. Both evolutions are free development: Mega Sharpedo ex 190 and Muk 110."
+  },
+  "LAD-20261022_004518000_SR-t6": {
+   "his_move": ["Attach:1Water@0 zone", "Play:Sabrina", "Attack:Wave Splash"],
+   "acceptable": [],
+   "pending_alternatives": [],
+   "answer_kind": "attack now",
+   "ambiguous": null,
+   "why_his": "The third Water enables Wave Splash 60. Sabrina forces a 60-HP charged Gible (Garchomp's line) into the Active Spot for the knockout, instead of the 30-HP Mantyke."
+  },
+  "LAD-20261022_004518000_SR-t8": {
+   "his_move": ["Attach:1Water@0 zone", "Attack:Wave Splash"],
+   "acceptable": [
+    {"line": ["Attach:1Water@1 zone", "Attack:Wave Splash"],
+     "reason": "Same knockout on Mantyke, since Wailmer already has the 3 Water it needs. The turn's Water goes on the benched Mega Sharpedo ex instead, where it survives Wailmer's likely knockout and readies Turbo Shark."}
+   ],
+   "pending_alternatives": [],
+   "answer_kind": "attack now",
+   "ambiguous": null,
+   "why_his": "Wave Splash KOs Mantyke for the second point (2-0), leaving the opponent only the benched Gabite."
+  }
+ },
+ "decks": {}
+}

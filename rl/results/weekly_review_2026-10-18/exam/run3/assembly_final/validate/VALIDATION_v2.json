@@ -1,0 +1,89 @@
+{
+ "lines": 330,
+ "by_tag": {
+  "his": 258,
+  "alt": 67,
+  "key": 5
+ },
+ "uncertain_cuts": [],
+ "pgdump_lines": 0,
+ "shipped_position_problems": 0,
+ "shipped_unmatched": [],
+ "stop_equals_first_segment": 327,
+ "stop_differs": [
+  [
+   "LAD-20261022_004518000_SR-t6",
+   "his",
+   2,
+   2,
+   "the turn is over (opponent's frame)"
+  ],
+  [
+   "LAD-20261023_011134000_SR-t14",
+   "his",
+   2,
+   6,
+   "hidden draw or coin at ReturnPokemonToHand{in_play_idx:0}"
+  ],
+  [
+   "LAD-20261024_164318000_SR-t4",
+   "his",
+   2,
+   2,
+   "the turn is over (opponent's frame)"
+  ]
+ ],
+ "record_lines_without_segment": [],
+ "pending_points": [],
+ "cut_by_chance_ability": [
+  [
+   "LAD-20261024_164318000_SR-t4",
+   "his",
+   2
+  ]
+ ],
+ "after_chance": {
+  "validated": 206,
+  "n/a": 117,
+  "unvalidated": 3,
+  "FAILED": 3,
+  "partly": 1
+ },
+ "after_chance_detail": [
+  [
+   "LAD-20261020_033156000_SR-t2",
+   "alt0",
+   "unvalidated: no draw record for Play:Copycat"
+  ],
+  [
+   "LAD-20261021_225620000_SR-t3",
+   "alt0",
+   "FAILED: unmatched label \"Evolve:Mega Sharpedo ex@1\" (0 candidates)"
+  ],
+  [
+   "LAD-20261022_000850000_SR-t8",
+   "alt0",
+   "FAILED: unmatched label \"Evolve:Mega Sharpedo ex@1\" (0 candidates)"
+  ],
+  [
+   "LAD-20261023_115617000_SR-t3",
+   "alt0",
+   "unvalidated: no draw record for Play:Professor's Research"
+  ],
+  [
+   "LAD-20261023_122720000_SR-t1",
+   "alt0",
+   "unvalidated: no draw record for Play:Copycat"
+  ],
+  [
+   "LAD-20261024_175131000_SR-t6",
+   "his",
+   "partly: stops again at hidden draw or coin at Attack:Mega Blaster after 3/3"
+  ],
+  [
+   "LAD-20261024_180942000_SR-t1",
+   "his",
+   "FAILED: unmatched label \"Place:Carvanha@1\" (2 candidates)"
+  ]
+ ]
+}

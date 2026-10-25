@@ -1,0 +1,424 @@
+{"format": "pds-exam-v2-labels",
+ "points": {
+  "LAD-20261017_150114000_SR-t2": {
+   "his_move": ["Play:Professor's Research", "Play:Deceptive Needle", "Tool:Deceptive Needle@0", "Place:Nihilego@1", "Attach:1Darkness@0 zone", "Attack:Shadow Bullet"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Draws first, puts Needle on the Active Hoopa ex and benches Nihilego, then Shadow Bullet for 30 plus 10 Needle chips the lone 60-HP Charmander to 20."
+  },
+  "LAD-20261017_150114000_SR-t4": {
+   "his_move": ["Place:Hoopa ex@2", "Attach:1Darkness@0 zone", "Attack:Shadow Bullet"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Benches the second Hoopa ex as a backup attacker and Shadow Bullets again: 30 to Charmeleon plus 20 to the Benched Charmander, with 10 more from Needle."
+  },
+  "LAD-20261017_150509000_SR-t2": {
+   "his_move": ["Play:Poké Ball", "Play:Poison Barb", "Tool:Poison Barb@0", "Attach:1Darkness@0 zone", "Attack:Shadow Bullet"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Searches a Basic, puts Poison Barb on the Active Hoopa ex and uses its one-Energy Shadow Bullet for 30 on Zorua."
+  },
+  "LAD-20261017_150509000_SR-t4": {
+   "his_move": ["Evolve:Claydol@1", "Attach:1Darkness@0 zone", "Attack:Shadow Bullet"],
+   "acceptable": [
+    {"line": ["Evolve:Claydol@1", "Place:Baltoy@2", "Attach:1Darkness@0 zone", "Attack:Shadow Bullet"], "reason": "Same turn, but it also benches the second Baltoy so the second Claydol in hand can become another 100-HP body next turn. Nothing the opponent showed punishes the extra Basic."}
+   ],
+   "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Claydol's Heal Block stops the opponent's healing, and Shadow Bullet hits Zoroark ex for 30 and a Benched Deino for 20."
+  },
+  "LAD-20261017_150509000_SR-t6": {
+   "his_move": ["Place:Glimmet@2", "Attach:1Darkness@0 zone", "Attack:Dynamite Punch"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "The third Energy lets Dynamite Punch (100) knock out the 90-HP Zoroark ex for 2 points, and the benched Glimmet is the next body."
+  },
+  "LAD-20261017_150509000_SR-t8": {
+   "his_move": ["Attach:1Darkness@0 zone", "Retreat:1", "Place:Glimmet@2", "EndTurn"],
+   "acceptable": [
+    {"line": ["Attach:1Darkness@0 zone", "Retreat:1", "Place:Glimmet@2", "Place:Baltoy@3", "EndTurn"], "reason": "Same retreat into the 100-HP Claydol, which survives Darkness Claw's 80. It also benches Baltoy so it can become a second Claydol next turn."}
+   ],
+   "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "At 2-2, any knockout loses the game. He pays the Energy to retreat the 60-HP Glimmet into the 100-HP Claydol, which survives Mega Absol ex's 80, and benches another Glimmet."
+  },
+  "LAD-20261017_151306000_SR-t2": {
+   "his_move": ["Place:Glimmet@1", "Play:Poké Ball", "Place:Alolan Grimer@2", "Play:Heavy Helmet", "Tool:Heavy Helmet@0", "Attach:1Darkness@0 zone", "Retreat:1", "Play:Poison Barb", "Tool:Poison Barb@0", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Fills the Bench and retreats Pawniard so a Poison Barb Glimmet sits Active, ready to evolve into Glimmora in place and use Venomous Hit next turn."
+  },
+  "LAD-20261017_151306000_SR-t4": {
+   "his_move": ["Place:Glimmet@3", "Evolve:Glimmora@0", "Attach:1Darkness@0 zone", "Attack:Venomous Hit"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Evolving clears Glimmet's Confusion, and Glimmora's one-Energy Venomous Hit does 30 to Magmar and Poisons it. The second Glimmet goes to the Bench."
+  },
+  "LAD-20261017_151306000_SR-t6": {
+   "his_move": ["Evolve:Alolan Muk@1", "Attach:1Darkness@2 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Evolves Alolan Muk (Basic abilities off) and puts the Energy on Pawniard toward Kingambit's Overlord's Blade, instead of a 20-damage Hang Down from a Glimmet that is about to be knocked out."
+  },
+  "LAD-20261019_221218000_SR-t1": {
+   "his_move": ["Play:Poké Ball", "Place:Hoopa ex@1", "Play:Professor's Research", "Play:Deceptive Needle", "Tool:Deceptive Needle@0", "Play:Deceptive Needle", "Tool:Deceptive Needle@1", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "On a first turn with no Energy, he searches out and benches Hoopa ex, draws, and puts a Deceptive Needle on each Darkness attacker so the Active one chips 10 every turn."
+  },
+  "LAD-20261019_221218000_SR-t3": {
+   "his_move": ["Play:Professor's Research", "Place:Alolan Grimer@2", "Attach:1Darkness@0 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Draws, benches Alolan Grimer for a later Muk, and gives Mega Sableye ex its first Energy while Needle keeps chipping Gouging Fire."
+  },
+  "LAD-20261019_221218000_SR-t5": {
+   "his_move": ["Play:Poké Ball", "Place:Baltoy@3", "Retreat:1", "Play:Copycat", "Play:Field Blower", "DiscardToolFromPokemon{player:1,in_play_idx:0,tool_idx:0}", "Attach:1Darkness@0 zone", "Attack:Shadow Bullet"],
+   "acceptable": [],
+   "pending_alternatives": [
+    {"line": ["Play:Poké Ball", "Place:Baltoy@3", "Play:Copycat", "Attach:1Darkness@0 zone", "Attack:Cursed Jewel"], "reason": "Keeps Mega Sableye ex Active and gives it its second Energy for Cursed Jewel: 80 to Gouging Fire plus 10 from Needle, with the 40-damage counter set up. His line spends that Energy to retreat into Hoopa ex for a 30+20 Shadow Bullet."}
+   ],
+   "answer_kind": "attack now",
+   "ambiguous": "At 221218 global turn 5, Mega Sableye ex was Active with 1 Energy. Would attaching a second Energy and attacking with Cursed Jewel (80) have been as good as retreating into Hoopa ex for Shadow Bullet, or did you want the 3-point Mega off the Active Spot?",
+   "why_his": "Moves the 3-point Mega Sableye ex out of the Active Spot, strips Gouging Fire's +40 HP Capsule, and Shadow Bullets for 30 Active plus 20 on Dragonair, with Needle adding 10."
+  },
+  "LAD-20261019_222211000_SR-t1": {
+   "his_move": ["Place:Mega Sableye ex@1", "Play:Professor's Research", "Play:Deceptive Needle", "Tool:Deceptive Needle@1", "Play:Starting Plains", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Benches Mega Sableye ex with a Needle and plays Starting Plains (+20 HP to Basics) on a turn where he cannot attach or attack."
+  },
+  "LAD-20261019_222211000_SR-t3": {
+   "his_move": ["Play:Poké Ball", "Place:Alolan Grimer@2", "Play:Professor's Research", "Place:Baltoy@3", "Attach:1Darkness@0 zone", "Attack:Reverse Thrust"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Fills the Bench with evolution bases, then Koffing's Reverse Thrust does 10 and pivots the Needle-holding Mega Sableye ex into the Active Spot, where Needle chips 10 more."
+  },
+  "LAD-20261019_222211000_SR-t5": {
+   "his_move": ["Evolve:Team Rocket's Weezing ex@3", "Ability@3", "Attach:1Darkness@0 zone", "Retreat:1", "Evolve:Alolan Muk@0", "Play:Team Rocket's Goo-zooka", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Boiler Smog Poisons and Burns the opposing Mega Sableye ex. Retreating cures his own 80-HP Mega Sableye ex and keeps it, then he evolves Muk as the Active wall and uses Goo-zooka to lock the opposing Active in."
+  },
+  "LAD-20261019_223400000_SR-t1": {
+   "his_move": ["Play:Poké Ball", "Place:Team Rocket's Koffing@2", "Play:Professor's Research", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Searches out and benches Koffing so it can become Weezing ex next turn, and draws. He keeps the 3-point Mega Sableye ex in hand."
+  },
+  "LAD-20261019_223400000_SR-t3": {
+   "his_move": ["Evolve:Claydol@1", "Play:Professor's Research", "Place:Alolan Grimer@3", "Evolve:Team Rocket's Weezing ex@2", "Ability@2", "Play:Team Rocket's Goo-zooka", "Attach:1Darkness@0 zone", "Attack:Shadow Bullet"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Heal Block, then Boiler Smog Poisons and Burns Moltres ex while Goo-zooka keeps it from retreating out of the conditions. Shadow Bullet adds 30 plus 20 on Victini."
+  },
+  "LAD-20261019_223918000_SR-t1": {
+   "his_move": ["Play:Poké Ball", "Play:Professor's Research", "Place:Baltoy@2", "Place:Alolan Grimer@3", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Searches and draws, then fills the Bench with Baltoy and Grimer behind Darkrai ex and Koffing. He holds Starting Plains, which would also buff the opponent's Basics."
+  },
+  "LAD-20261019_223918000_SR-t3": {
+   "his_move": ["Play:Deceptive Needle", "Tool:Deceptive Needle@0", "Evolve:Team Rocket's Weezing ex@3", "Ability@3", "Attach:1Darkness@0 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Without attacking, he stacks exactly 60 on the lone 60-HP Frigibax: Nightmare Aura 20, Needle 10, then Poison 10 and Burn 20 from Boiler Smog. He keeps Starting Plains off the board."
+  },
+  "LAD-20261019_224222000_SR-t1": {
+   "his_move": ["Place:Darkrai ex@2", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Benches Darkrai ex so later attachments to it trigger Nightmare Aura. He keeps the 3-point Mega Sableye ex in hand."
+  },
+  "LAD-20261019_224222000_SR-t3": {
+   "his_move": ["Play:Field Blower", "Attach:1Darkness@0 zone", "Attack:Shadow Bullet"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Removes Swablu's Small Balloon, then Shadow Bullet hits the Darkness-weak Espeon for 50 and the Benched Darkrai for 20."
+  },
+  "LAD-20261019_224222000_SR-t5": {
+   "his_move": ["Attach:1Darkness@2 zone", "Place:Mega Sableye ex@3", "Play:Cyrus", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [
+    {"line": ["Attach:1Darkness@2 zone", "Place:Mega Sableye ex@3", "EndTurn"], "reason": "Skips Cyrus and leaves the 20-HP Espeon Active, so next turn's Darkrai ex attachment (Nightmare Aura 20) can knock it out. The sleeping 30-HP Hoopa ex falls to Bad Dreams or Hypnoblast either way."}
+   ],
+   "answer_kind": "sacrifice",
+   "ambiguous": "At 224222 global turn 5, was Cyrus (pulling the 80-HP Darkrai, with 1 of the 3 Energy it needs, into the Active Spot) better than leaving the 20-HP Espeon Active, where your next Nightmare Aura would knock it out? Your sleeping Hoopa ex was lost either way.",
+   "why_his": "Hoopa ex is Asleep and can't be saved. Nightmare Aura takes Espeon to 20, Mega Sableye ex is benched as the next attacker, and Cyrus strands the non-ex Darkrai (1 of 3 Energy) in the Active Spot."
+  },
+  "LAD-20261019_224222000_SR-t7": {
+   "his_move": ["Play:Poké Ball", "Place:Baltoy@3", "Attach:1Darkness@0 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Gives Mega Sableye ex its first Energy so Cursed Jewel can knock out the 80-HP Darkrai next turn, and benches Baltoy for Claydol."
+  },
+  "LAD-20261019_224222000_SR-t9": {
+   "his_move": ["Evolve:Claydol@3", "Attach:1Darkness@0 zone", "Attack:Cursed Jewel"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Heal Block goes up, and Cursed Jewel's 80 knocks out the 80-HP non-ex Darkrai for his first point."
+  },
+  "LAD-20261019_224222000_SR-t11": {
+   "his_move": ["Attach:1Darkness@0 zone", "Retreat:3", "Play:Team Rocket's Goo-zooka", "Attack:Cursed Jewel"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Nightmare Aura chips 20, then he retreats the 10-HP Darkrai ex (a knockout would give the opponent the win) into the 170-HP Mega Sableye ex. Goo-zooka locks Mega Altaria ex in, and Cursed Jewel does 80 and sets up the 40 counter."
+  },
+  "LAD-20261019_224222000_SR-t13": {
+   "his_move": ["Attach:1Darkness@3 zone", "Attack:Cursed Jewel"],
+   "acceptable": [
+    {"line": ["Attach:1Darkness@0 zone", "Attack:Cursed Jewel"], "reason": "Cursed Jewel's 80 already knocks out the 50-HP Mega Altaria ex (3 points), so it wins wherever the Energy goes."},
+    {"line": ["Attack:Cursed Jewel"], "reason": "Cursed Jewel's 80 alone knocks out the 50-HP Mega Altaria ex and wins the game."}
+   ],
+   "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Nightmare Aura 20 and then Cursed Jewel 80 knock out the 50-HP Mega Altaria ex for 3 points and the win."
+  },
+  "LAD-20261020_000238000_SR-t1": {
+   "his_move": ["Play:Professor's Research", "Play:Poké Ball", "Place:Baltoy@1", "Play:Poké Ball", "Place:Hoopa ex@2", "Play:Deceptive Needle", "Tool:Deceptive Needle@0", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "On a no-Energy first turn, he draws and searches out Baltoy and Hoopa ex for the Bench, and puts Needle on the Active Darkrai ex for 10 a turn."
+  },
+  "LAD-20261020_000238000_SR-t3": {
+   "his_move": ["Evolve:Claydol@1", "Play:Professor's Research", "Attach:1Darkness@2 zone", "Play:Deceptive Needle", "Tool:Deceptive Needle@2", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "sacrifice",
+   "ambiguous": null,
+   "why_his": "The 60-HP Grass-weak Darkrai ex can't retreat (cost 2, one Energy a turn), so he leaves it Active. Heal Block goes up against Shuckle's deck, and the Energy and Needle go to the benched Hoopa ex, the attacker that takes over."
+  },
+  "LAD-20261020_000238000_SR-t5": {
+   "his_move": ["Place:Mega Sableye ex@2", "Attach:1Darkness@0 zone", "Attack:Shadow Bullet"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Benches Mega Sableye ex as the next attacker. Hoopa ex's Shadow Bullet does 10 through Solid Shell and Needle adds 10, while Hoopa builds toward Dynamite Punch."
+  },
+  "LAD-20261020_000238000_SR-t7": {
+   "his_move": ["Play:Field Blower", "DiscardToolFromPokemon{player:1,in_play_idx:0,tool_idx:0}", "Attach:1Darkness@0 zone", "Attack:Dynamite Punch"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Removing Leaf Cape drops Shuckle ex to 90. Dynamite Punch does 80 through Solid Shell and Needle's 10 knocks it out for 2 points."
+  },
+  "LAD-20261020_000857000_SR-t1": {
+   "his_move": ["Place:Darkrai ex@2", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Benches Darkrai ex for later Nightmare Aura attachments. He keeps Weezing ex for Koffing next turn rather than shuffling it away with Copycat."
+  },
+  "LAD-20261020_000857000_SR-t3": {
+   "his_move": ["Play:Poké Ball", "Evolve:Team Rocket's Weezing ex@1", "Ability@1", "Play:Copycat", "Attach:1Darkness@0 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Boiler Smog Poisons and Burns Drampa before Copycat refills the hand. The Energy starts Mega Sableye ex toward a Cursed Jewel next turn."
+  },
+  "LAD-20261020_001714000_SR-t2": {
+   "his_move": ["Play:Professor's Research", "Place:Hoopa ex@1", "Play:Deceptive Needle", "Tool:Deceptive Needle@1", "Attach:1Darkness@0 zone", "Attack:Reverse Thrust"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Draws into Hoopa ex and gives it Needle, then Koffing's Reverse Thrust does 10 and pivots Hoopa into the Active Spot for the end-of-turn Needle. Starting Plains stays in hand because it would buff three opposing Basics."
+  },
+  "LAD-20261020_032424000_SR-t1": {
+   "his_move": ["Play:Professor's Research", "Place:Baltoy@1", "Play:Poison Barb", "Tool:Poison Barb@0", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Draws, benches Baltoy for Claydol, and puts Poison Barb on the Active Grimer, the future Muk wall, so attackers get Poisoned."
+  },
+  "LAD-20261020_032424000_SR-t3": {
+   "his_move": ["Place:Team Rocket's Koffing@2", "Play:Professor's Research", "Play:Poké Ball", "Place:Glimmet@3", "Evolve:Alolan Muk@0", "Attach:1Darkness@3 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Fills the Bench with Koffing and Glimmet, evolves the Barb-holding Grimer into the 110-HP Muk wall, and starts a benched Glimmet's Energy despite the 20 from Jolteon's Wall."
+  },
+  "LAD-20261020_032424000_SR-t5": {
+   "his_move": ["Play:Poké Ball", "Evolve:Team Rocket's Weezing ex@3", "Ability@3", "Attach:1Darkness@1 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Boiler Smog adds Poison and Burn to Jolteon ex on top of the Barb Poison, and Baltoy gets Energy for later. The 30-HP Muk stays Active as the wall."
+  },
+  "LAD-20261020_032424000_SR-t7": {
+   "his_move": ["Place:Glimmet@3", "Play:Deceptive Needle", "Tool:Deceptive Needle@0", "Play:Copycat", "Evolve:Claydol@1", "Evolve:Glimmora@0", "Attach:1Darkness@3 zone", "Attack:Venomous Hit"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Plays the cards he wants to keep before Copycat reshuffles the hand. Then Claydol's Heal Block goes up, and Glimmora's Venomous Hit does 30 and re-Poisons Jolteon ex, with Needle adding 10."
+  },
+  "LAD-20261020_032424000_SR-t9": {
+   "his_move": ["Evolve:Glimmora@0", "Attach:1Darkness@2 zone", "Attack:Venomous Hit"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Evolves the Active Glimmet. Glimmora's one-Energy Venomous Hit (already paid) does 30 and Poisons Raticate ex, and the new Energy starts Weezing ex."
+  },
+  "LAD-20261020_033156000_SR-t2": {
+   "his_move": ["Play:Professor's Research", "Play:Deceptive Needle", "Tool:Deceptive Needle@0", "Attach:1Darkness@0 zone", "Attack:Hang Down"],
+   "acceptable": [
+    {"line": ["Play:Deceptive Needle", "Tool:Deceptive Needle@0", "Play:Copycat", "Attach:1Darkness@0 zone", "Attack:Hang Down"], "reason": "Same Needle and Hang Down, but with the opponent holding 5 cards Copycat draws 5 instead of Research's 2. Needle is played first so it isn't shuffled away."}
+   ],
+   "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Draws, puts Needle on the Active Glimmet and uses Hang Down for 20, with Needle adding 10 to Wurmple."
+  },
+  "LAD-20261020_033156000_SR-t4": {
+   "his_move": ["Play:Poké Ball", "Place:Alolan Grimer@2", "Play:Poison Barb", "Tool:Poison Barb@2", "Play:Copycat", "Place:Baltoy@3", "Evolve:Glimmora@0", "Attach:1Darkness@2 zone", "Attack:Venomous Hit"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Develops Grimer with Barb and Baltoy, then Glimmora's Venomous Hit plus Needle and Poison knocks out the 50-HP Silcoon."
+  },
+  "LAD-20261020_034123000_SR-t4": {
+   "his_move": ["Place:Wurmple@1", "Evolve:Alolan Muk ex@0", "Attach:1Darkness@0 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Benches Wurmple for the Dustox line and evolves into the 160-HP Muk ex with its second Energy, so it survives Mega Lucario's hit and can Chemical Panic next turn."
+  },
+  "LAD-20261020_034123000_SR-t6": {
+   "his_move": ["Attach:1Darkness@0 zone", "Evolve:Cascoon@1", "Play:Professor's Research", "Attack:Chemical Panic"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "The third Energy powers Chemical Panic: 80 to the Poisoned Mega Lucario ex plus a random new Special Condition. He also evolves Wurmple toward Dustox and draws."
+  },
+  "LAD-20261020_034501000_SR-t1": {
+   "his_move": ["Play:Poison Barb", "Tool:Poison Barb@0", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "His only Pokémon, Grimer, takes Poison Barb so any attacker gets Poisoned. Nothing else can be played on this going-first turn."
+  },
+  "LAD-20261020_034501000_SR-t3": {
+   "his_move": ["Attach:1Darkness@0 zone", "EndTurn"],
+   "acceptable": [
+    {"line": ["Evolve:Alolan Muk ex@0", "Attach:1Darkness@0 zone", "EndTurn"], "reason": "Same Energy, but evolving the lone Grimer into Alolan Muk ex (160 HP) now makes his only Pokémon much harder to knock out and keeps it on schedule for Chemical Panic."}
+   ],
+   "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Gives the lone Barb-holding Grimer its first Energy toward the Muk line and keeps both Muk evolutions in hand."
+  },
+  "LAD-20261020_034756000_SR-t2": {
+   "his_move": ["Play:Poison Barb", "Tool:Poison Barb@0", "UseStadium", "Place:Wurmple@1", "Attach:1Darkness@0 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Barb on the Active Baltoy, then the opponent's Fragrant Forest finds a Wurmple to bench for Rare Candy into Dustox. Baltoy gets Energy."
+  },
+  "LAD-20261020_034756000_SR-t4": {
+   "his_move": ["UseStadium", "Place:Wurmple@1", "Play:Poké Ball", "Place:Alolan Grimer@2", "Play:Rare Candy", "Evolve:Dustox@0", "Ability@0", "Attach:1Darkness@0 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Rebuilds the Bench, Rare Candies the Active Wurmple into Dustox and uses Variety Powder to add a second condition to the Poisoned Butterfree. Dustox gets its first Energy."
+  },
+  "LAD-20261020_034756000_SR-t6": {
+   "his_move": ["Place:Alolan Grimer@3", "Ability@0", "Attach:1Darkness@2 zone", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [
+    {"line": ["Place:Alolan Grimer@3", "Ability@0", "Attach:1Darkness@0 zone", "Attack:Cutting Wind"], "reason": "Gives Dustox its second Energy for Cutting Wind: 60 to the Poisoned and Confused 120-HP Butterfree, which then takes Poison (and any Burn) damage. His line puts the Energy on Grimer for Muk ex instead."}
+   ],
+   "answer_kind": "sacrifice",
+   "ambiguous": "At 034756 global turn 6, Dustox (60 HP, 1 Energy) faced a Poisoned and Confused Butterfree at 120. Would attaching to Dustox and attacking with Cutting Wind for 60 have been as good as putting the Energy on the benched Grimer for Muk ex?",
+   "why_his": "Variety Powder adds a third condition to Butterfree, and the Energy goes to the benched Grimer toward Muk ex. The 60-HP Dustox stays Active to absorb the next hit."
+  },
+  "LAD-20261020_034756000_SR-t8": {
+   "his_move": ["Evolve:Alolan Muk ex@0", "Evolve:Alolan Muk@2", "Attach:1Darkness@0 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Evolves the Active Grimer into Muk ex with its second Energy and the benched Grimer into Muk, whose Power of Alchemy stops Caterpie's Quick Growth."
+  },
+  "LAD-20261020_035443000_SR-t2": {
+   "his_move": ["Play:Poké Ball", "Place:Dratini@1", "Attach:1Metal@0 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Finds and benches Dratini for the Dragonair and Dragonite line. Goomy stays Active, where Sticky Membrane makes the opponent's attacks cost 1 more."
+  },
+  "LAD-20261020_035443000_SR-t4": {
+   "his_move": ["Place:Dratini@2", "Evolve:Dragonair@1", "Attach:1Water@0 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Benches the second Dratini and evolves Dragonair so Dragon's Blessing works from the Bench. Goomy keeps taxing Magcargo, and Energy on Goomy goes to the discard later for Blessing to reuse."
+  },
+  "LAD-20261020_035443000_SR-t6": {
+   "his_move": ["Play:Professor's Research", "Attach:1Lightning@2 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Draws for Dragonite, and the Lightning goes on Dragonair for the Hyper Beam line while Goomy still stalls Magcargo."
+  },
+  "LAD-20261020_035443000_SR-t8": {
+   "his_move": ["Play:Heavy Helmet", "Tool:Heavy Helmet@0", "Play:Copycat", "Place:Goomy@2", "Play:Rare Candy", "Evolve:Dragonite@0", "Attach:1Lightning@0 zone", "Ability@1", "AttachTypedFromDiscard:Water@0", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Helmet goes on before Copycat draws 6 off the opponent's hand. Rare Candy makes Dragonite (Helmet takes 20 off attacks against it), and the turn's Energy plus Dragon's Blessing give it 2 of Hyper Beam's 3 Energy."
+  },
+  "LAD-20261020_035443000_SR-t10": {
+   "his_move": ["Play:Professor's Research", "Play:Poké Ball", "Play:Rare Candy", "Evolve:Hisuian Goodra@1", "Play:Lucky Ice Pop", "Attach:1Water@0 zone", "Attack:Hyper Beam"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Draws, makes Hisuian Goodra with Rare Candy, heals Dragonite, and attaches the third Energy for Hyper Beam: 90 through Helmet, plus it discards a Fire from Magcargo."
+  },
+  "LAD-20261020_035443000_SR-t12": {
+   "his_move": ["Attach:1Lightning@1 zone", "Play:Lucky Ice Pop", "Attack:Hyper Beam"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Hyper Beam's 90 through Helmet knocks out the 90-HP Magcargo. The Energy starts Hisuian Goodra, and Ice Pop props up the 10-HP Dragonite."
+  }
+ },
+ "decks": {
+  "v2deck_03c584b95c": {
+   "deck_kinds": ["fast pressure", "control and combinations"],
+   "why": {
+    "fast pressure": "Two Hoopa ex with one-Energy Shadow Bullet (30 plus 20 to the Bench) and two Deceptive Needle deal damage from the first turn.",
+    "control and combinations": "Nihilego's More Poison stacks with Glimmora's Venomous Hit and Poison Barb, and Claydol's Heal Block plus two Cyrus control what the opponent can heal or keep Benched."
+   }
+  },
+  "v2deck_06ee642b71": {
+   "deck_kinds": ["control and combinations", "Bench preparation"],
+   "why": {
+    "control and combinations": "Boiler Smog's Poison and Burn, Goo-zooka's retreat lock, Deceptive Needle, Heal Block, Cyrus, Field Blower and Cursed Jewel's 40 counter combine into damage outside attacks.",
+    "Bench preparation": "Darkrai ex's Nightmare Aura fires on attachments while it sits on the Bench, Koffing must evolve on the Bench into Weezing ex, and Reverse Thrust pivots a prepared attacker in."
+   }
+  },
+  "v2deck_0a80817331": {
+   "deck_kinds": ["evolution and setup", "control and combinations"],
+   "why": {
+    "evolution and setup": "Dustox is a Stage 2 through Wurmple and Cascoon (no Rare Candy), and Alolan Muk ex needs evolving plus three Energy before Chemical Panic.",
+    "control and combinations": "Variety Powder, Chemical Panic and two Poison Barb pile Special Conditions on the opponent, while Heal Block and Power of Alchemy shut off healing and Basic abilities."
+   }
+  },
+  "v2deck_5469f7747f": {
+   "deck_kinds": ["evolution and setup", "control and combinations"],
+   "why": {
+    "evolution and setup": "Two Rare Candy turn Wurmple straight into the Stage 2 Dustox, and Alolan Muk ex needs evolving plus three Energy.",
+    "control and combinations": "Variety Powder, Chemical Panic and two Poison Barb stack Special Conditions, backed by Heal Block and Power of Alchemy."
+   }
+  },
+  "v2deck_5c3566c961": {
+   "deck_kinds": ["evolution and setup", "sacrifice and recovery", "control and combinations"],
+   "why": {
+    "evolution and setup": "Kingambit is a Stage 2 reached by Rare Candy from Pawniard, beside the Glimmora, Muk and Claydol Stage 1 lines.",
+    "sacrifice and recovery": "Kingambit's Overlord's Blade gains 40 for each of his own knocked-out Pokémon, and Glimmora's Shattering Crystal can deny points when it falls.",
+    "control and combinations": "Venomous Hit and Poison Barb Poison the opponent, while Heal Block, Power of Alchemy and Heavy Helmet blunt healing, abilities and damage."
+   }
+  },
+  "v2deck_9633a01781": {
+   "deck_kinds": ["evolution and setup", "Bench preparation", "control and combinations"],
+   "why": {
+    "evolution and setup": "Two Stage 2 lines (Dragonite, Hisuian Goodra) with two Rare Candy on a three-type Energy Zone need several turns of setup.",
+    "Bench preparation": "Dragonair's Dragon's Blessing only works from the Bench, moving discarded Energy onto the Active Dragon.",
+    "control and combinations": "Goomy's Sticky Membrane taxes the opposing attack cost, combined with Heavy Helmet and Securely Sheltered to slow the opponent while Dragonite charges."
+   }
+  },
+  "v2deck_9d2c3c7ccf": {
+   "deck_kinds": ["fast pressure", "control and combinations"],
+   "why": {
+    "fast pressure": "Hoopa ex's one-Energy Shadow Bullet and two Deceptive Needle start chip damage on the first turn.",
+    "control and combinations": "Two Claydol for Heal Block, Nihilego with Venomous Hit and Poison Barb, and two Cyrus combine Poison and anti-healing."
+   }
+  },
+  "v2deck_b1999cc10f": {
+   "deck_kinds": ["control and combinations", "Bench preparation"],
+   "why": {
+    "control and combinations": "Cursed Jewel's 40 counter, two Deceptive Needle, Heal Block, Cyrus and Field Blower deal or protect damage around the attack.",
+    "Bench preparation": "Darkrai ex's Nightmare Aura triggers while it charges, and Needles are put on Benched attackers ahead of time, with Starting Plains adding HP to the Basics."
+   }
+  },
+  "v2deck_d5e2757125": {
+   "deck_kinds": ["control and combinations", "evolution and setup"],
+   "why": {
+    "control and combinations": "Boiler Smog, Venomous Hit, Chemical Panic, two Poison Barb and Needle combine Special Conditions and chip, with Heal Block and Power of Alchemy.",
+    "evolution and setup": "Five Stage 1 lines (Muk ex, Muk, Glimmora, Weezing ex, Claydol) must be benched and evolved, and Muk ex needs three Energy."
+   }
+  }
+ }
+}

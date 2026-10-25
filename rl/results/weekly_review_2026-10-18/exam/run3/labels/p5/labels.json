@@ -1,0 +1,308 @@
+{"format": "pds-exam-v2-labels",
+ "points": {
+  "LAD-20261024_143157000_SR-t2": {
+   "his_move": ["Play:Poké Ball", "Place:Axew@1", "Play:Professor's Research", "Attach:1Fighting@1 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Finds and benches Axew, draws with Research and starts its Energy while Goomy's Sticky Membrane stays Active to tax Hoopa ex's attack."
+  },
+  "LAD-20261024_143157000_SR-t4": {
+   "his_move": ["Retreat:1", "Attach:1Fighting@1 zone", "Play:Rare Candy", "Evolve:Haxorus@1", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [{"line": ["Attach:1Fighting@0 zone", "Play:Rare Candy", "Evolve:Haxorus@0", "EndTurn"], "reason": "Keeps the damaged Axew Active and Rare Candies it into Haxorus there, so it keeps both Fighting (2 of Frenzied Blade's 3 Energy) instead of discarding one to retreat."}],
+   "answer_kind": "prepare",
+   "ambiguous": "Hoopa ex game, your turn 2 (global 4): you retreated the 30-HP Axew to Goomy (discarding its Fighting), attached Fighting to the benched Axew and Rare Candied it to Haxorus. Would keeping Axew Active, attaching the Fighting to it and Rare Candying it into Haxorus in the Active Spot (Haxorus at 110 HP with 2 Energy, Goomy stays benched) also be acceptable?",
+   "why_his": "Pulls the 30-HP Axew back behind Goomy's Sticky Membrane, then turns it into a 150-max-HP Haxorus on the Bench to keep it safe."
+  },
+  "LAD-20261024_152239000_SR-t1": {
+   "his_move": ["Play:Poké Ball", "Place:Axew@2", "Place:Goomy@3", "Attack:Chubby Cheer"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Fills the Bench (Axew for Haxorus, second Goomy) and uses the free Chubby Cheer to chip Pawmi and set up +20 for next turn."
+  },
+  "LAD-20261024_152239000_SR-t3": {
+   "his_move": ["Play:Professor's Research", "Attach:1Metal@2 zone", "Attack:Chubby Cheer"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Draws toward Haxorus, starts Axew's Energy and uses the boosted Chubby Cheer for 30 on Eevee, with Happiny as the expendable Active."
+  },
+  "LAD-20261024_152239000_SR-t5": {
+   "his_move": ["Place:Axew@3", "Play:Rare Candy", "Evolve:Haxorus@1", "Attach:1Metal@1 zone", "Play:Cyrus", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Rare Candies the benched Axew into Haxorus with 2 Metal, adds a Bench body for Frenzied Blade, and uses Cyrus to put the unpowered damaged Pawmi Active to stall Jolteon."
+  },
+  "LAD-20261024_152239000_SR-t7": {
+   "his_move": ["Attach:1Fighting@0 zone", "Play:Poké Ball", "Place:Roaring Moon@3", "Ability@3", "Play:Iris", "Attack:Frenzied Blade"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Finishes Haxorus's cost, fills the Bench and uses Ancient Roar so Frenzied Blade hits 150; with Iris the KO is worth 2 points, tying the game at 2-2."
+  },
+  "LAD-20261024_163813000_SR-t1": {
+   "his_move": ["Place:Axew@1", "Play:Professor's Research", "Place:Goomy@2", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Benches Axew, draws with Research (finds Haxorus and Goomy) and benches Goomy as the next wall, all on a first turn with no Energy."
+  },
+  "LAD-20261024_163813000_SR-t3": {
+   "his_move": ["Play:Professor's Research", "Attach:1Fighting@2 zone", "Place:Axew@3", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Draws again, puts Energy on the benched Axew and benches the second Axew, building two Haxorus while Roaring Moon holds the Active Spot."
+  },
+  "LAD-20261024_163813000_SR-t5": {
+   "his_move": ["Play:Rare Candy", "Evolve:Haxorus@2", "Place:Goomy@3", "Play:Copycat", "Attach:1Fighting@2 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Rare Candies the Energy-holding Axew into Haxorus on the Bench, refills the Bench with Goomy, refreshes the hand with Copycat and adds a second Fighting while Goomy taxes Charizard."
+  },
+  "LAD-20261024_163813000_SR-t7": {
+   "his_move": ["Play:Rare Candy", "Evolve:Haxorus@1", "Play:Copycat", "Play:Poké Ball", "Play:Poké Ball", "Place:Happiny@3", "Attach:1Metal@0 zone", "Attack:Frenzied Blade"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Makes the second Haxorus, fills the Bench to raise Frenzied Blade to 130 and attacks Mega Charizard X ex for the first time."
+  },
+  "LAD-20261024_164318000_SR-t4": {
+   "his_move": ["Place:Roaring Moon@1", "Ability@1", "Attach:1Fighting@1 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Benches Roaring Moon and uses Ancient Roar to push out the Pichu that is feeding Kangaskhan, while Goomy stays Active to tax the opponent's attacks."
+  },
+  "LAD-20261024_164318000_SR-t6": {
+   "his_move": ["Place:Axew@2", "Attach:1Metal@2 zone", "Play:Small Balloon", "Tool:Small Balloon@2", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Benches Axew with Metal and Small Balloon so it can become the Haxorus attacker, while Goomy keeps taxing Kangaskhan."
+  },
+  "LAD-20261024_164318000_SR-t8": {
+   "his_move": ["Play:Professor's Research", "Place:Goomy@2", "Attach:1Fighting@1 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "sacrifice", "ambiguous": null,
+   "why_his": "Draws, benches Goomy and powers the benched Axew (Fighting + Metal), leaving the 60-HP Roaring Moon, which can't attack, Active to take Kangaskhan's hit."
+  },
+  "LAD-20261024_164318000_SR-t10": {
+   "his_move": ["Play:Rare Candy", "Evolve:Haxorus@0", "Attach:1Metal@0 zone", "Play:Copycat", "Place:Axew@2", "Attack:Frenzied Blade"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Rare Candies the Active Axew into Haxorus, completes its cost, adds a Bench body through Copycat and hits Kangaskhan for 150."
+  },
+  "LAD-20261024_165202000_SR-t1": {
+   "his_move": ["Play:Small Balloon", "Tool:Small Balloon@0", "Play:Clear Veil", "Tool:Clear Veil@1", "Play:Copycat", "Play:Poké Ball", "Place:Indeedee ex@2", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Puts Tools in play to count for Dede-Circuit (Balloon gives Oricorio free retreat, Clear Veil on Indeedee), refreshes the hand and benches a second Indeedee ex."
+  },
+  "LAD-20261024_165202000_SR-t3": {
+   "his_move": ["Play:Clear Veil", "Tool:Clear Veil@2", "Place:Oricorio@3", "Play:Giant Cape", "Tool:Giant Cape@3", "Play:Copycat", "Attach:1Lightning@3 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Adds two more Tools and a second Oricorio with Giant Cape and Lightning, building Tool count and a ready backup attacker."
+  },
+  "LAD-20261024_165202000_SR-t5": {
+   "his_move": ["Place:Dedenne ex@3", "Play:Giant Cape", "Tool:Giant Cape@3", "Play:Professor's Research", "Play:Starting Plains", "Attach:1Lightning@3 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Benches Dedenne ex with Giant Cape (4th Tool) and its first Lightning, and plays Starting Plains for +20 HP on his Basics."
+  },
+  "LAD-20261024_165202000_SR-t7": {
+   "his_move": ["Play:Poké Ball", "Play:Professor's Research", "Retreat:3", "Attach:1Lightning@0 zone", "Attack:Dede-Circuit"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Retreats to the powered Dedenne ex and uses Dede-Circuit with 4 Tools (160 + Weakness) to knock out Bombirdier."
+  },
+  "LAD-20261024_165202000_SR-t9": {
+   "his_move": ["Ability@1", "Ability@2", "Retreat:3", "Attach:1Lightning@3 zone", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [{"line": ["Ability@1", "Ability@2", "Attach:1Lightning@3 zone", "Attack:Dede-Circuit"], "reason": "After both Watch Over heals (Dedenne ex 50 HP), Dede-Circuit does 160 with 4 Tools and knocks out the 60-HP non-ex Hydreigon for 1 point (2-1); Rocky Helmet leaves Dedenne at 30."}],
+   "answer_kind": "prepare",
+   "ambiguous": "Hydreigon game, your turn 5 (global 9): you healed Dedenne ex twice, retreated it to Oricorio and passed. Dede-Circuit would have done 160 to the 60-HP Hydreigon (a 1-point KO, Rocky Helmet leaving Dedenne at 30). Is healing and attacking with Dedenne also acceptable, or was keeping it off the Active Spot clearly right?",
+   "why_his": "Heals Dedenne ex with both Indeedee, retreats it so the Hydreigon can't Hyper Ray it for 2 points, and keeps it powered on the Bench."
+  },
+  "LAD-20261024_165913000_SR-t2": {
+   "his_move": ["Play:Clear Veil", "Tool:Clear Veil@0", "Play:Copycat", "Attach:1Lightning@0 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Clear Veil on the lone Indeedee ex blocks Druddigon's Clutch retreat lock, Copycat digs for Basics, and the Energy goes toward a later retreat."
+  },
+  "LAD-20261024_172633000_SR-t2": {
+   "his_move": ["Play:Poké Ball", "Place:Darkrai ex@2", "Play:Professor's Research", "Place:Bombirdier@3", "Attach:1Darkness@2 zone", "Attack:Chubby Cheer"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Benches Darkrai ex and Bombirdier, pings Onix 20 with Nightmare Aura and chips 10 with Chubby Cheer for next turn's +20."
+  },
+  "LAD-20261024_172633000_SR-t4": {
+   "his_move": ["Place:Hoopa ex@3", "Play:Starting Plains", "Play:Copycat", "Play:Deceptive Needle", "Tool:Deceptive Needle@0", "Attach:1Darkness@1 zone", "Play:Deceptive Needle", "Tool:Deceptive Needle@3", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Dig's protection blocks attacks, so he does damage that ignores it (Nightmare Aura 20, Needle 10 at end of turn) and sets up Hoopa ex, Starting Plains and Needles."
+  },
+  "LAD-20261024_175131000_SR-t2": {
+   "his_move": ["Play:Poké Ball", "Place:Magikarp@1", "Play:Wallace", "ChooseRandomEvolutionTarget{in_play_idx:0,energy_type:Water}", "Attach:1Water@0 zone", "Attack:Turbo Shark"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Wallace evolves the Confused Carvanha into Mega Sharpedo ex (clearing Confusion), and Turbo Shark hits for 70 while giving the benched Magikarp Energy."
+  },
+  "LAD-20261024_175131000_SR-t4": {
+   "his_move": ["Place:Carvanha@2", "Play:Cabbie", "Play:Soothing Shore", "Attach:1Water@1 zone", "Attack:Turbo Shark"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Replaces Starting Plains with Soothing Shore, loads Magikarp to 3 Water (attachment + Turbo Shark) for Mega Gyarados and hits Mawile for 60."
+  },
+  "LAD-20261024_175131000_SR-t6": {
+   "his_move": ["Play:Wallace", "ChooseRandomEvolutionTarget{in_play_idx:1,energy_type:Water}", "Retreat:1", "Attach:1Water@0 zone", "Attack:Mega Blaster"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Wallace turns the 3-Energy Magikarp into Mega Gyarados ex, which switches in and Mega Blasts the 110-HP Mawile for a 3-point win."
+  },
+  "LAD-20261024_175606000_SR-t1": {
+   "his_move": ["Play:Elegant Cape", "Tool:Elegant Cape@0", "Play:Copycat", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [{"line": ["Play:Elegant Cape", "Tool:Elegant Cape@0", "EndTurn"], "reason": "Keeps Mega Sharpedo ex in hand to evolve the Caped Carvanha (220 HP) and Turbo Shark next turn for sure, instead of shuffling it away for 2 random cards."}],
+   "answer_kind": "prepare",
+   "ambiguous": "Sharpedo vs Magby/Fidough, your turn 1: you put Elegant Cape on the lone Carvanha, then Copycat shuffled away Mega Sharpedo ex and Mega Gyarados ex to draw 2 cards. Would keeping your hand (Cape only, then pass), so Mega Sharpedo ex is certain next turn, also be acceptable?",
+   "why_his": "Caps the lone Carvanha with Elegant Cape for a future 220-HP Mega Sharpedo and uses Copycat to dig for Bench Basics and a Stadium."
+  },
+  "LAD-20261024_175606000_SR-t3": {
+   "his_move": ["Evolve:Mega Sharpedo ex@0", "Play:Soothing Shore", "Play:Cabbie", "Attach:1Water@0 zone", "Attack:Turbo Shark"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Evolves into a 220-HP Mega Sharpedo ex, sets Soothing Shore, uses Cabbie to fetch the backup Stadium and KOs Magby with Turbo Shark."
+  },
+  "LAD-20261024_180105000_SR-t1": {
+   "his_move": ["Play:Elegant Cape", "Tool:Elegant Cape@0", "Play:Copycat", "Play:Poké Ball", "Place:Carvanha@1", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "With Milotic ex in hand Wallace would find nothing, so he Capes Feebas, uses Copycat for new cards and benches Carvanha as a backup."
+  },
+  "LAD-20261024_180350000_SR-t1": {
+   "his_move": ["Play:Wallace", "ChooseRandomEvolutionTarget", "Play:Soothing Shore", "Ability@0", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Wallace evolves the lone Feebas into Milotic ex on turn 1, then he sets Soothing Shore and uses Aqua Charge to start its Energy."
+  },
+  "LAD-20261024_180350000_SR-t3": {
+   "his_move": ["Place:Carvanha@1", "Play:Cabbie", "Play:Soothing Shore", "Ability@0", "Attach:1Water@0 zone", "Attack:Water Pulse"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Benches Carvanha, gets Soothing Shore back in place of Fragrant Forest, gives Milotic ex its 3rd Water and KOs Teddiursa with Water Pulse."
+  },
+  "LAD-20261024_180350000_SR-t5": {
+   "his_move": ["Play:Elegant Cape", "Tool:Elegant Cape@1", "Play:Copycat", "Place:Magikarp@2", "Evolve:Mega Sharpedo ex@1", "Attach:1Water@2 zone", "Ability@0", "Attack:Water Pulse"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Builds a 220-HP Mega Sharpedo backup and Magikarp on the Bench, then Water Pulses Ursaring for 80 and puts it to Sleep."
+  },
+  "LAD-20261024_180749000_SR-t1": {
+   "his_move": ["Play:Elegant Cape", "Tool:Elegant Cape@0", "Play:Wallace", "ChooseRandomEvolutionTarget", "Ability@0", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Capes Feebas, then Wallace evolves it into a 170-HP Milotic ex, and Aqua Charge adds its first Water on turn 1."
+  },
+  "LAD-20261024_180942000_SR-t1": {
+   "his_move": ["Place:Carvanha@1", "Play:Soothing Shore", "Play:Copycat", "Play:Poké Ball", "Place:Carvanha@2", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Benches both Carvanha behind the 30-HP Feebas, sets Soothing Shore, and uses Copycat and Poké Ball to build the Bench."
+  },
+  "LAD-20261024_180942000_SR-t3": {
+   "his_move": ["Play:Copycat", "Play:Elegant Cape", "Tool:Elegant Cape@0", "Attach:1Water@0 zone", "Play:Elegant Cape", "Tool:Elegant Cape@2", "Attack:Splash"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Copycats into two Elegant Capes, puts them on future evolvers, attaches Water so Feebas can heal with Shore, and chips Koffing with Splash."
+  },
+  "LAD-20261024_180942000_SR-t5": {
+   "his_move": ["Evolve:Mega Sharpedo ex@0", "Attach:1Water@0 zone", "Attack:Turbo Shark"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Evolves the Caped Active Carvanha into a 220-HP Mega Sharpedo ex and hits Weezing ex for 70, sending Water to the benched Carvanha."
+  },
+  "LAD-20261024_180942000_SR-t7": {
+   "his_move": ["Play:Wallace", "ChooseRandomEvolutionTarget", "Attach:1Water@1 zone", "Retreat:1", "Attack:Turbo Shark"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Wallace makes a fresh Mega Sharpedo on the Bench, powers it and switches in (clearing Poison and Confusion on the old one) to KO the 60-HP Weezing ex for 2."
+  },
+  "LAD-20261024_180942000_SR-t9": {
+   "his_move": ["Place:Magikarp@2", "Attach:1Water@2 zone", "Retreat:1", "Attack:Turbo Shark"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Benches and powers Magikarp for Mega Gyarados, swaps the 60-HP Mega out for the healthy one, and Turbo Sharks Mega Absol ex."
+  },
+  "LAD-20261024_181948000_SR-t2": {
+   "his_move": ["Play:Elegant Cape", "Tool:Elegant Cape@0", "Play:Wallace", "ChooseRandomEvolutionTarget", "Play:Soothing Shore", "Attach:1Water@0 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Capes Magikarp, then Wallace turns it into a 240-HP Mega Gyarados ex; he adds Soothing Shore and the first of its 4 Energy."
+  },
+  "LAD-20261024_181948000_SR-t4": {
+   "his_move": ["Play:Copycat", "Attach:1Water@0 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Copycat digs for a Basic to bench and Gyarados gets its 2nd Water toward Mega Blaster."
+  },
+  "LAD-20261024_181948000_SR-t6": {
+   "his_move": ["Place:Carvanha@1", "Play:Cabbie", "Play:Soothing Shore", "Attach:1Water@0 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Benches Carvanha for Sharpedo, replaces Hiking Trail with Soothing Shore to heal Gyarados, and gives Gyarados its 3rd Water."
+  },
+  "LAD-20261024_181948000_SR-t8": {
+   "his_move": ["Evolve:Mega Sharpedo ex@0", "Attach:1Water@0 zone", "Attack:Turbo Shark"],
+   "acceptable": [],
+   "pending_alternatives": [{"line": ["Evolve:Mega Sharpedo ex@0", "Attach:1Water@1 zone", "Retreat:1", "Attack:Mega Blaster"], "reason": "Evolving gives free retreat; with the Water on the benched 3-Energy Gyarados it switches in and Mega Blaster's 140 knocks out the 140-HP Team Rocket's Zapdos ex for 2 points."}],
+   "answer_kind": "attack now",
+   "ambiguous": "Zapdos/Greninja game, your turn 4 (global 8): you evolved the 30-HP Carvanha into Mega Sharpedo and Turbo Sharked Zapdos ex (140 to 70), giving Gyarados its 4th Water. Instead you could attach the Water to Gyarados (4 Energy), switch it in with the free-retreat Sharpedo and Mega Blast the 140-HP Zapdos ex for a 2-point KO. Is that line also acceptable, or was there a reason to prefer Turbo Shark?",
+   "why_his": "Turns Cyrus's 30-HP Carvanha target into a 170-HP Mega Sharpedo, hits Zapdos ex for 70 and uses Turbo Shark to give Gyarados its 4th Water."
+  },
+  "LAD-20261024_182453000_SR-t2": {
+   "his_move": ["Play:Poké Ball", "Place:Feebas@1", "Play:Cabbie", "Play:Soothing Shore", "Attach:1Water@0 zone", "Attack:Expert Splasher"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Benches Feebas, fetches and plays Soothing Shore, and attacks with Expert Splasher in case both coins are heads (only then does it get through Fur Coat)."
+  },
+  "LAD-20261024_182453000_SR-t4": {
+   "his_move": ["Play:Copycat", "Place:Carvanha@1", "Play:Elegant Cape", "Tool:Elegant Cape@1", "Attach:1Water@1 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "sacrifice", "ambiguous": null,
+   "why_his": "Copycat finds Carvanha, which he benches with Elegant Cape and Water to become the main Mega Sharpedo, leaving the unpowered Feebas Active to fall."
+  },
+  "LAD-20261024_182453000_SR-t6": {
+   "his_move": ["Evolve:Mega Sharpedo ex@0", "Play:Copycat", "Place:Carvanha@1", "Attach:1Water@0 zone", "Play:Elegant Cape", "Tool:Elegant Cape@1", "Attack:Turbo Shark"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Evolves into a 220-HP Mega Sharpedo, benches a Caped second Carvanha and Turbo Sharks Furfrou, sending Water to the new Carvanha."
+  },
+  "LAD-20261024_182453000_SR-t8": {
+   "his_move": ["Play:Wallace", "ChooseRandomEvolutionTarget", "Attach:1Water@1 zone", "Retreat:1", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [{"line": ["Play:Wallace", "ChooseRandomEvolutionTarget", "Attach:1Water@1 zone", "Retreat:1", "Attack:Turbo Shark"], "reason": "The same turn plus Turbo Shark: Safeguard stops the 70 damage, but the Energy-Zone Water still goes to the benched Sharpedo at no cost."}],
+   "answer_kind": "prepare",
+   "ambiguous": "Oricorio (Safeguard) game, your turn 4 (global 8, and the same choice on globals 10 and 12): you swapped Mega Sharpedos and ended the turn without attacking because Turbo Shark does 0 to Oricorio. Should you still attack with Turbo Shark there for its free Water to the Bench, so that line is acceptable too, or was not attacking right?",
+   "why_his": "Wallace makes a second 220-HP Mega Sharpedo; he powers it and switches it in so the damaged one heals on the Bench under Soothing Shore, against an Oricorio his ex can't damage."
+  },
+  "LAD-20261024_182453000_SR-t10": {
+   "his_move": ["Play:Lisia", "Attach:1Water@0 zone", "Retreat:1", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Tries Lisia for Basics, adds Water and rotates the Sharpedos again so Soothing Shore heals both while Safeguard Oricorio stays Active."
+  },
+  "LAD-20261024_182453000_SR-t12": {
+   "his_move": ["Play:Irida", "Attach:1Water@0 zone", "Retreat:1", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Irida heals 40 on both Water-holding Sharpedos, then he adds Water and rotates to the fresher one, outlasting Oricorio's 70 a turn."
+  },
+  "LAD-20261024_182453000_SR-t14": {
+   "his_move": ["Attack:Turbo Shark"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Luxray (no Safeguard) is now Active, so he Turbo Sharks it for 70, leaving the zone Water for the attack to put on the benched Sharpedo."
+  },
+  "LAD-20261024_202943000_SR-t2": {
+   "his_move": ["Play:Wallace", "ChooseRandomEvolutionTarget", "Play:Elegant Cape", "Tool:Elegant Cape@0", "Attach:1Water@0 zone", "Attack:Turbo Shark"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Wallace evolves Carvanha into a Caped 220-HP Mega Sharpedo ex that KOs the 60-HP Buneary right away."
+  },
+  "LAD-20261024_202943000_SR-t4": {
+   "his_move": ["Play:Lisia", "Place:Feebas@1", "Place:Carvanha@2", "Attach:1Water@1 zone", "Attack:Turbo Shark"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Lisia fills the Bench with Feebas and Carvanha, which he powers as pivots, and Turbo Sharks Mega Lopunny ex for 70."
+  },
+  "LAD-20261024_202943000_SR-t6": {
+   "his_move": ["Play:Soothing Shore", "Play:Copycat", "Play:Poké Ball", "Place:Magikarp@3", "Retreat:2", "Attach:1Water@0 zone", "Attack:Sharp Fang"],
+   "acceptable": [], "pending_alternatives": [], "answer_kind": "sacrifice", "ambiguous": null,
+   "why_his": "Retreats the Confused Mega Sharpedo (clearing Confusion, healing under Shore) and puts the 1-point Carvanha up to chip and absorb Lopunny, keeping the 3-point Mega safe."
+  }
+ },
+ "decks": {
+  "v2deck_2c68a379f5": {
+   "deck_kinds": ["evolution and setup", "Bench preparation", "sacrifice and recovery", "control and combinations"],
+   "why": {
+    "evolution and setup": "Its attacker is the Stage 2 Haxorus, reached through 2 Rare Candy with no Fraxure, and needs Fighting + Metal + Colorless.",
+    "Bench preparation": "Frenzied Blade does +20 for each Benched Pokémon on both sides, so Axew, Goomy, Happiny and Roaring Moon are benched to raise it.",
+    "sacrifice and recovery": "Goomy (Sticky Membrane), Happiny and Roaring Moon hold the Active Spot and get knocked out while Haxorus is built behind them.",
+    "control and combinations": "Iris + Haxorus KO gives an extra point; Cyrus, Roaring Moon's Ancient Roar and Goomy's attack tax control the opponent's Active."
+   }
+  },
+  "v2deck_7907f1e146": {
+   "deck_kinds": ["fast pressure", "evolution and setup", "Bench preparation"],
+   "why": {
+    "fast pressure": "Wallace can evolve a Carvanha into Mega Sharpedo ex on turn 1, and Turbo Shark does 70 for one Water.",
+    "evolution and setup": "Every attacker is a Stage 1 (Mega Sharpedo ex, Mega Gyarados ex, Milotic ex), helped by Wallace and Elegant Cape (+30 HP on Stage 1).",
+    "Bench preparation": "Turbo Shark attaches Zone Water to a benched Water Pokémon, charging Magikarp/Gyarados and a second Sharpedo on the Bench."
+   }
+  },
+  "v2deck_a75894a903": {
+   "deck_kinds": ["Bench preparation", "control and combinations", "sacrifice and recovery"],
+   "why": {
+    "Bench preparation": "Dede-Circuit does 40 per Tool on all his Pokémon, so benched Indeedee ex and Oricorio must carry Tools (Clear Veil, Giant Cape, Small Balloon).",
+    "control and combinations": "Clear Veil blocks attack effects, Oricorio's Safeguard stops ex attackers, and Cyrus pulls up damaged targets.",
+    "sacrifice and recovery": "Oricorio walls take hits while two Indeedee ex Watch Over heals and Starting Plains/Giant Cape keep Dedenne ex alive."
+   }
+  },
+  "v2deck_bac3c8a158": {
+   "deck_kinds": ["control and combinations", "Bench preparation"],
+   "why": {
+    "control and combinations": "Damage comes from many small pieces: Darkrai ex's Nightmare Aura, Deceptive Needle, Rocky Helmet, Poison Barb, Hoopa ex's Bench snipe and Cyrus.",
+    "Bench preparation": "Darkrai ex works from the Bench (Aura when Energy attaches), and Bombirdier on the Bench cuts the Active Darkness Pokémon's retreat cost."
+   }
+  }
+ }
+}

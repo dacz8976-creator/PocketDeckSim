@@ -902,3 +902,60 @@ Nothing has been selected, built or run for exam v2. This addendum is committed 
   - Q23 (t8): steps 3-4 mean the Mega Sharpedo ex Wallace just made;
   - Q23 (t12): the HP shown is from the start of the turn; after Irida the two are at 160 and 190.
   - He was told he can re-check Q4 and Q9 if this changes his view. A re-save shows as a db version above the snapshot (questions 1-10 all at version 1, Q10 at 2), and the coordinator reports it with the answers.
+
+**K19. Dustin's answers, folded in; THE FREEZE** (note 050 and the coordinator's messages after it; off the clock, G10; before any km3 or judge row for exam v2).
+- **The answers:** `answers/ANSWERS_RUN3.json`, sha256 `62696826401070716cd7d4ed602ace4ad8cc63582b7dfd87e9b6a9accd533cb0`, with the 23 raw db documents in `answers/raw_db_docs/`.
+  - The coordinator read them with ArtifactData after he said "Finished the quiz to the best of my abilities".
+  - 23 of 23 are answered, each choice is an exact answer option, and the questions are `360361e1…`.
+  - Versions: all 1, except Q10 at 2. Q4 and Q9 were not re-saved after K18's clarifications.
+  - Card text was shown for Q11-Q23 and not for Q1-Q10 (K18).
+- **The fold-in, by K11's mapping** (`assemble_v2.py --answers`): 25 points (23 questions; Q23's answer applies to 182453-t10 and t12 too). Every note is stored verbatim in `answer.dustin_answer.words`.
+  - **Both were fine, 11:** the alternative is accepted (certified_by dustin).
+  - **My play was better, 6:** the alternative is rejected (certified_by dustin).
+  - **The alternative was better, 5:** the key changed at Q5 020916-t9, Q17 224156-t6, Q18 143157-t4, Q19 165202-t9 and Q22 181948-t8. His move is rejected (certified_by dustin, recorded_move_acceptable false).
+  - **Not sure, 3** (Q8, Q10, Q11): the alternative is left out (removed_alternatives), his move stays the key, and the point is scored (note 047).
+- **Q17 (224156-t6), the coordinator's decision before the freeze and before any run:**
+  - His rejected move's chance-first order (Lucky Ice Pop first, then Snorlax ex) goes with his move: rejected, certified_by `coordinator_decision_from_his_words`.
+  - The new key's own chance-first order (Lucky Ice Pop first, then the Terapagos ex line) is ACCEPTED.
+  - **The coordinator's reason:** "rule B's chance-first acceptance belongs to the KEY line. K10 named 'his own line' only because his move was the key when it was written. The K11 mapping makes the alternative the key, so B carries over to it unchanged. Nothing before the Pop feeds the line, and the Pop doesn't commit to Snorlax, the mistake he named."
+- **The third lines.** Four notes name a line that is neither his move nor the offered alternative:
+  - Q8 235420-t10: "Playing cyrus and retreating to goomy might have been the best move."
+  - Q9 235420-t4: "retreating to goomy might have been the best move"
+  - Q11 005124-t8: "Retreating and attacking with buzzwole maybe would have been the best move"
+  - Q15 204548-t7: "switching to bench eiscue wouldn't have been unreasonable"
+
+  **His decision:** "Leave them as notes. Only the lines offered on the quiz count, and the report can show what the judge and bot played at those spots next to my notes." None of them counts.
+- **REPORT-ONLY:** at Q8, Q9, Q11 and Q15, RESULTS_run3 shows the judge's and km3's chosen lines beside his note, with no scoring. At Q11 it also says that the non-ex Buzzwole is not an Ultra Beast in the engine data (the cause of the 3 G1 drops).
+- **To-dos for the report:**
+  - Q1's note asks "I would be curious to know if one was definitely better than the other". It goes on the report's list for after the runs.
+  - Q14's note assumes the alternatives came from "the bot". The report says plainly that they came from the labellers.
+- **The checks on the final references:**
+  - **frozen-7's lister** (`check_lister_v2.py`): 325 lines (258 key lines and 67 accepted): 320 pass, 5 R1, 0 removals, 0 drops, 0 points without a key line. R1 segments are recorded for the 2 lines that turned from pending to accepted (034756-t6 alt0, 182453-t10 alt1). The 5 new keys pass.
+  - **validate_v2:** 330 lines (his 258, of which the 5 rejected moves are records; key 5; alt 67): 0 unmatched, 0 position problems, 0 PGDUMP. 327 of 330 tool stops equal the first segment; the other 3 are K3's tool notes. After the chance step, the rows are K9's five and K3's two tool notes.
+- **The scope, by v1.6's rule** (`freeze_v2.py`): a line is "full" when its scored segment holds all its strategic actions (every action except chance actions, EndTurn and UseStadium). A point is "full" only if every accepted line is.
+  - **258 points: full 90, partial 65, none 103.**
+  - The full-scope set is 90 points in 49 games. K9's caveat point 122720-t1 is among them, and the result note's full-scope caveat names it.
+- **Eligibility** (`eligibility_v2.json`, frozen-7's `ai_judge_eligibility_v1`; its own shape and problem checks pass):
+  - primary = all 258 final points, in 76 games;
+  - no developer exposure is recorded, so none is excluded;
+  - full_scope_ids = the 90 "full" points.
+- **Two independent checks before the freeze** (workflow wf_c85a533f-118):
+  - one re-derived every point's scope from the rule;
+  - one audited the 25 answered points against K11's mapping, the 233 unanswered points against the pre-answer exam, and the references against the key and acceptable lines.
+  - both found no problems: the scope matched on all 258 points and all 325 lines; the mapping held on all 25 answered points, the 233 others are unchanged apart from the scope fields, and the references hold exactly the key and the acceptable lines. Two notes: at 122720-t1 neither line has a strategic action, so it is "full" as v1.6's rule makes it (the rule tests "full" first); at 235420-t4 the newly accepted alternative comes before the chance-first line (alt1 became alt2), consistently in the references and the scopes.
+- **Frozen, in this commit** (`frozen_2026-10-25/`, with FREEZE_MANIFEST.json):
+  - `exam_v2_2026-10-25.json` `f0627a2149f6ab4427d3be2e52f2bce707d5a2b3db16abef070fc632e6e14913`;
+  - `references_v2.json` `650c21a76e5cb79326f1342eab2275890c2ebdd97d4aaa87a957dc4c485bbe4a`;
+  - `eligibility_v2.json` `b994a19f2c68f7a911660d5f1c9504cec8b0366118d1404150618f3b0b55ac97`;
+  - `positions_v2.json` (the candidate view) `b75c02e129307b7bce70d0c7fed242b8c504bd0ea15c851ea59643110b80edaa`;
+  - `ids_v2.txt` `1eb35725534b608e930ebb8bb91bfb69a2e0b71c727b5cfb6f149fc5bdeb9f78`.
+- **Committed beside it:**
+  - the answer key's inputs: the labels (`labels/`), `D_FIXES.json`, the build records (`build/g/`, `build/drops/`), the selection (`select/selection.json`), the assembly's lister report, printing notes, ASSEMBLY.md, the validation, and `PARTB_GAPS_2026-10-25.txt`;
+  - the questions as the quiz showed them (`questions/QUESTIONS.json` `360361e1…`, QUESTIONS.md, and the coordinator's quiz page sources with `cards.json` `e978ef91…`);
+  - the answers.
+- **Reads, recorded** (C1: not exposure):
+  - the laptop session's check workflows wf_0cf48ab7-b0d (the twin-wording check: QUESTIONS.json) and wf_c85a533f-118 (the freeze checks: the answers, the questions, the frozen exam and the pre-answer draft) ran Opus agents only;
+  - no Sonnet agent saw any answer material.
+- **From here:**
+  - nothing in the frozen files changes after any km3 or judge row exists (G2);
+  - the runs (km3 rows at night, from the new seed block registered first; then the judge, ledger $75, primary cap $40) wait for the coordinator's go.

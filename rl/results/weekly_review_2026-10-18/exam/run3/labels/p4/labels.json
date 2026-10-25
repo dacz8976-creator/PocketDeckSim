@@ -1,0 +1,405 @@
+{"format": "pds-exam-v2-labels",
+ "points": {
+  "LAD-20261023_012243000_SR-t1": {
+   "his_move": ["Play:Poké Ball", "Place:Squirtle@1", "Play:Copycat", "Place:Eiscue@2", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Going first with no Energy: Poké Ball finds a Basic (Squirtle) to start the Mega Blastoise line before Copycat refreshes the rest of the hand into 4 cards, and the second Eiscue goes to the Bench as another Ice Face wall."
+  },
+  "LAD-20261023_012910000_SR-t2": {
+   "his_move": ["Play:Poké Ball", "Place:Squirtle@1", "Play:Professor's Research", "Attach:1Water@1 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Oricorio's Safeguard walls the all-ex Hitmonchan ex; Poké Ball finds Squirtle, Research draws while keeping Mega Blastoise ex in hand, and the Water starts Squirtle's stack."
+  },
+  "LAD-20261023_012910000_SR-t4": {
+   "his_move": ["Play:Professor's Research", "Play:Poké Ball", "Place:Eiscue@2", "Play:Soothing Shore", "Attach:1Water@1 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Behind the Oricorio wall: Research digs (better than Copycat with 6 cards against 4), the drawn Poké Ball adds Eiscue, Shore takes the Stadium slot, and the second Water goes on Squirtle."
+  },
+  "LAD-20261023_012910000_SR-t10": {
+   "his_move": ["Play:Copycat", "Evolve:Wartortle@1", "Attach:1Water@1 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "He has no Wartortle, so Copycat turns 3 cards into 5 to find one; he evolves the 4-Water Squirtle (Shell Shield on the Bench) and attaches the 5th Water."
+  },
+  "LAD-20261023_012910000_SR-t12": {
+   "his_move": ["Evolve:Mega Blastoise ex@1", "Attach:1Water@0 zone", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [
+    {"line": ["Evolve:Mega Blastoise ex@1", "Attach:1Water@0 zone", "Retreat:1", "Attack:Triple Bombardment"],
+     "reason": "Attack a turn earlier: Oricorio's Water pays the retreat and a 5-Water Mega Blastoise ex hits the caped Mega Lucario ex 220 down to 90 (no Bench damage). Next turn, with Cyrus in hand, it can knock out the Mega Lucario for 3 points, and 230 HP survives one Fighting Pulse even with Korrina."}
+   ],
+   "answer_kind": "prepare",
+   "ambiguous": "At turn 12 of the Mega Lucario game you evolved Mega Blastoise ex, put the Water on Oricorio and passed, so next turn you could attack with 6 Water and Bench damage. Would attacking right away also have been fine? That means retreating Oricorio and using Triple Bombardment with 5 Water for 130 to the caped Mega Lucario, with no Bench damage.",
+   "why_his": "Oricorio's Safeguard still walls the opponent's all-ex board, so he evolves now and puts the Water on Oricorio to pay next turn's retreat, keeping 5 Water on Mega Blastoise so the 6th turns on Triple Bombardment's Bench damage."
+  },
+  "LAD-20261023_012910000_SR-t14": {
+   "his_move": ["Retreat:1", "Attach:1Water@0 zone", "Attack:Triple Bombardment"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Oricorio's one Water pays the retreat and the 6th Water turns on the Bench damage: 130 to the caped Mega Lucario and 50 to each benched Hitmonchan ex, setting up the Cyrus knockout."
+  },
+  "LAD-20261023_115617000_SR-t3": {
+   "his_move": ["Place:Oricorio@2", "Play:Soothing Shore", "Play:Copycat", "Play:Poké Ball", "Evolve:Wartortle@1", "Attach:1Water@1 zone", "EndTurn"],
+   "acceptable": [
+    {"line": ["Place:Oricorio@2", "Play:Soothing Shore", "Play:Professor's Research", "Attach:1Water@1 zone", "EndTurn"],
+     "reason": "The same setup, digging with Research instead of Copycat: he keeps Lucky Ice Pop and Parasol Lady and draws 2 (5 cards against Copycat's 4 fresh ones), saving Copycat for a later turn."}
+   ],
+   "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "He benches Oricorio against the Hitmonchan ex and Mega Lucario ex line, plays Shore, and Copycat refreshes 3 low-value cards into 4. That finds Poké Ball and Wartortle to evolve Squirtle, which gets the first Water."
+  },
+  "LAD-20261023_115617000_SR-t5": {
+   "his_move": ["Play:Soothing Shore", "Attach:1Water@1 zone", "Play:Lucky Ice Pop", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [
+    {"line": ["Play:Soothing Shore", "Attach:1Water@0 zone", "Retreat:2", "Place:Eiscue@3", "EndTurn"],
+     "reason": "Save the 30-HP Eiscue and deny the point: the Water on Eiscue pays its retreat, and Oricorio's Safeguard walls Mega Lucario ex and Hitmonchan ex, so only Bonsly can hurt it. The cost is the turn's Water, which doesn't go to Wartortle."}
+   ],
+   "answer_kind": "sacrifice",
+   "ambiguous": "At turn 5 of the first Mega Lucario/Bonsly game your Eiscue was at 30 HP in front of a Mega Lucario ex. Would it also have been fine to put the Water on Eiscue and retreat it to Oricorio, so Safeguard walls the ex attackers and Eiscue isn't knocked out? You put the Water on Wartortle and left Eiscue Active.",
+   "why_his": "Shore replaces Arena of Antiquity and the Water keeps Wartortle on schedule for Mega Blastoise; the damaged Eiscue stays Active as the buffer that soaks the next Mega Lucario attack."
+  },
+  "LAD-20261023_115617000_SR-t7": {
+   "his_move": ["Play:Professor's Research", "Evolve:Mega Blastoise ex@1", "Attach:1Water@1 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "With Oricorio walling the ex attackers, Research digs for the Stage 2; he evolves the benched Wartortle into Mega Blastoise ex and adds the 3rd Water."
+  },
+  "LAD-20261023_115617000_SR-t9": {
+   "his_move": ["Play:Lucky Ice Pop", "Attach:1Water@1 zone", "Play:Poké Ball", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Ice Pop heals Oricorio against Bonsly's chip damage, the 4th Water goes on Mega Blastoise ex toward the 6 it needs for Bench damage, and Poké Ball thins the deck."
+  },
+  "LAD-20261023_115617000_SR-t11": {
+   "his_move": ["Play:Lucky Ice Pop", "Attach:1Water@0 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "The Water on Oricorio lets Soothing Shore heal it 20 every turn against Bonsly and will later pay its retreat; with Ice Pop, this keeps the wall alive while Mega Blastoise waits."
+  },
+  "LAD-20261023_115617000_SR-t13": {
+   "his_move": ["Play:Copycat", "Attach:1Water@1 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Copycat refreshes a mostly dead hand from a nearly empty deck, and the 5th Water goes on Mega Blastoise ex; Oricorio holds one more turn so the attack can come with 6 Water."
+  },
+  "LAD-20261023_115617000_SR-t15": {
+   "his_move": ["Retreat:1", "Attach:1Water@0 zone", "Attack:Triple Bombardment"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Oricorio's Water pays the retreat and the 6th Water turns on the Bench damage: Triple Bombardment knocks out Bonsly and puts 50 on Hitmonchan ex, setting up the Cyrus knockout."
+  },
+  "LAD-20261023_120935000_SR-t1": {
+   "his_move": ["Play:Poké Ball", "Place:Eiscue@2", "Play:Copycat", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Going first with no Energy: Poké Ball adds a Basic (Eiscue) to the Bench, then Copycat refreshes the rest of the hand into 4 cards."
+  },
+  "LAD-20261023_122720000_SR-t1": {
+   "his_move": ["Play:Professor's Research", "EndTurn"],
+   "acceptable": [
+    {"line": ["Play:Copycat", "EndTurn"],
+     "reason": "On the first turn either draw Supporter is a fair dig: Copycat turns the 3 other cards into 4 fresh ones and keeps Research for later."}
+   ],
+   "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Going first with no Energy, he uses the Supporter to draw 2 and keeps the rest of the hand."
+  },
+  "LAD-20261023_122720000_SR-t3": {
+   "his_move": ["Place:Squirtle@2", "Play:Soothing Shore", "Place:Eiscue@3", "Play:Copycat", "Attach:1Water@0 zone", "Play:Poké Ball", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "He fills the Bench with Squirtle and Eiscue, plays Shore, and Copycat turns 2 cards into 5 against the opponent's 5; the first Water goes on Eiscue for Ram against the non-ex Wurmple line."
+  },
+  "LAD-20261023_122720000_SR-t5": {
+   "his_move": ["Evolve:Wartortle@3", "Play:Poké Ball", "Play:Professor's Research", "UseStadium", "Play:Soothing Shore", "Attach:1Water@0 zone", "Attack:Ram"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "He evolves the benched Squirtle, digs with Poké Ball, Research and Area Zero, replaces the opponent's Stadium with Shore, and gives Eiscue its 2nd Water so Ram hits Silcoon for 50."
+  },
+  "LAD-20261023_122720000_SR-t7": {
+   "his_move": ["Attach:1Water@2 zone", "EndTurn"],
+   "acceptable": [
+    {"line": ["Place:Squirtle@3", "Attach:1Water@2 zone", "EndTurn"],
+     "reason": "The same Water on Wartortle, plus benching the second Squirtle as a backup line. Beautifly's Evoflight counts only its own Bench, so the extra Basic costs nothing."}
+   ],
+   "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "The Water goes on the benched Wartortle (Shell Shield) toward Mega Blastoise ex, while the full-HP Eiscue takes Evoflight with Ice Face."
+  },
+  "LAD-20261023_122720000_SR-t9": {
+   "his_move": ["Evolve:Mega Blastoise ex@2", "Attach:1Water@2 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "sacrifice", "ambiguous": null,
+   "why_his": "He evolves the benched Wartortle into Mega Blastoise ex and builds its Water, leaving the 10-HP Confused Eiscue Active to fall so Mega Blastoise comes in healthy and attacks next turn."
+  },
+  "LAD-20261023_122720000_SR-t11": {
+   "his_move": ["Attach:1Water@0 zone", "Attack:Triple Bombardment"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "The 3rd Water pays Triple Bombardment, and 130 knocks out Beautifly 110, the opponent's attacker."
+  },
+  "LAD-20261023_204548000_SR-t1": {
+   "his_move": ["Play:Poké Ball", "Place:Oricorio@2", "Play:Soothing Shore", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Going first with no Energy: Poké Ball (Squirtle, held), Oricorio benched and Shore in play to heal his Water Pokémon later."
+  },
+  "LAD-20261023_204548000_SR-t3": {
+   "his_move": ["Attach:1Water@0 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "The Water on the Poisoned Eiscue lets Soothing Shore cancel the poison each turn and heads toward Ram's 2 Water."
+  },
+  "LAD-20261023_204548000_SR-t5": {
+   "his_move": ["Play:Professor's Research", "Evolve:Wartortle@2", "Attach:1Water@2 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Research finds Wartortle; he evolves the benched Squirtle (Shell Shield) and starts its Water, since Muk's Power of Alchemy has switched off Ice Face."
+  },
+  "LAD-20261023_204548000_SR-t7": {
+   "his_move": ["Play:Poké Ball", "Attach:1Water@1 zone", "Place:Eiscue@2", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "sacrifice", "ambiguous": null,
+   "why_his": "Oricorio, whose Safeguard Muk's Power of Alchemy has switched off, is left to take Sludge Bomb while the Water builds Wartortle and Poké Ball adds a benched Eiscue."
+  },
+  "LAD-20261023_204548000_SR-t9": {
+   "his_move": ["Evolve:Mega Blastoise ex@0", "Attach:1Water@0 zone", "Attack:Triple Bombardment"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "He evolves the Active Wartortle into Mega Blastoise ex, attaches the 3rd Water and knocks out the Active Alolan Muk 110 for his first point."
+  },
+  "LAD-20261023_204548000_SR-t11": {
+   "his_move": ["Place:Squirtle@2", "Attach:1Water@0 zone", "Play:Copycat", "Attack:Triple Bombardment"],
+   "acceptable": [
+    {"line": ["Place:Squirtle@2", "Attach:1Water@0 zone", "Attack:Triple Bombardment"],
+     "reason": "The same knockout on the second Muk without Copycat: a 3-for-3 refresh adds little, and keeping Cyrus and Ice Pop in hand is just as reasonable."}
+   ],
+   "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "He benches a second Squirtle, adds the 4th Water, refreshes with Copycat and knocks out the second Muk 110, which brings Ice Face back."
+  },
+  "LAD-20261023_213639000_SR-t1": {
+   "his_move": ["Play:Poké Ball", "Place:Oricorio@1", "Play:Professor's Research", "Place:Eiscue@2", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Going first with no Energy, he builds the Bench: Poké Ball finds Oricorio, and Research (kept over Copycat to hold Wartortle) finds Eiscue."
+  },
+  "LAD-20261023_213639000_SR-t3": {
+   "his_move": ["Play:Soothing Shore", "Play:Copycat", "Attach:1Water@0 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "With no Squirtle in play, Copycat digs for a Basic, Shore goes down, and the Active Eiscue starts on Water for Ram."
+  },
+  "LAD-20261023_213639000_SR-t5": {
+   "his_move": ["Play:Professor's Research", "Attach:1Water@0 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Research digs for Squirtle, and the Water goes on the new Active Eiscue (put there by Sabrina), working toward Ram."
+  },
+  "LAD-20261023_213639000_SR-t7": {
+   "his_move": ["Place:Squirtle@2", "Attach:1Water@2 zone", "EndTurn"],
+   "acceptable": [
+    {"line": ["Place:Squirtle@2", "Attach:1Water@0 zone", "Attack:Ram"],
+     "reason": "Bench Squirtle but give Eiscue its 2nd Water and Ram the 100-HP Rampardos down to 50. Any Head Smash that knocks out Eiscue then makes Rampardos knock itself out with the 50 recoil, so the opponent's attacker is gone either way."}
+   ],
+   "pending_alternatives": [],
+   "answer_kind": "sacrifice", "ambiguous": null,
+   "why_his": "He finally starts the Squirtle line and puts the Water on it, accepting that the 1-Water Eiscue will fall to Head Smash."
+  },
+  "LAD-20261023_215109000_SR-t3": {
+   "his_move": ["Play:Soothing Shore", "Attach:1Water@0 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "The Water on Oricorio lets Shore heal the Nightmare Aura damage every turn and will pay its retreat later, while Safeguard walls Darkrai ex."
+  },
+  "LAD-20261023_215109000_SR-t5": {
+   "his_move": ["Play:Lucky Ice Pop", "Attach:1Water@1 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Ice Pop and Shore heal Oricorio against Bombirdier's chip damage, and the Water starts the benched Eiscue toward Ram."
+  },
+  "LAD-20261023_215109000_SR-t7": {
+   "his_move": ["Attach:1Water@1 zone", "Play:Copycat", "Place:Squirtle@2", "Retreat:1", "Attack:Ram"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Eiscue gets its 2nd Water, Copycat finds Squirtle to bench, and the 10-HP Oricorio retreats (paying its Water) so the full-HP Eiscue can Ram Bombirdier."
+  },
+  "LAD-20261023_220413000_SR-t3": {
+   "his_move": ["Evolve:Wartortle@1", "Attach:1Water@1 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Oricorio walls Chien-Pao ex while the benched Squirtle evolves into Shell Shield Wartortle and takes Water. He holds the second Squirtle so it isn't an easy Diving Icicles target."
+  },
+  "LAD-20261023_220413000_SR-t5": {
+   "his_move": ["Play:Professor's Research", "Attach:1Water@1 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Behind the Oricorio wall, Research digs and the 2nd Water goes on the benched Wartortle."
+  },
+  "LAD-20261023_221617000_SR-t3": {
+   "his_move": ["Play:Rare Candy", "Evolve:Stoutland@0", "Attach:1Psychic@0 zone", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [
+    {"line": ["Play:Rare Candy", "Evolve:Stoutland@0", "Attach:1Psychic@0 zone", "Play:Cheren", "EndTurn"],
+     "reason": "The same Rare Candy turn plus Cheren: no other Supporter is usable this turn, and Cheren gives the new Active Stoutland -100 against Entei ex next turn (it then took 60)."}
+   ],
+   "answer_kind": "prepare",
+   "ambiguous": "At turn 3 of the Entei ex game, after Rare Candy into Stoutland, you held Cheren and Entei ex then hit Stoutland for 60. Would playing Cheren that same turn also have been fine? Or was saving it right, because with Guard Dog Visage you didn't expect Entei to attack yet?",
+   "why_his": "Rare Candy turns the Active Lillipup straight into Stoutland, whose Guard Dog Visage makes the opponent's attacks cost 1 more; the first Psychic goes toward Sharp Fang, and Cheren is saved for later."
+  },
+  "LAD-20261023_222318000_SR-t2": {
+   "his_move": ["Play:Poké Ball", "Place:Indeedee ex@1", "Play:Protective Poncho", "Tool:Protective Poncho@1", "Play:Copycat", "Play:Poké Ball", "Place:Lillipup@2", "Attach:1Psychic@0 zone", "Attack:Tackle"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "He builds the Bench: Indeedee ex protected by Poncho from Heatmor's Bench snipe, Copycat into a second Poké Ball, and a second Lillipup for Rare Candy; then Energy and a free Tackle."
+  },
+  "LAD-20261023_224156000_SR-t2": {
+   "his_move": ["Play:Poké Ball", "Place:Type: Null@2", "Play:Professor's Research", "Play:Lucky Ice Pop", "Attach:1Metal@0 zone", "Attack:Feelin' Fine"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Poké Ball benches Type: Null for Silvally, Research finds the Stage 1s, Ice Pop heals the Needle damage, and Feelin' Fine draws one more."
+  },
+  "LAD-20261023_224156000_SR-t4": {
+   "his_move": ["Play:Poké Ball", "Place:Type: Null@2", "Evolve:Persian@0", "Evolve:Silvally@1", "Attach:1Grass@1 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "He evolves both lines (Persian Active, Silvally on the Bench), benches the second Type: Null, and starts Silvally's Energy for Brave Buddies."
+  },
+  "LAD-20261023_224156000_SR-t6": {
+   "his_move": ["Place:Snorlax ex@3", "Play:Lucky Ice Pop", "Attach:1Metal@3 zone", "EndTurn"],
+   "acceptable": [],
+   "pending_alternatives": [
+    {"line": ["Place:Terapagos ex@3", "Play:Lucky Ice Pop", "Attach:1Metal@3 zone", "EndTurn"],
+     "reason": "Use the last Bench slot for Terapagos ex instead: Prism Impact needs 3 Energy, not 4, and in this 3-type deck it does 80 plus 20 for each type attached (up to 140), against Snorlax ex's 130 that puts it to Sleep."}
+   ],
+   "answer_kind": "prepare",
+   "ambiguous": "At turn 6 of the Weezing ex game you benched Snorlax ex and started Energy on it, with two Terapagos ex in hand. Would benching Terapagos ex instead also have been fine? It needs 3 Energy instead of 4 and gets +20 for each Energy type.",
+   "why_his": "He benches a big Basic ex to become the main attacker, starts its Energy, and Ice Pop keeps the Active Persian alive."
+  },
+  "LAD-20261023_225646000_SR-t3": {
+   "his_move": ["Attach:1Water@1 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "The first Water goes on the benched Eiscue, toward Ram against the non-ex Meloetta."
+  },
+  "LAD-20261023_225646000_SR-t5": {
+   "his_move": ["Play:Poké Ball", "Place:Eiscue@3", "Attach:1Water@0 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Poké Ball fills the Bench with the second Eiscue; the Water on Oricorio pays its later retreat into the Ram Eiscue and lets Shore heal it."
+  },
+  "LAD-20261023_225646000_SR-t7": {
+   "his_move": ["Play:Soothing Shore", "Play:Lucky Ice Pop", "Attach:1Water@3 zone", "EndTurn"],
+   "acceptable": [
+    {"line": ["Play:Soothing Shore", "Play:Lucky Ice Pop", "Attach:1Water@1 zone", "Retreat:1", "Attack:Ram"],
+     "reason": "Ram now: Eiscue gets its 2nd Water, Oricorio retreats (paying its Water), and Ram takes Meloetta from 70 to 20. Ice Face cuts Psyshot to 10 and Oricorio is safe on the Bench; Squirtle waits a turn for its Water."}
+   ],
+   "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Shore replaces Peculiar Plaza and, with Ice Pop, heals the Water-holding Oricorio; the Water starts the benched Squirtle line."
+  },
+  "LAD-20261023_225646000_SR-t9": {
+   "his_move": ["Retreat:1", "Attach:1Water@0 zone", "Attack:Ram"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "The 10-HP Oricorio retreats (paying its Water) into the full-HP Eiscue, whose 2nd Water pays Ram: 50 to Meloetta, 70 down to 20."
+  },
+  "LAD-20261023_225646000_SR-t11": {
+   "his_move": ["Play:Professor's Research", "Attach:1Water@1 zone", "Attack:Ram"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Ram knocks out the 20-HP Meloetta for a point; Research digs, and the Water on the benched Oricorio lets Shore heal it."
+  },
+  "LAD-20261023_231312000_SR-t2": {
+   "his_move": ["Play:Poké Ball", "Play:Poké Ball", "Place:Eiscue@1", "Place:Eiscue@2", "Play:Soothing Shore", "Attach:1Water@0 zone", "Attack:Water Gun"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "Both Poké Balls fill the Bench with the two Eiscue walls, Shore goes down, and the Water on Squirtle allows a free Water Gun chip."
+  },
+  "LAD-20261024_003120000_SR-t3": {
+   "his_move": ["Attach:1Water@0 zone", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "The full-HP Eiscue (Ice Face) holds against Chien-Pao ex's Icicle and takes its first Water toward Ram."
+  },
+  "LAD-20261024_003120000_SR-t5": {
+   "his_move": ["Place:Oricorio@2", "Attach:1Water@0 zone", "Attack:Ram"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "He benches Oricorio as an ex wall, gives Eiscue its 2nd Water and Rams the caped Chien-Pao ex for 50."
+  },
+  "LAD-20261024_003120000_SR-t7": {
+   "his_move": ["Play:Lucky Ice Pop", "Attach:1Water@1 zone", "Attack:Ram"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Ice Pop heals the Active Eiscue, the Water starts the second Eiscue, and Ram chips the caped Mega Sharpedo ex for 50."
+  },
+  "LAD-20261024_003927000_SR-t2": {
+   "his_move": ["Place:Oricorio@1", "Play:Poké Ball", "Place:Eiscue@2", "Play:Misty", "MistyTarget@0", "Attach:1Water@2 zone", "Retreat:2", "Play:Soothing Shore", "EndTurn"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "prepare", "ambiguous": null,
+   "why_his": "He builds the Bench, uses Misty to speed up Squirtle's Water, puts the turn's Water on Eiscue and retreats Squirtle into it, so the full-HP Eiscue is Active and Shore is in play."
+  },
+  "LAD-20261024_003927000_SR-t4": {
+   "his_move": ["Attach:1Water@0 zone", "Attack:Ram"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Eiscue's 2nd Water pays Ram, putting Helioptile at 10 HP."
+  },
+  "LAD-20261024_003927000_SR-t6": {
+   "his_move": ["Attach:1Water@2 zone", "Play:Copycat", "Evolve:Wartortle@2", "Attack:Ram"],
+   "acceptable": [], "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "The 10-HP Squirtle gets its 3rd Water, Copycat digs for Wartortle so it gains HP and Shell Shield on the Bench, and Ram knocks out Heliolisk."
+  },
+  "LAD-20261024_003927000_SR-t10": {
+   "his_move": ["Play:Professor's Research", "Attack:Ram"],
+   "acceptable": [
+    {"line": ["Play:Professor's Research", "Attach:1Water@1 zone", "Attack:Ram"],
+     "reason": "The same Research and Ram, plus the free Water on the benched Squirtle, which costs nothing and moves the Squirtle line forward."}
+   ],
+   "pending_alternatives": [],
+   "answer_kind": "attack now", "ambiguous": null,
+   "why_his": "Research digs for Wartortle or Mega Blastoise ex, and Ram puts the Active Electrike at 10 HP."
+  }
+ },
+ "decks": {
+  "v2deck_589bb9927a": {
+   "deck_kinds": ["evolution and setup", "Bench preparation", "sacrifice and recovery", "control and combinations"],
+   "why": {
+    "evolution and setup": "The only real attacker is the Stage 2 Mega Blastoise ex (Squirtle to Wartortle to Mega Blastoise, no Rare Candy), and it needs 3 Water to attack and 6 for Bench damage.",
+    "Bench preparation": "Wartortle's Shell Shield prevents all attack damage while benched, so the Water stack is built on the Bench behind a wall.",
+    "sacrifice and recovery": "Eiscue (Ice Face) and Oricorio (Safeguard) are walls that soak hits and are often given up; Lucky Ice Pop, Soothing Shore, Lillie and Parasol Lady heal them or pick them back up.",
+    "control and combinations": "Oricorio's Safeguard shuts out ex attackers, and Cyrus pulls up a Pokémon already damaged by Triple Bombardment's Bench hits to finish it."
+   }
+  },
+  "v2deck_995ac0891e": {
+   "deck_kinds": ["evolution and setup", "Bench preparation", "sacrifice and recovery", "control and combinations"],
+   "why": {
+    "evolution and setup": "Same Squirtle to Wartortle to Mega Blastoise ex Stage 2 line with no Rare Candy; Misty can add Water to the line faster.",
+    "Bench preparation": "Shell Shield Wartortle holds its Water safely on the Bench until it becomes the 6-Water Mega Blastoise ex.",
+    "sacrifice and recovery": "Eiscue and Oricorio are walls that soak damage and are given up for time; Soothing Shore, Lucky Ice Pop, Lillie and Parasol Lady are the recovery.",
+    "control and combinations": "Safeguard walls ex attackers, and Cyrus plus Triple Bombardment's Bench damage set up the knockouts."
+   }
+  },
+  "v2deck_8561e086a0": {
+   "deck_kinds": ["evolution and setup", "Bench preparation"],
+   "why": {
+    "evolution and setup": "Two Stage 1 lines (Meowth to Persian, Type: Null to Silvally) must evolve before they attack; Silvally's Brave Buddies needs a Supporter played to reach 100.",
+    "Bench preparation": "With three Energy types the Zone is random, so the Basic ex attackers (Terapagos ex with 3 Energy and +20 per type, Snorlax ex with 4) are charged on the Bench over several turns."
+   }
+  },
+  "v2deck_c4ac51db37": {
+   "deck_kinds": ["evolution and setup", "control and combinations", "sacrifice and recovery"],
+   "why": {
+    "evolution and setup": "Stoutland is a Stage 2 played through 2 Rare Candy from Lillipup, so the deck depends on finding Candy and Stoutland on time.",
+    "control and combinations": "Guard Dog Visage makes the opponent's attacks cost 1 more and Cheren gives -100 against ex; the Psychic Supporter moves Energy onto the opposing Active to power up Indeedee ex's Psychic attack, and Field Blower removes Tools or the Stadium.",
+    "sacrifice and recovery": "Indeedee ex's Watch Over and Lillie keep healing the Active Stoutland, and Protective Poncho protects a benched Indeedee."
+   }
+  }
+ }
+}
