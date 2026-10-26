@@ -992,3 +992,124 @@ Nothing has been selected, built or run for exam v2. This addendum is committed 
   - **The dry run checks:** the mocked judge on 3 points (3 rows, no later pass), `missing_ids` on a row taken out and on a one-line list, and `next_pass.py` on fixtures. It plays no km3 and makes no comparison.
 - **The seeds** (START_HERE, Oct 21): km3 at 25,101,000,001-003. km3 plays in the night window (02:00-12:50Z), at nice 19.
 - **The launch record** (RESULTS_run3 and the run's manifest) names this commit as `KIT_COMMIT`.
+
+**K21. Unchanged kx3 on the frozen exam v2: the dated record, before any kx3 row** (coordinator-051 and -052; written Oct 26 by the laptop session; no kx3 row exists on any exam v2 position).
+- **The decision:**
+  - Dustin, relayed by the Oct 26 review session (review-001): "Yes. Tell the coordinator to score unchanged kx3 on the frozen exam v2 reusing Gemini's saved rows, no Gemini calls, with a dated record before any row. The adapter waits on that result."
+  - Confirmed by him in the coordinator's chat: "Yes, confirmed: score unchanged kx3 on the frozen exam v2, reusing Gemini's saved rows, no Gemini calls, dated record first. The adapter waits."
+  - Astra's points, via Dustin (review-002): the record must SHOW the comparison is fair, not only list the differences. Section 7 answers each point.
+
+**1. The program: unchanged kx3, built on the frozen judge's own rules tree.**
+- **kx3 is the frozen F pilot.** Its player code is the `engine/src/players` tree 7b093885 (playout_player.rs 9cbd8b1e, playout_pool.rs 5c0eac33). It is byte-identical in three commits:
+  - d513e37b, the frozen pilot (Oct 2);
+  - cd20a97a, the Oct 12 pin: kx3 on rules switch 2;
+  - 87a7f340, the current release: program 7d046b6f on main-4d48844, whose self-checks print the kx3 digest 31d638dbc818b0fa and the km3 digest 81b572198c04d5d1.
+- **Its settings are fixed by its code.** Bot code `kx3` = `kx3_r16_c12_z2_real_t0`:
+  - km3 proposes a move;
+  - up to 12 candidates, each played out 16 times;
+  - a candidate replaces km3's move only when it is more than 2 standard errors ahead;
+  - REALISTIC knowledge: the opponent's hidden cards are sampled per play-out from its 8-list meta pool, consistent with the cards the opponent has shown, or the closest list when none fits. It never reads the opponent's real list;
+  - no time budget, so the result does not depend on machine speed;
+  - no extra lists: `KX_EXTRA_LISTS` is unset, and the run checks this.
+- **The engine is the frozen tree.**
+  - Gemini's and km3's rows came from engine tree 70652fff (frozen-7: lister bd4eeb6e, baseline f35a1a99). The positions were built with pg_legal_v14. 70652fff is main-c045ede's engine (pin commit 818408be).
+  - cd20a97a is the frozen pilot merged onto c045ede0. `git diff 818408be cd20a97a -- engine` is 6 files, insertions only: mod.rs (+12 lines registering `kx<N>`), playout_player.rs, playout_pool.rs, one example and two tests. No rules file changes.
+  - The card data is the same file: `engine/database.json` blob 0217ade3, sha256 b5e68fc8…, the exam's frozen card data.
+  - So kx3 plays under exactly the rules that made Gemini's and km3's rows.
+- **Not used:**
+  - The current release (7d046b6f, main-4d48844). Its rules include main-4d48844's repairs (#401 Fossil, #385, Growl-to-0, the hit back, #390), which can change legal moves or values on these positions.
+  - The Oct 19 probe binary (pg_pos_blade bbc05e1f, ky3-blade). Its players differ, and its kx3 codes are not the frozen F.
+- **The executable is new, because no existing one fits.** No existing binary prints frozen-7's labels: the F builds print bare names and `RetreatPay:<slot>`, and frozen-7's baseline has no kx3.
+  - It is built exactly as frozen-7 built its baseline (`rl/ai_judge/build_baseline.sh` at tag judge-prompt-frozen-7), with one change: the archive is `git archive cd20a97a engine` instead of the tag's.
+  - From the tag, unchanged: pgd_patch.py (904b9e86, the target-preserving printer), dg_patch.py (c98ccc63) and pg_pos.rs (224888a8).
+  - Build: `cargo build --release --locked --offline --example pg_pos`, 2 jobs, nice 19, in the night window. About 4 minutes and 0.3 GB (C: has about 17 GB free).
+  - Its sha256 is committed in K21's launch line before any kx3 row. The run refuses any other binary.
+
+**2. The dry run: gates on development positions only, before any exam row.** Every gate must pass, or nothing runs on the exam. The development positions are pause-game positions (`heldout: false`), not exam positions.
+- **(a) Same engine and printer.** km3 on the new binary prints free-play lines byte-identical to frozen-7's baseline f35a1a99, on 6 development positions, seeds 1-3.
+- **(b) Same kx3.** The new binary's kx3 reproduces the frozen pilot's recorded lines on 3 development positions where kx3's line differs from km3's:
+  - KW-261005_003547000-t11 and KW-261005_003547000-t13 (the pause-positions study, PF3 runs_B, seeds 1-3);
+  - KW-261013_015659000-t05 (P8_v3 runs_F: pg_pos_F_cond2 on cd20a97a with the same pg_pos.rs; seeds 3 and 9).
+
+  Short labels are compared as printed. Where the old printer gave a bare name, frozen-7's `Name#JSON` is compared by its name.
+- **(c) The row runner.** `kx3_rows.py` copies frozen-7's `run_pg_pos` body with only its k/km name check lifted. On the development positions:
+  - its km3 rows must equal `judge.py run --bot km3`'s, field for field;
+  - every kx3 line must map to exactly one listed plan.
+- **(d) The timing.** The gates' kx3 seconds per position and seed, set against the estimate in section 4.
+
+**3. Points.** Run 3's 258 primary decisions in 76 games, from the frozen files at 6e5fab0c:
+- positions_v2.json b75c02e1…;
+- references_v2.json 650c21a7…;
+- eligibility_v2.json b994a19f…
+
+**Run 2's 49 points are NOT added** (the laptop's call), for three reasons:
+- **One question, one exam.** The question is about exam v2, and the one frozen exam answers it cleanly. Pooling was registered for the Gemini v km3 question as its second stage; this question has no first stage.
+- **Different build.** Run 2's v1.6 points have a different candidate view (generic notes), a different build and v1.6's segments. Mixing them brings in B1's mixture caveat for about 16% more decisions.
+- **Exposure history.** Run 2's positions carry the laptop's earlier exposure records (run 1's side-run plan and its probe).
+
+So the registered primary is run 3 alone.
+
+**4. Seeds and nights.**
+- **Seeds:** kx3 plays each decision on 3 seeds, 25,101,000,001-003, the seeds km3 used. They are paired on purpose: pg_pos fills the same unknowns for both bots on each seed.
+  - The block 25,101,000,000-25,101,999,999 is registered in START_HERE for exam run 3's baseline rows. A one-line START_HERE amendment on main, naming kx3's reuse, needs Dustin's yes; K21 is the registration of record either way.
+  - The gates use the development positions' own recorded seeds, plus 25,101,900,101 and up.
+- **How it runs:** seed-major (all 258 on seed 1, then seed 2, then seed 3); one position at a time (kx3 uses about 11 of the laptop's 16 threads); nice 19.
+  - Night window only: 02:00-13:00Z until Nov 1, 03:00-14:00Z after. Never Wednesday night Oct 28, which is Dual Fusion's release.
+  - It resumes by (seed, position). A night stops cleanly at 12:50Z.
+- **Nights:** Mon Oct 26, Tue Oct 27, Thu Oct 29 and Fri Oct 30. **The registered end is the close of the Fri Oct 30 window (13:00Z Oct 31).**
+- **Estimate:** about 1.4-6 h per seed, so 1 night is likely and 2 nights plausible. v2 has 25,849 plans.
+  - 1.4-2.4 h comes from the frozen kx3's sandbox timings on 127 positions, scaled to v2's turns and the laptop's speed.
+  - 6.1 h comes from the Oct 19 probe's per-plan rate.
+  - Tail risk: 9-16 h per seed, if many positions behave like the probe's slow one.
+- **If 3 seeds are not complete by the registered end, decided now:** the result uses the seeds complete on all 258 decisions (2, or 1).
+  - The precision cost is estimated from run 3's km3 seeds and kx3's recorded seed spread (about 2x km3's): 2 seeds widen the 95% interval by about 1-2%; 1 seed by about 4-7% (stress case about 10%).
+  - With no seed complete on all 258, there is no result, and the record says so.
+
+**5. Scoring.** No Gemini call is made. Gemini's saved run-3 primary rows are reused: `live-20261026T020013Z/judge_primary.jsonl` and `judge_primary_pass1.jsonl` at e159551d. km3's `km3.jsonl` from the same folder is reused for the descriptive contrast.
+- **The primary compare:** frozen-7's `judge.py compare`
+  - with `--bots kx3,judge --contrasts judge:kx3 --seeds` (kx3's complete seeds) `--judge-repeats 1`;
+  - with the frozen references_v2.json and eligibility_v2.json;
+  - with `--on-problem fail --failed-judge-rows miss --allow-other-binaries`.
+- **Why `--allow-other-binaries` is needed:** frozen-7's freeze names f35a1a99 as the one step-bot executable. The switch makes frozen-7 mark its report "experiment" (formal: false), and it also skips frozen-7's lister-identity check. So the K21 script checks two things itself:
+  - the plans binary's sha256 equals FROZEN.json's;
+  - every kx3 row's pg_pos_sha256 equals the K21 binary's.
+
+  Every other freeze check stays on: the judge rows' frozen settings, the model, the references and the eligibility.
+- **The primary:** Gemini minus kx3, prefix agreement, on 258 decisions. It uses frozen-7's analysis.py: the game-clustered 95% interval (20,000 resamples, seed 20261019), the sign-flip test (100,000 draws, seed 20261020), at least 10 games, and its verdict rule. The verdict is one of:
+  - "judge higher": the interval lies above 0 and the sign-flip p < 0.05;
+  - "kx3 higher";
+  - "inconclusive".
+- **Descriptive only, no verdict:**
+  - kx3 minus km3, a second compare with `--bots kx3,km3` on the same seeds and decisions;
+  - the full-scope block;
+  - the chance-ending stratum (168 points, `strata/`);
+  - the categories.
+- **Stops:** a kx3 row whose line maps to no single listed plan is a problem that stops the batch (on-problem fail), for the coordinator. None is expected: same tree, same printer.
+
+**6. What a result means.** The interval is reported in every case.
+- **"judge higher":** on these 258 decisions of exam v2, Gemini's first plan segment matches Dustin's accepted moves more often than unchanged kx3's does.
+  - This is the comparison section 8 required before anyone says Gemini beats our best bot.
+  - It holds on this measure only: prefix agreement, not plan quality. It says nothing about finished games or win rates.
+- **"kx3 higher":** the reverse, with the same limits.
+- **"inconclusive":** stays inconclusive. It is not evidence that they are equally good.
+- **Unchanged either way:** run 3's filed verdict (Gemini v km3) stands, whatever this gives.
+- **A limitation, recorded now:** frozen-7's own flag reads "experiment" for this report (section 5). K21 makes it the registered kx3 result.
+- **The adapter is not started.**
+
+**7. Fairness, point by point (Astra).**
+- **Unchanged kx3:** section 1. The players are byte-identical to the frozen pilot, the settings are fixed by its code, and the binary's sha256 is committed before any row.
+- **The same positions and information:**
+  - the frozen candidate view, played through the same frozen pg_pos harness and on the same seeds as km3;
+  - kx3 reads only its `PlayerObservation`: its hand, the public board, discards, points and counts, and its own deck as an unordered multiset. It samples every hidden card itself, per play-out;
+  - no position holds a future card;
+  - the card data is b5e68fc8 in both trees.
+- **The same rules:** the frozen tree 70652fff, plus kx3's additions only. Gate (a) tests this.
+- **The same scoring:** the frozen answers (6e5fab0c), the frozen lister and prefix rule (R1's segments), frozen-7's analysis.py unchanged, and Gemini's saved rows.
+- **What differs, and why:** kx3 is a step bot played through pg_pos, as km3 was, while Gemini chose among the listed plans from a prompt. That is the comparison's design, the same as run 3's comparison with km3.
+
+**8. Reads.** The K21 research workflow wf_25af41b0-78d ran Opus agents only:
+- program provenance;
+- timing (reading run 3's `in/positions.json` only to count forced lines);
+- precision (reading run 3's `report_primary.json` rows).
+
+No Sonnet agent was used.
