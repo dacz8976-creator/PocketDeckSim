@@ -379,13 +379,16 @@ def selftest():
     t('unknown set in sort REFUSED', lambda: _sort_key('Q1 001'), SystemExit)
     import tempfile
     body = [ln for ln in io.open(next(p for p in MAP_PATHS if os.path.exists(p)), encoding='utf-8')]
-    def mutated(lines):
-        fd, p = tempfile.mkstemp(suffix='.tsv'); os.close(fd)
-        io.open(p, 'w', encoding='utf-8').writelines(lines); return p
-    t('TRUNCATED map REFUSED (count mismatch)', lambda: Canon(mutated(body[:-5])), SystemExit)
-    first_data = next(i for i, l in enumerate(body) if not l.startswith('#'))
-    t('DUPLICATE id row REFUSED', lambda: Canon(mutated(body + [body[first_data]])), SystemExit)
-    t('SHORT row REFUSED', lambda: Canon(mutated(body[:first_data] + ['A1 001\toops\n'] + body[first_data:])), SystemExit)
+    with tempfile.TemporaryDirectory(prefix='card_canon_selftest_') as td:   # the mutated maps are removed afterwards
+        def mutated(lines):
+            fd, p = tempfile.mkstemp(suffix='.tsv', dir=td); os.close(fd)
+            with io.open(p, 'w', encoding='utf-8') as f:
+                f.writelines(lines)
+            return p
+        t('TRUNCATED map REFUSED (count mismatch)', lambda: Canon(mutated(body[:-5])), SystemExit)
+        first_data = next(i for i, l in enumerate(body) if not l.startswith('#'))
+        t('DUPLICATE id row REFUSED', lambda: Canon(mutated(body + [body[first_data]])), SystemExit)
+        t('SHORT row REFUSED', lambda: Canon(mutated(body[:first_data] + ['A1 001\toops\n'] + body[first_data:])), SystemExit)
     # 4. COVERAGE of the live pool
     pool = os.path.join(HERE, '..', 'pool9')
     if os.path.isdir(pool):

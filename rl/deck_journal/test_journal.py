@@ -5,14 +5,21 @@ Run from anywhere:  python3 rl/deck_journal/test_journal.py
 They read the real repository (deck 01, the Kingambit and Haxorus KW lists, the 12 packets) and write only to
 temporary folders.
 """
+import atexit
 import base64
 import copy
 import json
 import os
+import shutil
 import sys
 import tempfile
 import unittest
 from unittest import mock
+
+# Every temporary folder these tests make goes under one private root, removed when the run ends (WSL's /tmp is RAM).
+_TMP_ROOT = tempfile.mkdtemp(prefix="test_journal_")
+tempfile.tempdir = _TMP_ROOT
+atexit.register(shutil.rmtree, _TMP_ROOT, True)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
