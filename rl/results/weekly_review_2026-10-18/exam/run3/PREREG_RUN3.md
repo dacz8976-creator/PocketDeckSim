@@ -1113,3 +1113,42 @@ So the registered primary is run 3 alone.
 - precision (reading run 3's `report_primary.json` rows).
 
 No Sonnet agent was used.
+
+**K21a. Correction to K21 section 5: what `--allow-other-binaries` skips, and what replaces each skipped check** (coordinator-053, Astra's read via Dustin; written Oct 26 by the laptop session, before any kx3 exam row).
+- **The sentence corrected.** K21 section 5 says "Every other freeze check stays on: the judge rows' frozen settings, the model, the references and the eligibility." That is wrong. At judge-prompt-frozen-7 (712593a1), `rl/ai_judge/judge.py` lines 1000-1009, the switch skips three checks:
+  - **S1.** The plan lister executable's sha256 must equal FROZEN.json's (line 1002).
+  - **S2.** `freeze_identity.check(FROZEN.json)` (line 1007). It covers:
+    - the prompt fingerprint;
+    - the settings;
+    - the judge block (provider, model, thinking level, prices, mapping);
+    - the sha256 of the 19 frozen source files, including the card database, pgd_patch.py, dg_patch.py and pg_pos.rs, and that every source is recorded;
+    - the engine tree, which must be 70652fff;
+    - the lister and baseline executables.
+  - **S3.** Every step-bot row's pg_pos_sha256 must equal f35a1a99 (line 1000, which feeds formal.py line 363). This covers every step bot, km3 included.
+
+  The switch also marks the report `formal: false` and lists itself as an experiment switch. That label, frozen-7's "EXPERIMENT", stays on the result.
+- **What the switch leaves on:**
+  - the judge rows' `frozen` flag, and their prompt sha re-rendered under the frozen settings (require_frozen);
+  - each row's plan-list hash;
+  - the handling of the references and the eligibility;
+  - the flag for any other departure from the freeze.
+- **What replaces each skipped check** (`run3/k21/kit/freeze_checks_k21.py` and `compare_k21.py`):
+  - **S1:** the lister must exist, with sha256 bd4eeb6e, FROZEN.json's.
+  - **S2:** checked item by item with frozen-7's own functions:
+    - the judge checkout is 712593a1, with no modified tracked file;
+    - PDL_DB is unset;
+    - the fingerprint, the settings, the judge block, each of the 19 source sha256s, and the engine tree 70652fff;
+    - the lister, and the baseline f35a1a99, must both exist;
+    - then `freeze_identity.check` itself must return no difference.
+
+    The S2 checks run every night before any kx3 row (on night 1 also before the gates), and again before the compare. Any failure stops the run before any row.
+  - **S3,** per row:
+    - every kx3 row's pg_pos_sha256 equals the K21 binary's sha256, as committed in the launch line (checked against the launch commit);
+    - every km3 row in the descriptive kx3 v km3 compare equals f35a1a99.
+  - **After each compare,** the report must carry exactly the one switch (`['--allow-other-binaries']`), the frozen fingerprint, the frozen lister sha256 and the frozen judge settings. Otherwise the run stops.
+- **The only permitted difference:** kx3's rows come from the K21 binary, whose sha256 is committed before any row. Nothing else may differ.
+- **The result note** carries frozen-7's "EXPERIMENT" label and this list of replacements.
+- **Two kit details, recorded here before any row:**
+  - **Gate seeds.** Gate (a) uses seeds 1-3 plus 25,101,900,101-103 (section 2 plus section 4's gate seeds). Gate (c) uses 25,101,900,101-103.
+  - **The chance-ending stratum** is computed as run 3's was: run 3's pool_runs.py contrast (run 3 alone, 0.95, no verdict) on the primary report's rows, with kx3 in km3's place. Frozen compare refuses a batch that leaves out primary points, so `--ids` cannot restrict it.
+  - **The path test.** km3's run 3 rows, renamed kx3, give back run 3's own primary contrast and stratum to the printed digits.

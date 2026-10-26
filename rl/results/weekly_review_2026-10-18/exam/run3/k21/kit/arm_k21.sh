@@ -15,7 +15,7 @@ git -C "$REPO" fetch -q origin "$EXAM_BRANCH"
 git -C "$REPO" merge-base --is-ancestor "$KIT_COMMIT" FETCH_HEAD || { echo "$KIT_COMMIT is not on $EXAM_BRANCH"; exit 1; }
 rm -rf "$K/kit" "$K/live"
 mkdir -p "$K/kit" "$K/live"
-for f in run_k21.sh build_k21.sh gates_k21.py kx3_rows.py compare_k21.py arm_k21.sh watch_k21.sh; do
+for f in run_k21.sh build_k21.sh gates_k21.py kx3_rows.py compare_k21.py freeze_checks_k21.py arm_k21.sh watch_k21.sh; do
   git -C "$REPO" show "$KIT_COMMIT:$RUN3/k21/kit/$f" > "$K/kit/$f"
 done
 git -C "$REPO" archive "$KIT_COMMIT" "$RUN3/live-20261026T020013Z" | tar -x -C "$K/live" --strip-components=6

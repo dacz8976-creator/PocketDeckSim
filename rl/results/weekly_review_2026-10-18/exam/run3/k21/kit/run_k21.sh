@@ -41,7 +41,7 @@ log "K21 night $TODAY: kit $(cat "$K/KIT_COMMIT" 2>/dev/null || echo none); this
 case "$TODAY" in 2026-10-27|2026-10-28|2026-10-30|2026-10-31) ;; *) fail "$TODAY is not a registered night (Oct 27, 28, 30, 31 UTC; never Oct 29)";; esac
 HM=$(date -u +%H%M); { [ $((10#$HM)) -ge 200 ] && [ $((10#$HM)) -lt 1250 ]; } || fail "outside the night window (02:00-12:50Z): ${HM}Z"
 KIT_COMMIT=$(cat "$K/KIT_COMMIT")
-for f in run_k21.sh build_k21.sh gates_k21.py kx3_rows.py compare_k21.py; do
+for f in run_k21.sh build_k21.sh gates_k21.py kx3_rows.py compare_k21.py freeze_checks_k21.py; do
   [ "$(git -C "$REPO" show "$KIT_COMMIT:$RUN3/k21/kit/$f" | sha256sum | cut -c1-64)" = "$(sha256sum "$KIT/$f" | cut -c1-64)" ] || fail "$KIT/$f is not the kit commit's"
 done
 [ -z "${KX_EXTRA_LISTS:-}" ] || fail "KX_EXTRA_LISTS is set"
@@ -77,6 +77,10 @@ if [ -e "$HOME/credit_work/PAUSE" ]; then
   fi
 fi
 [ -n "$PAUSED" ] && [ -z "$SKIP_ROWS" ] && log "PAUSE gone: starting"
+# K21a: the freeze checks `--allow-other-binaries` skips (S1 the lister, S2 freeze_identity.check item by item), every night before any row
+python3 -B "$KIT/freeze_checks_k21.py" "$K/freeze_checks_$TODAY.json" > "$K/freeze_checks_$TODAY.out" 2>&1 \
+  || fail "the restored freeze checks (K21a) did not all pass: $(tail -n 1 "$K/freeze_checks_$TODAY.out")"
+log "$(tail -n 1 "$K/freeze_checks_$TODAY.out") (K21a)"
 
 # 1. night 1: build, gates, launch line
 if [ -n "$SKIP_ROWS" ]; then
@@ -97,6 +101,7 @@ elif [ ! -e "$K/launch/LAUNCH_K21.json" ]; then
   mkdir -p "$K/launch"
   cp "$HOME/k21_pgpos/build.json" "$K/launch/build.json"
   cp "$K/gates/GATES.json" "$K/launch/GATES.json"
+  cp "$K/freeze_checks_$TODAY.json" "$K/launch/freeze_checks.json"
   python3 -B - "$K" "$SHA" "$KIT_COMMIT" "$SEEDS" <<'EOF'
 import json, sys, datetime
 K, sha, kit, seeds = sys.argv[1:5]
@@ -116,20 +121,20 @@ EOF
   (
     export GIT_INDEX_FILE=$T/index
     git -C "$REPO" read-tree "$TIP"
-    for f in LAUNCH_K21.json build.json GATES.json; do
+    for f in LAUNCH_K21.json build.json GATES.json freeze_checks.json; do
       B=$(git -C "$REPO" hash-object -w "$K/launch/$f")
       git -C "$REPO" update-index --add --cacheinfo 100644,"$B","$RUN3/k21/launch/$f"
     done
     git -C "$REPO" write-tree > "$T/tree"
   ) || fail "building the launch commit"
   C=$(git -C "$REPO" -c user.name=dacz8976-creator -c user.email=dacz8976@gmail.com commit-tree "$(cat "$T/tree")" -p "$TIP" \
-      -m "Exam run 3: K21 launch line (the kx3 executable's sha256 ${SHA:0:16}, gates (a)-(d) passed on development positions), before any kx3 exam row" \
+      -m "Exam run 3: K21 launch line (the kx3 executable's sha256 ${SHA:0:16}, gates (a)-(d) passed on development positions, K21a freeze checks passed), before any kx3 exam row" \
       -m "Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>") || fail "commit-tree"
   git -C "$REPO" push -q origin "$C:refs/heads/$EXAM_BRANCH" || fail "push of the launch line $C"
   rm -rf "$T"
   echo "$C" > "$K/launch/COMMIT"
   log "launch line committed and pushed: $C (binary $SHA)"
-  note launch "K21 launch: gates (a)-(d) passed; binary ${SHA:0:16}; kx3 exam rows starting" "$(printf 'Binary sha256: %s\nLaunch commit on %s: %s\nGates:\n```\n%s\n```\nkx3 rows start now on seeds %s, seed-major, until 12:50Z. No result is in this note.' "$SHA" "$EXAM_BRANCH" "$C" "$(cat "$K/gates.out")" "$SEEDS")"
+  note launch "K21 launch: gates (a)-(d) and the K21a freeze checks passed; binary ${SHA:0:16}; kx3 exam rows starting" "$(printf 'Binary sha256: %s\nLaunch commit on %s: %s\nK21a freeze checks: %s\nGates:\n```\n%s\n```\nkx3 rows start now on seeds %s, seed-major, until 12:50Z. No result is in this note.' "$SHA" "$EXAM_BRANCH" "$C" "$(tail -n 1 "$K/freeze_checks_$TODAY.out")" "$(cat "$K/gates.out")" "$SEEDS")"
 else
   SHA=$(python3 -c "import json; print(json.load(open('$K/launch/LAUNCH_K21.json'))['binary_sha256'])")
   [ "$(sha256sum "$BIN" | cut -c1-64)" = "$SHA" ] || fail "the binary is not the launch line's ($SHA)"
@@ -157,7 +162,7 @@ case $RC in
 esac
 
 # 3. the scoring (no Gemini call)
-python3 -B "$KIT/compare_k21.py" --live "$LIVE" --rows "$K/rows" --kx3-sha "$SHA" --out "$K/out" > "$K/compare.out" 2>&1 || fail "compare_k21.py: $(tail -n 1 "$K/compare.out")"
+python3 -B "$KIT/compare_k21.py" --live "$LIVE" --rows "$K/rows" --kx3-sha "$SHA" --launch-commit "$(cat "$K/launch/COMMIT")" --out "$K/out" > "$K/compare.out" 2>&1 || fail "compare_k21.py: $(tail -n 1 "$K/compare.out")"
 echo DONE > "$K/STATUS_$TODAY"; touch "$K/DONE"
 log "K21 scored (k21_run/out/SUMMARY_K21.json); the laptop session reports to the coordinator"
 note done "K21 finished: scored, results with the laptop session" "The kx3 rows are complete for the seeds in k21_run/out/SUMMARY_K21.json and the comparison ran (no Gemini call). The laptop session sends you the result; nothing else is told the result."

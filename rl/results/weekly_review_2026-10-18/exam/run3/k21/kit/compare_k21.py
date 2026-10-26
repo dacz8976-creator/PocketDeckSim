@@ -23,6 +23,7 @@ ap.add_argument('--live', required=True)
 ap.add_argument('--rows')
 ap.add_argument('--kx3-sha', required=True)
 ap.add_argument('--out', required=True)
+ap.add_argument('--launch-commit')
 ap.add_argument('--test-km3-as-kx3', action='store_true')
 a = ap.parse_args()
 os.makedirs(a.out, exist_ok=True)
@@ -38,18 +39,28 @@ def stop(msg):
     sys.exit('STOP: ' + msg)
 
 
-# 1. frozen-7's checks
+# 1. frozen-7's checks that --allow-other-binaries skips (K21a): S1 and S2 item by item (freeze_checks_k21.py), S3 per row below
 if subprocess.run(['git', '-C', J, 'rev-parse', 'HEAD'], capture_output=True, text=True).stdout.strip() != TAG_COMMIT:
     stop(f'{J} is not the frozen-7 tag')
-fi = subprocess.run([sys.executable, '-B', 'freeze_identity.py', '--check'], cwd=J, capture_output=True, text=True)
-open(os.path.join(OUT, 'freeze_check.txt'), 'w').write(fi.stdout + fi.stderr)
-if fi.returncode:
-    stop('freeze_identity.py --check failed')
+fc = subprocess.run([sys.executable, '-B', os.path.join(os.path.dirname(os.path.abspath(__file__)), 'freeze_checks_k21.py'), os.path.join(OUT, 'freeze_checks.json')],
+                    capture_output=True, text=True)
+open(os.path.join(OUT, 'freeze_checks.txt'), 'w').write(fc.stdout + fc.stderr)
+if fc.returncode:
+    stop('the restored freeze checks did not all pass: ' + (fc.stdout + fc.stderr).strip()[-400:])
 sys.path.insert(0, J)
 import judge  # noqa: E402
 ident = judge.frozen_identity()
 if judge.file_sha256(judge.PLANS_BIN) != ident['plans_binary_sha256']:
     stop('the plans binary is not FROZEN.json\'s')
+BASELINE_SHA = ident['baseline']['binary_sha256']
+if a.launch_commit:  # the K21 binary's sha256 must be the one committed in the launch line before any row
+    lj = subprocess.run(['git', '-C', '/home/dacz8976/exam_034_w', 'show', f'{a.launch_commit}:rl/results/weekly_review_2026-10-18/exam/run3/k21/launch/LAUNCH_K21.json'],
+                        capture_output=True, text=True)
+    if lj.returncode or json.loads(lj.stdout).get('binary_sha256') != a.kx3_sha:
+        stop(f'--kx3-sha is not the binary sha256 committed in the launch line {a.launch_commit}')
+elif not a.test_km3_as_kx3:
+    stop('a real scoring needs --launch-commit (the committed launch line)')
+summary['freeze_checks'] = {'restored': json.load(open(os.path.join(OUT, 'freeze_checks.json')))['skipped_by_the_switch'], 'result': fc.stdout.strip()}
 rep3 = json.load(open(os.path.join(LIVE, 'report_primary.json')))
 inp = rep3['run']['inputs']
 db = judge.card_database_path()
@@ -111,7 +122,10 @@ KM3S = os.path.join(OUT, 'km3_same_seeds.jsonl')
 with open(KM3S, 'w') as f:
     for r in km3_rows:
         if r['seed'] in complete:
+            if r.get('bot') != 'km3' or r.get('pg_pos_sha256') != BASELINE_SHA:  # S3 restored for km3: the frozen baseline played every km3 row
+                stop(f'a km3 row ({r.get("position")}, seed {r.get("seed")}) was not played by the frozen baseline {BASELINE_SHA[:16]}')
             f.write(json.dumps(r) + '\n')
+summary['row_binaries'] = {'kx3': a.kx3_sha, 'km3': BASELINE_SHA, 'judge': 'not a step bot (its rows are checked by require_frozen, which stays on)'}
 SEEDARG = ','.join(str(s) for s in complete)
 
 
@@ -123,6 +137,14 @@ def compare(name, bots, contrasts, results, id_list):
     r = subprocess.run(cmd, cwd=J, capture_output=True, text=True)
     open(out + '.stdout', 'w').write(r.stdout + r.stderr)
     rep = json.load(open(out)) if os.path.exists(out) else {}
+    run = rep.get('run') or {}
+    fz = run.get('freeze') or {}
+    if rep and (rep.get('formal') is not False or run.get('experiment_switches') != ['--allow-other-binaries']
+                or (run.get('executables') or {}).get('plans_binary_sha256') != ident['plans_binary_sha256']
+                or fz.get('fingerprint_now') != ident['fingerprint'] or fz.get('fingerprint_frozen') != ident['fingerprint'] or fz.get('tag') != 'judge-prompt-frozen-7'
+                or fz.get('judge_settings') != dict(judge.judge_expectation(ident)[1])):
+        stop(f'{name}: the report is not an --allow-other-binaries report on the frozen settings alone '
+             f'(formal {rep.get("formal")}, switches {run.get("experiment_switches")}, fingerprint {str(fz.get("fingerprint_now"))[:12]})')
     pre = (rep.get('analysis') or {}).get('prefix') or {}
     return {'exit': r.returncode, 'status': rep.get('status'), 'formal_flag': rep.get('formal'), 'experiment_switches': (rep.get('run') or {}).get('experiment_switches'),
             'n_problems': len(rep.get('problems') or []), 'rates': pre.get('rates'), 'contrasts': pre.get('contrasts'),
@@ -168,6 +190,10 @@ if a.test_km3_as_kx3:  # the path test's own check: run 3's numbers back, to the
     sg = summary['chance_stratum']['contrast']
     summary['path_test'] = {'primary_equal': all(got.get(k) == want.get(k) for k in keys), 'primary_got': {k: got.get(k) for k in keys}, 'primary_want': {k: want.get(k) for k in keys},
                             'stratum_equal': all(sg.get(k) == sw.get(k) for k in keys[:6]), 'stratum_got': {k: sg.get(k) for k in keys[:6]}, 'stratum_want': {k: sw.get(k) for k in keys[:6]}}
+summary['label'] = ("EXPERIMENT: frozen-7's own label for a compare run with --allow-other-binaries (report formal: false). K21 makes it the registered kx3 "
+                    "result. What replaced each check the switch skips (K21a): S1 the lister sha256 and S2 freeze_identity.check, item by item, in "
+                    "freeze_checks.json (all passed, before the rows and again before the compare); S3 per row: kx3 rows = the launch line's K21 binary, "
+                    "km3 rows = f35a1a99; each report checked to carry exactly that one switch, the frozen fingerprint, lister and judge settings.")
 summary['status'] = 'DONE'
 json.dump(summary, open(os.path.join(OUT, 'SUMMARY_K21.json'), 'w'), indent=1)
 c = (prim['contrasts'] or [{}])[0]
