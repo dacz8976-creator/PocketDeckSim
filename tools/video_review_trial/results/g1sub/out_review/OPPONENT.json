@@ -1,0 +1,35 @@
+{
+  "recording": "g1sub",
+  "went_first": "opponent",
+  "global_turns": 12,
+  "final_score": {"dustin": 3, "opponent": 2},
+  "end": "points",
+  "opponent_energy_zone": ["Fighting"],
+  "opponent_energy_attached": [
+    {"turn": 3, "type": "Fighting", "to": "Mega Lopunny ex (Active)"},
+    {"turn": 5, "type": "Fighting", "to": "Mega Lopunny ex (Active)"},
+    {"turn": 7, "type": "Fighting", "to": "Hitmonchan ex (Active, after retreat of Mega Lopunny ex)"},
+    {"turn": 9, "type": "Fighting", "to": "Hitmonchan ex (Active)"},
+    {"turn": 11, "type": "Fighting", "to": "Mega Lopunny ex (Bench)"}
+  ],
+  "opponent_pokemon": [
+    {"name": "Buneary (full-art version, 60 HP)", "set_number": null, "first_seen_turn": 1, "attacked": false, "attacks_used": [], "abilities_used": [], "points_taken": 0},
+    {"name": "Buneary (regular-art version, 60 HP)", "set_number": null, "first_seen_turn": 1, "attacked": false, "attacks_used": [], "abilities_used": [], "points_taken": 0},
+    {"name": "Mega Lopunny ex", "set_number": null, "first_seen_turn": 3, "attacked": true, "attacks_used": ["Rapid Smashers (turn 5: 1 heads, 1 tails, 90 damage, Dustin's Active Confused)"], "abilities_used": [], "points_taken": 0},
+    {"name": "Hitmonchan ex", "set_number": null, "first_seen_turn": 7, "attacked": true, "attacks_used": ["Quick Straight (turn 7: 50)", "Quick Straight (turn 9: 50)", "Quick Straight (turn 11: 50)"], "abilities_used": [], "points_taken": 2}
+  ],
+  "opponent_trainers": [
+    {"turn": 1, "name": "Serena"},
+    {"turn": 5, "name": "Copycat"},
+    {"turn": 7, "name": "X Speed (name read upside-down in the discard; banner 'Retreat Cost is 1 less')"},
+    {"turn": 9, "name": "Professor's Research"},
+    {"turn": 9, "name": "Arena of Antiquity"}
+  ],
+  "opponent_effects": {
+    "special_conditions": ["Confused (inflicted on Dustin's Active Mega Sharpedo ex by Rapid Smashers, turn 5; cured when Dustin retreated it on turn 6)"],
+    "healed": false,
+    "bench_damage": false
+  },
+  "opponent_card_of_the_game": "Hitmonchan ex",
+  "notes": "Opponent went first (no Energy attached on turn 1). Opening: Active Buneary (full-art), Bench Buneary (regular art). Dustin Knocked Out the Active Buneary on turn 2 (1 point); the Benched Buneary was promoted and evolved into Mega Lopunny ex on turn 3. Mega Lopunny ex attacked only once (turn 5), then retreated on turn 7 using X Speed so Hitmonchan ex (benched that turn) could attack. Hitmonchan ex Knocked Out Carvanha (turn 7) and Feebas (turn 9) for 1 point each; Mega Lopunny ex was never used for points and was still on the Bench with 90/190 HP and 3 Fighting Energy at the end. The opponent had no more than 2 Pokemon in play at any time after turn 3. Arena of Antiquity (turn 9) added no damage because Dustin's Active Pokemon on that turn was not an ex; it was replaced by Dustin's Soothing Shore on turn 10. 'opponent_effects' is filled as: effects caused by the opponent's cards on Dustin (special conditions, healing by the opponent's cards, damage to Dustin's Bench). Healing seen in the game was Dustin's own Soothing Shore, not the opponent's. 'points_taken' in opponent_pokemon is filled as points the opponent scored with that Pokemon's attacks: Hitmonchan ex 2 (Carvanha 1, Feebas 1), the others 0. The other reading (points Dustin took when that Pokemon was Knocked Out) gives: Buneary full-art 1 (turn 2), Hitmonchan ex 2 (turn 12), Mega Lopunny ex 0, Buneary regular art 0 (it evolved into Mega Lopunny ex). Set numbers were not readable. Opponent's hand and deck were never shown."
+}

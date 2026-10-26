@@ -1,0 +1,11 @@
+# Uncertainties
+- Pieces PART_02, 03, 05, 06, 07, 09 and everything after PART_10 are missing. The gaps are 53-162 s, 215-378 s and 431-486 s. I opened 7 frames (t_0100, 0162, 0300, 0378, 0388, 0460, 0498). That is not enough to rebuild those turns.
+- I don't know which Pokémon Dustin used for the KOs of Magikarp and Feebas or when. Magikarp was KO'd between 100 and 162 s.
+- Where Dustin's 120 total damage came from. Only 70 on Luxray is visible.
+- Energy attachments are unchecked for most turns. At 378 s both Mega Sharpedo ex have 2 Energy and by 388 s both have 3. The source is unclear.
+- The "Weakness" lightning label at 388 s, in Dustin's turn, is unexplained.
+- Why Soothing Shore appears as newly played at 486 s when it was already in play at 300 s.
+- Dustin's Energy counts at 498 s. The menu covered the Active card, so the piece's "3 Water" is not verified.
+- Volt Bolt on turn 15 and whether it did damage. Dustin conceded before the result.
+- The opponent's Trainer at 495 s is unreadable.
+- Pokémon set numbers are not read.

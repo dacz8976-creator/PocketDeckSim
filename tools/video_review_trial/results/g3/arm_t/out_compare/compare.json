@@ -1,0 +1,38 @@
+{"disagreements": [
+  {"turn": "5 (opponent)", "item": "Opponent's Energy attachment",
+   "C": "About 0196-0199 a Lightning Energy was attached to the benched Oricorio (icon on Oricorio at t_0200).",
+   "X": "The generated Lightning stayed in the Energy Zone, unspent. Furfrou still had its earlier Lightning.",
+   "frames_show": "t_0194: the Energy Zone Lightning is full and Oricorio has no Energy. t_0200: the zone icon has faded and a Lightning icon is on the benched Oricorio. Oricorio is still at 1 Lightning at t_0283, before the turn 7 attachment. X's own turn 7 wording ('Oricorio receives its second Lightning') only makes sense if this turn 5 attachment happened.",
+   "frames": ["frames/full/t_0194.jpg", "frames/full/t_0200.jpg", "frames/full/t_0283.jpg"],
+   "verdict": "C right"},
+  {"turn": "7 (opponent)", "item": "When the turn 7 Lightning was attached (before or after Furfrou retreated)",
+   "C": "About 0280 a Lightning Energy was attached (zone icon lit 0280-0282). This comes before the Soothing Ribbon heal (0282) and Furfrou's retreat (about 0289).",
+   "X": "Furfrou retreats to Oricorio (288-290). Then Oricorio receives its second Lightning (291-293).",
+   "frames_show": "t_0280 and t_0283: the zone Lightning is still full (not yet used); Oricorio on the Bench has 1 Lightning and Furfrou has 1. t_0291: Oricorio is now Active and the zone Lightning is being dragged onto it. t_0293: the zone is empty and Oricorio has 2 Lightning. The attachment came after the retreat, at about 291-293.",
+   "frames": ["frames/full/t_0280.jpg", "frames/full/t_0283.jpg", "frames/full/t_0291.jpg", "frames/full/t_0293.jpg"],
+   "verdict": "X right"},
+  {"turn": "9 (opponent)", "item": "Timing of Oricorio's Zzzap",
+   "C": "0365-0366 Zzzap: 220 -> 150.",
+   "X": "Zzzap at 369-371.",
+   "frames_show": "t_0366: Shinx already has its Lightning, but Dustin's Active is still 220 and no attack is shown. t_0370: the 'Weakness 70' hit lands on the Active. The attack came about 4 s later than C says. The damage itself (70, 220 -> 150) is the same in both reviews.",
+   "frames": ["frames/full/t_0366.jpg", "frames/full/t_0370.jpg"],
+   "verdict": "X right"},
+  {"turn": "15 (opponent)", "item": "Energy Zone Lightning on turn 15",
+   "C": "OPPONENT_FINAL.json lists a turn 15 Lightning attachment to Luxray, with the note '2 Lightning via Volkner'. REVIEW_FINAL: Luxray has 2 Lightning at t_0498.",
+   "X": "The opponent kept the generated Lightning available. Volkner attaches 2 Lightning from the discard pile to Luxray.",
+   "frames_show": "t_0494 and t_0498: the Energy Zone Lightning is still full and unused. At t_0498 Luxray has exactly 2 Lightning, and Volkner is in the discard pile. No Energy Zone attachment was made. Both Lightning came from Volkner.",
+   "frames": ["frames/full/t_0494.jpg", "frames/full/t_0498.jpg"],
+   "verdict": "X right"}
+ ],
+ "only_C": [
+  "Opponent's Energy Zone is Lightning (yellow bolt icon in the zone, e.g. t_0194, t_0498). X never states the opponent's zone type.",
+  "The opponent's +20 HP Tool is named Giant Cape. X only says '+20 HP cape'. A Tool icon is on Oricorio at t_0366 and Oricorio shows 90 HP.",
+  "Turn 15: Luxray has exactly 2 Lightning after Volkner, and Volkner is in the opponent's discard pile (t_0498)."
+ ],
+ "only_X": [
+  "Turn 8/10: the Turbo Shark preview against Oricorio shows 0 damage because of Safeguard (t_0383 shows 'Turbo Shark 0').",
+  "Turn 10: a 'Waiting for opponent to return' overlay appears without interrupting the game (t_0383; also t_0370 in turn 9).",
+  "The first Carvanha (evolved on turn 6) is the Sharp Fang version (t_0194). The second is Aqua Jet (t_0283). C names only Aqua Jet.",
+  "Eevee's attack is Find a Friend (Eevee card at t_0099)."
+ ],
+ "counts": {"C_right": 1, "X_right": 3, "both_wrong": 0, "unsettled": 0, "only_C": 3, "only_X": 4}}

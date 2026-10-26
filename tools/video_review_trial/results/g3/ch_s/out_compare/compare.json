@@ -1,0 +1,30 @@
+{"disagreements": [
+  {"turn": "3 (opponent)", "item": "Timing of the Lightning attachment to Furfrou",
+   "C": "~0129 Lightning (Energy Zone) -> Furfrou",
+   "X": "Lightning attached to Furfrou at 123-125",
+   "frames_show": "At 0125 and 0128 Furfrou has no Energy and the Lightning is still in the opponent's Energy Zone. At 0130 Furfrou shows 1 Lightning and the Zone is empty, so the attachment happened between 0128 and 0130.",
+   "frames": ["frames/full/t_0125.jpg", "frames/full/t_0128.jpg", "frames/full/t_0130.jpg"],
+   "verdict": "C right"},
+  {"turn": "5 (opponent)", "item": "Opponent Energy attachment",
+   "C": "~0194 Energy Zone Lightning -> Oricorio on the Bench (Oricorio has 1 Lightning)",
+   "X": "Lightning generated remains unspent; no attachment in turn 5",
+   "frames_show": "At 0193 the Lightning is still in the opponent's Zone and Oricorio has no Energy. At 0197 the Zone is empty and Oricorio shows 1 Lightning. It still has it at 0216 and 0257. This matches X's own turn 7 note that Oricorio got its 'second' Lightning.",
+   "frames": ["frames/full/t_0193.jpg", "frames/full/t_0197.jpg", "frames/full/t_0216.jpg"],
+   "verdict": "C right"},
+  {"turn": "13 (opponent)", "item": "Timing and target of the Lightning attachment that gave Luxray 3",
+   "C": "Lightning generated ~0452 but not attached. Rare Candy makes Luxray with 2 Lightning. Oricorio retreats. ~0463 Lightning -> Luxray as the Active (3).",
+   "X": "Lightning attached to Shinx (now 3) at 451-453, before Rare Candy. Then Rare Candy -> Luxray, then Oricorio retreats.",
+   "frames_show": "At 0453 and 0455 Shinx still has 2 Lightning and the Lightning is still in the Zone. At 0457 Luxray (130) is on the Bench and the Zone is still full. At 0459 the benched Luxray has 3 Lightning, the Zone is empty and Oricorio is still Active with 2. The Energy went to the benched Luxray right after Rare Candy and before the retreat, so neither Shinx nor the Active Luxray received it.",
+   "frames": ["frames/full/t_0453.jpg", "frames/full/t_0455.jpg", "frames/full/t_0457.jpg", "frames/full/t_0459.jpg", "frames/full/t_0466.jpg"],
+   "verdict": "both wrong"}
+ ],
+ "only_C": [
+  "T7: Copycat is on top of the opponent's discard pile from 0310 (it confirms the opponent's Copycat).",
+  "T9: the Energy Zone Lightning was generated ~0352 and was still unattached until ~0361.",
+  "T15: the opponent's Energy Zone Lightning was still unattached at concede (0498); Volkner moved Luxray from 0 to 2 Lightning."
+ ],
+ "only_X": [
+  "T4/T6: the two Carvanha are different versions: Sharp Fang (benched T4, became the first Sharpedo; t_0197) and Aqua Jet (benched T6; t_0257).",
+  "T14: Dustin briefly opened End Turn and got the 'Energy can be attached' warning, cancelled, then attacked (t_0479)."
+ ],
+ "counts": {"C_right": 2, "X_right": 0, "both_wrong": 1, "unsettled": 0, "only_C": 3, "only_X": 2}}

@@ -1,0 +1,22 @@
+{"recording": "Dustin (Dacz8976) vs Zavs65, ranked", "went_first": "opponent", "global_turns": 15, "final_score": {"dustin": 0, "opponent": 2},
+ "end": "concede_dustin",
+ "opponent_energy_zone": ["Lightning"],
+ "opponent_energy_attached": [
+  {"turn": 3, "type": "Lightning", "to": "Furfrou (Active)"},
+  {"turn": 5, "type": "Lightning", "to": "Oricorio (Bench)"},
+  {"turn": 7, "type": "Lightning", "to": "Oricorio (Active)"},
+  {"turn": 9, "type": "Lightning", "to": "Shinx (Bench)"},
+  {"turn": 11, "type": "Lightning", "to": "Shinx (Bench)"},
+  {"turn": 13, "type": "Lightning", "to": "Luxray (Active)"},
+  {"turn": 15, "type": "Lightning x2 (from discard via Volkner)", "to": "Luxray (Active)"}],
+ "opponent_pokemon": [
+  {"name": "Furfrou", "set_number": null, "first_seen_turn": 1, "attacked": true, "attacks_used": ["Double Headbutt"], "abilities_used": ["Fur Coat (passive)"], "points_taken": 2},
+  {"name": "Oricorio", "set_number": null, "first_seen_turn": 1, "attacked": true, "attacks_used": ["Zzzap"], "abilities_used": [], "points_taken": 0},
+  {"name": "Eevee", "set_number": null, "first_seen_turn": 1, "attacked": false, "attacks_used": [], "abilities_used": [], "points_taken": 0},
+  {"name": "Sylveon ex", "set_number": null, "first_seen_turn": 7, "attacked": false, "attacks_used": [], "abilities_used": ["Soothing Ribbon"], "points_taken": 0},
+  {"name": "Shinx", "set_number": null, "first_seen_turn": 7, "attacked": false, "attacks_used": [], "abilities_used": [], "points_taken": 0},
+  {"name": "Luxray", "set_number": null, "first_seen_turn": 13, "attacked": true, "attacks_used": ["Volt Bolt"], "abilities_used": [], "points_taken": 0}],
+ "opponent_trainers": [{"turn": 1, "name": "Poké Ball"}, {"turn": 1, "name": "Poké Ball"}, {"turn": 1, "name": "Protective Poncho"}, {"turn": 7, "name": "Pokémon Tool on Oricorio (+20 HP, name unread)"}, {"turn": 13, "name": "Rare Candy"}, {"turn": 15, "name": "Volkner"}],
+ "opponent_effects": {"special_conditions": [], "healed": true, "bench_damage": false},
+ "opponent_card_of_the_game": "Oricorio (Zzzap 70 with Weakness three times; Safeguard walled Mega Sharpedo ex)",
+ "notes": "Retreats: Furfrou (turn 7), Oricorio (turn 13). Soothing Ribbon healed Furfrou 30 (turn 7) and 20 (turn 9). Zzzap hit for 70 in turns 7, 9 and 11. Volt Bolt hit for 140 in turn 13. The turn-7 Tool name and a face-down card at t≈302-303 were not read."}

@@ -1,0 +1,37 @@
+{"disagreements": [
+  {"turn": "Global 1 (opponent)", "item": "Name of the Supporter played at ~0074 s",
+   "C": "Team Rocket's Master Plan",
+   "X": "Team Rocket Grunt (REVIEW.md and FINDINGS.json, never amended)",
+   "frames_show": "The enlarged card is titled 'Team Rocket's Master Plan'. Text: opponent's Active is now Confused; flip a coin, if tails your Active is also Confused.",
+   "frames": ["frames/full/t_0074.jpg"], "verdict": "C right"},
+  {"turn": "Global 3 (opponent)", "item": "When the first Metal Energy was attached to Mega Mawile ex",
+   "C": "At the end of the turn, after Starting Plains: no icon at t_0157, 1 Metal at t_0158",
+   "X": "First action of the turn, before Steel Apron ('draws and attaches Metal')",
+   "frames_show": "No Energy icon on Mawile at t_0124 (100 HP), t_0136 (120 HP, Apron already on) or t_0157 (160 HP, Plains in play). 1 Metal icon first appears at t_0158.",
+   "frames": ["frames/full/t_0124.jpg", "frames/full/t_0136.jpg", "frames/full/t_0157.jpg", "frames/full/t_0158.jpg"], "verdict": "C right"},
+  {"turn": "Global 5 (opponent)", "item": "When the second Metal Energy was attached",
+   "C": "After Pokémon Center Lady healed (80->110): 1 icon at t_0198, 2 by t_0200",
+   "X": "At 191-192 s, before Pokémon Center Lady",
+   "frames_show": "t_0192: Mawile 80 HP, 1 Metal. t_0198: Pokémon Center Lady in the discard, Mawile 110, still 1 Metal. t_0200: 2 Metal.",
+   "frames": ["frames/full/t_0192.jpg", "frames/full/t_0198.jpg", "frames/full/t_0200.jpg"], "verdict": "C right"},
+  {"turn": "Result screen", "item": "Whether a turn count or damage total is shown",
+   "C": "No turn count or damage total is shown",
+   "X": "Result at 249 s shows 'went second, turns played 6, owner 3, opponent 0, damage done 260'",
+   "frames_show": "0242-0251 s show: the Victory splash (Mega Gyarados ex), loading screens, Card of the Game for both players, and the Master Ball rank panel. No statistics panel with turns or damage appears. t_0249 shows the opponent's Card of the Game (Mega Mawile ex).",
+   "frames": ["frames/full/t_0242.jpg", "frames/full/t_0248.jpg", "frames/full/t_0249.jpg", "frames/half/t_0247.5.jpg", "frames/half/t_0248.5.jpg", "frames/half/t_0249.5.jpg", "frames/full/t_0250.jpg"], "verdict": "C right"},
+  {"turn": "Result screen", "item": "Final Master Ball rank points",
+   "C": "Master Ball Rank 924 pts, 'pts gained 1'",
+   "X": "924 at first, then 925 after +1",
+   "frames_show": "The rank panel shows 924 pts with 'pts gained 1' (t_0250, t_0250.5), then counts up to 925 pts (t_0251.0).",
+   "frames": ["frames/full/t_0250.jpg", "frames/half/t_0250.5.jpg", "frames/half/t_0251.0.jpg"], "verdict": "X right"}
+ ],
+ "only_C": [
+  "Opponent's Energy Zone is Metal: grey Metal Zone icon at top left (t_0124, t_0192)",
+  "Card of the Game: Mega Gyarados ex for Dustin (t_0248) and Mega Mawile ex for the opponent (t_0249)",
+  "Starting Plains went to the opponent's discard when Soothing Shore replaced it (seen in the opponent's discard pile at t_0192)"
+ ],
+ "only_X": [
+  "Two different Carvanha cards: the starter has Sharp Fang 30 (t_0075); the Carvanha benched on turn 4 has Aqua Jet 10 with 10 Bench damage (t_0192)",
+  "Pokémon Center Lady is visible in the opponent's discard after it was played (t_0198, t_0200)"
+ ],
+ "counts": {"C_right": 4, "X_right": 1, "both_wrong": 0, "unsettled": 0, "only_C": 3, "only_X": 2}}

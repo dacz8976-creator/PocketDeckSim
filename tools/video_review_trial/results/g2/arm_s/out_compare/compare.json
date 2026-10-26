@@ -1,0 +1,23 @@
+{"disagreements": [
+ {"turn": "Global 1", "item": "Opponent's Supporter name", "C": "Team Rocket's Master Plan", "X": "Team Rocket Grunt", "frames_show": "Card art and title read 'Team Rocket's Master Plan' (Supporter): 'Your opponent's Active Pokemon is now Confused. Flip a coin. If tails, your Active Pokemon is now also Confused.'", "frames": ["frames/full/t_0074.jpg"], "verdict": "C right"},
+ {"turn": "Global 3", "item": "When the 1st Metal Energy is attached (order within turn)", "C": "Last action, after Starting Plains, t~157.5-158", "X": "First action, 'draws and attaches Metal' before Steel Apron (129)", "frames_show": "t=127 and t=150: no Energy icon on Mega Mawile ex; at t=150 the generated Metal is still waiting in the opponent's Energy Zone (top-left). t=157.5: attach sparkle after Starting Plains (160 HP). t=158: Metal icon on Mawile.", "frames": ["frames/full/t_0127.jpg", "frames/full/t_0150.jpg", "frames/half/t_0157.5.jpg", "frames/full/t_0158.jpg"], "verdict": "C right"},
+ {"turn": "Global 5", "item": "When the 2nd Metal Energy is attached (order within turn)", "C": "After Pokemon Center Lady, t~199.5-200.0", "X": "Before Pokemon Center Lady, t~191-192", "frames_show": "t=193: Mawile 80 HP with 1 Metal, the new Metal still in the Zone. t=199.0: 110 HP (Lady already resolved), still 1 Metal. t=200.0: 2 Metal icons.", "frames": ["frames/full/t_0193.jpg", "frames/half/t_0199.0.jpg", "frames/half/t_0200.0.jpg"], "verdict": "C right"},
+ {"turn": "Result", "item": "Statistics on the result screen", "C": "No other statistics are shown (only Victory, Card of the Game, fading rank panel)", "X": "Results at 249 show went second, turns played 6, 3-0, damage done 260", "frames_show": "t=242 Victory/Gyarados card; 243-247 loading; 248-248.5 Card of the Game Mega Gyarados ex; 249-249.5 Card of the Game Mega Mawile ex ('Your opponent's cards'); 250-251 Master Ball rank panel. No turns/damage statistics panel appears in any frame. (The values X gives agree with the game itself: 6 turns, 70+60+130=260.)", "frames": ["frames/full/t_0242.jpg", "frames/full/t_0248.jpg", "frames/full/t_0249.jpg", "frames/half/t_0249.5.jpg", "frames/full/t_0250.jpg", "frames/half/t_0251.0.jpg"], "verdict": "C right"},
+ {"turn": "Result", "item": "Rank points", "C": "Rank panel fading in, 924 pts shown faded (no final value given)", "X": "Master Ball 925, +1 from 924", "frames_show": "t=250 faded 924 pts, pts gained 1; t=250.5 924 pts; t=251.0 925 pts, pts gained 1.", "frames": ["frames/full/t_0250.jpg", "frames/half/t_0250.5.jpg", "frames/half/t_0251.0.jpg"], "verdict": "X right"},
+ {"turn": "Score", "item": "Points taken by the opponent's Mega Mawile ex", "C": "OPPONENT_FINAL.json: Mega Mawile ex points_taken = 3", "X": "Opponent earns 0 points", "frames_show": "The opponent's point markers stay empty all game; the +3 goes to Dustin for Knocking Out Mawile. Final score 3-0. (C's own REVIEW_FINAL.md gives 3-0, so this looks like a field misuse in the JSON.)", "frames": ["frames/full/t_0193.jpg", "frames/full/t_0238.jpg"], "verdict": "X right"},
+ {"turn": "Header", "item": "Deck list from the QR code", "C": "QR content is not readable; exact decklist unknown", "X": "QR decoded to a 20-card Water deck (Poke Ball, Elegant Cape x2, Irida, Copycat x2, Lisia, Cabbie, Wallace x2, Soothing Shore x2, Feebas, Milotic ex, Carvanha x2 (two printings), Mega Sharpedo ex x2, Magikarp, Mega Gyarados ex)", "frames_show": "t=0 shows a clean, complete QR code. It cannot be decoded by eye here. Every owner card seen in play appears in X's list.", "frames": ["frames/full/t_0000.jpg"], "verdict": "unsettled"}
+],
+ "only_C": [
+  "Opponent is Lv. 60 on the matchmaking card (frames/full/t_0010.jpg)",
+  "Card of the Game: Mega Gyarados ex for Dustin, Mega Mawile ex for the opponent (frames/full/t_0248.jpg, frames/full/t_0249.jpg)",
+  "Mega Mawile ex is Metal type (type icon on the card, frames/full/t_0249.jpg)",
+  "Both players start with a 5-card hand and Dustin's deck shows 15 at setup (frames/full/t_0030.jpg)",
+  "Lisia stays in hand all game and a second Mega Sharpedo ex stays in hand from turn 2 to the end (frames/full/t_0127.jpg, frames/full/t_0193.jpg)",
+  "Opponent's Energy Zone is Metal (Zone icon, frames/full/t_0150.jpg)"
+ ],
+ "only_X": [
+  "The two Carvanha are different cards: the starter has Sharp Fang 30 and the turn-4 Carvanha has Aqua Jet 10 with 10 Bench damage (frames/full/t_0030.jpg, frames/full/t_0193.jpg)",
+  "Magikarp's attack is Expert Splasher (frames/full/t_0127.jpg)",
+  "Heat-Up Crunch costs Metal + Colorless, so 1 Metal could not pay for it on turn 3 (card cost, frames/full/t_0249.jpg)"
+ ],
+ "counts": {"C_right": 4, "X_right": 2, "both_wrong": 0, "unsettled": 1, "only_C": 6, "only_X": 3}}

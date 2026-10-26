@@ -1,0 +1,12 @@
+# Uncertainties
+- The transcript was incomplete (it stopped at 0357 s). Turns 9–15 and the result screen came from contact sheets plus 3 full frames (t_0383, t_0438, t_0345). Those details are lower confidence.
+- Dustin's Energy attachments after T2 are not confirmed. Energy glows are seen in T4 and T6, but the targets and counts are unreadable. The "Next Energy generated" banners only show the Energy Zone.
+- Turns 8, 10 and 12: I read the Active/Bench swaps as retreats, from the "retreat" button and the "Please choose a Pokémon to switch in" prompt (t_0438). The retreat Energy cost is not visible.
+- Lisia and Wallace on T8: the cards are still in hand at 0345, so whether either was played is unclear. The transcript said "played".
+- T6 Wallace and the second Elegant Cape: the targets are unclear.
+- Transcript "Turbo Shark 0" (0338) is the attack panel's Energy cost, not damage. The "Turbo Shark 50" at 0264 is not a printed value (the card says 70).
+- Opponent's Tool on Oricorio (+20 HP): the name is unconfirmed. The transcript said Elegant Cape (+30 for Stage 1), which does not fit a Basic. The Protective Poncho's target is unknown.
+- Furfrou's healing (20 → 50 → 70) and Furfrou going to the Bench: the source is unclear (possibly Sylveon's Soothing Ribbon).
+- Opponent Energy attachments on T3, T9 and T13 are not readable. Luxray's Energy count is unknown.
+- Opponent's turn 15: nothing readable before the concession. Dustin's concession is visible (menu at 0498–0499).
+- Dustin's Energy Zone type is Water (icon). The type name is never printed.

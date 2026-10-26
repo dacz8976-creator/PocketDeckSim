@@ -1,0 +1,15 @@
+{"recording": "Dustin (Dacz8976) vs Zavs65, ranked, New deck 17", "went_first": "opponent", "global_turns": 15, "final_score": {"dustin": 0, "opponent": 2},
+ "end": "concede_dustin",
+ "opponent_energy_zone": ["Lightning"],
+ "opponent_energy_attached": [{"turn": 3, "type": "Lightning", "to": "Furfrou"}, {"turn": 5, "type": "Lightning", "to": "Oricorio"}, {"turn": 7, "type": "Lightning", "to": "Oricorio"}, {"turn": 9, "type": "Lightning", "to": "Shinx"}, {"turn": 11, "type": "Lightning", "to": "Shinx"}, {"turn": 13, "type": "Lightning", "to": "Shinx/Luxray"}, {"turn": 15, "type": "Lightning", "to": "unknown"}],
+ "opponent_pokemon": [
+  {"name": "Furfrou", "set_number": null, "first_seen_turn": 1, "attacked": true, "attacks_used": ["Double Headbutt"], "abilities_used": ["Fur Coat (passive)"], "points_taken": 2},
+  {"name": "Oricorio", "set_number": null, "first_seen_turn": 1, "attacked": true, "attacks_used": ["Zzzap"], "abilities_used": ["Safeguard (passive)"], "points_taken": 0},
+  {"name": "Eevee", "set_number": null, "first_seen_turn": 1, "attacked": false, "attacks_used": [], "abilities_used": [], "points_taken": 0},
+  {"name": "Sylveon", "set_number": null, "first_seen_turn": 7, "attacked": false, "attacks_used": [], "abilities_used": ["Soothing Ribbon"], "points_taken": 0},
+  {"name": "Shinx", "set_number": null, "first_seen_turn": 7, "attacked": false, "attacks_used": [], "abilities_used": [], "points_taken": 0},
+  {"name": "Luxray", "set_number": null, "first_seen_turn": 13, "attacked": true, "attacks_used": ["Volt Bolt"], "abilities_used": [], "points_taken": 0}],
+ "opponent_trainers": [{"turn": 1, "name": "Poké Ball"}, {"turn": 1, "name": "Professor's Research"}, {"turn": 7, "name": "Giant Cape"}, {"turn": 7, "name": "Copycat"}, {"turn": 13, "name": "Rare Candy"}, {"turn": 15, "name": "unidentified card (face-down at 495 s)"}],
+ "opponent_effects": {"special_conditions": [], "healed": true, "heals": [{"turn": 7, "target": "Furfrou", "amount": 30, "source": "likely Sylveon Soothing Ribbon (no banner read)"}, {"turn": 9, "target": "Furfrou", "amount": 20, "source": "Sylveon Soothing Ribbon"}], "bench_damage": false},
+ "opponent_card_of_the_game": "Oricorio",
+ "notes": "Checked against the frames. Eevee evolved into Sylveon on turn 7. Shinx went to Luxray by Rare Candy on turn 13. Furfrou retreated on turn 7 and Oricorio on turn 13. Zzzap was used on turns 7, 9 and 11 (70 each with Weakness). Volt Bolt on turn 13 was seen (Weakness 140). points_taken counts the prize points each Pokémon won for the opponent (Furfrou: Magikarp KO on turn 3 and Feebas KO on turn 5)."}

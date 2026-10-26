@@ -1,0 +1,23 @@
+{"recording": "g1", "went_first": "opponent", "global_turns": 12, "final_score": {"dustin": 3, "opponent": 2},
+ "end": "points",
+ "opponent_energy_zone": ["Fighting"],
+ "opponent_energy_attached": [
+  {"turn": 3, "type": "Fighting", "to": "Buneary (Active, then evolved into Mega Lopunny ex)", "time": "~86-89 s"},
+  {"turn": 5, "type": "Fighting", "to": "Mega Lopunny ex (Active)", "time": "128-133 s (1 at 127, 2 at 133)"},
+  {"turn": 7, "type": "Fighting", "to": "Hitmonchan ex (Active)", "time": "~222-225 s"},
+  {"turn": 9, "type": "Fighting", "to": "Hitmonchan ex (Active)", "time": "~282 s"},
+  {"turn": 11, "type": "Fighting", "to": "Mega Lopunny ex (Bench)", "time": "~327 s"}],
+ "opponent_pokemon": [
+  {"name": "Buneary (full-art, opening Active)", "set_number": null, "first_seen_turn": 1, "attacked": false, "attacks_used": [], "abilities_used": [], "points_taken": 0, "fate": "Knocked Out by Turbo Shark, turn 2 (Dustin +1)"},
+  {"name": "Buneary (opening Bench, evolved into Mega Lopunny ex turn 3)", "set_number": null, "first_seen_turn": 1, "attacked": false, "attacks_used": [], "abilities_used": [], "points_taken": 0},
+  {"name": "Mega Lopunny ex", "set_number": null, "first_seen_turn": 3, "attacked": true, "attacks_used": ["Rapid Smashers (turn 5: 1 heads/1 tails, 90 damage, Confused)"], "abilities_used": [], "points_taken": 0, "fate": "on Bench at game end, 90/190, Fighting x3"},
+  {"name": "Hitmonchan ex", "set_number": null, "first_seen_turn": 7, "attacked": true, "attacks_used": ["Quick Straight (turn 7: 50, KO Carvanha)", "Quick Straight (turn 9: 50, KO Feebas)", "Quick Straight (turn 11: 50 on Mega Sharpedo ex)"], "abilities_used": [], "points_taken": 2, "fate": "Knocked Out by Turbo Shark, turn 12 (Dustin +2)"}],
+ "opponent_trainers": [
+  {"turn": 1, "name": "Serena"},
+  {"turn": 5, "name": "Copycat", "time": "~134-139 s"},
+  {"turn": 7, "name": "X Speed", "time": "~213-218 s"},
+  {"turn": 9, "name": "Professor's Research", "time": "~265 s"},
+  {"turn": 9, "name": "Arena of Antiquity", "time": "~275-279 s"}],
+ "opponent_effects": {"special_conditions": ["Confused (Rapid Smashers on Dustin's Mega Sharpedo ex, turn 5; cured by retreat turn 6)"], "healed": false, "bench_damage": false},
+ "opponent_card_of_the_game": "Hitmonchan ex",
+ "notes": "Checked against the frames. points_taken = points Ryze scored with that Pokemon's attacks (Hitmonchan ex KO'd Carvanha turn 7 and Feebas turn 9, 1 point each). Dustin's KOs: Buneary (+1, turn 2) and Hitmonchan ex (+2, turn 12). Ryze's hand, deck and set numbers are not shown."}
