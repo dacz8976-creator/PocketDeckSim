@@ -71,6 +71,7 @@ A developer gets only the answer-free excerpts the coordinator stages: the rules
 - When a heavy WSL job ends: delete its temp files, run `sync; echo 3 > /proc/sys/vm/drop_caches` as root to give memory back to Windows, and stop its tmux sessions and helper scripts.
 - Before re-arming a job, stop the old launcher's whole process group. Only one launcher per job.
 - At the end of any task, check `tmux ls` and leave nothing idle running that isn't needed.
+- Disk: a job that writes more than 1 GB plans its cleanup before it starts, and deletes its build outputs, scratch copies and other leftovers when done. Never leave large unneeded files where Dustin can't see them: the end-of-night note lists anything large that was kept, and why. When WSL has freed a lot of space inside its disk, schedule a compaction so the space returns to C:.
 
 ## Where things are
 
