@@ -66,6 +66,12 @@ When your session ends, add one dated line to `LOG.md` (*Pocket Deck Lab only*) 
 
 A developer gets only the answer-free excerpts the coordinator stages: the rules without any point's answer, as the run 3 jobs got them. The frozen registration files are not edited; they stay the record.
 
+**Keep the laptop lean (Dustin, Oct 26): "the leaner we can keep it while nothing is running, the better."**
+- WSL jobs keep temp files in their own folder on disk, never in `/tmp`, which lives in RAM. Tools that create temp folders delete them when done.
+- When a heavy WSL job ends: delete its temp files, run `sync; echo 3 > /proc/sys/vm/drop_caches` as root to give memory back to Windows, and stop its tmux sessions and helper scripts.
+- Before re-arming a job, stop the old launcher's whole process group. Only one launcher per job.
+- At the end of any task, check `tmux ls` and leave nothing idle running that isn't needed.
+
 ## Where things are
 
 - `rl/RUN5.md`: the approved plan, its rules and "Where things stand" (all status). `rl/results/<topic>_<date>/`: each run's files and reading. `project_manifest.json`: the official engine and its hashes.
