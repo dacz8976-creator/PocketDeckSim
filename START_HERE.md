@@ -58,6 +58,14 @@ Read `RULES_FOR_AGENTS.md` (one page: Pocket's rules, where they differ from the
 Never state a card's text from memory — `python lib/card.py "<name or id>"` prints it.
 When your session ends, add one dated line to `LOG.md` (*Pocket Deck Lab only*) in plain words: who you are, what changed.
 
+**Exam answer material stays out of bot and judge work (containment; Astra's weekly review, Oct 26).** Anyone who builds, tunes or debugs a pilot, a bot or the AI judge never opens these files. They hold the exam's answers, Dustin's quiz answers, or lines and rows derived from them:
+- on `sonnet/exam-2026-10-19`, in `rl/results/weekly_review_2026-10-18/exam/`:
+  - v1.6 and its runs: `exam_2026-10-19*.json`, `references*.json`, `README.md`, `build/`, `run1/`, `run2/`;
+  - in `run3/`: `PREREG_RUN3.md` from addendum 8 on (K11 and later hold his quiz and answers), `answers/`, `questions/`, `frozen_2026-10-25/`, `labels/`, `D_FIXES.json`, `assembly_final/`, `ASSEMBLY_*.md`, `build/g/`, `select/`, `PARTB_GAPS_*.txt`, `RESULTS_run3.md` and `live-*/`;
+- on the laptop: `~/exam/`, `~/exam_v2/` (its `assembly*`, `label_*`, `answers/`, `questions/` and everything else there) and `~/exam_run*/`.
+
+A developer gets only the answer-free excerpts the coordinator stages: the rules without any point's answer, as the run 3 jobs got them. The frozen registration files are not edited; they stay the record.
+
 ## Where things are
 
 - `rl/RUN5.md`: the approved plan, its rules and "Where things stand" (all status). `rl/results/<topic>_<date>/`: each run's files and reading. `project_manifest.json`: the official engine and its hashes.
