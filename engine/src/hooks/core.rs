@@ -67,22 +67,24 @@ pub fn is_future_pokemon(pokemon_name: &str) -> bool {
 
 // Ultra Beasts
 // TODO: Move this to a field in PokemonCard and database in the future
-const ULTRA_BEAST_NAMES: [&str; 15] = [
+const ULTRA_BEAST_NAMES: [&str; 17] = [
     "Buzzwole ex",
     "Buzzwole",
     "Blacephalon",
+    "Blacephalon ex",
     "Kartana",
     "Pheromosa",
     "Xurkitree",
     "Nihilego",
     "Guzzlord ex",
+    "Guzzlord",
     "Poipole",
     "Naganadel",
     "Stakataka",
     "Celesteela",
     "Dawn Wings Necrozma",
     "Dusk Mane Necrozma",
-    "Ultra Necrozma",
+    "Ultra Necrozma ex",
 ];
 
 pub fn is_ultra_beast(pokemon_name: &str) -> bool {

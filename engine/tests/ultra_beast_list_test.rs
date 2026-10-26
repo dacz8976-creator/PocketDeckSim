@@ -216,3 +216,72 @@ fn test_non_ultra_beasts_are_still_refused() {
         "Ultra Thrusters must not be offered with a non-Ultra Beast Active"
     );
 }
+
+/// Every printing that carries the Ultra Beast tag, as Serebii's Ultra Beast list shows it
+/// (read Oct 26: 50 printings, all in our card data; no other printing shares their names).
+/// The card data has no tag field, so this list is the record of the printed tag.
+const TAGGED_ULTRA_BEASTS: [CardId; 50] = [
+    CardId::A3a006BuzzwoleEx,
+    CardId::A3a007Pheromosa,
+    CardId::A3a008Kartana,
+    CardId::A3a009Blacephalon,
+    CardId::A3a020Xurkitree,
+    CardId::A3a042Nihilego,
+    CardId::A3a043GuzzlordEx,
+    CardId::A3a044Poipole,
+    CardId::A3a045Naganadel,
+    CardId::A3a053Stakataka,
+    CardId::A3a062Celesteela,
+    CardId::A3a071Pheromosa,
+    CardId::A3a072Blacephalon,
+    CardId::A3a075Celesteela,
+    CardId::A3a076BuzzwoleEx,
+    CardId::A3a079GuzzlordEx,
+    CardId::A3a086GuzzlordEx,
+    CardId::A3a088BuzzwoleEx,
+    CardId::A3a103Nihilego,
+    CardId::A4b044BuzzwoleEx,
+    CardId::A4b045Pheromosa,
+    CardId::A4b046Pheromosa,
+    CardId::A4b047Kartana,
+    CardId::A4b048Kartana,
+    CardId::A4b246Nihilego,
+    CardId::A4b247Nihilego,
+    CardId::A4b248GuzzlordEx,
+    CardId::A4b304Celesteela,
+    CardId::A4b305Celesteela,
+    CardId::A4b360BuzzwoleEx,
+    CardId::PA075Kartana,
+    CardId::PA076Blacephalon,
+    CardId::PA077Xurkitree,
+    CardId::PA078DawnWingsNecrozma,
+    CardId::PA079DuskManeNecrozma,
+    CardId::PA080Stakataka,
+    CardId::PA081UltraNecrozmaEx,
+    CardId::PA082Poipole,
+    CardId::B1a098BuzzwoleEx,
+    CardId::B1a100GuzzlordEx,
+    CardId::B2014Buzzwole,
+    CardId::B2023BlacephalonEx,
+    CardId::B2109Guzzlord,
+    CardId::B2159Buzzwole,
+    CardId::B2181BlacephalonEx,
+    CardId::B2195BlacephalonEx,
+    CardId::B2b048Kartana,
+    CardId::B4016Pheromosa,
+    CardId::B4224BlacephalonEx,
+    CardId::B4b045BlacephalonEx,
+];
+
+/// Blacephalon ex, Guzzlord and Ultra Necrozma ex were missing too (the list named "Ultra
+/// Necrozma", which no card is called), so Lusamine refused them.
+#[test]
+fn test_lusamine_accepts_every_tagged_ultra_beast_printing() {
+    for id in TAGGED_ULTRA_BEASTS {
+        let game = lusamine_game(vec![PlayedCard::from_id(id)]);
+        assert!(
+            can_play_lusamine(&game),
+            "{id:?} carries the Ultra Beast tag, so Lusamine must be playable"
+        );
+    }
+}
