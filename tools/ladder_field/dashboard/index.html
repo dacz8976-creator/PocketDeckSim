@@ -1,0 +1,429 @@
+<style>
+  #dash-root .lf { display: grid; gap: var(--cds-gap-lg); font-family: var(--font-anthropic-sans); font-variant-numeric: tabular-nums; }
+  #dash-root .lf-head { display: grid; gap: var(--cds-gap-sm); }
+  #dash-root .lf-head h1 { margin: 0; font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); text-wrap: balance; }
+  #dash-root .lf-take { margin: 0; color: var(--color-fg); font-size: var(--cds-font-size-body); max-width: 70ch; }
+  #dash-root .lf-take b { font-weight: 600; }
+  #dash-root .lf-seasons { display: flex; flex-wrap: wrap; gap: var(--cds-gap-xs); }
+  #dash-root .lf-seasons button { font: inherit; font-size: var(--cds-font-size-caption); padding: var(--cds-pad-xs) var(--cds-pad-sm); border-radius: 999px; border: 1px solid var(--color-border-line); background: var(--color-panel); color: var(--color-fg); cursor: pointer; }
+  #dash-root .lf-seasons button[aria-pressed="true"] { background: var(--color-fg); color: var(--color-bg); border-color: var(--color-fg); }
+  #dash-root .lf-seasons button:focus-visible { outline: 2px solid var(--color-fg); outline-offset: 2px; }
+  #dash-root .lf-tiles { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 11rem), 1fr)); gap: var(--cds-gap-md); }
+  #dash-root .lf-tile { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-md) var(--cds-pad-lg); display: grid; gap: var(--cds-gap-xs); align-content: start; }
+  #dash-root .lf-tile .lf-k { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+  #dash-root .lf-tile .lf-v { font-family: var(--font-anthropic-serif); font-weight: 400; font-size: var(--cds-font-size-title); line-height: 1.1; }
+  #dash-root .lf-tile .lf-s { color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); }
+  #dash-root .lf-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(min(100%, 22rem), 1fr)); gap: var(--cds-gap-md); }
+  #dash-root .lf-card { background: var(--color-panel); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); padding: var(--cds-pad-lg); display: grid; gap: var(--cds-gap-sm); align-content: start; min-width: 0; }
+  #dash-root .lf-card h2 { margin: 0; font-size: var(--cds-font-size-heading); font-weight: var(--cds-font-weight-medium); }
+  #dash-root .lf-note { margin: 0; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); max-width: 75ch; }
+  #dash-root .lf-bars { display: grid; gap: 6px; min-height: 12rem; }
+  #dash-root .lf-bar { display: grid; grid-template-columns: 6.5rem minmax(0, 1fr) 7.5rem; align-items: center; gap: var(--cds-gap-sm); font-size: var(--cds-font-size-caption); }
+  #dash-root .lf-bar .lf-name { white-space: nowrap; overflow: hidden; text-overflow: ellipsis; }
+  #dash-root .lf-track { height: 14px; background: color-mix(in srgb, var(--color-border-line) 45%, transparent); border-radius: 4px; overflow: hidden; }
+  #dash-root .lf-fill { height: 100%; border-radius: 4px; background: var(--lf-c, var(--cds-chart-muted)); }
+  #dash-root .lf-rec { color: var(--color-fg-muted); text-align: right; white-space: nowrap; }
+  #dash-root .lf-rec b { color: var(--color-fg); font-weight: 600; }
+  #dash-root .lf-good { color: var(--color-ok); }
+  #dash-root .lf-bad { color: var(--color-bad); }
+  #dash-root .lf-tablebox { max-height: 26rem; overflow: auto; border-top: 1px solid var(--color-border-line); }
+  #dash-root .lf-table { width: 100%; border-collapse: collapse; font-size: var(--cds-font-size-caption); }
+  #dash-root .lf-table th { position: sticky; top: 0; background: var(--color-panel); text-align: left; font-weight: var(--cds-font-weight-medium); padding: 6px 8px; border-bottom: 1px solid var(--color-border-line); white-space: nowrap; }
+  #dash-root .lf-table th button { all: unset; cursor: pointer; }
+  #dash-root .lf-table th button:focus-visible { outline: 2px solid var(--color-fg); }
+  #dash-root .lf-table td { padding: 6px 8px; border-bottom: 1px solid color-mix(in srgb, var(--color-border-line) 60%, transparent); vertical-align: top; }
+  #dash-root .lf-table td.lf-num, #dash-root .lf-table th.lf-num { text-align: right; }
+  #dash-root .lf-search { font: inherit; font-size: var(--cds-font-size-caption); padding: var(--cds-pad-xs) var(--cds-pad-sm); border: 1px solid var(--color-border-line); border-radius: var(--cds-radius); background: var(--color-bg); color: var(--color-fg); max-width: 22rem; width: 100%; box-sizing: border-box; }
+  #dash-root .lf-week { position: relative; min-height: 13rem; }
+  #dash-root .lf-tip { position: absolute; pointer-events: none; background: var(--cds-surface-popover); border: 1px solid var(--cds-border); border-radius: var(--cds-radius); box-shadow: var(--cds-shadow-popover); padding: var(--cds-pad-xs) var(--cds-pad-sm); font-size: var(--cds-font-size-caption); white-space: nowrap; }
+  #dash-root .lf-tip .lf-t1 { color: var(--cds-text-secondary); }
+  #dash-root [data-dash-source-state=empty] { color: transparent; }
+  #dash-root [data-dash-source-state=refreshing] { opacity: .5; transition: opacity var(--cds-dur-slow); }
+  #dash-root .lf-fail { display: flex; align-items: center; justify-content: center; gap: 6px; color: var(--color-fg-muted); font-size: var(--cds-font-size-caption); min-height: inherit; }
+  #dash-root .lf-fail::before { content: ""; width: .375rem; height: .375rem; border-radius: 50%; background: var(--color-bad); }
+  #dash-root .lf-method { font-size: var(--cds-font-size-caption); color: var(--color-fg-muted); display: grid; gap: var(--cds-gap-xs); max-width: 80ch; }
+  #dash-root .lf-method p { margin: 0; }
+  @media (max-width: 34rem) { #dash-root .lf-bar { grid-template-columns: 5.5rem minmax(0, 1fr) 6.5rem; } #dash-root .lf-hide-narrow { display: none; } }
+</style>
+
+<div class="lf">
+  <header class="lf-head" id="top">
+    <h1>Ladder Field</h1>
+    <p class="lf-take" id="takeaway"><span class="dash-skeleton">—</span></p>
+    <div class="lf-seasons" role="group" aria-label="Which games" id="seasons" data-source="totals"></div>
+  </header>
+
+  <section class="lf-tiles" id="tiles" aria-label="Summary">
+    <div class="lf-tile"><span class="lf-k">Ranked games</span><span class="lf-v dash-skeleton" id="t-games" data-source="totals" data-field="games">—</span><span class="lf-s">logged in the Ladder Log</span></div>
+    <div class="lf-tile"><span class="lf-k">Your record</span><span class="lf-v"><span class="dash-skeleton" id="t-wins" data-source="totals" data-field="wins">—</span>-<span class="dash-skeleton" id="t-losses" data-source="totals" data-field="losses">—</span></span><span class="lf-s"><span id="t-rate" data-source="totals" data-field="win_rate">—</span> won</span></div>
+    <div class="lf-tile"><span class="lf-k">Deck types faced</span><span class="lf-v dash-skeleton" id="t-types" data-source="totals" data-field="deck_types">—</span><span class="lf-s">by the Pokémon each deck was built around</span></div>
+    <div class="lf-tile"><span class="lf-k">Energy seen on video</span><span class="lf-v dash-skeleton" id="t-attached" data-source="totals" data-field="energy_seen_share">—</span><span class="lf-s">of games; the rest inferred from Pokémon types</span></div>
+  </section>
+
+  <section class="lf-grid">
+    <article class="lf-card" id="energy">
+      <h2>Opponent Energy types</h2>
+      <p class="lf-note">Share of games where the opponent used each Energy type, with your record in those games. A deck with two types counts in both, so the shares add up past 100%.</p>
+      <div class="lf-bars" id="energy-bars" data-source="by_energy"></div>
+    </article>
+    <article class="lf-card" id="plans">
+      <h2>How their decks tried to win</h2>
+      <p class="lf-note">Each opponent's main plan, as read from the review, with your record against it.</p>
+      <div class="lf-bars" id="plan-bars" data-source="by_plan"></div>
+    </article>
+  </section>
+
+  <article class="lf-card" id="decktypes">
+    <h2>Deck types you faced</h2>
+    <p class="lf-note">Grouped by the Pokémon the opponent's deck was built around (its main attacker). Partner, Energy and plan are the most common ones seen with it.</p>
+    <input class="lf-search" id="core-search" type="search" placeholder="Search a Pokémon" aria-label="Search deck types">
+    <div class="lf-tablebox">
+      <table class="lf-table" id="core-table" data-source="by_core" data-row-key="season,core">
+        <thead><tr>
+          <th data-field="core" scope="col"><button type="button" data-sort="core">Built around</button></th>
+          <th data-field="games" scope="col" class="lf-num"><button type="button" data-sort="games">Games</button></th>
+          <th data-field="record" scope="col" class="lf-num"><button type="button" data-sort="win_rate">Your record</button></th>
+          <th data-field="partner" scope="col" class="lf-hide-narrow">Usual partner</th>
+          <th data-field="energy" scope="col">Energy</th>
+          <th data-field="plan" scope="col" class="lf-hide-narrow">Plan</th>
+          <th data-field="last" scope="col" class="lf-hide-narrow"><button type="button" data-sort="last">Last seen</button></th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </article>
+
+  <section class="lf-grid">
+    <article class="lf-card" id="weeks">
+      <h2>Week by week</h2>
+      <p class="lf-note">Ranked games per week (weeks start Monday, Central time). Hover a bar for the record and the most common opponent.</p>
+      <div class="lf-week" id="week-chart" data-source="by_week"></div>
+    </article>
+    <article class="lf-card" id="mydecks">
+      <h2>Your decks</h2>
+      <p class="lf-note">Your record with each of your decks in these games.</p>
+      <div class="lf-tablebox">
+        <table class="lf-table" id="deck-table" data-source="by_deck" data-row-key="season,my_deck">
+          <thead><tr>
+            <th data-field="my_deck" scope="col">Your deck</th>
+            <th data-field="games" scope="col" class="lf-num">Games</th>
+            <th data-field="record" scope="col" class="lf-num">Record</th>
+          </tr></thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </article>
+  </section>
+
+  <article class="lf-card" id="games">
+    <h2>Every game</h2>
+    <p class="lf-note">One row per ranked game. Opponent Pokémon and Energy are only what the game showed.</p>
+    <input class="lf-search" id="game-search" type="search" placeholder="Search a Pokémon, deck or note" aria-label="Search games">
+    <div class="lf-tablebox">
+      <table class="lf-table" id="game-table" data-source="games" data-row-key="n">
+        <thead><tr>
+          <th data-field="date" scope="col">Date</th>
+          <th data-field="result" scope="col">Result</th>
+          <th data-field="my_deck" scope="col" class="lf-hide-narrow">Your deck</th>
+          <th data-field="opp_pair" scope="col">Opponent built around</th>
+          <th data-field="opp_energy" scope="col">Energy</th>
+          <th data-field="plan" scope="col" class="lf-hide-narrow">Plan</th>
+          <th data-field="remark" scope="col" class="lf-hide-narrow">What happened</th>
+        </tr></thead>
+        <tbody></tbody>
+      </table>
+    </div>
+  </article>
+
+  <section class="lf-method" id="method" aria-label="How this is built">
+    <p><b>How this is built.</b> Each row is one game from your Ladder Log. Where Codex reviewed the video, the opponent's Pokémon, the Energy they attached or showed in their Energy Zone, their main attacker and their plan come from that review. Games with no video review (most of September's) use only the Ladder Log entry, with Energy inferred from the types of the Pokémon you saw, and their plan left as Unclear.</p>
+    <p>Only what the game showed counts. Nothing is guessed from what a deck "usually" runs, so short games show little. A deck type's label is its main attacker, so two different builds around the same Pokémon share a row.</p>
+  </section>
+</div>
+
+<script>
+  dash.calc('totals', {
+    inputs: ['games'], title: 'Totals by season',
+    description: 'Games, wins, losses, deck types and the share of games with Energy seen on video, for all games and for each season.',
+    fn: (games) => {
+      const seasons = ['all', ...new Set(games.map((g) => g.season))];
+      return seasons.map((season) => {
+        const gs = season === 'all' ? games : games.filter((g) => g.season === season);
+        const wins = gs.filter((g) => Number(g.win) === 1).length;
+        const seen = gs.filter((g) => g.energy_source === 'attached').length;
+        return { season, games: gs.length, wins, losses: gs.length - wins, win_rate: gs.length ? wins / gs.length : null,
+          deck_types: new Set(gs.filter((g) => g.opp_core !== 'Not seen').map((g) => g.opp_core)).size,
+          energy_seen_share: gs.length ? seen / gs.length : null };
+      });
+    },
+  });
+
+  dash.calc('by_energy', {
+    inputs: ['games'], title: 'Opponent Energy by season',
+    description: 'For each Energy type, the games where the opponent used it, its share of all games, and your wins and losses in those games.',
+    fn: (games) => {
+      const types = ['Grass', 'Fire', 'Water', 'Lightning', 'Psychic', 'Fighting', 'Darkness', 'Metal'];
+      const out = [];
+      for (const season of ['all', ...new Set(games.map((g) => g.season))]) {
+        const gs = season === 'all' ? games : games.filter((g) => g.season === season);
+        for (const energy of types) {
+          const hit = gs.filter((g) => String(g.opp_energy || '').split(', ').includes(energy));
+          const wins = hit.filter((g) => Number(g.win) === 1).length;
+          out.push({ season, energy, games: hit.length, share: gs.length ? hit.length / gs.length : 0, wins, losses: hit.length - wins, win_rate: hit.length ? wins / hit.length : null });
+        }
+      }
+      return out;
+    },
+  });
+
+  dash.calc('by_plan', {
+    inputs: ['games'], title: 'Opponent plans by season',
+    description: "For each opponent plan, the games, its share of all games, and your wins and losses against it.",
+    fn: (games) => {
+      const out = [];
+      for (const season of ['all', ...new Set(games.map((g) => g.season))]) {
+        const gs = season === 'all' ? games : games.filter((g) => g.season === season);
+        const plans = [...new Set(gs.map((g) => g.plan))];
+        for (const plan of plans) {
+          const hit = gs.filter((g) => g.plan === plan);
+          const wins = hit.filter((g) => Number(g.win) === 1).length;
+          out.push({ season, plan, games: hit.length, share: gs.length ? hit.length / gs.length : 0, wins, losses: hit.length - wins, win_rate: hit.length ? wins / hit.length : null });
+        }
+      }
+      return out;
+    },
+  });
+
+  dash.calc('by_core', {
+    inputs: ['games'], title: 'Deck types by season',
+    description: "Games grouped by the opponent's main attacker, with your record and the most common partner, Energy and plan seen with it.",
+    fn: (games) => {
+      const common = (vals) => { const c = new Map(); for (const v of vals) if (v) c.set(v, (c.get(v) || 0) + 1); let best = '', n = 0; for (const [k, v] of c) if (v > n) { best = k; n = v; } return best; };
+      const out = [];
+      for (const season of ['all', ...new Set(games.map((g) => g.season))]) {
+        const gs = season === 'all' ? games : games.filter((g) => g.season === season);
+        for (const core of new Set(gs.map((g) => g.opp_core))) {
+          const hit = gs.filter((g) => g.opp_core === core);
+          const wins = hit.filter((g) => Number(g.win) === 1).length;
+          out.push({ season, core, games: hit.length, wins, losses: hit.length - wins, record: wins + '-' + (hit.length - wins),
+            win_rate: hit.length ? wins / hit.length : null, partner: common(hit.map((g) => g.opp_partner)),
+            energy: common(hit.map((g) => g.opp_energy)), plan: common(hit.map((g) => g.plan)),
+            last: hit.map((g) => g.date).sort().slice(-1)[0] || '' });
+        }
+      }
+      return out;
+    },
+  });
+
+  dash.calc('by_week', {
+    inputs: ['games'], title: 'Games per week',
+    description: 'Ranked games per week (Monday start, Central time), your record, and the most common opponent Energy and deck type that week.',
+    fn: (games) => {
+      const common = (vals) => { const c = new Map(); for (const v of vals) if (v) c.set(v, (c.get(v) || 0) + 1); let best = '', n = 0; for (const [k, v] of c) if (v > n) { best = k; n = v; } return best; };
+      const weeks = [...new Set(games.map((g) => g.week))].filter(Boolean).sort();
+      return weeks.map((week) => {
+        const hit = games.filter((g) => g.week === week);
+        const wins = hit.filter((g) => Number(g.win) === 1).length;
+        return { week, season: common(hit.map((g) => g.season)), games: hit.length, wins, losses: hit.length - wins,
+          win_rate: hit.length ? wins / hit.length : null,
+          top_energy: common(hit.flatMap((g) => String(g.opp_energy || '').split(', '))),
+          top_core: common(hit.map((g) => g.opp_core).filter((c) => c !== 'Not seen')) };
+      });
+    },
+  });
+
+  dash.calc('by_deck', {
+    inputs: ['games'], title: 'Your decks by season',
+    description: 'Your wins and losses with each of your decks.',
+    fn: (games) => {
+      const out = [];
+      for (const season of ['all', ...new Set(games.map((g) => g.season))]) {
+        const gs = season === 'all' ? games : games.filter((g) => g.season === season);
+        for (const my_deck of new Set(gs.map((g) => g.my_deck))) {
+          const hit = gs.filter((g) => g.my_deck === my_deck);
+          const wins = hit.filter((g) => Number(g.win) === 1).length;
+          out.push({ season, my_deck, games: hit.length, wins, losses: hit.length - wins, record: wins + '-' + (hit.length - wins), win_rate: hit.length ? wins / hit.length : null });
+        }
+      }
+      return out;
+    },
+  });
+</script>
+
+<script>
+  const pct = d3.format('.0%');
+  const SEASON_LABEL = { all: 'All games', 'Before Oct 14': 'Before Oct 14', 'B4b season': 'This season (B4b)', 'Dual Fusion': 'Dual Fusion' };
+  const E_COLOR = { Grass: '#3f9b4b', Fire: '#d9502e', Water: '#2f7fd0', Lightning: '#d6a419', Psychic: '#9150c8', Fighting: '#b8692c', Darkness: '#5b6170', Metal: '#8c97a3' };
+  const season = () => dash.params().season || 'all';
+  const where = (obj) => Object.entries(obj).map(([k, v]) => encodeURIComponent(k) + '=' + encodeURIComponent(v)).join('&');
+  const failLine = (el) => { el.replaceChildren(); const d = document.createElement('div'); d.className = 'lf-fail'; d.textContent = 'Failed to load'; el.append(d); };
+  const span = (text, attrs) => { const s = document.createElement('span'); s.textContent = text; if (attrs) for (const [k, v] of Object.entries(attrs)) s.setAttribute(k, v); return s; };
+
+  // season buttons
+  const seasonsEl = document.getElementById('seasons');
+  seasonsEl.addEventListener('click', (e) => { const b = e.target.closest('button[data-season]'); if (b) dash.setParams({ season: b.dataset.season }); });
+
+  // tiles + takeaway
+  dash.onData(() => {
+    const t = dash.data('totals'), s = season();
+    const ids = ['t-games', 't-wins', 't-losses', 't-rate', 't-types', 't-attached'];
+    if (t.status !== 'ok') {
+      if (t.status === 'error') ids.forEach((id) => { document.getElementById(id).textContent = '—'; });
+      return;
+    }
+    const opts = t.data.map((r) => r.season).filter((x) => SEASON_LABEL[x]);
+    seasonsEl.replaceChildren(...opts.map((x) => { const b = document.createElement('button'); b.type = 'button'; b.dataset.season = x; b.textContent = SEASON_LABEL[x]; b.setAttribute('aria-pressed', String(x === s)); return b; }));
+    const row = t.data.find((r) => r.season === s) || t.data.find((r) => r.season === 'all');
+    const w = where({ season: row.season });
+    const set = (id, text) => { const el = document.getElementById(id); el.classList.remove('dash-skeleton'); el.textContent = text; el.setAttribute('data-where', w); };
+    set('t-games', d3.format(',')(row.games)); set('t-wins', row.wins); set('t-losses', row.losses);
+    set('t-rate', row.win_rate == null ? '—' : pct(row.win_rate)); set('t-types', row.deck_types);
+    set('t-attached', row.energy_seen_share == null ? '—' : pct(row.energy_seen_share));
+
+    const e = dash.data('by_energy'), c = dash.data('by_core');
+    const take = document.getElementById('takeaway');
+    if (e.status === 'ok' && c.status === 'ok') {
+      const er = e.data.filter((r) => r.season === row.season).sort((a, b) => b.games - a.games);
+      const cr = c.data.filter((r) => r.season === row.season && r.core !== 'Not seen').sort((a, b) => b.games - a.games || a.core.localeCompare(b.core));
+      const top = er[0], core = cr[0];
+      take.replaceChildren();
+      if (top && core) {
+        const PHRASE = { all: 'all your logged games', 'Before Oct 14': 'your games before Oct 14', 'B4b season': 'this season (B4b)', 'Dual Fusion': 'the Dual Fusion season' };
+        take.append('In ', PHRASE[row.season] || row.season, ', the most common opponent Energy was ',
+          span(top.energy, { 'data-source': 'by_energy', 'data-field': 'energy', 'data-where': where({ season: row.season, energy: top.energy }) }), ', in ',
+          span(pct(top.share), { 'data-source': 'by_energy', 'data-field': 'share', 'data-where': where({ season: row.season, energy: top.energy }) }),
+          ' of games, and you won ', span(top.win_rate == null ? '—' : pct(top.win_rate), { 'data-source': 'by_energy', 'data-field': 'win_rate', 'data-where': where({ season: row.season, energy: top.energy }) }),
+          ' of those. The deck type you met most was built around ', span(core.core, { 'data-source': 'by_core', 'data-field': 'core', 'data-where': where({ season: row.season, core: core.core }) }), ' (',
+          span(String(core.games), { 'data-source': 'by_core', 'data-field': 'games', 'data-where': where({ season: row.season, core: core.core }) }), ' games, you went ',
+          span(core.record, { 'data-source': 'by_core', 'data-field': 'record', 'data-where': where({ season: row.season, core: core.core }) }), ').');
+      }
+    }
+  });
+
+  // bar lists
+  function drawBars(elId, id, label, color) {
+    const el = document.getElementById(elId), d = dash.data(id);
+    if (d.status === 'error') return failLine(el);
+    if (d.status !== 'ok') { el.replaceChildren(); el.classList.add('dash-skeleton'); return; }
+    el.classList.remove('dash-skeleton');
+    const s = season();
+    let rows = d.data.filter((r) => r.season === s);
+    if (!rows.length) rows = d.data.filter((r) => r.season === 'all');
+    rows = rows.filter((r) => r.games > 0).sort((a, b) => b.games - a.games);
+    const max = d3.max(rows, (r) => r.share) || 1;
+    el.replaceChildren(...rows.map((r) => {
+      const w = where({ season: r.season, [label]: r[label] });
+      const line = document.createElement('div'); line.className = 'lf-bar';
+      const name = span(r[label], { 'data-source': id, 'data-field': label, 'data-where': w }); name.className = 'lf-name';
+      const track = document.createElement('div'); track.className = 'lf-track';
+      const fill = document.createElement('div'); fill.className = 'lf-fill'; fill.style.width = (100 * r.share / max) + '%';
+      if (color) fill.style.setProperty('--lf-c', color(r)); track.append(fill);
+      track.setAttribute('role', 'img'); track.setAttribute('aria-label', r[label] + ': ' + pct(r.share) + ' of games');
+      const rec = document.createElement('span'); rec.className = 'lf-rec';
+      const sh = span(pct(r.share), { 'data-source': id, 'data-field': 'share', 'data-where': w }); sh.style.fontWeight = '600'; sh.style.color = 'var(--color-fg)';
+      const wr = span(r.win_rate == null ? '—' : pct(r.win_rate), { 'data-source': id, 'data-field': 'win_rate', 'data-where': w });
+      wr.className = r.win_rate == null ? '' : r.win_rate >= 0.5 ? 'lf-good' : 'lf-bad';
+      rec.append(sh, ' · won ', wr);
+      line.append(name, track, rec); return line;
+    }));
+  }
+  dash.onData(() => drawBars('energy-bars', 'by_energy', 'energy', (r) => E_COLOR[r.energy]));
+  dash.onData(() => drawBars('plan-bars', 'by_plan', 'plan', null));
+
+  // sortable, searchable tables
+  const tableState = { core: { key: 'games', dir: -1, q: '' } };
+  document.getElementById('core-search').addEventListener('input', (e) => { tableState.core.q = e.target.value.toLowerCase(); drawCore(); });
+  document.querySelector('#core-table thead').addEventListener('click', (e) => {
+    const b = e.target.closest('button[data-sort]'); if (!b) return;
+    const st = tableState.core; st.dir = st.key === b.dataset.sort ? -st.dir : (b.dataset.sort === 'core' ? 1 : -1); st.key = b.dataset.sort; drawCore();
+  });
+  function drawCore() {
+    const tb = document.querySelector('#core-table tbody'), d = dash.data('by_core');
+    if (d.status === 'error') { tb.replaceChildren(); const tr = tb.insertRow(); const td = tr.insertCell(); td.colSpan = 7; failLine(td); return; }
+    if (d.status !== 'ok') return;
+    const st = tableState.core, s = season();
+    let rows = d.data.filter((r) => r.season === s);
+    if (st.q) rows = rows.filter((r) => [r.core, r.partner, r.energy, r.plan].join(' ').toLowerCase().includes(st.q));
+    rows.sort((a, b) => { const x = a[st.key], y = b[st.key]; return (typeof x === 'number' ? (x ?? -1) - (y ?? -1) : String(x).localeCompare(String(y))) * st.dir || b.games - a.games; });
+    document.querySelectorAll('#core-table th').forEach((th) => { const b = th.querySelector('button'); th.removeAttribute('aria-sort'); if (b && b.dataset.sort === st.key) th.setAttribute('aria-sort', st.dir > 0 ? 'ascending' : 'descending'); });
+    tb.replaceChildren(...rows.map((r) => {
+      const tr = document.createElement('tr'); tr.dataset.key = encodeURIComponent(r.season) + ',' + encodeURIComponent(r.core);
+      for (const [v, cls] of [[r.core], [String(r.games), 'lf-num'], [r.record, 'lf-num'], [r.partner, 'lf-hide-narrow'], [r.energy], [r.plan, 'lf-hide-narrow'], [r.last, 'lf-hide-narrow']]) {
+        const td = document.createElement('td'); td.textContent = v; if (cls) td.className = cls; tr.append(td);
+      }
+      return tr;
+    }));
+  }
+  dash.onData(drawCore);
+
+  dash.onData(() => {
+    const tb = document.querySelector('#deck-table tbody'), d = dash.data('by_deck');
+    if (d.status === 'error') { tb.replaceChildren(); const td = tb.insertRow().insertCell(); td.colSpan = 3; failLine(td); return; }
+    if (d.status !== 'ok') return;
+    const rows = d.data.filter((r) => r.season === season()).sort((a, b) => b.games - a.games);
+    tb.replaceChildren(...rows.map((r) => {
+      const tr = document.createElement('tr'); tr.dataset.key = encodeURIComponent(r.season) + ',' + encodeURIComponent(r.my_deck);
+      for (const [v, cls] of [[r.my_deck], [String(r.games), 'lf-num'], [r.record, 'lf-num']]) { const td = document.createElement('td'); td.textContent = v; if (cls) td.className = cls; tr.append(td); }
+      return tr;
+    }));
+  });
+
+  let gameQ = '';
+  document.getElementById('game-search').addEventListener('input', (e) => { gameQ = e.target.value.toLowerCase(); drawGames(); });
+  function drawGames() {
+    const tb = document.querySelector('#game-table tbody'), d = dash.data('games');
+    if (d.status === 'error') { tb.replaceChildren(); const td = tb.insertRow().insertCell(); td.colSpan = 7; failLine(td); return; }
+    if (d.status !== 'ok') return;
+    const s = season();
+    let rows = d.data.filter((g) => s === 'all' || g.season === s);
+    if (gameQ) rows = rows.filter((g) => [g.opp_pair, g.opp_seen, g.opp_energy, g.my_deck, g.plan, g.remark].join(' ').toLowerCase().includes(gameQ));
+    rows = rows.slice().sort((a, b) => Number(b.n) - Number(a.n));
+    tb.replaceChildren(...rows.map((g) => {
+      const tr = document.createElement('tr'); tr.dataset.key = String(g.n);
+      for (const [v, cls] of [[g.date], [g.result], [g.my_deck, 'lf-hide-narrow'], [g.opp_pair], [g.opp_energy], [g.plan, 'lf-hide-narrow'], [g.remark, 'lf-hide-narrow']]) {
+        const td = document.createElement('td'); td.textContent = v == null ? '' : String(v); if (cls) td.className = cls;
+        if (v === 'W') td.classList.add('lf-good'); if (v === 'L') td.classList.add('lf-bad'); tr.append(td);
+      }
+      return tr;
+    }));
+  }
+  dash.onData(drawGames);
+
+  // week chart
+  dash.onData(() => {
+    const box = document.getElementById('week-chart'), d = dash.data('by_week');
+    if (d.status === 'error') return failLine(box);
+    if (d.status !== 'ok') { box.replaceChildren(); box.classList.add('dash-skeleton'); return; }
+    box.classList.remove('dash-skeleton');
+    const rows = d.data.map((r) => ({ ...r, day: new Date(r.week + 'T12:00:00Z') }));
+    const W = Math.max(280, box.clientWidth), H = 200, s = season();
+    const svg = d3.create('svg').attr('width', '100%').attr('viewBox', `0 0 ${W} ${H}`).attr('role', 'img').attr('aria-label', 'Ranked games per week');
+    const tip = document.createElement('div'); tip.className = 'lf-tip'; tip.hidden = true;
+    box.replaceChildren(svg.node(), tip);
+    const yMax = d3.max(rows, (r) => r.games) || 1;
+    const y = d3.scaleLinear([0, yMax], [H - 24, 12]).nice();
+    const yAxis = svg.append('g');
+    const ticks = y.ticks(4);
+    yAxis.selectAll('text').data(ticks).join('text').attr('x', 0).attr('y', (t) => y(t)).attr('dy', '0.32em').attr('fill', 'var(--color-fg-muted)').style('font-size', 'var(--cds-font-size-caption)').text((t) => t);
+    const left = d3.max(yAxis.selectAll('text').nodes(), (n) => n.getComputedTextLength()) + 8;
+    const x = d3.scaleBand(rows.map((r) => r.week), [left, W - 4]).padding(0.25);
+    svg.append('g').selectAll('line').data(ticks).join('line').attr('x1', left).attr('x2', W - 4).attr('y1', (t) => y(t)).attr('y2', (t) => y(t)).attr('stroke', 'var(--cds-chart-grid)');
+    const fmt = d3.utcFormat('%b %-d');
+    const every = Math.ceil(rows.length / Math.max(1, Math.floor((W - left) / 56)));
+    svg.append('g').selectAll('text').data(rows.filter((_, i) => i % every === 0)).join('text').attr('x', (r) => x(r.week) + x.bandwidth() / 2).attr('y', H - 6).attr('text-anchor', 'middle').attr('fill', 'var(--color-fg-muted)').style('font-size', 'var(--cds-font-size-caption)').text((r) => fmt(r.day));
+    svg.append('g').selectAll('rect').data(rows).join('rect')
+      .attr('x', (r) => x(r.week)).attr('width', x.bandwidth()).attr('y', (r) => y(r.games)).attr('height', (r) => y(0) - y(r.games)).attr('rx', 4)
+      .attr('fill', (r) => (s === 'all' || r.season === s) ? dash.colors[0] : 'var(--cds-chart-muted)')
+      .attr('data-source', 'by_week').attr('data-field', 'games').attr('data-where', (r) => where({ week: r.week }))
+      .on('mousemove', (ev, r) => {
+        const [mx, my] = d3.pointer(ev, box);
+        tip.hidden = false; tip.replaceChildren();
+        const a = document.createElement('div'); a.className = 'lf-t1'; a.textContent = 'Week of ' + fmt(r.day);
+        const b = document.createElement('div'); b.textContent = r.games + ' games, you went ' + r.wins + '-' + r.losses;
+        const c = document.createElement('div'); c.textContent = 'Most common: ' + (r.top_core || '—') + ', ' + (r.top_energy || '—');
+        tip.append(a, b, c);
+        const tw = tip.offsetWidth; tip.style.left = Math.max(0, Math.min(mx + 12, box.clientWidth - tw)) + 'px'; tip.style.top = Math.max(0, my - 48) + 'px';
+      })
+      .on('mouseleave', () => { tip.hidden = true; });
+  });
+</script>
