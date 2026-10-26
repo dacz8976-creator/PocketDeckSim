@@ -30,7 +30,8 @@ def key(name):
 
 def load_types(dbp):
     db = json.load(open(dbp, encoding='utf-8'))
-    types, stages, canon = collections.defaultdict(collections.Counter), collections.defaultdict(collections.Counter), {}
+    types, stages, weak = (collections.defaultdict(collections.Counter) for _ in range(3))
+    canon = {}
     for e in db:
         p = e.get('Pokemon')
         if not p:
@@ -38,14 +39,15 @@ def load_types(dbp):
         k = key(p['name'])
         types[k][p.get('energy_type')] += 1
         stages[k][p.get('stage')] += 1
+        weak[k][p.get('weakness') or 'None'] += 1
         canon.setdefault(k, p['name'])
-    return ({k: c.most_common(1)[0][0] for k, c in types.items()}, canon,
-            {k: c.most_common(1)[0][0] for k, c in stages.items()})
+    top = lambda d: {k: c.most_common(1)[0][0] for k, c in d.items()}
+    return top(types), canon, top(stages), top(weak)
 
 def main():
     gp, exd, dbp, out = sys.argv[1:5]
     games = json.load(open(gp, encoding='utf-8'))
-    ptype, canon, pstage = load_types(dbp)
+    ptype, canon, pstage, pweak = load_types(dbp)
     names_by_len = sorted(canon, key=len, reverse=True)
     ex = {}
     for f in sorted(glob.glob(os.path.join(exd, 'out_*.jsonl'))):
@@ -120,7 +122,9 @@ def main():
             'opp_core': main_ or 'Not seen',
             'opp_partner': partner or '',
             'opp_pair': (main_ + (' / ' + partner if partner else '')) if main_ else 'Not seen',
-            'opp_types': ', '.join(types_of([main_]) if main_ else []),
+            # the main attacker's own type and Weakness (Dragon and Colorless kept: Weakness follows the card, not the Energy)
+            'opp_type': (ptype.get(key(main_)) or 'Unknown') if main_ else 'Not seen',
+            'opp_weak': (pweak.get(key(main_)) or 'Unknown') if main_ else 'Not seen',
             'opp_energy': ', '.join(energy),
             'energy_source': src,
             'plan': PLANS[plan],

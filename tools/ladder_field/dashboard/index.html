@@ -73,6 +73,19 @@
     </article>
   </section>
 
+  <section class="lf-grid" id="attackers">
+    <article class="lf-card" id="types">
+      <h2>Their main attacker's type</h2>
+      <p class="lf-note">The card's own type, which can differ from the Energy it runs. Mega Rayquaza ex is a Dragon type that runs Fire and Lightning Energy.</p>
+      <div class="lf-bars" id="type-bars" data-source="by_type"></div>
+    </article>
+    <article class="lf-card" id="weakness">
+      <h2>What their main attacker is weak to</h2>
+      <p class="lf-note">The attack type that hits their main attacker for +20. "None" means no Weakness, as on most Dragon types.</p>
+      <div class="lf-bars" id="weak-bars" data-source="by_weak"></div>
+    </article>
+  </section>
+
   <article class="lf-card" id="decktypes">
     <h2>Deck types you faced</h2>
     <p class="lf-note">Grouped by the Pokémon the opponent's deck was built around (its main attacker). Partner, Energy and plan are the most common ones seen with it.</p>
@@ -194,6 +207,40 @@
     },
   });
 
+  dash.calc('by_type', {
+    inputs: ['games'], title: "Main attacker's type by season",
+    description: "Games by the opponent main attacker's own card type, with your wins and losses.",
+    fn: (games) => {
+      const out = [];
+      for (const season of ['all', ...new Set(games.map((g) => g.season))]) {
+        const gs = season === 'all' ? games : games.filter((g) => g.season === season);
+        for (const type of new Set(gs.map((g) => g.opp_type))) {
+          const hit = gs.filter((g) => g.opp_type === type);
+          const wins = hit.filter((g) => Number(g.win) === 1).length;
+          out.push({ season, type, games: hit.length, share: gs.length ? hit.length / gs.length : 0, wins, losses: hit.length - wins, win_rate: hit.length ? wins / hit.length : null });
+        }
+      }
+      return out;
+    },
+  });
+
+  dash.calc('by_weak', {
+    inputs: ['games'], title: "Main attacker's Weakness by season",
+    description: "Games by the Weakness of the opponent's main attacker, with your wins and losses.",
+    fn: (games) => {
+      const out = [];
+      for (const season of ['all', ...new Set(games.map((g) => g.season))]) {
+        const gs = season === 'all' ? games : games.filter((g) => g.season === season);
+        for (const weak of new Set(gs.map((g) => g.opp_weak))) {
+          const hit = gs.filter((g) => g.opp_weak === weak);
+          const wins = hit.filter((g) => Number(g.win) === 1).length;
+          out.push({ season, weak, games: hit.length, share: gs.length ? hit.length / gs.length : 0, wins, losses: hit.length - wins, win_rate: hit.length ? wins / hit.length : null });
+        }
+      }
+      return out;
+    },
+  });
+
   dash.calc('by_core', {
     inputs: ['games'], title: 'Deck types by season',
     description: "Games grouped by the opponent's main attacker, with your record and the most common partner, Energy and plan seen with it.",
@@ -253,7 +300,7 @@
 <script>
   const pct = d3.format('.0%');
   const SEASON_LABEL = { all: 'All games', 'Before Oct 14': 'Before Oct 14', 'B4b season': 'This season (B4b)', 'Dual Fusion': 'Dual Fusion' };
-  const E_COLOR = { Grass: '#3f9b4b', Fire: '#d9502e', Water: '#2f7fd0', Lightning: '#d6a419', Psychic: '#9150c8', Fighting: '#b8692c', Darkness: '#5b6170', Metal: '#8c97a3' };
+  const E_COLOR = { Grass: '#3f9b4b', Fire: '#d9502e', Water: '#2f7fd0', Lightning: '#d6a419', Psychic: '#9150c8', Fighting: '#b8692c', Darkness: '#5b6170', Metal: '#8c97a3', Dragon: '#a8862a', Colorless: '#a4a8ae' };
   const season = () => dash.params().season || 'all';
   const where = (obj) => Object.entries(obj).map(([k, v]) => encodeURIComponent(k) + '=' + encodeURIComponent(v)).join('&');
   const failLine = (el) => { el.replaceChildren(); const d = document.createElement('div'); d.className = 'lf-fail'; d.textContent = 'Failed to load'; el.append(d); };
@@ -329,6 +376,8 @@
   }
   dash.onData(() => drawBars('energy-bars', 'by_energy', 'energy', (r) => E_COLOR[r.energy]));
   dash.onData(() => drawBars('plan-bars', 'by_plan', 'plan', null));
+  dash.onData(() => drawBars('type-bars', 'by_type', 'type', (r) => E_COLOR[r.type] || 'var(--cds-chart-muted)'));
+  dash.onData(() => drawBars('weak-bars', 'by_weak', 'weak', (r) => E_COLOR[r.weak] || 'var(--cds-chart-muted)'));
 
   // sortable, searchable tables
   const tableState = { core: { key: 'games', dir: -1, q: '' } };
