@@ -1,0 +1,340 @@
+{
+ "what": "REPORT-ONLY (K19): the judge's and km3's chosen lines beside his note at Q8, Q9, Q11, Q15; no scoring",
+ "points": [
+  {
+   "point": "LAD-20261022_235420000_SR-t10",
+   "question": "Q8",
+   "his_choice": "Not sure",
+   "his_note": "The other line here seems to value the second point, but that is worthless when they are about to get 3 points and win the game. But a move I see now that I'm unsure why I didn't do would be to retreat and put goomy in the active spot, since I have one card left to draw and it is a second flygon that I could evolve and use next turn. Playing cyrus and retreating to goomy might have been the best move.",
+   "his_move": [
+    "Attach:1Grass@2 zone",
+    "Attack:Dragon Pulse"
+   ],
+   "key": [
+    "Attach:1Grass@2 zone",
+    "Attack:Dragon Pulse"
+   ],
+   "judge": [
+    {
+     "plan": [
+      "Attach:1Grass@2 zone",
+      "Play:Cyrus",
+      "Activate:1@1",
+      "Retreat:1",
+      "ChooseRetreatEnergy#{\"energies\":[\"Grass\",\"Fighting\"],\"to_in_play_idx\":1}",
+      "Ability@3",
+      "AttachTypedFromDiscard:Grass@0",
+      "EndTurn"
+     ],
+     "plan_number": 137,
+     "cut": "end_turn",
+     "reason": "Prep Trapinch with Grass Energy, use Cyrus to trap Riolu against Goomy's Sticky Membrane while protecting our 10 HP Flygon ex, and use Dragon's Blessing to give Goomy retreat Energy.",
+     "state": "chose",
+     "stop_reason": "end_turn",
+     "parse_error": null
+    }
+   ],
+   "km3": [
+    {
+     "seed": 25101000001,
+     "plan": [
+      "Play:Cyrus",
+      "Activate:1@1",
+      "Attach:1Grass@3 zone",
+      "Attack:Dragon Pulse"
+     ],
+     "plan_full": [
+      "Play:Cyrus",
+      "Activate:1@1",
+      "Attach:1Grass@3 zone",
+      "Attack:Dragon Pulse"
+     ],
+     "cut": "attack"
+    },
+    {
+     "seed": 25101000002,
+     "plan": [
+      "Play:Cyrus",
+      "Activate:1@1",
+      "Attach:1Grass@3 zone",
+      "Attack:Dragon Pulse"
+     ],
+     "plan_full": [
+      "Play:Cyrus",
+      "Activate:1@1",
+      "Attach:1Grass@3 zone",
+      "Attack:Dragon Pulse"
+     ],
+     "cut": "attack"
+    },
+    {
+     "seed": 25101000003,
+     "plan": [
+      "Play:Cyrus",
+      "Activate:1@1",
+      "Attach:1Grass@3 zone",
+      "Attack:Dragon Pulse"
+     ],
+     "plan_full": [
+      "Play:Cyrus",
+      "Activate:1@1",
+      "Attach:1Grass@3 zone",
+      "Attack:Dragon Pulse"
+     ],
+     "cut": "attack"
+    }
+   ]
+  },
+  {
+   "point": "LAD-20261022_235420000_SR-t4",
+   "question": "Q9",
+   "his_choice": "Both were fine",
+   "his_note": "Upon reflection, I think retreating would have been the smartest move. I think I was trying to take the kill, but retreating to goomy might have been the best move. The opponent would then have had to waste their next energy attaching it to happiny, or retreat and attack with riolu and wouldn't have been able to attack with lucario. This would have given me time to get the dragonair for the energy attaching ability or just the turn based energy I needed to get flygon ready to attack, before exposing him to the danger.",
+   "his_move": [
+    "Play:Rare Candy",
+    "Evolve:Flygon ex@1",
+    "Play:Professor's Research",
+    "Play:Hiking Trail",
+    "Attach:1Fighting@1 zone",
+    "Attack:Slam"
+   ],
+   "key": [
+    "Play:Rare Candy",
+    "Evolve:Flygon ex@1",
+    "Play:Professor's Research",
+    "Play:Hiking Trail",
+    "Attach:1Fighting@1 zone",
+    "Attack:Slam"
+   ],
+   "judge": [
+    {
+     "plan": [
+      "Play:Professor's Research"
+     ],
+     "plan_number": 20,
+     "cut": "chance",
+     "reason": "Play Professor's Research first to see our two drawn cards before evolving into Flygon ex, attaching Energy, and retreating Dratini.",
+     "state": "chose",
+     "stop_reason": "end_turn",
+     "parse_error": null
+    }
+   ],
+   "km3": [
+    {
+     "seed": 25101000001,
+     "plan": [
+      "Retreat:3",
+      "Play:Rare Candy",
+      "Evolve:Flygon ex@0",
+      "Play:Professor's Research"
+     ],
+     "plan_full": [
+      "Retreat:3",
+      "Play:Rare Candy",
+      "Evolve:Flygon ex@0",
+      "Play:Professor's Research"
+     ],
+     "cut": "chance"
+    },
+    {
+     "seed": 25101000002,
+     "plan": [
+      "Retreat:3",
+      "Play:Rare Candy",
+      "Evolve:Flygon ex@0",
+      "Play:Professor's Research"
+     ],
+     "plan_full": [
+      "Retreat:3",
+      "Play:Rare Candy",
+      "Evolve:Flygon ex@0",
+      "Play:Professor's Research"
+     ],
+     "cut": "chance"
+    },
+    {
+     "seed": 25101000003,
+     "plan": [
+      "Retreat:3",
+      "Play:Rare Candy",
+      "Evolve:Flygon ex@0",
+      "Play:Professor's Research"
+     ],
+     "plan_full": [
+      "Retreat:3",
+      "Play:Rare Candy",
+      "Evolve:Flygon ex@0",
+      "Play:Professor's Research"
+     ],
+     "cut": "chance"
+    }
+   ]
+  },
+  {
+   "point": "LAD-20261023_005124000_SR-t8",
+   "question": "Q11",
+   "his_choice": "Not sure",
+   "his_note": "Honestly not sure. My thinking was, the only way to win this is to kill their mega. Doing damage to butterfree is virtually worthless unless I kill it, which the other line wouldn't do. Then they use butterfree's attack, do 60 damage, I then either have to switch to someone else, but also they now have damaged my ex and can use cyrus at any time to pull him up and kill him in one shot with mega sceptile. Retreating and attacking with buzzwole maybe would have been the best move, but my logic was using pheromosa does damage to sceptile and that is the only way to win.",
+   "his_move": [
+    "Play:Lusamine",
+    "AttachFromDiscard#{\"in_play_idx\":2,\"num_random_energies\":1}",
+    "Attach:1Grass@3 zone",
+    "Attack:Jump Blues"
+   ],
+   "key": [
+    "Play:Lusamine",
+    "AttachFromDiscard#{\"in_play_idx\":2,\"num_random_energies\":1}",
+    "Attach:1Grass@3 zone",
+    "Attack:Jump Blues"
+   ],
+   "judge": [
+    {
+     "plan": [
+      "Attach:1Grass@3 zone",
+      "Retreat:2",
+      "Play:Lusamine",
+      "AttachFromDiscard#{\"in_play_idx\":0,\"num_random_energies\":2}",
+      "Attack:Big Beat"
+     ],
+     "plan_number": 47,
+     "cut": "attack",
+     "reason": "Retreat Pheromosa so Lusamine can attach two discarded Grass Energies to Buzzwole ex for Big Beat, while attaching the turn's Energy to Benched Buzzwole to threaten an 80-damage Ground Beat next turn alongside Cyrus or Professor's Research.",
+     "state": "chose",
+     "stop_reason": "end_turn",
+     "parse_error": null
+    }
+   ],
+   "km3": [
+    {
+     "seed": 25101000001,
+     "plan": [
+      "Play:Cyrus",
+      "Activate:1@1",
+      "Attach:1Grass@2 zone",
+      "Ability@1",
+      "Activate:0@2",
+      "Attack:Punch"
+     ],
+     "plan_full": [
+      "Play:Cyrus",
+      "Activate:1@1",
+      "Attach:1Grass@2 zone",
+      "Ability@1",
+      "Activate:0@2",
+      "Attack:Punch",
+      "EndTurn"
+     ],
+     "cut": "attack"
+    },
+    {
+     "seed": 25101000002,
+     "plan": [
+      "Play:Cyrus",
+      "Activate:1@1",
+      "Attach:1Grass@2 zone",
+      "Ability@1",
+      "Activate:0@2",
+      "Attack:Punch"
+     ],
+     "plan_full": [
+      "Play:Cyrus",
+      "Activate:1@1",
+      "Attach:1Grass@2 zone",
+      "Ability@1",
+      "Activate:0@2",
+      "Attack:Punch",
+      "EndTurn"
+     ],
+     "cut": "attack"
+    },
+    {
+     "seed": 25101000003,
+     "plan": [
+      "Play:Cyrus",
+      "Activate:1@1",
+      "Attach:1Grass@2 zone",
+      "Ability@1",
+      "Activate:0@2",
+      "Attack:Punch"
+     ],
+     "plan_full": [
+      "Play:Cyrus",
+      "Activate:1@1",
+      "Attach:1Grass@2 zone",
+      "Ability@1",
+      "Activate:0@2",
+      "Attack:Punch",
+      "EndTurn"
+     ],
+     "cut": "attack"
+    }
+   ],
+   "engine_note": "the non-ex Buzzwole is not an Ultra Beast in the engine data (the cause of the 3 G1 drops): a line through its Ultra Beast effects is outside what the engine plays"
+  },
+  {
+   "point": "LAD-20261023_204548000_SR-t7",
+   "question": "Q15",
+   "his_choice": "My play was better",
+   "his_note": "Once again, the only way you win is getting blastoise with enough energy, the other line waste an energy to put the more valuable pokemon into a vulnerable position. I think that is the worst move possible. That being said, switching to bench eiscue wouldn't have been unreasonable",
+   "his_move": [
+    "Play:Poké Ball",
+    "Attach:1Water@1 zone",
+    "Place:Eiscue@2",
+    "EndTurn"
+   ],
+   "key": [
+    "Play:Poké Ball",
+    "Attach:1Water@1 zone",
+    "Place:Eiscue@2",
+    "EndTurn"
+   ],
+   "judge": [
+    {
+     "plan": [
+      "Attach:1Water@1 zone",
+      "Place:Squirtle@2",
+      "Play:Poké Ball"
+     ],
+     "plan_number": 9,
+     "cut": "chance",
+     "reason": "Attach the second Water Energy to Wartortle, bench Squirtle, and play Poké Ball to thin Eiscue from the deck so we maximize our odds of drawing Mega Blastoise ex or draw supporters next turn.",
+     "state": "chose",
+     "stop_reason": "end_turn",
+     "parse_error": null
+    }
+   ],
+   "km3": [
+    {
+     "seed": 25101000001,
+     "plan": [
+      "Play:Poké Ball"
+     ],
+     "plan_full": [
+      "Play:Poké Ball"
+     ],
+     "cut": "chance"
+    },
+    {
+     "seed": 25101000002,
+     "plan": [
+      "Play:Poké Ball"
+     ],
+     "plan_full": [
+      "Play:Poké Ball"
+     ],
+     "cut": "chance"
+    },
+    {
+     "seed": 25101000003,
+     "plan": [
+      "Play:Poké Ball"
+     ],
+     "plan_full": [
+      "Play:Poké Ball"
+     ],
+     "cut": "chance"
+    }
+   ]
+  }
+ ]
+}

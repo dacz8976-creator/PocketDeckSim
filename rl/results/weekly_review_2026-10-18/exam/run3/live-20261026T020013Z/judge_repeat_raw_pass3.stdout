@@ -1,0 +1,8 @@
+7 call(s) returned, 0 failed; this run $0.1658 (cap $75.0); ledger $26.5313 of $75.0 (peak accrued+reserved $27.8825); 0 refused by the bound (Gemini 4 Argon on Vertex AI (Gemini Enterprise Agent Platform): $2 / $10 per 1M input / output tokens through 2026-11-30, $4 / $20 from 2026-12-01, per the Google Cloud announcement cloud.google.com/blog/products/ai-machine-learning/gemini-4-argon-available-on-google-cloud (read 2026-10-21; the Vertex pricing page tables could not be read, so verify in the billing console); thinking tokens are billed as output (the model guide: every token processed is billed, thinking included; ai.google.dev/gemini-api/docs/pricing); input charged in full (the cached-input discount is ignored: a conservative upper bound))
+LAD-20261024_182453000_SR-t4 judge plan 2 -> ['Play:Copycat']
+LAD-20261024_182453000_SR-t6 judge plan 7 -> ['Evolve:Mega Sharpedo ex@0', 'Play:Copycat']
+LAD-20261024_182453000_SR-t2 judge plan 4 -> ['Play:Poké Ball']
+LAD-20261024_182453000_SR-t8 judge plan 14 -> ['Attach:1Water@1 zone', 'Play:Wallace', 'ChooseRandomEvolutionTarget#{"energy_type":"Water","in_play_idx":1}']
+LAD-20261024_202943000_SR-t2 judge plan 14 -> ['Attach:1Water@0 zone', 'Play:Elegant Cape', 'Tool:Elegant Cape@0', 'Play:Wallace', 'ChooseRandomEvolutionTarget#{"energy_type":"Water","in_play_idx":0}']
+LAD-20261024_202943000_SR-t4 judge plan 5 -> ['Play:Lisia']
+LAD-20261024_202943000_SR-t6 judge plan 28 -> ['Play:Soothing Shore', 'Play:Copycat']

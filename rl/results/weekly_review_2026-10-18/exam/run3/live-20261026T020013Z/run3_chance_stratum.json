@@ -1,0 +1,133 @@
+{
+ "schema": "exam_pooled_primary_v2",
+ "confidence": 0.95,
+ "runs": [
+  {
+   "label": "run3 (#1)",
+   "report": "/home/dacz8976/exam_run3/live-20261026T020013Z/run3/report_primary.json",
+   "eligibility": "/home/dacz8976/exam_run3/live-20261026T020013Z/run3/eligibility.json"
+  }
+ ],
+ "method": {
+  "resamples": 20000,
+  "bootstrap_seed": 20261019,
+  "sign_flip_seed": 20261020,
+  "sign_flip_draws": 100000,
+  "exact_up_to_games": 16,
+  "min_games": 10,
+  "analysis_sha256": "64f78cbd7f6d1bbf991387f9779b6e41dbf2c6fa8da44e2aad29bbb869f176fa",
+  "zero_margin": 1e-09,
+  "pass_level": 0.975
+ },
+ "judge_models": [
+  "gemini-4-argon"
+ ],
+ "per_run": [
+  {
+   "label": "run3 (#1)",
+   "n_decisions": 258,
+   "n_games": 76,
+   "km3_seeds": [
+    25101000001,
+    25101000002,
+    25101000003
+   ],
+   "failed_replies": {
+    "n": 0,
+    "share": 0.0,
+    "over_20pct": false
+   },
+   "alone_at_0.95_equals_its_report": {
+    "estimate": 0.173127,
+    "ci_low": 0.094508,
+    "ci_high": 0.250335,
+    "n_decisions": 258,
+    "n_games": 76,
+    "sign_flip_p": 9e-05,
+    "sign_flip": "monte-carlo",
+    "verdict": "judge higher"
+   }
+  }
+ ],
+ "primary": {
+  "rates": {
+   "km3": {
+    "estimate": 0.450904,
+    "ci_low": 0.387978,
+    "ci_high": 0.515021,
+    "n_decisions": 258,
+    "n_games": 76
+   },
+   "judge": {
+    "estimate": 0.624031,
+    "ci_low": 0.570866,
+    "ci_high": 0.677043,
+    "n_decisions": 258,
+    "n_games": 76
+   }
+  },
+  "contrast": {
+   "a": "judge",
+   "b": "km3",
+   "estimate": 0.173127,
+   "ci_low": 0.094508,
+   "ci_high": 0.250335,
+   "n_decisions": 258,
+   "n_games": 76,
+   "n_pairs_dropped": 0,
+   "sign_flip_p": 9e-05,
+   "sign_flip": "monte-carlo",
+   "verdict": "judge higher",
+   "reason": "the interval excludes 0 and the sign-flip test agrees"
+  },
+  "population": {
+   "n_decisions": 258,
+   "n_games": 76
+  },
+  "failed_replies": {
+   "n": 0,
+   "share": 0.0,
+   "over_20pct": false
+  },
+  "pass": null
+ },
+ "stratum": {
+  "file": "/home/dacz8976/exam_run3/live-20261026T020013Z/in/stratum_chance_run3.txt",
+  "what": "secondary, descriptive only: no verdict, no PASS",
+  "n_by_run": {
+   "run3 (#1)": 168
+  },
+  "rates": {
+   "km3": {
+    "estimate": 0.490079,
+    "ci_low": 0.426396,
+    "ci_high": 0.556213,
+    "n_decisions": 168,
+    "n_games": 74
+   },
+   "judge": {
+    "estimate": 0.64881,
+    "ci_low": 0.582353,
+    "ci_high": 0.713376,
+    "n_decisions": 168,
+    "n_games": 74
+   }
+  },
+  "contrast": {
+   "a": "judge",
+   "b": "km3",
+   "estimate": 0.15873,
+   "ci_low": 0.075397,
+   "ci_high": 0.242038,
+   "n_decisions": 168,
+   "n_games": 74,
+   "n_pairs_dropped": 0,
+   "sign_flip_p": 0.0006,
+   "sign_flip": "monte-carlo"
+  },
+  "population": {
+   "n_decisions": 168,
+   "n_games": 74
+  }
+ }
+}

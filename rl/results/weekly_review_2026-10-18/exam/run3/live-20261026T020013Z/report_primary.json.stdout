@@ -1,0 +1,10 @@
+PREFIX agreement (all primary points): 258 decisions in 76 games (95% nominal percentile interval of a game-level bootstrap (whole games drawn with replacement); simulated coverage is about 89-94% at 10-17 games):
+  km3: 0.451 [0.388, 0.515] over 258 decisions
+  judge: 0.624 [0.571, 0.677] over 258 decisions
+  judge - km3: +0.173 [+0.095, +0.250]  sign-flip p 9e-05  -> judge higher (the interval excludes 0 and the sign-flip test over games agrees)
+FULL-PLAN agreement (full-scope points only): 90 decisions in 49 games (95% nominal percentile interval of a game-level bootstrap (whole games drawn with replacement); simulated coverage is about 89-94% at 10-17 games):
+  km3: 0.368 [0.259, 0.478] over 87 decisions
+  judge: 0.591 [0.500, 0.686] over 88 decisions
+  judge - km3: +0.209 [+0.070, +0.349]  sign-flip p 0.00876  -> judge higher (the interval excludes 0 and the sign-flip test over games agrees; computed on 86 of 90 decisions, 4 not comparable for both bots (dropped, not scored)); 4 decision(s) not comparable for both
+JUDGE ROWS WITHOUT A VALID CHOICE (policy 'miss', counted as misses): 0 at primary points, 0 at diagnostic points, of 258 primary judge rows
+FORMAL RESULT

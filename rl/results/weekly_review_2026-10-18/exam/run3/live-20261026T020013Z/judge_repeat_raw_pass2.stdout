@@ -1,0 +1,70 @@
+TASK FAILED LAD-20261024_182453000_SR-t2 repeat 0: API error 429: {
+  "error": {
+    "code": 429,
+    "message": "Resource exhausted. Please try again later. Please refer to https://cloud.google.com/vertex-ai/generative-ai/docs/error-code-429 for more details.",
+    "status": "RESOURCE_EXHAUSTED"
+  }
+}
+
+NOT SENT LAD-20261024_182453000_SR-t4 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261024_182453000_SR-t6 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261024_182453000_SR-t8 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261024_202943000_SR-t2 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261024_202943000_SR-t4 repeat 0: a call failed: no further call is sent
+NOT SENT LAD-20261024_202943000_SR-t6 repeat 0: a call failed: no further call is sent
+54 call(s) returned, 1 failed; this run $3.2490 (cap $75.0); ledger $26.3655 of $75.0 (peak accrued+reserved $27.0508); 6 refused by the bound (Gemini 4 Argon on Vertex AI (Gemini Enterprise Agent Platform): $2 / $10 per 1M input / output tokens through 2026-11-30, $4 / $20 from 2026-12-01, per the Google Cloud announcement cloud.google.com/blog/products/ai-machine-learning/gemini-4-argon-available-on-google-cloud (read 2026-10-21; the Vertex pricing page tables could not be read, so verify in the billing console); thinking tokens are billed as output (the model guide: every token processed is billed, thinking included; ai.google.dev/gemini-api/docs/pricing); input charged in full (the cached-input discount is ignored: a conservative upper bound))
+INCOMPLETE BATCH: 6 call(s) not made (the spend bound or an earlier failure), 1 task(s) failed or refused and 1 without a usable choice; the file has every row that was made
+LAD-20261023_225646000_SR-t7 judge plan 12 -> ['Attach:1Water@1 zone', 'Play:Soothing Shore', 'Play:Lucky Ice Pop']
+LAD-20261023_231312000_SR-t2 judge plan 3 -> ['Play:Poké Ball']
+LAD-20261024_003120000_SR-t3 judge plan 2 -> ['Attach:1Water@0 zone', 'EndTurn']
+LAD-20261023_225646000_SR-t9 judge plan 3 -> ['Attach:1Water@1 zone', 'Retreat:1', 'Attack:Ram']
+LAD-20261024_003120000_SR-t7 judge plan 26 -> ['Play:Lucky Ice Pop']
+LAD-20261024_003120000_SR-t5 judge plan 2 -> ['Attach:1Water@0 zone', 'Place:Oricorio@2', 'Attack:Ram']
+LAD-20261024_003927000_SR-t10 judge plan 7 -> ["Play:Professor's Research"]
+LAD-20261024_003927000_SR-t2 judge plan 9 -> ['Play:Poké Ball']
+LAD-20261024_003927000_SR-t4 judge plan 1 -> ['Attach:1Water@0 zone', 'Attack:Ram']
+LAD-20261024_143157000_SR-t2 judge plan 2 -> ["Play:Professor's Research"]
+LAD-20261024_003927000_SR-t6 judge plan 4 -> ['Attach:1Water@2 zone', 'Attack:Ram']
+LAD-20261024_143157000_SR-t4 judge plan 13 -> ['Attach:1Fighting@0 zone', 'Play:Rare Candy', 'Evolve:Haxorus@0', 'EndTurn']
+LAD-20261024_152239000_SR-t1 judge plan 4 -> ['Play:Poké Ball']
+LAD-20261024_152239000_SR-t3 judge plan 11 -> ["Play:Professor's Research"]
+LAD-20261024_152239000_SR-t5 judge plan 49 -> ['Attach:1Metal@1 zone', 'Place:Axew@3', 'Play:Rare Candy', 'Evolve:Haxorus@1', 'EndTurn']
+LAD-20261024_163813000_SR-t1 judge plan 4 -> ['Place:Axew@1', "Play:Professor's Research"]
+LAD-20261024_163813000_SR-t3 judge plan 2 -> ["Play:Professor's Research"]
+LAD-20261024_152239000_SR-t7 judge plan 10 -> ['Attach:1Fighting@0 zone', 'Play:Iris', 'Play:Poké Ball']
+LAD-20261024_163813000_SR-t7 judge plan 18 -> ['Attach:1Metal@0 zone', 'Play:Rare Candy', 'Evolve:Haxorus@1', 'Play:Copycat']
+LAD-20261024_163813000_SR-t5 judge plan 78 -> ['Attach:1Fighting@2 zone', 'Play:Rare Candy', 'Evolve:Haxorus@2', 'EndTurn']
+LAD-20261024_164318000_SR-t10 judge plan 16 -> ['Attach:1Metal@0 zone', 'Play:Rare Candy', 'Evolve:Haxorus@0', 'Play:Copycat']
+LAD-20261024_164318000_SR-t4 judge plan 26 -> ['Attach:1Fighting@0 zone', 'EndTurn']
+LAD-20261024_164318000_SR-t8 judge plan 3 -> ["Play:Professor's Research"]
+LAD-20261024_164318000_SR-t6 judge plan 182 -> ['Place:Axew@2', 'Attach:1Metal@2 zone', 'Play:Iris', 'Play:Small Balloon', 'Tool:Small Balloon@1', 'EndTurn']
+LAD-20261024_165202000_SR-t1 judge plan 12 -> ['Play:Small Balloon', 'Tool:Small Balloon@0', 'Play:Clear Veil', 'Tool:Clear Veil@1', 'Play:Copycat']
+LAD-20261024_165202000_SR-t5 judge plan 17 -> ["Play:Professor's Research"]
+LAD-20261024_165202000_SR-t3 judge plan 32 -> ['Play:Clear Veil', 'Tool:Clear Veil@2', 'Play:Copycat']
+LAD-20261024_165202000_SR-t9 judge plan 20 -> ['Attach:1Lightning@3 zone', 'Ability@1', 'Ability@2', 'Attack:Dede-Circuit']
+LAD-20261024_165913000_SR-t2 judge plan 5 -> ['Play:Clear Veil', 'Tool:Clear Veil@0', 'Play:Copycat']
+LAD-20261024_172633000_SR-t2 judge plan 6 -> ['Play:Poké Ball']
+LAD-20261024_172633000_SR-t4 judge plan 44 -> ['Attach:1Darkness@1 zone', 'Place:Hoopa ex@3', 'Play:Starting Plains', 'Play:Copycat']
+LAD-20261024_165202000_SR-t7 judge plan None -> None
+LAD-20261024_175131000_SR-t2 judge plan 7 -> ['Attach:1Water@0 zone', 'Play:Poké Ball']
+LAD-20261024_175131000_SR-t6 judge plan 63 -> ['Attach:1Water@1 zone', 'Retreat:1', 'Play:Wallace', 'ChooseRandomEvolutionTarget#{"energy_type":"Water","in_play_idx":0}']
+LAD-20261024_175131000_SR-t4 judge plan 29 -> ['Attach:1Water@1 zone', 'Play:Cabbie']
+LAD-20261024_175606000_SR-t3 judge plan 12 -> ['Attach:1Water@0 zone', 'Evolve:Mega Sharpedo ex@0', 'Play:Soothing Shore', 'Play:Cabbie']
+LAD-20261024_175606000_SR-t1 judge plan 4 -> ['Play:Elegant Cape', 'Tool:Elegant Cape@0', 'EndTurn']
+LAD-20261024_180105000_SR-t1 judge plan 3 -> ['Play:Elegant Cape', 'Tool:Elegant Cape@0', 'Play:Copycat']
+LAD-20261024_180350000_SR-t1 judge plan 6 -> ['Play:Soothing Shore', 'Play:Wallace', 'ChooseRandomEvolutionTarget#{"energy_type":"Water","in_play_idx":0}']
+LAD-20261024_180350000_SR-t3 judge plan 57 -> ['Attach:1Water@0 zone', 'Place:Carvanha@1', 'Ability@0', 'Play:Copycat']
+LAD-20261024_180749000_SR-t1 judge plan 4 -> ['Play:Elegant Cape', 'Tool:Elegant Cape@0', 'Play:Wallace', 'ChooseRandomEvolutionTarget#{"energy_type":"Water","in_play_idx":0}']
+LAD-20261024_180350000_SR-t5 judge plan 34 -> ['Play:Elegant Cape', 'Tool:Elegant Cape@0', 'Play:Copycat']
+LAD-20261024_180942000_SR-t1 judge plan 10 -> ['Place:Carvanha@1', 'EndTurn']
+LAD-20261024_180942000_SR-t5 judge plan 2 -> ['Attach:1Water@0 zone', 'Evolve:Mega Sharpedo ex@0', 'Attack:Turbo Shark']
+LAD-20261024_180942000_SR-t3 judge plan 3 -> ['Play:Copycat']
+LAD-20261024_180942000_SR-t7 judge plan 7 -> ['Play:Wallace', 'ChooseRandomEvolutionTarget#{"energy_type":"Water","in_play_idx":1}']
+LAD-20261024_181948000_SR-t2 judge plan 20 -> ['Attach:1Water@0 zone', 'Play:Elegant Cape', 'Tool:Elegant Cape@0', 'Play:Soothing Shore', 'Play:Wallace', 'ChooseRandomEvolutionTarget#{"energy_type":"Water","in_play_idx":0}']
+LAD-20261024_180942000_SR-t9 judge plan 23 -> ['Place:Magikarp@3', 'Attach:1Water@3 zone', 'Retreat:1', 'Attack:Turbo Shark']
+LAD-20261024_181948000_SR-t4 judge plan 1 -> ['Play:Copycat']
+LAD-20261024_181948000_SR-t8 judge plan 3 -> ['Attach:1Water@1 zone', 'Evolve:Mega Sharpedo ex@0', 'Retreat:1', 'Attack:Mega Blaster']
+LAD-20261024_182453000_SR-t10 judge plan 22 -> ['Play:Lisia', 'Retreat:1', 'EndTurn']
+LAD-20261024_181948000_SR-t6 judge plan 10 -> ['Attach:1Water@0 zone', 'Play:Soothing Shore', 'Play:Cabbie']
+LAD-20261024_182453000_SR-t14 judge plan 6 -> ['Attach:1Water@1 zone', 'Retreat:1', 'Attack:Turbo Shark']
+LAD-20261024_182453000_SR-t12 judge plan 22 -> ['Play:Irida', 'Retreat:1', 'EndTurn']

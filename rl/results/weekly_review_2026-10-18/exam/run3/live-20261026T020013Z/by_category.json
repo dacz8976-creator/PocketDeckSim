@@ -1,0 +1,337 @@
+{
+ "what": "DESCRIPTIVE: prefix agreement per decision on the 49 primary points, grouped; points of one game are not independent and a point counts in each of its deck kinds; no interval or verdict here (see report_primary.json)",
+ "source_rows": "/rows",
+ "agreement_field": "agrees",
+ "bots": [
+  "judge",
+  "km3"
+ ],
+ "table": {
+  "deck_kinds": {
+   "Bench preparation": {
+    "judge": {
+     "n_decisions": 223,
+     "agreement": 0.619
+    },
+    "km3": {
+     "n_decisions": 223,
+     "agreement": 0.466
+    }
+   },
+   "control and combinations": {
+    "judge": {
+     "n_decisions": 178,
+     "agreement": 0.629
+    },
+    "km3": {
+     "n_decisions": 178,
+     "agreement": 0.406
+    }
+   },
+   "evolution and setup": {
+    "judge": {
+     "n_decisions": 212,
+     "agreement": 0.627
+    },
+    "km3": {
+     "n_decisions": 212,
+     "agreement": 0.454
+    }
+   },
+   "fast pressure": {
+    "judge": {
+     "n_decisions": 83,
+     "agreement": 0.59
+    },
+    "km3": {
+     "n_decisions": 83,
+     "agreement": 0.538
+    }
+   },
+   "sacrifice and recovery": {
+    "judge": {
+     "n_decisions": 139,
+     "agreement": 0.619
+    },
+    "km3": {
+     "n_decisions": 139,
+     "agreement": 0.477
+    }
+   }
+  },
+  "answer_kind": {
+   "attack now": {
+    "judge": {
+     "n_decisions": 92,
+     "agreement": 0.565
+    },
+    "km3": {
+     "n_decisions": 92,
+     "agreement": 0.475
+    }
+   },
+   "prepare": {
+    "judge": {
+     "n_decisions": 151,
+     "agreement": 0.669
+    },
+    "km3": {
+     "n_decisions": 151,
+     "agreement": 0.435
+    }
+   },
+   "sacrifice": {
+    "judge": {
+     "n_decisions": 15,
+     "agreement": 0.533
+    },
+    "km3": {
+     "n_decisions": 15,
+     "agreement": 0.467
+    }
+   }
+  },
+  "deck": {
+   "v2deck_03c584b95c": {
+    "judge": {
+     "n_decisions": 2,
+     "agreement": 0.5
+    },
+    "km3": {
+     "n_decisions": 2,
+     "agreement": 0.0
+    }
+   },
+   "v2deck_06ee642b71": {
+    "judge": {
+     "n_decisions": 21,
+     "agreement": 0.667
+    },
+    "km3": {
+     "n_decisions": 21,
+     "agreement": 0.492
+    }
+   },
+   "v2deck_0a80817331": {
+    "judge": {
+     "n_decisions": 2,
+     "agreement": 1.0
+    },
+    "km3": {
+     "n_decisions": 2,
+     "agreement": 0.0
+    }
+   },
+   "v2deck_2c68a379f5": {
+    "judge": {
+     "n_decisions": 14,
+     "agreement": 0.571
+    },
+    "km3": {
+     "n_decisions": 14,
+     "agreement": 0.333
+    }
+   },
+   "v2deck_4af97d2795": {
+    "judge": {
+     "n_decisions": 5,
+     "agreement": 0.6
+    },
+    "km3": {
+     "n_decisions": 5,
+     "agreement": 0.4
+    }
+   },
+   "v2deck_4fa967805c": {
+    "judge": {
+     "n_decisions": 48,
+     "agreement": 0.688
+    },
+    "km3": {
+     "n_decisions": 48,
+     "agreement": 0.604
+    }
+   },
+   "v2deck_5309993874": {
+    "judge": {
+     "n_decisions": 9,
+     "agreement": 0.556
+    },
+    "km3": {
+     "n_decisions": 9,
+     "agreement": 0.667
+    }
+   },
+   "v2deck_5469f7747f": {
+    "judge": {
+     "n_decisions": 6,
+     "agreement": 0.667
+    },
+    "km3": {
+     "n_decisions": 6,
+     "agreement": 0.0
+    }
+   },
+   "v2deck_589bb9927a": {
+    "judge": {
+     "n_decisions": 45,
+     "agreement": 0.533
+    },
+    "km3": {
+     "n_decisions": 45,
+     "agreement": 0.363
+    }
+   },
+   "v2deck_5c3566c961": {
+    "judge": {
+     "n_decisions": 3,
+     "agreement": 0.667
+    },
+    "km3": {
+     "n_decisions": 3,
+     "agreement": 0.667
+    }
+   },
+   "v2deck_6328cc45fe": {
+    "judge": {
+     "n_decisions": 8,
+     "agreement": 0.625
+    },
+    "km3": {
+     "n_decisions": 8,
+     "agreement": 0.583
+    }
+   },
+   "v2deck_693850eaa5": {
+    "judge": {
+     "n_decisions": 5,
+     "agreement": 1.0
+    },
+    "km3": {
+     "n_decisions": 5,
+     "agreement": 0.6
+    }
+   },
+   "v2deck_7907f1e146": {
+    "judge": {
+     "n_decisions": 29,
+     "agreement": 0.448
+    },
+    "km3": {
+     "n_decisions": 29,
+     "agreement": 0.506
+    }
+   },
+   "v2deck_8561e086a0": {
+    "judge": {
+     "n_decisions": 3,
+     "agreement": 1.0
+    },
+    "km3": {
+     "n_decisions": 3,
+     "agreement": 0.111
+    }
+   },
+   "v2deck_9633a01781": {
+    "judge": {
+     "n_decisions": 10,
+     "agreement": 0.8
+    },
+    "km3": {
+     "n_decisions": 10,
+     "agreement": 0.333
+    }
+   },
+   "v2deck_995ac0891e": {
+    "judge": {
+     "n_decisions": 13,
+     "agreement": 0.769
+    },
+    "km3": {
+     "n_decisions": 13,
+     "agreement": 0.615
+    }
+   },
+   "v2deck_9d2c3c7ccf": {
+    "judge": {
+     "n_decisions": 4,
+     "agreement": 0.5
+    },
+    "km3": {
+     "n_decisions": 4,
+     "agreement": 0.25
+    }
+   },
+   "v2deck_a75894a903": {
+    "judge": {
+     "n_decisions": 6,
+     "agreement": 0.333
+    },
+    "km3": {
+     "n_decisions": 6,
+     "agreement": 0.222
+    }
+   },
+   "v2deck_b1999cc10f": {
+    "judge": {
+     "n_decisions": 3,
+     "agreement": 1.0
+    },
+    "km3": {
+     "n_decisions": 3,
+     "agreement": 0.556
+    }
+   },
+   "v2deck_ba2eca5816": {
+    "judge": {
+     "n_decisions": 9,
+     "agreement": 0.556
+    },
+    "km3": {
+     "n_decisions": 9,
+     "agreement": 0.407
+    }
+   },
+   "v2deck_bac3c8a158": {
+    "judge": {
+     "n_decisions": 2,
+     "agreement": 0.5
+    },
+    "km3": {
+     "n_decisions": 2,
+     "agreement": 0.5
+    }
+   },
+   "v2deck_c4ac51db37": {
+    "judge": {
+     "n_decisions": 2,
+     "agreement": 1.0
+    },
+    "km3": {
+     "n_decisions": 2,
+     "agreement": 0.167
+    }
+   },
+   "v2deck_d5e2757125": {
+    "judge": {
+     "n_decisions": 7,
+     "agreement": 0.714
+    },
+    "km3": {
+     "n_decisions": 7,
+     "agreement": 0.429
+    }
+   },
+   "v2deck_f5671a4e7f": {
+    "judge": {
+     "n_decisions": 2,
+     "agreement": 0.5
+    },
+    "km3": {
+     "n_decisions": 2,
+     "agreement": 0.0
+    }
+   }
+  }
+ }
+}
