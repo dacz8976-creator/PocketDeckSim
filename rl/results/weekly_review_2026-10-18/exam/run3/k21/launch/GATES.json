@@ -1,0 +1,262 @@
+{
+ "what": "K21's gates on development positions only",
+ "main": "23bea2dd150ba0eccbb85e5d944c2107f341b17e",
+ "new_binary_sha256": "b0df8e0e119a233906c2b8cdcce01ccab557a7a54e150b78de5ab993fdcdce51",
+ "a_km3_identical": [
+  {
+   "position": "KW-261005_003547000-t11",
+   "equal": true
+  },
+  {
+   "position": "KW-261005_003547000-t13",
+   "equal": true
+  },
+  {
+   "position": "KW-261005_034953000-t02",
+   "equal": true
+  },
+  {
+   "position": "KW-261013_015659000-t05",
+   "equal": true
+  },
+  {
+   "position": "KW-261012_203719000-t13",
+   "equal": true
+  },
+  {
+   "position": "KW-261012_210823000-t04",
+   "equal": true
+  }
+ ],
+ "b_kx3_reproduced": [
+  {
+   "position": "KW-261005_003547000-t11",
+   "seed": 1,
+   "got": [
+    "Attach:1Water@1 zone",
+    "Retreat:1",
+    "Place:Suicune ex@3",
+    "EndTurn"
+   ],
+   "recorded": [
+    "Attach:1Water@1 zone",
+    "Retreat:1",
+    "Place:Suicune ex@3",
+    "EndTurn"
+   ],
+   "reproduced": true,
+   "maps_to_one_plan": true,
+   "match_error": null
+  },
+  {
+   "position": "KW-261005_003547000-t13",
+   "seed": 1,
+   "got": [
+    "Attach:1Water@1 zone",
+    "Evolve:Mega Sharpedo ex@1",
+    "Retreat:1",
+    "Attack:Turbo Shark",
+    "Attach:1Water@2 fx",
+    "ResolveAttackRetaliation#{\"attacking_ref\":[0,0],\"damaged_refs\":[[1,0]],\"perish_body_heads\":false,\"point_denial_flips\":[]}",
+    "EndTurn"
+   ],
+   "recorded": [
+    "Attach:1Water@1 zone",
+    "Evolve:Mega Sharpedo ex@1",
+    "Retreat:1",
+    "Attack:Turbo Shark",
+    "Attach:1Water@2 fx",
+    "ResolveAttackRetaliation",
+    "EndTurn"
+   ],
+   "reproduced": true,
+   "maps_to_one_plan": true,
+   "match_error": null
+  },
+  {
+   "position": "KW-261005_003547000-t11",
+   "seed": 2,
+   "got": [
+    "Attach:1Water@1 zone",
+    "Retreat:1",
+    "Place:Suicune ex@3",
+    "EndTurn"
+   ],
+   "recorded": [
+    "Attach:1Water@1 zone",
+    "Retreat:1",
+    "Place:Suicune ex@3",
+    "EndTurn"
+   ],
+   "reproduced": true,
+   "maps_to_one_plan": true,
+   "match_error": null
+  },
+  {
+   "position": "KW-261005_003547000-t13",
+   "seed": 2,
+   "got": [
+    "Attach:1Water@1 zone",
+    "Evolve:Mega Sharpedo ex@1",
+    "Retreat:1",
+    "Attack:Turbo Shark",
+    "Attach:1Water@2 fx",
+    "ResolveAttackRetaliation#{\"attacking_ref\":[0,0],\"damaged_refs\":[[1,0]],\"perish_body_heads\":false,\"point_denial_flips\":[]}",
+    "EndTurn"
+   ],
+   "recorded": [
+    "Attach:1Water@1 zone",
+    "Evolve:Mega Sharpedo ex@1",
+    "Retreat:1",
+    "Attack:Turbo Shark",
+    "Attach:1Water@2 fx",
+    "ResolveAttackRetaliation",
+    "EndTurn"
+   ],
+   "reproduced": true,
+   "maps_to_one_plan": true,
+   "match_error": null
+  },
+  {
+   "position": "KW-261005_003547000-t11",
+   "seed": 3,
+   "got": [
+    "Attach:1Water@1 zone",
+    "Retreat:1",
+    "Place:Suicune ex@3",
+    "EndTurn"
+   ],
+   "recorded": [
+    "Attach:1Water@1 zone",
+    "Retreat:1",
+    "Place:Suicune ex@3",
+    "EndTurn"
+   ],
+   "reproduced": true,
+   "maps_to_one_plan": true,
+   "match_error": null
+  },
+  {
+   "position": "KW-261005_003547000-t13",
+   "seed": 3,
+   "got": [
+    "Attach:1Water@1 zone",
+    "Evolve:Mega Sharpedo ex@1",
+    "Retreat:1",
+    "Attack:Turbo Shark",
+    "Attach:1Water@2 fx",
+    "ResolveAttackRetaliation#{\"attacking_ref\":[0,0],\"damaged_refs\":[[1,0]],\"perish_body_heads\":false,\"point_denial_flips\":[]}",
+    "EndTurn"
+   ],
+   "recorded": [
+    "Attach:1Water@1 zone",
+    "Evolve:Mega Sharpedo ex@1",
+    "Retreat:1",
+    "Attack:Turbo Shark",
+    "Attach:1Water@2 fx",
+    "ResolveAttackRetaliation",
+    "EndTurn"
+   ],
+   "reproduced": true,
+   "maps_to_one_plan": true,
+   "match_error": null
+  },
+  {
+   "position": "KW-261013_015659000-t05",
+   "seed": 3,
+   "got": [
+    "Place:Pawniard@3",
+    "Attach:1Darkness@1 zone",
+    "Evolve:Glimmora@2",
+    "EndTurn"
+   ],
+   "recorded": [
+    "Place:Pawniard@3",
+    "Attach:1Darkness@1 zone",
+    "Evolve:Glimmora@2",
+    "EndTurn"
+   ],
+   "reproduced": true,
+   "maps_to_one_plan": true,
+   "match_error": null
+  },
+  {
+   "position": "KW-261013_015659000-t05",
+   "seed": 9,
+   "got": [
+    "Place:Pawniard@3",
+    "Attach:1Darkness@1 zone",
+    "Evolve:Glimmora@2",
+    "EndTurn"
+   ],
+   "recorded": [
+    "Place:Pawniard@3",
+    "Attach:1Darkness@1 zone",
+    "Evolve:Glimmora@2",
+    "EndTurn"
+   ],
+   "reproduced": true,
+   "maps_to_one_plan": true,
+   "match_error": null
+  }
+ ],
+ "d_timing": [
+  {
+   "position": "KW-261005_003547000-t11",
+   "seed": 1,
+   "seconds": 5.6
+  },
+  {
+   "position": "KW-261005_003547000-t13",
+   "seed": 1,
+   "seconds": 5.9
+  },
+  {
+   "position": "KW-261005_003547000-t11",
+   "seed": 2,
+   "seconds": 5.9
+  },
+  {
+   "position": "KW-261005_003547000-t13",
+   "seed": 2,
+   "seconds": 5.9
+  },
+  {
+   "position": "KW-261005_003547000-t11",
+   "seed": 3,
+   "seconds": 5.8
+  },
+  {
+   "position": "KW-261005_003547000-t13",
+   "seed": 3,
+   "seconds": 6.0
+  },
+  {
+   "position": "KW-261013_015659000-t05",
+   "seed": 3,
+   "seconds": 17.1
+  },
+  {
+   "position": "KW-261013_015659000-t05",
+   "seed": 9,
+   "seconds": 18.7
+  }
+ ],
+ "c_runner": {
+  "judge_run_rc": 0,
+  "rows_rc": 0,
+  "judge_run_tail": "limmet@3', 'Attach:1Darkness@2 zone', 'Attack:Venomous Hit']\nKW-261012_210823000-t04 km3  -> ['Place:Regigigas@3', 'Place:Pawniard@2', 'Evolve:Alolan Muk@0', 'Play:Copycat']\nKW-261012_210823000-t04 km3  -> ['Place:Regigigas@3', 'Place:Pawniard@2', 'Evolve:Alolan Muk@0', 'Play:Copycat']\nKW-261012_210823000-t04 km3  -> ['Place:Regigigas@3', 'Place:Pawniard@2', 'Evolve:Alolan Muk@0', 'Play:Copycat']\n",
+  "rows_tail": " plan 8  0s\nseed 25101900101 KW-261012_210823000-t04: plan 118  0s\nseed 25101900102 KW-261013_015659000-t05: plan 15  0s\nseed 25101900102 KW-261012_203719000-t13: plan 8  0s\nseed 25101900102 KW-261012_210823000-t04: plan 118  0s\nseed 25101900103 KW-261013_015659000-t05: plan 15  0s\nseed 25101900103 KW-261012_203719000-t13: plan 8  0s\nseed 25101900103 KW-261012_210823000-t04: plan 118  0s\nall done\n",
+  "rows": 9,
+  "equal": 9,
+  "diffs": [],
+  "same_keys": true
+ },
+ "pass": {
+  "a": true,
+  "b": true,
+  "c": true,
+  "d": true
+ },
+ "all_pass": true
+}

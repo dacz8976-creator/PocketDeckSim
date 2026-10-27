@@ -1,0 +1,11 @@
+{
+ "binary": "/home/dacz8976/k21_pgpos/bin/pg_pos_k21",
+ "binary_sha256": "b0df8e0e119a233906c2b8cdcce01ccab557a7a54e150b78de5ab993fdcdce51",
+ "engine_commit": "cd20a97a5",
+ "engine_tree": "4ebb30a941737d16b80adddbd1466761e0670e63",
+ "recipe": "frozen-7's rl/ai_judge/build_baseline.sh with the archive switched to cd20a97a's engine (K21)",
+ "pgd_patch_sha256": "904b9e86ab058d4d379b3f323ad5dd2bbeb4d5ebf03e5bc2db63257b325b3279",
+ "dg_patch_sha256": "c98ccc63a29a8b7e467a91043a5179295e2cfb9b67ab0a36ad946cdabb77949b",
+ "pg_pos_rs_sha256": "224888a8bc6867dcfefed7d39174f5bb31228f49d9ce399ffa1aa4680e69cbc7",
+ "rustc": "rustc 1.93.1 (01f6ddf75 2026-02-11) (built from a source tarball)"
+}

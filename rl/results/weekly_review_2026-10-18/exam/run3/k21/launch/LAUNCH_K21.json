@@ -1,0 +1,21 @@
+{
+ "what": "K21's launch line: the kx3 executable, committed before any kx3 exam row",
+ "binary_sha256": "b0df8e0e119a233906c2b8cdcce01ccab557a7a54e150b78de5ab993fdcdce51",
+ "kit_commit": "d4877c97eb5eb9fc93c2bf72dd7d31e5e25850b9",
+ "seeds": "25101000001,25101000002,25101000003",
+ "gates_pass": {
+  "a": true,
+  "b": true,
+  "c": true,
+  "d": true
+ },
+ "gates_all_pass": true,
+ "gates_dev_main": "23bea2dd150ba0eccbb85e5d944c2107f341b17e",
+ "gate_d_kx3_seconds": {
+  "n": 8,
+  "mean": 8.9,
+  "max": 18.7
+ },
+ "written_utc": "2026-10-27T02:05:17Z",
+ "kx3_exam_rows_so_far": 0
+}
