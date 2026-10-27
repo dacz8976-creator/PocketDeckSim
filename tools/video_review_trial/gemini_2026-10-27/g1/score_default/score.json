@@ -1,0 +1,14 @@
+{"major": 7, "minor": 2, "missed": 1, "g_right_over_c": 1, "unsettled": 0,
+ "errors": [
+  {"turn": "Opening (repeated T2, T4, T6)", "item": "Supporter in the opening hand", "g": "Colress", "truth": "Cabbie (hand card reads Cabbie at t_0029 and stays in hand through t_0186); G wrote Colress in five places, counted once", "frames": ["t_0029", "t_0053", "t_0085", "t_0121"], "grade": "major", "settled_by": "frames"},
+  {"turn": "T4", "item": "Target of Turbo Shark's Energy", "g": "1 Water to Benched Carvanha", "truth": "1 Water to Benched Feebas (Feebas 1 Water at t_0119, 2 at t_0121; Carvanha 0)", "frames": ["t_0115", "t_0119", "t_0121"], "grade": "major", "settled_by": "frames"},
+  {"turn": "T6", "item": "Retreat cost", "g": "Mega Sharpedo ex retreats discarding 1 Water Energy", "truth": "No Energy discarded; Mega Sharpedo ex keeps its 1 Water on the Bench", "frames": ["t_0186", "t_0191", "t_0193"], "grade": "major", "settled_by": "frames"},
+  {"turn": "T6", "item": "Target of the turn's Water Energy", "g": "Water to Benched Mega Sharpedo ex", "truth": "Water to the new Active Carvanha (0 Energy at t_0191, attached at t_0193)", "frames": ["t_0191", "t_0193"], "grade": "major", "settled_by": "frames"},
+  {"turn": "T7", "item": "Mega Lopunny ex retreat", "g": "Discarded 1 Fighting Energy, leaving 1", "truth": "Nothing discarded; Mega Lopunny ex keeps 2 Fighting on the Bench", "frames": ["t_0216", "t_0222", "t_0226"], "grade": "major", "settled_by": "frames"},
+  {"turn": "T9", "item": "Target of Ryze's Fighting Energy", "g": "Benched Mega Lopunny ex", "truth": "Active Hitmonchan ex (1 at t_0281, 2 at t_0284; Lopunny stays at 2)", "frames": ["t_0281", "t_0284"], "grade": "major", "settled_by": "frames"},
+  {"turn": "T11", "item": "Target of Ryze's Fighting Energy", "g": "Active Hitmonchan ex", "truth": "Benched Mega Lopunny ex (2 at t_0324, 3 at t_0337; Hitmonchan stays at 2)", "frames": ["t_0324", "t_0337"], "grade": "major", "settled_by": "frames"},
+  {"turn": "T5", "item": "Order and time of Ryze's Fighting Energy attach", "g": "After Copycat, t=139", "truth": "Before Copycat: 1 Fighting at t_0127, 2 at t_0132, Copycat at about 134-136; target (Mega Lopunny ex) is right", "frames": ["t_0127", "t_0132", "t_0136"], "grade": "minor", "settled_by": "frames"},
+  {"turn": "T1, T3, T5", "item": "Ryze's hand sizes", "g": "5 after T1 draw, 6 after T3 draw, 6 after T5 draw, Copycat shuffled 5 cards", "truth": "4, 5, 5, and Copycat shuffled 4 cards (hand fan counts at t_0045, t_0085, t_0094, t_0132, t_0136)", "frames": ["t_0045", "t_0085", "t_0094", "t_0132", "t_0136"], "grade": "minor", "settled_by": "frames"}
+ ],
+ "field_sheet": null,
+ "review_sheet": {"fields_checked": 12, "matched": 12, "mismatches": []}}

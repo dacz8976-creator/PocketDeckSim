@@ -1,0 +1,14 @@
+{"major": 2, "minor": 0, "missed": 3, "g_right_over_c": 3, "unsettled": 0,
+ "errors": [
+  {"turn": "Global 6", "item": "Retreat of Mega Sharpedo ex: Energy discarded (and end-board Energy count)", "g": "Retreat discards 1 Water Energy (t=221-222); end board lists Mega Sharpedo ex with 0 Energy", "truth": "No Energy discarded. Mega Sharpedo ex has 1 Water before the retreat (t=219) and still 1 Water on the Bench (t=226, 228, 235). Mega Gyarados ex goes from 3 to 4 Water only through the Energy Zone attach at t=226.", "frames": ["frames/t_0219.jpg", "frames/t_0221.jpg", "frames/t_0222.jpg", "frames/t_0224.jpg", "frames/t_0226.jpg", "frames/t_0228.jpg", "frames/t_0235.jpg"], "grade": "major", "settled_by": "CHECK_NOTES"},
+  {"turn": "Global 6", "item": "Card discarded by Mega Blaster", "g": "Third discarded card visible at t=233 is Steel Apron (also in OPPONENT_review notes and UNCERTAINTIES)", "truth": "Identities of the 3 discarded cards are not readable (top of discard at t=232 is Pokemon Center Lady; at t=234 a different unreadable card). Steel Apron is on top only at t=235, after Mega Mawile ex is Knocked Out, because its attached Tool goes to the discard; it was in play all game.", "frames": ["frames/t_0232.jpg", "frames/t_0233.jpg", "frames/t_0234.jpg", "frames/t_0235.jpg"], "grade": "major", "settled_by": "CHECK_NOTES"}
+ ],
+ "field_sheet": {"fields_checked": 12, "matched": 11, "matched_vs_ref_raw": 10, "mismatches": [
+  {"field": "opponent_trainers", "g": "Team Rocket's Hijinks (turn 1)", "truth": "Team Rocket's Master Plan (card title at t=74)", "frames": ["frames/t_0074.jpg"], "settled_by": "frames and compare.json"}
+ ], "g_right_over_ref": [
+  {"field": "special_conditions", "g": ["Confused"], "ref": [], "truth": "Opponent's Master Plan Confused Dustin's Carvanha (t=76); the field's meaning is not defined in the brief", "frames": ["frames/t_0074.jpg", "frames/t_0076.jpg"]}
+ ]},
+ "review_sheet": {"fields_checked": 12, "matched": 12, "matched_vs_ref_raw": 11, "mismatches": [], "g_right_over_ref": [
+  {"field": "special_conditions", "g": ["Confused"], "ref": [], "truth": "Opponent's Master Plan Confused Dustin's Carvanha (t=76); the field's meaning is not defined in the brief", "frames": ["frames/t_0074.jpg", "frames/t_0076.jpg"]}
+ ]}
+}

@@ -1,0 +1,45 @@
+{
+ "http": 200,
+ "seconds": 153.9,
+ "usd": 0.18709,
+ "usd_is_worst_case": false,
+ "price_per_mtok": [
+  2.0,
+  10.0
+ ],
+ "usage": {
+  "promptTokenCount": 36696,
+  "candidatesTokenCount": 4767,
+  "totalTokenCount": 48066,
+  "trafficType": "ON_DEMAND",
+  "promptTokensDetails": [
+   {
+    "modality": "VIDEO",
+    "tokenCount": 34707
+   },
+   {
+    "modality": "TEXT",
+    "tokenCount": 1989
+   }
+  ],
+  "candidatesTokensDetails": [
+   {
+    "modality": "TEXT",
+    "tokenCount": 4767
+   }
+  ],
+  "thoughtsTokenCount": 6603
+ },
+ "finish_reason": "STOP",
+ "count_tokens": 40616,
+ "settings": {
+  "model": "gemini-4-argon",
+  "fps": 2.0,
+  "media_resolution": null,
+  "thinking": "HIGH",
+  "max_output_tokens": 32768
+ },
+ "video": "video.mp4",
+ "video_mb": 10.6,
+ "brief": "REVIEW.md"
+}

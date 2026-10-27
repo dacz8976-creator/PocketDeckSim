@@ -1,0 +1,162 @@
+=== REVIEW.md ===
+
+# Game Review — Dustin (`Dacz8976`) vs. Opponent (`Point n Click`)
+
+- **Deck:** `New deck 17` (slot 25; 2D Pattern Code QR shown at `t=0s`–`1s`; deck preview at `t=1s` showing Feebas, Milotic ex, Carvanha [Sharp Fang], Carvanha [Aqua Jet], Mega Sharpedo ex [4-diamond & 2-star], Magikarp, Mega Gyarados ex, Poké Ball; Water Energy)
+- **First player:** Opponent (coin flip landed on Tails at `t=22s`–`23s`; Dustin went second)
+- **Final score:** Dustin 3 – 0 Opponent
+- **Victory condition:** Points (3 points from Knocking Out opponent's Active Mega Mawile ex; opponent also had no Benched Pokémon remaining)
+- **Global turns:** 6
+- **Result screen (`t=248s`–`251s`):**
+  - **Dustin's Card of the Game:** Mega Gyarados ex (`t=248s`)
+  - **Opponent's Card of the Game:** Mega Mawile ex (`t=249s`–`250s`)
+  - **Rank points:** Master Ball Rank, 924 pts → 925 pts (+1 pt gained, `t=250s`–`251s`)
+
+---
+
+## Opening (`t=25s` – `t=68s`)
+
+- **Energy Zones (`t=25s`):**
+  - **Dustin:** Water
+  - **Opponent:** Metal
+- **Dustin's opening hand (`t=25s`–`26s`):** Cabbie, Poké Ball, Carvanha (50 HP, Sharp Fang), Wallace (2-star), Mega Sharpedo ex (2-star).
+- **Setup:**
+  - **Dustin:** Places **Carvanha** (50 HP, Sharp Fang) in the Active Spot (`t=27s`), Bench empty; taps Start Battle (`t=28s`).
+  - **Opponent:** Places **Mega Mawile ex** (170 HP) in the Active Spot (`t=63s`, revealed at `t=65s`), Bench empty.
+- Match begins ("Ready? Go!") at `t=68s`.
+
+---
+
+## Global Turn 1 — Opponent's Turn (`t=69s` – `t=82s`)
+
+- **Draw:** Opponent draws 1 card (`t=71s`, hand size: 5). No Energy is generated on Turn 1 (next Energy: Metal).
+- **Supporter:** Opponent plays **Team Rocket's Master Plan** (`t=74s`).
+  - Dustin's Active **Carvanha** becomes **Confused** (`t=76s`).
+  - Opponent flips a coin (`t=78s`–`80s`): **Heads** (`t=80s`), so opponent's Active Mega Mawile ex is not Confused.
+- Opponent ends turn (`t=82s`).
+
+**Board state (end of Turn 1):**
+- **Opponent — Active:** Mega Mawile ex (170/170 HP, 0 Energy) | **Bench:** none
+- **Dustin — Active:** Carvanha [Sharp Fang] (50/50 HP, 0 Energy, Confused) | **Bench:** none
+
+---
+
+## Global Turn 2 — Dustin's Turn (`t=83s` – `t=120s`)
+
+- **Draw:** Dustin draws **Lisia** (`t=85s`).
+- **Dustin's hand at start of turn (`t=86s`):** Cabbie, Poké Ball, Wallace (2-star), Mega Sharpedo ex (2-star), Lisia.
+- **Item:** Dustin plays **Poké Ball** (`t=89s`–`90s`), drawing **Magikarp** (30 HP, Promo, Expert Splasher) from the deck (`t=92s`).
+- **Bench:** Dustin plays **Magikarp** (30 HP) onto the Bench (`t=95s`).
+- **Supporter / Evolution:** Dustin plays **Wallace** (2-star) (`t=104s`–`105s`), targeting Active **Carvanha** (`t=106s`). **Mega Sharpedo ex** (4-diamond, 190 HP) is pulled from the deck and evolves onto Active Carvanha (`t=107s`–`109s`).
+  - **Mega Sharpedo ex** recovers from being **Confused** (`t=110s`) and its HP becomes 190/190 (`t=111s`).
+- **Energy attachment:** Dustin attaches 1 **Water Energy** from the Energy Zone to Active **Mega Sharpedo ex** (`t=113s`).
+- **Attack:** Active **Mega Sharpedo ex** uses **Turbo Shark** (`t=116s`) for **70 damage** (`t=117s`–`118s`).
+  - Opponent's Active **Mega Mawile ex** HP: 170 → 100 (`t=118s`).
+  - **Turbo Shark effect:** Attaches 1 **Water Energy** from Dustin's Energy Zone to Benched **Magikarp** (`t=119s`–`120s`).
+- **Score:** Dustin 0 – 0 Opponent.
+
+**Board state (end of Turn 2):**
+- **Opponent — Active:** Mega Mawile ex (100/170 HP, 0 Energy) | **Bench:** none
+- **Dustin — Active:** Mega Sharpedo ex (190/190 HP, 1 Water Energy) | **Bench:** Magikarp (30/30 HP, 1 Water Energy)
+
+---
+
+## Global Turn 3 — Opponent's Turn (`t=121s` – `t=158s`)
+
+- **Draw:** Opponent draws 1 card (`t=123s`, hand size: 5).
+- **Tool:** Opponent attaches **Steel Apron** to Active **Mega Mawile ex** (`t=128s`–`131s`, −10 damage taken from attacks and immune to Special Conditions).
+- **Item 1:** Opponent plays **Lucky Ice Pop** (`t=133s`), healing **20 damage** from Active **Mega Mawile ex** (`t=135s`).
+  - **Mega Mawile ex** HP: 100 → 120 (`t=136s`).
+  - Coin flip (`t=137s`–`140s`): **Tails** (`t=140s`); Lucky Ice Pop is discarded (`t=141s`).
+- **Item 2:** Opponent plays a second **Lucky Ice Pop** (`t=143s`), healing **20 damage** from Active **Mega Mawile ex** (`t=144s`).
+  - **Mega Mawile ex** HP: 120 → 140 (`t=145s`).
+  - Coin flip (`t=147s`–`149s`): **Tails** (`t=149s`); second Lucky Ice Pop is discarded (`t=150s`).
+- **Stadium:** Opponent plays **Starting Plains** (`t=152s`–`154s`, each Basic Pokémon in play gets +20 HP).
+  - Opponent's Active **Mega Mawile ex** HP: 140 → 160 (out of 190) (`t=156s`).
+  - Dustin's Benched **Magikarp** HP: 30 → 50 (out of 50) (`t=156s`).
+- **Energy attachment:** Opponent attaches 1 **Metal Energy** from the Energy Zone to Active **Mega Mawile ex** (`t=157s`).
+- Opponent ends turn without attacking (`t=158s`).
+
+**Board state (end of Turn 3):**
+- **Stadium:** Starting Plains
+- **Opponent — Active:** Mega Mawile ex (160/190 HP, 1 Metal Energy, Tool: Steel Apron) | **Bench:** none
+- **Dustin — Active:** Mega Sharpedo ex (190/190 HP, 1 Water Energy) | **Bench:** Magikarp (50/50 HP, 1 Water Energy)
+
+---
+
+## Global Turn 4 — Dustin's Turn (`t=159s` – `t=188s`)
+
+- **Draw:** Dustin draws **Carvanha** (50 HP, Promo, Aqua Jet) (`t=161s`).
+- **Dustin's hand at start of turn (`t=162s`):** Cabbie, Mega Sharpedo ex (2-star), Lisia, Carvanha (Promo, Aqua Jet).
+- **Bench:** Dustin plays **Carvanha** (Promo, Aqua Jet) onto the Bench (`t=163s`). With Starting Plains in play, its HP becomes 70/70 (`t=165s`).
+- **Supporter:** Dustin plays **Cabbie** (`t=166s`–`167s`), putting **Soothing Shore** from his deck into his hand (`t=169s`–`170s`).
+- **Stadium:** Dustin plays **Soothing Shore** (`t=172s`–`175s`), discarding **Starting Plains** (`t=175s`–`176s`).
+- **Energy attachment & Stadium HP update:** Dustin attaches 1 **Water Energy** from the Energy Zone to Benched **Magikarp** (`t=177s`–`178s`, now 2 Water Energy). Simultaneously (`t=178s`), the removal of Starting Plains reduces Basic Pokémon max HP by 20:
+  - Opponent's Active **Mega Mawile ex** HP: 160 → 140 (out of 170) (`t=178s`).
+  - Dustin's Benched **Carvanha** HP: 70 → 50 (`t=178s`).
+  - Dustin's Benched **Magikarp** HP: 50 → 30 (`t=178s`).
+- **Attack:** Active **Mega Sharpedo ex** uses **Turbo Shark** (`t=182s`–`183s`) for **60 damage** (70 base − 10 from Steel Apron, `t=184s`).
+  - Opponent's Active **Mega Mawile ex** HP: 140 → 80 (`t=185s`).
+  - **Turbo Shark effect:** Dustin selects Benched **Magikarp** (`t=186s`–`187s`) and attaches 1 **Water Energy** from the Energy Zone to **Magikarp** (`t=188s`, now 3 Water Energy).
+- **Score:** Dustin 0 – 0 Opponent.
+
+**Board state (end of Turn 4):**
+- **Stadium:** Soothing Shore
+- **Opponent — Active:** Mega Mawile ex (80/170 HP, 1 Metal Energy, Tool: Steel Apron) | **Bench:** none
+- **Dustin — Active:** Mega Sharpedo ex (190/190 HP, 1 Water Energy) | **Bench:** Carvanha [Aqua Jet] (50/50 HP, 0 Energy), Magikarp (30/30 HP, 3 Water Energy)
+
+---
+
+## Global Turn 5 — Opponent's Turn (`t=189s` – `t=206s`)
+
+- **Draw:** Opponent draws 1 card (`t=191s`, hand size: 2).
+- **Supporter:** Opponent plays **Pokémon Center Lady** (2-star) (`t=194s`), healing **30 damage** from Active **Mega Mawile ex** (`t=196s`).
+  - **Mega Mawile ex** HP: 80 → 110 (`t=197s`).
+- **Energy attachment:** Opponent attaches 1 **Metal Energy** from the Energy Zone to Active **Mega Mawile ex** (`t=199s`–`200s`, now 2 Metal Energy).
+- **Attack:** Opponent's Active **Mega Mawile ex** uses **Heat-Up Crunch** (`t=202s`–`203s`) for **60 damage** (`t=204s`).
+  - Dustin's Active **Mega Sharpedo ex** HP: 190 → 130 (`t=204s`–`205s`).
+  - **Heat-Up Crunch effect:** Gains +30 damage on subsequent Heat-Up Crunch attacks while Mega Mawile ex stays in the Active Spot (`t=205s`–`206s`).
+- **Score:** Dustin 0 – 0 Opponent.
+
+**Board state (end of Turn 5):**
+- **Stadium:** Soothing Shore
+- **Opponent — Active:** Mega Mawile ex (110/170 HP, 2 Metal Energy, Tool: Steel Apron, Effect: Heat-Up Crunch +30 damage) | **Bench:** none
+- **Dustin — Active:** Mega Sharpedo ex (130/190 HP, 1 Water Energy) | **Bench:** Carvanha [Aqua Jet] (50/50 HP, 0 Energy), Magikarp (30/30 HP, 3 Water Energy)
+
+---
+
+## Global Turn 6 — Dustin's Turn (`t=207s` – `t=240s`)
+
+- **Draw:** Dustin draws **Wallace** (2-diamond) (`t=209s`).
+- **Dustin's hand at start of turn (`t=210s`):** Mega Sharpedo ex (2-star), Lisia, Wallace (2-diamond).
+- **Supporter / Evolution:** Dustin plays **Wallace** (2-diamond) (`t=212s`–`213s`), targeting Benched **Magikarp** (`t=212s`–`214s`). **Mega Gyarados ex** (2-star, 210 HP) is pulled from the deck and evolves onto Benched Magikarp (`t=216s`–`217s`, 210/210 HP, 3 Water Energy).
+- **Retreat:** Dustin retreats Active **Mega Sharpedo ex** (`t=220s`–`221s`), discarding 1 **Water Energy** (`t=221s`–`222s`), and promotes **Mega Gyarados ex** to the Active Spot (`t=223s`–`224s`).
+- **Energy attachment:** Dustin attaches 1 **Water Energy** from the Energy Zone to Active **Mega Gyarados ex** (`t=226s`, now 4 Water Energy).
+- **Attack:** Active **Mega Gyarados ex** uses **Mega Blaster** (`t=229s`) for **130 damage** (140 base − 10 from Steel Apron, `t=230s`–`231s`).
+  - Opponent's Active **Mega Mawile ex** HP: 110 → 0 (`t=231s`).
+  - **Mega Blaster effect:** Discards the top 3 cards of the opponent's deck (`t=233s`; the third discarded card visible on top of the discard pile is **Steel Apron**).
+- **Knock Out & Points:** Opponent's **Mega Mawile ex** is Knocked Out (`t=234s`). Dustin takes **3 points** (`t=236s`–`238s`) and wins the game (**3 – 0**).
+
+**Board state (end of Turn 6 / Game End):**
+- **Stadium:** Soothing Shore
+- **Opponent — Active:** none (Knocked Out) | **Bench:** none
+- **Dustin — Active:** Mega Gyarados ex (210/210 HP, 4 Water Energy) | **Bench:** Carvanha [Aqua Jet] (50/50 HP, 0 Energy), Mega Sharpedo ex (130/190 HP, 0 Energy)
+
+=== OPPONENT.json ===
+```json
+{"recording": "ScreenRecording_10-24-2026 12-51-31_1.mp4", "went_first": "opponent", "global_turns": 6, "final_score": {"dustin": 3, "opponent": 0},
+ "end": "points",
+ "opponent_energy_zone": ["Metal"], "opponent_energy_attached": [{"turn": 3, "type": "Metal", "to": "Mega Mawile ex"}, {"turn": 5, "type": "Metal", "to": "Mega Mawile ex"}],
+ "opponent_pokemon": [{"name": "Mega Mawile ex", "set_number": null, "first_seen_turn": 1, "attacked": true, "attacks_used": ["Heat-Up Crunch"], "abilities_used": [], "points_taken": 0}],
+ "opponent_trainers": [{"turn": 1, "name": "Team Rocket's Master Plan"}, {"turn": 3, "name": "Steel Apron"}, {"turn": 3, "name": "Lucky Ice Pop"}, {"turn": 3, "name": "Lucky Ice Pop"}, {"turn": 3, "name": "Starting Plains"}, {"turn": 5, "name": "Pokémon Center Lady"}], "opponent_effects": {"special_conditions": ["Confused"], "healed": true, "bench_damage": false},
+ "opponent_card_of_the_game": "Mega Mawile ex", "notes": "On Turn 6 (t=233s), Mega Gyarados ex's Mega Blaster discarded 3 cards from the top of the opponent's deck; Steel Apron is clearly visible as the last of the 3 discarded cards, while the other 2 cards underneath it in the discard animation are not legible."}
+```
+
+=== UNCERTAINTIES.md ===
+
+1. **Cards discarded by Mega Blaster (Global Turn 6, `t=233s`):**
+   - When Mega Gyarados ex's Mega Blaster discards the top 3 cards of the opponent's deck at `t=233s`, all 3 cards move together in a fast fan animation to the discard pile. Only the top card of that group (**Steel Apron**) is clearly readable before the Knocked Out Mega Mawile ex and its attached Steel Apron cover the pile at `t=234s`–`235s`. Inspecting the opponent's discard pile or Battle Log after the match would settle the identities of the other two discarded cards.
+2. **Opponent's remaining hand and deck (Global Turns 1–6, `t=69s`–`240s`):**
+   - The opponent's 1 remaining card in hand at the end of the game and the remaining cards in their deck are never shown.
+3. **Exact set numbers of cards (`t=1s`–`250s`):**
+   - The bottom-left set codes/numbers on the cards are too small/blurred in the mobile recording to read with certainty, so `set_number` is left as `null`.

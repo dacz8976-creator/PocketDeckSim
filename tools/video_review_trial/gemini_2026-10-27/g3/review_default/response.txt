@@ -1,0 +1,232 @@
+=== REVIEW.md ===
+
+# Game Review — Ranked Match (Master Ball Rank)
+
+- **Deck:** `New deck 17` (Slot 25; 2D Pattern Code QR shown at `t=0s`–`t=1s`; deck editor preview at `t=1s` showing Feebas, Milotic ex, two Carvanha, two Mega Sharpedo ex, Magikarp, Mega Gyarados ex, and Poké Ball)
+- **Turn Order:** Opponent went first; Dustin (`Dacz8976`) went second (`t=21s`)
+- **Final Score:** Dustin 0 — Opponent 2
+- **Game End:** Concession by Dustin on Global Turn 15 (`t=499s`)
+- **Global Turns:** 15
+- **Result Screen Statistics (`t=506s`–`t=509s`):**
+  - **Turn order:** Went second
+  - **Turns played:** 15
+  - **Your points:** 0
+  - **Opponent's points:** 2
+  - **Damage done:** 120
+  - **Dustin's Card of the Game:** Mega Sharpedo ex (`t=506s`)
+  - **Opponent's Card of the Game:** Oricorio (`t=508s`)
+  - **Rank Points:** 970 pts (0 pts lost) (`t=509s`)
+
+---
+
+## Opening (`t=23s`–`t=32s`)
+- **Energy Zones (`t=23s`):**
+  - **Dustin:** Water Energy
+  - **Opponent:** Lightning Energy
+- **Dustin's Opening Hand (`t=24s`):** Magikarp (30 HP), Cabbie, Copycat, Poké Ball, Mega Gyarados ex (210 HP)
+- **Initial Setup (`t=25s`–`t=30s`):**
+  - **Dustin Active:** Magikarp (30 HP) (`t=25s`)
+  - **Dustin Bench:** None
+  - **Opponent Active:** Furfrou (70 HP; Ability: Fur Coat — takes −20 damage from attacks) (`t=29s`)
+  - **Opponent Bench:** None
+
+---
+
+## Turn-by-Turn Log
+
+### Global Turn 1 — Opponent's Turn (`t=33s`–`t=60s`)
+- Opponent draws a card (`t=34s`).
+- Opponent plays **Poké Ball** (`t=37s`), putting **Eevee** (60 HP) from their deck into their hand (`t=43s`).
+- Opponent benches **Eevee** (60 HP) (`t=44s`).
+- Opponent benches **Oricorio** (70 HP; Ability: Safeguard — prevents all damage done to this Pokémon by attacks from opponent's Pokémon ex) (`t=46s`–`t=48s`).
+- Opponent plays **Professor's Research** (`t=50s`), drawing 2 cards (`t=51s`).
+- Opponent attaches **Protective Poncho** (Tool) to benched **Eevee** (`t=56s`–`t=59s`).
+- Opponent ends their turn (`t=60s`).
+- **Board State:**
+  - **Opponent Active:** Furfrou (70 HP, 0 Energy) | **Bench:** Oricorio (70 HP, 0 Energy), Eevee (60 HP, 0 Energy, Protective Poncho)
+  - **Dustin Active:** Magikarp (30 HP, 0 Energy) | **Bench:** Empty
+
+### Global Turn 2 — Dustin's Turn (`t=60s`–`t=118s`)
+- **Hand at start of turn:** Cabbie, Copycat, Poké Ball, Mega Gyarados ex.
+- Dustin draws **Mega Sharpedo ex** (190 HP, regular art) (`t=62s`).
+- Dustin plays **Poké Ball** (`t=70s`), drawing **Feebas** (30 HP) from his deck (`t=72s`).
+- Dustin benches **Feebas** (30 HP) (`t=75s`).
+- Dustin plays **Cabbie** (`t=96s`), putting **Soothing Shore** (Stadium) from his deck into his hand (`t=99s`).
+- Dustin puts **Soothing Shore** into play (`t=102s`–`t=104s`).
+- Dustin attaches **Water Energy** from the Energy Zone to Active **Magikarp** (`t=107s`).
+- Active **Magikarp** attacks with **Expert Splasher** (`t=109s`):
+  - Flips 2 coins: tails, tails (0 heads, 2 tails) (`t=111s`–`t=114s`).
+  - Base 10 damage is reduced by 20 from Furfrou's **Fur Coat** Ability, dealing **0 damage** to Active **Furfrou** (70 HP → 70 HP) (`t=116s`).
+- **Board State:**
+  - **Opponent Active:** Furfrou (70 HP, 0 Energy) | **Bench:** Oricorio (70 HP, 0 Energy), Eevee (60 HP, 0 Energy, Protective Poncho)
+  - **Dustin Active:** Magikarp (30 HP, 1 Water Energy) | **Bench:** Feebas (30 HP, 0 Energy) | **Stadium:** Soothing Shore
+
+### Global Turn 3 — Opponent's Turn (`t=118s`–`t=147s`)
+- Opponent draws a card (`t=120s`).
+- Opponent plays **Professor's Research** (`t=123s`), drawing 2 cards (`t=124s`).
+- Opponent attaches **Lightning Energy** from the Energy Zone to Active **Furfrou** (`t=126s`).
+- Active **Furfrou** attacks with **Double Headbutt** (`t=130s`):
+  - Flips 2 coins: heads, tails (1 heads, 1 tails) (`t=131s`–`t=135s`).
+  - Deals **30 damage** to Active **Magikarp** (30 HP → 0 HP) (`t=137s`–`t=138s`).
+- Active **Magikarp** is **Knocked Out** (`t=140s`). Opponent takes 1 point (`t=142s`–`t=144s`). **Score: Dustin 0 — Opponent 1.**
+- Dustin promotes **Feebas** (30 HP) to the Active Spot (`t=146s`–`t=147s`).
+- **Board State:**
+  - **Opponent Active:** Furfrou (70 HP, 1 Lightning Energy) | **Bench:** Oricorio (70 HP, 0 Energy), Eevee (60 HP, 0 Energy, Protective Poncho)
+  - **Dustin Active:** Feebas (30 HP, 0 Energy) | **Bench:** Empty | **Stadium:** Soothing Shore
+
+### Global Turn 4 — Dustin's Turn (`t=148s`–`t=188s`)
+- **Hand at start of turn:** Copycat, Mega Gyarados ex, Mega Sharpedo ex (regular art).
+- Dustin draws **Mega Sharpedo ex** (190 HP, rainbow art) (`t=150s`).
+- Dustin plays **Copycat** (`t=164s`–`t=165s`), shuffling his 3-card hand into his deck and drawing 5 cards (matching opponent's 5-card hand): **Elegant Cape**, **Irida**, **Copycat**, **Carvanha** (50 HP, Sharp Fang), and **Mega Sharpedo ex** (190 HP, rainbow art) (`t=170s`–`t=174s`).
+- Dustin benches **Carvanha** (50 HP, Sharp Fang) (`t=176s`).
+- Dustin attaches **Elegant Cape** (Tool) to benched **Carvanha** (`t=181s`–`t=183s`).
+- Dustin attaches **Water Energy** from the Energy Zone to benched **Carvanha** (`t=185s`).
+- Dustin ends his turn (`t=187s`).
+- **Board State:**
+  - **Opponent Active:** Furfrou (70 HP, 1 Lightning Energy) | **Bench:** Oricorio (70 HP, 0 Energy), Eevee (60 HP, 0 Energy, Protective Poncho)
+  - **Dustin Active:** Feebas (30 HP, 0 Energy) | **Bench:** Carvanha (50 HP, 1 Water Energy, Elegant Cape) | **Stadium:** Soothing Shore
+
+### Global Turn 5 — Opponent's Turn (`t=188s`–`t=228s`)
+- Opponent draws a card (`t=189s`).
+- Opponent attaches **Lightning Energy** from the Energy Zone to benched **Oricorio** (`t=196s`).
+- Active **Furfrou** attacks with **Double Headbutt** (`t=202s`):
+  - Flips 2 coins: tails, heads (1 heads, 1 tails) (`t=203s`–`t=206s`).
+  - Deals **30 damage** to Active **Feebas** (30 HP → 0 HP) (`t=208s`–`t=210s`).
+- Active **Feebas** is **Knocked Out** (`t=211s`). Opponent takes 1 point (`t=213s`–`t=215s`). **Score: Dustin 0 — Opponent 2.**
+- Dustin promotes **Carvanha** (50 HP, 1 Water Energy, Elegant Cape) to the Active Spot (`t=227s`–`t=228s`).
+- **Board State:**
+  - **Opponent Active:** Furfrou (70 HP, 1 Lightning Energy) | **Bench:** Oricorio (70 HP, 1 Lightning Energy), Eevee (60 HP, 0 Energy, Protective Poncho)
+  - **Dustin Active:** Carvanha (50 HP, 1 Water Energy, Elegant Cape) | **Bench:** Empty | **Stadium:** Soothing Shore
+
+### Global Turn 6 — Dustin's Turn (`t=229s`–`t=271s`)
+- **Hand at start of turn:** Irida, Copycat, Mega Sharpedo ex (rainbow art).
+- Dustin draws **Mega Gyarados ex** (210 HP) (`t=231s`).
+- Dustin evolves Active **Carvanha** into **Mega Sharpedo ex** (rainbow art); with **Elegant Cape** (+30 HP for Stage 1), its HP becomes **220 HP** (`t=235s`–`t=240s`).
+- Dustin plays **Copycat** (`t=242s`), shuffling his 2-card hand into his deck and drawing 6 cards (matching opponent's 6-card hand): **Wallace** (full art), **Wallace** (regular art), **Mega Gyarados ex** (210 HP), **Soothing Shore**, **Elegant Cape**, and **Carvanha** (50 HP, Aqua Jet) (`t=247s`–`t=253s`).
+- Dustin benches **Carvanha** (50 HP, Aqua Jet) (`t=255s`–`t=256s`).
+- Dustin attaches **Water Energy** from the Energy Zone to Active **Mega Sharpedo ex** (rainbow art; now 2 Water Energy) (`t=258s`).
+- Dustin attaches **Elegant Cape** (Tool) to benched **Carvanha** (`t=260s`–`t=261s`).
+- Active **Mega Sharpedo ex** (rainbow art) attacks with **Turbo Shark** (`t=264s`–`t=267s`):
+  - Deals **50 damage** (70 base − 20 from Fur Coat) to Active **Furfrou** (70 HP → 20 HP) (`t=268s`–`t=269s`).
+  - Attaches 1 **Water Energy** from Dustin's Energy Zone to benched **Carvanha** (`t=270s`).
+- **Board State:**
+  - **Opponent Active:** Furfrou (20 HP, 1 Lightning Energy) | **Bench:** Oricorio (70 HP, 1 Lightning Energy), Eevee (60 HP, 0 Energy, Protective Poncho)
+  - **Dustin Active:** Mega Sharpedo ex (rainbow art, 220 HP, 2 Water Energy, Elegant Cape) | **Bench:** Carvanha (50 HP, 1 Water Energy, Elegant Cape) | **Stadium:** Soothing Shore
+
+### Global Turn 7 — Opponent's Turn (`t=271s`–`t=319s`)
+- Opponent draws a card (`t=272s`).
+- Opponent evolves benched **Eevee** into **Sylveon** (100 HP, Protective Poncho) (`t=276s`–`t=278s`).
+- Benched **Sylveon** uses its **Soothing Ribbon** Ability, healing **30 damage** from Active **Furfrou** (20 HP → 50 HP) (`t=281s`–`t=284s`).
+- Opponent attaches **Lightning Energy** from the Energy Zone to benched **Oricorio** (now 2 Lightning Energy) (`t=285s`).
+- Opponent retreats Active **Furfrou** (discarding 1 Lightning Energy) to the Bench and promotes **Oricorio** (70 HP, 2 Lightning Energy) to the Active Spot (`t=288s`–`t=291s`).
+- Opponent attaches **Giant Cape** (Tool, +20 HP) to Active **Oricorio** (70 HP → 90 HP) (`t=296s`–`t=301s`).
+- Opponent plays **Copycat** (`t=302s`–`t=303s`), shuffling their hand into their deck and drawing 4 cards (matching Dustin's 4-card hand) (`t=304s`–`t=306s`).
+- Opponent benches **Shinx** (60 HP) (`t=312s`).
+- Active **Oricorio** attacks with **Zzzap** (`t=315s`):
+  - Deals **70 damage** (50 base + 20 Lightning weakness) to Active **Mega Sharpedo ex** (rainbow art) (220 HP → 150 HP) (`t=317s`–`t=318s`).
+- **Board State:**
+  - **Opponent Active:** Oricorio (90 HP, 2 Lightning Energy, Giant Cape) | **Bench:** Furfrou (50 HP, 0 Energy), Sylveon (100 HP, 0 Energy, Protective Poncho), Shinx (60 HP, 0 Energy)
+  - **Dustin Active:** Mega Sharpedo ex (rainbow art, 150 HP, 2 Water Energy, Elegant Cape) | **Bench:** Carvanha (50 HP, 1 Water Energy, Elegant Cape) | **Stadium:** Soothing Shore
+
+### Global Turn 8 — Dustin's Turn (`t=319s`–`t=350s`)
+- **Hand at start of turn:** Wallace (full art), Wallace (regular art), Mega Gyarados ex, Soothing Shore.
+- Dustin draws **Lisia** (`t=321s`).
+- Dustin plays **Wallace** (full art) targeting benched **Carvanha** (`t=328s`–`t=330s`), evolving it into **Mega Sharpedo ex** (regular art) from his deck; with **Elegant Cape** (+30 HP), its HP becomes **220 HP** (`t=332s`–`t=335s`).
+- Dustin attaches **Water Energy** from the Energy Zone to benched **Mega Sharpedo ex** (regular art; now 2 Water Energy) (`t=337s`).
+- Dustin retreats Active **Mega Sharpedo ex** (rainbow art, 150 HP; discards 1 Water Energy, 1 Water Energy remaining) to the Bench and promotes **Mega Sharpedo ex** (regular art, 220 HP, 2 Water Energy, Elegant Cape) to the Active Spot (`t=338s`–`t=343s`).
+- Dustin ends his turn without attacking (`t=344s`–`t=345s`).
+- End-of-turn **Soothing Shore** effect heals **20 damage** from benched **Mega Sharpedo ex** (rainbow art) (150 HP → 170 HP) (`t=346s`–`t=348s`).
+- **Board State:**
+  - **Opponent Active:** Oricorio (90 HP, 2 Lightning Energy, Giant Cape) | **Bench:** Furfrou (50 HP, 0 Energy), Sylveon (100 HP, 0 Energy, Protective Poncho), Shinx (60 HP, 0 Energy)
+  - **Dustin Active:** Mega Sharpedo ex (regular art, 220 HP, 2 Water Energy, Elegant Cape) | **Bench:** Mega Sharpedo ex (rainbow art, 170 HP, 1 Water Energy, Elegant Cape) | **Stadium:** Soothing Shore
+
+### Global Turn 9 — Opponent's Turn (`t=350s`–`t=372s`)
+- Opponent draws a card (`t=351s`).
+- Benched **Sylveon** uses its **Soothing Ribbon** Ability, healing **20 damage** from benched **Furfrou** (50 HP → 70 HP) (`t=355s`–`t=358s`).
+- Opponent attaches **Lightning Energy** from the Energy Zone to benched **Shinx** (now 1 Lightning Energy) (`t=359s`).
+- Active **Oricorio** attacks with **Zzzap** (`t=368s`):
+  - Deals **70 damage** (50 base + 20 weakness) to Active **Mega Sharpedo ex** (regular art) (220 HP → 150 HP) (`t=370s`–`t=371s`).
+- **Board State:**
+  - **Opponent Active:** Oricorio (90 HP, 2 Lightning Energy, Giant Cape) | **Bench:** Furfrou (70 HP, 0 Energy), Sylveon (100 HP, 0 Energy, Protective Poncho), Shinx (60 HP, 1 Lightning Energy)
+  - **Dustin Active:** Mega Sharpedo ex (regular art, 150 HP, 2 Water Energy, Elegant Cape) | **Bench:** Mega Sharpedo ex (rainbow art, 170 HP, 1 Water Energy, Elegant Cape) | **Stadium:** Soothing Shore
+
+### Global Turn 10 — Dustin's Turn (`t=372s`–`t=395s`)
+- **Hand at start of turn:** Wallace (regular art), Mega Gyarados ex, Soothing Shore, Lisia.
+- Dustin draws **Milotic ex** (160 HP) (`t=374s`).
+- Dustin plays **Lisia** (`t=376s`–`t=377s`), which has no valid targets remaining in the deck (`t=379s`).
+- Dustin attaches **Water Energy** from the Energy Zone to Active **Mega Sharpedo ex** (regular art; now 3 Water Energy) (`t=381s`).
+- Dustin retreats Active **Mega Sharpedo ex** (regular art, 150 HP; discards 1 Water Energy, 2 Water Energy remaining) to the Bench and promotes **Mega Sharpedo ex** (rainbow art, 170 HP, 1 Water Energy, Elegant Cape) to the Active Spot (`t=383s`–`t=388s`).
+- Dustin ends his turn without attacking (`t=389s`–`t=390s`).
+- End-of-turn **Soothing Shore** effect heals **20 damage** from Active **Mega Sharpedo ex** (rainbow art, 170 HP → 190 HP) and **20 damage** from benched **Mega Sharpedo ex** (regular art, 150 HP → 170 HP) (`t=391s`–`t=394s`).
+- **Board State:**
+  - **Opponent Active:** Oricorio (90 HP, 2 Lightning Energy, Giant Cape) | **Bench:** Furfrou (70 HP, 0 Energy), Sylveon (100 HP, 0 Energy, Protective Poncho), Shinx (60 HP, 1 Lightning Energy)
+  - **Dustin Active:** Mega Sharpedo ex (rainbow art, 190 HP, 1 Water Energy, Elegant Cape) | **Bench:** Mega Sharpedo ex (regular art, 170 HP, 2 Water Energy, Elegant Cape) | **Stadium:** Soothing Shore
+
+### Global Turn 11 — Opponent's Turn (`t=395s`–`t=412s`)
+- Opponent draws a card (`t=396s`).
+- Opponent attaches **Lightning Energy** from the Energy Zone to benched **Shinx** (now 2 Lightning Energy) (`t=404s`).
+- Active **Oricorio** attacks with **Zzzap** (`t=408s`):
+  - Deals **70 damage** (50 base + 20 weakness) to Active **Mega Sharpedo ex** (rainbow art) (190 HP → 120 HP) (`t=410s`–`t=411s`).
+- **Board State:**
+  - **Opponent Active:** Oricorio (90 HP, 2 Lightning Energy, Giant Cape) | **Bench:** Furfrou (70 HP, 0 Energy), Sylveon (100 HP, 0 Energy, Protective Poncho), Shinx (60 HP, 2 Lightning Energy)
+  - **Dustin Active:** Mega Sharpedo ex (rainbow art, 120 HP, 1 Water Energy, Elegant Cape) | **Bench:** Mega Sharpedo ex (regular art, 170 HP, 2 Water Energy, Elegant Cape) | **Stadium:** Soothing Shore
+
+### Global Turn 12 — Dustin's Turn (`t=412s`–`t=449s`)
+- **Hand at start of turn:** Wallace (regular art), Mega Gyarados ex, Soothing Shore, Milotic ex.
+- Dustin draws **Irida** (`t=413s`).
+- Dustin plays **Irida** (`t=429s`–`t=431s`), healing **40 damage** from Active **Mega Sharpedo ex** (rainbow art, 120 HP → 160 HP) and **40 damage** from benched **Mega Sharpedo ex** (regular art, 170 HP → 210 HP) (`t=432s`–`t=433s`).
+- Dustin attaches **Water Energy** from the Energy Zone to Active **Mega Sharpedo ex** (rainbow art; now 2 Water Energy) (`t=436s`).
+- Dustin retreats Active **Mega Sharpedo ex** (rainbow art, 160 HP; discards 1 Water Energy, 1 Water Energy remaining) to the Bench and promotes **Mega Sharpedo ex** (regular art, 210 HP, 2 Water Energy, Elegant Cape) to the Active Spot (`t=437s`–`t=442s`).
+- Dustin ends his turn without attacking (`t=443s`–`t=444s`).
+- End-of-turn **Soothing Shore** effect heals **10 damage** from Active **Mega Sharpedo ex** (regular art, 210 HP → 220 HP) and **20 damage** from benched **Mega Sharpedo ex** (rainbow art, 160 HP → 180 HP) (`t=445s`–`t=448s`).
+- **Board State:**
+  - **Opponent Active:** Oricorio (90 HP, 2 Lightning Energy, Giant Cape) | **Bench:** Furfrou (70 HP, 0 Energy), Sylveon (100 HP, 0 Energy, Protective Poncho), Shinx (60 HP, 2 Lightning Energy)
+  - **Dustin Active:** Mega Sharpedo ex (regular art, 220 HP, 2 Water Energy, Elegant Cape) | **Bench:** Mega Sharpedo ex (rainbow art, 180 HP, 1 Water Energy, Elegant Cape) | **Stadium:** Soothing Shore
+
+### Global Turn 13 — Opponent's Turn (`t=449s`–`t=474s`)
+- Opponent draws a card (`t=450s`).
+- Opponent plays **Rare Candy** (`t=454s`), evolving benched **Shinx** directly into **Luxray** (130 HP, 2 Lightning Energy) (`t=456s`–`t=458s`).
+- Opponent retreats Active **Oricorio** (90 HP; discards 1 Lightning Energy, 1 Lightning Energy remaining) to the Bench and promotes **Luxray** (130 HP, 2 Lightning Energy) to the Active Spot (`t=461s`–`t=463s`).
+- Opponent attaches **Lightning Energy** from the Energy Zone to Active **Luxray** (now 3 Lightning Energy) (`t=464s`).
+- Active **Luxray** attacks with **Volt Bolt** (`t=470s`):
+  - Targets Active **Mega Sharpedo ex** (regular art), dealing **140 damage** (120 base + 20 weakness) (220 HP → 80 HP) (`t=472s`–`t=473s`).
+  - Discards all 3 **Lightning Energy** from **Luxray** (`t=473s`).
+- **Board State:**
+  - **Opponent Active:** Luxray (130 HP, 0 Energy) | **Bench:** Furfrou (70 HP, 0 Energy), Sylveon (100 HP, 0 Energy, Protective Poncho), Oricorio (90 HP, 1 Lightning Energy, Giant Cape)
+  - **Dustin Active:** Mega Sharpedo ex (regular art, 80 HP, 2 Water Energy, Elegant Cape) | **Bench:** Mega Sharpedo ex (rainbow art, 180 HP, 1 Water Energy, Elegant Cape) | **Stadium:** Soothing Shore
+
+### Global Turn 14 — Dustin's Turn (`t=474s`–`t=489s`)
+- **Hand at start of turn:** Wallace (regular art), Mega Gyarados ex, Soothing Shore, Milotic ex.
+- Dustin has no cards left in his deck and cannot draw (`t=476s`).
+- Without attaching his turn's Energy from the Energy Zone (`t=479s`), Active **Mega Sharpedo ex** (regular art) attacks with **Turbo Shark** (`t=480s`):
+  - Deals **70 damage** to Active **Luxray** (130 HP → 60 HP) (`t=482s`–`t=483s`).
+  - Attaches 1 **Water Energy** from Dustin's Energy Zone to benched **Mega Sharpedo ex** (rainbow art; now 2 Water Energy) (`t=484s`).
+- End-of-turn **Soothing Shore** effect heals **20 damage** from Active **Mega Sharpedo ex** (regular art, 80 HP → 100 HP) and **20 damage** from benched **Mega Sharpedo ex** (rainbow art, 180 HP → 200 HP) (`t=485s`–`t=488s`).
+- **Board State:**
+  - **Opponent Active:** Luxray (60 HP, 0 Energy) | **Bench:** Furfrou (70 HP, 0 Energy), Sylveon (100 HP, 0 Energy, Protective Poncho), Oricorio (90 HP, 1 Lightning Energy, Giant Cape)
+  - **Dustin Active:** Mega Sharpedo ex (regular art, 100 HP, 2 Water Energy, Elegant Cape) | **Bench:** Mega Sharpedo ex (rainbow art, 200 HP, 2 Water Energy, Elegant Cape) | **Stadium:** Soothing Shore
+
+### Global Turn 15 — Opponent's Turn (`t=490s`–`t=500s`)
+- Opponent draws a card (`t=491s`).
+- Opponent attaches **Lightning Energy** from the Energy Zone to Active **Luxray** (now 1 Lightning Energy) (`t=492s`).
+- Opponent plays **Volkner** (`t=495s`), attaching 2 **Lightning Energy** from their discard pile to Active **Luxray** (now 3 Lightning Energy) (`t=497s`).
+- Dustin concedes the match (`t=498s`–`t=499s`).
+- **Board State at Concession:**
+  - **Opponent Active:** Luxray (60 HP, 3 Lightning Energy) | **Bench:** Furfrou (70 HP, 0 Energy), Sylveon (100 HP, 0 Energy, Protective Poncho), Oricorio (90 HP, 1 Lightning Energy, Giant Cape)
+  - **Dustin Active:** Mega Sharpedo ex (regular art, 100 HP, 2 Water Energy, Elegant Cape) | **Bench:** Mega Sharpedo ex (rainbow art, 200 HP, 2 Water Energy, Elegant Cape) | **Stadium:** Soothing Shore
+
+=== OPPONENT.json ===
+```json
+{"recording": "ScreenRecording_10-24-2026 13-24-53_1.mp4", "went_first": "opponent", "global_turns": 15, "final_score": {"dustin": 0, "opponent": 2},
+ "end": "concede_dustin",
+ "opponent_energy_zone": ["Lightning"], "opponent_energy_attached": [{"turn": 3, "type": "Lightning", "to": "Furfrou"}, {"turn": 5, "type": "Lightning", "to": "Oricorio"}, {"turn": 7, "type": "Lightning", "to": "Oricorio"}, {"turn": 9, "type": "Lightning", "to": "Shinx"}, {"turn": 11, "type": "Lightning", "to": "Shinx"}, {"turn": 13, "type": "Lightning", "to": "Luxray"}, {"turn": 15, "type": "Lightning", "to": "Luxray"}, {"turn": 15, "type": "Lightning", "to": "Luxray"}, {"turn": 15, "type": "Lightning", "to": "Luxray"}],
+ "opponent_pokemon": [{"name": "Furfrou", "set_number": null, "first_seen_turn": 1, "attacked": true, "attacks_used": ["Double Headbutt"], "abilities_used": ["Fur Coat"], "points_taken": 2}, {"name": "Eevee", "set_number": null, "first_seen_turn": 1, "attacked": false, "attacks_used": [], "abilities_used": [], "points_taken": 0}, {"name": "Oricorio", "set_number": null, "first_seen_turn": 1, "attacked": true, "attacks_used": ["Zzzap"], "abilities_used": ["Safeguard"], "points_taken": 0}, {"name": "Sylveon", "set_number": null, "first_seen_turn": 7, "attacked": false, "attacks_used": [], "abilities_used": ["Soothing Ribbon"], "points_taken": 0}, {"name": "Shinx", "set_number": null, "first_seen_turn": 7, "attacked": false, "attacks_used": [], "abilities_used": [], "points_taken": 0}, {"name": "Luxray", "set_number": null, "first_seen_turn": 13, "attacked": true, "attacks_used": ["Volt Bolt"], "abilities_used": [], "points_taken": 0}],
+ "opponent_trainers": [{"turn": 1, "name": "Poké Ball"}, {"turn": 1, "name": "Professor's Research"}, {"turn": 1, "name": "Protective Poncho"}, {"turn": 3, "name": "Professor's Research"}, {"turn": 7, "name": "Giant Cape"}, {"turn": 7, "name": "Copycat"}, {"turn": 13, "name": "Rare Candy"}, {"turn": 15, "name": "Volkner"}], "opponent_effects": {"special_conditions": [], "healed": true, "bench_damage": false},
+ "opponent_card_of_the_game": "Oricorio", "notes": "On Turn 15, two of the three Lightning Energy attached to Luxray were attached from the discard pile via Volkner."}
+```
+
+=== UNCERTAINTIES.md ===
+
+- **Card set numbers (`t=29s`–`t=497s`):** The set codes and collector numbers in the bottom-left corners of the opponent's cards are too small/blurred in the mobile recording to read with certainty, so `set_number` is recorded as `null` for all opponent Pokémon.
+- **Unseen cards in Dustin's deck (`t=1s`):** The deck editor view at `t=1s` only shows the top rows of Dustin's 20-card deck, and the remaining cards not drawn during the game (specifically what was discarded or left unseen—Wait: Dustin drew his entire deck by Turn 14, so all 20 cards were seen during gameplay: 1 Magikarp, 1 Feebas, 1 Milotic ex, 2 Carvanha, 2 Mega Sharpedo ex, 2 Mega Gyarados ex, 1 Poké Ball, 1 Cabbie, 2 Soothing Shore, 2 Copycat, 2 Elegant Cape, 2 Irida, 2 Wallace, 1 Lisia = 22? No: Copycat shuffled cards back into the deck on Turns 4 and 6). Because Copycat shuffled cards back into the deck twice, the exact counts of duplicates in Dustin's 20-card list that were re-drawn versus distinct copies (e.g., whether there were 1 or 2 copies of Mega Gyarados ex, Copycat, or Irida) cannot be confirmed from gameplay alone without decoding the QR code at `t=0s`.
+- **Opponent's hidden hand and remaining deck (`t=33s`–`t=500s`):** The contents of the opponent's hand (including the cards shuffled and drawn with Copycat on Turn 7) and the remaining cards in their deck are never revealed on screen.

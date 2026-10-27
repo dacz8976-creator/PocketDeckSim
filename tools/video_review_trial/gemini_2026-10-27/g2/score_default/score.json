@@ -1,0 +1,13 @@
+{"major": 4, "minor": 1, "missed": 3, "g_right_over_c": 2, "unsettled": 0,
+ "errors": [
+  {"turn": "Opening", "item": "Opening hand: fifth card", "g": "Mega Gyarados ex (hand: Cabbie, Poke Ball, Carvanha, Wallace, Mega Gyarados ex)", "truth": "Mega Sharpedo ex; Mega Gyarados ex is not in the opening hand", "frames": ["frames/t_0026.jpg", "frames/t_0030.jpg", "frames/t_0122.jpg"], "grade": "major", "settled_by": "frames"},
+  {"turn": "Global 2 and 4", "item": "Hand-at-start lists", "g": "Turn 2 and turn 4 hands list Mega Gyarados ex", "truth": "The card in hand is the second Mega Sharpedo ex (follows from the opening-hand error)", "frames": ["frames/t_0122.jpg", "frames/t_0190.jpg"], "grade": "minor", "settled_by": "frames"},
+  {"turn": "Global 6", "item": "Wallace played / source of Mega Gyarados ex", "g": "Wallace not played; Magikarp evolves into Mega Gyarados ex from hand; hand = Mega Gyarados ex, Lisia, Wallace", "truth": "Dustin plays Wallace (t=213); Magikarp evolves from the deck into Mega Gyarados ex 210 HP (t=217); Mega Sharpedo ex stays in hand", "frames": ["frames/t_0210.jpg", "frames/t_0213.jpg", "frames/t_0217.jpg"], "grade": "major", "settled_by": "frames"},
+  {"turn": "Global 6", "item": "Retreat Energy discard", "g": "Retreat discards Mega Sharpedo ex's 1 Water; it ends with 0 Energy", "truth": "No Energy discarded; benched Mega Sharpedo ex keeps 1 Water", "frames": ["frames/t_0220.jpg", "frames/t_0222.jpg", "frames/t_0224.jpg", "frames/t_0228.jpg", "frames/t_0232.jpg"], "grade": "major", "settled_by": "frames"},
+  {"turn": "Global 6", "item": "Cards milled by Mega Blaster", "g": "Rocky Helmet (t=232) and Metal Core Barrier (t=233) seen in the discard pile", "truth": "Milled card identities are not readable (face-down at t=233); at t=232 the discard top is Pokemon Center Lady; at t=235 the visible top is Steel Apron from the KO", "frames": ["frames/t_0232.jpg", "frames/t_0233.jpg", "frames/t_0234.jpg", "frames/t_0235.jpg"], "grade": "major", "settled_by": "frames"}
+ ],
+ "field_sheet": null,
+ "review_sheet": {"fields_checked": 12, "matched": 11, "mismatches": [
+  {"field": "special_conditions", "g": ["Confused"], "ref": [], "truth": ["Confused"], "verdict": "G right (reference wrong)", "frames": ["frames/t_0076.jpg"], "settled_by": "frames"}
+ ]}
+}

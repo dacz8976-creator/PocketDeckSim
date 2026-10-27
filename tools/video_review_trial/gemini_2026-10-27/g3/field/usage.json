@@ -1,0 +1,45 @@
+{
+ "http": 200,
+ "seconds": 73.8,
+ "usd": 0.11594,
+ "usd_is_worst_case": false,
+ "price_per_mtok": [
+  2.0,
+  10.0
+ ],
+ "usage": {
+  "promptTokenCount": 34713,
+  "candidatesTokenCount": 747,
+  "totalTokenCount": 39364,
+  "trafficType": "ON_DEMAND",
+  "promptTokensDetails": [
+   {
+    "modality": "VIDEO",
+    "tokenCount": 33150
+   },
+   {
+    "modality": "TEXT",
+    "tokenCount": 1563
+   }
+  ],
+  "candidatesTokensDetails": [
+   {
+    "modality": "TEXT",
+    "tokenCount": 747
+   }
+  ],
+  "thoughtsTokenCount": 3904
+ },
+ "finish_reason": "STOP",
+ "count_tokens": 38688,
+ "settings": {
+  "model": "gemini-4-argon",
+  "fps": 1.0,
+  "media_resolution": null,
+  "thinking": "HIGH",
+  "max_output_tokens": 32768
+ },
+ "video": "video.mp4",
+ "video_mb": 10.59,
+ "brief": "FIELD.md"
+}

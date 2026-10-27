@@ -1,0 +1,216 @@
+=== REVIEW.md ===
+
+# Pokémon TCG Pocket — Ranked Game Review
+
+## Match Header
+- **Recording:** `ScreenRecording_10-24-2026 15-29-43_1.mp4`
+- **Owner (Player):** Dustin (`Dacz8976`, Master Ball Rank, 970 pts at `t=2s`)
+- **Deck:** `New deck 17` (Slot 25; 2D Pattern Code QR shown at `t=0s`–`t=1s`, deck list previewed at `t=1s`–`t=2s`)
+- **Turn Order:** Opponent went first; Dustin went second (coin flip result at `t=25s`)
+- **Final Score:** Dustin 3 – Opponent 2 (`t=350s`)
+- **End Condition:** Points (Dustin reached 3 points by Knocking Out Hitmonchan ex at `t=345s`–`t=349s`)
+- **Global Turns Played:** 12
+- **Result Screen Statistics (`t=358s`–`t=362s`):**
+  - **Winner:** Dustin (`Dacz8976`)
+  - **Turn order:** Went second
+  - **Turns played:** 12
+  - **Your points:** 3
+  - **Opponent's points:** 2
+  - **Damage done:** 320
+  - **Owner's Card of the Game:** Mega Sharpedo ex (`t=358s`)
+  - **Opponent's Card of the Game:** Hitmonchan ex (`t=359s`)
+  - **Rank Points:** 970 pts → 971 pts (+1 pt gained, `t=360s`–`t=362s`)
+
+---
+
+## Opening Setup (`t=27s` – `t=42s`)
+- **Energy Zones:**
+  - **Dustin:** Water (`t=27s`)
+  - **Opponent:** Fighting (`t=27s`)
+- **Dustin's Opening Hand (5 cards, `t=28s`):**
+  1. Elegant Cape (Pokémon Tool)
+  2. Wallace (Supporter)
+  3. Cabbie (Supporter)
+  4. Carvanha (Basic, Promo, 50 HP, *Aqua Jet*)
+  5. Mega Gyarados ex (Stage 1, 210 HP)
+- **Initial Board Setup:**
+  - **Dustin Active:** Carvanha (50/50 HP, Promo *Aqua Jet*) placed at `t=29s`–`t=31s`.
+  - **Dustin Bench:** Empty.
+  - **Opponent Active:** Buneary (60/60 HP, Star Full Art) placed at `t=36s`, revealed at `t=39s`.
+  - **Opponent Bench:** Buneary (60/60 HP, regular art) placed at `t=37s`, revealed at `t=40s`.
+
+---
+
+## Turn-by-Turn Record
+
+### Global Turn 1 — Opponent's Turn (`t=43s` – `t=50s`)
+- **Draw:** Opponent draws 1 card (`t=45s`, hand size: 4).
+- **Supporter Played:** Opponent plays **Serena** (`t=46s`–`t=48s`), putting a random Mega Evolution Pokémon ex from their deck into their hand (card identity not shown; hand size: 4).
+- **End of Turn (`t=50s`):** No Energy attachment on Turn 1; no attack.
+- **Board State:** Opponent Active: Buneary [Full Art] (60/60 HP, 0 Energy) | Opponent Bench: Buneary (60/60 HP, 0 Energy) || Dustin Active: Carvanha (50/50 HP, 0 Energy) | Dustin Bench: none.
+
+---
+
+### Global Turn 2 — Dustin's Turn (`t=50s` – `t=83s`)
+- **Hand at Start of Turn:** Elegant Cape, Wallace, Cabbie, Mega Gyarados ex (plus drawn Copycat at `t=52s`).
+- **Draw:** Dustin draws **Copycat** (`t=52s`).
+- **Supporter Played:** Dustin plays **Wallace** (`t=54s`–`t=56s`), targeting Active Carvanha (50 HP).
+- **Evolution:** Via Wallace's effect, Active Carvanha evolves into **Mega Sharpedo ex** (190/190 HP) directly from the deck (`t=59s`–`t=61s`).
+- **Tool Attached:** Dustin attaches **Elegant Cape** to Active Mega Sharpedo ex (`t=63s`–`t=68s`), increasing its HP from 190/190 to **220/220 HP** (`t=68s`).
+- **Energy Attached:** Dustin attaches 1 **Water Energy** from the Energy Zone to Active Mega Sharpedo ex (`t=68s`–`t=69s`; now 1 `W`).
+- **Attack:** Active Mega Sharpedo ex uses **Turbo Shark** (`t=72s`–`t=74s`) for **70 damage** (`t=74s`).
+  - Opponent's Active Buneary [Full Art] HP: 60 → **0 HP** (`t=74s`).
+  - Turbo Shark's secondary effect does not attach Energy because Dustin has no Benched Water Pokémon (*"There are no Water-type Pokémon on the Bench"*, `t=75s`).
+  - Opponent's Active Buneary [Full Art] is **Knocked Out** (`t=76s`).
+  - Dustin gains **+1 point** (`t=78s`). **Score: Dustin 1 – Opponent 0.**
+- **Replacement:** Opponent promotes Benched **Buneary** (60/60 HP) to the Active Spot (`t=82s`).
+- **Board State:** Opponent Active: Buneary (60/60 HP, 0 Energy) | Opponent Bench: none || Dustin Active: Mega Sharpedo ex (220/220 HP, 1 `W`, Elegant Cape) | Dustin Bench: none.
+
+---
+
+### Global Turn 3 — Opponent's Turn (`t=83s` – `t=95s`)
+- **Draw:** Opponent draws 1 card (`t=84s`, hand size: 5).
+- **Evolution:** Opponent evolves Active Buneary into **Mega Lopunny ex** (190/190 HP) (`t=89s`–`t=92s`, hand size: 4).
+- **Energy Attached:** Opponent attaches 1 **Fighting Energy** from the Energy Zone to Active Mega Lopunny ex (`t=93s`–`t=94s`; now 1 `F`).
+- **End of Turn (`t=95s`):** Opponent ends turn without attacking.
+- **Board State:** Opponent Active: Mega Lopunny ex (190/190 HP, 1 `F`) | Opponent Bench: none || Dustin Active: Mega Sharpedo ex (220/220 HP, 1 `W`, Elegant Cape) | Dustin Bench: none.
+
+---
+
+### Global Turn 4 — Dustin's Turn (`t=95s` – `t=122s`)
+- **Hand at Start of Turn:** Cabbie, Mega Gyarados ex, Copycat (plus drawn Lisia at `t=97s`).
+- **Draw:** Dustin draws **Lisia** (`t=97s`).
+- **Supporter Played:** Dustin plays **Lisia** (`t=102s`–`t=107s`), putting 2 random Basic Pokémon with 50 HP or less from his deck into his hand:
+  - **Feebas** (30 HP) (`t=105s`)
+  - **Carvanha** (50 HP, *Sharp Fang*) (`t=106s`)
+- **Pokémon Benched:**
+  - Dustin benches **Carvanha** (50/50 HP) (`t=109s`–`t=110s`).
+  - Dustin benches **Feebas** (30/30 HP) (`t=111s`–`t=112s`).
+- **Energy Attached:** Dustin attaches 1 **Water Energy** from the Energy Zone to Benched Feebas (`t=113s`–`t=114s`; now 1 `W`).
+- **Attack:** Active Mega Sharpedo ex uses **Turbo Shark** (`t=115s`–`t=118s`) for **70 damage** (`t=118s`).
+  - Opponent's Active Mega Lopunny ex HP: 190 → **120/190 HP** (`t=118s`).
+  - **Effect Energy Attached:** Via Turbo Shark's effect, Dustin attaches 1 **Water Energy** from the Energy Zone to Benched Feebas (`t=119s`–`t=121s`; Feebas now has 2 `W`).
+- **Board State:** Opponent Active: Mega Lopunny ex (120/190 HP, 1 `F`) | Opponent Bench: none || Dustin Active: Mega Sharpedo ex (220/220 HP, 1 `W`, Elegant Cape) | Dustin Bench: Feebas (30/30 HP, 2 `W`), Carvanha (50/50 HP, 0 Energy).
+
+---
+
+### Global Turn 5 — Opponent's Turn (`t=122s` – `t=156s`)
+- **Draw:** Opponent draws 1 card (`t=123s`, hand size: 5).
+- **Energy Attached:** Opponent attaches 1 **Fighting Energy** from the Energy Zone to Active Mega Lopunny ex (`t=129s`–`t=130s`; now 2 `F`).
+- **Supporter Played:** Opponent plays **Copycat** (`t=134s`–`t=140s`), shuffling their 4-card hand into their deck (`t=136s`) and drawing 3 cards to match Dustin's 3-card hand (`t=139s`–`t=140s`).
+- **Attack:** Opponent's Active Mega Lopunny ex uses **Rapid Smashers** (`t=145s`–`t=155s`).
+  - **Coin Flips (`t=146s`–`t=150s`):** Flip 1: **Tails** (`t=148s`), Flip 2: **Heads** (`t=149s`) — 1 Heads total (90 × 1 = 90 damage).
+  - Deals **90 damage** (`t=153s`) to Dustin's Active Mega Sharpedo ex.
+  - Dustin's Active Mega Sharpedo ex HP: 220 → **130/220 HP** (`t=154s`).
+  - **Special Condition:** Dustin's Active Mega Sharpedo ex becomes **Confused** (`t=154s`–`t=155s`).
+- **Board State:** Opponent Active: Mega Lopunny ex (120/190 HP, 2 `F`) | Opponent Bench: none || Dustin Active: Mega Sharpedo ex (130/220 HP, 1 `W`, Elegant Cape, Confused) | Dustin Bench: Feebas (30/30 HP, 2 `W`), Carvanha (50/50 HP, 0 Energy).
+
+---
+
+### Global Turn 6 — Dustin's Turn (`t=156s` – `t=202s`)
+- **Hand at Start of Turn:** Cabbie, Mega Gyarados ex, Copycat (plus drawn Soothing Shore at `t=158s`).
+- **Draw:** Dustin draws **Soothing Shore** (`t=158s`).
+- **Stadium Played:** Dustin plays **Soothing Shore** (`t=160s`–`t=162s`).
+- **Supporter Played:** Dustin plays **Copycat** (`t=164s`–`t=173s`), shuffling his 2 remaining cards (Cabbie, Mega Gyarados ex) into his deck (`t=167s`) and drawing 3 cards to match the Opponent's 3-card hand:
+  1. **Poké Ball** (`t=170s`)
+  2. **Mega Gyarados ex** (`t=171s`)
+  3. **Magikarp** (30 HP, Promo) (`t=172s`)
+- **Item Played:** Dustin plays **Poké Ball** (`t=174s`–`t=177s`), which fizzles as no Basic Pokémon remain in his deck (*"There are no cards in the deck that can be the target of the effect"*, `t=177s`).
+- **Pokémon Benched:** Dustin benches **Magikarp** (30/30 HP) (`t=178s`–`t=179s`).
+- **Retreat:** Dustin retreats Active **Mega Sharpedo ex** (0 retreat cost; retains its 1 `W`) to the Bench and switches in Benched **Carvanha** (50/50 HP) to the Active Spot (`t=186s`–`t=191s`). Mega Sharpedo ex recovers from being Confused (`t=190s`).
+- **Energy Attached:** Dustin attaches 1 **Water Energy** from the Energy Zone to Active Carvanha (`t=192s`–`t=193s`; now 1 `W`).
+- **Attack:** Active Carvanha uses **Sharp Fang** (`t=194s`–`t=198s`) for **30 damage** (`t=197s`).
+  - Opponent's Active Mega Lopunny ex HP: 120 → **90/190 HP** (`t=198s`).
+- **End-of-Turn Stadium Effect:** **Soothing Shore** triggers (`t=199s`–`t=201s`), healing **20 damage** (`t=200s`) from Benched Mega Sharpedo ex (HP: 130 → **150/220 HP** at `t=201s`).
+- **Board State:** Stadium: Soothing Shore | Opponent Active: Mega Lopunny ex (90/190 HP, 2 `F`) | Opponent Bench: none || Dustin Active: Carvanha (50/50 HP, 1 `W`) | Dustin Bench: Magikarp (30/30 HP, 0 Energy), Feebas (30/30 HP, 2 `W`), Mega Sharpedo ex (150/220 HP, 1 `W`, Elegant Cape).
+
+---
+
+### Global Turn 7 — Opponent's Turn (`t=202s` – `t=239s`)
+- **Draw:** Opponent draws 1 card (`t=204s`, hand size: 4).
+- **Pokémon Benched:** Opponent benches **Hitmonchan ex** (130/130 HP) (`t=209s`–`t=211s`, hand size: 3).
+- **Item Played:** Opponent plays **X Speed** (`t=214s`–`t=216s`, hand size: 2), reducing their Active Pokémon's retreat cost by 1 this turn.
+- **Energy Attached:** Opponent attaches 1 **Fighting Energy** from the Energy Zone to Benched Hitmonchan ex (`t=218s`–`t=219s`; now 1 `F`).
+- **Retreat:** Opponent retreats Active **Mega Lopunny ex** (retreat cost reduced from 1 to 0 by X Speed; retains its 2 `F`) to the Bench and promotes **Hitmonchan ex** (130/130 HP, 1 `F`) to the Active Spot (`t=220s`–`t=223s`).
+- **Attack:** Opponent's Active Hitmonchan ex uses **Quick Straight** (`t=227s`–`t=231s`) for **50 damage** (`t=229s`).
+  - Dustin's Active Carvanha HP: 50 → **0 HP** (`t=230s`).
+  - Dustin's Active Carvanha is **Knocked Out** (`t=231s`).
+  - Opponent gains **+1 point** (`t=234s`). **Score: Dustin 1 – Opponent 1.**
+- **Replacement:** Dustin promotes Benched **Feebas** (30/30 HP, 2 `W`) to the Active Spot (`t=237s`–`t=238s`).
+- **Board State:** Stadium: Soothing Shore | Opponent Active: Hitmonchan ex (130/130 HP, 1 `F`) | Opponent Bench: Mega Lopunny ex (90/190 HP, 2 `F`) || Dustin Active: Feebas (30/30 HP, 2 `W`) | Dustin Bench: Magikarp (30/30 HP, 0 Energy), Mega Sharpedo ex (150/220 HP, 1 `W`, Elegant Cape).
+
+---
+
+### Global Turn 8 — Dustin's Turn (`t=239s` – `t=260s`)
+- **Hand at Start of Turn:** Mega Gyarados ex (plus drawn Soothing Shore at `t=241s`).
+- **Draw:** Dustin draws **Soothing Shore** (`t=241s`).
+- **Evolution:** Dustin evolves Benched Magikarp into **Mega Gyarados ex** (210/210 HP) (`t=243s`–`t=248s`).
+- **Energy Attached:** Dustin attaches 1 **Water Energy** from the Energy Zone to Benched Mega Gyarados ex (`t=249s`–`t=250s`; now 1 `W`).
+- **Attack:** Active Feebas uses **Splash** (`t=251s`–`t=255s`) for **10 damage** (`t=254s`).
+  - Opponent's Active Hitmonchan ex HP: 130 → **120/130 HP** (`t=255s`).
+- **End-of-Turn Stadium Effect:** **Soothing Shore** triggers (`t=256s`–`t=258s`), healing **20 damage** (`t=257s`) from Benched Mega Sharpedo ex (HP: 150 → **170/220 HP** at `t=258s`).
+- **Board State:** Stadium: Soothing Shore | Opponent Active: Hitmonchan ex (120/130 HP, 1 `F`) | Opponent Bench: Mega Lopunny ex (90/190 HP, 2 `F`) || Dustin Active: Feebas (30/30 HP, 2 `W`) | Dustin Bench: Mega Gyarados ex (210/210 HP, 1 `W`), Mega Sharpedo ex (170/220 HP, 1 `W`, Elegant Cape).
+
+---
+
+### Global Turn 9 — Opponent's Turn (`t=260s` – `t=298s`)
+- **Draw:** Opponent draws 1 card (`t=261s`, hand size: 3).
+- **Supporter Played:** Opponent plays **Professor's Research** (`t=265s`–`t=267s`), drawing 2 cards (hand size: 4).
+- **Stadium Played:** Opponent plays **Arena of Antiquity** (`t=275s`–`t=280s`, hand size: 3), replacing and discarding Dustin's Soothing Shore.
+- **Energy Attached:** Opponent attaches 1 **Fighting Energy** from the Energy Zone to Active Hitmonchan ex (`t=282s`–`t=283s`; now 2 `F`).
+- **Attack:** Opponent's Active Hitmonchan ex uses **Quick Straight** (`t=284s`–`t=288s`) for **50 damage** (`t=287s`).
+  - Dustin's Active Feebas HP: 30 → **0 HP** (`t=288s`).
+  - Dustin's Active Feebas is **Knocked Out** (`t=289s`).
+  - Opponent gains **+1 point** (`t=291s`–`t=292s`). **Score: Dustin 1 – Opponent 2.**
+- **Replacement:** Dustin promotes Benched **Mega Sharpedo ex** (170/220 HP, 1 `W`, Elegant Cape) to the Active Spot (`t=295s`–`t=297s`).
+- **Board State:** Stadium: Arena of Antiquity | Opponent Active: Hitmonchan ex (120/130 HP, 2 `F`) | Opponent Bench: Mega Lopunny ex (90/190 HP, 2 `F`) || Dustin Active: Mega Sharpedo ex (170/220 HP, 1 `W`, Elegant Cape) | Dustin Bench: Mega Gyarados ex (210/210 HP, 1 `W`).
+
+---
+
+### Global Turn 10 — Dustin's Turn (`t=298s` – `t=319s`)
+- **Hand at Start of Turn:** Soothing Shore (plus drawn Mega Sharpedo ex at `t=300s`).
+- **Draw:** Dustin draws **Mega Sharpedo ex** (`t=300s`).
+- **Stadium Played:** Dustin plays **Soothing Shore** (`t=302s`–`t=306s`), replacing and discarding Opponent's Arena of Antiquity.
+- **Energy Attached:** Dustin attaches 1 **Water Energy** from the Energy Zone to Benched Mega Gyarados ex (`t=307s`–`t=308s`; now 2 `W`).
+- **Attack:** Active Mega Sharpedo ex uses **Turbo Shark** (`t=309s`–`t=313s`) for **70 damage** (`t=312s`).
+  - Opponent's Active Hitmonchan ex HP: 120 → **50/130 HP** (`t=313s`).
+  - **Effect Energy Attached:** Via Turbo Shark's effect, 1 **Water Energy** from the Energy Zone is attached to Benched Mega Gyarados ex (`t=314s`–`t=315s`; now 3 `W`).
+- **End-of-Turn Stadium Effect:** **Soothing Shore** triggers (`t=315s`–`t=318s`), healing **20 damage** (`t=317s`) from Active Mega Sharpedo ex (HP: 170 → **190/220 HP** at `t=318s`).
+- **Board State:** Stadium: Soothing Shore | Opponent Active: Hitmonchan ex (50/130 HP, 2 `F`) | Opponent Bench: Mega Lopunny ex (90/190 HP, 2 `F`) || Dustin Active: Mega Sharpedo ex (190/220 HP, 1 `W`, Elegant Cape) | Dustin Bench: Mega Gyarados ex (210/210 HP, 3 `W`).
+
+---
+
+### Global Turn 11 — Opponent's Turn (`t=319s` – `t=333s`)
+- **Draw:** Opponent draws 1 card (`t=321s`, hand size: 4).
+- **Energy Attached:** Opponent attaches 1 **Fighting Energy** from the Energy Zone to Benched Mega Lopunny ex (`t=321s`–`t=322s`; now 3 `F`).
+- **Attack:** Opponent's Active Hitmonchan ex uses **Quick Straight** (`t=329s`–`t=332s`) for **50 damage** (`t=331s`).
+  - Dustin's Active Mega Sharpedo ex HP: 190 → **140/220 HP** (`t=332s`).
+- **Board State:** Stadium: Soothing Shore | Opponent Active: Hitmonchan ex (50/130 HP, 2 `F`) | Opponent Bench: Mega Lopunny ex (90/190 HP, 3 `F`) || Dustin Active: Mega Sharpedo ex (140/220 HP, 1 `W`, Elegant Cape) | Dustin Bench: Mega Gyarados ex (210/210 HP, 3 `W`).
+
+---
+
+### Global Turn 12 — Dustin's Turn (`t=333s` – `t=351s`)
+- **Hand at Start of Turn:** Mega Sharpedo ex (plus drawn Wallace at `t=335s`).
+- **Draw:** Dustin draws **Wallace** (`t=335s`).
+- **Energy Attached:** None manually attached from the Energy Zone (Dustin cancels the unattached-Energy end-turn prompt at `t=339s`).
+- **Attack:** Active Mega Sharpedo ex uses **Turbo Shark** (`t=338s`–`t=345s`) for **70 damage** (`t=342s`).
+  - Opponent's Active Hitmonchan ex HP: 50 → **0 HP** (`t=343s`).
+  - **Effect Energy Attached:** Via Turbo Shark's effect, 1 **Water Energy** from the Energy Zone is attached to Benched Mega Gyarados ex (`t=344s`; now 4 `W`).
+  - Opponent's Active Hitmonchan ex is **Knocked Out** (`t=345s`).
+  - Dustin gains **+2 points** (`t=348s`–`t=349s`). **Final Score: Dustin 3 – Opponent 2 (`t=350s`).**
+- **Final Board State (`t=350s`):** Stadium: Soothing Shore | Opponent Active: none (Hitmonchan ex Knocked Out) | Opponent Bench: Mega Lopunny ex (90/190 HP, 3 `F`) || Dustin Active: Mega Sharpedo ex (140/220 HP, 1 `W`, Elegant Cape) | Dustin Bench: Mega Gyarados ex (210/210 HP, 4 `W`).
+
+=== OPPONENT.json ===
+```json
+{"recording": "ScreenRecording_10-24-2026 15-29-43_1.mp4", "went_first": "opponent", "global_turns": 12, "final_score": {"dustin": 3, "opponent": 2},
+ "end": "points",
+ "opponent_energy_zone": ["Fighting"], "opponent_energy_attached": [{"turn": 3, "type": "Fighting", "to": "Mega Lopunny ex"}, {"turn": 5, "type": "Fighting", "to": "Mega Lopunny ex"}, {"turn": 7, "type": "Fighting", "to": "Hitmonchan ex"}, {"turn": 9, "type": "Fighting", "to": "Hitmonchan ex"}, {"turn": 11, "type": "Fighting", "to": "Mega Lopunny ex"}],
+ "opponent_pokemon": [{"name": "Buneary", "set_number": null, "first_seen_turn": 1, "attacked": false, "attacks_used": [], "abilities_used": [], "points_taken": 0}, {"name": "Buneary", "set_number": null, "first_seen_turn": 1, "attacked": false, "attacks_used": [], "abilities_used": [], "points_taken": 0}, {"name": "Mega Lopunny ex", "set_number": null, "first_seen_turn": 3, "attacked": true, "attacks_used": ["Rapid Smashers"], "abilities_used": [], "points_taken": 0}, {"name": "Hitmonchan ex", "set_number": null, "first_seen_turn": 7, "attacked": true, "attacks_used": ["Quick Straight"], "abilities_used": [], "points_taken": 2}],
+ "opponent_trainers": [{"turn": 1, "name": "Serena"}, {"turn": 5, "name": "Copycat"}, {"turn": 7, "name": "X Speed"}, {"turn": 9, "name": "Professor's Research"}, {"turn": 9, "name": "Arena of Antiquity"}], "opponent_effects": {"special_conditions": ["Confused"], "healed": false, "bench_damage": false},
+ "opponent_card_of_the_game": "Hitmonchan ex", "notes": "Opponent fielded two Buneary during initial setup (one 1-star full art in the Active Spot Knocked Out on Turn 2, and one regular art on the Bench that evolved into Mega Lopunny ex on Turn 3)."}
+```
+
+=== UNCERTAINTIES.md ===
+- **Global Turn 1 (`t=46s`–`t=48s`) — Card fetched by Serena:** The opponent played Serena to put a random Mega Evolution Pokémon ex from their deck into their hand. Because the opponent's hand is hidden, the exact card drawn is not shown (though Mega Lopunny ex was evolved on Global Turn 3 at `t=89s`).
+- **Global Turn 5 (`t=134s`–`t=140s`) & Global Turn 9 (`t=265s`–`t=267s`) — Opponent's hidden hand contents:** The specific cards shuffled back and drawn via the opponent's Copycat and Professor's Research (beyond cards later played) are not visible. Only an opponent-side recording or full battle log export would settle the exact cards drawn.
+- **Card Set Numbers:** Due to video compression on the mobile screen recording, the fine-print set codes and collector numbers in the bottom-left corners of the cards are not legibly resolved and are recorded as `null`.

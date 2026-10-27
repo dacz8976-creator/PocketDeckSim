@@ -1,0 +1,44 @@
+{
+  "major": 0,
+  "minor": 2,
+  "missed": 3,
+  "g_right_over_c": 2,
+  "unsettled": 0,
+  "errors": [
+    {
+      "turn": "Global 7 (Ryze)",
+      "item": "Order and target of the Fighting Energy attach (borderline: major if order of play counts as the record)",
+      "g": "Energy attached to the Benched Hitmonchan ex at t=218-219, before Mega Lopunny ex retreats (t=220-223)",
+      "truth": "X Speed, then retreat and promotion of Hitmonchan ex, then the Fighting Energy attached to the Active Hitmonchan ex (about t=222-225)",
+      "frames": ["t_0212", "t_0214", "t_0222", "t_0225"],
+      "grade": "minor",
+      "settled_by": "compare.json"
+    },
+    {
+      "turn": "Global 11 (Ryze)",
+      "item": "Time of the third Fighting Energy on the Benched Mega Lopunny ex",
+      "g": "t=321-322",
+      "truth": "about t=326-328 (Zone empty at 321, Energy in Zone at 323, Lopunny still 2 Energy at 326, 3 Energy at 328); event, target and count are right",
+      "frames": ["t_0321", "t_0323", "t_0326", "t_0328"],
+      "grade": "minor",
+      "settled_by": "frames"
+    }
+  ],
+  "field_sheet": {
+    "fields_checked": 12,
+    "matched": 12,
+    "mismatches": []
+  },
+  "review_sheet": {
+    "fields_checked": 12,
+    "matched": 11,
+    "mismatches": [
+      {
+        "field": "opponent attacks (name and damage)",
+        "sheet": "Rapid Smashers, Quick Straight (names only, no damage)",
+        "reference": "Rapid Smashers 90; Quick Straight 50 (turns 7, 9, 11)",
+        "note": "damage missing, names right, nothing contradicted"
+      }
+    ]
+  }
+}
