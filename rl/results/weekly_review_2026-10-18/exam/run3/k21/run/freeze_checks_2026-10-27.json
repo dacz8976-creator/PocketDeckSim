@@ -1,0 +1,172 @@
+{
+ "what": "K21a: the checks `--allow-other-binaries` skips, restored before any kx3 exam row and before the compare",
+ "tag_commit": "712593a1b77b203ec23fb15589c158c6bddb2bf2",
+ "skipped_by_the_switch": {
+  "S1": "plan lister sha256 (judge.py 1002)",
+  "S2": "freeze_identity.check (judge.py 1007)",
+  "S3": "per-row baseline sha256 (judge.py 1000, formal.py 363)"
+ },
+ "restored_here": [
+  "S1",
+  "S2"
+ ],
+ "restored_in_compare_k21": "S3: kx3 rows = the launch line's K21 binary sha256; km3 rows = f35a1a99",
+ "items": [
+  {
+   "check": "the judge checkout is the frozen-7 tag commit",
+   "pass": true,
+   "detail": "712593a1b77b203ec23fb15589c158c6bddb2bf2"
+  },
+  {
+   "check": "the judge checkout has no modified tracked file",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "PDL_DB is unset (the card texts come from the frozen lib/deckgym-database.json)",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "FROZEN.json is frozen-7's",
+   "pass": true,
+   "detail": "judge-prompt-frozen-7"
+  },
+  {
+   "check": "S2 prompt fingerprint = FROZEN.json",
+   "pass": true,
+   "detail": "0cb2421552661b56"
+  },
+  {
+   "check": "S2 settings (model, prompt version, order, compact threshold, caps, plan-list limits) = FROZEN.json",
+   "pass": true,
+   "detail": ""
+  },
+  {
+   "check": "S2 judge block (provider gemini-vertex, model gemini-4-argon, thinking HIGH, prices, mapping) = FROZEN.json",
+   "pass": true,
+   "detail": "{\"provider\": \"gemini-vertex\", \"model\": \"gemini-4-argon\", \"location\": \"global\", \"max_tokens\": 32768, \"temperature\": null, \"thinking_level\": \"HIGH\"}"
+  },
+  {
+   "check": "S2 source lib/card.py = FROZEN.json",
+   "pass": true,
+   "detail": "73e6f2a8dbf10b9c"
+  },
+  {
+   "check": "S2 source lib/deckgym-database.json = FROZEN.json",
+   "pass": true,
+   "detail": "2f48cb72966c23ba"
+  },
+  {
+   "check": "S2 source rl/ai_judge/analysis.py = FROZEN.json",
+   "pass": true,
+   "detail": "64f78cbd7f6d1bbf"
+  },
+  {
+   "check": "S2 source rl/ai_judge/budget_judge.py = FROZEN.json",
+   "pass": true,
+   "detail": "3679043e02339066"
+  },
+  {
+   "check": "S2 source rl/ai_judge/formal.py = FROZEN.json",
+   "pass": true,
+   "detail": "eba10cc17d17e410"
+  },
+  {
+   "check": "S2 source rl/ai_judge/freeze_identity.py = FROZEN.json",
+   "pass": true,
+   "detail": "e932c931caa6d1fd"
+  },
+  {
+   "check": "S2 source rl/ai_judge/judge.py = FROZEN.json",
+   "pass": true,
+   "detail": "08dc333fdddfb18a"
+  },
+  {
+   "check": "S2 source rl/ai_judge/plans/Cargo.lock = FROZEN.json",
+   "pass": true,
+   "detail": "e183002a2e1a040c"
+  },
+  {
+   "check": "S2 source rl/ai_judge/plans/src/main.rs = FROZEN.json",
+   "pass": true,
+   "detail": "73830a21c34f8062"
+  },
+  {
+   "check": "S2 source rl/ai_judge/providers.py = FROZEN.json",
+   "pass": true,
+   "detail": "fa85137ebd9258c7"
+  },
+  {
+   "check": "S2 source rl/ai_judge/tests/test_analysis.py = FROZEN.json",
+   "pass": true,
+   "detail": "7f1e306997c11abc"
+  },
+  {
+   "check": "S2 source rl/ai_judge/tests/test_budget.py = FROZEN.json",
+   "pass": true,
+   "detail": "141f24715ad34c9b"
+  },
+  {
+   "check": "S2 source rl/ai_judge/tests/test_formal.py = FROZEN.json",
+   "pass": true,
+   "detail": "e2e6befd8ba291ca"
+  },
+  {
+   "check": "S2 source rl/ai_judge/tests/test_gemini.py = FROZEN.json",
+   "pass": true,
+   "detail": "f69637f2b2cdba6a"
+  },
+  {
+   "check": "S2 source rl/ai_judge/tests/test_vertex.py = FROZEN.json",
+   "pass": true,
+   "detail": "4b1b38fb34d60daa"
+  },
+  {
+   "check": "S2 source rl/ai_judge/validate_baseline.py = FROZEN.json",
+   "pass": true,
+   "detail": "855c1fca1366684a"
+  },
+  {
+   "check": "S2 source rl/results/pause_games_decisions_2026-10-02/harness/dg_patch.py = FROZEN.json",
+   "pass": true,
+   "detail": "c98ccc63a29a8b7e"
+  },
+  {
+   "check": "S2 source rl/results/pause_games_decisions_2026-10-02/harness/pg_pos.rs = FROZEN.json",
+   "pass": true,
+   "detail": "224888a8bc6867dc"
+  },
+  {
+   "check": "S2 source rl/results/pause_games_decisions_2026-10-02/harness/pgd_patch.py = FROZEN.json",
+   "pass": true,
+   "detail": "904b9e86ab058d4d"
+  },
+  {
+   "check": "S2 engine tree (HEAD:engine) = the baseline's 70652fff",
+   "pass": true,
+   "detail": "70652fff03af511e32a169e16209e158a998dda6"
+  },
+  {
+   "check": "S1 the plan lister executable exists and = FROZEN.json plans_binary_sha256 (bd4eeb6e)",
+   "pass": true,
+   "detail": "/home/dacz8976/ai_judge_target/release/judge_plans"
+  },
+  {
+   "check": "S2 the baseline executable exists and = FROZEN.json baseline (f35a1a99)",
+   "pass": true,
+   "detail": "/home/dacz8976/ai_judge_pgpos/bin/pg_pos_target_preserving"
+  },
+  {
+   "check": "the card database the prompt quotes is the frozen lib/deckgym-database.json",
+   "pass": true,
+   "detail": "/home/dacz8976/judge7_w/lib/deckgym-database.json"
+  },
+  {
+   "check": "S2 freeze_identity.check(FROZEN.json) returns no difference (the call compare skips)",
+   "pass": true,
+   "detail": ""
+  }
+ ],
+ "all_pass": true
+}
