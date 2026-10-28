@@ -185,7 +185,11 @@ def complement_query(cid, cards, limit=12):
             out.append((f, g, why, [f"{x['name']} {x['id']}" for x in uniq[:limit]], len(uniq)))
     return out
 
-SET_ORDER = ["P-A","A1","A1a","A2","A2a","A2b","A3","A3a","A3b","A4","A4a","A4b","B1","B1a","B2","B2a","B2b","B3","B3a","B3b","B4","B4a"]
+# release order, oldest first (suggest_for_deck lists the newest first). A series' promo set goes
+# before its first set (P-A before A1, P-C before C1); SP1 before them, as upstream's database lists
+# it. C1 then ranks first, so a name C1 shares with SP1 or P-C shows its C1 id (card_canon's base id).
+SET_ORDER = ["P-A","A1","A1a","A2","A2a","A2b","A3","A3a","A3b","A4","A4a","A4b","B1","B1a","B2","B2a","B2b","B3","B3a","B3b","B4","B4a",
+             "B4b","SP1","P-C","C1"]
 def set_rank(cid): 
     s = cid.split(" ")[0]; return SET_ORDER.index(s) if s in SET_ORDER else -1
 

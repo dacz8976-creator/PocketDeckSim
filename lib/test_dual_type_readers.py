@@ -1,13 +1,13 @@
 #!/usr/bin/env python3
 """Tests for the dual-type seam in the Python card-database readers (Dual Fusion prep, step 1).
 
-Every card today is single-type, and every reader must read it exactly as on main b78c8997. A
-dual-type Pokémon (Mega Mewtwo X ex = Psychic/Fighting, one Weakness) must be shown with both
-types (lib/card.py), kept apart in lib/card_canon.py's fingerprint, and REFUSED by the readers
-whose dual-type rule is not settled (lib/consistency.py, lib/brew_consistency.py,
-lib/deck_classifier.py): never read as its first type, never left out. The dual-type cards here
-are synthetic: real cards from lib/deckgym-database.json with a second type added, in each of
-the three data shapes upstream may choose (deckgym issue #429).
+Every single-type card must be read exactly as on main b78c8997. A dual-type Pokémon (Mega
+Mewtwo X ex = Psychic/Fighting, one Weakness) must be shown with both types (lib/card.py), kept
+apart in lib/card_canon.py's fingerprint, and REFUSED by the readers whose dual-type rule is not
+settled (lib/consistency.py, lib/brew_consistency.py, lib/deck_classifier.py): never read as its
+first type, never left out. Most dual-type cards here are synthetic: real cards from
+lib/deckgym-database.json with a second type added, in each of the three data shapes upstream may
+choose (deckgym issue #429). The real ones, Dual Fusion's (REAL_DUAL_IDS), are checked too.
 
     python3 lib/test_dual_type_readers.py      (from the project root; standard library only)
 """
@@ -34,6 +34,12 @@ import deck_classifier   # noqa: E402
 DB = card.load()                          # [(kind, inner dict)], as the readers get it
 BY_ID = {v['id']: (k, v) for k, v in DB}
 SHAPES = ('secondary', 'list', 'energy_types')
+# The real dual-type printings (Dual Fusion, C1, in the engine's 'secondary_energy_type' field):
+# Mega Greninja ex (Water/Darkness) and Mega Mewtwo X ex (Psychic/Fighting). Pinned: a refresh
+# that adds or drops one must update this list consciously.
+REAL_DUAL_IDS = ['C1 042', 'C1 056', 'C1 155', 'C1 157', 'C1 173', 'C1 175', 'C1 185']
+REAL_DUAL = [BY_ID[i][1] for i in REAL_DUAL_IDS if i in BY_ID]
+SINGLE = [(k, v) for k, v in DB if v['id'] not in REAL_DUAL_IDS]    # read exactly as on main
 
 
 def db_path():
@@ -124,12 +130,24 @@ class PrintedTypes(unittest.TestCase):
 
     def test_every_real_card_is_exactly_its_energy_type(self):
         n = 0
-        for kind, v in DB:
+        for kind, v in SINGLE:
             if kind == 'Pokemon':
                 self.assertEqual(card.printed_types(v), [v['energy_type']], v['id'])
                 self.assertEqual(card.single_type(v, 'test'), v['energy_type'], v['id'])
                 n += 1
         self.assertGreater(n, 3000)
+
+    def test_the_real_dual_type_cards_are_pinned(self):
+        found = [v['id'] for kind, v in DB if kind == 'Pokemon' and len(card.printed_types(v)) > 1]
+        self.assertEqual(found, REAL_DUAL_IDS)
+
+    def test_every_real_dual_type_card_has_both_types_and_is_refused(self):
+        self.assertEqual(len(REAL_DUAL), len(REAL_DUAL_IDS))
+        for v in REAL_DUAL:
+            with self.subTest(id=v['id']):
+                self.assertEqual(card.printed_types(v), [v['energy_type'], v['secondary_energy_type']])
+                with self.assertRaises(card.DualTypeUnsupported):
+                    card.single_type(v, 'test')
 
     def test_all_three_shapes(self):
         P, F = 'Psychic', 'Fighting'
@@ -207,8 +225,17 @@ class PrintedTypes(unittest.TestCase):
 class Fmt(unittest.TestCase):
 
     def test_every_real_card_prints_as_on_main(self):
-        for kind, v in DB:
+        for kind, v in SINGLE:
             self.assertEqual(card.fmt(kind, v), old_fmt(kind, v), v['id'])
+
+    def test_every_real_dual_type_card_shows_both_types(self):
+        for v in REAL_DUAL:
+            with self.subTest(id=v['id']):
+                text, old = card.fmt('Pokemon', v).split('\n'), old_fmt('Pokemon', v).split('\n')
+                both = f"{v['energy_type']}/{v['secondary_energy_type']}"
+                self.assertEqual(text[0], old[0].replace(f"]  {v['energy_type']}  Stage", f"]  {both}  Stage", 1))
+                self.assertIn(both, text[0])
+                self.assertEqual(text[1:], old[1:])
 
     def test_dual_type_shows_both_types_and_one_weakness(self):
         single = card.fmt('Pokemon', real('A1 001')).split('\n')
@@ -242,14 +269,20 @@ def fp(v):
 class CardCanon(unittest.TestCase):
 
     def test_every_real_fingerprint_is_byte_for_byte_the_old_one(self):
-        for kind, v in DB:
+        for kind, v in SINGLE:
             self.assertEqual(card_canon.fingerprint({kind: v}), old_fingerprint({kind: v}), v['id'])
 
+    def test_a_real_dual_type_card_never_merges_with_its_first_type(self):
+        # main's formula hashed energy_type only: it would read Mega Greninja ex as plain Water
+        for v in REAL_DUAL:
+            with self.subTest(id=v['id']):
+                self.assertNotEqual(fp(v), old_fingerprint({'Pokemon': v}))
+
     def test_refresh_pins_unchanged(self):
-        self.assertEqual(card_canon.EXPECTED_IDS, 3879)
+        self.assertEqual(card_canon.EXPECTED_IDS, 4577)
         self.assertEqual(card_canon.SET_ORDER, ['A1', 'A1a', 'A2', 'A2a', 'A2b', 'A3', 'A3a', 'A3b', 'A4',
                                                 'A4a', 'A4b', 'B1', 'B1a', 'B2', 'B2a', 'B2b', 'B3', 'B3a',
-                                                'B3b', 'B4', 'B4a', 'P-A', 'P-B'])
+                                                'B3b', 'B4', 'B4a', 'B4b', 'C1', 'P-A', 'P-B', 'P-C', 'SP1'])
 
     def test_a_second_type_never_merges(self):
         base = fp(real('A1 001'))
@@ -299,10 +332,18 @@ class CardCanon(unittest.TestCase):
 class Consistency(unittest.TestCase):
 
     def test_every_real_card_reads_as_on_main(self):
-        for kind, v in DB:
+        for kind, v in SINGLE:
             c = consistency.Card(kind, v)
             self.assertEqual(c.etype, v.get('energy_type'), v['id'])     # main: v.get('energy_type')
             self.assertEqual(c.etypes, (v['energy_type'],) if kind == 'Pokemon' else (), v['id'])
+
+    def test_a_real_dual_type_card_loads_but_its_type_is_refused(self):
+        for v in REAL_DUAL:
+            with self.subTest(id=v['id']):
+                c = consistency.Card('Pokemon', v)
+                self.assertEqual(c.etypes, (v['energy_type'], v['secondary_energy_type']))
+                with self.assertRaises(card.DualTypeUnsupported):
+                    _ = c.etype
 
     def test_a_dual_type_card_loads_but_its_type_is_refused(self):
         c = consistency.Card('Pokemon', dual('A1 001', 'Psychic', 'Grass'))
@@ -390,6 +431,22 @@ class BrewConsistency(unittest.TestCase):
                         self.forest_turn_one(dict(dual('A1 005', p, s, shape), kind='Pokemon'))
                     self.assertIn('Fragrant Forest', str(cm.exception))
 
+    def test_parse_list_reads_every_database_id(self):
+        # the Dual Fusion refresh added the first ids whose number has a minus sign (SP1's three
+        # Mew, 'SP1 -03'..'SP1 -01'): main's parser refused them as 'unresolved card line'
+        fd, path = tempfile.mkstemp(suffix='.txt')
+        os.close(fd)
+        self.addCleanup(os.remove, path)
+        ids = sorted(self.db)
+        with io.open(path, 'w', encoding='utf-8') as f:
+            f.write('Energy: Psychic\n')
+            f.writelines(f"1 {self.db[i]['name']} {i}\n" for i in ids)
+            f.write('2 Mew SP1 -1\n1 Bulbasaur A1 1\n')                  # unpadded numbers re-pad
+        energy, cards = brew_consistency.parse_list(path, self.db)
+        self.assertEqual(energy, ['Psychic'])
+        self.assertIn('SP1 -01', ids)
+        self.assertEqual([c['id'] for c in cards], ids + ['SP1 -01', 'SP1 -01', 'A1 001'])
+
 
 # ---------------------------------------------------------------------------------------------
 # lib/deck_classifier.py: refuses at suggest_for_deck's same-type rule
@@ -410,7 +467,7 @@ class DeckClassifier(unittest.TestCase):
     def test_every_real_card_reads_as_on_main(self):
         cards = self.load([{k: v} for k, v in DB])
         n = 0
-        for kind, v in DB:
+        for kind, v in SINGLE:
             rec = cards[v['id']]
             if kind == 'Pokemon':
                 self.assertEqual(rec['energy_type'], v['energy_type'], v['id'])
@@ -419,6 +476,13 @@ class DeckClassifier(unittest.TestCase):
             else:
                 self.assertNotIn('energy_type', rec)
         self.assertGreater(n, 3000)
+        for v in REAL_DUAL:                             # loaded with both types, no single one
+            with self.subTest(id=v['id']):
+                rec = cards[v['id']]
+                self.assertEqual(rec['energy_types'], [v['energy_type'], v['secondary_energy_type']])
+                self.assertNotIn('energy_type', rec)
+                with self.assertRaises(card.DualTypeUnsupported):
+                    deck_classifier.pokemon_type(rec)
 
     def test_a_dual_type_card_loads_without_a_single_type(self):
         cards = self.load([{'Pokemon': dual('A1 001', 'Psychic', 'Grass', id='ZZ 002')}])

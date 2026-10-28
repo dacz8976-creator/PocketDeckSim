@@ -77,7 +77,9 @@ def parse_list(path, db):
             continue
         if not s or not s[0].isdigit():
             continue
-        m = re.search(r"([A-Z][A-Za-z0-9-]*)\s+(\d+)\s*$", s)
+        # an id's number may carry a minus sign (SP1's three Mew: 'SP1 -03'..'SP1 -01'); :03d keeps
+        # it, padding after the sign ('-1' -> '-01')
+        m = re.search(r"([A-Z][A-Za-z0-9-]*)\s+(-?\d+)\s*$", s)
         count = int(s.split()[0])
         cid = None
         if m:

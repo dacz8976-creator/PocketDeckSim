@@ -54,11 +54,17 @@ MAP_PATHS = (os.path.join(HERE, '..', 'results', 'CANON_MAP.tsv'),
              os.path.join(HERE, 'CANON_MAP.tsv'), 'results/CANON_MAP.tsv', 'CANON_MAP.tsv')
 
 # ⛔ PINNED. A db refresh MUST consciously update these three lines (that is the point:
-# a silently swapped database must refuse, not pass). Source: s120 fork database.json.
-EXPECTED_IDS     = 3879
+# a silently swapped database must refuse, not pass). Source: lib/deckgym-database.json, the LF
+# copy of engine/database.json at main 39199195 (upstream 20d1857's data: B4b, C1, SP1 and P-C
+# added, P-B to 103). SET_ORDER: base sets in release order (B4b Sep 29-30, C1 Oct 28), then the
+# sets that never give the canonical print while a base set has one: the promos, then SP1
+# (Special Pack: First Partners: 27 ☆ prints plus three Mew, SP1 -03..-01; SP1 001/002/003/018
+# are the game objects of C1 001/016/029/040, so C1 keeps the base id).
+EXPECTED_IDS     = 4577
 EXPECTED_SOURCE_SHA256 = None  # set at build time into the map header; load() verifies map vs header only
 SET_ORDER = ['A1','A1a','A2','A2a','A2b','A3','A3a','A3b','A4','A4a','A4b',
-             'B1','B1a','B2','B2a','B2b','B3','B3a','B3b','B4','B4a','P-A','P-B']
+             'B1','B1a','B2','B2a','B2b','B3','B3a','B3b','B4','B4a','B4b',
+             'C1','P-A','P-B','P-C','SP1']
 # Present in the s120 engine db but ABSENT from ALL_IDS.md v2 (probed on the older
 # bin-3518-b4c): revalidate these ids before using them with that older binary.
 NEWER_THAN_ALL_IDS_V2 = [
@@ -196,6 +202,8 @@ def _sort_key(cid):
     if s not in SET_ORDER:
         raise CanonMapError(f'FATAL: unknown set "{s}" in id "{cid}" — extend SET_ORDER '
                             f'consciously (base-id choice depends on set order).')
+    # int() reads SP1's 'SP1 -03'..'SP1 -01' (three Mew) as -3..-1: they sort before SP1 001,
+    # in the database's own order, and 'SP1 -03' is that class's base id.
     return (SET_ORDER.index(s), int(n))
 
 def fingerprint(entry):
@@ -377,6 +385,14 @@ def selftest():
           cn.same_card('A1 001', 'A4b 001') and cn.same_card('A1 001', 'P-A 023')
           and cn.base_id('P-A 023') == 'A1 001') else None)
     t('unique name resolves to its BASE id', lambda: cn.by_name('Helix Fossil'))
+    # the refreshed SET_ORDER (Dual Fusion data): C1 keeps the base id over SP1's ☆ prints
+    t('Bulbasaur SP1 001 == C1 001, base id C1 001 (SP1 sorts after C1)',
+      lambda: (_ for _ in ()).throw(AssertionError) if not (
+          cn.same_card('SP1 001', 'C1 001') and cn.base_id('SP1 001') == 'C1 001') else None)
+    t("SP1's '-NN' ids sort before SP1 001 (Mew: 'SP1 -03' first)",
+      lambda: (_ for _ in ()).throw(AssertionError) if not (
+          cn.prints_of('SP1 -01') == ['SP1 -03', 'SP1 -02', 'SP1 -01']
+          and _sort_key('SP1 -01') < _sort_key('SP1 001')) else None)
     # §135 B — THE REAL GAME's copy rule (per Dustin, 2026-08-21)
     t('4 Bulbasaur via two prints REFUSED (one exact name, ONE limit)',
       lambda: (_ for _ in ()).throw(AssertionError) if not name_rule_errors(
