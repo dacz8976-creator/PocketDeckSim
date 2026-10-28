@@ -1,0 +1,22 @@
+{
+  "G": {"major": 2, "minor": 4},
+  "X": {"major": 3, "minor": 1},
+  "verdicts": {"G_right": 4, "X_right": 6, "both_wrong": 0, "unsettled": 0},
+  "sheets": {
+    "gemini": {"checked": 12, "right": 12},
+    "gemini_cheap": {"checked": 12, "right": 11},
+    "codex": {"checked": 12, "right": 12}
+  },
+  "errors": [
+    {"review": "G", "turn": "T5", "item": "Energy attach during the Waiting-for-opponent pause, and an Item on the discard", "says": "1 Water attached to benched Mega Sharpedo ex at t=169-174; unrevealed Item appears on the discard at t=175", "truth": "Mega Sharpedo ex has 1 Energy before (159) and after (178); the discard top is Wallace until Mantyke lands at 176; no Item, no attach", "frames": [154, 159, 165, 174, 175, 176, 178], "grade": "major"},
+    {"review": "G", "turn": "T8", "item": "Turbo Shark Energy target", "says": "Attached to benched Milotic ex (3 Water)", "truth": "Attached to benched Magikarp; Milotic stays at 2", "frames": [273, 274, 275, 287], "grade": "major"},
+    {"review": "G", "turn": "T5", "item": "Mega Sharpedo ex retreat cost", "says": "Retreat discards its 1 Water Energy", "truth": "Retreat cost is 0; Energy count unchanged (1 before, 1 after)", "frames": [154, 159], "grade": "minor"},
+    {"review": "G", "turn": "T12", "item": "Dustin's Mega Sharpedo ex retreat", "says": "Discards 1 Water, leaving 1", "truth": "No discard; it keeps 2 Water", "frames": [350, 406, 408], "grade": "minor"},
+    {"review": "G", "turn": "T13", "item": "Opponent's Mega Sharpedo ex retreat and final board", "says": "Retreat discards 1 Water, ends with 1 Water", "truth": "No discard; benched Mega Sharpedo ex has 2 Water", "frames": [412, 415, 425], "grade": "minor"},
+    {"review": "G", "turn": "T8-T12", "item": "Board-state Energy counts on Dustin's side", "says": "Milotic 3/4/5, Mega Gyarados 2/3, Magikarp 0 at T8", "truth": "Milotic 2/3/4, Mega Gyarados 3/4, Magikarp 1 at T8 (follows from the Turbo Shark target)", "frames": [287, 319, 350, 406, 425], "grade": "minor"},
+    {"review": "X", "turn": "T7", "item": "Opponent Trainer play missing", "says": "No Poke Ball at T7 (REVIEW and OPPONENT.json)", "truth": "Opponent plays Poke Ball at about t=219", "frames": [219, 228], "grade": "major"},
+    {"review": "X", "turn": "T9", "item": "Opponent manual Energy attach target", "says": "Water to Active Mega Sharpedo ex (Turbo Shark Water to Chien-Pao ex)", "truth": "Manual Water went to Chien-Pao ex (0 to 1 at 299, 2 after Turbo Shark at 306); Mega Sharpedo ex stays at 2", "frames": [296, 299, 306], "grade": "major"},
+    {"review": "X", "turn": "T13", "item": "Opponent manual Energy attach", "says": "Water attaches to Chien-Pao ex, bringing it to 4 (OPPONENT.json T13 entry)", "truth": "No attach at T13: Chien-Pao ex already has 4 at the start of the turn and the Energy Zone orb stays unused", "frames": [404, 406, 408, 412, 415, 425], "grade": "major"},
+    {"review": "X", "turn": "T10", "item": "Copycat play time", "says": "Copycat played at t=309, before Aqua Charge", "truth": "Copycat is still in hand at 310 and 314 (Aqua Charge banner); played after, about 316-319", "frames": [310, 314, 319], "grade": "minor"}
+  ]
+}

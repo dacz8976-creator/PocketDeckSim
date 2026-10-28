@@ -1,0 +1,20 @@
+{
+  "G": {"major": 0, "minor": 0},
+  "X": {"major": 1, "minor": 7},
+  "verdicts": {"G_right": 8, "X_right": 0, "both_wrong": 0, "unsettled": 0},
+  "sheets": {
+    "gemini": {"checked": 12, "right": 12},
+    "gemini_cheap": {"checked": 12, "right": 12},
+    "codex": {"checked": 12, "right": 11}
+  },
+  "errors": [
+    {"review": "X", "turn": "T4", "item": "opponent Field Blower play and Needle discard from Hydreigon missing; says no other Trainer play", "says": "Only three Lucky Ice Pop plays; no other opponent Trainer play", "truth": "Opponent played Field Blower (about t=170) and discarded Deceptive Needle from Dustin's Hydreigon before the Lucky Ice Pops", "frames": [172, 174, 176, 178, 212], "grade": "major"},
+    {"review": "X", "turn": "T3", "item": "Poke Ball play time", "says": "about 01:58 (118 s)", "truth": "about 113 s", "frames": [113, 118], "grade": "minor"},
+    {"review": "X", "turn": "T3", "item": "Hoopa ex benched time", "says": "about 02:06 (126 s)", "truth": "about 121 s", "frames": [121, 126], "grade": "minor"},
+    {"review": "X", "turn": "T4", "item": "second Lucky Ice Pop play time", "says": "about 03:10 (190 s)", "truth": "play about 185 s, heal 187 s", "frames": [185, 187], "grade": "minor"},
+    {"review": "X", "turn": "T4", "item": "second coin flip (Tails) time", "says": "about 03:17 (197 s)", "truth": "192 s", "frames": [192], "grade": "minor"},
+    {"review": "X", "turn": "T4", "item": "third Lucky Ice Pop play time", "says": "about 03:19 (199 s)", "truth": "play about 194 s, heal 196 s", "frames": [196], "grade": "minor"},
+    {"review": "X", "turn": "T4", "item": "third coin flip (Tails) time", "says": "about 03:26 (206 s)", "truth": "200 s (Darkness Claw already shown at 204 s)", "frames": [200, 204], "grade": "minor"},
+    {"review": "X", "turn": "T4", "item": "Darkness Claw time", "says": "about 03:29 (209 s)", "truth": "204 s", "frames": [204, 206], "grade": "minor"}
+  ]
+}

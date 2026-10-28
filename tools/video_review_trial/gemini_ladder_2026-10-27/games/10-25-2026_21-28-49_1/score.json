@@ -1,0 +1,20 @@
+{
+  "G": {"major": 1, "minor": 0},
+  "X": {"major": 4, "minor": 0},
+  "verdicts": {"G_right": 4, "X_right": 1, "both_wrong": 0, "unsettled": 1},
+  "sheets": {
+    "gemini": {"checked": 12, "right": 12},
+    "gemini_cheap": {"checked": 12, "right": 12},
+    "codex": {"checked": 12, "right": 12}
+  },
+  "errors": [
+    {"review": "G", "turn": "12", "item": "Retreat of Mega Sharpedo ex", "says": "discards 1 Water Energy (Sharpedo then shown with 0 Energy through T16)", "truth": "free retreat; Sharpedo keeps its 1 Water (Active again at T15 with 1 Water)", "frames": [385, 388, 393, 534, 543], "grade": "major"},
+    {"review": "X", "turn": "5", "item": "Elemental Switch source", "says": "moves 1 Lightning from Benched Zeraora to Active Oricorio (Zeraora 1, Pichu keeps its Energy); also leads to Zeraora 'now two' at T7", "truth": "moved from Benched Pichu (Pichu 0); Zeraora stays at 2 and reaches 3 at T7", "frames": [186, 190, 194, 278], "grade": "major"},
+    {"review": "X", "turn": "9", "item": "Energy attachment target", "says": "normal Lightning attachment to Benched Zeraora, bringing it to three", "truth": "Lightning went to Benched Pichu (Pichu 0 -> 1); Zeraora stays at 3", "frames": [302, 304, 306, 310, 278], "grade": "major"},
+    {"review": "X", "turn": "15", "item": "Opponent Professor's Research", "says": "not mentioned (no Supporter played)", "truth": "opponent plays Professor's Research at about t=474 and draws 2", "frames": [474, 476], "grade": "major"},
+    {"review": "X", "turn": "16", "item": "Dustin's Water attach before the concession", "says": "attaches Water to the new Alolan Ninetales ex", "truth": "no Energy attached; new Ninetales shows no Energy and the Water orb is still unused when the opponent concedes", "frames": [534, 537, 542, 543, 545], "grade": "major"}
+  ],
+  "unsettled": [
+    {"turn": "8", "item": "Misty's target (coin flip tails, so no Energy shows it)", "G": "Benched Alolan Ninetales ex", "X": "Mega Sharpedo ex", "frames": [268, 269, 270, 271, 272, 273], "note": "Sharpedo is the only Pokémon lit while Misty is held (leans X); no frame shows the choice being made"}
+  ]
+}
