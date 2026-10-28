@@ -1,9 +1,11 @@
 //! Dual-type seam, step 1 (Dual Fusion prep): a `PokemonCard` can carry a printed type *set*
 //! (`energy_type` + `secondary_energy_type`), every accepted JSON shape normalises to it, every
-//! current card is still single-type and serializes byte for byte as before, and the in-play
-//! chokepoint `State::pokemon_energy_types` reads the printed set.
+//! catalog card but the 7 Dual Fusion dual-type printings (upstream #430 data) is single-type and
+//! serializes byte for byte as before, and the in-play chokepoint `State::pokemon_energy_types`
+//! reads the printed set.
 //!
-//! The dual-type cards here are synthetic: a real database card with `secondary_energy_type` set.
+//! Outside the catalog tests, the dual-type cards here are synthetic: a real database card with
+//! `secondary_energy_type` set.
 use deckgym::{
     actions::Action,
     card_ids::CardId,
@@ -39,6 +41,26 @@ const BULBASAUR_LEGACY_JSON: &str = concat!(
     "\"weakness\":\"Fire\",\"retreat_cost\":[\"Colorless\"],\"rarity\":\"\u{25CA}\",",
     r#""booster_pack":"Genetic Apex (A1)"}"#,
 );
+
+/// The catalog's dual-type printings (Dual Fusion, upstream #430 data) with their printed pair,
+/// primary first: Mega Greninja ex is Water/Darkness, Mega Mewtwo X ex is Psychic/Fighting.
+const DUAL_TYPE_PRINTINGS: [(&str, CardId, EnergyType, EnergyType); 7] = [
+    ("C1 042", CardId::C1042MegaGreninjaEx, EnergyType::Water, EnergyType::Darkness),
+    ("C1 155", CardId::C1155MegaGreninjaEx, EnergyType::Water, EnergyType::Darkness),
+    ("C1 173", CardId::C1173MegaGreninjaEx, EnergyType::Water, EnergyType::Darkness),
+    ("C1 056", CardId::C1056MegaMewtwoXEx, EnergyType::Psychic, EnergyType::Fighting),
+    ("C1 157", CardId::C1157MegaMewtwoXEx, EnergyType::Psychic, EnergyType::Fighting),
+    ("C1 175", CardId::C1175MegaMewtwoXEx, EnergyType::Psychic, EnergyType::Fighting),
+    ("C1 185", CardId::C1185MegaMewtwoXEx, EnergyType::Psychic, EnergyType::Fighting),
+];
+
+/// `card_id`'s printed id and printed pair, if it is one of [`DUAL_TYPE_PRINTINGS`].
+fn dual_printing(card_id: CardId) -> Option<(&'static str, EnergyType, EnergyType)> {
+    DUAL_TYPE_PRINTINGS
+        .iter()
+        .find(|(_, listed, _, _)| *listed == card_id)
+        .map(|&(printed_id, _, primary, secondary)| (printed_id, primary, secondary))
+}
 
 fn pokemon_card(card_id: CardId) -> PokemonCard {
     match get_card_by_enum(card_id) {
@@ -242,12 +264,24 @@ fn legacy_card_json_round_trips_byte_identical() {
     assert_eq!(serde_json::to_string(&card).unwrap(), wrapped);
 }
 
+/// Every catalog card round-trips byte for byte. Only the dual-type printings write a
+/// `secondary_energy_type` key, right after `energy_type`; every other card writes none.
 #[test]
-fn every_database_card_round_trips_without_a_secondary_key() {
+fn every_database_card_round_trips_with_a_secondary_key_only_on_the_dual_printings() {
     for card_id in CardId::iter() {
         let card = get_card_by_enum(card_id);
         let text = serde_json::to_string(&card).unwrap();
-        assert!(!text.contains("secondary_energy_type"), "{card_id:?}: {text}");
+        match dual_printing(card_id) {
+            Some((_, primary, secondary)) => {
+                let pair = format!(
+                    r#""energy_type":{},"secondary_energy_type":{}"#,
+                    serde_json::to_string(&primary).unwrap(),
+                    serde_json::to_string(&secondary).unwrap()
+                );
+                assert!(text.contains(&pair), "{card_id:?}: {text}");
+            }
+            None => assert!(!text.contains("secondary_energy_type"), "{card_id:?}: {text}"),
+        }
         let back: Card = serde_json::from_str(&text)
             .unwrap_or_else(|error| panic!("{card_id:?} does not deserialize: {error}"));
         assert_eq!(serde_json::to_string(&back).unwrap(), text, "{card_id:?}");
@@ -456,52 +490,83 @@ fn printed_type_helpers_on_non_pokemon_cards() {
     }
 }
 
-/// Every current card is single-type, so every membership helper equals the old `==`.
+/// Exactly the printings in [`DUAL_TYPE_PRINTINGS`] are dual-type, each with its printed pair.
+/// Every other Pokémon is single-type, so for it every membership helper equals the old `==`.
 #[test]
-fn every_database_pokemon_is_single_type() {
+fn only_the_dual_fusion_dual_printings_are_dual_type() {
     let mut pokemon = 0;
+    let mut dual = Vec::new();
     for card_id in CardId::iter() {
         let card = get_card_by_enum(card_id);
         let Card::Pokemon(pokemon_card) = &card else {
+            assert_eq!(dual_printing(card_id), None, "{card_id:?} is listed but not a Pokémon");
             assert!(card.get_types().is_empty(), "{card_id:?}");
             continue;
         };
         pokemon += 1;
-        assert_eq!(pokemon_card.secondary_energy_type, None, "{card_id:?}");
-        assert_eq!(
-            pokemon_card.printed_types(),
-            vec![pokemon_card.energy_type],
-            "{card_id:?}"
-        );
-        assert_eq!(card.get_types(), vec![pokemon_card.energy_type], "{card_id:?}");
+        let printed = match dual_printing(card_id) {
+            Some((printed_id, primary, secondary)) => {
+                dual.push(card_id);
+                assert_eq!(pokemon_card.id, printed_id, "{card_id:?}");
+                assert_eq!(pokemon_card.energy_type, primary, "{card_id:?}");
+                assert_eq!(pokemon_card.secondary_energy_type, Some(secondary), "{card_id:?}");
+                vec![primary, secondary]
+            }
+            None => {
+                assert_eq!(pokemon_card.secondary_energy_type, None, "{card_id:?}");
+                vec![pokemon_card.energy_type]
+            }
+        };
+        assert_eq!(pokemon_card.printed_types(), printed, "{card_id:?}");
+        assert_eq!(card.get_types(), printed, "{card_id:?}");
         for energy_type in ALL_TYPES {
-            let old = pokemon_card.energy_type == energy_type;
-            assert_eq!(pokemon_card.has_printed_type(energy_type), old, "{card_id:?}");
-            assert_eq!(card.is_type(energy_type), old, "{card_id:?}");
+            let any_of = printed.contains(&energy_type);
+            assert_eq!(pokemon_card.has_printed_type(energy_type), any_of, "{card_id:?}");
+            assert_eq!(card.is_type(energy_type), any_of, "{card_id:?}");
         }
     }
+    for (_, card_id, _, _) in DUAL_TYPE_PRINTINGS {
+        assert!(
+            dual.contains(&card_id),
+            "{card_id:?} is not in the catalog as a dual-type Pokémon"
+        );
+    }
+    assert_eq!(dual.len(), DUAL_TYPE_PRINTINGS.len(), "{dual:?}");
     assert!(pokemon > 3000, "only {pokemon} Pokémon found");
 }
 
-/// The generator's input still parses through the new Deserialize, and every card in it is
+/// The generator's input parses through the Deserialize, and exactly the printings in
+/// [`DUAL_TYPE_PRINTINGS`] are dual-type in it, with their printed pair; every other Pokémon is
 /// single-type. (Integration tests run from `engine/`.)
 #[test]
-fn database_json_parses_and_is_single_type() {
+fn database_json_parses_with_exactly_the_dual_fusion_dual_printings() {
     let text = std::fs::read_to_string("database.json").expect("database.json in engine/");
     let cards: Vec<Card> = serde_json::from_str(&text).expect("database.json should parse");
     let mut pokemon = 0;
+    let mut dual: Vec<&str> = Vec::new();
     for card in &cards {
         if let Card::Pokemon(pokemon_card) = card {
             pokemon += 1;
-            assert_eq!(pokemon_card.secondary_energy_type, None, "{}", pokemon_card.id);
-            assert_eq!(
-                pokemon_card.printed_types(),
-                vec![pokemon_card.energy_type],
-                "{}",
-                pokemon_card.id
-            );
+            let printed = match DUAL_TYPE_PRINTINGS
+                .iter()
+                .find(|(printed_id, _, _, _)| *printed_id == pokemon_card.id.as_str())
+            {
+                Some(&(printed_id, _, primary, secondary)) => {
+                    dual.push(printed_id);
+                    vec![primary, secondary]
+                }
+                None => vec![pokemon_card.energy_type],
+            };
+            assert_eq!(pokemon_card.printed_types(), printed, "{}", pokemon_card.id);
         }
     }
+    let mut expected: Vec<&str> = DUAL_TYPE_PRINTINGS
+        .iter()
+        .map(|&(printed_id, ..)| printed_id)
+        .collect();
+    expected.sort_unstable();
+    dual.sort_unstable();
+    assert_eq!(dual, expected, "the dual-type printings in database.json");
     assert!(pokemon > 3000, "only {pokemon} Pokémon in database.json");
 }
 

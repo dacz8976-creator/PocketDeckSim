@@ -3,8 +3,8 @@
 //! synthetic card's SECOND printed type matches (main's single-type code misses it) and a
 //! single-type control that behaves as on main.
 //!
-//! No printed dual-type card is in the database yet: each one here is a real card cloned from it
-//! with `secondary_energy_type` set.
+//! The dual-type cards here are synthetic (the 7 Dual Fusion printings are checked in
+//! dual_type_seam_test.rs): each is a real single-type card cloned with `secondary_energy_type` set.
 //!
 //! Not here: Flame Patch's "[R] Pokémon" target in the bots' fuel credit (`players/fuel_credit.rs`
 //! is a private module), tested next to it in that file.

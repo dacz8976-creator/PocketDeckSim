@@ -134,6 +134,19 @@ impl PokemonCard {
     pub fn has_printed_type(&self, energy_type: EnergyType) -> bool {
         self.energy_type == energy_type || self.secondary_energy_type == Some(energy_type)
     }
+
+    /// Upstream-compatible name (deckgym #430) for [`Self::printed_types`]: the primary type, then
+    /// the secondary one unless it repeats the primary (a repeat is already refused at load).
+    pub fn get_types(&self) -> Vec<EnergyType> {
+        let mut types = self.printed_types();
+        types.dedup();
+        types
+    }
+
+    /// Upstream-compatible name (deckgym #430) for [`Self::has_printed_type`].
+    pub fn is_type(&self, energy_type: EnergyType) -> bool {
+        self.has_printed_type(energy_type)
+    }
 }
 
 /// The accepted JSON shapes of a `PokemonCard` (database.json and every saved game state). Field

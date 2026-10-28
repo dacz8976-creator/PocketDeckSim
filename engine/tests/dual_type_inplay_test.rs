@@ -1,6 +1,6 @@
 //! Dual Fusion prep, step 1 (in-play bypass sites and attack sites): a card's printed type SET.
 //!
-//! No current card has a second printed type, so every test builds a synthetic dual-type card by
+//! Every test builds a synthetic dual-type card (not one of the 7 Dual Fusion printings) by
 //! cloning a real card and setting `secondary_energy_type`. Each routed site has two tests:
 //! - `*_second_type`: only the synthetic card's SECOND printed type triggers the effect (this
 //!   fails on main's single-type code);
