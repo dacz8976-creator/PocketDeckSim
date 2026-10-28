@@ -353,6 +353,12 @@ pub enum Mechanic {
     PalkiaExDimensionalStorm,
     MegaKangaskhanExDoublePunchingFamily,
     MoltresExInfernoDance,
+    /// Flip coins and distribute one Energy per heads among matching Benched Pokémon.
+    /// Mew ex's Secret Guidance (upstream #431); Moltres ex keeps `MoltresExInfernoDance`.
+    CoinFlipsAttachEnergyToTypedBench {
+        num_coins: usize,
+        energy_type: EnergyType,
+    },
     CelebiExPowerfulBloom,
     CoinFlipPerSpecificEnergyType {
         energy_type: EnergyType,

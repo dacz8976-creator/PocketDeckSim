@@ -315,7 +315,7 @@ mod tests {
     }
 
     /// The class counts `census.py` and its README (section 3) report, counted as flag settings over the map (a
-    /// variant whose own fields change its class counts once per setting): 130 over 124 variants, 156 entries.
+    /// variant whose own fields change its class counts once per setting): 130 over 124 variants, 157 entries.
     #[test]
     fn the_classes_count_as_the_census_does() {
         let mut settings: BTreeMap<(String, String), ()> = BTreeMap::new();

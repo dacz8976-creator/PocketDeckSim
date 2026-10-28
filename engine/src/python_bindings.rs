@@ -159,6 +159,13 @@ impl PyCard {
         self.card.get_type().map(|t| t.into())
     }
 
+    /// Every printed type (one, or two for a dual-type card); empty for a Trainer. `energy_type`
+    /// stays the primary printed type.
+    #[getter]
+    fn printed_types(&self) -> Vec<PyEnergyType> {
+        self.card.get_types().into_iter().map(|t| t.into()).collect()
+    }
+
     #[getter]
     fn attacks(&self) -> Vec<PyAttack> {
         match &self.card {
@@ -284,6 +291,18 @@ impl PyPlayedCard {
     #[getter]
     fn energy_type(&self) -> Option<PyEnergyType> {
         self.played_card.get_energy_type().map(|t| t.into())
+    }
+
+    /// Every printed type of the card (one, or two for a dual-type card). Printed only: it does
+    /// not count an Ability such as Urshifu's Double Type (neither does `energy_type`).
+    #[getter]
+    fn printed_types(&self) -> Vec<PyEnergyType> {
+        self.played_card
+            .card
+            .get_types()
+            .into_iter()
+            .map(|t| t.into())
+            .collect()
     }
 
     #[getter]

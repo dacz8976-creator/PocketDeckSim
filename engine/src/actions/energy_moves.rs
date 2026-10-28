@@ -151,7 +151,7 @@ fn eligible_sources(
         .filter_map(|(idx, pokemon)| match scope {
             EnergyMoveScope::TypedBenchToActive(energy_type) => {
                 // Bench only, and the source itself must be of that type.
-                if idx == 0 || pokemon.card.get_type() != Some(energy_type) {
+                if idx == 0 || !pokemon.has_printed_type(energy_type) {
                     return None;
                 }
                 let movable: Vec<EnergyType> = pokemon

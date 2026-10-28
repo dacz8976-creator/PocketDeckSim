@@ -18,7 +18,8 @@ This module makes both mechanical instead of remembered:
 
 The fingerprint hashes ONLY gameplay-relevant fields:
   Pokemon: name, stage, evolves_from, hp, energy_type, ability, attacks,
-           weakness, retreat_cost
+           weakness, retreat_cost (+ the full printed type set, only when a
+           card has two types: single-type fingerprints are unchanged)
   Trainer: name, trainer_card_type, effect
 EXCLUDED: rarity, booster_pack, set/number — acquisition-only, zero gameplay
 effect (same argument as §127's energy-line exclusion). NAME IS INCLUDED
@@ -46,6 +47,9 @@ and is import-wired for future analyzers — never key a card by bare name again
 import sys, os, io, json, hashlib, collections
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+if HERE not in sys.path:
+    sys.path.insert(0, HERE)
+import card as cardlib  # noqa: E402  (lib/card.py: printed_types, the one reader of a card's type set)
 MAP_PATHS = (os.path.join(HERE, '..', 'results', 'CANON_MAP.tsv'),
              os.path.join(HERE, 'CANON_MAP.tsv'), 'results/CANON_MAP.tsv', 'CANON_MAP.tsv')
 
@@ -197,11 +201,17 @@ def _sort_key(cid):
 def fingerprint(entry):
     kind = list(entry.keys())[0]; c = entry[kind]
     if kind == 'Pokemon':
+        types = cardlib.printed_types(c)   # ValueError on malformed type data (never a silent merge)
         f = {'kind': kind, 'name': c['name'], 'stage': c['stage'],
              'evolves_from': c['evolves_from'], 'hp': c['hp'],
-             'energy_type': c['energy_type'], 'ability': c['ability'],
+             'energy_type': types[0], 'ability': c['ability'],
              'attacks': c['attacks'], 'weakness': c['weakness'],
              'retreat_cost': c['retreat_cost']}
+        if len(types) > 1:
+            # Dual-type (Dual Fusion): hash the FULL printed set, so two printings that differ
+            # only in a second type never merge. Added ONLY for two types, so every single-type
+            # fingerprint (and CANON_MAP.tsv) stays byte-for-byte what it was.
+            f['printed_types'] = types
     else:
         f = {'kind': kind, 'name': c['name'],
              'trainer_card_type': c.get('trainer_card_type'), 'effect': c.get('effect')}

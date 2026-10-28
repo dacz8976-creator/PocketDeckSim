@@ -29,6 +29,53 @@ struct Args {
     incremental_ability_map: bool,
 }
 
+/// The fields `PokemonCard` reads, in every accepted printed-type shape (see `PokemonCardWire` in
+/// models/card.rs).
+const KNOWN_POKEMON_FIELDS: [&str; 14] = [
+    "id",
+    "name",
+    "stage",
+    "evolves_from",
+    "hp",
+    "energy_type",
+    "secondary_energy_type",
+    "energy_types",
+    "ability",
+    "attacks",
+    "weakness",
+    "retreat_cost",
+    "rarity",
+    "booster_pack",
+];
+
+/// serde drops a field the card model does not read, silently. For a Pokémon that could be a
+/// printed type under a new name (upstream issue #429 has not settled the shape), so refuse any
+/// unknown Pokémon field here, loudly, before generating anything.
+fn check_pokemon_fields(json_string: &str) {
+    let entries: Vec<serde_json::Value> =
+        serde_json::from_str(json_string).expect("database.json should be a list of cards");
+    let mut unknown: Vec<String> = Vec::new();
+    for entry in &entries {
+        let Some(pokemon) = entry.get("Pokemon").and_then(|pokemon| pokemon.as_object()) else {
+            continue;
+        };
+        for key in pokemon.keys() {
+            if !KNOWN_POKEMON_FIELDS.contains(&key.as_str()) {
+                let id = pokemon.get("id").and_then(|id| id.as_str()).unwrap_or("?");
+                unknown.push(format!("{id}: {key}"));
+            }
+        }
+    }
+    if !unknown.is_empty() {
+        panic!(
+            "database.json has {} Pokémon field(s) the card model would drop silently (first: {:?}). \
+             Teach PokemonCard (models/card.rs) to read them, or confirm they can be dropped, first.",
+            unknown.len(),
+            &unknown[..unknown.len().min(10)]
+        );
+    }
+}
+
 /// A CLI program to generate card_ids.rs and database.rs from the database.json file.
 fn main() {
     let args = Args::parse();
@@ -38,6 +85,7 @@ fn main() {
     let mut json_string = String::new();
     file.read_to_string(&mut json_string)
         .expect("Unable to read string");
+    check_pokemon_fields(&json_string);
     let deserialized_cards: Vec<Card> = serde_json::from_str(&json_string).unwrap();
 
     // Generate the Enum Names
@@ -94,13 +142,7 @@ fn print_enums(card_map: &IndexMap<String, Card>, id_to_enum: &IndexMap<String, 
     }
     println!("}}\n");
     println!();
-    println!("static CARD_ID_MAP: LazyLock<HashMap<&'static str, CardId>> = LazyLock::new(|| {{");
-    println!("    let mut map = HashMap::new();");
-    for (id, enum_name) in id_to_enum.iter() {
-        println!("    map.insert(\"{id}\", CardId::{enum_name});");
-    }
-    println!("    map");
-    println!("}});");
+    println!("{}", card_id_lookup_source(id_to_enum));
     println!();
     println!("impl CardId {{");
     println!("    pub fn from_card_id(id: &str) -> Option<Self> {{");
@@ -108,6 +150,29 @@ fn print_enums(card_map: &IndexMap<String, Card>, id_to_enum: &IndexMap<String, 
     println!("    }}");
     println!();
     println!("}}");
+}
+
+fn card_id_lookup_source(id_to_enum: &IndexMap<String, String>) -> String {
+    // Bound each generated function, just as the card database generator does.
+    // A single closure with thousands of inserts can overflow rustfmt's stack
+    // on Windows as the card catalog grows.
+    let entries: Vec<_> = id_to_enum.iter().collect();
+    let chunks: Vec<_> = entries.chunks(128).collect();
+    let mut source = String::from("static CARD_ID_MAP: LazyLock<HashMap<&'static str, CardId>> = LazyLock::new(|| {\n    let mut map = HashMap::new();\n");
+    for index in 0..chunks.len() {
+        source.push_str(&format!("    add_card_ids_chunk_{index}(&mut map);\n"));
+    }
+    source.push_str("    map\n});\n");
+    for (index, chunk) in chunks.iter().enumerate() {
+        source.push_str(&format!(
+            "\nfn add_card_ids_chunk_{index}(map: &mut HashMap<&'static str, CardId>) {{\n"
+        ));
+        for (id, enum_name) in chunk.iter() {
+            source.push_str(&format!("    map.insert(\"{id}\", CardId::{enum_name});\n"));
+        }
+        source.push_str("}\n");
+    }
+    source
 }
 
 fn print_database(card_map: &IndexMap<String, Card>) {
@@ -169,6 +234,10 @@ fn print_card_insert(enum_name: &str, card: &Card) {
             println!(
                 "            energy_type: EnergyType::{},",
                 pokemon_card.energy_type
+            );
+            println!(
+                "            secondary_energy_type: {},",
+                to_rust_energy(pokemon_card.secondary_energy_type)
             );
             println!(
                 "            ability: {},",
@@ -425,6 +494,36 @@ fn print_incremental_ability_map(card_map: &IndexMap<String, Card>, existing_pat
     }
 }
 
+/// Compare equivalent Unicode spellings while retaining other Rust escapes.
+fn normalize_unicode_escapes(text: &str) -> String {
+    let mut result = String::new();
+    let mut chars = text.chars().peekable();
+    while let Some(ch) = chars.next() {
+        if ch != '\\' {
+            result.push(ch);
+            continue;
+        }
+        match chars.next() {
+            Some('u') if chars.peek() == Some(&'{') => {
+                chars.next();
+                let code: String = chars.by_ref().take_while(|&c| c != '}').collect();
+                let code = code.replace('_', "");
+                let value = u32::from_str_radix(&code, 16)
+                    .ok()
+                    .and_then(char::from_u32)
+                    .expect("valid Unicode escape in Rust source");
+                result.push(value);
+            }
+            Some(escaped) => {
+                result.push('\\');
+                result.push(escaped);
+            }
+            None => result.push('\\'),
+        }
+    }
+    result
+}
+
 fn extract_existing_effect_texts(contents: &str) -> std::collections::HashSet<String> {
     let mut results = std::collections::HashSet::new();
     let bytes = contents.as_bytes();
@@ -454,10 +553,36 @@ fn extract_existing_effect_texts(contents: &str) -> std::collections::HashSet<St
             j += 1;
         }
         if j <= bytes.len() {
-            let effect = contents[quote + 1..j].to_string();
+            let effect = normalize_unicode_escapes(&contents[quote + 1..j]);
             results.insert(effect);
         }
         index = j + 1;
     }
     results
+}
+
+#[cfg(test)]
+mod generator_tests {
+    use super::*;
+
+    #[test]
+    fn mechanic_lookup_recognizes_unicode_escapes_as_existing_effects() {
+        let effects = extract_existing_effect_texts(
+            r#"map.insert("Has \u{201c}Team Rocket\u{201d} in its name.", mechanic);"#,
+        );
+        assert!(effects.contains("Has “Team Rocket” in its name."));
+        assert_eq!(normalize_unicode_escapes(r"\\u{201c}"), r"\\u{201c}");
+    }
+
+    /// #430's version also pipes the source through rustfmt; rustfmt is not installed here.
+    #[test]
+    fn large_card_lookup_is_bounded_per_function() {
+        let entries: IndexMap<_, _> = (0..5000)
+            .map(|index| (format!("T {index:04}"), format!("Card{index}")))
+            .collect();
+        let source = card_id_lookup_source(&entries);
+        assert_eq!(source.matches("map.insert(").count(), entries.len());
+        assert_eq!(source.matches("\nfn add_card_ids_chunk_").count(), 40);
+        assert!(source.contains("map.insert(\"T 4999\", CardId::Card4999)"));
+    }
 }

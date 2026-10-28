@@ -76,6 +76,9 @@ impl Deck {
         if energy_types.is_empty() {
             cards.iter().for_each(|x| {
                 if let Card::Pokemon(pokemon_card) = x {
+                    // TODO(dual-type): should a dual-type card register both printed types
+                    // (`secondary_energy_type` too) for the inferred Energy Zone? Unknown rule;
+                    // only the primary type for now.
                     energy_types.insert(pokemon_card.energy_type);
                 }
             });

@@ -67,21 +67,24 @@ pub fn is_future_pokemon(pokemon_name: &str) -> bool {
 
 // Ultra Beasts
 // TODO: Move this to a field in PokemonCard and database in the future
-const ULTRA_BEAST_NAMES: [&str; 14] = [
+const ULTRA_BEAST_NAMES: [&str; 17] = [
     "Buzzwole ex",
+    "Buzzwole",
     "Blacephalon",
+    "Blacephalon ex",
     "Kartana",
     "Pheromosa",
     "Xurkitree",
     "Nihilego",
     "Guzzlord ex",
+    "Guzzlord",
     "Poipole",
     "Naganadel",
     "Stakataka",
     "Celesteela",
     "Dawn Wings Necrozma",
     "Dusk Mane Necrozma",
-    "Ultra Necrozma",
+    "Ultra Necrozma ex",
 ];
 
 pub fn is_ultra_beast(pokemon_name: &str) -> bool {
@@ -590,7 +593,7 @@ fn apply_deceptive_needle_damage(player_ending_turn: usize, state: &mut State) {
     };
     if active.is_knocked_out()
         || !has_tool(active, CardId::B4148DeceptiveNeedle)
-        || active.get_energy_type() != Some(EnergyType::Darkness)
+        || !active.has_printed_type(EnergyType::Darkness)
     {
         return;
     }
@@ -1100,6 +1103,18 @@ fn get_increased_turn_effect_modifiers(
                     0
                 }
             }
+            // Lorelei: "+30 damage to your opponent's Pokémon" -- Benched ones too, but only an
+            // attack's damage to the opponent (the same scope as Clemont's Backpack above).
+            TurnEffect::IncreasedDamageForSpecificPokemonToAnyOpponentPokemon {
+                amount,
+                pokemon_names,
+            } if (is_active_to_active || attack_on_opponent)
+                && pokemon_names
+                    .iter()
+                    .any(|name| *name == attacking_pokemon.get_name()) =>
+            {
+                *amount
+            }
             TurnEffect::IncreasedDamageForSpecificPokemonAgainstEx {
                 amount,
                 pokemon_names,
@@ -1506,6 +1521,9 @@ fn weakness_application_against(
 
 /// The printed Weakness rule: +20 when `receiving`'s Weakness is one of the attacker's types, or x2 of the total
 /// under Bounded Field for an attacker that isn't a Mega ex.
+// TODO(dual-type): a printed card keeps ONE Weakness (`PokemonCard::weakness`), a printed
+// dual-type card included; the attacker side is already any-of over its types (below). Two
+// printed Weaknesses on one card (if the Dual Fusion rules ever print one) are not supported.
 fn printed_weakness_application(
     state: &State,
     receiving: &PlayedCard,

@@ -9,9 +9,11 @@
 //! parts count. Everything else is the k<N> search unchanged, and with none of these cards in play it
 //! plays k<N>'s games move for move.
 //!
-//! The rule is lifted only for the effect texts in [`AUDITED_TEXTS`]: the 62 texts in the card database
-//! that mention the opponent's hand or deck, each read on the laptop (tier-1 read of 858b6fe: no leak, no
-//! panic). A text added later stays unpriced under kp, exactly as under k, until it is audited and added;
+//! The rule is lifted only for the effect texts in [`AUDITED_TEXTS`]: the 63 texts in the card database
+//! that mention the opponent's hand or deck. 62 were each read on the laptop (tier-1 read of 858b6fe: no
+//! leak, no panic); the 63rd, C1 012 Amoonguss's Astonish (Dual Fusion data, #430), is the audited coin-flip
+//! Astonish without its flip and is priced like it (coordinator-067, J0). A text added later stays
+//! unpriced under kp, exactly as under k, until it is audited and added;
 //! `the_audited_list_is_the_card_databases_whole_inventory` fails until then.
 //!
 //! What this does not do: an effect whose payoff is the identity of the opponent's hidden cards gets no
@@ -28,8 +30,9 @@ use crate::observation::{with_public_pricing, PlayerObservation};
 use crate::{Deck, State};
 
 /// The lowercased effect texts (as `hidden_continuation_reason` reads them) whose opponent-hand-or-deck rule
-/// public pricing lifts, sorted so they can be binary-searched. Generated from the card database on Sept 25.
-pub(crate) const AUDITED_TEXTS: [&str; 62] = [
+/// public pricing lifts, sorted so they can be binary-searched. Generated from the card database on Sept 25;
+/// C1 012's text added Oct 27 (coordinator-067, J0).
+pub(crate) const AUDITED_TEXTS: [&str; 63] = [
     r#"1 attack from among the pokémon in your opponent's hand and deck is chosen at random, and you use the chosen attack as this attack."#,
     r#"as long as this pokémon is in the active spot, your opponent can't play any stadium cards from their hand."#,
     r#"as long as this pokémon is in the active spot, your opponent can't use any supporter cards from their hand."#,
@@ -60,6 +63,8 @@ pub(crate) const AUDITED_TEXTS: [&str; 62] = [
     r#"if you have the same number of cards in your hand as your opponent, this attack does 40 more damage."#,
     r#"if your opponent has exactly 2, 4, or 6 cards in their hand, this attack does 40 more damage."#,
     r#"if your opponent's active pokémon is an evolved pokémon, devolve it by putting the highest stage evolution card on it into your opponent's hand."#,
+    // C1 012 Amoonguss's Astonish (#430 data): the coin-flip Astonish without the flip, priced like it (coordinator-067, J0).
+    r#"look at a random card from your opponent's hand and shuffle it into their deck."#,
     r#"look at a random supporter card that's not penny from your opponent's deck and shuffle it back into their deck. use the effect of that card as the effect of this card."#,
     r#"look at your opponent's hand and put any number of basic pokémon you find there onto your opponent's bench."#,
     r#"once during your turn, if this pokémon is in the active spot, you may look at a random supporter card from your opponent's hand. use the effect of that card as the effect of this ability."#,
