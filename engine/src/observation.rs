@@ -8,7 +8,9 @@ use rand::{rngs::StdRng, seq::SliceRandom};
 use serde::{Deserialize, Serialize};
 use std::cell::{Cell, RefCell};
 
-pub const INFORMATION_MODEL: &str = "closed-counts-unpriced-v7";
+/// v8 (release night, Dual Fusion): Serena's Choice reveals its player's top 3 cards, as Pokédex
+/// does, while its choice is pending. Rows from different versions must not be pooled.
+pub const INFORMATION_MODEL: &str = "closed-counts-unpriced-v8";
 
 #[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
 pub struct RevealedKnowledge {
@@ -719,7 +721,7 @@ pub(crate) fn update_knowledge(
             "Hand Scope" | "Silver" => {
                 knowledge[actor].opponent_hand = after.hands[1 - actor].clone()
             }
-            "Pokédex" => {
+            "Pokédex" | "Serena's Choice" => {
                 knowledge[actor].deck_top[actor] =
                     after.decks[actor].cards.iter().take(3).cloned().collect()
             }

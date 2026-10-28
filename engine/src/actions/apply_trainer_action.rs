@@ -326,6 +326,20 @@ pub(crate) fn forecast_trainer_action_unchecked(
         CardId::B4a071TeamRocketsBoss | CardId::B4a087TeamRocketsBoss => {
             team_rockets_boss_outcomes(acting_player, state)
         }
+        CardId::C1125Lorelei | CardId::C1165Lorelei => Outcomes::single_fn(lorelei_effect),
+        CardId::C1126BluesProvocation | CardId::C1166BluesProvocation => {
+            Outcomes::single_fn(lana_effect)
+        }
+        CardId::C1127SerenasChoice | CardId::C1167SerenasChoice => {
+            Outcomes::single_fn(serenas_choice_effect)
+        }
+        CardId::C1128Rika | CardId::C1168Rika => Outcomes::single_fn(rika_effect),
+        CardId::C1129PokeMartGuy | CardId::C1169PokeMartGuy => {
+            card_search_outcomes_with_filter_multiple(acting_player, state, 2, |card| {
+                ["Super Potion", "Max Repel", "Full Heal"].contains(&card.get_name().as_str())
+            })
+        }
+        CardId::C1130RisingStar | CardId::C1170RisingStar => Outcomes::single_fn(skyla_effect),
         _ => panic!("Unsupported Trainer Card"),
     }
 }
@@ -2545,6 +2559,56 @@ pub(crate) fn copied_supporter_is_usable(state: &State, trainer_card: &TrainerCa
         trainer_move_generation_implementation(state, trainer_card),
         Some(actions) if !actions.is_empty()
     )
+}
+
+fn lorelei_effect(_: &mut StdRng, state: &mut State, _: &Action) {
+    // During this turn, attacks used by your Dewgong, Cloyster, or Lapras do +30 damage to your
+    // opponent's Pokémon (Benched ones too, like Clemont's Backpack).
+    state.add_turn_effect(
+        TurnEffect::IncreasedDamageForSpecificPokemonToAnyOpponentPokemon {
+            amount: 30,
+            pokemon_names: vec![
+                "Dewgong".to_string(),
+                "Cloyster".to_string(),
+                "Lapras".to_string(),
+            ],
+        },
+        0,
+    );
+}
+
+fn serenas_choice_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Look at the top 3 cards of your deck and put 1 of them into your hand. Shuffle any other
+    // cards back into your deck. One choice per distinct card.
+    let mut choices = Vec::new();
+    for card in state.decks[action.actor].cards.iter().take(3) {
+        let choice = SimpleAction::TakeTopDeckCardAndShuffle {
+            card: card.clone(),
+            look_count: 3,
+        };
+        if !choices.contains(&choice) {
+            choices.push(choice);
+        }
+    }
+    if !choices.is_empty() {
+        state.move_generation_stack.push((action.actor, choices));
+    }
+}
+
+fn rika_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Produce 2 [F] Energy from your Energy Zone, and attach it to 1 of your Whiscash or
+    // Paldean Clodsire.
+    let choices = state
+        .enumerate_in_play_pokemon(action.actor)
+        .filter(|(_, p)| ["Whiscash", "Paldean Clodsire"].contains(&p.get_name().as_str()))
+        .map(|(idx, _)| SimpleAction::Attach {
+            attachments: vec![(2, EnergyType::Fighting, idx)],
+            is_turn_energy: false,
+        })
+        .collect::<Vec<_>>();
+    if !choices.is_empty() {
+        state.move_generation_stack.push((action.actor, choices));
+    }
 }
 
 #[cfg(test)]

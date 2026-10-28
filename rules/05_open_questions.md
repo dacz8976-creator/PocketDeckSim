@@ -94,6 +94,18 @@ questions #19–#28 came from the full engine audit (`07_engine_audit_2026-09-22
   - how a printed second type combines with a Double Type-style Ability (the engine lets the Ability replace the printed set).
 - **Test:** once he has a dual-type card, the shot-list row the coordinator adds after release: Weakness either way, and one "[X] Pokémon" effect on each type.
 
+**33. Rising Star and dual-type Pokémon — OPEN (plain reading, not observed).** (New, Oct 28: release-prep commit C, the #432 port; coordinator-067 J2.)
+- **Card text** (C1 130, C1 170): "You can use this card only if you have 3 or more different Pokémon types in play. Switch your Active Pokémon with 1 of your Benched Pokémon."
+- **The engine** counts the types of your Pokémon in play through its in-play chokepoint (`State::pokemon_energy_types`), the one Weakness uses. A dual-type card counts both printed types (Mega Greninja ex, Water and Darkness, plus any Grass Pokémon makes 3), and each Urshifu with Double Type counts the two types its Ability gives. Attached Energy doesn't count, and 2 Pokémon of the same type count once. Upstream #432 counts the same way.
+- **Open:** no source says whether one dual-type Pokémon gives 2 of the 3 types; the engine follows the plain reading. If the game counts one type per Pokémon, the engine lets Rising Star be played in some boards where the game would not.
+- **Test:** a dual-type Pokémon and a Pokémon of a third type in play, one of them on the Bench, Rising Star in hand: can it be played?
+
+**34. Serena's Choice with a full hand — OPEN (the engine keeps the card in the deck; upstream allows 11).** (New, Oct 28: release-prep commit C, the #432 port; coordinator-067 J4.)
+- **Card text** (C1 127, C1 167): "Look at the top 3 cards of your deck and put 1 of them into your hand. Shuffle any other cards back into your deck."
+- **When it matters:** only when the hand still holds 10 cards after the Supporter is played, i.e. 11 or more before it (playing it frees a slot). That needs an effect that went past the limit, such as the uncapped random transfers of Team Rocket's Researcher (`engine/UPSTREAM.md`, RulesUnverified) or the hand-full return in #9.
+- **The engine:** the chosen card stays in the deck and the deck is still shuffled, by analogy with a draw past 10 (README item 11) and the capped searches (`09`, "Clemont from a 10-card hand reached 11"). Not observed.
+- **Upstream #432:** puts the card into the hand anyway, so the hand reaches 11. Recorded in `engine/UPSTREAM.md` as a question for the maintainer.
+
 ## Low impact / settled enough
 
 - **30. A Bench-only attack when the opponent's Bench is empty** (e.g. Hitmonlee's Stretch Kick, "does 30 damage to 1 of your opponent's Benched Pokémon"). (New, 2026-09-27, from Dustin's quiz 2 Q02 question.) Can it be used at all? The engine allows it and it does nothing (`apply_attack_action.rs` `push_direct_damage_choices`: no target, nothing queued). With a Bench it does the 30 (kp3's Q02 game; `tests/s180_e1_fixtures.rs` C8/C10a). The game blocks Trainers and Abilities whose condition can't be met (`04`), but nothing is recorded for attacks. **Dropped (Dustin, 2026-09-27): "Ending your turn or using an attack that does nothing is the same result."**

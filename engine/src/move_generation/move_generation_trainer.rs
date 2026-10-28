@@ -347,6 +347,22 @@ pub fn trainer_move_generation_implementation(
         CardId::B4a071TeamRocketsBoss | CardId::B4a087TeamRocketsBoss => {
             can_play_trainer(state, trainer_card)
         }
+        CardId::C1125Lorelei | CardId::C1165Lorelei => can_play_trainer(state, trainer_card),
+        CardId::C1126BluesProvocation | CardId::C1166BluesProvocation => {
+            can_play_blues_provocation(state, trainer_card)
+        }
+        // J3: rules/04 [DUSTIN] -- a card that takes something from the deck is blocked only by an
+        // empty deck (upstream allows both with an empty deck).
+        CardId::C1127SerenasChoice | CardId::C1167SerenasChoice => {
+            can_search_nonempty_deck(state, trainer_card)
+        }
+        CardId::C1128Rika | CardId::C1168Rika => can_play_rika(state, trainer_card),
+        CardId::C1129PokeMartGuy | CardId::C1169PokeMartGuy => {
+            can_search_nonempty_deck(state, trainer_card)
+        }
+        CardId::C1130RisingStar | CardId::C1170RisingStar => {
+            can_play_rising_star(state, trainer_card)
+        }
         _ => None,
     }
 }
@@ -1271,6 +1287,50 @@ fn can_play_professor_turo(state: &State, trainer_card: &TrainerCard) -> Option<
         .enumerate_in_play_pokemon(state.current_player)
         .any(|(_, pokemon)| is_future_pokemon(&pokemon.get_name()));
     if has_future {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
+    }
+}
+
+/// Blue's Provocation: "You can use this card only if you have Venusaur, Charizard, Blastoise, or
+/// Pidgeot in play. Switch in 1 of your opponent's Benched Pokémon to the Active Spot." Exact
+/// names, so the ex and Mega Evolution Pokémon don't count.
+fn can_play_blues_provocation(
+    state: &State,
+    trainer_card: &TrainerCard,
+) -> Option<Vec<SimpleAction>> {
+    let player = state.current_player;
+    if has_named_pokemon_in_play(state, player, &["Venusaur", "Charizard", "Blastoise", "Pidgeot"]) {
+        can_play_sabrina(state, trainer_card)
+    } else {
+        cannot_play_trainer()
+    }
+}
+
+/// Rika needs a Whiscash or Paldean Clodsire in play to attach to.
+fn can_play_rika(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    let player = state.current_player;
+    if has_named_pokemon_in_play(state, player, &["Whiscash", "Paldean Clodsire"]) {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
+    }
+}
+
+/// Rising Star: "You can use this card only if you have 3 or more different Pokémon types in play.
+/// Switch your Active Pokémon with 1 of your Benched Pokémon." J2: types through the in-play
+/// chokepoint, so a dual-type card counts both printed types and Urshifu's Double Type both of its
+/// Ability's types, as upstream's `PlayedCard::get_energy_types` does. OPEN (rules/05 #33): the
+/// plain reading, not observed.
+fn can_play_rising_star(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    let player = state.current_player;
+    let types: std::collections::BTreeSet<EnergyType> = state
+        .enumerate_in_play_pokemon(player)
+        .flat_map(|(_, pokemon)| state.pokemon_energy_types(pokemon))
+        .collect();
+    let has_bench = state.enumerate_bench_pokemon(player).next().is_some();
+    if types.len() >= 3 && has_bench {
         can_play_trainer(state, trainer_card)
     } else {
         cannot_play_trainer()

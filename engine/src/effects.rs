@@ -171,6 +171,12 @@ pub enum TurnEffect {
         amount: u32,
         pokemon_names: Vec<String>,
     },
+    /// Like `IncreasedDamageForSpecificPokemon`, but the bonus applies to an attack's damage on any
+    /// of the opponent's Pokémon, Active or Benched (Lorelei; upstream #423's variant).
+    IncreasedDamageForSpecificPokemonToAnyOpponentPokemon {
+        amount: u32,
+        pokemon_names: Vec<String>,
+    },
     IncreasedDamageForSpecificPokemonAgainstEx {
         amount: u32,
         pokemon_names: Vec<String>,

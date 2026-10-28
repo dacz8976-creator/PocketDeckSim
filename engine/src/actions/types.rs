@@ -15,6 +15,11 @@ pub struct Action {
 
 #[derive(Debug, Clone, PartialEq, Eq, Hash, Serialize, Deserialize)]
 pub enum SimpleAction {
+    /// Choose one of the top cards, put it in hand, then shuffle the remaining deck.
+    TakeTopDeckCardAndShuffle {
+        card: Card,
+        look_count: usize,
+    },
     DrawCard {
         amount: u8,
     },
@@ -320,6 +325,9 @@ pub enum SimpleAction {
 impl fmt::Display for SimpleAction {
     fn fmt(&self, f: &mut fmt::Formatter<'_>) -> fmt::Result {
         match self {
+            SimpleAction::TakeTopDeckCardAndShuffle { card, look_count } => {
+                write!(f, "TakeTopDeckCardAndShuffle({card}, {look_count})")
+            }
             SimpleAction::DrawCard { amount } => write!(f, "DrawCard({amount})"),
             SimpleAction::Play { trainer_card } => write!(f, "Play({trainer_card:?})"),
             SimpleAction::Place(card, index) => write!(f, "Place({card}, {index})"),

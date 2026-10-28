@@ -1103,6 +1103,18 @@ fn get_increased_turn_effect_modifiers(
                     0
                 }
             }
+            // Lorelei: "+30 damage to your opponent's Pokémon" -- Benched ones too, but only an
+            // attack's damage to the opponent (the same scope as Clemont's Backpack above).
+            TurnEffect::IncreasedDamageForSpecificPokemonToAnyOpponentPokemon {
+                amount,
+                pokemon_names,
+            } if (is_active_to_active || attack_on_opponent)
+                && pokemon_names
+                    .iter()
+                    .any(|name| *name == attacking_pokemon.get_name()) =>
+            {
+                *amount
+            }
             TurnEffect::IncreasedDamageForSpecificPokemonAgainstEx {
                 amount,
                 pokemon_names,

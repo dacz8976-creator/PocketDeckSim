@@ -577,6 +577,9 @@ fn forecast_action_unchecked(state: &State, action: &Action) -> Outcomes {
         SimpleAction::ShufflePokemonIntoDeck { hand_pokemon } => {
             forecast_shuffle_pokemon_into_deck(action.actor, hand_pokemon)
         }
+        SimpleAction::TakeTopDeckCardAndShuffle { card, look_count } => {
+            forecast_take_top_deck_card_and_shuffle(action.actor, card, *look_count)
+        }
         SimpleAction::ShuffleOwnCardsIntoDeck { cards } => {
             forecast_shuffle_own_cards_into_deck(action.actor, cards)
         }
@@ -1804,6 +1807,33 @@ fn forecast_shuffle_own_cards_into_deck(acting_player: usize, cards: &[Card]) ->
             "Maintenance: Shuffled {:?} from hand into deck, then drew a card",
             cards_to_shuffle
         );
+    })
+}
+
+/// Serena's Choice: "Look at the top 3 cards of your deck and put 1 of them into your hand.
+/// Shuffle any other cards back into your deck." The chosen card must be among the top
+/// `look_count`; if it is not, nothing happens (no take, no shuffle), as upstream. J4: with a full
+/// hand (10) it stays in the deck, as with a draw (rules/09), and the deck is still shuffled.
+/// Upstream #432 puts it in the hand anyway (11 cards).
+fn forecast_take_top_deck_card_and_shuffle(
+    acting_player: usize,
+    card: &Card,
+    look_count: usize,
+) -> Outcomes {
+    let chosen = card.clone();
+    Outcomes::single_fn(move |rng, state, _action| {
+        let index = state.decks[acting_player]
+            .cards
+            .iter()
+            .take(look_count)
+            .position(|candidate| *candidate == chosen);
+        if let Some(index) = index {
+            if state.hands[acting_player].len() < 10 {
+                let taken = state.decks[acting_player].cards.remove(index);
+                state.hands[acting_player].push(taken);
+            }
+            state.decks[acting_player].shuffle(false, rng);
+        }
     })
 }
 
