@@ -1,8 +1,8 @@
 # PocketDeckSim
 
-**Help Dustin improve decks he enjoys playing so they carry out their plan reliably and perform better against the opponents he actually faces.**
+**A Pokémon TCG Pocket simulator that plays by the game's real rules, built to find better decks.**
 
-PocketDeckSim provides a Pokémon TCG Pocket engine, bots and deck-comparison tools in service of that mission. Start with a deck Dustin likes, identify recurring problems, and explain concrete changes with their evidence and tradeoffs. Read [the standing mission and daily work check](START_HERE.md#mission-clarified-by-dustin-oct-14-2026) before choosing work.
+PocketDeckSim is a fork of [deckgym-core](https://github.com/bcollazo/deckgym-core) with rules fixes, look-ahead bots and tools that compare deck versions: what a change gains, why, and what it gives up. Simulator results alone don't rank decks, so findings are checked against real ladder games. Rules and card fixes that upstream can use are offered there as small pull requests. Issues and pull requests are welcome here too. Read [the mission](START_HERE.md#mission) before choosing work.
 
 ## What's where
 

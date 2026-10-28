@@ -7,15 +7,15 @@ Read this before anything else in the folder.
 
 > Pocket Deck Lab (the folder beside this repo) is the archived predecessor. Current deck lists, deck-improvement work, the simulator and bot work live here. Anything marked *(Pocket Deck Lab only)* is an archived reference that wasn't copied.
 
-## Mission (clarified by Dustin, Oct 14, 2026)
+## Mission
 
-**Help Dustin improve decks he enjoys playing so they carry out their plan reliably and perform better against the opponents he actually faces.**
+**Build a better Pokémon TCG Pocket simulator, and use it to find better decks** (Dustin, Oct 27, 2026: the goal is to help more players than him, and the project is open to sharing and collaboration).
 
-Preserve the deck's identity and the parts Dustin likes, including creative and unfamiliar strategies. Start with a deck he wants to play, its intended plan, common opponents and recurring weaknesses. Consider both small swaps and larger support changes. Explain exact changes, why they may help, what the evidence shows and what gets worse elsewhere. A useful finding can also show that a proposed change is not worth making.
+A better deck carries out its plan reliably against the opponents players actually face. Keep a deck's identity and the parts its player likes, including creative and unfamiliar strategies. Start with a deck someone wants to play, its plan, its common opponents and its recurring weaknesses. Consider both small swaps and larger support changes. Explain the exact change, why it may help, what the evidence shows and what gets worse elsewhere. A useful finding can also show that a proposed change is not worth making.
 
-The engine and bots support those decisions. Separate a weakness in the deck from an engine error or a bot that cannot execute the plan. Simulator results alone do not establish a ladder win rate or a deck ranking. Trustworthy playing quality takes priority over speed. Report time and cost; do not silently impose a speed requirement or a fixed game budget.
+A better simulator follows the real rules, and its bots can carry out a deck's plan. Separate a weakness in the deck from an engine error or a bot that cannot execute the plan. Simulator results alone do not establish a ladder win rate or a deck ranking. Trustworthy playing quality takes priority over speed. Report time and cost; do not silently impose a speed requirement or a fixed game budget.
 
-**New decks (Dustin, Oct 15):** finding and optimizing new decks Dustin would enjoy is a goal. It comes after a bot shows it can pilot his decks' plans, starting with his Kingambit deck. Until then, deck suggestions are rare, fit his style (decks that make both players think, aren't too hard to set up, and can survive fast decks), and are labelled untested.
+**New decks:** finding new decks is the aim. It comes after a bot shows it can pilot a real deck's plan; the first test is Dustin's Kingambit deck. Until then, deck suggestions are rare and labelled untested.
 
 ### Keep the work tied to the mission
 
@@ -23,7 +23,7 @@ Before a substantial new job, state in its existing task or plan which deck, mat
 
 Revisit these three questions in the existing daily review and when choosing the next substantial job:
 
-1. What can Dustin actually use now, and what evidence supports it?
+1. What can a player actually use now, and what evidence supports it?
 2. How does current work help a chosen deck or a necessary engine/pilot capability?
 3. What should be reduced, deferred or redirected because it duplicates work or does not help a useful decision?
 

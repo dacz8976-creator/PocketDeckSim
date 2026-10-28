@@ -1,9 +1,8 @@
 # Notes for Claude sessions
 
 - **Read `START_HERE.md` first, then `PROJECT_INSTRUCTIONS.md`.** They win over every other file,
-  including this one. The mission is to help Dustin improve decks he enjoys so they execute their plan
-  reliably and do better against the opponents he actually faces. Use START_HERE's brief mission check
-  when choosing work and in daily reviews. The simulator doesn't establish ladder rankings; no new
+  including this one. The mission is a better simulator for finding better decks, for players in
+  general. Use START_HERE's brief mission check when choosing work and in daily reviews. The simulator doesn't establish ladder rankings; no new
   files, gates or process documents unless Dustin asks; report in plain language.
 - Pocket (the mobile game) is not the physical Pokémon TCG. Read `RULES_FOR_AGENTS.md` before
   touching game logic, and look cards up with `python3 lib/card.py <name or id>`, never from memory.
