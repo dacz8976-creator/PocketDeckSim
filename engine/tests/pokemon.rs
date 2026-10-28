@@ -108,6 +108,8 @@ mod deck_mill_attacks_test;
 mod delcatty_search_for_friends_test;
 #[path = "pokemon/delibird_box_of_surprises_test.rs"]
 mod delibird_box_of_surprises_test;
+#[path = "pokemon/dual_fusion_ex/mod.rs"]
+mod dual_fusion_ex;
 #[path = "pokemon/dugtrio_cliff_crumbler_test.rs"]
 mod dugtrio_cliff_crumbler_test;
 #[path = "pokemon/durant_test.rs"]

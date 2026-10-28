@@ -679,6 +679,10 @@ fn forecast_effect_attack_by_mechanic(
             mega_kangaskhan_ex_double_punching_family(attack)
         }
         Mechanic::MoltresExInfernoDance => moltres_inferno_dance(),
+        Mechanic::CoinFlipsAttachEnergyToTypedBench {
+            num_coins,
+            energy_type,
+        } => coin_flips_attach_energy_to_typed_bench(*num_coins, *energy_type),
         Mechanic::MagikarpWaterfallEvolution => waterfall_evolution(state),
         Mechanic::MoveAllEnergyTypeToBench { energy_type } => {
             move_all_energy_type_to_bench(state, attack, *energy_type)
@@ -2398,6 +2402,44 @@ fn moltres_inferno_dance() -> AttackOutcomes {
             }
 
             let all_choices = generate_energy_distributions(&fire_bench_idx, heads);
+            if !all_choices.is_empty() {
+                state
+                    .move_generation_stack
+                    .push((action.actor, all_choices));
+            }
+        })
+    })
+}
+
+/// Mew ex's Secret Guidance (upstream #431's `CoinFlipsAttachEnergyToTypedBench`): flip `num_coins` coins, then
+/// attach one `energy_type` Energy from the Energy Zone per heads to your Benched Pokémon of that type, split
+/// any way you like. Upstream generalised Moltres ex's function into this one; here Moltres ex keeps
+/// `moltres_inferno_dance` unchanged (coordinator-067) and this is a separate copy of its steps. The type is
+/// read through the chokepoint `State::pokemon_is_type`, as Moltres ex's is. The choices come from
+/// `energy_any_way_choices`, which for 1 or more heads and a non-empty Bench list gives the same Attach list,
+/// in the same order, as `generate_energy_distributions` with `energy_type` in place of Fire.
+fn coin_flips_attach_energy_to_typed_bench(
+    num_coins: usize,
+    energy_type: EnergyType,
+) -> AttackOutcomes {
+    AttackOutcomes::binomial_by_heads(num_coins, move |heads| {
+        active_damage_effect_outcome(0, move |_, state, action| {
+            if heads == 0 {
+                return;
+            }
+
+            let mut bench_idx = Vec::new();
+            for (in_play_idx, pokemon) in state.enumerate_bench_pokemon(action.actor) {
+                if state.pokemon_is_type(pokemon, energy_type) {
+                    bench_idx.push(in_play_idx);
+                }
+            }
+
+            if bench_idx.is_empty() {
+                return;
+            }
+
+            let all_choices = energy_any_way_choices(&bench_idx, energy_type, heads);
             if !all_choices.is_empty() {
                 state
                     .move_generation_stack

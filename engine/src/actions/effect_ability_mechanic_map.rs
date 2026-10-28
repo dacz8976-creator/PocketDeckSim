@@ -17,6 +17,8 @@ use crate::State;
 pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMechanic>> =
     LazyLock::new(|| {
         let mut map: HashMap<&'static str, AbilityMechanic> = HashMap::new();
+        // Lycanroc ex (upstream #431)
+        map.insert("If this Pokémon is in the Active Spot and is damaged by an attack from your opponent's Pokémon, do 30 damage to the Attacking Pokémon.", AbilityMechanic::CounterattackDamage { amount: 30 });
         map.insert(
             "This Pokémon may have up to 2 Pokémon Tool cards attached to it.",
             AbilityMechanic::ToolCapacity { max_tools: 2 },
