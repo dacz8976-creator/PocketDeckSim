@@ -67,10 +67,10 @@ fn is_master_plan(id: CardId) -> bool {
 }
 
 fn is_ice_pop(id: CardId) -> bool {
-    id == CardId::B2145LuckyIcePop
+    matches!(id, CardId::B2145LuckyIcePop | CardId::B4b198LuckyIcePop | CardId::B4b364LuckyIcePop)
 }
 
-const REGISTERED_DIRECT_PRODUCERS: [CardId; 19] = [
+const REGISTERED_DIRECT_PRODUCERS: [CardId; 28] = [
     CardId::A1220Misty,
     CardId::A1267Misty,
     CardId::A2b072TeamRocketGrunt,
@@ -79,12 +79,21 @@ const REGISTERED_DIRECT_PRODUCERS: [CardId; 19] = [
     CardId::A4199Fisher,
     CardId::B1215HittingHammer,
     CardId::B2145LuckyIcePop,
+    CardId::B4b198LuckyIcePop,
+    CardId::B4b364LuckyIcePop,
     CardId::B2a086ElectricGenerator,
     CardId::B2a131ElectricGenerator,
+    CardId::B4b199ElectricGenerator,
+    CardId::B4b365ElectricGenerator,
     CardId::B2a091Arven,
     CardId::B2a108Arven,
     CardId::B2a115Arven,
+    CardId::B4b222Arven,
+    CardId::B4b388Arven,
+    CardId::B4b423Arven,
     CardId::B4145OrderPad,
+    CardId::B4b200OrderPad,
+    CardId::B4b366OrderPad,
     CardId::B4a069TeamRocketsResearcher,
     CardId::B4a085TeamRocketsResearcher,
     CardId::B4a070TeamRocketsMasterPlan,
@@ -109,7 +118,7 @@ fn stadium_route(state: &State) -> Option<TrainerCoinEffectRoute> {
     };
     matches!(
         CardId::from_card_id(&stadium.id),
-        Some(CardId::B2a093Mesagoza | CardId::B4a072Arcade)
+        Some(CardId::B2a093Mesagoza | CardId::B4b231Mesagoza | CardId::B4b397Mesagoza | CardId::B4a072Arcade)
     )
     .then(|| TrainerCoinEffectRoute::Stadium {
         stadium: stadium.clone(),
@@ -1151,7 +1160,7 @@ mod tests {
 
     #[test]
     fn registered_producer_census_drives_the_actual_route_guard() {
-        assert_eq!(REGISTERED_DIRECT_PRODUCERS.len(), 19);
+        assert_eq!(REGISTERED_DIRECT_PRODUCERS.len(), 28);
         for id in REGISTERED_DIRECT_PRODUCERS {
             assert!(is_registered_direct_producer(id), "missing {id:?}");
         }

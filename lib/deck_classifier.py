@@ -13,6 +13,11 @@ decks.json: {"deck name": {"energy": [...], "cards": {"B1 036": 2, ...}}, ...}
 """
 import json, re, sys, math, collections, os
 
+HERE = os.path.dirname(os.path.abspath(__file__))
+if HERE not in sys.path:
+    sys.path.insert(0, HERE)
+import card as cardlib  # noqa: E402  (lib/card.py: printed_types / single_type, the one reader of a card's type set)
+
 # ---------------------------------------------------------------- card layer
 FAMILY_RULES = [  # (family, regex on lowercased effect text)
     ("STATUS_INFLICT", r"(opponent's active pokémon|defending pokémon|new active pokémon)[^.]*is now (poisoned|burned|asleep|paralyzed|confused)|make your opponent's active pokémon (poisoned|burned|asleep|paralyzed|confused)|both active pokémon are now|is chosen at random, and your opponent's active"),
@@ -50,8 +55,12 @@ def load_cards(db_path):
         kind, c = next(iter(e.items()))
         rec = {"id": c["id"], "name": c["name"], "kind": kind, "texts": []}
         if kind == "Pokemon":
-            rec.update(energy_type=c["energy_type"], stage=c["stage"], hp=c["hp"], retreat=len(c["retreat_cost"]),
+            types = cardlib.printed_types(c)  # printed type set, primary first; ValueError if malformed
+            rec.update(energy_type=types[0], stage=c["stage"], hp=c["hp"], retreat=len(c["retreat_cost"]),
                        ex=" ex" in c["name"] or c["name"].endswith(" ex"), evolves_from=c.get("evolves_from"))
+            rec["energy_types"] = types
+            if len(types) > 1:
+                del rec["energy_type"]  # no one type to give: read it through pokemon_type(), which refuses
             rec["attacks"] = [{"cost": [x[0] for x in a["energy_required"]], "dmg": a.get("fixed_damage") or 0,
                                "effect": a.get("effect") or ""} for a in c["attacks"]]
             if c.get("ability"): rec["texts"].append(("ability", c["ability"]["effect"]))
@@ -64,6 +73,12 @@ def load_cards(db_path):
         if rec["kind"] == "Pokemon" and any(a["dmg"] >= 100 for a in rec["attacks"]): rec["families"].add("BIG_HIT")
         cards[rec["id"]] = rec
     return cards
+
+def pokemon_type(rec):
+    """A Pokémon record's one printed type, for suggest_for_deck's "same energy type" rule. That
+    rule has no answer for a dual-type Pokémon yet: refuse (card.DualTypeUnsupported), never guess."""
+    # TODO(dual-type): does a dual-type Pokémon fit a deck when ANY of its types is the deck's Energy?
+    return cardlib.single_type(rec, "lib/deck_classifier.py's suggest_for_deck (same energy type as the deck)")
 
 def load_engine_coverage(src_dir):
     """effect text -> mechanic name from the fork's maps (implemented-ness signal only)."""
@@ -170,30 +185,50 @@ def complement_query(cid, cards, limit=12):
             out.append((f, g, why, [f"{x['name']} {x['id']}" for x in uniq[:limit]], len(uniq)))
     return out
 
-SET_ORDER = ["P-A","A1","A1a","A2","A2a","A2b","A3","A3a","A3b","A4","A4a","A4b","B1","B1a","B2","B2a","B2b","B3","B3a","B3b","B4","B4a"]
+# release order, oldest first (suggest_for_deck lists the newest first). A series' promo set goes
+# before its first set (P-A before A1, P-C before C1); SP1 before them, as upstream's database lists
+# it. C1 then ranks first, so a name C1 shares with SP1 or P-C shows its C1 id (card_canon's base id).
+SET_ORDER = ["P-A","A1","A1a","A2","A2a","A2b","A3","A3a","A3b","A4","A4a","A4b","B1","B1a","B2","B2a","B2b","B3","B3a","B3b","B4","B4a",
+             "B4b","SP1","P-C","C1"]
 def set_rank(cid): 
     s = cid.split(" ")[0]; return SET_ORDER.index(s) if s in SET_ORDER else -1
 
+def is_dual_type(rec):
+    return rec["kind"] == "Pokemon" and len(rec.get("energy_types", ())) > 1
+
 def suggest_for_deck(deck, cards, per=5):
     """For each identity family the deck already has, list complement cards it could add:
-    same energy type (or Colorless / Trainer), not already in the deck, newest sets first."""
+    same energy type (or Colorless / Trainer), not already in the deck, newest sets first.
+    A dual-type Pokémon candidate is left out, and a printed line says how many (coordinator,
+    Oct 23: refusing would break suggestions for every deck once Dual Fusion data loads)."""
     energy = set(deck.get("energy", [])); have = set(deck["cards"]); have_names = {cards[c]["name"] for c in have if c in cards}
     fam = collections.Counter()
     for cid, n in deck["cards"].items():
         if cid in cards:
             for f in cards[cid]["families"]: fam[f] += n
     out = []
+    dual_left_out = set()
     for f, _ in fam.most_common():
         if f in GENERIC: continue
         for g, why in COMPLEMENTS.get(f, []):
             if fam.get(g, 0) >= 2: continue  # already has that role
-            pool = [x for x in cards.values() if g in x["families"] and x["name"] not in have_names
-                    and (x["kind"] != "Pokemon" or x["energy_type"] in energy or x["energy_type"] == "Colorless")]
+            pool = []
+            for x in cards.values():
+                if g not in x["families"] or x["name"] in have_names: continue
+                if is_dual_type(x):
+                    # TODO(dual-type): does it fit a deck when ANY of its types is the deck's Energy?
+                    dual_left_out.add(x["id"]); continue
+                if x["kind"] != "Pokemon" or pokemon_type(x) in energy or pokemon_type(x) == "Colorless":
+                    pool.append(x)
             seen = set(); uniq = []
             for x in sorted(pool, key=lambda x: (-set_rank(x["id"]), x["id"])):
                 if x["name"] in seen: continue
                 seen.add(x["name"]); uniq.append(x)
             if uniq: out.append((f, g, why, [f"{x['name']} {x['id']}" for x in uniq[:per]]))
+    if dual_left_out:
+        ids = sorted(dual_left_out)
+        print(f"   ({len(ids)} dual-type candidates left out until the dual-type rules are settled: "
+              f"{', '.join(ids[:8])}{' ...' if len(ids) > 8 else ''})")
     return out
 
 # ---------------------------------------------------------------- main

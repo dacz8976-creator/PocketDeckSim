@@ -64,3 +64,5 @@ mod wallace_test;
 mod whitney_mallow_test;
 #[path = "trainers/wally_test.rs"]
 mod wally_test;
+#[path = "trainers/dual_fusion_supporters/mod.rs"]
+mod dual_fusion_supporters;

@@ -62,9 +62,15 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 # The engine pinned now. Update at the next engine pin; numbers from older engines are kept, flagged, and left out
 # of the bot comparison. Each bot also records its engine key, so a reading made after the next pin can tell them apart.
 CURRENT_ENGINE = {
+    "label": "main-4d48844 (Growl-to-0, the hit back as attack damage, upstream fixes; pinned Oct 21)",
+    "harness_engine_trees": ["64de03e2c3c2"],          # slow reports / exams: "engine tree <12 hex>" in manifest.json (kx3 on main-4d48844)
+    "floor_engines": ["rl/engine-2026-10-21/deckgym"],  # floor pages: "- Engine: <path>"
+}
+# The Oct 12 pin's value. Deck 12's self-test reads files written under it, so it runs with this one.
+CURRENT_ENGINE_OCT12 = {
     "label": "rules switch 2 (main-c045ede, pinned Oct 12)",
-    "harness_engine_trees": ["4ebb30a94173"],          # slow reports / exams: "engine tree <12 hex>" in manifest.json
-    "floor_engines": ["rl/engine-2026-10-12/deckgym"],  # floor pages: "- Engine: <path>"
+    "harness_engine_trees": ["4ebb30a94173"],
+    "floor_engines": ["rl/engine-2026-10-12/deckgym"],
 }
 
 WHO_PLAYS_THE_PANEL = ("km3 plays the 8 panel lists in every run (slow reports, exams and floors). The frozen kx3 "
@@ -1277,6 +1283,16 @@ def _expect_refusal(fn, words):
 
 
 def selftest(repo, use_git=True):
+    # Deck 12's real files were written under the Oct 12 pin: its checks expect that pin's CURRENT_ENGINE.
+    global CURRENT_ENGINE
+    saved, CURRENT_ENGINE = CURRENT_ENGINE, CURRENT_ENGINE_OCT12
+    try:
+        return _selftest(repo, use_git)
+    finally:
+        CURRENT_ENGINE = saved
+
+
+def _selftest(repo, use_git=True):
     fails = []
 
     def check(cond, what):

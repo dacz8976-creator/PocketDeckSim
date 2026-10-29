@@ -356,7 +356,7 @@ If you want to play one of these before any test: B changes 2 cards (-2 Ice Pop,
 
 **Estimate**
 - 21,000 games ≈ 57 minutes; B+ adds 7,000 ≈ 19 minutes.
-- Use the official program `rl/engine-2026-10-12/deckgym`; no build is needed.
+- Use the official program, the one `python3 current_engine.py` prints (when this was written, Oct 15: `rl/engine-2026-10-12/deckgym`; since Oct 21: `rl/engine-2026-10-21/deckgym`); no build is needed.
 - Traces go to /tmp and are deleted after each 50-game call (`run_wallace.sh`). The 2.5 MB per game figure was not rechecked.
 - C: has 4.5 GB free (about 99% full).
 - Use a fresh seed block outside START_HERE's seed table.

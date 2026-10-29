@@ -233,11 +233,20 @@ impl PlayedCard {
     }
 
     // Option because if playing an item card... (?)
+    // The primary printed type; its only caller left is the Python binding.
+    #[cfg_attr(not(feature = "python"), allow(dead_code))]
     pub(crate) fn get_energy_type(&self) -> Option<EnergyType> {
         match &self.card {
             Card::Pokemon(pokemon_card) => Some(pokemon_card.energy_type),
             _ => None,
         }
+    }
+
+    /// Whether `energy_type` is one of this card's *printed* types (a printed dual-type card
+    /// counts as each of its two). False for a Fossil. An Ability that changes the type in play
+    /// (Urshifu's Double Type) is not read here: that is `State::pokemon_is_type`.
+    pub fn has_printed_type(&self, energy_type: EnergyType) -> bool {
+        self.card.is_type(energy_type)
     }
 
     /// Check if this Pokemon evolved from a specific Pokemon name
@@ -293,7 +302,7 @@ impl PlayedCard {
         // Tool bonuses. Type/stage-specific caps only apply to matching Pokémon (the tools are
         // attachable to anything, but their HP bonus is gated by the holder).
         effective_hp += 20 * tool_count(self, CardId::A2147GiantCape);
-        if self.get_energy_type() == Some(EnergyType::Grass) {
+        if self.has_printed_type(EnergyType::Grass) {
             effective_hp += 30 * tool_count(self, CardId::A3147LeafCape);
         }
         if matches!(&self.card, Card::Pokemon(p) if p.stage == 1) {
@@ -503,9 +512,9 @@ impl PlayedCard {
     }
 
     pub(crate) fn has_double_grass(&self, state: &State, player: usize) -> bool {
-        let pokemon_type = self.card.get_type();
+        let is_grass = self.has_printed_type(EnergyType::Grass);
         let jungle_totem_active = has_serperior_jungle_totem(state, player);
-        jungle_totem_active && pokemon_type == Some(EnergyType::Grass)
+        jungle_totem_active && is_grass
     }
 }
 

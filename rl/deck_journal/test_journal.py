@@ -5,13 +5,21 @@ Run from anywhere:  python3 rl/deck_journal/test_journal.py
 They read the real repository (deck 01, the Kingambit and Haxorus KW lists, the 12 packets) and write only to
 temporary folders.
 """
+import atexit
 import base64
 import copy
 import json
 import os
+import shutil
 import sys
 import tempfile
 import unittest
+from unittest import mock
+
+# Every temporary folder these tests make goes under one private root, removed when the run ends (WSL's /tmp is RAM).
+_TMP_ROOT = tempfile.mkdtemp(prefix="test_journal_")
+tempfile.tempdir = _TMP_ROOT
+atexit.register(shutil.rmtree, _TMP_ROOT, True)
 
 HERE = os.path.dirname(os.path.abspath(__file__))
 sys.path.insert(0, HERE)
@@ -197,8 +205,10 @@ class Bots(unittest.TestCase):
             J.add_bot(other, ROOT, other["versions"][0]["id"], REPLAY_B, by="test")
 
     def test_replay_b_files_under_deck01_with_both_bots_on_the_current_engine(self):
+        # REPLAY_B was played on the Oct 12 pin's engine: current under that pin's CURRENT_ENGINE.
         doc = kingambit_doc()
-        res = J.add_bot(doc, ROOT, "35d98d0dcaf2", REPLAY_B, by="test")
+        with mock.patch.object(J.mp, "CURRENT_ENGINE", J.mp.CURRENT_ENGINE_OCT12):
+            res = J.add_bot(doc, ROOT, "35d98d0dcaf2", REPLAY_B, by="test")
         self.assertEqual(len(res), 2)
         self.assertEqual(sorted(r["pilot"] for r in res), ["km3", "kx3"])
         self.assertTrue(all(r["current_engine"] and r["n"] == 32 for r in res))
@@ -246,7 +256,8 @@ class Extras(unittest.TestCase):
 class View(unittest.TestCase):
     def test_deck01_bot_numbers_never_appear_under_his_list_and_the_view_is_repeatable(self):
         doc = kingambit_doc()
-        J.add_bot(doc, ROOT, "35d98d0dcaf2", REPLAY_B, by="test")
+        with mock.patch.object(J.mp, "CURRENT_ENGINE", J.mp.CURRENT_ENGINE_OCT12):  # REPLAY_B: the Oct 12 pin's engine
+            J.add_bot(doc, ROOT, "35d98d0dcaf2", REPLAY_B, by="test")
         for p in PACKETS[:2]:
             J.add_played(doc, ROOT, p, by="test", commit_check=True)
         v1, v2 = J.render(doc), J.render(copy.deepcopy(doc))

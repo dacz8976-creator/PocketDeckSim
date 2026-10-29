@@ -201,6 +201,8 @@ pub(crate) fn render_pokemon_card<'a>(
                             truncated
                         })
                         .collect();
+                    // TODO(dual-type): colours by the primary printed type only; how should a
+                    // dual-type card be shown?
                     let color = energy_type_to_color(pokemon_card.energy_type);
                     (attacks, color)
                 }

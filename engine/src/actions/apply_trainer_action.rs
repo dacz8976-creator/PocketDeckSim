@@ -229,11 +229,11 @@ pub(crate) fn forecast_trainer_action_unchecked(
         | CardId::A3b107EeveeBag
         | CardId::A4b308EeveeBag
         | CardId::A4b309EeveeBag => Outcomes::single_fn(eevee_bag_effect),
-        CardId::B1217FlamePatch | CardId::B1331FlamePatch => {
+        CardId::B1217FlamePatch | CardId::B1331FlamePatch | CardId::B4b203FlamePatch | CardId::B4b369FlamePatch => {
             Outcomes::single_fn(flame_patch_effect)
         }
         CardId::A2153Volkner | CardId::A2193Volkner => Outcomes::single_fn(volkner_effect),
-        CardId::B1225Copycat | CardId::B1270Copycat => Outcomes::single_fn(copycat_effect),
+        CardId::B1225Copycat | CardId::B1270Copycat | CardId::B4b225Copycat | CardId::B4b391Copycat | CardId::B4b424Copycat => Outcomes::single_fn(copycat_effect),
         CardId::A2b069Iono
         | CardId::A2b088Iono
         | CardId::A4b340Iono
@@ -241,36 +241,36 @@ pub(crate) fn forecast_trainer_action_unchecked(
         | CardId::B2a089Iono
         | CardId::B2a106Iono => Outcomes::single_fn(iono_effect),
         CardId::B1221Marlon | CardId::B1266Marlon => Outcomes::single_fn(marlon_effect),
-        CardId::B1223May | CardId::B1268May => may_effect(acting_player, state),
+        CardId::B1223May | CardId::B1268May | CardId::B4b220May | CardId::B4b386May => may_effect(acting_player, state),
         CardId::B1224Fantina | CardId::B1269Fantina => Outcomes::single_fn(fantina_effect),
-        CardId::B1226Lisia | CardId::B1271Lisia => lisia_effect(acting_player, state),
+        CardId::B1226Lisia | CardId::B1271Lisia | CardId::B4b226Lisia | CardId::B4b392Lisia => lisia_effect(acting_player, state),
         CardId::A2a073CelesticTownElder | CardId::A2a088CelesticTownElder => {
             celestic_town_elder_effect(acting_player, state)
         }
         CardId::A2a074Barry | CardId::A2a089Barry => Outcomes::single_fn(barry_effect),
         CardId::A2a075Adaman | CardId::A2a090Adaman => Outcomes::single_fn(adaman_effect),
-        CardId::B2149Diantha | CardId::B2190Diantha => Outcomes::single_fn(diantha_effect),
+        CardId::B2149Diantha | CardId::B2190Diantha | CardId::B4b214Diantha | CardId::B4b380Diantha => Outcomes::single_fn(diantha_effect),
         CardId::B2152Piers | CardId::B2193Piers => Outcomes::single_fn(piers_effect),
         CardId::B1a066ClemontsBackpack => Outcomes::single_fn(clemonts_backpack_effect),
-        CardId::B1a068Clemont | CardId::B1a081Clemont => clemont_effect(acting_player, state),
-        CardId::B1a067QuickGrowExtract | CardId::B1a103QuickGrowExtract => {
+        CardId::B1a068Clemont | CardId::B1a081Clemont | CardId::B4b218Clemont | CardId::B4b384Clemont => clemont_effect(acting_player, state),
+        CardId::B1a067QuickGrowExtract | CardId::B1a103QuickGrowExtract | CardId::B4b201QuickGrowExtract | CardId::B4b367QuickGrowExtract => {
             quick_grow_extract_effect(acting_player, state)
         }
-        CardId::B1a069Serena | CardId::B1a082Serena => serena_effect(acting_player, state),
+        CardId::B1a069Serena | CardId::B1a082Serena | CardId::B4b219Serena | CardId::B4b385Serena => serena_effect(acting_player, state),
         CardId::B2a090Nemona | CardId::B2a107Nemona => Outcomes::single_fn(nemona_effect),
-        CardId::B2a091Arven | CardId::B2a108Arven | CardId::B2a115Arven => {
+        CardId::B2a091Arven | CardId::B2a108Arven | CardId::B2a115Arven | CardId::B4b222Arven | CardId::B4b388Arven | CardId::B4b423Arven => {
             arven_outcomes(acting_player, state)
         }
-        CardId::B2a086ElectricGenerator | CardId::B2a131ElectricGenerator => {
+        CardId::B2a086ElectricGenerator | CardId::B2a131ElectricGenerator | CardId::B4b199ElectricGenerator | CardId::B4b365ElectricGenerator => {
             electric_generator_outcomes()
         }
         CardId::B2a088TeamStarGrunt | CardId::B2a105TeamStarGrunt => {
             Outcomes::single_fn(team_effect)
         }
-        CardId::B2145LuckyIcePop => lucky_ice_pop_outcomes(state, acting_player),
+        CardId::B2145LuckyIcePop | CardId::B4b198LuckyIcePop | CardId::B4b364LuckyIcePop => lucky_ice_pop_outcomes(state, acting_player),
         CardId::B2b066Maintenance => Outcomes::single_fn(maintenance_effect),
-        CardId::B2b067Iris | CardId::B2b081Iris => Outcomes::single_fn(iris_effect),
-        CardId::B2b068Calem | CardId::B2b082Calem => Outcomes::single_fn(calem_effect),
+        CardId::B2b067Iris | CardId::B2b081Iris | CardId::B4b212Iris | CardId::B4b378Iris | CardId::B4b421Iris => Outcomes::single_fn(iris_effect),
+        CardId::B2b068Calem | CardId::B2b082Calem | CardId::B4b215Calem | CardId::B4b381Calem => Outcomes::single_fn(calem_effect),
         CardId::B2b065NastyNotice => Outcomes::single_fn(nasty_notice_effect),
         CardId::A3b068Hau | CardId::A3b085Hau => Outcomes::single_fn(hau_effect),
         CardId::A3142BigMalasada => Outcomes::single_fn(big_malasada_effect),
@@ -278,8 +278,8 @@ pub(crate) fn forecast_trainer_action_unchecked(
         CardId::A2b072TeamRocketGrunt | CardId::A2b091TeamRocketGrunt => {
             team_rocket_grunt_outcomes(state, acting_player)
         }
-        CardId::B3147FieldBlower => Outcomes::single_fn(field_blower_effect),
-        CardId::B3149Korrina | CardId::B3190Korrina => Outcomes::single_fn(korrina_effect),
+        CardId::B3147FieldBlower | CardId::B4b202FieldBlower | CardId::B4b368FieldBlower => Outcomes::single_fn(field_blower_effect),
+        CardId::B3149Korrina | CardId::B3190Korrina | CardId::B4b217Korrina | CardId::B4b383Korrina => Outcomes::single_fn(korrina_effect),
         CardId::B3150Cabbie | CardId::B3191Cabbie => card_search_outcomes_with_filter_multiple(
             acting_player,
             state,
@@ -289,7 +289,7 @@ pub(crate) fn forecast_trainer_action_unchecked(
         CardId::B3152ParasolLady | CardId::B3193ParasolLady => {
             parasol_lady_effect(acting_player, state)
         }
-        CardId::B3a071Juliana | CardId::B3a086Juliana => card_search_outcomes_with_filter_multiple(
+        CardId::B3a071Juliana | CardId::B3a086Juliana | CardId::B4b213Juliana | CardId::B4b379Juliana => card_search_outcomes_with_filter_multiple(
             acting_player,
             state,
             1,
@@ -301,14 +301,14 @@ pub(crate) fn forecast_trainer_action_unchecked(
         CardId::B3a073ProfessorTuro | CardId::B3a088ProfessorTuro => {
             professor_turo_effect(acting_player, state)
         }
-        CardId::B3b066Elesa | CardId::B3b083Elesa => Outcomes::single_fn(elesa_effect),
-        CardId::B3b067PuppyLovingGirl | CardId::B3b084PuppyLovingGirl => {
+        CardId::B3b066Elesa | CardId::B3b083Elesa | CardId::B4b422Elesa => Outcomes::single_fn(elesa_effect),
+        CardId::B3b067PuppyLovingGirl | CardId::B3b084PuppyLovingGirl | CardId::B4b216PuppyLovingGirl | CardId::B4b382PuppyLovingGirl => {
             puppy_loving_girl_effect(acting_player, state)
         }
-        CardId::B3b068Wallace | CardId::B3b085Wallace => wallace_effect(acting_player, state),
-        CardId::B4145OrderPad => order_pad_outcomes(acting_player, state),
-        CardId::B4152Skyla | CardId::B4192Skyla => Outcomes::single_fn(skyla_effect),
-        CardId::B4153Wally | CardId::B4193Wally => Outcomes::single_fn(wally_effect),
+        CardId::B3b068Wallace | CardId::B3b085Wallace | CardId::B4b223Wallace | CardId::B4b389Wallace => wallace_effect(acting_player, state),
+        CardId::B4145OrderPad | CardId::B4b200OrderPad | CardId::B4b366OrderPad => order_pad_outcomes(acting_player, state),
+        CardId::B4152Skyla | CardId::B4192Skyla | CardId::B4b221Skyla | CardId::B4b387Skyla => Outcomes::single_fn(skyla_effect),
+        CardId::B4153Wally | CardId::B4193Wally | CardId::B4b224Wally | CardId::B4b390Wally => Outcomes::single_fn(wally_effect),
         CardId::B4150Psychic | CardId::B4190Psychic => Outcomes::single_fn(psychic_effect),
         CardId::B4151Drayden | CardId::B4191Drayden => Outcomes::single_fn(drayden_effect),
         CardId::B4a067TeamRocketsThievingMachine => {
@@ -326,6 +326,20 @@ pub(crate) fn forecast_trainer_action_unchecked(
         CardId::B4a071TeamRocketsBoss | CardId::B4a087TeamRocketsBoss => {
             team_rockets_boss_outcomes(acting_player, state)
         }
+        CardId::C1125Lorelei | CardId::C1165Lorelei => Outcomes::single_fn(lorelei_effect),
+        CardId::C1126BluesProvocation | CardId::C1166BluesProvocation => {
+            Outcomes::single_fn(lana_effect)
+        }
+        CardId::C1127SerenasChoice | CardId::C1167SerenasChoice => {
+            Outcomes::single_fn(serenas_choice_effect)
+        }
+        CardId::C1128Rika | CardId::C1168Rika => Outcomes::single_fn(rika_effect),
+        CardId::C1129PokeMartGuy | CardId::C1169PokeMartGuy => {
+            card_search_outcomes_with_filter_multiple(acting_player, state, 2, |card| {
+                ["Super Potion", "Max Repel", "Full Heal"].contains(&card.get_name().as_str())
+            })
+        }
+        CardId::C1130RisingStar | CardId::C1170RisingStar => Outcomes::single_fn(skyla_effect),
         _ => panic!("Unsupported Trainer Card"),
     }
 }
@@ -1129,12 +1143,12 @@ fn gather_bench_energy_onto_active(
 
 /// Fishing Net's target predicate: "a random Basic [W] Pokémon from your discard pile".
 fn is_basic_water_pokemon(card: &Card) -> bool {
-    card.is_basic() && card.get_type() == Some(EnergyType::Water)
+    card.is_basic() && card.is_type(EnergyType::Water)
 }
 
 /// Fisher's target predicate: "a [W] Pokémon ... from your discard pile" (any stage).
 fn is_water_pokemon(card: &Card) -> bool {
-    matches!(card, Card::Pokemon(_)) && card.get_type() == Some(EnergyType::Water)
+    matches!(card, Card::Pokemon(_)) && card.is_type(EnergyType::Water)
 }
 
 /// Penny: "Look at a random Supporter card that's not Penny from your opponent's deck and shuffle
@@ -1859,7 +1873,7 @@ fn professor_oak_effect(_: &mut StdRng, state: &mut State, action: &Action) {
 fn mythical_slab_effect(_: &mut StdRng, state: &mut State, action: &Action) {
     // Look at the top card of your deck. If that card is a Psychic Pokemon,\n        put it in your hand. If it is not a Psychic Pokemon, put it on the\n        bottom of your deck.
     if let Some(card) = state.decks[action.actor].cards.first() {
-        if matches!(card, Card::Pokemon(pokemon) if pokemon.energy_type == EnergyType::Psychic) {
+        if matches!(card, Card::Pokemon(pokemon) if pokemon.has_printed_type(EnergyType::Psychic)) {
             state.hands[action.actor].push(card.clone());
             state.decks[action.actor].cards.remove(0);
         } else {
@@ -2475,7 +2489,7 @@ pub(crate) fn random_typed_evolution_outcomes(
         .cards
         .iter()
         .filter(|card| {
-            matches!(card, Card::Pokemon(pokemon) if pokemon.energy_type == energy_type)
+            matches!(card, Card::Pokemon(pokemon) if pokemon.has_printed_type(energy_type))
                 && can_evolve_into(state, card, target)
         })
         .cloned()
@@ -2495,7 +2509,7 @@ pub(crate) fn random_typed_evolution_outcomes(
                 let still_legal = state.in_play_pokemon[player][in_play_idx]
                     .as_ref()
                     .is_some_and(|target| {
-                        matches!(&evolution_card, Card::Pokemon(pokemon) if pokemon.energy_type == energy_type)
+                        matches!(&evolution_card, Card::Pokemon(pokemon) if pokemon.has_printed_type(energy_type))
                             && can_evolve_into(state, &evolution_card, target)
                     })
                     && state.decks[player].cards.contains(&evolution_card);
@@ -2545,6 +2559,56 @@ pub(crate) fn copied_supporter_is_usable(state: &State, trainer_card: &TrainerCa
         trainer_move_generation_implementation(state, trainer_card),
         Some(actions) if !actions.is_empty()
     )
+}
+
+fn lorelei_effect(_: &mut StdRng, state: &mut State, _: &Action) {
+    // During this turn, attacks used by your Dewgong, Cloyster, or Lapras do +30 damage to your
+    // opponent's Pokémon (Benched ones too, like Clemont's Backpack).
+    state.add_turn_effect(
+        TurnEffect::IncreasedDamageForSpecificPokemonToAnyOpponentPokemon {
+            amount: 30,
+            pokemon_names: vec![
+                "Dewgong".to_string(),
+                "Cloyster".to_string(),
+                "Lapras".to_string(),
+            ],
+        },
+        0,
+    );
+}
+
+fn serenas_choice_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Look at the top 3 cards of your deck and put 1 of them into your hand. Shuffle any other
+    // cards back into your deck. One choice per distinct card.
+    let mut choices = Vec::new();
+    for card in state.decks[action.actor].cards.iter().take(3) {
+        let choice = SimpleAction::TakeTopDeckCardAndShuffle {
+            card: card.clone(),
+            look_count: 3,
+        };
+        if !choices.contains(&choice) {
+            choices.push(choice);
+        }
+    }
+    if !choices.is_empty() {
+        state.move_generation_stack.push((action.actor, choices));
+    }
+}
+
+fn rika_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // Produce 2 [F] Energy from your Energy Zone, and attach it to 1 of your Whiscash or
+    // Paldean Clodsire.
+    let choices = state
+        .enumerate_in_play_pokemon(action.actor)
+        .filter(|(_, p)| ["Whiscash", "Paldean Clodsire"].contains(&p.get_name().as_str()))
+        .map(|(idx, _)| SimpleAction::Attach {
+            attachments: vec![(2, EnergyType::Fighting, idx)],
+            is_turn_energy: false,
+        })
+        .collect::<Vec<_>>();
+    if !choices.is_empty() {
+        state.move_generation_stack.push((action.actor, choices));
+    }
 }
 
 #[cfg(test)]

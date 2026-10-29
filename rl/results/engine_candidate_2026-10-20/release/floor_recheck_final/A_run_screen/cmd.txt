@@ -1,0 +1,2 @@
+cwd /home/dacz8976/pincand
+nice -n 19 ionice -c3 python3 /home/dacz8976/pincand/rl/results/engine_switch_2026-09-30/screen_with.py /home/dacz8976/pincand_work/programs/F/deckgym 2d3709b272abf8a83431c3e72d59f9ff0e2c8ae3e60698f22a1ca79e65ab2085 /home/dacz8976/pincand/decks/screen/run_screen.py decks/brews/brew-06-pyukumuku-silvally-payback.txt decks/brews/brew-06b-pyukumuku-silvally-scyther-grass.txt --games 240

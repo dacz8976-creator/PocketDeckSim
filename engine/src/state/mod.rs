@@ -649,24 +649,39 @@ impl State {
 
     /// Every Energy type a Pokémon **in play** counts as right now.
     ///
-    /// Normally that is just its printed type, but Urshifu's Double Type ("As long as this Pokémon
-    /// is in play, it is [W] and [F] type") gives it two. This is the single chokepoint for the
-    /// question — Weakness, the type damage boosts, the "each of your [X] Pokémon" filters and the
-    /// typed Retreat discounts all go through here (or through [`Self::pokemon_is_type`]) rather
-    /// than reading `PlayedCard::get_energy_type` directly, so a dual-typed Pokémon cannot be
-    /// recognised by one of them and missed by another. `PlayedCard::get_energy_type` remains the
-    /// *printed* type and is correct only where the printed value is what is wanted (display, and
-    /// cards that are not in play).
+    /// Normally that is its printed type set (`Card::get_types`): one type, or two for a printed
+    /// dual-type card (Dual Fusion's Mega Mewtwo X ex is Psychic/Fighting). Urshifu's Double Type
+    /// ("As long as this Pokémon is in play, it is [W] and [F] type") also gives it two, and
+    /// *replaces* the printed set. This is the chokepoint for the question: Weakness, the
+    /// stacking type damage boosts and cuts, the typed Retreat discounts and the other callers of
+    /// this function and [`Self::pokemon_is_type`] go through here.
+    ///
+    /// NOT yet through here: the 12 in-play checks that read the printed set with
+    /// `PlayedCard::has_printed_type` (Leaf Cape, Jungle Totem, Deceptive Needle, the Chase Order
+    /// bench filter, the "+X if the defender is a [X] Pokémon" and "if the opponent has a [X]
+    /// Pokémon in play" bonuses, Forest Breath, Wash Out and Psychic Connect; list in
+    /// `rl/results/dual_type_seam_2026-10-23`). They do not count Double Type: a pre-existing gap,
+    /// live for Urshifu (printed [W] / [D], [F] in play) against the [F]-defender bonuses. They move
+    /// here, with the rule and an Urshifu test, in the Dual Fusion release step
+    /// (RELEASE_CHECKLIST.md). `PlayedCard::get_energy_type` / `Card::get_type` remain the
+    /// *primary printed* type and are correct only where one printed value is what is wanted
+    /// (display, colour, a map key). A card that is not in play is asked with `Card::is_type` /
+    /// `Card::get_types` (printed set, no Abilities).
     ///
     /// Reads the Ability through `get_in_play_ability_mechanic`, so Prickly Powder's `NoAbilities`
-    /// reverts the Pokémon to its printed type.
-    pub(crate) fn pokemon_energy_types(&self, pokemon: &PlayedCard) -> Vec<EnergyType> {
+    /// reverts the Pokémon to its printed type set.
+    ///
+    /// `pub` (not `pub(crate)`) only so the integration tests can pin it
+    /// (`tests/dual_type_seam_test.rs`).
+    pub fn pokemon_energy_types(&self, pokemon: &PlayedCard) -> Vec<EnergyType> {
         if let Some(AbilityMechanic::DualType { types }) =
             get_in_play_ability_mechanic(self, pokemon)
         {
+            // TODO(dual-type): a printed dual-type card that also has a Double Type-style Ability:
+            // does the Ability replace the printed set (as here) or add to it? No such card exists.
             return types.to_vec();
         }
-        pokemon.get_energy_type().into_iter().collect()
+        pokemon.card.get_types()
     }
 
     /// Whether an *attack's* non-damage effect aimed at this Pokémon is prevented — Regice's
@@ -715,9 +730,9 @@ impl State {
         self.apply_status_condition(player, in_play_idx, status);
     }
 
-    /// Whether a Pokémon in play counts as `energy_type` right now. See
+    /// Whether a Pokémon in play counts as `energy_type` right now (any-of). See
     /// [`Self::pokemon_energy_types`].
-    pub(crate) fn pokemon_is_type(&self, pokemon: &PlayedCard, energy_type: EnergyType) -> bool {
+    pub fn pokemon_is_type(&self, pokemon: &PlayedCard, energy_type: EnergyType) -> bool {
         self.pokemon_energy_types(pokemon).contains(&energy_type)
     }
 

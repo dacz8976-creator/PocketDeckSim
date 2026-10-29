@@ -18,7 +18,8 @@ This module makes both mechanical instead of remembered:
 
 The fingerprint hashes ONLY gameplay-relevant fields:
   Pokemon: name, stage, evolves_from, hp, energy_type, ability, attacks,
-           weakness, retreat_cost
+           weakness, retreat_cost (+ the full printed type set, only when a
+           card has two types: single-type fingerprints are unchanged)
   Trainer: name, trainer_card_type, effect
 EXCLUDED: rarity, booster_pack, set/number — acquisition-only, zero gameplay
 effect (same argument as §127's energy-line exclusion). NAME IS INCLUDED
@@ -46,15 +47,24 @@ and is import-wired for future analyzers — never key a card by bare name again
 import sys, os, io, json, hashlib, collections
 
 HERE = os.path.dirname(os.path.abspath(__file__))
+if HERE not in sys.path:
+    sys.path.insert(0, HERE)
+import card as cardlib  # noqa: E402  (lib/card.py: printed_types, the one reader of a card's type set)
 MAP_PATHS = (os.path.join(HERE, '..', 'results', 'CANON_MAP.tsv'),
              os.path.join(HERE, 'CANON_MAP.tsv'), 'results/CANON_MAP.tsv', 'CANON_MAP.tsv')
 
 # ⛔ PINNED. A db refresh MUST consciously update these three lines (that is the point:
-# a silently swapped database must refuse, not pass). Source: s120 fork database.json.
-EXPECTED_IDS     = 3879
+# a silently swapped database must refuse, not pass). Source: lib/deckgym-database.json, the LF
+# copy of engine/database.json at main 39199195 (upstream 20d1857's data: B4b, C1, SP1 and P-C
+# added, P-B to 103). SET_ORDER: base sets in release order (B4b Sep 29-30, C1 Oct 28), then the
+# sets that never give the canonical print while a base set has one: the promos, then SP1
+# (Special Pack: First Partners: 27 ☆ prints plus three Mew, SP1 -03..-01; SP1 001/002/003/018
+# are the game objects of C1 001/016/029/040, so C1 keeps the base id).
+EXPECTED_IDS     = 4577
 EXPECTED_SOURCE_SHA256 = None  # set at build time into the map header; load() verifies map vs header only
 SET_ORDER = ['A1','A1a','A2','A2a','A2b','A3','A3a','A3b','A4','A4a','A4b',
-             'B1','B1a','B2','B2a','B2b','B3','B3a','B3b','B4','B4a','P-A','P-B']
+             'B1','B1a','B2','B2a','B2b','B3','B3a','B3b','B4','B4a','B4b',
+             'C1','P-A','P-B','P-C','SP1']
 # Present in the s120 engine db but ABSENT from ALL_IDS.md v2 (probed on the older
 # bin-3518-b4c): revalidate these ids before using them with that older binary.
 NEWER_THAN_ALL_IDS_V2 = [
@@ -192,16 +202,24 @@ def _sort_key(cid):
     if s not in SET_ORDER:
         raise CanonMapError(f'FATAL: unknown set "{s}" in id "{cid}" — extend SET_ORDER '
                             f'consciously (base-id choice depends on set order).')
+    # int() reads SP1's 'SP1 -03'..'SP1 -01' (three Mew) as -3..-1: they sort before SP1 001,
+    # in the database's own order, and 'SP1 -03' is that class's base id.
     return (SET_ORDER.index(s), int(n))
 
 def fingerprint(entry):
     kind = list(entry.keys())[0]; c = entry[kind]
     if kind == 'Pokemon':
+        types = cardlib.printed_types(c)   # ValueError on malformed type data (never a silent merge)
         f = {'kind': kind, 'name': c['name'], 'stage': c['stage'],
              'evolves_from': c['evolves_from'], 'hp': c['hp'],
-             'energy_type': c['energy_type'], 'ability': c['ability'],
+             'energy_type': types[0], 'ability': c['ability'],
              'attacks': c['attacks'], 'weakness': c['weakness'],
              'retreat_cost': c['retreat_cost']}
+        if len(types) > 1:
+            # Dual-type (Dual Fusion): hash the FULL printed set, so two printings that differ
+            # only in a second type never merge. Added ONLY for two types, so every single-type
+            # fingerprint (and CANON_MAP.tsv) stays byte-for-byte what it was.
+            f['printed_types'] = types
     else:
         f = {'kind': kind, 'name': c['name'],
              'trainer_card_type': c.get('trainer_card_type'), 'effect': c.get('effect')}
@@ -367,6 +385,14 @@ def selftest():
           cn.same_card('A1 001', 'A4b 001') and cn.same_card('A1 001', 'P-A 023')
           and cn.base_id('P-A 023') == 'A1 001') else None)
     t('unique name resolves to its BASE id', lambda: cn.by_name('Helix Fossil'))
+    # the refreshed SET_ORDER (Dual Fusion data): C1 keeps the base id over SP1's ☆ prints
+    t('Bulbasaur SP1 001 == C1 001, base id C1 001 (SP1 sorts after C1)',
+      lambda: (_ for _ in ()).throw(AssertionError) if not (
+          cn.same_card('SP1 001', 'C1 001') and cn.base_id('SP1 001') == 'C1 001') else None)
+    t("SP1's '-NN' ids sort before SP1 001 (Mew: 'SP1 -03' first)",
+      lambda: (_ for _ in ()).throw(AssertionError) if not (
+          cn.prints_of('SP1 -01') == ['SP1 -03', 'SP1 -02', 'SP1 -01']
+          and _sort_key('SP1 -01') < _sort_key('SP1 001')) else None)
     # §135 B — THE REAL GAME's copy rule (per Dustin, 2026-08-21)
     t('4 Bulbasaur via two prints REFUSED (one exact name, ONE limit)',
       lambda: (_ for _ in ()).throw(AssertionError) if not name_rule_errors(
@@ -379,13 +405,16 @@ def selftest():
     t('unknown set in sort REFUSED', lambda: _sort_key('Q1 001'), SystemExit)
     import tempfile
     body = [ln for ln in io.open(next(p for p in MAP_PATHS if os.path.exists(p)), encoding='utf-8')]
-    def mutated(lines):
-        fd, p = tempfile.mkstemp(suffix='.tsv'); os.close(fd)
-        io.open(p, 'w', encoding='utf-8').writelines(lines); return p
-    t('TRUNCATED map REFUSED (count mismatch)', lambda: Canon(mutated(body[:-5])), SystemExit)
-    first_data = next(i for i, l in enumerate(body) if not l.startswith('#'))
-    t('DUPLICATE id row REFUSED', lambda: Canon(mutated(body + [body[first_data]])), SystemExit)
-    t('SHORT row REFUSED', lambda: Canon(mutated(body[:first_data] + ['A1 001\toops\n'] + body[first_data:])), SystemExit)
+    with tempfile.TemporaryDirectory(prefix='card_canon_selftest_') as td:   # the mutated maps are removed afterwards
+        def mutated(lines):
+            fd, p = tempfile.mkstemp(suffix='.tsv', dir=td); os.close(fd)
+            with io.open(p, 'w', encoding='utf-8') as f:
+                f.writelines(lines)
+            return p
+        t('TRUNCATED map REFUSED (count mismatch)', lambda: Canon(mutated(body[:-5])), SystemExit)
+        first_data = next(i for i, l in enumerate(body) if not l.startswith('#'))
+        t('DUPLICATE id row REFUSED', lambda: Canon(mutated(body + [body[first_data]])), SystemExit)
+        t('SHORT row REFUSED', lambda: Canon(mutated(body[:first_data] + ['A1 001\toops\n'] + body[first_data:])), SystemExit)
     # 4. COVERAGE of the live pool
     pool = os.path.join(HERE, '..', 'pool9')
     if os.path.isdir(pool):

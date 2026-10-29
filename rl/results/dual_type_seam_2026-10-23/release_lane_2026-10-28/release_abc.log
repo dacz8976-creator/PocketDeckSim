@@ -1,0 +1,19 @@
+2026-10-28T15:37:23Z release_abc armed (pgid 315540)
+2026-10-28T15:37:24Z A: lane_r on b290e223a12aa9d90877cc78b034cf2e47d9ba56
+2026-10-28T18:58:18Z A: lane_r returned: 2026-10-28T18:58:18Z; markers: build_R.done gen_R.done replays_R.done status_R.done suite_R.done 
+2026-10-28T18:58:18Z phase A verdict: PASS
+  card_status: all 4577 | new C1/SP1/P-C: 260 {'Complete': 167, 'MissingAbility': 19, 'MissingAttack': 53, 'MissingTool': 2, 'MissingTrainer': 19}
+     C1 217 {'Complete': 130, 'MissingAbility': 19, 'MissingAttack': 48, 'MissingTool': 2, 'MissingTrainer': 18}
+     SP1 30 {'Complete': 30}
+     P-C 13 {'Complete': 7, 'MissingAttack': 5, 'MissingTrainer': 1}
+  STATUS_CHECK OK
+2026-10-28T18:58:18Z aside A_b290e223: 18 files to /home/dacz8976/pincand_work/prep/A_b290e223; 18 r rows to summary_r_A_b290e223.tsv; games/r -> r_A_b290e223; programs/R copied to R_A_b290e223
+2026-10-28T18:58:19Z ABC: lane_r on d0792568eb223def8e48ae94d0c84a440bbffaf5
+2026-10-28T22:34:56Z ABC: lane_r returned: 2026-10-28T22:34:56Z; markers: build_R.done gen_R.done replays_R.done status_R.done suite_R.done 
+2026-10-28T22:34:56Z phase ABC verdict: PASS
+  card_status: all 4577 | new C1/SP1/P-C: 260 {'Complete': 205, 'MissingAbility': 15, 'MissingAttack': 31, 'MissingTool': 2, 'MissingTrainer': 7}
+     C1 217 {'Complete': 166, 'MissingAbility': 15, 'MissingAttack': 28, 'MissingTool': 2, 'MissingTrainer': 6}
+     SP1 30 {'Complete': 30}
+     P-C 13 {'Complete': 9, 'MissingAttack': 3, 'MissingTrainer': 1}
+  STATUS_CHECK OK
+2026-10-28T22:34:56Z release_abc end: phase ABC PASS; prep_w at d0792568 (laptop/dual-fusion-release-prep-2026-10-24)

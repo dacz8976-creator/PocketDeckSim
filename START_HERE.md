@@ -7,15 +7,15 @@ Read this before anything else in the folder.
 
 > Pocket Deck Lab (the folder beside this repo) is the archived predecessor. Current deck lists, deck-improvement work, the simulator and bot work live here. Anything marked *(Pocket Deck Lab only)* is an archived reference that wasn't copied.
 
-## Mission (clarified by Dustin, Oct 14, 2026)
+## Mission
 
-**Help Dustin improve decks he enjoys playing so they carry out their plan reliably and perform better against the opponents he actually faces.**
+**Build a better Pokémon TCG Pocket simulator, and use it to find better decks** (Dustin, Oct 27, 2026: the goal is to help more players than him, and the project is open to sharing and collaboration).
 
-Preserve the deck's identity and the parts Dustin likes, including creative and unfamiliar strategies. Start with a deck he wants to play, its intended plan, common opponents and recurring weaknesses. Consider both small swaps and larger support changes. Explain exact changes, why they may help, what the evidence shows and what gets worse elsewhere. A useful finding can also show that a proposed change is not worth making.
+A better deck carries out its plan reliably against the opponents players actually face. Keep a deck's identity and the parts its player likes, including creative and unfamiliar strategies. Start with a deck someone wants to play, its plan, its common opponents and its recurring weaknesses. Consider both small swaps and larger support changes. Explain the exact change, why it may help, what the evidence shows and what gets worse elsewhere. A useful finding can also show that a proposed change is not worth making.
 
-The engine and bots support those decisions. Separate a weakness in the deck from an engine error or a bot that cannot execute the plan. Simulator results alone do not establish a ladder win rate or a deck ranking. Trustworthy playing quality takes priority over speed. Report time and cost; do not silently impose a speed requirement or a fixed game budget.
+A better simulator follows the real rules, and its bots can carry out a deck's plan. Separate a weakness in the deck from an engine error or a bot that cannot execute the plan. Simulator results alone do not establish a ladder win rate or a deck ranking. Trustworthy playing quality takes priority over speed. Report time and cost; do not silently impose a speed requirement or a fixed game budget.
 
-**New decks (Dustin, Oct 15):** finding and optimizing new decks Dustin would enjoy is a goal. It comes after a bot shows it can pilot his decks' plans, starting with his Kingambit deck. Until then, deck suggestions are rare, fit his style (decks that make both players think, aren't too hard to set up, and can survive fast decks), and are labelled untested.
+**New decks:** finding new decks is the aim. It comes after a bot shows it can pilot a real deck's plan; the first test is Dustin's Kingambit deck. Until then, deck suggestions are rare and labelled untested.
 
 ### Keep the work tied to the mission
 
@@ -23,7 +23,7 @@ Before a substantial new job, state in its existing task or plan which deck, mat
 
 Revisit these three questions in the existing daily review and when choosing the next substantial job:
 
-1. What can Dustin actually use now, and what evidence supports it?
+1. What can a player actually use now, and what evidence supports it?
 2. How does current work help a chosen deck or a necessary engine/pilot capability?
 3. What should be reduced, deferred or redirected because it duplicates work or does not help a useful decision?
 
@@ -31,7 +31,7 @@ Say plainly when no new practical benefit was delivered. Tests, reports, game co
 
 ## The official engine (one line; the engine-switch procedure updates it)
 
-`rl/engine-2026-10-12/` (`deckgym`, `legality_scan`, `goldfish`), main-c045ede: rules4 plus the rules/09 repairs (the ten of Sept 26; since Oct 2 Victory Star after a Confusion heads and coin-flip damage prevention, Chase Order included; and since Oct 12 rules switch 2: round 2's coin-prevention rules and card-text fixes, Fossils as Item cards, and Weakness on an attack's return damage), with the km pilot (kta + N2) on both sides of the screen and the floor. `project_manifest.json` names it with its hashes, and `current_engine.py` and the screen resolve to it. Earlier engines are history there. Since Sept 30, `kt3`, `kta3`, `ktb3` and `ktc3` name the kog-based presets; the older kp-based ones replay on `rl/engine-2026-09-28/`.
+`rl/engine-2026-10-21/` (`deckgym`, `legality_scan`, `goldfish`), main-4d48844: rules4 plus the rules/09 repairs (the ten of Sept 26; since Oct 2 Victory Star after a Confusion heads and coin-flip damage prevention, Chase Order included; since Oct 12 rules switch 2: round 2's coin-prevention rules and card-text fixes, Fossils as Item cards, and Weakness on an attack's return damage; and since Oct 21 an attack cut to 0 by an attacker-side effect does 0 with no Weakness, an attack's hit back is attack damage for the Attacking Pokémon's own cards (its cuts, its prevention, its Rocky Helmet), plus upstream #385, #390, #401 (Fossil part) and #344 (narrow)), with the km pilot (kta + N2) on both sides of the screen and the floor. `project_manifest.json` names it with its hashes, and `current_engine.py` and the screen resolve to it. Earlier engines are history there. Since Sept 30, `kt3`, `kta3`, `ktb3` and `ktc3` name the kog-based presets; the older kp-based ones replay on `rl/engine-2026-09-28/`.
 
 ## Standing facts
 
@@ -57,6 +57,21 @@ Current deck-improvement work uses `decks/dustin/`, `decks/brews/`, the Ladder L
 Read `RULES_FOR_AGENTS.md` (one page: Pocket's rules, where they differ from the physical TCG).
 Never state a card's text from memory — `python lib/card.py "<name or id>"` prints it.
 When your session ends, add one dated line to `LOG.md` (*Pocket Deck Lab only*) in plain words: who you are, what changed.
+
+**Exam answer material stays out of bot and judge work (containment; Astra's weekly review, Oct 26).** Anyone who builds, tunes or debugs a pilot, a bot or the AI judge never opens these files. They hold the exam's answers, Dustin's quiz answers, or lines and rows derived from them:
+- on `sonnet/exam-2026-10-19`, in `rl/results/weekly_review_2026-10-18/exam/`:
+  - v1.6 and its runs: `exam_2026-10-19*.json`, `references*.json`, `README.md`, `build/`, `run1/`, `run2/`;
+  - in `run3/`: `PREREG_RUN3.md` from addendum 8 on (K11 and later hold his quiz and answers), `answers/`, `questions/`, `frozen_2026-10-25/`, `labels/`, `D_FIXES.json`, `assembly_final/`, `ASSEMBLY_*.md`, `build/g/`, `select/`, `PARTB_GAPS_*.txt`, `RESULTS_run3.md` and `live-*/`;
+- on the laptop: `~/exam/`, `~/exam_v2/` (its `assembly*`, `label_*`, `answers/`, `questions/` and everything else there) and `~/exam_run*/`.
+
+A developer gets only the answer-free excerpts the coordinator stages: the rules without any point's answer, as the run 3 jobs got them. The frozen registration files are not edited; they stay the record.
+
+**Keep the laptop lean (Dustin, Oct 26): "the leaner we can keep it while nothing is running, the better."**
+- WSL jobs keep temp files in their own folder on disk, never in `/tmp`, which lives in RAM. Tools that create temp folders delete them when done.
+- When a heavy WSL job ends: delete its temp files, run `sync; echo 3 > /proc/sys/vm/drop_caches` as root to give memory back to Windows, and stop its tmux sessions and helper scripts.
+- Before re-arming a job, stop the old launcher's whole process group. Only one launcher per job.
+- At the end of any task, check `tmux ls` and leave nothing idle running that isn't needed.
+- Disk: a job that writes more than 1 GB plans its cleanup before it starts, and deletes its build outputs, scratch copies and other leftovers when done. Never leave large unneeded files where Dustin can't see them: the end-of-night note lists anything large that was kept, and why. When WSL has freed a lot of space inside its disk, schedule a compaction so the space returns to C:.
 
 ## Where things are
 
@@ -167,3 +182,5 @@ its seed-overlap check; the rest was added since.
 | 24,700,000,000 – 24,709,999,999 | Claude Code, the setup tester (`rl/setup_tester/SPEC.md`, approved Oct 15; Python, our own cards only, no engine games): deal i of every version uses seed 24,700,000,000 + i, so versions share deals; deals 0–99,999 are the standard set |
 | 25,000,000,000 – 25,099,999,999 | Claude Code, ky3 item 7's self-play (the Kingambit pilot; `rl/results/next_pilot_2026-10/EXPECTED_KG.md` section 1 on `sonnet/ky3-blade` 0f5f234d, registered Oct 16): seed = 25,000,000,000 + X × 10,000,000 + o × 1,000,000 + S × 500,000 + i, X = 0 his played list (73dfed58d1d6, `decks/dustin/01-kingambit-as-played.txt`) or 1 `decks/dustin/01-muk-glimmora-kingambit-regigigas.txt`, o = floor list 0–7, S = his seat, i < 500; every arm of one deal uses the same seed. Stage A (the laptop, Oct 16) plays X = 1, i < 5 (item 7's test 8) and X = 0, i < 125; smokes 25,090,000,000 and up |
 | 25,100,000,000 – 25,100,999,999 | Claude Code, the unseen-positions exam's baseline rows (PLAN step 3, the first scored run; `rl/results/weekly_review_2026-10-18/exam/run1/` on `sonnet/exam-2026-10-19`, registered Oct 19 before any run): km3 through the frozen baseline executable (tag judge-prompt-frozen-4) plays each of the 51 exam positions with seed = 25,100,000,000 + s, s = 1, 2, 3; dry runs and smokes use 25,100,900,000 and up. The AI judge has no game seed (the plan lister's world seed is fixed at 1 by the freeze) |
+| 25,101,000,000 – 25,101,999,999 | Claude Code, exam run 3's baseline rows (exam v2; `rl/results/weekly_review_2026-10-18/exam/run3/PREREG_RUN3.md` on `sonnet/exam-2026-10-19`, registered Oct 21 before any run 3 row): km3, played fresh, through the frozen baseline executable (tag judge-prompt-frozen-7: baseline f35a1a99, engine tree 70652fff) on each exam v2 position with seed = 25,101,000,000 + s, s = 1, 2, 3; dry runs and smokes use 25,101,900,000 and up. The AI judge has no game seed |
+| 25,101,000,001 – 25,101,000,003 (reused) | Claude Code, unchanged kx3 on exam v2 (K21, `rl/results/weekly_review_2026-10-18/exam/run3/PREREG_RUN3.md` at c69579eb on `sonnet/exam-2026-10-19`, registered Oct 26 before any kx3 row): kx3 reuses km3's run 3 seeds 25,101,000,001-003 on purpose, paired with km3 (the same filled positions per seed) |

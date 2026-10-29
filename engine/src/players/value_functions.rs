@@ -1601,7 +1601,7 @@ fn defender_identity_bonus(state: &State, attack: &Attack, victim: &PlayedCard) 
     match mechanic {
         Mechanic::ExtraDamageIfEx { extra_damage } if victim.card.is_ex() => *extra_damage,
         Mechanic::ExtraDamageIfDefenderType { energy_types, extra_damage }
-            if victim.card.get_type().is_some_and(|energy_type| energy_types.contains(&energy_type)) =>
+            if energy_types.iter().any(|energy_type| victim.has_printed_type(*energy_type)) =>
         {
             *extra_damage
         }
@@ -3959,6 +3959,29 @@ mod kd_feature_tests {
         assert_eq!((bonus(&rocket, CardId::B4a042TeamRocketsKoffing), bonus(&rocket, CardId::A1001Bulbasaur)), (70, 0));
         let ability = attack_with(&|m| matches!(m, Mechanic::ExtraDamageIfOpponentActiveHasAbility { .. }));
         assert_eq!((bonus(&ability, CardId::A4021ShuckleEx), bonus(&ability, CardId::A1001Bulbasaur)), (40, 0));
+    }
+
+    /// The "[X] defender" bonus counts a printed second type, like apply_attack_action's own check: a synthetic
+    /// Treecko (Grass) printed Grass/Darkness takes the +30 against [D]; the real one still does not.
+    #[test]
+    fn defender_identity_bonus_counts_a_printed_second_type() {
+        let mut texts: Vec<&str> = EFFECT_MECHANIC_MAP
+            .iter()
+            .filter(|(_, mechanic)| {
+                matches!(mechanic, Mechanic::ExtraDamageIfDefenderType { energy_types, extra_damage: 30 }
+                    if energy_types == &vec![EnergyType::Darkness])
+            })
+            .map(|(text, _)| *text)
+            .collect();
+        texts.sort();
+        let attack =
+            Attack { energy_required: vec![], title: "Test".to_string(), fixed_damage: 10, effect: Some(texts[0].to_string()) };
+        let state = State::default();
+        let mut dual = mon(CardId::B3005Treecko);
+        let Card::Pokemon(pokemon) = &mut dual.card else { panic!("Treecko is a Pokemon") };
+        pokemon.secondary_energy_type = Some(EnergyType::Darkness);
+        assert_eq!(defender_identity_bonus(&state, &attack, &dual), 30);
+        assert_eq!(defender_identity_bonus(&state, &attack, &mon(CardId::B3005Treecko)), 0);
     }
 
     #[test]

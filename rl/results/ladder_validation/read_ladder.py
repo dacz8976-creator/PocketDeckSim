@@ -1223,6 +1223,15 @@ def _write(path, data):
 
 
 def selftest(repo, export, use_git=True):
+    # The snapshot's deck-12 predictions were made under the Oct 12 pin: build and read them under its CURRENT_ENGINE.
+    saved, mp.CURRENT_ENGINE = mp.CURRENT_ENGINE, mp.CURRENT_ENGINE_OCT12
+    try:
+        return _selftest(repo, export, use_git)
+    finally:
+        mp.CURRENT_ENGINE = saved
+
+
+def _selftest(repo, export, use_git=True):
     fails = []
 
     def check(cond, what):

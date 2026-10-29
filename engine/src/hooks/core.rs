@@ -67,21 +67,24 @@ pub fn is_future_pokemon(pokemon_name: &str) -> bool {
 
 // Ultra Beasts
 // TODO: Move this to a field in PokemonCard and database in the future
-const ULTRA_BEAST_NAMES: [&str; 14] = [
+const ULTRA_BEAST_NAMES: [&str; 17] = [
     "Buzzwole ex",
+    "Buzzwole",
     "Blacephalon",
+    "Blacephalon ex",
     "Kartana",
     "Pheromosa",
     "Xurkitree",
     "Nihilego",
     "Guzzlord ex",
+    "Guzzlord",
     "Poipole",
     "Naganadel",
     "Stakataka",
     "Celesteela",
     "Dawn Wings Necrozma",
     "Dusk Mane Necrozma",
-    "Ultra Necrozma",
+    "Ultra Necrozma ex",
 ];
 
 pub fn is_ultra_beast(pokemon_name: &str) -> bool {
@@ -590,7 +593,7 @@ fn apply_deceptive_needle_damage(player_ending_turn: usize, state: &mut State) {
     };
     if active.is_knocked_out()
         || !has_tool(active, CardId::B4148DeceptiveNeedle)
-        || active.get_energy_type() != Some(EnergyType::Darkness)
+        || !active.has_printed_type(EnergyType::Darkness)
     {
         return;
     }
@@ -1100,6 +1103,18 @@ fn get_increased_turn_effect_modifiers(
                     0
                 }
             }
+            // Lorelei: "+30 damage to your opponent's Pokémon" -- Benched ones too, but only an
+            // attack's damage to the opponent (the same scope as Clemont's Backpack above).
+            TurnEffect::IncreasedDamageForSpecificPokemonToAnyOpponentPokemon {
+                amount,
+                pokemon_names,
+            } if (is_active_to_active || attack_on_opponent)
+                && pokemon_names
+                    .iter()
+                    .any(|name| *name == attacking_pokemon.get_name()) =>
+            {
+                *amount
+            }
             TurnEffect::IncreasedDamageForSpecificPokemonAgainstEx {
                 amount,
                 pokemon_names,
@@ -1506,6 +1521,9 @@ fn weakness_application_against(
 
 /// The printed Weakness rule: +20 when `receiving`'s Weakness is one of the attacker's types, or x2 of the total
 /// under Bounded Field for an attacker that isn't a Mega ex.
+// TODO(dual-type): a printed card keeps ONE Weakness (`PokemonCard::weakness`), a printed
+// dual-type card included; the attacker side is already any-of over its types (below). Two
+// printed Weaknesses on one card (if the Dual Fusion rules ever print one) are not supported.
 fn printed_weakness_application(
     state: &State,
     receiving: &PlayedCard,
@@ -3836,6 +3854,18 @@ mod attack_cut_to_zero_and_hit_back_tests {
         // Shell Trap's 20 goes to 0: no damage, so Luxray's Rocky Helmet doesn't answer.
         let luxray = mon(CardId::A3a015Luxray).with_tool(get_card_by_enum(CardId::A2148RockyHelmet));
         assert_eq!(retaliate(mon(CardId::B1047Turtonator), 20, luxray, 0, false), (0, 110));
+        // The order. No printed Luxray is weak to a holder's type, so the test gives it one. Weak to Fire: Shell Trap's 20
+        // is cut to 0 before Weakness and does nothing (Weakness first would give 20 + 20 - 20 = 20). Weak to Water, under
+        // Bounded Field: Spike Armor's 40 is cut to 20 and then doubled, 40 (Weakness first would give 80 - 20 = 60).
+        let weak_to = |energy: EnergyType| {
+            let mut luxray = mon(CardId::A3a015Luxray);
+            if let Card::Pokemon(pokemon) = &mut luxray.card {
+                pokemon.weakness = Some(energy);
+            }
+            luxray
+        };
+        assert_eq!(retaliate(mon(CardId::B1047Turtonator), 20, weak_to(EnergyType::Fire), 0, false), (0, 110));
+        assert_eq!(retaliate(mon(CardId::A3039AlolanSandslash), 40, weak_to(EnergyType::Water), 0, true), (40, 100));
     }
 
     #[test]
@@ -3868,10 +3898,16 @@ mod attack_cut_to_zero_and_hit_back_tests {
         togedemaru.add_effect(CardEffect::Counterattack { amount: 30 }, 1);
         let mut state = State::default();
         state.set_board(vec![togedemaru], vec![mon(CardId::B2073MimikyuEx)]);
-        crate::actions::handle_attack_retaliation(&mut state, (1, 0), &[(0, 0)]);
+        // P2's switch pinned on, so the numbers hold under DECKGYM_FLAT_RETURN_DAMAGE or DECKGYM_ROUND2_OFF too.
+        let retaliate = |state: &mut State| {
+            crate::actions::with_return_weakness(true, || {
+                crate::actions::handle_attack_retaliation(state, (1, 0), &[(0, 0)])
+            })
+        };
+        retaliate(&mut state);
         assert_eq!(state.get_active(1).get_remaining_hp(), 120);
         assert!(state.get_active(1).prevent_first_attack_damage_used);
-        crate::actions::handle_attack_retaliation(&mut state, (1, 0), &[(0, 0)]);
+        retaliate(&mut state);
         assert_eq!(state.get_active(1).get_remaining_hp(), 90);
     }
 }

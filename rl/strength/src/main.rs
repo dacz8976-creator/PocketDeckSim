@@ -5,13 +5,16 @@
 //! keys already there. A pilot spec is either a code the engine knows (km3, kog3, ...) or `ext:<command ...>`, an external process that
 //! is asked for each decision over JSON lines (see PROTOCOL.md): a slow pilot, or an LLM choosing among the legal moves, works the same.
 //!
-//!   strength run --manifest M/manifest.json --out M [--threads 2] [--max-games N] [--stop-after-min M] [--only-deck NAME]... [--dry-run]
-//!   strength selfcheck --pilot km3 --deck-a A.txt --deck-b B.txt [--games 20] [--seed-base S]
+//!   strength run --manifest M/manifest.json --out M [--threads 2] [--max-games N] [--stop-after-min M] [--only-deck NAME]... [--dry-run] [--allow-unsupported-cards]
+//!   strength selfcheck --pilot km3 --deck-a A.txt --deck-b B.txt [--games 20] [--seed-base S] [--allow-unsupported-cards]
 //!
 //! The manifest is written by strength_prereg.py before any game (it holds the pilots, decks, seeds and sizes the run executes).
+//! Before any game, both commands refuse (exit 2) a deck that holds a card the engine cannot play (card_status CardNotFound or Missing*), by the check
+//! `deckgym simulate` makes (deckgym::card_support); --allow-unsupported-cards lists those cards on stderr and plays anyway.
 mod ext;
 
 use deckgym::actions::{Action, SimpleAction};
+use deckgym::card_support::{refuse_unsupported_cards, ALLOW_UNSUPPORTED_CARDS_FLAG};
 use deckgym::observation::PlayerObservation;
 use deckgym::players::{create_players, parse_player_code, Player};
 use deckgym::state::GameOutcome;
@@ -124,6 +127,17 @@ fn load_deck(root: &Path, rel: &str) -> Deck {
     d
 }
 
+/// The card-support refusal, before any game: a deck holding a card the engine cannot play stops the program with exit 2 and the message `deckgym simulate`
+/// gives, unless --allow-unsupported-cards, which lists those cards on stderr and goes on. It reads only the card database (no RNG, nothing written), so the
+/// games of supported decks are played exactly as before.
+fn refuse_unsupported(args: &[String], operation: &str, decks: Vec<(String, &Deck)>) {
+    let allow = args.iter().any(|a| a == ALLOW_UNSUPPORTED_CARDS_FLAG);
+    if let Err(message) = refuse_unsupported_cards(operation, decks, allow) {
+        eprintln!("{message}");
+        std::process::exit(2);
+    }
+}
+
 /// Builds the two seats' players: engine codes through `create_players`, `ext:` specs as external processes.
 fn build_players(d0: &Deck, d1: &Deck, spec0: &str, spec1: &str, seed: u64, ext_timeout: Option<f64>, notes: &[ext::Meta; 2]) -> Vec<Box<dyn Player>> {
     let code = |s: &str| parse_player_code(if s.starts_with("ext:") { "r" } else { s }).unwrap_or_else(|e| panic!("pilot {s}: {e}"));
@@ -147,8 +161,10 @@ fn fnv(h: &mut u64, bytes: &[u8]) {
 fn selfcheck(args: &[String]) {
     let root = PathBuf::from(arg(args, "--root").unwrap_or_else(|| ".".into()));
     let pilot = arg(args, "--pilot").unwrap_or_else(|| "km3".into());
-    let a = load_deck(&root, &arg(args, "--deck-a").expect("--deck-a"));
-    let b = load_deck(&root, &arg(args, "--deck-b").expect("--deck-b"));
+    let (path_a, path_b) = (arg(args, "--deck-a").expect("--deck-a"), arg(args, "--deck-b").expect("--deck-b"));
+    let a = load_deck(&root, &path_a);
+    let b = load_deck(&root, &path_b);
+    refuse_unsupported(args, "strength selfcheck", vec![(format!("deck A ({path_a})"), &a), (format!("deck B ({path_b})"), &b)]);
     let n: u64 = arg(args, "--games").map(|x| x.parse().unwrap()).unwrap_or(20);
     let base: u64 = arg(args, "--seed-base").map(|x| x.parse().unwrap()).unwrap_or(24_900_000_000);
     let mut h: u64 = 0xcbf29ce484222325;
@@ -257,6 +273,10 @@ fn run(args: &[String]) {
     // load every deck once (Deck is Clone; each worker clones its own)
     let deck_cache: Vec<Deck> = decks.iter().map(|(_, p)| load_deck(&root, p)).collect();
     let opp_cache: Vec<Deck> = opps.iter().map(|(_, p)| load_deck(&root, p)).collect();
+    // the card-support refusal, before anything is written to the run folder (a refused run leaves it as it was)
+    let sides: Vec<(String, &Deck)> = decks.iter().zip(&deck_cache).map(|((n, p), d)| (format!("deck {n} ({p})"), d))
+        .chain(opps.iter().zip(&opp_cache).map(|((n, p), d)| (format!("opponent {n} ({p})"), d))).collect();
+    refuse_unsupported(args, "strength run", sides);
     // a run stopped in the middle of a write can leave a last line without its newline: end it, so the next record starts on its own line
     if let Ok(s) = std::fs::read(&games_path) {
         if !s.is_empty() && *s.last().unwrap() != b'\n' {
