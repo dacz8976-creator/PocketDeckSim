@@ -17,6 +17,12 @@ result: none (no result event)
 2026-10-29T21:32:18Z fix job end rc=0 after 781 s
 ```
 
+**Costs (API credits, Sonnet 5.5):**
+- **Part 1:** estimated $1.81-2.75. The C: floor watchdog stopped it before it wrote its result event; the upper estimate comes from the stream's usage fields at list price (coordinator-087).
+- **Part 2:** $0.1512 (actual).
+- **The fix job:** $0.2781 (actual).
+- **Total:** an estimated $2.24-3.18 of the $10.
+
 ## Results
 - **N3 identity (branch v BASE, km3 v km3, 200 games per build):** PASS. 200 finished.
 - **N4 parity through protocol_bot (CLI, one seat and both seats, 400 games):** PASS. Seconds per decision through the pipe (decide round trip): {'n': 13993, 'median': 0.004827, 'p95': 0.031939, 'max': 0.200046}; the bot's start-up per game (spawn, hello, new_game): {'n': 599, 'median': 0.002702, 'p95': 0.00474, 'max': 0.021486}.
