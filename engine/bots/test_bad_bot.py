@@ -1,8 +1,9 @@
 #!/usr/bin/env python3
-"""Test bot: replies {"i": 0} to its first two decides, then misbehaves. Usage: test_bad_bot.py --mode M
+"""Test bot: replies with a seeded random valid index to its first two decides, then misbehaves. Usage: test_bad_bot.py --mode M
 Modes: garbage, range, sleep, exit, nohello."""
 import argparse
 import json
+import random
 import sys
 import time
 
@@ -30,7 +31,7 @@ def main():
         elif kind == "decide":
             decides += 1
             if decides < 3:
-                send({"i": 0})
+                send({"i": random.Random(message["ply"]).randrange(len(message["actions"]))})
             elif args.mode == "garbage":
                 sys.stdout.write("not json\n")
                 sys.stdout.flush()

@@ -466,7 +466,7 @@ fn bot_failures_fall_back_and_are_counted() {
         if mode == "nohello" {
             assert_eq!(f, d, "{mode}");
         } else {
-            assert!(d >= 3);
+            assert!(d >= 3, "{mode}: decisions {d} fallbacks {f}");
             assert_eq!(f, d - 2, "{mode}");
         }
         let pid = st.child_pid.load(Ordering::SeqCst);
@@ -610,8 +610,9 @@ fn cli_proto_seat_plays() {
     let mut records = 0;
     for entry in std::fs::read_dir(&results).unwrap() {
         let path = entry.unwrap().path();
-        if path.extension().is_some_and(|e| e == "jsonl") {
-            records += read_jsonl(&path).len();
+        if path.extension().is_some_and(|e| e == "json") {
+            let _: Value = serde_json::from_str(&std::fs::read_to_string(&path).unwrap()).unwrap();
+            records += 1;
         }
     }
     assert_eq!(records, 2, "result records");

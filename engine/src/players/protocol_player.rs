@@ -75,7 +75,7 @@ fn write_line<T: Serialize>(stdin: &mut ChildStdin, msg: &T) -> Result<(), Strin
 }
 
 fn kill_group(pid: u32) {
-    let _ = Command::new("kill").args(["-KILL", "--", &format!("-{pid}")]).status();
+    let _ = Command::new("kill").args(["-KILL", "--", &format!("-{pid}")]).stderr(Stdio::null()).status();
 }
 
 impl ProtocolPlayer {
