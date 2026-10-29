@@ -1,0 +1,29 @@
+{
+  "what": "The Pocket Shot List artifact (https://claude.ai/artifact/9jHGThbKBvGoJkV2AxQJqB): the row 'raboot-stacking' and its capture mark, exactly as they were on Oct 29, 2026, after Dustin's capture and before the row leaves the list.",
+  "recorded_in": "rules/04_actions_cards_effects.md (Abilities table, \"Jumping Coach stacks too\")",
+  "row_state": "captured and recorded in rules/; the row stays on the list until Dustin removes it (deleting it is his call, coordinator-079)",
+  "items": {
+    "raboot-stacking": {
+      "cards": "Raboot [C1 023, C1 137] Jumping Coach: As long as this Pokémon is in play, flip 3 more coins for the Rabbit Jumping attack used by your Pokémon.\nScorbunny [C1 022] Rabbit Jumping [C] 20x: Flip 2 coins. This attack does 20 damage for each heads.",
+      "engine": "DeckGym: each Raboot in play adds 3 coins, so two Raboot flip 8.",
+      "group": "solo",
+      "look": "How many coins Rabbit Jumping flips: 8 (2 + 3 + 3, they stack) or 5 (only one counts).",
+      "order": 16,
+      "other": "Only one Jumping Coach counts: 5 coins.",
+      "priority": "low",
+      "setup": "Solo battle. Scorbunny Active with 1 Energy, and two Raboot on your Bench. Use Rabbit Jumping.",
+      "sofar": "Captured Oct 28 (ScreenRecording_10-28-2026 23-45-00_1.mp4): two Raboot stack, 8 coins. Matches DeckGym.",
+      "title": "Raboot's Jumping Coach: do two Raboot add 6 coins?",
+      "why": "Issue #434 asks whether Jumping Coach stacks."
+    }
+  },
+  "captures": {
+    "raboot-stacking": {
+      "note": "Dustin in the coordinator chat, Oct 28 ~23:50 CT: \"The last one shows that two do stack and add 6 coin flips\". So two Raboot in play: Rabbit Jumping flips 2 + 3 + 3 = 8 coins. Matches upstream DeckGym (3c7bdab, test_two_raboots_stack_jumping_coach). Not frame-checked by an agent: it agrees with the plain reading and the engine, and no change rests on it.",
+      "state": "captured",
+      "time": "",
+      "updated": "2026-10-29T04:58:00Z",
+      "video": "ScreenRecording_10-28-2026 23-45-00_1.mp4 (Drive Battle Logs/Inbox; earlier Raboot clips 23-38-50 and 23-40-28)"
+    }
+  }
+}
