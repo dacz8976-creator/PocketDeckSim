@@ -1,9 +1,9 @@
 //! Every Trainer reprint against its canonical printing: the first `CardId`, in enum order, with
 //! the same name and effect text. That is the printing upstream's #395 dispatches a reprint to
 //! (`trainer_identity::canonical_trainer_id`, which keys on the effect text alone; every Trainer
-//! name has one text, and the only text two names share is the Fossils'). In this fork Trainer
-//! logic is still keyed by CardId, with every printing listed in its arm or list, so these tests
-//! pass on that dispatch and must keep passing after R8-02 moves it to the canonical id.
+//! name has one text, and the only text two names share is the Fossils'). Until R8-02 this fork
+//! keyed Trainer logic by CardId, with every printing listed in its arm or list; these tests pass
+//! on that dispatch and hold R8-02's dispatch on the canonical id to the same results.
 //!
 //! - The rule: every printing resolves to a printing of the same name, text and type, and, but
 //!   for the Fossils (played as Pokémon, dispatched by type), to upstream's effect-text printing.

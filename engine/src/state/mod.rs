@@ -19,6 +19,7 @@ use crate::{
     move_generation,
     stadiums::is_starting_plains_active,
     tools::has_tool,
+    trainer_identity::canonical_trainer_id,
 };
 
 pub use played_card::{has_serperior_jungle_totem, PlayedCard};
@@ -360,10 +361,7 @@ pub struct State {
 }
 
 fn is_misty_trainer(trainer: &TrainerCard) -> bool {
-    matches!(
-        CardId::from_card_id(&trainer.id),
-        Some(CardId::A1220Misty | CardId::A1267Misty)
-    )
+    matches!(canonical_trainer_id(trainer), Some(CardId::A1220Misty))
 }
 
 fn misty_route_matches_original(

@@ -1,8 +1,10 @@
 //! B4b's 82 Trainer reprints (40 names) against their base printings. A base printing is a Trainer
-//! of another set with the same name AND the same effect text. In this fork Trainer logic is keyed
-//! by CardId, so for the Oct 24 release every twin was added wherever its base is named by id
-//! (`rl/results/dual_type_seam_2026-10-23/tools/add_reprint_arms.py`, plus `is_ice_pop` by hand);
-//! upstream's #395 (Trainer logic keyed by effect text) replaces those arms after the release.
+//! of another set with the same name AND the same effect text. For the Oct 24 release, when this
+//! fork keyed Trainer logic by CardId, every twin was added wherever its base was named by id
+//! (`rl/results/dual_type_seam_2026-10-23/tools/add_reprint_arms.py`, plus `is_ice_pop` by hand).
+//! R8-02 ported upstream's #395 (id-first): Trainer logic now dispatches on the canonical printing
+//! (`trainer_identity::canonical_trainer_id`) and those arms are gone again. This test is unchanged
+//! and holds the port to the same results.
 //!
 //! - The table below is every B4b Trainer, each with a base of the same name and text.
 //! - (a) card_status's own function (`card_validation::get_implementation_status`) gives every twin

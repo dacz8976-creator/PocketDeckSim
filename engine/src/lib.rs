@@ -26,6 +26,7 @@ pub mod stadiums;
 pub mod state;
 pub mod temp_deck;
 pub mod tools;
+pub mod trainer_identity;
 
 pub mod test_support;
 

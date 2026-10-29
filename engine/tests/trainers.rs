@@ -56,6 +56,8 @@ mod puppy_loving_girl_test;
 mod sophocles_test;
 #[path = "trainers/skyla_test.rs"]
 mod skyla_test;
+#[path = "trainers/trainer_reprints_test.rs"]
+mod trainer_reprints_test;
 #[path = "trainers/volkner_test.rs"]
 mod volkner_test;
 #[path = "trainers/wallace_test.rs"]

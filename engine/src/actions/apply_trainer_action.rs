@@ -29,6 +29,7 @@ use crate::{
     models::{Card, EnergyType, StatusCondition, TrainerCard, TrainerType},
     move_generation::{can_evolve_at_position, trainer_move_generation_implementation},
     tools::{enumerate_tool_choices, is_tool_card, is_tool_effect_implemented},
+    trainer_identity::canonical_trainer_id,
     State,
 };
 
@@ -91,108 +92,87 @@ pub(crate) fn forecast_trainer_action_unchecked(
         return Outcomes::single_fn(|_, _, _| {});
     }
 
+    // Dispatch on the canonical printing (`trainer_identity`), so every reprint shares one arm.
     let trainer_id =
-        CardId::from_card_id(trainer_card.id.as_str()).expect("CardId should be known");
+        canonical_trainer_id(trainer_card).expect("Trainer effect should be in the database");
     match trainer_id {
         CardId::PA001Potion => Outcomes::single_fn(potion_effect),
         CardId::PA002XSpeed => Outcomes::single_fn(x_speed_effect),
-        CardId::PA005PokeBall | CardId::A2b111PokeBall => {
+        CardId::A2b111PokeBall => {
             pokemon_search_outcomes(acting_player, state, true)
         }
         CardId::PA006RedCard => Outcomes::single_fn(red_card_effect),
-        CardId::PA007ProfessorsResearch | CardId::A4b373ProfessorsResearch => {
+        CardId::A4b373ProfessorsResearch => {
             Outcomes::single_fn(professor_oak_effect)
         }
-        CardId::A1219Erika | CardId::A1266Erika | CardId::A4b328Erika | CardId::A4b329Erika => {
+        CardId::A1219Erika => {
             Outcomes::single_fn(erika_effect)
         }
-        CardId::A1220Misty | CardId::A1267Misty => {
+        CardId::A1220Misty => {
             panic!("Misty requires the fallible exact forecast or physical sampler")
         }
-        CardId::A1221Blaine | CardId::A1268Blaine => Outcomes::single_fn(blaine_effect),
-        CardId::A2152Cynthia | CardId::A2192Cynthia => Outcomes::single_fn(cynthia_effect),
-        CardId::A1224Brock | CardId::A1271Brock => Outcomes::single_fn(brock_effect),
-        CardId::A2a072Irida | CardId::A2a087Irida | CardId::A4b330Irida | CardId::A4b331Irida => {
+        CardId::A1221Blaine => Outcomes::single_fn(blaine_effect),
+        CardId::A2152Cynthia => Outcomes::single_fn(cynthia_effect),
+        CardId::A1224Brock => Outcomes::single_fn(brock_effect),
+        CardId::A2a072Irida => {
             Outcomes::single_fn(irida_effect)
         }
-        CardId::A2b070PokemonCenterLady | CardId::A2b089PokemonCenterLady => {
+        CardId::A2b070PokemonCenterLady => {
             Outcomes::single_fn(pokemon_center_lady_effect)
         }
-        CardId::A3155Lillie
-        | CardId::A3197Lillie
-        | CardId::A3209Lillie
-        | CardId::A4b348Lillie
-        | CardId::A4b349Lillie
-        | CardId::A4b374Lillie => Outcomes::single_fn(lillie_effect),
-        CardId::A3151Guzma | CardId::A3193Guzma | CardId::A3208Guzma => {
+        CardId::A3155Lillie => Outcomes::single_fn(lillie_effect),
+        CardId::A3151Guzma => {
             Outcomes::single_fn(guzma_effect)
         }
-        CardId::A1222Koga | CardId::A1269Koga => Outcomes::single_fn(koga_effect),
-        CardId::A1223Giovanni
-        | CardId::A1270Giovanni
-        | CardId::A4b334Giovanni
-        | CardId::A4b335Giovanni => Outcomes::single_fn(giovanni_effect),
-        CardId::A2b071Red | CardId::A2b090Red | CardId::A4b352Red | CardId::A4b353Red => {
+        CardId::A1222Koga => Outcomes::single_fn(koga_effect),
+        CardId::A1223Giovanni => Outcomes::single_fn(giovanni_effect),
+        CardId::A2b071Red => {
             Outcomes::single_fn(red_effect)
         }
-        CardId::A1225Sabrina
-        | CardId::A1272Sabrina
-        | CardId::A4b338Sabrina
-        | CardId::A4b339Sabrina => Outcomes::single_fn(sabrina_effect),
+        CardId::A1225Sabrina => Outcomes::single_fn(sabrina_effect),
         CardId::A1a065MythicalSlab => Outcomes::single_fn(mythical_slab_effect),
-        CardId::A1a068Leaf | CardId::A1a082Leaf | CardId::A4b346Leaf | CardId::A4b347Leaf => {
+        CardId::A1a068Leaf => {
             Outcomes::single_fn(leaf_effect)
         }
-        CardId::A2150Cyrus | CardId::A2190Cyrus | CardId::A4b326Cyrus | CardId::A4b327Cyrus => {
+        CardId::A2150Cyrus => {
             Outcomes::single_fn(cyrus_effect)
         }
-        CardId::A2155Mars | CardId::A2195Mars | CardId::A4b344Mars | CardId::A4b345Mars => {
+        CardId::A2155Mars => {
             Outcomes::single_fn(mars_effect)
         }
-        CardId::A3144RareCandy
-        | CardId::A4b314RareCandy
-        | CardId::A4b315RareCandy
-        | CardId::A4b379RareCandy => Outcomes::single_fn(rare_candy_effect),
+        CardId::A3144RareCandy => Outcomes::single_fn(rare_candy_effect),
         CardId::A3a064Repel => Outcomes::single_fn(repel_effect),
-        CardId::A2146PokemonCommunication
-        | CardId::A4b316PokemonCommunication
-        | CardId::A4b317PokemonCommunication => Outcomes::single_fn(pokemon_communication_effect),
-        CardId::A2154Dawn | CardId::A2194Dawn | CardId::A4b342Dawn | CardId::A4b343Dawn => {
+        CardId::A2146PokemonCommunication => Outcomes::single_fn(pokemon_communication_effect),
+        CardId::A2154Dawn => {
             Outcomes::single_fn(dawn_effect)
         }
-        CardId::A4151ElementalSwitch
-        | CardId::A4b310ElementalSwitch
-        | CardId::A4b311ElementalSwitch => Outcomes::single_fn(elemental_switch_effect),
-        CardId::A3a067Gladion | CardId::A3a081Gladion => {
+        CardId::A4151ElementalSwitch => Outcomes::single_fn(elemental_switch_effect),
+        CardId::A3a067Gladion => {
             gladion_search_outcomes(acting_player, state)
         }
-        CardId::A3a069Lusamine
-        | CardId::A3a083Lusamine
-        | CardId::A4b350Lusamine
-        | CardId::A4b351Lusamine
-        | CardId::A4b375Lusamine => Outcomes::single_fn(lusamine_effect),
-        CardId::A3149Ilima | CardId::A3191Ilima => Outcomes::single_fn(ilima_effect),
-        CardId::A3153Sophocles | CardId::A3195Sophocles => Outcomes::single_fn(sophocles_effect),
-        CardId::A1a067Blue | CardId::A1a081Blue => Outcomes::single_fn(blue_effect),
-        CardId::A4160Jasmine | CardId::A4200Jasmine => Outcomes::single_fn(jasmine_effect),
-        CardId::B3151Cheren | CardId::B3192Cheren => Outcomes::single_fn(cheren_effect),
+        CardId::A3a069Lusamine => Outcomes::single_fn(lusamine_effect),
+        CardId::A3149Ilima => Outcomes::single_fn(ilima_effect),
+        CardId::A3153Sophocles => Outcomes::single_fn(sophocles_effect),
+        CardId::A1a067Blue => Outcomes::single_fn(blue_effect),
+        CardId::A4160Jasmine => Outcomes::single_fn(jasmine_effect),
+        CardId::B3151Cheren => Outcomes::single_fn(cheren_effect),
         CardId::A3a063BeastWall => Outcomes::single_fn(beast_wall_effect),
-        CardId::B1222Hala | CardId::B1267Hala => Outcomes::single_fn(hala_effect),
-        CardId::A4a069Whitney | CardId::A4a083Whitney => Outcomes::single_fn(whitney_effect),
-        CardId::A3154Mallow | CardId::A3196Mallow => Outcomes::single_fn(mallow_effect),
-        CardId::A3148Acerola | CardId::A3190Acerola => Outcomes::single_fn(acerola_effect),
-        CardId::A1226LtSurge | CardId::A1273LtSurge => Outcomes::single_fn(lt_surge_effect),
-        CardId::B2151Juggler | CardId::B2192Juggler => Outcomes::single_fn(juggler_effect),
-        CardId::A3152Lana | CardId::A3194Lana => Outcomes::single_fn(lana_effect),
-        CardId::A2151TeamGalacticGrunt | CardId::A2191TeamGalacticGrunt => {
+        CardId::B1222Hala => Outcomes::single_fn(hala_effect),
+        CardId::A4a069Whitney => Outcomes::single_fn(whitney_effect),
+        CardId::A3154Mallow => Outcomes::single_fn(mallow_effect),
+        CardId::A3148Acerola => Outcomes::single_fn(acerola_effect),
+        CardId::A1226LtSurge => Outcomes::single_fn(lt_surge_effect),
+        CardId::B2151Juggler => Outcomes::single_fn(juggler_effect),
+        CardId::A3152Lana => Outcomes::single_fn(lana_effect),
+        CardId::A2151TeamGalacticGrunt => {
             card_search_outcomes_with_filter_multiple(acting_player, state, 1, |card| {
                 matches!(card.get_name().as_str(), "Glameow" | "Stunky" | "Croagunk")
             })
         }
-        CardId::A4a070TravelingMerchant | CardId::A4a084TravelingMerchant => {
+        CardId::A4a070TravelingMerchant => {
             traveling_merchant_effect(acting_player, state)
         }
-        CardId::A4159Fisher | CardId::A4199Fisher => fisher_outcomes(),
+        CardId::A4159Fisher => fisher_outcomes(),
         CardId::A3143FishingNet => {
             discard_search_outcomes_with_filter(acting_player, state, is_basic_water_pokemon)
         }
@@ -200,146 +180,132 @@ pub(crate) fn forecast_trainer_action_unchecked(
         CardId::B1215HittingHammer => hitting_hammer_outcomes(),
         CardId::B1213PrankSpinner => Outcomes::single_fn(prank_spinner_effect),
         CardId::A1a064PokemonFlute => Outcomes::single_fn(pokemon_flute_effect),
-        CardId::A3b069Penny | CardId::A3b086Penny | CardId::B2a092Penny | CardId::B2a109Penny => {
+        CardId::A3b069Penny => {
             penny_outcomes(acting_player, state, trainer_card)
         }
         // Pure-information cards: see `information_only_effect`.
         CardId::A4a071Morty
-        | CardId::A4a085Morty
         | CardId::A4161Hiker
-        | CardId::A4201Hiker
         | CardId::A3a068Looker
-        | CardId::A3a082Looker
         | CardId::PA004PokedEx
-        | CardId::PA008PokedEx
         | CardId::A3145RotomDEx
         | CardId::PA003HandScope => Outcomes::single_fn(information_only_effect),
-        CardId::A1a066BuddingExpeditioner | CardId::A1a080BuddingExpeditioner => {
+        CardId::A1a066BuddingExpeditioner => {
             Outcomes::single_fn(budding_expeditioner_effect)
         }
-        CardId::A3150Kiawe | CardId::A3192Kiawe => Outcomes::single_fn(kiawe_effect),
-        CardId::A4157Lyra | CardId::A4197Lyra | CardId::A4b332Lyra | CardId::A4b333Lyra => {
+        CardId::A3150Kiawe => Outcomes::single_fn(kiawe_effect),
+        CardId::A4157Lyra => {
             Outcomes::single_fn(lyra_effect)
         }
-        CardId::A4156Will | CardId::A4196Will => Outcomes::single_fn(will_effect),
-        CardId::A4158Silver | CardId::A4198Silver | CardId::A4b336Silver | CardId::A4b337Silver => {
+        CardId::A4156Will => Outcomes::single_fn(will_effect),
+        CardId::A4158Silver => {
             Outcomes::single_fn(silver_effect)
         }
-        CardId::A3b066EeveeBag
-        | CardId::A3b107EeveeBag
-        | CardId::A4b308EeveeBag
-        | CardId::A4b309EeveeBag => Outcomes::single_fn(eevee_bag_effect),
-        CardId::B1217FlamePatch | CardId::B1331FlamePatch | CardId::B4b203FlamePatch | CardId::B4b369FlamePatch => {
+        CardId::A3b066EeveeBag => Outcomes::single_fn(eevee_bag_effect),
+        CardId::B1217FlamePatch => {
             Outcomes::single_fn(flame_patch_effect)
         }
-        CardId::A2153Volkner | CardId::A2193Volkner => Outcomes::single_fn(volkner_effect),
-        CardId::B1225Copycat | CardId::B1270Copycat | CardId::B4b225Copycat | CardId::B4b391Copycat | CardId::B4b424Copycat => Outcomes::single_fn(copycat_effect),
-        CardId::A2b069Iono
-        | CardId::A2b088Iono
-        | CardId::A4b340Iono
-        | CardId::A4b341Iono
-        | CardId::B2a089Iono
-        | CardId::B2a106Iono => Outcomes::single_fn(iono_effect),
-        CardId::B1221Marlon | CardId::B1266Marlon => Outcomes::single_fn(marlon_effect),
-        CardId::B1223May | CardId::B1268May | CardId::B4b220May | CardId::B4b386May => may_effect(acting_player, state),
-        CardId::B1224Fantina | CardId::B1269Fantina => Outcomes::single_fn(fantina_effect),
-        CardId::B1226Lisia | CardId::B1271Lisia | CardId::B4b226Lisia | CardId::B4b392Lisia => lisia_effect(acting_player, state),
-        CardId::A2a073CelesticTownElder | CardId::A2a088CelesticTownElder => {
+        CardId::A2153Volkner => Outcomes::single_fn(volkner_effect),
+        CardId::B1225Copycat => Outcomes::single_fn(copycat_effect),
+        CardId::A2b069Iono => Outcomes::single_fn(iono_effect),
+        CardId::B1221Marlon => Outcomes::single_fn(marlon_effect),
+        CardId::B1223May => may_effect(acting_player, state),
+        CardId::B1224Fantina => Outcomes::single_fn(fantina_effect),
+        CardId::B1226Lisia => lisia_effect(acting_player, state),
+        CardId::A2a073CelesticTownElder => {
             celestic_town_elder_effect(acting_player, state)
         }
-        CardId::A2a074Barry | CardId::A2a089Barry => Outcomes::single_fn(barry_effect),
-        CardId::A2a075Adaman | CardId::A2a090Adaman => Outcomes::single_fn(adaman_effect),
-        CardId::B2149Diantha | CardId::B2190Diantha | CardId::B4b214Diantha | CardId::B4b380Diantha => Outcomes::single_fn(diantha_effect),
-        CardId::B2152Piers | CardId::B2193Piers => Outcomes::single_fn(piers_effect),
+        CardId::A2a074Barry => Outcomes::single_fn(barry_effect),
+        CardId::A2a075Adaman => Outcomes::single_fn(adaman_effect),
+        CardId::B2149Diantha => Outcomes::single_fn(diantha_effect),
+        CardId::B2152Piers => Outcomes::single_fn(piers_effect),
         CardId::B1a066ClemontsBackpack => Outcomes::single_fn(clemonts_backpack_effect),
-        CardId::B1a068Clemont | CardId::B1a081Clemont | CardId::B4b218Clemont | CardId::B4b384Clemont => clemont_effect(acting_player, state),
-        CardId::B1a067QuickGrowExtract | CardId::B1a103QuickGrowExtract | CardId::B4b201QuickGrowExtract | CardId::B4b367QuickGrowExtract => {
+        CardId::B1a068Clemont => clemont_effect(acting_player, state),
+        CardId::B1a067QuickGrowExtract => {
             quick_grow_extract_effect(acting_player, state)
         }
-        CardId::B1a069Serena | CardId::B1a082Serena | CardId::B4b219Serena | CardId::B4b385Serena => serena_effect(acting_player, state),
-        CardId::B2a090Nemona | CardId::B2a107Nemona => Outcomes::single_fn(nemona_effect),
-        CardId::B2a091Arven | CardId::B2a108Arven | CardId::B2a115Arven | CardId::B4b222Arven | CardId::B4b388Arven | CardId::B4b423Arven => {
+        CardId::B1a069Serena => serena_effect(acting_player, state),
+        CardId::B2a090Nemona => Outcomes::single_fn(nemona_effect),
+        CardId::B2a091Arven => {
             arven_outcomes(acting_player, state)
         }
-        CardId::B2a086ElectricGenerator | CardId::B2a131ElectricGenerator | CardId::B4b199ElectricGenerator | CardId::B4b365ElectricGenerator => {
+        CardId::B2a086ElectricGenerator => {
             electric_generator_outcomes()
         }
-        CardId::B2a088TeamStarGrunt | CardId::B2a105TeamStarGrunt => {
+        CardId::B2a088TeamStarGrunt => {
             Outcomes::single_fn(team_effect)
         }
-        CardId::B2145LuckyIcePop | CardId::B4b198LuckyIcePop | CardId::B4b364LuckyIcePop => lucky_ice_pop_outcomes(state, acting_player),
+        CardId::B2145LuckyIcePop => lucky_ice_pop_outcomes(state, acting_player),
         CardId::B2b066Maintenance => Outcomes::single_fn(maintenance_effect),
-        CardId::B2b067Iris | CardId::B2b081Iris | CardId::B4b212Iris | CardId::B4b378Iris | CardId::B4b421Iris => Outcomes::single_fn(iris_effect),
-        CardId::B2b068Calem | CardId::B2b082Calem | CardId::B4b215Calem | CardId::B4b381Calem => Outcomes::single_fn(calem_effect),
+        CardId::B2b067Iris => Outcomes::single_fn(iris_effect),
+        CardId::B2b068Calem => Outcomes::single_fn(calem_effect),
         CardId::B2b065NastyNotice => Outcomes::single_fn(nasty_notice_effect),
-        CardId::A3b068Hau | CardId::A3b085Hau => Outcomes::single_fn(hau_effect),
+        CardId::A3b068Hau => Outcomes::single_fn(hau_effect),
         CardId::A3142BigMalasada => Outcomes::single_fn(big_malasada_effect),
-        CardId::B2150Sightseer | CardId::B2191Sightseer => sightseer_effect(acting_player, state),
-        CardId::A2b072TeamRocketGrunt | CardId::A2b091TeamRocketGrunt => {
+        CardId::B2150Sightseer => sightseer_effect(acting_player, state),
+        CardId::A2b072TeamRocketGrunt => {
             team_rocket_grunt_outcomes(state, acting_player)
         }
-        CardId::B3147FieldBlower | CardId::B4b202FieldBlower | CardId::B4b368FieldBlower => Outcomes::single_fn(field_blower_effect),
-        CardId::B3149Korrina | CardId::B3190Korrina | CardId::B4b217Korrina | CardId::B4b383Korrina => Outcomes::single_fn(korrina_effect),
-        CardId::B3150Cabbie | CardId::B3191Cabbie => card_search_outcomes_with_filter_multiple(
+        CardId::B3147FieldBlower => Outcomes::single_fn(field_blower_effect),
+        CardId::B3149Korrina => Outcomes::single_fn(korrina_effect),
+        CardId::B3150Cabbie => card_search_outcomes_with_filter_multiple(
             acting_player,
             state,
             1,
             |card| matches!(card, Card::Trainer(tc) if tc.trainer_card_type == TrainerType::Stadium),
         ),
-        CardId::B3152ParasolLady | CardId::B3193ParasolLady => {
+        CardId::B3152ParasolLady => {
             parasol_lady_effect(acting_player, state)
         }
-        CardId::B3a071Juliana | CardId::B3a086Juliana | CardId::B4b213Juliana | CardId::B4b379Juliana => card_search_outcomes_with_filter_multiple(
+        CardId::B3a071Juliana => card_search_outcomes_with_filter_multiple(
             acting_player,
             state,
             1,
             |card| matches!(card, Card::Pokemon(p) if p.stage == 2),
         ),
-        CardId::B3a072ProfessorSada | CardId::B3a087ProfessorSada => {
+        CardId::B3a072ProfessorSada => {
             Outcomes::single_fn(professor_sada_effect)
         }
-        CardId::B3a073ProfessorTuro | CardId::B3a088ProfessorTuro => {
+        CardId::B3a073ProfessorTuro => {
             professor_turo_effect(acting_player, state)
         }
-        CardId::B3b066Elesa | CardId::B3b083Elesa | CardId::B4b422Elesa => Outcomes::single_fn(elesa_effect),
-        CardId::B3b067PuppyLovingGirl | CardId::B3b084PuppyLovingGirl | CardId::B4b216PuppyLovingGirl | CardId::B4b382PuppyLovingGirl => {
+        CardId::B3b066Elesa => Outcomes::single_fn(elesa_effect),
+        CardId::B3b067PuppyLovingGirl => {
             puppy_loving_girl_effect(acting_player, state)
         }
-        CardId::B3b068Wallace | CardId::B3b085Wallace | CardId::B4b223Wallace | CardId::B4b389Wallace => wallace_effect(acting_player, state),
-        CardId::B4145OrderPad | CardId::B4b200OrderPad | CardId::B4b366OrderPad => order_pad_outcomes(acting_player, state),
-        CardId::B4152Skyla | CardId::B4192Skyla | CardId::B4b221Skyla | CardId::B4b387Skyla => Outcomes::single_fn(skyla_effect),
-        CardId::B4153Wally | CardId::B4193Wally | CardId::B4b224Wally | CardId::B4b390Wally => Outcomes::single_fn(wally_effect),
-        CardId::B4150Psychic | CardId::B4190Psychic => Outcomes::single_fn(psychic_effect),
-        CardId::B4151Drayden | CardId::B4191Drayden => Outcomes::single_fn(drayden_effect),
+        CardId::B3b068Wallace => wallace_effect(acting_player, state),
+        CardId::B4145OrderPad => order_pad_outcomes(acting_player, state),
+        CardId::B4152Skyla => Outcomes::single_fn(skyla_effect),
+        CardId::B4153Wally => Outcomes::single_fn(wally_effect),
+        CardId::B4150Psychic => Outcomes::single_fn(psychic_effect),
+        CardId::B4151Drayden => Outcomes::single_fn(drayden_effect),
         CardId::B4a067TeamRocketsThievingMachine => {
             team_rockets_thieving_machine_outcomes(acting_player, state)
         }
-        CardId::B4a068TeamRocketsGoozooka | CardId::B4a110TeamRocketsGoozooka => {
+        CardId::B4a068TeamRocketsGoozooka => {
             Outcomes::single_fn(team_rockets_goozooka_effect)
         }
-        CardId::B4a069TeamRocketsResearcher | CardId::B4a085TeamRocketsResearcher => {
+        CardId::B4a069TeamRocketsResearcher => {
             unreachable!("Researcher is handled by the fallible exact Trainer forecast")
         }
-        CardId::B4a070TeamRocketsMasterPlan
-        | CardId::B4a086TeamRocketsMasterPlan
-        | CardId::B4a094TeamRocketsMasterPlan => team_rockets_master_plan_outcomes(),
-        CardId::B4a071TeamRocketsBoss | CardId::B4a087TeamRocketsBoss => {
+        CardId::B4a070TeamRocketsMasterPlan => team_rockets_master_plan_outcomes(),
+        CardId::B4a071TeamRocketsBoss => {
             team_rockets_boss_outcomes(acting_player, state)
         }
-        CardId::C1125Lorelei | CardId::C1165Lorelei => Outcomes::single_fn(lorelei_effect),
-        CardId::C1126BluesProvocation | CardId::C1166BluesProvocation => {
+        CardId::C1125Lorelei => Outcomes::single_fn(lorelei_effect),
+        CardId::C1126BluesProvocation => {
             Outcomes::single_fn(lana_effect)
         }
-        CardId::C1127SerenasChoice | CardId::C1167SerenasChoice => {
+        CardId::C1127SerenasChoice => {
             Outcomes::single_fn(serenas_choice_effect)
         }
-        CardId::C1128Rika | CardId::C1168Rika => Outcomes::single_fn(rika_effect),
-        CardId::C1129PokeMartGuy | CardId::C1169PokeMartGuy => {
+        CardId::C1128Rika => Outcomes::single_fn(rika_effect),
+        CardId::C1129PokeMartGuy => {
             card_search_outcomes_with_filter_multiple(acting_player, state, 2, |card| {
                 ["Super Potion", "Max Repel", "Full Heal"].contains(&card.get_name().as_str())
             })
         }
-        CardId::C1130RisingStar | CardId::C1170RisingStar => Outcomes::single_fn(skyla_effect),
+        CardId::C1130RisingStar => Outcomes::single_fn(skyla_effect),
         _ => panic!("Unsupported Trainer Card"),
     }
 }
@@ -822,10 +788,7 @@ fn inner_healing_effect(
 }
 
 pub(crate) fn is_misty_card(trainer_card: &TrainerCard) -> bool {
-    matches!(
-        CardId::from_card_id(&trainer_card.id),
-        Some(CardId::A1220Misty | CardId::A1267Misty)
-    )
+    matches!(canonical_trainer_id(trainer_card), Some(CardId::A1220Misty))
 }
 
 /// Stage Misty's public target before its complete physical `H* T` batch is sampled.

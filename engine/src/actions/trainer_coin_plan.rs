@@ -22,6 +22,7 @@ use crate::{
         LuxuryCoinDecision, LuxuryCoinResolutionEvent, MistySourceRoute, PendingMistyTargetChoice,
         PendingTrainerCoinChoice, TrainerCoinEffectRoute,
     },
+    trainer_identity::canonical_trainer_id,
     State,
 };
 
@@ -48,57 +49,38 @@ fn luxury_coin_covers(state: &State, action: &Action) -> bool {
         || state.active_stadium_owner != Some((action.actor + 1) % 2)
 }
 
+/// The source's canonical printing (`trainer_identity::canonical_trainer_id`): every id test below
+/// names only canonical printings, and a reprint answers as its canonical printing does.
 fn producer_id(route: &TrainerCoinEffectRoute) -> CardId {
-    CardId::from_card_id(&route.effect_trainer().id)
+    canonical_trainer_id(route.effect_trainer())
         .expect("a resolved Trainer source must have a known CardId")
 }
 
 fn is_misty(id: CardId) -> bool {
-    matches!(id, CardId::A1220Misty | CardId::A1267Misty)
+    matches!(id, CardId::A1220Misty)
 }
 
 fn is_master_plan(id: CardId) -> bool {
-    matches!(
-        id,
-        CardId::B4a070TeamRocketsMasterPlan
-            | CardId::B4a086TeamRocketsMasterPlan
-            | CardId::B4a094TeamRocketsMasterPlan
-    )
+    matches!(id, CardId::B4a070TeamRocketsMasterPlan)
 }
 
 fn is_ice_pop(id: CardId) -> bool {
-    matches!(id, CardId::B2145LuckyIcePop | CardId::B4b198LuckyIcePop | CardId::B4b364LuckyIcePop)
+    matches!(id, CardId::B2145LuckyIcePop)
 }
 
-const REGISTERED_DIRECT_PRODUCERS: [CardId; 28] = [
+/// Canonical printings only; the 28 printings they stand for (every printing of these 10 names)
+/// take the direct route through `canonical_trainer_id`.
+const REGISTERED_DIRECT_PRODUCERS: [CardId; 10] = [
     CardId::A1220Misty,
-    CardId::A1267Misty,
     CardId::A2b072TeamRocketGrunt,
-    CardId::A2b091TeamRocketGrunt,
     CardId::A4159Fisher,
-    CardId::A4199Fisher,
     CardId::B1215HittingHammer,
     CardId::B2145LuckyIcePop,
-    CardId::B4b198LuckyIcePop,
-    CardId::B4b364LuckyIcePop,
     CardId::B2a086ElectricGenerator,
-    CardId::B2a131ElectricGenerator,
-    CardId::B4b199ElectricGenerator,
-    CardId::B4b365ElectricGenerator,
     CardId::B2a091Arven,
-    CardId::B2a108Arven,
-    CardId::B2a115Arven,
-    CardId::B4b222Arven,
-    CardId::B4b388Arven,
-    CardId::B4b423Arven,
     CardId::B4145OrderPad,
-    CardId::B4b200OrderPad,
-    CardId::B4b366OrderPad,
     CardId::B4a069TeamRocketsResearcher,
-    CardId::B4a085TeamRocketsResearcher,
     CardId::B4a070TeamRocketsMasterPlan,
-    CardId::B4a086TeamRocketsMasterPlan,
-    CardId::B4a094TeamRocketsMasterPlan,
 ];
 
 fn is_registered_direct_producer(id: CardId) -> bool {
@@ -106,7 +88,7 @@ fn is_registered_direct_producer(id: CardId) -> bool {
 }
 
 fn direct_route(trainer: &TrainerCard) -> Option<TrainerCoinEffectRoute> {
-    let id = CardId::from_card_id(&trainer.id)?;
+    let id = canonical_trainer_id(trainer)?;
     is_registered_direct_producer(id).then(|| TrainerCoinEffectRoute::Direct {
         trainer: trainer.clone(),
     })
@@ -117,8 +99,8 @@ fn stadium_route(state: &State) -> Option<TrainerCoinEffectRoute> {
         return None;
     };
     matches!(
-        CardId::from_card_id(&stadium.id),
-        Some(CardId::B2a093Mesagoza | CardId::B4b231Mesagoza | CardId::B4b397Mesagoza | CardId::B4a072Arcade)
+        canonical_trainer_id(stadium),
+        Some(CardId::B2a093Mesagoza | CardId::B4a072Arcade)
     )
     .then(|| TrainerCoinEffectRoute::Stadium {
         stadium: stadium.clone(),
@@ -1160,11 +1142,36 @@ mod tests {
 
     #[test]
     fn registered_producer_census_drives_the_actual_route_guard() {
-        assert_eq!(REGISTERED_DIRECT_PRODUCERS.len(), 28);
+        assert_eq!(REGISTERED_DIRECT_PRODUCERS.len(), 10);
         for id in REGISTERED_DIRECT_PRODUCERS {
             assert!(is_registered_direct_producer(id), "missing {id:?}");
+            assert_eq!(
+                canonical_trainer_id(&get_card_by_enum(id).as_trainer()),
+                Some(id),
+                "{id:?} must be its own canonical printing"
+            );
         }
         assert!(!is_registered_direct_producer(CardId::PA001Potion));
+    }
+
+    /// The census in printings: a Trainer takes the direct route exactly when its canonical
+    /// printing is registered, which covers the same 28 printings the list named one by one
+    /// before R8-02.
+    #[test]
+    fn every_printing_of_a_registered_producer_takes_the_direct_route() {
+        use strum::IntoEnumIterator;
+
+        let mut routed = 0;
+        for id in CardId::iter() {
+            let Card::Trainer(trainer) = get_card_by_enum(id) else {
+                continue;
+            };
+            let registered =
+                canonical_trainer_id(&trainer).is_some_and(is_registered_direct_producer);
+            assert_eq!(direct_route(&trainer).is_some(), registered, "{id:?}");
+            routed += usize::from(registered);
+        }
+        assert_eq!(routed, 28);
     }
 
     #[test]

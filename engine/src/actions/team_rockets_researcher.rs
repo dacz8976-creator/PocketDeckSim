@@ -10,6 +10,7 @@ use crate::{
     },
     card_ids::CardId,
     models::{Card, TrainerCard},
+    trainer_identity::canonical_trainer_id,
     State,
 };
 
@@ -124,10 +125,7 @@ pub(crate) struct ResearcherPlan {
 }
 
 pub(crate) fn is_researcher_card(trainer_card: &TrainerCard) -> bool {
-    matches!(
-        CardId::from_card_id(&trainer_card.id),
-        Some(CardId::B4a069TeamRocketsResearcher | CardId::B4a085TeamRocketsResearcher)
-    )
+    matches!(canonical_trainer_id(trainer_card), Some(CardId::B4a069TeamRocketsResearcher))
 }
 
 fn is_eligible(card: &Card) -> bool {
