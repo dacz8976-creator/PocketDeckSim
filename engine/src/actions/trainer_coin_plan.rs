@@ -1161,7 +1161,7 @@ mod tests {
     fn every_printing_of_a_registered_producer_takes_the_direct_route() {
         use strum::IntoEnumIterator;
 
-        let mut routed = 0;
+        let mut routed = Vec::new();
         for id in CardId::iter() {
             let Card::Trainer(trainer) = get_card_by_enum(id) else {
                 continue;
@@ -1169,9 +1169,48 @@ mod tests {
             let registered =
                 canonical_trainer_id(&trainer).is_some_and(is_registered_direct_producer);
             assert_eq!(direct_route(&trainer).is_some(), registered, "{id:?}");
-            routed += usize::from(registered);
+            if registered {
+                routed.push(format!("{id:?}"));
+            }
         }
-        assert_eq!(routed, 28);
+        // The exact set the list named one by one before R8-02, so a printing swapped in or out
+        // fails here, not only a change in the count.
+        let mut expected: Vec<String> = [
+            CardId::A1220Misty,
+            CardId::A1267Misty,
+            CardId::A2b072TeamRocketGrunt,
+            CardId::A2b091TeamRocketGrunt,
+            CardId::A4159Fisher,
+            CardId::A4199Fisher,
+            CardId::B1215HittingHammer,
+            CardId::B2145LuckyIcePop,
+            CardId::B4b198LuckyIcePop,
+            CardId::B4b364LuckyIcePop,
+            CardId::B2a086ElectricGenerator,
+            CardId::B2a131ElectricGenerator,
+            CardId::B4b199ElectricGenerator,
+            CardId::B4b365ElectricGenerator,
+            CardId::B2a091Arven,
+            CardId::B2a108Arven,
+            CardId::B2a115Arven,
+            CardId::B4b222Arven,
+            CardId::B4b388Arven,
+            CardId::B4b423Arven,
+            CardId::B4145OrderPad,
+            CardId::B4b200OrderPad,
+            CardId::B4b366OrderPad,
+            CardId::B4a069TeamRocketsResearcher,
+            CardId::B4a085TeamRocketsResearcher,
+            CardId::B4a070TeamRocketsMasterPlan,
+            CardId::B4a086TeamRocketsMasterPlan,
+            CardId::B4a094TeamRocketsMasterPlan,
+        ]
+        .iter()
+        .map(|id| format!("{id:?}"))
+        .collect();
+        expected.sort();
+        routed.sort();
+        assert_eq!(routed, expected);
     }
 
     #[test]
