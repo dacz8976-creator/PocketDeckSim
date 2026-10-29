@@ -30,7 +30,7 @@
   - replay_c, 2 threads, 12:00-12:13Z;
   - the comparison at 14:07Z, then the games and the record were committed and pushed (6bbc271e).
 
-  These times come from the laptop's WSL clock, which ran about 10-15 minutes ahead of the Windows clock that day.
+  These times come from the laptop's WSL clock. It matched the Windows clock to the second when checked at 14:18Z; it was not checked during the run.
 - **Conditions:** no cutoff; nice 19, ionice -c3; the program's environment scrubbed (`lane_kxr_r6.sh`).
   - `errors.jsonl` is empty in all three folders.
   - The lane's record is `LANE_RECORD.txt`.
