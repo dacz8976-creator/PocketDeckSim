@@ -30,8 +30,24 @@ enum Commands {
         /// Players' strategies as a comma-separated list (e.g., "e2,e4" or "r,e5")
         /// Available codes: aa, et, r, h, w, m, v, e<depth>, er
         /// Example: e2 = ExpectiMiniMax with depth 2
-        #[arg(long, value_delimiter = ',', value_parser = parse_player_code)]
+        #[arg(long, value_delimiter = ',', value_parser = parse_cli_player_code)]
         players: Option<Vec<PlayerCode>>,
+
+        /// Shell command of the bot for the first seat when it is `proto` (bot protocol v1)
+        #[arg(long)]
+        bot_a: Option<String>,
+
+        /// Shell command of the bot for the second seat when it is `proto`
+        #[arg(long)]
+        bot_b: Option<String>,
+
+        /// Per-message timeout of a protocol bot, in milliseconds
+        #[arg(long, default_value_t = 10000)]
+        bot_timeout_ms: u64,
+
+        /// Folder for the protocol bot decision logs
+        #[arg(long)]
+        bot_log: Option<String>,
 
         /// Number of simulations to run
         #[arg(short, long)]
@@ -217,6 +233,14 @@ fn simulate_against_folder(
     warn!("{}", "=".repeat(60));
 }
 
+/// Simulate's `--players` parser: `proto` is a placeholder filled from `--bot-a` / `--bot-b`.
+fn parse_cli_player_code(s: &str) -> Result<PlayerCode, String> {
+    if s.eq_ignore_ascii_case("proto") {
+        return Ok(PlayerCode::Proto { command: String::new(), timeout_ms: 0, log: None });
+    }
+    parse_player_code(s)
+}
+
 fn main() {
     let cli = Cli::parse();
     eprintln!("PDL decision-integrity candidate {}: closed-list observations; unknown opponent continuations are UNPRICED. Historical seed results are not comparable.", env!("CARGO_PKG_VERSION"));
@@ -227,6 +251,10 @@ fn main() {
             deck_a,
             deck_b_or_folder,
             players,
+            bot_a,
+            bot_b,
+            bot_timeout_ms,
+            bot_log,
             num,
             seed,
             seed_stream,
@@ -236,6 +264,28 @@ fn main() {
             data_output,
             results_output,
         } => {
+            let mut players = players;
+            if bot_a.is_some() || bot_b.is_some() || players.as_ref().is_some_and(|p| p.iter().any(|c| matches!(c, PlayerCode::Proto { .. }))) {
+                let mut seats = deckgym::players::fill_code_array(players);
+                for (seat, bot) in [(0usize, &bot_a), (1usize, &bot_b)] {
+                    let is_proto = matches!(seats[seat], PlayerCode::Proto { .. });
+                    match (is_proto, bot) {
+                        (true, Some(command)) => {
+                            seats[seat] = PlayerCode::Proto { command: command.clone(), timeout_ms: bot_timeout_ms, log: bot_log.clone() };
+                        }
+                        (true, None) => {
+                            eprintln!("player seat {seat} is `proto` but --bot-{} was not given", if seat == 0 { "a" } else { "b" });
+                            std::process::exit(2);
+                        }
+                        (false, Some(_)) => {
+                            eprintln!("--bot-{} was given but player seat {seat} is not `proto`", if seat == 0 { "a" } else { "b" });
+                            std::process::exit(2);
+                        }
+                        (false, None) => {}
+                    }
+                }
+                players = Some(seats);
+            }
             initialize_logger(verbose);
 
             warn!("Welcome to {} simulation!", "deckgym".blue().bold());

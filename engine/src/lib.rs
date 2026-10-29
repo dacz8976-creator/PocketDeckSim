@@ -1,4 +1,5 @@
 pub mod actions;
+pub mod protocol;
 pub mod card_ids;
 pub mod card_logic;
 pub mod card_support;

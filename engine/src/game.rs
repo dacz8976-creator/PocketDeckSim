@@ -220,6 +220,7 @@ impl<'a> Game<'a> {
             let decision = self.randomness.decision(actor, self.decision_counts[actor]);
             self.decision_counts[actor] += 1;
             let mut search_rng = StdRng::seed_from_u64(decision.search_seed);
+            player.before_decision(&decision);
             decision_randomness = Some(decision);
             let observation = crate::observation::PlayerObservation::from_state(
                 &self.state,
@@ -260,7 +261,14 @@ impl<'a> Game<'a> {
                 handler.on_action(self.id, &self.state, actor, &actions, &action);
             }
         }
+        let deck_before = [self.state.decks[0].cards.len(), self.state.decks[1].cards.len()];
+        let probe_before = rand::RngCore::next_u64(&mut self.rng.clone());
         self.apply_action(&action);
+        let deck_after = [self.state.decks[0].cards.len(), self.state.decks[1].cards.len()];
+        let probe_after = rand::RngCore::next_u64(&mut self.rng.clone());
+        let public_event = crate::protocol::PublicEvent { actor, was_choice: actions.len() > 1, chance: probe_before != probe_after,
+            cards_left_deck: [deck_before[0].saturating_sub(deck_after[0]), deck_before[1].saturating_sub(deck_after[1])] };
+        for p in 0..2 { self.players[p].on_public_event(&public_event); }
         self.print_state();
         action
     }

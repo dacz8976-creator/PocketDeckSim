@@ -7,6 +7,7 @@ mod human_player;
 pub mod list_aware_player;
 pub mod public_pricing_player;
 pub mod jev_player;
+pub mod protocol_player;
 mod fuel_credit;
 mod mcts_player;
 mod opening_class;
@@ -25,6 +26,7 @@ pub use expectiminimax_player::{
 };
 pub use human_player::HumanPlayer;
 pub use jev_player::JevPlayer;
+pub use protocol_player::ProtocolPlayer;
 pub use list_aware_player::ListAwarePlayer;
 pub use public_pricing_player::PublicPricingPlayer;
 pub use mcts_player::MctsPlayer;
@@ -51,6 +53,8 @@ pub trait Player: Debug {
     /// state here from gameplay; Game uses decision_fn with PlayerObservation.
 
     fn get_deck(&self) -> Deck;
+    fn before_decision(&mut self, _decision: &crate::game::DecisionRandomness) {}
+    fn on_public_event(&mut self, _event: &crate::protocol::PublicEvent) {}
     fn decide_omniscient(
         &mut self,
         rng: &mut StdRng,
@@ -209,6 +213,8 @@ pub enum PlayerCode {
     /// Antiquity) in kta's threat clock for both sides (rl/results/trainer_pricing_2026-09-28/REGISTRATION_DRAFT.md,
     /// registered Sept 29, re-issued on kta by Amendment 1, Sept 30; value_functions::public_clock_effect_km_value_function).
     KM { max_depth: usize },
+    /// A protocol bot subprocess (see protocol_player); built only by `deckgym simulate --bot-a/--bot-b`.
+    Proto { command: String, timeout_ms: u64, log: Option<String> },
 }
 /// Custom parser function enforcing case-insensitivity
 pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
@@ -221,6 +227,7 @@ pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
         "aa" => return Ok(PlayerCode::AA),
         "et" => return Ok(PlayerCode::ET),
         "er" => return Ok(PlayerCode::ER),
+        "proto" => return Err("player code 'proto' needs --bot-a / --bot-b and is accepted only by `deckgym simulate`".into()),
         _ => {}
     }
 
@@ -487,6 +494,7 @@ pub fn create_players(
 fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn Player> {
     match player {
         PlayerCode::Jev => Box::new(JevPlayer::new(deck)),
+        PlayerCode::Proto { command, timeout_ms, log } => Box::new(ProtocolPlayer::new(deck, command.clone(), std::time::Duration::from_millis(*timeout_ms), log.as_ref().map(std::path::PathBuf::from))),
         PlayerCode::AA => Box::new(AttachAttackPlayer { deck }),
         PlayerCode::ET => Box::new(EndTurnPlayer { deck }),
         PlayerCode::R => Box::new(RandomPlayer { deck }),
