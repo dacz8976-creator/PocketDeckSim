@@ -1,0 +1,748 @@
+{
+ "what": "Read-only reach check of R6 (main-4d48844 4d488449 -> S affe56e8, and kx3's overlay K e3ddc014) over the 6 development decks x 8 panel lists of the kx3 replay check (laptop session, Oct 29 UTC; git grep / show / diff and Python over git show output only; no build, no game, no git write).",
+ "commits": {
+  "S": "affe56e88985e2997a66beb85efaca0c487617bd",
+  "K": "e3ddc0149bb9d35fda1becbb17ab5f71d9461609",
+  "main-4d48844": "4d4884492aa85496acf9bafdae18b22739f56647",
+  "pinned_kx3": "87a7f3404263e1bfe76e8765ba8dd94695e19cfe",
+  "kx3_frozen": "d513e37b473f2819075e1eb2439075a8a1e65c42",
+  "S_engine_tree": "c8c79c635b92c9f95c5bf1db7f77d7774f8813ca",
+  "K_engine_tree": "cd970db60aa5df7e9db9d7479e88f87190dab2c3"
+ },
+ "method": "1. git diff --stat 4d488449 S -- engine/src engine/examples engine/Cargo.* (38 files; each assigned to a change below or unused by games). 2. git diff of every non-data file a replayed game can run, read in full (players/*, observation.rs, state/*, actions/* except the data, card_logic/*, deck.rs, effects.rs, move_generation_abilities.rs, the non-test hunks of hooks/core.rs); the data/arm files checked hunk by hunk with the new-set ids taken out. 3. The 14 list files (git show S:path) and kx3's pool (git show K:playout_pool.rs): card ids, set census, git grep for every name or set a change needs. 4. engine/database.json at 4d488449 v S, entry by entry; the added mechanic-map texts against every text of the lists' cards. 5. Whole-database scans at run time (CardId::iter): rare_candy.rs's tables recomputed at both commits from card_ids.rs order and database.json; their consumers read. 6. Hashing/ordering: derives of CardId, hasher crates and DefaultHasher (git grep). Scripts: relplan/r6/kxr_checks/c1-c16 in the session scratchpad.",
+ "inputs_checked": {
+  "deck_files": "the 14 files at S have the sha256 of the development run's manifest.json (git show S:path | sha256sum)",
+  "database": "0 of the 3,879 card entries of engine/database.json at 4d488449 differ at S (every field compared); the 101 card ids of the lists are all present",
+  "kx3_pool": "playout_pool.rs at K is d513e37b's blob: 16 lists (8 t-lists, 8 research twins), 66 card ids, all among the 101 of the lists, no B4b/C1/SP1/P-C/P-B 095-103 id",
+  "harness": "rl/strength/src/main.rs is the only harness file changed since 93806ec3 (+24/-4: the refusal); split_collect.py and strength_prereg.py unchanged since the Oct 21 replay commit 0b4117ce; intended_lines.json sha256 80778f3c (as registered)",
+  "overlay": "K v S: exactly the six kx3 files; each blob equals 87a7f340's and d513e37b's; players/mod.rs unchanged on S since 4d488449",
+  "cargo": "engine/Cargo.lock, engine/Cargo.toml and rl/strength/Cargo.* unchanged 4d488449 -> K"
+ },
+ "changes": [
+  {
+   "id": "R1",
+   "change": "the dual-type seam: a printed type set (PokemonCard.secondary_energy_type, printed_types/get_types/has_printed_type/is_type); State::pokemon_energy_types reads card.get_types(); 26 type reads now use has_printed_type / is_type (the 12 in-play checks among them, and km3's two of R5)",
+   "files": "models/card.rs, state/mod.rs, state/played_card.rs, hooks/core.rs (Deceptive Needle), actions/apply_attack_action.rs, apply_abilities_action.rs, apply_trainer_action.rs, energy_moves.rs, shared_mutations.rs, move_generation_abilities.rs, move_generation_trainer.rs, card_logic/quick_grow_extract.rs, card_logic/wallace.rs, deck.rs (comment only)",
+   "needs": "a Pokemon card with a second printed type",
+   "found": "none: no card of the 14 lists (101 ids) or of kx3's pool (66 ids, all among the 101) has one; their database.json entries are unchanged",
+   "verdict": "reached in every row (Weakness reads the attacker's types through the chokepoint), cannot change a result: for a single-type card printed_types() == [energy_type] and has_printed_type(t) == (energy_type == t); get_types() of a Trainer or Fossil is [] as get_energy_type() was None"
+  },
+  {
+   "id": "R2",
+   "change": "B4b (429 printings) and P-B 095-103 data; the 82 B4b Trainer reprint arms",
+   "files": "database.rs/json, card_ids.rs, actions/apply_trainer_action.rs, move_generation/move_generation_trainer.rs, actions/trainer_coin_plan.rs",
+   "needs": "a B4b or P-B 095-103 printing",
+   "found": "none (git grep ' (B4b|C1|SP1|P-C) N$| P-B 09[5-9]|10[0-3]$' over the 14 files: no hit; the sets used are A1-A4a, B1-B4a, P-A and P-B 037 only)",
+   "verdict": "reached (arms of list cards), cannot change a result: hunk by hunk, every arm naming a list card only gains B4b ids; the other hunks are arms that grew to several lines (Copycat, Arven, Iris), Lucky Ice Pop's `id == B2145` becoming matches!(id, B2145 | B4b198 | B4b364), REGISTERED_DIRECT_PRODUCERS gaining B4b ids only, and new arms for new cards"
+  },
+  {
+   "id": "R3",
+   "change": "C1 / SP1 / P-C data (#430), #431 (18 ex designs), #432 (6 Supporters, both printings)",
+   "files": "database.rs/json, card_ids.rs, effect_mechanic_map.rs (+ texts), effect_ability_mechanic_map.rs (Lycanroc ex), attacks/mechanic.rs (CoinFlipsAttachEnergyToTypedBench), apply_attack_action.rs, apply_action.rs + types.rs (TakeTopDeckCardAndShuffle), effects.rs + hooks/core.rs (Lorelei's TurnEffect), apply_trainer_action.rs, move_generation_trainer.rs (Lorelei, Lana, Serena's Choice, Rika, Blue's Provocation, Rising Star, a 'Super Potion, Max Repel, Full Heal' search)",
+   "needs": "a C1 / SP1 / P-C printing, or an old card carrying one of the added map texts",
+   "found": "none; the 9 added map texts (as parsed from the diff) are on no card of the lists or the pool; effect_mechanic_map.rs has no removed line",
+   "verdict": "cannot act"
+  },
+  {
+   "id": "R4",
+   "change": "the Ultra Beast list (ULTRA_BEAST_NAMES 14 -> 17: + Buzzwole, + Blacephalon ex, + Guzzlord, 'Ultra Necrozma' -> 'Ultra Necrozma ex')",
+   "files": "hooks/core.rs:70-88; readers Lusamine, Ultra Thrusters, Beast Wall, Beastite, players/fuel_credit.rs (Lusamine)",
+   "needs": "one of those Pokemon and one of the readers",
+   "found": "none (git grep -i buzzwole|blacephalon|guzzlord|necrozma|lusamine|ultra thrusters|beast wall|beastite|nihilego|pheromosa|kartana|xurkitree|celesteela|stakataka|poipole|naganadel: no hit in the 14 files or the pool)",
+   "verdict": "cannot act"
+  },
+  {
+   "id": "R5",
+   "change": "km3's type-set reads: fuel_credit.rs:110 (RecoveryTarget::ActiveOfType: Flame Patch's [R] target) and value_functions.rs:1604 (defender_identity_bonus, ExtraDamageIfDefenderType)",
+   "files": "players/fuel_credit.rs, players/value_functions.rs",
+   "needs": "a dual-type card",
+   "found": "Flame Patch in 06 and t-blaziken; no card of the lists has an ExtraDamageIfDefenderType ('+X if the defender is [X]') text",
+   "verdict": "reached in the rows of 06 and every row v t-blaziken (fuel_credit), cannot change a result (single-type cards); defender_identity_bonus's changed arm is not reached"
+  },
+  {
+   "id": "R6",
+   "change": "C1 012 Amoonguss's Astonish added to public pricing's AUDITED_TEXTS (62 -> 63, kept sorted, binary-searched)",
+   "files": "players/public_pricing_player.rs",
+   "needs": "C1 012 Amoonguss",
+   "found": "none",
+   "verdict": "cannot act (the other texts' lookups give the same answers)"
+  },
+  {
+   "id": "R7",
+   "change": "the random player's weight 5 for the new TakeTopDeckCardAndShuffle action",
+   "files": "players/weighted_random_player.rs",
+   "needs": "the random player (PlayerCode::W) and a TakeTopDeckCardAndShuffle action (made only by Serena's Choice, apply_trainer_action.rs:2585)",
+   "found": "neither km3 nor kx3 uses WeightedRandomPlayer; no Serena's Choice",
+   "verdict": "cannot act"
+  },
+  {
+   "id": "R8",
+   "change": "INFORMATION_MODEL v7 -> v8; Serena's Choice joins Pokedex's top-3 reveal in update_knowledge",
+   "files": "observation.rs",
+   "needs": "Serena's Choice",
+   "found": "none; the constant is not written into a game record and is not read by rl/strength/src or kx3's files (git grep INFORMATION_MODEL: no hit there)",
+   "verdict": "cannot act"
+  },
+  {
+   "id": "R9",
+   "change": "the card-support refusal: deckgym::card_support (library), used by `strength run` and `strength selfcheck` before any game (rl/strength/src/main.rs, +24/-4; harness c4f7da21), deckgym simulate/optimize (cli_preflight.rs) and goldfish",
+   "files": "card_support.rs, lib.rs, cli_preflight.rs, examples/goldfish.rs, rl/strength/src/main.rs",
+   "needs": "a card with status CardNotFound or Missing* (RulesUnverified is allowed)",
+   "found": "none: all 101 ids are older printings; the R6 lane's card_status check reports 0 older cards that are neither Complete nor RulesUnverified",
+   "verdict": "cannot act (it reads only the card database and uses no RNG; on an unsupported deck it would stop the run before any game, not change one)"
+  },
+  {
+   "id": "R10",
+   "change": "the tests-only fold (3a9413cf, 59fc3054)",
+   "files": "hooks/core.rs #[cfg(test)] modules (after line 3167), engine/tests/rules_repair_hit_back_attack_damage.rs, engine/tests/rules_repair_return_damage_weakness.rs",
+   "needs": "-",
+   "found": "-",
+   "verdict": "not in the program"
+  }
+ ],
+ "incidental": [
+  {
+   "id": "X1",
+   "what": "rare_candy.rs builds STAGE1_LOOKUP / STAGE2_LOOKUP (name -> list of evolution names, one entry per printing) and RARE_CANDY_LOOKUP once, by iterating every CardId. The new printings with the same names (108 share a name with a card of the lists) lengthen the lists; get_highest_evolutions pushes each available Stage 2 card once per Stage 1 entry, so for a Basic it returns each one more often: Torchic 2 -> 4, Treecko 2 -> 5, Caterpie 3 -> 5, Frigibax 1 -> 3 (the other Basics of the lists have no Stage 2 line or are unchanged; the Stage 1 path and the Stage 2 lookups test membership with contains). As sets the tables are unchanged for every name of the lists; RARE_CANDY_LOOKUP only gains 6 pairs (Cosmog, Dratini, Froakie, Gible, Larvitar), none with a Basic of the lists.",
+   "consumers": "value_functions.rs: evolution_targets (sorted by id; threat_candidates -> min_by_key, the first of equal candidates, and the form index is looked up again in the same list by threat_attacker_stage_and_types (nth) and kd_attacker (targets[form])); evolution_potential (fold max); the online score (element [0], the same first element); is_attacker (any); opening_class.rs (is_empty). None counts or averages the list.",
+   "verdict": "reached in the rows of 06 and every row v t-blaziken, t-sceptile and t-suicune; no decision changes by reading",
+   "evidence": "the Oct 28 ABC lane's km3 rows on the same engine source (d0792568) replayed 'v f: SAME (0 deals)' against main-4d48844; tonight's lane on S repeats them"
+  },
+  {
+   "id": "X2",
+   "what": "new enum variants: SimpleAction gains TakeTopDeckCardAndShuffle as its FIRST variant; Mechanic and TurnEffect gain one each; CardId gains 698 (3,879 -> 4,577), which shifts the discriminants of the P-A and P-B ids (B4b, SP1 and C1 are declared before them).",
+   "consumers": "CardId derives Hash, PartialEq, Eq, Serialize, Deserialize, EnumIter (no Ord); derived orders keep the old variants' relative order; no DefaultHasher, Fx or AHash hasher in engine/src or rl/strength/src (git grep); the CardId -> Card DATABASE is a HashMap used for lookups only; CardId::iter() at run time only in rare_candy.rs (X1)",
+   "verdict": "cannot change a result by reading"
+  }
+ ],
+ "bots_reach": "km3's search sees the real opponent list or Unknown cards (observation.rs); kx3's REALISTIC play-outs draw a list from the pool above, filtered by the Energy Zone, with KX_EXTRA_LISTS unset (the lane scrubs KX_*). So no B4b/C1/SP1/P-C/P-B 095-103 card and no Ultra Beast enters any position a bot considers.",
+ "table": [
+  {
+   "deck": "09-mega-manectric-heliolisk",
+   "opponent": "t-altaria",
+   "changes": [],
+   "reached": [
+    "R2 arms: Clemont, Copycat, Field Blower",
+    "R2 arms: Copycat, Field Blower",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "09-mega-manectric-heliolisk",
+   "opponent": "t-blaziken",
+   "changes": [],
+   "reached": [
+    "R2 arms: Clemont, Copycat, Field Blower",
+    "R1/R5: Flame Patch's [R] Active target (and km3's Flame Patch pricing)",
+    "R2 arms: Flame Patch, Copycat, Field Blower",
+    "X1: Torchic (2 -> 4)",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "09-mega-manectric-heliolisk",
+   "opponent": "t-hydreigon",
+   "changes": [],
+   "reached": [
+    "R2 arms: Clemont, Copycat, Field Blower",
+    "R1: Deceptive Needle's [D] holder (hooks/core.rs:596), Bombirdier's Active [D] retreat cut (chokepoint)",
+    "R2 arms: Lucky Ice Pop, Copycat",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "09-mega-manectric-heliolisk",
+   "opponent": "t-lucario",
+   "changes": [],
+   "reached": [
+    "R2 arms: Clemont, Copycat, Field Blower",
+    "R1: Lucario's Fighting Coach, Korrina, Arena of Antiquity ([F] attackers, chokepoint)",
+    "R2 arms: Korrina, Copycat, Field Blower",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "09-mega-manectric-heliolisk",
+   "opponent": "t-sceptile",
+   "changes": [],
+   "reached": [
+    "R2 arms: Clemont, Copycat, Field Blower",
+    "R1: Leaf Cape (played_card.rs:305), Quick-Grow Extract (quick_grow_extract.rs:38), Fragrant Forest's Basic [G] search, Erika's [G] heal",
+    "R2 arms: Quick-Grow Extract, Copycat",
+    "X1: Treecko (2 -> 5), Caterpie (3 -> 5)",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "09-mega-manectric-heliolisk",
+   "opponent": "t-suicune",
+   "changes": [],
+   "reached": [
+    "R2 arms: Clemont, Copycat, Field Blower",
+    "R1: Inflatable Boat's [W] retreat cut and Baxcalibur's Ice Maker ([W] Active)",
+    "R2 arms: Copycat, Field Blower",
+    "X1: Frigibax (1 -> 3)",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "09-mega-manectric-heliolisk",
+   "opponent": "t-vespiquen",
+   "changes": [],
+   "reached": [
+    "R2 arms: Clemont, Copycat, Field Blower",
+    "R1: Leaf Cape, Fragrant Forest, Vespiquen ex's Chase Order bench filter (apply_attack_action.rs:4654)",
+    "R2 arms: Copycat, Field Blower",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "09-mega-manectric-heliolisk",
+   "opponent": "t-weezing",
+   "changes": [],
+   "reached": [
+    "R2 arms: Clemont, Copycat, Field Blower",
+    "R1: Deceptive Needle's [D] holder",
+    "R2 arms: Copycat, Field Blower",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "06-mega-blaziken-tournament-list",
+   "opponent": "t-altaria",
+   "changes": [],
+   "reached": [
+    "R1/R5: Flame Patch's [R] Active target (and km3's Flame Patch pricing, fuel_credit.rs:110)",
+    "R2 arms: Flame Patch, Copycat, Field Blower",
+    "X1: Torchic's highest evolutions (2 -> 4 repeats of each available Stage 2)",
+    "R2 arms: Copycat, Field Blower",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "06-mega-blaziken-tournament-list",
+   "opponent": "t-blaziken",
+   "changes": [],
+   "reached": [
+    "R1/R5: Flame Patch's [R] Active target (and km3's Flame Patch pricing, fuel_credit.rs:110)",
+    "R2 arms: Flame Patch, Copycat, Field Blower",
+    "X1: Torchic's highest evolutions (2 -> 4 repeats of each available Stage 2)",
+    "R1/R5: Flame Patch's [R] Active target (and km3's Flame Patch pricing)",
+    "R2 arms: Flame Patch, Copycat, Field Blower",
+    "X1: Torchic (2 -> 4)",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "06-mega-blaziken-tournament-list",
+   "opponent": "t-hydreigon",
+   "changes": [],
+   "reached": [
+    "R1/R5: Flame Patch's [R] Active target (and km3's Flame Patch pricing, fuel_credit.rs:110)",
+    "R2 arms: Flame Patch, Copycat, Field Blower",
+    "X1: Torchic's highest evolutions (2 -> 4 repeats of each available Stage 2)",
+    "R1: Deceptive Needle's [D] holder (hooks/core.rs:596), Bombirdier's Active [D] retreat cut (chokepoint)",
+    "R2 arms: Lucky Ice Pop, Copycat",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "06-mega-blaziken-tournament-list",
+   "opponent": "t-lucario",
+   "changes": [],
+   "reached": [
+    "R1/R5: Flame Patch's [R] Active target (and km3's Flame Patch pricing, fuel_credit.rs:110)",
+    "R2 arms: Flame Patch, Copycat, Field Blower",
+    "X1: Torchic's highest evolutions (2 -> 4 repeats of each available Stage 2)",
+    "R1: Lucario's Fighting Coach, Korrina, Arena of Antiquity ([F] attackers, chokepoint)",
+    "R2 arms: Korrina, Copycat, Field Blower",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "06-mega-blaziken-tournament-list",
+   "opponent": "t-sceptile",
+   "changes": [],
+   "reached": [
+    "R1/R5: Flame Patch's [R] Active target (and km3's Flame Patch pricing, fuel_credit.rs:110)",
+    "R2 arms: Flame Patch, Copycat, Field Blower",
+    "X1: Torchic's highest evolutions (2 -> 4 repeats of each available Stage 2)",
+    "R1: Leaf Cape (played_card.rs:305), Quick-Grow Extract (quick_grow_extract.rs:38), Fragrant Forest's Basic [G] search, Erika's [G] heal",
+    "R2 arms: Quick-Grow Extract, Copycat",
+    "X1: Treecko (2 -> 5), Caterpie (3 -> 5)",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "06-mega-blaziken-tournament-list",
+   "opponent": "t-suicune",
+   "changes": [],
+   "reached": [
+    "R1/R5: Flame Patch's [R] Active target (and km3's Flame Patch pricing, fuel_credit.rs:110)",
+    "R2 arms: Flame Patch, Copycat, Field Blower",
+    "X1: Torchic's highest evolutions (2 -> 4 repeats of each available Stage 2)",
+    "R1: Inflatable Boat's [W] retreat cut and Baxcalibur's Ice Maker ([W] Active)",
+    "R2 arms: Copycat, Field Blower",
+    "X1: Frigibax (1 -> 3)",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "06-mega-blaziken-tournament-list",
+   "opponent": "t-vespiquen",
+   "changes": [],
+   "reached": [
+    "R1/R5: Flame Patch's [R] Active target (and km3's Flame Patch pricing, fuel_credit.rs:110)",
+    "R2 arms: Flame Patch, Copycat, Field Blower",
+    "X1: Torchic's highest evolutions (2 -> 4 repeats of each available Stage 2)",
+    "R1: Leaf Cape, Fragrant Forest, Vespiquen ex's Chase Order bench filter (apply_attack_action.rs:4654)",
+    "R2 arms: Copycat, Field Blower",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "06-mega-blaziken-tournament-list",
+   "opponent": "t-weezing",
+   "changes": [],
+   "reached": [
+    "R1/R5: Flame Patch's [R] Active target (and km3's Flame Patch pricing, fuel_credit.rs:110)",
+    "R2 arms: Flame Patch, Copycat, Field Blower",
+    "X1: Torchic's highest evolutions (2 -> 4 repeats of each available Stage 2)",
+    "R1: Deceptive Needle's [D] holder",
+    "R2 arms: Copycat, Field Blower",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "10-xatu-oricorio-tr-weezing",
+   "opponent": "t-altaria",
+   "changes": [],
+   "reached": [
+    "R2 arm: Copycat",
+    "R2 arms: Copycat, Field Blower",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "10-xatu-oricorio-tr-weezing",
+   "opponent": "t-blaziken",
+   "changes": [],
+   "reached": [
+    "R2 arm: Copycat",
+    "R1/R5: Flame Patch's [R] Active target (and km3's Flame Patch pricing)",
+    "R2 arms: Flame Patch, Copycat, Field Blower",
+    "X1: Torchic (2 -> 4)",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "10-xatu-oricorio-tr-weezing",
+   "opponent": "t-hydreigon",
+   "changes": [],
+   "reached": [
+    "R2 arm: Copycat",
+    "R1: Deceptive Needle's [D] holder (hooks/core.rs:596), Bombirdier's Active [D] retreat cut (chokepoint)",
+    "R2 arms: Lucky Ice Pop, Copycat",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "10-xatu-oricorio-tr-weezing",
+   "opponent": "t-lucario",
+   "changes": [],
+   "reached": [
+    "R2 arm: Copycat",
+    "R1: Lucario's Fighting Coach, Korrina, Arena of Antiquity ([F] attackers, chokepoint)",
+    "R2 arms: Korrina, Copycat, Field Blower",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "10-xatu-oricorio-tr-weezing",
+   "opponent": "t-sceptile",
+   "changes": [],
+   "reached": [
+    "R2 arm: Copycat",
+    "R1: Leaf Cape (played_card.rs:305), Quick-Grow Extract (quick_grow_extract.rs:38), Fragrant Forest's Basic [G] search, Erika's [G] heal",
+    "R2 arms: Quick-Grow Extract, Copycat",
+    "X1: Treecko (2 -> 5), Caterpie (3 -> 5)",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "10-xatu-oricorio-tr-weezing",
+   "opponent": "t-suicune",
+   "changes": [],
+   "reached": [
+    "R2 arm: Copycat",
+    "R1: Inflatable Boat's [W] retreat cut and Baxcalibur's Ice Maker ([W] Active)",
+    "R2 arms: Copycat, Field Blower",
+    "X1: Frigibax (1 -> 3)",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "10-xatu-oricorio-tr-weezing",
+   "opponent": "t-vespiquen",
+   "changes": [],
+   "reached": [
+    "R2 arm: Copycat",
+    "R1: Leaf Cape, Fragrant Forest, Vespiquen ex's Chase Order bench filter (apply_attack_action.rs:4654)",
+    "R2 arms: Copycat, Field Blower",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "10-xatu-oricorio-tr-weezing",
+   "opponent": "t-weezing",
+   "changes": [],
+   "reached": [
+    "R2 arm: Copycat",
+    "R1: Deceptive Needle's [D] holder",
+    "R2 arms: Copycat, Field Blower",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "01-muk-glimmora-kingambit-regigigas",
+   "opponent": "t-altaria",
+   "changes": [],
+   "reached": [
+    "R2 arms: Lucky Ice Pop (also trainer_coin_plan is_ice_pop), Mesagoza (stadium route), Copycat",
+    "R2 arms: Copycat, Field Blower",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "01-muk-glimmora-kingambit-regigigas",
+   "opponent": "t-blaziken",
+   "changes": [],
+   "reached": [
+    "R2 arms: Lucky Ice Pop (also trainer_coin_plan is_ice_pop), Mesagoza (stadium route), Copycat",
+    "R1/R5: Flame Patch's [R] Active target (and km3's Flame Patch pricing)",
+    "R2 arms: Flame Patch, Copycat, Field Blower",
+    "X1: Torchic (2 -> 4)",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "01-muk-glimmora-kingambit-regigigas",
+   "opponent": "t-hydreigon",
+   "changes": [],
+   "reached": [
+    "R2 arms: Lucky Ice Pop (also trainer_coin_plan is_ice_pop), Mesagoza (stadium route), Copycat",
+    "R1: Deceptive Needle's [D] holder (hooks/core.rs:596), Bombirdier's Active [D] retreat cut (chokepoint)",
+    "R2 arms: Lucky Ice Pop, Copycat",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "01-muk-glimmora-kingambit-regigigas",
+   "opponent": "t-lucario",
+   "changes": [],
+   "reached": [
+    "R2 arms: Lucky Ice Pop (also trainer_coin_plan is_ice_pop), Mesagoza (stadium route), Copycat",
+    "R1: Lucario's Fighting Coach, Korrina, Arena of Antiquity ([F] attackers, chokepoint)",
+    "R2 arms: Korrina, Copycat, Field Blower",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "01-muk-glimmora-kingambit-regigigas",
+   "opponent": "t-sceptile",
+   "changes": [],
+   "reached": [
+    "R2 arms: Lucky Ice Pop (also trainer_coin_plan is_ice_pop), Mesagoza (stadium route), Copycat",
+    "R1: Leaf Cape (played_card.rs:305), Quick-Grow Extract (quick_grow_extract.rs:38), Fragrant Forest's Basic [G] search, Erika's [G] heal",
+    "R2 arms: Quick-Grow Extract, Copycat",
+    "X1: Treecko (2 -> 5), Caterpie (3 -> 5)",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "01-muk-glimmora-kingambit-regigigas",
+   "opponent": "t-suicune",
+   "changes": [],
+   "reached": [
+    "R2 arms: Lucky Ice Pop (also trainer_coin_plan is_ice_pop), Mesagoza (stadium route), Copycat",
+    "R1: Inflatable Boat's [W] retreat cut and Baxcalibur's Ice Maker ([W] Active)",
+    "R2 arms: Copycat, Field Blower",
+    "X1: Frigibax (1 -> 3)",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "01-muk-glimmora-kingambit-regigigas",
+   "opponent": "t-vespiquen",
+   "changes": [],
+   "reached": [
+    "R2 arms: Lucky Ice Pop (also trainer_coin_plan is_ice_pop), Mesagoza (stadium route), Copycat",
+    "R1: Leaf Cape, Fragrant Forest, Vespiquen ex's Chase Order bench filter (apply_attack_action.rs:4654)",
+    "R2 arms: Copycat, Field Blower",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "01-muk-glimmora-kingambit-regigigas",
+   "opponent": "t-weezing",
+   "changes": [],
+   "reached": [
+    "R2 arms: Lucky Ice Pop (also trainer_coin_plan is_ice_pop), Mesagoza (stadium route), Copycat",
+    "R1: Deceptive Needle's [D] holder",
+    "R2 arms: Copycat, Field Blower",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "05-indeedee-stoutland",
+   "opponent": "t-altaria",
+   "changes": [],
+   "reached": [
+    "R2 arms: Copycat, Field Blower",
+    "R2 arms: Copycat, Field Blower",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "05-indeedee-stoutland",
+   "opponent": "t-blaziken",
+   "changes": [],
+   "reached": [
+    "R2 arms: Copycat, Field Blower",
+    "R1/R5: Flame Patch's [R] Active target (and km3's Flame Patch pricing)",
+    "R2 arms: Flame Patch, Copycat, Field Blower",
+    "X1: Torchic (2 -> 4)",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "05-indeedee-stoutland",
+   "opponent": "t-hydreigon",
+   "changes": [],
+   "reached": [
+    "R2 arms: Copycat, Field Blower",
+    "R1: Deceptive Needle's [D] holder (hooks/core.rs:596), Bombirdier's Active [D] retreat cut (chokepoint)",
+    "R2 arms: Lucky Ice Pop, Copycat",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "05-indeedee-stoutland",
+   "opponent": "t-lucario",
+   "changes": [],
+   "reached": [
+    "R2 arms: Copycat, Field Blower",
+    "R1: Lucario's Fighting Coach, Korrina, Arena of Antiquity ([F] attackers, chokepoint)",
+    "R2 arms: Korrina, Copycat, Field Blower",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "05-indeedee-stoutland",
+   "opponent": "t-sceptile",
+   "changes": [],
+   "reached": [
+    "R2 arms: Copycat, Field Blower",
+    "R1: Leaf Cape (played_card.rs:305), Quick-Grow Extract (quick_grow_extract.rs:38), Fragrant Forest's Basic [G] search, Erika's [G] heal",
+    "R2 arms: Quick-Grow Extract, Copycat",
+    "X1: Treecko (2 -> 5), Caterpie (3 -> 5)",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "05-indeedee-stoutland",
+   "opponent": "t-suicune",
+   "changes": [],
+   "reached": [
+    "R2 arms: Copycat, Field Blower",
+    "R1: Inflatable Boat's [W] retreat cut and Baxcalibur's Ice Maker ([W] Active)",
+    "R2 arms: Copycat, Field Blower",
+    "X1: Frigibax (1 -> 3)",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "05-indeedee-stoutland",
+   "opponent": "t-vespiquen",
+   "changes": [],
+   "reached": [
+    "R2 arms: Copycat, Field Blower",
+    "R1: Leaf Cape, Fragrant Forest, Vespiquen ex's Chase Order bench filter (apply_attack_action.rs:4654)",
+    "R2 arms: Copycat, Field Blower",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "05-indeedee-stoutland",
+   "opponent": "t-weezing",
+   "changes": [],
+   "reached": [
+    "R2 arms: Copycat, Field Blower",
+    "R1: Deceptive Needle's [D] holder",
+    "R2 arms: Copycat, Field Blower",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "draft-A-shark-tempo",
+   "opponent": "t-altaria",
+   "changes": [],
+   "reached": [
+    "R1: Misty's [W] Pokemon, Mega Sharpedo ex's Turbo Shark (Benched [W])",
+    "R2 arms: Lucky Ice Pop, Copycat",
+    "R2 arms: Copycat, Field Blower",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "draft-A-shark-tempo",
+   "opponent": "t-blaziken",
+   "changes": [],
+   "reached": [
+    "R1: Misty's [W] Pokemon, Mega Sharpedo ex's Turbo Shark (Benched [W])",
+    "R2 arms: Lucky Ice Pop, Copycat",
+    "R1/R5: Flame Patch's [R] Active target (and km3's Flame Patch pricing)",
+    "R2 arms: Flame Patch, Copycat, Field Blower",
+    "X1: Torchic (2 -> 4)",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "draft-A-shark-tempo",
+   "opponent": "t-hydreigon",
+   "changes": [],
+   "reached": [
+    "R1: Misty's [W] Pokemon, Mega Sharpedo ex's Turbo Shark (Benched [W])",
+    "R2 arms: Lucky Ice Pop, Copycat",
+    "R1: Deceptive Needle's [D] holder (hooks/core.rs:596), Bombirdier's Active [D] retreat cut (chokepoint)",
+    "R2 arms: Lucky Ice Pop, Copycat",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "draft-A-shark-tempo",
+   "opponent": "t-lucario",
+   "changes": [],
+   "reached": [
+    "R1: Misty's [W] Pokemon, Mega Sharpedo ex's Turbo Shark (Benched [W])",
+    "R2 arms: Lucky Ice Pop, Copycat",
+    "R1: Lucario's Fighting Coach, Korrina, Arena of Antiquity ([F] attackers, chokepoint)",
+    "R2 arms: Korrina, Copycat, Field Blower",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "draft-A-shark-tempo",
+   "opponent": "t-sceptile",
+   "changes": [],
+   "reached": [
+    "R1: Misty's [W] Pokemon, Mega Sharpedo ex's Turbo Shark (Benched [W])",
+    "R2 arms: Lucky Ice Pop, Copycat",
+    "R1: Leaf Cape (played_card.rs:305), Quick-Grow Extract (quick_grow_extract.rs:38), Fragrant Forest's Basic [G] search, Erika's [G] heal",
+    "R2 arms: Quick-Grow Extract, Copycat",
+    "X1: Treecko (2 -> 5), Caterpie (3 -> 5)",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "draft-A-shark-tempo",
+   "opponent": "t-suicune",
+   "changes": [],
+   "reached": [
+    "R1: Misty's [W] Pokemon, Mega Sharpedo ex's Turbo Shark (Benched [W])",
+    "R2 arms: Lucky Ice Pop, Copycat",
+    "R1: Inflatable Boat's [W] retreat cut and Baxcalibur's Ice Maker ([W] Active)",
+    "R2 arms: Copycat, Field Blower",
+    "X1: Frigibax (1 -> 3)",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "draft-A-shark-tempo",
+   "opponent": "t-vespiquen",
+   "changes": [],
+   "reached": [
+    "R1: Misty's [W] Pokemon, Mega Sharpedo ex's Turbo Shark (Benched [W])",
+    "R2 arms: Lucky Ice Pop, Copycat",
+    "R1: Leaf Cape, Fragrant Forest, Vespiquen ex's Chase Order bench filter (apply_attack_action.rs:4654)",
+    "R2 arms: Copycat, Field Blower",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "draft-A-shark-tempo",
+   "opponent": "t-weezing",
+   "changes": [],
+   "reached": [
+    "R1: Misty's [W] Pokemon, Mega Sharpedo ex's Turbo Shark (Benched [W])",
+    "R2 arms: Lucky Ice Pop, Copycat",
+    "R1: Deceptive Needle's [D] holder",
+    "R2 arms: Copycat, Field Blower",
+    "R1: Weakness (attacker types through the chokepoint)"
+   ],
+   "note": "none can act; every path listed under 'reached' returns what main-4d48844 returned (see changes / incidental)"
+  },
+  {
+   "deck": "10-xatu-oricorio-tr-weezing",
+   "opponent": "t-weezing",
+   "changes": [],
+   "reached": [],
+   "note": "replay_c: the same row, deals 0-4 (Will's row); as above"
+  }
+ ],
+ "gaps": [
+  "Reach by reading and grep, not by trace: the development run's logs hold the deck seat's decisions only, so which sites a game actually ran is not known.",
+  "X1 is argued from the consumers' code (max / first / any / is_empty / min_by_key on identical repeats); the empirical support is the km3 rows of the Oct 28 lane, not kx3 games. kx3's play-outs call the same km3 evaluation, so the kx3 self-check (equal to the pin's in the night job) is the only kx3-side evidence before this check.",
+  "The seam's 'reached in every row' rests on Weakness going through the chokepoint (printed_weakness_application, any-of over the attacker's types); the other per-card sites are listed per list from the cards' texts, not traced.",
+  "Behaviour-neutral 'by reading' for R1, R2 and R5 assumes the database entries are the old ones; that was checked (0 of 3,879 differ).",
+  "The base of the check branch (S or main after the adoption) changes nothing above as long as it has S's engine/ tree and the same rl/strength sources and deck files; prepare.sh checks that."
+ ],
+ "summary": "No R6 change can act in the 48 rows (and replay_c's row). Changes 3, 4, 6, 7, 8 and 9 need a card that no list and no pool list holds. Changes 1, 2 and 5 are reached (the seam's type reads in every row; arms of Copycat, Field Blower, Lucky Ice Pop, Flame Patch, Clemont, Quick-Grow Extract, Korrina, Mesagoza; km3's Flame Patch pricing) but return what main-4d48844 returned for single-type old cards whose data is unchanged. Two incidental paths (X1 rare_candy repeats; X2 new enum variants) change no decision by reading. rows.json names no row: all 202 kx3 and 202 km3 games are expected to replay exactly, and any changed game is a stop."
+}

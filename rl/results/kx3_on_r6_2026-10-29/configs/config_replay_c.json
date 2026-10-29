@@ -1,0 +1,29 @@
+{
+ "reference": "km3",
+ "seats": [
+  0,
+  1
+ ],
+ "pair_stride": 10000,
+ "threads": 2,
+ "log_level": "deck",
+ "ext_timeout_s": null,
+ "intended_lines": "rl/strength/intended_lines.json",
+ "name": "kx3_replay_r6_2026_10_29_c",
+ "question": "THE SLOW REPORT'S R6 RE-PIN CHECK (rl/results/kx3_on_r6_2026-10-29/SPEC.md): do the frozen kx3's development-run games replay exactly on R6's engine? SPEC.md section 3 found no R6 change that can act in these games and names no row, so any changed game is a stop. This registration: 10-xatu-oricorio-tr-weezing v t-weezing, deals 0-4, seed_base 24420070000 (each key the development run's own seed).",
+ "pilot": "kx3",
+ "stage": "dev",
+ "decks": [
+  "10-xatu-oricorio-tr-weezing"
+ ],
+ "opponents": [
+  "t-weezing"
+ ],
+ "deals": 5,
+ "seed_base": 24420070000,
+ "program": "/home/dacz8976/kx_r4/strength",
+ "program_sha256": "23d8a9b5a2e70f06abc4b6989c6662e73c5ebc33baecbe9727e1af1c4f413378",
+ "engine": "laptop/kx3-on-r6-2026-10-29 e3ddc0149bb9d35fda1becbb17ab5f71d9461609 engine tree cd970db60aa5df7e9db9d7479e88f87190dab2c3 (the frozen kx3's six engine files, d513e37b's blobs, laid onto R6's release commit S affe56e88985e2997a66beb85efaca0c487617bd: main ffe97adb, the card-support refusal and the tests-only fold), built on the laptop 2026-10-29T04:13:47Z with rl/strength/build.sh (harness c4f7da21, STRENGTH_JOBS=2); self-checks measured on this program in the R6 night: km3 81b572198c04d5d1 and kx3 31d638dbc818b0fa, equal to the slow-report pin's",
+ "pilot_provenance": "kx3 (d513e37b's files, on main-affe56e): kx3 from claude/playout-pilot@d513e37b (frozen Oct 4-5), its six engine files byte for byte on R6's engine, whose km3 player files changed (fuel_credit.rs, value_functions.rs, public_pricing_player.rs, weighted_random_player.rs)",
+ "reference_provenance": "km3 in the same build; its self-check is the pinned km3's (81b572198c04d5d1)"
+}
