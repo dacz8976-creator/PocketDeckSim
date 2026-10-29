@@ -173,7 +173,6 @@ fn bot10(cmd: String) -> Option<(String, Duration)> {
 
 struct Run {
     decisions: Vec<(usize, u64, String)>,
-    events: Vec<(usize, PublicEvent)>,
     state_json: String,
     over: bool,
 }
@@ -196,8 +195,7 @@ fn run(players: Vec<Box<dyn Player>>, seed: u64, cfg: impl Fn(usize, &mut Rec)) 
     let over = game.is_game_over();
     drop(game);
     let d = decisions.borrow().clone();
-    let e = events.borrow().clone();
-    Run { decisions: d, events: e, state_json, over }
+    Run { decisions: d, state_json, over }
 }
 
 fn all_cases(ks: u64, orders: &[usize], pairs: &[usize]) -> Vec<(usize, usize, u64)> {
