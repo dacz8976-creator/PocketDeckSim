@@ -1,0 +1,66 @@
+....................................................................................................................../home/dacz8976/r6s_w/lib/deck_check.py:48: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/dacz8976/r6s_w/decks/dustin/01-muk-glimmora-kingambit-regigigas.txt' mode='r' encoding='utf-8'>
+  for ln in io.open(path, encoding='utf-8'):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/dacz8976/r6s_w/lib/deck_check.py:34: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/dacz8976/r6s_w/lib/deckgym-database.json' mode='r' encoding='utf-8'>
+  for e in json.load(io.open(p, encoding='utf-8')):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+..................../usr/lib/python3.14/unittest/case.py:615: ResourceWarning: unclosed file <_io.BufferedWriter name='/home/dacz8976/relplan/tmp_night/tmpoj26ijxr/repo/rl/results/slow_reports/2026-10-10_my-list/run_output.log'>
+  result = method()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.............................................................................................................................................................................................................................................................................................................................................................................................................................................................../home/dacz8976/r6s_w/lib/deck_check.py:53: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/dacz8976/relplan/tmp_night/tmphj54ew9_/bad.txt' mode='r' encoding='utf-8'>
+  cards.append((int(p[0]), ' '.join(p[1:-2]), ' '.join(p[-2:])))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/dacz8976/r6s_w/lib/deck_check.py:48: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/dacz8976/relplan/tmp_night/tmphj54ew9_/bad.txt' mode='r' encoding='utf-8'>
+  for ln in io.open(path, encoding='utf-8'):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/dacz8976/r6s_w/lib/deck_check.py:53: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/dacz8976/relplan/tmp_night/tmphj54ew9_/bad.txt' mode='r' encoding='utf-8'>
+  cards.append((int(p[0]), ' '.join(p[1:-2]), ' '.join(p[-2:])))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+..........................................................................................................................................................................................................................................................................................................................................warning: in the working copy of 'crlf.txt', CRLF will be replaced by LF the next time Git touches it
+..................................................F................................................./home/dacz8976/r6s_w/lib/deck_check.py:48: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/dacz8976/relplan/tmp_night/tmp2cbnzkag/ok.txt' mode='r' encoding='utf-8'>
+  for ln in io.open(path, encoding='utf-8'):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/dacz8976/r6s_w/lib/deck_check.py:34: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/dacz8976/r6s_w/lib/deckgym-database.json' mode='r' encoding='utf-8'>
+  for e in json.load(io.open(p, encoding='utf-8')):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/dacz8976/r6s_w/lib/deck_check.py:48: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/dacz8976/relplan/tmp_night/tmp2cbnzkag/no-energy.txt' mode='r' encoding='utf-8'>
+  for ln in io.open(path, encoding='utf-8'):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/dacz8976/r6s_w/lib/deck_check.py:34: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/dacz8976/r6s_w/lib/deckgym-database.json' mode='r' encoding='utf-8'>
+  for e in json.load(io.open(p, encoding='utf-8')):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/dacz8976/r6s_w/lib/deck_check.py:53: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/dacz8976/relplan/tmp_night/tmp2cbnzkag/garbled.txt' mode='r' encoding='utf-8'>
+  cards.append((int(p[0]), ' '.join(p[1:-2]), ' '.join(p[-2:])))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+............................................................................................................................................................................................................................................................................................................................................................................................................merge: REFUSED: /home/dacz8976/relplan/tmp_night/tmpj4t_fmm3/merged/games.jsonl exists; a merge never writes over one. Nothing was written.
+.........seal: REFUSED: /home/dacz8976/relplan/tmp_night/tmp6ixuiy5z/w has no worker.json; stamp it before it plays. Nothing was written.
+.stamp: REFUSED: /home/dacz8976/relplan/tmp_night/tmp4mk9ihxr/played already holds play (games.jsonl); a worker is stamped before it plays. Nothing was written.
+............stamp: not decks of this registration: ['nope'] (its decks: ['d1', 'd2', 'd3'])
+.ssss
+======================================================================
+FAIL: test_the_harness_source_in_this_checkout_is_the_source_the_pin_was_made_on (test_slow_report_registration.CommittedPin.test_the_harness_source_in_this_checkout_is_the_source_the_pin_was_made_on)
+A failure means rl/strength/src or Cargo.toml changed since the pin was made: a cloud rebuild from this checkout would be refused, and the pinned binary is no
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/dacz8976/r6s_w/rl/strength/test_slow_report_registration.py", line 2277, in test_the_harness_source_in_this_checkout_is_the_source_the_pin_was_made_on
+    self.assertEqual(sr.harness_source_sha256(ROOT), pin['harness_source_sha256'])
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 'c4f7da21563393049a21a7ca41778ea3a916b99bde5a9bec33fbe3b700f0a149' != 'bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e'
+- c4f7da21563393049a21a7ca41778ea3a916b99bde5a9bec33fbe3b700f0a149
++ bf9c5d6814007f1f53b0dc06f1beba02261478ddc40bb5efa3bbc16c0734f86e
+
+
+----------------------------------------------------------------------
+Ran 1438 tests in 681.034s
+
+FAILED (failures=1, skipped=4)
+24 and 24 games; game for game (content, not timing) DIFFERENT; 2 differ: ['d1|o1|0|0|ref: 1 and 2 record(s)', 'd3|o1|1|1|X: 1 and 0 record(s)']
+24 and 24 games; game for game (content, not timing) EQUAL
+24 and 24 games; game for game (content, not timing) DIFFERENT; 1 differ: ['d1|o1|1|0|X: content differs']
+24 and 24 games; game for game (content, not timing) EQUAL
+INCOMPLETE: 23 of 24 games; 1 problem(s); see /home/dacz8976/relplan/tmp_night/tmp2br8svea/merged/MERGE_RECORD.md
+COMPLETE: 24 of 24 games; 0 problem(s); see /home/dacz8976/relplan/tmp_night/tmpd14hegyd/merged/MERGE_RECORD.md
+INCOMPLETE: 16 of 24 games; 8 problem(s); see /home/dacz8976/relplan/tmp_night/tmpy6ytce8k/merged/MERGE_RECORD.md
+stamped /home/dacz8976/relplan/tmp_night/tmpo4wvsf04/w1: manifest 32fbacba188a, program 9a3a45d01531, slice (all)
+sealed /home/dacz8976/relplan/tmp_night/tmpo4wvsf04/w1: 1 games, games.jsonl 6c2cc7350822, program 9a3a45d01531
+stamped /home/dacz8976/relplan/tmp_night/tmp83i2_ckd/w1: manifest d6a29dacb39d, program 9a3a45d01531, slice ['d1', 'd3']

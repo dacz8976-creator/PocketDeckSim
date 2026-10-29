@@ -1,0 +1,28 @@
+warning: unused import: `TrainerType`
+  --> /home/dacz8976/kx_r4_build/tree/engine/src/players/value_functions.rs:21:76
+   |
+   |                                                                            ^^^^^^^^^^^
+   |
+   --> /home/dacz8976/kx_r4_build/tree/engine/src/actions/energy_moves.rs:187:9
+    |
+    |         ----^^^^
+    |         |
+    |         help: remove this `mut`
+    |
+   --> /home/dacz8976/kx_r4_build/tree/engine/src/actions/attack_outcome.rs:487:12
+    |
+    | ------------------- associated function in this implementation
+    |            ^^^^^^^^^^^^^^^^^^^^^
+    |
+    --> /home/dacz8976/kx_r4_build/tree/engine/src/players/value_functions.rs:2232:4
+     |
+     |    ^^^^^^^^^^^^^^^^^^^^^^^
+    --> /home/dacz8976/kx_r4_build/tree/engine/src/players/value_functions.rs:2528:4
+     |
+     |    ^^^^^^^^^^^^^^^^^
+engine: e3ddc0149bb9d35fda1becbb17ab5f71d9461609 engine tree cd970db60aa5df7e9db9d7479e88f87190dab2c3
+engine tree as archived: cd970db60aa5df7e9db9d7479e88f87190dab2c3
+program: /home/dacz8976/kx_r4/strength
+program sha256: 23d8a9b5a2e70f06abc4b6989c6662e73c5ebc33baecbe9727e1af1c4f413378
+harness source sha256: c4f7da21563393049a21a7ca41778ea3a916b99bde5a9bec33fbe3b700f0a149
+build record: /home/dacz8976/kx_r4/strength.build.json

@@ -1,0 +1,44 @@
+# The programs that actually ran, by sha256, against the programs committed in programs_final/ (copied from
+# /home/dacz8976/pincand_work/programs/R, the build of S). Every line must say EQUAL.
+EQUAL   programs/R/deckgym now v its build-time SHA256SUMS line: 6a2617f4f9e91c9ca4bb4cb3227fdd8e29ff100bbcfd8e0b1fee8273f866f6f8
+EQUAL   programs/R/legality_scan now v its build-time SHA256SUMS line: d9805aaaa10a2a70a40cffa4858efd5baf15deff183d144981856ac4d5dca702
+EQUAL   programs/R/goldfish now v its build-time SHA256SUMS line: ea787a4ed5b6bb9771ffefecf2737a76335efd918ad4138befe888df3322f342
+EQUAL   replay 08a9b3a_10_cli_k3 ran programs/R/deckgym: 6a2617f4f9e91c9ca4bb4cb3227fdd8e29ff100bbcfd8e0b1fee8273f866f6f8
+EQUAL   replay 08a9b3a_10_cli_km3 ran programs/R/deckgym: 6a2617f4f9e91c9ca4bb4cb3227fdd8e29ff100bbcfd8e0b1fee8273f866f6f8
+EQUAL   replay 08a9b3a_10_cli_kog3 ran programs/R/deckgym: 6a2617f4f9e91c9ca4bb4cb3227fdd8e29ff100bbcfd8e0b1fee8273f866f6f8
+EQUAL   replay 08a9b3a_10_cli_kp3 ran programs/R/deckgym: 6a2617f4f9e91c9ca4bb4cb3227fdd8e29ff100bbcfd8e0b1fee8273f866f6f8
+EQUAL   replay 08a9b3a_10_cli_kta3 ran programs/R/deckgym: 6a2617f4f9e91c9ca4bb4cb3227fdd8e29ff100bbcfd8e0b1fee8273f866f6f8
+EQUAL   replay 08a9b3a_10_goldfish ran programs/R/goldfish: ea787a4ed5b6bb9771ffefecf2737a76335efd918ad4138befe888df3322f342
+EQUAL   replay 08a9b3a_10_run_screen ran programs/R/deckgym: 6a2617f4f9e91c9ca4bb4cb3227fdd8e29ff100bbcfd8e0b1fee8273f866f6f8
+EQUAL   replay 08a9b3a_8_new_km3 ran programs/R/legality_scan: d9805aaaa10a2a70a40cffa4858efd5baf15deff183d144981856ac4d5dca702
+EQUAL   replay 08a9b3a_8b_cloud_new_k3 ran programs/R/legality_scan: d9805aaaa10a2a70a40cffa4858efd5baf15deff183d144981856ac4d5dca702
+EQUAL   replay 08a9b3a_8b_cloud_new_km3 ran programs/R/legality_scan: d9805aaaa10a2a70a40cffa4858efd5baf15deff183d144981856ac4d5dca702
+EQUAL   replay 08a9b3a_cov_b2e_km3 ran programs/R/legality_scan: d9805aaaa10a2a70a40cffa4858efd5baf15deff183d144981856ac4d5dca702
+EQUAL   replay 08a9b3a_dev_km3_new17 ran programs/R/legality_scan: d9805aaaa10a2a70a40cffa4858efd5baf15deff183d144981856ac4d5dca702
+EQUAL   replay 08a9b3a_dev_km3_table ran programs/R/legality_scan: d9805aaaa10a2a70a40cffa4858efd5baf15deff183d144981856ac4d5dca702
+EQUAL   replay 08a9b3a_dev_kta3_table ran programs/R/legality_scan: d9805aaaa10a2a70a40cffa4858efd5baf15deff183d144981856ac4d5dca702
+EQUAL   replay 08a9b3a_new17_k3 ran programs/R/legality_scan: d9805aaaa10a2a70a40cffa4858efd5baf15deff183d144981856ac4d5dca702
+EQUAL   replay 08a9b3a_table_k3 ran programs/R/legality_scan: d9805aaaa10a2a70a40cffa4858efd5baf15deff183d144981856ac4d5dca702
+EQUAL   replay 08a9b3a_table_kog3 ran programs/R/legality_scan: d9805aaaa10a2a70a40cffa4858efd5baf15deff183d144981856ac4d5dca702
+EQUAL   replay 08a9b3a_table_kp3 ran programs/R/legality_scan: d9805aaaa10a2a70a40cffa4858efd5baf15deff183d144981856ac4d5dca702
+EQUAL   the floor's deckgym (night.log, floorS line): 6a2617f4f9e91c9ca4bb4cb3227fdd8e29ff100bbcfd8e0b1fee8273f866f6f8
+EQUAL   floor piece A_07 (cmd.txt) ran programs/R/deckgym: 6a2617f4f9e91c9ca4bb4cb3227fdd8e29ff100bbcfd8e0b1fee8273f866f6f8
+EQUAL   floor piece A_brew-05b (cmd.txt) ran programs/R/deckgym: 6a2617f4f9e91c9ca4bb4cb3227fdd8e29ff100bbcfd8e0b1fee8273f866f6f8
+EQUAL   floor piece A_brew-06 (cmd.txt) ran programs/R/deckgym: 6a2617f4f9e91c9ca4bb4cb3227fdd8e29ff100bbcfd8e0b1fee8273f866f6f8
+EQUAL   floor piece A_brew-06b (cmd.txt) ran programs/R/deckgym: 6a2617f4f9e91c9ca4bb4cb3227fdd8e29ff100bbcfd8e0b1fee8273f866f6f8
+EQUAL   floor piece A_control14_k3 (cmd.txt) ran programs/R/deckgym: 6a2617f4f9e91c9ca4bb4cb3227fdd8e29ff100bbcfd8e0b1fee8273f866f6f8
+EQUAL   floor piece A_run_screen (cmd.txt) ran programs/R/deckgym: 6a2617f4f9e91c9ca4bb4cb3227fdd8e29ff100bbcfd8e0b1fee8273f866f6f8
+EQUAL   floor piece B_12 (cmd.txt) ran programs/R/deckgym: 6a2617f4f9e91c9ca4bb4cb3227fdd8e29ff100bbcfd8e0b1fee8273f866f6f8
+EQUAL   floor piece B_D_amended (cmd.txt) ran programs/R/deckgym: 6a2617f4f9e91c9ca4bb4cb3227fdd8e29ff100bbcfd8e0b1fee8273f866f6f8
+EQUAL   floor piece B_D_root (cmd.txt) ran programs/R/deckgym: 6a2617f4f9e91c9ca4bb4cb3227fdd8e29ff100bbcfd8e0b1fee8273f866f6f8
+EQUAL   floor piece B_D_victini-passive (cmd.txt) ran programs/R/deckgym: 6a2617f4f9e91c9ca4bb4cb3227fdd8e29ff100bbcfd8e0b1fee8273f866f6f8
+EQUAL   floor piece B_brew-07 (cmd.txt) ran programs/R/deckgym: 6a2617f4f9e91c9ca4bb4cb3227fdd8e29ff100bbcfd8e0b1fee8273f866f6f8
+EQUAL   floor piece B_brew-09 (cmd.txt) ran programs/R/deckgym: 6a2617f4f9e91c9ca4bb4cb3227fdd8e29ff100bbcfd8e0b1fee8273f866f6f8
+EQUAL   the program night_r6.sh built and self-checked (night.log): /home/dacz8976/kx_r4/strength
+EQUAL   /home/dacz8976/kx_r4/strength (the self-checks) v its build record strength.build.json: 23d8a9b5a2e70f06abc4b6989c6662e73c5ebc33baecbe9727e1af1c4f413378
+EQUAL   /home/dacz8976/kx_r4/strength v night.log's strength line: 23d8a9b5a2e70f06abc4b6989c6662e73c5ebc33baecbe9727e1af1c4f413378
+programs_final/ (the copies to commit): sha256sum -c SHA256SUMS:
+deckgym: OK
+legality_scan: OK
+goldfish: OK
+RESULT: all equal

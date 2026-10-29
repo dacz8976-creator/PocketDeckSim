@@ -1,0 +1,9 @@
+2026-10-29T05:33:56Z floorS accepted on the corrected rule (coordinator-080, mailbox laptop__20261029T0545Z-coordinator-080.md); floorS.FAILED is kept.
+Rule corrected after the run, games unchanged (not re-run); reviewed by the coordinator (coordinator-080).
+Why the night's rule failed: floor2.py's comparison says DIFFERS for 11 pieces for one line only, the coverage line naming the
+official goldfish (rl/engine-2026-10-21/goldfish db52d3de that night; rl/engine-2026-10-12/goldfish d8cfb779 on main-4d48844's
+final pages, floor2F). The rule (SAME, or DIFFERS and "v floor2F: exit 0") did not allow for that line.
+The corrected rule: games and coverage byte-equal to floor2F; each page equal after normalising only (a) the engine path
+programs/R v programs/F and (b) that goldfish line; any other line fails. floorS_recompare.sh: RESULT: 12 of 12 pieces equal to floor2F under the corrected rule (coordinator-080)
+Also: sitting1_check.py floor S v F --allow-coverage-program exit 0 on all 11 pages, switch_check.py screen exit 0 on run_screen.
+Independent check: 3 read-only refuters (data, process, rule) did not refute it (high confidence each).

@@ -1,0 +1,345 @@
+{
+ "schema": "r6-record v1",
+ "s": "affe56e88985e2997a66beb85efaca0c487617bd",
+ "s_engine_tree": "c8c79c635b92c9f95c5bf1db7f77d7774f8813ca",
+ "k": "e3ddc0149bb9d35fda1becbb17ab5f71d9461609",
+ "k_engine_tree": "cd970db60aa5df7e9db9d7479e88f87190dab2c3",
+ "programs_sha256": {
+  "deckgym": "6a2617f4f9e91c9ca4bb4cb3227fdd8e29ff100bbcfd8e0b1fee8273f866f6f8",
+  "legality_scan": "d9805aaaa10a2a70a40cffa4858efd5baf15deff183d144981856ac4d5dca702",
+  "goldfish": "ea787a4ed5b6bb9771ffefecf2737a76335efd918ad4138befe888df3322f342"
+ },
+ "programs_R_sha256_all": {
+  "deckgym": "6a2617f4f9e91c9ca4bb4cb3227fdd8e29ff100bbcfd8e0b1fee8273f866f6f8",
+  "legality_scan": "d9805aaaa10a2a70a40cffa4858efd5baf15deff183d144981856ac4d5dca702",
+  "goldfish": "ea787a4ed5b6bb9771ffefecf2737a76335efd918ad4138befe888df3322f342",
+  "card_status": "a4d634982f42e345da11a8c56da3ec885e72f7ed458850a785766e60b10f4abb",
+  "card_enum_generator": "59b74cb5a5aa8eaaa68e16b27556e920ab4de0d815294297e7cf3b96f5f0d08c"
+ },
+ "ran_sha256": "all equal (RAN_SHA256.txt)",
+ "build": {
+  "lane_start": "2026-10-29T00:37:32Z",
+  "build_ok_at": "2026-10-29T00:43:36Z",
+  "secs": 364
+ },
+ "gencmp": {
+  "ids": "SAME",
+  "database": "SAME"
+ },
+ "card_status": {
+  "line": "card_status: all 4577 | new C1/SP1/P-C: 260 {'Complete': 205, 'MissingAbility': 15, 'MissingAttack': 31, 'MissingTool': 2, 'MissingTrainer': 7}",
+  "older": "0",
+  "check": "OK"
+ },
+ "suite": {
+  "rc": 0,
+  "secs": 794,
+  "passed": 2277,
+  "failed": 0,
+  "ignored": 0,
+  "compile_errors": 0
+ },
+ "switch_runs": {
+  "default": [
+   32,
+   0
+  ],
+  "DECKGYM_FLAT_RETURN_DAMAGE": [
+   32,
+   0
+  ],
+  "DECKGYM_ROUND2_OFF": [
+   32,
+   0
+  ],
+  "core_ROUND2_OFF": [
+   14,
+   0
+  ]
+ },
+ "strength": {
+  "program": "/home/dacz8976/kx_r4/strength",
+  "sha256": "23d8a9b5a2e70f06abc4b6989c6662e73c5ebc33baecbe9727e1af1c4f413378",
+  "secs": 177,
+  "engine_ref": "e3ddc0149bb9d35fda1becbb17ab5f71d9461609",
+  "engine_tree_archived": "cd970db60aa5df7e9db9d7479e88f87190dab2c3",
+  "harness": "c4f7da21563393049a21a7ca41778ea3a916b99bde5a9bec33fbe3b700f0a149",
+  "jobs": "2"
+ },
+ "selfchecks": {
+  "km3": "selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1",
+  "kx3": "selfcheck pilot=kx3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=138 digest=31d638dbc818b0fa",
+  "kx3_rc": 0,
+  "kx3_secs": 4738
+ },
+ "refusal_test": {
+  "ran": 4,
+  "status": "OK"
+ },
+ "strength_py": {
+  "ran": 1438,
+  "status": "FAILED (failures=1, skipped=4)",
+  "failing": [
+   "FAIL: test_the_harness_source_in_this_checkout_is_the_source_the_pin_was_made_on (test_slow_report_registration.CommittedPin.test_the_harness_source_in_this_checkout_is_the_source_the_pin_was_made_on)"
+  ]
+ },
+ "replays": {
+  "rows": [
+   {
+    "name": "08a9b3a_10_cli_k3",
+    "games": 240,
+    "secs": 8,
+    "verdict": "SAME",
+    "detail": "Player 0 won: 150 (62.50%) | Player 1 won: 90 (37.50%) | Draws: 0 (0.00%) | v f: SAME",
+    "vf": "SAME",
+    "vf_deals": null,
+    "growl_known": false,
+    "rules_clean": false
+   },
+   {
+    "name": "08a9b3a_10_cli_kp3",
+    "games": 240,
+    "secs": 11,
+    "verdict": "SAME",
+    "detail": "Player 0 won: 144 (60.00%) | Player 1 won: 96 (40.00%) | Draws: 0 (0.00%) | v f: SAME",
+    "vf": "SAME",
+    "vf_deals": null,
+    "growl_known": false,
+    "rules_clean": false
+   },
+   {
+    "name": "08a9b3a_10_cli_kog3",
+    "games": 240,
+    "secs": 10,
+    "verdict": "SAME",
+    "detail": "Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%) | v f: SAME",
+    "vf": "SAME",
+    "vf_deals": null,
+    "growl_known": false,
+    "rules_clean": false
+   },
+   {
+    "name": "08a9b3a_10_cli_kta3",
+    "games": 240,
+    "secs": 11,
+    "verdict": "SAME",
+    "detail": "Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%) | v f: SAME",
+    "vf": "SAME",
+    "vf_deals": null,
+    "growl_known": false,
+    "rules_clean": false
+   },
+   {
+    "name": "08a9b3a_10_cli_km3",
+    "games": 240,
+    "secs": 11,
+    "verdict": "SAME",
+    "detail": "Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%) | v f: SAME",
+    "vf": "SAME",
+    "vf_deals": null,
+    "growl_known": false,
+    "rules_clean": false
+   },
+   {
+    "name": "08a9b3a_10_goldfish",
+    "games": 0,
+    "secs": 0,
+    "verdict": "SAME",
+    "detail": "page =, coverage =",
+    "vf": null,
+    "vf_deals": null,
+    "growl_known": false,
+    "rules_clean": false
+   },
+   {
+    "name": "08a9b3a_table_k3",
+    "games": 14000,
+    "secs": 827,
+    "verdict": "SAME",
+    "detail": "0 differing deals of 14000 | v f: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/r/08a9b3a_table_k3.txt: no RULE finding",
+    "vf": "SAME",
+    "vf_deals": 0,
+    "growl_known": false,
+    "rules_clean": true
+   },
+   {
+    "name": "08a9b3a_table_kp3",
+    "games": 14000,
+    "secs": 954,
+    "verdict": "SAME",
+    "detail": "0 differing deals of 14000 | v f: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/r/08a9b3a_table_kp3.txt: no RULE finding",
+    "vf": "SAME",
+    "vf_deals": 0,
+    "growl_known": false,
+    "rules_clean": true
+   },
+   {
+    "name": "08a9b3a_table_kog3",
+    "games": 14000,
+    "secs": 1034,
+    "verdict": "SAME",
+    "detail": "0 differing deals of 14000 | v f: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/r/08a9b3a_table_kog3.txt: no RULE finding",
+    "vf": "SAME",
+    "vf_deals": 0,
+    "growl_known": false,
+    "rules_clean": true
+   },
+   {
+    "name": "08a9b3a_dev_km3_table",
+    "games": 14000,
+    "secs": 990,
+    "verdict": "SAME",
+    "detail": "0 differing deals of 14000 | v f: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/r/08a9b3a_dev_km3_table.txt: no RULE finding",
+    "vf": "SAME",
+    "vf_deals": 0,
+    "growl_known": false,
+    "rules_clean": true
+   },
+   {
+    "name": "08a9b3a_dev_kta3_table",
+    "games": 14000,
+    "secs": 1004,
+    "verdict": "SAME",
+    "detail": "0 differing deals of 14000 | v f: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/r/08a9b3a_dev_kta3_table.txt: no RULE finding",
+    "vf": "SAME",
+    "vf_deals": 0,
+    "growl_known": false,
+    "rules_clean": true
+   },
+   {
+    "name": "08a9b3a_10_run_screen",
+    "games": 3840,
+    "secs": 245,
+    "verdict": "SAME",
+    "detail": "run_screen: /home/dacz8976/pincand_work/games/r/08a9b3a_10_run_screen.txt v engine_switch_rules2_2026-10/08a9b3a_10_run_screen.txt: 20 of 20 lines equal (2 decks; the header's engine path aside) | v f: SAME",
+    "vf": "SAME",
+    "vf_deals": null,
+    "growl_known": false,
+    "rules_clean": false
+   },
+   {
+    "name": "08a9b3a_new17_k3",
+    "games": 8500,
+    "secs": 577,
+    "verdict": "DIFFERS",
+    "detail": "8 differing deals of 8500 | v f: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/r/08a9b3a_new17_k3.txt: no RULE finding",
+    "vf": "SAME",
+    "vf_deals": 0,
+    "growl_known": true,
+    "rules_clean": true
+   },
+   {
+    "name": "08a9b3a_dev_km3_new17",
+    "games": 8500,
+    "secs": 674,
+    "verdict": "DIFFERS",
+    "detail": "7 differing deals of 8500 | v f: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/r/08a9b3a_dev_km3_new17.txt: no RULE finding",
+    "vf": "SAME",
+    "vf_deals": 0,
+    "growl_known": true,
+    "rules_clean": true
+   },
+   {
+    "name": "08a9b3a_8b_cloud_new_k3",
+    "games": 240,
+    "secs": 20,
+    "verdict": "SAME",
+    "detail": "0 differing deals of 240 | v f: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/r/08a9b3a_8b_cloud_new_k3.txt: no RULE finding",
+    "vf": "SAME",
+    "vf_deals": 0,
+    "growl_known": false,
+    "rules_clean": true
+   },
+   {
+    "name": "08a9b3a_8b_cloud_new_km3",
+    "games": 240,
+    "secs": 25,
+    "verdict": "SAME",
+    "detail": "0 differing deals of 240 | v f: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/r/08a9b3a_8b_cloud_new_km3.txt: no RULE finding",
+    "vf": "SAME",
+    "vf_deals": 0,
+    "growl_known": false,
+    "rules_clean": true
+   },
+   {
+    "name": "08a9b3a_8_new_km3",
+    "games": 16000,
+    "secs": 1744,
+    "verdict": "DIFFERS",
+    "detail": "1 differing deals of 16000 | v f: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/r/08a9b3a_8_new_km3.txt: no RULE finding",
+    "vf": "SAME",
+    "vf_deals": 0,
+    "growl_known": true,
+    "rules_clean": true
+   },
+   {
+    "name": "08a9b3a_cov_b2e_km3",
+    "games": 48000,
+    "secs": 3465,
+    "verdict": "SAME",
+    "detail": "0 differing deals of 48000 | v f: SAME (0 deals); rules page: /home/dacz8976/pincand_work/games/r/08a9b3a_cov_b2e_km3.txt: no RULE finding",
+    "vf": "SAME",
+    "vf_deals": 0,
+    "growl_known": false,
+    "rules_clean": true
+   }
+  ],
+  "n": 18,
+  "games_total": 156520,
+  "vf_same": 17,
+  "vf_same_zero": 11,
+  "vf_other": 0,
+  "ref_same": 15,
+  "ref_growl_known": 3,
+  "rules_clean": 11,
+  "goldfish": "page =, coverage =",
+  "run_screen": "run_screen: /home/dacz8976/pincand_work/games/r/08a9b3a_10_run_screen.txt v engine_switch_rules2_2026-10/08a9b3a_10_run_screen.txt: 20 of 20 lines equal (2 decks; the header's engine path aside) | v f: SAME"
+ },
+ "floor": {
+  "n": 12,
+  "equal_recorded": [
+   "B_D_victini-passive",
+   "A_brew-06",
+   "A_brew-06b",
+   "A_control14_k3",
+   "A_brew-05b",
+   "A_07",
+   "A_run_screen",
+   "B_12",
+   "B_D_root",
+   "B_D_amended"
+  ],
+  "equal_final_only": {
+   "B_brew-07": "clears the floor, 1,165 of 1,920",
+   "B_brew-09": "clears the floor, 824 of 1,920"
+  },
+  "other": [],
+  "games": 24960,
+  "deck_games": 21120,
+  "screen_games": 3840,
+  "recompare_pass": [
+   "A_07",
+   "A_brew-05b",
+   "A_brew-06",
+   "A_brew-06b",
+   "A_control14_k3",
+   "A_run_screen",
+   "B_12",
+   "B_D_amended",
+   "B_D_root",
+   "B_D_victini-passive",
+   "B_brew-07",
+   "B_brew-09"
+  ],
+  "rule": "corrected after the run (coordinator-080): the 11 deck pieces' games and coverage byte-equal to floor2F (main-4d48844 final, Oct 21 UTC) and their pages equal after normalising only the engine path and the official goldfish line; run_screen's page equal apart from the engine path; games unchanged, not re-run",
+  "night_rule_failed": "floorS.FAILED kept: the night rule (SAME, or DIFFERS and \"v floor2F: exit 0\") missed the goldfish line",
+  "goldfish_S_coverage": 11
+ },
+ "floor_ran_from": {
+  "repo": "/home/dacz8976/pincand",
+  "branch": "main",
+  "head_at_record_time": "b78c8997ab7d479c0d76d7c47d3c8cd68ff35d6f",
+  "note": "floor2.py and replay3.py read decks, pairs files and the Python runners from this checkout; RUN_CONTEXT.txt"
+ },
+ "c_free_gib_at_record": 16
+}
