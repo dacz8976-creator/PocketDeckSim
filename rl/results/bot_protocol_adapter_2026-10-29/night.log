@@ -1,0 +1,35 @@
+2026-10-29T20:41:42Z night start: branch 44f93f2330ee62e4b515d0c19c64785fb7eeb8a5, BASE 1ff305ab9e69b965aab8c97a1dac6bac4532e01e; C: free 82023104512; /usr/bin/cargo: cargo 1.93.1 (083ac5135 2025-12-15) (built from a source tarball), rustc 1.93.1 (01f6ddf75 2026-02-11) (built from a source tarball)
+2026-10-29T20:41:42Z N1 builds
+2026-10-29T20:45:51Z STOP: N1: git archive of BASE failed
+2026-10-29T20:45:51Z night finished
+2026-10-29T20:46:57Z night start: branch 44f93f2330ee62e4b515d0c19c64785fb7eeb8a5, BASE 1ff305ab9e69b965aab8c97a1dac6bac4532e01e; C: free 81490825216; /usr/bin/cargo: cargo 1.93.1 (083ac5135 2025-12-15) (built from a source tarball), rustc 1.93.1 (01f6ddf75 2026-02-11) (built from a source tarball)
+2026-10-29T20:46:57Z N1 builds
+2026-10-29T20:52:27Z N1 done: deckgym branch 05575d639416605e, BASE 466f4abbac2aa6c0; protocol_bot 1e2bfe41cc18aa86; C: free 80986157056
+2026-10-29T20:52:27Z N2 full suite (RUST_TEST_THREADS=2)
+2026-10-29T21:10:27Z N2 suite rc=0: 2290 passed; 0 failed; 0 ignored (111 test binaries); compile errors: 0
+2026-10-29T21:10:27Z N2 python rc=0: Ran 7 tests in 0.001s OK 
+2026-10-29T21:10:27Z N3 identity: 200 games on each build; running deckgym branch a4e78c97f261dc40, BASE 466f4abbac2aa6c0, protocol_bot cd981ca2e7a7fb9c
+N3 PASS: 200 branch records, 0 differences; 200 finished
+2026-10-29T21:13:20Z N4 parity tests (ADAPTER_PARITY_GAMES=25)
+2026-10-29T21:16:57Z STOP: N4: the parity tests failed
+2026-10-29T21:16:57Z night finished
+2026-10-29T21:36:23Z night start: branch dda2fba2ef2e342e5930eedbf028110d06f72e17, BASE 1ff305ab9e69b965aab8c97a1dac6bac4532e01e; C: free 78998327296; /usr/bin/cargo: cargo 1.93.1 (083ac5135 2025-12-15) (built from a source tarball), rustc 1.93.1 (01f6ddf75 2026-02-11) (built from a source tarball)
+2026-10-29T21:36:23Z N1 builds
+2026-10-29T21:41:13Z N1 done: deckgym branch df1f4eefcbc70669, BASE 466f4abbac2aa6c0; protocol_bot 4d48a8d8a6d95a1e; C: free 78612393984
+2026-10-29T21:41:13Z N2 full suite (RUST_TEST_THREADS=2)
+2026-10-29T21:59:59Z N2 suite rc=0: 2290 passed; 0 failed; 0 ignored (111 test binaries); compile errors: 0
+2026-10-29T21:59:59Z N2 python rc=0: Ran 7 tests in 0.001s OK 
+2026-10-29T22:00:00Z N3 identity: 200 games on each build; running deckgym branch bb9a5ec4c2aa5802, BASE 466f4abbac2aa6c0, protocol_bot a8a7d47a45816b05
+N3 PASS: 200 branch records, 0 differences; 200 finished
+2026-10-29T22:02:40Z N4 parity tests (ADAPTER_PARITY_GAMES=25)
+2026-10-29T22:05:42Z N4 parity tests: test result: ok. 2 passed; 0 failed; 0 ignored; 0 measured; 11 filtered out; finished in 181.86s 
+2026-10-29T22:05:42Z N4 PARITY_ZERO_DECISION_SEAT_GAMES mode=one count=0 of 200 PARITY_ZERO_DECISION_SEAT_GAMES mode=both count=1 of 400 
+N4 PASS: 400 CLI records, 0 differences, 0 fallbacks; secs/decision {'n': 13993, 'median': 0.004827, 'p95': 0.031939, 'max': 0.200046}
+2026-10-29T22:08:44Z N5 dummy bots
+N5 first_legal: PASS games 200/200, finished 200, fallbacks 0, timeouts 0, hangs 0, secs/decision {'n': 644, 'median': 0.000324, 'p95': 0.000851, 'max': 0.003222}
+N5 seeded_random: PASS games 200/200, finished 200, fallbacks 0, timeouts 0, hangs 0, secs/decision {'n': 2787, 'median': 0.0002, 'p95': 0.000531, 'max': 0.002454}
+N5 upstream_random: PASS games 200/200, finished 200, fallbacks 0, timeouts 0, hangs 0, secs/decision {'n': 3267, 'median': 0.000202, 'p95': 0.000551, 'max': 0.002682}
+N5 plan_follower: PASS games 200/200, finished 200, fallbacks 0, timeouts 0, hangs 0, secs/decision {'n': 3257, 'median': 0.000277, 'p95': 0.000715, 'max': 0.002246}
+N5 random_v_first: PASS games 50/50, finished 50, fallbacks 0, timeouts 0, hangs 0, secs/decision {'n': 2783, 'median': 0.000178, 'p95': 0.00036, 'max': 0.00185}
+N5 plan_follower re-asks: {'files': 200, 'records': 3257, 'reask_reason': {'none': 1195, 'opponent_choice': 728, 'stale': 662, 'chance': 490, 'draw_mine': 182}, 'played_from_saved_plan': 987}
+2026-10-29T22:12:15Z N6 records into rl/results/bot_protocol_adapter_2026-10-29

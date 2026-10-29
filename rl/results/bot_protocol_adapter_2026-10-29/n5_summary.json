@@ -1,0 +1,1521 @@
+{
+ "check": "N5 dummy bots through the CLI v km3 (and seeded_random v first_legal)",
+ "ok": true,
+ "bots": {
+  "first_legal": {
+   "runs": {
+    "p0o0": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 79,
+      "summary_decisions": 79,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 3,
+       "p95": 5,
+       "max": 6
+      },
+      "secs": {
+       "n": 79,
+       "median": 0.000256,
+       "p95": 0.000822,
+       "max": 0.000979
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.01893,
+       "p95": 0.022285,
+       "max": 0.02437
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "first_legal_bot.py"
+      ],
+      "first_choice_only": true
+     }
+    },
+    "p0o1": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 101,
+      "summary_decisions": 101,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 4,
+       "p95": 7,
+       "max": 8
+      },
+      "secs": {
+       "n": 101,
+       "median": 0.000365,
+       "p95": 0.000832,
+       "max": 0.001661
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.02042,
+       "p95": 0.034128,
+       "max": 0.038758
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "first_legal_bot.py"
+      ],
+      "first_choice_only": true
+     }
+    },
+    "p1o0": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 86,
+      "summary_decisions": 86,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 3,
+       "p95": 6,
+       "max": 8
+      },
+      "secs": {
+       "n": 86,
+       "median": 0.000326,
+       "p95": 0.000851,
+       "max": 0.001377
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.019662,
+       "p95": 0.021916,
+       "max": 0.023875
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "first_legal_bot.py"
+      ],
+      "first_choice_only": true
+     }
+    },
+    "p1o1": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 70,
+      "summary_decisions": 70,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 2,
+       "p95": 5,
+       "max": 5
+      },
+      "secs": {
+       "n": 70,
+       "median": 0.000231,
+       "p95": 0.000933,
+       "max": 0.002908
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.019651,
+       "p95": 0.024185,
+       "max": 0.056477
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "first_legal_bot.py"
+      ],
+      "first_choice_only": true
+     }
+    },
+    "p2o0": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 79,
+      "summary_decisions": 79,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 3,
+       "p95": 5,
+       "max": 5
+      },
+      "secs": {
+       "n": 79,
+       "median": 0.000381,
+       "p95": 0.000755,
+       "max": 0.003222
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.023559,
+       "p95": 0.035978,
+       "max": 0.036085
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "first_legal_bot.py"
+      ],
+      "first_choice_only": true
+     }
+    },
+    "p2o1": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 71,
+      "summary_decisions": 71,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 2,
+       "p95": 5,
+       "max": 6
+      },
+      "secs": {
+       "n": 71,
+       "median": 0.000235,
+       "p95": 0.000566,
+       "max": 0.000744
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.021773,
+       "p95": 0.029797,
+       "max": 0.049432
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "first_legal_bot.py"
+      ],
+      "first_choice_only": true
+     }
+    },
+    "p3o0": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 67,
+      "summary_decisions": 67,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 3,
+       "p95": 5,
+       "max": 5
+      },
+      "secs": {
+       "n": 67,
+       "median": 0.000374,
+       "p95": 0.000924,
+       "max": 0.001084
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.022604,
+       "p95": 0.034333,
+       "max": 0.038122
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "first_legal_bot.py"
+      ],
+      "first_choice_only": true
+     }
+    },
+    "p3o1": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 91,
+      "summary_decisions": 91,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 3,
+       "p95": 5,
+       "max": 7
+      },
+      "secs": {
+       "n": 91,
+       "median": 0.000351,
+       "p95": 0.001132,
+       "max": 0.00151
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.019556,
+       "p95": 0.023432,
+       "max": 0.023974
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "first_legal_bot.py"
+      ],
+      "first_choice_only": true
+     }
+    }
+   },
+   "hangs": 0,
+   "rc_nonzero": 0,
+   "records": 200,
+   "finished": 200,
+   "fallbacks": 0,
+   "timeouts": 0,
+   "decisions": 644,
+   "instances": 200,
+   "expected_games": 200,
+   "secs_per_decision": {
+    "n": 644,
+    "median": 0.000324,
+    "p95": 0.000851,
+    "max": 0.003222
+   },
+   "startup_secs": {
+    "n": 200,
+    "median": 0.020394,
+    "p95": 0.0303,
+    "max": 0.056477
+   },
+   "ignored_optional_keys": 0,
+   "decisions_per_game_median_of_runs": 3.0,
+   "ok": true,
+   "first_choice_only": true
+  },
+  "seeded_random": {
+   "runs": {
+    "p0o0": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 443,
+      "summary_decisions": 443,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 21,
+       "p95": 29,
+       "max": 38
+      },
+      "secs": {
+       "n": 443,
+       "median": 0.000199,
+       "p95": 0.000519,
+       "max": 0.002454
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.040873,
+       "p95": 0.052939,
+       "max": 0.064056
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "seeded_random_bot.py"
+      ],
+      "first_choice_only": false
+     }
+    },
+    "p0o1": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 486,
+      "summary_decisions": 486,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 23,
+       "p95": 30,
+       "max": 30
+      },
+      "secs": {
+       "n": 486,
+       "median": 0.000181,
+       "p95": 0.000455,
+       "max": 0.001399
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.040079,
+       "p95": 0.044759,
+       "max": 0.049002
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "seeded_random_bot.py"
+      ],
+      "first_choice_only": false
+     }
+    },
+    "p1o0": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 320,
+      "summary_decisions": 320,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 8,
+       "p95": 27,
+       "max": 31
+      },
+      "secs": {
+       "n": 320,
+       "median": 0.000193,
+       "p95": 0.000564,
+       "max": 0.001189
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.040271,
+       "p95": 0.046904,
+       "max": 0.056573
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "seeded_random_bot.py"
+      ],
+      "first_choice_only": false
+     }
+    },
+    "p1o1": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 314,
+      "summary_decisions": 314,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 10,
+       "p95": 27,
+       "max": 31
+      },
+      "secs": {
+       "n": 314,
+       "median": 0.000201,
+       "p95": 0.000621,
+       "max": 0.001686
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.046776,
+       "p95": 0.069133,
+       "max": 0.070924
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "seeded_random_bot.py"
+      ],
+      "first_choice_only": false
+     }
+    },
+    "p2o0": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 241,
+      "summary_decisions": 241,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 7,
+       "p95": 30,
+       "max": 33
+      },
+      "secs": {
+       "n": 241,
+       "median": 0.000204,
+       "p95": 0.000504,
+       "max": 0.002074
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.045177,
+       "p95": 0.064872,
+       "max": 0.073846
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "seeded_random_bot.py"
+      ],
+      "first_choice_only": false
+     }
+    },
+    "p2o1": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 271,
+      "summary_decisions": 271,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 7,
+       "p95": 27,
+       "max": 30
+      },
+      "secs": {
+       "n": 271,
+       "median": 0.000211,
+       "p95": 0.00052,
+       "max": 0.001672
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.046882,
+       "p95": 0.0587,
+       "max": 0.065266
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "seeded_random_bot.py"
+      ],
+      "first_choice_only": false
+     }
+    },
+    "p3o0": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 281,
+      "summary_decisions": 281,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 4,
+       "p95": 30,
+       "max": 35
+      },
+      "secs": {
+       "n": 281,
+       "median": 0.000216,
+       "p95": 0.00055,
+       "max": 0.00191
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.051487,
+       "p95": 0.06228,
+       "max": 0.071869
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "seeded_random_bot.py"
+      ],
+      "first_choice_only": false
+     }
+    },
+    "p3o1": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 431,
+      "summary_decisions": 431,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 19,
+       "p95": 27,
+       "max": 30
+      },
+      "secs": {
+       "n": 431,
+       "median": 0.000199,
+       "p95": 0.000718,
+       "max": 0.001799
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.043193,
+       "p95": 0.056679,
+       "max": 0.057046
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "seeded_random_bot.py"
+      ],
+      "first_choice_only": false
+     }
+    }
+   },
+   "hangs": 0,
+   "rc_nonzero": 0,
+   "records": 200,
+   "finished": 200,
+   "fallbacks": 0,
+   "timeouts": 0,
+   "decisions": 2787,
+   "instances": 200,
+   "expected_games": 200,
+   "secs_per_decision": {
+    "n": 2787,
+    "median": 0.0002,
+    "p95": 0.000531,
+    "max": 0.002454
+   },
+   "startup_secs": {
+    "n": 200,
+    "median": 0.044271,
+    "p95": 0.0587,
+    "max": 0.073846
+   },
+   "ignored_optional_keys": 0,
+   "decisions_per_game_median_of_runs": 9.0,
+   "ok": true
+  },
+  "upstream_random": {
+   "runs": {
+    "p0o0": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 478,
+      "summary_decisions": 478,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 19,
+       "p95": 31,
+       "max": 33
+      },
+      "secs": {
+       "n": 478,
+       "median": 0.000189,
+       "p95": 0.000503,
+       "max": 0.001585
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.020759,
+       "p95": 0.022675,
+       "max": 0.022981
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "random_bot.py"
+      ],
+      "first_choice_only": false
+     }
+    },
+    "p0o1": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 499,
+      "summary_decisions": 499,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 20,
+       "p95": 34,
+       "max": 50
+      },
+      "secs": {
+       "n": 499,
+       "median": 0.000182,
+       "p95": 0.000469,
+       "max": 0.00135
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.020832,
+       "p95": 0.024566,
+       "max": 0.02568
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "random_bot.py"
+      ],
+      "first_choice_only": false
+     }
+    },
+    "p1o0": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 360,
+      "summary_decisions": 360,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 16,
+       "p95": 24,
+       "max": 27
+      },
+      "secs": {
+       "n": 360,
+       "median": 0.000191,
+       "p95": 0.000513,
+       "max": 0.001548
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.020859,
+       "p95": 0.025405,
+       "max": 0.029751
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "random_bot.py"
+      ],
+      "first_choice_only": false
+     }
+    },
+    "p1o1": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 365,
+      "summary_decisions": 365,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 13,
+       "p95": 29,
+       "max": 30
+      },
+      "secs": {
+       "n": 365,
+       "median": 0.000228,
+       "p95": 0.000595,
+       "max": 0.001348
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.028221,
+       "p95": 0.063568,
+       "max": 0.064246
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "random_bot.py"
+      ],
+      "first_choice_only": false
+     }
+    },
+    "p2o0": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 316,
+      "summary_decisions": 316,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 13,
+       "p95": 21,
+       "max": 28
+      },
+      "secs": {
+       "n": 316,
+       "median": 0.000194,
+       "p95": 0.000491,
+       "max": 0.002682
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.02157,
+       "p95": 0.047322,
+       "max": 0.135387
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "random_bot.py"
+      ],
+      "first_choice_only": false
+     }
+    },
+    "p2o1": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 387,
+      "summary_decisions": 387,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 15,
+       "p95": 30,
+       "max": 32
+      },
+      "secs": {
+       "n": 387,
+       "median": 0.000207,
+       "p95": 0.000568,
+       "max": 0.000985
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.023245,
+       "p95": 0.027857,
+       "max": 0.036082
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "random_bot.py"
+      ],
+      "first_choice_only": false
+     }
+    },
+    "p3o0": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 352,
+      "summary_decisions": 352,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 16,
+       "p95": 25,
+       "max": 30
+      },
+      "secs": {
+       "n": 352,
+       "median": 0.000227,
+       "p95": 0.000609,
+       "max": 0.001207
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.024943,
+       "p95": 0.044982,
+       "max": 0.045678
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "random_bot.py"
+      ],
+      "first_choice_only": false
+     }
+    },
+    "p3o1": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 510,
+      "summary_decisions": 510,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 21,
+       "p95": 32,
+       "max": 34
+      },
+      "secs": {
+       "n": 510,
+       "median": 0.000199,
+       "p95": 0.000555,
+       "max": 0.001792
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.023709,
+       "p95": 0.031612,
+       "max": 0.034789
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "random_bot.py"
+      ],
+      "first_choice_only": false
+     }
+    }
+   },
+   "hangs": 0,
+   "rc_nonzero": 0,
+   "records": 200,
+   "finished": 200,
+   "fallbacks": 0,
+   "timeouts": 0,
+   "decisions": 3267,
+   "instances": 200,
+   "expected_games": 200,
+   "secs_per_decision": {
+    "n": 3267,
+    "median": 0.000202,
+    "p95": 0.000551,
+    "max": 0.002682
+   },
+   "startup_secs": {
+    "n": 200,
+    "median": 0.022157,
+    "p95": 0.037943,
+    "max": 0.135387
+   },
+   "ignored_optional_keys": 0,
+   "decisions_per_game_median_of_runs": 16.0,
+   "ok": true
+  },
+  "plan_follower": {
+   "runs": {
+    "p0o0": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 427,
+      "summary_decisions": 427,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 18,
+       "p95": 27,
+       "max": 27
+      },
+      "secs": {
+       "n": 427,
+       "median": 0.000281,
+       "p95": 0.000705,
+       "max": 0.001562
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.04192,
+       "p95": 0.045391,
+       "max": 0.046388
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "plan_follower_bot.py"
+      ],
+      "first_choice_only": false
+     }
+    },
+    "p0o1": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 491,
+      "summary_decisions": 491,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 19,
+       "p95": 35,
+       "max": 37
+      },
+      "secs": {
+       "n": 491,
+       "median": 0.000279,
+       "p95": 0.000783,
+       "max": 0.002246
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.043239,
+       "p95": 0.058742,
+       "max": 0.065557
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "plan_follower_bot.py"
+      ],
+      "first_choice_only": false
+     }
+    },
+    "p1o0": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 385,
+      "summary_decisions": 385,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 15,
+       "p95": 25,
+       "max": 32
+      },
+      "secs": {
+       "n": 385,
+       "median": 0.000255,
+       "p95": 0.000682,
+       "max": 0.001806
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.044748,
+       "p95": 0.050341,
+       "max": 0.102383
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "plan_follower_bot.py"
+      ],
+      "first_choice_only": false
+     }
+    },
+    "p1o1": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 403,
+      "summary_decisions": 403,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 15,
+       "p95": 29,
+       "max": 30
+      },
+      "secs": {
+       "n": 403,
+       "median": 0.000295,
+       "p95": 0.00073,
+       "max": 0.001373
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.052135,
+       "p95": 0.074575,
+       "max": 0.090514
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "plan_follower_bot.py"
+      ],
+      "first_choice_only": false
+     }
+    },
+    "p2o0": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 295,
+      "summary_decisions": 295,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 9,
+       "p95": 23,
+       "max": 29
+      },
+      "secs": {
+       "n": 295,
+       "median": 0.000272,
+       "p95": 0.000689,
+       "max": 0.001672
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.047237,
+       "p95": 0.073488,
+       "max": 0.075227
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "plan_follower_bot.py"
+      ],
+      "first_choice_only": false
+     }
+    },
+    "p2o1": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 390,
+      "summary_decisions": 390,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 15,
+       "p95": 28,
+       "max": 35
+      },
+      "secs": {
+       "n": 390,
+       "median": 0.000281,
+       "p95": 0.00064,
+       "max": 0.001521
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.046888,
+       "p95": 0.053603,
+       "max": 0.06115
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "plan_follower_bot.py"
+      ],
+      "first_choice_only": false
+     }
+    },
+    "p3o0": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 378,
+      "summary_decisions": 378,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 15,
+       "p95": 29,
+       "max": 31
+      },
+      "secs": {
+       "n": 378,
+       "median": 0.000276,
+       "p95": 0.000718,
+       "max": 0.00191
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.04673,
+       "p95": 0.052398,
+       "max": 0.081158
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "plan_follower_bot.py"
+      ],
+      "first_choice_only": false
+     }
+    },
+    "p3o1": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 25,
+      "expected_instances": 25,
+      "unparsed_lines": 0,
+      "decisions": 488,
+      "summary_decisions": 488,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 25,
+       "median": 18,
+       "p95": 30,
+       "max": 40
+      },
+      "secs": {
+       "n": 488,
+       "median": 0.000279,
+       "p95": 0.00077,
+       "max": 0.002141
+      },
+      "startup_secs": {
+       "n": 25,
+       "median": 0.044227,
+       "p95": 0.053863,
+       "max": 0.055803
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "plan_follower_bot.py"
+      ],
+      "first_choice_only": false
+     }
+    }
+   },
+   "hangs": 0,
+   "rc_nonzero": 0,
+   "records": 200,
+   "finished": 200,
+   "fallbacks": 0,
+   "timeouts": 0,
+   "decisions": 3257,
+   "instances": 200,
+   "expected_games": 200,
+   "secs_per_decision": {
+    "n": 3257,
+    "median": 0.000277,
+    "p95": 0.000715,
+    "max": 0.002246
+   },
+   "startup_secs": {
+    "n": 200,
+    "median": 0.045439,
+    "p95": 0.06115,
+    "max": 0.102383
+   },
+   "ignored_optional_keys": 0,
+   "decisions_per_game_median_of_runs": 15.0,
+   "ok": true,
+   "reasks": {
+    "files": 200,
+    "records": 3257,
+    "reask_reason": {
+     "none": 1195,
+     "opponent_choice": 728,
+     "stale": 662,
+     "chance": 490,
+     "draw_mine": 182
+    },
+    "played_from_saved_plan": 987
+   }
+  },
+  "random_v_first": {
+   "runs": {
+    "p0o0": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 50,
+      "expected_instances": 50,
+      "unparsed_lines": 0,
+      "decisions": 1231,
+      "summary_decisions": 1231,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 50,
+       "median": 17.0,
+       "p95": 39,
+       "max": 43
+      },
+      "secs": {
+       "n": 1231,
+       "median": 0.000178,
+       "p95": 0.000336,
+       "max": 0.000908
+      },
+      "startup_secs": {
+       "n": 50,
+       "median": 0.031427,
+       "p95": 0.046683,
+       "max": 0.048292
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "first_legal_bot.py",
+       "seeded_random_bot.py"
+      ],
+      "first_choice_only": false
+     }
+    },
+    "p0o1": {
+     "rc": 0,
+     "records": 25,
+     "duplicates": 0,
+     "finished": 25,
+     "bots": {
+      "instances": 50,
+      "expected_instances": 50,
+      "unparsed_lines": 0,
+      "decisions": 1552,
+      "summary_decisions": 1552,
+      "fallbacks": 0,
+      "fallback_lines": 0,
+      "timeouts": 0,
+      "errors": 0,
+      "decisions_per_game": {
+       "n": 50,
+       "median": 24.0,
+       "p95": 57,
+       "max": 60
+      },
+      "secs": {
+       "n": 1552,
+       "median": 0.000178,
+       "p95": 0.000394,
+       "max": 0.00185
+      },
+      "startup_secs": {
+       "n": 50,
+       "median": 0.041176,
+       "p95": 0.052272,
+       "max": 0.057538
+      },
+      "ignored_optional_keys": 0,
+      "bot_names": [
+       "first_legal_bot.py",
+       "seeded_random_bot.py"
+      ],
+      "first_choice_only": false
+     }
+    }
+   },
+   "hangs": 0,
+   "rc_nonzero": 0,
+   "records": 50,
+   "finished": 50,
+   "fallbacks": 0,
+   "timeouts": 0,
+   "decisions": 2783,
+   "instances": 100,
+   "expected_games": 50,
+   "secs_per_decision": {
+    "n": 2783,
+    "median": 0.000178,
+    "p95": 0.00036,
+    "max": 0.00185
+   },
+   "startup_secs": {
+    "n": 100,
+    "median": 0.039759,
+    "p95": 0.048438,
+    "max": 0.057538
+   },
+   "ignored_optional_keys": 0,
+   "decisions_per_game_median_of_runs": 20.5,
+   "ok": true
+  }
+ }
+}
