@@ -724,7 +724,15 @@ fn public_events_are_classified() {
                     assert!(ev.chance, "pair {p}: multi-branch outcome without chance");
                 }
             }
-            // The spec's EndTurn => chance check was removed: it failed for pair 3 (t-sceptile v t-vespiquen) at turn 1.
+            // An EndTurn may hand the turn end to forced steps (Quick Growth -> Checkup), so the Energy roll belongs to the tick on which the turn advances.
+            let t = game.get_state_clone();
+            if s.turn_count >= 1 && t.turn_count > s.turn_count && !game.is_game_over() {
+                assert!(
+                    ev.chance,
+                    "pair {p}: turn {} advanced without a chance event",
+                    s.turn_count
+                );
+            }
             if ev.was_choice {
                 seen.1 = true
             } else {
