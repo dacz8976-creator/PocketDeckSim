@@ -1,6 +1,7 @@
 pub mod actions;
 pub mod card_ids;
 pub mod card_logic;
+pub mod card_support;
 pub mod card_validation;
 pub mod combinatorics;
 pub mod data_exporter;

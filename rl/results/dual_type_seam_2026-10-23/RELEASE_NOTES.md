@@ -41,6 +41,17 @@ START_HERE's official-engine line, `project_manifest.json` and `current_engine.p
   - `goldfish` (the brew pages) has no preflight: it records each card's engine status in its coverage file, and counts and skips any game that panics.
   - The slow report (`rl/strength`) has no preflight either. Today its pinned build does not know the new cards; after R6 it would.
   - So R6 adds the same refusal to the slow report before the switch.
+- **R6 adds the shared refusal to goldfish and the slow report** (branch `laptop/r6-preflight-2026-10-29`; not built yet, it is built and tested at night with R6).
+  - **One check.** The blocking logic moved out of `cli_preflight.rs` into the engine library, `deckgym::card_support`. `deckgym simulate`, `deckgym optimize`, `goldfish` and the slow report's program (`strength run` and `strength selfcheck`) all refuse through it, so there is one list of blocked cards.
+  - **simulate and optimize are unchanged:** the same messages and exit codes, and their tests are untouched.
+  - **The refusal.** Before any game, and before goldfish writes its coverage file or `strength run` writes in its run folder, a deck that holds a card with status CardNotFound or Missing* stops the program with exit 2. The message has the same form as `deckgym simulate`'s ("Card-support preflight failed; goldfish did not start.", then each card's id, name, reason and deck). The check reads only the card database and uses no RNG, so it should not change any game on a supported deck; R6's replays and self-checks will confirm it.
+  - **The opt-out:** `--allow-unsupported-cards` (goldfish, `strength run`, `strength selfcheck`). The program first lists each unsupported card on stderr (id, name, reason, which deck), then runs. `slow_report.py` never passes it, so a slow report of such a deck stops with the program's message.
+  - **The tests** use C1 019 Volcanion (MissingAttack):
+    - `engine/tests/goldfish_card_support_test.rs`, in the suite;
+    - `rl/strength/test_strength_card_support.py`, which runs a real program: `STRENGTH_PROGRAM=<the R6 kx3 rebuild> python3 -B -m unittest -v test_strength_card_support` from `rl/strength`. It is skipped without that variable.
+  - **One test is red until the re-pin.** `rl/strength/src/main.rs` is part of the harness source the pin hashes (`src/*.rs` and `Cargo.toml`). On this branch that hash is `c4f7da21…`; the committed pin's `harness_source_sha256` is `bf9c5d68…`. So `CommittedPin.test_the_harness_source_in_this_checkout_is_the_source_the_pin_was_made_on` in `test_slow_report_registration.py` fails (1 of 244), and the cloud route (`--program`) refuses a rebuild from this checkout. Both last until R6's re-pin, after its own gate, records `c4f7da21…` in `slow_report_pin.json` (never edit the hash by hand). The branch lands in the same merge as the re-pin, and `test_slow_report_registration.py` is run after it.
+  - **A refused slow report keeps its seed slot.** `slow_report.py` registers before the program first runs, so a refused deck leaves a registered folder with no games, and that folder holds its seed slot in the pin's block until it is removed. With `--register-only`, the refusal shows only at the first sitting.
+  - **Two goldfish callers hide the message.** `lib/brew_pages.py` and the coverage step of `decks/screen/floor.py` (it runs before `deckgym simulate`) run goldfish with `check=True` and capture its output. On a refused list they stop with Python's "returned non-zero exit status 2" and do not show the card list; run goldfish by hand to see it. Making them print it is a follow-up: both files' sha256 are recorded inputs of the floor replays.
 - **Older printings:** all 4,577 cards were checked, and no older printing is anything other than Complete or RulesUnverified. B4b Trainer reprints keep the same status as their other printings.
 
 ## Unconfirmed rulings (still OPEN in `rules/05_open_questions.md`)
@@ -106,7 +117,7 @@ A+B (63cbb6ab) was not run as a phase of its own: the plan ran it only if A+B+C 
 
 ## Still to do (checklist)
 - **R5:** the `lib/` refresh (the LF copy `lib/deckgym-database.json`; card_canon's EXPECTED_IDS, SET_ORDER and CANON_MAP; deck_classifier's SET_ORDER).
-- **R6:** the switch. It adds the card-support refusal to the slow report first; the cargo build runs at night hours.
+- **R6:** the switch. It adds the shared card-support refusal to goldfish and the slow report first (above); the cargo build runs at night hours.
 - **R7:** the QR catalog refresh. It waits for the community catalog release that holds the new cards.
 - **Item 14:** the release files to Drive.
 - **Item 11:** the separate branch.
