@@ -11,6 +11,8 @@ pub mod protocol_player;
 mod fuel_credit;
 mod mcts_player;
 mod opening_class;
+pub mod playout_player;
+mod playout_pool;
 mod random_player;
 pub mod s42_probe;
 mod value_function_player;
@@ -215,6 +217,11 @@ pub enum PlayerCode {
     KM { max_depth: usize },
     /// A protocol bot subprocess (see protocol_player); built only by `deckgym simulate --bot-a/--bot-b`.
     Proto { command: String, timeout_ms: u64, log: Option<String> },
+    /// 'kx<N>[_r<R>][_c<cap>][_z<z>][_lab|_real][_t<s>][_trace]': the play-out chooser on top of km<N> (branch
+    /// claude/playout-pilot, Oct 2; DESIGN.md sections 5 and 9; playout_player.rs). Every distinct legal move, up to a cap,
+    /// played out R times with km<N> on both sides from states sampled from its own observation; km<N>'s move kept within
+    /// the noise.
+    KX { params: playout_player::PlayoutParams },
 }
 /// Custom parser function enforcing case-insensitivity
 pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
@@ -282,6 +289,10 @@ pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
             }
             return Err(format!("Invalid player code: {s}. Use '{prefix}<number>', e.g. '{prefix}3'"));
         }
+    }
+    // 'kx<N>...' (see PlayerCode::KX): the play-out chooser. No other code starts with 'kx'.
+    if let Some(rest) = lower.strip_prefix("kx") {
+        return playout_player::PlayoutParams::parse(rest).map(|params| PlayerCode::KX { params });
     }
     // 'km<N>' (see PlayerCode::KM): kta + N2. Before 'k<N>', which would reject it. No other code starts with 'km'.
     if let Some(depth) = lower.strip_prefix("km") {
@@ -496,6 +507,7 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
         PlayerCode::Jev => Box::new(JevPlayer::new(deck)),
         PlayerCode::Proto { command, timeout_ms, log } => Box::new(ProtocolPlayer::new(deck, command.clone(), std::time::Duration::from_millis(*timeout_ms), log.as_ref().map(std::path::PathBuf::from))),
         PlayerCode::AA => Box::new(AttachAttackPlayer { deck }),
+        PlayerCode::KX { params } => Box::new(playout_player::PlayoutPlayer::new(deck, opponent_deck.clone(), params.clone())),
         PlayerCode::ET => Box::new(EndTurnPlayer { deck }),
         PlayerCode::R => Box::new(RandomPlayer { deck }),
         PlayerCode::H => Box::new(HumanPlayer { deck }),
