@@ -79,11 +79,19 @@ impl ViewState {
             PlayerView {
                 hand_count: hand_ids.len(),
                 hand: if p == me { Some(hand_ids) } else { None },
-                deck_count: if p == me { obs.known_own_deck.len() } else { v.decks[p].cards.len() },
+                deck_count: if p == me {
+                    obs.known_own_deck.len()
+                } else {
+                    v.decks[p].cards.len()
+                },
                 discard: v.discard_piles[p].iter().map(Card::get_id).collect(),
                 discard_energies: v.discard_energies[p].clone(),
                 energy_zone: v.energy_zone[p],
-                in_play: std::array::from_fn(|i| v.in_play_pokemon[p][i].as_ref().map(SlotView::from_played_card)),
+                in_play: std::array::from_fn(|i| {
+                    v.in_play_pokemon[p][i]
+                        .as_ref()
+                        .map(SlotView::from_played_card)
+                }),
             }
         });
         ViewState {

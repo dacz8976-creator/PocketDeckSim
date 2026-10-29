@@ -6,7 +6,8 @@ use crate::{
     game::DecisionRandomness,
     observation::PlayerObservation,
     protocol::{
-        view::ViewState, ActionMsg, DecideMsg, DecideReply, HelloMsg, HelloReply, NewGameMsg, PublicEvent, SinceLast,
+        view::ViewState, ActionMsg, DecideMsg, DecideReply, HelloMsg, HelloReply, NewGameMsg,
+        PublicEvent, SinceLast,
     },
     Deck, State,
 };
@@ -70,12 +71,17 @@ pub struct ProtocolPlayer {
 fn write_line<T: Serialize>(stdin: &mut ChildStdin, msg: &T) -> Result<(), String> {
     let mut line = serde_json::to_string(msg).map_err(|e| format!("serialize: {e}"))?;
     line.push('\n');
-    stdin.write_all(line.as_bytes()).map_err(|e| e.to_string())?;
+    stdin
+        .write_all(line.as_bytes())
+        .map_err(|e| e.to_string())?;
     stdin.flush().map_err(|e| e.to_string())
 }
 
 fn kill_group(pid: u32) {
-    let _ = Command::new("kill").args(["-KILL", "--", &format!("-{pid}")]).stderr(Stdio::null()).status();
+    let _ = Command::new("kill")
+        .args(["-KILL", "--", &format!("-{pid}")])
+        .stderr(Stdio::null())
+        .status();
 }
 
 impl ProtocolPlayer {
@@ -83,7 +89,12 @@ impl ProtocolPlayer {
         let instance = NEXT_INSTANCE.fetch_add(1, Ordering::SeqCst);
         let log = log_dir.and_then(|dir| {
             std::fs::create_dir_all(&dir).ok()?;
-            File::create(dir.join(format!("protocol_{}_{}.jsonl", std::process::id(), instance))).ok()
+            File::create(dir.join(format!(
+                "protocol_{}_{}.jsonl",
+                std::process::id(),
+                instance
+            )))
+            .ok()
         });
         ProtocolPlayer {
             deck,
@@ -158,12 +169,17 @@ impl ProtocolPlayer {
         let bot = self.bot.as_mut().unwrap();
         let stdin = bot.stdin.as_mut().ok_or("no stdin")?;
         write_line(stdin, &HelloMsg::new()).map_err(|e| format!("failed writing hello: {e}"))?;
-        let reply = bot.rx.recv_timeout(timeout).map_err(|_| "bot did not reply to hello in time".to_string())?;
-        let value: serde_json::Value = serde_json::from_str(&reply).map_err(|e| format!("invalid hello reply: {e}"))?;
+        let reply = bot
+            .rx
+            .recv_timeout(timeout)
+            .map_err(|_| "bot did not reply to hello in time".to_string())?;
+        let value: serde_json::Value =
+            serde_json::from_str(&reply).map_err(|e| format!("invalid hello reply: {e}"))?;
         if !value.is_object() {
             return Err("hello reply is not a JSON object".into());
         }
-        let hello: HelloReply = serde_json::from_value(value).map_err(|e| format!("bad hello reply: {e}"))?;
+        let hello: HelloReply =
+            serde_json::from_value(value).map_err(|e| format!("bad hello reply: {e}"))?;
         bot.agent_snapshot = hello.agent_snapshot.unwrap_or(false);
         bot.pdl_observation = hello.pdl_observation.unwrap_or(false);
         bot.pdl_events = hello.pdl_events.unwrap_or(false);
@@ -173,7 +189,11 @@ impl ProtocolPlayer {
             game_id: uuid::Uuid::new_v4().to_string(),
             you,
             deck: deck_ids,
-            deck_definition: if bot.agent_snapshot || bot.pdl_observation { Some(self.deck.clone()) } else { None },
+            deck_definition: if bot.agent_snapshot || bot.pdl_observation {
+                Some(self.deck.clone())
+            } else {
+                None
+            },
         };
         let stdin = bot.stdin.as_mut().ok_or("no stdin")?;
         write_line(stdin, &msg).map_err(|e| format!("failed writing new_game: {e}"))
@@ -193,7 +213,8 @@ impl ProtocolPlayer {
         let full = bot.agent_snapshot || bot.pdl_observation;
         let agent_snapshot = if bot.agent_snapshot {
             let mut snap = observation.visible_state().clone();
-            snap.decks[observation.actor].cards = vec![crate::models::Card::Unknown; observation.known_own_deck.len()];
+            snap.decks[observation.actor].cards =
+                vec![crate::models::Card::Unknown; observation.known_own_deck.len()];
             Some(snap)
         } else {
             None
@@ -205,24 +226,43 @@ impl ProtocolPlayer {
             actions: actions
                 .iter()
                 .enumerate()
-                .map(|(i, a)| ActionMsg { i, text: a.action.to_string(), action: a.action.clone() })
+                .map(|(i, a)| ActionMsg {
+                    i,
+                    text: a.action.to_string(),
+                    action: a.action.clone(),
+                })
                 .collect(),
             actor: observation.actor,
             agent_snapshot,
             legal_actions: if full { Some(actions.to_vec()) } else { None },
-            pdl_observation: if bot.pdl_observation { Some(observation.clone()) } else { None },
-            pdl_search_seed: if bot.pdl_observation { Some(seed) } else { None },
+            pdl_observation: if bot.pdl_observation {
+                Some(observation.clone())
+            } else {
+                None
+            },
+            pdl_search_seed: if bot.pdl_observation {
+                Some(seed)
+            } else {
+                None
+            },
             pdl_since_last: if bot.pdl_events { Some(since) } else { None },
         };
         let stdin = bot.stdin.as_mut().ok_or("no stdin")?;
         write_line(stdin, &msg).map_err(|e| format!("failed writing decide: {e}"))?;
         let reply = bot.rx.recv_timeout(timeout).map_err(|e| match e {
             std::sync::mpsc::RecvTimeoutError::Timeout => "bot timed out".to_string(),
-            std::sync::mpsc::RecvTimeoutError::Disconnected => "bot process exited unexpectedly".to_string(),
+            std::sync::mpsc::RecvTimeoutError::Disconnected => {
+                "bot process exited unexpectedly".to_string()
+            }
         })?;
-        let parsed: DecideReply = serde_json::from_str(&reply).map_err(|e| format!("invalid decide reply: {e}"))?;
+        let parsed: DecideReply =
+            serde_json::from_str(&reply).map_err(|e| format!("invalid decide reply: {e}"))?;
         if parsed.i >= actions.len() {
-            return Err(format!("i={} out of range for {} actions", parsed.i, actions.len()));
+            return Err(format!(
+                "i={} out of range for {} actions",
+                parsed.i,
+                actions.len()
+            ));
         }
         Ok(parsed.i)
     }
@@ -256,7 +296,12 @@ impl Player for ProtocolPlayer {
         }
     }
 
-    fn decision_fn(&mut self, _rng: &mut StdRng, observation: &PlayerObservation, actions: &[Action]) -> Action {
+    fn decision_fn(
+        &mut self,
+        _rng: &mut StdRng,
+        observation: &PlayerObservation,
+        actions: &[Action],
+    ) -> Action {
         self.ply += 1;
         self.stats.decisions.fetch_add(1, Ordering::SeqCst);
         let me = observation.actor;
@@ -299,7 +344,12 @@ impl Player for ProtocolPlayer {
         actions[index].clone()
     }
 
-    fn decide_omniscient(&mut self, _rng: &mut StdRng, _state: &State, _actions: &[Action]) -> Action {
+    fn decide_omniscient(
+        &mut self,
+        _rng: &mut StdRng,
+        _state: &State,
+        _actions: &[Action],
+    ) -> Action {
         panic!("ProtocolPlayer plays only through decision_fn (PlayerObservation); it has no omniscient entry point");
     }
 }

@@ -27,7 +27,10 @@ pub struct HelloMsg {
 
 impl HelloMsg {
     pub fn new() -> Self {
-        HelloMsg { kind: "hello".into(), protocol: PROTOCOL_VERSION }
+        HelloMsg {
+            kind: "hello".into(),
+            protocol: PROTOCOL_VERSION,
+        }
     }
 }
 
