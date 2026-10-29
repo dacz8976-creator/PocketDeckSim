@@ -15,7 +15,7 @@ A better deck carries out its plan reliably against the opponents players actual
 
 A better simulator follows the real rules, and its bots can carry out a deck's plan. Separate a weakness in the deck from an engine error or a bot that cannot execute the plan. Simulator results alone do not establish a ladder win rate or a deck ranking. Trustworthy playing quality takes priority over speed. Report time and cost; do not silently impose a speed requirement or a fixed game budget.
 
-**New decks:** finding new decks is the aim. It comes after a bot shows it can pilot a real deck's plan; the first test is Dustin's Kingambit deck. Until then, deck suggestions are rare and labelled untested.
+**New decks:** finding new decks is the aim. It comes after the bots show they can carry out real decks' plans. Until then, deck suggestions are rare and labelled untested.
 
 ### Keep the work tied to the mission
 
