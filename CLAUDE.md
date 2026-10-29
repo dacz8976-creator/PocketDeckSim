@@ -18,8 +18,9 @@
   Fusion C1, SP1 and P-C cards (205 of their 260 printings implemented; `deckgym simulate`, `optimize` and `goldfish`
   refuse a deck that holds one of the other 55), dual-type Pokémon and the corrected Ultra Beast list;
   `engine/src/players/` changed only so that the bots read the new cards; `rl/engine-2026-10-29/README.md`). The slow
-  report stays kx3 on main-4d48844 until its re-pin (`rl/strength/README.md`): say so when you hand one over. The working pilot
-  is km3, on both sides of the screen and the floor. Since Sept 30, kt3/kta3/ktb3/ktc3 name the kog-based presets
+  report has been kx3 on this engine since its re-pin (Oct 29; `rl/strength/README.md`); one made
+  before then ran on an older engine: say so when you hand it over. The working pilot is km3, on both
+  sides of the screen and the floor. Since Sept 30, kt3/kta3/ktb3/ktc3 name the kog-based presets
   (kt3, ktb3 and ktc3 are diagnostic only). Earlier programs (`rl/engine-2026-10-21/`, `-10-12/`, `-10-02/`, `-09-30/`,
   `-09-28/`, `-09-27/`, `-09-25/`, `rl/addon-0.7.2/deckgym`) are history; the verified add-on 0.7.2 wheel (`rl/addon-0.7.2/wheels/`) is
   unchanged, and run identities bind to it: copy it, never rebuild it.
