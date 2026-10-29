@@ -12,9 +12,18 @@ writes them in decklist order. Whether the game accepts a different order is unt
 "Test B" code on the Season Brews page (or run this on any deck and import it) to settle it.
 Energy bytes 9/10 (Dragon?/Colorless?) are unverified, same as the decoder.
 
+Dual Fusion (C1) cards (release checklist R7): the catalog has none yet, so parse() and encode() also
+read the PROVISIONAL overlay lib/c1_provisional_entities.json (read by lib/check_c1_overlay.py), only
+for ids the catalog lacks: the catalog always wins. Its entries are in PROVISIONAL, never in BYID:
+BYID stays the catalog's, so its other readers (rl/deck_journal/journal.py, the Ladder QR page's
+build.py) still refuse C1 cards until the catalog has them. A deck that uses an overlay entry prints
+which. A new card the overlay does not cover (C1 118 Bewear ex, SP1, P-C) is refused with the reason.
+If the catalog has any id the overlay lists, this tool refuses: compare with lib/check_c1_overlay.py
+and drop the overlay. PDL_C1_OVERLAY=off skips the overlay.
+
 Decklist format (what decks/brews/*.txt and decks/dustin/*.txt already use):
     Energy: Psychic            # or "Energy: Water, Fighting"
-    2 Arceus ex A2a 071        # <count> <name> <set> <number>
+    2 Arceus ex A2a 071        # <count> <name> <set> <number>; SP1's three Mew are "SP1 -03".."SP1 -01"
     ...
 
 deps: pip install qrcode pillow      (zxing-cpp optional, for --verify)
@@ -24,15 +33,29 @@ usage: encode_qr.py deck.txt [more ...] [--out DIR] [--verify]
 import sys, os, re, json, base64, argparse
 
 _here = os.path.dirname(os.path.abspath(__file__))
+if _here not in sys.path:
+    sys.path.insert(0, _here)
+import check_c1_overlay as c1  # noqa: E402  (the provisional C1 overlay, release checklist R7)
 _cat = next((p for p in (os.environ.get('PDL_CATALOG', ''), os.path.join(_here, 's216_card_catalog_v1.json'),
                          os.path.join(_here, '..', 's216_card_catalog_v1.json'), 's216_card_catalog_v1.json')
              if p and os.path.exists(p)), None)
 if not _cat:
     raise SystemExit('s216_card_catalog_v1.json not found (set PDL_CATALOG or run from the project)')
-BYID = {a['deckgym_id']: a for a in json.load(open(_cat, encoding='utf-8'))['aliases']}
+_aliases = json.load(open(_cat, encoding='utf-8'))['aliases']
+BYID = {a['deckgym_id']: a for a in _aliases}      # the catalog only; never the provisional overlay
+# C1 printings the catalog lacks, from the provisional overlay; load() refuses any overlap, so the catalog wins
+PROVISIONAL, NOT_COVERED = c1.load(_aliases)
+
+
+def card(cid):
+    """The catalog's entry for an id, else the provisional overlay's (it has 'provisional': True); None if neither."""
+    return BYID.get(cid) or PROVISIONAL.get(cid)
+
+
 ENERGY = {'grass': 1, 'fire': 2, 'water': 3, 'lightning': 4, 'psychic': 5, 'fighting': 6, 'darkness': 7, 'metal': 8,
           'dark': 7, 'electric': 4}
-LINE = re.compile(r'^(\d+)\s+(.+?)\s+([A-Z][0-9A-Za-z\-]*\s\d{3})$')
+# the number may carry a minus sign: SP1's three Mew are 'SP1 -03'..'SP1 -01' (as lib/brew_consistency.py reads them)
+LINE = re.compile(r'^(\d+)\s+(.+?)\s+([A-Z][0-9A-Za-z\-]*\s-?\d+)$')
 _norm = lambda s: s.replace('’', "'").strip().lower()
 
 
@@ -53,7 +76,10 @@ def parse(path):
         if not m:
             raise SystemExit(f'{path}: cannot parse line: {line}')
         n, name, cid = int(m[1]), m[2], m[3]
-        a = BYID.get(cid)
+        a = card(cid)
+        if not a and cid in NOT_COVERED:
+            raise SystemExit(f'{path}: {cid} ({name}) cannot be encoded: its deck-code entity is not known yet. '
+                             f'{NOT_COVERED[cid]["reason"]} (lib/c1_provisional_entities.json)')
         if not a:
             raise SystemExit(f'{path}: unknown card id {cid} ({name})')
         if _norm(a['raw_name']) != _norm(name):
@@ -70,7 +96,7 @@ def parse(path):
 def encode(energy, cards):
     tr, pk = [], []
     for n, cid in cards:
-        kind, num = BYID[cid]['entity_key'].split(':')
+        kind, num = card(cid)['entity_key'].split(':')
         (tr if kind == 'trainer' else pk).extend([int(num)] * n)
     b = bytes([len(tr)]) + b''.join((10_000_000 + x).to_bytes(3, 'big') for x in tr)
     b += bytes([len(pk)]) + b''.join(x.to_bytes(3, 'big') for x in pk)
@@ -104,6 +130,10 @@ if __name__ == '__main__':
         energy, cards = parse(path)
         code = encode(energy, cards)
         print(f'== {os.path.basename(path)}  code={code}')
+        prov = [cid for _, cid in cards if cid in PROVISIONAL]
+        if prov:
+            print(f'   provisional C1 entities (until the community catalog has C1; lib/c1_provisional_entities.json): '
+                  f'{", ".join(prov)}')
         if args.no_png:
             continue
         out_dir = args.out or os.path.dirname(os.path.abspath(path))

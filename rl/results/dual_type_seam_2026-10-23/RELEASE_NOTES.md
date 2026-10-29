@@ -107,7 +107,7 @@ A+B (63cbb6ab) was not run as a phase of its own: the plan ran it only if A+B+C 
 ## Still to do (checklist)
 - **R5:** the `lib/` refresh (the LF copy `lib/deckgym-database.json`; card_canon's EXPECTED_IDS, SET_ORDER and CANON_MAP; deck_classifier's SET_ORDER).
 - **R6:** the switch. It adds the card-support refusal to the slow report first; the cargo build runs at night hours.
-- **R7:** the QR catalog refresh. It waits for the community catalog release that holds the new cards.
+- **R7:** the QR catalog refresh. Done provisionally (Oct 29, Dustin's word via coordinator-077): `lib/c1_provisional_entities.json` gives 213 C1 printings their deck-code entities, provisional until the community catalog has C1, with its provenance in the file. C1 118 (all 4 printings), SP1 and P-C still decode as `UNKNOWN`. When the community catalog has C1, `lib/check_c1_overlay.py` compares every entity: any mismatch is a STOP and a report to the coordinator; if all match, the overlay is dropped.
 - **Item 14:** the release files to Drive.
 - **Item 11:** the separate branch.
 - **Item 2:** the #395 port.
