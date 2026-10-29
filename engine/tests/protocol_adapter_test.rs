@@ -270,16 +270,23 @@ fn compare_runs(ctx: &str, direct: &Run, other: &Run) {
         );
     }
     if direct.state_json != other.state_json {
-        let i = direct
+        let common = direct
             .state_json
             .bytes()
             .zip(other.state_json.bytes())
-            .position(|(a, b)| a != b)
-            .unwrap_or(0);
+            .take_while(|(a, b)| a == b)
+            .count();
+        let tail_from = |s: &str| -> String {
+            let mut start = common.saturating_sub(100).min(s.len());
+            while !s.is_char_boundary(start) {
+                start -= 1;
+            }
+            cut(&s[start..])
+        };
         panic!(
-            "{ctx}: final states differ at byte {i}: {} vs {}",
-            cut(&direct.state_json[i.saturating_sub(100)..]),
-            cut(&other.state_json[i.saturating_sub(100)..])
+            "{ctx}: final states differ at byte {common}: {} vs {}",
+            tail_from(&direct.state_json),
+            tail_from(&other.state_json)
         );
     }
 }
@@ -390,6 +397,60 @@ fn messages_are_single_json_lines() {
                     "cards_left_deck_opponent"
                 ])
         );
+    }
+    // Both opted in, live: what ProtocolPlayer actually sends.
+    {
+        let dir = out_dir("t2d");
+        let file = std::env::temp_dir().join(format!("pdl_t2d_recv_{}.jsonl", std::process::id()));
+        let _ = std::fs::remove_file(&file);
+        let prog = r#"
+import sys, json
+f = open(sys.argv[1], "w")
+for line in sys.stdin:
+    f.write(line)
+    f.flush()
+    m = json.loads(line)
+    if m["type"] == "hello":
+        r = {"name": "cap", "pdl_observation": True, "pdl_events": True}
+    elif m["type"] == "new_game":
+        continue
+    else:
+        r = {"i": 0}
+    print(json.dumps(r), flush=True)
+"#;
+        let cmd = format!("python3 -I -c '{}' {}", prog, file.display());
+        let (a, b) = decks(0, 0);
+        let (players, _) = seats(&a, &b, [bot10(cmd), None], &dir);
+        let r = run(players, seed(0, 0, 0), |_, _| {});
+        assert!(r.over);
+        let text = std::fs::read_to_string(&file).unwrap();
+        assert!(text.ends_with('\n'));
+        let msgs: Vec<Value> = text
+            .lines()
+            .map(|l| serde_json::from_str::<Value>(l).expect("each received line is one JSON line"))
+            .collect();
+        assert!(msgs.len() > 2);
+        assert!(msgs[0]["type"] == "hello");
+        assert!(
+            key_set(&msgs[0]) == set(&["type", "protocol"]),
+            "live hello keys"
+        );
+        assert!(msgs[1]["type"] == "new_game");
+        assert!(
+            key_set(&msgs[1]) == set(&["type", "game_id", "you", "deck", "deck_definition"]),
+            "live new_game keys"
+        );
+        assert!(msgs[1]["deck_definition"].is_object());
+        let mut want = set(&base_decide);
+        for k in ["pdl_observation", "pdl_search_seed", "pdl_since_last"] {
+            want.insert(k.into());
+        }
+        for m in &msgs[2..] {
+            assert!(m["type"] == "decide");
+            assert!(key_set(m) == want, "live decide keys {:?}", key_set(m));
+            assert!(m["legal_actions"].is_array() && m["pdl_observation"].is_object());
+        }
+        let _ = std::fs::remove_file(&file);
     }
     // Both opted in, built directly: exactly the three extra keys; one line.
     let (a, b) = decks(0, 0);
