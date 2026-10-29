@@ -6,8 +6,7 @@ use crate::{
     game::DecisionRandomness,
     observation::PlayerObservation,
     protocol::{
-        view::ViewState, ActionMsg, DecideMsg, DecideReply, HelloMsg, HelloReply, NewGameMsg,
-        PublicEvent, SinceLast,
+        view::ViewState, ActionMsg, DecideMsg, HelloMsg, NewGameMsg, PublicEvent, SinceLast,
     },
     Deck, State,
 };
@@ -66,6 +65,12 @@ pub struct ProtocolPlayer {
     log: Option<File>,
     errors: u64,
     bot_name: Option<String>,
+    ignored_optional_keys: u64,
+    first_ignored: Option<String>,
+    /// Spawn + hello + new_game time of the first decision (taken when logged).
+    startup_secs: Option<f64>,
+    /// Round trip of the decide just asked (None when no decide was written).
+    roundtrip_secs: Option<f64>,
 }
 
 fn write_line<T: Serialize>(stdin: &mut ChildStdin, msg: &T) -> Result<(), String> {
@@ -114,11 +119,22 @@ impl ProtocolPlayer {
             log,
             errors: 0,
             bot_name: None,
+            ignored_optional_keys: 0,
+            first_ignored: None,
+            startup_secs: None,
+            roundtrip_secs: None,
         }
     }
 
     pub fn stats(&self) -> Arc<ProtocolStats> {
         self.stats.clone()
+    }
+
+    fn note_ignored(&mut self, what: String) {
+        self.ignored_optional_keys += 1;
+        if self.first_ignored.is_none() {
+            self.first_ignored = Some(what);
+        }
     }
 
     fn ensure_spawned(&mut self, you: usize) -> Result<(), String> {
@@ -178,12 +194,33 @@ impl ProtocolPlayer {
         if !value.is_object() {
             return Err("hello reply is not a JSON object".into());
         }
-        let hello: HelloReply =
-            serde_json::from_value(value).map_err(|e| format!("bad hello reply: {e}"))?;
-        bot.agent_snapshot = hello.agent_snapshot.unwrap_or(false);
-        bot.pdl_observation = hello.pdl_observation.unwrap_or(false);
-        bot.pdl_events = hello.pdl_events.unwrap_or(false);
-        self.bot_name = hello.name;
+        let mut ignored: Vec<String> = Vec::new();
+        let mut flag = |key: &str| -> bool {
+            match value.get(key) {
+                None => false,
+                Some(serde_json::Value::Bool(b)) => *b,
+                Some(other) => {
+                    ignored.push(format!("hello.{key} wrong type: {other}"));
+                    false
+                }
+            }
+        };
+        bot.agent_snapshot = flag("agent_snapshot");
+        bot.pdl_observation = flag("pdl_observation");
+        bot.pdl_events = flag("pdl_events");
+        let name = match value.get("name") {
+            None => None,
+            Some(serde_json::Value::String(n)) => Some(n.clone()),
+            Some(other) => {
+                ignored.push(format!("hello.name wrong type: {other}"));
+                None
+            }
+        };
+        self.bot_name = name;
+        for w in ignored {
+            self.note_ignored(w);
+        }
+        let bot = self.bot.as_mut().unwrap();
         let msg = NewGameMsg {
             kind: "new_game".into(),
             game_id: uuid::Uuid::new_v4().to_string(),
@@ -206,7 +243,13 @@ impl ProtocolPlayer {
         since: SinceLast,
         seed: Option<u64>,
     ) -> Result<usize, String> {
-        self.ensure_spawned(observation.actor)?;
+        let first_spawn = !self.spawn_attempted;
+        let t0 = Instant::now();
+        let spawned = self.ensure_spawned(observation.actor);
+        if first_spawn {
+            self.startup_secs = Some(t0.elapsed().as_secs_f64());
+        }
+        spawned?;
         let ply = self.ply;
         let timeout = self.timeout;
         let bot = self.bot.as_mut().ok_or("bot not running")?;
@@ -248,23 +291,51 @@ impl ProtocolPlayer {
             pdl_since_last: if bot.pdl_events { Some(since) } else { None },
         };
         let stdin = bot.stdin.as_mut().ok_or("no stdin")?;
+        let t1 = Instant::now();
         write_line(stdin, &msg).map_err(|e| format!("failed writing decide: {e}"))?;
-        let reply = bot.rx.recv_timeout(timeout).map_err(|e| match e {
+        let received = bot.rx.recv_timeout(timeout);
+        self.roundtrip_secs = Some(t1.elapsed().as_secs_f64());
+        let reply = received.map_err(|e| match e {
             std::sync::mpsc::RecvTimeoutError::Timeout => "bot timed out".to_string(),
             std::sync::mpsc::RecvTimeoutError::Disconnected => {
                 "bot process exited unexpectedly".to_string()
             }
         })?;
-        let parsed: DecideReply =
+        let value: serde_json::Value =
             serde_json::from_str(&reply).map_err(|e| format!("invalid decide reply: {e}"))?;
-        if parsed.i >= actions.len() {
+        let obj = value
+            .as_object()
+            .ok_or_else(|| "decide reply is not a JSON object".to_string())?;
+        let i = obj
+            .get("i")
+            .ok_or_else(|| "decide reply has no i".to_string())?
+            .as_u64()
+            .ok_or_else(|| "decide reply i is not a non-negative integer".to_string())?;
+        if i >= actions.len() as u64 {
             return Err(format!(
                 "i={} out of range for {} actions",
-                parsed.i,
+                i,
                 actions.len()
             ));
         }
-        Ok(parsed.i)
+        let mut ignored: Vec<String> = Vec::new();
+        match obj.get("note") {
+            None | Some(serde_json::Value::String(_)) => {}
+            Some(other) => ignored.push(format!("decide.note wrong type: {other}")),
+        }
+        if let Some(sc) = obj.get("scores") {
+            let ok = sc.as_array().is_some_and(|a| {
+                a.len() == actions.len()
+                    && a.iter().all(|x| x.as_f64().is_some_and(|f| f.is_finite()))
+            });
+            if !ok {
+                ignored.push(format!("decide.scores malformed: {sc}"));
+            }
+        }
+        for w in ignored {
+            self.note_ignored(w);
+        }
+        Ok(i as usize)
     }
 
     fn kill_bot(&mut self) {
@@ -315,13 +386,15 @@ impl Player for ProtocolPlayer {
         self.chance = 0;
         self.cards_left = [0; 2];
         let seed = self.search_seed.take();
-        let start = Instant::now();
+        self.roundtrip_secs = None;
+        self.startup_secs = None;
         let result = if self.failed {
             Err("bot failed earlier in this game".to_string())
         } else {
             self.ask(observation, actions, since, seed)
         };
-        let secs = start.elapsed().as_secs_f64();
+        let secs = self.roundtrip_secs.take();
+        let startup_secs = self.startup_secs.take();
         let (index, error) = match result {
             Ok(i) => (i, None),
             Err(e) => {
@@ -337,7 +410,7 @@ impl Player for ProtocolPlayer {
         if let Some(log) = self.log.as_mut() {
             let line = serde_json::json!({
                 "instance": self.instance, "ply": self.ply, "search_seed": seed, "n_actions": actions.len(),
-                "i": index, "secs": secs, "fallback": error.is_some(), "error": error, "bot_name": self.bot_name,
+                "i": index, "secs": secs, "startup_secs": startup_secs, "fallback": error.is_some(), "error": error, "bot_name": self.bot_name,
             });
             let _ = writeln!(log, "{line}");
         }
@@ -364,6 +437,8 @@ impl Drop for ProtocolPlayer {
                 "decisions": self.stats.decisions.load(Ordering::SeqCst),
                 "fallbacks": self.stats.fallbacks.load(Ordering::SeqCst),
                 "errors": self.errors,
+                "ignored_optional_keys": self.ignored_optional_keys,
+                "first_ignored": self.first_ignored,
                 "child_pid": if pid == 0 { None } else { Some(pid) },
             });
             let _ = writeln!(log, "{line}");

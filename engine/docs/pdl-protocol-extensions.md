@@ -44,8 +44,17 @@ the game, with no respawn. It never panics.
 ## Log (`--bot-log DIR`)
 
 `DIR/protocol_<pid>_<n>.jsonl`, one file per `ProtocolPlayer`. One line per asked decision:
-`instance, ply, search_seed, n_actions, i, secs, fallback, error, bot_name`. On drop, a summary line:
-`{"summary":true,"decisions","fallbacks","errors","child_pid"}`.
+`instance, ply, search_seed, n_actions, i, secs, startup_secs, fallback, error, bot_name`. `secs` is only the
+decide round trip (from just before the `decide` line is written to the reply line arriving, before parsing); it is
+null when no `decide` was written. `startup_secs` is the first decision's spawn + hello + `new_game` time (null on
+every other line, and when no spawn happened). On drop, a summary line:
+`{"summary":true,"decisions","fallbacks","errors","ignored_optional_keys","first_ignored","child_pid"}`.
+
+Reply handling, as upstream: in a decide reply only `i` is required (a non-negative integer below the number of
+actions; missing, wrong-typed, out of range, invalid JSON or a non-object is a failure). `note` (string) and
+`scores` (one finite number per action) are optional; if present but malformed they are ignored. In the hello reply
+`name`, `agent_snapshot`, `pdl_observation` and `pdl_events` are optional, and a wrong-typed one counts as absent.
+Each ignored optional key is counted in `ignored_optional_keys`; the first one's text is `first_ignored`.
 
 ## CLI
 
