@@ -244,7 +244,11 @@ impl PlayedCard {
 
     /// Whether `energy_type` is one of this card's *printed* types (a printed dual-type card
     /// counts as each of its two). False for a Fossil. An Ability that changes the type in play
-    /// (Urshifu's Double Type) is not read here: that is `State::pokemon_is_type`.
+    /// (Urshifu's Double Type) is not read here: that is `State::pokemon_is_type`, which every
+    /// in-play type check in the rules engine asks. The one engine caller left is Leaf Cape in
+    /// `get_effective_total_hp`, which has no `State`; why the printed read is exact there today
+    /// is noted at the call. The bots' type pricing in `players/` still reads it too (a known
+    /// follow-up; see `State::pokemon_energy_types`).
     pub fn has_printed_type(&self, energy_type: EnergyType) -> bool {
         self.card.is_type(energy_type)
     }
@@ -302,6 +306,17 @@ impl PlayedCard {
         // Tool bonuses. Type/stage-specific caps only apply to matching Pokémon (the tools are
         // attachable to anything, but their HP bonus is gated by the holder).
         effective_hp += 20 * tool_count(self, CardId::A2147GiantCape);
+        // Leaf Cape (A3 147): "The [G] Pokémon this card is attached to gets +30 HP." The one
+        // in-play type check left on the printed set. This method has no `State`, and folding the
+        // bonus into `ability_hp_bonus` (set by `State::refresh_hp_bonuses_all`) would lag: that
+        // pass runs on board changes and at the end of each action, not when an Ability is
+        // switched off (Prickly Powder adds `NoAbilities` in its attack's effect, and the attack's
+        // own knockout check reads HP before the pass). The printed read equals
+        // `State::pokemon_is_type` for every card today: the only Ability that changes a type in
+        // play is Double Type (`AbilityMechanic::DualType`: Rapid Strike Urshifu B3 051, printed
+        // [W], is [W]/[F] in play; Single Strike Urshifu B3 113, printed [D], is [F]/[D]), and it
+        // neither adds nor removes [G]. A new type-changing Ability that touches [G] must revisit
+        // this.
         if self.has_printed_type(EnergyType::Grass) {
             effective_hp += 30 * tool_count(self, CardId::A3147LeafCape);
         }
@@ -512,9 +527,9 @@ impl PlayedCard {
     }
 
     pub(crate) fn has_double_grass(&self, state: &State, player: usize) -> bool {
-        let is_grass = self.has_printed_type(EnergyType::Grass);
-        let jungle_totem_active = has_serperior_jungle_totem(state, player);
-        jungle_totem_active && is_grass
+        // Jungle Totem first: this runs in every cost check (`hooks::energy_missing`), and the
+        // in-play type (Urshifu's Double Type) is only needed while a Serperior is in play.
+        has_serperior_jungle_totem(state, player) && state.pokemon_is_type(self, EnergyType::Grass)
     }
 }
 

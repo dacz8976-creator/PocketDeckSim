@@ -648,7 +648,7 @@ fn attach_energy_from_zone_to_your_typed_outcome(energy_type: EnergyType) -> Out
     Outcomes::single_fn(move |_rng, state, action| {
         let choices = state
             .enumerate_in_play_pokemon(action.actor)
-            .filter(|(_, pokemon)| pokemon.has_printed_type(energy_type))
+            .filter(|(_, pokemon)| state.pokemon_is_type(pokemon, energy_type))
             .map(|(in_play_idx, _)| SimpleAction::Attach {
                 attachments: vec![(1, energy_type, in_play_idx)],
                 is_turn_energy: false,
@@ -1158,7 +1158,7 @@ fn vaporeon_wash_out(_: &mut StdRng, state: &mut State, action: &Action) {
         state
             .enumerate_bench_pokemon(acting_player)
             .filter(|(_, pokemon)| {
-                pokemon.has_printed_type(EnergyType::Water)
+                state.pokemon_is_type(pokemon, EnergyType::Water)
                     && pokemon.attached_energy.contains(&EnergyType::Water)
             })
             .map(|(in_play_idx, _)| SimpleAction::MoveEnergy {
@@ -1242,7 +1242,7 @@ fn move_all_typed_energy_from_bench_to_active(
     let possible_moves = state
         .enumerate_bench_pokemon(acting_player)
         .filter_map(|(in_play_idx, pokemon)| {
-            if !pokemon.has_printed_type(energy_type) {
+            if !state.pokemon_is_type(pokemon, energy_type) {
                 return None;
             }
             let amount = pokemon

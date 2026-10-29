@@ -6,11 +6,16 @@
 //!   fails on main's single-type code);
 //! - `*_single_type_control`: the same board with the unmodified single-type card behaves as on
 //!   main.
+//!
+//! The last section (Dual Fusion release checklist item 11) is about the real Urshifu, whose
+//! Double Type Ability changes its type in play: the sites now read it through
+//! `State::pokemon_is_type`. Its synthetic cards change the *printed* type and keep the Ability.
 
 use deckgym::{
     actions::{Action, SimpleAction},
     card_ids::CardId,
     database::get_card_by_enum,
+    effects::CardEffect,
     models::{Card, EnergyType, PlayedCard},
     test_support::{attack_action, get_initialized_game_with_board, get_test_game_with_board},
     Game,
@@ -100,7 +105,9 @@ fn attack_damage(
     before - game.get_state_clone().get_active(1).get_remaining_hp()
 }
 
-// ---- PlayedCard::has_printed_type (state/played_card.rs), the helper the in-play sites use.
+// ---- PlayedCard::has_printed_type (state/played_card.rs), the printed-set helper. Of the in-play
+// sites only Leaf Cape still uses it; the others ask `State::pokemon_is_type`, which counts a
+// printed dual-type card the same way.
 
 #[test]
 fn played_card_has_printed_type_second_type() {
@@ -504,4 +511,198 @@ fn wash_out_bounded_source_single_type_control() {
     use_ability(&mut game, 1);
     assert!(wash_out_offers(&game, 2));
     assert!(!wash_out_offers(&game, 3));
+}
+
+// ---- Urshifu's Double Type at the in-play sites (Dual Fusion release checklist item 11).
+// Rapid Strike Urshifu (B3 051) is printed [W]: "As long as this Pokémon is in play, it is [W] and
+// [F] type." Single Strike Urshifu (B3 113) is printed [D]: "... it is [F] and [D] type." Each is
+// [F] only in play and only while its Ability is on. Before item 11 these sites read the printed
+// set and missed it.
+
+const URSHIFU: [CardId; 2] = [
+    CardId::B3051RapidStrikeUrshifu,
+    CardId::B3113SingleStrikeUrshifu,
+];
+
+/// `pokemon` with Prickly Powder's `NoAbilities` on it (Budew B3 013: "The Defending Pokémon loses
+/// all Abilities."), so its Double Type is off.
+fn switched_off(mut pokemon: PlayedCard) -> PlayedCard {
+    pokemon.add_effect(CardEffect::NoAbilities, 1);
+    pokemon
+}
+
+/// `id` with `printed` as its only printed type, in place of the real one. The Ability stays.
+fn printed_as(id: CardId, printed: EnergyType) -> PlayedCard {
+    let Card::Pokemon(mut pokemon) = get_card_by_enum(id) else {
+        panic!("a retyped card must be cloned from a Pokémon card");
+    };
+    pokemon.energy_type = printed;
+    PlayedCard::from_card(&Card::Pokemon(pokemon))
+}
+
+/// Snover's Ice Shard (A2 044), 10: "If your opponent's Active Pokémon is a [F] Pokémon, this
+/// attack does 30 more damage." Both Urshifu have 120 HP and are weak to [L] (B3 051) or [G]
+/// (B3 113), so the [W] attack's damage is exact.
+fn ice_shard_damage(defender: PlayedCard) -> u32 {
+    attack_damage(
+        CardId::A2044Snover,
+        PlayedCard::from_id(CardId::A2044Snover).with_energy(vec![EnergyType::Water]),
+        vec![defender],
+        vec![],
+        None,
+    )
+}
+
+/// The "+X if the defender is a [X] Pokémon" bonus (extra_damage_if_defender_type): Double Type
+/// makes the Active Urshifu a [F] Pokémon.
+#[test]
+fn defender_type_bonus_double_type() {
+    for id in URSHIFU {
+        assert_eq!(ice_shard_damage(PlayedCard::from_id(id)), 10 + 30, "{id:?}");
+    }
+}
+
+/// With its Ability off, each Urshifu is only its printed [W] / [D]: no bonus.
+#[test]
+fn defender_type_bonus_double_type_switched_off() {
+    for id in URSHIFU {
+        assert_eq!(ice_shard_damage(switched_off(PlayedCard::from_id(id))), 10, "{id:?}");
+    }
+}
+
+/// The "if your opponent has any [X] Pokémon in play" bonus
+/// (extra_damage_if_opponent_has_type_in_play) reads a Benched Pokémon's in-play type. Its one
+/// card, Bronzong's Psychic Resonance, asks for [P], which Double Type never gives, so the real
+/// Urshifu change nothing there. A synthetic Rapid Strike Urshifu printed [P] shows the read: in
+/// play it "is [W] and [F] type" (Double Type replaces the printed type, as
+/// `State::pokemon_energy_types` reads it), so it is a [P] Pokémon only with its Ability off.
+#[test]
+fn opponent_type_in_play_benched_double_type() {
+    for id in URSHIFU {
+        assert_eq!(psychic_resonance_damage(PlayedCard::from_id(id)), 50, "{id:?}");
+    }
+    let psychic = printed_as(CardId::B3051RapidStrikeUrshifu, EnergyType::Psychic);
+    assert_eq!(psychic_resonance_damage(psychic.clone()), 50);
+    assert_eq!(psychic_resonance_damage(switched_off(psychic)), 50 + 50);
+}
+
+/// An own-side site, Deceptive Needle on the Active (hooks/core.rs, apply_deceptive_needle_damage).
+/// Single Strike Urshifu is still [D] in play (its Double Type pair includes the printed [D]) and
+/// Rapid Strike Urshifu is never [D]. For the real cards no own-side site changes: those sites ask
+/// [G], [P], [W] or [D], and Double Type only adds [F]. A synthetic Single Strike Urshifu printed
+/// [W] would have done no damage before item 11: in play it is [F] and [D].
+#[test]
+fn deceptive_needle_double_type() {
+    let single_strike = PlayedCard::from_id(CardId::B3113SingleStrikeUrshifu);
+    assert_eq!(deceptive_needle_damage(single_strike), 10);
+    let rapid_strike = PlayedCard::from_id(CardId::B3051RapidStrikeUrshifu);
+    assert_eq!(deceptive_needle_damage(rapid_strike), 0);
+    let water = printed_as(CardId::B3113SingleStrikeUrshifu, EnergyType::Water);
+    assert_eq!(deceptive_needle_damage(water.clone()), 10);
+    assert_eq!(deceptive_needle_damage(switched_off(water)), 0);
+}
+
+// The other routed sites. For the real Urshifu none of them changes: Wash Out asks [W], which Rapid
+// Strike Urshifu is printed anyway, and Forest Breath, Chase Order, Jungle Totem and Psychic
+// Connect ask [G] or [P], which Double Type neither gives nor takes away. A synthetic Rapid Strike
+// Urshifu with another printed type pins each site to the in-play read: each test fails if its
+// site goes back to `has_printed_type`. The Wash Out test holds whether Double Type replaces the
+// printed type or adds to it; the [G] and [P] tests rest on the replace reading, as
+// `opponent_type_in_play_benched_double_type` does (see the TODO in
+// `State::pokemon_energy_types`).
+
+/// Wash Out, legality (move_generation_abilities.rs, can_use_vaporeon_wash_out_inner) and the
+/// bounded sources (energy_moves.rs, eligible_sources). A Rapid Strike Urshifu printed [R] is [W]
+/// in play, so it is a Benched [W] source; with its Ability off it is not.
+#[test]
+fn wash_out_source_double_type() {
+    let fire = || {
+        printed_as(CardId::B3051RapidStrikeUrshifu, EnergyType::Fire)
+            .with_energy(vec![EnergyType::Water])
+    };
+    // The Urshifu is the only Benched source.
+    assert!(ability_offered(&wash_out_game(vec![fire()]), 1));
+    assert!(!ability_offered(&wash_out_game(vec![switched_off(fire())]), 1));
+    // Blastoise (idx 2) makes the Ability legal by itself, so only the source filter is tested.
+    for (urshifu, is_source) in [(fire(), true), (switched_off(fire()), false)] {
+        let mut game = wash_out_game(vec![
+            PlayedCard::from_id(CardId::A1055Blastoise).with_energy(vec![EnergyType::Water]),
+            urshifu,
+        ]);
+        use_ability(&mut game, 1);
+        assert!(wash_out_offers(&game, 2));
+        assert_eq!(wash_out_offers(&game, 3), is_source);
+    }
+}
+
+/// Psychic Connect, legality (move_generation_abilities.rs,
+/// has_benched_typed_pokemon_with_typed_energy) and the sources (apply_abilities_action.rs,
+/// move_all_typed_energy_from_bench_to_active). A Rapid Strike Urshifu printed [P] is [W] and [F]
+/// in play: a Benched [P] source only with its Ability off.
+#[test]
+fn psychic_connect_source_double_type() {
+    let psychic = || {
+        printed_as(CardId::B3051RapidStrikeUrshifu, EnergyType::Psychic)
+            .with_energy(vec![EnergyType::Psychic])
+    };
+    // The Urshifu is the only Benched source.
+    assert!(!ability_offered(&psychic_connect_game(vec![psychic()]), 1));
+    assert!(ability_offered(&psychic_connect_game(vec![switched_off(psychic())]), 1));
+    // Abra (idx 2) makes the Ability legal by itself, so only the source filter is tested.
+    for (urshifu, is_source) in [(psychic(), false), (switched_off(psychic()), true)] {
+        let mut game = psychic_connect_game(vec![
+            PlayedCard::from_id(CardId::A1115Abra).with_energy(vec![EnergyType::Psychic]),
+            urshifu,
+        ]);
+        use_ability(&mut game, 1);
+        assert!(psychic_connect_offers(&game, 2));
+        assert_eq!(psychic_connect_offers(&game, 3), is_source);
+    }
+}
+
+/// Forest Breath's targets (apply_abilities_action.rs,
+/// attach_energy_from_zone_to_your_typed_outcome). A Rapid Strike Urshifu printed [G] is a [G]
+/// Pokémon only with its Ability off.
+#[test]
+fn forest_breath_target_double_type() {
+    let grass = || printed_as(CardId::B3051RapidStrikeUrshifu, EnergyType::Grass);
+    let game = forest_breath_game(grass());
+    assert!(forest_breath_offers(&game, 0));
+    assert!(!forest_breath_offers(&game, 1));
+    let game = forest_breath_game(switched_off(grass()));
+    assert!(forest_breath_offers(&game, 1));
+}
+
+/// Chase Order's Benched Basic [G] filter (apply_attack_action.rs, benched_basic_indices_of_type).
+/// Both Urshifu are Stage 1, so the synthetic one printed [G] is also made a Basic.
+#[test]
+fn chase_order_bench_basic_double_type() {
+    let basic_grass = || {
+        let mut urshifu = printed_as(CardId::B3051RapidStrikeUrshifu, EnergyType::Grass);
+        if let Card::Pokemon(pokemon) = &mut urshifu.card {
+            pokemon.stage = 0;
+        }
+        urshifu
+    };
+    assert!(!chase_order_discard_offered(&chase_order_game(basic_grass())));
+    assert!(chase_order_discard_offered(&chase_order_game(switched_off(basic_grass()))));
+}
+
+/// Jungle Totem (state/played_card.rs, has_double_grass), read through the Retreat Cost: Urshifu's
+/// [C][C][C] is paid by two [G] Energy only when each provides 2. A Rapid Strike Urshifu printed
+/// [G] is a [G] Pokémon only with its Ability off.
+#[test]
+fn jungle_totem_double_type() {
+    let grass = || {
+        printed_as(CardId::B3051RapidStrikeUrshifu, EnergyType::Grass)
+            .with_energy(vec![EnergyType::Grass; 2])
+    };
+    for (urshifu, doubled) in [(grass(), false), (switched_off(grass()), true)] {
+        let game = get_test_game_with_board(
+            vec![urshifu, PlayedCard::from_id(CardId::A1a006Serperior)],
+            vec![PlayedCard::from_id(CardId::A1001Bulbasaur)],
+        );
+        let retreat_offered = legal_simple_actions(&game).contains(&SimpleAction::Retreat(1));
+        assert_eq!(retreat_offered, doubled);
+    }
 }

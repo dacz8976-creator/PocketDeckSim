@@ -656,17 +656,30 @@ impl State {
     /// stacking type damage boosts and cuts, the typed Retreat discounts and the other callers of
     /// this function and [`Self::pokemon_is_type`] go through here.
     ///
-    /// NOT yet through here: the 12 in-play checks that read the printed set with
-    /// `PlayedCard::has_printed_type` (Leaf Cape, Jungle Totem, Deceptive Needle, the Chase Order
+    /// That includes the in-play checks that read the printed set with
+    /// `PlayedCard::has_printed_type` until item 11 of the Dual Fusion release checklist
+    /// (`rl/results/dual_type_seam_2026-10-23`): Jungle Totem, Deceptive Needle, the Chase Order
     /// bench filter, the "+X if the defender is a [X] Pokémon" and "if the opponent has a [X]
-    /// Pokémon in play" bonuses, Forest Breath, Wash Out and Psychic Connect; list in
-    /// `rl/results/dual_type_seam_2026-10-23`). They do not count Double Type: a pre-existing gap,
-    /// live for Urshifu (printed [W] / [D], [F] in play) against the [F]-defender bonuses. They move
-    /// here, with the rule and an Urshifu test, in the Dual Fusion release step
-    /// (RELEASE_CHECKLIST.md). `PlayedCard::get_energy_type` / `Card::get_type` remain the
-    /// *primary printed* type and are correct only where one printed value is what is wanted
-    /// (display, colour, a map key). A card that is not in play is asked with `Card::is_type` /
-    /// `Card::get_types` (printed set, no Abilities).
+    /// Pokémon in play" bonuses, Forest Breath, Wash Out (legality, the bounded sources and the
+    /// unbounded path) and Psychic Connect (legality and sources). So Urshifu (printed [W] / [D])
+    /// is [F] for Snover's Ice Shard and Sealeo's Frozen Splash, as it already was for Weakness.
+    ///
+    /// Not through here:
+    /// - Leaf Cape's +30 HP (`PlayedCard::get_effective_total_hp`) has no `State`, and a bonus
+    ///   cached by `Self::refresh_hp_bonuses_all` would lag (that pass runs at the end of each
+    ///   action, not when an Ability is switched off). It reads the printed set, which is exact
+    ///   for every card today: Double Type neither adds nor removes [G]. The note at the call
+    ///   says more.
+    /// - The bots' type pricing in `players/` still reads the printed set: the defender-type
+    ///   bonus in `value_functions.rs` (`defender_identity_bonus`) leaves out Ice Shard's and
+    ///   Frozen Splash's bonus against an Active Urshifu, so its doc's "as apply_attack_action
+    ///   prices it" no longer holds there. A known follow-up, left alone because changing it
+    ///   changes pinned bot play; the pricing and that doc move together.
+    ///
+    /// `PlayedCard::get_energy_type` / `Card::get_type` remain the *primary printed* type and are
+    /// correct only where one printed value is what is wanted (display, colour, a map key). A card
+    /// that is not in play is asked with `Card::is_type` / `Card::get_types` (printed set, no
+    /// Abilities).
     ///
     /// Reads the Ability through `get_in_play_ability_mechanic`, so Prickly Powder's `NoAbilities`
     /// reverts the Pokémon to its printed type set.

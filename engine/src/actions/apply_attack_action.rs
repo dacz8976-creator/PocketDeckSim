@@ -4651,7 +4651,9 @@ fn benched_basic_indices_of_type(
 ) -> Vec<usize> {
     state
         .enumerate_bench_pokemon(player)
-        .filter(|(_, pokemon)| pokemon.card.is_basic() && pokemon.has_printed_type(energy_type))
+        .filter(|(_, pokemon)| {
+            pokemon.card.is_basic() && state.pokemon_is_type(pokemon, energy_type)
+        })
         .map(|(in_play_idx, _)| in_play_idx)
         .collect()
 }
@@ -4897,7 +4899,7 @@ fn extra_damage_if_defender_type(
     let opponent_active = state.get_active(opponent);
     let matches = energy_types
         .iter()
-        .any(|energy_type| opponent_active.has_printed_type(*energy_type));
+        .any(|energy_type| state.pokemon_is_type(opponent_active, *energy_type));
     let damage = if matches {
         base_damage + extra_damage
     } else {
@@ -5226,7 +5228,7 @@ fn extra_damage_if_opponent_has_type_in_play(
     let opponent = (state.current_player + 1) % 2;
     let has_type = state
         .enumerate_in_play_pokemon(opponent)
-        .any(|(_, pokemon)| pokemon.has_printed_type(energy_type));
+        .any(|(_, pokemon)| state.pokemon_is_type(pokemon, energy_type));
     let damage = if has_type {
         base_damage + extra_damage
     } else {

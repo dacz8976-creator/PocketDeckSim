@@ -593,7 +593,7 @@ fn apply_deceptive_needle_damage(player_ending_turn: usize, state: &mut State) {
     };
     if active.is_knocked_out()
         || !has_tool(active, CardId::B4148DeceptiveNeedle)
-        || !active.has_printed_type(EnergyType::Darkness)
+        || !state.pokemon_is_type(active, EnergyType::Darkness)
     {
         return;
     }

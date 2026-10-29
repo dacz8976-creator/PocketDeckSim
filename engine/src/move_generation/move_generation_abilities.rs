@@ -488,7 +488,7 @@ fn can_use_vaporeon_wash_out_inner(state: &State) -> bool {
     state
         .enumerate_bench_pokemon(state.current_player)
         .any(|(_, pokemon)| {
-            pokemon.has_printed_type(EnergyType::Water)
+            state.pokemon_is_type(pokemon, EnergyType::Water)
                 && pokemon.attached_energy.contains(&EnergyType::Water)
         })
 }
@@ -499,7 +499,8 @@ fn has_benched_typed_pokemon_with_typed_energy(state: &State, energy_type: Energ
     state
         .enumerate_bench_pokemon(state.current_player)
         .any(|(_, pokemon)| {
-            pokemon.has_printed_type(energy_type) && pokemon.attached_energy.contains(&energy_type)
+            state.pokemon_is_type(pokemon, energy_type)
+                && pokemon.attached_energy.contains(&energy_type)
         })
 }
 
