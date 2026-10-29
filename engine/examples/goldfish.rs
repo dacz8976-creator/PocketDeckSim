@@ -2,14 +2,19 @@
 //!
 //!   cargo run --release --example goldfish -- --deck ../decks/brews/x.txt [--panel ../decks/research]
 //!       [--bot k3] [--opp-bot aa] [--games 40] [--attackers "Xatu,Arceus ex"] [--seed 22200000000]
-//!       [--games-out games.jsonl] [--coverage coverage.json]
+//!       [--games-out games.jsonl] [--coverage coverage.json] [--allow-unsupported-cards]
 //!
 //! Per opponent deck, game i uses seed `seed + opponent x 10,000 + i`; the list sits in seat 0 for even i.
 //! "Turn k" is the list's own k-th turn. Per game it records: who went first; the turn of the list's first
 //! attack and of its first attack by a named main attacker; the opponent's points at that moment (points
 //! conceded before the first real attack); whether a Stage 2 was in play by turn 3; and dead cards at the
 //! end of each turn (hand cards that no offered move could use when the list ended its turn). A game that
-//! panics (a card the engine doesn't support) is counted and skipped, not fatal.
+//! panics is counted and skipped, not fatal.
+//!
+//! Before any game, and before the coverage file is written, a list or panel deck that holds a card the
+//! engine cannot play (card_status CardNotFound or Missing*, e.g. C1 019 Volcanion) is refused with exit 2,
+//! by the check `deckgym simulate` makes (deckgym::card_support). `--allow-unsupported-cards` lists those
+//! cards on stderr (id, name, reason, deck) and plays anyway.
 //!
 //! `--coverage` writes, per card in the list, what k3 prices with a fallback: the unpriced text rule
 //! (opponent's hand or deck), attacks whose damage effect falls back to printed damage in the estimator,
@@ -17,6 +22,7 @@
 //! list with flagged cards are marked untrusted on its page.
 
 use deckgym::actions::{Action, SimpleAction, EFFECT_MECHANIC_MAP};
+use deckgym::card_support::{refuse_unsupported_cards, ALLOW_UNSUPPORTED_CARDS_FLAG};
 use deckgym::card_validation::{get_implementation_status, implementation_limitations};
 use deckgym::models::{Card, TrainerType};
 use deckgym::players::{create_players, parse_player_code};
@@ -241,20 +247,29 @@ fn main() {
     let attackers: Vec<String> = arg(&args, "--attackers").unwrap_or_default().split(',')
         .map(|s| s.trim().to_string()).filter(|s| !s.is_empty()).collect();
     let list = Deck::from_file(&deck_path).expect("list file");
-    if let Some(path) = arg(&args, "--coverage") {
-        std::fs::write(&path, serde_json::to_string_pretty(&coverage(&list)).unwrap()).expect("coverage file");
-    }
     let mut panel_files: Vec<_> = std::fs::read_dir(&panel).expect("panel dir").flatten()
         .map(|e| e.path()).filter(|p| p.extension().is_some_and(|x| x == "txt")).collect();
     panel_files.sort();
+    let panel_decks: Vec<(String, Deck)> = panel_files.iter().map(|path| {
+        (path.file_stem().unwrap().to_string_lossy().to_string(), Deck::from_file(path.to_str().unwrap()).expect("panel deck"))
+    }).collect();
+    // The card-support refusal of `deckgym simulate`, before anything is written or played; it reads only the
+    // card database, so the games of supported decks are played exactly as before.
+    let decks = std::iter::once((format!("list ({deck_path})"), &list))
+        .chain(panel_files.iter().zip(&panel_decks).map(|(path, (_, deck))| (format!("panel deck ({})", path.display()), deck)));
+    if let Err(message) = refuse_unsupported_cards("goldfish", decks, args.iter().any(|a| a == ALLOW_UNSUPPORTED_CARDS_FLAG)) {
+        eprintln!("{message}");
+        std::process::exit(2);
+    }
+    if let Some(path) = arg(&args, "--coverage") {
+        std::fs::write(&path, serde_json::to_string_pretty(&coverage(&list)).unwrap()).expect("coverage file");
+    }
     std::panic::set_hook(Box::new(|_| {})); // crashes are recorded per game, not printed
     let mut all: Vec<GameRecord> = Vec::new();
-    for (o, path) in panel_files.iter().enumerate() {
-        let name = path.file_stem().unwrap().to_string_lossy().to_string();
-        let opp = Deck::from_file(path.to_str().unwrap()).expect("panel deck");
+    for (o, (name, opp)) in panel_decks.iter().enumerate() {
         let recs: Vec<GameRecord> = (0..games).into_par_iter().map(|i| {
             let s = seed + o as u64 * 10_000 + i;
-            catch_unwind(AssertUnwindSafe(|| play(&list, &opp, &name, i, s, &bot, &opp_bot, &attackers)))
+            catch_unwind(AssertUnwindSafe(|| play(&list, opp, name, i, s, &bot, &opp_bot, &attackers)))
                 .unwrap_or_else(|e| GameRecord {
                     opponent: name.clone(), i, seed: s, list_seat: (i % 2) as usize,
                     crashed: Some(e.downcast_ref::<String>().cloned()
