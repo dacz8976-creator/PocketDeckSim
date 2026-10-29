@@ -1,0 +1,25 @@
+The slow report's pin tests at 054a43b89bb37551a6c10d9b4558aabe38014dba (laptop/r6-slowpin-2026-10-29), run 2026-10-29T14:19:18Z to
+2026-10-29T14:23:16Z in a detached worktree of that commit (/home/dacz8976/r6v_scratch), with KX_RUNS_DIR unset, nice 19:
+/home/dacz8976/slowpin_run_tests.sh (the nine modules, 4 at a time), test_slow_report_paired after them, then
+make_predictions.py --selftest. Per module: rc, seconds, the last lines.
+
+test_slow_report rc=0 secs=230 Ran 492 tests in 229.467s  OK 
+test_slow_report_existing rc=0 secs=1 Ran 42 tests in 0.812s  OK 
+test_slow_report_page rc=0 secs=21 Ran 201 tests in 21.001s  OK 
+test_slow_report_paired rc=0 secs=5 Ran 69 tests in 5.269s  OK 
+test_slow_report_process rc=0 secs=10 Ran 115 tests in 9.769s  OK 
+test_slow_report_registration rc=0 secs=68 Ran 244 tests in 67.345s  OK 
+test_slow_report_runloop rc=0 secs=15 Ran 78 tests in 14.632s  OK 
+test_split_collect rc=0 secs=0 stamped /tmp/tmp4zxkfr3q/w1: manifest 04bb2eb5eb47, program 9a3a45d01531, slice (all) sealed /tmp/tmp4zxkfr3q/w1: 1 games, games.jsonl 6c2cc7350822, program 9a3
+test_strength_prereg_use rc=0 secs=34 Ran 121 tests in 33.647s  OK 
+test_strength_report rc=0 secs=2 Ran 18 tests in 2.008s  OK 
+(test_split_collect's own last lines: Ran 54 tests in 0.132s, OK)
+
+make_predictions.py --selftest (rl/results/ladder_validation, --repo the worktree): rc=0, SELF-TEST PASSED (0 failed).
+
+CommittedPin.test_the_harness_source_in_this_checkout_is_the_source_the_pin_was_made_on (in test_slow_report_registration,
+red on main since the engine switch, RELEASE_NOTES.md "R6") passes here: the pin records c4f7da21..., main's harness source.
+
+The same tests, run the same way, also passed at 9cd72ff2 (2026-10-29T14:12:27Z to 14:16:29Z), the first re-pin commit. It was
+replaced before any push: its check commit 5e13b057 had an unchecked clock sentence in READING.md, corrected in bbf555f5, so the
+re-pin was made again on bbf555f5 (054a43b8; only READING.md and CERT.md's check-commit id differ).
