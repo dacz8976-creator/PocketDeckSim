@@ -32,6 +32,20 @@ pub struct PlayerObservation {
     template: State,
 }
 
+#[derive(Deserialize)]
+#[serde(deny_unknown_fields)]
+struct PlayerObservationWire { actor: usize, information_model: String, known_own_deck: Vec<Card>, revealed: RevealedKnowledge, template: State }
+
+impl<'de> Deserialize<'de> for PlayerObservation {
+    fn deserialize<D: serde::Deserializer<'de>>(deserializer: D) -> Result<Self, D::Error> {
+        let w = PlayerObservationWire::deserialize(deserializer)?;
+        if w.information_model != INFORMATION_MODEL {
+            return Err(serde::de::Error::custom(format!("unsupported information_model {:?}", w.information_model)));
+        }
+        Ok(PlayerObservation { actor: w.actor, information_model: INFORMATION_MODEL, known_own_deck: w.known_own_deck, revealed: w.revealed, template: w.template })
+    }
+}
+
 fn canonical_cards(cards: &mut [Card]) {
     cards.sort_by_key(Card::get_id);
 }

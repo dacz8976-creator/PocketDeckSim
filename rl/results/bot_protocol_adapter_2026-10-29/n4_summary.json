@@ -1,0 +1,866 @@
+{
+ "check": "N4 CLI parity through protocol_bot --bot km3 (one seat, both seats) v N3's direct km3 records",
+ "ok": true,
+ "secs_per_decision_through_pipe": {
+  "n": 13993,
+  "median": 0.004827,
+  "p95": 0.031939,
+  "max": 0.200046
+ },
+ "startup_secs": {
+  "n": 599,
+  "median": 0.002702,
+  "p95": 0.00474,
+  "max": 0.021486
+ },
+ "runs": {
+  "one/p0o0": {
+   "rc": 0,
+   "records": 25,
+   "ref_records": 25,
+   "duplicates": 0,
+   "missing": 0,
+   "extra": 0,
+   "differ": 0,
+   "first_diff": null,
+   "finished": 25,
+   "ok": true,
+   "player_codes": [
+    [
+     "Proto { command: \"/home/dacz8976/adapter_target/release/protocol_bot --bot km3\", timeout_ms: 2700000, log: Some(\"/home/dacz8976/adapter_night/out/n4/one/p0o0.botlog\") }",
+     "KM { max_depth: 3 }"
+    ]
+   ],
+   "player_codes_ok": true,
+   "bots": {
+    "instances": 25,
+    "expected_instances": 25,
+    "unparsed_lines": 0,
+    "decisions": 596,
+    "summary_decisions": 596,
+    "fallbacks": 0,
+    "fallback_lines": 0,
+    "timeouts": 0,
+    "errors": 0,
+    "decisions_per_game": {
+     "n": 25,
+     "median": 23,
+     "p95": 36,
+     "max": 38
+    },
+    "secs": {
+     "n": 596,
+     "median": 0.007488,
+     "p95": 0.052435,
+     "max": 0.200046
+    },
+    "startup_secs": {
+     "n": 25,
+     "median": 0.002733,
+     "p95": 0.00529,
+     "max": 0.005627
+    },
+    "ignored_optional_keys": 0,
+    "bot_names": [
+     "pdl-km3"
+    ],
+    "first_choice_only": false
+   }
+  },
+  "one/p0o1": {
+   "rc": 0,
+   "records": 25,
+   "ref_records": 25,
+   "duplicates": 0,
+   "missing": 0,
+   "extra": 0,
+   "differ": 0,
+   "first_diff": null,
+   "finished": 25,
+   "ok": true,
+   "player_codes": [
+    [
+     "Proto { command: \"/home/dacz8976/adapter_target/release/protocol_bot --bot km3\", timeout_ms: 2700000, log: Some(\"/home/dacz8976/adapter_night/out/n4/one/p0o1.botlog\") }",
+     "KM { max_depth: 3 }"
+    ]
+   ],
+   "player_codes_ok": true,
+   "bots": {
+    "instances": 25,
+    "expected_instances": 25,
+    "unparsed_lines": 0,
+    "decisions": 654,
+    "summary_decisions": 654,
+    "fallbacks": 0,
+    "fallback_lines": 0,
+    "timeouts": 0,
+    "errors": 0,
+    "decisions_per_game": {
+     "n": 25,
+     "median": 27,
+     "p95": 32,
+     "max": 44
+    },
+    "secs": {
+     "n": 654,
+     "median": 0.005768,
+     "p95": 0.030695,
+     "max": 0.063654
+    },
+    "startup_secs": {
+     "n": 25,
+     "median": 0.002667,
+     "p95": 0.004259,
+     "max": 0.004329
+    },
+    "ignored_optional_keys": 0,
+    "bot_names": [
+     "pdl-km3"
+    ],
+    "first_choice_only": false
+   }
+  },
+  "one/p1o0": {
+   "rc": 0,
+   "records": 25,
+   "ref_records": 25,
+   "duplicates": 0,
+   "missing": 0,
+   "extra": 0,
+   "differ": 0,
+   "first_diff": null,
+   "finished": 25,
+   "ok": true,
+   "player_codes": [
+    [
+     "Proto { command: \"/home/dacz8976/adapter_target/release/protocol_bot --bot km3\", timeout_ms: 2700000, log: Some(\"/home/dacz8976/adapter_night/out/n4/one/p1o0.botlog\") }",
+     "KM { max_depth: 3 }"
+    ]
+   ],
+   "player_codes_ok": true,
+   "bots": {
+    "instances": 25,
+    "expected_instances": 25,
+    "unparsed_lines": 0,
+    "decisions": 528,
+    "summary_decisions": 528,
+    "fallbacks": 0,
+    "fallback_lines": 0,
+    "timeouts": 0,
+    "errors": 0,
+    "decisions_per_game": {
+     "n": 25,
+     "median": 21,
+     "p95": 31,
+     "max": 34
+    },
+    "secs": {
+     "n": 528,
+     "median": 0.003152,
+     "p95": 0.015843,
+     "max": 0.034003
+    },
+    "startup_secs": {
+     "n": 25,
+     "median": 0.002819,
+     "p95": 0.004585,
+     "max": 0.005032
+    },
+    "ignored_optional_keys": 0,
+    "bot_names": [
+     "pdl-km3"
+    ],
+    "first_choice_only": false
+   }
+  },
+  "one/p1o1": {
+   "rc": 0,
+   "records": 25,
+   "ref_records": 25,
+   "duplicates": 0,
+   "missing": 0,
+   "extra": 0,
+   "differ": 0,
+   "first_diff": null,
+   "finished": 25,
+   "ok": true,
+   "player_codes": [
+    [
+     "Proto { command: \"/home/dacz8976/adapter_target/release/protocol_bot --bot km3\", timeout_ms: 2700000, log: Some(\"/home/dacz8976/adapter_night/out/n4/one/p1o1.botlog\") }",
+     "KM { max_depth: 3 }"
+    ]
+   ],
+   "player_codes_ok": true,
+   "bots": {
+    "instances": 25,
+    "expected_instances": 25,
+    "unparsed_lines": 0,
+    "decisions": 568,
+    "summary_decisions": 568,
+    "fallbacks": 0,
+    "fallback_lines": 0,
+    "timeouts": 0,
+    "errors": 0,
+    "decisions_per_game": {
+     "n": 25,
+     "median": 23,
+     "p95": 32,
+     "max": 33
+    },
+    "secs": {
+     "n": 568,
+     "median": 0.004419,
+     "p95": 0.024753,
+     "max": 0.0595
+    },
+    "startup_secs": {
+     "n": 25,
+     "median": 0.002857,
+     "p95": 0.012873,
+     "max": 0.021486
+    },
+    "ignored_optional_keys": 0,
+    "bot_names": [
+     "pdl-km3"
+    ],
+    "first_choice_only": false
+   }
+  },
+  "one/p2o0": {
+   "rc": 0,
+   "records": 25,
+   "ref_records": 25,
+   "duplicates": 0,
+   "missing": 0,
+   "extra": 0,
+   "differ": 0,
+   "first_diff": null,
+   "finished": 25,
+   "ok": true,
+   "player_codes": [
+    [
+     "Proto { command: \"/home/dacz8976/adapter_target/release/protocol_bot --bot km3\", timeout_ms: 2700000, log: Some(\"/home/dacz8976/adapter_night/out/n4/one/p2o0.botlog\") }",
+     "KM { max_depth: 3 }"
+    ]
+   ],
+   "player_codes_ok": true,
+   "bots": {
+    "instances": 25,
+    "expected_instances": 25,
+    "unparsed_lines": 0,
+    "decisions": 542,
+    "summary_decisions": 542,
+    "fallbacks": 0,
+    "fallback_lines": 0,
+    "timeouts": 0,
+    "errors": 0,
+    "decisions_per_game": {
+     "n": 25,
+     "median": 23,
+     "p95": 30,
+     "max": 33
+    },
+    "secs": {
+     "n": 542,
+     "median": 0.004088,
+     "p95": 0.024398,
+     "max": 0.063153
+    },
+    "startup_secs": {
+     "n": 25,
+     "median": 0.00304,
+     "p95": 0.004909,
+     "max": 0.005074
+    },
+    "ignored_optional_keys": 0,
+    "bot_names": [
+     "pdl-km3"
+    ],
+    "first_choice_only": false
+   }
+  },
+  "one/p2o1": {
+   "rc": 0,
+   "records": 25,
+   "ref_records": 25,
+   "duplicates": 0,
+   "missing": 0,
+   "extra": 0,
+   "differ": 0,
+   "first_diff": null,
+   "finished": 25,
+   "ok": true,
+   "player_codes": [
+    [
+     "Proto { command: \"/home/dacz8976/adapter_target/release/protocol_bot --bot km3\", timeout_ms: 2700000, log: Some(\"/home/dacz8976/adapter_night/out/n4/one/p2o1.botlog\") }",
+     "KM { max_depth: 3 }"
+    ]
+   ],
+   "player_codes_ok": true,
+   "bots": {
+    "instances": 25,
+    "expected_instances": 25,
+    "unparsed_lines": 0,
+    "decisions": 515,
+    "summary_decisions": 515,
+    "fallbacks": 0,
+    "fallback_lines": 0,
+    "timeouts": 0,
+    "errors": 0,
+    "decisions_per_game": {
+     "n": 25,
+     "median": 21,
+     "p95": 32,
+     "max": 32
+    },
+    "secs": {
+     "n": 515,
+     "median": 0.003272,
+     "p95": 0.020197,
+     "max": 0.061248
+    },
+    "startup_secs": {
+     "n": 25,
+     "median": 0.002839,
+     "p95": 0.003377,
+     "max": 0.004823
+    },
+    "ignored_optional_keys": 0,
+    "bot_names": [
+     "pdl-km3"
+    ],
+    "first_choice_only": false
+   }
+  },
+  "one/p3o0": {
+   "rc": 0,
+   "records": 25,
+   "ref_records": 25,
+   "duplicates": 0,
+   "missing": 0,
+   "extra": 0,
+   "differ": 0,
+   "first_diff": null,
+   "finished": 25,
+   "ok": true,
+   "player_codes": [
+    [
+     "Proto { command: \"/home/dacz8976/adapter_target/release/protocol_bot --bot km3\", timeout_ms: 2700000, log: Some(\"/home/dacz8976/adapter_night/out/n4/one/p3o0.botlog\") }",
+     "KM { max_depth: 3 }"
+    ]
+   ],
+   "player_codes_ok": true,
+   "bots": {
+    "instances": 25,
+    "expected_instances": 25,
+    "unparsed_lines": 0,
+    "decisions": 632,
+    "summary_decisions": 632,
+    "fallbacks": 0,
+    "fallback_lines": 0,
+    "timeouts": 0,
+    "errors": 0,
+    "decisions_per_game": {
+     "n": 25,
+     "median": 26,
+     "p95": 38,
+     "max": 39
+    },
+    "secs": {
+     "n": 632,
+     "median": 0.004777,
+     "p95": 0.02662,
+     "max": 0.079394
+    },
+    "startup_secs": {
+     "n": 25,
+     "median": 0.002624,
+     "p95": 0.003663,
+     "max": 0.003957
+    },
+    "ignored_optional_keys": 0,
+    "bot_names": [
+     "pdl-km3"
+    ],
+    "first_choice_only": false
+   }
+  },
+  "one/p3o1": {
+   "rc": 0,
+   "records": 25,
+   "ref_records": 25,
+   "duplicates": 0,
+   "missing": 0,
+   "extra": 0,
+   "differ": 0,
+   "first_diff": null,
+   "finished": 25,
+   "ok": true,
+   "player_codes": [
+    [
+     "Proto { command: \"/home/dacz8976/adapter_target/release/protocol_bot --bot km3\", timeout_ms: 2700000, log: Some(\"/home/dacz8976/adapter_night/out/n4/one/p3o1.botlog\") }",
+     "KM { max_depth: 3 }"
+    ]
+   ],
+   "player_codes_ok": true,
+   "bots": {
+    "instances": 25,
+    "expected_instances": 25,
+    "unparsed_lines": 0,
+    "decisions": 635,
+    "summary_decisions": 635,
+    "fallbacks": 0,
+    "fallback_lines": 0,
+    "timeouts": 0,
+    "errors": 0,
+    "decisions_per_game": {
+     "n": 25,
+     "median": 24,
+     "p95": 35,
+     "max": 37
+    },
+    "secs": {
+     "n": 635,
+     "median": 0.0067,
+     "p95": 0.041135,
+     "max": 0.089441
+    },
+    "startup_secs": {
+     "n": 25,
+     "median": 0.002499,
+     "p95": 0.0047,
+     "max": 0.007046
+    },
+    "ignored_optional_keys": 0,
+    "bot_names": [
+     "pdl-km3"
+    ],
+    "first_choice_only": false
+   }
+  },
+  "both/p0o0": {
+   "rc": 0,
+   "records": 25,
+   "ref_records": 25,
+   "duplicates": 0,
+   "missing": 0,
+   "extra": 0,
+   "differ": 0,
+   "first_diff": null,
+   "finished": 25,
+   "ok": true,
+   "player_codes": [
+    [
+     "Proto { command: \"/home/dacz8976/adapter_target/release/protocol_bot --bot km3\", timeout_ms: 2700000, log: Some(\"/home/dacz8976/adapter_night/out/n4/both/p0o0.botlog\") }",
+     "Proto { command: \"/home/dacz8976/adapter_target/release/protocol_bot --bot km3\", timeout_ms: 2700000, log: Some(\"/home/dacz8976/adapter_night/out/n4/both/p0o0.botlog\") }"
+    ]
+   ],
+   "player_codes_ok": true,
+   "bots": {
+    "instances": 50,
+    "expected_instances": 50,
+    "unparsed_lines": 0,
+    "decisions": 1283,
+    "summary_decisions": 1283,
+    "fallbacks": 0,
+    "fallback_lines": 0,
+    "timeouts": 0,
+    "errors": 0,
+    "decisions_per_game": {
+     "n": 50,
+     "median": 25.5,
+     "p95": 38,
+     "max": 42
+    },
+    "secs": {
+     "n": 1283,
+     "median": 0.006455,
+     "p95": 0.042972,
+     "max": 0.184454
+    },
+    "startup_secs": {
+     "n": 50,
+     "median": 0.002644,
+     "p95": 0.005088,
+     "max": 0.005541
+    },
+    "ignored_optional_keys": 0,
+    "bot_names": [
+     "pdl-km3"
+    ],
+    "first_choice_only": false
+   }
+  },
+  "both/p0o1": {
+   "rc": 0,
+   "records": 25,
+   "ref_records": 25,
+   "duplicates": 0,
+   "missing": 0,
+   "extra": 0,
+   "differ": 0,
+   "first_diff": null,
+   "finished": 25,
+   "ok": true,
+   "player_codes": [
+    [
+     "Proto { command: \"/home/dacz8976/adapter_target/release/protocol_bot --bot km3\", timeout_ms: 2700000, log: Some(\"/home/dacz8976/adapter_night/out/n4/both/p0o1.botlog\") }",
+     "Proto { command: \"/home/dacz8976/adapter_target/release/protocol_bot --bot km3\", timeout_ms: 2700000, log: Some(\"/home/dacz8976/adapter_night/out/n4/both/p0o1.botlog\") }"
+    ]
+   ],
+   "player_codes_ok": true,
+   "bots": {
+    "instances": 50,
+    "expected_instances": 50,
+    "unparsed_lines": 0,
+    "decisions": 1254,
+    "summary_decisions": 1254,
+    "fallbacks": 0,
+    "fallback_lines": 0,
+    "timeouts": 0,
+    "errors": 0,
+    "decisions_per_game": {
+     "n": 50,
+     "median": 26.0,
+     "p95": 32,
+     "max": 44
+    },
+    "secs": {
+     "n": 1254,
+     "median": 0.006783,
+     "p95": 0.040024,
+     "max": 0.10009
+    },
+    "startup_secs": {
+     "n": 50,
+     "median": 0.002576,
+     "p95": 0.00436,
+     "max": 0.005167
+    },
+    "ignored_optional_keys": 0,
+    "bot_names": [
+     "pdl-km3"
+    ],
+    "first_choice_only": false
+   }
+  },
+  "both/p1o0": {
+   "rc": 0,
+   "records": 25,
+   "ref_records": 25,
+   "duplicates": 0,
+   "missing": 0,
+   "extra": 0,
+   "differ": 0,
+   "first_diff": null,
+   "finished": 25,
+   "ok": true,
+   "player_codes": [
+    [
+     "Proto { command: \"/home/dacz8976/adapter_target/release/protocol_bot --bot km3\", timeout_ms: 2700000, log: Some(\"/home/dacz8976/adapter_night/out/n4/both/p1o0.botlog\") }",
+     "Proto { command: \"/home/dacz8976/adapter_target/release/protocol_bot --bot km3\", timeout_ms: 2700000, log: Some(\"/home/dacz8976/adapter_night/out/n4/both/p1o0.botlog\") }"
+    ]
+   ],
+   "player_codes_ok": true,
+   "bots": {
+    "instances": 50,
+    "expected_instances": 50,
+    "unparsed_lines": 0,
+    "decisions": 1059,
+    "summary_decisions": 1059,
+    "fallbacks": 0,
+    "fallback_lines": 0,
+    "timeouts": 0,
+    "errors": 0,
+    "decisions_per_game": {
+     "n": 50,
+     "median": 21.0,
+     "p95": 31,
+     "max": 34
+    },
+    "secs": {
+     "n": 1059,
+     "median": 0.003598,
+     "p95": 0.01966,
+     "max": 0.063469
+    },
+    "startup_secs": {
+     "n": 50,
+     "median": 0.002695,
+     "p95": 0.005564,
+     "max": 0.00587
+    },
+    "ignored_optional_keys": 0,
+    "bot_names": [
+     "pdl-km3"
+    ],
+    "first_choice_only": false
+   }
+  },
+  "both/p1o1": {
+   "rc": 0,
+   "records": 25,
+   "ref_records": 25,
+   "duplicates": 0,
+   "missing": 0,
+   "extra": 0,
+   "differ": 0,
+   "first_diff": null,
+   "finished": 25,
+   "ok": true,
+   "player_codes": [
+    [
+     "Proto { command: \"/home/dacz8976/adapter_target/release/protocol_bot --bot km3\", timeout_ms: 2700000, log: Some(\"/home/dacz8976/adapter_night/out/n4/both/p1o1.botlog\") }",
+     "Proto { command: \"/home/dacz8976/adapter_target/release/protocol_bot --bot km3\", timeout_ms: 2700000, log: Some(\"/home/dacz8976/adapter_night/out/n4/both/p1o1.botlog\") }"
+    ]
+   ],
+   "player_codes_ok": true,
+   "bots": {
+    "instances": 50,
+    "expected_instances": 50,
+    "unparsed_lines": 0,
+    "decisions": 1141,
+    "summary_decisions": 1141,
+    "fallbacks": 0,
+    "fallback_lines": 0,
+    "timeouts": 0,
+    "errors": 0,
+    "decisions_per_game": {
+     "n": 50,
+     "median": 23.0,
+     "p95": 31,
+     "max": 33
+    },
+    "secs": {
+     "n": 1141,
+     "median": 0.004108,
+     "p95": 0.020256,
+     "max": 0.046943
+    },
+    "startup_secs": {
+     "n": 50,
+     "median": 0.002626,
+     "p95": 0.004882,
+     "max": 0.005741
+    },
+    "ignored_optional_keys": 0,
+    "bot_names": [
+     "pdl-km3"
+    ],
+    "first_choice_only": false
+   }
+  },
+  "both/p2o0": {
+   "rc": 0,
+   "records": 25,
+   "ref_records": 25,
+   "duplicates": 0,
+   "missing": 0,
+   "extra": 0,
+   "differ": 0,
+   "first_diff": null,
+   "finished": 25,
+   "ok": true,
+   "player_codes": [
+    [
+     "Proto { command: \"/home/dacz8976/adapter_target/release/protocol_bot --bot km3\", timeout_ms: 2700000, log: Some(\"/home/dacz8976/adapter_night/out/n4/both/p2o0.botlog\") }",
+     "Proto { command: \"/home/dacz8976/adapter_target/release/protocol_bot --bot km3\", timeout_ms: 2700000, log: Some(\"/home/dacz8976/adapter_night/out/n4/both/p2o0.botlog\") }"
+    ]
+   ],
+   "player_codes_ok": true,
+   "bots": {
+    "instances": 50,
+    "expected_instances": 50,
+    "unparsed_lines": 0,
+    "decisions": 1089,
+    "summary_decisions": 1089,
+    "fallbacks": 0,
+    "fallback_lines": 0,
+    "timeouts": 0,
+    "errors": 0,
+    "decisions_per_game": {
+     "n": 50,
+     "median": 22.0,
+     "p95": 33,
+     "max": 33
+    },
+    "secs": {
+     "n": 1089,
+     "median": 0.003309,
+     "p95": 0.018917,
+     "max": 0.068729
+    },
+    "startup_secs": {
+     "n": 50,
+     "median": 0.002662,
+     "p95": 0.00503,
+     "max": 0.005886
+    },
+    "ignored_optional_keys": 0,
+    "bot_names": [
+     "pdl-km3"
+    ],
+    "first_choice_only": false
+   }
+  },
+  "both/p2o1": {
+   "rc": 0,
+   "records": 25,
+   "ref_records": 25,
+   "duplicates": 0,
+   "missing": 0,
+   "extra": 0,
+   "differ": 0,
+   "first_diff": null,
+   "finished": 25,
+   "ok": true,
+   "player_codes": [
+    [
+     "Proto { command: \"/home/dacz8976/adapter_target/release/protocol_bot --bot km3\", timeout_ms: 2700000, log: Some(\"/home/dacz8976/adapter_night/out/n4/both/p2o1.botlog\") }",
+     "Proto { command: \"/home/dacz8976/adapter_target/release/protocol_bot --bot km3\", timeout_ms: 2700000, log: Some(\"/home/dacz8976/adapter_night/out/n4/both/p2o1.botlog\") }"
+    ]
+   ],
+   "player_codes_ok": true,
+   "bots": {
+    "instances": 50,
+    "expected_instances": 50,
+    "unparsed_lines": 0,
+    "decisions": 1000,
+    "summary_decisions": 1000,
+    "fallbacks": 0,
+    "fallback_lines": 0,
+    "timeouts": 0,
+    "errors": 0,
+    "decisions_per_game": {
+     "n": 50,
+     "median": 20.5,
+     "p95": 32,
+     "max": 32
+    },
+    "secs": {
+     "n": 1000,
+     "median": 0.003784,
+     "p95": 0.021187,
+     "max": 0.06093
+    },
+    "startup_secs": {
+     "n": 50,
+     "median": 0.002657,
+     "p95": 0.004189,
+     "max": 0.004841
+    },
+    "ignored_optional_keys": 0,
+    "bot_names": [
+     "pdl-km3"
+    ],
+    "first_choice_only": false
+   }
+  },
+  "both/p3o0": {
+   "rc": 0,
+   "records": 25,
+   "ref_records": 25,
+   "duplicates": 0,
+   "missing": 0,
+   "extra": 0,
+   "differ": 0,
+   "first_diff": null,
+   "finished": 25,
+   "ok": true,
+   "player_codes": [
+    [
+     "Proto { command: \"/home/dacz8976/adapter_target/release/protocol_bot --bot km3\", timeout_ms: 2700000, log: Some(\"/home/dacz8976/adapter_night/out/n4/both/p3o0.botlog\") }",
+     "Proto { command: \"/home/dacz8976/adapter_target/release/protocol_bot --bot km3\", timeout_ms: 2700000, log: Some(\"/home/dacz8976/adapter_night/out/n4/both/p3o0.botlog\") }"
+    ]
+   ],
+   "player_codes_ok": true,
+   "bots": {
+    "instances": 50,
+    "expected_instances": 50,
+    "unparsed_lines": 0,
+    "decisions": 1316,
+    "summary_decisions": 1316,
+    "fallbacks": 0,
+    "fallback_lines": 0,
+    "timeouts": 0,
+    "errors": 0,
+    "decisions_per_game": {
+     "n": 50,
+     "median": 26.5,
+     "p95": 41,
+     "max": 48
+    },
+    "secs": {
+     "n": 1316,
+     "median": 0.006182,
+     "p95": 0.040835,
+     "max": 0.104097
+    },
+    "startup_secs": {
+     "n": 50,
+     "median": 0.002727,
+     "p95": 0.004465,
+     "max": 0.004917
+    },
+    "ignored_optional_keys": 0,
+    "bot_names": [
+     "pdl-km3"
+    ],
+    "first_choice_only": false
+   }
+  },
+  "both/p3o1": {
+   "rc": 0,
+   "records": 25,
+   "ref_records": 25,
+   "duplicates": 0,
+   "missing": 0,
+   "extra": 0,
+   "differ": 0,
+   "first_diff": null,
+   "finished": 25,
+   "ok": true,
+   "player_codes": [
+    [
+     "Proto { command: \"/home/dacz8976/adapter_target/release/protocol_bot --bot km3\", timeout_ms: 2700000, log: Some(\"/home/dacz8976/adapter_night/out/n4/both/p3o1.botlog\") }",
+     "Proto { command: \"/home/dacz8976/adapter_target/release/protocol_bot --bot km3\", timeout_ms: 2700000, log: Some(\"/home/dacz8976/adapter_night/out/n4/both/p3o1.botlog\") }"
+    ]
+   ],
+   "player_codes_ok": true,
+   "bots": {
+    "instances": 50,
+    "expected_instances": 50,
+    "unparsed_lines": 0,
+    "decisions": 1181,
+    "summary_decisions": 1181,
+    "fallbacks": 0,
+    "fallback_lines": 0,
+    "timeouts": 0,
+    "errors": 0,
+    "decisions_per_game": {
+     "n": 49,
+     "median": 23,
+     "p95": 35,
+     "max": 39
+    },
+    "secs": {
+     "n": 1181,
+     "median": 0.005625,
+     "p95": 0.035164,
+     "max": 0.140488
+    },
+    "startup_secs": {
+     "n": 49,
+     "median": 0.00275,
+     "p95": 0.004734,
+     "max": 0.005502
+    },
+    "ignored_optional_keys": 0,
+    "bot_names": [
+     "pdl-km3"
+    ],
+    "first_choice_only": false
+   }
+  }
+ }
+}
