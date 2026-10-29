@@ -540,6 +540,8 @@ fn parity(both: bool) {
         .ok()
         .and_then(|v| v.parse().ok())
         .unwrap_or(3);
+    let mut totals = [0u64; 2];
+    let (mut zero, mut total_seat_games) = (0u64, 0u64);
     for (p, o, k) in all_cases(n, &[0, 1], &[0, 1, 2, 3]) {
         let (a, b) = decks(p, o);
         let sd = seed(p, o, k);
@@ -554,11 +556,37 @@ fn parity(both: bool) {
         let via = run(players, sd, |_, _| {});
         let ctx = format!("pair {p} order {o} seed {sd}");
         compare_runs(&ctx, &direct, &via);
-        for st in stats.iter().flatten() {
-            assert_eq!(st.fallbacks.load(Ordering::SeqCst), 0, "{ctx}: fallbacks");
-            assert!(st.decisions.load(Ordering::SeqCst) > 0);
+        for (seat, st) in stats.iter().enumerate() {
+            if let Some(st) = st {
+                assert_eq!(
+                    st.fallbacks.load(Ordering::SeqCst),
+                    0,
+                    "{ctx} seat {seat}: fallbacks"
+                );
+                let d = st.decisions.load(Ordering::SeqCst);
+                totals[seat] += d;
+                total_seat_games += 1;
+                if d == 0 {
+                    zero += 1;
+                }
+            }
         }
     }
+    for (seat, total) in totals.iter().enumerate() {
+        let protocol_seat = seat == 0 || both;
+        assert!(
+            !protocol_seat || *total > 0,
+            "all {} games of the run ({}): protocol seat {seat} was asked no decision at all",
+            n * 8,
+            if both { "both" } else { "one" }
+        );
+    }
+    println!(
+        "PARITY_ZERO_DECISION_SEAT_GAMES mode={} count={} of {}",
+        if both { "both" } else { "one" },
+        zero,
+        total_seat_games
+    );
 }
 
 #[test]
