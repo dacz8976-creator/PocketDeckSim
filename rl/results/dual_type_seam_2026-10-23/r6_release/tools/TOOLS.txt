@@ -1,0 +1,15 @@
+The tools as run on the laptop (copied byte for byte) and the day scripts (CR removed). sha256 of each:
+a65357e88ad1566122248a174387272fd7052a9257853b67df9cf174a51c7f84  README_engine_2026-10-29.md
+a4632822a77f493d90515409dec34ea636608ebea470be2b120c0e7e41381f28  adopt_r6.py
+b9451efebe7ee5697546521c3a92061926fe34b868c78c60fb53b62bad2608eb  commit_record_r6.sh
+f8f1d3396ec7aaa6ef6db53d2d7937acd6acc5123a2a8784a7580729aba41c1d  floorS_recompare.sh
+7819737f32a4f5f774309bbe35ac42223143105a5a6e03c7e1cf204fd4cb1d22  goldfishS_floor_coverage.sh
+14d5753fbb2f79966b71e23f6b034130e7d138eaa7a051f6c9b61f8519c6ef5a  lane_s.sh
+0afaf393708f4bdb1a181bb6167c5fde9f1dcdf2f06c5f1108340dc5692f00bb  mk_ks.sh
+8cff3e86c7151a14fe09221c4ec0ac47b2a91a9b1d7e0bf5cba2720a27415f89  night_r6.sh
+47f79ac7bd7952889a77de0316136452bbb209437ec136ebe75631798b30dbef  replay3.py
+10d620653be68e8108779bad7bc8998da2b681c901d2d86da614a3d012b94a08  verify_r6.sh
+Which runners were byte-equal to S's or to the committed copies: ../RUN_CONTEXT.txt.
+lane_s.sh is lane_r.sh v3 (rl/results/dual_type_seam_2026-10-23/tools/lane_r.sh) with WT=/home/dacz8976/r6s_w; replay3.py adds side r (W/RR, programs/R) to the committed copy.
+floorS_recompare.sh: the floor's acceptance rule as corrected after the run (coordinator-080); its output is ../logs/floor_recheck_S/RECOMPARE.txt.
+goldfishS_floor_coverage.sh: S's own goldfish on the 11 floor decks, coverage only (no games); output ../logs/floor_recheck_S/GOLDFISH_S_COVERAGE.txt.

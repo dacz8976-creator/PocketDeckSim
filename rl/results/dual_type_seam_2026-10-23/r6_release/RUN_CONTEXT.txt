@@ -1,0 +1,16 @@
+The floor re-check (floor2.py) and the 18 replays (replay3.py) ran S's programs (/home/dacz8976/pincand_work/programs/R) and
+read decks, pairs files and the Python runners from /home/dacz8976/pincand, the laptop's main checkout (not origin/main).
+pincand: branch main, HEAD b78c8997ab7d479c0d76d7c47d3c8cd68ff35d6f
+Each file: its blob at pincand's HEAD v at S, and pincand's working tree v its HEAD.
+decks/screen/floor.py: pincand HEAD 2f9f5b06ec40, S 2f9f5b06ec40: EQUAL; working tree clean
+decks/screen/run_screen.py: pincand HEAD 5ccb812f5705, S 5ccb812f5705: EQUAL; working tree clean
+current_engine.py: pincand HEAD 893e7a4f3705, S 893e7a4f3705: EQUAL; working tree clean
+lib/deck_check.py: pincand HEAD 66c22d085629, S 66c22d085629: EQUAL; working tree clean
+rl/results/engine_switch_rules2_2026-10/floor_with.py: pincand HEAD 7e4880fe3b00, S 7e4880fe3b00: EQUAL; working tree clean
+rl/results/engine_switch_rules2_2026-10/sitting1_check.py: pincand HEAD 09d6b92427e1, S 09d6b92427e1: EQUAL; working tree clean
+rl/results/engine_switch_rules2_2026-10/switch_check.py: pincand HEAD 177b79fa3057, S 177b79fa3057: EQUAL; working tree clean
+rl/results/engine_switch_2026-09-30/screen_with.py: pincand HEAD 9ec88cba0166, S 9ec88cba0166: EQUAL; working tree clean
+lib/deckgym-database.json: pincand HEAD d1486c7ca89b, S 4396cdccaf6a: DIFFERS; working tree clean (the pre-R5 copy is expected here: the replayed decks hold old cards only)
+/home/dacz8976/pincand_work/floor2.py as run: byte-equal to the committed rl/results/engine_candidate_2026-10-20/release/tools/floor2.py
+/home/dacz8976/df0tools/gencmp.py as run: byte-equal to the committed rl/results/dual_type_seam_2026-10-23/tools/gencmp.py
+replay3.py as run: tools/replay3.py (the committed copy plus side r: W/RR, programs/R).

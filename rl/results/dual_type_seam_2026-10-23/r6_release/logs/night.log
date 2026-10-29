@@ -1,0 +1,47 @@
+2026-10-29T00:37:31Z night_r6 armed (pgid 1156037); S=affe56e88985e2997a66beb85efaca0c487617bd K=e3ddc0149bb9d35fda1becbb17ab5f71d9461609 item11=142963eaf7eaa62f742b719ab7b1b99099e21510
+2026-10-29T00:37:31Z night_r6 start
+2026-10-29T00:37:31Z aside ABC_d0792568: 18 files; 18 r rows; games/r -> r_ABC_d0792568; programs/R copied; RR -> RR_ABC_d0792568
+2026-10-29T00:37:32Z C: free 16 GiB
+2026-10-29T00:37:32Z lane_s on S
+2026-10-29T04:10:48Z lane S verdict: PASS
+  card_status: all 4577 | new C1/SP1/P-C: 260 {'Complete': 205, 'MissingAbility': 15, 'MissingAttack': 31, 'MissingTool': 2, 'MissingTrainer': 7}
+     C1 217 {'Complete': 166, 'MissingAbility': 15, 'MissingAttack': 28, 'MissingTool': 2, 'MissingTrainer': 6}
+     SP1 30 {'Complete': 30}
+     P-C 13 {'Complete': 9, 'MissingAttack': 3, 'MissingTrainer': 1}
+  older cards neither Complete nor RulesUnverified: 0 []
+  Trainers with a new or B4b printing (same name and text) whose printings differ in status: 0
+  STATUS_CHECK OK
+2026-10-29T04:10:48Z programs/R (S): 6a2617f4f9e91c9c d9805aaaa10a2a70 ea787a4ed5b6bb97 a4d634982f42e345 59b74cb5a5aa8eaa  source affe56e88985e2997a66beb85efaca0c487617bd
+2026-10-29T04:10:48Z C: free 16 GiB
+2026-10-29T04:10:49Z switch runs [default] files: passed 32 failed 0 ignored 0 compile_errors 0 failing []
+2026-10-29T04:10:49Z switch runs [DECKGYM_FLAT_RETURN_DAMAGE=1] files: passed 32 failed 0 ignored 0 compile_errors 0 failing []
+2026-10-29T04:10:49Z switch runs [DECKGYM_ROUND2_OFF=1] files: passed 32 failed 0 ignored 0 compile_errors 0 failing []
+2026-10-29T04:10:50Z switch runs [ROUND2_OFF] core module: passed 14 failed 0 ignored 0 compile_errors 0 failing []
+2026-10-29T04:10:50Z C: free 16 GiB
+2026-10-29T04:10:50Z strength: build.sh e3ddc0149bb9d35fda1becbb17ab5f71d9461609 -> /home/dacz8976/kx_r4/strength (STRENGTH_JOBS=2, build dir /home/dacz8976/kx_r4_build, target /home/dacz8976/dual_target)
+2026-10-29T04:13:47Z strength rc=0 in 177 s; RECORD OK 23d8a9b5a2e70f06abc4b6989c6662e73c5ebc33baecbe9727e1af1c4f413378
+2026-10-29T04:13:53Z sc_km3: selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1
+2026-10-29T04:13:53Z sc_kx3: started in the background
+2026-10-29T04:13:53Z floorS: floor2.py on S's deckgym (6a2617f4f9e91c9ca4bb4cb3227fdd8e29ff100bbcfd8e0b1fee8273f866f6f8), each piece also v floor2F
+2026-10-29T05:20:49Z floorS: exit 0
+B_D_victini-passive	1920	360	DIFFERS	cand B_D_victini-passive: /home/dacz8976/pincand_work/floor2S/B_D_victini-passive/draft-D-entei-grimhound_games.jsonl v /home/dacz8976/pincand_work/floor2S/_ref_stripped/D_victini-passive/draft-D-entei-grimhound_games.jsonl: 1920 of 1920 games equal  | with t-luc
+A_brew-06	1920	303	DIFFERS	cand A_brew-06: /home/dacz8976/pincand_work/floor2S/A_brew-06/brew-06-pyukumuku-silvally-payback_games.jsonl v floor_recheck_rules2_2026-10/brew-06-pyukumuku-silvally-payback_games.jsonl: 1920 of 1920 games equal on every field of the per-game summar | with t-lucario repor
+A_brew-06b	1920	314	DIFFERS	cand A_brew-06b: /home/dacz8976/pincand_work/floor2S/A_brew-06b/brew-06b-pyukumuku-silvally-scyther-grass_games.jsonl v floor_recheck_rules2_2026-10/brew-06b-pyukumuku-silvally-scyther-grass_games.jsonl: 1920 of 1920 games equal on every field of the | with t-lucario repo
+A_control14_k3	1920	298	DIFFERS	cand A_control14_k3: /home/dacz8976/pincand_work/floor2S/A_control14_k3/14-comfey-raticate-hypno_games.jsonl v floor_recheck_rules2_2026-10/control_k3/14-comfey-raticate-hypno_games.jsonl: 1920 of 1920 games equal on every field of the per-game summa | with t-lucario 
+A_brew-05b	1920	313	DIFFERS	cand A_brew-05b: /home/dacz8976/pincand_work/floor2S/A_brew-05b/brew-05b-meowstic-hatterene-comfey_games.jsonl v floor_recheck_rules2_2026-10/brew-05b-meowstic-hatterene-comfey_games.jsonl: 1920 of 1920 games equal on every field of the per-game summ | with t-lucario repo
+A_07	1920	310	DIFFERS	cand A_07: /home/dacz8976/pincand_work/floor2S/A_07/07-skarmory-stall_games.jsonl v floor_recheck_rules2_2026-10/07-skarmory-stall_games.jsonl: 1920 of 1920 games equal on every field of the per-game summary record (14 fields: conceded, could, dead,  | with t-lucario reported a
+A_run_screen	3840	430	SAME	run_screen: /home/dacz8976/pincand_work/floor2S/A_run_screen/run_screen.txt v floor_recheck_rules2_2026-10/run_screen.txt: 20 of 20 lines equal (2 decks; the header's engine path aside)
+B_12	1920	398	DIFFERS	cand B_12: /home/dacz8976/pincand_work/floor2S/B_12/12-ariados-whimsicott-ogerpon_games.jsonl v floor_recheck_rules2_2026-10/pages/12/12-ariados-whimsicott-ogerpon_games.jsonl: 1920 of 1920 games equal on every field of the per-game summary record (1 | with t-lucario reported a
+B_brew-07	1920	284	DIFFERS	cand B_brew-07: /home/dacz8976/pincand_work/floor2S/B_brew-07/brew-07-hoopa-darkrai-sableye_games.jsonl v floor_recheck_rules2_2026-10/pages/brew-07/brew-07-hoopa-darkrai-sableye_games.jsonl: 1900 of 1920 games equal on every field of the per-game su | with t-lucario repor
+B_brew-09	1920	228	DIFFERS	cand B_brew-09: /home/dacz8976/pincand_work/floor2S/B_brew-09/brew-09-sableye-obstagoon_games.jsonl v floor_recheck_rules2_2026-10/pages/brew-09/brew-09-sableye-obstagoon_games.jsonl: 1856 of 1920 games equal on every field of the per-game summary re | with t-lucario repor
+B_D_root	1920	382	DIFFERS	cand B_D_root: /home/dacz8976/pincand_work/floor2S/B_D_root/draft-D-entei-grimhound_games.jsonl v /home/dacz8976/pincand_work/floor2S/_ref_stripped/D_root/draft-D-entei-grimhound_games.jsonl: 1920 of 1920 games equal on every field of the per-game su | with t-lucario report
+B_D_amended	1920	386	DIFFERS	cand B_D_amended: /home/dacz8976/pincand_work/floor2S/B_D_amended/draft-D-entei-grimhound_games.jsonl v /home/dacz8976/pincand_work/floor2S/_ref_stripped/D_amended/draft-D-entei-grimhound_games.jsonl: 1920 of 1920 games equal on every field of the pe | with t-lucario rep
+2026-10-29T05:20:49Z floorS FAILED: exit 0; pieces/equal-to-main-4d48844: 12 1
+2026-10-29T05:20:50Z strength refusal test: rc=0 Ran 4 tests in 0.146s OK 
+2026-10-29T05:32:12Z rl/strength Python suite: rc=1 Ran 1438 tests in 681.034s FAILED (failures=1, skipped=4) ; failing: FAIL: test_the_harness_source_in_this_checkout_is_the_source_the_pin_was_made_on (test_slow_report_registration.CommittedPin.test_the_harness_source_in_this_che;
+2026-10-29T05:32:12Z C: free 16 GiB
+2026-10-29T05:45:24Z suite item 11 rc=0 in 792 s: passed 2284 failed 0 ignored 0 compile_errors 0 failing []
+2026-10-29T05:45:24Z waiting for sc_kx3 (pid 1218129)
+2026-10-29T05:45:24Z sc_kx3: rc/secs 0 4738: selfcheck pilot=kx3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=138 digest=31d638dbc818b0fa
+2026-10-29T05:45:24Z markers: floorS.FAILED floorS.done lane_S.done sc_km3.done sc_kx3.done strength_K.done strength_tests.done suite_I11.done switch_runs.done 
+2026-10-29T05:45:24Z night_r6 end: done

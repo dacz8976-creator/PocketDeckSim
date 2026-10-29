@@ -1,0 +1,9 @@
+test_run_refuses_a_deck_or_an_opponent_with_a_missing_attack_card_and_writes_nothing (test_strength_card_support.StrengthCardSupport.test_run_refuses_a_deck_or_an_opponent_with_a_missing_attack_card_and_writes_nothing) ... ok
+test_run_with_the_opt_out_lists_the_card_on_stderr_and_starts (test_strength_card_support.StrengthCardSupport.test_run_with_the_opt_out_lists_the_card_on_stderr_and_starts) ... ok
+test_selfcheck_refuses_too_and_prints_no_selfcheck_line (test_strength_card_support.StrengthCardSupport.test_selfcheck_refuses_too_and_prints_no_selfcheck_line) ... ok
+test_supported_decks_start_and_the_check_says_nothing (test_strength_card_support.StrengthCardSupport.test_supported_decks_start_and_the_check_says_nothing) ... ok
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.146s
+
+OK

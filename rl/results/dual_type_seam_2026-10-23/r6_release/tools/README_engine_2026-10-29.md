@@ -1,0 +1,43 @@
+# The official engine from @@PIN_SHORT@@: @@NAME@@ (the Dual Fusion release, a partial compatibility update)
+
+- **Programs:** `deckgym`, `legality_scan`, `goldfish`; sha256 in `SHA256SUMS` and `project_manifest.json`. Linux (WSL or the cloud). Committed with the executable bit (git mode 100755), so a Linux clone runs them as they are.
+  - `deckgym` @@DECKGYM_SHA@@
+  - `legality_scan` @@LEGALITY_SCAN_SHA@@
+  - `goldfish` @@GOLDFISH_SHA@@
+  - These are the programs R6's build made and the night's checks ran, copied and never rebuilt (`../results/dual_type_seam_2026-10-23/r6_release/programs_final/`, the same git blobs).
+- **Built** in WSL (@@BUILT_AT@@) from S, @@S@@ (branch `laptop/r6-release-2026-10-29`: main ffe97adb, which holds the Dual Fusion merge and R5, plus the card-support refusal c0290e37 (merged as 6e1ff1d0) and the held tests-only fixes 3a9413cf and 59fc3054 (merged as @@S8@@)), whose `engine/` tree is @@STREE8@@: `cargo build --release --locked`, `--example legality_scan`, `--example goldfish`, in the clean worktree `/home/dacz8976/r6s_w` at S with the shared target directory `/home/dacz8976/dual_target` (reused: not the fresh, empty folder of Oct 21), CARGO_BUILD_JOBS 2, nice 19, @@BUILD_SECS@@ s (`../results/dual_type_seam_2026-10-23/r6_release/logs/build_R.log`; times in `logs/lane_r.log`). `r6_release/RAN_SHA256.txt` shows by sha256 that every replay and floor piece ran these programs and that the self-checks ran the recorded kx3 rebuild. main's `engine/` is that tree, byte for byte, with no tests-only exception: the tests held back on Oct 21 are folded into S.
+- **What it is:** main-4d48844's engine (`../engine-2026-10-21/`) plus the Dual Fusion release, merged into main on Oct 28 as a partial compatibility update (`../results/dual_type_seam_2026-10-23/RELEASE_NOTES.md`), and R6's two additions:
+  - **The dual-type seam** (2057fa7b): a printed type set for Pokémon cards, behaviour-neutral for single-type cards. Every printed-type check reads any of a card's printed types (`rules/05` #32: fan-sourced, unverified).
+  - **The B4b and P-B data** (eb767768) and the 82 B4b Trainer reprint arms (9be42ddf).
+  - **The Ultra Beast list** (99ecccaa, 248e3152): non-ex Buzzwole, Blacephalon ex, Guzzlord and Ultra Necrozma ex now count as Ultra Beasts wherever the engine reads its list: Lusamine and Ultra Thrusters accept them, Beast Wall's cut and Beastite's bonus apply to them, and the bots' Lusamine pricing counts them. A deliberate correction (Dustin, Oct 26, relayed: "Oh and yeah fix all the ultra beast please"; `../results/dual_type_seam_2026-10-23/RELEASE_CHECKLIST.md`, item 12).
+  - **Dual Fusion from upstream:** #430's C1, SP1 and P-C data on our seam (b290e223), #431's 18 Dual Fusion ex designs (63cbb6ab; Moltres ex untouched) and #432's 6 Supporters with both printings of each (d0792568). 205 of the 260 new printings are Complete; the other 55 are not (31 missing an attack, 15 an Ability, 7 a Trainer, 2 a Tool).
+  - **INFORMATION_MODEL v8** (d0792568, `engine/src/observation.rs`: what Serena's Choice reveals). Run 3, K21 and the exam rows are v7; v7 and v8 rows are not pooled.
+  - **R6: one card-support refusal** (c0290e37). The blocking check moved into the library, `deckgym::card_support`. `deckgym simulate` and `optimize` refuse as before, with the same messages and exit codes. `goldfish` now refuses too: before any game, and before it writes its coverage file, a deck that holds a card with status CardNotFound or Missing* stops it with exit 2 ("Card-support preflight failed; goldfish did not start.", then each card's id, name, reason and deck). `--allow-unsupported-cards` lists those cards on stderr and runs anyway. The slow report's harness refuses through the same check once the slow report is re-pinned on this engine (coordinator-071 and -072).
+  - **R6: the held tests-only fixes** (3a9413cf, 59fc3054): the hit-back tests pin rules switch 2's return-damage switch, and the order tests can fail. Test code only: `#[cfg(test)]` code in `hooks/core.rs` and two test files.
+  - @@NSRC@@ files under `engine/src` change since main-4d48844. The suite on S: @@SUITE@@ passed, 0 failed, 0 ignored.
+- **Revert switches:** none new. The engine reads the same @@NSW@@ `DECKGYM_*` environment variables as main-4d48844, none set by default. Set one and the program is another engine: never set one in a recorded run. The folded hit-back tests hold under `DECKGYM_FLAT_RETURN_DAMAGE` and `DECKGYM_ROUND2_OFF` too (@@SWITCH_RUNS@@).
+- **The players changed, only so that they read the new cards.** Five files of `engine/src/players/`; `Cargo.lock` and `Cargo.toml` are unchanged.
+  - km3's type checks read the printed type set (`fuel_credit.rs`, `value_functions.rs`).
+  - C1 012 Amoonguss's Astonish joins the audited public-pricing texts (`public_pricing_player.rs`).
+  - The random player gives the new `TakeTopDeckCardAndShuffle` action weight 5, as upstream does (`weighted_random_player.rs`).
+  - A test comment's count (`opening_class.rs`).
+  - km3 stays the working pilot, on both sides of the screen and the floor. Its play on the new cards has not been measured.
+- **Evidence:**
+  - The release lane of Oct 28 (`../results/dual_type_seam_2026-10-23/release_lane_2026-10-28/`): build, gencmp, card_status, the suite and 18 identity replays against main-4d48844, PASS on A (b290e223) and on A+B+C (d0792568).
+  - R6's night on S itself (`../results/dual_type_seam_2026-10-23/r6_release/`): build OK; gencmp SAME, SAME; card_status: @@CARD_STATUS@@; the suite above; the 18 identity replays on S's own programs, @@REPLAYS_LONG@@; the floor re-check pages of `../results/floor_recheck_rules2_2026-10/`, @@FLOOR_LONG@@.
+  - The self-checks on kx3's rebuild against this engine (K @@K8@@, kx3's six files on S; `/home/dacz8976/kx_r4/strength`, sha256 @@KX4_SHA8@@…): km3 @@SC_KM3_DIGEST@@, kx3 @@SC_KX3_DIGEST@@, equal to the pin's texts.
+- **Approved:** @@APPROVED@@
+- **What stays on the old engine** (not re-run, not new-engine evidence; old rows are labelled pre-R6/v7 and nothing is recomputed, coordinator-072 on Dustin's Oct 21 words):
+  - **The slow report, until its re-pin.** Its program stays kx3 on main-4d48844's engine (`/home/dacz8976/kx_r3/strength`, sha256 7d046b6f…). Every page names it ("kx3 (d513e37b, on main-4d48844)"), and `make_predictions.py` counts no slow report as current. That engine has none of the B4b, P-B 095-103, C1, SP1 or P-C printings. The program moves only after its kx3 replay check on this engine passes (Dustin, Oct 21).
+  - kx3's recorded games; scoreboard v3's frozen cells and thresholds and kta3's status; km3's thresholds; the mixed kt/kta clause-(d) tables; the ladder predictions; run 3, K21 and the exam rows (v7) and the frozen judge.
+  - The floor re-check pages of Oct 12 and their replays on main-4d48844: records beside the new ones, never replaced.
+- **Known limits** (`../results/dual_type_seam_2026-10-23/RELEASE_NOTES.md`):
+  - 55 of the 260 new printings are not implemented. `deckgym simulate`, `optimize` and `goldfish` refuse a deck that holds one.
+  - Unconfirmed rulings, still open in `rules/05`: #32 (any-of for printed-type checks), #33 (Rising Star and dual-type Pokémon), #34 (Serena's Choice with a full hand).
+  - The Urshifu gap (checklist item 11): twelve in-play checks read the printed type and miss the type Double Type gives. Deferred to its own branch; it goes into main only on Dustin's word.
+  - The bots' play on the new cards is unmeasured: no replay played a game with a new card ("compatibility only").
+  - Poke Mart Guy (C1 129/169) only shuffles the deck for now; the three Items it fetches (C1 120-122) are refused.
+  - Two goldfish callers, `lib/brew_pages.py` and the coverage step of `decks/screen/floor.py`, hide goldfish's refusal message behind Python's "returned non-zero exit status 2". Run goldfish by hand to see the card list.
+  - QR codes for the new cards decode as `UNKNOWN` until R7, the catalog refresh.
+  - main-4d48844's hit-back limits stay (`../engine-2026-10-21/README.md`, "Known limits"). Item 3 of its tests-only list, ignored tests that record the known-wrong knockout credit, is still open.
+- **History:** `../engine-2026-10-21/` (main-4d48844) and earlier are kept unchanged, with their hashes in the manifest's historical releases.

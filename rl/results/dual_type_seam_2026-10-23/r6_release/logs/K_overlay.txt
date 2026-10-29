@@ -1,0 +1,23 @@
+commit e3ddc0149bb9d35fda1becbb17ab5f71d9461609
+parents 87a7f3404263e1bfe76e8765ba8dd94695e19cfe affe56e88985e2997a66beb85efaca0c487617bd
+date 2026-10-28T19:15:12-05:00
+
+kx3 on R6's engine (slow-report re-pin): kx3's six engine files laid onto affe56e8
+
+Built with a private index from S's tree plus the six blobs that 87a7f340 (laptop/kx3-on-engine-candidate-2026-10-20,
+kx3 on main-4d48844) adds or changes under engine/ against 4d488449; no merge. K's tree = S's tree + exactly those six
+blobs (6 of them equal to d513e37b's). The km3 player files are S's (R6 changes five of them on purpose), so the
+pilot is "kx3 (d513e37b's files, on main-affe56e)" (coordinator-072). engine/ tree cd970db60aa5;
+rl/strength is S's (harness c4f7da21, with the card-support refusal). For rl/strength/build.sh.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+engine tree cd970db60aa5df7e9db9d7479e88f87190dab2c3
+S v K:
+A	engine/examples/playout_smoke.rs
+M	engine/src/players/mod.rs
+A	engine/src/players/playout_player.rs
+A	engine/src/players/playout_pool.rs
+A	engine/tests/playout_pilot_extra_lists_test.rs
+A	engine/tests/playout_pilot_test.rs
+local branch: laptop/kx3-on-r6-2026-10-29 e3ddc014
