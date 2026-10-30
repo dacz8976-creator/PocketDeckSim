@@ -22,6 +22,9 @@ DROP_CLASSES = ('engine_error', 'kx3_route')
 POLL_S = 5
 
 
+OUTCOME_LINE_RE = re.compile(r'^(Player [01] won:|Draws:|Ran [\d,]+ simulations)')
+OUTCOME_GUARD_RE = re.compile(r'(?i)\bwon\b|winner|draws?:')
+
 class Refuse(Exception):
     pass
 
@@ -423,7 +426,10 @@ class Runner:
         if row['failure'] in ('engine_error', 'kx3_route', 'pilot_side', 'infra', 'config') or (row['failure'] or '').startswith('stop:'):
             try:
                 with open(os.path.join(arm_dir, 'stderr.txt'), errors='replace') as f:
-                    row['stderr_tail'] = self.scrub(f.read()[-2000:])
+                    raw_err = f.read()
+                kept = ''.join(l for l in raw_err.splitlines(True) if not OUTCOME_LINE_RE.match(l))
+                tail = self.scrub(kept)[-2000:]
+                row['stderr_tail'] = '[withheld: outcome-like text]' if OUTCOME_GUARD_RE.search(tail) else tail
             except OSError:
                 pass
         append_jsonl(self.p('games.jsonl'), row)

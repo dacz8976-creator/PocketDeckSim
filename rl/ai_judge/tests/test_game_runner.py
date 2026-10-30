@@ -98,6 +98,9 @@ if sc.get('orphan'):
     open(os.path.join(arm_dir, 'orphan.pid'), 'w').write(str(ch.pid))
 if sc.get('sleep'):
     time.sleep(sc['sleep'])
+for ln in sc.get('stderr', []):
+    sys.stderr.write(ln + '\n')
+    sys.stderr.flush()
 if not sc.get('no_result'):
     os.makedirs(flags['--results-output'], exist_ok=True)
     json.dump({'schema': 'pdl-game-result/v1', 'game_id': 'x', 'completion': sc.get('completion', 'completed'), 'lifecycle_errors': sc.get('lifecycle_errors', []), 'plies': 10, 'final_turn': 7,
@@ -317,6 +320,20 @@ class Runner(unittest.TestCase):
         with mock.patch.object(gr, 'live_start_checks', lambda r: None):
             e.run(list(extra), stage=stage, mock=use_mock)
         return e, {(g['arm'], g['attempt']): g for g in e.jl('games.jsonl')}
+
+    def test_R6_stderr_tail_outcome_blind(self):
+        scen = {'0000-k90-c00/a1/G': {'fallbacks': {'0': 1}, 'stderr': ['Ran 1 simulations in 1s (1s per game)!', 'Average number of turns per game: 7.00', 'Player 0 won: 1 (100.00%)',
+                                                                      'Player 1 won: 0 (0.00%)', 'Draws: 0 (0.00%)']},
+                '0000-k90-c00/a1/K': {'fallbacks': {'0': 1}, 'stderr': ['Average number of turns per game: 7.00', 'the winner is player 0']}}
+        e, a = self._arm('r6c1', scen)
+        g, k = a[('G', 1)], a[('K', 1)]
+        self.assertEqual(g['failure'], 'pilot_side')
+        self.assertEqual(g['stderr_tail'].strip(), 'Average number of turns per game: 7.00')
+        self.assertEqual(k['failure'], 'kx3_route')
+        self.assertEqual(k['stderr_tail'], '[withheld: outcome-like text]')
+        text = open(os.path.join(e.D, 'games.jsonl')).read()
+        for w in ('won:', 'Draws:', 'winner', 'simulations'):
+            self.assertNotIn(w, text)
 
     def test_R7_classification(self):
         e, a = self._arm('r7a', {'default': {'exit': 2}})
