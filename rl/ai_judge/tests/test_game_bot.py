@@ -351,6 +351,51 @@ class Bot(BotBase):
         self.assertIsNone(self.stop)
         self.assertEqual(game_bot.scrub_row({'a': ['x' + shaped, {'b': 'AQ' + '.' + 'y' * 30}]}, 'MOCK-KEY'), {'a': ['x***', {'b': '***'}]})
 
+    def _no_cut_key(self, *texts):
+        for t in texts:
+            self.assertNotIn('AI' + 'za', t)
+            self.assertNotIn('AQ' + '.', t)
+
+    def _all_text(self):
+        parts = [self.err]
+        for n in ('rows.jsonl', 'STOP'):
+            if os.path.exists(self.p(n)):
+                parts.append(open(self.p(n)).read())
+        return parts
+
+    def test_P10b_scrub_before_cut(self):
+        text = 'x' * 290 + 'AI' + 'za' + 'y' * 30
+        # (i) the lister raises
+        code = self.run_bot([decide_line(1)], lister=FakeLister(raise_exc=RuntimeError(text)))
+        self.assertEqual(code, 5)
+        self.assertEqual(self.fatal[0]['fatal'], 'RuntimeError')
+        self._no_cut_key(*self._all_text())
+        # (ii) the shadow fails to start
+        os.system('rm -f %s %s' % (self.p('rows.jsonl'), self.p('STOP')))
+
+        class BadShadow(FakeShadow):
+            def start(self):
+                raise game_shadow.ShadowError(text)
+        code = self.run_bot([decide_line(1)], shadow=BadShadow())
+        self.assertEqual(code, 4)
+        self.assertEqual(self.fatal[0]['fatal'], 'shadow')
+        self._no_cut_key(*self._all_text())
+        # (iii) the ledger open raises SystemExit
+        os.system('rm -f %s %s' % (self.p('rows.jsonl'), self.p('STOP')))
+        with mock.patch.object(game_call, 'GameLedger', side_effect=SystemExit(text)):
+            with self.assertRaises(game_call.LedgerStop) as cm:
+                game_call.open_ledger(self.p('l2.json'), 10)
+            self._no_cut_key(str(cm.exception))
+            code = self.run_bot([decide_line(1)])
+        self.assertEqual((code, self.stop['reason']), (3, 'ledger'))
+        self._no_cut_key(*self._all_text())
+        # (iv) open_ledger raises LedgerStop directly
+        os.system('rm -f %s %s' % (self.p('rows.jsonl'), self.p('STOP')))
+        with mock.patch.object(game_call, 'open_ledger', side_effect=game_call.LedgerStop(text)):
+            code = self.run_bot([decide_line(1)])
+        self.assertEqual((code, self.stop['reason']), (3, 'ledger'))
+        self._no_cut_key(*self._all_text())
+
     def _cap_run(self, fail_at, n_lines):
         lister = FakeLister(forced=(False,), fail_at=fail_at)
         mode = 'seq:' + ','.join(['429', 'ok'] * 75)

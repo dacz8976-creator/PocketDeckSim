@@ -61,7 +61,10 @@ def open_ledger(path, total):
     try:
         return GameLedger(path, total, label=game_kit.LEDGER_LABEL)
     except SystemExit as e:
-        raise LedgerStop(str(e)[:300])
+        text = str(e)
+        for pat in KEY_PATTERNS:
+            text = re.sub(pat, '[redacted]', text)
+        raise LedgerStop(text[:300])
 
 
 # ------------------------------------------------------------------------------------------------ recording what was sent

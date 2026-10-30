@@ -77,7 +77,7 @@ class Bot:
         os.fsync(self.rows_f.fileno())
 
     def write_stop(self, reason, detail):
-        obj = scrub_row({'reason': reason, 'detail': str(detail)[:300], 'deal_tag': self.a.deal_tag,
+        obj = scrub_row({'reason': reason, 'detail': scrub_str(str(detail), self.key)[:300], 'deal_tag': self.a.deal_tag,
                          'utc': datetime.datetime.now(datetime.timezone.utc).strftime('%Y-%m-%dT%H:%M:%SZ')}, self.key)
         with open(self.a.stop_file, 'w', encoding='utf-8') as f:
             json.dump(obj, f)
@@ -308,15 +308,16 @@ class Bot:
             self.write_stop('ledger', e)
             return 3
         except game_shadow.ShadowError as e:
-            self.write_row({'fatal': 'shadow', 'detail': str(e)[:300]})
+            self.write_row({'fatal': 'shadow', 'detail': scrub_str(str(e), self.key)[:300]})
             return 4
         except game_call.CallNotSent as e:
             self.write_row({'fatal': 'CallNotSent'})
             self.write_stop('not_sent', 'the judge call was never sent')
             return 5
         except Exception as e:
-            self.write_row({'fatal': type(e).__name__, 'detail': str(e)[:300]})
-            self.err('fatal %s: %s' % (type(e).__name__, str(e)[:300]))
+            cut = scrub_str(str(e), self.key)[:300]
+            self.write_row({'fatal': type(e).__name__, 'detail': cut})
+            self.err('fatal %s: %s' % (type(e).__name__, cut))
             return 5
         finally:
             if self.shadow is not None:
