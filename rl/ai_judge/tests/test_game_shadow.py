@@ -145,6 +145,7 @@ class Kit(unittest.TestCase):
     def test_K1_kit(self):
         import judge
         self.assertEqual(game_kit.seed(15, 99), 25_103_001_599)
+        self.assertEqual(game_kit.STAGE1_MAX_DROPS, 2)
         for bad in ((16, 0), (0, 100), (-1, 0)):
             with self.assertRaises(AssertionError):
                 game_kit.seed(*bad)

@@ -211,7 +211,7 @@ def read_run_dir(d):
         j = g.get('judge') or {}
         out.append({'deal_idx': idx, 'k': r['k'], 'cell': r['cell'], 'g_win': gw, 'k_win': kw, 'g_failure': r.get('g_failure'), 'k_failure': r.get('k_failure'),
                     'g_interventions': j.get('interventions', 0), 'g_fallbacks': j.get('fallbacks', 0), 'setup_decisions': j.get('setup_decisions', 0), 'decisions': j.get('decisions', 0),
-                    'went_first': j.get('went_first'), 'calls': j.get('calls'), 'tries': j.get('tries'), 'g_seconds': g.get('seconds'), 'k_seconds': k.get('seconds'),
+                    'went_first': None if j.get('went_first') is None else int(j.get('went_first') == seat), 'calls': j.get('calls'), 'tries': j.get('tries'), 'g_seconds': g.get('seconds'), 'k_seconds': k.get('seconds'),
                     'actual_usd': j.get('actual_usd'), 'ledger_charge_usd': j.get('ledger_charge_usd'), 'plies': g.get('plies', (gres or {}).get('plies')),
                     'final_turn': g.get('final_turn', (gres or {}).get('final_turn')), 'g_fallbacks_by_reason': j.get('fallbacks_by_reason'), 'g_reasks_by_reason': j.get('reasks_by_reason')})
     return out, end.get('planned_deals', len(rows)), bool(end.get('stopped_early'))

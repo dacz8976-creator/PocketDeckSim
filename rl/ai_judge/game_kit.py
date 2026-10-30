@@ -26,6 +26,7 @@ RAYON_THREADS_BUILD = 2; RAYON_THREADS_LAPTOP = 8   # this job; the laptop's gat
 LEDGER_LABEL = 'gemini-vertex:gemini-4-argon'
 BOOT_DRAWS = 10_000; BOOT_SEED = 20261030; FLIP_DRAWS = 100_000; SIGNFLIP_SEED = 20261031
 MIN_PAIRS = 64; FALLBACK_LIMIT = 0.10; DROP_LIMIT = 0.05; GO_MIN_N = 80; N_MAX = 128
+STAGE1_MAX_DROPS = 2  # stage 1 stops when more than this many deals drop, any cause (coordinator-105)
 SHADOW_ENV_KEEP = ('PATH', 'HOME', 'LANG', 'LC_ALL', 'TMPDIR', 'RAYON_NUM_THREADS')
 FORBIDDEN_ENV = ('KX_EXTRA_LISTS', 'PDL_DB', 'PG_DUMP')   # plus every name starting VERTEX_ for anything but the judge bot
 def pid_prefix(seed_, cell, arm): return f'{seed_}-c{cell:02d}-{arm}'   # judge pid = f'{prefix}-p{ply}'
