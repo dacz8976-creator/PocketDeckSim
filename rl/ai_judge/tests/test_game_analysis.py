@@ -1,6 +1,7 @@
 import contextlib
 import io
 import itertools
+import hashlib
 import json
 import math
 import os
@@ -140,10 +141,12 @@ class Analysis(unittest.TestCase):
                 rf = 'res/%s.json' % tag
                 with open(os.path.join(d, rf), 'w') as f:
                     json.dump({'schema': 'pdl-game-result/v1', 'outcome': outcomes[arm + str(idx)], 'completion': 'completed', 'final_turn': finals.get(arm + str(idx), 12), 'lifecycle_errors': []}, f)
-                row = {'deal_tag': tag, 'arm': arm, 'bits': bits, 'cell': cell, 'k': k2, 'result_file': rf, 'failure': None, 'seconds': 10.0}
+                with open(os.path.join(d, rf), 'rb') as f:
+                    sha = hashlib.sha256(f.read()).hexdigest()
+                row = {'deal_tag': tag, 'arm': arm, 'bits': bits, 'cell': cell, 'k': k2, 'result_file': rf, 'result_sha256': sha, 'failure': None, 'seconds': 10.0}
                 if arm == 'G':
                     row['judge'] = {'decisions': 30, 'setup_decisions': 5, 'interventions': 20, 'fallbacks': 1, 'fallbacks_by_reason': {'a': 1}, 'reasks_by_reason': {'first': 1},
-                                    'calls': 19, 'tries': 20, 'ledger_charge_usd': 0.5, 'actual_usd': 0.4, 'mock': mock, 'went_first': idx}
+                                    'calls': 19, 'tries': 20, 'ledger_charge_usd': 0.5, 'actual_usd': 0.4, 'mock': mock, 'went_first': 0}
                 games.append(row)
             deals.append({'stage': 2, 'deal_idx': idx, 'k': k2, 'cell': cell, 'bits': bits, 'seed': 1, 'attempt': 1, 'complete': True, 'g_deal_tag': tags['G'], 'k_deal_tag': tags['K'],
                           'g_failure': None, 'k_failure': None, 'dropped': False, 'drop_reason': None})
@@ -173,6 +176,45 @@ class Analysis(unittest.TestCase):
         self.assertEqual(rc, 0, out)
         self.assertTrue(out[-1].startswith('LABEL: '))
         self.assertTrue(os.path.exists(os.path.join(d, 'a.json')))
+
+    def _append(self, d, name, rows):
+        with open(os.path.join(d, name), 'a') as f:
+            for r in rows:
+                f.write(json.dumps(r) + '\n')
+
+    def test_Y13b_result_file_checks(self):
+        def refused(d):
+            rc, out = run_cli(['--run-dir', d, '--out', os.path.join(d, 'a.json')])
+            self.assertEqual((rc, out[-1].startswith('REFUSED')), (2, True), out)
+        d = self._stage2_dir('y13b_missing')
+        os.remove(os.path.join(d, 'res', '0000-k0-c00-a1-G.json'))
+        refused(d)
+        d = self._stage2_dir('y13b_changed')
+        with open(os.path.join(d, 'res', '0001-k0-c01-a1-K.json'), 'ab') as f:
+            f.write(b' ')
+        refused(d)
+        d = self._stage2_dir('y13b_nullfile')
+        rows = [json.loads(l) for l in open(os.path.join(d, 'games.jsonl'))]
+        rows[1]['result_file'] = None
+        with open(os.path.join(d, 'games.jsonl'), 'w') as f:
+            for r in rows:
+                f.write(json.dumps(r) + '\n')
+        refused(d)
+        d = self._stage2_dir('y13b_superseded_k8')
+        self._append(d, 'deals.jsonl', [{'stage': 2, 'deal_idx': 0, 'k': 8, 'cell': 0, 'attempt': 0, 'complete': False, 'g_deal_tag': None, 'k_deal_tag': None}])
+        refused(d)
+        d = self._stage2_dir('y13b_stray_mock')
+        self._append(d, 'games.jsonl', [{'deal_tag': 'zz-a1-G', 'arm': 'G', 'judge': {'mock': True}, 'failure': 'infra'}])
+        refused(d)
+        # an infra attempt then a clean one, and a stop:* arm row, none with a result file and none named by a row of record: no refusal
+        d = self._stage2_dir('y13b_infra_ok')
+        self._append(d, 'games.jsonl', [{'deal_tag': '0000-k0-c00-a0-G', 'arm': 'G', 'bits': game_kit.cell_bits(0), 'result_file': None, 'failure': 'infra', 'judge': {'mock': False}},
+                                        {'deal_tag': '0001-k0-c01-a0-G', 'arm': 'G', 'bits': game_kit.cell_bits(1), 'result_file': None, 'failure': 'stop:ledger'}])
+        self._append(d, 'deals.jsonl', [{'stage': 2, 'deal_idx': 0, 'k': 0, 'cell': 0, 'attempt': 0, 'complete': False, 'g_deal_tag': '0000-k0-c00-a0-G', 'k_deal_tag': None}])
+        deals, planned, stopped = ga.read_run_dir(d)
+        self.assertEqual([x['g_win'] for x in deals], [1, 1])
+        rc, out = run_cli(['--run-dir', d, '--out', os.path.join(d, 'a.json')])
+        self.assertEqual(rc, 0, out)
 
     def test_Y14_pilot_side_is_loss(self):
         deals, planned, stopped, expect = self.sets()['Y14']
@@ -226,6 +268,10 @@ class Analysis(unittest.TestCase):
         self.assertEqual((planned, stopped), (2, False))
         self.assertEqual([x['g_interventions'] for x in deals], [20, 20])
         self.assertEqual([x['g_fallbacks'] for x in deals], [1, 1])
+        self.assertEqual([x['went_first'] for x in deals], [1, 0])
+        bwf = ga.analyse(deals, planned, stopped)['descriptive']['by_went_first']
+        self.assertEqual(sorted(bwf), ['0', '1'])
+        self.assertEqual((bwf['0']['n'], bwf['1']['n']), (1, 1))
         for outcome, seat, want in (({'Win': 0}, 0, 1), ({'Win': 1}, 0, 0), ({'Win': 1}, 1, 1), ({'Win': 0}, 1, 0), ('Tie', 0, 0), ('Tie', 1, 0)):
             self.assertEqual(ga.win_for(outcome, seat), want)
 

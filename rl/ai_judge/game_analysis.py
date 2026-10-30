@@ -1,5 +1,6 @@
 """Gate 6: the pre-registered analysis (PREREG v3.1 section 6). Stage 2 only; it never sees a dev or stage-1 game."""
 import argparse
+import hashlib
 import json
 import math
 import os
@@ -179,7 +180,15 @@ def read_run_dir(d):
     if not (isinstance(st, int) and not isinstance(st, bool) and st == 2):
         raise Refused('the run_end stage is %r, not 2' % (st,))
     rows = _read_jsonl(os.path.join(d, 'deals.jsonl'))
-    arms = {r['deal_tag']: r for r in _read_jsonl(os.path.join(d, 'games.jsonl'))}
+    arm_rows = _read_jsonl(os.path.join(d, 'games.jsonl'))
+    arms = {r['deal_tag']: r for r in arm_rows}
+    for r in rows:
+        kk = r.get('k')
+        if not (isinstance(kk, int) and 0 <= kk <= 7):
+            raise Refused('a deals.jsonl row has k=%s, outside 0-7' % kk)
+    for a in arm_rows:
+        if a.get('arm') == 'G' and (a.get('judge') or {}).get('mock'):
+            raise Refused('a G arm row has judge.mock true')
     best = {}
     for r in rows:
         if r.get('complete') and (r['deal_idx'] not in best or r['attempt'] > best[r['deal_idx']]['attempt']):
@@ -196,12 +205,28 @@ def read_run_dir(d):
             raise Refused('a G arm row has judge.mock true')
         seat = r['bits']['seat']
 
-        def win(arm):
+        def result_path(arm):
             rf = arm.get('result_file')
-            if not rf:
-                return 0, None
-            path = rf if os.path.isabs(rf) else os.path.join(d, rf)
-            if not os.path.exists(path):
+            return None if not rf else (rf if os.path.isabs(rf) else os.path.join(d, rf))
+
+        if not r.get('dropped'):
+            for arm in (g, k):
+                if arm.get('arm') == 'G' and arm.get('failure') == 'pilot_side':
+                    continue
+                path = result_path(arm)
+                if path is None:
+                    raise Refused('arm %s of a deal of record has no result file' % arm.get('deal_tag'))
+                try:
+                    with open(path, 'rb') as f:
+                        raw = f.read()
+                except OSError:
+                    raise Refused('arm %s: the result file is missing or unreadable' % arm.get('deal_tag'))
+                if hashlib.sha256(raw).hexdigest() != arm.get('result_sha256'):
+                    raise Refused('arm %s: the result file differs from result_sha256' % arm.get('deal_tag'))
+
+        def win(arm):
+            path = result_path(arm)
+            if path is None or not os.path.exists(path):
                 return 0, None
             with open(path) as f:
                 res = json.load(f)
