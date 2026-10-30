@@ -380,8 +380,7 @@ def compare_record(res, skipped):
         if r is None:
             continue
         if 'problem' in a or 'problem' in r:
-            if a.get('problem') != r.get('problem'):
-                fail(v, 'problem', a.get('problem'), r.get('problem'))
+            fail(v, 'problem', a.get('problem'), r.get('problem'))
             continue
         keys[KEYS_NAME[v]] = json.dumps(a['plans'], sort_keys=True) == json.dumps(r['plans'], sort_keys=True)
         if v in ('b', 'c'):

@@ -247,6 +247,57 @@ class Gate2(unittest.TestCase):
         r[3]['equal'] = False
         self.assertEqual(game_gates.gate2b_decide(r)[0][-1], 'GATE2b FAIL')
 
+    def test_G5_problem_rows_fail(self):
+        prob = {'problem': 'lister_error rc=1'}
+        res = {'a': dict(prob), 'f2': dict(prob), 'f99': dict(prob)}
+        eq, keys, fd = game_gates.compare_record(res, True)
+        self.assertFalse(eq)
+        self.assertEqual((fd['what'], fd['variant']), ('problem', 'f2'))
+        self.assertEqual((fd['a'], fd['b']), (prob['problem'], prob['problem']))
+        # a problem in a compared variant only
+        res = {'a': self._res(), 'f2': self._res(), 'f99': dict(prob)}
+        eq, keys, fd = game_gates.compare_record(res, True)
+        self.assertFalse(eq)
+        self.assertEqual((fd['variant'], fd['what']), ('f99', 'problem'))
+        # an identical prompt-render exception
+        class FakeObs:
+            problems = {}
+            kinds = {'plans': {'x': rec_of([plan(['A'], key='k1')])}, 'pos_like': {'x': {'pos': {'t': 1}}}}
+        with mock.patch.object(game_gates, 'prompt_for', side_effect=ValueError('boom')):
+            r = game_gates._variant_result(FakeObs, 'x', '/x/dk.txt')
+        self.assertIn('problem', r)
+        eq, keys, fd = game_gates.compare_record({'a': r, 'f2': dict(r), 'f99': dict(r)}, True)
+        self.assertFalse(eq)
+        self.assertEqual(fd['what'], 'problem')
+
+    def test_G5_skipped_record_excluded_from_b_and_c(self):
+        seen = {}
+
+        class FakeObs:
+            def __init__(self, ids):
+                self.kinds = {'plans': {i: rec_of([plan(['A'], key='k1')]) for i in ids}, 'pos_like': {i: {'pos': {'t': 1}} for i in ids}}
+                self.problems, self.stats = {}, []
+
+        def fake_obs(jp, records, workdir, name, extra=()):
+            seen[name.rsplit('_', 1)[-1]] = [r['id'] for r in records]
+            return FakeObs([r['id'] for r in records])
+        recs = []
+        for i, sk in (('r0', False), ('r1', True)):
+            recs.append({'id': i, 'actor': 0, 'skipped': sk, 'obs_a': {'o': 1}, 'obs_b': {'o': 1}, 'obs_c': {'o': 1}, 'legal_actions': [], 'deck_file': '/x/dk.txt'})
+        d = fresh('g5skip')
+        os.makedirs(d)
+        f = os.path.join(d, 'leak.jsonl')
+        with open(f, 'w') as fh:
+            for r in recs:
+                fh.write(json.dumps(r) + '\n')
+        with mock.patch.object(game_gates, 'obs_mode', fake_obs), mock.patch.object(game_gates, 'prompt_for', lambda *a: ('S', 'U')):
+            rc, out = call(['gate2-games', '--leak', f, '--bin', 'x', '--out', os.path.join(d, 'o')])
+        self.assertEqual(seen['b'], ['r0'])
+        self.assertEqual(seen['c'], ['r0'])
+        self.assertEqual(sorted(seen['a']), ['r0', 'r1'])
+        self.assertEqual(seen['f2'], seen['a'])
+        self.assertNotEqual(out[-1], 'GATE2b FAIL', out[-6:])
+
     def test_G5_real_leak_and_append(self):
         files = []
         for name, deck, lst, seat, seed in (('c00', 0, 0, 0, 25103000090), ('c12', 1, 1, 0, 25103001290)):
