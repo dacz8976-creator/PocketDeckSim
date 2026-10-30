@@ -349,7 +349,74 @@ fn build(pos: &Value, deck_me: &Deck, deck_filler: &Deck, shuffle_seed: u64) -> 
 // ---------------------------------------------------------------------------------------------------------------------------------------
 
 /// Compact action name, identical to the one pg_pos prints (so a plan's labels can be compared with a position's "his_plan").
-fn pg_label(a: &Action) -> String {
+/// 0 for the actor `me`, 1 for the other side (labels print seat numbers relative to the actor in observation mode; identity when me == 0).
+fn rel(p: usize, me: usize) -> usize {
+    if p == me {
+        0
+    } else {
+        1
+    }
+}
+
+fn rel_num(v: &mut Value, me: usize) {
+    if let Some(p) = v.as_u64() {
+        *v = json!(rel(p as usize, me));
+    }
+}
+
+fn rel_pair_first(v: &mut Value, me: usize) {
+    if let Value::Array(a) = v {
+        if let Some(x) = a.get_mut(0) {
+            rel_num(x, me);
+        }
+    }
+}
+
+/// Maps every seat value inside an action's JSON (or a turn effect's) to the actor-relative number. `variant` is the action's variant name.
+fn rel_seats(v: &mut Value, me: usize, variant: &str) {
+    match v {
+        Value::Object(m) => {
+            for (k, x) in m.iter_mut() {
+                match k.as_str() {
+                    "player" | "source_player" | "target_player" => rel_num(x, me),
+                    "attacking_ref" => rel_pair_first(x, me),
+                    "prior_knockouts" | "damaged_refs" => {
+                        if let Value::Array(items) = x {
+                            items.iter_mut().for_each(|i| rel_pair_first(i, me));
+                        }
+                    }
+                    "point_denial_flips" => {
+                        if let Value::Array(items) = x {
+                            for i in items.iter_mut() {
+                                if let Value::Array(pair) = i {
+                                    if let Some(first) = pair.get_mut(0) {
+                                        rel_pair_first(first, me);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    "targets" if variant == "ApplyDamage" => {
+                        if let Value::Array(items) = x {
+                            for i in items.iter_mut() {
+                                if let Value::Array(t) = i {
+                                    if let Some(s) = t.get_mut(1) {
+                                        rel_num(s, me);
+                                    }
+                                }
+                            }
+                        }
+                    }
+                    _ => rel_seats(x, me, variant),
+                }
+            }
+        }
+        Value::Array(a) => a.iter_mut().for_each(|x| rel_seats(x, me, variant)),
+        _ => {}
+    }
+}
+
+fn pg_label(a: &Action, me: usize) -> String {
     let nm = |c: &deckgym::models::Card| c.get_name();
     match &a.action {
         SimpleAction::Play { trainer_card } => format!("Play:{}", trainer_card.name),
@@ -365,8 +432,8 @@ fn pg_label(a: &Action) -> String {
         ),
         SimpleAction::AttachTool { in_play_idx, tool_card } => format!("Tool:{}@{}", nm(tool_card), in_play_idx),
         SimpleAction::Heal { in_play_idx, amount, .. } => format!("Heal:{}@{}", amount, in_play_idx),
-        SimpleAction::Activate { player, in_play_idx } => format!("Activate:{}@{}", player, in_play_idx),
-        SimpleAction::Promote { player, in_play_idx } => format!("Promote:{}@{}", player, in_play_idx),
+        SimpleAction::Activate { player, in_play_idx } => format!("Activate:{}@{}", if me == 0 { *player } else { rel(*player, me) }, in_play_idx),
+        SimpleAction::Promote { player, in_play_idx } => format!("Promote:{}@{}", if me == 0 { *player } else { rel(*player, me) }, in_play_idx),
         SimpleAction::ChooseMistyTarget { in_play_idx } => format!("MistyTarget@{}", in_play_idx),
         // ChooseRetreatEnergy (which Energy a retreat pays) has NO short label: the old `RetreatPay:<slot>` dropped the payment, so two different payments were one
         // label (1,142 of 5,728 plans on the 92 old positions could not be named). It takes the Name#JSON fallback below, which carries every argument.
@@ -377,6 +444,11 @@ fn pg_label(a: &Action) -> String {
         other => {
             let name = format!("{:?}", other).split(|c: char| c == ' ' || c == '{' || c == '(').next().unwrap_or("?").to_string();
             match serde_json::to_value(other) {
+                Ok(Value::Object(m)) if m.len() == 1 && me != 0 => {
+                    let mut inner = m.values().next().unwrap().clone();
+                    rel_seats(&mut inner, me, &name);
+                    format!("{}#{}", name, inner)
+                }
                 Ok(Value::Object(m)) if m.len() == 1 => format!("{}#{}", name, m.values().next().unwrap()),
                 _ => name,
             }
@@ -430,7 +502,7 @@ fn english(st: &State, a: &Action) -> String {
             slot_name(st, me, *to_in_play_idx),
             energies.iter().map(|e| format!("{e:?}")).collect::<Vec<_>>().join(" + ")
         ),
-        _ => format!("{} (a choice)", pg_label(a)),
+        _ => format!("{} (a choice)", pg_label(a, a.actor)),
     }
 }
 
@@ -516,6 +588,11 @@ fn start_block(obs: &PlayerObservation) -> Value {
 /// (Own deck order is left alone: a plan never touches it, because it stops at the first draw.)
 fn canonical_state_json(st: &State) -> Value {
     let mut v = serde_json::to_value(st).expect("state json"); // serde_json maps are sorted, so equal states give equal text
+    canonicalize_state_value(&mut v);
+    v
+}
+
+fn canonicalize_state_value(v: &mut Value) {
     fn sort_list(x: &mut Value) {
         if let Value::Array(a) = x {
             a.sort_by_key(|e| e.to_string());
@@ -539,7 +616,20 @@ fn canonical_state_json(st: &State) -> Value {
             }
         }
     }
-    v
+}
+
+/// Hash of what a player knows: own-deck list as a multiset (sorted) and the template State in canonical form.
+fn obs_hash(obs: &PlayerObservation) -> u64 {
+    let mut v = serde_json::to_value(obs).expect("observation json");
+    if let Some(Value::Array(a)) = v.get_mut("known_own_deck") {
+        a.sort_by_key(|e| e.to_string());
+    }
+    if let Some(t) = v.get_mut("template") {
+        canonicalize_state_value(t);
+    }
+    let mut h = std::collections::hash_map::DefaultHasher::new();
+    v.to_string().hash(&mut h);
+    h.finish()
 }
 
 fn state_hash(st: &State) -> u64 {
@@ -598,7 +688,16 @@ fn diff_lines(a: &State, b: &State, me: usize) -> Vec<String> {
     out
 }
 
-type Path = Vec<(String, String)>; // (pg label, english)
+/// One plan step: its labels, the engine action itself (real seat), and whether its node had exactly one canonical action.
+#[derive(Clone)]
+struct Step {
+    label: String,
+    english: String,
+    action: Action,
+    forced: bool,
+}
+
+type Path = Vec<Step>;
 
 fn str_hash(s: &str) -> u64 {
     let mut h = std::collections::hash_map::DefaultHasher::new();
@@ -614,6 +713,8 @@ fn leaf_key(before: &State, label: &str, extra: &Value) -> String {
 
 struct Collector {
     me: usize,
+    /// plan key -> (the plan's actions with their real seats, forced flags); filled only for plans that are pushed
+    actions: HashMap<String, (Vec<Action>, Vec<bool>)>,
     plans: Vec<Value>,
     keys: HashSet<String>,
     total_found: usize,
@@ -645,16 +746,16 @@ fn json_diff(a: &Value, b: &Value, path: &str, out: &mut Vec<String>) {
 }
 
 impl Collector {
-    fn add(&mut self, before: &State, path: &Path, last: (String, String), end: &str, extra: Value) {
-        let key = leaf_key(before, &last.0, &extra);
+    fn add(&mut self, before: &State, path: &Path, last: Step, end: &str, extra: Value) {
+        let key = leaf_key(before, &last.label, &extra);
         if self.debug {
-            let look = format!("{}|{}|{:?}|{:?}", last.0, extra, board_lines(before, self.me), names(&before.hands[self.me]));
+            let look = format!("{}|{}|{:?}|{:?}", last.label, extra, board_lines(before, self.me), names(&before.hands[self.me]));
             let sv = canonical_state_json(before);
             if let Some(prev) = self.look_alike.get(&look) {
                 if *prev != sv {
                     let mut d = Vec::new();
                     json_diff(prev, &sv, "state", &mut d);
-                    eprintln!("SPLIT {} :: {}", path.iter().map(|p| p.0.clone()).chain(std::iter::once(last.0.clone())).collect::<Vec<_>>().join(" > "), d.join(" | "));
+                    eprintln!("SPLIT {} :: {}", path.iter().map(|p| p.label.clone()).chain(std::iter::once(last.label.clone())).collect::<Vec<_>>().join(" > "), d.join(" | "));
                 }
             } else {
                 self.look_alike.insert(look, sv);
@@ -668,10 +769,15 @@ impl Collector {
             self.capped = true;
             return;
         }
-        let mut labels: Vec<String> = path.iter().map(|p| p.0.clone()).collect();
-        let mut steps: Vec<String> = path.iter().map(|p| p.1.clone()).collect();
-        labels.push(last.0);
-        steps.push(last.1);
+        let mut labels: Vec<String> = path.iter().map(|p| p.label.clone()).collect();
+        let mut steps: Vec<String> = path.iter().map(|p| p.english.clone()).collect();
+        let mut acts: Vec<Action> = path.iter().map(|p| p.action.clone()).collect();
+        let mut forced: Vec<bool> = path.iter().map(|p| p.forced).collect();
+        labels.push(last.label);
+        steps.push(last.english);
+        acts.push(last.action);
+        forced.push(last.forced);
+        self.actions.insert(key.clone(), (acts, forced));
         self.plans.push(json!({
             "key": key, "labels": labels, "steps": steps, "n_steps": labels.len(), "end": end, "final": extra,
             "result": {"board": board_lines(before, self.me), "hand": names(&before.hands[self.me]), "points": [before.points[self.me], before.points[1 - self.me]],
@@ -765,9 +871,18 @@ fn step_kind(st: &State, act: &Action, me: usize) -> Kind {
     }
 }
 
-fn list_plans(world: &State, lim: &Limits, me: usize) -> (Vec<Value>, usize, usize, bool, usize) {
+/// What the search also knows beyond the plan JSON: every plan's actions, and the root's canonical actions with the child state's hash (None for an end).
+struct Extras {
+    actions: HashMap<String, (Vec<Action>, Vec<bool>)>,
+    root: Vec<(Action, Option<u64>)>,
+    root_hash: u64,
+}
+
+fn list_plans(world: &State, lim: &Limits, me: usize) -> (Vec<Value>, usize, usize, bool, usize, Extras) {
+    let mut root: Vec<(Action, Option<u64>)> = Vec::new();
     let mut col = Collector {
         me,
+        actions: HashMap::new(),
         plans: Vec::new(),
         keys: HashSet::new(),
         total_found: 0,
@@ -798,30 +913,53 @@ fn list_plans(world: &State, lim: &Limits, me: usize) -> (Vec<Value>, usize, usi
             }
             continue;
         }
+        let is_root = path.is_empty();
         if path.len() >= lim.max_steps {
             deepest_cut += 1;
             col.capped = true;
             continue;
         }
         canonical_actions(&mut acts);
+        let forced = acts.len() == 1;
         for act in acts {
-            let label = pg_label(&act);
+            let label = pg_label(&act, me);
             let text = english(&st, &act);
+            let step = Step { label, english: text, action: act.clone(), forced };
             match step_kind(&st, &act, me) {
-                Kind::Attack(info) => col.add(&st, &path, (label, text), "attack", info),
-                Kind::EndTurn => col.add(&st, &path, (label, text), "end_turn", json!({"kind": "end_turn"})),
-                Kind::Chance(extra) => col.add(&st, &path, (label, text), "chance", extra),
+                Kind::Attack(info) => {
+                    if is_root {
+                        root.push((act.clone(), None));
+                    }
+                    col.add(&st, &path, step, "attack", info)
+                }
+                Kind::EndTurn => {
+                    if is_root {
+                        root.push((act.clone(), None));
+                    }
+                    col.add(&st, &path, step, "end_turn", json!({"kind": "end_turn"}))
+                }
+                Kind::Chance(extra) => {
+                    if is_root {
+                        root.push((act.clone(), None));
+                    }
+                    col.add(&st, &path, step, "chance", extra)
+                }
                 Kind::Child(s1) => {
-                    if seen.insert(state_hash(&s1)) {
+                    let h = state_hash(&s1);
+                    if is_root {
+                        root.push((act.clone(), Some(h)));
+                    }
+                    if seen.insert(h) {
                         let mut p2 = path.clone();
-                        p2.push((label, text));
+                        p2.push(step);
                         q.push_back((s1, p2));
                     }
                 }
             }
         }
     }
-    let Collector { mut plans, total_found, capped, .. } = col;
+    let root_hash = state_hash(world);
+    let Collector { mut plans, total_found, capped, actions, .. } = col;
     let rank = |p: &Value| match p["end"].as_str().unwrap_or("") {
         "attack" => 0,
         "chance" => 1,
@@ -834,7 +972,7 @@ fn list_plans(world: &State, lim: &Limits, me: usize) -> (Vec<Value>, usize, usi
     for (i, p) in plans.iter_mut().enumerate() {
         p["n"] = json!(i + 1);
     }
-    (plans, total_found, nodes, capped, deepest_cut)
+    (plans, total_found, nodes, capped, deepest_cut, Extras { actions, root, root_hash })
 }
 
 /// A `Name#{json}` label with its JSON read and written back in the compact, key-sorted form the printers use, so key order and spacing in a requested
@@ -897,7 +1035,7 @@ fn replay(st: State, labels: &[String], i: usize, last: Option<String>, out: &mu
     let cands: Vec<Action> = acts
         .iter()
         .filter(|a| match want {
-            Some(w) => label_matches(&pg_label(a), w),
+            Some(w) => label_matches(&pg_label(a, 0), w),
             None => matches!(a.action, SimpleAction::EndTurn),
         })
         .cloned()
@@ -907,22 +1045,22 @@ fn replay(st: State, labels: &[String], i: usize, last: Option<String>, out: &mu
         if only {
             let a = acts[0].clone();
             return match step_kind(&st, &a, 0) {
-                Kind::Child(s1) => replay(s1, labels, i, Some(pg_label(&a)), out, depth + 1),
+                Kind::Child(s1) => replay(s1, labels, i, Some(pg_label(&a, 0)), out, depth + 1),
                 Kind::Chance(extra) => {
-                    out.push(leaf_key(&st, &pg_label(&a), &extra));
+                    out.push(leaf_key(&st, &pg_label(&a, 0), &extra));
                     Ok(())
                 }
                 _ => Err("unexpected end".into()),
             };
         }
-        return Err(format!("no legal action labelled {:?} at step {} (legal: {:?})", want, i, acts.iter().map(pg_label).collect::<Vec<_>>()));
+        return Err(format!("no legal action labelled {:?} at step {} (legal: {:?})", want, i, acts.iter().map(|x| pg_label(x, 0)).collect::<Vec<_>>()));
     }
     // Every candidate is followed on its own: one that cannot follow the rest of the list (for example a slotless `Place:X` put on a slot where the later
     // `Tool:...@2` is not legal) is pruned, and the list is unfollowable only when NO candidate can follow it. (It used to give up on the first dead end.)
     let mut first_err: Option<String> = None;
     let mut any_ok = false;
     for a in cands {
-        let label = pg_label(&a);
+        let label = pg_label(&a, 0);
         let mark = out.len();
         let r: Result<(), String> = match step_kind(&st, &a, 0) {
             Kind::Attack(info) => {
@@ -981,17 +1119,327 @@ fn world_of(pos: &Value, decks: &HashMap<String, Deck>, world_seed: u64) -> Resu
     Ok((obs, world))
 }
 
+/// `world_of`, plus the legal list of the built state (after canonical_actions; None when the actor is not seat 0), for the exporter.
+fn world_of_export(pos: &Value, decks: &HashMap<String, Deck>, world_seed: u64) -> Result<(PlayerObservation, State, Option<Vec<Action>>), Vec<String>> {
+    let deck_me = decks.get(pos["deck"].as_str().unwrap()).expect("deck key").clone();
+    let deck_filler = decks.get(pos["filler"].as_str().unwrap_or(pos["deck"].as_str().unwrap())).expect("filler key").clone();
+    let built = build(pos, &deck_me, &deck_filler, world_seed);
+    if !built.problems.is_empty() {
+        return Err(built.problems);
+    }
+    let (actor, mut acts) = built.state.generate_possible_actions();
+    canonical_actions(&mut acts);
+    let legal = if actor == 0 { Some(acts) } else { None };
+    let obs = PlayerObservation::from_state(&built.state, 0, &RevealedKnowledge::default());
+    drop(built);
+    let mut rng = StdRng::seed_from_u64(0x5EED_0001);
+    let world = obs.search_state(&mut rng);
+    Ok((obs, world, legal))
+}
+
+fn proc_kb(key: &str) -> u64 {
+    std::fs::read_to_string("/proc/self/status")
+        .ok()
+        .and_then(|s| s.lines().find(|l| l.starts_with(key)).and_then(|l| l.split_whitespace().nth(1).and_then(|x| x.parse().ok())))
+        .unwrap_or(0)
+}
+
+fn plans_line(id: &str, world_seed: u64, start: Value, plans: &[Value], total_found: usize, nodes: usize, capped: bool, depth_cut: usize, lim: &Limits) -> Value {
+    let mut h = std::collections::hash_map::DefaultHasher::new();
+    Value::Array(plans.to_vec()).to_string().hash(&mut h);
+    json!({"kind": "plans", "id": id, "world_seed": world_seed, "start": start, "n_plans": plans.len(), "total_found": total_found, "capped": capped, "nodes": nodes,
+           "paths_cut_at_max_steps": depth_cut,
+           "limits": {"max_plans": lim.max_plans, "max_nodes": lim.max_nodes, "max_steps": lim.max_steps},
+           "plans_hash": format!("{:016x}", h.finish()), "plans": plans})
+}
+
+fn plan_actions_line(id: &str, plans: &[Value], ex: &Extras) -> Value {
+    let items: Vec<Value> = plans
+        .iter()
+        .filter_map(|p| {
+            let key = p["key"].as_str()?;
+            let (a, f) = ex.actions.get(key)?;
+            Some(json!({"n": p["n"], "key": key, "actions": a, "forced": f}))
+        })
+        .collect();
+    json!({"kind": "plan_actions", "id": id, "plans": items})
+}
+
+fn act_str(a: &Action) -> String {
+    serde_json::to_string(a).unwrap_or_default()
+}
+
+fn root_check_line(id: &str, plans: &[Value], ex: &Extras, legal: Option<&[Action]>) -> Value {
+    let mut first: HashMap<String, Vec<Value>> = HashMap::new();
+    for p in plans {
+        if let Some((a, _)) = p["key"].as_str().and_then(|k| ex.actions.get(k)) {
+            if let Some(a0) = a.first() {
+                first.entry(act_str(a0)).or_default().push(p["n"].clone());
+            }
+        }
+    }
+    let mut child_first: HashMap<u64, usize> = HashMap::new();
+    let mut entries = Vec::new();
+    let (mut n_plan, mut n_noop, mut n_dup, mut n_no) = (0, 0, 0, 0);
+    for (j, (a, h)) in ex.root.iter().enumerate() {
+        let ns = first.get(&act_str(a)).cloned().unwrap_or_default();
+        let mut dup: Option<usize> = None;
+        let class = if !ns.is_empty() {
+            n_plan += 1;
+            "plan"
+        } else if *h == Some(ex.root_hash) {
+            n_noop += 1;
+            "noop"
+        } else if let Some(k) = h.and_then(|hh| child_first.get(&hh).copied()) {
+            dup = Some(k);
+            n_dup += 1;
+            "dup_of"
+        } else {
+            n_no += 1;
+            "no_plan"
+        };
+        if let Some(hh) = h {
+            child_first.entry(*hh).or_insert(j);
+        }
+        entries.push(json!({"action": a, "class": class, "plans": ns, "dup_of": dup}));
+    }
+    let root_set: HashSet<String> = ex.root.iter().map(|(a, _)| act_str(a)).collect();
+    let (mut missing, mut extra) = (Vec::new(), Vec::new());
+    let ok = match legal {
+        Some(l) => {
+            let legal_set: HashSet<String> = l.iter().map(act_str).collect();
+            missing = l.iter().filter(|a| !root_set.contains(&act_str(a))).cloned().collect::<Vec<_>>();
+            extra = ex.root.iter().filter(|(a, _)| !legal_set.contains(&act_str(a))).map(|(a, _)| a.clone()).collect::<Vec<_>>();
+            json!(missing.is_empty() && extra.is_empty() && n_no == 0)
+        }
+        None => Value::Null,
+    };
+    json!({"kind": "root_check", "id": id, "ok": ok, "n_legal": legal.map(|l| l.len()), "n_root": ex.root.len(), "n_plan": n_plan, "n_noop": n_noop,
+           "n_dup_of": n_dup, "n_no_plan": n_no, "missing_in_lister": missing, "extra_in_lister": extra, "root": entries})
+}
+
+fn card_str(c: &Card) -> String {
+    format!("{} {}", c.get_name(), c.get_id())
+}
+
+fn pos_board(v: &State, side: usize) -> Value {
+    Value::Array(
+        v.in_play_pokemon[side]
+            .iter()
+            .filter_map(|p| p.as_ref())
+            .map(|p| {
+                json!({"card": card_str(&p.card), "behind": p.cards_behind.iter().map(card_str).collect::<Vec<_>>(),
+                       "tools": p.attached_tools.iter().map(card_str).collect::<Vec<_>>()})
+            })
+            .collect(),
+    )
+}
+
+/// The position fields the prompt reads, rebuilt from the actor's observation (the inverse of `build`), seat 0 = the actor.
+fn pos_like(obs: &PlayerObservation) -> Value {
+    let me = obs.actor;
+    let opp = 1 - me;
+    let v = obs.visible_state();
+    // own_knockouts_this_game is pub(crate) and turn_effects private: both are read through the State's serde form
+    let sv = serde_json::to_value(v).expect("state json");
+    let tc = v.turn_count;
+    let mut te: Vec<Value> = Vec::new();
+    if let Some(list) = sv["turn_effects"].get(tc.to_string()).and_then(|x| x.as_array()) {
+        for e in list {
+            let mut e = e.clone();
+            if me != 0 {
+                rel_seats(&mut e, me, "");
+            }
+            te.push(json!({"turn": tc, "effect": e}));
+        }
+    }
+    let stadium = v
+        .active_stadium
+        .as_ref()
+        .map(|c| json!({"card": card_str(c), "owner": v.active_stadium_owner.map(|o| rel(o, me))}))
+        .unwrap_or(Value::Null);
+    json!({
+        "turn_count": tc,
+        "stadium": stadium,
+        "turn_effects": te,
+        "me": {"hand": v.hands[me].iter().map(card_str).collect::<Vec<_>>(), "discard": v.discard_piles[me].iter().map(card_str).collect::<Vec<_>>(),
+               "board": pos_board(v, me), "knockouts": sv["own_knockouts_this_game"][me].clone()},
+        "opp": {"board": pos_board(v, opp), "discard": v.discard_piles[opp].iter().map(card_str).collect::<Vec<_>>()},
+    })
+}
+
+fn problem_line(id: &str, msg: &str) -> Value {
+    json!({"kind": "problem", "id": id, "problems": [msg.chars().take(300).collect::<String>()]})
+}
+
+fn panic_text(e: Box<dyn std::any::Any + Send>) -> String {
+    let m = e.downcast_ref::<String>().cloned().or_else(|| e.downcast_ref::<&str>().map(|s| s.to_string())).unwrap_or_else(|| "unknown".into());
+    format!("panic: {m}")
+}
+
+/// Runs one input line's work; a deserialization error or a panic becomes a problem line and the run goes on.
+fn guarded<F: FnOnce() -> Result<Vec<Value>, String>>(id: &str, f: F) -> Vec<Value> {
+    match std::panic::catch_unwind(std::panic::AssertUnwindSafe(f)) {
+        Ok(Ok(v)) => v,
+        Ok(Err(m)) => vec![problem_line(id, &m)],
+        Err(e) => vec![problem_line(id, &panic_text(e))],
+    }
+}
+
+fn read_jsonl(path: &str) -> Vec<String> {
+    std::fs::read_to_string(path).unwrap().lines().filter(|l| !l.trim().is_empty()).map(|l| l.to_string()).collect()
+}
+
+fn obs_of(rec: &Value) -> Result<PlayerObservation, String> {
+    serde_json::from_value::<PlayerObservation>(rec["pdl_observation"].clone()).map_err(|e| format!("observation: {e}"))
+}
+
+fn obs_mode_lines(id: &str, obs: &PlayerObservation, legal: Option<Vec<Action>>, lim: &Limits, fill: u64) -> Vec<Value> {
+    let t0 = std::time::Instant::now();
+    let me = obs.actor;
+    let world = obs.search_state(&mut StdRng::seed_from_u64(fill));
+    let start = start_block(obs);
+    let (plans, total_found, nodes, capped, depth_cut, ex) = list_plans(&world, lim, me);
+    vec![
+        plans_line(id, 1, start, &plans, total_found, nodes, capped, depth_cut, lim),
+        plan_actions_line(id, &plans, &ex),
+        root_check_line(id, &plans, &ex, legal.as_deref()),
+        json!({"kind": "pos_like", "id": id, "pos": pos_like(obs)}),
+        json!({"kind": "stats", "id": id, "secs": t0.elapsed().as_secs_f64(), "vmhwm_kb": proc_kb("VmHWM:"), "vmpeak_kb": proc_kb("VmPeak:"), "fill_seed": fill}),
+    ]
+}
+
+fn run_observations(file: &str, args: &[String], lim: &Limits) {
+    let fill: u64 = arg(args, "--fill-seed").map(|x| x.parse().unwrap()).unwrap_or(0x5EED_0001);
+    for line in read_jsonl(file) {
+        let rec: Value = match serde_json::from_str(&line) {
+            Ok(v) => v,
+            Err(e) => {
+                println!("{}", problem_line("?", &format!("input line: {e}")));
+                continue;
+            }
+        };
+        let id = rec["id"].as_str().unwrap_or("?").to_string();
+        let out = guarded(&id, || {
+            let obs = obs_of(&rec)?;
+            let legal: Option<Vec<Action>> = match rec.get("legal_actions") {
+                None | Some(Value::Null) => None,
+                Some(v) => Some(serde_json::from_value(v.clone()).map_err(|e| format!("legal_actions: {e}"))?),
+            };
+            Ok(obs_mode_lines(&id, &obs, legal, lim, fill))
+        });
+        for l in out {
+            println!("{l}");
+        }
+    }
+}
+
+fn trace_one(id: &str, rec: &Value) -> Result<Value, String> {
+    let obs = obs_of(rec)?;
+    let actions: Vec<Action> = serde_json::from_value(rec["actions"].clone()).map_err(|e| format!("actions: {e}"))?;
+    let me = obs.actor;
+    let mut st = obs.search_state(&mut StdRng::seed_from_u64(0x5EED_0001));
+    let mut steps: Vec<Value> = Vec::new();
+    let mut ended = false;
+    for (i, act) in actions.iter().enumerate() {
+        if ended {
+            return Ok(json!({"kind": "trace", "id": id, "ok": false, "error": format!("step {i} follows a step that ended the plan"), "steps": steps}));
+        }
+        let (actor, mut acts) = st.generate_possible_actions();
+        let fail = |m: String, steps: &Vec<Value>| json!({"kind": "trace", "id": id, "ok": false, "error": m, "steps": steps});
+        if actor != me {
+            return Ok(fail(format!("step {i}: the actor is {actor}, not {me}"), &steps));
+        }
+        canonical_actions(&mut acts);
+        let forced = acts.len() == 1;
+        if !acts.contains(act) {
+            return Ok(fail(format!("step {i}: action is not among the node's canonical actions"), &steps));
+        }
+        match step_kind(&st, act, me) {
+            Kind::Attack(_) => {
+                steps.push(json!({"forced": forced, "end": "attack", "actor_after": Value::Null, "hash_after": Value::Null}));
+                ended = true;
+            }
+            Kind::EndTurn => {
+                steps.push(json!({"forced": forced, "end": "end_turn", "actor_after": Value::Null, "hash_after": Value::Null}));
+                ended = true;
+            }
+            Kind::Chance(_) => {
+                steps.push(json!({"forced": forced, "end": "chance", "actor_after": Value::Null, "hash_after": Value::Null}));
+                ended = true;
+            }
+            Kind::Child(s1) => {
+                let (a2, _) = s1.generate_possible_actions();
+                if a2 == me {
+                    let h = obs_hash(&PlayerObservation::from_state(&s1, me, &obs.revealed));
+                    steps.push(json!({"forced": forced, "end": "child", "actor_after": a2, "hash_after": format!("{h:016x}")}));
+                } else {
+                    steps.push(json!({"forced": forced, "end": "opponent_choice", "actor_after": a2, "hash_after": Value::Null}));
+                    ended = true;
+                }
+                st = s1;
+            }
+        }
+    }
+    Ok(json!({"kind": "trace", "id": id, "ok": true, "error": Value::Null, "steps": steps}))
+}
+
 fn main() {
     let args: Vec<String> = std::env::args().collect();
-    let positions: Vec<Value> = serde_json::from_str(&std::fs::read_to_string(arg(&args, "--positions").expect("--positions")).unwrap()).unwrap();
-    let decks = load_decks(&args);
-    let only = arg_all(&args, "--only");
-    let world_seed: u64 = arg(&args, "--world-seed").map(|x| x.parse().unwrap()).unwrap_or(1);
     let lim = Limits {
         max_plans: arg(&args, "--max-plans").map(|x| x.parse().unwrap()).unwrap_or(2000),
         max_nodes: arg(&args, "--max-nodes").map(|x| x.parse().unwrap()).unwrap_or(200_000),
         max_steps: arg(&args, "--max-steps").map(|x| x.parse().unwrap()).unwrap_or(30),
     };
+    if let Some(file) = arg(&args, "--observations") {
+        run_observations(&file, &args, &lim);
+        return;
+    }
+    if let Some(file) = arg(&args, "--trace") {
+        for line in read_jsonl(&file) {
+            let rec: Value = match serde_json::from_str(&line) {
+                Ok(v) => v,
+                Err(e) => {
+                    println!("{}", problem_line("?", &format!("input line: {e}")));
+                    continue;
+                }
+            };
+            let id = rec["id"].as_str().unwrap_or("?").to_string();
+            let out = match std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| trace_one(&id, &rec))) {
+                Ok(Ok(v)) => v,
+                Ok(Err(m)) => json!({"kind": "trace", "id": id, "ok": false, "error": m.chars().take(300).collect::<String>(), "steps": []}),
+                Err(e) => json!({"kind": "trace", "id": id, "ok": false, "error": panic_text(e).chars().take(300).collect::<String>(), "steps": []}),
+            };
+            println!("{out}");
+        }
+        return;
+    }
+    if let Some(file) = arg(&args, "--obs-hash") {
+        for line in read_jsonl(&file) {
+            let rec: Value = match serde_json::from_str(&line) {
+                Ok(v) => v,
+                Err(e) => {
+                    println!("{}", problem_line("?", &format!("input line: {e}")));
+                    continue;
+                }
+            };
+            let id = rec["id"].as_str().unwrap_or("?").to_string();
+            let out = guarded(&id, || {
+                let obs = obs_of(&rec)?;
+                Ok(vec![json!({"kind": "obs_hash", "id": id, "hash": format!("{:016x}", obs_hash(&obs))})])
+            });
+            for l in out {
+                println!("{l}");
+            }
+        }
+        return;
+    }
+    let positions: Vec<Value> = serde_json::from_str(&std::fs::read_to_string(arg(&args, "--positions").expect("--positions")).unwrap()).unwrap();
+    let decks = load_decks(&args);
+    let only = arg_all(&args, "--only");
+    let world_seed: u64 = arg(&args, "--world-seed").map(|x| x.parse().unwrap()).unwrap_or(1);
+    let emit = args.iter().any(|a| a == "--emit-actions");
+    let mut export_file = arg(&args, "--export-observations").map(|p| std::fs::File::create(p).expect("export file"));
     if let Some(file) = arg(&args, "--replay") {
         // --replay FILE.jsonl: one {"id", "tag", "labels": [...]} per line -> {"kind":"replay", "id", "tag", "ok", "keys": [...], "error"}
         let by_id: HashMap<String, &Value> = positions.iter().map(|p| (p["id"].as_str().unwrap().to_string(), p)).collect();
@@ -1023,23 +1471,34 @@ fn main() {
         if !only.is_empty() && !only.contains(&id) {
             continue;
         }
-        let (obs, world) = match world_of(pos, &decks, world_seed) {
-            Ok(x) => x,
-            Err(problems) => {
-                println!("{}", json!({"kind": "problem", "id": id, "problems": problems}));
-                continue;
+        let (obs, world, legal) = if export_file.is_some() || emit {
+            match world_of_export(pos, &decks, world_seed) {
+                Ok(x) => x,
+                Err(problems) => {
+                    println!("{}", json!({"kind": "problem", "id": id, "problems": problems}));
+                    continue;
+                }
+            }
+        } else {
+            match world_of(pos, &decks, world_seed) {
+                Ok((o, w)) => (o, w, None),
+                Err(problems) => {
+                    println!("{}", json!({"kind": "problem", "id": id, "problems": problems}));
+                    continue;
+                }
             }
         };
+        if let Some(f) = export_file.as_mut() {
+            use std::io::Write;
+            writeln!(f, "{}", json!({"id": id, "pdl_observation": obs, "legal_actions": legal})).expect("write export");
+            f.flush().expect("flush export");
+        }
         let start = start_block(&obs);
-        let (plans, total_found, nodes, capped, depth_cut) = list_plans(&world, &lim, 0);
-        let mut h = std::collections::hash_map::DefaultHasher::new();
-        Value::Array(plans.clone()).to_string().hash(&mut h);
-        println!(
-            "{}",
-            json!({"kind": "plans", "id": id, "world_seed": world_seed, "start": start, "n_plans": plans.len(), "total_found": total_found, "capped": capped, "nodes": nodes,
-                   "paths_cut_at_max_steps": depth_cut,
-                   "limits": {"max_plans": lim.max_plans, "max_nodes": lim.max_nodes, "max_steps": lim.max_steps},
-                   "plans_hash": format!("{:016x}", h.finish()), "plans": plans})
-        );
+        let (plans, total_found, nodes, capped, depth_cut, ex) = list_plans(&world, &lim, 0);
+        println!("{}", plans_line(&id, world_seed, start, &plans, total_found, nodes, capped, depth_cut, &lim));
+        if emit {
+            println!("{}", plan_actions_line(&id, &plans, &ex));
+            println!("{}", root_check_line(&id, &plans, &ex, legal.as_deref()));
+        }
     }
 }
