@@ -837,42 +837,47 @@ def sample_records(items, n, seed):
 
 
 def run_gate4b(a):
-    import tempfile
     D = os.path.abspath(a.run_dir)
-    arms = {g['deal_tag']: g for g in read_jsonl(os.path.join(D, 'games.jsonl'))} if os.path.exists(os.path.join(D, 'games.jsonl')) else {}
+    out_dir = os.path.abspath(a.out)
+    os.makedirs(out_dir, exist_ok=True)
     import glob
     paths = sorted(glob.glob(os.path.join(D, 'deals', '*', 'a*', 'G', 'shadow.jsonl')))
     kinds = {'setup': [], 'fallback': []}
+    failed = []
     for path in paths:
         for rec in read_jsonl(path):
             try:
                 tc = json.loads(rec['decide'])['pdl_observation']['template']['turn_count']
-            except (ValueError, KeyError, TypeError):
-                tc = 3
+            except (ValueError, KeyError, TypeError) as e:
+                failed.append('%s ply %s: unparsable decide line (%s)' % (rec.get('deal_tag'), rec.get('ply'), type(e).__name__))
+                continue
             kinds['setup' if tc == 0 else 'fallback'].append(rec)
     want = {'fallback': a.sample_fallback, 'setup': a.sample_setup}
     chosen = {}
-    short = False
     for kind in ('fallback', 'setup'):
         items = kinds[kind]
         n = min(want[kind], len(items))
-        short = short or len(items) < want[kind] or want[kind] == 0 and False
         chosen[kind] = sample_records(items, n, a.sample_seed) if n else []
     by_list, kind_of = {}, {}
     for kind, recs in chosen.items():
         for r in recs:
-            arm = arms.get(r['deal_tag'])
-            lst = game_kit.LISTS[arm['bits']['list']] if arm else game_kit.LISTS[0]
+            m = re.search(r'-c(\d+)-a\d+-G$', str(r.get('deal_tag')))
+            if not m:
+                failed.append('%s ply %s: no cell in the deal tag' % (r.get('deal_tag'), r.get('ply')))
+                continue
+            lst = game_kit.LISTS[game_kit.cell_bits(int(m.group(1)))['list']]
             by_list.setdefault(lst, []).append(r)
             kind_of[(r['deal_tag'], r['ply'])] = kind
     stat = {k: {'checked': 0, 'equal': 0, 'mismatches': 0} for k in kinds}
     kr = os.path.join(a.judge_bins, 'kx3_replay')
-    tmp = tempfile.mkdtemp(dir=os.environ.get('TMPDIR'))
     for lst, recs in sorted(by_list.items()):
-        logp = os.path.join(tmp, hashlib.sha256(lst.encode()).hexdigest()[:8] + '.jsonl')
+        base = os.path.splitext(os.path.basename(lst))[0]
+        logp = os.path.join(out_dir, 'shadow_%s.jsonl' % base)
         append_rows_fsync(logp, recs, 'w')
         p = subprocess.run([kr, '--shadow-log', logp, '--opp-deck', os.path.join(os.path.abspath(a.repo), lst)], capture_output=True, timeout=1750, env=game_shadow.shadow_env(os.environ))
         seen = 0
+        with open(os.path.join(out_dir, 'kr_%s.stdout' % base), 'wb') as kf:
+            kf.write(p.stdout)
         for l in p.stdout.decode('utf-8', 'replace').splitlines():
             try:
                 j = json.loads(l)
@@ -887,7 +892,9 @@ def run_gate4b(a):
             stat['fallback']['mismatches'] += max(0, len(recs) - seen) or 1
     for kd in ('setup', 'fallback'):
         print('%s: checked %d, equal %d, mismatches %d (records available %d, asked %d)' % (kd, stat[kd]['checked'], stat[kd]['equal'], stat[kd]['mismatches'], len(kinds[kd]), want[kd]))
-    if any(stat[k]['mismatches'] for k in stat):
+    for f in failed[:12]:
+        print('FAILED: ' + cut(f))
+    if failed or any(stat[k]['mismatches'] for k in stat):
         print('GATE4b FAIL')
         return 1
     if len(kinds['fallback']) < want['fallback'] or len(kinds['setup']) < want['setup'] or len(kinds['fallback']) == 0:

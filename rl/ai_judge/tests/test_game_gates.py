@@ -630,23 +630,26 @@ class Gate4(unittest.TestCase):
             time.sleep(0.2)
         self.assertEqual(game_runner.session_members(sid), [])
 
-    def shadow_run(self, name, n_setup=3, n_fb=4, extra=(), mismatch=False, bits_list=0):
+    def shadow_run(self, name, n_setup=3, n_fb=4, extra=(), mismatch=False, cell=0, arm_row=True, bad_decide=False):
         root = self.kp_env(name)
         if mismatch:
             open(os.path.join(root, 'jb', 'kr_mismatch'), 'w').close()
         D = os.path.join(root, 'run')
-        adir = os.path.join(D, 'deals', '0000-k90-c00', 'a1', 'G')
+        adir = os.path.join(D, 'deals', '0000-k90-c%02d' % cell, 'a1', 'G')
         os.makedirs(adir)
-        tag = '0000-k90-c00-a1-G'
+        tag = '0000-k90-c%02d-a1-G' % cell
         recs = []
         for i in range(n_setup + n_fb):
             tc = 0 if i < n_setup else 3
             recs.append({'deal_tag': tag, 'ply': i + 1, 'new_game': '{}', 'decide': json.dumps({'pdl_observation': {'template': {'turn_count': tc}}}), 'shadow_i': 0, 'secs': 1.0})
+        if bad_decide:
+            recs[0]['decide'] = 'not json {'
         with open(os.path.join(adir, 'shadow.jsonl'), 'w') as f:
             for r in recs:
                 f.write(json.dumps(r) + '\n')
         with open(os.path.join(D, 'games.jsonl'), 'w') as f:
-            f.write(json.dumps({'deal_tag': tag, 'arm': 'G', 'bits': {'deck': 0, 'list': bits_list, 'policy': 0, 'seat': 0}}) + '\n')
+            if arm_row:
+                f.write(json.dumps({'deal_tag': tag, 'arm': 'G', 'bits': {'deck': 0, 'list': 0, 'policy': 0, 'seat': 0}}) + '\n')  # deliberately wrong list: the tag's cell decides
         os.makedirs(os.path.join(root, 'tmp'))
         self.root = root
         return call(['gate4-shadow', '--run-dir', D, '--repo', TL.REPO, '--judge-bins', os.path.join(root, 'jb'), '--sample-fallback', '2', '--sample-setup', '1', '--sample-seed', '25103008',
@@ -671,9 +674,22 @@ class Gate4(unittest.TestCase):
         a = game_gates.sample_records(list(range(20)), 5, 25103008)
         self.assertEqual(a, game_gates.sample_records(list(range(20)), 5, 25103008))
         self.assertNotEqual(a, game_gates.sample_records(list(range(20)), 5, 1))
-        rc, out = self.shadow_run('list2', bits_list=1)
+        rc, out = self.shadow_run('list2', cell=4)
         decks = open(os.path.join(self.root, 'jb', 'kr_decks.txt')).read().split()
         self.assertTrue(all(d.endswith('t-suicune.txt') for d in decks))
+        # the list comes from the tag's cell, never from the arm row and never a default
+        rc, out = self.shadow_run('nocell', cell=4, arm_row=False)
+        decks = open(os.path.join(self.root, 'jb', 'kr_decks.txt')).read().split()
+        self.assertTrue(decks and all(d.endswith('t-suicune.txt') for d in decks), decks)
+        # the per-list logs and KR's stdout are under --out
+        outdir = os.path.join(self.root, 'out')
+        names = os.listdir(outdir)
+        self.assertTrue(any(n.startswith('shadow_') for n in names), names)
+        self.assertTrue(any(n.startswith('kr_') for n in names), names)
+        # an unparsable decide line is a FAILED line, not a fallback
+        rc, out = self.shadow_run('unparse', bad_decide=True)
+        self.assertEqual((rc, out[-1]), (1, 'GATE4b FAIL'), out)
+        self.assertTrue(any(l.startswith('FAILED') and 'unparsable decide line' in l for l in out), out)
 
     def pin_run(self, name, arms, pin=None):
         root = os.path.join(TMP, 'g10_' + name)
