@@ -29,6 +29,9 @@ PLAN_KEYS = ('Plan keys may differ from frozen-7\'s (the State JSON can gain fie
              'Keys never reach the prompt. Gate 1 compares the key-free projection (labels, steps, ends, finals, results), the prompt bytes, and root_ok on every id; '
              'full plan_list_sha256 equality is for information only.')
 REASK = "reask_reason gains a sixth value, 'lister_error', for a re-ask after a lister failure (coordinator-106, decision 5)."
+REASK_OPP = ("The Gemini bot no longer asks the judge again on the adapter's opponent-choice counter. That counter comes from the opponent's full legal-action list, "
+             "which can depend on hidden cards (Astra's weekly review, Oct 30). An opponent's choice now ends a plan only when the visible board differs from the "
+             "plan's expectation (the obs-hash check).")
 TURN_EFFECTS_END = ('Kept turn effects print as {"turn", "effect"} items; each effect\'s inner keys print in serde_json\'s sorted order, because observation mode serialises them with '
                     'serde_json::to_value without preserve_order, so no other order can occur there.')
 
@@ -171,7 +174,8 @@ class Freeze8(unittest.TestCase):
             d = json.load(f)
         ids = [x['id'] for x in d['deviations']]
         self.assertEqual(ids, ['lister_rebuild', 'converter', 'plan_keys', 'label_seats', 'turn_effects', 'retries_and_charges', 'call_cap', 'shadow_feed', 'setup_by_kx3',
-                               'gate1_rule', 'kx3_route_drop', 'gate2_fill_seed', 'gate2_revealed', 'root_dup_noop', 'reask_lister_error'])
+                               'gate1_rule', 'kx3_route_drop', 'gate2_fill_seed', 'gate2_revealed', 'root_dup_noop', 'reask_lister_error',
+                               'reask_opponent_choice'])
         by = {x['id']: x for x in d['deviations']}
         self.assertEqual(by['shadow_feed']['text'], SHADOW_FEED)
         self.assertEqual(by['setup_by_kx3']['text'], SETUP_BY_KX3)
@@ -180,6 +184,8 @@ class Freeze8(unittest.TestCase):
         self.assertEqual(by['plan_keys']['text'], PLAN_KEYS)
         self.assertEqual(by['plan_keys']['source'], 'coordinator-103, wording coordinator-108')
         self.assertEqual(by['reask_lister_error'], {'id': 'reask_lister_error', 'from': 'PREREG v3.1 §2 judge bot', 'source': 'coordinator-106, decision 5; coordinator-108', 'text': REASK})
+        self.assertEqual(by['reask_opponent_choice'], {'id': 'reask_opponent_choice', 'from': 'PREREG v3.1 §2 judge bot step 5', 'source': 'coordinator-110, decisions 1 and 3',
+                                                       'text': REASK_OPP})
         for x in d['deviations']:
             self.assertEqual(sorted(x), ['from', 'id', 'source', 'text'])
         self.assertEqual(d['tag'], 'judge-prompt-frozen-8')

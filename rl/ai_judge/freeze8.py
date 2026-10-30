@@ -56,6 +56,8 @@ DEVIATIONS = [
      '''A legal root action whose child state equals the root's (noop) or the child of an earlier root action (dup_of) is accepted though no plan starts with it; it is counted, not a fallback. Reason: the lister de-duplicates children through seen, so such an action can never head a plan, and the judge still sees every distinct outcome. It is a pure no-op: accepting such an action changes no output byte (plan lines, prompts, rows other than its counters).'''),
     ('reask_lister_error', 'PREREG v3.1 §2 judge bot', 'coordinator-106, decision 5; coordinator-108',
      '''reask_reason gains a sixth value, 'lister_error', for a re-ask after a lister failure (coordinator-106, decision 5).'''),
+    ('reask_opponent_choice', 'PREREG v3.1 §2 judge bot step 5', 'coordinator-110, decisions 1 and 3',
+     '''The Gemini bot no longer asks the judge again on the adapter's opponent-choice counter. That counter comes from the opponent's full legal-action list, which can depend on hidden cards (Astra's weekly review, Oct 30). An opponent's choice now ends a plan only when the visible board differs from the plan's expectation (the obs-hash check).'''),
 ]
 
 
