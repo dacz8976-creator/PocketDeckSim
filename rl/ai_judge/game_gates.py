@@ -912,11 +912,14 @@ def run_gate4c(a):
         text = f.read().strip()
     pin = json.loads(text[len('KX_PARAMS '):] if text.startswith('KX_PARAMS ') else text)
     pin.pop('seat', None)
-    arms = read_jsonl(os.path.join(D, 'games.jsonl'))
+    gp = os.path.join(D, 'games.jsonl')
+    arms = read_jsonl(gp) if os.path.exists(gp) else []
     fails, lines_ok, checked = [], 0, 0
     for g in arms:
         path = os.path.join(arm_dir(D, g['deal_tag']), 'stderr.txt')
         if not os.path.exists(path):
+            if g['arm'] == 'K' or g['bits']['policy'] == 1:
+                fails.append('%s: stderr.txt missing' % g['deal_tag'])
             continue
         checked += 1
         params = []
@@ -926,19 +929,21 @@ def run_gate4c(a):
                     try:
                         params.append(json.loads(l[len('KX_PARAMS '):]))
                     except ValueError:
-                        fails.append('%s: an unparsable KX_PARAMS line' % g['deal_tag'])
+                        fails.append('%s: unparsable KX_PARAMS line' % g['deal_tag'])
         needs = g['arm'] == 'K' or g['bits']['policy'] == 1
         if needs and not params:
             fails.append('%s: no KX_PARAMS line' % g['deal_tag'])
         for j in params:
             if j.get('code') != game_kit.KX3_CANONICAL:
-                fails.append('%s: code %s' % (g['deal_tag'], cut(j.get('code'), 60)))
+                fails.append('%s: non-canonical code' % g['deal_tag'])
             rest = {k: v for k, v in j.items() if k != 'seat'}
             if rest != pin:
                 d = first_diff(pin, rest)
                 fails.append('%s: differs from the pin at %s' % (g['deal_tag'], d[0] if d else '?'))
             else:
                 lines_ok += 1
+    if checked == 0:
+        fails.append('arms checked 0')
     for f in fails[:8]:
         print('FAILED: ' + cut(f))
     print('GATE4c %s (arms checked %d, lines matched %d)' % ('FAIL' if fails else 'PASS', checked, lines_ok))

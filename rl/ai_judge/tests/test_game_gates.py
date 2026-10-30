@@ -703,10 +703,11 @@ class Gate4(unittest.TestCase):
             tag = '%04d-k90-c00-a1-%s' % (i, arm)
             adir = os.path.join(D, 'deals', '%04d-k90-c00' % i, 'a1', arm)
             os.makedirs(adir)
-            with open(os.path.join(adir, 'stderr.txt'), 'w') as f:
-                f.write('noise\n')
-                for l in lines:
-                    f.write('KX_PARAMS ' + json.dumps(l) + '\n')
+            if lines is not None:
+                with open(os.path.join(adir, 'stderr.txt'), 'w') as f:
+                    f.write('noise\n')
+                    for l in lines:
+                        f.write('KX_PARAMS ' + json.dumps(l) + '\n')
             with open(os.path.join(D, 'games.jsonl'), 'a') as f:
                 f.write(json.dumps({'deal_tag': tag, 'arm': arm, 'bits': {'deck': 0, 'list': 0, 'policy': policy, 'seat': 0}}) + '\n')
         return call(['gate4-pin', '--run-dir', D, '--pin', os.path.join(root, 'pin.json')]), base
@@ -724,6 +725,21 @@ class Gate4(unittest.TestCase):
             self.assertTrue(out[-1].startswith('GATE4c FAIL'), (name, out))
         (rc, out), _ = self.pin_run('seat', [('K', 0, [dict(base, seat=1)])])
         self.assertEqual(rc, 0, out)
+        # a K arm and a kx3-opponent arm without stderr.txt fail; so does arms checked 0
+        for name, arms in (('nofile_k', [('K', 0, None), ('G', 0, ok_lines)]), ('nofile_opp', [('G', 1, None), ('K', 0, ok_lines)]), ('zero', [('K', 0, None)])):
+            (rc, out), _ = self.pin_run(name, arms)
+            self.assertEqual(rc, 1, (name, out))
+            self.assertTrue(out[-1].startswith('GATE4c FAIL'), (name, out))
+            self.assertTrue(any('stderr.txt missing' in l or 'arms checked 0' in l for l in out), (name, out))
+        (rc, out), _ = self.pin_run('zero_arms', [])
+        self.assertEqual(rc, 1, out)
+        self.assertIn('arms checked 0', out[-1])
+        # the pin carries the non-canonical code: only the code check can fail it
+        trace = dict(base, code=game_kit.KX3_CANONICAL + '_trace')
+        (rc, out), _ = self.pin_run('pincode', [('K', 0, [dict(trace, seat=0)])], pin=dict(trace, seat=0))
+        self.assertEqual(rc, 1, out)
+        self.assertTrue(any('non-canonical code' in l for l in out), out)
+        self.assertFalse(any('differs from the pin' in l for l in out), out)
 
 
 if __name__ == '__main__':
