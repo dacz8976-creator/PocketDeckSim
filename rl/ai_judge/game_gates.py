@@ -260,7 +260,12 @@ def gate1_decide(rows, total, have_ref):
     d14 = [r for r in rows if r['id'] in set(judge.DIAG14)]
     if d14:
         d = _counts(d14)
-        lines.append('DIAG14 (information): ids %d, compared %d, root_ok %d, keyfree %d, prompt %d' % (d['ids'], d['compared'], d['root_ok'], d['keyfree'], d['prompt']))
+        d_cls = {}
+        for r in d14:
+            if r['excluded']:
+                d_cls[r['excluded']] = d_cls.get(r['excluded'], 0) + 1
+        lines.append('DIAG14 (information): ids %d, compared %d, excluded %s, root_ok %d, keyfree %d, prompt %d, full sha %d, obs_eq_pos %d, dup_of %d, noop %d' % (
+            d['ids'], d['compared'], json.dumps(d_cls, sort_keys=True), d['root_ok'], d['keyfree'], d['prompt'], d['full_sha'], d['obs_eq_pos'], d['dup_of'], d['noop']))
     cmp_rows = [r for r in rows if r['compared']]
     if have_ref:
         bad = any(not r['root_ok'] for r in rows) or any(not (r['keyfree_eq_ref'] and r['prompt_game_eq_ref']) for r in cmp_rows)
@@ -310,13 +315,14 @@ def run_gate1(a):
     write_exclusions(os.path.join(out, 'gate1_excluded.json'), excl)
     rows = compare_rows(ids, by_id, ref, new, decks_dir, {e['id']: e['class'] for e in excl}, have_ref, out)
     lines, rc = gate1_decide(rows, len(ids), have_ref)
-    for l in lines:
+    for l in lines[:-1]:
         print(l)
     if rc == 1:
         bad = [r for r in rows if not r['root_ok'] or (r['compared'] and not (r['prompt_game_eq_ref'] and (r['keyfree_eq_ref'] if have_ref else r['obs_eq_pos'])))]
         print('excluded ids: ' + cut([e['id'] for e in excl], 1000))
         for r in bad[:6]:
             print('failing id %s: %s' % (r['id'], cut(r['first_diff'])))
+    print(lines[-1])
     return rc
 
 

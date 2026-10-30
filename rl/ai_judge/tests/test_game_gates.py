@@ -165,6 +165,35 @@ class Gate1(unittest.TestCase):
         lines, rc = game_gates.gate1_decide(self._rows(3, 3), 3, False)
         self.assertEqual((lines[-1], rc), ('GATE1 INCOMPLETE (no reference)', 3))
 
+    def test_G3b_gate1_output_order(self):
+        d = fresh('g3b')
+        os.makedirs(d)
+        pos = os.path.join(d, 'pos.json')
+        ids = ('q1', 'q2', 'q3')
+        with open(pos, 'w') as f:
+            json.dump([{'id': i, 'deck': 'dk', 'turn_count': 1, 'his_turn': 1, 'turn_effects': [], 'me': {'knockouts': 0}, 'opp': {}} for i in ids], f)
+        ref = os.path.join(d, 'ref.jsonl')
+        sha = write_ref(ref, [rec_of([plan(['A'])], id='q1'), rec_of([plan(['A', 'B'])], id='q2'), rec_of([plan(['A'])], id='q3')])
+        pos_like = {'turn_count': 1, 'me': {'hand': [], 'discard': [], 'board': [], 'knockouts': 0}, 'opp': {'board': [], 'discard': []}, 'stadium': None, 'turn_effects': []}
+
+        def entry(labels, i):
+            obs = rec_of([plan(labels, key='k')], id=i)
+            return {'pos_rec': obs, 'obs_rec': obs, 'plan_actions': {}, 'root_check': {'ok': True, 'n_dup_of': 1, 'n_noop': 2}, 'pos_like': dict(pos_like)}
+        new = {'q1': entry(['A'], 'q1'), 'q2': entry(['A', 'C'], 'q2'), 'q3': entry(['B'], 'q3')}
+        with mock.patch.object(game_gates, 'new_path', return_value=new), mock.patch.object(game_gates, 'prompt_sha', lambda p, rec, dd: json.dumps(game_gates.keyfree(rec))), \
+                mock.patch.object(game_gates.judge, 'DIAG14', list(ids)):
+            rc, out = call(['gate1', '--positions', pos, '--decks-dir', d, '--new-bin', 'x', '--ref', ref, '--ref-sha256', sha, '--out', os.path.join(d, 'o')])
+        self.assertEqual(rc, 1, out)
+        self.assertTrue(out[-1].startswith('GATE1 FAIL'), out)
+        ex = [i for i, l in enumerate(out) if l.startswith('excluded ids:')]
+        fl = [i for i, l in enumerate(out) if l.startswith('failing id')]
+        self.assertTrue(ex and 'q3' in out[ex[0]] and ex[0] < len(out) - 1, out)
+        self.assertTrue(fl and 'q2' in out[fl[0]] and fl[-1] < len(out) - 1, out)
+        diag = [l for l in out if l.startswith('DIAG14')]
+        self.assertTrue(diag, out)
+        for w in ('root_first_step_labels_differ', 'full sha', 'obs_eq_pos', 'dup_of', 'noop'):
+            self.assertIn(w, diag[0])
+
     def test_G3_refusals(self):
         d = fresh('g3r')
         os.makedirs(d)
