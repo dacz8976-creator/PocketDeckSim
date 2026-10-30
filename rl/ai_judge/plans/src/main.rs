@@ -493,20 +493,21 @@ fn energy_names(e: &[EnergyType]) -> Vec<String> {
 
 fn start_block(obs: &PlayerObservation) -> Value {
     let v = obs.visible_state();
+    let me = obs.actor;
     let mut unseen: BTreeMap<String, u32> = BTreeMap::new();
     for c in &obs.known_own_deck {
         *unseen.entry(c.get_name()).or_insert(0) += 1;
     }
     json!({
         "turn_count": v.turn_count,
-        "points": v.points,
+        "points": [v.points[me], v.points[1 - me]],
         "stadium": v.active_stadium.as_ref().map(|c| c.get_name()),
-        "stadium_owner": v.active_stadium_owner,
-        "energy_zone": [v.energy_zone[0].current.map(|e| format!("{e:?}")), v.energy_zone[0].next.map(|e| format!("{e:?}"))],
-        "me": {"board": board_lines(v, 0), "hand": names(&v.hands[0]), "discard": names(&v.discard_piles[0]), "discard_energy": energy_names(&v.discard_energies[0]),
+        "stadium_owner": v.active_stadium_owner.map(|o| if o == me { 0 } else { 1 }),
+        "energy_zone": [v.energy_zone[me].current.map(|e| format!("{e:?}")), v.energy_zone[me].next.map(|e| format!("{e:?}"))],
+        "me": {"board": board_lines(v, me), "hand": names(&v.hands[me]), "discard": names(&v.discard_piles[me]), "discard_energy": energy_names(&v.discard_energies[me]),
                "deck_size": obs.known_own_deck.len(), "unseen_deck": unseen},
-        "opp": {"board": board_lines(v, 1), "hand_count": v.hands[1].len(), "deck_count": v.decks[1].cards.len(), "discard": names(&v.discard_piles[1]),
-                "discard_energy": energy_names(&v.discard_energies[1])},
+        "opp": {"board": board_lines(v, 1 - me), "hand_count": v.hands[1 - me].len(), "deck_count": v.decks[1 - me].cards.len(), "discard": names(&v.discard_piles[1 - me]),
+                "discard_energy": energy_names(&v.discard_energies[1 - me])},
     })
 }
 
@@ -557,9 +558,9 @@ fn count_by_type(e: &[EnergyType]) -> BTreeMap<String, i32> {
 }
 
 /// What changed between two states on the two boards and the points (never hands or decks).
-fn diff_lines(a: &State, b: &State) -> Vec<String> {
+fn diff_lines(a: &State, b: &State, me: usize) -> Vec<String> {
     let mut out = Vec::new();
-    for (side, who) in [(1usize, "Opponent"), (0usize, "You")] {
+    for (side, who) in [(1 - me, "Opponent"), (me, "You")] {
         let n = a.in_play_pokemon[side].len().max(b.in_play_pokemon[side].len());
         for i in 0..n {
             let pa = a.in_play_pokemon[side].get(i).and_then(|x| x.as_ref());
@@ -592,7 +593,7 @@ fn diff_lines(a: &State, b: &State) -> Vec<String> {
         }
     }
     if a.points != b.points {
-        out.push(format!("Points: you {} -> {}, opponent {} -> {}", a.points[0], b.points[0], a.points[1], b.points[1]));
+        out.push(format!("Points: you {} -> {}, opponent {} -> {}", a.points[me], b.points[me], a.points[1 - me], b.points[1 - me]));
     }
     out
 }
@@ -612,6 +613,7 @@ fn leaf_key(before: &State, label: &str, extra: &Value) -> String {
 }
 
 struct Collector {
+    me: usize,
     plans: Vec<Value>,
     keys: HashSet<String>,
     total_found: usize,
@@ -646,7 +648,7 @@ impl Collector {
     fn add(&mut self, before: &State, path: &Path, last: (String, String), end: &str, extra: Value) {
         let key = leaf_key(before, &last.0, &extra);
         if self.debug {
-            let look = format!("{}|{}|{:?}|{:?}", last.0, extra, board_lines(before, 0), names(&before.hands[0]));
+            let look = format!("{}|{}|{:?}|{:?}", last.0, extra, board_lines(before, self.me), names(&before.hands[self.me]));
             let sv = canonical_state_json(before);
             if let Some(prev) = self.look_alike.get(&look) {
                 if *prev != sv {
@@ -672,13 +674,13 @@ impl Collector {
         steps.push(last.1);
         self.plans.push(json!({
             "key": key, "labels": labels, "steps": steps, "n_steps": labels.len(), "end": end, "final": extra,
-            "result": {"board": board_lines(before, 0), "hand": names(&before.hands[0]), "points": before.points,
-                       "deck_size": before.decks[0].cards.len()},
+            "result": {"board": board_lines(before, self.me), "hand": names(&before.hands[self.me]), "points": [before.points[self.me], before.points[1 - self.me]],
+                       "deck_size": before.decks[self.me].cards.len()},
         }));
     }
 }
 
-fn attack_info(st: &State, act: &Action) -> Value {
+fn attack_info(st: &State, act: &Action, me: usize) -> Value {
     let SimpleAction::Attack(at) = &act.action else { unreachable!() };
     let mut info = json!({"title": at.title, "printed_damage": at.fixed_damage, "effect": at.effect});
     let st2 = st.clone();
@@ -691,7 +693,7 @@ fn attack_info(st: &State, act: &Action) -> Value {
             let mut s1 = st2.clone();
             let mut rng = StdRng::seed_from_u64(11);
             m(&mut rng, &mut s1, &act2);
-            let lines = diff_lines(&st2, &s1);
+            let lines = diff_lines(&st2, &s1, me);
             match groups.iter_mut().find(|g| g.1 == lines) {
                 Some(g) => g.0 += *p,
                 None => groups.push((*p, lines)),
@@ -730,10 +732,9 @@ enum Kind {
 /// The single place that decides whether an action ends a plan (an attack, ending the turn, a chance event) or is an ordinary step.
 /// A chance event is: the engine marks the action as depending on information the player cannot see, or cannot price it; its exact forecast has more
 /// than one branch (a coin, a random pick); or it changes the order of the player's own deck (a draw, a search, a shuffle).
-fn step_kind(st: &State, act: &Action) -> Kind {
-    let me = 0usize;
+fn step_kind(st: &State, act: &Action, me: usize) -> Kind {
     match &act.action {
-        SimpleAction::Attack(_) => Kind::Attack(attack_info(st, act)),
+        SimpleAction::Attack(_) => Kind::Attack(attack_info(st, act, me)),
         SimpleAction::EndTurn => Kind::EndTurn,
         _ => {
             let reason = hidden_continuation_reason(st, act);
@@ -764,9 +765,9 @@ fn step_kind(st: &State, act: &Action) -> Kind {
     }
 }
 
-fn list_plans(world: &State, lim: &Limits) -> (Vec<Value>, usize, usize, bool, usize) {
-    let me = 0usize;
+fn list_plans(world: &State, lim: &Limits, me: usize) -> (Vec<Value>, usize, usize, bool, usize) {
     let mut col = Collector {
+        me,
         plans: Vec::new(),
         keys: HashSet::new(),
         total_found: 0,
@@ -806,7 +807,7 @@ fn list_plans(world: &State, lim: &Limits) -> (Vec<Value>, usize, usize, bool, u
         for act in acts {
             let label = pg_label(&act);
             let text = english(&st, &act);
-            match step_kind(&st, &act) {
+            match step_kind(&st, &act, me) {
                 Kind::Attack(info) => col.add(&st, &path, (label, text), "attack", info),
                 Kind::EndTurn => col.add(&st, &path, (label, text), "end_turn", json!({"kind": "end_turn"})),
                 Kind::Chance(extra) => col.add(&st, &path, (label, text), "chance", extra),
@@ -905,7 +906,7 @@ fn replay(st: State, labels: &[String], i: usize, last: Option<String>, out: &mu
         let only = acts.len() == 1 && !matches!(acts[0].action, SimpleAction::EndTurn | SimpleAction::Attack(_));
         if only {
             let a = acts[0].clone();
-            return match step_kind(&st, &a) {
+            return match step_kind(&st, &a, 0) {
                 Kind::Child(s1) => replay(s1, labels, i, Some(pg_label(&a)), out, depth + 1),
                 Kind::Chance(extra) => {
                     out.push(leaf_key(&st, &pg_label(&a), &extra));
@@ -923,7 +924,7 @@ fn replay(st: State, labels: &[String], i: usize, last: Option<String>, out: &mu
     for a in cands {
         let label = pg_label(&a);
         let mark = out.len();
-        let r: Result<(), String> = match step_kind(&st, &a) {
+        let r: Result<(), String> = match step_kind(&st, &a, 0) {
             Kind::Attack(info) => {
                 out.push(leaf_key(&st, &label, &info));
                 Ok(())
@@ -1030,7 +1031,7 @@ fn main() {
             }
         };
         let start = start_block(&obs);
-        let (plans, total_found, nodes, capped, depth_cut) = list_plans(&world, &lim);
+        let (plans, total_found, nodes, capped, depth_cut) = list_plans(&world, &lim, 0);
         let mut h = std::collections::hash_map::DefaultHasher::new();
         Value::Array(plans.clone()).to_string().hash(&mut h);
         println!(
