@@ -1,5 +1,6 @@
 import contextlib
 import datetime
+import glob
 import io
 import json
 import os
@@ -302,6 +303,35 @@ class Runner(unittest.TestCase):
         self.assertFalse(gr.headroom_ok(1, 10, 5, 2, 1))
         self.assertTrue(gr.headroom_ok(2, 10, 0, 0, 9, 5))
         self.assertFalse(gr.headroom_ok(2, 10, 1, 0, 0, 5))
+
+    def _write_ledger(self, path, accrued):
+        with open(path, 'w') as f:
+            json.dump({'total_usd': 10, 'accrued_usd': accrued, 'in_flight_usd': 0}, f)
+
+    def test_R5b_headroom_in_runs(self):
+        e = Env('r5_s1', {'default': {'rows': [dec_row('t'), dec_row('t')]}})
+        e.plan('1', '80', '0,15')
+        with mock.patch.object(gr, 'live_start_checks', lambda r: None):
+            self.assertEqual(e.run(['--max-deals', '1'], stage='1', mock=False), 0)
+            g = [x for x in e.jl('games.jsonl') if x['arm'] == 'G']
+            self.assertAlmostEqual(g[0]['judge']['ledger_charge_usd'], 0.2)
+            self._write_ledger(e.ledger, 7.7)  # 2.3 left: at least 2, below 2 + 2 * 0.2
+            e.run(['--resume'], stage='1', mock=False)
+            self.assertEqual(e.end()['stop_reason'], 'ledger_headroom')
+            self.assertEqual(len(e.jl('deals.jsonl')), 1)
+            self.assertEqual(glob.glob(os.path.join(e.D, 'deals', '0001-*')), [])
+            self._write_ledger(e.ledger, 7.5)  # 2.5 left: enough
+            e.run(['--resume'], stage='1', mock=False)
+            self.assertNotEqual(e.end()['stop_reason'], 'ledger_headroom')
+        # stage 2: 2 x the stage-1 max charge
+        e2 = Env('r5_s2', {'default': {'rows': [dec_row('t')]}})
+        self.assertEqual(gr.main(['plan', '--stage', '2', '--k', '0', '--cells', '0', '--out', e2.plan_path]), 0)
+        self._write_ledger(e2.ledger, 7.5)  # 2.5 left, below 2 x 1.5
+        with mock.patch.object(gr, 'live_start_checks', lambda r: None):
+            e2.run(['--call-cap', '10', '--stage1-max-game-charge', '1.5', '--expect-model-version', 'm1'], stage='2', mock=False)
+        self.assertEqual(e2.end()['stop_reason'], 'ledger_headroom')
+        self.assertFalse(os.path.exists(os.path.join(e2.D, 'deals.jsonl')) and e2.jl('deals.jsonl'))
+        self.assertFalse(os.path.exists(os.path.join(e2.D, 'deals')))
 
     def test_R6_rows_outcome_blind_and_status(self):
         e = Env('r6')
