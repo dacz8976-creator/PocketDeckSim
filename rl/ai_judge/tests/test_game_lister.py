@@ -91,6 +91,47 @@ def by_kind(lines):
     return out
 
 
+def ls_dump(name, cell_deck, cell_list, seat, seeds, every, dump_only=True):
+    out = os.path.join(TMP, name + '.jsonl')
+    if not os.path.exists(out) or os.path.getsize(out) == 0:
+        import game_kit
+        run([LS, '--pilot-deck', game_kit.DECKS[cell_deck], '--opp-deck', game_kit.LISTS[cell_list], '--seat', str(seat),
+             '--seeds', ','.join(str(x) for x in seeds), '--every', str(every)] + (['--dump-only'] if dump_only else []) + ['--out', out])
+    with open(out) as fh:
+        return [json.loads(l) for l in fh if l.strip()]
+
+
+_SEAT1 = {}
+
+
+def seat1_inputs():
+    """Observations of the two seat-1 dumps (A v list 1 at cell 1, B v list 2 at cell 13): every opponent-turn state, plus the first 20 own-turn states of each dump."""
+    if 'v' in _SEAT1:
+        return _SEAT1['v']
+    import game_kit
+    cells = ((0, 0, 1), (1, 1, 13))
+    ks = [90]
+    while True:
+        recs = {}
+        for deck, lst, cell in cells:
+            seeds = [game_kit.seed(cell, k) for k in ks]
+            name = 's1dump_%d_%s' % (cell, '_'.join(str(k) for k in ks))
+            recs[cell] = [r for r in ls_dump(name, deck, lst, 1, seeds, 1) if r['actor'] == 1 and r['turn_count'] >= 1]
+        opp_turn = [r for c in recs.values() for r in c if r['current_player'] != r['actor']]
+        if len(opp_turn) >= 2 or ks[-1] >= 99:
+            break
+        ks.append(ks[-1] + 1)
+    chosen = []
+    for c in recs.values():
+        own = [r for r in c if r['current_player'] == r['actor']][:20]
+        chosen += own + [r for r in c if r['current_player'] != r['actor']]
+    inputs = [{'id': r['id'], 'pdl_observation': r['obs_a'], 'legal_actions': r['legal_actions']} for r in chosen]
+    meta = {r['id']: r for r in chosen}
+    lines = by_kind(obs_run(inputs, 'seat1_obs'))
+    _SEAT1['v'] = (inputs, meta, lines)
+    return _SEAT1['v']
+
+
 class Lister(unittest.TestCase):
     def test_L1_positions_identity(self):
         for label, f, decks, only in pos_files():
@@ -197,6 +238,130 @@ class Lister(unittest.TestCase):
         self.assertEqual(p.returncode, 0)
         ls = lines_of(p)
         self.assertEqual([l['kind'] for l in ls], ['problem'])
+
+    def test_L6_leak_states_obs(self):
+        import game_kit
+        recs = []
+        for deck, lst, seat, cell in ((0, 0, 0, 0), (0, 0, 1, 1)):
+            recs += ls_dump('l6_c%d' % cell, deck, lst, seat, [game_kit.seed(cell, 90)], 3)
+        inputs = [{'id': r['id'], 'pdl_observation': r['obs_a'], 'legal_actions': r['legal_actions']} for r in recs]
+        lines = obs_run(inputs, 'l6_obs')
+        kinds = by_kind(lines)
+        setup = [0, 0, 0]
+        rest_ok = rest_n = 0
+        for r in recs:
+            rc = kinds.get('root_check', {}).get(r['id'])
+            pr = kinds.get('problem', {}).get(r['id'])
+            if r['turn_count'] == 0:
+                setup[2 if pr else (0 if rc and rc['ok'] else 1)] += 1
+                continue
+            rest_n += 1
+            if rc and rc['ok'] is True:
+                rest_ok += 1
+            else:
+                print('L6 FAIL', r['id'], cut(pr or (rc['missing_in_lister'], rc['extra_in_lister'])))
+        print('L6 setup (ok, not ok, problem)', setup)
+        print('L6 root_check ok share', rest_ok, '/', rest_n)
+        self.assertGreaterEqual(rest_ok, 0.95 * rest_n)
+        n_seat1 = 0
+        pool = [(r['id'], r['obs_a'], kinds['plans'][r['id']]['start']) for r in recs if r['actor'] == 1 and r['turn_count'] >= 1]
+        s_inputs, _, s_kinds = seat1_inputs()
+        pool += [(x['id'], x['pdl_observation'], s_kinds['plans'][x['id']]['start']) for x in s_inputs]
+        for rid, ob, st in pool:
+            tpl = ob['template']
+            a = ob['actor']
+            self.assertEqual(st['points'], [tpl['points'][a], tpl['points'][1 - a]], rid)
+            self.assertEqual(st['me']['deck_size'], len(ob['known_own_deck']), rid)
+            ez = tpl['energy_zone'][a]
+            self.assertEqual(st['energy_zone'], [ez['current'], ez['next']], rid)
+            n_seat1 += 1
+        print('L6 seat-1 observations checked', n_seat1)
+        self.assertGreaterEqual(n_seat1, 10)
+        print('VMHWM_MAX', max(d['vmhwm_kb'] for d in kinds['stats'].values()))
+        print('VMPEAK_MAX', max(d['vmpeak_kb'] for d in kinds['stats'].values()))
+
+    def test_L9_seat1_attack_diffs(self):
+        import re
+        inputs, meta, kinds = seat1_inputs()
+        n_plans, obs_used = 0, set()
+        for rec in inputs:
+            m = meta[rec['id']]
+            if m['current_player'] != m['actor']:
+                continue
+            tpl = rec['pdl_observation']['template']
+            boards = [json.dumps(tpl['in_play_pokemon'][side]) for side in (0, 1)]
+            for p in kinds['plans'][rec['id']]['plans']:
+                if p['end'] != 'attack':
+                    continue
+                n_plans += 1
+                obs_used.add(rec['id'])
+                for o in p['final'].get('outcomes', []):
+                    for line in o['lines']:
+                        mm = re.match(r'^(Opponent|You): (.+?) (\(Active\)|\(Bench \d\)|takes the)', line)
+                        if mm:
+                            side = 0 if mm.group(1) == 'Opponent' else 1
+                            self.assertIn(mm.group(2), boards[side], '%s: %s' % (rec['id'], cut(line)))
+                        if line.startswith('Points:'):
+                            pm = re.match(r'^Points: you (\d+) -> (\d+), opponent (\d+) -> (\d+)$', line)
+                            self.assertIsNotNone(pm, line)
+                            self.assertEqual(int(pm.group(1)), tpl['points'][1], line)
+                            self.assertEqual(int(pm.group(3)), tpl['points'][0], line)
+        print('L9 attack plans', n_plans, 'observations', len(obs_used))
+        self.assertGreaterEqual(n_plans, 3)
+        self.assertGreaterEqual(len(obs_used), 2)
+
+    def test_L10_relative_seats(self):
+        import re
+        inputs, meta, kinds = seat1_inputs()
+        total = 0
+        per_opp_state = {}
+
+        def seat_pairs(lab, act, path, out, variant):
+            if isinstance(lab, dict) and isinstance(act, dict):
+                for k in lab:
+                    if k in ('player', 'target_player', 'source_player') and isinstance(lab[k], int):
+                        out.append((lab[k], act[k]))
+                    elif k == 'attacking_ref':
+                        out.append((lab[k][0], act[k][0]))
+                    elif k in ('prior_knockouts', 'damaged_refs'):
+                        out.extend((x[0], y[0]) for x, y in zip(lab[k], act[k]))
+                    elif k == 'point_denial_flips':
+                        out.extend((x[0][0], y[0][0]) for x, y in zip(lab[k], act[k]))
+                    elif k == 'targets' and variant == 'ApplyDamage':
+                        out.extend((x[1], y[1]) for x, y in zip(lab[k], act[k]))
+                    else:
+                        seat_pairs(lab[k], act[k], path + [k], out, variant)
+            elif isinstance(lab, list) and isinstance(act, list):
+                for x, y in zip(lab, act):
+                    seat_pairs(x, y, path, out, variant)
+
+        for rec in inputs:
+            rid = rec['id']
+            actor = rec['pdl_observation']['actor']
+            acts = {pa['n']: pa['actions'] for pa in kinds['plan_actions'][rid]['plans']}
+            n_here = 0
+            for p in kinds['plans'][rid]['plans']:
+                for lab, act in zip(p['labels'], acts[p['n']]):
+                    pairs = []
+                    mm = re.match(r'^(Promote|Activate):(\d+)@(\d+)$', lab)
+                    if mm:
+                        pairs.append((int(mm.group(2)), list(act['action'].values())[0]['player']))
+                    elif '#' in lab and re.match(r'^[A-Za-z0-9_]+#', lab):
+                        name, js = lab.split('#', 1)
+                        variant = list(act['action'].keys())[0] if isinstance(act['action'], dict) else None
+                        if variant != name:
+                            continue
+                        seat_pairs(json.loads(js), list(act['action'].values())[0], [], pairs, variant)
+                    for labn, real in pairs:
+                        want = 0 if real == actor else 1
+                        self.assertEqual(labn, want, '%s label %s action seat %s actor %s' % (rid, cut(lab), real, actor))
+                        n_here += 1
+            total += n_here
+            if meta[rid]['current_player'] != meta[rid]['actor']:
+                per_opp_state[rid] = n_here
+        print('L10 numbers checked', total, 'opponent-turn states with a number', sum(1 for v in per_opp_state.values() if v >= 1), 'of', len(per_opp_state))
+        self.assertGreaterEqual(sum(1 for v in per_opp_state.values() if v >= 1), 2)
+        self.assertGreaterEqual(total, 20)
 
 
 if __name__ == '__main__':
