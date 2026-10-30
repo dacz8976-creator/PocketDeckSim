@@ -74,8 +74,12 @@ class Env:
     def check(self, frozen=None):
         return run(['check', '--frozen', frozen or self.out] + self.args)
 
+    def git_tree_fake(self):
+        return lambda repo, path: {'engine': game_kit_trees()['engine'], 'lib': game_kit_trees()['lib']}[path]
+
     def patch(self):
-        return mock.patch.object(freeze8, 'git_tree', lambda repo, path: {'engine': game_kit_trees()['engine'], 'lib': game_kit_trees()['lib']}[path])
+        return mock.patch.multiple(freeze8, git_tree=self.git_tree_fake(), EXPECTED_DG=freeze8.sha256_file(os.path.join(self.eb, 'deckgym')),
+                                   EXPECTED_PB=freeze8.sha256_file(os.path.join(self.eb, 'protocol_bot')))
 
     def flip(self, path):
         with open(path, 'rb') as f:
@@ -176,6 +180,27 @@ class Freeze8(unittest.TestCase):
         self.assertIsNone(d['frozen_on'])
         self.assertEqual(d['kx3']['selfcheck_pin'], 'selfcheck pilot=kx3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=138 digest=31d638dbc818b0fa')
         self.assertIn('outside_clone', d)
+
+    def test_Z8_binaries_enforced(self):
+        e = Env('z8')
+        dg, pb = os.path.join(e.eb, 'deckgym'), os.path.join(e.eb, 'protocol_bot')
+        with mock.patch.object(freeze8, 'git_tree', e.git_tree_fake()):
+            rc, out = e.record(['--draft'])
+            self.assertEqual(rc, 2, out)
+            self.assertTrue(any(dg in l for l in out), out)
+            self.assertFalse(os.path.exists(e.out))
+        with mock.patch.multiple(freeze8, git_tree=e.git_tree_fake(), EXPECTED_DG=freeze8.sha256_file(dg)):
+            rc, out = e.record(['--draft'])
+            self.assertEqual(rc, 2, out)
+            self.assertTrue(any(pb in l for l in out), out)
+            self.assertFalse(any(dg in l for l in out), out)
+        with e.patch():
+            rc, out = e.record(['--draft'])
+            self.assertEqual(rc, 0, out)
+        with mock.patch.object(freeze8, 'git_tree', e.git_tree_fake()):
+            rc, out = e.check()
+            self.assertEqual((rc, out[-1]), (1, 'GATE5 FAIL'), out)
+            self.assertTrue(any(dg in l for l in out), out)
 
     def test_Z6_forbidden_env(self):
         e = Env('z6')

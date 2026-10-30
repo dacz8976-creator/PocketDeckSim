@@ -176,6 +176,9 @@ def compute(repo, engine_bins, judge_bins, draft):
             p = os.path.join(folder, n)
             if os.path.isfile(p):
                 bins[n] = sha256_file(p)
+                want = {'deckgym': EXPECTED_DG, 'protocol_bot': EXPECTED_PB}.get(n) if folder == engine_bins else None
+                if want is not None and bins[n] != want:
+                    problems.append('binary differs from EXPECTED_%s: %s' % ('DG' if n == 'deckgym' else 'PB', p))
             else:
                 problems.append('missing binary: ' + p)
     kit = json.loads(json.dumps({n: getattr(game_kit, n) for n in sorted(dir(game_kit)) if n.isupper()}, default=list))
