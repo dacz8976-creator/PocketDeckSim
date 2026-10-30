@@ -30,8 +30,8 @@ DEVIATIONS = [
      '''The plan lister is rebuilt on engine tree e36452d3 plus kx3's files (tree 34fef9e5): a seat parameter, steps that keep their actions, root classification, obs_hash, and the observation, trace and obs-hash modes. Positions-mode output stays byte-identical to the pre-edit build. Reason: the game path lists plans from the adapter's observation, for either seat.'''),
     ('converter', 'frozen-7, PREREG v3.1 §2 (ii)', 'PREREG v3.1',
      '''A converter turns the adapter's pdl_observation into the lister's input and the prompt's position fields. Reason: game prompts are built from the observation only.'''),
-    ('plan_keys', 'frozen-7', 'coordinator-103',
-     '''Plan keys differ from frozen-7's, because they hash the whole State JSON, which has new fields on this engine, and DefaultHasher is not stable across Rust versions. Keys never reach the prompt. Gate 1 compares the key-free projection (labels, steps, ends, finals, results), the prompt bytes, and root_ok on every id; full plan_list_sha256 equality is for information only.'''),
+    ('plan_keys', 'frozen-7', 'coordinator-103, wording coordinator-108',
+     '''Plan keys may differ from frozen-7's (the State JSON can gain fields); on the 92 they were equal (gate 1: full plan_list_sha256 92/92). Keys never reach the prompt. Gate 1 compares the key-free projection (labels, steps, ends, finals, results), the prompt bytes, and root_ok on every id; full plan_list_sha256 equality is for information only.'''),
     ('label_seats', 'frozen-7', 'coordinator-104',
      '''label seat numbers made relative to the actor, to match frozen-7's mover-at-0 convention. The actor is 0 and the opponent 1 in Promote, Activate, the English label text and every player field inside a Name#{json} label, and in that label's other seat fields (target_player, source_player, and the seat element of attacking_ref, targets, prior_knockouts, damaged_refs and point_denial_flips); the action sent to the engine keeps its real seat. With actor 0 the output is byte-identical by construction.'''),
     ('turn_effects', 'frozen-7', 'laptop fact (Oct 30 engine read: add_turn_effect is never pruned)',
@@ -54,6 +54,8 @@ DEVIATIONS = [
      '''On states where cards were revealed, gate 2 does not swap the opponent's hand or deck (it would contradict what was revealed); it still varies the fill-in seed, and the skipped share is reported.'''),
     ('root_dup_noop', 'PREREG v3.1 §2 judge bot step 2', 'coordinator-103',
      '''A legal root action whose child state equals the root's (noop) or the child of an earlier root action (dup_of) is accepted though no plan starts with it; it is counted, not a fallback. Reason: the lister de-duplicates children through seen, so such an action can never head a plan, and the judge still sees every distinct outcome. It is a pure no-op: accepting such an action changes no output byte (plan lines, prompts, rows other than its counters).'''),
+    ('reask_lister_error', 'PREREG v3.1 §2 judge bot', 'coordinator-106, decision 5; coordinator-108',
+     '''reask_reason gains a sixth value, 'lister_error', for a re-ask after a lister failure (coordinator-106, decision 5).'''),
 ]
 
 
