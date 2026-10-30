@@ -735,6 +735,23 @@ class Runner(unittest.TestCase):
         self.assertIn('engine_error', out)
         self.assertIn('infra attempts by reason: {"signal 9": 1}', out)
 
+    def test_R18c_infra_replay_clears_drop(self):
+        sc = {'0000-k80-c00/a1/G': {'exit': 101}, '0000-k80-c00/a1/K': {'sigkill_self': True}}
+        e = Env('r18c', sc)
+        e.plan('1', '80', '0')
+        with mock.patch.object(gr, 'live_start_checks', lambda r: None):
+            e.run(stage='1', mock=False)
+        rows = e.jl('deals.jsonl')
+        self.assertEqual([(d['attempt'], d['complete'], d['dropped']) for d in rows], [(1, False, False), (2, True, False)])
+        self.assertIsNone(e.end()['stop_reason'])
+        buf = io.StringIO()
+        with contextlib.redirect_stdout(buf):
+            gr.main(['status', '--run-dir', e.D])
+        out = buf.getvalue()
+        self.assertIn('dropped deals 0 (limit 2)', out)
+        self.assertIn('infra attempts by reason: {"signal 9": 1}', out)
+        self.assertNotIn('0000-k80-c00-a1-G', out.split('dropped deals')[1])
+
     def test_R18b_two_drops_go_on(self):
         sc = {'0000-k80-c00/a1/G': {'exit': 101}, '0001-k80-c15/a1/K': {'fallbacks': {'1': 1}}}
         e = Env('r18b', sc)
