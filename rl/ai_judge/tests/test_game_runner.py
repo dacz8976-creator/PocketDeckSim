@@ -263,21 +263,26 @@ class Runner(unittest.TestCase):
         self.assertEqual(gr.main(['plan', '--stage', '1', '--k', '79', '--out', e.plan_path]), 2)
         self.assertEqual(gr.main(['plan', '--stage', '1', '--k', '85', '--out', e.plan_path]), 0)
         self.assertEqual(gr.main(['plan', '--stage', 'dev', '--k', '89', '--out', e.plan_path]), 2)
-        # run refusals
+        # run refusals: every live case runs with the live start checks patched out, so only the flag rules can refuse
+        e.env.update({'VERTEX_API_KEY': 'fake' + '-' * 3 + '0' * 24, 'VERTEX_PROJECT': 'proj-12345'})
+
+        def refused(text, *a, **k):
+            with mock.patch.object(gr, 'live_start_checks', lambda r: None):
+                rc = e.run(*a, **k)
+            self.assertEqual(rc, 2, (a, k))
+            self.assertIn('REFUSED: ' + text, e.out)
         e.plan('dev', '90', '0')
-        base = ['--stage', 'dev']
-        for stage, extra, mock in (('1', [], True), ('2', [], True), ('dev', [], True)):
-            pass
-        self.assertEqual(e.run(stage='2'), 2)  # the plan is a dev plan
+        refused("--stage differs from the plan's stage", stage='2')  # the plan is a dev plan
         e.plan('1', '80', '0')
-        self.assertEqual(e.run(stage='1', mock=True), 2)
-        self.assertEqual(e.run(['--force-fallback-every', '2'], stage='1', mock=False), 2)
-        self.assertEqual(e.run(['--arms', 'G'], stage='1', mock=False), 2)
+        refused('stage 1 and 2 take no mock flags', stage='1', mock=True)
+        refused('stage 1 and 2 take no mock flags', ['--force-fallback-every', '2'], stage='1', mock=False)
+        refused('stage 1 and 2 run both arms', ['--arms', 'G'], stage='1', mock=False)
         gr.main(['plan', '--stage', '2', '--k', '0', '--cells', '0', '--out', e.plan_path])
+        need = 'a live stage 2 needs --call-cap, --stage1-max-game-charge and --expect-model-version'
         for extra in ([], ['--call-cap', '10'], ['--call-cap', '10', '--stage1-max-game-charge', '1'], ['--stage1-max-game-charge', '1', '--expect-model-version', 'm']):
-            self.assertEqual(e.run(extra, stage='2', mock=False), 2, extra)
+            refused(need, extra, stage='2', mock=False)
         e.plan('dev', '90', '0')
-        self.assertEqual(e.run(['--force-fallback-every', '2'], mock=False), 2)
+        refused('--force-fallback-every is refused in live mode', ['--force-fallback-every', '2'], mock=False)
 
     def test_R4_resume(self):
         e = Env('r4')
