@@ -86,7 +86,7 @@ for seat, f in ((0, '--bot-a'), (1, '--bot-b')):
                 fh.write(json.dumps(l) + '\n')
         inst += 1
 if 'rows' in sc and cmd_arg('--rows'):
-    with open(cmd_arg('--rows'), 'w') as fh:
+    with open(cmd_arg('--rows'), 'a') as fh:
         for r in sc['rows']:
             fh.write(json.dumps(r) + '\n')
 if 'stop' in sc:
@@ -515,6 +515,46 @@ class Runner(unittest.TestCase):
             time.sleep(0.2)
         self.assertEqual(gr.session_members(info['sid']), [])
         self.assertEqual(e.end()['stop_reason'], 'signal')
+
+    def _hash_tree(self, root):
+        import hashlib
+        out = {}
+        for dp, dn, fn in os.walk(root):
+            for f in fn:
+                path = os.path.join(dp, f)
+                with open(path, 'rb') as fh:
+                    out[os.path.relpath(path, root)] = hashlib.sha256(fh.read()).hexdigest()
+        return out
+
+    def test_R16b_attempt_after_signal(self):
+        e = Env('r16b')
+        pidfile = os.path.join(e.root, 'dg.json')
+        rows3 = [dec_row('t') for _ in range(3)]
+        e.scenario({'default': {}, '0000-k90-c00/a1/G': {'sleep': 120, 'pidfile': pidfile, 'rows': rows3}})
+        e.plan('dev', '90', '0')
+        argv = ['python3', '-I', '-B', os.path.join(AIJ, 'game_runner.py')] + e.argv(['--arms', 'G'])
+        p = subprocess.Popen(argv, env=e.env, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
+        t0 = time.time()
+        while time.time() - t0 < 20 and not (os.path.exists(pidfile) and os.path.getsize(pidfile) > 0):
+            time.sleep(0.1)
+        time.sleep(0.3)
+        info = json.load(open(pidfile))
+        p.send_signal(signal.SIGINT)
+        self.assertEqual(p.wait(timeout=60), 130)
+        t0 = time.time()
+        while time.time() - t0 < 30 and gr.session_members(info['sid']):
+            time.sleep(0.2)
+        self.assertEqual(gr.session_members(info['sid']), [])
+        a1 = os.path.join(e.D, 'deals', '0000-k90-c00', 'a1')
+        before = self._hash_tree(a1)
+        self.assertTrue(before)
+        e.scenario({'default': {'rows': [dec_row('t')]}})
+        self.assertEqual(e.run(['--arms', 'G', '--resume']), 0)
+        g = e.jl('games.jsonl')[-1]
+        self.assertEqual((g['attempt'], g['deal_tag']), (2, '0000-k90-c00-a2-G'))
+        self.assertEqual(g['judge']['decisions'], 1)
+        self.assertEqual(len(os.listdir(os.path.join(e.D, 'deals', '0000-k90-c00', 'a2', 'G', 'protolog'))), 1)
+        self.assertEqual(self._hash_tree(a1), before)
 
     def _model_rows(self, tag, model):
         return {'rows': [dec_row(tag, model=model)]}

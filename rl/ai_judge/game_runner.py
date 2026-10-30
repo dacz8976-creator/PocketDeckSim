@@ -583,6 +583,10 @@ class Runner:
                     raise StopRun('stop_date')
                 self.headroom_check()
                 prior = [r['attempt'] for r in self.deal_rows() if r['deal_idx'] == deal['deal_idx']]
+                for d in glob.glob(os.path.join(self.deal_dir(deal), 'a[0-9]*')):
+                    m = re.fullmatch(r'a(\d+)', os.path.basename(d))
+                    if m:
+                        prior.append(int(m.group(1)))
                 deal_row, rows = self.play_deal(deal, max(prior or [0]) + 1)
                 self.after_deal(deal_row, rows, deals)
         except StopRun as s:
