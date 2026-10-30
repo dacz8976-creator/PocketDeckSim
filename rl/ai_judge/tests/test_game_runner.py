@@ -352,11 +352,11 @@ class Runner(unittest.TestCase):
         self.assertIn('deals complete 1 of 1', buf.getvalue())
         self.assertIn('failures by class: {}', buf.getvalue())
 
-    def _arm(self, name, scenario, cell='0', extra=('--arms', 'G,K'), stage='dev', use_mock=True, plan_k='90'):
+    def _arm(self, name, scenario, cell='0', extra=('--arms', 'G,K'), stage='dev', use_mock=True, plan_k='90', clock=None):
         e = Env(name, scenario)
         e.plan(stage, plan_k, cell)
         with mock.patch.object(gr, 'live_start_checks', lambda r: None):
-            e.run(list(extra), stage=stage, mock=use_mock)
+            e.run(list(extra), stage=stage, mock=use_mock, clock=clock)
         return e, {(g['arm'], g['attempt']): g for g in e.jl('games.jsonl')}
 
     def test_R6_stderr_tail_outcome_blind(self):
@@ -557,11 +557,21 @@ class Runner(unittest.TestCase):
 
     def test_R11_stop_leaves_deal_incomplete(self):
         for reason, code in (('ledger', 3), ('deck', 6), ('not_sent', 5), ('ledger_bound', 5)):
-            e, a = self._arm('r11_' + reason, {'0000-k90-c00/a1/G': {'stop': reason, 'exit': 0}}, cell='0,1')
-            self.assertEqual([(x['arm'], x['failure']) for x in e.jl('games.jsonl')], [('G', 'stop:' + reason)])
-            self.assertFalse([d for d in e.jl('deals.jsonl') if d['complete']])
-            self.assertEqual(e.end()['stop_reason'], 'stop:' + reason)
-            self.assertEqual(e.end()['complete_deals'], 0)
+            for way in ('a', 'b'):
+                if way == 'a':
+                    sc, clock = {'stop': reason, 'sleep': 2}, None
+                else:
+                    sc, clock = {'stop': reason, 'exit': code}, Clock(on_call=lambda n: time.sleep(2.0) if n == 1 else None)
+                e, a = self._arm('r11%s_%s' % (way, reason), {'0000-k90-c00/a1/G': sc}, cell='0,1', clock=clock)
+                g = e.jl('games.jsonl')
+                self.assertEqual([(x['arm'], x['failure']) for x in g], [('G', 'stop:' + reason)], (way, reason))
+                if way == 'a':
+                    self.assertEqual((g[0]['exit_code'], g[0]['completion']), (-9, None), reason)
+                else:
+                    self.assertEqual(g[0]['exit_code'], code, reason)
+                self.assertFalse([d for d in e.jl('deals.jsonl') if d['complete']])
+                self.assertEqual(e.end()['stop_reason'], 'stop:' + reason)
+                self.assertEqual(e.end()['complete_deals'], 0)
 
     def test_R12_stop_date(self):
         stop = datetime.datetime.strptime(game_kit.STOP_AT_UTC, '%Y-%m-%dT%H:%M:%SZ').replace(tzinfo=datetime.timezone.utc)
