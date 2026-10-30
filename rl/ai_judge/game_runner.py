@@ -652,6 +652,9 @@ def cmd_run(a, **inject):
                 pass
             try:
                 kill_session(r.live_dg.pid)
+                lock = os.path.abspath(a.ledger) + '.lock'
+                if os.path.exists(lock):
+                    os.remove(lock)
             except (OSError, ValueError):
                 pass
         r.stop_reason = 'signal'

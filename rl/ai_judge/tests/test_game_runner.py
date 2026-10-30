@@ -91,6 +91,9 @@ if 'rows' in sc and cmd_arg('--rows'):
             fh.write(json.dumps(r) + '\n')
 if 'stop' in sc:
     json.dump({'reason': sc['stop'], 'detail': 'x', 'deal_tag': 't', 'utc': 'u'}, open(cmd_arg('--stop-file'), 'w'))
+if sc.get('stop_if_lock') and os.path.exists(cmd_arg('--ledger') + '.lock'):
+    json.dump({'reason': 'ledger', 'detail': 'stale lock', 'deal_tag': 't', 'utc': 'u'}, open(cmd_arg('--stop-file'), 'w'))
+    sys.exit(0)
 if sc.get('lock'):
     open(cmd_arg('--ledger') + '.lock', 'w').close()
 if sc.get('orphan'):
@@ -511,17 +514,19 @@ class Runner(unittest.TestCase):
                 gr.kill_session(sid)
 
     def test_R16_signals(self):
-        e = Env('r16', {'default': {'sleep': 120, 'orphan': True}})
+        e = Env('r16')
         pidfile = os.path.join(e.root, 'dg.json')
-        e.scenario({'default': {'sleep': 120, 'orphan': True, 'pidfile': pidfile}})
+        e.scenario({'default': {'stop_if_lock': True}, '0000-k90-c00/a1/G': {'sleep': 120, 'orphan': True, 'pidfile': pidfile, 'lock': True}})
         e.plan('dev', '90', '0')
         argv = ['python3', '-I', '-B', os.path.join(AIJ, 'game_runner.py')] + e.argv(['--arms', 'G'])
         p = subprocess.Popen(argv, env=e.env, stdout=subprocess.DEVNULL, stderr=subprocess.DEVNULL)
         t0 = time.time()
-        while time.time() - t0 < 20 and not (os.path.exists(pidfile) and os.path.getsize(pidfile) > 0 and os.path.exists(os.path.join(e.D, 'deals', '0000-k90-c00', 'a1', 'G', 'orphan.pid'))):
+        while time.time() - t0 < 20 and not (os.path.exists(pidfile) and os.path.getsize(pidfile) > 0 and os.path.exists(os.path.join(e.D, 'deals', '0000-k90-c00', 'a1', 'G', 'orphan.pid'))
+                                             and os.path.exists(e.ledger + '.lock')):
             time.sleep(0.1)
         time.sleep(0.3)
         info = json.load(open(pidfile))
+        self.assertTrue(os.path.exists(e.ledger + '.lock'))
         p.send_signal(signal.SIGINT)
         self.assertEqual(p.wait(timeout=60), 130)
         t0 = time.time()
@@ -529,6 +534,13 @@ class Runner(unittest.TestCase):
             time.sleep(0.2)
         self.assertEqual(gr.session_members(info['sid']), [])
         self.assertEqual(e.end()['stop_reason'], 'signal')
+        self.assertFalse(os.path.exists(e.ledger + '.lock'))
+        self.assertEqual(e.run(['--arms', 'G', '--resume']), 0)
+        self.assertEqual(e.jl('games.jsonl')[-1]['attempt'], 2)
+        self.assertTrue(os.path.isdir(os.path.join(e.D, 'deals', '0000-k90-c00', 'a2', 'G')))
+        end = e.end()
+        self.assertEqual((end['stop_reason'], end['complete_deals']), (None, 1))
+        self.assertFalse(os.path.exists(os.path.join(e.D, 'STOP')))
 
     def _hash_tree(self, root):
         import hashlib
