@@ -1,0 +1,405 @@
+{
+ "base": {
+  "adapter_tip": "2639a261",
+  "c1": "30ac8703604a4d6db3d2540aea0cfa4a0f244ff7",
+  "c2": "07f8aa8d31b4b53a338d4332dc095a45ed189367",
+  "c3": "9fbd8cadba08767558280862441f94d5518e2b6f",
+  "engine_tree_base": "e36452d3",
+  "harness_subtree": "636ccfd4b98588b9dccfd9c631d3aa734163a738",
+  "harness_tag_commit": "712593a1",
+  "kx3_files": "e3ddc014",
+  "kx_tree": "34fef9e536e9ff6c1cc6ba2ae440e5b17941b858",
+  "lib_tree": "65058095aaafdbcbddf67a0f4da4276d1d594c14"
+ },
+ "binaries_sha256": {
+  "deckgym": "e6a8bf768c4fd3cf8592f097773d1faaf9e1f1b15ac0e3030b17382efcaffa75",
+  "judge_plans": "383061f3916f79e5346ef878afdacb871fc17357e3050795726e19ca703dc38b",
+  "kx3_parity": "d40a687dc2e5653b7c82b772e70ba42bc7056c7169b27a590a9a6b2867a0872a",
+  "kx3_replay": "ccf5e7b7f9ca7f068e415ca6060bfe6170edbefac72b42d2c36d246446b99e29",
+  "leak_states": "3d9d3f7e1bba55b64379692badff045a8450507988709a18ffa9d5ed0fc74995",
+  "protocol_bot": "d3a976cccc70263fe5d5688b0ac4727a1c33700fe28dafdd39f5ca9d618e6295"
+ },
+ "deviations": [
+  {
+   "from": "frozen-7, PREREG v3.1 \u00a72 (i)",
+   "id": "lister_rebuild",
+   "source": "PREREG v3.1",
+   "text": "The plan lister is rebuilt on engine tree e36452d3 plus kx3's files (tree 34fef9e5): a seat parameter, steps that keep their actions, root classification, obs_hash, and the observation, trace and obs-hash modes. Positions-mode output stays byte-identical to the pre-edit build. Reason: the game path lists plans from the adapter's observation, for either seat."
+  },
+  {
+   "from": "frozen-7, PREREG v3.1 \u00a72 (ii)",
+   "id": "converter",
+   "source": "PREREG v3.1",
+   "text": "A converter turns the adapter's pdl_observation into the lister's input and the prompt's position fields. Reason: game prompts are built from the observation only."
+  },
+  {
+   "from": "frozen-7",
+   "id": "plan_keys",
+   "source": "coordinator-103",
+   "text": "Plan keys differ from frozen-7's, because they hash the whole State JSON, which has new fields on this engine, and DefaultHasher is not stable across Rust versions. Keys never reach the prompt. Gate 1 compares the key-free projection (labels, steps, ends, finals, results), the prompt bytes, and root_ok on every id; full plan_list_sha256 equality is for information only."
+  },
+  {
+   "from": "frozen-7",
+   "id": "label_seats",
+   "source": "coordinator-104",
+   "text": "label seat numbers made relative to the actor, to match frozen-7's mover-at-0 convention. The actor is 0 and the opponent 1 in Promote, Activate, the English label text and every player field inside a Name#{json} label, and in that label's other seat fields (target_player, source_player, and the seat element of attacking_ref, targets, prior_knockouts, damaged_refs and point_denial_flips); the action sent to the engine keeps its real seat. With actor 0 the output is byte-identical by construction."
+  },
+  {
+   "from": "frozen-7",
+   "id": "turn_effects",
+   "source": "laptop fact (Oct 30 engine read: add_turn_effect is never pruned)",
+   "text": "Game prompts show the turn effects with turn equal to turn_count, in State order, as {turn, effect} dicts, with every player, source_player and target_player value made relative to the actor (actor 0, opponent 1), on the line for effects active this turn. Frozen-7's 92 positions never had a non-empty list, so this line is new content in game prompts. Reason: the engine writes entries for later turns and never prunes them; only the current turn's entries are active. Kept turn effects print as {\"turn\", \"effect\"} items; each effect's inner keys print in serde_json's sorted order, because observation mode serialises them with serde_json::to_value without preserve_order, so no other order can occur there."
+  },
+  {
+   "from": "frozen-7, PREREG v3.1 \u00a73 and \u00a75",
+   "id": "retries_and_charges",
+   "source": "coordinator-103",
+   "text": "A returned call is never re-sent. HTTP 429 and transport errors are retried, 3 tries within 10 minutes, outside providers.py; HTTP 5xx goes to fallback (c) at once. A try is charged its usage when the response carries usage metadata; a 429 with no usage metadata is charged $0; any other failed try with no usage is charged frozen-7's worst case. Reason: PREREG v3.1 \u00a73 has 429 and transport errors wait and retry, while frozen-7 sent one request with no retry, so the retry sits outside providers.py and frozen-7's judge block and identity test stay valid; the charges and the 5xx rule are coordinator-103's."
+  },
+  {
+   "from": "PREREG v3.1 \u00a73",
+   "id": "call_cap",
+   "source": "coordinator-103",
+   "text": "CALL_CAP = 75 counts judge decisions per game, not tries; fallback (d) fires at the 76th decision point. Reason: retries do not use up the cap."
+  },
+  {
+   "from": "PREREG v3.1 \u00a72",
+   "id": "shadow_feed",
+   "source": "coordinator-103, wording coordinator-105",
+   "text": "PREREG v3.1 \u00a72 said the shadow is fed every observation and event; it is asked only at setup and fallback points, because kx3 keeps no state between decisions (gate 4b proves equality) and feeding every decide would roughly double each (G) game's compute."
+  },
+  {
+   "from": "PREREG v3.1 \u00a73",
+   "id": "setup_by_kx3",
+   "source": "coordinator-103",
+   "text": "kx3 makes setup choices (turn_count == 0) in both arms; the judge plays from turn 1. Setup decisions are out of the fallback denominator and are counted separately. This narrows PREREG v3.1 \u00a73, which listed setup as an intervention point. Reason: neutral between arms; frozen-7's lister was never validated on setup states."
+  },
+  {
+   "from": "PREREG v3.1 \u00a72 gate 1",
+   "id": "gate1_rule",
+   "source": "coordinator-103",
+   "text": "Gate 1 reads 'root legal sets differ' as 'root first-step label sets differ', because frozen-7's binary emits no legal set. Excluded ids are listed before comparing, root_ok must hold on every id, and fewer than 83 of the 92 compared is INCOMPLETE. A position in one of the converter's declared classes (none occurs in the 92) is also excluded and listed before comparing."
+  },
+  {
+   "from": "PREREG v3.1 \u00a76",
+   "id": "kx3_route_drop",
+   "source": "coordinator-103",
+   "text": "A fallback in a (K) pilot seat or in any kx3 opponent seat, or a failure of the (G) arm's kx3 shadow, drops the pair (both arms), reported like an engine error and counted by arm and reason; the not-testable label (more than 5% of pairs dropped) applies. Stage 1 stops when more than 2 of its deals drop, for any cause, and its report lists the drops by cause. Reason: such a game was not played by the registered programs, and treating both arms alike keeps the drop symmetric."
+  },
+  {
+   "from": "PREREG v3.1 \u00a72 gate 2",
+   "id": "gate2_fill_seed",
+   "source": "brief v2 review",
+   "text": "Under a changed fill-in seed, gate 2 compares the key-free plan list and the prompt bytes, because plan keys hash the filled world's own-deck order; keys never reach the prompt."
+  },
+  {
+   "from": "PREREG v3.1 \u00a72 gate 2",
+   "id": "gate2_revealed",
+   "source": "brief v2 review",
+   "text": "On states where cards were revealed, gate 2 does not swap the opponent's hand or deck (it would contradict what was revealed); it still varies the fill-in seed, and the skipped share is reported."
+  },
+  {
+   "from": "PREREG v3.1 \u00a72 judge bot step 2",
+   "id": "root_dup_noop",
+   "source": "coordinator-103",
+   "text": "A legal root action whose child state equals the root's (noop) or the child of an earlier root action (dup_of) is accepted though no plan starts with it; it is counted, not a fallback. Reason: the lister de-duplicates children through seen, so such an action can never head a plan, and the judge still sees every distinct outcome. It is a pure no-op: accepting such an action changes no output byte (plan lines, prompts, rows other than its counters)."
+  }
+ ],
+ "draft": true,
+ "engine_tree": "34fef9e536e9ff6c1cc6ba2ae440e5b17941b858",
+ "fingerprint": "0cb2421552661b563bdb49fca31aca53f468d0853661908fbbf7730fcb5ba762",
+ "frozen_on": null,
+ "game_path": {
+  "bar": "More than 2,000 plans, the node cap, or the step cap (the max-steps cut) is fallback (b).",
+  "call_cap": "CALL_CAP = 75 judge decisions per game, not tries. Fallback (d) fires at the first intervention point after the 75th judge decision; earlier fallbacks do not count toward the 75.",
+  "charges": "A try is charged its usage when the response carries usage metadata. A 429 with no usage metadata is charged $0. Any other failed try with no usage is charged frozen-7's worst case. A try that never reached _post_json is settled at $0 and the run stops (STOP not_sent).",
+  "hang_guard": "LISTER_HANG_S = 600 s is a hang guard only, and is fallback (a).",
+  "label_seats": "Label player numbers are relative to the actor (actor 0, opponent 1), including every seat field of A2.6 inside a Name#{json} label. The action sent to the engine keeps its real seat.",
+  "memory_cap": "The lister runs as argv ['prlimit', f'--as={LISTER_MEM_BYTES}', '--', JP, ...] and a breach is fallback (b). LISTER_MEM_BYTES = min(3 GiB, max(1 GiB, 3 x the largest VmHWM measured on the 92 and the LS dumps)) = 1073741824.",
+  "obs_hash": "A2's scheme: sorted known_own_deck, canonical template, DefaultHasher.",
+  "pid": "pid_prefix(seed, cell, arm) + -p{ply}.",
+  "resend": "A call that returned is never sent again, whatever its stop_reason.",
+  "retries": "Only HTTP 429 and transport errors are retried: 3 tries within 600 s (waits [150, 300] s), outside providers.py. HTTP 5xx goes to fallback (c) at once.",
+  "root_check": "dup_of and noop root actions are accepted and counted. Any other mismatch is fallback (a).",
+  "search_seed": "The lister fills the world with 0x5EED_0001. It never uses pdl_search_seed.",
+  "setup": "kx3 makes setup choices (turn_count == 0) in both arms. The judge plays from turn 1.",
+  "shadow": "Every kx3 seat runs protocol_bot --bot kx3, with its env from shadow_env. The G arm's shadow is asked only at fallback points and at setup decisions; it is never fed otherwise (SHADOW_FEED = fallback).",
+  "stops": "No new deal starts after STOP_AT_UTC. A heartbeat gap over PAUSE_GAP_S inside an arm, or the GAME_WALL_S kill, classes the arm infra, and it is replayed. A ledger refusal stops the run. It is never a fallback.",
+  "timeouts": "BOT_TIMEOUT_MS = 2700000 per read; a decide's deadline is its start + 2,700 s - DECIDE_MARGIN_S (120 s); a judge try starts only with VERTEX_TIMEOUT_S (1260 s) + SHADOW_RESERVE_S (600 s) left; GAME_WALL_S = 14400 s per game.",
+  "turn_effects": "Only the State's entries with turn == turn_count, in State order, as {turn, effect} dicts, with every player, source_player and target_player value made relative to the actor (actor 0, opponent 1)."
+ },
+ "information_model": "closed-counts-unpriced-v8",
+ "judge": {
+  "api": "Vertex AI GenerateContent API (POST /v1/projects/PROJECT/locations/LOCATION/publishers/google/models/MODEL:generateContent)",
+  "endpoint": "https://aiplatform.googleapis.com/v1/projects/{project}/locations/{location}/publishers/google/models/{model}:generateContent",
+  "failed_judge_rows": {
+   "abort": "a judge row without a valid choice (an invalid label, a reply cut at the output cap, a blocked prompt, any finish but STOP) is an `unresolved` problem and stops the compare: exit 2, no numbers (the behaviour of frozen-4 to frozen-6 and of run 1)",
+   "default": "abort",
+   "flag": "--failed-judge-rows",
+   "miss": "such a row counts as a MISS (agreement 0) in the prefix and in the full-scope scoring, but only if it is otherwise a consistent row (settings, plan-list identity, prompt hash, a stop reason that agrees with the finish fields recorded beside it, a stored reply that really holds no valid choice: rows are not authenticated, this is what the row's own fields can show); the count and the rows are reported plainly (report.failed_judge_rows) and a WARNING is printed when more than 20% of the primary judge decisions failed. It can only lower the judge's rate and the prefix score; in the full-scope CONTRAST a miss pair is kept where an answered plan that stops at a chance event would have been dropped, so the contrast can move toward zero, and a game that exists only because of a miss does not count toward the min-games gate. A step-bot row without a plan, a missing row or any other problem still stops the compare",
+   "preregistered_for_run_2": "miss",
+   "values": [
+    "abort",
+    "miss"
+   ]
+  },
+  "key_variable": "VERTEX_API_KEY",
+  "mapping": {
+   "finish": "stop_reason is \"end_turn\" only for finishReason STOP; any other finishReason (MAX_TOKENS, SAFETY, CONTINUATION, ...), a candidate without a finishReason, no candidate, or a blocked prompt is stored as \"vertex:<reason>\" (NO_FINISH_REASON, NO_CANDIDATE, BLOCKED_<blockReason>) and is never an intact answer",
+   "key": "a Google Cloud API key bound to a service account, read from VERTEX_API_KEY (environment, else the last export line of ~/.bashrc, parsed as text; an empty last export retires an earlier key; the key must be letters, digits, \".\", \"-\" and \"_\" only, so a shell expression is refused, not expanded) and sent only in the x-goog-api-key header; a redirect answer is an error, never followed",
+   "location": "global, in the URL path (projects/PROJECT/locations/global/publishers/google/models/gemini-4-argon:generateContent): the project-less key URL of frozen-6 pins us-central1, where the model is not served; every row records its location, and `compare` refuses another",
+   "other sampling": "seed, stop sequences, safety settings, candidateCount: not set (defaults); a prompt the service blocks (promptFeedback.blockReason) has no candidate and so no choice",
+   "output cap": "max_tokens 32768 -> generationConfig.maxOutputTokens 32768: the most a non-streaming direct HTTP call allows (documented: 65,536 per synchronous request, 32,768 for non-streaming direct HTTP), counting thinking + answer together as the Anthropic cap did. It is NOT the 8,000 of frozen-4 / frozen-5: raised so that high thinking does not use the cap up (a cut reply keeps no choice and aborts the formal comparison). CANNOT MATCH: the tokenizers differ and the cap is four times larger",
+   "price": "USD per 1M tokens, input / output including thinking: 2 / 10 through 2026-11-30, 4 / 20 from 2026-12-01 (Google Cloud announcement; the Vertex pricing tables could not be read); the budget reserves every call at 4 / 20; the cached-input discount is ignored",
+   "project": "the Google Cloud project the key bills to (not a secret): the VERTEX_PROJECT setting (environment, or the run kit's --vertex-project flag); it is in the URL, recorded in every row as vertex_project and listed in the compare report, and NOT part of the freeze (the freeze names the setting, not the value)",
+   "prompt": "identical: the frozen system text goes in `systemInstruction` (one text part), the user text in `contents` (one user turn, one text part); the prompt fingerprint and every row's prompt_sha256 are the same as for the Anthropic judge and for frozen-5",
+   "reasoning": "Anthropic: the model's default reasoning, no setting. Vertex: generationConfig.thinkingConfig.thinkingLevel \"HIGH\" (LOW / MEDIUM default / HIGH; thinking_budget and MINIMAL are HTTP 400). CANNOT MATCH: different mechanisms",
+   "retries": "none: one request per call; a failed request is a failed call (the budget wrapper charges its full worst case and the batch is incomplete)",
+   "serving": "the same model id as frozen-5 but the Vertex AI serving stack, not the Gemini Developer API; identical outputs are not guaranteed",
+   "streaming": "none: one synchronous generateContent request on v1 (no long decode: it needs v1beta1; a finishReason CONTINUATION would keep no choice)",
+   "temperature": "not set for either; Vertex ignores a custom temperature / top_p / top_k for this model, so none is sent and --temperature is refused",
+   "thought text": "not requested (includeThoughts is not sent); any part the response flags `thought: true` is skipped, so `raw` is the answer text only",
+   "usage": "input = promptTokenCount (cached input charged in full); output = totalTokenCount - promptTokenCount when the total is consistent, else candidatesTokenCount + thoughtsTokenCount"
+  },
+  "price_note": "Gemini 4 Argon on Vertex AI (Gemini Enterprise Agent Platform): $2 / $10 per 1M input / output tokens through 2026-11-30, $4 / $20 from 2026-12-01, per the Google Cloud announcement cloud.google.com/blog/products/ai-machine-learning/gemini-4-argon-available-on-google-cloud (read 2026-10-21; the Vertex pricing page tables could not be read, so verify in the billing console); thinking tokens are billed as output (the model guide: every token processed is billed, thinking included; ai.google.dev/gemini-api/docs/pricing); input charged in full (the cached-input discount is ignored: a conservative upper bound)",
+  "price_per_mtok": {
+   "from_2026-12-01": [
+    4.0,
+    20.0
+   ],
+   "reservation": [
+    4.0,
+    20.0
+   ],
+   "through_2026-11-30": [
+    2.0,
+    10.0
+   ]
+  },
+  "project_variable": "VERTEX_PROJECT",
+  "provider": "gemini-vertex",
+  "settings": {
+   "location": "global",
+   "max_tokens": 32768,
+   "model": "gemini-4-argon",
+   "provider": "gemini-vertex",
+   "temperature": null,
+   "thinking_level": "HIGH"
+  },
+  "sources": [
+   "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/gemini/4-argon",
+   "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/guides/gemini-4-argon",
+   "https://docs.cloud.google.com/gemini-enterprise-agent-platform/models/start/api-keys?usertype=standard",
+   "https://cloud.google.com/blog/products/ai-machine-learning/gemini-4-argon-available-on-google-cloud",
+   "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/reference/rest/v1/GenerateContentResponse",
+   "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/reference/rest/v1/GenerationConfig",
+   "https://docs.cloud.google.com/vertex-ai/generative-ai/docs/start/express-mode/vertex-ai-express-mode-api-reference",
+   "https://docs.cloud.google.com/docs/authentication/api-keys-use",
+   "https://ai.google.dev/api/generate-content",
+   "https://ai.google.dev/gemini-api/docs/pricing",
+   "https://ai.google.dev/gemini-api/docs/billing",
+   "https://docs.cloud.google.com/free/docs/free-cloud-features"
+  ]
+ },
+ "kit": {
+  "BOOT_DRAWS": 10000,
+  "BOOT_SEED": 20261030,
+  "BOT_TIMEOUT_MS": 2700000,
+  "CALL_CAP": 75,
+  "DECIDE_MARGIN_S": 120,
+  "DECKS": {
+   "0": "decks/dustin/09-mega-manectric-heliolisk.txt",
+   "1": "decks/dustin/11-archaludon-haxorus-dragonair.txt"
+  },
+  "DEV_K": [
+   90,
+   91,
+   92,
+   93,
+   94,
+   95,
+   96,
+   97,
+   98,
+   99
+  ],
+  "DROP_LIMIT": 0.05,
+  "FALLBACK_LIMIT": 0.1,
+  "FLIP_DRAWS": 100000,
+  "FORBIDDEN_ENV": [
+   "KX_EXTRA_LISTS",
+   "PDL_DB",
+   "PG_DUMP"
+  ],
+  "GAME_WALL_S": 14400,
+  "GO_MIN_N": 80,
+  "KX3_CANONICAL": "kx3_r16_c12_z2_real_t0",
+  "KX3_CODE": "kx3",
+  "LEDGER_LABEL": "gemini-vertex:gemini-4-argon",
+  "LISTER_HANG_S": 600,
+  "LISTER_LIMITS": {
+   "max_nodes": 200000,
+   "max_plans": 2000,
+   "max_steps": 30
+  },
+  "LISTER_MEM_BYTES": 1073741824,
+  "LISTS": {
+   "0": "decks/screen/opponents/t-lucario.txt",
+   "1": "decks/screen/opponents/t-suicune.txt"
+  },
+  "MAX_TRIES": 3,
+  "MIN_PAIRS": 64,
+  "N_MAX": 128,
+  "PAUSE_GAP_S": 60,
+  "POLICIES": {
+   "0": "km3",
+   "1": "kx3"
+  },
+  "POOL_SHA256": {
+   "t-lucario": "76ad71c4d932da51fddc8c3082f184f8012c86e1f1e15c5858e055190560f634",
+   "t-suicune": "639778c3cdc056130278fa13984b1bb1c508226032334d54b7a01a25d3187783"
+  },
+  "RAYON_THREADS_BUILD": 2,
+  "RAYON_THREADS_LAPTOP": 8,
+  "RESTART_K": [
+   81,
+   82,
+   83,
+   84,
+   85,
+   86,
+   87,
+   88,
+   89
+  ],
+  "RETRY_WAITS_S": [
+   150,
+   300
+  ],
+  "RETRY_WINDOW_S": 600,
+  "SEARCH_SEED": 1592590337,
+  "SEED_BASE": 25103000000,
+  "SHADOW_ENV_KEEP": [
+   "PATH",
+   "HOME",
+   "LANG",
+   "LC_ALL",
+   "TMPDIR",
+   "RAYON_NUM_THREADS"
+  ],
+  "SHADOW_FEED": "fallback",
+  "SHADOW_RESERVE_S": 600,
+  "SIGNFLIP_SEED": 20261031,
+  "STAGE1_K": 80,
+  "STAGE1_ORDER": [
+   0,
+   15,
+   6,
+   9,
+   3,
+   12,
+   1,
+   2,
+   4,
+   5,
+   7,
+   8,
+   10,
+   11,
+   13,
+   14
+  ],
+  "STOP_AT_UTC": "2026-11-28T05:59:00Z",
+  "VERTEX_TIMEOUT_S": 1260
+ },
+ "kx3": {
+  "canonical": "kx3_r16_c12_z2_real_t0",
+  "code": "kx3",
+  "kx_params": "code kx3_r16_c12_z2_real_t0; knowledge REALISTIC with the pool's 8 meta lists; extra_lists []",
+  "pool_sha256": {
+   "t-lucario": "76ad71c4d932da51fddc8c3082f184f8012c86e1f1e15c5858e055190560f634",
+   "t-suicune": "639778c3cdc056130278fa13984b1bb1c508226032334d54b7a01a25d3187783"
+  },
+  "rayon_threads": {
+   "build_job": 2,
+   "laptop_runs": 8
+  },
+  "record_program": "23d8a9b5: kx3's six files on main-affe56e's engine, engine tree cd970db6",
+  "selfcheck_checked": null,
+  "selfcheck_pin": "selfcheck pilot=kx3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=138 digest=31d638dbc818b0fa",
+  "thread_identity": "Oct 30: the same game at 2 and at 8 threads chose identical moves (24/24); the thread count changes speed, not choices. Gate 4a runs the protocol side at 8 threads and the in-engine side at 2."
+ },
+ "lib_tree": "65058095aaafdbcbddf67a0f4da4276d1d594c14",
+ "outside_clone": [
+  "rl/results/pause_games_decisions_2026-10-02/harness/dg_patch.py",
+  "rl/results/pause_games_decisions_2026-10-02/harness/pg_pos.rs",
+  "rl/results/pause_games_decisions_2026-10-02/harness/pgd_patch.py"
+ ],
+ "rustc": "rustc 1.93.1 (01f6ddf75 2026-02-11) (built from a source tarball)",
+ "settings": {
+  "compact_above": 80,
+  "max_nodes": 200000,
+  "max_plans": 2000,
+  "max_steps": 30,
+  "max_tokens": 8000,
+  "model": "claude-sonnet-5-5",
+  "order": "shuffle-id",
+  "plan_world_seed": 1,
+  "prompt_version": "v1",
+  "temperature": null
+ },
+ "source_sha256": {
+  "decks/dustin/09-mega-manectric-heliolisk.txt": "48ca6b6c6aeefb36678abff741896ad4931ae101e9e4a698f1faefb3f3e4f91e",
+  "decks/dustin/11-archaludon-haxorus-dragonair.txt": "73eb2872cbf2410bf631d8614827097a13da14c675fdbfb1d8c8bb37b247b006",
+  "decks/screen/opponents/t-lucario.txt": "76ad71c4d932da51fddc8c3082f184f8012c86e1f1e15c5858e055190560f634",
+  "decks/screen/opponents/t-suicune.txt": "639778c3cdc056130278fa13984b1bb1c508226032334d54b7a01a25d3187783",
+  "lib/card.py": "73e6f2a8dbf10b9c4f7b877564e1fdb91dc8015744e7e82f873bfbae837cea4c",
+  "lib/deckgym-database.json": "2f48cb72966c23ba3794f437aa94312e4eadcb2703c32893411ee27fc63b11d9",
+  "rl/ai_judge/FROZEN.json": "301c9d500913a1f781b95535dbde1e13548c8a092a3c304c48329627dfafd6d1",
+  "rl/ai_judge/analysis.py": "64f78cbd7f6d1bbf991387f9779b6e41dbf2c6fa8da44e2aad29bbb869f176fa",
+  "rl/ai_judge/budget_judge.py": "3679043e02339066907fa426e711cc8f3e9fd7f1b07d5dd8e8b7489e28b548a7",
+  "rl/ai_judge/formal.py": "eba10cc17d17e4100941a8d400dfc5129ac3480db56fe743060fad6e189a3ef0",
+  "rl/ai_judge/freeze8.py": "39681661b7f41f34a11f053865bfcb2c2d38f736ab3b63827954f846a7e0f781",
+  "rl/ai_judge/freeze_identity.py": "e932c931caa6d1fd940ce7c6530d4ba2b65b580bb5d6b3c206e7ac8a211dd555",
+  "rl/ai_judge/game_analysis.py": "1bf4068e596b708e5697b11a6d5ab2a649797689bf3c1a3c1bfe714c8df55800",
+  "rl/ai_judge/game_call.py": "955e9328060349fbbe84b2a5e0587bb8bf0dc1027fa737bfe78196710d235908",
+  "rl/ai_judge/game_gates.py": "168e4495acb25bb5a96f288ba5f2aeea4a269af01c3e1c1d4d1cf4404b08576d",
+  "rl/ai_judge/game_kit.py": "881fab1602bbe49e9933bf75fdb472d9e32f88d871516746639bae84f4981183",
+  "rl/ai_judge/game_lister.py": "f1a0a34c12995d4f6e0bccf7ccddb0927374ae4d0da6fd3281b2320998cdfa67",
+  "rl/ai_judge/game_obs.py": "09a8793f069ee58e648dc80a7cadf2db050221a2a7752d55ab3d6d2d977f6ac3",
+  "rl/ai_judge/game_shadow.py": "6b902b4d860fc58a3952cf8843da704b26777dc912560ad3cef7bc9745d3d909",
+  "rl/ai_judge/judge.py": "08dc333fdddfb18aa60bbe4524cb50ff97a2c119aacfd66aa114902e7ca98bba",
+  "rl/ai_judge/plans/Cargo.lock": "e183002a2e1a040cc761d2d9f81575259d710ea6a2f2a55054bc75485b8d0a7c",
+  "rl/ai_judge/plans/Cargo.toml": "507d95ce41c4737978bb19ede0cd54e7a33c0123d5fde784619f322b472cd7e8",
+  "rl/ai_judge/plans/src/bin/kx3_parity.rs": "79900280d27fcc3ea4215b5659d410f55862d1bbe6264ea375c8606780fcfb41",
+  "rl/ai_judge/plans/src/bin/kx3_replay.rs": "adbade4ca9caf920b07d2027d98583c3444733befe6951adb82d726f81381362",
+  "rl/ai_judge/plans/src/bin/leak_states.rs": "11ecb9c1b3fdbf2c46356e19fc0381b50ada89698b81c65abaa37bcf18f3fbd5",
+  "rl/ai_judge/plans/src/main.rs": "41478d7458007b08ff57b8ee63f518331903c3cb67e0139c91fbcef660b84401",
+  "rl/ai_judge/providers.py": "fa85137ebd9258c7be114b5e53a6a99856b8a6457beb3cbda8a369a70309cdb0",
+  "rl/ai_judge/shadow_check.py": "b09f1e1e7f35be11a2da2e624e0fb2d9b4b2d57bf141a92e7f98eac08c74b837",
+  "rl/ai_judge/tests/test_analysis.py": "7f1e306997c11abc277741872a04fa3461acde96c0419b2b6e0e63c763a1a1c4",
+  "rl/ai_judge/tests/test_budget.py": "141f24715ad34c9b37120214251ff30adb95b4b243046d21e5e640ac07be51f4",
+  "rl/ai_judge/tests/test_formal.py": "e2e6befd8ba291cab6ce03dde2c06c7ae14787e07b5c33cf06ae3e2fa841def8",
+  "rl/ai_judge/tests/test_freeze8.py": "689f48ffbf35c1ff71510ca46ba9c3448ad9e2ad5267e2ac93ffd651d57dfdf3",
+  "rl/ai_judge/tests/test_game_analysis.py": "7c5428eb3eed8b003b48d4fe66ed5bc03b7311d29914b531ac451b0a654ca5ca",
+  "rl/ai_judge/tests/test_game_call.py": "74134070212cfcff85da71a22e70905db8283a96d98d9aad127cd5ae0e14dcbc",
+  "rl/ai_judge/tests/test_game_gates.py": "6463557ea659a7fcf38a3f385551b7d57d611b54f1cf62733e5025d88d8fcbda",
+  "rl/ai_judge/tests/test_game_lister.py": "3e9029fc12aaa8338bca579ab67f9c06a3cf9dd61935c4f0b27c7f7c3e067a2b",
+  "rl/ai_judge/tests/test_game_obs.py": "2ead4705ab2ba6f7115ffbb5d78584b1c9ca84e884fd01502b1a13d78ea2ef07",
+  "rl/ai_judge/tests/test_game_shadow.py": "274e0f23900c7a9f746dd21542c9030bfa5779bad2b15cdd28056429ef25e3f1",
+  "rl/ai_judge/tests/test_gemini.py": "f69637f2b2cdba6a91aa69dd513a67bc407e8f4d551f19e98a4ee215be622796",
+  "rl/ai_judge/tests/test_vertex.py": "4b1b38fb34d60daacd93337352842266b83e80cfda0f0c0385d3f362b8874000",
+  "rl/ai_judge/validate_baseline.py": "855c1fca1366684a9c88bc5a8766d1d476dafe4705bed74c5412b24cd1abf752",
+  "rl/results/pause_games_decisions_2026-10-02/harness/dg_patch.py": "c98ccc63a29a8b7e467a91043a5179295e2cfb9b67ab0a36ad946cdabb77949b",
+  "rl/results/pause_games_decisions_2026-10-02/harness/pg_pos.rs": "224888a8bc6867dcfefed7d39174f5bb31228f49d9ce399ffa1aa4680e69cbc7",
+  "rl/results/pause_games_decisions_2026-10-02/harness/pgd_patch.py": "904b9e86ab058d4d379b3f323ad5dd2bbeb4d5ebf03e5bc2db63257b325b3279"
+ },
+ "supersedes": [
+  {
+   "commit": null,
+   "fingerprint": "0cb2421552661b563bdb49fca31aca53f468d0853661908fbbf7730fcb5ba762",
+   "tag": "judge-prompt-frozen-7"
+  }
+ ],
+ "tag": "judge-prompt-frozen-8"
+}
