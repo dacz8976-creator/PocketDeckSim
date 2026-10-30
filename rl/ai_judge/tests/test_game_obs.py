@@ -54,6 +54,9 @@ class Obs(unittest.TestCase):
     def test_O1_card_ids(self):
         n = 0
         for label, decks, by_id, ids, kinds, _ in data():
+            if label == '92':
+                self.assertEqual(sorted(ids), sorted(TL.ids92()))
+                self.assertEqual(len(ids), 92)
             for i in ids:
                 orig = by_id[i]
                 g = game_obs.pos_for_prompt(kinds['pos_like'][i]['pos'], i, orig['deck'])
@@ -70,6 +73,9 @@ class Obs(unittest.TestCase):
     def test_O2_prompt_identity(self):
         n = 0
         for label, decks, by_id, ids, kinds, pos_rec in data():
+            if label == '92':
+                self.assertEqual(sorted(ids), sorted(TL.ids92()))
+                self.assertEqual(len(ids), 92)
             classes = {i: game_obs.declared_classes(by_id[i]) for i in ids}
             hits = [i for i in ids if classes[i]]
             if label == '92':

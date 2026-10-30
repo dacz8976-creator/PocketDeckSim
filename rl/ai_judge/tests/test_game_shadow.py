@@ -36,10 +36,12 @@ class Shadow(unittest.TestCase):
 
     def test_S1_env(self):
         env = {'PATH': '/bin', 'HOME': '/h', 'TMPDIR': '/t', 'RAYON_NUM_THREADS': '2', 'EXTRA': 'x',
+               'LANG': 'C', 'LC_ALL': 'C',
                'VERTEX_' + 'API_KEY': 'fake' + '-' * 3, 'VERTEX_' + 'PROJECT': 'fake-p',
                'KX_EXTRA_LISTS': 'a', 'PDL_DB': 'b', 'PG_DUMP': 'c'}
         out = game_shadow.shadow_env(env)
-        self.assertEqual(set(out), {'PATH', 'HOME', 'TMPDIR', 'RAYON_NUM_THREADS'})
+        self.assertEqual(set(out), set(game_kit.SHADOW_ENV_KEEP))
+        self.assertEqual(len(out), 6)
         self.assertTrue(set(game_kit.FORBIDDEN_ENV).isdisjoint(out))
 
     def test_S2_real_handshake(self):
@@ -103,21 +105,38 @@ class Shadow(unittest.TestCase):
             self.mk(os.path.join(TMP, 'no_such_bot_here')).start()
 
     def test_S6_S7_forwarding_and_log(self):
-        p = fake(self.HELLO + "import hashlib,json\nfor line in sys.stdin:\n"
-                 "    if 'decide' in line:\n        print(json.dumps({'i':1,'h':hashlib.sha256(line.encode()).hexdigest()}),flush=True)\n")
+        hashes = os.path.join(TMP, 's6_hashes.txt')
+        if os.path.exists(hashes):
+            os.remove(hashes)
+        body = ("import sys,hashlib,json\n"
+                "n=0\n"
+                "for raw in sys.stdin.buffer:\n"
+                "    n+=1\n"
+                "    h=hashlib.sha256(raw).hexdigest()\n"
+                "    open(%r,'a').write(h+'\\n')\n"
+                "    if n==1: out=json.dumps({'name':'pdl-kx3','pdl_observation':True,'h':h})\n"
+                "    elif n<=3: out=h\n"
+                "    else: out='{\"i\":1}'\n"
+                "    sys.stdout.write(out+'\\n'); sys.stdout.flush()\n") % hashes
+        p = fake(body)
         log = os.path.join(TMP, 's7_log.jsonl')
         if os.path.exists(log):
             os.remove(log)
         s = self.mk(p, log_path=log, deal_tag='dt')
         s.start()
-        ng, dc = '{"type":"new_game","x":"é 1"}', '{"type":"decide", "ply":4}'
+        ng, dc = '{"type":"new_game","x":"\u00e9 1 \u00e9\u4e2d"}', '{"type":"decide", "ply":4}'
         s.new_game(ng + '\n')
+        h_ng = s._readline(time.monotonic() + 5).strip().decode()
         s.send_decide(dc + '\n')
-        line = s._readline(time.monotonic() + 5)
-        self.assertEqual(json.loads(line)['h'], hashlib.sha256((dc + '\n').encode()).hexdigest())
+        h_dc = s._readline(time.monotonic() + 5).strip().decode()
+        self.assertEqual(h_ng, hashlib.sha256((ng + '\n').encode('utf-8')).hexdigest())
+        self.assertEqual(h_dc, hashlib.sha256((dc + '\n').encode('utf-8')).hexdigest())
         s._outstanding = False
         k, secs = s.ask(dc, time.monotonic() + 5, 3, 4)
         self.assertEqual(k, 1)
+        sent = open(hashes).read().split()
+        hello = hashlib.sha256(b'{"type":"hello","protocol":1}\n').hexdigest()
+        self.assertEqual(sent[0], hello)
         rec = json.loads(open(log).read().splitlines()[-1])
         self.assertEqual((rec['new_game'], rec['decide'], rec['shadow_i'], rec['deal_tag'], rec['ply']), (ng, dc, 1, 'dt', 4))
 

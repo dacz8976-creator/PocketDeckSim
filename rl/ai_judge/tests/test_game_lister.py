@@ -44,6 +44,44 @@ def lines_of(p):
     return [json.loads(l) for l in p.stdout.decode('utf-8').splitlines() if l.strip()]
 
 
+def jdiff(a, b, path='$'):
+    """first differing JSON path of a and b as (path, a_value, b_value), or None"""
+    if type(a) is not type(b):
+        return (path, a, b)
+    if isinstance(a, dict):
+        for k in sorted(set(a) | set(b)):
+            if k not in a or k not in b:
+                return (path + '.' + str(k), a.get(k, '<missing>'), b.get(k, '<missing>'))
+            d = jdiff(a[k], b[k], path + '.' + str(k))
+            if d:
+                return d
+        return None
+    if isinstance(a, list):
+        for i in range(min(len(a), len(b))):
+            d = jdiff(a[i], b[i], '%s[%d]' % (path, i))
+            if d:
+                return d
+        if len(a) != len(b):
+            return (path + '.len', len(a), len(b))
+        return None
+    return None if a == b else (path, a, b)
+
+
+def jdiff_msg(label, id_, x, y):
+    try:
+        d = jdiff(json.loads(x), json.loads(y))
+    except ValueError:
+        d = ('<not json>', x, y)
+    return '%s id %s path %s: %s | %s' % (label, id_, d[0] if d else '?', cut(d[1] if d else x), cut(d[2] if d else y))
+
+
+def pos_count(f, only):
+    if only:
+        return len(only)
+    with open(f) as fh:
+        return len(json.load(fh))
+
+
 def pos_files():
     """(label, positions file, decks dir, only-ids or None)"""
     out = [(os.path.basename(f), f, FIXD, None) for f in FIXTURES]
@@ -141,15 +179,23 @@ class Lister(unittest.TestCase):
                 la, lb = a.splitlines(), b.splitlines()
                 for i, (x, y) in enumerate(zip(la, lb)):
                     if x != y:
-                        self.fail('%s line %d: %s | %s' % (label, i, cut(x), cut(y)))
+                        try:
+                            id_ = json.loads(x).get('id')
+                        except ValueError:
+                            id_ = '?'
+                        self.fail('%s line %d: %s' % (label, i, jdiff_msg('L1', id_, x, y)))
                 self.fail('%s: length differs %d %d' % (label, len(la), len(lb)))
             print('L1', label, len(a.splitlines()), 'lines identical')
 
     def test_L2_roundtrip(self):
+        a_, b_ = {'id': 'x', 'v': [1, {'k': 'p'}]}, {'id': 'x', 'v': [1, {'k': 'q'}]}
+        self.assertEqual(jdiff(a_, b_), ('$.v[1].k', 'p', 'q'))
         vmhwm = vmpeak = 0
+        fx_hwm = fx_peak = 0
         for label, f, decks, only in pos_files():
             pos_out, recs = exports(label, f, decks, only)
             pos_lines = {json.loads(l)['id']: l for l in pos_out.splitlines() if l.strip() and json.loads(l)['kind'] == 'plans'}
+            self.assertEqual(len(recs), pos_count(f, only), label)
             null_legal = sum(1 for r in recs if r['legal_actions'] is None)
             print('NULL_LEGAL', label, null_legal)
             self.assertEqual(null_legal, 0)
@@ -161,13 +207,18 @@ class Lister(unittest.TestCase):
                 if d['kind'] == 'plans':
                     want = pos_lines[d['id']]
                     if l != want:
-                        self.fail('%s: id %s plans line differs: %s | %s' % (label, d['id'], cut(l), cut(want)))
+                        self.fail(jdiff_msg('L2 ' + label, d['id'], l, want))
                     self.assertEqual(d, json.loads(want))
                 if d['kind'] == 'root_check':
                     self.assertTrue(d['ok'] is True, '%s root_check not ok: %s' % (d['id'], cut(d['missing_in_lister']) + cut(d['extra_in_lister'])))
             for d in kinds['stats'].values():
-                vmhwm = max(vmhwm, d['vmhwm_kb'])
-                vmpeak = max(vmpeak, d['vmpeak_kb'])
+                if label == '92':
+                    vmhwm = max(vmhwm, d['vmhwm_kb'])
+                    vmpeak = max(vmpeak, d['vmpeak_kb'])
+                else:
+                    fx_hwm = max(fx_hwm, d['vmhwm_kb'])
+                    fx_peak = max(fx_peak, d['vmpeak_kb'])
+        print('FIXTURES_VMHWM_MAX', fx_hwm, 'FIXTURES_VMPEAK_MAX', fx_peak)
         print('VMHWM_MAX', vmhwm)
         print('VMPEAK_MAX', vmpeak)
 
@@ -284,6 +335,7 @@ class Lister(unittest.TestCase):
         import re
         inputs, meta, kinds = seat1_inputs()
         n_plans, obs_used = 0, set()
+        n_opp = n_you = n_pts = 0
         for rec in inputs:
             m = meta[rec['id']]
             if m['current_player'] != m['actor']:
@@ -299,14 +351,23 @@ class Lister(unittest.TestCase):
                     for line in o['lines']:
                         mm = re.match(r'^(Opponent|You): (.+?) (\(Active\)|\(Bench \d\)|takes the)', line)
                         if mm:
+                            if mm.group(1) == 'Opponent':
+                                n_opp += 1
+                            else:
+                                n_you += 1
                             side = 0 if mm.group(1) == 'Opponent' else 1
                             self.assertIn(mm.group(2), boards[side], '%s: %s' % (rec['id'], cut(line)))
                         if line.startswith('Points:'):
                             pm = re.match(r'^Points: you (\d+) -> (\d+), opponent (\d+) -> (\d+)$', line)
                             self.assertIsNotNone(pm, line)
+                            n_pts += 1
                             self.assertEqual(int(pm.group(1)), tpl['points'][1], line)
                             self.assertEqual(int(pm.group(3)), tpl['points'][0], line)
         print('L9 attack plans', n_plans, 'observations', len(obs_used))
+        print('L9 matched lines: Opponent', n_opp, 'You', n_you, 'Points', n_pts)
+        self.assertGreaterEqual(n_opp, 1)
+        self.assertGreaterEqual(n_you, 1)
+        self.assertGreaterEqual(n_pts, 1)
         self.assertGreaterEqual(n_plans, 3)
         self.assertGreaterEqual(len(obs_used), 2)
 
@@ -366,6 +427,7 @@ class Lister(unittest.TestCase):
     def test_L11_wrapper(self):
         import game_kit
         import game_lister
+        import game_shadow
         from unittest import mock
         rec0 = exports('mini_positions.json', FIXTURES[0], FIXD, None)[1][0]
         tmpd = os.path.join(TMP, 'l11_tmp')
@@ -386,6 +448,8 @@ class Lister(unittest.TestCase):
         self.assertNotIn('shell', kw)
         self.assertNotIn('preexec_fn', kw)
         self.assertIn('env', kw)
+        self.assertEqual(kw['env'], game_shadow.shadow_env(os.environ))
+        self.assertTrue(set(kw['env']) <= set(game_kit.SHADOW_ENV_KEEP))
         for k in kw['env']:
             self.assertFalse(k.startswith('VERTEX_') or k in game_kit.FORBIDDEN_ENV)
         # fake bins

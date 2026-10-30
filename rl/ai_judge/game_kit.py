@@ -16,7 +16,7 @@ MAX_TRIES = 3; RETRY_WAITS_S = (150, 300); RETRY_WINDOW_S = 600   # only HTTP 42
 CALL_CAP = 75                           # stage 1: judge DECISIONS per game, not tries; fallback (d) fires at the first intervention point after the 75th judge decision; earlier fallbacks do not count toward the 75
 LISTER_LIMITS = {'max_plans': 2000, 'max_nodes': 200000, 'max_steps': 30}; LISTER_HANG_S = 600
 def lister_mem_rule(max_vmhwm_kb): return min(3 * 2**30, max(2**30, 3 * 1024 * max_vmhwm_kb))
-LISTER_MEM_BYTES = 1073741824           # lister_mem_rule(H), H = 75072 kB: the largest VmHWM of A2's L2 (the 92) and L6 (LS dumps) obs-mode runs
+LISTER_MEM_BYTES = 1073741824           # lister_mem_rule(H), H = 75100 kB: the largest VmHWM over the 92 only (Part B L2, 92-only; was 75072 kB in Part A)
 SEARCH_SEED = 0x5EED_0001
 SHADOW_FEED = 'fallback'                # fixed: the shadow is asked only at setup and fallback points
 POOL_SHA256 = {'t-lucario': '76ad71c4d932da51fddc8c3082f184f8012c86e1f1e15c5858e055190560f634',
