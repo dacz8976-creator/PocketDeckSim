@@ -669,7 +669,12 @@ def run_gate3(a):
     by_reason, reasks, by_seat = {}, {}, {}
     max_list = max_judge = 0
     for g in g_arms:
-        rows = read_jsonl(os.path.join(arm_dir(D, g['deal_tag']), 'rows.jsonl'))
+        rows_path = os.path.join(arm_dir(D, g['deal_tag']), 'rows.jsonl')
+        if os.path.exists(rows_path):
+            rows = read_jsonl(rows_path)
+        else:
+            rows = []
+            need(False, '%s rows.jsonl missing' % g['deal_tag'])
         dec = [r for r in rows if r.get('schema') == 'gemini_game_decision_v1']
         plans = [r for r in rows if r.get('schema') == 'gemini_game_plan_v1']
         seat = g['bits']['seat']

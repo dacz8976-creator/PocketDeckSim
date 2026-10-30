@@ -455,6 +455,19 @@ class Gate3(unittest.TestCase):
         rc, out = run.write().run(extra)
         return rc, out
 
+    def test_G7b_missing_rows_and_setup_rate(self):
+        r = Run3('norows')
+        r.write()
+        g = r.games[0]
+        os.remove(os.path.join(r.D, 'deals', '%04d-k90-c%02d' % (g['idx'], g['cell']), 'a1', 'G', 'rows.jsonl'))
+        rc, out = r.run()
+        self.assertEqual((rc, out[-1]), (1, 'GATE3 FAIL'), out[-4:])
+        self.assertTrue(any(l.startswith('FAILED: ') and g['tag'] in l and 'rows.jsonl missing' in l for l in out), out[-6:])
+        # an 11% fallback rate with many setup rows still fails (setup rows are outside the denominator)
+        r = Run3('r11setup', n_int=100, n_fb=11, n_setup=40)
+        rc, out = self.verdict(r)
+        self.assertEqual((rc, out[-1]), (1, 'GATE3 FAIL'), out[-4:])
+
     def test_G7_gate3(self):
         rc, out = self.verdict(Run3('clean'))
         self.assertEqual((rc, out[-1]), (0, 'GATE3 PASS'), out)
