@@ -495,9 +495,13 @@ class Runner:
                         'g_failure': g['failure'] if g else None, 'k_failure': k['failure'] if k else None, 'dropped': drop is not None and result == 'done', 'drop_reason': drop if result == 'done' else None}
             append_jsonl(self.p('deals.jsonl'), deal_row)
             if result == 'infra':
-                infra_n += 1
-                if infra_n >= 3:
-                    raise StopRun('infra_repeat')
+                paused = os.path.exists(self.p('PAUSE')) or any(r and r.get('failure_detail') == 'pause_marker' for r in rows.values())
+                if not paused:
+                    infra_n += 1
+                    if infra_n >= 3:
+                        raise StopRun('infra_repeat')
+                self.wait_pause()
+                self.pre_deal_checks()
                 attempt += 1
                 continue
             if result == 'config':
@@ -560,6 +564,18 @@ class Runner:
         if not headroom_ok(self.stage, float(d['total_usd']), float(d['accrued_usd']), float(d.get('in_flight_usd') or 0), largest, self.a.stage1_max_game_charge):
             raise StopRun('ledger_headroom')
 
+    def wait_pause(self):
+        while os.path.exists(self.p('PAUSE')):
+            self.sleep(POLL_S)
+
+    def pre_deal_checks(self):
+        s = self.stop_file_reason()
+        if s:
+            raise StopRun(s)
+        if self.utcnow() >= datetime.datetime.strptime(game_kit.STOP_AT_UTC, '%Y-%m-%dT%H:%M:%SZ').replace(tzinfo=datetime.timezone.utc):
+            raise StopRun('stop_date')
+        self.headroom_check()
+
     def run(self, deals):
         a = self.a
         self.arms = a.arms.split(',')
@@ -577,14 +593,8 @@ class Runner:
                 best = self.rows_of_record()
                 if deal['deal_idx'] in best:
                     continue
-                while os.path.exists(self.p('PAUSE')):
-                    self.sleep(POLL_S)
-                s = self.stop_file_reason()
-                if s:
-                    raise StopRun(s)
-                if self.utcnow() >= datetime.datetime.strptime(game_kit.STOP_AT_UTC, '%Y-%m-%dT%H:%M:%SZ').replace(tzinfo=datetime.timezone.utc):
-                    raise StopRun('stop_date')
-                self.headroom_check()
+                self.wait_pause()
+                self.pre_deal_checks()
                 prior = [r['attempt'] for r in self.deal_rows() if r['deal_idx'] == deal['deal_idx']]
                 for d in glob.glob(os.path.join(self.deal_dir(deal), 'a[0-9]*')):
                     m = re.fullmatch(r'a(\d+)', os.path.basename(d))

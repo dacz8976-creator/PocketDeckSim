@@ -451,6 +451,75 @@ class Runner(unittest.TestCase):
         self.assertEqual(e.end()['stop_reason'], 'infra_repeat')
         self.assertEqual(e.end()['complete_deals'], 0)
 
+    def test_R10b_pause_wait_and_replay_checks(self):
+        sc = {'default': {'sleep': 0.6}}
+        # 1. PAUSE kept for several polls of the wait, then removed
+        e = Env('r10b1', sc)
+        e.plan('dev', '90', '0')
+        pf = os.path.join(e.D, 'PAUSE')
+
+        def hook1(n):
+            if n == 2:
+                open(pf, 'w').close()
+            if n == 6:
+                os.remove(pf)
+        clock = Clock(on_call=hook1)
+        e.run(['--arms', 'G', '--max-deals', '1'], clock=clock)
+        g = e.jl('games.jsonl')
+        self.assertEqual([(x['attempt'], x['failure'], x['failure_detail']) for x in g][:1], [(1, 'infra', 'pause_marker')])
+        self.assertEqual([(x['attempt'], x['failure']) for x in g][1:], [(2, None)])
+        self.assertIsNone(e.end()['stop_reason'])
+        # 2. three PAUSE episodes in one deal
+        e = Env('r10b2', sc)
+        e.plan('dev', '90', '0')
+        pf = os.path.join(e.D, 'PAUSE')
+        st = {'w': 0, 'ep': 0}
+
+        def hook2(n):
+            if os.path.exists(pf):
+                st['w'] += 1
+                if st['w'] >= 2:
+                    os.remove(pf)
+                    st['w'] = 0
+                    st['ep'] += 1
+            elif st['ep'] < 3:
+                open(pf, 'w').close()
+        e.run(['--arms', 'G', '--max-deals', '1'], clock=Clock(on_call=hook2))
+        g = e.jl('games.jsonl')
+        self.assertEqual([(x['attempt'], x['failure'], x['failure_detail']) for x in g][:3], [(i, 'infra', 'pause_marker') for i in (1, 2, 3)])
+        self.assertEqual((g[3]['attempt'], g[3]['failure']), (4, None))
+        self.assertIsNone(e.end()['stop_reason'])
+        self.assertEqual(e.end()['complete_deals'], 1)
+        # 3. a STOP written during the wait
+        e = Env('r10b3', sc)
+        e.plan('dev', '90', '0')
+        pf = os.path.join(e.D, 'PAUSE')
+
+        def hook3(n):
+            if n == 2:
+                open(pf, 'w').close()
+            if n == 4:
+                with open(os.path.join(e.D, 'STOP'), 'w') as f:
+                    json.dump({'reason': 'ledger', 'detail': 'x', 'deal_tag': 't', 'utc': 'u'}, f)
+            if n == 5:
+                os.remove(pf)
+        e.run(['--arms', 'G', '--max-deals', '1'], clock=Clock(on_call=hook3))
+        self.assertEqual(e.end()['stop_reason'], 'stop:ledger')
+        self.assertEqual([x['attempt'] for x in e.jl('games.jsonl')], [1])
+        self.assertFalse(os.path.exists(os.path.join(e.D, 'deals', '0000-k90-c00', 'a2')))
+        # 4. a pause_gap infra, then the stop date before the replay
+        e = Env('r10b4', sc)
+        e.plan('dev', '90', '0')
+        stop = datetime.datetime.strptime(game_kit.STOP_AT_UTC, '%Y-%m-%dT%H:%M:%SZ').replace(tzinfo=datetime.timezone.utc)
+
+        def utc():
+            return stop if os.path.exists(os.path.join(e.D, 'games.jsonl')) else stop - datetime.timedelta(seconds=1)
+        e.run(['--arms', 'G', '--max-deals', '1'], clock=Clock(schedule={2: (66, 5)}), utcnow=utc)
+        g = e.jl('games.jsonl')
+        self.assertEqual([(x['attempt'], x['failure']) for x in g], [(1, 'infra')])
+        self.assertIn('pause_gap', g[0]['failure_detail'])
+        self.assertEqual(e.end()['stop_reason'], 'stop_date')
+
     def test_R11_stop_leaves_deal_incomplete(self):
         for reason, code in (('ledger', 3), ('deck', 6), ('not_sent', 5), ('ledger_bound', 5)):
             e, a = self._arm('r11_' + reason, {'0000-k90-c00/a1/G': {'stop': reason, 'exit': 0}}, cell='0,1')
