@@ -19,7 +19,9 @@ import judge  # noqa: E402
 import providers  # noqa: E402
 
 KEY_RES = [re.compile(p) for p in game_call.KEY_PATTERNS]
-COUNTERS = (('opponent_choice', 'opponent_choices'), ('chance', 'chance_events'), ('draw_mine', 'cards_left_deck_mine'), ('draw_opponent', 'cards_left_deck_opponent'))
+# pdl_since_last.opponent_choices is not a re-ask trigger: it comes from the opponent's full legal-action list, which can depend on hidden cards
+# (FROZEN-8 deviation 16). An opponent's choice ends a plan only through the visible board (the obs-hash check, 'stale').
+COUNTERS = (('chance', 'chance_events'), ('draw_mine', 'cards_left_deck_mine'), ('draw_opponent', 'cards_left_deck_opponent'))
 
 
 def counter_reason(since):

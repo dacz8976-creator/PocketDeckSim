@@ -212,7 +212,8 @@ class Bot(BotBase):
         cr = game_bot.counter_reason
         z = {'opponent_choices': 0, 'chance_events': 0, 'cards_left_deck_mine': 0, 'cards_left_deck_opponent': 0}
         self.assertIsNone(cr(z))
-        self.assertEqual(cr(dict(z, chance_events=1, cards_left_deck_opponent=2, opponent_choices=1)), 'opponent_choice')
+        self.assertIsNone(cr(dict(z, opponent_choices=3)))
+        self.assertEqual(cr(dict(z, chance_events=1, cards_left_deck_opponent=2, opponent_choices=1)), 'chance')
         self.assertEqual(cr(dict(z, chance_events=1, cards_left_deck_mine=1)), 'chance')
         self.assertEqual(cr(dict(z, cards_left_deck_mine=1, cards_left_deck_opponent=1)), 'draw_mine')
         self.assertEqual(cr(dict(z, cards_left_deck_opponent=1)), 'draw_opponent')
@@ -235,6 +236,19 @@ class Bot(BotBase):
         self.assertEqual(self.replies[1:], [{'i': 0}, {'i': 2}])
         self.assertEqual([p['ended'] for p in self.plans], ['completed'])
         self.assertEqual(self.shadow.asks, [])
+        self.assertEqual(lister.n_list, 1)
+
+    def test_P2b_opponent_choices_not_a_reask(self):
+        # the opponent-choice counter can depend on hidden cards, so with a matching hash the plan is followed (FROZEN-8 deviation 16)
+        lister = FakeLister(forced=(False, True, False))
+        code = self.run_bot([decide_line(1), decide_line(2, tag='h_1', since={'opponent_choices': 2})], lister=lister)
+        self.assertEqual(code, 0)
+        d1, d2 = self.decisions
+        self.assertEqual((d2['mode'], d2['reask_reason']), ('follow', None))
+        self.assertEqual(d2['since']['opponent_choices'], 2)
+        self.assertTrue(d2['follow']['hash_ok'])
+        self.assertEqual(self.replies[1:], [{'i': 0}, {'i': 2}])
+        self.assertEqual([p['ended'] for p in self.plans], ['completed'])
         self.assertEqual(lister.n_list, 1)
 
     def test_P3_stale(self):
