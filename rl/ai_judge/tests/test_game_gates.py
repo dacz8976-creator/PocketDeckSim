@@ -337,5 +337,314 @@ class Seat1(unittest.TestCase):
         self.assertEqual(rc, 3, out)
 
 
+
+# ------------------------------------------------------------------------------------------------ B7: gate 3 and the gate-4 tools
+import time  # noqa: E402
+
+import game_runner  # noqa: E402
+
+
+def drow(tag, mode='intervene', tc=3, cp=0, **kw):
+    r = {'schema': 'gemini_game_decision_v1', 'deal_tag': tag, 'ply': 1, 'actor': 0, 'turn_count': tc, 'current_player': cp, 'kind': 'setup' if mode == 'setup' else 'own_turn', 'mode': mode,
+         'follow': None, 'reask_reason': 'first', 'judge': None, 'tries': [], 'n_list_runs': 0, 'n_judge_calls': 0, 'plan': None, 'fallback': None, 'root_check': {'n_dup_of': 1, 'n_noop': 0}}
+    r.update(kw)
+    return r
+
+
+def prow(tag, plan_id, n_steps=3, steps_played=3, ended='completed'):
+    return {'schema': 'gemini_game_plan_v1', 'deal_tag': tag, 'plan_id': plan_id, 'n_steps': n_steps, 'steps_played': steps_played, 'ended': ended}
+
+
+def mkgame(tag, n_int=10, n_fb=0, n_follow=5, n_setup=2):
+    rows = [drow(tag, 'setup', tc=0) for _ in range(n_setup)]
+    for i in range(n_int):
+        if i < n_fb:
+            rows.append(drow(tag, fallback={'reason': 'a', 'detail': 'lister_error', 'shadow_i': 0, 'shadow_secs': 1.0}, n_list_runs=1))
+        else:
+            pid = '%s-p%d' % (tag, i)
+            rows.append(drow(tag, n_list_runs=1, n_judge_calls=1, judge={'plan_key': 'k%d' % i, 'mock': True}, plan={'plan_id': pid, 'n': 1, 'key': 'k%d' % i, 'n_steps': 3, 'end': 'attack'}))
+            rows.append(prow(tag, pid))
+    for _ in range(n_follow):
+        rows.append(drow(tag, 'follow', follow={'plan_id': 'x', 'step': 2, 'skipped_forced': 0, 'hash_ok': True}))
+    return rows
+
+
+class Run3:
+    def __init__(self, name, n_games=8, **gk):
+        self.D = os.path.join(TMP, 'g3_' + name)
+        subprocess.run(['rm', '-rf', self.D])
+        os.makedirs(self.D)
+        self.games = []
+        for i in range(n_games):
+            tag = '%04d-k90-c%02d-a1-G' % (i, i)
+            self.games.append({'idx': i, 'cell': i, 'tag': tag, 'rows': mkgame(tag, **gk), 'completion': 'completed', 'lifecycle': 0, 'errors': 0, 'fallbacks': 0})
+
+    def write(self):
+        for g in self.games:
+            adir = os.path.join(self.D, 'deals', '%04d-k90-c%02d' % (g['idx'], g['cell']), 'a1', 'G')
+            os.makedirs(adir, exist_ok=True)
+            with open(os.path.join(adir, 'rows.jsonl'), 'w') as f:
+                for r in g['rows']:
+                    f.write(json.dumps(r) + '\n')
+            bits = game_kit.cell_bits(g['cell'])
+            arm = {'deal_tag': g['tag'], 'arm': 'G', 'bits': bits, 'cell': g['cell'], 'completion': g['completion'], 'lifecycle_errors': g['lifecycle'], 'failure': None,
+                   'protocol': [{'seat': bits['seat'], 'role': 'pilot', 'decisions': 5, 'fallbacks': g['fallbacks'], 'errors': g['errors']}], 'judge': {}}
+            with open(os.path.join(self.D, 'games.jsonl'), 'a') as f:
+                f.write(json.dumps(arm) + '\n')
+            with open(os.path.join(self.D, 'deals.jsonl'), 'a') as f:
+                f.write(json.dumps({'deal_idx': g['idx'], 'attempt': 1, 'complete': True, 'g_deal_tag': g['tag'], 'k_deal_tag': None}) + '\n')
+        return self
+
+    def run(self, extra=()):
+        return call(['gate3', '--run-dir', self.D, '--min-games', '8', '--min-follow', '20'] + list(extra))
+
+
+class Gate3(unittest.TestCase):
+    def verdict(self, run, extra=()):
+        rc, out = run.write().run(extra)
+        return rc, out
+
+    def test_G7_gate3(self):
+        rc, out = self.verdict(Run3('clean'))
+        self.assertEqual((rc, out[-1]), (0, 'GATE3 PASS'), out)
+        self.assertTrue(any(l.startswith('ILLEGAL 0') for l in out))
+        # a 9% fallback rate with many setup rows passes
+        r = Run3('nine', n_int=100, n_fb=9, n_setup=40)
+        self.assertEqual(self.verdict(r)[1][-1], 'GATE3 PASS')
+        bad = {}
+        r = Run3('forced')
+        r.games[0]['rows'].append(drow(r.games[0]['tag'], fallback={'reason': 'dev', 'detail': 'forced_dev'}, n_list_runs=0))
+        bad['forced_dev'] = r
+        bad['rate11'] = Run3('rate', n_int=100, n_fb=11)
+        r = Run3('f19', n_follow=0)
+        r.games[0]['rows'] += [drow(r.games[0]['tag'], 'follow', follow={'plan_id': 'x', 'step': 2, 'skipped_forced': 0, 'hash_ok': True}) for _ in range(19)]
+        bad['follow19'] = r
+        r = Run3('stale')
+        r.games[0]['rows'].append(prow(r.games[0]['tag'], 'zz', ended='stale'))
+        bad['stale'] = r
+        r = Run3('two')
+        r.games[0]['rows'][4]['n_list_runs'] = 2
+        bad['two_list_runs'] = r
+        r = Run3('loop')
+        t = r.games[0]['tag']
+        for i in range(3):
+            r.games[0]['rows'].append(drow(t, tc=5, reask_reason='stale', judge={'plan_key': 'same', 'mock': True}, plan={'plan_id': 'q%d' % i, 'n': 1, 'key': 'same', 'n_steps': 2, 'end': 'attack'}, n_list_runs=1, n_judge_calls=1))
+            r.games[0]['rows'].append(prow(t, 'q%d' % i, 2, 2))
+        bad['loop3'] = r
+        r = Run3('past')
+        r.games[0]['rows'][-1:] = [prow(r.games[0]['tag'], 'over', 3, 4)]
+        bad['past_n_steps'] = r
+        r = Run3('noend')
+        r.games[0]['rows'] = [x for x in r.games[0]['rows'] if x.get('schema') != 'gemini_game_plan_v1' or x['plan_id'] != '%s-p3' % r.games[0]['tag']]
+        bad['no_end_row'] = r
+        r = Run3('lifecycle')
+        r.games[0]['lifecycle'] = 1
+        bad['lifecycle'] = r
+        r = Run3('plankey')
+        for x in r.games[0]['rows']:
+            if x.get('plan'):
+                x['plan']['key'] = 'different'
+                break
+        bad['plan_key'] = r
+        r = Run3('notmock')
+        for x in r.games[0]['rows']:
+            if x.get('judge'):
+                x['judge']['mock'] = False
+                break
+        bad['not_mock'] = r
+        r = Run3('fb')
+        r.games[0]['fallbacks'] = 1
+        bad['pilot_fallback'] = r
+        for name, run in bad.items():
+            rc, out = self.verdict(run)
+            self.assertEqual((name, rc, out[-1]), (name, 1, 'GATE3 FAIL'), out[-6:])
+        # a fallback (a) after the judge call leaves plan null: not a plan.key failure
+        r = Run3('nullplan')
+        t = r.games[0]['tag']
+        r.games[0]['rows'].append(drow(t, n_list_runs=1, n_judge_calls=1, judge={'plan_key': 'k', 'mock': True}, plan=None, fallback={'reason': 'a', 'detail': 'plan_key_missing', 'shadow_i': 0, 'shadow_secs': 1}))
+        self.assertEqual(self.verdict(r)[1][-1], 'GATE3 PASS')
+        # --smoke passes forced_dev rows and a small run
+        r = Run3('smoke', n_games=1)
+        r.games[0]['rows'].append(drow(r.games[0]['tag'], fallback={'reason': 'dev', 'detail': 'forced_dev'}, n_list_runs=0))
+        rc, out = call(['gate3', '--run-dir', r.write().D, '--smoke'])
+        self.assertEqual((rc, out[-1]), (0, 'GATE3 PASS'), out)
+
+
+def fake_bin(path, body):
+    with open(path, 'w') as f:
+        f.write('#!/usr/bin/env python3\nimport json, os, sys, time, subprocess\n' + body)
+    os.chmod(path, 0o755)
+
+
+FAKE_KP = r"""
+args = sys.argv[1:]
+a = {args[i]: args[i + 1] for i in range(len(args)) if args[i].startswith('--')}
+seed = int(a['--seeds'])
+HERE = os.path.dirname(os.path.realpath(__file__))
+sc = json.load(open(os.path.join(HERE, 'kp_scenario.json')))
+s = dict(sc.get('default', {}))
+s.update(sc.get(str(seed), {}))
+json.dump(args, open(os.path.join(HERE, 'argv_%d.json' % seed), 'w'))
+json.dump({'sid': os.getsid(0), 'rayon': os.environ.get('RAYON_NUM_THREADS')}, open(os.path.join(HERE, 'env_%d.json' % seed), 'w'))
+if s.get('hang'):
+    ch = subprocess.Popen([sys.executable, '-c', 'import time\ntime.sleep(300)'], preexec_fn=os.setpgrp)
+    open(os.path.join(HERE, 'child_%d.pid' % seed), 'w').write(str(ch.pid))
+    time.sleep(300)
+print(json.dumps({'seed': seed, 'seat': int(a['--seat']), 'code': 'kx3', 'opp_code': a.get('--opp-code', 'km3'), 'decisions_compared': 4, 'pilot_decisions_compared': s.get('pilot', 2),
+                  'identical': s.get('identical', True), 'first_diff': None, 'secs_direct': 1.0, 'secs_protocol': 1.0, 'protocol_fallbacks': s.get('fb', 0), 'proto_threads': a.get('--proto-threads')}))
+sys.exit(0 if s.get('identical', True) and not s.get('fb') else 1)
+"""
+
+FAKE_KR = r"""
+args = sys.argv[1:]
+a = {args[i]: args[i + 1] for i in range(len(args)) if args[i].startswith('--')}
+HERE = os.path.dirname(os.path.realpath(__file__))
+bad = os.path.exists(os.path.join(HERE, 'kr_mismatch'))
+n = eq = 0
+for l in open(a['--shadow-log']):
+    r = json.loads(l)
+    n += 1
+    ok = not bad
+    eq += ok
+    print(json.dumps({'deal_tag': r['deal_tag'], 'equal': ok, 'ply': r['ply'], 'replay_i': r['shadow_i'], 'shadow_i': r['shadow_i']}))
+    open(os.path.join(HERE, 'kr_decks.txt'), 'a').write(a['--opp-deck'] + '\n')
+print(json.dumps({'checked': n, 'equal': eq, 'mismatches': n - eq, 'summary': True}))
+sys.exit(0 if eq == n else 1)
+"""
+
+
+class Gate4(unittest.TestCase):
+    def kp_env(self, name, scenario=None):
+        root = os.path.join(TMP, 'g4_' + name)
+        subprocess.run(['rm', '-rf', root])
+        os.makedirs(os.path.join(root, 'eng'))
+        os.makedirs(os.path.join(root, 'jb'))
+        fake_bin(os.path.join(root, 'jb', 'kx3_parity'), FAKE_KP)
+        fake_bin(os.path.join(root, 'jb', 'kx3_replay'), FAKE_KR)
+        with open(os.path.join(root, 'jb', 'kp_scenario.json'), 'w') as f:
+            json.dump(scenario or {}, f)
+        return root
+
+    def par(self, root, extra=(), cells='0,1', ks='90'):
+        return call(['gate4-parity', '--engine-bins', os.path.join(root, 'eng'), '--judge-bins', os.path.join(root, 'jb'), '--repo', TL.REPO, '--k-list', ks, '--cells', cells, '--out',
+                     os.path.join(root, 'out'), '--min-per-seat', '1'] + list(extra))
+
+    def test_G8_parity(self):
+        root = self.kp_env('ok')
+        rc, out = self.par(root, ['--max-decisions', '2', '--pb-threads', '2'])
+        self.assertEqual((rc, out[-1]), (0, 'GATE4a PASS'), out)
+        argv = json.load(open(os.path.join(root, 'jb', 'argv_%d.json' % game_kit.seed(0, 90))))
+        self.assertIn('--protocol-bot', argv)
+        self.assertEqual(argv[argv.index('--protocol-bot') + 1], os.path.join(root, 'eng', 'protocol_bot'))
+        self.assertEqual(argv[argv.index('--proto-threads') + 1], '2')
+        self.assertNotIn('--proto-cmd', argv)
+        self.assertEqual(argv[argv.index('--max-decisions') + 1], '2')
+        env = json.load(open(os.path.join(root, 'jb', 'env_%d.json' % game_kit.seed(0, 90))))
+        self.assertEqual(env['rayon'], '2')
+        # a resume skips finished seeds
+        rc, out = self.par(root, ['--resume', '--pb-threads', '2'])
+        self.assertEqual(rc, 0)
+        self.assertEqual(len(game_gates.read_jsonl(os.path.join(root, 'out', 'gate4a_rows.jsonl'))), 2)
+        for name, sc in (('zero', {'pilot': 0}), ('notident', {'identical': False}), ('fb', {'fb': 1})):
+            root = self.kp_env(name, {'default': {}, str(game_kit.seed(1, 90)): sc})
+            rc, out = self.par(root, ['--pb-threads', '8'])
+            self.assertEqual((name, rc, out[-1]), (name, 1, 'GATE4a FAIL'), out)
+        root = self.kp_env('few')
+        rc, out = self.par(root, ['--min-per-seat', '2'] if False else [], cells='0,2')
+        self.assertEqual(out[-1], 'GATE4a INCOMPLETE')  # both cells are seat 0: seat 1 has no finished seed
+        self.assertEqual(rc, 3)
+
+    def test_G8_timeout_kills_session(self):
+        root = self.kp_env('to', {str(game_kit.seed(0, 90)): {'hang': True}})
+        rc, out = self.par(root, ['--timeout-s', '2', '--pb-threads', '2'], cells='0,1')
+        self.assertEqual((rc, out[-1]), (3, 'GATE4a INCOMPLETE'), out)
+        rows = game_gates.read_jsonl(os.path.join(root, 'out', 'gate4a_rows.jsonl'))
+        self.assertTrue(any(r.get('timeout') for r in rows))
+        sid = json.load(open(os.path.join(root, 'jb', 'env_%d.json' % game_kit.seed(0, 90))))['sid']
+        t0 = time.time()
+        while time.time() - t0 < 30 and game_runner.session_members(sid):
+            time.sleep(0.2)
+        self.assertEqual(game_runner.session_members(sid), [])
+
+    def shadow_run(self, name, n_setup=3, n_fb=4, extra=(), mismatch=False, bits_list=0):
+        root = self.kp_env(name)
+        if mismatch:
+            open(os.path.join(root, 'jb', 'kr_mismatch'), 'w').close()
+        D = os.path.join(root, 'run')
+        adir = os.path.join(D, 'deals', '0000-k90-c00', 'a1', 'G')
+        os.makedirs(adir)
+        tag = '0000-k90-c00-a1-G'
+        recs = []
+        for i in range(n_setup + n_fb):
+            tc = 0 if i < n_setup else 3
+            recs.append({'deal_tag': tag, 'ply': i + 1, 'new_game': '{}', 'decide': json.dumps({'pdl_observation': {'template': {'turn_count': tc}}}), 'shadow_i': 0, 'secs': 1.0})
+        with open(os.path.join(adir, 'shadow.jsonl'), 'w') as f:
+            for r in recs:
+                f.write(json.dumps(r) + '\n')
+        with open(os.path.join(D, 'games.jsonl'), 'w') as f:
+            f.write(json.dumps({'deal_tag': tag, 'arm': 'G', 'bits': {'deck': 0, 'list': bits_list, 'policy': 0, 'seat': 0}}) + '\n')
+        os.makedirs(os.path.join(root, 'tmp'))
+        self.root = root
+        return call(['gate4-shadow', '--run-dir', D, '--repo', TL.REPO, '--judge-bins', os.path.join(root, 'jb'), '--sample-fallback', '2', '--sample-setup', '1', '--sample-seed', '25103008',
+                     '--out', os.path.join(root, 'out')] + list(extra))
+
+    def test_G9_shadow(self):
+        rc, out = self.shadow_run('ok')
+        self.assertEqual((rc, out[-1]), (0, 'GATE4b PASS'), out)
+        self.assertTrue(any('setup' in l and 'checked 1' in l for l in out), out)
+        self.assertTrue(any('fallback' in l and 'checked 2' in l for l in out), out)
+        decks = open(os.path.join(self.root, 'jb', 'kr_decks.txt')).read().split()
+        self.assertTrue(all(d.endswith('t-lucario.txt') for d in decks))
+        rc, out = self.shadow_run('few_fb', n_fb=1)
+        self.assertEqual((rc, out[-1]), (3, 'GATE4b INCOMPLETE'), out)
+        rc, out = self.shadow_run('zero_fb', n_fb=0)
+        self.assertEqual((rc, out[-1]), (3, 'GATE4b INCOMPLETE'), out)
+        rc, out = self.shadow_run('few_setup', n_setup=0)
+        self.assertEqual((rc, out[-1]), (3, 'GATE4b INCOMPLETE'), out)
+        rc, out = self.shadow_run('bad', mismatch=True)
+        self.assertEqual((rc, out[-1]), (1, 'GATE4b FAIL'), out)
+        # the same seed gives the same sample
+        a = game_gates.sample_records(list(range(20)), 5, 25103008)
+        self.assertEqual(a, game_gates.sample_records(list(range(20)), 5, 25103008))
+        self.assertNotEqual(a, game_gates.sample_records(list(range(20)), 5, 1))
+        rc, out = self.shadow_run('list2', bits_list=1)
+        decks = open(os.path.join(self.root, 'jb', 'kr_decks.txt')).read().split()
+        self.assertTrue(all(d.endswith('t-suicune.txt') for d in decks))
+
+    def pin_run(self, name, arms, pin=None):
+        root = os.path.join(TMP, 'g10_' + name)
+        subprocess.run(['rm', '-rf', root])
+        D = os.path.join(root, 'run')
+        base = {'budget_ms': 0, 'cap': 12, 'code': game_kit.KX3_CANONICAL, 'depth': 3, 'extra_lists': [], 'knowledge': 'REALISTIC', 'rollouts': 16, 'z': 2.0}
+        pin = pin or dict(base, seat=0)
+        with open(os.path.join(root, 'pin.json') if os.path.isdir(root) else (os.makedirs(root) or os.path.join(root, 'pin.json')), 'w') as f:
+            json.dump(pin, f)
+        for i, (arm, policy, lines) in enumerate(arms):
+            tag = '%04d-k90-c00-a1-%s' % (i, arm)
+            adir = os.path.join(D, 'deals', '%04d-k90-c00' % i, 'a1', arm)
+            os.makedirs(adir)
+            with open(os.path.join(adir, 'stderr.txt'), 'w') as f:
+                f.write('noise\n')
+                for l in lines:
+                    f.write('KX_PARAMS ' + json.dumps(l) + '\n')
+            with open(os.path.join(D, 'games.jsonl'), 'a') as f:
+                f.write(json.dumps({'deal_tag': tag, 'arm': arm, 'bits': {'deck': 0, 'list': 0, 'policy': policy, 'seat': 0}}) + '\n')
+        return call(['gate4-pin', '--run-dir', D, '--pin', os.path.join(root, 'pin.json')]), base
+
+    def test_G10_pin(self):
+        base = {'budget_ms': 0, 'cap': 12, 'code': game_kit.KX3_CANONICAL, 'depth': 3, 'extra_lists': [], 'knowledge': 'REALISTIC', 'rollouts': 16, 'z': 2.0}
+        ok_lines = [dict(base, seat=0)]
+        (rc, out), _ = self.pin_run('ok', [('K', 0, ok_lines), ('G', 0, ok_lines), ('G', 1, [dict(base, seat=1)])])
+        self.assertEqual(rc, 0, out)
+        self.assertTrue(out[-1].startswith('GATE4c PASS'), out)
+        for name, arms in (('nok', [('K', 0, [])]), ('noopp', [('G', 1, [])]), ('code', [('K', 0, [dict(base, seat=0, code='kx3_r16_c12_z2_real_t0_trace')])]),
+                           ('differs', [('K', 0, [dict(base, seat=0, depth=4)])])):
+            (rc, out), _ = self.pin_run(name, arms)
+            self.assertEqual(rc, 1, name)
+            self.assertTrue(out[-1].startswith('GATE4c FAIL'), (name, out))
+        (rc, out), _ = self.pin_run('seat', [('K', 0, [dict(base, seat=1)])])
+        self.assertEqual(rc, 0, out)
+
+
 if __name__ == '__main__':
     unittest.main()

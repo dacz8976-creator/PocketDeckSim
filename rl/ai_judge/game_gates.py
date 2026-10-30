@@ -618,6 +618,322 @@ def run_seat1(a):
     return 0
 
 
+# ------------------------------------------------------------------------------------------------ gate 3
+ARM_TAG = re.compile(r'^(\d+-k\d+-c\d+)-a(\d+)-([GK])$')
+
+
+def arm_dir(D, tag):
+    m = ARM_TAG.match(tag)
+    return os.path.join(D, 'deals', m.group(1), 'a' + m.group(2), m.group(3))
+
+
+def n_entries(x):
+    return len(x) if isinstance(x, list) else int(x or 0)
+
+
+def gate3_collect(D):
+    games = read_jsonl(os.path.join(D, 'games.jsonl')) if os.path.exists(os.path.join(D, 'games.jsonl')) else []
+    deals = read_jsonl(os.path.join(D, 'deals.jsonl')) if os.path.exists(os.path.join(D, 'deals.jsonl')) else []
+    best = {}
+    for d in deals:
+        if d.get('complete') and (d['deal_idx'] not in best or d['attempt'] > best[d['deal_idx']]['attempt']):
+            best[d['deal_idx']] = d
+    tags = {d['g_deal_tag'] for d in best.values()} | {d['k_deal_tag'] for d in best.values() if d.get('k_deal_tag')}
+    arms = [g for g in games if g['deal_tag'] in tags] if tags else games
+    return arms
+
+
+def run_gate3(a):
+    D = a.run_dir
+    arms = gate3_collect(D)
+    g_arms = [g for g in arms if g['arm'] == 'G']
+    fails, info = [], []
+
+    def need(ok, text):
+        if not ok:
+            fails.append(text)
+    illegal = 0
+    for g in arms:
+        errs = sum(p.get('errors', 0) for p in g.get('protocol', []))
+        illegal += errs + n_entries(g.get('lifecycle_errors'))
+        need(g.get('completion') == 'completed', 'completion of %s is %s' % (g['deal_tag'], g.get('completion')))
+    for g in g_arms:
+        for p in g.get('protocol', []):
+            if p.get('role') == 'pilot':
+                need(p.get('fallbacks', 0) == 0 and p.get('errors', 0) == 0, 'pilot protocol fallbacks or errors in %s' % g['deal_tag'])
+    info.append('ILLEGAL %d' % illegal)
+    need(illegal == 0, 'illegal moves %d' % illegal)
+    if not a.smoke:
+        need(len([g for g in g_arms if g.get('completion') == 'completed']) >= a.min_games, 'fewer than %d completed G games' % a.min_games)
+        need({g['bits']['seat'] for g in g_arms} == {0, 1} and {g['bits']['policy'] for g in g_arms} == {0, 1}, 'G games do not cover both seats and both policies')
+    stale = interventions = fallbacks = setup = follow_ok = dup = noop = 0
+    by_reason, reasks, by_seat = {}, {}, {}
+    max_list = max_judge = 0
+    for g in g_arms:
+        rows = read_jsonl(os.path.join(arm_dir(D, g['deal_tag']), 'rows.jsonl'))
+        dec = [r for r in rows if r.get('schema') == 'gemini_game_decision_v1']
+        plans = [r for r in rows if r.get('schema') == 'gemini_game_plan_v1']
+        seat = g['bits']['seat']
+        started = {r['plan']['plan_id'] for r in dec if r.get('plan')}
+        ended = {p['plan_id'] for p in plans}
+        need(started <= ended, 'a plan without an end row in %s' % g['deal_tag'])
+        turn_keys = {}
+        for r in dec:
+            max_list, max_judge = max(max_list, r.get('n_list_runs', 0)), max(max_judge, r.get('n_judge_calls', 0))
+            need(r.get('n_list_runs', 0) <= 1 and r.get('n_judge_calls', 0) <= 1, 'more than one list run or judge call in a decide (%s ply %s)' % (g['deal_tag'], r.get('ply')))
+            if r.get('mode') == 'setup':
+                setup += 1
+                continue
+            s = by_seat.setdefault(seat, [0, 0, 0])
+            s[0] += 1
+            if r.get('mode') == 'follow' and (r.get('follow') or {}).get('hash_ok'):
+                follow_ok += 1
+            if r.get('mode') == 'intervene':
+                interventions += 1
+                s[1] += 1
+                reasks[r.get('reask_reason')] = reasks.get(r.get('reask_reason'), 0) + 1
+                if r.get('fallback'):
+                    fallbacks += 1
+                    s[2] += 1
+                    by_reason[r['fallback']['detail']] = by_reason.get(r['fallback']['detail'], 0) + 1
+                    need(r['fallback']['detail'] != 'forced_dev' or a.smoke, 'a forced_dev fallback (%s)' % g['deal_tag'])
+                if r.get('plan') and r.get('judge'):
+                    need(r['plan']['key'] == r['judge'].get('plan_key'), 'plan.key differs from the judge row plan_key (%s ply %s)' % (g['deal_tag'], r.get('ply')))
+                if r.get('reask_reason') == 'stale' and r.get('plan'):
+                    k = (g['deal_tag'], r['turn_count'])
+                    turn_keys.setdefault(k, {})
+                    turn_keys[k][r['plan']['key']] = turn_keys[k].get(r['plan']['key'], 0) + 1
+            if r.get('judge'):
+                need(r['judge'].get('mock') is True, 'a judge row that is not mock')
+            rc = r.get('root_check') or {}
+            dup += rc.get('n_dup_of', 0)
+            noop += rc.get('n_noop', 0)
+        for k, cnt in turn_keys.items():
+            need(max(cnt.values()) <= 2, 'a plan key chosen more than twice at stale re-asks in one turn (%s)' % (k,))
+        for p in plans:
+            need(p['steps_played'] <= p['n_steps'], 'plan %s followed past its n_steps' % p['plan_id'])
+            need(p['ended'] in ('completed', 'stale', 'game_ended') or str(p['ended']).startswith('reask:'), 'plan %s has an odd end %s' % (p['plan_id'], p['ended']))
+            stale += 1 if p['ended'] == 'stale' else 0
+    need(stale == 0, 'stale plans: %d' % stale)
+    rate = fallbacks / interventions if interventions else 0.0
+    if not a.smoke:
+        need(rate <= game_kit.FALLBACK_LIMIT + 1e-12, 'pooled fallback rate %.4f is above %.2f' % (rate, game_kit.FALLBACK_LIMIT))
+        need(follow_ok >= a.min_follow, 'only %d follow decides with hash_ok (need %d)' % (follow_ok, a.min_follow))
+    info += ['G games %d, arms checked %d' % (len(g_arms), len(arms)), 'stale %d' % stale, 'fallbacks by reason %s' % json.dumps(by_reason, sort_keys=True),
+             're-asks by reason %s' % json.dumps(reasks, sort_keys=True), 'setup decisions %d' % setup, 'root actions dup_of %d, noop %d' % (dup, noop),
+             'by pilot seat (decisions, interventions, fallbacks) %s' % json.dumps({str(k): v for k, v in sorted(by_seat.items())}),
+             'pooled fallback rate %.4f (%d of %d), follow decides with hash_ok %d' % (rate, fallbacks, interventions, follow_ok),
+             'most list runs in one decide %d, most judge calls %d' % (max_list, max_judge)]
+    for l in info:
+        print(l)
+    for f in fails[:12]:
+        print('FAILED: ' + cut(f))
+    print('GATE3 ' + ('FAIL' if fails else 'PASS'))
+    return 1 if fails else 0
+
+
+# ------------------------------------------------------------------------------------------------ gate 4a
+def cell_args(repo, cell):
+    b = game_kit.cell_bits(cell)
+    return (os.path.join(repo, game_kit.DECKS[b['deck']]), os.path.join(repo, game_kit.LISTS[b['list']]), b['seat'], game_kit.POLICIES[b['policy']])
+
+
+def run_gate4a(a):
+    import game_runner
+    out = os.path.abspath(a.out)
+    os.makedirs(out, exist_ok=True)
+    rows_path = os.path.join(out, 'gate4a_rows.jsonl')
+    done = {r['seed'] for r in read_jsonl(rows_path)} if (a.resume and os.path.exists(rows_path)) else set()
+    if os.path.exists(rows_path) and not a.resume:
+        print('GATE4a REFUSED: the rows file exists (use --resume)')
+        return 2
+    kp = os.path.join(a.judge_bins, 'kx3_parity')
+    pb = os.path.join(a.engine_bins, 'protocol_bot')
+    env = game_shadow.shadow_env(os.environ)
+    env['RAYON_NUM_THREADS'] = str(a.engine_threads)
+    live = {}
+
+    def on_signal(signum, frame):
+        p = live.get('p')
+        if p is not None:
+            try:
+                os.killpg(p.pid, 9)
+            except OSError:
+                pass
+            try:
+                game_runner.kill_session(p.pid)
+            except (OSError, ValueError):
+                pass
+        os._exit(130)
+    import signal
+    for sg in (signal.SIGINT, signal.SIGTERM, signal.SIGHUP):
+        signal.signal(sg, on_signal)
+    from game_runner import parse_cells
+    cells = parse_cells(a.cells)
+    for k in [int(x) for x in a.k_list.split(',')]:
+        for cell in cells:
+            seed = game_kit.seed(cell, k)
+            if seed in done:
+                continue
+            pdeck, odeck, seat, policy = cell_args(os.path.abspath(a.repo), cell)
+            argv = [kp, '--code', 'kx3', '--pilot-deck', pdeck, '--opp-deck', odeck, '--seat', str(seat), '--opp-code', policy, '--seeds', str(seed), '--protocol-bot', pb,
+                    '--proto-threads', str(a.pb_threads), '--timeout-ms', str(game_kit.BOT_TIMEOUT_MS), '--log-dir', os.path.join(out, 'kp', str(seed))]
+            if a.max_decisions is not None:
+                argv += ['--max-decisions', str(a.max_decisions)]
+            extra = {'cell': cell, 'k': k, 'engine_threads': a.engine_threads, 'pb_threads': a.pb_threads}
+            p = subprocess.Popen(argv, stdout=subprocess.PIPE, stderr=open(os.path.join(out, 'kp_%d.err' % seed), 'w'), env=env, start_new_session=True)
+            live['p'] = p
+            try:
+                stdout, _ = p.communicate(timeout=a.timeout_s)
+                row = None
+                for l in stdout.decode('utf-8', 'replace').splitlines():
+                    try:
+                        j = json.loads(l)
+                    except ValueError:
+                        continue
+                    if isinstance(j, dict) and j.get('seed') == seed:
+                        row = j
+                if row is None:
+                    row = {'seed': seed, 'seat': seat, 'error': 'no result line', 'rc': p.returncode, 'identical': False, 'pilot_decisions_compared': 0, 'protocol_fallbacks': 0}
+            except subprocess.TimeoutExpired:
+                try:
+                    os.killpg(p.pid, 9)
+                except OSError:
+                    pass
+                try:
+                    game_runner.kill_session(p.pid)
+                except (OSError, ValueError):
+                    pass
+                p.wait()
+                row = {'seed': seed, 'seat': seat, 'timeout': True}
+            live['p'] = None
+            row.update(extra)
+            append_rows_fsync(rows_path, [row])
+    rows = read_jsonl(rows_path)
+    fin = [r for r in rows if not r.get('timeout')]
+    bad = [r for r in fin if r.get('identical') is not True or r.get('protocol_fallbacks', 0) > 0 or r.get('pilot_decisions_compared', 0) < 1]
+    per_seat = {s: sum(1 for r in fin if r.get('seat') == s and r not in bad) for s in (0, 1)}
+    print('seeds %d, finished %d, timeouts %d, identical %d, per seat %s' % (len(rows), len(fin), len(rows) - len(fin), sum(1 for r in fin if r.get('identical') is True), per_seat))
+    for r in bad[:6]:
+        print('failing seed %s: %s' % (r['seed'], cut(r.get('first_diff') or r)))
+    if bad:
+        print('GATE4a FAIL')
+        return 1
+    if len(rows) > len(fin) or any(per_seat[s] < a.min_per_seat for s in (0, 1)):
+        print('GATE4a INCOMPLETE')
+        return 3
+    print('GATE4a PASS')
+    return 0
+
+
+# ------------------------------------------------------------------------------------------------ gate 4b
+def sample_records(items, n, seed):
+    import random
+    return random.Random(seed).sample(items, n)
+
+
+def run_gate4b(a):
+    import tempfile
+    D = os.path.abspath(a.run_dir)
+    arms = {g['deal_tag']: g for g in read_jsonl(os.path.join(D, 'games.jsonl'))} if os.path.exists(os.path.join(D, 'games.jsonl')) else {}
+    import glob
+    paths = sorted(glob.glob(os.path.join(D, 'deals', '*', 'a*', 'G', 'shadow.jsonl')))
+    kinds = {'setup': [], 'fallback': []}
+    for path in paths:
+        for rec in read_jsonl(path):
+            try:
+                tc = json.loads(rec['decide'])['pdl_observation']['template']['turn_count']
+            except (ValueError, KeyError, TypeError):
+                tc = 3
+            kinds['setup' if tc == 0 else 'fallback'].append(rec)
+    want = {'fallback': a.sample_fallback, 'setup': a.sample_setup}
+    chosen = {}
+    short = False
+    for kind in ('fallback', 'setup'):
+        items = kinds[kind]
+        n = min(want[kind], len(items))
+        short = short or len(items) < want[kind] or want[kind] == 0 and False
+        chosen[kind] = sample_records(items, n, a.sample_seed) if n else []
+    by_list, kind_of = {}, {}
+    for kind, recs in chosen.items():
+        for r in recs:
+            arm = arms.get(r['deal_tag'])
+            lst = game_kit.LISTS[arm['bits']['list']] if arm else game_kit.LISTS[0]
+            by_list.setdefault(lst, []).append(r)
+            kind_of[(r['deal_tag'], r['ply'])] = kind
+    stat = {k: {'checked': 0, 'equal': 0, 'mismatches': 0} for k in kinds}
+    kr = os.path.join(a.judge_bins, 'kx3_replay')
+    tmp = tempfile.mkdtemp(dir=os.environ.get('TMPDIR'))
+    for lst, recs in sorted(by_list.items()):
+        logp = os.path.join(tmp, hashlib.sha256(lst.encode()).hexdigest()[:8] + '.jsonl')
+        append_rows_fsync(logp, recs, 'w')
+        p = subprocess.run([kr, '--shadow-log', logp, '--opp-deck', os.path.join(os.path.abspath(a.repo), lst)], capture_output=True, timeout=1750, env=game_shadow.shadow_env(os.environ))
+        seen = 0
+        for l in p.stdout.decode('utf-8', 'replace').splitlines():
+            try:
+                j = json.loads(l)
+            except ValueError:
+                continue
+            if 'equal' in j and 'deal_tag' in j:
+                kd = kind_of.get((j['deal_tag'], j['ply']), 'fallback')
+                stat[kd]['checked'] += 1
+                stat[kd]['equal' if j['equal'] else 'mismatches'] += 1
+                seen += 1
+        if seen < len(recs) or p.returncode != 0 and not any(stat[k]['mismatches'] for k in stat):
+            stat['fallback']['mismatches'] += max(0, len(recs) - seen) or 1
+    for kd in ('setup', 'fallback'):
+        print('%s: checked %d, equal %d, mismatches %d (records available %d, asked %d)' % (kd, stat[kd]['checked'], stat[kd]['equal'], stat[kd]['mismatches'], len(kinds[kd]), want[kd]))
+    if any(stat[k]['mismatches'] for k in stat):
+        print('GATE4b FAIL')
+        return 1
+    if len(kinds['fallback']) < want['fallback'] or len(kinds['setup']) < want['setup'] or len(kinds['fallback']) == 0:
+        print('GATE4b INCOMPLETE')
+        return 3
+    print('GATE4b PASS')
+    return 0
+
+
+# ------------------------------------------------------------------------------------------------ gate 4c
+def run_gate4c(a):
+    import glob
+    D = os.path.abspath(a.run_dir)
+    with open(a.pin) as f:
+        text = f.read().strip()
+    pin = json.loads(text[len('KX_PARAMS '):] if text.startswith('KX_PARAMS ') else text)
+    pin.pop('seat', None)
+    arms = read_jsonl(os.path.join(D, 'games.jsonl'))
+    fails, lines_ok, checked = [], 0, 0
+    for g in arms:
+        path = os.path.join(arm_dir(D, g['deal_tag']), 'stderr.txt')
+        if not os.path.exists(path):
+            continue
+        checked += 1
+        params = []
+        with open(path, errors='replace') as f:
+            for l in f:
+                if l.startswith('KX_PARAMS '):
+                    try:
+                        params.append(json.loads(l[len('KX_PARAMS '):]))
+                    except ValueError:
+                        fails.append('%s: an unparsable KX_PARAMS line' % g['deal_tag'])
+        needs = g['arm'] == 'K' or g['bits']['policy'] == 1
+        if needs and not params:
+            fails.append('%s: no KX_PARAMS line' % g['deal_tag'])
+        for j in params:
+            if j.get('code') != game_kit.KX3_CANONICAL:
+                fails.append('%s: code %s' % (g['deal_tag'], cut(j.get('code'), 60)))
+            rest = {k: v for k, v in j.items() if k != 'seat'}
+            if rest != pin:
+                d = first_diff(pin, rest)
+                fails.append('%s: differs from the pin at %s' % (g['deal_tag'], d[0] if d else '?'))
+            else:
+                lines_ok += 1
+    for f in fails[:8]:
+        print('FAILED: ' + cut(f))
+    print('GATE4c %s (arms checked %d, lines matched %d)' % ('FAIL' if fails else 'PASS', checked, lines_ok))
+    return 1 if fails else 0
+
+
 # ------------------------------------------------------------------------------------------------ CLI
 def build_parser():
     p = argparse.ArgumentParser(prog='game_gates')
@@ -645,10 +961,35 @@ def build_parser():
     g.add_argument('--leak', action='append', required=True)
     g.add_argument('--bin', required=True)
     g.add_argument('--out', required=True)
+    g = sub.add_parser('gate3')
+    g.add_argument('--run-dir', required=True)
+    g.add_argument('--min-games', type=int, default=100)
+    g.add_argument('--min-follow', type=int, default=20)
+    g.add_argument('--smoke', action='store_true')
+    g = sub.add_parser('gate4-parity')
+    for n in ('engine-bins', 'judge-bins', 'repo', 'k-list', 'out'):
+        g.add_argument('--' + n, required=True)
+    g.add_argument('--cells')
+    g.add_argument('--max-decisions', type=int)
+    g.add_argument('--engine-threads', type=int, default=2)
+    g.add_argument('--pb-threads', type=int, default=8)
+    g.add_argument('--timeout-s', type=float, default=14400)
+    g.add_argument('--min-per-seat', type=int, default=32)
+    g.add_argument('--resume', action='store_true')
+    g = sub.add_parser('gate4-shadow')
+    for n in ('run-dir', 'repo', 'judge-bins', 'out'):
+        g.add_argument('--' + n, required=True)
+    g.add_argument('--sample-fallback', type=int, default=30)
+    g.add_argument('--sample-setup', type=int, default=20)
+    g.add_argument('--sample-seed', type=int, default=25103008)
+    g = sub.add_parser('gate4-pin')
+    g.add_argument('--run-dir', required=True)
+    g.add_argument('--pin', required=True)
     return p
 
 
-HANDLERS = {'gate1': run_gate1, 'gate2-positions': run_gate2a, 'gate2-games': run_gate2b, 'seat1': run_seat1}
+HANDLERS = {'gate1': run_gate1, 'gate2-positions': run_gate2a, 'gate2-games': run_gate2b, 'seat1': run_seat1, 'gate3': run_gate3, 'gate4-parity': run_gate4a, 'gate4-shadow': run_gate4b,
+            'gate4-pin': run_gate4c}
 
 
 def main(argv=None):
