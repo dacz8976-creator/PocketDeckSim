@@ -338,7 +338,7 @@ class Runner:
         t_start = self.mono()
         proc = subprocess.Popen(argv, stdout=out, stderr=err, stdin=subprocess.DEVNULL, env=self.dg_env(arm), start_new_session=True)
         self.live_dg = proc
-        infra, killed_for_stop = None, False
+        infra, killed_for_stop, orphan = None, False, False
         prev_m, prev_w, max_gap = self.mono(), self.wall(), 0.0
         try:
             while proc.poll() is None:
@@ -356,14 +356,17 @@ class Runner:
                 elif os.path.exists(self.p('PAUSE')):
                     infra = 'pause_marker'
                 if infra or killed_for_stop:
-                    self.kill_dg(proc)
+                    try:
+                        self.kill_dg(proc)
+                    except OSError:
+                        orphan = True
                     break
             rc = proc.wait()
-            orphan = False
-            try:
-                kill_session(proc.pid)
-            except OSError:
-                orphan = True
+            if not orphan:
+                try:
+                    kill_session(proc.pid)
+                except OSError:
+                    orphan = True
         finally:
             self.live_dg = None
             out.close()
@@ -373,7 +376,7 @@ class Runner:
         if os.path.exists(lock):
             if not orphan:
                 os.remove(lock)
-            lock_removed = True
+                lock_removed = True
         rows = read_jsonl(os.path.join(arm_dir, 'rows.jsonl')) if arm == 'G' else []
         if arm == 'G':
             started_ids = {r['plan']['plan_id']: r['plan'] for r in rows if r.get('schema') == 'gemini_game_decision_v1' and r.get('plan')}

@@ -491,6 +491,20 @@ class Runner(unittest.TestCase):
             pid = int(open(os.path.join(arm_dir, 'orphan.pid')).read())
             self.assertIn(gr.sid_of(pid)[1], (None, 'Z'))
 
+    def test_R9b_orphans_in_poll_loop(self):
+        e = Env('r9b', {'default': {'lock': True, 'sleep': 5}})
+        e.plan('dev', '90', '0')
+        lock = e.ledger + '.lock'
+        with mock.patch.object(gr, 'kill_session', side_effect=OSError('orphans')):
+            e.run(['--arms', 'G', '--max-deals', '1', '--game-wall-s', '100'])
+        self.assertEqual(e.end()['stop_reason'], 'orphans')
+        g = e.jl('games.jsonl')
+        self.assertEqual(len(g), 1)
+        self.assertEqual((g[0]['failure'], g[0]['failure_detail']), ('infra', 'wall_limit'))
+        self.assertFalse(g[0]['ledger_lock_removed'])
+        self.assertTrue(os.path.exists(lock))
+        os.remove(lock)
+
     def test_R15_kill_helper_refuses(self):
         for sid in (0, 1, -5, os.getsid(0), os.getpgid(0)):
             with self.assertRaises(ValueError):
