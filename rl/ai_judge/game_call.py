@@ -26,6 +26,13 @@ class LedgerStop(Exception):
     pass
 
 
+class LedgerBound(LedgerStop):
+    """A BOUND CHECK halt: a try cost more than its reserved worst case. It keeps the tries, as CallFailed does."""
+    def __init__(self, tries, detail):
+        super().__init__(detail)
+        self.tries, self.detail = tries, detail
+
+
 class CallFailed(Exception):
     def __init__(self, tries, detail):
         super().__init__(detail)
@@ -57,14 +64,18 @@ class GameLedger(budget_judge.Ledger):
                 self.cond.notify_all()
 
 
+def _clean(text):
+    text = str(text)
+    for pat in KEY_PATTERNS:
+        text = re.sub(pat, '[redacted]', text)
+    return text[:300]
+
+
 def open_ledger(path, total):
     try:
         return GameLedger(path, total, label=game_kit.LEDGER_LABEL)
     except SystemExit as e:
-        text = str(e)
-        for pat in KEY_PATTERNS:
-            text = re.sub(pat, '[redacted]', text)
-        raise LedgerStop(text[:300])
+        raise LedgerStop(_clean(e))
 
 
 # ------------------------------------------------------------------------------------------------ recording what was sent
@@ -192,6 +203,8 @@ class GatedVertex:
                     led.charge_try_failed(w, usd)
                     self.tries.append({'t_start': t_start, 'secs': secs, 'outcome': cls, 'http_status': status, 'charged_usd': usd, 'usage_seen': seen})
                     detail = cls
+                    if usd > w + 1e-9:
+                        raise LedgerBound(self.tries, _clean(led.halted))
                     if isinstance(e, SystemExit) and (cls == 'http_429' or cls.startswith('transport:')):
                         continue
                     raise CallFailed(self.tries, cls)
@@ -199,6 +212,8 @@ class GatedVertex:
                 led.settle(w, usd)
                 self.tries.append({'t_start': t_start, 'secs': self.clock() - t_start, 'outcome': 'ok', 'http_status': 200, 'charged_usd': usd,
                                    'usage_seen': not out[4].get('usage_missing')})
+                if usd > w + 1e-9:
+                    raise LedgerBound(self.tries, _clean(led.halted))
                 return out
             finally:
                 led.close()

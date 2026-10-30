@@ -304,6 +304,11 @@ class Bot:
             return 0
         except Fatal as f:
             return f.code
+        except game_call.LedgerBound as e:
+            cut = scrub_str(str(e.detail), self.key)[:300]
+            self.write_row({'fatal': 'LedgerBound', 'detail': cut, 'tries': e.tries})
+            self.write_stop('ledger_bound', cut)
+            return 5
         except game_call.LedgerStop as e:
             self.write_stop('ledger', e)
             return 3

@@ -452,7 +452,7 @@ class Runner(unittest.TestCase):
         self.assertEqual(e.end()['complete_deals'], 0)
 
     def test_R11_stop_leaves_deal_incomplete(self):
-        for reason, code in (('ledger', 3), ('deck', 6), ('not_sent', 5)):
+        for reason, code in (('ledger', 3), ('deck', 6), ('not_sent', 5), ('ledger_bound', 5)):
             e, a = self._arm('r11_' + reason, {'0000-k90-c00/a1/G': {'stop': reason, 'exit': 0}}, cell='0,1')
             self.assertEqual([(x['arm'], x['failure']) for x in e.jl('games.jsonl')], [('G', 'stop:' + reason)])
             self.assertFalse([d for d in e.jl('deals.jsonl') if d['complete']])

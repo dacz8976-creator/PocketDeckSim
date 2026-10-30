@@ -167,6 +167,25 @@ class Calls(CallBase):
         self.assertEqual(self.accrued(), 0.0)
         self.assertEqual(self.gv.waits, [150, 300])
 
+    def test_C3b_bound_check_raises_ledger_bound(self):
+        for mode in ('seq:ok', 'seq:429u,ok', 'seq:500u'):
+            with self.subTest(mode=mode):
+                for pth in (self.ledger, self.ledger + '.lock'):
+                    if os.path.exists(pth):
+                        os.remove(pth)
+                self.instances.clear()
+                self.start(mode)
+                w = self.worst()
+                with mock.patch.object(budget_judge, 'actual_usd', lambda provider, out, worst: 2 * worst + 0.01):
+                    with self.assertRaises(game_call.LedgerBound) as cm:
+                        self.decide()
+                self.assertIsInstance(cm.exception, game_call.LedgerStop)
+                self.assertEqual(self.mock.calls, 1)
+                self.assertEqual(len(self.gv.tries), 1)
+                self.assertEqual(len(cm.exception.tries), 1)
+                self.assertAlmostEqual(self.accrued(), 2 * w + 0.01, delta=1e-6)
+                self.assertFalse(os.path.exists(self.ledger + '.lock'))
+
     def test_C4_500(self):
         w = self.worst()
         self.start('seq:500')

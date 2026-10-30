@@ -14,6 +14,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 AIJ = os.path.dirname(HERE)
 sys.path.insert(0, AIJ)
 sys.path.insert(0, HERE)
+import budget_judge  # noqa: E402
 import game_bot  # noqa: E402
 import game_call  # noqa: E402
 import game_kit  # noqa: E402
@@ -296,6 +297,17 @@ class Bot(BotBase):
         self.assertEqual(self.stop['reason'], 'ledger')
         self.assertEqual(sorted(self.stop), ['deal_tag', 'detail', 'reason', 'utc'])
         self.assertEqual(len(self.replies), 1)  # the hello reply only: no decide reply
+
+    def test_P6b_ledger_bound(self):
+        with mock.patch.object(budget_judge, 'actual_usd', lambda provider, out, worst: 2 * worst + 0.01):
+            code = self.run_bot([decide_line(1)], lister=FakeLister(forced=(False,)))
+        self.assertEqual(code, 5)
+        self.assertEqual(self.stop['reason'], 'ledger_bound')
+        self.assertEqual(len(self.fatal), 1)
+        self.assertEqual(self.fatal[0]['fatal'], 'LedgerBound')
+        self.assertEqual(len(self.fatal[0]['tries']), 1)
+        self.assertEqual(len(self.replies), 1)  # the hello reply only
+        self.assertFalse(os.path.exists(self.p('ledger.json.lock')))
 
     def test_P7_kinds_and_setup(self):
         lines = [decide_line(1, tc=0, cp=0), decide_line(2, tc=0, cp=0), decide_line(3, tc=3, cp=0), decide_line(4, tc=3, cp=1, tag='h_other')]
