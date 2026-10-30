@@ -363,6 +363,76 @@ class Lister(unittest.TestCase):
         self.assertGreaterEqual(sum(1 for v in per_opp_state.values() if v >= 1), 2)
         self.assertGreaterEqual(total, 20)
 
+    def test_L11_wrapper(self):
+        import game_kit
+        import game_lister
+        from unittest import mock
+        rec0 = exports('mini_positions.json', FIXTURES[0], FIXD, None)[1][0]
+        tmpd = os.path.join(TMP, 'l11_tmp')
+        os.makedirs(tmpd, exist_ok=True)
+        before = set(os.listdir(tmpd))
+        # recorded call
+        calls = []
+
+        def fake_run(argv, **kw):
+            calls.append((argv, kw))
+            raise subprocess.TimeoutExpired(argv, 1)
+        L = game_lister.Lister('/bin/none', tmpd, mem_bytes=123456789, hang_s=1)
+        with mock.patch('subprocess.run', fake_run):
+            r = L.list('x', rec0['pdl_observation'], rec0['legal_actions'])
+        self.assertEqual(r.reason, ('a', 'hang_guard_600s'))
+        argv, kw = calls[0]
+        self.assertEqual(argv[:4], ['prlimit', '--as=123456789', '--', '/bin/none'])
+        self.assertNotIn('shell', kw)
+        self.assertNotIn('preexec_fn', kw)
+        self.assertIn('env', kw)
+        for k in kw['env']:
+            self.assertFalse(k.startswith('VERTEX_') or k in game_kit.FORBIDDEN_ENV)
+        # fake bins
+        good = {'plans': {'kind': 'plans', 'id': 'x', 'capped': False, 'n_plans': 1, 'total_found': 1, 'nodes': 5, 'paths_cut_at_max_steps': 0,
+                          'limits': game_kit.LISTER_LIMITS, 'plans': [{'n': 1}], 'start': {}},
+                'plan_actions': {'kind': 'plan_actions', 'id': 'x', 'plans': [{'n': 1, 'key': 'k', 'actions': [], 'forced': []}]},
+                'root_check': {'kind': 'root_check', 'id': 'x', 'ok': True},
+                'pos_like': {'kind': 'pos_like', 'id': 'x', 'pos': {'turn_count': 1}},
+                'stats': {'kind': 'stats', 'id': 'x', 'secs': 0.1, 'vmhwm_kb': 1, 'vmpeak_kb': 2, 'fill_seed': 1}}
+
+        def fake_bin(name, lines=None, rc=0, pre='', post=''):
+            lines = good if lines is None else lines
+            path = os.path.join(TMP, 'fake_lister_%s.py' % name)
+            with open(path, 'w') as f:
+                f.write('#!/usr/bin/env python3\nimport sys, os, json, time\n' + pre + 'for d in %r:\n    print(json.dumps(d))\n' % list(lines.values()) + post + 'sys.exit(%d)\n' % rc)
+            os.chmod(path, 0o755)
+            return path
+
+        def classify(path, hang=30):
+            return game_lister.Lister(path, tmpd, hang_s=hang).list('x', rec0['pdl_observation'], rec0['legal_actions'])
+
+        def mod(**over):
+            d = json.loads(json.dumps(good))
+            for k, v in over.items():
+                d[k].update(v)
+            return d
+        self.assertEqual(classify(fake_bin('good')).ok, True)
+        self.assertEqual(classify(fake_bin('sleep', pre='time.sleep(30)\n'), hang=1).reason, ('a', 'hang_guard_600s'))
+        self.assertEqual(classify(fake_bin('mem', pre="sys.stderr.write('memory allocation of 8 bytes failed\\n')\nsys.stderr.flush()\nos.abort()\n")).reason, ('b', 'memory_cap'))
+        self.assertEqual(classify(fake_bin('rc1', rc=1)).reason, ('a', 'lister_error'))
+        self.assertEqual(classify(fake_bin('prob', lines={'problem': {'kind': 'problem', 'id': 'x', 'problems': ['m']}})).reason, ('a', 'lister_error'))
+        noplans = {k: v for k, v in good.items() if k != 'plans'}
+        self.assertEqual(classify(fake_bin('noplans', lines=noplans)).reason, ('a', 'lister_error'))
+        nopos = {k: v for k, v in good.items() if k != 'pos_like'}
+        self.assertEqual(classify(fake_bin('nopos', lines=nopos)).reason, ('a', 'lister_error'))
+        self.assertEqual(classify(fake_bin('c1', lines=mod(plans={'capped': True, 'total_found': 5, 'n_plans': 2}))).reason, ('b', 'plans_over_2000'))
+        self.assertEqual(classify(fake_bin('c2', lines=mod(plans={'capped': True, 'nodes': 200001}))).reason, ('b', 'node_cap'))
+        self.assertEqual(classify(fake_bin('c3', lines=mod(plans={'capped': True, 'paths_cut_at_max_steps': 2}))).reason, ('b', 'step_cap'))
+        self.assertEqual(classify(fake_bin('empty', lines=mod(plans={'n_plans': 0, 'total_found': 0}))).reason, ('a', 'empty'))
+        self.assertEqual(classify(fake_bin('rootbad', lines=mod(root_check={'ok': False}))).reason, ('a', 'root_mismatch'))
+        # the real binary
+        real = game_lister.Lister(JP, tmpd).list(rec0['id'], rec0['pdl_observation'], rec0['legal_actions'])
+        self.assertTrue(real.ok, str(real.reason) + cut(real.detail))
+        self.assertEqual(real.rc, 0)
+        self.assertEqual(set(real.pos_like), {"turn_count", "stadium", "turn_effects", "me", "opp"})
+        self.assertEqual(set(os.listdir(tmpd)), before)
+
 
 if __name__ == '__main__':
     unittest.main()
