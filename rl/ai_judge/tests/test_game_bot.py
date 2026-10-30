@@ -253,6 +253,21 @@ class Bot(BotBase):
         self.assertEqual(lister.n_list, 2)
         self.assertTrue(any(os.path.exists(os.path.join(self.dir, x)) for x in os.listdir(self.dir) if x.startswith('plan_T_')))
 
+    def test_P12b_obs_hash_lister_error(self):
+        lister = FakeLister(forced=(False, True, False), hash_fail=True)
+        code = self.run_bot([decide_line(1), decide_line(2, tag='h_1')], lister=lister)
+        self.assertEqual(code, 0)
+        d1, d2 = self.decisions
+        self.assertEqual(d1['mode'], 'intervene')
+        self.assertEqual(d2['mode'], 'intervene')
+        self.assertEqual((d2['fallback']['reason'], d2['fallback']['detail']), ('a', 'lister_error'))
+        self.assertEqual(self.shadow.asks, [2])
+        self.assertEqual(d2['n_list_runs'], 0)
+        self.assertEqual(lister.n_list, 1)
+        self.assertEqual([p['ended'] for p in self.plans], ['reask:lister_error'])
+        self.assertEqual(lister.hash_calls, 1)
+        self.assertEqual(self.fatal, [])
+
     def test_P4_fallback_reasons(self):
         cases = [(FakeLister(fail_at={1}, reason=('a', 'lister_error')), {}, 'a', 'lister_error'), (FakeLister(fail_at={1}, reason=('b', 'memory_cap')), {}, 'b', 'memory_cap'),
                  (FakeLister(), {'mock_mode': 'seq:500'}, 'c', 'http_500'), (FakeLister(trace_ok=False), {}, 'a', 'trace_error'),
