@@ -21,7 +21,7 @@ use crate::{
         maybe_shuffle_attacker_hand_card_on_damaged, modify_damage, on_attack_knockout,
         on_end_turn, on_knockout, should_poison_attacker, DamageModifierContext,
     },
-    models::{Card, StatusCondition, TrainerType},
+    models::{Card, PlayedCard, StatusCondition, TrainerType},
     state::GameOutcome,
     tools::has_tool,
     State,
@@ -891,6 +891,9 @@ pub(crate) fn handle_knockouts_with_prior(
     }
 
     let iris_bonus_active = is_iris_bonus_active(state, attacking_ref, is_from_active_attack);
+    // Knock Outs this attack's wave settles that were by Ability damage (Charizard's Flame Aura on the
+    // attack's own Energy attach): each of them counts as a Knock Out outside an attack below.
+    let mut ability_damage_knockouts: Vec<(usize, usize)> = Vec::new();
 
     // Handle knockouts: Discard cards and award points (to potentially short-circuit promotions).
     //
@@ -924,17 +927,26 @@ pub(crate) fn handle_knockouts_with_prior(
         // find an attacker that Rocky Helmet has already reduced to 0 HP. Discarding the attacker
         // before the defender's hook runs made that legal double-KO sequence panic.
         for (ko_receiver, ko_pokemon_idx) in wave.iter().copied() {
+            let from_attack = is_from_active_attack
+                && !state.in_play_pokemon[ko_receiver][ko_pokemon_idx]
+                    .as_ref()
+                    .is_some_and(knocked_out_by_ability_damage);
+            if is_from_active_attack && !from_attack {
+                ability_damage_knockouts.push((ko_receiver, ko_pokemon_idx));
+            }
             on_knockout(
                 state,
                 ko_receiver,
                 ko_pokemon_idx,
                 attacking_ref,
-                is_from_active_attack,
+                from_attack,
             );
-            on_attack_knockout(state, attacking_ref, ko_receiver, is_from_active_attack);
+            on_attack_knockout(state, attacking_ref, ko_receiver, from_attack);
         }
 
         for (ko_receiver, ko_pokemon_idx) in wave.iter().copied() {
+            let from_attack = is_from_active_attack
+                && !ability_damage_knockouts.contains(&(ko_receiver, ko_pokemon_idx));
             // Award points
             {
                 let ko_initiator = (ko_receiver + 1) % 2;
@@ -975,6 +987,7 @@ pub(crate) fn handle_knockouts_with_prior(
                 // Iris bonus: 1 extra point if Haxorus KOs opponent's Active Pokemon
                 if !points_denied
                     && iris_bonus_active
+                    && from_attack
                     && ko_pokemon_idx == 0
                     && ko_receiver != attacking_ref.0
                 {
@@ -995,7 +1008,7 @@ pub(crate) fn handle_knockouts_with_prior(
             // of each Pokémon Knocked Out by damage from an opponent's attack this turn. Must be
             // captured here, while the card is still in play. Fossils have no energy type and are
             // covered only by the untyped flag below.
-            if is_from_active_attack && ko_receiver != attacking_ref.0 {
+            if from_attack && ko_receiver != attacking_ref.0 {
                 let ko_types = state.in_play_pokemon[ko_receiver][ko_pokemon_idx]
                     .as_ref()
                     .map(|pokemon| state.pokemon_energy_types(pokemon))
@@ -1010,7 +1023,7 @@ pub(crate) fn handle_knockouts_with_prior(
             // Rescue Scarf (A4 155): if an opponent's attack knocked this Pokémon out, its card goes
             // back to its owner's hand instead of the discard pile. The knockout still stands and the
             // points are still awarded above — only the destination of the card changes.
-            let rescued = is_from_active_attack
+            let rescued = from_attack
                 && attacking_ref.0 != ko_receiver
                 && state.in_play_pokemon[ko_receiver][ko_pokemon_idx]
                     .as_ref()
@@ -1028,10 +1041,12 @@ pub(crate) fn handle_knockouts_with_prior(
     // Check if any of the current player's Pokémon were knocked out by an opponent's active attack
     if is_from_active_attack {
         // Only care about KOs from active attacks
-        for (ko_receiver, _) in knockouts.clone() {
+        for (ko_receiver, ko_pokemon_idx) in knockouts.clone() {
             let ko_initiator_of_this_damage = attacking_ref.0; // The player who caused the damage
                                                                // If the receiver is NOT the initiator, it's an opponent KO
-            if ko_receiver != ko_initiator_of_this_damage {
+            if ko_receiver != ko_initiator_of_this_damage
+                && !ability_damage_knockouts.contains(&(ko_receiver, ko_pokemon_idx))
+            {
                 state.knocked_out_by_opponent_attack_this_turn = true;
                 break; // Only need to set once
             }
@@ -1117,7 +1132,8 @@ pub(crate) fn handle_knockouts_with_prior(
 ///
 /// Runs before knockouts are collected, so a rescued Pokémon never appears in a knockout wave: it
 /// stays in play, awards no points, and does not trigger a promotion. Only invoked for damage from
-/// an attack, matching the card's wording.
+/// an attack, matching the card's wording, so a Pokémon an Ability's damage Knocked Out during the
+/// attack (`knocked_out_by_ability_damage`) is not rescued.
 pub(crate) fn apply_survive_knockout_turn_effects(state: &mut State) {
     let rescues: Vec<(usize, Vec<String>, u32)> = state
         .get_current_turn_effects()
@@ -1134,7 +1150,10 @@ pub(crate) fn apply_survive_knockout_turn_effects(state: &mut State) {
 
     for (player, pokemon_names, remaining_hp) in rescues {
         for pokemon in state.in_play_pokemon[player].iter_mut().flatten() {
-            if pokemon.is_knocked_out() && pokemon_names.contains(&pokemon.get_name()) {
+            if pokemon.is_knocked_out()
+                && !knocked_out_by_ability_damage(pokemon)
+                && pokemon_names.contains(&pokemon.get_name())
+            {
                 debug!(
                     "Hala: {} survives with {remaining_hp} HP instead of being Knocked Out",
                     pokemon.get_name()
@@ -1143,6 +1162,18 @@ pub(crate) fn apply_survive_knockout_turn_effects(state: &mut State) {
             }
         }
     }
+}
+
+/// Charizard's Flame Aura can Knock Out the opponent's Active inside its owner's attack (on the
+/// attack's own Energy attach, such as Moltres ex's Inferno Dance). That Knock Out waits for the
+/// attack's wave, which must not count it as "Knocked Out by damage from an attack": no Rally Back
+/// flag or Zarude type, no Rescue Scarf, Hala or Iris point, and none of the attack's on-knockout
+/// hooks (Lucky Egg, Innards Out, Lucky Mittens and the rest). `State::on_attach_energy` marks it.
+fn knocked_out_by_ability_damage(pokemon: &PlayedCard) -> bool {
+    pokemon
+        .get_active_effects()
+        .iter()
+        .any(|effect| matches!(effect, CardEffect::KnockedOutByAbilityDamage))
 }
 
 fn get_knocked_out(state: &State) -> Vec<(usize, usize)> {

@@ -402,7 +402,8 @@ fn assert_coins(branches: &[(f64, u32)], coins: u32, forced_heads: u32, per_head
 }
 
 /// Jumping Coach adds its coins to every Rabbit Jumping on this fork's database, not only upstream's
-/// Scorbunny: each printing flips 2 coins alone, 5 with one Raboot and 8 with both printings in play.
+/// Scorbunny: each printing flips 2 coins alone, 5 with one Raboot and 8 with two, whether those are
+/// both printings or two copies of the same one (the coins are counted per Raboot in play).
 #[test]
 fn test_jumping_coach_adds_coins_to_every_rabbit_jumping_attacker() {
     let attackers = [
@@ -421,6 +422,7 @@ fn test_jumping_coach_adds_coins_to_every_rabbit_jumping_attacker() {
             (vec![], 2),
             (vec![CardId::C1023Raboot], 5),
             (vec![CardId::C1023Raboot, CardId::C1137Raboot], 8),
+            (vec![CardId::C1023Raboot, CardId::C1023Raboot], 8),
         ] {
             let mut board = vec![PlayedCard::from_id(attacker).with_energy(energy.clone())];
             board.extend(raboots.iter().map(|id| PlayedCard::from_id(*id)));

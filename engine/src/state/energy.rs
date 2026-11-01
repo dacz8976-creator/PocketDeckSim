@@ -1,7 +1,7 @@
 use crate::{
     actions::{
         abilities::AbilityMechanic, get_in_play_ability_mechanic, handle_damage_only,
-        handle_knockouts,
+        handle_knockouts, SimpleAction,
     },
     effects::{CardEffect, TurnEffect},
     hooks::DamageModifierContext,
@@ -165,6 +165,19 @@ impl State {
                 };
                 if energy_type == trigger_type && triggered {
                     let opponent = (actor + 1) % 2;
+                    // Inside its owner's attack (the attack's own attach, such as Moltres ex's
+                    // Inferno Dance onto a Benched Charizard) a Knock Out waits for the attack's
+                    // wave (`handle_knockouts`), which would score it as "by damage from an
+                    // attack". Mark it as Ability damage. Nightmare Aura (the turn's Energy only)
+                    // never fires inside an attack.
+                    let inside_attack = self.move_generation_stack.iter().any(|(_, choices)| {
+                        choices.iter().any(|choice| {
+                            matches!(choice, SimpleAction::ResolveAttackRetaliation { .. })
+                        })
+                    });
+                    let was_knocked_out = self.in_play_pokemon[opponent][0]
+                        .as_ref()
+                        .is_none_or(|active| active.is_knocked_out());
                     handle_damage_only(
                         self,
                         (actor, in_play_idx),
@@ -172,6 +185,11 @@ impl State {
                         false,
                         DamageModifierContext::default(),
                     );
+                    if let Some(active) = self.in_play_pokemon[opponent][0].as_mut() {
+                        if inside_attack && !was_knocked_out && active.is_knocked_out() {
+                            active.add_effect(CardEffect::KnockedOutByAbilityDamage, 0);
+                        }
+                    }
                 }
             }
 

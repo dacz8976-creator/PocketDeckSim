@@ -111,6 +111,12 @@ pub enum CardEffect {
     DamageNewActiveOnRetreat {
         amount: u32,
     },
+    /// Internal marker: this Pokémon was Knocked Out by an Ability's damage while an attack was still
+    /// resolving (Charizard's Flame Aura on an attack's own Energy attach), so the attack's KO wave
+    /// settles it but must not count it as "Knocked Out by damage from an attack". Added by
+    /// `State::on_attach_energy` and read by `handle_knockouts`; it leaves play with the Pokémon.
+    /// Kept last, so every earlier variant keeps its position (and its serialized index and hash).
+    KnockedOutByAbilityDamage,
 }
 
 /// `CardEffect` duration for effects that read "until this Pokémon leaves the Active Spot": they

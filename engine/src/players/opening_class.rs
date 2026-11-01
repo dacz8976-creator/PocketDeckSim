@@ -193,15 +193,15 @@ pub(crate) fn opening_ability_class(mechanic: &AbilityMechanic) -> OpeningAbilit
         | AbilityMechanic::PoisonAndBurnOpponentActiveOnEvolve
         | AbilityMechanic::PutCardsFromDiscardToHandOnEvolve { .. } => class(OpeningPosition::Evolve, false, true, false),
         AbilityMechanic::PreventAllDamageAndEffectsOnEvolve { .. } => class(OpeningPosition::Evolve, false, false, false),
-        // Classed by its hook (hooks/core.rs 620 (`apply_bad_dreams_damage_for_owner` collects every in-play holder)): no position phrase in its text.
+        // Classed by its hook (hooks/core.rs 629 (`apply_bad_dreams_damage_for_owner` collects every in-play holder)): no position phrase in its text.
         AbilityMechanic::BadDreamsEndOfTurn { .. } => class(OpeningPosition::Anywhere, false, true, false),
-        // Classed by its hook (state/energy.rs 153 (any slot)): no position phrase in its text.
+        // Classed by its hook (state/energy.rs 155 (any slot)): no position phrase in its text.
         AbilityMechanic::DamageOpponentActiveOnZoneAttachToSelf { .. } => class(OpeningPosition::Anywhere, false, true, false),
-        // Classed by its hook (move_generation/move_generation_abilities.rs 193 (the gate is only `!card.ability_used`)): no position phrase in its text.
+        // Classed by its hook (move_generation/move_generation_abilities.rs 194 (the gate is only `!card.ability_used`)): no position phrase in its text.
         AbilityMechanic::HealActiveYourPokemon { .. } => class(OpeningPosition::Anywhere, false, true, false),
-        // Classed by its hook (actions/apply_action_helpers.rs 253 (counts every in-play holder)): no position phrase in its text.
+        // Classed by its hook (actions/apply_action_helpers.rs 256 (counts every in-play holder)): no position phrase in its text.
         AbilityMechanic::IncreasePoisonDamage { .. } => class(OpeningPosition::Anywhere, false, true, false),
-        // Classed by its hook (state/mod.rs 1165 (any of the player's Pokémon)): no position phrase in its text.
+        // Classed by its hook (state/mod.rs 1178 (any of the player's Pokémon)): no position phrase in its text.
         AbilityMechanic::SoothingWind { .. } => class(OpeningPosition::Anywhere, false, true, false),
         // Classed by its hook (move_generation/attacks.rs 182 (`has_in_play_ability_mechanic`, any slot)): no position phrase in its text.
         AbilityMechanic::TimeRecall => class(OpeningPosition::Anywhere, false, true, false),
