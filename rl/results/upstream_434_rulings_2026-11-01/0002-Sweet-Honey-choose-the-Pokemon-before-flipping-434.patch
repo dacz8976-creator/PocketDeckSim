@@ -1,0 +1,326 @@
+From ade28e48878453d92d8515451b62d8cce744ba5e Mon Sep 17 00:00:00 2001
+From: dacz8976-creator <dacz8976@gmail.com>
+Date: Sun, 1 Nov 2026 16:07:43 +0000
+Subject: [PATCH 2/2] Sweet Honey: choose the Pokemon before flipping (#434)
+
+Playing Sweet Honey now queues the choice among your damaged Pokemon (the
+targets Potion offers; can_play_potion still decides playability) before any
+coin is flipped. The new FlipUntilTailsThenHeal action then flips until tails
+(at most 8 heads) and heals 20 per heads on the chosen Pokemon.
+
+Tests: tests/trainers/c1_sweet_honey_test.rs (the heal test in the new order;
+the pending choices are only the damaged Pokemon, identical across seeds,
+nothing healed yet; the heal lands on the chosen Benched Pokemon only).
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+---
+ src/actions/apply_action.rs           |  27 ++++++
+ src/actions/apply_trainer_action.rs   |  37 ++++----
+ src/actions/types.rs                  |  15 ++++
+ src/players/weighted_random_player.rs |   1 +
+ tests/trainers/c1_sweet_honey_test.rs | 124 ++++++++++++++++++++------
+ 5 files changed, 159 insertions(+), 45 deletions(-)
+
+diff --git a/src/actions/apply_action.rs b/src/actions/apply_action.rs
+index 9529050..532ccc9 100644
+--- a/src/actions/apply_action.rs
++++ b/src/actions/apply_action.rs
+@@ -274,6 +274,11 @@ fn forecast_action_unwatched(state: &State, action: &Action) -> Outcomes {
+             energy_type,
+             max_heads,
+         } => forecast_flip_until_tails_then_attach(*in_play_idx, *energy_type, *max_heads),
++        SimpleAction::FlipUntilTailsThenHeal {
++            in_play_idx,
++            amount_per_heads,
++            max_heads,
++        } => forecast_flip_until_tails_then_heal(*in_play_idx, *amount_per_heads, *max_heads),
+         SimpleAction::ApplyDamage {
+             attacking_ref,
+             targets,
+@@ -407,6 +412,28 @@ fn forecast_flip_until_tails_then_attach(
+     })
+ }
+ 
++/// Sweet Honey: the target is already chosen; flip until tails and heal `amount_per_heads` per
++/// heads.
++fn forecast_flip_until_tails_then_heal(
++    in_play_idx: usize,
++    amount_per_heads: u32,
++    max_heads: usize,
++) -> Outcomes {
++    Outcomes::geometric_until_tails(max_heads, move |heads| {
++        Box::new(move |_: &mut StdRng, state: &mut State, action: &Action| {
++            if heads > 0 {
++                apply_healing(
++                    action.actor,
++                    state,
++                    in_play_idx,
++                    amount_per_heads * heads as u32,
++                    false,
++                );
++            }
++        })
++    })
++}
++
+ fn forecast_deterministic_action() -> Outcomes {
+     Outcomes::single_fn(move |rng, state, action| {
+         apply_deterministic_action(rng, state, action);
+diff --git a/src/actions/apply_trainer_action.rs b/src/actions/apply_trainer_action.rs
+index ff80b36..fb96393 100644
+--- a/src/actions/apply_trainer_action.rs
++++ b/src/actions/apply_trainer_action.rs
+@@ -79,7 +79,7 @@ pub fn forecast_trainer_action(
+         CardId::A4b373ProfessorsResearch => Outcomes::single_fn(professor_oak_effect),
+         CardId::A1219Erika => Outcomes::single_fn(erika_effect),
+         CardId::A1220Misty => Outcomes::single_fn(misty_effect),
+-        CardId::C1119SweetHoney => sweet_honey_outcomes(),
++        CardId::C1119SweetHoney => Outcomes::single_fn(sweet_honey_effect),
+         CardId::A1221Blaine => Outcomes::single_fn(blaine_effect),
+         CardId::A2152Cynthia => Outcomes::single_fn(cynthia_effect),
+         CardId::A1224Brock => Outcomes::single_fn(brock_effect),
+@@ -1072,25 +1072,24 @@ fn inner_healing_effect(
+ 
+ /// Sweet Honey: flip a coin until tails; the chosen Pokémon heals 20 damage for each heads.
+ /// With no heads there is nothing to choose, so no decision is queued.
+-fn sweet_honey_outcomes() -> Outcomes {
+-    Outcomes::geometric_until_tails(8, move |heads| {
+-        Box::new(move |_: &mut StdRng, state: &mut State, action: &Action| {
+-            if heads == 0 {
+-                return;
+-            }
+-            let possible_moves = state
+-                .enumerate_in_play_pokemon(action.actor)
+-                .map(|(i, _)| SimpleAction::Heal {
+-                    in_play_idx: i,
+-                    amount: 20 * heads as u32,
+-                    cure_status: false,
+-                })
+-                .collect::<Vec<_>>();
+-            state
+-                .move_generation_stack
+-                .push((action.actor, possible_moves));
++/// Sweet Honey: choose 1 of your damaged Pokémon first (the Pokémon Potion could heal); the coins
++/// are flipped only after the choice (`SimpleAction::FlipUntilTailsThenHeal`, 20 per heads, at
++/// most 8 heads).
++fn sweet_honey_effect(_: &mut StdRng, state: &mut State, action: &Action) {
++    let possible_moves = state
++        .enumerate_in_play_pokemon(action.actor)
++        .filter(|(_, x)| x.is_damaged())
++        .map(|(i, _)| SimpleAction::FlipUntilTailsThenHeal {
++            in_play_idx: i,
++            amount_per_heads: 20,
++            max_heads: 8,
+         })
+-    })
++        .collect::<Vec<_>>();
++    if !possible_moves.is_empty() {
++        state
++            .move_generation_stack
++            .push((action.actor, possible_moves));
++    }
+ }
+ 
+ /// Misty: choose 1 of your [W] Pokémon first; the coins are flipped only after the choice
+diff --git a/src/actions/types.rs b/src/actions/types.rs
+index 2bdd265..e55ce00 100644
+--- a/src/actions/types.rs
++++ b/src/actions/types.rs
+@@ -78,6 +78,13 @@ pub enum SimpleAction {
+         energy_type: EnergyType,
+         max_heads: usize,
+     },
++    /// The Pokémon is chosen first; then flip a coin until tails and, for each heads (at most
++    /// `max_heads`), heal `amount_per_heads` damage from it (Sweet Honey).
++    FlipUntilTailsThenHeal {
++        in_play_idx: usize,
++        amount_per_heads: u32,
++        max_heads: usize,
++    },
+     MoveAllDamage {
+         from: usize,
+         to: usize,
+@@ -374,6 +381,14 @@ impl fmt::Display for SimpleAction {
+                 f,
+                 "FlipUntilTailsThenAttach({in_play_idx}, {energy_type:?}, max:{max_heads})"
+             ),
++            SimpleAction::FlipUntilTailsThenHeal {
++                in_play_idx,
++                amount_per_heads,
++                max_heads,
++            } => write!(
++                f,
++                "FlipUntilTailsThenHeal({in_play_idx}, {amount_per_heads}, max:{max_heads})"
++            ),
+             SimpleAction::HealAndDiscardEnergy {
+                 in_play_idx,
+                 heal_amount,
+diff --git a/src/players/weighted_random_player.rs b/src/players/weighted_random_player.rs
+index f285957..aed20a0 100644
+--- a/src/players/weighted_random_player.rs
++++ b/src/players/weighted_random_player.rs
+@@ -58,6 +58,7 @@ fn get_weight(action: &SimpleAction) -> u32 {
+         SimpleAction::Heal { .. } => 5,
+         SimpleAction::HealAndDiscardEnergy { .. } => 5,
+         SimpleAction::FlipUntilTailsThenAttach { .. } => 5,
++        SimpleAction::FlipUntilTailsThenHeal { .. } => 5,
+         SimpleAction::MoveAllDamage { .. } => 10,
+         SimpleAction::Activate { .. } => 1,
+         SimpleAction::CommunicatePokemon { .. } => 5,
+diff --git a/tests/trainers/c1_sweet_honey_test.rs b/tests/trainers/c1_sweet_honey_test.rs
+index ddad52b..9f607b4 100644
+--- a/tests/trainers/c1_sweet_honey_test.rs
++++ b/tests/trainers/c1_sweet_honey_test.rs
+@@ -1,44 +1,63 @@
+ use deckgym::{
+-    actions::SimpleAction,
++    actions::{Action, SimpleAction},
+     card_ids::CardId,
+     models::{Card, PlayedCard},
+     test_support::{
+         get_initialized_game_with_board, get_test_game_with_board, play_trainer, trainer_from_id,
+     },
++    Game,
+ };
+ 
++/// Player 0: a damaged Bulbasaur (10 HP left) Active, an undamaged Charmander and a damaged
++/// Squirtle (10 HP left) on the Bench, Sweet Honey in hand.
++fn honey_game(seed: u64, honey: CardId) -> Game<'static> {
++    let mut game = get_initialized_game_with_board(
++        seed,
++        0,
++        3,
++        vec![
++            PlayedCard::from_id(CardId::A1001Bulbasaur).with_remaining_hp(10),
++            PlayedCard::from_id(CardId::A1033Charmander),
++            PlayedCard::from_id(CardId::A1053Squirtle).with_remaining_hp(10),
++        ],
++        vec![PlayedCard::from_id(CardId::A1033Charmander)],
++    );
++    let mut state = game.get_state_clone();
++    state.hands[0] = vec![Card::Trainer(trainer_from_id(honey))];
++    game.set_state(state);
++    game
++}
++
++/// The choices pending right after Sweet Honey is played.
++fn play_honey(game: &mut Game<'static>, honey: CardId) -> Vec<Action> {
++    play_trainer(game, 0, trainer_from_id(honey));
++    game.get_state_clone().generate_possible_actions().1
++}
++
++fn hp(game: &Game<'static>, in_play_idx: usize) -> u32 {
++    game.get_state_clone().in_play_pokemon[0][in_play_idx]
++        .as_ref()
++        .unwrap()
++        .get_remaining_hp()
++}
++
+ /// Sweet Honey: "Choose 1 of your Pokémon, and then flip a coin until you get tails. For each
+-/// heads, heal 20 damage from that Pokémon."
++/// heads, heal 20 damage from that Pokémon." The Pokémon is chosen first; the coins come after.
+ #[test]
+ fn test_sweet_honey_heals_20_per_heads_until_tails() {
+     let mut healed_amounts = std::collections::BTreeSet::new();
+     for seed in 0..60u64 {
+-        let mut game = get_initialized_game_with_board(
+-            seed,
+-            0,
+-            3,
+-            vec![PlayedCard::from_id(CardId::A1001Bulbasaur).with_remaining_hp(10)],
+-            vec![PlayedCard::from_id(CardId::A1033Charmander)],
++        let mut game = honey_game(seed, CardId::C1119SweetHoney);
++        let choices = play_honey(&mut game, CardId::C1119SweetHoney);
++        assert!(
++            game.get_state_clone().hands[0].is_empty(),
++            "Sweet Honey leaves the hand"
+         );
+-        let honey = trainer_from_id(CardId::C1119SweetHoney);
+-        let mut state = game.get_state_clone();
+-        state.hands[0] = vec![Card::Trainer(honey.clone())];
+-        game.set_state(state);
+-
+-        play_trainer(&mut game, 0, honey);
+-
+-        let state = game.get_state_clone();
+-        let (_, actions) = state.generate_possible_actions();
+-        if let Some(heal) = actions
+-            .iter()
+-            .find(|a| matches!(a.action, SimpleAction::Heal { in_play_idx: 0, .. }))
+-        {
+-            game.apply_action(heal);
+-        }
+-        let state = game.get_state_clone();
+-        let healed = state.get_active(0).get_remaining_hp() - 10;
++        // The first choice is the Active Bulbasaur.
++        game.apply_action(&choices[0]);
++        let healed = hp(&game, 0) - 10;
+         assert_eq!(healed % 20, 0);
+-        assert!(state.hands[0].is_empty(), "Sweet Honey leaves the hand");
++        assert_eq!(hp(&game, 2), 10, "only the chosen Pokémon is healed");
+         healed_amounts.insert(healed);
+     }
+     assert!(
+@@ -49,6 +68,59 @@ fn test_sweet_honey_heals_20_per_heads_until_tails() {
+     assert!(healed_amounts.contains(&40));
+ }
+ 
++/// Right after Sweet Honey is played, the only pending choices are its damaged targets (the
++/// Pokémon Potion could heal), the same in every game, and nothing is healed yet: no coin has
++/// been flipped before the choice.
++#[test]
++fn test_sweet_honey_chooses_a_damaged_pokemon_before_flipping() {
++    for honey in [CardId::C1119SweetHoney, CardId::C1152SweetHoney] {
++        let mut first: Option<Vec<Action>> = None;
++        for seed in 0..40u64 {
++            let mut game = honey_game(seed, honey);
++            let choices = play_honey(&mut game, honey);
++            assert_eq!(
++                choices.len(),
++                2,
++                "{honey:?}: the damaged Bulbasaur and Squirtle, not the undamaged Charmander"
++            );
++            assert!(choices.iter().all(|a| a.actor == 0));
++            assert_eq!(
++                (hp(&game, 0), hp(&game, 1), hp(&game, 2)),
++                (10, 60, 10),
++                "{honey:?}: nothing healed before the choice"
++            );
++            match &first {
++                None => first = Some(choices),
++                Some(f) => assert_eq!(
++                    format!("{f:?}"),
++                    format!("{choices:?}"),
++                    "{honey:?}, seed {seed}: the choice can't depend on a coin result"
++                ),
++            }
++        }
++    }
++}
++
++/// After the choice, the heal is 0, 20, 40, ... on the chosen Pokémon only.
++#[test]
++fn test_sweet_honey_heals_the_chosen_benched_pokemon() {
++    let mut healed_amounts = std::collections::BTreeSet::new();
++    for seed in 0..60u64 {
++        let mut game = honey_game(seed, CardId::C1119SweetHoney);
++        let choices = play_honey(&mut game, CardId::C1119SweetHoney);
++        // The second choice is the Benched Squirtle (in play index 2).
++        game.apply_action(&choices[1]);
++        let healed = hp(&game, 2) - 10;
++        // 20 per heads, up to Squirtle's full 60 HP (a heal of 60 or more leaves it at 60).
++        assert!(healed % 20 == 0 || hp(&game, 2) == 60, "healed {healed}");
++        assert_eq!(hp(&game, 0), 10, "the Active isn't healed");
++        healed_amounts.insert(healed);
++    }
++    assert!(healed_amounts.contains(&0));
++    assert!(healed_amounts.contains(&20));
++    assert!(healed_amounts.contains(&40));
++}
++
+ /// Like Potion, Sweet Honey needs a damaged Pokémon to target.
+ #[test]
+ fn test_sweet_honey_needs_a_damaged_pokemon() {
+-- 
+2.43.0
+
