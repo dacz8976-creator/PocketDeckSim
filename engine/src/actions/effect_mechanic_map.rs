@@ -254,6 +254,12 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
         },
     );
     map.insert(
+        "Discard a [G] Energy from this Pokémon.",
+        Mechanic::SelfDiscardEnergy {
+            energies: vec![EnergyType::Grass],
+        },
+    );
+    map.insert(
         "Discard a [R] Energy from this Pokémon.",
         Mechanic::SelfDiscardEnergy {
             energies: vec![EnergyType::Fire],
@@ -707,6 +713,14 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
         Mechanic::ExtraDamageForEachHeads {
             include_fixed_damage: false,
             damage_per_head: 100,
+            num_coins: 2,
+        },
+    );
+    map.insert(
+        "Flip 2 coins. This attack does 110 damage for each heads.",
+        Mechanic::ExtraDamageForEachHeads {
+            include_fixed_damage: false,
+            damage_per_head: 110,
             num_coins: 2,
         },
     );
@@ -1280,6 +1294,7 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
     map.insert("If any of your Pokémon were Knocked Out by damage from an attack during your opponent's last turn, this attack does 60 more damage.", Mechanic::ExtraDamageIfKnockedOutLastTurn { extra_damage: 60, energy_type: None, conditions: vec![] });
     map.insert("If any of your Pokémon were Knocked Out by damage from an attack during your opponent's last turn, this attack does 40 more damage.", Mechanic::ExtraDamageIfKnockedOutLastTurn { extra_damage: 40, energy_type: None, conditions: vec![] });
     map.insert("If any of your Pokémon were Knocked Out by damage from an attack during your opponent's last turn, this attack does 50 more damage.", Mechanic::ExtraDamageIfKnockedOutLastTurn { extra_damage: 50, energy_type: None, conditions: vec![] });
+    map.insert("If any of your Pokémon were Knocked Out by damage from an attack during your opponent's last turn, this attack does 70 more damage.", Mechanic::ExtraDamageIfKnockedOutLastTurn { extra_damage: 70, energy_type: None, conditions: vec![] });
     map.insert("If the Defending Pokémon is a Basic Pokémon, it can't attack during your opponent's next turn.", Mechanic::BlockBasicAttack);
     // Octazooka: the block coin is read with `.any(..)`, so a second copy of the effect changes nothing ("it doesn't stack").
     map.insert(
@@ -2393,6 +2408,15 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
     );
     map.insert(
         "Your opponent reveals a random card from their hand and shuffles it into their deck.",
+        Mechanic::ShuffleRandomOpponentHandCardsIntoDeck {
+            count: 1,
+            shuffle_self_into_deck: false,
+        },
+    );
+    // Amoonguss (C1 012) - Astonish (upstream #433: ShuffleRandomOpponentHandCardIntoDeck; ours
+    // maps it to the variant of the "reveals a random card" text above)
+    map.insert(
+        "Look at a random card from your opponent's hand and shuffle it into their deck.",
         Mechanic::ShuffleRandomOpponentHandCardsIntoDeck {
             count: 1,
             shuffle_self_into_deck: false,

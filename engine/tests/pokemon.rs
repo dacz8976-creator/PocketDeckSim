@@ -46,6 +46,8 @@ mod brambleghast_accept_pain_test;
 mod breloom_test;
 #[path = "pokemon/budew_prickly_powder_test.rs"]
 mod budew_prickly_powder_test;
+#[path = "pokemon/c1_grass_fire_test.rs"]
+mod c1_grass_fire_test;
 #[path = "pokemon/camerupt_eruption_test.rs"]
 mod camerupt_eruption_test;
 #[path = "pokemon/carbink_glittering_gift_test.rs"]
@@ -64,6 +66,8 @@ mod celebi_temporal_leaves_test;
 mod celebi_time_recall_test;
 #[path = "pokemon/chansey_blissey_test.rs"]
 mod chansey_blissey_test;
+#[path = "pokemon/charizard_flame_aura_test.rs"]
+mod charizard_flame_aura_test;
 #[path = "pokemon/charmeleon_ignition_test.rs"]
 mod charmeleon_ignition_test;
 #[path = "pokemon/chatot_mimic_test.rs"]

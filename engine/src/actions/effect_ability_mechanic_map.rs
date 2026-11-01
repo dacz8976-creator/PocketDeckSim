@@ -433,6 +433,10 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             AbilityMechanic::HealActiveYourPokemon { amount: 20 },
         );
         map.insert(
+            "Once during your turn, you may heal 30 damage from your Active Pokémon.",
+            AbilityMechanic::HealActiveYourPokemon { amount: 30 },
+        );
+        map.insert(
             "Once during your turn, you may heal 30 damage from each of your [W] Pokémon.",
             AbilityMechanic::HealAllYourPokemon {
                 amount: 30,
@@ -648,6 +652,16 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
                 energy_type: EnergyType::Darkness,
                 amount: 20,
                 only_turn_energy: true,
+            },
+        );
+        // Charizard (C1 018 / C1 136) - Flame Aura. Any attach of a [R] Energy from the Energy Zone
+        // triggers it, as the text reads; Nightmare Aura above keeps its turn's-Energy-only reading.
+        map.insert(
+            "Whenever you attach a [R] Energy from your Energy Zone to this Pokémon, do 30 damage to your opponent's Active Pokémon.",
+            AbilityMechanic::DamageOpponentActiveOnZoneAttachToSelf {
+                energy_type: EnergyType::Fire,
+                amount: 30,
+                only_turn_energy: false,
             },
         );
         map.insert(

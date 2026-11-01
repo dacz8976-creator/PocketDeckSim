@@ -12,9 +12,9 @@
 //! panics is counted and skipped, not fatal.
 //!
 //! Before any game, and before the coverage file is written, a list or panel deck that holds a card the
-//! engine cannot play (card_status CardNotFound or Missing*, e.g. C1 019 Volcanion) is refused with exit 2,
-//! by the check `deckgym simulate` makes (deckgym::card_support). `--allow-unsupported-cards` lists those
-//! cards on stderr (id, name, reason, deck) and plays anyway.
+//! engine cannot play (card_status CardNotFound, or Missing* for an effect the engine has no code for) is
+//! refused with exit 2, by the check `deckgym simulate` makes (deckgym::card_support).
+//! `--allow-unsupported-cards` lists those cards on stderr (id, name, reason, deck) and plays anyway.
 //!
 //! `--coverage` writes, per card in the list, what k3 prices with a fallback: the unpriced text rule
 //! (opponent's hand or deck), attacks whose damage effect falls back to printed damage in the estimator,
