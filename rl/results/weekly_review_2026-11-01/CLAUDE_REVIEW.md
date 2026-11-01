@@ -29,7 +29,7 @@ Written Sunday evening, Nov 1. Main is at 84dc7f17. This week's folder `rl/resul
 
 - **Gemini as the pilot:** it is strong enough to matter, but too slow and costly to run thousands of games.
   - The Google credits run out around Dec 1, and the price doubles after Nov 30.
-  - So use it before then on small, sharp questions about your decks, and don't build on it long term.
+  - So don't build on it long term, and don't make up tests just to spend the credits (Dustin, Nov 1: "I don't really care what we do with the gemini credits").
 - **The maintainer's generalist reinforcement-learning AI:** still the best long-run answer, since it would be free to run and built for every card. Upstream's code hasn't changed since Oct 28, and I found nothing public to test. I didn't check Discord or X.
 - **What I'd stop:** more tuning of our own pilot, beyond the two habit fixes the games pointed to.
 
@@ -59,13 +59,18 @@ This week's outside-ideas file didn't land, and I didn't do new outside research
 
 ## Verdict: CONTINUE
 
-**Next step (one):** use Gemini on one deck question you actually have, before the credits expire. The question: **13 v2 (Nihilego) against 13 v3 (Igglybuff)**, on matched deals, while you play your own 10 games with v3.
+**Next step (amended Nov 1 after talking with Dustin):** fix kx3's two habits that the Archaludon games showed: playing Copycat too early, and powering up whatever Pokémon is in the Active Spot.
 
-- Then we see whether the bot's answer agrees with your feel.
-- It only runs if the sleep deck's cards play on the test build. If they don't, we use 01 v2's Korrina-out swap.
-- It needs your go and the money cap. The registered rules say a follow-up gets its own funding.
+- **The check:** in the 24 Archaludon games where the results split, do the fixed bot's choices improve, without its results on the other 104 test games getting worse?
 - **Rough cost:**
-  - about 3-5% of the weekly meter;
-  - $45-90 of Google credits (about 128-256 games);
-  - 1-2 laptop days, after R8's builds (it can't run beside them).
-- **What it can show:** only a large difference between the two versions. A small one will come back "uncertain", and that's a fair answer.
+  - about 2-3% of the weekly meter;
+  - no Google money and no API credits;
+  - one laptop night, after R8's builds finish.
+- **What it buys:** a better bot for every deck. It does not judge any of your decks.
+
+**Why the first draft's step was dropped:** it was a Gemini test of sleep deck v2 against v3, and so was the one-matchup version we talked about next. Both are the wrong question. Dustin, Nov 1: "If I make a deck better against it, but worse against the other 90% of decks I face, I lose overall ground."
+
+- A swap is only worth making if it helps across the decks you actually face, counted by how often you face each one.
+- The test's two made-up opponents can't show that, and neither can a single matchup.
+- On top of that, how well Gemini plays depends on the deck, which adds another unknown.
+- So deck questions stay with your own 10-game loop. No deck test with a bot is planned.
