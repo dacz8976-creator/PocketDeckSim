@@ -1,0 +1,291 @@
+From 9b808372b7efe6770015d5db67d9bf11fbca6b6f Mon Sep 17 00:00:00 2001
+From: dacz8976-creator <dacz8976@gmail.com>
+Date: Sun, 1 Nov 2026 16:06:08 +0000
+Subject: [PATCH] Misty: choose the Pokemon before flipping (#434)
+
+Playing Misty now queues the choice among your [W] Pokemon first; the coins
+are flipped only after the choice, through a new FlipUntilTailsThenAttach
+action whose forecast attaches one [W] Energy from the Energy Zone per heads
+(effect attachments, at most 5). Playability is unchanged (can_play_misty).
+
+Tests: tests/trainers/misty_test.rs (the pending choices are the [W] Pokemon,
+identical across seeds, nothing attached yet; then 0, 1, 2... Water on the
+chosen Pokemon only).
+
+Co-Authored-By: Claude <noreply@anthropic.com>
+---
+ src/actions/apply_action.rs           |  26 +++++++
+ src/actions/apply_trainer_action.rs   |  37 +++++-----
+ src/actions/types.rs                  |  15 ++++
+ src/players/weighted_random_player.rs |   1 +
+ tests/trainers/misty_test.rs          | 100 ++++++++++++++++++++++++++
+ tests/trainers/mod.rs                 |   1 +
+ 6 files changed, 160 insertions(+), 20 deletions(-)
+ create mode 100644 tests/trainers/misty_test.rs
+
+diff --git a/src/actions/apply_action.rs b/src/actions/apply_action.rs
+index 661f9e5..9529050 100644
+--- a/src/actions/apply_action.rs
++++ b/src/actions/apply_action.rs
+@@ -269,6 +269,11 @@ fn forecast_action_unwatched(state: &State, action: &Action) -> Outcomes {
+             }
+         }
+         SimpleAction::UseAbility { in_play_idx } => forecast_ability(state, action, *in_play_idx),
++        SimpleAction::FlipUntilTailsThenAttach {
++            in_play_idx,
++            energy_type,
++            max_heads,
++        } => forecast_flip_until_tails_then_attach(*in_play_idx, *energy_type, *max_heads),
+         SimpleAction::ApplyDamage {
+             attacking_ref,
+             targets,
+@@ -381,6 +386,27 @@ fn forecast_decline_coin_reflip() -> Outcomes {
+     })
+ }
+ 
++/// Misty: the target is already chosen; flip until tails and attach one Energy from the Energy
++/// Zone per heads. These are effect attachments (`is_turn_energy: false`).
++fn forecast_flip_until_tails_then_attach(
++    in_play_idx: usize,
++    energy_type: EnergyType,
++    max_heads: usize,
++) -> Outcomes {
++    Outcomes::geometric_until_tails(max_heads, move |heads| {
++        Box::new(move |_: &mut StdRng, state: &mut State, action: &Action| {
++            if heads > 0 {
++                apply_attach_energy(
++                    state,
++                    action.actor,
++                    &[(heads as u32, energy_type, in_play_idx)],
++                    false,
++                );
++            }
++        })
++    })
++}
++
+ fn forecast_deterministic_action() -> Outcomes {
+     Outcomes::single_fn(move |rng, state, action| {
+         apply_deterministic_action(rng, state, action);
+diff --git a/src/actions/apply_trainer_action.rs b/src/actions/apply_trainer_action.rs
+index f8294b7..ff80b36 100644
+--- a/src/actions/apply_trainer_action.rs
++++ b/src/actions/apply_trainer_action.rs
+@@ -78,7 +78,7 @@ pub fn forecast_trainer_action(
+         CardId::PA006RedCard => Outcomes::single_fn(red_card_effect),
+         CardId::A4b373ProfessorsResearch => Outcomes::single_fn(professor_oak_effect),
+         CardId::A1219Erika => Outcomes::single_fn(erika_effect),
+-        CardId::A1220Misty => misty_outcomes(),
++        CardId::A1220Misty => Outcomes::single_fn(misty_effect),
+         CardId::C1119SweetHoney => sweet_honey_outcomes(),
+         CardId::A1221Blaine => Outcomes::single_fn(blaine_effect),
+         CardId::A2152Cynthia => Outcomes::single_fn(cynthia_effect),
+@@ -1093,26 +1093,23 @@ fn sweet_honey_outcomes() -> Outcomes {
+     })
+ }
+ 
+-// Will return 6 outputs, one that attaches no energy, one that
+-//  queues decision of attaching 1 energy to in_play waters.
+-fn misty_outcomes() -> Outcomes {
+-    Outcomes::geometric_until_tails(5, move |heads| {
+-        Box::new(move |_: &mut StdRng, state: &mut State, action: &Action| {
+-            let possible_moves = state
+-                .enumerate_in_play_pokemon(action.actor)
+-                .filter(|(_, x)| x.is_type(EnergyType::Water))
+-                .map(|(i, _)| SimpleAction::Attach {
+-                    attachments: vec![(heads as u32, EnergyType::Water, i)],
+-                    is_turn_energy: false,
+-                })
+-                .collect::<Vec<_>>();
+-            if !possible_moves.is_empty() {
+-                state
+-                    .move_generation_stack
+-                    .push((action.actor, possible_moves));
+-            }
++/// Misty: choose 1 of your [W] Pokémon first; the coins are flipped only after the choice
++/// (`SimpleAction::FlipUntilTailsThenAttach`, at most 5 heads).
++fn misty_effect(_: &mut StdRng, state: &mut State, action: &Action) {
++    let possible_moves = state
++        .enumerate_in_play_pokemon(action.actor)
++        .filter(|(_, x)| x.is_type(EnergyType::Water))
++        .map(|(i, _)| SimpleAction::FlipUntilTailsThenAttach {
++            in_play_idx: i,
++            energy_type: EnergyType::Water,
++            max_heads: 5,
+         })
+-    })
++        .collect::<Vec<_>>();
++    if !possible_moves.is_empty() {
++        state
++            .move_generation_stack
++            .push((action.actor, possible_moves));
++    }
+ }
+ 
+ // Remember to implement these in the main controller / hooks.
+diff --git a/src/actions/types.rs b/src/actions/types.rs
+index 4f22cea..2bdd265 100644
+--- a/src/actions/types.rs
++++ b/src/actions/types.rs
+@@ -71,6 +71,13 @@ pub enum SimpleAction {
+         heal_amount: u32,
+         discard_energies: Vec<EnergyType>,
+     },
++    /// The Pokémon is chosen first; then flip a coin until tails and, for each heads (at most
++    /// `max_heads`), attach an `energy_type` Energy from the Energy Zone to it (Misty).
++    FlipUntilTailsThenAttach {
++        in_play_idx: usize,
++        energy_type: EnergyType,
++        max_heads: usize,
++    },
+     MoveAllDamage {
+         from: usize,
+         to: usize,
+@@ -359,6 +366,14 @@ impl fmt::Display for SimpleAction {
+                 amount,
+                 cure_status,
+             } => write!(f, "Heal({in_play_idx}, {amount}, cure:{cure_status})"),
++            SimpleAction::FlipUntilTailsThenAttach {
++                in_play_idx,
++                energy_type,
++                max_heads,
++            } => write!(
++                f,
++                "FlipUntilTailsThenAttach({in_play_idx}, {energy_type:?}, max:{max_heads})"
++            ),
+             SimpleAction::HealAndDiscardEnergy {
+                 in_play_idx,
+                 heal_amount,
+diff --git a/src/players/weighted_random_player.rs b/src/players/weighted_random_player.rs
+index ec95302..f285957 100644
+--- a/src/players/weighted_random_player.rs
++++ b/src/players/weighted_random_player.rs
+@@ -57,6 +57,7 @@ fn get_weight(action: &SimpleAction) -> u32 {
+         SimpleAction::EndTurn => 1,
+         SimpleAction::Heal { .. } => 5,
+         SimpleAction::HealAndDiscardEnergy { .. } => 5,
++        SimpleAction::FlipUntilTailsThenAttach { .. } => 5,
+         SimpleAction::MoveAllDamage { .. } => 10,
+         SimpleAction::Activate { .. } => 1,
+         SimpleAction::CommunicatePokemon { .. } => 5,
+diff --git a/tests/trainers/misty_test.rs b/tests/trainers/misty_test.rs
+new file mode 100644
+index 0000000..aceb5bc
+--- /dev/null
++++ b/tests/trainers/misty_test.rs
+@@ -0,0 +1,100 @@
++use deckgym::{
++    actions::Action,
++    card_ids::CardId,
++    models::{Card, EnergyType, PlayedCard},
++    test_support::{get_initialized_game_with_board, play_trainer, trainer_from_id},
++    Game,
++};
++
++/// Player 0: Squirtle Active, Bulbasaur and Staryu on the Bench, Misty in hand.
++fn misty_game(seed: u64, misty: CardId) -> Game<'static> {
++    let mut game = get_initialized_game_with_board(
++        seed,
++        0,
++        3,
++        vec![
++            PlayedCard::from_id(CardId::A1053Squirtle),
++            PlayedCard::from_id(CardId::A1001Bulbasaur),
++            PlayedCard::from_id(CardId::A1074Staryu),
++        ],
++        vec![PlayedCard::from_id(CardId::A1033Charmander)],
++    );
++    let mut state = game.get_state_clone();
++    state.hands[0] = vec![Card::Trainer(trainer_from_id(misty))];
++    game.set_state(state);
++    game
++}
++
++/// The choices pending right after Misty is played.
++fn play_misty(game: &mut Game<'static>, misty: CardId) -> Vec<Action> {
++    play_trainer(game, 0, trainer_from_id(misty));
++    game.get_state_clone().generate_possible_actions().1
++}
++
++fn energy(game: &Game<'static>, in_play_idx: usize) -> Vec<EnergyType> {
++    game.get_state_clone().in_play_pokemon[0][in_play_idx]
++        .as_ref()
++        .unwrap()
++        .attached_energy
++        .clone()
++}
++
++/// Misty: "Choose 1 of your [W] Pokémon, and flip a coin until you get tails. For each heads,
++/// take a [W] Energy from your Energy Zone and attach it to that Pokémon." The Pokémon is
++/// chosen first; the coins come after. Right after Misty is played, the only pending choices
++/// are the [W] Pokémon, the same in every game, and no Energy is attached yet.
++#[test]
++fn test_misty_chooses_a_water_pokemon_before_flipping() {
++    for misty in [CardId::A1220Misty, CardId::A1267Misty] {
++        let mut first: Option<Vec<Action>> = None;
++        for seed in 0..40u64 {
++            let mut game = misty_game(seed, misty);
++            let choices = play_misty(&mut game, misty);
++            assert_eq!(
++                choices.len(),
++                2,
++                "{misty:?}: Squirtle and Staryu, not Bulbasaur"
++            );
++            assert!(choices.iter().all(|a| a.actor == 0));
++            for idx in 0..3 {
++                assert!(
++                    energy(&game, idx).is_empty(),
++                    "{misty:?}: nothing attached before the choice"
++                );
++            }
++            match &first {
++                None => first = Some(choices),
++                Some(f) => assert_eq!(
++                    format!("{f:?}"),
++                    format!("{choices:?}"),
++                    "{misty:?}, seed {seed}: the choice can't depend on a coin result"
++                ),
++            }
++        }
++    }
++}
++
++/// After the choice, 0, 1, 2, ... [W] Energy (at most 5) go to the chosen Pokémon only.
++#[test]
++fn test_misty_attaches_water_to_the_chosen_pokemon_per_heads() {
++    let mut counts = std::collections::BTreeSet::new();
++    for seed in 0..80u64 {
++        let mut game = misty_game(seed, CardId::A1220Misty);
++        let choices = play_misty(&mut game, CardId::A1220Misty);
++        // The second choice is the Benched Staryu (in play index 2).
++        game.apply_action(&choices[1]);
++        let attached = energy(&game, 2);
++        assert!(attached.iter().all(|e| *e == EnergyType::Water));
++        assert!(attached.len() <= 5);
++        assert!(energy(&game, 0).is_empty(), "the Active gets nothing");
++        assert!(energy(&game, 1).is_empty(), "Bulbasaur gets nothing");
++        assert!(
++            game.get_state_clone().hands[0].is_empty(),
++            "Misty leaves the hand"
++        );
++        counts.insert(attached.len());
++    }
++    assert!(counts.contains(&0), "tails first attaches nothing");
++    assert!(counts.contains(&1));
++    assert!(counts.contains(&2));
++}
+diff --git a/tests/trainers/mod.rs b/tests/trainers/mod.rs
+index 55aff38..27c3516 100644
+--- a/tests/trainers/mod.rs
++++ b/tests/trainers/mod.rs
+@@ -22,6 +22,7 @@ mod lana_test;
+ mod mallow_test;
+ mod marlon_test;
+ mod may_trainer_test;
++mod misty_test;
+ mod mythical_slab_test;
+ mod order_pad_test;
+ mod penny_test;
+-- 
+2.43.0
+
