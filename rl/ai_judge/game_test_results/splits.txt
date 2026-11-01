@@ -1,0 +1,11 @@
+split | value | pairs | Gemini-only wins | kx3-only wins | same result | mean D
+deck | A, 09-mega-manectric-heliolisk | 64 | 10 | 9 | 45 | +0.016
+deck | B, 11-archaludon-haxorus-dragonair | 64 | 20 | 4 | 40 | +0.250
+list | t-lucario | 64 | 14 | 8 | 42 | +0.094
+list | t-suicune | 64 | 16 | 5 | 43 | +0.172
+policy | km3 opponent | 64 | 15 | 6 | 43 | +0.141
+policy | kx3 opponent | 64 | 15 | 7 | 42 | +0.125
+seat | pilot in seat 0 | 64 | 15 | 7 | 42 | +0.125
+seat | pilot in seat 1 | 64 | 15 | 6 | 43 | +0.141
+first | pilot went second | 81 | 15 | 10 | 56 | +0.062
+first | pilot went first | 47 | 15 | 3 | 29 | +0.255

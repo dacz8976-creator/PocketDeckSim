@@ -1,0 +1,12 @@
+matchup keys that differ between G and K, deals: {'player_codes': 128}
+player codes (arm, opponent policy, pilot seat code, opponent seat code): count
+   ('G', 'km3', 'pilot=Proto { command: "python3 -I -B /home/dacz8976/credit_work/gemini/rl/ai_judge/game_bot.py --deck-file /home/dacz8976/cre', 'opp=KM { max_depth: 3 }') 64
+   ('G', 'kx3', 'pilot=Proto { command: "python3 -I -B /home/dacz8976/credit_work/gemini/rl/ai_judge/game_bot.py --deck-file /home/dacz8976/cre', 'opp=Proto { command: "env -u VERTEX_API_KEY -u VERTEX_PROJECT /home/dacz8976/gemini_target/engine/release/protocol_bot --bot') 64
+   ('K', 'km3', 'pilot=Proto { command: "env -u VERTEX_API_KEY -u VERTEX_PROJECT /home/dacz8976/gemini_target/engine/release/protocol_bot --bot', 'opp=KM { max_depth: 3 }') 64
+   ('K', 'kx3', 'pilot=Proto { command: "env -u VERTEX_API_KEY -u VERTEX_PROJECT /home/dacz8976/gemini_target/engine/release/protocol_bot --bot', 'opp=Proto { command: "env -u VERTEX_API_KEY -u VERTEX_PROJECT /home/dacz8976/gemini_target/engine/release/protocol_bot --bot') 64
+deck=0: decks/dustin/09-mega-manectric-heliolisk.txt, 20 cards
+deck=1: decks/dustin/11-archaludon-haxorus-dragonair.txt, 20 cards
+list=0: decks/screen/opponents/t-lucario.txt, 20 cards
+list=1: decks/screen/opponents/t-suicune.txt, 20 cards
+played lists that differ from their file: 0 of 512 checks
+INTEGRITY2 OK

@@ -1,0 +1,1140 @@
+{
+ "ci": [
+  0.0390625,
+  0.2265625
+ ],
+ "descriptive": {
+  "by_deck": {
+   "0": {
+    "mean": 0.015625,
+    "n": 64
+   },
+   "1": {
+    "mean": 0.25,
+    "n": 64
+   }
+  },
+  "by_pilot_seat": {
+   "0": {
+    "decisions": 1615,
+    "fallbacks": 3,
+    "interventions": 671
+   },
+   "1": {
+    "decisions": 1467,
+    "fallbacks": 5,
+    "interventions": 607
+   }
+  },
+  "by_policy": {
+   "km3": {
+    "mean": 0.140625,
+    "n": 64
+   },
+   "kx3": {
+    "mean": 0.125,
+    "n": 64
+   }
+  },
+  "by_seat": {
+   "0": {
+    "mean": 0.125,
+    "n": 64
+   },
+   "1": {
+    "mean": 0.140625,
+    "n": 64
+   }
+  },
+  "by_went_first": {
+   "0": {
+    "mean": 0.06172839506172839,
+    "n": 81
+   },
+   "1": {
+    "mean": 0.2553191489361702,
+    "n": 47
+   }
+  },
+  "concordance": 0.6640625,
+  "dropped_by_arm_reason": {},
+  "fallbacks_by_reason": {
+   "b": 7,
+   "c": 1
+  },
+  "fallbacks_per_game": [
+   {
+    "by_reason": {},
+    "cell": 0,
+    "deal_idx": 0,
+    "fallbacks": 0,
+    "interventions": 10,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {
+     "c": 1
+    },
+    "cell": 1,
+    "deal_idx": 1,
+    "fallbacks": 1,
+    "interventions": 10,
+    "rate": 0.1
+   },
+   {
+    "by_reason": {},
+    "cell": 2,
+    "deal_idx": 2,
+    "fallbacks": 0,
+    "interventions": 7,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 3,
+    "deal_idx": 3,
+    "fallbacks": 0,
+    "interventions": 12,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 4,
+    "deal_idx": 4,
+    "fallbacks": 0,
+    "interventions": 7,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {
+     "b": 2
+    },
+    "cell": 5,
+    "deal_idx": 5,
+    "fallbacks": 2,
+    "interventions": 10,
+    "rate": 0.2
+   },
+   {
+    "by_reason": {},
+    "cell": 6,
+    "deal_idx": 6,
+    "fallbacks": 0,
+    "interventions": 11,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 7,
+    "deal_idx": 7,
+    "fallbacks": 0,
+    "interventions": 8,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 8,
+    "deal_idx": 8,
+    "fallbacks": 0,
+    "interventions": 19,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 9,
+    "deal_idx": 9,
+    "fallbacks": 0,
+    "interventions": 15,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 10,
+    "deal_idx": 10,
+    "fallbacks": 0,
+    "interventions": 10,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 11,
+    "deal_idx": 11,
+    "fallbacks": 0,
+    "interventions": 8,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 12,
+    "deal_idx": 12,
+    "fallbacks": 0,
+    "interventions": 12,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 13,
+    "deal_idx": 13,
+    "fallbacks": 0,
+    "interventions": 7,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 14,
+    "deal_idx": 14,
+    "fallbacks": 0,
+    "interventions": 10,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 15,
+    "deal_idx": 15,
+    "fallbacks": 0,
+    "interventions": 12,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 0,
+    "deal_idx": 16,
+    "fallbacks": 0,
+    "interventions": 10,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 1,
+    "deal_idx": 17,
+    "fallbacks": 0,
+    "interventions": 8,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 2,
+    "deal_idx": 18,
+    "fallbacks": 0,
+    "interventions": 12,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 3,
+    "deal_idx": 19,
+    "fallbacks": 0,
+    "interventions": 9,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 4,
+    "deal_idx": 20,
+    "fallbacks": 0,
+    "interventions": 6,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 5,
+    "deal_idx": 21,
+    "fallbacks": 0,
+    "interventions": 7,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 6,
+    "deal_idx": 22,
+    "fallbacks": 0,
+    "interventions": 6,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 7,
+    "deal_idx": 23,
+    "fallbacks": 0,
+    "interventions": 11,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 8,
+    "deal_idx": 24,
+    "fallbacks": 0,
+    "interventions": 13,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 9,
+    "deal_idx": 25,
+    "fallbacks": 0,
+    "interventions": 14,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 10,
+    "deal_idx": 26,
+    "fallbacks": 0,
+    "interventions": 14,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 11,
+    "deal_idx": 27,
+    "fallbacks": 0,
+    "interventions": 12,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 12,
+    "deal_idx": 28,
+    "fallbacks": 0,
+    "interventions": 10,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 13,
+    "deal_idx": 29,
+    "fallbacks": 0,
+    "interventions": 14,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 14,
+    "deal_idx": 30,
+    "fallbacks": 0,
+    "interventions": 11,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 15,
+    "deal_idx": 31,
+    "fallbacks": 0,
+    "interventions": 9,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 0,
+    "deal_idx": 32,
+    "fallbacks": 0,
+    "interventions": 9,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 1,
+    "deal_idx": 33,
+    "fallbacks": 0,
+    "interventions": 8,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 2,
+    "deal_idx": 34,
+    "fallbacks": 0,
+    "interventions": 7,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 3,
+    "deal_idx": 35,
+    "fallbacks": 0,
+    "interventions": 7,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 4,
+    "deal_idx": 36,
+    "fallbacks": 0,
+    "interventions": 12,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 5,
+    "deal_idx": 37,
+    "fallbacks": 0,
+    "interventions": 5,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 6,
+    "deal_idx": 38,
+    "fallbacks": 0,
+    "interventions": 8,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 7,
+    "deal_idx": 39,
+    "fallbacks": 0,
+    "interventions": 6,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 8,
+    "deal_idx": 40,
+    "fallbacks": 0,
+    "interventions": 12,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {
+     "b": 2
+    },
+    "cell": 9,
+    "deal_idx": 41,
+    "fallbacks": 2,
+    "interventions": 16,
+    "rate": 0.125
+   },
+   {
+    "by_reason": {},
+    "cell": 10,
+    "deal_idx": 42,
+    "fallbacks": 0,
+    "interventions": 17,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 11,
+    "deal_idx": 43,
+    "fallbacks": 0,
+    "interventions": 18,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 12,
+    "deal_idx": 44,
+    "fallbacks": 0,
+    "interventions": 14,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 13,
+    "deal_idx": 45,
+    "fallbacks": 0,
+    "interventions": 5,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 14,
+    "deal_idx": 46,
+    "fallbacks": 0,
+    "interventions": 14,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 15,
+    "deal_idx": 47,
+    "fallbacks": 0,
+    "interventions": 7,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 0,
+    "deal_idx": 48,
+    "fallbacks": 0,
+    "interventions": 2,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 1,
+    "deal_idx": 49,
+    "fallbacks": 0,
+    "interventions": 8,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 2,
+    "deal_idx": 50,
+    "fallbacks": 0,
+    "interventions": 8,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 3,
+    "deal_idx": 51,
+    "fallbacks": 0,
+    "interventions": 6,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 4,
+    "deal_idx": 52,
+    "fallbacks": 0,
+    "interventions": 6,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 5,
+    "deal_idx": 53,
+    "fallbacks": 0,
+    "interventions": 9,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 6,
+    "deal_idx": 54,
+    "fallbacks": 0,
+    "interventions": 10,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 7,
+    "deal_idx": 55,
+    "fallbacks": 0,
+    "interventions": 9,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {
+     "b": 1
+    },
+    "cell": 8,
+    "deal_idx": 56,
+    "fallbacks": 1,
+    "interventions": 18,
+    "rate": 0.05555555555555555
+   },
+   {
+    "by_reason": {},
+    "cell": 9,
+    "deal_idx": 57,
+    "fallbacks": 0,
+    "interventions": 12,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 10,
+    "deal_idx": 58,
+    "fallbacks": 0,
+    "interventions": 13,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 11,
+    "deal_idx": 59,
+    "fallbacks": 0,
+    "interventions": 14,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 12,
+    "deal_idx": 60,
+    "fallbacks": 0,
+    "interventions": 8,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 13,
+    "deal_idx": 61,
+    "fallbacks": 0,
+    "interventions": 14,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 14,
+    "deal_idx": 62,
+    "fallbacks": 0,
+    "interventions": 16,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 15,
+    "deal_idx": 63,
+    "fallbacks": 0,
+    "interventions": 13,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 0,
+    "deal_idx": 64,
+    "fallbacks": 0,
+    "interventions": 7,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 1,
+    "deal_idx": 65,
+    "fallbacks": 0,
+    "interventions": 12,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 2,
+    "deal_idx": 66,
+    "fallbacks": 0,
+    "interventions": 10,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 3,
+    "deal_idx": 67,
+    "fallbacks": 0,
+    "interventions": 10,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 4,
+    "deal_idx": 68,
+    "fallbacks": 0,
+    "interventions": 8,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 5,
+    "deal_idx": 69,
+    "fallbacks": 0,
+    "interventions": 6,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 6,
+    "deal_idx": 70,
+    "fallbacks": 0,
+    "interventions": 10,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 7,
+    "deal_idx": 71,
+    "fallbacks": 0,
+    "interventions": 5,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 8,
+    "deal_idx": 72,
+    "fallbacks": 0,
+    "interventions": 8,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 9,
+    "deal_idx": 73,
+    "fallbacks": 0,
+    "interventions": 11,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 10,
+    "deal_idx": 74,
+    "fallbacks": 0,
+    "interventions": 12,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 11,
+    "deal_idx": 75,
+    "fallbacks": 0,
+    "interventions": 8,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 12,
+    "deal_idx": 76,
+    "fallbacks": 0,
+    "interventions": 11,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 13,
+    "deal_idx": 77,
+    "fallbacks": 0,
+    "interventions": 14,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 14,
+    "deal_idx": 78,
+    "fallbacks": 0,
+    "interventions": 16,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 15,
+    "deal_idx": 79,
+    "fallbacks": 0,
+    "interventions": 10,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 0,
+    "deal_idx": 80,
+    "fallbacks": 0,
+    "interventions": 9,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 1,
+    "deal_idx": 81,
+    "fallbacks": 0,
+    "interventions": 6,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 2,
+    "deal_idx": 82,
+    "fallbacks": 0,
+    "interventions": 13,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 3,
+    "deal_idx": 83,
+    "fallbacks": 0,
+    "interventions": 7,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 4,
+    "deal_idx": 84,
+    "fallbacks": 0,
+    "interventions": 4,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 5,
+    "deal_idx": 85,
+    "fallbacks": 0,
+    "interventions": 7,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 6,
+    "deal_idx": 86,
+    "fallbacks": 0,
+    "interventions": 6,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 7,
+    "deal_idx": 87,
+    "fallbacks": 0,
+    "interventions": 6,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 8,
+    "deal_idx": 88,
+    "fallbacks": 0,
+    "interventions": 11,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 9,
+    "deal_idx": 89,
+    "fallbacks": 0,
+    "interventions": 10,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 10,
+    "deal_idx": 90,
+    "fallbacks": 0,
+    "interventions": 6,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 11,
+    "deal_idx": 91,
+    "fallbacks": 0,
+    "interventions": 11,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {
+     "b": 1
+    },
+    "cell": 12,
+    "deal_idx": 92,
+    "fallbacks": 1,
+    "interventions": 19,
+    "rate": 0.05263157894736842
+   },
+   {
+    "by_reason": {},
+    "cell": 13,
+    "deal_idx": 93,
+    "fallbacks": 0,
+    "interventions": 12,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 14,
+    "deal_idx": 94,
+    "fallbacks": 0,
+    "interventions": 12,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 15,
+    "deal_idx": 95,
+    "fallbacks": 0,
+    "interventions": 11,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 0,
+    "deal_idx": 96,
+    "fallbacks": 0,
+    "interventions": 8,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 1,
+    "deal_idx": 97,
+    "fallbacks": 0,
+    "interventions": 9,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 2,
+    "deal_idx": 98,
+    "fallbacks": 0,
+    "interventions": 5,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 3,
+    "deal_idx": 99,
+    "fallbacks": 0,
+    "interventions": 5,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 4,
+    "deal_idx": 100,
+    "fallbacks": 0,
+    "interventions": 11,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 5,
+    "deal_idx": 101,
+    "fallbacks": 0,
+    "interventions": 7,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 6,
+    "deal_idx": 102,
+    "fallbacks": 0,
+    "interventions": 9,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 7,
+    "deal_idx": 103,
+    "fallbacks": 0,
+    "interventions": 7,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 8,
+    "deal_idx": 104,
+    "fallbacks": 0,
+    "interventions": 14,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 9,
+    "deal_idx": 105,
+    "fallbacks": 0,
+    "interventions": 11,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 10,
+    "deal_idx": 106,
+    "fallbacks": 0,
+    "interventions": 12,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 11,
+    "deal_idx": 107,
+    "fallbacks": 0,
+    "interventions": 3,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 12,
+    "deal_idx": 108,
+    "fallbacks": 0,
+    "interventions": 9,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 13,
+    "deal_idx": 109,
+    "fallbacks": 0,
+    "interventions": 9,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 14,
+    "deal_idx": 110,
+    "fallbacks": 0,
+    "interventions": 10,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 15,
+    "deal_idx": 111,
+    "fallbacks": 0,
+    "interventions": 11,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 0,
+    "deal_idx": 112,
+    "fallbacks": 0,
+    "interventions": 9,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 1,
+    "deal_idx": 113,
+    "fallbacks": 0,
+    "interventions": 9,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 2,
+    "deal_idx": 114,
+    "fallbacks": 0,
+    "interventions": 6,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 3,
+    "deal_idx": 115,
+    "fallbacks": 0,
+    "interventions": 6,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {
+     "b": 1
+    },
+    "cell": 4,
+    "deal_idx": 116,
+    "fallbacks": 1,
+    "interventions": 10,
+    "rate": 0.1
+   },
+   {
+    "by_reason": {},
+    "cell": 5,
+    "deal_idx": 117,
+    "fallbacks": 0,
+    "interventions": 5,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 6,
+    "deal_idx": 118,
+    "fallbacks": 0,
+    "interventions": 5,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 7,
+    "deal_idx": 119,
+    "fallbacks": 0,
+    "interventions": 6,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 8,
+    "deal_idx": 120,
+    "fallbacks": 0,
+    "interventions": 16,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 9,
+    "deal_idx": 121,
+    "fallbacks": 0,
+    "interventions": 16,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 10,
+    "deal_idx": 122,
+    "fallbacks": 0,
+    "interventions": 20,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 11,
+    "deal_idx": 123,
+    "fallbacks": 0,
+    "interventions": 13,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 12,
+    "deal_idx": 124,
+    "fallbacks": 0,
+    "interventions": 11,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 13,
+    "deal_idx": 125,
+    "fallbacks": 0,
+    "interventions": 10,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 14,
+    "deal_idx": 126,
+    "fallbacks": 0,
+    "interventions": 12,
+    "rate": 0.0
+   },
+   {
+    "by_reason": {},
+    "cell": 15,
+    "deal_idx": 127,
+    "fallbacks": 0,
+    "interventions": 11,
+    "rate": 0.0
+   }
+  ],
+  "game_length": {
+   "final_turn_mean": 9.34375,
+   "plies_mean": 67.734375
+  },
+  "pair_correlation": 0.3519331825117594,
+  "per_game_means": {
+   "actual_usd": 0.494972734375,
+   "calls": 9.9296875,
+   "g_seconds": 663.7996401534058,
+   "k_seconds": 197.83159104107767,
+   "ledger_charge_usd": 0.506094125,
+   "tries": 10.0390625
+  },
+  "reasks_by_reason": {
+   "after_fallback": 6,
+   "chance": 1097,
+   "draw_mine": 175
+  },
+  "setup_decisions": 92
+ },
+ "dropped": 0,
+ "dropped_by": {},
+ "fallback_rate": 0.006259780907668232,
+ "label": "PASS / judge higher",
+ "mean_d": 0.1328125,
+ "p": 0.013719862801371985,
+ "planned": 128,
+ "policy_means": {
+  "km3": 0.140625,
+  "kx3": 0.125
+ },
+ "power_line": {
+  "planned": 0.1750990625,
+  "scored": 0.1750990625
+ },
+ "scored": 128,
+ "stopped_early": false
+}

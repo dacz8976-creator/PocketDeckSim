@@ -1,0 +1,24 @@
+protocol entries of one arm:
+   {"seat": 0, "role": "pilot", "decisions": 25, "fallbacks": 0, "errors": 0, "startup_secs": 0.004295513}
+matchup keys: ['decks', 'player_codes'] ; deck entry keys: ['card_ids', 'energy_types']
+  deck 0: {"energy_types": ["Lightning"]} cards 20
+  deck 1: {"energy_types": ["Fighting"]} cards 20
+plan keys: ['deals', 'stage']
+--- checks over all arms
+model_returned over G rows: {'["gemini-4-argon"]': 128}
+distinct card lists at deck=0: 1
+distinct card lists at deck=1: 1
+distinct card lists at list=0: 1
+distinct card lists at list=1: 1
+opponent protocol entries by policy bit: {1: ['{"role": "opponent"}']}
+deck=0: decks/dustin/09-mega-manectric-heliolisk.txt has 14 non-comment lines; first lines ['Energy: Lightning', '2 Helioptile B1a 028', '2 Heliolisk B4 061']
+   played list (20 cards), first ['A2 150', 'B1 225', 'B1a 028', 'B1a 028']
+deck=1: decks/dustin/11-archaludon-haxorus-dragonair.txt has 14 non-comment lines; first lines ['Energy: Fighting, Metal', '1 Duraludon B4a 055', '1 Archaludon B4a 056']
+   played list (20 cards), first ['B1 225', 'B2 145', 'B2b 054', 'B2b 054']
+list=0: decks/screen/opponents/t-lucario.txt has 16 non-comment lines; first lines ['Energy: Fighting', '2 Riolu B3 079', '2 Mega Lucario ex B3 081']
+   played list (20 cards), first ['A1 154', 'A2 092', 'A2 150', 'A2b 070']
+list=1: decks/screen/opponents/t-suicune.txt has 16 non-comment lines; first lines ['Energy: Water', '1 Frigibax B2a 034', '1 Frigibax P-B 037']
+   played list (20 cards), first ['A2 147', 'A2b 070', 'A3 144', 'A3 144']
+PROBLEMS: {'G and K matchup differ': 128}
+  e.g. G and K matchup differ -> 0
+INTEGRITY PROBLEMS

@@ -1,0 +1,37 @@
+2026-11-01T09:31:55Z inputs (sha256):
+009ed4e32cedad9f9504b13253db0dad83282a697d8205a9d98e774ff7ccbec6  /home/dacz8976/relplan/gemini/stage2/run/run_end.json
+7cb62039ea634f9cb1d888616133ac726eaa2075fe34b700c06a87c8679b3e6e  /home/dacz8976/relplan/gemini/stage2/run/run_start.json
+8eb1b047d8da45e36928f03d1bd2cf3031d5f0e217052e04e76984fe94b6c78f  /home/dacz8976/relplan/gemini/stage2/run/deals.jsonl
+26c07fb7a006da7c61f39ccc9bc9a8e23575f3575c0f2129861bd2076a47074b  /home/dacz8976/relplan/gemini/stage2/run/games.jsonl
+1d8a07e033f2b7595f461d332c79a010b1538eccba91331871146ba0e599d8ed  /home/dacz8976/relplan/gemini/stage2/ledger.json
+86f9815bc63527ae1bb9d89e2cf9b7494a84101051d907468b03ca86028cb6f6  /home/dacz8976/relplan/gemini/stage2/stage2.plan.json
+2026-11-01T09:31:55Z kit: game_analysis.py e0f63bd955895d07, game_kit.py a9cfebdbb6f91d0c, analysis.py 64f78cbd7f6d1bbf at c1e5642e52f3f43319783e1c4ad3a3d1303077d6
+2026-11-01T09:31:55Z gate 6 self-test:
+Y1: PASS / judge higher OK
+Y2: inconclusive OK
+Y3: kx3 higher OK
+Y4: inconclusive OK
+Y5a: not testable OK
+Y5b: PASS / judge higher OK
+Y6: pilot not tested OK
+Y7a: too few deals OK
+Y7b: not testable OK
+Y12: not testable OK
+Y14: inconclusive OK
+Y15: PASS / judge higher OK
+Y16: inconclusive OK
+Y17: kx3 higher OK
+Y18: PASS / judge higher OK
+Y11 power_line(80): 0.22148 OK
+Y11 power_line(96): 0.20219 OK
+Y11 power_line(128): 0.17510 OK
+Y15 mean 0.3: OK
+Y16 p 1.0: OK
+Y17 p equals Y15 p: OK
+GATE6 PASS
+GATE6 PASS
+2026-11-01T09:32:04Z registered analysis:
+scored 128, dropped 0, planned 128, mean D 0.1328125, CI [0.0390625, 0.2265625], p 0.013719862801371985
+LABEL: PASS / judge higher
+f950ec340dfff5ab615d66c4b657d19a945e9e809ce5b08a5ac96b34b3757c82  /home/dacz8976/relplan/gemini/stage2/score/analysis.json
+2026-11-01T09:32:05Z SCORE DONE

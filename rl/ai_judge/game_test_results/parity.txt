@@ -1,0 +1,38 @@
+('G', 'winner owns final turn') 128
+('K', 'winner owns final turn') 128
+first player by (pilot seat, deck bit, seat that went first):
+   (0, 0, 0) 9
+   (0, 0, 1) 23
+   (0, 1, 0) 10
+   (0, 1, 1) 22
+   (1, 0, 0) 19
+   (1, 0, 1) 13
+   (1, 1, 0) 17
+   (1, 1, 1) 15
+=== registration section 3 (intervention points)
+#### 3. Intervention points, the remaining-move player, the expansion bar (written first)
+
+- **Intervention points:** every decision the engine asks the Gemini seat (more than one legal action) when no saved plan step applies.
+  - That covers turn starts, re-ask triggers, setup choices and opponent-turn choices (e.g. a new Active after a knockout).
+  - Setup and opponent-turn points are reported separately, because the judge has never been shaped on them.
+- **The remaining-move player is kx3** (the shadow instance). It decides only on:
+  - (a) a lister failure, an empty list, or a first-step-set mismatch;
+  - (b) the expansion bar;
+  - (c) a sent judge call with no usable answer after frozen-7's resend;
+  - (d) the per-game call cap.
+- **HTTP 429 and transport errors are not (c).** They wait and retry: up to 3 tries over 10 minutes. Only then do they count as (c).
+- **Fallback rate** = fallback intervention points ÷ all intervention points in (G) games, pooled. It's also reported per game, with reasons.
+  - **Over 10% = "pilot not tested".**
+- **Expansion bar:** more than **2,000 plans**, or a lister node or memory cap set in the kit. A 600 s lister time limit is a hang guard only, and lister seconds are logged.
+  - For scale, the most seen so far is 1,203.
+- **Per-game call cap:** **75 calls per game in stage 1**. In stage 2 it is 3 × the largest calls-per-game in stage 1. Calls beyond it go to fallback (d).
+
+=== opponent knowledge mentions
+45:  - the opponent lists t-lucario and t-suicune (approved, 096);
+126:**Cells:** 16 = 2 pilot decks × 2 opponent lists × 2 opponent policies (km3, kx3) × 2 seats. They're numbered in the kit:
+166:  - **Deal order, fixed in the kit before the go:** the first 6 deals cover both pilot decks and both opponent lists, each at least twice, with both policies and both seats among them. The other 10 cells follow.
+290:  - the opponent lists t-lucario (fast) and t-suicune (setup);
+331:**For you now:** propose the two opponent lists from decks/screen/opponents/ (one fast, one setup), with one line on why each. Then send v3 with items 1-7 in. No build until his go.
+352:   - Write this into §5. Order the stage-1 deals so the first 6 cover both pilot decks and both opponent lists.
+785:- **Every other RNG use a plan can continue past** fires or not on visible information only: the board, discards, hand and deck sizes, the pilot's own deck contents, or its Energy types. Examples are coin flips, shuffles of either deck, random picks from visible zones, the Energy Zone roll (Rainbow Cave), and the opponent-deck shuffle of Polteageist's on-evolve effect. Two hidden worlds with the same visible board give the same chance count.
+22:POOL_SHA256 = {'t-lucario': '76ad71c4d932da51fddc8c3082f184f8012c86e1f1e15c5858e055190560f634',

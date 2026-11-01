@@ -1,0 +1,38 @@
+deal rows 128, deal_idx values 128, rows per deal [1]
+scored pairs 128; failures by arm:class {}; pairs per cell [8]
+ties: G 0, K 0
+wins: G arm 73 of 128 (0.570), K arm 56 of 128 (0.438)
+pairs: G won K lost 30; K won G lost 13; same result 85 (both won 43, both lost 42)
+mean D 0.132812 (sum 17)
+exact sign-flip p 0.013718 (m = 43 nonzero pairs)
+independent bootstrap 95% CI [0.0469, 0.2266]
+policy means: km3 0.1406, kx3 0.1250
+fallback rate 8 / 1278 = 0.0063
+model versions seen: ['["gemini-4-argon"]']
+label from the registered CI and p: PASS / judge higher
+label from this check's CI and exact p: PASS / judge higher
+--- compare with the registered analysis.json
+label                    registered PASS / judge higher    check PASS / judge higher    AGREE
+scored                   registered 128                    check 128                    AGREE
+dropped                  registered 0                      check 0                      AGREE
+mean_d                   registered 0.1328125              check 0.1328125              AGREE
+p (MC v exact)           registered 0.013719862801371985   check 0.0137181850586785     AGREE
+ci low                   registered 0.0390625              check 0.046875               AGREE
+ci high                  registered 0.2265625              check 0.2265625              AGREE
+km3 mean                 registered 0.140625               check 0.140625               AGREE
+kx3 mean                 registered 0.125                  check 0.125                  AGREE
+fallback rate            registered 0.006259780907668232   check 0.006259780907668232   AGREE
+label (own CI, exact p)  registered PASS / judge higher    check PASS / judge higher    AGREE
+--- descriptive (registered as descriptive only; 64 pairs per split value, 8 per cell, very noisy)
+deck    A 09-mega-manectric-heliolisk      n  64  G wins  40  K wins  39  mean D +0.0156
+deck    B 11-archaludon-haxorus-dragonair  n  64  G wins  33  K wins  17  mean D +0.2500
+list    t-lucario                          n  64  G wins  35  K wins  29  mean D +0.0938
+list    t-suicune                          n  64  G wins  38  K wins  27  mean D +0.1719
+policy  km3                                n  64  G wins  35  K wins  26  mean D +0.1406
+policy  kx3                                n  64  G wins  38  K wins  30  mean D +0.1250
+seat    seat 0                             n  64  G wins  36  K wins  28  mean D +0.1250
+seat    seat 1                             n  64  G wins  37  K wins  28  mean D +0.1406
+per cell (cell = 8 deck + 4 list + 2 policy + seat): 0:+0, 1:+1, 2:-2, 3:+0, 4:+1, 5:+0, 6:+2, 7:-1, 8:+0, 9:+2, 10:+4, 11:+1, 12:+2, 13:+3, 14:+1, 15:+3
+per k block: k0:-1, k1:+1, k2:+3, k3:+2, k4:+3, k5:+2, k6:+4, k7:+3
+PROBLEMS: none
+INDEP CHECK AGREES

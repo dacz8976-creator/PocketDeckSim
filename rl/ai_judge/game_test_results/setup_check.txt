@@ -1,0 +1,8 @@
+21:SHADOW_FEED = 'fallback'                # fixed: the shadow is asked only at setup and fallback points
+160:               'kind': 'setup' if tc == 0 else ('own_turn' if cp == me else 'opponent_turn'), 'n_legal': len(legal), 'since': since, 'mode': None, 'follow': None,
+173:            row['mode'] = 'setup'
+interventions_by_kind summed over G: {'opponent_turn': 112, 'own_turn': 1166}
+interventions 1278 calls 1271 fallbacks 8 setup_decisions 92 G games with setup decisions 41
+G games with opponent-turn points 78
+setup decision rows by (mode, has judge block, n_judge_calls, fallback): {('setup', False, 0, None): 92}
+engine_version in result files (first G): 0.1.0-pdl.rules4
