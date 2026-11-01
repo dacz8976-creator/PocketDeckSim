@@ -27,6 +27,14 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             "Each of your evolved Pokémon can use any attack from its previous Evolutions. (You still need the necessary Energy to use each attack.)",
             AbilityMechanic::TimeRecall,
         );
+        // Raboot (C1 023 / C1 137) - Jumping Coach. Each Raboot in play adds its own 3 coins.
+        map.insert(
+            "As long as this Pokémon is in play, flip 3 more coins for the Rabbit Jumping attack used by your Pokémon.",
+            AbilityMechanic::FlipMoreCoinsForNamedAttack {
+                attack_title: "Rabbit Jumping",
+                extra_coins: 3,
+            },
+        );
         map.insert(
             "As long as this Pokémon is in the Active Spot, attacks used by your opponent's Active Pokémon cost 1 [C] more.",
             AbilityMechanic::IncreaseAttackCostForOpponentActive { amount: 1 },

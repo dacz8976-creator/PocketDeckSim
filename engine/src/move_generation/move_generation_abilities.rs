@@ -137,6 +137,7 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::IncreaseDamageForTwoTypesInPlay { .. } => false,
         AbilityMechanic::UnownPower { .. } => false, // Passive ability
         AbilityMechanic::IncreaseDamageForEvolutionsFromBench { .. } => false, // Passive ability
+        AbilityMechanic::FlipMoreCoinsForNamedAttack { .. } => false, // Passive ability
         AbilityMechanic::CoordinatedUnit { .. } => false, // Passive ability
         AbilityMechanic::StartTurnRandomPokemonToHand { .. } => false,
         AbilityMechanic::SearchRandomCardFromDeck { .. } => {

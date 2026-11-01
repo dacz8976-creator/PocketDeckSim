@@ -302,6 +302,19 @@ pub enum AbilityMechanic {
         evolves_from: &'static str,
         amount: u32,
     },
+    /// Raboot's Jumping Coach (C1 023 / C1 137): "As long as this Pokémon is in play, flip 3 more
+    /// coins for the Rabbit Jumping attack used by your Pokémon."
+    ///
+    /// Passive and board-wide: while a holder is in play (Active or Benched), every attack titled
+    /// `attack_title` that its controller's Pokémon use flips `extra_coins` more coins. Each holder
+    /// adds its own coins, so two Raboot make Rabbit Jumping flip 2 + 3 + 3 = 8 (rules/04).
+    /// Resolved where the heads-count attacks count their coins (`damage_for_each_heads_attack`),
+    /// each holder read through `get_in_play_ability_mechanic`, so Prickly Powder's `NoAbilities`
+    /// switches that holder off.
+    FlipMoreCoinsForNamedAttack {
+        attack_title: &'static str,
+        extra_coins: usize,
+    },
     /// Falinks' Coordinated Unit (B2 092 / B2 172): "If you have another Falinks in play, this
     /// Pokémon's attacks do +`damage_bonus` damage to your opponent's Active Pokémon, and this
     /// Pokémon takes -`damage_reduction` damage from attacks from your opponent's Pokémon."

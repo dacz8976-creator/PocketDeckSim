@@ -1,7 +1,9 @@
 //! koa, kob and kor: the B5 candidate "opening Active choice", registered Sept 26
 //! (`rl/results/opening_active_census_2026-09-26/REGISTRATION.md`). One players-side classification of every Ability
-//! mechanic by where it works, and the setup-evaluation term it feeds. Mirrors `census.py`'s `VARIANT_CLASS` in that
-//! folder. Names no card: the classes come from the engine's own mechanic flags and their fields.
+//! mechanic by where it works, and the setup-evaluation term it feeds. Mirrors `VARIANT_CLASS` in R8's copy of that
+//! folder's `census.py`, `rl/results/r8_catchup_2026-10-29/census.py`, which takes the variants added since (the
+//! registered folder is never edited). Names no card: the classes come from the engine's own mechanic flags and their
+//! fields.
 //!
 //! Who classifies a new variant: the author of the engine change that adds it, in the same commit (a tier-2 change),
 //! checked by the phrase test below. No arm is a wildcard, at any level, so a new variant fails to compile until it
@@ -72,9 +74,10 @@ fn class(position: OpeningPosition, first_turn: bool, board: bool, drawback: boo
     OpeningAbilityClass { position, first_turn, board, drawback }
 }
 
-/// Every Ability mechanic's class for the opening Active choice (`census.py`'s `VARIANT_CLASS`). Class A: an Ability
-/// that works only from the Active Spot and whose payoff is confined to the owner's first turn (or the turn the holder
-/// is played); today exactly `AbilityMechanic::CanEvolveOnFirstTurnIfActive`.
+/// Every Ability mechanic's class for the opening Active choice (`VARIANT_CLASS` in R8's census copy,
+/// `rl/results/r8_catchup_2026-10-29/census.py`). Class A: an Ability that works only from the Active Spot and whose
+/// payoff is confined to the owner's first turn (or the turn the holder is played); today exactly
+/// `AbilityMechanic::CanEvolveOnFirstTurnIfActive`.
 pub(crate) fn opening_ability_class(mechanic: &AbilityMechanic) -> OpeningAbilityClass {
     match mechanic {
         AbilityMechanic::CanEvolveOnFirstTurnIfActive => class(OpeningPosition::Active, true, false, false),
@@ -122,6 +125,7 @@ pub(crate) fn opening_ability_class(mechanic: &AbilityMechanic) -> OpeningAbilit
         | AbilityMechanic::DiscardFromHandToDrawCard
         | AbilityMechanic::DiscardTopCardOpponentDeck
         | AbilityMechanic::DoubleGrassEnergy
+        | AbilityMechanic::FlipMoreCoinsForNamedAttack { .. }
         | AbilityMechanic::HealAllYourPokemon { .. }
         | AbilityMechanic::HealOneYourPokemonExAndDiscardRandomEnergy { .. }
         | AbilityMechanic::IncreaseDamageForTwoTypesInPlay { .. }
@@ -314,8 +318,10 @@ mod tests {
         assert_eq!(exceptions, ["CanEvolveIntoEeveeEvolution", "CannotAttackWithoutBenchedNames"]);
     }
 
-    /// The class counts `census.py` and its README (section 3) report, counted as flag settings over the map (a
-    /// variant whose own fields change its class counts once per setting): 130 over 124 variants, 157 entries.
+    /// The class counts of the map as `census.py` classifies it (`VARIANT_CLASS` in R8's copy,
+    /// `rl/results/r8_catchup_2026-10-29/census.py`), counted as flag settings over the map (a variant whose own fields
+    /// change its class counts once per setting): 131 over 125 variants, 160 entries. Before R8-04b added
+    /// `FlipMoreCoinsForNamedAttack` (anywhere board) it was 130 over 124.
     #[test]
     fn the_classes_count_as_the_census_does() {
         let mut settings: BTreeMap<(String, String), ()> = BTreeMap::new();
@@ -347,7 +353,7 @@ mod tests {
             ("active any time", 26),
             ("active drawback", 2),
             ("bench only", 8),
-            ("anywhere board", 44),
+            ("anywhere board", 45),
             ("anywhere self", 31),
             ("on evolve", 12),
             ("on bench entry", 4),
@@ -356,7 +362,7 @@ mod tests {
         .into_iter()
         .collect();
         assert_eq!(counts, expected);
-        assert_eq!(settings.len(), 130);
+        assert_eq!(settings.len(), 131);
     }
 
     const ALTARIA: &str = "Energy: Psychic\n2 B1 196\n1 B1 102\n2 B1 184\n2 B3a 020\n2 B2b 040\n1 A4a 059\n2 P-A 007\n2 B1 225\n1 A1 225\n2 P-A 005\n1 B3 147\n1 B3b 064\n1 B2 153\n";

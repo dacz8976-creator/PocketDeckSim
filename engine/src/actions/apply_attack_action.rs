@@ -869,6 +869,8 @@ fn forecast_effect_attack_by_mechanic(
             damage_per_head,
             num_coins,
         } => damage_for_each_heads_attack(
+            acting_player,
+            state,
             *include_fixed_damage,
             *damage_per_head,
             *num_coins,
@@ -1505,7 +1507,14 @@ fn forecast_effect_attack_by_mechanic(
             } else {
                 *num_coins
             };
-            damage_for_each_heads_attack(false, *damage_per_head, coins, attack)
+            damage_for_each_heads_attack(
+                acting_player,
+                state,
+                false,
+                *damage_per_head,
+                coins,
+                attack,
+            )
         }
         Mechanic::CoinFlipPerPokemonInPlay {
             damage_per_heads,
@@ -2611,12 +2620,35 @@ fn generate_energy_distributions(fire_bench_idx: &[usize], heads: usize) -> Vec<
     all_choices
 }
 
+/// Raboot's Jumping Coach (C1 023 / C1 137): "As long as this Pokémon is in play, flip 3 more coins
+/// for the Rabbit Jumping attack used by your Pokémon." The extra coins that the Ability holders in
+/// `acting_player`'s play add to `attack`, matched by its title. They add up: two Raboot add 3 + 3.
+/// Each holder is read through `get_in_play_ability_mechanic`, so one whose Ability is switched off
+/// adds none. 0 whenever no holder in play names this attack.
+fn extra_coins_from_abilities(acting_player: usize, state: &State, attack: &Attack) -> usize {
+    state
+        .enumerate_in_play_pokemon(acting_player)
+        .filter_map(|(_, pokemon)| match get_in_play_ability_mechanic(state, pokemon) {
+            Some(AbilityMechanic::FlipMoreCoinsForNamedAttack {
+                attack_title,
+                extra_coins,
+            }) if attack.title == *attack_title => Some(*extra_coins),
+            _ => None,
+        })
+        .sum()
+}
+
+/// Flip `num_coins` coins, plus those that Abilities in play add to this attack
+/// (`extra_coins_from_abilities`), for `damage_per_head` damage each heads.
 fn damage_for_each_heads_attack(
+    acting_player: usize,
+    state: &State,
     include_fixed_damage: bool,
     damage_per_head: u32,
     num_coins: usize,
     attack: &Attack,
 ) -> AttackOutcomes {
+    let num_coins = num_coins + extra_coins_from_abilities(acting_player, state, attack);
     let fixed_damage = if include_fixed_damage {
         attack.fixed_damage
     } else {
