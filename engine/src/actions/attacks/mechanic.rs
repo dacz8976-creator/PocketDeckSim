@@ -281,6 +281,14 @@ pub enum Mechanic {
         energies: Vec<EnergyType>,
         damage: u32,
     },
+    /// Dewgong's Dual Blizzard: "Discard 2 [W] Energy from this Pokémon, and this attack does 60
+    /// damage to 2 of your opponent's Pokémon." Discard the listed Energy from the attacker, then
+    /// deal `damage` to each of 2 of the opponent's Pokémon (chosen, Active or Benched); with fewer
+    /// than 2 in play, to each of them (rules/04: an effect does as much as it can).
+    SelfDiscardEnergyAndDamageTwoOpponentPokemon {
+        energies: Vec<EnergyType>,
+        damage: u32,
+    },
     ExtraDamageIfExtraEnergy {
         required_extra_energy: Vec<EnergyType>,
         extra_damage: u32,
@@ -1123,6 +1131,10 @@ pub enum Mechanic {
     /// Machop's Shatter: discard whichever Stadium is in play (it goes to its owner's discard
     /// pile). Does nothing extra when there is no Stadium.
     DiscardStadiumInPlay,
+    /// Palkia's Spacial Rend: "If your opponent has a Stadium in play, discard it." Only a Stadium
+    /// whose recorded owner is the opponent goes (to their discard pile); the attacker's own stays,
+    /// and so does one with no recorded owner.
+    DiscardOpponentStadiumInPlay,
     /// Quagsire's Amnesia: pick one of the opponent's Active Pokémon's attacks at random and lock
     /// it out for `duration` turns via `CardEffect::CannotUseAttack`.
     DisableRandomOpponentActiveAttack {

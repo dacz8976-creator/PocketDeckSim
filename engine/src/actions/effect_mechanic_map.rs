@@ -213,6 +213,15 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
             damage: 80,
         },
     );
+    // Dewgong (C1 033 / C1 193) - Dual Blizzard. Each pair of targets is queued as Volcanic Ash's
+    // target is above, so a coin-flip damage Ability on a chosen target still flips.
+    map.insert(
+        "Discard 2 [W] Energy from this Pokémon, and this attack does 60 damage to 2 of your opponent's Pokémon.",
+        Mechanic::SelfDiscardEnergyAndDamageTwoOpponentPokemon {
+            energies: vec![EnergyType::Water, EnergyType::Water],
+            damage: 60,
+        },
+    );
     map.insert(
         "Discard 2 cards from your hand. If you can't discard 2 cards, this attack does nothing.",
         Mechanic::DiscardHandCards { count: 2 },
@@ -2586,6 +2595,11 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
         },
     );
     map.insert("Discard a Stadium in play.", Mechanic::DiscardStadiumInPlay);
+    // Palkia (C1 038 / C1 140) - Spacial Rend: only a Stadium the opponent played.
+    map.insert(
+        "If your opponent has a Stadium in play, discard it.",
+        Mechanic::DiscardOpponentStadiumInPlay,
+    );
     map.insert(
         "During your next turn, attacks used by your Pokémon do +20 damage to your opponent's Active Pokémon.",
         Mechanic::IncreasedDamageNextTurn {

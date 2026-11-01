@@ -956,6 +956,9 @@ fn forecast_effect_attack_by_mechanic(
         Mechanic::SelfDiscardEnergyThenDamageAnyOpponentPokemon { energies, damage } => {
             self_discard_energy_then_damage_any_opponent_pokemon(attack, energies.clone(), *damage)
         }
+        Mechanic::SelfDiscardEnergyAndDamageTwoOpponentPokemon { energies, damage } => {
+            self_discard_energy_and_damage_two_opponent_pokemon(attack, energies.clone(), *damage)
+        }
         Mechanic::ExtraDamageIfExtraEnergy {
             required_extra_energy,
             extra_damage,
@@ -1612,6 +1615,9 @@ fn forecast_effect_attack_by_mechanic(
             energy_type,
         } => increased_damage_next_turn(attack.fixed_damage, *amount, *energy_type),
         Mechanic::DiscardStadiumInPlay => discard_stadium_in_play(attack.fixed_damage),
+        Mechanic::DiscardOpponentStadiumInPlay => {
+            discard_opponent_stadium_in_play(attack.fixed_damage)
+        }
         Mechanic::DisableRandomOpponentActiveAttack { duration } => {
             disable_random_opponent_active_attack(
                 acting_player,
@@ -1947,6 +1953,24 @@ fn discard_stadium_in_play(damage: u32) -> AttackOutcomes {
     active_damage_effect_doutcome(damage, move |_, state, action| {
         if let Some((stadium, owner)) = state.take_active_stadium() {
             state.discard_piles[owner.unwrap_or(action.actor)].push(stadium);
+            state.refresh_hp_bonuses_all();
+        }
+    })
+}
+
+/// Palkia's Spacial Rend (C1 038 / C1 140): "If your opponent has a Stadium in play, discard it."
+/// Only a Stadium the opponent put into play goes, to their discard pile; the attacker's own stays,
+/// and so does one with no recorded owner (a legacy saved state's). The HP bonuses are refreshed
+/// at once, as for Shatter: Starting Plains' +20 leaves every Basic in play, and a Pokémon whose
+/// damage now reaches its HP is Knocked Out and scored by the action's catch-all Knock Out check.
+fn discard_opponent_stadium_in_play(damage: u32) -> AttackOutcomes {
+    active_damage_effect_doutcome(damage, move |_, state, action| {
+        let opponent = (action.actor + 1) % 2;
+        if state.active_stadium_owner != Some(opponent) {
+            return;
+        }
+        if let Some((stadium, _)) = state.take_active_stadium() {
+            state.discard_piles[opponent].push(stadium);
             state.refresh_hp_bonuses_all();
         }
     })
@@ -4171,6 +4195,52 @@ fn self_discard_energy_then_damage_any_opponent_pokemon(
                 &attack,
                 damage,
                 in_play_idx,
+                coin_target,
+            ));
+        }
+        if !choices.is_empty() {
+            state.move_generation_stack.push((action.actor, choices));
+        }
+    })
+}
+
+/// Dewgong's Dual Blizzard: discard the listed Energy from the attacker, then deal `damage` to
+/// each of 2 of the opponent's Pokémon (chosen, Active or Benched). With fewer than 2 in play the
+/// one choice hits each of them (rules/04: an effect does as much as it can, as Oceanic Gift does
+/// with one Benched Pokémon). Each choice is queued as Volcanic Ash's is, so a pair that includes
+/// a Pokémon with a coin-flip damage Ability is the attack's own damage and that coin flips.
+fn self_discard_energy_and_damage_two_opponent_pokemon(
+    attack: &Attack,
+    to_discard: Vec<EnergyType>,
+    damage: u32,
+) -> AttackOutcomes {
+    let attack = attack.clone();
+    active_damage_effect_doutcome(0, move |_, state, action| {
+        discard_requested_energy_from_active_best_effort(state, action.actor, &to_discard);
+
+        let opponent = (action.actor + 1) % 2;
+        let in_play: Vec<usize> = state
+            .enumerate_in_play_pokemon(opponent)
+            .map(|(in_play_idx, _)| in_play_idx)
+            .collect();
+        let mut picks: Vec<Vec<usize>> = Vec::new();
+        if in_play.len() <= 2 {
+            picks.push(in_play);
+        } else {
+            for i in 0..in_play.len() {
+                for j in (i + 1)..in_play.len() {
+                    picks.push(vec![in_play[i], in_play[j]]);
+                }
+            }
+        }
+        let mut choices = Vec::new();
+        for pick in picks.into_iter().filter(|pick| !pick.is_empty()) {
+            let targets: Vec<(u32, usize)> = pick.iter().map(|&idx| (damage, idx)).collect();
+            let coin_target = any_coin_target(state, opponent, pick.iter().copied());
+            choices.push(queued_attack_damage_targets_choice(
+                action.actor,
+                &attack,
+                &targets,
                 coin_target,
             ));
         }
