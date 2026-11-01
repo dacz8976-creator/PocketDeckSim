@@ -907,19 +907,29 @@ fn test_sudden_duplication_is_not_offered_with_an_empty_deck() {
 }
 
 /// "When you play this card from your hand to evolve": a Frogadier put into play any other way is
-/// not offered the Ability. Three ways: a C1 041 put onto the Bench by Sudden Duplication itself;
-/// a Frogadier evolved from the deck by the random evolution that Wallace and Quick-Grow Extract
-/// resolve to (`ChooseRandomEvolutionTarget`, driven directly: no card reaches a Froakie that way
-/// today, as Wallace needs a maximum HP of 50 or less, Froakie has 60, and Quick-Grow Extract a [G]
-/// Pokémon); and a Frogadier already in play on a later turn, which move generation never offers it.
+/// not offered the Ability. Three ways: a C1 041 put onto the Bench by Sudden Duplication itself
+/// (with a card still in the deck and a Bench slot still free, so neither gate of the offer hides
+/// one); a Frogadier evolved from the deck by the random evolution that Wallace and Quick-Grow
+/// Extract resolve to (`ChooseRandomEvolutionTarget`, driven directly: no card reaches a Froakie
+/// that way today, as Wallace needs a maximum HP of 50 or less, Froakie has 60, and Quick-Grow
+/// Extract a [G] Pokémon); and a Frogadier already in play on a later turn, which move generation
+/// never offers it.
 #[test]
 fn test_sudden_duplication_is_offered_only_when_this_card_is_played_from_the_hand_to_evolve() {
     for frogadier in FROGADIERS {
-        let mut game = evolve_from_hand(0, frogadier, vec![froakie()], 0, &[CardId::C1041Frogadier]);
+        let mut game = evolve_from_hand(
+            0,
+            frogadier,
+            vec![froakie()],
+            0,
+            &[CardId::C1041Frogadier, CardId::A1001Bulbasaur],
+        );
         answer(&mut game, SimpleAction::UseAbility { in_play_idx: 0 });
         let state = game.get_state_clone();
         assert_eq!(names(&state), named(&[Some("Frogadier"), Some("Frogadier"), None, None]));
         assert_eq!(state.in_play_pokemon[0][1].as_ref().unwrap().card, get_card_by_enum(CardId::C1041Frogadier));
+        assert_eq!(state.decks[0].cards, vec![get_card_by_enum(CardId::A1001Bulbasaur)]);
+        assert!(state.in_play_pokemon[0].iter().skip(1).any(|slot| slot.is_none()));
         assert!(nothing_offered(&game), "{frogadier:?}: benched by Sudden Duplication");
 
         let mut game = get_test_game_with_board(vec![froakie()], vec![bulbasaur()]);
@@ -1010,7 +1020,9 @@ fn test_sudden_duplication_is_offered_under_power_of_alchemy_and_after_prickly_p
     }
 }
 
-/// Both Frogadier printings are Complete, with no known limitation.
+/// Both Frogadier printings are Complete, with no known limitation. The offer with no Frogadier
+/// left in the deck follows the card text and the fork's hidden-deck convention (coordinator-088):
+/// it has no `implementation_limitations` entry and no shot-list row.
 #[test]
 fn test_frogadier_printings_report_complete() {
     for id in FROGADIERS {

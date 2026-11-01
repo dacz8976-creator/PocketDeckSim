@@ -1962,7 +1962,8 @@ fn discard_stadium_in_play(damage: u32) -> AttackOutcomes {
 /// Only a Stadium the opponent put into play goes, to their discard pile; the attacker's own stays,
 /// and so does one with no recorded owner (a legacy saved state's). The HP bonuses are refreshed
 /// at once, as for Shatter: Starting Plains' +20 leaves every Basic in play, and a Pokémon whose
-/// damage now reaches its HP is Knocked Out and scored by the action's catch-all Knock Out check.
+/// damage now reaches its HP is Knocked Out and scored by the attack's own Knock Out check, as an
+/// attack's Knock Out, not by the action's catch-all check.
 fn discard_opponent_stadium_in_play(damage: u32) -> AttackOutcomes {
     active_damage_effect_doutcome(damage, move |_, state, action| {
         let opponent = (action.actor + 1) % 2;
@@ -8407,6 +8408,56 @@ mod test {
             paths,
             CoinPaths::UntilTailsAtLeast { min_heads: 7 }
         )));
+    }
+
+    /// Palkia's Spacial Rend (C1 038) refreshes the HP bonuses inside its own effect, as Shatter
+    /// does, not only in the action's common suffix (which this skips): applied alone, the attack's
+    /// mutation takes Starting Plains' +20 off every Basic, and the attack's own Knock Out check
+    /// scores the Active Bulbasaur (70 damage on 70 HP) and the Benched Squirtle (60 on 60).
+    #[test]
+    fn spacial_rend_refreshes_the_hp_bonuses_before_the_attacks_knock_out_check() {
+        let plains = get_card_by_enum(CardId::B2154StartingPlains);
+        let Card::Pokemon(palkia) = get_card_by_enum(CardId::C1038Palkia) else {
+            panic!("Palkia should be a Pokémon");
+        };
+        let attack = palkia.attacks[0].clone();
+        let mut state = State::default();
+        state.current_player = 0;
+        state.turn_count = 3;
+        state.in_play_pokemon[0][0] = Some(PlayedCard::from_id(CardId::C1038Palkia));
+        state.in_play_pokemon[1][0] = Some(PlayedCard::from_id(CardId::A1001Bulbasaur));
+        state.in_play_pokemon[1][1] =
+            Some(PlayedCard::from_id(CardId::A1053Squirtle).with_damage(60));
+        state.in_play_pokemon[1][2] = Some(PlayedCard::from_id(CardId::C1032Seel));
+        assert!(state.set_active_stadium_for_player(1, plains.clone()).is_none());
+        state.refresh_hp_bonuses_all();
+        let seel_total_hp = |state: &State| {
+            state.in_play_pokemon[1][2]
+                .as_ref()
+                .expect("Seel survives Spacial Rend")
+                .get_effective_total_hp()
+        };
+        assert_eq!(seel_total_hp(&state), 90);
+
+        let action = Action {
+            actor: 0,
+            action: SimpleAction::Attack(attack.clone()),
+            is_stack: false,
+        };
+        let (probabilities, mut mutations) =
+            forecast_attack(0, &state, &attack, false).into_branches();
+        assert_eq!(probabilities.len(), 1);
+        let mutation = mutations.remove(0);
+        let mut rng = StdRng::seed_from_u64(0);
+        mutation(&mut rng, &mut state, &action);
+
+        assert!(state.active_stadium.is_none() && state.discard_piles[1].contains(&plains));
+        assert_eq!(seel_total_hp(&state), 70, "Seel loses the +20 inside the mutation");
+        assert!(
+            state.in_play_pokemon[1][0].is_none() && state.in_play_pokemon[1][1].is_none(),
+            "the attack's own Knock Out check takes Bulbasaur and the Benched Squirtle"
+        );
+        assert_eq!(state.points, [2, 0]);
     }
 
     mod random_damage_outcomes_tests {

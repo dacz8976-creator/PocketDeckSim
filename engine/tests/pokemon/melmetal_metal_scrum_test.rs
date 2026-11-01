@@ -1,4 +1,4 @@
-// Ported from upstream deckgym-core #436 (tests/pokemon/melmetal_metal_scrum_test.rs, as of 9a3e2dd): both tests, with fork tests added at the end (a real attack; Metal Scrum switched off; two copies of one printing; stacking with Unown's GUARD and Steel Apron; the owner's own attack and the attacker's own Melmetal; the printings' status). The hit back is pinned in rules_repair_hit_back_attack_damage.rs, and kd's clock in hooks/core.rs (persistent_defender_damage_tests).
+// Ported from upstream deckgym-core #436 (tests/pokemon/melmetal_metal_scrum_test.rs, as of 9a3e2dd): both tests, with fork tests added at the end (a real attack; Metal Scrum switched off; two copies of one printing; stacking with Unown's GUARD and Steel Apron; the owner's own attack and the attacker's own Melmetal; an Ability's damage; the printings' status). The hit back is pinned in rules_repair_hit_back_attack_damage.rs, and kd's clock in hooks/core.rs (persistent_defender_damage_tests).
 //! Melmetal's Metal Scrum: "As long as this Pokémon is in play, all of your [M] Pokémon take -20
 //! damage from attacks from your opponent's Pokémon. This effect doesn't stack."
 
@@ -9,7 +9,7 @@ use deckgym::{
     database::get_card_by_enum,
     effects::CardEffect,
     models::{EnergyType, PlayedCard},
-    test_support::{attack_action, get_test_game_with_board},
+    test_support::{attack_action, get_initialized_game_with_board, get_test_game_with_board},
 };
 
 /// Player 0 has `board` (first is Active); player 1 has a plain Active attacker. Applies `damage`
@@ -195,6 +195,44 @@ fn test_the_attackers_own_metal_scrum_does_not_cut_its_damage() {
         vec![PlayedCard::from_id(CardId::C1096Meltan)],
     );
     assert_eq!(hp, 10, "Meltan (60 HP) takes Moon Press's full 50");
+}
+
+/// "from attacks": Greninja's Water Shuriken (A1 089, "Once during your turn, you may do 20 damage
+/// to 1 of your opponent's Pokémon.") is an Ability's damage, so it does its full 20 to an Active
+/// Melmetal (120 HP) and to the Benched Meltan (60 HP) beside it.
+#[test]
+fn test_metal_scrum_does_not_cut_damage_from_an_ability() {
+    for (target, hp) in [(0, 100), (1, 40)] {
+        let mut game = get_initialized_game_with_board(
+            0,
+            0,
+            5,
+            vec![PlayedCard::from_id(CardId::A1089Greninja)],
+            vec![
+                PlayedCard::from_id(CardId::C1097Melmetal),
+                PlayedCard::from_id(CardId::C1096Meltan),
+            ],
+        );
+        game.apply_action(&Action {
+            actor: 0,
+            action: SimpleAction::UseAbility { in_play_idx: 0 },
+            is_stack: false,
+        });
+        let (_, choices) = game.get_state_clone().generate_possible_actions();
+        let shuriken = choices
+            .into_iter()
+            .find(|choice| {
+                matches!(&choice.action, SimpleAction::ApplyDamage { targets, .. } if targets[0].2 == target)
+            })
+            .expect("Water Shuriken can target either Pokémon");
+        assert!(matches!(
+            &shuriken.action,
+            SimpleAction::ApplyDamage { targets, is_from_active_attack: false, .. }
+                if targets[..] == [(20, 1, target)]
+        ));
+        game.apply_action(&shuriken);
+        assert_eq!(game.get_state_clone().get_remaining_hp(1, target), hp, "target {target}");
+    }
 }
 
 /// Both Melmetal printings are Complete, with no known limitation.
