@@ -271,6 +271,40 @@ fn the_attackers_damage_cuts_apply_to_the_hit_back() {
     })
 }
 
+/// R8-05a. A teammate's cut counts too: Melmetal's Metal Scrum (C1 097 / C1 150, "all of your [M] Pokémon take -20 damage
+/// from attacks from your opponent's Pokémon") cuts the hit back onto a [M] Attacking Pokémon, a Benched Melmetal's or the
+/// attacker's own, as the conditional Ability cuts do at the hit-back site. Needle Lariat's 80: 60 on Registeel (110 HP)
+/// and on Melmetal (120 HP); the full 80 on Snorlax, which isn't [M]. With P2's switch off the hit back is flat again.
+#[test]
+fn metal_scrum_cuts_the_hit_back_onto_a_metal_attacker() {
+    use EnergyType::*;
+    let chesnaught = || with_energy(CardId::B2010Chesnaught, &[Grass, Grass, Grass, Grass]);
+    let registeel = || with_energy(CardId::A2112Registeel, &[Metal, Metal, Metal]);
+    // `attacker` takes Needle Lariat's hit back for `title`, with `bench` behind it: its HP after.
+    let hit_back = |attacker: PlayedCard, title: &str, bench: Option<CardId>| {
+        let mut game = armed_against(chesnaught(), "Needle Lariat", 80, attacker, vec![]);
+        if let Some(id) = bench {
+            let mut state = game.get_state_clone();
+            state.in_play_pokemon[0][1] = Some(PlayedCard::from_id(id));
+            game.set_state(state);
+        }
+        apply_attack(&mut game, title);
+        hp(&game.get_state_clone(), 0, 0)
+    };
+    on(|| {
+        for melmetal in [CardId::C1097Melmetal, CardId::C1150Melmetal] {
+            assert_eq!(hit_back(registeel(), "Metal Claw", Some(melmetal)), 50, "{melmetal:?}: 80 - 20 = 60 on 110 HP");
+            let attacker = with_energy(melmetal, &[Metal, Metal, Colorless]);
+            assert_eq!(hit_back(attacker, "Confront", None), 60, "{melmetal:?}'s own: 80 - 20 = 60 on 120 HP");
+        }
+        assert_eq!(hit_back(registeel(), "Metal Claw", None), 30, "no Melmetal: the full 80");
+        assert_eq!(hit_back(snorlax(), "Rollout", Some(CardId::C1097Melmetal)), 70, "Snorlax isn't [M]: the full 80");
+    });
+    with_return_weakness(false, || {
+        assert_eq!(hit_back(registeel(), "Metal Claw", Some(CardId::C1097Melmetal)), 30, "P2 off: flat 80");
+    });
+}
+
 /// Prevention on the attacker: Safeguard against a Pokémon ex holder (and its Rocky Helmet doesn't answer), Disguise.
 #[test]
 fn the_attackers_prevention_applies_to_the_hit_back() {

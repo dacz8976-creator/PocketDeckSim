@@ -272,6 +272,21 @@ pub enum AbilityMechanic {
     UnownGuard {
         amount: u32,
     },
+    /// Melmetal's Metal Scrum (C1 097 / C1 150): "As long as this Pokémon is in play, all of your
+    /// [M] Pokémon take -20 damage from attacks from your opponent's Pokémon. This effect doesn't
+    /// stack."
+    ///
+    /// Passive and board-wide, like `UnownGuard`: while a holder is in play (Active or Benched),
+    /// each of its controller's `energy_type` Pokémon, the holder itself included, takes -`amount`
+    /// damage from attacks from the opponent's Pokémon. It doesn't stack, so the largest cut among
+    /// the holders applies once (two Melmetal still cut 20); it stacks with every other cut.
+    /// Resolved in `get_conditional_ability_damage_reduction`, each holder read through
+    /// `get_in_play_ability_mechanic` (so Prickly Powder's `NoAbilities` switches that holder off)
+    /// and the receiver's type through `State::pokemon_is_type`.
+    ReduceDamageToYourTypeWhileInPlay {
+        amount: u32,
+        energy_type: EnergyType,
+    },
     IncreaseDamageWhenRemainingHpAtMost {
         amount: u32,
         hp_threshold: u32,

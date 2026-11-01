@@ -5,7 +5,8 @@
 #   sha256:      e2d82ad9f6980c7baaa9523384c47bbb913804fa9d7ac46ad4db0ce4328050b7
 #   Last commit: fb124297b93e8b8cee77f15000bf9249c081b5cd (the last commit that touched the source)
 #   R8 changes:  this comment block; VARIANT_CLASS gains 'FlipMoreCoinsForNamedAttack' (R8-04b, Raboot's Jumping
-#                Coach), classed as engine/src/players/opening_class.rs classes it. Nothing else differs. The copy
+#                Coach) and 'ReduceDamageToYourTypeWhileInPlay' (R8-05a, Melmetal's Metal Scrum), each classed as
+#                engine/src/players/opening_class.rs classes it. Nothing else differs. The copy
 #                sits at the source's depth, so ROOT below is still the repo root. Later R8 commits that add an
 #                Ability variant update this copy.
 """Opening Active census (Sept 26, 2026). Code reading and list arithmetic only: no engine game, no build.
@@ -153,6 +154,7 @@ VARIANT_CLASS = {
     'ReduceDamageFromAttacks': ('anywhere', False, 'self'),
     'ReduceDamageFromTypedAttackers': ('anywhere', False, 'self'),
     'ReduceDamageIfArceusInPlay': ('anywhere', False, 'self'),
+    'ReduceDamageToYourTypeWhileInPlay': ('anywhere', False, 'board'),  # R8-05a
     'ReduceOpponentActiveDamage': ('active', False, 'board'),
     'ReduceOwnRetreatCostIfAnotherSameNameInPlay': ('anywhere', False, 'self'),
     'ReduceRetreatCostOfYourActiveBasicFromBench': ('bench', False, 'board'),

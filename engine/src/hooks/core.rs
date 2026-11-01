@@ -873,6 +873,27 @@ fn get_unown_guard_reduction(state: &State, target_player: usize) -> u32 {
         .sum()
 }
 
+/// Metal Scrum (Melmetal C1 097 / C1 150): "As long as this Pokémon is in play, all of your [M]
+/// Pokémon take -20 damage from attacks from your opponent's Pokémon. This effect doesn't stack."
+/// Board-wide like GUARD, read off every holder the defending player controls (Active or Benched,
+/// the receiver itself included), but it doesn't stack: the largest cut among the holders that
+/// cover the receiver's type applies once, so two Melmetal still cut 20.
+fn get_metal_scrum_reduction(state: &State, target_player: usize, receiving_pokemon: &PlayedCard) -> u32 {
+    state
+        .enumerate_in_play_pokemon(target_player)
+        .filter_map(
+            |(_, pokemon)| match get_in_play_ability_mechanic(state, pokemon) {
+                Some(AbilityMechanic::ReduceDamageToYourTypeWhileInPlay {
+                    amount,
+                    energy_type,
+                }) if state.pokemon_is_type(receiving_pokemon, *energy_type) => Some(*amount),
+                _ => None,
+            },
+        )
+        .max()
+        .unwrap_or(0)
+}
+
 /// Damage reduction printed on the receiving Pokémon itself but conditioned on the attacker or on
 /// the board, so it cannot be modelled as a context-free `CardEffect` the way
 /// `ReduceDamageFromAttacks` is (see `card_effect_from_ability_mechanic`).
@@ -951,9 +972,9 @@ fn get_coordinated_unit_reduction(
 }
 
 /// All conditional ability-driven damage reduction protecting the target: the reductions printed on
-/// the target itself plus board-wide ones (Unown's GUARD). Returned as a flat amount that the caller
-/// folds into the other pre-Weakness reductions, matching how every existing damage-reduction
-/// ability is ordered relative to the Weakness bonus.
+/// the target itself plus board-wide ones (Unown's GUARD, Melmetal's Metal Scrum). Returned as a
+/// flat amount that the caller folds into the other pre-Weakness reductions, matching how every
+/// existing damage-reduction ability is ordered relative to the Weakness bonus.
 fn get_conditional_ability_damage_reduction(
     state: &State,
     attacking_player: usize,
@@ -979,8 +1000,15 @@ fn get_conditional_ability_damage_reduction(
     } else {
         0
     };
+    // Metal Scrum is board-wide too ("all of your [M] Pokémon"), and only against the opponent's
+    // Pokémon. It doesn't stack with itself, but it does with GUARD and the receiver's own cuts.
+    let metal_scrum_reduction = if from_opponent {
+        get_metal_scrum_reduction(state, target_player, receiving_pokemon)
+    } else {
+        0
+    };
 
-    let total = self_reduction + guard_reduction;
+    let total = self_reduction + guard_reduction + metal_scrum_reduction;
     if total > 0 {
         debug!("Conditional ability damage reduction: -{total}");
     }
@@ -1566,7 +1594,8 @@ fn printed_weakness_application(
 ///   (only Metal Defender and Adamantine Rolling give it, to their own user, for the opponent's next turn);
 /// - after Weakness, the receiver's lasting cuts: Heavy Helmet (on the Retreat Cost now: the hit back lands on the receiver's
 ///   own turn, so this turn's X Speed or Leaf counts), Steel Apron, Metal Core Barrier, `ReduceDamageFromAttacks` from its
-///   Ability, the conditional Abilities (Thick Fat, Resilience Link, Ice Face, Unown's GUARD) and Coordinated Unit.
+///   Ability, the conditional Abilities (Thick Fat, Resilience Link, Ice Face, Unown's GUARD, Melmetal's Metal Scrum) and
+///   Coordinated Unit.
 ///
 /// Left out: what is stored on the receiver and its side's turn effects (it is the receiver's own turn, so each was put there
 /// this turn for the opponent's next turn: Steel Wing, Hide, Harden, Blue, Jasmine, ...); the coin-flip Abilities (Carefree
@@ -1749,8 +1778,9 @@ pub(crate) enum DefenderHit {
 /// - Weakness: the printed rule, +20 or Bounded Field's x2 (`printed_weakness_application`), on the Active only;
 /// - after Weakness, every finite reduction that isn't temporary: the Tools Heavy Helmet and Steel Apron;
 ///   `ReduceDamageFromAttacks` from the defender's Ability (Solid Shell, Shell Armor, ...); the conditional
-///   Abilities `ReduceDamageFromTypedAttackers`, `ReduceDamageIfArceusInPlay`, `ReduceDamageAtFullHp` and
-///   `UnownGuard` (a teammate's Ability); `CoordinatedUnit`; and, on a heads, `CoinFlipToReduceIncomingDamage`'s amount
+///   Abilities `ReduceDamageFromTypedAttackers`, `ReduceDamageIfArceusInPlay`, `ReduceDamageAtFullHp`,
+///   `UnownGuard` (a teammate's Ability) and `ReduceDamageToYourTypeWhileInPlay` (Metal Scrum, a teammate's or the
+///   defender's own, counted once); `CoordinatedUnit`; and, on a heads, `CoinFlipToReduceIncomingDamage`'s amount
 ///   (Guarded Grill, Securely Sheltered). Board conditions are read on today's board.
 ///
 /// Left out, because they don't last or aren't the defender's: effects stored on the defender by attacks
@@ -3299,6 +3329,26 @@ mod persistent_defender_damage_tests {
         };
         assert_eq!(guarded(true), ((30.0, 30.0), 30.0));
         assert_eq!(guarded(false), ((40.0, 40.0), 40.0));
+    }
+
+    #[test]
+    fn metal_scrum_counts_once_on_todays_board() {
+        // Metal Scrum (Melmetal C1 097 / C1 150, a teammate's Ability or the defender's own): -20 for each [M] Pokemon
+        // while a Melmetal is in play, once however many there are, and nothing while switched off.
+        let scrum = |mine: Vec<PlayedCard>| both_on(&duel(mine, vec![mon(CardId::A1001Bulbasaur)]), 40, None, 0);
+        let off = || {
+            let mut melmetal = mon(CardId::C1097Melmetal);
+            melmetal.add_effect(CardEffect::NoAbilities, 1);
+            melmetal
+        };
+        assert_eq!(scrum(vec![mon(CardId::A2111Skarmory), mon(CardId::C1097Melmetal)]), ((20.0, 20.0), 20.0));
+        assert_eq!(scrum(vec![mon(CardId::C1097Melmetal)]), ((20.0, 20.0), 20.0));
+        assert_eq!(
+            scrum(vec![mon(CardId::A2111Skarmory), mon(CardId::C1097Melmetal), mon(CardId::C1150Melmetal)]),
+            ((20.0, 20.0), 20.0)
+        );
+        assert_eq!(scrum(vec![mon(CardId::B3005Treecko), mon(CardId::C1097Melmetal)]), ((40.0, 40.0), 40.0));
+        assert_eq!(scrum(vec![mon(CardId::A2111Skarmory), off()]), ((40.0, 40.0), 40.0));
     }
 
     #[test]

@@ -4,7 +4,7 @@
   "switch_a": 250.0,
   "switch_b": 250.0
  },
- "engine_map_entries": 160,
+ "engine_map_entries": 161,
  "lists": [
   {
    "list": "decks/research/altaria.txt",
@@ -60,7 +60,7 @@
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 233
+      "gate_line": 234
      },
      "switch_a": true,
      "switch_b": false
@@ -85,14 +85,14 @@
      "mechanic": {
       "variant": "BadDreamsEndOfTurn",
       "fields": "AbilityMechanic::BadDreamsEndOfTurn { amount: 20 }, ",
-      "map_line": 758,
+      "map_line": 767,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "board",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 174
+      "gate_line": 175
      },
      "switch_a": false,
      "switch_b": true
@@ -338,14 +338,14 @@
      "mechanic": {
       "variant": "ReduceRetreatCostOfYourActiveTypedFromBench",
       "fields": "AbilityMechanic::ReduceRetreatCostOfYourActiveTypedFromBench { energy_type: EnergyType::Darkness, amount: 1, }, ",
-      "map_line": 795,
+      "map_line": 804,
       "pos": "bench",
       "first_turn": false,
       "scope": "board",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 216
+      "gate_line": 217
      },
      "switch_a": false,
      "switch_b": true
@@ -553,14 +553,14 @@
      "mechanic": {
       "variant": "RandomEvolutionFromDeck",
       "fields": "AbilityMechanic::RandomEvolutionFromDeck { trigger: RandomEvolutionTrigger::EndOfOpponentTurnIfActive, }, ",
-      "map_line": 842,
+      "map_line": 851,
       "pos": "active",
       "first_turn": false,
       "scope": "self",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 291
+      "gate_line": 292
      },
      "switch_a": false,
      "switch_b": false
@@ -700,7 +700,7 @@
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 244
+      "gate_line": 245
      },
      "switch_a": false,
      "switch_b": false
@@ -822,7 +822,7 @@
      "mechanic": {
       "variant": "ReduceDamageFromAttacks",
       "fields": "AbilityMechanic::ReduceDamageFromAttacks { amount: 20 }, ",
-      "map_line": 628,
+      "map_line": 637,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "self",
@@ -861,7 +861,7 @@
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 210
+      "gate_line": 211
      },
      "switch_a": false,
      "switch_b": true
@@ -989,7 +989,7 @@
      "mechanic": {
       "variant": "DamageOpponentActiveOnZoneAttachToSelf",
       "fields": "AbilityMechanic::DamageOpponentActiveOnZoneAttachToSelf { energy_type: EnergyType::Darkness, amount: 20, only_turn_energy: true, }, ",
-      "map_line": 657,
+      "map_line": 666,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "board",
@@ -1140,14 +1140,14 @@
      "mechanic": {
       "variant": "CannotAttackWithoutBenchedNames",
       "fields": "AbilityMechanic::CannotAttackWithoutBenchedNames { required_bench_names: REGI_TRIO_NAMES, }, ",
-      "map_line": 806,
+      "map_line": 815,
       "pos": "active",
       "first_turn": false,
       "scope": "self",
       "drawback": true,
       "activated": false,
       "gate_position": null,
-      "gate_line": 253
+      "gate_line": 254
      },
      "switch_a": false,
      "switch_b": false
@@ -1299,14 +1299,14 @@
      "mechanic": {
       "variant": "CannotAttackWithoutBenchedNames",
       "fields": "AbilityMechanic::CannotAttackWithoutBenchedNames { required_bench_names: REGI_TRIO_NAMES, }, ",
-      "map_line": 806,
+      "map_line": 815,
       "pos": "active",
       "first_turn": false,
       "scope": "self",
       "drawback": true,
       "activated": false,
       "gate_position": null,
-      "gate_line": 253
+      "gate_line": 254
      },
      "switch_a": false,
      "switch_b": false
@@ -1416,14 +1416,14 @@
      "mechanic": {
       "variant": "ImmuneToStatusConditions",
       "fields": "AbilityMechanic::ImmuneToStatusConditions { status: None }, ",
-      "map_line": 591,
+      "map_line": 600,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "self",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 209
+      "gate_line": 210
      },
      "switch_a": false,
      "switch_b": false
@@ -1571,7 +1571,7 @@
       "drawback": false,
       "activated": true,
       "gate_position": "anywhere",
-      "gate_line": 194
+      "gate_line": 195
      },
      "switch_a": false,
      "switch_b": true
@@ -1666,7 +1666,7 @@
      "mechanic": {
       "variant": "DamageOpponentActiveOnZoneAttachToSelf",
       "fields": "AbilityMechanic::DamageOpponentActiveOnZoneAttachToSelf { energy_type: EnergyType::Darkness, amount: 20, only_turn_energy: true, }, ",
-      "map_line": 657,
+      "map_line": 666,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "board",
@@ -1720,14 +1720,14 @@
      "mechanic": {
       "variant": "ReduceRetreatCostOfYourActiveTypedFromBench",
       "fields": "AbilityMechanic::ReduceRetreatCostOfYourActiveTypedFromBench { energy_type: EnergyType::Darkness, amount: 1, }, ",
-      "map_line": 795,
+      "map_line": 804,
       "pos": "bench",
       "first_turn": false,
       "scope": "board",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 216
+      "gate_line": 217
      },
      "switch_a": false,
      "switch_b": true
@@ -1834,7 +1834,7 @@
       "drawback": false,
       "activated": true,
       "gate_position": "anywhere",
-      "gate_line": 194
+      "gate_line": 195
      },
      "switch_a": false,
      "switch_b": true
@@ -2070,7 +2070,7 @@
       "drawback": false,
       "activated": true,
       "gate_position": "anywhere",
-      "gate_line": 194
+      "gate_line": 195
      },
      "switch_a": false,
      "switch_b": true
@@ -2146,7 +2146,7 @@
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 290
+      "gate_line": 291
      },
      "switch_a": false,
      "switch_b": true
@@ -2627,7 +2627,7 @@
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 210
+      "gate_line": 211
      },
      "switch_a": false,
      "switch_b": true
@@ -2804,7 +2804,7 @@
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 210
+      "gate_line": 211
      },
      "switch_a": false,
      "switch_b": true
@@ -2938,7 +2938,7 @@
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 233
+      "gate_line": 234
      },
      "switch_a": true,
      "switch_b": false
@@ -2970,7 +2970,7 @@
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 219
+      "gate_line": 220
      },
      "switch_a": false,
      "switch_b": false
@@ -3074,14 +3074,14 @@
      "mechanic": {
       "variant": "ImmuneToStatusConditions",
       "fields": "AbilityMechanic::ImmuneToStatusConditions { status: None }, ",
-      "map_line": 591,
+      "map_line": 600,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "self",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 209
+      "gate_line": 210
      },
      "switch_a": false,
      "switch_b": false
@@ -3200,14 +3200,14 @@
      "mechanic": {
       "variant": "ImmuneToStatusConditions",
       "fields": "AbilityMechanic::ImmuneToStatusConditions { status: None }, ",
-      "map_line": 591,
+      "map_line": 600,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "self",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 209
+      "gate_line": 210
      },
      "switch_a": false,
      "switch_b": false
@@ -3326,14 +3326,14 @@
      "mechanic": {
       "variant": "ImmuneToStatusConditions",
       "fields": "AbilityMechanic::ImmuneToStatusConditions { status: None }, ",
-      "map_line": 591,
+      "map_line": 600,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "self",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 209
+      "gate_line": 210
      },
      "switch_a": false,
      "switch_b": false
@@ -3358,14 +3358,14 @@
      "mechanic": {
       "variant": "IncreasePoisonDamage",
       "fields": "AbilityMechanic::IncreasePoisonDamage { amount: 10 }, ",
-      "map_line": 710,
+      "map_line": 719,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "board",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 221
+      "gate_line": 222
      },
      "switch_a": false,
      "switch_b": true
@@ -3469,14 +3469,14 @@
      "mechanic": {
       "variant": "ImmuneToStatusConditions",
       "fields": "AbilityMechanic::ImmuneToStatusConditions { status: None }, ",
-      "map_line": 591,
+      "map_line": 600,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "self",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 209
+      "gate_line": 210
      },
      "switch_a": false,
      "switch_b": false
@@ -3522,14 +3522,14 @@
      "mechanic": {
       "variant": "IncreasePoisonDamage",
       "fields": "AbilityMechanic::IncreasePoisonDamage { amount: 10 }, ",
-      "map_line": 710,
+      "map_line": 719,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "board",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 221
+      "gate_line": 222
      },
      "switch_a": false,
      "switch_b": true
@@ -3887,7 +3887,7 @@
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 210
+      "gate_line": 211
      },
      "switch_a": false,
      "switch_b": true
@@ -3979,7 +3979,7 @@
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 170
+      "gate_line": 171
      },
      "switch_a": false,
      "switch_b": false
@@ -4053,7 +4053,7 @@
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 210
+      "gate_line": 211
      },
      "switch_a": false,
      "switch_b": true
@@ -4154,7 +4154,7 @@
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 170
+      "gate_line": 171
      },
      "switch_a": false,
      "switch_b": false
@@ -4228,7 +4228,7 @@
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 210
+      "gate_line": 211
      },
      "switch_a": false,
      "switch_b": true
@@ -4342,7 +4342,7 @@
      "mechanic": {
       "variant": "DamageOpponentActiveOnZoneAttachToSelf",
       "fields": "AbilityMechanic::DamageOpponentActiveOnZoneAttachToSelf { energy_type: EnergyType::Darkness, amount: 20, only_turn_energy: true, }, ",
-      "map_line": 657,
+      "map_line": 666,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "board",
@@ -4457,7 +4457,7 @@
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 244
+      "gate_line": 245
      },
      "switch_a": false,
      "switch_b": false
@@ -4762,7 +4762,7 @@
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 244
+      "gate_line": 245
      },
      "switch_a": false,
      "switch_b": false
@@ -5031,7 +5031,7 @@
      "mechanic": {
       "variant": "DamageOpponentActiveOnZoneAttachToSelf",
       "fields": "AbilityMechanic::DamageOpponentActiveOnZoneAttachToSelf { energy_type: EnergyType::Darkness, amount: 20, only_turn_energy: true, }, ",
-      "map_line": 657,
+      "map_line": 666,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "board",

@@ -11,6 +11,7 @@ but that folder is never edited (coordinator-088 Q7). This folder holds R8's own
     `'FlipMoreCoinsForNamedAttack': ('anywhere', False, 'board')` (R8-04b, Raboot's Jumping Coach, C1 023 / C1 137),
     the class `engine/src/players/opening_class.rs` gives it. Nothing else differs, so `census.json`'s `generated`
     label still reads as the source's.
+  - R8-05a adds `'ReduceDamageToYourTypeWhileInPlay': ('anywhere', False, 'board')` (Melmetal's Metal Scrum) and reruns it.
   - It sits at the source's depth (`rl/results/<folder>/census.py`), so its `ROOT` still resolves to the repo root.
 - `census.json`: this copy's own output, written next to it by one run from the repo root
   (`python3 -I -B rl/results/r8_catchup_2026-10-29/census.py`, R8-04b).

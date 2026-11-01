@@ -140,6 +140,7 @@ pub(crate) fn opening_ability_class(mechanic: &AbilityMechanic) -> OpeningAbilit
         | AbilityMechanic::PreventAllHealing
         | AbilityMechanic::PreventOpponentActiveEvolution
         | AbilityMechanic::RandomStatusConditionToOpponentActive { .. }
+        | AbilityMechanic::ReduceDamageToYourTypeWhileInPlay { .. }
         | AbilityMechanic::RemoveRandomSpecialConditionFromActive
         | AbilityMechanic::RevealRandomOpponentHandCard
         | AbilityMechanic::SearchRandomCardFromDeck { .. }
@@ -320,8 +321,9 @@ mod tests {
 
     /// The class counts of the map as `census.py` classifies it (`VARIANT_CLASS` in R8's copy,
     /// `rl/results/r8_catchup_2026-10-29/census.py`), counted as flag settings over the map (a variant whose own fields
-    /// change its class counts once per setting): 131 over 125 variants, 160 entries. Before R8-04b added
-    /// `FlipMoreCoinsForNamedAttack` (anywhere board) it was 130 over 124.
+    /// change its class counts once per setting): 132 over 126 variants, 161 entries. Before R8-05a added
+    /// `ReduceDamageToYourTypeWhileInPlay` (anywhere board) it was 131 over 125, and before R8-04b added
+    /// `FlipMoreCoinsForNamedAttack` (anywhere board) 130 over 124.
     #[test]
     fn the_classes_count_as_the_census_does() {
         let mut settings: BTreeMap<(String, String), ()> = BTreeMap::new();
@@ -353,7 +355,7 @@ mod tests {
             ("active any time", 26),
             ("active drawback", 2),
             ("bench only", 8),
-            ("anywhere board", 45),
+            ("anywhere board", 46),
             ("anywhere self", 31),
             ("on evolve", 12),
             ("on bench entry", 4),
@@ -362,7 +364,7 @@ mod tests {
         .into_iter()
         .collect();
         assert_eq!(counts, expected);
-        assert_eq!(settings.len(), 131);
+        assert_eq!(settings.len(), 132);
     }
 
     const ALTARIA: &str = "Energy: Psychic\n2 B1 196\n1 B1 102\n2 B1 184\n2 B3a 020\n2 B2b 040\n1 A4a 059\n2 P-A 007\n2 B1 225\n1 A1 225\n2 P-A 005\n1 B3 147\n1 B3b 064\n1 B2 153\n";
