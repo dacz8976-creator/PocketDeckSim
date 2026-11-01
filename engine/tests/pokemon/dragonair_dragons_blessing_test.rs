@@ -1,3 +1,4 @@
+// Ported from upstream deckgym-core #428 (tests/pokemon/dragonair_dragons_blessing_test.rs, as of 48ebed3), with checks added that the ability is offered.
 use deckgym::{
     actions::{Action, SimpleAction},
     card_ids::CardId,
@@ -20,6 +21,16 @@ fn test_dragonair_dragons_blessing_attaches_chosen_energy_to_active() {
     let mut state = game.get_state_clone();
     state.discard_energies[0] = vec![EnergyType::Fire, EnergyType::Water];
     game.set_state(state);
+
+    // From the Bench, with a [N] Active and Energy in the discard pile, the ability is offered.
+    let (actor, actions) = game.get_state_clone().generate_possible_actions();
+    assert_eq!(actor, 0);
+    assert!(
+        actions
+            .iter()
+            .any(|action| matches!(action.action, SimpleAction::UseAbility { in_play_idx: 1 })),
+        "Dragon's Blessing should be offered with a [N] Active; got: {actions:?}"
+    );
 
     let ability_action = Action {
         actor: 0,
@@ -84,7 +95,8 @@ fn test_dragonair_dragons_blessing_not_available_while_active() {
     state.discard_energies[0] = vec![EnergyType::Fire];
     game.set_state(state);
 
-    let (_actor, actions) = game.get_state_clone().generate_possible_actions();
+    let (actor, actions) = game.get_state_clone().generate_possible_actions();
+    assert_eq!(actor, 0);
     assert!(!actions
         .iter()
         .any(|action| matches!(action.action, SimpleAction::UseAbility { in_play_idx: 0 })));
@@ -106,8 +118,29 @@ fn test_dragonair_dragons_blessing_not_available_when_active_is_not_dragon() {
     state.discard_energies[0] = vec![EnergyType::Fire, EnergyType::Water];
     game.set_state(state);
 
-    let (_actor, actions) = game.get_state_clone().generate_possible_actions();
+    let (actor, actions) = game.get_state_clone().generate_possible_actions();
+    assert_eq!(actor, 0);
     assert!(!actions
+        .iter()
+        .any(|action| matches!(action.action, SimpleAction::UseAbility { in_play_idx: 1 })));
+
+    // The same board with a [N] Active (Dratini) offers it, so what keeps it off above is the
+    // Active's type, not the ability missing from move generation.
+    let mut game = get_test_game_with_board(
+        vec![
+            PlayedCard::from_id(CardId::B4116Dratini),
+            PlayedCard::from_id(CardId::B4175Dragonair),
+        ],
+        vec![PlayedCard::from_id(CardId::A1002Ivysaur)],
+    );
+
+    let mut state = game.get_state_clone();
+    state.discard_energies[0] = vec![EnergyType::Fire, EnergyType::Water];
+    game.set_state(state);
+
+    let (actor, actions) = game.get_state_clone().generate_possible_actions();
+    assert_eq!(actor, 0);
+    assert!(actions
         .iter()
         .any(|action| matches!(action.action, SimpleAction::UseAbility { in_play_idx: 1 })));
 }

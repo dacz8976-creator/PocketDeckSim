@@ -11,7 +11,10 @@
 //!
 //! `cargo test` builds the examples, with the same features, before it runs the tests, so the program is
 //! the goldfish beside this test's executable (target/<profile>/examples). Run alone, build it first with
-//! the features of the test: `cargo build --release --features test-utils --example goldfish`.
+//! the features of the test: `cargo build --release --features test-utils --example goldfish`. The last
+//! test exists only without test-utils, so the suite's usual commands (all with test-utils) never run it:
+//! run `cargo build --release --example goldfish`, then `cargo test --release --test
+//! goldfish_card_support_test`, in that order, because a filtered run does not rebuild the example.
 
 use std::{
     fs,
@@ -94,8 +97,13 @@ fn goldfish_program() -> PathBuf {
             .max_by_key(|path| fs::metadata(path).and_then(|m| m.modified()).ok())
     });
     hashed.unwrap_or_else(|| {
+        let features = if cfg!(feature = "test-utils") {
+            " --features test-utils"
+        } else {
+            ""
+        };
         panic!(
-            "no goldfish program in {}: run the whole suite (cargo test builds the examples) or cargo build --release --example goldfish",
+            "no goldfish program in {}: run the whole suite (cargo test builds the examples) or cargo build --release{features} --example goldfish",
             examples.display()
         )
     })
@@ -180,7 +188,10 @@ fn goldfish_with_the_opt_out_lists_the_unsupported_card_and_runs() {
     let output = run(&list, &panel, &coverage, &["--allow-unsupported-cards"]);
     let stderr = String::from_utf8_lossy(&output.stderr);
     assert!(output.status.success(), "{stderr}");
-    assert!(stderr.contains("--allow-unsupported-cards was given"), "{stderr}");
+    assert!(
+        stderr.contains("--allow-unsupported-cards was given"),
+        "{stderr}(a goldfish built without test-utils does not read {MISSING_ATTACK_ENV})"
+    );
     assert!(
         stderr.contains("A1 008 — Weedle — Attack effect not implemented"),
         "{stderr}"
@@ -204,7 +215,10 @@ fn goldfish_built_without_test_utils_does_not_read_the_test_variable() {
 
     let output = run(&list, &panel, &coverage, &[]);
     let stderr = String::from_utf8_lossy(&output.stderr);
-    assert!(output.status.success(), "{stderr}");
+    assert!(
+        output.status.success(),
+        "{stderr}(a goldfish built with test-utils reads {MISSING_ATTACK_ENV}: build the example without --features first)"
+    );
     assert!(!stderr.contains("Card-support preflight"), "{stderr}");
     assert!(!stderr.contains("Weedle"), "{stderr}");
     assert!(coverage.exists());
