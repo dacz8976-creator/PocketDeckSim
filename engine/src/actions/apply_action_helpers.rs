@@ -928,12 +928,17 @@ pub(crate) fn handle_knockouts_with_prior(
         // before the defender's hook runs made that legal double-KO sequence panic.
         for (ko_receiver, ko_pokemon_idx) in wave.iter().copied() {
             // Known limits of this per-Knock-Out flag (new printings only): (1) a later wave's
-            // Knock Out set off by a Flame Aura Knock Out (such as Toughness Aroma's +20 HP lost
-            // when Lilligant leaves) has no mark, so it still takes the wave-wide
-            // `is_from_active_attack`, the engine's older cascade reading; (2) a
-            // `ResolveKnockoutPoints` pause rebuilds `ability_damage_knockouts` empty on re-entry,
-            // unreachable today: later waves come only from Toughness Aroma ([G]), and the
-            // point-denial coin holders are Dusknoir ([P]) and Glimmora ([D]).
+            // Knock Out set off by a Flame Aura Knock Out (an HP Ability lost when its holder
+            // leaves: Toughness Aroma's +20 HP, or Jungle Totem's doubled [G] Energy under Regal
+            // Bloom) has no mark, so it still takes the wave-wide `is_from_active_attack`, the
+            // engine's older cascade reading; (2) a `ResolveKnockoutPoints` pause in a wave after a
+            // Flame Aura Knock Out rebuilds `ability_damage_knockouts` empty on re-entry, so the
+            // `knocked_out_by_opponent_attack_this_turn` loop below would count that Knock Out.
+            // (2) is unreachable today: the only HP-drop waves are those two [G] Abilities, which
+            // lower only [G] Pokémon's HP; an on-knockout retaliation wave (Innards Out, Final
+            // Scream) needs the opponent's Active Knocked Out by the attack, and that Active is the
+            // only Pokémon the mark goes on; and the point-denial coin holders are Dusknoir ([P])
+            // and Glimmora ([D]).
             let from_attack = is_from_active_attack
                 && !state.in_play_pokemon[ko_receiver][ko_pokemon_idx]
                     .as_ref()
