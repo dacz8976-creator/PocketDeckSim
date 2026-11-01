@@ -2,6 +2,8 @@
 mod berries_test;
 #[path = "tools/booster_capsule_test.rs"]
 mod booster_capsule_test;
+#[path = "tools/clear_veil_test.rs"]
+mod clear_veil_test;
 #[path = "tools/dark_pendant_test.rs"]
 mod dark_pendant_test;
 #[path = "tools/deceptive_needle_test.rs"]
