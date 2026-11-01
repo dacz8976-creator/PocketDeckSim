@@ -2,14 +2,16 @@
 //! card the engine cannot play, through the card-support preflight of `deckgym simulate`
 //! (deckgym::card_support), and with --allow-unsupported-cards lists the card and goes on.
 //!
-//! The card is C1 019 Volcanion, a Basic whose only attack, Dynamite Steam ("Flip 2 coins. This attack
-//! does 110 damage for each heads."), has no entry in EFFECT_MECHANIC_MAP (the map has the 2-coin texts
-//! for 20 to 100 damage, not 110), so card_status gives MissingAttack (release lane, d0792568). If it is
-//! implemented one day, swap in another blocked printing.
+//! The card is A1 008 Weedle, a Basic whose only attack, Sting, has no effect text, so the engine plays
+//! it. It is refused because every run below names it in TEST_CARD_SUPPORT_MISSING_ATTACK: a build with
+//! the test-utils feature reads that variable (deckgym::card_support) and inspects the printings it names
+//! as MissingAttack. A real refused printing would not last: R8 implements the last 55 (these tests used
+//! C1 019 Volcanion before). So the refusal tests exist only with test-utils, and without it the last
+//! test shows that the variable is not read.
 //!
-//! `cargo test` builds the examples before it runs the tests, so the program is the goldfish beside this
-//! test's executable (target/<profile>/examples). Run alone, build it first:
-//! `cargo build --release --example goldfish`.
+//! `cargo test` builds the examples, with the same features, before it runs the tests, so the program is
+//! the goldfish beside this test's executable (target/<profile>/examples). Run alone, build it first with
+//! the features of the test: `cargo build --release --features test-utils --example goldfish`.
 
 use std::{
     fs,
@@ -19,6 +21,10 @@ use std::{
 };
 
 static NEXT_FIXTURE: AtomicUsize = AtomicUsize::new(0);
+
+/// deckgym::card_support::TEST_MISSING_ATTACK_ENV (feature test-utils); every run names Weedle in it.
+const MISSING_ATTACK_ENV: &str = "TEST_CARD_SUPPORT_MISSING_ATTACK";
+const MISSING_ATTACK_ID: &str = "A1 008";
 
 struct FixtureDir(PathBuf);
 
@@ -54,12 +60,12 @@ fn supported_deck() -> &'static str {
     include_str!("../example_decks/venusaur-exeggutor.txt")
 }
 
-/// The supported deck with its Red Card replaced by C1 019 Volcanion (MissingAttack); still a legal
-/// 20-card deck, so only the card-support check can refuse it.
+/// The supported deck with its Red Card replaced by A1 008 Weedle (MissingAttack under
+/// MISSING_ATTACK_ENV); still a legal 20-card deck, so only the card-support check can refuse it.
 fn deck_with_missing_attack_card() -> String {
     let original = "1 Red Card P-A 006";
     assert!(supported_deck().contains(original));
-    supported_deck().replacen(original, "1 Volcanion C1 019", 1)
+    supported_deck().replacen(original, &format!("1 Weedle {MISSING_ATTACK_ID}"), 1)
 }
 
 /// target/<profile>/deps/<this test> -> target/<profile>/examples/goldfish (or the newest hashed copy).
@@ -113,10 +119,12 @@ fn run(list: &Path, panel: &Path, coverage: &Path, extra: &[&str]) -> Output {
     args.extend(extra.iter().map(|arg| arg.to_string()));
     Command::new(goldfish_program())
         .args(&args)
+        .env(MISSING_ATTACK_ENV, MISSING_ATTACK_ID)
         .output()
         .expect("goldfish should launch")
 }
 
+#[cfg(feature = "test-utils")]
 #[test]
 fn goldfish_refuses_a_list_or_panel_deck_with_a_missing_attack_card_before_writing_anything() {
     for blocked_side in ["list", "panel"] {
@@ -134,13 +142,17 @@ fn goldfish_refuses_a_list_or_panel_deck_with_a_missing_attack_card_before_writi
 
         let output = run(&list, &panel, &coverage, &[]);
         let stderr = String::from_utf8_lossy(&output.stderr);
-        assert_eq!(output.status.code(), Some(2), "{blocked_side}: {stderr}");
+        assert_eq!(
+            output.status.code(),
+            Some(2),
+            "{blocked_side}: {stderr}(a goldfish built without test-utils does not read {MISSING_ATTACK_ENV})"
+        );
         assert!(
             stderr.contains("Card-support preflight failed; goldfish did not start."),
             "{stderr}"
         );
         assert!(
-            stderr.contains("C1 019 — Volcanion — Attack effect not implemented"),
+            stderr.contains("A1 008 — Weedle — Attack effect not implemented"),
             "{stderr}"
         );
         let used_by = if blocked_side == "list" {
@@ -155,6 +167,7 @@ fn goldfish_refuses_a_list_or_panel_deck_with_a_missing_attack_card_before_writi
     }
 }
 
+#[cfg(feature = "test-utils")]
 #[test]
 fn goldfish_with_the_opt_out_lists_the_unsupported_card_and_runs() {
     let fixture = FixtureDir::new("allowed");
@@ -169,10 +182,30 @@ fn goldfish_with_the_opt_out_lists_the_unsupported_card_and_runs() {
     assert!(output.status.success(), "{stderr}");
     assert!(stderr.contains("--allow-unsupported-cards was given"), "{stderr}");
     assert!(
-        stderr.contains("C1 019 — Volcanion — Attack effect not implemented"),
+        stderr.contains("A1 008 — Weedle — Attack effect not implemented"),
         "{stderr}"
     );
     assert!(stderr.contains("Used by: list ("), "{stderr}");
     assert!(!stderr.contains("preflight failed"), "{stderr}");
+    assert!(coverage.exists());
+}
+
+/// Without test-utils the variable is not read: the list the tests above refuse starts, with no
+/// card-support line at all, because Weedle is a card the engine plays.
+#[cfg(not(feature = "test-utils"))]
+#[test]
+fn goldfish_built_without_test_utils_does_not_read_the_test_variable() {
+    let fixture = FixtureDir::new("production");
+    let list = fixture.write("list.txt", &deck_with_missing_attack_card());
+    let panel = fixture.path().join("panel");
+    fs::create_dir(&panel).unwrap();
+    fs::write(panel.join("opponent.txt"), supported_deck()).unwrap();
+    let coverage = fixture.path().join("coverage.json");
+
+    let output = run(&list, &panel, &coverage, &[]);
+    let stderr = String::from_utf8_lossy(&output.stderr);
+    assert!(output.status.success(), "{stderr}");
+    assert!(!stderr.contains("Card-support preflight"), "{stderr}");
+    assert!(!stderr.contains("Weedle"), "{stderr}");
     assert!(coverage.exists());
 }

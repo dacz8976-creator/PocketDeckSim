@@ -5,14 +5,18 @@ engine's one shared check (deckgym::card_support); --allow-unsupported-cards lis
 
   STRENGTH_PROGRAM=/path/to/strength python3 -B -m unittest -v test_strength_card_support     (from rl/strength/)
 
-It runs a REAL program: one built from this checkout's harness against an engine that has deckgym::card_support (rl/strength/build.sh ENGINE_DIR_OR_REF OUT;
-at R6, the kx3 rebuild). Without STRENGTH_PROGRAM every test is skipped, and says so. No game is played: a refused run stops before any, and the others are
-given --max-games 0 or --games 0.
+It runs a REAL program: one built from this checkout's harness against an engine that has deckgym::card_support, WITH the engine's test-utils feature (see
+the card below). rl/strength/build.sh builds without it, as the slow report's programs must be, so build this one by hand the way build.sh does, from the
+checkout's root (the folder B is yours to pick; the program is B/rl/strength/target/release/strength, or under CARGO_TARGET_DIR if that is set):
+  mkdir -p B/rl/strength && cp -r engine B/ && cp -r rl/strength/src rl/strength/Cargo.toml B/rl/strength/ && cp engine/Cargo.lock B/rl/strength/
+  (cd B/rl/strength && nice -n 19 cargo build --release --offline --features deckgym/test-utils)
+A program built without the feature starts the refused runs (the refusal tests then fail and say why). Without STRENGTH_PROGRAM every test is skipped, and
+says so. No game is played: a refused run stops before any, and the others are given --max-games 0 or --games 0.
 
-The card is C1 019 Volcanion, a Basic whose only attack, Dynamite Steam ("Flip 2 coins. This attack does 110 damage for each heads."), has no entry in the
-engine's EFFECT_MECHANIC_MAP (it has the 2-coin texts for 20 to 100 damage, not 110), so card_status gives MissingAttack (the release lane's card_status at
-d0792568). The deck is engine/example_decks/venusaur-exeggutor.txt with its Red Card swapped for it: still a legal 20-card deck, so only the card-support
-check can refuse it.
+The card is A1 008 Weedle, a Basic whose only attack, Sting, has no effect text, so the engine plays it. It is refused because every run here names it in
+TEST_CARD_SUPPORT_MISSING_ATTACK: an engine built with test-utils reads that variable (deckgym::card_support) and inspects the printings it names as
+MissingAttack. A real refused printing would not last: R8 implements the last 55 (this test used C1 019 Volcanion before). The deck is
+engine/example_decks/venusaur-exeggutor.txt with its Red Card swapped for it: still a legal 20-card deck, so only the card-support check can refuse it.
 """
 import json, os, shutil, subprocess, tempfile, unittest
 
@@ -21,12 +25,15 @@ ROOT = os.path.dirname(os.path.dirname(HERE))
 PROGRAM = os.environ.get('STRENGTH_PROGRAM')
 SUPPORTED = os.path.join(ROOT, 'engine', 'example_decks', 'venusaur-exeggutor.txt')
 RED_CARD = '1 Red Card P-A 006'
-BLOCKED_CARD = '1 Volcanion C1 019'
-LISTED = 'C1 019 — Volcanion — Attack effect not implemented'
+MISSING_ATTACK_ENV = 'TEST_CARD_SUPPORT_MISSING_ATTACK'   # deckgym::card_support::TEST_MISSING_ATTACK_ENV, read only with test-utils
+BLOCKED_ID = 'A1 008'
+BLOCKED_CARD = f'1 Weedle {BLOCKED_ID}'
+LISTED = f'{BLOCKED_ID} — Weedle — Attack effect not implemented'
 FLAG = '--allow-unsupported-cards'
+NO_TEST_UTILS = f'(a program built without the engine test-utils feature does not read {MISSING_ATTACK_ENV}: build it as the top of this file says)'
 
 
-@unittest.skipUnless(PROGRAM, 'set STRENGTH_PROGRAM to a strength program built from this checkout (rl/strength/build.sh) to run these')
+@unittest.skipUnless(PROGRAM, 'set STRENGTH_PROGRAM to a strength program built from this checkout with the engine test-utils feature (the top of this file says how) to run these')
 class StrengthCardSupport(unittest.TestCase):
     def setUp(self):
         self.tmp = tempfile.mkdtemp(prefix='strength_card_support_')
@@ -55,7 +62,8 @@ class StrengthCardSupport(unittest.TestCase):
         return path, out
 
     def program(self, *args):
-        return subprocess.run([PROGRAM, *args], stdin=subprocess.DEVNULL, capture_output=True, encoding='utf-8', errors='replace', timeout=300)
+        env = {**os.environ, MISSING_ATTACK_ENV: BLOCKED_ID}
+        return subprocess.run([PROGRAM, *args], stdin=subprocess.DEVNULL, capture_output=True, encoding='utf-8', errors='replace', timeout=300, env=env)
 
     def test_run_refuses_a_deck_or_an_opponent_with_a_missing_attack_card_and_writes_nothing(self):
         for tag, deck, opponent, used_by in (('deck', self.blocked_deck, self.ok_deck, 'Used by: deck under_test ('),
@@ -63,7 +71,7 @@ class StrengthCardSupport(unittest.TestCase):
             with self.subTest(blocked=tag):
                 man, out = self.manifest(tag, deck, opponent)
                 r = self.program('run', '--manifest', man, '--out', out)
-                self.assertEqual(r.returncode, 2, r.stderr)
+                self.assertEqual(r.returncode, 2, f'{r.stderr}\n{NO_TEST_UTILS}')
                 self.assertIn('Card-support preflight failed; strength run did not start.', r.stderr)
                 self.assertIn(LISTED, r.stderr)
                 self.assertIn(used_by, r.stderr)
@@ -75,7 +83,7 @@ class StrengthCardSupport(unittest.TestCase):
         man, out = self.manifest('allowed', self.blocked_deck, self.ok_deck)
         r = self.program('run', '--manifest', man, '--out', out, '--max-games', '0', FLAG)
         self.assertEqual(r.returncode, 0, r.stderr)
-        self.assertIn(f'{FLAG} was given', r.stderr)
+        self.assertIn(f'{FLAG} was given', r.stderr, NO_TEST_UTILS)
         self.assertIn(LISTED, r.stderr)
         self.assertIn('Used by: deck under_test (', r.stderr)
         self.assertNotIn('preflight failed', r.stderr)
@@ -90,7 +98,7 @@ class StrengthCardSupport(unittest.TestCase):
 
     def test_selfcheck_refuses_too_and_prints_no_selfcheck_line(self):
         r = self.program('selfcheck', '--pilot', 'r', '--deck-a', self.blocked_deck, '--deck-b', self.ok_deck, '--games', '0')
-        self.assertEqual(r.returncode, 2, r.stderr)
+        self.assertEqual(r.returncode, 2, f'{r.stderr}\n{NO_TEST_UTILS}')
         self.assertIn('Card-support preflight failed; strength selfcheck did not start.', r.stderr)
         self.assertIn(LISTED, r.stderr)
         self.assertIn('Used by: deck A (', r.stderr)

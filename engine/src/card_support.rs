@@ -3,8 +3,8 @@
 //! Missing* status) blocks the run; a RulesUnverified card is allowed, and its known limitations
 //! are printed. `deckgym simulate` and `deckgym optimize` (src/cli_preflight.rs), the goldfish
 //! example and the slow report's program (rl/strength) all refuse through this one report, so
-//! there is one list of what blocks a run. It reads only the card database: no RNG, and nothing a
-//! game depends on.
+//! there is one list of what blocks a run. It reads only the card database (and, built with
+//! test-utils, TEST_MISSING_ATTACK_ENV): no RNG, and nothing a game depends on.
 
 use crate::{
     card_ids::CardId,
@@ -20,6 +20,27 @@ use std::collections::{BTreeMap, BTreeSet};
 /// `strength run` / `strength selfcheck` in rl/strength). `deckgym simulate` and `deckgym
 /// optimize` have none.
 pub const ALLOW_UNSUPPORTED_CARDS_FLAG: &str = "--allow-unsupported-cards";
+
+/// Test builds only (feature test-utils): the printings this variable names (card ids such as
+/// "A1 008", comma-separated) are inspected as MissingAttack, so the refusal can be tested with a
+/// card the engine plays once no printing is refused for real. Read once per process. A build
+/// without test-utils has neither the name nor the code: it never reads the variable.
+#[cfg(feature = "test-utils")]
+pub const TEST_MISSING_ATTACK_ENV: &str = "TEST_CARD_SUPPORT_MISSING_ATTACK";
+
+#[cfg(feature = "test-utils")]
+static TEST_MISSING_ATTACK: std::sync::LazyLock<Vec<CardId>> = std::sync::LazyLock::new(|| {
+    std::env::var(TEST_MISSING_ATTACK_ENV)
+        .unwrap_or_default()
+        .split(',')
+        .map(str::trim)
+        .filter(|id| !id.is_empty())
+        .map(|id| {
+            CardId::from_card_id(id)
+                .unwrap_or_else(|| panic!("{TEST_MISSING_ATTACK_ENV}: no card has the id {id:?}"))
+        })
+        .collect()
+});
 
 #[derive(Debug)]
 struct Finding {
@@ -63,6 +84,12 @@ impl SupportReport {
     pub fn inspect_card_id(&mut self, source: &str, card_id: CardId) {
         let card = get_card_by_enum(card_id);
         let status = get_implementation_status(card_id);
+        #[cfg(feature = "test-utils")]
+        let status = if TEST_MISSING_ATTACK.contains(&card_id) {
+            ImplementationStatus::MissingAttack
+        } else {
+            status
+        };
         match status {
             ImplementationStatus::Complete => {}
             ImplementationStatus::RulesUnverified => Self::record(
