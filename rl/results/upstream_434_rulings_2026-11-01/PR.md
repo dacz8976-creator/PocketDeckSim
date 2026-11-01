@@ -59,6 +59,9 @@ After it, all pass.
 
 ## Checks
 
-CHECKS_PLACEHOLDER
+On the branch tip (base 7aa4ef0):
+- `cargo fmt -- --check`: clean.
+- `cargo clippy --features "tui test-utils" -- -D warnings`: clean.
+- `cargo test --features "tui test-utils" --all-targets`: 1,405 passed, 0 failed.
 
 🤖 Generated with [Claude Code](https://claude.com/claude-code)

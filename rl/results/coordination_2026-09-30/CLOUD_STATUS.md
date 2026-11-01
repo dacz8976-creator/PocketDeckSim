@@ -148,6 +148,7 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
      - 22 printings of 9 attacks print 0 and hit random targets; no panel, scoreboard, gauntlet or Dustin list carries one (ladder: Gholdengo ex once).
      - Correction candidate: a separate preset flag pricing each victim's expected share (not the whole sum on the Active). Nothing built.
    - **Upstream #434 rulings patch (Nov 1, the coordinator): started.** Patch files only, from bcollazo/deckgym-core main 7aa4ef0, branch fix/c1-434-rulings in a scratch clone; delivered to rl/results/upstream_434_rulings_2026-11-01/. Nothing pushed upstream.
+   - **Upstream #434 rulings patch (Nov 1): done.** Branch fix/c1-434-rulings (base 7aa4ef0, tip 24e8dc0, 3 commits) as patch files in `rl/results/upstream_434_rulings_2026-11-01/` with CHECKS.md and PR.md. fmt and clippy clean; cargo test --all-targets 1,405 passed, 0 failed. Nothing pushed upstream; for the coordinator's review.
    - **Now:** idle.
    **The Oct 9 job before it is done**
    (Fable via Dustin, Oct 9: decisions 12 and 14 and the Fossil item), pushed to `claude/coin-prevention-round2`, head
