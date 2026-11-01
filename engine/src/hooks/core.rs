@@ -252,6 +252,19 @@ pub(crate) fn on_evolve(
                 offer_on_evolve_ability(actor, state, in_play_idx);
             }
         }
+        // Frogadier's Sudden Duplication: offered while the deck is not empty and a Bench slot is
+        // free. What is left in the deck is hidden, so it doesn't block the offer, and a named
+        // search may find nothing (rules/04 §6); a full Bench visibly does block it. A search that
+        // finds no Frogadier still shuffles. Upstream offers it only while a Frogadier is in the deck.
+        Some(AbilityMechanic::PutRandomNamedFromDeckOnBenchOnEvolve { .. }) => {
+            let has_bench_space = state.in_play_pokemon[actor]
+                .iter()
+                .skip(1)
+                .any(|slot| slot.is_none());
+            if !state.decks[actor].cards.is_empty() && has_bench_space {
+                offer_on_evolve_ability(actor, state, in_play_idx);
+            }
+        }
         Some(AbilityMechanic::DiscardRandomEnergyFromOpponentActiveOnEvolve) => {
             let opponent = (actor + 1) % 2;
             let has_energy = state

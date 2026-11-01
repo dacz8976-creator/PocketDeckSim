@@ -11,7 +11,9 @@ use crate::{
         effect_ability_mechanic_map::ability_mechanic_from_effect,
         energy_moves::{bounded_energy_move_candidates, EnergyMoveScope, UNBOUNDED_ENERGY_MOVES},
         outcomes::Outcomes,
-        shared_mutations::{pokemon_search_outcomes, tool_search_outcomes},
+        shared_mutations::{
+            pokemon_search_outcomes, search_and_bench_by_name, tool_search_outcomes,
+        },
         team_rockets_researcher::UnpricedForecast,
         Action, SimpleAction,
     },
@@ -323,6 +325,9 @@ fn forecast_ability_by_mechanic(
         }
         AbilityMechanic::PutCardsFromDiscardToHandOnEvolve { .. } => {
             panic!("PutCardsFromDiscardToHandOnEvolve is triggered on evolve")
+        }
+        AbilityMechanic::PutRandomNamedFromDeckOnBenchOnEvolve { name } => {
+            search_and_bench_by_name(state, name.to_string())
         }
         AbilityMechanic::CanEvolveIntoEeveeEvolution => {
             panic!("CanEvolveIntoEeveeEvolution is a passive ability")

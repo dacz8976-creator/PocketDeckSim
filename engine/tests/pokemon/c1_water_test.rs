@@ -1,10 +1,11 @@
-// Ported from upstream deckgym-core #437 (tests/pokemon/c1_water_test.rs, as of 3c7bdab): the Dewgong and Palkia tests (2 + 3), without the 2 Frogadier tests (R8-05c), with fork tests added at the end (both printings; only [W] Energy discarded; the one choice with fewer than 3 opposing Pokémon; a chosen target with a coin-flip damage Ability, through the queued choice and its coin; Lorelei's +30 on each target; Spacial Rend v Starting Plains, the opponent's, the attacker's own and one with no recorded owner; no Stadium; the printings' status).
+// Ported from upstream deckgym-core #437 (tests/pokemon/c1_water_test.rs, as of 3c7bdab): all 7 tests, Dewgong 2 and Palkia 3 (R8-05b) and Frogadier 2 (R8-05c; the no-Frogadier test now expects the offer, which the fork makes while the deck is not empty, where upstream's took it only if offered), with fork tests added at the end (both printings; only [W] Energy discarded; the one choice with fewer than 3 opposing Pokémon; a chosen target with a coin-flip damage Ability, through the queued choice and its coin; Lorelei's +30 on each target; Spacial Rend v Starting Plains, the opponent's, the attacker's own and one with no recorded owner; no Stadium; Sudden Duplication: a random Frogadier of any printing onto the first free Bench slot, offered with no Frogadier in the deck and still shuffling, not offered with a full Bench, an empty deck or to a Frogadier put into play another way, once per Frogadier played, not switched off by Power of Alchemy or an earlier Prickly Powder; the printings' status).
 use deckgym::{
     actions::{Action, SimpleAction},
     card_ids::CardId,
     card_validation::{get_implementation_status, implementation_limitations, ImplementationStatus},
     database::get_card_by_enum,
-    models::{EnergyType, PlayedCard},
+    effects::CardEffect,
+    models::{Card, EnergyType, PlayedCard},
     test_support::{
         attack_action, get_initialized_game_with_board, get_test_game_with_board, trainer_from_id,
     },
@@ -158,6 +159,78 @@ fn test_palkia_spacial_rend_without_stadium_just_damages() {
         game.get_state_clone().get_active(1).get_remaining_hp(),
         250 - 70
     );
+}
+
+fn evolve_froakie_into_frogadier(deck_extra: Vec<deckgym::models::Card>) -> deckgym::Game<'static> {
+    let mut game = get_test_game_with_board(
+        vec![PlayedCard::from_id(CardId::C1040Froakie)],
+        vec![PlayedCard::from_id(CardId::A1001Bulbasaur)],
+    );
+    let mut state = game.get_state_clone();
+    let frogadier = get_card_by_enum(CardId::C1041Frogadier);
+    state.hands[0].push(frogadier.clone());
+    state.decks[0].cards = deck_extra;
+    game.set_state(state);
+    game.apply_action(&Action {
+        actor: 0,
+        action: SimpleAction::Evolve {
+            evolution: frogadier,
+            in_play_idx: 0,
+            from_deck: false,
+        },
+        is_stack: false,
+    });
+    game
+}
+
+/// Frogadier - Sudden Duplication: on evolving from hand, may put a random Frogadier from the
+/// deck onto the Bench.
+#[test]
+fn test_frogadier_sudden_duplication_benches_a_frogadier_from_deck() {
+    let mut game = evolve_froakie_into_frogadier(vec![
+        get_card_by_enum(CardId::A1001Bulbasaur),
+        get_card_by_enum(CardId::A1088Frogadier),
+    ]);
+
+    let (actor, choices) = game.get_state_clone().generate_possible_actions();
+    assert_eq!(actor, 0);
+    assert!(choices
+        .iter()
+        .any(|c| matches!(c.action, SimpleAction::Noop)));
+    let use_ability = choices
+        .iter()
+        .find(|c| matches!(c.action, SimpleAction::UseAbility { in_play_idx: 0 }))
+        .expect("Sudden Duplication should be offered")
+        .clone();
+    game.apply_action(&use_ability);
+    game.play_until_stable();
+
+    let state = game.get_state_clone();
+    let benched = state.in_play_pokemon[0][1]
+        .as_ref()
+        .expect("a Frogadier should have been benched");
+    assert_eq!(benched.get_name(), "Frogadier");
+    assert_eq!(state.decks[0].cards.len(), 1);
+}
+
+/// Without a Frogadier in the deck, the ability has nothing to put onto the Bench. The fork
+/// offers it anyway while the deck is not empty (what is left in the deck is hidden), so this
+/// expects the offer; upstream offers it only while a Frogadier is in the deck, and its test took
+/// the offer only if there was one.
+#[test]
+fn test_frogadier_sudden_duplication_does_nothing_without_frogadier_in_deck() {
+    let mut game = evolve_froakie_into_frogadier(vec![get_card_by_enum(CardId::A1001Bulbasaur)]);
+    let (_, choices) = game.get_state_clone().generate_possible_actions();
+    let use_ability = choices
+        .iter()
+        .find(|c| matches!(c.action, SimpleAction::UseAbility { .. }))
+        .expect("Sudden Duplication should be offered while the deck is not empty")
+        .clone();
+    game.apply_action(&use_ability);
+    game.play_until_stable();
+    let state = game.get_state_clone();
+    assert!(state.in_play_pokemon[0][1].is_none());
+    assert_eq!(state.decks[0].cards.len(), 1);
 }
 
 // Fork tests.
@@ -577,6 +650,370 @@ fn test_spacial_rend_without_a_stadium_from_either_printing_is_just_its_damage()
 #[test]
 fn test_dewgong_and_palkia_printings_report_complete() {
     for id in DEWGONGS.into_iter().chain(PALKIAS) {
+        assert_eq!(
+            get_implementation_status(id),
+            ImplementationStatus::Complete,
+            "{id:?}"
+        );
+        assert!(implementation_limitations(id).is_empty(), "{id:?}");
+    }
+}
+
+// Fork tests: Frogadier's Sudden Duplication, "Once during your turn, when you play this card from
+// your hand to evolve 1 of your Pokémon, you may use this Ability. Put a random Frogadier from your
+// deck onto your Bench."
+
+const FROGADIERS: [CardId; 2] = [CardId::C1041Frogadier, CardId::C1141Frogadier];
+
+fn froakie() -> PlayedCard {
+    // 60 HP, Basic, no Ability; evolves into Frogadier.
+    PlayedCard::from_id(CardId::C1040Froakie)
+}
+
+/// Player 0 (the game of `seed`, turn 3) has `board` (the first is Active) against `opponent`,
+/// `frogadier` as its only card in hand and `deck` as its whole deck, and plays that Frogadier from
+/// the hand onto the Froakie at `froakie_idx`. Any Sudden Duplication offer is then on the stack.
+fn evolve_from_hand_against(
+    seed: u64,
+    frogadier: CardId,
+    board: Vec<PlayedCard>,
+    froakie_idx: usize,
+    deck: &[CardId],
+    opponent: Vec<PlayedCard>,
+) -> Game<'static> {
+    let mut game = get_initialized_game_with_board(seed, 0, 3, board, opponent);
+    let mut state = game.get_state_clone();
+    state.hands[0] = vec![get_card_by_enum(frogadier)];
+    state.decks[0].cards = deck.iter().copied().map(get_card_by_enum).collect();
+    game.set_state(state);
+    play_frogadier(&mut game, frogadier, froakie_idx);
+    game
+}
+
+fn evolve_from_hand(
+    seed: u64,
+    frogadier: CardId,
+    board: Vec<PlayedCard>,
+    froakie_idx: usize,
+    deck: &[CardId],
+) -> Game<'static> {
+    evolve_from_hand_against(seed, frogadier, board, froakie_idx, deck, vec![bulbasaur()])
+}
+
+/// Player 0 plays `frogadier` from the hand onto the Froakie at `froakie_idx`.
+fn play_frogadier(game: &mut Game<'static>, frogadier: CardId, froakie_idx: usize) {
+    game.apply_action(&Action {
+        actor: 0,
+        action: SimpleAction::Evolve {
+            evolution: get_card_by_enum(frogadier),
+            in_play_idx: froakie_idx,
+            from_deck: false,
+        },
+        is_stack: false,
+    });
+}
+
+/// Whether the top of the stack is player 0's Sudden Duplication offer for the Pokémon at `idx`
+/// ("you may use this Ability": `UseAbility` or `Noop`).
+fn offered(game: &Game<'static>, idx: usize) -> bool {
+    game.get_state_clone().move_generation_stack.last()
+        == Some(&(
+            0,
+            vec![SimpleAction::UseAbility { in_play_idx: idx }, SimpleAction::Noop],
+        ))
+}
+
+/// Nothing is pending and player 0's main-phase actions use no Ability.
+fn nothing_offered(game: &Game<'static>) -> bool {
+    let state = game.get_state_clone();
+    let (actor, choices) = state.generate_possible_actions();
+    state.move_generation_stack.is_empty()
+        && actor == 0
+        && choices
+            .iter()
+            .all(|choice| !matches!(choice.action, SimpleAction::UseAbility { .. }))
+}
+
+/// Player 0 answers the pending offer with `answer` (`UseAbility` or `Noop`).
+fn answer(game: &mut Game<'static>, answer: SimpleAction) {
+    let (actor, choices) = game.get_state_clone().generate_possible_actions();
+    assert_eq!(actor, 0);
+    let pick = choices
+        .into_iter()
+        .find(|choice| choice.action == answer)
+        .expect("the answer should be on offer");
+    game.apply_action(&pick);
+}
+
+/// Player 0's in-play names, slot by slot (`None` for an empty slot).
+fn names(state: &State) -> Vec<Option<String>> {
+    state.in_play_pokemon[0]
+        .iter()
+        .map(|slot| slot.as_ref().map(|pokemon| pokemon.get_name()))
+        .collect()
+}
+
+fn named(names: &[Option<&str>]) -> Vec<Option<String>> {
+    names.iter().map(|name| name.map(str::to_string)).collect()
+}
+
+fn printed_id(card: &Card) -> String {
+    match card {
+        Card::Pokemon(pokemon) => pokemon.id.clone(),
+        other => panic!("not a Pokémon: {other:?}"),
+    }
+}
+
+/// "Put a random Frogadier from your deck onto your Bench": any card named Frogadier, each copy
+/// equally likely (A1 088 and C1 141 both come up over 40 seeds), goes onto the first free Bench
+/// slot as it is printed: a Stage 1 with nothing beneath it, at its full HP, with no Energy, and
+/// played this turn (so it can't evolve this turn), as upstream's `search_and_bench_by_name` puts
+/// it too. The rest of the deck stays; the hand is untouched.
+#[test]
+fn test_sudden_duplication_puts_a_random_frogadier_of_any_printing_onto_the_bench() {
+    let deck = [
+        CardId::A1001Bulbasaur,
+        CardId::A1088Frogadier,
+        CardId::C1141Frogadier,
+        CardId::A1053Squirtle,
+    ];
+    for frogadier in FROGADIERS {
+        let mut seen = std::collections::BTreeSet::new();
+        for seed in 0..40u64 {
+            let mut game = evolve_from_hand(seed, frogadier, vec![froakie(), snorlax()], 0, &deck);
+            assert!(offered(&game, 0), "{frogadier:?}, seed {seed}");
+            answer(&mut game, SimpleAction::UseAbility { in_play_idx: 0 });
+
+            let state = game.get_state_clone();
+            assert_eq!(
+                names(&state),
+                named(&[Some("Frogadier"), Some("Snorlax"), Some("Frogadier"), None]),
+                "{frogadier:?}, seed {seed}"
+            );
+            let benched = state.in_play_pokemon[0][2].as_ref().unwrap();
+            let id = printed_id(&benched.card);
+            assert!(matches!(&benched.card, Card::Pokemon(p) if p.stage == 1));
+            assert!(benched.cards_behind.is_empty(), "{frogadier:?}, seed {seed}");
+            assert!(benched.played_this_turn && benched.attached_energy.is_empty());
+            assert_eq!(benched.get_remaining_hp(), if id == "A1 088" { 80 } else { 70 });
+            assert!(state.hands[0].is_empty(), "{frogadier:?}, seed {seed}");
+            assert_eq!(state.decks[0].cards.len(), 3, "{frogadier:?}, seed {seed}");
+            assert!(!state.decks[0].cards.contains(&benched.card), "{frogadier:?}, seed {seed}");
+            seen.insert(id);
+        }
+        assert_eq!(
+            seen,
+            ["A1 088", "C1 141"].map(String::from).into_iter().collect(),
+            "{frogadier:?}"
+        );
+    }
+}
+
+/// With a deck that holds no Frogadier the Ability is still offered (what is left in the deck is
+/// hidden, rules/04 §6, and a named search may find nothing). Used, it finds nothing and shuffles
+/// the deck (10 different cards, a new order on every one of 20 seeds); declined, the deck is left
+/// as it was.
+#[test]
+fn test_sudden_duplication_without_a_frogadier_in_the_deck_is_offered_and_still_shuffles() {
+    let deck = [
+        CardId::A1001Bulbasaur,
+        CardId::A1002Ivysaur,
+        CardId::A1033Charmander,
+        CardId::A1053Squirtle,
+        CardId::A1211Snorlax,
+        CardId::A1129MewtwoEx,
+        CardId::C1032Seel,
+        CardId::PA005PokeBall,
+        CardId::A1219Erika,
+        CardId::A1225Sabrina,
+    ];
+    let in_order: Vec<Card> = deck.iter().copied().map(get_card_by_enum).collect();
+    for frogadier in FROGADIERS {
+        let mut shuffled = 0;
+        for seed in 0..20u64 {
+            let mut game = evolve_from_hand(seed, frogadier, vec![froakie()], 0, &deck);
+            assert!(offered(&game, 0), "{frogadier:?}, seed {seed}");
+            answer(&mut game, SimpleAction::UseAbility { in_play_idx: 0 });
+            let state = game.get_state_clone();
+            assert_eq!(names(&state), named(&[Some("Frogadier"), None, None, None]));
+            let left = &state.decks[0].cards;
+            assert_eq!(left.len(), in_order.len(), "{frogadier:?}, seed {seed}");
+            assert!(in_order.iter().all(|card| left.contains(card)), "{frogadier:?}, seed {seed}");
+            if *left != in_order {
+                shuffled += 1;
+            }
+            assert!(nothing_offered(&game), "{frogadier:?}, seed {seed}");
+
+            let mut game = evolve_from_hand(seed, frogadier, vec![froakie()], 0, &deck);
+            answer(&mut game, SimpleAction::Noop);
+            let state = game.get_state_clone();
+            assert_eq!(state.decks[0].cards, in_order, "{frogadier:?}, seed {seed}: declined");
+            assert_eq!(names(&state), named(&[Some("Frogadier"), None, None, None]));
+        }
+        assert_eq!(shuffled, 20, "{frogadier:?}: the search that finds nothing still shuffles");
+    }
+}
+
+/// A full Bench visibly leaves no room for a Frogadier, so the Ability is not offered, whether the
+/// Froakie that evolves is the Active or Benched; the evolution itself happens. With one free slot
+/// a Benched Froakie's Frogadier is offered it, and the Frogadier from the deck takes that slot.
+#[test]
+fn test_sudden_duplication_is_not_offered_with_a_full_bench() {
+    let deck = [CardId::A1088Frogadier, CardId::A1001Bulbasaur];
+    for frogadier in FROGADIERS {
+        let game = evolve_from_hand(
+            0,
+            frogadier,
+            vec![froakie(), bulbasaur(), squirtle(), snorlax()],
+            0,
+            &deck,
+        );
+        assert!(nothing_offered(&game), "{frogadier:?}: Active Froakie");
+        assert_eq!(game.get_state_clone().get_active(0).get_name(), "Frogadier");
+
+        let game = evolve_from_hand(
+            0,
+            frogadier,
+            vec![bulbasaur(), froakie(), squirtle(), snorlax()],
+            1,
+            &deck,
+        );
+        assert!(nothing_offered(&game), "{frogadier:?}: Benched Froakie");
+        let state = game.get_state_clone();
+        assert_eq!(names(&state)[1].as_deref(), Some("Frogadier"));
+        assert_eq!(state.decks[0].cards.len(), 2, "{frogadier:?}");
+
+        let mut game =
+            evolve_from_hand(0, frogadier, vec![bulbasaur(), froakie(), squirtle()], 1, &deck);
+        assert!(offered(&game, 1), "{frogadier:?}: one free slot");
+        answer(&mut game, SimpleAction::UseAbility { in_play_idx: 1 });
+        assert_eq!(
+            names(&game.get_state_clone()),
+            named(&[Some("Bulbasaur"), Some("Frogadier"), Some("Squirtle"), Some("Frogadier")]),
+            "{frogadier:?}"
+        );
+    }
+}
+
+/// An empty deck visibly holds nothing to search, so the Ability is not offered; the evolution
+/// itself happens.
+#[test]
+fn test_sudden_duplication_is_not_offered_with_an_empty_deck() {
+    for frogadier in FROGADIERS {
+        let game = evolve_from_hand(0, frogadier, vec![froakie()], 0, &[]);
+        assert!(nothing_offered(&game), "{frogadier:?}");
+        assert_eq!(game.get_state_clone().get_active(0).get_name(), "Frogadier");
+    }
+}
+
+/// "When you play this card from your hand to evolve": a Frogadier put into play any other way is
+/// not offered the Ability. Three ways: a C1 041 put onto the Bench by Sudden Duplication itself;
+/// a Frogadier evolved from the deck by the random evolution that Wallace and Quick-Grow Extract
+/// resolve to (`ChooseRandomEvolutionTarget`, driven directly: no card reaches a Froakie that way
+/// today, as Wallace needs a maximum HP of 50 or less, Froakie has 60, and Quick-Grow Extract a [G]
+/// Pokémon); and a Frogadier already in play on a later turn, which move generation never offers it.
+#[test]
+fn test_sudden_duplication_is_offered_only_when_this_card_is_played_from_the_hand_to_evolve() {
+    for frogadier in FROGADIERS {
+        let mut game = evolve_from_hand(0, frogadier, vec![froakie()], 0, &[CardId::C1041Frogadier]);
+        answer(&mut game, SimpleAction::UseAbility { in_play_idx: 0 });
+        let state = game.get_state_clone();
+        assert_eq!(names(&state), named(&[Some("Frogadier"), Some("Frogadier"), None, None]));
+        assert_eq!(state.in_play_pokemon[0][1].as_ref().unwrap().card, get_card_by_enum(CardId::C1041Frogadier));
+        assert!(nothing_offered(&game), "{frogadier:?}: benched by Sudden Duplication");
+
+        let mut game = get_test_game_with_board(vec![froakie()], vec![bulbasaur()]);
+        let mut state = game.get_state_clone();
+        state.decks[0].cards = vec![get_card_by_enum(frogadier), get_card_by_enum(CardId::A1001Bulbasaur)];
+        game.set_state(state);
+        game.apply_action(&Action {
+            actor: 0,
+            action: SimpleAction::ChooseRandomEvolutionTarget {
+                in_play_idx: 0,
+                energy_type: EnergyType::Water,
+            },
+            is_stack: false,
+        });
+        let state = game.get_state_clone();
+        assert_eq!(state.get_active(0).card, get_card_by_enum(frogadier), "{frogadier:?}");
+        assert_eq!(state.decks[0].cards, vec![get_card_by_enum(CardId::A1001Bulbasaur)]);
+        assert!(nothing_offered(&game), "{frogadier:?}: evolved from the deck");
+
+        let game = get_initialized_game_with_board(
+            0,
+            0,
+            5,
+            vec![PlayedCard::from_id(frogadier)],
+            vec![bulbasaur()],
+        );
+        assert!(!game.get_state_clone().decks[0].cards.is_empty());
+        assert!(nothing_offered(&game), "{frogadier:?}: in play on a later turn");
+    }
+}
+
+/// "Once during your turn" is per Pokémon (rules/04 §5): two Frogadier played from the hand onto
+/// two Froakie in one turn are each offered the Ability, and each puts a Frogadier onto the Bench;
+/// neither is offered it again.
+#[test]
+fn test_each_frogadier_played_from_the_hand_is_offered_sudden_duplication_once() {
+    let mut game = get_test_game_with_board(vec![froakie(), froakie()], vec![bulbasaur()]);
+    let mut state = game.get_state_clone();
+    state.hands[0] = FROGADIERS.iter().copied().map(get_card_by_enum).collect();
+    state.decks[0].cards = [CardId::A1088Frogadier, CardId::B1072Frogadier, CardId::A1001Bulbasaur]
+        .iter()
+        .copied()
+        .map(get_card_by_enum)
+        .collect();
+    game.set_state(state);
+
+    play_frogadier(&mut game, CardId::C1041Frogadier, 0);
+    assert!(offered(&game, 0));
+    answer(&mut game, SimpleAction::UseAbility { in_play_idx: 0 });
+    play_frogadier(&mut game, CardId::C1141Frogadier, 1);
+    assert!(offered(&game, 1));
+    answer(&mut game, SimpleAction::UseAbility { in_play_idx: 1 });
+
+    let state = game.get_state_clone();
+    assert_eq!(names(&state), named(&[Some("Frogadier"); 4]));
+    assert_eq!(state.decks[0].cards, vec![get_card_by_enum(CardId::A1001Bulbasaur)]);
+    assert!(state.hands[0].is_empty());
+    assert!(nothing_offered(&game));
+}
+
+/// No suppression applies when the Ability is offered, so it is offered under both. Alolan Muk's
+/// Power of Alchemy (B2 097: "Basic Pokémon in play ... have no Abilities") doesn't reach a
+/// Stage 1, and a Prickly Powder `NoAbilities` on the Froakie ends when it evolves (rules/04 §4:
+/// effects of attacks on a Pokémon end on evolution). The `on_evolve` hook reads the played card's
+/// printed Ability, which is why.
+#[test]
+fn test_sudden_duplication_is_offered_under_power_of_alchemy_and_after_prickly_powder() {
+    let deck = [CardId::A1088Frogadier];
+    for frogadier in FROGADIERS {
+        let mut game = evolve_from_hand_against(
+            0,
+            frogadier,
+            vec![froakie()],
+            0,
+            &deck,
+            vec![PlayedCard::from_id(CardId::B2097AlolanMuk)],
+        );
+        assert!(offered(&game, 0), "{frogadier:?}: Power of Alchemy");
+        answer(&mut game, SimpleAction::UseAbility { in_play_idx: 0 });
+        assert_eq!(names(&game.get_state_clone())[1].as_deref(), Some("Frogadier"));
+
+        let mut powdered = froakie();
+        powdered.add_effect(CardEffect::NoAbilities, 1);
+        let mut game = evolve_from_hand(0, frogadier, vec![powdered], 0, &deck);
+        assert!(offered(&game, 0), "{frogadier:?}: Prickly Powder on the Froakie");
+        answer(&mut game, SimpleAction::UseAbility { in_play_idx: 0 });
+        assert_eq!(names(&game.get_state_clone())[1].as_deref(), Some("Frogadier"));
+    }
+}
+
+/// Both Frogadier printings are Complete, with no known limitation.
+#[test]
+fn test_frogadier_printings_report_complete() {
+    for id in FROGADIERS {
         assert_eq!(
             get_implementation_status(id),
             ImplementationStatus::Complete,

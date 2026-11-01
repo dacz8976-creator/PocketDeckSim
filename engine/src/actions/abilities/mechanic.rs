@@ -573,6 +573,19 @@ pub enum AbilityMechanic {
         card_kind: DiscardSearchKind,
         selection: DiscardSelection,
     },
+    /// Frogadier's Sudden Duplication (C1 041 / C1 141): "Once during your turn, when you play this
+    /// card from your hand to evolve 1 of your Pokémon, you may use this Ability. Put a random
+    /// Frogadier from your deck onto your Bench."
+    ///
+    /// Rides the same on-evolve trigger as `DrawCardsOnEvolve` & co.: the `on_evolve` hook offers a
+    /// `UseAbility` / `Noop` pair while the deck is not empty and a Bench slot is free, and the
+    /// Ability resolves through `search_and_bench_by_name` (one equally likely branch per card
+    /// named `name` in the deck, placed onto the first free Bench slot; a search that finds none
+    /// still shuffles). What is left in the deck is hidden, so it does not gate the offer; upstream
+    /// offers it only while a `name` card is in the deck.
+    PutRandomNamedFromDeckOnBenchOnEvolve {
+        name: &'static str,
+    },
     CanEvolveIntoEeveeEvolution,
     CanEvolveOnFirstTurnIfActive,
     CounterattackDamage {

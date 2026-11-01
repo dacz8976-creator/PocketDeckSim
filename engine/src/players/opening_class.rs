@@ -192,13 +192,14 @@ pub(crate) fn opening_ability_class(mechanic: &AbilityMechanic) -> OpeningAbilit
         | AbilityMechanic::MoveRandomEnergyFromOpponentActiveToSelfOnEvolve
         | AbilityMechanic::OpponentShuffleHandAndDrawOnEvolve
         | AbilityMechanic::PoisonAndBurnOpponentActiveOnEvolve
-        | AbilityMechanic::PutCardsFromDiscardToHandOnEvolve { .. } => class(OpeningPosition::Evolve, false, true, false),
+        | AbilityMechanic::PutCardsFromDiscardToHandOnEvolve { .. }
+        | AbilityMechanic::PutRandomNamedFromDeckOnBenchOnEvolve { .. } => class(OpeningPosition::Evolve, false, true, false),
         AbilityMechanic::PreventAllDamageAndEffectsOnEvolve { .. } => class(OpeningPosition::Evolve, false, false, false),
-        // Classed by its hook (hooks/core.rs 629 (`apply_bad_dreams_damage_for_owner` collects every in-play holder)): no position phrase in its text.
+        // Classed by its hook (hooks/core.rs 642 (`apply_bad_dreams_damage_for_owner` collects every in-play holder)): no position phrase in its text.
         AbilityMechanic::BadDreamsEndOfTurn { .. } => class(OpeningPosition::Anywhere, false, true, false),
         // Classed by its hook (state/energy.rs 155 (any slot)): no position phrase in its text.
         AbilityMechanic::DamageOpponentActiveOnZoneAttachToSelf { .. } => class(OpeningPosition::Anywhere, false, true, false),
-        // Classed by its hook (move_generation/move_generation_abilities.rs 194 (the gate is only `!card.ability_used`)): no position phrase in its text.
+        // Classed by its hook (move_generation/move_generation_abilities.rs 195 (the gate is only `!card.ability_used`)): no position phrase in its text.
         AbilityMechanic::HealActiveYourPokemon { .. } => class(OpeningPosition::Anywhere, false, true, false),
         // Classed by its hook (actions/apply_action_helpers.rs 256 (counts every in-play holder)): no position phrase in its text.
         AbilityMechanic::IncreasePoisonDamage { .. } => class(OpeningPosition::Anywhere, false, true, false),
@@ -321,8 +322,9 @@ mod tests {
 
     /// The class counts of the map as `census.py` classifies it (`VARIANT_CLASS` in R8's copy,
     /// `rl/results/r8_catchup_2026-10-29/census.py`), counted as flag settings over the map (a variant whose own fields
-    /// change its class counts once per setting): 132 over 126 variants, 161 entries. Before R8-05a added
-    /// `ReduceDamageToYourTypeWhileInPlay` (anywhere board) it was 131 over 125, and before R8-04b added
+    /// change its class counts once per setting): 133 over 127 variants, 162 entries. Before R8-05c added
+    /// `PutRandomNamedFromDeckOnBenchOnEvolve` (on evolve) it was 132 over 126, before R8-05a added
+    /// `ReduceDamageToYourTypeWhileInPlay` (anywhere board) 131 over 125, and before R8-04b added
     /// `FlipMoreCoinsForNamedAttack` (anywhere board) 130 over 124.
     #[test]
     fn the_classes_count_as_the_census_does() {
@@ -357,14 +359,14 @@ mod tests {
             ("bench only", 8),
             ("anywhere board", 46),
             ("anywhere self", 31),
-            ("on evolve", 12),
+            ("on evolve", 13),
             ("on bench entry", 4),
             ("anywhere first turn", 2),
         ]
         .into_iter()
         .collect();
         assert_eq!(counts, expected);
-        assert_eq!(settings.len(), 132);
+        assert_eq!(settings.len(), 133);
     }
 
     const ALTARIA: &str = "Energy: Psychic\n2 B1 196\n1 B1 102\n2 B1 184\n2 B3a 020\n2 B2b 040\n1 A4a 059\n2 P-A 007\n2 B1 225\n1 A1 225\n2 P-A 005\n1 B3 147\n1 B3b 064\n1 B2 153\n";

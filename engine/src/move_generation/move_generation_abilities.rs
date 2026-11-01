@@ -230,6 +230,7 @@ fn can_use_ability_by_mechanic(
         AbilityMechanic::MoveRandomEnergyFromOpponentActiveToSelfOnEvolve => false,
         AbilityMechanic::OpponentShuffleHandAndDrawOnEvolve => false, // triggered on evolve
         AbilityMechanic::PutCardsFromDiscardToHandOnEvolve { .. } => false,
+        AbilityMechanic::PutRandomNamedFromDeckOnBenchOnEvolve { .. } => false, // triggered on evolve
         AbilityMechanic::CanEvolveIntoEeveeEvolution => false,
         AbilityMechanic::CanEvolveOnFirstTurnIfActive => false,
         AbilityMechanic::CounterattackDamage { .. } => false,
