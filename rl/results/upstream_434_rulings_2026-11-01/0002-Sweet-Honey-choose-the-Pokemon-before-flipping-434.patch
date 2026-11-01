@@ -1,7 +1,7 @@
 From ade28e48878453d92d8515451b62d8cce744ba5e Mon Sep 17 00:00:00 2001
 From: dacz8976-creator <dacz8976@gmail.com>
 Date: Sun, 1 Nov 2026 16:07:43 +0000
-Subject: [PATCH 2/2] Sweet Honey: choose the Pokemon before flipping (#434)
+Subject: [PATCH 2/3] Sweet Honey: choose the Pokemon before flipping (#434)
 
 Playing Sweet Honey now queues the choice among your damaged Pokemon (the
 targets Potion offers; can_play_potion still decides playability) before any

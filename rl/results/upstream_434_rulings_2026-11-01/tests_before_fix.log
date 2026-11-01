@@ -1,0 +1,19 @@
+test pokemon::darkrai_ex_test::test_darkrai_ex_nightmare_aura_ignores_non_darkness_effect_attachment ... ok
+test pokemon::darkrai_ex_test::test_darkrai_ex_nightmare_aura ... ok
+test pokemon::darkrai_ex_test::test_darkrai_ex_nightmare_aura_only_darkness ... ok
+test pokemon::darkrai_ex_test::test_darkrai_ex_nightmare_aura_ko_triggers_promotion ... ok
+test pokemon::c1_grass_fire_test::test_vespiquen_honey_rush_does_50_per_sweet_honey_in_hand ... ok
+test pokemon::c1_grass_fire_test::test_ribombee_honey_gather_puts_sweet_honey_in_hand_once_per_turn ... ok
+test trainers::c1_sweet_honey_test::test_sweet_honey_heals_20_per_heads_until_tails ... ok
+test trainers::c1_sweet_honey_test::test_sweet_honey_needs_a_damaged_pokemon ... ok
+test trainers::misty_test::test_misty_attaches_water_to_the_chosen_pokemon_per_heads ... ok
+test pokemon::darkrai_ex_test::test_darkrai_ex_nightmare_aura_triggers_on_effect_attachment_from_zone ... FAILED
+test trainers::c1_sweet_honey_test::test_sweet_honey_chooses_a_damaged_pokemon_before_flipping ... FAILED
+test trainers::c1_sweet_honey_test::test_sweet_honey_heals_the_chosen_benched_pokemon ... FAILED
+test trainers::misty_test::test_misty_chooses_a_water_pokemon_before_flipping ... FAILED
+thread 'pokemon::darkrai_ex_test::test_darkrai_ex_nightmare_aura_triggers_on_effect_attachment_from_zone' (4574) panicked at tests/pokemon/darkrai_ex_test.rs:115:5:
+thread 'trainers::c1_sweet_honey_test::test_sweet_honey_chooses_a_damaged_pokemon_before_flipping' (4575) panicked at tests/trainers/c1_sweet_honey_test.rs:81:13:
+thread 'trainers::c1_sweet_honey_test::test_sweet_honey_heals_the_chosen_benched_pokemon' (4577) panicked at tests/trainers/c1_sweet_honey_test.rs:112:35:
+thread 'trainers::misty_test::test_misty_chooses_a_water_pokemon_before_flipping' (4580) panicked at tests/trainers/misty_test.rs:67:28:
+test result: FAILED. 9 passed; 4 failed; 0 ignored; 0 measured; 1042 filtered out; finished in 0.16s
+error: test failed, to rerun pass `--test cards`
