@@ -147,6 +147,7 @@ The audit is committed: `rl/results/coin_prevention_round2_2026-10-01/TEXT_AUDIT
      - km's clocks call the damage estimate with spread_aware off, so Draco Meteor reads 0 (engine: 152 HP per attack); clock 30 (no threat) v 3.
      - 22 printings of 9 attacks print 0 and hit random targets; no panel, scoreboard, gauntlet or Dustin list carries one (ladder: Gholdengo ex once).
      - Correction candidate: a separate preset flag pricing each victim's expected share (not the whole sum on the Active). Nothing built.
+   - **Upstream #434 rulings patch (Nov 1, the coordinator): started.** Patch files only, from bcollazo/deckgym-core main 7aa4ef0, branch fix/c1-434-rulings in a scratch clone; delivered to rl/results/upstream_434_rulings_2026-11-01/. Nothing pushed upstream.
    - **Now:** idle.
    **The Oct 9 job before it is done**
    (Fable via Dustin, Oct 9: decisions 12 and 14 and the Fossil item), pushed to `claude/coin-prevention-round2`, head
