@@ -927,6 +927,13 @@ pub(crate) fn handle_knockouts_with_prior(
         // find an attacker that Rocky Helmet has already reduced to 0 HP. Discarding the attacker
         // before the defender's hook runs made that legal double-KO sequence panic.
         for (ko_receiver, ko_pokemon_idx) in wave.iter().copied() {
+            // Known limits of this per-Knock-Out flag (new printings only): (1) a later wave's
+            // Knock Out set off by a Flame Aura Knock Out (such as Toughness Aroma's +20 HP lost
+            // when Lilligant leaves) has no mark, so it still takes the wave-wide
+            // `is_from_active_attack`, the engine's older cascade reading; (2) a
+            // `ResolveKnockoutPoints` pause rebuilds `ability_damage_knockouts` empty on re-entry,
+            // unreachable today: later waves come only from Toughness Aroma ([G]), and the
+            // point-denial coin holders are Dusknoir ([P]) and Glimmora ([D]).
             let from_attack = is_from_active_attack
                 && !state.in_play_pokemon[ko_receiver][ko_pokemon_idx]
                     .as_ref()
@@ -1167,8 +1174,10 @@ pub(crate) fn apply_survive_knockout_turn_effects(state: &mut State) {
 /// Charizard's Flame Aura can Knock Out the opponent's Active inside its owner's attack (on the
 /// attack's own Energy attach, such as Moltres ex's Inferno Dance). That Knock Out waits for the
 /// attack's wave, which must not count it as "Knocked Out by damage from an attack": no Rally Back
-/// flag or Zarude type, no Rescue Scarf, Hala or Iris point, and none of the attack's on-knockout
-/// hooks (Lucky Egg, Innards Out, Lucky Mittens and the rest). `State::on_attach_energy` marks it.
+/// flag or Zarude type, no Rescue Scarf or Hala, and none of the attack's on-knockout hooks (Lucky
+/// Egg, Innards Out, Lucky Mittens and the rest). `State::on_attach_energy` marks it. The Iris bonus
+/// point is gated on the same per-Knock-Out flag for consistency only: no current card can reach it,
+/// since Iris needs a Haxorus attacker and Haxorus's only attack, Frenzied Blade, attaches no Energy.
 fn knocked_out_by_ability_damage(pokemon: &PlayedCard) -> bool {
     pokemon
         .get_active_effects()
