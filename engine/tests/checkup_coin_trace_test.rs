@@ -14,7 +14,8 @@
 //!
 //! Every scenario also asserts what its first Checkup forecast (turn 3's `EndTurn` and the
 //! deferred Checkup frames after it) looked like: the branch count of each step, every branch
-//! equally likely. This proves each board reaches the path it is meant to exercise.
+//! equally likely, or, where Meloetta's start-of-turn search splits the Checkup further, each
+//! step's exact probabilities. This proves each board reaches the path it is meant to exercise.
 //!
 //! The record is pinned: its FNV-1a must equal `EXPECTED_RECORD_FNV`, the record at 8484daa8, so
 //! the test fails on any change to it (in the suite's release build). With `CHECKUP_TRACE_OUT`
@@ -49,8 +50,10 @@ const SEEDS: u64 = 16;
 /// turn 5 within it fails.
 const MAX_STEPS: usize = 24;
 /// FNV-1a of the whole record at 8484daa8 (R8-08 part 1 fix, before Soothing Lullaby and Wings of
-/// the Moone), 1,528,448 bytes.
-const EXPECTED_RECORD_FNV: &str = "efe286f234b52e1a";
+/// the Moone), 1,885,710 bytes. The boards added in the R8-08 part 2a fix (20 steel apron, 20
+/// soothing wind, 24a-24d, 25) were recorded on that commit's engine as well; every earlier
+/// board's lines are byte for byte those of the R8-08d record.
+const EXPECTED_RECORD_FNV: &str = "035e47d3f7b7752d";
 
 fn fnv(text: &str) -> u64 {
     let mut hash = 0xcbf2_9ce4_8422_2325_u64;
@@ -141,6 +144,9 @@ enum First {
         asleep: Vec<(&'static str, usize)>,
         awake: Vec<(&'static str, usize)>,
     },
+    /// Each step with its forecast's exact probabilities: the Checkup coins times the next
+    /// player's start-of-turn search (Meloetta's Strange Singing), coin outer, search inner.
+    Exact(Vec<(&'static str, Vec<f64>)>),
 }
 
 /// A first Checkup with no deferred frame: `EndTurn` alone, with `branches` outcomes.
@@ -241,6 +247,14 @@ fn opp(active: PlayedCard) -> Vec<PlayedCard> {
 /// Bulbasaur with Vine Whip's [G][C] attached: player 1's Active, ready to attack on turn 4.
 fn ready_bulbasaur(conditions: &[StatusCondition]) -> PlayedCard {
     with(CardId::A1001Bulbasaur, conditions).with_energy(vec![EnergyType::Grass, EnergyType::Grass])
+}
+
+/// `setup` with two Abra and a Ralts on top of player 1's deck, for Meloetta's Strange Singing (B2
+/// 070): "At the beginning of your turn, if this Pokémon is in the Active Spot, put a random [P]
+/// Pokémon from your deck into your hand." One branch per card: 3 searches, each 1/3.
+fn strange_singing(mut setup: Setup) -> Setup {
+    setup.deck1.splice(0..0, [CardId::A1115Abra, CardId::A1115Abra, CardId::A1130Ralts]);
+    setup
 }
 
 /// Each seat's guess at the other's list, for `search_state_with_opponent_list`.
@@ -416,23 +430,29 @@ fn run(name: &str, setup: &Setup, picks: &[Pick], first: First, out: &mut String
 
         let counts = checkup.iter().map(|(step, branches)| (*step, branches.len())).collect::<Vec<_>>();
         let _ = writeln!(out, "first checkup {counts:?}");
-        for (step, probabilities) in &checkup {
-            let equal = 1.0 / probabilities.len() as f64;
-            assert!(
-                probabilities.iter().all(|probability| *probability == equal),
-                "{name} seed {seed}: {step} branches are not equally likely: {probabilities:?}"
-            );
+        if !matches!(first, First::Exact(_)) {
+            for (step, probabilities) in &checkup {
+                let equal = 1.0 / probabilities.len() as f64;
+                assert!(
+                    probabilities.iter().all(|probability| *probability == equal),
+                    "{name} seed {seed}: {step} branches are not equally likely: {probabilities:?}"
+                );
+            }
         }
         let asleep = asleep_at_end_turn
             .unwrap_or_else(|| panic!("{name} seed {seed}: turn 3 never reached EndTurn"));
         let expected = match &first {
-            First::Always(expected) => expected,
+            First::Always(expected) => expected.clone(),
             First::IfAsleep { seat, asleep: when_asleep, awake } => {
                 asleep_seen[usize::from(asleep[*seat])] = true;
-                if asleep[*seat] { when_asleep } else { awake }
+                (if asleep[*seat] { when_asleep } else { awake }).clone()
+            }
+            First::Exact(steps) => {
+                assert_eq!(&checkup, steps, "{name} seed {seed}: first Checkup probabilities");
+                steps.iter().map(|(step, probabilities)| (*step, probabilities.len())).collect()
             }
         };
-        assert_eq!(&counts, expected, "{name} seed {seed}: first Checkup");
+        assert_eq!(counts, expected, "{name} seed {seed}: first Checkup");
 
         // Red Card: the opponent shuffles their hand into their deck, so the order they draw from
         // fingerprints the gameplay RNG the scenario left behind. A small deck is a weak print
@@ -511,10 +531,10 @@ fn pokemon_checkup_coin_trace() {
     run("14 sabrina", &setup(vec![squirtle(&[])], sabrina_opp, &[A1225Sabrina]), &[Pick::Play("Sabrina")], end_turn(1), &mut out);
 
     // Knockouts in the Checkup and at the end of the turn, and the deferred Checkup frames.
-    let poisoned_sleeper = with(A1001Bulbasaur, &[Asleep, Poisoned]).with_remaining_hp(10);
+    let poisoned_sleeper = || with(A1001Bulbasaur, &[Asleep, Poisoned]).with_remaining_hp(10);
     run(
         "15 checkup knockout",
-        &setup(vec![squirtle(&[])], opp(poisoned_sleeper), &[]),
+        &setup(vec![squirtle(&[])], opp(poisoned_sleeper()), &[]),
         &[],
         First::Always(vec![("EndTurn", 2), ("FinishPokemonCheckup", 1)]),
         &mut out,
@@ -554,15 +574,21 @@ fn pokemon_checkup_coin_trace() {
         &mut out,
     );
 
-    // Sleep prevented or immune: no sleeper.
+    // Sleep prevented or immune: no sleeper. Crystal Body and Clear Veil stop the attack's effect;
+    // Insomnia, Steel Apron on a [M] Pokémon and Soothing Wind (Ogerpon ex on the Bench, the
+    // defender has Energy) are `apply_status_condition`'s own returns.
     let clear_veil = PlayedCard::from_id(A1001Bulbasaur).with_tool(get_card_by_enum(B4149ClearVeil));
+    let steel_apron = PlayedCard::from_id(A1181Meltan).with_tool(get_card_by_enum(A4153SteelApron));
     for (name, defender) in [
         ("20 crystal body", PlayedCard::from_id(A2034Regice)),
         ("20 clear veil", clear_veil),
         ("20 insomnia", PlayedCard::from_id(A4140Hoothoot)),
+        ("20 steel apron", steel_apron),
     ] {
         run(name, &setup(vec![frosmoth()], opp(defender), &[]), &[Pick::Attack("Powder Snow")], end_turn(1), &mut out);
     }
+    let soothing_wind = vec![ready_bulbasaur(&[]), PlayedCard::from_id(B2017TealMaskOgerponEx), PlayedCard::from_id(A1033Charmander)];
+    run("20 soothing wind", &setup(vec![frosmoth()], soothing_wind, &[]), &[Pick::Attack("Powder Snow")], end_turn(1), &mut out);
 
     // Checkup Abilities after the coins, then one knockout wave.
     run(
@@ -583,7 +609,51 @@ fn pokemon_checkup_coin_trace() {
     run("23a powder snow on a sleeper", &setup(vec![frosmoth()], opp(ready_bulbasaur(&[Asleep])), &[]), &[Pick::Attack("Powder Snow")], end_turn(2), &mut out);
     run("23b sleep pendulum on a sleeper", &setup(vec![PlayedCard::from_id(A1125Hypno)], opp(ready_bulbasaur(&[Asleep])), &[]), &[Pick::UseAbility(0)], end_turn(2), &mut out);
 
-    assert!(out.contains("== 23b sleep pendulum on a sleeper seed 15"));
+    // The next player's start-of-turn search after the coins (Meloetta's Strange Singing): one
+    // branch per coin outcome and search, coin outer, search inner, each the product (24a). It
+    // rides on `FinishPokemonCheckup` for a Meloetta promoted in the Checkup (24b), and it waits
+    // there while player 0's Active, Knocked Out in the Checkup, is promoted (24c) or its
+    // point-denial coin is pending (24d). Player 0 holds a Basic in 24a, so the searches price
+    // `EndTurn` with Meloetta next and player 1's deck unknown to them.
+    let meloetta = || PlayedCard::from_id(B2070Meloetta);
+    run(
+        "24a strange singing",
+        &strange_singing(setup(vec![squirtle(&[Asleep])], opp(meloetta()), &[A1033Charmander])),
+        &[],
+        First::Exact(vec![("EndTurn", vec![1.0 / 6.0; 6])]),
+        &mut out,
+    );
+    run(
+        "24b strange singing after a promotion",
+        &strange_singing(setup(vec![squirtle(&[])], vec![poisoned_sleeper(), meloetta()], &[])),
+        &[],
+        First::Exact(vec![("EndTurn", vec![0.5; 2]), ("FinishPokemonCheckup", vec![1.0 / 3.0; 3])]),
+        &mut out,
+    );
+    let own_poisoned_sleeper = |id| vec![with(id, &[Asleep, Poisoned]).with_remaining_hp(10), PlayedCard::from_id(A1057Psyduck)];
+    run(
+        "24c strange singing waits for a promotion",
+        &strange_singing(setup(own_poisoned_sleeper(A1053Squirtle), opp(meloetta()), &[])),
+        &[],
+        First::Exact(vec![("EndTurn", vec![0.5; 2]), ("FinishPokemonCheckup", vec![1.0 / 3.0; 3])]),
+        &mut out,
+    );
+    run(
+        "24d strange singing waits for a point-denial coin",
+        &strange_singing(setup(own_poisoned_sleeper(B3a045Glimmora), opp(meloetta()), &[])),
+        &[],
+        First::Exact(vec![
+            ("EndTurn", vec![0.5; 2]),
+            ("ResolveKnockoutPoints", vec![0.5; 2]),
+            ("FinishPokemonCheckup", vec![1.0 / 3.0; 3]),
+        ]),
+        &mut out,
+    );
+
+    // A Checkup Knock Out that ends the game: no turn follows it.
+    run("25 checkup win", &setup(vec![squirtle(&[])], vec![poisoned_sleeper()], &[]), &[], end_turn(2), &mut out);
+
+    assert!(out.contains("== 25 checkup win seed 15"));
     if let Ok(path) = std::env::var("CHECKUP_TRACE_OUT") {
         std::fs::write(path, &out).unwrap();
     }

@@ -6,10 +6,10 @@
 // Benched Pokémon (2 choices; upstream 4), and the script moves the [W] first. Then the fork's tests (the design's
 // N1-N15): every end board against brute force (a gapped Bench too), the order and the floor, single-choice frames
 // applied without a decision, each move one certain branch with no game randomness, Rocky Helmet and Perish Body after
-// the last move, the defender's Knock Out and a winning one after the last move, no Energy, Confusion, Mew ex's copy,
-// both seats' revealed knowledge, km3 and W at every frame, the 4 [P] / 3 Bench branching pin, the printings' status,
-// and the two smoke records of §C.1 (written to the file named by LUNALA_SMOKE_OUT when it is set; legality is all
-// they assert).
+// the last move, the defender's Knock Out and a winning one after the last move, Carefree Steps leaving the 110 no
+// damage target (no reaction frame below the chain), no Energy, Confusion, Mew ex's copy, both seats' revealed
+// knowledge, km3 and W at every frame, the 4 [P] / 3 Bench branching pin, the printings' status, and the two smoke
+// records of §C.1 (written to the file named by LUNALA_SMOKE_OUT when it is set; legality is all they assert).
 use std::{
     cell::RefCell,
     collections::{BTreeMap, BTreeSet},
@@ -593,6 +593,56 @@ fn test_wings_of_the_moone_moves_every_energy_before_perish_body_knocks_lunala_o
     assert_eq!(sorted_energy(&state, 0, 2), vec![Psychic, Psychic]);
 }
 
+/// The defender is Meowth (B2 124), whose Carefree Steps reads "If any damage is done to this Pokémon by attacks, flip a
+/// coin. If heads, prevent that damage." On heads the 110 has no damage target left, so no `ResolveAttackRetaliation`
+/// frame is put below the chain and every move runs under the end-of-action Knock Out check. Nothing was damaged, so the
+/// chain still moves every Energy and leaves only the turn's end to offer. On tails the frame is there and Meowth's Knock
+/// Out waits for it. Both happen over 40 seeds.
+#[test]
+fn test_wings_of_the_moone_runs_without_a_reaction_frame_when_carefree_steps_prevents_the_damage() {
+    let (mut prevented, mut damaged) = (0, 0);
+    for seed in 0..40 {
+        let mut game = get_initialized_game_with_board(
+            seed,
+            0,
+            3,
+            vec![lunala(vec![Psychic, Psychic, Water]), durable(), durable()],
+            vec![PlayedCard::from_id(CardId::B2124Meowth), durable()],
+        );
+        attack(&mut game, CardId::C1066Lunala, 0);
+        let state = game.get_state_clone();
+        let reaction_frame = state.move_generation_stack.iter().any(|(_, choices)| {
+            choices
+                .iter()
+                .any(|choice| matches!(choice, SimpleAction::ResolveAttackRetaliation { .. }))
+        });
+        assert_eq!(wings_offer(&state), vec![(Water, 1), (Water, 2)], "seed {seed}");
+        if defender_damage(&game) > 0 {
+            damaged += 1;
+            assert!(reaction_frame, "seed {seed}");
+            assert!(state.in_play_pokemon[1][0].is_some(), "seed {seed}: the Knock Out waits for the reaction frame");
+            continue;
+        }
+        prevented += 1;
+        assert!(!reaction_frame, "seed {seed}");
+        for (energy, to) in [(Water, 1), (Psychic, 1), (Psychic, 2)] {
+            move_to(&mut game, energy, to);
+        }
+        let state = game.get_state_clone();
+        assert!(state.get_active(0).attached_energy.is_empty(), "seed {seed}");
+        assert_eq!(sorted_energy(&state, 0, 1), vec![Water, Psychic], "seed {seed}");
+        assert_eq!(sorted_energy(&state, 0, 2), vec![Psychic], "seed {seed}");
+        assert!(state.move_generation_stack.is_empty(), "seed {seed}: {:?}", state.move_generation_stack);
+        assert_eq!((state.get_active(1).taken(), state.points), (0, [0, 0]), "seed {seed}");
+        let (_, actions) = state.generate_possible_actions();
+        assert!(
+            matches!(actions.as_slice(), [Action { action: SimpleAction::EndTurn, .. }]),
+            "seed {seed}: {actions:?}"
+        );
+    }
+    assert!(prevented > 0 && damaged > 0, "{prevented} prevented, {damaged} damaged");
+}
+
 /// N11 and N5: Lunala cannot attack with no Energy in play (the cost is [P][P]); applied directly, the attack does its
 /// 110 and offers nothing. With Energy but no Benched Pokémon nothing is offered either and the Energy stays. Either
 /// way no frame is left behind: the reactions resolve at once and the turn's end is all that is offered. The helper's
@@ -804,9 +854,14 @@ fn smoke_game(out: &mut String, state: State, code: &PlayerCode, until_turn: u8)
 /// - R6: player 0 at 2 points, its Lunala holding `energy` with one Benched Pokémon, against a 70-HP Bulbasaur whose
 ///   Knock Out wins: does each searcher attack? With 3 Energy the chain is cut by km3's horizon at the attack root, so
 ///   the 110's Knock Out and the win are not priced there (risk R6); 2 Energy is recorded beside it.
-/// - R6b: player 0's Bulbasaur (70 HP, [G]) faces player 1's ready Lunala at 2 points, with a 1000-HP Snorlax on its
-///   Bench: what does each searcher do on its own turn, and how does player 1's turn end (risk R6b)?
-/// Player 0's Energy Zone is spent for the turn in both, so the choice is only to attack, retreat or end the turn.
+/// - R6b: player 0's Bulbasaur (70 HP, [G]) faces player 1's ready Lunala at 2 points, with a Snorlax at its printed
+///   150 HP (which survives the 110) on its Bench: what does each searcher do on its own turn, and how does player 1's
+///   turn end (risk R6b)? The control row is the same board with Lunala holding no Energy, so it cannot attack on turn
+///   4. A searcher that sees the lethal 110 can show it only as a difference between the two rows; the same pick in
+///   both is no evidence either way (km3 searches no opponent ply at all). The no-Bench row is the ready Lunala with no
+///   Benched Pokémon to take its Energy: its 110 Knocks Out at once, with no choice after the damage, so it shows
+///   whether a searcher sees a lethal attack on this board at all.
+/// Player 0's Energy Zone is spent for the turn in all of them, so the choice is only to attack, retreat or end the turn.
 #[test]
 fn smoke_record_searchers_at_and_against_a_lethal_wings_of_the_moone() {
     let mut out = String::new();
@@ -838,26 +893,37 @@ fn smoke_record_searchers_at_and_against_a_lethal_wings_of_the_moone() {
             smoke_game(&mut out, state.clone(), code, 4);
         }
     }
-    let game = get_initialized_game_with_board(
-        0,
-        0,
-        3,
-        vec![
-            PlayedCard::from_id(CardId::A1001Bulbasaur).with_energy(vec![EnergyType::Grass]),
-            durable(),
-        ],
-        vec![lunala(vec![Psychic, Psychic]), durable()],
-    );
-    let mut state = game.get_state_clone();
-    state.points = [0, 2];
-    state.hands = [Vec::new(), Vec::new()];
-    state.energy_zone[0].current = None;
-    for (name, code) in &searchers {
-        let _ = writeln!(
-            out,
-            "R6b {name}: player 0's Bulbasaur [G] (70 HP) with a 1000-HP Snorlax Benched; player 1's ready Lunala, 2 points"
+    for (row, energy, benched) in [
+        ("ready", vec![Psychic, Psychic], true),
+        ("control", vec![], true),
+        ("no-Bench", vec![Psychic, Psychic], false),
+    ] {
+        let mut theirs = vec![lunala(energy.clone())];
+        if benched {
+            theirs.push(durable());
+        }
+        let game = get_initialized_game_with_board(
+            0,
+            0,
+            3,
+            vec![
+                PlayedCard::from_id(CardId::A1001Bulbasaur).with_energy(vec![EnergyType::Grass]),
+                PlayedCard::from_id(CardId::A1211Snorlax),
+            ],
+            theirs,
         );
-        smoke_game(&mut out, state.clone(), code, 5);
+        let mut state = game.get_state_clone();
+        state.points = [0, 2];
+        state.hands = [Vec::new(), Vec::new()];
+        state.energy_zone[0].current = None;
+        for (name, code) in &searchers {
+            let _ = writeln!(
+                out,
+                "R6b {row} {name}: player 0's Bulbasaur [G] (70 HP) with a 150-HP Snorlax Benched; player 1's Lunala {energy:?}, {} Benched, 2 points",
+                usize::from(benched)
+            );
+            smoke_game(&mut out, state.clone(), code, 5);
+        }
     }
     print!("{out}");
     if let Ok(path) = std::env::var("LUNALA_SMOKE_OUT") {
