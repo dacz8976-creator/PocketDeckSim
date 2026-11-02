@@ -20,8 +20,8 @@ use crate::{
     },
     card_ids::CardId,
     card_logic::{
-        acerola_targets, can_rare_candy_evolve, diantha_targets, ilima_targets, mallow_targets,
-        psychic_energy_sources, whitney_targets,
+        acerola_targets, can_rare_candy_evolve, diantha_targets, genome_converter_y_sources,
+        ilima_targets, mallow_targets, psychic_energy_sources, whitney_targets,
     },
     combinatorics::generate_combinations,
     effects::{DamageReductionScope, TurnEffect},
@@ -141,7 +141,7 @@ pub(crate) fn forecast_trainer_action_unchecked(
             Outcomes::single_fn(mars_effect)
         }
         CardId::A3144RareCandy => Outcomes::single_fn(rare_candy_effect),
-        CardId::A3a064Repel => Outcomes::single_fn(repel_effect),
+        CardId::A3a064Repel | CardId::C1121MaxRepel => Outcomes::single_fn(repel_effect),
         CardId::A2146PokemonCommunication => Outcomes::single_fn(pokemon_communication_effect),
         CardId::A2154Dawn => {
             Outcomes::single_fn(dawn_effect)
@@ -292,6 +292,8 @@ pub(crate) fn forecast_trainer_action_unchecked(
         CardId::B4a071TeamRocketsBoss => {
             team_rockets_boss_outcomes(acting_player, state)
         }
+        CardId::C1120SuperPotion => Outcomes::single_fn(super_potion_effect),
+        CardId::C1122FullHeal => Outcomes::single_fn(full_heal_effect),
         CardId::C1125Lorelei => Outcomes::single_fn(lorelei_effect),
         CardId::C1126BluesProvocation => {
             Outcomes::single_fn(lana_effect)
@@ -306,6 +308,7 @@ pub(crate) fn forecast_trainer_action_unchecked(
             })
         }
         CardId::C1130RisingStar => Outcomes::single_fn(skyla_effect),
+        CardId::PC009GenomeConverterY => Outcomes::single_fn(genome_converter_y_effect),
         _ => panic!("Unsupported Trainer Card"),
     }
 }
@@ -648,6 +651,57 @@ fn potion_effect(rng: &mut StdRng, state: &mut State, action: &Action) {
     inner_healing_effect(rng, state, action, 20, None);
 }
 
+/// Super Potion (C1 120): "Heal 40 damage from 1 of your Pokémon that has any Energy attached. If
+/// you healed any damage in this way, discard a random Energy from that Pokémon." Queues one
+/// `HealAndDiscardRandomEnergy` per damaged Pokémon with Energy (rules/05 #28: no healing card
+/// targets an undamaged Pokémon). No Energy is drawn here: the chosen action draws it when it
+/// resolves, after the heal, so no choice shows which Energy it would cost. Upstream (b6b769b) draws
+/// one per candidate here and offers it inside `HealAndDiscardEnergy`.
+fn super_potion_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    let possible_moves = state
+        .enumerate_in_play_pokemon(action.actor)
+        .filter(|(_, x)| x.is_damaged() && !x.attached_energy.is_empty())
+        .map(|(in_play_idx, _)| SimpleAction::HealAndDiscardRandomEnergy {
+            in_play_idx,
+            heal_amount: 40,
+        })
+        .collect::<Vec<_>>();
+    if !possible_moves.is_empty() {
+        state
+            .move_generation_stack
+            .push((action.actor, possible_moves));
+    }
+}
+
+/// Full Heal (C1 122): "Your Active Pokémon recovers from all Special Conditions."
+fn full_heal_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    // R8-08: cure_status_conditions must also clear Soothing Lullaby's sleep_coins_override.
+    if let Some(active) = state.in_play_pokemon[action.actor][0].as_mut() {
+        active.cure_status_conditions();
+    }
+}
+
+/// Genome Converter Y (P-C 009): "Move all [P] Energy from 1 of your Benched [P] Pokémon to your
+/// Mega Mewtwo Y ex in the Active Spot." One `MoveEnergy` choice per source, carrying all of that
+/// source's [P] Energy and none of its other Energy (`genome_converter_y_sources`).
+/// `apply_move_energy` then runs Soothing Wind on the Mega Mewtwo Y ex, which now holds [P] Energy.
+fn genome_converter_y_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    let possible_moves = genome_converter_y_sources(state, action.actor)
+        .into_iter()
+        .map(|(from_in_play_idx, amount)| SimpleAction::MoveEnergy {
+            from_in_play_idx,
+            to_in_play_idx: 0,
+            energy_type: EnergyType::Psychic,
+            amount,
+        })
+        .collect::<Vec<_>>();
+    if !possible_moves.is_empty() {
+        state
+            .move_generation_stack
+            .push((action.actor, possible_moves));
+    }
+}
+
 // Coin flip: heads = random Item from deck to hand, tails = random Tool from deck to hand
 fn arven_outcomes(acting_player: usize, state: &State) -> Outcomes {
     let (item_probs, item_mutations) = item_search_outcomes(acting_player, state).into_branches();
@@ -831,7 +885,9 @@ fn sabrina_effect(_: &mut StdRng, state: &mut State, action: &Action) {
 }
 
 fn repel_effect(_: &mut StdRng, state: &mut State, action: &Action) {
-    // Switch out your opponent's Active Basic Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)
+    // Repel: "Switch out your opponent's Active Basic Pokémon to the Bench. (Your opponent chooses the new Active Pokémon.)"
+    // Max Repel (C1 121) prints the same with "Active Stage 2 Pokémon". The Active's stage and a Benched Pokémon to
+    // switch in are checked at move generation (`can_play_repel`, `can_play_max_repel`).
     let opponent_player = (action.actor + 1) % 2;
     let possible_moves = state
         .enumerate_bench_pokemon(opponent_player)

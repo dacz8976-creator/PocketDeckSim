@@ -84,15 +84,13 @@ fn trainer_coverage_has_only_the_documented_pending_designs() {
         .collect();
     missing.sort_by_key(|id| format!("{id:?}"));
     missing.dedup();
+    // R8-06a implemented Super Potion (C1 120), Max Repel (C1 121), Full Heal (C1 122) and Genome
+    // Converter Y (P-C 009).
     let mut pending: Vec<CardId> = vec![
         CardId::C1119SweetHoney,
-        CardId::C1120SuperPotion,
-        CardId::C1121MaxRepel,
-        CardId::C1122FullHeal,
         CardId::C1123Eviolite,
         CardId::C1124LightBall,
         CardId::C1131AbandonedStation,
-        CardId::PC009GenomeConverterY,
     ];
     pending.sort_by_key(|id| format!("{id:?}"));
     assert_eq!(

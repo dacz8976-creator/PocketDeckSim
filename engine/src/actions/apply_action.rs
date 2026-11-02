@@ -529,6 +529,17 @@ fn forecast_action_unchecked(state: &State, action: &Action) -> Outcomes {
                 apply_move_energy(state, opponent, from, 0, energy, 1);
             })
         }
+        // Super Potion: "If you healed any damage in this way, discard a random Energy from that
+        // Pokémon", drawn now, after its target was chosen.
+        SimpleAction::HealAndDiscardRandomEnergy {
+            in_play_idx,
+            heal_amount,
+        } => forecast_heal_and_discard_random_energy(
+            state,
+            action.actor,
+            *in_play_idx,
+            *heal_amount,
+        ),
         SimpleAction::ShuffleInPlayPokemonIntoDeck { in_play_idx } => {
             let in_play_idx = *in_play_idx;
             Outcomes::single_fn(move |rng, state, action| {
@@ -1204,6 +1215,36 @@ fn random_energy_outcomes(
         .map(|energy| -> Mutation { Box::new(move |_, state, _| apply(state, energy)) })
         .collect();
     Outcomes::from_parts(probabilities, mutations)
+}
+
+/// Super Potion's heal (`SimpleAction::HealAndDiscardRandomEnergy`, C1 120): "Heal 40 damage from 1
+/// of your Pokémon that has any Energy attached. If you healed any damage in this way, discard a
+/// random Energy from that Pokémon." The target was the choice; its random Energy is drawn here,
+/// after the heal, one chance branch per Energy type it holds (`random_energy_outcomes`). When the
+/// heal would remove nothing (Heal Block, or no damage left) there is no chance: one branch heals 0
+/// and discards nothing, as `apply_heal_and_discard_energy` does with a fixed Energy.
+fn forecast_heal_and_discard_random_energy(
+    state: &State,
+    actor: usize,
+    in_play_idx: usize,
+    heal_amount: u32,
+) -> Outcomes {
+    let target = state.in_play_pokemon[actor][in_play_idx].as_ref();
+    let heals_any = !state.is_healing_blocked()
+        && target.is_some_and(|pokemon| heal_amount.min(pokemon.get_damage_counters()) > 0);
+    let holds_energy = target.is_some_and(|pokemon| !pokemon.attached_energy.is_empty());
+    if !heals_any || !holds_energy {
+        return Outcomes::single_fn(move |_, state, _| {
+            state.heal_pokemon(actor, in_play_idx, heal_amount);
+        });
+    }
+    random_energy_outcomes(target, move |state, energy| {
+        // "If you healed any damage in this way", read off the heal itself as
+        // `apply_heal_and_discard_energy` does.
+        if state.heal_pokemon(actor, in_play_idx, heal_amount) > 0 {
+            state.discard_energy_from_in_play(actor, in_play_idx, &[energy]);
+        }
+    })
 }
 
 fn apply_move_energy(

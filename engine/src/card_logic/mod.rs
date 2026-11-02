@@ -1,5 +1,6 @@
 mod acerola;
 mod diantha;
+mod genome_converter;
 mod ilima;
 mod mallow;
 mod psychic;
@@ -10,6 +11,7 @@ mod whitney;
 
 pub use acerola::acerola_targets;
 pub use diantha::diantha_targets;
+pub use genome_converter::genome_converter_y_sources;
 pub use ilima::ilima_targets;
 pub use mallow::mallow_targets;
 pub use psychic::{active_has_psychic_attack, psychic_energy_sources};

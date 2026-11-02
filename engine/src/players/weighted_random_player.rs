@@ -70,6 +70,7 @@ fn get_weight(action: &SimpleAction) -> u32 {
         SimpleAction::ChooseRandomEvolutionTarget { .. } => 10,
         SimpleAction::Heal { .. } => 5,
         SimpleAction::HealAndDiscardEnergy { .. } => 5,
+        SimpleAction::HealAndDiscardRandomEnergy { .. } => 5,
         SimpleAction::HealAndCureConditions { .. } => 5,
         SimpleAction::MoveAllDamage { .. } => 10,
         SimpleAction::MoveDamageToOpponentActive { .. } => 10,

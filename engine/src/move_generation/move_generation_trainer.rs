@@ -6,7 +6,8 @@ use crate::{
     card_ids::CardId,
     card_logic::{
         acerola_targets, active_has_psychic_attack, can_rare_candy_evolve, diantha_targets,
-        ilima_targets, mallow_targets, psychic_energy_sources, whitney_targets,
+        genome_converter_y_sources, ilima_targets, mallow_targets, psychic_energy_sources,
+        whitney_targets,
     },
     effects::TurnEffect,
     hooks::{
@@ -140,6 +141,7 @@ pub fn trainer_move_generation_implementation(
         }
         CardId::A4151ElementalSwitch => can_play_elemental_switch(state, trainer_card),
         CardId::A3a064Repel => can_play_repel(state, trainer_card),
+        CardId::C1121MaxRepel => can_play_max_repel(state, trainer_card),
         CardId::A2146PokemonCommunication => can_play_pokemon_communication(state, trainer_card),
         CardId::A3a067Gladion => {
             can_search_nonempty_deck(state, trainer_card)
@@ -297,6 +299,8 @@ pub fn trainer_move_generation_implementation(
         CardId::B4a071TeamRocketsBoss => {
             can_play_trainer(state, trainer_card)
         }
+        CardId::C1120SuperPotion => can_play_super_potion(state, trainer_card),
+        CardId::C1122FullHeal => can_play_full_heal(state, trainer_card),
         CardId::C1125Lorelei => can_play_trainer(state, trainer_card),
         CardId::C1126BluesProvocation => {
             can_play_blues_provocation(state, trainer_card)
@@ -313,6 +317,7 @@ pub fn trainer_move_generation_implementation(
         CardId::C1130RisingStar => {
             can_play_rising_star(state, trainer_card)
         }
+        CardId::PC009GenomeConverterY => can_play_genome_converter_y(state, trainer_card),
         _ => None,
     }
 }
@@ -411,6 +416,22 @@ fn can_play_potion(state: &State, trainer_card: &TrainerCard) -> Option<Vec<Simp
     }
 }
 
+/// Super Potion (C1 120): "Heal 40 damage from 1 of your Pokémon that has any Energy attached. If
+/// you healed any damage in this way, discard a random Energy from that Pokémon." Needs a target: a
+/// damaged Pokémon with Energy attached (rules/05 #28; Dustin's clip, shot list c1-items-playable:
+/// refused on a damaged Pokémon with no Energy). Heal Block doesn't stop it, as it doesn't stop
+/// Potion: it then heals 0 and so discards nothing.
+fn can_play_super_potion(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    let has_target = state
+        .enumerate_in_play_pokemon(state.current_player)
+        .any(|(_, x)| x.is_damaged() && !x.attached_energy.is_empty());
+    if has_target {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
+    }
+}
+
 /// Check if Ilima can be played (requires a damaged Colorless Pokemon in play)
 fn can_play_ilima(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
     if !ilima_targets(state, state.current_player).is_empty() {
@@ -427,6 +448,19 @@ fn can_play_lucky_ice_pop(state: &State, trainer_card: &TrainerCard) -> Option<V
         }
     }
     cannot_play_trainer()
+}
+
+/// Full Heal (C1 122): "Your Active Pokémon recovers from all Special Conditions." Needs an Active
+/// Pokémon with a Special Condition (Dustin's clip, shot list c1-items-playable: refused otherwise).
+fn can_play_full_heal(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    let has_condition = state
+        .maybe_get_active(state.current_player)
+        .is_some_and(|active| active.has_status_condition());
+    if has_condition {
+        can_play_trainer(state, trainer_card)
+    } else {
+        cannot_play_trainer()
+    }
 }
 
 /// Check if Erika can be played (requires at least 1 damaged Grass pokemon in play)
@@ -628,6 +662,21 @@ fn can_play_repel(state: &State, trainer_card: &TrainerCard) -> Option<Vec<Simpl
         if opponent_active.card.is_basic() && opponent_bench_count > 0 {
             return can_play_trainer(state, trainer_card);
         }
+    }
+    cannot_play_trainer()
+}
+
+/// Max Repel (C1 121): "Switch out your opponent's Active Stage 2 Pokémon to the Bench. (Your
+/// opponent chooses the new Active Pokémon.)" Needs a Stage 2 opponent's Active and a Benched
+/// Pokémon to switch in (Dustin's clip, shot list c1-items-playable: refused against a Basic Active
+/// with a Bench). It resolves as Repel does (`repel_effect`).
+fn can_play_max_repel(state: &State, trainer_card: &TrainerCard) -> Option<Vec<SimpleAction>> {
+    let opponent = (state.current_player + 1) % 2;
+    let has_stage_2_active = state
+        .maybe_get_active(opponent)
+        .is_some_and(|active| get_stage(active) == 2);
+    if has_stage_2_active && state.enumerate_bench_pokemon(opponent).count() > 0 {
+        return can_play_trainer(state, trainer_card);
     }
     cannot_play_trainer()
 }
@@ -1152,6 +1201,20 @@ fn can_play_budding_expeditioner(
         can_play_trainer(state, trainer_card)
     } else {
         cannot_play_trainer()
+    }
+}
+
+/// Genome Converter Y (P-C 009): "Move all [P] Energy from 1 of your Benched [P] Pokémon to your
+/// Mega Mewtwo Y ex in the Active Spot." Needs a Mega Mewtwo Y ex in the Active Spot and a Benched
+/// [P] Pokémon with [P] Energy (`genome_converter_y_sources` not empty, upstream's condition).
+fn can_play_genome_converter_y(
+    state: &State,
+    trainer_card: &TrainerCard,
+) -> Option<Vec<SimpleAction>> {
+    if genome_converter_y_sources(state, state.current_player).is_empty() {
+        cannot_play_trainer()
+    } else {
+        can_play_trainer(state, trainer_card)
     }
 }
 

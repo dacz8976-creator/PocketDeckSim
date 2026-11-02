@@ -320,6 +320,15 @@ pub enum SimpleAction {
         in_play_idx: usize,
     },
     Noop, // No operation, used to have the user say "no" to a question
+    /// Super Potion (C1 120): heal `heal_amount` from the chosen Pokémon and, if any damage was
+    /// healed, discard a random Energy from it. Unlike `HealAndDiscardEnergy` the Energy is not part
+    /// of the choice: it is drawn when this action resolves, after the heal, one chance branch per
+    /// Energy type the Pokémon holds. Last in the enum, so every other variant keeps its serde
+    /// variant index and its `Hash` discriminant.
+    HealAndDiscardRandomEnergy {
+        in_play_idx: usize,
+        heal_amount: u32,
+    },
 }
 
 impl fmt::Display for SimpleAction {
@@ -594,6 +603,10 @@ impl fmt::Display for SimpleAction {
                 write!(f, "ChooseMistyTarget({in_play_idx})")
             }
             SimpleAction::Noop => write!(f, "Noop"),
+            SimpleAction::HealAndDiscardRandomEnergy {
+                in_play_idx,
+                heal_amount,
+            } => write!(f, "HealAndDiscardRandomEnergy({in_play_idx}, {heal_amount})"),
         }
     }
 }
