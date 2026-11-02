@@ -1707,6 +1707,10 @@ fn forecast_effect_attack_by_mechanic(
             attack_name,
             damage_per,
         } => damage_per_own_pokemon_with_attack_name(state, attack_name, *damage_per),
+        Mechanic::DamagePerNamedCardInHand {
+            card_name,
+            damage_per_card,
+        } => damage_per_named_card_in_hand(acting_player, state, card_name, *damage_per_card),
         Mechanic::HalveOpponentActiveRemainingHp => halve_opponent_active_remaining_hp(),
         Mechanic::CoinFlipSetOpponentActiveRemainingHp { remaining_hp } => {
             coin_flip_set_opponent_active_remaining_hp(*remaining_hp)
@@ -3012,6 +3016,23 @@ fn damage_per_own_pokemon_with_attack_name(
         .filter(|card| has_attack(card))
         .count() as u32;
     active_damage_doutcome(damage_per * (in_play_count + in_hand_count))
+}
+
+/// Vespiquen - Honey Rush: `damage_per_card` for each card named `card_name` in the attacker's
+/// hand. By name, so both Sweet Honey printings and Ribombee's rental copies count. Replaces the
+/// printed damage, as upstream #433 does: no card, no damage (and no Weakness). The cards stay in
+/// hand, and the reveal is not recorded (see `Mechanic::DamagePerNamedCardInHand`).
+fn damage_per_named_card_in_hand(
+    acting_player: usize,
+    state: &State,
+    card_name: &str,
+    damage_per_card: u32,
+) -> AttackOutcomes {
+    let revealed = state.hands[acting_player]
+        .iter()
+        .filter(|card| card.get_name() == card_name)
+        .count() as u32;
+    active_damage_doutcome(revealed.saturating_mul(damage_per_card))
 }
 
 fn also_choice_bench_damage(

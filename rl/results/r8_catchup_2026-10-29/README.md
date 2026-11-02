@@ -13,10 +13,11 @@ but that folder is never edited (coordinator-088 Q7). This folder holds R8's own
     label still reads as the source's.
   - R8-05a adds `'ReduceDamageToYourTypeWhileInPlay': ('anywhere', False, 'board')` (Melmetal's Metal Scrum) and reruns it.
   - R8-05c adds `'PutRandomNamedFromDeckOnBenchOnEvolve': ('evolve', False, 'board')` (Frogadier's Sudden Duplication) and reruns it.
+  - R8-07b adds `'PutRentalCardInHand': ('anywhere', False, 'board')` (Ribombee's Honey Gather) and reruns it.
   - It sits at the source's depth (`rl/results/<folder>/census.py`), so its `ROOT` still resolves to the repo root.
 - `census.json`: this copy's own output, written next to it by a run from the repo root
-  (`python3 -I -B rl/results/r8_catchup_2026-10-29/census.py`; first R8-04b, rerun by R8-05a and R8-05c, so it is
-  R8-05c's output).
+  (`python3 -I -B rl/results/r8_catchup_2026-10-29/census.py`; first R8-04b, rerun by R8-05a, R8-05c and R8-07b, so
+  it is R8-07b's output).
 - `engine/src/players/opening_class.rs` cites this copy for `VARIANT_CLASS`.
 
 Later R8 commits that add an Ability variant update this copy (its `VARIANT_CLASS`, its comment block and this README)

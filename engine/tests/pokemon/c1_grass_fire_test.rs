@@ -1,16 +1,20 @@
-// Ported from upstream deckgym-core #433 (tests/pokemon/c1_grass_fire_test.rs, as of e7cc5ce): the Sawsbuck, Amoonguss, Volcanion, Ceruledge, Venusaur and two Raboot tests (R8-04a and R8-04b), without the Ribombee and Vespiquen tests (later R8 commits), with fork tests added at the end (Rally Back through real Knock Outs; Jumping Coach on every Rabbit Jumping attacker, switched off, on other titles and sides, and under Victory Star and Will; the printings' status).
+// Ported from upstream deckgym-core #433 (tests/pokemon/c1_grass_fire_test.rs, as of e7cc5ce): all its tests, as upstream wrote them: the Sawsbuck, Amoonguss, Volcanion, Ceruledge, Venusaur and two Raboot tests (R8-04a and R8-04b), and the Ribombee and Vespiquen tests (R8-07b). Fork tests are added at the end (Rally Back through real Knock Outs; Jumping Coach on every Rabbit Jumping attacker, switched off, on other titles and sides, and under Victory Star and Will; Honey Gather's rental card played, discarded, retrieved and shuffled in, not offered at 10 cards, once per Ribombee, switched off, seen by the opponent's observation, knowledge, list sampler and bots; Honey Rush by name with a rental copy, at 0 against Weakness, its reveal not recorded; the printings' status).
 use deckgym::{
     actions::{try_forecast_action, Action, SimpleAction},
     card_ids::CardId,
+    card_support::SupportReport,
     card_validation::{get_implementation_status, implementation_limitations, ImplementationStatus},
     database::get_card_by_enum,
     effects::CardEffect,
     models::{Card, EnergyType, PlayedCard, StatusCondition},
+    observation::{canonical_actions, INFORMATION_MODEL},
+    players::{create_players, PlayerCode},
+    state::MistySourceRoute,
     test_support::{
         attack_action, get_initialized_game_with_board, get_test_game_with_board, nth_attack,
         play_trainer, trainer_from_id,
     },
-    Game,
+    Deck, Game, State,
 };
 use rand::{rngs::StdRng, SeedableRng};
 
@@ -186,6 +190,73 @@ fn test_two_raboots_stack_jumping_coach() {
     assert!(seen.iter().all(|damage| damage % 20 == 0));
     assert!(seen.iter().max().unwrap() > &100);
     assert!(seen.iter().max().unwrap() <= &160);
+}
+
+/// Ribombee - Honey Gather: once during your turn, put a Sweet Honey rental card into your hand.
+#[test]
+fn test_ribombee_honey_gather_puts_sweet_honey_in_hand_once_per_turn() {
+    for ribombee in [CardId::C1015Ribombee, CardId::C1135Ribombee] {
+        let mut game = get_test_game_with_board(
+            vec![PlayedCard::from_id(ribombee)],
+            vec![PlayedCard::from_id(CardId::A1211Snorlax)],
+        );
+        let hand_before = game.get_state_clone().hands[0].len();
+        let deck_before = game.get_state_clone().decks[0].cards.len();
+
+        game.apply_action(&Action {
+            actor: 0,
+            action: SimpleAction::UseAbility { in_play_idx: 0 },
+            is_stack: false,
+        });
+
+        let state = game.get_state_clone();
+        assert_eq!(state.hands[0].len(), hand_before + 1);
+        assert_eq!(state.decks[0].cards.len(), deck_before);
+        assert_eq!(
+            state.hands[0].last().unwrap().get_name(),
+            "Sweet Honey",
+            "a Sweet Honey is added to the hand"
+        );
+        let (_, actions) = state.generate_possible_actions();
+        assert!(
+            !actions
+                .iter()
+                .any(|a| matches!(a.action, SimpleAction::UseAbility { .. })),
+            "Honey Gather is once per turn"
+        );
+    }
+}
+
+/// Vespiquen - Honey Rush: reveal all of the Sweet Honey in your hand; 50 damage for each.
+#[test]
+fn test_vespiquen_honey_rush_does_50_per_sweet_honey_in_hand() {
+    for (honey_count, expected_damage) in [(0usize, 0u32), (1, 50), (3, 150)] {
+        let mut game = get_test_game_with_board(
+            vec![PlayedCard::from_id(CardId::C1008Vespiquen)
+                .with_energy(vec![EnergyType::Grass, EnergyType::Grass])],
+            vec![PlayedCard::from_id(CardId::B4197WailordEx)],
+        );
+        let mut state = game.get_state_clone();
+        state.hands[0] = vec![deckgym::database::get_card_by_enum(CardId::A1001Bulbasaur)];
+        for _ in 0..honey_count {
+            state.hands[0].push(deckgym::database::get_card_by_enum(CardId::C1119SweetHoney));
+        }
+        game.set_state(state);
+
+        attack(&mut game, CardId::C1008Vespiquen);
+
+        let state = game.get_state_clone();
+        assert_eq!(
+            state.get_active(1).get_remaining_hp(),
+            250 - expected_damage,
+            "{honey_count} Sweet Honey in hand"
+        );
+        assert_eq!(
+            state.hands[0].len(),
+            honey_count + 1,
+            "revealed cards stay in hand"
+        );
+    }
 }
 
 // ---------------------------------------------------------------------------------------------
@@ -615,5 +686,587 @@ fn test_raboot_printings_report_complete() {
             "{id:?}"
         );
         assert!(implementation_limitations(id).is_empty(), "{id:?}");
+    }
+}
+
+// Ribombee - Honey Gather (C1 015 / C1 135): "Once during your turn, you may use this Ability. Put a Sweet Honey
+// rental card into your hand." The rental card is a C1 119 Sweet Honey for every rule; played, it goes to the discard
+// pile like any Item (Dustin's clip 11-23-18 at 02:50).
+
+fn use_ability(actor: usize, in_play_idx: usize) -> Action {
+    Action {
+        actor,
+        action: SimpleAction::UseAbility { in_play_idx },
+        is_stack: false,
+    }
+}
+
+fn offered(game: &Game<'static>, action: &Action) -> bool {
+    game.get_state_clone().generate_possible_actions().1.contains(action)
+}
+
+fn sweet_honey() -> Card {
+    get_card_by_enum(CardId::C1119SweetHoney)
+}
+
+/// `actor` plays a C1 119 Sweet Honey from their hand (a rental card is one).
+fn play_sweet_honey(actor: usize) -> Action {
+    Action {
+        actor,
+        action: SimpleAction::Play {
+            trainer_card: trainer_from_id(CardId::C1119SweetHoney),
+        },
+        is_stack: false,
+    }
+}
+
+fn sweet_honey_target(actor: usize, in_play_idx: usize) -> Action {
+    Action {
+        actor,
+        action: SimpleAction::ChooseSweetHoneyTarget { in_play_idx },
+        is_stack: true,
+    }
+}
+
+/// `player`'s hand becomes `hand` and their discard pile is emptied.
+fn set_hand(game: &mut Game<'static>, player: usize, hand: &[CardId]) {
+    let mut state = game.get_state_clone();
+    state.hands[player] = hand.iter().map(|id| get_card_by_enum(*id)).collect();
+    state.discard_piles[player].clear();
+    game.set_state(state);
+}
+
+fn remaining_hp(state: &State, player: usize, in_play_idx: usize) -> u32 {
+    state.in_play_pokemon[player][in_play_idx]
+        .as_ref()
+        .unwrap()
+        .get_remaining_hp()
+}
+
+/// `player`'s hand and deck, the cards an opponent can't see.
+fn hidden(state: &State, player: usize) -> impl Iterator<Item = &Card> {
+    state.hands[player].iter().chain(&state.decks[player].cards)
+}
+
+/// Honey Gather's rental card is a C1 119 Sweet Honey (`get_card_by_enum`, as upstream) that comes from no zone: the
+/// deck and discard pile are untouched. It plays exactly as one: the damaged Ribombee is the only target, offered
+/// before any coin, with nothing healed until it is chosen; then 20 per heads, up to the damage. Once played it is in
+/// the discard pile, like any Item. Both Ribombee printings, 8 seeds each.
+#[test]
+fn test_honey_gathers_rental_card_plays_as_a_sweet_honey_and_is_discarded() {
+    for ribombee in [CardId::C1015Ribombee, CardId::C1135Ribombee] {
+        for seed in 0..8 {
+            let ctx = format!("{ribombee:?}, seed {seed}");
+            let mut game = get_initialized_game_with_board(
+                seed,
+                0,
+                3,
+                vec![
+                    PlayedCard::from_id(CardId::A1001Bulbasaur),
+                    PlayedCard::from_id(ribombee).with_damage(30),
+                ],
+                vec![PlayedCard::from_id(CardId::A1001Bulbasaur)],
+            );
+            set_hand(&mut game, 0, &[]);
+            let before = game.get_state_clone();
+            assert!(offered(&game, &use_ability(0, 1)), "{ctx}");
+            game.apply_action(&use_ability(0, 1));
+            let state = game.get_state_clone();
+            assert_eq!(state.hands[0], vec![sweet_honey()], "{ctx}");
+            assert_eq!(state.decks[0].cards, before.decks[0].cards, "{ctx}");
+            assert!(state.discard_piles[0].is_empty(), "{ctx}");
+
+            assert!(offered(&game, &play_sweet_honey(0)), "{ctx}");
+            game.apply_action(&play_sweet_honey(0));
+            let staged = game.get_state_clone();
+            assert!(
+                matches!(
+                    staged
+                        .pending_misty_target_choice
+                        .as_ref()
+                        .and_then(|pending| pending.route.as_ref()),
+                    Some(MistySourceRoute::SweetHoney { .. })
+                ),
+                "{ctx}"
+            );
+            assert!(staged.pending_trainer_coin_choice.is_none(), "{ctx}");
+            assert_eq!(
+                staged.generate_possible_actions().1,
+                vec![sweet_honey_target(0, 1)],
+                "{ctx}: the undamaged Bulbasaur is not offered"
+            );
+            assert_eq!(remaining_hp(&staged, 0, 1), 40, "{ctx}");
+            assert!(staged.hands[0].is_empty(), "{ctx}");
+            assert_eq!(staged.discard_piles[0], vec![sweet_honey()], "{ctx}");
+
+            game.apply_action(&sweet_honey_target(0, 1));
+            let state = game.get_state_clone();
+            let healed = remaining_hp(&state, 0, 1) - 40;
+            assert!([0, 20, 30].contains(&healed), "{ctx}: healed {healed}");
+            assert!(state.pending_misty_target_choice.is_none(), "{ctx}");
+            assert!(state.move_generation_stack.is_empty(), "{ctx}");
+            assert_eq!(state.discard_piles[0], vec![sweet_honey()], "{ctx}");
+        }
+    }
+}
+
+/// Honey Gather's own gate doesn't look at damage, but its card does: with no damaged Pokémon the rental card sits in
+/// the hand unplayable, as a Sweet Honey would (rules/05 #28).
+#[test]
+fn test_a_rental_card_needs_a_damaged_pokemon() {
+    let mut game = get_test_game_with_board(
+        vec![PlayedCard::from_id(CardId::C1015Ribombee)],
+        vec![PlayedCard::from_id(CardId::A1001Bulbasaur)],
+    );
+    set_hand(&mut game, 0, &[]);
+    assert!(offered(&game, &use_ability(0, 0)));
+    game.apply_action(&use_ability(0, 0));
+    assert_eq!(game.get_state_clone().hands[0], vec![sweet_honey()]);
+    assert!(!offered(&game, &play_sweet_honey(0)));
+}
+
+/// Not offered while the hand holds 10 cards (Dustin: "fairly confident" it won't work there; not filmed, so it is in
+/// Ribombee's limitation line). The fork's hand limit is 10: draws and deck searches stop there (`maybe_draw_card`,
+/// `card_search_outcomes_with_filter_multiple`), and a draw Ability stays offered and skips the draw, but this one is
+/// not offered. At 9 both Ribombee offer it, and the first fills the hand to 10, which takes the second's offer away; at
+/// 10, or at 11 after an uncapped transfer (a discard retrieval, Team Rocket's Researcher), neither does. Applied at 10
+/// anyway, it adds nothing, as a draw does.
+#[test]
+fn test_honey_gather_is_not_offered_at_10_cards_in_hand() {
+    let with_hand = |cards: usize| {
+        let mut game = get_test_game_with_board(
+            vec![
+                PlayedCard::from_id(CardId::C1015Ribombee),
+                PlayedCard::from_id(CardId::C1135Ribombee),
+            ],
+            vec![PlayedCard::from_id(CardId::A1001Bulbasaur)],
+        );
+        set_hand(&mut game, 0, &vec![CardId::PA001Potion; cards]);
+        game
+    };
+    let mut game = with_hand(9);
+    assert!(offered(&game, &use_ability(0, 0)) && offered(&game, &use_ability(0, 1)));
+    game.apply_action(&use_ability(0, 0));
+    assert_eq!(game.get_state_clone().hands[0].len(), 10);
+    assert!(!offered(&game, &use_ability(0, 1)), "the 10th card takes the offer away");
+
+    for cards in [10, 11] {
+        let game = with_hand(cards);
+        assert!(!offered(&game, &use_ability(0, 0)), "{cards} cards");
+        assert!(!offered(&game, &use_ability(0, 1)), "{cards} cards");
+    }
+
+    let mut game = with_hand(10);
+    game.apply_action(&use_ability(0, 0));
+    assert_eq!(
+        game.get_state_clone().hands[0],
+        vec![get_card_by_enum(CardId::PA001Potion); 10]
+    );
+}
+
+/// "Once during your turn", per Ribombee: one of each printing put two rental cards into the hand in one turn, neither
+/// offers it twice, and both offer it again on their owner's next turn.
+#[test]
+fn test_each_ribombee_gathers_once_per_turn() {
+    let mut game = get_test_game_with_board(
+        vec![
+            PlayedCard::from_id(CardId::C1015Ribombee),
+            PlayedCard::from_id(CardId::C1135Ribombee),
+        ],
+        vec![PlayedCard::from_id(CardId::A1001Bulbasaur)],
+    );
+    set_hand(&mut game, 0, &[]);
+    game.apply_action(&use_ability(0, 0));
+    assert!(!offered(&game, &use_ability(0, 0)));
+    assert!(offered(&game, &use_ability(0, 1)));
+    game.apply_action(&use_ability(0, 1));
+    assert_eq!(game.get_state_clone().hands[0], vec![sweet_honey(), sweet_honey()]);
+    assert!(!offered(&game, &use_ability(0, 0)) && !offered(&game, &use_ability(0, 1)));
+
+    end_turn(&mut game, 0);
+    end_turn(&mut game, 1);
+    assert_eq!(game.get_state_clone().current_player, 0);
+    assert!(offered(&game, &use_ability(0, 0)) && offered(&game, &use_ability(0, 1)));
+}
+
+/// Switched off like every activated Ability (`abilities_switched_off`): a Ribombee with Prickly Powder's
+/// `NoAbilities` doesn't offer it, while a Benched Ribombee does. Alolan Muk's Power of Alchemy (B2 097) reaches Basic
+/// Pokémon only, and Ribombee is a Stage 1, so it still offers it there.
+#[test]
+fn test_honey_gather_is_switched_off_by_no_abilities() {
+    let mut powdered = PlayedCard::from_id(CardId::C1015Ribombee);
+    powdered.add_effect(CardEffect::NoAbilities, 1);
+    let mut game = get_test_game_with_board(
+        vec![powdered, PlayedCard::from_id(CardId::C1135Ribombee)],
+        vec![PlayedCard::from_id(CardId::B2097AlolanMuk)],
+    );
+    set_hand(&mut game, 0, &[]);
+    assert!(!offered(&game, &use_ability(0, 0)));
+    assert!(offered(&game, &use_ability(0, 1)));
+}
+
+/// A played rental card is in the discard pile as an ordinary Item: Team Rocket's Slowpoke's Scavenge ("Put a random
+/// Item card from your discard pile into your hand.") takes it back, a Sweet Honey like any other.
+#[test]
+fn test_a_played_rental_card_is_retrieved_like_any_item() {
+    let mut game = get_test_game_with_board(
+        vec![
+            PlayedCard::from_id(CardId::B4a025TeamRocketsSlowpoke)
+                .with_energy(vec![EnergyType::Psychic]),
+            PlayedCard::from_id(CardId::C1015Ribombee).with_damage(30),
+        ],
+        vec![PlayedCard::from_id(CardId::A1001Bulbasaur)],
+    );
+    set_hand(&mut game, 0, &[]);
+    game.apply_action(&use_ability(0, 1));
+    game.apply_action(&play_sweet_honey(0));
+    game.apply_action(&sweet_honey_target(0, 1));
+    let state = game.get_state_clone();
+    assert!(state.hands[0].is_empty());
+    assert_eq!(state.discard_piles[0], vec![sweet_honey()]);
+
+    attack(&mut game, CardId::B4a025TeamRocketsSlowpoke);
+    let state = game.get_state_clone();
+    assert_eq!(state.hands[0], vec![sweet_honey()]);
+    assert!(state.discard_piles[0].is_empty());
+}
+
+/// A rental card shuffled into a deck by another effect stays there as an ordinary Sweet Honey and can be drawn again
+/// (upstream's reading; not filmed, so it is in Ribombee's limitation line). Player 1's Honey Gather puts it into an
+/// otherwise empty hand, so player 0's Amoonguss's Astonish ("Look at a random card from your opponent's hand and
+/// shuffle it into their deck.") can only take that card; with player 1's deck empty before, their next draw is that
+/// Sweet Honey, which then plays as one on the Ribombee Astonish damaged.
+#[test]
+fn test_a_rental_card_shuffled_into_the_deck_stays_a_sweet_honey() {
+    let mut game = get_initialized_game_with_board(
+        0,
+        1,
+        4,
+        vec![PlayedCard::from_id(CardId::C1012Amoonguss)
+            .with_energy(vec![EnergyType::Grass, EnergyType::Colorless])],
+        vec![PlayedCard::from_id(CardId::C1015Ribombee)],
+    );
+    let mut state = game.get_state_clone();
+    state.hands[1].clear();
+    state.decks[1].cards.clear();
+    game.set_state(state);
+    game.apply_action(&use_ability(1, 0));
+    assert_eq!(game.get_state_clone().hands[1], vec![sweet_honey()]);
+    end_turn(&mut game, 1);
+
+    attack(&mut game, CardId::C1012Amoonguss);
+    let state = game.get_state_clone();
+    assert!(state.hands[1].is_empty());
+    assert_eq!(state.decks[1].cards, vec![sweet_honey()]);
+    assert_eq!(state.get_active(1).get_remaining_hp(), 20);
+
+    end_turn(&mut game, 0);
+    let state = game.get_state_clone();
+    assert_eq!(state.current_player, 1);
+    assert_eq!(state.hands[1], vec![sweet_honey()], "drawn again");
+    assert!(state.decks[1].cards.is_empty());
+    assert!(offered(&game, &play_sweet_honey(1)));
+    game.apply_action(&play_sweet_honey(1));
+    assert_eq!(
+        game.get_state_clone().generate_possible_actions().1,
+        vec![sweet_honey_target(1, 0)]
+    );
+    game.apply_action(&sweet_honey_target(1, 0));
+    assert_eq!(game.get_state_clone().discard_piles[1], vec![sweet_honey()]);
+}
+
+/// The opponent's view of a rental card, which R8 adds no knowledge for (INFORMATION_MODEL stays v8). Player 1 holds
+/// Ribombee; player 0 sees one more Unknown hand card after Honey Gather. Player 0's list-sampled search state
+/// (`search_state_with_opponent_list`, b-tier's) takes the visible cards out of the list, fills the hand before the
+/// deck, and leaves Unknown what the list can't fill. Counted over player 1's hand and deck together, from a state
+/// whose hidden cards are exactly the list's: with a list holding no Sweet Honey, 0 Unknown before Honey Gather, 1 with
+/// the rental card in hand, and 0 once it is played (the discarded card matches nothing in the list); with a list
+/// holding one C1 119, and that card in the deck, 0, 1 and 1, and after the play no Sweet Honey among the sampled
+/// cards, since the discarded rental card took the list's copy: the real one is under-counted. No panic.
+#[test]
+fn test_the_opponents_list_sampler_with_a_rental_card() {
+    let hand = [CardId::A1001Bulbasaur, CardId::PA001Potion];
+    for list_has_sweet_honey in [false, true] {
+        let mut deck = vec![
+            CardId::A1033Charmander,
+            CardId::A1053Squirtle,
+            CardId::A1001Bulbasaur,
+            CardId::PA001Potion,
+        ];
+        if list_has_sweet_honey {
+            deck.push(CardId::C1119SweetHoney);
+        }
+        let mut list = Deck::default();
+        list.cards = std::iter::once(CardId::C1015Ribombee)
+            .chain(hand)
+            .chain(deck.iter().copied())
+            .map(get_card_by_enum)
+            .collect();
+        let mut game = get_initialized_game_with_board(
+            0,
+            1,
+            4,
+            vec![PlayedCard::from_id(CardId::A1001Bulbasaur)],
+            vec![PlayedCard::from_id(CardId::C1015Ribombee).with_damage(30)],
+        );
+        let mut state = game.get_state_clone();
+        state.hands[1] = hand.iter().map(|id| get_card_by_enum(*id)).collect();
+        state.decks[1].cards = deck.iter().map(|id| get_card_by_enum(*id)).collect();
+        state.discard_piles[1].clear();
+        game.set_state(state);
+
+        let check = |game: &Game<'static>, unknown: usize, step: &str| {
+            let ctx = format!("list has Sweet Honey {list_has_sweet_honey}, {step}");
+            let observation = game.observation(0);
+            for seed in 0..8 {
+                let sampled = observation
+                    .search_state_with_opponent_list(&mut StdRng::seed_from_u64(seed), &list);
+                let unknowns = hidden(&sampled, 1).filter(|card| **card == Card::Unknown).count();
+                assert_eq!(unknowns, unknown, "{ctx}, seed {seed}");
+                if step == "played" {
+                    let honey = hidden(&sampled, 1).filter(|card| card.get_name() == "Sweet Honey").count();
+                    assert_eq!(honey, 0, "{ctx}, seed {seed}");
+                }
+            }
+        };
+        check(&game, 0, "before");
+        game.apply_action(&use_ability(1, 0));
+        assert_eq!(
+            game.observation(0).visible_state().hands[1],
+            vec![Card::Unknown; 3]
+        );
+        check(&game, 1, "in hand");
+        game.apply_action(&play_sweet_honey(1));
+        game.apply_action(&sweet_honey_target(1, 0));
+        assert_eq!(game.get_state_clone().discard_piles[1], vec![sweet_honey()]);
+        check(&game, usize::from(list_has_sweet_honey), "played");
+    }
+}
+
+/// The bots with a rental card in a hand, without panic, each picking an offered action: km3 and WeightedRandomPlayer
+/// for the holder at the main phase (Sweet Honey playable on the damaged Ribombee) and at its target; then, with the
+/// holder's turn ended and the card still in hand, km3 and the list-aware b3 (sampling the holder's hidden cards from
+/// their list) for the opponent.
+#[test]
+fn test_bots_decide_with_a_rental_card_in_a_hand() {
+    let hand = [CardId::A1001Bulbasaur, CardId::PA001Potion];
+    let deck = [
+        CardId::A1033Charmander,
+        CardId::A1053Squirtle,
+        CardId::A1001Bulbasaur,
+        CardId::PA001Potion,
+    ];
+    let mut list = Deck::default();
+    list.cards = std::iter::once(CardId::C1015Ribombee)
+        .chain(hand)
+        .chain(deck)
+        .map(get_card_by_enum)
+        .collect();
+    let holder_after_gather = || {
+        let mut game = get_initialized_game_with_board(
+            3,
+            1,
+            4,
+            vec![PlayedCard::from_id(CardId::A1001Bulbasaur)],
+            vec![PlayedCard::from_id(CardId::C1015Ribombee).with_damage(30)],
+        );
+        let mut state = game.get_state_clone();
+        state.hands[1] = hand.iter().map(|id| get_card_by_enum(*id)).collect();
+        state.decks[1].cards = deck.iter().map(|id| get_card_by_enum(*id)).collect();
+        game.set_state(state);
+        game.apply_action(&use_ability(1, 0));
+        game
+    };
+    // Player 0's opponent list is player 1's (`create_players` gives each player the other's deck).
+    let decide = |game: &Game<'static>, code: &PlayerCode| {
+        let (actor, mut actions) = game.get_state_clone().generate_possible_actions();
+        canonical_actions(&mut actions);
+        let mut players = create_players(Deck::default(), list.clone(), vec![code.clone(), code.clone()]);
+        let chosen = players[actor].decision_fn(
+            &mut StdRng::seed_from_u64(7),
+            &game.observation(actor),
+            &actions,
+        );
+        assert!(actions.contains(&chosen), "{code:?} chose {chosen:?}");
+        (actor, chosen)
+    };
+    for code in [PlayerCode::KM { max_depth: 3 }, PlayerCode::W] {
+        let mut game = holder_after_gather();
+        assert_eq!(decide(&game, &code).0, 1);
+        game.apply_action(&play_sweet_honey(1));
+        let (actor, chosen) = decide(&game, &code);
+        assert_eq!((actor, chosen), (1, sweet_honey_target(1, 0)), "{code:?}");
+    }
+    for code in [
+        PlayerCode::KM { max_depth: 3 },
+        PlayerCode::B {
+            max_depth: 3,
+            opponent_ply: 0,
+            samples: 1,
+        },
+    ] {
+        let mut game = holder_after_gather();
+        end_turn(&mut game, 1);
+        let state = game.get_state_clone();
+        assert_eq!(state.current_player, 0);
+        assert!(state.hands[1].contains(&sweet_honey()), "{code:?}");
+        assert_eq!(decide(&game, &code).0, 0, "{code:?}");
+    }
+}
+
+/// Knowledge around Honey Gather, which R8 leaves as it was (observation.rs `update_knowledge`): the card goes into
+/// its holder's hand, so the opponent's knowledge of that hand (player 1's Hand Scope) is cleared, as for any change to
+/// it, while deck tops known from Pokédex (player 1's own; player 0's own, before a second Honey Gather) are kept, since
+/// no deck changes and the Ability's text has no "shuffle".
+#[test]
+fn test_honey_gather_clears_the_opponents_hand_knowledge_and_keeps_deck_tops() {
+    let mut game = get_initialized_game_with_board(
+        0,
+        1,
+        4,
+        vec![
+            PlayedCard::from_id(CardId::C1015Ribombee),
+            PlayedCard::from_id(CardId::C1135Ribombee),
+        ],
+        vec![PlayedCard::from_id(CardId::A1001Bulbasaur)],
+    );
+    let mut state = game.get_state_clone();
+    state.hands[0] = vec![get_card_by_enum(CardId::PA004PokedEx)];
+    state.hands[1] = vec![
+        get_card_by_enum(CardId::PA004PokedEx),
+        get_card_by_enum(CardId::PA003HandScope),
+    ];
+    game.set_state(state);
+    play_trainer(&mut game, 1, trainer_from_id(CardId::PA004PokedEx));
+    play_trainer(&mut game, 1, trainer_from_id(CardId::PA003HandScope));
+    end_turn(&mut game, 1);
+    let known = game.observation(1).revealed;
+    assert_eq!(known.opponent_hand, vec![get_card_by_enum(CardId::PA004PokedEx)]);
+    assert_eq!(known.deck_top[1].len(), 3);
+
+    game.apply_action(&use_ability(0, 0));
+    let after = game.observation(1).revealed;
+    assert!(after.opponent_hand.is_empty(), "the hand changed");
+    assert_eq!(after.deck_top, known.deck_top);
+    assert_eq!(after.opponent_deck_membership, known.opponent_deck_membership);
+
+    play_trainer(&mut game, 0, trainer_from_id(CardId::PA004PokedEx));
+    let own_top = game.observation(0).revealed.deck_top[0].clone();
+    assert_eq!(own_top.len(), 3);
+    game.apply_action(&use_ability(0, 1));
+    assert_eq!(game.observation(0).revealed.deck_top[0], own_top);
+}
+
+// Vespiquen - Honey Rush (C1 008): "Reveal all of the Sweet Honey in your hand, and this attack does 50 damage for
+// each card you revealed in this way."
+
+fn honey_rush() -> Action {
+    Action {
+        actor: 0,
+        action: attack_action(CardId::C1008Vespiquen, 0),
+        is_stack: false,
+    }
+}
+
+fn ready_vespiquen() -> PlayedCard {
+    PlayedCard::from_id(CardId::C1008Vespiquen).with_energy(vec![EnergyType::Grass, EnergyType::Grass])
+}
+
+/// Honey Rush counts by name: both printings and a rental copy from a Benched Ribombee's Honey Gather each count 50,
+/// other cards (a Potion, a Misty) don't, and the printed 50 is not added on top. The forecast is one exact branch, and
+/// the revealed cards stay in hand.
+#[test]
+fn test_honey_rush_counts_every_sweet_honey_in_hand_by_name() {
+    for (hand, damage) in [
+        (vec![CardId::PA001Potion, CardId::A1220Misty], 50),
+        (vec![CardId::C1119SweetHoney, CardId::PA001Potion], 100),
+        (vec![CardId::C1119SweetHoney, CardId::C1152SweetHoney], 150),
+    ] {
+        let mut game = get_test_game_with_board(
+            vec![ready_vespiquen(), PlayedCard::from_id(CardId::C1015Ribombee)],
+            vec![coin_sponge()],
+        );
+        set_hand(&mut game, 0, &hand);
+        game.apply_action(&use_ability(0, 1));
+        let state = game.get_state_clone();
+        assert_eq!(branches_from(&state, &honey_rush()), vec![(1.0, damage)], "{hand:?}");
+
+        attack(&mut game, CardId::C1008Vespiquen);
+        let after = game.get_state_clone();
+        assert_eq!(500 - after.get_active(1).get_remaining_hp(), damage, "{hand:?}");
+        assert_eq!(after.hands[0], state.hands[0], "{hand:?}: the revealed cards stay in hand");
+    }
+}
+
+/// With no Sweet Honey in hand Honey Rush does 0, and a Grass-weak defender takes no +20 (rules/05 #11, settled: an
+/// attack whose own damage is 0 does 0); with one it does 50 + 20. Sandslash A1 138, 100 HP, weak to [G].
+#[test]
+fn test_honey_rush_with_no_sweet_honey_does_nothing_even_against_weakness() {
+    for (hand, remaining) in [
+        (vec![CardId::PA001Potion], 100),
+        (vec![CardId::C1119SweetHoney], 30),
+    ] {
+        let mut game = get_test_game_with_board(
+            vec![ready_vespiquen()],
+            vec![PlayedCard::from_id(CardId::A1138Sandslash)],
+        );
+        set_hand(&mut game, 0, &hand);
+        attack(&mut game, CardId::C1008Vespiquen);
+        assert_eq!(
+            game.get_state_clone().get_active(1).get_remaining_hp(),
+            remaining,
+            "{hand:?}"
+        );
+    }
+}
+
+/// The reveal is not recorded: recording it would be a knowledge-model change, and R8 keeps INFORMATION_MODEL at v8.
+/// After Honey Rush there is no private or public reveal record, the opponent's knowledge is what it was (nothing of the
+/// attacker's hand) and its view of that hand is all Unknown, as after Puppy Pile's reveal.
+#[test]
+fn test_honey_rushs_reveal_is_not_recorded() {
+    let mut game = get_test_game_with_board(vec![ready_vespiquen()], vec![coin_sponge()]);
+    set_hand(
+        &mut game,
+        0,
+        &[CardId::C1119SweetHoney, CardId::C1152SweetHoney, CardId::PA001Potion],
+    );
+    let before = game.observation(1).revealed;
+    attack(&mut game, CardId::C1008Vespiquen);
+    assert_eq!(500 - game.get_state_clone().get_active(1).get_remaining_hp(), 100);
+    assert!(game.private_reveal_history().is_empty());
+    assert!(game.public_reveal_history().is_empty());
+    let observation = game.observation(1);
+    assert_eq!(observation.revealed, before);
+    assert!(observation.revealed.opponent_hand.is_empty());
+    assert_eq!(observation.visible_state().hands[0], vec![Card::Unknown; 3]);
+    assert_eq!(observation.information_model, "closed-counts-unpriced-v8");
+    assert_eq!(INFORMATION_MODEL, "closed-counts-unpriced-v8");
+}
+
+/// Vespiquen C1 008 is Complete. Both Ribombee printings are RulesUnverified with the same single limitation line, which
+/// names the two unfilmed cases (the 10-card hand, a rental card shuffled into a deck), and the card-support preflight
+/// allows them, as it allows every RulesUnverified card.
+#[test]
+fn test_vespiquen_and_ribombee_printings_status() {
+    assert_eq!(
+        get_implementation_status(CardId::C1008Vespiquen),
+        ImplementationStatus::Complete
+    );
+    assert!(implementation_limitations(CardId::C1008Vespiquen).is_empty());
+    let lines = implementation_limitations(CardId::C1015Ribombee);
+    assert_eq!(lines.len(), 1);
+    assert!(lines[0].contains("not offered while the hand holds 10 cards"), "{}", lines[0]);
+    assert!(lines[0].contains("shuffled into a deck"), "{}", lines[0]);
+    for id in [CardId::C1015Ribombee, CardId::C1135Ribombee] {
+        assert_eq!(
+            get_implementation_status(id),
+            ImplementationStatus::RulesUnverified,
+            "{id:?}"
+        );
+        assert_eq!(implementation_limitations(id), lines, "{id:?}");
+        let mut report = SupportReport::default();
+        report.inspect_card_id("Ribombee test", id);
+        assert!(report.enforce("this test").is_ok(), "{id:?}");
     }
 }

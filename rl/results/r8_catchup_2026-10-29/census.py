@@ -5,8 +5,9 @@
 #   sha256:      e2d82ad9f6980c7baaa9523384c47bbb913804fa9d7ac46ad4db0ce4328050b7
 #   Last commit: fb124297b93e8b8cee77f15000bf9249c081b5cd (the last commit that touched the source)
 #   R8 changes:  this comment block; VARIANT_CLASS gains 'FlipMoreCoinsForNamedAttack' (R8-04b, Raboot's Jumping
-#                Coach), 'ReduceDamageToYourTypeWhileInPlay' (R8-05a, Melmetal's Metal Scrum) and
-#                'PutRandomNamedFromDeckOnBenchOnEvolve' (R8-05c, Frogadier's Sudden Duplication), each classed as
+#                Coach), 'ReduceDamageToYourTypeWhileInPlay' (R8-05a, Melmetal's Metal Scrum),
+#                'PutRandomNamedFromDeckOnBenchOnEvolve' (R8-05c, Frogadier's Sudden Duplication) and
+#                'PutRentalCardInHand' (R8-07b, Ribombee's Honey Gather), each classed as
 #                engine/src/players/opening_class.rs classes it. Nothing else differs. The copy
 #                sits at the source's depth, so ROOT below is still the repo root. Later R8 commits that add an
 #                Ability variant update this copy.
@@ -149,6 +150,7 @@ VARIANT_CLASS = {
     'ProtectSelfNextTurnAfterAttackKnockout': ('anywhere', False, 'self'),
     'PutCardsFromDiscardToHandOnEvolve': ('evolve', False, 'board'),
     'PutRandomNamedFromDeckOnBenchOnEvolve': ('evolve', False, 'board'),  # R8-05c
+    'PutRentalCardInHand': ('anywhere', False, 'board'),  # R8-07b
     'RandomEvolutionFromDeck': None,  # trigger
     'RandomStatusConditionToOpponentActive': ('anywhere', False, 'board'),
     'ReduceAttackCost': None,  # scope

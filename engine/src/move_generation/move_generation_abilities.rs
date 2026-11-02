@@ -193,6 +193,12 @@ fn can_use_ability_by_mechanic(
             can_use_remove_random_special_condition_from_active(state, card)
         }
         AbilityMechanic::HealActiveYourPokemon { .. } => !card.ability_used,
+        AbilityMechanic::PutRentalCardInHand { .. } => {
+            // Not offered while the hand holds 10 cards (Ribombee's limitation line; a draw Ability
+            // stays offered and skips the draw). `<` because a hand can pass 10 through an uncapped
+            // transfer.
+            !card.ability_used && state.hands[state.current_player].len() < 10
+        }
         AbilityMechanic::SwitchOutOpponentActiveToBench {
             require_active,
             require_opponent_active_basic,

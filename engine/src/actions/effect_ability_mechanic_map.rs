@@ -9,6 +9,7 @@ use crate::actions::abilities::{
     KnockoutDamageTarget, NoRetreatCostCondition, NoRetreatCostTarget, RandomEvolutionTrigger,
     ARCEUS_NAMES, REGI_TRIO_NAMES,
 };
+use crate::card_ids::CardId;
 use crate::effects::CardEffect;
 use crate::models::{Card, EnergyType, PlayedCard, StatusCondition, TrainerType};
 use crate::State;
@@ -565,6 +566,14 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
                     StatusCondition::Confused,
                     StatusCondition::Poisoned,
                 ],
+            },
+        );
+        // Ribombee (C1 015 / C1 135) - Honey Gather. Not offered while the hand holds 10 cards
+        // (move_generation_abilities.rs).
+        map.insert(
+            "Once during your turn, you may use this Ability. Put a Sweet Honey rental card into your hand.",
+            AbilityMechanic::PutRentalCardInHand {
+                card_id: CardId::C1119SweetHoney,
             },
         );
         // map.insert("Pokémon (both yours and your opponent's) can't be healed.", todo_implementation);

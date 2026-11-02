@@ -1187,4 +1187,14 @@ pub enum Mechanic {
     ExtraDamageIfDamagedByAttackLastTurn {
         extra_damage: u32,
     },
+    /// Vespiquen's Honey Rush (C1 008): "Reveal all of the Sweet Honey in your hand, and this attack
+    /// does 50 damage for each card you revealed in this way." Counts the attacker's hand cards named
+    /// `card_name` (every printing, Ribombee's rental copies included). The attack's `fixed_damage`
+    /// is the per-card amount, so it is not added as a base: with none in hand the attack does 0.
+    /// Revealed cards stay in hand. As with Puppy Pile's reveal, the opponent's knowledge records
+    /// nothing (INFORMATION_MODEL v8).
+    DamagePerNamedCardInHand {
+        card_name: String,
+        damage_per_card: u32,
+    },
 }

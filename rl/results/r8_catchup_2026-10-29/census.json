@@ -4,7 +4,7 @@
   "switch_a": 250.0,
   "switch_b": 250.0
  },
- "engine_map_entries": 162,
+ "engine_map_entries": 163,
  "lists": [
   {
    "list": "decks/research/altaria.txt",
@@ -53,14 +53,14 @@
      "mechanic": {
       "variant": "CanEvolveOnFirstTurnIfActive",
       "fields": "AbilityMechanic::CanEvolveOnFirstTurnIfActive, ",
-      "map_line": 46,
+      "map_line": 47,
       "pos": "active",
       "first_turn": true,
       "scope": "self",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 235
+      "gate_line": 241
      },
      "switch_a": true,
      "switch_b": false
@@ -85,7 +85,7 @@
      "mechanic": {
       "variant": "BadDreamsEndOfTurn",
       "fields": "AbilityMechanic::BadDreamsEndOfTurn { amount: 20 }, ",
-      "map_line": 773,
+      "map_line": 782,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "board",
@@ -338,14 +338,14 @@
      "mechanic": {
       "variant": "ReduceRetreatCostOfYourActiveTypedFromBench",
       "fields": "AbilityMechanic::ReduceRetreatCostOfYourActiveTypedFromBench { energy_type: EnergyType::Darkness, amount: 1, }, ",
-      "map_line": 810,
+      "map_line": 819,
       "pos": "bench",
       "first_turn": false,
       "scope": "board",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 217
+      "gate_line": 223
      },
      "switch_a": false,
      "switch_b": true
@@ -553,14 +553,14 @@
      "mechanic": {
       "variant": "RandomEvolutionFromDeck",
       "fields": "AbilityMechanic::RandomEvolutionFromDeck { trigger: RandomEvolutionTrigger::EndOfOpponentTurnIfActive, }, ",
-      "map_line": 857,
+      "map_line": 866,
       "pos": "active",
       "first_turn": false,
       "scope": "self",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 293
+      "gate_line": 299
      },
      "switch_a": false,
      "switch_b": false
@@ -693,14 +693,14 @@
      "mechanic": {
       "variant": "EndTurnDrawCardIfActive",
       "fields": "AbilityMechanic::EndTurnDrawCardIfActive { amount: 1 }, ",
-      "map_line": 103,
+      "map_line": 104,
       "pos": "active",
       "first_turn": false,
       "scope": "board",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 246
+      "gate_line": 252
      },
      "switch_a": false,
      "switch_b": false
@@ -822,7 +822,7 @@
      "mechanic": {
       "variant": "ReduceDamageFromAttacks",
       "fields": "AbilityMechanic::ReduceDamageFromAttacks { amount: 20 }, ",
-      "map_line": 643,
+      "map_line": 652,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "self",
@@ -854,14 +854,14 @@
      "mechanic": {
       "variant": "SoothingWind",
       "fields": "AbilityMechanic::SoothingWind { energy_type: None }, ",
-      "map_line": 146,
+      "map_line": 147,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "board",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 211
+      "gate_line": 217
      },
      "switch_a": false,
      "switch_b": true
@@ -989,7 +989,7 @@
      "mechanic": {
       "variant": "DamageOpponentActiveOnZoneAttachToSelf",
       "fields": "AbilityMechanic::DamageOpponentActiveOnZoneAttachToSelf { energy_type: EnergyType::Darkness, amount: 20, only_turn_energy: true, }, ",
-      "map_line": 672,
+      "map_line": 681,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "board",
@@ -1140,14 +1140,14 @@
      "mechanic": {
       "variant": "CannotAttackWithoutBenchedNames",
       "fields": "AbilityMechanic::CannotAttackWithoutBenchedNames { required_bench_names: REGI_TRIO_NAMES, }, ",
-      "map_line": 821,
+      "map_line": 830,
       "pos": "active",
       "first_turn": false,
       "scope": "self",
       "drawback": true,
       "activated": false,
       "gate_position": null,
-      "gate_line": 255
+      "gate_line": 261
      },
      "switch_a": false,
      "switch_b": false
@@ -1299,14 +1299,14 @@
      "mechanic": {
       "variant": "CannotAttackWithoutBenchedNames",
       "fields": "AbilityMechanic::CannotAttackWithoutBenchedNames { required_bench_names: REGI_TRIO_NAMES, }, ",
-      "map_line": 821,
+      "map_line": 830,
       "pos": "active",
       "first_turn": false,
       "scope": "self",
       "drawback": true,
       "activated": false,
       "gate_position": null,
-      "gate_line": 255
+      "gate_line": 261
      },
      "switch_a": false,
      "switch_b": false
@@ -1416,14 +1416,14 @@
      "mechanic": {
       "variant": "ImmuneToStatusConditions",
       "fields": "AbilityMechanic::ImmuneToStatusConditions { status: None }, ",
-      "map_line": 606,
+      "map_line": 615,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "self",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 210
+      "gate_line": 216
      },
      "switch_a": false,
      "switch_b": false
@@ -1564,7 +1564,7 @@
      "mechanic": {
       "variant": "HealActiveYourPokemon",
       "fields": "AbilityMechanic::HealActiveYourPokemon { amount: 20 }, ",
-      "map_line": 445,
+      "map_line": 446,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "board",
@@ -1666,7 +1666,7 @@
      "mechanic": {
       "variant": "DamageOpponentActiveOnZoneAttachToSelf",
       "fields": "AbilityMechanic::DamageOpponentActiveOnZoneAttachToSelf { energy_type: EnergyType::Darkness, amount: 20, only_turn_energy: true, }, ",
-      "map_line": 672,
+      "map_line": 681,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "board",
@@ -1720,14 +1720,14 @@
      "mechanic": {
       "variant": "ReduceRetreatCostOfYourActiveTypedFromBench",
       "fields": "AbilityMechanic::ReduceRetreatCostOfYourActiveTypedFromBench { energy_type: EnergyType::Darkness, amount: 1, }, ",
-      "map_line": 810,
+      "map_line": 819,
       "pos": "bench",
       "first_turn": false,
       "scope": "board",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 217
+      "gate_line": 223
      },
      "switch_a": false,
      "switch_b": true
@@ -1827,7 +1827,7 @@
      "mechanic": {
       "variant": "HealActiveYourPokemon",
       "fields": "AbilityMechanic::HealActiveYourPokemon { amount: 20 }, ",
-      "map_line": 445,
+      "map_line": 446,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "board",
@@ -2063,7 +2063,7 @@
      "mechanic": {
       "variant": "HealActiveYourPokemon",
       "fields": "AbilityMechanic::HealActiveYourPokemon { amount: 20 }, ",
-      "map_line": 445,
+      "map_line": 446,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "board",
@@ -2139,14 +2139,14 @@
      "mechanic": {
       "variant": "TimeRecall",
       "fields": "AbilityMechanic::TimeRecall, ",
-      "map_line": 26,
+      "map_line": 27,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "board",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 292
+      "gate_line": 298
      },
      "switch_a": false,
      "switch_b": true
@@ -2620,14 +2620,14 @@
      "mechanic": {
       "variant": "SoothingWind",
       "fields": "AbilityMechanic::SoothingWind { energy_type: None }, ",
-      "map_line": 146,
+      "map_line": 147,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "board",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 211
+      "gate_line": 217
      },
      "switch_a": false,
      "switch_b": true
@@ -2797,14 +2797,14 @@
      "mechanic": {
       "variant": "SoothingWind",
       "fields": "AbilityMechanic::SoothingWind { energy_type: Some(EnergyType::Psychic), }, ",
-      "map_line": 150,
+      "map_line": 151,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "board",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 211
+      "gate_line": 217
      },
      "switch_a": false,
      "switch_b": true
@@ -2931,14 +2931,14 @@
      "mechanic": {
       "variant": "CanEvolveOnFirstTurnIfActive",
       "fields": "AbilityMechanic::CanEvolveOnFirstTurnIfActive, ",
-      "map_line": 46,
+      "map_line": 47,
       "pos": "active",
       "first_turn": true,
       "scope": "self",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 235
+      "gate_line": 241
      },
      "switch_a": true,
      "switch_b": false
@@ -2963,14 +2963,14 @@
      "mechanic": {
       "variant": "PreventAllDamageFromEx",
       "fields": "AbilityMechanic::PreventAllDamageFromEx, ",
-      "map_line": 571,
+      "map_line": 580,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "self",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 220
+      "gate_line": 226
      },
      "switch_a": false,
      "switch_b": false
@@ -3074,14 +3074,14 @@
      "mechanic": {
       "variant": "ImmuneToStatusConditions",
       "fields": "AbilityMechanic::ImmuneToStatusConditions { status: None }, ",
-      "map_line": 606,
+      "map_line": 615,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "self",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 210
+      "gate_line": 216
      },
      "switch_a": false,
      "switch_b": false
@@ -3200,14 +3200,14 @@
      "mechanic": {
       "variant": "ImmuneToStatusConditions",
       "fields": "AbilityMechanic::ImmuneToStatusConditions { status: None }, ",
-      "map_line": 606,
+      "map_line": 615,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "self",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 210
+      "gate_line": 216
      },
      "switch_a": false,
      "switch_b": false
@@ -3326,14 +3326,14 @@
      "mechanic": {
       "variant": "ImmuneToStatusConditions",
       "fields": "AbilityMechanic::ImmuneToStatusConditions { status: None }, ",
-      "map_line": 606,
+      "map_line": 615,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "self",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 210
+      "gate_line": 216
      },
      "switch_a": false,
      "switch_b": false
@@ -3358,14 +3358,14 @@
      "mechanic": {
       "variant": "IncreasePoisonDamage",
       "fields": "AbilityMechanic::IncreasePoisonDamage { amount: 10 }, ",
-      "map_line": 725,
+      "map_line": 734,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "board",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 222
+      "gate_line": 228
      },
      "switch_a": false,
      "switch_b": true
@@ -3469,14 +3469,14 @@
      "mechanic": {
       "variant": "ImmuneToStatusConditions",
       "fields": "AbilityMechanic::ImmuneToStatusConditions { status: None }, ",
-      "map_line": 606,
+      "map_line": 615,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "self",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 210
+      "gate_line": 216
      },
      "switch_a": false,
      "switch_b": false
@@ -3522,14 +3522,14 @@
      "mechanic": {
       "variant": "IncreasePoisonDamage",
       "fields": "AbilityMechanic::IncreasePoisonDamage { amount: 10 }, ",
-      "map_line": 725,
+      "map_line": 734,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "board",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 222
+      "gate_line": 228
      },
      "switch_a": false,
      "switch_b": true
@@ -3880,14 +3880,14 @@
      "mechanic": {
       "variant": "SoothingWind",
       "fields": "AbilityMechanic::SoothingWind { energy_type: Some(EnergyType::Psychic), }, ",
-      "map_line": 150,
+      "map_line": 151,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "board",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 211
+      "gate_line": 217
      },
      "switch_a": false,
      "switch_b": true
@@ -3972,7 +3972,7 @@
      "mechanic": {
       "variant": "DamageOnKnockoutInActive",
       "fields": "AbilityMechanic::DamageOnKnockoutInActive { amount: 50, target: KnockoutDamageTarget::Attacker, }, ",
-      "map_line": 212,
+      "map_line": 213,
       "pos": "active",
       "first_turn": false,
       "scope": "board",
@@ -4046,14 +4046,14 @@
      "mechanic": {
       "variant": "SoothingWind",
       "fields": "AbilityMechanic::SoothingWind { energy_type: Some(EnergyType::Psychic), }, ",
-      "map_line": 150,
+      "map_line": 151,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "board",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 211
+      "gate_line": 217
      },
      "switch_a": false,
      "switch_b": true
@@ -4147,7 +4147,7 @@
      "mechanic": {
       "variant": "DamageOnKnockoutInActive",
       "fields": "AbilityMechanic::DamageOnKnockoutInActive { amount: 50, target: KnockoutDamageTarget::Attacker, }, ",
-      "map_line": 212,
+      "map_line": 213,
       "pos": "active",
       "first_turn": false,
       "scope": "board",
@@ -4221,14 +4221,14 @@
      "mechanic": {
       "variant": "SoothingWind",
       "fields": "AbilityMechanic::SoothingWind { energy_type: None }, ",
-      "map_line": 146,
+      "map_line": 147,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "board",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 211
+      "gate_line": 217
      },
      "switch_a": false,
      "switch_b": true
@@ -4342,7 +4342,7 @@
      "mechanic": {
       "variant": "DamageOpponentActiveOnZoneAttachToSelf",
       "fields": "AbilityMechanic::DamageOpponentActiveOnZoneAttachToSelf { energy_type: EnergyType::Darkness, amount: 20, only_turn_energy: true, }, ",
-      "map_line": 672,
+      "map_line": 681,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "board",
@@ -4450,14 +4450,14 @@
      "mechanic": {
       "variant": "EndTurnDrawCardIfActive",
       "fields": "AbilityMechanic::EndTurnDrawCardIfActive { amount: 1 }, ",
-      "map_line": 103,
+      "map_line": 104,
       "pos": "active",
       "first_turn": false,
       "scope": "board",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 246
+      "gate_line": 252
      },
      "switch_a": false,
      "switch_b": false
@@ -4627,7 +4627,7 @@
      "mechanic": {
       "variant": "AttachEnergyFromZoneToSelfAndEndTurn",
       "fields": "AbilityMechanic::AttachEnergyFromZoneToSelfAndEndTurn { energy_type: EnergyType::Psychic, }, ",
-      "map_line": 550,
+      "map_line": 551,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "self",
@@ -4755,14 +4755,14 @@
      "mechanic": {
       "variant": "EndTurnDrawCardIfActive",
       "fields": "AbilityMechanic::EndTurnDrawCardIfActive { amount: 1 }, ",
-      "map_line": 103,
+      "map_line": 104,
       "pos": "active",
       "first_turn": false,
       "scope": "board",
       "drawback": false,
       "activated": false,
       "gate_position": null,
-      "gate_line": 246
+      "gate_line": 252
      },
      "switch_a": false,
      "switch_b": false
@@ -5031,7 +5031,7 @@
      "mechanic": {
       "variant": "DamageOpponentActiveOnZoneAttachToSelf",
       "fields": "AbilityMechanic::DamageOpponentActiveOnZoneAttachToSelf { energy_type: EnergyType::Darkness, amount: 20, only_turn_energy: true, }, ",
-      "map_line": 672,
+      "map_line": 681,
       "pos": "anywhere",
       "first_turn": false,
       "scope": "board",

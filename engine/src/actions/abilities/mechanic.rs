@@ -1,6 +1,7 @@
 use serde::{Deserialize, Serialize};
 
 use crate::{
+    card_ids::CardId,
     models::{Card, EnergyType, StatusCondition, TrainerType},
     tools::is_tool_card,
 };
@@ -442,6 +443,15 @@ pub enum AbilityMechanic {
     PoisonOpponentActive,
     ConfuseOpponentActive,
     BurnOpponentActive,
+    /// Ribombee's Honey Gather (C1 015 / C1 135): "Once during your turn, you may use this Ability.
+    /// Put a Sweet Honey rental card into your hand."
+    ///
+    /// The card is not taken from the deck: a new `card_id` card (C1 119 Sweet Honey) goes to the
+    /// hand, and it is that card for every rule (name, effect, playability); played, it goes to the
+    /// discard pile like any Item. Not offered while the hand holds 10 cards (move generation).
+    PutRentalCardInHand {
+        card_id: CardId,
+    },
     /// Dustox's Variety Powder: 1 Special Condition is chosen at random from `options` and
     /// inflicted on the opponent's Active Pokémon. Conditions already affecting that Pokémon are
     /// excluded from the draw, so the ability is unusable once all `options` are applied.

@@ -139,6 +139,7 @@ pub(crate) fn opening_ability_class(mechanic: &AbilityMechanic) -> OpeningAbilit
         | AbilityMechanic::MoveTypedEnergyFromBenchToActive { .. }
         | AbilityMechanic::PreventAllHealing
         | AbilityMechanic::PreventOpponentActiveEvolution
+        | AbilityMechanic::PutRentalCardInHand { .. }
         | AbilityMechanic::RandomStatusConditionToOpponentActive { .. }
         | AbilityMechanic::ReduceDamageToYourTypeWhileInPlay { .. }
         | AbilityMechanic::RemoveRandomSpecialConditionFromActive
@@ -203,7 +204,7 @@ pub(crate) fn opening_ability_class(mechanic: &AbilityMechanic) -> OpeningAbilit
         AbilityMechanic::HealActiveYourPokemon { .. } => class(OpeningPosition::Anywhere, false, true, false),
         // Classed by its hook (actions/apply_action_helpers.rs 256 (counts every in-play holder)): no position phrase in its text.
         AbilityMechanic::IncreasePoisonDamage { .. } => class(OpeningPosition::Anywhere, false, true, false),
-        // Classed by its hook (state/mod.rs 1178 (any of the player's Pokémon)): no position phrase in its text.
+        // Classed by its hook (state/mod.rs 1228 (any of the player's Pokémon)): no position phrase in its text.
         AbilityMechanic::SoothingWind { .. } => class(OpeningPosition::Anywhere, false, true, false),
         // Classed by its hook (move_generation/attacks.rs 182 (`has_in_play_ability_mechanic`, any slot)): no position phrase in its text.
         AbilityMechanic::TimeRecall => class(OpeningPosition::Anywhere, false, true, false),
@@ -322,8 +323,9 @@ mod tests {
 
     /// The class counts of the map as `census.py` classifies it (`VARIANT_CLASS` in R8's copy,
     /// `rl/results/r8_catchup_2026-10-29/census.py`), counted as flag settings over the map (a variant whose own fields
-    /// change its class counts once per setting): 133 over 127 variants, 162 entries. Before R8-05c added
-    /// `PutRandomNamedFromDeckOnBenchOnEvolve` (on evolve) it was 132 over 126, before R8-05a added
+    /// change its class counts once per setting): 134 over 128 variants, 163 entries. Before R8-07b added
+    /// `PutRentalCardInHand` (anywhere board) it was 133 over 127, before R8-05c added
+    /// `PutRandomNamedFromDeckOnBenchOnEvolve` (on evolve) 132 over 126, before R8-05a added
     /// `ReduceDamageToYourTypeWhileInPlay` (anywhere board) 131 over 125, and before R8-04b added
     /// `FlipMoreCoinsForNamedAttack` (anywhere board) 130 over 124.
     #[test]
@@ -357,7 +359,7 @@ mod tests {
             ("active any time", 26),
             ("active drawback", 2),
             ("bench only", 8),
-            ("anywhere board", 46),
+            ("anywhere board", 47),
             ("anywhere self", 31),
             ("on evolve", 13),
             ("on bench entry", 4),
@@ -366,7 +368,7 @@ mod tests {
         .into_iter()
         .collect();
         assert_eq!(counts, expected);
-        assert_eq!(settings.len(), 133);
+        assert_eq!(settings.len(), 134);
     }
 
     const ALTARIA: &str = "Energy: Psychic\n2 B1 196\n1 B1 102\n2 B1 184\n2 B3a 020\n2 B2b 040\n1 A4a 059\n2 P-A 007\n2 B1 225\n1 A1 225\n2 P-A 005\n1 B3 147\n1 B3b 064\n1 B2 153\n";

@@ -17,6 +17,8 @@ use crate::{
         team_rockets_researcher::UnpricedForecast,
         Action, SimpleAction,
     },
+    card_ids::CardId,
+    database::get_card_by_enum,
     effects::{CardEffect, TurnEffect},
     hooks::is_ultra_beast,
     models::{Card, EnergyType, PlayedCard, StatusCondition},
@@ -249,6 +251,7 @@ fn forecast_ability_by_mechanic(
         AbilityMechanic::PoisonOpponentActive => poison_opponent_active(),
         AbilityMechanic::ConfuseOpponentActive => confuse_opponent_active(),
         AbilityMechanic::BurnOpponentActive => burn_opponent_active(),
+        AbilityMechanic::PutRentalCardInHand { card_id } => put_rental_card_in_hand(*card_id),
         AbilityMechanic::RandomStatusConditionToOpponentActive { options } => {
             random_status_condition_to_opponent_active(state, action.actor, options)
         }
@@ -789,6 +792,19 @@ fn burn_opponent_active() -> Outcomes {
     Outcomes::single_fn(|_rng, state, action| {
         let opponent = (action.actor + 1) % 2;
         state.apply_status_condition(opponent, 0, StatusCondition::Burned);
+    })
+}
+
+/// Ribombee - Honey Gather: a new copy of the rental card (`card_id`, C1 119 Sweet Honey) goes to
+/// the hand; deck and discard pile are untouched. It is an ordinary C1 119 for every rule (name,
+/// effect, playability), and once played it is discarded like any Item (`discard_card_from_hand`
+/// in the Play's common prefix). Move generation doesn't offer the Ability at 10 cards in hand;
+/// the push is skipped there too, as a draw is (`State::maybe_draw_card`).
+fn put_rental_card_in_hand(card_id: CardId) -> Outcomes {
+    Outcomes::single_fn(move |_rng, state, action| {
+        if state.hands[action.actor].len() < 10 {
+            state.hands[action.actor].push(get_card_by_enum(card_id));
+        }
     })
 }
 
