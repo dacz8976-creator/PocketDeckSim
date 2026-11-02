@@ -247,10 +247,12 @@ fn sorted(mut energies: Vec<EnergyType>) -> Vec<EnergyType> {
 }
 
 /// Dustin's clip (shot list c1-items-playable, 01:04-01:09): his Active Alolan Diglett (A3 117,
-/// 50 HP) at 20 HP with no Energy and an empty Bench, against an Active Wobbuffet (A4 086) at 90/90
-/// with one [P] Energy. Super Potion and Full Heal were each refused ("conditions not met"). The
-/// clip's Diglett also holds Eviolite, left off here (R8-06b). With one [M] Energy on the same
-/// Diglett, Super Potion is offered.
+/// 50 HP) at 20 HP with no Energy and an empty Bench, against an Active Wobbuffet at 90/90 with one
+/// [P] Energy. Super Potion and Full Heal were each refused ("conditions not met"). The capture
+/// names no printings: these fit its HP, and C1 061 Wobbuffet (Headbutt Bounce, [P], 30) fits its
+/// one Energy and 30-damage hit, where A4 086's Reply Strongly costs [P][C]. The clip's Diglett
+/// also holds Eviolite, left off here (R8-06b). With one [M] Energy on the same Diglett, Super
+/// Potion is offered.
 #[test]
 fn test_super_potion_and_full_heal_refused_on_the_clips_damaged_diglett_with_no_energy() {
     let board = |energy: Vec<EnergyType>| {
@@ -258,7 +260,7 @@ fn test_super_potion_and_full_heal_refused_on_the_clips_damaged_diglett_with_no_
             vec![PlayedCard::from_id(CardId::A3117AlolanDiglett)
                 .with_remaining_hp(20)
                 .with_energy(energy)],
-            vec![PlayedCard::from_id(CardId::A4086Wobbuffet).with_energy(vec![EnergyType::Psychic])],
+            vec![PlayedCard::from_id(CardId::C1061Wobbuffet).with_energy(vec![EnergyType::Psychic])],
         )
     };
     let mut game = board(vec![]);
@@ -425,14 +427,15 @@ fn test_super_potion_under_heal_block_heals_nothing_and_discards_nothing() {
 }
 
 /// Dustin's clip (shot list c1-items-playable, 01:43 and 02:51): Max Repel refused against a Basic
-/// Active with a Bench, Wobbuffet (A4 086) with Eevee (A1 206) and Cosmog (A3 085) Benched, and
-/// Zangoose (A4a 065) with Eevee and Cosmoem (A3 086) Benched. His side: an Active Alolan Dugtrio ex
-/// (A3a 047) at 90 / 100 HP with one [M] Energy and an empty Bench (its Eviolite, R8-06b's, is left
-/// off). Repel (A3a 064), for a Basic Active, is offered on the same boards.
+/// Active with a Bench, Wobbuffet (C1 061, as in the Super Potion clip test) with Eevee (A1 206)
+/// and Cosmog (A3 085) Benched, and Zangoose (A4a 065) with Eevee and Cosmoem (A3 086) Benched. His
+/// side: an Active Alolan Dugtrio ex (A3a 047) at 90 / 100 HP with one [M] Energy and an empty
+/// Bench (its Eviolite, R8-06b's, is left off). The capture names no printings; these fit its HP.
+/// Repel (A3a 064), for a Basic Active, is offered on the same boards.
 #[test]
 fn test_max_repel_refused_on_the_clips_basic_actives_with_a_bench() {
     for (hp_left, opponent) in [
-        (90, [CardId::A4086Wobbuffet, CardId::A1206Eevee, CardId::A3085Cosmog]),
+        (90, [CardId::C1061Wobbuffet, CardId::A1206Eevee, CardId::A3085Cosmog]),
         (100, [CardId::A4a065Zangoose, CardId::A1206Eevee, CardId::A3086Cosmoem]),
     ] {
         let mut game = get_test_game_with_board(
