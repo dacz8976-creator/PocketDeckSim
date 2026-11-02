@@ -1117,7 +1117,9 @@ fn test_bots_decide_with_a_rental_card_in_a_hand() {
 /// Knowledge around Honey Gather, which R8 leaves as it was (observation.rs `update_knowledge`): the card goes into
 /// its holder's hand, so the opponent's knowledge of that hand (player 1's Hand Scope) is cleared, as for any change to
 /// it, while deck tops known from Pokédex (player 1's own; player 0's own, before a second Honey Gather) are kept, since
-/// no deck changes and the Ability's text has no "shuffle".
+/// no deck changes and the Ability's text has no "shuffle". Play can't give this board any deck-membership knowledge, so
+/// that it is kept too is checked with seeded knowledge by the lib test
+/// `honey_gather_keeps_deck_knowledge_and_clears_only_the_opponents_hand_knowledge` (actions/trainer_coin_plan.rs).
 #[test]
 fn test_honey_gather_clears_the_opponents_hand_knowledge_and_keeps_deck_tops() {
     let mut game = get_initialized_game_with_board(
@@ -1148,7 +1150,6 @@ fn test_honey_gather_clears_the_opponents_hand_knowledge_and_keeps_deck_tops() {
     let after = game.observation(1).revealed;
     assert!(after.opponent_hand.is_empty(), "the hand changed");
     assert_eq!(after.deck_top, known.deck_top);
-    assert_eq!(after.opponent_deck_membership, known.opponent_deck_membership);
 
     play_trainer(&mut game, 0, trainer_from_id(CardId::PA004PokedEx));
     let own_top = game.observation(0).revealed.deck_top[0].clone();

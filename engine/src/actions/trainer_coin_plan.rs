@@ -1848,4 +1848,64 @@ mod tests {
             assert!(state.pending_trainer_coin_choice.is_none());
         }
     }
+
+    /// The same for Ribombee's Honey Gather, with deck-membership knowledge seeded (play can't
+    /// give `c1_grass_fire_test.rs`'s board any): on either printing the rental card goes into its
+    /// holder's hand and no deck changes, so every viewer's deck-top and deck-membership knowledge
+    /// is kept, and only the opponent's knowledge of that hand is cleared.
+    #[test]
+    fn honey_gather_keeps_deck_knowledge_and_clears_only_the_opponents_hand_knowledge() {
+        use crate::observation::{update_knowledge, RevealedKnowledge};
+
+        let known = |opponent_hand: Vec<Card>| RevealedKnowledge {
+            deck_top: [
+                vec![get_card_by_enum(CardId::PA005PokeBall)],
+                vec![get_card_by_enum(CardId::A1033Charmander)],
+            ],
+            opponent_hand,
+            opponent_deck_membership: vec![get_card_by_enum(CardId::PA001Potion)],
+        };
+        let mut state = State::default();
+        state.turn_count = 3;
+        state.current_player = 0;
+        state.set_board(
+            vec![
+                PlayedCard::from_id(CardId::C1015Ribombee),
+                PlayedCard::from_id(CardId::C1135Ribombee),
+            ],
+            vec![PlayedCard::from_id(CardId::A1001Bulbasaur)],
+        );
+        state.hands[0] = vec![get_card_by_enum(CardId::PA001Potion)];
+        state.hands[1] = vec![get_card_by_enum(CardId::A1001Bulbasaur)];
+        state.decks[0].cards = vec![
+            get_card_by_enum(CardId::PA005PokeBall),
+            get_card_by_enum(CardId::PA001Potion),
+        ];
+        state.decks[1].cards = vec![
+            get_card_by_enum(CardId::A1033Charmander),
+            get_card_by_enum(CardId::PA001Potion),
+        ];
+        let hand_of = |state: &State, player: usize| {
+            let mut hand = state.hands[player].clone();
+            hand.sort_by_key(Card::get_id);
+            hand
+        };
+        let mut knowledge = [known(hand_of(&state, 1)), known(hand_of(&state, 0))];
+        let mut rng = StdRng::seed_from_u64(5);
+        for in_play_idx in [0, 1] {
+            let action = Action {
+                actor: 0,
+                action: SimpleAction::UseAbility { in_play_idx },
+                is_stack: false,
+            };
+            let before = state.clone();
+            crate::actions::apply_action(&mut rng, &mut state, &action);
+            assert_eq!(state.hands[0].len(), before.hands[0].len() + 1, "{action:?}");
+            assert_eq!(state.decks, before.decks, "{action:?}");
+            update_knowledge(&mut knowledge, &before, &state, &action);
+            assert_eq!(knowledge[0], known(hand_of(&state, 1)), "{action:?}");
+            assert_eq!(knowledge[1], known(vec![]), "{action:?}: the hand changed");
+            knowledge[1].opponent_hand = hand_of(&state, 0);
+        }
+    }
 }

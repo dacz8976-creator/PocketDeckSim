@@ -7,9 +7,12 @@
 //! picks of WeightedRandomPlayer (every seed) and km3 (seed 0, pending choices). A Red Card at the
 //! end shuffles the opponent's deck, so the record also fingerprints the RNG state left behind.
 //!
-//! With `MISTY_TRACE_OUT` set, the record is written to that file, and two commits' records can be
-//! compared byte for byte; without it the scenarios run as a smoke test. Hashes are FNV-1a over
-//! the JSON. The test names no card added after c4431a48, so the same file builds at both.
+//! The record is pinned: its FNV-1a must equal `EXPECTED_RECORD_FNV`, the record at c4431a48, so
+//! the test fails on any change to it (in the suite's release build). With `MISTY_TRACE_OUT` set,
+//! the record is also written to that file, and two commits' records can be compared byte for
+//! byte. A deliberate change, such as the later Misty rule row, updates the constant. Hashes are
+//! FNV-1a over the JSON. The test names no card added after c4431a48, so the same file builds at
+//! both.
 
 use std::{
     cell::RefCell,
@@ -35,6 +38,9 @@ use strum::IntoEnumIterator;
 
 const SEEDS: u64 = 16;
 const MAX_STEPS: usize = 16;
+/// FNV-1a of the whole record at c4431a48 (R8-06 fix, before R8-07), 1,157,575 bytes; R8-07a and
+/// R8-07b left it byte-identical.
+const EXPECTED_RECORD_FNV: &str = "150a2e50095a6bd0";
 
 fn fnv(text: &str) -> u64 {
     let mut hash = 0xcbf2_9ce4_8422_2325_u64;
@@ -471,4 +477,10 @@ fn misty_and_the_trainer_coin_plan_trace() {
     if let Ok(path) = std::env::var("MISTY_TRACE_OUT") {
         std::fs::write(path, &out).unwrap();
     }
+    assert_eq!(
+        format!("{:016x}", fnv(&out)),
+        EXPECTED_RECORD_FNV,
+        "the Misty/coin-plan record changed: rerun with MISTY_TRACE_OUT and diff it against the \
+         record at c4431a48"
+    );
 }

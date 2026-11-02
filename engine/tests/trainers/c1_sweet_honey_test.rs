@@ -1,4 +1,4 @@
-// Ported from upstream deckgym-core #433 (tests/trainers/c1_sweet_honey_test.rs, e7cc5ce) as #439 left it (7aa4ef0): its 2 tests. test_sweet_honey_heals_20_per_heads_until_tails is adapted to this fork's order: the Play offers a ChooseSweetHoneyTarget on the one damaged Pokémon and the coins are flipped when it resolves (upstream flips first, then offers a Heal of 20 per heads on any of the player's Pokémon), with no cap on the heads (upstream's geometric_until_tails(8)); its board, seeds and assertions are upstream's. test_sweet_honey_needs_a_damaged_pokemon (#439) is as upstream wrote it. Fork tests follow at the end: damaged targets only and nothing flipped before the choice, on both printings; an unoffered target refused before the coins; no cap; the exact search forecast and its match with real play; Will; Heal Block; Luxury Coin (both Gholdengo printings, real play and search, Will, a spent coin); serialization, redaction and adoption, malformed states included; the bots at every Sweet Honey root; and the printings' status.
+// Ported from upstream deckgym-core #433 (tests/trainers/c1_sweet_honey_test.rs, e7cc5ce) as #439 left it (7aa4ef0): its 2 tests. test_sweet_honey_heals_20_per_heads_until_tails is adapted to this fork's order: the Play offers a ChooseSweetHoneyTarget on the one damaged Pokémon and the coins are flipped when it resolves (upstream flips first, then offers a Heal of 20 per heads on any of the player's Pokémon), with no cap on the heads (upstream's geometric_until_tails(8)); its board, seeds and assertions are upstream's. test_sweet_honey_needs_a_damaged_pokemon (#439) is as upstream wrote it. Fork tests follow at the end: neither printing playable without a damaged Pokémon; damaged targets only and nothing flipped before the choice, on both printings; an unoffered target refused before the coins, with the gameplay RNG fingerprinted after it; no cap; the exact search forecast and its match with real play; Will; Heal Block; Luxury Coin (both Gholdengo printings, real play and search, Will, a spent coin); serialization, redaction and adoption, malformed states included; the bots at every Sweet Honey root; and the printings' status.
 //! Sweet Honey (C1 119, C1 152): "Choose 1 of your Pokémon, and then flip a coin until you get
 //! tails. For each heads, heal 20 damage from that Pokémon."
 
@@ -201,6 +201,39 @@ fn heads(faces: &[bool]) -> u32 {
     faces.iter().filter(|face| **face).count() as u32
 }
 
+/// Upstream's `test_sweet_honey_needs_a_damaged_pokemon` on both printings (upstream's holds C1
+/// 119 only): on its board, no Play with every Pokémon undamaged, and a Play once the Benched
+/// Charmander is damaged.
+#[test]
+fn test_neither_printing_is_playable_without_a_damaged_pokemon() {
+    let offers_play = |game: &Game<'static>| {
+        game.get_state_clone()
+            .generate_possible_actions()
+            .1
+            .iter()
+            .any(|action| plays("Sweet Honey")(&action.action))
+    };
+    for honey in [CardId::C1119SweetHoney, CardId::C1152SweetHoney] {
+        let mut game = get_test_game_with_board(
+            vec![
+                PlayedCard::from_id(CardId::A1001Bulbasaur),
+                PlayedCard::from_id(CardId::A1033Charmander),
+            ],
+            vec![PlayedCard::from_id(CardId::A1033Charmander)],
+        );
+        let mut state = game.get_state_clone();
+        state.hands[0] = vec![get_card_by_enum(honey)];
+        game.set_state(state);
+        assert!(!offers_play(&game), "{honey:?}: no damaged Pokémon");
+
+        let mut state = game.get_state_clone();
+        state.in_play_pokemon[0][1] =
+            Some(PlayedCard::from_id(CardId::A1033Charmander).with_remaining_hp(10));
+        game.set_state(state);
+        assert!(offers_play(&game), "{honey:?}: a damaged Benched Pokémon");
+    }
+}
+
 /// Right after the Play, on either printing: Sweet Honey is in the discard pile, its target phase
 /// sits in the shared pre-coin slot with a Sweet Honey route, no coin choice is pending, nothing is
 /// healed, and the only choices are the damaged Pokémon (the Charmander and Squirtle, not the
@@ -232,9 +265,33 @@ fn test_sweet_honey_offers_only_damaged_pokemon_before_any_coin() {
     }
 }
 
+/// Plays a Red Card for player 0 against an opponent with an empty hand and 60 distinct cards in
+/// the deck: the order they are shuffled into and the cards drawn fingerprint the gameplay RNG
+/// `game` was left with, as in `misty_coin_plan_trace_test.rs`.
+fn red_card_print(mut game: Game<'static>) -> (Vec<Card>, Vec<Card>) {
+    use strum::IntoEnumIterator;
+
+    let red_card = get_card_by_enum(CardId::PA006RedCard);
+    let mut state = game.get_state_clone();
+    state.hands[0].push(red_card.clone());
+    state.hands[1].clear();
+    state.decks[1].cards = CardId::iter().take(60).map(get_card_by_enum).collect();
+    game.set_state(state);
+    game.apply_action(&Action {
+        actor: 0,
+        action: SimpleAction::Play {
+            trainer_card: red_card.as_trainer(),
+        },
+        is_stack: false,
+    });
+    let state = game.get_state_clone();
+    (state.decks[1].cards.clone(), state.hands[1].clone())
+}
+
 /// The twin of `misty_precoin_target_test.rs`'s rejected target: an undamaged (unoffered) target,
-/// an empty slot and Misty's own target action are refused, and the gameplay RNG is untouched, so
-/// the real choice then heals what it heals without the attempts.
+/// an empty slot and Misty's own target action are refused, and the gameplay RNG is untouched: the
+/// real choice then heals what it heals without the attempts, and a Red Card played after it
+/// shuffles and draws the same in both games (the heal alone often matches after a different draw).
 #[test]
 fn test_sweet_honey_unoffered_target_is_rejected_before_the_coins() {
     let seed = 91;
@@ -259,6 +316,11 @@ fn test_sweet_honey_unoffered_target_is_rejected_before_the_coins() {
     assert_eq!(
         format!("{:?}", rejected.get_state_clone()),
         format!("{:?}", control.get_state_clone()),
+        "the real choice must heal as it does without the rejected attempts"
+    );
+    assert_eq!(
+        red_card_print(rejected),
+        red_card_print(control),
         "a rejected target must not advance the gameplay RNG"
     );
 }
