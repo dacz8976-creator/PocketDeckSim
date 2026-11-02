@@ -522,6 +522,19 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
             coin_flip: false,
         },
     );
+    // Deoxys (C1 062 / P-C 003) - Psycho Boost: the -N counterpart of the +N entries above
+    map.insert(
+        "During your next turn, this Pokémon's Psycho Boost does -50 damage.",
+        Mechanic::DamageAndCardEffect {
+            opponent: false,
+            effect: CardEffect::ReducedDamageForAttack {
+                attack_name: "Psycho Boost".to_string(),
+                amount: 50,
+            },
+            duration: 2,
+            coin_flip: false,
+        },
+    );
     map.insert(
         "During your next turn, this Pokémon's Rolling Spin attack does +60 damage.",
         Mechanic::DamageAndCardEffect {

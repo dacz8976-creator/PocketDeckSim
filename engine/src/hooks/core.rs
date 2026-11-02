@@ -2284,9 +2284,14 @@ pub(crate) fn modify_damage(
     // Growl, Moonblast and Teary Attack follow the Pokemon that was hit. Their reduction
     // affects each opposing target of that Pokemon's attack, including Bench damage,
     // even when the original user has switched out. Ability/status damage bypasses it.
+    // Deoxys's Psycho Boost ("During your next turn, this Pokémon's Psycho Boost does -50 damage.")
+    // is the same step-2 cut on its own user, for that one attack: keyed on the name of the attack
+    // being used, as `IncreasedDamageForAttack`'s bonus is.
     let carried_attack_reduction: u32 = if is_from_active_attack && attacking_player != target_player {
         attacking_pokemon.get_active_effects().iter().filter_map(|effect| match effect {
             CardEffect::ReducedAttackDamage { amount } => Some(*amount),
+            CardEffect::ReducedDamageForAttack { attack_name, amount }
+                if context.attack_name == Some(attack_name.as_str()) => Some(*amount),
             _ => None,
         }).sum()
     } else {

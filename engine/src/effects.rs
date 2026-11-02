@@ -115,8 +115,19 @@ pub enum CardEffect {
     /// resolving (Charizard's Flame Aura on an attack's own Energy attach), so the attack's KO wave
     /// settles it but must not count it as "Knocked Out by damage from an attack". Added by
     /// `State::on_attach_energy` and read by `handle_knockouts`; it leaves play with the Pokémon.
-    /// Kept last, so every earlier variant keeps its position (and its serialized index and hash).
+    /// Added after every earlier variant, so each keeps its position (and its serialized index and
+    /// hash).
     KnockedOutByAbilityDamage,
+    /// This Pokémon's attack named `attack_name` does `amount` less damage (Deoxys's Psycho Boost,
+    /// C1 062 / P-C 003: "During your next turn, this Pokémon's Psycho Boost does -50 damage.").
+    /// The counterpart of `IncreasedDamageForAttack`: an effect on the Attacking Pokémon, so it is
+    /// cut with `ReducedAttackDamage` in `hooks::modify_damage`, before Weakness, and like every
+    /// stored effect it is cleared when the Pokémon leaves the Active Spot or evolves.
+    /// Kept last, so every earlier variant keeps its position (and its serialized index and hash).
+    ReducedDamageForAttack {
+        attack_name: String,
+        amount: u32,
+    },
 }
 
 /// `CardEffect` duration for effects that read "until this Pokémon leaves the Active Spot": they

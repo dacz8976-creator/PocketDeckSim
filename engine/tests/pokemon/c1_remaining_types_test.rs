@@ -1,11 +1,15 @@
-// Ported from upstream deckgym-core #438 (20d1857): the tests of tests/pokemon/c1_attacks/{alakazam,eevee,electrode,espeon,malamar,pidgeot,pidgey,porygon_z,pupitar,umbreon,whiscash}.rs and tests/pokemon/c1_abilities/pawmot.rs, all as upstream wrote them (R8-08a), in one file with the helpers of upstream's two mod.rs files: damage is read with `Taken` (upstream's `public_details().damage` is not in this fork; as in dual_fusion_ex/mod.rs), and `end_turn` also plays the Pokémon Checkup and the next player's draw, as c1_grass_fire_test's does. Deoxys, Jigglypuff and Lunala, the rest of c1_attacks, are not ported here. Fork tests are added at the end (Electrode's exact 90 on itself; Electrocreation on each printing from the Active Spot and the Bench, once per Pawmot, not to an Active of another type; Mind Jack counting only the opponent's Bench; Brainwave counting only [P]; Amass leaving the turn's Energy; Power Press with 4 [F] in all; Moonlit Raid and Clean Hit against a Stage 2 and a Fossil; Find a Friend and Signs of Evolution over seeds, past a Fossil and at a 10-card hand; Overdrive Smash's +50 staying with the Porygon-Z that used it; Pester the Dizzy against the other Special Conditions and before Weakness; the printings' status).
+// Ported from upstream deckgym-core #438 (20d1857): the tests of tests/pokemon/c1_attacks/{alakazam,deoxys,eevee,electrode,espeon,malamar,pidgeot,pidgey,porygon_z,pupitar,umbreon,whiscash}.rs and tests/pokemon/c1_abilities/pawmot.rs, all as upstream wrote them (R8-08a; deoxys.rs R8-08b), in one file with the helpers of upstream's two mod.rs files: damage is read with `Taken` (upstream's `public_details().damage` is not in this fork; as in dual_fusion_ex/mod.rs), and `end_turn` also plays the Pokémon Checkup and the next player's draw, as c1_grass_fire_test's does. Jigglypuff and Lunala, the rest of c1_attacks, are not ported here. Fork tests are added at the end (Electrode's exact 90 on itself; Electrocreation on each printing from the Active Spot and the Bench, once per Pawmot, not to an Active of another type; Mind Jack counting only the opponent's Bench; Brainwave counting only [P]; Amass leaving the turn's Energy; Power Press with 4 [F] in all; Moonlit Raid and Clean Hit against a Stage 2 and a Fossil; Find a Friend and Signs of Evolution over seeds, past a Fossil and at a 10-card hand; Overdrive Smash's +50 staying with the Porygon-Z that used it; Pester the Dizzy against the other Special Conditions and before Weakness; Psycho Boost's -50 for the next turn only, set again by each use, before Weakness, on Psycho Boost alone, staying with the Deoxys that used it and leaving with it for the Bench; the printings' status).
 use deckgym::{
     actions::{Action, SimpleAction},
     card_ids::CardId,
     card_validation::{get_implementation_status, implementation_limitations, ImplementationStatus},
     database::get_card_by_enum,
+    effects::CardEffect,
     models::{Card, EnergyType, PlayedCard, StatusCondition},
-    test_support::{attack_action, get_initialized_game_with_board, get_test_game_with_board},
+    test_support::{
+        attack_action, get_initialized_game_with_board, get_test_game_with_board, play_trainer,
+        trainer_from_id,
+    },
     Game,
 };
 use std::collections::BTreeSet;
@@ -97,6 +101,34 @@ fn mind_jack_does_only_base_damage_with_an_empty_opponent_bench() {
     let mut game = board(vec![ready(id, 0)], vec![durable()]);
     attack(&mut game, id, 0);
     assert_eq!(defender_damage(&game), 50);
+}
+
+// c1_attacks/deoxys.rs
+
+#[test]
+fn psycho_boost_does_fifty_less_on_the_next_turn_on_every_printing() {
+    for id in [CardId::C1062Deoxys, CardId::PC003Deoxys] {
+        let mut game = board(vec![ready(id, 0)], vec![durable()]);
+        attack(&mut game, id, 0);
+        assert_eq!(defender_damage(&game), 100, "{id:?}");
+        end_turn(&mut game, 0);
+        end_turn(&mut game, 1);
+        attack(&mut game, id, 0);
+        assert_eq!(defender_damage(&game), 100 + 50, "{id:?}");
+    }
+}
+
+#[test]
+fn psycho_boost_is_back_to_full_damage_after_a_turn_without_using_it() {
+    let id = CardId::C1062Deoxys;
+    let mut game = board(vec![ready(id, 0)], vec![durable()]);
+    attack(&mut game, id, 0);
+    for _ in 0..2 {
+        end_turn(&mut game, 0);
+        end_turn(&mut game, 1);
+    }
+    attack(&mut game, id, 0);
+    assert_eq!(defender_damage(&game), 100 + 100);
 }
 
 // c1_attacks/eevee.rs
@@ -651,7 +683,150 @@ fn test_malamar_pester_the_dizzy_needs_confusion_and_comes_before_weakness() {
     assert_eq!(defender_damage(&game), 10 + 90 + 20);
 }
 
-/// The printings R8-08a maps: each is Complete, with no known limitation.
+const DEOXYS: [CardId; 2] = [CardId::C1062Deoxys, CardId::PC003Deoxys];
+
+fn retreat(game: &mut Game<'static>, bench_idx: usize) {
+    game.apply_action(&Action {
+        actor: 0,
+        action: SimpleAction::Retreat(bench_idx),
+        is_stack: false,
+    });
+    game.play_until_stable();
+}
+
+/// Deoxys - Psycho Boost: "During your next turn, this Pokémon's Psycho Boost does -50 damage." On both
+/// printings a Deoxys using it every turn does 100, 50, 50, 50: each use puts a new -50 on its next turn, and
+/// only the one from the turn before is in force (each runs out at the end of the turn it was for, so two never
+/// add up to -100). After a turn without Psycho Boost the last -50 has run out: 100 again.
+#[test]
+fn test_deoxys_psycho_boost_cut_lasts_one_turn_and_each_use_sets_it_again() {
+    for id in DEOXYS {
+        let mut game = board(vec![ready(id, 0)], vec![durable()]);
+        let mut total = 0;
+        for expected in [100, 50, 50, 50] {
+            attack(&mut game, id, 0);
+            total += expected;
+            assert_eq!(defender_damage(&game), total, "{id:?}");
+            end_turn(&mut game, 0);
+            end_turn(&mut game, 1);
+        }
+        // A turn without Psycho Boost.
+        end_turn(&mut game, 0);
+        end_turn(&mut game, 1);
+        attack(&mut game, id, 0);
+        assert_eq!(defender_damage(&game), total + 100, "{id:?}");
+    }
+}
+
+/// Deoxys (C1 062) against a 1000-HP `defender`, with `stadium` in play: the damage of its first Psycho Boost
+/// and of the next turn's, for which Deoxys also carries a Growl-type "-`growl`" (`ReducedAttackDamage`, put on
+/// it directly for that turn) when `growl` is not 0.
+fn psycho_boost_twice(defender: CardId, stadium: Option<CardId>, growl: u32) -> (u32, u32) {
+    let id = CardId::C1062Deoxys;
+    let mut game = board(vec![ready(id, 0)], vec![durable_of(defender)]);
+    if let Some(stadium) = stadium {
+        let mut state = game.get_state_clone();
+        state.set_active_stadium(get_card_by_enum(stadium));
+        game.set_state(state);
+    }
+    attack(&mut game, id, 0);
+    let first = defender_damage(&game);
+    end_turn(&mut game, 0);
+    end_turn(&mut game, 1);
+    if growl > 0 {
+        let mut state = game.get_state_clone();
+        let deoxys = state.in_play_pokemon[0][0].as_mut().unwrap();
+        deoxys.add_effect(CardEffect::ReducedAttackDamage { amount: growl }, 0);
+        game.set_state(state);
+    }
+    attack(&mut game, id, 0);
+    (first, defender_damage(&game) - first)
+}
+
+/// The -50 is an effect on the Attacking Pokémon, step 2 of the damage order (rules/02 §1), so Weakness comes
+/// after it. Against a Machop (A1 143, weak to [P]) the first Psycho Boost does 100 + 20 and the next turn's
+/// 50 + 20. Under Bounded Field (Weakness x2, Deoxys not being a Mega Evolution Pokémon ex): 200, then
+/// (100 - 50) x 2 = 100, not 100 x 2 - 50. It adds up with a Growl-type cut on Deoxys: under -30,
+/// 100 - 50 - 30 + 20 = 40; under -50 (no card prints it; it takes the attack to 0) the attack does 0, with no
+/// Weakness (rules/02 §1, rules/05 #11).
+#[test]
+fn test_deoxys_psycho_boost_cut_comes_before_weakness() {
+    for (stadium, growl, expected) in [
+        (None, 0, (100 + 20, 50 + 20)),
+        (Some(CardId::B3155BoundedField), 0, (100 * 2, (100 - 50) * 2)),
+        (None, 30, (100 + 20, 100 - 50 - 30 + 20)),
+        (None, 50, (100 + 20, 0)),
+    ] {
+        assert_eq!(
+            psycho_boost_twice(CardId::A1143Machop, stadium, growl),
+            expected,
+            "{stadium:?}, Growl -{growl}"
+        );
+    }
+}
+
+/// The -50 is for Psycho Boost only. Mew ex (A1a 032) uses Psycho Boost through Genome Hacking ("Choose 1 of
+/// your opponent's Active Pokémon's attacks and use it as this attack."), so the -50 is put on Mew ex, "this
+/// Pokémon"; on its next turn Mew ex's own Psyshot does its printed 20 against the 1000-HP Deoxys.
+#[test]
+fn test_deoxys_psycho_boost_cut_reaches_only_psycho_boost() {
+    let mew = CardId::A1a032MewEx;
+    let mut game = board(
+        vec![PlayedCard::from_id(mew).with_energy(vec![EnergyType::Psychic; 3])],
+        vec![durable_of(CardId::C1062Deoxys)],
+    );
+    attack(&mut game, mew, 1);
+    let (_, actions) = game.get_state_clone().generate_possible_actions();
+    let psycho_boost = actions
+        .into_iter()
+        .find(|action| matches!(&action.action, SimpleAction::Attack(copied) if copied.title == "Psycho Boost"))
+        .expect("Genome Hacking offers Psycho Boost");
+    game.apply_action(&psycho_boost);
+    assert_eq!(defender_damage(&game), 100);
+    end_turn(&mut game, 0);
+    end_turn(&mut game, 1);
+    attack(&mut game, mew, 0);
+    assert_eq!(defender_damage(&game), 100 + 20);
+}
+
+/// The -50 is "this Pokémon's": the Deoxys that used Psycho Boost retreats on its next turn to a Deoxys of the
+/// other printing, whose Psycho Boost does the printed 100 (100 + 100 on the defender in all).
+#[test]
+fn test_deoxys_psycho_boost_cut_stays_with_the_deoxys_that_used_it() {
+    let [first, second] = DEOXYS;
+    let mut game = board(vec![ready(first, 0), ready(second, 0)], vec![durable()]);
+    attack(&mut game, first, 0);
+    end_turn(&mut game, 0);
+    end_turn(&mut game, 1);
+    retreat(&mut game, 1);
+    assert_eq!(game.get_state_clone().get_active(0).get_id(), "P-C 003");
+    attack(&mut game, second, 0);
+    assert_eq!(defender_damage(&game), 100 + 100);
+}
+
+/// Like every stored effect, the -50 leaves with the Pokémon when it goes to the Bench (`apply_activate`). The
+/// opponent's Sabrina sends the Deoxys that used Psycho Boost to the Bench before its next turn; brought back on
+/// that turn (the other Deoxys retreats), its Psycho Boost does 100 again (100 + 100 on the defender in all).
+#[test]
+fn test_deoxys_psycho_boost_cut_leaves_with_the_deoxys_for_the_bench() {
+    let [first, second] = DEOXYS;
+    let mut game = board(vec![ready(first, 0), ready(second, 0)], vec![durable()]);
+    let mut state = game.get_state_clone();
+    state.hands[1] = vec![get_card_by_enum(CardId::A1225Sabrina)];
+    game.set_state(state);
+    attack(&mut game, first, 0);
+    end_turn(&mut game, 0);
+    play_trainer(&mut game, 1, trainer_from_id(CardId::A1225Sabrina));
+    game.play_until_stable();
+    assert_eq!(game.get_state_clone().get_active(0).get_id(), "P-C 003");
+    end_turn(&mut game, 1);
+    retreat(&mut game, 1);
+    assert_eq!(game.get_state_clone().get_active(0).get_id(), "C1 062");
+    attack(&mut game, first, 0);
+    assert_eq!(defender_damage(&game), 100 + 100);
+}
+
+/// The printings R8-08a and R8-08b map: each is Complete, with no known limitation.
 #[test]
 fn test_mapped_438_printings_report_complete() {
     for id in [
@@ -672,6 +847,8 @@ fn test_mapped_438_printings_report_complete() {
         CardId::C1107Eevee,
         CardId::C1110PorygonZ,
         CardId::PC005Malamar,
+        CardId::C1062Deoxys,
+        CardId::PC003Deoxys,
     ] {
         assert_eq!(
             get_implementation_status(id),
