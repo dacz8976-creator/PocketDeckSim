@@ -413,18 +413,23 @@ fn test_electrode_self_destruct_does_exactly_90_to_itself() {
 /// Pawmot - Electrocreation: "Once during your turn, you may take a [L] Energy from your Energy Zone and
 /// attach it to the [L] Pokémon in the Active Spot." On each printing, an Active Pawmot (itself an [L]
 /// Pokémon) charges itself; a Benched Pawmot charges the Active Pikachu and not itself. The Energy comes
-/// from the Zone without using the turn's Energy, and each Pawmot uses it once a turn: two Benched Pawmot
-/// give the Active two [L].
+/// from the Zone without using the turn's Energy (an [L], set in the Zone since the board starts on turn 1,
+/// before any Energy is generated: it is still there after the Ability), and each Pawmot uses it once a
+/// turn: two Benched Pawmot give the Active two [L].
 #[test]
 fn test_pawmot_electrocreation_charges_the_lightning_active_from_either_spot() {
     for id in PAWMOTS {
         let mut game = get_test_game_with_board(vec![PlayedCard::from_id(id)], vec![durable()]);
+        let mut state = game.get_state_clone();
+        state.energy_zone[0].current = Some(EnergyType::Lightning);
+        game.set_state(state);
         let zone = game.get_state_clone().energy_zone[0];
         assert!(offers_ability(&game, 0), "{id:?} in the Active Spot");
         use_ability(&mut game, 0);
         let state = game.get_state_clone();
         assert_eq!(state.get_active(0).attached_energy, vec![EnergyType::Lightning], "{id:?}");
         assert_eq!(state.energy_zone[0], zone, "{id:?}: the turn's Energy is not used");
+        assert_eq!(state.energy_zone[0].current, Some(EnergyType::Lightning), "{id:?}");
         assert!(!offers_ability(&game, 0), "{id:?}: once per turn");
 
         let mut game = get_test_game_with_board(
@@ -504,7 +509,7 @@ fn test_espeon_brainwave_counts_only_psychic_energy() {
 
 /// Pupitar - Amass: "Take 2 [F] Energy from your Energy Zone and attach it to this Pokémon." On both
 /// printings two [F] join the [W] it had, the defender takes nothing, and the turn's Energy in the Zone
-/// is left as it was.
+/// (an [F], set there since the board starts on turn 1, before any Energy is generated) is left as it was.
 #[test]
 fn test_pupitar_amass_adds_two_fighting_without_the_turns_energy() {
     for id in [CardId::C1076Pupitar, CardId::C1146Pupitar] {
@@ -512,6 +517,9 @@ fn test_pupitar_amass_adds_two_fighting_without_the_turns_energy() {
             vec![PlayedCard::from_id(id).with_energy(vec![EnergyType::Water])],
             vec![durable()],
         );
+        let mut state = game.get_state_clone();
+        state.energy_zone[0].current = Some(EnergyType::Fighting);
+        game.set_state(state);
         let zone = game.get_state_clone().energy_zone[0];
         attack(&mut game, id, 0);
         let state = game.get_state_clone();
@@ -521,6 +529,7 @@ fn test_pupitar_amass_adds_two_fighting_without_the_turns_energy() {
             "{id:?}"
         );
         assert_eq!(state.energy_zone[0], zone, "{id:?}");
+        assert_eq!(state.energy_zone[0].current, Some(EnergyType::Fighting), "{id:?}");
         assert_eq!(defender_damage(&game), 0, "{id:?}");
     }
 }
@@ -663,7 +672,9 @@ fn test_porygon_z_overdrive_smash_bonus_stays_with_the_porygon_z_that_used_it() 
 
 /// Malamar - Pester the Dizzy: "If your opponent's Active Pokémon is Confused, this attack does 90 more
 /// damage." Only Confusion counts: 10 against an Asleep, Paralyzed, Poisoned or Burned Active. The +90
-/// comes before Weakness: 10 + 90 + 20 = 120 on a Confused Machop (A1 143, weak to [P]).
+/// comes before Weakness: 10 + 90 + 20 = 120 on a Confused Machop (A1 143, weak to [P]). Under Bounded
+/// Field (Weakness as x2) the order shows: (10 + 90) x 2 = 200 (it would be 110 if the +90 came after
+/// Weakness).
 #[test]
 fn test_malamar_pester_the_dizzy_needs_confusion_and_comes_before_weakness() {
     let id = CardId::PC005Malamar;
@@ -678,9 +689,16 @@ fn test_malamar_pester_the_dizzy_needs_confusion_and_comes_before_weakness() {
         assert_eq!(defender_damage(&game), 10, "{status:?}");
     }
     let machop = durable_of(CardId::A1143Machop).with_status_condition(StatusCondition::Confused);
-    let mut game = board(vec![ready(id, 0)], vec![machop]);
+    let mut game = board(vec![ready(id, 0)], vec![machop.clone()]);
     attack(&mut game, id, 0);
     assert_eq!(defender_damage(&game), 10 + 90 + 20);
+
+    let mut game = board(vec![ready(id, 0)], vec![machop]);
+    let mut state = game.get_state_clone();
+    state.set_active_stadium(get_card_by_enum(CardId::B3155BoundedField));
+    game.set_state(state);
+    attack(&mut game, id, 0);
+    assert_eq!(defender_damage(&game), (10 + 90) * 2);
 }
 
 const DEOXYS: [CardId; 2] = [CardId::C1062Deoxys, CardId::PC003Deoxys];
