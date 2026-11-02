@@ -1,3 +1,5 @@
+#[path = "stadiums/abandoned_station_test.rs"]
+mod abandoned_station_test;
 #[path = "stadiums/area_zero_test.rs"]
 mod area_zero_test;
 #[path = "stadiums/arena_of_antiquity_test.rs"]

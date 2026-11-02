@@ -86,8 +86,8 @@ fn trainer_coverage_has_only_the_documented_pending_designs() {
     missing.dedup();
     // R8-06a implemented Super Potion (C1 120), Max Repel (C1 121), Full Heal (C1 122) and Genome
     // Converter Y (P-C 009); R8-06b the Tools Eviolite (C1 123) and Light Ball (C1 124); R8-07a
-    // Sweet Honey (C1 119).
-    let mut pending: Vec<CardId> = vec![CardId::C1131AbandonedStation];
+    // Sweet Honey (C1 119); R8-08c the Stadium Abandoned Station (C1 131), the last of them.
+    let mut pending: Vec<CardId> = vec![];
     pending.sort_by_key(|id| format!("{id:?}"));
     assert_eq!(
         missing, pending,

@@ -7,8 +7,8 @@ use crate::{
     },
     models::{Card, EnergyType, TrainerType},
     stadiums::{
-        is_arcade_active, is_area_zero_active, is_fragrant_forest_active, is_kids_room_active,
-        is_mesagoza_active, is_rainbow_cave_active,
+        is_abandoned_station_active, is_arcade_active, is_area_zero_active,
+        is_fragrant_forest_active, is_kids_room_active, is_mesagoza_active, is_rainbow_cave_active,
     },
     State,
 };
@@ -34,6 +34,8 @@ pub(crate) fn forecast_use_stadium(state: &State, acting_player: usize) -> Outco
         forecast_rainbow_cave_effect()
     } else if is_arcade_active(state) {
         forecast_arcade_effect()
+    } else if is_abandoned_station_active(state) {
+        forecast_abandoned_station_effect()
     } else {
         Outcomes::single_fn(|_, _, _| {})
     };
@@ -56,6 +58,9 @@ pub(crate) fn forecast_coin_stadium_effect(
     if is_arcade_active(state) {
         return Some(forecast_arcade_effect());
     }
+    if is_abandoned_station_active(state) {
+        return Some(forecast_abandoned_station_effect());
+    }
     None
 }
 
@@ -73,6 +78,22 @@ fn forecast_arcade_effect() -> Outcomes {
             }
         })
     })
+}
+
+/// Abandoned Station: "Once during each player's turn, that player may use this effect. Flip a
+/// coin. If heads, draw a card." One coin: heads draws a card (none at 10 cards, as every draw),
+/// tails does nothing. The use is recorded by the caller, as for Mesagoza and Arcade:
+/// `forecast_use_stadium`'s wrapper, or Luxury Coin's `start_action` before the coin pauses.
+fn forecast_abandoned_station_effect() -> Outcomes {
+    Outcomes::binary_coin(
+        Box::new(|_, state, action| {
+            state.maybe_draw_card(action.actor);
+            debug!("Abandoned Station: Flipped heads, drew a card");
+        }),
+        Box::new(|_, _state, _action| {
+            debug!("Abandoned Station: Flipped tails, nothing happens");
+        }),
+    )
 }
 
 /// Rainbow Cave: Once during each player's turn, that player may discard the Energy that has been

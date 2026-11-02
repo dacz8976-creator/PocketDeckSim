@@ -107,9 +107,11 @@ fn stadium_route(state: &State) -> Option<TrainerCoinEffectRoute> {
     let Card::Trainer(stadium) = state.active_stadium.as_ref()? else {
         return None;
     };
+    // R8-08c: Abandoned Station flips a coin, so it is routed beside Mesagoza and Arcade; a used
+    // Stadium whose forecast has coins and no route here panics under Luxury Coin.
     matches!(
         canonical_trainer_id(stadium),
-        Some(CardId::B2a093Mesagoza | CardId::B4a072Arcade)
+        Some(CardId::B2a093Mesagoza | CardId::B4a072Arcade | CardId::C1131AbandonedStation)
     )
     .then(|| TrainerCoinEffectRoute::Stadium {
         stadium: stadium.clone(),
@@ -1458,6 +1460,49 @@ mod tests {
             CardId::B4a094TeamRocketsMasterPlan,
             CardId::C1119SweetHoney,
             CardId::C1152SweetHoney,
+        ]
+        .iter()
+        .map(|id| format!("{id:?}"))
+        .collect();
+        expected.sort();
+        routed.sort();
+        assert_eq!(routed, expected);
+    }
+
+    /// The Stadium census: a used Stadium takes the Luxury Coin route exactly when its use flips
+    /// coins, and every Stadium routed has its unwrapped effect (`forecast_coin_stadium_effect`).
+    /// A Stadium with coins and no route panics in `try_sample_entry_actual`
+    /// ('unsupported_trainer_coin'). Routed: the three Mesagoza printings, Arcade and, since
+    /// R8-08c, Abandoned Station.
+    #[test]
+    fn every_stadium_that_flips_coins_takes_the_stadium_route() {
+        use strum::IntoEnumIterator;
+
+        let mut routed = Vec::new();
+        for id in CardId::iter() {
+            let Card::Trainer(trainer) = get_card_by_enum(id) else {
+                continue;
+            };
+            if trainer.trainer_card_type != crate::models::TrainerType::Stadium {
+                continue;
+            }
+            let mut state = State::default();
+            state.active_stadium = Some(Card::Trainer(trainer));
+            state.decks[0].cards = vec![get_card_by_enum(CardId::A1001Bulbasaur); 5];
+            state.hands[0] = vec![get_card_by_enum(CardId::A1033Charmander)];
+            let flips = forecast_use_stadium(&state, 0).has_any_coin_paths();
+            assert_eq!(stadium_route(&state).is_some(), flips, "{id:?}");
+            assert_eq!(forecast_coin_stadium_effect(&state, 0).is_some(), flips, "{id:?}");
+            if flips {
+                routed.push(format!("{id:?}"));
+            }
+        }
+        let mut expected: Vec<String> = [
+            CardId::B2a093Mesagoza,
+            CardId::B4b231Mesagoza,
+            CardId::B4b397Mesagoza,
+            CardId::B4a072Arcade,
+            CardId::C1131AbandonedStation,
         ]
         .iter()
         .map(|id| format!("{id:?}"))
