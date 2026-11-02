@@ -497,6 +497,19 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
             coin_flip: false,
         },
     );
+    // Porygon-Z (C1 110) - Overdrive Smash
+    map.insert(
+        "During your next turn, this Pokémon's Overdrive Smash attack does +50 damage.",
+        Mechanic::DamageAndCardEffect {
+            opponent: false,
+            effect: CardEffect::IncreasedDamageForAttack {
+                attack_name: "Overdrive Smash".to_string(),
+                amount: 50,
+            },
+            duration: 2,
+            coin_flip: false,
+        },
+    );
     map.insert(
         "During your next turn, this Pokémon's Overdrive Smash attack does +60 damage.",
         Mechanic::DamageAndCardEffect {
@@ -1409,6 +1422,14 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
             extra_damage: 60,
         },
     );
+    // Whiscash (C1 078) - Power Press: its cost is [F], so 4 [F] in all.
+    map.insert(
+        "If this Pokémon has at least 3 extra [F] Energy attached, this attack does 60 more damage.",
+        Mechanic::ExtraDamageIfExtraEnergy {
+            required_extra_energy: vec![EnergyType::Fighting, EnergyType::Fighting, EnergyType::Fighting],
+            extra_damage: 60,
+        },
+    );
     map.insert("If this Pokémon has at least 3 extra [G] Energy attached, this attack does 70 more damage.", 
         Mechanic::ExtraDamageIfExtraEnergy {
             required_extra_energy: vec![EnergyType::Grass, EnergyType::Grass, EnergyType::Grass],
@@ -1562,6 +1583,14 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
             extra_damage: 60,
         },
     );
+    // Malamar (P-C 005) - Pester the Dizzy (upstream #438: ExtraDamageIfDefenderConfused)
+    map.insert(
+        "If your opponent's Active Pokémon is Confused, this attack does 90 more damage.",
+        Mechanic::ExtraDamageIfDefenderStatus {
+            status: StatusCondition::Confused,
+            extra_damage: 90,
+        },
+    );
     map.insert(
         "If your opponent's Active Pokémon is Poisoned, this attack does 40 more damage.",
         Mechanic::ExtraDamageIfDefenderStatus {
@@ -1602,6 +1631,14 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
         Mechanic::ExtraDamageIfDefenderNameContains {
             substring: "Team Rocket".to_string(),
             extra_damage: 70,
+        },
+    );
+    // Umbreon (C1 084 / C1 186) - Moonlit Raid (upstream #438: ExtraDamageIfDefenderIsBasic)
+    map.insert(
+        "If your opponent's Active Pokémon is a Basic Pokémon, this attack does 50 more damage.",
+        Mechanic::ExtraDamageIfDefenderStage {
+            evolution: false,
+            extra_damage: 50,
         },
     );
     map.insert(
@@ -1690,6 +1727,14 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
             extra_damage: 40,
         },
     );
+    // Pidgeot (C1 104) - Clean Hit (upstream #438: ExtraDamageIfDefenderIsEvolution)
+    map.insert(
+        "If your opponent's Active Pokémon is an Evolution Pokémon, this attack does 80 more damage.",
+        Mechanic::ExtraDamageIfDefenderStage {
+            evolution: true,
+            extra_damage: 80,
+        },
+    );
     map.insert("If your opponent's Pokémon is Knocked Out by damage from this attack, this Pokémon also does 50 damage to itself.", Mechanic::RecoilIfKo { self_damage: 50 });
     map.insert(
         "Move all Energy from this Pokémon to 1 of your Benched Pokémon.",
@@ -1751,6 +1796,13 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
             count: 1,
         },
     );
+    // Pidgey (C1 102) - Find a Friend
+    map.insert(
+        "Put 1 random [C] Pokémon from your deck into your hand.",
+        Mechanic::SearchToHandByEnergy {
+            energy_type: EnergyType::Colorless,
+        },
+    );
     map.insert(
         "Put 1 random [G] Pokémon from your deck into your hand.",
         Mechanic::SearchToHandByEnergy {
@@ -1766,6 +1818,13 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
         Mechanic::SearchRandomPokemonToHand,
     );
     map.insert("Put a random card from your deck that evolves from this Pokémon onto this Pokémon to evolve it.", Mechanic::MagikarpWaterfallEvolution);
+    // Eevee (C1 107) - Signs of Evolution
+    map.insert(
+        "Put a random card that evolves from Eevee from your deck into your hand.",
+        Mechanic::SearchToHandByEvolvesFrom {
+            name: "Eevee".to_string(),
+        },
+    );
     map.insert(
         "Put a random card that evolves from Rockruff from your deck into your hand.",
         Mechanic::SearchToHandByEvolvesFrom {
@@ -1815,6 +1874,13 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
         Mechanic::ChargeBench {
             energies: vec![EnergyType::Metal, EnergyType::Metal],
             target_benched_type: None,
+        },
+    );
+    // Pupitar (C1 076 / C1 146) - Amass
+    map.insert(
+        "Take 2 [F] Energy from your Energy Zone and attach it to this Pokémon.",
+        Mechanic::SelfChargeActive {
+            energies: vec![EnergyType::Fighting, EnergyType::Fighting],
         },
     );
     map.insert(
@@ -1957,6 +2023,11 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
     map.insert(
         "This Pokémon also does 70 damage to itself.",
         Mechanic::SelfDamage { amount: 70 },
+    );
+    // Electrode (C1 045) - Self-Destruct
+    map.insert(
+        "This Pokémon also does 90 damage to itself.",
+        Mechanic::SelfDamage { amount: 90 },
     );
     map.insert(
         "This Pokémon is now Asleep.",
@@ -2205,6 +2276,14 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
             damage_per_energy: 20,
         },
     );
+    // Espeon (C1 060) - Brainwave
+    map.insert(
+        "This attack does 20 more damage for each [P] Energy attached to this Pokémon.",
+        Mechanic::ExtraDamagePerSpecificEnergy {
+            energy_type: EnergyType::Psychic,
+            damage_per_energy: 20,
+        },
+    );
     map.insert(
         "This attack does 20 more damage for each [P] Energy attached to all of your Pokémon.",
         Mechanic::ExtraDamagePerSpecificEnergyAllYours {
@@ -2227,6 +2306,17 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
         Mechanic::BenchCountDamage {
             include_fixed_damage: true,
             damage_per: 20,
+            energy_type: None,
+            names: None,
+            bench_side: BenchSide::OpponentBench,
+        },
+    );
+    // Alakazam (C1 055 / C1 197) - Mind Jack
+    map.insert(
+        "This attack does 30 more damage for each of your opponent's Benched Pokémon.",
+        Mechanic::BenchCountDamage {
+            include_fixed_damage: true,
+            damage_per: 30,
             energy_type: None,
             names: None,
             bench_side: BenchSide::OpponentBench,

@@ -542,6 +542,14 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
                 amount: 1,
             },
         );
+        // Pawmot (C1 050 / C1 142 / C1 216) - Electrocreation. The [L] test is State::pokemon_is_type
+        // (move_generation_abilities.rs), as for the [P] and [W] entries.
+        map.insert(
+            "Once during your turn, you may take a [L] Energy from your Energy Zone and attach it to the [L] Pokémon in the Active Spot.",
+            AbilityMechanic::AttachEnergyFromZoneToActiveTypedPokemon {
+                energy_type: EnergyType::Lightning,
+            },
+        );
         map.insert(
             "Once during your turn, you may take a [P] Energy from your Energy Zone and attach it to the [P] Pokémon in the Active Spot.",
             AbilityMechanic::AttachEnergyFromZoneToActiveTypedPokemon {
