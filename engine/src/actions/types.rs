@@ -336,6 +336,17 @@ pub enum SimpleAction {
     ChooseSweetHoneyTarget {
         in_play_idx: usize,
     },
+    /// Lunala's Wings of the Moone (C1 066, C1 198, P-C 008): move one Energy of `energy_type` from
+    /// the actor's Active Pokémon to their Benched Pokémon at `to_in_play_idx`, then offer the next
+    /// one (`attack_helpers::ordered_active_energy_to_bench_choices`) until the Active Pokémon has no
+    /// Energy left: the attack moves *all* of it, so there is no way to stop early. Upstream's name
+    /// and fields (#438); the fork offers fewer of them, in a fixed order (the lowest Energy type
+    /// first, destinations never decreasing within a type). Last in the enum, so every other variant
+    /// keeps its serde variant index and its `Hash` discriminant.
+    MoveActiveEnergyToBenchAndReoffer {
+        to_in_play_idx: usize,
+        energy_type: EnergyType,
+    },
 }
 
 impl fmt::Display for SimpleAction {
@@ -617,6 +628,13 @@ impl fmt::Display for SimpleAction {
             SimpleAction::ChooseSweetHoneyTarget { in_play_idx } => {
                 write!(f, "ChooseSweetHoneyTarget({in_play_idx})")
             }
+            SimpleAction::MoveActiveEnergyToBenchAndReoffer {
+                to_in_play_idx,
+                energy_type,
+            } => write!(
+                f,
+                "MoveActiveEnergyToBenchAndReoffer(to:{to_in_play_idx}, {energy_type:?})"
+            ),
         }
     }
 }

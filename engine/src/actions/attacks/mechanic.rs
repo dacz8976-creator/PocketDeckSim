@@ -1197,4 +1197,10 @@ pub enum Mechanic {
         card_name: String,
         damage_per_card: u32,
     },
+    /// Lunala's Wings of the Moone (C1 066, C1 198, P-C 008): "Move all Energy from this Pokémon to
+    /// your Benched Pokémon in any way you like." After damage, one Energy at a time through
+    /// `SimpleAction::MoveActiveEnergyToBenchAndReoffer`, in a fixed order (the lowest `EnergyType`
+    /// first; within a type the destinations never decrease), so each final board is reached by one
+    /// path. Not `MoveAllEnergyToBench`, which moves it all "to 1 of your Benched Pokémon".
+    MoveAllEnergyToBenchAnyWay,
 }

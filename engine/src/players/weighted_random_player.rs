@@ -51,6 +51,7 @@ fn get_weight(action: &SimpleAction) -> u32 {
         SimpleAction::Attach { .. } => 10,
         SimpleAction::MoveEnergy { .. } => 10,
         SimpleAction::MoveEnergies { .. } => 10,
+        SimpleAction::MoveActiveEnergyToBenchAndReoffer { .. } => 10,
         SimpleAction::AttachTool { .. } => 10,
         SimpleAction::Evolve { .. } => 10,
         SimpleAction::UseAbility { .. } => 10,

@@ -10,6 +10,7 @@ use crate::{
         apply_abilities_action::{forecast_ability, try_copy_random_opponent_hand_supporter},
         energy_discard_choices::retreat_payment_choices,
         apply_action_helpers::{apply_activate, wrap_with_common_logic, Mutation},
+        attack_helpers::ordered_active_energy_to_bench_choices,
         get_ability_mechanic, get_in_play_ability_mechanic,
     },
     effects::{CardEffect, TurnEffect},
@@ -522,6 +523,7 @@ fn forecast_action_unchecked(state: &State, action: &Action) -> Outcomes {
         | SimpleAction::ApplyStatusToOpponentActive { .. }
         | SimpleAction::DiscardOwnBenchedThenDamage { .. }
         | SimpleAction::ConsolidateEnergyToPokemon { .. }
+        | SimpleAction::MoveActiveEnergyToBenchAndReoffer { .. }
         | SimpleAction::Noop => forecast_deterministic_action(),
         // Crawdaunt's Unruly Claw: "discard a random Energy from your opponent's Active Pokémon".
         SimpleAction::DiscardRandomOpponentActiveEnergy => {
@@ -1148,6 +1150,23 @@ fn apply_deterministic_action(state: &mut State, action: &Action) {
             in_play_idxs,
             damage,
         } => apply_discard_own_benched_then_damage(action.actor, state, in_play_idxs, *damage),
+        // Lunala's Wings of the Moone: one Energy, then the next step, if any Energy is left. This
+        // action's own frame was popped in `apply_common_action_prefix`, so the next one lands on
+        // top, above the attack's `ResolveAttackRetaliation`.
+        SimpleAction::MoveActiveEnergyToBenchAndReoffer {
+            to_in_play_idx,
+            energy_type,
+        } => {
+            apply_move_energy(state, action.actor, 0, *to_in_play_idx, *energy_type, 1);
+            let choices = ordered_active_energy_to_bench_choices(
+                state,
+                action.actor,
+                Some((*energy_type, *to_in_play_idx)),
+            );
+            if !choices.is_empty() {
+                state.move_generation_stack.push((action.actor, choices));
+            }
+        }
         SimpleAction::Noop => {}
         _ => panic!("Deterministic Action expected"),
     }
