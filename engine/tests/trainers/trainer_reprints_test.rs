@@ -85,13 +85,8 @@ fn trainer_coverage_has_only_the_documented_pending_designs() {
     missing.sort_by_key(|id| format!("{id:?}"));
     missing.dedup();
     // R8-06a implemented Super Potion (C1 120), Max Repel (C1 121), Full Heal (C1 122) and Genome
-    // Converter Y (P-C 009).
-    let mut pending: Vec<CardId> = vec![
-        CardId::C1119SweetHoney,
-        CardId::C1123Eviolite,
-        CardId::C1124LightBall,
-        CardId::C1131AbandonedStation,
-    ];
+    // Converter Y (P-C 009); R8-06b the Tools Eviolite (C1 123) and Light Ball (C1 124).
+    let mut pending: Vec<CardId> = vec![CardId::C1119SweetHoney, CardId::C1131AbandonedStation];
     pending.sort_by_key(|id| format!("{id:?}"));
     assert_eq!(
         missing, pending,

@@ -788,6 +788,34 @@ fn steel_apron_reduction(state: &State, defending_pokemon: &PlayedCard) -> u32 {
     0
 }
 
+fn get_eviolite_reduction(
+    state: &State,
+    attacking_player: usize,
+    (target_player, target_idx): (usize, usize),
+    is_from_active_attack: bool,
+) -> u32 {
+    if !is_from_active_attack || attacking_player == target_player {
+        return 0;
+    }
+
+    let defending_pokemon = &state.in_play_pokemon[target_player][target_idx]
+        .as_ref()
+        .expect("Defending Pokemon should be there when checking Eviolite");
+    eviolite_reduction(defending_pokemon)
+}
+
+/// Eviolite (C1 123) on `defending_pokemon`: "The Basic Pokémon this card is attached to takes -20 damage from attacks
+/// from your opponent's Pokémon." -20 per Eviolite, the per-Tool convention of Heavy Helmet. Basic is `get_stage`'s, so a
+/// Fossil played as a Basic ("Play this card as if it were a 40-HP Basic [C] Pokémon") counts too (coordinator-088: the
+/// card text, no rule row); upstream's `card.is_basic()` is false for a Fossil.
+fn eviolite_reduction(defending_pokemon: &PlayedCard) -> u32 {
+    if has_tool(defending_pokemon, CardId::C1123Eviolite) && get_stage(defending_pokemon) == BASIC_STAGE {
+        debug!("Eviolite: Reducing damage by 20");
+        return 20 * tool_count(defending_pokemon, CardId::C1123Eviolite);
+    }
+    0
+}
+
 fn get_intimidating_fang_reduction(
     state: &State,
     attacking_ref: (usize, usize),
@@ -1352,6 +1380,7 @@ struct FiniteDamageReductions {
     heavy_helmet: u32,
     metal_core_barrier: u32,
     steel_apron: u32,
+    eviolite: u32,
     ability: u32,
     conditional_ability: u32,
     coordinated_unit: u32,
@@ -1365,6 +1394,7 @@ impl FiniteDamageReductions {
             self.heavy_helmet,
             self.metal_core_barrier,
             self.steel_apron,
+            self.eviolite,
             self.ability,
             self.conditional_ability,
             self.coordinated_unit,
@@ -1415,6 +1445,12 @@ fn finite_damage_reductions(
             is_from_active_attack,
         ),
         steel_apron: get_steel_apron_reduction(
+            state,
+            attacking_player,
+            target,
+            is_from_active_attack,
+        ),
+        eviolite: get_eviolite_reduction(
             state,
             attacking_player,
             target,
@@ -1606,9 +1642,9 @@ fn printed_weakness_application(
 ///   (`printed_weakness_application`; rules/02 section 2, P2). A stated choice: the receiver's `NoWeakness` isn't read
 ///   (only Metal Defender and Adamantine Rolling give it, to their own user, for the opponent's next turn);
 /// - after Weakness, the receiver's lasting cuts: Heavy Helmet (on the Retreat Cost now: the hit back lands on the receiver's
-///   own turn, so this turn's X Speed or Leaf counts), Steel Apron, Metal Core Barrier, `ReduceDamageFromAttacks` from its
-///   Ability, the conditional Abilities (Thick Fat, Resilience Link, Ice Face, Unown's GUARD, Melmetal's Metal Scrum) and
-///   Coordinated Unit.
+///   own turn, so this turn's X Speed or Leaf counts), Steel Apron, Metal Core Barrier, Eviolite (on a Basic receiver),
+///   `ReduceDamageFromAttacks` from its Ability, the conditional Abilities (Thick Fat, Resilience Link, Ice Face, Unown's
+///   GUARD, Melmetal's Metal Scrum) and Coordinated Unit.
 ///
 /// Left out: what is stored on the receiver and its side's turn effects (it is the receiver's own turn, so each was put there
 /// this turn for the opponent's next turn: Steel Wing, Hide, Harden, Blue, Jasmine, ...); the coin-flip Abilities (Carefree
@@ -1688,6 +1724,7 @@ pub(crate) fn attack_hit_back_damage(
         heavy_helmet,
         steel_apron_reduction(state, receiver),
         metal_core_barrier_reduction(state, receiver),
+        eviolite_reduction(receiver),
         ability_cut,
         get_conditional_ability_damage_reduction(state, holder_player, holder, receiver_player, receiver, true),
         get_coordinated_unit_reduction(state, holder_player, receiver_player, receiver, true),
@@ -1707,6 +1744,22 @@ fn get_future_booster_damage_bonus(attacking_pokemon: &PlayedCard) -> u32 {
     {
         debug!("Future Booster Energy Capsule: Increasing damage by 20");
         return 20 * tool_count(attacking_pokemon, CardId::B3a070FutureBoosterEnergyCapsule);
+    }
+    0
+}
+
+/// Light Ball (C1 124): "Attacks used by the Pikachu ex this card is attached to do +30 damage to
+/// your opponent's Active Pokémon."
+///
+/// +30 per Light Ball (the per-Tool convention of the other attacker Tools), on a holder named
+/// exactly "Pikachu ex", which covers every Pikachu ex printing. The caller gates it to
+/// active-to-active damage and adds it before Weakness, as Future Booster and Beastite.
+fn get_light_ball_damage_bonus(attacking_pokemon: &PlayedCard) -> u32 {
+    if has_tool(attacking_pokemon, CardId::C1124LightBall)
+        && attacking_pokemon.get_name() == "Pikachu ex"
+    {
+        debug!("Light Ball: Increasing damage by 30");
+        return 30 * tool_count(attacking_pokemon, CardId::C1124LightBall);
     }
     0
 }
@@ -1789,8 +1842,8 @@ pub(crate) enum DefenderHit {
 ///   Active: the defender's own when it is the Active, the current Active's for a Benched hit; a hit it takes to 0
 ///   does nothing, Weakness included (rules/05 #11, Oct 19);
 /// - Weakness: the printed rule, +20 or Bounded Field's x2 (`printed_weakness_application`), on the Active only;
-/// - after Weakness, every finite reduction that isn't temporary: the Tools Heavy Helmet and Steel Apron;
-///   `ReduceDamageFromAttacks` from the defender's Ability (Solid Shell, Shell Armor, ...); the conditional
+/// - after Weakness, every finite reduction that isn't temporary: the Tools Heavy Helmet, Steel Apron and Eviolite
+///   (on a Basic defender, a Fossil included); `ReduceDamageFromAttacks` from the defender's Ability (Solid Shell, Shell Armor, ...); the conditional
 ///   Abilities `ReduceDamageFromTypedAttackers`, `ReduceDamageIfArceusInPlay`, `ReduceDamageAtFullHp`,
 ///   `UnownGuard` (a teammate's Ability) and `ReduceDamageToYourTypeWhileInPlay` (Metal Scrum, a teammate's or the
 ///   defender's own, counted once); `CoordinatedUnit`; and, on a heads, `CoinFlipToReduceIncomingDamage`'s amount
@@ -1874,6 +1927,7 @@ pub(crate) fn persistent_defender_damage(
         let reductions: u64 = [
             heavy_helmet,
             steel_apron_reduction(state, defender),
+            eviolite_reduction(defender),
             ability,
             get_conditional_ability_damage_reduction(
                 state,
@@ -1980,7 +2034,7 @@ pub(crate) fn temporary_defender_reduction(
     turn_effects + card_effects + barrier
 }
 
-/// kt's switch 1: the defender's lasting damage-cut Tools, Heavy Helmet and Steel Apron, as
+/// kt's switch 1: the defender's lasting damage-cut Tools, Heavy Helmet, Steel Apron and Eviolite, as
 /// `persistent_defender_damage` computes them for an opponent's attack (`context`) on `victim` (`victim_owner`'s) as
 /// the Active; 0 for an attack whose text ignores effects on the opponent's Active.
 pub(crate) fn permanent_tool_reduction(
@@ -1992,7 +2046,9 @@ pub(crate) fn permanent_tool_reduction(
     if !victim.has_tool_attached() || attack_ignores_opponent_active_effects(context) {
         return 0;
     }
-    heavy_helmet_reduction(state, victim_owner, victim, true) + steel_apron_reduction(state, victim)
+    heavy_helmet_reduction(state, victim_owner, victim, true)
+        + steel_apron_reduction(state, victim)
+        + eviolite_reduction(victim)
 }
 
 // TODO: Confirm is_from_attack and goes to enemy active
@@ -2171,6 +2227,12 @@ pub(crate) fn modify_damage(
         0
     };
 
+    let light_ball_damage_bonus = if is_active_to_active {
+        get_light_ball_damage_bonus(attacking_pokemon)
+    } else {
+        0
+    };
+
     // Stadium damage bonus (e.g., Training Area for Stage 1 Pokemon)
     // Only applies to attacks against the opponent's Active Pokemon
     let stadium_damage_bonus = if is_active_to_active {
@@ -2189,7 +2251,7 @@ pub(crate) fn modify_damage(
     };
 
     debug!(
-        "Attack: {:?}, IncreasedDamage: {}, IncreasedAttackSpecific: {}, IncreasedVulnerability: {}, ReducedDamage: {}, TurnEffectReduction: {}, HeavyHelmet: {}, MetalCoreBarrier: {}, SteelApron: {}, IntimidatingFangAttackerReduction: {}, AbilityReduction: {}, ConditionalAbilityReduction: {}, CoordinatedUnit: {}, AbilityIncrease: {}, BoardAbilityBonus: {}, StadiumBonus: {}, FutureBooster: {}",
+        "Attack: {:?}, IncreasedDamage: {}, IncreasedAttackSpecific: {}, IncreasedVulnerability: {}, ReducedDamage: {}, TurnEffectReduction: {}, HeavyHelmet: {}, MetalCoreBarrier: {}, SteelApron: {}, Eviolite: {}, IntimidatingFangAttackerReduction: {}, AbilityReduction: {}, ConditionalAbilityReduction: {}, CoordinatedUnit: {}, AbilityIncrease: {}, BoardAbilityBonus: {}, StadiumBonus: {}, FutureBooster: {}, LightBall: {}",
         base_damage,
         increased_turn_effect_modifiers,
         increased_attack_specific_modifiers,
@@ -2199,6 +2261,7 @@ pub(crate) fn modify_damage(
         reductions.heavy_helmet,
         reductions.metal_core_barrier,
         reductions.steel_apron,
+        reductions.eviolite,
         intimidating_fang_reduction,
         reductions.ability,
         reductions.conditional_ability,
@@ -2206,7 +2269,8 @@ pub(crate) fn modify_damage(
         ability_damage_increase,
         board_ability_bonus,
         stadium_damage_bonus,
-        future_booster_damage_bonus
+        future_booster_damage_bonus,
+        light_ball_damage_bonus
     );
     let pre_weakness = base_damage
         + ability_damage_increase
@@ -2215,7 +2279,8 @@ pub(crate) fn modify_damage(
         + board_ability_bonus
         + stadium_damage_bonus
         + future_booster_damage_bonus
-        + beastite_damage_bonus;
+        + beastite_damage_bonus
+        + light_ball_damage_bonus;
     // Growl, Moonblast and Teary Attack follow the Pokemon that was hit. Their reduction
     // affects each opposing target of that Pokemon's attack, including Bench damage,
     // even when the original user has switched out. Ability/status damage bypasses it.
@@ -3365,6 +3430,26 @@ mod persistent_defender_damage_tests {
     }
 
     #[test]
+    fn eviolite_counts_on_a_basic_or_a_fossil() {
+        // Eviolite (C1 123): -20 on a Basic, a Fossil played as one included (get_stage), Active or Benched; nothing on a
+        // Stage 1 or a Stage 2, or against an attack that ignores effects on the opponent's Active.
+        let on = |id: CardId| mon(id).with_tool(get_card_by_enum(CardId::C1123Eviolite));
+        // Squirtle and the Fossil aren't weak to Fire: 40 - 20. Bulbasaur is: 40 + 20 - 20, the cut after Weakness.
+        assert_eq!(both(on(CardId::A1053Squirtle), mon(CardId::A1033Charmander), 40), ((20.0, 20.0), 20.0));
+        assert_eq!(both(on(CardId::A1216HelixFossil), mon(CardId::A1033Charmander), 40), ((20.0, 20.0), 20.0));
+        assert_eq!(both(on(CardId::A1001Bulbasaur), mon(CardId::A1033Charmander), 40), ((40.0, 40.0), 40.0));
+        // Ivysaur (Stage 1) and Venusaur (Stage 2) aren't weak to Lightning: the full 40.
+        assert_eq!(both(on(CardId::A1002Ivysaur), mon(CardId::A1094Pikachu), 40), ((40.0, 40.0), 40.0));
+        assert_eq!(both(on(CardId::A1003Venusaur), mon(CardId::A1094Pikachu), 40), ((40.0, 40.0), 40.0));
+        // Heatmor's Tongue Whip (30 to a Benched Pokemon) on a Benched Squirtle: 10.
+        let state = duel(vec![mon(CardId::A1001Bulbasaur), on(CardId::A1053Squirtle)], vec![mon(CardId::B1044Heatmor)]);
+        assert_eq!(both_on(&state, 30, None, 1), ((10.0, 10.0), 10.0));
+        // Brick Break's text ignores effects on the opponent's Active: the full 30.
+        let state = duel(vec![on(CardId::A1053Squirtle)], vec![mon(CardId::B3086Sawk)]);
+        assert_eq!(both_on(&state, 30, Some(DAMAGE_UNAFFECTED_BY_OPPONENT_ACTIVE_EFFECTS_EFFECT), 0), ((30.0, 30.0), 30.0));
+    }
+
+    #[test]
     fn ice_face_counts_for_the_first_hit_only() {
         assert_eq!(both(mon(CardId::B1080Eiscue), mon(CardId::A1001Bulbasaur), 60), ((20.0, 60.0), 20.0));
         let damaged = mon(CardId::B1080Eiscue).with_remaining_hp(70);
@@ -3681,6 +3766,10 @@ mod temporary_defender_reduction_tests {
         let state = duel(apron, mon(CardId::B1180Pidgey));
         assert_eq!(permanent_tool_reduction(&state, 0, state.get_active(0), ignores), 0);
         assert_eq!(permanent_tool_reduction(&state, 0, state.get_active(0), PLAIN), 10);
+        let eviolite = mon(CardId::A1001Bulbasaur).with_tool(get_card_by_enum(CardId::C1123Eviolite));
+        let state = duel(eviolite, mon(CardId::B1180Pidgey));
+        assert_eq!(permanent_tool_reduction(&state, 0, state.get_active(0), ignores), 0);
+        assert_eq!(permanent_tool_reduction(&state, 0, state.get_active(0), PLAIN), 20);
     }
 
     #[test]
@@ -3699,6 +3788,12 @@ mod temporary_defender_reduction_tests {
         let apron = || get_card_by_enum(CardId::A4153SteelApron);
         assert_eq!(lasting(mon(CardId::A2111Skarmory).with_tool(apron()), 40), (10, 10));
         assert_eq!(lasting(mon(CardId::B3b055Snorlax).with_tool(apron()), 40), (0, 0));
+        // Eviolite on a Basic, a Fossil included: 20; on a Stage 1 or a Stage 2: 0. None of them is weak to Grass.
+        let eviolite = || get_card_by_enum(CardId::C1123Eviolite);
+        assert_eq!(lasting(mon(CardId::A1094Pikachu).with_tool(eviolite()), 40), (20, 20));
+        assert_eq!(lasting(mon(CardId::A1216HelixFossil).with_tool(eviolite()), 30), (20, 20));
+        assert_eq!(lasting(mon(CardId::A1095Raichu).with_tool(eviolite()), 40), (0, 0));
+        assert_eq!(lasting(mon(CardId::A1003Venusaur).with_tool(eviolite()), 40), (0, 0));
         // Metal Core Barrier is temporary, not lasting; no Tool is 0.
         let barrier = get_card_by_enum(CardId::B2148MetalCoreBarrier);
         assert_eq!(lasting(mon(CardId::A2111Skarmory).with_tool(barrier), 40), (0, 0));

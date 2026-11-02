@@ -91,6 +91,14 @@ static CLEAR_VEIL_EFFECT: LazyLock<String> =
     LazyLock::new(|| tool_effect_text_from_card_id(CardId::B4149ClearVeil));
 static DECEPTIVE_NEEDLE_EFFECT: LazyLock<String> =
     LazyLock::new(|| tool_effect_text_from_card_id(CardId::B4148DeceptiveNeedle));
+/// Eviolite (C1 123): "The Basic Pokémon this card is attached to takes -20 damage from attacks
+/// from your opponent's Pokémon." Resolved in `hooks::core` (`eviolite_reduction`).
+static EVIOLITE_EFFECT: LazyLock<String> =
+    LazyLock::new(|| tool_effect_text_from_card_id(CardId::C1123Eviolite));
+/// Light Ball (C1 124): "Attacks used by the Pikachu ex this card is attached to do +30 damage to
+/// your opponent's Active Pokémon." Resolved in `hooks::core` (`get_light_ball_damage_bonus`).
+static LIGHT_BALL_EFFECT: LazyLock<String> =
+    LazyLock::new(|| tool_effect_text_from_card_id(CardId::C1124LightBall));
 
 pub fn tool_effects_equal(trainer_card: &TrainerCard, reference_tool_id: CardId) -> bool {
     ensure_tool_trainer(trainer_card);
@@ -163,5 +171,7 @@ pub fn is_tool_effect_implemented(trainer_card: &TrainerCard) -> bool {
             || e == DARK_PENDANT_EFFECT.as_str()
             || e == DECEPTIVE_NEEDLE_EFFECT.as_str()
             || e == CLEAR_VEIL_EFFECT.as_str()
+            || e == EVIOLITE_EFFECT.as_str()
+            || e == LIGHT_BALL_EFFECT.as_str()
     )
 }

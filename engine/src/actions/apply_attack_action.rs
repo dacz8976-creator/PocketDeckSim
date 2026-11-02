@@ -7735,6 +7735,43 @@ mod test {
         );
     }
 
+    /// R8-06b. Eviolite (C1 123, "The Basic Pokémon this card is attached to takes -20 damage from
+    /// attacks from your opponent's Pokémon") is one of the finite reductions the bound adds: on a
+    /// Basic Bulbasaur at 60 HP it is 60 + 20, and every larger hit is the same knockout. 70 is not
+    /// (50 after Eviolite).
+    #[test]
+    fn geometric_saturation_includes_eviolite() {
+        let mut state = State::default();
+        state.in_play_pokemon[0][0] = Some(to_playable_card(
+            &get_card_by_enum(CardId::B4a064Furfrou),
+            false,
+        ));
+        let defender = to_playable_card(&get_card_by_enum(CardId::A1001Bulbasaur), false)
+            .with_remaining_hp(60)
+            .with_tool(get_card_by_enum(CardId::C1123Eviolite));
+        state.in_play_pokemon[1][0] = Some(defender);
+        let attack = furfrou_attack();
+        let required = crate::hooks::active_attack_damage_saturation_requirement(
+            &state,
+            0,
+            DamageModifierContext {
+                attack_name: Some(&attack.title),
+                attack_effect: attack.effect.as_deref(),
+            },
+        );
+        assert_eq!(required, 80, "60 HP and Eviolite's -20");
+
+        let at_boundary = resolve_raw_active_damage(&state, 0, &attack, 80);
+        let above_boundary = resolve_raw_active_damage(&state, 0, &attack, 110);
+        assert_eq!(at_boundary, above_boundary);
+        let below_boundary = resolve_raw_active_damage(&state, 0, &attack, 70);
+        assert_eq!(
+            below_boundary.1[0].get_active(1).get_remaining_hp(),
+            10,
+            "70 - 20 = 50 on 60 HP"
+        );
+    }
+
     #[test]
     fn saturation_and_next_head_are_equivalent_through_guts_and_hala() {
         let attack = furfrou_attack();

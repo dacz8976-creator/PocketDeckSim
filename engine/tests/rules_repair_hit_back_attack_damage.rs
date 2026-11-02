@@ -305,6 +305,43 @@ fn metal_scrum_cuts_the_hit_back_onto_a_metal_attacker() {
     });
 }
 
+/// R8-06b. Eviolite (C1 123, "The Basic Pokémon this card is attached to takes -20 damage from attacks from your opponent's
+/// Pokémon") on a Basic Attacking Pokémon cuts the hit back, an attack's damage (rules/05 #31). Needle Lariat's 80: 60 on
+/// Snorlax (150 HP); the full 80 on a Stage 1 Ivysaur (90 HP) and a Stage 2 Beedrill (120 HP) holding it. After Weakness,
+/// as Heavy Helmet: Bristling Spikes' 30 on the Metal-weak Basic Cetoddle under Bounded Field is 30 x 2 - 20 = 40 (the cut
+/// first would give 20). With P2's switch off the hit back is flat again.
+#[test]
+fn eviolite_cuts_the_hit_back_onto_a_basic_attacker() {
+    use EnergyType::*;
+    let chesnaught = || with_energy(CardId::B2010Chesnaught, &[Grass, Grass, Grass, Grass]);
+    let eviolite = |card: PlayedCard| with_tool(card, CardId::C1123Eviolite);
+    // `attacker` takes Needle Lariat's hit back for `title`: its HP after.
+    let hit_back = |attacker: PlayedCard, title: &str| {
+        let mut game = armed_against(chesnaught(), "Needle Lariat", 80, attacker, vec![]);
+        apply_attack(&mut game, title);
+        hp(&game.get_state_clone(), 0, 0)
+    };
+    on(|| {
+        assert_eq!(hit_back(eviolite(snorlax()), "Rollout"), 90, "80 - 20 = 60 on 150 HP");
+        assert_eq!(hit_back(snorlax(), "Rollout"), 70, "no Eviolite: the full 80");
+        let ivysaur = with_energy(CardId::A1002Ivysaur, &[Grass, Colorless, Colorless]);
+        assert_eq!(hit_back(eviolite(ivysaur), "Razor Leaf"), 10, "Stage 1: the full 80 on 90 HP");
+        let beedrill = with_energy(CardId::A1010Beedrill, &[Grass]);
+        assert_eq!(hit_back(eviolite(beedrill), "Sharp Sting"), 40, "Stage 2: the full 80 on 120 HP");
+
+        let cetoddle = eviolite(with_energy(CardId::B2a029Cetoddle, &[Water, Water, Colorless]));
+        let mut game = armed_against(togedemaru(), "Bristling Spikes", 30, cetoddle, vec![]);
+        let mut state = game.get_state_clone();
+        state.active_stadium = Some(get_card_by_enum(CardId::B3155BoundedField));
+        game.set_state(state);
+        apply_attack(&mut game, "Icicle Missile");
+        assert_eq!(hp(&game.get_state_clone(), 0, 0), 60, "30 x 2 (Bounded Field) - 20 (Eviolite) = 40 on 100 HP");
+    });
+    with_return_weakness(false, || {
+        assert_eq!(hit_back(eviolite(snorlax()), "Rollout"), 70, "P2 off: flat 80");
+    });
+}
+
 /// Prevention on the attacker: Safeguard against a Pokémon ex holder (and its Rocky Helmet doesn't answer), Disguise.
 #[test]
 fn the_attackers_prevention_applies_to_the_hit_back() {
