@@ -107,7 +107,8 @@ fn get_weight(action: &SimpleAction) -> u32 {
         | SimpleAction::RerollAttackCoins { .. }
         | SimpleAction::KeepTrainerCoinResults
         | SimpleAction::RerollTrainerCoins { .. }
-        | SimpleAction::ChooseMistyTarget { .. } => 10,
+        | SimpleAction::ChooseMistyTarget { .. }
+        | SimpleAction::ChooseSweetHoneyTarget { .. } => 10,
         // §47 — a purposeful Energy consolidation is usually the point of the turn when offered.
         SimpleAction::ConsolidateEnergyToPokemon { .. } => 10,
         SimpleAction::UseStadium => 5, // Stadium abilities like Mesagoza

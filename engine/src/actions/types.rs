@@ -329,6 +329,13 @@ pub enum SimpleAction {
         in_play_idx: usize,
         heal_amount: u32,
     },
+    /// Sweet Honey (C1 119, C1 152): fix the chosen damaged Pokémon before the first coin is
+    /// flipped. It shares Misty's pre-coin target slot (`State::pending_misty_target_choice`). Last
+    /// in the enum, so every other variant keeps its serde variant index and its `Hash`
+    /// discriminant.
+    ChooseSweetHoneyTarget {
+        in_play_idx: usize,
+    },
 }
 
 impl fmt::Display for SimpleAction {
@@ -607,6 +614,9 @@ impl fmt::Display for SimpleAction {
                 in_play_idx,
                 heal_amount,
             } => write!(f, "HealAndDiscardRandomEnergy({in_play_idx}, {heal_amount})"),
+            SimpleAction::ChooseSweetHoneyTarget { in_play_idx } => {
+                write!(f, "ChooseSweetHoneyTarget({in_play_idx})")
+            }
         }
     }
 }

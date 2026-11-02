@@ -123,8 +123,9 @@ impl TrainerCoinEffectRoute {
     }
 }
 
-/// A selected Misty source awaiting its printed pre-coin Water-Pokemon target choice.
-/// Copied-source details are retained only by the referee and acting player.
+/// A selected Misty source awaiting its printed pre-coin Water-Pokemon target choice, or a played
+/// Sweet Honey awaiting its damaged-Pokemon target choice (R8-07a). Copied-source details are
+/// retained only by the referee and acting player.
 #[derive(Debug, Clone, Hash, PartialEq, Eq, Serialize, Deserialize)]
 pub enum MistySourceRoute {
     Direct {
@@ -143,6 +144,11 @@ pub enum MistySourceRoute {
         misty: TrainerCard,
         shuffle_owner: usize,
     },
+    /// Sweet Honey (C1 119, C1 152), played from the hand. Last, so every other variant keeps its
+    /// serde variant index and its `Hash` discriminant.
+    SweetHoney {
+        sweet_honey: TrainerCard,
+    },
 }
 
 impl MistySourceRoute {
@@ -152,6 +158,7 @@ impl MistySourceRoute {
             | Self::Penny { misty, .. }
             | Self::Portrait { misty }
             | Self::PortraitPenny { misty, .. } => misty,
+            Self::SweetHoney { sweet_honey } => sweet_honey,
         }
     }
 
@@ -160,15 +167,18 @@ impl MistySourceRoute {
             Self::Penny { shuffle_owner, .. } | Self::PortraitPenny { shuffle_owner, .. } => {
                 Some(*shuffle_owner)
             }
-            Self::Direct { .. } | Self::Portrait { .. } => None,
+            Self::Direct { .. } | Self::Portrait { .. } | Self::SweetHoney { .. } => None,
         }
     }
 
+    /// Whether the outer card is a played Trainer, so Luxury Coin covers the batch (Portrait's
+    /// outer effect is an Ability). Sweet Honey is an Item played from the hand.
     pub fn outer_is_trainer(&self) -> bool {
-        matches!(self, Self::Direct { .. } | Self::Penny { .. })
+        matches!(self, Self::Direct { .. } | Self::Penny { .. } | Self::SweetHoney { .. })
     }
 }
 
+/// Misty's pre-coin target phase, which Sweet Honey's shares (`MistySourceRoute::SweetHoney`).
 #[derive(Debug, Clone, Hash, PartialEq, Eq, Serialize, Deserialize)]
 pub struct PendingMistyTargetChoice {
     pub actor: usize,
@@ -186,7 +196,7 @@ pub struct PendingTrainerCoinChoice {
     /// Complete ordered public batch (`true` = heads).
     pub flips: Vec<bool>,
     pub luxury_coin_in_play_idx: usize,
-    /// Public Water-Pokemon target fixed before a Misty batch was sampled.
+    /// Public target fixed before a Misty (Water) or Sweet Honey (damaged) batch was sampled.
     #[serde(default, skip_serializing_if = "Option::is_none")]
     pub misty_target_in_play_idx: Option<usize>,
     /// Hidden copied-source detail is removed from the opponent's observation.
@@ -364,6 +374,10 @@ fn is_misty_trainer(trainer: &TrainerCard) -> bool {
     matches!(canonical_trainer_id(trainer), Some(CardId::A1220Misty))
 }
 
+fn is_sweet_honey_trainer(trainer: &TrainerCard) -> bool {
+    matches!(canonical_trainer_id(trainer), Some(CardId::C1119SweetHoney))
+}
+
 fn misty_route_matches_original(
     route: &MistySourceRoute,
     original: &SimpleAction,
@@ -403,6 +417,9 @@ fn misty_route_matches_original(
                 && penny.name == "Penny"
                 && is_misty_trainer(misty)
         }
+        (MistySourceRoute::SweetHoney { sweet_honey }, SimpleAction::Play { trainer_card }) => {
+            is_sweet_honey_trainer(sweet_honey) && trainer_card.id == sweet_honey.id
+        }
         _ => false,
     }
 }
@@ -417,6 +434,8 @@ impl State {
                 && (self.pending_misty_target_choice.is_some()
                     || self.pending_trainer_coin_choice.is_some()));
         let target_frame_valid = self.pending_misty_target_choice.as_ref().is_some_and(|pending| {
+            // Sweet Honey's frame offers its damaged Pokemon; Misty's, as before, its Water ones.
+            let sweet_honey = matches!(pending.route, Some(MistySourceRoute::SweetHoney { .. }));
             pending.route.as_ref().is_some_and(|route| {
                 misty_route_matches_original(route, &pending.original_action, pending.actor)
             }) && !pending_conflict
@@ -424,11 +443,19 @@ impl State {
                     *actor == pending.actor
                         && !choices.is_empty()
                         && choices.iter().all(|choice| {
-                            matches!(choice, SimpleAction::ChooseMistyTarget { in_play_idx }
-                                if self.in_play_pokemon.get(pending.actor)
-                                    .and_then(|slots| slots.get(*in_play_idx))
-                                    .and_then(Option::as_ref)
-                                    .is_some_and(|pokemon| self.pokemon_is_type(pokemon, EnergyType::Water)))
+                            if sweet_honey {
+                                matches!(choice, SimpleAction::ChooseSweetHoneyTarget { in_play_idx }
+                                    if self.in_play_pokemon.get(pending.actor)
+                                        .and_then(|slots| slots.get(*in_play_idx))
+                                        .and_then(Option::as_ref)
+                                        .is_some_and(|pokemon| pokemon.is_damaged()))
+                            } else {
+                                matches!(choice, SimpleAction::ChooseMistyTarget { in_play_idx }
+                                    if self.in_play_pokemon.get(pending.actor)
+                                        .and_then(|slots| slots.get(*in_play_idx))
+                                        .and_then(Option::as_ref)
+                                        .is_some_and(|pokemon| self.pokemon_is_type(pokemon, EnergyType::Water)))
+                            }
                         })
                 })
         });
@@ -440,9 +467,13 @@ impl State {
                 .last()
                 .is_some_and(|(actor, choices)| {
                     (*actor == pending_actor && choices.is_empty())
-                        || choices
-                            .iter()
-                            .any(|choice| matches!(choice, SimpleAction::ChooseMistyTarget { .. }))
+                        || choices.iter().any(|choice| {
+                            matches!(
+                                choice,
+                                SimpleAction::ChooseMistyTarget { .. }
+                                    | SimpleAction::ChooseSweetHoneyTarget { .. }
+                            )
+                        })
                 })
             {
                 self.move_generation_stack.pop();
@@ -453,8 +484,14 @@ impl State {
             let misty = pending.route.as_ref().is_some_and(|route| {
                 is_misty_trainer(route.effect_trainer())
             });
+            let sweet_honey = pending.route.as_ref().is_some_and(|route| {
+                is_sweet_honey_trainer(route.effect_trainer())
+            });
             let route_valid = pending.route.as_ref().is_some_and(|route| match route {
                 TrainerCoinEffectRoute::Direct { trainer } if is_misty_trainer(trainer) => {
+                    matches!(&pending.original_action, SimpleAction::Play { trainer_card } if trainer_card.id == trainer.id)
+                }
+                TrainerCoinEffectRoute::Direct { trainer } if is_sweet_honey_trainer(trainer) => {
                     matches!(&pending.original_action, SimpleAction::Play { trainer_card } if trainer_card.id == trainer.id)
                 }
                 TrainerCoinEffectRoute::Penny { copied, shuffle_owner }
@@ -463,6 +500,14 @@ impl State {
                     pending.actor < 2
                         && *shuffle_owner == 1 - pending.actor
                         && matches!(&pending.original_action, SimpleAction::Play { trainer_card } if trainer_card.name == "Penny")
+                }
+                // Sweet Honey is an Item played from the hand: Penny copies only Supporters, and it
+                // is no Stadium.
+                TrainerCoinEffectRoute::Penny { copied: trainer, .. }
+                | TrainerCoinEffectRoute::Stadium { stadium: trainer, .. }
+                    if is_sweet_honey_trainer(trainer) =>
+                {
+                    false
                 }
                 TrainerCoinEffectRoute::Penny { shuffle_owner, .. } => {
                     pending.actor < 2 && *shuffle_owner == 1 - pending.actor
@@ -476,13 +521,18 @@ impl State {
                 .is_some_and(|pokemon| {
                     get_in_play_ability_mechanic(self, pokemon) == Some(&AbilityMechanic::LuxuryCoin)
                 });
-            let target_valid = match (misty, pending.misty_target_in_play_idx) {
-                (false, None) => true,
-                (true, Some(index)) => self.in_play_pokemon
+            let target_valid = match (misty, sweet_honey, pending.misty_target_in_play_idx) {
+                (false, false, None) => true,
+                (true, false, Some(index)) => self.in_play_pokemon
                     .get(pending.actor)
                     .and_then(|slots| slots.get(index))
                     .and_then(Option::as_ref)
                     .is_some_and(|pokemon| self.pokemon_is_type(pokemon, EnergyType::Water)),
+                (false, true, Some(index)) => self.in_play_pokemon
+                    .get(pending.actor)
+                    .and_then(|slots| slots.get(index))
+                    .and_then(Option::as_ref)
+                    .is_some_and(|pokemon| pokemon.is_damaged()),
                 _ => false,
             };
             route_valid

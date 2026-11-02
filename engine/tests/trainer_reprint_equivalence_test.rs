@@ -16,9 +16,11 @@
 //!   compared.
 //! - (b) The fork's id-keyed Trainer predicates give a reprint the answer they give its canonical
 //!   printing. None of them is public, so each is read through the closest public path:
-//!   - `is_misty_trainer` (state/mod.rs, private): Game adoption (`Game::from_state` runs
-//!     `State::sanitize_pending_choice_state`) keeps a staged Misty target only for a Misty
-//!     source, and a staged Luxury Coin choice with no fixed target only for a non-Misty source.
+//!   - `is_misty_trainer` and `is_sweet_honey_trainer` (state/mod.rs, private): Game adoption
+//!     (`Game::from_state` runs `State::sanitize_pending_choice_state`) keeps a staged Misty target
+//!     only for a Misty source, a staged Sweet Honey target (the same slot, its own route) only for
+//!     a Sweet Honey source, and a staged Luxury Coin choice with no fixed target only for a source
+//!     that is neither (both fix their target before the coins).
 //!   - `is_misty_card`, `is_researcher_card` (crate-only) and the Luxury Coin producer check
 //!     (`trainer_coin_plan::is_registered_direct_producer`, private): the route a play takes from
 //!     a board where Misty, Team Rocket's Researcher and the coin Trainers are legal, once with
@@ -217,7 +219,8 @@ fn use_of_stadium(state: &State) -> Option<Action> {
 enum Route {
     /// Neither of the two below.
     Plain,
-    /// Misty's target choice (`is_misty_card`, or the coin plan's own Misty check).
+    /// The pre-coin target choice in Misty's slot: Misty's (`is_misty_card`, or the coin plan's own
+    /// Misty check) or, since R8-07a, Sweet Honey's.
     MistyTarget,
     /// Luxury Coin's keep-or-reroll choice (a registered producer, or `stadium_route`).
     LuxuryCoin,
@@ -373,8 +376,8 @@ fn adopted(state: State) -> State {
 /// (b) `is_misty_trainer`, read where Game adopts a State. A staged Misty target (from A1 220
 /// Misty) and a staged Luxury Coin choice (from B4 145 Order Pad, so no fixed Misty target) get
 /// each printing written in as their source: the target survives adoption only for a Misty
-/// printing, the coin choice only for any other, and a reprint's answers are its canonical
-/// printing's.
+/// printing, the coin choice only for any other but Sweet Honey (whose batch, like Misty's, needs
+/// its fixed target since R8-07a), and a reprint's answers are its canonical printing's.
 #[test]
 fn adoption_keeps_a_pending_choice_alike_for_every_printing_and_its_canonical() {
     let misty_target = after_playing(&coin_board(false), CardId::A1220Misty);
@@ -409,13 +412,62 @@ fn adoption_keeps_a_pending_choice_alike_for_every_printing_and_its_canonical() 
     for printing in &all {
         let (id, name) = (&printing.card.id, &printing.card.name);
         let misty = name.as_str() == "Misty";
-        assert_eq!(answers[&printing.id], (misty, !misty), "{id} {name}");
+        let sweet_honey = name.as_str() == "Sweet Honey";
+        assert_eq!(answers[&printing.id], (misty, !misty && !sweet_honey), "{id} {name}");
         assert_eq!(
             answers[&printing.id],
             answers[&printing.canonical],
             "{id} {name} v its canonical printing {:?}",
             printing.canonical
         );
+    }
+}
+
+/// (b) `is_sweet_honey_trainer`, read where Game adopts a State. A Sweet Honey target phase (from
+/// C1 119, Luxury Coin used: its route and its damaged-target frame) and a Luxury Coin choice with
+/// Sweet Honey's fixed target (Luxury Coin ready, the Charmeleon chosen) get each printing written
+/// in as their source: both survive adoption only for a Sweet Honey printing, and C1 152's answers
+/// are C1 119's.
+#[test]
+fn adoption_keeps_sweet_honeys_target_phase_and_fixed_target_alike_for_both_printings() {
+    let target_phase = after_playing(&coin_board(false), CardId::C1119SweetHoney);
+    assert!(target_phase.pending_misty_target_choice.is_some());
+    let mut game = Game::from_state(
+        after_playing(&coin_board(true), CardId::C1119SweetHoney),
+        init_random_players(),
+        SEED,
+    );
+    let choice = game.get_state_clone().generate_possible_actions().1.remove(0);
+    game.apply_action(&choice);
+    let paused = game.get_state_clone();
+    let pending = paused.pending_trainer_coin_choice.as_ref().unwrap();
+    assert_eq!(pending.misty_target_in_play_idx, Some(0), "the Charmeleon, 30 damage");
+    let kept = |source: &TrainerCard| -> (bool, bool) {
+        let mut target_state = target_phase.clone();
+        let pending = target_state.pending_misty_target_choice.as_mut().unwrap();
+        pending.original_action = SimpleAction::Play {
+            trainer_card: source.clone(),
+        };
+        pending.route = Some(MistySourceRoute::SweetHoney {
+            sweet_honey: source.clone(),
+        });
+        let mut coin_state = paused.clone();
+        let pending = coin_state.pending_trainer_coin_choice.as_mut().unwrap();
+        pending.original_action = SimpleAction::Play {
+            trainer_card: source.clone(),
+        };
+        pending.route = Some(TrainerCoinEffectRoute::Direct {
+            trainer: source.clone(),
+        });
+        (
+            adopted(target_state).pending_misty_target_choice.is_some(),
+            adopted(coin_state).pending_trainer_coin_choice.is_some(),
+        )
+    };
+    for printing in printings() {
+        let (id, name) = (&printing.card.id, &printing.card.name);
+        let sweet_honey = name.as_str() == "Sweet Honey";
+        assert_eq!(kept(&printing.card), (sweet_honey, sweet_honey), "{id} {name}");
     }
 }
 
@@ -452,6 +504,9 @@ fn every_reprint_takes_the_route_its_canonical_printing_takes() {
         };
         // Misty's one reprint stages its target on either route (before its batch on the coin one).
         assert_eq!(routes_of("Misty"), vec![Route::MistyTarget], "{board_name}");
+        // So does Sweet Honey's (R8-07a), in the same slot: the Charmeleon's 30 damage makes it
+        // legal.
+        assert_eq!(routes_of("Sweet Honey"), vec![Route::MistyTarget], "{board_name}");
         assert_eq!(routes_of("Team Rocket's Researcher").len(), 1, "{board_name}");
         // The coin Trainers that `b4b_reprint_arms_test.rs` runs under Luxury Coin.
         let coin_route = if luxury_coin_ready { Route::LuxuryCoin } else { Route::Plain };

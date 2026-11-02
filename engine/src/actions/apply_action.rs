@@ -50,6 +50,11 @@ pub fn apply_action(rng: &mut StdRng, state: &mut State, action: &Action) {
         mutation(rng, state, action);
         return;
     }
+    if matches!(action.action, SimpleAction::ChooseSweetHoneyTarget { .. }) {
+        let mutation = trainer_coin_plan::sample_sweet_honey_target_actual(rng, state, action);
+        mutation(rng, state, action);
+        return;
+    }
     if matches!(
         action.action,
         SimpleAction::KeepTrainerCoinResults | SimpleAction::RerollTrainerCoins { .. }
@@ -439,6 +444,9 @@ pub fn try_forecast_action(state: &State, action: &Action) -> Result<Outcomes, U
     if matches!(action.action, SimpleAction::ChooseMistyTarget { .. }) {
         return trainer_coin_plan::forecast_misty_target(state, action);
     }
+    if matches!(action.action, SimpleAction::ChooseSweetHoneyTarget { .. }) {
+        return trainer_coin_plan::forecast_sweet_honey_target(state, action);
+    }
     if matches!(
         action.action,
         SimpleAction::KeepTrainerCoinResults | SimpleAction::RerollTrainerCoins { .. }
@@ -639,6 +647,9 @@ fn forecast_action_unchecked(state: &State, action: &Action) -> Outcomes {
         }
         SimpleAction::ChooseMistyTarget { .. } => {
             unreachable!("Misty target choices are routed before the generic action forecast")
+        }
+        SimpleAction::ChooseSweetHoneyTarget { .. } => {
+            unreachable!("Sweet Honey target choices are routed before the generic action forecast")
         }
         SimpleAction::ResolveAttackRetaliation { attacking_ref, damaged_refs, perish_body_heads, point_denial_flips } => {
             let flips = point_denial_flips.clone();

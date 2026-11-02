@@ -299,6 +299,9 @@ pub fn trainer_move_generation_implementation(
         CardId::B4a071TeamRocketsBoss => {
             can_play_trainer(state, trainer_card)
         }
+        // Sweet Honey (C1 119), as upstream #439 and rules/05 #28: a damaged Pokémon to choose,
+        // as Potion needs (clip 11-06-21 at 00:26 and 01:52). Heal Block doesn't stop it.
+        CardId::C1119SweetHoney => can_play_potion(state, trainer_card),
         CardId::C1120SuperPotion => can_play_super_potion(state, trainer_card),
         CardId::C1122FullHeal => can_play_full_heal(state, trainer_card),
         CardId::C1125Lorelei => can_play_trainer(state, trainer_card),

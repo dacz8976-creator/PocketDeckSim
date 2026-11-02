@@ -101,7 +101,7 @@ pub fn implementation_limitations(card_id: CardId) -> &'static [&'static str] {
             "Provisional engine convention, not verified in Pokémon TCG Pocket: complete Trainer coin batches are public while Luxury Coin is pending.",
             "Engine reading of the card text (\"coins for an effect of your Trainer cards\"; the card-text follow-up, Oct 2, TEXT_AUDIT.md A6b), not verified in Pokémon TCG Pocket: Luxury Coin is offered on Arcade or Mesagoza only when the player activating it played that Stadium, not on the opponent's; a Stadium with no recorded player keeps the offer.",
             "Unverified Pokémon TCG Pocket boundary: Luxury Coin applies to coin batches produced by a Trainer source selected by Penny, but not to Portrait or Portrait copying Penny because those outer effects are Abilities.",
-            "Initial and replacement batches with infinitely many observable face sequences are explicitly unpriced (Misty, Team Rocket Grunt, and Team Rocket's Researcher), even when the resulting damage or Energy states eventually saturate.",
+            "Initial and replacement batches with infinitely many observable face sequences are explicitly unpriced (Misty, Sweet Honey, Team Rocket Grunt, and Team Rocket's Researcher), even when the resulting damage, healing or Energy states eventually saturate.",
         ],
         CardId::B4a018HisuianBasculegion => &[
             "Pokémon Checkup points are attributed to the turn that just ended; whether Pocket includes between-turn Checkup in ‘during their last turn’ remains unverified.",

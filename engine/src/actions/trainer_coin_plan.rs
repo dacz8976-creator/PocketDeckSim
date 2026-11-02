@@ -60,6 +60,13 @@ fn is_misty(id: CardId) -> bool {
     matches!(id, CardId::A1220Misty)
 }
 
+fn is_sweet_honey(id: CardId) -> bool {
+    matches!(id, CardId::C1119SweetHoney)
+}
+
+/// Sweet Honey: "For each heads, heal 20 damage from that Pokémon."
+const SWEET_HONEY_HEAL_PER_HEADS: u32 = 20;
+
 fn is_master_plan(id: CardId) -> bool {
     matches!(id, CardId::B4a070TeamRocketsMasterPlan)
 }
@@ -68,9 +75,9 @@ fn is_ice_pop(id: CardId) -> bool {
     matches!(id, CardId::B2145LuckyIcePop)
 }
 
-/// Canonical printings only; the 28 printings they stand for (every printing of these 10 names)
+/// Canonical printings only; the 30 printings they stand for (every printing of these 11 names)
 /// take the direct route through `canonical_trainer_id`.
-const REGISTERED_DIRECT_PRODUCERS: [CardId; 10] = [
+const REGISTERED_DIRECT_PRODUCERS: [CardId; 11] = [
     CardId::A1220Misty,
     CardId::A2b072TeamRocketGrunt,
     CardId::A4159Fisher,
@@ -81,6 +88,8 @@ const REGISTERED_DIRECT_PRODUCERS: [CardId; 10] = [
     CardId::B4145OrderPad,
     CardId::B4a069TeamRocketsResearcher,
     CardId::B4a070TeamRocketsMasterPlan,
+    // R8-07a: its coins wait for its target, as Misty's do, and Luxury Coin covers them.
+    CardId::C1119SweetHoney,
 ];
 
 fn is_registered_direct_producer(id: CardId) -> bool {
@@ -119,6 +128,11 @@ fn effect_outcomes(
         return ResearcherPlan::from_state(state, actor).forecast_exact(actor);
     }
     if is_misty(id) {
+        return Err(UnpricedForecast::observable_geometric(trainer.id.clone()));
+    }
+    // Defensive: every Sweet Honey path returns before this point (its batch is unbounded, and
+    // its Play only stages the target, which must not happen inside the coin plan).
+    if is_sweet_honey(id) {
         return Err(UnpricedForecast::observable_geometric(trainer.id.clone()));
     }
     if is_master_plan(id) {
@@ -341,6 +355,9 @@ fn misty_trainer_route(route: &MistySourceRoute) -> TrainerCoinEffectRoute {
         MistySourceRoute::Portrait { .. } | MistySourceRoute::PortraitPenny { .. } => {
             panic!("Portrait cannot activate Luxury Coin")
         }
+        MistySourceRoute::SweetHoney { sweet_honey } => TrainerCoinEffectRoute::Direct {
+            trainer: sweet_honey.clone(),
+        },
     }
 }
 
@@ -414,6 +431,202 @@ pub(crate) fn forecast_misty_target(
     Err(UnpricedForecast::observable_geometric(
         route.effect_trainer().id.clone(),
     ))
+}
+
+/// Sweet Honey (C1 119, C1 152): "Choose 1 of your Pokémon, and then flip a coin until you get
+/// tails. For each heads, heal 20 damage from that Pokémon." The Pokémon is chosen first (Dustin's
+/// clip 11-23-18: chosen at 01:27, coins at 01:31) and only a damaged one is offered (rules/05
+/// #28; clip 11-06-21 at 00:26 and 01:52). Starts the public target phase in Misty's pre-coin slot
+/// after the Play prefix has been paid; no coin is flipped here.
+pub(crate) fn stage_sweet_honey_target(
+    state: &mut State,
+    action: &Action,
+    sweet_honey: TrainerCard,
+) {
+    let choices = state
+        .enumerate_in_play_pokemon(action.actor)
+        .filter(|(_, pokemon)| pokemon.is_damaged())
+        .map(|(in_play_idx, _)| SimpleAction::ChooseSweetHoneyTarget { in_play_idx })
+        .collect::<Vec<_>>();
+    assert!(!choices.is_empty(), "Sweet Honey requires a damaged Pokemon target");
+    state.pending_misty_target_choice = Some(PendingMistyTargetChoice {
+        actor: action.actor,
+        original_action: action.action.clone(),
+        original_is_stack: action.is_stack,
+        route: Some(MistySourceRoute::SweetHoney { sweet_honey }),
+    });
+    state.move_generation_stack.push((action.actor, choices));
+}
+
+fn validate_sweet_honey_target(
+    state: &State,
+    action: &Action,
+) -> (PendingMistyTargetChoice, MistySourceRoute, usize) {
+    let pending = state
+        .pending_misty_target_choice
+        .clone()
+        .expect("Sweet Honey target choice requires pending data");
+    let SimpleAction::ChooseSweetHoneyTarget { in_play_idx } = action.action else {
+        panic!("expected a Sweet Honey target choice")
+    };
+    assert!(
+        action.is_stack,
+        "Sweet Honey target choice must be a stack action"
+    );
+    assert_eq!(action.actor, pending.actor, "Sweet Honey target actor mismatch");
+    let (frame_actor, choices) = state
+        .move_generation_stack
+        .last()
+        .expect("Sweet Honey target stack frame missing");
+    assert_eq!(
+        *frame_actor, pending.actor,
+        "Sweet Honey target frame actor mismatch"
+    );
+    assert!(
+        !choices.is_empty()
+            && choices
+                .iter()
+                .all(|choice| matches!(choice, SimpleAction::ChooseSweetHoneyTarget { .. })),
+        "Sweet Honey target frame must contain only target choices"
+    );
+    assert!(
+        choices.contains(&action.action),
+        "chosen Sweet Honey target was not offered"
+    );
+    let pokemon = state.in_play_pokemon[action.actor][in_play_idx]
+        .as_ref()
+        .expect("chosen Sweet Honey target is no longer in play");
+    assert!(
+        pokemon.is_damaged(),
+        "chosen Sweet Honey target is no longer damaged"
+    );
+    let route = pending
+        .route
+        .clone()
+        .expect("a referee Sweet Honey target state must retain its source route");
+    assert!(
+        matches!(route, MistySourceRoute::SweetHoney { .. }),
+        "Sweet Honey target choice requires a Sweet Honey source"
+    );
+    (pending, route, in_play_idx)
+}
+
+fn pop_sweet_honey_target_frame(state: &mut State, pending: &PendingMistyTargetChoice) {
+    assert_eq!(state.pending_misty_target_choice.as_ref(), Some(pending));
+    let (_, choices) = state
+        .move_generation_stack
+        .last()
+        .expect("Sweet Honey target stack frame missing");
+    assert!(
+        !choices.is_empty()
+            && choices
+                .iter()
+                .all(|choice| matches!(choice, SimpleAction::ChooseSweetHoneyTarget { .. })),
+        "Sweet Honey target frame must contain only target choices"
+    );
+    state.move_generation_stack.pop();
+    state.pending_misty_target_choice = None;
+}
+
+/// The heal on the fixed target, then the Play's one-time suffix that staging deferred.
+/// `heal_pokemon` stops at the target's damage and heals nothing under Heal Block.
+fn heal_sweet_honey_target(
+    state: &mut State,
+    pending: &PendingMistyTargetChoice,
+    target: usize,
+    heads: u32,
+) {
+    if heads > 0 {
+        state.heal_pokemon(
+            pending.actor,
+            target,
+            SWEET_HONEY_HEAL_PER_HEADS.saturating_mul(heads),
+        );
+    }
+    apply_common_action_suffix(state, &original_misty_action(pending));
+}
+
+/// Physical target commit. The damaged target is fixed before any coin or Will consumption; the
+/// coins are then flipped until tails, with no cap.
+pub(crate) fn sample_sweet_honey_target_actual(
+    rng: &mut StdRng,
+    state: &State,
+    action: &Action,
+) -> Mutation {
+    let (pending, route, target) = validate_sweet_honey_target(state, action);
+    let force_first = state.has_pending_will_first_heads();
+    let batch = sample_until_tails(rng, force_first);
+    let ghold = route
+        .outer_is_trainer()
+        .then(|| luxury_coin_source(state, action.actor))
+        .flatten();
+    Box::new(move |_, state, _| {
+        pop_sweet_honey_target_frame(state, &pending);
+        if force_first {
+            assert!(state.consume_pending_will_first_heads());
+        }
+        if let Some(source_idx) = ghold {
+            let mut trainer_pending = pending_for(
+                &original_misty_action(&pending),
+                misty_trainer_route(&route),
+                batch.0.clone(),
+                source_idx,
+            );
+            trainer_pending.misty_target_in_play_idx = Some(target);
+            install_pending(state, trainer_pending);
+            return;
+        }
+        let heads = u32::try_from(batch.0.iter().filter(|face| **face).count())
+            .expect("Sweet Honey heads count exceeds the heal representation");
+        heal_sweet_honey_target(state, &pending, target, heads);
+    })
+}
+
+/// Search after the finite target phase. Without Luxury Coin the batch is priced exactly: the heal
+/// stops changing once it covers the target's damage, so `ceil(damage / 20)` heads or more is one
+/// class (`Outcomes::geometric_until_tails_saturated`, the distribution the physical sampler
+/// draws from), and Will forces the first heads as `finish_forecast` does. Under Luxury Coin the
+/// batch stays explicitly unpriced, as Misty's and Team Rocket Grunt's do.
+pub(crate) fn forecast_sweet_honey_target(
+    state: &State,
+    action: &Action,
+) -> Result<Outcomes, UnpricedForecast> {
+    let (pending, route, target) = validate_sweet_honey_target(state, action);
+    let sweet_honey = route.effect_trainer().id.clone();
+    if route.outer_is_trainer() && luxury_coin_source(state, action.actor).is_some() {
+        return Err(UnpricedForecast::observable_geometric(sweet_honey));
+    }
+    let saturation_heads = if state.is_healing_blocked() {
+        0
+    } else {
+        let damage = state.in_play_pokemon[action.actor][target]
+            .as_ref()
+            .expect("validated Sweet Honey target")
+            .get_damage_counters();
+        damage.div_ceil(SWEET_HONEY_HEAL_PER_HEADS) as usize
+    };
+    let mut outcomes = Outcomes::geometric_until_tails_saturated(saturation_heads, |heads| {
+        let pending = pending.clone();
+        let heads =
+            u32::try_from(heads).expect("Sweet Honey heads count exceeds the heal representation");
+        Box::new(move |_, state, _| {
+            pop_sweet_honey_target_frame(state, &pending);
+            heal_sweet_honey_target(state, &pending, target, heads);
+        })
+    })
+    .map_err(|_| UnpricedForecast::unsupported_trainer_coin(sweet_honey.clone()))?;
+    if state.has_pending_will_first_heads() {
+        outcomes = match outcomes.force_first_heads() {
+            Ok(forced) => forced.map_mutations(|mutation| {
+                Box::new(move |rng, state, action| {
+                    assert!(state.consume_pending_will_first_heads());
+                    mutation(rng, state, action);
+                })
+            }),
+            Err(original) => original,
+        };
+    }
+    Ok(outcomes)
 }
 
 fn install_pending(state: &mut State, pending: PendingTrainerCoinChoice) {
@@ -552,6 +765,14 @@ fn stage_actual_route(
         return Ok(Box::new(move |_, state, original| {
             assert!(start_action(state, original, &route_for_start));
             stage_misty_target(state, original, misty.clone());
+        }));
+    }
+    if is_sweet_honey(id) {
+        let sweet_honey = route.effect_trainer().clone();
+        let route_for_start = route.clone();
+        return Ok(Box::new(move |_, state, original| {
+            assert!(start_action(state, original, &route_for_start));
+            stage_sweet_honey_target(state, original, sweet_honey.clone());
         }));
     }
     if is_ice_pop(id) && !ice_pop_can_heal(state, action.actor) {
@@ -706,6 +927,14 @@ fn search_stage_route(
         return Ok(Outcomes::single_fn(move |_, state, original| {
             assert!(start_action(state, original, &route_for_start));
             stage_misty_target(state, original, misty.clone());
+        }));
+    }
+    if is_sweet_honey(id) {
+        let sweet_honey = route.effect_trainer().clone();
+        let route_for_start = route.clone();
+        return Ok(Outcomes::single_fn(move |_, state, original| {
+            assert!(start_action(state, original, &route_for_start));
+            stage_sweet_honey_target(state, original, sweet_honey.clone());
         }));
     }
     if is_ice_pop(id) && !ice_pop_can_heal(state, action.actor) {
@@ -943,6 +1172,22 @@ fn conditioned_keep(
             }
         }));
     }
+    if is_sweet_honey(id) {
+        let heads =
+            u32::try_from(heads).expect("Sweet Honey heads count exceeds the heal representation");
+        let target = pending
+            .misty_target_in_play_idx
+            .expect("a staged Sweet Honey Luxury Coin choice must retain its fixed target");
+        return Ok(Outcomes::single_fn(move |_, state, action| {
+            if heads > 0 {
+                state.heal_pokemon(
+                    action.actor,
+                    target,
+                    SWEET_HONEY_HEAL_PER_HEADS.saturating_mul(heads),
+                );
+            }
+        }));
+    }
     effect_outcomes(route, state, pending.actor)?
         .condition_on_coin_sequence(&CoinSeq(pending.flips.clone()))
         .map_err(|_| UnpricedForecast::unsupported_trainer_coin(route.effect_trainer().id.clone()))
@@ -1011,6 +1256,11 @@ pub(crate) fn try_forecast_choice(
                     route.effect_trainer().id.clone(),
                 ));
             }
+            if is_sweet_honey(id) {
+                return Err(UnpricedForecast::observable_geometric(
+                    route.effect_trainer().id.clone(),
+                ));
+            }
             let fresh = effect_outcomes(&route, state, pending.actor)?;
             if fresh.has_symbolic_coin_paths() {
                 return Err(UnpricedForecast::observable_geometric(
@@ -1057,8 +1307,8 @@ pub(crate) fn try_forecast_choice(
     }
 }
 
-/// Physical Keep/Reroll path. It never calls an exact whole-distribution API for Misty or
-/// Researcher, so an unpriced search boundary cannot block real play.
+/// Physical Keep/Reroll path. It never calls an exact whole-distribution API for Misty, Sweet
+/// Honey or Researcher, so an unpriced search boundary cannot block real play.
 pub(crate) fn sample_choice_actual(rng: &mut StdRng, state: &State, action: &Action) -> Mutation {
     let (pending, route) = validate_choice(state, action);
     match &action.action {
@@ -1090,6 +1340,8 @@ pub(crate) fn sample_choice_actual(rng: &mut StdRng, state: &State, action: &Act
                     .sample_batch(rng, false)
                     .flips
             } else if is_misty(id) {
+                sample_until_tails(rng, false)
+            } else if is_sweet_honey(id) {
                 sample_until_tails(rng, false)
             } else {
                 sample_batch_from_outcomes(
@@ -1142,7 +1394,7 @@ mod tests {
 
     #[test]
     fn registered_producer_census_drives_the_actual_route_guard() {
-        assert_eq!(REGISTERED_DIRECT_PRODUCERS.len(), 10);
+        assert_eq!(REGISTERED_DIRECT_PRODUCERS.len(), 11);
         for id in REGISTERED_DIRECT_PRODUCERS {
             assert!(is_registered_direct_producer(id), "missing {id:?}");
             assert_eq!(
@@ -1156,7 +1408,7 @@ mod tests {
 
     /// The census in printings: a Trainer takes the direct route exactly when its canonical
     /// printing is registered, which covers the same 28 printings the list named one by one
-    /// before R8-02.
+    /// before R8-02, and Sweet Honey's two since R8-07a.
     #[test]
     fn every_printing_of_a_registered_producer_takes_the_direct_route() {
         use strum::IntoEnumIterator;
@@ -1174,7 +1426,7 @@ mod tests {
             }
         }
         // The exact set the list named one by one before R8-02, so a printing swapped in or out
-        // fails here, not only a change in the count.
+        // fails here, not only a change in the count; R8-07a added the two Sweet Honey.
         let mut expected: Vec<String> = [
             CardId::A1220Misty,
             CardId::A1267Misty,
@@ -1204,6 +1456,8 @@ mod tests {
             CardId::B4a070TeamRocketsMasterPlan,
             CardId::B4a086TeamRocketsMasterPlan,
             CardId::B4a094TeamRocketsMasterPlan,
+            CardId::C1119SweetHoney,
+            CardId::C1152SweetHoney,
         ]
         .iter()
         .map(|id| format!("{id:?}"))
@@ -1409,6 +1663,189 @@ mod tests {
                     .len(),
                 committed.0.iter().filter(|face| **face).count()
             );
+        }
+    }
+
+    fn play_of(id: CardId) -> Action {
+        Action {
+            actor: 0,
+            action: SimpleAction::Play {
+                trainer_card: get_card_by_enum(id).as_trainer(),
+            },
+            is_stack: false,
+        }
+    }
+
+    /// Player 0 on turn 3: an undamaged Squirtle Active and a Psyduck with 30 damage (both [W]),
+    /// with Gholdengo Benched when `gholdengo`, and `in_hand` in hand.
+    fn honey_board(gholdengo: bool, in_hand: CardId) -> State {
+        let mut state = State::default();
+        state.turn_count = 3;
+        state.current_player = 0;
+        let mut own = vec![
+            PlayedCard::from_id(CardId::A1053Squirtle),
+            PlayedCard::from_id(CardId::A1057Psyduck).with_damage(30),
+        ];
+        if gholdengo {
+            own.push(PlayedCard::from_id(CardId::B4a051Gholdengo));
+        }
+        state.set_board(own, vec![PlayedCard::from_id(CardId::A1001Bulbasaur)]);
+        state.hands[0] = vec![get_card_by_enum(in_hand)];
+        state
+    }
+
+    /// The twin of `rejected_misty_target_preserves_rng_and_state`, plus the cross-actions: an
+    /// unoffered, undamaged or empty Sweet Honey target, Misty's target action in Sweet Honey's
+    /// phase and Sweet Honey's in Misty's are all refused before any coin or Will is used, by the
+    /// physical sampler and by the search boundary.
+    #[test]
+    fn rejected_sweet_honey_target_preserves_rng_and_state() {
+        let mut honey = honey_board(false, CardId::C1119SweetHoney);
+        crate::actions::apply_action(
+            &mut StdRng::seed_from_u64(1),
+            &mut honey,
+            &play_of(CardId::C1119SweetHoney),
+        );
+        assert_eq!(
+            honey.move_generation_stack.last().unwrap().1,
+            vec![SimpleAction::ChooseSweetHoneyTarget { in_play_idx: 1 }]
+        );
+        let mut misty = honey_board(false, CardId::A1220Misty);
+        crate::actions::apply_action(
+            &mut StdRng::seed_from_u64(1),
+            &mut misty,
+            &play_of(CardId::A1220Misty),
+        );
+        assert!(misty.pending_misty_target_choice.is_some());
+        for (state, choice) in [
+            (&honey, SimpleAction::ChooseSweetHoneyTarget { in_play_idx: 0 }),
+            (&honey, SimpleAction::ChooseSweetHoneyTarget { in_play_idx: 3 }),
+            (&honey, SimpleAction::ChooseMistyTarget { in_play_idx: 1 }),
+            (&misty, SimpleAction::ChooseSweetHoneyTarget { in_play_idx: 1 }),
+        ] {
+            let before = state.clone();
+            let invalid = Action {
+                actor: 0,
+                action: choice.clone(),
+                is_stack: true,
+            };
+            let mut actual_rng = StdRng::seed_from_u64(99);
+            let mut control_rng = actual_rng.clone();
+            let sampled = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+                let _ = match choice {
+                    SimpleAction::ChooseMistyTarget { .. } => {
+                        sample_misty_target_actual(&mut actual_rng, state, &invalid)
+                    }
+                    _ => sample_sweet_honey_target_actual(&mut actual_rng, state, &invalid),
+                };
+            }));
+            let forecast = std::panic::catch_unwind(std::panic::AssertUnwindSafe(|| {
+                let _ = match choice {
+                    SimpleAction::ChooseMistyTarget { .. } => {
+                        forecast_misty_target(state, &invalid)
+                    }
+                    _ => forecast_sweet_honey_target(state, &invalid),
+                };
+            }));
+            assert!(sampled.is_err() && forecast.is_err(), "{choice:?}");
+            assert_eq!(state, &before, "{choice:?}");
+            assert_eq!(actual_rng.next_u64(), control_rng.next_u64(), "{choice:?}");
+        }
+    }
+
+    /// Nothing reaches `effect_outcomes` with a Sweet Honey source (each coin-plan site returns
+    /// first); were something to, it would refuse rather than stage a target inside the plan.
+    #[test]
+    fn sweet_honey_effect_outcomes_is_explicitly_unpriced() {
+        let state = honey_board(true, CardId::C1119SweetHoney);
+        for id in [CardId::C1119SweetHoney, CardId::C1152SweetHoney] {
+            let route = TrainerCoinEffectRoute::Direct {
+                trainer: get_card_by_enum(id).as_trainer(),
+            };
+            let error = match effect_outcomes(&route, &state, 0) {
+                Ok(_) => panic!("{id:?}: Sweet Honey's batch must not be priced here"),
+                Err(error) => error,
+            };
+            assert!(
+                matches!(
+                    error.kind,
+                    crate::actions::UnpricedForecastKind::TrainerCoinObservableGeometric { .. }
+                ),
+                "{id:?}"
+            );
+        }
+    }
+
+    /// INFORMATION_MODEL v8 holds for Sweet Honey: its text names no hand, deck, draw, shuffle or
+    /// opponent, so its Play, target, Keep and Reroll leave every viewer's deck-top and
+    /// deck-membership knowledge as it was, and the opponent's hand knowledge is cleared only by
+    /// the Play, whose card leaves the hand, as any card played from the hand does.
+    #[test]
+    fn sweet_honey_steps_leave_observation_knowledge_as_it_was() {
+        use crate::observation::{update_knowledge, RevealedKnowledge};
+
+        let known = |opponent_hand: Vec<Card>| RevealedKnowledge {
+            deck_top: [
+                vec![get_card_by_enum(CardId::PA005PokeBall)],
+                vec![get_card_by_enum(CardId::A1033Charmander)],
+            ],
+            opponent_hand,
+            opponent_deck_membership: vec![get_card_by_enum(CardId::PA001Potion)],
+        };
+        for (gholdengo, last) in [
+            (false, None),
+            (true, Some(SimpleAction::KeepTrainerCoinResults)),
+            (
+                true,
+                Some(SimpleAction::RerollTrainerCoins {
+                    luxury_coin_in_play_idx: 2,
+                }),
+            ),
+        ] {
+            let mut state = honey_board(gholdengo, CardId::C1119SweetHoney);
+            state.hands[0].push(get_card_by_enum(CardId::PA001Potion));
+            state.decks[0].cards = vec![
+                get_card_by_enum(CardId::PA005PokeBall),
+                get_card_by_enum(CardId::A1001Bulbasaur),
+            ];
+            state.decks[1].cards = vec![
+                get_card_by_enum(CardId::A1033Charmander),
+                get_card_by_enum(CardId::PA001Potion),
+            ];
+            state.hands[1] = vec![get_card_by_enum(CardId::A1001Bulbasaur)];
+            let hand_of = |state: &State, player: usize| {
+                let mut hand = state.hands[player].clone();
+                hand.sort_by_key(Card::get_id);
+                hand
+            };
+            let mut knowledge = [known(hand_of(&state, 1)), known(hand_of(&state, 0))];
+            let mut rng = StdRng::seed_from_u64(5);
+            let mut steps = vec![
+                play_of(CardId::C1119SweetHoney),
+                Action {
+                    actor: 0,
+                    action: SimpleAction::ChooseSweetHoneyTarget { in_play_idx: 1 },
+                    is_stack: true,
+                },
+            ];
+            steps.extend(last.map(|action| Action {
+                actor: 0,
+                action,
+                is_stack: true,
+            }));
+            for (step, action) in steps.iter().enumerate() {
+                let before = state.clone();
+                crate::actions::apply_action(&mut rng, &mut state, action);
+                update_knowledge(&mut knowledge, &before, &state, action);
+                // The Play takes Sweet Honey from player 0's hand: player 1's record of that hand
+                // is cleared, and the hand stays unchanged from then on.
+                let expected_hand = if step == 0 { vec![] } else { hand_of(&state, 0) };
+                assert_eq!(knowledge[0], known(hand_of(&state, 1)), "{action:?}");
+                assert_eq!(knowledge[1], known(expected_hand), "{action:?}");
+                knowledge[1].opponent_hand = hand_of(&state, 0);
+            }
+            assert!(state.pending_misty_target_choice.is_none());
+            assert!(state.pending_trainer_coin_choice.is_none());
         }
     }
 }

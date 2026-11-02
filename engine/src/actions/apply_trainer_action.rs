@@ -292,6 +292,7 @@ pub(crate) fn forecast_trainer_action_unchecked(
         CardId::B4a071TeamRocketsBoss => {
             team_rockets_boss_outcomes(acting_player, state)
         }
+        CardId::C1119SweetHoney => Outcomes::single_fn(sweet_honey_effect),
         CardId::C1120SuperPotion => Outcomes::single_fn(super_potion_effect),
         CardId::C1122FullHeal => Outcomes::single_fn(full_heal_effect),
         CardId::C1125Lorelei => Outcomes::single_fn(lorelei_effect),
@@ -649,6 +650,18 @@ fn guzma_effect(_: &mut StdRng, state: &mut State, action: &Action) {
 
 fn potion_effect(rng: &mut StdRng, state: &mut State, action: &Action) {
     inner_healing_effect(rng, state, action, 20, None);
+}
+
+/// Sweet Honey (C1 119, C1 152): "Choose 1 of your Pokémon, and then flip a coin until you get
+/// tails. For each heads, heal 20 damage from that Pokémon." The coins wait for the choice: this
+/// stages the public target phase (`trainer_coin_plan::stage_sweet_honey_target`), and the
+/// `ChooseSweetHoneyTarget` action flips them. The Play itself flips nothing, so a pending Will
+/// waits for the target's first coin.
+fn sweet_honey_effect(_: &mut StdRng, state: &mut State, action: &Action) {
+    let SimpleAction::Play { trainer_card } = &action.action else {
+        panic!("Sweet Honey stages its target only from its own Play")
+    };
+    trainer_coin_plan::stage_sweet_honey_target(state, action, trainer_card.clone());
 }
 
 /// Super Potion (C1 120): "Heal 40 damage from 1 of your Pokémon that has any Energy attached. If
