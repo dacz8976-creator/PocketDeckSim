@@ -6,11 +6,13 @@
 //! whether the game RNG advanced, both seats' `PlayerObservation`, Game adoption of the referee
 //! state and of each seat's redacted `search_state`, a fixed-seed
 //! `search_state_with_opponent_list`, and at every decision with two or more options the picks of
-//! WeightedRandomPlayer (every seed) and of km3, y3 and x3 (seed 0). km3 searches no opponent ply;
-//! y3 (consistent horizon) also forecasts `EndTurn` at depth 0 and searches the opponent's reply,
-//! and x3 searches that reply across the turn boundary, so the Checkup forecast is priced inside
-//! all three searches. A Red Card at the end shuffles the opponent's deck, so the record also
-//! fingerprints the RNG state left behind.
+//! WeightedRandomPlayer (every seed) and of km3, y3 and x3 (seed 0). All three price the Checkup
+//! forecast of an `EndTurn` they reach, and none searches the opponent's reply: run through
+//! `decision_fn` on an observation, the opponent's hand and deck are Unknown, so every opponent
+//! node returns at once (`expectiminimax_player.rs:773-798`). y3 and x3 add a different evaluator
+//! (`public_baseline`), and y3 (consistent horizon) its inline `EndTurn` forecast at depth 0. A Red
+//! Card at the end shuffles the opponent's deck, so the record also fingerprints the RNG state left
+//! behind.
 //!
 //! Every scenario also asserts what its first Checkup forecast (turn 3's `EndTurn` and the
 //! deferred Checkup frames after it) looked like: the branch count of each step, every branch
@@ -39,6 +41,7 @@ use deckgym::{
     observation::canonical_actions,
     players::{create_players, Player, PlayerCode},
     protocol::PublicEvent,
+    state::GameOutcome,
     test_support::get_initialized_game,
     Deck, Game, State,
 };
@@ -50,10 +53,11 @@ const SEEDS: u64 = 16;
 /// turn 5 within it fails.
 const MAX_STEPS: usize = 24;
 /// FNV-1a of the whole record at 8484daa8 (R8-08 part 1 fix, before Soothing Lullaby and Wings of
-/// the Moone), 1,885,710 bytes. The boards added in the R8-08 part 2a fix (20 steel apron, 20
-/// soothing wind, 24a-24d, 25) were recorded on that commit's engine as well; every earlier
-/// board's lines are byte for byte those of the R8-08d record.
-const EXPECTED_RECORD_FNV: &str = "035e47d3f7b7752d";
+/// the Moone), 1,990,788 bytes. The boards added in the R8-08 part 2a fix (20 steel apron, 20
+/// soothing wind, 24a-24d, 25) and in R8-08f (16b, 20 steel apron on a non-[M] holder, 21 sand
+/// slammer on the bench) were recorded on that commit's engine as well; every board's lines are
+/// byte for byte those of the record it was added in.
+const EXPECTED_RECORD_FNV: &str = "1e07ca5347ea46f4";
 
 fn fnv(text: &str) -> u64 {
     let mut hash = 0xcbf2_9ce4_8422_2325_u64;
@@ -484,6 +488,25 @@ fn run(name: &str, setup: &Setup, picks: &[Pick], first: First, out: &mut String
     }
 }
 
+/// The states turn 3's `EndTurn` leaves at seed 0, one per branch of its forecast.
+fn after_end_turn(setup: &Setup) -> Vec<State> {
+    let state = setup.state(0);
+    let action = Action {
+        actor: 0,
+        action: SimpleAction::EndTurn,
+        is_stack: false,
+    };
+    let (_, mutations) = try_forecast_action(&state, &action).unwrap().into_branches();
+    mutations
+        .into_iter()
+        .map(|mutation| {
+            let mut next = state.clone();
+            mutation(&mut StdRng::seed_from_u64(9), &mut next, &action);
+            next
+        })
+        .collect()
+}
+
 #[test]
 fn pokemon_checkup_coin_trace() {
     use CardId::*;
@@ -547,6 +570,18 @@ fn pokemon_checkup_coin_trace() {
         First::Always(vec![("EndTurn", 1), ("FinishPokemonCheckup", 1)]),
         &mut out,
     );
+    // With no Benched Pokémon left to promote, Bad Dreams wins the game inside `on_end_turn`,
+    // before the coins. Player 0's own sleeper stays in play, so `EndTurn` still has its coin's 2
+    // branches, and in both the game is over with that Pokémon still Asleep: no coin was applied.
+    let bad_dreams_win = setup(vec![squirtle(&[Asleep]), darkrai()], vec![with(A1001Bulbasaur, &[Asleep]).with_remaining_hp(20)], &[]);
+    run("16b bad dreams win", &bad_dreams_win, &[], end_turn(2), &mut out);
+    for state in after_end_turn(&bad_dreams_win) {
+        assert_eq!(state.winner, Some(GameOutcome::Win(0)), "16b: Bad Dreams wins the game");
+        assert!(
+            state.in_play_pokemon[0][0].as_ref().is_some_and(|pokemon| pokemon.is_asleep()),
+            "16b: no Checkup coin after the win"
+        );
+    }
     let mut quick_growth = setup(vec![squirtle(&[Asleep])], opp(PlayedCard::from_id(B3b001Caterpie)), &[]);
     quick_growth.deck1.insert(0, B3b002Metapod);
     run(
@@ -589,6 +624,9 @@ fn pokemon_checkup_coin_trace() {
     }
     let soothing_wind = vec![ready_bulbasaur(&[]), PlayedCard::from_id(B2017TealMaskOgerponEx), PlayedCard::from_id(A1033Charmander)];
     run("20 soothing wind", &setup(vec![frosmoth()], soothing_wind, &[]), &[Pick::Attack("Powder Snow")], end_turn(1), &mut out);
+    // Steel Apron protects only a [M] holder: on Bulbasaur the Sleep lands.
+    let apron_on_bulbasaur = PlayedCard::from_id(A1001Bulbasaur).with_tool(get_card_by_enum(A4153SteelApron));
+    run("20 steel apron on a non-[M] holder", &setup(vec![frosmoth()], opp(apron_on_bulbasaur), &[]), &[Pick::Attack("Powder Snow")], end_turn(2), &mut out);
 
     // Checkup Abilities after the coins, then one knockout wave.
     run(
@@ -598,6 +636,17 @@ fn pokemon_checkup_coin_trace() {
         First::Always(vec![("EndTurn", 2), ("FinishPokemonCheckup", 1)]),
         &mut out,
     );
+    // Sand Slammer, "do 10 damage to each of your opponent's Pokémon", Knocks Out only a Benched
+    // Pokémon: a point for player 1, but no promotion and no winner, so player 1's turn starts.
+    let bench_knockout = setup(vec![squirtle(&[Asleep]), PlayedCard::from_id(A1057Psyduck).with_remaining_hp(10)], opp(PlayedCard::from_id(B3126FlygonEx)), &[]);
+    run("21 sand slammer on the bench", &bench_knockout, &[], end_turn(2), &mut out);
+    for state in after_end_turn(&bench_knockout) {
+        assert!(
+            state.in_play_pokemon[0][0].is_some() && state.in_play_pokemon[0][1].is_none(),
+            "21: only the Benched Psyduck is Knocked Out"
+        );
+        assert_eq!((state.points, state.winner, state.current_player), ([0, 1], None, 1), "21: the turn passes");
+    }
     run("21 snowy terrain", &setup(vec![squirtle(&[Asleep])], opp(PlayedCard::from_id(A2a022GlaceonEx)), &[]), &[], end_turn(2), &mut out);
     let salted = vec![squirtle(&[Asleep]).with_damage(20), PlayedCard::from_id(B3a033Garganacl)];
     run("21 blessed salt", &setup(salted, opp(ready_bulbasaur(&[])), &[]), &[], end_turn(2), &mut out);
