@@ -7,8 +7,8 @@ Nothing goes to main without Dustin's word.
 
 ## 1. What R8 brings, by commit group
 
-- **R8-00, the bot-protocol adapter** (merge d8eae013 of the adapter tip 2639a261; Dustin's Oct 27 prototype, accepted
-  by coordinator-094): `deckgym simulate --players proto,...` runs an outside bot over upstream's bot protocol v1, with
+- **R8-00, the bot-protocol adapter** (merge d8eae013 of the adapter tip 2639a261; the Oct 27 prototype Dustin said yes
+  to (coordinator-058), accepted by coordinator-094): `deckgym simulate --players proto,...` runs an outside bot over upstream's bot protocol v1, with
   opt-in `pdl_*` keys (`engine/docs/pdl-protocol-extensions.md`).
 - **R8-01 and R8-02:** test helpers and reprint-equivalence tests; Trainer dispatch by canonical printing (upstream
   #395, looked up id-first), with a census test that pins the set of 28 direct-route printings. No game change.
@@ -217,6 +217,8 @@ branch. Full suite at that check: 2,633 passed.
 
 ## 9. Commit-message corrections (messages are never amended)
 
+- **d8eae013 (R8-00):** its subject calls the adapter "Dustin's Oct 27 prototype". It is the Oct 27 prototype
+  Dustin said yes to (coordinator-058), accepted by coordinator-094.
 - **2e92b776 (R6b):** its message reads the R6b smoke rows as a limit of that board ("none of them sees a lethal
   opposing attack at all"). The corrected reading: km, x and y never search an opposing attack on observation states;
   they see only public-reply certificates, and the stack filter matters only for B tiers.
@@ -229,7 +231,7 @@ branch. Full suite at that check: 2,633 passed.
   either Urshifu". The right wording is "No deck list under decks/" and "in 3 single-deck files and one reader script
   there"; RULE_ROWS.md carries it from this commit.
 
-## 10. The adoption list, with pairings (commit order)
+## 10. The adoption list, with pairings (groups in commit order; each fix listed with the commit it goes with)
 
 Adoption question 1 is R8 as a whole, with the official-program switch and one re-pin; adoption question 2, last,
 is item 11. Each group below is adopted or dropped as a whole; "alone" means it can be dropped by itself.
@@ -256,9 +258,11 @@ is item 11. Each group below is adopted or dropped as a whole; "alone" means it 
    - R8-10c Iris: aae606e3, alone.
    - R8-10d Triple Bombardment: 654fcb5f, alone.
    - R8-10e Starting Plains: a9861326 (prediction) with 13286c20 (row) and 2d62a11b (docs fix).
+   - Commit order in this group: b20d75c0, 6ebe05a9, 9904450e, aae606e3, 654fcb5f, a4200c3c, 0b42dcf5, a9861326,
+     13286c20, 2d62a11b.
 5. **Item 11 (adoption question 2, last):** 22638651 (prediction) with 4c948025 (row).
 6. **The flake commit (tests only):** 2da36d75 with 4c1e2699 (its review fix).
-7. **This commit (docs and comments only).** Dropping any group above also means removing its lines here.
+7. **This commit (docs and comments only), with the docs fix commit right after it (docs only).** Dropping any group above also means removing its lines here.
 8. **Root `CLAUDE.md:14`, Dustin's call (not in R8's commits):** one line adding `cargo build --release --example
    goldfish` and `cargo test --release --test goldfish_card_support_test`. Nobody edits it before his word.
 
@@ -298,3 +302,7 @@ Every new finding goes on this list (the time box).
 13. **Upstream batches, each on his OK:** Crunch's hard-coded 20 with Iris B4b 176/348; the R8-10b/c/d fixes; the
     Starting Plains +20 refresh, first shown by a test that fails on upstream 7aa4ef0; Sweet Honey order and targets,
     Super Potion Energy timing, Eviolite hit back and Fossil (drafts only). Any upstream PR must pass fmt and clippy.
+14. **Coordinator-111's R8 items (Oct 30, from laptop-087), not done in R8:** (a) the lister stays without
+    `with_public_pricing` (a standing rule: Penny/Portrait would leak under it); (b) UseStadium and stack follow-ups
+    get a text check, or a note that none is needed; (c) make Lusamine's AttachFromDiscard ordering deterministic (no
+    HashMap order; `generate_energy_combinations`, actions/apply_action.rs:2030-2039).
