@@ -14,3 +14,5 @@ mod rainbow_cave_test;
 mod soothing_shore_test;
 #[path = "stadiums/stadium_test.rs"]
 mod stadium_test;
+#[path = "stadiums/starting_plains_removal_test.rs"]
+mod starting_plains_removal_test;
