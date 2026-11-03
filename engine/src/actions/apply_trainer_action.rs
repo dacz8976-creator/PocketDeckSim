@@ -688,7 +688,7 @@ fn super_potion_effect(_: &mut StdRng, state: &mut State, action: &Action) {
 
 /// Full Heal (C1 122): "Your Active Pokémon recovers from all Special Conditions."
 fn full_heal_effect(_: &mut StdRng, state: &mut State, action: &Action) {
-    // R8-08: cure_status_conditions must also clear Soothing Lullaby's sleep_coins_override.
+    // Full Heal also ends a Soothing Lullaby Sleep's 2 coins (`cure_status_conditions`).
     if let Some(active) = state.in_play_pokemon[action.actor][0].as_mut() {
         active.cure_status_conditions();
     }

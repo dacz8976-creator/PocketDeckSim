@@ -1203,4 +1203,13 @@ pub enum Mechanic {
     /// first; within a type the destinations never decrease), so each final board is reached by one
     /// path. Not `MoveAllEnergyToBench`, which moves it all "to 1 of your Benched Pokémon".
     MoveAllEnergyToBenchAnyWay,
+    /// Jigglypuff's Soothing Lullaby (C1 051, C1 184): "Your opponent's Active Pokémon is now
+    /// Asleep. Your opponent flips 2 coins for this Special Condition, and if any of them are
+    /// tails, that Pokémon is still Asleep." After damage the opponent's Active Pokémon is Asleep,
+    /// and its owner flips `num_coins` coins at each Checkup instead of 1, recovering only if all
+    /// of them are heads. The count is recorded only when this Sleep lands
+    /// (`State::apply_attack_sleep_with_coins`).
+    InflictSleepWithCoins {
+        num_coins: usize,
+    },
 }

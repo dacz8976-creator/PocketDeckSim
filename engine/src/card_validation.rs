@@ -114,6 +114,9 @@ pub fn implementation_limitations(card_id: CardId) -> &'static [&'static str] {
         CardId::C1015Ribombee | CardId::C1135Ribombee => &[
             "Unverified Pokémon TCG Pocket boundaries of the Sweet Honey rental card (not filmed): Honey Gather is not offered while the hand holds 10 cards; a rental card shuffled into a deck by another effect (Amoonguss's Astonish, Red Card, Mars, or any other hand-to-deck effect) stays there as an ordinary Sweet Honey and can be drawn again.",
         ],
+        CardId::C1051Jigglypuff | CardId::C1184Jigglypuff => &[
+            "Unverified Pokémon TCG Pocket boundary (not filmed): an ordinary Sleep that lands on a Pokémon already Asleep from Soothing Lullaby replaces it, so that Pokémon flips 1 coin at Pokémon Checkup instead of 2 (the reset reading, as upstream). Filmed: a Soothing Lullaby Sleep flips 2 coins at Checkup and wakes only on 2 heads.",
+        ],
         _ => &[],
     }
 }

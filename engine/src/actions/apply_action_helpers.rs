@@ -41,9 +41,19 @@ pub(crate) type Mutations = Vec<Mutation>;
 #[derive(Clone)]
 struct CheckupTargets {
     sleeps: Vec<(usize, usize)>,
+    /// Coins each entry of `sleeps` flips (`PlayedCard::sleep_checkup_coins`): 1, or 2 for
+    /// Soothing Lullaby's Sleep.
+    sleep_coins: Vec<usize>,
     paralyzed: Vec<(usize, usize)>,
     poisoned: Vec<(usize, usize)>,
     burned: Vec<(usize, usize)>,
+}
+
+impl CheckupTargets {
+    /// Total coins flipped for Asleep Pokémon.
+    fn total_sleep_coins(&self) -> usize {
+        self.sleep_coins.iter().sum()
+    }
 }
 
 /// Advance state to the next turn (i.e. maintain current_player and turn_count)
@@ -127,7 +137,7 @@ pub(crate) fn forecast_checkup_phase(state: &State) -> (Probabilities, Mutations
     // Get all binary vectors representing the possible outcomes.
     // These are the "outcome_ids" for sleep and burn coin flips
     // (e.g. outcome [true, false] might represent waking up one pokemon and not healing another's burn).
-    let total_coin_flips = checkup_targets.sleeps.len() + checkup_targets.burned.len();
+    let total_coin_flips = checkup_targets.total_sleep_coins() + checkup_targets.burned.len();
     let outcome_ids = generate_boolean_vectors(total_coin_flips);
     let base_probability = 1.0 / outcome_ids.len() as f64;
 
@@ -273,6 +283,7 @@ fn get_poison_damage(state: &State, player: usize, in_play_idx: usize) -> u32 {
 fn collect_checkup_targets(state: &State) -> CheckupTargets {
     let mut targets = CheckupTargets {
         sleeps: vec![],
+        sleep_coins: vec![],
         paralyzed: vec![],
         poisoned: vec![],
         burned: vec![],
@@ -282,6 +293,7 @@ fn collect_checkup_targets(state: &State) -> CheckupTargets {
         for (i, pokemon) in state.enumerate_in_play_pokemon(player) {
             if pokemon.is_asleep() {
                 targets.sleeps.push((player, i));
+                targets.sleep_coins.push(pokemon.sleep_checkup_coins());
             }
             // `current_player` is still the player whose turn is ending until `advance_turn`.
             // Paralysis recovers after its owner's turn, not at every player's Checkup.
@@ -307,9 +319,10 @@ fn apply_pokemon_checkup(
     checkup_targets: &CheckupTargets,
     outcome: &[bool],
 ) {
-    // First half of outcomes are for sleep, second half for burns
-    let num_sleeps = checkup_targets.sleeps.len();
-    debug_assert!(outcome.len() >= num_sleeps + checkup_targets.burned.len());
+    // Sleep coins come first, in `sleeps` order (each sleeper's `sleep_coins` in a row, so a prefix
+    // sum finds its first coin), then one coin per Burn.
+    let num_sleep_coins = checkup_targets.total_sleep_coins();
+    debug_assert!(outcome.len() >= num_sleep_coins + checkup_targets.burned.len());
 
     for player in [mutated_state.current_player, 1 - mutated_state.current_player] {
         for &(_, idx) in checkup_targets.poisoned.iter().filter(|(p, _)| *p == player) {
@@ -320,14 +333,17 @@ fn apply_pokemon_checkup(
         for (i, &(_, idx)) in checkup_targets.burned.iter().enumerate().filter(|(_, (p, _))| *p == player) {
             handle_damage_only(mutated_state, (player, idx), &[(20, player, idx)],
                 false, DamageModifierContext::default());
-            if outcome[num_sleeps + i] {
+            if outcome[num_sleep_coins + i] {
                 if let Some(pokemon) = mutated_state.in_play_pokemon[player][idx].as_mut() {
                     pokemon.clear_status_condition(StatusCondition::Burned);
                 }
             }
         }
         for (i, &(_, idx)) in checkup_targets.sleeps.iter().enumerate().filter(|(_, (p, _))| *p == player) {
-            if outcome[i] {
+            // `i` indexes `sleeps` across both seats. Soothing Lullaby's Sleep flips 2 coins and
+            // wakes only if both are heads.
+            let first: usize = checkup_targets.sleep_coins[..i].iter().sum();
+            if outcome[first..first + checkup_targets.sleep_coins[i]].iter().all(|heads| *heads) {
                 if let Some(pokemon) = mutated_state.in_play_pokemon[player][idx].as_mut() {
                     pokemon.clear_status_condition(StatusCondition::Asleep);
                 }
@@ -1390,6 +1406,7 @@ mod bench_switch_target_tests;
 mod tests {
     use super::*;
     use crate::{card_ids::CardId, database::get_card_by_enum, hooks::to_playable_card};
+    use rand::SeedableRng;
 
     #[test]
     fn test_poison_damage_no_nihilego() {
@@ -1430,5 +1447,186 @@ mod tests {
         // Second attack should deal damage normally
         handle_damage(&mut state, (0, 0), &[(30, 1, 0)], true, None);
         assert_eq!(state.get_active(1).get_remaining_hp(), starting_hp - 30);
+    }
+
+    // Soothing Lullaby (Jigglypuff C1 051 / C1 184): upstream #438's Checkup tests, with the count
+    // recorded through the fork's attack-effect chokepoint (`apply_attack_sleep_with_coins`), and
+    // every reset also read from the raw field.
+
+    /// Player 0's Mankey is Asleep, with `num_coins` Checkup coins from Soothing Lullaby or an
+    /// ordinary Sleep for `None`; a Bulbasaur waits on its Bench.
+    fn mankey_asleep(num_coins: Option<usize>) -> State {
+        let game = crate::test_support::get_test_game_with_board(
+            vec![
+                PlayedCard::from_id(CardId::PA017Mankey),
+                PlayedCard::from_id(CardId::A1001Bulbasaur),
+            ],
+            vec![PlayedCard::from_id(CardId::A1001Bulbasaur)],
+        );
+        let mut state = game.get_state_clone();
+        match num_coins {
+            Some(num_coins) => state.apply_attack_sleep_with_coins(0, 0, num_coins),
+            None => state.apply_status_condition(0, 0, StatusCondition::Asleep),
+        }
+        assert!(state.get_active(0).is_asleep());
+        state
+    }
+
+    /// Fork: whether `pokemon` holds no Soothing Lullaby count at all, read from its JSON (the key
+    /// is skipped only when the field is `None`).
+    fn has_no_lullaby_count(pokemon: &PlayedCard) -> bool {
+        serde_json::to_value(pokemon)
+            .unwrap()
+            .get("sleep_coins_override")
+            .is_none()
+    }
+
+    /// The chance that player 0's Active is awake after the Checkup that ends player 0's turn.
+    fn chance_to_wake_at_checkup(state: &State) -> f64 {
+        let action = Action {
+            actor: 0,
+            action: SimpleAction::EndTurn,
+            is_stack: false,
+        };
+        let (probabilities, mutations) = forecast_pokemon_checkup(state);
+        let mut chance = 0.0;
+        for (probability, mutation) in probabilities.into_iter().zip(mutations) {
+            let mut after = state.clone();
+            mutation(&mut StdRng::seed_from_u64(0), &mut after, &action);
+            if !after.get_active(0).is_asleep() {
+                chance += probability;
+            }
+        }
+        chance
+    }
+
+    #[test]
+    fn test_ordinary_sleep_wakes_on_one_head() {
+        assert_eq!(chance_to_wake_at_checkup(&mankey_asleep(None)), 0.5);
+    }
+
+    #[test]
+    fn test_soothing_lullaby_sleep_wakes_only_on_two_heads() {
+        assert_eq!(chance_to_wake_at_checkup(&mankey_asleep(Some(2))), 0.25);
+    }
+
+    #[test]
+    fn test_sleep_coins_are_flipped_separately_for_each_sleeper_and_burn() {
+        // Soothing Lullaby's Mankey (2 coins), an ordinary Sleep on the other player's Bulbasaur
+        // (1 coin), and that Bulbasaur's Burn (1 coin) need 4 coins; each is independent.
+        let mut state = mankey_asleep(Some(2));
+        state.apply_status_condition(1, 0, StatusCondition::Asleep);
+        state.apply_status_condition(1, 0, StatusCondition::Burned);
+        let targets = collect_checkup_targets(&state);
+        assert_eq!(targets.total_sleep_coins(), 3);
+        assert_eq!(chance_to_wake_at_checkup(&state), 0.25);
+        let (probabilities, _) = forecast_pokemon_checkup(&state);
+        assert_eq!(probabilities, vec![1.0 / 16.0; 16]);
+    }
+
+    #[test]
+    fn test_soothing_lullaby_sleep_ends_when_the_pokemon_goes_to_the_bench() {
+        let mut state = mankey_asleep(Some(2));
+        apply_activate(0, &mut state, 1);
+        let benched = state.in_play_pokemon[0][1].as_ref().unwrap();
+        assert!(!benched.is_asleep());
+        assert_eq!(benched.sleep_checkup_coins(), 1);
+        assert!(has_no_lullaby_count(benched));
+
+        // Back in the Active Spot, a later ordinary Sleep flips 1 coin.
+        apply_activate(0, &mut state, 1);
+        state.apply_status_condition(0, 0, StatusCondition::Asleep);
+        assert_eq!(state.get_active(0).sleep_checkup_coins(), 1);
+        assert!(has_no_lullaby_count(state.get_active(0)));
+    }
+
+    #[test]
+    fn test_soothing_lullaby_sleep_ends_when_the_pokemon_evolves() {
+        let mut state = mankey_asleep(Some(2));
+        let primeape = get_card_by_enum(CardId::A1142Primeape);
+        state.hands[0] = vec![primeape.clone()];
+        crate::actions::apply_evolve(0, &mut state, &primeape, 0, false);
+        assert!(!state.get_active(0).is_asleep());
+        assert_eq!(state.get_active(0).sleep_checkup_coins(), 1);
+        assert!(has_no_lullaby_count(state.get_active(0)));
+    }
+
+    #[test]
+    fn test_soothing_lullaby_sleep_ends_when_the_pokemon_recovers() {
+        // Full Heal and the like cure every Special Condition; a Checkup wake-up and a
+        // Paralysis replacing the Sleep clear only the Sleep. Fork: so does a Confusion
+        // replacing it (the fork's Asleep/Paralyzed/Confused exclusivity, rules/03 §2).
+        let mut cured = mankey_asleep(Some(2));
+        cured.in_play_pokemon[0][0]
+            .as_mut()
+            .unwrap()
+            .cure_status_conditions();
+        let mut paralyzed = mankey_asleep(Some(2));
+        paralyzed.apply_status_condition(0, 0, StatusCondition::Paralyzed);
+        let mut confused = mankey_asleep(Some(2));
+        confused.apply_status_condition(0, 0, StatusCondition::Confused);
+        let mut woke = mankey_asleep(Some(2));
+        woke.in_play_pokemon[0][0]
+            .as_mut()
+            .unwrap()
+            .clear_status_condition(StatusCondition::Asleep);
+
+        for mut state in [cured, paralyzed, confused, woke] {
+            assert!(!state.get_active(0).is_asleep());
+            assert!(has_no_lullaby_count(state.get_active(0)));
+            state.apply_status_condition(0, 0, StatusCondition::Asleep);
+            assert_eq!(state.get_active(0).sleep_checkup_coins(), 1);
+        }
+    }
+
+    #[test]
+    fn test_an_ordinary_sleep_replaces_soothing_lullabys() {
+        let mut state = mankey_asleep(Some(2));
+        state.apply_status_condition(0, 0, StatusCondition::Asleep);
+        assert_eq!(state.get_active(0).sleep_checkup_coins(), 1);
+        assert!(has_no_lullaby_count(state.get_active(0)));
+    }
+
+    /// Fork: the coins of one Checkup, outcome by outcome. Player 0's Mankey carries Soothing
+    /// Lullaby (coins 0 and 1, `sleeps` order), player 1's Bulbasaur an ordinary Sleep (coin 2, at
+    /// the prefix sum 2, not at its `sleeps` index 1) and a Burn (coin 3, after every Sleep coin).
+    #[test]
+    fn test_checkup_reads_each_sleepers_coins_by_prefix_sum_then_the_burns() {
+        let mut state = mankey_asleep(Some(2));
+        state.apply_status_condition(1, 0, StatusCondition::Asleep);
+        state.apply_status_condition(1, 0, StatusCondition::Burned);
+        let targets = collect_checkup_targets(&state);
+        assert_eq!(targets.sleeps, vec![(0, 0), (1, 0)]);
+        assert_eq!(targets.sleep_coins, vec![2, 1]);
+        assert_eq!(targets.burned, vec![(1, 0)]);
+        // (outcome, Mankey awake, Bulbasaur awake, Bulbasaur's Burn cured)
+        for (outcome, mankey_awake, bulbasaur_awake, burn_cured) in [
+            ([true, true, false, true], true, false, true),
+            ([true, false, true, false], false, true, false),
+            ([false, true, true, true], false, true, true),
+            ([true, true, true, false], true, true, false),
+        ] {
+            let mut after = state.clone();
+            apply_pokemon_checkup(&mut after, &targets, &outcome);
+            let (mankey, bulbasaur) = (after.get_active(0), after.get_active(1));
+            assert_eq!(!mankey.is_asleep(), mankey_awake, "{outcome:?}");
+            assert_eq!(!bulbasaur.is_asleep(), bulbasaur_awake, "{outcome:?}");
+            assert_eq!(!bulbasaur.is_burned(), burn_cured, "{outcome:?}");
+            assert_eq!(has_no_lullaby_count(mankey), mankey_awake, "{outcome:?}");
+        }
+    }
+
+    /// Fork (design A.2.4, items 1-2): without Soothing Lullaby every sleeper flips 1 coin, so the
+    /// Checkup has exactly as many coins as before: one per sleeper and one per Burn.
+    #[test]
+    fn test_without_soothing_lullaby_every_sleeper_flips_one_coin() {
+        let mut state = mankey_asleep(None);
+        state.apply_status_condition(1, 0, StatusCondition::Asleep);
+        state.apply_status_condition(1, 0, StatusCondition::Burned);
+        let targets = collect_checkup_targets(&state);
+        assert_eq!(targets.sleep_coins, vec![1, 1]);
+        assert_eq!(targets.total_sleep_coins(), targets.sleeps.len());
+        let (probabilities, _) = forecast_pokemon_checkup(&state);
+        assert_eq!(probabilities, vec![1.0 / 8.0; 8]);
     }
 }

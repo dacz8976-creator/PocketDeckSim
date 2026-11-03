@@ -54,6 +54,15 @@ pub struct PlayedCard {
     poison_checkup_damage: Option<u32>,
     paralyzed: bool,
     asleep: bool,
+    /// Pokémon Checkup coins for the current Sleep when an attack replaced the usual one coin:
+    /// "Your opponent flips 2 coins for this Special Condition, and if any of them are tails, that
+    /// Pokémon is still Asleep." (Jigglypuff's Soothing Lullaby, C1 051 / C1 184). `None` = the
+    /// usual 1. Set only right after such a Sleep lands; cleared wherever Asleep ends or is set
+    /// afresh, so an ordinary Sleep resets it to 1 (the reset reading, not filmed: see
+    /// `implementation_limitations`). Skipped when `None`, so every saved state and observation
+    /// without a Soothing Lullaby keeps its bytes.
+    #[serde(default, skip_serializing_if = "Option::is_none")]
+    sleep_coins_override: Option<usize>,
     burned: bool,
     confused: bool,
     pub cards_behind: Vec<Card>,
@@ -108,6 +117,7 @@ impl PlayedCard {
             poison_checkup_damage: None,
             paralyzed: false,
             asleep: false,
+            sleep_coins_override: None,
             burned: false,
             confused: false,
             effects: vec![],
@@ -389,6 +399,7 @@ impl PlayedCard {
         self.poison_checkup_damage = None;
         self.paralyzed = false;
         self.asleep = false;
+        self.sleep_coins_override = None;
         self.burned = false;
         self.confused = false;
         self.effects.clear();
@@ -399,6 +410,7 @@ impl PlayedCard {
         self.poison_checkup_damage = None;
         self.paralyzed = false;
         self.asleep = false;
+        self.sleep_coins_override = None;
         self.burned = false;
         self.confused = false;
     }
@@ -410,7 +422,10 @@ impl PlayedCard {
                 self.poison_checkup_damage = None;
             }
             StatusCondition::Paralyzed => self.paralyzed = false,
-            StatusCondition::Asleep => self.asleep = false,
+            StatusCondition::Asleep => {
+                self.asleep = false;
+                self.sleep_coins_override = None;
+            }
             StatusCondition::Burned => self.burned = false,
             StatusCondition::Confused => self.confused = false,
         }
@@ -423,9 +438,13 @@ impl PlayedCard {
                 self.paralyzed = false;
                 self.confused = false;
                 self.asleep = true;
+                // An ordinary Sleep replaces any earlier Soothing Lullaby Sleep; Soothing Lullaby
+                // sets its own count again right after its Sleep lands.
+                self.sleep_coins_override = None;
             }
             StatusCondition::Paralyzed => {
                 self.asleep = false;
+                self.sleep_coins_override = None;
                 self.confused = false;
                 self.paralyzed = true;
             }
@@ -438,6 +457,7 @@ impl PlayedCard {
             StatusCondition::Burned => self.burned = true,
             StatusCondition::Confused => {
                 self.asleep = false;
+                self.sleep_coins_override = None;
                 self.paralyzed = false;
                 self.confused = true;
             }
@@ -464,6 +484,28 @@ impl PlayedCard {
     /// The Pokémon Checkup poison damage override for the current poison, if any.
     pub(crate) fn poison_checkup_damage(&self) -> Option<u32> {
         self.poison_checkup_damage
+    }
+
+    /// Soothing Lullaby: replace this Sleep's Checkup coins. Only
+    /// `State::apply_attack_sleep_with_coins` calls it, right after its Sleep landed.
+    pub(crate) fn set_sleep_coins_override(&mut self, num_coins: usize) {
+        self.sleep_coins_override = Some(num_coins);
+    }
+
+    /// The most Checkup coins one Sleep may ask for. Soothing Lullaby asks for 2; 4 leaves room for
+    /// a later card and keeps the worst Checkup (both Actives at 4 coins + two Burns) at 2^10
+    /// outcomes.
+    const MAX_SLEEP_CHECKUP_COINS: usize = 4;
+
+    /// The coins flipped at Pokémon Checkup to wake this Pokémon, which wakes only if all are
+    /// heads. A count outside 1..=`MAX_SLEEP_CHECKUP_COINS` can only come from hand-edited JSON
+    /// (the setter is `pub(crate)` and its one caller passes the map entry's 2). Such a count
+    /// reads as the usual 1, so a corrupt file can neither empty the wake test (0 coins = always
+    /// wakes) nor overflow `1 << n`.
+    pub fn sleep_checkup_coins(&self) -> usize {
+        self.sleep_coins_override
+            .filter(|n| (1..=Self::MAX_SLEEP_CHECKUP_COINS).contains(n))
+            .unwrap_or(1)
     }
 
     pub(crate) fn end_turn_maintenance(&mut self) {

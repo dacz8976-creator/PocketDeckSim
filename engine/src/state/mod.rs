@@ -771,11 +771,42 @@ impl State {
         in_play_idx: usize,
         status: StatusCondition,
     ) {
+        self.try_apply_attack_status_condition(player, in_play_idx, status);
+    }
+
+    /// [`Self::apply_attack_status_condition`], reporting whether the condition landed: false when
+    /// Crystal Body or Clear Veil prevented the attack's effect, or when
+    /// [`Self::try_apply_status_condition`] found no Pokémon or an immunity.
+    pub(crate) fn try_apply_attack_status_condition(
+        &mut self,
+        player: usize,
+        in_play_idx: usize,
+        status: StatusCondition,
+    ) -> bool {
         if self.prevents_attack_effects(player, in_play_idx) {
             debug!("Crystal Body: preventing the attack's {status:?} effect");
-            return;
+            return false;
         }
-        self.apply_status_condition(player, in_play_idx, status);
+        self.try_apply_status_condition(player, in_play_idx, status)
+    }
+
+    /// Jigglypuff's Soothing Lullaby (C1 051, C1 184): an attack's Sleep whose owner flips
+    /// `num_coins` coins at each Pokémon Checkup instead of 1, waking only if all are heads. The
+    /// count is recorded only when THIS Sleep lands: the Asleep arm of `set_status_raw` has just
+    /// reset it, and it is set here. A Lullaby that Crystal Body, Clear Veil or an immunity stops
+    /// changes nothing, so a Pokémon already Asleep from an ordinary Sleep keeps its 1 coin
+    /// (upstream records the count whenever the Pokémon is Asleep afterwards).
+    pub(crate) fn apply_attack_sleep_with_coins(
+        &mut self,
+        player: usize,
+        in_play_idx: usize,
+        num_coins: usize,
+    ) {
+        if self.try_apply_attack_status_condition(player, in_play_idx, StatusCondition::Asleep) {
+            if let Some(pokemon) = self.in_play_pokemon[player][in_play_idx].as_mut() {
+                pokemon.set_sleep_coins_override(num_coins);
+            }
+        }
     }
 
     /// Whether a Pokémon in play counts as `energy_type` right now (any-of). See
@@ -1202,8 +1233,19 @@ impl State {
         in_play_idx: usize,
         status: StatusCondition,
     ) {
+        self.try_apply_status_condition(player, in_play_idx, status);
+    }
+
+    /// [`Self::apply_status_condition`], reporting whether the condition landed: false when the
+    /// slot is empty or an immunity stopped it, true once `set_status_raw` has set it.
+    pub(crate) fn try_apply_status_condition(
+        &mut self,
+        player: usize,
+        in_play_idx: usize,
+        status: StatusCondition,
+    ) -> bool {
         let Some(pokemon) = self.in_play_pokemon[player][in_play_idx].as_ref() else {
-            return;
+            return false;
         };
 
         // Fabled Luster (Arceus ex, blanket) and Insomnia (Hoothoot, Asleep only).
@@ -1212,7 +1254,7 @@ impl State {
         {
             if immune_to.is_none() || *immune_to == Some(status) {
                 debug!("Pokémon's Ability makes it immune to {status:?}");
-                return;
+                return false;
             }
         }
 
@@ -1222,7 +1264,7 @@ impl State {
             && self.pokemon_is_type(pokemon, EnergyType::Metal)
         {
             debug!("Steel Apron: Pokémon is immune to status conditions");
-            return;
+            return false;
         }
 
         // SoothingWind (Ogerpon ex) / Flower Shield (Comfey): if any of this player's Pokémon
@@ -1239,7 +1281,7 @@ impl State {
                     debug!(
                         "SoothingWind: Pokémon with matching energy is immune to status conditions"
                     );
-                    return;
+                    return false;
                 }
             }
         }
@@ -1248,6 +1290,7 @@ impl State {
             .as_mut()
             .unwrap()
             .set_status_raw(status);
+        true
     }
 
     // This function should be called only from turn 1 onwards

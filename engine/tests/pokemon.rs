@@ -48,6 +48,8 @@ mod breloom_test;
 mod budew_prickly_powder_test;
 #[path = "pokemon/c1_grass_fire_test.rs"]
 mod c1_grass_fire_test;
+#[path = "pokemon/c1_lullaby_test.rs"]
+mod c1_lullaby_test;
 #[path = "pokemon/c1_lunala_test.rs"]
 mod c1_lunala_test;
 #[path = "pokemon/c1_remaining_types_test.rs"]

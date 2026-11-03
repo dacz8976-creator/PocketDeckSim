@@ -772,6 +772,9 @@ fn forecast_effect_attack_by_mechanic(
         Mechanic::InflictPoisonWithCustomCheckupDamage { checkup_damage } => {
             inflict_poison_with_custom_checkup_damage_attack(attack.fixed_damage, *checkup_damage)
         }
+        Mechanic::InflictSleepWithCoins { num_coins } => {
+            inflict_sleep_with_coins_attack(attack.fixed_damage, *num_coins)
+        }
         Mechanic::ChooseStatusToInflict { options } => {
             damage_and_choose_status_attack(attack.fixed_damage, options.clone())
         }
@@ -2891,6 +2894,17 @@ fn inflict_poison_with_custom_checkup_damage_attack(
                 defender.set_poison_checkup_damage(checkup_damage);
             }
         }
+    })
+}
+
+/// Jigglypuff's Soothing Lullaby (C1 051, C1 184): the damage, then the opponent's Active Pokémon
+/// is Asleep with `num_coins` Checkup coins, waking only on all heads. Through the attack-effect
+/// chokepoint (Crystal Body, Clear Veil); the count is recorded only when this Sleep actually
+/// lands. The attack flips no coin itself, so a pending Will is not spent on it.
+fn inflict_sleep_with_coins_attack(damage: u32, num_coins: usize) -> AttackOutcomes {
+    active_damage_effect_doutcome(damage, move |_, state, action| {
+        let opponent = (action.actor + 1) % 2;
+        state.apply_attack_sleep_with_coins(opponent, 0, num_coins);
     })
 }
 

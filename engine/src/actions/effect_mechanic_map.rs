@@ -2617,6 +2617,12 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
         "Your opponent's Active Pokémon is now Poisoned. Do 40 damage to this Pokémon instead of the usual amount for this Special Condition.",
         Mechanic::InflictPoisonWithCustomCheckupDamage { checkup_damage: 40 },
     );
+    // Jigglypuff (C1 051 / C1 184) - Soothing Lullaby (upstream #438): the Sleep's Checkup coin
+    // count is recorded only when the Sleep lands (`State::apply_attack_sleep_with_coins`).
+    map.insert(
+        "Your opponent's Active Pokémon is now Asleep. Your opponent flips 2 coins for this Special Condition, and if any of them are tails, that Pokémon is still Asleep.",
+        Mechanic::InflictSleepWithCoins { num_coins: 2 },
+    );
     map.insert(
         "If this Pokémon has at least 2 extra [W] Energy attached, this attack also does 50 damage to 1 of your opponent's Benched Pokémon.",
         Mechanic::ConditionalBenchDamage {
