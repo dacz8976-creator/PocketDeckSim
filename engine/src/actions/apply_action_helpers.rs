@@ -856,6 +856,12 @@ pub(crate) fn handle_attack_retaliation(
     }
 }
 
+/// Iris (B2b 067, B2b 081, B4b 212, B4b 378, B4b 421): "During this turn, if your opponent's Active
+/// Pokémon is Knocked Out by damage from an attack used by your Haxorus, you get 1 more point."
+///
+/// "your Haxorus" is an Attacking Pokémon named exactly "Haxorus", which covers all 5 printings:
+/// B2b 056, B2b 110 and P-B 045, and since R8-10c B4b 176 and B4b 348. The caller gives the point
+/// only for the opponent's Active.
 fn is_iris_bonus_active(
     state: &State,
     attacking_ref: (usize, usize),
@@ -873,17 +879,7 @@ fn is_iris_bonus_active(
     }
     state.in_play_pokemon[attacking_ref.0][attacking_ref.1]
         .as_ref()
-        .map(|attacker| {
-            matches!(
-                CardId::from_card_id(match &attacker.card {
-                    Card::Pokemon(p) => p.id.as_str(),
-                    Card::Trainer(t) => t.id.as_str(),
-                    Card::Unknown => return false,
-                }),
-                Some(CardId::B2b056Haxorus | CardId::B2b110Haxorus | CardId::PB045Haxorus)
-            )
-        })
-        .unwrap_or(false)
+        .is_some_and(|attacker| attacker.get_name() == "Haxorus")
 }
 
 pub(crate) fn handle_knockouts(
