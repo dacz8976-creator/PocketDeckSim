@@ -62,7 +62,12 @@ at the replay night is a STOP.
   - Conkeldurr B4 089 is only in 3 single-deck files in `rl/results/pause_games_new_2026-10-12/decks/`. None of them holds Starting Plains, and no check plays them. The Palkia ids appear only in 3 `status_R.txt` logs.
 - **0 games change.**
 
-### Item 11 (later, listed for completeness)
-- Urshifu B3 051 appears in `rl/results/engine_switch_rules2_2026-10/scratch_8b2/water_round2.txt`, a smoke copy and `8c/revert/revert_8c.tsv`.
-- No tracked file holds Snover A2 044 or Sealeo B4 039.
-- Item 11's prediction is written at item 11.
+### Item 11: Urshifu's Double Type counts in the in-play type checks (B3 051, B3 113; last of the rule rows, coordinator-088)
+- **What changes:** item 11 (`laptop/urshifu-in-play-type-2026-10-29`, 142963ea) sends the 11 in-play printed-type checks through the in-play type check (`State::pokemon_is_type`); Leaf Cape stays on the printed type. That check differs from the printed type only for the two Urshifu, and only while their Abilities are on: Rapid Strike Urshifu B3 051 (printed [W]) is [W] and [F] in play, Single Strike Urshifu B3 113 (printed [D]) is [F] and [D]. Double Type adds only [F] and keeps the printed type, so only the checks that ask for [F] change: Snover A2 044's Ice Shard (+30) and Sealeo B4 039's Frozen Splash (+70) against an Active Urshifu.
+- **What it takes to act:** Ice Shard or Frozen Splash hits an Active Urshifu whose Abilities are not switched off.
+- **Searched at 2d62a11b, names only.** Every never-open, exam and frozen path was excluded by pathspec (self-test 0), so never-open paths were not searched.
+  - No file under `decks/` holds either Urshifu. Under `rl/results/` the only deck-like files that name one are the Oct 1 smoke deck `water_round2.txt` (in `coin_prevention_round2_2026-10-01/smoke/` and its copy in `engine_switch_rules2_2026-10/scratch_8b2/`), the 8b study's game outputs (`08a9b3a_8b_new2_*.txt`) and `8c/revert/revert_8c.tsv`; no check plays them. Every other hit is a study note, log, test probe, program binary or card-status file.
+  - No deck list under `decks/` or `rl/results/` holds Snover A2 044 or Sealeo B4 039.
+  - The kx3 replay check's folder (on `laptop/kx3-replay-r6-2026-10-29`), the floor check (`~/pincand_work/floor2*`) and the 18 lane replays' deck and config files (`RR_ABC_d0792568`, its engine copy left out) hold no Urshifu.
+- **Not changed:** the bots' pricing of the bonus (`players/value_functions.rs:1604`) still reads the printed type; item 11 records it as a follow-up (post-R8 list).
+- **0 games change.**
