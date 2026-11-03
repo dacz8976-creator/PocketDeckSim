@@ -52,6 +52,16 @@ at the replay night is a STOP.
 - **0 games change.**
 - In general it can act only in deals where Triple Bombardment is used with 3 extra [W] attached and the opponent has exactly 1 Benched Pokémon.
 
+### Starting Plains: a Knock Out from its lost +20 inside an attack is not the attack's Knock Out (R8-10e; coordinator-139, -141; Dustin, Nov 3)
+- **What changes:** Machop B2 079's Shatter, Conkeldurr B4 089's Bedrock Breaker or Palkia C1 038 / C1 140's Spacial Rend discards Starting Plains (B2 154, B4b 235, B4b 401). A Pokémon still in play after the attack's damage that is then Knocked Out by losing the +20 still gives its point. But nothing that reads "Knocked Out by damage from an attack" fires for it (for example the flag Marshadow's Revenge reads, Zarude's Dark Vengeance tally, Rescue Scarf, Lucky Egg, Innards Out). Promotion order and Field Blower's path are unchanged.
+- **What it takes to act:** one of those attacks discards Starting Plains while a damaged Basic Pokémon is in play, the lost +20 Knocks it Out, and such an effect is in play.
+- **Searched at b20d75c0, names only** (the R8-10a-d commits since then change no deck file). **Every never-open, exam and frozen path was excluded by pathspec, so never-open paths were not searched.**
+  - In `engine/database.json` these are the only Starting Plains printings and the only attacks that discard a Stadium (the other Stadium discard is Field Blower, an Item).
+  - Starting Plains (only B2 154) is in 9 tracked deck files: brew-07, brew-08, brew-09, brew-10, Dustin's 02, 04 and 07, b2e's h-hoopa_absol, and the brew08 copy in `pause_games_decisions_2026-10-02/decks/`.
+  - No file under `decks/` names Machop B2 079, Conkeldurr B4 089 or either Palkia, so no panel list, research twin or floor piece holds an attacker.
+  - Conkeldurr B4 089 is only in 3 single-deck files in `rl/results/pause_games_new_2026-10-12/decks/`. None of them holds Starting Plains, and no check plays them. The Palkia ids appear only in 3 `status_R.txt` logs.
+- **0 games change.**
+
 ### Item 11 (later, listed for completeness)
 - Urshifu B3 051 appears in `rl/results/engine_switch_rules2_2026-10/scratch_8b2/water_round2.txt`, a smoke copy and `8c/revert/revert_8c.tsv`.
 - No tracked file holds Snover A2 044 or Sealeo B4 039.
