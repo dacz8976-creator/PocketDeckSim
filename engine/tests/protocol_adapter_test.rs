@@ -862,7 +862,9 @@ fn hidden_option_state(hidden: CardId) -> State {
 }
 
 /// The capture bot (seat 0) against EndTurnPlayer (seat 1) from `hidden_option_state(hidden)` to the end of the
-/// game: every action played, and every decide line the bot received.
+/// game: every action played, and every decide line the bot received. The bot must answer every decision itself
+/// (no fallback) and every decide must carry both opt-in blocks, so the comparison covers the whole game and the
+/// `pdl_` fields, not only the v1 ones.
 fn hidden_option_game(hidden: CardId, name: &str) -> (Vec<Action>, Vec<String>) {
     let dir = out_dir(name);
     let file = dir.join("received.jsonl");
@@ -873,6 +875,7 @@ fn hidden_option_game(hidden: CardId, name: &str) -> (Vec<Action>, Vec<String>) 
         Duration::from_millis(10_000),
         Some(dir.clone()),
     );
+    let stats = bot.stats();
     let players: Vec<Box<dyn Player>> = vec![Box::new(bot), Box::new(EndTurnPlayer { deck: b })];
     let mut game = Game::from_state(hidden_option_state(hidden), players, 14);
     let mut played = Vec::new();
@@ -880,12 +883,25 @@ fn hidden_option_game(hidden: CardId, name: &str) -> (Vec<Action>, Vec<String>) 
         played.push(game.play_tick());
     }
     drop(game);
-    let decides = std::fs::read_to_string(&file)
+    let decides: Vec<String> = std::fs::read_to_string(&file)
         .unwrap()
         .lines()
         .filter(|l| serde_json::from_str::<Value>(l).unwrap()["type"] == "decide")
         .map(str::to_string)
         .collect();
+    assert_eq!(stats.fallbacks.load(Ordering::SeqCst), 0, "{name}: fallbacks");
+    assert_eq!(
+        stats.decisions.load(Ordering::SeqCst),
+        decides.len() as u64,
+        "{name}: decisions v decide lines"
+    );
+    for (i, d) in decides.iter().enumerate() {
+        let v: Value = serde_json::from_str(d).unwrap();
+        assert!(
+            v["pdl_since_last"].is_object() && v["pdl_observation"].is_object(),
+            "{name}: decide {i} lacks an opt-in block"
+        );
+    }
     (played, decides)
 }
 
