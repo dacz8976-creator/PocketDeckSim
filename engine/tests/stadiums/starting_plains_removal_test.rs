@@ -34,7 +34,7 @@
 //!
 //! When both Active Pokémon go, the attacker promotes first, as after any double Knock Out in an
 //! attack (rules/02 §7), where the catch-all check after the action would go by seat (player 0
-//! first). That order is the existing reading, not verified (question 2, asked Nov 3).
+//! first). That order is settled (rules/02 §7).
 //!
 //! After Field Blower it is the catch-all Knock Out check that follows the Item, and the turn goes
 //! on. The points at once, the promotion, the win and the turn going on are
@@ -391,10 +391,9 @@ fn shatter_that_knocks_out_machop_itself_can_give_the_opponent_the_game() {
 /// Machop's own 70 damage is its printed 70 HP once its player's Starting Plains goes. One point
 /// each; player 0's Seel 90 → 70, player 1's Benched Squirtle 80 → 60.
 /// Dustin's expected reading, Nov 3 (damage, then discard); to be confirmed in game: both Knock
-/// Outs are scored, and neither is the attack's Knock Out. The order of the promotions is the
-/// existing reading, not verified (question 2, asked Nov 3): both are scored together by the
-/// attack's own Knock Out check, so Machop's player promotes first, as after any double Knock Out
-/// in an attack (rules/02 §7). The catch-all check after the action goes by seat and would ask
+/// Outs are scored, and neither is the attack's Knock Out. The order of the promotions is settled
+/// (rules/02 §7): both are scored together by the attack's own Knock Out check, so Machop's player
+/// promotes first, as after any double Knock Out in an attack. The catch-all check after the action goes by seat and would ask
 /// player 0 first, so only an attacker in player 1's seat tells the two checks apart. A Knock Out by
 /// the attack's damage would not either: the discard that follows it refreshes the HP bonuses and
 /// pulls the lost +20's Knock Outs into the attack's check.
@@ -679,10 +678,9 @@ fn spacial_rend_knocks_out_palkia_itself_and_its_own_damaged_benched_basic() {
 /// printed 70 HP, and Palkia's own 130 damage is above its printed 120 HP once player 0's Starting
 /// Plains goes. One point each; player 0's Seel 90 → 70, player 1's Benched Squirtle 80 → 60.
 /// Dustin's expected reading, Nov 3 (damage, then discard); to be confirmed in game: both Knock
-/// Outs are scored, and neither is the attack's Knock Out. The order of the promotions is the
-/// existing reading, not verified (question 2, asked Nov 3): both are scored together by the
-/// attack's own Knock Out check, so Palkia's player promotes first, as after any double Knock Out in
-/// an attack (rules/02 §7). The catch-all check after the action goes by seat and would ask player
+/// Outs are scored, and neither is the attack's Knock Out. The order of the promotions is settled
+/// (rules/02 §7): both are scored together by the attack's own Knock Out check, so Palkia's player
+/// promotes first, as after any double Knock Out in an attack. The catch-all check after the action goes by seat and would ask player
 /// 0 first (see the Shatter test above).
 #[test]
 fn spacial_rend_from_player_1s_seat_that_knocks_out_both_actives_lets_player_1_promote_first() {

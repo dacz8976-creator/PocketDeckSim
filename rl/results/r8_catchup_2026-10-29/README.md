@@ -19,6 +19,7 @@ but that folder is never edited (coordinator-088 Q7). This folder holds R8's own
   (`python3 -I -B rl/results/r8_catchup_2026-10-29/census.py`; first R8-04b, rerun by R8-05a, R8-05c and R8-07b, so
   it is R8-07b's output).
 - `engine/src/players/opening_class.rs` cites this copy for `VARIANT_CLASS`.
+- `RELEASE_NOTES.md`: R8's release notes (docs commit).
 
 Later R8 commits that add an Ability variant update this copy (its `VARIANT_CLASS`, its comment block and this README)
 and rerun it, not the registered folder.

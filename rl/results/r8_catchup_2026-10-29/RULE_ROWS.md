@@ -17,7 +17,7 @@ at the replay night is a STOP.
 - (c) **The lane replays:** the 7 pages of `rl/results/engine_switch_rules2_2026-10/floor_7c.tsv`, and the 15 `.run` replays of `rl/results/engine_candidate_2026-10-20/release/tools/lane_b2.sh`.
 - (d) **The self-checks** sc_km3 and sc_kx3.
 - (e) **Every tracked deck-like file under `decks/` and `rl/results/`.** A names-only grep for each row's card ids, which also covers sources the read-only sweep could not open (the rules-switch carriers and scratch decks, the b2e decks, the gauntlet and kt-census decks).
-  - 3 tracked files under never-open paths name a Misty id; they were not opened.
+  - The grep was re-run with every never-open path excluded by pathspec (self-test 0), so never-open paths were not searched.
 
 ## The rows and their predictions
 
@@ -29,7 +29,7 @@ at the replay night is a STOP.
 - **Not played by any check:** draft-A-wallace and `pause_games_decisions_2026-10-02/decks/draftA.txt` also hold Misty. No panel list, research twin or floor piece holds Misty.
 
 ### Sweet Honey: choose a damaged Pokémon first (C1 119, C1 152)
-- Already so since R8-07a (82e9aeae). No deck file holds Sweet Honey. **0 games change.**
+- Already so since R8-07a (82e9aeae). No tracked deck-like file under decks/ or rl/results/ holds Sweet Honey. **0 games change.**
 
 ### Darkrai ex: Nightmare Aura also fires on [D] Energy an effect attaches from the Zone (`only_turn_energy: false`)
 - **The printings:** A2 110, A2 187, A2 202, A4b 245, A4b 378, P-A 042.
@@ -38,13 +38,13 @@ at the replay night is a STOP.
   - Hydreigon's Roar in Unison attaches [D] only to Hydreigon itself.
   - The other Zone-attach texts are fixed non-[D] types or [C].
   - In `engine/database.json`, exactly 10 card texts name both [D] and the Energy Zone: Nightmare Aura x6, Roar in Unison x2 and Jeweled Gift x2.
-- **No tracked file holds B3a 040 or P-B 070.** These Darkrai ex holders are reached only on the turn's normal attach, which is unchanged:
+- **No tracked deck-like file under decks/ or rl/results/ holds B3a 040 or P-B 070.** These Darkrai ex holders are reached only on the turn's normal attach, which is unchanged:
   - t-weezing, research/weezing, brew-07, 04, b2e's h-hoopa_absol;
   - the v-weezing swaps and others.
 - **0 games change.**
 
 ### Iris: the bonus point for all 5 Haxorus printings (adds B4b 176, B4b 348)
-- No tracked file holds B4b 176 or B4b 348. The only Iris deck in `decks/` (11) holds B2b 056, which is already counted.
+- No tracked deck-like file under decks/ or rl/results/ holds B4b 176 or B4b 348. The only Iris deck in `decks/` (11) holds B2b 056, which is already counted.
 - **0 games change.**
 
 ### Triple Bombardment: 50 to the one Benched Pokémon when there is exactly 1 (B1a 020, B1a 078, B1a 084, B4b 054, B4b 414)
@@ -58,15 +58,15 @@ at the replay night is a STOP.
 - **Searched at b20d75c0, names only** (the R8-10a-d commits since then change no deck file). **Every never-open, exam and frozen path was excluded by pathspec, so never-open paths were not searched.**
   - In `engine/database.json` these are the only Starting Plains printings and the only attacks that discard a Stadium (the other Stadium discard is Field Blower, an Item).
   - Starting Plains (only B2 154) is in 9 tracked deck files: brew-07, brew-08, brew-09, brew-10, Dustin's 02, 04 and 07, b2e's h-hoopa_absol, and the brew08 copy in `pause_games_decisions_2026-10-02/decks/`.
-  - No file under `decks/` names Machop B2 079, Conkeldurr B4 089 or either Palkia, so no panel list, research twin or floor piece holds an attacker.
-  - Conkeldurr B4 089 is only in 3 single-deck files in `rl/results/pause_games_new_2026-10-12/decks/`. None of them holds Starting Plains, and no check plays them. The Palkia ids appear only in 3 `status_R.txt` logs.
+  - No deck list under `decks/` holds Machop B2 079, Conkeldurr B4 089 or either Palkia, so no panel list, research twin or floor piece holds an attacker.
+  - Under `rl/results/pause_games_new_2026-10-12/`, Conkeldurr B4 089 is in 3 single-deck files and one reader script there. None of the deck files holds Starting Plains, and no check plays them. The Palkia ids appear only in 3 `status_R.txt` logs.
 - **0 games change.**
 
 ### Item 11: Urshifu's Double Type counts in the in-play type checks (B3 051, B3 113; last of the rule rows, coordinator-088)
 - **What changes:** item 11 (`laptop/urshifu-in-play-type-2026-10-29`, 142963ea) sends the 11 in-play printed-type checks through the in-play type check (`State::pokemon_is_type`); Leaf Cape stays on the printed type. That check differs from the printed type only for the two Urshifu, and only while their Abilities are on: Rapid Strike Urshifu B3 051 (printed [W]) is [W] and [F] in play, Single Strike Urshifu B3 113 (printed [D]) is [F] and [D]. Double Type adds only [F] and keeps the printed type, so only the checks that ask for [F] change: Snover A2 044's Ice Shard (+30) and Sealeo B4 039's Frozen Splash (+70) against an Active Urshifu.
 - **What it takes to act:** Ice Shard or Frozen Splash hits an Active Urshifu whose Abilities are not switched off.
 - **Searched at 2d62a11b, names only.** Every never-open, exam and frozen path was excluded by pathspec (self-test 0), so never-open paths were not searched.
-  - No file under `decks/` holds either Urshifu. Under `rl/results/` the only deck-like files that name one are the Oct 1 smoke deck `water_round2.txt` (in `coin_prevention_round2_2026-10-01/smoke/` and its copy in `engine_switch_rules2_2026-10/scratch_8b2/`), the 8b study's game outputs (`08a9b3a_8b_new2_*.txt`) and `8c/revert/revert_8c.tsv`; no check plays them. Every other hit is a study note, log, test probe, program binary or card-status file.
+  - No deck list under `decks/` holds either Urshifu. Under `rl/results/` the only deck-like files that name one are the Oct 1 smoke deck `water_round2.txt` (in `coin_prevention_round2_2026-10-01/smoke/` and its copy in `engine_switch_rules2_2026-10/scratch_8b2/`), the 8b study's game outputs (`08a9b3a_8b_new2_*.txt`) and `8c/revert/revert_8c.tsv`; no check plays them. Every other hit is a study note, log, test probe, program binary or card-status file.
   - No deck list under `decks/` or `rl/results/` holds Snover A2 044 or Sealeo B4 039.
   - The kx3 replay check's folder (on `laptop/kx3-replay-r6-2026-10-29`), the floor check (`~/pincand_work/floor2*`) and the 18 lane replays' deck and config files (`RR_ABC_d0792568`, its engine copy left out) hold no Urshifu.
 - **Not changed:** the bots' pricing of the bonus (`players/value_functions.rs:1604`) still reads the printed type; item 11 records it as a follow-up (post-R8 list).

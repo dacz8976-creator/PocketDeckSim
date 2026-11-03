@@ -9,6 +9,11 @@ and adds opt-in `pdl_*` keys. Without an opt-in the messages have exactly upstre
    engine, which sends neither.
 2. Upstream's MCTS (`mcts_player.rs`) searches the full `State`, including the opponent's hand and deck
    order. It is not a fair opponent until masked or determinized, and is not used here.
+3. The protocol adapter is for trusted bots and runs. Any bot that sets pdl_observation in its hello receives
+   pdl_search_seed, which can be turned back into the game seed (its own deck order, the RNG behind later chance).
+   The protocol logs record the seed too. A run with an untrusted bot also needs unpredictable game seeds; our
+   registered seed blocks are public. No registered result used it: the Gemini arm's bot opts in but never reads the
+   seed, and the in-repo protocol bot uses it only to replay in-process search (parity).
 
 ## Opt-ins (keys in the bot's `hello` reply; a missing key means false, unknown keys are ignored)
 
@@ -24,12 +29,30 @@ decide (or the game start); the counters are reset at every decide, opted in or 
 * `chance_events`: applied actions during which "the game RNG advanced". That covers coin flips, random picks,
   shuffles, and every EndTurn (the next Energy Zone roll), so `chance_events` is at least 1 at the start of
   each of the bot's turns.
+  Known limit: near deck-out, `chance_events` can show whether a deck search had a choice. An action whose forecast
+  has one branch is applied with no RNG draw, and a shuffle of a 1-card deck draws nothing: for example, Poké Ball
+  with 2 cards left draws from the RNG with 0 Basics or 2 Basics (even two copies of the same card) in the deck, but
+  not with exactly 1. The Gemini arm's bot counts chance events for its re-ask (COUNTERS since 93fa49a8), so in that
+  rare case its re-ask timing could depend on it: when Gemini is asked again, never what it sees (the same class as
+  deviation 16). The Oct 30 chance audit (wf_d91d342a-460) did not cover this case. The fix (a game change) comes
+  after R8.
 * `cards_left_deck_mine` / `cards_left_deck_opponent`: how many cards left each deck.
 
 There is no count of the opponent's choices (R8 removed `opponent_choices`): whether the opponent had more than
 one legal action depends on its hidden hand (a playable card adds an option), so the count leaked hidden cards.
 Test `opponent_hidden_options_do_not_reach_the_bot` plays two games that differ only in one hidden card of the
 opponent's hand and checks that every `decide` line the bot receives is the same.
+
+## Observation
+
+A Pokémon Asleep from Jigglypuff's Soothing Lullaby (C1 051, C1 184) carries `"sleep_coins_override": 2` in its
+`template.in_play_pokemon` entry: it flips 2 coins at Pokémon Checkup and wakes only if both are heads. The key appears
+nowhere else. It is present exactly while that Sleep lasts: waking at Pokémon Checkup, any cure, Paralysis or
+Confusion, an ordinary Sleep, a switch to the Bench, evolution or devolution, or the Pokémon leaving play (a Knock Out,
+or being returned to the hand or shuffled into the deck) removes it.
+
+Sweet Honey (C1 119, C1 152, R8-07a) uses Misty's pre-coin slot: the state's `pending_misty_target_choice` now also
+holds Sweet Honey's chosen target. The field name stays.
 
 ## ViewState
 
@@ -73,5 +96,6 @@ A `proto` seat needs its flag, and a flag needs a `proto` seat (else exit 2).
 
 ## Test note: EndTurn and `chance`
 
-Test T10 does not assert that every EndTurn (turn_count >= 1) is classified `chance`. It failed for pair t-sceptile v
-t-vespiquen (order 0, seed 25102003000, turn 1; both decks have only Grass energy), so that check was removed.
+Test T10 checks `chance` on the tick on which the turn advances, not on every EndTurn: an EndTurn may hand the turn end
+to forced steps (Quick Growth -> Checkup), so the Energy roll belongs to the tick on which the turn advances
+(`engine/tests/protocol_adapter_test.rs`, the comment above that check).

@@ -2634,7 +2634,7 @@ pub(crate) fn on_knockout(
 /// discard — which is what lets `modify_damage` resolve the damage source. The damage is dealt
 /// with `is_from_active_attack: false` because it comes from an Ability rather than an attack: no
 /// Weakness, no counterattack in return, and no Rescue Scarf on whatever it Knocks Out. Any
-/// Pokémon it does Knock Out is resolved by the follow-up pass at the end of `handle_knockouts`.
+/// Pokémon it does Knock Out is settled by the next wave of `handle_knockouts`'s wave loop.
 fn apply_knockout_retaliation(
     state: &mut State,
     knocked_out_player: usize,

@@ -514,8 +514,10 @@ impl PlayedCard {
     /// Burned flips at most 2 x 4 + 6 + 8 = 22 coins.
     const MAX_SLEEP_CHECKUP_COINS: usize = 4;
 
-    /// The coins flipped at Pokémon Checkup to wake this Pokémon, which wakes only if all are
-    /// heads. A count outside 1..=`MAX_SLEEP_CHECKUP_COINS` can only come from hand-edited JSON
+    /// The coins this Pokémon's Sleep asks for at Pokémon Checkup; it wakes only if all are heads.
+    /// The Checkup flips this count only for an Active Pokémon (`collect_checkup_targets`): a
+    /// Benched sleeper, which only hand-edited JSON can make, flips 1 whatever this reports. A count
+    /// outside 1..=`MAX_SLEEP_CHECKUP_COINS` can only come from hand-edited JSON
     /// (the setter is `pub(crate)` and its one caller passes the map entry's 2). Such a count
     /// reads as the usual 1, so a corrupt file can neither empty the wake test (0 coins = always
     /// wakes) nor, with the Checkup reading a count only on an Active, overflow `1 << n`.

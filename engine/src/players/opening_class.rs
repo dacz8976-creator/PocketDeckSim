@@ -323,7 +323,7 @@ mod tests {
 
     /// The class counts of the map as `census.py` classifies it (`VARIANT_CLASS` in R8's copy,
     /// `rl/results/r8_catchup_2026-10-29/census.py`), counted as flag settings over the map (a variant whose own fields
-    /// change its class counts once per setting): 134 over 128 variants, 163 entries. Before R8-07b added
+    /// change its class counts once per setting): 134 over 128 variants, 164 entries. Before R8-07b added
     /// `PutRentalCardInHand` (anywhere board) it was 133 over 127, before R8-05c added
     /// `PutRandomNamedFromDeckOnBenchOnEvolve` (on evolve) 132 over 126, before R8-05a added
     /// `ReduceDamageToYourTypeWhileInPlay` (anywhere board) 131 over 125, and before R8-04b added

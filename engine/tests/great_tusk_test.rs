@@ -6,7 +6,7 @@ use deckgym::{
 };
 
 /// Repro: "Receiving Pokemon should be there when modifying damage"
-/// (src/hooks/core.rs:861, damage_effect_mutation -> handle_damage_only -> modify_damage).
+/// (src/hooks/core.rs:2075 at R8, damage_effect_mutation -> handle_damage_only -> modify_damage).
 ///
 /// Great Tusk's "Shaking Stomp" also deals 20 damage to each of the
 /// *attacker's own* Benched Pokémon. `damage_effect_mutation` hardcodes the
