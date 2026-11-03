@@ -6399,6 +6399,9 @@ fn damage_for_each_heads_with_status_attack(
 }
 
 /// Mega Blastoise ex - Triple Bombardment: Conditional bench damage based on extra energy
+/// ("If this Pokémon has at least 3 extra [W] Energy attached, this attack also does 50 damage to
+/// 2 of your opponent's Benched Pokémon."). With exactly 1 Benched Pokémon it does its 50 to that
+/// one (R8-10d; rules/04: an effect does as much as it can).
 fn conditional_bench_damage_attack(
     state: &State,
     attack: &Attack,
@@ -6436,8 +6439,10 @@ fn conditional_bench_damage_attack(
 
         // Only create choices with bench damage if there are enough bench targets
         // Otherwise, just apply active damage without creating choices
-        if benched.len() >= num_bench_targets {
-            let choices: Vec<_> = if num_bench_targets == 1 {
+        // (R8-10d: 2 targets with exactly 1 Benched take the one-target choice instead).
+        let lone_of_two = num_bench_targets == 2 && benched.len() == 1;
+        if benched.len() >= num_bench_targets || lone_of_two {
+            let choices: Vec<_> = if num_bench_targets == 1 || lone_of_two {
                 benched
                     .iter()
                     .map(|&bench_idx| {
