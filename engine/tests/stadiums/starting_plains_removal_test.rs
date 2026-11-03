@@ -21,10 +21,11 @@
 //! the opponent's Knocked Out this way sets the flag Marshadow's Revenge reads during the next turn
 //! ("If any of your Pokémon were Knocked Out by damage from an attack during your opponent's last
 //! turn"), even a Benched one the attack did no damage to. Whether a Knock Out from the lost +20 is
-//! an attack's Knock Out at all is the open question for Dustin after R8 (the Revenge flag, Rescue
-//! Scarf and Iris's extra point all depend on it): read plainly, Revenge's text and rules/04
-//! (Poison and Ability Knock Outs don't count for Revenge) make it doubtful, most of all for a
-//! Pokémon the attack did not damage.
+//! an attack's Knock Out at all is the open question for Dustin after R8 (the Revenge flag,
+//! Zarude's Dark Vengeance type tally, Rescue Scarf and the attack's on-Knock-Out hooks such as
+//! Lucky Egg all depend on it; Iris's extra point needs a Haxorus attacker, which none of these
+//! attacks has): read plainly, Revenge's text and rules/04 (Poison and Ability Knock Outs don't
+//! count for Revenge) make it doubtful, most of all for a Pokémon the attack did not damage.
 //!
 //! After Field Blower it is the catch-all Knock Out check that follows the Item, and the turn goes
 //! on. The labels stay on those tests too, but nothing there is open: the points at once, the
