@@ -11,6 +11,8 @@ pub const PROTOCOL_VERSION: u32 = 1;
 #[derive(Debug, Clone, Copy, PartialEq, Eq, serde::Serialize, serde::Deserialize)]
 pub struct PublicEvent {
     pub actor: usize,
+    /// The actor had more than one legal action. How many it had depends on its hidden cards (a playable card in
+    /// hand adds an option), so this is for engine-side checks only: never forward it, or a count of it, to a bot.
     pub was_choice: bool,
     /// The game RNG advanced during the action.
     pub chance: bool,
@@ -71,10 +73,10 @@ pub struct ActionMsg {
     pub action: crate::actions::SimpleAction,
 }
 
-/// `pdl_events`: what happened since this bot's previous decide.
+/// `pdl_events`: what happened since this bot's previous decide. There is no count of the opponent's choices
+/// (see `PublicEvent::was_choice`).
 #[derive(Debug, Clone, Default, PartialEq, Eq, Serialize, Deserialize)]
 pub struct SinceLast {
-    pub opponent_choices: u64,
     pub chance_events: u64,
     pub cards_left_deck_mine: usize,
     pub cards_left_deck_opponent: usize,

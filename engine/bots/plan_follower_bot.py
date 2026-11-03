@@ -10,7 +10,6 @@ import random
 import sys
 
 COUNTERS = (
-    ("opponent_choice", "opponent_choices"),
     ("chance", "chance_events"),
     ("draw_mine", "cards_left_deck_mine"),
     ("draw_opponent", "cards_left_deck_opponent"),

@@ -1,14 +1,18 @@
 use deckgym::{
     actions::{Action, SimpleAction},
+    card_ids::CardId,
+    database::get_card_by_enum,
     game::DecisionRandomness,
+    models::{Card, PlayedCard},
     observation::PlayerObservation,
     observation::RevealedKnowledge,
     players::protocol_player::ProtocolStats,
-    players::{create_players, Player, PlayerCode, ProtocolPlayer},
+    players::{create_players, EndTurnPlayer, Player, PlayerCode, ProtocolPlayer},
     protocol::{view::ViewState, PublicEvent, SinceLast},
+    test_support::load_test_decks,
     Deck, Game, State,
 };
-use rand::rngs::StdRng;
+use rand::{rngs::StdRng, SeedableRng};
 use serde_json::Value;
 use std::{
     cell::RefCell,
@@ -33,7 +37,6 @@ struct Rec {
     check_obs: bool,
     first_legal: bool,
     since: Option<SinceLog>,
-    choices_by_seat: [u64; 2],
     chance: u64,
     cards_left: [usize; 2],
 }
@@ -49,7 +52,6 @@ impl Rec {
             check_obs: false,
             first_legal: false,
             since: None,
-            choices_by_seat: [0; 2],
             chance: 0,
             cards_left: [0; 2],
         }
@@ -66,7 +68,6 @@ impl Player for Rec {
     }
     fn on_public_event(&mut self, e: &PublicEvent) {
         self.events.borrow_mut().push((self.seat, *e));
-        self.choices_by_seat[e.actor] += e.was_choice as u64;
         self.chance += e.chance as u64;
         for s in 0..2 {
             self.cards_left[s] += e.cards_left_deck[s];
@@ -92,12 +93,10 @@ impl Player for Rec {
         if let Some(log) = &self.since {
             let me = obs.actor;
             log.borrow_mut().push(SinceLast {
-                opponent_choices: self.choices_by_seat[1 - me],
                 chance_events: self.chance,
                 cards_left_deck_mine: self.cards_left[me],
                 cards_left_deck_opponent: self.cards_left[1 - me],
             });
-            self.choices_by_seat = [0; 2];
             self.chance = 0;
             self.cards_left = [0; 2];
         }
@@ -182,6 +181,15 @@ fn out_dir(name: &str) -> PathBuf {
 
 fn cut(s: &str) -> String {
     s.chars().take(300).collect()
+}
+
+/// `s` from 100 bytes before byte `common` (where two strings first differ), cut.
+fn tail_from(s: &str, common: usize) -> String {
+    let mut start = common.saturating_sub(100).min(s.len());
+    while !s.is_char_boundary(start) {
+        start -= 1;
+    }
+    cut(&s[start..])
 }
 
 /// km3 v km3 with the given seats replaced by protocol bots (command, timeout).
@@ -276,17 +284,10 @@ fn compare_runs(ctx: &str, direct: &Run, other: &Run) {
             .zip(other.state_json.bytes())
             .take_while(|(a, b)| a == b)
             .count();
-        let tail_from = |s: &str| -> String {
-            let mut start = common.saturating_sub(100).min(s.len());
-            while !s.is_char_boundary(start) {
-                start -= 1;
-            }
-            cut(&s[start..])
-        };
         panic!(
             "{ctx}: final states differ at byte {common}: {} vs {}",
-            tail_from(&direct.state_json),
-            tail_from(&other.state_json)
+            tail_from(&direct.state_json, common),
+            tail_from(&other.state_json, common)
         );
     }
 }
@@ -324,6 +325,27 @@ fn captured(cmd_bot: &str, name: &str) -> Vec<Value> {
     text.lines()
         .map(|l| serde_json::from_str::<Value>(l).expect("each line is one JSON object"))
         .collect()
+}
+
+/// A live bot that opts in to `pdl_observation` and `pdl_events`, writes every line it receives to `file` and
+/// always replies `{"i": 0}`.
+fn capture_bot(file: &Path) -> String {
+    let prog = r#"
+import sys, json
+f = open(sys.argv[1], "w")
+for line in sys.stdin:
+    f.write(line)
+    f.flush()
+    m = json.loads(line)
+    if m["type"] == "hello":
+        r = {"name": "cap", "pdl_observation": True, "pdl_events": True}
+    elif m["type"] == "new_game":
+        continue
+    else:
+        r = {"i": 0}
+    print(json.dumps(r), flush=True)
+"#;
+    format!("python3 -I -c '{}' {}", prog, file.display())
 }
 
 #[test]
@@ -391,7 +413,6 @@ fn messages_are_single_json_lines() {
         assert!(
             key_set(&m["pdl_since_last"])
                 == set(&[
-                    "opponent_choices",
                     "chance_events",
                     "cards_left_deck_mine",
                     "cards_left_deck_opponent"
@@ -403,22 +424,7 @@ fn messages_are_single_json_lines() {
         let dir = out_dir("t2d");
         let file = std::env::temp_dir().join(format!("pdl_t2d_recv_{}.jsonl", std::process::id()));
         let _ = std::fs::remove_file(&file);
-        let prog = r#"
-import sys, json
-f = open(sys.argv[1], "w")
-for line in sys.stdin:
-    f.write(line)
-    f.flush()
-    m = json.loads(line)
-    if m["type"] == "hello":
-        r = {"name": "cap", "pdl_observation": True, "pdl_events": True}
-    elif m["type"] == "new_game":
-        continue
-    else:
-        r = {"i": 0}
-    print(json.dumps(r), flush=True)
-"#;
-        let cmd = format!("python3 -I -c '{}' {}", prog, file.display());
+        let cmd = capture_bot(&file);
         let (a, b) = decks(0, 0);
         let (players, _) = seats(&a, &b, [bot10(cmd), None], &dir);
         let r = run(players, seed(0, 0, 0), |_, _| {});
@@ -826,6 +832,91 @@ fn pdl_since_last_reaches_the_bot() {
     }
 }
 
+fn take(cards: &mut Vec<Card>, id: CardId) -> Card {
+    let card = get_card_by_enum(id);
+    cards.remove(cards.iter().position(|c| *c == card).expect("card in deck"))
+}
+
+/// Turn 1, seat 1 went first: no Zone Energy, no Energy on its Ekans and no Bench, so ending the turn is its only
+/// option unless the `hidden` card in its hand can be played. Everything else is the same for every `hidden`.
+fn hidden_option_state(hidden: CardId) -> State {
+    let (a, b) = load_test_decks();
+    let mut state = State::initialize(&a, &b, &mut StdRng::seed_from_u64(14));
+    let (mut own, mut opp) = (a.cards.clone(), b.cards.clone());
+    take(&mut own, CardId::A1001Bulbasaur);
+    take(&mut opp, CardId::A1164Ekans);
+    let arbok = take(&mut opp, CardId::A1165Arbok);
+    take(&mut opp, CardId::A1176Koffing);
+    take(&mut opp, CardId::A1177Weezing);
+    state.set_board(
+        vec![PlayedCard::from_id(CardId::A1001Bulbasaur)],
+        vec![PlayedCard::from_id(CardId::A1164Ekans)],
+    );
+    state.hands[0] = own.drain(..4).collect();
+    state.hands[1] = vec![arbok, get_card_by_enum(hidden)];
+    state.decks[0].cards = own;
+    state.decks[1].cards = opp;
+    state.turn_count = 1;
+    state.current_player = 1;
+    state
+}
+
+/// The capture bot (seat 0) against EndTurnPlayer (seat 1) from `hidden_option_state(hidden)` to the end of the
+/// game: every action played, and every decide line the bot received.
+fn hidden_option_game(hidden: CardId, name: &str) -> (Vec<Action>, Vec<String>) {
+    let dir = out_dir(name);
+    let file = dir.join("received.jsonl");
+    let (a, b) = load_test_decks();
+    let bot = ProtocolPlayer::new(
+        a,
+        capture_bot(&file),
+        Duration::from_millis(10_000),
+        Some(dir.clone()),
+    );
+    let players: Vec<Box<dyn Player>> = vec![Box::new(bot), Box::new(EndTurnPlayer { deck: b })];
+    let mut game = Game::from_state(hidden_option_state(hidden), players, 14);
+    let mut played = Vec::new();
+    while !game.is_game_over() {
+        played.push(game.play_tick());
+    }
+    drop(game);
+    let decides = std::fs::read_to_string(&file)
+        .unwrap()
+        .lines()
+        .filter(|l| serde_json::from_str::<Value>(l).unwrap()["type"] == "decide")
+        .map(str::to_string)
+        .collect();
+    (played, decides)
+}
+
+/// How many legal actions the opponent had depends on its hidden hand, so no decide line may change with it.
+#[test]
+fn opponent_hidden_options_do_not_reach_the_bot() {
+    // Weezing cannot be played on turn 1; Koffing can go to any of the three Bench slots.
+    let forced = hidden_option_state(CardId::A1177Weezing);
+    let open = hidden_option_state(CardId::A1176Koffing);
+    assert_eq!(forced.generate_possible_actions().1.len(), 1);
+    assert_eq!(open.generate_possible_actions().1.len(), 4);
+    let (forced_played, forced_decides) = hidden_option_game(CardId::A1177Weezing, "t14a");
+    let (open_played, open_decides) = hidden_option_game(CardId::A1176Koffing, "t14b");
+    assert!(
+        forced_played == open_played,
+        "the two games played different actions"
+    );
+    assert!(!forced_decides.is_empty());
+    assert_eq!(forced_decides.len(), open_decides.len(), "decide count");
+    for (i, (f, o)) in forced_decides.iter().zip(&open_decides).enumerate() {
+        if f != o {
+            let common = f.bytes().zip(o.bytes()).take_while(|(x, y)| x == y).count();
+            panic!(
+                "decide {i} differs at byte {common}: {} vs {}",
+                tail_from(f, common),
+                tail_from(o, common)
+            );
+        }
+    }
+}
+
 #[test]
 fn plan_follower_plays_full_games() {
     let mut reasons: std::collections::BTreeMap<String, usize> = Default::default();
@@ -855,7 +946,7 @@ fn plan_follower_plays_full_games() {
         }
     }
     eprintln!("reask reasons: {reasons:?}; played_from_saved_plan: {from_saved}");
-    for want in ["opponent_choice", "chance", "draw_mine", "stale"] {
+    for want in ["chance", "draw_mine", "stale"] {
         assert!(
             reasons.get(want).copied().unwrap_or(0) >= 1,
             "no reask_reason {want}: {reasons:?}"

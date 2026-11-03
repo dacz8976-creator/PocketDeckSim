@@ -16,16 +16,20 @@ and adds opt-in `pdl_*` keys. Without an opt-in the messages have exactly upstre
 |---|---|
 | `"agent_snapshot": true` | as upstream: `new_game.deck_definition`; in `decide`: `legal_actions` and `agent_snapshot` (the observation's visible state, with our own deck replaced by `Unknown` cards of the right count) |
 | `"pdl_observation": true` | `new_game.deck_definition`; every `decide` gets `legal_actions` (the full `Action` list, in the order of `actions`), `pdl_observation` (the serialized `PlayerObservation` that `decision_fn` received) and `pdl_search_seed` (the u64 from the most recent `before_decision` since the previous decide, or null) |
-| `"pdl_events": true` | every `decide` gets `pdl_since_last = {opponent_choices, chance_events, cards_left_deck_mine, cards_left_deck_opponent}` |
+| `"pdl_events": true` | every `decide` gets `pdl_since_last = {chance_events, cards_left_deck_mine, cards_left_deck_opponent}` |
 
 Each `pdl_*` key is absent unless opted in. `pdl_since_last` counts what happened since the bot's previous
 decide (or the game start); the counters are reset at every decide, opted in or not.
 
-* `opponent_choices`: actions the opponent took when it had more than one legal action.
 * `chance_events`: applied actions during which "the game RNG advanced". That covers coin flips, random picks,
   shuffles, and every EndTurn (the next Energy Zone roll), so `chance_events` is at least 1 at the start of
   each of the bot's turns.
 * `cards_left_deck_mine` / `cards_left_deck_opponent`: how many cards left each deck.
+
+There is no count of the opponent's choices (R8 removed `opponent_choices`): whether the opponent had more than
+one legal action depends on its hidden hand (a playable card adds an option), so the count leaked hidden cards.
+Test `opponent_hidden_options_do_not_reach_the_bot` plays two games that differ only in one hidden card of the
+opponent's hand and checks that every `decide` line the bot receives is the same.
 
 ## ViewState
 

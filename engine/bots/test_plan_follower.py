@@ -7,7 +7,7 @@ _SPEC = importlib.util.spec_from_file_location("plan_follower_bot", _PATH)
 bot = importlib.util.module_from_spec(_SPEC)
 _SPEC.loader.exec_module(bot)
 
-ZERO = {"opponent_choices": 0, "chance_events": 0, "cards_left_deck_mine": 0, "cards_left_deck_opponent": 0}
+ZERO = {"chance_events": 0, "cards_left_deck_mine": 0, "cards_left_deck_opponent": 0}
 
 
 def msg(ply, actions, **since):
@@ -53,8 +53,8 @@ class PlanFollowerTests(unittest.TestCase):
     def test_p3_chance(self):
         self.assertEqual(self._reask(chance_events=2)["reask_reason"], "chance")
 
-    def test_p4_opponent_choice(self):
-        self.assertEqual(self._reask(opponent_choices=1)["reask_reason"], "opponent_choice")
+    def test_p4_draw_opponent(self):
+        self.assertEqual(self._reask(cards_left_deck_opponent=1)["reask_reason"], "draw_opponent")
 
     def test_p5_stale_step_never_played(self):
         src = ScriptedSource([["a", "x"], ["b", "c"]])

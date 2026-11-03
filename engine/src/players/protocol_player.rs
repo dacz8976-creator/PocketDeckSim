@@ -58,7 +58,6 @@ pub struct ProtocolPlayer {
     killed: bool,
     ply: u64,
     search_seed: Option<u64>,
-    choices_by_seat: [u64; 2],
     chance: u64,
     cards_left: [usize; 2],
     instance: u64,
@@ -112,7 +111,6 @@ impl ProtocolPlayer {
             killed: false,
             ply: 0,
             search_seed: None,
-            choices_by_seat: [0; 2],
             chance: 0,
             cards_left: [0; 2],
             instance,
@@ -360,7 +358,6 @@ impl Player for ProtocolPlayer {
     }
 
     fn on_public_event(&mut self, e: &PublicEvent) {
-        self.choices_by_seat[e.actor] += e.was_choice as u64;
         self.chance += e.chance as u64;
         for s in 0..2 {
             self.cards_left[s] += e.cards_left_deck[s];
@@ -377,12 +374,10 @@ impl Player for ProtocolPlayer {
         self.stats.decisions.fetch_add(1, Ordering::SeqCst);
         let me = observation.actor;
         let since = SinceLast {
-            opponent_choices: self.choices_by_seat[1 - me],
             chance_events: self.chance,
             cards_left_deck_mine: self.cards_left[me],
             cards_left_deck_opponent: self.cards_left[1 - me],
         };
-        self.choices_by_seat = [0; 2];
         self.chance = 0;
         self.cards_left = [0; 2];
         let seed = self.search_seed.take();
