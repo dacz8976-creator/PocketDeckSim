@@ -1753,8 +1753,8 @@ pub static EFFECT_MECHANIC_MAP: LazyLock<HashMap<&'static str, Mechanic>> = Lazy
         "Move all Energy from this Pokémon to 1 of your Benched Pokémon.",
         Mechanic::MoveAllEnergyToBench,
     );
-    // Lunala (C1 066 / C1 198 / P-C 008) - Wings of the Moone (upstream #438): one Energy at a
-    // time, in a fixed order (`attack_helpers::ordered_active_energy_to_bench_choices`).
+    // Lunala (C1 066 / C1 198 / P-C 008) - Wings of the Moone (upstream #438): whole
+    // distributions (`attack_helpers::wings_of_the_moone_choices`).
     map.insert(
         "Move all Energy from this Pokémon to your Benched Pokémon in any way you like.",
         Mechanic::MoveAllEnergyToBenchAnyWay,

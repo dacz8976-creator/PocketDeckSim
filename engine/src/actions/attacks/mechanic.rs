@@ -1198,10 +1198,10 @@ pub enum Mechanic {
         damage_per_card: u32,
     },
     /// Lunala's Wings of the Moone (C1 066, C1 198, P-C 008): "Move all Energy from this Pokémon to
-    /// your Benched Pokémon in any way you like." After damage, one Energy at a time through
-    /// `SimpleAction::MoveActiveEnergyToBenchAndReoffer`, in a fixed order (the lowest `EnergyType`
-    /// first; within a type the destinations never decrease), so each final board is reached by one
-    /// path. Not `MoveAllEnergyToBench`, which moves it all "to 1 of your Benched Pokémon".
+    /// your Benched Pokémon in any way you like." After damage, whole distributions through
+    /// `SimpleAction::DistributeActiveEnergyToBench`: one choice of every final board when there are
+    /// at most 256, else one choice per Energy type (lowest first), so each final board is reached by
+    /// one path. Not `MoveAllEnergyToBench`, which moves it all "to 1 of your Benched Pokémon".
     MoveAllEnergyToBenchAnyWay,
     /// Jigglypuff's Soothing Lullaby (C1 051, C1 184): "Your opponent's Active Pokémon is now
     /// Asleep. Your opponent flips 2 coins for this Special Condition, and if any of them are

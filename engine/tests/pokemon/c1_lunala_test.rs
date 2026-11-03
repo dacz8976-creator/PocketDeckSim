@@ -1,15 +1,18 @@
-// Lunala (C1 066, C1 198, P-C 008) - Wings of the Moone (R8-08e): "Move all Energy from this Pokémon to your Benched
-// Pokémon in any way you like." Upstream's two tests (#438, 20d1857: tests/pokemon/c1_attacks/lunala.rs) with the
-// helpers of upstream's c1_attacks/mod.rs, as c1_remaining_types_test.rs ports them, and one change: the fork offers the
-// Energy in a fixed order (design r808p2 §B.2, coordinator-088 Q2), the lowest Energy type on the Active Pokémon first, one
-// Energy per choice, destinations never decreasing within a type. So on [P][P][W] the first choice is the [W] to either
-// Benched Pokémon (2 choices; upstream 4), and the script moves the [W] first. Then the fork's tests (the design's
-// N1-N15): every end board against brute force (a gapped Bench too), the order and the floor, single-choice frames
-// applied without a decision, each move one certain branch with no game randomness, Rocky Helmet and Perish Body after
-// the last move, the defender's Knock Out and a winning one after the last move, Carefree Steps leaving the 110 no
-// damage target (no reaction frame below the chain), no Energy, Confusion, Mew ex's copy, both seats' revealed
-// knowledge, km3 and W at every frame, the 4 [P] / 3 Bench branching pin, the printings' status, and the two smoke
-// records of §C.1 (written to the file named by LUNALA_SMOKE_OUT when it is set; legality is all they assert).
+// Lunala (C1 066, C1 198, P-C 008) - Wings of the Moone (R8-08e, reshaped in R8-08h): "Move all Energy from this
+// Pokémon to your Benched Pokémon in any way you like." Upstream's two tests (#438, 20d1857:
+// tests/pokemon/c1_attacks/lunala.rs) with the helpers of upstream's c1_attacks/mod.rs, as c1_remaining_types_test.rs
+// ports them, and one change: the fork offers whole distributions (coordinator-131 option (a), coordinator-132 shape 3,
+// design r808lun), not one Energy per choice. With at most 256 final boards one choice offers every final board;
+// otherwise there is one choice per Energy type, lowest first, each offering every split of that type, the shape decided
+// once when the attack resolves. So on [P][P][W] the first choice offers the 6 final boards (upstream: 4 one-Energy
+// choices) and the script picks one. Then the fork's tests: every end board against brute force on both paths (one
+// choice, and one type at a time, the latter also forced on every one-choice board), with no two paths alike and every
+// end state exactly the start with only the moves (Soothing Wind receivers included); the shape decided once; branching
+// pins; single-option choices applied without a decision; each distribution one certain branch with no game randomness;
+// Rocky Helmet and Perish Body after the moves; the defender's Knock Out and a winning one after the moves; Carefree
+// Steps leaving the 110 no damage target (no reaction frame below the choice); no Energy; Confusion; Mew ex's copy; both
+// seats' revealed knowledge; km3 and W at every choice; the printings' status; and two smoke records (written to the
+// files named by LUNALA_SMOKE_OUT and LUNALA_TIMES_OUT when they are set; legality is all they assert).
 use std::{
     cell::RefCell,
     collections::{BTreeMap, BTreeSet},
@@ -25,7 +28,7 @@ use deckgym::{
     database::get_card_by_enum,
     models::{
         Card,
-        EnergyType::{self, Lightning, Psychic, Water},
+        EnergyType::{self, Fire, Grass, Lightning, Psychic, Water},
         PlayedCard, StatusCondition,
     },
     observation::canonical_actions,
@@ -77,20 +80,37 @@ fn defender_damage(game: &Game<'static>) -> u32 {
     game.get_state_clone().get_active(1).taken()
 }
 
-// Upstream's tests/pokemon/c1_attacks/lunala.rs: `move_to`, then its two tests.
+// Upstream's tests/pokemon/c1_attacks/lunala.rs: its two tests, with `choose` (one whole distribution) in place of
+// upstream's `move_to` (one Energy per choice).
 
-fn move_to(game: &mut Game<'static>, energy: EnergyType, to: usize) {
+/// One Wings of the Moone distribution: (amount, Energy type, Benched Pokémon) entries, lowest type first, then
+/// ascending Benched Pokémon, no zero amounts.
+type Moves = Vec<(u32, EnergyType, usize)>;
+
+/// Applies the offered Wings of the Moone choice whose entries are `moves`.
+fn choose(game: &mut Game<'static>, moves: &[(u32, EnergyType, usize)]) {
     let (actor, choices) = game.get_state_clone().generate_possible_actions();
     assert_eq!(actor, 0);
     let chosen = choices
         .into_iter()
         .find(|choice| {
-            matches!(&choice.action, SimpleAction::MoveActiveEnergyToBenchAndReoffer {
-                to_in_play_idx, energy_type
-            } if *to_in_play_idx == to && *energy_type == energy)
+            matches!(&choice.action, SimpleAction::DistributeActiveEnergyToBench { moves: offered }
+                if offered.as_slice() == moves)
         })
-        .expect("a choice moving that Energy to that Pokémon");
+        .unwrap_or_else(|| panic!("a choice moving {moves:?}"));
     game.apply_action(&chosen);
+}
+
+/// The 6 final boards of [P][P][W] on Benched Pokémon 1 and 2, as offered: the [W]'s splits vary slowest.
+fn psychic_psychic_water_offer() -> Vec<Moves> {
+    vec![
+        vec![(1, Water, 2), (2, Psychic, 2)],
+        vec![(1, Water, 2), (1, Psychic, 1), (1, Psychic, 2)],
+        vec![(1, Water, 2), (2, Psychic, 1)],
+        vec![(1, Water, 1), (2, Psychic, 2)],
+        vec![(1, Water, 1), (1, Psychic, 1), (1, Psychic, 2)],
+        vec![(1, Water, 1), (2, Psychic, 1)],
+    ]
 }
 
 #[test]
@@ -111,13 +131,10 @@ fn wings_of_the_moone_moves_every_energy_to_the_bench_in_any_way_on_every_printi
         attack(&mut game, id, 0);
         assert_eq!(defender_damage(&game), 110, "{id:?}");
 
-        // Fork: [W] is the lowest Energy type there, so it moves first, to either of 2 Benched Pokémon (upstream: 2
-        // types x 2 targets), and there is no way to stop with Energy left on Lunala.
-        let (_, choices) = game.get_state_clone().generate_possible_actions();
-        assert_eq!(choices.len(), 2, "{id:?}");
-        move_to(&mut game, EnergyType::Water, 1);
-        move_to(&mut game, EnergyType::Psychic, 1);
-        move_to(&mut game, EnergyType::Psychic, 2);
+        // Fork: one choice of the 2 x 3 = 6 final boards (upstream: one Energy per choice, 2 types x 2 targets), and
+        // no way to stop with Energy left on Lunala.
+        assert_eq!(wings_offer(&game.get_state_clone()), psychic_psychic_water_offer(), "{id:?}");
+        choose(&mut game, &[(1, Water, 1), (1, Psychic, 1), (1, Psychic, 2)]);
 
         let state = game.get_state_clone();
         assert!(state.get_active(0).attached_energy.is_empty(), "{id:?}");
@@ -155,21 +172,26 @@ fn lunala(energy: Vec<EnergyType>) -> PlayedCard {
     PlayedCard::from_id(CardId::C1066Lunala).with_energy(energy)
 }
 
-fn is_wings_move(action: &SimpleAction) -> bool {
-    matches!(action, SimpleAction::MoveActiveEnergyToBenchAndReoffer { .. })
+/// `count` Energy of each type listed, in the order listed.
+fn energy_of(counts: &[(EnergyType, usize)]) -> Vec<EnergyType> {
+    counts
+        .iter()
+        .flat_map(|&(energy_type, count)| std::iter::repeat(energy_type).take(count))
+        .collect()
 }
 
-/// The Wings of the Moone choices offered now, as (Energy type, Benched Pokémon) in the frame's order; empty when no
-/// such choice is on top.
-fn wings_offer(state: &State) -> Vec<(EnergyType, usize)> {
+fn is_wings_move(action: &SimpleAction) -> bool {
+    matches!(action, SimpleAction::DistributeActiveEnergyToBench { .. })
+}
+
+/// The Wings of the Moone choices offered now, as their entries in the frame's order; empty when no such choice is on
+/// top.
+fn wings_offer(state: &State) -> Vec<Moves> {
     let (_, actions) = state.generate_possible_actions();
     actions
-        .iter()
+        .into_iter()
         .filter_map(|action| match action.action {
-            SimpleAction::MoveActiveEnergyToBenchAndReoffer {
-                to_in_play_idx,
-                energy_type,
-            } => Some((energy_type, to_in_play_idx)),
+            SimpleAction::DistributeActiveEnergyToBench { moves } => Some(moves),
             _ => None,
         })
         .collect()
@@ -193,7 +215,7 @@ fn sorted_energy(state: &State, player: usize, in_play_idx: usize) -> Vec<Energy
     energy
 }
 
-/// Applies the forced `ResolveAttackRetaliation` frame the chain leaves below it: the attack's reactions, then its
+/// Applies the forced `ResolveAttackRetaliation` frame the choice leaves below it: the attack's reactions, then its
 /// Knock Outs.
 fn resolve_retaliation(game: &mut Game<'static>) {
     let (_, actions) = game.get_state_clone().generate_possible_actions();
@@ -210,13 +232,13 @@ fn resolve_retaliation(game: &mut Game<'static>) {
     game.apply_action(&actions[0]);
 }
 
-/// Player 0's Lunala holding `energy` uses Wings of the Moone (game from `seed`) against a 1000-HP Snorlax, with a
-/// 1000-HP Snorlax in each Bench slot of `bench` and the other slots empty.
-fn after_wings(seed: u64, energy: Vec<EnergyType>, bench: &[usize]) -> Game<'static> {
+/// Player 0's Lunala holding `energy` uses Wings of the Moone (game from `seed`) against a 1000-HP Snorlax, with each
+/// Pokémon of `bench` in its Bench slot and the other slots empty.
+fn after_wings_on(seed: u64, energy: Vec<EnergyType>, bench: &[(usize, PlayedCard)]) -> Game<'static> {
     let mut game = get_initialized_game_with_board(seed, 0, 3, vec![lunala(energy)], vec![durable()]);
     let mut state = game.get_state_clone();
-    for &in_play_idx in bench {
-        state.in_play_pokemon[0][in_play_idx] = Some(durable());
+    for (in_play_idx, pokemon) in bench {
+        state.in_play_pokemon[0][*in_play_idx] = Some(pokemon.clone());
     }
     game.set_state(state);
     attack(&mut game, CardId::C1066Lunala, 0);
@@ -224,23 +246,41 @@ fn after_wings(seed: u64, energy: Vec<EnergyType>, bench: &[usize]) -> Game<'sta
     game
 }
 
-/// Every path of the Wings of the Moone chain from `state` (a choice on top), through `Game::apply_action`: counts the
-/// decision nodes and those of them with two or more choices, and collects every end state.
-fn explore(state: &State, nodes: &mut usize, real: &mut usize, leaves: &mut Vec<State>) {
+/// The same with a 1000-HP Snorlax in each Bench slot of `bench`.
+fn after_wings(seed: u64, energy: Vec<EnergyType>, bench: &[usize]) -> Game<'static> {
+    let bench: Vec<(usize, PlayedCard)> = bench.iter().map(|&in_play_idx| (in_play_idx, durable())).collect();
+    after_wings_on(seed, energy, &bench)
+}
+
+/// Every path of Wings of the Moone's choices from a state with one on top, through `Game::apply_action`.
+#[derive(Default)]
+struct Walk {
+    /// Each decision node: its depth on the path (0 for the attack's own choice) and the entries it offered.
+    nodes: Vec<(usize, Vec<Moves>)>,
+    /// Each end state, with the number of decisions on its path.
+    leaves: Vec<(usize, State)>,
+}
+
+impl Walk {
+    /// (decision nodes, those of them with two or more options, end states).
+    fn shape(&self) -> (usize, usize, usize) {
+        let real = self.nodes.iter().filter(|(_, offer)| offer.len() > 1).count();
+        (self.nodes.len(), real, self.leaves.len())
+    }
+}
+
+fn explore(state: &State, depth: usize, walk: &mut Walk) {
     let (actor, actions) = state.generate_possible_actions();
     if !actions.iter().any(|action| is_wings_move(&action.action)) {
-        leaves.push(state.clone());
+        walk.leaves.push((depth, state.clone()));
         return;
     }
     assert!(actor == 0 && actions.iter().all(|action| is_wings_move(&action.action)));
-    *nodes += 1;
-    if actions.len() > 1 {
-        *real += 1;
-    }
+    walk.nodes.push((depth, wings_offer(state)));
     for action in &actions {
         let mut game = Game::from_state(state.clone(), Vec::new(), 0);
         game.apply_action(action);
-        explore(&game.get_state_clone(), nodes, real, leaves);
+        explore(&game.get_state_clone(), depth + 1, walk);
     }
 }
 
@@ -273,99 +313,313 @@ fn brute_force_boards(energy: &[EnergyType], bench: &[usize]) -> BTreeSet<EndBoa
     boards
 }
 
-/// The product over the Energy types of C(k + b - 1, b - 1): a type's k Energy as a multiset on b Benched Pokémon.
-fn board_count(energy: &[EnergyType], b: usize) -> usize {
+fn n_choose_k(n: usize, k: usize) -> usize {
+    (0..k).fold(1, |acc, i| acc * (n - i) / (i + 1))
+}
+
+/// (type, count) of `energy`, lowest `EnergyType` first.
+fn by_type(energy: &[EnergyType]) -> Vec<(EnergyType, usize)> {
     let mut per_type = BTreeMap::new();
     for e in energy {
         *per_type.entry(*e).or_insert(0usize) += 1;
     }
-    let choose = |n: usize, k: usize| (0..k).fold(1, |acc, i| acc * (n - i) / (i + 1));
-    per_type.values().map(|&k| choose(k + b - 1, b - 1)).product()
+    per_type.into_iter().collect()
 }
 
-/// N1 (design §B.2): the chain's end boards are exactly those of brute force, each reached by one path, as many as the
-/// product formula says, on [P][P] / Bench 1-2 (3), upstream's [P][P][W] / Bench 1-2 (6), [W][L][P][P] / Bench 1-3 (54)
-/// and [P][P][P] on a gapped Bench, slots 1 and 3 (4). Every end state has an empty Active Pokémon and differs from the
-/// others in its Energy alone.
-#[test]
-fn test_wings_of_the_moone_end_boards_equal_brute_force() {
-    let cases = [
-        (vec![Psychic, Psychic], vec![1, 2], 3),
-        (vec![Psychic, Psychic, Water], vec![1, 2], 6),
-        (vec![Water, Lightning, Psychic, Psychic], vec![1, 2, 3], 54),
-        (vec![Psychic, Psychic, Psychic], vec![1, 3], 4),
-    ];
-    for (energy, bench, expected) in cases {
-        let start = after_wings(0, energy.clone(), &bench).get_state_clone();
-        let (mut nodes, mut real, mut leaves) = (0, 0, Vec::new());
-        explore(&start, &mut nodes, &mut real, &mut leaves);
-        let boards: BTreeSet<EndBoard> = leaves.iter().map(|leaf| end_board(leaf, &bench)).collect();
-        assert_eq!(boards, brute_force_boards(&energy, &bench), "{energy:?} to {bench:?}");
-        assert_eq!(leaves.len(), boards.len(), "{energy:?}: one path per end board");
-        assert_eq!(leaves.len(), board_count(&energy, bench.len()), "{energy:?}");
-        assert_eq!(leaves.len(), expected, "{energy:?}");
-        let without_energy = |leaf: &State| {
-            let mut leaf = leaf.clone();
-            for pokemon in leaf.in_play_pokemon[0].iter_mut().flatten() {
-                pokemon.attached_energy.clear();
-            }
-            leaf
-        };
-        for leaf in &leaves {
-            assert!(leaf.get_active(0).attached_energy.is_empty(), "{energy:?}");
-            assert!(
-                without_energy(leaf) == without_energy(&leaves[0]),
-                "{energy:?}: end states differ in more than their Energy"
-            );
+/// The product over the Energy types of C(k + b - 1, b - 1): a type's k Energy as a multiset on b Benched Pokémon.
+fn board_count(energy: &[EnergyType], b: usize) -> usize {
+    by_type(energy).iter().map(|&(_, k)| n_choose_k(k + b - 1, b - 1)).product()
+}
+
+/// Every way to put `count` Energy of `energy_type` on the Pokémon of `bench`, as entries in ascending Benched Pokémon
+/// with no zero amounts: the test's own enumeration, not the engine's.
+fn splits_of(energy_type: EnergyType, count: usize, bench: &[usize]) -> Vec<Moves> {
+    let Some((&first, rest)) = bench.split_first() else {
+        return if count == 0 { vec![Vec::new()] } else { Vec::new() };
+    };
+    (0..=count)
+        .flat_map(|here| {
+            splits_of(energy_type, count - here, rest).into_iter().map(move |tail| {
+                let mut moves = Vec::new();
+                if here > 0 {
+                    moves.push((here as u32, energy_type, first));
+                }
+                moves.extend(tail);
+                moves
+            })
+        })
+        .collect()
+}
+
+/// A board for the end-board checks: Lunala's Energy, and each Bench slot's Pokémon as placed and as Soothing Wind
+/// leaves it (the same card with no Special Condition). `soothing` is the Soothing Wind on the Bench, if any:
+/// `Some(None)` cures a receiver of any Energy (Teal Mask Ogerpon ex), `Some(Some(t))` one that holds `t` (Comfey's
+/// Flower Shield).
+struct WingsBoard {
+    energy: Vec<EnergyType>,
+    bench: Vec<(usize, PlayedCard, PlayedCard)>,
+    soothing: Option<Option<EnergyType>>,
+}
+
+impl WingsBoard {
+    /// Lunala holding `energy`, with a 1000-HP Snorlax in each Bench slot of `slots`.
+    fn plain(energy: Vec<EnergyType>, slots: &[usize]) -> Self {
+        let bench = slots.iter().map(|&in_play_idx| (in_play_idx, durable(), durable())).collect();
+        WingsBoard {
+            energy,
+            bench,
+            soothing: None,
         }
+    }
+
+    fn slots(&self) -> Vec<usize> {
+        self.bench.iter().map(|(in_play_idx, ..)| *in_play_idx).collect()
+    }
+
+    fn placed(&self) -> Vec<(usize, PlayedCard)> {
+        self.bench.iter().map(|(in_play_idx, placed, _)| (*in_play_idx, placed.clone())).collect()
     }
 }
 
-/// N10: a branching pin. Four [P] on three Benched Pokémon: 20 decision nodes, 10 of them with two or more choices,
-/// and 15 end boards (upstream's free order: 40 nodes and 81 paths).
-#[test]
-fn test_wings_of_the_moone_four_psychic_on_three_benched_has_20_nodes_and_15_end_boards() {
-    let start = after_wings(0, vec![Psychic; 4], &[1, 2, 3]).get_state_clone();
-    let (mut nodes, mut real, mut leaves) = (0, 0, Vec::new());
-    explore(&start, &mut nodes, &mut real, &mut leaves);
-    assert_eq!((nodes, real, leaves.len()), (20, 10, 15));
+/// Lunala holding `energy`, with `holder` (whose Soothing Wind is `soothing`) in slot 1 and a Poisoned Bulbasaur and
+/// an Asleep 1000-HP Snorlax in slots 2 and 3 (Special Conditions set directly: Benched Pokémon cannot get them in
+/// play).
+fn soothing_board(energy: Vec<EnergyType>, holder: CardId, soothing: Option<EnergyType>) -> WingsBoard {
+    let bulbasaur = PlayedCard::from_id(CardId::A1001Bulbasaur);
+    WingsBoard {
+        energy,
+        bench: vec![
+            (1, PlayedCard::from_id(holder), PlayedCard::from_id(holder)),
+            (2, bulbasaur.clone().with_status_condition(StatusCondition::Poisoned), bulbasaur),
+            (3, durable().with_status_condition(StatusCondition::Asleep), durable()),
+        ],
+        soothing: Some(soothing),
+    }
 }
 
-/// N2: the first choice offers only the lowest Energy type on Lunala ([W] before [L] before [P], whatever the order of
-/// attachment), to every Benched Pokémon; a new type starts again from slot 1 (here after the [W] and the [L] went to
-/// slot 3); within a type nothing is offered below the last destination. On the gapped Bench (slots 1 and 3) the
-/// first choice offers 1 and 3, a move to 1 keeps both, and after a move to 3 only 3 is left.
-#[test]
-fn test_wings_of_the_moone_offers_the_lowest_type_from_its_last_destination_on() {
-    let every = |energy_type| vec![(energy_type, 1), (energy_type, 2), (energy_type, 3)];
-    let mut game = after_wings(0, vec![Psychic, Lightning, Water, Psychic], &[1, 2, 3]);
-    assert_eq!(wings_offer(&game.get_state_clone()), every(Water));
-    move_to(&mut game, Water, 3);
-    assert_eq!(wings_offer(&game.get_state_clone()), every(Lightning));
-    move_to(&mut game, Lightning, 3);
-    assert_eq!(wings_offer(&game.get_state_clone()), every(Psychic));
-    move_to(&mut game, Psychic, 2);
-    assert_eq!(wings_offer(&game.get_state_clone()), vec![(Psychic, 2), (Psychic, 3)]);
-    move_to(&mut game, Psychic, 3);
-    let state = game.get_state_clone();
-    assert!(wings_offer(&state).is_empty() && !wings_frame_left(&state));
-    assert_eq!(sorted_energy(&state, 0, 2), vec![Psychic]);
-    assert_eq!(sorted_energy(&state, 0, 3), vec![Water, Lightning, Psychic]);
-
-    let mut game = after_wings(0, vec![Psychic; 3], &[1, 3]);
-    assert_eq!(wings_offer(&game.get_state_clone()), vec![(Psychic, 1), (Psychic, 3)]);
-    move_to(&mut game, Psychic, 1);
-    assert_eq!(wings_offer(&game.get_state_clone()), vec![(Psychic, 1), (Psychic, 3)]);
-    move_to(&mut game, Psychic, 3);
-    assert_eq!(wings_offer(&game.get_state_clone()), vec![(Psychic, 3)]);
-    move_to(&mut game, Psychic, 3);
-    let state = game.get_state_clone();
-    assert!(wings_offer(&state).is_empty());
-    assert_eq!(sorted_energy(&state, 0, 1), vec![Psychic]);
-    assert_eq!(sorted_energy(&state, 0, 3), vec![Psychic, Psychic]);
+/// The state Wings of the Moone must end in from `start` (the attack made, its first choice on top) on `end`: that
+/// choice gone, Lunala's Energy gone, each Benched Pokémon as placed (or as Soothing Wind leaves it, when it covers what
+/// the Pokémon received) with its new Energy in `EnergyType`'s order, and nothing else changed.
+fn expected_end(start: &State, wings: &WingsBoard, end: &EndBoard) -> State {
+    let mut expected = start.clone();
+    expected.move_generation_stack.pop();
+    expected.in_play_pokemon[0][0].as_mut().unwrap().attached_energy.clear();
+    for (in_play_idx, gained) in end {
+        let (_, placed, cured) = wings.bench.iter().find(|(slot, ..)| slot == in_play_idx).unwrap();
+        let recovers = match wings.soothing {
+            Some(None) => !gained.is_empty(),
+            Some(Some(energy_type)) => gained.contains(&energy_type),
+            None => false,
+        };
+        let mut pokemon = if recovers { cured.clone() } else { placed.clone() };
+        pokemon.attached_energy.extend(gained.iter().copied());
+        expected.in_play_pokemon[0][*in_play_idx] = Some(pokemon);
+    }
+    expected
 }
 
-/// Picks the Benched Pokémon furthest along at each Wings of the Moone choice, and keeps seat 0's public events.
+/// Which way `check_end_boards` walks the choices.
+#[derive(Clone, Copy, Debug, PartialEq)]
+enum Path {
+    /// As the attack offers them.
+    AsOffered,
+    /// The attack's first choice replaced by the splits of its lowest Energy type alone (built by `splits_of`, not by
+    /// the engine), so the apply arm offers each later type one at a time: the per-type path on any board (design
+    /// §D.5).
+    ForcedPerType,
+}
+
+/// Condition 3 (coordinator-131) on `wings` along `path`, from the attack against a 1000-HP Snorlax:
+/// - every option is in canonical order (no zero amount, strictly ascending (type, Benched Pokémon)), names an occupied
+///   slot, and no two options of a choice are alike;
+/// - one choice (as offered, at most 256 final boards): a single decision holding every type in every option, as many
+///   options as final boards; one type at a time: one decision per type, the t-th holding the t-th type alone in each
+///   of its C(k + b - 1, b - 1) options;
+/// - the end boards equal brute force's, no two paths end alike, and there are as many as the product formula says;
+/// - every end state has Lunala empty, no Wings of the Moone choice left, and equals `expected_end`.
+///
+/// Returns the end states by end board.
+fn check_end_boards(wings: &WingsBoard, path: Path) -> BTreeMap<EndBoard, State> {
+    let slots = wings.slots();
+    let per_type = by_type(&wings.energy);
+    let count = board_count(&wings.energy, slots.len());
+    let label = format!("{per_type:?} on {slots:?}, {path:?}");
+    // Through `Game::from_state`, as every state `explore` reaches, so the transient reveal queues match.
+    let after = after_wings_on(0, wings.energy.clone(), &wings.placed()).get_state_clone();
+    let start = Game::from_state(after, Vec::new(), 0).get_state_clone();
+    for (in_play_idx, placed, _) in &wings.bench {
+        assert!(start.in_play_pokemon[0][*in_play_idx].as_ref() == Some(placed), "{label}");
+    }
+    let mut from = start.clone();
+    if path == Path::ForcedPerType {
+        let (lowest, k) = per_type[0];
+        let first = splits_of(lowest, k, &slots)
+            .into_iter()
+            .map(|moves| SimpleAction::DistributeActiveEnergyToBench { moves })
+            .collect();
+        let top = from.move_generation_stack.last_mut().expect("the attack's choice");
+        assert!(top.1.iter().all(is_wings_move), "{label}");
+        *top = (0, first);
+    }
+    let mut walk = Walk::default();
+    explore(&from, 0, &mut walk);
+
+    let one_choice = path == Path::AsOffered && count <= 256;
+    let b = slots.len();
+    for (depth, offer) in &walk.nodes {
+        let held = if one_choice { per_type.clone() } else { vec![per_type[*depth]] };
+        let options: usize = held.iter().map(|&(_, k)| n_choose_k(k + b - 1, b - 1)).product();
+        assert_eq!(offer.len(), options, "{label}: options at depth {depth}");
+        let distinct: BTreeSet<&Moves> = offer.iter().collect();
+        assert_eq!(distinct.len(), offer.len(), "{label}: two options alike at depth {depth}");
+        for moves in offer {
+            assert!(
+                moves.iter().all(|&(amount, _, to)| amount > 0 && slots.contains(&to))
+                    && moves.windows(2).all(|pair| (pair[0].1, pair[0].2) < (pair[1].1, pair[1].2)),
+                "{label}: {moves:?} is not canonical"
+            );
+            let mut moved = BTreeMap::new();
+            for &(amount, energy_type, _) in moves {
+                *moved.entry(energy_type).or_insert(0usize) += amount as usize;
+            }
+            assert_eq!(moved.into_iter().collect::<Vec<_>>(), held, "{label}: {moves:?} at depth {depth}");
+        }
+    }
+    let decisions = if one_choice { 1 } else { per_type.len() };
+    assert!(
+        walk.leaves.iter().all(|(depth, _)| *depth == decisions),
+        "{label}: a path of other than {decisions} decisions"
+    );
+    if one_choice {
+        assert_eq!(walk.nodes.len(), 1, "{label}");
+    }
+
+    let mut ends = BTreeMap::new();
+    for (_, leaf) in walk.leaves {
+        assert!(leaf.get_active(0).attached_energy.is_empty() && !wings_frame_left(&leaf), "{label}");
+        let end = end_board(&leaf, &slots);
+        assert!(ends.insert(end.clone(), leaf).is_none(), "{label}: two paths end on {end:?}");
+    }
+    let boards: BTreeSet<EndBoard> = ends.keys().cloned().collect();
+    assert!(boards == brute_force_boards(&wings.energy, &slots), "{label}: the end boards are not brute force's");
+    assert_eq!(ends.len(), count, "{label}");
+    for (end, leaf) in &ends {
+        assert!(
+            *leaf == expected_end(&start, wings, end),
+            "{label}: the end state on {end:?} is not the start with only these moves"
+        );
+    }
+    ends
+}
+
+/// Condition 3, one choice. On every board here the final boards number at most 256, so the attack offers all of them
+/// as one choice. Along that path and along the forced per-type path `check_end_boards` holds, and both paths end in
+/// the same states. Boards: [P]x3 on one Benched Pokémon (1), [P]x4 on three (15), [W][L][P][P] on three (54), [P]x3
+/// on a gapped Bench, slots 1 and 3 (4), upstream's [P][P][W] on two (6), [W][P][P] with Comfey's Flower Shield ([P]
+/// only) and with Teal Mask Ogerpon ex's Soothing Wind (any Energy) in slot 1 and a Poisoned and an Asleep receiver in
+/// slots 2 and 3 (18 each), [W][L][P]x6 on three (252), and two boards of exactly 256: [R]x3 [W]x3 [L]x3 [P]x3 on the
+/// gapped slots 1 and 3 (a count that read the slot number would be 10^4), and [G]x7 [W]x7 [P]x3 on slots 2 and 3.
+#[test]
+fn test_wings_of_the_moone_end_boards_equal_brute_force_in_one_choice() {
+    let boards = [
+        (WingsBoard::plain(vec![Psychic; 3], &[1]), 1),
+        (WingsBoard::plain(vec![Psychic; 4], &[1, 2, 3]), 15),
+        (WingsBoard::plain(vec![Water, Lightning, Psychic, Psychic], &[1, 2, 3]), 54),
+        (WingsBoard::plain(vec![Psychic; 3], &[1, 3]), 4),
+        (WingsBoard::plain(vec![Psychic, Psychic, Water], &[1, 2]), 6),
+        (soothing_board(vec![Water, Psychic, Psychic], CardId::A3080Comfey, Some(Psychic)), 18),
+        (soothing_board(vec![Water, Psychic, Psychic], CardId::B2017TealMaskOgerponEx, None), 18),
+        (WingsBoard::plain(energy_of(&[(Water, 1), (Lightning, 1), (Psychic, 6)]), &[1, 2, 3]), 252),
+        (
+            WingsBoard::plain(energy_of(&[(Fire, 3), (Water, 3), (Lightning, 3), (Psychic, 3)]), &[1, 3]),
+            256,
+        ),
+        (WingsBoard::plain(energy_of(&[(Grass, 7), (Water, 7), (Psychic, 3)]), &[2, 3]), 256),
+    ];
+    for (wings, expected) in &boards {
+        assert_eq!(board_count(&wings.energy, wings.bench.len()), *expected, "{:?}", wings.energy);
+        let one_choice = check_end_boards(wings, Path::AsOffered);
+        let per_type = check_end_boards(wings, Path::ForcedPerType);
+        assert!(one_choice == per_type, "{:?}: the two paths end in different states", wings.energy);
+    }
+}
+
+/// Condition 3, one type at a time. On every board here the final boards number over 256, so the attack offers the
+/// lowest Energy type's splits alone and each later type follows the same way; `check_end_boards` holds (its forced
+/// path is the same walk). Boards, on three Benched Pokémon: [W]x3 [L]x2 [P]x2 (10, 6 and 6 options: 360), [W]x4 [L]
+/// [P]x2 (15, 3, 6: 270), [W]x5 [P]x4 (21, 15: 315), and [W]x3 [L]x2 [P]x2 with Comfey's Flower Shield and the
+/// Poisoned and Asleep receivers, whose cure comes with a [P] in the last choice (360).
+#[test]
+fn test_wings_of_the_moone_end_boards_equal_brute_force_one_type_at_a_time() {
+    let three_two_two = energy_of(&[(Water, 3), (Lightning, 2), (Psychic, 2)]);
+    let boards = [
+        (WingsBoard::plain(three_two_two.clone(), &[1, 2, 3]), 360),
+        (WingsBoard::plain(energy_of(&[(Water, 4), (Lightning, 1), (Psychic, 2)]), &[1, 2, 3]), 270),
+        (WingsBoard::plain(energy_of(&[(Water, 5), (Psychic, 4)]), &[1, 2, 3]), 315),
+        (soothing_board(three_two_two, CardId::A3080Comfey, Some(Psychic)), 360),
+    ];
+    for (wings, expected) in &boards {
+        assert_eq!(board_count(&wings.energy, wings.bench.len()), *expected, "{:?}", wings.energy);
+        let as_offered = check_end_boards(wings, Path::AsOffered);
+        assert!(as_offered == check_end_boards(wings, Path::ForcedPerType), "{:?}", wings.energy);
+    }
+}
+
+/// The shape is decided once, when the attack resolves (coordinator-132). [W]x3 [L]x2 [P]x2 on three Benched Pokémon
+/// (360 final boards) offers the 10 splits of the [W], then the 6 of the [L] (not the 6 x 6 = 36 final boards the two
+/// types left would count), then the 6 of the [P]. [W][L][P]x6 on three (252) and [R]x3 [W]x3 [L]x3 [P]x3 on slots 1 and
+/// 3 (256) offer one choice, every option holding every type.
+#[test]
+fn test_wings_of_the_moone_shape_is_decided_once_when_the_attack_resolves() {
+    let mut game = after_wings(0, energy_of(&[(Water, 3), (Lightning, 2), (Psychic, 2)]), &[1, 2, 3]);
+    for (energy_type, options) in [(Water, 10), (Lightning, 6), (Psychic, 6)] {
+        let offer = wings_offer(&game.get_state_clone());
+        assert_eq!(offer.len(), options, "{energy_type:?}");
+        assert!(offer.iter().flatten().all(|&(_, offered, _)| offered == energy_type), "{energy_type:?}");
+        let first = offer[0].clone();
+        choose(&mut game, &first);
+    }
+    assert!(!wings_frame_left(&game.get_state_clone()));
+    for (energy, bench, options) in [
+        (energy_of(&[(Water, 1), (Lightning, 1), (Psychic, 6)]), vec![1, 2, 3], 252),
+        (energy_of(&[(Fire, 3), (Water, 3), (Lightning, 3), (Psychic, 3)]), vec![1, 3], 256),
+    ] {
+        let types = by_type(&energy).len();
+        let mut game = after_wings(0, energy, &bench);
+        let offer = wings_offer(&game.get_state_clone());
+        assert_eq!(offer.len(), options);
+        for moves in &offer {
+            let held: BTreeSet<EnergyType> = moves.iter().map(|&(_, energy_type, _)| energy_type).collect();
+            assert_eq!(held.len(), types, "{moves:?}");
+        }
+        let last = offer.last().unwrap().clone();
+        choose(&mut game, &last);
+        let state = game.get_state_clone();
+        assert!(state.get_active(0).attached_energy.is_empty() && !wings_frame_left(&state));
+    }
+}
+
+/// N10: branching pins, as (decision nodes, nodes with two or more options, end boards). [P]x4 on three Benched
+/// Pokémon: (1, 1, 15) (the per-Energy chain had (20, 10, 15), upstream's free order 40 nodes and 81 paths);
+/// [W][L][P][P] on three: (1, 1, 54); [P]x3 on one: (1, 0, 1); [W]x3 [L]x2 [P]x2 on three, one type at a time: 1 + 10 +
+/// 60 = 71 nodes, every one a real choice, and 360 end boards.
+#[test]
+fn test_wings_of_the_moone_branching_pins() {
+    for (energy, bench, shape) in [
+        (vec![Psychic; 4], vec![1, 2, 3], (1, 1, 15)),
+        (vec![Water, Lightning, Psychic, Psychic], vec![1, 2, 3], (1, 1, 54)),
+        (vec![Psychic; 3], vec![1], (1, 0, 1)),
+        (energy_of(&[(Water, 3), (Lightning, 2), (Psychic, 2)]), vec![1, 2, 3], (71, 71, 360)),
+    ] {
+        let start = after_wings(0, energy.clone(), &bench).get_state_clone();
+        let mut walk = Walk::default();
+        explore(&start, 0, &mut walk);
+        assert_eq!(walk.shape(), shape, "{energy:?}");
+    }
+}
+
+/// Picks the Wings of the Moone option that puts the most Energy furthest along the Bench (the largest sum of amount x
+/// Bench slot), and keeps seat 0's public events.
 #[derive(Debug)]
 struct Furthest {
     seat: usize,
@@ -386,8 +640,10 @@ impl Player for Furthest {
     fn decide_omniscient(&mut self, _: &mut StdRng, _: &State, actions: &[Action]) -> Action {
         actions
             .iter()
-            .max_by_key(|action| match action.action {
-                SimpleAction::MoveActiveEnergyToBenchAndReoffer { to_in_play_idx, .. } => to_in_play_idx,
+            .max_by_key(|action| match &action.action {
+                SimpleAction::DistributeActiveEnergyToBench { moves } => {
+                    moves.iter().map(|&(amount, _, to)| amount as usize * to).sum::<usize>()
+                }
                 _ => 0,
             })
             .unwrap()
@@ -395,8 +651,8 @@ impl Player for Furthest {
     }
 }
 
-/// Plays the rest of the chain through `Game::play_tick` with `Furthest` in both seats: the end state, and each tick's
-/// action with its public event.
+/// Plays the rest of the choices through `Game::play_tick` with `Furthest` in both seats: the end state, and each
+/// tick's action with its public event.
 fn chain_through_play_tick(state: State) -> (State, Vec<(Action, PublicEvent)>) {
     let events = Rc::new(RefCell::new(Vec::new()));
     let players = (0..2)
@@ -417,48 +673,54 @@ fn chain_through_play_tick(state: State) -> (State, Vec<(Action, PublicEvent)>) 
     (game.get_state_clone(), ticks)
 }
 
-/// N2 and N5: four [P] on three Benched Pokémon, always to the furthest: one real decision (to slot 3, of 3 choices),
-/// then three frames that offer only slot 3 (the floor), which `play_tick` applies without asking. With one Benched
-/// Pokémon there is no decision at all. No move advances the game's random number generator (N6).
+/// N2 and N5: through `Game::play_tick`. [P]x4 on three Benched Pokémon, all to the furthest: one real decision, of 15
+/// options, and nothing after it. [P][P][W] on one Benched Pokémon (slot 2): one option, applied without a decision,
+/// its Energy appended [W] first. No choice advances the game's random number generator (N6).
 #[test]
-fn test_wings_of_the_moone_single_choice_frames_are_applied_without_a_decision() {
+fn test_wings_of_the_moone_single_option_choices_are_applied_without_a_decision() {
     let (end, ticks) = chain_through_play_tick(after_wings(0, vec![Psychic; 4], &[1, 2, 3]).get_state_clone());
     let choices: Vec<bool> = ticks.iter().map(|(_, event)| event.was_choice).collect();
-    assert_eq!(choices, vec![true, false, false, false]);
+    assert_eq!(choices, vec![true]);
     assert!(ticks.iter().all(|(action, event)| is_wings_move(&action.action) && !event.chance));
     assert_eq!(sorted_energy(&end, 0, 3), vec![Psychic; 4]);
+    assert!(end.get_active(0).attached_energy.is_empty() && !wings_frame_left(&end));
 
     let (end, ticks) = chain_through_play_tick(
         after_wings(0, vec![Psychic, Psychic, Water], &[2]).get_state_clone(),
     );
-    assert_eq!(ticks.len(), 3);
+    assert_eq!(ticks.len(), 1);
     assert!(ticks.iter().all(|(_, event)| !event.was_choice && !event.chance));
     assert!(end.get_active(0).attached_energy.is_empty());
-    assert_eq!(sorted_energy(&end, 0, 2), vec![Water, Psychic, Psychic]);
+    assert_eq!(end.in_play_pokemon[0][2].as_ref().unwrap().attached_energy, vec![Water, Psychic, Psychic]);
 }
 
-/// N6: every offered move, at every step of a [W][L][P][P] chain on three Benched Pokémon, forecasts one branch with
-/// probability 1.
+/// N6: every offered distribution, at every choice of [W][L][P][P] (one choice) and of [W]x3 [L]x2 [P]x2 (three) on
+/// three Benched Pokémon, forecasts one branch with probability 1.
 #[test]
-fn test_wings_of_the_moone_each_move_is_one_certain_branch() {
-    let mut game = after_wings(0, vec![Water, Lightning, Psychic, Psychic], &[1, 2, 3]);
-    let mut steps = 0;
-    while !wings_offer(&game.get_state_clone()).is_empty() {
-        let state = game.get_state_clone();
-        let (_, actions) = state.generate_possible_actions();
-        for action in &actions {
-            let (probabilities, _) = try_forecast_action(&state, action).unwrap().into_branches();
-            assert_eq!(probabilities, vec![1.0], "{}", action.action);
+fn test_wings_of_the_moone_each_choice_is_one_certain_branch() {
+    for (energy, choices) in [
+        (vec![Water, Lightning, Psychic, Psychic], 1),
+        (energy_of(&[(Water, 3), (Lightning, 2), (Psychic, 2)]), 3),
+    ] {
+        let mut game = after_wings(0, energy.clone(), &[1, 2, 3]);
+        let mut steps = 0;
+        while !wings_offer(&game.get_state_clone()).is_empty() {
+            let state = game.get_state_clone();
+            let (_, actions) = state.generate_possible_actions();
+            for action in &actions {
+                let (probabilities, _) = try_forecast_action(&state, action).unwrap().into_branches();
+                assert_eq!(probabilities, vec![1.0], "{}", action.action);
+            }
+            game.apply_action(&actions[0]);
+            steps += 1;
         }
-        game.apply_action(&actions[0]);
-        steps += 1;
+        assert_eq!(steps, choices, "{energy:?}");
     }
-    assert_eq!(steps, 4);
 }
 
-/// N3 (divergence D8): Rocky Helmet (A2 148) on the defender, Lunala at 20 HP. The Helmet's 20 waits for the last
-/// move, so every Energy reaches the Bench and only then is Lunala Knocked Out (upstream skips the move once the
-/// attacker is Knocked Out). The opponent takes the point and player 0 promotes.
+/// N3 (divergence D8): Rocky Helmet (A2 148) on the defender, Lunala at 20 HP. The Helmet's 20 waits for the moves,
+/// so every Energy reaches the Bench and only then is Lunala Knocked Out (upstream skips the move once the attacker is
+/// Knocked Out). The opponent takes the point and player 0 promotes.
 #[test]
 fn test_wings_of_the_moone_moves_every_energy_before_rocky_helmet_knocks_lunala_out() {
     let mut game = board(
@@ -471,10 +733,8 @@ fn test_wings_of_the_moone_moves_every_energy_before_rocky_helmet_knocks_lunala_
     );
     attack(&mut game, CardId::C1066Lunala, 0);
     assert_eq!(defender_damage(&game), 110);
-    for (energy, to) in [(Water, 1), (Psychic, 1), (Psychic, 2)] {
-        assert_eq!(game.get_state_clone().get_active(0).get_remaining_hp(), 20);
-        move_to(&mut game, energy, to);
-    }
+    assert_eq!(game.get_state_clone().get_active(0).get_remaining_hp(), 20);
+    choose(&mut game, &[(1, Water, 1), (1, Psychic, 1), (1, Psychic, 2)]);
     let state = game.get_state_clone();
     assert_eq!(state.get_active(0).get_remaining_hp(), 20, "the Helmet waits for the reaction frame");
     assert_eq!(state.points, [0, 0]);
@@ -492,20 +752,18 @@ fn test_wings_of_the_moone_moves_every_energy_before_rocky_helmet_knocks_lunala_
 }
 
 /// N4: the 110 Knocks Out the defender (Bulbasaur, 70 HP). Its Knock Out, the point and the opponent's promotion all
-/// come after the last move: no catch-all Knock Out check removes it in between.
+/// come after the moves: no catch-all Knock Out check removes it in between.
 #[test]
-fn test_wings_of_the_moone_knock_out_resolves_after_the_last_move() {
+fn test_wings_of_the_moone_knock_out_resolves_after_the_moves() {
     let mut game = board(
         vec![lunala(vec![Psychic, Psychic]), durable(), durable()],
         vec![PlayedCard::from_id(CardId::A1001Bulbasaur), durable(), durable()],
     );
     attack(&mut game, CardId::C1066Lunala, 0);
-    for to in [1, 2] {
-        let state = game.get_state_clone();
-        assert!(state.in_play_pokemon[1][0].is_some(), "the Knocked Out Bulbasaur is still in play");
-        assert_eq!(state.points, [0, 0]);
-        move_to(&mut game, Psychic, to);
-    }
+    let state = game.get_state_clone();
+    assert!(state.in_play_pokemon[1][0].is_some(), "the Knocked Out Bulbasaur is still in play");
+    assert_eq!(state.points, [0, 0]);
+    choose(&mut game, &[(1, Psychic, 1), (1, Psychic, 2)]);
     let state = game.get_state_clone();
     assert!(state.in_play_pokemon[1][0].is_some());
     assert_eq!(state.points, [0, 0]);
@@ -523,11 +781,11 @@ fn test_wings_of_the_moone_knock_out_resolves_after_the_last_move() {
         .all(|action| matches!(action.action, SimpleAction::Promote { player: 1, .. })));
 }
 
-/// N14: Lunala's 110 takes the last point. Every move is still offered and applied first (the game is not over while
-/// a choice is offered), then the Knock Out, the third point and the win; no Wings of the Moone frame is left once the
-/// game is over.
+/// N14: Lunala's 110 takes the last point. The distribution is still offered and applied first (the game is not over
+/// while a choice is offered), then the Knock Out, the third point and the win; no Wings of the Moone frame is left
+/// once the game is over.
 #[test]
-fn test_wings_of_the_moone_winning_knock_out_comes_after_the_last_move() {
+fn test_wings_of_the_moone_winning_knock_out_comes_after_the_moves() {
     let mut game = board(
         vec![lunala(vec![Psychic, Psychic, Water]), durable(), durable()],
         vec![PlayedCard::from_id(CardId::A1001Bulbasaur), durable()],
@@ -536,11 +794,9 @@ fn test_wings_of_the_moone_winning_knock_out_comes_after_the_last_move() {
     state.points = [2, 0];
     game.set_state(state);
     attack(&mut game, CardId::C1066Lunala, 0);
-    for (energy, to) in [(Water, 2), (Psychic, 1), (Psychic, 1)] {
-        assert!(!game.is_game_over());
-        assert_eq!(game.get_state_clone().points, [2, 0]);
-        move_to(&mut game, energy, to);
-    }
+    assert!(!game.is_game_over());
+    assert_eq!(game.get_state_clone().points, [2, 0]);
+    choose(&mut game, &[(1, Water, 2), (2, Psychic, 1)]);
     assert!(!game.is_game_over(), "the Knock Out waits for the reaction frame");
     resolve_retaliation(&mut game);
     let state = game.get_state_clone();
@@ -579,11 +835,11 @@ fn test_wings_of_the_moone_moves_every_energy_before_perish_body_knocks_lunala_o
             heads.then_some(game)
         })
         .expect("some seed flips Perish Body heads");
-    for (energy, to) in [(Water, 1), (Psychic, 2), (Psychic, 2)] {
-        let state = game.get_state_clone();
-        assert!(state.in_play_pokemon[0][0].is_some() && state.in_play_pokemon[1][0].is_some());
-        move_to(&mut game, energy, to);
-    }
+    let state = game.get_state_clone();
+    assert!(state.in_play_pokemon[0][0].is_some() && state.in_play_pokemon[1][0].is_some());
+    choose(&mut game, &[(1, Water, 1), (2, Psychic, 2)]);
+    let state = game.get_state_clone();
+    assert!(state.in_play_pokemon[0][0].is_some() && state.in_play_pokemon[1][0].is_some());
     resolve_retaliation(&mut game);
     let state = game.get_state_clone();
     assert!(state.in_play_pokemon[0][0].is_none(), "Perish Body Knocks Lunala Out");
@@ -595,9 +851,9 @@ fn test_wings_of_the_moone_moves_every_energy_before_perish_body_knocks_lunala_o
 
 /// The defender is Meowth (B2 124), whose Carefree Steps reads "If any damage is done to this Pokémon by attacks, flip a
 /// coin. If heads, prevent that damage." On heads the 110 has no damage target left, so no `ResolveAttackRetaliation`
-/// frame is put below the chain and every move runs under the end-of-action Knock Out check. Nothing was damaged, so the
-/// chain still moves every Energy and leaves only the turn's end to offer. On tails the frame is there and Meowth's Knock
-/// Out waits for it. Both happen over 40 seeds.
+/// frame is put below the choice and the distribution runs under the end-of-action Knock Out check. Nothing was
+/// damaged, so every Energy still moves and only the turn's end is left to offer. On tails the frame is there and
+/// Meowth's Knock Out waits for it. Both happen over 40 seeds.
 #[test]
 fn test_wings_of_the_moone_runs_without_a_reaction_frame_when_carefree_steps_prevents_the_damage() {
     let (mut prevented, mut damaged) = (0, 0);
@@ -616,7 +872,7 @@ fn test_wings_of_the_moone_runs_without_a_reaction_frame_when_carefree_steps_pre
                 .iter()
                 .any(|choice| matches!(choice, SimpleAction::ResolveAttackRetaliation { .. }))
         });
-        assert_eq!(wings_offer(&state), vec![(Water, 1), (Water, 2)], "seed {seed}");
+        assert_eq!(wings_offer(&state), psychic_psychic_water_offer(), "seed {seed}");
         if defender_damage(&game) > 0 {
             damaged += 1;
             assert!(reaction_frame, "seed {seed}");
@@ -625,9 +881,7 @@ fn test_wings_of_the_moone_runs_without_a_reaction_frame_when_carefree_steps_pre
         }
         prevented += 1;
         assert!(!reaction_frame, "seed {seed}");
-        for (energy, to) in [(Water, 1), (Psychic, 1), (Psychic, 2)] {
-            move_to(&mut game, energy, to);
-        }
+        choose(&mut game, &[(1, Water, 1), (1, Psychic, 1), (1, Psychic, 2)]);
         let state = game.get_state_clone();
         assert!(state.get_active(0).attached_energy.is_empty(), "seed {seed}");
         assert_eq!(sorted_energy(&state, 0, 1), vec![Water, Psychic], "seed {seed}");
@@ -645,8 +899,8 @@ fn test_wings_of_the_moone_runs_without_a_reaction_frame_when_carefree_steps_pre
 
 /// N11 and N5: Lunala cannot attack with no Energy in play (the cost is [P][P]); applied directly, the attack does its
 /// 110 and offers nothing. With Energy but no Benched Pokémon nothing is offered either and the Energy stays. Either
-/// way no frame is left behind: the reactions resolve at once and the turn's end is all that is offered. The helper's
-/// own test is in attack_helpers.rs.
+/// way no frame is left behind: the reactions resolve at once and the turn's end is all that is offered. The helpers'
+/// own tests are in attack_helpers.rs.
 #[test]
 fn test_wings_of_the_moone_with_no_energy_or_no_bench_offers_nothing() {
     for (ours, energy_left) in [
@@ -668,7 +922,7 @@ fn test_wings_of_the_moone_with_no_energy_or_no_bench_offers_nothing() {
 }
 
 /// N12: a Confused Lunala. On tails the attack does nothing: no damage, no choice, and the Energy stays. On heads the
-/// chain runs as usual. Both happen over 20 seeds.
+/// 6 final boards are offered as usual. Both happen over 20 seeds.
 #[test]
 fn test_confused_lunala_moves_its_energy_only_when_the_attack_goes_ahead() {
     let (mut failed, mut used) = (0, 0);
@@ -693,7 +947,7 @@ fn test_confused_lunala_moves_its_energy_only_when_the_attack_goes_ahead() {
         } else {
             used += 1;
             assert_eq!(defender_damage(&game), 110, "seed {seed}");
-            assert_eq!(wings_offer(&state), vec![(Water, 1), (Water, 2)], "seed {seed}");
+            assert_eq!(wings_offer(&state), psychic_psychic_water_offer(), "seed {seed}");
         }
     }
     assert!(failed > 0 && used > 0, "{failed} failed, {used} went ahead");
@@ -701,7 +955,7 @@ fn test_confused_lunala_moves_its_energy_only_when_the_attack_goes_ahead() {
 
 /// N13: Mew ex (A1a 032) copies an opposing Lunala's Wings of the Moone with Genome Hacking ("Choose 1 of your
 /// opponent's Active Pokémon's attacks and use it as this attack."). "This Pokémon" is Mew ex, so Mew ex's own Energy
-/// goes to Mew ex's own Bench, and the opposing Lunala keeps its Energy.
+/// goes to Mew ex's own Bench (its 4 final boards), and the opposing Lunala keeps its Energy.
 #[test]
 fn test_wings_of_the_moone_copied_by_mew_ex_moves_mew_exs_own_energy() {
     let mew = CardId::A1a032MewEx;
@@ -717,10 +971,16 @@ fn test_wings_of_the_moone_copied_by_mew_ex_moves_mew_exs_own_energy() {
         .expect("Genome Hacking offers Wings of the Moone");
     game.apply_action(&wings);
     assert_eq!(defender_damage(&game), 110);
-    assert_eq!(wings_offer(&game.get_state_clone()), vec![(Psychic, 1), (Psychic, 2)]);
-    for to in [1, 2, 2] {
-        move_to(&mut game, Psychic, to);
-    }
+    assert_eq!(
+        wings_offer(&game.get_state_clone()),
+        vec![
+            vec![(3, Psychic, 2)],
+            vec![(1, Psychic, 1), (2, Psychic, 2)],
+            vec![(2, Psychic, 1), (1, Psychic, 2)],
+            vec![(3, Psychic, 1)],
+        ]
+    );
+    choose(&mut game, &[(1, Psychic, 1), (2, Psychic, 2)]);
     let state = game.get_state_clone();
     assert_eq!(state.get_active(0).get_id(), "A1a 032");
     assert!(state.get_active(0).attached_energy.is_empty());
@@ -730,70 +990,79 @@ fn test_wings_of_the_moone_copied_by_mew_ex_moves_mew_exs_own_energy() {
 }
 
 /// N7: player 0 knows the opponent's hand (Hand Scope, P-A 003) and its own top 3 cards (Pokédex, P-A 004). Neither
-/// seat's revealed knowledge changes through the attack and every move: the moves' names contain "hand"
-/// (`MoveActiveEnergyToBenchAndReoffer`), which the knowledge update must not read as a hand change.
+/// seat's revealed knowledge changes through the attack and every choice, on [W][L][P][P] (one choice) and [W]x3 [L]x2
+/// [P]x2 (three) on three Benched Pokémon. The action's name holds none of the words the knowledge update reads
+/// ("hand", "deck", "draw", "shuffle", ...; the per-Energy action's did hold "hand"): this guards a future rename.
 #[test]
 fn test_wings_of_the_moone_leaves_both_seats_revealed_knowledge_alone() {
-    let mut game = board(
-        vec![
-            lunala(vec![Water, Lightning, Psychic, Psychic]),
-            durable(),
-            durable(),
-            durable(),
-        ],
-        vec![durable()],
-    );
-    let mut state = game.get_state_clone();
-    state.hands[0] = vec![
-        get_card_by_enum(CardId::PA003HandScope),
-        get_card_by_enum(CardId::PA004PokedEx),
-    ];
-    state.hands[1] = vec![
-        get_card_by_enum(CardId::A1001Bulbasaur),
-        get_card_by_enum(CardId::A1225Sabrina),
-    ];
-    game.set_state(state);
-    play_trainer(&mut game, 0, trainer_from_id(CardId::PA003HandScope));
-    play_trainer(&mut game, 0, trainer_from_id(CardId::PA004PokedEx));
-    let known = [game.observation(0).revealed, game.observation(1).revealed];
-    assert_eq!(known[0].opponent_hand.len(), 2);
-    assert_eq!(known[0].deck_top[0].len(), 3);
-    attack(&mut game, CardId::C1066Lunala, 0);
-    let mut steps = 0;
-    loop {
-        assert_eq!([game.observation(0).revealed, game.observation(1).revealed], known, "step {steps}");
-        let (_, actions) = game.get_state_clone().generate_possible_actions();
-        if !actions.iter().any(|action| is_wings_move(&action.action)) {
-            break;
-        }
-        game.apply_action(actions.last().unwrap());
-        steps += 1;
-    }
-    assert_eq!(steps, 4);
-}
-
-/// N9 (smoke): km3 and WeightedRandomPlayer pick an offered move at every frame of a [W][L][P][P] chain on three
-/// Benched Pokémon, through `decision_fn` with each frame's observation.
-#[test]
-fn test_km3_and_weighted_random_pick_an_offered_move_at_every_frame() {
-    for code in [PlayerCode::KM { max_depth: 3 }, PlayerCode::W] {
-        let mut game = after_wings(0, vec![Water, Lightning, Psychic, Psychic], &[1, 2, 3]);
-        let mut players = create_players(Deck::default(), Deck::default(), vec![code.clone(), code.clone()]);
+    for (energy, choices) in [
+        (vec![Water, Lightning, Psychic, Psychic], 1),
+        (energy_of(&[(Water, 3), (Lightning, 2), (Psychic, 2)]), 3),
+    ] {
+        let mut game = board(vec![lunala(energy.clone()), durable(), durable(), durable()], vec![durable()]);
+        let mut state = game.get_state_clone();
+        state.hands[0] = vec![
+            get_card_by_enum(CardId::PA003HandScope),
+            get_card_by_enum(CardId::PA004PokedEx),
+        ];
+        state.hands[1] = vec![
+            get_card_by_enum(CardId::A1001Bulbasaur),
+            get_card_by_enum(CardId::A1225Sabrina),
+        ];
+        game.set_state(state);
+        play_trainer(&mut game, 0, trainer_from_id(CardId::PA003HandScope));
+        play_trainer(&mut game, 0, trainer_from_id(CardId::PA004PokedEx));
+        let known = [game.observation(0).revealed, game.observation(1).revealed];
+        assert_eq!(known[0].opponent_hand.len(), 2);
+        assert_eq!(known[0].deck_top[0].len(), 3);
+        attack(&mut game, CardId::C1066Lunala, 0);
         let mut steps = 0;
         loop {
-            let (actor, mut actions) = game.get_state_clone().generate_possible_actions();
+            assert_eq!(
+                [game.observation(0).revealed, game.observation(1).revealed],
+                known,
+                "{energy:?} step {steps}"
+            );
+            let (_, actions) = game.get_state_clone().generate_possible_actions();
             if !actions.iter().any(|action| is_wings_move(&action.action)) {
                 break;
             }
-            canonical_actions(&mut actions);
-            let observation = game.observation(actor);
-            let chosen = players[actor].decision_fn(&mut StdRng::seed_from_u64(steps), &observation, &actions);
-            assert!(actions.contains(&chosen), "{code:?} picked {chosen:?}");
-            game.apply_action(&chosen);
+            game.apply_action(actions.last().unwrap());
             steps += 1;
         }
-        assert_eq!(steps, 4, "{code:?}");
-        assert!(game.get_state_clone().get_active(0).attached_energy.is_empty(), "{code:?}");
+        assert_eq!(steps, choices, "{energy:?}");
+    }
+}
+
+/// N9 (smoke): km3 and WeightedRandomPlayer pick an offered option at every choice of [W][L][P][P] (one choice),
+/// [W]x5 [P]x4 (two) and [W]x3 [L]x2 [P]x2 (three) on three Benched Pokémon, through `decision_fn` with each choice's
+/// observation.
+#[test]
+fn test_km3_and_weighted_random_pick_an_offered_option_at_every_choice() {
+    for code in [PlayerCode::KM { max_depth: 3 }, PlayerCode::W] {
+        for (energy, choices) in [
+            (vec![Water, Lightning, Psychic, Psychic], 1),
+            (energy_of(&[(Water, 5), (Psychic, 4)]), 2),
+            (energy_of(&[(Water, 3), (Lightning, 2), (Psychic, 2)]), 3),
+        ] {
+            let mut game = after_wings(0, energy.clone(), &[1, 2, 3]);
+            let mut players = create_players(Deck::default(), Deck::default(), vec![code.clone(), code.clone()]);
+            let mut steps = 0;
+            loop {
+                let (actor, mut actions) = game.get_state_clone().generate_possible_actions();
+                if !actions.iter().any(|action| is_wings_move(&action.action)) {
+                    break;
+                }
+                canonical_actions(&mut actions);
+                let observation = game.observation(actor);
+                let chosen = players[actor].decision_fn(&mut StdRng::seed_from_u64(steps), &observation, &actions);
+                assert!(actions.contains(&chosen), "{code:?} picked {chosen:?}");
+                game.apply_action(&chosen);
+                steps += 1;
+            }
+            assert_eq!(steps, choices, "{code:?} {energy:?}");
+            assert!(game.get_state_clone().get_active(0).attached_energy.is_empty(), "{code:?} {energy:?}");
+        }
     }
 }
 
@@ -812,6 +1081,15 @@ fn test_lunala_printings_report_complete() {
 
 fn label(action: &Action) -> String {
     format!("{}|{}|{}", action.actor, action.is_stack, action.action)
+}
+
+/// km3, y3 and x3.
+fn searchers() -> [(&'static str, PlayerCode); 3] {
+    [
+        ("km3", PlayerCode::KM { max_depth: 3 }),
+        ("y3", PlayerCode::Y { max_depth: 3, opponent_ply: 3 }),
+        ("x3", PlayerCode::X { max_depth: 3, opponent_ply: 3 }),
+    ]
 }
 
 /// Plays `state` with `code` in both seats through `Game::play_tick` until turn `until_turn` begins or the game is
@@ -850,10 +1128,13 @@ fn smoke_game(out: &mut String, state: State, code: &PlayerCode, until_turn: u8)
     );
 }
 
-/// The two smoke records of design §C.1, recorded and not asserted beyond legality.
-/// - R6: player 0 at 2 points, its Lunala holding `energy` with one Benched Pokémon, against a 70-HP Bulbasaur whose
-///   Knock Out wins: does each searcher attack? With 3 Energy the chain is cut by km3's horizon at the attack root, so
-///   the 110's Knock Out and the win are not priced there (risk R6); 2 Energy is recorded beside it.
+/// The smoke records of design §5.2 and §D.9, recorded and not asserted beyond legality.
+/// - R6: player 0 at 2 points (0 in the no-win rows), its Lunala holding `energy` with one or three Benched Bulbasaur,
+///   against a 70-HP Bulbasaur whose Knock Out wins (in the no-win rows it does not), with a Charmander Benched (in the
+///   no-win mixed row Charmander, Bulbasaur and Snorlax): does each searcher attack? With one choice ([P]x3 and [P]x2
+///   on one Benched Pokémon: 1 option; [W][L][P][P] on three: 54) the 110's Knock Out is priced at the depth-3 tiers'
+///   attack root; one type at a time with 2 types ([W]x5 [P]x4: 21, then 15) too; with 3 types ([W]x3 [L]x2 [P]x2:
+///   10, 6, 6) the third choice is past the horizon (risk R6, narrowed).
 /// - R6b: player 0's Bulbasaur (70 HP, [G]) faces player 1's ready Lunala at 2 points, with a Snorlax at its printed
 ///   150 HP (which survives the 110) on its Bench: what does each searcher do on its own turn, and how does player 1's
 ///   turn end (risk R6b)? The control row is the same board with Lunala holding no Energy, so it cannot attack on turn
@@ -865,30 +1146,40 @@ fn smoke_game(out: &mut String, state: State, code: &PlayerCode, until_turn: u8)
 #[test]
 fn smoke_record_searchers_at_and_against_a_lethal_wings_of_the_moone() {
     let mut out = String::new();
-    let searchers = [
-        ("km3", PlayerCode::KM { max_depth: 3 }),
-        ("y3", PlayerCode::Y { max_depth: 3, opponent_ply: 3 }),
-        ("x3", PlayerCode::X { max_depth: 3, opponent_ply: 3 }),
-    ];
-    for energy in [vec![Psychic; 3], vec![Psychic; 2]] {
-        let game = get_initialized_game_with_board(
-            0,
-            0,
+    let searchers = searchers();
+    let bulbasaur = || PlayedCard::from_id(CardId::A1001Bulbasaur);
+    let charmander = || PlayedCard::from_id(CardId::A1033Charmander);
+    let mixed = vec![Water, Lightning, Psychic, Psychic];
+    for (row, energy, our_bench, points, their_bench) in [
+        ("3[P]", vec![Psychic; 3], 1, 2, vec![charmander()]),
+        ("2[P]", vec![Psychic; 2], 1, 2, vec![charmander()]),
+        ("mixed", mixed.clone(), 3, 2, vec![charmander()]),
+        ("no-win 3[P]", vec![Psychic; 3], 1, 0, vec![charmander()]),
+        (
+            "no-win mixed",
+            mixed,
             3,
-            vec![lunala(energy.clone()), PlayedCard::from_id(CardId::A1001Bulbasaur)],
-            vec![
-                PlayedCard::from_id(CardId::A1001Bulbasaur),
-                PlayedCard::from_id(CardId::A1033Charmander),
-            ],
-        );
+            0,
+            vec![charmander(), bulbasaur(), PlayedCard::from_id(CardId::A1211Snorlax)],
+        ),
+        ("2-type", energy_of(&[(Water, 5), (Psychic, 4)]), 3, 2, vec![charmander()]),
+        ("3-type", energy_of(&[(Water, 3), (Lightning, 2), (Psychic, 2)]), 3, 2, vec![charmander()]),
+    ] {
+        let mut ours = vec![lunala(energy.clone())];
+        ours.extend((0..our_bench).map(|_| bulbasaur()));
+        let mut theirs = vec![bulbasaur()];
+        theirs.extend(their_bench.iter().cloned());
+        let game = get_initialized_game_with_board(0, 0, 3, ours, theirs);
         let mut state = game.get_state_clone();
-        state.points = [2, 0];
+        state.points = [points, 0];
         state.hands = [Vec::new(), Vec::new()];
         state.energy_zone[0].current = None;
         for (name, code) in &searchers {
             let _ = writeln!(
                 out,
-                "R6 {name}: player 0's Lunala {energy:?}, 1 Benched Bulbasaur, 2 points; player 1's Bulbasaur (70 HP) Active"
+                "R6 {row} {name}: player 0's Lunala {energy:?} ({} final boards), {our_bench} Benched Bulbasaur, {points} points; player 1's Bulbasaur (70 HP) Active, {} Benched",
+                board_count(&energy, our_bench),
+                their_bench.len()
             );
             smoke_game(&mut out, state.clone(), code, 4);
         }
@@ -928,5 +1219,110 @@ fn smoke_record_searchers_at_and_against_a_lethal_wings_of_the_moone() {
     print!("{out}");
     if let Ok(path) = std::env::var("LUNALA_SMOKE_OUT") {
         std::fs::write(path, &out).expect("the smoke record is written");
+    }
+}
+
+/// One timed `decision_fn` call by `player` for the actor to move in `game`: (the pick, the number of offered actions,
+/// ms of wall clock).
+fn timed_decision(player: &mut Box<dyn Player>, game: &Game<'static>) -> (Action, usize, f64) {
+    let (actor, mut actions) = game.get_state_clone().generate_possible_actions();
+    canonical_actions(&mut actions);
+    let observation = game.observation(actor);
+    let started = Instant::now();
+    let chosen = player.decision_fn(&mut StdRng::seed_from_u64(0), &observation, &actions);
+    let ms = started.elapsed().as_secs_f64() * 1000.0;
+    assert!(actions.contains(&chosen), "picked an action it was not offered: {chosen:?}");
+    (chosen, actions.len(), ms)
+}
+
+/// Condition 4 (coordinator-131, record only) and design §D.1: km3, y3 and x3's decision times, as ms of wall clock per
+/// `decision_fn` call, on the largest boards built here and on both sides of the 256 switch, at the turn root and at
+/// every Wings of the Moone choice after the Attack is applied directly. The opponent is a 70-HP Bulbasaur with
+/// Charmander, Bulbasaur and Snorlax Benched, at 0 points each, so every Knock Out the search prices carries the
+/// opponent's promotion. The "spent" rows have player 0's Energy Zone spent and empty hands. The "live" rows have the
+/// Zone's [P], two X Speed and a Potion in hand, and Lunala 20 damage down, so the root also offers attaches (to Lunala:
+/// [W][L][P]x5 becomes [W][L][P]x6, 252 final boards, one choice; [W][L][P]x6 becomes [W][L][P]x7, 324, one type at a
+/// time), Items and retreats, each reaching the attack one action later. A decision over 1 s is marked "OVER 1 s" (the
+/// STOP rule). Nothing is asserted beyond legality.
+#[test]
+fn smoke_record_wings_of_the_moone_decision_times() {
+    let mut out = String::from(
+        "cargo test --release --features test-utils; ms of wall clock per decision_fn call\n",
+    );
+    let bulbasaur = || PlayedCard::from_id(CardId::A1001Bulbasaur);
+    let over = |ms: f64| if ms > 1000.0 { " OVER 1 s" } else { "" };
+    let rows = [
+        ("spent [W][L][P]x2", energy_of(&[(Water, 1), (Lightning, 1), (Psychic, 2)]), vec![1, 2, 3], false),
+        ("spent [W][L][P]x6", energy_of(&[(Water, 1), (Lightning, 1), (Psychic, 6)]), vec![1, 2, 3], false),
+        (
+            "spent [R]x3 [W]x3 [L]x3 [P]x3",
+            energy_of(&[(Fire, 3), (Water, 3), (Lightning, 3), (Psychic, 3)]),
+            vec![1, 3],
+            false,
+        ),
+        ("spent [G]x7 [W]x7 [P]x3", energy_of(&[(Grass, 7), (Water, 7), (Psychic, 3)]), vec![2, 3], false),
+        ("spent [W]x4 [L] [P]x2", energy_of(&[(Water, 4), (Lightning, 1), (Psychic, 2)]), vec![1, 2, 3], false),
+        ("spent [W]x5 [P]x4", energy_of(&[(Water, 5), (Psychic, 4)]), vec![1, 2, 3], false),
+        ("spent [W]x3 [L]x2 [P]x2", energy_of(&[(Water, 3), (Lightning, 2), (Psychic, 2)]), vec![1, 2, 3], false),
+        ("live [W][L][P]x5", energy_of(&[(Water, 1), (Lightning, 1), (Psychic, 5)]), vec![1, 2, 3], true),
+        ("live [W][L][P]x6", energy_of(&[(Water, 1), (Lightning, 1), (Psychic, 6)]), vec![1, 2, 3], true),
+    ];
+    let mut slowest: f64 = 0.0;
+    for (row, energy, bench, live) in &rows {
+        let mut ours = lunala(energy.clone());
+        if *live {
+            let hp = ours.get_remaining_hp();
+            ours = ours.with_remaining_hp(hp - 20);
+        }
+        let game = get_initialized_game_with_board(
+            0,
+            0,
+            3,
+            vec![ours],
+            vec![
+                bulbasaur(),
+                PlayedCard::from_id(CardId::A1033Charmander),
+                bulbasaur(),
+                PlayedCard::from_id(CardId::A1211Snorlax),
+            ],
+        );
+        let mut state = game.get_state_clone();
+        for &in_play_idx in bench {
+            state.in_play_pokemon[0][in_play_idx] = Some(bulbasaur());
+        }
+        state.points = [0, 0];
+        state.hands = [Vec::new(), Vec::new()];
+        if *live {
+            state.hands[0] = vec![
+                get_card_by_enum(CardId::PA002XSpeed),
+                get_card_by_enum(CardId::PA002XSpeed),
+                get_card_by_enum(CardId::PA001Potion),
+            ];
+            state.energy_zone[0].current = Some(Psychic);
+        } else {
+            state.energy_zone[0].current = None;
+        }
+        let count = board_count(energy, bench.len());
+        let shape = if count <= 256 { "one choice" } else { "one type at a time" };
+        let _ = writeln!(out, "{row} on Bench {bench:?}: {count} final boards, {shape}");
+        for (name, code) in &searchers() {
+            let mut players = create_players(Deck::default(), Deck::default(), vec![code.clone(), code.clone()]);
+            let mut game = Game::from_state(state.clone(), Vec::new(), 0);
+            let (root, options, ms) = timed_decision(&mut players[0], &game);
+            slowest = slowest.max(ms);
+            let _ = writeln!(out, "  {name} turn root of {options}: {} ({ms:.1} ms){}", label(&root), over(ms));
+            attack(&mut game, CardId::C1066Lunala, 0);
+            while !wings_offer(&game.get_state_clone()).is_empty() {
+                let (chosen, options, ms) = timed_decision(&mut players[0], &game);
+                slowest = slowest.max(ms);
+                let _ = writeln!(out, "  {name} choice of {options}: {} ({ms:.1} ms){}", label(&chosen), over(ms));
+                game.apply_action(&chosen);
+            }
+        }
+    }
+    let _ = writeln!(out, "slowest decision: {slowest:.1} ms{}", over(slowest));
+    print!("{out}");
+    if let Ok(path) = std::env::var("LUNALA_TIMES_OUT") {
+        std::fs::write(path, &out).expect("the timing record is written");
     }
 }

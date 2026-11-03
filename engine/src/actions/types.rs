@@ -336,16 +336,21 @@ pub enum SimpleAction {
     ChooseSweetHoneyTarget {
         in_play_idx: usize,
     },
-    /// Lunala's Wings of the Moone (C1 066, C1 198, P-C 008): move one Energy of `energy_type` from
-    /// the actor's Active Pokémon to their Benched Pokémon at `to_in_play_idx`, then offer the next
-    /// one (`attack_helpers::ordered_active_energy_to_bench_choices`) until the Active Pokémon has no
-    /// Energy left: the attack moves *all* of it, so there is no way to stop early. Upstream's name
-    /// and fields (#438); the fork offers fewer of them, in a fixed order (the lowest Energy type
-    /// first, destinations never decreasing within a type). Last in the enum, so every other variant
-    /// keeps its serde variant index and its `Hash` discriminant.
-    MoveActiveEnergyToBenchAndReoffer {
-        to_in_play_idx: usize,
-        energy_type: EnergyType,
+    /// Lunala's Wings of the Moone (C1 066, C1 198, P-C 008): "Move all Energy from this Pokémon to
+    /// your Benched Pokémon in any way you like." For each `(amount, energy_type, to_in_play_idx)`
+    /// entry (as `Attach`'s tuples), move `amount` Energy of `energy_type` from the actor's Active
+    /// Pokémon to their Benched Pokémon at `to_in_play_idx`, through `apply_move_energy` (so Soothing
+    /// Wind runs for each receiver and no Energy-Zone attach hook fires). The entries run lowest
+    /// `EnergyType` first, then ascending `to_in_play_idx`, with no zero amounts, so each
+    /// distribution has one entry list. With at most 256 final boards one choice offers every final
+    /// board of all the Energy; otherwise there is one choice per Energy type, lowest first, each
+    /// offering every split of that type, decided once when the attack resolves
+    /// (`attack_helpers::wings_of_the_moone_choices`). A fork name and shape: upstream's one-Energy
+    /// `MoveActiveEnergyToBenchAndReoffer` (#438) is not in this fork. Last in the enum, in that
+    /// removed variant's place, so every other variant keeps its serde variant index and its `Hash`
+    /// discriminant.
+    DistributeActiveEnergyToBench {
+        moves: Vec<(u32, EnergyType, usize)>, // (amount, energy_type, to_in_play_idx)
     },
 }
 
@@ -628,13 +633,16 @@ impl fmt::Display for SimpleAction {
             SimpleAction::ChooseSweetHoneyTarget { in_play_idx } => {
                 write!(f, "ChooseSweetHoneyTarget({in_play_idx})")
             }
-            SimpleAction::MoveActiveEnergyToBenchAndReoffer {
-                to_in_play_idx,
-                energy_type,
-            } => write!(
-                f,
-                "MoveActiveEnergyToBenchAndReoffer(to:{to_in_play_idx}, {energy_type:?})"
-            ),
+            SimpleAction::DistributeActiveEnergyToBench { moves } => {
+                let moves_str = moves
+                    .iter()
+                    .map(|(amount, energy_type, to_in_play_idx)| {
+                        format!("{amount}x {energy_type:?} to:{to_in_play_idx}")
+                    })
+                    .collect::<Vec<_>>()
+                    .join(", ");
+                write!(f, "DistributeActiveEnergyToBench({moves_str})")
+            }
         }
     }
 }

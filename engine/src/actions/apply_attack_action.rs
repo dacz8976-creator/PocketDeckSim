@@ -9,7 +9,7 @@ use crate::{
         apply_evolve,
         attack_helpers::{
             collect_in_play_indices_by_type, energy_any_way_choices, generate_distributions,
-            ordered_active_energy_to_bench_choices,
+            wings_of_the_moone_choices,
         },
         attacks::{BenchDamageFilter, BenchSide, CopyAttackSource, HandCardKind, Mechanic},
         energy_discard_choices::attack_discard_choices,
@@ -9029,17 +9029,18 @@ fn move_energy_freely_among_your_pokemon(damage: u32) -> AttackOutcomes {
 }
 
 /// Lunala's Wings of the Moone (C1 066, C1 198, P-C 008): "Move all Energy from this Pokémon to your
-/// Benched Pokémon in any way you like." After the damage, one Energy at a time through
-/// `SimpleAction::MoveActiveEnergyToBenchAndReoffer`, in the fixed order of
-/// `ordered_active_energy_to_bench_choices`. "This Pokémon" is the user, so a copied Wings of the
-/// Moone moves the copier's Energy. Reactions (Rocky Helmet, Perish Body) and the attack's Knock Outs
-/// wait in the `ResolveAttackRetaliation` frame below these choices, so every Energy reaches the
-/// Bench first, even when a reaction then Knocks the attacker Out (upstream skips the move once the
+/// Benched Pokémon in any way you like." After the damage, whole distributions through
+/// `SimpleAction::DistributeActiveEnergyToBench` (`wings_of_the_moone_choices`): one choice of every
+/// final board when there are at most 256 of them, otherwise one choice per Energy type, lowest
+/// first, the shape decided here once. "This Pokémon" is the user, so a copied Wings of the Moone
+/// moves the copier's Energy. Reactions (Rocky Helmet, Perish Body) and the attack's Knock Outs wait
+/// in the `ResolveAttackRetaliation` frame below these choices, so every Energy reaches the Bench
+/// first, even when a reaction then Knocks the attacker Out (upstream skips the move once the
 /// attacker is Knocked Out). With no Energy or no Benched Pokémon nothing is offered and any Energy
 /// stays.
 fn move_all_energy_to_bench_any_way(damage: u32) -> AttackOutcomes {
     active_damage_effect_doutcome(damage, move |_, state, action| {
-        let choices = ordered_active_energy_to_bench_choices(state, action.actor, None);
+        let choices = wings_of_the_moone_choices(state, action.actor);
         if !choices.is_empty() {
             state.move_generation_stack.push((action.actor, choices));
         }
