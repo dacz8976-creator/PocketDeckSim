@@ -11,13 +11,15 @@
 // pins; single-option choices applied without a decision; each distribution one certain branch with no game randomness;
 // Rocky Helmet and Perish Body after the moves; the defender's Knock Out and a winning one after the moves; Carefree
 // Steps leaving the 110 no damage target (no reaction frame below the choice); no Energy; Confusion; Mew ex's copy; both
-// seats' revealed knowledge; km3 and W at every choice; the printings' status; and two smoke records (written to the
-// files named by LUNALA_SMOKE_OUT and LUNALA_TIMES_OUT when they are set; legality is all they assert).
+// seats' revealed knowledge; km3 and W at every choice; the printings' status; and three smoke records (written to the
+// files named by LUNALA_SMOKE_OUT, LUNALA_TIMES_OUT and LUNALA_HEAVY_TIMES_OUT when they are set; legality is all they
+// assert).
 use std::{
     cell::RefCell,
     collections::{BTreeMap, BTreeSet},
     fmt::Write as _,
     rc::Rc,
+    sync::Mutex,
     time::Instant,
 };
 
@@ -28,7 +30,7 @@ use deckgym::{
     database::get_card_by_enum,
     models::{
         Card,
-        EnergyType::{self, Fire, Grass, Lightning, Psychic, Water},
+        EnergyType::{self, Colorless, Darkness, Fighting, Fire, Grass, Lightning, Psychic, Water},
         PlayedCard, StatusCondition,
     },
     observation::canonical_actions,
@@ -1133,8 +1135,13 @@ fn smoke_game(out: &mut String, state: State, code: &PlayerCode, until_turn: u8)
 ///   against a 70-HP Bulbasaur whose Knock Out wins (in the no-win rows it does not), with a Charmander Benched (in the
 ///   no-win mixed row Charmander, Bulbasaur and Snorlax): does each searcher attack? With one choice ([P]x3 and [P]x2
 ///   on one Benched Pokémon: 1 option; [W][L][P][P] on three: 54) the 110's Knock Out is priced at the depth-3 tiers'
-///   attack root; one type at a time with 2 types ([W]x5 [P]x4: 21, then 15) too; with 3 types ([W]x3 [L]x2 [P]x2:
-///   10, 6, 6) the third choice is past the horizon (risk R6, narrowed).
+///   attack root; one type at a time with 2 types ([W]x5 [P]x4: 21, then 15) too; with 3 types (360 final boards each:
+///   10, 6, 6 options, or 6, 6, 10 in the [P]-first row) the third choice is past the horizon (risk R6, narrowed), so
+///   the root scores the board with the third type still on Lunala. The three 3-type rows move [P] last ([W]x3 [L]x2
+///   [P]x2: Lunala still holds the attack's [P][P] there), second ([W]x3 [P]x2 [F]x2: it holds [F][F]) and first
+///   (Wally's [C]: [P]x2 [D]x2 [C]x3: it holds [C][C][C]), as the choices go lowest `EnergyType` first. The [P]-second
+///   and [P]-first rows record EndTurn instead of the winning attack: a known limit of R8 (coordinator-134 option (A)),
+///   to be stated in the release notes' Lunala line (R8's docs commit), not a bug to fix here.
 /// - R6b: player 0's Bulbasaur (70 HP, [G]) faces player 1's ready Lunala at 2 points, with a Snorlax at its printed
 ///   150 HP (which survives the 110) on its Bench: what does each searcher do on its own turn, and how does player 1's
 ///   turn end (risk R6b)? The control row is the same board with Lunala holding no Energy, so it cannot attack on turn
@@ -1163,7 +1170,9 @@ fn smoke_record_searchers_at_and_against_a_lethal_wings_of_the_moone() {
             vec![charmander(), bulbasaur(), PlayedCard::from_id(CardId::A1211Snorlax)],
         ),
         ("2-type", energy_of(&[(Water, 5), (Psychic, 4)]), 3, 2, vec![charmander()]),
-        ("3-type", energy_of(&[(Water, 3), (Lightning, 2), (Psychic, 2)]), 3, 2, vec![charmander()]),
+        ("3-type, [P] last", energy_of(&[(Water, 3), (Lightning, 2), (Psychic, 2)]), 3, 2, vec![charmander()]),
+        ("3-type, [P] second", energy_of(&[(Water, 3), (Psychic, 2), (Fighting, 2)]), 3, 2, vec![charmander()]),
+        ("3-type, [P] first", energy_of(&[(Psychic, 2), (Darkness, 2), (Colorless, 3)]), 3, 2, vec![charmander()]),
     ] {
         let mut ours = vec![lunala(energy.clone())];
         ours.extend((0..our_bench).map(|_| bulbasaur()));
@@ -1235,23 +1244,25 @@ fn timed_decision(player: &mut Box<dyn Player>, game: &Game<'static>) -> (Action
     (chosen, actions.len(), ms)
 }
 
+/// A timing row: its name, Lunala's Energy, the in-play indices of player 0's Benched Bulbasaur, and whether the turn is
+/// live (see `smoke_record_wings_of_the_moone_decision_times`).
+type TimingRow = (&'static str, Vec<EnergyType>, Vec<usize>, bool);
+
 /// Condition 4 (coordinator-131, record only) and design §D.1: km3, y3 and x3's decision times, as ms of wall clock per
-/// `decision_fn` call, on the largest boards built here and on both sides of the 256 switch, at the turn root and at
-/// every Wings of the Moone choice after the Attack is applied directly. The opponent is a 70-HP Bulbasaur with
-/// Charmander, Bulbasaur and Snorlax Benched, at 0 points each, so every Knock Out the search prices carries the
-/// opponent's promotion. The "spent" rows have player 0's Energy Zone spent and empty hands. The "live" rows have the
+/// `decision_fn` call, on large boards (the largest are in the heavy test) and on both sides of the 256 switch, at
+/// the turn root and at every Wings of the Moone choice after the Attack is applied directly. The opponent is a 70-HP
+/// Bulbasaur with Charmander, Bulbasaur and Snorlax Benched, at 0 points each, so every Knock Out the search prices
+/// carries the opponent's promotion. The "spent" rows have player 0's Energy Zone spent and empty hands. The "live" rows have the
 /// Zone's [P], two X Speed and a Potion in hand, and Lunala 20 damage down, so the root also offers attaches (to Lunala:
 /// [W][L][P]x5 becomes [W][L][P]x6, 252 final boards, one choice; [W][L][P]x6 becomes [W][L][P]x7, 324, one type at a
-/// time), Items and retreats, each reaching the attack one action later. A decision over 1 s is marked "OVER 1 s" (the
-/// STOP rule). Nothing is asserted beyond legality.
+/// time), Items and retreats; attaches and Items reach the attack one action later (a retreat puts Lunala on the
+/// Bench). The heavy rows have their own test (`smoke_record_wings_of_the_moone_heavy_decision_times`), and both timing
+/// tests hold `TIMING_LOCK` while they time, so the heavy rows never run while these rows are timed (the two tests may
+/// run in either order). A decision over 1 s is marked "OVER 1 s": report only (coordinator-134); a single decision over
+/// 3 s on a committed row stops the work. Nothing is asserted beyond legality.
 #[test]
 fn smoke_record_wings_of_the_moone_decision_times() {
-    let mut out = String::from(
-        "cargo test --release --features test-utils; ms of wall clock per decision_fn call\n",
-    );
-    let bulbasaur = || PlayedCard::from_id(CardId::A1001Bulbasaur);
-    let over = |ms: f64| if ms > 1000.0 { " OVER 1 s" } else { "" };
-    let rows = [
+    let rows: [TimingRow; 9] = [
         ("spent [W][L][P]x2", energy_of(&[(Water, 1), (Lightning, 1), (Psychic, 2)]), vec![1, 2, 3], false),
         ("spent [W][L][P]x6", energy_of(&[(Water, 1), (Lightning, 1), (Psychic, 6)]), vec![1, 2, 3], false),
         (
@@ -1267,8 +1278,48 @@ fn smoke_record_wings_of_the_moone_decision_times() {
         ("live [W][L][P]x5", energy_of(&[(Water, 1), (Lightning, 1), (Psychic, 5)]), vec![1, 2, 3], true),
         ("live [W][L][P]x6", energy_of(&[(Water, 1), (Lightning, 1), (Psychic, 6)]), vec![1, 2, 3], true),
     ];
+    let out = decision_times_record(&rows);
+    print!("{out}");
+    if let Ok(path) = std::env::var("LUNALA_TIMES_OUT") {
+        std::fs::write(path, &out).expect("the timing record is written");
+    }
+}
+
+/// The heavy timing rows, on the same board as `smoke_record_wings_of_the_moone_decision_times` (spent, 3 Benched
+/// Bulbasaur). One type at a time keeps each choice small, but a decision can still search every final board: with 2
+/// types at the turn root (the attack is priced at depth 2 and each choice costs a ply, so the second choice's options
+/// reach depth 0, where the Knock Out is still resolved; [W]x9 [P]x8: 55 x 45 = 2475) and with 3 types at the first
+/// choice ([W]x4 [L]x4 [P]x3: 15 x 15 x 10 = 2250). [W]x3 [P]x2 [F]x2 (360, choices 10, 6, 6) is the 3-type board with
+/// [P] moved second. The same rule as the other timing rows: "OVER 1 s" is report only; a single decision over 3 s
+/// stops the work (coordinator-134).
+#[test]
+fn smoke_record_wings_of_the_moone_heavy_decision_times() {
+    let rows: [TimingRow; 3] = [
+        ("spent [W]x3 [P]x2 [F]x2", energy_of(&[(Water, 3), (Psychic, 2), (Fighting, 2)]), vec![1, 2, 3], false),
+        ("spent [W]x4 [L]x4 [P]x3", energy_of(&[(Water, 4), (Lightning, 4), (Psychic, 3)]), vec![1, 2, 3], false),
+        ("spent [W]x9 [P]x8", energy_of(&[(Water, 9), (Psychic, 8)]), vec![1, 2, 3], false),
+    ];
+    let out = decision_times_record(&rows);
+    print!("{out}");
+    if let Ok(path) = std::env::var("LUNALA_HEAVY_TIMES_OUT") {
+        std::fs::write(path, &out).expect("the heavy timing record is written");
+    }
+}
+
+/// Held by both timing tests while they time, so the libtest threads never run them at the same time.
+static TIMING_LOCK: Mutex<()> = Mutex::new(());
+
+/// The timing record of `rows`: per row, each searcher's turn-root decision and every Wings of the Moone choice after
+/// the Attack, then the slowest decision. Holds `TIMING_LOCK` throughout.
+fn decision_times_record(rows: &[TimingRow]) -> String {
+    let _serial = TIMING_LOCK.lock().unwrap_or_else(|poisoned| poisoned.into_inner());
+    let mut out = String::from(
+        "cargo test --release --features test-utils; ms of wall clock per decision_fn call\n",
+    );
+    let bulbasaur = || PlayedCard::from_id(CardId::A1001Bulbasaur);
+    let over = |ms: f64| if ms > 1000.0 { " OVER 1 s" } else { "" };
     let mut slowest: f64 = 0.0;
-    for (row, energy, bench, live) in &rows {
+    for (row, energy, bench, live) in rows {
         let mut ours = lunala(energy.clone());
         if *live {
             let hp = ours.get_remaining_hp();
@@ -1321,8 +1372,5 @@ fn smoke_record_wings_of_the_moone_decision_times() {
         }
     }
     let _ = writeln!(out, "slowest decision: {slowest:.1} ms{}", over(slowest));
-    print!("{out}");
-    if let Ok(path) = std::env::var("LUNALA_TIMES_OUT") {
-        std::fs::write(path, &out).expect("the timing record is written");
-    }
+    out
 }
