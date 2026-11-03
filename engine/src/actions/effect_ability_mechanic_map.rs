@@ -686,16 +686,19 @@ pub static EFFECT_ABILITY_MECHANIC_MAP: LazyLock<HashMap<&'static str, AbilityMe
             "When this Pokémon is first damaged by an attack after coming into play, prevent that damage.",
             AbilityMechanic::PreventFirstAttack,
         );
+        // Darkrai ex (A2 110 and reprints) - Nightmare Aura. Any attach of a [D] Energy from the
+        // Energy Zone triggers it, an effect's included (Sableye's Jeweled Gift), as the text reads:
+        // Dustin's decision of Nov 1, 2026 (R8-10b). It was the turn's Energy attach only.
         map.insert(
             "Whenever you attach a [D] Energy from your Energy Zone to this Pokémon, do 20 damage to your opponent's Active Pokémon.",
             AbilityMechanic::DamageOpponentActiveOnZoneAttachToSelf {
                 energy_type: EnergyType::Darkness,
                 amount: 20,
-                only_turn_energy: true,
+                only_turn_energy: false,
             },
         );
         // Charizard (C1 018 / C1 136) - Flame Aura. Any attach of a [R] Energy from the Energy Zone
-        // triggers it, as the text reads; Nightmare Aura above keeps its turn's-Energy-only reading.
+        // triggers it, as the text reads, the same reading as Nightmare Aura above.
         map.insert(
             "Whenever you attach a [R] Energy from your Energy Zone to this Pokémon, do 30 damage to your opponent's Active Pokémon.",
             AbilityMechanic::DamageOpponentActiveOnZoneAttachToSelf {

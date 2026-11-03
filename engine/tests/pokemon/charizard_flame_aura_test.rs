@@ -200,14 +200,14 @@ fn test_charizard_flame_aura_ignores_an_attach_from_the_discard_pile() {
     assert_eq!(state.get_active(1).get_remaining_hp(), 70);
 }
 
-/// The difference the shared hook keeps, on one attach from the Energy Zone that is not the turn's
-/// Energy: Sableye's Jeweled Gift ("Take a random Energy from among [G], [R], [W], [L], [P], [F], [D],
-/// and [M] Energy from your Energy Zone and attach it to 1 of your Benched Pokémon."). Flame Aura
-/// fires on the [R] branch. Darkrai ex's Nightmare Aura, read as the turn's Energy attach only
-/// (only_turn_energy), stays silent on every branch, the [D] one included; its turn's-Energy cases
+/// The shared hook on one attach from the Energy Zone that is not the turn's Energy: Sableye's Jeweled
+/// Gift ("Take a random Energy from among [G], [R], [W], [L], [P], [F], [D], and [M] Energy from your
+/// Energy Zone and attach it to 1 of your Benched Pokémon."). Flame Aura fires on the [R] branch, and
+/// Darkrai ex's Nightmare Aura on the [D] branch: since R8-10b (Dustin, Nov 1, 2026) it also fires on
+/// an effect's attach from the Energy Zone. Every other branch does nothing. More Nightmare Aura cases
 /// are in darkrai_ex_test.rs.
 #[test]
-fn test_jeweled_gift_fires_flame_aura_but_not_nightmare_aura() {
+fn test_jeweled_gift_fires_flame_aura_and_nightmare_aura_on_their_own_types() {
     let sableye =
         || PlayedCard::from_id(CardId::B3a040Sableye).with_energy(vec![EnergyType::Colorless]);
     let charizard = bench_attach_branches(sableye(), CardId::C1018Charizard);
@@ -235,8 +235,13 @@ fn test_jeweled_gift_fires_flame_aura_but_not_nightmare_aura() {
         .iter()
         .any(|branch| branch.benched_energy == [EnergyType::Darkness]));
     for branch in &darkrai {
+        let expected = if branch.benched_energy == [EnergyType::Darkness] {
+            230
+        } else {
+            250
+        };
         assert_eq!(
-            branch.opponent_remaining_hp, 250,
+            branch.opponent_remaining_hp, expected,
             "Darkrai ex given {:?}",
             branch.benched_energy
         );

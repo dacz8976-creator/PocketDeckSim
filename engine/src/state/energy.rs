@@ -149,9 +149,10 @@ impl State {
         // Check for Zone-attach damage abilities (Darkrai ex's Nightmare Aura, Charizard's Flame Aura)
         if let Some(mechanic) = mechanic {
             // "Whenever you attach a [D] Energy from your Energy Zone to this Pokémon, do 20 damage
-            // to your opponent's Active Pokémon." Flame Aura reads the same with [R] and 30.
-            // `only_turn_energy` keeps Nightmare Aura's existing, narrower reading (the turn's Energy
-            // attach only); Flame Aura fires on any attach from the Energy Zone, as its text reads.
+            // to your opponent's Active Pokémon." Flame Aura reads the same with [R] and 30. Both
+            // fire on any attach from the Energy Zone, an effect's included, as the text reads
+            // (Nightmare Aura since R8-10b, Dustin's decision of Nov 1, 2026). `only_turn_energy`
+            // would narrow one to the turn's Energy attach; no card uses it now.
             if let AbilityMechanic::DamageOpponentActiveOnZoneAttachToSelf {
                 energy_type: trigger_type,
                 amount,
@@ -166,10 +167,10 @@ impl State {
                 if energy_type == trigger_type && triggered {
                     let opponent = (actor + 1) % 2;
                     // Inside its owner's attack (the attack's own attach, such as Moltres ex's
-                    // Inferno Dance onto a Benched Charizard) a Knock Out waits for the attack's
-                    // wave (`handle_knockouts`), which would score it as "by damage from an
-                    // attack". Mark it as Ability damage. Nightmare Aura (the turn's Energy only)
-                    // never fires inside an attack.
+                    // Inferno Dance onto a Benched Charizard, or Sableye's Jeweled Gift giving a
+                    // Benched Darkrai ex a [D]) a Knock Out waits for the attack's wave
+                    // (`handle_knockouts`), which would score it as "by damage from an attack".
+                    // Mark it as Ability damage.
                     let inside_attack = self.move_generation_stack.iter().any(|(_, choices)| {
                         choices.iter().any(|choice| {
                             matches!(choice, SimpleAction::ResolveAttackRetaliation { .. })
