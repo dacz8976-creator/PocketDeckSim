@@ -318,13 +318,30 @@ fn test_soothing_lullaby_checkup_wakes_one_time_in_four_exactly() {
     }
 }
 
+/// Player 0's Jigglypuff uses Soothing Lullaby on player 1's `defender`, which holds a [G] Energy, with Teal Mask Ogerpon
+/// ex (B2 017) on player 1's Bench. Soothing Wind: "Each of your Pokémon that has any Energy attached recovers from all
+/// Special Conditions and can't be affected by any Special Conditions." (an immunity inside `try_apply_status_condition`).
+fn lullaby_under_soothing_wind(defender: PlayedCard) -> Game<'static> {
+    let id = CardId::C1051Jigglypuff;
+    let ogerpon = PlayedCard::from_id(CardId::B2017TealMaskOgerponEx);
+    let defender = defender.with_energy(vec![EnergyType::Grass]);
+    let mut game = board_at(0, 0, vec![ready(id, 0)], vec![defender, ogerpon]);
+    attack(&mut game, id, 0);
+    game
+}
+
 /// L1: Crystal Body (Regice A2 034: "Prevent all effects of attacks used by your opponent's Pokémon done to this
-/// Pokémon.") and Clear Veil (B4 149, the same for its holder) stop the Sleep: the 30 damage lands, no Sleep, no count.
+/// Pokémon.") and Clear Veil (B4 149, the same for its holder) stop the Sleep, and Soothing Wind makes its Pokémon
+/// immune to it: the 30 damage lands, no Sleep, no count.
 #[test]
-fn test_crystal_body_and_clear_veil_leave_no_sleep_and_no_count() {
+fn test_crystal_body_clear_veil_and_soothing_wind_leave_no_sleep_and_no_count() {
     let clear_veil = durable().with_tool(get_card_by_enum(CardId::B4149ClearVeil));
-    for (name, defender) in [("Crystal Body", durable_of(CardId::A2034Regice)), ("Clear Veil", clear_veil)] {
-        let game = lullaby_on(CardId::C1051Jigglypuff, 0, defender);
+    let soothing_wind = lullaby_under_soothing_wind(durable());
+    for (name, game) in [
+        ("Crystal Body", lullaby_on(CardId::C1051Jigglypuff, 0, durable_of(CardId::A2034Regice))),
+        ("Clear Veil", lullaby_on(CardId::C1051Jigglypuff, 0, clear_veil)),
+        ("Soothing Wind", soothing_wind),
+    ] {
         let defender = game.get_state_clone().get_active(1).clone();
         assert_eq!(defender.taken(), 30, "{name}");
         assert!(!defender.is_asleep(), "{name}");
@@ -333,22 +350,24 @@ fn test_crystal_body_and_clear_veil_leave_no_sleep_and_no_count() {
 }
 
 /// L2 (divergence D1): a Pokémon already Asleep from an ordinary Sleep that Soothing Lullaby cannot affect keeps its 1
-/// coin. Clear Veil ("Existing effects are not removed") and Crystal Body stop the attack's effect; Insomnia and Steel
-/// Apron on a [M] Pokémon are immunities inside `try_apply_status_condition`. Upstream records 2 coins whenever the
-/// Pokémon is Asleep after the attempt, so all four would flip 2 there.
+/// coin. Clear Veil ("Existing effects are not removed") and Crystal Body stop the attack's effect; Insomnia, Steel
+/// Apron on a [M] Pokémon and Soothing Wind are immunities inside `try_apply_status_condition`. Upstream records 2 coins
+/// whenever the Pokémon is Asleep after the attempt, so all five would flip 2 there.
 #[test]
 fn test_a_shielded_or_immune_sleeper_keeps_its_one_coin() {
+    let asleep = |defender: PlayedCard| defender.with_status_condition(StatusCondition::Asleep);
+    let on = |defender: PlayedCard| lullaby_on(CardId::C1051Jigglypuff, 0, asleep(defender));
     let cases = [
-        ("Clear Veil", durable().with_tool(get_card_by_enum(CardId::B4149ClearVeil))),
-        ("Crystal Body", durable_of(CardId::A2034Regice)),
-        ("Insomnia", durable_of(CardId::A4140Hoothoot)),
+        ("Clear Veil", on(durable().with_tool(get_card_by_enum(CardId::B4149ClearVeil)))),
+        ("Crystal Body", on(durable_of(CardId::A2034Regice))),
+        ("Insomnia", on(durable_of(CardId::A4140Hoothoot))),
         (
             "Steel Apron on a [M] Pokémon",
-            durable_of(CardId::A1181Meltan).with_tool(get_card_by_enum(CardId::A4153SteelApron)),
+            on(durable_of(CardId::A1181Meltan).with_tool(get_card_by_enum(CardId::A4153SteelApron))),
         ),
+        ("Soothing Wind", lullaby_under_soothing_wind(asleep(durable()))),
     ];
-    for (name, defender) in cases {
-        let game = lullaby_on(CardId::C1051Jigglypuff, 0, defender.with_status_condition(StatusCondition::Asleep));
+    for (name, game) in cases {
         let state = game.get_state_clone();
         let defender = state.get_active(1);
         assert!(defender.is_asleep(), "{name}");
@@ -721,7 +740,7 @@ fn test_jigglypuff_printings_report_rules_unverified_with_the_reset_reading() {
         assert_eq!(get_implementation_status(id), ImplementationStatus::RulesUnverified, "{id:?}");
         assert_eq!(
             implementation_limitations(id),
-            &["Unverified Pokémon TCG Pocket boundary (not filmed): an ordinary Sleep that lands on a Pokémon already Asleep from Soothing Lullaby replaces it, so that Pokémon flips 1 coin at Pokémon Checkup instead of 2 (the reset reading, as upstream). Filmed: a Soothing Lullaby Sleep flips 2 coins at Checkup and wakes only on 2 heads."],
+            &["Unverified Pokémon TCG Pocket boundary (not filmed): an ordinary Sleep that lands on a Pokémon already Asleep from Soothing Lullaby replaces it, so that Pokémon flips 1 coin at Pokémon Checkup instead of 2 (the reset reading, as upstream). Card text, not filmed: a Soothing Lullaby Sleep flips 2 coins at Pokémon Checkup and wakes only if both are heads."],
             "{id:?}"
         );
     }
@@ -951,8 +970,11 @@ fn test_states_and_observations_without_a_lullaby_keep_their_bytes() {
 /// L10 and C1: a Soothing Lullaby count serializes once, as 2, and the State round-trips. JSON without the key (every
 /// committed fixture, two of them with an Asleep Active, and a Lullaby sleeper with its key removed) loads with no
 /// count and 1 coin. A hand-edited 0, 5 or 1000 reads as 1 coin, with a 2-branch Checkup and no panic; 1 and 4 (the
-/// most one Sleep may ask for) read as themselves. Both seats' observations carry the count, and an `EndTurn` forecast
-/// from either seat's `search_state` wakes the sleeper 1 time in 4. The information model is still v8.
+/// most one Sleep may ask for) read as themselves. A hand-edited 4 on a Benched sleeper (only an Active can be Asleep
+/// in play) flips the usual 1 coin. Both seats' observations carry the count and parse back through the observation
+/// wire (`deny_unknown_fields`) as the protocol bot reads `pdl_observation` (protocol/bot.rs), to the same observation
+/// and bytes; an `EndTurn` forecast from either seat's `search_state` wakes the sleeper 1 time in 4. The information
+/// model is still v8.
 #[test]
 fn test_a_lullaby_count_round_trips_and_old_or_forged_json_reads_as_one_coin() {
     let game = lullaby_game(CardId::C1051Jigglypuff, 0);
@@ -987,11 +1009,19 @@ fn test_a_lullaby_count_round_trips_and_old_or_forged_json_reads_as_one_coin() {
             "forged {count}"
         );
     }
+    let benched = forged(state.get_active(1), 4);
+    let board = board_at(0, 0, vec![durable()], vec![durable(), benched]).get_state_clone();
+    assert_eq!(board.in_play_pokemon[1][1].as_ref().unwrap().sleep_checkup_coins(), 4);
+    assert_eq!(probabilities(&board, &end_turn_action(0)), vec![0.5; 2], "a forged Benched count");
 
     for seat in 0..2 {
         let observation = game.observation(seat);
         let json = serde_json::to_string(&observation).unwrap();
         assert_eq!(json.matches("\"sleep_coins_override\":2").count(), 1, "seat {seat}");
+        let wire: serde_json::Value = serde_json::from_str(&json).unwrap();
+        let parsed: PlayerObservation = serde_json::from_value(wire).unwrap();
+        assert!(parsed == observation, "seat {seat}: the wire keeps the count");
+        assert_eq!(serde_json::to_string(&parsed).unwrap(), json, "seat {seat}");
         let search = observation.search_state(&mut StdRng::seed_from_u64(2));
         assert_eq!(search.get_active(1).sleep_checkup_coins(), 2, "seat {seat}");
         assert_eq!(wake_chance(&search, &end_turn_action(0), 1), 0.25, "seat {seat}");

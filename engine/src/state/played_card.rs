@@ -493,15 +493,17 @@ impl PlayedCard {
     }
 
     /// The most Checkup coins one Sleep may ask for. Soothing Lullaby asks for 2; 4 leaves room for
-    /// a later card and keeps the worst Checkup (both Actives at 4 coins + two Burns) at 2^10
-    /// outcomes.
+    /// a later card. Only an Active Pokémon can be Asleep in play, so the worst legal Checkup (both
+    /// Actives at 4 coins + two Burns) has 2^10 outcomes. The Checkup reads a count only on an
+    /// Active (`collect_checkup_targets`), so even a hand-edited board with all 8 Pokémon Asleep and
+    /// Burned flips at most 2 x 4 + 6 + 8 = 22 coins.
     const MAX_SLEEP_CHECKUP_COINS: usize = 4;
 
     /// The coins flipped at Pokémon Checkup to wake this Pokémon, which wakes only if all are
     /// heads. A count outside 1..=`MAX_SLEEP_CHECKUP_COINS` can only come from hand-edited JSON
     /// (the setter is `pub(crate)` and its one caller passes the map entry's 2). Such a count
     /// reads as the usual 1, so a corrupt file can neither empty the wake test (0 coins = always
-    /// wakes) nor overflow `1 << n`.
+    /// wakes) nor, with the Checkup reading a count only on an Active, overflow `1 << n`.
     pub fn sleep_checkup_coins(&self) -> usize {
         self.sleep_coins_override
             .filter(|n| (1..=Self::MAX_SLEEP_CHECKUP_COINS).contains(n))

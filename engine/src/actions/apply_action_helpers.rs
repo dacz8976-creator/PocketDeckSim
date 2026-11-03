@@ -41,8 +41,8 @@ pub(crate) type Mutations = Vec<Mutation>;
 #[derive(Clone)]
 struct CheckupTargets {
     sleeps: Vec<(usize, usize)>,
-    /// Coins each entry of `sleeps` flips (`PlayedCard::sleep_checkup_coins`): 1, or 2 for
-    /// Soothing Lullaby's Sleep.
+    /// Coins each entry of `sleeps` flips: an Active Pokémon's `PlayedCard::sleep_checkup_coins`
+    /// (1, or 2 for Soothing Lullaby's Sleep), and 1 on the Bench.
     sleep_coins: Vec<usize>,
     paralyzed: Vec<(usize, usize)>,
     poisoned: Vec<(usize, usize)>,
@@ -293,7 +293,10 @@ fn collect_checkup_targets(state: &State) -> CheckupTargets {
         for (i, pokemon) in state.enumerate_in_play_pokemon(player) {
             if pokemon.is_asleep() {
                 targets.sleeps.push((player, i));
-                targets.sleep_coins.push(pokemon.sleep_checkup_coins());
+                // Only an Active Pokémon can be Asleep in play, and a count leaves the Active Spot
+                // with it (`apply_activate`). A Benched sleeper comes only from hand-edited JSON, and
+                // flips the usual 1 coin whatever count it carries, so `1 << n` stays small.
+                targets.sleep_coins.push(if i == 0 { pokemon.sleep_checkup_coins() } else { 1 });
             }
             // `current_player` is still the player whose turn is ending until `advance_turn`.
             // Paralysis recovers after its owner's turn, not at every player's Checkup.

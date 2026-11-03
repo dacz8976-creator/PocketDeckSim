@@ -7,12 +7,13 @@
 //! state and of each seat's redacted `search_state`, a fixed-seed
 //! `search_state_with_opponent_list`, and at every decision with two or more options the picks of
 //! WeightedRandomPlayer (every seed) and of km3, y3 and x3 (seed 0). All three price the Checkup
-//! forecast of an `EndTurn` they reach, and none searches the opponent's reply: run through
-//! `decision_fn` on an observation, the opponent's hand and deck are Unknown, so every opponent
-//! node returns at once (`expectiminimax_player.rs:773-798`). y3 and x3 add a different evaluator
-//! (`public_baseline`), and y3 (consistent horizon) its inline `EndTurn` forecast at depth 0. A Red
-//! Card at the end shuffles the opponent's deck, so the record also fingerprints the RNG state left
-//! behind.
+//! forecast of an `EndTurn` they reach, except one whose next player's Active searches a deck
+//! unknown to them (`observation.rs:389-405`; 24a's Meloetta), and none searches the opponent's
+//! reply: run through `decision_fn` on an observation, the opponent's hand and deck are Unknown,
+//! so every opponent node returns at once (`expectiminimax_player.rs:773-798`). y3 and x3 add a
+//! different evaluator (`public_baseline`), and y3 (consistent horizon) its inline `EndTurn`
+//! forecast at depth 0. A Red Card at the end shuffles the opponent's deck, so the record also
+//! fingerprints the RNG state left behind.
 //!
 //! Every scenario also asserts what its first Checkup forecast (turn 3's `EndTurn` and the
 //! deferred Checkup frames after it) looked like: the branch count of each step, every branch
@@ -662,8 +663,9 @@ fn pokemon_checkup_coin_trace() {
     // branch per coin outcome and search, coin outer, search inner, each the product (24a). It
     // rides on `FinishPokemonCheckup` for a Meloetta promoted in the Checkup (24b), and it waits
     // there while player 0's Active, Knocked Out in the Checkup, is promoted (24c) or its
-    // point-denial coin is pending (24d). Player 0 holds a Basic in 24a, so the searches price
-    // `EndTurn` with Meloetta next and player 1's deck unknown to them.
+    // point-denial coin is pending (24d). Player 0 holds a Basic in 24a, so the searches decide
+    // there; they leave that `EndTurn` unpriced (Meloetta next, player 1's deck unknown to them:
+    // `observation.rs:389-405`).
     let meloetta = || PlayedCard::from_id(B2070Meloetta);
     run(
         "24a strange singing",
