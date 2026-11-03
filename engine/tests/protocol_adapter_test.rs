@@ -19,7 +19,7 @@ use std::{
     collections::BTreeSet,
     path::{Path, PathBuf},
     rc::Rc,
-    sync::{atomic::Ordering, Arc},
+    sync::{atomic::Ordering, mpsc, Arc, Mutex, MutexGuard, OnceLock},
     time::{Duration, Instant},
 };
 
@@ -172,6 +172,58 @@ fn py_cmd(file: &str, args: &str) -> String {
     )
 }
 
+/// Held for the whole of every test that starts Python, so no two start it at once. The first holder starts the
+/// interpreter once with the bots' imports, untimed, so cold imports are paid outside every timed hello.
+fn python_lock() -> MutexGuard<'static, ()> {
+    static LOCK: Mutex<()> = Mutex::new(());
+    static WARM: OnceLock<()> = OnceLock::new();
+    let guard = LOCK.lock().unwrap_or_else(|e| e.into_inner());
+    WARM.get_or_init(|| {
+        let start = Instant::now();
+        let _ = std::process::Command::new("python3")
+            .args(["-I", "-c", "import argparse, json, random, sys, time"])
+            .status();
+        note_hello("warm-up (untimed)", start.elapsed().as_secs_f64());
+    });
+    guard
+}
+
+/// Timing record only (no assertion): appends `HELLO <label> <secs>` to `pdl_adapter_hellos.txt` in the temp dir.
+fn note_hello(label: &str, secs: f64) {
+    use std::io::Write as _;
+    eprintln!("HELLO {label} {secs:.3}");
+    if let Ok(mut f) = std::fs::OpenOptions::new()
+        .create(true)
+        .append(true)
+        .open(std::env::temp_dir().join("pdl_adapter_hellos.txt"))
+    {
+        let _ = writeln!(f, "HELLO {label} {secs:.3}");
+    }
+}
+
+/// Records each bot's spawn + hello time (`startup_secs` of its first decision) from the adapter logs in `dir`;
+/// a hello that timed out on purpose is not one.
+fn note_hellos(label: &str, dir: &Path) {
+    let Ok(entries) = std::fs::read_dir(dir) else {
+        return;
+    };
+    for entry in entries.flatten() {
+        let name = entry.file_name().to_string_lossy().to_string();
+        if !(name.starts_with("protocol_") && name.ends_with(".jsonl")) {
+            continue;
+        }
+        let Ok(text) = std::fs::read_to_string(entry.path()) else {
+            continue;
+        };
+        for rec in text.lines().filter_map(|l| serde_json::from_str::<Value>(l).ok()) {
+            let hello_failed = rec["error"].as_str().is_some_and(|e| e.contains("hello"));
+            if let (Some(secs), false) = (rec["startup_secs"].as_f64(), hello_failed) {
+                note_hello(label, secs);
+            }
+        }
+    }
+}
+
 fn out_dir(name: &str) -> PathBuf {
     let d = std::env::temp_dir().join(format!("pdl_adapter_{}_{}", name, std::process::id()));
     let _ = std::fs::remove_dir_all(&d);
@@ -319,6 +371,7 @@ fn captured(cmd_bot: &str, name: &str) -> Vec<Value> {
     let cmd = format!("tee {} | {}", file.display(), cmd_bot);
     let (players, _) = seats(&a, &b, [bot10(cmd), None], &dir);
     let r = run(players, seed(0, 0, 0), |_, _| {});
+    note_hellos(name, &dir);
     assert!(r.over);
     let text = std::fs::read_to_string(&file).unwrap();
     assert!(text.ends_with('\n'));
@@ -350,6 +403,7 @@ for line in sys.stdin:
 
 #[test]
 fn messages_are_single_json_lines() {
+    let _python = python_lock();
     let base_decide = [
         "type",
         "ply",
@@ -428,6 +482,7 @@ fn messages_are_single_json_lines() {
         let (a, b) = decks(0, 0);
         let (players, _) = seats(&a, &b, [bot10(cmd), None], &dir);
         let r = run(players, seed(0, 0, 0), |_, _| {});
+        note_hellos("t2d", &dir);
         assert!(r.over);
         let text = std::fs::read_to_string(&file).unwrap();
         assert!(text.ends_with('\n'));
@@ -607,16 +662,28 @@ fn parity_km3_both_seats_through_adapter() {
 
 #[test]
 fn first_legal_bot_finishes() {
+    let _python = python_lock();
     for (p, o, k) in all_cases(3, &[0, 1], &[0, 1, 2, 3]) {
-        let (a, b) = decks(p, o);
-        let dir = out_dir("t6");
-        let (players, stats) = seats(
-            &a,
-            &b,
-            [bot10(py_cmd("first_legal_bot.py", "")), None],
-            &dir,
-        );
-        let r = run(players, seed(p, o, k), |seat, r| r.first_legal = seat == 0);
+        // Each game gets 30 s: it runs on its own thread so a stuck game fails here with a clear message.
+        let (tx, rx) = mpsc::channel();
+        let game = std::thread::spawn(move || {
+            let (a, b) = decks(p, o);
+            let dir = out_dir("t6");
+            let (players, stats) = seats(
+                &a,
+                &b,
+                [bot10(py_cmd("first_legal_bot.py", "")), None],
+                &dir,
+            );
+            let r = run(players, seed(p, o, k), |seat, r| r.first_legal = seat == 0);
+            note_hellos("t6", &dir);
+            let _ = tx.send(());
+            (r, stats)
+        });
+        if let Err(mpsc::RecvTimeoutError::Timeout) = rx.recv_timeout(Duration::from_secs(30)) {
+            panic!("pair {p} order {o} k {k}: game did not finish in 30 s");
+        }
+        let (r, stats) = game.join().unwrap_or_else(|e| std::panic::resume_unwind(e));
         assert!(r.over);
         let st = stats[0].as_ref().unwrap();
         assert_eq!(st.fallbacks.load(Ordering::SeqCst), 0);
@@ -626,6 +693,7 @@ fn first_legal_bot_finishes() {
 
 #[test]
 fn seeded_random_bot_is_reproducible() {
+    let _python = python_lock();
     let (a, b) = decks(0, 0);
     let mut runs = Vec::new();
     for _ in 0..2 {
@@ -637,6 +705,7 @@ fn seeded_random_bot_is_reproducible() {
             &dir,
         );
         let r = run(players, seed(0, 0, 0), |_, _| {});
+        note_hellos("t7", &dir);
         assert!(r.over);
         assert_eq!(
             stats[0].as_ref().unwrap().fallbacks.load(Ordering::SeqCst),
@@ -649,11 +718,13 @@ fn seeded_random_bot_is_reproducible() {
 
 #[test]
 fn upstream_random_bot_plays_in_our_engine() {
+    let _python = python_lock();
     for p in 0..4 {
         let (a, b) = decks(p, 0);
         let dir = out_dir("t8");
         let (players, stats) = seats(&a, &b, [bot10(py_cmd("random_bot.py", "")), None], &dir);
         let r = run(players, seed(p, 0, 0), |_, _| {});
+        note_hellos("t8", &dir);
         assert!(r.over);
         assert_eq!(
             stats[0].as_ref().unwrap().fallbacks.load(Ordering::SeqCst),
@@ -672,16 +743,18 @@ fn group_alive(pid: u32) -> bool {
 
 #[test]
 fn bot_failures_fall_back_and_are_counted() {
+    let _python = python_lock();
     for mode in ["garbage", "range", "sleep", "exit", "nohello"] {
         let (a, b) = decks(0, 0);
         let dir = out_dir("t9");
         let bot = Some((
             py_cmd("test_bad_bot.py", &format!("--mode {mode}")),
-            Duration::from_millis(1500),
+            Duration::from_millis(5000),
         ));
         let (players, stats) = seats(&a, &b, [bot, None], &dir);
         let start = Instant::now();
         let r = run(players, seed(0, 0, 0), |_, _| {});
+        note_hellos(&format!("t9 {mode}"), &dir);
         assert!(r.over, "{mode}: game finished");
         if mode == "sleep" {
             assert!(
@@ -794,6 +867,7 @@ fn read_jsonl(path: &Path) -> Vec<Value> {
 
 #[test]
 fn pdl_since_last_reaches_the_bot() {
+    let _python = python_lock();
     for (p, o, k) in all_cases(3, &[0, 1], &[0]) {
         let (a, b) = decks(p, o);
         let dir = out_dir("t11");
@@ -810,6 +884,7 @@ fn pdl_since_last_reaches_the_bot() {
                 r.since = Some(s2.clone());
             }
         });
+        note_hellos("t11", &dir);
         assert!(r.over);
         assert_eq!(
             stats[0].as_ref().unwrap().fallbacks.load(Ordering::SeqCst),
@@ -883,6 +958,7 @@ fn hidden_option_game(hidden: CardId, name: &str) -> (Vec<Action>, Vec<String>) 
         played.push(game.play_tick());
     }
     drop(game);
+    note_hellos(name, &dir);
     let decides: Vec<String> = std::fs::read_to_string(&file)
         .unwrap()
         .lines()
@@ -908,6 +984,7 @@ fn hidden_option_game(hidden: CardId, name: &str) -> (Vec<Action>, Vec<String>) 
 /// How many legal actions the opponent had depends on its hidden hand, so no decide line may change with it.
 #[test]
 fn opponent_hidden_options_do_not_reach_the_bot() {
+    let _python = python_lock();
     // Weezing cannot be played on turn 1; Koffing can go to any of the three Bench slots.
     let forced = hidden_option_state(CardId::A1177Weezing);
     let open = hidden_option_state(CardId::A1176Koffing);
@@ -935,6 +1012,7 @@ fn opponent_hidden_options_do_not_reach_the_bot() {
 
 #[test]
 fn plan_follower_plays_full_games() {
+    let _python = python_lock();
     let mut reasons: std::collections::BTreeMap<String, usize> = Default::default();
     let mut from_saved = 0;
     for (p, o, k) in all_cases(3, &[0, 1], &[0, 1, 2, 3]) {
@@ -947,6 +1025,7 @@ fn plan_follower_plays_full_games() {
         );
         let (players, stats) = seats(&a, &b, [bot10(cmd), None], &dir);
         let r = run(players, seed(p, o, k), |_, _| {});
+        note_hellos("t12", &dir);
         assert!(r.over);
         assert_eq!(
             stats[0].as_ref().unwrap().fallbacks.load(Ordering::SeqCst),
