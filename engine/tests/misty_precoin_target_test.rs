@@ -398,3 +398,71 @@ fn misty_printings_are_private_to_actor_but_have_identical_opponent_target_paylo
     assert!(!text.contains("A1 220"));
     assert!(!text.contains("A1 267"));
 }
+
+/// Misty (A1 220, A1 267): "Choose 1 of your [W] Pokémon, and flip a coin until you get tails. For
+/// each heads, take a [W] Energy from your Energy Zone and attach it to that Pokémon." As in the
+/// real game (Dustin's clips, coordinator-097), either printing played from the hand asks for the
+/// Pokémon first: the only legal actions after the Play are the two [W] targets (not the
+/// Bulbasaur), no coin choice is pending, nothing is attached, and the Play flipped no coin (the
+/// staged state, adopted with the same seed, attaches exactly what the whole line does). Then the
+/// coins: the chosen Pokémon gets one [W] Energy per heads, the others none.
+#[test]
+fn either_printing_from_the_hand_asks_for_the_water_pokemon_before_any_coin() {
+    for misty in [CardId::A1220Misty, CardId::A1267Misty] {
+        let (mut saw_tails_first, mut saw_heads) = (false, false);
+        for seed in 0..64 {
+            let mut state = setup(seed, false, false).get_state_clone();
+            state.set_board(
+                vec![
+                    PlayedCard::from_id(CardId::A1053Squirtle),
+                    PlayedCard::from_id(CardId::A1001Bulbasaur),
+                    PlayedCard::from_id(CardId::A1057Psyduck),
+                ],
+                vec![PlayedCard::from_id(CardId::A1001Bulbasaur)],
+            );
+            state.hands[0] = vec![get_card_by_enum(misty)];
+            let mut game = Game::from_state(state, Vec::<Box<dyn Player>>::new(), seed);
+            let misty_play = find_legal(
+                &game,
+                |action| matches!(action, SimpleAction::Play { trainer_card } if trainer_card.name == "Misty"),
+            );
+            game.apply_action(&misty_play);
+
+            let staged = game.get_state_clone();
+            let (actor, actions) = staged.generate_possible_actions();
+            assert_eq!(actor, 0);
+            assert_eq!(actions, vec![target(0), target(2)], "{misty:?}, seed {seed}");
+            let pending = staged.pending_misty_target_choice.as_ref().unwrap();
+            assert!(
+                matches!(&pending.route, Some(MistySourceRoute::Direct { misty: source })
+                    if source.id == trainer(misty).id),
+                "{misty:?}: {pending:?}"
+            );
+            assert!(staged.pending_trainer_coin_choice.is_none());
+            for slot in 0..3 {
+                assert_eq!(water_energy_count(&staged, slot), 0, "{misty:?}, seed {seed}");
+            }
+            assert!(staged.hands[0].is_empty());
+            assert_eq!(staged.discard_piles[0], vec![get_card_by_enum(misty)]);
+
+            game.apply_action(&actions[1]);
+            let committed = game.get_state_clone();
+            assert!(committed.pending_misty_target_choice.is_none());
+            assert!(committed.pending_trainer_coin_choice.is_none());
+            assert_eq!(water_energy_count(&committed, 0), 0);
+            assert_eq!(water_energy_count(&committed, 1), 0);
+            let heads = water_energy_count(&committed, 2);
+            saw_tails_first |= heads == 0;
+            saw_heads |= heads > 0;
+
+            let mut adopted = Game::from_state(staged, Vec::<Box<dyn Player>>::new(), seed);
+            adopted.apply_action(&target(2));
+            assert_eq!(
+                adopted.get_state_clone().in_play_pokemon,
+                committed.in_play_pokemon,
+                "{misty:?}, seed {seed}: the Play must not flip a coin"
+            );
+        }
+        assert!(saw_tails_first && saw_heads, "{misty:?}: the coins follow the target");
+    }
+}
