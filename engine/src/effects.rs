@@ -111,12 +111,15 @@ pub enum CardEffect {
     DamageNewActiveOnRetreat {
         amount: u32,
     },
-    /// Internal marker: this Pokémon was Knocked Out by an Ability's damage while an attack was still
-    /// resolving (Charizard's Flame Aura on an attack's own Energy attach), so the attack's KO wave
-    /// settles it but must not count it as "Knocked Out by damage from an attack". Added by
-    /// `State::on_attach_energy` and read by `handle_knockouts`; it leaves play with the Pokémon.
-    /// Added after every earlier variant, so each keeps its position (and its serialized index and
-    /// hash).
+    /// Internal marker: this Pokémon was Knocked Out while an attack was still resolving, but not by
+    /// the attack's damage, so the attack's KO wave settles it but must not count it as "Knocked Out
+    /// by damage from an attack". Added by `State::on_attach_energy` for an Ability's damage
+    /// (Charizard's Flame Aura or Darkrai ex's Nightmare Aura on an attack's own Energy attach), and
+    /// since R8-10e by the attacks that discard a Stadium after their damage (Shatter, Bedrock
+    /// Breaker, Spacial Rend: `refresh_hp_bonuses_after_attack_damage`) for a Pokémon in play, on
+    /// either side, that the damage left in play and the lost Starting Plains +20 Knocks Out. Read by
+    /// `handle_knockouts`; it leaves play with the Pokémon. Added after every earlier variant, so
+    /// each keeps its position (and its serialized index and hash).
     KnockedOutByAbilityDamage,
     /// This Pokémon's attack named `attack_name` does `amount` less damage (Deoxys's Psycho Boost,
     /// C1 062 / P-C 003: "During your next turn, this Pokémon's Psycho Boost does -50 damage.").

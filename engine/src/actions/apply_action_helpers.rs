@@ -906,8 +906,9 @@ pub(crate) fn handle_knockouts_with_prior(
     }
 
     let iris_bonus_active = is_iris_bonus_active(state, attacking_ref, is_from_active_attack);
-    // Knock Outs this attack's wave settles that were by Ability damage (Charizard's Flame Aura on the
-    // attack's own Energy attach): each of them counts as a Knock Out outside an attack below.
+    // Knock Outs this attack's wave settles that were not by the attack's damage (marked
+    // `KnockedOutByAbilityDamage`: Flame Aura on the attack's own Energy attach, or Starting Plains'
+    // lost +20 after the damage): each of them counts as a Knock Out outside an attack below.
     let mut ability_damage_knockouts: Vec<(usize, usize)> = Vec::new();
 
     // Handle knockouts: Discard cards and award points (to potentially short-circuit promotions).
@@ -942,18 +943,22 @@ pub(crate) fn handle_knockouts_with_prior(
         // find an attacker that Rocky Helmet has already reduced to 0 HP. Discarding the attacker
         // before the defender's hook runs made that legal double-KO sequence panic.
         for (ko_receiver, ko_pokemon_idx) in wave.iter().copied() {
-            // Known limits of this per-Knock-Out flag (new printings only): (1) a later wave's
-            // Knock Out set off by a Flame Aura Knock Out (an HP Ability lost when its holder
+            // Known limits of this per-Knock-Out flag (re-checked for R8-10e, Nov 3): (1) a later
+            // wave's Knock Out set off by a marked Knock Out (an HP Ability lost when its holder
             // leaves: Toughness Aroma's +20 HP, or Jungle Totem's doubled [G] Energy under Regal
             // Bloom) has no mark, so it still takes the wave-wide `is_from_active_attack`, the
             // engine's older cascade reading; (2) a `ResolveKnockoutPoints` pause in a wave after a
-            // Flame Aura Knock Out rebuilds `ability_damage_knockouts` empty on re-entry, so the
+            // marked Knock Out rebuilds `ability_damage_knockouts` empty on re-entry, so the
             // `knocked_out_by_opponent_attack_this_turn` loop below would count that Knock Out.
-            // (2) is unreachable today: the only HP-drop waves are those two [G] Abilities, which
-            // lower only [G] Pokémon's HP; an on-knockout retaliation wave (Innards Out, Final
-            // Scream) needs the opponent's Active Knocked Out by the attack, and that Active is the
-            // only Pokémon the mark goes on; and the point-denial coin holders are Dusknoir ([P])
-            // and Glimmora ([D]).
+            // (1) can follow a Flame Aura Knock Out of an Active Lilligant (Toughness Aroma: B1 018,
+            // B1 329, B4b 019, B4b 250, Stage 1) or Serperior (Jungle Totem: A1a 006, A1a 070, A4b
+            // 036, A4b 037, Stage 2), but never the lost +20: those holders are evolved, so they
+            // never have Starting Plains' +20. (2) changes nothing today, though the lost +20 also
+            // marks Benched and own-side Pokémon: the HP-drop waves of (1) lower only [G] Pokémon's
+            // HP; an on-knockout retaliation wave (Innards Out, Final Scream) needs the opponent's
+            // Active Knocked Out by the attack's damage, unmarked, in an earlier wave, which sets the
+            // flag anyway; and the point-denial coin holders are Dusknoir (B1 105, [P], Stage 2) and
+            // Glimmora (B3a 045, B3a 078, [D], Stage 1).
             let from_attack = is_from_active_attack
                 && !state.in_play_pokemon[ko_receiver][ko_pokemon_idx]
                     .as_ref()
@@ -1159,8 +1164,9 @@ pub(crate) fn handle_knockouts_with_prior(
 ///
 /// Runs before knockouts are collected, so a rescued Pokémon never appears in a knockout wave: it
 /// stays in play, awards no points, and does not trigger a promotion. Only invoked for damage from
-/// an attack, matching the card's wording, so a Pokémon an Ability's damage Knocked Out during the
-/// attack (`knocked_out_by_ability_damage`) is not rescued.
+/// an attack, matching the card's wording, so a Pokémon Knocked Out during the attack but not by
+/// its damage (`knocked_out_by_ability_damage`) is not rescued. Hariyama and Crabominable are Stage
+/// 1, so the lost Starting Plains +20 never marks them.
 pub(crate) fn apply_survive_knockout_turn_effects(state: &mut State) {
     let rescues: Vec<(usize, Vec<String>, u32)> = state
         .get_current_turn_effects()
@@ -1191,13 +1197,21 @@ pub(crate) fn apply_survive_knockout_turn_effects(state: &mut State) {
     }
 }
 
-/// Charizard's Flame Aura can Knock Out the opponent's Active inside its owner's attack (on the
-/// attack's own Energy attach, such as Moltres ex's Inferno Dance). That Knock Out waits for the
-/// attack's wave, which must not count it as "Knocked Out by damage from an attack": no Rally Back
-/// flag or Zarude type, no Rescue Scarf or Hala, and none of the attack's on-knockout hooks (Lucky
-/// Egg, Innards Out, Lucky Mittens and the rest). `State::on_attach_energy` marks it. The Iris bonus
-/// point is gated on the same per-Knock-Out flag for consistency only: no current card can reach it,
-/// since Iris needs a Haxorus attacker and Haxorus's only attack, Frenzied Blade, attaches no Energy.
+/// A Knock Out inside an attack that is not by the attack's damage waits for the attack's wave,
+/// which must not count it as "Knocked Out by damage from an attack": no Rally Back flag or Zarude
+/// type, no Rescue Scarf or Hala, and none of the attack's on-knockout hooks (Lucky Egg, Innards
+/// Out, Lucky Mittens and the rest). Its point still counts and its owner still promotes (both go by
+/// the wave-wide `is_from_active_attack`). Two places mark it:
+/// - `State::on_attach_energy`: Charizard's Flame Aura or Darkrai ex's Nightmare Aura Knocks Out the
+///   opponent's Active on the attack's own Energy attach (such as Moltres ex's Inferno Dance);
+/// - since R8-10e, `refresh_hp_bonuses_after_attack_damage`: an attack discards Starting Plains after
+///   its damage (Shatter, Bedrock Breaker, Spacial Rend), and the lost +20 Knocks Out a Pokémon in
+///   play, on either side, that the damage left in play.
+///   Dustin's expected reading, Nov 3 (damage, then discard); to be confirmed in game.
+///
+/// The Iris bonus point is gated on the same per-Knock-Out flag for consistency only: no current card
+/// can reach it, since Iris needs a Haxorus attacker and Haxorus's only attack, Frenzied Blade,
+/// attaches no Energy and discards no Stadium.
 fn knocked_out_by_ability_damage(pokemon: &PlayedCard) -> bool {
     pokemon
         .get_active_effects()

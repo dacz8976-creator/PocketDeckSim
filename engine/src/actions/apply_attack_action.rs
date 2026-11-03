@@ -1959,22 +1959,26 @@ fn increased_damage_next_turn(
     })
 }
 
-/// Machop's Shatter: the discarded Stadium goes to the discard pile of the player who played it.
+/// Machop's Shatter (B2 079) and Conkeldurr's Bedrock Breaker (B4 089): "Discard a Stadium in
+/// play." The discarded Stadium goes to the discard pile of the player who played it. The discard
+/// comes after the attack's damage, and the HP bonuses are refreshed at once
+/// (`refresh_hp_bonuses_after_attack_damage`).
 fn discard_stadium_in_play(damage: u32) -> AttackOutcomes {
     active_damage_effect_doutcome(damage, move |_, state, action| {
         if let Some((stadium, owner)) = state.take_active_stadium() {
             state.discard_piles[owner.unwrap_or(action.actor)].push(stadium);
-            state.refresh_hp_bonuses_all();
+            refresh_hp_bonuses_after_attack_damage(state);
         }
     })
 }
 
 /// Palkia's Spacial Rend (C1 038 / C1 140): "If your opponent has a Stadium in play, discard it."
 /// Only a Stadium the opponent put into play goes, to their discard pile; the attacker's own stays,
-/// and so does one with no recorded owner (a legacy saved state's). The HP bonuses are refreshed
-/// at once, as for Shatter: Starting Plains' +20 leaves every Basic in play, and a Pokémon whose
-/// damage now reaches its HP is Knocked Out and scored by the attack's own Knock Out check, as an
-/// attack's Knock Out, not by the action's catch-all check.
+/// and so does one with no recorded owner (a legacy saved state's). As for Shatter, the discard
+/// comes after the attack's damage and the HP bonuses are refreshed at once
+/// (`refresh_hp_bonuses_after_attack_damage`): Starting Plains' +20 leaves every Basic in play, and
+/// a Pokémon whose damage now reaches its HP is Knocked Out and scored by the attack's own Knock Out
+/// check, not by the action's catch-all check, but not as an attack's Knock Out.
 fn discard_opponent_stadium_in_play(damage: u32) -> AttackOutcomes {
     active_damage_effect_doutcome(damage, move |_, state, action| {
         let opponent = (action.actor + 1) % 2;
@@ -1983,9 +1987,40 @@ fn discard_opponent_stadium_in_play(damage: u32) -> AttackOutcomes {
         }
         if let Some((stadium, _)) = state.take_active_stadium() {
             state.discard_piles[opponent].push(stadium);
-            state.refresh_hp_bonuses_all();
+            refresh_hp_bonuses_after_attack_damage(state);
         }
     })
+}
+
+/// The HP bonus refresh inside the effect of an attack that discarded a Stadium (Shatter, Bedrock
+/// Breaker, Spacial Rend). The discard comes after the attack's damage, so Starting Plains' +20 was
+/// still in place for the damage:
+/// Dustin's expected reading, Nov 3 (damage, then discard); to be confirmed in game (rules/02 §8,
+/// R8-10e). A Pokémon the damage Knocked Out, at its HP with the +20, is Knocked Out before the
+/// refresh and stays the attack's Knock Out. Every Pokémon in play, on either side, that the damage
+/// left in play and that the lost +20 Knocks Out now is not: it gets
+/// `CardEffect::KnockedOutByAbilityDamage`, so the attack's own Knock Out check still scores it (and
+/// its owner promotes if it was Active), but nothing that reads "Knocked Out by damage from an
+/// attack" fires for it (`handle_knockouts`).
+fn refresh_hp_bonuses_after_attack_damage(state: &mut State) {
+    let mut knocked_out_before = Vec::new();
+    for player in 0..2 {
+        for (idx, pokemon) in state.enumerate_in_play_pokemon(player) {
+            if pokemon.is_knocked_out() {
+                knocked_out_before.push((player, idx));
+            }
+        }
+    }
+    state.refresh_hp_bonuses_all();
+    for player in 0..2 {
+        for (idx, slot) in state.in_play_pokemon[player].iter_mut().enumerate() {
+            if let Some(pokemon) = slot {
+                if pokemon.is_knocked_out() && !knocked_out_before.contains(&(player, idx)) {
+                    pokemon.add_effect(CardEffect::KnockedOutByAbilityDamage, 0);
+                }
+            }
+        }
+    }
 }
 
 /// Quagsire's Amnesia: expose one uniform forecast successor per Defending Pokémon attack.
@@ -8494,7 +8529,10 @@ mod test {
     /// Palkia's Spacial Rend (C1 038) refreshes the HP bonuses inside its own effect, as Shatter
     /// does, not only in the action's common suffix (which this skips): applied alone, the attack's
     /// mutation takes Starting Plains' +20 off every Basic, and the attack's own Knock Out check
-    /// scores the Active Bulbasaur (70 damage on 70 HP) and the Benched Squirtle (60 on 60).
+    /// scores the Active Bulbasaur and the Benched Squirtle (60 damage on 60 HP).
+    /// Dustin's expected reading, Nov 3 (damage, then discard); to be confirmed in game: Bulbasaur
+    /// survives Spacial Rend's 70 at 90 HP, then falls to the lost +20, so like the Benched Squirtle
+    /// it is scored but is not the attack's Knock Out (R8-10e).
     #[test]
     fn spacial_rend_refreshes_the_hp_bonuses_before_the_attacks_knock_out_check() {
         let plains = get_card_by_enum(CardId::B2154StartingPlains);

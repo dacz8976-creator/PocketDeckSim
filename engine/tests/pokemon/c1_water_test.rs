@@ -536,10 +536,10 @@ fn remaining(state: &State, player: usize, slots: &[usize]) -> Vec<u32> {
 /// Basic in play, on both sides, loses its +20 at once. The opponent's Bulbasaur (70 damage from
 /// Spacial Rend on 70 HP) and Benched Squirtle (60 on 60) are Knocked Out and both points scored at
 /// once; the Active was Knocked Out, so its owner is asked to promote (rules/02: removing an HP bonus).
-/// These Knock Outs, their points and the promotion are the existing reading, not verified: the
-/// attack's own, scored by the attack's own Knock Out check. rules/02's ruling covers Knock Outs
-/// from removing an HP bonus outside an attack; whether these are an attack's Knock Outs is open
-/// (R8-09; more in tests/stadiums/starting_plains_removal_test.rs).
+/// Both survived the attack's damage (Bulbasaur at 20) and fell to the lost +20, so the attack's own
+/// Knock Out check scores them but neither is the attack's Knock Out:
+/// Dustin's expected reading, Nov 3 (damage, then discard); to be confirmed in game (R8-09, R8-10e;
+/// more in tests/stadiums/starting_plains_removal_test.rs).
 #[test]
 fn test_spacial_rend_discards_the_opponents_starting_plains_and_its_bonus_at_once() {
     let plains = get_card_by_enum(CardId::B2154StartingPlains);
