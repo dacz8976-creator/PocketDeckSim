@@ -188,14 +188,15 @@ fn python_lock() -> MutexGuard<'static, ()> {
     guard
 }
 
-/// Timing record only (no assertion): appends `HELLO <label> <secs>` to `pdl_adapter_hellos.txt` in the temp dir.
+/// Timing record only (no assertion): appends `HELLO <label> <secs>` to `pdl_adapter_hellos_<pid>.txt` in the temp
+/// dir, one file per test binary run.
 fn note_hello(label: &str, secs: f64) {
     use std::io::Write as _;
     eprintln!("HELLO {label} {secs:.3}");
     if let Ok(mut f) = std::fs::OpenOptions::new()
         .create(true)
         .append(true)
-        .open(std::env::temp_dir().join("pdl_adapter_hellos.txt"))
+        .open(std::env::temp_dir().join(format!("pdl_adapter_hellos_{}.txt", std::process::id())))
     {
         let _ = writeln!(f, "HELLO {label} {secs:.3}");
     }
@@ -681,6 +682,9 @@ fn first_legal_bot_finishes() {
             (r, stats)
         });
         if let Err(mpsc::RecvTimeoutError::Timeout) = rx.recv_timeout(Duration::from_secs(30)) {
+            // The stray game still holds its bot, and the lock goes to the next Python test when this one unwinds:
+            // give it up to 15 s more to stop first. A game still stuck after that can overlap later Python tests.
+            let _ = rx.recv_timeout(Duration::from_secs(15));
             panic!("pair {p} order {o} k {k}: game did not finish in 30 s");
         }
         let (r, stats) = game.join().unwrap_or_else(|e| std::panic::resume_unwind(e));
