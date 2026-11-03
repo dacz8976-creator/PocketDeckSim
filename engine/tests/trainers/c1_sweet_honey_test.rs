@@ -1,4 +1,4 @@
-// Ported from upstream deckgym-core #433 (tests/trainers/c1_sweet_honey_test.rs, e7cc5ce) as #439 left it (7aa4ef0): its 2 tests. test_sweet_honey_heals_20_per_heads_until_tails is adapted to this fork's order: the Play offers a ChooseSweetHoneyTarget on the one damaged Pokémon and the coins are flipped when it resolves (upstream flips first, then offers a Heal of 20 per heads on any of the player's Pokémon), with no cap on the heads (upstream's geometric_until_tails(8)); its board, seeds and assertions are upstream's. test_sweet_honey_needs_a_damaged_pokemon (#439) is as upstream wrote it. Fork tests follow at the end: neither printing playable without a damaged Pokémon; damaged targets only and nothing flipped before the choice, on both printings; an unoffered target refused before the coins, with the gameplay RNG fingerprinted after it; no cap; the exact search forecast and its match with real play; Will; Heal Block; Luxury Coin (both Gholdengo printings, real play and search, Will, a spent coin); serialization, redaction and adoption, malformed states included; the bots at every Sweet Honey root; and the printings' status.
+// Ported from upstream deckgym-core #433 (tests/trainers/c1_sweet_honey_test.rs, e7cc5ce) as #439 left it (7aa4ef0): its 2 tests. test_sweet_honey_heals_20_per_heads_until_tails is adapted to this fork's order: the Play offers a ChooseSweetHoneyTarget on the one damaged Pokémon and the coins are flipped when it resolves (upstream flips first, then offers a Heal of 20 per heads on any of the player's Pokémon), with no cap on the heads (upstream's geometric_until_tails(8)); its board, seeds and assertions are upstream's. test_sweet_honey_needs_a_damaged_pokemon (#439) is as upstream wrote it. Fork tests follow at the end: neither printing playable without a damaged Pokémon; damaged targets only and nothing flipped before the choice, on both printings; an unoffered target refused before the coins, with the gameplay RNG fingerprinted after it; the Play drawing nothing from that RNG, on both printings; no cap; the exact search forecast and its match with real play; Will; Heal Block; Luxury Coin (both Gholdengo printings, real play and search, Will, a spent coin); serialization, redaction and adoption, malformed states included; the bots at every Sweet Honey root; and the printings' status.
 //! Sweet Honey (C1 119, C1 152): "Choose 1 of your Pokémon, and then flip a coin until you get
 //! tails. For each heads, heal 20 damage from that Pokémon."
 
@@ -323,6 +323,45 @@ fn test_sweet_honey_unoffered_target_is_rejected_before_the_coins() {
         red_card_print(control),
         "a rejected target must not advance the gameplay RNG"
     );
+}
+
+/// The Play flips no coin, on either printing: the staged target phase, adopted into a game seeded
+/// the same, heals the chosen Squirtle exactly as the whole line does, and a Red Card played after
+/// each shuffles and draws the same (the heal alone often matches after a different draw). The twin
+/// of `misty_precoin_target_test.rs`'s same-seed check.
+#[test]
+fn test_sweet_honeys_play_draws_nothing_from_the_gameplay_rng() {
+    let squirtle = |action: &SimpleAction| {
+        matches!(action, SimpleAction::ChooseSweetHoneyTarget { in_play_idx: 2 })
+    };
+    for honey in [CardId::C1119SweetHoney, CardId::C1152SweetHoney] {
+        let base = honey_game(0, mixed_board(), &[honey]).get_state_clone();
+        let mut healed = std::collections::BTreeSet::new();
+        for seed in 0..64 {
+            let mut whole = reseeded(&base, seed);
+            whole.apply_action(&legal(&whole, plays("Sweet Honey")));
+            let staged = whole.get_state_clone();
+            whole.apply_action(&legal(&whole, squirtle));
+            healed.insert(hp(&whole, 2) - 10);
+
+            let mut adopted = reseeded(&staged, seed);
+            adopted.apply_action(&legal(&adopted, squirtle));
+            assert_eq!(
+                adopted.get_state_clone().in_play_pokemon,
+                whole.get_state_clone().in_play_pokemon,
+                "{honey:?}, seed {seed}: the Play must not flip a coin"
+            );
+            assert_eq!(
+                red_card_print(adopted),
+                red_card_print(whole),
+                "{honey:?}, seed {seed}: the Play must not draw from the gameplay RNG"
+            );
+        }
+        assert!(
+            healed.contains(&0) && healed.len() > 1,
+            "{honey:?}: the coins follow the target; healed {healed:?}"
+        );
+    }
 }
 
 /// No heads cap: on a target with 480 damage, more than 8 heads (upstream's cap) occur across
