@@ -515,6 +515,12 @@ fn test_starting_plains_adds_hp_to_basics_only() {
     assert_eq!(ivysaur_hp, pokemon_base_hp(CardId::A1002Ivysaur));
 }
 
+/// Starting Plains replaced by Training Area: the +20 leaves at once and the opponent's Bulbasaur
+/// (80 damage on 70 HP) is Knocked Out, the point is scored and its owner promotes. The Knock Out,
+/// its point and the promotion are the existing reading, not verified (R8-09): scored by the Knock
+/// Out check that runs when a Stadium is played, not an attack's. They match Dustin's ruling on
+/// Knock Outs from removing an HP bonus outside an attack (rules/02 §7-§8: "Stadium replaced"), so
+/// nothing here is open.
 #[test]
 fn test_starting_plains_ko_on_stadium_replace_promotes() {
     let mut game = get_initialized_game(0);
