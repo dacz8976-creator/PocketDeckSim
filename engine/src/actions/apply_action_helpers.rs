@@ -950,15 +950,17 @@ pub(crate) fn handle_knockouts_with_prior(
             // engine's older cascade reading; (2) a `ResolveKnockoutPoints` pause in a wave after a
             // marked Knock Out rebuilds `ability_damage_knockouts` empty on re-entry, so the
             // `knocked_out_by_opponent_attack_this_turn` loop below would count that Knock Out.
-            // (1) can follow a Flame Aura Knock Out of an Active Lilligant (Toughness Aroma: B1 018,
-            // B1 329, B4b 019, B4b 250, Stage 1) or Serperior (Jungle Totem: A1a 006, A1a 070, A4b
-            // 036, A4b 037, Stage 2), but never the lost +20: those holders are evolved, so they
-            // never have Starting Plains' +20. (2) changes nothing today, though the lost +20 also
-            // marks Benched and own-side Pokémon: the HP-drop waves of (1) lower only [G] Pokémon's
-            // HP; an on-knockout retaliation wave (Innards Out, Final Scream) needs the opponent's
-            // Active Knocked Out by the attack's damage, unmarked, in an earlier wave, which sets the
-            // flag anyway; and the point-denial coin holders are Dusknoir (B1 105, [P], Stage 2) and
-            // Glimmora (B3a 045, B3a 078, [D], Stage 1).
+            // (1) can follow a Flame Aura (Charizard C1 018, C1 136, Stage 2) or Nightmare Aura
+            // (Darkrai ex A2 110, A2 187, A2 202, A4b 245, A4b 378, P-A 042, Basic) Knock Out of
+            // an Active Lilligant (Toughness Aroma: B1 018, B1 329, B4b 019, B4b 250, Stage 1) or
+            // Serperior (Jungle Totem: A1a 006, A1a 070, A4b 036, A4b 037, Stage 2), but never the
+            // lost +20: those holders are evolved, so they never have Starting Plains' +20. (2)
+            // changes nothing today, though the lost +20 also marks Benched and own-side Pokémon:
+            // the HP-drop waves of (1) lower only [G] Pokémon's HP; an on-knockout retaliation
+            // wave (Innards Out, Final Scream) needs the opponent's Active Knocked Out by the
+            // attack's damage, unmarked, in an earlier wave, which sets the flag anyway; and the
+            // point-denial coin holders are Dusknoir (B1 105, [P], Stage 2) and Glimmora (B3a 045,
+            // B3a 078, [D], Stage 1).
             let from_attack = is_from_active_attack
                 && !state.in_play_pokemon[ko_receiver][ko_pokemon_idx]
                     .as_ref()

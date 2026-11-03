@@ -17,14 +17,18 @@
 //! bonuses inside its own effect, so the attack's own Knock Out check scores every Knock Out. A
 //! Pokémon the attack's damage Knocks Out at its HP with the +20 is the attack's Knock Out. One
 //! still in play after the damage that the lost +20 then Knocks Out is not: the defender left with
-//! damage at least its printed HP but below HP + 20, and any Benched Basic, on either side. Its
-//! point still counts and its owner still promotes, but nothing that reads "Knocked Out by damage
-//! from an attack" fires for it: the flag Marshadow's Revenge reads ("If any of your Pokémon were
-//! Knocked Out by damage from an attack during your opponent's last turn"), Zarude's Dark
-//! Vengeance type tally, Rescue Scarf, and the attack's on-Knock-Out hooks such as Lucky Egg,
-//! Innards Out and the attacker's Lucky Mittens (Iris's extra point needs a Haxorus attacker, which
-//! none of these attacks has). Every test here that asserts how such a Knock Out is scored, its
-//! points or a win from it says so. All of this is
+//! damage at least its printed HP but below HP + 20, and any other Basic in play on either side,
+//! Benched or the attacker itself. Its point still counts and its owner still promotes, but
+//! nothing that reads "Knocked Out by damage from an attack" fires for it: the flag Marshadow's
+//! Revenge reads ("If any of your Pokémon were Knocked Out by damage from an attack during your
+//! opponent's last turn"), Zarude's Dark Vengeance type tally, Rescue Scarf, and the attack's
+//! on-Knock-Out hooks such as Lucky Egg, Innards Out and the attacker's Lucky Mittens (Iris's extra
+//! point needs a Haxorus attacker, which none of these attacks has). On the attacker's own side no
+//! effect a player sees tells the two apart: each such text reads an attack from the opponent's
+//! Pokémon or during the opponent's turn, or the opponent's Active, except Hala's and Guts', whose
+//! Pokémon are evolved and never have the +20. So the tests there show only the points and the
+//! promotion. Every test here that asserts how such a Knock Out is scored, its points or a win
+//! from it says so. All of this is
 //! Dustin's expected reading, Nov 3 (damage, then discard); to be confirmed in game (rules/02 §8,
 //! rules/08 T15).
 //!
@@ -325,8 +329,10 @@ fn shatter_knocks_out_the_opponents_damaged_basics_at_once_but_not_as_the_attack
 /// HP) are Knocked Out at once, the opponent scores both, and Machop's player promotes Bulbasaur (30
 /// damage, 60 → 40). The opponent's Ivysaur takes the 10 (90 → 80) and Seel loses the +20 (90 → 70).
 /// The Knock Outs are scored by the attack's own Knock Out check (the double Knock Out test from
-/// player 1's seat below pins it), and are not the attack's Knock Outs, nor Knock Outs by the
-/// opponent's attack:
+/// player 1's seat below pins it); they are not the attack's Knock Outs, nor Knock Outs by the
+/// opponent's attack, but on the attacker's own side no effect a player sees tells that apart (see
+/// the module doc), and the end-of-turn flag below reads only the opponent's losses, so this test
+/// shows the points and the promotion:
 /// Dustin's expected reading, Nov 3 (damage, then discard); to be confirmed in game.
 #[test]
 fn shatter_knocks_out_machop_itself_and_its_own_damaged_benched_basic() {
@@ -524,8 +530,10 @@ fn bedrock_breaker_wins_the_game_on_a_third_point_from_the_lost_plus_20() {
 /// and the opponent scores both, while Seel (50 damage) stays at 20. Both were on the Bench, so
 /// nobody promotes and Conkeldurr stays Active.
 /// The Knock Outs are scored by the attack's own Knock Out check (Bedrock Breaker refreshes the HP
-/// bonuses where Shatter does, and Shatter's double Knock Out test from player 1's seat pins it),
-/// and are not the attack's Knock Outs, nor Knock Outs by the opponent's attack:
+/// bonuses where Shatter does, and Shatter's double Knock Out test from player 1's seat pins it);
+/// they are not the attack's Knock Outs, nor Knock Outs by the opponent's attack, but on the
+/// attacker's own side no effect a player sees tells that apart (see the module doc), and the
+/// end-of-turn flag below reads only the opponent's losses, so this test shows the points:
 /// Dustin's expected reading, Nov 3 (damage, then discard); to be confirmed in game.
 #[test]
 fn bedrock_breaker_knocks_out_the_attackers_own_damaged_benched_basics() {
@@ -624,8 +632,10 @@ fn spacial_rend_knocks_out_the_opponents_damaged_benched_basic_but_not_as_the_at
 /// Knocked Out at once, the opponent scores both, and Palkia's player promotes Bulbasaur (30 damage,
 /// 60 → 40). The opponent's Snorlax takes the 70 (170 → 100 → 80) and Seel loses the +20 (90 → 70).
 /// The Knock Outs are scored by the attack's own Knock Out check (the double Knock Out test from
-/// player 1's seat below pins it), and are not the attack's Knock Outs, nor Knock Outs by the
-/// opponent's attack:
+/// player 1's seat below pins it); they are not the attack's Knock Outs, nor Knock Outs by the
+/// opponent's attack, but on the attacker's own side no effect a player sees tells that apart (see
+/// the module doc), and the end-of-turn flag below reads only the opponent's losses, so this test
+/// shows the points and the promotion:
 /// Dustin's expected reading, Nov 3 (damage, then discard); to be confirmed in game.
 #[test]
 fn spacial_rend_knocks_out_palkia_itself_and_its_own_damaged_benched_basic() {
@@ -1235,10 +1245,13 @@ fn lucky_mittens_draws_for_a_defender_the_attacks_damage_knocks_out() {
 /// and the attacker's own Benched Squirtle (60 on 60), which the attack did not damage, fall to the
 /// lost +20. Each of the three holds Rescue Scarf, and all three are scored: 2 points to the
 /// attacker, 1 to the opponent, who promotes their second Zarude. Only Palkia is the attack's Knock
-/// Out: Rescue Scarf puts it into its owner's hand but sends the Benched Zarude and the attacker's
-/// own Squirtle to the discard pile; the attacker's Lucky Mittens draws 1 card, not 2; the flag
-/// Marshadow's Revenge reads is set, by Palkia; and next turn Dark Vengeance does its printed 40, as
-/// no [D] Pokémon was Knocked Out by damage from the attack.
+/// Out: Rescue Scarf puts it into its owner's hand but sends the Benched Zarude to the discard
+/// pile; the attacker's Lucky Mittens draws 1 card, not 2; the flag Marshadow's Revenge reads is
+/// set, by Palkia; and next turn Dark Vengeance does its printed 40, as no [D] Pokémon was Knocked
+/// Out by damage from the attack. The attacker's own Squirtle goes to the discard pile in any case,
+/// as Rescue Scarf reads "from your opponent's Pokémon": on the attacker's own side no effect a
+/// player sees tells the two apart (see the module doc), so the Squirtle shows only that its point
+/// goes to the opponent.
 /// Dustin's expected reading, Nov 3 (damage, then discard); to be confirmed in game.
 #[test]
 fn one_wave_holds_the_attacks_knock_out_and_the_lost_plus_20s_on_both_sides() {
