@@ -39,7 +39,7 @@ python3 decks/screen/floor.py decks/brews/brew-03a-arceus-nihilego-toxapex.txt -
 
 **Verified builds:**
 - The training launchers (`rl/run_training_v*.sh`) install the hash-checked add-on wheel from `rl/addon-0.7.2/wheels/`. The scoreboard tool (`rl/results/deep_search_table/`) checks for that same add-on build.
-- The official engine is the release `project_manifest.json` names as `available_release`: since Oct 29, `rl/engine-2026-10-29/` (main-affe56e: `deckgym`, `legality_scan` and A1's `goldfish`; see its README). Earlier engines, from `rl/engine-2026-09-25/` on, are history in the manifest; START_HERE has the one-line summary.
+- The official engine is the release `project_manifest.json` names as `available_release`: since Nov 4, `rl/engine-2026-11-04/` (main-543dad0: `deckgym`, `legality_scan` and A1's `goldfish`; see its README). Earlier engines, from `rl/engine-2026-09-25/` on, are history in the manifest; START_HERE has the one-line summary.
   - The manifest holds the hashes. `current_engine.py` resolves to the release and checks the hash.
   - The screen (`decks/screen/run_screen.py`) and the floor check (`decks/screen/floor.py`) use it.
 - The rules4 program at `rl/addon-0.7.2/deckgym` is kept as history.

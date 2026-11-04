@@ -2,8 +2,8 @@
 
 Branch `laptop/r8-catchup-2026-10-29`, from main's merge-base `ebc97535`. R8 catches the fork up with upstream's
 card code through #439 (`7aa4ef0`), carries the bot-protocol adapter, and adds the rule rows and item 11 that
-Dustin's clips and decisions settled. Every commit from `ebc97535` to the tip is in the adoption list (section 10).
-Nothing goes to main without Dustin's word.
+Dustin's clips and decisions settled. Every commit from `ebc97535` to S8 (543dad00) is in the adoption list (section 10), apart from the merge of main (c76ad922, Nov 4: main's two newer files, START_HERE.md and a weekly-review file; no engine or deck change). After S8 come the build record and the adoption commit (section 13).
+Dustin's word came on Nov 4 ("Adopt all three"): the official programs switch to main-543dad0 (section 13).
 
 ## 1. What R8 brings, by commit group
 
@@ -283,7 +283,7 @@ prediction in RULE_ROWS.md.
    The second docs commit is 55f67837, with its fix cdadc04f (docs only; coordinator-148 §1). After his yes (Nov 4,
    "Adopt all three"): one more docs commit (known limit 14, section 12 item 15).
 9. **Root `CLAUDE.md:14`, Dustin's call (not in R8's commits):** one line adding `cargo build --release --example
-   goldfish` and `cargo test --release --test goldfish_card_support_test`. Nobody edits it before his word.
+   goldfish` and `cargo test --release --test goldfish_card_support_test`. His word came on Nov 4 (the third yes in "Adopt all three"); the adoption commit adds it as a new bullet after line 15 (coordinator-155 §3; section 13).
 
 ## 11. Adoption-screen sentences
 
@@ -329,3 +329,81 @@ Every new finding goes on this list (the time box).
     the Jigglypuff C1 051 / C1 184 limitation that card_status prints, still says "Card text, not filmed" for the
     2-coin Soothing Lullaby Checkup. Section 3 and rules/03_status_checkup_timing.md:73 say the 2 coins were filmed
     (Codex's review of his clips). Not changed in R8: it would move the tested engine tree (coordinator-150 §4).
+
+## 13. The adoption: the official programs switch to main-543dad0 (Nov 4)
+
+In plain words:
+- The official programs are now R8's: upstream's card code through #439, the protocol adapter (used only when a run asks for it), the rule rows R8-10a to R8-10e and item 11.
+- All 260 C1, SP1 and P-C printings now play: 256 Complete and 4 RulesUnverified (C1 015 Ribombee, C1 051 Jigglypuff, C1 135, C1 184). The official programs refuse no real printing any more. The card-support refusal stays in the code and still stops a deck with a card the engine cannot play, but no printing in the card list is such a card now.
+- So the screen, the floor and the brew pages (goldfish) play every deck made of printings in the card list on main-543dad0.
+- The slow report stays on the old engine (main-affe56e) until its own check on the new engine passes, and its pages say so. Until then, a slow report of a deck that holds one of the 55 printings main-affe56e could not play registers and then stops with its pinned program's card-support message (exit 2), while the official programs play that deck.
+- This is a catch-up with upstream's card code and our rule rows, not a strength change. On the replayed decks the new programs gave main-affe56e's results. Nothing here measures how well the bots play the new cards, and kx3 is slow on the honey cards (section 5, known limit 14).
+
+Dustin's words, verbatim, with their sources:
+- **The adoption.** Nov 4, at about 14:35Z, answering "Do you adopt R8 as the page lays out?" on the approval page "R8 Approval Sheet", relayed by the coordinator in coordinator-153: "Adopt all three". The three: (1) adopt R8 with nothing dropped (section 10), including the START_HERE and CLAUDE.md pin lines named on the page; (2) yes to item 11 (4c948025); (3) yes to the CLAUDE.md:14 goldfish line (section 10 item 9).
+- **The two-step pin.** His Oct 21 words, via coordinator-072: "Move the slow-report program only after its replay check passes. Until then, its reports must clearly identify the old engine."
+- **Baselines as on Oct 21.** His Oct 21 words, via coordinator-072: "Leave historical scoreboards and mixed-opponent comparisons alone. Revisit them only if a future decision relies on them." The old rows are listed below ("Tied to the old engine"); their files are left as they are, and nothing is recomputed.
+
+### What the adoption activates
+- **The three programs** in `rl/engine-2026-11-04/` (`deckgym` a5c71c00… blob, sha256 75090673c20939a0aee431eb293dde0d2a988194da0b8429604a7570dc150310; `legality_scan` 2c6df06583ec366735785eb234ed2bbd13dd6a1161036cfecfc80afd4af3fea4; `goldfish` 814d72b5ab7c705738a731ed96d5b5b62059494cece0cd82442e60ad77d7a5ed): S8's tested bytes, the same git blobs as `r8_release/programs_final/`, mode 100755, never rebuilt.
+- **The current-engine selector.** `project_manifest.json`'s `available_release` names them, and main-affe56e (`rl/engine-2026-10-29/`) moves to `historical_releases`; its folder stays as history. `current_engine.py`, `decks/screen/floor.py` and `decks/screen/run_screen.py` read the manifest, so the screen and the floor switch with it. `make_predictions.py`'s `CURRENT_ENGINE` moves with it: floor pages made on `rl/engine-2026-11-04/deckgym` count as current, and no slow report does until the slow report's re-pin.
+- **The pin lines.** START_HERE's engine line and CLAUDE.md's engine paragraph name main-543dad0, and CLAUDE.md gains the goldfish card-support bullet (section 10 item 9).
+- **The slow-report program: not moved by this commit.** The pinned program stays kx3 on main-affe56e's engine (`/home/dacz8976/kx_r4/strength`, sha256 23d8a9b5…; built from `laptop/kx3-on-r6-2026-10-29` e3ddc014, engine tree cd970db6). Its pages already name that engine ("kx3 (d513e37b's files, on main-affe56e)"), and `make_predictions.py` counts no slow report as current. The re-pin's program is built and checked: kx3's six files on 48dec4f5 (K8 b5f15351, branch `laptop/kx3-on-r8-2026-11-04` on origin, not main; engine tree f33d2c49baf4), `/home/dacz8976/pincand_work/RR_R8_48dec4f5/strength/K8/strength` (sha256 d4d4e43a…; harness c4f7da21…; jobs 2), both self-checks equal to the pin's texts (below). Its kx3 replay check on R8 comes next; the re-pin follows only if it passes. **Until the re-pin**, a slow report of a deck that holds one of the 55 printings main-affe56e could not play registers and then stops with the pinned program's card-support message (exit 2), while the official programs play that deck (`rl/strength/README.md`, "Unsupported cards").
+- **The harness source does not move.** It is c4f7da21… at affe56e8 and at S8 (the pin's hash), so, unlike at R6, no pin test turns red on main and the cloud `--program` route is not held back by this commit (the rl/strength modules give the same results before and after it: "Checks of the adoption commit" below).
+
+### Release identity
+- Built from S8, `543dad0007a345128ec95e9c2698699c8b5493ce` (2026-11-04, 14:46-14:56 UTC, 638 s): the tip of `laptop/r8-catchup-2026-10-29` after the merge of main (c76ad922) and the docs commit. Engine tree 014b4371a3b8. main's `engine/` after the adoption is that tree, byte for byte: no exception.
+- Built in WSL with `cargo build --release --locked` plus `--example legality_scan` and `--example goldfish`, in the clean worktree `/home/dacz8976/lane_r8_w` at S8, with a fresh target directory (`/home/dacz8976/lane_r8_target`), CARGO_BUILD_JOBS 2, nice 19 (`lane/lane_r8.sh`). The five programs built from S8 (deckgym, legality_scan, goldfish, card_status, card_enum_generator) have Lane N's sha256 (Lane N: 48dec4f5, the same engine tree), so Lane N's checks are cited (coordinator-151, Q2 (A)).
+- The engine reads the same 14 `DECKGYM_*` switches as main-affe56e, none set by default. R8's only new environment variable, `TEST_CARD_SUPPORT_MISSING_ATTACK`, is read only in a build with the test-utils feature.
+- The build record is `r8_release/` at 933f2790 (one parent, S8; it changes only that folder), the commit this one sits on. Its `programs_final/` holds the same bytes; the adoption copies those blobs and never rebuilds.
+- **Activation checks** (after the merge, in the repository root, on Linux):
+  1. `cd rl/engine-2026-11-04 && sha256sum -c SHA256SUMS`: three OK lines.
+  2. `git ls-tree HEAD rl/engine-2026-11-04/`: deckgym a5c71c00…, legality_scan d62354d1…, goldfish 71bcb5ef…, each 100755.
+  3. `python3 current_engine.py`: prints this repository's `rl/engine-2026-11-04/deckgym` (it refuses a file whose hash is not the manifest's).
+  4. The manifest's three sha256 equal `SHA256SUMS`.
+  5. `git rev-parse HEAD:engine` prints 014b4371a3b809273c01a1809a058de5980cdfd1, S8's engine tree.
+
+### The switch's checks (`r8_release/` and Lane N)
+| Check | Result |
+|---|---|
+| Build: deckgym, legality_scan, goldfish | OK in 638 s (2026-11-04, 14:46-14:56 UTC), fresh target directory |
+| sha256 against Lane N's programs (48dec4f5, the same engine tree) | equal, so Lane N's rows below are cited (coordinator-151, Q2 (A)) |
+| gencmp (`card_ids.rs`, `database.rs`), the official build's own lane on S8 | SAME, SAME |
+| card_status | all 4,577 cards = 4,565 Complete + 12 RulesUnverified; C1, SP1 and P-C: 260 = 256 Complete + 4 RulesUnverified; older cards neither Complete nor RulesUnverified: 0 (STATUS_CHECK OK) |
+| Suite (Lane N) | 2,633 passed, 0 failed, 0 ignored |
+| goldfish steps (Lane N) | no test variable in the plain programs; the plain card-support test: 1 passed |
+| 18 identity replays (Lane N) | 15 SAME against the 08a9b3a references and the 3 known Growl-rule rows (new17_k3 8 of 8,500 deals, dev_km3_new17 7 of 8,500, 8_new_km3 1 of 16,000); all 18 equal to R6's S ("v S: SAME"); every rules page with no RULE finding; 156,520 games or deals |
+| The same 18 replays on the official build's lane (unplanned) | equal to Lane N's |
+| Floor re-check, 12 pieces, on S8's deckgym | 24,960 games (11 deck pieces 21,120, run_screen 3,840): games and coverage files byte-equal to R6's pages on S (floor2S), each page equal apart from the engine path only |
+| R8's goldfish on the 11 floor decks | coverage byte-equal |
+| kx3's rebuild on R8 (K8 b5f15351) | `/home/dacz8976/pincand_work/RR_R8_48dec4f5/strength/K8/strength`, sha256 d4d4e43a…, harness c4f7da21…, jobs 2 |
+| Self-checks | km3 81b572198c04d5d1 (on strength_L, R8's km3 build) and kx3 31d638dbc818b0fa (on strength_K8, 5,377 s): equal to the pin's texts |
+| `rl/strength` Python suite | 1,438 tests OK |
+
+### Tied to the old engine: not re-run, nothing recomputed
+1. **The slow report and kx3's recorded games**, until the re-pin (above). The reports so far stay main-affe56e's, or older.
+2. **Scoreboard v3's frozen cells and thresholds, kta3's status, km3's thresholds, the mixed kt/kta clause-(d) tables and RUN5's development real error:** records of their old engines, as on Oct 21 and at R6.
+3. **The ladder predictions** (`rl/results/ladder_validation/predictions/`), never overwritten.
+4. **Run 3, K21 and the exam rows:** v7, frozen, not pooled with v8 rows.
+5. **R6's floor re-check pages (floor2S) and its replays:** records beside the new ones above, never replacements.
+6. **The deck journal's "current engine" flags** mean "current when added".
+
+What carries over unchanged: every replayed row that came out equal.
+
+### Checks of the adoption commit (a scratch worktree, before main moved; no engine run)
+Run before main moved, on e6de0f98, with `r8_release/tools/adoption/verify_r8.sh draft <scratch worktree> e6de0f98 <baseline>`; the baseline is the same checks on the R8 tip before this commit, the build record 933f2790 (`verify_r8.sh baseline`). Python tests only, no engine run:
+- The commit's shape: one parent, the build record, whose one parent is S8; 18 paths (PASS (18 paths; want the 18 of adopt_r8.py)); START_HERE.md PASS (1 hunk(s)), CLAUDE.md PASS (1 hunk(s)) (coordinator-155 section 3).
+- The five activation checks: PASS (rl/engine-2026-11-04: 3 OK lines); PASS (deckgym a5c71c00 legality_scan d62354d1 goldfish 71bcb5ef each 100755, the programs_final blobs); PASS (rc=0, prints <WT>/rl/engine-2026-11-04/deckgym); PASS (manifest v SHA256SUMS: True); PASS (HEAD:engine 014b4371a3b8, S's 014b4371a3b8). available main-543dad0 543dad00 rl/engine-2026-11-04; history tail main-4d48844 main-affe56e | superseded: True.
+- `make_predictions.py --selftest`: rc=0 | FAIL lines 0 | ok lines 136 | SELF-TEST PASSED (0 failed). `read_ladder.py --selftest`: rc=0 | FAIL lines 0 | SELF-TEST PASSED (0 failed).
+- `test_journal`: rc=1 | Ran 61 | FAILED (failures=1) | FAIL: test_the_first_fill_holds_the_proposals_and_withdrawn_lists (test_journal.PartB.test_the_first_fill_holds_the_proposals_and_withdrawn_lists). The same failure, unchanged, at the baseline 933f2790 and on main 08bd9602 (`verify_r8.sh baseline` on main, the same day): it predates R8 and is not this commit's; reported to the coordinator.
+- `floor_recheck_rules2_2026-10/test_runners`: rc=0 | Ran 55 | OK | no FAIL/ERROR. `test_calibration_safety`: rc=0 | Ran 168 | OK | no FAIL/ERROR. `test_run_screen_weights`: rc=0 | Ran 21 | OK | no FAIL/ERROR. `test_floor_pricing_pilot`: rc=0 | Ran 5 | OK | no FAIL/ERROR. `read_km.py --selftest`: rc=0 | selftest ok: route from integers; tau and dMSE boundary logic at both edges (a printed +0.0 lower bound read from score.py's unrounded one, K7); M1/M2 compared with the exact T (a rate displayed as T but below it fails), the kta3 guard at exactly T, 'cannot pass', never offered; T parsed only as an exact fraction; the amendment's numbers found in the text; the gating table by route and label (M lines only in the fallback, τ̂ on the ordinary route only in the fallback, (c) only on the reserve route); holding lines first; per-label failure names; the skip report; the five-field match with deck files . `test_km_thresholds`: rc=0 |   ok    P3 read_km.py still writes `out[int(0.025 * reps)], out[int(0.975 * reps)]` twice (2 found) and it picks what score.pct picks at 4,000 and 20,000 reps (True) ALL CASES GIVE THEIR KNOWN ANSWER .
+- `rl/strength`'s modules, KX_RUNS_DIR and STRENGTH_PROGRAM unset: test_slow_report rc=0 | Ran 492 | OK | no FAIL/ERROR; test_slow_report_existing rc=0 | Ran 42 | OK | no FAIL/ERROR; test_slow_report_page rc=0 | Ran 201 | OK | no FAIL/ERROR; test_slow_report_paired rc=0 | Ran 69 | OK | no FAIL/ERROR; test_slow_report_process rc=0 | Ran 115 | OK | no FAIL/ERROR; test_slow_report_registration rc=0 | Ran 244 | OK | no FAIL/ERROR; test_slow_report_runloop rc=0 | Ran 78 | OK | no FAIL/ERROR; test_split_collect rc=0 | Ran 54 | OK | no FAIL/ERROR; test_strength_card_support rc=0 | Ran 4 | OK (skipped=4) | no FAIL/ERROR; test_strength_prereg_use rc=0 | Ran 121 | OK | no FAIL/ERROR; test_strength_report rc=0 | Ran 18 | OK | no FAIL/ERROR.
+- Against the baseline: 20 checks equal; the one expected difference was the draft's own placeholder for this text; nothing else differed (verdict: as expected).
+- Placeholders: none in the final (the draft held only the one for this text).
+
+### Left as is on purpose
+- `engine/UPSTREAM.md` stays as built: it is part of S8's tree.
+- Jigglypuff's limitation text in `card_validation.rs` (section 12 item 15) waits for the first engine commit after R8: changing it now would move the tested engine tree.
+- `census.json`'s `"engine_map_entries": 163` (section 8) waits for the next census-copy rerun.
+- `rl/engine-2026-10-29/` (main-affe56e) stays in the repository as history.
+- kx3's rebuild on R8 (K8) stays on its branch and on the laptop until the slow report's re-pin.

@@ -13,15 +13,19 @@
   20,000,000,000 and up.
 - Build: `cd engine && cargo build --release`. Tests: `cargo test --release --features test-utils`.
   A cloud build reproduces the Sept 23 table exactly (Altaria v Blaziken 58.3% on its seeds).
-- The official engine program is `rl/engine-2026-10-29/deckgym` (since Oct 29; main-affe56e: main-4d48844's engine plus
-  the Dual Fusion release, a partial compatibility update: the B4b and P-B 095-103 cards (all 438 Complete) and the Dual
-  Fusion C1, SP1 and P-C cards (205 of their 260 printings implemented; `deckgym simulate`, `optimize` and `goldfish`
-  refuse a deck that holds one of the other 55), dual-type Pokémon and the corrected Ultra Beast list;
-  `engine/src/players/` changed only so that the bots read the new cards; `rl/engine-2026-10-29/README.md`). The slow
-  report has been kx3 on this engine since its re-pin (Oct 29; `rl/strength/README.md`); one made
-  before then ran on an older engine: say so when you hand it over. The working pilot is km3, on both
-  sides of the screen and the floor. Since Sept 30, kt3/kta3/ktb3/ktc3 name the kog-based presets
-  (kt3, ktb3 and ktc3 are diagnostic only). Earlier programs (`rl/engine-2026-10-21/`, `-10-12/`, `-10-02/`, `-09-30/`,
+- The goldfish card-support check (plain build, in `engine/`): `cargo build --release --example goldfish`, then
+  `cargo test --release --test goldfish_card_support_test`, in that order (a filtered run does not rebuild the example).
+- The official engine program is `rl/engine-2026-11-04/deckgym` (since Nov 4; main-543dad0: main-affe56e's engine plus
+  R8: upstream's card code through #439, so all 260 Dual Fusion C1, SP1 and P-C printings now play (256 Complete,
+  4 RulesUnverified) and the official programs refuse no real printing any more (the card-support refusal stays in the
+  code for a card the engine cannot play); the bot-protocol adapter (`deckgym simulate --players proto,...`, opt-in
+  `pdl_*` keys); the rule rows R8-10a to R8-10e and item 11 (`rl/results/r8_catchup_2026-10-29/RELEASE_NOTES.md` §2);
+  `engine/src/players/` changed for the adapter and the new cards; `rl/engine-2026-11-04/README.md`). The slow report
+  stays kx3 on main-affe56e until its re-pin onto main-543dad0's engine, after kx3's replay check on it
+  (`rl/strength/README.md`); until then it refuses (exit 2) a deck that holds one of the 55 printings main-affe56e could
+  not play. Every slow report so far ran on main-affe56e or an older engine: say which when you hand one over.
+  The working pilot is km3, on both sides of the screen and the floor. Since Sept 30, kt3/kta3/ktb3/ktc3 name the kog-based presets
+  (kt3, ktb3 and ktc3 are diagnostic only). Earlier programs (`rl/engine-2026-10-29/`, `-10-21/`, `-10-12/`, `-10-02/`, `-09-30/`,
   `-09-28/`, `-09-27/`, `-09-25/`, `rl/addon-0.7.2/deckgym`) are history; the verified add-on 0.7.2 wheel (`rl/addon-0.7.2/wheels/`) is
   unchanged, and run identities bind to it: copy it, never rebuild it.
   Hashes for all of them are in `project_manifest.json`. All are Linux files (WSL or the cloud).
