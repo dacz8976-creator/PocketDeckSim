@@ -1,0 +1,54 @@
+test_run_refuses_a_deck_or_an_opponent_with_a_missing_attack_card_and_writes_nothing (test_strength_card_support.StrengthCardSupport.test_run_refuses_a_deck_or_an_opponent_with_a_missing_attack_card_and_writes_nothing) ... 
+  test_run_refuses_a_deck_or_an_opponent_with_a_missing_attack_card_and_writes_nothing (test_strength_card_support.StrengthCardSupport.test_run_refuses_a_deck_or_an_opponent_with_a_missing_attack_card_and_writes_nothing) (blocked='deck') ... FAIL
+  test_run_refuses_a_deck_or_an_opponent_with_a_missing_attack_card_and_writes_nothing (test_strength_card_support.StrengthCardSupport.test_run_refuses_a_deck_or_an_opponent_with_a_missing_attack_card_and_writes_nothing) (blocked='opponent') ... FAIL
+test_run_with_the_opt_out_lists_the_card_on_stderr_and_starts (test_strength_card_support.StrengthCardSupport.test_run_with_the_opt_out_lists_the_card_on_stderr_and_starts) ... FAIL
+test_selfcheck_refuses_too_and_prints_no_selfcheck_line (test_strength_card_support.StrengthCardSupport.test_selfcheck_refuses_too_and_prints_no_selfcheck_line) ... FAIL
+test_supported_decks_start_and_the_check_says_nothing (test_strength_card_support.StrengthCardSupport.test_supported_decks_start_and_the_check_says_nothing) ... ok
+
+======================================================================
+FAIL: test_run_refuses_a_deck_or_an_opponent_with_a_missing_attack_card_and_writes_nothing (test_strength_card_support.StrengthCardSupport.test_run_refuses_a_deck_or_an_opponent_with_a_missing_attack_card_and_writes_nothing) (blocked='deck')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/dacz8976/lane_r8_w/rl/strength/test_strength_card_support.py", line 74, in test_run_refuses_a_deck_or_an_opponent_with_a_missing_attack_card_and_writes_nothing
+    self.assertEqual(r.returncode, 2, f'{r.stderr}\n{NO_TEST_UTILS}')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2 : strength: 2 games in the plan, 0 already done, 2 to play now (1 threads); pilot r vs reference r
+strength: 2/2 games, 0 s elapsed
+
+(a program built without the engine test-utils feature does not read TEST_CARD_SUPPORT_MISSING_ATTACK: build it as the top of this file says)
+
+======================================================================
+FAIL: test_run_refuses_a_deck_or_an_opponent_with_a_missing_attack_card_and_writes_nothing (test_strength_card_support.StrengthCardSupport.test_run_refuses_a_deck_or_an_opponent_with_a_missing_attack_card_and_writes_nothing) (blocked='opponent')
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/dacz8976/lane_r8_w/rl/strength/test_strength_card_support.py", line 74, in test_run_refuses_a_deck_or_an_opponent_with_a_missing_attack_card_and_writes_nothing
+    self.assertEqual(r.returncode, 2, f'{r.stderr}\n{NO_TEST_UTILS}')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2 : strength: 2 games in the plan, 0 already done, 2 to play now (1 threads); pilot r vs reference r
+strength: 2/2 games, 0 s elapsed
+
+(a program built without the engine test-utils feature does not read TEST_CARD_SUPPORT_MISSING_ATTACK: build it as the top of this file says)
+
+======================================================================
+FAIL: test_run_with_the_opt_out_lists_the_card_on_stderr_and_starts (test_strength_card_support.StrengthCardSupport.test_run_with_the_opt_out_lists_the_card_on_stderr_and_starts)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/dacz8976/lane_r8_w/rl/strength/test_strength_card_support.py", line 86, in test_run_with_the_opt_out_lists_the_card_on_stderr_and_starts
+    self.assertIn(f'{FLAG} was given', r.stderr, NO_TEST_UTILS)
+    ~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: '--allow-unsupported-cards was given' not found in 'strength: 2 games in the plan, 0 already done, 0 to play now (1 threads); pilot r vs reference r\n' : (a program built without the engine test-utils feature does not read TEST_CARD_SUPPORT_MISSING_ATTACK: build it as the top of this file says)
+
+======================================================================
+FAIL: test_selfcheck_refuses_too_and_prints_no_selfcheck_line (test_strength_card_support.StrengthCardSupport.test_selfcheck_refuses_too_and_prints_no_selfcheck_line)
+----------------------------------------------------------------------
+Traceback (most recent call last):
+  File "/home/dacz8976/lane_r8_w/rl/strength/test_strength_card_support.py", line 101, in test_selfcheck_refuses_too_and_prints_no_selfcheck_line
+    self.assertEqual(r.returncode, 2, f'{r.stderr}\n{NO_TEST_UTILS}')
+    ~~~~~~~~~~~~~~~~^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+AssertionError: 0 != 2 : 
+(a program built without the engine test-utils feature does not read TEST_CARD_SUPPORT_MISSING_ATTACK: build it as the top of this file says)
+
+----------------------------------------------------------------------
+Ran 4 tests in 0.506s
+
+FAILED (failures=4)

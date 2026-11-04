@@ -1,0 +1,33 @@
+The floor re-check (floor2.py) ran S8's deckgym (/home/dacz8976/pincand_work/RR_R8_543dad00/programs/deckgym) and read decks,
+the panel and the Python runners from /home/dacz8976/pincand, the laptop's main checkout (not origin/main), as floor2S did on Oct 29.
+pincand: branch main, HEAD b78c8997ab7d479c0d76d7c47d3c8cd68ff35d6f; its reflog's last entry: b78c8997 HEAD@{2026-10-22 06:57:16 -0500}: merge origin/main: Fast-forward
+Each file: its blob at pincand's HEAD v at S8, and pincand's working tree v its HEAD.
+decks/screen/floor.py: pincand HEAD 2f9f5b06ec40, S8 2f9f5b06ec40: EQUAL; working tree clean
+decks/screen/run_screen.py: pincand HEAD 5ccb812f5705, S8 5ccb812f5705: EQUAL; working tree clean
+current_engine.py: pincand HEAD 893e7a4f3705, S8 893e7a4f3705: EQUAL; working tree clean
+lib/deck_check.py: pincand HEAD 66c22d085629, S8 66c22d085629: EQUAL; working tree clean
+rl/results/engine_switch_rules2_2026-10/floor_with.py: pincand HEAD 7e4880fe3b00, S8 7e4880fe3b00: EQUAL; working tree clean
+rl/results/engine_switch_rules2_2026-10/sitting1_check.py: pincand HEAD 09d6b92427e1, S8 09d6b92427e1: EQUAL; working tree clean
+rl/results/engine_switch_rules2_2026-10/switch_check.py: pincand HEAD 177b79fa3057, S8 177b79fa3057: EQUAL; working tree clean
+rl/results/engine_switch_2026-09-30/screen_with.py: pincand HEAD 9ec88cba0166, S8 9ec88cba0166: EQUAL; working tree clean
+rl/results/engine_candidate_2026-10-20/release/tools/floor2.py: pincand HEAD 295c4efbd9af, S8 295c4efbd9af: EQUAL; working tree clean
+lib/deckgym-database.json: pincand HEAD d1486c7ca89b, S8 4396cdccaf6a: DIFFERS; working tree clean (the pre-R5 copy, as at R6: the floor decks hold old cards only)
+project_manifest.json: pincand HEAD e2b87c120f7c, S8 7e98b049817f: DIFFERS; working tree clean (pincand's manifest names rl/engine-2026-10-21 as the release, so floor.py's coverage step ran that goldfish, as for floor2S; R8's own goldfish gives byte-equal coverage: logs/floor_recheck_R8/GOLDFISH_R8_COVERAGE.txt)
+floor deck A_07 (decks/dustin/07-skarmory-stall.txt): pincand HEAD v S8 EQUAL; working tree clean
+floor deck A_brew-05b (decks/brews/brew-05b-meowstic-hatterene-comfey.txt): pincand HEAD v S8 EQUAL; working tree clean
+floor deck A_brew-06 (decks/brews/brew-06-pyukumuku-silvally-payback.txt): pincand HEAD v S8 EQUAL; working tree clean
+floor deck A_brew-06b (decks/brews/brew-06b-pyukumuku-silvally-scyther-grass.txt): pincand HEAD v S8 EQUAL; working tree clean
+floor deck A_control14_k3 (decks/dustin/14-comfey-raticate-hypno.txt): pincand HEAD v S8 EQUAL; working tree clean
+floor deck A_run_screen (decks/brews/brew-06-pyukumuku-silvally-payback.txt): pincand HEAD v S8 EQUAL; working tree clean
+floor deck B_12 (decks/dustin/12-ariados-whimsicott-ogerpon.txt): pincand HEAD v S8 EQUAL; working tree clean
+floor deck B_D_amended (decks/brews/drafts_2026-10-01/draft-D-entei-grimhound.txt): pincand HEAD v S8 EQUAL; working tree clean
+floor deck B_D_root (rl/results/engine_switch_rules2_2026-10/floor_7c/d_first/draft-D-entei-grimhound.txt): pincand HEAD v S8 EQUAL; working tree clean
+floor deck B_D_victini-passive (rl/results/engine_switch_rules2_2026-10/floor_7c/d_first/draft-D-entei-grimhound.txt): pincand HEAD v S8 EQUAL; working tree clean
+floor deck B_brew-07 (decks/brews/brew-07-hoopa-darkrai-sableye.txt): pincand HEAD v S8 EQUAL; working tree clean
+floor deck B_brew-09 (decks/brews/brew-09-sableye-obstagoon.txt): pincand HEAD v S8 EQUAL; working tree clean
+decks/screen/opponents/ (tree): pincand HEAD v S8 EQUAL; working tree clean; untracked files none
+rl/results/floor_recheck_rules2_2026-10/ (tree): pincand HEAD v S8 EQUAL; working tree clean; untracked files none
+/home/dacz8976/pincand_work/floor2.py as run: byte-equal to S8's committed copy
+The official build's 18 replays (unplanned; the basis is Lane N's, logs/replays_N/, run by Lane N in the same path on 48dec4f5) ran replay_r8.py side r from lane/ in /home/dacz8976/lane_r8_w (S8; clean at record time) on the archive RR_R8_543dad00/RR (git archive of S8's engine/ and decks/).
+lane/lane_r8.sh in /home/dacz8976/lane_r8_w: S8's
+lane/replay_r8.py in /home/dacz8976/lane_r8_w: S8's

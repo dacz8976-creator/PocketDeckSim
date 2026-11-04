@@ -1,0 +1,207 @@
+R8 Lane N/I night, lane commit 48dec4f5361992b2788401333b2f1cc4531f073a, 2026-11-04T07:06:13Z; this sitting's wall time 63 min
+markers: digest_hunks.done k8.done lane.done preflight.done sc_km3.done smoke_a_km3.done smoke_a_kx3.done smoke_b_km3.done strength_L.done verify.done worktree.done 
+--- lane log (build, gencmp, card_status, suite, goldfish, replay rows)
+2026-11-04T01:52:59Z lane_r8 armed (pgid 430002)
+2026-11-04T01:52:59Z lane_r8 start: R=48dec4f5361992b2788401333b2f1cc4531f073a
+2026-11-04T01:52:59Z build_R: before: absent absent absent absent absent 
+2026-11-04T02:03:23Z build_R: guard OK (Compiling deckgym v0.1.0-pdl.rules4 (/home/dacz8976/lane_r8_w/engine)); after: deckgym=75090673c20939a0 card_status=b37003365d3fde44 card_enum_generator=05352db698d9ab7d legality_scan=2c6df06583ec3667 goldfish=814d72b5ab7c7057 
+2026-11-04T02:03:24Z build_R OK: BUILD OK in 624 s
+      3 warning: `deckgym` (lib) generated 5 warnings (run `cargo fix --lib -p deckgym` to apply 2 suggestions)
+      3 warning: associated function `geometric_until_tails` is never used
+      3 warning: function `best_attack_value` is never used
+      3 warning: function `estimated_attack_damage` is never used
+      3 warning: unused import: `TrainerType`
+      3 warning: variable does not need to be mutable
+2026-11-04T02:03:24Z gen_R ids: SAME (/home/dacz8976/lane_r8_w/engine/src/card_ids.rs v /home/dacz8976/pincand_work/RR_R8_48dec4f5/prep/gen_ids.rs); generated secondary_energy_type None lines: 0
+2026-11-04T02:03:24Z gen_R database: SAME (/home/dacz8976/lane_r8_w/engine/src/database.rs v /home/dacz8976/pincand_work/RR_R8_48dec4f5/prep/gen_database.rs); generated secondary_energy_type None lines: 4154
+2026-11-04T02:03:24Z card_status rc=0
+card_status: all 4577 | new C1/SP1/P-C: 260 {'Complete': 256, 'RulesUnverified': 4}
+   C1 217 {'Complete': 213, 'RulesUnverified': 4}
+   SP1 30 {'Complete': 30}
+   P-C 13 {'Complete': 13}
+older cards neither Complete nor RulesUnverified: 0 []
+Trainers with a new or B4b printing (same name and text) whose printings differ in status: 0
+all by status: {'Complete': 4565, 'RulesUnverified': 12}
+exact R8 counts (4,565 + 12; new 256 + 4: C1 015, C1 051, C1 135, C1 184): yes
+STATUS_CHECK OK
+2026-11-04T02:03:24Z suite_R: C: free 37 GiB
+2026-11-04T02:19:25Z suite_R rc=0 in 961 s: passed 2633 failed 0 ignored 0 compile_errors 0 failing []
+2026-11-04T02:22:58Z goldfish_plain: guard OK (Compiling deckgym v0.1.0-pdl.rules4 (/home/dacz8976/lane_r8_w/engine)); after: goldfish=814d72b5ab7c7057 
+2026-11-04T02:22:58Z goldfish_R strings TEST_CARD_SUPPORT_MISSING_ATTACK: programs/deckgym 0, programs/goldfish 0, rebuilt plain goldfish 0 (each expected 0)
+2026-11-04T02:23:14Z goldfish_R plain test rc=0: test result: ok. 1 passed; 0 failed; 0 ignored; 0 measured; 0 filtered out; finished in 0.01s 
+2026-11-04T02:26:20Z goldfish_test_utils: guard OK (Compiling deckgym v0.1.0-pdl.rules4 (/home/dacz8976/lane_r8_w/engine)); after: goldfish=56e48d123d93194f 
+2026-11-04T02:26:20Z goldfish_R test-utils goldfish strings count: 2 (expected 1 or more; report only)
+2026-11-04T02:26:22Z replay r 08a9b3a_10_cli_k3
+2026-11-04T02:26:32Z replay r 08a9b3a_10_cli_kp3
+2026-11-04T02:26:45Z replay r 08a9b3a_10_cli_kog3
+2026-11-04T02:26:57Z replay r 08a9b3a_10_cli_kta3
+2026-11-04T02:27:09Z replay r 08a9b3a_10_cli_km3
+2026-11-04T02:27:21Z replay r 08a9b3a_10_goldfish
+2026-11-04T02:27:21Z replay r 08a9b3a_table_k3
+2026-11-04T02:41:40Z replay r 08a9b3a_table_kp3
+2026-11-04T02:58:35Z replay r 08a9b3a_table_kog3
+2026-11-04T03:15:23Z replay r 08a9b3a_dev_km3_table
+2026-11-04T03:32:44Z replay r 08a9b3a_dev_kta3_table
+2026-11-04T03:50:08Z replay r 08a9b3a_10_run_screen
+2026-11-04T03:54:52Z replay r 08a9b3a_new17_k3
+2026-11-04T04:05:19Z replay r 08a9b3a_dev_km3_new17
+2026-11-04T04:17:37Z replay r 08a9b3a_8b_cloud_new_k3
+2026-11-04T04:18:00Z replay r 08a9b3a_8b_cloud_new_km3
+2026-11-04T04:18:27Z replay r 08a9b3a_8_new_km3
+2026-11-04T04:50:35Z replay r 08a9b3a_cov_b2e_km3
+r	08a9b3a_10_cli_k3	240	10	SAME	Player 0 won: 150 (62.50%) | Player 1 won: 90 (37.50%) | Draws: 0 (0.00%) | v S: SAME
+r	08a9b3a_10_cli_kp3	240	12	SAME	Player 0 won: 144 (60.00%) | Player 1 won: 96 (40.00%) | Draws: 0 (0.00%) | v S: SAME
+r	08a9b3a_10_cli_kog3	240	11	SAME	Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%) | v S: SAME
+r	08a9b3a_10_cli_kta3	240	12	SAME	Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%) | v S: SAME
+r	08a9b3a_10_cli_km3	240	12	SAME	Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%) | v S: SAME
+r	08a9b3a_10_goldfish	0	0	SAME	page =, coverage = | v S: page SAME, coverage sha SAME
+r	08a9b3a_table_k3	14000	858	SAME	0 differing deals of 14000; rules page: /home/dacz8976/pincand_work/RR_R8_48dec4f5/games/r/08a9b3a_table_k3.txt: no RULE finding | v S: sha SAME, diff.tsv =
+r	08a9b3a_table_kp3	14000	1013	SAME	0 differing deals of 14000; rules page: /home/dacz8976/pincand_work/RR_R8_48dec4f5/games/r/08a9b3a_table_kp3.txt: no RULE finding | v S: sha SAME, diff.tsv =
+r	08a9b3a_table_kog3	14000	1007	SAME	0 differing deals of 14000; rules page: /home/dacz8976/pincand_work/RR_R8_48dec4f5/games/r/08a9b3a_table_kog3.txt: no RULE finding | v S: sha SAME, diff.tsv =
+r	08a9b3a_dev_km3_table	14000	1039	SAME	0 differing deals of 14000; rules page: /home/dacz8976/pincand_work/RR_R8_48dec4f5/games/r/08a9b3a_dev_km3_table.txt: no RULE finding | v S: sha SAME, diff.tsv =
+r	08a9b3a_dev_kta3_table	14000	1043	SAME	0 differing deals of 14000; rules page: /home/dacz8976/pincand_work/RR_R8_48dec4f5/games/r/08a9b3a_dev_kta3_table.txt: no RULE finding | v S: sha SAME, diff.tsv =
+r	08a9b3a_10_run_screen	3840	283	SAME	run_screen: /home/dacz8976/pincand_work/RR_R8_48dec4f5/games/r/08a9b3a_10_run_screen.txt v engine_switch_rules2_2026-10/08a9b3a_10_run_screen.txt: 20 of 20 lines equal (2 decks; the header's engine path aside) | v S: SAME (0-23/r6_release/logs/replays_S/08a9b3a_10_run_screen.txt: 20 of 20 lines equal (2 decks; the header's engine path aside))
+r	08a9b3a_new17_k3	8500	626	DIFFERS	8 differing deals of 8500; rules page: /home/dacz8976/pincand_work/RR_R8_48dec4f5/games/r/08a9b3a_new17_k3.txt: no RULE finding | v S: sha SAME, diff.tsv =
+r	08a9b3a_dev_km3_new17	8500	737	DIFFERS	7 differing deals of 8500; rules page: /home/dacz8976/pincand_work/RR_R8_48dec4f5/games/r/08a9b3a_dev_km3_new17.txt: no RULE finding | v S: sha SAME, diff.tsv =
+r	08a9b3a_8b_cloud_new_k3	240	22	SAME	0 differing deals of 240; rules page: /home/dacz8976/pincand_work/RR_R8_48dec4f5/games/r/08a9b3a_8b_cloud_new_k3.txt: no RULE finding | v S: sha SAME, diff.tsv =
+r	08a9b3a_8b_cloud_new_km3	240	27	SAME	0 differing deals of 240; rules page: /home/dacz8976/pincand_work/RR_R8_48dec4f5/games/r/08a9b3a_8b_cloud_new_km3.txt: no RULE finding | v S: sha SAME, diff.tsv =
+r	08a9b3a_8_new_km3	16000	1926	DIFFERS	1 differing deals of 16000; rules page: /home/dacz8976/pincand_work/RR_R8_48dec4f5/games/r/08a9b3a_8_new_km3.txt: no RULE finding | v S: sha SAME, diff.tsv =
+r	08a9b3a_cov_b2e_km3	48000	3831	SAME	0 differing deals of 48000; rules page: /home/dacz8976/pincand_work/RR_R8_48dec4f5/games/r/08a9b3a_cov_b2e_km3.txt: no RULE finding | v S: sha SAME, diff.tsv =
+2026-11-04T05:54:29Z lane_r8 end: done
+--- programs
+75090673c20939a0aee431eb293dde0d2a988194da0b8429604a7570dc150310  deckgym
+2c6df06583ec366735785eb234ed2bbd13dd6a1161036cfecfc80afd4af3fea4  legality_scan
+814d72b5ab7c705738a731ed96d5b5b62059494cece0cd82442e60ad77d7a5ed  goldfish
+b37003365d3fde4469f25b268b02881d3a2aeadd21dbfcfca6c4881f5f3e73cb  card_status
+05352db698d9ab7df85858e1b88a87431c0a5d79d6909b5073a23aa5a9561bbc  card_enum_generator
+--- verify
+R8 Lane N verify (replay_r8.py verify) 2026-11-04T05:54:29Z
+08a9b3a_10_cli_k3	SAME	240 games	10 s	v S: SAME
+08a9b3a_10_cli_kp3	SAME	240 games	12 s	v S: SAME
+08a9b3a_10_cli_kog3	SAME	240 games	11 s	v S: SAME
+08a9b3a_10_cli_kta3	SAME	240 games	12 s	v S: SAME
+08a9b3a_10_cli_km3	SAME	240 games	12 s	v S: SAME
+08a9b3a_10_goldfish	SAME	0 games	0 s	v S: page SAME, coverage sha SAME
+08a9b3a_table_k3	SAME	14000 games	858 s	v S: sha SAME, diff.tsv =
+08a9b3a_table_kp3	SAME	14000 games	1013 s	v S: sha SAME, diff.tsv =
+08a9b3a_table_kog3	SAME	14000 games	1007 s	v S: sha SAME, diff.tsv =
+08a9b3a_dev_km3_table	SAME	14000 games	1039 s	v S: sha SAME, diff.tsv =
+08a9b3a_dev_kta3_table	SAME	14000 games	1043 s	v S: sha SAME, diff.tsv =
+08a9b3a_10_run_screen	SAME	3840 games	283 s	v S: SAME (0-23/r6_release/logs/replays_S/08a9b3a_10_run_screen.txt: 20 of 20 lines equal (2 decks; the header's engine path aside))
+08a9b3a_new17_k3	DIFFERS	8500 games	626 s	v S: sha SAME, diff.tsv =
+08a9b3a_dev_km3_new17	DIFFERS	8500 games	737 s	v S: sha SAME, diff.tsv =
+08a9b3a_8b_cloud_new_k3	SAME	240 games	22 s	v S: sha SAME, diff.tsv =
+08a9b3a_8b_cloud_new_km3	SAME	240 games	27 s	v S: sha SAME, diff.tsv =
+08a9b3a_8_new_km3	DIFFERS	16000 games	1926 s	v S: sha SAME, diff.tsv =
+08a9b3a_cov_b2e_km3	SAME	48000 games	3831 s	v S: sha SAME, diff.tsv =
+v S as predicted: 18 of 18; clean rules pages: 11 of 11
+VERIFY PASS
+--- strength builds
+engine: b5f15351f3f61f2bfc2fc6c41dfc555e3a3b71b0 engine tree f33d2c49baf432d4bd1e407b96a6c243471fa9b6
+engine tree as archived: f33d2c49baf432d4bd1e407b96a6c243471fa9b6
+program sha256: d4d4e43acebcf7aebad7ba719d32dc2b0a3d347d1a2b53c074788a678ab4e12d
+harness source sha256: c4f7da21563393049a21a7ca41778ea3a916b99bde5a9bec33fbe3b700f0a149
+engine: 48dec4f5361992b2788401333b2f1cc4531f073a engine tree 014b4371a3b809273c01a1809a058de5980cdfd1
+engine tree as archived: 014b4371a3b809273c01a1809a058de5980cdfd1
+program sha256: cd1c3e78c1d8d5cbe1f8aceb8cdbcbafd9342c07f6e5a256a327ed907db1958b
+harness source sha256: c4f7da21563393049a21a7ca41778ea3a916b99bde5a9bec33fbe3b700f0a149
+--- sc_km3
+selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1
+--- K8
+K8 b5f15351f3f61f2bfc2fc6c41dfc555e3a3b71b0
+tree 16b0e244376f65e33c14031eb06434d37a74a2aa
+engine_tree f33d2c49baf432d4bd1e407b96a6c243471fa9b6
+lane 48dec4f5361992b2788401333b2f1cc4531f073a
+mod_rs_merge union
+harness_source_sha256 c4f7da21563393049a21a7ca41778ea3a916b99bde5a9bec33fbe3b700f0a149
+kx3_blobs_equal_d513e37b 6
+harness_source_sha256 c4f7da21563393049a21a7ca41778ea3a916b99bde5a9bec33fbe3b700f0a149
+kx3_blobs_equal_d513e37b 6
+K8=b5f15351f3f61f2bfc2fc6c41dfc555e3a3b71b0
+--- smoke b_km3
+smoke b_km3 (program /home/dacz8976/pincand_work/RR_R8_48dec4f5/strength/L/strength, sha256 cd1c3e78c1d8d5cbe1f8aceb8cdbcbafd9342c07f6e5a256a327ed907db1958b)
+games: 40 (20 arm X, 20 arm ref); panics 0; refusals 0
+km3: 2026 decisions: mean 8.0, median 3.8, p95 29.7, max 124.4 ms
+kx3: none
+SMOKE b_km3 OK
+--- smoke a_km3
+smoke a_km3 (program /home/dacz8976/pincand_work/RR_R8_48dec4f5/strength/L/strength, sha256 cd1c3e78c1d8d5cbe1f8aceb8cdbcbafd9342c07f6e5a256a327ed907db1958b)
+games: 72 (36 arm X, 36 arm ref); panics 0; refusals 0
+km3: 3160 decisions: mean 11.8, median 4.2, p95 39.0, max 787.7 ms
+kx3: none
+SMOKE a_km3 OK
+--- smoke a_kx3
+smoke a_kx3 (program /home/dacz8976/pincand_work/RR_R8_48dec4f5/strength/K8/strength, sha256 d4d4e43acebcf7aebad7ba719d32dc2b0a3d347d1a2b53c074788a678ab4e12d)
+games: 72 (36 arm X, 36 arm ref); panics 0; refusals 0
+km3: 2400 decisions: mean 10.8, median 4.4, p95 36.0, max 651.2 ms
+kx3: 769 decisions: mean 4561.3, median 3123.9, p95 13013.8, max 102823.2 ms
+note: a_kx3's ref arm (km3 on K8's build) v a_km3's games (km3 on the lane build): 36 of 36 identical
+slow: kx3 over 30 s: a01-grass-honey|t-altaria|1|0|X turn 2 (own turn 1): Place:Cutiefly@3 of 7 legal, 102823.2 ms; points [0, 0], Active Combee, Bench 0
+slow: kx3 over 30 s: a01-grass-honey|t-altaria|1|0|X turn 2 (own turn 1): Play:Professor's Research of 5 legal, 52953.5 ms; points [0, 0], Active Combee, Bench 1
+slow: kx3 over 30 s: a01-grass-honey|t-altaria|1|0|X turn 4 (own turn 2): UseStadium of 8 legal, 38088.5 ms; points [0, 0], Active Combee, Bench 1
+slow: kx3 over 30 s: a01-grass-honey|t-altaria|1|0|X turn 4 (own turn 2): Evolve:Vespiquen@0 of 7 legal, 31157.2 ms; points [0, 0], Active Combee, Bench 1
+slow: kx3 over 30 s: a01-grass-honey|t-altaria|1|0|X turn 4 (own turn 2): Evolve:Ribombee@3 of 7 legal, 46360.2 ms; points [0, 0], Active Vespiquen, Bench 1
+slow: kx3 over 30 s: a01-grass-honey|t-altaria|1|0|X turn 4 (own turn 2): Play:Sweet Honey of 7 legal, 33883.3 ms; points [0, 0], Active Vespiquen, Bench 1
+slow: kx3 over 30 s: a01-grass-honey|t-altaria|1|1|X turn 3 (own turn 2): Play:Sweet Honey of 8 legal, 41840.5 ms; points [0, 0], Active Bulbasaur, Bench 3
+slow: kx3 over 30 s: a01-grass-honey|t-altaria|1|1|X turn 3 (own turn 2): Play:Sweet Honey of 7 legal, 47596.9 ms; points [0, 0], Active Bulbasaur, Bench 3
+slow: kx3 over 30 s: a01-grass-honey|t-altaria|1|1|X turn 3 (own turn 2): Evolve:Vespiquen@3 of 6 legal, 43769.1 ms; points [0, 0], Active Bulbasaur, Bench 3
+SMOKE a_kx3 OK
+--- digest hunks: 53 hunks (list in /home/dacz8976/pincand_work/RR_R8_48dec4f5/night/DIGEST_HUNKS.txt)
+--- night log
+2026-11-04T01:52:37Z night_r8 armed (pgid 430002); lane commit 48dec4f5361992b2788401333b2f1cc4531f073a; out /home/dacz8976/pincand_work/RR_R8_48dec4f5
+2026-11-04T01:52:37Z step preflight start
+2026-11-04T01:52:37Z C: free 37 GiB
+2026-11-04T01:52:37Z ~/pincand HEAD b78c8997ab7d479c0d76d7c47d3c8cd68ff35d6f (main); its tracked changes: 0
+2026-11-04T01:52:37Z git worktree list:
+/home/dacz8976/pincand     b78c8997 [main]
+/home/dacz8976/adopt_w     84dc7f17 (detached HEAD)
+/home/dacz8976/i11_w       142963ea [laptop/urshifu-in-play-type-2026-10-29]
+/home/dacz8976/r5_w        bbf555f5 [laptop/kx3-replay-r6-2026-10-29]
+/home/dacz8976/r6s_w       aa8093c9 [laptop/r6-record-2026-10-29]
+/home/dacz8976/r6v_scratch 48dec4f5 [laptop/r8-catchup-2026-10-29]
+2026-11-04T01:52:38Z step preflight done
+2026-11-04T01:52:38Z step worktree start
+Preparing worktree (detached HEAD 48dec4f5)
+Updating files:   4% (891/18000)Updating files:   5% (900/18000)Updating files:   6% (1080/18000)Updating files:   7% (1260/18000)Updating files:   8% (1440/18000)Updating files:   9% (1620/18000)Updating files:  10% (1800/18000)Updating files:  11% (1980/18000)Updating files:  12% (2160/18000)Updating files:  13% (2340/18000)Updating files:  14% (2520/18000)Updating files:  14% (2617/18000)Updating files:  15% (2700/18000)Updating files:  16% (2880/18000)Updating files:  17% (3060/18000)Updating files:  18% (3240/18000)Updating files:  19% (3420/18000)Updating files:  20% (3600/18000)Updating files:  21% (3780/18000)Updating files:  22% (3960/18000)Updating files:  23% (4140/18000)Updating files:  24% (4320/18000)Updating files:  25% (4500/18000)Updating files:  26% (4680/18000)Updating files:  27% (4860/18000)Updating files:  28% (5040/18000)Updating files:  29% (5220/18000)Updating files:  30% (5400/18000)Updating files:  31% (5580/18000)Updating files:  32% (5760/18000)Updating files:  33% (5940/18000)Updating files:  34% (6120/18000)Updating files:  35% (6300/18000)Updating files:  36% (6480/18000)Updating files:  37% (6660/18000)Updating files:  38% (6840/18000)Updating files:  39% (7020/18000)Updating files:  40% (7200/18000)Updating files:  40% (7232/18000)Updating files:  41% (7380/18000)Updating files:  42% (7560/18000)Updating files:  43% (7740/18000)Updating files:  44% (7920/18000)Updating files:  45% (8100/18000)Updating files:  46% (8280/18000)Updating files:  47% (8460/18000)Updating files:  48% (8640/18000)Updating files:  49% (8820/18000)Updating files:  50% (9000/18000)Updating files:  51% (9180/18000)Updating files:  52% (9360/18000)Updating files:  53% (9540/18000)Updating files:  54% (9720/18000)Updating files:  54% (9785/18000)Updating files:  55% (9900/18000)Updating files:  56% (10080/18000)Updating files:  56% (10090/18000)Updating files:  57% (10260/18000)Updating files:  57% (10336/18000)Updating files:  57% (10357/18000)Updating files:  58% (10440/18000)Updating files:  59% (10620/18000)Updating files:  59% (10645/18000)Updating files:  59% (10663/18000)Updating files:  60% (10800/18000)Updating files:  61% (10980/18000)Updating files:  62% (11160/18000)Updating files:  62% (11204/18000)Updating files:  63% (11340/18000)Updating files:  64% (11520/18000)Updating files:  65% (11700/18000)Updating files:  66% (11880/18000)Updating files:  66% (11928/18000)Updating files:  67% (12060/18000)Updating files:  67% (12156/18000)Updating files:  68% (12240/18000)Updating files:  69% (12420/18000)Updating files:  69% (12458/18000)Updating files:  70% (12600/18000)Updating files:  71% (12780/18000)Updating files:  71% (12860/18000)Updating files:  72% (12960/18000)Updating files:  72% (13039/18000)Updating files:  73% (13140/18000)Updating files:  74% (13320/18000)Updating files:  75% (13500/18000)Updating files:  76% (13680/18000)Updating files:  77% (13860/18000)Updating files:  78% (14040/18000)Updating files:  79% (14220/18000)Updating files:  80% (14400/18000)Updating files:  81% (14580/18000)Updating files:  82% (14760/18000)Updating files:  83% (14940/18000)Updating files:  84% (15120/18000)Updating files:  85% (15300/18000)Updating files:  86% (15480/18000)Updating files:  87% (15660/18000)Updating files:  88% (15840/18000)Updating files:  89% (16020/18000)Updating files:  90% (16200/18000)Updating files:  90% (16248/18000)Updating files:  91% (16380/18000)Updating files:  92% (16560/18000)Updating files:  93% (16740/18000)Updating files:  94% (16920/18000)Updating files:  95% (17100/18000)Updating files:  95% (17163/18000)Updating files:  95% (17190/18000)Updating files:  95% (17211/18000)Updating files:  96% (17280/18000)Updating files:  97% (17460/18000)Updating files:  97% (17507/18000)Updating files:  98% (17640/18000)Updating files:  99% (17820/18000)Updating files: 100% (18000/18000)Updating files: 100% (18000/18000), done.
+HEAD is now at 48dec4f5 Lane N/I prep fix: disk checks, resume-safe binary guard, deleted-file hunks, strength_L prediction
+2026-11-04T01:52:59Z step worktree done
+2026-11-04T01:52:59Z step lane start
+2026-11-04T01:52:59Z C: free 37 GiB
+2026-11-04T05:54:29Z lane: 2026-11-04T05:54:29Z lane_r8 end: done
+2026-11-04T05:54:29Z step lane done
+2026-11-04T05:54:29Z step verify start
+2026-11-04T05:54:29Z verify: VERIFY PASS
+2026-11-04T05:54:29Z step verify done
+2026-11-04T05:54:29Z step strength_L start
+2026-11-04T05:54:29Z strength_L: C: free 37 GiB
+2026-11-04T05:58:52Z strength_L: RECORD OK program cd1c3e78c1d8d5cbe1f8aceb8cdbcbafd9342c07f6e5a256a327ed907db1958b engine tree 014b4371a3b8 harness c4f7da215633; Compiling deckgym v0.1.0-pdl.rules4 (/home/dacz8976/pincand_work/RR_R8_48dec4f5/strength/L_build/tree/engine); 263 s
+2026-11-04T05:58:52Z step strength_L done
+2026-11-04T05:58:52Z step sc_km3 start
+2026-11-04T05:59:00Z sc_km3: selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1
+2026-11-04T05:59:00Z harness source hash at the lane commit: c4f7da21563393049a21a7ca41778ea3a916b99bde5a9bec33fbe3b700f0a149
+2026-11-04T05:59:00Z step sc_km3 done
+2026-11-04T05:59:00Z step k8 start
+2026-11-04T05:59:01Z mk_k8 rc=3: conflict: the kx3 smoke stops (coordinator-148 §2.4); K8_UNION_OK=1 only on the coordinator's word
+2026-11-04T05:59:01Z KX3 STOP at k8 (the kx3 smoke stops, the rest of Lane N goes on): players/mod.rs conflicts (see /home/dacz8976/pincand_work/RR_R8_48dec4f5/k8/mod_rs.conflict.txt)
+2026-11-04T05:59:01Z step k8 done
+2026-11-04T05:59:01Z step smoke_b_km3 start
+2026-11-04T05:59:19Z smoke_b_km3: rc=0: SMOKE b_km3 OK
+2026-11-04T05:59:19Z step smoke_b_km3 done
+2026-11-04T05:59:19Z step smoke_a_km3 start
+2026-11-04T05:59:59Z smoke_a_km3: rc=0: SMOKE a_km3 OK
+2026-11-04T05:59:59Z step smoke_a_km3 done
+2026-11-04T05:59:59Z smoke_a_kx3 skipped: 2026-11-04T05:59:01Z k8: players/mod.rs conflicts (see /home/dacz8976/pincand_work/RR_R8_48dec4f5/k8/mod_rs.conflict.txt)
+2026-11-04T05:59:59Z step smoke_a_kx3 done
+2026-11-04T05:59:59Z step digest_hunks start
+2026-11-04T06:00:06Z step digest_hunks done
+2026-11-04T06:00:06Z digest_hunks: 53 hunks
+2026-11-04T06:00:08Z night_r8 end: done
+2026-11-04T06:02:27Z night_r8 armed (pgid 450163); lane commit 48dec4f5361992b2788401333b2f1cc4531f073a; out /home/dacz8976/pincand_work/RR_R8_48dec4f5
+2026-11-04T06:02:27Z step k8 start
+2026-11-04T06:02:29Z mk_k8 rc=0: K8=b5f15351f3f61f2bfc2fc6c41dfc555e3a3b71b0
+2026-11-04T06:02:29Z strength_K8: C: free 37 GiB
+2026-11-04T06:07:16Z strength_K8: RECORD OK program d4d4e43acebcf7aebad7ba719d32dc2b0a3d347d1a2b53c074788a678ab4e12d engine tree f33d2c49baf4 harness c4f7da215633; Compiling deckgym v0.1.0-pdl.rules4 (/home/dacz8976/pincand_work/RR_R8_48dec4f5/strength/K8_build/tree/engine); 287 s
+2026-11-04T06:07:16Z step k8 done
+2026-11-04T06:07:16Z step smoke_a_kx3 start
+2026-11-04T07:06:13Z smoke_a_kx3: rc=0: SMOKE a_kx3 OK
+2026-11-04T07:06:13Z step smoke_a_kx3 done

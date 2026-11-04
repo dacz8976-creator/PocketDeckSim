@@ -1,0 +1,53 @@
+....................................................................................................................../home/dacz8976/lane_r8_w/lib/deck_check.py:48: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/dacz8976/lane_r8_w/decks/dustin/01-muk-glimmora-kingambit-regigigas.txt' mode='r' encoding='utf-8'>
+  for ln in io.open(path, encoding='utf-8'):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/dacz8976/lane_r8_w/lib/deck_check.py:34: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/dacz8976/lane_r8_w/lib/deckgym-database.json' mode='r' encoding='utf-8'>
+  for e in json.load(io.open(p, encoding='utf-8')):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+..................../usr/lib/python3.14/unittest/case.py:615: ResourceWarning: unclosed file <_io.BufferedWriter name='/tmp/tmp01_ew0ot/repo/rl/results/slow_reports/2026-10-10_my-list/run_output.log'>
+  result = method()
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+.............................................................................................................................................................................................................................................................................................................................................................................................................................................................../home/dacz8976/lane_r8_w/lib/deck_check.py:53: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpuakecjr9/bad.txt' mode='r' encoding='utf-8'>
+  cards.append((int(p[0]), ' '.join(p[1:-2]), ' '.join(p[-2:])))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/dacz8976/lane_r8_w/lib/deck_check.py:48: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpuakecjr9/bad.txt' mode='r' encoding='utf-8'>
+  for ln in io.open(path, encoding='utf-8'):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/dacz8976/lane_r8_w/lib/deck_check.py:53: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpuakecjr9/bad.txt' mode='r' encoding='utf-8'>
+  cards.append((int(p[0]), ' '.join(p[1:-2]), ' '.join(p[-2:])))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+..........................................................................................................................................................................................................................................................................................................................................warning: in the working copy of 'crlf.txt', CRLF will be replaced by LF the next time Git touches it
+..................................................................................................../home/dacz8976/lane_r8_w/lib/deck_check.py:48: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpswy77jrg/ok.txt' mode='r' encoding='utf-8'>
+  for ln in io.open(path, encoding='utf-8'):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/dacz8976/lane_r8_w/lib/deck_check.py:34: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/dacz8976/lane_r8_w/lib/deckgym-database.json' mode='r' encoding='utf-8'>
+  for e in json.load(io.open(p, encoding='utf-8')):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/dacz8976/lane_r8_w/lib/deck_check.py:48: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpswy77jrg/no-energy.txt' mode='r' encoding='utf-8'>
+  for ln in io.open(path, encoding='utf-8'):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/dacz8976/lane_r8_w/lib/deck_check.py:34: ResourceWarning: unclosed file <_io.TextIOWrapper name='/home/dacz8976/lane_r8_w/lib/deckgym-database.json' mode='r' encoding='utf-8'>
+  for e in json.load(io.open(p, encoding='utf-8')):
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+/home/dacz8976/lane_r8_w/lib/deck_check.py:53: ResourceWarning: unclosed file <_io.TextIOWrapper name='/tmp/tmpswy77jrg/garbled.txt' mode='r' encoding='utf-8'>
+  cards.append((int(p[0]), ' '.join(p[1:-2]), ' '.join(p[-2:])))
+ResourceWarning: Enable tracemalloc to get the object allocation traceback
+............................................................................................................................................................................................................................................................................................................................................................................................................merge: REFUSED: /tmp/tmpdewvp7ec/merged/games.jsonl exists; a merge never writes over one. Nothing was written.
+.........seal: REFUSED: /tmp/tmp55obyusl/w has no worker.json; stamp it before it plays. Nothing was written.
+.stamp: REFUSED: /tmp/tmpq6qy4d0q/played already holds play (games.jsonl); a worker is stamped before it plays. Nothing was written.
+............stamp: not decks of this registration: ['nope'] (its decks: ['d1', 'd2', 'd3'])
+.ssss
+----------------------------------------------------------------------
+Ran 1438 tests in 869.321s
+
+OK (skipped=4)
+24 and 24 games; game for game (content, not timing) DIFFERENT; 2 differ: ['d1|o1|0|0|ref: 1 and 2 record(s)', 'd3|o1|1|1|X: 1 and 0 record(s)']
+24 and 24 games; game for game (content, not timing) EQUAL
+24 and 24 games; game for game (content, not timing) DIFFERENT; 1 differ: ['d1|o1|1|0|X: content differs']
+24 and 24 games; game for game (content, not timing) EQUAL
+INCOMPLETE: 23 of 24 games; 1 problem(s); see /tmp/tmps4_q8scy/merged/MERGE_RECORD.md
+COMPLETE: 24 of 24 games; 0 problem(s); see /tmp/tmpdhznf3_e/merged/MERGE_RECORD.md
+INCOMPLETE: 16 of 24 games; 8 problem(s); see /tmp/tmpnwpha0nc/merged/MERGE_RECORD.md
+stamped /tmp/tmpgta8vsjr/w1: manifest 0f4319d240a6, program 9a3a45d01531, slice (all)
+sealed /tmp/tmpgta8vsjr/w1: 1 games, games.jsonl 6c2cc7350822, program 9a3a45d01531
+stamped /tmp/tmpfy1ql9xo/w1: manifest d6a29dacb39d, program 9a3a45d01531, slice ['d1', 'd3']

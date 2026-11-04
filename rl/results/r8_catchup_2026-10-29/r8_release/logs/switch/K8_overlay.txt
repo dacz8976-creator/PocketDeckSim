@@ -1,0 +1,25 @@
+commit b5f15351f3f61f2bfc2fc6c41dfc555e3a3b71b0
+parents 48dec4f5361992b2788401333b2f1cc4531f073a e3ddc0149bb9d35fda1becbb17ab5f71d9461609
+date 2026-11-04T00:02:26-06:00
+
+kx3 on R8's engine (Lane N kx3 smoke): kx3's files laid onto 48dec4f5
+
+Built with a private index from the lane commit's tree plus kx3's files of e3ddc014 (laptop/kx3-on-r6-2026-10-29; its six
+engine blobs are d513e37b's): five added files as they are, and engine/src/players/mod.rs by a 3-way merge (union; base
+affe56e8, ours = the lane's, theirs = e3ddc014's), checked to be the lane's file plus exactly kx3's change. K8 v the lane:
+exactly those six paths. rl/strength is the lane's (harness c4f7da21). engine/ tree f33d2c49baf4.
+The union hunk (the only conflict): in 'pub enum PlayerCode', at the same place, the lane adds 'Proto { command: String, timeout_ms: u64, log: Option<String> },' and kx3 adds
+'KX { params: playout_player::PlayoutParams },' (each with its doc comment); the union keeps both, the lane's first.
+Local branch only, for the Lane N kx3 smoke (coordinator-148 §2.4); pushed only after Dustin's yes, with Guardrail A first.
+
+Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
+
+engine tree f33d2c49baf432d4bd1e407b96a6c243471fa9b6
+48dec4f5 v K8:
+A	engine/examples/playout_smoke.rs
+M	engine/src/players/mod.rs
+A	engine/src/players/playout_player.rs
+A	engine/src/players/playout_pool.rs
+A	engine/tests/playout_pilot_extra_lists_test.rs
+A	engine/tests/playout_pilot_test.rs
+origin: b5f15351f3f61f2bfc2fc6c41dfc555e3a3b71b0	refs/heads/laptop/kx3-on-r8-2026-11-04

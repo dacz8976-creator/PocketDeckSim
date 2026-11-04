@@ -1,0 +1,21 @@
+R8 Lane N verify (replay_r8.py verify) 2026-11-04T05:54:29Z
+08a9b3a_10_cli_k3	SAME	240 games	10 s	v S: SAME
+08a9b3a_10_cli_kp3	SAME	240 games	12 s	v S: SAME
+08a9b3a_10_cli_kog3	SAME	240 games	11 s	v S: SAME
+08a9b3a_10_cli_kta3	SAME	240 games	12 s	v S: SAME
+08a9b3a_10_cli_km3	SAME	240 games	12 s	v S: SAME
+08a9b3a_10_goldfish	SAME	0 games	0 s	v S: page SAME, coverage sha SAME
+08a9b3a_table_k3	SAME	14000 games	858 s	v S: sha SAME, diff.tsv =
+08a9b3a_table_kp3	SAME	14000 games	1013 s	v S: sha SAME, diff.tsv =
+08a9b3a_table_kog3	SAME	14000 games	1007 s	v S: sha SAME, diff.tsv =
+08a9b3a_dev_km3_table	SAME	14000 games	1039 s	v S: sha SAME, diff.tsv =
+08a9b3a_dev_kta3_table	SAME	14000 games	1043 s	v S: sha SAME, diff.tsv =
+08a9b3a_10_run_screen	SAME	3840 games	283 s	v S: SAME (0-23/r6_release/logs/replays_S/08a9b3a_10_run_screen.txt: 20 of 20 lines equal (2 decks; the header's engine path aside))
+08a9b3a_new17_k3	DIFFERS	8500 games	626 s	v S: sha SAME, diff.tsv =
+08a9b3a_dev_km3_new17	DIFFERS	8500 games	737 s	v S: sha SAME, diff.tsv =
+08a9b3a_8b_cloud_new_k3	SAME	240 games	22 s	v S: sha SAME, diff.tsv =
+08a9b3a_8b_cloud_new_km3	SAME	240 games	27 s	v S: sha SAME, diff.tsv =
+08a9b3a_8_new_km3	DIFFERS	16000 games	1926 s	v S: sha SAME, diff.tsv =
+08a9b3a_cov_b2e_km3	SAME	48000 games	3831 s	v S: sha SAME, diff.tsv =
+v S as predicted: 18 of 18; clean rules pages: 11 of 11
+VERIFY PASS

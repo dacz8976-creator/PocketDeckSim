@@ -1,0 +1,60 @@
+2026-11-04T14:46:16Z lane_r8 armed (pgid 470103)
+2026-11-04T14:46:17Z lane_r8 start: R=543dad0007a345128ec95e9c2698699c8b5493ce
+2026-11-04T14:46:17Z build_R: before: absent absent absent absent absent 
+2026-11-04T14:56:56Z build_R: guard OK (Compiling deckgym v0.1.0-pdl.rules4 (/home/dacz8976/lane_r8_w/engine)); after: deckgym=75090673c20939a0 card_status=b37003365d3fde44 card_enum_generator=05352db698d9ab7d legality_scan=2c6df06583ec3667 goldfish=814d72b5ab7c7057 
+2026-11-04T14:56:56Z build_R OK: BUILD OK in 638 s
+      3 warning: `deckgym` (lib) generated 5 warnings (run `cargo fix --lib -p deckgym` to apply 2 suggestions)
+      3 warning: associated function `geometric_until_tails` is never used
+      3 warning: function `best_attack_value` is never used
+      3 warning: function `estimated_attack_damage` is never used
+      3 warning: unused import: `TrainerType`
+      3 warning: variable does not need to be mutable
+2026-11-04T14:56:57Z gen_R ids: SAME (/home/dacz8976/lane_r8_w/engine/src/card_ids.rs v /home/dacz8976/pincand_work/RR_R8_543dad00/prep/gen_ids.rs); generated secondary_energy_type None lines: 0
+2026-11-04T14:56:57Z gen_R database: SAME (/home/dacz8976/lane_r8_w/engine/src/database.rs v /home/dacz8976/pincand_work/RR_R8_543dad00/prep/gen_database.rs); generated secondary_energy_type None lines: 4154
+2026-11-04T14:56:57Z card_status rc=0
+card_status: all 4577 | new C1/SP1/P-C: 260 {'Complete': 256, 'RulesUnverified': 4}
+   C1 217 {'Complete': 213, 'RulesUnverified': 4}
+   SP1 30 {'Complete': 30}
+   P-C 13 {'Complete': 13}
+older cards neither Complete nor RulesUnverified: 0 []
+Trainers with a new or B4b printing (same name and text) whose printings differ in status: 0
+all by status: {'Complete': 4565, 'RulesUnverified': 12}
+exact R8 counts (4,565 + 12; new 256 + 4: C1 015, C1 051, C1 135, C1 184): yes
+STATUS_CHECK OK
+2026-11-04T14:56:58Z replay r 08a9b3a_10_cli_k3
+2026-11-04T14:57:09Z replay r 08a9b3a_10_cli_kp3
+2026-11-04T14:57:22Z replay r 08a9b3a_10_cli_kog3
+2026-11-04T14:57:34Z replay r 08a9b3a_10_cli_kta3
+2026-11-04T14:57:47Z replay r 08a9b3a_10_cli_km3
+2026-11-04T14:57:59Z replay r 08a9b3a_10_goldfish
+2026-11-04T14:58:00Z replay r 08a9b3a_table_k3
+2026-11-04T15:12:49Z replay r 08a9b3a_table_kp3
+2026-11-04T15:30:08Z replay r 08a9b3a_table_kog3
+2026-11-04T15:47:00Z replay r 08a9b3a_dev_km3_table
+2026-11-04T16:04:22Z replay r 08a9b3a_dev_kta3_table
+2026-11-04T16:21:45Z replay r 08a9b3a_10_run_screen
+2026-11-04T16:26:29Z replay r 08a9b3a_new17_k3
+2026-11-04T16:36:38Z replay r 08a9b3a_dev_km3_new17
+2026-11-04T16:48:26Z replay r 08a9b3a_8b_cloud_new_k3
+2026-11-04T16:48:47Z replay r 08a9b3a_8b_cloud_new_km3
+2026-11-04T16:49:13Z replay r 08a9b3a_8_new_km3
+2026-11-04T17:21:03Z replay r 08a9b3a_cov_b2e_km3
+r	08a9b3a_10_cli_k3	240	10	SAME	Player 0 won: 150 (62.50%) | Player 1 won: 90 (37.50%) | Draws: 0 (0.00%) | v S: SAME
+r	08a9b3a_10_cli_kp3	240	12	SAME	Player 0 won: 144 (60.00%) | Player 1 won: 96 (40.00%) | Draws: 0 (0.00%) | v S: SAME
+r	08a9b3a_10_cli_kog3	240	11	SAME	Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%) | v S: SAME
+r	08a9b3a_10_cli_kta3	240	12	SAME	Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%) | v S: SAME
+r	08a9b3a_10_cli_km3	240	12	SAME	Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%) | v S: SAME
+r	08a9b3a_10_goldfish	0	0	SAME	page =, coverage = | v S: page SAME, coverage sha SAME
+r	08a9b3a_table_k3	14000	888	SAME	0 differing deals of 14000; rules page: /home/dacz8976/pincand_work/RR_R8_543dad00/games/r/08a9b3a_table_k3.txt: no RULE finding | v S: sha SAME, diff.tsv =
+r	08a9b3a_table_kp3	14000	1038	SAME	0 differing deals of 14000; rules page: /home/dacz8976/pincand_work/RR_R8_543dad00/games/r/08a9b3a_table_kp3.txt: no RULE finding | v S: sha SAME, diff.tsv =
+r	08a9b3a_table_kog3	14000	1011	SAME	0 differing deals of 14000; rules page: /home/dacz8976/pincand_work/RR_R8_543dad00/games/r/08a9b3a_table_kog3.txt: no RULE finding | v S: sha SAME, diff.tsv =
+r	08a9b3a_dev_km3_table	14000	1040	SAME	0 differing deals of 14000; rules page: /home/dacz8976/pincand_work/RR_R8_543dad00/games/r/08a9b3a_dev_km3_table.txt: no RULE finding | v S: sha SAME, diff.tsv =
+r	08a9b3a_dev_kta3_table	14000	1042	SAME	0 differing deals of 14000; rules page: /home/dacz8976/pincand_work/RR_R8_543dad00/games/r/08a9b3a_dev_kta3_table.txt: no RULE finding | v S: sha SAME, diff.tsv =
+r	08a9b3a_10_run_screen	3840	283	SAME	run_screen: /home/dacz8976/pincand_work/RR_R8_543dad00/games/r/08a9b3a_10_run_screen.txt v engine_switch_rules2_2026-10/08a9b3a_10_run_screen.txt: 20 of 20 lines equal (2 decks; the header's engine path aside) | v S: SAME (0-23/r6_release/logs/replays_S/08a9b3a_10_run_screen.txt: 20 of 20 lines equal (2 decks; the header's engine path aside))
+r	08a9b3a_new17_k3	8500	608	DIFFERS	8 differing deals of 8500; rules page: /home/dacz8976/pincand_work/RR_R8_543dad00/games/r/08a9b3a_new17_k3.txt: no RULE finding | v S: sha SAME, diff.tsv =
+r	08a9b3a_dev_km3_new17	8500	708	DIFFERS	7 differing deals of 8500; rules page: /home/dacz8976/pincand_work/RR_R8_543dad00/games/r/08a9b3a_dev_km3_new17.txt: no RULE finding | v S: sha SAME, diff.tsv =
+r	08a9b3a_8b_cloud_new_k3	240	20	SAME	0 differing deals of 240; rules page: /home/dacz8976/pincand_work/RR_R8_543dad00/games/r/08a9b3a_8b_cloud_new_k3.txt: no RULE finding | v S: sha SAME, diff.tsv =
+r	08a9b3a_8b_cloud_new_km3	240	25	SAME	0 differing deals of 240; rules page: /home/dacz8976/pincand_work/RR_R8_543dad00/games/r/08a9b3a_8b_cloud_new_km3.txt: no RULE finding | v S: sha SAME, diff.tsv =
+r	08a9b3a_8_new_km3	16000	1908	DIFFERS	1 differing deals of 16000; rules page: /home/dacz8976/pincand_work/RR_R8_543dad00/games/r/08a9b3a_8_new_km3.txt: no RULE finding | v S: sha SAME, diff.tsv =
+r	08a9b3a_cov_b2e_km3	48000	3808	SAME	0 differing deals of 48000; rules page: /home/dacz8976/pincand_work/RR_R8_543dad00/games/r/08a9b3a_cov_b2e_km3.txt: no RULE finding | v S: sha SAME, diff.tsv =
+2026-11-04T18:24:34Z lane_r8 end: done

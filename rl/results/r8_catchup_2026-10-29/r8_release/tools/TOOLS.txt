@@ -1,0 +1,31 @@
+The scripts as run on the laptop (copied byte for byte from /home/dacz8976/relplan/r8/sw/) and this record's own script. sha256:
+e6b99b780762426c5ff86c736060424f96aafbf78ee4a9e73cac15bc1d5807d2  commit_record_r8.sh
+0109c0f560af0f48972cb9e51e7534579209707063962f373fa72ef00339ef2c  floor2s_basis.sh
+2aea9eeebd03d1741e2904c44418a582e6af2fd3631dba48c1b17d358badba2d  floorR8_recompare.sh
+0eec7d88c5df55fdf2cb1f310d6322f9400852d1de158f91e5a2362a1900200e  goldfishR8_floor_coverage.sh
+3fd3709e10690381ade14c96038f1461396873e8e26ebf87d7d332113a98f569  r8_push2.sh
+452d7eb4a375497516551356df29c475852ab3e44b09278e4da9555417bbde38  replays_v_laneN.sh
+87c191004838a7cc2574e0e34c6d655a16d533d90f2d0b6f542aebc22764f7de  step2_build.sh
+5356d0232ad7e2de6c443beb5d13d457076245ebd695b4af1d2b7d8c0c1eb6bf  step3_run.sh
+c57f4fbaaeb19e0eeada644172959998cdb3977a993dfdbcc198c5ef42a98bd5  tu_build.sh
+0228a653d8da4af533c3e3787072cb54aec8b7f01e91eea261404ffda3cb40e7  wait34.sh
+The official build's lane ran rl/results/r8_catchup_2026-10-29/lane/lane_r8.sh and replay_r8.py as committed at S8 (RUN_CONTEXT.txt);
+  Lane N ran the same files as committed at 48dec4f5 (its own lane log; not re-checked here).
+step2_build.sh: the official build from S8: lane_r8.sh in ~/lane_r8_w (cargo in its engine/ under nice 19, lane_r8.sh:66, 85-86), with a fresh
+  CARGO_TARGET_DIR ~/lane_r8_target (lane_r8.sh:35, 64; step2_build.sh moved Lane N's aside first); suite_R and goldfish_R marked skipped
+  under Q2 (A). lane_r8.sh:206-207 gate the replays on goldfish_R.done (which that skip marker satisfied), never on replays_R.done, so the
+  18 replays ran (unplanned; coordinator-155 Q1), and lane_r8.sh:218 runs replay_r8.py without nice. The fix goes in the next lane copy.
+step3_run.sh: the K8 record check; sc_kx3 and floor2.py in parallel (nice 19); the refusal test on K8 and the rl/strength Python suite
+  (no STRENGTH_PROGRAM, so its 4 card-support tests skip).
+tu_build.sh: the refusal test's own program (rl/strength/test_strength_card_support.py:8-13: harness and engine from S8 with deckgym/test-utils);
+  accepted as the refusal step's program (coordinator-155 Q2). Its captured stdout: logs/switch/tu_build.out. The next lane copy's
+  strength step names this build.
+wait34.sh: waits for sc_kx3 and the floor run, then runs floorR8_recompare.sh.
+floorR8_recompare.sh: the floor's acceptance rule (coordinator-080), stricter than R6's in two ways (coordinator-155 §4): the goldfish line
+  is not normalised (both sides ran in the same checkout with the same manifest), and sitting1_check.py runs with no modes.
+goldfishR8_floor_coverage.sh: R8's goldfish on the 11 floor decks, coverage only (no games), v floor2R8's coverage files. Its header
+  comment (lines 2-7) was corrected after the run (it was R6's text); the code from line 8 on is as run, and this record re-ran it.
+floor2s_basis.sh and replays_v_laneN.sh were also re-run by this record (their outputs are the copies in logs/).
+floor2s_basis.sh: floor2S v R6's committed sums (coordinator-151 Q3; the command of coordinator-155 §1).
+replays_v_laneN.sh: the official build's replays v Lane N's.
+r8_push2.sh: Guardrail A and the push (coordinator-154: the content grep takes the never-open exclusion array).

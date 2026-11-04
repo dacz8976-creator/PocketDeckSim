@@ -1,0 +1,57 @@
+# The programs that actually ran, by sha256, against the programs committed in programs_final/ (copied from
+# /home/dacz8976/pincand_work/RR_R8_543dad00/programs, the official build of S8 543dad00) and the recorded builds.
+# Every line must say EQUAL.
+EQUAL   programs/deckgym now v its build-time SHA256SUMS line: 75090673c20939a0aee431eb293dde0d2a988194da0b8429604a7570dc150310
+EQUAL   programs/legality_scan now v its build-time SHA256SUMS line: 2c6df06583ec366735785eb234ed2bbd13dd6a1161036cfecfc80afd4af3fea4
+EQUAL   programs/goldfish now v its build-time SHA256SUMS line: 814d72b5ab7c705738a731ed96d5b5b62059494cece0cd82442e60ad77d7a5ed
+EQUAL   programs/card_status now v its build-time SHA256SUMS line: b37003365d3fde4469f25b268b02881d3a2aeadd21dbfcfca6c4881f5f3e73cb
+EQUAL   programs/card_enum_generator now v its build-time SHA256SUMS line: 05352db698d9ab7df85858e1b88a87431c0a5d79d6909b5073a23aa5a9561bbc
+EQUAL   programs/deckgym v Lane N's build (48dec4f5, the cited basis): 75090673c20939a0aee431eb293dde0d2a988194da0b8429604a7570dc150310
+EQUAL   programs/legality_scan v Lane N's build (48dec4f5, the cited basis): 2c6df06583ec366735785eb234ed2bbd13dd6a1161036cfecfc80afd4af3fea4
+EQUAL   programs/goldfish v Lane N's build (48dec4f5, the cited basis): 814d72b5ab7c705738a731ed96d5b5b62059494cece0cd82442e60ad77d7a5ed
+EQUAL   programs/card_status v Lane N's build (48dec4f5, the cited basis): b37003365d3fde4469f25b268b02881d3a2aeadd21dbfcfca6c4881f5f3e73cb
+EQUAL   programs/card_enum_generator v Lane N's build (48dec4f5, the cited basis): 05352db698d9ab7df85858e1b88a87431c0a5d79d6909b5073a23aa5a9561bbc
+EQUAL   replay 08a9b3a_10_cli_k3 ran RR_R8_543dad00/programs/deckgym: 75090673c20939a0aee431eb293dde0d2a988194da0b8429604a7570dc150310
+EQUAL   replay 08a9b3a_10_cli_km3 ran RR_R8_543dad00/programs/deckgym: 75090673c20939a0aee431eb293dde0d2a988194da0b8429604a7570dc150310
+EQUAL   replay 08a9b3a_10_cli_kog3 ran RR_R8_543dad00/programs/deckgym: 75090673c20939a0aee431eb293dde0d2a988194da0b8429604a7570dc150310
+EQUAL   replay 08a9b3a_10_cli_kp3 ran RR_R8_543dad00/programs/deckgym: 75090673c20939a0aee431eb293dde0d2a988194da0b8429604a7570dc150310
+EQUAL   replay 08a9b3a_10_cli_kta3 ran RR_R8_543dad00/programs/deckgym: 75090673c20939a0aee431eb293dde0d2a988194da0b8429604a7570dc150310
+EQUAL   replay 08a9b3a_10_goldfish ran RR_R8_543dad00/programs/goldfish: 814d72b5ab7c705738a731ed96d5b5b62059494cece0cd82442e60ad77d7a5ed
+EQUAL   replay 08a9b3a_10_run_screen ran RR_R8_543dad00/programs/deckgym: 75090673c20939a0aee431eb293dde0d2a988194da0b8429604a7570dc150310
+EQUAL   replay 08a9b3a_8_new_km3 ran RR_R8_543dad00/programs/legality_scan: 2c6df06583ec366735785eb234ed2bbd13dd6a1161036cfecfc80afd4af3fea4
+EQUAL   replay 08a9b3a_8b_cloud_new_k3 ran RR_R8_543dad00/programs/legality_scan: 2c6df06583ec366735785eb234ed2bbd13dd6a1161036cfecfc80afd4af3fea4
+EQUAL   replay 08a9b3a_8b_cloud_new_km3 ran RR_R8_543dad00/programs/legality_scan: 2c6df06583ec366735785eb234ed2bbd13dd6a1161036cfecfc80afd4af3fea4
+EQUAL   replay 08a9b3a_cov_b2e_km3 ran RR_R8_543dad00/programs/legality_scan: 2c6df06583ec366735785eb234ed2bbd13dd6a1161036cfecfc80afd4af3fea4
+EQUAL   replay 08a9b3a_dev_km3_new17 ran RR_R8_543dad00/programs/legality_scan: 2c6df06583ec366735785eb234ed2bbd13dd6a1161036cfecfc80afd4af3fea4
+EQUAL   replay 08a9b3a_dev_km3_table ran RR_R8_543dad00/programs/legality_scan: 2c6df06583ec366735785eb234ed2bbd13dd6a1161036cfecfc80afd4af3fea4
+EQUAL   replay 08a9b3a_dev_kta3_table ran RR_R8_543dad00/programs/legality_scan: 2c6df06583ec366735785eb234ed2bbd13dd6a1161036cfecfc80afd4af3fea4
+EQUAL   replay 08a9b3a_new17_k3 ran RR_R8_543dad00/programs/legality_scan: 2c6df06583ec366735785eb234ed2bbd13dd6a1161036cfecfc80afd4af3fea4
+EQUAL   replay 08a9b3a_table_k3 ran RR_R8_543dad00/programs/legality_scan: 2c6df06583ec366735785eb234ed2bbd13dd6a1161036cfecfc80afd4af3fea4
+EQUAL   replay 08a9b3a_table_kog3 ran RR_R8_543dad00/programs/legality_scan: 2c6df06583ec366735785eb234ed2bbd13dd6a1161036cfecfc80afd4af3fea4
+EQUAL   replay 08a9b3a_table_kp3 ran RR_R8_543dad00/programs/legality_scan: 2c6df06583ec366735785eb234ed2bbd13dd6a1161036cfecfc80afd4af3fea4
+EQUAL   floor piece A_07 (cmd.txt) ran RR_R8_543dad00/programs/deckgym: 75090673c20939a0aee431eb293dde0d2a988194da0b8429604a7570dc150310
+EQUAL   floor piece A_brew-05b (cmd.txt) ran RR_R8_543dad00/programs/deckgym: 75090673c20939a0aee431eb293dde0d2a988194da0b8429604a7570dc150310
+EQUAL   floor piece A_brew-06 (cmd.txt) ran RR_R8_543dad00/programs/deckgym: 75090673c20939a0aee431eb293dde0d2a988194da0b8429604a7570dc150310
+EQUAL   floor piece A_brew-06b (cmd.txt) ran RR_R8_543dad00/programs/deckgym: 75090673c20939a0aee431eb293dde0d2a988194da0b8429604a7570dc150310
+EQUAL   floor piece A_control14_k3 (cmd.txt) ran RR_R8_543dad00/programs/deckgym: 75090673c20939a0aee431eb293dde0d2a988194da0b8429604a7570dc150310
+EQUAL   floor piece A_run_screen (cmd.txt) ran RR_R8_543dad00/programs/deckgym: 75090673c20939a0aee431eb293dde0d2a988194da0b8429604a7570dc150310
+EQUAL   floor piece B_12 (cmd.txt) ran RR_R8_543dad00/programs/deckgym: 75090673c20939a0aee431eb293dde0d2a988194da0b8429604a7570dc150310
+EQUAL   floor piece B_D_amended (cmd.txt) ran RR_R8_543dad00/programs/deckgym: 75090673c20939a0aee431eb293dde0d2a988194da0b8429604a7570dc150310
+EQUAL   floor piece B_D_root (cmd.txt) ran RR_R8_543dad00/programs/deckgym: 75090673c20939a0aee431eb293dde0d2a988194da0b8429604a7570dc150310
+EQUAL   floor piece B_D_victini-passive (cmd.txt) ran RR_R8_543dad00/programs/deckgym: 75090673c20939a0aee431eb293dde0d2a988194da0b8429604a7570dc150310
+EQUAL   floor piece B_brew-07 (cmd.txt) ran RR_R8_543dad00/programs/deckgym: 75090673c20939a0aee431eb293dde0d2a988194da0b8429604a7570dc150310
+EQUAL   floor piece B_brew-09 (cmd.txt) ran RR_R8_543dad00/programs/deckgym: 75090673c20939a0aee431eb293dde0d2a988194da0b8429604a7570dc150310
+EQUAL   the program step3_run.sh self-checked and refusal-tested (P=): /home/dacz8976/pincand_work/RR_R8_48dec4f5/strength/K8/strength
+EQUAL   /home/dacz8976/pincand_work/RR_R8_48dec4f5/strength/K8/strength (sc_kx3, the K8 refusal run) v its build record: d4d4e43acebcf7aebad7ba719d32dc2b0a3d347d1a2b53c074788a678ab4e12d
+EQUAL   /home/dacz8976/pincand_work/RR_R8_48dec4f5/strength/K8/strength v record_check.txt (the check before sc_kx3): d4d4e43acebcf7aebad7ba719d32dc2b0a3d347d1a2b53c074788a678ab4e12d
+EQUAL   /home/dacz8976/pincand_work/RR_R8_48dec4f5/strength/L/strength (Lane N's sc_km3) v its build record: cd1c3e78c1d8d5cbe1f8aceb8cdbcbafd9342c07f6e5a256a327ed907db1958b
+EQUAL   /home/dacz8976/pincand_work/RR_R8_48dec4f5/strength/L/strength v Lane N's night.log strength_L line: cd1c3e78c1d8d5cbe1f8aceb8cdbcbafd9342c07f6e5a256a327ed907db1958b
+INFO    the refusal test's own program (test-utils; tools/tu_build.sh; not committed, never official): /home/dacz8976/pincand_work/RR_R8_543dad00/sw3/tu_build/rl/strength/target/release/strength: 8d7953b296eb0bcd9005a0f713e085f90392d323be76feee48df25bf2889ff53
+EQUAL   the program tu_build.sh built and refusal-tested (N=, B=, PT=): /home/dacz8976/pincand_work/RR_R8_543dad00/sw3/tu_build/rl/strength/target/release/strength
+EQUAL   the tu program v the "program sha256" line tu_build.sh printed (its captured stdout, logs/switch/tu_build.out): 8d7953b296eb0bcd9005a0f713e085f90392d323be76feee48df25bf2889ff53
+EQUAL   tu_build.out's refusal line (rc=0 Ran 4 tests ... OK) and strength_refusal_tu.log agree: yes
+programs_final/ (the copies to commit): sha256sum -c SHA256SUMS:
+deckgym: OK
+legality_scan: OK
+goldfish: OK
+RESULT: all equal

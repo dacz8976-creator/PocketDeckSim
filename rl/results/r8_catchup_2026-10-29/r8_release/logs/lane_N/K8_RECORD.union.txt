@@ -1,0 +1,8 @@
+K8 b5f15351f3f61f2bfc2fc6c41dfc555e3a3b71b0
+tree 16b0e244376f65e33c14031eb06434d37a74a2aa
+engine_tree f33d2c49baf432d4bd1e407b96a6c243471fa9b6
+lane 48dec4f5361992b2788401333b2f1cc4531f073a
+mod_rs_merge union
+harness_source_sha256 c4f7da21563393049a21a7ca41778ea3a916b99bde5a9bec33fbe3b700f0a149
+kx3_blobs_equal_d513e37b 6
+union_hunk in 'pub enum PlayerCode': lane 'Proto { command: String, timeout_ms: u64, log: Option<String> },' + kx3 'KX { params: playout_player::PlayoutParams },'

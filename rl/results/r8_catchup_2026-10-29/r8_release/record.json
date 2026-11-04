@@ -1,0 +1,410 @@
+{
+ "schema": "r8-record v1",
+ "s": "543dad0007a345128ec95e9c2698699c8b5493ce",
+ "s_engine_tree": "014b4371a3b809273c01a1809a058de5980cdfd1",
+ "k": "b5f15351f3f61f2bfc2fc6c41dfc555e3a3b71b0",
+ "k_engine_tree": "f33d2c49baf432d4bd1e407b96a6c243471fa9b6",
+ "lane_n": "48dec4f5361992b2788401333b2f1cc4531f073a",
+ "basis": "Q2 (A), coordinator-151 §3: the five programs built from S8 have Lane N's sha256, so Lane N's suite, goldfish steps and replays (48dec4f5, the same engine tree) are cited; the official build ran no suite or goldfish step",
+ "programs_sha256": {
+  "deckgym": "75090673c20939a0aee431eb293dde0d2a988194da0b8429604a7570dc150310",
+  "legality_scan": "2c6df06583ec366735785eb234ed2bbd13dd6a1161036cfecfc80afd4af3fea4",
+  "goldfish": "814d72b5ab7c705738a731ed96d5b5b62059494cece0cd82442e60ad77d7a5ed"
+ },
+ "programs_all_sha256": {
+  "deckgym": "75090673c20939a0aee431eb293dde0d2a988194da0b8429604a7570dc150310",
+  "legality_scan": "2c6df06583ec366735785eb234ed2bbd13dd6a1161036cfecfc80afd4af3fea4",
+  "goldfish": "814d72b5ab7c705738a731ed96d5b5b62059494cece0cd82442e60ad77d7a5ed",
+  "card_status": "b37003365d3fde4469f25b268b02881d3a2aeadd21dbfcfca6c4881f5f3e73cb",
+  "card_enum_generator": "05352db698d9ab7df85858e1b88a87431c0a5d79d6909b5073a23aa5a9561bbc"
+ },
+ "programs_equal_lane_n": true,
+ "ran_sha256": "all equal (RAN_SHA256.txt)",
+ "build": {
+  "lane_start": "2026-11-04T14:46:17Z",
+  "build_ok_at": "2026-11-04T14:56:56Z",
+  "secs": 638
+ },
+ "gencmp": {
+  "ids": "SAME",
+  "database": "SAME"
+ },
+ "gencmp_lane_n": {
+  "ids": "SAME",
+  "database": "SAME"
+ },
+ "card_status": {
+  "line": "card_status: all 4577 | new C1/SP1/P-C: 260 {'Complete': 256, 'RulesUnverified': 4}",
+  "all_by_status": "{'Complete': 4565, 'RulesUnverified': 12}",
+  "older": "0",
+  "exact": "yes",
+  "check": "OK"
+ },
+ "card_status_lane_n": {
+  "line": "card_status: all 4577 | new C1/SP1/P-C: 260 {'Complete': 256, 'RulesUnverified': 4}",
+  "all_by_status": "{'Complete': 4565, 'RulesUnverified': 12}",
+  "older": "0",
+  "exact": "yes",
+  "check": "OK"
+ },
+ "suite": {
+  "source": "Lane N (48dec4f5)",
+  "rc": 0,
+  "secs": 961,
+  "passed": 2633,
+  "failed": 0,
+  "ignored": 0,
+  "compile_errors": 0
+ },
+ "goldfish_steps": {
+  "source": "Lane N (48dec4f5)",
+  "strings": [
+   0,
+   0,
+   0
+  ],
+  "plain_test_rc": 0,
+  "plain_passed": 1,
+  "plain_failed": 0
+ },
+ "switch_runs": "dropped (coordinator-151 §3): R8's only new env::var is test-utils' TEST_MISSING_ATTACK_ENV (\"TEST_CARD_SUPPORT_MISSING_ATTACK\")",
+ "strength": {
+  "program": "/home/dacz8976/pincand_work/RR_R8_48dec4f5/strength/K8/strength",
+  "sha256": "d4d4e43acebcf7aebad7ba719d32dc2b0a3d347d1a2b53c074788a678ab4e12d",
+  "engine_ref": "b5f15351f3f61f2bfc2fc6c41dfc555e3a3b71b0",
+  "engine_tree_archived": "f33d2c49baf432d4bd1e407b96a6c243471fa9b6",
+  "harness": "c4f7da21563393049a21a7ca41778ea3a916b99bde5a9bec33fbe3b700f0a149",
+  "jobs": "2",
+  "built_at": "2026-11-04T06:07:16Z",
+  "record": "K8_RECORD.union.txt (logs/lane_N/)"
+ },
+ "strength_L": {
+  "sha256": "cd1c3e78c1d8d5cbe1f8aceb8cdbcbafd9342c07f6e5a256a327ed907db1958b",
+  "engine_tree": "014b4371a3b8",
+  "harness": "c4f7da215633"
+ },
+ "selfchecks": {
+  "km3": "selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1",
+  "km3_program": "strength_L (Lane N; not rebuilt since, plan 113 §3)",
+  "kx3": "selfcheck pilot=kx3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=138 digest=31d638dbc818b0fa",
+  "kx3_rc": 0,
+  "kx3_secs": 5377
+ },
+ "refusal_test_k8": {
+  "ran": 4,
+  "status": "FAILED (failures=4)",
+  "failing": [
+   "FAIL: test_run_refuses_a_deck_or_an_opponent_with_a_missing_attack_card_and_writes_nothing",
+   "FAIL: test_run_with_the_opt_out_lists_the_card_on_stderr_and_starts",
+   "FAIL: test_selfcheck_refuses_too_and_prints_no_selfcheck_line"
+  ],
+  "passing": [
+   "test_supported_decks_start_and_the_check_says_nothing"
+  ]
+ },
+ "refusal_test_tu": {
+  "ran": 4,
+  "status": "OK",
+  "failing": [],
+  "passing": [
+   "test_run_refuses_a_deck_or_an_opponent_with_a_missing_attack_card_and_writes_nothing",
+   "test_run_with_the_opt_out_lists_the_card_on_stderr_and_starts",
+   "test_selfcheck_refuses_too_and_prints_no_selfcheck_line",
+   "test_supported_decks_start_and_the_check_says_nothing"
+  ],
+  "program_sha256": "8d7953b296eb0bcd9005a0f713e085f90392d323be76feee48df25bf2889ff53"
+ },
+ "refusal_note": "R8 changed test_strength_card_support.py (Weedle, through TEST_CARD_SUPPORT_MISSING_ATTACK, which only a test-utils build reads; :8-13). K8 is a plain build (rl/strength/build.sh), so 3 of its 4 tests fail as the header says for a plain program (:13); the program the header prescribes (tools/tu_build.sh) passes 4 of 4. Accepted, coordinator-155 Q2. The next lane copy's strength step names the tu build.",
+ "strength_py": {
+  "ran": 1438,
+  "status": "OK (skipped=4)",
+  "failing": []
+ },
+ "replays": {
+  "source": "Lane N (48dec4f5), the basis under Q2 (A)",
+  "n": 18,
+  "games_total": 156520,
+  "ref_same": 15,
+  "ref_growl_known": 3,
+  "vs_same": 18,
+  "rules_clean": 11,
+  "goldfish": "page =, coverage =",
+  "rows": [
+   {
+    "name": "08a9b3a_10_cli_k3",
+    "games": 240,
+    "secs": 10,
+    "verdict": "SAME",
+    "detail": "Player 0 won: 150 (62.50%) | Player 1 won: 90 (37.50%) | Draws: 0 (0.00%) | v S: SAME",
+    "vs": "SAME",
+    "vs_same": true,
+    "growl_known": false,
+    "rules_clean": false
+   },
+   {
+    "name": "08a9b3a_10_cli_kp3",
+    "games": 240,
+    "secs": 12,
+    "verdict": "SAME",
+    "detail": "Player 0 won: 144 (60.00%) | Player 1 won: 96 (40.00%) | Draws: 0 (0.00%) | v S: SAME",
+    "vs": "SAME",
+    "vs_same": true,
+    "growl_known": false,
+    "rules_clean": false
+   },
+   {
+    "name": "08a9b3a_10_cli_kog3",
+    "games": 240,
+    "secs": 11,
+    "verdict": "SAME",
+    "detail": "Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%) | v S: SAME",
+    "vs": "SAME",
+    "vs_same": true,
+    "growl_known": false,
+    "rules_clean": false
+   },
+   {
+    "name": "08a9b3a_10_cli_kta3",
+    "games": 240,
+    "secs": 12,
+    "verdict": "SAME",
+    "detail": "Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%) | v S: SAME",
+    "vs": "SAME",
+    "vs_same": true,
+    "growl_known": false,
+    "rules_clean": false
+   },
+   {
+    "name": "08a9b3a_10_cli_km3",
+    "games": 240,
+    "secs": 12,
+    "verdict": "SAME",
+    "detail": "Player 0 won: 149 (62.08%) | Player 1 won: 91 (37.92%) | Draws: 0 (0.00%) | v S: SAME",
+    "vs": "SAME",
+    "vs_same": true,
+    "growl_known": false,
+    "rules_clean": false
+   },
+   {
+    "name": "08a9b3a_10_goldfish",
+    "games": 0,
+    "secs": 0,
+    "verdict": "SAME",
+    "detail": "page =, coverage = | v S: page SAME, coverage sha SAME",
+    "vs": "page SAME, coverage sha SAME",
+    "vs_same": true,
+    "growl_known": false,
+    "rules_clean": false
+   },
+   {
+    "name": "08a9b3a_table_k3",
+    "games": 14000,
+    "secs": 858,
+    "verdict": "SAME",
+    "detail": "0 differing deals of 14000; rules page: /home/dacz8976/pincand_work/RR_R8_48dec4f5/games/r/08a9b3a_table_k3.txt: no RULE finding | v S: sha SAME, diff.tsv =",
+    "vs": "sha SAME, diff.tsv =",
+    "vs_same": true,
+    "growl_known": false,
+    "rules_clean": true
+   },
+   {
+    "name": "08a9b3a_table_kp3",
+    "games": 14000,
+    "secs": 1013,
+    "verdict": "SAME",
+    "detail": "0 differing deals of 14000; rules page: /home/dacz8976/pincand_work/RR_R8_48dec4f5/games/r/08a9b3a_table_kp3.txt: no RULE finding | v S: sha SAME, diff.tsv =",
+    "vs": "sha SAME, diff.tsv =",
+    "vs_same": true,
+    "growl_known": false,
+    "rules_clean": true
+   },
+   {
+    "name": "08a9b3a_table_kog3",
+    "games": 14000,
+    "secs": 1007,
+    "verdict": "SAME",
+    "detail": "0 differing deals of 14000; rules page: /home/dacz8976/pincand_work/RR_R8_48dec4f5/games/r/08a9b3a_table_kog3.txt: no RULE finding | v S: sha SAME, diff.tsv =",
+    "vs": "sha SAME, diff.tsv =",
+    "vs_same": true,
+    "growl_known": false,
+    "rules_clean": true
+   },
+   {
+    "name": "08a9b3a_dev_km3_table",
+    "games": 14000,
+    "secs": 1039,
+    "verdict": "SAME",
+    "detail": "0 differing deals of 14000; rules page: /home/dacz8976/pincand_work/RR_R8_48dec4f5/games/r/08a9b3a_dev_km3_table.txt: no RULE finding | v S: sha SAME, diff.tsv =",
+    "vs": "sha SAME, diff.tsv =",
+    "vs_same": true,
+    "growl_known": false,
+    "rules_clean": true
+   },
+   {
+    "name": "08a9b3a_dev_kta3_table",
+    "games": 14000,
+    "secs": 1043,
+    "verdict": "SAME",
+    "detail": "0 differing deals of 14000; rules page: /home/dacz8976/pincand_work/RR_R8_48dec4f5/games/r/08a9b3a_dev_kta3_table.txt: no RULE finding | v S: sha SAME, diff.tsv =",
+    "vs": "sha SAME, diff.tsv =",
+    "vs_same": true,
+    "growl_known": false,
+    "rules_clean": true
+   },
+   {
+    "name": "08a9b3a_10_run_screen",
+    "games": 3840,
+    "secs": 283,
+    "verdict": "SAME",
+    "detail": "run_screen: /home/dacz8976/pincand_work/RR_R8_48dec4f5/games/r/08a9b3a_10_run_screen.txt v engine_switch_rules2_2026-10/08a9b3a_10_run_screen.txt: 20 of 20 lines equal (2 decks; the header's engine path aside) | v S: SAME (0-23/r6_release/logs/replays_S/08a9b3a_10_run_screen.txt: 20 of 20 lines equal (2 decks; the header's engine path aside))",
+    "vs": "SAME (0-23/r6_release/logs/replays_S/08a9b3a_10_run_screen.txt: 20 of 20 lines equal (2 decks; the header's engine path aside))",
+    "vs_same": true,
+    "growl_known": false,
+    "rules_clean": false
+   },
+   {
+    "name": "08a9b3a_new17_k3",
+    "games": 8500,
+    "secs": 626,
+    "verdict": "DIFFERS",
+    "detail": "8 differing deals of 8500; rules page: /home/dacz8976/pincand_work/RR_R8_48dec4f5/games/r/08a9b3a_new17_k3.txt: no RULE finding | v S: sha SAME, diff.tsv =",
+    "vs": "sha SAME, diff.tsv =",
+    "vs_same": true,
+    "growl_known": true,
+    "rules_clean": true
+   },
+   {
+    "name": "08a9b3a_dev_km3_new17",
+    "games": 8500,
+    "secs": 737,
+    "verdict": "DIFFERS",
+    "detail": "7 differing deals of 8500; rules page: /home/dacz8976/pincand_work/RR_R8_48dec4f5/games/r/08a9b3a_dev_km3_new17.txt: no RULE finding | v S: sha SAME, diff.tsv =",
+    "vs": "sha SAME, diff.tsv =",
+    "vs_same": true,
+    "growl_known": true,
+    "rules_clean": true
+   },
+   {
+    "name": "08a9b3a_8b_cloud_new_k3",
+    "games": 240,
+    "secs": 22,
+    "verdict": "SAME",
+    "detail": "0 differing deals of 240; rules page: /home/dacz8976/pincand_work/RR_R8_48dec4f5/games/r/08a9b3a_8b_cloud_new_k3.txt: no RULE finding | v S: sha SAME, diff.tsv =",
+    "vs": "sha SAME, diff.tsv =",
+    "vs_same": true,
+    "growl_known": false,
+    "rules_clean": true
+   },
+   {
+    "name": "08a9b3a_8b_cloud_new_km3",
+    "games": 240,
+    "secs": 27,
+    "verdict": "SAME",
+    "detail": "0 differing deals of 240; rules page: /home/dacz8976/pincand_work/RR_R8_48dec4f5/games/r/08a9b3a_8b_cloud_new_km3.txt: no RULE finding | v S: sha SAME, diff.tsv =",
+    "vs": "sha SAME, diff.tsv =",
+    "vs_same": true,
+    "growl_known": false,
+    "rules_clean": true
+   },
+   {
+    "name": "08a9b3a_8_new_km3",
+    "games": 16000,
+    "secs": 1926,
+    "verdict": "DIFFERS",
+    "detail": "1 differing deals of 16000; rules page: /home/dacz8976/pincand_work/RR_R8_48dec4f5/games/r/08a9b3a_8_new_km3.txt: no RULE finding | v S: sha SAME, diff.tsv =",
+    "vs": "sha SAME, diff.tsv =",
+    "vs_same": true,
+    "growl_known": true,
+    "rules_clean": true
+   },
+   {
+    "name": "08a9b3a_cov_b2e_km3",
+    "games": 48000,
+    "secs": 3831,
+    "verdict": "SAME",
+    "detail": "0 differing deals of 48000; rules page: /home/dacz8976/pincand_work/RR_R8_48dec4f5/games/r/08a9b3a_cov_b2e_km3.txt: no RULE finding | v S: sha SAME, diff.tsv =",
+    "vs": "sha SAME, diff.tsv =",
+    "vs_same": true,
+    "growl_known": false,
+    "rules_clean": true
+   }
+  ],
+  "verify": "VERIFY PASS"
+ },
+ "replays_official": {
+  "source": "the official build on S8, unplanned: lane_r8.sh:206-207 gate the replays on goldfish_R.done (which the Q2 (A) skip marker satisfied), never on replays_R.done; :218 runs replay_r8.py without nice; 2026-11-04T14:56:58Z to 2026-11-04T18:24:34Z (about 3 h 28 min, lane_R/lane_r.log) (coordinator-155 Q1). The nice fix goes in the next lane copy.",
+  "span_secs": 12456,
+  "n": 18,
+  "games_total": 156520,
+  "ref_same": 15,
+  "ref_growl_known": 3,
+  "vs_same": 18,
+  "rules_clean": 11,
+  "goldfish": "page =, coverage =",
+  "equal_lane_n": true,
+  "v_lane_n": [
+   "summary.tsv: 18 r rows each, equal row for row (seconds and the RR folder name aside)",
+   "games/r: the same 72 file names",
+   "games/r: 12 games/coverage files byte-equal: yes; other files: 34 byte-equal, 21 equal after normalising the RR folder name, 5 equal after also dropping the cli timing line; 0 other"
+  ]
+ },
+ "floor": {
+  "n": 12,
+  "games": 24960,
+  "deck_games": 21120,
+  "screen_games": 3840,
+  "recompare_pass": [
+   "A_07",
+   "A_brew-05b",
+   "A_brew-06",
+   "A_brew-06b",
+   "A_control14_k3",
+   "A_run_screen",
+   "B_12",
+   "B_D_amended",
+   "B_D_root",
+   "B_D_victini-passive",
+   "B_brew-07",
+   "B_brew-09"
+  ],
+  "other": [],
+  "v_recorded": {
+   "B_D_victini-passive": "DIFFERS",
+   "A_brew-06": "DIFFERS",
+   "A_brew-06b": "DIFFERS",
+   "A_control14_k3": "DIFFERS",
+   "A_brew-05b": "DIFFERS",
+   "A_07": "DIFFERS",
+   "A_run_screen": "SAME",
+   "B_12": "DIFFERS",
+   "B_brew-07": "DIFFERS",
+   "B_brew-09": "DIFFERS",
+   "B_D_root": "DIFFERS",
+   "B_D_amended": "DIFFERS"
+  },
+  "v_floor2s_floor2py": {
+   "B_D_victini-passive": "exit 0",
+   "A_brew-06": "exit 0",
+   "A_brew-06b": "exit 0",
+   "A_control14_k3": "exit 0",
+   "A_brew-05b": "exit 0",
+   "A_07": "exit 0",
+   "A_run_screen": "SAME v recorded (not compared again)",
+   "B_12": "exit 0",
+   "B_brew-07": "exit 0",
+   "B_brew-09": "exit 0",
+   "B_D_root": "exit 0",
+   "B_D_amended": "exit 0"
+  },
+  "rule": "coordinator-080's corrected rule, stricter in two ways (coordinator-155 §4): the 11 deck pieces' games and coverage byte-equal to floor2S (R6's pages on S, Oct 29) and each page equal after normalising only the engine path (the goldfish line not normalised: the same checkout and manifest on both sides); run_screen equal apart from the engine path; sitting1_check.py floor with no modes and switch_check.py screen exit 0",
+  "goldfish_r8_coverage": 11,
+  "floor2s_basis": "floor2S = 92 of 92 committed sums"
+ },
+ "floor_ran_from": {
+  "repo": "/home/dacz8976/pincand",
+  "branch": "main",
+  "head_at_record_time": "b78c8997ab7d479c0d76d7c47d3c8cd68ff35d6f",
+  "note": "RUN_CONTEXT.txt"
+ },
+ "c_free_gib_at_record": 35
+}
