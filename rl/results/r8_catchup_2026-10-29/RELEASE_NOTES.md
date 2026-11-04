@@ -36,7 +36,7 @@ Nothing goes to main without Dustin's word.
   a time under one lock, warms Python up once before any timed hello, gives `bot_failures_fall_back_and_are_counted`
   5 s instead of 1.5 s (a test value) and `first_legal_bot_finishes` a 30 s per-game limit. Production's 10,000 ms and
   engine/src unchanged; no assertion changed.
-- **This commit:** docs and comments only (no code change).
+- **The docs commits** (e5e4e58b with 63657e0a, and the second docs commit): docs and comments only (no code change).
 
 ## 2. The rule rows
 
@@ -213,7 +213,7 @@ branch. Full suite at that check: 2,633 passed.
   sha256 e2d82ad9…, last commit fb124297). It differs from its source only by the provenance block and the
   `VARIANT_CLASS` lines for R8-04b, R8-05a, R8-05c and R8-07b. The registered folder has 0 changes across R8.
 - **`census.json` still says `"engine_map_entries": 163`;** there are 164 since R8-08a's Pawmot. It changes at the
-  next census-copy rerun (opening_class.rs's doc comment says 164 since this commit).
+  next census-copy rerun (opening_class.rs's doc comment says 164 since e5e4e58b).
 - **The R8 plan (laptop-068, its R8_PLAN.md kept outside the repo) is stale on Frogadier:** its limitation rule, its
   predicted 11 RulesUnverified (which counted Frogadier's 2 printings) and its Frogadier shot-list row.
   Coordinator-088 overrides it: Frogadier follows the card text, with no row.
@@ -232,7 +232,7 @@ branch. Full suite at that check: 2,633 passed.
 - **13286c20 and 2d62a11b** repeat "No file under decks/ names Machop B2 079, Conkeldurr B4 089 or either Palkia"
   and "Conkeldurr B4 089 is only in 3 single-deck files"; **22638651 and 4c948025** say "No file under decks/ holds
   either Urshifu". The right wording is "No deck list under decks/" and "in 3 single-deck files and one reader script
-  there"; RULE_ROWS.md carries it from this commit.
+  there"; RULE_ROWS.md carries it from e5e4e58b.
 
 ## 10. The adoption list, with pairings (groups in commit order; each fix listed with the commit it goes with)
 
@@ -260,7 +260,7 @@ prediction in RULE_ROWS.md.
    - R8-09 a0034cf9, 92234aa0, 6165ee20
 3. **was_choice:** e9b10864 with 28b9d4c8 (its test fix).
 4. **The three prediction commits (docs only), kept in every case:** b20d75c0 (the R8-10a-d predictions; it creates
-   RULE_ROWS.md, which a9861326, 22638651 and the docs commits extend), a9861326 (R8-10e's prediction) and 22638651
+   RULE_ROWS.md, which a9861326, 22638651 and e5e4e58b extend), a9861326 (R8-10e's prediction) and 22638651
    (item 11's prediction).
 5. **The rule rows, each droppable alone (its prediction stays, group 4):**
    - R8-10a Misty (tests only): 6ebe05a9 with a4200c3c; drop them together.
