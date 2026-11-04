@@ -275,6 +275,7 @@ prediction in RULE_ROWS.md.
 8. **The docs group (docs and comments only):** e5e4e58b with 63657e0a (its docs fix, docs only) and the second docs
    commit (docs only: Lullaby filmed, its rules/ entry, this pairing rule, the timing note). Dropping any group above
    also means removing its lines here.
+   The second docs commit is 55f67837, with its fix cdadc04f (docs only; coordinator-148 §1).
 9. **Root `CLAUDE.md:14`, Dustin's call (not in R8's commits):** one line adding `cargo build --release --example
    goldfish` and `cargo test --release --test goldfish_card_support_test`. Nobody edits it before his word.
 
