@@ -101,9 +101,11 @@ Each row is its own commit, written test-first, with its replay prediction recor
 - **Vespiquen's Honey Rush:** the bots ignore its reveal of the Sweet Honey cards, as they ignore Puppy Pile's; it is
   not recorded in their knowledge, and INFORMATION_MODEL stays v8.
 - **Jigglypuff:**
-  - Jigglypuff C1 051 / C1 184: RulesUnverified. Card text, not filmed: a Soothing Lullaby Sleep flips 2 coins at
-    Pokémon Checkup and wakes only if both are heads. Unverified (not filmed): an ordinary Sleep on a Soothing Lullaby
-    sleeper resets it to 1 coin (the reset reading, as upstream). The 2 coins are recorded only when the Sleep lands,
+  - Jigglypuff C1 051 / C1 184: RulesUnverified. Filmed (Oct 29, Codex's review of Dustin's clips): a Soothing
+    Lullaby Sleep flipped 2 coins at Pokémon Checkup twice (`…11-59-31`, 03:02 and 03:18); an ordinary Sleep flipped 1
+    (`…11-53-36`). By the card text, it wakes only if both are heads. Not filmed: the coin count after an ordinary
+    Sleep replaces it (Dustin saw the icon change from the plus mark to plain Sleep). The engine resets it to 1 coin
+    (the reset reading, as upstream). The 2 coins are recorded only when the Sleep lands,
     so a protected or immune Pokémon that is already Asleep keeps 1 coin (upstream gives 2).
   - The observation template gains `sleep_coins_override` only on a Soothing Lullaby sleeper; the same key appears in
     ProtocolPlayer's `agent_snapshot` and `pdl_observation` on such states. Every other observation, saved state and
@@ -189,8 +191,9 @@ Each row is its own commit, written test-first, with its replay prediction recor
 ## 6. Timing note (report only)
 
 The slowest km3/y3/x3 decision on Lunala's heavy timing rows, at each check: was_choice 1148.7, R8-10 1102.1,
-R8-10e 1244.8, item 11 1033.8, flake 1095.7 ms. The thresholds stay as they are: the 1 s rule is report-only for
-every Wings of the Moone timing row (coordinator-134; set after the data), and the 3 s tripwire stays.
+R8-10e 1244.8, item 11 1033.8, flake 1095.7, docs 1342.0 ms; 0 decisions over 3 s in every check. The docs commits
+change no code, so 1095.7 → 1342.0 ms is laptop load. The thresholds stay as they are: the 1 s rule is report-only
+for every Wings of the Moone timing row (coordinator-134; set after the data), and the 3 s tripwire stays.
 
 The adapter-only gate was also set after the data (coordinator-135): a full suite whose only failures are
 `protocol_adapter_test`'s hello tests counted as passing for a commit only when the commit could not reach the
@@ -236,6 +239,12 @@ branch. Full suite at that check: 2,633 passed.
 Adoption question 1 is R8 as a whole, with the official-program switch and one re-pin; adoption question 2, last,
 is item 11. Each group below is adopted or dropped as a whole; "alone" means it can be dropped by itself.
 
+The pairing rule (coordinator-147 §2.3): a fix goes with what it fixes (e9b10864 with 28b9d4c8; 2da36d75 with
+4c1e2699; e5e4e58b with 63657e0a and the second docs commit). The three prediction commits (b20d75c0, a9861326,
+22638651) stay in every case: each is the record made before its row's test, like a pre-registration. Dropping a row
+removes only the row's own commits and its release-notes lines, and adds "dropped at adoption, <date>" beside its
+prediction in RULE_ROWS.md.
+
 1. **The adapter group (R8-00), droppable as a group:** the adapter branch 2ab56c9e, 05ea1501, 5eba8503, 584b4095,
    03da4f14, 44f93f23, a8c38589, 46abe8e2, a70c7ce2, dda2fba2, 5ec46b5e, 2639a261, and the merge d8eae013. If it is
    ever offered upstream, known limit 1 must be stated, or post-R8 item 1 (b) or (c) done first.
@@ -250,20 +259,23 @@ is item 11. Each group below is adopted or dropped as a whole; "alone" means it 
      R8-08h 743b5bc3; R8-08h fix 9521f417
    - R8-09 a0034cf9, 92234aa0, 6165ee20
 3. **was_choice:** e9b10864 with 28b9d4c8 (its test fix).
-4. **The rule rows, each droppable alone:**
-   - b20d75c0: the R8-10a-d predictions (docs only), alone. It creates RULE_ROWS.md, which a9861326, 22638651 and
-     this commit extend.
+4. **The three prediction commits (docs only), kept in every case:** b20d75c0 (the R8-10a-d predictions; it creates
+   RULE_ROWS.md, which a9861326, 22638651 and the docs commits extend), a9861326 (R8-10e's prediction) and 22638651
+   (item 11's prediction).
+5. **The rule rows, each droppable alone (its prediction stays, group 4):**
    - R8-10a Misty (tests only): 6ebe05a9 with a4200c3c; drop them together.
    - R8-10b Darkrai ex: 9904450e with 0b42dcf5.
    - R8-10c Iris: aae606e3, alone.
    - R8-10d Triple Bombardment: 654fcb5f, alone.
-   - R8-10e Starting Plains: a9861326 (prediction) with 13286c20 (row) and 2d62a11b (docs fix).
-   - Commit order in this group: b20d75c0, 6ebe05a9, 9904450e, aae606e3, 654fcb5f, a4200c3c, 0b42dcf5, a9861326,
-     13286c20, 2d62a11b.
-5. **Item 11 (adoption question 2, last):** 22638651 (prediction) with 4c948025 (row).
-6. **The flake commit (tests only):** 2da36d75 with 4c1e2699 (its review fix).
-7. **This commit (docs and comments only), with the docs fix commit right after it (docs only).** Dropping any group above also means removing its lines here.
-8. **Root `CLAUDE.md:14`, Dustin's call (not in R8's commits):** one line adding `cargo build --release --example
+   - R8-10e Starting Plains: 13286c20 (row) with 2d62a11b (docs fix).
+   - Commit order of these rows with their predictions: b20d75c0, 6ebe05a9, 9904450e, aae606e3, 654fcb5f, a4200c3c,
+     0b42dcf5, a9861326, 13286c20, 2d62a11b.
+6. **Item 11 (adoption question 2, last):** 4c948025 (row; its prediction stays, group 4).
+7. **The flake commit (tests only):** 2da36d75 with 4c1e2699 (its review fix).
+8. **The docs group (docs and comments only):** e5e4e58b with 63657e0a (its docs fix, docs only) and the second docs
+   commit (docs only: Lullaby filmed, its rules/ entry, this pairing rule, the timing note). Dropping any group above
+   also means removing its lines here.
+9. **Root `CLAUDE.md:14`, Dustin's call (not in R8's commits):** one line adding `cargo build --release --example
    goldfish` and `cargo test --release --test goldfish_card_support_test`. Nobody edits it before his word.
 
 ## 11. Adoption-screen sentences
