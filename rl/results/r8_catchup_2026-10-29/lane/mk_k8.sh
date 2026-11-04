@@ -47,6 +47,13 @@ if ! git merge-file -p $TMP/ours.rs $TMP/base.rs $TMP/theirs.rs > $TMP/merged.rs
   [ "${K8_UNION_OK:-}" = 1 ] || { echo "conflict: the kx3 smoke stops (coordinator-148 §2.4); K8_UNION_OK=1 only on the coordinator's word"; exit 3; }
   git merge-file --union -p $TMP/ours.rs $TMP/base.rs $TMP/theirs.rs > $TMP/merged.rs || true
   MODE=union
+  # name the hunk (coordinator-149): the enclosing enum/struct/fn and each side's first non-comment line
+  C="$OUTD/mod_rs.conflict.txt"
+  H_IN=$(awk '/^<<<<<<</{print last; exit} /^(pub )?(enum|struct|fn|impl) /{last=$0}' "$C" | sed 's/ *{.*//')
+  H_OURS=$(sed -n '/^<<<<<<</,/^=======/p' "$C" | grep -v '^<<<<<<<\|^=======\|^ *///' | sed 's/^ *//' | head -n 1 | cut -c1-90)
+  H_THEIRS=$(sed -n '/^=======/,/^>>>>>>>/p' "$C" | grep -v '^>>>>>>>\|^=======\|^ *///' | sed 's/^ *//' | head -n 1 | cut -c1-90)
+  HUNKMSG="The union hunk (the only conflict): in '$H_IN', at the same place, the lane adds '$H_OURS' and kx3 adds
+'$H_THEIRS' (each with its doc comment); the union keeps both, the lane's first."
 fi
 python3 -I - $TMP/base.rs $TMP/ours.rs $TMP/theirs.rs $TMP/merged.rs $MODE <<'EOF' || exit 4
 import difflib, sys
@@ -96,6 +103,7 @@ Built with a private index from the lane commit's tree plus kx3's files of e3ddc
 engine blobs are d513e37b's): five added files as they are, and engine/src/players/mod.rs by a 3-way merge ($MODE; base
 affe56e8, ours = the lane's, theirs = e3ddc014's), checked to be the lane's file plus exactly kx3's change. K8 v the lane:
 exactly those six paths. rl/strength is the lane's (harness ${HARN:0:8}). engine/ tree $(git rev-parse $TREE:engine | cut -c1-12).
+${HUNKMSG:-The 3-way merge had no conflict.}
 Local branch only, for the Lane N kx3 smoke (coordinator-148 §2.4); pushed only after Dustin's yes, with Guardrail A first.
 
 Co-Authored-By: Claude Opus 5.5 <noreply@anthropic.com>
@@ -105,7 +113,7 @@ EOF
 fi
 git diff --name-status $L $K | cat
 { echo "K8 $K"; echo "tree $TREE"; echo "engine_tree $(git rev-parse $K:engine)"; echo "lane $L"; echo "mod_rs_merge $MODE";
-  echo "harness_source_sha256 $HARN"; echo "kx3_blobs_equal_d513e37b 6"; } > "$OUTD/K8_RECORD.txt"
+  echo "harness_source_sha256 $HARN"; echo "kx3_blobs_equal_d513e37b 6"; if [ $MODE = union ]; then echo "union_hunk in '$H_IN': lane '$H_OURS' + kx3 '$H_THEIRS'"; fi; } > "$OUTD/K8_RECORD.txt"
 echo "$K" > "$OUTD/K8_COMMIT"
 cat "$OUTD/K8_RECORD.txt"
 echo "K8=$K"
