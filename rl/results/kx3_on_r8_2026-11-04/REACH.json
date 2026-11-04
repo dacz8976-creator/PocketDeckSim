@@ -1,0 +1,923 @@
+{
+ "what": "SPEC.md section 3 for the R8 kx3 replay check: every engine change affe56e8 -> 543dad00 (S8) against the 101 card ids of the 14 deck/list files and kx3's 16 play-out lists.",
+ "commits": "git diff affe56e8 543dad00 -- engine/src: 43 files, +3,907 / -478; engine/Cargo.toml and Cargo.lock unchanged; the 101 cards' database.json entries unchanged since affe56e8.",
+ "method": "Six code clusters, each read by one agent over its diff (CAN_ACT / REACHED_NO_CHANGE / CANNOT_ACT / NOT_IN_PROGRAM, as R6_SPEC section 3 defines them) and then by one adversarial verifier told to refute each verdict and to find missed hunks (workflow wf_89e39ba2-763, read-only, Nov 4). Every hunk was placed. Corrections from the verifiers are applied here.",
+ "inputs_checked": {
+  "deck_files": "the 15 files of the development run's manifest (14 played; Wailord left out) have its sha256 at the base (prepare.sh re-checks)",
+  "database": "0 of the 101 card ids' database.json entries differ between affe56e8 and S8; all are present",
+  "kx3_pool": "playout_pool.rs at K8 is d513e37b's blob: 16 lists (8 t-lists, 8 research twins), 66 card ids, all among the 101",
+  "harness": "rl/strength/src, Cargo.toml, strength_prereg.py, split_collect.py, decks.json, groups.json, heldout.json, intended_lines.json and the development run equal R6's release affe56e8's at the base",
+  "overlay": "K8 v 48dec4f5 (S8's engine tree): exactly kx3's six files; five are d513e37b's blobs; players/mod.rs is d513e37b's plus R8's 8 protocol-adapter lines (union merge)",
+  "cargo": "engine/Cargo.lock and Cargo.toml unchanged affe56e8 -> S8"
+ },
+ "bots_reach": "km3's search sees the real opponent list or Unknown cards; kx3's play-outs draw from its 16 lists (KX_EXTRA_LISTS unset, the lane scrubs KX_*). No game here uses the protocol player, an outside bot or the weighted random player.",
+ "counts": {
+  "REACHED_NO_CHANGE": 26,
+  "CANNOT_ACT": 27,
+  "NOT_IN_PROGRAM": 10
+ },
+ "changes": [
+  {
+   "id": "c1-1",
+   "files": [
+    "engine/src/trainer_identity.rs",
+    "engine/src/actions/apply_trainer_action.rs",
+    "engine/src/move_generation/move_generation_trainer.rs"
+   ],
+   "what": "Trainer dispatch by canonical printing (upstream #395, fork's id-first version). New module trainer_identity.rs: CANONICAL_BY_ID maps every Trainer CardId to the first CardId in enum order with the same (name, effect); CANONICAL_BY_EFFECT is the fallback for an unknown id. forecast_trainer_action_unchecked (apply_trainer_action.rs:96-97) and trainer_move_generation_implementation (move_generation_trainer.rs:108) now match on canonical_trainer_id(trainer_card) instead of CardId::from_card_id(id). Every reprint id is removed from both matches (the arms keep only the canonical printing). The old expect() in move generation becomes `?`.",
+   "needs": "A Trainer (Item/Supporter, not Tool/Stadium/Fossil, which return earlier at move_generation_trainer.rs:87-105) whose canonical id differs from the arm it reached before, or an id unknown to CardId.",
+   "in_check": "Runs in every row: Copycat B1 225 and Professor's Research P-A 007 are in all 14 deck files and kx3's pool. The other dispatched Trainers in the lists are Erika A1 219, Misty A1 220, Sabrina A1 225, Cyrus A2 150, Mars A2 155, Irida A2a 072, Pokemon Center Lady A2b 070, Rare Candy A3 144, Ilima A3 149, Lillie A3 155, Will A4 156, Flame Patch B1 217, Clemont's Backpack B1a 066, Quick-Grow Extract B1a 067, Clemont B1a 068, Lucky Ice Pop B2 145, Field Blower B3 147, Korrina B3 149, Cheren B3 151, Psychic B4 150, Team Rocket's Boss B4a 071, X Speed P-A 002, Poke Ball P-A 005 and Professor's Research P-A 007.",
+   "verdict": "REACHED_NO_CHANGE",
+   "evidence": "Every list Trainer except P-A 005 and P-A 007 is the first variant in enum order for its name. card_ids.rs lists A1219Erika:228, A1220Misty:229, A1225Sabrina:234, A2150Cyrus:531, A2155Mars:536, A2a072Irida:660, A2b070PokemonCenterLady:754, A3144RareCandy:939, A3149Ilima:944, A3155Lillie:950, A4156Will:1400, B1217FlamePatch:2186, B1225Copycat:2194, B1a066/067/068:2366-2368, B2145LuckyIcePop:2548, B3147FieldBlower:3032, B3149Korrina:3034, B3151Cheren:3036, B4150Psychic:3484 and B4a071TeamRocketsBoss:3638. Each one's later reprints come after it (for example A1266Erika:275, B1270Copycat:2239, B4b...:3875+, B4a087Boss:3654). X Speed has a single printing (PA002XSpeed:4355; the database has one 'X Speed' entry). So CANONICAL_BY_ID maps each of them to itself, and that is exactly the arm it hit before. The new arms call the same functions with the same original trainer_card (for example B1225Copycat => can_play_trainer / copycat_effect). The tables are built by iterating CardId in enum order with get_card_by_enum, so there is no RNG and no dependence on HashMap order (entry().or_insert keyed by (name, effect), then lookup only). Every list id is known (the old expect() never panicked in these games), so the effect-text fallback is never taken. get_card_by_enum panics on a missing id, but rare_candy's name tables already iterate every CardId the same way on the same database, so a panic is not possible either.",
+   "cluster": "c1_trainers"
+  },
+  {
+   "id": "c1-2",
+   "files": [
+    "engine/src/actions/apply_trainer_action.rs",
+    "engine/src/move_generation/move_generation_trainer.rs"
+   ],
+   "what": "The promo arms move: `PA005PokeBall | A2b111PokeBall` becomes `A2b111PokeBall`, and `PA007ProfessorsResearch | A4b373ProfessorsResearch` becomes `A4b373ProfessorsResearch` (promo ids sort after every set, so the A2b/A4b printing is canonical).",
+   "needs": "Poke Ball P-A 005 or Professor's Research P-A 007 played or generated: their dispatch now goes through the canonical id A2b 111 / A4b 373.",
+   "in_check": "Poke Ball P-A 005 is in 12 deck files (all but t-sceptile and t-vespiquen). Professor's Research P-A 007 is in all 14 and in kx3's pool.",
+   "verdict": "REACHED_NO_CHANGE",
+   "evidence": "database.rs:18716-18720 (A2b111) and 99731-99735 (PA005) both read name 'Poké Ball' and effect 'Put a random Basic Pokémon from your deck into your hand.'. database.rs:45450-45454 (A4b373) and 99754-99758 (PA007) both read 'Professor's Research' / 'Draw 2 cards.'. database.json has no other printing with either name (Grep). In enum order A2b111PokeBall (card_ids.rs:795) comes before PA005PokeBall (4358), and A4b373ProfessorsResearch (1963) before PA007 (4360). So canonical(P-A 005) = A2b111 and canonical(P-A 007) = A4b373, which are exactly the new arms. They call the same functions as before: pokemon_search_outcomes(acting_player, state, true), professor_oak_effect, can_play_poke_ball(state, trainer_card), can_play_professors_research(state, trainer_card). trainer_card is still the original P-A object, so nothing downstream that reads its id sees a difference.",
+   "cluster": "c1_trainers"
+  },
+  {
+   "id": "c1-3",
+   "files": [
+    "engine/src/actions/apply_trainer_action.rs",
+    "engine/src/actions/team_rockets_researcher.rs"
+   ],
+   "what": "is_misty_card (apply_trainer_action.rs:857-858) and is_researcher_card (team_rockets_researcher.rs:127-128) now test canonical_trainer_id(...) == A1220Misty / B4a069TeamRocketsResearcher instead of matching from_card_id against both printings.",
+   "needs": "A Misty or Team Rocket's Researcher printing, or any Trainer whose canonical id would newly equal one of them.",
+   "in_check": "Both predicates run on Trainer plays in every row. Misty A1 220 is in draft-A-shark-tempo. No list has Team Rocket's Researcher.",
+   "verdict": "REACHED_NO_CHANGE",
+   "evidence": "canonical(A1 220) = A1220Misty, because it is first in enum order (card_ids.rs:229, before A1267Misty:276), so draft A's Misty still returns true. Every other list Trainer canonicalizes to itself (c1-1) or to A2b111/A4b373 (c1-2), and none of those is Misty or Researcher, so both predicates return false exactly as before. No RNG.",
+   "cluster": "c1_trainers"
+  },
+  {
+   "id": "c1-4",
+   "files": [
+    "engine/src/actions/apply_trainer_action.rs",
+    "engine/src/move_generation/move_generation_trainer.rs",
+    "engine/src/card_logic/genome_converter.rs",
+    "engine/src/card_logic/mod.rs"
+   ],
+   "what": "New Trainer arms and effects: Sweet Honey C1 119 (sweet_honey_effect, can_play_potion), Super Potion C1 120 (super_potion_effect, can_play_super_potion), Full Heal C1 122 (full_heal_effect, can_play_full_heal), Max Repel C1 121 (joins repel_effect; can_play_max_repel) and Genome Converter Y P-C 009 (genome_converter_y_effect, can_play_genome_converter_y, plus the new card_logic::genome_converter module and its re-export).",
+   "needs": "A Trainer whose canonical id is C1119SweetHoney, C1120SuperPotion, C1121MaxRepel, C1122FullHeal or PC009GenomeConverterY. That requires a card named Sweet Honey, Super Potion, Max Repel, Full Heal or Genome Converter Y, and for Genome Converter's effect a Mega Mewtwo Y ex in the Active Spot.",
+   "in_check": "None. No such name is among the 101 card ids of the 14 files and kx3's 16 pool lists. No list has Mega Mewtwo Y ex.",
+   "verdict": "CANNOT_ACT",
+   "evidence": "The canonical key is (name, effect), so no list card can resolve to a C1/P-C id. The new functions are called only from these arms. Grep shows genome_converter_y_sources is called only at move_generation_trainer.rs:1217 and apply_trainer_action.rs:702. can_play_potion, which Sweet Honey reuses, is unchanged.",
+   "cluster": "c1_trainers"
+  },
+  {
+   "id": "c1-5",
+   "files": [
+    "engine/src/actions/apply_trainer_action.rs"
+   ],
+   "what": "repel_effect: the comment is rewritten (it now mentions Max Repel). The code is unchanged.",
+   "needs": "Nothing: comment only.",
+   "in_check": "No list has Repel or Max Repel.",
+   "verdict": "CANNOT_ACT",
+   "evidence": "The hunk at apply_trainer_action.rs @@ -868 changes only // comment lines. The function body is the same lines as before.",
+   "cluster": "c1_trainers"
+  },
+  {
+   "id": "c1-6",
+   "files": [
+    "engine/src/stadiums.rs"
+   ],
+   "what": "is_stadium_effect_implemented gains a last OR-term `e == ABANDONED_STATION_EFFECT` (a new LazyLock on C1 131's text).",
+   "needs": "A Stadium whose effect text is Abandoned Station's ('Once during each player's turn, that player may use this effect. Flip a coin. If heads, draw a card.').",
+   "in_check": "Runs for the list Stadiums: Mesagoza (01), Training Area (09, t-altaria), Hiking Trail (06, 10, t-blaziken), Fragrant Forest (t-sceptile, t-vespiquen), Arena of Antiquity (t-lucario) and Soothing Shore (t-suicune).",
+   "verdict": "REACHED_NO_CHANGE",
+   "evidence": "stadiums.rs:67-80. Each list Stadium matches an earlier term (TRAINING_AREA, MESAGOZA, HIKING_TRAIL, ARENA_OF_ANTIQUITY, FRAGRANT_FOREST, SOOTHING_SHORE), so the || short-circuits and the new term and its LazyLock are never evaluated. In any case the text appears once in database.json (C1 131, line 95260), so no old Stadium could match it.",
+   "cluster": "c1_trainers"
+  },
+  {
+   "id": "c1-7",
+   "files": [
+    "engine/src/stadiums.rs",
+    "engine/src/actions/apply_stadium_action.rs"
+   ],
+   "what": "Abandoned Station's effect: is_abandoned_station_active / can_use_abandoned_station (stadiums.rs:242-255, called from move_generation/mod.rs:125), forecast_abandoned_station_effect (binary coin, draw on heads), and a new else-if branch in forecast_use_stadium plus a new check in forecast_coin_stadium_effect.",
+   "needs": "The active Stadium has Abandoned Station's effect text (has_stadium compares the effect text, stadiums.rs:109-116).",
+   "in_check": "No list or pool card has that text (C1 131 only).",
+   "verdict": "CANNOT_ACT",
+   "evidence": "With any list Stadium active, or none, has_stadium(C1131) is false (unique text, see c1-6). Then can_use_abandoned_station is false, so the extra || in move_generation/mod.rs:125 adds no UseStadium action. forecast_use_stadium (apply_stadium_action.rs:24-41) takes the same earlier branch or falls through to the same no-op single_fn. forecast_coin_stadium_effect (51-65) returns the same None. The new branch's coin is created only when Abandoned Station is active, so no RNG draw is added or reordered on an old path. The checks themselves only read state.",
+   "cluster": "c1_trainers"
+  },
+  {
+   "id": "c1-8",
+   "files": [
+    "engine/src/tools.rs"
+   ],
+   "what": "Eviolite C1 123 and Light Ball C1 124 effect LazyLocks, added as the last two OR-terms of is_tool_effect_implemented.",
+   "needs": "A Tool with Eviolite's or Light Ball's text.",
+   "in_check": "Runs for the list Tools: Giant Cape, Rocky Helmet, Poison Barb, Leaf Cape, Inflatable Boat, Heavy Helmet, Protective Poncho, Small Balloon, Elegant Cape and Deceptive Needle.",
+   "verdict": "REACHED_NO_CHANGE",
+   "evidence": "tools.rs:146-176. Each list Tool matches an earlier term (GIANT_CAPE, ROCKY_HELMET, POISON_BARB, LEAF_CAPE, INFLATABLE_BOAT, HEAVY_HELMET, PROTECTIVE_PONCHO, SMALL_BALLOON, ELEGANT_CAPE, DECEPTIVE_NEEDLE), so the new terms are short-circuited. Both texts appear only on C1 123 / C1 124 (database.json:95180, 95190). Heavy Helmet's text is longer and different (49147). tool_effects_equal, tool_count and enumerate_tool_choices are unchanged.",
+   "cluster": "c1_trainers"
+  },
+  {
+   "id": "c2-01",
+   "files": [
+    "engine/src/actions/effect_mechanic_map.rs"
+   ],
+   "what": "21 new EFFECT_MECHANIC_MAP keys (#433/#438 and C1/P-C texts): Dual Blizzard, 'Discard a [G] Energy from this Pokémon.', Overdrive Smash +50, Psycho Boost -50, 'Flip 2 coins ... 110 for each heads', KO-last-turn +70, 3 extra [F] +60 (Whiscash C1 078), Confused +90 (Malamar P-C 005), Basic +50 (Umbreon), Evolution +80 (Pidgeot), Wings of the Moone, 'Put 1 random [C] Pokémon', Eevee Signs of Evolution, Honey Rush, Take 2 [F] (Pupitar), Self-Destruct 90, Brainwave 20 per [P] (Espeon C1 060), Mind Jack 30 per opp Bench, Astonish 'Look at a random card...', Soothing Lullaby, Spacial Rend.",
+   "needs": "A card in play (either seat, or in kx3's play-out lists) whose attack effect text is exactly one of the 21 new keys; the map is looked up only by exact text (move_generation/attacks.rs:87, apply_attack_action.rs:473/589/2189, value_functions.rs:1571/1598/2251/3144/3174).",
+   "in_check": "None. Grep of database.json for all 21 texts: every hit is at lines 92578-96787 (the C1 block, C1 001 at 92356 to C1 2xx at ~97270, before P-A 002 at 97292) or 102431/102477 (P-C 003/005, after P-C 001 at 102373). All 101 ids of cards.json are A*/B*/P-A/P-B printings. The list's own Eevee (B1 184) and Espeon (B3a 020) carry different texts. The only non-test iterations of the map (value_functions.rs:3934, 3968) are inside #[cfg(test)] tests.",
+   "verdict": "CANNOT_ACT",
+   "evidence": "c2_attacks.diff lines 818-1119; database.json greps (text hits only at 92578..96787 and 102431, 102477); effect_mechanic_map.rs:14 HashMap keyed by &str; value_functions.rs:3904-3985 are #[test] fns. Even if a new key duplicated an old one, no card of the 101 carries any of these texts, so no lookup result for an old card changes.",
+   "cluster": "c2_attacks"
+  },
+  {
+   "id": "c2-02",
+   "files": [
+    "engine/src/actions/apply_attack_action.rs",
+    "engine/src/actions/attacks/mechanic.rs"
+   ],
+   "what": "Jigglypuff Soothing Lullaby: Mechanic::InflictSleepWithCoins, its forecast arm (S8 :775) and inflict_sleep_with_coins_attack (S8 :2939) calling State::apply_attack_sleep_with_coins.",
+   "needs": "A card with the Soothing Lullaby text (C1 051 / C1 184).",
+   "in_check": "None of the 101 ids (text only at database.json 93552, 96484, C1 block).",
+   "verdict": "CANNOT_ACT",
+   "evidence": "Only producer is the map key at effect_mechanic_map.rs ~2620; sole caller apply_attack_action.rs:776. Mechanic derives only Debug, Clone, PartialEq (mechanic.rs:47), so inserting variants shifts no hash or order used anywhere.",
+   "cluster": "c2_attacks"
+  },
+  {
+   "id": "c2-03",
+   "files": [
+    "engine/src/actions/apply_attack_action.rs",
+    "engine/src/actions/attacks/mechanic.rs"
+   ],
+   "what": "Dewgong Dual Blizzard: Mechanic::SelfDiscardEnergyAndDamageTwoOpponentPokemon (inserted mid-enum), forecast arm (S8 :963) and self_discard_energy_and_damage_two_opponent_pokemon (S8 :4287).",
+   "needs": "A card with the Dual Blizzard text (C1 033 / C1 193).",
+   "in_check": "None (text only at database.json 93125, 96695).",
+   "verdict": "CANNOT_ACT",
+   "evidence": "Sole caller apply_attack_action.rs:964; producer only the new map key. Mid-enum insertion harmless: Mechanic has no Hash/Ord/serde derive (mechanic.rs:47).",
+   "cluster": "c2_attacks"
+  },
+  {
+   "id": "c2-04",
+   "files": [
+    "engine/src/actions/apply_attack_action.rs",
+    "engine/src/actions/attacks/mechanic.rs"
+   ],
+   "what": "Palkia Spacial Rend: Mechanic::DiscardOpponentStadiumInPlay (mid-enum), forecast arm (S8 :1622) and discard_opponent_stadium_in_play (S8 :1982).",
+   "needs": "A card with 'If your opponent has a Stadium in play, discard it.' (C1 038 / C1 140).",
+   "in_check": "None (text only at database.json 93240, 95478).",
+   "verdict": "CANNOT_ACT",
+   "evidence": "Sole caller apply_attack_action.rs:1623; producer only the new map key.",
+   "cluster": "c2_attacks"
+  },
+  {
+   "id": "c2-05",
+   "files": [
+    "engine/src/actions/apply_attack_action.rs",
+    "engine/src/actions/attacks/mechanic.rs"
+   ],
+   "what": "Vespiquen Honey Rush: Mechanic::DamagePerNamedCardInHand, forecast arm (S8 :1714) and damage_per_named_card_in_hand (S8 :3078).",
+   "needs": "A card with the Honey Rush text (C1 008 Vespiquen).",
+   "in_check": "None. t-vespiquen's Vespiquen ex is B4 011 with a different text; Honey Rush text only at database.json 92532 (C1 block).",
+   "verdict": "CANNOT_ACT",
+   "evidence": "Sole caller apply_attack_action.rs:1717; producer only the new map key.",
+   "cluster": "c2_attacks"
+  },
+  {
+   "id": "c2-06",
+   "files": [
+    "engine/src/actions/apply_attack_action.rs",
+    "engine/src/actions/attack_helpers.rs",
+    "engine/src/actions/attacks/mechanic.rs"
+   ],
+   "what": "Lunala Wings of the Moone: Mechanic::MoveAllEnergyToBenchAnyWay, the import of wings_of_the_moone_choices, forecast arm (S8 :1783), move_all_energy_to_bench_any_way (S8 :9086), and attack_helpers' new WingsMoves/board count/splits/choices/next_type_choices helpers plus the BTreeMap import.",
+   "needs": "A card with 'Move all Energy from this Pokémon to your Benched Pokémon in any way you like.' (C1 066 / C1 198 / P-C 008), or a SimpleAction::DistributeActiveEnergyToBench (only produced by these helpers).",
+   "in_check": "None (text only at database.json 93904, 96810, 102546).",
+   "verdict": "CANNOT_ACT",
+   "evidence": "wings_of_the_moone_choices called only at apply_attack_action.rs:9088; wings_of_the_moone_next_type_choices only at apply_action.rs:1163 (the DistributeActiveEnergyToBench follow-up). New code paths only; generate_distributions itself is unchanged.",
+   "cluster": "c2_attacks"
+  },
+  {
+   "id": "c2-07",
+   "files": [
+    "engine/src/actions/apply_attack_action.rs"
+   ],
+   "what": "Shatter/Bedrock Breaker (discard_stadium_in_play): refresh_hp_bonuses_all replaced by the new refresh_hp_bonuses_after_attack_damage, which adds CardEffect::KnockedOutByAbilityDamage to Pokémon the lost Stadium HP bonus Knocks Out (R8-10e); doc comments.",
+   "needs": "A card whose attack text is 'Discard a Stadium in play.' (Machop B2 079, Conkeldurr B4 089) or Spacial Rend (c2-04).",
+   "in_check": "None: Machop B2 079 and Conkeldurr B4 089 are not among the 101 ids (database.json 55820, 76909 are the only hits).",
+   "verdict": "CANNOT_ACT",
+   "evidence": "discard_stadium_in_play called only at apply_attack_action.rs:1621 (Mechanic::DiscardStadiumInPlay, sole map key 'Discard a Stadium in play.'); refresh_hp_bonuses_after_attack_damage called only at :1970 and :1990.",
+   "cluster": "c2_attacks"
+  },
+  {
+   "id": "c2-08",
+   "files": [
+    "engine/src/actions/apply_attack_action.rs"
+   ],
+   "what": "damage_for_each_heads_attack gains acting_player/state and adds extra_coins_from_abilities (Raboot's Jumping Coach, AbilityMechanic::FlipMoreCoinsForNamedAttack) to num_coins; both call sites (ExtraDamageForEachHeads S8 :875, ExtraDamageForEachHeadsToolBoostedCoins S8 :1517) pass the new arguments.",
+   "needs": "For a different result: a Pokémon in the attacker's play whose Ability is FlipMoreCoinsForNamedAttack and an attack titled 'Rabbit Jumping'.",
+   "in_check": "Reached in any row where an attack mapping to ExtraDamageForEachHeads (or the Lucky Mittens variant) is forecast, by km3's search or kx3's play-outs. No card of the 101 has the Jumping Coach Ability (text only at database.json 92879, 95399, C1 023/137).",
+   "verdict": "REACHED_NO_CHANGE",
+   "evidence": "apply_attack_action.rs:2699-2731: extra_coins_from_abilities sums over enumerate_in_play_pokemon of get_in_play_ability_mechanic (effect_ability_mechanic_map.rs:968-992, pure &State reads, no RNG); its only matching arm is FlipMoreCoinsForNamedAttack, whose only map key is the Raboot text (effect_ability_mechanic_map.rs:31-38). So the sum is 0, num_coins is unchanged, and AttackOutcomes::binomial_by_heads gets the same arguments; no RNG draw added or reordered.",
+   "cluster": "c2_attacks"
+  },
+  {
+   "id": "c2-09",
+   "files": [
+    "engine/src/actions/apply_attack_action.rs",
+    "engine/src/actions/energy_moves.rs"
+   ],
+   "what": "Four in-play type reads move from PlayedCard::has_printed_type to State::pokemon_is_type: benched_basic_indices_of_type, extra_damage_if_defender_type, extra_damage_if_opponent_has_type_in_play, energy_moves eligible_sources (TypedBenchToActive, Vaporeon's Wash Out).",
+   "needs": "For a different result: a Pokémon in play with AbilityMechanic::DualType (Urshifu's Double Type, B3 051 / B3 113) or a printed secondary_energy_type.",
+   "in_check": "Reached at most where these mechanics are used (R6 found no list card with an ExtraDamageIfDefenderType text; Wash Out/Vaporeon is not among the 101). No card of the 101 is Rapid/Single Strike Urshifu (Double Type texts only at database.json 65929, 67364), and none has secondary_energy_type (R6 row 1; entries unchanged since affe56e8).",
+   "verdict": "REACHED_NO_CHANGE",
+   "evidence": "state/mod.rs:737-746 pokemon_energy_types returns the DualType types only when get_in_play_ability_mechanic gives DualType, else pokemon.card.get_types(); mod.rs:827-829 pokemon_is_type = that set contains t; played_card.rs:262-264 has_printed_type = card.is_type(t) over the same printed set. DualType keys only at effect_ability_mechanic_map.rs:818-829. Pure reads, no RNG; identical booleans for every card here.",
+   "cluster": "c2_attacks"
+  },
+  {
+   "id": "c2-10",
+   "files": [
+    "engine/src/actions/apply_attack_action.rs"
+   ],
+   "what": "Mega Blastoise ex Triple Bombardment (conditional_bench_damage_attack): with num_bench_targets == 2 and exactly 1 Benched Pokémon, the one-target choice is now offered (R8-10d); doc comment.",
+   "needs": "A card with ConditionalBenchDamage num_bench_targets 2: 'If this Pokémon has at least 3 extra [W] Energy attached, this attack also does 50 damage to 2 of your opponent's Benched Pokémon.' (Mega Blastoise ex B1a 020/078/084, B4b 054/414).",
+   "in_check": "None of the 101 ids. The 1-target variant (Blastoise B1a 019) is untouched by the new condition (lone_of_two needs num_bench_targets == 2) and is not in the lists either.",
+   "verdict": "CANNOT_ACT",
+   "evidence": "effect_mechanic_map.rs:2626-2643 (only two ConditionalBenchDamage keys); database.json hits 52108-91356 are Blastoise/Mega Blastoise ex only; apply_attack_action.rs:1472-1477 sole caller.",
+   "cluster": "c2_attacks"
+  },
+  {
+   "id": "c2-11",
+   "files": [
+    "engine/src/effects.rs"
+   ],
+   "what": "Two CardEffect variants appended at the end: KnockedOutByAbilityDamage (internal KO marker) and ReducedDamageForAttack (Psycho Boost's -50).",
+   "needs": "A writer: KnockedOutByAbilityDamage from refresh_hp_bonuses_after_attack_damage (c2-07/c2-04) or state/energy.rs:174-192 (Nightmare Aura/Flame Aura on a Zone attach made while an attack frame ResolveAttackRetaliation is on the stack); ReducedDamageForAttack from the Psycho Boost map key only (effect_mechanic_map.rs:530).",
+   "in_check": "Darkrai ex (A2 110) is in t-weezing, but no attack among the 101 attaches Energy from the Zone to its owner's Darkrai ex (t-weezing's attackers: Darkrai ex Dark Prism, Hoopa ex, TR Koffing, TR Weezing ex have none; Hydreigon's Roar in Unison is an Ability onto itself, outside an attack); no Charizard/Moltres ex in the lists; no Shatter/Spacial Rend; no Deoxys C1 062/P-C 003. The energy.rs writer itself belongs to another cluster.",
+   "verdict": "CANNOT_ACT",
+   "evidence": "effects.rs:6 derives Hash/Serialize; the variants are appended after DamageNewActiveOnRetreat (diff lines 1140-1164), so every earlier variant keeps its discriminant, hash and serialized index. Readers apply_action_helpers.rs:1222 and hooks/core.rs:2293 match only these new variants, which no game here creates.",
+   "cluster": "c2_attacks"
+  },
+  {
+   "id": "c2-12",
+   "files": [
+    "engine/src/actions/apply_attack_action.rs",
+    "engine/src/actions/attack_helpers.rs"
+   ],
+   "what": "Tests: geometric_saturation_includes_eviolite, spacial_rend_refreshes_the_hp_bonuses_before_the_attacks_knock_out_check (apply_attack_action mod test), and attack_helpers' lunala_board/moves helpers and three Wings of the Moone tests.",
+   "needs": "—",
+   "in_check": "—",
+   "verdict": "NOT_IN_PROGRAM",
+   "evidence": "All inside #[cfg(test)] mod test (diff lines 345-444 and 632-752).",
+   "cluster": "c2_attacks"
+  },
+  {
+   "id": "c3-1",
+   "files": [
+    "engine/src/actions/abilities/mechanic.rs",
+    "engine/src/actions/apply_abilities_action.rs",
+    "engine/src/move_generation/move_generation_abilities.rs"
+   ],
+   "what": "Four new AbilityMechanic variants (ReduceDamageToYourTypeWhileInPlay = Metal Scrum, FlipMoreCoinsForNamedAttack = Jumping Coach, PutRentalCardInHand = Honey Gather, PutRandomNamedFromDeckOnBenchOnEvolve = Sudden Duplication), plus the CardId import, their forecast arms (2 passive panics, put_rental_card_in_hand, search_and_bench_by_name) and their move-generation arms (passives false, on-evolve false, Honey Gather gated on !ability_used && hand < 10).",
+   "needs": "A Pokémon whose ability text maps to one of these mechanics: Melmetal C1 097/C1 150, Raboot C1 023/C1 137, Ribombee C1 015/C1 135, Frogadier C1 041/C1 141.",
+   "in_check": "None. All 101 card ids of cards.json (decks, lists and kx3's 16 play-out lists) are pre-C1 printings; none is Melmetal, Raboot, Ribombee or Frogadier, and none carries these texts (database.json grep returns only the C1 ids).",
+   "verdict": "CANNOT_ACT",
+   "evidence": "mechanic.rs diff lines 13-87; apply_abilities_action.rs:167-182, 254, 332 (S8); move_generation_abilities.rs:135, 141, 196-200, 239. The new arms are reached only through ability_mechanic_from_effect returning the new variant, which only the 4 new map texts produce (effect_ability_mechanic_map.rs:33, 371, 582, 607). database.json: those texts sit only at C1 003/015/018/023/041/050/097/132/135-137/141/142/150/216. AbilityMechanic is matched by variant (and serialised by name), so adding variants in the middle changes no old arm.",
+   "cluster": "c3_abilities_actions"
+  },
+  {
+   "id": "c3-2",
+   "files": [
+    "engine/src/actions/effect_ability_mechanic_map.rs"
+   ],
+   "what": "Seven new ability texts in EFFECT_ABILITY_MECHANIC_MAP: Jumping Coach, Sudden Duplication, 'heal 30 damage from your Active Pokémon' (HealActiveYourPokemon 30), Pawmot's Electrocreation ([L] AttachEnergyFromZoneToActiveTypedPokemon), Honey Gather, Metal Scrum, and Charizard's Flame Aura (DamageOpponentActiveOnZoneAttachToSelf [R] 30), plus the CardId import.",
+   "needs": "A card whose ability text is exactly one of these 7 strings, or one of them being a duplicate key that overrides an older mapping.",
+   "in_check": "None. The texts belong only to C1 003/C1 132 Venusaur, C1 015/C1 135 Ribombee, C1 018/C1 136 Charizard, C1 023/C1 137 Raboot, C1 041/C1 141 Frogadier, C1 050/C1 142/C1 216 Pawmot, C1 097/C1 150 Melmetal. None is in cards.json.",
+   "verdict": "CANNOT_ACT",
+   "evidence": "database.json grep of the 7 texts returns only C1 ids (lines 92410-97235). Each text occurs once in effect_ability_mechanic_map.rs (S8 lines 33, 371, 451, 548, 582, 607, 703), so no older key is overwritten. Lookups of every other key are unchanged: it is a HashMap keyed by the full text.",
+   "cluster": "c3_abilities_actions"
+  },
+  {
+   "id": "c3-3",
+   "files": [
+    "engine/src/actions/effect_ability_mechanic_map.rs"
+   ],
+   "what": "Darkrai ex's Nightmare Aura map entry changes from only_turn_energy: true to false. It now fires on any [D] attach from the Energy Zone to the holder, not only the turn's Energy attach.",
+   "needs": "Darkrai ex (A2 110) in play with its owner attaching a [D] Energy from the Energy Zone to it NOT as the turn's Energy: an attack, Ability or Trainer that attaches [D] from the zone to a chosen or any Pokémon (Sableye B3a 040's Jeweled Gift, for example). Also a turn-energy attach that is not from the zone, but none exists: attach_energy_from_zone always passes from_zone = true.",
+   "in_check": "Darkrai ex A2 110 is in t-weezing (a deck row and one of kx3's play-out lists). So the code is reached in every row with t-weezing (either seat) and in kx3 play-outs that use the weezing lists. t-weezing's other cards attach nothing from the zone: Hoopa ex B4 103, TR Koffing B4a 042, TR Weezing ex B4a 043, Mars, Cyrus, Copycat, X Speed, Field Blower, Deceptive Needle, Poké Ball, Professor's Research. The only [D] zone-attach effect among the 101 cards is Hydreigon B1 157's Roar in Unison, which attaches to Hydreigon itself, so it never reaches Darkrai ex. Sableye is not in any list.",
+   "verdict": "REACHED_NO_CHANGE",
+   "evidence": "state/energy.rs:156-167: triggered = if only_turn_energy {is_turn_energy} else {from_zone}. The turn attach goes apply_attach_energy (apply_action.rs:1186), then attach_energy_from_zone(..., is_turn_energy = true), then attach_energy_internal(from_zone = true) (energy.rs:25). So both readings are true for the turn attach. A non-turn [D] from-zone attach to Darkrai ex needs an effect no list card has (database.json 'Energy Zone' grep: the [D] ones are Hydreigon's self-attach at 47771/49658 and Sableye's random at 70971/101591). on_attach_energy is called with the attaching player's own Pokémon, so opponents' attaches never count. Verifier: every SimpleAction::Attach{is_turn_energy:false} generator (hooks/core.rs:196, 2881; counterattack.rs:88; attack_helpers.rs:51; apply_attack_action.rs:2425/2437/2687/2750/2799/4359/4384/5526/6079; apply_trainer_action.rs:815/1793/1823/2201/2638) is typed by its map text or tied to a card not among the 101 (Passimian ex, Bouncy Body, Kiawe, Wally, Rika, Electric Generator), so no [D] reaches a Darkrai ex by that path either.",
+   "cluster": "c3_abilities_actions"
+  },
+  {
+   "id": "c3-4",
+   "files": [
+    "engine/src/actions/apply_abilities_action.rs",
+    "engine/src/move_generation/move_generation_abilities.rs"
+   ],
+   "what": "has_printed_type to State::pokemon_is_type in five places: attach_energy_from_zone_to_your_typed_outcome (Forest Breath), vaporeon_wash_out, move_all_typed_energy_from_bench_to_active (Psychic Connect), can_use_vaporeon_wash_out_inner and has_benched_typed_pokemon_with_typed_energy.",
+   "needs": "(a) A holder of AttachEnergyFromZoneToYourTypedPokemon (Leafeon ex), MoveTypedEnergyFromBenchToActive (Vaporeon) or MoveAllTypedEnergyFromBenchToActive (Lunala ex); and (b) for a different result, a Pokémon whose in-play types differ from its printed ones, which today only the DualType Ability (Rapid Strike Urshifu) gives.",
+   "in_check": "None. No Leafeon ex, Vaporeon, Lunala ex or Urshifu is among the 101 ids. Every list card is single-type with no DualType text.",
+   "verdict": "CANNOT_ACT",
+   "evidence": "Callers: apply_abilities_action.rs:93, 98, 108; move_generation_abilities.rs:104, 107. Map texts: effect_ability_mechanic_map.rs:87, 320, 478. database.json shows these texts only on Vaporeon, Leafeon ex and Lunala ex. Even if reached, state/mod.rs:737-746, 827-829 give pokemon_is_type = card.get_types().contains(t) without DualType, and models/card.rs:134-149 make that equal to has_printed_type for a single-type card. Both are pure reads with no RNG.",
+   "cluster": "c3_abilities_actions"
+  },
+  {
+   "id": "c3-5",
+   "files": [
+    "engine/src/actions/apply_action.rs",
+    "engine/src/actions/types.rs"
+   ],
+   "what": "New SimpleAction ChooseSweetHoneyTarget: an apply_action pre-route to trainer_coin_plan::sample_sweet_honey_target_actual, a try_forecast_action pre-route to forecast_sweet_honey_target, an unreachable arm in forecast_action_unchecked, the enum variant and its Display arm.",
+   "needs": "Sweet Honey (C1 119/C1 152) played, or Ribombee's rental copy. The only generator is stage_sweet_honey_target (trainer_coin_plan.rs:443-452), called from sweet_honey_effect.",
+   "in_check": "None. No Sweet Honey or Ribombee in cards.json.",
+   "verdict": "CANNOT_ACT",
+   "evidence": "apply_action.rs:54-58 and 448-450 are each a matches! test that returns early only for this variant. For every other action they fall through to the unchanged code, with no RNG drawn. The variant is appended after Noop (types.rs:336), so old variants keep their serde index and derived Hash/Eq discriminants. R6 found no fixed-hasher or Ord use.",
+   "cluster": "c3_abilities_actions"
+  },
+  {
+   "id": "c3-6",
+   "files": [
+    "engine/src/actions/apply_action.rs",
+    "engine/src/actions/types.rs"
+   ],
+   "what": "New SimpleAction HealAndDiscardRandomEnergy (Super Potion): a forecast arm calling the new forecast_heal_and_discard_random_energy (chance branches through random_energy_outcomes), the enum variant and its Display arm.",
+   "needs": "Super Potion C1 120. Its only generator is super_potion_effect (apply_trainer_action.rs:673-681).",
+   "in_check": "None. No Super Potion in cards.json.",
+   "verdict": "CANNOT_ACT",
+   "evidence": "apply_action.rs:544-552 and 1248-1276: a new match arm and a new function. random_energy_outcomes itself is unchanged and is called by other arms exactly as before. The variant is appended at the end of the enum (types.rs:328).",
+   "cluster": "c3_abilities_actions"
+  },
+  {
+   "id": "c3-7",
+   "files": [
+    "engine/src/actions/apply_action.rs",
+    "engine/src/actions/types.rs"
+   ],
+   "what": "New SimpleAction DistributeActiveEnergyToBench (Lunala's Wings of the Moone): added to the deterministic forecast arm list, an apply_deterministic_action arm (apply_move_energy per entry, then wings_of_the_moone_next_type_choices pushed on the stack), the attack_helpers import, the enum variant and its Display arm.",
+   "needs": "Lunala C1 066/C1 198/P-C 008 using Wings of the Moone. The only generators are attack_helpers.rs:210 and 230.",
+   "in_check": "None. No Lunala in cards.json.",
+   "verdict": "CANNOT_ACT",
+   "evidence": "apply_action.rs:526 (another alternative in an or-pattern) and 1159-1167 (a new arm). Other actions' arms are untouched. The variant is last in the enum (types.rs:352).",
+   "cluster": "c3_abilities_actions"
+  },
+  {
+   "id": "c3-8",
+   "files": [
+    "engine/src/actions/apply_action_helpers.rs"
+   ],
+   "what": "Pokémon Checkup sleep coins: a CheckupTargets.sleep_coins vector, total_sleep_coins() replacing sleeps.len() in the coin count, and a prefix-sum wake test (all coins in the sleeper's slice heads) replacing outcome[i]. A Benched sleeper always flips 1.",
+   "needs": "A Sleep with sleep_coins_override set to anything other than 1. Only apply_attack_sleep_with_coins sets it, called only from inflict_sleep_with_coins_attack (Jigglypuff C1 051/C1 184 Soothing Lullaby).",
+   "in_check": "The code runs at every Checkup in every row, and with sleepers in rows with Sleep (Darkrai B2b 040's Dark Slumber in t-altaria, for example). No row has Soothing Lullaby.",
+   "verdict": "REACHED_NO_CHANGE",
+   "evidence": "played_card.rs:524-528: sleep_checkup_coins() = override filtered to 1..=4, else 1. The only setter is played_card.rs:507, called from state/mod.rs:812-823, called only from apply_attack_action.rs:2942. With every entry 1: total_sleep_coins = sleeps.len(), so outcome_ids, the probabilities and the outcome order are identical. first = sum(sleep_coins[..i]) = i, and outcome[i..i+1].all(heads) = outcome[i]. Burns read outcome[num_sleep_coins + i] = outcome[num_sleeps + i]. No RNG is added.",
+   "cluster": "c3_abilities_actions"
+  },
+  {
+   "id": "c3-9",
+   "files": [
+    "engine/src/actions/apply_action_helpers.rs"
+   ],
+   "what": "Per-Knock-Out 'not by the attack's damage' flag: from_attack = is_from_active_attack && !knocked_out_by_ability_damage(pokemon). It feeds on_knockout/on_attack_knockout, the Iris bonus, the Rally Back type capture, Rescue Scarf, the knocked_out_by_opponent_attack_this_turn loop and apply_survive_knockout_turn_effects (Hala). Also the PlayedCard import, the new knocked_out_by_ability_damage helper and comment-only hunks (Iris doc, the on-knockout retaliation comment).",
+   "needs": "A KO'd Pokémon carrying CardEffect::KnockedOutByAbilityDamage. It is added only (1) in energy.rs:189-192, when Nightmare Aura or Flame Aura KOs the opponent's Active on an attach made inside its owner's attack, and (2) in apply_attack_action.rs:2005-2024 refresh_hp_bonuses_after_attack_damage, when an attack discards Starting Plains and the lost +20 KOs a Pokémon.",
+   "in_check": "Reached in every row with a Knock Out. Darkrai ex (t-weezing) is the only Aura holder, and no list card attaches a [D] from the zone to it inside an attack (see c3-3). No list card is Starting Plains, and none has Shatter, Bedrock Breaker or Spacial Rend. So no Pokémon ever gets the mark.",
+   "verdict": "REACHED_NO_CHANGE",
+   "evidence": "With no mark, from_attack == is_from_active_attack for every KO, ability_damage_knockouts stays empty, and each changed condition (from_attack, the !contains test, the Hala !knocked_out_by_ability_damage) evaluates as before. knocked_out_by_ability_damage is a pure read of get_active_effects. The loop binding change (ko_receiver, ko_pokemon_idx) adds no work. No RNG.",
+   "cluster": "c3_abilities_actions"
+  },
+  {
+   "id": "c3-10",
+   "files": [
+    "engine/src/actions/apply_action_helpers.rs"
+   ],
+   "what": "is_iris_bonus_active: the Haxorus test changes from an id match (B2b 056/B2b 110/P-B 045) to attacker.get_name() == \"Haxorus\", and the Iris point is also gated on from_attack.",
+   "needs": "Iris (B2b 067 and reprints) played that turn (TurnEffect::BonusPointForHaxorusActiveKO), then a KO by a Pokémon named Haxorus.",
+   "in_check": "None. No Iris or Haxorus in cards.json.",
+   "verdict": "CANNOT_ACT",
+   "evidence": "apply_action_helpers.rs:870-879: the function returns false before the changed line unless the Iris turn effect is present, which only playing Iris creates.",
+   "cluster": "c3_abilities_actions"
+  },
+  {
+   "id": "c3-11",
+   "files": [
+    "engine/src/move_generation/mod.rs"
+   ],
+   "what": "UseStadium is also offered when can_use_abandoned_station (a new last operand of the || chain), and the import is updated.",
+   "needs": "Abandoned Station (C1 131) as the active Stadium.",
+   "in_check": "None. No Abandoned Station in cards.json. The stadiums in the lists are Training Area, Mesagoza, Hiking Trail, Fragrant Forest, Arena of Antiquity and Soothing Shore.",
+   "verdict": "REACHED_NO_CHANGE",
+   "evidence": "stadiums.rs:242-255: is_abandoned_station_active = has_stadium(state, C1131AbandonedStation), a pure read with no RNG. It is evaluated only when the older operands are false, and then returns false for every list stadium, so the action list is unchanged.",
+   "cluster": "c3_abilities_actions"
+  },
+  {
+   "id": "c3-12",
+   "files": [
+    "engine/src/actions/apply_action_helpers.rs"
+   ],
+   "what": "cfg(test) module additions: the use rand::SeedableRng and the Soothing Lullaby Checkup tests (mankey_asleep, has_no_lullaby_count, chance_to_wake_at_checkup and 7 #[test] fns).",
+   "needs": "—",
+   "in_check": "—",
+   "verdict": "NOT_IN_PROGRAM",
+   "evidence": "Diff lines 623-815 sit inside mod tests (#[cfg(test)]) of apply_action_helpers.rs.",
+   "cluster": "c3_abilities_actions"
+  },
+  {
+   "id": "c4-01",
+   "files": [
+    "engine/src/game.rs"
+   ],
+   "what": "play_tick: calls player.before_decision(&decision) after the search RNG is seeded; around apply_action it reads both deck lengths and probes a CLONE of self.rng (next_u64 on self.rng.clone()) before and after, builds a protocol::PublicEvent and calls on_public_event on both players.",
+   "needs": "A player that overrides before_decision / on_public_event, or a probe that advances the game RNG.",
+   "in_check": "Neither. The Player trait defaults are no-ops (players/mod.rs:56-57); the only override is players/protocol_player.rs:356/360 (the protocol adapter, used by no game here). kx3's six player files predate the hooks, so they inherit the no-op defaults; km3 does not override them. The probe draws from a clone, so self.rng (the chance stream) is untouched; deck lengths are read only. search_rng is created before the call and is not passed to it.",
+   "verdict": "REACHED_NO_CHANGE",
+   "evidence": "game.rs:220-224 (before_decision after StdRng::seed_from_u64, decision values unchanged), game.rs:264-271 (rng.clone() probes, read-only deck lengths), players/mod.rs:56-57 (default empty bodies), protocol_player.rs:356-363 (only override). Runs on every tick of every row; no state, RNG or decision input changes. The program's Player trait is K8's players/mod.rs (b5f15351: d513e37b's file plus R8's 8 adapter lines, a union merge; laptop check Nov 4): before_decision and on_public_event have empty default bodies there; kx3's playout_player.rs is d513e37b's blob, which predates the hooks, so it cannot override them.",
+   "cluster": "c4_state_hooks"
+  },
+  {
+   "id": "c4-02",
+   "files": [
+    "engine/src/hooks/core.rs"
+   ],
+   "what": "on_evolve: new arm for AbilityMechanic::PutRandomNamedFromDeckOnBenchOnEvolve (Frogadier's Sudden Duplication): offered while deck non-empty and a Bench slot is free.",
+   "needs": "A Pokemon whose ability text maps to PutRandomNamedFromDeckOnBenchOnEvolve: only Frogadier C1 041 / C1 141 (effect_ability_mechanic_map.rs:368-373).",
+   "in_check": "None: no Frogadier among the 101 ids or kx3's 66 pool ids. The arm is keyed on the mechanic variant, so other on-evolve mechanics take their old arms; previously such a card fell to `_ => {}`.",
+   "verdict": "CANNOT_ACT",
+   "evidence": "core.rs:255-267; effect_ability_mechanic_map.rs:372 (only text mapped); cards.json has no C1 card.",
+   "cluster": "c4_state_hooks"
+  },
+  {
+   "id": "c4-03",
+   "files": [
+    "engine/src/hooks/core.rs"
+   ],
+   "what": "Deceptive Needle end-of-turn damage: the Darkness test moves from active.has_printed_type(Darkness) to state.pokemon_is_type(active, Darkness) (item 11).",
+   "needs": "A Deceptive Needle holder whose in-play type set differs from its printed set, i.e. an AbilityMechanic::DualType holder (Urshifu B3 051 / B3 113).",
+   "in_check": "Reached where Deceptive Needle B4 148 is played: t-hydreigon, t-weezing (and their research twins in kx3 play-outs). No card of the 101 / pool maps to DualType.",
+   "verdict": "REACHED_NO_CHANGE",
+   "evidence": "state/mod.rs:737-746: pokemon_energy_types returns card.get_types() unless DualType; models/card.rs:140-149, 467-483: get_types = printed_types (dedup) and is_type = has_printed_type, so for every card here pokemon_is_type(p,t) == has_printed_type(t). Pure read, no RNG.",
+   "cluster": "c4_state_hooks"
+  },
+  {
+   "id": "c4-04",
+   "files": [
+    "engine/src/hooks/core.rs"
+   ],
+   "what": "Eviolite (C1 123): new get_eviolite_reduction / eviolite_reduction, added as a new field of FiniteDamageReductions (summed), and into attack_hit_back_damage's cuts, persistent_defender_damage's reductions and permanent_tool_reduction (kt switch 1, used by the bots).",
+   "needs": "Eviolite C1 123 attached to a Basic.",
+   "in_check": "None: no C1 123 in the 101 / pool. Every damage computation reaches it (all rows, both engine and bot pricing) and gets 0: has_tool(..., C1123Eviolite) is false, && short-circuits before get_stage; get_eviolite_reduction's .expect duplicates finite_damage_reductions' own expect on the same slot (core.rs:1430-1432), so no new panic path.",
+   "verdict": "REACHED_NO_CHANGE",
+   "evidence": "core.rs diff hunks @@-775, @@-1311/1324/1379 (field summed with others via total_u64), @@-1646 (cuts sum), @@-1831 (reductions sum), @@-1949 (permanent_tool_reduction + 0). All sums of u64 with an extra 0; no RNG.",
+   "cluster": "c4_state_hooks"
+  },
+  {
+   "id": "c4-05",
+   "files": [
+    "engine/src/hooks/core.rs"
+   ],
+   "what": "Metal Scrum (Melmetal C1 097 / C1 150): get_metal_scrum_reduction scans the defending player's in-play Pokemon for ReduceDamageToYourTypeWhileInPlay; added to get_conditional_ability_damage_reduction's total when from_opponent.",
+   "needs": "A Pokemon whose ability text maps to ReduceDamageToYourTypeWhileInPlay: only Melmetal's text (effect_ability_mechanic_map.rs:604-612).",
+   "in_check": "None in the 101 / pool. Reached on every opponent attack damage computation (engine and bot pricing via persistent_defender_damage / attack_hit_back_damage), returns max of an empty filter = 0.",
+   "verdict": "REACHED_NO_CHANGE",
+   "evidence": "core.rs:917-934 (filter_map on get_in_play_ability_mechanic, a read; .max().unwrap_or(0)); total = self + guard + 0.",
+   "cluster": "c4_state_hooks"
+  },
+  {
+   "id": "c4-06",
+   "files": [
+    "engine/src/hooks/core.rs"
+   ],
+   "what": "Light Ball (C1 124): get_light_ball_damage_bonus (+30 per Light Ball on a holder named 'Pikachu ex'), added to pre_weakness in modify_damage for active-to-active; debug! format string gains Eviolite and LightBall.",
+   "needs": "Light Ball C1 124 attached.",
+   "in_check": "None in the 101 / pool. Reached on every active-to-active attack: has_tool false short-circuits before the name test, bonus 0. The debug! line is logging only.",
+   "verdict": "REACHED_NO_CHANGE",
+   "evidence": "core.rs diff @@-1669 and @@-2128/2146/2156/2163/2172; pre_weakness + 0.",
+   "cluster": "c4_state_hooks"
+  },
+  {
+   "id": "c4-07",
+   "files": [
+    "engine/src/hooks/core.rs"
+   ],
+   "what": "Psycho Boost: carried_attack_reduction also sums CardEffect::ReducedDamageForAttack { attack_name, amount } when context.attack_name matches.",
+   "needs": "A Pokemon carrying CardEffect::ReducedDamageForAttack, added only by the Deoxys Psycho Boost text (effect_mechanic_map.rs:530).",
+   "in_check": "None: no Deoxys in the 101 / pool, so no Pokemon ever carries the effect; the filter_map's new arm never matches.",
+   "verdict": "REACHED_NO_CHANGE",
+   "evidence": "core.rs:2290-2296 (match arm on a variant no card here creates); effects.rs:130.",
+   "cluster": "c4_state_hooks"
+  },
+  {
+   "id": "c4-08",
+   "files": [
+    "engine/src/state/energy.rs"
+   ],
+   "what": "on_attach_energy's zone-attach damage: generalised from an exact match on Nightmare Aura {Darkness, 20, only_turn_energy:true} && is_turn_energy to any DamageOpponentActiveOnZoneAttachToSelf {type, amount, only_turn_energy} with triggered = only_turn_energy ? is_turn_energy : from_zone; plus KnockedOutByAbilityDamage marking when the attach happens inside an attack (a ResolveAttackRetaliation frame on the stack). Together with S8's map (Darkrai ex text now only_turn_energy:false, effect_ability_mechanic_map.rs:689-699, outside this diff) Nightmare Aura now fires on any [D] attach from the Energy Zone, not only the turn's.",
+   "needs": "A [D] Energy attached from the Energy Zone to a Darkrai ex (A2 110 et al.) by an effect (is_turn_energy=false, from_zone=true), or a turn attach made inside an attack; or Charizard C1 018/C1 136 (Flame Aura).",
+   "in_check": "Reached in rows with t-weezing (Darkrai ex A2 110; also its research twin in kx3 play-outs). There the only [D] zone attach onto Darkrai ex is the turn's attach: from_zone=true and is_turn_energy=true (move_generation/mod.rs:86-89 -> apply_action.rs:1186 -> energy.rs:24-25), so old and new both trigger, amount 20 as before. database.json texts with [D] + Energy Zone: Nightmare Aura itself, Hydreigon B1 157 Roar in Unison (attaches to Hydreigon itself, not a Darkrai ex; t-hydreigon has no Darkrai ex) and Sableye B3a 040 / P-B 070 Jeweled Gift (not among the 101); no untyped 'attach an Energy from your Energy Zone' effect exists. inside_attack is false for the turn attach, which is generated only with an empty move_generation_stack (move_generation/mod.rs:45-55). Discard attaches (from_zone=false) trigger neither. No Charizard C1.",
+   "verdict": "REACHED_NO_CHANGE",
+   "evidence": "energy.rs:149-195; energy.rs:13-25, 71-72; apply_action.rs:1173-1187; move_generation/mod.rs:45-92; database.json:10989, 47771, 70971, 101591; was_knocked_out is a read; handle_damage_only args identical ((actor,idx), [(20,opp,0)], false, default). Verifier: the attack paths that attach a named type to any Benched Pokemon (Regigigas B3 134 Giga Turbo [C], Mega Sharpedo ex Turbo Shark [W], Baxcalibur Ice Maker [W]) fail the energy_type == Darkness gate in both versions.",
+   "cluster": "c4_state_hooks"
+  },
+  {
+   "id": "c4-09",
+   "files": [
+    "engine/src/state/mod.rs"
+   ],
+   "what": "Misty/Sweet Honey route: MistySourceRoute gains a last variant SweetHoney; effect_trainer/penny_shuffle_owner/outer_is_trainer extended; is_misty_trainer now canonical_trainer_id(trainer) == A1220Misty (was id in {A1220, A1267}); new is_sweet_honey_trainer; sanitize_pending_choice_state gets Sweet Honey branches (target frame of ChooseSweetHoneyTarget, route_valid arms, a 3-tuple target_valid).",
+   "needs": "Sweet Honey C1 119 / C1 152, or a Misty printing whose canonical id differs from the old {A1 220, A1 267} test.",
+   "in_check": "Misty A1 220 is in draft-A (rows of draft A, either seat). canonical_trainer_id(A1 220) = A1220Misty (first printing by (name, effect), trainer_identity.rs:43-70; A1 is first in enum order), and only a card named Misty maps there, so is_misty_trainer is unchanged for every list card. No Sweet Honey in the 101 / pool, so every new arm is guarded false: sweet_honey=false makes target_valid's (false,false,None)/(true,false,Some) equal the old (false,None)/(true,Some); the Penny|Stadium Sweet Honey arm's guard fails and falls through to the old arms. The new enum variant is last, so serde indices and Hash discriminants of the old variants are unchanged.",
+   "verdict": "REACHED_NO_CHANGE",
+   "evidence": "state/mod.rs:430-540 (sanitize_pending_choice_state, run when a State is adopted by Game); trainer_identity.rs:43-70; diff hunks @@-122,-142,-151,-159,-360,-405,-419,-426,-442,-455,-466,-478.",
+   "cluster": "c4_state_hooks"
+  },
+  {
+   "id": "c4-10",
+   "files": [
+    "engine/src/state/mod.rs"
+   ],
+   "what": "Status refactor: apply_attack_status_condition and apply_status_condition now delegate to new try_apply_attack_status_condition / try_apply_status_condition, which return bool (false on Crystal Body/Clear Veil, empty slot, Fabled Luster/Insomnia, Steel Apron, Soothing Wind); set_status_raw unchanged.",
+   "needs": "Nothing new: same checks in the same order, only a return value added.",
+   "in_check": "Reached in every row that inflicts a Special Condition (e.g. t-weezing/10 Poison, Sleep decks). Old callers ignore the bool.",
+   "verdict": "REACHED_NO_CHANGE",
+   "evidence": "diff @@-723 and @@-1154..1200: each `return;` became `return false;`, end adds `true`; no reorder, no RNG.",
+   "cluster": "c4_state_hooks"
+  },
+  {
+   "id": "c4-11a",
+   "files": [
+    "engine/src/state/mod.rs",
+    "engine/src/state/played_card.rs"
+   ],
+   "what": "apply_attack_sleep_with_coins / set_sleep_coins_override (Soothing Lullaby's coin count).",
+   "needs": "Jigglypuff C1 051 / C1 184's Soothing Lullaby text (Mechanic::InflictSleepWithCoins, effect_mechanic_map.rs:2620-2625), the only non-test caller (apply_attack_action.rs:2942).",
+   "in_check": "None in the 101 / pool, so the override is always None: sleep_checkup_coins() returns 1 (the old fixed single coin) where the Checkup reads it (apply_action_helpers.rs:299, a call site outside this diff), the resets assign None to None, serialization skips the field (bytes unchanged), and equality is unchanged.",
+   "verdict": "CANNOT_ACT",
+   "evidence": "state/mod.rs:812-823; played_card.rs:54-65, 389-476, 501-528; apply_attack_action.rs:2935-2944; apply_action_helpers.rs:1468-1489 are tests.",
+   "cluster": "c4_state_hooks"
+  },
+  {
+   "id": "c4-11b",
+   "files": [
+    "engine/src/state/mod.rs",
+    "engine/src/state/played_card.rs"
+   ],
+   "what": "The sleep_coins_override resets on every Sleep/Paralysis/Confusion set or clear, PlayedCard::new's initializer, and the Checkup's sleep_checkup_coins() read.",
+   "needs": "Jigglypuff C1 051 / C1 184's Soothing Lullaby text (Mechanic::InflictSleepWithCoins, effect_mechanic_map.rs:2620-2625), the only non-test caller (apply_attack_action.rs:2942).",
+   "in_check": "Every row where a Pokemon is put to sleep, paralysed or confused (e.g. Igglybuff's Sleepy Lullaby, Swablu's Sing, Espeon's Hypnoblast, Darkrai's Dark Slumber, TR Weezing ex's Confusion Gas): the resets assign None to None, the Checkup reads 1 coin as before, serde skips the None field, and Hash/Eq agree with the old states.",
+   "verdict": "REACHED_NO_CHANGE",
+   "evidence": "state/mod.rs:812-823; played_card.rs:54-65, 389-476, 501-528; apply_attack_action.rs:2935-2944; apply_action_helpers.rs:1468-1489 are tests. Verifier (c4-11): split from c4-11; played_card.rs diff @@-389/-399/-410/-423/-438, @@-108, @@-466.",
+   "cluster": "c4_state_hooks"
+  },
+  {
+   "id": "c4-12",
+   "files": [
+    "engine/src/state/played_card.rs"
+   ],
+   "what": "has_double_grass: order swapped and the Grass test moved to state.pokemon_is_type: has_serperior_jungle_totem(state, player) && pokemon_is_type(self, Grass) (was printed Grass && totem, both evaluated).",
+   "needs": "A DoubleGrassEnergy holder (Serperior Jungle Totem) with a DualType Grass Pokemon.",
+   "in_check": "Runs in every cost check of every row. No Serperior in the 101 / pool, so the totem is false; both sides are pure reads, and pokemon_is_type == has_printed_type here (see c4-03).",
+   "verdict": "REACHED_NO_CHANGE",
+   "evidence": "played_card.rs:575-579, 604-608 (pure enumerate/any).",
+   "cluster": "c4_state_hooks"
+  },
+  {
+   "id": "c4-13",
+   "files": [
+    "engine/src/observation.rs"
+   ],
+   "what": "A hand-written Deserialize for PlayerObservation (via PlayerObservationWire, deny_unknown_fields, checks information_model).",
+   "needs": "Deserialising an observation: only protocol/bot.rs:60 does.",
+   "in_check": "No game here deserialises an observation (the struct had Serialize only before; observation.rs:26); km3 and kx3 receive PlayerObservation::from_state directly (game.rs:225).",
+   "verdict": "NOT_IN_PROGRAM",
+   "evidence": "observation.rs:26-47; Grep for PlayerObservation deserialization: only protocol/bot.rs:60.",
+   "cluster": "c4_state_hooks"
+  },
+  {
+   "id": "c4-14",
+   "files": [
+    "engine/src/hooks/core.rs",
+    "engine/src/state/mod.rs",
+    "engine/src/state/played_card.rs"
+   ],
+   "what": "Comments and doc comments only: get_conditional_ability_damage_reduction doc, printed_weakness / persistent_defender_damage docs (Eviolite, Metal Scrum), permanent_tool_reduction doc, apply_knockout_retaliation doc ('next wave'), pokemon_energy_types doc (item 11 list), has_printed_type doc, Leaf Cape comment in get_effective_total_hp (code unchanged: still has_printed_type(Grass)), Misty/PendingTrainerCoinChoice docs.",
+   "needs": "-",
+   "in_check": "-",
+   "verdict": "NOT_IN_PROGRAM",
+   "evidence": "diff hunks core.rs @@-951, @@-1565, @@-1747, @@-1937, @@-2521; state/mod.rs @@-656, @@-185; played_card.rs @@-244, @@-302 (comment lines only).",
+   "cluster": "c4_state_hooks"
+  },
+  {
+   "id": "c4-15",
+   "files": [
+    "engine/src/hooks/core.rs"
+   ],
+   "what": "Tests: metal_scrum_counts_once_on_todays_board, eviolite_counts_on_a_basic_or_a_fossil, and Eviolite asserts in temporary_defender_reduction_tests.",
+   "needs": "-",
+   "in_check": "-",
+   "verdict": "NOT_IN_PROGRAM",
+   "evidence": "core.rs diff @@-3301, @@-3618, @@-3636 inside #[cfg(test)] mods.",
+   "cluster": "c4_state_hooks"
+  },
+  {
+   "id": "c5-1",
+   "files": [
+    "engine/src/actions/trainer_coin_plan.rs"
+   ],
+   "what": "R8-02 canonical-printing dispatch inside the Luxury Coin coin plan: import of trainer_identity::canonical_trainer_id; producer_id, direct_route and stadium_route now read canonical_trainer_id(card) instead of CardId::from_card_id; is_misty, is_master_plan, is_ice_pop and REGISTERED_DIRECT_PRODUCERS (28 -> 11 ids) name only canonical printings; stadium_route's Mesagoza list shrinks to B2a093 (reprints answer through the canonical id). Diff hunks @@-22 (import), @@-48,57 (producer_id, is_misty, is_master_plan, is_ice_pop, the census const), @@-106 (direct_route), the Mesagoza part of @@-116.",
+   "needs": "A Pokemon in play with the Luxury Coin Ability (Gholdengo B4a 051 / B4a 109, the only two database cards with that text) on the side that plays a Trainer or uses a Stadium. Every changed function here is reached only after luxury_coin_source(state, actor) returns Some.",
+   "in_check": "No row: cards.json has no Gholdengo (and no Gimmighoul line); its only B4a ids are B4a 042, 043, 071 (Team Rocket's Koffing, Weezing ex, Boss), and kx3's 16 play-out lists draw from the same 101 ids. The coin-plan Trainers the rows do hold are Misty A1 220 (draft A), Lucky Ice Pop B2 145 (01, draft A, t-hydreigon) and the Stadium Mesagoza B2a 093 (01); all three are their own canonical printings, so even with Luxury Coin present the routing would be the same.",
+   "verdict": "CANNOT_ACT",
+   "evidence": "Gate: apply_action.rs:67 calls try_sample_entry_actual, whose first line (trainer_coin_plan.rs:829) is `let source_idx = luxury_coin_source(state, action.actor)?;`, before direct_route (848) or stadium_route (862) runs; the search entry try_forecast_entry returns Ok(None) at 1066-1067 on the same test before direct_route (1077) / stadium_route (1089). luxury_coin_source (29-39) looks for AbilityMechanic::LuxuryCoin via get_in_play_ability_mechanic, which reads only the Pokemon's own card (effect_ability_mechanic_map.rs:968-976); the LuxuryCoin text (map line 852) appears in database.json only on B4a 051 and B4a 109 Gholdengo. producer_id's other callers (apply_pre_coin_prefix 179 via start_action, stage_actual_route 763, search_stage_route 925, search_penny_entry 1032, conditioned_keep 1153, try_forecast_choice 1255, sample_choice_actual 1339) are reached only from those gated entries or from a KeepTrainerCoinResults/RerollTrainerCoins choice, which needs pending_trainer_coin_choice, installed only by install_pending from the gated paths or from the ghold branch of sample_misty_target_actual (392-412, ghold = luxury_coin_source, None here). By reading, too: canonical_trainer_id (trainer_identity.rs:62-70) is an id-first table lookup of the first CardId with the same name and effect, no RNG; A1220Misty, B2145LuckyIcePop, B2a093Mesagoza are first printings, and the new test every_printing_of_a_registered_producer_takes_the_direct_route pins the routed set equal to the old 28 printings plus the two Sweet Honey. Misty's ordinary path in draft A (apply_trainer_action.rs:50/873 stage_misty_target -> ChooseMistyTarget -> sample_misty_target_actual, one sample_until_tails batch) is not in this diff and runs none of the changed lines (misty_trainer_route is called only when ghold is Some).",
+   "cluster": "c5_coin_plan"
+  },
+  {
+   "id": "c5-2",
+   "files": [
+    "engine/src/actions/trainer_coin_plan.rs"
+   ],
+   "what": "R8-08c: C1131AbandonedStation added to stadium_route's Luxury Coin Stadium list (with its comment). Part of hunk @@-116.",
+   "needs": "Abandoned Station (C1 131) as the active Stadium and a Luxury Coin Pokemon on the user's side.",
+   "in_check": "None: no C1 card in cards.json or kx3's pool; no Gholdengo.",
+   "verdict": "CANNOT_ACT",
+   "evidence": "stadium_route is called only at trainer_coin_plan.rs:862 and 1089, both after the luxury_coin_source gate (829, 1066). The added match arm tests a C1 canonical id; no row card has it.",
+   "cluster": "c5_coin_plan"
+  },
+  {
+   "id": "c5-3",
+   "files": [
+    "engine/src/actions/trainer_coin_plan.rs"
+   ],
+   "what": "R8-07a Sweet Honey (C1 119 / C1 152) in the coin plan: is_sweet_honey, SWEET_HONEY_HEAL_PER_HEADS, C1119SweetHoney in REGISTERED_DIRECT_PRODUCERS, the defensive refusal in effect_outcomes, MistySourceRoute::SweetHoney arm of misty_trainer_route, new functions stage_sweet_honey_target / validate_sweet_honey_target / pop_sweet_honey_target_frame / heal_sweet_honey_target / sample_sweet_honey_target_actual / forecast_sweet_honey_target, and Sweet Honey branches in stage_actual_route, search_stage_route, conditioned_keep, try_forecast_choice and sample_choice_actual; plus the doc-comment edit of sample_choice_actual. Hunks @@-139, @@-359, @@-434 (+196 lines), @@-572, @@-726, @@-961, @@-1029, @@-1075 (comment), @@-1109, and the Sweet Honey entries in @@-48,57.",
+   "needs": "Sweet Honey (C1 119 or C1 152) played by a seat: stage_sweet_honey_target is called only from apply_trainer_action.rs:664 sweet_honey_effect (Sweet Honey's own Play) and from the coin-plan staging closures; sample_sweet_honey_target_actual / forecast_sweet_honey_target only for a ChooseSweetHoneyTarget action (apply_action.rs:54-55, 448-449), which only that staging offers. The branches in the shared coin-plan functions also need Luxury Coin.",
+   "in_check": "None: no C1 printing in cards.json's 101 ids or in kx3's play-out lists; no Gholdengo.",
+   "verdict": "CANNOT_ACT",
+   "evidence": "Every inserted branch in a shared function is `if is_sweet_honey(id)` with id = canonical_trainer_id of the source, true only for C1119SweetHoney (C1 152 canonicalises to it); for any old id it is false and falls through to the unchanged code, and the inserted checks come before, and add no, RNG draws (the only new draws, sample_until_tails in sample_sweet_honey_target_actual 553-560 and in sample_choice_actual 1346-1347, sit inside Sweet Honey branches). In sample_choice_actual the old Misty branch (1344-1345) is unchanged and still draws one sample_until_tails(rng, false). Those shared functions are themselves Luxury-gated (see c5-1). The @@-1075 hunk changes only a /// comment.",
+   "cluster": "c5_coin_plan"
+  },
+  {
+   "id": "c5-4",
+   "files": [
+    "engine/src/actions/trainer_coin_plan.rs"
+   ],
+   "what": "#[cfg(test)] mod tests: the census count 28 -> 11 with a canonical-self assertion; new tests every_printing_of_a_registered_producer_takes_the_direct_route, every_stadium_that_flips_coins_takes_the_stadium_route, rejected_sweet_honey_target_preserves_rng_and_state, sweet_honey_effect_outcomes_is_explicitly_unpriced, sweet_honey_steps_leave_observation_knowledge_as_it_was, honey_gather_keeps_deck_knowledge_and_clears_only_the_opponents_hand_knowledge, helpers play_of and honey_board. Hunks @@-1160 and @@-1365.",
+   "needs": "-",
+   "in_check": "-",
+   "verdict": "NOT_IN_PROGRAM",
+   "evidence": "Inside `mod tests` (diff lines 422-793). The pinned Misty/coin-plan trace (FNV 150a2e50095a6bd0) is NOT in this diff: Grep finds it only as EXPECTED_RECORD_FNV in engine/tests/misty_coin_plan_trace_test.rs:43, an integration test (not part of the game program); RELEASE_NOTES.md:24-25 says R8-07 pinned it and R8-10a (lines 48-52) adds tests that Misty A1 220/A1 267 asks for its [W] target before any coin, prediction 0 games. That file is outside the paths this task lets me read, so what its record contains was not read; per the task's description it pins a Misty trace through the coin plan, which is consistent with the reading above that Misty's draw count and order are unchanged.",
+   "cluster": "c5_coin_plan"
+  },
+  {
+   "id": "c6-1",
+   "files": [
+    "engine/src/players/mod.rs"
+   ],
+   "what": "Player trait gains two default methods, before_decision(&DecisionRandomness) and on_public_event(&PublicEvent), both with empty bodies (hunk @@ -51,6 +53,8). S8's game.rs play_tick calls them for every player (game.rs:223 before_decision, game.rs:271 on_public_event for both seats).",
+   "needs": "A player that overrides either method. Only ProtocolPlayer does.",
+   "in_check": "Reached in every row: km3 and kx3 are called through these hooks on every decision and every applied action, but neither overrides them. Grep of S8 src finds overrides only in players/protocol_player.rs:356/360. kx3's six player files come from before R8 and cannot override methods that did not exist yet.",
+   "verdict": "REACHED_NO_CHANGE",
+   "evidence": "players/mod.rs:56-57 default bodies are `{}`: no state, no RNG. The values passed in come from game.rs. game.rs:220-222 shows the decision (and so search_seed) is built exactly as before the hook. game.rs:265/268 probes the RNG with `next_u64(&mut self.rng.clone())`, which works on a clone and does not advance the game RNG. Those game.rs lines belong to the game.rs cluster, which should confirm them. This hunk itself only adds no-op defaults.",
+   "cluster": "c6_outside_games"
+  },
+  {
+   "id": "c6-2",
+   "files": [
+    "engine/src/players/mod.rs"
+   ],
+   "what": "PlayerCode gains the variant Proto{command,timeout_ms,log} (@@ -209). parse_player_code gets an exact-match arm \"proto\" => Err (@@ -221). get_player gets a Proto arm that builds ProtocolPlayer (@@ -487). The module and pub use lines for protocol_player are added (@@ -7, @@ -25).",
+   "needs": "The player code string \"proto\", or a PlayerCode::Proto value built by `deckgym simulate --bot-a/--bot-b`.",
+   "in_check": "None. The games use km3 and kx3 codes only. No protocol player, no outside bot.",
+   "verdict": "REACHED_NO_CHANGE",
+   "evidence": "mod.rs:225-232: the new arm matches only the lowercase string \"proto\". \"km3\" and \"kx3\" are not equal to it and fall through to the same prefix parsers as before. Before R8, \"proto\" would have reached the 'p' prefix branch (mod.rs:245-251) and returned Err, so even that string only gets a different error text. mod.rs:67: PlayerCode derives only Debug, Clone and PartialEq: no Ord, no Hash, no Copy, so no ordering or hashing depends on the variant list. get_player matches by variant, so adding an arm does not change how km3 or kx3 are built. Those arms are untouched in the diff.",
+   "cluster": "c6_outside_games"
+  },
+  {
+   "id": "c6-3",
+   "files": [
+    "engine/src/players/protocol_player.rs",
+    "engine/src/protocol/mod.rs",
+    "engine/src/protocol/bot.rs",
+    "engine/src/protocol/view.rs",
+    "engine/src/bin/protocol_bot.rs",
+    "engine/src/lib.rs"
+   ],
+   "what": "New protocol adapter: the ProtocolPlayer subprocess player, the protocol message types (including the PublicEvent struct), ViewState, the protocol_bot binary and its run() loop. Also lib.rs `pub mod protocol;` (@@ -1,4 +1,5).",
+   "needs": "A Proto player, or running the protocol_bot binary.",
+   "in_check": "None. No protocol player and no outside bot in these games.",
+   "verdict": "NOT_IN_PROGRAM",
+   "evidence": "ProtocolPlayer is built only by get_player's Proto arm (c6-2). protocol::bot::run is called only from bin/protocol_bot.rs. The one protocol item game code uses is the PublicEvent struct, built in game.rs:269 and passed to the no-op default hook (c6-1). It is a plain Copy struct with no RNG. ViewState::for_observation is called only from protocol_player.rs.",
+   "cluster": "c6_outside_games"
+  },
+  {
+   "id": "c6-4",
+   "files": [
+    "engine/src/lib.rs"
+   ],
+   "what": "lib.rs `pub mod trainer_identity;` (@@ -25,6 +26,7): declares a new module.",
+   "needs": "Whatever trainer_identity.rs contains; the declaration itself does nothing.",
+   "in_check": "trainer_identity is used by game code (state/mod.rs, actions/apply_trainer_action.rs, actions/trainer_coin_plan.rs, actions/team_rockets_researcher.rs, move_generation/move_generation_trainer.rs). Its content is not in this cluster's diff.",
+   "verdict": "REACHED_NO_CHANGE",
+   "evidence": "A module declaration adds no behaviour of its own. Whether trainer_identity.rs and its callers can change a game must be settled by the cluster that holds trainer_identity.rs and the trainer action files. This cluster does not clear them.",
+   "cluster": "c6_outside_games"
+  },
+  {
+   "id": "c6-5",
+   "files": [
+    "engine/src/main.rs"
+   ],
+   "what": "The deckgym CLI `simulate` gains --bot-a, --bot-b, --bot-timeout-ms and --bot-log, plus parse_cli_player_code (proto placeholder) and the seat-filling block (@@ -30, -217, -227, -236).",
+   "needs": "The `deckgym simulate` binary with proto or --bot-* arguments.",
+   "in_check": "None. The games run in the strength harness (rl/strength), not the deckgym main binary.",
+   "verdict": "NOT_IN_PROGRAM",
+   "evidence": "main.rs is the deckgym binary, not the strength harness. Even within it, the new block runs only if bot_a or bot_b is given, or a seat is Proto (main.rs hunk @@ -236). Otherwise `players` passes through unchanged. parse_cli_player_code calls parse_player_code for every string except \"proto\".",
+   "cluster": "c6_outside_games"
+  },
+  {
+   "id": "c6-6",
+   "files": [
+    "engine/src/players/opening_class.rs"
+   ],
+   "what": "opening_ability_class gains arms for four new AbilityMechanic variants: FlipMoreCoinsForNamedAttack and PutRentalCardInHand (anywhere board), ReduceDamageToYourTypeWhileInPlay (anywhere board) and PutRandomNamedFromDeckOnBenchOnEvolve (on evolve). Doc comments and hook line-number comments are updated (@@ -1, -72, -122, -135, -187).",
+   "needs": "An Active whose ability maps to one of the four new mechanics. In effect_ability_mechanic_map.rs:31-38, 368-373, 579-586 and 604-612 these are the texts of Raboot (Jumping Coach), Frogadier (Sudden Duplication), Ribombee (Honey Gather) and Melmetal (Metal Scrum): C1 printings, database.json ability entries at lines 92689-95710.",
+   "in_check": "Reached: km3's setup evaluation calls opening_active_term (value_functions.rs:723 -> opening_class.rs:253-282, read only while the opponent's setup is masked). This happens in every row where a setup Active has an ability. Neither Raboot, Frogadier, Ribombee nor Melmetal appears in cards.json (Grep: no match), so no list or play-out card has the new mechanics. If kx3's files reach the same term, the same reading holds.",
+   "verdict": "REACHED_NO_CHANGE",
+   "evidence": "The diff adds match arms only for the new variants. Every existing arm and its class is unchanged; the other edits are comments. opening_active_term (opening_class.rs:264-276) reads only the class of the Active's own mechanic, so old cards get the same class and the same term. No RNG.",
+   "cluster": "c6_outside_games"
+  },
+  {
+   "id": "c6-7",
+   "files": [
+    "engine/src/players/opening_class.rs"
+   ],
+   "what": "Test-module updates: the census counts doc comment and expected counts 44->47 anywhere board, 12->13 on evolve, 130->134 settings (@@ -314, -347).",
+   "needs": "-",
+   "in_check": "-",
+   "verdict": "NOT_IN_PROGRAM",
+   "evidence": "Inside `#[cfg(test)] mod tests` (opening_class.rs:284).",
+   "cluster": "c6_outside_games"
+  },
+  {
+   "id": "c6-8",
+   "files": [
+    "engine/src/players/weighted_random_player.rs"
+   ],
+   "what": "get_weight gains weights for the new SimpleAction variants DistributeActiveEnergyToBench (10), HealAndDiscardRandomEnergy (5) and ChooseSweetHoneyTarget (10) (@@ -51, -70, -106).",
+   "needs": "The weighted random player (code w).",
+   "in_check": "None. Neither km3 nor kx3 uses the weighted random player, and the task rules it out.",
+   "verdict": "CANNOT_ACT",
+   "evidence": "Additions to the match only. The weights of existing variants are unchanged, and the function is reached only through the weighted random player.",
+   "cluster": "c6_outside_games"
+  },
+  {
+   "id": "c6-9",
+   "files": [
+    "engine/src/card_support.rs"
+   ],
+   "what": "Under #[cfg(feature = \"test-utils\")], the env var TEST_CARD_SUPPORT_MISSING_ATTACK forces the listed card ids to MissingAttack in SupportReport::inspect_card_id. The module doc text is also updated (@@ -3, -21, -63).",
+   "needs": "A build with feature test-utils and the variable set to card ids.",
+   "in_check": "None. The variable is not part of the run environment, and inspect_card_id runs in the pre-game refusal, not in a game.",
+   "verdict": "CANNOT_ACT",
+   "evidence": "card_support.rs:28-31 and 87: without test-utils the code is not compiled. Without the variable, LazyLock yields an empty Vec and status is unchanged. Even if set, it could only refuse a run before any game (card_support reads only the card database, no RNG), never change a game's result.",
+   "cluster": "c6_outside_games"
+  },
+  {
+   "id": "c6-10",
+   "files": [
+    "engine/src/card_validation.rs"
+   ],
+   "what": "implementation_limitations: the two B4a Gholdengo entries get text edits (Abandoned Station, Sweet Honey added to the strings), and new entries are added for C1015/C1135 Ribombee and C1051/C1184 Jigglypuff (@@ -99, -111).",
+   "needs": "One of those card ids in a deck being inspected.",
+   "in_check": "None. Grep finds no Gholdengo, Ribombee or Jigglypuff in cards.json.",
+   "verdict": "CANNOT_ACT",
+   "evidence": "Only card_validation.rs:80 (get_implementation_status), card_support.rs:100 and bin/card_status.rs read implementation_limitations. None of these is game code. Gholdengo's list was already non-empty, so its status (RulesUnverified) is unchanged. The new ids are C1 printings that no list card has. A changed status could only affect the pre-game refusal.",
+   "cluster": "c6_outside_games"
+  },
+  {
+   "id": "c6-11",
+   "files": [
+    "engine/src/test_support.rs"
+   ],
+   "what": "New helpers trainer_from_id and play_trainer, with the imports they need (@@ -1, -86).",
+   "needs": "A caller of these helpers.",
+   "in_check": "None. Grep in S8 src finds them only where they are defined (test_support.rs:91, 99). They are used only by tests.",
+   "verdict": "NOT_IN_PROGRAM",
+   "evidence": "Test helpers. No game or harness path calls them; the import changes only affect compilation.",
+   "cluster": "c6_outside_games"
+  }
+ ],
+ "verifier_objections": [
+  {
+   "cluster": "c1_trainers",
+   "change": "c1-1",
+   "severity": "NIT",
+   "problem": "Verdict REACHED_NO_CHANGE holds; I could not refute it. The in_check list includes Professor's Research P-A 007 twice and mixes in the two promos that c1-2 covers. The analysis also does not say that canonical_trainer_id has callers outside this diff, and those callers depend on the same mapping.",
+   "correct_verdict": null,
+   "evidence": "card_ids.rs confirms every enum position the analysis cites (A1219Erika:228 ... B4a071TeamRocketsBoss:3638 come before their reprints; PA002XSpeed:4355 is the only X Speed id). CANONICAL_BY_ID is built by CardId::iter() + get_card_by_enum (database.rs:105277, which panics on a missing id and draws no RNG). The HashMaps are used for lookup only. The pre-match Tool/Stadium/Fossil returns are unchanged (apply_trainer_action.rs:83-93, move_generation_trainer.rs:87-105). Card::Unknown is its own Card variant (observation.rs:72-73), not a TrainerCard with an unknown id, so the effect-text fallback cannot be taken. The catch_unwind sites are in test modules or test-region code (public_reply_evidence.rs:296 cfg(test)). Grep finds other canonical_trainer_id callers outside this diff: state/mod.rs:374 (Misty) and :378 (Sweet Honey), and trainer_coin_plan.rs:55, 100 and 113 (stadium_route canonicalizes the active Stadium against Mesagoza/Arcade/Abandoned Station). Under c1-1's mapping these return the old answers: Misty A1 220 -> itself; Lucky Ice Pop B2 145 -> itself, which is in REGISTERED_DIRECT_PRODUCERS; Mesagoza B2a 093 -> itself. But they belong to other clusters and should be checked there."
+  },
+  {
+   "cluster": "c1_trainers",
+   "change": "c1-2",
+   "severity": "NIT",
+   "problem": "Verdict holds. I re-checked the strings in database.rs: the two Poke Ball entries have the same name and effect, and so do the two Professor's Research entries. The grep literal 'Poké Ball' matched both entries, so the é is encoded the same way in both.",
+   "correct_verdict": null,
+   "evidence": "database.rs:18719-18720 (A2b 111) = 99734-99735 (P-A 005); database.rs:45453-45454 (A4b 373) = 99757-99758 (P-A 007). card_ids.rs puts A2b111PokeBall at 795 before PA005PokeBall at 4358, and A4b373ProfessorsResearch at 1963 before PA007 at 4360. The new arms call the same functions with the original trainer_card."
+  },
+  {
+   "cluster": "c1_trainers",
+   "change": "c1-6/c1-7",
+   "severity": "NIT",
+   "problem": "Verdicts hold. One addition: has_stadium(C1131) calls stadium_effect_text_from_card_id -> get_card_by_enum on every UseStadium move-generation check. This is a read with no RNG. C1 131 is in the database, so it cannot panic.",
+   "correct_verdict": null,
+   "evidence": "stadiums.rs:109-116 and 242-255; move_generation/mod.rs:125; apply_stadium_action.rs:37-38 and 61-62. The Abandoned Station text appears once in database.json (95260). The list Stadiums match earlier OR-terms (stadiums.rs:67-79)."
+  },
+  {
+   "cluster": "c1_trainers",
+   "change": "c1-8",
+   "severity": "NIT",
+   "problem": "Verdict holds. The Eviolite and Light Ball texts are unique. Heavy Helmet's text (49147) only contains the 'takes -20 damage' fragment inside a longer, different sentence, so string equality fails.",
+   "correct_verdict": null,
+   "evidence": "database.json:95180 and 95190 are the only exact matches. Every list Tool is matched by an earlier term in tools.rs:148-173."
+  },
+  {
+   "cluster": "c2_attacks",
+   "change": "c2-01",
+   "severity": "NIT",
+   "problem": "The list of EFFECT_MECHANIC_MAP lookup sites leaves out card_validation.rs:50 (`EFFECT_MECHANIC_MAP.get(&effect_text[..]).is_none()`) and public_reply.rs:284/463 (the protocol adapter's player). Neither changes the verdict. Both look up by exact text, as the other sites do, so a key that no card of the 101 carries cannot change their result for those cards, and public_reply is not in the program.",
+   "correct_verdict": null,
+   "evidence": "Grep of EFFECT_MECHANIC_MAP over engine/src. The only non-.get uses are value_functions.rs:3934 and :3968, both inside `#[cfg(test)] mod kd_feature_tests` (3649-4069), and apply_attack_action.rs 7096+, inside `#[cfg(test)] mod tests` (7070). I ran a database.json grep for all 21 new texts. Every exact hit is at 92532-96810 (C1) or 102431/102477/102546 (P-C). No A*/B*/P-A/P-B line has any of these texts. The near-misses ('...in any way you like' energy-attach texts) are different strings."
+  },
+  {
+   "cluster": "c3_abilities_actions",
+   "change": "c3-1",
+   "severity": "NIT",
+   "problem": "The evidence says AbilityMechanic is 'serialised by name'. It is not serialised at all: mechanic.rs:113 derives only Debug, Clone and PartialEq for AbilityMechanic. The verdict is not affected. With no Serialize, Hash or Ord on the enum, inserting variants mid-enum has even less reach than claimed (only Debug text, and old variant names keep their text).",
+   "correct_verdict": null,
+   "evidence": "engine/src/actions/abilities/mechanic.rs:113-114 `#[derive(Debug, Clone, PartialEq)] pub enum AbilityMechanic`. The map's only iteration (opening_class.rs:311, 334, 339) sits inside #[cfg(test)] mod tests (opening_class.rs:284-285). Every other use is EFFECT_ABILITY_MECHANIC_MAP.get(effect) (effect_ability_mechanic_map.rs:934)."
+  },
+  {
+   "cluster": "c3_abilities_actions",
+   "change": "c3-3",
+   "severity": "NIT",
+   "problem": "The REACHED_NO_CHANGE argument looks for [D] zone attaches by card text only. It misses an engine path: SimpleAction::Attach always reaches attach_energy_internal with from_zone = true (apply_action.rs:1186, then energy.rs:25), even when it stands for an Energy MOVE that is not from the zone. Passimian ex's Offload Pass (hooks/core.rs:2826-2886) works this way. Under the new from_zone reading, such a move of [D] onto Darkrai ex would trigger Nightmare Aura where the old is_turn_energy reading would not. I checked every SimpleAction::Attach{is_turn_energy:false} generator: hooks/core.rs:196 and 2881, counterattack.rs:88, attack_helpers.rs:51, apply_attack_action.rs:2425/2437/2687/2750/2799/4359/4384/5526/6079, and apply_trainer_action.rs:815/1793/1823/2201/2638. Each one is typed by its map text or tied to a card that is not in cards.json (Passimian ex, Bouncy Body, Kiawe, Wally, Rika, Electric Generator). Among the 101 ids, the [D] zone texts are only Hydreigon's self-attach. Nothing else in the database attaches [D] from the zone, apart from Sableye's random attach, which is not in the lists. So the verdict holds, but the evidence should name this path.",
+   "correct_verdict": null,
+   "evidence": "state/energy.rs:87-115 (attach_energy_internal takes from_zone as passed; attach_energy_from_zone always passes true); hooks/core.rs:2877-2886 (Offload Pass pushes Attach for a non-zone move); database.json grep of '\\[D\\] Energy from your Energy Zone' returns only the Nightmare Aura lines and Hydreigon 47771/49658; the random-type grep returns Sableye 70971/101591 only."
+  },
+  {
+   "cluster": "c4_state_hooks",
+   "change": "c4-11",
+   "severity": "WRONG_VERDICT",
+   "problem": "The verdict is CANNOT_ACT, but the changed code does run in these games. Every Sleep, Paralysis or Confusion set or clear now runs the new `sleep_coins_override = None` resets (played_card.rs set_status_raw / clear arms / full clears), PlayedCard::new runs the new initializer, and the Checkup reads `sleep_checkup_coins()` on every Asleep Active. Rows with Igglybuff's Sleepy Lullaby, Swablu's Sing, Espeon's Hypnoblast and Darkrai's Dark Slumber (t-altaria) put Pokémon to sleep, and TR Weezing ex's Confusion Gas confuses them. Only `apply_attack_sleep_with_coins` / `set_sleep_coins_override` cannot run. The analysis's own in_check text says the resets run and the Checkup reads 1, which is the REACHED_NO_CHANGE definition. The 0-games prediction does not change.",
+   "correct_verdict": "REACHED_NO_CHANGE",
+   "evidence": "diff played_card.rs @@-389/-399/-410/-423/-438 (resets on every status path), @@-108 (new()), sleep_checkup_coins at @@-466; PlayedCard derives Hash/PartialEq/Eq (played_card.rs:20). The field is always None, so equality and hashing agree between any two states the old code also told apart (only mcts_player.rs:15 keys a HashMap on State). serde skips the field when it is None. Split the change: resets + sleep_checkup_coins REACHED_NO_CHANGE; apply_attack_sleep_with_coins / set_sleep_coins_override CANNOT_ACT (only the Soothing Lullaby text, C1 051/184, not in the 101)."
+  },
+  {
+   "cluster": "c4_state_hooks",
+   "change": "c4-01",
+   "severity": "WEAK_EVIDENCE",
+   "problem": "The evidence for the no-op hooks cites S8's src/players/mod.rs:56-57. But the program under test is R8's engine with kx3's six files laid on top, and per R6_SPEC section 1 (line 9) one of those six is src/players/mod.rs, the file that defines the Player trait. In the K program the trait (and whether before_decision / on_public_event have empty default bodies, or exist at all) comes from K8's players/mod.rs, not S8's. S8's mod.rs has no playout_player / playout_pool modules (lines 1-18), so it cannot be the file K uses. The analysis also says kx3's files 'predate the hooks', and if that held for mod.rs, game.rs:223/271 would not compile. So K8's mod.rs must differ from kx3's original, and the claim has to be checked against that file. The conclusion is probably right: no kx3 or km3 player overrides the hooks, the probe uses self.rng.clone() (StdRng, game.rs:98), and search_rng is seeded before the call and is not passed to it. But the cited line is not in the program.",
+   "correct_verdict": null,
+   "evidence": "R6_SPEC.md:9 lists `src/players/mod.rs` among kx3's six files; S8 players/mod.rs:1-18 (no playout modules), 56-57 (defaults); Grep: only override is protocol_player.rs:356/360; game.rs:222-223, 264-271. Fix: cite K8's (b5f15351) src/players/mod.rs for the trait defaults and confirm playout_player.rs has no override."
+  },
+  {
+   "cluster": "c4_state_hooks",
+   "change": "c4-08",
+   "severity": "NIT",
+   "problem": "The survey of [D] + Energy Zone texts misses the effect paths that attach a type the attack names onto any Benched Pokémon, and so does not rule them out. Regigigas B3 134 (deck 01) Giga Turbo: 'Take a [C] Energy from your Energy Zone and attach it to 1 of your Benched Pokémon' maps to ChargeBench { energies: [Colorless], target_benched_type: None } (apply_attack_action.rs:2736-2750, from_zone=true, is_turn_energy=false). Regigigas can attack in deck 01 when Alolan Muk's Power of Alchemy switches off its Seal of Antiquity (attacks.rs:152-154). A kx3 play-out could put a sampled Darkrai ex on that side's Bench. The new code would then test energy_type == Darkness, and Colorless fails it, so old and new both skip. Mega Sharpedo ex (draft-A) Turbo Shark [W] and Baxcalibur Ice Maker [W] fail the same way. The verdict holds; the evidence should name these paths.",
+   "correct_verdict": "REACHED_NO_CHANGE",
+   "evidence": "effect_mechanic_map.rs:1918-1922; database.json Regigigas B3 134 (Giga Turbo), B4 035 Turbo Shark, B2a 036 Ice Maker; energy.rs:162-167 (energy_type == trigger_type gate). Energy moves (apply_action.rs:1278) and discard attaches (energy.rs:72, from_zone=false) do not trigger either version. No card among the 101 attaches [D] from the Zone to a chosen Pokémon other than itself; Hydreigon's Roar in Unison attaches to itself."
+  },
+  {
+   "cluster": "c5_coin_plan",
+   "change": "c5-4",
+   "severity": "NIT",
+   "problem": "The evidence leans on the pinned Misty/coin-plan trace test (engine/tests/misty_coin_plan_trace_test.rs) without reading it, so that part is only consistent with the verdict and adds nothing to it. The verdict does not need it. NOT_IN_PROGRAM holds because hunks @@-1160 and @@-1365 are inside mod tests, and Misty's draw count and order are unchanged by reading the code: the old Misty branch in sample_choice_actual still calls sample_until_tails(rng, false), and that branch is Luxury-gated anyway.",
+   "correct_verdict": null,
+   "evidence": "Diff lines 422-793 sit inside `mod tests`. The test at diff 443-498 pins the routed set to the old 28 printings plus C1119/C1152 Sweet Honey, and the stadium census at 506-541 pins it to the 3 Mesagoza printings, Arcade and C1131."
+  },
+  {
+   "cluster": "c5_coin_plan",
+   "change": "c5-1 / c5-2 / c5-3",
+   "severity": "NIT",
+   "problem": "Refutation attempt failed; all three CANNOT_ACT verdicts hold. I checked every non-test caller of producer_id, direct_route, stadium_route, effect_outcomes, is_misty, is_ice_pop, is_master_plan and is_registered_direct_producer (trainer_coin_plan.rs 128, 179, 763, 795, 848, 862, 891, 925, 955, 1032, 1077, 1089, 1153, 1193, 1255, 1266, 1283, 1339, 1351). Each one runs only after the luxury_coin_source gate (829 / 1066), or under a pending_trainer_coin_choice, which only install_pending sets (634-637, called from 411, 578, 819, 991, all gated). The one other assignment, observation.rs:1004, is inside a test helper (pending_penny). luxury_coin_source (29-39) is unchanged and reads get_in_play_ability_mechanic, which only looks up the Pokemon's own printed card (effect_ability_mechanic_map.rs:968-976; no ability copying). The Luxury Coin text appears twice in database.json (B4a 051 / B4a 109 Gholdengo), and cards.json has no Gholdengo, Gimmighoul, C1 or B4b card. The coin-plan Trainers that rows do hold are Misty A1 220, Lucky Ice Pop B2 145 and Mesagoza B2a 093, all canonical printings. The Sweet Honey branches test only C1119SweetHoney, and their RNG draws sit inside those branches. The new ChooseSweetHoneyTarget dispatch (apply_action.rs:54, 448, 653) needs an action that only Sweet Honey staging offers. Diff hunk coverage is complete (13 hunks, all assigned); no MISSED_CHANGE.",
+   "correct_verdict": null,
+   "evidence": "apply_action.rs:63/67/455/457 are the only entries into sample_choice_actual / try_sample_entry_actual / try_forecast_choice / try_forecast_entry. Grep in cards.json for Gholdengo|Gimmighoul|C1 |B4b found no matches. Grep for 'Luxury Coin Ability each turn' in database.json gives 2 occurrences. cards.json:57 is A1 220 Misty (draft-A), :518 is B2 145 Lucky Ice Pop, :576 is B2a 093 Mesagoza."
+  },
+  {
+   "cluster": "c6_outside_games",
+   "change": "c6-4",
+   "severity": "NIT",
+   "problem": "The verdict is REACHED_NO_CHANGE, but the analysis itself says this cluster does not clear trainer_identity.rs or its callers. The label claims a no-change reading that was never made here. It should say the declaration is inert and that the module's content is deferred to the cluster that holds it.",
+   "correct_verdict": null,
+   "evidence": "lib.rs:+`pub mod trainer_identity;` only declares the module. The file diff `diff --git a/engine/src/trainer_identity.rs` is in c1_trainers.diff (its callers also appear in c4_state_hooks.diff and c5_coin_plan.diff), so it is covered there. The final verdict for trainer_identity has to come from c1, not from c6-4."
+  },
+  {
+   "cluster": "c6_outside_games",
+   "change": "c6-9",
+   "severity": "NIT",
+   "problem": "The evidence says TEST_CARD_SUPPORT_MISSING_ATTACK 'is not part of the run environment'. The task only says DECKGYM_* and KX_* are scrubbed, and TEST_* is not one of those prefixes. So that part is assumed, not shown. The verdict still holds for a different reason: the code is compiled only with feature test-utils, and even with the variable set it only changes the pre-game status (refuse, or panic on a bad id). It reads the card database only, draws no RNG and cannot change a played game.",
+   "correct_verdict": null,
+   "evidence": "card_support.rs (diff @@ -21, -63): the static and the override both sit under #[cfg(feature = \"test-utils\")]. inspect_card_id runs only from SupportReport, which the module doc names as the pre-run refusal. get_implementation_status/implementation_limitations are read only by card_validation.rs:80, card_support.rs:86/100 and bin/card_status.rs (Grep). The worst case is a refused run, never a different game."
+  }
+ ],
+ "summary": "No change can act in these games: rows.json is {} and every one of the 202 kx3 and 202 km3 games must replay exactly."
+}

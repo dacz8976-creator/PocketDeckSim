@@ -1,0 +1,38 @@
+{
+ "reference": "km3",
+ "seats": [
+  0,
+  1
+ ],
+ "pair_stride": 10000,
+ "threads": 2,
+ "log_level": "deck",
+ "ext_timeout_s": null,
+ "intended_lines": "rl/strength/intended_lines.json",
+ "name": "kx3_replay_r8_2026_11_04_a",
+ "question": "THE SLOW REPORT'S R8 RE-PIN CHECK (rl/results/kx3_on_r8_2026-11-04/SPEC.md): do the frozen kx3's development-run games replay exactly on R8's engine? SPEC.md section 3 found no R8 change that can act in these games and names no row, so any changed game is a stop. This registration: 09-mega-manectric-heliolisk, 06-mega-blaziken-tournament-list, 10-xatu-oricorio-tr-weezing v the 8 panel lists, deals 0-1, seed_base 24400000000 (each key the development run's own seed).",
+ "pilot": "kx3",
+ "stage": "dev",
+ "decks": [
+  "09-mega-manectric-heliolisk",
+  "06-mega-blaziken-tournament-list",
+  "10-xatu-oricorio-tr-weezing"
+ ],
+ "opponents": [
+  "t-altaria",
+  "t-blaziken",
+  "t-hydreigon",
+  "t-lucario",
+  "t-sceptile",
+  "t-suicune",
+  "t-vespiquen",
+  "t-weezing"
+ ],
+ "deals": 2,
+ "seed_base": 24400000000,
+ "program": "/home/dacz8976/pincand_work/RR_R8_48dec4f5/strength/K8/strength",
+ "program_sha256": "d4d4e43acebcf7aebad7ba719d32dc2b0a3d347d1a2b53c074788a678ab4e12d",
+ "engine": "laptop/kx3-on-r8-2026-11-04 b5f15351f3f61f2bfc2fc6c41dfc555e3a3b71b0 engine tree f33d2c49baf432d4bd1e407b96a6c243471fa9b6 (the frozen kx3's six engine files on R8's lane commit 48dec4f5, whose engine tree is R8's release S8 543dad00's, 014b4371a3b8: five files byte for byte d513e37b's, and players/mod.rs d513e37b's plus R8's 8 protocol-adapter lines, a union merge), built on the laptop 2026-11-04T06:07:16Z with rl/strength/build.sh (harness c4f7da21, STRENGTH_JOBS=2); self-checks: kx3 31d638dbc818b0fa measured on this program (Nov 4), km3 81b572198c04d5d1 measured on strength_L (R8's km3 build, the same engine tree), both equal to the slow-report pin's; each registration replays both on this program",
+ "pilot_provenance": "kx3 (d513e37b's files, on main-543dad0): kx3 from claude/playout-pilot@d513e37b (frozen Oct 4-5), its five player, pool and test files byte for byte, players/mod.rs with R8's protocol-adapter lines added, on R8's engine",
+ "reference_provenance": "km3 in the same build; its self-check is the pinned km3's (81b572198c04d5d1)"
+}
