@@ -5,8 +5,10 @@ night driver is `lane/night_r8.sh`, and every number below is what it must see. 
 
 ## 0. The lane commit and its trees
 
-- **Lane commit = the commit that adds this file** (and `lane/`). Its parent is cdadc04f (R8 docs 2 fix), which goes with
-  55f67837 (R8 docs 2; coordinator-148 §1).
+- **Lane commit = the commit that adds this file** (and `lane/`), **or the last "Lane N/I prep fix" commit on top of it**
+  (the commit the driver is started with; its preflight checks that the driver is that commit's copy). Their base is
+  cdadc04f (R8 docs 2 fix), which goes with 55f67837 (R8 docs 2; coordinator-148 §1). The `engine` tree of every one of
+  them is cdadc04f's, `014b4371a3b809273c01a1809a058de5980cdfd1`.
 - **engine/ and decks/ equal 63657e0a's except engine/UPSTREAM.md:** `git diff --name-only 63657e0a <lane> -- engine decks`
   prints exactly `engine/UPSTREAM.md`, 55f67837's one-line note that the file is historical (coordinator-147 §3). No build
   reads that file (`git grep UPSTREAM` over engine/src, examples, tests, build.rs and Cargo.toml: no line). So every compiled
@@ -115,6 +117,16 @@ RULE_ROWS (c)'s "15 + 7 pages" (`RULE_ROWS.md:17`) is a different, older set; th
   tip). Since affe56e8 R8 changed `rl/strength/README.md`, `rl/strength/test_strength_card_support.py` and
   `slow_report_pin.json`, none of them hashed (build.sh hashes `src/*.rs` and `Cargo.toml`). The lane strength build's
   record says so too (`harness_source_sha256`), with its engine tree = the lane commit's `engine` tree.
+- **strength_L** (the harness built on R8's engine: `rl/strength/build.sh <lane>` in its own build and target folders; new,
+  no R6 or R8 record has this build). Predicted log line, the program sha256 and the seconds reported, not predicted:
+  `strength_L: RECORD OK program <sha256> engine tree 014b4371a3b8 harness c4f7da215633; Compiling deckgym v0.1.0-pdl.rules4 (/home/dacz8976/pincand_work/RR_R8_<c>/strength/L_build/tree/engine); <n> s`.
+  Why it should compile: the harness's two `impl Player` (`ext.rs:111`, `main.rs:96`) get R8's two new trait methods
+  (`before_decision`, `on_public_event`) as defaults (`players/mod.rs:56-57`; only `protocol_player.rs` overrides them);
+  `label()` (`main.rs:41-74`) matches `SimpleAction` with an `other =>` arm; the harness names no `PlayerCode`,
+  `AbilityMechanic` or `CardEffect` variant. Not proven: no build of rl/strength on R8's engine was made in this step, so a
+  compile failure is a STOP (sc_km3 and the km3 smoke need this build), not a known-reason difference.
+- **strength_K8** (only if mk_k8.sh makes K8): the same form with K8's engine tree (cannot predict exactly: K8 is not made
+  yet) and harness c4f7da215633; a failure there stops the kx3 smoke only.
 - **(b) sc_km3** on the lane's own strength build (t-altaria v t-suicune, 12 games, as `night_r6.sh:20`), exactly
   `selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1`. Why: both decks are old
   cards, and neither holds a rule-row card. sc_kx3 is not run (after his yes, 148 §2.2).

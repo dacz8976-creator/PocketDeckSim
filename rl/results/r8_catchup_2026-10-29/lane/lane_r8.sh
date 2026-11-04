@@ -22,6 +22,9 @@
 #      TEST_CARD_SUPPORT_MISSING_ATTACK in the plain deckgym and the plain goldfish (expected 0 lines each).
 #  10. replays_R: replay_r8.py (this folder) instead of $S/replay3.py; the archive is OUT/RR; the summary OUT/games/summary.tsv.
 #  11. The pgid file is OUT/pgids/lane_r8.pgid.
+#  12. (prep fix) Resume: when build_R (or goldfish_R) is not done but its log exists, the lane's own binaries in $TGT/release
+#      (only those the guard watches) are removed before the "before" hashes, so cargo relinks them and the guard holds.
+#      And C: >= 15 GiB is checked again before suite_R (a STOP below it), as R6's driver checked before every cargo step.
 #   1. build_R   2. gen_R   3. status_R   4. suite_R   5. goldfish_R   6. replays_R (side r v the 08a9b3a references, and v R6 S)
 set -u
 OUT=${1:?usage: lane_r8.sh OUT}
@@ -43,6 +46,7 @@ fail() { echo "$(date -u +%FT%TZ) $2" > "$R/$1.FAILED"; log "$1 FAILED: $2"; }
 finish() { log "lane_r8 end: $1"; date -u +%FT%TZ > $R/lane_r.end; exit 0; }
 wait_pause() { local said=0; while [ -e $PAUSE ]; do [ $said = 1 ] || log "paused: $PAUSE exists"; said=1; sleep 60; done; [ $said = 0 ] || log "resumed"; }
 no_cargo() { while pgrep -x cargo >/dev/null || pgrep -x rustc >/dev/null; do log "waiting: another cargo/rustc is running"; sleep 120; done; }
+free_gib() { echo $(( $(df -B1 --output=avail /mnt/c | tail -n 1 | tr -dc 0-9) / 1073741824 )); }
 hashes() { local f; for f in "$@"; do if [ -e "$f" ]; then sha256sum "$f" | cut -c1-64; else echo absent; fi; done | tr '\n' ' '; }
 # guard LABEL BUILDLOG "PRE-HASHES" FILE...: the binary guard (change 6); prints one line, returns 1 on a STOP
 guard() {
@@ -72,6 +76,10 @@ log "lane_r8 start: R=$C"
 if ! done_ build_R; then
   wait_pause; no_cargo
   BINS="$TGT/release/deckgym $TGT/release/card_status $TGT/release/card_enum_generator $TGT/release/examples/legality_scan $TGT/release/examples/goldfish"
+  if [ -e $R/build_R.log ]; then   # change 12: a resumed build_R (cut off before): its binaries would look unchanged
+    log "build_R: resume (an earlier build_R.log exists): removing only the five lane binaries in $TGT before the guard"
+    for f in $BINS; do case "$f" in $TGT/release/*) rm -f "$f";; esac; done
+  fi
   pre=$(hashes $BINS); log "build_R: before: $pre"
   s=$(date +%s)
   ( cd $WT/engine && $G cargo build --release --locked && $G cargo build --release --locked --example legality_scan &&
@@ -144,6 +152,8 @@ fi
 
 if done_ build_R && ! done_ suite_R; then
   wait_pause; no_cargo
+  g=$(free_gib); log "suite_R: C: free $g GiB"
+  [ "$g" -ge 15 ] || { fail suite_R "C: below 15 GiB ($g)"; finish "disk"; }
   s=$(date +%s)
   ( cd $WT/engine && RUST_TEST_THREADS=2 $G cargo test --release --features test-utils --locked --no-fail-fast ) > $R/suite_R.log 2>&1
   rc=$?
@@ -166,6 +176,10 @@ fi
 if done_ suite_R && ! done_ goldfish_R; then
   wait_pause; no_cargo
   GF=$TGT/release/examples/goldfish; ok=1
+  if [ -e $R/goldfish_plain.log ]; then   # change 12: a resumed goldfish_R: the goldfish left there would look unchanged
+    log "goldfish_R: resume (an earlier goldfish_plain.log exists): removing only $GF before the guard"
+    rm -f "$GF"
+  fi
   pre=$(hashes $GF)
   ( cd $WT/engine && $G cargo build --release --locked --example goldfish ) > $R/goldfish_plain.log 2>&1 || ok=0
   if [ "$pre" = "$(hashes $OUT/programs/goldfish)" ]; then

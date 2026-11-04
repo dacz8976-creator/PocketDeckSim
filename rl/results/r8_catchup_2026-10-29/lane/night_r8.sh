@@ -10,6 +10,8 @@
 #    4 verify (replay_r8.py verify: the S-compare and the prediction check)   5 strength_L (rl/strength/build.sh LANE_COMMIT)
 #    6 sc_km3 (+ the harness source hash)   7 k8 (mk_k8.sh + build.sh K8)   8 smoke_b_km3   9 smoke_a_km3   10 smoke_a_kx3
 #   11 digest_hunks (digest_hunks.sh)   12 summary
+# C: >= 15 GiB free (df /mnt/c) is checked before every cargo step: preflight, the lane (and its suite), strength_L, K8.
+# Below it: a STOP (for K8: the kx3 smoke stops only).
 # STOP rules (147 §4, 148, LANE_N_PREDICTION.md "Anything else is a STOP"): a failed step writes night/STOP and the driver runs
 # only digest_hunks and summary (git and text only), then ends; a restart refuses while night/STOP exists. The kx3-only stops
 # (a players/mod.rs merge conflict, a K8 build failure, a kx3 decision over 120 s) write night/KX3_STOPPED and the rest goes on.
@@ -125,10 +127,14 @@ EOF
 # 5. strength on the lane commit (km3's build for sc_km3 and the km3 smoke)
 if [ $STOPPED = 0 ] && ! done_ strength_L; then
   begin strength_L; no_cargo
-  r=$(build_strength L $L); log "strength_L: $r"
-  case "$r" in "RECORD OK "*) mark strength_L;;
-    *"harness_source_sha256"*) stop strength_L "harness source hash moved from c4f7da21; files that moved it: $(git -C $SCR diff --name-only affe56e8 $L -- rl/strength/src rl/strength/Cargo.toml | tr '\n' ' '); $r";;
-    *) stop strength_L "$r";; esac
+  g=$(free_gib); log "strength_L: C: free $g GiB"
+  if [ "$g" -lt 15 ]; then stop strength_L "C: below 15 GiB ($g)"
+  else
+    r=$(build_strength L $L); log "strength_L: $r"
+    case "$r" in "RECORD OK "*) mark strength_L;;
+      *"harness_source_sha256"*) stop strength_L "harness source hash moved from c4f7da21; files that moved it: $(git -C $SCR diff --name-only affe56e8 $L -- rl/strength/src rl/strength/Cargo.toml | tr '\n' ' '); $r";;
+      *) stop strength_L "$r";; esac
+  fi
 fi
 
 # 6. sc_km3 on the lane build, and the harness hash (a)
@@ -148,8 +154,12 @@ if [ $STOPPED = 0 ] && ! done_ k8; then
   bash $LW/$LD/mk_k8.sh $L $OUT/k8 > $OUT/k8/mk_k8.log 2>&1; krc=$?
   log "mk_k8 rc=$krc: $(tail -n 1 $OUT/k8/mk_k8.log)"
   if [ $krc = 0 ]; then
-    K8=$(cat $OUT/k8/K8_COMMIT); r=$(build_strength K8 $K8); log "strength_K8: $r"
-    case "$r" in "RECORD OK "*) ;; *) kx3_stop k8 "K8 build: $r";; esac
+    g=$(free_gib); log "strength_K8: C: free $g GiB"
+    if [ "$g" -lt 15 ]; then kx3_stop k8 "C: below 15 GiB ($g): K8 not built"
+    else
+      K8=$(cat $OUT/k8/K8_COMMIT); r=$(build_strength K8 $K8); log "strength_K8: $r"
+      case "$r" in "RECORD OK "*) ;; *) kx3_stop k8 "K8 build: $r";; esac
+    fi
   elif [ $krc = 3 ]; then kx3_stop k8 "players/mod.rs conflicts (see $OUT/k8/mod_rs.conflict.txt)"
   else kx3_stop k8 "mk_k8.sh exit $krc (see $OUT/k8/mk_k8.log)"; fi
   mark k8

@@ -26,14 +26,20 @@ def subject(c):
 def blame(rev_args, path, start, count):
     out = subprocess.run(['git', 'blame', '--porcelain'] + rev_args + ['-L', f'{start},+{count}', '--', path], capture_output=True, text=True)
     return [l.split()[0] for l in out.stdout.splitlines() if re.match(r'^[0-9a-f]{40} \d+ \d+', l)]
-path, n, rows = None, 0, []
+import collections
+path, old, n, rows, per = None, None, 0, [], collections.Counter()
 for line in diff.splitlines():
+    if line.startswith('--- '):
+        old = line[6:].strip() if line.startswith('--- a/') else None
     if line.startswith('+++ '):
-        path = line[6:].strip() if line.startswith('+++ b/') else None
+        # a deleted file has '+++ /dev/null': its hunks keep the old path (pure deletions, blame --reverse on it)
+        path = line[6:].strip() if line.startswith('+++ b/') else old
     m =re.match(r'^@@ -(\d+)(?:,(\d+))? \+(\d+)(?:,(\d+))? @@(.*)', line)
+    if m and not path:
+        print(f'\n[?] a hunk with no file path: {line}   (check by hand)')
     if m and path:
         a, b, c, d = int(m[1]), int(m[2] if m[2] is not None else 1), int(m[3]), int(m[4] if m[4] is not None else 1)
-        n += 1
+        n += 1; per[path] += 1
         if d > 0:
             cs = [x for x in blame([lane], path, c, d) if x in since]
             how = 'blame of the new lines'
@@ -50,5 +56,8 @@ for line in diff.splitlines():
             print(f'      {subject(x)}')
         if not uniq:
             print('      (no commit after affe56e8 found: check by hand)')
+print('\nhunks per file (check against the --stat above):')
+for p, k in sorted(per.items()):
+    print(f'  {p} {k}')
 print(f'\n{n} hunks')
 EOF
