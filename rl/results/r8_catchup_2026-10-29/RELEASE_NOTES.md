@@ -187,6 +187,11 @@ Each row is its own commit, written test-first, with its replay prediction recor
     (it would go through the same code).
 13. **Vaporeon's unbounded Wash Out path** (`vaporeon_wash_out`) runs only under an environment flag. Item 11
     converted it to the in-play type check, but no test covers it.
+14. **kx3 is slow on R8's honey cards (time only).** In Lane N's kx3 smoke (kx3 on K8 v km3, 72 games), 9 kx3
+    decisions took over 30 s, all with deck a01-grass-honey v t-altaria in turns 2-4 (Place Cutiefly, Professor's
+    Research, Evolve Ribombee and Vespiquen, Play Sweet Honey, UseStadium); the slowest took 102,823.2 ms, under the
+    smoke's 120 s stop (`~/pincand_work/RR_R8_48dec4f5/smoke/a_kx3/SLOW.tsv`). Over all 769 kx3 decisions: mean 4,561,
+    median 3,124, p95 13,014 ms. No game result depends on it; it costs only time (coordinator-150 §3).
 
 ## 6. Timing note (report only)
 
@@ -275,7 +280,8 @@ prediction in RULE_ROWS.md.
 8. **The docs group (docs and comments only):** e5e4e58b with 63657e0a (its docs fix, docs only) and the second docs
    commit (docs only: Lullaby filmed, its rules/ entry, this pairing rule, the timing note). Dropping any group above
    also means removing its lines here.
-   The second docs commit is 55f67837, with its fix cdadc04f (docs only; coordinator-148 §1).
+   The second docs commit is 55f67837, with its fix cdadc04f (docs only; coordinator-148 §1). After his yes (Nov 4,
+   "Adopt all three"): one more docs commit (known limit 14, section 12 item 15).
 9. **Root `CLAUDE.md:14`, Dustin's call (not in R8's commits):** one line adding `cargo build --release --example
    goldfish` and `cargo test --release --test goldfish_card_support_test`. Nobody edits it before his word.
 
@@ -319,3 +325,7 @@ Every new finding goes on this list (the time box).
     `with_public_pricing` (a standing rule: Penny/Portrait would leak under it); (b) UseStadium and stack follow-ups
     get a text check, or a note that none is needed; (c) make Lusamine's AttachFromDiscard ordering deterministic (no
     HashMap order; `generate_energy_combinations`, actions/apply_action.rs:2030-2039).
+15. **Jigglypuff's limitation text (a text fix, in the first engine commit after R8):** `card_validation.rs:117-118`,
+    the Jigglypuff C1 051 / C1 184 limitation that card_status prints, still says "Card text, not filmed" for the
+    2-coin Soothing Lullaby Checkup. Section 3 and rules/03_status_checkup_timing.md:73 say the 2 coins were filmed
+    (Codex's review of his clips). Not changed in R8: it would move the tested engine tree (coordinator-150 §4).
