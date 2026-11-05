@@ -67,6 +67,10 @@ pub struct IsmctsParams {
     /// The km3 anchor (`_k<margin>`): km3's move is played unless another root action's mean score beats km3's move's by
     /// more than this margin (scores in 0-1). Off (`None`) by default: the most visited root action is played.
     pub anchor: Option<f64>,
+    /// Full-turn expansion (`_f`): an iteration keeps expanding new nodes through the rest of the tree's part (the pilot's
+    /// turn, and with `_o` up to the cut-off) instead of stopping at the first new node, so the whole turn's action
+    /// sequence is in the tree and the play-out policy only plays what lies beyond it.
+    pub full_turn: bool,
 }
 
 impl IsmctsParams {
@@ -80,6 +84,7 @@ impl IsmctsParams {
             opponent_in_tree: false,
             trace: false,
             anchor: None,
+            full_turn: false,
         }
     }
 
@@ -97,6 +102,7 @@ impl IsmctsParams {
         for part in parts {
             match part {
                 "o" => params.opponent_in_tree = true,
+                "f" => params.full_turn = true,
                 "trace" => params.trace = true,
                 "pw" => params.rollout = Rollout::Weighted,
                 "pstop" => params.rollout = Rollout::Stop,
@@ -130,13 +136,14 @@ impl IsmctsParams {
             Rollout::Stop => "stop".to_string(),
         };
         format!(
-            "im{}_d{}_p{}_c{}_s{}{}{}{}",
+            "im{}_d{}_p{}_c{}_s{}{}{}{}{}",
             self.sims,
             self.cutoff_turns,
             policy,
             self.explore,
             self.scale,
             self.anchor.map(|m| format!("_k{m}")).unwrap_or_default(),
+            if self.full_turn { "_f" } else { "" },
             if self.opponent_in_tree { "_o" } else { "" },
             if self.trace { "_trace" } else { "" }
         )
@@ -347,7 +354,7 @@ impl IsmctsPlayer {
                     }
                     let untried: Vec<usize> = (0..slots.len()).filter(|&j| nodes[node].edges[slots[j]].visits == 0).collect();
                     let pick = if !untried.is_empty() {
-                        expanded = true;
+                        expanded = !self.params.full_turn;
                         untried[chance.gen_range(0..untried.len())]
                     } else {
                         let mine = actor == me;
@@ -489,6 +496,9 @@ mod tests {
 
     #[test]
     fn the_code_parses_and_round_trips() {
+        let f = IsmctsParams::parse("100_f_k0.1").unwrap();
+        assert!(f.full_turn && f.anchor == Some(0.1));
+        assert_eq!(IsmctsParams::parse(&f.code()[2..]).unwrap(), f);
         let k = IsmctsParams::parse("100_k0.05").unwrap();
         assert_eq!(k.anchor, Some(0.05));
         assert_eq!(IsmctsParams::parse(&k.code()[2..]).unwrap(), k);
