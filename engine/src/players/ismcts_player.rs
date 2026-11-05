@@ -64,6 +64,9 @@ pub struct IsmctsParams {
     pub opponent_in_tree: bool,
     /// Write one `IM_TRACE` JSON line per decision to stderr.
     pub trace: bool,
+    /// The km3 anchor (`_k<margin>`): km3's move is played unless another root action's mean score beats km3's move's by
+    /// more than this margin (scores in 0-1). Off (`None`) by default: the most visited root action is played.
+    pub anchor: Option<f64>,
 }
 
 impl IsmctsParams {
@@ -76,6 +79,7 @@ impl IsmctsParams {
             scale: 5000.0,
             opponent_in_tree: false,
             trace: false,
+            anchor: None,
         }
     }
 
@@ -100,6 +104,9 @@ impl IsmctsParams {
                     let depth = p[2..].parse::<usize>().ok().filter(|d| *d >= 1).ok_or_else(|| invalid(part))?;
                     params.rollout = Rollout::Km(depth);
                 }
+                p if p.starts_with('k') => {
+                    params.anchor = Some(p[1..].parse::<f64>().ok().filter(|m| m.is_finite() && *m >= 0.0).ok_or_else(|| invalid(part))?);
+                }
                 p if p.starts_with('d') => {
                     params.cutoff_turns = p[1..].parse::<u8>().map_err(|_| invalid(part))?;
                 }
@@ -123,12 +130,13 @@ impl IsmctsParams {
             Rollout::Stop => "stop".to_string(),
         };
         format!(
-            "im{}_d{}_p{}_c{}_s{}{}{}",
+            "im{}_d{}_p{}_c{}_s{}{}{}{}",
             self.sims,
             self.cutoff_turns,
             policy,
             self.explore,
             self.scale,
+            self.anchor.map(|m| format!("_k{m}")).unwrap_or_default(),
             if self.opponent_in_tree { "_o" } else { "" },
             if self.trace { "_trace" } else { "" }
         )
@@ -395,6 +403,34 @@ impl IsmctsPlayer {
                 }
             }
         }
+        // The km3 anchor: km3's move unless another root action's mean beats it by more than the margin.
+        if let (Some(margin), Some((_, _, _))) = (self.params.anchor, best) {
+            let km_move = self.km.decision_fn(&mut rng.clone(), observation, actions);
+            let km_key = key(&km_move);
+            let mean_of = |k: &str| nodes[0].edges.iter().find(|e| e.key == k && e.visits > 0).map(|e| e.total / e.visits as f64);
+            let km_mean = mean_of(&km_key);
+            let mut lead: Option<(f64, usize)> = None;
+            for (i, k) in root_keys.iter().enumerate() {
+                if let Some(m) = mean_of(k) {
+                    if lead.is_none_or(|(b, _)| m > b) {
+                        lead = Some((m, i));
+                    }
+                }
+            }
+            let action = match (km_mean, lead) {
+                (Some(km), Some((m, i))) if m > km + margin => {
+                    report.reason = format!("anchor: {:+.3} over km3's move (margin {margin})", m - km);
+                    by_key[i].clone()
+                }
+                _ => {
+                    report.reason = format!("anchor: km3's move kept (margin {margin})");
+                    km_move
+                }
+            };
+            report.chosen = key(&action);
+            report.millis = start.elapsed().as_secs_f64() * 1000.0;
+            return (action, report);
+        }
         let action = match best {
             Some((_, _, i)) => {
                 report.reason = format!("most visited of {} root actions", report.root.len());
@@ -453,6 +489,9 @@ mod tests {
 
     #[test]
     fn the_code_parses_and_round_trips() {
+        let k = IsmctsParams::parse("100_k0.05").unwrap();
+        assert_eq!(k.anchor, Some(0.05));
+        assert_eq!(IsmctsParams::parse(&k.code()[2..]).unwrap(), k);
         let p = IsmctsParams::parse("200_d0_pw_c0.7_s3000_o_trace").unwrap();
         assert_eq!((p.sims, p.cutoff_turns, p.rollout, p.explore, p.scale, p.opponent_in_tree, p.trace), (200, 0, Rollout::Weighted, 0.7, 3000.0, true, true));
         assert_eq!(IsmctsParams::parse(&p.code()[2..]).unwrap(), p);
