@@ -1,0 +1,78 @@
+{
+ "name": "retime_K8",
+ "question": "THE SLOW REPORT'S R8 RE-PIN CHECK (rl/results/kx3_on_r8_2026-11-04/SPEC.md): do the frozen kx3's development-run games replay exactly on R8's engine? SPEC.md section 3 found no R8 change that can act in these games and names no row, so any changed game is a stop. This registration: 01-muk-glimmora-kingambit-regigigas, 05-indeedee-stoutland, draft-A-shark-tempo v the 8 panel lists, deals 0-1, seed_base 24440000000 (each key the development run's own seed).",
+ "repo_commit": "630e04f34cf2b0c6d7ae296c019162c63923becb",
+ "selfcheck": {
+  "km3": "selfcheck pilot=km3 games=12 seat0_wins=8 seat1_wins=4 ties=0 turns=127 digest=81b572198c04d5d1",
+  "kx3": "selfcheck pilot=kx3 games=12 seat0_wins=5 seat1_wins=7 ties=0 turns=138 digest=31d638dbc818b0fa"
+ },
+ "selfcheck_source": {
+  "km3": "run by strength_prereg.py",
+  "kx3": "run by strength_prereg.py"
+ },
+ "created_at": "2026-11-04T21:12:14Z",
+ "stage": "dev",
+ "repo_root": ".",
+ "pilot": "kx3",
+ "reference": "km3",
+ "decks": [
+  {
+   "name": "01-muk-glimmora-kingambit-regigigas",
+   "path": "decks/dustin/01-muk-glimmora-kingambit-regigigas.txt",
+   "sha256": "49d135c6e09e375a531e5e82e7d1c3887f9c8f1b9a9c988e587623d0bde35785"
+  }
+ ],
+ "opponents": [
+  {
+   "name": "t-hydreigon",
+   "path": "decks/screen/opponents/t-hydreigon.txt",
+   "sha256": "18688bd9ab09f2638538006590767a5750abe763572c0fb636c47eec93155f3b"
+  }
+ ],
+ "deals": 1,
+ "seats": [
+  0
+ ],
+ "seed_base": 24440020000,
+ "pair_stride": 10000,
+ "threads": 2,
+ "log_level": "deck",
+ "ext_timeout_s": null,
+ "heldout_decks": [
+  "02-arceus-crobat",
+  "04-absol-hoopa-darkrai",
+  "07-skarmory-stall",
+  "08-garchomp-toolbox",
+  "11-archaludon-haxorus-dragonair",
+  "12-ariados-whimsicott-ogerpon",
+  "13-a-ninetales-raticate",
+  "14-comfey-raticate-hypno",
+  "15-jolteon-oricorio-raticate",
+  "draft-C-meowstic-hatterene-v2",
+  "draft-D-entei-grimhound"
+ ],
+ "heldout_locked": true,
+ "heldout_registry": [
+  "02-arceus-crobat",
+  "04-absol-hoopa-darkrai",
+  "07-skarmory-stall",
+  "08-garchomp-toolbox",
+  "11-archaludon-haxorus-dragonair",
+  "12-ariados-whimsicott-ogerpon",
+  "13-a-ninetales-raticate",
+  "14-comfey-raticate-hypno",
+  "15-jolteon-oricorio-raticate",
+  "draft-C-meowstic-hatterene-v2",
+  "draft-D-entei-grimhound"
+ ],
+ "heldout_in_run": [],
+ "intended_lines": "rl/strength/intended_lines.json",
+ "intended_lines_sha256": "80778f3c4a58aa11d8a10fd96196110177dcc20d240d24f9351798eda4dae5a1",
+ "program": "/home/dacz8976/pincand_work/RR_R8_48dec4f5/strength/K8/strength",
+ "program_sha256": "d4d4e43acebcf7aebad7ba719d32dc2b0a3d347d1a2b53c074788a678ab4e12d",
+ "engine": "laptop/kx3-on-r8-2026-11-04 b5f15351f3f61f2bfc2fc6c41dfc555e3a3b71b0 engine tree f33d2c49baf432d4bd1e407b96a6c243471fa9b6 (the frozen kx3's six engine files on R8's lane commit 48dec4f5, whose engine tree is R8's release S8 543dad00's, 014b4371a3b8: five files byte for byte d513e37b's, and players/mod.rs d513e37b's plus R8's 8 protocol-adapter lines, a union merge), built on the laptop 2026-11-04T06:07:16Z with rl/strength/build.sh (harness c4f7da21, STRENGTH_JOBS=2); self-checks: kx3 31d638dbc818b0fa measured on this program (Nov 4), km3 81b572198c04d5d1 measured on strength_L (R8's km3 build, the same engine tree), both equal to the slow-report pin's; each registration replays both on this program",
+ "pilot_provenance": "kx3 (d513e37b's files, on main-543dad0): kx3 from claude/playout-pilot@d513e37b (frozen Oct 4-5), its five player, pool and test files byte for byte, players/mod.rs with R8's protocol-adapter lines added, on R8's engine",
+ "reference_provenance": "km3 in the same build; its self-check is the pinned km3's (81b572198c04d5d1)",
+ "planned_pairs": 24,
+ "planned_games": 192
+}

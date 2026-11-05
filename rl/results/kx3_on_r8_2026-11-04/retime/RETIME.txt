@@ -1,0 +1,5 @@
+run 1 (K8): decision #3 (0-based index 3, Play:Poké Ball) 17,747.3 ms; game total kx3 442,021 ms over 37 decisions; equals the dev run: True
+run 2 (R6): decision #3 (0-based index 3, Play:Poké Ball) 17,763.4 ms; game total kx3 439,146 ms over 37 decisions; equals the dev run: True
+run 3 (K8): decision #3 (0-based index 3, Play:Poké Ball) 17,967.7 ms; game total kx3 438,436 ms over 37 decisions; equals the dev run: True
+run 4 (R6): decision #3 (0-based index 3, Play:Poké Ball) 18,151.0 ms; game total kx3 441,420 ms over 37 decisions; equals the dev run: True
+mean decision #3: K8 17,857.5 ms, R6 17,957.2 ms, ratio 0.994 ("not much slower" means at most 1.3)
