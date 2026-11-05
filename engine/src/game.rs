@@ -299,6 +299,11 @@ impl<'a> Game<'a> {
         &self.luxury_coin_resolution_history
     }
 
+    /// The state, borrowed (the ISMCTS pilot's play-outs read the turn without cloning).
+    pub(crate) fn state(&self) -> &State {
+        &self.state
+    }
+
     pub fn get_state_clone(&self) -> State {
         self.state.clone()
     }

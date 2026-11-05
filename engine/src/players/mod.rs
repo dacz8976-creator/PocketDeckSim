@@ -12,6 +12,7 @@ mod fuel_credit;
 mod mcts_player;
 mod opening_class;
 pub mod playout_player;
+pub mod ismcts_player;
 mod playout_pool;
 mod random_player;
 pub mod s42_probe;
@@ -222,6 +223,9 @@ pub enum PlayerCode {
     /// played out R times with km<N> on both sides from states sampled from its own observation; km<N>'s move kept within
     /// the noise.
     KX { params: playout_player::PlayoutParams },
+    /// 'im<sims>[_d<turns>][_p<k1|k2|w|stop>][_c<explore>][_s<scale>][_o][_trace]': Information-Set MCTS over sampled
+    /// worlds with km's evaluator at the leaves (sprint, Nov 2026; ismcts_player.rs).
+    IM { params: ismcts_player::IsmctsParams },
 }
 /// Custom parser function enforcing case-insensitivity
 pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
@@ -293,6 +297,10 @@ pub fn parse_player_code(s: &str) -> Result<PlayerCode, String> {
     // 'kx<N>...' (see PlayerCode::KX): the play-out chooser. No other code starts with 'kx'.
     if let Some(rest) = lower.strip_prefix("kx") {
         return playout_player::PlayoutParams::parse(rest).map(|params| PlayerCode::KX { params });
+    }
+    // 'im<sims>...' (see PlayerCode::IM): ISMCTS. No other code starts with 'i'.
+    if let Some(rest) = lower.strip_prefix("im") {
+        return ismcts_player::IsmctsParams::parse(rest).map(|params| PlayerCode::IM { params });
     }
     // 'km<N>' (see PlayerCode::KM): kta + N2. Before 'k<N>', which would reject it. No other code starts with 'km'.
     if let Some(depth) = lower.strip_prefix("km") {
@@ -508,6 +516,7 @@ fn get_player(deck: Deck, opponent_deck: &Deck, player: &PlayerCode) -> Box<dyn 
         PlayerCode::Proto { command, timeout_ms, log } => Box::new(ProtocolPlayer::new(deck, command.clone(), std::time::Duration::from_millis(*timeout_ms), log.as_ref().map(std::path::PathBuf::from))),
         PlayerCode::AA => Box::new(AttachAttackPlayer { deck }),
         PlayerCode::KX { params } => Box::new(playout_player::PlayoutPlayer::new(deck, opponent_deck.clone(), params.clone())),
+        PlayerCode::IM { params } => Box::new(ismcts_player::IsmctsPlayer::new(deck, opponent_deck.clone(), params.clone())),
         PlayerCode::ET => Box::new(EndTurnPlayer { deck }),
         PlayerCode::R => Box::new(RandomPlayer { deck }),
         PlayerCode::H => Box::new(HumanPlayer { deck }),

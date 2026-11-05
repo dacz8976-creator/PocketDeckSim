@@ -281,6 +281,13 @@ impl PlayoutPlayer {
         &self.params
     }
 
+    /// One world sampled from `observation` with kx's sampler, and the list its opponent's hidden cards came from (for the
+    /// ISMCTS pilot, `ismcts_player.rs`; kx itself doesn't call it).
+    pub(crate) fn sample_world(&self, observation: &PlayerObservation, rng: &mut StdRng) -> (State, Deck) {
+        let (state, list, _) = self.core.sample_state(observation, rng);
+        (state, list)
+    }
+
     /// The pool as the labels describe it: "8 meta lists" plus any extra lists by name.
     fn pool_description(&self) -> String {
         let extra = self.core.pool.len() - self.core.meta;
