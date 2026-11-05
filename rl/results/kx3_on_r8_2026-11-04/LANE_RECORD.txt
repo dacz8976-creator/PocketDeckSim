@@ -1,0 +1,45 @@
+The lane's record (copied from /home/dacz8976/pincand_work/kxr8 on 2026-11-05T05:26:34Z).
+
+== lane_kxr_r8.log
+2026-11-04T21:12:13Z lane_kxr_r8 armed (pgid 758147); cutoff: none
+2026-11-04T21:12:14Z C: free 31 GiB
+2026-11-04T21:12:14Z lane_kxr_r8 start: 630e04f3 on laptop/kx3-replay-r8-2026-11-04 in /home/dacz8976/r5_w; program /home/dacz8976/pincand_work/RR_R8_48dec4f5/strength/K8/strength d4d4e43acebc
+2026-11-04T23:47:15Z reg done and pushed: 86d0679f
+2026-11-04T23:47:15Z play: b (threads 3) and a (threads 2), then c
+2026-11-05T03:00:14Z play a: rc 0; 192 of 192
+2026-11-05T03:14:13Z play c: rc 0; 20 of 20
+2026-11-05T05:26:33Z play b: rc 0; 192 of 192
+2026-11-05T05:26:34Z compare: rc 0; RESULT: every changed game is in a named row
+
+== reg_a.rc 0  run_a.rc 0
+-- reg_a.log (last 4 lines)
+pre-registered 192 games (24 pairs, 2 deals x 2 seats x 2 arms) in rl/results/kx3_on_r8_2026-11-04/replay_a
+manifest sha256 255aeae2d10b8f69cb026abc7a29dedb6540e1f85691ff28e0639763e25b0400
+-- run_a.log (last 3 lines)
+KX_PARAMS {"budget_ms":0,"cap":12,"code":"kx3_r16_c12_z2_real_t0","depth":3,"extra_lists":[],"knowledge":"REALISTIC (the opponent's list is drawn per play-out from the pool's 8 meta lists, among those consistent with the cards seen and the Energy Zone)","rollouts":16,"seat":0,"z":2.0}
+KX_PARAMS {"budget_ms":0,"cap":12,"code":"kx3_r16_c12_z2_real_t0","depth":3,"extra_lists":[],"knowledge":"REALISTIC (the opponent's list is drawn per play-out from the pool's 8 meta lists, among those consistent with the cards seen and the Energy Zone)","rollouts":16,"seat":1,"z":2.0}
+strength: 192/192 games, 11579 s elapsed
+
+== reg_b.rc 0  run_b.rc 0
+-- reg_b.log (last 4 lines)
+pre-registered 192 games (24 pairs, 2 deals x 2 seats x 2 arms) in rl/results/kx3_on_r8_2026-11-04/replay_b
+manifest sha256 af8c2febcd4423e4b594f5dbd89a321eb786732223fb49aa2bde319798a9c180
+-- run_b.log (last 3 lines)
+KX_PARAMS {"budget_ms":0,"cap":12,"code":"kx3_r16_c12_z2_real_t0","depth":3,"extra_lists":[],"knowledge":"REALISTIC (the opponent's list is drawn per play-out from the pool's 8 meta lists, among those consistent with the cards seen and the Energy Zone)","rollouts":16,"seat":0,"z":2.0}
+KX_PARAMS {"budget_ms":0,"cap":12,"code":"kx3_r16_c12_z2_real_t0","depth":3,"extra_lists":[],"knowledge":"REALISTIC (the opponent's list is drawn per play-out from the pool's 8 meta lists, among those consistent with the cards seen and the Energy Zone)","rollouts":16,"seat":1,"z":2.0}
+strength: 192/192 games, 20358 s elapsed
+
+== reg_c.rc 0  run_c.rc 0
+-- reg_c.log (last 4 lines)
+pre-registered 20 games (1 pair, 5 deals x 2 seats x 2 arms) in rl/results/kx3_on_r8_2026-11-04/replay_c
+manifest sha256 7e07c80b6baed3b86d74d94a1e9a0e1139dfb8316489e22a5dff3f4607c341bc
+-- run_c.log (last 3 lines)
+KX_PARAMS {"budget_ms":0,"cap":12,"code":"kx3_r16_c12_z2_real_t0","depth":3,"extra_lists":[],"knowledge":"REALISTIC (the opponent's list is drawn per play-out from the pool's 8 meta lists, among those consistent with the cards seen and the Energy Zone)","rollouts":16,"seat":0,"z":2.0}
+KX_PARAMS {"budget_ms":0,"cap":12,"code":"kx3_r16_c12_z2_real_t0","depth":3,"extra_lists":[],"knowledge":"REALISTIC (the opponent's list is drawn per play-out from the pool's 8 meta lists, among those consistent with the cards seen and the Energy Zone)","rollouts":16,"seat":1,"z":2.0}
+strength: 20/20 games, 838 s elapsed
+
+== the program
+d4d4e43acebcf7aebad7ba719d32dc2b0a3d347d1a2b53c074788a678ab4e12d  /home/dacz8976/pincand_work/RR_R8_48dec4f5/strength/K8/strength
+== its build record
+5d8c0cee1db6a29d5c17eb70debc6b02aa41256f77bab10e440f3c30111d826a  /home/dacz8976/pincand_work/RR_R8_48dec4f5/strength/K8/strength.build.json
+== compare_dev.py exit status: 0
