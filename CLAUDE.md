@@ -21,9 +21,8 @@
   code for a card the engine cannot play); the bot-protocol adapter (`deckgym simulate --players proto,...`, opt-in
   `pdl_*` keys); the rule rows R8-10a to R8-10e and item 11 (`rl/results/r8_catchup_2026-10-29/RELEASE_NOTES.md` §2);
   `engine/src/players/` changed for the adapter and the new cards; `rl/engine-2026-11-04/README.md`). The slow report
-  stays kx3 on main-affe56e until its re-pin onto main-543dad0's engine, after kx3's replay check on it
-  (`rl/strength/README.md`); until then it refuses (exit 2) a deck that holds one of the 55 printings main-affe56e could
-  not play. Every slow report so far ran on main-affe56e or an older engine: say which when you hand one over.
+  has been kx3 on this engine since its re-pin (Nov 5, after kx3's replay check on it; `rl/strength/README.md`).
+  Every slow report made before then ran on main-affe56e or an older engine: say which when you hand one over.
   The working pilot is km3, on both sides of the screen and the floor. Since Sept 30, kt3/kta3/ktb3/ktc3 name the kog-based presets
   (kt3, ktb3 and ktc3 are diagnostic only). Earlier programs (`rl/engine-2026-10-29/`, `-10-21/`, `-10-12/`, `-10-02/`, `-09-30/`,
   `-09-28/`, `-09-27/`, `-09-25/`, `rl/addon-0.7.2/deckgym`) are history; the verified add-on 0.7.2 wheel (`rl/addon-0.7.2/wheels/`) is

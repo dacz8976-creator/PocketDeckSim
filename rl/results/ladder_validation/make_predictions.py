@@ -63,7 +63,7 @@ HERE = os.path.dirname(os.path.abspath(__file__))
 # of the bot comparison. Each bot also records its engine key, so a reading made after the next pin can tell them apart.
 CURRENT_ENGINE = {
     "label": "main-543dad0 (R8: upstream's card code through #439, all 260 C1, SP1 and P-C printings played; pinned Nov 4)",
-    "harness_engine_trees": [],                         # slow reports / exams: "engine tree <12 hex>" in manifest.json (none until the slow report's re-pin onto main-543dad0's engine; it stays kx3 on main-affe56e until then)
+    "harness_engine_trees": ["f33d2c49baf4"],           # slow reports / exams: "engine tree <12 hex>" in manifest.json (kx3 on main-543dad0, re-pinned Nov 5)
     "floor_engines": ["rl/engine-2026-11-04/deckgym"],  # floor pages: "- Engine: <path>"
 }
 # The Oct 12 pin's value. Deck 12's self-test reads files written under it, so it runs with this one.
