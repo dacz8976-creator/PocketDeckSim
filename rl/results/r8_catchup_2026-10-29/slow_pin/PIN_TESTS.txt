@@ -1,0 +1,27 @@
+The slow report's pin tests at 77619328fa78b421d8784f0efd308278932b2fc8 (laptop/kx3-replay-r8-2026-11-04, the R8 re-pin), run
+2026-11-05T15:09:54Z to 2026-11-05T15:14:01Z in a detached worktree of that commit (/home/dacz8976/pin8_w), with KX_RUNS_DIR and
+STRENGTH_PROGRAM unset, nice 19: /home/dacz8976/slowpin_run_tests.sh (the nine modules, 4 at a time), test_slow_report_paired after
+them, then make_predictions.py --selftest. Per module: rc, seconds, the last lines.
+
+test_slow_report_process rc=0 secs=15 Ran 115 tests in 14.111s  OK
+test_slow_report_page rc=0 secs=28 Ran 201 tests in 27.022s  OK
+test_slow_report_existing rc=0 secs=1 Ran 42 tests in 0.690s  OK
+test_slow_report_runloop rc=0 secs=19 Ran 78 tests in 18.581s  OK
+test_strength_report rc=0 secs=2 Ran 18 tests in 1.744s  OK
+test_split_collect rc=0 secs=0 (its own last lines: Ran 54 tests, OK)
+test_strength_prereg_use rc=0 secs=27 Ran 121 tests in 26.850s  OK
+test_slow_report_registration rc=0 secs=101 Ran 244 tests in 100.212s  OK
+test_slow_report rc=0 secs=238 Ran 492 tests in 236.914s  OK
+test_slow_report_paired rc=0 secs=6 Ran 69 tests in 5.682s  OK
+
+make_predictions.py --selftest (rl/results/ladder_validation, --repo the worktree): rc=0, SELF-TEST PASSED (0 failed).
+
+The first re-pin commit, 081098192f143c2ba85b3b2a9debc54662d9030a (never pushed), failed one test, run the same way at
+2026-11-05T15:02:32Z to 15:06:47Z: test_slow_report rc=1, 1 failure of 492,
+BothPilotsEverywhere.test_no_pass_fail_or_cutoff_words_in_anything_it_writes ('SLOW_REPORT.md', '\bpass(es|ed)?\b'). Its pin's
+"engine" text quoted the check's verdict ("pass, with a timing note"), and a slow report's pages quote that text. The other eight
+of the nine modules and make_predictions.py --selftest passed there (their outputs are kept on the laptop in
+/home/dacz8976/slowpin_out/r8_repin_first/). test_slow_report_paired printed rc=0, Ran 69 tests, OK in that run too, but its output
+file was overwritten by the second run, so only the session's console shows it. The re-pin was made again on 3e157ff5 with that text reworded ("with a timing note Dustin
+accepted on Nov 5") and a guard in slowpin_r8.py that refuses those words in any changed pin field (77619328; the re-pin's other
+files are as before, apart from the generator).
