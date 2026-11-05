@@ -33,14 +33,21 @@ Searched Nov 5. Thin week: nothing new changes the plan.
 
 **No. But the bot side has reached its honest ceiling for one laptop, and this week showed where that ceiling is.** One laptop did, this week: full card coverage on the engine, a $0 diagnosis that explained the Gemini gap mechanically, one more rules fix accepted upstream. One laptop cannot: make the pilot judge positions like a person without heavy compute or a paid AI on every decision. The shape that fits one laptop is engine upkeep, upstream fixes, readings of your games, and your own deck loop. That is a smaller project than the one started in the summer, not a failed one.
 
-## Verdict: LOW-COST MAINTENANCE WEEK
+## Verdict: LOW-COST MAINTENANCE WEEK, amended the same evening to REDIRECT
 
-**Next step:** the laptop finishes its last read (the opponent's turn-12 move and the 4 other passive overrides, about 30 minutes) and brings you one proposal with "no change to kx3" as a real option. You decide; nothing runs before that. If the answer is "no change", kx3 improvement is parked and the week's remaining work is engine upkeep (take upstream's #440 and #442 at the next catch-up, only when a deck of yours needs them) and your deck loop.
+**Amended Nov 5 ~22:30Z after Dustin's read.** The laptop's proposal had landed earlier that day and Dustin chose "no change" (A). Then he pasted an outside AI review of kx3 and, after my check of its claims, reopened kx3 in his own words: "Yes, the replay", and "Stepwise repairs are going nowhere, a few big swings are needed sometimes. If it fails, at least we tried something new."
 
-- **Cost:** about 2% of the weekly meter, no Google or API credits, under one laptop hour.
-- **Not planned:** bot deck tests, new pilot codes, Gemini spend.
+**What the outside review got right (checked on main and the K8 commit):** kx3's play-outs run a full km3 search on both sides to the end of every practice game, 16 rounds per move. km3's evaluator leaves most of its own switches off: the Bench-attacker weight is 0, two other weights are 0, and the old "HP times Energy plus one" board score is still in use, so Energy on the Active Spot scores higher than Energy on a Benched attacker. Its "loses 20-4" is the split deals only; the whole Gemini test was 73 to 56. Its switches are "written and tested", but most were tried one at a time and lost to km3, so written is not the same as shown to help.
 
-The next regular review is Sunday Nov 8 and will cover what you decided.
+**Next step (his decision):** on a branch, on the laptop, no credits, in this order:
+1. **Tonight:** sequential halving in the play-outs (same total work, the top two moves get 48 to 64 paired rounds) replayed on the six Archaludon decisions where 16 rounds could not separate the moves or chose a passive override (0024, 0044, 0047, 0090, 0091, 0010 K[40]). Report: time, the top-two gap, whether it clears the noise bar, the chosen move.
+2. **Then the swings, sized by the laptop first:** a `kz3` evaluator preset with km3's off switches on; shallow play-outs tested on their own (they weaken the simulated opponent); an offline fit of the evaluator's weights to the Gemini traces, with the human exam locked out of it.
+3. **Not doing:** the outside review's bot deck tuner (32 deals per package is far below the 500 the Kaggle winner found necessary, and it is against your standing rule); no slow-report change, no per-card patches.
+
+- **Gates kept:** each variant is its own pilot code; the 24 split deals are development, the other 104 regression; fresh deals and decks before "better".
+- **Cost:** about 2 to 3% of the weekly meter per evening of laptop work, no Google or API credits, one laptop evening for step 1.
+
+The next regular review is Sunday Nov 8 and will cover step 1's result.
 
 ## Sources (checked Nov 5)
 
