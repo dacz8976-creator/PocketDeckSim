@@ -1,5 +1,16 @@
 # ISMCTS sprint (the Opus cloud, Nov 2026): running notes
 
+## Final result (wrap-up, Nov 6): a failed swing
+
+- **The best setting** was `im100`: 100 iterations, km1 play-outs through the opponent's next turn, scored by km's evaluator.
+- **Read against km3, paired game by game on the same seeds:**
+  - **development decks:** 24.0% wins v km3's 30.7%, −6.8 ± 8.1 points over 192 games;
+  - **check decks, new seeds:** 18.8% v 39.5%, −20.7 ± 6.5 points over 256 games. Every check deck is below km3.
+- **It lost to km3, and it is far slower:** about 15 s of CPU a game against km3's 0.3 s.
+- **What I'd do next:** stop this track as built. If anyone reopens it, the one idea worth a small test is to start the tree from
+  km3's own move ordering (a prior), instead of from an even spread over the moves. Otherwise kx3 remains the better use of
+  search time.
+
 ## Summary (Nov 6): ISMCTS lost to km3
 
 **It does not beat km3.** It is clearly worse on the check decks, and it was not run against kx3.
