@@ -1,6 +1,74 @@
 # ISMCTS sprint (the Opus cloud, Nov 2026): running notes
 
-**Status: in progress.** The summary goes here when the runs are done.
+## Summary (Nov 6): ISMCTS lost to km3
+
+**It does not beat km3.** It is clearly worse on the check decks, and it was not run against kx3.
+
+**What was built:** single-observer ISMCTS (`im<sims>...`, `engine/src/players/ismcts_player.rs`).
+- It plans only on worlds sampled from its own observation, with kx's sampler.
+- The tree covers its own actions for the turn, with km1 play-outs through the opponent's next turn, scored by km's evaluator.
+- A test shows the same observation and seed give the same decision in two different hidden worlds.
+- km3 and kx3 play identical games on this branch (km3 30 of 30, kx3 2 of 2, against K8 b5f15351).
+
+**The numbers.** All runs are paired game by game against km3 v km3 on the same seeds; the difference is in win-share points,
+±1.96 SE.
+
+| Set | Setting | Games | ISMCTS wins | km3 wins | Difference |
+|---|---|---:|---:|---:|---:|
+| Development: decks 01-as-played, 05, 06, 09, 10, 11 v the 8 opponents, 4 games each, seeds 20,102,000,000 + 1000 k | im100 | 192 | 24.0% | 30.7% | −6.8 ± 8.1 |
+| the same | im60_pk2 (km2 play-outs) | 192 | 16.9% | 30.7% | **−13.8 ± 7.1** |
+| Check: decks 02, 04, 07, 08, 12, 13-a, 14, 15 v the 8 opponents, 4 games each, new seeds 20,103,000,000 + 1000 k | im100 | 256 | 18.8% | 39.5% | **−20.7 ± 6.5** |
+
+- **By group, development, im100:**
+  - fast (06, 09, 10): −13.5 ± 11.8 (31.2% v 44.8%, 96 games);
+  - setup (01, 05, 11): +0.0 ± 10.9 (16.7% v 16.7%, 96 games).
+  - Deck 01-kingambit-as-played came out +21.9 ± 19.1 (32 games). That is one deck where km3 itself wins 6%, and it didn't hold
+    on the other setup decks.
+- **Check set:** every one of the 8 decks is below km3, from −6.2 (deck 15) to −37.5 (deck 07, Skarmory stall).
+- **Time:** im100 takes about 13-17 s of CPU per game on this 4-core cloud machine, against about 0.3 s for km3 v km3. kx3 takes
+  6-7 minutes a game here.
+
+**What failed:**
+1. **No setting beat km3 in tuning.** Thirteen settings, 48 paired games each on decks 06, 10 and 01 v 4 opponents (tables
+   below): more iterations (300), the exploration constant and squash, a km3 anchor, km2 and km3 play-outs, full-game play-outs,
+   and full-turn expansion.
+2. **It passes up attacks.** In a lost game read at `-vv` (deck 09 v t-suicune, seed 20,104,000,004):
+   - on one turn it evolved a second Mega Manectric ex and attached its second Lightning Energy, then ended the turn without using
+     Lightning Accelerator, which those Energy pay for;
+   - two later turns also ended with no attack.
+   It attacks on most turns (3-6 attacking turns a game in the six games read), but it gives away tempo km3 keeps. That fits the
+   fast decks losing most.
+3. **The likely reason:**
+   - **The tree is shallow.** A turn has 5-8 decisions. With 100-300 iterations, the tree rarely gets past the first action or
+     two. Each root move is effectively judged as "this move, then km1 to the end of the opponent's reply", scored by km's
+     evaluator, over sampled worlds.
+   - **The signal is noisier than km3's.** km3 searches 3 actions exactly with the same evaluator, so its signal per decision is
+     cleaner than 100 noisy one-world samples.
+   - **kx3 is the contrast.** It keeps km3's move unless full-game km3 play-outs disagree beyond the noise. It plays out to the
+     end of the game with km3, which this pilot can't afford here.
+
+**ISMCTS against kx3:** not run. ISMCTS is below km3, and kx3 beat km3 53.0% v 31.7% on the 11 held-out decks (the coordinator's
+figure, a different set), so the order is kx3 > km3 > ISMCTS as built.
+
+**For the laptop, only if someone wants a second look:** the gap on the check set is 20 points with a ±6.5 interval, so more games
+won't change the answer. The cheapest further idea is in "Ideas not tried" below. A larger development run would be:
+
+```
+rl/results/sprint_ismcts_2026-11/run_pairs.sh <deckgym> <out> im100 16 <seed> <threads> decks/dustin/01-kingambit-as-played.txt decks/dustin/05-indeedee-stoutland.txt decks/dustin/06-mega-blaziken-tournament-list.txt decks/dustin/09-mega-manectric-heliolisk.txt decks/dustin/10-xatu-oricorio-tr-weezing.txt decks/dustin/11-archaludon-haxorus-dragonair.txt -- decks/screen/opponents/*.txt
+python3 rl/results/sprint_ismcts_2026-11/read_pairs.py <out> im100
+```
+
+**Ideas not tried:**
+- **Use km3 as the in-tree prior** (progressive bias toward km3's ordering of the moves), so the tree starts from km3's plan
+  instead of uniform. That is closer to how AlphaZero-style search stays at least as good as its prior.
+- **Pick the move on lower-bound value,** not visits.
+- **Spend the budget on fewer, deeper iterations:** km3 play-outs only on the most visited branches.
+
+**Tests:** `cargo test --features test-utils --lib -- ismcts playout_player`, 7 of 7 pass. These are the ISMCTS parse test, the
+information-boundary test and kx's five sampler tests. The engine's full suite was not run on this branch.
+
+---
+
 
 ## The job
 
@@ -108,3 +176,41 @@ The same 48 paired games as above. Times are for 48 games; these ran on 4 thread
   for the iterations to concentrate on good sequences.
 - **Stronger play-outs cost a lot and gained nothing clear here:** km3 play-outs took about 2 minutes a game on 4 threads.
 - **Next:** the full development set (6 decks x 8 opponents, 4 games each, 192 paired games) for `im100` and `im60_pk2`.
+
+## Milestone 4: the development and check sets (Nov 6)
+
+**Development set,** `im100`: 192 paired games, 832 s on 4 threads.
+
+| Rows | Games | im100 wins % | km3 wins % | Difference |
+|---|---:|---:|---:|---:|
+| all | 192 | 24.0 | 30.7 | −6.8 ± 8.1 |
+| fast group (06, 09, 10) | 96 | 31.2 | 44.8 | −13.5 ± 11.8 |
+| setup group (01, 05, 11) | 96 | 16.7 | 16.7 | +0.0 ± 10.9 |
+| deck 01-kingambit-as-played | 32 | 28.1 | 6.2 | +21.9 ± 19.1 |
+| deck 05-indeedee-stoutland | 32 | 6.2 | 28.1 | −21.9 ± 17.0 |
+| deck 06-mega-blaziken-tournament-list | 32 | 40.6 | 53.1 | −12.5 ± 26.0 |
+| deck 09-mega-manectric-heliolisk | 32 | 40.6 | 59.4 | −18.8 ± 20.5 |
+| deck 10-xatu-oricorio-tr-weezing | 32 | 12.5 | 21.9 | −9.4 ± 13.5 |
+| deck 11-archaludon-haxorus-dragonair | 32 | 15.6 | 15.6 | +0.0 ± 17.6 |
+
+**Development set,** `im60_pk2`: 192 paired games, 2231 s on 4 threads. All −13.8 ± 7.1; fast −23.4 ± 10.7; setup −4.2 ± 9.1.
+
+**Check set,** `im100`, new seeds: 256 paired games, 1218 s on 3 threads.
+
+| Rows | Games | im100 wins % | km3 wins % | Difference |
+|---|---:|---:|---:|---:|
+| all | 256 | 18.8 | 39.5 | −20.7 ± 6.5 |
+| deck 02-arceus-crobat | 32 | 6.2 | 37.5 | −31.2 ± 16.3 |
+| deck 04-absol-hoopa-darkrai | 32 | 12.5 | 28.1 | −15.6 ± 15.5 |
+| deck 07-skarmory-stall | 32 | 28.1 | 65.6 | −37.5 ± 17.0 |
+| deck 08-garchomp-toolbox | 32 | 12.5 | 28.1 | −15.6 ± 19.9 |
+| deck 12-ariados-whimsicott-ogerpon | 32 | 15.6 | 34.4 | −18.8 ± 18.5 |
+| deck 13-a-ninetales-raticate | 32 | 40.6 | 62.5 | −21.9 ± 22.8 |
+| deck 14-comfey-raticate-hypno | 32 | 9.4 | 28.1 | −18.8 ± 16.3 |
+| deck 15-jolteon-oricorio-raticate | 32 | 25.0 | 31.2 | −6.2 ± 19.6 |
+
+**Ties** count a half: some cells end in .x because of them.
+
+**Reading games at `-vv`:** six games of deck 09 v t-suicune, im100 v km3, seeds 20,104,000,001-006. The pilot attacked on 3-6
+of its turns per game and won 3 of 6. In seed 004 (lost) it ended three turns without an attack, one of them with an attack paid
+for (see the summary).
