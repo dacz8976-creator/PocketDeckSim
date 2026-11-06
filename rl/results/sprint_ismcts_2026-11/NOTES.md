@@ -85,3 +85,26 @@ attacks each turn it can and wins.
 **Next:**
 - the km3 anchor (`_k<margin>`): play km3's move unless the tree's mean for another move beats it by the margin;
 - km2 play-outs.
+
+## Milestone 3: more tuning (Nov 5-6)
+
+The same 48 paired games as above. Times are for 48 games; these ran on 4 threads.
+
+| Setting | Wins | Difference | Fast 06+10 | Setup 01 | Time |
+|---|---:|---:|---:|---:|---:|
+| im100_k0.05 (km3 anchor, margin 0.05) | 8 of 48 | −6.2 ± 12.2 | −6.2 | −6.2 | 198 s |
+| im100_k0.1 (km3 anchor, margin 0.1) | 9 | −4.2 ± 11.6 | −6.2 | +0.0 | 193 s |
+| im60_pk2 (km2 play-outs) | 10 | −2.1 ± 14.9 | +3.1 | −12.5 | 588 s |
+| im100_d30 (km1 play-outs to the end of the game) | 4 | −14.6 ± 14.3 | −12.5 | −18.8 | 882 s |
+| im40_pk3 (km3 play-outs) | 8 | −6.2 ± 13.6 | −15.6 | +12.5 | 1568 s |
+| im100_f (full-turn expansion) | 6 | −10.4 ± 13.4 | −9.4 | −12.5 | 168 s |
+| im200_f | 7 | −8.3 ± 14.1 | −9.4 | −6.2 | 309 s |
+
+**What this says:**
+- **Still no setting beats km3 on these games.** The best are km2 play-outs (−2.1) and the default (−4.2), both inside the noise.
+- **The km3 anchor didn't help.** Even keeping km3's move unless the tree's mean beats it by 0.1 loses a little. So the tree's
+  means for the alternatives are noisy enough to switch on noise, on the decisions where they do switch.
+- **Full-turn expansion is no better than stopping at the first new node.** With 100-200 iterations, a whole-turn tree is too wide
+  for the iterations to concentrate on good sequences.
+- **Stronger play-outs cost a lot and gained nothing clear here:** km3 play-outs took about 2 minutes a game on 4 threads.
+- **Next:** the full development set (6 decks x 8 opponents, 4 games each, 192 paired games) for `im100` and `im60_pk2`.
