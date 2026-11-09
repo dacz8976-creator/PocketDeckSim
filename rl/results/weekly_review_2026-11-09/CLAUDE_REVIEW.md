@@ -62,3 +62,41 @@ There is no new weekly note from Astra. Its last weekly is dated Nov 8 and was c
 - **Small difference:** Astra counts the tournament research library as part of the progress. By your rule I'd call it a useful reference, not something the bot does.
 - **No change** to my verdict or next step.
 
+## Amendment, Monday Nov 9, evening (after Astra's reply and Dustin's corrections)
+
+The verdict stays CONTINUE. Several statements above were stronger than the records support. Where this section and the text above disagree, this section is right.
+
+### What I overstated
+
+- **"The bot is no longer what holds things up" (B).** Too far. The pilot is good enough for some comparisons. Its known problems (healing, protecting combo pieces, timing plays, passing on safe knockouts, Muk with Regigigas) can still distort others. Use it selectively, and repair a mistake when it could change a deck decision.
+- **"It takes about 3,600 games to see a 4-point gap" (B).** Wrong as a general rule. Last night's own tests separated +5.0 with 1,080 games and +4.1 with 1,800. It depends on the pairing, the matchups, the weights and how sure you want to be.
+- **"Out of reach here" (D).** That's my judgment, not a finding. Your goal is trustworthy testing for decks you care about, which doesn't need a bot that plays every deck like a strong player. Broad reliability is not shown yet; it isn't ruled out. The Kaggle winner's 180 billion actions come from a different game with a different aim, and are not a hardware minimum for this project.
+- **"No more comparison rounds until this table exists" (next step).** Withdrawn. That was a new gate. A targeted test for a question you raise is still fine, and your games stay optional.
+
+### Corrections to section A
+
+- **"Held up every time" fits Deck 13 only.**
+  - Deck 11, Ignition alone: +2.9 on the 23 outside lists (+0.1 to +5.6), and +2.2 weighted by popularity (-1.2 to +5.5). It wasn't run on the decks you faced.
+  - Deck 11, what clearly repeated is 11v4 over 11v2: +6.0 on the 23 lists (+4.0 to +8.0), and +8.0 on the decks you faced.
+  - Water: the first outside round of 12 lists didn't separate the lists (-2.2, -8.6 to +4.3). The 23-list result clears zero only barely (-4.1, -8.0 to -0.2).
+- **Ignition's +3.7 includes the rounds that picked it.** On the rounds after the pick it's +3.5 (1,588 v 1,462 of 3,600; range +2.4 to +4.6 as you gave it, not recomputed by me).
+- **"Only the three repeated" misses Oricorio.** Pooled, it cleared zero under both opponent bots, barely (+6.2, +0.3 to +12.0; and +4.5, +0.2 to +8.8).
+- **Oricorio's one-matchup share.** Vespiquen/Shuckle gave 36 to 40% of the extra wins, not "mostly". With a tie counted as half a win it's 43 to 49% (your figure; I didn't recount the ties).
+- **"The 11v3 package".** The bot backed one of its three swaps, Ignition. Victini for Cyrus pointed down (-2.9, range includes zero). Flame Patch alone wasn't shown (+1.4, the two rounds disagreed).
+- **"No clear difference" misses Deck 17's Tool slot.** Heavy Helmet and Giant Cape both beat the Boat list: 661 and 666 v 613 wins of 1,800. Helmet v Cape is the part that showed no difference.
+- **Goodra's record.** 9-8 over 17 games on that list (Oct 29 to Nov 6), not 5-8. Four of the wins ended at setup or with no damage, so 13 games show card use. My 5-8 was the 13-game count from the Nov 8 batch. I couldn't reopen the game log from this session, so 9-8 is your figure.
+
+### The outside idea in C
+
+Splitting wins by whether a card was played doesn't isolate what the card adds. Matchups, draws and game length explain part of the gap. It's a way to find games worth inspecting, not a way to call a card good or bad.
+
+### Next step, restated
+
+**Play the trial decks as you like. Agents compare the important decisions in your games with the bot's records for the same lists.**
+
+- **The comparison is by opportunity, not by use rate:** had the card, had a useful chance to play it, played it, and what happened next. A mismatch is something to inspect. Matching percentages don't prove good play.
+- **Source:** Pause Games stores no card plays, so this needs the per-game video reviews.
+- **What it can't do:** with 2 to 13 games per deck it can only show very large differences. It should not decide the scale-down question in D. That stays your call on the whole picture.
+- **Repairs:** only for pilot problems that could change a useful deck choice.
+- **Rough cost:** depends on how many games need a video review; about 1 to 2% of the weekly meter for the games already reviewed, $0 of credits, no laptop time.
+
