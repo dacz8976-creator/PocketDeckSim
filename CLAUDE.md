@@ -26,7 +26,10 @@
   `engine/src/players/` changed for the adapter and the new cards; `rl/engine-2026-11-04/README.md`). The slow report
   has been kx3 on this engine since its re-pin (Nov 5, after kx3's replay check on it; `rl/strength/README.md`).
   Every slow report made before then ran on main-affe56e or an older engine: say which when you hand one over.
-  The working pilot is km3, on both sides of the screen and the floor. Since Sept 30, kt3/kta3/ktb3/ktc3 name the kog-based presets
+  Which pilot, by tool (name the tool, never just "the bot"): the official quick screen and the floor use km3 on both
+  sides; the pinned slow report uses kx3 with its pinned opponent set; the play page, recent arena comparisons and the
+  deck work since Nov 9 (field scan, wide screen, deck trials) use `wt_evn_r1_h1_d0.1_f1` ("f1", built in WSL under
+  `~/sprint`, not an official engine program). Since Sept 30, kt3/kta3/ktb3/ktc3 name the kog-based presets
   (kt3, ktb3 and ktc3 are diagnostic only). Earlier programs (`rl/engine-2026-10-29/`, `-10-21/`, `-10-12/`, `-10-02/`, `-09-30/`,
   `-09-28/`, `-09-27/`, `-09-25/`, `rl/addon-0.7.2/deckgym`) are history; the verified add-on 0.7.2 wheel (`rl/addon-0.7.2/wheels/`) is
   unchanged, and run identities bind to it: copy it, never rebuild it.
