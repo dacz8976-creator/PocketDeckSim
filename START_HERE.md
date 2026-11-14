@@ -3,7 +3,7 @@
 Read this before anything else in the folder.
 
 **Where to look first**
-- "Has this been tried? What do we already know?" → `tried-before-ledger\LEDGER_INDEX.txt`, in the Projects folder two levels above this repo (10 minutes with the matching `LEDGER.txt` entries).
+- "Has this been tried? What do we already know?" → `tried-before-ledger\LEDGER_INDEX.txt`, in the Projects folder two levels above this repo (10 minutes with the matching `LEDGER.txt` entries). Cloud agents without that Projects folder read `TRIED_BEFORE_INDEX.md` in this repo's root, a public summary of the same index.
 - "What is running or next?" → the shared queue note in the Claude memory folder.
 - "What are the game rules?" → `RULES_FOR_AGENTS.md`. "Which seeds are taken?" → the seed table further down this page.
 

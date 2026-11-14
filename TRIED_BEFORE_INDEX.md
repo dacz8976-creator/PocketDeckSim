@@ -1,0 +1,54 @@
+# Tried-before index (PocketDeckSim)
+
+A public summary of what this project has already tried, as of Nov 14, 2026: 143 entries in 15 families (A-O) plus 12 known problems. The full ledger, with sources, configurations and aliases, is kept outside this repository. Entry ids (for example C10) refer to it; the project's coordinator can share any entry.
+
+**Before proposing substantial work**, find the idea's family below and say: "We tried X, which showed Y under these conditions. This changes Z, which could address that limit because ... The result would change this decision: ...". A new session or a renamed bot is not a change, and "I didn't find it" never means "we haven't tried it". A failed configuration is not a failed idea: what was run, against what, and how many games is part of every result.
+
+Stop reasons used: failed its test / budget or time ran out / integration unfinished / superseded / owner's decision / not recorded.
+
+## Families (tried, dates; best result; why it stopped; new only if)
+
+- **A1-A19 One-switch scoring rules** (kp/kq/kd/kpr/kpf/kog/koh/kt/km, kz3 switches). 19 tried, Sept 24 - Nov 6. Best: kp3 (real error 11.5 to 9.2) and km3, adopted Sept 30; nothing since reads beyond ±2 points on unseen decks. Stopped: failed tests; tuning km3's evaluator was ended. New only if it prices a fault seen in the owner's games, is read on held-out decks with spread seeds, and the owner asks.
+- **B1-B12 Deeper or longer search** (k4-k6, depth 5-8, option B, kx3 play-outs, m32/m64, sequential halving _sh, kx3_p1, ISMCTS). 12 tried, Sept 24 - Nov 6. Best: kx3, +16.6 to +21.3 points over km3, but no closer to the owner's choices in a blind quiz (I5). Stopped: owner's decision Nov 5 and failed tests. New only if the leaf score is better than km3 play-outs and it is judged on the owner's decisions too.
+- **C1-C10 Look-ahead / whole-turn planning** (wt, two-turn, _h2, _y, wt_evn, f1). 10 tried, Nov 5-13. Best: f1, +9 to +12 over km3 on unseen decks, under 2 s a game; f1 is the current pilot for deck work. _y3 on f1 (Nov 13, C10) did not repair the Mega Burst habit (healthy-Mega pass rate 83.9% to 81.8%); wins +1.5 / +3.6 / +2.6 on three lists, only Dragonair clearing noise; 2.5-4.5x slower. That strengthens, but does not prove, that the scoring is the bottleneck. New only if a proposal on f1 names the recorded failure it addresses and why its change could overcome it (_a, _v, _c0 and a net two-turn planner are candidates, not reasons on their own).
+- **D1-D10 Trained networks** (RL runs 1-6, detectors, the vn value net, vfix, imitation of a language model's choices). 10 tried, Sept 18 - Nov 8. Best: vn3, +5.5 to +6.5 on unseen decks (the first model to generalise). Stopped: card-number networks failed; retrains and imitation failed their tests. New only if the data or the target change materially (deck variety, much more data, the owner's hand-value rule).
+- **E1-E3 Weight tuning and fitting** (table tuning, CMA-ES, fit A/B/C). 3 tried, Sept 24 - Nov 6. Best: +0.35 on held-out decks (nothing). Stopped: failed (a plateau with cliffs). New only with a different scorer (net leaf, hand-kind terms) or a tuned refit loop.
+- **F1-F4 Language models as pilot** (Gemini whole games, Claude models as teacher, a Claude deck read). 4 tried, Oct 29 - Nov 6. Best: Gemini 73-56 against kx3 (mostly one deck); Claude Opus +9.4 over km3. Stopped: owner's decision Nov 1. New only if the owner names a deck and agrees to language-model games against the real field. Not the same as D (copying a model's choices).
+- **G1-G7 Language models as judge or reviewer** (card-text reading, video reviews of the owner's games, ladder checks, outside reviews, and others). 7 tried, Aug - Nov 5. Best: a cheap Gemini review sheet, 96.7% accurate, in use. New only if model quality or run time changes the trade-off.
+- **H1-H6 Consistency, goldfish and setup tools** (brew pages, floor check, plan lines, setup tester, card-use counts). 6 tried, Sept 25 - Nov 8. Best: drawn / could-use / used card counts (in use). Stopped: the owner judged them not useful unless they predict real results. New only if a setup measure predicts real results on more than six lists.
+- **I1-I17 Judging bots against the owner's decisions** (quizzes, Evolve or Hold, position studies, mistake counters, replay reviews, weakness reads, quiz comments). 17 tried, Sept 25 - Nov 13. Best: blind-read counters and the owner's written evolve and knockout rules. New only if it asks the owner's question blind.
+- **J1-J12 Bot score as a deck verdict** (scoreboard, slow report, ladder validation, round robin, field scan, weak-deck control, wide screen, gap investigation, gap runs). 12 tried, Sept 23 - Nov 13. Best: separates weak lists from established ones (0.91); whole-deck tracking of real results 0.12-0.36, slope 0.09. Stopped: owner's decisions; no more broad screens. New only if a method beats 0.12 / 0.36 on a rule written first.
+- **K1-K8 Deck version trials with the bot** (decks 12/13, Kingambit, Goodra, the overnight loop, out-of-pool lists, Giant Cape, shells, Charizard). 8 tried, Oct 14 - Nov 10. Best: deck 13 with Igglybuff, +7.8 (the only result that held every time). Stopped: budget or time ran out; the owner's picks pending. New only if the owner names a deck and a question (one deck, 2-4 versions against the 23-list field, 2 or more seed sets).
+- **K9 Dedenne ex / Indeedee ex** (a tournament list the owner is playing in event games; the game record is in the private ledger): bot about 57-58%; real archetype record 54.3% of 116 matches (all its lists). Still in use. Open: keeping the Tool count up after Indeedee is lost. No swap justified yet.
+- **L1-L8 Deck-building approaches** (AI brews, Heal Block, the combos page, a shape study, the owner's 10-game loop, outside reviewers' ideas, the tournament-list library). 8 tried, Sept 10 - Nov 13. Best: rebuilds on real tournament shells, and the library. Stopped: owner's decisions. New only if a combination the owner names is built in a real shell with each card's job named.
+- **M1-M10 Engine, rules and plumbing** (releases R1-R8, recordings check, upstream PRs, adapter, speed work, crash fix, leak tests, --spread). 10 tried, Sept 10 - Nov 8; all worked. Open: bot play on the 260 newest printings is unmeasured; the speed work is not merged to main (that waits for the owner's go-ahead).
+- **N1-N6 Outside code and research** (surveys, a fork, Kaggle / DeNA / PTCG-Bench, weekly searches, pocket-zero). 6 tried, Oct 16 - Nov 13. Nothing plugs in. New only if a public model with current cards appears or the owner agrees to try pocket-zero.
+- **O1-O10 Process** (gates, memory tools, review cadences, messaging, the sprint, cleanups, vetoes, direction resets). 10 tried, Aug - Nov 13. Gates produced paperwork. Latest weekly verdict (Nov 13): continue; the owner picks one deck, then one 2-4 version comparison (no broad screens).
+
+## Known problems (bot and tool limits; check here before "discovering" one)
+
+- **KP1** Plans one own turn; under-plays multi-turn plans. Tried kpr3, koh, ky3, deeper search, kx3, wt play-ons, _y on the km scorer, _y3 on f1 (C10): none fixed it. Candidates, not reasons on their own: _a, _v, _c0.
+- **KP2** Cards held in hand are mis-valued. An f1 rule patches it; the vfix and no-hand retrains failed.
+- **KP3** Passes up knockouts and free attacks (f1: 10.6% of counted chances, about half of them mistakes). _zs3 failed; ky3 _atk dropped; the fix is deferred by the owner. The _y3 look-ahead (C10) did not repair the Mega Burst habit (healthy Mega 83.9% to 81.8% passed); that strengthens, but does not prove, that the scoring is the bottleneck.
+- **KP4** Energy on the wrong or doomed Pokémon. Lower under wt and f1 (0.62 against km3's 4.23 per 100 turns); kz arm-bench failed (-5.2).
+- **KP5** Skips evolutions and leaves the Bench short (network bots). The f1 rule fixes the counts (0.33 / 0.11); retrains failed.
+- **KP6** Setup choices. The opening Active is fixed (koa); Miraidon ex is put down at setup 325 times in 325; f1's setup is km3's. _a is untested.
+- **KP7** Play-outs drift to passive moves (kx3 ends the turn or retreats). Sequential halving changed nothing; kx3 work dropped.
+- **KP8** Card-specific gaps: X Speed, Goo-zooka and opponent Retreat, Mega Kangaskhan's second hit, attacks into Safeguard, Miraidon ex's Ability. No per-card patches allowed.
+- **KP9** Bot deck score does not predict real results (0.12; 0.36; slope 0.09: a bot 55% is about 48-51% real). Under-rates decks that need several pieces. Partial causes: our Magnezone list is not the common build; Mega Burst passes; the Altaria / Greninja cause was not found.
+- **KP10** Winning bot games is not the same as playing like the owner (blind quizzes, position studies).
+- **KP11** Measurement traps: same-seed reads, self-graded counters, a one-way evolve counter, a leak-test blind spot, silently lost games, one-seed reversals, and a Limitless average of 46.3%, not 50.
+- **KP12** Strong pilots are slow: kx3 takes minutes a game, m64 about 3x more, language-model pilots several minutes and many calls a game.
+
+## Ten things never to pay to re-learn
+
+1. Bot deck win % does not rank decks (rho 0.12 on 27 decks; 0.36 on 10; slope 0.09). The 55% shortlist rule is retired (Nov 14): no bot-score threshold picks, ranks or rejects decks; the bot only separates clearly weak lists.
+2. More search or more play-outs beat other bots but did not match the owner's judgment in a blind quiz (kx3 +21 over km3).
+3. km3's fault is its scoring, not its depth: searching deeper (depth 5-8) did not change its poor choices (Oct 18).
+4. Tuning or fitting km3's weights is a plateau (32,208 CMA-ES games; three fit methods; an outside fork found the same).
+5. Card-number networks do not carry to new decks; the card-agnostic net does (+5.5 to +6.5) but over-values held cards.
+6. f1 (`wt_evn_r1_h1_d0.1_f1`) is the pilot for deck work: +9 to +12 over km3 on unseen decks; its habit faults are KP1-KP5.
+7. Version differences under a few points need 2 or more seed sets; one-seed results reverse; rankings can change with the pilot.
+8. AI-built decks need a real tournament shell; deck shape does not predict winners; every card needs a job.
+9. A cheap language-model review of recorded games is accurate enough (96.7%) to use; full reviews by larger models do not fit the project.
+10. The owner named most bot habits first: say "this was reported before; the count is N of M" and lead with what is new.
