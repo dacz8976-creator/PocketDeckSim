@@ -49,7 +49,7 @@ Say plainly when no new practical benefit was delivered. Tests, reports, game co
   - Any new run identifies the add-on explicitly and has a fresh result identity.
 - **Every deck ranking produced before 2026-09-10 is void.** They ran on an engine where Asleep/Paralyzed Pokémon could still attack and retreat. Don't re-run them; don't cite them.
 - **What the simulator is for.**
-  - The mission above is the practical yardstick. The scoreboard's 45 cells against Limitless and its target real error of 5.5 are evaluation measures, not the project's deliverable (current versions and rules are in RUN5).
+  - The mission above is the practical yardstick. The scoreboard's 45 cells against Limitless and its target real error of 5.5 are evaluation measures, not the project's deliverable (their versions and rules as of Nov 5, 2026 are in RUN5, which is history; what is current is in the queue note and the tried-before index).
   - The simulator hasn't been shown to rank decks, so brews are judged on the ladder.
   - Compare deck variants under comparable conditions and report uncertainty and pilot limitations. The older fast-screen planning rule (at least 1,000 games; differences under 5 points treated as noise) is not a universal budget or statistical rule. Follow each existing registration as written; size new comparisons for the decision they need to inform.
 - **What "competitive" means is read off Limitless**, not simulated. Snapshot and top-30 table: `decks/classifier/limitless_2026-09-10.json`. Refresh roughly monthly or when a set drops.
@@ -58,7 +58,7 @@ Say plainly when no new practical benefit was delivered. Tests, reports, game co
 
 Current deck-improvement work uses `decks/dustin/`, `decks/brews/`, the Ladder Log and dated evidence in `rl/results/`. The archived Lab's `decks/README.md` is historical guidance, not the home of new work.
 - Start with the deck and problem Dustin cares about, compare useful alternatives, explain the tradeoffs, and provide the chosen list and QR when a list changes. Use his ladder feedback to keep, adjust or retire it; do not require him to finish a fixed game count before choosing what to play.
-- What the bot screen may be used for at the moment (the floor check, holds on ranking) is in RUN5.
+- What bot games may be used for at the moment: one named question on one deck (2-4 versions against the field, 2 or more seed sets), and telling clearly weak lists from established ones. Not for picking, ranking or rejecting decks by a score: a bot score of 55-60% goes with an average real record, give or take 10 (tried-before index, known problem KP9). RUN5's older rules on this are history.
 
 ## Before you do anything
 
@@ -83,7 +83,7 @@ A developer gets only the answer-free excerpts the coordinator stages: the rules
 
 ## Where things are
 
-- `rl/RUN5.md`: the approved plan, its rules and "Where things stand" (all status). `rl/results/<topic>_<date>/`: each run's files and reading. `project_manifest.json`: the official engine and its hashes.
+- `rl/RUN5.md`: the Sept 25 plan, its rules and "Where things stand" as of Nov 5, 2026 (history; the engine-switch procedure in it still applies). Current status: the queue note. What has been tried: the tried-before index. `rl/results/<topic>_<date>/`: each run's files and reading. `project_manifest.json`: the official engine and its hashes.
 - `RULES_FOR_AGENTS.md` — the rules. `lib/card.py` — card lookup. `LOG.md` — one line per session (*Pocket Deck Lab only*).
 - `decks/dustin/` — Dustin's 15 real decks, decoded from in-game QR codes.
 - `decks/README.md` — deck-building rules, the quick screen and its pass bar (*Pocket Deck Lab only*).
