@@ -1,9 +1,17 @@
 # START HERE — PocketDeckSim
 
 Read this before anything else in the folder.
+
+**Where to look first**
+- "Has this been tried? What do we already know?" → `tried-before-ledger\LEDGER_INDEX.txt`, in the Projects folder two levels above this repo (10 minutes with the matching `LEDGER.txt` entries).
+- "What is running or next?" → the shared queue note in the Claude memory folder.
+- "What are the game rules?" → `RULES_FOR_AGENTS.md`. "Which seeds are taken?" → the seed table further down this page.
+
 - **This page carries no status, on purpose** (Fable, Sept 28, after it went stale twice in three days). It holds only what doesn't expire: what the project is for, which engine is official, the rules for agents, where things are, and the seed registry.
-- **What is running, finished or next** lives in `rl/RUN5.md`: "The plan, revised Sept 25 (approved by Dustin)", with its "Where things stand", order of work and rules. Each result's own dated folder under `rl/results/` holds its reading.
-- If another file disagrees with this page on a standing fact, the other file is history. On status, RUN5 wins.
+- **Before proposing any substantial work, read the tried-before index:** `..\..\tried-before-ledger\LEDGER_INDEX.txt` from this folder (the `tried-before-ledger` folder sits in the same Projects folder that holds `Pocket Deck Sim`; from WSL it is under `/mnt/c/Users/<user>/Projects/`), then the matching entries in `LEDGER.txt` beside it (search by any name or bot code; every entry has an "Also called" line). It lists what has been tried, what it showed, why it stopped, the known problems, and what would make a new attempt different. It sits outside this repo because the repo is public. A proposal says: "We tried X, which showed Y under these conditions. This changes Z, which could address that limit because ... The result would change this decision: ...". A new session or a renamed bot is not a change. "I didn't find it" never means "we haven't tried it".
+- **What is running or next** is in the shared queue note (`pocketdecksim-orchestrator-queue.md` in the Claude memory folder). `rl/RUN5.md` is history: the plan and status up to Nov 5, 2026, nothing later. Each result's dated folder under `rl/results/` holds its reading; work since Oct 29 is in WSL under `~/sprint` and is summarised in the ledger.
+- **When a piece of work finishes,** the agent that ran it adds or updates its ledger entry (result, stop reason, configuration, where the record is) the same day; the coordinator checks it at handoff.
+- If another file disagrees with this page on a standing fact, the other file is history. (Changed Nov 13, 2026 by the coordinator, with the owner's go-ahead.)
 
 > Pocket Deck Lab (the folder beside this repo) is the archived predecessor. Current deck lists, deck-improvement work, the simulator and bot work live here. Anything marked *(Pocket Deck Lab only)* is an archived reference that wasn't copied.
 

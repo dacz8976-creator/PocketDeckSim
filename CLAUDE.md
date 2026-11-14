@@ -6,7 +6,10 @@
   files, gates or process documents unless Dustin asks; report in plain language.
 - Pocket (the mobile game) is not the physical Pokémon TCG. Read `RULES_FOR_AGENTS.md` before
   touching game logic, and look cards up with `python3 lib/card.py <name or id>`, never from memory.
-- Current plan and status: `rl/RUN5.md`, "The plan, revised Sept 25" and its "Where things stand". The
+- Before proposing substantial work, read the tried-before index
+  (`..\..\tried-before-ledger\LEDGER_INDEX.txt` from this folder, full detail in `LEDGER.txt` beside it) and say
+  what was tried before, what your proposal changes and why that matters (wording in START_HERE). Current work is
+  in the shared queue note in the Claude memory folder. `rl/RUN5.md` is history up to Nov 5, 2026. The
   scoreboard's 45 cells vs Limitless (`rl/results/scoreboard_v3_2026-09-27/`) are an evaluation measure;
   START_HERE's mission determines why work is useful. Preserve each registered experiment's rules.
 - Pick seeds outside every range in START_HERE's seed table. Claude Code's diagnostics use
