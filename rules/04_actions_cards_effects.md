@@ -11,6 +11,7 @@ Grades as in `01_game_structure.md`. Sources in `06_sources.md`. Card text quote
 - There is no rule against attaching to a Pokémon put into play this turn. [INFERRED — no restriction in any source or UI message]
 - Effects can forbid it ("Can't attach any Energy from the Energy Zone to Active Pokémon") or react to it (Jolteon ex's Electromagnetic Wall does 20 to the Pokémon the opponent attaches to, Active or Bench [OBSERVED]; Darkrai ex's Nightmare Aura). Some effects hit an "Energy limit" ("Unable to attach any more Energy as limit has been reached"). [IN-GAME TEXT]
 - Card effects that attach Energy from the Zone are separate from the manual attachment and don't use it up. [OBSERVED 020124]
+- A card effect that names an Energy type ("Take a [W] and a [L] Energy from your Energy Zone...", Dragonair B2b 052's Sky's Blessing) gives that type even when the deck's Energy Zone is not set to it. [OWNER, Nov 14, 2026: "You don't need lightning energy selected if you have that dragonair tho. Mega dragonite only requires one lightning so as long as you can use that attack once"] The engine's SelfChargeActive attaches the named types directly.
 - If a player doesn't attach, the Energy is discarded at the end of the turn. [COMMUNITY]
 
 ## 2. Retreat
