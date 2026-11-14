@@ -29,7 +29,9 @@
   Which pilot, by tool (name the tool, never just "the bot"): the official quick screen and the floor use km3 on both
   sides; the pinned slow report uses kx3 with its pinned opponent set; the play page, recent arena comparisons and the
   deck work since Nov 9 (field scan, wide screen, deck trials) use `wt_evn_r1_h1_d0.1_f1` ("f1", built in WSL under
-  `~/sprint`, not an official engine program). Since Sept 30, kt3/kta3/ktb3/ktc3 name the kog-based presets
+  `~/sprint`, not an official engine program). New deck-work runs since Nov 14 add `_q1` to that name (binary
+  `~/sprint/bin/rspread/v2`): it estimates random-target attacks such as Draco Meteor, which plain f1, km3 and kx3 read
+  as 0, and plays the same as f1 where neither list holds one. Since Sept 30, kt3/kta3/ktb3/ktc3 name the kog-based presets
   (kt3, ktb3 and ktc3 are diagnostic only). Earlier programs (`rl/engine-2026-10-29/`, `-10-21/`, `-10-12/`, `-10-02/`, `-09-30/`,
   `-09-28/`, `-09-27/`, `-09-25/`, `rl/addon-0.7.2/deckgym`) are history; the verified add-on 0.7.2 wheel (`rl/addon-0.7.2/wheels/`) is
   unchanged, and run identities bind to it: copy it, never rebuild it.
