@@ -43,6 +43,25 @@ Written by the coordinator's worker (Claude, "Multi-agent project orchestration"
   - Its scripts are in `Pocket Deck Sim/match-log/`, outside the repository.
 - **Mailbox:** the daily check task now notifies the Opus session. It ran unread on Nov 15 morning, which Dustin noticed.
 
+## C2. Added Sun Nov 15 afternoon (after the first version of this sheet)
+
+- **Pocket Match Log (https://claude.ai/artifact/WMvXQL7izp91YBvSaqB4kb) now also has:**
+  - **How each game ended**, with a filter and a loss breakdown. Sonnet readers tagged all 493 games, and Opus settled the 139 that disagreed with a keyword pass or with Ladder Field's 'end' field.
+    - Losses: 146 to the 3-point race, 70 by his concession, 13 board-outs, 21 unrecorded.
+    - "Short on Basics" is marked only where a note says so (5 games).
+  - **The opponent's actual Energy for all 303 pause games**, read from Codex's turn records. Every answer was read twice, with 0 corrections.
+- **His two Magnezone/Miraidon board-out losses**, as Codex's packets record them (facts only, no misplay calls):
+  - **Vespiquen game (B26):** his only Basics were the two Oricorio, so he was genuinely short on Basics.
+  - **Flygon ex game (A08):** he opened with one Basic and got two more by turn 2. On turn 8, Professor Turo shuffled Miraidon ex away, leaving Magnezone as his only Pokémon.
+  - The Nov 14 first-pass claim that Magnemite sat in his hand all game in B26 was wrong.
+- **deckgym's creator (AMANSA), Discord, Nov 15:** Dustin showed him the Match Log and offered his ~500 logged games.
+  - On his reinforcement-learning AI that plays every card (verbatim): "Its still not ready. Its a lot easier to do a strong bot for the top 20 meta decks. Full generalist and strong is fairly hard and might need compute." So no outside generalist bot exists for unusual decks. This matches Dustin's Nov 14 conclusion. The data offer stands; no export was made.
+  - He also announced a **DeckGym MCP** (https://www.deckgym.com/mcp): free, no account. It gives meta deck data (his screenshot showed 2,353 tournament lists from the last 7 days with deck shares; Magnezone/Miraidon ex is #4), the full card catalog, decks that use a card, and builder links. Simulation stays in the browser.
+  - **Installed Nov 15 on Dustin's "Yes, add it"** for all his Claude Code sessions (user scope; shows Connected). Its tools load only in sessions started after that point, so its tool list and data source are still unchecked.
+  - This could replace Codex's Nov 8 deck library (160 lists from 20 events) with current lists, and help "card needs a job" checks.
+- **Records:** Gemini's daily review confirmed three record slips, all fixed: K11 win methods, "_a untested" in three ledger places, and a stale `.git/index.lock`. It also made one wrong claim, that the Match Log reads Codex's SUMMARY.json files (it doesn't), and one unchecked one, that the bot "rightly" declined Legendary Drive.
+- **GitHub Desktop:** it had been opening an empty clone in OneDrive. Dustin switched to the real checkout and pushed the 5 commits.
+
 ## D. Outside search, Nov 15 (two web searches)
 
 - **No new public result ties DeckGym to an RL release.** The deckgym-core engine can export (state, action) pairs as JSON for policy, value or imitation training.
