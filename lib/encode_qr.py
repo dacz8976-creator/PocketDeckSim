@@ -45,11 +45,14 @@ _aliases = json.load(open(_cat, encoding='utf-8'))['aliases']
 BYID = {a['deckgym_id']: a for a in _aliases}      # the catalog only; never the provisional overlay
 # C1 printings the catalog lacks, from the provisional overlay; load() refuses any overlap, so the catalog wins
 PROVISIONAL, NOT_COVERED = c1.load(_aliases)
+# Promo C printings with a number the game itself wrote (lib/promo_c_entities.json); apart from PROVISIONAL
+PROMO_C = c1.load_promo(_aliases)
 
 
 def card(cid):
-    """The catalog's entry for an id, else the provisional overlay's (it has 'provisional': True); None if neither."""
-    return BYID.get(cid) or PROVISIONAL.get(cid)
+    """The catalog's entry for an id, else the provisional overlay's (it has 'provisional': True), else a
+    Promo C entry the game wrote; None if none."""
+    return BYID.get(cid) or PROVISIONAL.get(cid) or PROMO_C.get(cid)
 
 
 ENERGY = {'grass': 1, 'fire': 2, 'water': 3, 'lightning': 4, 'psychic': 5, 'fighting': 6, 'darkness': 7, 'metal': 8,
@@ -130,7 +133,7 @@ if __name__ == '__main__':
         energy, cards = parse(path)
         code = encode(energy, cards)
         print(f'== {os.path.basename(path)}  code={code}')
-        prov = [cid for _, cid in cards if cid in PROVISIONAL]
+        prov = [cid for _, cid in cards if cid in PROVISIONAL or cid in PROMO_C]
         if prov:
             print(f'   provisional C1 entities (until the community catalog has C1; lib/c1_provisional_entities.json): '
                   f'{", ".join(prov)}')

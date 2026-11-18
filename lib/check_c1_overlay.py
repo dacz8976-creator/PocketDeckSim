@@ -115,6 +115,38 @@ def load(aliases, path=OVERLAY, enabled=None):
     return covered, {e['id']: e for e in data['not_covered']}
 
 
+PROMO = os.path.join(HERE, 'promo_c_entities.json')
+PROMO_SCHEMA = 'promo_c_entities v1'
+
+
+def load_promo(aliases, path=PROMO, enabled=None):
+    """{id: alias} for the Promo C printings whose entity the game itself wrote (lib/promo_c_entities.json,
+    from a real in-game QR). Same alias shape as load(), 'provisional': True. Empty when the overlay is off
+    (PDL_C1_OVERLAY=off) or the file is gone. Only for ids and entities the catalog lacks: REFUSES overlap
+    with the catalog. Kept apart from load() so the C1 overlay's counts do not change."""
+    if enabled is None:
+        enabled = os.environ.get(OFF, '').strip().lower() != 'off'
+    if not enabled or not os.path.exists(path):
+        return {}
+    with open(path, encoding='utf-8') as f:
+        data = json.load(f)
+    if data.get('schema') != PROMO_SCHEMA:
+        raise SystemExit(f'{path}: not a "{PROMO_SCHEMA}" file')
+    by_id = {a['deckgym_id']: a for a in aliases}
+    used = {split_key(a['entity_key']) for a in aliases}
+    out = {}
+    for e in data['entries']:
+        if e['id'] in out:
+            raise SystemExit(f'{path}: {e["id"]} is listed twice')
+        key = split_key(e['entity_key'])
+        if e['id'] in by_id or key in used:
+            raise _stop(f'the card catalog has {e["id"]} or uses {e["entity_key"]}, which the Promo C file lists')
+        out[e['id']] = {'deckgym_id': e['id'], 'raw_name': e['name'], 'entity_key': e['entity_key'],
+                        'base_deckgym_id': e.get('same_card_as', e['id']), 'derivation': 'game-qr',
+                        'provisional': True}
+    return out
+
+
 def compare(data, aliases):
     """([(MATCH or MISMATCH, id, overlay key, catalog key or None)] for every covered id,
     [(id, catalog key)] for the not-covered ids the catalog has)."""

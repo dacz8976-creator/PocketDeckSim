@@ -34,6 +34,9 @@ for a in cat:
 prov=collections.defaultdict(list)
 for a in c1.load(cat)[0].values():
     prov[c1.split_key(a['entity_key'])].append(a)
+promo=collections.defaultdict(list)
+for a in c1.load_promo(cat).values():
+    promo[c1.split_key(a['entity_key'])].append(a)
 def lookup(kind,num):
     """(card id, name, provisional) of a code's entity: the catalog's lowest-rarity printing, else the
     overlay's lowest C1 id; None if neither has it."""
@@ -44,6 +47,10 @@ def lookup(kind,num):
     lst=prov.get((kind,num))
     if lst:
         a=min(lst,key=lambda a:int(a['deckgym_id'].split()[1]))
+        return a['deckgym_id'],a['raw_name'],True
+    lst=promo.get((kind,num))   # Promo C numbers the game wrote (lib/promo_c_entities.json); C1 wins a shared number
+    if lst:
+        a=min(lst,key=lambda a:a['deckgym_id'])
         return a['deckgym_id'],a['raw_name'],True
     return None
 def name(kind,num):
