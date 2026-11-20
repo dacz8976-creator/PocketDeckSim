@@ -1,14 +1,19 @@
 {
  "schema": "promo_c_entities v1",
  "label": "Promo C (P-C) deck-code entities the game itself wrote",
- "what": "Deck-code (QR) entities for four Promo C printings, read from a real in-game deck QR. Kept apart from lib/c1_provisional_entities.json (its counts and build are untouched) and from the catalog. lib/encode_qr.py and lib/decode_qr.py read it through lib/check_c1_overlay.py load_promo(), only for ids and entities the catalog lacks (the catalog always wins). Only numbers the game wrote are here: no guesses.",
+ "what": "Deck-code (QR) entities for the eight Promo C printings P-C 002-009, read from two real in-game deck QRs. Kept apart from lib/c1_provisional_entities.json (its counts and build are untouched) and from the catalog. lib/encode_qr.py and lib/decode_qr.py read it through lib/check_c1_overlay.py load_promo(), only for ids and entities the catalog lacks (the catalog always wins). Only numbers the game wrote are here: no guesses.",
  "source": "from the owner's in-game QR, Nov 18 2026 ('New deck 4'); raw payload AZic/BMAWXQAVxwAV5QAV54AV3YAWD4AWGYAVb4AWCAAWWAAVUYAVq4AWI4AWc4AV04AWboAWMoAV0QAVnIDBQcG",
- "evidence": "Re-encoding the deck's 20 cards by these ids gives a payload byte-identical to the scanned one (lib/test_promo_c.py). Which new number belongs to which card comes from slot position (the other 17 Pokemon slots follow the screen order exactly); the bytes alone do not name the card.",
- "left_out": "P-C 004 Inkay (22980 is a spacing guess only), P-C 006 Cosmog, P-C 007 Cosmoem (no promo badge on the scanned Cosmoem), P-C 009 Genome Converter Y: not established; they stay refused by encode_qr.",
+ "source_2": "from the owner's in-game QR, Nov 20 2026 ('New deck 1', which the owner says holds all the Promo C cards available through the Dual Fusion event; it also holds Zoroark ex, Mega Audino ex, Pikachu and Bewear ex, which read as their existing cards); raw payload AZidfhMAXXAAXUgAV4oAV5QAV54AV54AV3YATHIAXWYAWcQAWcQAWc4AWc4AWboAWboARowAXXoAWaYAN0YDBQED",
+ "evidence": "Re-encoding each deck's 20 cards by these ids gives a payload byte-identical to the scanned one (lib/test_promo_c.py). Which new number belongs to which card comes from slot position (the other Pokemon slots follow the screen order exactly; the one Trainer slot is Genome Converter Y); the bytes alone do not name the card.",
+ "left_out": "Numbers the Nov 20 code also holds for cards the catalog and engine have no id for, so not entered: Torchic pokemon:23920, Chikorita 23880, Treecko 23910, Mudkip 23930 (promo-badged starters; the engine's P-C list stops at P-C 013), and Bewear ex 22950 (C1 118, exactly the C1 117 + 10 the C1 overlay declined to assume; it belongs to that overlay, not here).",
  "entries": [
   {"id": "P-C 002", "name": "Mega Mewtwo Y ex", "entity_key": "pokemon:022970", "kind": "new number"},
   {"id": "P-C 003", "name": "Deoxys", "entity_key": "pokemon:022390", "kind": "same number as C1 062 Deoxys", "same_card_as": "C1 062"},
+  {"id": "P-C 004", "name": "Inkay", "entity_key": "pokemon:022980", "kind": "new number (Nov 20 code)"},
   {"id": "P-C 005", "name": "Malamar", "entity_key": "pokemon:022990", "kind": "new number"},
-  {"id": "P-C 008", "name": "Lunala", "entity_key": "pokemon:022430", "kind": "same number as C1 066 Lunala", "same_card_as": "C1 066"}
+  {"id": "P-C 006", "name": "Cosmog", "entity_key": "pokemon:022410", "kind": "same number as C1 064 Cosmog (Nov 20 code)", "same_card_as": "C1 064"},
+  {"id": "P-C 007", "name": "Cosmoem", "entity_key": "pokemon:022420", "kind": "same number as C1 065 Cosmoem (Nov 20 code)", "same_card_as": "C1 065"},
+  {"id": "P-C 008", "name": "Lunala", "entity_key": "pokemon:022430", "kind": "same number as C1 066 Lunala", "same_card_as": "C1 066"},
+  {"id": "P-C 009", "name": "Genome Converter Y", "entity_key": "trainer:001790", "kind": "new number (Nov 20 code)"}
  ]
 }

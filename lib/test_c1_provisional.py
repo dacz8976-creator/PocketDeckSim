@@ -272,7 +272,9 @@ class Decode(unittest.TestCase):
         code = base64.b64encode(bytes([0, 1]) + (22950).to_bytes(3, 'big') + bytes([1, 1])).decode()
         pk, tr, en = decode_qr.decode(code)
         self.assertEqual(pk, collections.Counter({'UNKNOWN pokemon:22950': 1}))
-        self.assertEqual(decode_qr.name('trainer', 1790), 'UNKNOWN trainer:1790')   # after C1 131
+        # trainer 1790 (the number after C1 131) turned out to be Genome Converter Y P-C 009 (Nov 20 QR,
+        # lib/promo_c_entities.json); the next number is still unknown
+        self.assertEqual(decode_qr.name('trainer', 1800), 'UNKNOWN trainer:1800')
 
     def test_the_catalog_wins(self):
         self.assertEqual(decode_qr.lookup('pokemon', 16690), ('B3 004', 'Celebi', False))   # C1 187's entity

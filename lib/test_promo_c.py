@@ -32,6 +32,20 @@ DECK = """Energy: Psychic, Darkness, Fighting
 1 Jynx C1 036
 1 Sweet Honey C1 119
 """
+SCANNED_2 = 'AZidfhMAXXAAXUgAV4oAV5QAV54AV54AV3YATHIAXWYAWcQAWcQAWc4AWc4AWboAWboARowAXXoAWaYAN0YDBQED'
+DECK_2 = """Energy: Psychic, Grass, Water
+1 Cosmog P-C 006
+1 Cosmoem P-C 007
+2 Lunala P-C 008
+1 Deoxys P-C 003
+1 Hisuian Zoroark ex B3b 060
+2 Inkay P-C 004
+2 Malamar P-C 005
+2 Mega Mewtwo Y ex P-C 002
+1 Mega Audino ex B3 141
+1 Pikachu B2 049
+1 Genome Converter Y P-C 009
+"""
 
 
 class PromoC(unittest.TestCase):
@@ -44,11 +58,13 @@ class PromoC(unittest.TestCase):
 
     def test_card_resolves(self):
         for cid, key in (('P-C 002', 'pokemon:022970'), ('P-C 003', 'pokemon:022390'),
-                         ('P-C 005', 'pokemon:022990'), ('P-C 008', 'pokemon:022430')):
+                         ('P-C 004', 'pokemon:022980'), ('P-C 005', 'pokemon:022990'),
+                         ('P-C 006', 'pokemon:022410'), ('P-C 007', 'pokemon:022420'),
+                         ('P-C 008', 'pokemon:022430'), ('P-C 009', 'trainer:001790')):
             self.assertEqual(encode_qr.card(cid)['entity_key'], key)
-        for cid in ('P-C 004', 'P-C 006', 'P-C 007', 'P-C 009'):     # not established: stay refused
+        for cid in ('P-C 001', 'P-C 010', 'P-C 013'):     # not in either code: stay refused
             self.assertIsNone(encode_qr.card(cid))
-        self.assertEqual(set(encode_qr.PROMO_C), {'P-C 002', 'P-C 003', 'P-C 005', 'P-C 008'})
+        self.assertEqual(set(encode_qr.PROMO_C), {f'P-C 00{i}' for i in range(2, 10)})
         self.assertFalse(set(encode_qr.PROMO_C) & set(encode_qr.PROVISIONAL))
 
     def test_byte_identical_to_scan(self):
@@ -66,7 +82,24 @@ class PromoC(unittest.TestCase):
         self.assertEqual(decode_qr.lookup('pokemon', 22430)[:2], ('C1 066', 'Lunala'))
         self.assertEqual(decode_qr.lookup('pokemon', 22970)[:2], ('P-C 002', 'Mega Mewtwo Y ex'))
         self.assertEqual(decode_qr.lookup('pokemon', 22990)[:2], ('P-C 005', 'Malamar'))
-        self.assertIsNone(decode_qr.lookup('pokemon', 22980))       # Inkay: a guess, stays out
+        self.assertEqual(decode_qr.lookup('pokemon', 22980)[:2], ('P-C 004', 'Inkay'))
+        self.assertEqual(decode_qr.lookup('trainer', 1790)[:2], ('P-C 009', 'Genome Converter Y'))
+
+    def test_second_scan_nov20(self):
+        # 'New deck 1', Nov 20: the four starters and Bewear ex have no id anywhere, so only the
+        # cards with ids are re-encoded here; the full payload is checked slot by slot instead.
+        tr, pk, en = decode_qr.read_code(SCANNED_2)
+        self.assertEqual(en, [5, 1, 3])
+        self.assertEqual(tr, [1790])
+        want = [23920, 23880, 22410, 22420, 22430, 22430, 22390, 19570, 23910, 22980, 22980,
+                22990, 22990, 22970, 22970, 18060, 23930, 22950, 14150]
+        self.assertEqual(pk, want)
+        for n in (23920, 23880, 23910, 23930, 22950):              # left out on purpose
+            self.assertIsNone(decode_qr.lookup('pokemon', n))
+        # every other card in the code: its id from DECK_2 encodes to exactly the number the game wrote
+        ids = [l.split(' ', 1)[1].rsplit(' ', 2)[1:] for l in DECK_2.splitlines()[1:]]
+        got = sorted(int(encode_qr.card(' '.join(i))['entity_key'].split(':')[1]) for i in ids)
+        self.assertEqual(got, sorted(set(want + tr) - {23920, 23880, 23910, 23930, 22950}))
 
     def test_roundtrip_by_name(self):
         energy, cards = encode_qr.parse(self.write(DECK))
@@ -78,7 +111,7 @@ class PromoC(unittest.TestCase):
         self.assertEqual(back, want)
 
     def test_still_refused(self):
-        deck = DECK.replace('1 Malamar P-C 005', '1 Inkay P-C 004')
+        deck = DECK.replace('1 Malamar P-C 005', '1 Stantler P-C 010')
         with self.assertRaises(SystemExit):
             encode_qr.parse(self.write(deck))
 
