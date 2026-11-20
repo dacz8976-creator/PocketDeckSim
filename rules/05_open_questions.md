@@ -86,14 +86,14 @@ questions #19–#28 came from the full engine audit (`07_engine_audit_2026-09-22
 - **Official so far:** only that Mega Mewtwo X ex is Psychic- and Fighting-type, and Mega Greninja ex is Water- and Darkness-type.
 - **Fan sources** (GameWith JP, Wargamer, Pokémon GO Hub, outof.games; collected by the coordinator, Oct 23):
   - each revealed dual-type card prints ONE Weakness;
-  - an attacker matches a Weakness with EITHER of its types (+20 once);
+  - an attacker matches a Weakness with EITHER of its types (+20 once). **OBSERVED Nov 18** (checked from frames Nov 20): in his recording `ScreenRecording_11-18-2026 21-50-51_1.mp4`, t=730-733 s, Mega Mewtwo X ex (Psychic/Fighting) used Dual Impact on his Active Mega Audino ex (weak Fighting +20, Eviolite attached, Abandoned Station in play). The game showed a "Weakness" label over 140 damage, and Audino went from 180 to 40. 140 = 100 + 40 Stadium + 20 Weakness - 20 Eviolite; without Weakness it would have been 120. So the attacker's second type matched the Weakness. The engine's any-of reading agrees. Whether the +20 is applied only once when both types match is still not seen;
   - "[X] Pokémon" effects (Korrina, Peculiar Plaza, Gardevoir; Mew ex's "Benched [P] Pokémon") count either type.
 - **The engine branch `laptop/dual-type-seam-2026-10-23`** builds in the any-of reading for EVERY printed-type check: Fisher, Fishing Net, Mythical Slab, typed deck searches, Forest Breath, Psychic Connect, Wash Out, Leaf Cape, Jungle Totem, the Chase Order bench filter, the defender-type and opponent-type bonuses, and Flame Patch. One printed Weakness, applied once.
 - **Unknown:**
   - whether a dual-type card can ever print two Weaknesses;
   - whether a dual-type card changes which Energy a deck registers (the engine's deck-Energy inference keeps one type, with a TODO);
   - how a printed second type combines with a Double Type-style Ability (the engine lets the Ability replace the printed set).
-- **Test:** once he has a dual-type card, the shot-list row the coordinator adds after release: Weakness either way, and one "[X] Pokémon" effect on each type.
+- **Test:** once he has a dual-type card, the shot-list row the coordinator adds after release: Weakness either way (the second-type case was seen Nov 18, above), and one "[X] Pokémon" effect on each type.
 
 **33. Rising Star and dual-type Pokémon — OBSERVED Oct 29: a dual-type Pokémon counts both its types.** (New, Oct 28: release-prep commit C, the #432 port; coordinator-067 J2.)
 - **Observed** (Dustin's clip `…12-24-11_1.mp4`, 01:40-01:52, Codex's review; coordinator-097 §5): Zangoose (Colorless) plus a Benched Mega Mewtwo X ex (Psychic/Fighting) made Rising Star playable. Urshifu's case (Double Type) is not covered.
